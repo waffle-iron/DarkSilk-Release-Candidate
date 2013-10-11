@@ -250,14 +250,18 @@ bool static Bind(const CService &addr, unsigned int flags) {
     return true;
 }
 
-// Core-specific options shared between UI and daemon
-std::string HelpMessage()
+// Core-specific options shared between UI, daemon and RPC client
+std::string HelpMessage(HelpMessageMode hmm)
 {
     string strUsage = _("Options:") + "\n";
     strUsage += "  -?                     " + _("This help message") + "\n";
-    strUsage += "  -conf=<file>           " + _("Specify configuration file (default: darksilk.conf)") + "\n";
-    strUsage += "  -pid=<file>            " + _("Specify pid file (default: darksilkd.pid)") + "\n";
+    strUsage += "  -conf=<file>           " + _("Specify configuration file (default: bitcoin.conf)") + "\n";
     strUsage += "  -datadir=<dir>         " + _("Specify data directory") + "\n";
+    strUsage += "  -testnet               " + _("Use the test network") + "\n";
+
+    if(hmm == HMM_BITCOIND || hmm == HMM_BITCOIN_QT)
+    {
+    strUsage += "  -pid=<file>            " + _("Specify pid file (default: darksilkd.pid)") + "\n";
     strUsage += "  -wallet=<dir>          " + _("Specify wallet file (within data directory)") + "\n";
     strUsage += "  -dbcache=<n>           " + _("Set database cache size in megabytes (default: 25)") + "\n";
     strUsage += "  -dblogsize=<n>         " + _("Set database disk log size in megabytes (default: 100)") + "\n";
@@ -284,20 +288,62 @@ std::string HelpMessage()
     strUsage += "  -maxsendbuffer=<n>     " + _("Maximum per-connection send buffer, <n>*1000 bytes (default: 1000)") + "\n";
 #ifdef USE_UPNP
 #if USE_UPNP
-    strUsage += "  -upnp                  " + _("Use UPnP to map the listening port (default: 1 when listening)") + "\n";
+        strUsage += "  -upnp                  " + _("Use UPnP to map the listening port (default: 1 when listening)") + "\n";
 #else
-    strUsage += "  -upnp                  " + _("Use UPnP to map the listening port (default: 0)") + "\n";
+        strUsage += "  -upnp                  " + _("Use UPnP to map the listening port (default: 0)") + "\n";
 #endif
 #endif
-    strUsage += "  -whitebind=<addr>      " + _("Bind to given address and whitelist peers connecting to it. Use [host]:port notation for IPv6") + "\n";
+        strUsage += "  -paytxfee=<amt>        " + _("Fee per KB to add to transactions you send") + "\n";
+    strUsage += "  -debug=<category>      " + _("Output debugging information (default: 0, supplying <category> is optional)") + "\n";
+    strUsage +=                               _("If <category> is not supplied, output all debugging information.") + "\n";
+    strUsage +=                               _("<category> can be:");
+    strUsage +=                                 " addrman, alert, db, lock, rand, rpc, selectcoins, mempool, net,"; // Don't translate these and qt below
+    strUsage +=                                 " coinage, coinstake, creation, stakemodifier";
+    strUsage += ", qt";
+        strUsage += "  -debugnet              " + _("Output extra network debugging information") + "\n";
+    strUsage += "  -logtimestamps         " + _("Prepend debug output with timestamp (defaultg: 1)") + "\n";
+    strUsage += "  -printtodebuglog       " + strprintf(_("Send trace/debug info to debug.log file (default: %u)"), 1) + "\n";
+    strUsage += "  -printtoconsole        " + _("Send trace/debug info to console instead of debug.log file") + "\n";
+        strUsage += "  -shrinkdebugfile       " + _("Shrink debug.log file on client startup (default: 1 when no -debug)") + "\n";
+        strUsage += "  -regtest               " + _("Enter regression test mode, which uses a special chain in which blocks can be "
+                                                "solved instantly. This is intended for regression testing tools and app development.") + "\n";
+#ifdef WIN32
+        strUsage += "  -printtodebugger       " + _("Send trace/debug info to debugger") + "\n";
+#endif
+    }
+
+    if (hmm == HMM_BITCOIN_QT)
+    {
+        strUsage += "  -server                " + _("Accept command line and JSON-RPC commands") + "\n";
+    }
+
+    if (hmm == HMM_BITCOIND)
+    {
+#if !defined(WIN32)
+        strUsage += "  -daemon                " + _("Run in the background as a daemon and accept commands") + "\n";
+#endif
+    }
+
+    if (hmm == HMM_BITCOIND || hmm == HMM_BITCOIN_CLI)
+    {
+        strUsage += "  -rpcconnect=<ip>       " + _("Send commands to node running on <ip> (default: 127.0.0.1)") + "\n";
+    }
+
+    strUsage += "  -rpcuser=<user>        " + _("Username for JSON-RPC connections") + "\n";
+    strUsage += "  -rpcpassword=<pw>      " + _("Password for JSON-RPC connections") + "\n";
+    if (hmm == HMM_BITCOIND || hmm == HMM_BITCOIN_QT)
+    {
+        strUsage += "  -rpcport=<port>        " + _("Listen for JSON-RPC connections on <port> (default: 31500 or testnet: 31800)") + "\n";
+    } else {
+        strUsage += "  -rpcport=<port>        " + _("Connect to JSON-RPC on <port> (default: 31500 or testnet: 31800)") + "\n";
+    }
+
+    if(hmm == HMM_BITCOIND || hmm == HMM_BITCOIN_QT)
+    {
+            strUsage += "  -whitebind=<addr>      " + _("Bind to given address and whitelist peers connecting to it. Use [host]:port notation for IPv6") + "\n";
     strUsage += "  -whitelist=<netmask>   " + _("Whitelist peers connecting from the given netmask or IP address. Can be specified multiple times.") + "\n";
     strUsage += "                         " + _("Whitelisted peers cannot be DoS banned and their transactions are always relayed, even if they are already in the mempool, useful e.g. for a gateway") + "\n";
-    strUsage += "  -paytxfee=<amt>        " + _("Fee per KB to add to transactions you send") + "\n";
     strUsage += "  -mininput=<amt>        " + _("When creating transactions, ignore inputs with value less than this (default: 0.01)") + "\n";
-    strUsage += "  -server                " + _("Accept command line and JSON-RPC commands") + "\n";
-#if !defined(WIN32)
-    strUsage += "  -daemon                " + _("Run in the background as a daemon and accept commands") + "\n";
-#endif
 
     strUsage += "\n" + _("Debugging/Testing options:") + "\n";
     if (GetBoolArg("-help-debug", false))
@@ -305,49 +351,6 @@ std::string HelpMessage()
     strUsage += "  -fuzzmessagestest=<n>  " + _("Randomly fuzz 1 of every <n> network messages") + "\n";
     }
 
-    strUsage += "  -testnet               " + _("Use the test network") + "\n";
-    strUsage += "  -litemode=<n>          " + strprintf(_("Disable all Darksilk specific functionality (Stormnodes, Sandstorm, InstantX, Budgeting) (0-1, default: %u)"), 0) + "\n";
-    strUsage += "  -debug=<category>      " + _("Output debugging information (default: 0, supplying <category> is optional)") + "\n";
-    strUsage +=                               _("If <category> is not supplied, output all debugging information.") + "\n";
-    strUsage +=                               _("<category> can be:");
-    strUsage +=                                 " addrman, alert, db, lock, rand, rpc, selectcoins, mempool, net,"; // Don't translate these and qt below
-    strUsage +=                                 " coinage, coinstake, creation, stakemodifier";
-    strUsage += ", qt";
-    strUsage += ".\n";
-    strUsage += "  -logtimestamps         " + _("Prepend debug output with timestamp (defaultg: 1)") + "\n";    strUsage += "  -shrinkdebugfile       " + _("Shrink debug.log file on client startup (default: 1 when no -debug)") + "\n";
-    strUsage += "  -printtodebuglog       " + strprintf(_("Send trace/debug info to debug.log file (default: %u)"), 1) + "\n";
-    strUsage += "  -printtoconsole        " + _("Send trace/debug info to console instead of debug.log file") + "\n";
-    strUsage += "  -rpcuser=<user>        " + _("Username for JSON-RPC connections") + "\n";
-    strUsage += "  -rpcpassword=<pw>      " + _("Password for JSON-RPC connections") + "\n";
-    strUsage += "  -rpcport=<port>        " + _("Listen for JSON-RPC connections on <port> (default: 31500 or testnet: 31800)") + "\n";
-    strUsage += "  -rpcallowip=<ip>       " + _("Allow JSON-RPC connections from specified IP address") + "\n";
-    strUsage += "  -rpcconnect=<ip>       " + _("Send commands to node running on <ip> (default: 127.0.0.1)") + "\n";
-    strUsage += "  -rpcwait               " + _("Wait for RPC server to start") + "\n";
-    strUsage += "  -rpcthreads=<n>        " + _("Set the number of threads to service RPC calls (default: 4)") + "\n";
-    strUsage += "  -blocknotify=<cmd>     " + _("Execute command when the best block changes (%s in cmd is replaced by block hash)") + "\n";
-    strUsage += "  -walletnotify=<cmd>    " + _("Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)") + "\n";
-    strUsage += "  -confchange            " + _("Require a confirmations for change (default: 0)") + "\n";
-    strUsage += "  -alertnotify=<cmd>     " + _("Execute command when a relevant alert is received (%s in cmd is replaced by message)") + "\n";
-    strUsage += "  -upgradewallet         " + _("Upgrade wallet to latest format") + "\n";
-    strUsage += "  -keypool=<n>             " + strprintf(_("Set key pool size to <n> (default: %u). Run 'keypoolrefill' to apply this to already existing wallets"), DEFAULT_KEYPOOL_SIZE) + "\n"; 
-    strUsage += "  -rescan                " + _("Rescan the block chain for missing wallet transactions") + "\n";
-    strUsage += "  -salvagewallet         " + _("Attempt to recover private keys from a corrupt wallet.dat") + "\n";
-    strUsage += "  -checkblocks=<n>       " + _("How many blocks to check at startup (default: 500, 0 = all)") + "\n";
-    strUsage += "  -checklevel=<n>        " + _("How thorough the block verification is (0-6, default: 1)") + "\n";
-    strUsage += "  -loadblock=<file>      " + _("Imports blocks from external blk000?.dat file") + "\n";
-    strUsage += "  -maxorphanblocksMiB=<n>   " + strprintf(_("Keep at most <n> MiB of unconnectable blocks in memory (default: %u)"), DEFAULT_MAX_ORPHAN_BLOCKS) + "\n";
-
-    strUsage += "\n" + _("Block creation options:") + "\n";
-    strUsage += "  -blockminsize=<n>      "   + _("Set minimum block size in bytes (default: 0)") + "\n";
-    strUsage += "  -blockmaxsize=<n>      " + strprintf(_("Set maximum block size in bytes (default: %d)"), MAX_BLOCK_SIZE_GEN) + "\n";
-    strUsage += "  -blockprioritysize=<n> " + strprintf(_("Set maximum size of high-priority/low-fee transactions in bytes (default: %d)"), DEFAULT_BLOCK_PRIORITY_SIZE) + "\n";
-
-    strUsage += "\n" + _("SSL options: (see the DarkSilk Wiki for SSL setup instructions)") + "\n";
-    strUsage += "  -rpcssl                                  " + _("Use OpenSSL (https) for JSON-RPC connections") + "\n";
-    strUsage += "  -rpcsslcertificatechainfile=<file.cert>  " + _("Server certificate file (default: server.cert)") + "\n";
-    strUsage += "  -rpcsslprivatekeyfile=<file.pem>         " + _("Server private key (default: server.pem)") + "\n";
-    strUsage += "  -rpcsslciphers=<ciphers>                 " + _("Acceptable ciphers (default: TLSv1.2+HIGH:TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!3DES:@STRENGTH)") + "\n";
-    strUsage += "  -litemode=<n>          " + _("Disable all Stormnode and Sandstorm related functionality (0-1, default: 0)") + "\n";
     strUsage += "\n" + _("Stormnode options:") + "\n";
     strUsage += "  -stormnode=<n>            " + _("Enable the client to act as a stormnode (0-1, default: 0)") + "\n";
     strUsage += "  -snconf=<file>             " + _("Specify stormnode configuration file (default: stormnode.conf)") + "\n";
@@ -369,6 +372,40 @@ std::string HelpMessage()
         "  -nosmsg                                  " + _("Disable secure messaging.") + "\n" +
         "  -debugsmsg                               " + _("Log extra debug messages.") + "\n" +
         "  -smsgscanchain                           " + _("Scan the block chain for public key addresses on startup.") + "\n";
+
+    strUsage += "  -litemode=<n>          " + strprintf(_("Disable all Darksilk specific functionality (Stormnodes, Sandstorm, InstantX, Budgeting) (0-1, default: %u)"), 0) + "\n";
+    strUsage += ".\n";
+    strUsage += "  -rpcport=<port>        " + _("Listen for JSON-RPC connections on <port> (default: 31500 or testnet: 31800)") + "\n";
+    strUsage += "  -rpcallowip=<ip>       " + _("Allow JSON-RPC connections from specified IP address") + "\n";
+    strUsage += "  -rpcwait               " + _("Wait for RPC server to start") + "\n";
+    strUsage += "  -rpcthreads=<n>        " + _("Set the number of threads to service RPC calls (default: 4)") + "\n";
+    strUsage += "  -blocknotify=<cmd>     " + _("Execute command when the best block changes (%s in cmd is replaced by block hash)") + "\n";
+    strUsage += "  -walletnotify=<cmd>    " + _("Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)") + "\n";
+    strUsage += "  -confchange            " + _("Require a confirmations for change (default: 0)") + "\n";
+    strUsage += "  -alertnotify=<cmd>     " + _("Execute command when a relevant alert is received (%s in cmd is replaced by message)") + "\n";
+    strUsage += "  -upgradewallet         " + _("Upgrade wallet to latest format") + "\n";
+    strUsage += "  -keypool=<n>             " + strprintf(_("Set key pool size to <n> (default: %u). Run 'keypoolrefill' to apply this to already existing wallets"), DEFAULT_KEYPOOL_SIZE) + "\n"; 
+    strUsage += "  -rescan                " + _("Rescan the block chain for missing wallet transactions") + "\n";
+    strUsage += "  -salvagewallet         " + _("Attempt to recover private keys from a corrupt wallet.dat") + "\n";
+    strUsage += "  -checkblocks=<n>       " + _("How many blocks to check at startup (default: 500, 0 = all)") + "\n";
+    strUsage += "  -checklevel=<n>        " + _("How thorough the block verification is (0-6, default: 1)") + "\n";
+    strUsage += "  -loadblock=<file>      " + _("Imports blocks from external blk000?.dat file") + "\n";
+    strUsage += "  -maxorphanblocksMiB=<n>   " + strprintf(_("Keep at most <n> MiB of unconnectable blocks in memory (default: %u)"), DEFAULT_MAX_ORPHAN_BLOCKS) + "\n";
+
+    strUsage += "\n" + _("Block creation options:") + "\n";
+    strUsage += "  -blockminsize=<n>      "   + _("Set minimum block size in bytes (default: 0)") + "\n";
+    strUsage += "  -blockmaxsize=<n>      " + strprintf(_("Set maximum block size in bytes (default: %d)"), MAX_BLOCK_SIZE_GEN) + "\n";
+    strUsage += "  -blockprioritysize=<n> " + strprintf(_("Set maximum size of high-priority/low-fee transactions in bytes (default: %d)"), DEFAULT_BLOCK_PRIORITY_SIZE) + "\n";
+}
+    if (hmm == HMM_BITCOIND || hmm == HMM_BITCOIN_QT)
+    {
+    strUsage += "\n" + _("SSL options: (see the DarkSilk Wiki for SSL setup instructions)") + "\n";
+    strUsage += "  -rpcssl                                  " + _("Use OpenSSL (https) for JSON-RPC connections") + "\n";
+    strUsage += "  -rpcsslcertificatechainfile=<file.cert>  " + _("Server certificate file (default: server.cert)") + "\n";
+    strUsage += "  -rpcsslprivatekeyfile=<file.pem>         " + _("Server private key (default: server.pem)") + "\n";
+    strUsage += "  -rpcsslciphers=<ciphers>                 " + _("Acceptable ciphers (default: TLSv1.2+HIGH:TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!3DES:@STRENGTH)") + "\n";
+    strUsage += "  -litemode=<n>          " + _("Disable all Stormnode and Sandstorm related functionality (0-1, default: 0)") + "\n";
+    }
 
     return strUsage;
 }
