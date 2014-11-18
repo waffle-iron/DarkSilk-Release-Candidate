@@ -48,6 +48,10 @@
 #include "anon/i2p/i2p.h"
 #endif
 
+#if ENABLE_ZMQ
+#include "zmq/zmqnotificationinterface.h"
+#endif
+
 using namespace boost;
 using namespace std;
 
@@ -64,6 +68,10 @@ unsigned int nMinerSleep;
 bool fUseFastIndex;
 bool fOnlyTor = false;
 bool fMinimizeCoinAge;
+
+#if ENABLE_ZMQ
+static CZMQNotificationInterface* pzmqNotificationInterface = NULL;
+#endif
 
 #ifdef WIN32
 // Win32 LevelDB doesn't use filedescriptors, and the ones used for
@@ -209,6 +217,16 @@ void PrepareShutdown()
         if (pwalletMain)
             pwalletMain->SetBestChain(CBlockLocator(pindexBest));
 #endif
+
+#if ENABLE_ZMQ
+    if (pzmqNotificationInterface) {
+        UnregisterValidationInterface(pzmqNotificationInterface);
+        pzmqNotificationInterface->Shutdown();
+        delete pzmqNotificationInterface;
+        pzmqNotificationInterface = NULL;
+    }
+#endif
+
     }
 #ifdef ENABLE_WALLET
     if (pwalletMain)
@@ -357,12 +375,23 @@ std::string HelpMessage(HelpMessageMode hmm)
         strUsage += "  -server                " + _("Accept command line and JSON-RPC commands") + "\n";
     }
 
-    if (hmm == HMM_BITCOIND)
-    {
+    if (hmm == HMM_BITCOIND){
+	#if ENABLE_ZMQ
+    		strUsage += HelpMessageGroup(_("ZeroMQ notification options:"));
+    		strUsage += HelpMessageOpt("-zmqpubhashblock=<address>", _("Enable publish hash block in <address>"));
+    		strUsage += HelpMessageOpt("-zmqpubhashtransaction=<address>", _("Enable publish hash transaction in <address>"));
+    		strUsage += HelpMessageOpt("-zmqpubrawblock=<address>", _("Enable publish raw block in <address>"));
+    		strUsage += HelpMessageOpt("-zmqpubrawtransaction=<address>", _("Enable publish raw transaction in <address>"));
+	#endif
+
+    	strUsage += HelpMessageGroup(_("Debugging/Testing options:"));
+    	if (showDebug)
+    	{
 #if !defined(WIN32)
-        strUsage += "  -daemon                " + _("Run in the background as a daemon and accept commands") + "\n";
+        	strUsage += "  -daemon                " + _("Run in the background as a daemon and accept commands") + "\n";
 #endif
-    }
+    	}
+	}
 
     if (hmm == HMM_BITCOIND || hmm == HMM_BITCOIN_CLI)
     {
@@ -994,6 +1023,15 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     BOOST_FOREACH(string strDest, mapMultiArgs["-seednode"])
         AddOneShot(strDest);
+
+#if ENABLE_ZMQ
+    pzmqNotificationInterface = CZMQNotificationInterface::CreateWithArguments(mapArgs);
+
+    if (pzmqNotificationInterface) {
+        pzmqNotificationInterface->Initialize();
+        RegisterValidationInterface(pzmqNotificationInterface);
+    }
+#endif
 
     // ********************************************************* Step 7: load blockchain
 
