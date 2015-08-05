@@ -40,12 +40,14 @@ Multiple Stormnodes can be ran from the same IP address.
 **MainNet Parameters**
 P2P Port = 31000
 RPC Port = 31500
-Magic Bytes: 0x1f 0x22 0x05 0x31
+Magic Bytes: 0x42 0x04 0x20 0x24
+
+
 
 **TestNet Parameters**
 P2P Port = 31750
 RPC Port = 31800
-Magic Bytes: 0x1f 0x22 0x05 0x30
+Magic Bytes: 0x24 0x20 0x04 0x42
 
 
 DarkSilk is dependent upon libsecp256k1 by sipa, please follow this guide to install to Linux
