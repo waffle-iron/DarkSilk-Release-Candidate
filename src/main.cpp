@@ -42,8 +42,8 @@ set<pair<COutPoint, unsigned int> > setStakeSeen;
 CBigNum bnProofOfStakeLimit(~uint256(0) >> 20);
 CBigNum bnProofOfStakeLimitV2(~uint256(0) >> 20);
 
-unsigned int nStakeMinAge = 24 * 60 * 60; // 24 hours
-unsigned int nModifierInterval = 1 * 60 * 60; // 1 hour to elapse before new modifier is computed
+unsigned int nStakeMinAge = 42 * 60 * 60; // 42 hours
+unsigned int nModifierInterval = 4.2 * 60 * 60; // 4.2 hour to elapse before new modifier is computed
 
 int nCoinbaseMaturity = 42;
 CBlockIndex* pindexGenesisBlock = NULL;
@@ -1204,7 +1204,7 @@ const CBlockIndex* GetLastBlockIndex(const CBlockIndex* pindex, bool fProofOfSta
     return pindex;
 }
 
-int nTargetSpacing = 1 * 60; //1 minute
+int nTargetSpacing = 4.2 * 60; //4.2 minutes
 
 unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfStake)
 {
