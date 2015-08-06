@@ -58,10 +58,10 @@ DarkSilk is dependent upon libsecp256k1 by sipa, please follow this guide to ins
 $ cd ~
 
 //Then:
-$ sudo apt-get install libtool unzip
+$ sudo apt-get install automake autoconf libtool unzip
 
 //Then:
-$ cd darksilk/libs/
+$ cd DarkSilk-master/libs/
 
 //Then:
 $ sudo unzip secp256k1-master.zip
@@ -70,10 +70,10 @@ $ sudo unzip secp256k1-master.zip
 $ cd secp256k1-master
 
 //Then:
-$ libtoolize
+$ sudo libtoolize
 
 //Then:
-$ aclocal
+$ sudo aclocal
 
 //Then:
 $ autoheader
