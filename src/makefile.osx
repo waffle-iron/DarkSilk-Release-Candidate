@@ -1,23 +1,24 @@
 # -*- mode: Makefile; -*-
 # Copyright (c) 2011 Bitcoin Developers
+
 # Distributed under the MIT/X11 software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 # Mac OS X makefile for darksilk
 # Originally by Laszlo Hanyecz (solar@heliacal.net)
 
-CXX=llvm-g++
-DEPSDIR=/opt/local
+CXX=g++
+DEPSDIR=/usr/local
 
 INCLUDEPATHS= \
  -I"$(CURDIR)" \
  -I"$(CURDIR)"/obj \
  -I"$(DEPSDIR)/include" \
- -I"$(DEPSDIR)/include/db48"
+ -I"$(DEPSDIR)/include/berkeley-db4"
 
 LIBPATHS= \
  -L"$(DEPSDIR)/lib" \
- -L"$(DEPSDIR)/lib/db48"
+ -L"$(DEPSDIR)/Cellar/berkeley-db4/4.8.30/lib"
 
 USE_UPNP:=1
 USE_WALLET:=1
@@ -28,20 +29,20 @@ ifdef STATIC
 # Build STATIC if you are redistributing the darksilkd binary
 LIBS += \
  $(DEPSDIR)/lib/db48/libdb_cxx-4.8.a \
- $(DEPSDIR)/lib/libboost_system-mt.a \
- $(DEPSDIR)/lib/libboost_filesystem-mt.a \
- $(DEPSDIR)/lib/libboost_program_options-mt.a \
- $(DEPSDIR)/lib/libboost_thread-mt.a \
+ $(DEPSDIR)/lib/libboost_system.a \
+ $(DEPSDIR)/lib/libboost_filesystem.a \
+ $(DEPSDIR)/lib/libboost_program_options.a \
+ $(DEPSDIR)/lib/libboost_thread.a \
  $(DEPSDIR)/lib/libssl.a \
  $(DEPSDIR)/lib/libcrypto.a \
  -lz
 else
 LIBS += \
  -ldb_cxx-4.8 \
- -lboost_system-mt \
- -lboost_filesystem-mt \
- -lboost_program_options-mt \
- -lboost_thread-mt \
+ -lboost_system \
+ -lboost_filesystem \
+ -lboost_program_options \
+ -lboost_thread \
  -lssl \
  -lcrypto \
  -lz \
@@ -132,12 +133,6 @@ OBJS += obj/txdb-leveldb.o
 leveldb/libleveldb.a:
 	@echo "Building LevelDB ..."; cd leveldb; make libleveldb.a libmemenv.a; cd ..
 obj/txdb-leveldb.o: leveldb/libleveldb.a
-
-# libsecp256k1 support
-LIBS += $(CURDIR)/secp256k1/libsecp256k1.a -lgmp
-DEFS += $(addprefix -I,$(CURDIR)/secp256k1/include) -DUSE_SECP256K1
-$(shell mkdir -p $(CURDIR)/secp256k1/obj >/dev/null)
-$(shell make -C $(CURDIR)/secp256k1 libsecp256k1.a >/dev/null)
 
 # auto-generated dependencies:
 -include obj/*.P
