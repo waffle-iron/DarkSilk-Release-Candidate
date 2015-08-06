@@ -82,7 +82,7 @@ $ sudo autoheader
 $ sudo ./autogen.sh
 
 //Then:
-$ ./configure
+$ sudo ./configure
 
 //Then:
 $ sudo make
