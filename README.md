@@ -76,16 +76,16 @@ $ sudo libtoolize
 $ sudo aclocal
 
 //Then:
-$ autoheader
+$ sudo autoheader
 
 //Then:
-$ ./autogen.sh
+$ sudo ./autogen.sh
 
 //Then:
 $ ./configure
 
 //Then:
-$ make
+$ sudo make
 
 //Then:
 $ ./tests
