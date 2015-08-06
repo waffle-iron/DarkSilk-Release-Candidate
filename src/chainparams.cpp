@@ -55,7 +55,7 @@ public:
         vAlertPubKey = ParseHex("");
         nDefaultPort = 31000;
         nRPCPort = 31500;
-        bnProofOfWorkLimit = CBigNum(~uint256(0) >> 16);
+        bnProofOfWorkLimit = CBigNum(~uint256(0) >> 20);
 
         // Build the genesis block. Note that the output of the genesis coinbase cannot
         // be spent as it did not originally exist in the database.
@@ -67,7 +67,7 @@ public:
         //  vMerkleTree: 12630d16a9
         const char* pszTimestamp = "2015 DarkSilk is Born";
         CTransaction txNew;
-        txNew.nTime = NULL; //Change to current UNIX Time when generating genesis
+        txNew.nTime = 1438578382; //Change to current UNIX Time when generating genesis
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 0 << CBigNum(42) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
@@ -76,15 +76,15 @@ public:
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime    = NULL; //Change to current UNIX Time of generated genesis
-        genesis.nBits    = 0; 
-        genesis.nNonce   = 0;
+        genesis.nTime    = 1438578382; //Change to current UNIX Time of generated genesis
+        genesis.nBits    = 504365040; 
+        genesis.nNonce   = 181077;
 
         hashGenesisBlock = genesis.GetHash(); 
 
         //// debug print
-        assert(hashGenesisBlock == uint256(""));
-        assert(genesis.hashMerkleRoot == uint256(""));
+        assert(hashGenesisBlock == uint256("0xfa5e0f06963f850fe0896359c6ed1495d8414525d9a78e62b483243bf2e0cbc4"));
+        assert(genesis.hashMerkleRoot == uint256("0xfb3953d6e08d7ccd5230ee997430e1b3eac702b8f149146a6c2239fd51207934"));
         
         
         base58Prefixes[PUBKEY_ADDRESS] = list_of(62);
@@ -132,10 +132,11 @@ public:
         strDataDir = "testnet";
 
         // Modify the testnet genesis block so the timestamp is valid for a later start.
+        genesis.nTime = 1438578972;
         genesis.nBits  = 0; 
         genesis.nNonce = 0;
         hashGenesisBlock = genesis.GetHash(); 
-        assert(hashGenesisBlock == uint256(""));
+        assert(hashGenesisBlock == uint256("0x5df91956099936ddb98e30a242ae10f1464665d843b30d40ee406a70bc340dc6"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
