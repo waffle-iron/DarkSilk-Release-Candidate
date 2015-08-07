@@ -63,7 +63,7 @@ $ cd ~
 $ sudo apt-get install automake autoconf libtool unzip
 
 //Then:
-$ cd DarkSilk-master/libs/
+$ cd DarkSilk/libs/
 
 //Then:
 $ sudo unzip secp256k1-master.zip
