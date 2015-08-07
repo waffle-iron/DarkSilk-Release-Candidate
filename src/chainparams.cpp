@@ -78,11 +78,20 @@ public:
         genesis.nVersion = 1;
         genesis.nTime    = 1438578382; //Change to current UNIX Time of generated genesis
         genesis.nBits    = 504365040; 
-        genesis.nNonce   = 181077;
+        genesis.nNonce   = 1810177;
 
         hashGenesisBlock = genesis.GetHash(); 
 
         //// debug print
+
+        /*
+        printf("Gensis Hash: %s\n", genesis.GetHash().ToString().c_str());
+        printf("Gensis Hash Merkle: %s\n", genesis.hashMerkleRoot.ToString().c_str());
+        printf("Gensis nTime: %u\n", genesis.nTime);
+        printf("Gensis nBits: %08x\n", genesis.nBits);
+        printf("Gensis Nonce: %u\n\n\n", genesis.nNonce);
+        */
+
         assert(hashGenesisBlock == uint256("0xfa5e0f06963f850fe0896359c6ed1495d8414525d9a78e62b483243bf2e0cbc4"));
         assert(genesis.hashMerkleRoot == uint256("0xfb3953d6e08d7ccd5230ee997430e1b3eac702b8f149146a6c2239fd51207934"));
         
@@ -119,7 +128,7 @@ class CTestNetParams : public CMainParams {
 public:
     CTestNetParams() {
         // The message start string is designed to be unlikely to occur in normal data.
-        // The characters are rarely used upper ASCII, not valid as UTF-8, and produce 
+        // The characters are rarely used upper ASCII, not valid as UTF-8, and produce
         // a large 4-byte int at any alignment.
         pchMessageStart[0] = 0x1f;
         pchMessageStart[1] = 0x22;
@@ -136,6 +145,9 @@ public:
         genesis.nBits  = 0; 
         genesis.nNonce = 0;
         hashGenesisBlock = genesis.GetHash(); 
+
+
+        //printf("Test Gensis Hash: %s\n", genesis.GetHash().ToString().c_str());
         assert(hashGenesisBlock == uint256("0x5df91956099936ddb98e30a242ae10f1464665d843b30d40ee406a70bc340dc6"));
 
         vFixedSeeds.clear();
