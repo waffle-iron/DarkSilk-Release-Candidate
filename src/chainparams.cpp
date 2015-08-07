@@ -124,7 +124,7 @@ public:
         pchMessageStart[0] = 0x1f;
         pchMessageStart[1] = 0x22;
         pchMessageStart[2] = 0x05;
-        pchMessageStart[3] = 0x31;
+        pchMessageStart[3] = 0x30;
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 16);
         vAlertPubKey = ParseHex("");
         nDefaultPort = 31750;
