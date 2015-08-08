@@ -206,21 +206,15 @@ Value setaccount(const Array& params, bool fHelp)
     if (params.size() > 1)
         strAccount = AccountFromValue(params[1]);
 
-    // Only add the account if the address is yours.
-    if (IsMine(*pwalletMain, address.Get()))
+    // Detect when changing the account of an address that is the 'unused current key' of another account:
+    if (pwalletMain->mapAddressBook.count(address.Get()))
     {
-        // Detect when changing the account of an address that is the 'unused current key' of another account:
-        if (pwalletMain->mapAddressBook.count(address.Get()))
-        {
-            string strOldAccount = pwalletMain->mapAddressBook[address.Get()].name;
-            if (address == GetAccountAddress(strOldAccount))
-                GetAccountAddress(strOldAccount, true);
-        }
-        pwalletMain->SetAddressBook(address.Get(), strAccount, "receive");
+        string strOldAccount = pwalletMain->mapAddressBook[address.Get()];
+        if (address == GetAccountAddress(strOldAccount))
+            GetAccountAddress(strOldAccount, true);
     }
 
-    else
-        throw JSONRPCError(RPC_MISC_ERROR, "setaccount can only be used with own address");
+    pwalletMain->SetAddressBookName(address.Get(), strAccount);
 
     return Value::null;
 }
@@ -1657,7 +1651,7 @@ Value liststealthaddresses(const Array& params, bool fHelp)
     //for (it = pwalletMain->stealthAddresses.begin(); it != pwalletMain->stealthAddresses.end(); ++it)
     BOOST_FOREACH(CStealthAddress sit, pwalletMain->stealthAddresses)
     {
-	CStealthAddress* it = &(sit);
+    CStealthAddress* it = &(sit);
         if (it->scan_secret.size() < 1)
             continue; // stealth address is not owned
         
