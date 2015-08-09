@@ -55,7 +55,7 @@ public:
         vAlertPubKey = ParseHex("");
         nDefaultPort = 31000;
         nRPCPort = 31500;
-        bnProofOfWorkLimit = CBigNum(~uint256(0) >> 20);
+        bnProofOfWorkLimit = CBigNum(~uint256(0) >> 16);
 
         // Build the genesis block. Note that the output of the genesis coinbase cannot
         // be spent as it did not originally exist in the database.
