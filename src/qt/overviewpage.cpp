@@ -139,7 +139,7 @@ OverviewPage::OverviewPage(QWidget *parent) :
     if(fLiteMode){
         ui->frameSandstorm->setVisible(false);
     } else {
-	qDebug() << "Dark Send Status Timer";
+	qDebug() << "Sandstorm Status Timer";
         timer = new QTimer(this);
         connect(timer, SIGNAL(timeout()), this, SLOT(sandStormStatus()));
         timer->start(60000);
