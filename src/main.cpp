@@ -42,7 +42,7 @@ set<pair<COutPoint, unsigned int> > setStakeSeen;
 CBigNum bnProofOfStakeLimit(~uint256(0) >> 20);
 
 
-unsigned int nStakeMinAge = 42 * 60 * 60; // 42 hours
+unsigned int nStakeMinAge = 4.2 * 60 * 60; // 4.2 hours
 unsigned int nModifierInterval = 4.2 * 60; // 4.2 minutes to elapse before new modifier is computed
 
 int nCoinbaseMaturity = 42;
@@ -1264,7 +1264,7 @@ bool IsInitialBlockDownload()
         nLastUpdate = GetTime();
     }
     return (GetTime() - nLastUpdate < 15 &&
-            pindexBest->GetBlockTime() < GetTime() - 8 * 60 * 60);
+            pindexBest->GetBlockTime() < GetTime() - 4.2 * 60 * 60);
 }
 
 // Requires cs_main.
