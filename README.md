@@ -14,7 +14,7 @@ PoS Interest - 5% Annually
 4.2 Minute Target Spacing
 Difficulty Retargets Every Block
 42 Coins Per Block
-42 Blocks for DarkSilk to be Minted/Mature
+42 Blocks for DarkSilk to be Minted/Mature/Spendable
 42 Hour Minimum Stake Age
 90,000,000 Total Coins
 
