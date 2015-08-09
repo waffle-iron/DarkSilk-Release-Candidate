@@ -919,7 +919,7 @@ void CWalletTx::GetAmounts(list<pair<CTxDestination, int64_t> >& listReceived,
         if (nDebit > 0)
         {
             // Don't report 'change' txouts
-	    // DRKSLKNOTE: CoinControl possible fix related... with HD wallet we need to report change?
+	    // DARKSILKNOTE: CoinControl possible fix related... with HD wallet we need to report change?
             //if (pwallet->IsChange(txout))
             //    continue;
             fIsMine = pwallet->IsMine(txout);
@@ -1467,7 +1467,7 @@ void CWallet::AvailableCoins(vector<COutput>& vCoins, bool fOnlyConfirmed, const
                 continue;
 
             int nDepth = pcoin->GetDepthInMainChain();
-            if (nDepth <= 0) // DRKSLKNOTE: coincontrol fix / ignore 0 confirm 
+            if (nDepth <= 0) // DARKSILKNOTE: coincontrol fix / ignore 0 confirm 
                 continue;
 
            /* for (unsigned int i = 0; i < pcoin->vout.size(); i++)
