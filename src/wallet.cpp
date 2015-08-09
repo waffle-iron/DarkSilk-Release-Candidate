@@ -2199,7 +2199,7 @@ bool CWallet::SelectCoinsDark(int64_t nValueMin, int64_t nValueMax, std::vector<
     //the first thing we get is a fee input, then we'll use as many denominated as possible. then the rest
     BOOST_FOREACH(const COutput& out, vCoins)
     {
-        //there's no reason to allow inputs less than 1 COIN into DS (other than denominations smaller than that amount)
+        //there's no reason to allow inputs less than 1 COIN into Sandstorm (other than denominations smaller than that amount)
         if(out.tx->vout[out.i].nValue < 1*COIN && out.tx->vout[out.i].nValue != (.1*COIN)+100) continue;
         if(fStormNode && out.tx->vout[out.i].nValue == 250000*COIN) continue; //stormnode input
 
