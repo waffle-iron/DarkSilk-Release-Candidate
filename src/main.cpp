@@ -18,8 +18,8 @@
 #include "txmempool.h"
 #include "ui_interface.h"
 #include "instantx.h"
-#include "darksend.h"
-#include "masternode.h"
+#include "sandstorm.h"
+#include "stormnode.h"
 #include "spork.h"
 
 using namespace std;
@@ -41,10 +41,11 @@ set<pair<COutPoint, unsigned int> > setStakeSeen;
 
 CBigNum bnProofOfStakeLimit(~uint256(0) >> 20);
 
-unsigned int nStakeMinAge = 8 * 60 * 60; // 8 hours
-unsigned int nModifierInterval = 8 * 60; // time to elapse before new modifier is computed
 
-int nCoinbaseMaturity = 188;
+unsigned int nStakeMinAge = 42 * 60 * 60; // 42 hours
+unsigned int nModifierInterval = 4.2 * 60; // 4.2 minutes to elapse before new modifier is computed
+
+int nCoinbaseMaturity = 42;
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
 
@@ -75,7 +76,7 @@ map<uint256, set<uint256> > mapOrphanTransactionsByPrev;
 // Constant stuff for coinbase transactions we create:
 CScript COINBASE_FLAGS;
 
-const string strMessageMagic = "Crave Signed Message:\n";
+const string strMessageMagic = "DarkSilk Signed Message:\n";
 
 extern enum Checkpoints::CPMode CheckpointsMode;
 
@@ -1118,30 +1119,41 @@ void static PruneOrphanBlocks()
 
 static CBigNum GetProofOfStakeLimit(int nHeight)
 {
-    return bnProofOfStakeLimit;
+        return bnProofOfStakeLimit;
 }
 
 // miner's coin base reward
 int64_t GetProofOfWorkReward(int64_t nFees)
 {
-    int64_t nSubsidy = 100 * COIN;
-
-    LogPrint("creation", "GetProofOfWorkReward() : create=%s nSubsidy=%d\n", FormatMoney(nSubsidy), nSubsidy);
-
-    return nSubsidy + nFees;
+    if (pindexBest->nHeight == 1)
+        {  
+            int64_t nSubsidy = 44999958 * COIN;
+            LogPrint("creation", "GetProofOfWorkReward() : create=%s nSubsidy=%d\n", FormatMoney(nSubsidy), nSubsidy);
+            return nSubsidy + nFees;
+        }
+    else
+        {   
+            int64_t nSubsidy = 42 * COIN;
+            LogPrint("creation", "GetProofOfWorkReward() : create=%s nSubsidy=%d\n", FormatMoney(nSubsidy), nSubsidy);
+            return nSubsidy + nFees;
+        }
 }
 
 // miner's coin stake reward based on coin age spent (coin-days)
 int64_t GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees)
 {
-    int64_t nSubsidy = 1 * COIN; //nCoinAge * COIN_YEAR_REWARD * 33 / (365 * 33 + 8);
+    int64_t nRewardCoinYear;
+
+    nRewardCoinYear = MAX_MINT_PROOF_OF_STAKE;
+
+    int64_t nSubsidy = nCoinAge * nRewardCoinYear / 365;
 
     LogPrint("creation", "GetProofOfStakeReward(): create=%s nCoinAge=%d\n", FormatMoney(nSubsidy), nCoinAge);
 
     return nSubsidy + nFees;
 }
 
-static int64_t nTargetTimespan = 24 * 60;  // 24 mins
+static int64_t nTargetTimespan = 4.2 * 60;  // 4.2 mins
 
 //
 // maximum nBits value could possible be required nTime after
@@ -1189,13 +1201,10 @@ const CBlockIndex* GetLastBlockIndex(const CBlockIndex* pindex, bool fProofOfSta
     return pindex;
 }
 
-int nTargetSpacing = 60;
+int nTargetSpacing = 4.2 * 60; //4.2 minutes
 
 unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfStake)
 {
-    if(pindexLast->GetBlockTime() > STAKE_TIMESPAN_SWITCH_TIME)
-	nTargetTimespan = 2 * 60; // 2 minutes
-
     CBigNum bnTargetLimit = fProofOfStake ? GetProofOfStakeLimit(pindexLast->nHeight) : Params().ProofOfWorkLimit();
 
     if (pindexLast == NULL)
@@ -1845,8 +1854,6 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
     }
 
 
-    if(GetBoolArg("-addrindex", false))
-    {
     // Write Address Index
     BOOST_FOREACH(CTransaction& tx, vtx)
     {
@@ -1891,7 +1898,6 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
                 }
 	    }
 	}
-    }
     }
 
     // Update block index on disk without changing it in memory.
@@ -2316,7 +2322,7 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
 
 // ----------- instantX transaction scanning -----------
 
-    if(IsSporkActive(SPORK_1_MASTERNODE_PAYMENTS_ENFORCEMENT_DEFAULT)){
+    if(IsSporkActive(SPORK_1_STORMNODE_PAYMENTS_ENFORCEMENT_DEFAULT)){
         BOOST_FOREACH(const CTransaction& tx, vtx){
             if (!tx.IsCoinBase()){
                 //only reject blocks when it's based on complete consensus
@@ -2335,28 +2341,28 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
     }
 
 
-    // ----------- masternode payments -----------
+    // ----------- stormnode payments -----------
 
-    bool MasternodePayments = false;
+    bool StormnodePayments = false;
 
-    if(nTime > START_MASTERNODE_PAYMENTS) MasternodePayments = true;
+    if(nTime > START_STORMNODE_PAYMENTS) StormnodePayments = true;
 
-    if(!IsSporkActive(SPORK_1_MASTERNODE_PAYMENTS_ENFORCEMENT)){
-        MasternodePayments = false;
-        if(fDebug) LogPrintf("CheckBlock() : Masternode payment enforcement is off\n");
+    if(!IsSporkActive(SPORK_1_STORMNODE_PAYMENTS_ENFORCEMENT)){
+        StormnodePayments = false;
+        if(fDebug) LogPrintf("CheckBlock() : Stormnode payment enforcement is off\n");
     }
 
-    if(MasternodePayments)
+    if(StormnodePayments)
     {
         LOCK2(cs_main, mempool.cs);
 
         CBlockIndex *pindex = pindexBest;
         if(pindex != NULL){
             if(pindex->GetBlockHash() == hashPrevBlock){
-                CAmount masternodePaymentAmount = GetMasternodePayment(pindex->nHeight+1, vtx[0].GetValueOut());
+                CAmount stormnodePaymentAmount = GetStormnodePayment(pindex->nHeight+1, vtx[0].GetValueOut());
                 bool fIsInitialDownload = IsInitialBlockDownload();
 
-                // If we don't already have its previous block, skip masternode payment step
+                // If we don't already have its previous block, skip stormnode payment step
                 if (!fIsInitialDownload && pindex != NULL)
                 {
                     bool foundPaymentAmount = false;
@@ -2364,19 +2370,19 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
                     bool foundPaymentAndPayee = false;
 
                     CScript payee;
-                    if(!masternodePayments.GetBlockPayee(pindexBest->nHeight+1, payee) || payee == CScript()){
+                    if(!stormnodePayments.GetBlockPayee(pindexBest->nHeight+1, payee) || payee == CScript()){
                         foundPayee = true; //doesn't require a specific payee
                         foundPaymentAmount = true;
                         foundPaymentAndPayee = true;
-                        if(fDebug) { LogPrintf("CheckBlock() : Using non-specific masternode payments %d\n", pindexBest->nHeight+1); }
+                        if(fDebug) { LogPrintf("CheckBlock() : Using non-specific stormnode payments %d\n", pindexBest->nHeight+1); }
                     }
 
                     for (unsigned int i = 0; i < vtx[0].vout.size(); i++) {
-                        if(vtx[0].vout[i].nValue == masternodePaymentAmount )
+                        if(vtx[0].vout[i].nValue == stormnodePaymentAmount )
                             foundPaymentAmount = true;
                         if(vtx[0].vout[i].scriptPubKey == payee )
                             foundPayee = true;
-                        if(vtx[0].vout[i].nValue == masternodePaymentAmount && vtx[0].vout[i].scriptPubKey == payee)
+                        if(vtx[0].vout[i].nValue == stormnodePaymentAmount && vtx[0].vout[i].scriptPubKey == payee)
                             foundPaymentAndPayee = true;
                     }
 
@@ -2385,22 +2391,22 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
                         ExtractDestination(payee, address1);
                         CBitcoinAddress address2(address1);
 
-                        if(fDebug) { LogPrintf("CheckBlock() : Couldn't find masternode payment(%d|%d) or payee(%d|%s) nHeight %d. \n", foundPaymentAmount, masternodePaymentAmount, foundPayee, address2.ToString().c_str(), pindexBest->nHeight+1); }
-                        return DoS(100, error("CheckBlock() : Couldn't find masternode payment or payee"));
+                        if(fDebug) { LogPrintf("CheckBlock() : Couldn't find stormnode payment(%d|%d) or payee(%d|%s) nHeight %d. \n", foundPaymentAmount, stormnodePaymentAmount, foundPayee, address2.ToString().c_str(), pindexBest->nHeight+1); }
+                        return DoS(100, error("CheckBlock() : Couldn't find stormnode payment or payee"));
                     } else {
-                        if(fDebug) { LogPrintf("CheckBlock() : Found masternode payment %d\n", pindexBest->nHeight+1); }
+                        if(fDebug) { LogPrintf("CheckBlock() : Found stormnode payment %d\n", pindexBest->nHeight+1); }
                     }
                 } else {
-                    if(fDebug) { LogPrintf("CheckBlock() : Is initial download, skipping masternode payment check %d\n", pindexBest->nHeight+1); }
+                    if(fDebug) { LogPrintf("CheckBlock() : Is initial download, skipping stormnode payment check %d\n", pindexBest->nHeight+1); }
                 }
             } else {
-                if(fDebug) { LogPrintf("CheckBlock() : Skipping masternode payment check - nHeight %d Hash %s\n", pindexBest->nHeight+1, GetHash().ToString().c_str()); }
+                if(fDebug) { LogPrintf("CheckBlock() : Skipping stormnode payment check - nHeight %d Hash %s\n", pindexBest->nHeight+1, GetHash().ToString().c_str()); }
             }
         } else {
-            if(fDebug) { LogPrintf("CheckBlock() : pindex is null, skipping masternode payment check\n"); }
+            if(fDebug) { LogPrintf("CheckBlock() : pindex is null, skipping stormnode payment check\n"); }
         }
     } else {
-        if(fDebug) { LogPrintf("CheckBlock() : skipping masternode payment checks\n"); }
+        if(fDebug) { LogPrintf("CheckBlock() : skipping stormnode payment checks\n"); }
     }
 
 
@@ -2478,8 +2484,8 @@ bool CBlock::AcceptBlock()
         return DoS(50, error("AcceptBlock() : coinstake timestamp violation nTimeBlock=%d nTimeTx=%u", GetBlockTime(), vtx[1].nTime));
 
     // Check proof-of-work or proof-of-stake
-    if (nBits != GetNextTargetRequired(pindexPrev, IsProofOfStake()) && hash != uint256("0x474619e0a58ec88c8e2516f8232064881750e87acac3a416d65b99bd61246968") && hash != uint256("0x4f3dd45d3de3737d60da46cff2d36df0002b97c505cdac6756d2d88561840b63") && hash != uint256("0x274996cec47b3f3e6cd48c8f0b39c32310dd7ddc8328ae37762be956b9031024"))
-        return error("AcceptBlock() : incorrect %s", IsProofOfWork() ? "proof-of-work" : "proof-of-stake");
+    if (nBits != GetNextTargetRequired(pindexPrev, IsProofOfStake()))
+        return DoS(100, error("AcceptBlock() : incorrect %s", IsProofOfWork() ? "proof-of-work" : "proof-of-stake"));
 
     // Check timestamp against prev
     if (GetBlockTime() <= pindexPrev->GetPastTimeLimit() || FutureDrift(GetBlockTime(), nHeight) < pindexPrev->GetBlockTime())
@@ -2728,7 +2734,7 @@ bool ProcessBlock(CNode* pfrom, CBlock* pblock)
 }
 
 #ifdef ENABLE_WALLET
-// novacoin: attempt to generate suitable proof-of-stake
+// darksilk: attempt to generate suitable proof-of-stake
 bool CBlock::SignBlock(CWallet& wallet, int64_t nFees)
 {
     // if we are trying to sign
@@ -3056,7 +3062,7 @@ bool LoadExternalBlockFile(FILE* fileIn)
             }
         }
         catch (std::exception &e) {
-            LogPrintf("%s() : Deserialize or I/O error caught during load\n",
+            LogPrintf("%s() : Deserialise or I/O error caught during load\n",
                    __PRETTY_FUNCTION__);
         }
     }
@@ -3079,7 +3085,7 @@ struct CImportingNow
 
 void ThreadImport(std::vector<boost::filesystem::path> vImportFiles)
 {
-    RenameThread("crave-loadblk");
+    RenameThread("darksilk-loadblk");
 
     CImportingNow imp;
 
@@ -3205,8 +3211,8 @@ bool static AlreadyHave(CTxDB& txdb, const CInv& inv)
         return mapTxLockVote.count(inv.hash);
     case MSG_SPORK:
         return mapSporks.count(inv.hash);
-    case MSG_MASTERNODE_WINNER:
-        return mapSeenMasternodeVotes.count(inv.hash);
+    case MSG_STORMNODE_WINNER:
+        return mapSeenStormnodeVotes.count(inv.hash);
     }
     // Don't know what it is, just say we already got one
     return true;
@@ -3269,14 +3275,14 @@ void static ProcessGetData(CNode* pfrom)
                     }
                 }
                 if (!pushed && inv.type == MSG_TX) {
-                    if(mapDarksendBroadcastTxes.count(inv.hash)){
+                    if(mapSandstormBroadcastTxes.count(inv.hash)){
                         CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
                         ss.reserve(1000);
                         ss <<
-                            mapDarksendBroadcastTxes[inv.hash].tx <<
-                            mapDarksendBroadcastTxes[inv.hash].vin <<
-                            mapDarksendBroadcastTxes[inv.hash].vchSig <<
-                            mapDarksendBroadcastTxes[inv.hash].sigTime;
+                            mapSandstormBroadcastTxes[inv.hash].tx <<
+                            mapSandstormBroadcastTxes[inv.hash].vin <<
+                            mapSandstormBroadcastTxes[inv.hash].vchSig <<
+                            mapSandstormBroadcastTxes[inv.hash].sigTime;
 
                         pfrom->PushMessage("dstx", ss);
                         pushed = true;
@@ -3318,13 +3324,13 @@ void static ProcessGetData(CNode* pfrom)
                         pushed = true;
                     }
                 }
-                if (!pushed && inv.type == MSG_MASTERNODE_WINNER) {
-                    if(mapSeenMasternodeVotes.count(inv.hash)){
+                if (!pushed && inv.type == MSG_STORMNODE_WINNER) {
+                    if(mapSeenStormnodeVotes.count(inv.hash)){
                         CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
                         int a = 0;
                         ss.reserve(1000);
-                        ss << mapSeenMasternodeVotes[inv.hash] << a;
-                        pfrom->PushMessage("mnw", ss);
+                        ss << mapSeenStormnodeVotes[inv.hash] << a;
+                        pfrom->PushMessage("snw", ss);
                         pushed = true;
                     }
                 }
@@ -3948,8 +3954,8 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 
     else
     {
-        ProcessMessageDarksend(pfrom, strCommand, vRecv);
-        ProcessMessageMasternode(pfrom, strCommand, vRecv);
+        ProcessMessageSandstorm(pfrom, strCommand, vRecv);
+        ProcessMessageStormnode(pfrom, strCommand, vRecv);
         ProcessMessageInstantX(pfrom, strCommand, vRecv);
         ProcessSpork(pfrom, strCommand, vRecv);
 
@@ -4131,7 +4137,12 @@ bool SendMessages(CNode* pto, bool fSendTrickle)
         }
 
         // Resend wallet transactions that haven't gotten in a block yet
-        ResendWalletTransactions();
+        // Except during reindex, importing and IBD, when old wallet
+        // transactions become unconfirmed and spams other nodes.
+        if (!fReindex && !fImporting && !IsInitialBlockDownload())
+        {
+            ResendWalletTransactions();
+        }
 
         // Address refresh broadcast
         static int64_t nLastRebroadcast;
@@ -4259,7 +4270,7 @@ bool SendMessages(CNode* pto, bool fSendTrickle)
 
 
 
-int64_t GetMasternodePayment(int nHeight, int64_t blockValue)
+int64_t GetStormnodePayment(int nHeight, int64_t blockValue)
 {
     int64_t ret = blockValue * 2/3; //67%
 
