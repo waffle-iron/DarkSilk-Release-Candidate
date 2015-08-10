@@ -1819,7 +1819,7 @@ Dit betekend dat een fee van %2 is vereist.</translation>
         <source>Enter a DarkSilk address (e.g. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
         <translation>Voeg een DarkSilk adres in (bijv. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)</translation>
+alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -1953,7 +1953,7 @@ alternate-background-color: rgb(98, 98, 98);)</translation>
         <location line="+34"/>
         <source>The address to send the payment to (e.g. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)</source>
+alternate-background-color: rgb(86, 0, 120);)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1997,7 +1997,7 @@ alternate-background-color: rgb(98, 98, 98);)</source>
         <source>Enter a DarkSilk address (e.g. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
         <translation>Voeg een DarkSilk adres in (bijv. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)</translation>
+alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
 </context>
 <context>
@@ -2022,10 +2022,10 @@ alternate-background-color: rgb(98, 98, 98);)</translation>
         <location line="+18"/>
         <source>The address to sign the message with (e.g. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)</source>
+alternate-background-color: rgb(86, 0, 120);)</source>
         <translation>Het adres om het bericht te ondertekenen (bijv. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);) </translation>
+alternate-background-color: rgb(86, 0, 120);) </translation>
     </message>
     <message>
         <location line="+10"/>
@@ -2090,10 +2090,10 @@ alternate-background-color: rgb(98, 98, 98);) </translation>
         <location line="+21"/>
         <source>The address the message was signed with (e.g. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)</source>
+alternate-background-color: rgb(86, 0, 120);)</source>
         <translation>Het adres van het bericht is ondertekend met (bijv. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)</translation>
+alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
     <message>
         <location line="+40"/>
@@ -2111,7 +2111,7 @@ alternate-background-color: rgb(98, 98, 98);)</translation>
         <source>Enter a DarkSilk address (e.g. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
         <translation>Voeg een DarkSilk adres in (bijv. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)</translation>
+alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -2776,14 +2776,14 @@ for example: alertnotify=echo %%s | mail -s &quot;DarkSilk Alert&quot; admin@foo
         <location line="+6"/>
         <source>Listen for connections on &lt;port&gt; (default: 31000
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98); or testnet: 31750
+alternate-background-color: rgb(86, 0, 120); or testnet: 31750
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)</source>
+alternate-background-color: rgb(86, 0, 120);)</source>
         <translation>Luister voor verbindingen op &lt;poort&gt; (standaard: 31000
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98); of testnet: 31750
+alternate-background-color: rgb(86, 0, 120); of testnet: 31750
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)</translation>
+alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2834,14 +2834,14 @@ alternate-background-color: rgb(98, 98, 98);)</translation>
         <location line="+64"/>
         <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 31500
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98); or testnet: 31800
+alternate-background-color: rgb(86, 0, 120); or testnet: 31800
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)</source>
+alternate-background-color: rgb(86, 0, 120);)</source>
         <translation>Wacht op JSON-RPC-connecties op &lt;poort&gt; (standaard: 31500
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98); of testnet: 31800
+alternate-background-color: rgb(86, 0, 120); of testnet: 31800
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);) </translation>
+alternate-background-color: rgb(86, 0, 120);) </translation>
     </message>
     <message>
         <location line="-16"/>

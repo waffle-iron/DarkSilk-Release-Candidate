@@ -123,12 +123,12 @@ def main():
     with open(os.path.join(indir,'nodes_main.txt'),'r') as f:
         process_nodes(g, f, 'pnSeed6_main', 31000
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)
+alternate-background-color: rgb(86, 0, 120);)
     g.write('\n')
     with open(os.path.join(indir,'nodes_test.txt'),'r') as f:
         process_nodes(g, f, 'pnSeed6_test', 31750
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)
+alternate-background-color: rgb(86, 0, 120);)
     g.write('#endif\n')
 
 if __name__ == '__main__':

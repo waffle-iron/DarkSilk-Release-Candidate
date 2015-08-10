@@ -1935,7 +1935,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <location line="+34"/>
         <source>The address to send the payment to (e.g. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)</source>
+alternate-background-color: rgb(86, 0, 120);)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2002,7 +2002,7 @@ alternate-background-color: rgb(98, 98, 98);)</source>
         <location line="+18"/>
         <source>The address to sign the message with (e.g. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)</source>
+alternate-background-color: rgb(86, 0, 120);)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2068,7 +2068,7 @@ alternate-background-color: rgb(98, 98, 98);)</source>
         <location line="+21"/>
         <source>The address the message was signed with (e.g. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)</source>
+alternate-background-color: rgb(86, 0, 120);)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2753,9 +2753,9 @@ for example: alertnotify=echo %%s | mail -s &quot;DarkSilk Alert&quot; admin@foo
         <location line="+6"/>
         <source>Listen for connections on &lt;port&gt; (default: 31000
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98); or testnet: 31750
+alternate-background-color: rgb(86, 0, 120); or testnet: 31750
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)</source>
+alternate-background-color: rgb(86, 0, 120);)</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -2807,9 +2807,9 @@ alternate-background-color: rgb(98, 98, 98);)</source>
         <location line="+65"/>
         <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 31500
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98); or testnet: 31800
+alternate-background-color: rgb(86, 0, 120); or testnet: 31800
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)</source>
+alternate-background-color: rgb(86, 0, 120);)</source>
         <translation type="unfinished"/>
     </message>
     <message>

@@ -91,7 +91,7 @@ if __name__ == '__main__':
 	if 'port' not in settings:
 		settings['port'] = 31500
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);
+alternate-background-color: rgb(86, 0, 120);
 	if 'min_height' not in settings:
 		settings['min_height'] = 0
 	if 'max_height' not in settings:

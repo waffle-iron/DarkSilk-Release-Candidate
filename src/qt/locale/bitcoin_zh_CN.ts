@@ -1817,7 +1817,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <source>Enter a DarkSilk address (e.g. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
         <translation>输入黑币地址(例如：S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)</translation>
+alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -1951,10 +1951,10 @@ alternate-background-color: rgb(98, 98, 98);)</translation>
         <location line="+34"/>
         <source>The address to send the payment to (e.g. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)</source>
+alternate-background-color: rgb(86, 0, 120);)</source>
         <translation>收款人地址(例：S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)</translation>
+alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
     <message>
         <location line="+60"/>
@@ -1997,7 +1997,7 @@ alternate-background-color: rgb(98, 98, 98);)</translation>
         <source>Enter a DarkSilk address (e.g. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
         <translation>输入一个黑币地址 (例：S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)</translation>
+alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
 </context>
 <context>
@@ -2022,10 +2022,10 @@ alternate-background-color: rgb(98, 98, 98);)</translation>
         <location line="+18"/>
         <source>The address to sign the message with (e.g. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)</source>
+alternate-background-color: rgb(86, 0, 120);)</source>
         <translation>用来签名该消息的地址(例： S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)</translation>
+alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
     <message>
         <location line="+10"/>
@@ -2090,10 +2090,10 @@ alternate-background-color: rgb(98, 98, 98);)</translation>
         <location line="+21"/>
         <source>The address the message was signed with (e.g. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)</source>
+alternate-background-color: rgb(86, 0, 120);)</source>
         <translation>用来签名该消息的黑币地址(例： S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)</translation>
+alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
     <message>
         <location line="+40"/>
@@ -2111,7 +2111,7 @@ alternate-background-color: rgb(98, 98, 98);)</translation>
         <source>Enter a DarkSilk address (e.g. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
         <translation>输入黑币地址(例： S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)</translation>
+alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
     <message>
         <location line="-2"/>
@@ -2790,14 +2790,14 @@ alertnotify=echo %%s | mail -s &quot;DarkSilk Alert&quot; admin@foo.com
         <location line="+6"/>
         <source>Listen for connections on &lt;port&gt; (default: 31000
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98); or testnet: 31750
+alternate-background-color: rgb(86, 0, 120); or testnet: 31750
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)</source>
+alternate-background-color: rgb(86, 0, 120);)</source>
         <translation>监听&lt;port&gt;端口的连接 (默认: 31000
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98); 测试网: 31750
+alternate-background-color: rgb(86, 0, 120); 测试网: 31750
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)</translation>
+alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -2848,14 +2848,14 @@ alternate-background-color: rgb(98, 98, 98);)</translation>
         <location line="+65"/>
         <source>Listen for JSON-RPC connections on &lt;port&gt; (default: 31500
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98); or testnet: 31800
+alternate-background-color: rgb(86, 0, 120); or testnet: 31800
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)</source>
+alternate-background-color: rgb(86, 0, 120);)</source>
         <translation>监听 &lt;port&gt; 端口的JSON-RPC连接 (默认: 31500
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98); 测试网: 31800
+alternate-background-color: rgb(86, 0, 120); 测试网: 31800
 background-color: rgb(0, 0, 0);
-alternate-background-color: rgb(98, 98, 98);)</translation>
+alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
     <message>
         <location line="-17"/>
