@@ -116,7 +116,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
 
     QPalette p;
     p.setColor(QPalette::Window, QColor(0, 0, 0));
-    p.setColor(QPalette::Text, QColor(255, 255, 255));
+    p.setColor(QPalette::Text, QColor(80, 0, 120));
     setPalette(p);
 
     // Create tabs
@@ -230,7 +230,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
         QString curStyle = qApp->style()->metaObject()->className();
         if(curStyle == "QWindowsStyle" || curStyle == "QWindowsXPStyle")
         {
-            progressBar->setStyleSheet("QProgressBar { background-color: rgb(0,0,0); border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #500078, stop: 1 white); border-radius: 7px; margin: 0px; }");
+            progressBar->setStyleSheet("QProgressBar { background-color: rgb(0,0,0); border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #500078, stop: 1 #500078); border-radius: 7px; margin: 0px; }");
             appMenuBar->setStyleSheet("QMenuBar { background-color: rgb(0,0,0); }");
         }
     }
