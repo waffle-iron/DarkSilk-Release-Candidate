@@ -95,7 +95,7 @@ inline bool IsProtocolV1RetargetingFixed(int nHeight) { return TestNet() || nHei
 inline bool IsProtocolV2(int nHeight) { return TestNet() || nHeight > 0; }
 
 inline int64_t FutureDriftV1(int64_t nTime) { return nTime + 10 * 60; }
-inline int64_t FutureDriftV2(int64_t nTime) { return nTime + 120; }
+inline int64_t FutureDriftV2(int64_t nTime) { return nTime + 480; }
 inline int64_t FutureDrift(int64_t nTime, int nHeight) { return IsProtocolV2(nHeight) ? FutureDriftV2(nTime) : FutureDriftV1(nTime); }
 
 inline unsigned int GetTargetSpacing(int nHeight) { return IsProtocolV2(nHeight) ? 64 : 60; }
