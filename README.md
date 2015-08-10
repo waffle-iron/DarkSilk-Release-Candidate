@@ -50,8 +50,8 @@ RPC Port = 31800
 Magic Bytes: 0x24 0x20 0x04 0x42
 
 
-DarkSilk is dependent upon libsecp256k1 by sipa, please follow this guide to install to Linux
-=============================================================================================
+DarkSilk is dependent upon libsecp256k1 by sipa, please follow this guide to install to Linux (Ubuntu)
+======================================================================================================
 //Open a terminal
 
 //Type:
@@ -100,8 +100,8 @@ $ sudo make install
 //end of guide
 
 
-Build Instructions for QT5 Linux Wallet
-======================================
+Build Instructions for QT5 Linux Wallet (Ubuntu)
+================================================
 //Install dependencies via Terminal:
 
 $ sudo apt-get install make libqt5webkit5-dev libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools qtcreator libprotobuf-dev protobuf-compiler build-essential libboost-dev libboost-all-dev libboost-system-dev libboost-filesystem-dev libboost-program-options-dev libboost-thread-dev libssl-dev libdb++-dev libminiupnpc-dev libevent-dev libcurl4-openssl-dev git libpng-dev qrencode libqrencode-dev
@@ -126,8 +126,8 @@ $ make
 //end of guide
 
 
-Build Instructions for Terminal Based Linux Wallet
-===================================================
+Build Instructions for Terminal Based Linux Wallet (Ubuntu)
+===========================================================
 //Install dependencies via Terminal:
 
 $ sudo apt-get install build-essential libboost-all-dev libcurl4-openssl-dev libdb5.1-dev libdb5.1++-dev qt-sdk make 
