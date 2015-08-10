@@ -25,8 +25,8 @@ static const int64_t SANDSTORM_FEE = (0.00925*COIN);
 static const int64_t SANDSTORM_POOL_MAX = (4999.99*COIN);
 
 
-static const int64_t COIN_YEAR_REWARD = 0.042 * COIN; //5% stake
-static const int64_t MAX_MINT_PROOF_OF_STAKE = 0.042 * COIN; //5% stake
+static const int64_t COIN_YEAR_REWARD = 0.042 * COIN; //4.2% stake
+static const int64_t MAX_MINT_PROOF_OF_STAKE = 0.042 * COIN; //4.2% stake
 
 /*
     At 15 signatures, 1/2 of the stormnode network can be owned by
