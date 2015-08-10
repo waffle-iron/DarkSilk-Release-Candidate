@@ -106,7 +106,7 @@ Build Instructions for QT5 Linux Wallet
 
 $ sudo apt-get install make libqt5webkit5-dev libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools qtcreator libprotobuf-dev protobuf-compiler build-essential libboost-dev libboost-all-dev libboost-system-dev libboost-filesystem-dev libboost-program-options-dev libboost-thread-dev libssl-dev libdb++-dev libminiupnpc-dev libevent-dev libcurl4-openssl-dev git libpng-dev qrencode libqrencode-dev
 
-//In terminal navigate to the DarkSilk folder.
+//In terminal navigate to the DarkSilk folder (assuming you have followed the libsecp256k1 guide).
 
 $ cd /home/DarkSilk
 
@@ -128,13 +128,11 @@ $ make
 
 Build Instructions for Terminal Based Linux Wallet
 ===================================================
-//Create a folder named DarkSilk in /home/ and unpack the contents of ~/DarkSilk to that folder.
-
 //Install dependencies via Terminal:
 
 $ sudo apt-get install build-essential libboost-all-dev libcurl4-openssl-dev libdb5.1-dev libdb5.1++-dev qt-sdk make 
 
-//In terminal navigate to the DarkSilk folder.
+//In terminal navigate to the DarkSilk folder (assuming you have followed the libsecp256k1 guide).
 
 $ cd /home/DarkSilk/src/
 
