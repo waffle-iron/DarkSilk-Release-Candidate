@@ -325,7 +325,7 @@ int main(int argc, char *argv[])
                 QTimer::singleShot(100, paymentServer, SLOT(uiReady()));
 
 #if defined(Q_OS_WIN) && QT_VERSION >= 0x050000
-                 WinShutdownMonitor::registerShutdownBlockReason(QObject::tr("HoboNickels shutting down. Please wait..."), (HWND)window.getMainWinId());
+                 WinShutdownMonitor::registerShutdownBlockReason(QObject::tr("DarkSilk shutting down. Please wait..."), (HWND)window.getMainWinId());
 #endif
 
                 app.exec();
