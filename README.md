@@ -52,15 +52,16 @@ Magic Bytes: 0x24 0x20 0x04 0x42
 
 DarkSilk is dependent upon libsecp256k1 by sipa, please follow this guide to install to Linux
 =============================================================================================
-//Create a folder named DarkSilk in /home/ and unpack the contents of ~/DarkSilk to that folder.
-
 //Open a terminal
 
 //Type:
 $ cd ~
 
 //Then:
-$ sudo apt-get install automake autoconf libtool unzip
+$ sudo apt-get install automake autoconf libtool unzip git
+
+//Then:
+$ git clone https://github.com/SCDeveloper/DarkSilk.git
 
 //Then:
 $ cd DarkSilk/libs/
