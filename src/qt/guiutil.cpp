@@ -495,7 +495,7 @@ void SetBlackThemeQSS(QApplication& app)
                       "QToolBar       { background: rgb(0,0,0); border: rgb(0,0,0); }"
                       "QTextEdit      { background-color: rgb(0,0,0); color: rgb(255,255,255); }"
                       "QPlainTextEdit { background-color: rgb(0,0,0); color: rgb(255,255,255); }"
-                      "QProgressBar { background-color: rgb(0,0,0); border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #FFFFFF, stop: 1 white); border-radius: 7px; margin: 0px; }"
+                      "QProgressBar { background-color: rgb(0,0,0); border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #500078, stop: 1 #500078); border-radius: 7px; margin: 0px; }"
                       );
 }
 
