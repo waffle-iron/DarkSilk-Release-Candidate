@@ -38,7 +38,7 @@ void StatisticsPage::updateStatistics() {
     double pPawrate2 = 0.000;
     int nHeight = pindexBest->nHeight;
     double nSubsidy = 42;
-    int64_t volume = ((pindexBest->nMoneySupply) / 90000000);
+    int64_t volume = ((pindexBest->nMoneySupply) / 100000000);
     int peers = this->model->getNumConnections();
     pPawrate2 = (double)pPawrate;
     ui->progressBar->setValue(nHeight);
