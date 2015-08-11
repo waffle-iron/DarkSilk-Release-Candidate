@@ -317,9 +317,9 @@ void RPCConsole::clear()
                 "table { }"
                 "td.time { color: #808080; padding-top: 3px; } "
                 "td.message { font-family: Courier, Courier New, Lucida Console, Monospace; font-size: 12px; } "
-                "td.cmd-request { color: #00C0C0; } "
+                "td.cmd-request { color: #500078; } "
                 "td.cmd-error { color: red; } "
-                "b { color: #00C0C0; } "
+                "b { color: #500078; } "
                 );
 
     message(CMD_REPLY, (tr("Welcome to the DarkSilk RPC console.") + "<br>" +
