@@ -1039,7 +1039,7 @@ public:
     int64_t GetPastTimeLimit() const
     {
         if (IsProtocolV2(nHeight))
-            return GetBlockTime() - 120;
+            return GetBlockTime() - 480;
         else
             return GetMedianTimePast();
     }
