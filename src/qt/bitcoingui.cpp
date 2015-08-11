@@ -34,6 +34,7 @@
 #include "ui_interface.h"
 #include "stormnodemanager.h"
 #include "blockbrowser.h"
+#include "statisticspage.h"
 
 #ifdef USE_NATIVE_I2P
 #include "showi2paddresses.h"
@@ -326,13 +327,24 @@ void BitcoinGUI::createActions()
 #endif
     tabGroup->addAction(addressBookAction);
 
+    statisticsAction = new QAction(QIcon(":/icons/statistics"), tr("&Statistics"), this);
+    statisticsAction->setToolTip(tr("DRKSLK PoW/PoS Statistics"));
+    statisticsAction->setCheckable(true);
+#ifdef Q_OS_MAC
+    statisticsAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_6));
+#else
+    statisticsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
+#endif    
+    tabGroup->addAction(statisticsAction);
+
+
     blockAction = new QAction(QIcon(":/icons/block"), tr("&Block Explorer"), this);
     blockAction->setToolTip(tr("Explore the BlockChain"));
     blockAction->setCheckable(true);
 #ifdef Q_OS_MAC
-    blockAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_6));
+    blockAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_7));
 #else
-    blockAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
+    blockAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_7));
 #endif
     tabGroup->addAction(blockAction);
 
@@ -358,6 +370,8 @@ void BitcoinGUI::createActions()
     connect(addressBookAction, SIGNAL(triggered()), this, SLOT(gotoAddressBookPage()));
     connect(blockAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(blockAction, SIGNAL(triggered()), this, SLOT(gotoBlockBrowser()));
+    connect(statisticsAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+    connect(statisticsAction, SIGNAL(triggered()), this, SLOT(gotoStatisticsPage()));
     connect(stormnodeManagerAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(stormnodeManagerAction, SIGNAL(triggered()), this, SLOT(gotoStormnodeManagerPage()));
 
@@ -470,6 +484,7 @@ void BitcoinGUI::createToolBars()
     toolbarMenu->addAction(historyAction);
     toolbarMenu->addAction(addressBookAction);
     toolbarMenu->addAction(blockAction);
+    toolbarMenu->addAction(statisticsAction);
     toolbarMenu->addAction(stormnodeManagerAction);
 
 
@@ -981,6 +996,19 @@ void BitcoinGUI::gotoBlockBrowser()
     centralStackedWidget->addWidget(blockBrowser);
     centralStackedWidget->setCurrentWidget(blockBrowser);
 
+    exportAction->setEnabled(false);
+    disconnect(exportAction, SIGNAL(triggered()), 0, 0);
+}
+
+void BitcoinGUI::gotoStatisticsPage() 
+{
+    statisticsAction->setChecked(true);
+    clearWidgets();
+
+    statisticsPage = new StatisticsPage(this);
+    centralStackedWidget->addWidget(statisticsPage);
+    centralStackedWidget->setCurrentWidget(statisticsPage);
+    
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
 }

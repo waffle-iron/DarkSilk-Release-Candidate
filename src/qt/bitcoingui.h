@@ -12,6 +12,7 @@ class WalletModel;
 class TransactionView;
 class OverviewPage;
 class BlockBrowser;
+class StatisticsPage;
 class AddressBookPage;
 class SendCoinsDialog;
 class SignVerifyMessageDialog;
@@ -70,6 +71,7 @@ private:
     QScrollArea *overviewScroll;
     OverviewPage *overviewPage;
     BlockBrowser *blockBrowser;
+    StatisticsPage *statisticsPage;
     QWidget *transactionsPage;
     AddressBookPage *addressBookPage;
     AddressBookPage *receiveCoinsPage;
@@ -111,6 +113,7 @@ private:
     QAction *lockWalletAction;
     QAction *aboutQtAction;
     QAction *openRPCConsoleAction;
+    QAction *statisticsAction;
     QAction *stormnodeManagerAction;
 
     QSystemTrayIcon *trayIcon;
@@ -184,14 +187,14 @@ private slots:
     void gotoReceiveCoinsPage();
     /** Switch to send coins page */
     void gotoSendCoinsPage();
-
+    /** Switch to Statistics Page*/
+    void gotoStatisticsPage();
+    /** Switch to Stormnode Manager Page*/
     void gotoStormnodeManagerPage();
-
     /** Show Sign/Verify Message dialog and switch to sign message tab */
     void gotoSignMessageTab(QString addr = "");
     /** Show Sign/Verify Message dialog and switch to verify message tab */
     void gotoVerifyMessageTab(QString addr = "");
-
     /** Show configuration dialog */
     void optionsClicked();
     /** Show about dialog */

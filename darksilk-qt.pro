@@ -227,6 +227,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/timedata.h \
     src/qt/overviewpage.h \
     src/qt/blockbrowser.h \
+    src/qt/statisticspage.h \
     src/qt/csvmodelwriter.h \
     src/crypter.h \
     src/qt/sendcoinsentry.h \
@@ -280,6 +281,7 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
     src/qt/aboutdialog.cpp \
     src/qt/editaddressdialog.cpp \
     src/qt/bitcoinaddressvalidator.cpp \
+    src/qt/statisticspage.cpp \
     src/alert.cpp \
     src/chainparams.cpp \
     src/version.cpp \
@@ -391,6 +393,7 @@ FORMS += \
     src/qt/forms/sandstormconfig.ui \
     src/qt/forms/stormnodemanager.ui \
     src/qt/forms/addeditstormnode.ui \
+    src/qt/forms/statisticspage.ui \
     src/qt/forms/stormnodeconfigdialog.ui \
 
 contains(DEFINES, USE_NATIVE_I2P) {
@@ -486,7 +489,7 @@ macx:HEADERS += src/qt/macdockiconhandler.h
 macx:OBJECTIVE_SOURCES += src/qt/macdockiconhandler.mm
 macx:LIBS += -framework Foundation -framework ApplicationServices -framework AppKit
 macx:DEFINES += MAC_OSX MSG_NOSIGNAL=0
-macx:ICON = src/qt/res/icons/bitcoin.icns
+macx:ICON = src/qt/res/icons/darksilk.icns
 macx:TARGET = "DarkSilk-Qt"
 macx:QMAKE_CFLAGS_THREAD += -pthread
 macx:QMAKE_LFLAGS_THREAD += -pthread
