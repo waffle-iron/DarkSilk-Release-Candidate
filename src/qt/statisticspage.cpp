@@ -15,7 +15,6 @@ StatisticsPage::StatisticsPage(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::StatisticsPage) {
     ui->setupUi(this);
-
     setFixedSize(400, 420);
 
     connect(ui->startButton, SIGNAL(pressed()), this, SLOT(updateStatistics()));
@@ -46,9 +45,9 @@ void StatisticsPage::updateStatistics() {
     QString height = QString::number(nHeight);
     QString phase = "";
 
-    if (pindexBest->nHeight < 131400) {
+    if (pindexBest->nHeight < 420001) {
         phase = "<p align=\"center\">PoW/PoS</p>";
-        ui->progressBar->setMaximum(131401);
+        ui->progressBar->setMaximum(420001);
     } else {
         ui->progressBar->hide();
         phase = "<p align=\"center\">PoS</p>";
