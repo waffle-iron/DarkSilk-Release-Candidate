@@ -352,9 +352,9 @@ void BitcoinGUI::createActions()
     stormnodeManagerAction->setToolTip(tr("Show Stormnodes status and configure your nodes."));
     stormnodeManagerAction->setCheckable(true);
 #ifdef Q_OS_MAC
-    stormnodeManagerAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_7));
+    stormnodeManagerAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_8));
 #else
-    stormnodeManagerAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_7));
+    stormnodeManagerAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_8));
 #endif
     tabGroup->addAction(stormnodeManagerAction);
 
@@ -483,8 +483,8 @@ void BitcoinGUI::createToolBars()
     toolbarMenu->addAction(sendCoinsAction);
     toolbarMenu->addAction(historyAction);
     toolbarMenu->addAction(addressBookAction);
-    toolbarMenu->addAction(blockAction);
     toolbarMenu->addAction(statisticsAction);
+    toolbarMenu->addAction(blockAction);
     toolbarMenu->addAction(stormnodeManagerAction);
 
 
