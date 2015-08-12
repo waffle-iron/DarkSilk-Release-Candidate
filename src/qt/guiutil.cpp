@@ -461,6 +461,22 @@ void HelpMessageBox::showOrPrint()
 #endif
 }
 
+ClickableLabel::ClickableLabel( const QString& text, QWidget * parent ) :
+    QLabel(parent)
+
+{
+    this->setText(text);
+}
+
+ClickableLabel::~ClickableLabel()
+{
+}
+
+void ClickableLabel::mouseReleaseEvent ( QMouseEvent * event )
+{
+    emit clicked();
+}
+
 void SetBlackThemeQSS(QApplication& app)
 {
     app.setStyleSheet("QTableView { background: rgb(0,0,0); color: rgb(255,255,255); border: 1px inset white; border-radius: 3px; margin: 0px; }"
