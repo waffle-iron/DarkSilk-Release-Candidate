@@ -441,13 +441,6 @@ void RPCConsole::on_showCLOptionsButton_clicked()
     help.exec();
 }
 
-void RPCConsole::on_sldGraphRange_valueChanged(int value)
-{
-    const int multiplier = 5; // each position on the slider represents 5 min
-    int mins = value * multiplier;
-    setTrafficGraphRange(mins);
-}
-
 QString RPCConsole::FormatBytes(quint64 bytes)
 {
     if(bytes < 1024)
@@ -463,26 +456,10 @@ QString RPCConsole::FormatBytes(quint64 bytes)
 void RPCConsole::setTrafficGraphRange(int mins)
 {
     ui->trafficGraph->setGraphRangeMins(mins);
-    if(mins < 60) {
-        ui->lblGraphRange->setText(QString(tr("%1 m")).arg(mins));
-    } else {
-        int hours = mins / 60;
-        int minsLeft = mins % 60;
-        if(minsLeft == 0) {
-            ui->lblGraphRange->setText(QString(tr("%1 h")).arg(hours));
-        } else {
-            ui->lblGraphRange->setText(QString(tr("%1 h %2 m")).arg(hours).arg(minsLeft));
-        }
-    }
 }
 
 void RPCConsole::updateTrafficStats(quint64 totalBytesIn, quint64 totalBytesOut)
 {
     ui->lblBytesIn->setText(FormatBytes(totalBytesIn));
     ui->lblBytesOut->setText(FormatBytes(totalBytesOut));
-}
-
-void RPCConsole::on_btnClearTrafficGraph_clicked()
-{
-    ui->trafficGraph->clear();
 }
