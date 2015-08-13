@@ -690,9 +690,15 @@ void BitcoinGUI::lockIconClicked()
 {
     if(!walletModel)
         return;
-
+    // Unlock wallet when requested by wallet model
     if(walletModel->getEncryptionStatus() == WalletModel::Locked)
-        unlockWallet();
+    {
+        AskPassphraseDialog::Mode mode = sender() == unlockWalletAction ?
+              AskPassphraseDialog::UnlockStaking : AskPassphraseDialog::Unlock;
+        AskPassphraseDialog dlg(mode, this);
+        dlg.setModel(walletModel);
+        dlg.exec();
+    }
 }
 
 void BitcoinGUI::optionsClicked()
