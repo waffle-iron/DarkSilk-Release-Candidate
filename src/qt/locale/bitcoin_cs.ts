@@ -722,7 +722,7 @@ Adresa: %4
         <translation>Žádný staking</translation>
     </message>
     <message>
-        <location filename="../bitcoin.cpp" line="+104"/>
+        <location filename="../darksilk.cpp" line="+104"/>
         <source>A fatal error occurred. DarkSilk can no longer continue safely and will quit.</source>
         <translation>Došlo k závažné chybě. DarkSilk již nemůže dále bezpečně pokračovat a bude ukončen.</translation>
     </message>

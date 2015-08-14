@@ -720,7 +720,7 @@ Naslov: %4
         <translation>Ne deležite</translation>
     </message>
     <message>
-        <location filename="../bitcoin.cpp" line="+104"/>
+        <location filename="../darksilk.cpp" line="+104"/>
         <source>A fatal error occurred. DarkSilk can no longer continue safely and will quit.</source>
         <translation>Prišlo je do usodne napake. Program DarkSilk se ne more več varno nadaljevati in se bo zato zaprl. </translation>
     </message>

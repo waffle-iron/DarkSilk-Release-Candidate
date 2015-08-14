@@ -726,7 +726,7 @@ Adresa: %4</translation>
         <translation>Nestávkuje sa</translation>
     </message>
     <message>
-        <location filename="../bitcoin.cpp" line="+104"/>
+        <location filename="../darksilk.cpp" line="+104"/>
         <source>A fatal error occurred. DarkSilk can no longer continue safely and will quit.</source>
         <translation>Došlo k závažnej chybe. DarkSilk už nemôže pokračovať bezpečne a bude ukončený.</translation>
     </message>

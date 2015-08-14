@@ -727,7 +727,7 @@ Address: %4
         <translation>未进行权益增值</translation>
     </message>
     <message>
-        <location filename="../bitcoin.cpp" line="+104"/>
+        <location filename="../darksilk.cpp" line="+104"/>
         <source>A fatal error occurred. DarkSilk can no longer continue safely and will quit.</source>
         <translation>发生严重错误，黑币客户端即将关闭。</translation>
     </message>

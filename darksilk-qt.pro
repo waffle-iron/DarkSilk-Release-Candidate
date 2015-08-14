@@ -269,7 +269,7 @@ HEADERS += src/qt/bitcoingui.h \
     src/qt/stormnodeconfigdialog.h \
     src/qt/winshutdownmonitor.h
 
-SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
+SOURCES += src/qt/darksilk.cpp src/qt/bitcoingui.cpp \
     src/qt/transactiontablemodel.cpp \
     src/qt/addresstablemodel.cpp \
     src/qt/optionsdialog.cpp \
@@ -374,7 +374,7 @@ SOURCES += src/qt/bitcoin.cpp src/qt/bitcoingui.cpp \
 
 
 RESOURCES += \
-    src/qt/bitcoin.qrc
+    src/qt/darksilk.qrc
 
 FORMS += \
     src/qt/forms/coincontroldialog.ui \
@@ -420,7 +420,7 @@ FORMS += src/qt/forms/qrcodedialog.ui
 CODECFORTR = UTF-8
 
 # for lrelease/lupdate
-# also add new translations to src/qt/bitcoin.qrc under translations/
+# also add new translations to src/qt/darksilk.qrc under translations/
 TRANSLATIONS = $$files(src/qt/locale/bitcoin_*.ts)
 
 isEmpty(QMAKE_LRELEASE) {

@@ -722,7 +722,7 @@ Address: %4
         <translation>Не участвуем в доле</translation>
     </message>
     <message>
-        <location filename="../bitcoin.cpp" line="+104"/>
+        <location filename="../darksilk.cpp" line="+104"/>
         <source>A fatal error occurred. DarkSilk can no longer continue safely and will quit.</source>
         <translation>Произошла неисправимая ошибка. DarkSilk не может безопасно продолжать работу и будет закрыт.</translation>
     </message>

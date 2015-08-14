@@ -49,7 +49,7 @@ bool AppInit(int argc, char* argv[])
 
         if (mapArgs.count("-?") || mapArgs.count("--help"))
         {
-            // First part of help message is specific to bitcoind / RPC client
+            // First part of help message is specific to darksilkd / RPC client
             std::string strUsage = _("DarkSilk version") + " " + FormatFullVersion() + "\n\n" +
                 _("Usage:") + "\n" +
                   "  darksilkd [options]                     " + "\n" +
@@ -129,7 +129,7 @@ int main(int argc, char* argv[])
     bool fRet = false;
     fHaveGUI = false;
 
-    // Connect bitcoind signal handlers
+    // Connect darksilkd signal handlers
     noui_connect();
 
     fRet = AppInit(argc, argv);

@@ -727,7 +727,7 @@ Adres: %4
         <translation>Pay alınmıyor</translation>
     </message>
     <message>
-        <location filename="../bitcoin.cpp" line="+104"/>
+        <location filename="../darksilk.cpp" line="+104"/>
         <source>A fatal error occurred. DarkSilk can no longer continue safely and will quit.</source>
         <translation>Önemli bir hata oluştu. DarkSilk artık güvenli bir şekilde devam edemez ve şimdi kapatılacak.</translation>
     </message>

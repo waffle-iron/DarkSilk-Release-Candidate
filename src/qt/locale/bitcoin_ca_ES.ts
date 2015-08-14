@@ -718,7 +718,7 @@ Address: %4
         <translation>No s&apos;està fent &quot;stake&quot; </translation>
     </message>
     <message>
-        <location filename="../bitcoin.cpp" line="+104"/>
+        <location filename="../darksilk.cpp" line="+104"/>
         <source>A fatal error occurred. DarkSilk can no longer continue safely and will quit.</source>
         <translation>S&apos;ha produït un error fatal. DarkSilk ja no pot continuar de forma segura i es tancarà.</translation>
     </message>
