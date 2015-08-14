@@ -372,7 +372,6 @@ void BitcoinGUI::createActions()
     connect(blockAction, SIGNAL(triggered()), this, SLOT(gotoBlockBrowser()));
     connect(statisticsAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(statisticsAction, SIGNAL(triggered()), this, SLOT(gotoStatisticsPage()));
-    connect(statisticsAction, SIGNAL(triggered()), this, SLOT(updateStatistics()));
     connect(stormnodeManagerAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(stormnodeManagerAction, SIGNAL(triggered()), this, SLOT(gotoStormnodeManagerPage()));
 
@@ -496,13 +495,11 @@ void BitcoinGUI::createToolBars()
     QAction* menuAction = new QAction(QIcon(":/icons/overview"), tr("&Menu"), this);
     menuAction->setToolTip(tr("Access DarkSilk Wallet Tabs"));
     menuAction->setCheckable(false);
-    connect(menuAction, SIGNAL(triggered()), this, SLOT(menuToolButton->showMenu()));
     menuToolButton->setDefaultAction(menuAction);
     
     toolbar->addWidget(menuToolButton);
 
-    netLabel = new QLabel();
-    
+    netLabel = new QLabel();    
 
     toolbar->addWidget(makeToolBarSpacer());
     netLabel->setObjectName("netLabel");
@@ -1024,6 +1021,8 @@ void BitcoinGUI::gotoStatisticsPage()
     statisticsPage = new StatisticsPage(this);
     centralStackedWidget->addWidget(statisticsPage);
     centralStackedWidget->setCurrentWidget(statisticsPage);
+
+    statisticsPage->updateStatistics();
 
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);

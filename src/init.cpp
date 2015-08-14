@@ -533,7 +533,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     if (GetBoolArg("-shrinkdebugfile", !fDebug))
         ShrinkDebugFile();
-    LogPrintf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    LogPrintf("\n\n\n"); //A bit excessive???
     LogPrintf("DarkSilk version %s (%s)\n", FormatFullVersion(), CLIENT_DATE);
     LogPrintf("Using OpenSSL version %s\n", SSLeay_version(SSLEAY_VERSION));
     if (!fLogTimestamps)
