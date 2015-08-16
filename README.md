@@ -9,7 +9,7 @@ What is DarkSilk?
 ----------------
 Scrypt
 PoW/PoS
-PoS Interest - 5% Annually
+PoS Interest - 4.2% Annually
 420,001 Blocks for PoW Phase
 4 Minute Target Spacing
 Difficulty Retargets Every Block
