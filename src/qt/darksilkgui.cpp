@@ -89,8 +89,7 @@ DarkSilkGUI::DarkSilkGUI(QWidget *parent):
     notificator(0),
     rpcConsole(0),
     prevBlocks(0),
-    nWeight(0)
-{
+    nWeight(0) {
     resize(1000, 600);
     setWindowTitle(tr("DarkSilk") + " - " + tr("Wallet"));
 #ifndef Q_OS_MAC
@@ -121,49 +120,19 @@ DarkSilkGUI::DarkSilkGUI(QWidget *parent):
     setPalette(p);
 
     // Create tabs
-    overviewPage = new OverviewPage();    
-    //overviewWidget = new QWidget();
-    //overviewWidget->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    
-
-    //QHBoxLayout *overviewLayout = new QHBoxLayout();
-    //overviewLayout->setContentsMargins(0, 0, 0, 0);
-    //overviewLayout->setObjectName(QString::fromUtf8("overviewLayout"));
-    //overviewWidget->setLayout(overviewLayout);
-    //overviewScroll = new QScrollArea(overviewPage);//overviewWidget);
-    //overviewScroll->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    //overviewScroll->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    //overviewScroll->setWidget(overviewPage);
-    //overviewScroll->setWidgetResizable(true);
-    //QScroller::grabGesture(overviewScroll, QScroller::LeftMouseButtonGesture); //Replace TouchGesture with LeftMouseButtonGesture and it works flawlessly
-
-    //transactionsPage = new QWidget(this);
-    //QVBoxLayout *vbox = new QVBoxLayout();
-    //transactionView = new TransactionView(this);
-    //vbox->addWidget(transactionView);
-    //transactionsPage->setLayout(vbox);
-
-    //addressBookPage = new AddressBookPage(AddressBookPage::ForEditing, AddressBookPage::SendingTab);
-
-    //receiveCoinsPage = new AddressBookPage(AddressBookPage::ForEditing, AddressBookPage::ReceivingTab);
-
-    //sendCoinsPage = new SendCoinsDialog(this);
+    overviewPage = new OverviewPage();
 
     signVerifyMessageDialog = new SignVerifyMessageDialog(this);
 
     centralStackedWidget = new QStackedWidget(this);
     centralStackedWidget->setContentsMargins(0, 0, 0, 0);
     centralStackedWidget->addWidget(overviewPage);
-    //centralStackedWidget->addWidget(overviewWidget);
-    //centralStackedWidget->addWidget(transactionsPage);
-    //centralStackedWidget->addWidget(addressBookPage);
-    //centralStackedWidget->addWidget(receiveCoinsPage);
-    //centralStackedWidget->addWidget(sendCoinsPage);
 
     QWidget *centralWidget = new QWidget();
     QVBoxLayout *centralLayout = new QVBoxLayout(centralWidget);
-    centralLayout->setContentsMargins(0,0,0,0);
-    centralWidget->setContentsMargins(0,0,0,0);
+
+    centralLayout->setContentsMargins(0, 0, 0, 0);
+    centralWidget->setContentsMargins(0, 0, 0, 0);
     centralLayout->addWidget(centralStackedWidget);
 
     setCentralWidget(centralWidget);
@@ -176,13 +145,15 @@ DarkSilkGUI::DarkSilkGUI(QWidget *parent):
 
     // Status bar notification icons
     QWidget *frameBlocks = new QWidget();
-    frameBlocks->setContentsMargins(0,0,0,0);
+    frameBlocks->setContentsMargins(0, 0, 0, 0);
     frameBlocks->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
     frameBlocks->setStyleSheet("QWidget { background: none; margin-bottom: 5px; }");
+
     QHBoxLayout *frameBlocksLayout = new QHBoxLayout(frameBlocks);
-    frameBlocksLayout->setContentsMargins(3,0,3,0);
+    frameBlocksLayout->setContentsMargins(3, 0, 3, 0);
     frameBlocksLayout->setSpacing(3);
     frameBlocksLayout->setAlignment(Qt::AlignHCenter);
+
     labelEncryptionIcon = new GUIUtil::ClickableLabel();
     labelStakingIcon = new QLabel();
     labelConnectionsIcon = new QLabel();
@@ -192,6 +163,7 @@ DarkSilkGUI::DarkSilkGUI(QWidget *parent):
     labelI2PConnections = new QLabel();
     labelI2POnly = new QLabel();
     labelI2PGenerated = new QLabel();
+
     frameBlocksLayout->addWidget(labelI2PGenerated);
     frameBlocksLayout->addWidget(labelI2POnly);
     frameBlocksLayout->addWidget(labelI2PConnections);
@@ -206,11 +178,11 @@ DarkSilkGUI::DarkSilkGUI(QWidget *parent):
     frameBlocksLayout->addStretch();
     frameBlocksLayout->addWidget(labelBlocksIcon);
     frameBlocksLayout->addStretch();
-    
 
-    if (GetBoolArg("-staking", true))
-    {
+
+    if (GetBoolArg("-staking", true)) {
         QTimer *timerStakingIcon = new QTimer(labelStakingIcon);
+
         connect(timerStakingIcon, SIGNAL(timeout()), this, SLOT(updateStakingIcon()));
         timerStakingIcon->start(30 * 1000);
         updateStakingIcon();
@@ -219,19 +191,20 @@ DarkSilkGUI::DarkSilkGUI(QWidget *parent):
     // Progress bar and label for blocks download
     progressBarLabel = new QLabel();
     progressBarLabel->setVisible(false);
+
     progressBar = new QProgressBar();
     progressBar->setAlignment(Qt::AlignCenter);
     progressBar->setVisible(false);
 
-    if (!fUseBlackTheme)
-    {
+    if (!fUseBlackTheme) {
         // Override style sheet for progress bar for styles that have a segmented progress bar,
         // as they make the text unreadable (workaround for issue #1071)
         // See https://qt-project.org/doc/qt-4.8/gallery.html
         QString curStyle = qApp->style()->metaObject()->className();
-        if(curStyle == "QWindowsStyle" || curStyle == "QWindowsXPStyle")
-        {
+
+        if(curStyle == "QWindowsStyle" || curStyle == "QWindowsXPStyle") {
             progressBar->setStyleSheet("QProgressBar { background-color: rgb(0,0,0); border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #500078, stop: 1 #500078); border-radius: 7px; margin: 0px; }");
+
             appMenuBar->setStyleSheet("QMenuBar { background-color: rgb(0,0,0); }");
         }
     }
@@ -246,35 +219,25 @@ DarkSilkGUI::DarkSilkGUI(QWidget *parent):
 
     // Clicking on a transaction on the overview page simply sends you to transaction history page
     connect(overviewPage, SIGNAL(transactionClicked(QModelIndex)), this, SLOT(gotoHistoryPage()));
-    //connect(overviewPage, SIGNAL(transactionClicked(QModelIndex)), transactionView, SLOT(focusTransaction(QModelIndex)));
-
-    // Double-clicking on a transaction on the transaction history page shows details
-    //connect(transactionView, SIGNAL(doubleClicked(QModelIndex)), transactionView, SLOT(showDetails()));
 
     rpcConsole = new RPCConsole(this);
     connect(openRPCConsoleAction, SIGNAL(triggered()), rpcConsole, SLOT(show()));
-    // prevents an oben debug window from becoming stuck/unusable on client shutdown
-    connect(quitAction, SIGNAL(triggered()), rpcConsole, SLOT(hide()));
-
-    // Clicking on "Verify Message" in the address book sends you to the verify message tab
-    //connect(addressBookPage, SIGNAL(verifyMessage(QString)), this, SLOT(gotoVerifyMessageTab(QString)));
-    // Clicking on "Sign Message" in the receive coins page sends you to the sign message tab
-    //connect(receiveCoinsPage, SIGNAL(signMessage(QString)), this, SLOT(gotoSignMessageTab(QString)));
+    connect(quitAction, SIGNAL(triggered()), rpcConsole, SLOT(hide())); // prevents an oben debug window from becoming stuck/unusable on client shutdown
 
     gotoOverviewPage();
 }
 
-DarkSilkGUI::~DarkSilkGUI()
-{
-    if(trayIcon) // Hide tray icon, as deleting will let it linger until quit (on Ubuntu)
+DarkSilkGUI::~DarkSilkGUI() {
+    if(trayIcon) { // Hide tray icon, as deleting will let it linger until quit (on Ubuntu)
         trayIcon->hide();
+    }
+
 #ifdef Q_OS_MAC
     delete appMenuBar;
 #endif
 }
 
-void DarkSilkGUI::createActions()
-{
+void DarkSilkGUI::createActions() {
     QActionGroup *tabGroup = new QActionGroup(this);
 
     overviewAction = new QAction(QIcon(":/icons/overview"), tr("&Dashboard"), this);
@@ -334,9 +297,8 @@ void DarkSilkGUI::createActions()
     statisticsAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_6));
 #else
     statisticsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
-#endif    
+#endif
     tabGroup->addAction(statisticsAction);
-
 
     blockAction = new QAction(QIcon(":/icons/block"), tr("&Block Explorer"), this);
     blockAction->setToolTip(tr("Explore the BlockChain"));
@@ -379,31 +341,43 @@ void DarkSilkGUI::createActions()
     quitAction->setToolTip(tr("Quit application"));
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
     quitAction->setMenuRole(QAction::QuitRole);
+
     aboutAction = new QAction(tr("&About DarkSilk"), this);
     aboutAction->setToolTip(tr("Show information about DarkSilk"));
     aboutAction->setMenuRole(QAction::AboutRole);
+
     aboutQtAction = new QAction(tr("About &Qt"), this);
     aboutQtAction->setToolTip(tr("Show information about Qt"));
     aboutQtAction->setMenuRole(QAction::AboutQtRole);
+
     optionsAction = new QAction(tr("&Options..."), this);
     optionsAction->setToolTip(tr("Modify configuration options for DarkSilk"));
     optionsAction->setMenuRole(QAction::PreferencesRole);
+
     toggleHideAction = new QAction(QIcon(":/icons/darksilk"), tr("&Show / Hide"), this);
+
     encryptWalletAction = new QAction(tr("&Encrypt Wallet..."), this);
     encryptWalletAction->setToolTip(tr("Encrypt or decrypt wallet"));
+
     backupWalletAction = new QAction(tr("&Backup Wallet..."), this);
     backupWalletAction->setToolTip(tr("Backup wallet to another location"));
+
     changePassphraseAction = new QAction(tr("&Change Passphrase..."), this);
     changePassphraseAction->setToolTip(tr("Change the passphrase used for wallet encryption"));
+
     unlockWalletAction = new QAction(tr("&Unlock Wallet..."), this);
     unlockWalletAction->setToolTip(tr("Unlock wallet"));
+
     lockWalletAction = new QAction(tr("&Lock Wallet"), this);
     lockWalletAction->setToolTip(tr("Lock wallet"));
+
     signMessageAction = new QAction(tr("Sign &message..."), this);
+
     verifyMessageAction = new QAction(tr("&Verify message..."), this);
 
     exportAction = new QAction(tr("&Export..."), this);
     exportAction->setToolTip(tr("Export the data in the current tab to a file"));
+
     openRPCConsoleAction = new QAction(tr("&Debug window"), this);
     openRPCConsoleAction->setToolTip(tr("Open debugging and diagnostic console"));
 
@@ -421,8 +395,7 @@ void DarkSilkGUI::createActions()
     connect(verifyMessageAction, SIGNAL(triggered()), this, SLOT(gotoVerifyMessageTab()));
 }
 
-void DarkSilkGUI::createMenuBar()
-{
+void DarkSilkGUI::createMenuBar() {
 #ifdef Q_OS_MAC
     appMenuBar = new QMenuBar();
 #else
@@ -453,28 +426,28 @@ void DarkSilkGUI::createMenuBar()
     help->addAction(aboutQtAction);
 }
 
-static QWidget* makeToolBarSpacer()
-{
+static QWidget* makeToolBarSpacer() {
     QWidget* spacer = new QWidget();
+
     spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     spacer->setStyleSheet("QWidget { background: none; }");
+
     return spacer;
 }
 
-void DarkSilkGUI::createToolBars()
-{
+void DarkSilkGUI::createToolBars() {
+    QLabel* header = new QLabel();
+    header->setMinimumSize(48, 48);
+    header->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    header->setPixmap(QPixmap(":/icons/darksilk"));
+    header->setMaximumSize(48, 48);
+    header->setScaledContents(true);
+
     toolbar = new QToolBar(tr("Tabs toolbar"));
     toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
     toolbar->setContextMenuPolicy(Qt::PreventContextMenu);
     toolbar->setObjectName("tabs");
     toolbar->setStyleSheet("#tabs { background-color: qradialgradient(cx: -0.8, cy: 0, fx: -0.8, fy: 0, radius: 0.6, stop: 0 #000000, stop: 1 #000000);  }");
-
-    QLabel* header = new QLabel();
-    header->setMinimumSize(48, 48);
-    header->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    header->setPixmap(QPixmap(":/icons/darksilk"));
-    header->setMaximumSize(48,48);
-    header->setScaledContents(true);
     toolbar->addWidget(header);
 
     QMenu *toolbarMenu = new QMenu();
@@ -487,93 +460,69 @@ void DarkSilkGUI::createToolBars()
     toolbarMenu->addAction(blockAction);
     toolbarMenu->addAction(stormnodeManagerAction);
 
+    QAction* menuAction = new QAction(QIcon(":/icons/overview"), tr("&Menu"), this);
+    menuAction->setToolTip(tr("Access DarkSilk Wallet Tabs"));
+    menuAction->setCheckable(false);
 
     QToolButton* menuToolButton = new QToolButton();
     menuToolButton->setToolButtonStyle(Qt::ToolButtonIconOnly);
     menuToolButton->setMenu(toolbarMenu);
     menuToolButton->setPopupMode(QToolButton::InstantPopup);
-    QAction* menuAction = new QAction(QIcon(":/icons/overview"), tr("&Menu"), this);
-    menuAction->setToolTip(tr("Access DarkSilk Wallet Tabs"));
-    menuAction->setCheckable(false);
     menuToolButton->setDefaultAction(menuAction);
-    
-    toolbar->addWidget(menuToolButton);
 
-    netLabel = new QLabel();    
-
-    toolbar->addWidget(makeToolBarSpacer());
+    netLabel = new QLabel();
     netLabel->setObjectName("netLabel");
     netLabel->setStyleSheet("#netLabel { color: #ffffff; }");
-    toolbar->addWidget(netLabel);
-    
-    //toolbar->addWidget(makeToolBarSpacer());
 
+    toolbar->addWidget(menuToolButton);
+    toolbar->addWidget(makeToolBarSpacer());
+    toolbar->addWidget(netLabel);
     toolbar->setOrientation(Qt::Horizontal);
     toolbar->setMovable(false);
 
     addToolBar(Qt::TopToolBarArea, toolbar);
-
-    /*int w = 0;
-
-    foreach(QAction *action, toolbar->actions()) {
-        w = std::max(w, toolbar->widgetForAction(action)->width());
-    }
-
-    foreach(QAction *action, toolbar->actions()) {
-        toolbar->widgetForAction(action)->setFixedWidth(w);
-    }*/
 }
 
-void DarkSilkGUI::setClientModel(ClientModel *clientModel)
-{
-    if(!fOnlyTor)
-    {
-	#ifdef USE_NATIVE_I2P
-             setNumI2PConnections(clientModel->getNumI2PConnections());
-             connect(clientModel, SIGNAL(numI2PConnectionsChanged(int)), this, SLOT(setNumI2PConnections(int)));
-	if(clientModel->isI2POnly())
-	{
-	     netLabel->setText("I2P");
-             netLabel->setToolTip(tr("Wallet is using I2P-network only"));
-	}
-	else
-	{
-	#endif
+void DarkSilkGUI::setClientModel(ClientModel *clientModel) {
+    if(!fOnlyTor) {
+#ifdef USE_NATIVE_I2P
+        setNumI2PConnections(clientModel->getNumI2PConnections());
+        connect(clientModel, SIGNAL(numI2PConnectionsChanged(int)), this, SLOT(setNumI2PConnections(int)));
 
-	netLabel->setText("CLEARNET");
-	#ifdef USE_NATIVE_I2P
-	}
+        if(clientModel->isI2POnly()) {
+            netLabel->setText("I2P");
+            netLabel->setToolTip(tr("Wallet is using I2P-network only"));
+        } else {
+#endif
 
-        if (clientModel->isI2PAddressGenerated())
-        {
+            netLabel->setText("CLEARNET");
+#ifdef USE_NATIVE_I2P
+        }
+
+        if (clientModel->isI2PAddressGenerated()) {
             labelI2PGenerated->setText("DYN");
             labelI2PGenerated->setToolTip(tr("Wallet is running with a random generated I2P-address"));
-        }
-        else
-        {
+        } else {
             labelI2PGenerated->setText("STA");
             labelI2PGenerated->setToolTip(tr("Wallet is running with a static I2P-address"));
         }
-	#endif
-    }
-    else
-    {
-	if(!IsLimited(NET_TOR))
-	{
-	    netLabel->setMinimumSize(48, 48);
-    	    netLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    	    netLabel->setPixmap(QPixmap(":/icons/onion"));
-    	    netLabel->setMaximumSize(48,48);
-    	    netLabel->setScaledContents(true);
-	}
+
+#endif
+    } else {
+        if(!IsLimited(NET_TOR)) {
+            netLabel->setMinimumSize(48, 48);
+            netLabel->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+            netLabel->setPixmap(QPixmap(":/icons/onion"));
+            netLabel->setMaximumSize(48, 48);
+            netLabel->setScaledContents(true);
+        }
     }
 
     this->clientModel = clientModel;
-    if(clientModel)
-    {
+
+    if(clientModel) {
         // Replace some strings and icons, when using the testnet
-        if(clientModel->isTestNet())
-        {
+        if(clientModel->isTestNet()) {
             setWindowTitle(windowTitle() + QString(" ") + tr("[testnet]"));
 #ifndef Q_OS_MAC
             qApp->setWindowIcon(QIcon(":icons/darksilk_testnet"));
@@ -581,8 +530,8 @@ void DarkSilkGUI::setClientModel(ClientModel *clientModel)
 #else
             MacDockIconHandler::instance()->setIcon(QIcon(":icons/darksilk_testnet"));
 #endif
-            if(trayIcon)
-            {
+
+            if(trayIcon) {
                 trayIcon->setToolTip(tr("DarkSilk client") + QString(" ") + tr("[testnet]"));
                 trayIcon->setIcon(QIcon(":/icons/toolbar_testnet"));
                 toggleHideAction->setIcon(QIcon(":/icons/toolbar_testnet"));
@@ -597,49 +546,41 @@ void DarkSilkGUI::setClientModel(ClientModel *clientModel)
         connect(clientModel, SIGNAL(numBlocksChanged(int)), this, SLOT(setNumBlocks(int)));
 
         // Receive and report messages from network/worker thread
-        connect(clientModel, SIGNAL(message(QString,QString,bool,unsigned int)), this, SLOT(message(QString,QString,bool,unsigned int)));
+        connect(clientModel, SIGNAL(message(QString, QString, bool, unsigned int)), this, SLOT(message(QString, QString, bool, unsigned int)));
 
         overviewPage->setClientModel(clientModel);
         rpcConsole->setClientModel(clientModel);
-        //addressBookPage->setOptionsModel(clientModel->getOptionsModel());
-        //receiveCoinsPage->setOptionsModel(clientModel->getOptionsModel());
     }
 }
 
-void DarkSilkGUI::setWalletModel(WalletModel *walletModel)
-{
+void DarkSilkGUI::setWalletModel(WalletModel *walletModel) {
     this->walletModel = walletModel;
-    if(walletModel)
-    {
-        // Receive and report messages from wallet thread
-        connect(walletModel, SIGNAL(message(QString,QString,bool,unsigned int)), this, SLOT(message(QString,QString,bool,unsigned int)));
 
-        // Put transaction list in tabs
-        //transactionView->setModel(walletModel);
+    if(walletModel) {
+        // Receive and report messages from wallet thread
+        connect(walletModel, SIGNAL(message(QString, QString, bool, unsigned int)), this, SLOT(message(QString, QString, bool, unsigned int)));
+
         overviewPage->setWalletModel(walletModel);
-        //addressBookPage->setModel(walletModel->getAddressTableModel());
-        //receiveCoinsPage->setModel(walletModel->getAddressTableModel());
-        //sendCoinsPage->setModel(walletModel);
         signVerifyMessageDialog->setModel(walletModel);
 
         setEncryptionStatus(walletModel->getEncryptionStatus());
         connect(walletModel, SIGNAL(encryptionStatusChanged(int)), this, SLOT(setEncryptionStatus(int)));
 
         // Balloon pop-up for new transaction
-        connect(walletModel->getTransactionTableModel(), SIGNAL(rowsInserted(QModelIndex,int,int)),
-                this, SLOT(incomingTransaction(QModelIndex,int,int)));
+        connect(walletModel->getTransactionTableModel(), SIGNAL(rowsInserted(QModelIndex, int, int)),
+                this, SLOT(incomingTransaction(QModelIndex, int, int)));
 
         // Ask for passphrase if needed
         connect(walletModel, SIGNAL(requireUnlock()), this, SLOT(unlockWallet()));
     }
 }
 
-void DarkSilkGUI::createTrayIcon()
-{
+void DarkSilkGUI::createTrayIcon() {
     QMenu *trayIconMenu;
 #ifndef Q_OS_MAC
-    trayIcon = new QSystemTrayIcon(this);
     trayIconMenu = new QMenu(this);
+
+    trayIcon = new QSystemTrayIcon(this);
     trayIcon->setContextMenu(trayIconMenu);
     trayIcon->setToolTip(tr("DarkSilk client"));
     trayIcon->setIcon(QIcon(":/icons/toolbar"));
@@ -668,40 +609,38 @@ void DarkSilkGUI::createTrayIcon()
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(quitAction);
 #endif
-
     notificator = new Notificator(qApp->applicationName(), trayIcon);
 }
 
 #ifndef Q_OS_MAC
-void DarkSilkGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason)
-{
-    if(reason == QSystemTrayIcon::Trigger)
-    {
+void DarkSilkGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason) {
+    if(reason == QSystemTrayIcon::Trigger) {
         // Click on system tray icon triggers show/hide of the main window
         toggleHideAction->trigger();
     }
 }
 #endif
 
-void DarkSilkGUI::lockIconClicked()
-{
-    if(!walletModel)
+void DarkSilkGUI::lockIconClicked() {
+    if(!walletModel) {
         return;
+    }
+
     // Unlock wallet when requested by wallet model
-    if(walletModel->getEncryptionStatus() == WalletModel::Locked)
-    {
+    if(walletModel->getEncryptionStatus() == WalletModel::Locked) {
         AskPassphraseDialog::Mode mode = sender() == unlockWalletAction ?
-              AskPassphraseDialog::UnlockStaking : AskPassphraseDialog::Unlock;
+                                         AskPassphraseDialog::UnlockStaking : AskPassphraseDialog::Unlock;
         AskPassphraseDialog dlg(mode, this);
         dlg.setModel(walletModel);
         dlg.exec();
     }
 }
 
-void DarkSilkGUI::optionsClicked()
-{
-    if(!clientModel || !clientModel->getOptionsModel())
+void DarkSilkGUI::optionsClicked() {
+    if(!clientModel || !clientModel->getOptionsModel()) {
         return;
+    }
+
     OptionsDialog dlg;
     dlg.setModel(clientModel->getOptionsModel());
 #ifdef USE_NATIVE_I2P
@@ -710,113 +649,142 @@ void DarkSilkGUI::optionsClicked()
     dlg.exec();
 }
 
-void DarkSilkGUI::aboutClicked()
-{
+void DarkSilkGUI::aboutClicked() {
     AboutDialog dlg;
+
     dlg.setModel(clientModel);
     dlg.exec();
 }
 
 #ifdef USE_NATIVE_I2P
-void DarkSilkGUI::showGeneratedI2PAddr(const QString& caption, const QString& pub, const QString& priv, const QString& b32, const QString& configFileName)
-{
+void DarkSilkGUI::showGeneratedI2PAddr(const QString& caption, const QString& pub, const QString& priv, const QString& b32, const QString& configFileName) {
     ShowI2PAddresses i2pDialog(caption, pub, priv, b32, configFileName, this);
     i2pDialog.exec();
 }
 #endif
 
 #ifdef USE_NATIVE_I2P
-void DarkSilkGUI::setNumI2PConnections(int count)
-{
+void DarkSilkGUI::setNumI2PConnections(int count) {
     QString i2pIcon;
-    switch(count)
-    {
-    case 0: i2pIcon = ":/icons/bwi2pconnect_0"; break;
-    case 1: /*case 2: case 3:*/ i2pIcon = ":/icons/bwi2pconnect_1"; break;
-    case 2:/*case 4: case 5: case 6:*/ i2pIcon = ":/icons/bwi2pconnect_2"; break;
-    case 3:/*case 7: case 8: case 9:*/ i2pIcon = ":/icons/bwi2pconnect_3"; break;
-    default: i2pIcon = ":/icons/bwi2pconnect_4"; break;
+
+    switch(count) {
+        case 0:
+            i2pIcon = ":/icons/bwi2pconnect_0";
+            break;
+
+        case 1: /*case 2: case 3:*/
+            i2pIcon = ":/icons/bwi2pconnect_1";
+            break;
+
+        case 2:/*case 4: case 5: case 6:*/
+            i2pIcon = ":/icons/bwi2pconnect_2";
+            break;
+
+        case 3:/*case 7: case 8: case 9:*/
+            i2pIcon = ":/icons/bwi2pconnect_3";
+            break;
+
+        default:
+            i2pIcon = ":/icons/bwi2pconnect_4";
+            break;
     }
+
     labelI2PConnections->setPixmap(QPixmap(i2pIcon));
     labelI2PConnections->setToolTip(tr("%n active connection(s) to I2P-DarkSilk network", "", count));
 }
 #endif
 
-void DarkSilkGUI::setNumConnections(int count)
-{
+void DarkSilkGUI::setNumConnections(int count) {
     QString icon;
-    switch(count)
-    {
-    case 0: icon = fUseBlackTheme ? ":/icons/black/connect_0" : ":/icons/connect_0"; break;
-    case 1: case 2: case 3: icon = fUseBlackTheme ? ":/icons/black/connect_1" : ":/icons/connect_1"; break;
-    case 4: case 5: case 6: icon = fUseBlackTheme ? ":/icons/black/connect_2" : ":/icons/connect_2"; break;
-    case 7: case 8: case 9: icon = fUseBlackTheme ? ":/icons/black/connect_3" : ":/icons/connect_3"; break;
-    default: icon = fUseBlackTheme ? ":/icons/black/connect_4" : ":/icons/connect_4"; break;
+
+    switch(count) {
+        case 0:
+            icon = fUseBlackTheme ? ":/icons/black/connect_0" : ":/icons/connect_0";
+            break;
+
+        case 1:
+        case 2:
+        case 3:
+            icon = fUseBlackTheme ? ":/icons/black/connect_1" : ":/icons/connect_1";
+            break;
+
+        case 4:
+        case 5:
+        case 6:
+            icon = fUseBlackTheme ? ":/icons/black/connect_2" : ":/icons/connect_2";
+            break;
+
+        case 7:
+        case 8:
+        case 9:
+            icon = fUseBlackTheme ? ":/icons/black/connect_3" : ":/icons/connect_3";
+            break;
+
+        default:
+            icon = fUseBlackTheme ? ":/icons/black/connect_4" : ":/icons/connect_4";
+            break;
     }
-    labelConnectionsIcon->setPixmap(QIcon(icon).pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
+
+    labelConnectionsIcon->setPixmap(QIcon(icon).pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
     labelConnectionsIcon->setToolTip(tr("%n active connection(s) to DarkSilk network", "", count));
 }
 
-void DarkSilkGUI::setNumBlocks(int count)
-{
+void DarkSilkGUI::setNumBlocks(int count) {
     QString tooltip;
 
     QDateTime lastBlockDate = clientModel->getLastBlockDate();
     QDateTime currentDate = QDateTime::currentDateTime();
+
     int totalSecs = GetTime() - Params().GenesisBlock().GetBlockTime();
     int secs = lastBlockDate.secsTo(currentDate);
 
     tooltip = tr("Processed %1 blocks of transaction history.").arg(count);
 
     // Set icon state: spinning if catching up, tick otherwise
-    if(secs < 25*60)
-    {
+    if(secs < 25 * 60) {
         tooltip = tr("Up to date") + QString(".<br>") + tooltip;
+
         labelBlocksIcon->setPixmap(QIcon(fUseBlackTheme ? ":/icons/black/synced" : ":/icons/synced").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
-
         overviewPage->showOutOfSyncWarning(false);
-
         progressBarLabel->setVisible(false);
         progressBar->setVisible(false);
-    }
-    else
-    {
+    } else {
         // Represent time from last generated block in human readable text
         QString timeBehindText;
-        const int HOUR_IN_SECONDS = 60*60;
-        const int DAY_IN_SECONDS = 24*60*60;
-        const int WEEK_IN_SECONDS = 7*24*60*60;
+        const int HOUR_IN_SECONDS = 60 * 60;
+        const int DAY_IN_SECONDS = 24 * 60 * 60;
+        const int WEEK_IN_SECONDS = 7 * 24 * 60 * 60;
         const int YEAR_IN_SECONDS = 31556952; // Average length of year in Gregorian calendar
-        if(secs < 2*DAY_IN_SECONDS)
-        {
-            timeBehindText = tr("%n hour(s)","",secs/HOUR_IN_SECONDS);
-        }
-        else if(secs < 2*WEEK_IN_SECONDS)
-        {
-            timeBehindText = tr("%n day(s)","",secs/DAY_IN_SECONDS);
-        }
-        else if(secs < YEAR_IN_SECONDS)
-        {
-            timeBehindText = tr("%n week(s)","",secs/WEEK_IN_SECONDS);
-        }
-        else
-        {
+
+        if(secs < 2 * DAY_IN_SECONDS) {
+            timeBehindText = tr("%n hour(s)", "", secs / HOUR_IN_SECONDS);
+        } else if(secs < 2 * WEEK_IN_SECONDS) {
+            timeBehindText = tr("%n day(s)", "", secs / DAY_IN_SECONDS);
+        } else if(secs < YEAR_IN_SECONDS) {
+            timeBehindText = tr("%n week(s)", "", secs / WEEK_IN_SECONDS);
+        } else {
             int years = secs / YEAR_IN_SECONDS;
             int remainder = secs % YEAR_IN_SECONDS;
-            timeBehindText = tr("%1 and %2").arg(tr("%n year(s)", "", years)).arg(tr("%n week(s)","", remainder/WEEK_IN_SECONDS));
+
+            timeBehindText = tr("%1 and %2").arg(tr("%n year(s)", "", years)).arg(tr("%n week(s)", "", remainder / WEEK_IN_SECONDS));
         }
 
         progressBarLabel->setText(tr(clientModel->isImporting() ? "Importing blocks..." : "Synchronizing with network..."));
         progressBarLabel->setVisible(true);
+
         progressBar->setFormat(tr("%1 behind").arg(timeBehindText));
         progressBar->setMaximum(totalSecs);
         progressBar->setValue(totalSecs - secs);
         progressBar->setVisible(true);
-        
+
         tooltip = tr("Catching up...") + QString("<br>") + tooltip;
+
         labelBlocksIcon->setMovie(syncIconMovie);
-        if(count != prevBlocks)
+
+        if(count != prevBlocks) {
             syncIconMovie->jumpToNextFrame();
+        }
+
         prevBlocks = count;
 
         overviewPage->showOutOfSyncWarning(true);
@@ -837,8 +805,7 @@ void DarkSilkGUI::setNumBlocks(int count)
     statusBar()->setVisible(true);
 }
 
-void DarkSilkGUI::message(const QString &title, const QString &message, bool modal, unsigned int style)
-{
+void DarkSilkGUI::message(const QString &title, const QString &message, bool modal, unsigned int style) {
     QString strTitle = tr("DarkSilk") + " - ";
     // Default to information icon
     int nMBoxIcon = QMessageBox::Information;
@@ -846,25 +813,27 @@ void DarkSilkGUI::message(const QString &title, const QString &message, bool mod
 
     // Check for usage of predefined title
     switch (style) {
-    case CClientUIInterface::MSG_ERROR:
-        strTitle += tr("Error");
-        break;
-    case CClientUIInterface::MSG_WARNING:
-        strTitle += tr("Warning");
-        break;
-    case CClientUIInterface::MSG_INFORMATION:
-        strTitle += tr("Information");
-        break;
-    default:
-        strTitle += title; // Use supplied title
+        case CClientUIInterface::MSG_ERROR:
+            strTitle += tr("Error");
+            break;
+
+        case CClientUIInterface::MSG_WARNING:
+            strTitle += tr("Warning");
+            break;
+
+        case CClientUIInterface::MSG_INFORMATION:
+            strTitle += tr("Information");
+            break;
+
+        default:
+            strTitle += title; // Use supplied title
     }
 
     // Check for error/warning icon
     if (style & CClientUIInterface::ICON_ERROR) {
         nMBoxIcon = QMessageBox::Critical;
         nNotifyIcon = Notificator::Critical;
-    }
-    else if (style & CClientUIInterface::ICON_WARNING) {
+    } else if (style & CClientUIInterface::ICON_WARNING) {
         nMBoxIcon = QMessageBox::Warning;
         nNotifyIcon = Notificator::Warning;
     }
@@ -873,171 +842,191 @@ void DarkSilkGUI::message(const QString &title, const QString &message, bool mod
     if (modal) {
         // Check for buttons, use OK as default, if none was supplied
         QMessageBox::StandardButton buttons;
-        if (!(buttons = (QMessageBox::StandardButton)(style & CClientUIInterface::BTN_MASK)))
+
+        if (!(buttons = (QMessageBox::StandardButton)(style & CClientUIInterface::BTN_MASK))) {
             buttons = QMessageBox::Ok;
+        }
 
         QMessageBox mBox((QMessageBox::Icon)nMBoxIcon, strTitle, message, buttons);
         mBox.exec();
-    }
-    else
+    } else {
         notificator->notify((Notificator::Class)nNotifyIcon, strTitle, message);
+    }
 }
 
-void DarkSilkGUI::changeEvent(QEvent *e)
-{
+void DarkSilkGUI::changeEvent(QEvent *e) {
     QMainWindow::changeEvent(e);
 #ifndef Q_OS_MAC // Ignored on Mac
-    if(e->type() == QEvent::WindowStateChange)
-    {
-        if(clientModel && clientModel->getOptionsModel()->getMinimizeToTray())
-        {
+
+    if(e->type() == QEvent::WindowStateChange) {
+        if(clientModel && clientModel->getOptionsModel()->getMinimizeToTray()) {
             QWindowStateChangeEvent *wsevt = static_cast<QWindowStateChangeEvent*>(e);
-            if(!(wsevt->oldState() & Qt::WindowMinimized) && isMinimized())
-            {
+
+            if(!(wsevt->oldState() & Qt::WindowMinimized) && isMinimized()) {
                 QTimer::singleShot(0, this, SLOT(hide()));
                 e->ignore();
             }
         }
     }
+
 #endif
 }
 
-void DarkSilkGUI::closeEvent(QCloseEvent *event)
-{
-    if(clientModel)
-    {
+void DarkSilkGUI::closeEvent(QCloseEvent *event) {
+    if(clientModel) {
 #ifndef Q_OS_MAC // Ignored on Mac
+
         if(!clientModel->getOptionsModel()->getMinimizeToTray() &&
-           !clientModel->getOptionsModel()->getMinimizeOnClose())
-        {
+                !clientModel->getOptionsModel()->getMinimizeOnClose()) {
             qApp->quit();
         }
+
 #endif
     }
+
     QMainWindow::closeEvent(event);
 }
 
-void DarkSilkGUI::askFee(qint64 nFeeRequired, bool *payFee)
-{
-    if (!clientModel || !clientModel->getOptionsModel())
+void DarkSilkGUI::askFee(qint64 nFeeRequired, bool *payFee) {
+    if (!clientModel || !clientModel->getOptionsModel()) {
         return;
+    }
 
     QString strMessage = tr("This transaction is over the size limit. You can still send it for a fee of %1, "
-        "which goes to the nodes that process your transaction and helps to support the network. "
-        "Do you want to pay the fee?").arg(DarkSilkUnits::formatWithUnit(clientModel->getOptionsModel()->getDisplayUnit(), nFeeRequired));
+                            "which goes to the nodes that process your transaction and helps to support the network. "
+                            "Do you want to pay the fee?").arg(DarkSilkUnits::formatWithUnit(clientModel->getOptionsModel()->getDisplayUnit(), nFeeRequired));
+
     QMessageBox::StandardButton retval = QMessageBox::question(
-          this, tr("Confirm transaction fee"), strMessage,
-          QMessageBox::Yes|QMessageBox::Cancel, QMessageBox::Yes);
+            this, tr("Confirm transaction fee"), strMessage,
+            QMessageBox::Yes | QMessageBox::Cancel, QMessageBox::Yes);
+
     *payFee = (retval == QMessageBox::Yes);
 }
 
-void DarkSilkGUI::incomingTransaction(const QModelIndex & parent, int start, int end)
-{
-    if(!walletModel || !clientModel)
+void DarkSilkGUI::incomingTransaction(const QModelIndex & parent, int start, int end) {
+    if(!walletModel || !clientModel) {
         return;
+    }
+
     TransactionTableModel *ttm = walletModel->getTransactionTableModel();
     qint64 amount = ttm->index(start, TransactionTableModel::Amount, parent)
                     .data(Qt::EditRole).toULongLong();
-    if(!clientModel->inInitialBlockDownload())
-    {
+
+    if(!clientModel->inInitialBlockDownload()) {
         // On new transaction, make an info balloon
         // Unless the initial block download is in progress, to prevent balloon-spam
         QString date = ttm->index(start, TransactionTableModel::Date, parent)
-                        .data().toString();
+                       .data().toString();
+
         QString type = ttm->index(start, TransactionTableModel::Type, parent)
-                        .data().toString();
+                       .data().toString();
+
         QString address = ttm->index(start, TransactionTableModel::ToAddress, parent)
-                        .data().toString();
+                          .data().toString();
+
         QIcon icon = qvariant_cast<QIcon>(ttm->index(start,
-                            TransactionTableModel::ToAddress, parent)
-                        .data(Qt::DecorationRole));
+                                          TransactionTableModel::ToAddress, parent)
+                                          .data(Qt::DecorationRole));
 
         notificator->notify(Notificator::Information,
-                            (amount)<0 ? tr("Sent transaction") :
-                                         tr("Incoming transaction"),
-                              tr("Date: %1\n"
-                                 "Amount: %2\n"
-                                 "Type: %3\n"
-                                 "Address: %4\n")
-                              .arg(date)
-                              .arg(DarkSilkUnits::formatWithUnit(walletModel->getOptionsModel()->getDisplayUnit(), amount, true))
-                              .arg(type)
-                              .arg(address), icon);
+                            (amount) < 0 ? tr("Sent transaction") :
+                            tr("Incoming transaction"),
+                            tr("Date: %1\n"
+                               "Amount: %2\n"
+                               "Type: %3\n"
+                               "Address: %4\n")
+                            .arg(date)
+                            .arg(DarkSilkUnits::formatWithUnit(walletModel->getOptionsModel()->getDisplayUnit(), amount, true))
+                            .arg(type)
+                            .arg(address), icon);
     }
 }
 
-void DarkSilkGUI::clearWidgets()
-{
+void DarkSilkGUI::clearWidgets() {
     centralStackedWidget->setCurrentWidget(centralStackedWidget->widget(0));
-    for(int i = centralStackedWidget->count(); i>0; i--){
+
+    for(int i = centralStackedWidget->count(); i > 0; i--) {
         QWidget* widget = centralStackedWidget->widget(i);
+
         centralStackedWidget->removeWidget(widget);
+
         widget->deleteLater();
     }
 }
 
-void DarkSilkGUI::gotoStormnodeManagerPage()
-{
+void DarkSilkGUI::gotoStormnodeManagerPage() {
     stormnodeManagerAction->setChecked(true);
+
     clearWidgets();
 
     stormnodeManagerPage = new StormnodeManager(this);
+
     centralStackedWidget->addWidget(stormnodeManagerPage);
     centralStackedWidget->setCurrentWidget(stormnodeManagerPage);
 
     exportAction->setEnabled(false);
+
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
 }
 
-void DarkSilkGUI::gotoOverviewPage()
-{
+void DarkSilkGUI::gotoOverviewPage() {
     overviewAction->setChecked(true);
 
     clearWidgets();
+
     centralStackedWidget->setCurrentWidget(overviewPage);
 
     exportAction->setEnabled(false);
+
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
 }
 
-void DarkSilkGUI::gotoBlockBrowser()
-{
+void DarkSilkGUI::gotoBlockBrowser() {
     blockAction->setChecked(true);
+
     clearWidgets();
 
     blockBrowser = new BlockBrowser(this);
+
     centralStackedWidget->addWidget(blockBrowser);
     centralStackedWidget->setCurrentWidget(blockBrowser);
 
     exportAction->setEnabled(false);
+
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
 }
 
-void DarkSilkGUI::gotoStatisticsPage() 
-{
+void DarkSilkGUI::gotoStatisticsPage() {
     statisticsAction->setChecked(true);
+
     clearWidgets();
 
     statisticsPage = new StatisticsPage(this);
+
     centralStackedWidget->addWidget(statisticsPage);
     centralStackedWidget->setCurrentWidget(statisticsPage);
 
     statisticsPage->updateStatistics();
 
     exportAction->setEnabled(false);
+
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
 }
 
-void DarkSilkGUI::gotoHistoryPage()
-{
+void DarkSilkGUI::gotoHistoryPage() {
     historyAction->setChecked(true);
+
     clearWidgets();
 
-    transactionsPage = new QWidget(this);
     QVBoxLayout *vbox = new QVBoxLayout();
+
+    transactionsPage = new QWidget(this);
     transactionView = new TransactionView(this);
+
     vbox->addWidget(transactionView);
+
     transactionsPage->setLayout(vbox);
+
     centralStackedWidget->addWidget(transactionsPage);
     centralStackedWidget->setCurrentWidget(transactionsPage);
 
@@ -1046,180 +1035,208 @@ void DarkSilkGUI::gotoHistoryPage()
     transactionView->setModel(this->walletModel);
 
     exportAction->setEnabled(true);
+
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
     connect(exportAction, SIGNAL(triggered()), transactionView, SLOT(exportClicked()));
 }
 
-void DarkSilkGUI::gotoAddressBookPage()
-{
+void DarkSilkGUI::gotoAddressBookPage() {
     addressBookAction->setChecked(true);
+
     clearWidgets();
+
     addressBookPage = new AddressBookPage(AddressBookPage::ForEditing, AddressBookPage::SendingTab);
     addressBookPage->setOptionsModel(this->clientModel->getOptionsModel());
     addressBookPage->setModel(this->walletModel->getAddressTableModel());
+
     // Clicking on "Verify Message" in the address book sends you to the verify message tab
     connect(addressBookPage, SIGNAL(verifyMessage(QString)), this, SLOT(gotoVerifyMessageTab(QString)));
+
     centralStackedWidget->addWidget(addressBookPage);
     centralStackedWidget->setCurrentWidget(addressBookPage);
 
     exportAction->setEnabled(true);
+
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
     connect(exportAction, SIGNAL(triggered()), addressBookPage, SLOT(exportClicked()));
 }
 
-void DarkSilkGUI::gotoReceiveCoinsPage()
-{
+void DarkSilkGUI::gotoReceiveCoinsPage() {
     receiveCoinsAction->setChecked(true);
+
     clearWidgets();
+
     receiveCoinsPage = new AddressBookPage(AddressBookPage::ForEditing, AddressBookPage::ReceivingTab);
     receiveCoinsPage->setOptionsModel(this->clientModel->getOptionsModel());
     receiveCoinsPage->setModel(this->walletModel->getAddressTableModel());
+
     // Clicking on "Sign Message" in the receive coins page sends you to the sign message tab
     connect(receiveCoinsPage, SIGNAL(signMessage(QString)), this, SLOT(gotoSignMessageTab(QString)));
+
     centralStackedWidget->addWidget(receiveCoinsPage);
     centralStackedWidget->setCurrentWidget(receiveCoinsPage);
 
     exportAction->setEnabled(true);
+
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
     connect(exportAction, SIGNAL(triggered()), receiveCoinsPage, SLOT(exportClicked()));
 }
 
-void DarkSilkGUI::gotoSendCoinsPage()
-{
+void DarkSilkGUI::gotoSendCoinsPage() {
     sendCoinsAction->setChecked(true);
+
     sendCoinsPage = new SendCoinsDialog(this);
+
     centralStackedWidget->addWidget(sendCoinsPage);
     centralStackedWidget->setCurrentWidget(sendCoinsPage);
+
     sendCoinsPage->setModel(this->walletModel);
 
     exportAction->setEnabled(false);
+
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
 }
 
-void DarkSilkGUI::gotoSignMessageTab(QString addr)
-{
+void DarkSilkGUI::gotoSignMessageTab(QString addr) {
     // call show() in showTab_SM()
     signVerifyMessageDialog->showTab_SM(true);
 
-    if(!addr.isEmpty())
+    if(!addr.isEmpty()) {
         signVerifyMessageDialog->setAddress_SM(addr);
+    }
 }
 
-void DarkSilkGUI::gotoVerifyMessageTab(QString addr)
-{
+void DarkSilkGUI::gotoVerifyMessageTab(QString addr) {
     // call show() in showTab_VM()
     signVerifyMessageDialog->showTab_VM(true);
 
-    if(!addr.isEmpty())
+    if(!addr.isEmpty()) {
         signVerifyMessageDialog->setAddress_VM(addr);
+    }
 }
 
-void DarkSilkGUI::dragEnterEvent(QDragEnterEvent *event)
-{
+void DarkSilkGUI::dragEnterEvent(QDragEnterEvent *event) {
     // Accept only URIs
-    if(event->mimeData()->hasUrls())
+    if(event->mimeData()->hasUrls()) {
         event->acceptProposedAction();
+    }
 }
 
-void DarkSilkGUI::dropEvent(QDropEvent *event)
-{
-    if(event->mimeData()->hasUrls())
-    {
+void DarkSilkGUI::dropEvent(QDropEvent *event) {
+    if(event->mimeData()->hasUrls()) {
         int nValidUrisFound = 0;
         QList<QUrl> uris = event->mimeData()->urls();
-        foreach(const QUrl &uri, uris)
-        {
-            if (sendCoinsPage->handleURI(uri.toString()))
+        foreach(const QUrl & uri, uris) {
+            if (sendCoinsPage->handleURI(uri.toString())) {
                 nValidUrisFound++;
+            }
         }
 
         // if valid URIs were found
-        if (nValidUrisFound)
+        if (nValidUrisFound) {
             gotoSendCoinsPage();
-        else
+        } else {
             notificator->notify(Notificator::Warning, tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid DarkSilk address or malformed URI parameters."));
+        }
     }
 
     event->acceptProposedAction();
 }
 
-void DarkSilkGUI::handleURI(QString strURI)
-{
+void DarkSilkGUI::handleURI(QString strURI) {
     // URI has to be valid
-    if (sendCoinsPage->handleURI(strURI))
-    {
+    if (sendCoinsPage->handleURI(strURI)) {
         showNormalIfMinimized();
         gotoSendCoinsPage();
-    }
-    else
+    } else {
         notificator->notify(Notificator::Warning, tr("URI handling"), tr("URI can not be parsed! This can be caused by an invalid DarkSilk address or malformed URI parameters."));
+    }
 }
 
-void DarkSilkGUI::setEncryptionStatus(int status)
-{
-    if(fWalletUnlockStakingOnly)
-    {
-	labelEncryptionIcon->setPixmap(QIcon(fUseBlackTheme ? ":/icons/black/lock_open" : ":/icons/lock_open").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
+void DarkSilkGUI::setEncryptionStatus(int status) {
+    if(fWalletUnlockStakingOnly) {
+        labelEncryptionIcon->setPixmap(QIcon(fUseBlackTheme ? ":/icons/black/lock_open" : ":/icons/lock_open").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
         labelEncryptionIcon->setToolTip(tr("Wallet is <b>encrypted</b> and currently <b>unlocked for staking only</b>"));
-        changePassphraseAction->setEnabled(false);
-        unlockWalletAction->setVisible(true);
-        lockWalletAction->setVisible(true);
-        encryptWalletAction->setEnabled(false);
-        
-    }
-    else
-    {
 
-    switch(status)
-    {
-    case WalletModel::Unencrypted:
-        labelEncryptionIcon->setPixmap(QIcon(fUseBlackTheme ? ":/icons/black/lock_open" : ":/icons/lock_open").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
-        labelEncryptionIcon->setToolTip(tr("Wallet is <b>not encrypted</b>"));
         changePassphraseAction->setEnabled(false);
-        unlockWalletAction->setVisible(false);
-        lockWalletAction->setVisible(false);
-        encryptWalletAction->setEnabled(true);
-        disconnect(labelEncryptionIcon,SIGNAL(clicked()), this, SLOT(lockIconClicked()));labelEncryptionIcon->setToolTip(tr("Wallet is <b>encrypted</b> and currently <b>unlocked</b>"));
-        break;
-    case WalletModel::Unlocked:
-        labelEncryptionIcon->setPixmap(QIcon(fUseBlackTheme ? ":/icons/black/lock_open" : ":/icons/lock_open").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
-        labelEncryptionIcon->setToolTip(tr("Wallet is <b>encrypted</b> and currently <b>unlocked</b>"));
-        changePassphraseAction->setEnabled(true);
-        unlockWalletAction->setVisible(false);
-        lockWalletAction->setVisible(true);
-        encryptWalletAction->setEnabled(false); // TODO: decrypt currently not supported
-        disconnect(labelEncryptionIcon,SIGNAL(clicked()), this, SLOT(lockIconClicked()));
-        break;
-    case WalletModel::Locked:
-        labelEncryptionIcon->setPixmap(QIcon(fUseBlackTheme ? ":/icons/black/lock_closed" : ":/icons/lock_closed").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
-        labelEncryptionIcon->setToolTip(tr("Wallet is <b>encrypted</b> and currently <b>locked</b>"));
-        changePassphraseAction->setEnabled(true);
+
         unlockWalletAction->setVisible(true);
-        lockWalletAction->setVisible(false);
-        encryptWalletAction->setEnabled(false); // TODO: decrypt currently not supported
-        connect(labelEncryptionIcon,SIGNAL(clicked()), this, SLOT(lockIconClicked()));
-        break;
-    }
+
+        lockWalletAction->setVisible(true);
+
+        encryptWalletAction->setEnabled(false);
+
+    } else {
+
+        switch(status) {
+            case WalletModel::Unencrypted:
+                labelEncryptionIcon->setPixmap(QIcon(fUseBlackTheme ? ":/icons/black/lock_open" : ":/icons/lock_open").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
+                labelEncryptionIcon->setToolTip(tr("Wallet is <b>not encrypted</b>"));
+
+                changePassphraseAction->setEnabled(false);
+
+                unlockWalletAction->setVisible(false);
+
+                lockWalletAction->setVisible(false);
+
+                encryptWalletAction->setEnabled(true);
+
+                disconnect(labelEncryptionIcon, SIGNAL(clicked()), this, SLOT(lockIconClicked()));
+
+                labelEncryptionIcon->setToolTip(tr("Wallet is <b>encrypted</b> and currently <b>unlocked</b>"));
+                break;
+
+            case WalletModel::Unlocked:
+                labelEncryptionIcon->setPixmap(QIcon(fUseBlackTheme ? ":/icons/black/lock_open" : ":/icons/lock_open").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
+                labelEncryptionIcon->setToolTip(tr("Wallet is <b>encrypted</b> and currently <b>unlocked</b>"));
+
+                changePassphraseAction->setEnabled(true);
+
+                unlockWalletAction->setVisible(false);
+
+                lockWalletAction->setVisible(true);
+
+                encryptWalletAction->setEnabled(false); // TODO: decrypt currently not supported
+
+                disconnect(labelEncryptionIcon, SIGNAL(clicked()), this, SLOT(lockIconClicked()));
+                break;
+
+            case WalletModel::Locked:
+                labelEncryptionIcon->setPixmap(QIcon(fUseBlackTheme ? ":/icons/black/lock_closed" : ":/icons/lock_closed").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
+                labelEncryptionIcon->setToolTip(tr("Wallet is <b>encrypted</b> and currently <b>locked</b>"));
+
+                changePassphraseAction->setEnabled(true);
+
+                unlockWalletAction->setVisible(true);
+
+                lockWalletAction->setVisible(false);
+
+                encryptWalletAction->setEnabled(false); // TODO: decrypt currently not supported
+
+                connect(labelEncryptionIcon, SIGNAL(clicked()), this, SLOT(lockIconClicked()));
+                break;
+        }
 
     }
 }
 
-void DarkSilkGUI::encryptWallet()
-{
-    if(!walletModel)
+void DarkSilkGUI::encryptWallet() {
+    if(!walletModel) {
         return;
+    }
 
     AskPassphraseDialog dlg(AskPassphraseDialog::Encrypt, this);
+
     dlg.setModel(walletModel);
     dlg.exec();
 
     setEncryptionStatus(walletModel->getEncryptionStatus());
 }
 
-void DarkSilkGUI::backupWallet()
-{
+void DarkSilkGUI::backupWallet() {
     QString saveDir = QDesktopServices::storageLocation(QDesktopServices::DocumentsLocation);
     QString filename = QFileDialog::getSaveFileName(this, tr("Backup Wallet"), saveDir, tr("Wallet Data (*.dat)"));
+
     if(!filename.isEmpty()) {
         if(!walletModel->backupWallet(filename)) {
             QMessageBox::warning(this, tr("Backup Failed"), tr("There was an error trying to save the wallet data to the new location."));
@@ -1227,137 +1244,126 @@ void DarkSilkGUI::backupWallet()
     }
 }
 
-void DarkSilkGUI::changePassphrase()
-{
+void DarkSilkGUI::changePassphrase() {
     AskPassphraseDialog dlg(AskPassphraseDialog::ChangePass, this);
+
     dlg.setModel(walletModel);
     dlg.exec();
 }
 
-void DarkSilkGUI::unlockWallet()
-{
-    if(!walletModel)
+void DarkSilkGUI::unlockWallet() {
+    if(!walletModel) {
         return;
+    }
+
     // Unlock wallet when requested by wallet model
-    if(walletModel->getEncryptionStatus() == WalletModel::Locked)
-    {
-        AskPassphraseDialog::Mode mode = sender() == unlockWalletAction ?
-              AskPassphraseDialog::UnlockStaking : AskPassphraseDialog::Unlock;
+    if(walletModel->getEncryptionStatus() == WalletModel::Locked) {
+        AskPassphraseDialog::Mode mode = sender() == unlockWalletAction ? AskPassphraseDialog::UnlockStaking : AskPassphraseDialog::Unlock;
         AskPassphraseDialog dlg(mode, this);
+
         dlg.setModel(walletModel);
         dlg.exec();
     }
 }
 
-void DarkSilkGUI::lockWallet()
-{
-    if(!walletModel)
+void DarkSilkGUI::lockWallet() {
+    if(!walletModel) {
         return;
+    }
 
     walletModel->setWalletLocked(true);
 }
 
-void DarkSilkGUI::showNormalIfMinimized(bool fToggleHidden)
-{
+void DarkSilkGUI::showNormalIfMinimized(bool fToggleHidden) {
     // activateWindow() (sometimes) helps with keyboard focus on Windows
-    if (isHidden())
-    {
+    if (isHidden()) {
         show();
         activateWindow();
-    }
-    else if (isMinimized())
-    {
+    } else if (isMinimized()) {
         showNormal();
         activateWindow();
-    }
-    else if (GUIUtil::isObscured(this))
-    {
+    } else if (GUIUtil::isObscured(this)) {
         raise();
         activateWindow();
-    }
-    else if(fToggleHidden)
+    } else if(fToggleHidden) {
         hide();
+    }
 }
 
-void DarkSilkGUI::toggleHidden()
-{
+void DarkSilkGUI::toggleHidden() {
     showNormalIfMinimized(true);
 }
 
-void DarkSilkGUI::updateWeight()
-{
-    if (!pwalletMain)
+void DarkSilkGUI::updateWeight() {
+    if (!pwalletMain) {
         return;
+    }
 
     TRY_LOCK(cs_main, lockMain);
-    if (!lockMain)
+
+    if (!lockMain) {
         return;
+    }
 
     TRY_LOCK(pwalletMain->cs_wallet, lockWallet);
-    if (!lockWallet)
+
+    if (!lockWallet) {
         return;
+    }
 
     nWeight = pwalletMain->GetStakeWeight();
 }
 
-void DarkSilkGUI::updateStakingIcon()
-{
+void DarkSilkGUI::updateStakingIcon() {
     updateWeight();
 
-    if (nLastCoinStakeSearchInterval && nWeight)
-    {
+    if (nLastCoinStakeSearchInterval && nWeight) {
         uint64_t nWeight = this->nWeight;
         uint64_t nNetworkWeight = GetPoSKernelPS();
+
         unsigned nEstimateTime = GetTargetSpacing(nBestHeight) * nNetworkWeight / nWeight;
 
         QString text;
-        if (nEstimateTime < 60)
-        {
+
+        if (nEstimateTime < 60) {
             text = tr("%n second(s)", "", nEstimateTime);
-        }
-        else if (nEstimateTime < 60*60)
-        {
-            text = tr("%n minute(s)", "", nEstimateTime/60);
-        }
-        else if (nEstimateTime < 24*60*60)
-        {
-            text = tr("%n hour(s)", "", nEstimateTime/(60*60));
-        }
-        else
-        {
-            text = tr("%n day(s)", "", nEstimateTime/(60*60*24));
+        } else if (nEstimateTime < 60 * 60) {
+            text = tr("%n minute(s)", "", nEstimateTime / 60);
+        } else if (nEstimateTime < 24 * 60 * 60) {
+            text = tr("%n hour(s)", "", nEstimateTime / (60 * 60));
+        } else {
+            text = tr("%n day(s)", "", nEstimateTime / (60 * 60 * 24));
         }
 
         nWeight /= COIN;
         nNetworkWeight /= COIN;
 
-        labelStakingIcon->setPixmap(QIcon(fUseBlackTheme ? ":/icons/black/staking_on" : ":/icons/staking_on").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
+        labelStakingIcon->setPixmap(QIcon(fUseBlackTheme ? ":/icons/black/staking_on" : ":/icons/staking_on").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
         labelStakingIcon->setToolTip(tr("Staking.<br>Your weight is %1<br>Network weight is %2<br>Expected time to earn reward is %3").arg(nWeight).arg(nNetworkWeight).arg(text));
-    }
-    else
-    {
-        labelStakingIcon->setPixmap(QIcon(fUseBlackTheme ? ":/icons/black/staking_off" : ":/icons/staking_off").pixmap(STATUSBAR_ICONSIZE,STATUSBAR_ICONSIZE));
-        if (pwalletMain && pwalletMain->IsLocked())
+    } else {
+        labelStakingIcon->setPixmap(QIcon(fUseBlackTheme ? ":/icons/black/staking_off" : ":/icons/staking_off").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
+
+        if (pwalletMain && pwalletMain->IsLocked()) {
             labelStakingIcon->setToolTip(tr("Not staking because wallet is locked"));
-        else if (vNodes.empty())
+        } else if (vNodes.empty()) {
             labelStakingIcon->setToolTip(tr("Not staking because wallet is offline"));
-        else if (IsInitialBlockDownload())
+        } else if (IsInitialBlockDownload()) {
             labelStakingIcon->setToolTip(tr("Not staking because wallet is syncing"));
-        else if (!nWeight)
+        } else if (!nWeight) {
             labelStakingIcon->setToolTip(tr("Not staking because you don't have mature coins"));
-        else
+        } else {
             labelStakingIcon->setToolTip(tr("Not staking"));
+        }
     }
 }
 
-void DarkSilkGUI::detectShutdown()
-{
-    if (ShutdownRequested())
+void DarkSilkGUI::detectShutdown() {
+    if (ShutdownRequested()) {
         QMetaObject::invokeMethod(QCoreApplication::instance(), "quit", Qt::QueuedConnection);
+    }
 }
 
-WId DarkSilkGUI::getMainWinId() const
-{
+WId DarkSilkGUI::getMainWinId() const {
     return winId();
 }
 
