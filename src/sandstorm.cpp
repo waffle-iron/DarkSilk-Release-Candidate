@@ -529,7 +529,7 @@ void CSandStormPool::SetNull(bool clearEverything){
 }
 
 bool CSandStormPool::SetCollateralAddress(std::string strAddress){
-    CBitcoinAddress address;
+    CDarkSilkAddress address;
     if (!address.SetString(strAddress))
     {
         LogPrintf("CSandStormPool::SetCollateralAddress - Invalid SandStorm collateral address\n");
@@ -2041,7 +2041,7 @@ bool CSandStormSigner::IsVinAssociatedWithPubkey(CTxIn& vin, CPubKey& pubkey){
 }
 
 bool CSandStormSigner::SetKey(std::string strSecret, std::string& errorMessage, CKey& key, CPubKey& pubkey){
-    CBitcoinSecret vchSecret;
+    CDarkSilkSecret vchSecret;
     bool fGood = vchSecret.SetString(strSecret);
 
     if (!fGood) {

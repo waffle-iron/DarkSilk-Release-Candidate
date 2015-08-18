@@ -5,7 +5,7 @@
 #include "sandstorm.h"
 #include "sandstormconfig.h"
 #include "walletmodel.h"
-#include "bitcoinunits.h"
+#include "darksilkunits.h"
 #include "optionsmodel.h"
 #include "transactiontablemodel.h"
 #include "transactionfilterproxy.h"
@@ -26,7 +26,7 @@ class TxViewDelegate : public QAbstractItemDelegate
 {
     Q_OBJECT
 public:
-    TxViewDelegate(): QAbstractItemDelegate(), unit(BitcoinUnits::BTC)
+    TxViewDelegate(): QAbstractItemDelegate(), unit(DarkSilkUnits::DRKSLK)
     {
 
     }
@@ -73,7 +73,7 @@ public:
             foreground = option.palette.color(QPalette::Text);
         }
         painter->setPen(fUseBlackTheme ? QColor(0, 0, 0) : foreground);
-        QString amountText = BitcoinUnits::formatWithUnit(unit, amount, true);
+        QString amountText = DarkSilkUnits::formatWithUnit(unit, amount, true);
         if(!confirmed)
         {
             amountText = QString("[") + amountText + QString("]");
@@ -188,12 +188,12 @@ void OverviewPage::setBalance(qint64 balance, qint64 stake, qint64 unconfirmedBa
     currentUnconfirmedBalance = unconfirmedBalance;
     currentImmatureBalance = immatureBalance;
     currentAnonymizedBalance = anonymizedBalance;
-    ui->labelBalance->setText(BitcoinUnits::formatWithUnit(unit, balance));
-    ui->labelStake->setText(BitcoinUnits::formatWithUnit(unit, stake));
-    ui->labelUnconfirmed->setText(BitcoinUnits::formatWithUnit(unit, unconfirmedBalance));
-    ui->labelImmature->setText(BitcoinUnits::formatWithUnit(unit, immatureBalance));
-    ui->labelTotal->setText(BitcoinUnits::formatWithUnit(unit, balance + stake + unconfirmedBalance + immatureBalance));
-    ui->labelAnonymized->setText(BitcoinUnits::formatWithUnit(unit, anonymizedBalance));
+    ui->labelBalance->setText(DarkSilkUnits::formatWithUnit(unit, balance));
+    ui->labelStake->setText(DarkSilkUnits::formatWithUnit(unit, stake));
+    ui->labelUnconfirmed->setText(DarkSilkUnits::formatWithUnit(unit, unconfirmedBalance));
+    ui->labelImmature->setText(DarkSilkUnits::formatWithUnit(unit, immatureBalance));
+    ui->labelTotal->setText(DarkSilkUnits::formatWithUnit(unit, balance + stake + unconfirmedBalance + immatureBalance));
+    ui->labelAnonymized->setText(DarkSilkUnits::formatWithUnit(unit, anonymizedBalance));
 
     // only show immature (newly mined) balance if it's non-zero, so as not to complicate things
     // for the non-mining users
@@ -246,7 +246,7 @@ void OverviewPage::setWalletModel(WalletModel *model)
         connect(ui->toggleSandstorm, SIGNAL(clicked()), this, SLOT(toggleSandstorm()));
     }
 
-    // update the display unit, to not use the default ("BTC")
+    // update the display unit, to not use the default ("DRKSLK")
     updateDisplayUnit();
 }
 
@@ -355,7 +355,7 @@ void OverviewPage::sandStormStatus()
 
         QString strSettings(" " + tr("Rounds"));
         strSettings.prepend(QString::number(nSandstormRounds)).prepend(" / ");
-        strSettings.prepend(BitcoinUnits::formatWithUnit(
+        strSettings.prepend(DarkSilkUnits::formatWithUnit(
             walletModel->getOptionsModel()->getDisplayUnit(),
             nAnonymizeSilkAmount * COIN)
         );
@@ -480,7 +480,7 @@ void OverviewPage::toggleSandstorm(){
         float minAmount = 1.49 * COIN;
         if(balance < minAmount){
             QString strMinAmount(
-                BitcoinUnits::formatWithUnit(
+                DarkSilkUnits::formatWithUnit(
                     walletModel->getOptionsModel()->getDisplayUnit(),
                     minAmount));
             QMessageBox::warning(this, tr("Sandstorm"),

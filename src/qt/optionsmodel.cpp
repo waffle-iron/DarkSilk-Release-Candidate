@@ -1,6 +1,6 @@
 #include "optionsmodel.h"
 
-#include "bitcoinunits.h"
+#include "darksilkunits.h"
 #include "init.h"
 #include "wallet.h"
 #include "walletdb.h"
@@ -110,7 +110,7 @@ void OptionsModel::Init()
     QSettings settings;
 
     // These are Qt-only settings:
-    nDisplayUnit = settings.value("nDisplayUnit", BitcoinUnits::BTC).toInt();
+    nDisplayUnit = settings.value("nDisplayUnit", DarkSilkUnits::DRKSLK).toInt();
     fMinimizeToTray = settings.value("fMinimizeToTray", false).toBool();
     fMinimizeOnClose = settings.value("fMinimizeOnClose", false).toBool();
     fCoinControlFeatures = settings.value("fCoinControlFeatures", false).toBool();
@@ -128,7 +128,7 @@ void OptionsModel::Init()
     nSandstormRounds = settings.value("nSandstormRounds").toLongLong();
     nAnonymizeSilkAmount = settings.value("nAnonymizeSilkAmount").toLongLong();
 
-    // These are shared with core Bitcoin; we want
+    // These are shared with core DarkSilk; we want
     // command-line options to override the GUI settings:
     if (settings.contains("fUseUPnP"))
         SoftSetBoolArg("-upnp", settings.value("fUseUPnP").toBool());

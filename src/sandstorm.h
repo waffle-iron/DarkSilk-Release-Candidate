@@ -14,7 +14,7 @@ class CTxIn;
 class CSandStormPool;
 class CSandStormSigner;
 class CStormNodeVote;
-class CBitcoinAddress;
+class CDarkSilkAddress;
 class CSandstormQueue;
 class CSandstormBroadcastTx;
 class CActiveStormnode;

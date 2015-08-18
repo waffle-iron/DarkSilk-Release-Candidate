@@ -497,7 +497,7 @@ bool CConsensusVote::SignatureValid()
     pubkey =GetScriptForDestination(vecStormnodes[n].pubkey2.GetID());
     CTxDestination address1;
     ExtractDestination(pubkey, address1);
-    CBitcoinAddress address2(address1);
+    CDarkSilkAddress address2(address1);
     //LogPrintf("verify pubkey2 %s \n", address2.ToString().c_str());
 
     if(!sandStormSigner.VerifyMessage(vecStormnodes[n].pubkey2, vchStormNodeSignature, strMessage, errorMessage)) {
@@ -528,7 +528,7 @@ bool CConsensusVote::Sign()
     pubkey =GetScriptForDestination(pubkey2.GetID());
     CTxDestination address1;
     ExtractDestination(pubkey, address1);
-    CBitcoinAddress address2(address1);
+    CDarkSilkAddress address2(address1);
     //LogPrintf("signing pubkey2 %s \n", address2.ToString().c_str());
 
     if(!sandStormSigner.SignMessage(strMessage, errorMessage, vchStormNodeSignature, key2)) {

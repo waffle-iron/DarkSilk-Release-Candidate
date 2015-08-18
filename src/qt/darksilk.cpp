@@ -1,10 +1,10 @@
 /*
- * W.J. van der Laan 2011-2012
+ * W.J. van der Laan 2011-2015
  */
 
 #include <QApplication>
 
-#include "bitcoingui.h"
+#include "darksilkgui.h"
 #include "clientmodel.h"
 #include "walletmodel.h"
 #include "optionsmodel.h"
@@ -32,8 +32,8 @@
 #include <QSplashScreen>
 #include <QLibraryInfo>
 
-#if defined(BITCOIN_NEED_QT_PLUGINS) && !defined(_BITCOIN_QT_PLUGINS_INCLUDED)
-#define _BITCOIN_QT_PLUGINS_INCLUDED
+#if defined(DARKSILK_NEED_QT_PLUGINS) && !defined(_DARKSILK_QT_PLUGINS_INCLUDED)
+#define _DARKSILK_QT_PLUGINS_INCLUDED
 #define __INSURE__
 #include <QtPlugin>
 Q_IMPORT_PLUGIN(qcncodecs)
@@ -44,7 +44,7 @@ Q_IMPORT_PLUGIN(qtaccessiblewidgets)
 #endif
 
 // Need a global reference for the notifications to find the GUI
-static BitcoinGUI *guiref;
+static DarkSilkGUI *guiref;
 static QSplashScreen *splashref;
 
 static void ThreadSafeMessageBox(const std::string& message, const std::string& caption, unsigned int style)
@@ -106,7 +106,7 @@ static std::string Translate(const char* psz)
 static void handleRunawayException(std::exception *e)
 {
     PrintExceptionContinue(e, "Runaway exception");
-    QMessageBox::critical(0, "Runaway exception", BitcoinGUI::tr("A fatal error occurred. DarkSilk can no longer continue safely and will quit.") + QString("\n\n") + QString::fromStdString(strMiscWarning));
+    QMessageBox::critical(0, "Runaway exception", DarkSilkGUI::tr("A fatal error occurred. DarkSilk can no longer continue safely and will quit.") + QString("\n\n") + QString::fromStdString(strMiscWarning));
     exit(1);
 }
 
@@ -125,7 +125,7 @@ void DebugMessageHandler(QtMsgType type, const QMessageLogContext& context, cons
 }
 #endif
 
-#ifndef BITCOIN_QT_TEST
+#ifndef DARKSILK_QT_TEST
 int main(int argc, char *argv[])
 {
     fHaveGUI = true;
@@ -259,8 +259,8 @@ int main(int argc, char *argv[])
             }
             else
             {
-                QMessageBox::warning(NULL, BitcoinGUI::tr("Failed to load style!"),
-                    BitcoinGUI::tr("Failed to load the stylesheet provided."),
+                QMessageBox::warning(NULL, DarkSilkGUI::tr("Failed to load style!"),
+                    DarkSilkGUI::tr("Failed to load the stylesheet provided."),
                     QMessageBox::Ok, QMessageBox::Ok);
             }
         }
@@ -281,7 +281,7 @@ int main(int argc, char *argv[])
 
         boost::thread_group threadGroup;
 
-        BitcoinGUI window;
+        DarkSilkGUI window;
         guiref = &window;
 
         QTimer* pollShutdownTimer = new QTimer(guiref);
@@ -354,4 +354,4 @@ int main(int argc, char *argv[])
     }
     return 0;
 }
-#endif // BITCOIN_QT_TEST
+#endif // DARKSILK_QT_TEST

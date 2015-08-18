@@ -407,7 +407,7 @@ bool CActiveStormnode::GetVinFromOutput(COutput out, CTxIn& vin, CPubKey& pubkey
 
 	CTxDestination address1;
     ExtractDestination(pubScript, address1);
-    CBitcoinAddress address2(address1);
+    CDarkSilkAddress address2(address1);
 
     CKeyID keyID;
     if (!address2.GetKeyID(keyID)) {
@@ -446,7 +446,7 @@ vector<COutput> CActiveStormnode::SelectCoinsStormnode()
 // get all possible outputs for running stormnode for a specific pubkey
 vector<COutput> CActiveStormnode::SelectCoinsStormnodeForPubKey(std::string collateralAddress)
 {
-    CBitcoinAddress address(collateralAddress);
+    CDarkSilkAddress address(collateralAddress);
     CScript scriptPubKey;
     scriptPubKey.SetDestination(address.Get());
     vector<COutput> vCoins;

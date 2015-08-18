@@ -88,7 +88,7 @@ Value sandstorm(const Array& params, bool fHelp)
             "<amount> is a real and is rounded to the nearest 0.00000001"
             + HelpRequiringPassphrase());
 
-    CBitcoinAddress address(params[0].get_str());
+    CDarkSilkAddress address(params[0].get_str());
     if (!address.IsValid())
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid darksilk address");
 
@@ -297,7 +297,7 @@ Value stormnode(const Array& params, bool fHelp)
                 pubkey =GetScriptForDestination(sn.pubkey.GetID());
                 CTxDestination address1;
                 ExtractDestination(pubkey, address1);
-                CBitcoinAddress address2(address1);
+                CDarkSilkAddress address2(address1);
 
                 obj.push_back(Pair(sn.addr.ToString().c_str(),       address2.ToString().c_str()));
             } else if (strCommand == "protocol") {
@@ -502,7 +502,7 @@ Value stormnode(const Array& params, bool fHelp)
         CKey secret;
         secret.MakeNewKey(false);
 
-        return CBitcoinSecret(secret).ToString();
+        return CDarkSilkSecret(secret).ToString();
     }
 
     if (strCommand == "winners")
@@ -515,7 +515,7 @@ Value stormnode(const Array& params, bool fHelp)
             if(stormnodePayments.GetBlockPayee(nHeight, payee)){
                 CTxDestination address1;
                 ExtractDestination(payee, address1);
-                CBitcoinAddress address2(address1);
+                CDarkSilkAddress address2(address1);
                 obj.push_back(Pair(boost::lexical_cast<std::string>(nHeight),       address2.ToString().c_str()));
             } else {
                 obj.push_back(Pair(boost::lexical_cast<std::string>(nHeight),       ""));

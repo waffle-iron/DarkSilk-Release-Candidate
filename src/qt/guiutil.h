@@ -18,7 +18,7 @@ class QAbstractItemView;
 class QLabel;
 QT_END_NAMESPACE
 
-/** Utility functions used by the Bitcoin Qt UI.
+/** Utility functions used by the DarkSilk Qt UI.
  */
 namespace GUIUtil
 {
@@ -26,8 +26,8 @@ namespace GUIUtil
     QString dateTimeStr(const QDateTime &datetime);
     QString dateTimeStr(qint64 nTime);
 
-    // Render Bitcoin addresses in monospace font
-    QFont bitcoinAddressFont();
+    // Render DarkSilk addresses in monospace font
+    QFont darksilkAddressFont();
 
     // Set up widgets for address and amounts
     void setupAddressWidget(QLineEdit *widget, QWidget *parent);
@@ -35,8 +35,8 @@ namespace GUIUtil
 
     // Parse "darksilk:" URI into recipient object, return true on successful parsing
     // See Bitcoin URI definition discussion here: https://bitcointalk.org/index.php?topic=33490.0
-    bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out);
-    bool parseBitcoinURI(QString uri, SendCoinsRecipient *out);
+    bool parseDarkSilkURI(const QUrl &uri, SendCoinsRecipient *out);
+    bool parseDarkSilkURI(QString uri, SendCoinsRecipient *out);
 
     // HTML escaping for rich text controls
     QString HtmlEscape(const QString& str, bool fMultiLine=false);

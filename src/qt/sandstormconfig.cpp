@@ -1,7 +1,7 @@
 #include "sandstormconfig.h"
 #include "ui_sandstormconfig.h"
 
-#include "bitcoinunits.h"
+#include "darksilkunits.h"
 #include "guiconstants.h"
 #include "optionsmodel.h"
 #include "walletmodel.h"
@@ -38,7 +38,7 @@ void SandstormConfig::clickBasic()
 {
     configure(true, 1000, 2);
 
-    QString strAmount(BitcoinUnits::formatWithUnit(
+    QString strAmount(DarkSilkUnits::formatWithUnit(
         model->getOptionsModel()->getDisplayUnit(), 1000 * COIN));
     QMessageBox::information(this, tr("Sandstorm Configuration"),
         tr(
@@ -53,7 +53,7 @@ void SandstormConfig::clickHigh()
 {
     configure(true, 1000, 8);
 
-    QString strAmount(BitcoinUnits::formatWithUnit(
+    QString strAmount(DarkSilkUnits::formatWithUnit(
         model->getOptionsModel()->getDisplayUnit(), 1000 * COIN));
     QMessageBox::information(this, tr("Sandstorm Configuration"),
         tr(
@@ -68,11 +68,11 @@ void SandstormConfig::clickMax()
 {
     configure(true, 1000, 16);
 
-    QString strAmount(BitcoinUnits::formatWithUnit(
+    QString strAmount(DarkSilkUnits::formatWithUnit(
         model->getOptionsModel()->getDisplayUnit(), 1000 * COIN));
     QMessageBox::information(this, tr("Sandstorm Configuration"),
         tr(
-            "Sandstorm was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening Bitcoin's configuration screen."
+            "Sandstorm was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening DarkSilk's configuration screen."
         ).arg(strAmount)
     );
 

@@ -48,7 +48,7 @@ void AddEditStormNode::on_okButton_clicked()
 	c.sAddress = ui->addressLineEdit->text().toStdString();
         CKey secret;
         secret.MakeNewKey(false);
-        c.sStormnodePrivKey = CBitcoinSecret(secret).ToString();
+        c.sStormnodePrivKey = CDarkSilkSecret(secret).ToString();
 	
         CWalletDB walletdb(pwalletMain->strWalletFile);
         CAccount account;
@@ -86,7 +86,7 @@ void AddEditStormNode::on_okButton_clicked()
             walletdb.WriteAccount(c.sAlias, account);
         }
 
-        c.sCollateralAddress = CBitcoinAddress(account.vchPubKey.GetID()).ToString();
+        c.sCollateralAddress = CDarkSilkAddress(account.vchPubKey.GetID()).ToString();
 
         pwalletMain->mapMyStormNodes.insert(make_pair(c.sAddress, c));
 	walletdb.WriteStormNodeConfig(c.sAddress, c);
