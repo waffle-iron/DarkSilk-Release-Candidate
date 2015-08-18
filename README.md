@@ -61,7 +61,7 @@ $ cd ~
 $ sudo apt-get install automake autoconf libtool unzip git
 
 //Then:
-$ git clone https://github.com/SCDeveloper/DarkSilk.git
+$ git clone https://github.com/DRKSLK/DarkSilk.git
 
 //Then:
 $ cd DarkSilk/libs/
