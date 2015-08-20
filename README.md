@@ -1,6 +1,6 @@
 **DarkSilk (DRKSLK) Release Candidate for Version 1.0.0.0**
 
-**(NOT FULL RELEASE/FOR TESTING PURPOSES ONLY)**
+(FOR TESTING PURPOSES ONLY)
 
 DarkSilk Integration/Staging Tree
 ================================
