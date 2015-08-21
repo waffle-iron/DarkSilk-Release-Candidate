@@ -200,6 +200,8 @@ private slots:
     /** Show about dialog */
     void aboutClicked();
     /** Allow user to unlock wallet from click */
+    void unlockIconClicked();
+    /** Allow user to lock wallet with click */
     void lockIconClicked();
 #ifndef Q_OS_MAC
     /** Handle tray icon clicked */

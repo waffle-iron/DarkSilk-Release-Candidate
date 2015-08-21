@@ -114,37 +114,33 @@ SendCoinsDialog::~SendCoinsDialog()
 
 void SendCoinsDialog::on_sendButton_clicked()
 {
-    if(!model || !model->getOptionsModel())
+    if(!model || !model->getOptionsModel()) {
         return;
+    }
 
     QList<SendCoinsRecipient> recipients;
     bool valid = true;
 
-    for(int i = 0; i < ui->entries->count(); ++i)
-    {
+    for(int i = 0; i < ui->entries->count(); ++i) {
         SendCoinsEntry *entry = qobject_cast<SendCoinsEntry*>(ui->entries->itemAt(i)->widget());
-        if(entry)
-        {
-            if(entry->validate())
-            {
+
+        if(entry) {
+            if(entry->validate()) {
                 recipients.append(entry->getValue());
-            }
-            else
-            {
+            } else {
                 valid = false;
             }
         }
     }
 
-    if(!valid || recipients.isEmpty())
-    {
+    if(!valid || recipients.isEmpty()) {
         return;
     }
 
     // Format confirmation message
     QStringList formatted;
-    foreach(const SendCoinsRecipient &rcp, recipients)
-    {
+
+    foreach(const SendCoinsRecipient &rcp, recipients) {
         formatted.append(tr("<b>%1</b> to %2 (%3)").arg(DarkSilkUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), rcp.amount), Qt::escape(rcp.label), rcp.address));
     }
 
@@ -155,15 +151,14 @@ void SendCoinsDialog::on_sendButton_clicked()
           QMessageBox::Yes|QMessageBox::Cancel,
           QMessageBox::Cancel);
 
-    if(retval != QMessageBox::Yes)
-    {
+    if(retval != QMessageBox::Yes) {
         fNewRecipientAllowed = true;
         return;
     }
 
     WalletModel::UnlockContext ctx(model->requestUnlock());
-    if(!ctx.isValid())
-    {
+
+    if(!ctx.isValid()) {
         // Unlock wallet was cancelled
         fNewRecipientAllowed = true;
         return;
@@ -171,10 +166,11 @@ void SendCoinsDialog::on_sendButton_clicked()
 
     WalletModel::SendCoinsReturn sendstatus;
 
-    if (!model->getOptionsModel() || !model->getOptionsModel()->getCoinControlFeatures())
+    if (!model->getOptionsModel() || !model->getOptionsModel()->getCoinControlFeatures()) {
         sendstatus = model->sendCoins(recipients);
-    else
+    } else {
         sendstatus = model->sendCoins(recipients, CoinControlDialog::coinControl);
+    }
 
     switch(sendstatus.status)
     {
@@ -226,7 +222,11 @@ void SendCoinsDialog::on_sendButton_clicked()
         CoinControlDialog::coinControl->UnSelectAll();
         coinControlUpdateLabels();
         break;
+    case WalletModel::AnonymizeOnlyUnlocked:
+        //TODO: Add code to handle this case
+        break;
     }
+
     fNewRecipientAllowed = true;
 }
 

@@ -621,19 +621,36 @@ void DarkSilkGUI::trayIconActivated(QSystemTrayIcon::ActivationReason reason) {
 }
 #endif
 
+void DarkSilkGUI::unlockIconClicked() {
+    if(!walletModel) {
+        return;
+    }
+
+    WalletModel::EncryptionStatus encryptionStatus = walletModel->getEncryptionStatus();
+
+    if (encryptionStatus == WalletModel::Locked) {
+        AskPassphraseDialog::Mode mode = sender() == unlockWalletAction
+                                         ? AskPassphraseDialog::UnlockStaking : AskPassphraseDialog::Unlock;
+
+        AskPassphraseDialog dlg(mode, this);
+        dlg.setModel(walletModel);
+        dlg.exec();
+    }
+}
+
 void DarkSilkGUI::lockIconClicked() {
     if(!walletModel) {
         return;
     }
 
-    // Unlock wallet when requested by wallet model
-    if(walletModel->getEncryptionStatus() == WalletModel::Locked) {
-        AskPassphraseDialog::Mode mode = sender() == unlockWalletAction ?
-                                         AskPassphraseDialog::UnlockStaking : AskPassphraseDialog::Unlock;
-        AskPassphraseDialog dlg(mode, this);
-        dlg.setModel(walletModel);
-        dlg.exec();
+    WalletModel::EncryptionStatus encryptionStatus = walletModel->getEncryptionStatus();
+
+    if (encryptionStatus == WalletModel::Unlocked || fWalletUnlockStakingOnly) {
+        walletModel->setWalletLocked(true);
+        fWalletUnlockStakingOnly = false;
     }
+
+    setEncryptionStatus(walletModel->getEncryptionStatus());
 }
 
 void DarkSilkGUI::optionsClicked() {
@@ -1154,20 +1171,23 @@ void DarkSilkGUI::handleURI(QString strURI) {
 }
 
 void DarkSilkGUI::setEncryptionStatus(int status) {
+    disconnect(labelEncryptionIcon, SIGNAL(clicked()), this, SLOT(unlockIconClicked()));
+    disconnect(labelEncryptionIcon, SIGNAL(clicked()), this, SLOT(lockIconClicked()));
+
     if(fWalletUnlockStakingOnly) {
         labelEncryptionIcon->setPixmap(QIcon(fUseBlackTheme ? ":/icons/black/lock_open" : ":/icons/lock_open").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
         labelEncryptionIcon->setToolTip(tr("Wallet is <b>encrypted</b> and currently <b>unlocked for staking only</b>"));
 
         changePassphraseAction->setEnabled(false);
 
-        unlockWalletAction->setVisible(true);
+        unlockWalletAction->setVisible(false);
 
         lockWalletAction->setVisible(true);
 
         encryptWalletAction->setEnabled(false);
 
+        connect(labelEncryptionIcon, SIGNAL(clicked()), this, SLOT(lockIconClicked()));
     } else {
-
         switch(status) {
             case WalletModel::Unencrypted:
                 labelEncryptionIcon->setPixmap(QIcon(fUseBlackTheme ? ":/icons/black/lock_open" : ":/icons/lock_open").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
@@ -1180,10 +1200,6 @@ void DarkSilkGUI::setEncryptionStatus(int status) {
                 lockWalletAction->setVisible(false);
 
                 encryptWalletAction->setEnabled(true);
-
-                disconnect(labelEncryptionIcon, SIGNAL(clicked()), this, SLOT(lockIconClicked()));
-
-                labelEncryptionIcon->setToolTip(tr("Wallet is <b>encrypted</b> and currently <b>unlocked</b>"));
                 break;
 
             case WalletModel::Unlocked:
@@ -1198,7 +1214,7 @@ void DarkSilkGUI::setEncryptionStatus(int status) {
 
                 encryptWalletAction->setEnabled(false); // TODO: decrypt currently not supported
 
-                disconnect(labelEncryptionIcon, SIGNAL(clicked()), this, SLOT(lockIconClicked()));
+                connect(labelEncryptionIcon, SIGNAL(clicked()), this, SLOT(lockIconClicked()));
                 break;
 
             case WalletModel::Locked:
@@ -1213,7 +1229,7 @@ void DarkSilkGUI::setEncryptionStatus(int status) {
 
                 encryptWalletAction->setEnabled(false); // TODO: decrypt currently not supported
 
-                connect(labelEncryptionIcon, SIGNAL(clicked()), this, SLOT(lockIconClicked()));
+                connect(labelEncryptionIcon, SIGNAL(clicked()), this, SLOT(unlockIconClicked()));
                 break;
         }
 
@@ -1256,11 +1272,13 @@ void DarkSilkGUI::unlockWallet() {
         return;
     }
 
-    // Unlock wallet when requested by wallet model
-    if(walletModel->getEncryptionStatus() == WalletModel::Locked) {
-        AskPassphraseDialog::Mode mode = sender() == unlockWalletAction ? AskPassphraseDialog::UnlockStaking : AskPassphraseDialog::Unlock;
-        AskPassphraseDialog dlg(mode, this);
+    WalletModel::EncryptionStatus encryptionStatus = walletModel->getEncryptionStatus();
 
+    if (encryptionStatus == WalletModel::Locked) {
+        AskPassphraseDialog::Mode mode = sender() == unlockWalletAction
+                                         ? AskPassphraseDialog::UnlockStaking : AskPassphraseDialog::Unlock;
+
+        AskPassphraseDialog dlg(mode, this);
         dlg.setModel(walletModel);
         dlg.exec();
     }
@@ -1271,7 +1289,14 @@ void DarkSilkGUI::lockWallet() {
         return;
     }
 
-    walletModel->setWalletLocked(true);
+    WalletModel::EncryptionStatus encryptionStatus = walletModel->getEncryptionStatus();
+
+    if (encryptionStatus == WalletModel::Unlocked || fWalletUnlockStakingOnly) {
+        walletModel->setWalletLocked(true);
+        fWalletUnlockStakingOnly = false;
+    }
+
+    setEncryptionStatus(walletModel->getEncryptionStatus());
 }
 
 void DarkSilkGUI::showNormalIfMinimized(bool fToggleHidden) {
