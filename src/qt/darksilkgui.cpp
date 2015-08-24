@@ -629,8 +629,9 @@ void DarkSilkGUI::unlockIconClicked() {
     WalletModel::EncryptionStatus encryptionStatus = walletModel->getEncryptionStatus();
 
     if (encryptionStatus == WalletModel::Locked) {
-        AskPassphraseDialog::Mode mode = sender() == unlockWalletAction
+        AskPassphraseDialog::Mode mode = sender() == labelEncryptionIcon
                                          ? AskPassphraseDialog::UnlockStaking : AskPassphraseDialog::Unlock;
+
 
         AskPassphraseDialog dlg(mode, this);
         dlg.setModel(walletModel);
