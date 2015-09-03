@@ -110,7 +110,7 @@ OverviewPage::OverviewPage(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->frameSandstorm->setVisible(false);  // Hide sandstorm features
+    ui->frameSandstorm->setVisible(true);  // Hide sandstorm features
 
     QScroller::grabGesture(ui->scrollArea, QScroller::LeftMouseButtonGesture);
     ui->scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
