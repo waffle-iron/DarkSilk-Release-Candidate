@@ -267,7 +267,14 @@ HEADERS += src/qt/darksilkgui.h \
     src/qt/stormnodemanager.h \
     src/qt/addeditstormnode.h \
     src/qt/stormnodeconfigdialog.h \
-    src/qt/winshutdownmonitor.h
+    src/qt/winshutdownmonitor.h \
+    src/qt/darksilkmarket.h \
+    src/qt/buyspage.h \
+    src/qt/sellspage.h \
+    src/qt/createmarketlistingdialog.h \
+    src/qt/marketlistingdetailsdialog.h \
+    src/qt/deliverydetailsdialog.h \
+    src/market.h
 
 SOURCES += src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
     src/qt/transactiontablemodel.cpp \
@@ -370,8 +377,14 @@ SOURCES += src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
     src/qt/stormnodemanager.cpp \
     src/qt/addeditstormnode.cpp \
     src/qt/stormnodeconfigdialog.cpp \
-    src/qt/winshutdownmonitor.cpp
-
+    src/qt/winshutdownmonitor.cpp \
+    src/qt/darksilkmarket.cpp \
+    src/qt/buyspage.cpp \
+    src/qt/sellspage.cpp \
+    src/qt/createmarketlistingdialog.cpp \
+    src/qt/marketlistingdetailsdialog.cpp \
+    src/qt/deliverydetailsdialog.cpp \
+    src/market.cpp
 
 RESOURCES += \
     src/qt/darksilk.qrc
@@ -395,6 +408,12 @@ FORMS += \
     src/qt/forms/addeditstormnode.ui \
     src/qt/forms/statisticspage.ui \
     src/qt/forms/stormnodeconfigdialog.ui \
+    src/qt/forms/darksilkmarket.ui \
+    src/qt/forms/buyspage.ui \
+    src/qt/forms/sellspage.ui \
+    src/qt/forms/createmarketlistingdialog.ui \
+    src/qt/forms/marketlistingdetailsdialog.ui \
+    src/qt/forms/deliverydetailsdialog.ui \
 
 contains(DEFINES, USE_NATIVE_I2P) {
 HEADERS += src/i2p.h \

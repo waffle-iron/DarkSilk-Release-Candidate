@@ -16,6 +16,7 @@
 #include "spork.h"
 #include "keepass.h"
 #include "stormnodeconfig.h"
+#include "market.h"
 
 #ifdef ENABLE_WALLET
 #include "wallet.h"
@@ -897,6 +898,10 @@ bool AppInit2(boost::thread_group& threadGroup)
     LogPrintf("Loaded %i addresses from peers.dat  %dms\n",
            addrman.size(), GetTimeMillis() - nStart);
 
+    // ********************************************************* Step 10.1: start DarkSilkMarket
+
+    MarketInit();
+    
     // ********************************************************* Step 11: start node
 
     if (!CheckDiskSpace())

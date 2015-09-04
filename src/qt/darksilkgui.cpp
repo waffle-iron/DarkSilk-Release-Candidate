@@ -35,6 +35,9 @@
 #include "stormnodemanager.h"
 #include "blockbrowser.h"
 #include "statisticspage.h"
+#include "darksilkmarket.h"
+#include "buyspage.h"
+#include "sellspage.h"
 
 #ifdef USE_NATIVE_I2P
 #include "showi2paddresses.h"
@@ -310,14 +313,40 @@ void DarkSilkGUI::createActions() {
 #endif
     tabGroup->addAction(blockAction);
 
+    darksilkMarketAction = new QAction(QIcon(":/icons/bitcoin"), tr("&DarkSilkMarket"), this);
+    darksilkMarketAction->setToolTip(tr("Browse the Market."));
+    darksilkMarketAction->setCheckable(true);
+#ifdef Q_OS_MAC
+    darksilkMarketAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_8));
+#else
+    darksilkMarketAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_8));
+#endif
+    tabGroup->addAction(darksilkMarketAction);
+
+
+    buysPageAction = new QAction(QIcon(":/icons/bitcoin"), tr("&Market Purchases"), this);
+    buysPageAction->setToolTip(tr("Show my DarkSilkMarket Buys."));
+    buysPageAction->setCheckable(true);
+#ifdef Q_OS_MAC
+    buysPageAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_9));
+#else
+    buysPageAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_9));
+#endif
+    tabGroup->addAction(buysPageAction);
+
+    sellsPageAction = new QAction(QIcon(":/icons/bitcoin"), tr("&Market Sells"), this);
+    sellsPageAction->setToolTip(tr("Show my DarkSilkMarket Sells."));
+    sellsPageAction->setCheckable(true);
+#ifdef Q_OS_MAC
+    sellsPageAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_0));
+#else
+    sellsPageAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_0));
+#endif
+    tabGroup->addAction(sellsPageAction);
+
     stormnodeManagerAction = new QAction(QIcon(":/icons/darksilk"), tr("&Sandstorm"), this);
     stormnodeManagerAction->setToolTip(tr("Show Stormnodes status and configure your nodes."));
     stormnodeManagerAction->setCheckable(true);
-#ifdef Q_OS_MAC
-    stormnodeManagerAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_8));
-#else
-    stormnodeManagerAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_8));
-#endif
     tabGroup->addAction(stormnodeManagerAction);
 
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
@@ -334,6 +363,12 @@ void DarkSilkGUI::createActions() {
     connect(blockAction, SIGNAL(triggered()), this, SLOT(gotoBlockBrowser()));
     connect(statisticsAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(statisticsAction, SIGNAL(triggered()), this, SLOT(gotoStatisticsPage()));
+    connect(darksilkMarketAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+    connect(darksilkMarketAction, SIGNAL(triggered()), this, SLOT(gotoDarkSilkMarket()));
+    connect(buysPageAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+    connect(buysPageAction, SIGNAL(triggered()), this, SLOT(gotoBuysPage()));
+    connect(sellsPageAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+    connect(sellsPageAction, SIGNAL(triggered()), this, SLOT(gotoSellsPage()));
     connect(stormnodeManagerAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(stormnodeManagerAction, SIGNAL(triggered()), this, SLOT(gotoStormnodeManagerPage()));
 
@@ -458,6 +493,9 @@ void DarkSilkGUI::createToolBars() {
     toolbarMenu->addAction(addressBookAction);
     toolbarMenu->addAction(statisticsAction);
     toolbarMenu->addAction(blockAction);
+    toolbarMenu->addAction(darksilkMarketAction);
+    toolbarMenu->addAction(buysPageAction);
+    toolbarMenu->addAction(sellsPageAction);
     toolbarMenu->addAction(stormnodeManagerAction);
 
     QAction* menuAction = new QAction(QIcon(":/icons/overview"), tr("&Menu"), this);
@@ -970,6 +1008,60 @@ void DarkSilkGUI::clearWidgets() {
 
         widget->deleteLater();
     }
+}
+
+void DarkSilkGUI::gotoDarkSilkMarket()
+{
+    //DarkSilkMarketAction->setChecked(true);
+    //centralStackedWidget->setCurrentWidget(darksilkMarket);
+
+    //exportAction->setEnabled(false);
+    //disconnect(exportAction, SIGNAL(triggered()), 0, 0);
+    
+    darksilkMarketAction->setChecked(true);
+    clearWidgets();
+
+    darksilkMarket = new DarkSilkMarket(this);
+    centralStackedWidget->addWidget(darksilkMarket);
+    centralStackedWidget->setCurrentWidget(darksilkMarket);
+
+    exportAction->setEnabled(false);
+    disconnect(exportAction, SIGNAL(triggered()), 0, 0);
+}
+
+void DarkSilkGUI::gotoBuysPage()
+{
+    //buysPageAction->setChecked(true);
+    //centralStackedWidget->setCurrentWidget(buysPage);
+
+    //exportAction->setEnabled(false);
+    //disconnect(exportAction, SIGNAL(triggered()), 0, 0);
+    
+    darksilkMarketAction->setChecked(true);
+    clearWidgets();
+
+    buysPage = new BuysPage(this);
+    centralStackedWidget->addWidget(buysPage);
+    centralStackedWidget->setCurrentWidget(buysPage);
+
+    exportAction->setEnabled(false);
+    disconnect(exportAction, SIGNAL(triggered()), 0, 0);
+}
+
+void DarkSilkGUI::gotoSellsPage()
+{
+    //sellsPageAction->setChecked(true);
+    //centralStackedWidget->setCurrentWidget(sellsPage);
+
+    //exportAction->setEnabled(false);
+    //disconnect(exportAction, SIGNAL(triggered()), 0, 0);
+    
+    sellsPage = new SellsPage(this);
+    centralStackedWidget->addWidget(sellsPage);
+    centralStackedWidget->setCurrentWidget(sellsPage);
+
+    exportAction->setEnabled(false);
+    disconnect(exportAction, SIGNAL(triggered()), 0, 0);
 }
 
 void DarkSilkGUI::gotoStormnodeManagerPage() {

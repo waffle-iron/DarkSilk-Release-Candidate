@@ -110,7 +110,7 @@ OverviewPage::OverviewPage(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->frameSandstorm->setVisible(true);  // Hide sandstorm features
+    ui->frameSandstorm->setVisible(true);
 
     QScroller::grabGesture(ui->scrollArea, QScroller::LeftMouseButtonGesture);
     ui->scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -137,7 +137,7 @@ OverviewPage::OverviewPage(QWidget *parent) :
     lastNewBlock = 0;
 
     if(fLiteMode){
-        ui->frameSandstorm->setVisible(false);
+        ui->frameSandstorm->setVisible(true);
     } else {
 	qDebug() << "Sandstorm Status Timer";
         timer = new QTimer(this);

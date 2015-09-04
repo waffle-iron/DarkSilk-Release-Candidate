@@ -13,6 +13,7 @@
 #include "ui_interface.h"
 #include "sandstorm.h"
 #include "wallet.h"
+#include "market.h"
 
 #ifdef USE_NATIVE_I2P
 #include "i2p.h"
@@ -52,9 +53,9 @@ struct LocalServiceInfo {
 //
 bool fDiscover = true;
 #ifdef USE_NATIVE_I2P
-uint64_t nLocalServices = NODE_I2P | NODE_NETWORK;
+uint64_t nLocalServices = NODE_I2P | NODE_NETWORK | NODE_MARKET;
 #else
-uint64_t nLocalServices = NODE_NETWORK;
+uint64_t nLocalServices = NODE_NETWORK | NODE_MARKET;
 #endif
 static CCriticalSection cs_mapLocalHost;
 static map<CNetAddr, LocalServiceInfo> mapLocalHost;

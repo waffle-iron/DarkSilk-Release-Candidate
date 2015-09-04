@@ -18,6 +18,9 @@ class SendCoinsDialog;
 class SignVerifyMessageDialog;
 class Notificator;
 class RPCConsole;
+class DarkSilkMarket;
+class BuysPage;
+class SellsPage;
 class StormnodeManager;
 
 QT_BEGIN_NAMESPACE
@@ -77,6 +80,9 @@ private:
     AddressBookPage *receiveCoinsPage;
     SendCoinsDialog *sendCoinsPage;
     SignVerifyMessageDialog *signVerifyMessageDialog;
+    DarkSilkMarket *darksilkMarket;
+    BuysPage *buysPage;
+    SellsPage *sellsPage;
     StormnodeManager *stormnodeManagerPage;
 
     QLabel* netLabel;
@@ -114,6 +120,9 @@ private:
     QAction *aboutQtAction;
     QAction *openRPCConsoleAction;
     QAction *statisticsAction;
+    QAction *darksilkMarketAction;
+    QAction *buysPageAction;
+    QAction *sellsPageAction;
     QAction *stormnodeManagerAction;
 
     QSystemTrayIcon *trayIcon;
@@ -189,6 +198,12 @@ private slots:
     void gotoSendCoinsPage();
     /** Switch to Statistics Page*/
     void gotoStatisticsPage();
+    /** Switch to DarkSilkMarket Page*/
+    void gotoDarkSilkMarket();
+    /** Switch to Buys Page*/
+    void gotoBuysPage();
+    /** Switch to Sells Page*/
+    void gotoSellsPage();
     /** Switch to Stormnode Manager Page*/
     void gotoStormnodeManagerPage();
     /** Show Sign/Verify Message dialog and switch to sign message tab */

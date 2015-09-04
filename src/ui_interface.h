@@ -17,6 +17,8 @@ class CBasicKeyStore;
 class CWallet;
 class uint256;
 class CStormNodeConfig;
+class CSignedMarketListing;
+class CBuyRequest;
 
 /** General change type (added, updated, removed). */
 enum ChangeType
@@ -102,6 +104,24 @@ public:
     boost::signals2::signal<void (const uint256 &hash, ChangeType status)> NotifyAlertChanged;
 
     boost::signals2::signal<void (CStormNodeConfig nodeConfig)> NotifyStormNodeChanged;
+
+    boost::signals2::signal<void (std::string category)> NotifyMarketCategory;
+
+    boost::signals2::signal<void (CSignedMarketListing listing)> NotifyNewSellerListing;
+
+    boost::signals2::signal<void (CBuyRequest buyr)> NotifyBuyRequest;
+
+    boost::signals2::signal<void ()> NotifyRefundRequested;
+
+    boost::signals2::signal<void ()> NotifyDeliveryDetails;
+
+    boost::signals2::signal<void ()> NotifyListingCancelled;
+
+    boost::signals2::signal<void ()> NotifyEscrowPayment;
+    boost::signals2::signal<void ()> NotifyEscrowRelease;
+    boost::signals2::signal<void ()> NotifyBuyAccepted;
+    boost::signals2::signal<void ()> NotifyBuyRejected;
+    boost::signals2::signal<void ()> NotifyPaymentRequest;    
 };
 
 extern CClientUIInterface uiInterface;

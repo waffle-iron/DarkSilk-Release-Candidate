@@ -21,6 +21,7 @@
 #include "sandstorm.h"
 #include "stormnode.h"
 #include "spork.h"
+#include "market.h"
 
 using namespace std;
 using namespace boost;
@@ -3954,6 +3955,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 
     else
     {
+        MarketProcessMessage(pfrom, strCommand, vRecv);
         ProcessMessageSandstorm(pfrom, strCommand, vRecv);
         ProcessMessageStormnode(pfrom, strCommand, vRecv);
         ProcessMessageInstantX(pfrom, strCommand, vRecv);
