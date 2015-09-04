@@ -93,7 +93,7 @@ DarkSilkGUI::DarkSilkGUI(QWidget *parent):
     rpcConsole(0),
     prevBlocks(0),
     nWeight(0) {
-    resize(900, 600);
+    resize(1000, 600);
     setWindowTitle(tr("DarkSilk") + " - " + tr("Wallet"));
 #ifndef Q_OS_MAC
     qApp->setWindowIcon(QIcon(":icons/darksilk"));
