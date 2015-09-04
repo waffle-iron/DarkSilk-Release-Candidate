@@ -18,7 +18,7 @@ DarkSilkMarket::DarkSilkMarket(QWidget *parent) :
     ui->setupUi(this);
     subscribeToCoreSignals();
 
-    ui->darksilkMarketHeaderLabel->setPixmap(QPixmap(":/images/darksilk"));
+    ui->darksilkMarketHeaderLabel->setPixmap(QPixmap(":/images/darksilkmarket"));
     updateCategories();
 
     ui->buyButton->setEnabled(false);
