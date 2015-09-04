@@ -313,7 +313,7 @@ void DarkSilkGUI::createActions() {
 #endif
     tabGroup->addAction(blockAction);
 
-    darksilkMarketAction = new QAction(QIcon(":/icons/bitcoin"), tr("&DarkSilkMarket"), this);
+    darksilkMarketAction = new QAction(QIcon(":/icons/darksilk"), tr("&DarkSilkMarket"), this);
     darksilkMarketAction->setToolTip(tr("Browse the Market."));
     darksilkMarketAction->setCheckable(true);
 #ifdef Q_OS_MAC
@@ -324,7 +324,7 @@ void DarkSilkGUI::createActions() {
     tabGroup->addAction(darksilkMarketAction);
 
 
-    buysPageAction = new QAction(QIcon(":/icons/bitcoin"), tr("&Market Purchases"), this);
+    buysPageAction = new QAction(QIcon(":/icons/darksilk"), tr("&Market Purchases"), this);
     buysPageAction->setToolTip(tr("Show my DarkSilkMarket Buys."));
     buysPageAction->setCheckable(true);
 #ifdef Q_OS_MAC
@@ -334,7 +334,7 @@ void DarkSilkGUI::createActions() {
 #endif
     tabGroup->addAction(buysPageAction);
 
-    sellsPageAction = new QAction(QIcon(":/icons/bitcoin"), tr("&Market Sells"), this);
+    sellsPageAction = new QAction(QIcon(":/icons/darksilk"), tr("&Market Sells"), this);
     sellsPageAction->setToolTip(tr("Show my DarkSilkMarket Sells."));
     sellsPageAction->setCheckable(true);
 #ifdef Q_OS_MAC
