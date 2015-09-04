@@ -57,7 +57,7 @@ public:
             foreground = qvariant_cast<QColor>(value);
         }
 
-        painter->setPen(fUseBlackTheme ? QColor(0, 0, 0) : foreground);
+        painter->setPen(fUseBlackTheme ? QColor(255, 255, 255) : foreground);
         painter->drawText(addressRect, Qt::AlignLeft|Qt::AlignVCenter, address);
 
         if(amount < 0)
@@ -72,7 +72,7 @@ public:
         {
             foreground = option.palette.color(QPalette::Text);
         }
-        painter->setPen(fUseBlackTheme ? QColor(0, 0, 0) : foreground);
+        painter->setPen(fUseBlackTheme ? QColor(255, 255, 255) : foreground);
         QString amountText = DarkSilkUnits::formatWithUnit(unit, amount, true);
         if(!confirmed)
         {
