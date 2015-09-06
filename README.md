@@ -140,7 +140,7 @@ $ cd /home/DarkSilk/src/
 
 //Then:
 
-$cp crypto obj/crypto -rR
+$ cp crypto obj/crypto -rR
 
 //Enter into the terminal:
 
