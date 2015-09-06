@@ -132,7 +132,7 @@ Build Instructions for Terminal Based Linux Wallet (Ubuntu)
 ===========================================================
 //Install dependencies via Terminal:
 
-$ sudo apt-get install build-essential libboost-all-dev libcurl4-openssl-dev libdb++-dev qt-sdk make 
+$ sudo apt-get install build-essential libboost-all-dev libssl-dev libcurl4-openssl-dev libdb++-dev qt-sdk make 
 
 //In terminal navigate to the DarkSilk folder (assuming you have followed the libsecp256k1 guide).
 
