@@ -224,6 +224,7 @@ DarkSilkGUI::DarkSilkGUI(QWidget *parent):
     frameBlocksLayout->addStretch();
     frameBlocksLayout->addWidget(labelBlocksIcon);
     frameBlocksLayout->addStretch();
+    
 
     if (GetBoolArg("-staking", true)) {
         QTimer *timerStakingIcon = new QTimer(labelStakingIcon);
