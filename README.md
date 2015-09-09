@@ -31,6 +31,10 @@ However if your transaction does not successfully broadcast you can use the -res
 
 DarkSilk implements Gavin Andresens signature cache optimisation from Bitcoin for significantly faster transaction validation.
 
+DarkSilk uses ShadowChat from Shadow for encrypted, anonymous and secure messaging between wallets via the wallet network.
+
+Darksilk includes a completely decentralised marketplace, providing anonymity and escrow services for safe and fast trades.
+
 
 **Sandstorm Network Information**
 Ported Masternodes from Darkcoin and rebranded as Stormnodes and modified to use stealth addresses.

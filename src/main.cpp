@@ -1,5 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin developers
+// Copyright (c) 2015 The DarkSilk developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -21,6 +22,7 @@
 #include "sandstorm.h"
 #include "stormnode.h"
 #include "spork.h"
+#include "smessage.h"
 #include "market.h"
 
 using namespace std;
@@ -3808,6 +3810,8 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         if (ProcessBlock(pfrom, &block))
             mapAlreadyAskedFor.erase(inv);
         if (block.nDoS) pfrom->Misbehaving(block.nDoS);
+        if (fSecMsgEnabled)
+            SecureMsgScanBlock(block);
     }
 
 
@@ -3952,13 +3956,14 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 
 
     else
-    {
+    {   
         MarketProcessMessage(pfrom, strCommand, vRecv);
         ProcessMessageSandstorm(pfrom, strCommand, vRecv);
         ProcessMessageStormnode(pfrom, strCommand, vRecv);
         ProcessMessageInstantX(pfrom, strCommand, vRecv);
         ProcessSpork(pfrom, strCommand, vRecv);
-
+    if (fSecMsgEnabled)
+        SecureMsgReceiveData(pfrom, strCommand, vRecv);
         // Ignore unknown commands for extensibility
     }
 
@@ -4263,7 +4268,8 @@ bool SendMessages(CNode* pto, bool fSendTrickle)
         }
         if (!vGetData.empty())
             pto->PushMessage("getdata", vGetData);
-
+        if (fSecMsgEnabled)
+            SecureMsgSendData(pto, fSendTrickle); // should be in cs_main?
     }
     return true;
 }

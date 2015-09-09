@@ -1,5 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin developers
+// Copyright (c) 2015 The DarkSilk developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -133,6 +134,8 @@ extern std::vector<int64_t> sandStormDenominations;
 extern std::map<std::string, std::string> mapArgs;
 extern std::map<std::string, std::vector<std::string> > mapMultiArgs;
 extern bool fDebug;
+extern bool fDebugSmsg;
+extern bool fNoSmsg;
 extern bool fPrintToConsole;
 extern bool fPrintToDebugLog;
 extern bool fDaemon;
@@ -227,6 +230,10 @@ void ReadConfigFile(std::map<std::string, std::string>& mapSettingsRet, std::map
 #ifdef WIN32
 boost::filesystem::path GetSpecialFolderPath(int nFolder, bool fCreate = true);
 #endif
+
+std::string getTimeString(int64_t timestamp, char *buffer, size_t nBuffer);
+std::string bytesReadable(uint64_t nBytes);
+
 void ShrinkDebugFile();
 void GetRandBytes(unsigned char* buf, int num);
 int GetRandInt(int nMax);

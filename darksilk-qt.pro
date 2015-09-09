@@ -1,7 +1,7 @@
 TEMPLATE = app
 TARGET = DarkSilk
 VERSION = 1.0.0.0
-INCLUDEPATH += src src/json src/qt
+INCLUDEPATH += src src/json src/qt src/qt/plugins/mrichtexteditor
 QT += network
 DEFINES += ENABLE_WALLET
 DEFINES += BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE USE_NATIVE_I2P
@@ -190,6 +190,7 @@ HEADERS += src/qt/darksilkgui.h \
     src/irc.h \
     src/net.h \
     src/key.h \
+    src/eckey.h \
     src/db.h \
     src/txdb.h \
     src/txmempool.h \
@@ -268,6 +269,13 @@ HEADERS += src/qt/darksilkgui.h \
     src/qt/addeditstormnode.h \
     src/qt/stormnodeconfigdialog.h \
     src/qt/winshutdownmonitor.h \
+    src/smessage.h \
+    src/qt/messagepage.h \
+    src/qt/messagemodel.h \
+    src/qt/sendmessagesdialog.h \
+    src/qt/sendmessagesentry.h \
+    src/qt/plugins/mrichtexteditor/mrichtextedit.h \
+    src/qt/qvalidatedtextedit.h \
     src/qt/darksilkmarket.h \
     src/qt/buyspage.h \
     src/qt/sellspage.h \
@@ -298,6 +306,7 @@ SOURCES += src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
     src/hash.cpp \
     src/netbase.cpp \
     src/key.cpp \
+    src/eckey.cpp \
     src/script.cpp \
     src/core.cpp \
     src/main.cpp \
@@ -378,6 +387,14 @@ SOURCES += src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
     src/qt/addeditstormnode.cpp \
     src/qt/stormnodeconfigdialog.cpp \
     src/qt/winshutdownmonitor.cpp \
+    src/smessage.cpp \
+    src/qt/messagepage.cpp \
+    src/qt/messagemodel.cpp \
+    src/qt/sendmessagesdialog.cpp \
+    src/qt/sendmessagesentry.cpp \
+    src/qt/qvalidatedtextedit.cpp \
+    src/qt/plugins/mrichtexteditor/mrichtextedit.cpp \
+    src/rpcsmessage.cpp \
     src/qt/darksilkmarket.cpp \
     src/qt/buyspage.cpp \
     src/qt/sellspage.cpp \
@@ -408,6 +425,10 @@ FORMS += \
     src/qt/forms/addeditstormnode.ui \
     src/qt/forms/statisticspage.ui \
     src/qt/forms/stormnodeconfigdialog.ui \
+    src/qt/forms/messagepage.ui \
+    src/qt/forms/sendmessagesentry.ui \
+    src/qt/forms/sendmessagesdialog.ui \
+    src/qt/plugins/mrichtexteditor/mrichtextedit.ui \
     src/qt/forms/darksilkmarket.ui \
     src/qt/forms/buyspage.ui \
     src/qt/forms/sellspage.ui \

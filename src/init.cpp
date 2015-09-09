@@ -1,5 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin developers
+// Copyright (c) 2015 The DarkSilk developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -16,6 +17,7 @@
 #include "spork.h"
 #include "keepass.h"
 #include "stormnodeconfig.h"
+#include "smessage.h"
 #include "market.h"
 
 #ifdef ENABLE_WALLET
@@ -106,6 +108,8 @@ void Shutdown()
     RenameThread("darksilk-shutoff");
     mempool.AddTransactionsUpdated(1);
     StopRPCThreads();
+    SecureMsgShutdown();
+
 #ifdef ENABLE_WALLET
     ShutdownRPCMining();
     if (pwalletMain)
@@ -299,6 +303,11 @@ strUsage += "\n" + _("Stormnode options:") + "\n";
     strUsage += "  -enableinstantx=<n>    " + _("Enable instantx, show confirmations for locked transactions (bool, default: true)") + "\n";
     strUsage += "  -instantxdepth=<n>     " + _("Show N confirmations for a successfully locked transaction (0-9999, default: 1)") + "\n";
 
+    strUsage += _("Secure messaging options:") + "\n" +
+        "  -nosmsg                                  " + _("Disable secure messaging.") + "\n" +
+        "  -debugsmsg                               " + _("Log extra debug messages.") + "\n" +
+        "  -smsgscanchain                           " + _("Scan the block chain for public key addresses on startup.") + "\n";
+
     return strUsage;
 }
 
@@ -460,6 +469,15 @@ bool AppInit2(boost::thread_group& threadGroup)
     const vector<string>& categories = mapMultiArgs["-debug"];
     if (GetBoolArg("-nodebug", false) || find(categories.begin(), categories.end(), string("0")) != categories.end())
         fDebug = false;
+
+    if(fDebug)
+    {
+    fDebugSmsg = true;
+    } else
+    {
+        fDebugSmsg = GetBoolArg("-debugsmsg", false);
+    }
+    fNoSmsg = GetBoolArg("-nosmsg", false);
 
     // Check for -debugnet (deprecated)
     if (GetBoolArg("-debugnet", false))
@@ -898,7 +916,11 @@ bool AppInit2(boost::thread_group& threadGroup)
     LogPrintf("Loaded %i addresses from peers.dat  %dms\n",
            addrman.size(), GetTimeMillis() - nStart);
 
-    // ********************************************************* Step 10.1: start DarkSilkMarket
+    // ********************************************************* Step 10.1: startup secure messaging
+
+    SecureMsgStart(fNoSmsg, GetBoolArg("-smsgscanchain", false));
+
+    // ********************************************************* Step 10.2: start DarkSilkMarket
 
     MarketInit();
     

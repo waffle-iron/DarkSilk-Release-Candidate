@@ -1,5 +1,6 @@
 // Copyright (c) 2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin developers
+// Copyright (c) 2015 The DarkSilk developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -26,6 +27,7 @@
 #include <boost/foreach.hpp>
 #include <boost/iostreams/concepts.hpp>
 #include <boost/iostreams/stream.hpp>
+#include <boost/lexical_cast.hpp>
 #include <boost/shared_ptr.hpp>
 #include <list>
 
@@ -303,10 +305,23 @@ static const CRPCCommand vRPCCommands[] =
     { "resendtx",               &resendtx,               false,     true,      true },
     { "makekeypair",            &makekeypair,            false,     true,      false },
     { "checkkernel",            &checkkernel,            true,      false,     true },
-    { "getnewstealthaddress",   &getnewstealthaddress,   false,  false, true},
-    { "liststealthaddresses",   &liststealthaddresses,   false,  false, true},
-    { "importstealthaddress",   &importstealthaddress,   false,  false, true},
-    { "sendtostealthaddress",   &sendtostealthaddress,   false,  false, true},
+    { "getnewstealthaddress",   &getnewstealthaddress,   false,     false,     true},
+    { "liststealthaddresses",   &liststealthaddresses,   false,     false,     true},
+    { "importstealthaddress",   &importstealthaddress,   false,      false,    true},
+    { "sendtostealthaddress",   &sendtostealthaddress,   false,      false,    true},
+    { "smsgenable",             &smsgenable,             false,     false,     false },
+    { "smsgdisable",            &smsgdisable,            false,     false,     false },
+    { "smsglocalkeys",          &smsglocalkeys,          false,     false,     false },
+    { "smsgoptions",            &smsgoptions,            false,     false,     false },
+    { "smsgscanchain",          &smsgscanchain,          false,     false,     false },
+    { "smsgscanbuckets",        &smsgscanbuckets,        false,     false,     false },
+    { "smsgaddkey",             &smsgaddkey,             false,     false,     false },
+    { "smsggetpubkey",          &smsggetpubkey,          false,     false,     false },
+    { "smsgsend",               &smsgsend,               false,     false,     false },
+    { "smsgsendanon",           &smsgsendanon,           false,     false,     false },
+    { "smsginbox",              &smsginbox,              false,     false,     false },
+    { "smsgoutbox",             &smsgoutbox,             false,     false,     false },
+    { "smsgbuckets",            &smsgbuckets,            false,     false,     false },
 #endif
 };
 

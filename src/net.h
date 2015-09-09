@@ -1,5 +1,6 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin developers
+// Copyright (c) 2015 The DarkSilk developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef DARKSILK_NET_H
@@ -191,9 +192,29 @@ public:
     int readData(const char *pch, unsigned int nBytes);
 };
 
-
-
-
+class SecMsgNode
+{
+public:
+    SecMsgNode()
+    {
+        lastSeen        = 0;
+        lastMatched     = 0;
+        ignoreUntil     = 0;
+        nWakeCounter    = 0;
+        nPeerId         = 0;
+        fEnabled        = false;
+    };
+    
+    ~SecMsgNode() {};
+    
+    int64_t                     lastSeen;
+    int64_t                     lastMatched;
+    int64_t                     ignoreUntil;
+    uint32_t                    nWakeCounter;
+    uint32_t                    nPeerId;
+    bool                        fEnabled;
+    
+};
 
 /** Information about a peer */
 class CNode
@@ -272,6 +293,8 @@ public:
     std::vector<CInv> vInventoryToSend;
     CCriticalSection cs_inventory;
     std::multimap<int64_t, CInv> mapAskFor;
+
+    SecMsgNode smsgData;
 
     // Ping time measurement:
     // The pong reply we're expecting, or 0 if no pong expected.

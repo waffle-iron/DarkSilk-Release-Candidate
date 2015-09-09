@@ -5,19 +5,22 @@
 #include <QSystemTrayIcon>
 
 #include <stdint.h>
+#include "ui_interface.h"
 
 class TransactionTableModel;
 class ClientModel;
 class WalletModel;
+class MessageModel;
 class TransactionView;
 class OverviewPage;
-class BlockBrowser;
-class StatisticsPage;
 class AddressBookPage;
 class SendCoinsDialog;
 class SignVerifyMessageDialog;
 class Notificator;
 class RPCConsole;
+class BlockBrowser;
+class StatisticsPage;
+class MessagePage;
 class DarkSilkMarket;
 class BuysPage;
 class SellsPage;
@@ -52,6 +55,11 @@ public:
         functionality.
     */
     void setWalletModel(WalletModel *walletModel);
+    /** Set the message model.
+        The message model represents encryption message database, and offers access to the list of messages, address book and sending
+        functionality.
+    */    
+    void setMessageModel(MessageModel *messageModel);
 
    /// Get window identifier of QMainWindow (DarkSilkGUI)
    WId getMainWinId() const;
@@ -65,6 +73,7 @@ protected:
 private:
     ClientModel *clientModel;
     WalletModel *walletModel;
+    MessageModel *messageModel;
 
     QToolBar *toolbar;
 
@@ -73,13 +82,14 @@ private:
     QWidget *overviewWidget;
     QScrollArea *overviewScroll;
     OverviewPage *overviewPage;
-    BlockBrowser *blockBrowser;
-    StatisticsPage *statisticsPage;
     QWidget *transactionsPage;
     AddressBookPage *addressBookPage;
     AddressBookPage *receiveCoinsPage;
     SendCoinsDialog *sendCoinsPage;
     SignVerifyMessageDialog *signVerifyMessageDialog;
+    BlockBrowser *blockBrowser;
+    StatisticsPage *statisticsPage;
+    MessagePage *messagePage;
     DarkSilkMarket *darksilkMarket;
     BuysPage *buysPage;
     SellsPage *sellsPage;
@@ -100,7 +110,6 @@ private:
 
     QMenuBar *appMenuBar;
     QAction *overviewAction;
-    QAction *blockAction;
     QAction *historyAction;
     QAction *quitAction;
     QAction *sendCoinsAction;
@@ -119,7 +128,9 @@ private:
     QAction *lockWalletAction;
     QAction *aboutQtAction;
     QAction *openRPCConsoleAction;
+    QAction *blockAction;
     QAction *statisticsAction;
+    QAction *messageAction;
     QAction *darksilkMarketAction;
     QAction *buysPageAction;
     QAction *sellsPageAction;
@@ -145,8 +156,6 @@ private:
     /** Create system tray (notification) icon */
     void createTrayIcon();
 
-    void clearWidgets();
-
 public slots:
 #ifdef USE_NATIVE_I2P
     void setNumI2PConnections(int count);
@@ -168,7 +177,7 @@ public slots:
        @param[in] style     style definitions (icon and used buttons - buttons only for message boxes)
                             @see CClientUIInterface::MessageBoxFlags
     */
-    void message(const QString &title, const QString &message, bool modal, unsigned int style);
+    void message(const QString &title, const QString &message, bool modal, unsigned int style = CClientUIInterface::MSG_ERROR);
     /** Asks the user whether to pay the transaction fee or to cancel the transaction.
        It is currently not possible to pass a return value to another thread through
        BlockingQueuedConnection, so an indirected pointer is used.
@@ -186,8 +195,6 @@ public slots:
 private slots:
     /** Switch to overview (home) page */
     void gotoOverviewPage();
-    /** Switch to block explorer*/
-    void gotoBlockBrowser();
     /** Switch to history (transactions) page */
     void gotoHistoryPage();
     /** Switch to address book page */
@@ -196,8 +203,12 @@ private slots:
     void gotoReceiveCoinsPage();
     /** Switch to send coins page */
     void gotoSendCoinsPage();
+    /** Switch to block explorer*/
+    void gotoBlockBrowser();
     /** Switch to Statistics Page*/
     void gotoStatisticsPage();
+    /** Switch to Message Page*/
+    void gotoMessagePage();
     /** Switch to DarkSilkMarket Page*/
     void gotoDarkSilkMarket();
     /** Switch to Buys Page*/
@@ -227,6 +238,7 @@ private slots:
         The new items are those between start and end inclusive, under the given parent item.
     */
     void incomingTransaction(const QModelIndex & parent, int start, int end);
+    void incomingMessage(const QModelIndex & parent, int start, int end);
     /** Encrypt the wallet */
     void encryptWallet();
     /** Backup the wallet */

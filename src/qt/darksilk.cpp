@@ -2,11 +2,10 @@
  * W.J. van der Laan 2011-2015
  */
 
-#include <QApplication>
-
 #include "darksilkgui.h"
 #include "clientmodel.h"
 #include "walletmodel.h"
+#include "messagemodel.h"
 #include "optionsmodel.h"
 #include "guiutil.h"
 #include "guiconstants.h"
@@ -16,11 +15,11 @@
 #include "ui_interface.h"
 #include "paymentserver.h"
 #include "winshutdownmonitor.h"
-
 #ifdef Q_OS_MAC
 #include "macdockiconhandler.h"
 #endif
 
+#include <QApplication>
 #include <QMessageBox>
 #include <QFile>
 #include <QDir>
@@ -301,9 +300,11 @@ int main(int argc, char *argv[])
 
                 ClientModel clientModel(&optionsModel);
                 WalletModel walletModel(pwalletMain, &optionsModel);
+                MessageModel messageModel(pwalletMain, &walletModel);
 
                 window.setClientModel(&clientModel);
                 window.setWalletModel(&walletModel);
+                window.setMessageModel(&messageModel);
 
 #if defined(Q_OS_WIN) && QT_VERSION >= 0x050000
                 app.installNativeEventFilter(new WinShutdownMonitor());
@@ -333,6 +334,7 @@ int main(int argc, char *argv[])
                 window.hide();
                 window.setClientModel(0);
                 window.setWalletModel(0);
+                window.setMessageModel(0);
                 guiref = 0;
             }
             // Shutdown the core and its threads, but don't exit DarkSilk-Qt here
