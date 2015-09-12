@@ -18,8 +18,10 @@
 
 class CValidationState;
 
-static const int64_t SANDSTORM_COLLATERAL = (500*COIN);
-static const int64_t SANDSTORM_FEE = (0.00925*COIN);
+static const int64_t DGW3 = 3; // Dark Gravity Well from Block 3
+
+static const int64_t SANDSTORM_COLLATERAL = (42000*COIN);
+static const int64_t SANDSTORM_FEE = (0.01*COIN);
 static const int64_t SANDSTORM_POOL_MAX = (4999.99*COIN);
 
 
@@ -168,6 +170,7 @@ void ThreadImport(std::vector<boost::filesystem::path> vImportFiles);
 
 bool CheckProofOfWork(uint256 hash, unsigned int nBits);
 unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfStake);
+unsigned int static DarkGravityWave3(const CBlockIndex* pindexLast, bool fProofOfStake);
 int64_t GetProofOfWorkReward(int64_t nFees);
 int64_t GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees);
 unsigned int ComputeMinWork(unsigned int nBase, int64_t nTime);

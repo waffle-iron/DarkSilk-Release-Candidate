@@ -12,9 +12,9 @@ What is DarkSilk?
 Scrypt
 PoW/PoS
 PoS Interest - 4.2% Annually
-420,001 Blocks for PoW Phase
+42,001 Blocks for PoW Phase
 4 Minute Target Spacing
-Difficulty Retargets Every Block
+Dark Gravity Well 3
 42 Coins Per Block
 42 Blocks for DarkSilk to be Minted/Mature/Spendable
 4 Hour Minimum Stake Age

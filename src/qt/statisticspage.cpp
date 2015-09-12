@@ -45,9 +45,9 @@ void StatisticsPage::updateStatistics() {
     QString height = QString::number(nHeight);
     QString phase = "";
 
-    if (pindexBest->nHeight < 420001) {
+    if (pindexBest->nHeight < 42001) {
         phase = "<p align=\"center\">PoW/PoS</p>";
-        ui->progressBar->setMaximum(420001);
+        ui->progressBar->setMaximum(42001);
     } else {
         ui->progressBar->hide();
         phase = "<p align=\"center\">PoS</p>";
