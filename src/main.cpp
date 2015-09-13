@@ -1130,7 +1130,7 @@ int64_t GetProofOfWorkReward(int64_t nFees)
 {
     if (pindexBest->nHeight == 1)
         {  
-            int64_t nSubsidy = 44999958 * COIN;
+            int64_t nSubsidy = 44999958 * COIN; // Weaver Collateral
             LogPrint("creation", "GetProofOfWorkReward() : create=%s nSubsidy=%d\n", FormatMoney(nSubsidy), nSubsidy);
             return nSubsidy + nFees;
         }
