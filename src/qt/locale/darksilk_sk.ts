@@ -1820,8 +1820,8 @@ To znamená, že je potrebný poplatok aspoň %2.</translation>
     </message>
     <message>
         <location filename="../sendcoinsdialog.cpp" line="-173"/>
-        <source>Enter a DarkSilk address (e.g. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
-        <translation>Zadajte DarkSilk adresu (napr. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
+        <source>Enter a DarkSilk address (e.g. D7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
+        <translation>Zadajte DarkSilk adresu (napr. D7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
 alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
@@ -1955,10 +1955,10 @@ alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
     <message>
         <location line="+34"/>
-        <source>The address to send the payment to (e.g. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
+        <source>The address to send the payment to (e.g. D7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
 alternate-background-color: rgb(86, 0, 120);)</source>
-        <translation>Adresa pre poslanie platby (napr. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
+        <translation>Adresa pre poslanie platby (napr. D7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
 alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
@@ -2000,8 +2000,8 @@ alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a DarkSilk address (e.g. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
-        <translation>Zadajte DarkSilk adresu (napr. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
+        <source>Enter a DarkSilk address (e.g. D7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
+        <translation>Zadajte DarkSilk adresu (napr. D7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
 alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
@@ -2026,10 +2026,10 @@ alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
     <message>
         <location line="+18"/>
-        <source>The address to sign the message with (e.g. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
+        <source>The address to sign the message with (e.g. D7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
 alternate-background-color: rgb(86, 0, 120);)</source>
-        <translation>Adresa na podpísanie správy (napr. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
+        <translation>Adresa na podpísanie správy (napr. D7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
 alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
@@ -2094,10 +2094,10 @@ alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
     <message>
         <location line="+21"/>
-        <source>The address the message was signed with (e.g. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
+        <source>The address the message was signed with (e.g. D7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
 alternate-background-color: rgb(86, 0, 120);)</source>
-        <translation>Adresa správy bola podpísaná (napr. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
+        <translation>Adresa správy bola podpísaná (napr. D7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
 alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
@@ -2114,8 +2114,8 @@ alternate-background-color: rgb(86, 0, 120);)</translation>
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a DarkSilk address (e.g. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
-        <translation>Zadajte DarkSilk adresu (napr. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
+        <source>Enter a DarkSilk address (e.g. D7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
+        <translation>Zadajte DarkSilk adresu (napr. D7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
 alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>

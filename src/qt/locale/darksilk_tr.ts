@@ -1821,8 +1821,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
     <message>
         <location filename="../sendcoinsdialog.cpp" line="-173"/>
-        <source>Enter a DarkSilk address (e.g. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
-        <translation>Bir DarkSilk adresi gir (örn: S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
+        <source>Enter a DarkSilk address (e.g. D7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
+        <translation>Bir DarkSilk adresi gir (örn: D7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
 alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
@@ -1956,7 +1956,7 @@ alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
     <message>
         <location line="+34"/>
-        <source>The address to send the payment to (e.g. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
+        <source>The address to send the payment to (e.g. D7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
 alternate-background-color: rgb(86, 0, 120);)</source>
         <translation type="unfinished"/>
@@ -1999,8 +1999,8 @@ alternate-background-color: rgb(86, 0, 120);)</source>
     </message>
     <message>
         <location filename="../sendcoinsentry.cpp" line="+1"/>
-        <source>Enter a DarkSilk address (e.g. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
-        <translation>Bir DarkSilk adresi girin (örn: S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
+        <source>Enter a DarkSilk address (e.g. D7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
+        <translation>Bir DarkSilk adresi girin (örn: D7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
 alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
@@ -2025,10 +2025,10 @@ alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
     <message>
         <location line="+18"/>
-        <source>The address to sign the message with (e.g. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
+        <source>The address to sign the message with (e.g. D7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
 alternate-background-color: rgb(86, 0, 120);)</source>
-        <translation>Mesajın imzalanacağı adres (örn: S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
+        <translation>Mesajın imzalanacağı adres (örn: D7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
 alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
@@ -2093,10 +2093,10 @@ alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
     <message>
         <location line="+21"/>
-        <source>The address the message was signed with (e.g. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
+        <source>The address the message was signed with (e.g. D7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
 alternate-background-color: rgb(86, 0, 120);)</source>
-        <translation>Mesajın imzalandığı adres (örn: S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
+        <translation>Mesajın imzalandığı adres (örn: D7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
 alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
@@ -2113,8 +2113,8 @@ alternate-background-color: rgb(86, 0, 120);)</translation>
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>
         <location line="+3"/>
-        <source>Enter a DarkSilk address (e.g. S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
-        <translation>Bir DarkSilk adresi girin (örn: S7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
+        <source>Enter a DarkSilk address (e.g. D7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i)</source>
+        <translation>Bir DarkSilk adresi girin (örn: D7fjE4R4r2RoEdqYk3QsAqFckyf9pRHN6i
 background-color: rgb(0, 0, 0);
 alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
