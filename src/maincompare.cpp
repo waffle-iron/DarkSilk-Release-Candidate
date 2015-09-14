@@ -42,13 +42,13 @@ CTxMemPool mempool;
 map<uint256, CBlockIndex*> mapBlockIndex;
 set<pair<COutPoint, unsigned int> > setStakeSeen;
 
-CBigNum bnProofOfStakeLimit(~uint256(0) >> 20); //PoS starting difficulty
+CBigNum bnProofOfStakeLimit(~uint256(0) >> 20);
 
 
 unsigned int nStakeMinAge = 4 * 60 * 60; // 4 hours
 unsigned int nModifierInterval = 4 * 60; // 4 minutes to elapse before new modifier is computed
 
-int nCoinbaseMaturity = 42; // 42 blocks until coins are mature
+int nCoinbaseMaturity = 42;
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
 
@@ -1130,7 +1130,7 @@ int64_t GetProofOfWorkReward(int64_t nFees)
 {
     if (pindexBest->nHeight == 1)
         {  
-            int64_t nSubsidy = 44999958 * COIN; // Weaver Collateral
+            int64_t nSubsidy = 44999958 * COIN;
             LogPrint("creation", "GetProofOfWorkReward() : create=%s nSubsidy=%d\n", FormatMoney(nSubsidy), nSubsidy);
             return nSubsidy + nFees;
         }
