@@ -35,6 +35,8 @@ int64_t GetAdjustedTime()
     return GetTime() + GetTimeOffset();
 }
 
+#define DARKSILK_TIMEDATA_MAX_SAMPLES 200
+
 void AddTimeData(const CNetAddr& ip, int64_t nTime)
 {
     int64_t nOffsetSample = nTime - GetTime();
@@ -42,11 +44,13 @@ void AddTimeData(const CNetAddr& ip, int64_t nTime)
     LOCK(cs_nTimeOffset);
     // Ignore duplicates
     static set<CNetAddr> setKnown;
+    if (setKnown.size() == DARKSILK_TIMEDATA_MAX_SAMPLES)
+        return;
     if (!setKnown.insert(ip).second)
         return;
 
     // Add data
-    static CMedianFilter<int64_t> vTimeOffsets(200,0);
+    static CMedianFilter<int64_t> vTimeOffsets(DARKSILK_TIMEDATA_MAX_SAMPLES, 0);
     vTimeOffsets.input(nOffsetSample);
     LogPrintf("Added time data, samples %d, offset %+d (%+d minutes)\n", vTimeOffsets.size(), nOffsetSample, nOffsetSample/60);
 
