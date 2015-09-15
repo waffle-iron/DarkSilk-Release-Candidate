@@ -18,6 +18,8 @@
 
 class CValidationState;
 
+static const int64_t DGW3 = 420; // Dark Gravity Well 3 starts on block 420
+
 static const int64_t SANDSTORM_COLLATERAL = (42000*COIN); //Stormnode Collateral Fee
 static const int64_t SANDSTORM_FEE = (0.01*COIN); //SandStorm sending fee
 static const int64_t SANDSTORM_POOL_MAX = (4999.99*COIN);
@@ -86,7 +88,7 @@ static const int64_t MIN_RELAY_TX_FEE = MIN_TX_FEE;
 static const int64_t MAX_MONEY = 90000000 * COIN; //45,000,000 instamined from blocks 1 & 2 for Weaver Collateral | 1,679,958 PoW Generated Coins  
 inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 /** Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp. */
-static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov  5 00:53:20 1985 UTC
+static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov 5th 00:53:20 1985 UTC
 
 inline bool IsProtocolV1RetargetingFixed(int nHeight) { return TestNet() || nHeight > 0; }
 inline bool IsProtocolV2(int nHeight) { return TestNet() || nHeight > 0; }

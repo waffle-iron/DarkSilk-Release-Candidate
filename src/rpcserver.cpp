@@ -322,6 +322,10 @@ static const CRPCCommand vRPCCommands[] =
     { "smsginbox",              &smsginbox,              false,     false,     false },
     { "smsgoutbox",             &smsgoutbox,             false,     false,     false },
     { "smsgbuckets",            &smsgbuckets,            false,     false,     false },
+    { "marketalllistings",      &marketalllistings,      false,     false,     false },
+    { "marketsearchlistings",   &marketsearchlistings,   false,     false,     false },
+    { "marketbuy",              &marketbuy,              false,     false,     false },
+    { "marketsell",             &marketsell,             false,     false,     false },
 #endif
 };
 

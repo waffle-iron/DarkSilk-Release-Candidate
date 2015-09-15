@@ -276,6 +276,7 @@ HEADERS += src/qt/darksilkgui.h \
     src/qt/sendmessagesentry.h \
     src/qt/plugins/mrichtexteditor/mrichtextedit.h \
     src/qt/qvalidatedtextedit.h \
+    src/rpcmarket.h \
     src/qt/darksilkmarket.h \
     src/qt/buyspage.h \
     src/qt/sellspage.h \
@@ -395,6 +396,7 @@ SOURCES += src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
     src/qt/qvalidatedtextedit.cpp \
     src/qt/plugins/mrichtexteditor/mrichtextedit.cpp \
     src/rpcsmessage.cpp \
+    src/rpcmarket.cpp \
     src/qt/darksilkmarket.cpp \
     src/qt/buyspage.cpp \
     src/qt/sellspage.cpp \
