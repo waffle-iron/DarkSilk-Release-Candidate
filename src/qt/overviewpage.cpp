@@ -176,7 +176,7 @@ void OverviewPage::handleTransactionClicked(const QModelIndex &index)
 
 OverviewPage::~OverviewPage()
 {
-    disconnect(timer, SIGNAL(timeout()), this, SLOT(sandStormStatus()));
+    if (!fLiteMode && !fStormNode) disconnect(timer, SIGNAL(timeout()), this, SLOT(sandStormStatus()));
     delete ui;
 }
 
