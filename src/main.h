@@ -18,7 +18,8 @@
 
 class CValidationState;
 
-static const int64_t DGW3 = 420; // Dark Gravity Well 3 starts on block 420
+#define START_MASTERNODE_PAYMENTS_TESTNET 1446335999 //Wed, 31 Oct 2015 23:59:59 GMT
+#define START_MASTERNODE_PAYMENTS 1446335999 //Wed, 31 Oct 2015 23:59:59 GMT
 
 static const int64_t SANDSTORM_COLLATERAL = (42000*COIN); // Stormnode Collateral Fee
 static const int64_t SANDSTORM_FEE = (0.01*COIN); // SandStorm sending fee

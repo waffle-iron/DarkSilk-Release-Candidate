@@ -3489,12 +3489,17 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
     // Stormnode Payments
     int payments = 1;
     // start stormnode payments
-    bool bStormNodePayment = true;
+    bool bStormNodePayment = false;
 
-    if ( Params().NetworkID() == CChainParams::TESTNET )
-        {
+    if ( Params().NetworkID() == CChainParams::TESTNET ){
+        if (GetTime() > START_STORMNODE_PAYMENTS_TESTNET ){
             bStormNodePayment = true;
         }
+    }else{
+        if (GetTime() > START_STORMNODE_PAYMENTS){
+            bStormNodePayment = true;
+        }
+    }
 
     CScript payee;
     bool hasPayment = true;
