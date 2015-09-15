@@ -18,15 +18,15 @@
 
 class CValidationState;
 
-#define START_STORMNODE_PAYMENTS_TESTNET 1446335999 //Wed, 31 Oct 2015 23:59:59 GMT
-#define START_STORMNODE_PAYMENTS 1446335999 //Wed, 31 Oct 2015 23:59:59 GMT
+#define START_STORMNODE_PAYMENTS_TESTNET 1446335999 // TESTNET Stormnode Payment Enforcement starts onWed, 31 Oct 2015 23:59:59 GMT
+#define START_STORMNODE_PAYMENTS 1446335999 // MAINNET Stormnode Payment Enforcement starts on Wed, 31 Oct 2015 23:59:59 GMT
 
-static const int64_t SANDSTORM_COLLATERAL = (42000*COIN); // Stormnode Collateral Fee
-static const int64_t SANDSTORM_FEE = (0.01*COIN); // SandStorm sending fee
+static const int64_t SANDSTORM_COLLATERAL = (42000*COIN); // 42,000DRKSLK Stormnode Collateral Fee
+static const int64_t SANDSTORM_FEE = (0.01*COIN); // SandStorm sending fee of 0.01DRKSLK
 static const int64_t SANDSTORM_POOL_MAX = (4999.99*COIN);
 
-static const int64_t COIN_YEAR_REWARD = 0.042 * COIN; // 4.2% stake
-static const int64_t MAX_MINT_PROOF_OF_STAKE = 0.042 * COIN; // 4.2% stake
+static const int64_t COIN_YEAR_REWARD = 0.042 * COIN; // 4.2% Proof of Stake reward per annum
+static const int64_t MAX_MINT_PROOF_OF_STAKE = 0.042 * COIN; // 4.2% Max Proof of Stake reward per annum
 
 /*
     At 15 signatures, 1/2 of the stormnode network can be owned by
