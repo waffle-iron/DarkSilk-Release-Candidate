@@ -37,10 +37,8 @@ int64_t GetAdjustedTime()
 
 #define DARKSILK_TIMEDATA_MAX_SAMPLES 200
 
-void AddTimeData(const CNetAddr& ip, int64_t nTime)
+void AddTimeData(const CNetAddr& ip, int64_t nOffsetSample)
 {
-    int64_t nOffsetSample = nTime - GetTime();
-
     LOCK(cs_nTimeOffset);
     // Ignore duplicates
     static set<CNetAddr> setKnown;
