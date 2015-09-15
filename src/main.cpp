@@ -1271,7 +1271,7 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
     const CBlockIndex* pindexPrevPrev = GetLastBlockIndex(pindexPrev->pprev, fProofOfStake);
     if (pindexPrevPrev->pprev == NULL)
         return bnTargetLimit.GetCompact(); // second block
-    if (pindexPrev->nHeight > DGW3) // block 420
+    if (pindexPrev->nHeight > DGW3)
        return DarkGravityWave3(pindexLast, fProofOfStake); // block 420
    else
    {
