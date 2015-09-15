@@ -20,12 +20,12 @@ class CValidationState;
 
 static const int64_t DGW3 = 420; // Dark Gravity Well 3 starts on block 420
 
-static const int64_t SANDSTORM_COLLATERAL = (42000*COIN); //Stormnode Collateral Fee
-static const int64_t SANDSTORM_FEE = (0.01*COIN); //SandStorm sending fee
+static const int64_t SANDSTORM_COLLATERAL = (42000*COIN); // Stormnode Collateral Fee
+static const int64_t SANDSTORM_FEE = (0.01*COIN); // SandStorm sending fee
 static const int64_t SANDSTORM_POOL_MAX = (4999.99*COIN);
 
-static const int64_t COIN_YEAR_REWARD = 0.042 * COIN; //4.2% stake
-static const int64_t MAX_MINT_PROOF_OF_STAKE = 0.042 * COIN; //4.2% stake
+static const int64_t COIN_YEAR_REWARD = 0.042 * COIN; // 4.2% stake
+static const int64_t MAX_MINT_PROOF_OF_STAKE = 0.042 * COIN; // 4.2% stake
 
 /*
     At 15 signatures, 1/2 of the stormnode network can be owned by
@@ -63,7 +63,7 @@ class CWallet;
 
 
 /** The maximum allowed size for a serialized block, in bytes (network rule) */
-static const unsigned int MAX_BLOCK_SIZE = 50000000; //50MB Maximum Block Size (50x Bitcoin Core)
+static const unsigned int MAX_BLOCK_SIZE = 50000000; // 50MB Maximum Block Size (50x Bitcoin Core)
 /** The maximum size for mined blocks */
 static const unsigned int MAX_BLOCK_SIZE_GEN = MAX_BLOCK_SIZE/2;
 /** The maximum size for transactions we're willing to relay/mine **/
@@ -85,7 +85,7 @@ static const int64_t MIN_TX_FEE = 1000;
 /** Fees smaller than this (in satoshi) are considered zero fee (for relaying) */
 static const int64_t MIN_RELAY_TX_FEE = MIN_TX_FEE;
 /** No amount larger than this (in satoshi) is valid */
-static const int64_t MAX_MONEY = 90000000 * COIN; //45,000,000 instamined from blocks 1 & 2 for Weaver Collateral (main.cpp lines 1129-1143) | 1,679,958 PoW Generated Coins  
+static const int64_t MAX_MONEY = 90000000 * COIN; // 45,000,000 instamined from blocks 1 & 2 for Weaver Collateral (main.cpp lines 1129-1143) | 1,679,958 PoW Generated Coins  
 inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 /** Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp. */
 static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov 5th 00:53:20 1985 UTC
