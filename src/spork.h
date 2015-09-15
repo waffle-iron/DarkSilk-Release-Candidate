@@ -26,7 +26,7 @@ using namespace boost;
 
 
 #define SPORK_1_STORMNODE_PAYMENTS_ENFORCEMENT_DEFAULT        1446335999 //Wed, 31 Oct 2015 23:59:59 GMT
-#define SPORK_2_MAX_VALUE_DEFAULT                             500        //500 DRKSLK 
+#define SPORK_2_MAX_VALUE_DEFAULT                             42000        //42000 DRKSLK 
 #define SPORK_3_REPLAY_BLOCKS_DEFAULT                         0
 
 class CSporkMessage;
