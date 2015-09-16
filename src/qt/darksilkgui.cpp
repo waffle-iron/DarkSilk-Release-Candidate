@@ -525,7 +525,6 @@ void DarkSilkGUI::createMenuBar()
     help->addAction(aboutQtAction);
 }
 
-/*
 static QWidget* makeToolBarSpacer() 
 {
     QWidget* spacer = new QWidget();
@@ -535,7 +534,6 @@ static QWidget* makeToolBarSpacer()
 
     return spacer;
 }
-*/
 
 void DarkSilkGUI::createToolBars() 
 {
@@ -582,7 +580,7 @@ void DarkSilkGUI::createToolBars()
     netLabel->setStyleSheet("#netLabel { color: #ffffff; }");
 
     toolbar->addWidget(menuToolButton);
-    //toolbar->addWidget(makeToolBarSpacer());
+    toolbar->addWidget(makeToolBarSpacer());
     toolbar->addWidget(netLabel);
     toolbar->setOrientation(Qt::Horizontal);
     toolbar->setMovable(false);
