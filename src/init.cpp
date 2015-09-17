@@ -296,7 +296,7 @@ strUsage += "\n" + _("Stormnode options:") + "\n";
     strUsage += "\n" + _("Sandstorm options:") + "\n";
     strUsage += "  -enablesandstorm=<n>          " + _("Enable use of automated sandstorm for funds stored in this wallet (0-1, default: 0)") + "\n";
     strUsage += "  -sandstormrounds=<n>          " + _("Use N separate stormnodes to anonymize funds  (2-8, default: 2)") + "\n";
-    strUsage += "  -anonymizesilkamount=<n> " + _("Keep N DarkSilk anonymized (default: 0)") + "\n";
+    strUsage += "  -anonymizedarksilkamount=<n> " + _("Keep N DarkSilk anonymized (default: 0)") + "\n";
     strUsage += "  -liquidityprovider=<n>       " + _("Provide liquidity to Sandstorm by infrequently mixing coins on a continual basis (0-100, default: 0, 1=very frequent, high fees, 100=very infrequent, low fees)") + "\n";
 
     strUsage += "\n" + _("InstantX options:") + "\n";
@@ -989,15 +989,15 @@ bool AppInit2(boost::thread_group& threadGroup)
         nSandstormRounds = 99999;
     }
 
-    nAnonymizeSilkAmount = GetArg("-anonymizesilkamount", 0);
-    if(nAnonymizeSilkAmount > 999999) nAnonymizeSilkAmount = 999999;
-    if(nAnonymizeSilkAmount < 2) nAnonymizeSilkAmount = 2;
+    nAnonymizeDarkSilkAmount = GetArg("-anonymizedarksilkamount", 0);
+    if(nAnonymizeDarkSilkAmount > 999999) nAnonymizeDarkSilkAmount = 999999;
+    if(nAnonymizeDarkSilkAmount < 2) nAnonymizeDarkSilkAmount = 2;
 
     bool fEnableInstantX = GetBoolArg("-enableinstantx", true);
     if(fEnableInstantX){
         nInstantXDepth = GetArg("-instantxdepth", 5);
         if(nInstantXDepth > 60) nInstantXDepth = 60;
-        if(nInstantXDepth < 0) nAnonymizeSilkAmount = 0;
+        if(nInstantXDepth < 0) nAnonymizeDarkSilkAmount = 0;
     } else {
         nInstantXDepth = 0;
     }
@@ -1011,7 +1011,7 @@ bool AppInit2(boost::thread_group& threadGroup)
     LogPrintf("fLiteMode %d\n", fLiteMode);
     LogPrintf("nInstantXDepth %d\n", nInstantXDepth);
     LogPrintf("Sandstorm rounds %d\n", nSandstormRounds);
-    LogPrintf("Anonymize DarkSilk Amount %d\n", nAnonymizeSilkAmount);
+    LogPrintf("Anonymize DarkSilk Amount %d\n", nAnonymizeDarkSilkAmount);
 
     /* Denominations
        A note about convertability. Within Sandstorm pools, each denomination

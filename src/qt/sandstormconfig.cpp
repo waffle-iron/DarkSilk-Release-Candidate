@@ -84,8 +84,8 @@ void SandstormConfig::configure(bool enabled, int coins, int rounds) {
     QSettings settings;
 
     settings.setValue("nSandstormRounds", rounds);
-    settings.setValue("nAnonymizeSilkAmount", coins);
+    settings.setValue("nAnonymizeDarkSilkAmount", coins);
 
     nSandstormRounds = rounds;
-    nAnonymizeSilkAmount = coins;
+    nAnonymizeDarkSilkAmount = coins;
 }

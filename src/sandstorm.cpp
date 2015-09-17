@@ -1451,7 +1451,7 @@ bool CSandStormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
         // should have some additional amount for them
         nLowestDenom += (SANDSTORM_COLLATERAL*4)+SANDSTORM_FEE*2;
 
-    int64_t nBalanceNeedsAnonymized = nAnonymizeSilkAmount*COIN - pwalletMain->GetAnonymizedBalance();
+    int64_t nBalanceNeedsAnonymized = nAnonymizeDarkSilkAmount*COIN - pwalletMain->GetAnonymizedBalance();
 
     // if balanceNeedsAnonymized is more than pool max, take the pool max
     if(nBalanceNeedsAnonymized > SANDSTORM_POOL_MAX) nBalanceNeedsAnonymized = SANDSTORM_POOL_MAX;
@@ -2256,7 +2256,7 @@ void ThreadCheckSandStormPool()
                     sandStormPool.SendRandomPaymentToSelf();
                     int nLeftToAnon = ((pwalletMain->GetBalance() - pwalletMain->GetAnonymizedBalance())/COIN)-3;
                     if(nLeftToAnon > 999) nLeftToAnon = 999;
-                    nAnonymizeSilkAmount = (rand() % nLeftToAnon)+3;
+                    nAnonymizeDarkSilkAmount = (rand() % nLeftToAnon)+3;
                 } else {
                     sandStormPool.DoAutomaticDenominating();
                 }

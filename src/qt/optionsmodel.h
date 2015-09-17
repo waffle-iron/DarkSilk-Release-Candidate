@@ -34,7 +34,7 @@ public:
         MinimizeCoinAge,   // bool
         UseBlackTheme,     // bool
         SandstormRounds,    // int
-        anonymizeSilkAmount, //int
+        anonymizeDarkSilkAmount, //int
 #ifdef USE_NATIVE_I2P
         I2PUseI2POnly,              // bool
         I2PSAMHost,                 // QString
@@ -103,7 +103,7 @@ signals:
     void reserveBalanceChanged(qint64);
     void coinControlFeaturesChanged(bool);
     void sandstormRoundsChanged(int);
-    void anonymizeSilkAmountChanged(int);
+    void anonymizeDarkSilkAmountChanged(int);
 };
 
 #endif // OPTIONSMODEL_H

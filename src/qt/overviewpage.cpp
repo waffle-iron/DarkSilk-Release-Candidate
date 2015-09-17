@@ -302,7 +302,7 @@ void OverviewPage::updateSandstormProgress()
     }
 
     //Get the anon threshold
-    int64_t nMaxToAnonymize = nAnonymizeSilkAmount*COIN;
+    int64_t nMaxToAnonymize = nAnonymizeDarkSilkAmount*COIN;
 
     // If it's more than the wallet amount, limit to that.
     if(nMaxToAnonymize > nBalance) nMaxToAnonymize = nBalance;
@@ -357,7 +357,7 @@ void OverviewPage::sandStormStatus()
         strSettings.prepend(QString::number(nSandstormRounds)).prepend(" / ");
         strSettings.prepend(DarkSilkUnits::formatWithUnit(
             walletModel->getOptionsModel()->getDisplayUnit(),
-            nAnonymizeSilkAmount * COIN)
+            nAnonymizeDarkSilkAmount * COIN)
         );
 
         ui->labelAmountRounds->setText(strSettings);
@@ -517,7 +517,7 @@ void OverviewPage::toggleSandstorm(){
 
         /* show sandstorm configuration if client has defaults set */
 
-        if(nAnonymizeSilkAmount == 0){
+        if(nAnonymizeDarkSilkAmount == 0){
             SandstormConfig dlg(this);
             dlg.setModel(walletModel);
             dlg.exec();

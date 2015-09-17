@@ -75,7 +75,7 @@ string strStormNodeAddr = "";
 bool fLiteMode = false;
 int nInstantXDepth = 1;
 int nSandstormRounds = 2;
-int nAnonymizeSilkAmount = 500;
+int nAnonymizeDarkSilkAmount = 500;
 int nLiquidityProvider = 0;
 /** Spork enforcement enabled time */
 int64_t enforceStormnodePaymentsTime = 4085657524;

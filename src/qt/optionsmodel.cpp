@@ -122,11 +122,11 @@ void OptionsModel::Init()
     if (!settings.contains("nSandstormRounds"))
         settings.setValue("nSandstormRounds", 2);
 
-    if (!settings.contains("nAnonymizeSilkAmount"))
-        settings.setValue("nAnonymizeSilkAmount", 1000);
+    if (!settings.contains("nAnonymizeDarkSilkAmount"))
+        settings.setValue("nAnonymizeDarkSilkAmount", 1000);
 
     nSandstormRounds = settings.value("nSandstormRounds").toLongLong();
-    nAnonymizeSilkAmount = settings.value("nAnonymizeSilkAmount").toLongLong();
+    nAnonymizeDarkSilkAmount = settings.value("nAnonymizeDarkSilkAmount").toLongLong();
 
     // These are shared with core DarkSilk; we want
     // command-line options to override the GUI settings:
@@ -141,8 +141,8 @@ void OptionsModel::Init()
 
     if (settings.contains("nSandstormRounds"))
         SoftSetArg("-sandstormrounds", settings.value("nSandstormRounds").toString().toStdString());
-    if (settings.contains("nAnonymizeSilkAmount"))
-        SoftSetArg("-anonymizesilkamount", settings.value("nAnonymizeSilkAmount").toString().toStdString());
+    if (settings.contains("nAnonymizeDarkSilkAmount"))
+        SoftSetArg("-anonymizedarksilkamount", settings.value("nAnonymizeDarkSilkAmount").toString().toStdString());
 
 #ifdef USE_NATIVE_I2P
     ScopeGroupHelper s(settings, I2P_OPTIONS_SECTION_NAME);
@@ -397,10 +397,10 @@ bool OptionsModel::setData(const QModelIndex & index, const QVariant & value, in
             settings.setValue("nSandstormRounds", nSandstormRounds);
             emit sandstormRoundsChanged(nSandstormRounds);
             break;
-        case anonymizeSilkAmount:
-            nAnonymizeSilkAmount = value.toInt();
-            settings.setValue("nAnonymizeSilkAmount", nAnonymizeSilkAmount);
-            emit anonymizeSilkAmountChanged(nAnonymizeSilkAmount);
+        case anonymizeDarkSilkAmount:
+            nAnonymizeDarkSilkAmount = value.toInt();
+            settings.setValue("nAnonymizeDarkSilkAmount", nAnonymizeDarkSilkAmount);
+            emit anonymizeDarkSilkAmountChanged(nAnonymizeDarkSilkAmount);
             break;
 #ifdef USE_NATIVE_I2P
         case I2PUseI2POnly:

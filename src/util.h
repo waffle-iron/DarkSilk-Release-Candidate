@@ -123,7 +123,7 @@ extern bool fStormNode;
 extern bool fLiteMode;
 extern int nInstantXDepth;
 extern int nSandstormRounds;
-extern int nAnonymizeSilkAmount;
+extern int nAnonymizeDarkSilkAmount;
 extern int nLiquidityProvider;
 extern bool fEnableSandstorm;
 extern int64_t enforceStormnodePaymentsTime;
