@@ -1278,8 +1278,6 @@ void DarkSilkGUI::gotoBuysPage()
     //exportAction->setEnabled(false);
     //disconnect(exportAction, SIGNAL(triggered()), 0, 0);
     
-    darksilkMarketAction->setChecked(true);
-    
     centralStackedWidget->setCurrentWidget(buysPage);
 
     exportAction->setEnabled(false);
