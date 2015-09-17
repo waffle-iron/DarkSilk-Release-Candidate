@@ -1,20 +1,30 @@
 TEMPLATE = app
 TARGET = DarkSilk
 VERSION = 1.0.0.0
-INCLUDEPATH += src src/json src/qt src/qt/plugins/mrichtexteditor
-QT += network
-DEFINES += ENABLE_WALLET
-DEFINES += BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE USE_NATIVE_I2P
-CONFIG += no_include_pwd
-CONFIG += thread
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-lessThan(QT_MAJOR_VERSION, 5): CONFIG += static
-QMAKE_CXXFLAGS = -fpermissive
+greaterThan(QT_MAJOR_VERSION, 5) {
+    INCLUDEPATH += src src/json src/qt src/qt/plugins/mrichtexteditor
+    QT += network widgets
+    DEFINES += ENABLE_WALLET
+    DEFINES += BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE 
+    DEFINES += USE_NATIVE_I2P
+    CONFIG += static
+    CONFIG += no_include_pwd
+    CONFIG += thread
+    QMAKE_CXXFLAGS = -fpermissive
+}
 
 greaterThan(QT_MAJOR_VERSION, 4) {
-    QT += widgets
+    INCLUDEPATH += src src/json src/qt src/qt/plugins/mrichtexteditor
+    QT += network widgets
+    DEFINES += ENABLE_WALLET
+    DEFINES += BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE 
+    DEFINES += USE_NATIVE_I2P
     DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0
+    CONFIG += static
+    CONFIG += no_include_pwd
+    CONFIG += thread
+    QMAKE_CXXFLAGS = -fpermissive
 }
 
 linux {
@@ -558,7 +568,6 @@ macx:QMAKE_CFLAGS_THREAD += -pthread
 macx:QMAKE_LFLAGS_THREAD += -pthread
 macx:QMAKE_CXXFLAGS_THREAD += -pthread
 macx:QMAKE_INFO_PLIST = share/qt/Info.plist
-
 
 # Set libraries and includes at end, to use platform-defined defaults if not overridden
 INCLUDEPATH += $$SECP256K1_INCLUDE_PATH $$BOOST_INCLUDE_PATH $$BDB_INCLUDE_PATH $$OPENSSL_INCLUDE_PATH $$QRENCODE_INCLUDE_PATH
