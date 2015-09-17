@@ -41,14 +41,11 @@ Value marketalllistings(const Array& params, bool fHelp)
             {
                 if(b.second.nStatus != LISTED || b.second.nStatus != BUY_REQUESTED)
                 {
-                    bFound = true;
+                    //found
+                    continue; // go to next item, this one someone is already buying
                 }
             }
         }
-
-        if(bFound)
-            continue; // go to next item, this one someone is already buying
-
         if (item.listing.sTitle != "")
         {
             Object obj;
@@ -328,7 +325,7 @@ Value marketbuyrequests(const Array& params, bool fHelp)
         if(mapListings.find(buyRequest.listingId) != mapListings.end())
             {
             CMarketListing item = mapListings[buyRequest.listingId].listing;
-            CTxDestination dest = mapListings[buyRequest.listingId].listing.sellerKey.GetID();
+            CTxDestination dest = item.sellerKey.GetID();
             if(IsMine(*pwalletMain, dest))
                 {
                     Object obj;
@@ -549,7 +546,7 @@ Value marketrefund(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() == 0)
         throw runtime_error("marketrefund \n"
-                            "Issues a refund for a market listing \n"
+                            "Issues a refund for a buy request \n"
                             "parameters: <requestId>");
     //TODO: SegFault:
     string requestID = params[0].get_str();
