@@ -148,7 +148,7 @@ $ cp crypto obj/crypto -rR
 
 //Enter into the terminal:
 
-$ make -f makefile.unix "USE_NATIVE_I2P=1"
+$ make -f makefile.unix USE_NATIVE_I2P=1
 
 //This will produce a file named darksilkd which is the command line instance of DarkSilk
 
