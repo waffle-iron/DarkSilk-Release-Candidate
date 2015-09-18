@@ -64,7 +64,7 @@ DarkSilk is dependent upon libsecp256k1 by sipa, please follow this guide to ins
 $ cd ~
 
 //Then:
-$ sudo apt-get install automake autoconf libtool unzip git
+$ sudo apt-get install make automake autoconf libtool unzip git
 
 //Then:
 $ git clone https://github.com/DRKSLK/DarkSilk.git
@@ -136,7 +136,7 @@ Build Instructions for Terminal Based Linux Wallet (Ubuntu)
 ===========================================================
 //Install dependencies via Terminal:
 
-$ sudo apt-get install build-essential libboost-all-dev libssl-dev libcurl4-openssl-dev libminiupnpc-dev libdb++-dev libstdc++6 qt-sdk make 
+$ sudo apt-get install build-essential libboost-all-dev libssl-dev libcurl4-openssl-dev libminiupnpc-dev libdb++-dev libstdc++6 make 
 
 //In terminal navigate to the DarkSilk folder (assuming you have followed the libsecp256k1 guide).
 
@@ -169,7 +169,7 @@ $ nano darksilk.conf
 
 //Edit the Username and Password fields to anything you choose (but remember them) then save the file
 
-$ mv darksilk.conf /home/DarkSilk/src/
+$ mv darksilk.conf /home/.darksilk/
 $ cd src/
 $ ./darksilkd &
 
