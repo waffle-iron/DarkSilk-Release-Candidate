@@ -22,9 +22,7 @@ Block Reward: 42
 Total Coins: 90,000,000
 Block Size: 50MB (50X Bitcoin Core)
 
-DarkSilk utilises Stormnodes, Sandstorm and InstantX to provide anonymous and near instant transaction confirmations (~5-20seconds).
-
-DarkSilk includes an Address Index feature, based on the address index API (searchrawtransactions RPC command) implemented in Bitcoin Core but modified implementation to work with the DarkSilk codebase (PoS coins maintain a txindex by default for instance). Initialize the Address Index by running the -reindexaddr command line argument, it may take 10-15 minutes to build the initial index.
+DarkSilk utilises Stormnodes, Sandstorm and InstantX to provide anonymous and near instant transaction confirmations.
 
 DarkSilk only broadcasts transactions once unlike Bitcoin Core which rebroadcasts transactions which can be used to unmask and link IP addresses and transactions. However if your transaction does not successfully broadcast you can use the -resendtx console command to broadcast the transaction again.
 
@@ -33,6 +31,8 @@ DarkSilk implements Gavin Andresens signature cache optimisation from Bitcoin fo
 DarkSilk uses ShadowChat from Shadow for encrypted, anonymous and secure messaging via the DarkSilk wallet network.
 
 Darksilk includes a completely decentralised marketplace, providing anonymity and escrow services for safe and fast trades.
+
+DarkSilk includes an Address Index feature, based on the address index API (searchrawtransactions RPC command) implemented in Bitcoin Core but modified implementation to work with the DarkSilk codebase (PoS coins maintain a txindex by default for instance). Initialize the Address Index by running the -reindexaddr command line argument, it may take 10-15 minutes to build the initial index.
 
 
 **Sandstorm Network Information**
