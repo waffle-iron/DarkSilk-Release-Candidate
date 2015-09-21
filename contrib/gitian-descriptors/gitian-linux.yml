@@ -1,0 +1,63 @@
+---
+name: "darksilk"
+suites:
+- "trusty"
+architectures:
+- "i386"
+- "amd64"
+packages: 
+- "g++"
+- "qt5-qmake"
+- "qt5-default"
+- "qttools5-dev-tools"
+- "git-core"
+- "unzip"
+- "pkg-config"
+- "libtool"
+- "automake"
+- "faketime"
+- "bsdmainutils"
+reference_datetime: "2015-05-25 00:00:00"
+remotes:
+- "url": "https://github.com/SCDeveloper/DarkSilk.git"
+  "dir": "darksilk"
+files:
+- "darksilk-deps-linux32-gitian.zip"
+- "darksilk-deps-linux64-gitian.zip"
+script: |
+  echo "90e95e9bc57fe2ed94dc59aee7c60e246eb38daedefe80846b6aef87d18c5613  darksilk-deps-linux32-gitian.zip" | sha256sum -c
+  echo "7d37196fcd6d5d73ae724bf97514fa091b2bf24cb7e62067abf4c7de3726bfb4  darksilk-deps-linux64-gitian.zip" | sha256sum -c
+  STAGING="$HOME/install"
+  OPTFLAGS='-O2'
+  BINDIR="${OUTDIR}/bin/${GBUILD_BITS}" # 32/64 bit build specific output directory
+  TEMPDIR="$HOME/tempdir"
+  if [ "$GBUILD_BITS" == "32" ]; then
+    export LD_PRELOAD=/usr/lib/i386-linux-gnu/faketime/libfaketime.so.1;
+  else
+    export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/faketime/libfaketime.so.1;
+  fi
+  export FAKETIME=$REFERENCE_DATETIME
+  export TZ=UTC
+  export LIBRARY_PATH="$STAGING/lib"
+  mkdir -p ${BINDIR}
+  #
+  mkdir -p $STAGING
+  cd $STAGING
+  unzip ../build/darksilk-deps-linux${GBUILD_BITS}-gitian.zip
+  cd ../build
+  #
+  cd darksilk
+  mkdir -p $OUTDIR/src
+  git archive HEAD | tar -x -C $OUTDIR/src
+  cp $OUTDIR/src/doc/README $OUTDIR
+  cp $OUTDIR/src/COPYING $OUTDIR
+  cd src
+  cp -r crypto obj
+  make -f makefile.unix STATIC=1 USE_NATIVE_I2P=1 OPENSSL_INCLUDE_PATH="$STAGING/include" OPENSSL_LIB_PATH="$STAGING/lib" $MAKEOPTS darksilkd USE_UPNP=1 BOOST_LIB_SUFFIX="-mt" DEBUGFLAGS= 
+  mkdir -p $STAGING/bin/$GBUILD_BITS
+  install -s darksilkd $OUTDIR/bin/$GBUILD_BITS
+  #
+  cd ..
+  qmake INCLUDEPATH="$STAGING/include" LIBS="-L$STAGING/lib" BOOST_LIB_SUFFIX="-mt" RELEASE=1 USE_QRCODE=1 USE_NATIVE_I2P=1
+  make $MAKEOPTS
+  install DarkSilk $OUTDIR/bin/$GBUILD_BITS
