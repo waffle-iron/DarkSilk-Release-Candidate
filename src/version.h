@@ -35,13 +35,13 @@ static const int DATABASE_VERSION = 70509;
 // network protocol versioning
 //
 
-static const int PROTOCOL_VERSION = 70021;
+static const int PROTOCOL_VERSION = 70023;
 
 // intial proto version, to be increased after version/verack negotiation
-static const int INIT_PROTO_VERSION = 70020;
+static const int INIT_PROTO_VERSION = 70023;
 
 // disconnect from peers older than this proto version
-static const int MIN_PEER_PROTO_VERSION = 70021;
+static const int MIN_PEER_PROTO_VERSION = 70023;
 
 static const int MIN_INSTANTX_PROTO_VERSION = 70020;
 
@@ -61,5 +61,8 @@ static const int BIP0031_VERSION = 70020;
 
 // "mempool" command, enhanced "getdata" behavior starts with this version:
 static const int MEMPOOL_GD_VERSION = 70002;
+
+// reject blocks with non-canonical signatures starting from this version
+static const int CANONICAL_BLOCK_SIG_VERSION = 70016;
 
 #endif
