@@ -1136,7 +1136,7 @@ int64_t GetProofOfWorkReward(int64_t nFees)
 // miner's coin stake reward
 int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, int64_t nFees)
 {
-    int64_t nSubsidy = COIN * 5 / 4; //Constant reward of 1.25 DRKSLK 
+    int64_t nSubsidy = COIN * 6 / 150; //Constant reward of 0.04 DRKSLK per COIN i.e. 4% 
 
     LogPrint("creation", "GetProofOfStakeReward(): create=%s nCoinAge=%d\n", FormatMoney(nSubsidy), nCoinAge);
 
