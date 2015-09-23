@@ -15,7 +15,7 @@ PoW Period: 42,001 Blocks
 PoS Period: After PoW
 PoS Min: 4 Hours
 PoS Max: Unlimited
-PoS Interest: Static 4.2%
+PoS Rewward: Static 4.2% per coin
 Maturity: 42 Blocks
 Target Spacing: 4 Minutes
 Block Reward: 42
