@@ -88,9 +88,9 @@ script: |
   ;" > user-config.jam
   ./bootstrap.sh --without-icu
   ./bjam toolset=gcc threadapi=pthread threading=multi variant=release link=static runtime-link=shared --user-config=user-config.jam --without-mpi --without-python -sNO_BZIP2=1 --layout=tagged --build-type=complete --prefix="$STAGING" $MAKEOPTS -d+2 install
-  #
   cd ..
-  unzip secp256k1-master.zip
+  #
+  unzip -o secp256k1-master.zip
   cd secp256k1-master
   unset FAKETIME # unset fake time during configure, as it does some clock sanity tests
   ./autogen.sh

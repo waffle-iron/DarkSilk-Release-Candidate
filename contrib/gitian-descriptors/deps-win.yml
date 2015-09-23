@@ -9,8 +9,12 @@ packages:
 - "g++-mingw-w64"
 - "git-core"
 - "zip"
+- "unzip"
 - "faketime"
 - "psmisc"
+- "libtool"
+- "automake"
+- "autoconf"
 reference_datetime: "2013-06-01 00:00:00"
 remotes: []
 files:
@@ -23,6 +27,8 @@ files:
 - "secp256k1-master.zip"
 - "qrencode-3.4.4.tar.gz"
 - "icu4c-55_1-src.tgz"
+- "boost-mingw.patch"
+#- "qt-everywhere-opensource-src-5.5.0.tar.xz"
 script: |
 script: |
   #
@@ -32,14 +38,23 @@ script: |
   INDIR=$HOME/build
   TEMPDIR=$HOME/tmp
   # Input Integrity Check
-  echo "3da5b3c572741fe2237bee1c3d36b11beef61172ac847132b045548b98d4df29  secp256k1-master.zip"   | sha256sum -c
-  echo "3087c32929c1e9db4947d6a184694e06ec604bca29449b75daec295a5d8f11da  miniupnpc-1.9.tar.gz"   | sha256sum -c
-  echo "060105bda482fdfb109b88c05b69624e9d467d59fa30fd9a97225efcc38d1561  db-6.1.26.NC.tar.gz"    | sha256sum -c
-  echo "36658cb768a54c1d4dec43c3116c27ed893e88b02ecfcb44f2166f9c0b7f2a0d  zlib-1.2.8.tar.gz"      | sha256sum -c
-  echo "2e10c13b7949883ac961db6177c516d778184432d440317e9f0391305c360963  libpng-1.6.18.tar.xz"   | sha256sum -c
-  echo "727a932322d94287b62abb1bd2d41723eec4356a7728909e38adb65ca25241ca  boost_1_59_0.tar.bz2"   | sha256sum -c
-  echo "671c36487785628a703374c652ad2cebea45fa920ae5681515df25d9f2c9a8c8  openssl-1.0.2d.tar.gz"  | sha256sum -c
-  echo "e794e26a96019013c0e3665cb06b18992668f352c5553d0a553f5d144f7f2a72  qrencode-3.4.4.tar.gz"  | sha256sum -c
+  echo "3da5b3c572741fe2237bee1c3d36b11beef61172ac847132b045548b98d4df29  secp256k1-master.zip"                       | sha256sum -c
+  echo "3087c32929c1e9db4947d6a184694e06ec604bca29449b75daec295a5d8f11da  miniupnpc-1.9.tar.gz"                       | sha256sum -c
+  echo "060105bda482fdfb109b88c05b69624e9d467d59fa30fd9a97225efcc38d1561  db-6.1.26.NC.tar.gz"                        | sha256sum -c
+  echo "36658cb768a54c1d4dec43c3116c27ed893e88b02ecfcb44f2166f9c0b7f2a0d  zlib-1.2.8.tar.gz"                          | sha256sum -c
+  echo "2e10c13b7949883ac961db6177c516d778184432d440317e9f0391305c360963  libpng-1.6.18.tar.xz"                       | sha256sum -c
+  echo "727a932322d94287b62abb1bd2d41723eec4356a7728909e38adb65ca25241ca  boost_1_59_0.tar.bz2"                       | sha256sum -c
+  echo "671c36487785628a703374c652ad2cebea45fa920ae5681515df25d9f2c9a8c8  openssl-1.0.2d.tar.gz"                      | sha256sum -c
+  echo "e794e26a96019013c0e3665cb06b18992668f352c5553d0a553f5d144f7f2a72  qrencode-3.4.4.tar.gz"                      | sha256sum -c
+  #echo "7ea2a16ecb8088e67db86b0835b887d5316121aeef9565d5d19be3d539a2c2af  qt-everywhere-opensource-src-5.5.0.tar.xz"  | sha256sum -c
+  # Qt: workaround for determinism in resource ordering
+  #  Qt5's rcc uses a QHash to store the files for the resource.
+  #  A security fix in QHash makes the ordering of keys to be different on every run
+  #  (https://qt.gitorious.org/qt/qtbase/commit/c01eaa438200edc9a3bbcd8ae1e8ded058bea268).
+  #  This is good in general but qrc shouldn't be doing a traversal over a randomized container.
+  #  The thorough solution would be to use QMap instead of QHash, but this requires patching Qt.
+  #  For now luckily there is a test mode that forces a fixed seed.
+  export QT_RCC_TEST=1
   #
   for BITS in 32 64; do # for architectures
     #
@@ -62,7 +77,7 @@ script: |
       OPENSSL_TGT=mingw64
     fi
     ./Configure --cross-compile-prefix=$HOST- ${OPENSSL_TGT} --prefix=$INSTALLPREFIX
-    make
+    make install
     #make install_sw
     cd ..
     #
@@ -73,7 +88,7 @@ script: |
     sed -i 's/WinIoCtl.h/winioctl.h/' ../src/dbinc/win_db.h
     find . -print0 | xargs -r0 touch -t 200001010000
     make $MAKEOPTS #library_build
-    #make install_lib install_include
+    make install_lib install_include
     cd ../..
     #
     tar xzf $INDIR/miniupnpc-1.9.tar.gz
@@ -110,7 +125,7 @@ script: |
     make install
     cd ..
     #
-    tar xzf $INDIR/libpng-1.6.18.tar.gz
+    tar xf $INDIR/libpng-1.6.18.tar.xz
     cd libpng-1.6.18
     OPT="-O2"
     CPPFLAGS="${OPT} -I$INSTALLPREFIX/include" CFLAGS="${OPT} -I$INSTALLPREFIX/include" LDFLAGS="${OPT} -L$INSTALLPREFIX/lib" ./configure --disable-shared --prefix=$INSTALLPREFIX --host=$HOST
@@ -118,7 +133,7 @@ script: |
     make install
     cd ..
     #
-    mkdir icuCross
+    mkdir -p icuCross
     cd icuCross
     tar xzf $INDIR/icu4c-55_1-src.tgz
     cd icu/source
@@ -135,27 +150,104 @@ script: |
     make install
     cd ../..
     #
-    tar --warning=no-timestamp -xjf boost_1_59_0.tar.bz2
+    tar --warning=no-timestamp -xjf $INDIR/boost_1_59_0.tar.bz2
     cd boost_1_59_0
-    GCCVERSION=$(g++ -E -dM $(mktemp --suffix=.h) | grep __VERSION__ | cut -d ' ' -f 3 | cut -d '"' -f 2)
-    # note: bjam with -d+2 reveals that -O3 is implied by default, no need to provide it in cxxflags
-    echo "using gcc : $GCCVERSION : g++
-          :
-          <cxxflags>\"-frandom-seed=boost1 -fPIC\"
-    ;" > user-config.jam
+    GCCVERSION=$($HOST-g++ -E -dM $(mktemp --suffix=.h) | grep __VERSION__ | cut -d ' ' -f 3 | cut -d '"' -f 2)
+    echo "using gcc : $GCCVERSION : $HOST-g++
+        :
+        <rc>$HOST-windres
+        <archiver>$HOST-ar
+        <cxxflags>-frandom-seed=boost1
+        <ranlib>$HOST-ranlib
+  ;" > user-config.jam
     ./bootstrap.sh --without-icu
+    # Workaround: Upstream boost dev refuses to include patch that would allow Free Software cross-compile toolchain to work
+    #             This patch was authored by the Fedora package developer and ships in Fedora's mingw32-boost.
+    #             Please obtain the exact patch that matches the above sha256sum from one of the following mirrors.
+    #
+    # Read History:   https://svn.boost.org/trac/boost/ticket/7262
+    # History Mirror: http://rose.makesad.us/~paulproteus/mirrors/7262%20Boost.Context%20fails%20to%20build%20using%20MinGW.html
+    #
+    # Patch:          https://svn.boost.org/trac/boost/raw-attachment/ticket/7262/boost-mingw.patch
+    # Patch Mirror:   http://wtogami.fedorapeople.org/boost-mingw-gas-cross-compile-2013-03-03.patch
+    # Patch Mirror:   http://mindstalk.net/host/boost-mingw-gas-cross-compile-2013-03-03.patch
+    # Patch Mirror:   http://rose.makesad.us/~paulproteus/mirrors/boost-mingw-gas-cross-compile-2013-03-03.patch
+    #patch -p0 < $INDIR/boost-mingw.patch
+    # Bug Workaround: boost-1.54.0 broke the ability to disable zlib, still broken in 1.55
+    # https://svn.boost.org/trac/boost/ticket/9156
+    sed -i 's^\[ ac.check-library /zlib//zlib : <library>/zlib//zlib^^' libs/iostreams/build/Jamfile.v2
+    sed -i 's^<source>zlib.cpp <source>gzip.cpp \]^^' libs/iostreams/build/Jamfile.v2
+    # http://statmt.org/~s0565741/software/boost_1_52_0/libs/context/doc/html/context/requirements.html
+    # Workaround: Upstream boost dev refuses to include patch that would allow Free Software cross-compile toolchain to work
+    #             This patch was authored by the Fedora package developer and ships in Fedora's mingw32-boost.
+    #             Please obtain the exact patch that matches the above sha256sum from one of the following mirrors.
+    #
+    # Read History:   https://svn.boost.org/trac/boost/ticket/7262
+    # History Mirror: http://rose.makesad.us/~paulproteus/mirrors/7262%20Boost.Context%20fails%20to%20build%20using%20MinGW.html
+    #
+    # Patch:          https://svn.boost.org/trac/boost/raw-attachment/ticket/7262/boost-mingw.patch
+    # Patch Mirror:   http://wtogami.fedorapeople.org/boost-mingw-gas-cross-compile-2013-03-03.patch
+    # Patch Mirror:   http://mindstalk.net/host/boost-mingw-gas-cross-compile-2013-03-03.patch
+    # Patch Mirror:   http://rose.makesad.us/~paulproteus/mirrors/boost-mingw-gas-cross-compile-2013-03-03.patch
+    patch -p0 < $INDIR/boost-mingw.patch
+    # "For cross-compiling the lib you must specify certain additional properties at bjam command line: target-os, abi, binary-format, architecture and address-model."
     ./bjam toolset=gcc binary-format=pe target-os=windows threadapi=win32 address-model=$BITS threading=multi variant=release link=static runtime-link=static --user-config=user-config.jam --without-mpi --without-python -sNO_BZIP2=1 -sNO_ZLIB=1 --layout=tagged --build-type=complete --prefix="$INSTALLPREFIX" $MAKEOPTS install
-    #./bjam toolset=gcc threadapi=pthread threading=multi variant=release link=static runtime-link=shared --user-config=user-config.jam --without-mpi --without-python -sNO_BZIP2=1 --layout=tagged --build-type=complete --prefix="$STAGING" $MAKEOPTS -d+2 install
+    cd ..
     #
-    # post-process all generated libraries to be deterministic
-    # extract them to a temporary directory then re-build them deterministically
-    for LIB in $(find $INSTALLPREFIX -name \*.a); do
-        rm -rf $TEMPDIR && mkdir $TEMPDIR && cd $TEMPDIR
-        $HOST-ar xv $LIB | cut -b5- > /tmp/list.txt
-        rm $LIB
-        $HOST-ar crsD $LIB $(cat /tmp/list.txt)
-    done
+    unzip -o $INDIR/secp256k1-master.zip
+    cd secp256k1-master
+    unset FAKETIME # unset fake time during configure, as it does some clock sanity tests
+    ./autogen.sh
+    #LDFLAGS="-no-undefined"
+    ./configure --prefix=$INSTALLPREFIX --host=$HOST
+    # Workaround to prevent re-configuring by make; make all files have a date in the past
+    find . -print0 | xargs -r0 touch -t 200001010000
+    export FAKETIME=$REFERENCE_DATETIME
+    make install
+    cd ..
+
     #
+    #cd ..
+    #rm -rf $BUILDDIR # Make space
+    #mkdir -p $BUILDDIR $INSTALLPREFIX/host/bin
+    #cd $BUILDDIR
+    #tar xf $INDIR/qt-everywhere-opensource-src-5.5.0.tar.xz
+    #cd qt-everywhere-opensource-src-5.5.0
+    #SPECNAME="win32-g++"
+    #SPECFILE="qtbase/mkspecs/${SPECNAME}/qmake.conf"
+    #sed 's/qt_instdate=`date +%Y-%m-%d`/qt_instdate=2011-01-30/' -i qtbase/configure
+    #sed --posix "s|QMAKE_CFLAGS            = -pipe -fno-keep-inline-dllexport|QMAKE_CFLAGS\t\t= -pipe -fno-keep-inline-dllexport -isystem /usr/$HOST/include/ -frandom-seed=qtbuild -I$DEPSDIR/include|" -i ${SPECFILE}
+    #sed --posix "s|QMAKE_LFLAGS            =|QMAKE_LFLAGS\t\t= -L$DEPSDIR/lib|" -i ${SPECFILE}
+    ## Before we tried to pass arguments to ar (static linking) in using QMAKE_LIB, however
+    ##  qt removes the arguments for ar and provides a script which makes it impossible to pass the determinism flag -
+    ##  so rather than try to replace ar, post-process all libraries and plugins at the end.
+    ##
+    ## Don't load faketime while compiling Qt, qmake will get stuck in nearly infinite loops
+    ##export LD_PRELOAD=/usr/lib/faketime/libfaketime.so.1
+    ##export FAKETIME=$REFERENCE_DATETIME
+    #unset FAKETIME
+    ##
+    ## Compile static libraries, and use statically linked openssl (-openssl-linked):
+    #OPENSSL_LIBS="-L$DEPSDIR/lib -lssl -lcrypto -lgdi32" ./configure -prefix $INSTALLPREFIX -bindir $INSTALLPREFIX/host/bin -confirm-license -release -opensource -static -xplatform $SPECNAME -device-option CROSS_COMPILE="$HOST-" -no-audio-backend -no-sql-sqlite -no-sql-odbc -no-nis -no-cups -no-iconv -no-dbus -no-gif -no-opengl -no-compile-examples -no-feature-style-windowsce -no-feature-style-windowsmobile -no-qml-debug -openssl-linked -skip qtsvg -skip qtwebkit -skip qtwebkit-examples -skip qtserialport -skip qtdeclarative -skip qtmultimedia -skip qtimageformats -skip qtlocation -skip qtsensors -skip qtquick1 -skip qtquickcontrols -skip qtactiveqt -skip qtconnectivity -skip qtwinextras -skip qtxmlpatterns -skip qtscript -skip qtdoc -system-libpng -system-zlib
+    #make $MAKEOPTS install
+    ##
+    ## post-process all generated libraries to be deterministic
+    ## extract them to a temporary directory then re-build them deterministically
+    #for LIB in $(find $INSTALLPREFIX -name \*.a); do
+    #    rm -rf $TEMPDIR && mkdir $TEMPDIR && cd $TEMPDIR
+    #    $HOST-ar xv $LIB | cut -b5- > /tmp/list.txt
+    #    rm $LIB
+    #    $HOST-ar crsD $LIB $(cat /tmp/list.txt)
+    #done
+    ##
+    #cd $INSTALLPREFIX
+    ## Remove unused non-deterministic stuff
+    #rm host/bin/qtpaths.exe lib/libQt5Bootstrap.a lib/libQt5Bootstrap.la
+    ## as zip stores file timestamps, use faketime to intercept stat calls to set dates for all files to reference date
+    #export LD_PRELOAD=/usr/lib/faketime/libfaketime.so.1
+    #export FAKETIME=$REFERENCE_DATETIME
+    #find -print0 | xargs -r0 touch # fix up timestamps before packaging
     cd $INSTALLPREFIX
-    find include lib | sort | zip -X@ $OUTDIR/darksilk-deps-win$BITS-gitian-r11.zip
+    find -print0 | xargs -r0 touch # fix up timestamps before packaging
+    find include lib | sort | zip -X@ $OUTDIR/darksilk-deps-win$BITS-gitian.zip
   done # for BITS in
