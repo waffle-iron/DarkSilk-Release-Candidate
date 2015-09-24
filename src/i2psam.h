@@ -12,12 +12,7 @@
 #include <memory>
 #include <utility>
 
-#ifdef WIN32
-////#define _WIN32_WINNT 0x0501
-#define WIN32_LEAN_AND_MEAN 1
-#define FD_SETSIZE
-#include <winsock2.h>
-#else
+#ifndef WIN32
 #include <sys/socket.h>
 #include <netinet/in.h>     // for sockaddr_in
 #include <arpa/inet.h>      // for ntohs and htons
