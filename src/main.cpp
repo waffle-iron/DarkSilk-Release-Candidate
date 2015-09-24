@@ -46,7 +46,7 @@ CBigNum bnProofOfStakeLimit(~uint256(0) >> 20); //PoS starting difficulty
 
 int nStakeMinConfirmations = 420;
 unsigned int nStakeMinAge = 4 * 60 * 60; // 4 hours
-unsigned int nModifierInterval = 4 * 60; // 4 minutes to elapse before new modifier is computed
+unsigned int nModifierInterval = 8 * 60; // 8 minutes to elapse before new modifier is computed
 
 int nCoinbaseMaturity = 42; // 42 blocks until coins are mature
 CBlockIndex* pindexGenesisBlock = NULL;
@@ -1232,7 +1232,7 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
     // ppcoin: retarget with exponential moving toward target spacing
     CBigNum bnNew;
     bnNew.SetCompact(pindexPrev->nBits);
-    int64_t nInterval = nTargetTimespan / TARGET_SPACING;
+    int64_t nInterval = 42;
     bnNew *= ((nInterval - 1) * TARGET_SPACING + nActualSpacing + nActualSpacing);
     bnNew /= ((nInterval + 1) * TARGET_SPACING);
 
