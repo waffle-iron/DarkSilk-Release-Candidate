@@ -1163,44 +1163,6 @@ int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, i
     return nSubsidy + nFees;
 }
 
-//
-// maximum nBits value could possible be required nTime after
-//
-unsigned int ComputeMaxBits(CBigNum bnTargetLimit, unsigned int nBase, int64_t nTime)
-{
-    CBigNum bnResult;
-    bnResult.SetCompact(nBase);
-    bnResult *= 2;
-    while (nTime > 0 && bnResult < bnTargetLimit)
-    {
-        // Maximum 200% adjustment per day...
-        bnResult *= 2;
-        nTime -= 24 * 60 * 60;
-    }
-    if (bnResult > bnTargetLimit)
-        bnResult = bnTargetLimit;
-    return bnResult.GetCompact();
-}
-
-//
-// minimum amount of work that could possibly be required nTime after
-// minimum proof-of-work required was nBase
-//
-unsigned int ComputeMinWork(unsigned int nBase, int64_t nTime)
-{
-    return ComputeMaxBits(Params().ProofOfWorkLimit(), nBase, nTime);
-}
-
-//
-// minimum amount of stake that could possibly be required nTime after
-// minimum proof-of-stake required was nBase
-//
-unsigned int ComputeMinStake(unsigned int nBase, int64_t nTime, unsigned int nBlockTime)
-{
-    return ComputeMaxBits(bnProofOfStakeLimit, nBase, nTime);
-}
-
-
 // ppcoin: find last block index up to pindex
 const CBlockIndex* GetLastBlockIndex(const CBlockIndex* pindex, bool fProofOfStake)
 {
@@ -3848,7 +3810,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
     // to users' AddrMan and later request them by sending getaddr messages. 
     // Making users (which are behind NAT and can only make outgoing connections) ignore 
     // getaddr message mitigates the attack.
-    else if (strCommand == "getaddr") && (pfrom->fInbound))
+    else if ((strCommand == "getaddr") && (pfrom->fInbound))
     {
         // Don't return addresses older than nCutOff timestamp
         int64_t nCutOff = GetTime() - (nNodeLifespan * 24 * 60 * 60);
