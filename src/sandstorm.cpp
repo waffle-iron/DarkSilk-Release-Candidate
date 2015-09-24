@@ -404,7 +404,7 @@ int GetInputSandstormRounds(CTxIn in, int rounds)
     if(rounds >= 17) return rounds;
 
     uint256 hash = in.prevout.hash;
-    uint nout = in.prevout.n;
+    unsigned int nout = in.prevout.n;
 
     CWalletTx wtx;
     if(pwalletMain->GetTransaction(hash, wtx))
