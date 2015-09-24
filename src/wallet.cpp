@@ -36,8 +36,8 @@ int64_t nTransactionFee = MIN_TX_FEE;
 int64_t nReserveBalance = 0;
 int64_t nMinimumInputValue = 0;
 
-static unsigned int GetStakeSplitAge() { return 9 * 24 * 60 * 60; }
-static int64_t GetStakeCombineThreshold() { return 10000 * COIN; }
+static int64_t GetStakeCombineThreshold() {return 20000 * COIN}
+static int64_t GetStakeSplitThreshold() { return 2 * GetStakeCombineThreshold(); }
 
 int64_t gcd(int64_t n,int64_t m) { return m == 0 ? n : gcd(m, n % m); }
 static uint64_t CoinWeightCost(const COutput &out)
@@ -3540,6 +3540,8 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
     int64_t blockValue = nCredit;
     int64_t stormnodePayment = GetStormnodePayment(pindexPrev->nHeight+1, nReward);
 
+    if (nCredit) >= GetStakeSplitThreshold())
+        txNew.vout.push_back(CTxOut(0, txNew.vout[1].scriptPubKey)); //split stake
 
     // Set output amount
     if (!hasPayment && txNew.vout.size() == 3) // 2 stake outputs, stake was split, no stormnode payment
