@@ -1,6 +1,6 @@
 DarkSilk 1.0.0.0 BETA
 
-Copyright (c) 2015 DarkSilk Developers
+Copyright (c) 2015 The DarkSilk Developers
 Copyright (c) 2011-2013 PPCoin Developers
 Distributed under the MIT/X11 software license, see the accompanying
 file license.txt or http://www.opensource.org/licenses/mit-license.php.

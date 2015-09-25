@@ -1,4 +1,4 @@
-//          Copyright John W. Wilkinson 2007 - 2009.
+//          Copyright John W. Wilkinson 2007 - 2015.
 // Distributed under the MIT License, see accompanying file LICENSE.txt
 
 // json spirit version 4.03
