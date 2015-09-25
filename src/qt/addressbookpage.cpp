@@ -192,8 +192,6 @@ void AddressBookPage::on_signMessage_clicked()
         QString address = index.data().toString();
         emit signMessage(address);
     }
-
-    emit signMessage(addr);
 }
 
 void AddressBookPage::on_verifyMessage_clicked()
@@ -203,11 +201,9 @@ void AddressBookPage::on_verifyMessage_clicked()
     
     foreach (QModelIndex index, indexes)
     {
-        QString addr; address = index.data().toString();
+        QString address = index.data().toString();
         emit verifyMessage(address);
     }
-
-    emit verifyMessage(addr);
 }
 
 void AddressBookPage::on_newAddressButton_clicked()
