@@ -32,6 +32,9 @@ using namespace boost;
 // Global state
 //
 
+CBigNum bnProofOfStakeLimit(~uint256(0) >> 20); //PoS starting difficulty = 0.0002441   
+CBigNum bnProofOfWorkFirstBlock(~uint256(0) >> 30); //Genesis Block Difficulty
+        
 CCriticalSection cs_setpwalletRegistered;
 set<CWallet*> setpwalletRegistered;
 
@@ -42,22 +45,20 @@ CTxMemPool mempool;
 map<uint256, CBlockIndex*> mapBlockIndex;
 set<pair<COutPoint, unsigned int> > setStakeSeen;
 
-CBigNum bnProofOfStakeLimit(~uint256(0) >> 20); //PoS starting difficulty
-
-int nStakeMinConfirmations = 420;
-
 unsigned int nStakeMinAge = 4 * 60 * 60; // 4 hours
 unsigned int nModifierInterval = 8 * 60; // 8 minutes to elapse before new modifier is computed
-
+int nStakeMinConfirmations = 420; // 420 confirmations before coins can be staked
 int nCoinbaseMaturity = 42; // 42 blocks until coins are mature
+
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
 
 uint256 nBestChainTrust = 0;
 uint256 nBestInvalidTrust = 0;
-
 uint256 hashBestChain = 0;
+
 CBlockIndex* pindexBest = NULL;
+
 int64_t nTimeBestReceived = 0;
 bool fImporting = false;
 bool fReindex = false;
@@ -1176,7 +1177,7 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
     CBigNum bnTargetLimit = fProofOfStake ? GetProofOfStakeLimit(pindexLast->nHeight) : Params().ProofOfWorkLimit();
 
     if (pindexLast == NULL)
-        return bnTargetLimit.GetCompact(); // genesis block
+        return bnProofOfWorkFirstBlock.GetCompact(); // genesis block
 
     const CBlockIndex* pindexPrev = GetLastBlockIndex(pindexLast, fProofOfStake);
     if (pindexPrev->pprev == NULL)
@@ -1191,8 +1192,9 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
     if (nActualSpacing > nTargetSpacing * 10)
         nActualSpacing = nTargetSpacing * 10;
 
-    // ppcoin: target change every block
-    // ppcoin: retarget with exponential moving toward target spacing
+    // target change every block
+    // retarget with exponential moving toward target spacing
+    // Includes fix for wrong retargeting difficulty by Mammix2
     CBigNum bnNew;
     bnNew.SetCompact(pindexPrev->nBits);
     int64_t nInterval = TARGET_TIME_SPAN / nTargetSpacing;
@@ -1201,7 +1203,6 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
 
     if (bnNew <= 0 || bnNew > bnTargetLimit)
         bnNew = bnTargetLimit;
-
     return bnNew.GetCompact();
 }
 
