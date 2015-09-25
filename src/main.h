@@ -25,9 +25,6 @@ static const int64_t SANDSTORM_COLLATERAL = (42000*COIN); // 42,000DRKSLK Stormn
 static const int64_t SANDSTORM_FEE = (0.01*COIN); // SandStorm sending fee of 0.01DRKSLK
 static const int64_t SANDSTORM_POOL_MAX = (4999.99*COIN);
 
-static const int64_t COIN_YEAR_REWARD = 0.042 * COIN; // 4.2% Proof of Stake reward per annum
-static const int64_t MAX_MINT_PROOF_OF_STAKE = 0.042 * COIN; // 4.2% Max Proof of Stake reward per annum
-
 /*
     At 15 signatures, 1/2 of the stormnode network can be owned by
     one party without comprimising the security of InstantX
