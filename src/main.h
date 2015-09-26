@@ -1,4 +1,4 @@
-// Copyright (c) 2009-2010 Satoshi Nakamoto
+// Copyright (c) 2009-2015 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin developers
 // Copyright (c) 2015 The DarkSilk developers
 // Distributed under the MIT/X11 software license, see the accompanying
@@ -25,8 +25,7 @@ static const int64_t SANDSTORM_COLLATERAL = (42000*COIN); // 42,000DRKSLK Stormn
 static const int64_t SANDSTORM_FEE = (0.01*COIN); // SandStorm sending fee of 0.01DRKSLK
 static const int64_t SANDSTORM_POOL_MAX = (4999.99*COIN);
 
-static const int64_t COIN_YEAR_REWARD = 0.042 * COIN; // 4.2% Proof of Stake reward per annum
-static const int64_t MAX_MINT_PROOF_OF_STAKE = 0.042 * COIN; // 4.2% Max Proof of Stake reward per annum
+static const int64_t STATIC_POS_REWARD = COIN * 6 / 150; //Constant reward of 0.04 DRKSLK per COIN i.e. 4% 
 
 /*
     At 15 signatures, 1/2 of the stormnode network can be owned by

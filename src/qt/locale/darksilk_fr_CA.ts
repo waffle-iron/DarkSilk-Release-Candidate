@@ -14,9 +14,8 @@
     <message>
         <location line="+41"/>
         <source>Copyright © 2009-2015 The Bitcoin developers
-Copyright (c) 2015 DarkSilk Developers
-Copyright (c) 2015 DarkSilk Developers</source>
-        <translation>Copyright © 2009-2014 Les développeurs Bitcoin
+Copyright (c) 2015 The DarkSilk Developers</source>
+        <translation>Copyright © 2009-2015 Les développeurs Bitcoin
 Copyright © 2012-2014 Les développeurs DarkSilk
 Copyright © 2014 Les développeurs DarkSilk</translation>
     </message>

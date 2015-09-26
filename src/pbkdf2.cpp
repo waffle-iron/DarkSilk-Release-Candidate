@@ -1,4 +1,4 @@
-// Copyright (c) 2015 DarkSilk Developers
+// Copyright (c) 2015 The DarkSilk Developers
 
 #include <string.h>
 #include "pbkdf2.h"

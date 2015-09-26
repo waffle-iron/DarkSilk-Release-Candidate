@@ -1,4 +1,4 @@
-// Copyright (c) 2010 Satoshi Nakamoto
+// Copyright (c) 2010-2015 Satoshi Nakamoto
 // Copyright (c) 2009-2015 The Bitcoin developers
 // Copyright (c) 2015 The DarkSilk developers
 // Distributed under the MIT/X11 software license, see the accompanying
@@ -56,7 +56,7 @@ public:
         vAlertPubKey = ParseHex("");
         nDefaultPort = 31000;
         nRPCPort = 31500;
-        bnProofOfWorkLimit = CBigNum(~uint256(0) >> 16); //PoW starting difficulty
+        bnProofOfWorkLimit = CBigNum(~uint256(0) >> 20); // PoW starting difficulty = 0.0002441
 
         // Build the genesis block. Note that the output of the genesis coinbase cannot
         // be spent as it did not originally exist in the database.
@@ -131,7 +131,7 @@ public:
         pchMessageStart[1] = 0x22;
         pchMessageStart[2] = 0x05;
         pchMessageStart[3] = 0x30;
-        bnProofOfWorkLimit = CBigNum(~uint256(0) >> 16); //PoW starting difficulty
+        bnProofOfWorkLimit = CBigNum(~uint256(0) >> 20); // PoW starting difficulty = 0.0002441
         vAlertPubKey = ParseHex("");
         nDefaultPort = 31750;
         nRPCPort = 31800;
