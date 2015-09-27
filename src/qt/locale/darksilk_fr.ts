@@ -1471,9 +1471,9 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
     </message>
 </context>
 <context>
-    <name>RPCConsole</name>
+    <name>DEBUGConsole</name>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="+46"/>
+        <location filename="../forms/debugconsole.ui" line="+46"/>
         <source>Client name</source>
         <translation>Nom du client</translation>
     </message>
@@ -1620,7 +1620,7 @@ Cela implique que des frais à hauteur d&apos;au moins %2 seront nécessaires.</
         <translation>Nettoyer la console</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="+325"/>
+        <location filename="../debugconsole.cpp" line="+325"/>
         <source>Welcome to the DarkSilk RPC console.</source>
         <translation>Bienvenue sur la console RPC de DarkSilk.</translation>
     </message>

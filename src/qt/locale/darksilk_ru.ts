@@ -1457,9 +1457,9 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
 </context>
 <context>
-    <name>RPCConsole</name>
+    <name>DEBUGConsole</name>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="+46"/>
+        <location filename="../forms/debugconsole.ui" line="+46"/>
         <source>Client name</source>
         <translation>Имя клиента</translation>
     </message>
@@ -1606,7 +1606,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation>Очистить консоль</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="+325"/>
+        <location filename="../debugconsole.cpp" line="+325"/>
         <source>Welcome to the DarkSilk RPC console.</source>
         <translation>Добро пожаловать в RPC-консоль DarkSilk.</translation>
     </message>
