@@ -355,12 +355,14 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+2"/>
         <source>About &amp;Qt</source>
-        <translation>درباره و QT</translation>
+        <translation>درباره و <source>Copyright © 2009-2015 The Bitcoin developers
+Qt</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Show information about Qt</source>
-        <translation>نمایش اطلاعات درباره QT</translation>
+        <translation>نمایش اطلاعات درباره <source>Copyright © 2009-2015 The Bitcoin developers
+Qt</translation>
     </message>
     <message>
         <location line="+2"/>

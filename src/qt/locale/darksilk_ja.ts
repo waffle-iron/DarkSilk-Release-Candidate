@@ -258,7 +258,8 @@ This product includes software developed by the OpenSSL Project for use in the O
     <message>
         <location line="+82"/>
         <source>DarkSilk will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your coins from being stolen by malware infecting your computer.</source>
-        <translation>ただいま、暗号化手順を完成するため、ブラックコインQTは閉じます。尚、ウォレットを暗号化をされたにしても、PCのウイルスから盗難防止の報償できないことを、ご理解をお願い足します。</translation>
+        <translation>ただいま、暗号化手順を完成するため、ブラックコイン<source>Copyright © 2009-2015 The Bitcoin developers
+Qtは閉じます。尚、ウォレットを暗号化をされたにしても、PCのウイルスから盗難防止の報償できないことを、ご理解をお願い足します。</translation>
     </message>
     <message>
         <location line="+13"/>
@@ -722,7 +723,8 @@ Address: %4
     <message>
         <location filename="../darksilk.cpp" line="+104"/>
         <source>A fatal error occurred. DarkSilk can no longer continue safely and will quit.</source>
-        <translation>致命的エラー。安全に続きができないため、バラックコインQTは閉じます。</translation>
+        <translation>致命的エラー。安全に続きができないため、バラックコイン<source>Copyright © 2009-2015 The Bitcoin developers
+Qtは閉じます。</translation>
     </message>
 </context>
 <context>
@@ -1075,7 +1077,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <location filename="../guiutil.cpp" line="+426"/>
         <location line="+12"/>
         <source>DarkSilk-Qt</source>
-        <translation>ブラックコインQT</translation>
+        <translation>ブラックコイン<source>Copyright © 2009-2015 The Bitcoin developers
+Qt</translation>
     </message>
     <message>
         <location line="-12"/>
@@ -1576,7 +1579,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     <message>
         <location line="+7"/>
         <source>Show the DarkSilk-Qt help message to get a list with possible DarkSilk command-line options.</source>
-        <translation>ブラックコインQTのコマンドラインのヘルプ情報を表示する。</translation>
+        <translation>ブラックコイン<source>Copyright © 2009-2015 The Bitcoin developers
+Qtのコマンドラインのヘルプ情報を表示する。</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2879,7 +2883,8 @@ alternate-background-color: rgb(86, 0, 120);)</translation>
     <message>
         <location line="-103"/>
         <source>Warning: Please check that your computer&apos;s date and time are correct! If your clock is wrong DarkSilk will not work properly.</source>
-        <translation> 警告：コンピュータの日付と時間を調べてください。時間ずらしかったばい、ブラックコイン QTは正しく行動しない。</translation>
+        <translation> 警告：コンピュータの日付と時間を調べてください。時間ずらしかったばい、ブラックコイン <source>Copyright © 2009-2015 The Bitcoin developers
+Qtは正しく行動しない。</translation>
     </message>
     <message>
         <location line="+132"/>
@@ -3251,12 +3256,14 @@ alternate-background-color: rgb(86, 0, 120);)</translation>
     <message>
         <location line="+4"/>
         <source>Error loading wallet.dat: Wallet requires newer version of DarkSilk</source>
-        <translation>wallet.dat 読み込みエラー: 　ブラックコインQTの最新バージョンが必要です</translation>
+        <translation>wallet.dat 読み込みエラー: 　ブラックコイン<source>Copyright © 2009-2015 The Bitcoin developers
+Qtの最新バージョンが必要です</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Wallet needed to be rewritten: restart DarkSilk to complete</source>
-        <translation>ウォレットのデータをリライトしなければならい：ブラックコインQTをリスタートしてください</translation>
+        <translation>ウォレットのデータをリライトしなければならい：ブラックコイン<source>Copyright © 2009-2015 The Bitcoin developers
+Qtをリスタートしてください</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -3321,7 +3328,8 @@ alternate-background-color: rgb(86, 0, 120);)</translation>
     <message>
         <location line="+125"/>
         <source>Unable to bind to %s on this computer. DarkSilk is probably already running.</source>
-        <translation>このコンピューターで%sに結ぶことができなかった。ブラックコインQTは、もう発行してるでしょう。</translation>
+        <translation>このコンピューターで%sに結ぶことができなかった。ブラックコイン<source>Copyright © 2009-2015 The Bitcoin developers
+Qtは、もう発行してるでしょう。</translation>
     </message>
     <message>
         <location line="-101"/>
