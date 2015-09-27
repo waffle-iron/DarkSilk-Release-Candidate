@@ -1471,10 +1471,9 @@ Detta betyder att en avgift på minst %2 krävs.</translation>
     </message>
 </context>
 <context>
-    <name>DEBUGConsole</name>
+    <name>RPCConsole</name>
     <message>
-        <location filename="../forms/<source>Copyright © 2009-2015 The Bitcoin developers
-debugconsole.ui" line="+46"/>
+        <location filename="../forms/rpcconsole.ui" line="+46"/>
         <source>Client name</source>
         <translation>Klientnamn</translation>
     </message>
@@ -1621,8 +1620,7 @@ debugconsole.ui" line="+46"/>
         <translation>Rensa konsollen</translation>
     </message>
     <message>
-        <location filename="../<source>Copyright © 2009-2015 The Bitcoin developers
-debugconsole.cpp" line="+325"/>
+        <location filename="../rpcconsole.cpp" line="+325"/>
         <source>Welcome to the DarkSilk RPC console.</source>
         <translation>Välkommen till DarkSilk RPC konsoll.</translation>
     </message>

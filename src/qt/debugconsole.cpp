@@ -1,7 +1,5 @@
-#include "<source>Copyright © 2009-2015 The Bitcoin developers
-debugconsole.h"
-#include "ui_<source>Copyright © 2009-2015 The Bitcoin developers
-debugconsole.h"
+#include "debugconsole.h"
+#include "ui_debugconsole.h"
 
 #include "clientmodel.h"
 #include "guiutil.h"
@@ -51,8 +49,7 @@ signals:
     void reply(int category, const QString &command);
 };
 
-#include "<source>Copyright © 2009-2015 The Bitcoin developers
-debugconsole.moc"
+#include "debugconsole.moc"
 
 void RPCExecutor::start()
 {

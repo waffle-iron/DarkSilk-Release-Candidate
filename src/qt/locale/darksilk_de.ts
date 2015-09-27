@@ -1454,10 +1454,9 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
 </context>
 <context>
-    <name>DEBUGConsole</name>
+    <name>RPCConsole</name>
     <message>
-        <location filename="../forms/<source>Copyright © 2009-2015 The Bitcoin developers
-debugconsole.ui" line="+46"/>
+        <location filename="../forms/rpcconsole.ui" line="+46"/>
         <source>Client name</source>
         <translation>Clientname</translation>
     </message>
@@ -1604,8 +1603,7 @@ debugconsole.ui" line="+46"/>
         <translation>Konsole zurücksetzen</translation>
     </message>
     <message>
-        <location filename="../<source>Copyright © 2009-2015 The Bitcoin developers
-debugconsole.cpp" line="+325"/>
+        <location filename="../rpcconsole.cpp" line="+325"/>
         <source>Welcome to the DarkSilk RPC console.</source>
         <translation type="unfinished"/>
     </message>

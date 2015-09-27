@@ -260,8 +260,7 @@ HEADERS += src/qt/darksilkgui.h \
     src/qt/paymentserver.h \
     src/allocators.h \
     src/ui_interface.h \
-    src/qt/<source>Copyright © 2009-2015 The Bitcoin developers
-debugconsole.h \
+    src/qt/rpcconsole.h \
     src/version.h \
     src/netbase.h \
     src/clientversion.h \
@@ -377,8 +376,7 @@ SOURCES += src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
     src/protocol.cpp \
     src/qt/notificator.cpp \
     src/qt/paymentserver.cpp \
-    src/qt/<source>Copyright © 2009-2015 The Bitcoin developers
-debugconsole.cpp \
+    src/qt/rpcconsole.cpp \
     src/noui.cpp \
     src/kernel.cpp \
     src/scrypt-arm.S \
@@ -441,8 +439,7 @@ FORMS += \
     src/qt/forms/blockbrowser.ui \
     src/qt/forms/sendcoinsentry.ui \
     src/qt/forms/askpassphrasedialog.ui \
-    src/qt/forms/<source>Copyright © 2009-2015 The Bitcoin developers
-debugconsole.ui \
+    src/qt/forms/rpcconsole.ui \
     src/qt/forms/optionsdialog.ui \
     src/qt/forms/sandstormconfig.ui \
     src/qt/forms/stormnodemanager.ui \
