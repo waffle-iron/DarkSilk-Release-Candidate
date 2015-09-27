@@ -1577,7 +1577,7 @@ Dit betekend dat een fee van %2 is vereist.</translation>
     <message>
         <location line="+7"/>
         <source>Show the DarkSilk-Qt help message to get a list with possible DarkSilk command-line options.</source>
-        <translation>Laat het DarkSilk-Qt help bericht zien om een lijst te krijgen met mogelijke DarkSilk command-regel opties.</translation>
+        <translation>Laat het DarkSilk-QT help bericht zien om een lijst te krijgen met mogelijke DarkSilk command-regel opties.</translation>
     </message>
     <message>
         <location line="+3"/>

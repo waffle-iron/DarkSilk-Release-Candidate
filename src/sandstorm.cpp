@@ -1398,7 +1398,7 @@ void CSandStormPool::ClearLastMessage()
 //
 // Passively run Sandstorm in the background to anonymize funds based on the given configuration.
 //
-// This does NOT run by default for daemons, only for Qt.
+// This does NOT run by default for daemons, only for QT.
 //
 bool CSandStormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
 {
