@@ -1471,9 +1471,10 @@ Les montants inférieurs à  0.546 fois les frais minimum de relais apparaissent
     </message>
 </context>
 <context>
-    <name>RPCConsole</name>
+    <name>DEBUGConsole</name>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="+46"/>
+        <location filename="../forms/<source>Copyright © 2009-2015 The Bitcoin developers
+debugconsole.ui" line="+46"/>
         <source>Client name</source>
         <translation>Nom du client</translation>
     </message>
@@ -1620,7 +1621,8 @@ Les montants inférieurs à  0.546 fois les frais minimum de relais apparaissent
         <translation>Nettoyer la console</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="+325"/>
+        <location filename="../<source>Copyright © 2009-2015 The Bitcoin developers
+debugconsole.cpp" line="+325"/>
         <source>Welcome to the DarkSilk RPC console.</source>
         <translation>Bienvenue sur la console DarkSilk RPC.</translation>
     </message>

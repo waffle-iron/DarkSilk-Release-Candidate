@@ -1471,9 +1471,10 @@ Acest lucru înseamnă că o taxă de cel puțin %2 este necesară</translation>
     </message>
 </context>
 <context>
-    <name>RPCConsole</name>
+    <name>DEBUGConsole</name>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="+46"/>
+        <location filename="../forms/<source>Copyright © 2009-2015 The Bitcoin developers
+debugconsole.ui" line="+46"/>
         <source>Client name</source>
         <translation>Nume client</translation>
     </message>
@@ -1620,7 +1621,8 @@ Acest lucru înseamnă că o taxă de cel puțin %2 este necesară</translation>
         <translation>Curăță consola</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="+325"/>
+        <location filename="../<source>Copyright © 2009-2015 The Bitcoin developers
+debugconsole.cpp" line="+325"/>
         <source>Welcome to the DarkSilk RPC console.</source>
         <translation>Bine ati venit la consola DarkSilk RPC.</translation>
     </message>

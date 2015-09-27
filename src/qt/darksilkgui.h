@@ -17,7 +17,7 @@ class AddressBookPage;
 class SendCoinsDialog;
 class SignVerifyMessageDialog;
 class Notificator;
-class RPCConsole;
+class DEBUGConsole;
 class BlockBrowser;
 class StatisticsPage;
 class MessagePage;
@@ -127,7 +127,7 @@ private:
     QAction *unlockWalletAction;
     QAction *lockWalletAction;
     QAction *aboutQtAction;
-    QAction *openRPCConsoleAction;
+    QAction *openDEBUGConsoleAction;
     QAction *blockAction;
     QAction *statisticsAction;
     QAction *messageAction;
@@ -139,7 +139,7 @@ private:
     QSystemTrayIcon *trayIcon;
     Notificator *notificator;
     TransactionView *transactionView;
-    RPCConsole *rpcConsole;
+    DEBUGConsole *debugConsole;
 
     QMovie *syncIconMovie;
     /** Keep track of previous number of blocks, to detect progress */

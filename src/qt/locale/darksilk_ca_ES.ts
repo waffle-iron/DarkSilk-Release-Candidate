@@ -1467,9 +1467,10 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
     </message>
 </context>
 <context>
-    <name>RPCConsole</name>
+    <name>DEBUGConsole</name>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="+46"/>
+        <location filename="../forms/<source>Copyright © 2009-2015 The Bitcoin developers
+debugconsole.ui" line="+46"/>
         <source>Client name</source>
         <translation>Nom del client</translation>
     </message>
@@ -1616,7 +1617,8 @@ En aquest cas es requereix una comisió d&apos;almenys 2%.</translation>
         <translation>Netejar consola</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="+325"/>
+        <location filename="../<source>Copyright © 2009-2015 The Bitcoin developers
+debugconsole.cpp" line="+325"/>
         <source>Welcome to the DarkSilk RPC console.</source>
         <translation>Benvingut a la consola RPC de DarkSilk.</translation>
     </message>

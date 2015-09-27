@@ -30,7 +30,8 @@
 #include "askpassphrasedialog.h"
 #include "notificator.h"
 #include "guiutil.h"
-#include "rpcconsole.h"
+#include "<source>Copyright © 2009-2015 The Bitcoin developers
+debugconsole.h"
 #include "wallet.h"
 #include "init.h"
 #include "stormnodemanager.h"
@@ -93,7 +94,7 @@ DarkSilkGUI::DarkSilkGUI(QWidget *parent):
     aboutQtAction(0),
     trayIcon(0),
     notificator(0),
-    rpcConsole(0),
+    debugConsole(0),
     prevBlocks(0),
     nWeight(0) {
     resize(1000, 600);
@@ -276,10 +277,10 @@ DarkSilkGUI::DarkSilkGUI(QWidget *parent):
     // Clicking on "Sign Message" in the receive coins page sends you to the sign message tab
     connect(receiveCoinsPage, SIGNAL(signMessage(QString)), this, SLOT(gotoSignMessageTab(QString)));
 
-    rpcConsole = new RPCConsole(this);
-    connect(openRPCConsoleAction, SIGNAL(triggered()), rpcConsole, SLOT(show()));
+    debugConsole = new DEBUGConsole(this);
+    connect(openDEBUGConsoleAction, SIGNAL(triggered()), debugConsole, SLOT(show()));
     // prevents an oben debug window from becoming stuck/unusable on client shutdown
-    connect(quitAction, SIGNAL(triggered()), rpcConsole, SLOT(hide())); // prevents an oben debug window from becoming stuck/unusable on client shutdown
+    connect(quitAction, SIGNAL(triggered()), debugConsole, SLOT(hide())); // prevents an oben debug window from becoming stuck/unusable on client shutdown
 
     gotoOverviewPage();
 }
@@ -476,8 +477,8 @@ void DarkSilkGUI::createActions()
     exportAction = new QAction(tr("&Export..."), this);
     exportAction->setToolTip(tr("Export the data in the current tab to a file"));
 
-    openRPCConsoleAction = new QAction(tr("&Debug window"), this);
-    openRPCConsoleAction->setToolTip(tr("Open debugging and diagnostic console"));
+    openDEBUGConsoleAction = new QAction(tr("&Debug window"), this);
+    openDEBUGConsoleAction->setToolTip(tr("Open debugging and diagnostic console"));
 
     connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(aboutAction, SIGNAL(triggered()), this, SLOT(aboutClicked()));
@@ -519,7 +520,7 @@ void DarkSilkGUI::createMenuBar()
     settings->addAction(optionsAction);
 
     QMenu *help = appMenuBar->addMenu(tr("&Help"));
-    help->addAction(openRPCConsoleAction);
+    help->addAction(openDEBUGConsoleAction);
     help->addSeparator();
     help->addAction(aboutAction);
     help->addAction(aboutQtAction);
@@ -662,7 +663,7 @@ void DarkSilkGUI::setClientModel(ClientModel *clientModel)
         connect(clientModel, SIGNAL(message(QString, QString, bool, unsigned int)), this, SLOT(message(QString, QString, bool, unsigned int)));
 
         overviewPage->setClientModel(clientModel);
-        rpcConsole->setClientModel(clientModel);
+        debugConsole->setClientModel(clientModel);
     }
 }
 
@@ -740,7 +741,7 @@ void DarkSilkGUI::createTrayIcon() {
     trayIconMenu->addAction(verifyMessageAction);
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(optionsAction);
-    trayIconMenu->addAction(openRPCConsoleAction);
+    trayIconMenu->addAction(openDEBUGConsoleAction);
 #ifndef Q_OS_MAC // This is built-in on Mac
     trayIconMenu->addSeparator();
     trayIconMenu->addAction(quitAction);

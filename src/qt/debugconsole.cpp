@@ -1,5 +1,7 @@
-#include "rpcconsole.h"
-#include "ui_rpcconsole.h"
+#include "<source>Copyright © 2009-2015 The Bitcoin developers
+debugconsole.h"
+#include "ui_<source>Copyright © 2009-2015 The Bitcoin developers
+debugconsole.h"
 
 #include "clientmodel.h"
 #include "guiutil.h"
@@ -49,7 +51,8 @@ signals:
     void reply(int category, const QString &command);
 };
 
-#include "rpcconsole.moc"
+#include "<source>Copyright © 2009-2015 The Bitcoin developers
+debugconsole.moc"
 
 void RPCExecutor::start()
 {
@@ -145,7 +148,7 @@ void RPCExecutor::request(const QString &command)
     std::vector<std::string> args;
     if(!parseCommandLine(args, command.toStdString()))
     {
-        emit reply(RPCConsole::CMD_ERROR, QString("Parse error: unbalanced ' or \""));
+        emit reply(DEBUGConsole::CMD_ERROR, QString("Parse error: unbalanced ' or \""));
         return;
     }
     if(args.empty())
@@ -167,7 +170,7 @@ void RPCExecutor::request(const QString &command)
         else
             strPrint = write_string(result, true);
 
-        emit reply(RPCConsole::CMD_REPLY, QString::fromStdString(strPrint));
+        emit reply(DEBUGConsole::CMD_REPLY, QString::fromStdString(strPrint));
     }
     catch (json_spirit::Object& objError)
     {
@@ -175,22 +178,22 @@ void RPCExecutor::request(const QString &command)
         {
             int code = find_value(objError, "code").get_int();
             std::string message = find_value(objError, "message").get_str();
-            emit reply(RPCConsole::CMD_ERROR, QString::fromStdString(message) + " (code " + QString::number(code) + ")");
+            emit reply(DEBUGConsole::CMD_ERROR, QString::fromStdString(message) + " (code " + QString::number(code) + ")");
         }
         catch(std::runtime_error &) // raised when converting to invalid type, i.e. missing code or message
         {   // Show raw JSON object
-            emit reply(RPCConsole::CMD_ERROR, QString::fromStdString(write_string(json_spirit::Value(objError), false)));
+            emit reply(DEBUGConsole::CMD_ERROR, QString::fromStdString(write_string(json_spirit::Value(objError), false)));
         }
     }
     catch (std::exception& e)
     {
-        emit reply(RPCConsole::CMD_ERROR, QString("Error: ") + QString::fromStdString(e.what()));
+        emit reply(DEBUGConsole::CMD_ERROR, QString("Error: ") + QString::fromStdString(e.what()));
     }
 }
 
-RPCConsole::RPCConsole(QWidget *parent) :
+DEBUGConsole::DEBUGConsole(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::RPCConsole),
+    ui(new Ui::DEBUGConsole),
     historyPtr(0)
 {
     ui->setupUi(this);
@@ -215,13 +218,13 @@ RPCConsole::RPCConsole(QWidget *parent) :
     clear();
 }
 
-RPCConsole::~RPCConsole()
+DEBUGConsole::~DEBUGConsole()
 {
     emit stopExecutor();
     delete ui;
 }
 
-bool RPCConsole::eventFilter(QObject* obj, QEvent *event)
+bool DEBUGConsole::eventFilter(QObject* obj, QEvent *event)
 {
     if(event->type() == QEvent::KeyPress) // Special key handling
     {
@@ -257,7 +260,7 @@ bool RPCConsole::eventFilter(QObject* obj, QEvent *event)
     return QDialog::eventFilter(obj, event);
 }
 
-void RPCConsole::setClientModel(ClientModel *model)
+void DEBUGConsole::setClientModel(ClientModel *model)
 {
     clientModel = model;
     ui->trafficGraph->setClientModel(model);
@@ -287,14 +290,14 @@ static QString categoryClass(int category)
 {
     switch(category)
     {
-    case RPCConsole::CMD_REQUEST:  return "cmd-request"; break;
-    case RPCConsole::CMD_REPLY:    return "cmd-reply"; break;
-    case RPCConsole::CMD_ERROR:    return "cmd-error"; break;
+    case DEBUGConsole::CMD_REQUEST:  return "cmd-request"; break;
+    case DEBUGConsole::CMD_REPLY:    return "cmd-reply"; break;
+    case DEBUGConsole::CMD_ERROR:    return "cmd-error"; break;
     default:                       return "misc";
     }
 }
 
-void RPCConsole::clear()
+void DEBUGConsole::clear()
 {
     ui->messagesWidget->clear();
     history.clear();
@@ -327,7 +330,7 @@ void RPCConsole::clear()
                         tr("Type <b>help</b> for an overview of available commands.")), true);
 }
 
-void RPCConsole::message(int category, const QString &message, bool html)
+void DEBUGConsole::message(int category, const QString &message, bool html)
 {
     QTime time = QTime::currentTime();
     QString timeString = time.toString();
@@ -343,19 +346,19 @@ void RPCConsole::message(int category, const QString &message, bool html)
     ui->messagesWidget->append(out);
 }
 
-void RPCConsole::setNumConnections(int count)
+void DEBUGConsole::setNumConnections(int count)
 {
     ui->numberOfConnections->setText(QString::number(count));
 }
 
-void RPCConsole::setNumBlocks(int count)
+void DEBUGConsole::setNumBlocks(int count)
 {
     ui->numberOfBlocks->setText(QString::number(count));
     if(clientModel)
         ui->lastBlockTime->setText(clientModel->getLastBlockDate().toString());
 }
 
-void RPCConsole::on_lineEdit_returnPressed()
+void DEBUGConsole::on_lineEdit_returnPressed()
 {
     QString cmd = ui->lineEdit->text();
     ui->lineEdit->clear();
@@ -378,7 +381,7 @@ void RPCConsole::on_lineEdit_returnPressed()
     }
 }
 
-void RPCConsole::browseHistory(int offset)
+void DEBUGConsole::browseHistory(int offset)
 {
     historyPtr += offset;
     if(historyPtr < 0)
@@ -391,7 +394,7 @@ void RPCConsole::browseHistory(int offset)
     ui->lineEdit->setText(cmd);
 }
 
-void RPCConsole::startExecutor()
+void DEBUGConsole::startExecutor()
 {
     QThread* thread = new QThread;
     RPCExecutor *executor = new RPCExecutor();
@@ -416,7 +419,7 @@ void RPCConsole::startExecutor()
     thread->start();
 }
 
-void RPCConsole::on_tabWidget_currentChanged(int index)
+void DEBUGConsole::on_tabWidget_currentChanged(int index)
 {
     if(ui->tabWidget->widget(index) == ui->tab_console)
     {
@@ -424,24 +427,24 @@ void RPCConsole::on_tabWidget_currentChanged(int index)
     }
 }
 
-void RPCConsole::on_openDebugLogfileButton_clicked()
+void DEBUGConsole::on_openDebugLogfileButton_clicked()
 {
     GUIUtil::openDebugLogfile();
 }
 
-void RPCConsole::scrollToEnd()
+void DEBUGConsole::scrollToEnd()
 {
     QScrollBar *scrollbar = ui->messagesWidget->verticalScrollBar();
     scrollbar->setValue(scrollbar->maximum());
 }
 
-void RPCConsole::on_showCLOptionsButton_clicked()
+void DEBUGConsole::on_showCLOptionsButton_clicked()
 {
     GUIUtil::HelpMessageBox help;
     help.exec();
 }
 
-QString RPCConsole::FormatBytes(quint64 bytes)
+QString DEBUGConsole::FormatBytes(quint64 bytes)
 {
     if(bytes < 1024)
         return QString(tr("%1 B")).arg(bytes);
@@ -453,12 +456,12 @@ QString RPCConsole::FormatBytes(quint64 bytes)
     return QString(tr("%1 GB")).arg(bytes / 1024 / 1024 / 1024);
 }
 
-void RPCConsole::setTrafficGraphRange(int mins)
+void DEBUGConsole::setTrafficGraphRange(int mins)
 {
     ui->trafficGraph->setGraphRangeMins(mins);
 }
 
-void RPCConsole::updateTrafficStats(quint64 totalBytesIn, quint64 totalBytesOut)
+void DEBUGConsole::updateTrafficStats(quint64 totalBytesIn, quint64 totalBytesOut)
 {
     ui->lblBytesIn->setText(FormatBytes(totalBytesIn));
     ui->lblBytesOut->setText(FormatBytes(totalBytesOut));

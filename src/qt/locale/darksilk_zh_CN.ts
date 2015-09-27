@@ -1470,9 +1470,10 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
 </context>
 <context>
-    <name>RPCConsole</name>
+    <name>DEBUGConsole</name>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="+46"/>
+        <location filename="../forms/<source>Copyright © 2009-2015 The Bitcoin developers
+debugconsole.ui" line="+46"/>
         <source>Client name</source>
         <translation>客户端名称</translation>
     </message>
@@ -1619,7 +1620,8 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation>清空控制台</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="+325"/>
+        <location filename="../<source>Copyright © 2009-2015 The Bitcoin developers
+debugconsole.cpp" line="+325"/>
         <source>Welcome to the DarkSilk RPC console.</source>
         <translation>欢迎使用黑币RPC控制台。</translation>
     </message>
