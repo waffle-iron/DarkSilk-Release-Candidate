@@ -14,8 +14,7 @@
     <message>
         <location line="+41"/>
         <source>Copyright © 2009-2015 The Bitcoin developers
-Copyright (c) 2015 DarkSilk Developers
-Copyright (c) 2015 DarkSilk Developers</source>
+Copyright (c) 2015 The DarkSilk Developers</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1455,9 +1454,9 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
     </message>
 </context>
 <context>
-    <name>RPCConsole</name>
+    <name>DEBUGConsole</name>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="+46"/>
+        <location filename="../forms/debugconsole.ui" line="+46"/>
         <source>Client name</source>
         <translation>Kliendi nimi</translation>
     </message>
@@ -1604,7 +1603,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <translation>Puhasta konsool</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="+325"/>
+        <location filename="../debugconsole.cpp" line="+325"/>
         <source>Welcome to the DarkSilk RPC console.</source>
         <translation type="unfinished"/>
     </message>

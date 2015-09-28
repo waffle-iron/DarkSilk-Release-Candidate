@@ -374,7 +374,7 @@ public:
     // Is this amount compatible with other client in the pool?
     bool IsCompatibleWithSession(int64_t nAmount, CTransaction txCollateral, std::string& strReason);
 
-    // Passively run Sandstorm in the background according to the configuration in settings (only for QT)
+    // Passively run Sandstorm in the background according to the configuration in settings (only for Qt)
     bool DoAutomaticDenominating(bool fDryRun=false, bool ready=false);
     bool PrepareSandstormDenominate();
 

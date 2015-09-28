@@ -1,4 +1,4 @@
-// Copyright (c) 2015 DarkSilk Developers
+// Copyright (c) 2015 The DarkSilk Developers
 #ifndef PBKDF2_H
 #define PBKDF2_H
 

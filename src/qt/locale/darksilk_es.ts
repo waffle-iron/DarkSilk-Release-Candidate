@@ -14,11 +14,10 @@
     <message>
         <location line="+41"/>
         <source>Copyright © 2009-2015 The Bitcoin developers
-Copyright (c) 2015 DarkSilk Developers
-Copyright (c) 2015 DarkSilk Developers</source>
-        <translation>Copyright © 2009-2014 The Bitcoin developers
-Copyright (c) 2015 DarkSilk Developers
-Copyright (c) 2015 DarkSilk Developers</translation>
+Copyright (c) 2015 The DarkSilk Developers</source>
+        <translation>Copyright © 2009-2015 The Bitcoin developers
+Copyright (c) 2015 The DarkSilk Developers
+Copyright (c) 2015 The DarkSilk Developers</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -1472,9 +1471,9 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
     </message>
 </context>
 <context>
-    <name>RPCConsole</name>
+    <name>DEBUGConsole</name>
     <message>
-        <location filename="../forms/rpcconsole.ui" line="+46"/>
+        <location filename="../forms/debugconsole.ui" line="+46"/>
         <source>Client name</source>
         <translation>Nombre del cliente</translation>
     </message>
@@ -1621,7 +1620,7 @@ Esto significa que se requiere una cuota de al menos %2.</translation>
         <translation>Borrar consola</translation>
     </message>
     <message>
-        <location filename="../rpcconsole.cpp" line="+325"/>
+        <location filename="../debugconsole.cpp" line="+325"/>
         <source>Welcome to the DarkSilk RPC console.</source>
         <translation>Bienvenido a la consola RPC de DarkSilk</translation>
     </message>
