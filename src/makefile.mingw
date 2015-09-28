@@ -6,29 +6,31 @@ USE_UPNP:=0
 USE_WALLET:=1
 
 INCLUDEPATHS= \
- -I"C:\boost-1.50.0-mgw" \
- -I"C:\db-4.8.30.NC-mgw\build_unix" \
- -I"C:\openssl-1.0.2d-mgw\include"
+ -I"C:\deps\boost_1_59_0" \
+ -I"C:\deps\db-4.8.30.NC\build_unix" \
+ -I"C:\deps\openssl-1.0.2d\include"
 
 LIBPATHS= \
- -L"C:\boost-1.50.0-mgw\stage\lib" \
- -L"C:\db-4.8.30.NC-mgw\build_unix" \
- -L"C:\openssl-1.0.2d-mgw"
+ -L"C:\deps\boost_1_59_0\lib" \
+ -L"C:\deps\db-4.8.30.NC\build_unix" \
+ -L"C:\deps\openssl-1.0.2d\lib"
 
 LIBS= \
- -l boost_system-mgw44-mt-1_53 \
- -l boost_filesystem-mgw44-mt-1_53 \
- -l boost_program_options-mgw44-mt-1_53 \
- -l boost_thread-mgw44-mt-1_53 \
- -l boost_chrono-mgw44-mt-1_53 \
+ -l boost_system-mgw49-mt-1_59 \
+ -l boost_filesystem-mgw49-mt-1_59 \
+ -l boost_program_options-mgw49-mt-1_593 \
+ -l boost_thread-mgw49-mt-1_59 \
+ -l boost_chrono-mgw49-mt-1_59 \
  -l db_cxx \
  -l ssl \
- -l crypto
+ -l crypto \
+ -l secp256k1 \
+ -l z
 
-DEFS=-DWIN32 -D_WINDOWS -DBOOST_THREAD_USE_LIB -DBOOST_SPIRIT_THREADSAFE
+DEFS=-D_MT -DWIN32 -D_WINDOWS -DBOOST_THREAD_USE_LIB -DBOOST_SPIRIT_THREADSAFE
 DEBUGFLAGS=-g
-CFLAGS=-mthreads -O2 -msse2 -w -Wall -Wextra -Wno-ignored-qualifiers -Wformat -Wformat-security -Wno-unused-parameter $(DEBUGFLAGS) $(DEFS) $(INCLUDEPATHS)
-LDFLAGS=-Wl,--dynamicbase -Wl,--nxcompat
+CFLAGS=-O3 -msse2 -w -Wall -Wextra -Wno-ignored-qualifiers -Wformat -Wformat-security -Wno-unused-parameter $(DEBUGFLAGS) $(DEFS) $(INCLUDEPATHS)
+LDFLAGS=-Wl,--dynamicbase -Wl,--nxcompat -static -static-libgcc -static-libstdc++
 
 TESTDEFS = -DTEST_DATA_DIR=$(abspath test/data)
 
@@ -36,10 +38,10 @@ ifndef USE_UPNP
 	override USE_UPNP = -
 endif
 ifneq (${USE_UPNP}, -)
- INCLUDEPATHS += -I"C:\miniupnpc-1.6-mgw"
- LIBPATHS += -L"C:\miniupnpc-1.6-mgw"
- LIBS += -l miniupnpc -l iphlpapi
- DEFS += -DMINIUPNP_STATICLIB -DSTATICLIB -DUSE_UPNP=$(USE_UPNP)
+  INCLUDEPATHS += -I"C:\deps\miniupnpc-1.9\include"
+  LIBPATHS += -L"C:\deps\miniupnpc-1.9\lib"
+  LIBS += -l miniupnpc -l iphlpapi
+  DEFS += -DMINIUPNP_STATICLIB -DSTATICLIB -DUSE_UPNP=$(USE_UPNP)
 endif
 
 LIBS += -l kernel32 -l user32 -l gdi32 -l comdlg32 -l winspool -l winmm -l shell32 -l comctl32 -l ole32 -l oleaut32 -l uuid -l rpcrt4 -l advapi32 -l ws2_32 -l mswsock -l shlwapi
@@ -88,12 +90,12 @@ OBJS= \
     obj/irc.o \
     obj/stealth.o \
     obj/activestormnode.o \
-    obj/darksend.o \
+    obj/sandstorm.o \
     obj/eccryptoverify.o \
     obj/instantx.o \
     obj/stormnodeconfig.o \
     obj/stormnode.o \
-    obj/rpcdarksend.o \
+    obj/rpcsandstorm.o \
     obj/spork.o \
     obj/crypto/hmac_sha256.o \
     obj/crypto/hmac_sha512.o \
@@ -103,8 +105,6 @@ OBJS= \
     obj/crypto/sha256.o \
     obj/crypto/sha512.o \
     obj/smessage.o \
-    obj/richlistdata.o \
-    obj/richlistdb.o \
     obj/market.o \
     obj/rpcmarket.o
 
@@ -127,11 +127,24 @@ DEFS += $(addprefix -I,$(CURDIR)/leveldb/include)
 DEFS += $(addprefix -I,$(CURDIR)/leveldb/helpers)
 OBJS += obj/txdb-leveldb.o
 leveldb/libleveldb.a:
-	cd leveldb; make; cd ..
+	@echo "Building LevelDB ..." && cd leveldb TARGET_OS=NATIVE_WINDOWS make libleveldb.a libmemenv.a cd ..
 obj/txdb-leveldb.o: leveldb/libleveldb.a
 
+# libsecp256k1 support 
+DEFS += -DUSE_SECP256K1  
+$(shell cp -rp $(CURDIR)/crypto obj >/dev/null)
+
+obj/build.h: FORCE
+	/bin/sh ../share/genbuild.sh obj/build.h
+version.cpp: obj/build.h
+DEFS += -DHAVE_BUILD_INFO
+
 obj/%.o: %.cpp $(HEADERS)
-	g++ -c $(CFLAGS) -o $@ $<
+	$(CXX) -c $(CFLAGS) -o $@ $<
+
+darksilkd.exe: $(OBJS:obj/%=obj/%)
+	$(CXX) $(CFLAGS) $(LDFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS) -lshlwapi
+	$(STRIP) darksilkd.exe
 
 obj/scrypt-x86.o: scrypt-x86.S
 	$(CXX) -c $(xCXXFLAGS) -MMD -o $@ $<
@@ -139,11 +152,12 @@ obj/scrypt-x86.o: scrypt-x86.S
 obj/scrypt-x86_64.o: scrypt-x86_64.S
 	$(CXX) -c $(xCXXFLAGS) -MMD -o $@ $<
 
-darksilkd.exe: $(OBJS:obj/%=obj/%)
-	g++ $(CFLAGS) $(LDFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS)
-
+obj/scrypt-arm.o: scrypt-arm.S
+	$(CXX) -c $(xCXXFLAGS) -MMD -o $@ $<
 clean:
-	-del /Q darksilkd
-	-del /Q obj\*
+	-rm -f obj/*.o
+	-rm -f darksilkd.exe
+	-rm -f obj/build.h
+	cd leveldb && TARGET_OS=NATIVE_WINDOWS $(MAKE) clean && cd ..
 
 FORCE:
