@@ -252,7 +252,6 @@ static const CRPCCommand vRPCCommands[] =
 /* Dark features */
     { "spork",                  &spork,                  true,      false,      false },
     { "stormnode",             &stormnode,             true,      false,      true },
-    { "keepass",                &keepass,                false,     false,      true },
 
 #ifdef ENABLE_WALLET
     { "sandstorm",               &sandstorm,               false,     false,      true },

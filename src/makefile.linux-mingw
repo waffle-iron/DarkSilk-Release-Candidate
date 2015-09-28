@@ -102,7 +102,6 @@ OBJS= \
     obj/sandstorm.o \
     obj/eccryptoverify.o \
     obj/instantx.o \
-    obj/keepass.o \
     obj/stormnodeconfig.o \
     obj/stormnode.o \
     obj/rpcsandstorm.o \
@@ -117,7 +116,7 @@ OBJS= \
     obj/smessage.o \
     obj/market.o \
     obj/rpcmarket.o
-    
+
 ifeq (${USE_WALLET}, 1)
     DEFS += -DENABLE_WALLET
     OBJS += \
@@ -168,6 +167,7 @@ clean:
 	-rm -f obj/*.o
 	-rm -f darksilkd.exe
 	-rm -f obj/build.h
+	-rm -rf obj/crypto
 	cd leveldb && TARGET_OS=OS_WINDOWS_CROSSCOMPILE $(MAKE) clean && cd ..
 
 FORCE:

@@ -15,7 +15,6 @@
 #include "checkpoints.h"
 #include "activestormnode.h"
 #include "spork.h"
-#include "keepass.h"
 #include "stormnodeconfig.h"
 #include "smessage.h"
 #include "market.h"
@@ -608,9 +607,6 @@ bool AppInit2(boost::thread_group& threadGroup)
             if (r == CDBEnv::RECOVER_FAIL)
                 return InitError(_("wallet.dat corrupt, salvage failed"));
         }
-
-        // Initialize KeePass Integration
-        keePassInt.init();
     } // (!fDisableWallet)
 #endif // ENABLE_WALLET
     // ********************************************************* Step 6: network initialization
