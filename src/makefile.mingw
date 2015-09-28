@@ -6,14 +6,17 @@ USE_UPNP:=0
 USE_WALLET:=1
 
 INCLUDEPATHS= \
- -I"C:\deps\boost_1_59_0" \
- -I"C:\deps\db-4.8.30.NC\build_unix" \
- -I"C:\deps\openssl-1.0.2d\include"
+ -I"C:\Develop\deps\boost_1_59_0" \
+ -I"C:\Develop\deps\db-4.8.30.NC\build_unix" \
+ -I"C:\Develop\deps\openssl-1.0.2d\include" \
+ -I"$(abspath obj)"
 
 LIBPATHS= \
- -L"C:\deps\boost_1_59_0\lib" \
- -L"C:\deps\db-4.8.30.NC\build_unix" \
- -L"C:\deps\openssl-1.0.2d\lib"
+ -L"C:\Develop\deps\boost_1_59_0\bin.v2\libs" \
+ -L"C:\Develop\deps\db-4.8.30.NC\build_unix" \
+ -L"C:\Develop\deps\openssl-1.0.2d\lib" \
+ -L"C:\Develop\deps\secp256k1-darksilk\.libs"
+ -L"C:\Develop\deps\secp256k1-darksilk\.libs"
 
 LIBS= \
  -l boost_system-mgw49-mt-1_59 \
@@ -38,8 +41,8 @@ ifndef USE_UPNP
 	override USE_UPNP = -
 endif
 ifneq (${USE_UPNP}, -)
-  INCLUDEPATHS += -I"C:\deps\miniupnpc-1.9\include"
-  LIBPATHS += -L"C:\deps\miniupnpc-1.9\lib"
+  INCLUDEPATHS += -I"C:\Develop\deps\miniupnpc-1.9\include"
+  LIBPATHS += -L"C:\Develop\deps\miniupnpc-1.9\lib"
   LIBS += -l miniupnpc -l iphlpapi
   DEFS += -DMINIUPNP_STATICLIB -DSTATICLIB -DUSE_UPNP=$(USE_UPNP)
 endif
@@ -135,7 +138,7 @@ DEFS += -DUSE_SECP256K1
 $(shell cp -rp $(CURDIR)/crypto obj >/dev/null)
 
 obj/build.h: FORCE
-	/bin/sh ../share/genbuild.sh obj/build.h
+	sh ../share/genbuild.sh obj/build.h
 version.cpp: obj/build.h
 DEFS += -DHAVE_BUILD_INFO
 
