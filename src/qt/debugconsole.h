@@ -1,21 +1,21 @@
-#ifndef RPCCONSOLE_H
-#define RPCCONSOLE_H
+#ifndef DEBUGCONSOLE_H
+#define DEBUGCONSOLE_H
 
 #include <QDialog>
 
 namespace Ui {
-    class RPCConsole;
+    class DEBUGConsole;
 }
 class ClientModel;
 
 /** Local DarkSilk RPC console. */
-class RPCConsole: public QDialog
+class DEBUGConsole: public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit RPCConsole(QWidget *parent = 0);
-    ~RPCConsole();
+    explicit DEBUGConsole(QWidget *parent = 0);
+    ~DEBUGConsole();
 
     void setClientModel(ClientModel *model);
 
@@ -37,8 +37,12 @@ private slots:
     void on_openDebugLogfileButton_clicked();
     /** display messagebox with program parameters (same as darksilk-qt --help) */
     void on_showCLOptionsButton_clicked();
+    /** change the time range of the network traffic graph */
+    void on_sldGraphRange_valueChanged(int value);
     /** update traffic statistics */
     void updateTrafficStats(quint64 totalBytesIn, quint64 totalBytesOut);
+    /** clear traffic graph */
+    void on_btnClearTrafficGraph_clicked();
 
 public slots:
     void clear();
@@ -60,7 +64,7 @@ private:
     static QString FormatBytes(quint64 bytes);
     void setTrafficGraphRange(int mins);
 
-    Ui::RPCConsole *ui;
+    Ui::DEBUGConsole *ui;
     ClientModel *clientModel;
     QStringList history;
     int historyPtr;
@@ -68,4 +72,4 @@ private:
     void startExecutor();
 };
 
-#endif // RPCCONSOLE_H
+#endif // DEBUGCONSOLE_H

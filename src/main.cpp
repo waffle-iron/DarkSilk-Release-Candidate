@@ -1235,7 +1235,7 @@ bool IsInitialBlockDownload()
         nLastUpdate = GetTime();
     }
     return (GetTime() - nLastUpdate < 15 &&
-            pindexBest->GetBlockTime() < GetTime() - 4 * 60 * 60);
+            pindexBest->GetBlockTime() < GetTime() - 8 * 60 * 60);
 }
 
 // Requires cs_main.

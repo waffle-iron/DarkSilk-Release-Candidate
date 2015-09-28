@@ -104,7 +104,7 @@ $ sudo make install
 //end of guide
 
 
-Build Instructions for QT5 Linux Wallet (Ubuntu)
+Build Instructions for Qt5 Linux Wallet (Ubuntu)
 ================================================
 //Install dependencies via Terminal:
 
@@ -122,7 +122,7 @@ $ qmake -qt=qt5 "USE_QRCODE=1" "USE_NATIVE_I2P=1"
 
 $ make
 
-//This will compile and build the QT Wallet which takes a little while, please be patient.
+//This will compile and build the Qt Wallet which takes a little while, please be patient.
 
 //When finished you will have a file called DarkSilk - Simply Double Click
 
