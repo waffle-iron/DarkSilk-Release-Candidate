@@ -102,7 +102,6 @@ OBJS= \
     obj/sandstorm.o \
     obj/eccryptoverify.o \
     obj/instantx.o \
-    obj/keepass.o \
     obj/stormnodeconfig.o \
     obj/stormnode.o \
     obj/rpcsandstorm.o \
@@ -116,19 +115,14 @@ OBJS= \
     obj/crypto/sha512.o \
     obj/smessage.o \
     obj/market.o \
-    obj/rpcmarket.o
-    
-ifeq (${USE_WALLET}, 1)
-    DEFS += -DENABLE_WALLET
-    OBJS += \
-        obj/db.o \
-        obj/miner.o \
-        obj/rpcdump.o \
-        obj/rpcmining.o \
-        obj/rpcwallet.o \
-        obj/wallet.o \
-        obj/walletdb.o
-endif
+    obj/rpcmarket.o \
+    obj/db.o \
+    obj/miner.o \
+    obj/rpcdump.o \
+    obj/rpcmining.o \
+    obj/rpcwallet.o \
+    obj/wallet.o \
+    obj/walletdb.o
 
 all: darksilkd.exe
 
