@@ -270,7 +270,6 @@ HEADERS += src/qt/darksilkgui.h \
     src/qt/flowlayout.h \
     src/qt/sandstormconfig.h \
     src/stormnode.h \
-    src/keepass.h \
     src/sandstorm.h \
     src/instantx.h \
     src/activestormnode.h \
@@ -388,7 +387,6 @@ SOURCES += src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
     src/qt/flowlayout.cpp \
     src/qt/sandstormconfig.cpp \
     src/stormnode.cpp \
-    src/keepass.cpp \
     src/sandstorm.cpp \
     src/rpcsandstorm.cpp \
     src/instantx.cpp \
