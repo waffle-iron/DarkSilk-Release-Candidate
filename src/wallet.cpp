@@ -422,15 +422,9 @@ bool CWallet::EncryptWallet(const SecureString& strWalletPassphrase)
         // Need to completely rewrite the wallet file; if we don't, bdb might keep
         // bits of the unencrypted private key in slack space in the database file.
         CDB::Rewrite(strWalletFile);
-
-        // Update KeePass if necessary
-        if(GetBoolArg("-keepass", false)) {
-            LogPrintf("CWallet::EncryptWallet - Updating KeePass with new passphrase");
-            try {
-                keePassInt.updatePassphrase(strWalletPassphrase);
     }
     NotifyStatusChanged(this);
-
+    
     return true;
 }
 
