@@ -18,6 +18,7 @@
 #include "key.h"
 #include "spork.h"
 #include "sandstorm.h"
+#include "keepass.h"
 #include "instantx.h"
 #include "stormnode.h"
 #include "chainparams.h"
@@ -30,13 +31,12 @@
 
 using namespace std;
 
+
+
 // Settings
 int64_t nTransactionFee = MIN_TX_FEE;
 int64_t nReserveBalance = 0;
 int64_t nMinimumInputValue = 0;
-
-static int64_t GetStakeCombineThreshold() {return 100 * COIN; }
-static int64_t GetStakeSplitThreshold() { return 2 * GetStakeCombineThreshold(); }
 
 int64_t gcd(int64_t n,int64_t m) { return m == 0 ? n : gcd(m, n % m); }
 static uint64_t CoinWeightCost(const COutput &out)
@@ -203,10 +203,24 @@ bool CWallet::Lock()
 
 bool CWallet::Unlock(const SecureString& strWalletPassphrase, bool anonymizeOnly)
 {
+    SecureString strWalletPassphraseFinal;
+
     if(!IsLocked())
     {
     fWalletUnlockAnonymizeOnly = anonymizeOnly;
     return true;
+    }
+
+    // Verify KeePassIntegration
+    if(strWalletPassphrase == "keepass" && GetBoolArg("-keepass", false)) {
+        try {
+            strWalletPassphraseFinal = keePassInt.retrievePassphrase();
+        } catch (std::exception& e) {
+            LogPrintf("CWallet::Unlock could not retrieve passphrase from KeePass: Error: %s\n", e.what());
+            return false;
+        }
+    } else {
+        strWalletPassphraseFinal = strWalletPassphrase;
     }
 
     CCrypter crypter;
@@ -216,7 +230,7 @@ bool CWallet::Unlock(const SecureString& strWalletPassphrase, bool anonymizeOnly
         LOCK(cs_wallet);
         BOOST_FOREACH(const MasterKeyMap::value_type& pMasterKey, mapMasterKeys)
         {
-            if(!crypter.SetKeyFromPassphrase(strWalletPassphrase, pMasterKey.second.vchSalt, pMasterKey.second.nDeriveIterations, pMasterKey.second.nDerivationMethod))
+            if(!crypter.SetKeyFromPassphrase(strWalletPassphraseFinal, pMasterKey.second.vchSalt, pMasterKey.second.nDeriveIterations, pMasterKey.second.nDerivationMethod))
                 return false;
             if (!crypter.Decrypt(pMasterKey.second.vchCryptedKey, vMasterKey))
                 return false;
@@ -235,7 +249,23 @@ bool CWallet::Unlock(const SecureString& strWalletPassphrase, bool anonymizeOnly
 bool CWallet::ChangeWalletPassphrase(const SecureString& strOldWalletPassphrase, const SecureString& strNewWalletPassphrase)
 {
     bool fWasLocked = IsLocked();
+    bool bUseKeePass = false;
+
     SecureString strOldWalletPassphraseFinal;
+
+    // Verify KeePassIntegration
+    if(strOldWalletPassphrase == "keepass" && GetBoolArg("-keepass", false)) {
+        bUseKeePass = true;
+        try {
+            strOldWalletPassphraseFinal = keePassInt.retrievePassphrase();
+        } catch (std::exception& e) {
+            LogPrintf("CWallet::ChangeWalletPassphrase could not retrieve passphrase from KeePass: Error: %s\n", e.what());
+            return false;
+        }
+    } else {
+        strOldWalletPassphraseFinal = strOldWalletPassphrase;
+    }
+
 
     {
         LOCK(cs_wallet);
@@ -245,7 +275,7 @@ bool CWallet::ChangeWalletPassphrase(const SecureString& strOldWalletPassphrase,
         CKeyingMaterial vMasterKey;
         BOOST_FOREACH(MasterKeyMap::value_type& pMasterKey, mapMasterKeys)
         {
-            if(!crypter.SetKeyFromPassphrase(strOldWalletPassphrase, pMasterKey.second.vchSalt, pMasterKey.second.nDeriveIterations, pMasterKey.second.nDerivationMethod))
+            if(!crypter.SetKeyFromPassphrase(strOldWalletPassphraseFinal, pMasterKey.second.vchSalt, pMasterKey.second.nDeriveIterations, pMasterKey.second.nDerivationMethod))
                 return false;
             if (!crypter.Decrypt(pMasterKey.second.vchCryptedKey, vMasterKey))
                 return false;
@@ -272,6 +302,17 @@ bool CWallet::ChangeWalletPassphrase(const SecureString& strOldWalletPassphrase,
                 CWalletDB(strWalletFile).WriteMasterKey(pMasterKey.first, pMasterKey.second);
                 if (fWasLocked)
                     Lock();
+
+                // Update KeePass if necessary
+                if(bUseKeePass) {
+                    LogPrintf("CWallet::ChangeWalletPassphrase - Updating KeePass with new passphrase");
+                    try {
+                        keePassInt.updatePassphrase(strNewWalletPassphrase);
+                    } catch (std::exception& e) {
+                        LogPrintf("CWallet::ChangeWalletPassphrase - could not update passphrase in KeePass: Error: %s\n", e.what());
+                        return false;
+                    }
+                }
 
                 return true;
             }
@@ -428,6 +469,18 @@ bool CWallet::EncryptWallet(const SecureString& strWalletPassphrase)
         // Need to completely rewrite the wallet file; if we don't, bdb might keep
         // bits of the unencrypted private key in slack space in the database file.
         CDB::Rewrite(strWalletFile);
+
+        // Update KeePass if necessary
+        if(GetBoolArg("-keepass", false)) {
+            LogPrintf("CWallet::EncryptWallet - Updating KeePass with new passphrase");
+            try {
+                keePassInt.updatePassphrase(strWalletPassphrase);
+            } catch (std::exception& e) {
+                LogPrintf("CWallet::EncryptWallet - could not update passphrase in KeePass: Error: %s\n", e.what());
+            }
+        }
+
+
     }
     NotifyStatusChanged(this);
 
@@ -3428,15 +3481,9 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
             // Stop adding more inputs if already too many inputs
             if (txNew.vin.size() >= 100)
                 break;
-            // Stop adding more inputs if value is already pretty significant
-            if (nCredit >= GetStakeCombineThreshold())
-                break;
             // Stop adding inputs if reached reserve limit
             if (nCredit + pcoin.first->vout[pcoin.second].nValue > nBalance - nReserveBalance)
                 break;
-            // Do not add additional significant input
-            if (pcoin.first->vout[pcoin.second].nValue >= GetStakeCombineThreshold())
-                continue;
             // Do not add input that is still too young
             if (nTimeWeight < nStakeMinAge)
                 continue;
@@ -3510,25 +3557,10 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
     int64_t blockValue = nCredit;
     int64_t stormnodePayment = GetStormnodePayment(pindexPrev->nHeight+1, nReward);
 
-    if (nCredit >= GetStakeSplitThreshold())
-        txNew.vout.push_back(CTxOut(0, txNew.vout[1].scriptPubKey)); //split stake
-
     // Set output amount
-    if (!hasPayment && txNew.vout.size() == 3) // 2 stake outputs, stake was split, no stormnode payment
-    {
-        txNew.vout[1].nValue = (blockValue / 2 / CENT) * CENT;
-        txNew.vout[2].nValue = blockValue - txNew.vout[1].nValue;
-    }
-    else if(hasPayment && txNew.vout.size() == 4) // 2 stake outputs, stake was split, plus a stormnode payment
-    {
-        txNew.vout[payments-1].nValue = stormnodePayment;
-        blockValue -= stormnodePayment;
-        txNew.vout[1].nValue = (blockValue / 2 / CENT) * CENT;
-        txNew.vout[2].nValue = blockValue - txNew.vout[1].nValue;
-    }
-    else if(!hasPayment && txNew.vout.size() == 2) // only 1 stake output, was not split, no stormnode payment
+    if(!hasPayment && txNew.vout.size() == 2) // 1 stake output, no stormnode payment
         txNew.vout[1].nValue = blockValue;
-    else if(hasPayment && txNew.vout.size() == 3) // only 1 stake output, was not split, plus a stormnode payment
+    else if(hasPayment && txNew.vout.size() == 3) // 1 stake output plus a stormnode payment
     {
         txNew.vout[payments-1].nValue = stormnodePayment;
         blockValue -= stormnodePayment;
