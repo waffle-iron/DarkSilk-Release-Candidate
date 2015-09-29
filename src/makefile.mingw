@@ -2,13 +2,15 @@
 # Distributed under the MIT/X11 software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-USE_UPNP:=0
+USE_UPNP:=1
 USE_WALLET:=1
+USE_NATIVE_I2P:=1
 
 INCLUDEPATHS= \
  -I"C:\Develop\deps\boost_1_59_0" \
  -I"C:\Develop\deps\db-4.8.30.NC\build_unix" \
  -I"C:\Develop\deps\openssl-1.0.2d\include" \
+ -I"C:\Develop\deps\secp256k1-darksilk\include" \
  -I"$(abspath obj)"
 
 LIBPATHS= \
@@ -16,14 +18,13 @@ LIBPATHS= \
  -L"C:\Develop\deps\db-4.8.30.NC\build_unix" \
  -L"C:\Develop\deps\openssl-1.0.2d\lib" \
  -L"C:\Develop\deps\secp256k1-darksilk\.libs"
- -L"C:\Develop\deps\secp256k1-darksilk\.libs"
 
 LIBS= \
- -l boost_system-mgw49-mt-1_59 \
- -l boost_filesystem-mgw49-mt-1_59 \
- -l boost_program_options-mgw49-mt-1_593 \
- -l boost_thread-mgw49-mt-1_59 \
- -l boost_chrono-mgw49-mt-1_59 \
+ -l boost_system-mgw49-mt-s-1_59 \
+ -l boost_filesystem-mgw49-mt-s-1_59 \
+ -l boost_program_options-mgw49-mt-s-1_59 \
+ -l boost_thread-mgw49-mt-s-1_59 \
+ -l boost_chrono-mgw49-mt-s-1_59 \
  -l db_cxx \
  -l ssl \
  -l crypto \
@@ -135,7 +136,7 @@ obj/txdb-leveldb.o: leveldb/libleveldb.a
 
 # libsecp256k1 support 
 DEFS += -DUSE_SECP256K1  
-$(shell cp -rp $(CURDIR)/crypto obj >/dev/null)
+$(shell cp -rp $(abspath crypto) obj >/dev/null)
 
 obj/build.h: FORCE
 	sh ../share/genbuild.sh obj/build.h
@@ -147,7 +148,7 @@ obj/%.o: %.cpp $(HEADERS)
 
 darksilkd.exe: $(OBJS:obj/%=obj/%)
 	$(CXX) $(CFLAGS) $(LDFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS) -lshlwapi
-	$(STRIP) darksilkd.exe
+	strip darksilkd.exe
 
 obj/scrypt-x86.o: scrypt-x86.S
 	$(CXX) -c $(xCXXFLAGS) -MMD -o $@ $<

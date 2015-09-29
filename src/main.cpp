@@ -45,10 +45,10 @@ CTxMemPool mempool;
 map<uint256, CBlockIndex*> mapBlockIndex;
 set<pair<COutPoint, unsigned int> > setStakeSeen;
 
-unsigned int nStakeMinAge = 4 * 60 * 60; // 4 hours
+unsigned int nStakeMinAge = 4 * 60; // 4 hours
 unsigned int nModifierInterval = 8 * 60; // 8 minutes to elapse before new modifier is computed
-int nStakeMinConfirmations = 420; // 420 confirmations before coins can be staked
-int nCoinbaseMaturity = 42; // 42 blocks until coins are mature
+int nStakeMinConfirmations = 10; // 420 confirmations before coins can be staked
+int nCoinbaseMaturity = 10; // 42 blocks until coins are mature
 
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -1154,16 +1154,6 @@ int64_t GetProofOfWorkReward(int64_t nFees)
         }
 }
 
-// miner's coin stake reward
-int64_t GetProofOfStakeReward(const CBlockIndex* pindexPrev, int64_t nCoinAge, int64_t nFees)
-{
-    int64_t nSubsidy = STATIC_POS_REWARD;
-
-    LogPrint("creation", "GetProofOfStakeReward(): create=%s nCoinAge=%d\n", FormatMoney(nSubsidy), nCoinAge);
-
-    return nSubsidy + nFees;
-}
-
 // ppcoin: find last block index up to pindex
 const CBlockIndex* GetLastBlockIndex(const CBlockIndex* pindex, bool fProofOfStake)
 {
@@ -1815,12 +1805,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
     }
     if (IsProofOfStake())
     {
-        // ppcoin: coin stake tx earns reward instead of paying fee
-        uint64_t nCoinAge;
-        if (!vtx[1].GetCoinAge(txdb, pindex->pprev, nCoinAge))
-            return error("ConnectBlock() : %s unable to get coin age for coinstake", vtx[1].GetHash().ToString());
-
-        int64_t nCalculatedStakeReward = GetProofOfStakeReward(pindex->pprev, nCoinAge, nFees);
+        int64_t nCalculatedStakeReward = vtx[0].GetValueOut() * STATIC_POS_REWARD + nFees;
 
         if (nStakeReward > nCalculatedStakeReward)
             return DoS(100, error("ConnectBlock() : coinstake pays too much(actual=%d vs calculated=%d)", nStakeReward, nCalculatedStakeReward));
