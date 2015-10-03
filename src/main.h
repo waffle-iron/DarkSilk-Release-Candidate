@@ -18,7 +18,7 @@
 
 class CValidationState;
 
-static const int STORMNODE_PAYMENT_START = 84003;
+static const int STORMNODE_PAYMENT_START = 82002;
 static const int TESTNET_STORMNODE_PAYMENT_START = 100;
 
 static const int64_t SANDSTORM_COLLATERAL = (42000*COIN); // 42,000DRKSLK Stormnode Collateral Fee
