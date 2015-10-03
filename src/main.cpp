@@ -2318,7 +2318,9 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
 
     bool StormnodePayments = false;
 
-    if(nTime > START_STORMNODE_PAYMENTS) StormnodePayments = true;
+
+    if(pindexBest->nHeight+1 >= STORMNODE_PAYMENT_START) StormnodePayments = true;
+    
 
     if(!IsSporkActive(SPORK_1_STORMNODE_PAYMENTS_ENFORCEMENT)){
         StormnodePayments = false;
