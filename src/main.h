@@ -18,8 +18,8 @@
 
 class CValidationState;
 
-#define START_STORMNODE_PAYMENTS_TESTNET 1446335999 // TESTNET Stormnode Payment Enforcement starts onWed, 31 Oct 2015 23:59:59 GMT
-#define START_STORMNODE_PAYMENTS 1446335999 // MAINNET Stormnode Payment Enforcement starts on Wed, 31 Oct 2015 23:59:59 GMT
+static const int STORMNODE_PAYMENT_START = 84003;
+static const int TESTNET_STORMNODE_PAYMENT_START = 100;
 
 static const int64_t SANDSTORM_COLLATERAL = (42000*COIN); // 42,000DRKSLK Stormnode Collateral Fee
 static const int64_t SANDSTORM_FEE = (0.01*COIN); // SandStorm sending fee of 0.01DRKSLK

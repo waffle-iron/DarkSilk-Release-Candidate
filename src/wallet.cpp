@@ -3457,13 +3457,13 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
     bool bStormNodePayment = false;
 
     if ( Params().NetworkID() == CChainParams::TESTNET ){
-        if (pindexBest->nHeight+1 >= 100) {
+        if (pindexBest->nHeight+1 >= TESTNET_STORMNODE_PAYMENT_START) {
             bStormNodePayment = true;
         }
     }
     else
     {   if ( Params().NetworkID() == CChainParams::MAIN ){
-            if (pindexBest->nHeight+1 >= 42003){
+            if (pindexBest->nHeight+1 >= STORMNODE_PAYMENT_START){
                 bStormNodePayment = true;
             }
         }
