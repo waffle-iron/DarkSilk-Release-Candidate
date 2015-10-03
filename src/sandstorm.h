@@ -225,7 +225,7 @@ class CSandstormSession
 class CSandStormPool
 {
 public:
-    static const int MIN_PEER_PROTO_VERSION = 60020;
+    static const int MIN_PEER_PROTO_VERSION = 70020;
 
     // clients entries
     std::vector<CSandStormEntry> myEntries;
