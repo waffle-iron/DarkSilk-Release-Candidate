@@ -208,6 +208,7 @@ public:
     
     ~SecMsgNode() {};
     
+    CCriticalSection            cs_smsg_net;
     int64_t                     lastSeen;
     int64_t                     lastMatched;
     int64_t                     ignoreUntil;
