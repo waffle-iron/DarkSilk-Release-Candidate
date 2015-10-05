@@ -30,14 +30,15 @@
 
 using namespace std;
 
-
-
 // Settings
 int64_t nTransactionFee = MIN_TX_FEE;
 int64_t nReserveBalance = 0;
 int64_t nMinimumInputValue = 0;
-
 int64_t gcd(int64_t n,int64_t m) { return m == 0 ? n : gcd(m, n % m); }
+
+static int64_t GetStakeCombineThreshold() {return 100 * COIN; }
+static int64_t GetStakeSplitThreshold() { return 2 * GetStakeCombineThreshold(); }
+
 static uint64_t CoinWeightCost(const COutput &out)
 {
     int64_t nTimeWeight = (int64_t)GetTime() - (int64_t)out.tx->nTime;
@@ -3422,9 +3423,15 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
             // Stop adding more inputs if already too many inputs
             if (txNew.vin.size() >= 100)
                 break;
+            // Stop adding more inputs if value is already pretty significant
+            if (nCredit >= GetStakeCombineThreshold())
+                break;
             // Stop adding inputs if reached reserve limit
             if (nCredit + pcoin.first->vout[pcoin.second].nValue > nBalance - nReserveBalance)
                 break;
+            // Do not add additional significant input
+            if (pcoin.first->vout[pcoin.second].nValue >= GetStakeCombineThreshold())
+                continue;
             // Do not add input that is still too young
             if (nTimeWeight < nStakeMinAge)
                 continue;
@@ -3501,10 +3508,25 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
     int64_t blockValue = nCredit;
     int64_t stormnodePayment = GetStormnodePayment(pindexPrev->nHeight+1, nReward);
 
+    if (nCredit >= GetStakeSplitThreshold())
+        txNew.vout.push_back(CTxOut(0, txNew.vout[1].scriptPubKey)); //split stake
+
     // Set output amount
-    if(!hasPayment && txNew.vout.size() == 2) // 1 stake output, no stormnode payment
+    if (!hasPayment && txNew.vout.size() == 3) // 2 stake outputs, stake was split, no stormnode payment
+    {
+        txNew.vout[1].nValue = (blockValue / 2 / CENT) * CENT;
+        txNew.vout[2].nValue = blockValue - txNew.vout[1].nValue;
+    }
+    else if(hasPayment && txNew.vout.size() == 4) // 2 stake outputs, stake was split, plus a stormnode payment
+    {
+        txNew.vout[payments-1].nValue = stormnodePayment;
+        blockValue -= stormnodePayment;
+        txNew.vout[1].nValue = (blockValue / 2 / CENT) * CENT;
+        txNew.vout[2].nValue = blockValue - txNew.vout[1].nValue;
+    }
+    else if(!hasPayment && txNew.vout.size() == 2) // only 1 stake output, was not split, no stormnode payment
         txNew.vout[1].nValue = blockValue;
-    else if(hasPayment && txNew.vout.size() == 3) // 1 stake output plus a stormnode payment
+    else if(hasPayment && txNew.vout.size() == 3) // only 1 stake output, was not split, plus a stormnode payment
     {
         txNew.vout[payments-1].nValue = stormnodePayment;
         blockValue -= stormnodePayment;
