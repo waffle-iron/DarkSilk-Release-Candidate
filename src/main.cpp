@@ -1181,6 +1181,8 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
 
     if (nActualSpacing > nTargetSpacing * 10)
         nActualSpacing = nTargetSpacing * 10;
+    if (nActualSpacing < 0)
+        nActualSpacing = nTargetSpacing;
 
     // target change every block
     // retarget with exponential moving toward target spacing
