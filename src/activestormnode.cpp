@@ -436,7 +436,7 @@ vector<COutput> CActiveStormnode::SelectCoinsStormnode()
     // Filter
     BOOST_FOREACH(const COutput& out, vCoins)
     {
-        if(out.tx->vout[out.i].nValue == 500*COIN) { //exactly
+        if(out.tx->vout[out.i].nValue == 42000*COIN) { //exactly
         	filteredCoins.push_back(out);
         }
     }
@@ -458,7 +458,7 @@ vector<COutput> CActiveStormnode::SelectCoinsStormnodeForPubKey(std::string coll
     // Filter
     BOOST_FOREACH(const COutput& out, vCoins)
     {
-        if(out.tx->vout[out.i].scriptPubKey == scriptPubKey && out.tx->vout[out.i].nValue == 500*COIN) { //exactly
+        if(out.tx->vout[out.i].scriptPubKey == scriptPubKey && out.tx->vout[out.i].nValue == 42000*COIN) { //exactly
         	filteredCoins.push_back(out);
         }
     }

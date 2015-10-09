@@ -48,7 +48,7 @@ public:
     bool Register(CTxIn vin, CService service, CKey key, CPubKey pubKey, CKey keyStormnode, CPubKey pubKeyStormnode, std::string &retErrorMessage); // register any stormnode
     bool RegisterByPubKey(std::string strService, std::string strKeyStormnode, std::string collateralAddress, std::string& errorMessage); // register for a specific collateral address
 
-    // get 1000DRK input that can be used for the stormnode
+    // get 42000DRKSLK input that can be used for the stormnode
     bool GetStormNodeVin(CTxIn& vin, CPubKey& pubkey, CKey& secretKey);
     bool GetStormNodeVin(CTxIn& vin, CPubKey& pubkey, CKey& secretKey, std::string strTxHash, std::string strOutputIndex);
     bool GetStormNodeVinForPubKey(std::string collateralAddress, CTxIn& vin, CPubKey& pubkey, CKey& secretKey);

@@ -1432,7 +1432,7 @@ void CWallet::AvailableCoins(vector<COutput>& vCoins, bool fOnlyConfirmed, const
                     found = true;
                     if (IsCollateralAmount(pcoin->vout[i].nValue)) continue; // do not use collateral amounts
                     found = !IsDenominatedAmount(pcoin->vout[i].nValue);
-                    if(found && coin_type == ONLY_NONDENOMINATED_NOTSN) found = (pcoin->vout[i].nValue != 500*COIN); // do not use SN funds
+                    if(found && coin_type == ONLY_NONDENOMINATED_NOTSN) found = (pcoin->vout[i].nValue != 42000*COIN); // do not use SN funds
                 } else {
                     found = true;
                 }
@@ -2074,9 +2074,9 @@ bool CWallet::SelectCoinsByDenominations(int nDenom, int64_t nValueMin, int64_t 
 
     BOOST_FOREACH(const COutput& out, vCoins)
     {
-        //there's no reason to allow inputs less than 1 COIN into DS (other than denominations smaller than that amount)
+        //there's no reason to allow inputs less than 1 COIN into SS (other than denominations smaller than that amount)
         if(out.tx->vout[out.i].nValue < 1*COIN && out.tx->vout[out.i].nValue != (.1*COIN)+100) continue;
-        if(fStormNode && out.tx->vout[out.i].nValue == 250000*COIN) continue; //stormnode input
+        if(fStormNode && out.tx->vout[out.i].nValue == 42000*COIN) continue; //stormnode input
         if(nValueRet + out.tx->vout[out.i].nValue <= nValueMax){
             bool fAccepted = false;
 
@@ -2152,7 +2152,7 @@ bool CWallet::SelectCoinsDark(int64_t nValueMin, int64_t nValueMax, std::vector<
     {
         //there's no reason to allow inputs less than 1 COIN into Sandstorm (other than denominations smaller than that amount)
         if(out.tx->vout[out.i].nValue < 1*COIN && out.tx->vout[out.i].nValue != (.1*COIN)+100) continue;
-        if(fStormNode && out.tx->vout[out.i].nValue == 250000*COIN) continue; //stormnode input
+        if(fStormNode && out.tx->vout[out.i].nValue == 42000*COIN) continue; //stormnode input
 
         if(nValueRet + out.tx->vout[out.i].nValue <= nValueMax){
             CTxIn vin = CTxIn(out.tx->GetHash(),out.i);
