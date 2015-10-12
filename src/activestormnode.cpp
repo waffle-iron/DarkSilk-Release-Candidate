@@ -479,7 +479,7 @@ bool CActiveStormnode::SelectCoinsStormnode(CTxIn& vin, int64& nValueIn, CScript
 	std::istringstream(strOutputIndex) >> outputIndex;
 
 	if(pwalletMain->GetTransaction(txHash, ctx)) {
-		if(ctx.vout[outputIndex].nValue == 1000*COIN) { //exactly
+		if(ctx.vout[outputIndex].nValue == 42000*COIN) { //exactly
 			vin = CTxIn(ctx.GetHash(), outputIndex);
 			pubScript = ctx.vout[outputIndex].scriptPubKey; // the inputs PubKey
 			nValueIn = ctx.vout[outputIndex].nValue;
