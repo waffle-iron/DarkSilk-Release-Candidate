@@ -155,7 +155,7 @@ void ProcessMessageStormnode(CNode* pfrom, std::string& strCommand, CDataStream&
 
         CValidationState state;
         CTransaction tx = CTransaction();
-        CTxOut vout = CTxOut(42000*COIN, sandStormPool.collateralPubKey);
+        CTxOut vout = CTxOut(41999.99*COIN, sandStormPool.collateralPubKey);
         tx.vin.push_back(vin);
         tx.vout.push_back(vout);
         //if(AcceptableInputs(mempool, state, tx)){
@@ -598,7 +598,7 @@ void CStormNode::Check()
     if(!unitTest){
         CValidationState state;
         CTransaction tx = CTransaction();
-        CTxOut vout = CTxOut(42000*COIN, sandStormPool.collateralPubKey);
+        CTxOut vout = CTxOut(41999.99*COIN, sandStormPool.collateralPubKey);
         tx.vin.push_back(vin);
         tx.vout.push_back(vout);
 

@@ -18,14 +18,14 @@
 
 class CValidationState;
 
-static const int STORMNODE_PAYMENT_START = 82002;
-static const int TESTNET_STORMNODE_PAYMENT_START = 100;
+static const int STORMNODE_PAYMENT_START = 82002; // Block 82002
+static const int TESTNET_STORMNODE_PAYMENT_START = 100; // Block 100
 
-static const int64_t SANDSTORM_COLLATERAL = (42000*COIN); // 42,000DRKSLK Stormnode Collateral Fee
+static const int64_t SANDSTORM_COLLATERAL = (0.01*COIN);
 static const int64_t SANDSTORM_FEE = (0.01*COIN); // SandStorm sending fee of 0.01DRKSLK
-static const int64_t SANDSTORM_POOL_MAX = (4999.99*COIN);
+static const int64_t SANDSTORM_POOL_MAX = (41999.99*COIN);
 
-static const int64_t STATIC_POS_REWARD = COIN * 1; //Static Reward of 1 DRKSLK 
+static const int64_t STATIC_POS_REWARD = COIN * 1; // Static Reward of 1 DRKSLK 
 
 /*
     At 15 signatures, 1/2 of the stormnode network can be owned by
@@ -35,7 +35,7 @@ static const int64_t STATIC_POS_REWARD = COIN * 1; //Static Reward of 1 DRKSLK
 #define INSTANTX_SIGNATURES_REQUIRED           20
 #define INSTANTX_SIGNATURES_TOTAL              30
 
-#define STORMNODE_NOT_PROCESSED               0 // initial state
+#define STORMNODE_NOT_PROCESSED               0 // Initial state
 #define STORMNODE_IS_CAPABLE                  1
 #define STORMNODE_NOT_CAPABLE                 2
 #define STORMNODE_STOPPED                     3
