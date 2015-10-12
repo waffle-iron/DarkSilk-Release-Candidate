@@ -1189,6 +1189,9 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
     int64_t nTargetSpacing = fProofOfStake ? TARGET_SPACING : POW_TARGET_SPACING;
     int64_t nActualSpacing = pindexPrev->GetBlockTime() - pindexPrevPrev->GetBlockTime();
 
+    if (nActualSpacing < 0)
+        nActualSpacing = nTargetSpacing;
+
     if (nActualSpacing > nTargetSpacing * 10)
         nActualSpacing = nTargetSpacing * 10;
 
@@ -1203,6 +1206,7 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
 
     if (bnNew <= 0 || bnNew > bnTargetLimit)
         bnNew = bnTargetLimit;
+
     return bnNew.GetCompact();
 }
 
@@ -1227,8 +1231,10 @@ bool IsInitialBlockDownload()
     LOCK(cs_main);
     if (pindexBest == NULL || nBestHeight < Checkpoints::GetTotalBlocksEstimate())
         return true;
+
     static int64_t nLastUpdate;
     static CBlockIndex* pindexLastBest;
+
     if (pindexBest != pindexLastBest)
     {
         pindexLastBest = pindexBest;
