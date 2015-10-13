@@ -11,7 +11,7 @@ What is DarkSilk?
 ----------------
 Algorithm: Scrypt
 Coin Suffix: DRKSLK
-PoW Period: 42,001 Blocks
+PoW Period: 42,002 Blocks
 PoS Period: After PoW
 PoS Min: 4 Hours
 PoS Max: Unlimited
