@@ -92,7 +92,7 @@ static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov 5th 00:53:2
 
 static const unsigned int TARGET_TIME_SPAN = 4 * 60;  // 4 mins
 static const unsigned int POW_TARGET_SPACING = 4 * 60; // 4 mins
-static const unsigned int TARGET_SPACING = 64; // 1 min
+static const unsigned int TARGET_SPACING = 64; // 64 seconds
 static const int64_t DRIFT = 10 * 60; // 10 mins
 inline int64_t FutureDrift(int64_t nTime) { return nTime + DRIFT; }
 
