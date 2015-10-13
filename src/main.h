@@ -91,9 +91,9 @@ inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MO
 static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov 5th 00:53:20 1985 UTC
 
 static const unsigned int TARGET_TIME_SPAN = 16 * 60;  // 16 mins
-static const unsigned int POW_TARGET_SPACING = 240;
-static const unsigned int TARGET_SPACING = 240;
-static const int64_t DRIFT = 480;
+static const unsigned int POW_TARGET_SPACING = 4 * 60; // 4 mins
+static const unsigned int TARGET_SPACING = 4 * 60; // 4 mins
+static const int64_t DRIFT = 8 * 60; // 8 mins
 inline int64_t FutureDrift(int64_t nTime) { return nTime + DRIFT; }
 
 extern CScript COINBASE_FLAGS;
