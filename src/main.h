@@ -85,16 +85,19 @@ static const int64_t MIN_TX_FEE = 10000; // 0.0001DRKSLK Minimum Transaction Fee
 /** Fees smaller than this (in satoshi) are considered zero fee (for relaying) */
 static const int64_t MIN_RELAY_TX_FEE = MIN_TX_FEE;
 /** No amount larger than this (in satoshi) is valid */
-static const int64_t MAX_MONEY = 90000000 * COIN; // 45,000,000 instamined from blocks 1 & 2 for Weaver Collateral (main.cpp lines 1129-1143) | 1,679,958 PoW Generated Coins  
+static const int64_t MAX_MONEY = 90000000 * COIN; // 45,000,000 mined from blocks 1 & 2 for Weaver Collateral | 1,679,958 PoW Generated Coins mined from block 3-42002
 inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 /** Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp. */
 static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov 5th 00:53:20 1985 UTC
 
 static const unsigned int TARGET_TIME_SPAN = 4 * 60;  // 4 mins
 static const unsigned int POW_TARGET_SPACING = 4 * 60; // 4 mins
-static const unsigned int TARGET_SPACING = 64
-static const int64_t DRIFT = 15
-inline int64_t FutureDrift(int64_t nTime) { return nTime + DRIFT; }
+static const unsigned int TARGET_SPACING = 64;
+
+inline bool IsFutureDriftV2(int nHeight) { return TestNet() || nHeight > 42003; }
+inline int64_t FutureDriftV1(int64_t nTime) { return nTime + 10 * 60; }
+inline int64_t FutureDriftV2(int64_t nTime) { return nTime + 15; }
+inline int64_t FutureDrift(int64_t nTime, int nHeight) { return IsFutureDriftV2(nHeight) ? FutureDriftV2(nTime) : FutureDriftV1(nTime); }
 
 extern CScript COINBASE_FLAGS;
 extern CCriticalSection cs_main;
