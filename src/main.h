@@ -94,15 +94,15 @@ static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov 5th 00:53:2
 static const unsigned int POS_TARGET_SPACING = 4 * 60;  // 4 mins
 static const unsigned int POW_TARGET_SPACING = 4 * 60; // 4 mins
 
-inline bool IsProtocolV1RetargetingFixed(int nHeight) { return TestNet() || nHeight > 1; }
-inline bool IsProtocolV2(int nHeight) { return TestNet() || nHeight > 42003; } //End of PoW
+inline bool IsProtocolV1RetargetingFixed(int nHeight) { return TestNet() || nHeight > 0; }
+inline bool IsProtocolV2(int nHeight) { return TestNet() || nHeight > 0; } 
 inline bool IsProtocolV3(int64_t nTime) { return TestNet() || nTime > 1459468800; }  // 1st April 2016 0:00:00 | PoSv3 and Split Stake
 
 inline unsigned int GetTargetSpacing(int nHeight) { return IsProtocolV2(nHeight) ? 64 : 60; }
 
 
 inline int64_t FutureDriftV1(int64_t nTime) { return nTime + 10 * 60; }
-inline int64_t FutureDriftV2(int64_t nTime) { return nTime + 15; }
+inline int64_t FutureDriftV2(int64_t nTime) { return nTime + 240; }
 inline int64_t FutureDrift(int64_t nTime, int nHeight) { return IsProtocolV2(nHeight) ? FutureDriftV2(nTime) : FutureDriftV1(nTime); }
 
 extern CScript COINBASE_FLAGS;
