@@ -102,7 +102,8 @@ double GetPoSKernelPS()
     if (nStakesTime)
         result = dStakeKernelsTriedAvg / nStakesTime;
 
-    result *= STAKE_TIMESTAMP_MASK + 1;
+    if (IsProtocolV2(nBestHeight))
+        result *= STAKE_TIMESTAMP_MASK + 1;
 
     return result;
 }

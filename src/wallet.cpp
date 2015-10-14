@@ -1469,17 +1469,18 @@ void CWallet::AvailableCoinsForStaking(vector<COutput>& vCoins, unsigned int nSp
             if (nDepth < 1)
                 continue;
 
-            if (nDepth < nStakeMinConfirmations)
+            if (IsProtocolV3(nSpendTime))
             {
-                continue;
-            }    
+                if (nDepth < nStakeMinConfirmations)
+                    continue;
+            }
             else
             {
             // Filtering by tx timestamp instead of block timestamp may give false positives but never false negatives
             if (pcoin->nTime + nStakeMinAge > nSpendTime)
-               continue;
+                continue;
             }
-            
+
             if (pcoin->GetBlocksToMaturity() > 0)
                 continue;
 
@@ -3258,9 +3259,6 @@ bool CWallet::FindStealthTransactions(const CTransaction& tx, mapValue_t& mapNar
     return true;
 };
 
-
-
-
 uint64_t CWallet::GetStakeWeight() const
 {
     // Choose coins to use
@@ -3288,12 +3286,20 @@ uint64_t CWallet::GetStakeWeight() const
     LOCK2(cs_main, cs_wallet);
     BOOST_FOREACH(PAIRTYPE(const CWalletTx*, unsigned int) pcoin, setCoins)
     {
-        CTxIndex txindex;
-        if (pcoin.first->GetDepthInMainChain() >= nStakeMinConfirmations)
+        if (IsProtocolV3(nCurrentTime))
+        {
+            if (pcoin.first->GetDepthInMainChain() >= nStakeMinConfirmations)
                 nWeight += pcoin.first->vout[pcoin.second].nValue;
+        }
+        else
+        {
+            CTxIndex txindex;
+            if (!txdb.ReadTxIndex(pcoin.first->GetHash(), txindex))
+                continue;
 
-         if (nCurrentTime - pcoin.first->nTime > nStakeMinAge)
+            if (nCurrentTime - pcoin.first->nTime > nStakeMinAge)
                 nWeight += pcoin.first->vout[pcoin.second].nValue;
+        }
     }
 
     return nWeight;
@@ -3410,7 +3416,7 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
 
     if (nCredit == 0 || nCredit > nBalance - nReserveBalance)
         return false;
-
+    
     BOOST_FOREACH(PAIRTYPE(const CWalletTx*, unsigned int) pcoin, setCoins)
     {
         // Attempt to add more inputs
@@ -3423,9 +3429,6 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
             // Stop adding more inputs if already too many inputs
             if (txNew.vin.size() >= 100)
                 break;
-            // Stop adding more inputs if value is already pretty significant
-            if (nCredit >= GetStakeCombineThreshold())
-                break;
             // Stop adding inputs if reached reserve limit
             if (nCredit + pcoin.first->vout[pcoin.second].nValue > nBalance - nReserveBalance)
                 break;
@@ -3433,8 +3436,15 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
             if (pcoin.first->vout[pcoin.second].nValue >= GetStakeCombineThreshold())
                 continue;
             // Do not add input that is still too young
-            if (nTimeWeight < nStakeMinAge)
-                continue;
+            if (IsProtocolV3(txNew.nTime))
+            {
+                // properly handled by selection function
+            }
+            else
+            {
+                if (nTimeWeight < nStakeMinAge)
+                    continue;
+            }
 
             txNew.vin.push_back(CTxIn(pcoin.first->GetHash(), pcoin.second));
             nCredit += pcoin.first->vout[pcoin.second].nValue;
