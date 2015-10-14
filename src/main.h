@@ -90,7 +90,7 @@ inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MO
 /** Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp. */
 static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov 5th 00:53:20 1985 UTC
 
-static const unsigned int TARGET_TIME_SPAN = 4 * 60;  // 4 mins
+static const unsigned int POS_TARGET_SPACING = 4 * 60;  // 4 mins
 static const unsigned int POW_TARGET_SPACING = 4 * 60; // 4 mins
 static const unsigned int TARGET_SPACING = 64;
 

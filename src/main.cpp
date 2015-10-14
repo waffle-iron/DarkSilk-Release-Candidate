@@ -1189,7 +1189,7 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
     // Includes fix for wrong retargeting difficulty by Mammix2
     CBigNum bnNew;
     bnNew.SetCompact(pindexPrev->nBits);
-    int64_t nInterval = TARGET_TIME_SPAN / POW_TARGET_SPACING; // equals 1 and this means diff is retargeted each block
+    int64_t nInterval = POS_TARGET_SPACING / POW_TARGET_SPACING; // 4 / 4 = 1
     bnNew *= ((nInterval - 1) * POW_TARGET_SPACING + nActualSpacing + nActualSpacing);
     bnNew /= ((nInterval + 1) * POW_TARGET_SPACING);
 
