@@ -25,6 +25,7 @@ static const int64_t SANDSTORM_COLLATERAL = (0.01*COIN);
 static const int64_t SANDSTORM_FEE = (0.01*COIN); // SandStorm sending fee of 0.01DRKSLK
 static const int64_t SANDSTORM_POOL_MAX = (999.99*COIN);
 
+static const int64_t COIN_YEAR_REWARD = 0.04 * CENT; // 4% per year
 static const int64_t STATIC_POS_REWARD = COIN * 1; // Static Reward of 1 DRKSLK 
 
 /*
@@ -92,12 +93,17 @@ static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov 5th 00:53:2
 
 static const unsigned int POS_TARGET_SPACING = 4 * 60;  // 4 mins
 static const unsigned int POW_TARGET_SPACING = 4 * 60; // 4 mins
-static const unsigned int TARGET_SPACING = 64;
 
-inline bool IsFutureDriftV2(int nHeight) { return TestNet() || nHeight > 42003; }
+inline bool IsProtocolV1RetargetingFixed(int nHeight) { return TestNet() || nHeight > 1; }
+inline bool IsProtocolV2(int nHeight) { return TestNet() || nHeight > 42003; } //End of PoW
+inline bool IsProtocolV3(int64_t nTime) { return TestNet() || nTime > 1459468800; }  // 1st April 2016 0:00:00 | PoSv3 and Split Stake
+
+inline unsigned int GetTargetSpacing(int nHeight) { return IsProtocolV2(nHeight) ? 64 : 60; }
+
+
 inline int64_t FutureDriftV1(int64_t nTime) { return nTime + 10 * 60; }
 inline int64_t FutureDriftV2(int64_t nTime) { return nTime + 15; }
-inline int64_t FutureDrift(int64_t nTime, int nHeight) { return IsFutureDriftV2(nHeight) ? FutureDriftV2(nTime) : FutureDriftV1(nTime); }
+inline int64_t FutureDrift(int64_t nTime, int nHeight) { return IsProtocolV2(nHeight) ? FutureDriftV2(nTime) : FutureDriftV1(nTime); }
 
 extern CScript COINBASE_FLAGS;
 extern CCriticalSection cs_main;
@@ -1044,7 +1050,10 @@ public:
 
     int64_t GetPastTimeLimit() const
     {
-        return GetBlockTime();
+        if (IsProtocolV2(nHeight))
+            return GetBlockTime();
+        else
+            return GetMedianTimePast();
     }
 
     enum { nMedianTimeSpan=11 };
