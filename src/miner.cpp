@@ -119,6 +119,7 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
 
     if (!fProofOfStake)
     {
+        pblock->nVersion = 1;
         CPubKey pubkey;
         if (!reservekey.GetReservedKey(pubkey))
             return NULL;
