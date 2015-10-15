@@ -630,7 +630,7 @@ class CBlock
 {
 public:
     // header
-    static const int CURRENT_VERSION = 7;
+    static const int CURRENT_VERSION = 2;
     int nVersion;
     uint256 hashPrevBlock;
     uint256 hashMerkleRoot;
@@ -700,7 +700,7 @@ public:
 
     uint256 GetHash() const
     {
-        if (nVersion > 6)
+        if (nVersion > 1)
             return Hash(BEGIN(nVersion), END(nNonce));
         else
             return GetPoWHash();
