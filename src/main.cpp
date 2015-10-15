@@ -1141,7 +1141,7 @@ static CBigNum GetProofOfStakeLimit(int nHeight)
 int64_t GetProofOfWorkReward(int64_t nFees)
 {
     if (pindexBest->nHeight == 0) {
-        int64_t nSubsidy = 44999958 * COIN; // Weaver Collateral
+        int64_t nSubsidy = 45000000 * COIN; // Weaver Collateral
         LogPrint("creation", "GetProofOfWorkReward() : create=%s nSubsidy=%d\n", FormatMoney(nSubsidy), nSubsidy);
         return nSubsidy + nFees;
 
@@ -1176,7 +1176,7 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
     if (pindexPrevPrev->pprev == NULL)
         return bnTargetLimit.GetCompact(); // second block
 
-    int64_t POW_TARGET_SPACING = fProofOfStake ? TARGET_SPACING : POW_TARGET_SPACING;
+    int64_t nTargetSpacing = fProofOfStake ? TARGET_SPACING : POW_TARGET_SPACING;
     int64_t nActualSpacing = pindexPrev->GetBlockTime() - pindexPrevPrev->GetBlockTime();
 
     if (nActualSpacing > nTargetSpacing * 10)
