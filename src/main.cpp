@@ -1179,7 +1179,7 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
     int64_t nTargetSpacing = fProofOfStake ? TARGET_SPACING : POW_TARGET_SPACING;
     int64_t nActualSpacing = pindexPrev->GetBlockTime() - pindexPrevPrev->GetBlockTime();
 
-    if (nActualSpacing > nTargetSpacing * 10)
+    if (fProofOfStake && nActualSpacing > nTargetSpacing * 10)
         nActualSpacing = nTargetSpacing * 10;
     if (nActualSpacing < 0)
         nActualSpacing = nTargetSpacing;
@@ -1189,7 +1189,7 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
     // Includes fix for wrong retargeting difficulty by Mammix2
     CBigNum bnNew;
     bnNew.SetCompact(pindexPrev->nBits);
-    int64_t nInterval = TARGET_TIME_SPAN / POW_TARGET_SPACING; // equals 1 and this means diff is retargeted each block
+    int64_t nInterval = TARGET_TIME_SPAN / nTargetSpacing; // equals 1 and this means diff is retargeted each block
     bnNew *= ((nInterval - 1) * POW_TARGET_SPACING + nActualSpacing + nActualSpacing);
     bnNew /= ((nInterval + 1) * POW_TARGET_SPACING);
 
