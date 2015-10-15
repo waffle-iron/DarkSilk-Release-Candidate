@@ -278,7 +278,6 @@ public:
     CTransaction()
     {
         SetNull();
-        LogPrintf("CTransaction.nTime: %d", nTime);
     }
     CTransaction(int nVersion, unsigned int nTime, const std::vector<CTxIn>& vin, const std::vector<CTxOut>& vout, unsigned int nLockTime)
         : nVersion(nVersion), nTime(nTime), vin(vin), vout(vout), nLockTime(nLockTime), nDoS(0)

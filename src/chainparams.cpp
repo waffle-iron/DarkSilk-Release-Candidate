@@ -77,19 +77,18 @@ public:
         std::vector<CTxOut> vout;
         vout.resize(1);
         vout[0].SetEmpty();
-        CTransaction txNew(1, 1438578382, vin, vout, 0);
+        CTransaction txNew(1, 1444948732, vin, vout, 0);
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime    = 1438578382; //Change to current UNIX Time of generated genesis
-        genesis.nBits    = 504365040; 
-        genesis.nNonce   = 1810177;
+        genesis.nTime    = 1444948732; //Change to current UNIX Time of generated genesis
+        genesis.nBits    = 0x1e0ffff0;
+        genesis.nNonce   = 763220;
 
         hashGenesisBlock = genesis.GetHash(); 
 
         //// debug print
-
         /*
         printf("Gensis Hash: %s\n", genesis.GetHash().ToString().c_str());
         printf("Gensis Hash Merkle: %s\n", genesis.hashMerkleRoot.ToString().c_str());
@@ -98,9 +97,8 @@ public:
         printf("Gensis Nonce: %u\n\n\n", genesis.nNonce);
         */
 
-        assert(hashGenesisBlock == uint256("0xfa5e0f06963f850fe0896359c6ed1495d8414525d9a78e62b483243bf2e0cbc4"));
-        assert(genesis.hashMerkleRoot == uint256("0xfb3953d6e08d7ccd5230ee997430e1b3eac702b8f149146a6c2239fd51207934"));
-        
+        assert(hashGenesisBlock == uint256("0xdcc5e22e275eff273799a4c06493f8364316d032813c22845602f05ff13d7ec7"));
+        assert(genesis.hashMerkleRoot == uint256("0xfed7550a453e532c460fac58d438740235c380f9908cae2d602b705ca2c2f0a6"));
         
         base58Prefixes[PUBKEY_ADDRESS] = list_of(30);                     //DarkSilk addresses start with 'D'
         base58Prefixes[SCRIPT_ADDRESS] = list_of(10);                     //DarkSilk script addresses start with '5'
@@ -152,9 +150,8 @@ public:
         genesis.nNonce = 0;
         hashGenesisBlock = genesis.GetHash(); 
 
-
         //printf("Test Gensis Hash: %s\n", genesis.GetHash().ToString().c_str());
-        assert(hashGenesisBlock == uint256("0x5df91956099936ddb98e30a242ae10f1464665d843b30d40ee406a70bc340dc6"));
+        assert(hashGenesisBlock == uint256("0xf788ac4ae46429468897b4b9758651cb8a642a6e01f16968134a75078905e24d"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
