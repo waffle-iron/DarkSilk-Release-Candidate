@@ -699,7 +699,7 @@ public:
 
     uint256 GetHash() const
     {
-        if (nVersion > 6)
+        if (nVersion > 1)
             return Hash(BEGIN(nVersion), END(nNonce));
         else
             return GetPoWHash();
