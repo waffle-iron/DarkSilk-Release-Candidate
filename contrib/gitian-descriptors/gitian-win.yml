@@ -19,7 +19,7 @@ packages:
 - "bsdmainutils"
 reference_datetime: "2013-06-01 00:00:00"
 remotes:
-- "url": "https://github.com/SCDeveloper/darksilk.git"
+- "url": "https://github.com/rynomster/darksilk.git"
   "dir": "darksilk"
 files:
 - "qt-win32-5.5.0-gitian.zip"
@@ -36,8 +36,8 @@ script: |
   TEMPDIR="$HOME/tempdir"
   echo "93111edd9b29e829fec5ef7bad790662fec130a2d29891ee0c1e6a46fb8b9a92  qt-win32-5.5.0-gitian.zip"      | sha256sum -c
   echo "e37ac65ade07e82bb2b1ba31a25786338efcacec11638ed8e9a7b8b8d99dc045  qt-win64-5.5.0-gitian.zip"      | sha256sum -c
-  echo "c603942b866f8a8ffff441c0d3e8c69d29a45e0bd3e48d386e7dc27d03237178  darksilk-deps-win32-gitian.zip" | sha256sum -c
-  echo "1cb5e1b498e86917db690bc07ee73c9d6ffc23cf3509607d4f79aba53e87ecff  darksilk-deps-win64-gitian.zip" | sha256sum -c
+  echo "b69f63af0da7a89ce9e02a7aabcf670752c3ae1f3b0ff10b32676ce19a01cb1a  darksilk-deps-win32-gitian.zip" | sha256sum -c
+  echo "e1250001308e3c6415bf4ece4595e9d19726ba22727e7b1bf0f6ed96476dc441  darksilk-deps-win64-gitian.zip" | sha256sum -c
   NEEDDIST=1
   # Qt: workaround for determinism in resource ordering
   #  Qt5's rcc uses a QHash to store the files for the resource.
@@ -85,7 +85,7 @@ script: |
     cd ..
     #
     #$DEPSDIR/qt/host/bin/qmake -spec unsupported/win32-g++-cross MINIUPNPC_LIB_PATH=$HOME/build/miniupnpc MINIUPNPC_INCLUDE_PATH=$HOME/build/ BDB_LIB_PATH=$HOME/build/db-4.8.30.NC/build_unix BDB_INCLUDE_PATH=$HOME/build/db-4.8.30.NC/build_unix BOOST_LIB_PATH=$HOME/build/lib BOOST_INCLUDE_PATH=$HOME/build/include BOOST_LIB_SUFFIX=-mt-s BOOST_THREAD_LIB_SUFFIX=_win32-mt-s OPENSSL_LIB_PATH=$HOME/build/openssl-1.0.1h OPENSSL_INCLUDE_PATH=$HOME/build/openssl-1.0.1h/include INCLUDEPATH=$HOME/build DEFINES=BOOST_THREAD_USE_LIB BITCOIN_NEED_QT_PLUGINS=1 QMAKE_LRELEASE=lrelease QMAKE_CXXFLAGS=-frandom-seed=bitcoin USE_BUILD_INFO=1
-    $STAGING/host/bin/qmake -xplatform win32-g++ RELEASE=1 QMAKE_LRELEASE="$STAGING/host/bin/lrelease" MINIUPNPC_LIB_PATH="$DEPSDIR/lib" MINIUPNPC_INCLUDE_PATH="$DEPSDIR/include" BDB_LIB_PATH="$DEPSDIR/lib" BDB_INCLUDE_PATH="$DEPSDIR/include" BOOST_LIB_PATH="$DEPSDIR/lib" BOOST_INCLUDE_PATH="$DEPSDIR/include" BOOST_LIB_SUFFIX="-mt-s" BOOST_THREAD_LIB_SUFFIX="_win32-mt-s" OPENSSL_LIB_PATH="$DEPSDIR/lib" OPENSSL_INCLUDE_PATH="$DEPSDIR/include" INCLUDEPATH="$DEPSDIR/include" DEFINES=BOOST_THREAD_USE_LIB BITCOIN_NEED_QT_PLUGINS=1 QMAKE_CXXFLAGS=-frandom-seed=darksilk USE_BUILD_INFO=1 USE_NATIVE_I2P=-
+    $STAGING/host/bin/qmake -xplatform win32-g++ RELEASE=1 QMAKE_LRELEASE="$STAGING/host/bin/lrelease" MINIUPNPC_LIB_PATH="$DEPSDIR/lib" MINIUPNPC_INCLUDE_PATH="$DEPSDIR/include" BDB_LIB_PATH="$DEPSDIR/lib" BDB_INCLUDE_PATH="$DEPSDIR/include" BOOST_LIB_PATH="$DEPSDIR/lib" BOOST_INCLUDE_PATH="$DEPSDIR/include" BOOST_LIB_SUFFIX="-mt-s" BOOST_THREAD_LIB_SUFFIX="_win32-mt-s" OPENSSL_LIB_PATH="$DEPSDIR/lib" OPENSSL_INCLUDE_PATH="$DEPSDIR/include" INCLUDEPATH="$DEPSDIR/include" DEFINES="BOOST_THREAD_USE_LIB BITCOIN_NEED_QT_PLUGINS=1 USE_BUILD_INFO=1 USE_NATIVE_I2P=1 USE_QRENCODE=1" QMAKE_CXXFLAGS=-frandom-seed=darksilk
     make $MAKEOPTS
     cp release/DarkSilk.exe $BINDIR/
     #

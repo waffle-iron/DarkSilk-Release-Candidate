@@ -117,7 +117,6 @@ script: |
     install libminiupnpc.a  $INSTALLPREFIX/lib
     cd ..
     #
-    #
     tar xzf $INDIR/zlib-1.2.8.tar.gz
     cd zlib-1.2.8
     CROSS_PREFIX=$HOST- ./configure --prefix=$INSTALLPREFIX --static
@@ -129,6 +128,13 @@ script: |
     cd libpng-1.6.18
     OPT="-O2"
     CPPFLAGS="${OPT} -I$INSTALLPREFIX/include" CFLAGS="${OPT} -I$INSTALLPREFIX/include" LDFLAGS="${OPT} -L$INSTALLPREFIX/lib" ./configure --disable-shared --prefix=$INSTALLPREFIX --host=$HOST
+    make $MAKEOPTS
+    make install
+    cd ..
+    #
+    tar xfz $INDIR/qrencode-3.4.4.tar.gz
+    cd qrencode-3.4.4
+    CPPFLAGS="${OPT} -I$INSTALLPREFIX/include" CFLAGS="${OPT} -I$INSTALLPREFIX/include" LDFLAGS="${OPT} -L$INSTALLPREFIX/lib" ./configure --enable-static --disable-shared --without-tools --prefix=$INSTALLPREFIX --host=$HOST
     make $MAKEOPTS
     make install
     cd ..
