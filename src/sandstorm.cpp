@@ -1510,7 +1510,7 @@ bool CSandStormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
         if(sessionTotalValue > nBalanceNeedsAnonymized) sessionTotalValue = nBalanceNeedsAnonymized;
 
         double fSilkSubmitted = (sessionTotalValue / CENT);
-        LogPrintf("Submitting Sandstorm for %f DRK CENT - sessionTotalValue %d\n", fSilkSubmitted, sessionTotalValue);
+        LogPrintf("Submitting Sandstorm for %f DRKSLK CENT - sessionTotalValue %d\n", fSilkSubmitted, sessionTotalValue);
 
         if(pwalletMain->GetDenominatedBalance(true, true) > 0){ //get denominated unconfirmed inputs
             LogPrintf("DoAutomaticDenominating -- Found unconfirmed denominated outputs, will wait till they confirm to continue.\n");
