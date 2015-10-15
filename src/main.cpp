@@ -1140,18 +1140,18 @@ static CBigNum GetProofOfStakeLimit(int nHeight)
 // miner's coin base reward
 int64_t GetProofOfWorkReward(int64_t nFees)
 {
-        if (pindexBest->nHeight == 1) {
-            int64_t nSubsidy = 44999958 * COIN; // Weaver Collateral
-            LogPrint("creation", "GetProofOfWorkReward() : create=%s nSubsidy=%d\n", FormatMoney(nSubsidy), nSubsidy);
-            return nSubsidy + nFees;
+    if (pindexBest->nHeight == 0) {
+        int64_t nSubsidy = 44999958 * COIN; // Weaver Collateral
+        LogPrint("creation", "GetProofOfWorkReward() : create=%s nSubsidy=%d\n", FormatMoney(nSubsidy), nSubsidy);
+        return nSubsidy + nFees;
 
-        }
+    }
     else
-        {   
-            int64_t nSubsidy = 42 * COIN;
-            LogPrint("creation", "GetProofOfWorkReward() : create=%s nSubsidy=%d\n", FormatMoney(nSubsidy), nSubsidy);
-            return nSubsidy + nFees;
-        }
+    {
+        int64_t nSubsidy = 42 * COIN;
+        LogPrint("creation", "GetProofOfWorkReward() : create=%s nSubsidy=%d\n", FormatMoney(nSubsidy), nSubsidy);
+        return nSubsidy + nFees;
+    }
 }
 
 // ppcoin: find last block index up to pindex
@@ -1179,18 +1179,10 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
     int64_t POW_TARGET_SPACING = fProofOfStake ? TARGET_SPACING : POW_TARGET_SPACING;
     int64_t nActualSpacing = pindexPrev->GetBlockTime() - pindexPrevPrev->GetBlockTime();
 
-<<<<<<< HEAD
     if (nActualSpacing > nTargetSpacing * 10)
         nActualSpacing = nTargetSpacing * 10;
     if (nActualSpacing < 0)
         nActualSpacing = nTargetSpacing;
-=======
-    if (nActualSpacing < 0)
-        nActualSpacing = POW_TARGET_SPACING;
-
-    if (nActualSpacing > POW_TARGET_SPACING * 10)
-        nActualSpacing = POW_TARGET_SPACING * 10;
->>>>>>> 64781ad... revert
 
     // target change every block
     // retarget with exponential moving toward target spacing
