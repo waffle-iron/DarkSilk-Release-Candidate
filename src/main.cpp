@@ -1144,7 +1144,6 @@ int64_t GetProofOfWorkReward(int64_t nFees)
         int64_t nSubsidy = 45000000 * COIN; // Weaver Collateral
         LogPrint("creation", "GetProofOfWorkReward() : create=%s nSubsidy=%d\n", FormatMoney(nSubsidy), nSubsidy);
         return nSubsidy + nFees;
-
     }
     else
     {
@@ -1179,16 +1178,19 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
     int64_t nTargetSpacing = fProofOfStake ? TARGET_SPACING : POW_TARGET_SPACING;
     int64_t nActualSpacing = pindexPrev->GetBlockTime() - pindexPrevPrev->GetBlockTime();
 
-    if (fProofOfStake && nActualSpacing > nTargetSpacing * 10)
-        nActualSpacing = nTargetSpacing * 10;
-    if (nActualSpacing < 0)
+    if (nActualSpacing < 0) {
         nActualSpacing = nTargetSpacing;
-
+    }
+    else if (fProofOfStake && nActualSpacing > nTargetSpacing * 10) {
+         nActualSpacing = nTargetSpacing * 10;
+    }
+    
     // target change every block
     // retarget with exponential moving toward target spacing
     // Includes fix for wrong retargeting difficulty by Mammix2
     CBigNum bnNew;
     bnNew.SetCompact(pindexPrev->nBits);
+
     int64_t nInterval = TARGET_TIME_SPAN / nTargetSpacing; // equals 1 for PoW and this means diff is fully retargeted each block
     bnNew *= ((nInterval - 1) * nTargetSpacing + nActualSpacing + nActualSpacing);
     bnNew /= ((nInterval + 1) * nTargetSpacing);
