@@ -544,25 +544,6 @@ isEmpty(SECP256K1_INCLUDE_PATH) {
     macx:SECP256K1_INCLUDE_PATH = /usr/local/include
 }
 
-message(Building win32)
-BOOST_LIB_SUFFIX=-mgw49-mt-s-1_59
-BOOST_INCLUDE_PATH=c:/Develop/deps/boost_1_59_0
-BOOST_LIB_PATH=c:/Develop/deps/boost_1_59_0/bin.v2/libs
-
-BDB_INCLUDE_PATH=c:/Develop/deps/db-4.8.30.NC/build_unix
-BDB_LIB_PATH=c:/Develop/deps/db-4.8.30.NC/build_unix
-
-OPENSSL_INCLUDE_PATH=c:/Develop/deps/openssl-1.0.2d/include
-OPENSSL_LIB_PATH=c:/Develop/deps/openssl-1.0.2d/lib
-
-MINIUPNPC_INCLUDE_PATH=c:/Develop//deps/miniupnpc-1.9/include
-MINIUPNPC_LIB_PATH=c:/Develop/deps/miniupnpc-1.9/lib
-
-SECP256K1_INCLUDE_PATH=C:/Develop/deps/secp256k1-darksilk/include
-SECP256K1_LIB_PATH=C:/Develop/deps/secp256k1-darksilk/.libs
-windows:DEFINES += WIN32
-windows:RC_FILE = src/qt/res/darksilk-qt.rc
-
 windows:!contains(MINGW_THREAD_BUGFIX, 0) {
     # At least qmake's win32-g++-cross profile is missing the -lmingwthrd
     # thread-safety flag. GCC has -mthreads to enable this, but it doesn't
@@ -586,8 +567,8 @@ macx:QMAKE_CXXFLAGS_THREAD += -pthread
 macx:QMAKE_INFO_PLIST = share/qt/Info.plist
 
 # Set libraries and includes at end, to use platform-defined defaults if not overridden
-INCLUDEPATH += $$SECP256K1_INCLUDE_PATH $$BOOST_INCLUDE_PATH $$BDB_INCLUDE_PATH $$OPENSSL_INCLUDE_PATH $$QRENCODE_INCLUDE_PATH $$MINIUPNPC_INCLUDE_PATH
-LIBS += $$join(SECP256K1_LIB_PATH,,-L,) $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,) $$join(MINIUPNPC_LIB_PATH,,-L,)
+INCLUDEPATH += $$SECP256K1_INCLUDE_PATH $$BOOST_INCLUDE_PATH $$BDB_INCLUDE_PATH $$OPENSSL_INCLUDE_PATH $$QRENCODE_INCLUDE_PATH
+LIBS += $$join(SECP256K1_LIB_PATH,,-L,) $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)
 LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX
 # -lgdi32 has to happen after -lcrypto (see  #681)
 windows:LIBS += -lws2_32 -lshlwapi -lmswsock -lole32 -loleaut32 -luuid -lgdi32
