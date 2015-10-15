@@ -15,7 +15,7 @@ PoW Period: 42,002 Blocks
 PoS Period: After PoW
 PoS Min: 4 Hours
 PoS Max: Unlimited
-PoS Reward: Static 4% per coin
+PoS Reward: 1 DRKSLK Static PoS Reward
 Maturity: 42 Blocks
 Target Spacing: 4 Minutes
 Block Reward: 42
