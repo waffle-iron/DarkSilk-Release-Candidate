@@ -1189,9 +1189,9 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
     // Includes fix for wrong retargeting difficulty by Mammix2
     CBigNum bnNew;
     bnNew.SetCompact(pindexPrev->nBits);
-    int64_t nInterval = TARGET_TIME_SPAN / nTargetSpacing; // equals 1 and this means diff is retargeted each block
-    bnNew *= ((nInterval - 1) * POW_TARGET_SPACING + nActualSpacing + nActualSpacing);
-    bnNew /= ((nInterval + 1) * POW_TARGET_SPACING);
+    int64_t nInterval = TARGET_TIME_SPAN / nTargetSpacing; // equals 1 for PoW and this means diff is fully retargeted each block
+    bnNew *= ((nInterval - 1) * nTargetSpacing + nActualSpacing + nActualSpacing);
+    bnNew /= ((nInterval + 1) * nTargetSpacing);
 
     if (bnNew <= 0 || bnNew > bnTargetLimit)
         bnNew = bnTargetLimit;
@@ -2463,6 +2463,7 @@ bool CBlock::AcceptBlock()
         return DoS(100, error("AcceptBlock() : incorrect %s", IsProofOfWork() ? "proof-of-work" : "proof-of-stake"));
 
     // Check timestamp against prev
+    LogPrintf("GetBlockTime(): %d, <=? pindexPrev->GetPastTimeLimit(): %d\nFutureDrift(GetBlockTime()): %d, <?pindexPrev->GetBlockTime(): %d\n",GetBlockTime(),pindexPrev->GetPastTimeLimit(),FutureDrift(GetBlockTime()),pindexPrev->GetBlockTime())
     if (GetBlockTime() <= pindexPrev->GetPastTimeLimit() || FutureDrift(GetBlockTime()) < pindexPrev->GetBlockTime())
         return error("AcceptBlock() : block's timestamp is too early");
 
