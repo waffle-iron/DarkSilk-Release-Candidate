@@ -119,7 +119,7 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
 
     if (!fProofOfStake)
     {
-        pblock->nVersion = 1;
+        pblock->nVersion = 1; // Proof of Work uses Scrypt
         CPubKey pubkey;
         if (!reservekey.GetReservedKey(pubkey))
             return NULL;
