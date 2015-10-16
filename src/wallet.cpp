@@ -36,7 +36,7 @@ int64_t nReserveBalance = 0;
 int64_t nMinimumInputValue = 0;
 int64_t gcd(int64_t n,int64_t m) { return m == 0 ? n : gcd(m, n % m); }
 
-static int64_t GetStakeCombineThreshold() {return 100 * COIN; }
+static int64_t GetStakeCombineThreshold() {return 42 * COIN; }
 static int64_t GetStakeSplitThreshold() { return 2 * GetStakeCombineThreshold(); }
 
 static uint64_t CoinWeightCost(const COutput &out)
