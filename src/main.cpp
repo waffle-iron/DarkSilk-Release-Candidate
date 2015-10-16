@@ -1194,8 +1194,7 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
     int64_t nInterval = fProofOfStake ? 15 : 16; // retarget difficulty every 15 blocks for PoS in GetNextTargetRequired?
     bnNew *= ((nInterval - 1) * nTargetSpacing + nActualSpacing + nActualSpacing);
     bnNew /= ((nInterval + 1) * nTargetSpacing);
-
-    LogPrintf("bnTargetLimit: %d, bnNew: %d\n", bnTargetLimit, bnNew);
+    
     if (bnNew <= 0 || bnNew > bnTargetLimit)
         bnNew = bnTargetLimit;
 
