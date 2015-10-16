@@ -1191,7 +1191,7 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
     CBigNum bnNew;
     bnNew.SetCompact(pindexPrev->nBits);
 
-    int64_t nInterval = fProofOfStake ? 15 : 16; // retarget difficulty every 15 blocks for PoS and every 16 blocks for PoW
+    int64_t nInterval = fProofOfStake ? 15 : 16; // retarget difficulty every 15 blocks for PoS in GetNextTargetRequired?
     bnNew *= ((nInterval - 1) * nTargetSpacing + nActualSpacing + nActualSpacing);
     bnNew /= ((nInterval + 1) * nTargetSpacing);
 
