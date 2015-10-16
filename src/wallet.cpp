@@ -3445,13 +3445,12 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
     // Calculate coin age reward
     int64_t nReward;
     {
-        nReward = txNew.GetValueOut() * STATIC_POS_REWARD + nFees;
+        nReward = STATIC_POS_REWARD + nFees;
         if (nReward <= 0)
             return false;
 
         nCredit += nReward;
     }
-
 
     // Stormnode Payments
     int payments = 1;

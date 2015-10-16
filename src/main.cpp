@@ -2455,8 +2455,7 @@ bool CBlock::AcceptBlock()
         return DoS(100, error("AcceptBlock() : reject proof-of-work at height %d", nHeight));
 
     // Check coinbase timestamp
-    LogPrintf("GetBlockTime(): %d,>FutureDrift((int64_t)vtx[0].nTime): %d\n", GetBlockTime(), FutureDrift((int64_t)vtx[0].nTime));
-    if (GetBlockTime() > FutureDrift((int64_t)vtx[0].nTime), IsProofOfStake())
+    if (GetBlockTime() > FutureDrift((int64_t)vtx[0].nTime, IsProofOfStake()))
         return DoS(50, error("AcceptBlock() : coinbase timestamp is too early"));
 
     // Check coinstake timestamp
@@ -2464,13 +2463,12 @@ bool CBlock::AcceptBlock()
         return DoS(50, error("AcceptBlock() : coinstake timestamp violation nTimeBlock=%d nTimeTx=%u", GetBlockTime(), vtx[1].nTime));
 
     // Check proof-of-work or proof-of-stake
-    LogPrintf("%d\n%d\n",nBits, GetNextTargetRequired(pindexPrev, IsProofOfStake()));
     if (nBits != GetNextTargetRequired(pindexPrev, IsProofOfStake()))
         return DoS(100, error("AcceptBlock() : incorrect %s", IsProofOfWork() ? "proof-of-work" : "proof-of-stake"));
 
     // Check timestamp against prev
     LogPrintf("GetBlockTime(): %d, <=? pindexPrev->GetPastTimeLimit(): %d\nFutureDrift(GetBlockTime()): %d, <?pindexPrev->GetBlockTime(): %d\n",GetBlockTime(),pindexPrev->GetPastTimeLimit(),FutureDrift(GetBlockTime()),pindexPrev->GetBlockTime());
-    if (GetBlockTime() <= pindexPrev->GetPastTimeLimit() || FutureDrift(GetBlockTime()) < pindexPrev->GetBlockTime(), IsProofOfStake())
+    if (GetBlockTime() <= pindexPrev->GetPastTimeLimit() || FutureDrift(GetBlockTime(), IsProofOfStake()) < pindexPrev->GetBlockTime())
         return error("AcceptBlock() : block's timestamp is too early");
 
     // Check that all transactions are finalized
@@ -2713,13 +2711,11 @@ bool ProcessBlock(CNode* pfrom, CBlock* pblock)
 // darksilk: attempt to generate suitable proof-of-stake
 bool CBlock::SignBlock(CWallet& wallet, int64_t nFees)
 {
-    LogPrintf("CBlock::SignBlock...\n");
     // if we are trying to sign
     //    something except proof-of-stake block template
     if (!vtx[0].vout[0].IsEmpty())
         return false;
-    LogPrintf("CBlock::SignBlock...vtx[0].vout[0].IsEmpty()\n");
-    LogPrintf("CBlock::SignBlock...IsProofOfStake(): %d\n", IsProofOfStake());
+
     // if we are trying to sign
     //    a complete proof-of-stake block
     if (IsProofOfStake())

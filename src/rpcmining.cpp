@@ -446,7 +446,6 @@ Value getwork(const Array& params, bool fHelp)
         result.push_back(Pair("data",     HexStr(BEGIN(pdata), END(pdata))));
         result.push_back(Pair("hash1",    HexStr(BEGIN(phash1), END(phash1)))); // deprecated
         result.push_back(Pair("target",   HexStr(BEGIN(hashTarget), END(hashTarget))));
-        LogPrintf("getwork 0 params: pblock->vtx[0]: %s", pblock->vtx[0].ToString());
         return result;
     }
     else
@@ -470,7 +469,6 @@ Value getwork(const Array& params, bool fHelp)
         pblock->nNonce = pdata->nNonce;
         pblock->vtx[0].vin[0].scriptSig = mapNewBlock[pdata->hashMerkleRoot].second;
         pblock->hashMerkleRoot = pblock->BuildMerkleTree();
-        LogPrintf("getwork with params: pblock->vtx[0]: %s", pblock->vtx[0].ToString());
 
         assert(pwalletMain != NULL);
         return CheckWork(pblock, *pwalletMain, *pMiningKey);
@@ -550,7 +548,6 @@ Value getblocktemplate(const Array& params, bool fHelp)
             pblock = NULL;
         }
         pblock = CreateNewBlock(*pMiningKey);
-        LogPrintf("getblocktemplate: pblock->vtx[0]: %s", pblock->vtx[0].ToString());
         if (!pblock)
             throw JSONRPCError(RPC_OUT_OF_MEMORY, "Out of memory");
 
@@ -688,7 +685,6 @@ Value submitblock(const Array& params, bool fHelp)
                 throw JSONRPCError(RPC_MISC_ERROR, "Sign failed");
         }
     }
-    LogPrintf("submitblock: pblock->vtx[0]: %s", block.vtx[0].ToString());
     bool fAccepted = ProcessBlock(NULL, &block);
     if (!fAccepted)
         return "rejected";
