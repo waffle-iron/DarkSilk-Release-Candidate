@@ -1814,7 +1814,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
     }
     if (IsProofOfStake())
     {
-        int64_t nCalculatedStakeReward = vtx[0].GetValueOut() * STATIC_POS_REWARD + nFees;
+        int64_t nCalculatedStakeReward = STATIC_POS_REWARD + nFees;
 
         if (nStakeReward > nCalculatedStakeReward)
             return DoS(100, error("ConnectBlock() : coinstake pays too much(actual=%d vs calculated=%d)", nStakeReward, nCalculatedStakeReward));
