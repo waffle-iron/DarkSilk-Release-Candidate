@@ -69,7 +69,7 @@ Value getstakesubsidy(const Array& params, bool fHelp)
         throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "TX decode failed");
     }
 
-    return (uint64_t)(STATIC_POS_REWARD);
+    return (uint64_t)STATIC_POS_REWARD;
 }
 
 Value getmininginfo(const Array& params, bool fHelp)
