@@ -312,7 +312,7 @@ bool IsStandardTx(const CTransaction& tx, string& reason)
         return false;
     }
     // nTime has different purpose from nLockTime but can be used in similar attacks
-    if (tx.nTime > FutureDrift(GetAdjustedTime())) {
+    if (tx.nTime > FutureDrift(GetAdjustedTime(), true)) {
         reason = "time-too-new";
         return false;
     }
@@ -1191,10 +1191,11 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
     CBigNum bnNew;
     bnNew.SetCompact(pindexPrev->nBits);
 
-    int64_t nInterval = TARGET_TIME_SPAN / nTargetSpacing; // equals 1 for PoW and this means diff is fully retargeted each block
+    int64_t nInterval = fProofOfStake ? 15 : 16; // retarget difficulty every 15 blocks for PoS and every 16 blocks for PoW
     bnNew *= ((nInterval - 1) * nTargetSpacing + nActualSpacing + nActualSpacing);
     bnNew /= ((nInterval + 1) * nTargetSpacing);
 
+    LogPrintf("bnTargetLimit: %d, bnNew: %d\n", bnTargetLimit, bnNew);
     if (bnNew <= 0 || bnNew > bnTargetLimit)
         bnNew = bnTargetLimit;
 
@@ -2271,7 +2272,7 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
         return DoS(50, error("CheckBlock() : proof of work failed"));
 
     // Check timestamp
-    if (GetBlockTime() > FutureDrift(GetAdjustedTime()))
+    if (GetBlockTime() > FutureDrift(GetAdjustedTime(), IsProofOfStake()))
         return error("CheckBlock() : block timestamp too far in the future");
 
     // First transaction must be coinbase, the rest must not be
@@ -2453,8 +2454,8 @@ bool CBlock::AcceptBlock()
         return DoS(100, error("AcceptBlock() : reject proof-of-work at height %d", nHeight));
 
     // Check coinbase timestamp
-    LogPrintf("GetBlockTime(): %d,>FutureDrift((int64_t)vtx[0].nTime): %d", GetBlockTime(), FutureDrift((int64_t)vtx[0].nTime));
-    if (GetBlockTime() > FutureDrift((int64_t)vtx[0].nTime))
+    //[rm] LogPrintf("GetBlockTime(): %d,>FutureDrift((int64_t)vtx[0].nTime): %d\n", GetBlockTime(), FutureDrift((int64_t)vtx[0].nTime));
+    if (GetBlockTime() > FutureDrift((int64_t)vtx[0].nTime), IsProofOfStake())
         return DoS(50, error("AcceptBlock() : coinbase timestamp is too early"));
 
     // Check coinstake timestamp
@@ -2462,12 +2463,13 @@ bool CBlock::AcceptBlock()
         return DoS(50, error("AcceptBlock() : coinstake timestamp violation nTimeBlock=%d nTimeTx=%u", GetBlockTime(), vtx[1].nTime));
 
     // Check proof-of-work or proof-of-stake
+    //[rm] LogPrintf("%d\n%d\n",nBits, GetNextTargetRequired(pindexPrev, IsProofOfStake()));
     if (nBits != GetNextTargetRequired(pindexPrev, IsProofOfStake()))
         return DoS(100, error("AcceptBlock() : incorrect %s", IsProofOfWork() ? "proof-of-work" : "proof-of-stake"));
 
     // Check timestamp against prev
-    LogPrintf("GetBlockTime(): %d, <=? pindexPrev->GetPastTimeLimit(): %d\nFutureDrift(GetBlockTime()): %d, <?pindexPrev->GetBlockTime(): %d\n",GetBlockTime(),pindexPrev->GetPastTimeLimit(),FutureDrift(GetBlockTime()),pindexPrev->GetBlockTime());
-    if (GetBlockTime() <= pindexPrev->GetPastTimeLimit() || FutureDrift(GetBlockTime()) < pindexPrev->GetBlockTime())
+    //[rm] LogPrintf("GetBlockTime(): %d, <=? pindexPrev->GetPastTimeLimit(): %d\nFutureDrift(GetBlockTime()): %d, <?pindexPrev->GetBlockTime(): %d\n",GetBlockTime(),pindexPrev->GetPastTimeLimit(),FutureDrift(GetBlockTime()),pindexPrev->GetBlockTime());
+    if (GetBlockTime() <= pindexPrev->GetPastTimeLimit() || FutureDrift(GetBlockTime()) < pindexPrev->GetBlockTime(), IsProofOfStake())
         return error("AcceptBlock() : block's timestamp is too early");
 
     // Check that all transactions are finalized
