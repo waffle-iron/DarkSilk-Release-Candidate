@@ -33,7 +33,7 @@ using namespace boost;
 //
 
 CBigNum bnProofOfStakeLimit(~uint256(0) >> 20); //PoS starting difficulty = 0.0002441   
-CBigNum bnProofOfWorkFirstBlock(~uint256(0) >> 30); //Genesis Block Difficulty
+CBigNum bnProofOfWorkFirstBlock(~uint256(0) >> 30); // Weaver Collateral Block Difficulty
         
 CCriticalSection cs_setpwalletRegistered;
 set<CWallet*> setpwalletRegistered;
