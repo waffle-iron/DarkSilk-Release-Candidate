@@ -47,7 +47,7 @@ set<pair<COutPoint, unsigned int> > setStakeSeen;
 
 unsigned int nStakeMinAge = 4 * 60 * 60; // 4 hours
 unsigned int nModifierInterval = 8 * 60; // 8 minutes to elapse before new modifier is computed
-int nStakeMinConfirmations = 420; // 420 confirmations before coins can be staked
+int nStakeMinConfirmations = 42; // 420 confirmations before coins can be staked
 int nCoinbaseMaturity = 42; // 42 blocks until coins are mature
 
 CBlockIndex* pindexGenesisBlock = NULL;
@@ -2455,7 +2455,6 @@ bool CBlock::AcceptBlock()
         return DoS(100, error("AcceptBlock() : reject proof-of-work at height %d", nHeight));
 
     // Check coinbase timestamp
-    //[rm] LogPrintf("GetBlockTime(): %d,>FutureDrift((int64_t)vtx[0].nTime): %d\n", GetBlockTime(), FutureDrift((int64_t)vtx[0].nTime));
     if (GetBlockTime() > FutureDrift((int64_t)vtx[0].nTime, IsProofOfStake()))
         return DoS(50, error("AcceptBlock() : coinbase timestamp is too early"));
 
@@ -2464,13 +2463,12 @@ bool CBlock::AcceptBlock()
         return DoS(50, error("AcceptBlock() : coinstake timestamp violation nTimeBlock=%d nTimeTx=%u", GetBlockTime(), vtx[1].nTime));
 
     // Check proof-of-work or proof-of-stake
-    //[rm] LogPrintf("%d\n%d\n",nBits, GetNextTargetRequired(pindexPrev, IsProofOfStake()));
     if (nBits != GetNextTargetRequired(pindexPrev, IsProofOfStake()))
         return DoS(100, error("AcceptBlock() : incorrect %s", IsProofOfWork() ? "proof-of-work" : "proof-of-stake"));
 
     // Check timestamp against prev
-    //[rm] LogPrintf("GetBlockTime(): %d, <=? pindexPrev->GetPastTimeLimit(): %d\nFutureDrift(GetBlockTime()): %d, <?pindexPrev->GetBlockTime(): %d\n",GetBlockTime(),pindexPrev->GetPastTimeLimit(),FutureDrift(GetBlockTime()),pindexPrev->GetBlockTime());
-    if (GetBlockTime() <= pindexPrev->GetPastTimeLimit() || FutureDrift(GetBlockTime()) < pindexPrev->GetBlockTime(), IsProofOfStake())
+    LogPrintf("GetBlockTime(): %d, <=? pindexPrev->GetPastTimeLimit(): %d\nFutureDrift(GetBlockTime()): %d, <?pindexPrev->GetBlockTime(): %d\n",GetBlockTime(),pindexPrev->GetPastTimeLimit(),FutureDrift(GetBlockTime()),pindexPrev->GetBlockTime());
+    if (GetBlockTime() <= pindexPrev->GetPastTimeLimit() || FutureDrift(GetBlockTime(), IsProofOfStake()) < pindexPrev->GetBlockTime())
         return error("AcceptBlock() : block's timestamp is too early");
 
     // Check that all transactions are finalized
