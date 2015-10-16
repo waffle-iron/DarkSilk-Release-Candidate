@@ -1175,7 +1175,7 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
     if (pindexPrevPrev->pprev == NULL)
         return bnTargetLimit.GetCompact(); // second block
 
-    int64_t nTargetSpacing = fProofOfStake ? TARGET_SPACING : POW_TARGET_SPACING;
+    int64_t nTargetSpacing = fProofOfStake ? POS_TARGET_SPACING : POW_TARGET_SPACING;
     int64_t nActualSpacing = pindexPrev->GetBlockTime() - pindexPrevPrev->GetBlockTime();
 
     if (nActualSpacing < 0) {
@@ -1698,11 +1698,12 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
     if (!CheckBlock(!fJustCheck, !fJustCheck, false))
         return false;
 
-    unsigned int flags = SCRIPT_VERIFY_NULLDUMMY |
-                 SCRIPT_VERIFY_STRICTENC |
-                 SCRIPT_VERIFY_ALLOW_EMPTY_SIG |
-                 SCRIPT_VERIFY_FIX_HASHTYPE |
-                 SCRIPT_VERIFY_CHECKLOCKTIMEVERIFY;
+    unsigned int flags = SCRIPT_VERIFY_NOCACHE | 
+                SCRIPT_VERIFY_NULLDUMMY |
+                SCRIPT_VERIFY_STRICTENC |
+                SCRIPT_VERIFY_ALLOW_EMPTY_SIG |
+                SCRIPT_VERIFY_FIX_HASHTYPE |
+                SCRIPT_VERIFY_CHECKLOCKTIMEVERIFY;
 
     //// issue here: it doesn't know the version
     unsigned int nTxPos;
