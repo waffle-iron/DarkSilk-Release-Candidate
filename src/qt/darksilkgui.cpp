@@ -1540,7 +1540,7 @@ void DarkSilkGUI::updateStakingIcon()
         uint64_t nWeight = this->nWeight;
         uint64_t nNetworkWeight = GetPoSKernelPS();
 
-        unsigned nEstimateTime = TARGET_SPACING * nNetworkWeight / nWeight;
+        unsigned nEstimateTime = POS_TARGET_SPACING * nNetworkWeight / nWeight;
 
         QString text;
 
