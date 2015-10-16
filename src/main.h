@@ -90,11 +90,11 @@ inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MO
 /** Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp. */
 static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov 5th 00:53:20 1985 UTC
 
-static const unsigned int TARGET_TIME_SPAN = 4 * 60;  // 4 mins
-static const unsigned int POW_TARGET_SPACING = 60; // 60 seconds
-static const unsigned int TARGET_SPACING = 64;
-static const int64_t DRIFT = 10 * 60;
-inline int64_t FutureDrift(int64_t nTime) { return nTime + DRIFT; }
+static const unsigned int POW_TARGET_SPACING = 4 * 60; // 4 mins
+static const unsigned int TARGET_SPACING = 64; // 64 seconds
+static const int64_t POW_DRIFT = 10 * 60;
+static const int64_t POS_DRIFT = 15;
+inline int64_t FutureDrift(int64_t nTime, bool fProofOfStake=false) { return nTime + (fProofOfStake ? POS_DRIFT : POW_DRIFT); }
 
 extern CScript COINBASE_FLAGS;
 extern CCriticalSection cs_main;
