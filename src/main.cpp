@@ -47,7 +47,7 @@ set<pair<COutPoint, unsigned int> > setStakeSeen;
 
 unsigned int nStakeMinAge = 4 * 60 * 60; // 4 hours
 unsigned int nModifierInterval = 8 * 60; // 8 minutes to elapse before new modifier is computed
-int nStakeMinConfirmations = 42; // 420 confirmations before coins can be staked
+int nStakeMinConfirmations = 420; // 420 confirmations before coins can be staked
 int nCoinbaseMaturity = 42; // 42 blocks until coins are mature
 
 CBlockIndex* pindexGenesisBlock = NULL;
