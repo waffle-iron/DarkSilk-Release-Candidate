@@ -32,8 +32,7 @@ using namespace boost;
 // Global state
 //
 
-CBigNum bnProofOfStakeLimit(~uint256(0) >> 20); //PoS starting difficulty = 0.0002441   
-CBigNum bnProofOfWorkFirstBlock(~uint256(0) >> 30); // Weaver Collateral Block Difficulty
+CBigNum bnProofOfStakeLimit(~uint256(0) >> 20); //PoS starting difficulty = 0.0002441
         
 CCriticalSection cs_setpwalletRegistered;
 set<CWallet*> setpwalletRegistered;
@@ -1170,7 +1169,7 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
 
     const CBlockIndex* pindexPrev = GetLastBlockIndex(pindexLast, fProofOfStake);
     if (pindexPrev->pprev == NULL)
-        return bnProofOfWorkFirstBlock.GetCompact(); // first block
+        return bnTargetLimit.GetCompact(); // first block
     const CBlockIndex* pindexPrevPrev = GetLastBlockIndex(pindexPrev->pprev, fProofOfStake);
     if (pindexPrevPrev->pprev == NULL)
         return bnTargetLimit.GetCompact(); // second block
