@@ -593,8 +593,7 @@ Value stormnodelist(const Array& params, bool fHelp)
     Object obj;
     std::vector<CStormnode> vStormnodes = snodeman.GetFullStormnodeVector();
     BOOST_FOREACH(CStormnode& sn, vStormnodes) {
-        sn.Check();
-
+        
         std::string strAddr = sn.addr.ToString().c_str();
         if(strMode == "active"){
             obj.push_back(Pair(strAddr,       (int)sn.IsEnabled()));

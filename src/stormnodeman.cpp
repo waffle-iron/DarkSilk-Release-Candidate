@@ -206,15 +206,11 @@ void CStormnodeMan::CheckAndRemove()
 {
     LOCK(cs);
 
-    vector<CStormnode>::iterator it = vStormnodes.begin();
-    //check them separately
-    while(it != vStormnodes.end()){
-        (*it).Check();
-        ++it;
-    }
+    Check();
+    UpdateLastTimeChanged();
 
     //remove inactive
-    it = vStormnodes.begin();
+    vector<CStormnode>::iterator it = vStormnodes.begin();
     while(it != vStormnodes.end()){
         if((*it).activeState == 4 || (*it).activeState == 3){
             LogPrintf("Removing inactive stormnode %s\n", (*it).addr.ToString().c_str());
@@ -230,6 +226,8 @@ int CStormnodeMan::CountStormnodesAboveProtocol(int protocolVersion)
     int i = 0;
 
     BOOST_FOREACH(CStormnode& sn, vStormnodes) {
+        sn.Check();
+        UpdateLastTimeChanged();
         if(sn.protocolVersion < protocolVersion || !sn.IsEnabled()) continue;
         i++;
     }
@@ -242,8 +240,9 @@ int CStormnodeMan::CountEnabled()
     int i = 0;
 
     BOOST_FOREACH(CStormnode& sn, vStormnodes) {
-        if(!sn.IsEnabled()) continue;
-        i++;
+        sn.Check();
+        UpdateLastTimeChanged();
+        if(!sn.IsEnabled()) i++;
     }
 
     return i;
@@ -257,6 +256,7 @@ CStormnode* CStormnodeMan::GetCurrentStormNode(int mod, int64_t nBlockHeight, in
     // scan for winner
     BOOST_FOREACH(CStormnode& sn, vStormnodes) {
         sn.Check();
+        UpdateLastTimeChanged();
         if(sn.protocolVersion < minProtocol || !sn.IsEnabled()) continue;
 
         // calculate the score for each stormnode
@@ -282,6 +282,7 @@ int CStormnodeMan::GetStormnodeRank(const CTxIn& vin, int64_t nBlockHeight, int 
     BOOST_FOREACH(CStormnode& sn, vStormnodes) {
 
         sn.Check();
+        UpdateLastTimeChanged();
 
         if(sn.protocolVersion < minProtocol) continue;
         if(!sn.IsEnabled()) {
@@ -387,6 +388,7 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
             //   after that they just need to match
             if(count == -1 && sn->pubkey == pubkey && !sn->UpdatedWithin(STORMNODE_MIN_DSEE_SECONDS)){
                 sn->UpdateLastSeen();
+                UpdateLastTimeChanged();
 
                 if(sn->now < sigTime){ //take the newest entry
                     LogPrintf("dsee - Got updated entry for %s\n", addr.ToString().c_str());
@@ -503,7 +505,8 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
                 sn->lastDseep = sigTime;
 
                 if(!sn->UpdatedWithin(STORMNODE_MIN_DSEEP_SECONDS))
-                {
+                {   
+                    UpdateLastTimeChanged();
                     if(stop) sn->Disable();
                     else
                     {

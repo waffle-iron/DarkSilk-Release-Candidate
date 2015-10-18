@@ -50,6 +50,9 @@ private:
     // map to hold all SNs
     std::vector<CStormnode> vStormnodes;
 
+    // keep track of latest time whem vMasternodes was changed
+    int64_t lastTimeChanged;
+
 public:
 
     IMPLEMENT_SERIALIZE
@@ -61,6 +64,7 @@ public:
                 LOCK(cs);
                 unsigned char nVersion = 0;
                 READWRITE(nVersion);
+                READWRITE(lastTimeChanged);
                 READWRITE(vStormnodes);
         }
     )
@@ -87,7 +91,7 @@ public:
     void CheckAndRemove();
 
     // Clear stormnode vector
-    void Clear() { vStormnodes.clear(); }
+    void Clear() { vStormnodes.clear(); lastTimeChanged = 0; }
 
     // Return the number of (unique) stormnodes
     int size() { return vStormnodes.size(); }
@@ -101,9 +105,13 @@ public:
 
     int CountEnabled();
 
-    std::vector<CStormnode> GetFullStormnodeVector() { return vStormnodes; }
+    std::vector<CStormnode> GetFullStormnodeVector() { Check(); return vStormnodes; }
 
     void ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
+
+    void UpdateLastTimeChanged() { lastTimeChanged = GetAdjustedTime(); }
+
+    bool UpdateNeeded() { return lastTimeChanged < GetAdjustedTime() - STORMNODE_REMOVAL_SECONDS; }
 
 };
 

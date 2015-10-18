@@ -388,8 +388,8 @@ bool CStormnodePayments::ProcessBlock(int nBlockHeight)
         newWinner.payee.SetDestination(sn->pubkey.GetID());
     }
 
-    //if we can't find new SN to get paid, pick first active SN counting back from the end of vecLastPayments list
-    if(newWinner.nBlockHeight == 0 && snodeman.size() > 1)
+    //if we can't find new SN to get paid, pick the first active SN counting back from the end of vecLastPayments list
+    if(newWinner.nBlockHeight == 0 && snodeman.CountEnabled() > 0)
     {
         BOOST_REVERSE_FOREACH(CTxIn& vinLP, vecLastPayments)
         {
