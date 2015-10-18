@@ -2190,7 +2190,7 @@ void ThreadCheckSandStormPool()
             {
                 LOCK(cs_main);
                 /*
-                    cs_main is required for doing CMasternode.Check because something
+                    cs_main is required for doing CStormnode.Check because something
                     is modifying the coins view without a mempool lock. It causes
                     segfaults from this code without the cs_main lock.
                 */

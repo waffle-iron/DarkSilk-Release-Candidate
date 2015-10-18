@@ -9,6 +9,7 @@
 #include "alert.h"
 #include "main.h"
 #include "ui_interface.h"
+#include "stormnodeman.h"
 
 #include <QDateTime>
 #include <QTimer>
@@ -22,12 +23,16 @@ static const int64_t nClientStartupTime = GetTime();
 
 ClientModel::ClientModel(OptionsModel *optionsModel, QObject *parent) :
     QObject(parent), optionsModel(optionsModel),
-    cachedNumBlocks(0), numBlocksAtStartup(-1), pollTimer(0)
+    cachedNumBlocks(0), cachedStormnodeCountString(""), numBlocksAtStartup(-1), pollTimer(0)
 {
     pollTimer = new QTimer(this);
-    pollTimer->setInterval(MODEL_UPDATE_DELAY);
-    pollTimer->start();
     connect(pollTimer, SIGNAL(timeout()), this, SLOT(updateTimer()));
+    pollTimer->start(MODEL_UPDATE_DELAY);
+
+    pollSnTimer = new QTimer(this);
+    connect(pollSnTimer, SIGNAL(timeout()), this, SLOT(updateSnTimer()));
+    // no need to update as frequent as data for balances/txes/blocks
+    pollSnTimer->start(MODEL_UPDATE_DELAY * 4);
 
     subscribeToCoreSignals();
 }
@@ -40,6 +45,11 @@ ClientModel::~ClientModel()
 int ClientModel::getNumConnections() const
 {
     return vNodes.size();
+}
+
+QString ClientModel::getStormnodeCountString() const
+{
+    return QString::number((int)snodeman.CountEnabled()) + " / " + QString::number((int)snodeman.size());
 }
 
 int ClientModel::getNumBlocks() const
@@ -94,6 +104,24 @@ void ClientModel::updateTimer()
     }
 
     emit bytesChanged(getTotalBytesRecv(), getTotalBytesSent());
+}
+
+void ClientModel::updateSnTimer()
+{
+    // Get required lock upfront. This avoids the GUI from getting stuck on
+    // periodical polls if the core is holding the locks for a longer time -
+    // for example, during a wallet rescan.
+    TRY_LOCK(cs_main, lockMain);
+    if(!lockMain)
+        return;
+    QString newStormnodeCountString = getStormnodeCountString();
+
+    if (cachedStormnodeCountString != newStormnodeCountString)
+    {
+        cachedStormnodeCountString = newStormnodeCountString;
+
+        emit strStormnodesChanged(cachedStormnodeCountString);
+    }
 }
 
 void ClientModel::updateNumConnections(int numConnections)

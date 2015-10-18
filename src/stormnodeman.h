@@ -50,7 +50,7 @@ private:
     // map to hold all SNs
     std::vector<CStormnode> vStormnodes;
 
-    // keep track of latest time whem vMasternodes was changed
+    // keep track of latest time whem vMStormnodes was changed
     int64_t lastTimeChanged;
 
 public:

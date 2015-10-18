@@ -269,6 +269,9 @@ void DEBUGConsole::setClientModel(ClientModel *model)
         setNumBlocks(model->getNumBlocks());
         connect(model, SIGNAL(numBlocksChanged(int)), this, SLOT(setNumBlocks(int)));
 
+        setStormnodeCount(model->getStormnodeCountString());
+        connect(model, SIGNAL(strStormnodesChanged(QString)), this, SLOT(setStormnodeCount(QString)));
+
         updateTrafficStats(model->getTotalBytesRecv(), model->getTotalBytesSent());
         connect(model, SIGNAL(bytesChanged(quint64,quint64)), this, SLOT(updateTrafficStats(quint64, quint64)));
 
@@ -354,6 +357,12 @@ void DEBUGConsole::setNumBlocks(int count)
     if(clientModel)
         ui->lastBlockTime->setText(clientModel->getLastBlockDate().toString());
 }
+
+void DEBUGConsole::setStormnodeCount(const QString &strStormnodes)
+{
+    ui->stormnodeCount->setText(strStormnodes);
+}
+
 
 void DEBUGConsole::on_lineEdit_returnPressed()
 {

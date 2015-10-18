@@ -18,7 +18,7 @@
 
 class CValidationState;
 
-static const int STORMNODE_PAYMENT_START = 1; // Block 1
+static const int STORMNODE_PAYMENT_START = 420; // Block 420
 static const int TESTNET_STORMNODE_PAYMENT_START = 100; // Block 100
 
 static const int64_t SANDSTORM_COLLATERAL = (0.01*COIN);
