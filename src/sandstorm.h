@@ -9,6 +9,7 @@
 #include "main.h"
 #include "stormnode.h"
 #include "activestormnode.h"
+#include "stormnodeman.h"
 
 class CTxIn;
 class CSandStormPool;
@@ -160,22 +161,22 @@ public:
 
     bool GetAddress(CService &addr)
     {
-        BOOST_FOREACH(CStormNode sn, vecStormnodes) {
-            if(sn.vin == vin){
-                addr = sn.addr;
-                return true;
-            }
+        CStormnode* sn = snodeman.Find(vin);
+        if(sn)
+        {
+            addr = sn->addr;
+            return true;
         }
         return false;
     }
 
     bool GetProtocolVersion(int &protocolVersion)
     {
-        BOOST_FOREACH(CStormNode sn, vecStormnodes) {
-            if(sn.vin == vin){
-                protocolVersion = sn.protocolVersion;
-                return true;
-            }
+        CStormnode* sn = snodeman.Find(vin);
+        if(sn)
+        {
+            protocolVersion = sn->protocolVersion;
+            return true;
         }
         return false;
     }
@@ -289,6 +290,8 @@ public:
 
         SetNull();
     }
+
+    void ProcessStormnodeConnections();
 
     void InitCollateralAddress(){
         std::string strAddress = "";

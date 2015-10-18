@@ -20,7 +20,7 @@
 #include "ui_interface.h"
 #include "instantx.h"
 #include "sandstorm.h"
-#include "stormnode.h"
+#include "stormnodeman.h"
 #include "spork.h"
 #include "smessage.h"
 #include "market.h"
@@ -3950,7 +3950,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
     {   
         MarketProcessMessage(pfrom, strCommand, vRecv);
         ProcessMessageSandstorm(pfrom, strCommand, vRecv);
-        ProcessMessageStormnode(pfrom, strCommand, vRecv);
+        snodeman.ProcessMessage(pfrom, strCommand, vRecv);
         ProcessMessageInstantX(pfrom, strCommand, vRecv);
         ProcessSpork(pfrom, strCommand, vRecv);
     if (fSecMsgEnabled)

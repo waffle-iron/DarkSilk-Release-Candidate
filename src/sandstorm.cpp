@@ -8,7 +8,7 @@
 #include "init.h"
 //#include "script/sign.h"
 #include "util.h"
-#include "stormnode.h"
+#include "stormnodeman.h"
 #include "instantx.h"
 #include "ui_interface.h"
 //#include "random.h"
@@ -122,18 +122,18 @@ void ProcessMessageSandstorm(CNode* pfrom, std::string& strCommand, CDataStream&
         vRecv >> nDenom >> txCollateral;
 
         std::string error = "";
-        int sn = GetStormnodeByVin(activeStormnode.vin);
-        if(sn == -1){
+        CStormnode* sn = snodeman.Find(activeStormnode.vin);
+        if(!sn)
+        {
             std::string strError = _("Not in the stormnode list.");
             pfrom->PushMessage("dssu", sandStormPool.sessionID, sandStormPool.GetState(), sandStormPool.GetEntriesCount(), STORMNODE_REJECTED, strError);
             return;
         }
 
         if(sandStormPool.sessionUsers == 0) {
-            if(vecStormnodes[sn].nLastDsq != 0 &&
-                vecStormnodes[sn].nLastDsq + CountStormnodesAboveProtocol(sandStormPool.MIN_PEER_PROTO_VERSION)/5 > sandStormPool.nDsqCount){
-                //LogPrintf("dsa -- last dsq too recent, must wait. %s \n", vecStormnodes[sn].addr.ToString().c_str());
-                std::string strError = _("Last Sandstorm was too recent.");
+            if(sn->nLastDsq != 0 &&
+                sn->nLastDsq + snodeman.CountStormnodesAboveProtocol(sandStormPool.MIN_PEER_PROTO_VERSION)/5 > sandStormPool.nDsqCount){
+                LogPrintf("dsa -- last dsq too recent, must wait. %s \n", sn->addr.ToString().c_str());                std::string strError = _("Last Darksend was too recent.");
                 pfrom->PushMessage("dssu", sandStormPool.sessionID, sandStormPool.GetState(), sandStormPool.GetEntriesCount(), STORMNODE_REJECTED, strError);
                 return;
             }
@@ -165,8 +165,8 @@ void ProcessMessageSandstorm(CNode* pfrom, std::string& strCommand, CDataStream&
 
         if(dsq.IsExpired()) return;
 
-        int sn = GetStormnodeByVin(dsq.vin);
-        if(sn == -1) return;
+        CStormnode* sn = snodeman.Find(dsq.vin);
+        if(!sn) return;
 
         // if the queue is ready, submit if we can
         if(dsq.ready) {
@@ -182,16 +182,16 @@ void ProcessMessageSandstorm(CNode* pfrom, std::string& strCommand, CDataStream&
                 if(q.vin == dsq.vin) return;
             }
 
-            if(fDebug) LogPrintf("dsq last %d last2 %d count %d\n", vecStormnodes[sn].nLastDsq, vecStormnodes[sn].nLastDsq + (int)vecStormnodes.size()/5, sandStormPool.nDsqCount);
+            if(fDebug) LogPrintf("dsq last %d last2 %d count %d\n", sn->nLastDsq, sn->nLastDsq + snodeman.size()/5, sandStormPool.nDsqCount);            
             //don't allow a few nodes to dominate the queuing process
-            if(vecStormnodes[sn].nLastDsq != 0 &&
-                vecStormnodes[sn].nLastDsq + CountStormnodesAboveProtocol(sandStormPool.MIN_PEER_PROTO_VERSION)/5 > sandStormPool.nDsqCount){
-                if(fDebug) LogPrintf("dsq -- stormnode sending too many dsq messages. %s \n", vecStormnodes[sn].addr.ToString().c_str());
+            if(sn->nLastDsq != 0 &&
+                sn->nLastDsq + snodeman.CountStormnodesAboveProtocol(sandStormPool.MIN_PEER_PROTO_VERSION)/5 > sandStormPool.nDsqCount){
+                if(fDebug) LogPrintf("dsq -- stormnode sending too many dsq messages. %s \n", sn->addr.ToString().c_str());
                 return;
             }
             sandStormPool.nDsqCount++;
-            vecStormnodes[sn].nLastDsq = sandStormPool.nDsqCount;
-            vecStormnodes[sn].allowFreeTx = true;
+            sn->nLastDsq = sandStormPool.nDsqCount;
+            sn->allowFreeTx = true;
 
             if(fDebug) LogPrintf("dsq - new sandstorm queue object - %s\n", addr.ToString().c_str());
             vecSandstormQueue.push_back(dsq);
@@ -482,6 +482,23 @@ int GetInputSandstormRounds(CTxIn in, int rounds)
     }
 
     return rounds-1;
+}
+
+// manage the stormnode connections
+void CSandStormPool::ProcessStormnodeConnections()
+{
+    LOCK(cs_vNodes);
+
+    BOOST_FOREACH(CNode* pnode, vNodes)
+    {
+        //if it's our stormnode, let it be
+        if(submittedToStormnode == pnode->addr) continue;
+
+        if(pnode->fSandStormMaster){
+            LogPrintf("Closing stormnode connection %s \n", pnode->addr.ToString().c_str());
+            pnode->CloseSocketDisconnect();
+        }
+    }
 }
 
 void CSandStormPool::Reset(){
@@ -1362,7 +1379,6 @@ void CSandStormPool::NewBlock()
     if(!fStormNode){
         //denominate all non-denominated inputs every 25 minutes.
         if(pindexBest->nHeight % 10 == 0) UnlockCoins();
-        ProcessStormnodeConnections();
     }
 }
 
@@ -1431,7 +1447,7 @@ bool CSandStormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
         }
     }
 
-    if(vecStormnodes.size() == 0){
+    if(snodeman.size() == 0){
         if(fDebug) LogPrintf("CSandStormPool::DoAutomaticDenominating - No stormnodes detected\n");
         strAutoDenomResult = _("No stormnodes detected.");
         return false;
@@ -1584,40 +1600,39 @@ bool CSandStormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
             }
         }
 
-        //shuffle stormnodes around before we try to connect
-        std::random_shuffle ( vecStormnodes.begin(), vecStormnodes.end() );
         int i = 0;
 
         // otherwise, try one randomly
         while(i < 10)
-        {
+        {   
+            CStormnode* sn = snodeman.FindRandom();
             //don't reuse stormnodes
             BOOST_FOREACH(CTxIn usedVin, vecStormnodesUsed) {
-                if(vecStormnodes[i].vin == usedVin){
+                if(sn->vin == usedVin){
                     i++;
                     continue;
                 }
             }
-            if(vecStormnodes[i].protocolVersion < MIN_PEER_PROTO_VERSION) {
+            if(sn->protocolVersion < sandStormPool.MIN_PEER_PROTO_VERSION) {
                 i++;
                 continue;
             }
 
-            if(vecStormnodes[i].nLastDsq != 0 &&
-                vecStormnodes[i].nLastDsq + CountStormnodesAboveProtocol(sandStormPool.MIN_PEER_PROTO_VERSION)/5 > sandStormPool.nDsqCount){
+            if(sn->nLastDsq != 0 &&
+                sn->nLastDsq + snodeman.CountStormnodesAboveProtocol(sandStormPool.MIN_PEER_PROTO_VERSION)/5 > sandStormPool.nDsqCount){
                 i++;
                 continue;
             }
 
             lastTimeChanged = GetTimeMillis();
-            LogPrintf("DoAutomaticDenominating -- attempt %d connection to stormnode %s\n", i, vecStormnodes[i].addr.ToString().c_str());
-            if(ConnectNode((CAddress)vecStormnodes[i].addr, NULL, true)){
-                submittedToStormnode = vecStormnodes[i].addr;
+            LogPrintf("DoAutomaticDenominating -- attempt %d connection to stormnode %s\n", i, sn->addr.ToString().c_str());
+            if(ConnectNode((CAddress)sn->addr, NULL, true)){
+                submittedToStormnode = sn->addr;
 
                 LOCK(cs_vNodes);
                 BOOST_FOREACH(CNode* pnode, vNodes)
                 {
-                    if((CNetAddr)pnode->addr != (CNetAddr)vecStormnodes[i].addr) continue;
+                    if((CNetAddr)pnode->addr != (CNetAddr)sn->addr) continue;
 
                     std::string strReason;
                     if(txCollateral == CTransaction()){
@@ -1627,7 +1642,7 @@ bool CSandStormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
                         }
                     }
 
-                    vecStormnodesUsed.push_back(vecStormnodes[i].vin);
+                    vecStormnodesUsed.push_back(sn->vin);
 
                     std::vector<int64_t> vecAmounts;
                     pwalletMain->ConvertList(vCoins, vecAmounts);
@@ -2130,20 +2145,16 @@ bool CSandstormQueue::Relay()
 
 bool CSandstormQueue::CheckSignature()
 {
-    BOOST_FOREACH(CStormNode& sn, vecStormnodes) {
-
-        if(sn.vin == vin) {
-            std::string strMessage = vin.ToString() + boost::lexical_cast<std::string>(nDenom) + boost::lexical_cast<std::string>(time) + boost::lexical_cast<std::string>(ready);
-
-            std::string errorMessage = "";
-            if(!sandStormSigner.VerifyMessage(sn.pubkey2, vchSig, strMessage, errorMessage)){
-                return error("CSandstormQueue::CheckSignature() - Got bad stormnode address signature %s \n", vin.ToString().c_str());
-            }
-
-            return true;
+    CStormnode* sn = snodeman.Find(vin);
+    if(sn)
+    {
+        std::string strMessage = vin.ToString() + boost::lexical_cast<std::string>(nDenom) + boost::lexical_cast<std::string>(time) + boost::lexical_cast<std::string>(ready);
+        std::string errorMessage = "";
+        if(!sandStormSigner.VerifyMessage(sn->pubkey2, vchSig, strMessage, errorMessage)){
+            return error("CSandstormQueue::CheckSignature() - Got bad stormnode address signature %s \n", vin.ToString().c_str());
         }
+        return true;
     }
-
     return false;
 }
 
@@ -2168,6 +2179,15 @@ void ThreadCheckSandStormPool()
         sandStormPool.CheckTimeout();
 
         if(c % 60 == 0){
+            sandStormPool.ProcessStormnodeConnections();
+            stormnodePayments.CleanPaymentList();
+            CleanTransactionLocksList();
+        }
+
+        // nodes refuse to relay dseep if it was less then STORMNODE_MIN_DSEEP_SECONDS ago
+        // STORMNODE_PING_WAIT_SECONDS gives some additional time on top of it
+        if(c % (STORMNODE_MIN_DSEEP_SECONDS + STORMNODE_PING_WAIT_SECONDS) == 0)
+        {
             LOCK(cs_main);
             /*
                 cs_main is required for doing stormnode.Check because something
@@ -2175,43 +2195,12 @@ void ThreadCheckSandStormPool()
                 segfaults from this code without the cs_main lock.
             */
 
-            vector<CStormNode>::iterator it = vecStormnodes.begin();
-            //check them separately
-            while(it != vecStormnodes.end()){
-                (*it).Check();
-                ++it;
-            }
-
-            int count = vecStormnodes.size();
-            int i = 0;
-
-            BOOST_FOREACH(CStormNode sn, vecStormnodes) {
-
-                if(sn.addr.IsRFC1918()) continue; //local network
-                if(sn.IsEnabled()) {
-                    if(fDebug) LogPrintf("Sending stormnode entry - %s \n", sn.addr.ToString().c_str());
-           BOOST_FOREACH(CNode* pnode, vNodes) {
-                        pnode->PushMessage("dsee", sn.vin, sn.addr, sn.sig, sn.now, sn.pubkey, sn.pubkey2, count, i, sn.lastTimeSeen, sn.protocolVersion);
-       }   
-             }
-            
-                i++;
-            }
-
-            //remove inactive
-            it = vecStormnodes.begin();
-            while(it != vecStormnodes.end()){
-                if((*it).enabled == 4 || (*it).enabled == 3){
-                    LogPrintf("Removing inactive stormnode %s\n", (*it).addr.ToString().c_str());
-                    it = vecStormnodes.erase(it);
-                } else {
-                    ++it;
-                }
-            }
-
-            stormnodePayments.CleanPaymentList();
-            CleanTransactionLocksList();
+            snodeman.CheckAndRemove();
         }
+
+        if(c % STORMNODE_PING_SECONDS == 0) activeStormnode.ManageStatus();
+
+        if(c % STORMNODES_DUMP_SECONDS == 0) DumpStormnodes();
 
         //try to sync the stormnode list and payment list every 5 seconds from at least 3 nodes
         if(c % 5 == 0 && RequestedStormNodeList < 3){
@@ -2228,7 +2217,8 @@ void ThreadCheckSandStormPool()
 
                         LogPrintf("Successfully synced, asking for Stormnode list and payment list\n");
 
-                        pnode->PushMessage("dseg", CTxIn()); //request full sn list
+                        //request full sn list only if we didn't load them from stormnodes.dat yet
+                        if(snodeman.size() == 0) pnode->PushMessage("dseg", CTxIn());                        
                         pnode->PushMessage("snget"); //sync payees
                         pnode->PushMessage("getsporks"); //get current network sporks
                         RequestedStormNodeList++;
@@ -2237,13 +2227,9 @@ void ThreadCheckSandStormPool()
             }
         }
 
-        if(c % STORMNODE_PING_SECONDS == 0){
-            activeStormnode.ManageStatus();
-        }
-
         if(c % 60 == 0){
             //if we've used 1/5 of the stormnode list, then clear the list.
-            if((int)vecStormnodesUsed.size() > (int)vecStormnodes.size() / 5)
+            if((int)vecStormnodesUsed.size() > (int)snodeman.size() / 5)
                 vecStormnodesUsed.clear();
         }
 

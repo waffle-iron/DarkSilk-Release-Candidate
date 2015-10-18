@@ -269,10 +269,11 @@ HEADERS += src/qt/darksilkgui.h \
     src/stealth.h \
     src/qt/flowlayout.h \
     src/qt/sandstormconfig.h \
-    src/stormnode.h \
+    src/stormnode.h \ 
     src/sandstorm.h \
     src/instantx.h \
     src/activestormnode.h \
+    src/stormnodeman.h \
     src/spork.h \
     src/crypto/common.h \
     src/crypto/hmac_sha256.h \
@@ -393,6 +394,7 @@ SOURCES += src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
     src/activestormnode.cpp \
     src/spork.cpp \
     src/stormnodeconfig.cpp \
+    src/stormnodeman.cpp \
     src/crypto/hmac_sha256.cpp \
     src/crypto/hmac_sha512.cpp \
     src/crypto/rfc6979_hmac_sha256.cpp \

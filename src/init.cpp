@@ -14,6 +14,7 @@
 #include "ui_interface.h"
 #include "checkpoints.h"
 #include "activestormnode.h"
+#include "stormnodeman.h"
 #include "spork.h"
 #include "stormnodeconfig.h"
 #include "smessage.h"
@@ -113,6 +114,7 @@ void Shutdown()
         bitdb.Flush(false);
 #endif
     StopNode();
+    DumpStormnodes();
     {
         LOCK(cs_main);
 #ifdef ENABLE_WALLET
@@ -554,7 +556,7 @@ bool AppInit2(boost::thread_group& threadGroup)
     }
 
     //ignore stormnodes below protocol version
-    CStormNode::minProtoVersion = GetArg("-stormnodeminprotocol", MIN_SN_PROTO_VERSION);
+    CStormnode::minProtoVersion = GetArg("-stormnodeminprotocol", MIN_SN_PROTO_VERSION);
 
     if (fDaemon)
         fprintf(stdout, "DarkSilk server starting\n");
@@ -912,6 +914,19 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     if (!strErrors.str().empty())
         return InitError(strErrors.str());
+
+    uiInterface.InitMessage(_("Loading stormnode list..."));
+
+    nStart = GetTimeMillis();
+
+    {
+        CStormnodeDB sndb;
+        if (!sndb.Read(snodeman))
+            LogPrintf("Invalid or missing stormnodes.dat; recreating\n");
+    }
+
+    LogPrintf("Loaded %i stormnodes from stormnodes.dat  %dms\n",
+           snodeman.size(), GetTimeMillis() - nStart);
 
     fStormNode = GetBoolArg("-stormnode", false);
     if(fStormNode) {

@@ -155,24 +155,26 @@ void StormnodeManager::updateNodeList()
     ui->countLabel->setText("Updating...");
     ui->tableWidget->clearContents();
     ui->tableWidget->setRowCount(0);
-    BOOST_FOREACH(CStormNode sn, vecStormnodes) 
+    
+    CStormnode* sn =snodeman.Find(activeStormnode.vin);
+    if (sn) 
     {
         int snRow = 0;
         ui->tableWidget->insertRow(0);
 
  	// populate list
 	// Address, Rank, Active, Active Seconds, Last Seen, Pub Key
-	QTableWidgetItem *activeItem = new QTableWidgetItem(QString::number(sn.IsEnabled()));
-	QTableWidgetItem *addressItem = new QTableWidgetItem(QString::fromStdString(sn.addr.ToString()));
-	QTableWidgetItem *rankItem = new QTableWidgetItem(QString::number(GetStormnodeRank(sn.vin, pindexBest->nHeight)));
-	QTableWidgetItem *activeSecondsItem = new QTableWidgetItem(seconds_to_DHMS((qint64)(sn.lastTimeSeen - sn.now)));
-	QTableWidgetItem *lastSeenItem = new QTableWidgetItem(QString::fromStdString(DateTimeStrFormat(sn.lastTimeSeen)));
+	QTableWidgetItem *activeItem = new QTableWidgetItem(QString::number(sn->IsEnabled()));
+	QTableWidgetItem *addressItem = new QTableWidgetItem(QString::fromStdString(sn->addr.ToString()));
+	QTableWidgetItem *rankItem = new QTableWidgetItem(QString::number(snodeman.GetStormnodeRank(sn->vin, pindexBest->nHeight)));
+	QTableWidgetItem *activeSecondsItem = new QTableWidgetItem(seconds_to_DHMS((qint64)(sn->lastTimeSeen - sn->now)));
+	QTableWidgetItem *lastSeenItem = new QTableWidgetItem(QString::fromStdString(DateTimeStrFormat(sn->lastTimeSeen)));
 	
 	CScript pubkey;
-        pubkey =GetScriptForDestination(sn.pubkey.GetID());
-        CTxDestination address1;
-        ExtractDestination(pubkey, address1);
-        CDarkSilkAddress address2(address1);
+    pubkey = GetScriptForDestination(sn->pubkey.GetID());
+    CTxDestination address1;
+    ExtractDestination(pubkey, address1);
+    CDarkSilkAddress address2(address1);
 	QTableWidgetItem *pubkeyItem = new QTableWidgetItem(QString::fromStdString(address2.ToString()));
 	
 	ui->tableWidget->setItem(snRow, 0, addressItem);
@@ -184,8 +186,16 @@ void StormnodeManager::updateNodeList()
     }
 
     ui->countLabel->setText(QString::number(ui->tableWidget->rowCount()));
+    
+    if(pwalletMain)
+    {
+        LOCK(cs_stormnodes);
+        BOOST_FOREACH(PAIRTYPE(std::string, CStormNodeConfig) storm, pwalletMain->mapMyStormNodes)
+        {
+            updateStormNode(QString::fromStdString(storm.second.sAlias), QString::fromStdString(storm.second.sAddress), QString::fromStdString(storm.second.sStormnodePrivKey), QString::fromStdString(storm.second.sCollateralAddress));
+        }
+    }
 }
-
 
 void StormnodeManager::setClientModel(ClientModel *model)
 {

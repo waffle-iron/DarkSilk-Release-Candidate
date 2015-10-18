@@ -1455,6 +1455,73 @@ void CWallet::AvailableCoins(vector<COutput>& vCoins, bool fOnlyConfirmed, const
     }
 }
 
+void CWallet::AvailableCoinsSN(vector<COutput>& vCoins, bool fOnlyConfirmed, const CCoinControl *coinControl, AvailableCoinsType coin_type, bool useIX) const
+{
+    vCoins.clear();
+
+    {
+        LOCK2(cs_main, cs_wallet);
+        for (map<uint256, CWalletTx>::const_iterator it = mapWallet.begin(); it != mapWallet.end(); ++it)
+        {
+            const CWalletTx* pcoin = &(*it).second;
+
+            if (!IsFinalTx(*pcoin))
+                continue;
+
+            if (fOnlyConfirmed && !pcoin->IsTrusted())
+                continue;
+
+            if (pcoin->IsCoinBase() && pcoin->GetBlocksToMaturity() > 0)
+                continue;
+
+            if(pcoin->IsCoinStake() && pcoin->GetBlocksToMaturity() > 0)
+                continue;
+
+            int nDepth = pcoin->GetDepthInMainChain();
+            if (nDepth <= 0) // TXNOTE: coincontrol fix / ignore 0 confirm 
+                continue;
+
+           /* for (unsigned int i = 0; i < pcoin->vout.size(); i++)
+                if (!(pcoin->IsSpent(i)) && IsMine(pcoin->vout[i]) && pcoin->vout[i].nValue >= nMinimumInputValue &&
+                (!coinControl || !coinControl->HasSelected() || coinControl->IsSelected((*it).first, i)))
+                    vCoins.push_back(COutput(pcoin, i, nDepth));*/
+            // do not use IX for inputs that have less then 6 blockchain confirmations
+            if (useIX && nDepth < 6)
+                continue;
+
+            for (unsigned int i = 0; i < pcoin->vout.size(); i++) {
+                bool found = false;
+                if(coin_type == ONLY_DENOMINATED) {
+                    //should make this a vector
+
+                    found = IsDenominatedAmount(pcoin->vout[i].nValue);
+                } else if(coin_type == ONLY_NONDENOMINATED || coin_type == ONLY_NONDENOMINATED_NOTSN) {
+                    found = true;
+                    if (IsCollateralAmount(pcoin->vout[i].nValue)) continue; // do not use collateral amounts
+                    found = !IsDenominatedAmount(pcoin->vout[i].nValue);
+                    if(found && coin_type == ONLY_NONDENOMINATED_NOTSN) found = (pcoin->vout[i].nValue != STORMNODE_COLLATERAL*COIN); // do not use SN funds
+                } else {
+                    found = true;
+                }
+                if(!found) continue;
+
+                //isminetype mine = IsMine(pcoin->vout[i]);
+        bool mine = IsMine(pcoin->vout[i]);
+
+                //if (!(IsSpent(wtxid, i)) && mine != ISMINE_NO &&
+                //    !IsLockedCoin((*it).first, i) && pcoin->vout[i].nValue > 0 &&
+                //    (!coinControl || !coinControl->HasSelected() || coinControl->IsSelected((*it).first, i)))
+                //        vCoins.push_back(COutput(pcoin, i, nDepth, (mine & ISMINE_SPENDABLE) != ISMINE_NO));
+        //if (!(IsSpent(wtxid, i)) && mine &&
+        if (!(pcoin->IsSpent(i)) &&
+                    !IsLockedCoin((*it).first, i) && pcoin->vout[i].nValue > 0 &&
+                    (!coinControl || !coinControl->HasSelected() || coinControl->IsSelected((*it).first, i)))
+                        vCoins.push_back(COutput(pcoin, i, nDepth, mine));
+            }
+        }
+    }
+}
+
 void CWallet::AvailableCoinsForStaking(vector<COutput>& vCoins, unsigned int nSpendTime) const
 {
     vCoins.clear();
@@ -2244,7 +2311,7 @@ bool CWallet::HasCollateralInputs() const
     BOOST_FOREACH(const COutput& out, vCoins)
         if(IsCollateralAmount(out.tx->vout[out.i].nValue)) nFound++;
 
-    return nFound > 1; // should have more than one just in case
+    return nFound > 0; // should check only for at least 1 collateral
 }
 
 bool CWallet::IsCollateralAmount(int64_t nInputAmount) const
@@ -2419,7 +2486,10 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64_t> >& vecSend, 
                 BOOST_FOREACH(PAIRTYPE(const CWalletTx*, unsigned int) pcoin, setCoins)
                 {
                     int64_t nCredit = pcoin.first->vout[pcoin.second].nValue;
-                    //But mempool inputs might still be in the mempool, so their age stays 0
+                    //The coin age after the next block (depth+1) is used instead of the current,
+                    //reflecting an assumption the user would accept a bit more delay for
+                    //a chance at a free transaction.
+                    //But mempool inputs might still be in the mempool, so their age stays 0                    int age = pcoin.first->GetDepthInMainChain();
                     int age = pcoin.first->GetDepthInMainChain();
                     if (age != 0)
                         age += 1;
@@ -3475,13 +3545,13 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
     if(bStormNodePayment) {
         //spork
         if(!stormnodePayments.GetBlockPayee(pindexPrev->nHeight+1, payee)){
-            int winningNode = GetCurrentStormNode(1);
-                if(winningNode >= 0){
-                    payee =GetScriptForDestination(vecStormnodes[winningNode].pubkey.GetID());
-                } else {
-                    LogPrintf("CreateCoinStake: Failed to detect stormnode to pay\n");
-                    hasPayment = false;
-                }
+            CStormnode* winningNode = snodeman.GetCurrentStormNode(1);
+            if(winningNode){
+                payee = GetScriptForDestination(winningNode->pubkey.GetID());
+            } else {
+                LogPrintf("CreateCoinStake: Failed to detect stormnode to pay\n");
+                hasPayment = false;
+            }
         }
     }
 

@@ -4,11 +4,11 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "main.h"
-//#include "primitives/transaction.h"
+#include "core.h"
 #include "db.h"
 #include "init.h"
-#include "stormnode.h"
 #include "activestormnode.h"
+#include "stormnodeman.h"
 #include "stormnodeconfig.h"
 #include "rpcserver.h"
 #include <boost/lexical_cast.hpp>
@@ -111,7 +111,7 @@ Value getpoolinfo(const Array& params, bool fHelp)
             "Returns an object containing anonymous pool-related information.");
 
     Object obj;
-    obj.push_back(Pair("current_stormnode",        GetCurrentStormNode()));
+    obj.push_back(Pair("current_stormnode",        snodeman.GetCurrentStormNode()->addr.ToString()));
     obj.push_back(Pair("state",        sandStormPool.GetState()));
     obj.push_back(Pair("entries",      sandStormPool.GetEntriesCount()));
     obj.push_back(Pair("entries_accepted",      sandStormPool.GetCountEntriesAccepted()));
@@ -273,46 +273,21 @@ Value stormnode(const Array& params, bool fHelp)
 
     if (strCommand == "list")
     {
-        std::string strCommand = "active";
-
-        if (params.size() == 2){
-            strCommand = params[1].get_str().c_str();
-        }
-
-        if (strCommand != "active" && strCommand != "vin" && strCommand != "pubkey" && strCommand != "lastseen" && strCommand != "activeseconds" && strCommand != "rank" && strCommand != "protocol"){
-            throw runtime_error(
-                "list supports 'active', 'vin', 'pubkey', 'lastseen', 'activeseconds', 'rank', 'protocol'\n");
-        }
-
-        Object obj;
-        BOOST_FOREACH(CStormNode sn, vecStormnodes) {
-            sn.Check();
-
-            if(strCommand == "active"){
-                obj.push_back(Pair(sn.addr.ToString().c_str(),       (int)sn.IsEnabled()));
-            } else if (strCommand == "vin") {
-                obj.push_back(Pair(sn.addr.ToString().c_str(),       sn.vin.prevout.hash.ToString().c_str()));
-            } else if (strCommand == "pubkey") {
-                CScript pubkey;
-                pubkey =GetScriptForDestination(sn.pubkey.GetID());
-                CTxDestination address1;
-                ExtractDestination(pubkey, address1);
-                CDarkSilkAddress address2(address1);
-
-                obj.push_back(Pair(sn.addr.ToString().c_str(),       address2.ToString().c_str()));
-            } else if (strCommand == "protocol") {
-                obj.push_back(Pair(sn.addr.ToString().c_str(),       (int64_t)sn.protocolVersion));
-            } else if (strCommand == "lastseen") {
-                obj.push_back(Pair(sn.addr.ToString().c_str(),       (int64_t)sn.lastTimeSeen));
-            } else if (strCommand == "activeseconds") {
-                obj.push_back(Pair(sn.addr.ToString().c_str(),       (int64_t)(sn.lastTimeSeen - sn.now)));
-            } else if (strCommand == "rank") {
-                obj.push_back(Pair(sn.addr.ToString().c_str(),       (int)(GetStormnodeRank(sn.vin, pindexBest->nHeight))));
-            }
-        }
-        return obj;
+        Array newParams(params.size() - 1);
+        std::copy(params.begin() + 1, params.end(), newParams.begin());
+        return stormnodelist(newParams, fHelp);
     }
-    if (strCommand == "count") return (int)vecStormnodes.size();
+
+    if (strCommand == "count")
+    {
+        if (params.size() > 2){            
+            throw runtime_error(
+                "too many parameters\n");
+        }
+
+        if (params.size() == 2) return snodeman.CountEnabled();
+        return snodeman.size();
+    }
 
     if (strCommand == "start")
     {
@@ -489,9 +464,9 @@ Value stormnode(const Array& params, bool fHelp)
 
     if (strCommand == "current")
     {
-        int winner = GetCurrentStormNode(1);
-        if(winner >= 0) {
-            return vecStormnodes[winner].addr.ToString().c_str();
+        CStormnode* winner = snodeman.GetCurrentStormNode(1);
+        if(winner) {
+            return winner->addr.ToString().c_str();
         }
 
         return "unknown";
@@ -585,3 +560,83 @@ Value stormnode(const Array& params, bool fHelp)
     return Value::null;
 }
 
+Value stormnodelist(const Array& params, bool fHelp)
+{
+    std::string strMode = "active";
+    std::string strFilter = "";
+
+    if (params.size() >= 1) strMode = params[0].get_str();
+    if (params.size() == 2) strFilter = params[1].get_str();
+
+    if (fHelp ||
+            (strMode != "active" && strMode != "vin" && strMode != "pubkey" && strMode != "lastseen"
+             && strMode != "activeseconds" && strMode != "rank" && strMode != "protocol" && strMode != "full"))
+    {
+        throw runtime_error(
+                "stormnodelist ( \"mode\" \"filter\" )\n"
+                "Get a list of stormnodes in different modes\n"
+                "\nArguments:\n"
+                "1. \"mode\"      (string, optional, defauls = active) The mode to run list in\n"
+                "2. \"filter\"    (string, optional) Filter results, can be applied in few modes only\n"
+                "Available modes:\n"
+                "  active         - Print '1' if active and '0' otherwise (can be filtered, exact match)\n"
+                "  activeseconds  - Print number of seconds stormnode recognized by the network as enabled\n"
+                "  full           - Print info in format 'active | protocol | pubkey | vin | lastseen | activeseconds' (can be filtered, partial match)\n"
+                "  lastseen       - Print timestamp of when a stormnode was last seen on the network\n"
+                "  protocol       - Print protocol of a stormnode (can be filtered, exact match)\n"
+                "  pubkey         - Print public key associated with a stormnod (can be filtered, partial match)\n"
+                "  rank           - Print rank of a stormnode based on current block\n"
+                "  vin            - Print vin associated with a stormnode (can be filtered, partial match)\n"
+                );
+    }
+
+    Object obj;
+    std::vector<CStormnode> vStormnodes = snodeman.GetFullStormnodeVector();
+    BOOST_FOREACH(CStormnode& sn, vStormnodes) {
+        sn.Check();
+
+        std::string strAddr = sn.addr.ToString().c_str();
+        if(strMode == "active"){
+            obj.push_back(Pair(strAddr,       (int)sn.IsEnabled()));
+        } else if (strMode == "vin") {
+            if(strFilter !="" && sn.vin.prevout.hash.ToString().find(strFilter) == string::npos) continue;
+            obj.push_back(Pair(strAddr,       sn.vin.prevout.hash.ToString().c_str()));
+        } else if (strMode == "pubkey") {
+            CScript pubkey;
+            pubkey.SetDestination(sn.pubkey.GetID());
+            CTxDestination address1;
+            ExtractDestination(pubkey, address1);
+            CDarkSilkAddress address2(address1);
+
+            if(strFilter !="" && address2.ToString().find(strFilter) == string::npos) continue;
+            obj.push_back(Pair(strAddr,       address2.ToString().c_str()));
+        } else if (strMode == "protocol") {
+            obj.push_back(Pair(strAddr,       (int64_t)sn.protocolVersion));
+        } else if (strMode == "lastseen") {
+            obj.push_back(Pair(strAddr,       (int64_t)sn.lastTimeSeen));
+        } else if (strMode == "activeseconds") {
+            obj.push_back(Pair(strAddr,       (int64_t)(sn.lastTimeSeen - sn.now)));
+        } else if (strMode == "rank") {
+            obj.push_back(Pair(strAddr,       (int)(snodeman.GetStormnodeRank(sn.vin, pindexBest->nHeight))));
+        } else if (strMode == "full") {
+            CScript pubkey;
+            pubkey.SetDestination(sn.pubkey.GetID());
+            CTxDestination address1;
+            ExtractDestination(pubkey, address1);
+            CDarkSilkAddress address2(address1);
+
+            std::ostringstream stringStream;
+            stringStream << (sn.IsEnabled() ? "1" : "0") << " | " <<
+                           sn.protocolVersion << " | " <<
+                           address2.ToString() << " | " <<
+                           sn.vin.prevout.hash.ToString() << " | " <<
+                           sn.lastTimeSeen << " | " <<
+                           (sn.lastTimeSeen - sn.now);
+            std::string output = stringStream.str();
+            stringStream << " " << strAddr;
+            if(strFilter !="" && stringStream.str().find(strFilter) == string::npos) continue;
+            obj.push_back(Pair(strAddr, output));
+        }
+    }
+    return obj;
+} 

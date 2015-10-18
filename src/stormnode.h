@@ -20,8 +20,6 @@
 #include "timedata.h"
 #include "script.h"
 
-class CStormNode;
-class CStormnodePayments;
 class uint256;
 
 #define STORMNODE_NOT_PROCESSED               0 // initial state
@@ -38,74 +36,131 @@ class uint256;
 #define STORMNODE_MIN_DSEEP_SECONDS           (30*60)
 #define STORMNODE_MIN_DSEE_SECONDS            (5*60)
 #define STORMNODE_PING_SECONDS                (1*60)
+#define STORMNODE_PING_WAIT_SECONDS           (5*60)
 #define STORMNODE_EXPIRATION_SECONDS          (65*60)
 #define STORMNODE_REMOVAL_SECONDS             (70*60)
 
 using namespace std;
 
+class CStormNode;
+class CStormnodePayments;
 class CStormnodePaymentWinner;
 
 extern CCriticalSection cs_stormnodes;
-extern std::vector<CStormNode> vecStormnodes;
 extern CStormnodePayments stormnodePayments;
-extern std::vector<CTxIn> vecStormnodeAskedFor;
 extern map<uint256, CStormnodePaymentWinner> mapSeenStormnodeVotes;
 extern map<int64_t, uint256> mapCacheBlockHashes;
 
+enum stormnodeState {
+    STORMNODE_ENABLED = 1,
+    STORMNODE_EXPIRED = 2,
+    STORMNODE_VIN_SPENT = 3,
+    STORMNODE_REMOVE = 4
+};
 
 // manage the stormnode connections
 void ProcessStormnodeConnections();
-int CountStormnodesAboveProtocol(int protocolVersion);
 
 
-void ProcessMessageStormnode(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
+void ProcessMessageStormnodePayments(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
 
 //
 // The Stormnode Class. For managing the sandstorm process. It contains the input of the 1000DRK, signature to prove
 // it's the one who own that ip address and code for calculating the payment election.
 //
-class CStormNode
+class CStormnode
 {
+private:
+    // critical section to protect the inner data structures
+    mutable CCriticalSection cs;
 public:
 	static int minProtoVersion;
+    CTxIn vin; 
     CService addr;
-    CTxIn vin;
-    int64_t lastTimeSeen;
     CPubKey pubkey;
     CPubKey pubkey2;
     std::vector<unsigned char> sig;
+    int activeState;
     int64_t now; //dsee message times
     int64_t lastDseep;
+    int64_t lastTimeSeen;
     int cacheInputAge;
     int cacheInputAgeBlock;
-    int enabled;
     bool unitTest;
     bool allowFreeTx;
     int protocolVersion;
+    int64_t nLastDsq; //the dsq count from the last dsq broadcast of this node
 
-    //the dsq count from the last dsq broadcast of this node
-    int64_t nLastDsq;
+    CStormnode();
+    CStormnode(const CStormnode& other);
+    CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::vector<unsigned char> newSig, int64_t newNow, CPubKey newPubkey2, int protocolVersionIn);
 
-    CStormNode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::vector<unsigned char> newSig, int64_t newNow, CPubKey newPubkey2, int protocolVersionIn)
+    void swap(CStormnode& first, CStormnode& second) // nothrow    
     {
-        addr = newAddr;
-        vin = newVin;
-        pubkey = newPubkey;
-        pubkey2 = newPubkey2;
-        sig = newSig;
-        now = newNow;
-        enabled = 1;
-        lastTimeSeen = 0;
-        unitTest = false;
-        cacheInputAge = 0;
-        cacheInputAgeBlock = 0;
-        nLastDsq = 0;
-        lastDseep = 0;
-        allowFreeTx = true;
-        protocolVersion = protocolVersionIn;
+        // enable ADL (not necessary in our case, but good practice)
+        using std::swap;
+
+        // by swapping the members of two classes,
+        // the two classes are effectively swapped
+        swap(first.vin, second.vin);
+        swap(first.addr, second.addr);
+        swap(first.pubkey, second.pubkey);
+        swap(first.pubkey2, second.pubkey2);
+        swap(first.sig, second.sig);
+        swap(first.activeState, second.activeState);
+        swap(first.now, second.now);
+        swap(first.lastDseep, second.lastDseep);
+        swap(first.lastTimeSeen, second.lastTimeSeen);
+        swap(first.cacheInputAge, second.cacheInputAge);
+        swap(first.cacheInputAgeBlock, second.cacheInputAgeBlock);
+        swap(first.allowFreeTx, second.allowFreeTx);
+        swap(first.protocolVersion, second.protocolVersion);
+        swap(first.unitTest, second.unitTest);
+        swap(first.nLastDsq, second.nLastDsq);
+    }
+
+    CStormnode& operator=(CStormnode from)
+    {
+        swap(*this, from);
+        return *this;
+    }
+    friend bool operator==(const CStormnode& a, const CStormnode& b)
+    {
+        return a.vin == b.vin;
+    }
+    friend bool operator!=(const CStormnode& a, const CStormnode& b)
+    {
+        return !(a.vin == b.vin);
     }
 
     uint256 CalculateScore(int mod=1, int64_t nBlockHeight=0);
+
+    IMPLEMENT_SERIALIZE
+    (
+        // serialized format:
+        // * version byte (currently 0)
+        // * all fields (?)
+        {
+                LOCK(cs);
+                unsigned char nVersion = 0;
+                READWRITE(nVersion);
+                READWRITE(vin);
+                READWRITE(addr);
+                READWRITE(pubkey);
+                READWRITE(pubkey2);
+                READWRITE(sig);
+                READWRITE(activeState);
+                READWRITE(now);
+                READWRITE(lastDseep);
+                READWRITE(lastTimeSeen);
+                READWRITE(cacheInputAge);
+                READWRITE(cacheInputAgeBlock);
+                READWRITE(unitTest);
+                READWRITE(allowFreeTx);
+                READWRITE(protocolVersion);
+                READWRITE(nLastDsq);
+        }
+    )
 
     void UpdateLastSeen(int64_t override=0)
     {
@@ -139,7 +194,7 @@ public:
 
     bool IsEnabled()
     {
-        return enabled == 1;
+        return activeState == STORMNODE_ENABLED;
     }
 
     int GetStormnodeInputAge()
@@ -154,15 +209,6 @@ public:
         return cacheInputAge+(pindexBest->nHeight-cacheInputAgeBlock);
     }
 };
-
-
-// Get the current winner for this block
-int GetCurrentStormNode(int mod=1, int64_t nBlockHeight=0, int minProtocol=CStormNode::minProtoVersion);
-
-int GetStormnodeByVin(CTxIn& vin);
-int GetStormnodeRank(CTxIn& vin, int64_t nBlockHeight=0, int minProtocol=CStormNode::minProtoVersion);
-int GetStormnodeByRank(int findRank, int64_t nBlockHeight=0, int minProtocol=CStormNode::minProtoVersion);
-
 
 // for storing the winning payments
 class CStormnodePaymentWinner
@@ -240,7 +286,7 @@ public:
     void Relay(CStormnodePaymentWinner& winner);
     void Sync(CNode* node);
     void CleanPaymentList();
-    int LastPayment(CStormNode& sn);
+    int LastPayment(CStormnode& sn);
 
     //slow
     bool GetBlockPayee(int nBlockHeight, CScript& payee);

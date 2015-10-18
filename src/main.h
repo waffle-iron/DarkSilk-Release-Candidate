@@ -18,7 +18,7 @@
 
 class CValidationState;
 
-static const int STORMNODE_PAYMENT_START = 82002; // Block 82002
+static const int STORMNODE_PAYMENT_START = 1; // Block 1
 static const int TESTNET_STORMNODE_PAYMENT_START = 100; // Block 100
 
 static const int64_t SANDSTORM_COLLATERAL = (0.01*COIN);
@@ -32,8 +32,8 @@ static const int64_t STATIC_POS_REWARD = COIN * 1; // Static Reward of 1 DRKSLK
     one party without comprimising the security of InstantX
     (1000/2150.0)**15 = 1.031e-05
 */
-#define INSTANTX_SIGNATURES_REQUIRED           20
-#define INSTANTX_SIGNATURES_TOTAL              30
+#define INSTANTX_SIGNATURES_REQUIRED          20
+#define INSTANTX_SIGNATURES_TOTAL             30
 
 #define STORMNODE_NOT_PROCESSED               0 // Initial state
 #define STORMNODE_IS_CAPABLE                  1
@@ -49,6 +49,7 @@ static const int64_t STATIC_POS_REWARD = COIN * 1; // Static Reward of 1 DRKSLK
 #define STORMNODE_MIN_DSEEP_SECONDS           (30*60)
 #define STORMNODE_MIN_DSEE_SECONDS            (5*60)
 #define STORMNODE_PING_SECONDS                (1*60)
+#define STORMNODE_PING_WAIT_SECONDS           (5*60)
 #define STORMNODE_EXPIRATION_SECONDS          (65*60)
 #define STORMNODE_REMOVAL_SECONDS             (70*60)
 
@@ -92,9 +93,12 @@ static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov 5th 00:53:2
 
 static const unsigned int POW_TARGET_SPACING = 4 * 60; // 4 mins
 static const unsigned int POS_TARGET_SPACING = 64; // 64 seconds
-static const int64_t POW_DRIFT = 16 * 60;
-static const int64_t POS_DRIFT = 15;
+static const int64_t POW_DRIFT = 16 * 60; // 16 minutes
+static const int64_t POS_DRIFT = 15; // 15 seconds
+static const int64_t STORMNODE_COLLATERAL = 42000; //Stormnode Collateral Amount
+
 inline int64_t FutureDrift(int64_t nTime, bool fProofOfStake=false) { return nTime + (fProofOfStake ? POS_DRIFT : POW_DRIFT); }
+
 
 extern CScript COINBASE_FLAGS;
 extern CCriticalSection cs_main;

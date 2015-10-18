@@ -4,6 +4,7 @@
 
 #include "protocol.h"
 #include "activestormnode.h"
+#include "stormnodeman.h"
 #include <boost/lexical_cast.hpp>
 #include "clientversion.h"
 
@@ -80,7 +81,9 @@ void CActiveStormnode::ManageStatus()
         if(GetStormNodeVin(vin, pubKeyCollateralAddress, keyCollateralAddress)) {
 
             if(GetInputAge(vin) < STORMNODE_MIN_CONFIRMATIONS){
-                LogPrintf("CActiveStormnode::ManageStatus() - Input must have least %d confirmations - %d confirmations\n", STORMNODE_MIN_CONFIRMATIONS, GetInputAge(vin));
+                notCapableReason = "Input must have least " + boost::lexical_cast<string>(STORMNODE_MIN_CONFIRMATIONS) +
+                        " confirmations - " + boost::lexical_cast<string>(GetInputAge(vin)) + " confirmations";
+                LogPrintf("CActiveStormnode::ManageStatus() - %s\n", notCapableReason.c_str());
                 status = STORMNODE_INPUT_TOO_NEW;
                 return;
             }
@@ -114,8 +117,7 @@ void CActiveStormnode::ManageStatus()
 
     //send to all peers
     if(!Dseep(errorMessage)) {
-    	LogPrintf("CActiveStormnode::ManageStatus() - Error on Ping: %s", errorMessage.c_str());
-    }
+       LogPrintf("CActiveStormnode::ManageStatus() - Error on Ping: %s\n", errorMessage.c_str());    }
 }
 
 // Send stop dseep to network for remote stormnode
@@ -183,9 +185,9 @@ bool CActiveStormnode::Dseep(CTxIn vin, CService service, CKey keyStormnode, CPu
     std::string errorMessage;
     std::vector<unsigned char> vchStormNodeSignature;
     std::string strStormNodeSignMessage;
-    int64_t StormNodeSignatureTime = GetAdjustedTime();
+    int64_t stormNodeSignatureTime = GetAdjustedTime();
 
-    std::string strMessage = service.ToString() + boost::lexical_cast<std::string>(StormNodeSignatureTime) + boost::lexical_cast<std::string>(stop);
+    std::string strMessage = service.ToString() + boost::lexical_cast<std::string>(stormNodeSignatureTime) + boost::lexical_cast<std::string>(stop);
 
     if(!sandStormSigner.SignMessage(strMessage, errorMessage, vchStormNodeSignature, keyStormnode)) {
     	retErrorMessage = "sign message failed: " + errorMessage;
@@ -201,15 +203,11 @@ bool CActiveStormnode::Dseep(CTxIn vin, CService service, CKey keyStormnode, CPu
 
     // Update Last Seen timestamp in stormnode list
     bool found = false;
-    BOOST_FOREACH(CStormNode& sn, vecStormnodes) {
-        //LogPrintf(" -- %s\n", sn.vin.ToString().c_str());
-        if(sn.vin == vin) {
-            found = true;
-            sn.UpdateLastSeen();
-        }
-    }
-
-    if(!found){
+    CStormnode* sn = snodeman.Find(vin);
+    if(sn)
+    {
+        sn->UpdateLastSeen();
+    } else {
     	// Seems like we are trying to send a ping while the stormnode is not registered in the network
     	retErrorMessage = "Sandstorm Stormnode List doesn't include our stormnode, Shutting down stormnode pinging service! " + vin.ToString();
     	LogPrintf("CActiveStormnode::Dseep() - Error: %s\n", retErrorMessage.c_str());
@@ -220,7 +218,7 @@ bool CActiveStormnode::Dseep(CTxIn vin, CService service, CKey keyStormnode, CPu
 
     //send to all peers
     LogPrintf("CActiveStormnode::Dseep() - SendSandStormElectionEntryPing vin = %s\n", vin.ToString().c_str());
-    SendSandStormElectionEntryPing(vin, vchStormNodeSignature, StormNodeSignatureTime, stop);
+    SendSandStormElectionEntryPing(vin, vchStormNodeSignature, stormNodeSignatureTime, stop);
 
     return true;
 }
@@ -271,12 +269,12 @@ bool CActiveStormnode::Register(CTxIn vin, CService service, CKey keyCollateralA
     std::string errorMessage;
     std::vector<unsigned char> vchStormNodeSignature;
     std::string strStormNodeSignMessage;
-    int64_t StormNodeSignatureTime = GetAdjustedTime();
+    int64_t stormNodeSignatureTime = GetAdjustedTime();
 
     std::string vchPubKey(pubKeyCollateralAddress.begin(), pubKeyCollateralAddress.end());
     std::string vchPubKey2(pubKeyStormnode.begin(), pubKeyStormnode.end());
 
-    std::string strMessage = service.ToString() + boost::lexical_cast<std::string>(StormNodeSignatureTime) + vchPubKey + vchPubKey2 + boost::lexical_cast<std::string>(PROTOCOL_VERSION);
+    std::string strMessage = service.ToString() + boost::lexical_cast<std::string>(stormNodeSignatureTime) + vchPubKey + vchPubKey2 + boost::lexical_cast<std::string>(PROTOCOL_VERSION);
 
     if(!sandStormSigner.SignMessage(strMessage, errorMessage, vchStormNodeSignature, keyCollateralAddress)) {
 		retErrorMessage = "sign message failed: " + errorMessage;
@@ -290,22 +288,19 @@ bool CActiveStormnode::Register(CTxIn vin, CService service, CKey keyCollateralA
 		return false;
 	}
 
-    bool found = false;
     LOCK(cs_stormnodes);
-    BOOST_FOREACH(CStormNode& sn, vecStormnodes)
-        if(sn.vin == vin)
-            found = true;
-
-    if(!found) {
+    CStormnode* sn = snodeman.Find(vin);
+    if(!sn)
+    {
         LogPrintf("CActiveStormnode::Register() - Adding to stormnode list service: %s - vin: %s\n", service.ToString().c_str(), vin.ToString().c_str());
-        CStormNode sn(service, vin, pubKeyCollateralAddress, vchStormNodeSignature, StormNodeSignatureTime, pubKeyStormnode, PROTOCOL_VERSION);
-        sn.UpdateLastSeen(StormNodeSignatureTime);
-        vecStormnodes.push_back(sn);
+        CStormnode sn(service, vin, pubKeyCollateralAddress, vchStormNodeSignature, stormNodeSignatureTime, pubKeyStormnode, PROTOCOL_VERSION);
+        sn.UpdateLastSeen(stormNodeSignatureTime);
+        snodeman.Add(sn);
     }
 
     //send to all peers
     LogPrintf("CActiveStormnode::Register() - SendSandStormElectionEntry vin = %s\n", vin.ToString().c_str());
-    SendSandStormElectionEntry(vin, service, vchStormNodeSignature, StormNodeSignatureTime, pubKeyCollateralAddress, pubKeyStormnode, -1, -1, StormNodeSignatureTime, PROTOCOL_VERSION);
+    SendSandStormElectionEntry(vin, service, vchStormNodeSignature, stormNodeSignatureTime, pubKeyCollateralAddress, pubKeyStormnode, -1, -1, stormNodeSignatureTime, PROTOCOL_VERSION);
 
     return true;
 }
@@ -431,12 +426,12 @@ vector<COutput> CActiveStormnode::SelectCoinsStormnode()
     vector<COutput> filteredCoins;
 
     // Retrieve all possible outputs
-    pwalletMain->AvailableCoins(vCoins);
+    pwalletMain->AvailableCoinsSN(vCoins);
 
     // Filter
     BOOST_FOREACH(const COutput& out, vCoins)
     {
-        if(out.tx->vout[out.i].nValue == 42000*COIN) { //exactly
+        if(out.tx->vout[out.i].nValue == STORMNODE_COLLATERAL*COIN) { //exactly
         	filteredCoins.push_back(out);
         }
     }
