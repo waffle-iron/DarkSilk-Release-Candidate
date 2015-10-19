@@ -596,6 +596,7 @@ Value stormnodelist(const Array& params, bool fHelp)
         
         std::string strAddr = sn.addr.ToString().c_str();
         if(strMode == "active"){
+            if(strFilter !="" && strFilter != boost::lexical_cast<std::string>(sn.IsEnabled())) continue;
             obj.push_back(Pair(strAddr,       (int)sn.IsEnabled()));
         } else if (strMode == "vin") {
             if(strFilter !="" && sn.vin.prevout.hash.ToString().find(strFilter) == string::npos) continue;
@@ -610,6 +611,7 @@ Value stormnodelist(const Array& params, bool fHelp)
             if(strFilter !="" && address2.ToString().find(strFilter) == string::npos) continue;
             obj.push_back(Pair(strAddr,       address2.ToString().c_str()));
         } else if (strMode == "protocol") {
+            if(strFilter !="" && strFilter != boost::lexical_cast<std::string>(sn.protocolVersion)) continue;
             obj.push_back(Pair(strAddr,       (int64_t)sn.protocolVersion));
         } else if (strMode == "lastseen") {
             obj.push_back(Pair(strAddr,       (int64_t)sn.lastTimeSeen));

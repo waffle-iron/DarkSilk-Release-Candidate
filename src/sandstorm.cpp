@@ -2178,24 +2178,18 @@ void ThreadCheckSandStormPool()
         //LogPrintf("ThreadCheckSandStormPool::check timeout\n");
         sandStormPool.CheckTimeout();
 
-        if(c % 60 == 0){
+        if(c % 60 == 0)
+        {
+            LOCK(cs_main);
+            /*
+                cs_main is required for doing CStormnode.Check because something
+                is modifying the coins view without a mempool lock. It causes
+                segfaults from this code without the cs_main lock.
+            */
+            snodeman.CheckAndRemove();
             sandStormPool.ProcessStormnodeConnections();
             stormnodePayments.CleanPaymentList();
             CleanTransactionLocksList();
-        
-            // nodes refuse to relay sseep if it was less then STORMNODE_MIN_SSEEP_SECONDS ago
-            // STORMNODE_PING_WAIT_SECONDS gives some additional time on top of it
-            // so we have a timeout for this check on start unless we need to
-            if(c > STORMNODE_MIN_SSEEP_SECONDS + STORMNODE_PING_WAIT_SECONDS || snodeman.UpdateNeeded())
-            {
-                LOCK(cs_main);
-                /*
-                    cs_main is required for doing CStormnode.Check because something
-                    is modifying the coins view without a mempool lock. It causes
-                    segfaults from this code without the cs_main lock.
-                */
-                snodeman.CheckAndRemove();
-            }
         }
 
         if(c % STORMNODE_PING_SECONDS == 0) activeStormnode.ManageStatus();
@@ -2218,7 +2212,7 @@ void ThreadCheckSandStormPool()
                         LogPrintf("Successfully synced, asking for Stormnode list and payment list\n");
 
                         //request full sn list only if stormnodes.dat was updated quite a long time ago
-                        if(snodeman.UpdateNeeded()) pnode->PushMessage("dseg", CTxIn());                      
+                        snodeman.SsegUpdate(pnode);                      
                         pnode->PushMessage("snget"); //sync payees
                         pnode->PushMessage("getsporks"); //get current network sporks
                         RequestedStormNodeList++;
