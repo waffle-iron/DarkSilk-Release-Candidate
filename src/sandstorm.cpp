@@ -1801,7 +1801,7 @@ bool CSandStormPool::CreateDenominated(int64_t nTotalValue)
         int nOutputs = 0;
 
         // add each output up to 10 times until it can't be added again
-        while(nValueLeft - v >= SANDSTORM_FEE && nOutputs <= 10) {
+        while(nValueLeft - v >= SANDSTORM_COLLATERAL && nOutputs <= 10) {
             CScript scriptChange;
             CPubKey vchPubKey;
             //use a unique change address
