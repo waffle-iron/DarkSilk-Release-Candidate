@@ -122,8 +122,8 @@ void ProcessMessageSandstorm(CNode* pfrom, std::string& strCommand, CDataStream&
         vRecv >> nDenom >> txCollateral;
 
         std::string error = "";
-        CStormnode* sn = snodeman.Find(activeStormnode.vin);
-        if(!sn)
+        CStormnode* psn = snodeman.Find(activeStormnode.vin);
+        if(psn == NULL)
         {
             std::string strError = _("Not in the stormnode list.");
             pfrom->PushMessage("dssu", sandStormPool.sessionID, sandStormPool.GetState(), sandStormPool.GetEntriesCount(), STORMNODE_REJECTED, strError);
@@ -131,9 +131,9 @@ void ProcessMessageSandstorm(CNode* pfrom, std::string& strCommand, CDataStream&
         }
 
         if(sandStormPool.sessionUsers == 0) {
-            if(sn->nLastDsq != 0 &&
-                sn->nLastDsq + snodeman.CountStormnodesAboveProtocol(sandStormPool.MIN_PEER_PROTO_VERSION)/5 > sandStormPool.nDsqCount){
-                LogPrintf("dsa -- last dsq too recent, must wait. %s \n", sn->addr.ToString().c_str());                std::string strError = _("Last Darksend was too recent.");
+            if(psn->nLastDsq != 0 &&
+                psn->nLastDsq + snodeman.CountStormnodesAboveProtocol(sandStormPool.MIN_PEER_PROTO_VERSION)/5 > sandStormPool.nDsqCount){
+                LogPrintf("dsa -- last dsq too recent, must wait. %s \n", psn->addr.ToString().c_str());                std::string strError = _("Last Sandstorm was too recent.");
                 pfrom->PushMessage("dssu", sandStormPool.sessionID, sandStormPool.GetState(), sandStormPool.GetEntriesCount(), STORMNODE_REJECTED, strError);
                 return;
             }
@@ -165,8 +165,8 @@ void ProcessMessageSandstorm(CNode* pfrom, std::string& strCommand, CDataStream&
 
         if(dsq.IsExpired()) return;
 
-        CStormnode* sn = snodeman.Find(dsq.vin);
-        if(!sn) return;
+        CStormnode* psn = snodeman.Find(dsq.vin);
+        if(psn == NULL) return;
 
         // if the queue is ready, submit if we can
         if(dsq.ready) {
@@ -182,16 +182,16 @@ void ProcessMessageSandstorm(CNode* pfrom, std::string& strCommand, CDataStream&
                 if(q.vin == dsq.vin) return;
             }
 
-            if(fDebug) LogPrintf("dsq last %d last2 %d count %d\n", sn->nLastDsq, sn->nLastDsq + snodeman.size()/5, sandStormPool.nDsqCount);            
+            if(fDebug) LogPrintf("dsq last %d last2 %d count %d\n", psn->nLastDsq, psn->nLastDsq + snodeman.size()/5, sandStormPool.nDsqCount);            
             //don't allow a few nodes to dominate the queuing process
-            if(sn->nLastDsq != 0 &&
-                sn->nLastDsq + snodeman.CountStormnodesAboveProtocol(sandStormPool.MIN_PEER_PROTO_VERSION)/5 > sandStormPool.nDsqCount){
-                if(fDebug) LogPrintf("dsq -- stormnode sending too many dsq messages. %s \n", sn->addr.ToString().c_str());
+            if(psn->nLastDsq != 0 &&
+                psn->nLastDsq + snodeman.CountStormnodesAboveProtocol(sandStormPool.MIN_PEER_PROTO_VERSION)/5 > sandStormPool.nDsqCount){
+                if(fDebug) LogPrintf("dsq -- stormnode sending too many dsq messages. %s \n", psn->addr.ToString().c_str());
                 return;
             }
             sandStormPool.nDsqCount++;
-            sn->nLastDsq = sandStormPool.nDsqCount;
-            sn->allowFreeTx = true;
+            psn->nLastDsq = sandStormPool.nDsqCount;
+            psn->allowFreeTx = true;
 
             if(fDebug) LogPrintf("dsq - new sandstorm queue object - %s\n", addr.ToString().c_str());
             vecSandstormQueue.push_back(dsq);
@@ -663,13 +663,13 @@ void CSandStormPool::Check()
                 }
 
                 if(!mapSandstormBroadcastTxes.count(txNew.GetHash())){
-                    CSandstormBroadcastTx dstx;
-                    dstx.tx = txNew;
-                    dstx.vin = activeStormnode.vin;
-                    dstx.vchSig = vchSig;
-                    dstx.sigTime = sigTime;
+                    CSandstormBroadcastTx sstx;
+                    sstx.tx = txNew;
+                    sstx.vin = activeStormnode.vin;
+                    sstx.vchSig = vchSig;
+                    sstx.sigTime = sigTime;
 
-                    mapSandstormBroadcastTxes.insert(make_pair(txNew.GetHash(), dstx));
+                    mapSandstormBroadcastTxes.insert(make_pair(txNew.GetHash(), sstx));
                 }
 
                 // Broadcast the transaction to the network
@@ -1396,7 +1396,7 @@ void CSandStormPool::CompletedTransaction(bool error, std::string lastMessageNew
 
         myEntries.clear();
 
-        // To avoid race conditions, we'll only let DS run once per block
+        // To avoid race conditions, we'll only let SS run once per block
         cachedLastSuccess = pindexBest->nHeight;
     }
     lastMessage = lastMessageNew;
@@ -1462,7 +1462,7 @@ bool CSandStormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
     // should not be less than fees in SANDSTORM_FEE + few (lets say 5) smallest denoms
     int64_t nLowestDenom = SANDSTORM_FEE + sandStormDenominations[sandStormDenominations.size() - 1]*5;
 
-    // if there are no DS collateral inputs yet
+    // if there are no SS collateral inputs yet
     if(!pwalletMain->HasCollateralInputs())
         // should have some additional amount for them
         nLowestDenom += (SANDSTORM_COLLATERAL*4)+SANDSTORM_FEE*2;
@@ -1758,7 +1758,7 @@ bool CSandStormPool::MakeCollateralAmounts()
         }
     }
 
-    // use the same cachedLastSuccess as for DS mixinx to prevent race
+    // use the same cachedLastSuccess as for SS mixinx to prevent race
     if(pwalletMain->CommitTransaction(wtx, reservekey))
         cachedLastSuccess = pindexBest->nHeight;
 
@@ -1828,7 +1828,7 @@ bool CSandStormPool::CreateDenominated(int64_t nTotalValue)
         return false;
     }
 
-    // use the same cachedLastSuccess as for DS mixinx to prevent race
+    // use the same cachedLastSuccess as for SS mixinx to prevent race
     if(pwalletMain->CommitTransaction(wtx, reservekey))
         cachedLastSuccess = pindexBest->nHeight;
 
@@ -2145,12 +2145,12 @@ bool CSandstormQueue::Relay()
 
 bool CSandstormQueue::CheckSignature()
 {
-    CStormnode* sn = snodeman.Find(vin);
-    if(sn)
+    CStormnode* psn = snodeman.Find(vin);
+    if(psn)
     {
         std::string strMessage = vin.ToString() + boost::lexical_cast<std::string>(nDenom) + boost::lexical_cast<std::string>(time) + boost::lexical_cast<std::string>(ready);
         std::string errorMessage = "";
-        if(!sandStormSigner.VerifyMessage(sn->pubkey2, vchSig, strMessage, errorMessage)){
+        if(!sandStormSigner.VerifyMessage(psn->pubkey2, vchSig, strMessage, errorMessage)){
             return error("CSandstormQueue::CheckSignature() - Got bad stormnode address signature %s \n", vin.ToString().c_str());
         }
         return true;
@@ -2183,10 +2183,10 @@ void ThreadCheckSandStormPool()
             stormnodePayments.CleanPaymentList();
             CleanTransactionLocksList();
         
-            // nodes refuse to relay dseep if it was less then STORMNODE_MIN_DSEEP_SECONDS ago
+            // nodes refuse to relay sseep if it was less then STORMNODE_MIN_SSEEP_SECONDS ago
             // STORMNODE_PING_WAIT_SECONDS gives some additional time on top of it
             // so we have a timeout for this check on start unless we need to
-            if(c > STORMNODE_MIN_DSEEP_SECONDS + STORMNODE_PING_WAIT_SECONDS || snodeman.UpdateNeeded())
+            if(c > STORMNODE_MIN_SSEEP_SECONDS + STORMNODE_PING_WAIT_SECONDS || snodeman.UpdateNeeded())
             {
                 LOCK(cs_main);
                 /*

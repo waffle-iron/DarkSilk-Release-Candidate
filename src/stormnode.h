@@ -33,8 +33,8 @@ class uint256;
 #define STORMNODE_REMOTELY_ENABLED            9
 
 #define STORMNODE_MIN_CONFIRMATIONS           15
-#define STORMNODE_MIN_DSEEP_SECONDS           (30*60)
-#define STORMNODE_MIN_DSEE_SECONDS            (5*60)
+#define STORMNODE_MIN_SSEEP_SECONDS           (30*60)
+#define STORMNODE_MIN_SSEE_SECONDS            (5*60)
 #define STORMNODE_PING_SECONDS                (1*60)
 #define STORMNODE_PING_WAIT_SECONDS           (5*60)
 #define STORMNODE_EXPIRATION_SECONDS          (65*60)
@@ -81,8 +81,8 @@ public:
     CPubKey pubkey2;
     std::vector<unsigned char> sig;
     int activeState;
-    int64_t now; //dsee message times
-    int64_t lastDseep;
+    int64_t now; //ssee message times
+    int64_t lastSseep;
     int64_t lastTimeSeen;
     int cacheInputAge;
     int cacheInputAgeBlock;
@@ -109,7 +109,7 @@ public:
         swap(first.sig, second.sig);
         swap(first.activeState, second.activeState);
         swap(first.now, second.now);
-        swap(first.lastDseep, second.lastDseep);
+        swap(first.lastSseep, second.lastSseep);
         swap(first.lastTimeSeen, second.lastTimeSeen);
         swap(first.cacheInputAge, second.cacheInputAge);
         swap(first.cacheInputAgeBlock, second.cacheInputAgeBlock);
@@ -151,7 +151,7 @@ public:
                 READWRITE(sig);
                 READWRITE(activeState);
                 READWRITE(now);
-                READWRITE(lastDseep);
+                READWRITE(lastSseep);
                 READWRITE(lastTimeSeen);
                 READWRITE(cacheInputAge);
                 READWRITE(cacheInputAgeBlock);

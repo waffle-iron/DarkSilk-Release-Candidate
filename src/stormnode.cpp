@@ -126,7 +126,7 @@ CStormnode::CStormnode()
     sig = std::vector<unsigned char>();
     activeState = STORMNODE_ENABLED;
     now = GetTime();
-    lastDseep = 0;
+    lastSseep = 0;
     lastTimeSeen = 0;
     cacheInputAge = 0;
     cacheInputAgeBlock = 0;
@@ -146,7 +146,7 @@ CStormnode::CStormnode(const CStormnode& other)
     sig = other.sig;
     activeState = other.activeState;
     now = other.now;
-    lastDseep = other.lastDseep;
+    lastSseep = other.lastSseep;
     lastTimeSeen = other.lastTimeSeen;
     cacheInputAge = other.cacheInputAge;
     cacheInputAgeBlock = other.cacheInputAgeBlock;
@@ -166,7 +166,7 @@ CStormnode::CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::v
     sig = newSig;
     activeState = STORMNODE_ENABLED;
     now = newNow;
-    lastDseep = 0;
+    lastSseep = 0;
     lastTimeSeen = 0;
     cacheInputAge = 0;
     cacheInputAgeBlock = 0;
@@ -379,13 +379,13 @@ bool CStormnodePayments::ProcessBlock(int nBlockHeight)
         vecLastPayments.push_back(winner.vin);
     }
 
-    CStormnode* sn = snodeman.FindNotInVec(vecLastPayments);
-    if(sn) 
+    CStormnode* psn = snodeman.FindNotInVec(vecLastPayments);
+    if(psn != NULL) 
     {
         newWinner.score = 0;
         newWinner.nBlockHeight = nBlockHeight;
-        newWinner.vin = sn->vin;
-        newWinner.payee.SetDestination(sn->pubkey.GetID());
+        newWinner.vin = psn->vin;
+        newWinner.payee.SetDestination(psn->pubkey.GetID());
     }
 
     //if we can't find new SN to get paid, pick the first active SN counting back from the end of vecLastPayments list
@@ -393,16 +393,16 @@ bool CStormnodePayments::ProcessBlock(int nBlockHeight)
     {
         BOOST_REVERSE_FOREACH(CTxIn& vinLP, vecLastPayments)
         {
-            CStormnode* sn = snodeman.Find(vinLP);
-            if(sn)
+            CStormnode* psn = snodeman.Find(vinLP);
+            if(psn != NULL)
             {
-                sn->Check();
-                if(!sn->IsEnabled()) continue;
+                psn->Check();
+                if(!psn->IsEnabled()) continue;
 
                 newWinner.score = 0;
                 newWinner.nBlockHeight = nBlockHeight;
-                newWinner.vin = sn->vin;
-                newWinner.payee.SetDestination(sn->pubkey.GetID());
+                newWinner.vin = psn->vin;
+                newWinner.payee.SetDestination(psn->pubkey.GetID());
                 break; // we found active SN
             }
         }

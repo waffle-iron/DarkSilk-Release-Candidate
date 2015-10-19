@@ -7,6 +7,7 @@
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
+#include <boost/lexical_cast.hpp>
 
 #include "alert.h"
 #include "chainparams.h"
@@ -3207,9 +3208,6 @@ bool static AlreadyHave(CTxDB& txdb, const CInv& inv)
     return true;
 }
 
-
-
-
 void static ProcessGetData(CNode* pfrom)
 {
     std::deque<CInv>::iterator it = pfrom->vRecvGetData.begin();
@@ -3264,6 +3262,7 @@ void static ProcessGetData(CNode* pfrom)
                     }
                 }
                 if (!pushed && inv.type == MSG_TX) {
+
                     if(mapSandstormBroadcastTxes.count(inv.hash)){
                         CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
                         ss.reserve(1000);
@@ -3273,7 +3272,7 @@ void static ProcessGetData(CNode* pfrom)
                             mapSandstormBroadcastTxes[inv.hash].vchSig <<
                             mapSandstormBroadcastTxes[inv.hash].sigTime;
 
-                        pfrom->PushMessage("dstx", ss);
+                        pfrom->PushMessage("sstx", ss);
                         pushed = true;
                     } else {
                         CTransaction tx;
@@ -3713,12 +3712,58 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
     }
 
 
-    else if (strCommand == "tx")
+    else if (strCommand == "tx"|| strCommand == "sstx")
     {
         vector<uint256> vWorkQueue;
         vector<uint256> vEraseQueue;
         CTransaction tx;
-        vRecv >> tx;
+
+        //stormnode signed transaction
+        bool allowFree = false;
+        CTxIn vin;
+        vector<unsigned char> vchSig;
+        int64_t sigTime;
+
+        if(strCommand == "tx") {
+            vRecv >> tx;
+        } else if (strCommand == "sstx") {
+            //these allow sasternodes to publish a limited amount of free transactions
+            vRecv >> tx >> vin >> vchSig >> sigTime;
+
+            CStormnode* psn = snodeman.Find(vin);
+                if(psn != NULL)
+                {
+                    if(!psn->allowFreeTx){
+                        //multiple peers can send us a valid stormnode transaction
+                        if(fDebug) LogPrintf("sstx: Stormnode sending too many transactions %s\n", tx.GetHash().ToString().c_str());
+                        return true;
+                    }
+
+                    std::string strMessage = tx.GetHash().ToString() + boost::lexical_cast<std::string>(sigTime);
+
+                    std::string errorMessage = "";
+                    if(!sandStormSigner.VerifyMessage(psn->pubkey2, vchSig, strMessage, errorMessage)){
+                        LogPrintf("sstx: Got bad stormnode address signature %s \n", vin.ToString().c_str());
+                        //pfrom->Misbehaving(20);
+                        return false;
+                    }
+
+                    LogPrintf("sstx: Got Stormnode transaction %s\n", tx.GetHash().ToString().c_str());
+
+                    allowFree = true;
+                    psn->allowFreeTx = false;
+
+                    if(!mapSandstormBroadcastTxes.count(tx.GetHash())){
+                        CSandstormBroadcastTx sstx;
+                        sstx.tx = tx;
+                        sstx.vin = vin;
+                        sstx.vchSig = vchSig;
+                        sstx.sigTime = sigTime;
+
+                        mapSandstormBroadcastTxes.insert(make_pair(tx.GetHash(), sstx));
+                }
+            }
+        }
 
         CInv inv(MSG_TX, tx.GetHash());
         pfrom->AddInventoryKnown(inv);

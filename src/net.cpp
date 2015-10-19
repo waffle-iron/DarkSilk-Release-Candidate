@@ -2029,7 +2029,7 @@ void RelaySandStormElectionEntry(const CTxIn vin, const CService addr, const std
     {
         if(!pnode->fRelayTxes) continue;
 
-        pnode->PushMessage("dsee", vin, addr, vchSig, nNow, pubkey, pubkey2, count, current, lastUpdated, protocolVersion);
+        pnode->PushMessage("ssee", vin, addr, vchSig, nNow, pubkey, pubkey2, count, current, lastUpdated, protocolVersion);
     }
 }
 
@@ -2038,7 +2038,7 @@ void SendSandStormElectionEntry(const CTxIn vin, const CService addr, const std:
     LOCK(cs_vNodes);
     BOOST_FOREACH(CNode* pnode, vNodes)
     {
-        pnode->PushMessage("dsee", vin, addr, vchSig, nNow, pubkey, pubkey2, count, current, lastUpdated, protocolVersion);
+        pnode->PushMessage("ssee", vin, addr, vchSig, nNow, pubkey, pubkey2, count, current, lastUpdated, protocolVersion);
     }
 }
 
@@ -2049,7 +2049,7 @@ void RelaySandStormElectionEntryPing(const CTxIn vin, const std::vector<unsigned
     {
         if(!pnode->fRelayTxes) continue;
 
-        pnode->PushMessage("dseep", vin, vchSig, nNow, stop);
+        pnode->PushMessage("sseep", vin, vchSig, nNow, stop);
     }
 }
 
@@ -2058,7 +2058,7 @@ void SendSandStormElectionEntryPing(const CTxIn vin, const std::vector<unsigned 
     LOCK(cs_vNodes);
     BOOST_FOREACH(CNode* pnode, vNodes)
     {
-        pnode->PushMessage("dseep", vin, vchSig, nNow, stop);
+        pnode->PushMessage("sseep", vin, vchSig, nNow, stop);
     }
 }
 

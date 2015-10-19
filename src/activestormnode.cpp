@@ -116,11 +116,11 @@ void CActiveStormnode::ManageStatus()
     }
 
     //send to all peers
-    if(!Dseep(errorMessage)) {
+    if(!Sseep(errorMessage)) {
        LogPrintf("CActiveStormnode::ManageStatus() - Error on Ping: %s\n", errorMessage.c_str());    }
 }
 
-// Send stop dseep to network for remote stormnode
+// Send stop sseep to network for remote stormnode
 bool CActiveStormnode::StopStormNode(std::string strService, std::string strKeyStormnode, std::string& errorMessage) {
 	CTxIn vin;
     CKey keyStormnode;
@@ -134,7 +134,7 @@ bool CActiveStormnode::StopStormNode(std::string strService, std::string strKeyS
 	return StopStormNode(vin, CService(strService), keyStormnode, pubKeyStormnode, errorMessage);
 }
 
-// Send stop dseep to network for main stormnode
+// Send stop sseep to network for main stormnode
 bool CActiveStormnode::StopStormNode(std::string& errorMessage) {
 	if(status != STORMNODE_IS_CAPABLE && status != STORMNODE_REMOTELY_ENABLED) {
 		errorMessage = "stormnode is not in a running status";
@@ -156,16 +156,16 @@ bool CActiveStormnode::StopStormNode(std::string& errorMessage) {
 	return StopStormNode(vin, service, keyStormnode, pubKeyStormnode, errorMessage);
 }
 
-// Send stop dseep to network for any stormnode
+// Send stop sseep to network for any stormnode
 bool CActiveStormnode::StopStormNode(CTxIn vin, CService service, CKey keyStormnode, CPubKey pubKeyStormnode, std::string& errorMessage) {
    	pwalletMain->UnlockCoin(vin.prevout);
-	return Dseep(vin, service, keyStormnode, pubKeyStormnode, errorMessage, true);
+	return Sseep(vin, service, keyStormnode, pubKeyStormnode, errorMessage, true);
 }
 
-bool CActiveStormnode::Dseep(std::string& errorMessage) {
+bool CActiveStormnode::Sseep(std::string& errorMessage) {
 	if(status != STORMNODE_IS_CAPABLE && status != STORMNODE_REMOTELY_ENABLED) {
 		errorMessage = "stormnode is not in a running status";
-    	LogPrintf("CActiveStormnode::Dseep() - Error: %s\n", errorMessage.c_str());
+    	LogPrintf("CActiveStormnode::Sseep() - Error: %s\n", errorMessage.c_str());
 		return false;
 	}
 
@@ -178,10 +178,10 @@ bool CActiveStormnode::Dseep(std::string& errorMessage) {
     	return false;
     }
 
-	return Dseep(vin, service, keyStormnode, pubKeyStormnode, errorMessage, false);
+	return Sseep(vin, service, keyStormnode, pubKeyStormnode, errorMessage, false);
 }
 
-bool CActiveStormnode::Dseep(CTxIn vin, CService service, CKey keyStormnode, CPubKey pubKeyStormnode, std::string &retErrorMessage, bool stop) {
+bool CActiveStormnode::Sseep(CTxIn vin, CService service, CKey keyStormnode, CPubKey pubKeyStormnode, std::string &retErrorMessage, bool stop) {
     std::string errorMessage;
     std::vector<unsigned char> vchStormNodeSignature;
     std::string strStormNodeSignMessage;
@@ -191,33 +191,33 @@ bool CActiveStormnode::Dseep(CTxIn vin, CService service, CKey keyStormnode, CPu
 
     if(!sandStormSigner.SignMessage(strMessage, errorMessage, vchStormNodeSignature, keyStormnode)) {
     	retErrorMessage = "sign message failed: " + errorMessage;
-    	LogPrintf("CActiveStormnode::Dseep() - Error: %s\n", retErrorMessage.c_str());
+    	LogPrintf("CActiveStormnode::Sseep() - Error: %s\n", retErrorMessage.c_str());
         return false;
     }
 
     if(!sandStormSigner.VerifyMessage(pubKeyStormnode, vchStormNodeSignature, strMessage, errorMessage)) {
     	retErrorMessage = "Verify message failed: " + errorMessage;
-    	LogPrintf("CActiveStormnode::Dseep() - Error: %s\n", retErrorMessage.c_str());
+    	LogPrintf("CActiveStormnode::Sseep() - Error: %s\n", retErrorMessage.c_str());
         return false;
     }
 
     // Update Last Seen timestamp in stormnode list
     bool found = false;
-    CStormnode* sn = snodeman.Find(vin);
-    if(sn)
+    CStormnode* psn = snodeman.Find(vin);
+    if(psn != NULL)
     {
-        sn->UpdateLastSeen();
+        psn->UpdateLastSeen();
     } else {
     	// Seems like we are trying to send a ping while the stormnode is not registered in the network
     	retErrorMessage = "Sandstorm Stormnode List doesn't include our stormnode, Shutting down stormnode pinging service! " + vin.ToString();
-    	LogPrintf("CActiveStormnode::Dseep() - Error: %s\n", retErrorMessage.c_str());
+    	LogPrintf("CActiveStormnode::Sseep() - Error: %s\n", retErrorMessage.c_str());
         status = STORMNODE_NOT_CAPABLE;
         notCapableReason = retErrorMessage;
         return false;
     }
 
     //send to all peers
-    LogPrintf("CActiveStormnode::Dseep() - SendSandStormElectionEntryPing vin = %s\n", vin.ToString().c_str());
+    LogPrintf("CActiveStormnode::Sseep() - SendSandStormElectionEntryPing vin = %s\n", vin.ToString().c_str());
     SendSandStormElectionEntryPing(vin, vchStormNodeSignature, stormNodeSignatureTime, stop);
 
     return true;
@@ -289,8 +289,8 @@ bool CActiveStormnode::Register(CTxIn vin, CService service, CKey keyCollateralA
 	}
 
     LOCK(cs_stormnodes);
-    CStormnode* sn = snodeman.Find(vin);
-    if(!sn)
+    CStormnode* psn = snodeman.Find(vin);
+    if(psn == NULL)
     {
         LogPrintf("CActiveStormnode::Register() - Adding to stormnode list service: %s - vin: %s\n", service.ToString().c_str(), vin.ToString().c_str());
         CStormnode sn(service, vin, pubKeyCollateralAddress, vchStormNodeSignature, stormNodeSignatureTime, pubKeyStormnode, PROTOCOL_VERSION);
@@ -493,7 +493,7 @@ bool CActiveStormnode::EnableHotColdStormNode(CTxIn& newVin, CService& newServic
 
     status = STORMNODE_REMOTELY_ENABLED;
 
-    //The values below are needed for signing dseep messages going forward
+    //The values below are needed for signing sseep messages going forward
     this->vin = newVin;
     this->service = newService;
 

@@ -310,10 +310,10 @@ bool ProcessConsensusVote(CConsensusVote& ctx)
 {
     int n = snodeman.GetStormnodeRank(ctx.vinStormnode, ctx.nBlockHeight, MIN_INSTANTX_PROTO_VERSION);
 
-    CStormnode* sn = snodeman.Find(ctx.vinStormnode);
-    if(sn)
+    CStormnode* psn = snodeman.Find(ctx.vinStormnode);
+    if(psn != NULL)
     {
-        if(fDebug) LogPrintf("InstantX::ProcessConsensusVote - Stormnode ADDR %s %d\n", sn->addr.ToString().c_str(), n);
+        if(fDebug) LogPrintf("InstantX::ProcessConsensusVote - Stormnode ADDR %s %d\n", psn->addr.ToString().c_str(), n);
     }
 
     if(n == -1)
@@ -482,9 +482,9 @@ bool CConsensusVote::SignatureValid()
     std::string strMessage = txHash.ToString().c_str() + boost::lexical_cast<std::string>(nBlockHeight);
     //LogPrintf("verify strMessage %s \n", strMessage.c_str());
 
-    CStormnode* sn = snodeman.Find(vinStormnode);
+    CStormnode* psn = snodeman.Find(vinStormnode);
 
-    if(!sn)
+    if(psn == NULL)
     {
         LogPrintf("InstantX::CConsensusVote::SignatureValid() - Unknown Stormnode\n");
         return false;
@@ -495,13 +495,13 @@ bool CConsensusVote::SignatureValid()
     //LogPrintf("verify addr %d %s \n", n, vecStormnodes[n].addr.ToString().c_str());
 
     CScript pubkey;
-    pubkey =GetScriptForDestination(sn->pubkey2.GetID());
+    pubkey =GetScriptForDestination(psn->pubkey2.GetID());
     CTxDestination address1;
     ExtractDestination(pubkey, address1);
     CDarkSilkAddress address2(address1);
     //LogPrintf("verify pubkey2 %s \n", address2.ToString().c_str());
 
-    if(!sandStormSigner.VerifyMessage(sn->pubkey2, vchStormNodeSignature, strMessage, errorMessage)) {
+    if(!sandStormSigner.VerifyMessage(psn->pubkey2, vchStormNodeSignature, strMessage, errorMessage)) {
         LogPrintf("InstantX::CConsensusVote::SignatureValid() - Verify message failed\n");
         return false;
     }

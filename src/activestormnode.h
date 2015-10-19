@@ -37,8 +37,8 @@ public:
 
     void ManageStatus(); // manage status of main stormnode
 
-    bool Dseep(std::string& errorMessage); // ping for main stormnode
-    bool Dseep(CTxIn vin, CService service, CKey key, CPubKey pubKey, std::string &retErrorMessage, bool stop); // ping for any stormnode
+    bool Sseep(std::string& errorMessage); // ping for main stormnode
+    bool Sseep(CTxIn vin, CService service, CKey key, CPubKey pubKey, std::string &retErrorMessage, bool stop); // ping for any stormnode
 
     bool StopStormNode(std::string& errorMessage); // stop main stormnode
     bool StopStormNode(std::string strService, std::string strKeyStormnode, std::string& errorMessage); // stop remote stormnode

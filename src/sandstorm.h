@@ -161,10 +161,10 @@ public:
 
     bool GetAddress(CService &addr)
     {
-        CStormnode* sn = snodeman.Find(vin);
-        if(sn)
+        CStormnode* psn = snodeman.Find(vin);
+        if(psn != NULL)
         {
-            addr = sn->addr;
+            addr = psn->addr;
             return true;
         }
         return false;
@@ -172,10 +172,10 @@ public:
 
     bool GetProtocolVersion(int &protocolVersion)
     {
-        CStormnode* sn = snodeman.Find(vin);
-        if(sn)
+        CStormnode* psn = snodeman.Find(vin);
+        if(psn)
         {
-            protocolVersion = sn->protocolVersion;
+            protocolVersion = psn->protocolVersion;
             return true;
         }
         return false;

@@ -185,7 +185,7 @@ bool CStormnodeMan::Add(CStormnode &sn)
 
     CStormnode *psn = Find(sn.vin);
 
-    if (!psn)
+    if (psn == NULL)
     {
         vStormnodes.push_back(sn);
         return true;
@@ -312,12 +312,12 @@ int CStormnodeMan::GetStormnodeRank(const CTxIn& vin, int64_t nBlockHeight, int 
 void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
 {
 
-    if(fLiteMode) return; //disable all darksend/stormnode related functionality
+    if(fLiteMode) return; //disable all sandstorm/stormnode related functionality
     if(IsInitialBlockDownload()) return;
 
     LOCK(cs);
 
-    if (strCommand == "dsee") { //DarkSend Election Entry
+    if (strCommand == "ssee") { //Sandstorm Election Entry
 
         CTxIn vin;
         CService addr;
@@ -336,7 +336,7 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
 
         // make sure signature isn't in the future (past is OK)
         if (sigTime > GetAdjustedTime() + 60 * 60) {
-            LogPrintf("dsee - Signature rejected, too far into the future %s\n", vin.ToString().c_str());
+            LogPrintf("ssee - Signature rejected, too far into the future %s\n", vin.ToString().c_str());
             return;
         }
 
@@ -349,7 +349,7 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
         strMessage = addr.ToString() + boost::lexical_cast<std::string>(sigTime) + vchPubKey + vchPubKey2 + boost::lexical_cast<std::string>(protocolVersion);
 
         if(protocolVersion < MIN_SN_PROTO_VERSION) {
-            LogPrintf("dsee - ignoring outdated stormnode %s protocol version %d\n", vin.ToString().c_str(), protocolVersion);
+            LogPrintf("ssee - ignoring outdated stormnode %s protocol version %d\n", vin.ToString().c_str(), protocolVersion);
             return;
         }
 
@@ -357,7 +357,7 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
         pubkeyScript.SetDestination(pubkey.GetID());
 
         if(pubkeyScript.size() != 25) {
-            LogPrintf("dsee - pubkey the wrong size\n");
+            LogPrintf("ssee - pubkey the wrong size\n");
             Misbehaving(pfrom->GetId(), 100);
             return;
         }
@@ -366,39 +366,39 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
         pubkeyScript2.SetDestination(pubkey2.GetID());
 
         if(pubkeyScript2.size() != 25) {
-            LogPrintf("dsee - pubkey2 the wrong size\n");
+            LogPrintf("ssee - pubkey2 the wrong size\n");
             Misbehaving(pfrom->GetId(), 100);
             return;
         }
 
         std::string errorMessage = "";
         if(!sandStormSigner.VerifyMessage(pubkey, vchSig, strMessage, errorMessage)){
-            LogPrintf("dsee - Got bad stormnode address signature\n");
+            LogPrintf("ssee - Got bad stormnode address signature\n");
             Misbehaving(pfrom->GetId(), 100);
             return;
         }
 
-        //search existing stormnode list, this is where we update existing stormnodes with new dsee broadcasts
-        CStormnode* sn = this->Find(vin);
-        if(sn)
+        //search existing stormnode list, this is where we update existing stormnodes with new ssee broadcasts
+        CStormnode* psn = this->Find(vin);
+        if(psn != NULL)
         {
             // count == -1 when it's a new entry
             //   e.g. We don't want the entry relayed/time updated when we're syncing the list
             // sn.pubkey = pubkey, IsVinAssociatedWithPubkey is validated once below,
             //   after that they just need to match
-            if(count == -1 && sn->pubkey == pubkey && !sn->UpdatedWithin(STORMNODE_MIN_DSEE_SECONDS)){
-                sn->UpdateLastSeen();
+            if(count == -1 && psn->pubkey == pubkey && !psn->UpdatedWithin(STORMNODE_MIN_SSEE_SECONDS)){
+                psn->UpdateLastSeen();
                 UpdateLastTimeChanged();
 
-                if(sn->now < sigTime){ //take the newest entry
-                    LogPrintf("dsee - Got updated entry for %s\n", addr.ToString().c_str());
-                    sn->pubkey2 = pubkey2;
-                    sn->now = sigTime;
-                    sn->sig = vchSig;
-                    sn->protocolVersion = protocolVersion;
-                    sn->addr = addr;
-                    sn->Check();
-                    if(sn->IsEnabled())
+                if(psn->now < sigTime){ //take the newest entry
+                    LogPrintf("ssee - Got updated entry for %s\n", addr.ToString().c_str());
+                    psn->pubkey2 = pubkey2;
+                    psn->now = sigTime;
+                    psn->sig = vchSig;
+                    psn->protocolVersion = protocolVersion;
+                    psn->addr = addr;
+                    psn->Check();
+                    if(psn->IsEnabled())
                         RelaySandStormElectionEntry(vin, addr, vchSig, sigTime, pubkey, pubkey2, count, current, lastUpdated, protocolVersion);
                 }
             }
@@ -409,15 +409,15 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
         // make sure the vout that was signed is related to the transaction that spawned the stormnode
         //  - this is expensive, so it's only done once per stormnode
         if(!sandStormSigner.IsVinAssociatedWithPubkey(vin, pubkey)) {
-            LogPrintf("dsee - Got mismatched pubkey and vin\n");
+            LogPrintf("ssee - Got mismatched pubkey and vin\n");
             Misbehaving(pfrom->GetId(), 100);
             return;
         }
 
-        if(fDebug) LogPrintf("dsee - Got NEW stormnode entry %s\n", addr.ToString().c_str());
+        if(fDebug) LogPrintf("ssee - Got NEW stormnode entry %s\n", addr.ToString().c_str());
 
         // make sure it's still unspent
-        //  - this is checked later by .check() in many places and by ThreadCheckDarkSendPool()
+        //  - this is checked later by .check() in many places and by ThreadCheckSandStormPool()
 
         CValidationState state;
         CTransaction tx = CTransaction();
@@ -426,10 +426,10 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
         tx.vout.push_back(vout);
         bool* pfMissingInputs = false;
         if(AcceptableInputs(mempool, tx, false, pfMissingInputs)){
-            if(fDebug) LogPrintf("dsee - Accepted stormnode entry %i %i\n", count, current);
+            if(fDebug) LogPrintf("ssee - Accepted stormnode entry %i %i\n", count, current);
 
             if(GetInputAge(vin) < STORMNODE_MIN_CONFIRMATIONS){
-                LogPrintf("dsee - Input must have least %d confirmations\n", STORMNODE_MIN_CONFIRMATIONS);
+                LogPrintf("ssee - Input must have least %d confirmations\n", STORMNODE_MIN_CONFIRMATIONS);
                 Misbehaving(pfrom->GetId(), 20);
                 return;
             }
@@ -451,12 +451,12 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
                 RelaySandStormElectionEntry(vin, addr, vchSig, sigTime, pubkey, pubkey2, count, current, lastUpdated, protocolVersion);
 
         } else {
-            LogPrintf("dsee - Rejected stormnode entry %s\n", addr.ToString().c_str());
+            LogPrintf("ssee - Rejected stormnode entry %s\n", addr.ToString().c_str());
 
             int nDoS = 0;
             if (state.IsInvalid(nDoS))
             {
-                LogPrintf("dsee - %s from %s %s was not accepted into the memory pool\n", tx.GetHash().ToString().c_str(),
+                LogPrintf("ssee - %s from %s %s was not accepted into the memory pool\n", tx.GetHash().ToString().c_str(),
                     pfrom->addr.ToString().c_str(), pfrom->cleanSubVer.c_str());
                 if (nDoS > 0)
                     Misbehaving(pfrom->GetId(), nDoS);
@@ -464,7 +464,7 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
         }
     }
 
-    else if (strCommand == "dseep") { //DarkSend Election Entry Ping
+    else if (strCommand == "sseep") { //SandStorm Election Entry Ping
 
         CTxIn vin;
         vector<unsigned char> vchSig;
@@ -472,47 +472,47 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
         bool stop;
         vRecv >> vin >> vchSig >> sigTime >> stop;
 
-        //LogPrintf("dseep - Received: vin: %s sigTime: %lld stop: %s\n", vin.ToString().c_str(), sigTime, stop ? "true" : "false");
+        //LogPrintf("sseep - Received: vin: %s sigTime: %lld stop: %s\n", vin.ToString().c_str(), sigTime, stop ? "true" : "false");
 
         if (sigTime > GetAdjustedTime() + 60 * 60) {
-            LogPrintf("dseep - Signature rejected, too far into the future %s\n", vin.ToString().c_str());
+            LogPrintf("sseep - Signature rejected, too far into the future %s\n", vin.ToString().c_str());
             return;
         }
 
         if (sigTime <= GetAdjustedTime() - 60 * 60) {
-            LogPrintf("dseep - Signature rejected, too far into the past %s - %d %d \n", vin.ToString().c_str(), sigTime, GetAdjustedTime());
+            LogPrintf("sseep - Signature rejected, too far into the past %s - %d %d \n", vin.ToString().c_str(), sigTime, GetAdjustedTime());
             return;
         }
 
         // see if we have this stormnode
-        CStormnode* sn = this->Find(vin);
-        if(sn)
+        CStormnode* psn = this->Find(vin);
+        if(psn != NULL)
         {
-            // LogPrintf("dseep - Found corresponding sn for vin: %s\n", vin.ToString().c_str());
+            // LogPrintf("sseep - Found corresponding sn for vin: %s\n", vin.ToString().c_str());
             // take this only if it's newer
-            if(sn->lastDseep < sigTime)
+            if(psn->lastSseep < sigTime)
             {
-                std::string strMessage = sn->addr.ToString() + boost::lexical_cast<std::string>(sigTime) + boost::lexical_cast<std::string>(stop);
+                std::string strMessage = psn->addr.ToString() + boost::lexical_cast<std::string>(sigTime) + boost::lexical_cast<std::string>(stop);
 
                 std::string errorMessage = "";
-                if(!sandStormSigner.VerifyMessage(sn->pubkey2, vchSig, strMessage, errorMessage))
+                if(!sandStormSigner.VerifyMessage(psn->pubkey2, vchSig, strMessage, errorMessage))
                 {
-                    LogPrintf("dseep - Got bad stormnode address signature %s \n", vin.ToString().c_str());
+                    LogPrintf("sseep - Got bad stormnode address signature %s \n", vin.ToString().c_str());
                     //Misbehaving(pfrom->GetId(), 100);
                     return;
                 }
 
-                sn->lastDseep = sigTime;
+                psn->lastSseep = sigTime;
 
-                if(!sn->UpdatedWithin(STORMNODE_MIN_DSEEP_SECONDS))
+                if(!psn->UpdatedWithin(STORMNODE_MIN_SSEEP_SECONDS))
                 {   
                     UpdateLastTimeChanged();
-                    if(stop) sn->Disable();
+                    if(stop) psn->Disable();
                     else
                     {
-                        sn->UpdateLastSeen();
-                        sn->Check();
-                        if(!sn->IsEnabled()) return;
+                        psn->UpdateLastSeen();
+                        psn->Check();
+                        if(!psn->IsEnabled()) return;
                     }
                     RelaySandStormElectionEntryPing(vin, vchSig, sigTime, stop);
                 }
@@ -520,7 +520,7 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
             return;
         }
 
-        if(fDebug) LogPrintf("dseep - Couldn't find stormnode entry %s\n", vin.ToString().c_str());
+        if(fDebug) LogPrintf("sseep - Couldn't find stormnode entry %s\n", vin.ToString().c_str());
 
         std::map<COutPoint, int64_t>::iterator i = askedForStormnodeListEntry.find(vin.prevout);
         if (i != askedForStormnodeListEntry.end())
@@ -529,14 +529,14 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
             if (GetTime() < t) return; // we've asked recently
         }
 
-        // ask for the dsee info once from the node that sent dseep
+        // ask for the ssee info once from the node that sent sseep
 
-        LogPrintf("dseep - Asking source node for missing entry %s\n", vin.ToString().c_str());
-        pfrom->PushMessage("dseg", vin);
+        LogPrintf("sseep - Asking source node for missing entry %s\n", vin.ToString().c_str());
+        pfrom->PushMessage("sseg", vin);
         int64_t askAgain = GetTime()+(60*60*24);
         askedForStormnodeListEntry[vin.prevout] = askAgain;
 
-    } else if (strCommand == "dseg") { //Get stormnode list or specific entry
+    } else if (strCommand == "sseg") { //Get stormnode list or specific entry
 
         CTxIn vin;
         vRecv >> vin;
@@ -551,7 +551,7 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
                     int64_t t = (*i).second;
                     if (GetTime() < t) {
                         Misbehaving(pfrom->GetId(), 34);
-                        LogPrintf("dseg - peer already asked me for the list\n");
+                        LogPrintf("sseg - peer already asked me for the list\n");
                         return;
                     }
                 }
@@ -570,19 +570,19 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
 
             if(sn.IsEnabled())
             {
-                if(fDebug) LogPrintf("dseg - Sending stormnode entry - %s \n", sn.addr.ToString().c_str());
+                if(fDebug) LogPrintf("sseg - Sending stormnode entry - %s \n", sn.addr.ToString().c_str());
                 if(vin == CTxIn()){
-                    pfrom->PushMessage("dsee", sn.vin, sn.addr, sn.sig, sn.now, sn.pubkey, sn.pubkey2, count, i, sn.lastTimeSeen, sn.protocolVersion);
+                    pfrom->PushMessage("ssee", sn.vin, sn.addr, sn.sig, sn.now, sn.pubkey, sn.pubkey2, count, i, sn.lastTimeSeen, sn.protocolVersion);
                 } else if (vin == sn.vin) {
-                    pfrom->PushMessage("dsee", sn.vin, sn.addr, sn.sig, sn.now, sn.pubkey, sn.pubkey2, count, i, sn.lastTimeSeen, sn.protocolVersion);
-                    LogPrintf("dseg - Sent 1 stormnode entries to %s\n", pfrom->addr.ToString().c_str());
+                    pfrom->PushMessage("ssee", sn.vin, sn.addr, sn.sig, sn.now, sn.pubkey, sn.pubkey2, count, i, sn.lastTimeSeen, sn.protocolVersion);
+                    LogPrintf("sseg - Sent 1 stormnode entries to %s\n", pfrom->addr.ToString().c_str());
                     return;
                 }
                 i++;
             }
         }
 
-        LogPrintf("dseg - Sent %d stormnode entries to %s\n", i, pfrom->addr.ToString().c_str());
+        LogPrintf("sseg - Sent %d stormnode entries to %s\n", i, pfrom->addr.ToString().c_str());
     }
 
 }
