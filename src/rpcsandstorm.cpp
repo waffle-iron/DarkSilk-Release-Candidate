@@ -633,9 +633,12 @@ Value stormnodelist(const Array& params, bool fHelp)
         
         std::string strAddr = sn.addr.ToString().c_str();
         if(strMode == "active"){
+            if(strFilter !="" && strFilter != boost::lexical_cast<std::string>(sn.IsEnabled()) &&
+                sn.addr.ToString().find(strFilter) == string::npos) continue;
             obj.push_back(Pair(strAddr,       (int)sn.IsEnabled()));
         } else if (strMode == "vin") {
-            if(strFilter !="" && sn.vin.prevout.hash.ToString().find(strFilter) == string::npos) continue;
+            if(strFilter !="" && sn.vin.prevout.hash.ToString().find(strFilter) == string::npos &&
+                sn.addr.ToString().find(strFilter) == string::npos) continue;
             obj.push_back(Pair(strAddr,       sn.vin.prevout.hash.ToString().c_str()));
         } else if (strMode == "pubkey") {
             CScript pubkey;
@@ -644,15 +647,21 @@ Value stormnodelist(const Array& params, bool fHelp)
             ExtractDestination(pubkey, address1);
             CDarkSilkAddress address2(address1);
 
-            if(strFilter !="" && address2.ToString().find(strFilter) == string::npos) continue;
+            if(strFilter !="" && address2.ToString().find(strFilter) == string::npos &&
+                sn.addr.ToString().find(strFilter) == string::npos) continue;
             obj.push_back(Pair(strAddr,       address2.ToString().c_str()));
         } else if (strMode == "protocol") {
+            if(strFilter !="" && strFilter != boost::lexical_cast<std::string>(sn.protocolVersion) &&
+                sn.addr.ToString().find(strFilter) == string::npos) continue;
             obj.push_back(Pair(strAddr,       (int64_t)sn.protocolVersion));
         } else if (strMode == "lastseen") {
+            if(strFilter !="" && sn.addr.ToString().find(strFilter) == string::npos) continue;
             obj.push_back(Pair(strAddr,       (int64_t)sn.lastTimeSeen));
         } else if (strMode == "activeseconds") {
+            if(strFilter !="" && sn.addr.ToString().find(strFilter) == string::npos) continue;
             obj.push_back(Pair(strAddr,       (int64_t)(sn.lastTimeSeen - sn.now)));
         } else if (strMode == "rank") {
+            if(strFilter !="" && sn.addr.ToString().find(strFilter) == string::npos) continue;
             obj.push_back(Pair(strAddr,       (int)(snodeman.GetStormnodeRank(sn.vin, pindexBest->nHeight))));
         } else if (strMode == "full") {
             CScript pubkey;

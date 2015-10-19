@@ -36,6 +36,7 @@ void ProcessMessageInstantX(CNode* pfrom, std::string& strCommand, CDataStream& 
 {
     if(fLiteMode) return; //disable all sandstorm/stormnode related functionality
     if(!IsSporkActive(SPORK_1_STORMNODE_PAYMENTS_ENFORCEMENT)) return;
+    if(IsInitialBlockDownload()) return;
 
     if (strCommand == "txlreq")
     {

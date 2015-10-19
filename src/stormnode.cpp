@@ -23,6 +23,7 @@ std::map<int64_t, uint256> mapCacheBlockHashes;
 
 void ProcessMessageStormnodePayments(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
 {
+    if(IsInitialBlockDownload()) return;
     if (strCommand == "snget") //Stormnode Payments Request Sync
     {
         if(fLiteMode) return; //disable all sandstorm/stormnode related functionality

@@ -2168,7 +2168,7 @@ bool CSandstormQueue::CheckSignature()
 void ThreadCheckSandStormPool()
 {
     if(fLiteMode) return; //disable all sandstorm/stormnode related functionality
-
+    if(IsInitialBlockDownload()) return;
     // Make this thread recognisable as the wallet flushing thread
     RenameThread("darksilk-sandstorm");
 
