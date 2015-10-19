@@ -3996,7 +3996,6 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         MarketProcessMessage(pfrom, strCommand, vRecv);
         ProcessMessageSandstorm(pfrom, strCommand, vRecv);
         snodeman.ProcessMessage(pfrom, strCommand, vRecv);
-        ProcessMessageStormnodePayments(pfrom, strCommand, vRecv);
         ProcessMessageInstantX(pfrom, strCommand, vRecv);
         ProcessSpork(pfrom, strCommand, vRecv);
     if (fSecMsgEnabled)

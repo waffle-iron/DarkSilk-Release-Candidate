@@ -36,6 +36,7 @@ class uint256;
 #define STORMNODE_MIN_SSEEP_SECONDS           (30*60)
 #define STORMNODE_MIN_SSEE_SECONDS            (5*60)
 #define STORMNODE_PING_SECONDS                (1*60)
+#define STORMNODE_PING_WAIT_SECONDS           (5*60)
 #define STORMNODE_EXPIRATION_SECONDS          (65*60)
 #define STORMNODE_REMOVAL_SECONDS             (70*60)
 
@@ -88,7 +89,7 @@ public:
     bool unitTest;
     bool allowFreeTx;
     int protocolVersion;
-    int64_t nLastSsq; //the ssq count from the last ssq broadcast of this node
+    int64_t nLastDsq; //the dsq count from the last dsq broadcast of this node
 
     CStormnode();
     CStormnode(const CStormnode& other);
@@ -115,7 +116,7 @@ public:
         swap(first.allowFreeTx, second.allowFreeTx);
         swap(first.protocolVersion, second.protocolVersion);
         swap(first.unitTest, second.unitTest);
-        swap(first.nLastSsq, second.nLastSsq);
+        swap(first.nLastDsq, second.nLastDsq);
     }
 
     CStormnode& operator=(CStormnode from)
@@ -157,7 +158,7 @@ public:
                 READWRITE(unitTest);
                 READWRITE(allowFreeTx);
                 READWRITE(protocolVersion);
-                READWRITE(nLastSsq);
+                READWRITE(nLastDsq);
         }
     )
 

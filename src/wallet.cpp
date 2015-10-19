@@ -2115,7 +2115,7 @@ bool CWallet::SelectCoinsByDenominations(int nDenom, int64_t nValueMin, int64_t 
     vector<COutput> vCoins;
     AvailableCoins(vCoins);
 
-    //order the array so largest nondenom are first, then denominations, then very small inputs.
+    //order the array so fees are first, then denominated money, then the rest.
     std::random_shuffle(vCoins.rbegin(), vCoins.rend());
 
     //keep track of each denomination that we have
@@ -2214,10 +2214,11 @@ bool CWallet::SelectCoinsDark(int64_t nValueMin, int64_t nValueMax, std::vector<
     //order the array so fees are first, then denominated money, then the rest.
     sort(vCoins.rbegin(), vCoins.rend(), CompareByPriority());
 
+    //the first thing we get is a fee input, then we'll use as many denominated as possible. then the rest
     BOOST_FOREACH(const COutput& out, vCoins)
     {
         //there's no reason to allow inputs less than 1 COIN into Sandstorm (other than denominations smaller than that amount)
-        if(out.tx->vout[out.i].nValue < 1*COIN && !IsDenominatedAmount(out.tx->vout[out.i].nValue)) continue;
+        if(out.tx->vout[out.i].nValue < 1*COIN && out.tx->vout[out.i].nValue != (.1*COIN)+100) continue;
         if(fStormNode && out.tx->vout[out.i].nValue == 42000*COIN) continue; //stormnode input
 
         if(nValueRet + out.tx->vout[out.i].nValue <= nValueMax){
@@ -2315,7 +2316,11 @@ bool CWallet::HasCollateralInputs() const
 
 bool CWallet::IsCollateralAmount(int64_t nInputAmount) const
 {
-    return  nInputAmount != 0 && nInputAmount % SANDSTORM_COLLATERAL == 0 && nInputAmount < SANDSTORM_COLLATERAL * 5;
+    return  nInputAmount == (SANDSTORM_COLLATERAL * 5)+SANDSTORM_FEE ||
+            nInputAmount == (SANDSTORM_COLLATERAL * 4)+SANDSTORM_FEE ||
+            nInputAmount == (SANDSTORM_COLLATERAL * 3)+SANDSTORM_FEE ||
+            nInputAmount == (SANDSTORM_COLLATERAL * 2)+SANDSTORM_FEE ||
+            nInputAmount == (SANDSTORM_COLLATERAL * 1)+SANDSTORM_FEE;
 }
 
 bool CWallet::SelectCoinsWithoutDenomination(int64_t nTargetValue, set<pair<const CWalletTx*,unsigned int> >& setCoinsRet, int64_t& nValueRet) const

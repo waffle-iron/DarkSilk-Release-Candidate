@@ -496,14 +496,7 @@ Value getblocktemplate(const Array& params, bool fHelp)
             "  \"sizelimit\" : limit of block size\n"
             "  \"bits\" : compressed target of next block\n"
             "  \"height\" : height of the next block\n"
-            "  \"payee\" : \"xxx\",                (string) required payee for the next block\n"
-            "  \"payee_amount\" : n,               (numeric) required amount to pay\n"
-            "  \"votes\" : [\n                     (array) show vote candidates\n"
-            "        { ... }                       (json object) vote candidate\n"
-            "        ,...\n"
-            "  ],\n"
-            "  \"stormnode_payments\" : true|false,         (boolean) true, if stormnode payments are enabled"
-            "  \"enforce_stormnode_payments\" : true|false  (boolean) true, if stormnode payments are enforced");
+            "See https://en.darksilk.it/wiki/BIP_0022 for full specification.");
 
     std::string strMode = "template";
     if (params.size() > 0)

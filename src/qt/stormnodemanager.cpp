@@ -156,22 +156,22 @@ void StormnodeManager::updateNodeList()
     ui->tableWidget->clearContents();
     ui->tableWidget->setRowCount(0);
     
-    CStormnode* sn =snodeman.Find(activeStormnode.vin);
-    if (sn) 
+    std::vector<CStormnode> vStormnodes = snodeman.GetFullStormnodeVector();
+    BOOST_FOREACH(CStormnode& sn, vStormnodes)
     {
         int snRow = 0;
         ui->tableWidget->insertRow(0);
 
  	// populate list
 	// Address, Rank, Active, Active Seconds, Last Seen, Pub Key
-	QTableWidgetItem *activeItem = new QTableWidgetItem(QString::number(sn->IsEnabled()));
-	QTableWidgetItem *addressItem = new QTableWidgetItem(QString::fromStdString(sn->addr.ToString()));
-	QTableWidgetItem *rankItem = new QTableWidgetItem(QString::number(snodeman.GetStormnodeRank(sn->vin, pindexBest->nHeight)));
-	QTableWidgetItem *activeSecondsItem = new QTableWidgetItem(seconds_to_DHMS((qint64)(sn->lastTimeSeen - sn->now)));
-	QTableWidgetItem *lastSeenItem = new QTableWidgetItem(QString::fromStdString(DateTimeStrFormat(sn->lastTimeSeen)));
+	QTableWidgetItem *activeItem = new QTableWidgetItem(QString::number(sn.IsEnabled()));
+	QTableWidgetItem *addressItem = new QTableWidgetItem(QString::fromStdString(sn.addr.ToString()));
+	QTableWidgetItem *rankItem = new QTableWidgetItem(QString::number(snodeman.GetStormnodeRank(sn.vin, pindexBest->nHeight)));
+	QTableWidgetItem *activeSecondsItem = new QTableWidgetItem(seconds_to_DHMS((qint64)(sn.lastTimeSeen - sn.now)));
+	QTableWidgetItem *lastSeenItem = new QTableWidgetItem(QString::fromStdString(DateTimeStrFormat(sn.lastTimeSeen)));
 	
 	CScript pubkey;
-    pubkey = GetScriptForDestination(sn->pubkey.GetID());
+    pubkey = GetScriptForDestination(sn.pubkey.GetID());
     CTxDestination address1;
     ExtractDestination(pubkey, address1);
     CDarkSilkAddress address2(address1);

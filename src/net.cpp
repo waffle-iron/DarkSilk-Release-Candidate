@@ -1997,7 +1997,7 @@ void RelaySandStormFinalTransaction(const int sessionID, const CTransaction& txN
     LOCK(cs_vNodes);
     BOOST_FOREACH(CNode* pnode, vNodes)
     {
-        pnode->PushMessage("ssf", sessionID, txNew);
+        pnode->PushMessage("dsf", sessionID, txNew);
     }
 }
 

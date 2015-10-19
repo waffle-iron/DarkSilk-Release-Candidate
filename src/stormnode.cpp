@@ -23,8 +23,6 @@ std::map<int64_t, uint256> mapCacheBlockHashes;
 
 void ProcessMessageStormnodePayments(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
 {
-    if(IsInitialBlockDownload()) return;
-    
     if (strCommand == "snget") //Stormnode Payments Request Sync
     {
         if(fLiteMode) return; //disable all sandstorm/stormnode related functionality
@@ -135,7 +133,7 @@ CStormnode::CStormnode()
     unitTest = false;
     allowFreeTx = true;
     protocolVersion = MIN_PEER_PROTO_VERSION;
-    nLastSsq = 0;
+    nLastDsq = 0;
 }
 
 CStormnode::CStormnode(const CStormnode& other)
@@ -155,7 +153,7 @@ CStormnode::CStormnode(const CStormnode& other)
     unitTest = other.unitTest;
     allowFreeTx = other.allowFreeTx;
     protocolVersion = other.protocolVersion;
-    nLastSsq = other.nLastSsq;
+    nLastDsq = other.nLastDsq;
 }
 
 CStormnode::CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::vector<unsigned char> newSig, int64_t newNow, CPubKey newPubkey2, int protocolVersionIn)
@@ -175,7 +173,7 @@ CStormnode::CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::v
     unitTest = false;
     allowFreeTx = true;
     protocolVersion = protocolVersionIn;
-    nLastSsq = 0;
+    nLastDsq = 0;
 }
 
 //

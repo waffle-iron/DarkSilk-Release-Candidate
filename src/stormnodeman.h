@@ -18,13 +18,15 @@
 #include "stormnode.h"
 
 #define STORMNODES_DUMP_SECONDS               (15*60)
-#define STORMNODES_SSEG_SECONDS              (3*60*60)
 
 using namespace std;
 
 class CStormnodeMan;
 
 extern CStormnodeMan snodeman;
+extern std::vector<CTxIn> vecStormnodeAskedFor;
+extern map<uint256, CStormnodePaymentWinner> mapSeenStormnodeVotes;
+extern map<int64_t, uint256> mapCacheBlockHashes;
 
 void DumpStormnodes();
 
@@ -48,12 +50,8 @@ private:
     // map to hold all SNs
     std::vector<CStormnode> vStormnodes;
 
-    // who's asked for the stormnode list and the last time
-    std::map<CNetAddr, int64_t> mAskedUsForStormnodeList;
-    // who we asked for the stormnode list and the last time
-    std::map<CNetAddr, int64_t> mWeAskedForStormnodeList;
-    // which stormnodes we've asked for
-    std::map<COutPoint, int64_t> mWeAskedForStormnodeListEntry;
+    // keep track of latest time whem vMStormnodes was changed
+    int64_t lastTimeChanged;
 
 public:
 
@@ -66,16 +64,22 @@ public:
                 LOCK(cs);
                 unsigned char nVersion = 0;
                 READWRITE(nVersion);
+                READWRITE(lastTimeChanged);
                 READWRITE(vStormnodes);
-                READWRITE(mAskedUsForStormnodeList);
-                READWRITE(mWeAskedForStormnodeList);
-                READWRITE(mWeAskedForStormnodeListEntry);
         }
     )
 
     CStormnodeMan();
     CStormnodeMan(CStormnodeMan& other);
 
+    // Find an entry
+    CStormnode* Find(const CTxIn& vin);
+
+    // Find a random entry
+    CStormnode* FindRandom();
+
+    //Find an entry thta do not match every entry provided vector
+    CStormnode* FindNotInVec(const std::vector<CTxIn> &vVins);
 
     // Add an entry
     bool Add(CStormnode &sn);
@@ -87,36 +91,27 @@ public:
     void CheckAndRemove();
 
     // Clear stormnode vector
-    void Clear();
-
-    int CountEnabled();
-
-    int CountStormnodesAboveProtocol(int protocolVersion);
-
-    void SsegUpdate(CNode* pnode);
-
-    // Find an entry
-    CStormnode* Find(const CTxIn& vin);
-
-    //Find an entry thta do not match every entry provided vector
-    CStormnode* FindNotInVec(const std::vector<CTxIn> &vVins);
-
-    // Find a random entry
-    CStormnode* FindRandom();
-
-    // Get the current winner for this block
-    CStormnode* GetCurrentStormNode(int mod=1, int64_t nBlockHeight=0, int minProtocol=0);
-
-    std::vector<CStormnode> GetFullStormnodeVector() { Check(); return vStormnodes; }
-
-    int GetStormnodeRank(const CTxIn &vin, int64_t nBlockHeight, int minProtocol=0);
-
-    void ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
+    void Clear() { vStormnodes.clear(); lastTimeChanged = 0; }
 
     // Return the number of (unique) stormnodes
     int size() { return vStormnodes.size(); }
 
-    std::string ToString();
+    // Get the current winner for this block
+    CStormnode* GetCurrentStormNode(int mod=1, int64_t nBlockHeight=0, int minProtocol=0);
+
+    int GetStormnodeRank(const CTxIn &vin, int64_t nBlockHeight, int minProtocol=0);
+
+    int CountStormnodesAboveProtocol(int protocolVersion);
+
+    int CountEnabled();
+
+    std::vector<CStormnode> GetFullStormnodeVector() { Check(); return vStormnodes; }
+
+    void ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
+
+    void UpdateLastTimeChanged() { lastTimeChanged = GetAdjustedTime(); }
+
+    bool UpdateNeeded() { return lastTimeChanged < GetAdjustedTime() - STORMNODE_REMOVAL_SECONDS; }
 
 };
 

@@ -53,10 +53,8 @@ void ProcessMessageSandstorm(CNode* pfrom, std::string& strCommand, CDataStream&
 {
     if(fLiteMode) return; //disable all sandstorm/stormnode related functionality
 
-    if(IsInitialBlockDownload()) return;
-
-    if (strCommand == "ssf") { //SandStorm Final tx
-        if (pfrom->nVersion < MIN_POOL_PEER_PROTO_VERSION) {
+    if (strCommand == "dsf") { //SandStorm Final tx
+        if (pfrom->nVersion < sandStormPool.MIN_PEER_PROTO_VERSION) {
             return;
         }
 
@@ -70,7 +68,7 @@ void ProcessMessageSandstorm(CNode* pfrom, std::string& strCommand, CDataStream&
         vRecv >> sessionID >> txNew;
 
         if(sandStormPool.sessionID != sessionID){
-            if (fDebug) LogPrintf("ssf - message doesn't match current sandstorm session %d %d\n", sandStormPool.sessionID, sessionID);
+            if (fDebug) LogPrintf("dsf - message doesn't match current sandstorm session %d %d\n", sandStormPool.sessionID, sessionID);
             return;
         }
 
@@ -79,7 +77,7 @@ void ProcessMessageSandstorm(CNode* pfrom, std::string& strCommand, CDataStream&
     }
 
     else if (strCommand == "dsc") { //SandStorm Complete
-        if (pfrom->nVersion < MIN_POOL_PEER_PROTO_VERSION) {
+        if (pfrom->nVersion < sandStormPool.MIN_PEER_PROTO_VERSION) {
             return;
         }
 
@@ -103,7 +101,7 @@ void ProcessMessageSandstorm(CNode* pfrom, std::string& strCommand, CDataStream&
 
     else if (strCommand == "dsa") { //SandStorm Acceptable
 
-        if (pfrom->nVersion < MIN_POOL_PEER_PROTO_VERSION) {
+        if (pfrom->nVersion < sandStormPool.MIN_PEER_PROTO_VERSION) {
             std::string strError = _("Incompatible version.");
             LogPrintf("dsa -- incompatible version! \n");
             pfrom->PushMessage("dssu", sandStormPool.sessionID, sandStormPool.GetState(), sandStormPool.GetEntriesCount(), STORMNODE_REJECTED, strError);
@@ -133,9 +131,9 @@ void ProcessMessageSandstorm(CNode* pfrom, std::string& strCommand, CDataStream&
         }
 
         if(sandStormPool.sessionUsers == 0) {
-            if(psn->nLastSsq != 0 &&
-                psn->nLastSsq + snodeman.CountStormnodesAboveProtocol(MIN_POOL_PEER_PROTO_VERSION)/5 > sandStormPool.nSsqCount){
-                LogPrintf("dsa -- last ssq too recent, must wait. %s \n", psn->addr.ToString().c_str());                std::string strError = _("Last Sandstorm was too recent.");
+            if(psn->nLastDsq != 0 &&
+                psn->nLastDsq + snodeman.CountStormnodesAboveProtocol(sandStormPool.MIN_PEER_PROTO_VERSION)/5 > sandStormPool.nDsqCount){
+                LogPrintf("dsa -- last dsq too recent, must wait. %s \n", psn->addr.ToString().c_str());                std::string strError = _("Last Sandstorm was too recent.");
                 pfrom->PushMessage("dssu", sandStormPool.sessionID, sandStormPool.GetState(), sandStormPool.GetEntriesCount(), STORMNODE_REJECTED, strError);
                 return;
             }
@@ -151,29 +149,29 @@ void ProcessMessageSandstorm(CNode* pfrom, std::string& strCommand, CDataStream&
             pfrom->PushMessage("dssu", sandStormPool.sessionID, sandStormPool.GetState(), sandStormPool.GetEntriesCount(), STORMNODE_ACCEPTED, error);
             return;
         }
-    } else if (strCommand == "ssq") { //SandStorm Queue
+    } else if (strCommand == "dsq") { //SandStorm Queue
 
-        if (pfrom->nVersion < MIN_POOL_PEER_PROTO_VERSION) {
+        if (pfrom->nVersion < sandStormPool.MIN_PEER_PROTO_VERSION) {
             return;
         }
 
-        CSandstormQueue ssq;
-        vRecv >> ssq;
+        CSandstormQueue dsq;
+        vRecv >> dsq;
 
 
         CService addr;
-        if(!ssq.GetAddress(addr)) return;
-        if(!ssq.CheckSignature()) return;
+        if(!dsq.GetAddress(addr)) return;
+        if(!dsq.CheckSignature()) return;
 
-        if(ssq.IsExpired()) return;
+        if(dsq.IsExpired()) return;
 
-        CStormnode* psn = snodeman.Find(ssq.vin);
+        CStormnode* psn = snodeman.Find(dsq.vin);
         if(psn == NULL) return;
 
         // if the queue is ready, submit if we can
-        if(ssq.ready) {
+        if(dsq.ready) {
             if((CNetAddr)sandStormPool.submittedToStormnode != (CNetAddr)addr){
-                LogPrintf("ssq - message doesn't match current stormnode - %s != %s\n", sandStormPool.submittedToStormnode.ToString().c_str(), pfrom->addr.ToString().c_str());
+                LogPrintf("dsq - message doesn't match current stormnode - %s != %s\n", sandStormPool.submittedToStormnode.ToString().c_str(), pfrom->addr.ToString().c_str());
                 return;
             }
 
@@ -181,29 +179,29 @@ void ProcessMessageSandstorm(CNode* pfrom, std::string& strCommand, CDataStream&
             sandStormPool.PrepareSandstormDenominate();
         } else {
             BOOST_FOREACH(CSandstormQueue q, vecSandstormQueue){
-                if(q.vin == ssq.vin) return;
+                if(q.vin == dsq.vin) return;
             }
 
-            if(fDebug) LogPrintf("ssq last %d last2 %d count %d\n", psn->nLastSsq, psn->nLastSsq + snodeman.size()/5, sandStormPool.nSsqCount);            
+            if(fDebug) LogPrintf("dsq last %d last2 %d count %d\n", psn->nLastDsq, psn->nLastDsq + snodeman.size()/5, sandStormPool.nDsqCount);            
             //don't allow a few nodes to dominate the queuing process
-            if(psn->nLastSsq != 0 &&
-                psn->nLastSsq + snodeman.CountStormnodesAboveProtocol(MIN_POOL_PEER_PROTO_VERSION)/5 > sandStormPool.nSsqCount){
-                if(fDebug) LogPrintf("ssq -- stormnode sending too many ssq messages. %s \n", psn->addr.ToString().c_str());
+            if(psn->nLastDsq != 0 &&
+                psn->nLastDsq + snodeman.CountStormnodesAboveProtocol(sandStormPool.MIN_PEER_PROTO_VERSION)/5 > sandStormPool.nDsqCount){
+                if(fDebug) LogPrintf("dsq -- stormnode sending too many dsq messages. %s \n", psn->addr.ToString().c_str());
                 return;
             }
-            sandStormPool.nSsqCount++;
-            psn->nLastSsq = sandStormPool.nSsqCount;
+            sandStormPool.nDsqCount++;
+            psn->nLastDsq = sandStormPool.nDsqCount;
             psn->allowFreeTx = true;
 
-            if(fDebug) LogPrintf("ssq - new sandstorm queue object - %s\n", addr.ToString().c_str());
-            vecSandstormQueue.push_back(ssq);
-            ssq.Relay();
-            ssq.time = GetTime();
+            if(fDebug) LogPrintf("dsq - new sandstorm queue object - %s\n", addr.ToString().c_str());
+            vecSandstormQueue.push_back(dsq);
+            dsq.Relay();
+            dsq.time = GetTime();
         }
 
     } else if (strCommand == "dsi") { //SandStorm vIn
         std::string error = "";
-        if (pfrom->nVersion < MIN_POOL_PEER_PROTO_VERSION) {
+        if (pfrom->nVersion < sandStormPool.MIN_PEER_PROTO_VERSION) {
             LogPrintf("dsi -- incompatible version! \n");
             error = _("Incompatible version.");
             pfrom->PushMessage("dssu", sandStormPool.sessionID, sandStormPool.GetState(), sandStormPool.GetEntriesCount(), STORMNODE_REJECTED, error);
@@ -328,7 +326,7 @@ void ProcessMessageSandstorm(CNode* pfrom, std::string& strCommand, CDataStream&
     }
 
     else if (strCommand == "dssub") { //SandStorm Subscribe To
-        if (pfrom->nVersion < MIN_POOL_PEER_PROTO_VERSION) {
+        if (pfrom->nVersion < sandStormPool.MIN_PEER_PROTO_VERSION) {
             return;
         }
 
@@ -341,7 +339,7 @@ void ProcessMessageSandstorm(CNode* pfrom, std::string& strCommand, CDataStream&
 
     else if (strCommand == "dssu") { //SandStorm status update
 
-        if (pfrom->nVersion < MIN_POOL_PEER_PROTO_VERSION) {
+        if (pfrom->nVersion < sandStormPool.MIN_PEER_PROTO_VERSION) {
             return;
         }
 
@@ -369,7 +367,7 @@ void ProcessMessageSandstorm(CNode* pfrom, std::string& strCommand, CDataStream&
     }
 
     else if (strCommand == "dss") { //SandStorm Sign Final Tx
-        if (pfrom->nVersion < MIN_POOL_PEER_PROTO_VERSION) {
+        if (pfrom->nVersion < sandStormPool.MIN_PEER_PROTO_VERSION) {
             return;
         }
 
@@ -826,7 +824,7 @@ void CSandStormPool::ChargeRandomFees(){
         int i = 0;
 
         BOOST_FOREACH(const CTransaction& txCollateral, vecSessionCollateral) {
-            int r = rand()%100;
+            int r = rand()%1000;
 
             /*
                 Collateral Fee Charges:
@@ -834,10 +832,10 @@ void CSandStormPool::ChargeRandomFees(){
                 Being that SandStorm has "no fees" we need to have some kind of cost associated
                 with using it to stop abuse. Otherwise it could serve as an attack vector and
                 allow endless transaction that would bloat DarkSilk and make it unusable. To
-                stop these kinds of attacks 1 in 10 successful transactions are charged. This
-                adds up to a cost of 0.001DRK per transaction on average.
+                stop these kinds of attacks 1 in 50 successful transactions are charged. This
+                adds up to a cost of 0.002DRK per transaction on average.
             */
-            if(r <= 10)
+            if(r <= 20)
             {
                 LogPrintf("CSandStormPool::ChargeRandomFees -- charging random fees. %u\n", i);
 
@@ -883,13 +881,13 @@ void CSandStormPool::CheckTimeout(){
 
     /* Check to see if we're ready for submissions from clients */
     if(state == POOL_STATUS_QUEUE && sessionUsers == GetMaxPoolTransactions()) {
-        CSandstormQueue ssq;
-        ssq.nDenom = sessionDenom;
-        ssq.vin = activeStormnode.vin;
-        ssq.time = GetTime();
-        ssq.ready = true;
-        ssq.Sign();
-        ssq.Relay();
+        CSandstormQueue dsq;
+        dsq.nDenom = sessionDenom;
+        dsq.vin = activeStormnode.vin;
+        dsq.time = GetTime();
+        dsq.ready = true;
+        dsq.Sign();
+        dsq.Relay();
 
         UpdateState(POOL_STATUS_ACCEPTING_ENTRIES);
     }
@@ -1031,7 +1029,7 @@ bool CSandStormPool::IsCollateralValid(const CTransaction& txCollateral){
     }
 
     //collateral transactions are required to pay out SANDSTORM_COLLATERAL as a fee to the miners
-    if(nValueIn - nValueOut < SANDSTORM_COLLATERAL) {
+    if(nValueIn-nValueOut < SANDSTORM_COLLATERAL) {
         if(fDebug) LogPrintf ("CSandStormPool::IsCollateralValid - did not include enough fees in transaction %d\n%s\n", nValueOut-nValueIn, txCollateral.ToString().c_str());
         return false;
     }
@@ -1461,13 +1459,13 @@ bool CSandStormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
     int64_t nValueMin = CENT;
     int64_t nValueIn = 0;
 
-    // should not be less than fees in SANDSTORM_COLLATERAL + few (lets say 5) smallest denoms
-    int64_t nLowestDenom = SANDSTORM_COLLATERAL + sandStormDenominations[sandStormDenominations.size() - 1]*5;
+    // should not be less than fees in SANDSTORM_FEE + few (lets say 5) smallest denoms
+    int64_t nLowestDenom = SANDSTORM_FEE + sandStormDenominations[sandStormDenominations.size() - 1]*5;
 
     // if there are no SS collateral inputs yet
     if(!pwalletMain->HasCollateralInputs())
         // should have some additional amount for them
-        nLowestDenom += SANDSTORM_COLLATERAL*4;
+        nLowestDenom += (SANDSTORM_COLLATERAL*4)+SANDSTORM_FEE*2;
 
     int64_t nBalanceNeedsAnonymized = nAnonymizeDarkSilkAmount*COIN - pwalletMain->GetAnonymizedBalance();
 
@@ -1540,40 +1538,42 @@ bool CSandStormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
         if(nUseQueue > 33){
 
             // Look through the queues and see if anything matches
-            BOOST_FOREACH(CSandstormQueue& ssq, vecSandstormQueue){
+            BOOST_FOREACH(CSandstormQueue& dsq, vecSandstormQueue){
                 CService addr;
-                if(ssq.time == 0) continue;
+                if(dsq.time == 0) continue;
 
-                if(!ssq.GetAddress(addr)) continue;
-                if(ssq.IsExpired()) continue;
+                if(!dsq.GetAddress(addr)) continue;
+                if(dsq.IsExpired()) continue;
 
                 int protocolVersion;
-                if(!ssq.GetProtocolVersion(protocolVersion)) continue;
-                if(protocolVersion < MIN_POOL_PEER_PROTO_VERSION) continue;
+                if(!dsq.GetProtocolVersion(protocolVersion)) continue;
+                if(protocolVersion < MIN_PEER_PROTO_VERSION) continue;
 
                 //non-denom's are incompatible
-                if((ssq.nDenom & (1 << 4))) continue;
+                if((dsq.nDenom & (1 << 4))) continue;
 
                 //don't reuse stormnodes
                 BOOST_FOREACH(CTxIn usedVin, vecStormnodesUsed){
-                    if(ssq.vin == usedVin) {
+                    if(dsq.vin == usedVin) {
                         continue;
                     }
                 }
 
                 // Try to match their denominations if possible
-                if (!pwalletMain->SelectCoinsByDenominations(ssq.nDenom, nValueMin, nBalanceNeedsAnonymized, vCoins, vCoins2, nValueIn, 0, nSandstormRounds)){
-                    LogPrintf("DoAutomaticDenominating - Couldn't match denominations %d\n", ssq.nDenom);
+                if (!pwalletMain->SelectCoinsByDenominations(dsq.nDenom, nValueMin, nBalanceNeedsAnonymized, vCoins, vCoins2, nValueIn, 0, nSandstormRounds)){
+                    LogPrintf("DoAutomaticDenominating - Couldn't match denominations %d\n", dsq.nDenom);
                     continue;
                 }
 
                 // connect to stormnode and submit the queue request
                 if(ConnectNode((CAddress)addr, NULL, true)){
+                    submittedToStormnode = addr;
 
                     LOCK(cs_vNodes);
                     BOOST_FOREACH(CNode* pnode, vNodes)
                     {
-                        if((CNetAddr)pnode->addr != (CNetAddr)addr) continue;
+                        if((CNetAddr)pnode->addr != (CNetAddr)submittedToStormnode) continue;
+
                         std::string strReason;
                         if(txCollateral == CTransaction()){
                             if(!pwalletMain->CreateCollateralTransaction(txCollateral, strReason)){
@@ -1582,8 +1582,8 @@ bool CSandStormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
                             }
                         }
 
-                        vecStormnodesUsed.push_back(ssq.vin);
-                        sessionDenom = ssq.nDenom;
+                        vecStormnodesUsed.push_back(dsq.vin);
+                        sessionDenom = dsq.nDenom;
 
                         pnode->PushMessage("dsa", sessionDenom, txCollateral);
                         LogPrintf("DoAutomaticDenominating --- connected (from queue), sending dsa for %d %d - %s\n", sessionDenom, GetDenominationsByAmount(sessionTotalValue), pnode->addr.ToString().c_str());
@@ -1596,7 +1596,7 @@ bool CSandStormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
                     return DoAutomaticDenominating();
                 }
 
-                ssq.time = 0; //remove node
+                dsq.time = 0; //remove node
             }
         }
 
@@ -1605,38 +1605,34 @@ bool CSandStormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
         // otherwise, try one randomly
         while(i < 10)
         {   
-            CStormnode* psn = snodeman.FindRandom();
-            if(psn == NULL)
-            {
-                LogPrintf("DoAutomaticDenominating --- stormnode list is empty!\n");
-                return false;
-            }
+            CStormnode* sn = snodeman.FindRandom();
             //don't reuse stormnodes
             BOOST_FOREACH(CTxIn usedVin, vecStormnodesUsed) {
-                if(psn->vin == usedVin){
+                if(sn->vin == usedVin){
                     i++;
                     continue;
                 }
             }
-            if(psn->protocolVersion < MIN_POOL_PEER_PROTO_VERSION) {
+            if(sn->protocolVersion < sandStormPool.MIN_PEER_PROTO_VERSION) {
                 i++;
                 continue;
             }
 
-            if(psn->nLastSsq != 0 &&
-                psn->nLastSsq + snodeman.CountStormnodesAboveProtocol(MIN_POOL_PEER_PROTO_VERSION)/5 > sandStormPool.nSsqCount){
+            if(sn->nLastDsq != 0 &&
+                sn->nLastDsq + snodeman.CountStormnodesAboveProtocol(sandStormPool.MIN_PEER_PROTO_VERSION)/5 > sandStormPool.nDsqCount){
                 i++;
                 continue;
             }
 
             lastTimeChanged = GetTimeMillis();
-            LogPrintf("DoAutomaticDenominating -- attempt %d connection to stormnode %s\n", i, psn->addr.ToString().c_str());
-            if(ConnectNode((CAddress)psn->addr, NULL, true)){
-                
+            LogPrintf("DoAutomaticDenominating -- attempt %d connection to stormnode %s\n", i, sn->addr.ToString().c_str());
+            if(ConnectNode((CAddress)sn->addr, NULL, true)){
+                submittedToStormnode = sn->addr;
+
                 LOCK(cs_vNodes);
                 BOOST_FOREACH(CNode* pnode, vNodes)
                 {
-                    if((CNetAddr)pnode->addr != (CNetAddr)psn->addr) continue;
+                    if((CNetAddr)pnode->addr != (CNetAddr)sn->addr) continue;
 
                     std::string strReason;
                     if(txCollateral == CTransaction()){
@@ -1646,8 +1642,7 @@ bool CSandStormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
                         }
                     }
 
-                    submittedToStormnode = psn->addr;
-                    vecStormnodesUsed.push_back(psn->vin);
+                    vecStormnodesUsed.push_back(sn->vin);
 
                     std::vector<int64_t> vecAmounts;
                     pwalletMain->ConvertList(vCoins, vecAmounts);
@@ -1744,7 +1739,8 @@ bool CSandStormPool::MakeCollateralAmounts()
     std::string strFail = "";
     vector< pair<CScript, int64_t> > vecSend;
 
-    vecSend.push_back(make_pair(scriptChange, SANDSTORM_COLLATERAL*4));
+    vecSend.push_back(make_pair(scriptChange, (SANDSTORM_COLLATERAL*2)+SANDSTORM_FEE));
+    vecSend.push_back(make_pair(scriptChange, (SANDSTORM_COLLATERAL*2)+SANDSTORM_FEE));
 
     CCoinControl *coinControl=NULL;
     int32_t nChangePos;
@@ -1790,8 +1786,10 @@ bool CSandStormPool::CreateDenominated(int64_t nTotalValue)
 
     // ****** Add collateral outputs ************ /
     if(!pwalletMain->HasCollateralInputs()) {
-        vecSend.push_back(make_pair(scriptChange, SANDSTORM_COLLATERAL*4));
-        nValueLeft -= SANDSTORM_COLLATERAL*4;
+        vecSend.push_back(make_pair(scriptChange, (SANDSTORM_COLLATERAL*2)+SANDSTORM_FEE));
+        nValueLeft -= (SANDSTORM_COLLATERAL*2)+SANDSTORM_FEE;
+        vecSend.push_back(make_pair(scriptChange, (SANDSTORM_COLLATERAL*2)+SANDSTORM_FEE));
+        nValueLeft -= (SANDSTORM_COLLATERAL*2)+SANDSTORM_FEE;
     }
 
     // ****** Add denoms ************ /
@@ -1799,7 +1797,7 @@ bool CSandStormPool::CreateDenominated(int64_t nTotalValue)
         int nOutputs = 0;
 
         // add each output up to 10 times until it can't be added again
-        while(nValueLeft - v >= SANDSTORM_COLLATERAL && nOutputs <= 10) {
+        while(nValueLeft - v >= SANDSTORM_FEE && nOutputs <= 10) {
             CScript scriptChange;
             CPubKey vchPubKey;
             //use a unique change address
@@ -1876,12 +1874,12 @@ bool CSandStormPool::IsCompatibleWithSession(int64_t nDenom, CTransaction txColl
 
         if(!unitTest){
             //broadcast that I'm accepting entries, only if it's the first entry though
-            CSandstormQueue ssq;
-            ssq.nDenom = nDenom;
-            ssq.vin = activeStormnode.vin;
-            ssq.time = GetTime();
-            ssq.Sign();
-            ssq.Relay();
+            CSandstormQueue dsq;
+            dsq.nDenom = nDenom;
+            dsq.vin = activeStormnode.vin;
+            dsq.time = GetTime();
+            dsq.Sign();
+            dsq.Relay();
         }
 
         UpdateState(POOL_STATUS_QUEUE);
@@ -2139,7 +2137,7 @@ bool CSandstormQueue::Relay()
     LOCK(cs_vNodes);
     BOOST_FOREACH(CNode* pnode, vNodes){
         // always relay to everyone
-        pnode->PushMessage("ssq", (*this));
+        pnode->PushMessage("dsq", (*this));
     }
 
     return true;
@@ -2180,18 +2178,24 @@ void ThreadCheckSandStormPool()
         //LogPrintf("ThreadCheckSandStormPool::check timeout\n");
         sandStormPool.CheckTimeout();
 
-        if(c % 60 == 0)
-        {
-            LOCK(cs_main);
-            /*
-                cs_main is required for doing CStormnode.Check because something
-                is modifying the coins view without a mempool lock. It causes
-                segfaults from this code without the cs_main lock.
-            */
-            snodeman.CheckAndRemove();
+        if(c % 60 == 0){
             sandStormPool.ProcessStormnodeConnections();
             stormnodePayments.CleanPaymentList();
             CleanTransactionLocksList();
+        
+            // nodes refuse to relay sseep if it was less then STORMNODE_MIN_SSEEP_SECONDS ago
+            // STORMNODE_PING_WAIT_SECONDS gives some additional time on top of it
+            // so we have a timeout for this check on start unless we need to
+            if(c > STORMNODE_MIN_SSEEP_SECONDS + STORMNODE_PING_WAIT_SECONDS || snodeman.UpdateNeeded())
+            {
+                LOCK(cs_main);
+                /*
+                    cs_main is required for doing CStormnode.Check because something
+                    is modifying the coins view without a mempool lock. It causes
+                    segfaults from this code without the cs_main lock.
+                */
+                snodeman.CheckAndRemove();
+            }
         }
 
         if(c % STORMNODE_PING_SECONDS == 0) activeStormnode.ManageStatus();
@@ -2205,7 +2209,7 @@ void ThreadCheckSandStormPool()
                 LOCK(cs_vNodes);
                 BOOST_FOREACH(CNode* pnode, vNodes)
                 {
-                    if (pnode->nVersion >= MIN_POOL_PEER_PROTO_VERSION) {
+                    if (pnode->nVersion >= sandStormPool.MIN_PEER_PROTO_VERSION) {
 
                         //keep track of who we've asked for the list
                         if(pnode->HasFulfilledRequest("snsync")) continue;
@@ -2214,7 +2218,7 @@ void ThreadCheckSandStormPool()
                         LogPrintf("Successfully synced, asking for Stormnode list and payment list\n");
 
                         //request full sn list only if stormnodes.dat was updated quite a long time ago
-                        snodeman.SsegUpdate(pnode);                      
+                        if(snodeman.UpdateNeeded()) pnode->PushMessage("dseg", CTxIn());                      
                         pnode->PushMessage("snget"); //sync payees
                         pnode->PushMessage("getsporks"); //get current network sporks
                         RequestedStormNodeList++;

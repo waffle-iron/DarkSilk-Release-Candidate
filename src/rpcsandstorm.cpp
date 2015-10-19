@@ -129,28 +129,7 @@ Value stormnode(const Array& params, bool fHelp)
         (strCommand != "start" && strCommand != "start-alias" && strCommand != "start-many" && strCommand != "stop" && strCommand != "stop-alias" && strCommand != "stop-many" && strCommand != "list" && strCommand != "list-conf" && strCommand != "count"  && strCommand != "enforce"
             && strCommand != "debug" && strCommand != "current" && strCommand != "winners" && strCommand != "genkey" && strCommand != "connect" && strCommand != "outputs"))
         throw runtime_error(
-                "stormnode \"command\"... ( \"passphrase\" )\n"
-                "Set of commands to execute stormnode related actions\n"
-                "\nArguments:\n"
-                "1. \"command\"        (string or set of strings, required) The command to execute\n"
-                "2. \"passphrase\"     (string, optional) The wallet passphrase\n"
-                "\nAvailable commands:\n"
-                "  count        - Print number of all known stormnodes (optional: 'enabled', 'both')\n"
-                "  current      - Print info on current stormnode winner\n"
-                "  debug        - Print stormnode status\n"
-                "  genkey       - Generate new stormnodeprivkey\n"
-                "  enforce      - Enforce stormnode payments\n"
-                "  outputs      - Print stormnode compatible outputs\n"
-                "  start        - Start stormnode configured in darksilk.conf\n"
-                "  start-alias  - Start single stormnode by assigned alias configured in stormnode.conf\n"
-                "  start-many   - Start all stormnodes configured in stormnode.conf\n"
-                "  stop         - Stop stormnode configured in darksilk.conf\n"
-                "  stop-alias   - Stop single stormnode by assigned alias configured in stormnode.conf\n"
-                "  stop-many    - Stop all stormnodes configured in stormnode.conf\n"
-                "  list         - Print list of all known stormnodes (see stormnodelist for more info)\n"
-                "  list-conf    - Print stormnode.conf in JSON format\n"
-                "  winners      - Print list of stormnode winners\n"
-                );
+            "stormnode <start|start-alias|start-many|stop|stop-alias|stop-many|list|list-conf|count|debug|current|winners|genkey|enforce|outputs> [passphrase]\n");
 
     if (strCommand == "stop")
     {
@@ -306,11 +285,7 @@ Value stormnode(const Array& params, bool fHelp)
                 "too many parameters\n");
         }
 
-        if (params.size() == 2)
-        {
-            if(params[1] == "enabled") return snodeman.CountEnabled();
-            if(params[1] == "both") return boost::lexical_cast<std::string>(snodeman.CountEnabled()) + " / " + boost::lexical_cast<std::string>(snodeman.size());
-        }
+        if (params.size() == 2) return snodeman.CountEnabled();
         return snodeman.size();
     }
 
@@ -491,20 +466,7 @@ Value stormnode(const Array& params, bool fHelp)
     {
         CStormnode* winner = snodeman.GetCurrentStormNode(1);
         if(winner) {
-            Object obj;
-            CScript pubkey;
-            pubkey.SetDestination(winner->pubkey.GetID());
-            CTxDestination address1;
-            ExtractDestination(pubkey, address1);
-            CDarkSilkAddress address2(address1);
-
-            obj.push_back(Pair("IP:port",       winner->addr.ToString().c_str()));
-            obj.push_back(Pair("protocol",      (int64_t)winner->protocolVersion));
-            obj.push_back(Pair("vin",           winner->vin.prevout.hash.ToString().c_str()));
-            obj.push_back(Pair("pubkey",        address2.ToString().c_str()));
-            obj.push_back(Pair("lastseen",      (int64_t)winner->lastTimeSeen));
-            obj.push_back(Pair("activeseconds", (int64_t)(winner->lastTimeSeen - winner->now)));
-            return obj;
+            return winner->addr.ToString().c_str();
         }
 
         return "unknown";
@@ -616,7 +578,7 @@ Value stormnodelist(const Array& params, bool fHelp)
                 "\nArguments:\n"
                 "1. \"mode\"      (string, optional, defauls = active) The mode to run list in\n"
                 "2. \"filter\"    (string, optional) Filter results, can be applied in few modes only\n"
-                "\nAvailable modes:\n"
+                "Available modes:\n"
                 "  active         - Print '1' if active and '0' otherwise (can be filtered, exact match)\n"
                 "  activeseconds  - Print number of seconds stormnode recognized by the network as enabled\n"
                 "  full           - Print info in format 'active | protocol | pubkey | vin | lastseen | activeseconds' (can be filtered, partial match)\n"
@@ -634,12 +596,9 @@ Value stormnodelist(const Array& params, bool fHelp)
         
         std::string strAddr = sn.addr.ToString().c_str();
         if(strMode == "active"){
-            if(strFilter !="" && strFilter != boost::lexical_cast<std::string>(sn.IsEnabled()) &&
-            sn.addr.ToString().find(strFilter) == string::npos) continue;
             obj.push_back(Pair(strAddr,       (int)sn.IsEnabled()));
         } else if (strMode == "vin") {
-            if(strFilter !="" && sn.vin.prevout.hash.ToString().find(strFilter) == string::npos &&
-            sn.addr.ToString().find(strFilter) == string::npos) continue;
+            if(strFilter !="" && sn.vin.prevout.hash.ToString().find(strFilter) == string::npos) continue;
             obj.push_back(Pair(strAddr,       sn.vin.prevout.hash.ToString().c_str()));
         } else if (strMode == "pubkey") {
             CScript pubkey;
@@ -648,21 +607,15 @@ Value stormnodelist(const Array& params, bool fHelp)
             ExtractDestination(pubkey, address1);
             CDarkSilkAddress address2(address1);
 
-        if(strFilter !="" && address2.ToString().find(strFilter) == string::npos &&
-            sn.addr.ToString().find(strFilter) == string::npos) continue;   
+            if(strFilter !="" && address2.ToString().find(strFilter) == string::npos) continue;
             obj.push_back(Pair(strAddr,       address2.ToString().c_str()));
         } else if (strMode == "protocol") {
-        if(strFilter !="" && strFilter != boost::lexical_cast<std::string>(sn.protocolVersion) &&
-            sn.addr.ToString().find(strFilter) == string::npos) continue;
             obj.push_back(Pair(strAddr,       (int64_t)sn.protocolVersion));
         } else if (strMode == "lastseen") {
-            if(strFilter !="" && sn.addr.ToString().find(strFilter) == string::npos) continue;
             obj.push_back(Pair(strAddr,       (int64_t)sn.lastTimeSeen));
         } else if (strMode == "activeseconds") {
-            if(strFilter !="" && sn.addr.ToString().find(strFilter) == string::npos) continue;
             obj.push_back(Pair(strAddr,       (int64_t)(sn.lastTimeSeen - sn.now)));
         } else if (strMode == "rank") {
-            if(strFilter !="" && sn.addr.ToString().find(strFilter) == string::npos) continue;
             obj.push_back(Pair(strAddr,       (int)(snodeman.GetStormnodeRank(sn.vin, pindexBest->nHeight))));
         } else if (strMode == "full") {
             CScript pubkey;
