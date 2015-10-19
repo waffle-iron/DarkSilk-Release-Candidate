@@ -1567,12 +1567,12 @@ bool CSandStormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
 
                 // connect to stormnode and submit the queue request
                 if(ConnectNode((CAddress)addr, NULL, true)){
-                    submittedToStormnode = addr;
+                    
 
                     LOCK(cs_vNodes);
                     BOOST_FOREACH(CNode* pnode, vNodes)
                     {
-                        if((CNetAddr)pnode->addr != (CNetAddr)submittedToStormnode) continue;
+                        if((CNetAddr)pnode->addr != (CNetAddr)addr) continue;
 
                         std::string strReason;
                         if(txCollateral == CTransaction()){
@@ -1582,6 +1582,7 @@ bool CSandStormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
                             }
                         }
 
+                        submittedToStormnode = addr;
                         vecStormnodesUsed.push_back(dsq.vin);
                         sessionDenom = dsq.nDenom;
 
@@ -1605,34 +1606,37 @@ bool CSandStormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
         // otherwise, try one randomly
         while(i < 10)
         {   
-            CStormnode* sn = snodeman.FindRandom();
+            CStormnode* psn = snodeman.FindRandom();
+            if(psn == NULL)
+            {
+                LogPrintf("DoAutomaticDenominating --- stormnode list is empty!\n");
+                return false;
+            }
             //don't reuse stormnodes
             BOOST_FOREACH(CTxIn usedVin, vecStormnodesUsed) {
-                if(sn->vin == usedVin){
+                if(psn->vin == usedVin){
                     i++;
                     continue;
                 }
             }
-            if(sn->protocolVersion < sandStormPool.MIN_PEER_PROTO_VERSION) {
+            if(psn->protocolVersion < sandStormPool.MIN_PEER_PROTO_VERSION) {
                 i++;
                 continue;
             }
 
-            if(sn->nLastDsq != 0 &&
-                sn->nLastDsq + snodeman.CountStormnodesAboveProtocol(sandStormPool.MIN_PEER_PROTO_VERSION)/5 > sandStormPool.nDsqCount){
+            if(psn->nLastDsq != 0 &&
+                psn->nLastDsq + snodeman.CountStormnodesAboveProtocol(sandStormPool.MIN_PEER_PROTO_VERSION)/5 > sandStormPool.nDsqCount){
                 i++;
                 continue;
             }
 
             lastTimeChanged = GetTimeMillis();
-            LogPrintf("DoAutomaticDenominating -- attempt %d connection to stormnode %s\n", i, sn->addr.ToString().c_str());
-            if(ConnectNode((CAddress)sn->addr, NULL, true)){
-                submittedToStormnode = sn->addr;
-
+            LogPrintf("DoAutomaticDenominating -- attempt %d connection to stormnode %s\n", i, psn->addr.ToString().c_str());
+            if(ConnectNode((CAddress)psn->addr, NULL, true)) {
                 LOCK(cs_vNodes);
                 BOOST_FOREACH(CNode* pnode, vNodes)
                 {
-                    if((CNetAddr)pnode->addr != (CNetAddr)sn->addr) continue;
+                    if((CNetAddr)pnode->addr != (CNetAddr)psn->addr) continue;
 
                     std::string strReason;
                     if(txCollateral == CTransaction()){
@@ -1642,7 +1646,8 @@ bool CSandStormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
                         }
                     }
 
-                    vecStormnodesUsed.push_back(sn->vin);
+                    submittedToStormnode = psn->addr;
+                    vecStormnodesUsed.push_back(psn->vin);
 
                     std::vector<int64_t> vecAmounts;
                     pwalletMain->ConvertList(vCoins, vecAmounts);
