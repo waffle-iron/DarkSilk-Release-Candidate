@@ -433,7 +433,8 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
         CTxOut vout = CTxOut(STORMNODE_COLLATERAL*COIN, sandStormPool.collateralPubKey);
         tx.vin.push_back(vin);
         tx.vout.push_back(vout);
-        bool* pfMissingInputs = false;
+        bool* pfMissingInputs = new bool;
+        *pfMissingInputs = false;
         if(AcceptableInputs(mempool, tx, false, pfMissingInputs)){
             if(fDebug) LogPrintf("ssee - Accepted stormnode entry %i %i\n", count, current);
 

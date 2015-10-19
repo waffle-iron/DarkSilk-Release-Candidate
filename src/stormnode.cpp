@@ -223,7 +223,8 @@ void CStormnode::Check()
         tx.vout.push_back(vout);
 
         //if(!AcceptableInputs(mempool, state, tx)){
-        bool* pfMissingInputs = false;
+        bool* pfMissingInputs = new bool;
+        *pfMissingInputs = false;
 	if(!AcceptableInputs(mempool, tx, false, pfMissingInputs)){
             activeState = STORMNODE_VIN_SPENT;
             return;

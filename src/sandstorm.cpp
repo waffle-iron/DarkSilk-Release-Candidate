@@ -1041,7 +1041,8 @@ bool CSandStormPool::IsCollateralValid(const CTransaction& txCollateral){
 
     CValidationState state;
     //if(!AcceptableInputs(mempool, state, txCollateral)){
-    bool* pfMissingInputs = false;
+    bool* pfMissingInputs = new bool;
+    *pfMissingInputs = false;
     if(!AcceptableInputs(mempool, txCollateral, false, pfMissingInputs)){
         if(fDebug) LogPrintf ("CSandStormPool::IsCollateralValid - didn't pass IsAcceptable\n");
         return false;
