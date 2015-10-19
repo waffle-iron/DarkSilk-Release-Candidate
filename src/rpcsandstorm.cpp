@@ -129,8 +129,28 @@ Value stormnode(const Array& params, bool fHelp)
         (strCommand != "start" && strCommand != "start-alias" && strCommand != "start-many" && strCommand != "stop" && strCommand != "stop-alias" && strCommand != "stop-many" && strCommand != "list" && strCommand != "list-conf" && strCommand != "count"  && strCommand != "enforce"
             && strCommand != "debug" && strCommand != "current" && strCommand != "winners" && strCommand != "genkey" && strCommand != "connect" && strCommand != "outputs"))
         throw runtime_error(
-            "stormnode <start|start-alias|start-many|stop|stop-alias|stop-many|list|list-conf|count|debug|current|winners|genkey|enforce|outputs> [passphrase]\n");
-
+                "stormnode \"command\"... ( \"passphrase\" )\n"
+                "Set of commands to execute stormnode related actions\n"
+                "\nArguments:\n"
+                "1. \"command\"        (string or set of strings, required) The command to execute\n"
+                "2. \"passphrase\"     (string, optional) The wallet passphrase\n"
+                "\nAvailable commands:\n"
+                "  count        - Print number of all known stormnodes (optional: 'enabled', 'both')\n"
+                "  current      - Print info on current stormnode winner\n"
+                "  debug        - Print stormnode status\n"
+                "  genkey       - Generate new stormnodeprivkey\n"
+                "  enforce      - Enforce stormnode payments\n"
+                "  outputs      - Print stormnode compatible outputs\n"
+                "  start        - Start stormnode configured in darksilk.conf\n"
+                "  start-alias  - Start single stormnode by assigned alias configured in stormnode.conf\n"
+                "  start-many   - Start all stormnodes configured in stormnode.conf\n"
+                "  stop         - Stop stormnode configured in darksilk.conf\n"
+                "  stop-alias   - Stop single stormnode by assigned alias configured in stormnode.conf\n"
+                "  stop-many    - Stop all stormnodes configured in stormnode.conf\n"
+                "  list         - Print list of all known stormnodes (see stormnodelist for more info)\n"
+                "  list-conf    - Print stormnode.conf in JSON format\n"
+                "  winners      - Print list of stormnode winners\n"
+                );
     if (strCommand == "stop")
     {
         if(!fStormNode) return "you must set stormnode=1 in the configuration";
@@ -285,7 +305,11 @@ Value stormnode(const Array& params, bool fHelp)
                 "too many parameters\n");
         }
 
-        if (params.size() == 2) return snodeman.CountEnabled();
+        if (params.size() == 2)
+        {
+            if(params[1] == "enabled") return snodeman.CountEnabled();
+            if(params[1] == "both") return boost::lexical_cast<std::string>(snodeman.CountEnabled()) + " / " + boost::lexical_cast<std::string>(snodeman.size());        
+        }
         return snodeman.size();
     }
 
@@ -466,7 +490,20 @@ Value stormnode(const Array& params, bool fHelp)
     {
         CStormnode* winner = snodeman.GetCurrentStormNode(1);
         if(winner) {
-            return winner->addr.ToString().c_str();
+            Object obj;
+            CScript pubkey;
+            pubkey.SetDestination(winner->pubkey.GetID());
+            CTxDestination address1;
+            ExtractDestination(pubkey, address1);
+            CBitcoinAddress address2(address1);
+
+            obj.push_back(Pair("IP:port",       winner->addr.ToString().c_str()));
+            obj.push_back(Pair("protocol",      (int64_t)winner->protocolVersion));
+            obj.push_back(Pair("vin",           winner->vin.prevout.hash.ToString().c_str()));
+            obj.push_back(Pair("pubkey",        address2.ToString().c_str()));
+            obj.push_back(Pair("lastseen",      (int64_t)winner->lastTimeSeen));
+            obj.push_back(Pair("activeseconds", (int64_t)(winner->lastTimeSeen - winner->now)));
+            return obj;
         }
 
         return "unknown";
@@ -578,7 +615,7 @@ Value stormnodelist(const Array& params, bool fHelp)
                 "\nArguments:\n"
                 "1. \"mode\"      (string, optional, defauls = active) The mode to run list in\n"
                 "2. \"filter\"    (string, optional) Filter results, can be applied in few modes only\n"
-                "Available modes:\n"
+                "\nAvailable modes:\n"
                 "  active         - Print '1' if active and '0' otherwise (can be filtered, exact match)\n"
                 "  activeseconds  - Print number of seconds stormnode recognized by the network as enabled\n"
                 "  full           - Print info in format 'active | protocol | pubkey | vin | lastseen | activeseconds' (can be filtered, partial match)\n"
