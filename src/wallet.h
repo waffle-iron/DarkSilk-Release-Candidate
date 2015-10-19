@@ -852,10 +852,9 @@ public:
         return strprintf("COutput(%s, %d, %d) [%s]", tx->GetHash().ToString(), i, nDepth, FormatMoney(tx->vout[i].nValue));
     }
 
-    //Used with Sandstorm. Will return fees, then denominations, everything else, then very small inputs that aren't fees
+    //Used with Sandstorm. Will return largest nondenom, then denominations, then very small inputs
     int Priority() const
     {
-        if(tx->vout[i].nValue == SANDSTORM_FEE) return -20000;
         BOOST_FOREACH(int64_t d, sandStormDenominations)
             if(tx->vout[i].nValue == d) return 10000;
         if(tx->vout[i].nValue < 1*COIN) return 20000;

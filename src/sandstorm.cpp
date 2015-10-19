@@ -1031,7 +1031,7 @@ bool CSandStormPool::IsCollateralValid(const CTransaction& txCollateral){
     }
 
     //collateral transactions are required to pay out SANDSTORM_COLLATERAL as a fee to the miners
-    if(nValueIn-nValueOut < SANDSTORM_COLLATERAL) {
+    if(nValueIn - nValueOut < SANDSTORM_COLLATERAL) {
         if(fDebug) LogPrintf ("CSandStormPool::IsCollateralValid - did not include enough fees in transaction %d\n%s\n", nValueOut-nValueIn, txCollateral.ToString().c_str());
         return false;
     }
@@ -1461,13 +1461,13 @@ bool CSandStormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
     int64_t nValueMin = CENT;
     int64_t nValueIn = 0;
 
-    // should not be less than fees in SANDSTORM_FEE + few (lets say 5) smallest denoms
-    int64_t nLowestDenom = SANDSTORM_FEE + sandStormDenominations[sandStormDenominations.size() - 1]*5;
+    // should not be less than fees in SANDSTORM_COLLATERAL + few (lets say 5) smallest denoms
+    int64_t nLowestDenom = SANDSTORM_COLLATERAL + sandStormDenominations[sandStormDenominations.size() - 1]*5;
 
     // if there are no SS collateral inputs yet
     if(!pwalletMain->HasCollateralInputs())
         // should have some additional amount for them
-        nLowestDenom += (SANDSTORM_COLLATERAL*4)+SANDSTORM_FEE*2;
+        nLowestDenom += SANDSTORM_COLLATERAL*4;
 
     int64_t nBalanceNeedsAnonymized = nAnonymizeDarkSilkAmount*COIN - pwalletMain->GetAnonymizedBalance();
 
@@ -1744,8 +1744,7 @@ bool CSandStormPool::MakeCollateralAmounts()
     std::string strFail = "";
     vector< pair<CScript, int64_t> > vecSend;
 
-    vecSend.push_back(make_pair(scriptChange, (SANDSTORM_COLLATERAL*2)+SANDSTORM_FEE));
-    vecSend.push_back(make_pair(scriptChange, (SANDSTORM_COLLATERAL*2)+SANDSTORM_FEE));
+    vecSend.push_back(make_pair(scriptChange, SANDSTORM_COLLATERAL*4));
 
     CCoinControl *coinControl=NULL;
     int32_t nChangePos;
