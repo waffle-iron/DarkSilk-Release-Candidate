@@ -556,7 +556,7 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
                     }
                 }
 
-                int64_t askAgain = GetTime()+(60*60*3);
+                int64_t askAgain = GetTime() + MASTERNODES_DSEG_SECONDS;
                 askedForStormnodeList[pfrom->addr] = askAgain;
             }
         } //else, asking for a specific node which is ok
