@@ -123,8 +123,8 @@ void DumpStormnodes()
     CStormnodeDB sndb;
     sndb.Write(snodeman);
 
-    LogPrint("stormnode", "Flushed %d stormnodes to stormnodes.dat  %dms\n",
-           snodeman.size(), GetTimeMillis() - nStart);
+    LogPrintf("Flushed info to stormnodes.dat  %dms\n", GetTimeMillis() - nStart);
+    LogPrintf("  %s\n", snodeman.ToString());
 }
 
 CStormnodeMan::CStormnodeMan() {}
@@ -585,4 +585,15 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
         LogPrintf("sseg - Sent %d stormnode entries to %s\n", i, pfrom->addr.ToString().c_str());
     }
 
+}
+
+std::string CStormnodeMan::ToString()
+{
+    std::ostringstream info;
+
+    info << "stormnodes: " << (int)vStormnodes.size() <<
+            ", peers we asked for stormnode list: " << (int)askedForStormnodeList.size() <<
+            ", entries in node list we asked for: " << (int)askedForStormnodeListEntry.size();
+
+    return info.str();
 }

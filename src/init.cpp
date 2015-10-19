@@ -894,10 +894,12 @@ bool AppInit2(boost::thread_group& threadGroup)
         CAddrDB adb;
         if (!adb.Read(addrman))
             LogPrintf("Invalid or missing peers.dat; recreating\n");
+        else
+            snodeman.CheckAndRemove(); // clean out expired
     }
 
-    LogPrintf("Loaded %i addresses from peers.dat  %dms\n",
-           addrman.size(), GetTimeMillis() - nStart);
+    LogPrintf("Loaded info from stormnodes.dat  %dms\n", GetTimeMillis() - nStart);
+    LogPrintf("  %s\n", snodeman.ToString());
 
     // ********************************************************* Step 10.1: startup secure messaging
 

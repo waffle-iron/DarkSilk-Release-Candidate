@@ -97,6 +97,8 @@ public:
     // Return the number of (unique) stormnodes
     int size() { return vStormnodes.size(); }
 
+    std::string ToString();
+
     // Get the current winner for this block
     CStormnode* GetCurrentStormNode(int mod=1, int64_t nBlockHeight=0, int minProtocol=0);
 
