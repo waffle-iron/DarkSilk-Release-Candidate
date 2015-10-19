@@ -1790,10 +1790,8 @@ bool CSandStormPool::CreateDenominated(int64_t nTotalValue)
 
     // ****** Add collateral outputs ************ /
     if(!pwalletMain->HasCollateralInputs()) {
-        vecSend.push_back(make_pair(scriptChange, (SANDSTORM_COLLATERAL*2)+SANDSTORM_FEE));
-        nValueLeft -= (SANDSTORM_COLLATERAL*2)+SANDSTORM_FEE;
-        vecSend.push_back(make_pair(scriptChange, (SANDSTORM_COLLATERAL*2)+SANDSTORM_FEE));
-        nValueLeft -= (SANDSTORM_COLLATERAL*2)+SANDSTORM_FEE;
+        vecSend.push_back(make_pair(scriptChange, SANDSTORM_COLLATERAL*4));
+        nValueLeft -= SANDSTORM_COLLATERAL*4;
     }
 
     // ****** Add denoms ************ /
