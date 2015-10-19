@@ -92,7 +92,7 @@ public:
     void CheckAndRemove();
 
     // Clear stormnode vector
-    void Clear() { vStormnodes.clear(); lastTimeChanged = 0; }
+    void Clear(); 
 
     // Return the number of (unique) stormnodes
     int size() { return vStormnodes.size(); }

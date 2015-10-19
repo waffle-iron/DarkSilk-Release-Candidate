@@ -235,6 +235,15 @@ int CStormnodeMan::CountStormnodesAboveProtocol(int protocolVersion)
     return i;
 }
 
+void CStormnodeMan::Clear()
+{
+    LOCK(cs);
+    lastTimeChanged = 0;
+    vStormnodes.clear();
+    askedForStormnodeList.clear();
+    askedForStormnodeListEntry.clear();
+}
+
 int CStormnodeMan::CountEnabled()
 {
     int i = 0;
