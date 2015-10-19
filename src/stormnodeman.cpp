@@ -119,8 +119,7 @@ void DumpStormnodes()
     CStormnodeDB sndb;
     sndb.Write(snodeman);
 
-    LogPrint("stormnode", "Flushed %d stormnodes to stormnodes.dat  %dms\n",
-           snodeman.size(), GetTimeMillis() - nStart);
+    LogPrintf("Flushed %d stormnodes to stormnodes.dat  %dms\n", snodeman.size(), GetTimeMillis() - nStart);
 }
 
 CStormnodeMan::CStormnodeMan() {}
@@ -136,6 +135,7 @@ bool CStormnodeMan::Add(CStormnode &sn)
 
     if (psn == NULL)
     {
+        LogPrintf("CStormnodeMan: Adding new stormnode %s\n", sn.addr.ToString().c_str());
         vStormnodes.push_back(sn);
         return true;
     }
@@ -161,8 +161,8 @@ void CStormnodeMan::CheckAndRemove()
     vector<CStormnode>::iterator it = vStormnodes.begin();
     while(it != vStormnodes.end()){
         if((*it).activeState == 4 || (*it).activeState == 3){
-            LogPrintf("Removing inactive stormnode %s\n", (*it).addr.ToString().c_str());
-            vStormnodes.erase(it++);
+            LogPrintf("CStormnodeMan: Removing inactive stormnode %s\n", (*it).addr.ToString().c_str());
+            it = vStormnodes.erase(it);
     } else {
         ++it;
     }
@@ -175,7 +175,7 @@ void CStormnodeMan::CheckAndRemove()
         if((*it1).second < GetTime()) {
             mAskedUsForStormnodeList.erase(it1++);
     } else {
-        it1++;
+        ++it1;
     }
 }
 
@@ -184,7 +184,7 @@ void CStormnodeMan::CheckAndRemove()
         if((*it1).second < GetTime()) {
             mWeAskedForStormnodeList.erase(it1++);
     } else {
-        it1++;
+        ++it1;
     }
 }
 
@@ -194,9 +194,18 @@ void CStormnodeMan::CheckAndRemove()
         if((*it2).second < GetTime()) {
             mWeAskedForStormnodeListEntry.erase(it2++);
     } else {
-        it2++;
+        ++it2;
         }
     }
+}
+
+void CStormnodeMan::Clear()
+{
+    LOCK(cs);
+    vStormnodes.clear();
+    mAskedUsForStormnodeList.clear();
+    mWeAskedForStormnodeList.clear();
+    mWeAskedForStormnodeListEntry.clear();
 }
 
 int CStormnodeMan::CountEnabled()
@@ -225,12 +234,14 @@ int CStormnodeMan::CountStormnodesAboveProtocol(int protocolVersion)
 }
 
 void CStormnodeMan::SsegUpdate(CNode* pnode)
-{
+{   
+    LOCK(cs);
+
     std::map<CNetAddr, int64_t>::iterator it = mWeAskedForStormnodeList.find(pnode->addr);
     if (it != mWeAskedForStormnodeList.end())
     {
         if (GetTime() < (*it).second) {
-            LogPrintf("dseg - we already asked %s for the list; skipping...\n", pnode->addr.ToString());
+            LogPrintf("sseg - we already asked %s for the list; skipping...\n", pnode->addr.ToString());
             return;
         }
     }
@@ -565,7 +576,7 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
 
         LogPrintf("sseep - Asking source node for missing entry %s\n", vin.ToString().c_str());
         pfrom->PushMessage("sseg", vin);
-        int64_t askAgain = GetTime()+(60*60*24);
+        int64_t askAgain = GetTime() + STORMNODE_MIN_SSEEP_SECONDS;
         mWeAskedForStormnodeListEntry[vin.prevout] = askAgain;
 
     } else if (strCommand == "sseg") { //Get stormnode list or specific entry
@@ -617,4 +628,16 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
         LogPrintf("sseg - Sent %d stormnode entries to %s\n", i, pfrom->addr.ToString().c_str());
     }
 
+}
+
+std::string CStormnodeMan::ToString()
+{
+    std::ostringstream info;
+
+    info << "stormnodes: " << (int)vStormnodes.size() <<
+            ", peers who asked us for stormnode list: " << (int)mAskedUsForStormnodeList.size() <<
+            ", peers we asked for stormnode list: " << (int)mWeAskedForStormnodeList.size() <<
+            ", entries in stormnode list we asked for: " << (int)mWeAskedForStormnodeListEntry.size();
+
+    return info.str();
 }

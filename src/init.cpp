@@ -923,6 +923,8 @@ bool AppInit2(boost::thread_group& threadGroup)
         CStormnodeDB sndb;
         if (!sndb.Read(snodeman))
             LogPrintf("Invalid or missing stormnodes.dat; recreating\n");
+        else
+            snodeman.CheckAndRemove(); // clean out expired
     }
 
     LogPrintf("Loaded %i stormnodes from stormnodes.dat  %dms\n",

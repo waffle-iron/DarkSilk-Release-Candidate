@@ -35,6 +35,7 @@ int nCompleteTXLocks;
 void ProcessMessageInstantX(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
 {
     if(fLiteMode) return; //disable all sandstorm/stormnode related functionality
+    if(IsInitialBlockDownload()) return;
     if(!IsSporkActive(SPORK_1_STORMNODE_PAYMENTS_ENFORCEMENT)) return;
 
     if (strCommand == "txlreq")

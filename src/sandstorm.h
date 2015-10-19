@@ -39,6 +39,8 @@ class CActiveStormnode;
 #define SANDSTORM_QUEUE_TIMEOUT                 120
 #define SANDSTORM_SIGNING_TIMEOUT               30
 
+static const int MIN_POOL_PEER_PROTO_VERSION = 60020; // minimum peer version accepted by SandStormPool
+
 extern CSandStormPool sandStormPool;
 extern CSandStormSigner sandStormSigner;
 extern std::vector<CSandstormQueue> vecSandstormQueue;
@@ -273,7 +275,7 @@ public:
     std::string strAutoDenomResult;
 
     //incremented whenever a DSQ comes through
-    int64_t nDsqCount;
+    int64_t nSsqCount;
 
     CSandStormPool()
     {
@@ -285,7 +287,7 @@ public:
         unitTest = false;
         txCollateral = CTransaction();
         minBlockSpacing = 1;
-        nDsqCount = 0;
+        nSsqCount = 0;
         lastNewBlock = 0;
 
         SetNull();

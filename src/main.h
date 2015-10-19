@@ -46,8 +46,8 @@ static const int64_t STATIC_POS_REWARD = COIN * 1; // Static Reward of 1 DRKSLK
 #define STORMNODE_REMOTELY_ENABLED            9
 
 #define STORMNODE_MIN_CONFIRMATIONS           15
-#define STORMNODE_MIN_DSEEP_SECONDS           (30*60)
-#define STORMNODE_MIN_DSEE_SECONDS            (5*60)
+#define STORMNODE_MIN_SSEEP_SECONDS           (30*60)
+#define STORMNODE_MIN_SSEE_SECONDS            (5*60)
 #define STORMNODE_PING_SECONDS                (1*60)
 #define STORMNODE_PING_WAIT_SECONDS           (5*60)
 #define STORMNODE_EXPIRATION_SECONDS          (65*60)

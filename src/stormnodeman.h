@@ -56,7 +56,7 @@ private:
     std::map<COutPoint, int64_t> mWeAskedForStormnodeListEntry;
 
 public:
-    
+
     IMPLEMENT_SERIALIZE
     (
         // serialized format:
@@ -87,7 +87,7 @@ public:
     void CheckAndRemove();
 
     // Clear stormnode vector
-    void Clear() { vStormnodes.clear(); }
+    void Clear();
 
     int CountEnabled();
 
@@ -115,6 +115,8 @@ public:
 
     // Return the number of (unique) stormnodes
     int size() { return vStormnodes.size(); }
+
+    std::string ToString();
 
 };
 
