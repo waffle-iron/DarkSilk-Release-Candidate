@@ -235,8 +235,6 @@ int CStormnodeMan::CountStormnodesAboveProtocol(int protocolVersion)
 
 void CStormnodeMan::SsegUpdate(CNode* pnode)
 {   
-    LOCK(cs);
-
     std::map<CNetAddr, int64_t>::iterator it = mWeAskedForStormnodeList.find(pnode->addr);
     if (it != mWeAskedForStormnodeList.end())
     {
