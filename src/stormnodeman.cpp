@@ -163,9 +163,11 @@ CStormnode *CStormnodeMan::FindRandom()
 }
 
 
-CStormnode *CStormnodeMan::FindNotInVec(const std::vector<CTxIn> &vVins)
+CStormnode* CStormnodeMan::FindOldestNotInVec(const std::vector<CTxIn> &vVins)
 {
     LOCK(cs);
+
+    CStormnode *pOldestStormnode = NULL;
 
     BOOST_FOREACH(CStormnode &sn, vStormnodes)
     {
@@ -182,10 +184,11 @@ CStormnode *CStormnodeMan::FindNotInVec(const std::vector<CTxIn> &vVins)
 
         if(found) continue;
 
-        return &sn;
+        if(pOldestStormnode == NULL || pOldestStormnode->GetStormnodeInputAge() < sn.GetStormnodeInputAge())
+            pOldestStormnode = &sn;
     }
 
-    return NULL;
+    return pOldestStormnode;
 }
 
 bool CStormnodeMan::Add(CStormnode &sn)
@@ -437,10 +440,10 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
             if(count == -1 && psn->pubkey == pubkey && !psn->UpdatedWithin(STORMNODE_MIN_SSEE_SECONDS)){
                 psn->UpdateLastSeen();
 
-                if(psn->now < sigTime){ //take the newest entry
+                if(psn->sigTime < sigTime){ //take the newest entry
                     LogPrintf("ssee - Got updated entry for %s\n", addr.ToString().c_str());
                     psn->pubkey2 = pubkey2;
-                    psn->now = sigTime;
+                    psn->sigTime = sigTime;
                     psn->sig = vchSig;
                     psn->protocolVersion = protocolVersion;
                     psn->addr = addr;
@@ -481,6 +484,23 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
                 Misbehaving(pfrom->GetId(), 20);
                 return;
             }
+
+            // verify that sig time is legit in past
+            // should be at least not earlier than block when 1000 DRKSLK tx got STORMNODE_MIN_CONFIRMATIONS
+//            uint256 hashBlock = 0;
+//            GetTransaction(vin.prevout.hash, tx, hashBlock, true);
+//            map<uint256, CBlockIndex*>::iterator mi = mapBlockIndex.find(hashBlock);
+//            if (mi != mapBlockIndex.end() && (*mi).second)
+//            {
+//                CBlockIndex* pSNIndex = (*mi).second; // block for 1000 DRKSLK tx -> 1 confirmation
+//                CBlockIndex* pConfIndex = chainActive[pSNIndex->nHeight + STORMNODE_MIN_CONFIRMATIONS - 1]; // block where tx got STORMNODE_MIN_CONFIRMATIONS
+//               if(pConfIndex->GetBlockTime() > sigTime)
+//               {
+//                    LogPrintf("dsee - Bad sigTime %d for masternode %20s %105s (%i conf block is at %d)\n",
+//                              sigTime, addr.ToString(), vin.ToString(), STORMNODE_MIN_CONFIRMATIONS, pConfIndex->GetBlockTime());
+//                    return;
+//                }
+//            }
 
             // use this as a peer
             addrman.Add(CAddress(addr), pfrom->addr, 2*60*60);
@@ -619,9 +639,9 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
             {
                 if(fDebug) LogPrintf("sseg - Sending stormnode entry - %s \n", sn.addr.ToString().c_str());
                 if(vin == CTxIn()){
-                    pfrom->PushMessage("ssee", sn.vin, sn.addr, sn.sig, sn.now, sn.pubkey, sn.pubkey2, count, i, sn.lastTimeSeen, sn.protocolVersion);
+                    pfrom->PushMessage("ssee", sn.vin, sn.addr, sn.sig, sn.sigTime, sn.pubkey, sn.pubkey2, count, i, sn.lastTimeSeen, sn.protocolVersion);
                 } else if (vin == sn.vin) {
-                    pfrom->PushMessage("ssee", sn.vin, sn.addr, sn.sig, sn.now, sn.pubkey, sn.pubkey2, count, i, sn.lastTimeSeen, sn.protocolVersion);
+                    pfrom->PushMessage("ssee", sn.vin, sn.addr, sn.sig, sn.sigTime, sn.pubkey, sn.pubkey2, count, i, sn.lastTimeSeen, sn.protocolVersion);
                     LogPrintf("sseg - Sent 1 stormnode entries to %s\n", pfrom->addr.ToString().c_str());
                     return;
                 }

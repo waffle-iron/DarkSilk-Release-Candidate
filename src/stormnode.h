@@ -80,7 +80,7 @@ public:
     CPubKey pubkey2;
     std::vector<unsigned char> sig;
     int activeState;
-    int64_t now; //ssee message times
+    int64_t sigTime; //ssee message times
     int64_t lastSseep;
     int64_t lastTimeSeen;
     int cacheInputAge;
@@ -92,7 +92,7 @@ public:
 
     CStormnode();
     CStormnode(const CStormnode& other);
-    CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::vector<unsigned char> newSig, int64_t newNow, CPubKey newPubkey2, int protocolVersionIn);
+    CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::vector<unsigned char> newSig, int64_t newSigTime, CPubKey newPubkey2, int protocolVersionIn);
 
     void swap(CStormnode& first, CStormnode& second) // nothrow    
     {
@@ -107,7 +107,7 @@ public:
         swap(first.pubkey2, second.pubkey2);
         swap(first.sig, second.sig);
         swap(first.activeState, second.activeState);
-        swap(first.now, second.now);
+        swap(first.sigTime, second.sigTime);
         swap(first.lastSseep, second.lastSseep);
         swap(first.lastTimeSeen, second.lastTimeSeen);
         swap(first.cacheInputAge, second.cacheInputAge);
@@ -149,7 +149,7 @@ public:
                 READWRITE(pubkey2);
                 READWRITE(sig);
                 READWRITE(activeState);
-                READWRITE(now);
+                READWRITE(sigTime);
                 READWRITE(lastSseep);
                 READWRITE(lastTimeSeen);
                 READWRITE(cacheInputAge);

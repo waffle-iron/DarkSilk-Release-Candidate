@@ -82,7 +82,7 @@ public:
     CStormnode* FindRandom();
 
     //Find an entry thta do not match every entry provided vector
-    CStormnode* FindNotInVec(const std::vector<CTxIn> &vVins);
+    CStormnode* FindOldestNotInVec(const std::vector<CTxIn> &vVins);
 
     // Add an entry
     bool Add(CStormnode &sn);

@@ -502,7 +502,7 @@ Value stormnode(const Array& params, bool fHelp)
             obj.push_back(Pair("vin",           winner->vin.prevout.hash.ToString().c_str()));
             obj.push_back(Pair("pubkey",        address2.ToString().c_str()));
             obj.push_back(Pair("lastseen",      (int64_t)winner->lastTimeSeen));
-            obj.push_back(Pair("activeseconds", (int64_t)(winner->lastTimeSeen - winner->now)));
+            obj.push_back(Pair("activeseconds", (int64_t)(winner->lastTimeSeen - winner->sigTime)));
             return obj;
         }
 
@@ -659,7 +659,7 @@ Value stormnodelist(const Array& params, bool fHelp)
             obj.push_back(Pair(strAddr,       (int64_t)sn.lastTimeSeen));
         } else if (strMode == "activeseconds") {
             if(strFilter !="" && sn.addr.ToString().find(strFilter) == string::npos) continue;
-            obj.push_back(Pair(strAddr,       (int64_t)(sn.lastTimeSeen - sn.now)));
+            obj.push_back(Pair(strAddr,       (int64_t)(sn.lastTimeSeen - sn.sigTime)));
         } else if (strMode == "rank") {
             if(strFilter !="" && sn.addr.ToString().find(strFilter) == string::npos) continue;
             obj.push_back(Pair(strAddr,       (int)(snodeman.GetStormnodeRank(sn.vin, pindexBest->nHeight))));
@@ -676,7 +676,7 @@ Value stormnodelist(const Array& params, bool fHelp)
                            address2.ToString() << " | " <<
                            sn.vin.prevout.hash.ToString() << " | " <<
                            sn.lastTimeSeen << " | " <<
-                           (sn.lastTimeSeen - sn.now);
+                           (sn.lastTimeSeen - sn.sigTime);
             std::string output = stringStream.str();
             stringStream << " " << strAddr;
             if(strFilter !="" && stringStream.str().find(strFilter) == string::npos) continue;

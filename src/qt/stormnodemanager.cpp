@@ -167,7 +167,7 @@ void StormnodeManager::updateNodeList()
 	QTableWidgetItem *activeItem = new QTableWidgetItem(QString::number(sn.IsEnabled()));
 	QTableWidgetItem *addressItem = new QTableWidgetItem(QString::fromStdString(sn.addr.ToString()));
 	QTableWidgetItem *rankItem = new QTableWidgetItem(QString::number(snodeman.GetStormnodeRank(sn.vin, pindexBest->nHeight)));
-	QTableWidgetItem *activeSecondsItem = new QTableWidgetItem(seconds_to_DHMS((qint64)(sn.lastTimeSeen - sn.now)));
+	QTableWidgetItem *activeSecondsItem = new QTableWidgetItem(seconds_to_DHMS((qint64)(sn.lastTimeSeen - sn.sigTime)));
 	QTableWidgetItem *lastSeenItem = new QTableWidgetItem(QString::fromStdString(DateTimeStrFormat(sn.lastTimeSeen)));
 	
 	CScript pubkey;

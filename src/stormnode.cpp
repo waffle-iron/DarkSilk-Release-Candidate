@@ -126,7 +126,7 @@ CStormnode::CStormnode()
     pubkey2 = CPubKey();
     sig = std::vector<unsigned char>();
     activeState = STORMNODE_ENABLED;
-    now = GetTime();
+    sigTime = GetAdjustedTime();
     lastSseep = 0;
     lastTimeSeen = 0;
     cacheInputAge = 0;
@@ -146,7 +146,7 @@ CStormnode::CStormnode(const CStormnode& other)
     pubkey2 = other.pubkey2;
     sig = other.sig;
     activeState = other.activeState;
-    now = other.now;
+    sigTime = other.sigTime;
     lastSseep = other.lastSseep;
     lastTimeSeen = other.lastTimeSeen;
     cacheInputAge = other.cacheInputAge;
@@ -157,7 +157,7 @@ CStormnode::CStormnode(const CStormnode& other)
     nLastDsq = other.nLastDsq;
 }
 
-CStormnode::CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::vector<unsigned char> newSig, int64_t newNow, CPubKey newPubkey2, int protocolVersionIn)
+CStormnode::CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::vector<unsigned char> newSig, int64_t newSigTime, CPubKey newPubkey2, int protocolVersionIn)
 {
     LOCK(cs);
     vin = newVin;
@@ -166,7 +166,7 @@ CStormnode::CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::v
     pubkey2 = newPubkey2;
     sig = newSig;
     activeState = STORMNODE_ENABLED;
-    now = newNow;
+    sigTime = newSigTime;
     lastSseep = 0;
     lastTimeSeen = 0;
     cacheInputAge = 0;
@@ -371,6 +371,7 @@ bool CStormnodePayments::ProcessBlock(int nBlockHeight)
     LOCK(cs_stormnodes);
     if(!enabled) return false;
     CStormnodePaymentWinner newWinner;
+    int nEnabled = snodeman.CountEnabled();
 
     std::vector<CTxIn> vecLastPayments;
     BOOST_REVERSE_FOREACH(CStormnodePaymentWinner& winner, vWinning)
@@ -381,8 +382,9 @@ bool CStormnodePayments::ProcessBlock(int nBlockHeight)
         vecLastPayments.push_back(winner.vin);
     }
 
-    CStormnode* psn = snodeman.FindNotInVec(vecLastPayments);
-    if(psn != NULL) 
+    // pay to the oldest SN that still had no payment but its input is old enough and it was active long enough
+    CStormnode *psn = snodeman.FindOldestNotInVec(vecLastPayments);
+    if(psn != NULL && psn->GetStormnodeInputAge() > nEnabled && psn->lastTimeSeen - psn->sigTime > nEnabled * 2.5 * 60)
     {
         newWinner.score = 0;
         newWinner.nBlockHeight = nBlockHeight;
@@ -391,7 +393,7 @@ bool CStormnodePayments::ProcessBlock(int nBlockHeight)
     }
 
     //if we can't find new SN to get paid, pick the first active SN counting back from the end of vecLastPayments list
-    if(newWinner.nBlockHeight == 0 && snodeman.CountEnabled() > 0)
+    if(newWinner.nBlockHeight == 0 && nEnabled > 0)
     {
         BOOST_REVERSE_FOREACH(CTxIn& vinLP, vecLastPayments)
         {
