@@ -198,7 +198,8 @@ bool CStormnodeMan::Add(CStormnode &sn)
     CStormnode *psn = Find(sn.vin);
 
     if (psn == NULL)
-    {
+    {   
+        if(fDebug) LogPrintf("CStormnodeMan: Adding new stormnode %s - %i now\n", sn.addr.ToString().c_str(), size() + 1);
         vStormnodes.push_back(sn);
         return true;
     }
@@ -224,7 +225,7 @@ void CStormnodeMan::CheckAndRemove()
     vector<CStormnode>::iterator it = vStormnodes.begin();
     while(it != vStormnodes.end()){
         if((*it).activeState == 4 || (*it).activeState == 3){
-            LogPrintf("Removing inactive stormnode %s\n", (*it).addr.ToString().c_str());
+            if(fDebug) LogPrintf("CStormnodeMan: Removing inactive stormnode %s - %i now\n", (*it).addr.ToString().c_str(), size() - 1);
             it = vStormnodes.erase(it);
         } else {
             ++it;
