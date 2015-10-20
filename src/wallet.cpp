@@ -5,7 +5,6 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "wallet.h"
-
 #include "base58.h"
 #include "coincontrol.h"
 #include "kernel.h"
@@ -22,7 +21,6 @@
 #include "stormnode.h"
 #include "chainparams.h"
 #include "smessage.h"
-
 
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/range/algorithm.hpp>
@@ -709,7 +707,6 @@ void CWallet::EraseFromWallet(const uint256 &hash)
     }
     return;
 }
-
 
 bool CWallet::IsMine(const CTxIn &txin) const
 {
@@ -3327,9 +3324,6 @@ bool CWallet::FindStealthTransactions(const CTransaction& tx, mapValue_t& mapNar
     
     return true;
 };
-
-
-
 
 uint64_t CWallet::GetStakeWeight() const
 {

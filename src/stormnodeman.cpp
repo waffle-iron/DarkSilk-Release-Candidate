@@ -7,13 +7,8 @@
 #include <boost/lexical_cast.hpp>
 #include <boost/filesystem.hpp>
 
-
 /** Stormnode manager */
 CStormnodeMan snodeman;
-// who's asked for the stormnode list and the last time
-std::map<CNetAddr, int64_t> askedForStormnodeList;
-// which stormnodes we've asked for
-std::map<COutPoint, int64_t> askedForStormnodeListEntry;
 
 struct CompareValueOnly
 {
@@ -129,6 +124,23 @@ void DumpStormnodes()
 
 CStormnodeMan::CStormnodeMan() {}
 
+void CStormnodeMan::DsegUpdate(CNode* pnode)
+{
+    LOCK(cs);
+
+    std::map<CNetAddr, int64_t>::iterator it = mWeAskedForStormnodeList.find(pnode->addr);
+    if (it != mWeAskedForStormnodeList.end())
+    {
+        if (GetTime() < (*it).second) {
+            LogPrintf("dseg - we already asked %s for the list; skipping...\n", pnode->addr.ToString());
+            return;
+        }
+    }
+    pnode->PushMessage("dseg", CTxIn());
+    int64_t askAgain = GetTime() + STORMNODES_DSEG_SECONDS;
+    mWeAskedForStormnodeList[pnode->addr] = askAgain;
+}
+
 CStormnode *CStormnodeMan::Find(const CTxIn &vin)
 {
     LOCK(cs);
@@ -207,7 +219,6 @@ void CStormnodeMan::CheckAndRemove()
     LOCK(cs);
 
     Check();
-    UpdateLastTimeChanged();
 
     //remove inactive
     vector<CStormnode>::iterator it = vStormnodes.begin();
@@ -219,7 +230,38 @@ void CStormnodeMan::CheckAndRemove()
             ++it;
         }
     }
+  
+    // check who's asked for the stormnode list
+    map<CNetAddr, int64_t>::iterator it1 = mWeAskedUsForStormnodeList.begin();
+    while(it1 != mWeAskedUsForStormnodeList.end()){
+        if((*it1).second < GetTime()) {
+            mWeAskedUsForStormnodeList.erase(it1++);
+        } else {
+            ++it1;
+        }
+    }
+
+    // check who we asked for the stormnode list
+    while(it1 != mWeAskedForStormnodeList.end()){
+        if((*it1).second < GetTime()){
+            mWeAskedForStormnodeList.erase(it1++);
+        } else {
+            ++it1;
+        }
+    }
+
+    // check which stormnodes we've asked for
+    map<COutPoint, int64_t>::iterator it2 = mWeAskedForStormnodeListEntry.begin();
+    while(it2 != mWeAskedForStormnodeListEntry.end()){
+        if((*it2).second < GetTime()){
+            mWeAskedForStormnodeListEntry.erase(it2++);
+        } else {
+            ++it2;
+        }
+    }
 }
+
+
 
 int CStormnodeMan::CountStormnodesAboveProtocol(int protocolVersion)
 {
@@ -227,7 +269,6 @@ int CStormnodeMan::CountStormnodesAboveProtocol(int protocolVersion)
 
     BOOST_FOREACH(CStormnode& sn, vStormnodes) {
         sn.Check();
-        UpdateLastTimeChanged();
         if(sn.protocolVersion < protocolVersion || !sn.IsEnabled()) continue;
         i++;
     }
@@ -238,10 +279,10 @@ int CStormnodeMan::CountStormnodesAboveProtocol(int protocolVersion)
 void CStormnodeMan::Clear()
 {
     LOCK(cs);
-    lastTimeChanged = 0;
     vStormnodes.clear();
-    askedForStormnodeList.clear();
-    askedForStormnodeListEntry.clear();
+    mWeAskedUsForStormnodeList.clear();
+    mWeAskedForStormnodeList.clear();
+    mWeAskedForStormnodeListEntry.clear();
 }
 
 int CStormnodeMan::CountEnabled()
@@ -250,7 +291,6 @@ int CStormnodeMan::CountEnabled()
 
     BOOST_FOREACH(CStormnode& sn, vStormnodes) {
         sn.Check();
-        UpdateLastTimeChanged();
         if(!sn.IsEnabled()) i++;
     }
 
@@ -265,7 +305,6 @@ CStormnode* CStormnodeMan::GetCurrentStormNode(int mod, int64_t nBlockHeight, in
     // scan for winner
     BOOST_FOREACH(CStormnode& sn, vStormnodes) {
         sn.Check();
-        UpdateLastTimeChanged();
         if(sn.protocolVersion < minProtocol || !sn.IsEnabled()) continue;
 
         // calculate the score for each stormnode
@@ -291,7 +330,6 @@ int CStormnodeMan::GetStormnodeRank(const CTxIn& vin, int64_t nBlockHeight, int 
     BOOST_FOREACH(CStormnode& sn, vStormnodes) {
 
         sn.Check();
-        UpdateLastTimeChanged();
 
         if(sn.protocolVersion < minProtocol) continue;
         if(!sn.IsEnabled()) {
@@ -397,7 +435,6 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
             //   after that they just need to match
             if(count == -1 && psn->pubkey == pubkey && !psn->UpdatedWithin(STORMNODE_MIN_SSEE_SECONDS)){
                 psn->UpdateLastSeen();
-                UpdateLastTimeChanged();
 
                 if(psn->now < sigTime){ //take the newest entry
                     LogPrintf("ssee - Got updated entry for %s\n", addr.ToString().c_str());
@@ -516,7 +553,6 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
 
                 if(!psn->UpdatedWithin(STORMNODE_MIN_SSEEP_SECONDS))
                 {   
-                    UpdateLastTimeChanged();
                     if(stop) psn->Disable();
                     else
                     {
@@ -532,8 +568,8 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
 
         if(fDebug) LogPrintf("sseep - Couldn't find stormnode entry %s\n", vin.ToString().c_str());
 
-        std::map<COutPoint, int64_t>::iterator i = askedForStormnodeListEntry.find(vin.prevout);
-        if (i != askedForStormnodeListEntry.end())
+        std::map<COutPoint, int64_t>::iterator i = mWeAskedForStormnodeListEntry.find(vin.prevout);
+        if (i != mWeAskedForStormnodeListEntry.end())
         {
             int64_t t = (*i).second;
             if (GetTime() < t) return; // we've asked recently
@@ -543,8 +579,8 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
 
         LogPrintf("sseep - Asking source node for missing entry %s\n", vin.ToString().c_str());
         pfrom->PushMessage("sseg", vin);
-        int64_t askAgain = GetTime()+(60*60*24);
-        askedForStormnodeListEntry[vin.prevout] = askAgain;
+        int64_t askAgain = GetTime() + STORMNODE_MIN_SSEEP_SECONDS;
+        mWeAskedForStormnodeListEntry[vin.prevout] = askAgain;
 
     } else if (strCommand == "sseg") { //Get stormnode list or specific entry
 
@@ -555,8 +591,8 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
             //local network
             if(!pfrom->addr.IsRFC1918() && Params().NetworkID() == CChainParams::MAIN)
             {
-                std::map<CNetAddr, int64_t>::iterator i = askedForStormnodeList.find(pfrom->addr);
-                if (i != askedForStormnodeList.end())
+                std::map<CNetAddr, int64_t>::iterator i = mWeAskedUsForStormnodeList.find(pfrom->addr);
+                if (i != mWeAskedUsForStormnodeList.end())
                 {
                     int64_t t = (*i).second;
                     if (GetTime() < t) {
@@ -566,8 +602,8 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
                     }
                 }
 
-                int64_t askAgain = GetTime() + MASTERNODES_DSEG_SECONDS;
-                askedForStormnodeList[pfrom->addr] = askAgain;
+                int64_t askAgain = GetTime() + STORMNODES_DSEG_SECONDS;
+                mWeAskedUsForStormnodeList[pfrom->addr] = askAgain;
             }
         } //else, asking for a specific node which is ok
 
@@ -602,8 +638,9 @@ std::string CStormnodeMan::ToString()
     std::ostringstream info;
 
     info << "stormnodes: " << (int)vStormnodes.size() <<
-            ", peers we asked for stormnode list: " << (int)askedForStormnodeList.size() <<
-            ", entries in node list we asked for: " << (int)askedForStormnodeListEntry.size();
+            ", peers who asked us for stormnode list: " << (int)mWeAskedUsForStormnodeList.size() <<
+            ", peers we asked for stormnode list: " << (int)mWeAskedForStormnodeList.size() <<
+            ", entries in stormnode list we asked for: " << (int)mWeAskedForStormnodeListEntry.size();
 
     return info.str();
 }

@@ -18,16 +18,13 @@
 #include "stormnode.h"
 
 #define STORMNODES_DUMP_SECONDS               (15*60)
-#define MASTERNODES_DSEG_SECONDS              (3*60*60)
+#define STORMNODES_DSEG_SECONDS              (3*60*60)
 
 using namespace std;
 
 class CStormnodeMan;
 
 extern CStormnodeMan snodeman;
-extern std::vector<CTxIn> vecStormnodeAskedFor;
-extern map<uint256, CStormnodePaymentWinner> mapSeenStormnodeVotes;
-extern map<int64_t, uint256> mapCacheBlockHashes;
 
 void DumpStormnodes();
 
@@ -50,9 +47,12 @@ private:
 
     // map to hold all SNs
     std::vector<CStormnode> vStormnodes;
-
-    // keep track of latest time whem vMStormnodes was changed
-    int64_t lastTimeChanged;
+    // who's asked for the stormnode list and the last time
+    std::map<CNetAddr, int64_t> mWeAskedUsForStormnodeList;
+    // who we asked for the stormnode list and the last time
+    std::map<CNetAddr, int64_t> mWeAskedForStormnodeList;
+    // which stormnodes we've asked for
+    std::map<COutPoint, int64_t> mWeAskedForStormnodeListEntry;
 
 public:
 
@@ -65,8 +65,10 @@ public:
                 LOCK(cs);
                 unsigned char nVersion = 0;
                 READWRITE(nVersion);
-                READWRITE(lastTimeChanged);
                 READWRITE(vStormnodes);
+                READWRITE(mWeAskedUsForStormnodeList);
+                READWRITE(mWeAskedForStormnodeList);
+                READWRITE(mWeAskedForStormnodeListEntry);
         }
     )
 
@@ -92,7 +94,7 @@ public:
     void CheckAndRemove();
 
     // Clear stormnode vector
-    void Clear(); 
+    void Clear();
 
     // Return the number of (unique) stormnodes
     int size() { return vStormnodes.size(); }
@@ -108,13 +110,11 @@ public:
 
     int CountEnabled();
 
+    void DsegUpdate(CNode* pnode);
+
     std::vector<CStormnode> GetFullStormnodeVector() { Check(); return vStormnodes; }
 
     void ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
-
-    void UpdateLastTimeChanged() { lastTimeChanged = GetAdjustedTime(); }
-
-    bool UpdateNeeded() { return lastTimeChanged < GetAdjustedTime() - STORMNODE_REMOVAL_SECONDS; }
 
 };
 

@@ -36,7 +36,6 @@ class uint256;
 #define STORMNODE_MIN_SSEEP_SECONDS           (30*60)
 #define STORMNODE_MIN_SSEE_SECONDS            (5*60)
 #define STORMNODE_PING_SECONDS                (1*60)
-#define STORMNODE_PING_WAIT_SECONDS           (5*60)
 #define STORMNODE_EXPIRATION_SECONDS          (65*60)
 #define STORMNODE_REMOVAL_SECONDS             (70*60)
 
