@@ -22,7 +22,6 @@ static const int STORMNODE_PAYMENT_START = 420; // Block 420
 static const int TESTNET_STORMNODE_PAYMENT_START = 100; // Block 100
 
 static const int64_t SANDSTORM_COLLATERAL = (0.01*COIN);
-static const int64_t SANDSTORM_FEE = (0.01*COIN); // SandStorm sending fee of 0.01DRKSLK
 static const int64_t SANDSTORM_POOL_MAX = (999.99*COIN);
 
 static const int64_t STATIC_POS_REWARD = COIN * 1; // Static Reward of 1 DRKSLK 

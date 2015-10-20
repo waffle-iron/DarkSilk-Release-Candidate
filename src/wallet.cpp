@@ -2112,7 +2112,7 @@ bool CWallet::SelectCoinsByDenominations(int nDenom, int64_t nValueMin, int64_t 
     vector<COutput> vCoins;
     AvailableCoins(vCoins);
 
-    //order the array so fees are first, then denominated money, then the rest.
+    //order the array so largest nondenom are first, then denominations, then very small inputs
     std::random_shuffle(vCoins.rbegin(), vCoins.rend());
 
     //keep track of each denomination that we have
@@ -2139,7 +2139,7 @@ bool CWallet::SelectCoinsByDenominations(int nDenom, int64_t nValueMin, int64_t 
     BOOST_FOREACH(const COutput& out, vCoins)
     {
         //there's no reason to allow inputs less than 1 COIN into SS (other than denominations smaller than that amount)
-        if(out.tx->vout[out.i].nValue < 1*COIN && out.tx->vout[out.i].nValue != (.1*COIN)+100) continue;
+        if(out.tx->vout[out.i].nValue < 1*COIN && !IsDenominatedAmount(out.tx->vout[out.i].nValue)) continue;
         if(fStormNode && out.tx->vout[out.i].nValue == 42000*COIN) continue; //stormnode input
         if(nValueRet + out.tx->vout[out.i].nValue <= nValueMax){
             bool fAccepted = false;
@@ -2313,11 +2313,7 @@ bool CWallet::HasCollateralInputs() const
 
 bool CWallet::IsCollateralAmount(int64_t nInputAmount) const
 {
-    return  nInputAmount == (SANDSTORM_COLLATERAL * 5)+SANDSTORM_FEE ||
-            nInputAmount == (SANDSTORM_COLLATERAL * 4)+SANDSTORM_FEE ||
-            nInputAmount == (SANDSTORM_COLLATERAL * 3)+SANDSTORM_FEE ||
-            nInputAmount == (SANDSTORM_COLLATERAL * 2)+SANDSTORM_FEE ||
-            nInputAmount == (SANDSTORM_COLLATERAL * 1)+SANDSTORM_FEE;
+    return  nInputAmount != 0 && nInputAmount % SANDSTORM_COLLATERAL == 0 && nInputAmount < SANDSTORM_COLLATERAL * 5;
 }
 
 bool CWallet::SelectCoinsWithoutDenomination(int64_t nTargetValue, set<pair<const CWalletTx*,unsigned int> >& setCoinsRet, int64_t& nValueRet) const

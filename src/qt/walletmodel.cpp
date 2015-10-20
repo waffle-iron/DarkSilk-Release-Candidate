@@ -355,8 +355,8 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
         int nChangePos = -1;
 	std::string strFailReason;
 
-        /*if(recipients[0].useInstantX && total > GetSporkValue(SPORK_2_MAX_VALUE)*COIN){
-            emit message(tr("Send Coins"), tr("InstantX doesn't support sending values that high yet. Transactions are currently limited to %n DRKSLK.", "", GetSporkValue(SPORK_2_MAX_VALUE)),true,
+        /*if(recipients[0].useInstantX && total > GetSporkValue(SPORK_5_MAX_VALUE)*COIN){
+            emit message(tr("Send Coins"), tr("InstantX doesn't support sending values that high yet. Transactions are currently limited to %n DRKSLK.", "", GetSporkValue(SPORK_5_MAX_VALUE)),true,
                          CClientUIInterface::MSG_ERROR);
             return TransactionCreationFailed;
         }*/

@@ -2303,7 +2303,7 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
 
 // ----------- instantX transaction scanning -----------
 
-    if(IsSporkActive(SPORK_1_STORMNODE_PAYMENTS_ENFORCEMENT_DEFAULT)){
+    if(IsSporkActive(SPORK_3_INSTANTX_BLOCK_FILTERING)){
         BOOST_FOREACH(const CTransaction& tx, vtx){
             if (!tx.IsCoinBase()){
                 //only reject blocks when it's based on complete consensus

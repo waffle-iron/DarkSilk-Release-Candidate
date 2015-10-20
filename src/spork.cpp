@@ -85,10 +85,12 @@ bool IsSporkActive(int nSporkID)
         r = mapSporksActive[nSporkID].nValue;
     } else {
         if(nSporkID == SPORK_1_STORMNODE_PAYMENTS_ENFORCEMENT) r = SPORK_1_STORMNODE_PAYMENTS_ENFORCEMENT_DEFAULT;
-        if(nSporkID == SPORK_2_MAX_VALUE) r = SPORK_2_MAX_VALUE_DEFAULT;
-        if(nSporkID == SPORK_3_REPLAY_BLOCKS) r = SPORK_3_REPLAY_BLOCKS_DEFAULT;
+        if(nSporkID == SPORK_2_INSTANTX) r = SPORK_2_INSTANTX_DEFAULT;
+        if(nSporkID == SPORK_3_INSTANTX_BLOCK_FILTERING) r = SPORK_3_INSTANTX_BLOCK_FILTERING_DEFAULT;
+        if(nSporkID == SPORK_5_MAX_VALUE) r = SPORK_5_MAX_VALUE_DEFAULT;
+        if(nSporkID == SPORK_6_REPLAY_BLOCKS) r = SPORK_6_REPLAY_BLOCKS_DEFAULT;
 
-        if(r == 0 && fDebug) LogPrintf("GetSpork::Unknown Spork %d\n", nSporkID);
+        if(r == 0) LogPrintf("GetSpork::Unknown Spork %d\n", nSporkID);
     }
     if(r == 0) r = 4070908800; //return 2099-1-1 by default
 
@@ -104,10 +106,12 @@ int GetSporkValue(int nSporkID)
         r = mapSporksActive[nSporkID].nValue;
     } else {
         if(nSporkID == SPORK_1_STORMNODE_PAYMENTS_ENFORCEMENT) r = SPORK_1_STORMNODE_PAYMENTS_ENFORCEMENT_DEFAULT;
-        if(nSporkID == SPORK_2_MAX_VALUE) r = SPORK_2_MAX_VALUE_DEFAULT;
-        if(nSporkID == SPORK_3_REPLAY_BLOCKS) r = SPORK_3_REPLAY_BLOCKS_DEFAULT;
+        if(nSporkID == SPORK_2_INSTANTX) r = SPORK_2_INSTANTX_DEFAULT;
+        if(nSporkID == SPORK_3_INSTANTX_BLOCK_FILTERING) r = SPORK_3_INSTANTX_BLOCK_FILTERING_DEFAULT;
+        if(nSporkID == SPORK_5_MAX_VALUE) r = SPORK_5_MAX_VALUE_DEFAULT;
+        if(nSporkID == SPORK_6_REPLAY_BLOCKS) r = SPORK_6_REPLAY_BLOCKS_DEFAULT;
 
-        if(r == 0 && fDebug) LogPrintf("GetSpork::Unknown Spork %d\n", nSporkID);
+        if(r == 0) LogPrintf("GetSpork::Unknown Spork %d\n", nSporkID);
     }
 
     return r;
@@ -116,7 +120,7 @@ int GetSporkValue(int nSporkID)
 void ExecuteSpork(int nSporkID, int nValue)
 {
     //replay and process blocks (to sync to the longest chain after disabling sporks)
-    //if(nSporkID == SPORK_3_REPLAY_BLOCKS){
+    //if(nSporkID == SPORK_6_REPLAY_BLOCKS){
         //DisconnectBlocksAndReprocess(nValue);
     //}
 }
@@ -214,8 +218,10 @@ bool CSporkManager::SetPrivKey(std::string strPrivKey)
 int CSporkManager::GetSporkIDByName(std::string strName)
 {
     if(strName == "SPORK_1_STORMNODE_PAYMENTS_ENFORCEMENT") return SPORK_1_STORMNODE_PAYMENTS_ENFORCEMENT;
-    if(strName == "SPORK_2_MAX_VALUE") return SPORK_2_MAX_VALUE;
-    if(strName == "SPORK_3_REPLAY_BLOCKS") return SPORK_3_REPLAY_BLOCKS;
+    if(strName == "SPORK_2_INSTANTX") return SPORK_2_INSTANTX;
+    if(strName == "SPORK_3_INSTANTX_BLOCK_FILTERING") return SPORK_3_INSTANTX_BLOCK_FILTERING;
+    if(strName == "SPORK_5_MAX_VALUE") return SPORK_5_MAX_VALUE;
+    if(strName == "SPORK_6_REPLAY_BLOCKS") return SPORK_6_REPLAY_BLOCKS;
 
     return -1;
 }
@@ -223,8 +229,10 @@ int CSporkManager::GetSporkIDByName(std::string strName)
 std::string CSporkManager::GetSporkNameByID(int id)
 {
     if(id == SPORK_1_STORMNODE_PAYMENTS_ENFORCEMENT) return "SPORK_1_STORMNODE_PAYMENTS_ENFORCEMENT";
-    if(id == SPORK_2_MAX_VALUE) return "SPORK_2_MAX_VALUE";
-    if(id == SPORK_3_REPLAY_BLOCKS) return "SPORK_3_REPLAY_BLOCKS";
+    if(id == SPORK_2_INSTANTX) return "SPORK_2_INSTANTX";
+    if(id == SPORK_3_INSTANTX_BLOCK_FILTERING) return "SPORK_3_INSTANTX_BLOCK_FILTERING";
+    if(id == SPORK_5_MAX_VALUE) return "SPORK_5_MAX_VALUE";
+    if(id == SPORK_6_REPLAY_BLOCKS) return "SPORK_6_REPLAY_BLOCKS";
 
     return "Unknown";
 }
