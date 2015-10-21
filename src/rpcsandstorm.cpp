@@ -637,18 +637,18 @@ Value stormnodelist(const Array& params, bool fHelp)
         }
     } else {
         std::vector<CStormnode> vStormnodes = snodeman.GetFullStormnodeVector();
-        BOOST_FOREACH(CStormnode& mn, vStormnodes) {
-            std::string strAddr = mn.addr.ToString();
+        BOOST_FOREACH(CStormnode& sn, vStormnodes) {
+            std::string strAddr = sn.addr.ToString();
             if(strMode == "active"){
-                if(strFilter !="" && strFilter != (mn.IsEnabled() ? "true" : "false") &&
+                if(strFilter !="" && strFilter != (sn.IsEnabled() ? "true" : "false") &&
                     strAddr.find(strFilter) == string::npos) continue;
-                obj.push_back(Pair(strAddr,       (int)mn.IsEnabled()));
+                obj.push_back(Pair(strAddr,       (int)sn.IsEnabled()));
             } else if (strMode == "activeseconds") {
                 if(strFilter !="" && strAddr.find(strFilter) == string::npos) continue;
-                obj.push_back(Pair(strAddr,       (int64_t)(mn.lastTimeSeen - mn.sigTime)));
+                obj.push_back(Pair(strAddr,       (int64_t)(sn.lastTimeSeen - sn.sigTime)));
             } else if (strMode == "full") {
                 CScript pubkey;
-                pubkey.SetDestination(mn.pubkey.GetID());
+                pubkey.SetDestination(sn.pubkey.GetID());
                 CTxDestination address1;
                 ExtractDestination(pubkey, address1);
                 CDarkSilkAddress address2(address1);
@@ -657,12 +657,12 @@ Value stormnodelist(const Array& params, bool fHelp)
                 addrStream << setw(21) << strAddr;
 
                 std::ostringstream stringStream;
-                stringStream << (mn.IsEnabled() ? "1" : "0") << " " <<
-                               mn.protocolVersion << " " <<
+                stringStream << (sn.IsEnabled() ? "1" : "0") << " " <<
+                               sn.protocolVersion << " " <<
                                address2.ToString() << " " <<
-                               mn.vin.prevout.hash.ToString() << " " <<
-                               mn.lastTimeSeen << " " << setw(8) <<
-                               (mn.lastTimeSeen - mn.sigTime);
+                               sn.vin.prevout.hash.ToString() << " " <<
+                               sn.lastTimeSeen << " " << setw(8) <<
+                               (sn.lastTimeSeen - sn.sigTime);
                 std::string output = stringStream.str();
                 stringStream << " " << strAddr;
                 if(strFilter !="" && stringStream.str().find(strFilter) == string::npos &&
@@ -670,14 +670,14 @@ Value stormnodelist(const Array& params, bool fHelp)
                 obj.push_back(Pair(addrStream.str(), output));
             } else if (strMode == "lastseen") {
                 if(strFilter !="" && strAddr.find(strFilter) == string::npos) continue;
-                obj.push_back(Pair(strAddr,       (int64_t)mn.lastTimeSeen));
+                obj.push_back(Pair(strAddr,       (int64_t)sn.lastTimeSeen));
             } else if (strMode == "protocol") {
-                if(strFilter !="" && strFilter != boost::lexical_cast<std::string>(mn.protocolVersion) &&
+                if(strFilter !="" && strFilter != boost::lexical_cast<std::string>(sn.protocolVersion) &&
                     strAddr.find(strFilter) == string::npos) continue;
-                obj.push_back(Pair(strAddr,       (int64_t)mn.protocolVersion));
+                obj.push_back(Pair(strAddr,       (int64_t)sn.protocolVersion));
             } else if (strMode == "pubkey") {
                 CScript pubkey;
-                pubkey.SetDestination(mn.pubkey.GetID());
+                pubkey.SetDestination(sn.pubkey.GetID());
                 CTxDestination address1;
                 ExtractDestination(pubkey, address1);
                 CDarkSilkAddress address2(address1);
@@ -686,9 +686,9 @@ Value stormnodelist(const Array& params, bool fHelp)
                     strAddr.find(strFilter) == string::npos) continue;
                 obj.push_back(Pair(strAddr,       address2.ToString().c_str()));
             } else if (strMode == "vin") {
-                if(strFilter !="" && mn.vin.prevout.hash.ToString().find(strFilter) == string::npos &&
+                if(strFilter !="" && sn.vin.prevout.hash.ToString().find(strFilter) == string::npos &&
                     strAddr.find(strFilter) == string::npos) continue;
-                obj.push_back(Pair(strAddr,       mn.vin.prevout.hash.ToString().c_str()));
+                obj.push_back(Pair(strAddr,       sn.vin.prevout.hash.ToString().c_str()));
             }
         }
     }
