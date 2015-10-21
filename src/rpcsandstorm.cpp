@@ -97,7 +97,16 @@ Value sandstorm(const Array& params, bool fHelp)
 
     // Wallet comments
     CWalletTx wtx;
-    SendMoney(address.Get(), nAmount, wtx, ONLY_DENOMINATED);
+    std::string sNarr;
+    if (params.size() > 6 && params[6].type() != null_type && !params[6].get_str().empty())
+        sNarr = params[6].get_str();
+    
+    if (sNarr.length() > 24)
+        throw runtime_error("Narration must be 24 characters or less.");
+    
+    string strError = pwalletMain->SendMoneyToDestination(address.Get(), nAmount, sNarr, wtx, ONLY_DENOMINATED);
+    if (strError != "")
+        throw JSONRPCError(RPC_WALLET_ERROR, strError);
    
     return wtx.GetHash().GetHex();
 }
@@ -127,7 +136,7 @@ Value stormnode(const Array& params, bool fHelp)
 
     if (fHelp  ||
         (strCommand != "start" && strCommand != "start-alias" && strCommand != "start-many" && strCommand != "stop" && strCommand != "stop-alias" && strCommand != "stop-many" && strCommand != "list" && strCommand != "list-conf" && strCommand != "count"  && strCommand != "enforce"
-            && strCommand != "debug" && strCommand != "current" && strCommand != "winners" && strCommand != "genkey" && strCommand != "connect" && strCommand != "outputs"))
+            && strCommand != "debug" && strCommand != "current" && strCommand != "winners" && strCommand != "genkey" && strCommand != "connect" && strCommand != "outputs" && strCommand != "vote-many" && strCommand != "vote"))
         throw runtime_error(
                 "stormnode \"command\"... ( \"passphrase\" )\n"
                 "Set of commands to execute stormnode related actions\n"
@@ -150,7 +159,10 @@ Value stormnode(const Array& params, bool fHelp)
                 "  list         - Print list of all known stormnodes (see stormnodelist for more info)\n"
                 "  list-conf    - Print stormnode.conf in JSON format\n"
                 "  winners      - Print list of stormnode winners\n"
+                "  vote-many    - Vote on a DarkSilk initiative\n"
+                "  vote         - Vote on a DarkSilk initiative\n"
                 );
+
     if (strCommand == "stop")
     {
         if(!fStormNode) return "you must set stormnode=1 in the configuration";
@@ -384,9 +396,12 @@ Value stormnode(const Array& params, bool fHelp)
     		if(sne.getAlias() == alias) {
     			found = true;
     			std::string errorMessage;
-    			bool result = activeStormnode.Register(sne.getIp(), sne.getPrivKey(), sne.getTxHash(), sne.getOutputIndex(), errorMessage);
+                std::string strDonateAddress = sne.getDonationAddress();
+                std::string strDonationPercentage = sne.getDonationPercentage();
 
-    			statusObj.push_back(Pair("result", result ? "successful" : "failed"));
+                bool result = activeStormnode.Register(sne.getIp(), sne.getPrivKey(), sne.getTxHash(), sne.getOutputIndex(), strDonateAddress, strDonationPercentage, errorMessage);
+  
+      			statusObj.push_back(Pair("result", result ? "successful" : "failed"));
     			if(!result) {
 					statusObj.push_back(Pair("errorMessage", errorMessage));
 				}
@@ -435,7 +450,10 @@ Value stormnode(const Array& params, bool fHelp)
 			total++;
 
 			std::string errorMessage;
-			bool result = activeStormnode.Register(sne.getIp(), sne.getPrivKey(), sne.getTxHash(), sne.getOutputIndex(), errorMessage);
+            std::string strDonateAddress = sne.getDonationAddress();
+            std::string strDonationPercentage = sne.getDonationPercentage();
+
+            bool result = activeStormnode.Register(sne.getIp(), sne.getPrivKey(), sne.getTxHash(), sne.getOutputIndex(), strDonateAddress, strDonationPercentage, errorMessage);
 
 			Object statusObj;
 			statusObj.push_back(Pair("alias", sne.getAlias()));
@@ -575,7 +593,9 @@ Value stormnode(const Array& params, bool fHelp)
     		snObj.push_back(Pair("privateKey", sne.getPrivKey()));
     		snObj.push_back(Pair("txHash", sne.getTxHash()));
     		snObj.push_back(Pair("outputIndex", sne.getOutputIndex()));
-    		resultObj.push_back(Pair("stormnode", snObj));
+            snObj.push_back(Pair("donationAddress", sne.getDonationAddress()));
+    		snObj.push_back(Pair("donationPercent", sne.getDonationPercentage()));
+            resultObj.push_back(Pair("stormnode", snObj));
     	}
 
     	return resultObj;
@@ -594,98 +614,248 @@ Value stormnode(const Array& params, bool fHelp)
 
     }
 
+    if(strCommand == "vote-many")
+    {
+        std::vector<CStormnodeConfig::CStormnodeEntry> snEntries;
+        snEntries = stormnodeConfig.getEntries();
+
+        if (params.size() != 2)
+            throw runtime_error("You can only vote 'yay' or 'nay'");
+
+        std::string vote = params[1].get_str().c_str();
+        if(vote != "yay" && vote != "nay") return "You can only vote 'yay' or 'nay'";
+        int nVote = 0;
+        if(vote == "yay") nVote = 1;
+        if(vote == "nay") nVote = -1;
+
+        int success = 0;
+        int failed = 0;
+
+        Object resultObj;
+
+        BOOST_FOREACH(CStormnodeConfig::CStormnodeEntry sne, stormnodeConfig.getEntries()) {
+            std::string errorMessage;
+            std::vector<unsigned char> vchStormNodeSignature;
+            std::string strStormNodeSignMessage;
+
+            CPubKey pubKeyCollateralAddress;
+            CKey keyCollateralAddress;
+            CPubKey pubKeyStormnode;
+            CKey keyStormnode;
+
+            if(!sandStormSigner.SetKey(sne.getPrivKey(), errorMessage, keyStormnode, pubKeyStormnode)){
+                printf(" Error upon calling SetKey for %s\n", sne.getAlias().c_str());
+                failed++;
+                continue;
+            }
+            
+            CStormnode* psn = snodeman.Find(pubKeyStormnode);
+            if(psn == NULL)
+            {
+                printf("Can't find stormnode by pubkey for %s\n", sne.getAlias().c_str());
+                failed++;
+                continue;
+            }
+
+            std::string strMessage = psn->vin.ToString() + boost::lexical_cast<std::string>(nVote);
+
+            if(!sandStormSigner.SignMessage(strMessage, errorMessage, vchStormNodeSignature, keyStormnode)){
+                printf(" Error upon calling SignMessage for %s\n", sne.getAlias().c_str());
+                failed++;
+                continue;
+            }
+
+            if(!sandStormSigner.VerifyMessage(pubKeyStormnode, vchStormNodeSignature, strMessage, errorMessage)){
+                printf(" Error upon calling VerifyMessage for %s\n", sne.getAlias().c_str());
+                failed++;
+                continue;
+            }
+
+            success++;
+
+            //send to all peers
+            LOCK(cs_vNodes);
+            BOOST_FOREACH(CNode* pnode, vNodes)
+                pnode->PushMessage("svote", psn->vin, vchStormNodeSignature, nVote);
+        }
+
+        return("Voted successfully " + boost::lexical_cast<std::string>(success) + " time(s) and failed " + boost::lexical_cast<std::string>(failed) + " time(s).");
+     }
+
+    if(strCommand == "vote")
+    {
+        std::vector<CStormnodeConfig::CStormnodeEntry> snEntries;
+        snEntries = stormnodeConfig.getEntries();
+
+        if (params.size() != 2)
+            throw runtime_error("You can only vote 'yay' or 'nay'");
+
+        std::string vote = params[1].get_str().c_str();
+        if(vote != "yay" && vote != "nay") return "You can only vote 'yay' or 'nay'";
+        int nVote = 0;
+        if(vote == "yay") nVote = 1;
+        if(vote == "nay") nVote = -1;
+
+        // Choose coins to use
+        CPubKey pubKeyCollateralAddress;
+        CKey keyCollateralAddress;
+        CPubKey pubKeyStormnode;
+        CKey keyStormnode;
+
+        std::string errorMessage;
+        std::vector<unsigned char> vchStormNodeSignature;
+        std::string strMessage = activeStormnode.vin.ToString() + boost::lexical_cast<std::string>(nVote);
+
+        if(!sandStormSigner.SetKey(strStormNodePrivKey, errorMessage, keyStormnode, pubKeyStormnode))
+            return(" Error upon calling SetKey");
+
+        if(!sandStormSigner.SignMessage(strMessage, errorMessage, vchStormNodeSignature, keyStormnode))
+            return(" Error upon calling SignMessage");
+
+        if(!sandStormSigner.VerifyMessage(pubKeyStormnode, vchStormNodeSignature, strMessage, errorMessage))
+            return(" Error upon calling VerifyMessage");
+
+        //send to all peers
+        LOCK(cs_vNodes);
+        BOOST_FOREACH(CNode* pnode, vNodes)
+            pnode->PushMessage("svote", activeStormnode.vin, vchStormNodeSignature, nVote);
+
+    }
+
     return Value::null;
 }
 
 Value stormnodelist(const Array& params, bool fHelp)
 {
-    std::string strMode = "active";
+    std::string strMode = "status";
     std::string strFilter = "";
 
     if (params.size() >= 1) strMode = params[0].get_str();
     if (params.size() == 2) strFilter = params[1].get_str();
 
     if (fHelp ||
-            (strMode != "active" && strMode != "vin" && strMode != "pubkey" && strMode != "lastseen"
-             && strMode != "activeseconds" && strMode != "rank" && strMode != "protocol" && strMode != "full"))
+            (strMode != "status" && strMode != "vin" && strMode != "pubkey" && strMode != "lastseen" && strMode != "activeseconds" && strMode != "rank"
+                && strMode != "protocol" && strMode != "full" && strMode != "votes" && strMode != "donation" && strMode != "pose"))
     {
         throw runtime_error(
-                "stormnodelist ( \"mode\" \"filter\" )\n"
-                "Get a list of stormnodes in different modes\n"
+                "masternodelist ( \"mode\" \"filter\" )\n"
+                "Get a list of masternodes in different modes\n"
                 "\nArguments:\n"
-                "1. \"mode\"      (string, optional/required to use filter, defaults = active) The mode to run list in\n"
+                "1. \"mode\"      (string, optional/required to use filter, defaults = status) The mode to run list in\n"
                 "2. \"filter\"    (string, optional) Filter results. Partial match by IP by default in all modes, additional matches in some modes\n"
                 "\nAvailable modes:\n"
-                "  active         - Print '1' if active and '0' otherwise (can be additionally filtered by 'true' (active only) / 'false' (non-active only))\n"
                 "  activeseconds  - Print number of seconds stormnode recognized by the network as enabled\n"
-                "  full           - Print info in format 'active protocol pubkey vin lastseen activeseconds' (can be additionally filtered, partial match)\n"
+                "  donation       - Show donation settings\n"
+                "  full           - Print info in format 'status protocol pubkey vin lastseen activeseconds' (can be additionally filtered, partial match)\n"
                 "  lastseen       - Print timestamp of when a stormnode was last seen on the network\n"
+                "  pose           - Print Proof-of-Service score\n"
                 "  protocol       - Print protocol of a stormnode (can be additionally filtered, exact match))\n"
                 "  pubkey         - Print public key associated with a stormnode (can be additionally filtered, partial match)\n"
                 "  rank           - Print rank of a stormnode based on current block\n"
+                "  status         - Print stormnode status: ENABLED / EXPIRED / VIN_SPENT / REMOVE / POS_ERROR (can be additionally filtered, partial match)\n"
                 "  vin            - Print vin associated with a stormnode (can be additionally filtered, partial match)\n"
+                "  votes          - Print all stormnode votes for a DarkSilk initiative (can be additionally filtered, partial match)\n"
                 );
     }
 
     Object obj;
-    std::vector<CStormnode> vStormnodes = snodeman.GetFullStormnodeVector();
-    BOOST_FOREACH(CStormnode& sn, vStormnodes) {
-        
-        std::string strAddr = sn.addr.ToString().c_str();
-        if(strMode == "active"){
-            if(strFilter !="" && strFilter != (sn.IsEnabled() ? "true" : "false") &&
-                sn.addr.ToString().find(strFilter) == string::npos) continue;
-            obj.push_back(Pair(strAddr,       (int)sn.IsEnabled()));
-        } else if (strMode == "activeseconds") {
-            if(strFilter !="" && sn.addr.ToString().find(strFilter) == string::npos) continue;
-            obj.push_back(Pair(strAddr,       (int64_t)(sn.lastTimeSeen - sn.sigTime)));
-        } else if (strMode == "full") {
-            CScript pubkey;
-            pubkey.SetDestination(sn.pubkey.GetID());
-            CTxDestination address1;
-            ExtractDestination(pubkey, address1);
-            CDarkSilkAddress address2(address1);
+    if (strMode == "rank") {
+        std::vector<pair<int, CStormnode> > vStormnodeRanks = snodeman.GetStormnodeRanks(pindexBest->nHeight);
+        BOOST_FOREACH(PAIRTYPE(int, CStormnode)& s, vStormnodeRanks) {
+            std::string strAddr = s.second.addr.ToString();
+            if(strFilter !="" && strAddr.find(strFilter) == string::npos) continue;
+            obj.push_back(Pair(strAddr,       s.first));
+        }
+    } else {
+        std::vector<CStormnode> vStormnodes = snodeman.GetFullStormnodeVector();
+        BOOST_FOREACH(CStormnode& sn, vStormnodes) {
+            std::string strAddr = sn.addr.ToString();
+            if (strMode == "activeseconds") {
+                if(strFilter !="" && strAddr.find(strFilter) == string::npos) continue;
+                obj.push_back(Pair(strAddr,       (int64_t)(sn.lastTimeSeen - sn.sigTime)));
+            } else if (strMode == "donation") {
+                CTxDestination address1;
+                ExtractDestination(sn.donationAddress, address1);
+                CDarkSilkAddress address2(address1);
 
-            std::ostringstream addrStream;
-            addrStream << setw(21) << strAddr;
+                if(strFilter !="" && address2.ToString().find(strFilter) == string::npos &&
+                    strAddr.find(strFilter) == string::npos) continue;
 
-            std::ostringstream stringStream;
-            stringStream << (sn.IsEnabled() ? "1" : "0") << " " <<
-                           sn.protocolVersion << " " <<
-                           address2.ToString() << " " <<
-                           sn.vin.prevout.hash.ToString() << " " <<
-                           sn.lastTimeSeen << " " << setw(8) <<
-                           (sn.lastTimeSeen - sn.sigTime);
-            std::string output = stringStream.str();
-            stringStream << " " << strAddr;
-            if(strFilter !="" && stringStream.str().find(strFilter) == string::npos &&
-                    sn.addr.ToString().find(strFilter) == string::npos) continue;            
+                std::string strOut = "";
+
+                if(sn.donationPercentage != 0){
+                    strOut = address2.ToString().c_str();
+                    strOut += ":";
+                    strOut += boost::lexical_cast<std::string>(sn.donationPercentage);
+                }
+                obj.push_back(Pair(strAddr,       strOut.c_str()));
+            } else if (strMode == "full") {
+                CScript pubkey;
+                pubkey.SetDestination(sn.pubkey.GetID());
+                CTxDestination address1;
+                ExtractDestination(pubkey, address1);
+                CDarkSilkAddress address2(address1);
+
+                std::ostringstream addrStream;
+                addrStream << setw(21) << strAddr;
+
+                std::ostringstream stringStream;
+                stringStream << setw(10) <<
+                               sn.Status() << " " <<
+                               sn.protocolVersion << " " <<
+                               address2.ToString() << " " <<
+                               sn.vin.prevout.hash.ToString() << " " <<
+                               sn.lastTimeSeen << " " << setw(8) <<
+                               (sn.lastTimeSeen - sn.sigTime);
+                std::string output = stringStream.str();
+                stringStream << " " << strAddr;
+                if(strFilter !="" && stringStream.str().find(strFilter) == string::npos &&
+                        strAddr.find(strFilter) == string::npos) continue;
                 obj.push_back(Pair(addrStream.str(), output));
-        } else if (strMode == "lastseen") {
-            if(strFilter !="" && sn.addr.ToString().find(strFilter) == string::npos) continue;
-            obj.push_back(Pair(strAddr,       (int64_t)sn.lastTimeSeen));
-        } else if (strMode == "protocol") {
-            if(strFilter !="" && strFilter != boost::lexical_cast<std::string>(sn.protocolVersion) &&
-                sn.addr.ToString().find(strFilter) == string::npos) continue;
-            obj.push_back(Pair(strAddr,       (int64_t)sn.protocolVersion));
-        } else if (strMode == "pubkey") {
-            CScript pubkey;
-            pubkey.SetDestination(sn.pubkey.GetID());
-            CTxDestination address1;
-            ExtractDestination(pubkey, address1);
-            CDarkSilkAddress address2(address1);
+            } else if (strMode == "lastseen") {
+                if(strFilter !="" && strAddr.find(strFilter) == string::npos) continue;
+                obj.push_back(Pair(strAddr,       (int64_t)sn.lastTimeSeen));
+            } else if (strMode == "protocol") {
+                if(strFilter !="" && strFilter != boost::lexical_cast<std::string>(sn.protocolVersion) &&
+                    strAddr.find(strFilter) == string::npos) continue;
+                obj.push_back(Pair(strAddr,       (int64_t)sn.protocolVersion));
+            } else if (strMode == "pubkey") {
+                CScript pubkey;
+                pubkey.SetDestination(sn.pubkey.GetID());
+                CTxDestination address1;
+                ExtractDestination(pubkey, address1);
+                CDarkSilkAddress address2(address1);
 
-            if(strFilter !="" && address2.ToString().find(strFilter) == string::npos &&
-                sn.addr.ToString().find(strFilter) == string::npos) continue;
-            obj.push_back(Pair(strAddr,       address2.ToString().c_str()));
-        } else if (strMode == "rank") {
-            if(strFilter !="" && sn.addr.ToString().find(strFilter) == string::npos) continue;
-            obj.push_back(Pair(strAddr,       (int)(snodeman.GetStormnodeRank(sn.vin, pindexBest->nHeight))));
-        } else if (strMode == "vin") {
-            if(strFilter !="" && sn.vin.prevout.hash.ToString().find(strFilter) == string::npos &&
-                sn.addr.ToString().find(strFilter) == string::npos) continue;
-            obj.push_back(Pair(strAddr,       sn.vin.prevout.hash.ToString().c_str()));
+                if(strFilter !="" && address2.ToString().find(strFilter) == string::npos &&
+                    strAddr.find(strFilter) == string::npos) continue;
+                obj.push_back(Pair(strAddr,       address2.ToString().c_str()));
+            } else if (strMode == "pose") {
+                if(strFilter !="" && strAddr.find(strFilter) == string::npos) continue;
+                std::string strOut = boost::lexical_cast<std::string>(sn.nScanningErrorCount);
+                obj.push_back(Pair(strAddr,       strOut.c_str()));
+            } else if(strMode == "status") {
+                std::string strStatus = sn.Status();
+                if(strFilter !="" && strAddr.find(strFilter) == string::npos && strStatus.find(strFilter) == string::npos) continue;
+                obj.push_back(Pair(strAddr,       strStatus.c_str()));
+            } else if (strMode == "vin") {
+                if(strFilter !="" && sn.vin.prevout.hash.ToString().find(strFilter) == string::npos &&
+                    strAddr.find(strFilter) == string::npos) continue;
+                obj.push_back(Pair(strAddr,       sn.vin.prevout.hash.ToString().c_str()));
+            } else if(strMode == "votes"){
+                std::string strStatus = "ABSTAIN";
+
+                //voting lasts 7 days, ignore the last vote if it was older than that
+                if((GetAdjustedTime() - sn.lastVote) < (60*60*8))
+                {
+                    if(sn.nVote == -1) strStatus = "NAY";
+                    if(sn.nVote == 1) strStatus = "YAY";
+                }
+
+                if(strFilter !="" && (strAddr.find(strFilter) == string::npos && strStatus.find(strFilter) == string::npos)) continue;
+                obj.push_back(Pair(strAddr,       strStatus.c_str()));
+            }
         }
     }
     return obj;
-} 
+
+}

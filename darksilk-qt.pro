@@ -193,6 +193,7 @@ HEADERS += src/qt/darksilkgui.h \
     src/chainparams.h \
     src/chainparamsseeds.h \
     src/checkpoints.h \
+    src/cleanse.h \
     src/compat.h \
     src/coincontrol.h \
     src/sync.h \
@@ -206,7 +207,6 @@ HEADERS += src/qt/darksilkgui.h \
     src/core.h \
     src/main.h \
     src/miner.h \
-    src/irc.h \
     src/net.h \
     src/key.h \
     src/eckey.h \
@@ -270,7 +270,9 @@ HEADERS += src/qt/darksilkgui.h \
     src/qt/flowlayout.h \
     src/qt/sandstormconfig.h \
     src/stormnode.h \ 
-    src/sandstorm.h \
+    src/stormnode-pos.h \
+    src/sandstorm.h \    
+    src/sandstorm-relay.h \
     src/instantx.h \
     src/activestormnode.h \
     src/stormnodeman.h \
@@ -319,6 +321,7 @@ SOURCES += src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
     src/qt/statisticspage.cpp \
     src/alert.cpp \
     src/chainparams.cpp \
+    src/cleanse.cpp \
     src/version.cpp \
     src/sync.cpp \
     src/txmempool.cpp \
@@ -332,10 +335,10 @@ SOURCES += src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
     src/main.cpp \
     src/miner.cpp \
     src/init.cpp \
-    src/irc.cpp \
     src/net.cpp \
     src/checkpoints.cpp \
     src/addrman.cpp \
+    src/base58.cpp \
     src/db.cpp \
     src/walletdb.cpp \
     src/qt/clientmodel.cpp \
@@ -388,7 +391,9 @@ SOURCES += src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
     src/qt/flowlayout.cpp \
     src/qt/sandstormconfig.cpp \
     src/stormnode.cpp \
+    src/stormnode-pos.cpp \
     src/sandstorm.cpp \
+    src/sandstorm-relay.cpp \
     src/rpcsandstorm.cpp \
     src/instantx.cpp \
     src/activestormnode.cpp \

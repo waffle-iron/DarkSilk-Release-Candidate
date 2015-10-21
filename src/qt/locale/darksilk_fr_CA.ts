@@ -1786,7 +1786,7 @@ Les montants inférieurs à  0.546 fois les frais minimum de relais apparaissent
     <message>
         <location line="+16"/>
         <source>Remove all transaction fields</source>
-        <translation>Réinitialiser tous les champs liés à la transaction</translation>
+        <translation>Réinitializer tous les champs liés à la transaction</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2066,7 +2066,7 @@ alternate-background-color: rgb(86, 0, 120);)</translation>
     <message>
         <location line="+17"/>
         <source>Reset all sign message fields</source>
-        <translation>Réinitialiser tous les champs de signature de message</translation>
+        <translation>Réinitializer tous les champs de signature de message</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -2102,7 +2102,7 @@ alternate-background-color: rgb(86, 0, 120);)</translation>
     <message>
         <location line="+17"/>
         <source>Reset all verify message fields</source>
-        <translation>Réinitialiser tous les champs de vérification de message</translation>
+        <translation>Réinitializer tous les champs de vérification de message</translation>
     </message>
     <message>
         <location filename="../signverifymessagedialog.cpp" line="+27"/>

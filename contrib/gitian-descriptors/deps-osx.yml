@@ -15,7 +15,7 @@ reference_datetime: "2011-01-30 00:00:00"
 remotes: []
 files:
 - "openssl-1.0.2d.tar.gz"
-- "miniupnpc-1.9.tar.gz"
+- "miniupnpc-1.9.20151008.tar.gz"
 - "db-6.1.26.NC.tar.gz"
 - "zlib-1.2.8.tar.gz"
 - "libpng-1.6.18.tar.xz"
@@ -27,14 +27,14 @@ files:
 script: |
   #
   # Input Integrity Check
-  echo "3da5b3c572741fe2237bee1c3d36b11beef61172ac847132b045548b98d4df29  secp256k1-master.zip"  | sha256sum -c
-  echo "3087c32929c1e9db4947d6a184694e06ec604bca29449b75daec295a5d8f11da  miniupnpc-1.9.tar.gz"  | sha256sum -c
-  echo "060105bda482fdfb109b88c05b69624e9d467d59fa30fd9a97225efcc38d1561  db-6.1.26.NC.tar.gz"   | sha256sum -c
-  echo "36658cb768a54c1d4dec43c3116c27ed893e88b02ecfcb44f2166f9c0b7f2a0d  zlib-1.2.8.tar.gz"     | sha256sum -c
-  echo "2e10c13b7949883ac961db6177c516d778184432d440317e9f0391305c360963  libpng-1.6.18.tar.xz"  | sha256sum -c
-  echo "727a932322d94287b62abb1bd2d41723eec4356a7728909e38adb65ca25241ca  boost_1_59_0.tar.bz2"  | sha256sum -c
-  echo "671c36487785628a703374c652ad2cebea45fa920ae5681515df25d9f2c9a8c8  openssl-1.0.2d.tar.gz" | sha256sum -c
-  echo "e794e26a96019013c0e3665cb06b18992668f352c5553d0a553f5d144f7f2a72  qrencode-3.4.4.tar.gz" | sha256sum -c
+  echo "3da5b3c572741fe2237bee1c3d36b11beef61172ac847132b045548b98d4df29  secp256k1-master.zip"          | sha256sum -c
+  echo "e444ac3b587ce82709c4d0cfca1fe71f44f9fc433e9f946b12b9e1bfe667a633  miniupnpc-1.9.20151008.tar.gz" | sha256sum -c
+  echo "060105bda482fdfb109b88c05b69624e9d467d59fa30fd9a97225efcc38d1561  db-6.1.26.NC.tar.gz"           | sha256sum -c
+  echo "36658cb768a54c1d4dec43c3116c27ed893e88b02ecfcb44f2166f9c0b7f2a0d  zlib-1.2.8.tar.gz"             | sha256sum -c
+  echo "2e10c13b7949883ac961db6177c516d778184432d440317e9f0391305c360963  libpng-1.6.18.tar.xz"          | sha256sum -c
+  echo "727a932322d94287b62abb1bd2d41723eec4356a7728909e38adb65ca25241ca  boost_1_59_0.tar.bz2"          | sha256sum -c
+  echo "671c36487785628a703374c652ad2cebea45fa920ae5681515df25d9f2c9a8c8  openssl-1.0.2d.tar.gz"         | sha256sum -c
+  echo "e794e26a96019013c0e3665cb06b18992668f352c5553d0a553f5d144f7f2a72  qrencode-3.4.4.tar.gz"         | sha256sum -c
   #
   export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/faketime/libfaketime.so.1
   export FAKETIME=$REFERENCE_DATETIME
@@ -62,39 +62,38 @@ script: |
   cd $BUILDDIR
   tar xzf db-6.1.26.NC.tar.gz
   cd db-6.1.26.NC/build_unix
-  sed -i 's/__atomic_compare_exchange/__atomic_compare_exchange_db/g' ../dbinc/atomic.h
   ../dist/configure --prefix=$INSTALLPREFIX --enable-cxx --host=$HOST --disable-shared --disable-replication
   make $MAKEOPTS library_build
   make install_lib install_include
-  cd ../..
   #
-  tar xzf miniupnpc-1.9.tar.gz
-  cd miniupnpc-1.9.20150917
+  cd $BUILDDIR
+  tar xzf miniupnpc-1.9.20151008.tar.gz
+  cd miniupnpc-1.9.20151008
   make -f Makefile OS=Darwin CC=$HOST-cc AR=$HOST-ar libminiupnpc.a
   install -d $INSTALLPREFIX/include/miniupnpc
   install *.h $INSTALLPREFIX/include/miniupnpc
   install libminiupnpc.a  $INSTALLPREFIX/lib
   #
-  tar xzf $INDIR/zlib-1.2.8.tar.gz
+  cd $BUILDDIR
+  tar xzf zlib-1.2.8.tar.gz
   cd zlib-1.2.8
   CROSS_PREFIX=$HOST- ./configure --prefix=$INSTALLPREFIX --static
   make
   make install
-  cd ..
   #
-  tar xf $INDIR/libpng-1.6.18.tar.xz
+  cd $BUILDDIR
+  tar xf libpng-1.6.18.tar.xz
   cd libpng-1.6.18
   CPPFLAGS="-I$INSTALLPREFIX/include" CFLAGS="-I$INSTALLPREFIX/include" LDFLAGS="-L$INSTALLPREFIX/lib" ./configure --disable-shared --prefix=$INSTALLPREFIX --host=$HOST
   make $MAKEOPTS
   make install
-  cd ..
   #
-  tar xfz $INDIR/qrencode-3.4.4.tar.gz
+  cd $BUILDDIR
+  tar xfz qrencode-3.4.4.tar.gz
   cd qrencode-3.4.4
   CPPFLAGS="-I$INSTALLPREFIX/include" CFLAGS="-I$INSTALLPREFIX/include" LDFLAGS="-L$INSTALLPREFIX/lib" ./configure --enable-static --disable-shared --without-tools --prefix=$INSTALLPREFIX --host=$HOST
   make $MAKEOPTS
   make install
-  cd ..
   #
   cd $BUILDDIR
   mkdir -p icuCross

@@ -71,7 +71,7 @@ static bool ThreadSafeAskFee(int64_t nFeeRequired, const std::string& strCaption
 {
     if(!guiref)
         return false;
-    if(nFeeRequired < MIN_TX_FEE || nFeeRequired <= nTransactionFee || fDaemon)
+    if(nFeeRequired < MIN_TX_FEE || nFeeRequired <= nTransactionFee)
         return true;
     bool payFee = false;
 
@@ -127,7 +127,6 @@ void DebugMessageHandler(QtMsgType type, const QMessageLogContext& context, cons
 #ifndef DARKSILK_QT_TEST
 int main(int argc, char *argv[])
 {
-    fHaveGUI = true;
 
     // Command-line options take precedence:
     ParseParameters(argc, argv);
@@ -306,10 +305,6 @@ int main(int argc, char *argv[])
                 window.setWalletModel(&walletModel);
                 window.setMessageModel(&messageModel);
 
-#if defined(Q_OS_WIN) && QT_VERSION >= 0x050000
-                app.installNativeEventFilter(new WinShutdownMonitor());
-#endif
-
                 // If -min option passed, start window minimized.
                 if(GetBoolArg("-min", false))
                 {
@@ -325,9 +320,6 @@ int main(int argc, char *argv[])
                 QObject::connect(paymentServer, SIGNAL(receivedURI(QString)), &window, SLOT(handleURI(QString)));
                 QTimer::singleShot(100, paymentServer, SLOT(uiReady()));
 
-#if defined(Q_OS_WIN) && QT_VERSION >= 0x050000
-                 WinShutdownMonitor::registerShutdownBlockReason(QObject::tr("DarkSilk shutting down. Please wait..."), (HWND)window.getMainWinId());
-#endif
 
                 app.exec();
 

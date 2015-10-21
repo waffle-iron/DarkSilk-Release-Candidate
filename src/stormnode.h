@@ -11,12 +11,10 @@
 #include "sync.h"
 #include "net.h"
 #include "key.h"
-//#include "primitives/transaction.h"
-//#include "primitives/block.h"
 #include "util.h"
-//#include "script/script.h"
 #include "base58.h"
 #include "main.h"
+#include "stormnode-pos.h"
 #include "timedata.h"
 #include "script.h"
 
@@ -32,7 +30,7 @@ class uint256;
 #define STORMNODE_SYNC_IN_PROCESS             8
 #define STORMNODE_REMOTELY_ENABLED            9
 
-#define STORMNODE_MIN_CONFIRMATIONS           15
+#define STORMNODE_MIN_CONFIRMATIONS           10
 #define STORMNODE_MIN_SSEEP_SECONDS           (30*60)
 #define STORMNODE_MIN_SSEE_SECONDS            (5*60)
 #define STORMNODE_PING_SECONDS                (1*60)
@@ -50,18 +48,9 @@ extern CStormnodePayments stormnodePayments;
 extern map<uint256, CStormnodePaymentWinner> mapSeenStormnodeVotes;
 extern map<int64_t, uint256> mapCacheBlockHashes;
 
-enum stormnodeState {
-    STORMNODE_ENABLED = 1,
-    STORMNODE_EXPIRED = 2,
-    STORMNODE_VIN_SPENT = 3,
-    STORMNODE_REMOVE = 4
-};
-
-// manage the stormnode connections
-void ProcessStormnodeConnections();
-
 
 void ProcessMessageStormnodePayments(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
+bool GetBlockHash(uint256& hash, int nBlockHeight);
 
 //
 // The Stormnode Class. For managing the sandstorm process. It contains the input of the 1000DRK, signature to prove
@@ -73,6 +62,14 @@ private:
     // critical section to protect the inner data structures
     mutable CCriticalSection cs;
 public:
+    enum state {
+    STORMNODE_ENABLED = 1,
+    STORMNODE_EXPIRED = 2,
+    STORMNODE_VIN_SPENT = 3,
+    STORMNODE_REMOVE = 4,
+    STORMNODE_POS_ERROR = 5
+    };
+
 	static int minProtoVersion;
     CTxIn vin; 
     CService addr;
@@ -88,12 +85,18 @@ public:
     bool unitTest;
     bool allowFreeTx;
     int protocolVersion;
-    int64_t nLastDsq; //the dsq count from the last dsq broadcast of this node
+    int64_t nLastSsq; //the ssq count from the last ssq broadcast of this node
+    CScript donationAddress;
+    int donationPercentage;    
+    int nVote;
+    int64_t lastVote;
+    int nScanningErrorCount;
+    int nLastScanningErrorBlockHeight;
 
     CStormnode();
     CStormnode(const CStormnode& other);
-    CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::vector<unsigned char> newSig, int64_t newSigTime, CPubKey newPubkey2, int protocolVersionIn);
-
+    CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::vector<unsigned char> newSig, int64_t newSigTime, CPubKey newPubkey2, int protocolVersionIn, CScript donationAddress, int donationPercentage);
+ 
     void swap(CStormnode& first, CStormnode& second) // nothrow    
     {
         // enable ADL (not necessary in our case, but good practice)
@@ -111,11 +114,17 @@ public:
         swap(first.lastSseep, second.lastSseep);
         swap(first.lastTimeSeen, second.lastTimeSeen);
         swap(first.cacheInputAge, second.cacheInputAge);
+        swap(first.unitTest, second.unitTest);
         swap(first.cacheInputAgeBlock, second.cacheInputAgeBlock);
         swap(first.allowFreeTx, second.allowFreeTx);
-        swap(first.protocolVersion, second.protocolVersion);
-        swap(first.unitTest, second.unitTest);
-        swap(first.nLastDsq, second.nLastDsq);
+        swap(first.protocolVersion, second.protocolVersion);        
+        swap(first.nLastSsq, second.nLastSsq);
+        swap(first.donationAddress, second.donationAddress);
+        swap(first.donationPercentage, second.donationPercentage);
+        swap(first.nVote, second.nVote);
+        swap(first.lastVote, second.lastVote);
+        swap(first.nScanningErrorCount, second.nScanningErrorCount);
+        swap(first.nLastScanningErrorBlockHeight, second.nLastScanningErrorBlockHeight);
     }
 
     CStormnode& operator=(CStormnode from)
@@ -157,7 +166,13 @@ public:
                 READWRITE(unitTest);
                 READWRITE(allowFreeTx);
                 READWRITE(protocolVersion);
-                READWRITE(nLastDsq);
+                READWRITE(nLastSsq);
+                READWRITE(donationAddress);
+                READWRITE(donationPercentage);
+                READWRITE(nVote);
+                READWRITE(lastVote);
+                READWRITE(nScanningErrorCount);
+                READWRITE(nLastScanningErrorBlockHeight);
         }
     )
 
@@ -206,6 +221,34 @@ public:
         }
 
         return cacheInputAge+(pindexBest->nHeight-cacheInputAgeBlock);
+    }
+
+    void ApplyScanningError(CStormnodeScanningError& snse)
+    {
+        if(!snse.IsValid()) return;
+
+        if(snse.nBlockHeight == nLastScanningErrorBlockHeight) return;
+        nLastScanningErrorBlockHeight = snse.nBlockHeight;
+
+        if(snse.nErrorType == SCANNING_SUCCESS){
+            nScanningErrorCount--;
+            if(nScanningErrorCount < 0) nScanningErrorCount = 0;
+        } else { //all other codes are equally as bad
+            nScanningErrorCount++;
+            if(nScanningErrorCount > STORMNODE_SCANNING_ERROR_THESHOLD*2) nScanningErrorCount = STORMNODE_SCANNING_ERROR_THESHOLD*2;
+        }
+    }
+
+    std::string Status() {
+    std::string strStatus = "ACTIVE";
+
+    if(activeState == CStormnode::STORMNODE_ENABLED) strStatus   = "ENABLED";
+    if(activeState == CStormnode::STORMNODE_EXPIRED) strStatus   = "EXPIRED";
+    if(activeState == CStormnode::STORMNODE_VIN_SPENT) strStatus = "VIN_SPENT";
+    if(activeState == CStormnode::STORMNODE_REMOVE) strStatus    = "REMOVE";
+    if(activeState == CStormnode::STORMNODE_POS_ERROR) strStatus = "POS_ERROR";
+
+    return strStatus;
     }
 };
 
@@ -260,6 +303,7 @@ private:
     std::string strTestPubKey;
     std::string strMainPubKey;
     bool enabled;
+    int nLastBlockHeight;
 
 public:
 

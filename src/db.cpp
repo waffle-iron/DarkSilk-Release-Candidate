@@ -16,7 +16,6 @@
 
 #include <boost/filesystem.hpp>
 #include <boost/version.hpp>
-#include <openssl/rand.h>
 
 using namespace std;
 using namespace boost;
@@ -40,7 +39,7 @@ void CDBEnv::EnvShutdown()
     fDbEnvInit = false;
     int ret = dbenv.close(0);
     if (ret != 0)
-        LogPrintf("EnvShutdown exception: %s (%d)\n", DbEnv::strerror(ret), ret);
+        LogPrintf("CDBEnv::EnvShutdown : Error %d shutting down database environment: %s\n", ret, DbEnv::strerror(ret));
     if (!fMockDb)
         DbEnv(0).remove(strPath.c_str(), 0);
 }
@@ -290,6 +289,19 @@ CDB::CDB(const std::string& strFilename, const char* pszMode) :
             bitdb.mapDb[strFile] = pdb;
         }
     }
+}
+
+void CDB::Flush()
+{
+    if (activeTxn)
+        return;
+
+    // Flush database activity from memory pool to disk log
+    unsigned int nMinutes = 0;
+    if (fReadOnly)
+        nMinutes = 1;
+
+    bitdb.dbenv.txn_checkpoint(nMinutes ? GetArg("-dblogsize", 100)*1024 : 0, nMinutes, 0);
 }
 
 void CDB::Close()

@@ -103,6 +103,7 @@ protected:
     ~CDB() { Close(); }
 
 public:
+    void Flush();
     void Close();
 
 private:

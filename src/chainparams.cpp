@@ -150,7 +150,7 @@ public:
         genesis.nNonce = 0;
         hashGenesisBlock = genesis.GetHash(); 
 
-        //printf("Test Gensis Hash: %s\n", genesis.GetHash().ToString().c_str());
+        //printf("Test Genesis Hash: %s\n", genesis.GetHash().ToString().c_str());
         assert(hashGenesisBlock == uint256("0xf788ac4ae46429468897b4b9758651cb8a642a6e01f16968134a75078905e24d"));
 
         vFixedSeeds.clear();
@@ -170,7 +170,6 @@ public:
     virtual Network NetworkID() const { return CChainParams::TESTNET; }
 };
 static CTestNetParams testNetParams;
-
 
 static CChainParams *pCurrentParams = &mainParams;
 

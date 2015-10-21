@@ -35,7 +35,7 @@ int nCompleteTXLocks;
 void ProcessMessageInstantX(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
 {
     if(fLiteMode) return; //disable all sandstorm/stormnode related functionality
-    if(!IsSporkActive(SPORK_1_STORMNODE_PAYMENTS_ENFORCEMENT)) return;
+    if(!IsSporkActive(SPORK_2_INSTANTX)) return;
     if(IsInitialBlockDownload()) return;
 
     if (strCommand == "txlreq")
@@ -69,7 +69,6 @@ void ProcessMessageInstantX(CNode* pfrom, std::string& strCommand, CDataStream& 
         CValidationState state;
 
 
-        //if (AcceptToMemoryPool(mempool, state, tx, true, &fMissingInputs))
         if (AcceptToMemoryPool(mempool, tx, true, &fMissingInputs))
         {
             vector<CInv> vInv;
@@ -114,7 +113,6 @@ void ProcessMessageInstantX(CNode* pfrom, std::string& strCommand, CDataStream& 
                         LogPrintf("ProcessMessageInstantX::txlreq - Found Existing Complete IX Lock\n");
 
                         CValidationState state;
-                        //DisconnectBlockAndInputs(state, tx);
                         mapTxLockReq.insert(make_pair(tx.GetHash(), tx));
                     }
                 }
@@ -244,7 +242,7 @@ int64_t CreateNewLock(CTransaction tx)
 
         CTransactionLock newLock;
         newLock.nBlockHeight = nBlockHeight;
-        newLock.nExpiration = GetTime()+(60*60); //locks expire after 15 minutes (6 confirmations)
+        newLock.nExpiration = GetTime()+(60*60); //locks expire after 60 minutes (6 confirmations)
         newLock.nTimeout = GetTime()+(60*5);
         newLock.txHash = tx.GetHash();
         mapTxLocks.insert(make_pair(tx.GetHash(), newLock));
@@ -391,7 +389,6 @@ bool ProcessConsensusVote(CConsensusVote& ctx)
                 //if this tx lock was rejected, we need to remove the conflicting blocks
                 if(mapTxLockReqRejected.count((*i).second.txHash)){
                     CValidationState state;
-                    //DisconnectBlockAndInputs(state, mapTxLockReqRejected[(*i).second.txHash]);
                 }
             }
         }
@@ -449,6 +446,27 @@ void CleanTransactionLocksList()
     while(it != mapTxLocks.end()) {
         if(GetTime() > it->second.nExpiration){ //keep them for an hour
             LogPrintf("Removing old transaction lock %s\n", it->second.txHash.ToString().c_str());
+
+            // loop through Stormodes that responded
+            for(int nRank = 0; nRank <= INSTANTX_SIGNATURES_TOTAL; nRank++)
+            {
+                CStormnode* psn = snodeman.GetStormnodeByRank(nRank, it->second.nBlockHeight, MIN_INSTANTX_PROTO_VERSION);                
+                if(!psn) continue;
+
+                bool fFound = false;
+                BOOST_FOREACH(CConsensusVote& v, it->second.vecConsensusVotes)
+                {
+                    if(psn->vin == v.vinStormnode){ //Stormnode responded
+                        fFound = true;
+                    }
+                }
+
+                if(!fFound){
+                    //increment a scanning error
+                    CStormnodeScanningError snse(psn->vin, SCANNING_ERROR_IX_NO_RESPONSE, it->second.nBlockHeight);
+                    psn->ApplyScanningError(snse);
+                }
+            }
 
             if(mapTxLockReq.count(it->second.txHash)){
                 CTransaction& tx = mapTxLockReq[it->second.txHash];

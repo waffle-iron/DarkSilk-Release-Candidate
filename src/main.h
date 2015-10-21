@@ -18,6 +18,8 @@
 
 class CValidationState;
 
+static const int64_t STORMNODE_COLLATERAL = 42000; //Stormnode Collateral Amount
+
 static const int STORMNODE_PAYMENT_START = 420; // Block 420
 static const int TESTNET_STORMNODE_PAYMENT_START = 100; // Block 100
 
@@ -31,27 +33,8 @@ static const int64_t STATIC_POS_REWARD = COIN * 1; // Static Reward of 1 DRKSLK
     one party without comprimising the security of InstantX
     (1000/2150.0)**15 = 1.031e-05
 */
-#define INSTANTX_SIGNATURES_REQUIRED          20
-#define INSTANTX_SIGNATURES_TOTAL             30
-
-#define STORMNODE_NOT_PROCESSED               0 // Initial state
-#define STORMNODE_IS_CAPABLE                  1
-#define STORMNODE_NOT_CAPABLE                 2
-#define STORMNODE_STOPPED                     3
-#define STORMNODE_INPUT_TOO_NEW               4
-#define STORMNODE_PORT_NOT_OPEN               6
-#define STORMNODE_PORT_OPEN                   7
-#define STORMNODE_SYNC_IN_PROCESS             8
-#define STORMNODE_REMOTELY_ENABLED            9
-
-#define STORMNODE_MIN_CONFIRMATIONS           15
-#define STORMNODE_MIN_DSEEP_SECONDS           (30*60)
-#define STORMNODE_MIN_DSEE_SECONDS            (5*60)
-#define STORMNODE_PING_SECONDS                (1*60)
-#define STORMNODE_PING_WAIT_SECONDS           (5*60)
-#define STORMNODE_EXPIRATION_SECONDS          (65*60)
-#define STORMNODE_REMOVAL_SECONDS             (70*60)
-
+#define INSTANTX_SIGNATURES_REQUIRED          15
+#define INSTANTX_SIGNATURES_TOTAL             20
 
 class CBlock;
 class CBlockIndex;
@@ -90,13 +73,15 @@ inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MO
 /** Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp. */
 static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov 5th 00:53:20 1985 UTC
 
-static const unsigned int POW_TARGET_SPACING = 4 * 60; // 4 mins
-static const unsigned int POS_TARGET_SPACING = 64; // 64 seconds
-static const int64_t POW_DRIFT = 16 * 60; // 16 minutes
-static const int64_t POS_DRIFT = 15; // 15 seconds
-static const int64_t STORMNODE_COLLATERAL = 42000; //Stormnode Collateral Amount
+static const unsigned int POW_TARGET_SPACING = 1 * 60; // 60 seconds
+static const unsigned int POS_TARGET_SPACING = 1 * 64; // 64 seconds
+static const int64_t POW_DRIFT = 10 * 60; // 600 seconds
+static const int64_t POS_DRIFT = 10 * 64; // 640 seconds
 
 inline int64_t FutureDrift(int64_t nTime, bool fProofOfStake=false) { return nTime + (fProofOfStake ? POS_DRIFT : POW_DRIFT); }
+
+/** "reject" message codes **/
+static const unsigned char REJECT_INVALID = 0x10;
 
 
 extern CScript COINBASE_FLAGS;
@@ -123,13 +108,15 @@ extern bool fImporting;
 extern bool fReindex;
 struct COrphanBlock;
 extern std::map<uint256, COrphanBlock*> mapOrphanBlocks;
-extern bool fHaveGUI;
 
 // Settings
 extern bool fUseFastIndex;
 extern unsigned int nDerivationMethodIndex;
 
 extern bool fMinimizeCoinAge;
+
+extern bool fLargeWorkForkFound;
+extern bool fLargeWorkInvalidChainFound;
 
 // Minimum disk space required - used in CheckDiskSpace()
 static const uint64_t nMinDiskSpace = 52428800;
@@ -181,11 +168,9 @@ void ThreadStakeMiner(CWallet *pwallet);
 
 
 /** (try to) add transaction to memory pool **/
-bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree,
-                        bool* pfMissingInputs);
+bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree, bool* pfMissingInputs, bool ignoreFees=false);
 
-bool AcceptableInputs(CTxMemPool& pool, const CTransaction &txo, bool fLimitFree,
-                        bool* pfMissingInputs);
+bool AcceptableInputs(CTxMemPool& pool, const CTransaction &txo, bool fLimitFree, bool ignoreFees=true);
 
 
 bool FindTransactionsByDestination(const CTxDestination &dest, std::vector<uint256> &vtxhash);
@@ -328,6 +313,9 @@ public:
         return (vin.size() > 0 && (!vin[0].prevout.IsNull()) && vout.size() >= 2 && vout[0].IsEmpty());
     }
 
+    // Compute priority, given priority of inputs and (optionally) tx size
+    double ComputePriority(double dPriorityInputs, unsigned int nTxSize=0) const;
+
     /** Amount of darksilks spent by this transaction.
         @return sum of all outputs (note: does not include fees)
      */
@@ -367,7 +355,7 @@ public:
             filein >> *this;
         }
         catch (std::exception &e) {
-            return error("%s() : deserialise or I/O error", __PRETTY_FUNCTION__);
+            return error("%s() : deserialize or I/O error", __PRETTY_FUNCTION__);
         }
 
         // Return file pointer
@@ -548,13 +536,14 @@ public:
     // -1  : not in blockchain, and not in memory pool (conflicted transaction)
     //  0  : in memory pool, waiting to be included in a block
     // >=1 : this many blocks deep in the main chain
-    int GetDepthInMainChain(CBlockIndex* &pindexRet) const;
-    int GetDepthInMainChain() const { CBlockIndex *pindexRet; return GetDepthInMainChain(pindexRet); }
+    int GetDepthInMainChain(CBlockIndex* &pindexRet, bool enableIX=true) const;
+    int GetDepthInMainChain(bool enableIX=true) const { CBlockIndex *pindexRet; return GetDepthInMainChain(pindexRet, enableIX); }
     bool IsInMainChain() const { CBlockIndex *pindexRet; return GetDepthInMainChainINTERNAL(pindexRet) > 0; }
     int GetBlocksToMaturity() const;
     bool AcceptToMemoryPool(bool fLimitFree=true);
     int GetTransactionLockSignatures() const;
     bool IsTransactionLockTimedOut() const;
+    
 };
 
 
@@ -847,7 +836,7 @@ public:
             filein >> *this;
         }
         catch (std::exception &e) {
-            return error("%s() : deserialise or I/O error", __PRETTY_FUNCTION__);
+            return error("%s() : deserialize or I/O error", __PRETTY_FUNCTION__);
         }
 
         // Check the header

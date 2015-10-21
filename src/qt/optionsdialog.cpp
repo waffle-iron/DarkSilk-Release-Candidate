@@ -165,6 +165,10 @@ void OptionsDialog::setMapper()
     mapper->addMapping(ui->coinControlFeatures, OptionsModel::CoinControlFeatures);
     mapper->addMapping(ui->minimizeCoinAge, OptionsModel::MinimizeCoinAge);
 
+    /* Sandstorm Rounds */
+    mapper->addMapping(ui->sandstormRounds, OptionsModel::SandstormRounds);
+    mapper->addMapping(ui->AnonymizeDarkSilk, OptionsModel::AnonymizeDarkSilkAmount);
+
 #ifdef USE_NATIVE_I2P
     tabI2P->setMapper(*mapper);
 #endif

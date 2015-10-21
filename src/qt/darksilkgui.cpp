@@ -9,7 +9,6 @@
 #include <QApplication>
 
 #include "darksilkgui.h"
-
 #include "transactiontablemodel.h"
 #include "addressbookpage.h"
 #include "sendcoinsdialog.h"
@@ -51,6 +50,7 @@
 
 #include <QMenuBar>
 #include <QMenu>
+#include <QFile>
 #include <QIcon>
 #include <QVBoxLayout>
 #include <QToolBar>
@@ -289,9 +289,9 @@ DarkSilkGUI::~DarkSilkGUI()
     if(trayIcon) { // Hide tray icon, as deleting will let it linger until quit (on Ubuntu)
         trayIcon->hide();
     }
-
 #ifdef Q_OS_MAC
     delete appMenuBar;
+    MacDockIconHandler::instance()->setMainWindow(NULL);
 #endif
 }
 
@@ -595,18 +595,15 @@ void DarkSilkGUI::setClientModel(ClientModel *clientModel)
 #ifdef USE_NATIVE_I2P
         setNumI2PConnections(clientModel->getNumI2PConnections());
         connect(clientModel, SIGNAL(numI2PConnectionsChanged(int)), this, SLOT(setNumI2PConnections(int)));
-
-        if(clientModel->isI2POnly()) 
-        {
+    if(clientModel->isI2POnly()) {
             netLabel->setText("I2P");
             netLabel->setToolTip(tr("Wallet is using I2P-network only"));
         } else {
+            netLabel->setText("CLEARNET");
+        }
 #endif
 
-            netLabel->setText("CLEARNET");
 #ifdef USE_NATIVE_I2P
-        }
-
         if (clientModel->isI2PAddressGenerated()) 
         {
             labelI2PGenerated->setText("DYN");
@@ -615,9 +612,8 @@ void DarkSilkGUI::setClientModel(ClientModel *clientModel)
             labelI2PGenerated->setText("STA");
             labelI2PGenerated->setToolTip(tr("Wallet is running with a static I2P-address"));
         }
-
-#endif
-    } else {
+#endif  
+        } else { 
         if(!IsLimited(NET_TOR)) 
         {
             netLabel->setMinimumSize(48, 48);
@@ -625,6 +621,8 @@ void DarkSilkGUI::setClientModel(ClientModel *clientModel)
             netLabel->setPixmap(QPixmap(":/icons/onion"));
             netLabel->setMaximumSize(48, 48);
             netLabel->setScaledContents(true);
+        } else {
+            netLabel->setText("CLEARNET");
         }
     }
 
@@ -899,6 +897,9 @@ void DarkSilkGUI::setNumConnections(int count)
 
 void DarkSilkGUI::setNumBlocks(int count) 
 {
+    if(!clientModel)
+        return;
+
     QString tooltip;
 
     QDateTime lastBlockDate = clientModel->getLastBlockDate();
@@ -975,8 +976,9 @@ void DarkSilkGUI::setNumBlocks(int count)
     statusBar()->setVisible(true);
 }
 
-void DarkSilkGUI::message(const QString &title, const QString &message, bool modal, unsigned int style) 
-{
+void DarkSilkGUI::message(const QString &title, const QString &message, bool modal, unsigned int style, bool *ret) 
+{   
+    
     QString strTitle = tr("DarkSilk") + " - ";
     // Default to information icon
     int nMBoxIcon = QMessageBox::Information;
@@ -1011,7 +1013,7 @@ void DarkSilkGUI::message(const QString &title, const QString &message, bool mod
         nMBoxIcon = QMessageBox::Warning;
         nNotifyIcon = Notificator::Warning;
     }
-
+    
     // Display message
     if (modal) {
         // Check for buttons, use OK as default, if none was supplied
@@ -1022,8 +1024,15 @@ void DarkSilkGUI::message(const QString &title, const QString &message, bool mod
             buttons = QMessageBox::Ok;
         }
 
-        QMessageBox mBox((QMessageBox::Icon)nMBoxIcon, strTitle, message, buttons);
-        mBox.exec();
+        // Ensure we get users attention, but only if main window is visible
+        // as we don't want to pop up the main window for messages that happen before
+        // initialization is finished.
+        if(!(CClientUIInterface::NOSHOWGUI))
+            showNormalIfMinimized();
+        QMessageBox mBox((QMessageBox::Icon)nMBoxIcon, strTitle, message, buttons, this);
+        int r = mBox.exec();
+        if (ret != NULL)
+            *ret = r == QMessageBox::Ok;
     } else {
         notificator->notify((Notificator::Class)nNotifyIcon, strTitle, message);
     }
@@ -1036,7 +1045,7 @@ void DarkSilkGUI::changeEvent(QEvent *e)
 
     if(e->type() == QEvent::WindowStateChange) 
     {
-        if(clientModel && clientModel->getOptionsModel()->getMinimizeToTray()) 
+        if(clientModel && clientModel->getOptionsModel() && clientModel->getOptionsModel()->getMinimizeToTray())
         {
             QWindowStateChangeEvent *wsevt = static_cast<QWindowStateChangeEvent*>(e);
 
@@ -1053,18 +1062,16 @@ void DarkSilkGUI::changeEvent(QEvent *e)
 
 void DarkSilkGUI::closeEvent(QCloseEvent *event) 
 {
-    if(clientModel) 
-    {
 #ifndef Q_OS_MAC // Ignored on Mac
-
-        if(!clientModel->getOptionsModel()->getMinimizeToTray() &&
-                !clientModel->getOptionsModel()->getMinimizeOnClose()) 
+    if(clientModel&& clientModel->getOptionsModel())
+         {
+        if(!clientModel->getOptionsModel()->getMinimizeOnClose()) 
         {
             qApp->quit();
         }
+    }
 
 #endif
-    }
 
     QMainWindow::closeEvent(event);
 }
@@ -1587,4 +1594,3 @@ WId DarkSilkGUI::getMainWinId() const
 {
     return winId();
 }
-

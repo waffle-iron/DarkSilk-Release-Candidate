@@ -14,8 +14,11 @@
 #include "chainparams.h"
 #include "serialize.h"
 #include "netbase.h"
-#include <string>
 #include "uint256.h"
+
+#include <stdint.h>
+#include <string>
+
 
 /** Message header.
  * (4) message start.
@@ -91,6 +94,8 @@ class CAddress : public CService
              READWRITE(*pip);
             )
 
+        void print() const;
+
 
     // TODO: make private (improves encapsulation)
     public:
@@ -122,6 +127,7 @@ class CInv
         bool IsKnownType() const;
         const char* GetCommand() const;
         std::string ToString() const;
+        void print() const;
 
     // TODO: make private (improves encapsulation)
     public:
@@ -129,6 +135,18 @@ class CInv
         uint256 hash;
 };
 
+enum {
+    MSG_TX = 1,
+    MSG_BLOCK,
+    // Nodes may always request a MSG_FILTERED_BLOCK in a getdata, however,
+    // MSG_FILTERED_BLOCK should not appear in any invs except as a part of getdata.
+    MSG_FILTERED_BLOCK,
+    MSG_TXLOCK_REQUEST,
+    MSG_TXLOCK_VOTE,
+    MSG_SPORK,
+    MSG_STORMNODE_WINNER,
+    MSG_STORMNODE_SCANNING_ERROR
+};
 
 
 #endif // __INCLUDED_PROTOCOL_H__

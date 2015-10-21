@@ -8,12 +8,19 @@
 #define _DARKSILKALERT_H_ 1
 
 #include "serialize.h"
+#include "sync.h"
 
+#include <map>
 #include <set>
+#include <stdint.h>
 #include <string>
 
+class CAlert;
 class CNode;
 class uint256;
+
+extern std::map<uint256, CAlert> mapAlerts;
+extern CCriticalSection cs_mapAlerts;
 
 /** Alerts are for notifying old versions if they become too obsolete and
  * need to upgrade.  The message is displayed in the status bar.
@@ -54,14 +61,15 @@ public:
         READWRITE(setSubVer);
         READWRITE(nPriority);
 
-        READWRITE(strComment);
-        READWRITE(strStatusBar);
-        READWRITE(strReserved);
+        READWRITE(LIMITED_STRING(strComment, 65536));
+        READWRITE(LIMITED_STRING(strStatusBar, 256));
+        READWRITE(LIMITED_STRING(strReserved, 256));
     )
 
     void SetNull();
 
     std::string ToString() const;
+    void print() const;
 };
 
 /** An alert is a combination of a serialized CUnsignedAlert and a signature. */

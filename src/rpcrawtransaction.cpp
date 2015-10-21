@@ -567,7 +567,7 @@ Value sendrawtransaction(const Array& params, bool fHelp)
     CDataStream ssData(txData, SER_NETWORK, PROTOCOL_VERSION);
     CTransaction tx;
 
-    // deserialise binary data stream
+    // deserialize binary data stream
     try {
         ssData >> tx;
     }

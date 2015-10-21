@@ -19,7 +19,7 @@ reference_datetime: "2013-06-01 00:00:00"
 remotes: []
 files:
 - "openssl-1.0.2d.tar.gz"
-- "miniupnpc-1.9.tar.gz"
+- "miniupnpc-1.9.20151008.tar.gz"
 - "db-6.1.26.NC.tar.gz"
 - "zlib-1.2.8.tar.gz"
 - "libpng-1.6.18.tar.xz"
@@ -39,14 +39,14 @@ script: |
   export TZ=UTC
   export LIBRARY_PATH="$STAGING/lib"
   # Integrity Check
-  echo "3da5b3c572741fe2237bee1c3d36b11beef61172ac847132b045548b98d4df29  secp256k1-master.zip"   | sha256sum -c
-  echo "3087c32929c1e9db4947d6a184694e06ec604bca29449b75daec295a5d8f11da  miniupnpc-1.9.tar.gz"   | sha256sum -c
-  echo "060105bda482fdfb109b88c05b69624e9d467d59fa30fd9a97225efcc38d1561  db-6.1.26.NC.tar.gz"    | sha256sum -c
-  echo "36658cb768a54c1d4dec43c3116c27ed893e88b02ecfcb44f2166f9c0b7f2a0d  zlib-1.2.8.tar.gz"      | sha256sum -c
-  echo "2e10c13b7949883ac961db6177c516d778184432d440317e9f0391305c360963  libpng-1.6.18.tar.xz"   | sha256sum -c
-  echo "727a932322d94287b62abb1bd2d41723eec4356a7728909e38adb65ca25241ca  boost_1_59_0.tar.bz2"   | sha256sum -c
-  echo "671c36487785628a703374c652ad2cebea45fa920ae5681515df25d9f2c9a8c8  openssl-1.0.2d.tar.gz"  | sha256sum -c
-  echo "e794e26a96019013c0e3665cb06b18992668f352c5553d0a553f5d144f7f2a72  qrencode-3.4.4.tar.gz"  | sha256sum -c
+  echo "3da5b3c572741fe2237bee1c3d36b11beef61172ac847132b045548b98d4df29  secp256k1-master.zip"          | sha256sum -c
+  echo "e444ac3b587ce82709c4d0cfca1fe71f44f9fc433e9f946b12b9e1bfe667a633  miniupnpc-1.9.20151008.tar.gz" | sha256sum -c
+  echo "060105bda482fdfb109b88c05b69624e9d467d59fa30fd9a97225efcc38d1561  db-6.1.26.NC.tar.gz"           | sha256sum -c
+  echo "36658cb768a54c1d4dec43c3116c27ed893e88b02ecfcb44f2166f9c0b7f2a0d  zlib-1.2.8.tar.gz"             | sha256sum -c
+  echo "2e10c13b7949883ac961db6177c516d778184432d440317e9f0391305c360963  libpng-1.6.18.tar.xz"          | sha256sum -c
+  echo "727a932322d94287b62abb1bd2d41723eec4356a7728909e38adb65ca25241ca  boost_1_59_0.tar.bz2"          | sha256sum -c
+  echo "671c36487785628a703374c652ad2cebea45fa920ae5681515df25d9f2c9a8c8  openssl-1.0.2d.tar.gz"         | sha256sum -c
+  echo "e794e26a96019013c0e3665cb06b18992668f352c5553d0a553f5d144f7f2a72  qrencode-3.4.4.tar.gz"         | sha256sum -c
   mkdir -p "$STAGING"
   #
   tar xzf openssl-1.0.2d.tar.gz
@@ -59,9 +59,8 @@ script: |
   cd ..
   #
 
-  tar xzfm miniupnpc-1.9.tar.gz
-  cd miniupnpc-1.9.20150917
-  sed -i 's^HEADERS = miniupnpc.h miniwget.h upnpcommands.h igd_desc_parse.h \\^HEADERS = miniupnpc.h upnpdev.h miniwget.h upnpcommands.h igd_desc_parse.h \\^' Makefile
+  tar xzfm miniupnpc-1.9.20151008.tar.gz
+  cd miniupnpc-1.9.20151008
   #   miniupnpc is always built with -fPIC
   INSTALLPREFIX=$STAGING make $MAKEOPTS install
   rm -f $STAGING/lib/libminiupnpc.so* # no way to skip shared lib build

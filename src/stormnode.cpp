@@ -3,6 +3,7 @@
 #include "sandstorm.h"
 #include "core.h"
 #include "main.h"
+#include "sync.h"
 #include "util.h"
 #include "addrman.h"
 #include <boost/lexical_cast.hpp>
@@ -11,6 +12,7 @@
 int CStormnode::minProtoVersion = MIN_SN_PROTO_VERSION;
 
 CCriticalSection cs_stormnodes;
+CCriticalSection cs_stormnodepayments;
 
 /** Object for who's going to get paid on which blocks */
 CStormnodePayments stormnodePayments;
@@ -24,36 +26,43 @@ std::map<int64_t, uint256> mapCacheBlockHashes;
 void ProcessMessageStormnodePayments(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
 {
     if(IsInitialBlockDownload()) return;
-    if (strCommand == "snget") //Stormnode Payments Request Sync
-    {
+
+    if (strCommand == "snget") {//Stormnode Payments Request Sync
         if(fLiteMode) return; //disable all sandstorm/stormnode related functionality
 
-        /*if(pfrom->HasFulfilledRequest("snget")) {
+        if(pfrom->HasFulfilledRequest("snget")) {
             LogPrintf("snget - peer already asked me for the list\n");
             Misbehaving(pfrom->GetId(), 20);
             return;
-        }*/
+        }
+       
 
         pfrom->FulfilledRequest("snget");
         stormnodePayments.Sync(pfrom);
         LogPrintf("snget - Sent stormnode winners to %s\n", pfrom->addr.ToString().c_str());
     }
     else if (strCommand == "snw") { //Stormnode Payments Declare Winner
+
+        LOCK(cs_stormnodepayments);
+
         //this is required in litemode
         CStormnodePaymentWinner winner;
-        int a = 0;
-        vRecv >> winner >> a;
+        vRecv >> winner;
 
         if(pindexBest == NULL) return;
 
+        CTxDestination address1;
+        ExtractDestination(winner.payee, address1);
+        CDarkSilkAddress address2(address1);
+
         uint256 hash = winner.GetHash();
         if(mapSeenStormnodeVotes.count(hash)) {
-            if(fDebug) LogPrintf("snw - seen vote %s Height %d bestHeight %d\n", hash.ToString().c_str(), winner.nBlockHeight, pindexBest->nHeight);
+            if(fDebug) LogPrintf("snw - seen vote %s Addr %s Height %d bestHeight %d\n", hash.ToString().c_str(), address2.ToString().c_str(), winner.nBlockHeight, pindexBest->nHeight);
             return;
         }
 
         if(winner.nBlockHeight < pindexBest->nHeight - 10 || winner.nBlockHeight > pindexBest->nHeight+20){
-            LogPrintf("snw - winner out of range %s Height %d bestHeight %d\n", winner.vin.ToString().c_str(), winner.nBlockHeight, pindexBest->nHeight);
+            LogPrintf("snw - winner out of range %s Addr %s Height %d bestHeight %d\n", winner.vin.ToString().c_str(), address2.ToString().c_str(), winner.nBlockHeight, pindexBest->nHeight);
             return;
         }
 
@@ -63,8 +72,8 @@ void ProcessMessageStormnodePayments(CNode* pfrom, std::string& strCommand, CDat
             return;
         }
 
-        LogPrintf("snw - winning vote  %s Height %d bestHeight %d\n", winner.vin.ToString().c_str(), winner.nBlockHeight, pindexBest->nHeight);
-
+        LogPrintf("snw - winning vote - Vin %s Addr %s Height %d bestHeight %d\n", winner.vin.ToString().c_str(), address2.ToString().c_str(), winner.nBlockHeight, pindexBest->nHeight);
+ 
         if(!stormnodePayments.CheckSignature(winner)){
             LogPrintf("snw - invalid signature\n");
             Misbehaving(pfrom->GetId(), 100);
@@ -78,6 +87,15 @@ void ProcessMessageStormnodePayments(CNode* pfrom, std::string& strCommand, CDat
         }
     }
 }
+
+struct CompareValueOnly
+{
+    bool operator()(const pair<int64_t, CTxIn>& t1,
+                    const pair<int64_t, CTxIn>& t2) const
+    {
+        return t1.first < t2.first;
+    }
+};
 
 //Get the last hash that matches the modulus given. Processed in reverse order
 bool GetBlockHash(uint256& hash, int nBlockHeight)
@@ -134,7 +152,13 @@ CStormnode::CStormnode()
     unitTest = false;
     allowFreeTx = true;
     protocolVersion = MIN_PEER_PROTO_VERSION;
-    nLastDsq = 0;
+    nLastSsq = 0;
+    donationAddress = CScript();
+    donationPercentage = 0;
+    nVote = 0;
+    lastVote = 0;
+    nScanningErrorCount = 0;
+    nLastScanningErrorBlockHeight = 0;    
 }
 
 CStormnode::CStormnode(const CStormnode& other)
@@ -154,10 +178,16 @@ CStormnode::CStormnode(const CStormnode& other)
     unitTest = other.unitTest;
     allowFreeTx = other.allowFreeTx;
     protocolVersion = other.protocolVersion;
-    nLastDsq = other.nLastDsq;
+    nLastSsq = other.nLastSsq;
+    donationAddress = other.donationAddress;
+    donationPercentage = other.donationPercentage;
+    nVote = other.nVote;
+    lastVote = other.lastVote;
+    nScanningErrorCount = other.nScanningErrorCount;
+    nLastScanningErrorBlockHeight = other.nLastScanningErrorBlockHeight;
 }
 
-CStormnode::CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::vector<unsigned char> newSig, int64_t newSigTime, CPubKey newPubkey2, int protocolVersionIn)
+CStormnode::CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::vector<unsigned char> newSig, int64_t newSigTime, CPubKey newPubkey2, int protocolVersionIn, CScript newDonationAddress, int newDonationPercentage)
 {
     LOCK(cs);
     vin = newVin;
@@ -174,7 +204,13 @@ CStormnode::CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::v
     unitTest = false;
     allowFreeTx = true;
     protocolVersion = protocolVersionIn;
-    nLastDsq = 0;
+    nLastSsq = 0;
+    donationAddress = newDonationAddress;
+    donationPercentage = newDonationPercentage;
+    nVote = 0;
+    lastVote = 0;
+    nScanningErrorCount = 0;
+    nLastScanningErrorBlockHeight = 0;
 }
 
 //
@@ -192,7 +228,7 @@ uint256 CStormnode::CalculateScore(int mod, int64_t nBlockHeight)
     if(!GetBlockHash(hash, nBlockHeight)) return 0;
 
     uint256 hash2 = Hash(BEGIN(hash), END(hash));
-    uint256 hash3 = Hash(BEGIN(hash), END(aux));
+    uint256 hash3 = Hash(BEGIN(hash), END(hash), BEGIN(aux), END(aux));
 
     uint256 r = (hash3 > hash2 ? hash3 - hash2 : hash2 - hash3);
 
@@ -201,6 +237,16 @@ uint256 CStormnode::CalculateScore(int mod, int64_t nBlockHeight)
 
 void CStormnode::Check()
 {
+    //TODO: Random segfault with this line removed
+    TRY_LOCK(cs_main, lockRecv);
+    if(!lockRecv) return;
+
+    if(nScanningErrorCount >= STORMNODE_SCANNING_ERROR_THESHOLD) 
+    {
+        activeState = STORMNODE_POS_ERROR;
+        return;
+    }
+
     //once spent, stop doing the checks
     if(activeState == STORMNODE_VIN_SPENT) return;
 
@@ -222,10 +268,7 @@ void CStormnode::Check()
         tx.vin.push_back(vin);
         tx.vout.push_back(vout);
 
-        //if(!AcceptableInputs(mempool, state, tx)){
-        bool* pfMissingInputs = new bool;
-        *pfMissingInputs = false;
-	if(!AcceptableInputs(mempool, tx, false, pfMissingInputs)){
+        if(!AcceptableInputs(mempool, tx, false)){
             activeState = STORMNODE_VIN_SPENT;
             return;
         }
@@ -333,6 +376,8 @@ bool CStormnodePayments::AddWinningStormnode(CStormnodePaymentWinner& winnerIn)
                 winner.payee = winnerIn.payee;
                 winner.vchSig = winnerIn.vchSig;
 
+                mapSeenStormnodeVotes.insert(make_pair(winnerIn.GetHash(), winnerIn));
+
                 return true;
             }
         }
@@ -351,7 +396,7 @@ bool CStormnodePayments::AddWinningStormnode(CStormnodePaymentWinner& winnerIn)
 
 void CStormnodePayments::CleanPaymentList()
 {
-    LOCK(cs_stormnodes);
+    LOCK(cs_stormnodepayments);
     if(pindexBest == NULL) return;
 
     int nLimit = std::max(((int)snodeman.size())*2, 1000);
@@ -368,33 +413,53 @@ void CStormnodePayments::CleanPaymentList()
 
 bool CStormnodePayments::ProcessBlock(int nBlockHeight)
 {
-    LOCK(cs_stormnodes);
+    LOCK(cs_stormnodepayments);
+
+    if(nBlockHeight <= nLastBlockHeight) return false;
     if(!enabled) return false;
     CStormnodePaymentWinner newWinner;
-    int nEnabled = snodeman.CountEnabled();
+    int nMinimumAge = snodeman.CountEnabled();
+    CScript payeeSource;
+
+    uint256 hash;
+    if(!GetBlockHash(hash, nBlockHeight-10)) return false;
+    unsigned int nHash;
+    memcpy(&hash, &nHash, 2);
+
+    LogPrintf(" ProcessBlock Start nHeight %d. \n", nBlockHeight);
 
     std::vector<CTxIn> vecLastPayments;
     BOOST_REVERSE_FOREACH(CStormnodePaymentWinner& winner, vWinning)
     {
         //if we already have the same vin - we have one full payment cycle, break
-        if(vecLastPayments.size() > 0
-                && std::find(vecLastPayments.begin(), vecLastPayments.end(), winner.vin) != vecLastPayments.end()) break;
+        if(vecLastPayments.size() > nMinimumAge) break;
         vecLastPayments.push_back(winner.vin);
     }
 
     // pay to the oldest SN that still had no payment but its input is old enough and it was active long enough
-    CStormnode *psn = snodeman.FindOldestNotInVec(vecLastPayments);
-    if(psn != NULL && psn->GetStormnodeInputAge() > nEnabled && psn->lastTimeSeen - psn->sigTime > nEnabled * 2.5 * 60)
+    CStormnode *psn = snodeman.FindOldestNotInVec(vecLastPayments, nMinimumAge, 0);
+    if(psn != NULL)
     {
+        LogPrintf(" Found by FindOldestNotInVec \n");
+
         newWinner.score = 0;
         newWinner.nBlockHeight = nBlockHeight;
         newWinner.vin = psn->vin;
-        newWinner.payee.SetDestination(psn->pubkey.GetID());
+
+        if(psn->donationPercentage > 0 && (nHash % 100) <= (unsigned int)psn->donationPercentage) {
+            newWinner.payee.SetDestination(psn->pubkey.GetID());
+        } else {
+            newWinner.payee.SetDestination(psn->donationAddress.GetID());
+        }
+
+        payeeSource.SetDestination(psn->pubkey.GetID());
     }
 
     //if we can't find new SN to get paid, pick the first active SN counting back from the end of vecLastPayments list
-    if(newWinner.nBlockHeight == 0 && nEnabled > 0)
-    {
+    if(newWinner.nBlockHeight == 0 && nMinimumAge > 0)
+    {   
+        LogPrintf(" Find by reverse \n");
+
         BOOST_REVERSE_FOREACH(CTxIn& vinLP, vecLastPayments)
         {
             CStormnode* psn = snodeman.Find(vinLP);
@@ -406,7 +471,15 @@ bool CStormnodePayments::ProcessBlock(int nBlockHeight)
                 newWinner.score = 0;
                 newWinner.nBlockHeight = nBlockHeight;
                 newWinner.vin = psn->vin;
-                newWinner.payee.SetDestination(psn->pubkey.GetID());
+                
+                if(psn->donationPercentage > 0 && (nHash % 100) <= (unsigned int)psn->donationPercentage) {
+                    newWinner.payee.SetDestination(psn->pubkey.GetID());
+                } else {
+                    newWinner.payee.SetDestination(psn->pubkey.GetID());
+                }
+
+                payeeSource.SetDestination(psn->pubkey.GetID());
+
                 break; // we found active SN
             }
         }
@@ -414,17 +487,29 @@ bool CStormnodePayments::ProcessBlock(int nBlockHeight)
 
     if(newWinner.nBlockHeight == 0) return false;
 
+    CTxDestination address1;
+    ExtractDestination(newWinner.payee, address1);
+    CDarkSilkAddress address2(address1);
+
+    CTxDestination address3;
+    ExtractDestination(payeeSource, address3);
+    CDarkSilkAddress address4(address3);
+
+    LogPrintf("Winner payee %s nHeight %d vin source %s. \n", address2.ToString().c_str(), newWinner.nBlockHeight, address4.ToString().c_str());
+ 
     if(Sign(newWinner))
     {
         if(AddWinningStormnode(newWinner))
         {
             Relay(newWinner);
+            nLastBlockHeight = nBlockHeight;
             return true;
         }
     }
 
     return false;
 }
+
 
 void CStormnodePayments::Relay(CStormnodePaymentWinner& winner)
 {
@@ -440,10 +525,11 @@ void CStormnodePayments::Relay(CStormnodePaymentWinner& winner)
 
 void CStormnodePayments::Sync(CNode* node)
 {
-    int a = 0;
+    LOCK(cs_stormnodepayments);
+
     BOOST_FOREACH(CStormnodePaymentWinner& winner, vWinning)
         if(winner.nBlockHeight >= pindexBest->nHeight-10 && winner.nBlockHeight <= pindexBest->nHeight + 20)
-            node->PushMessage("snw", winner, a);
+            node->PushMessage("snw", winner);
 }
 
 

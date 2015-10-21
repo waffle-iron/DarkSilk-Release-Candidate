@@ -64,6 +64,7 @@ public:
    /// Get window identifier of QMainWindow (DarkSilkGUI)
    WId getMainWinId() const;
 
+
 protected:
     void changeEvent(QEvent *e);
     void closeEvent(QCloseEvent *event);
@@ -177,7 +178,7 @@ public slots:
        @param[in] style     style definitions (icon and used buttons - buttons only for message boxes)
                             @see CClientUIInterface::MessageBoxFlags
     */
-    void message(const QString &title, const QString &message, bool modal, unsigned int style = CClientUIInterface::MSG_ERROR);
+    void message(const QString &title, const QString &message, bool modal, unsigned int style = CClientUIInterface::MSG_ERROR, bool *ret = NULL);
     /** Asks the user whether to pay the transaction fee or to cancel the transaction.
        It is currently not possible to pass a return value to another thread through
        BlockingQueuedConnection, so an indirected pointer is used.

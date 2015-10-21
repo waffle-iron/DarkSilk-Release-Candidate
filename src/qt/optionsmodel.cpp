@@ -246,6 +246,10 @@ QVariant OptionsModel::data(const QModelIndex & index, int role) const
             return settings.value("language", "");
         case CoinControlFeatures:
             return QVariant(fCoinControlFeatures);
+        case SandstormRounds:
+            return QVariant(nSandstormRounds);
+        case AnonymizeDarkSilkAmount:
+            return QVariant(nAnonymizeDarkSilkAmount);
         case MinimizeCoinAge:
             return settings.value("fMinimizeCoinAge", GetBoolArg("-minimizecoinage", false));
         case UseBlackTheme:
@@ -397,10 +401,10 @@ bool OptionsModel::setData(const QModelIndex & index, const QVariant & value, in
             settings.setValue("nSandstormRounds", nSandstormRounds);
             emit sandstormRoundsChanged(nSandstormRounds);
             break;
-        case anonymizeDarkSilkAmount:
+        case AnonymizeDarkSilkAmount:
             nAnonymizeDarkSilkAmount = value.toInt();
             settings.setValue("nAnonymizeDarkSilkAmount", nAnonymizeDarkSilkAmount);
-            emit anonymizeDarkSilkAmountChanged(nAnonymizeDarkSilkAmount);
+            emit AnonymizeDarkSilkAmountChanged(nAnonymizeDarkSilkAmount);
             break;
 #ifdef USE_NATIVE_I2P
         case I2PUseI2POnly:

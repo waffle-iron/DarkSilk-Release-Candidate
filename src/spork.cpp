@@ -40,7 +40,7 @@ void ProcessSpork(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
         if(pindexBest == NULL) return;
 
         uint256 hash = spork.GetHash();
-        if(mapSporks.count(hash) && mapSporksActive.count(spork.nSporkID)) {
+        if(mapSporksActive.count(spork.nSporkID)) {
             if(mapSporksActive[spork.nSporkID].nTimeSigned >= spork.nTimeSigned){
                 if(fDebug) LogPrintf("spork - seen %s block %d \n", hash.ToString().c_str(), pindexBest->nHeight);
                 return;
@@ -88,7 +88,7 @@ bool IsSporkActive(int nSporkID)
         if(nSporkID == SPORK_2_INSTANTX) r = SPORK_2_INSTANTX_DEFAULT;
         if(nSporkID == SPORK_3_INSTANTX_BLOCK_FILTERING) r = SPORK_3_INSTANTX_BLOCK_FILTERING_DEFAULT;
         if(nSporkID == SPORK_5_MAX_VALUE) r = SPORK_5_MAX_VALUE_DEFAULT;
-        if(nSporkID == SPORK_6_REPLAY_BLOCKS) r = SPORK_6_REPLAY_BLOCKS_DEFAULT;
+        if(nSporkID == SPORK_7_STORMNODE_SCANNING) r = SPORK_7_STORMNODE_SCANNING;
 
         if(r == 0) LogPrintf("GetSpork::Unknown Spork %d\n", nSporkID);
     }
@@ -109,7 +109,7 @@ int GetSporkValue(int nSporkID)
         if(nSporkID == SPORK_2_INSTANTX) r = SPORK_2_INSTANTX_DEFAULT;
         if(nSporkID == SPORK_3_INSTANTX_BLOCK_FILTERING) r = SPORK_3_INSTANTX_BLOCK_FILTERING_DEFAULT;
         if(nSporkID == SPORK_5_MAX_VALUE) r = SPORK_5_MAX_VALUE_DEFAULT;
-        if(nSporkID == SPORK_6_REPLAY_BLOCKS) r = SPORK_6_REPLAY_BLOCKS_DEFAULT;
+        if(nSporkID == SPORK_7_STORMNODE_SCANNING) r = SPORK_7_STORMNODE_SCANNING;
 
         if(r == 0) LogPrintf("GetSpork::Unknown Spork %d\n", nSporkID);
     }
@@ -119,10 +119,6 @@ int GetSporkValue(int nSporkID)
 
 void ExecuteSpork(int nSporkID, int nValue)
 {
-    //replay and process blocks (to sync to the longest chain after disabling sporks)
-    //if(nSporkID == SPORK_6_REPLAY_BLOCKS){
-        //DisconnectBlocksAndReprocess(nValue);
-    //}
 }
 
 
@@ -221,7 +217,8 @@ int CSporkManager::GetSporkIDByName(std::string strName)
     if(strName == "SPORK_2_INSTANTX") return SPORK_2_INSTANTX;
     if(strName == "SPORK_3_INSTANTX_BLOCK_FILTERING") return SPORK_3_INSTANTX_BLOCK_FILTERING;
     if(strName == "SPORK_5_MAX_VALUE") return SPORK_5_MAX_VALUE;
-    if(strName == "SPORK_6_REPLAY_BLOCKS") return SPORK_6_REPLAY_BLOCKS;
+    if(strName == "SPORK_7_STORMNODE_SCANNING") return SPORK_7_STORMNODE_SCANNING;
+
 
     return -1;
 }
@@ -232,7 +229,8 @@ std::string CSporkManager::GetSporkNameByID(int id)
     if(id == SPORK_2_INSTANTX) return "SPORK_2_INSTANTX";
     if(id == SPORK_3_INSTANTX_BLOCK_FILTERING) return "SPORK_3_INSTANTX_BLOCK_FILTERING";
     if(id == SPORK_5_MAX_VALUE) return "SPORK_5_MAX_VALUE";
-    if(id == SPORK_6_REPLAY_BLOCKS) return "SPORK_6_REPLAY_BLOCKS";
+    if(id == SPORK_7_STORMNODE_SCANNING) return "SPORK_7_STORMNODE_SCANNING";
 
     return "Unknown";
+    
 }

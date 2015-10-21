@@ -6,11 +6,12 @@
 #ifndef DARKSILK_ALLOCATORS_H
 #define DARKSILK_ALLOCATORS_H
 
+#include "cleanse.h"
+
 #include <string.h>
 #include <string>
 #include <boost/thread/mutex.hpp>
 #include <map>
-#include <openssl/crypto.h> // for OPENSSL_cleanse()
 
 #ifdef WIN32
 #ifdef _WIN32_WINNT
@@ -186,7 +187,7 @@ template<typename T> void LockObject(const T &t) {
 }
 
 template<typename T> void UnlockObject(const T &t) {
-    OPENSSL_cleanse((void*)(&t), sizeof(T));
+    memory_cleanse((void*)(&t), sizeof(T));
     LockedPageManager::instance.UnlockRange((void*)(&t), sizeof(T));
 }
 
@@ -227,7 +228,7 @@ struct secure_allocator : public std::allocator<T>
     {
         if (p != NULL)
         {
-            OPENSSL_cleanse(p, sizeof(T) * n);
+            memory_cleanse(p, sizeof(T) * n);
             LockedPageManager::instance.UnlockRange(p, sizeof(T) * n);
         }
         std::allocator<T>::deallocate(p, n);
@@ -261,7 +262,7 @@ struct zero_after_free_allocator : public std::allocator<T>
     void deallocate(T* p, std::size_t n)
     {
         if (p != NULL)
-            OPENSSL_cleanse(p, sizeof(T) * n);
+            memory_cleanse(p, sizeof(T) * n);
         std::allocator<T>::deallocate(p, n);
     }
 };

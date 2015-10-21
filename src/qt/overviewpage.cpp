@@ -147,6 +147,8 @@ OverviewPage::OverviewPage(QWidget *parent) :
 
     if(fStormNode || fLiteMode){
         ui->toggleSandstorm->setText("(" + tr("Disabled") + ")");
+        ui->sandstormAuto->setText("(" + tr("Disabled") + ")");
+        ui->sandstormReset->setText("(" + tr("Disabled") + ")");
         ui->toggleSandstorm->setEnabled(false);
     }else if(!fEnableSandstorm){
         ui->toggleSandstorm->setText(tr("Start Sandstorm"));
@@ -317,6 +319,7 @@ void OverviewPage::updateSandstormProgress()
     {
         denomPart = (float)pwalletMain->GetNormalizedAnonymizedBalance() / denominatedBalance;
         denomPart = denomPart > 1 ? 1 : denomPart;
+        if(denomPart == 1 && nMaxToAnonymize > denominatedBalance) nMaxToAnonymize = denominatedBalance;
     }
 
     // % of fully anonymized balance
@@ -330,7 +333,7 @@ void OverviewPage::updateSandstormProgress()
 
     // apply some weights to them (sum should be <=100) and calculate the whole progress
     int progress = 80 * denomPart + 20 * anonPart;
-    if(progress > 100) progress = 100;
+    if(progress >= 100) progress = 100;
 
     ui->sandstormProgress->setValue(progress);
 
@@ -394,10 +397,12 @@ void OverviewPage::sandStormStatus()
     /* ** @TODO this string creation really needs some clean ups ---vertoe ** */
     std::ostringstream convert;
 
-    if(state == POOL_STATUS_ACCEPTING_ENTRIES) {
+    if(state == POOL_STATUS_IDLE) {
+        convert << tr("Darksend is idle.").toStdString();
+    } else if(state == POOL_STATUS_ACCEPTING_ENTRIES) {
         if(entries == 0) {
             if(sandStormPool.strAutoDenomResult.size() == 0){
-                convert << tr("Sandstorm is idle.").toStdString();
+                convert << tr("Mixing in progress...").toStdString();
             } else {
                 convert << sandStormPool.strAutoDenomResult;
             }
@@ -410,15 +415,15 @@ void OverviewPage::sandStormStatus()
             }
         } else {
             if(showingSandStormMessage % 70 <= 40) convert << tr("Submitted following entries to stormnode:").toStdString() << " " << entries << "/" << sandStormPool.GetMaxPoolTransactions();
-            else if(showingSandStormMessage % 70 <= 50) convert << tr("Submitted to stormnode, Waiting for more entries").toStdString() << " (" << entries << "/" << sandStormPool.GetMaxPoolTransactions() << " ) .";
-            else if(showingSandStormMessage % 70 <= 60) convert << tr("Submitted to stormnode, Waiting for more entries").toStdString() << " (" << entries << "/" << sandStormPool.GetMaxPoolTransactions() << " ) ..";
-            else if(showingSandStormMessage % 70 <= 70) convert << tr("Submitted to stormnode, Waiting for more entries").toStdString() << " (" << entries << "/" << sandStormPool.GetMaxPoolTransactions() << " ) ...";
+            else if(showingSandStormMessage % 70 <= 50) convert << tr("Submitted to stormnode, waiting for more entries").toStdString() << " (" << entries << "/" << sandStormPool.GetMaxPoolTransactions() << " ) .";
+            else if(showingSandStormMessage % 70 <= 60) convert << tr("Submitted to stormnode, waiting for more entries").toStdString() << " (" << entries << "/" << sandStormPool.GetMaxPoolTransactions() << " ) ..";
+            else if(showingSandStormMessage % 70 <= 70) convert << tr("Submitted to stormnode, waiting for more entries").toStdString() << " (" << entries << "/" << sandStormPool.GetMaxPoolTransactions() << " ) ...";
         }
     } else if(state == POOL_STATUS_SIGNING) {
         if(showingSandStormMessage % 70 <= 10) convert << tr("Found enough users, signing ...").toStdString();
-        else if(showingSandStormMessage % 70 <= 20) convert << tr("Found enough users, signing ( waiting. )").toStdString();
-        else if(showingSandStormMessage % 70 <= 30) convert << tr("Found enough users, signing ( waiting.. )").toStdString();
-        else if(showingSandStormMessage % 70 <= 40) convert << tr("Found enough users, signing ( waiting... )").toStdString();
+        else if(showingSandStormMessage % 70 <= 20) convert << tr("Found enough users, signing ( waiting").toStdString() << ". )";
+        else if(showingSandStormMessage % 70 <= 30) convert << tr("Found enough users, signing ( waiting").toStdString() << ".. )";
+        else if(showingSandStormMessage % 70 <= 40) convert << tr("Found enough users, signing ( waiting").toStdString() << "... )";
     } else if(state == POOL_STATUS_TRANSMISSION) {
         convert << tr("Transmitting final transaction.").toStdString();
     } else if (state == POOL_STATUS_IDLE) {
@@ -430,9 +435,9 @@ void OverviewPage::sandStormStatus()
     } else if(state == POOL_STATUS_SUCCESS) {
         convert << tr("Sandstorm request complete:").toStdString() << " " << sandStormPool.lastMessage;
     } else if(state == POOL_STATUS_QUEUE) {
-        if(showingSandStormMessage % 70 <= 50) convert << tr("Submitted to stormnode, waiting in queue .").toStdString();
-        else if(showingSandStormMessage % 70 <= 60) convert << tr("Submitted to stormnode, waiting in queue ..").toStdString();
-        else if(showingSandStormMessage % 70 <= 70) convert << tr("Submitted to stormnode, waiting in queue ...").toStdString();
+        if(showingSandStormMessage % 70 <= 50) convert << tr("Submitted to stormnode, waiting in queue").toStdString() << ". )";
+        else if(showingSandStormMessage % 70 <= 60) convert << tr("Submitted to stormnode, waiting in queue").toStdString() << ".. )";
+        else if(showingSandStormMessage % 70 <= 70) convert << tr("Submitted to stormnode, waiting in queue").toStdString() << "... )";
     } else {
         convert << tr("Unknown state:").toStdString() << " id = " << state;
     }

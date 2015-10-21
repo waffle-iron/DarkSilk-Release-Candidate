@@ -102,9 +102,9 @@ Updated dependencies, added Gitian OSX files
 Remove unused GetProofOfStakeReward
 Faster Retargetting for PoW
 Fixed PoS target spacing
-Fix payee selectoin on StormnodePayments::ProcessBlock (https://github.com/dashpay/dash/commit/428d5976c7630cc4e1f0a0a66d22ae061ce87dfd)
-fix log output / more notCapableReason-s (https://github.com/dashpay/dash/commit/b861e7ac4ca871626e75953ed833f9195b762932)
-HasCollateralInputs should check only for at least 1 collateral not 2 (https://github.com/dashpay/dash/commit/74551e9f31f10e351de1ec07f60513662ccdb06a)
+Fix payee selectoin on StormnodePayments::ProcessBlock
+fix log output / more notCapableReason-s
+HasCollateralInputs should check only for at least 1 collateral not 2
 Track lastTimeChanged for mnodeman and ask for update only if UpdateNeeded
 Added sstx support for free transactions 
 Fix for src/qt/stormnodemanager.cpp
@@ -115,3 +115,82 @@ Reversioning and restriction change
 Check and remove expired Stormnodes on Client start
 Maps in snodeman
 bool warning fix
+SSEG Update
+Show new number of SN's on add/remove in logs | Move output to debug level
+sigTime
+Temp Fix prior to major changes
+SPORK Additions/Changes | SANDSTORM fee removal
+prevent ganing sigTime too much on initial ssee
+SandStorm/InstantX Functionality | Send with SandStorm on sendcoinsdialog.ui
+Fix Filtering for active | add spaces to table-fy console view | add spaces to IP only in full mode
+Merged Stormnode blinding
+fix compiling for windows
+fix console spam
+Make stormnodes.dat verification more specific, prevent from overwriting corruped
+files with unknown format, give more info in debug.log output
+fixed shared key usage
+fix even more console spam
+rename stormnodes.dat->mncache.dat / fix strings
+save nsqCount in mncache.dat
+[Qt] add more NULL pointer checks in darksilkgui.cpp
+close wallet regardless of "minimize to tray" settings
+Added coincontrol sandstorm rounds column
+Stormnode Proof of Service Added
+Add structure for donating a percentage of ones earnings to another party via the protocol
+Fixed snw message issue
+fix pubkey/donation conditions
+Fixed blinding submission process
+increasing ss timeouts
+fixed ssee sync
+fixed Stormnode payments FindOldestNotInVec
+Disabled Stormnode blinding / increased rounds defaults
+Added Stormnode voting system for DarkSilk initiates
+Stormnode voting improvements
+remove locks
+Added easy to use donations
+Changed some locks
+Disable relay
+Changed some locks
+Improved donation code/message
+Added stormnode list donation
+Fixed ranking issues for PoSe
+Fixed stormnode donation miscalculations
+Explicitly grab each piece of data from memory for hashing in CStormnode::CalculateScore
+Reducing spam
+Removed donation flag
+New Command: stormnode list pose - Shows proof-of-service score for Stormnodes
+Default keypool size in usage text fixed 
+Use strMagicMessage to verify mncache.dat, rewrite (only) if hash and both magic are ok
+Make sure nScanningErrorCount and nLastScanningErrorBlockHeight handled correctly
+Move sn state enum inside class
+Do not check mn unless only active requested
+ProcessStormnodeConnections should work on testnet too
+Don't limit ss-send inputs number artificially, fees should take care of it instead
+Reference node fixes / debugging
+Compiling warnings / fixed block comparison 
+Create empty darksilk.conf during startup if it doesn't exist
+Updated minimum for reference node
+Fixes for "stormnode list"
+Fix SN ssee: SN should not update itself in SN list until it activated
+Fix possible SN breakage during mixing
+Remove donations to multisig addresses
+Further fixes to Sandstorm
+Added nDenom check for ssa
+Fix SelectCoinsByDenominations
+Do not search for known sporks by hash, search only by ID
+Check collateral before submitting
+Fixed vote-many
+Fix filtering for stormnode list votes rpc 
+Fixed vote crashes
+stormnode stop should disable SN and remove it from SN list
+SS: Adjust Target Balance
+Should set nMaxToAnonymize equal to denominatedBalance only if it's greater then it was possible to denominate
+Ref-node : Always fill vecLastPayments
+Removal of centrally broadcasted synchronised checkpoints
+Reshuffle of allocators
+Addition of uint512 to uint256
+Fixes
+Mixer on overviewpage.cpp moved to a more ideal position
+IRC Removed
+Fixing out of bounds error in GetKey() 
+Sandstorm fixes for fees

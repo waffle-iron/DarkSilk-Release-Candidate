@@ -19,7 +19,7 @@ packages:
 - "bsdmainutils"
 reference_datetime: "2013-06-01 00:00:00"
 remotes:
-- "url": "https://github.com/rynomster/darksilk.git"
+- "url": "https://github.com/SCDeveloper/DarkSilk-Release-Candidate.git"
   "dir": "darksilk"
 files:
 - "qt-win32-5.5.0-gitian.zip"
@@ -34,10 +34,10 @@ script: |
   INDIR=$HOME/build
   OPTFLAGS='-O2'
   TEMPDIR="$HOME/tempdir"
-  echo "93111edd9b29e829fec5ef7bad790662fec130a2d29891ee0c1e6a46fb8b9a92  qt-win32-5.5.0-gitian.zip"      | sha256sum -c
-  echo "e37ac65ade07e82bb2b1ba31a25786338efcacec11638ed8e9a7b8b8d99dc045  qt-win64-5.5.0-gitian.zip"      | sha256sum -c
-  echo "b69f63af0da7a89ce9e02a7aabcf670752c3ae1f3b0ff10b32676ce19a01cb1a  darksilk-deps-win32-gitian.zip" | sha256sum -c
-  echo "e1250001308e3c6415bf4ece4595e9d19726ba22727e7b1bf0f6ed96476dc441  darksilk-deps-win64-gitian.zip" | sha256sum -c
+  echo "2d4fafbd04d5e233416c83c618dda2f111891f995eba585cc0a2ea637d0b3be2  qt-win32-5.5.0-gitian.zip"      | sha256sum -c
+  echo "130685a66c344e53b131aa7cfac77f7796c6e113563bfd37eeb3cfd7c7fb4f08  qt-win64-5.5.0-gitian.zip"      | sha256sum -c
+  echo "1cf99b3e264725580fd0f22ef36afbf96d3da0d5f659057e7100089b96a18ece  darksilk-deps-win32-gitian.zip" | sha256sum -c
+  echo "76e769fc3147dc819c4495839b7a5270fd058658bf1ef1adba22394b4f465ccb  darksilk-deps-win64-gitian.zip" | sha256sum -c
   NEEDDIST=1
   # Qt: workaround for determinism in resource ordering
   #  Qt5's rcc uses a QHash to store the files for the resource.
