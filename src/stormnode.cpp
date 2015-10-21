@@ -134,7 +134,7 @@ CStormnode::CStormnode()
     unitTest = false;
     allowFreeTx = true;
     protocolVersion = MIN_PEER_PROTO_VERSION;
-    nLastDsq = 0;
+    nLastSsq = 0;
 }
 
 CStormnode::CStormnode(const CStormnode& other)
@@ -154,7 +154,7 @@ CStormnode::CStormnode(const CStormnode& other)
     unitTest = other.unitTest;
     allowFreeTx = other.allowFreeTx;
     protocolVersion = other.protocolVersion;
-    nLastDsq = other.nLastDsq;
+    nLastSsq = other.nLastSsq;
 }
 
 CStormnode::CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::vector<unsigned char> newSig, int64_t newSigTime, CPubKey newPubkey2, int protocolVersionIn)
@@ -174,7 +174,7 @@ CStormnode::CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::v
     unitTest = false;
     allowFreeTx = true;
     protocolVersion = protocolVersionIn;
-    nLastDsq = 0;
+    nLastSsq = 0;
 }
 
 //
@@ -201,6 +201,8 @@ uint256 CStormnode::CalculateScore(int mod, int64_t nBlockHeight)
 
 void CStormnode::Check()
 {
+    LOCK(cs_main);
+    
     //once spent, stop doing the checks
     if(activeState == STORMNODE_VIN_SPENT) return;
 

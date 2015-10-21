@@ -394,10 +394,12 @@ void OverviewPage::sandStormStatus()
     /* ** @TODO this string creation really needs some clean ups ---vertoe ** */
     std::ostringstream convert;
 
-    if(state == POOL_STATUS_ACCEPTING_ENTRIES) {
+    if(state == POOL_STATUS_IDLE) {
+        convert << tr("Sandstorm is idle.").toStdString();
+    } else if(state == POOL_STATUS_ACCEPTING_ENTRIES) {
         if(entries == 0) {
             if(sandStormPool.strAutoDenomResult.size() == 0){
-                convert << tr("Sandstorm is idle.").toStdString();
+                convert << tr("Mixing in progress...").toStdString();
             } else {
                 convert << sandStormPool.strAutoDenomResult;
             }

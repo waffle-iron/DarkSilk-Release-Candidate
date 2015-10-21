@@ -51,6 +51,7 @@
 
 #include <QMenuBar>
 #include <QMenu>
+#include <QFile>
 #include <QIcon>
 #include <QVBoxLayout>
 #include <QToolBar>
@@ -899,6 +900,9 @@ void DarkSilkGUI::setNumConnections(int count)
 
 void DarkSilkGUI::setNumBlocks(int count) 
 {
+    if(!clientModel)
+        return;
+
     QString tooltip;
 
     QDateTime lastBlockDate = clientModel->getLastBlockDate();
@@ -1036,7 +1040,7 @@ void DarkSilkGUI::changeEvent(QEvent *e)
 
     if(e->type() == QEvent::WindowStateChange) 
     {
-        if(clientModel && clientModel->getOptionsModel()->getMinimizeToTray()) 
+        if(clientModel && clientModel->getOptionsModel() && clientModel->getOptionsModel()->getMinimizeToTray())
         {
             QWindowStateChangeEvent *wsevt = static_cast<QWindowStateChangeEvent*>(e);
 
@@ -1053,18 +1057,16 @@ void DarkSilkGUI::changeEvent(QEvent *e)
 
 void DarkSilkGUI::closeEvent(QCloseEvent *event) 
 {
-    if(clientModel) 
-    {
 #ifndef Q_OS_MAC // Ignored on Mac
-
-        if(!clientModel->getOptionsModel()->getMinimizeToTray() &&
-                !clientModel->getOptionsModel()->getMinimizeOnClose()) 
+    if(clientModel&& clientModel->getOptionsModel())
+         {
+        if(!clientModel->getOptionsModel()->getMinimizeOnClose()) 
         {
             qApp->quit();
         }
+    }
 
 #endif
-    }
 
     QMainWindow::closeEvent(event);
 }

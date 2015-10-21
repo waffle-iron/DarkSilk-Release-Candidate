@@ -10,9 +10,10 @@
 #include "stormnode.h"
 #include "activestormnode.h"
 #include "stormnodeman.h"
+#include "sandstorm-relay.h"
 
 class CTxIn;
-class CSandStormPool;
+class CSandstormPool;
 class CSandStormSigner;
 class CStormNodeVote;
 class CDarkSilkAddress;
@@ -20,7 +21,9 @@ class CSandstormQueue;
 class CSandstormBroadcastTx;
 class CActiveStormnode;
 
+// pool states for mixing
 #define POOL_MAX_TRANSACTIONS                  3 // wait for X transactions to merge and publish
+#define POOL_MAX_TRANSACTIONS_TESTNET          2 // wait for X transactions to merge and publish
 #define POOL_STATUS_UNKNOWN                    0 // waiting for update
 #define POOL_STATUS_IDLE                       1 // waiting for update
 #define POOL_STATUS_QUEUE                      2 // waiting in a queue
@@ -38,44 +41,71 @@ class CActiveStormnode;
 
 #define SANDSTORM_QUEUE_TIMEOUT                 120
 #define SANDSTORM_SIGNING_TIMEOUT               30
+#define SANDSTORM_DOWNGRADE_TIMEOUT             30
 
-extern CSandStormPool sandStormPool;
+// used for anonymous relaying of inputs/outputs/sigs
+#define SANDSTORM_RELAY_IN                 1
+#define SANDSTORM_RELAY_OUT                2
+#define SANDSTORM_RELAY_SIG                3
+
+extern CSandstormPool sandStormPool;
 extern CSandStormSigner sandStormSigner;
 extern std::vector<CSandstormQueue> vecSandstormQueue;
 extern std::string strStormNodePrivKey;
 extern map<uint256, CSandstormBroadcastTx> mapSandstormBroadcastTxes;
 extern CActiveStormnode activeStormnode;
 
-//specific messages for the Sandstorm protocol
-void ProcessMessageSandstorm(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
-
-// get the sandstorm chain depth for a given input
+// get the Sandstorm chain depth for a given input
 int GetInputSandstormRounds(CTxIn in, int rounds=0);
 
+//
+// Holds an Sandstorm input
+//
 
-// An input in the sandstorm pool
-class CSandStormEntryVin
+
+// An input in the Sandstorm pool
+class CTxSSIn : public CTxIn
 {
 public:
-    bool isSigSet;
-    CTxIn vin;
+    bool fHasSig;
+    int nSentTimes; //times we've sent this anonymously 
 
-    CSandStormEntryVin()
+    CTxSSIn(const CTxIn& in)
     {
-        isSigSet = false;
-        vin = CTxIn();
+        prevout = in.prevout;
+        scriptSig = in.scriptSig;
+        prevPubKey = in.prevPubKey;
+        nSequence = in.nSequence;
+        nSentTimes = 0;
+    }
+};
+
+/** Holds a Sandstorm output
+ */
+class CTxSSOut : public CTxOut
+{
+public:
+    int nSentTimes; //times we've sent this anonymously 
+
+    CTxSSOut(const CTxOut& out)
+    {
+        nValue = out.nValue;
+        nRounds = out.nRounds;
+        scriptPubKey = out.scriptPubKey;
+        nSentTimes = 0;
     }
 };
 
 // A clients transaction in the sandstorm pool
+// -- holds the input/output mapping for each user in the pool
 class CSandStormEntry
 {
 public:
     bool isSet;
-    std::vector<CSandStormEntryVin> sev;
+    std::vector<CTxSSIn> sev;
+    std::vector<CTxSSOut> vout;
     int64_t amount;
     CTransaction collateral;
-    std::vector<CTxOut> vout;
     CTransaction txSupporting;
     int64_t addedTime;
 
@@ -90,12 +120,12 @@ public:
     {
         if(isSet){return false;}
 
-        BOOST_FOREACH(const CTxIn v, vinIn) {
-            CSandStormEntryVin s = CSandStormEntryVin();
-            s.vin = v;
-            sev.push_back(s);
-        }
-        vout = voutIn;
+        BOOST_FOREACH(const CTxIn& in, vinIn)
+            sev.push_back(in);
+
+        BOOST_FOREACH(const CTxOut& out, voutIn)
+            vout.push_back(out);
+
         amount = amountIn;
         collateral = collateralIn;
         isSet = true;
@@ -104,27 +134,12 @@ public:
         return true;
     }
 
-    bool AddSig(const CTxIn& vin)
-    {
-        BOOST_FOREACH(CSandStormEntryVin& s, sev) {
-            if(s.vin.prevout == vin.prevout && s.vin.nSequence == vin.nSequence){
-                if(s.isSigSet){return false;}
-                s.vin.scriptSig = vin.scriptSig;
-                s.vin.prevPubKey = vin.prevPubKey;
-                s.isSigSet = true;
-
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     bool IsExpired()
     {
         return (GetTime() - addedTime) > SANDSTORM_QUEUE_TIMEOUT;// 120 seconds
     }
 };
+
 
 //
 // A currently inprogress sandstorm merge and denomination information
@@ -137,6 +152,12 @@ public:
     int nDenom;
     bool ready; //ready for submit
     std::vector<unsigned char> vchSig;
+    
+    //information used for the anonymous relay system
+    int nBlockHeight;
+    std::vector<unsigned char> vchRelaySig;
+    std::string strSharedKey;
+
 
     CSandstormQueue()
     {
@@ -144,19 +165,29 @@ public:
         vin = CTxIn();
         time = 0;
         vchSig.clear();
+        vchRelaySig.clear();
+        nBlockHeight = 0;
+        strSharedKey = "";
         ready = false;
     }
 
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion){
-	unsigned int nSerSize = 0;
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
+    {
+    	unsigned int nSerSize = 0;
         READWRITE(nDenom);
         READWRITE(vin);
         READWRITE(time);
         READWRITE(ready);
         READWRITE(vchSig);
+
+        if(ready){
+            READWRITE(vchRelaySig);
+            READWRITE(nBlockHeight);
+            READWRITE(strSharedKey);
+        }
     }
 
     bool GetAddress(CService &addr)
@@ -181,6 +212,7 @@ public:
         return false;
     }
 
+    void SetSharedKey(std::string strSharedKey);
     bool Sign();
     bool Relay();
 
@@ -215,15 +247,26 @@ public:
     bool VerifyMessage(CPubKey pubkey, std::vector<unsigned char>& vchSig, std::string strMessage, std::string& errorMessage);
 };
 
-class CSandstormSession
+//
+// Build a transaction anonymously
+//
+class CSSAnonTx
 {
+public:
+    std::vector<CTxSSIn> vin;
+    std::vector<CTxOut> vout;
 
+    bool IsTransactionValid();
+    bool AddOutput(const CTxOut out);
+    bool AddInput(const CTxIn in);
+    bool AddSig(const CTxIn in);
+    int CountEntries() {return (int)vin.size() + (int)vout.size();}
 };
 
 //
 // Used to keep track of current status of sandstorm pool
 //
-class CSandStormPool
+class CSandstormPool
 {
 public:
     static const int MIN_PEER_PROTO_VERSION = 70020;
@@ -234,6 +277,10 @@ public:
     std::vector<CSandStormEntry> entries;
     // the finalized transaction ready for signing
     CTransaction finalTransaction;
+    // anonymous inputs/outputs
+    CSSAnonTx anonTx;
+    bool fSubmitAnonymousFailed;
+    int nCountAttempts;
 
     int64_t lastTimeChanged;
     int64_t lastAutoDenomination;
@@ -253,7 +300,7 @@ public:
     std::string lastMessage;
     bool completedTransaction;
     bool unitTest;
-    CService submittedToStormnode;
+    CStormnode* pSubmittedToStormnode;
 
     int sessionID;
     int sessionDenom; //Users must submit an denom matching this
@@ -272,10 +319,13 @@ public:
     //debugging data
     std::string strAutoDenomResult;
 
-    //incremented whenever a DSQ comes through
-    int64_t nDsqCount;
+    // used for securing the anonymous relay system
+    vector<unsigned char> vchStormnodeRelaySig;
+    int nStormnodeBlockHeight;
+    std::string strStormnodeSharedKey;
+    int nTrickleInputsOutputs;
 
-    CSandStormPool()
+    CSandstormPool()
     {
         /* SandStorm uses collateral addresses to trust parties entering the pool
             to behave themselves. If they don't it takes their money. */
@@ -285,17 +335,19 @@ public:
         unitTest = false;
         txCollateral = CTransaction();
         minBlockSpacing = 1;
-        nDsqCount = 0;
         lastNewBlock = 0;
+        strStormnodeSharedKey = "";
+        nTrickleInputsOutputs = 0;
 
         SetNull();
     }
 
-    void ProcessStormnodeConnections();
+    //specific messages for the Sandstorm protocol
+    void ProcessMessageSandstorm(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
 
     void InitCollateralAddress(){
         std::string strAddress = "";
-            strAddress = "C7FBJNGDmEsU5wx2m3xw85N8kRgCqA8S7L";
+            strAddress = "D7FBJNGDmEsU5wx2m3xw85N8kRgCqA8S7L";
         SetCollateralAddress(strAddress);
     }
 
@@ -305,6 +357,8 @@ public:
 
     bool SetCollateralAddress(std::string strAddress);
     void Reset();
+    bool Downgrade();
+    bool TrickleInputsOutputs();
     void SetNull(bool clearEverything=false);
 
     void UnlockCoins();
@@ -346,22 +400,24 @@ public:
     void UpdateState(unsigned int newState)
     {
         if (fStormNode && (newState == POOL_STATUS_ERROR || newState == POOL_STATUS_SUCCESS)){
-            LogPrintf("CSandStormPool::UpdateState() - Can't set state to ERROR or SUCCESS as a stormnode. \n");
+            LogPrintf("CSandstormPool::UpdateState() - Can't set state to ERROR or SUCCESS as a stormnode. \n");
             return;
         }
 
-        LogPrintf("CSandStormPool::UpdateState() == %d | %d \n", state, newState);
+        LogPrintf("CSandstormPool::UpdateState() == %d | %d \n", state, newState);
         if(state != newState){
             lastTimeChanged = GetTimeMillis();
             if(fStormNode) {
-                RelaySandStormStatus(sandStormPool.sessionID, sandStormPool.GetState(), sandStormPool.GetEntriesCount(), STORMNODE_RESET);
+                RelayStatus(sandStormPool.sessionID, sandStormPool.GetState(), sandStormPool.GetEntriesCount(), STORMNODE_RESET);
             }
         }
         state = newState;
     }
 
     int GetMaxPoolTransactions()
-    {
+    {   
+        //if we're on testnet, just use two transactions per merge
+        if(Params().NetworkID() == CChainParams::TESTNET || Params().NetworkID() == CChainParams::REGTEST) return POOL_MAX_TRANSACTIONS_TESTNET;
         
         //use the production amount
         return POOL_MAX_TRANSACTIONS;
@@ -373,7 +429,7 @@ public:
     }
 
     // Are these outputs compatible with other client in the pool?
-    bool IsCompatibleWithEntries(std::vector<CTxOut> vout);
+    bool IsCompatibleWithEntries(std::vector<CTxOut>& vout);
     // Is this amount compatible with other client in the pool?
     bool IsCompatibleWithSession(int64_t nAmount, CTransaction txCollateral, std::string& strReason);
 
@@ -384,23 +440,39 @@ public:
 
     // check for process in Sandstorm
     void Check();
+    void CheckFinalTransaction();
     // charge fees to bad actors
     void ChargeFees();
     // rarely charge fees to pay miners
     void ChargeRandomFees();
     void CheckTimeout();
+    void CheckForCompleteQueue();
     // check to make sure a signature matches an input in the pool
     bool SignatureValid(const CScript& newSig, const CTxIn& newVin);
     // if the collateral is valid given by a client
     bool IsCollateralValid(const CTransaction& txCollateral);
     // add a clients entry to the pool
     bool AddEntry(const std::vector<CTxIn>& newInput, const int64_t& nAmount, const CTransaction& txCollateral, const std::vector<CTxOut>& newOutput, std::string& error);
+    // add an anonymous output/inputs/sig
+    bool AddAnonymousOutput(const CTxOut& out) {return anonTx.AddOutput(out);}
+    bool AddAnonymousInput(const CTxIn& in) {return anonTx.AddInput(in);}
+    bool AddAnonymousSig(const CTxIn& in) {return anonTx.AddSig(in);}
+    bool AddRelaySignature(vector<unsigned char> vchStormnodeRelaySigIn, int nStormnodeBlockHeightIn, std::string strSharedKey) {
+        vchStormnodeRelaySig = vchStormnodeRelaySigIn;
+        nStormnodeBlockHeight = nStormnodeBlockHeightIn;
+        strStormnodeSharedKey = strSharedKey;
+        return true;
+    }
+    
     // add signature to a vin
-    bool AddScriptSig(const CTxIn newVin);
+    bool AddScriptSig(const CTxIn& newVin);
+    
     // are all inputs signed?
     bool SignaturesComplete();
+    
     // as a client, send a transaction to a stormnode to start the denomination process
     void SendSandstormDenominate(std::vector<CTxIn>& vin, std::vector<CTxOut>& vout, int64_t amount);
+    
     // get stormnode updates about the progress of sandstorm
     bool StatusUpdate(int newState, int newEntriesCount, int newAccepted, std::string& error, int newSessionID=0);
 
@@ -409,26 +481,44 @@ public:
 
     // get the last valid block hash for a given modulus
     bool GetLastValidBlockHash(uint256& hash, int mod=1, int nBlockHeight=0);
+    
     // process a new block
     void NewBlock();
+    
     void CompletedTransaction(bool error, std::string lastMessageNew);
+    
     void ClearLastMessage();
+    
     // used for liquidity providers
     bool SendRandomPaymentToSelf();
-    // split up large inputs or make fee sized inputs
+   
+   // split up large inputs or make fee sized inputs
     bool MakeCollateralAmounts();
+    
     bool CreateDenominated(int64_t nTotalValue);
+    
     // get the denominations for a list of outputs (returns a bitshifted integer)
     int GetDenominations(const std::vector<CTxOut>& vout);
+    int GetDenominations(const std::vector<CTxSSOut>& vout);
+    
     void GetDenominationsToString(int nDenom, std::string& strDenom);
+    
     // get the denominations for a specific amount of darksilk.
     int GetDenominationsByAmount(int64_t nAmount, int nDenomTarget=0);
-
     int GetDenominationsByAmounts(std::vector<int64_t>& vecAmount);
+
+
+    //
+    // Relay Sandstorm Messages
+    //
+
+    void RelayFinalTransaction(const int sessionID, const CTransaction& txNew);
+    void RelaySignaturesAnon(std::vector<CTxIn>& vin);
+    void RelayInAnon(std::vector<CTxIn>& vin, std::vector<CTxOut>& vout);
+    void RelayIn(const std::vector<CTxSSIn>& vin, const int64_t& nAmount, const CTransaction& txCollateral, const std::vector<CTxSSOut>& vout);
+    void RelayStatus(const int sessionID, const int newState, const int newEntriesCount, const int newAccepted, const std::string error="");
+    void RelayCompletedTransaction(const int sessionID, const bool error, const std::string errorMessage);
 };
-
-
-void ConnectToSandStormStormNodeWinner();
 
 void ThreadCheckSandStormPool();
 

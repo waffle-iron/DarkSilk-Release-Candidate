@@ -3052,7 +3052,7 @@ bool LoadExternalBlockFile(FILE* fileIn)
             }
         }
         catch (std::exception &e) {
-            LogPrintf("%s() : Deserialise or I/O error caught during load\n",
+            LogPrintf("%s() : Deserialize or I/O error caught during load\n",
                    __PRETTY_FUNCTION__);
         }
     }
@@ -3315,9 +3315,8 @@ void static ProcessGetData(CNode* pfrom)
                 if (!pushed && inv.type == MSG_STORMNODE_WINNER) {
                     if(mapSeenStormnodeVotes.count(inv.hash)){
                         CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
-                        int a = 0;
                         ss.reserve(1000);
-                        ss << mapSeenStormnodeVotes[inv.hash] << a;
+                        ss << mapSeenStormnodeVotes[inv.hash];
                         pfrom->PushMessage("snw", ss);
                         pushed = true;
                     }
@@ -3994,7 +3993,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
     else
     {   
         MarketProcessMessage(pfrom, strCommand, vRecv);
-        ProcessMessageSandstorm(pfrom, strCommand, vRecv);
+        sandStormPool.ProcessMessageSandstorm(pfrom, strCommand, vRecv);
         snodeman.ProcessMessage(pfrom, strCommand, vRecv);
         ProcessMessageStormnodePayments(pfrom, strCommand, vRecv);
         ProcessMessageInstantX(pfrom, strCommand, vRecv);

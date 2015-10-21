@@ -2374,7 +2374,7 @@ bool CWallet::CreateCollateralTransaction(CTransaction& txCollateral, std::strin
             BOOST_FOREACH(CTxIn v, vCoinsCollateral)
                 UnlockCoin(v.prevout);
 
-            strReason = "CSandStormPool::Sign - Unable to sign collateral transaction! \n";
+            strReason = "CSandstormPool::Sign - Unable to sign collateral transaction! \n";
             return false;
         }
         vinNumber++;
@@ -3760,7 +3760,6 @@ string CWallet::PrepareSandstormDenominate(int minRounds, int maxRounds)
     int64_t nTotalValue = GetTotalValue(vCoins);
     LogPrintf("PrepareSandstormDenominate - preparing sandstorm denominate . Got: %d \n", nTotalValue);
 
-    //--------------
     BOOST_FOREACH(CTxIn v, vCoins)
         LockCoin(v.prevout);
 

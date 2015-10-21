@@ -46,8 +46,8 @@ void CActiveStormnode::ManageStatus()
         LogPrintf("CActiveStormnode::ManageStatus() - Checking inbound connection to '%s'\n", service.ToString().c_str());
 
           // DRKSLKNOTE: There is no logical reason to restrict this to a specific port.  Its a peer, what difference does it make.
-          /*  if(service.GetPort() != 9999) {
-                notCapableReason = "Invalid port: " + boost::lexical_cast<string>(service.GetPort()) + " -only 9999 is supported on mainnet.";
+          /*  if(service.GetPort() != 31000) {
+                notCapableReason = "Invalid port: " + boost::lexical_cast<string>(service.GetPort()) + " -only 31000 is supported on mainnet.";
                 status = STORMNODE_NOT_CAPABLE;
                 LogPrintf("CActiveStormnode::ManageStatus() - not capable: %s\n", notCapableReason.c_str());
                 return;
@@ -217,8 +217,8 @@ bool CActiveStormnode::Sseep(CTxIn vin, CService service, CKey keyStormnode, CPu
     }
 
     //send to all peers
-    LogPrintf("CActiveStormnode::Sseep() - SendSandStormElectionEntryPing vin = %s\n", vin.ToString().c_str());
-    SendSandStormElectionEntryPing(vin, vchStormNodeSignature, stormNodeSignatureTime, stop);
+    LogPrintf("CActiveStormnode::Sseep() - RelayStormnodeEntryPing vin = %s\n", vin.ToString().c_str());
+    snodeman.RelayStormnodeEntryPing(vin, vchStormNodeSignature, stormNodeSignatureTime, stop);
 
     return true;
 }
@@ -299,8 +299,8 @@ bool CActiveStormnode::Register(CTxIn vin, CService service, CKey keyCollateralA
     }
 
     //send to all peers
-    LogPrintf("CActiveStormnode::Register() - SendSandStormElectionEntry vin = %s\n", vin.ToString().c_str());
-    SendSandStormElectionEntry(vin, service, vchStormNodeSignature, stormNodeSignatureTime, pubKeyCollateralAddress, pubKeyStormnode, -1, -1, stormNodeSignatureTime, PROTOCOL_VERSION);
+    LogPrintf("CActiveStormnode::Register() - RelayElectionEntry vin = %s\n", vin.ToString().c_str());
+    snodeman.RelayStormnodeEntry(vin, service, vchStormNodeSignature, stormNodeSignatureTime, pubKeyCollateralAddress, pubKeyStormnode, -1, -1, stormNodeSignatureTime, PROTOCOL_VERSION);
 
     return true;
 }

@@ -917,18 +917,16 @@ bool AppInit2(boost::thread_group& threadGroup)
     if (!strErrors.str().empty())
         return InitError(strErrors.str());
 
-    uiInterface.InitMessage(_("Loading stormnode list..."));
+    uiInterface.InitMessage(_("Loading Stormnode cache..."));
 
     nStart = GetTimeMillis();
 
-    {
-        CStormnodeDB sndb;
-        if (!sndb.Read(snodeman))
-            LogPrintf("Invalid or missing stormnodes.dat; recreating\n");
-    }
-
-    LogPrintf("Loaded %i stormnodes from stormnodes.dat  %dms\n",
-           snodeman.size(), GetTimeMillis() - nStart);
+    CStormnodeDB sndb;
+    CStormnodeDB::ReadResult readResult = sndb.Read(snodeman);
+    if (readResult == CStormnodeDB::FileError)
+        LogPrintf("Missing Stormnode cache file - sncache.dat, will try to recreate\n");
+    else if (readResult != CStormnodeDB::Ok)
+        LogPrintf("Stormnode cache file sncache.dat has invalid format\n");
 
     fStormNode = GetBoolArg("-stormnode", false);
     if(fStormNode) {

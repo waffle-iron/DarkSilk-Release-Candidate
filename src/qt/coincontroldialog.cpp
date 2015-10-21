@@ -17,6 +17,7 @@
 #include <QCursor>
 #include <QDateTime>
 #include <QDialogButtonBox>
+#include <QFile>
 #include <QFlags>
 #include <QIcon>
 #include <QString>

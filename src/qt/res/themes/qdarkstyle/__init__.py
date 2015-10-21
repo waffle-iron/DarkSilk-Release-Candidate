@@ -23,7 +23,7 @@
 # THE SOFTWARE.
 #
 """
-Initialise the QDarkStyleSheet module when used with python.
+Initialize the QDarkStyleSheet module when used with python.
 
 This modules provides a function to transparently load the stylesheets
 with the correct rc file.
