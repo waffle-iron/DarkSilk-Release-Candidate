@@ -206,7 +206,7 @@ CStormnode *CStormnodeMan::FindRandom()
 }
 
 
-CStormnode* CStormnodeMan::FindOldestNotInVec(const std::vector<CTxIn> &vVins)
+CStormnode* CStormnodeMan::FindOldestNotInVec(const std::vector<CTxIn> &vVins, int nMinimumAge, int nMinimumActiveSeconds)
 {
     LOCK(cs);
 
@@ -216,6 +216,10 @@ CStormnode* CStormnodeMan::FindOldestNotInVec(const std::vector<CTxIn> &vVins)
     {   
         sn.Check();
         if(!sn.IsEnabled()) continue;
+
+        if(!RegTest()){
+            if(sn.GetStormnodeInputAge() < nMinimumAge || sn.lastTimeSeen - sn.sigTime < nMinimumActiveSeconds) continue;
+        }
 
         bool found = false;
         BOOST_FOREACH(const CTxIn& vin, vVins)
@@ -761,9 +765,9 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
             {
                 if(fDebug) LogPrintf("sseg - Sending stormnode entry - %s \n", sn.addr.ToString().c_str());
                 if(vin == CTxIn()){
-                    pfrom->PushMessage("ssee", sn.vin, sn.addr, sn.sig, sn.sigTime, sn.pubkey, sn.pubkey2, count, i, sn.lastTimeSeen, sn.protocolVersion);
+                    pfrom->PushMessage("ssee", sn.vin, sn.addr, sn.sig, sn.sigTime, sn.pubkey, sn.pubkey2, count, i, sn.lastTimeSeen, sn.protocolVersion, sn.donationAddress, sn.donationPercentage);
                 } else if (vin == sn.vin) {
-                    pfrom->PushMessage("ssee", sn.vin, sn.addr, sn.sig, sn.sigTime, sn.pubkey, sn.pubkey2, count, i, sn.lastTimeSeen, sn.protocolVersion);
+                    pfrom->PushMessage("ssee", sn.vin, sn.addr, sn.sig, sn.sigTime, sn.pubkey, sn.pubkey2, count, i, sn.lastTimeSeen, sn.protocolVersion, sn.donationAddress, sn.donationPercentage);
                     LogPrintf("sseg - Sent 1 Stormnode entries to %s\n", pfrom->addr.ToString().c_str());
                     return;
                 }

@@ -150,7 +150,7 @@ public:
         genesis.nNonce = 0;
         hashGenesisBlock = genesis.GetHash(); 
 
-        //printf("Test Gensis Hash: %s\n", genesis.GetHash().ToString().c_str());
+        //printf("Test Genesis Hash: %s\n", genesis.GetHash().ToString().c_str());
         assert(hashGenesisBlock == uint256("0xf788ac4ae46429468897b4b9758651cb8a642a6e01f16968134a75078905e24d"));
 
         vFixedSeeds.clear();
@@ -170,6 +170,50 @@ public:
     virtual Network NetworkID() const { return CChainParams::TESTNET; }
 };
 static CTestNetParams testNetParams;
+
+//
+// Regression test
+//
+class CRegTestParams : public CTestNetParams {
+public:
+    CRegTestParams() {
+        pchMessageStart[0] = 0x1f;
+        pchMessageStart[1] = 0x22;
+        pchMessageStart[2] = 0x05;
+        pchMessageStart[3] = 0x30;
+        bnProofOfWorkLimit = CBigNum(~uint256(0) >> 20); // PoW starting difficulty = 0.0002441
+        vAlertPubKey = ParseHex("");
+        nDefaultPort = 31750;
+        nRPCPort = 31800;
+        strDataDir = "testnet";
+
+        // Modify the regtest genesis block so the timestamp is valid for a later start.
+        genesis.nTime = 1438578972;
+        genesis.nBits  = 0; 
+        genesis.nNonce = 0;
+        hashGenesisBlock = genesis.GetHash(); 
+
+        //printf("Test Genesis Hash: %s\n", genesis.GetHash().ToString().c_str());
+        assert(hashGenesisBlock == uint256("0xf788ac4ae46429468897b4b9758651cb8a642a6e01f16968134a75078905e24d"));
+
+        vFixedSeeds.clear();
+        vSeeds.clear();
+
+        base58Prefixes[PUBKEY_ADDRESS] = list_of(30);                     //DarkSilk addresses start with 'D'
+        base58Prefixes[SCRIPT_ADDRESS] = list_of(10);                     //DarkSilk script addresses start with '5'
+        base58Prefixes[SECRET_KEY] =     list_of(140);                    //DarkSilk private keys start with 'y'              
+        base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x02)(0xFE)(0x52)(0x7D); //DarkSilk BIP32 pubkeys start with 'drks'
+        base58Prefixes[EXT_SECRET_KEY] = list_of(0x02)(0xFE)(0x52)(0x8C); //DarkSilk BIP32 prvkeys start with 'drky'
+
+        convertSeeds(vFixedSeeds, pnTestnetSeed, ARRAYLEN(pnTestnetSeed), nDefaultPort);
+
+        nLastPOWBlock = 100;
+    }
+
+    virtual bool RequireRPCPassword() const { return false; }
+    virtual Network NetworkID() const { return CChainParams::REGTEST; }
+};
+static CRegTestParams regTestParams;
 
 
 static CChainParams *pCurrentParams = &mainParams;

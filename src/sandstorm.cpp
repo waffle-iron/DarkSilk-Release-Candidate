@@ -290,7 +290,6 @@ void CSandstormPool::ProcessMessageSandstorm(CNode* pfrom, std::string& strComma
         }
 
         // relay to all peers that an entry was added to the pool successfully.
-        RelayStatus(sessionID, GetState(), GetEntriesCount(), STORMNODE_ACCEPTED);
         Check();
 
     } else if (strCommand == "ssi") { //SandStorm vIn
@@ -646,13 +645,10 @@ void CSandstormPool::SetNull(bool clearEverything){
 
     if(clearEverything){
         myEntries.clear();
-
-        if(fStormNode){
-            sessionID = 1 + (rand() % 999999);
-        } else {
-            sessionID = 0;
-        }
+        sessionID = 0;
     }
+
+    Downgrade();
 
     // -- seed random number generator (used for ordering output lists)
     unsigned int seed = 0;
@@ -769,7 +765,7 @@ void CSandstormPool::CheckFinalTransaction()
             // See if the transaction is valid
             if (!txNew.AcceptToMemoryPool(false))
             {
-                if(nCountAttempts > 10) {
+                if(nCountAttempts > 60) {
                     LogPrintf("CSandstormPool::Check() - CommitTransaction : Error: Transaction not valid\n");
                     SetNull();
                     pwalletMain->Lock();
@@ -778,9 +774,7 @@ void CSandstormPool::CheckFinalTransaction()
 
                 // not much we can do in this case]
                 UpdateState(POOL_STATUS_ACCEPTING_ENTRIES);
-                if(nCountAttempts > 5) RelayCompletedTransaction(sessionID, true, "Transaction not valid, please try again");
-
-                if(!fSubmitAnonymousFailed && nCountAttempts > 5) 
+                if(!fSubmitAnonymousFailed && nCountAttempts > 30) 
                     fSubmitAnonymousFailed = true;
                 return;
             }
@@ -1430,7 +1424,7 @@ bool CSandstormPool::StatusUpdate(int newState, int newEntriesCount, int newAcce
             lastMessage = error;
         }
 
-        if(newAccepted == 1) {
+        if(newAccepted == 1 && newSessionID != 0) {
             sessionID = newSessionID;
             LogPrintf("CSandstormPool::StatusUpdate - set sessionID to %d\n", sessionID);
              sessionFoundStormnode = true;
@@ -1488,8 +1482,8 @@ bool CSandstormPool::SignFinalTransaction(CTransaction& finalTransactionNew, CNo
 
             if(mine >= 0){ //might have to do this one input at a time?
                 //already signed
-                if(finalTransaction.vin[mine].scriptSig != CScript()) continue;
-                if(sigs.size() > 7) break; //send 7 each signing
+                CScript scriptOld = finalTransaction.vin[mine].scriptSig;
+                if(!fSubmitAnonymousFailed && sigs.size() > 7) break; //send 7 each signing
                 
                 int foundOutputs = 0;
                 int64_t nValue1 = 0;
@@ -1521,6 +1515,8 @@ bool CSandstormPool::SignFinalTransaction(CTransaction& finalTransactionNew, CNo
                     if(fDebug) LogPrintf("CSandstormPool::Sign - Unable to sign my own transaction! \n");
                     // not sure what to do here, it will timeout...?
                 }
+
+                if(scriptOld != CScript() && finalTransaction.vin[mine].scriptSig == scriptOld) continue;
 
                 sigs.push_back(finalTransaction.vin[mine]);
                 if(fDebug) LogPrintf(" -- sss %d %d %s\n", mine, (int)sigs.size(), finalTransaction.vin[mine].scriptSig.ToString().c_str());                    
@@ -1887,7 +1883,7 @@ bool CSandstormPool::Downgrade()
     if(myEntries.size() == 0) return false;
 
     fSubmitAnonymousFailed = true;
-    LogPrintf("CSandstormPool::Downgrade() : Downgrading and submitting directly\n");
+    //LogPrintf("CSandstormPool::Downgrade() : Downgrading and submitting directly\n");
 
     // relay our entry to the master node
     RelayIn(myEntries[0].sev, myEntries[0].amount, txCollateral, myEntries[0].vout);
@@ -2143,6 +2139,7 @@ bool CSandstormPool::IsCompatibleWithSession(int64_t nDenom, CTransaction txColl
     if(sessionUsers < 0) sessionUsers = 0;
 
     if(sessionUsers == 0) {
+        sessionID = 1 + (rand() % 999999);
         sessionDenom = nDenom;
         sessionUsers++;
         lastTimeChanged = GetTimeMillis();
@@ -2573,6 +2570,7 @@ bool CSSAnonTx::AddOutput(const CTxOut out){
 
     vout.push_back(out);
     std::random_shuffle ( vout.begin(), vout.end(), randomizeList);
+    ClearSigs();
 
     return true;
 }
@@ -2588,6 +2586,16 @@ bool CSSAnonTx::AddInput(const CTxIn in){
 
     vin.push_back(in);
     std::random_shuffle ( vin.begin(), vin.end(), randomizeList);
+    ClearSigs();
+
+    return true;
+}
+
+bool CSSAnonTx::ClearSigs(){
+    LOCK(cs_sandstorm);
+
+    BOOST_FOREACH(CTxSSIn& in, vin)
+        in.scriptSig = CScript();
 
     return true;
 }

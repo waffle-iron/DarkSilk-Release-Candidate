@@ -39,9 +39,9 @@ class CActiveStormnode;
 #define STORMNODE_REJECTED                    0
 #define STORMNODE_RESET                       -1
 
-#define SANDSTORM_QUEUE_TIMEOUT                 120
+#define SANDSTORM_QUEUE_TIMEOUT                 180
 #define SANDSTORM_SIGNING_TIMEOUT               30
-#define SANDSTORM_DOWNGRADE_TIMEOUT             30
+#define SANDSTORM_DOWNGRADE_TIMEOUT             60
 
 // used for anonymous relaying of inputs/outputs/sigs
 #define SANDSTORM_RELAY_IN                 1
@@ -259,6 +259,7 @@ public:
     bool IsTransactionValid();
     bool AddOutput(const CTxOut out);
     bool AddInput(const CTxIn in);
+    bool ClearSigs();
     bool AddSig(const CTxIn in);
     int CountEntries() {return (int)vin.size() + (int)vout.size();}
 };
