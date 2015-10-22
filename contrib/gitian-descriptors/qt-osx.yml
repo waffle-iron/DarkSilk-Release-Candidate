@@ -70,23 +70,8 @@ script: |
   cd $DEPSDIR
   unzip -o $BUILDDIR/darksilk-deps-osx-gitian.zip
   tar xf $BUILDDIR/osxcross.tar.xz
-  #Attempt to fix symbolic links inside sdk..
-  #FRAMEWORKS=`find ${SDK}/System/Library/Frameworks -name "*.framework" -type d`
-  #for FRAMEWORK in $FRAMEWORKS; do
-  #  if [ -d "${FRAMEWORK}/Headers" ]; then
-  #    [ -d "${FRAMEWORK}/Versions/A/Headers" ] && ln -s ${FRAMEWORK}/Versions/A/Headers/* ${FRAMEWORK}/Headers/ 2> /dev/null
-  #    [ -d "${FRAMEWORK}/Versions/B/Headers" ] && ln -s ${FRAMEWORK}/Versions/B/Headers/* ${FRAMEWORK}/Headers/ 2> /dev/null
-  #    [ -d "${FRAMEWORK}/Versions/C/Headers" ] && ln -s ${FRAMEWORK}/Versions/C/Headers/* ${FRAMEWORK}/Headers/ 2> /dev/null
-  #  fi
-  #  if [ -d "${FRAMEWORK}/Frameworks" ]; then
-  #    [ -d "${FRAMEWORK}/Versions/A/Frameworks" ] && ln -s ${FRAMEWORK}/Versions/A/Frameworks/* ${FRAMEWORK}/Frameworks/ 2> /dev/null
-  #    [ -d "${FRAMEWORK}/Versions/B/Frameworks" ] && ln -s ${FRAMEWORK}/Versions/B/Frameworks/* ${FRAMEWORK}/Frameworks/ 2> /dev/null
-  #    [ -d "${FRAMEWORK}/Versions/C/Frameworks" ] && ln -s ${FRAMEWORK}/Versions/C/Frameworks/* ${FRAMEWORK}/Frameworks/ 2> /dev/null
-  #  fi
-  #done
   #
   cd $BUILDDIR
-  #
   tar xf qt-everywhere-opensource-src-5.5.0.tar.xz
   #
   QTDIR=$BUILDDIR/qt-everywhere-opensource-src-5.5.0
@@ -137,6 +122,7 @@ script: |
   CONFIG_OPTS="
   -opensource -confirm-license
   -release
+  -static
   -xplatform $SPECNAME
   -no-audio-backend
   -no-glib
@@ -211,6 +197,7 @@ script: |
   -skip qtserialport
   -skip qtenginio
   -skip qtwebengine
+  -skip qtwebkit
   -skip qt3d
   -skip qtcanvas3d
   -skip qtdoc"
@@ -223,13 +210,6 @@ script: |
   #
   make $MAKEOPTS
   make $MAKEOPTS install
-  #
-  cd $QTDIR/qtwebkit
-  $INSTALLPREFIX/host/bin/qmake
-  #
-  make
-  make install
-  cd $BUILDDIR
   #
   # post-process all generated libraries and plugins to be deterministic
   # extract them to a temporary directory then re-build them deterministically

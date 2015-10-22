@@ -609,7 +609,7 @@ Value stormnode(const Array& params, bool fHelp)
         snEntries = stormnodeConfig.getEntries();
 
         if (params.size() != 2)
-            throw runtime_error("You can only vote 'yea' or 'nay'");
+            throw runtime_error("You can only vote 'yay' or 'nay'");
 
         std::string vote = params[1].get_str().c_str();
         if(vote != "yay" && vote != "nay") return "You can only vote 'yay' or 'nay'";
@@ -678,7 +678,7 @@ Value stormnode(const Array& params, bool fHelp)
         snEntries = stormnodeConfig.getEntries();
 
         if (params.size() != 2)
-            throw runtime_error("You can only vote 'yea' or 'nay'");
+            throw runtime_error("You can only vote 'yay' or 'nay'");
 
         std::string vote = params[1].get_str().c_str();
         if(vote != "yay" && vote != "nay") return "You can only vote 'yay' or 'nay'";
