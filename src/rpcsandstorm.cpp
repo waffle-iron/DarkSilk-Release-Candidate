@@ -754,8 +754,8 @@ Value stormnodelist(const Array& params, bool fHelp)
     if (params.size() == 2) strFilter = params[1].get_str();
 
     if (fHelp ||
-            (strMode != "active" && strMode != "vin" && strMode != "pubkey" && strMode != "lastseen"
-             && strMode != "activeseconds" && strMode != "rank" && strMode != "protocol" && strMode != "full" && strMode != "votes" && strMode != "donation"))
+            (strMode != "active" && strMode != "vin" && strMode != "pubkey" && strMode != "lastseen" && strMode != "activeseconds" && strMode != "rank" 
+                && strMode != "protocol" && strMode != "full" && strMode != "votes" && strMode != "donation" && strMode != "pose"))
     {
         throw runtime_error(
                 "stormnodelist ( \"mode\" \"filter\" )\n"
@@ -801,6 +801,12 @@ Value stormnodelist(const Array& params, bool fHelp)
                     strOut += ":";
                     strOut += boost::lexical_cast<std::string>(sn.donationPercentage);
                 }
+                obj.push_back(Pair(strAddr,       strOut.c_str()));
+            } else if (strMode == "pose") {
+                if(strFilter !="" && strAddr.find(strFilter) == string::npos) continue;
+
+                std::string strOut = boost::lexical_cast<std::string>(sn.nScanningErrorCount);
+                
                 obj.push_back(Pair(strAddr,       strOut.c_str()));
         } else if (strMode == "vin") {
             if(strFilter !="" && sn.vin.prevout.hash.ToString().find(strFilter) == string::npos &&

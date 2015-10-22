@@ -58,7 +58,6 @@ void ProcessMessageStormnodePOS(CNode* pfrom, std::string& strCommand, CDataStre
     if (strCommand == "snse") //Stormnode Scanning Error
     {
 
-        LogPrintf("ProcessMessageStormnodePOS::snse\n");
         CDataStream vMsg(vRecv);
         CStormnodeScanningError snse;
         vRecv >> snse;
@@ -76,6 +75,10 @@ void ProcessMessageStormnodePOS(CNode* pfrom, std::string& strCommand, CDataStre
             LogPrintf("StormnodePOS::snse - Invalid object\n");   
             return;
         }
+
+        CStormnode* psnA = snodeman.Find(snse.vinStormnodeA);
+        if(psnA == NULL) return;
+        if(psnA->protocolVersion < MIN_STORMNODE_POS_PROTO_VERSION) return;
 
         int nBlockHeight = pindexBest->nHeight;
         if(nBlockHeight - snse.nBlockHeight > 10){
@@ -103,10 +106,12 @@ void ProcessMessageStormnodePOS(CNode* pfrom, std::string& strCommand, CDataStre
             return;
         }
 
-        CStormnode* psn = snodeman.Find(snse.vinStormnodeB);
-        if(psn == NULL) return;
+        CStormnode* psnB = snodeman.Find(snse.vinStormnodeB);
+        if(psnB == NULL) return;
 
-        psn->ApplyScanningError(snse);
+        if(fDebug) LogPrintf("ProcessMessageStormnodePOS::snse - nHeight %d StormnodeA %s StormnodeB %s\n", snse.nBlockHeight, psnA->addr.ToString().c_str(), psnB->addr.ToString().c_str());
+
+        psnB->ApplyScanningError(snse);
         snse.Relay();
     }
 }
