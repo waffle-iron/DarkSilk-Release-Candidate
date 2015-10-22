@@ -8,6 +8,8 @@
 #include <boost/lexical_cast.hpp>
 #include <boost/filesystem.hpp>
 
+CCriticalSection cs_process_message;
+
 /** Stormnode manager */
 CStormnodeMan snodeman;
 
@@ -536,7 +538,7 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
     if(fLiteMode) return; //disable all sandstorm/stormnode related functionality
     if(IsInitialBlockDownload()) return;
 
-    LOCK(cs);
+    LOCK(cs_process_message);
 
     if (strCommand == "ssee") { //Sandstorm Election Entry
 
@@ -607,7 +609,8 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
 
         //search existing stormnode list, this is where we update existing stormnodes with new ssee broadcasts
         CStormnode* psn = this->Find(vin);
-        if(psn != NULL)
+        // if we are a stormnode but with undefined vin and this ssee is ours (matches our Stormnode privkey) then just skip this part
+        if(psn != NULL && !(fStormNode && activeStormnode.vin == CTxIn() && pubkey2 == activeStormnode.pubKeyStormnode))
         {
             // count == -1 when it's a new entry
             //   e.g. We don't want the entry relayed/time updated when we're syncing the list
@@ -682,6 +685,12 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
 
             // use this as a peer
             addrman.Add(CAddress(addr), pfrom->addr, 2*60*60);
+
+            //doesn't support multisig addresses
+            if(donationAddress.IsPayToScriptHash()){
+                donationAddress = CScript();
+                donationPercentage = 0;
+            }
 
             // add our stormnode
             CStormnode sn(addr, vin, pubkey, vchSig, sigTime, pubkey2, protocolVersion, donationAddress, donationPercentage);

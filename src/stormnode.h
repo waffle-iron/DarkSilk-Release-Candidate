@@ -310,6 +310,7 @@ private:
     std::string strTestPubKey;
     std::string strMainPubKey;
     bool enabled;
+    int nLastBlockHeight;
 
 public:
 

@@ -2011,7 +2011,7 @@ bool CWallet::SelectCoins(int64_t nTargetValue, unsigned int nSpendTime, set<pai
 {
     // Note: this function should never be used for "always free" tx types like sstx
     vector<COutput> vCoins;
-    AvailableCoins(vCoins, true, coinControl);
+    AvailableCoins(vCoins, true, coinControl, coin_type, useIX);
 
     //if we're doing only denominated, we need to round up to the nearest .1DRKSLK
     if(coin_type == ONLY_DENOMINATED){

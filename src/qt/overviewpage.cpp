@@ -147,6 +147,8 @@ OverviewPage::OverviewPage(QWidget *parent) :
 
     if(fStormNode || fLiteMode){
         ui->toggleSandstorm->setText("(" + tr("Disabled") + ")");
+        ui->sandstormAuto->setText("(" + tr("Disabled") + ")");
+        ui->sandstormReset->setText("(" + tr("Disabled") + ")");
         ui->toggleSandstorm->setEnabled(false);
     }else if(!fEnableSandstorm){
         ui->toggleSandstorm->setText(tr("Start Sandstorm"));

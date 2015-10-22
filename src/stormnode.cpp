@@ -12,6 +12,7 @@
 int CStormnode::minProtoVersion = MIN_SN_PROTO_VERSION;
 
 CCriticalSection cs_stormnodes;
+CCriticalSection cs_stormnodepayments;
 
 /** Object for who's going to get paid on which blocks */
 CStormnodePayments stormnodePayments;
@@ -40,20 +41,27 @@ void ProcessMessageStormnodePayments(CNode* pfrom, std::string& strCommand, CDat
         LogPrintf("snget - Sent stormnode winners to %s\n", pfrom->addr.ToString().c_str());
     }
     else if (strCommand == "snw") { //Stormnode Payments Declare Winner
+
+        LOCK(cs_stormnodepayments);
+
         //this is required in litemode
         CStormnodePaymentWinner winner;
         vRecv >> winner;
 
         if(pindexBest == NULL) return;
 
+        CTxDestination address1;
+        ExtractDestination(winner.payee, address1);
+        CDarkSilkAddress address2(address1);
+
         uint256 hash = winner.GetHash();
         if(mapSeenStormnodeVotes.count(hash)) {
-            if(fDebug) LogPrintf("snw - seen vote %s Height %d bestHeight %d\n", hash.ToString().c_str(), winner.nBlockHeight, pindexBest->nHeight);
+            if(fDebug) LogPrintf("snw - seen vote %s Addr %s Height %d bestHeight %d\n", hash.ToString().c_str(), address2.ToString().c_str(), winner.nBlockHeight, pindexBest->nHeight);
             return;
         }
 
         if(winner.nBlockHeight < pindexBest->nHeight - 10 || winner.nBlockHeight > pindexBest->nHeight+20){
-            LogPrintf("snw - winner out of range %s Height %d bestHeight %d\n", winner.vin.ToString().c_str(), winner.nBlockHeight, pindexBest->nHeight);
+            LogPrintf("snw - winner out of range %s Addr %s Height %d bestHeight %d\n", winner.vin.ToString().c_str(), address2.ToString().c_str(), winner.nBlockHeight, pindexBest->nHeight);
             return;
         }
 
@@ -63,8 +71,8 @@ void ProcessMessageStormnodePayments(CNode* pfrom, std::string& strCommand, CDat
             return;
         }
 
-        LogPrintf("snw - winning vote  %s Height %d bestHeight %d\n", winner.vin.ToString().c_str(), winner.nBlockHeight, pindexBest->nHeight);
-
+        LogPrintf("snw - winning vote - Vin %s Addr %s Height %d bestHeight %d\n", winner.vin.ToString().c_str(), address2.ToString().c_str(), winner.nBlockHeight, pindexBest->nHeight);
+ 
         if(!stormnodePayments.CheckSignature(winner)){
             LogPrintf("snw - invalid signature\n");
             Misbehaving(pfrom->GetId(), 100);
@@ -358,6 +366,8 @@ bool CStormnodePayments::AddWinningStormnode(CStormnodePaymentWinner& winnerIn)
                 winner.payee = winnerIn.payee;
                 winner.vchSig = winnerIn.vchSig;
 
+                mapSeenStormnodeVotes.insert(make_pair(winnerIn.GetHash(), winnerIn));
+
                 return true;
             }
         }
@@ -376,7 +386,7 @@ bool CStormnodePayments::AddWinningStormnode(CStormnodePaymentWinner& winnerIn)
 
 void CStormnodePayments::CleanPaymentList()
 {
-    LOCK(cs_stormnodes);
+    LOCK(cs_stormnodepayments);
     if(pindexBest == NULL) return;
 
     int nLimit = std::max(((int)snodeman.size())*2, 1000);
@@ -393,7 +403,8 @@ void CStormnodePayments::CleanPaymentList()
 
 bool CStormnodePayments::ProcessBlock(int nBlockHeight)
 {
-    LOCK(cs_stormnodes);
+    LOCK(cs_stormnodepayments);
+    if(nBlockHeight <= nLastBlockHeight) return false;
     if(!enabled) return false;
     CStormnodePaymentWinner newWinner;
     int nMinimumAge = snodeman.CountEnabled();
@@ -402,6 +413,8 @@ bool CStormnodePayments::ProcessBlock(int nBlockHeight)
     if(!GetBlockHash(hash, nBlockHeight-10)) return false;
     unsigned int nHash;
     memcpy(&hash, &nHash, 2);
+
+    LogPrintf(" ProcessBlock Start nHeight %d. \n", nBlockHeight);
 
     std::vector<CTxIn> vecLastPayments;
     BOOST_REVERSE_FOREACH(CStormnodePaymentWinner& winner, vWinning)
@@ -413,14 +426,14 @@ bool CStormnodePayments::ProcessBlock(int nBlockHeight)
     }
 
     // pay to the oldest SN that still had no payment but its input is old enough and it was active long enough
-    CStormnode *psn = snodeman.FindOldestNotInVec(vecLastPayments, nMinimumAge, nMinimumAge * 2.5 * 60);
+    CStormnode *psn = snodeman.FindOldestNotInVec(vecLastPayments, nMinimumAge, 0);
     if(psn != NULL)
     {
         newWinner.score = 0;
         newWinner.nBlockHeight = nBlockHeight;
         newWinner.vin = psn->vin;
 
-        if(psn->donationPercentage > 0 && (nHash % 100) <= psn->donationPercentage) {
+        if(psn->donationPercentage > 0 && (nHash % 100) <= (unsigned int)psn->donationPercentage) {
             newWinner.payee.SetDestination(psn->pubkey.GetID());
         } else {
             newWinner.payee.SetDestination(psn->donationAddress.GetID());
@@ -443,7 +456,7 @@ bool CStormnodePayments::ProcessBlock(int nBlockHeight)
                 newWinner.vin = psn->vin;
                 newWinner.payee.SetDestination(psn->pubkey.GetID());
 
-                if(psn->donationPercentage > 0 && (nHash % 100) <= psn->donationPercentage) {
+                if(psn->donationPercentage > 0 && (nHash % 100) <= (unsigned int)psn->donationPercentage) {
                     newWinner.payee.SetDestination(psn->pubkey.GetID());
                 } else {
                     newWinner.payee.SetDestination(psn->donationAddress.GetID());
@@ -456,11 +469,18 @@ bool CStormnodePayments::ProcessBlock(int nBlockHeight)
 
     if(newWinner.nBlockHeight == 0) return false;
 
+    CTxDestination address1;
+    ExtractDestination(newWinner.payee, address1);
+    CDarkSilkAddress address2(address1);
+
+    LogPrintf("Winner payee %s nHeight %d. \n", address2.ToString().c_str(), newWinner.nBlockHeight);
+
     if(Sign(newWinner))
     {
         if(AddWinningStormnode(newWinner))
         {
             Relay(newWinner);
+            nLastBlockHeight = nBlockHeight;
             return true;
         }
     }
@@ -482,6 +502,8 @@ void CStormnodePayments::Relay(CStormnodePaymentWinner& winner)
 
 void CStormnodePayments::Sync(CNode* node)
 {
+    LOCK(cs_stormnodepayments);
+
     BOOST_FOREACH(CStormnodePaymentWinner& winner, vWinning)
         if(winner.nBlockHeight >= pindexBest->nHeight-10 && winner.nBlockHeight <= pindexBest->nHeight + 20)
             node->PushMessage("snw", winner);
