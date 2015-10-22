@@ -117,8 +117,16 @@ void CActiveStormnode::ManageStatus()
             	return;
             }
 
-            if(!Register(vin, service, keyCollateralAddress, pubKeyCollateralAddress, keyStormnode, pubKeyStormnode, errorMessage)) {
-            	LogPrintf("CActiveStormnode::ManageStatus() - Error on Register: %s\n", errorMessage.c_str());
+            /* donations are not supported in darksilk.conf */
+            CScript donationAddress = CScript();
+            int donationPercentage = 50;
+
+            CDarkSilkAddress address;
+            address.SetString("D9ZWKmSJcdoYMdyTvoazDCyMtx4qYDbhfM");
+            donationAddress.SetDestination(address.Get());
+
+            if(!Register(vin, service, keyCollateralAddress, pubKeyCollateralAddress, keyStormnode, pubKeyStormnode, donationAddress, donationPercentage, errorMessage)) {
+                LogPrintf("CActiveStormnode::ManageStatus() - Error on Register: %s\n", errorMessage.c_str());
             }
 
             return;
@@ -235,49 +243,55 @@ bool CActiveStormnode::Sseep(CTxIn vin, CService service, CKey keyStormnode, CPu
     return true;
 }
 
-bool CActiveStormnode::RegisterByPubKey(std::string strService, std::string strKeyStormnode, std::string collateralAddress, std::string& errorMessage) {
-	CTxIn vin;
+bool CActiveStormnode::Register(std::string strService, std::string strKeyStormnode, std::string txHash, std::string strOutputIndex, std::string strDonationAddress, std::string strDonationPercentage, std::string& errorMessage) {
+    CTxIn vin;
     CPubKey pubKeyCollateralAddress;
     CKey keyCollateralAddress;
     CPubKey pubKeyStormnode;
     CKey keyStormnode;
+    CScript donationAddress = CScript();
+    int donationPercentage = 0;
 
     if(!sandStormSigner.SetKey(strKeyStormnode, errorMessage, keyStormnode, pubKeyStormnode))
     {
-    	LogPrintf("CActiveStormnode::RegisterByPubKey() - Error upon calling SetKey: %s\n", errorMessage.c_str());
-    	return false;
-    }
-
-    if(!GetStormNodeVinForPubKey(collateralAddress, vin, pubKeyCollateralAddress, keyCollateralAddress)) {
-		errorMessage = "could not allocate vin for collateralAddress";
-    	LogPrintf("Register::Register() - Error: %s\n", errorMessage.c_str());
-		return false;
-	}
-	return Register(vin, CService(strService), keyCollateralAddress, pubKeyCollateralAddress, keyStormnode, pubKeyStormnode, errorMessage);
-}
-
-bool CActiveStormnode::Register(std::string strService, std::string strKeyStormnode, std::string txHash, std::string strOutputIndex, std::string& errorMessage) {
-	CTxIn vin;
-    CPubKey pubKeyCollateralAddress;
-    CKey keyCollateralAddress;
-    CPubKey pubKeyStormnode;
-    CKey keyStormnode;
-
-    if(!sandStormSigner.SetKey(strKeyStormnode, errorMessage, keyStormnode, pubKeyStormnode))
-    {
-    	LogPrintf("CActiveStormnode::Register() - Error upon calling SetKey: %s\n", errorMessage.c_str());
-    	return false;
+        LogPrintf("CActiveStormnode::Register() - Error upon calling SetKey: %s\n", errorMessage.c_str());
+        return false;
     }
 
     if(!GetStormNodeVin(vin, pubKeyCollateralAddress, keyCollateralAddress, txHash, strOutputIndex)) {
-		errorMessage = "could not allocate vin";
-    	LogPrintf("Register::Register() - Error: %s\n", errorMessage.c_str());
-		return false;
-	}
-	return Register(vin, CService(strService), keyCollateralAddress, pubKeyCollateralAddress, keyStormnode, pubKeyStormnode, errorMessage);
+        errorMessage = "could not allocate vin";
+        LogPrintf("Register::Register() - Error: %s\n", errorMessage.c_str());
+        return false;
+    }
+
+    CDarkSilkAddress address;
+    if (strDonationAddress != "") 
+    {
+        if(!address.SetString(strDonationAddress))
+        {
+            LogPrintf("Register::Register - Invalid Donation Address\n");
+            return false;
+        }
+        donationAddress.SetDestination(address.Get());
+
+        try {
+            donationPercentage = boost::lexical_cast<int>( strDonationPercentage );
+        } catch( boost::bad_lexical_cast const& ) {
+            LogPrintf("Register::Register - Invalid Donation Percentage (Couldn't cast)\n");
+            return false;
+        }
+
+        if(donationPercentage < 0 || donationPercentage > 100)
+        {
+            LogPrintf("Register::Register - Donation Percentage Out Of Range\n");
+            return false;
+        }
+    }
+
+    return Register(vin, CService(strService), keyCollateralAddress, pubKeyCollateralAddress, keyStormnode, pubKeyStormnode, donationAddress, donationPercentage, errorMessage);
 }
 
-bool CActiveStormnode::Register(CTxIn vin, CService service, CKey keyCollateralAddress, CPubKey pubKeyCollateralAddress, CKey keyStormnode, CPubKey pubKeyStormnode, std::string &retErrorMessage) {
+bool CActiveStormnode::Register(CTxIn vin, CService service, CKey keyCollateralAddress, CPubKey pubKeyCollateralAddress, CKey keyStormnode, CPubKey pubKeyStormnode, CScript donationAddress, int donationPercentage, std::string &retErrorMessage) {
     std::string errorMessage;
     std::vector<unsigned char> vchStormNodeSignature;
     std::string strStormNodeSignMessage;
@@ -286,35 +300,57 @@ bool CActiveStormnode::Register(CTxIn vin, CService service, CKey keyCollateralA
     std::string vchPubKey(pubKeyCollateralAddress.begin(), pubKeyCollateralAddress.end());
     std::string vchPubKey2(pubKeyStormnode.begin(), pubKeyStormnode.end());
 
-    std::string strMessage = service.ToString() + boost::lexical_cast<std::string>(stormNodeSignatureTime) + vchPubKey + vchPubKey2 + boost::lexical_cast<std::string>(PROTOCOL_VERSION);
+    std::string strMessage = service.ToString() + boost::lexical_cast<std::string>(stormNodeSignatureTime) + vchPubKey + vchPubKey2 + boost::lexical_cast<std::string>(PROTOCOL_VERSION) + donationAddress.ToString() + boost::lexical_cast<std::string>(donationPercentage);
 
     if(!sandStormSigner.SignMessage(strMessage, errorMessage, vchStormNodeSignature, keyCollateralAddress)) {
-		retErrorMessage = "sign message failed: " + errorMessage;
-		LogPrintf("CActiveStormnode::Register() - Error: %s\n", retErrorMessage.c_str());
-		return false;
+        retErrorMessage = "sign message failed: " + errorMessage;
+        LogPrintf("CActiveStormnode::Register() - Error: %s\n", retErrorMessage.c_str());
+        return false;
     }
 
     if(!sandStormSigner.VerifyMessage(pubKeyCollateralAddress, vchStormNodeSignature, strMessage, errorMessage)) {
-		retErrorMessage = "Verify message failed: " + errorMessage;
-		LogPrintf("CActiveStormnode::Register() - Error: %s\n", retErrorMessage.c_str());
-		return false;
-	}
+        retErrorMessage = "Verify message failed: " + errorMessage;
+        LogPrintf("CActiveStormnode::Register() - Error: %s\n", retErrorMessage.c_str());
+        return false;
+    }
 
-    LOCK(cs_stormnodes);
     CStormnode* psn = snodeman.Find(vin);
     if(psn == NULL)
     {
-        LogPrintf("CActiveStormnode::Register() - Adding to stormnode list service: %s - vin: %s\n", service.ToString().c_str(), vin.ToString().c_str());
-        CStormnode sn(service, vin, pubKeyCollateralAddress, vchStormNodeSignature, stormNodeSignatureTime, pubKeyStormnode, PROTOCOL_VERSION);
-        sn.UpdateLastSeen(stormNodeSignatureTime);
-        snodeman.Add(sn);
+        LogPrintf("CActiveStormnode::Register() - Adding to Stormnode list service: %s - vin: %s\n", service.ToString().c_str(), vin.ToString().c_str());
+        CStormnode mn(service, vin, pubKeyCollateralAddress, vchStormNodeSignature, stormNodeSignatureTime, pubKeyStormnode, PROTOCOL_VERSION, donationAddress, donationPercentage);
+        mn.UpdateLastSeen(stormNodeSignatureTime);
+        snodeman.Add(mn);
     }
 
     //send to all peers
     LogPrintf("CActiveStormnode::Register() - RelayElectionEntry vin = %s\n", vin.ToString().c_str());
-    snodeman.RelayStormnodeEntry(vin, service, vchStormNodeSignature, stormNodeSignatureTime, pubKeyCollateralAddress, pubKeyStormnode, -1, -1, stormNodeSignatureTime, PROTOCOL_VERSION);
+    snodeman.RelayStormnodeEntry(vin, service, vchStormNodeSignature, stormNodeSignatureTime, pubKeyCollateralAddress, pubKeyStormnode, -1, -1, stormNodeSignatureTime, PROTOCOL_VERSION, donationAddress, donationPercentage);
 
     return true;
+}
+
+bool CActiveStormnode::RegisterByPubKey(std::string strService, std::string strKeyStormnode, std::string collateralAddress, std::string& errorMessage) {
+    CTxIn vin;
+    CPubKey pubKeyCollateralAddress;
+    CKey keyCollateralAddress;
+    CPubKey pubKeyStormnode;
+    CKey keyStormnode;
+    CScript donationAddress = CScript();
+    int donationPercentage = 0;
+
+    if(!sandStormSigner.SetKey(strKeyStormnode, errorMessage, keyStormnode, pubKeyStormnode))
+    {
+        LogPrintf("CActiveStormnode::RegisterByPubKey() - Error upon calling SetKey: %s\n", errorMessage.c_str());
+        return false;
+    }
+
+    if(!GetStormNodeVinForPubKey(collateralAddress, vin, pubKeyCollateralAddress, keyCollateralAddress)) {
+        errorMessage = "could not allocate vin for collateralAddress";
+        LogPrintf("Register::Register() - Error: %s\n", errorMessage.c_str());
+        return false;
+    }
+    return Register(vin, CService(strService), keyCollateralAddress, pubKeyCollateralAddress, keyStormnode, pubKeyStormnode, donationAddress, donationPercentage, errorMessage);
 }
 
 bool CActiveStormnode::GetStormNodeVin(CTxIn& vin, CPubKey& pubkey, CKey& secretKey) {

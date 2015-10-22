@@ -97,14 +97,16 @@ public:
     bool unitTest;
     bool allowFreeTx;
     int protocolVersion;
+    CScript donationAddress;
+    int donationPercentage;
     int64_t nLastSsq; //the ssq count from the last ssq broadcast of this node
     int nScanningErrorCount;
     int nLastScanningErrorBlockHeight;
 
     CStormnode();
     CStormnode(const CStormnode& other);
-    CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::vector<unsigned char> newSig, int64_t newSigTime, CPubKey newPubkey2, int protocolVersionIn);
-
+    CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::vector<unsigned char> newSig, int64_t newSigTime, CPubKey newPubkey2, int protocolVersionIn, CScript donationAddress, int donationPercentage);
+ 
     void swap(CStormnode& first, CStormnode& second) // nothrow    
     {
         // enable ADL (not necessary in our case, but good practice)
@@ -127,6 +129,8 @@ public:
         swap(first.protocolVersion, second.protocolVersion);
         swap(first.unitTest, second.unitTest);
         swap(first.nLastSsq, second.nLastSsq);
+        swap(first.donationAddress, second.donationAddress);
+        swap(first.donationPercentage, second.donationPercentage);
     }
 
     CStormnode& operator=(CStormnode from)
@@ -169,6 +173,8 @@ public:
                 READWRITE(allowFreeTx);
                 READWRITE(protocolVersion);
                 READWRITE(nLastSsq);
+                READWRITE(donationAddress);
+                READWRITE(donationPercentage);
         }
     )
 

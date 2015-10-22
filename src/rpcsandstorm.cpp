@@ -384,8 +384,8 @@ Value stormnode(const Array& params, bool fHelp)
     		if(sne.getAlias() == alias) {
     			found = true;
     			std::string errorMessage;
-    			bool result = activeStormnode.Register(sne.getIp(), sne.getPrivKey(), sne.getTxHash(), sne.getOutputIndex(), errorMessage);
-
+    			bool result = activeStormnode.Register(sne.getIp(), sne.getPrivKey(), sne.getTxHash(), sne.getOutputIndex(), sne.getDonationAddress(), sne.getDonationPercentage(), errorMessage);
+ 
     			statusObj.push_back(Pair("result", result ? "successful" : "failed"));
     			if(!result) {
 					statusObj.push_back(Pair("errorMessage", errorMessage));
@@ -435,8 +435,8 @@ Value stormnode(const Array& params, bool fHelp)
 			total++;
 
 			std::string errorMessage;
-			bool result = activeStormnode.Register(sne.getIp(), sne.getPrivKey(), sne.getTxHash(), sne.getOutputIndex(), errorMessage);
-
+			bool result = activeStormnode.Register(sne.getIp(), sne.getPrivKey(), sne.getTxHash(), sne.getOutputIndex(), sne.getDonationAddress(), sne.getDonationPercentage(), errorMessage);
+ 
 			Object statusObj;
 			statusObj.push_back(Pair("alias", sne.getAlias()));
 			statusObj.push_back(Pair("result", result ? "succesful" : "failed"));

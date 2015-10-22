@@ -41,8 +41,7 @@ void ProcessMessageStormnodePayments(CNode* pfrom, std::string& strCommand, CDat
     else if (strCommand == "snw") { //Stormnode Payments Declare Winner
         //this is required in litemode
         CStormnodePaymentWinner winner;
-        int a = 0;
-        vRecv >> winner >> a;
+        vRecv >> winner;
 
         if(pindexBest == NULL) return;
 
@@ -135,6 +134,8 @@ CStormnode::CStormnode()
     allowFreeTx = true;
     protocolVersion = MIN_PEER_PROTO_VERSION;
     nLastSsq = 0;
+    donationAddress = CScript();
+    donationPercentage = 0;
 }
 
 CStormnode::CStormnode(const CStormnode& other)
@@ -155,9 +156,11 @@ CStormnode::CStormnode(const CStormnode& other)
     allowFreeTx = other.allowFreeTx;
     protocolVersion = other.protocolVersion;
     nLastSsq = other.nLastSsq;
+    donationAddress = other.donationAddress;
+    donationPercentage = other.donationPercentage;
 }
 
-CStormnode::CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::vector<unsigned char> newSig, int64_t newSigTime, CPubKey newPubkey2, int protocolVersionIn)
+CStormnode::CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::vector<unsigned char> newSig, int64_t newSigTime, CPubKey newPubkey2, int protocolVersionIn, CScript newDonationAddress, int newDonationPercentage)
 {
     LOCK(cs);
     vin = newVin;
@@ -175,6 +178,8 @@ CStormnode::CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::v
     allowFreeTx = true;
     protocolVersion = protocolVersionIn;
     nLastSsq = 0;
+    donationAddress = newDonationAddress;
+    donationPercentage = newDonationPercentage;
 }
 
 //
@@ -380,7 +385,12 @@ bool CStormnodePayments::ProcessBlock(int nBlockHeight)
     LOCK(cs_stormnodes);
     if(!enabled) return false;
     CStormnodePaymentWinner newWinner;
-    int nEnabled = snodeman.CountEnabled();
+    int nMinimumAge = snodeman.CountEnabled();
+
+    uint256 hash;
+    if(!GetBlockHash(hash, nBlockHeight-10)) return false;
+    int nHash;
+    memcpy(&hash, &nHash, 2);
 
     std::vector<CTxIn> vecLastPayments;
     BOOST_REVERSE_FOREACH(CStormnodePaymentWinner& winner, vWinning)
@@ -393,16 +403,21 @@ bool CStormnodePayments::ProcessBlock(int nBlockHeight)
 
     // pay to the oldest SN that still had no payment but its input is old enough and it was active long enough
     CStormnode *psn = snodeman.FindOldestNotInVec(vecLastPayments);
-    if(psn != NULL && psn->GetStormnodeInputAge() > nEnabled && psn->lastTimeSeen - psn->sigTime > nEnabled * 2.5 * 60)
+    if(psn != NULL)
     {
         newWinner.score = 0;
         newWinner.nBlockHeight = nBlockHeight;
         newWinner.vin = psn->vin;
-        newWinner.payee.SetDestination(psn->pubkey.GetID());
+
+        if(psn->donationPercentage > 0 && nHash % 100 < psn->donationPercentage){
+            newWinner.payee.SetDestination(psn->donationAddress.GetID());
+        } else {
+            newWinner.payee.SetDestination(psn->pubkey.GetID());
+        }
     }
 
     //if we can't find new SN to get paid, pick the first active SN counting back from the end of vecLastPayments list
-    if(newWinner.nBlockHeight == 0 && nEnabled > 0)
+    if(newWinner.nBlockHeight == 0 && nMinimumAge > 0)
     {
         BOOST_REVERSE_FOREACH(CTxIn& vinLP, vecLastPayments)
         {
@@ -416,6 +431,13 @@ bool CStormnodePayments::ProcessBlock(int nBlockHeight)
                 newWinner.nBlockHeight = nBlockHeight;
                 newWinner.vin = psn->vin;
                 newWinner.payee.SetDestination(psn->pubkey.GetID());
+
+                if(psn->donationPercentage > 0 && nHash % 100 < psn->donationPercentage) {
+                    newWinner.payee.SetDestination(psn->donationAddress.GetID());
+                } else {
+                    newWinner.payee.SetDestination(psn->pubkey.GetID());
+                }
+
                 break; // we found active SN
             }
         }
@@ -449,10 +471,9 @@ void CStormnodePayments::Relay(CStormnodePaymentWinner& winner)
 
 void CStormnodePayments::Sync(CNode* node)
 {
-    int a = 0;
     BOOST_FOREACH(CStormnodePaymentWinner& winner, vWinning)
         if(winner.nBlockHeight >= pindexBest->nHeight-10 && winner.nBlockHeight <= pindexBest->nHeight + 20)
-            node->PushMessage("snw", winner, a);
+            node->PushMessage("snw", winner);
 }
 
 

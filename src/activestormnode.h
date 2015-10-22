@@ -44,10 +44,12 @@ public:
     bool StopStormNode(std::string strService, std::string strKeyStormnode, std::string& errorMessage); // stop remote stormnode
     bool StopStormNode(CTxIn vin, CService service, CKey key, CPubKey pubKey, std::string& errorMessage); // stop any stormnode
 
-    bool Register(std::string strService, std::string strKey, std::string txHash, std::string strOutputIndex, std::string& errorMessage); // register remote stormnode
-    bool Register(CTxIn vin, CService service, CKey key, CPubKey pubKey, CKey keyStormnode, CPubKey pubKeyStormnode, std::string &retErrorMessage); // register any stormnode
-    bool RegisterByPubKey(std::string strService, std::string strKeyStormnode, std::string collateralAddress, std::string& errorMessage); // register for a specific collateral address
-
+    /// Register remote Stormnode
+    bool Register(std::string strService, std::string strKey, std::string txHash, std::string strOutputIndex, std::string strDonationAddress, std::string strDonationPercentage, std::string& errorMessage); 
+    /// Register any Stormnode
+    bool Register(CTxIn vin, CService service, CKey key, CPubKey pubKey, CKey keyStormnode, CPubKey pubKeyStormnode, CScript donationAddress, int donationPercentage, std::string &retErrorMessage); 
+    bool RegisterByPubKey(std::string strService, std::string strKeyStormnode, std::string collateralAddress, std::string& errorMessage); // register for a specific collateral address    
+    
     // get 42000DRKSLK input that can be used for the stormnode
     bool GetStormNodeVin(CTxIn& vin, CPubKey& pubkey, CKey& secretKey);
     bool GetStormNodeVin(CTxIn& vin, CPubKey& pubkey, CKey& secretKey, std::string strTxHash, std::string strOutputIndex);

@@ -213,24 +213,30 @@ CStormnode* CStormnodeMan::FindOldestNotInVec(const std::vector<CTxIn> &vVins)
     CStormnode *pOldestStormnode = NULL;
 
     BOOST_FOREACH(CStormnode &sn, vStormnodes)
-    {
+    {   
+        printf(" -- sn %s\n", sn.vin.ToString().c_str());
         sn.Check();
         if(!sn.IsEnabled()) continue;
 
         bool found = false;
         BOOST_FOREACH(const CTxIn& vin, vVins)
             if(sn.vin == vin)
-            {
+            {   
+                printf(" -- sn2 %s\n", vin.ToString().c_str());
                 found = true;
                 break;
             }
 
+        printf(" -- sn %d\n", found);
         if(found) continue;
 
-        if(pOldestStormnode == NULL || pOldestStormnode->GetStormnodeInputAge() < sn.GetStormnodeInputAge())
+        if(pOldestStormnode == NULL || pOldestStormnode->GetStormnodeInputAge() < sn.GetStormnodeInputAge()){
+            printf("got sn %s\n", sn.vin.ToString().c_str());
             pOldestStormnode = &sn;
+        }
     }
 
+    printf(" -- %d\n", pOldestStormnode != NULL);
     return pOldestStormnode;
 }
 
@@ -458,12 +464,12 @@ void CStormnodeMan::ProcessStormnodeConnections()
     }
 }
 
-void CStormnodeMan::RelayStormnodeEntry(const CTxIn vin, const CService addr, const std::vector<unsigned char> vchSig, const int64_t nNow, const CPubKey pubkey, const CPubKey pubkey2, const int count, const int current, const int64_t lastUpdated, const int protocolVersion)
+void CStormnodeMan::RelayStormnodeEntry(const CTxIn vin, const CService addr, const std::vector<unsigned char> vchSig, const int64_t nNow, const CPubKey pubkey, const CPubKey pubkey2, const int count, const int current, const int64_t lastUpdated, const int protocolVersion, CScript donationAddress, int donationPercentage)
 {
     LOCK(cs_vNodes);
     BOOST_FOREACH(CNode* pnode, vNodes)
-        pnode->PushMessage("ssee", vin, addr, vchSig, nNow, pubkey, pubkey2, count, current, lastUpdated, protocolVersion);
-}
+        pnode->PushMessage("ssee", vin, addr, vchSig, nNow, pubkey, pubkey2, count, current, lastUpdated, protocolVersion, donationAddress, donationPercentage);
+ }
 
 void CStormnodeMan::RelayStormnodeEntryPing(const CTxIn vin, const std::vector<unsigned char> vchSig, const int64_t nNow, const bool stop)
 {
@@ -492,11 +498,13 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
         int current;
         int64_t lastUpdated;
         int protocolVersion;
+        CScript donationAddress;
+        int donationPercentage;
         std::string strMessage;
 
-        // 70047 and greater
-        vRecv >> vin >> addr >> vchSig >> sigTime >> pubkey >> pubkey2 >> count >> current >> lastUpdated >> protocolVersion;
-
+        // 60020 and greater
+        vRecv >> vin >> addr >> vchSig >> sigTime >> pubkey >> pubkey2 >> count >> current >> lastUpdated >> protocolVersion >> donationAddress >> donationPercentage;
+ 
         // make sure signature isn't in the future (past is OK)
         if (sigTime > GetAdjustedTime() + 60 * 60) {
             LogPrintf("ssee - Signature rejected, too far into the future %s\n", vin.ToString().c_str());
@@ -509,7 +517,12 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
         std::string vchPubKey(pubkey.begin(), pubkey.end());
         std::string vchPubKey2(pubkey2.begin(), pubkey2.end());
 
-        strMessage = addr.ToString() + boost::lexical_cast<std::string>(sigTime) + vchPubKey + vchPubKey2 + boost::lexical_cast<std::string>(protocolVersion);
+        strMessage = addr.ToString() + boost::lexical_cast<std::string>(sigTime) + vchPubKey + vchPubKey2 + boost::lexical_cast<std::string>(protocolVersion)  + donationAddress.ToString() + boost::lexical_cast<std::string>(donationPercentage);
+
+        if(donationPercentage < 0 || donationPercentage > 100){
+            LogPrintf("ssee - donation percentage out of range %d\n", donationPercentage);
+            return;     
+        }
 
         if(protocolVersion < MIN_SN_PROTO_VERSION) {
             LogPrintf("ssee - ignoring outdated Stormnode %s protocol version %d\n", vin.ToString().c_str(), protocolVersion);
@@ -559,10 +572,12 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
                     psn->sig = vchSig;
                     psn->protocolVersion = protocolVersion;
                     psn->addr = addr;
+                    psn->donationAddress = donationAddress;
+                    psn->donationPercentage = donationPercentage;
                     psn->Check();
                     if(psn->IsEnabled())
-                        snodeman.RelayStormnodeEntry(vin, addr, vchSig, sigTime, pubkey, pubkey2, count, current, lastUpdated, protocolVersion);
-                }
+                        snodeman.RelayStormnodeEntry(vin, addr, vchSig, sigTime, pubkey, pubkey2, count, current, lastUpdated, protocolVersion, donationAddress, donationPercentage);
+                 }
             }
 
             return;
@@ -618,7 +633,7 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
             addrman.Add(CAddress(addr), pfrom->addr, 2*60*60);
 
             // add our stormnode
-            CStormnode sn(addr, vin, pubkey, vchSig, sigTime, pubkey2, protocolVersion);
+            CStormnode sn(addr, vin, pubkey, vchSig, sigTime, pubkey2, protocolVersion, donationAddress, donationPercentage);
             sn.UpdateLastSeen(lastUpdated);
             this->Add(sn);
 
@@ -628,8 +643,8 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
             }
 
             if(count == -1 && !isLocal)
-                snodeman.RelayStormnodeEntry(vin, addr, vchSig, sigTime, pubkey, pubkey2, count, current, lastUpdated, protocolVersion);
-
+                snodeman.RelayStormnodeEntry(vin, addr, vchSig, sigTime, pubkey, pubkey2, count, current, lastUpdated, protocolVersion, donationAddress, donationPercentage);
+ 
         } else {
             LogPrintf("ssee - Rejected Stormnode entry %s\n", addr.ToString().c_str());
 
