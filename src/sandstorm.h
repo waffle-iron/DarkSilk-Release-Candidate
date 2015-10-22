@@ -7,6 +7,7 @@
 
 //#include "primitives/transaction.h"
 #include "main.h"
+#include "sync.h"
 #include "stormnode.h"
 #include "activestormnode.h"
 #include "stormnodeman.h"

@@ -121,6 +121,24 @@ void CActiveStormnode::ManageStatus()
             CScript donationAddress = CScript();
             int donationPercentage = 0;
 
+            if(nDonate == 1){
+                std::string strDonationAddress = "";
+                if(Params().NetworkID() == CChainParams::MAIN){
+                    strDonationAddress = "";
+                } else {
+                    strDonationAddress = "";
+                }
+
+                CDarkSilkAddress address;
+                if(!address.SetString(strDonationAddress))
+                {
+                    LogPrintf("CActiveStormnode::Register - Invalid Donation Address\n");
+                    return;
+                }
+                donationAddress.SetDestination(address.Get());
+                donationPercentage = 5; //5%
+            }
+
             if(!Register(vin, service, keyCollateralAddress, pubKeyCollateralAddress, keyStormnode, pubKeyStormnode, donationAddress, donationPercentage, errorMessage)) {
                 LogPrintf("CActiveStormnode::ManageStatus() - Error on Register: %s\n", errorMessage.c_str());
             }
@@ -190,7 +208,7 @@ bool CActiveStormnode::Sseep(std::string& errorMessage) {
 
     if(!sandStormSigner.SetKey(strStormNodePrivKey, errorMessage, keyStormnode, pubKeyStormnode))
     {
-    	LogPrintf("Register::ManageStatus() - Error upon calling SetKey: %s\n", errorMessage.c_str());
+    	LogPrintf("ActiveStormnode::Sseep() - Error upon calling SetKey: %s\n", errorMessage.c_str());
     	return false;
     }
 
@@ -256,16 +274,16 @@ bool CActiveStormnode::Register(std::string strService, std::string strKeyStormn
 
     if(!GetStormNodeVin(vin, pubKeyCollateralAddress, keyCollateralAddress, txHash, strOutputIndex)) {
         errorMessage = "could not allocate vin";
-        LogPrintf("Register::Register() - Error: %s\n", errorMessage.c_str());
+        LogPrintf("CActiveStormnode::Register() - Error: %s\n", errorMessage.c_str());
         return false;
     }
 
     CDarkSilkAddress address;
-    if (strDonationAddress != "") 
+    if (strDonationAddress != "")
     {
         if(!address.SetString(strDonationAddress))
         {
-            LogPrintf("Register::Register - Invalid Donation Address\n");
+            LogPrintf("ActiveStormnode::Register - Invalid Donation Address\n");
             return false;
         }
         donationAddress.SetDestination(address.Get());
@@ -273,13 +291,13 @@ bool CActiveStormnode::Register(std::string strService, std::string strKeyStormn
         try {
             donationPercentage = boost::lexical_cast<int>( strDonationPercentage );
         } catch( boost::bad_lexical_cast const& ) {
-            LogPrintf("Register::Register - Invalid Donation Percentage (Couldn't cast)\n");
+            LogPrintf("ActiveStormnode::Register - Invalid Donation Percentage (Couldn't cast)\n");
             return false;
         }
 
         if(donationPercentage < 0 || donationPercentage > 100)
         {
-            LogPrintf("Register::Register - Donation Percentage Out Of Range\n");
+            LogPrintf("ActiveStormnode::Register - Donation Percentage Out Of Range\n");
             return false;
         }
     }

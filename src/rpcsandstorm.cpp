@@ -127,7 +127,7 @@ Value stormnode(const Array& params, bool fHelp)
 
     if (fHelp  ||
         (strCommand != "start" && strCommand != "start-alias" && strCommand != "start-many" && strCommand != "stop" && strCommand != "stop-alias" && strCommand != "stop-many" && strCommand != "list" && strCommand != "list-conf" && strCommand != "count"  && strCommand != "enforce"
-            && strCommand != "debug" && strCommand != "current" && strCommand != "winners" && strCommand != "genkey" && strCommand != "connect" && strCommand != "outputs"))
+            && strCommand != "debug" && strCommand != "current" && strCommand != "winners" && strCommand != "genkey" && strCommand != "connect" && strCommand != "outputs" && strCommand != "vote-many" && strCommand != "vote" && strCommand != "donate"))
         throw runtime_error(
                 "stormnode \"command\"... ( \"passphrase\" )\n"
                 "Set of commands to execute stormnode related actions\n"
@@ -150,7 +150,22 @@ Value stormnode(const Array& params, bool fHelp)
                 "  list         - Print list of all known stormnodes (see stormnodelist for more info)\n"
                 "  list-conf    - Print stormnode.conf in JSON format\n"
                 "  winners      - Print list of stormnode winners\n"
+                "  vote-many    - Vote on a DarkSilk initiative\n"
+                "  vote         - Vote on a DarkSilk initiative\n"
+                "  donate       - Donate to support development (yes or no)\n"
                 );
+
+    // *** string returned when no donation mode is set ****
+    std::string strNoDonateModeSet = "";
+    if(nDonate == 0) {
+        strNoDonateModeSet += "---------- Please Support Dash Development! --------------\n\n";
+        strNoDonateModeSet += "Dash now allows you to support future development by redirecting a small part (5%) of your masternode earnings ";
+        strNoDonateModeSet += "to the Darkcoin Foundation, which will be used to pay developers for bringing this project to the next level. ";
+        strNoDonateModeSet += "If you would like to donate, please execute \"masternode donate yes\" then start your node again. To avoid this ";
+        strNoDonateModeSet += "message in the future add \"donate=yes\" or \"donate=no\" to your configuration.\n";
+    }
+    // ********************************************************
+
     if (strCommand == "stop")
     {
         if(!fStormNode) return "you must set stormnode=1 in the configuration";
@@ -313,6 +328,19 @@ Value stormnode(const Array& params, bool fHelp)
         return snodeman.size();
     }
 
+    if (strCommand == "donate")
+    {
+
+        std::string strYesOrNo = params[1].get_str().c_str();
+
+        if(strYesOrNo != "yes" && strYesOrNo != "no") return "You can say 'yes' or 'no'";
+        if(strYesOrNo == "yes") nDonate = 1;
+        if(strYesOrNo == "no") nDonate = -1;
+
+        if(strYesOrNo == "yes") return "Thankyou for supporting the development of DarkSilk! You may now start your stormnode(s).";
+        return "Successfully set donation mode to no. You may now start your stormnode(s).";
+    }
+
     if (strCommand == "start")
     {
         if(!fStormNode) return "you must set stormnode=1 in the configuration";
@@ -332,6 +360,9 @@ Value stormnode(const Array& params, bool fHelp)
                 return "incorrect passphrase";
             }
         }
+
+        //ask user to specify if they would like to support the project
+        if(nDonate == 0) return strNoDonateModeSet;
 
         if(activeStormnode.status != STORMNODE_REMOTELY_ENABLED && activeStormnode.status != STORMNODE_IS_CAPABLE){
             activeStormnode.status = STORMNODE_NOT_PROCESSED; // TODO: consider better way
@@ -377,6 +408,9 @@ Value stormnode(const Array& params, bool fHelp)
 
     	bool found = false;
 
+        //ask user to specify if they would like to support the project
+        if(nDonate == 0) return strNoDonateModeSet;
+
 		Object statusObj;
 		statusObj.push_back(Pair("alias", alias));
 
@@ -384,9 +418,22 @@ Value stormnode(const Array& params, bool fHelp)
     		if(sne.getAlias() == alias) {
     			found = true;
     			std::string errorMessage;
-    			bool result = activeStormnode.Register(sne.getIp(), sne.getPrivKey(), sne.getTxHash(), sne.getOutputIndex(), sne.getDonationAddress(), sne.getDonationPercentage(), errorMessage);
- 
-    			statusObj.push_back(Pair("result", result ? "successful" : "failed"));
+                std::string strDonateAddress = sne.getDonationAddress();
+                std::string strDonationPercentage = sne.getDonationPercentage();
+
+                if(nDonate == 1){
+                    if(Params().NetworkID() == CChainParams::MAIN){
+                        strDonateAddress = "";
+                        strDonationPercentage = "5"; //5%
+                    } else {
+                        strDonateAddress = "";
+                        strDonationPercentage = "5"; //5%
+                    }
+                }
+
+               bool result = activeStormnode.Register(sne.getIp(), sne.getPrivKey(), sne.getTxHash(), sne.getOutputIndex(), strDonateAddress, strDonationPercentage, errorMessage);
+  
+      			statusObj.push_back(Pair("result", result ? "successful" : "failed"));
     			if(!result) {
 					statusObj.push_back(Pair("errorMessage", errorMessage));
 				}
@@ -431,12 +478,28 @@ Value stormnode(const Array& params, bool fHelp)
 
 		Object resultsObj;
 
+        //ask user to specify if they would like to support the project
+        if(nDonate == 0) return strNoDonateModeSet;
+
 		BOOST_FOREACH(CStormnodeConfig::CStormnodeEntry sne, stormnodeConfig.getEntries()) {
 			total++;
 
 			std::string errorMessage;
-			bool result = activeStormnode.Register(sne.getIp(), sne.getPrivKey(), sne.getTxHash(), sne.getOutputIndex(), sne.getDonationAddress(), sne.getDonationPercentage(), errorMessage);
- 
+            std::string strDonateAddress = sne.getDonationAddress();
+            std::string strDonationPercentage = sne.getDonationPercentage();
+
+            if(nDonate == 1){
+                if(Params().NetworkID() == CChainParams::MAIN){
+                    strDonateAddress = "";
+                    strDonationPercentage = "5"; //5%
+                } else {
+                    strDonateAddress = "";
+                    strDonationPercentage = "5"; //5%
+                }
+            }
+
+                bool result = activeStormnode.Register(sne.getIp(), sne.getPrivKey(), sne.getTxHash(), sne.getOutputIndex(), strDonateAddress, strDonationPercentage, errorMessage);
+
 			Object statusObj;
 			statusObj.push_back(Pair("alias", sne.getAlias()));
 			statusObj.push_back(Pair("result", result ? "succesful" : "failed"));
@@ -594,6 +657,91 @@ Value stormnode(const Array& params, bool fHelp)
 
     }
 
+    if(strCommand == "vote-many")
+    {
+        std::vector<CStormnodeConfig::CStormnodeEntry> snEntries;
+        snEntries = stormnodeConfig.getEntries();
+
+        std::string vote = params[1].get_str().c_str();
+        if(vote != "yay" && vote != "nay") return "You can only vote 'yay' or 'nay'";
+        int nVote = 0;
+        if(vote == "yay") nVote = 1;
+        if(vote == "nay") nVote = -1;
+
+
+        Object resultObj;
+
+        BOOST_FOREACH(CStormnodeConfig::CStormnodeEntry sne, stormnodeConfig.getEntries()) {
+            std::string errorMessage;
+            std::vector<unsigned char> vchStormNodeSignature;
+            std::string strStormNodeSignMessage;
+
+            CTxIn vin;
+            CPubKey pubKeyCollateralAddress;
+            CKey keyCollateralAddress;
+            CPubKey pubKeyStormnode;
+            CKey keyStormnode;
+
+            if(!activeStormnode.GetStormNodeVin(vin, pubKeyCollateralAddress, keyCollateralAddress, sne.getTxHash(), sne.getOutputIndex())) {
+                return("could not allocate vin");
+            }
+
+            std::string strMessage = vin.ToString() + boost::lexical_cast<std::string>(nVote);
+
+            if(!sandStormSigner.SetKey(sne.getPrivKey(), errorMessage, keyStormnode, pubKeyStormnode))
+                return(" Error upon calling SetKey");
+
+            if(!sandStormSigner.SignMessage(strMessage, errorMessage, vchStormNodeSignature, keyStormnode))
+                return(" Error upon calling SignMessage");
+
+            if(!sandStormSigner.VerifyMessage(pubKeyStormnode, vchStormNodeSignature, strMessage, errorMessage))
+                return(" Error upon calling VerifyMessage");
+
+            //send to all peers
+            LOCK(cs_vNodes);
+            BOOST_FOREACH(CNode* pnode, vNodes)
+                pnode->PushMessage("svote", vin, vchStormNodeSignature, nVote);
+
+        }
+    }
+
+    if(strCommand == "vote")
+    {
+        std::vector<CStormnodeConfig::CStormnodeEntry> snEntries;
+        snEntries = stormnodeConfig.getEntries();
+
+        std::string vote = params[1].get_str().c_str();
+        if(vote != "yay" && vote != "nay") return "You can only vote 'yay' or 'nay'";
+        int nVote = 0;
+        if(vote == "yay") nVote = 1;
+        if(vote == "nay") nVote = -1;
+
+        // Choose coins to use
+        CPubKey pubKeyCollateralAddress;
+        CKey keyCollateralAddress;
+        CPubKey pubKeyStormnode;
+        CKey keyStormnode;
+
+        std::string errorMessage;
+        std::vector<unsigned char> vchStormNodeSignature;
+        std::string strMessage = activeStormnode.vin.ToString() + boost::lexical_cast<std::string>(nVote);
+
+        if(!sandStormSigner.SetKey(strStormNodePrivKey, errorMessage, keyStormnode, pubKeyStormnode))
+            return(" Error upon calling SetKey");
+
+        if(!sandStormSigner.SignMessage(strMessage, errorMessage, vchStormNodeSignature, keyStormnode))
+            return(" Error upon calling SignMessage");
+
+        if(!sandStormSigner.VerifyMessage(pubKeyStormnode, vchStormNodeSignature, strMessage, errorMessage))
+            return(" Error upon calling VerifyMessage");
+
+        //send to all peers
+        LOCK(cs_vNodes);
+        BOOST_FOREACH(CNode* pnode, vNodes)
+            pnode->PushMessage("svote", activeStormnode.vin, vchStormNodeSignature, nVote);
+
+    }
+
     return Value::null;
 }
 
@@ -607,7 +755,7 @@ Value stormnodelist(const Array& params, bool fHelp)
 
     if (fHelp ||
             (strMode != "active" && strMode != "vin" && strMode != "pubkey" && strMode != "lastseen"
-             && strMode != "activeseconds" && strMode != "rank" && strMode != "protocol" && strMode != "full"))
+             && strMode != "activeseconds" && strMode != "rank" && strMode != "protocol" && strMode != "full" && strMode != "votes" && strMode != "donation"))
     {
         throw runtime_error(
                 "stormnodelist ( \"mode\" \"filter\" )\n"
@@ -624,6 +772,8 @@ Value stormnodelist(const Array& params, bool fHelp)
                 "  pubkey         - Print public key associated with a stormnode (can be additionally filtered, partial match)\n"
                 "  rank           - Print rank of a stormnode based on current block\n"
                 "  vin            - Print vin associated with a stormnode (can be additionally filtered, partial match)\n"
+                "  votes          - Print all stormnode votes for a DarkSilk initiative\n"
+                "  donation       - Show donation settings\n"
                 );
     }
 
@@ -636,6 +786,22 @@ Value stormnodelist(const Array& params, bool fHelp)
             if(strFilter !="" && strFilter != boost::lexical_cast<std::string>(sn.IsEnabled()) &&
                 sn.addr.ToString().find(strFilter) == string::npos) continue;
             obj.push_back(Pair(strAddr,       (int)sn.IsEnabled()));
+            } else if (strMode == "donation") {
+                CTxDestination address1;
+                ExtractDestination(sn.donationAddress, address1);
+                CDarkSilkAddress address2(address1);
+
+                if(strFilter !="" && address2.ToString().find(strFilter) == string::npos &&
+                    strAddr.find(strFilter) == string::npos) continue;
+
+                std::string strOut = "";
+
+                if(sn.donationPercentage != 0){
+                    strOut = address2.ToString().c_str();
+                    strOut += ":";
+                    strOut += boost::lexical_cast<std::string>(sn.donationPercentage);
+                }
+                obj.push_back(Pair(strAddr,       strOut.c_str()));
         } else if (strMode == "vin") {
             if(strFilter !="" && sn.vin.prevout.hash.ToString().find(strFilter) == string::npos &&
                 sn.addr.ToString().find(strFilter) == string::npos) continue;
@@ -657,6 +823,16 @@ Value stormnodelist(const Array& params, bool fHelp)
         } else if (strMode == "lastseen") {
             if(strFilter !="" && sn.addr.ToString().find(strFilter) == string::npos) continue;
             obj.push_back(Pair(strAddr,       (int64_t)sn.lastTimeSeen));
+            } else if(strMode == "votes"){
+                if(strFilter !="" && strFilter != (sn.IsEnabled() ? "true" : "false") &&
+                    strAddr.find(strFilter) == string::npos) continue;
+
+                std::string strStatus = "ABSTAIN";
+
+                if(sn.nVote == -1) strStatus = "NAY";
+                if(sn.nVote == 1) strStatus = "YAY";
+
+                obj.push_back(Pair(strAddr,       strStatus.c_str()));
         } else if (strMode == "activeseconds") {
             if(strFilter !="" && sn.addr.ToString().find(strFilter) == string::npos) continue;
             obj.push_back(Pair(strAddr,       (int64_t)(sn.lastTimeSeen - sn.sigTime)));

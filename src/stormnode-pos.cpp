@@ -77,17 +77,23 @@ void ProcessMessageStormnodePOS(CNode* pfrom, std::string& strCommand, CDataStre
             return;
         }
 
+        int nBlockHeight = pindexBest->nHeight;
+        if(nBlockHeight - snse.nBlockHeight > 10){
+            LogPrintf("StormnodePOS::snse - Too old\n");
+            return;   
+        }
+
         // Lowest stormnodes in rank check the highest each block
         int a = snodeman.GetStormnodeRank(snse.vinStormnodeA, snse.nBlockHeight, MIN_STORMNODE_POS_PROTO_VERSION);
-        if(a > GetCountScanningPerBlock())
+        if(a == -1 || a > GetCountScanningPerBlock())
         {
             LogPrintf("StormnodePOS::snse - StormnodeA ranking is too high\n");
             return;
         }
 
         int b = snodeman.GetStormnodeRank(snse.vinStormnodeB, snse.nBlockHeight, MIN_STORMNODE_POS_PROTO_VERSION, false);
-        if(b < snodeman.CountStormnodesAboveProtocol(MIN_STORMNODE_POS_PROTO_VERSION)-GetCountScanningPerBlock())
-        {
+        if(b == -1 || b < snodeman.CountStormnodesAboveProtocol(MIN_STORMNODE_POS_PROTO_VERSION)-GetCountScanningPerBlock())
+         {
             LogPrintf("StormnodePOS::snse - StormnodeB ranking is too low\n");
             return;
         }
@@ -138,28 +144,30 @@ void CStormnodeScanning::DoStormnodePOSChecks()
     if(!IsSporkActive(SPORK_7_STORMNODE_SCANNING)) return;
     if(IsInitialBlockDownload()) return;
 
-    int a = snodeman.GetStormnodeRank(activeStormnode.vin, pindexBest->nHeight, MIN_STORMNODE_POS_PROTO_VERSION);
-    if(a > GetCountScanningPerBlock()){
+    int nBlockHeight = pindexBest->nHeight-5;
+
+    int a = snodeman.GetStormnodeRank(activeStormnode.vin, nBlockHeight, MIN_STORMNODE_POS_PROTO_VERSION);
+    if(a == -1 || a > GetCountScanningPerBlock()){
         // we don't need to do anything this block
         return;
     }
 
     // The lowest ranking nodes (Stormnode A) check the highest ranking nodes (Stormnode B)
-    CStormnode* psn = snodeman.GetStormnodeByRank(snodeman.CountStormnodesAboveProtocol(MIN_STORMNODE_POS_PROTO_VERSION)-a, pindexBest->nHeight, MIN_STORMNODE_POS_PROTO_VERSION, false);
+    CStormnode* psn = snodeman.GetStormnodeByRank(snodeman.CountStormnodesAboveProtocol(MIN_STORMNODE_POS_PROTO_VERSION)-a, nBlockHeight, MIN_STORMNODE_POS_PROTO_VERSION, false);
     if(psn == NULL) return;
 
     // -- first check : Port is open
 
     if(!ConnectNode((CAddress)psn->addr, NULL, true)){
         // we couldn't connect to the node, let's send a scanning error
-        CStormnodeScanningError snse(activeStormnode.vin, psn->vin, SCANNING_ERROR_NO_RESPONSE, pindexBest->nHeight);
+        CStormnodeScanningError snse(activeStormnode.vin, psn->vin, SCANNING_ERROR_NO_RESPONSE, nBlockHeight);
         snse.Sign();
         mapStormnodeScanningErrors.insert(make_pair(snse.GetHash(), snse));
         snse.Relay();
     }
 
     // success
-    CStormnodeScanningError snse(activeStormnode.vin, psn->vin, SCANNING_SUCCESS, pindexBest->nHeight);
+    CStormnodeScanningError snse(activeStormnode.vin, psn->vin, SCANNING_SUCCESS, nBlockHeight);
     snse.Sign();
     mapStormnodeScanningErrors.insert(make_pair(snse.GetHash(), snse));
     snse.Relay();

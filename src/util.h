@@ -131,6 +131,7 @@ extern std::string strStormNodeAddr;
 extern int keysLoaded;
 extern bool fSucessfullyLoaded;
 extern std::vector<int64_t> sandStormDenominations;
+extern int nDonate;
 
 extern bool fDebug;
 extern bool fDebugSmsg;

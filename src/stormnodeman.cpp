@@ -1,4 +1,5 @@
 #include "stormnodeman.h"
+#include "stormnode.h"
 #include "activestormnode.h"
 #include "sandstorm.h"
 #include "core.h"
@@ -375,6 +376,10 @@ int CStormnodeMan::GetStormnodeRank(const CTxIn& vin, int64_t nBlockHeight, int 
 {
     std::vector<pair<unsigned int, CTxIn> > vecStormnodeScores;
 
+    //make sure we know about this block
+    uint256 hash = 0;
+    if(!GetBlockHash(hash, nBlockHeight)) return -1;
+
     // scan for winner
     BOOST_FOREACH(CStormnode& sn, vStormnodes) {
 
@@ -403,6 +408,43 @@ int CStormnodeMan::GetStormnodeRank(const CTxIn& vin, int64_t nBlockHeight, int 
     }
 
     return -1;
+}
+
+std::vector<pair<int, CStormnode> > CStormnodeMan::GetStormnodeRanks(int64_t nBlockHeight, int minProtocol)
+{
+    std::vector<pair<unsigned int, CStormnode> > vecStormnodeScores;
+    std::vector<pair<int, CStormnode> > vecStormnodeRanks;
+
+    //make sure we know about this block
+    uint256 hash = 0;
+    if(!GetBlockHash(hash, nBlockHeight)) return vecStormnodeRanks;
+
+    // scan for winner
+    BOOST_FOREACH(CStormnode& sn, vStormnodes) {
+
+        sn.Check();
+
+        if(sn.protocolVersion < minProtocol) continue;
+        if(!sn.IsEnabled()) {
+            continue;
+        }
+
+        uint256 n = sn.CalculateScore(1, nBlockHeight);
+        unsigned int n2 = 0;
+        memcpy(&n2, &n, sizeof(n2));
+
+        vecStormnodeScores.push_back(make_pair(n2, sn));
+    }
+
+    sort(vecStormnodeScores.rbegin(), vecStormnodeScores.rend(), CompareValueOnlySN());
+
+    int rank = 0;
+    BOOST_FOREACH (PAIRTYPE(unsigned int, CStormnode)& s, vecStormnodeScores){
+        rank++;
+        vecStormnodeRanks.push_back(make_pair(rank, s.second));
+    }
+
+    return vecStormnodeRanks;
 }
 
 CStormnode* CStormnodeMan::GetStormnodeByRank(int nRank, int64_t nBlockHeight, int minProtocol, bool fOnlyActive)
@@ -723,6 +765,40 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
         pfrom->PushMessage("sseg", vin);
         int64_t askAgain = GetTime() + STORMNODE_MIN_SSEEP_SECONDS;
         mWeAskedForStormnodeListEntry[vin.prevout] = askAgain;
+
+    } else if (strCommand == "svote") { //Stormnode Vote
+
+        CTxIn vin;
+        vector<unsigned char> vchSig;
+        int nVote;
+        vRecv >> vin >> vchSig >> nVote;
+
+        // see if we have this Stormnode
+        CStormnode* psn = this->Find(vin);
+        if(psn != NULL)
+        {
+            if((GetAdjustedTime() - psn->lastVote) > (60*60))
+            {
+                std::string strMessage = vin.ToString() + boost::lexical_cast<std::string>(nVote);
+
+                std::string errorMessage = "";
+                if(!sandStormSigner.VerifyMessage(psn->pubkey2, vchSig, strMessage, errorMessage))
+                {
+                    LogPrintf("svote - Got bad Stormnode address signature %s \n", vin.ToString().c_str());
+                    return;
+                }
+
+                psn->nVote = nVote;
+                psn->lastVote = GetAdjustedTime();
+
+                //send to all peers
+                LOCK(cs_vNodes);
+                BOOST_FOREACH(CNode* pnode, vNodes)
+                    pnode->PushMessage("svote", vin, vchSig, nVote);
+            }
+
+            return;
+        }
 
     } else if (strCommand == "sseg") { //Get stormnode list or specific entry
 

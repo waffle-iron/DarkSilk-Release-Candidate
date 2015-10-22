@@ -3,6 +3,7 @@
 #include "sandstorm.h"
 #include "core.h"
 #include "main.h"
+#include "sync.h"
 #include "util.h"
 #include "addrman.h"
 #include <boost/lexical_cast.hpp>
@@ -136,6 +137,8 @@ CStormnode::CStormnode()
     nLastSsq = 0;
     donationAddress = CScript();
     donationPercentage = 0;
+    nVote = 0;
+    lastVote = 0;
 }
 
 CStormnode::CStormnode(const CStormnode& other)
@@ -158,6 +161,8 @@ CStormnode::CStormnode(const CStormnode& other)
     nLastSsq = other.nLastSsq;
     donationAddress = other.donationAddress;
     donationPercentage = other.donationPercentage;
+    nVote = other.nVote;
+    lastVote = other.lastVote;
 }
 
 CStormnode::CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::vector<unsigned char> newSig, int64_t newSigTime, CPubKey newPubkey2, int protocolVersionIn, CScript newDonationAddress, int newDonationPercentage)
@@ -197,7 +202,7 @@ uint256 CStormnode::CalculateScore(int mod, int64_t nBlockHeight)
     if(!GetBlockHash(hash, nBlockHeight)) return 0;
 
     uint256 hash2 = Hash(BEGIN(hash), END(hash));
-    uint256 hash3 = Hash(BEGIN(hash), END(aux));
+    uint256 hash3 = Hash(BEGIN(hash), END(hash), BEGIN(aux), END(aux));
 
     uint256 r = (hash3 > hash2 ? hash3 - hash2 : hash2 - hash3);
 
@@ -206,7 +211,9 @@ uint256 CStormnode::CalculateScore(int mod, int64_t nBlockHeight)
 
 void CStormnode::Check()
 {
-    LOCK(cs_main);
+    //TODO: Random segfault with this line removed
+    TRY_LOCK(cs_main, lockRecv);
+    if(!lockRecv) return;
 
     if(nScanningErrorCount >= STORMNODE_SCANNING_ERROR_THESHOLD) 
     {
@@ -389,7 +396,7 @@ bool CStormnodePayments::ProcessBlock(int nBlockHeight)
 
     uint256 hash;
     if(!GetBlockHash(hash, nBlockHeight-10)) return false;
-    int nHash;
+    unsigned int nHash;
     memcpy(&hash, &nHash, 2);
 
     std::vector<CTxIn> vecLastPayments;
@@ -409,7 +416,7 @@ bool CStormnodePayments::ProcessBlock(int nBlockHeight)
         newWinner.nBlockHeight = nBlockHeight;
         newWinner.vin = psn->vin;
 
-        if(psn->donationPercentage > 0 && nHash % 100 > psn->donationPercentage){
+        if(psn->donationPercentage > 0 && (nHash % 100) <= psn->donationPercentage) {
             newWinner.payee.SetDestination(psn->pubkey.GetID());
         } else {
             newWinner.payee.SetDestination(psn->donationAddress.GetID());
@@ -432,7 +439,7 @@ bool CStormnodePayments::ProcessBlock(int nBlockHeight)
                 newWinner.vin = psn->vin;
                 newWinner.payee.SetDestination(psn->pubkey.GetID());
 
-                if(psn->donationPercentage > 0 && nHash % 100 < psn->donationPercentage){
+                if(psn->donationPercentage > 0 && (nHash % 100) <= psn->donationPercentage) {
                     newWinner.payee.SetDestination(psn->pubkey.GetID());
                 } else {
                     newWinner.payee.SetDestination(psn->donationAddress.GetID());

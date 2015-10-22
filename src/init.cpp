@@ -907,13 +907,20 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     MarketInit();
     
-    // ********************************************************* Step 11: start node
+    // ********************************************************* Step 11: start SandStorm
 
     if (!CheckDiskSpace())
         return false;
 
     if (!strErrors.str().empty())
         return InitError(strErrors.str());
+
+    std::string strDonate = GetArg("-donate", "");
+    if(strDonate != ""){
+        if(strDonate == "yes" || strDonate == "true") nDonate = 1;
+        else if(strDonate == "no" || strDonate == "false") nDonate = -1;
+        else return InitError("Invalid donate mode, must be yes or no: " + strDonate);
+    }
 
     uiInterface.InitMessage(_("Loading Stormnode cache..."));
 

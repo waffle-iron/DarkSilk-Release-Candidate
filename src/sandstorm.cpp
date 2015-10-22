@@ -106,7 +106,8 @@ void CSandstormPool::ProcessMessageSandstorm(CNode* pfrom, std::string& strComma
             return;
         }
     } else if (strCommand == "ssq") { //SandStorm Queue
-        LOCK(cs_sandstorm);
+        TRY_LOCK(cs_sandstorm, lockRecv);
+        if(!lockRecv) return;
 
         if (pfrom->nVersion < MIN_SANDSTORM_PROTO_VERSION) {
             return;
@@ -201,7 +202,7 @@ void CSandstormPool::ProcessMessageSandstorm(CNode* pfrom, std::string& strComma
             For added DDOS protection, clients can only relay through 20 nodes per block.
         */
         int rank = snodeman.GetStormnodeRank(activeStormnode.vin, ssr.nBlockHeight, MIN_SANDSTORM_PROTO_VERSION);
-        if(rank > 20){
+        if(rank == 1 || rank > 20){
             LogPrintf("ssr -- invalid relay Stormnode! %s \n", activeStormnode.vin.ToString().c_str());
             return;
         }
@@ -648,6 +649,7 @@ void CSandstormPool::SetNull(bool clearEverything){
         sessionID = 0;
     }
 
+    nTrickleInputsOutputs = INT_MAX;
     Downgrade();
 
     // -- seed random number generator (used for ordering output lists)
@@ -2559,7 +2561,6 @@ void CSandstormPool::RelayCompletedTransaction(const int sessionID, const bool e
 }
 
 bool CSSAnonTx::AddOutput(const CTxOut out){
-    LOCK(cs_sandstorm);
 
     if(fDebug) LogPrintf("CSSAnonTx::AddOutput -- new  %s\n", out.ToString().substr(0,24).c_str());
 
@@ -2576,7 +2577,7 @@ bool CSSAnonTx::AddOutput(const CTxOut out){
 }
 
 bool CSSAnonTx::AddInput(const CTxIn in){
-    LOCK(cs_sandstorm);
+
     if(fDebug) LogPrintf("CSSAnonTx::AddInput -- new  %s\n", in.ToString().substr(0,24).c_str());
 
     //already have this input
@@ -2592,7 +2593,6 @@ bool CSSAnonTx::AddInput(const CTxIn in){
 }
 
 bool CSSAnonTx::ClearSigs(){
-    LOCK(cs_sandstorm);
 
     BOOST_FOREACH(CTxSSIn& in, vin)
         in.scriptSig = CScript();
@@ -2601,7 +2601,7 @@ bool CSSAnonTx::ClearSigs(){
 }
 
 bool CSSAnonTx::AddSig(const CTxIn newIn){
-    LOCK(cs_sandstorm);
+
     if(fDebug) LogPrintf("CSSAnonTx::AddSig -- new  %s\n", newIn.ToString().substr(0,24).c_str());
 
     BOOST_FOREACH(CTxSSIn& in, vin){

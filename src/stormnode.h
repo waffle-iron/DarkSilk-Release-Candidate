@@ -63,6 +63,7 @@ void ProcessStormnodeConnections();
 
 
 void ProcessMessageStormnodePayments(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
+bool GetBlockHash(uint256& hash, int nBlockHeight);
 
 //
 // The Stormnode Class. For managing the sandstorm process. It contains the input of the 1000DRK, signature to prove
@@ -102,6 +103,8 @@ public:
     int64_t nLastSsq; //the ssq count from the last ssq broadcast of this node
     int nScanningErrorCount;
     int nLastScanningErrorBlockHeight;
+    int nVote;
+    int64_t lastVote;
 
     CStormnode();
     CStormnode(const CStormnode& other);
