@@ -119,11 +119,7 @@ void CActiveStormnode::ManageStatus()
 
             /* donations are not supported in darksilk.conf */
             CScript donationAddress = CScript();
-            int donationPercentage = 50;
-
-            CDarkSilkAddress address;
-            address.SetString("D9ZWKmSJcdoYMdyTvoazDCyMtx4qYDbhfM");
-            donationAddress.SetDestination(address.Get());
+            int donationPercentage = 0;
 
             if(!Register(vin, service, keyCollateralAddress, pubKeyCollateralAddress, keyStormnode, pubKeyStormnode, donationAddress, donationPercentage, errorMessage)) {
                 LogPrintf("CActiveStormnode::ManageStatus() - Error on Register: %s\n", errorMessage.c_str());
