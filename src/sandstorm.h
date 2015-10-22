@@ -40,9 +40,8 @@ class CActiveStormnode;
 #define STORMNODE_REJECTED                    0
 #define STORMNODE_RESET                       -1
 
-#define SANDSTORM_QUEUE_TIMEOUT                 180
-#define SANDSTORM_SIGNING_TIMEOUT               30
-#define SANDSTORM_DOWNGRADE_TIMEOUT             60
+#define SANDSTORM_QUEUE_TIMEOUT                 30
+#define SANDSTORM_SIGNING_TIMEOUT               15
 
 // used for anonymous relaying of inputs/outputs/sigs
 #define SANDSTORM_RELAY_IN                 1
@@ -78,6 +77,7 @@ public:
         prevPubKey = in.prevPubKey;
         nSequence = in.nSequence;
         nSentTimes = 0;
+        fHasSig = false;
     }
 };
 
@@ -98,7 +98,6 @@ public:
 };
 
 // A clients transaction in the sandstorm pool
-// -- holds the input/output mapping for each user in the pool
 class CSandStormEntry
 {
 public:
@@ -135,6 +134,22 @@ public:
         return true;
     }
 
+    bool AddSig(const CTxIn& vin)
+    {
+        BOOST_FOREACH(CTxSSIn& s, sev) {
+            if(s.prevout == vin.prevout && s.nSequence == vin.nSequence){
+                if(s.fHasSig){return false;}
+                s.scriptSig = vin.scriptSig;
+                s.prevPubKey = vin.prevPubKey;
+                s.fHasSig = true;
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     bool IsExpired()
     {
         return (GetTime() - addedTime) > SANDSTORM_QUEUE_TIMEOUT;// 120 seconds
@@ -154,21 +169,12 @@ public:
     bool ready; //ready for submit
     std::vector<unsigned char> vchSig;
     
-    //information used for the anonymous relay system
-    int nBlockHeight;
-    std::vector<unsigned char> vchRelaySig;
-    std::string strSharedKey;
-
-
     CSandstormQueue()
     {
         nDenom = 0;
         vin = CTxIn();
         time = 0;
         vchSig.clear();
-        vchRelaySig.clear();
-        nBlockHeight = 0;
-        strSharedKey = "";
         ready = false;
     }
 
@@ -183,12 +189,6 @@ public:
         READWRITE(time);
         READWRITE(ready);
         READWRITE(vchSig);
-
-        if(ready){
-            READWRITE(vchRelaySig);
-            READWRITE(nBlockHeight);
-            READWRITE(strSharedKey);
-        }
     }
 
     bool GetAddress(CService &addr)
@@ -213,7 +213,6 @@ public:
         return false;
     }
 
-    void SetSharedKey(std::string strSharedKey);
     bool Sign();
     bool Relay();
 
@@ -249,23 +248,6 @@ public:
 };
 
 //
-// Build a transaction anonymously
-//
-class CSSAnonTx
-{
-public:
-    std::vector<CTxSSIn> vin;
-    std::vector<CTxOut> vout;
-
-    bool IsTransactionValid();
-    bool AddOutput(const CTxOut out);
-    bool AddInput(const CTxIn in);
-    bool ClearSigs();
-    bool AddSig(const CTxIn in);
-    int CountEntries() {return (int)vin.size() + (int)vout.size();}
-};
-
-//
 // Used to keep track of current status of sandstorm pool
 //
 class CSandstormPool
@@ -279,10 +261,6 @@ public:
     std::vector<CSandStormEntry> entries;
     // the finalized transaction ready for signing
     CTransaction finalTransaction;
-    // anonymous inputs/outputs
-    CSSAnonTx anonTx;
-    bool fSubmitAnonymousFailed;
-    int nCountAttempts;
 
     int64_t lastTimeChanged;
     int64_t lastAutoDenomination;
@@ -321,12 +299,6 @@ public:
     //debugging data
     std::string strAutoDenomResult;
 
-    // used for securing the anonymous relay system
-    vector<unsigned char> vchStormnodeRelaySig;
-    int nStormnodeBlockHeight;
-    std::string strStormnodeSharedKey;
-    int nTrickleInputsOutputs;
-
     CSandstormPool()
     {
         /* SandStorm uses collateral addresses to trust parties entering the pool
@@ -338,8 +310,7 @@ public:
         txCollateral = CTransaction();
         minBlockSpacing = 1;
         lastNewBlock = 0;
-        strStormnodeSharedKey = "";
-        nTrickleInputsOutputs = 0;
+
 
         SetNull();
     }
@@ -359,8 +330,7 @@ public:
 
     bool SetCollateralAddress(std::string strAddress);
     void Reset();
-    bool Downgrade();
-    bool TrickleInputsOutputs();
+
     void SetNull(bool clearEverything=false);
 
     void UnlockCoins();
@@ -455,16 +425,7 @@ public:
     bool IsCollateralValid(const CTransaction& txCollateral);
     // add a clients entry to the pool
     bool AddEntry(const std::vector<CTxIn>& newInput, const int64_t& nAmount, const CTransaction& txCollateral, const std::vector<CTxOut>& newOutput, std::string& error);
-    // add an anonymous output/inputs/sig
-    bool AddAnonymousOutput(const CTxOut& out) {return anonTx.AddOutput(out);}
-    bool AddAnonymousInput(const CTxIn& in) {return anonTx.AddInput(in);}
-    bool AddAnonymousSig(const CTxIn& in) {return anonTx.AddSig(in);}
-    bool AddRelaySignature(vector<unsigned char> vchStormnodeRelaySigIn, int nStormnodeBlockHeightIn, std::string strSharedKey) {
-        vchStormnodeRelaySig = vchStormnodeRelaySigIn;
-        nStormnodeBlockHeight = nStormnodeBlockHeightIn;
-        strStormnodeSharedKey = strSharedKey;
-        return true;
-    }
+
     
     // add signature to a vin
     bool AddScriptSig(const CTxIn& newVin);

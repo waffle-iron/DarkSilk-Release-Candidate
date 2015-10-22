@@ -408,6 +408,7 @@ bool CStormnodePayments::ProcessBlock(int nBlockHeight)
     if(!enabled) return false;
     CStormnodePaymentWinner newWinner;
     int nMinimumAge = snodeman.CountEnabled();
+    CScript payeeSource;
 
     uint256 hash;
     if(!GetBlockHash(hash, nBlockHeight-10)) return false;
@@ -420,8 +421,7 @@ bool CStormnodePayments::ProcessBlock(int nBlockHeight)
     BOOST_REVERSE_FOREACH(CStormnodePaymentWinner& winner, vWinning)
     {
         //if we already have the same vin - we have one full payment cycle, break
-        if(vecLastPayments.size() > 0
-                && std::find(vecLastPayments.begin(), vecLastPayments.end(), winner.vin) != vecLastPayments.end()) break;
+        if(vecLastPayments.size() > nMinimumAge) break;
         vecLastPayments.push_back(winner.vin);
     }
 
@@ -429,6 +429,8 @@ bool CStormnodePayments::ProcessBlock(int nBlockHeight)
     CStormnode *psn = snodeman.FindOldestNotInVec(vecLastPayments, nMinimumAge, 0);
     if(psn != NULL)
     {
+        LogPrintf(" Found by FindOldestNotInVec \n");
+
         newWinner.score = 0;
         newWinner.nBlockHeight = nBlockHeight;
         newWinner.vin = psn->vin;
@@ -438,11 +440,15 @@ bool CStormnodePayments::ProcessBlock(int nBlockHeight)
         } else {
             newWinner.payee.SetDestination(psn->donationAddress.GetID());
         }
+
+        payeeSource.SetDestination(psn->pubkey.GetID());
     }
 
     //if we can't find new SN to get paid, pick the first active SN counting back from the end of vecLastPayments list
     if(newWinner.nBlockHeight == 0 && nMinimumAge > 0)
-    {
+    {   
+        LogPrintf(" Find by reverse \n");
+
         BOOST_REVERSE_FOREACH(CTxIn& vinLP, vecLastPayments)
         {
             CStormnode* psn = snodeman.Find(vinLP);
@@ -462,6 +468,8 @@ bool CStormnodePayments::ProcessBlock(int nBlockHeight)
                     newWinner.payee.SetDestination(psn->donationAddress.GetID());
                 }
 
+                payeeSource.SetDestination(psn->pubkey.GetID());
+
                 break; // we found active SN
             }
         }
@@ -473,8 +481,12 @@ bool CStormnodePayments::ProcessBlock(int nBlockHeight)
     ExtractDestination(newWinner.payee, address1);
     CDarkSilkAddress address2(address1);
 
-    LogPrintf("Winner payee %s nHeight %d. \n", address2.ToString().c_str(), newWinner.nBlockHeight);
+    CTxDestination address3;
+    ExtractDestination(payeeSource, address3);
+    CDarkSilkAddress address4(address3);
 
+    LogPrintf("Winner payee %s nHeight %d vin source %s. \n", address2.ToString().c_str(), newWinner.nBlockHeight, address4.ToString().c_str());
+ 
     if(Sign(newWinner))
     {
         if(AddWinningStormnode(newWinner))
@@ -487,6 +499,7 @@ bool CStormnodePayments::ProcessBlock(int nBlockHeight)
 
     return false;
 }
+
 
 void CStormnodePayments::Relay(CStormnodePaymentWinner& winner)
 {

@@ -2018,7 +2018,6 @@ bool CWallet::SelectCoins(int64_t nTargetValue, unsigned int nSpendTime, set<pai
         // Make outputs by looping through denominations, from large to small
         BOOST_FOREACH(int64_t v, sandStormDenominations)
         {
-            int added = 0;
             BOOST_FOREACH(const COutput& out, vCoins)
             {
                 if(out.tx->vout[out.i].nValue == v                                            //make sure it's the denom we're looking for
@@ -2105,16 +2104,15 @@ struct CompareByPriority
     }
 };
 
-bool CWallet::SelectCoinsByDenominations(int nDenom, int64_t nValueMin, int64_t nValueMax, std::vector<CTxIn>& setCoinsRet, vector<COutput>& setCoinsRet2, int64_t& nValueRet, int nSandstormRoundsMin, int nSandstormRoundsMax)
+bool CWallet::SelectCoinsByDenominations(int nDenom, int64_t nValueMin, int64_t nValueMax, std::vector<CTxIn>& vCoinsRet, std::vector<COutput>& vCoinsRet2, int64_t& nValueRet, int nSandstormRoundsMin, int nSandstormRoundsMax)
 {
-    setCoinsRet.clear();
+    vCoinsRet.clear();
     nValueRet = 0;
 
-    setCoinsRet2.clear();
+    vCoinsRet2.clear();
     vector<COutput> vCoins;
-    AvailableCoins(vCoins);
+    AvailableCoins(vCoins, true, NULL, ONLY_DENOMINATED);
 
-    //order the array so largest nondenom are first, then denominations, then very small inputs
     std::random_shuffle(vCoins.rbegin(), vCoins.rend());
 
     //keep track of each denomination that we have
@@ -2140,9 +2138,8 @@ bool CWallet::SelectCoinsByDenominations(int nDenom, int64_t nValueMin, int64_t 
 
     BOOST_FOREACH(const COutput& out, vCoins)
     {
-        //there's no reason to allow inputs less than 1 COIN into SS (other than denominations smaller than that amount)
-        if(out.tx->vout[out.i].nValue < 1*COIN && !IsDenominatedAmount(out.tx->vout[out.i].nValue)) continue;
-        if(fStormNode && out.tx->vout[out.i].nValue == 42000*COIN) continue; //stormnode input
+        // stormnode-like input should not be selected by AvailableCoins now anyway
+        //if(out.tx->vout[out.i].nValue == 1000*COIN) continue;
         if(nValueRet + out.tx->vout[out.i].nValue <= nValueMax){
             bool fAccepted = false;
 
@@ -2166,7 +2163,7 @@ bool CWallet::SelectCoinsByDenominations(int nDenom, int64_t nValueMin, int64_t 
                     nValueMax -= (rand() % (nValueMax/5));
                     //on average use 50% of the inputs or less
                     int r = (rand() % (int)vCoins.size());
-                    if((int)setCoinsRet.size() > r) return true;
+                    if((int)vCoinsRet.size() > r) return true;
                 }
                 //Denomination criterion has been met, we can take any matching denominations
                 if((nDenom & (1 << 0)) && out.tx->vout[out.i].nValue ==      ((100000*COIN)    +100000000)) {fAccepted = true;}
@@ -2190,8 +2187,8 @@ bool CWallet::SelectCoinsByDenominations(int nDenom, int64_t nValueMin, int64_t 
 
             vin.prevPubKey = out.tx->vout[out.i].scriptPubKey; // the inputs PubKey
             nValueRet += out.tx->vout[out.i].nValue;
-            setCoinsRet.push_back(vin);
-            setCoinsRet2.push_back(out);
+            vCoinsRet.push_back(vin);
+            vCoinsRet2.push_back(out);
         }
     }
 

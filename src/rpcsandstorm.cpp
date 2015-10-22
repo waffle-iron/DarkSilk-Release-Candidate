@@ -608,12 +608,17 @@ Value stormnode(const Array& params, bool fHelp)
         std::vector<CStormnodeConfig::CStormnodeEntry> snEntries;
         snEntries = stormnodeConfig.getEntries();
 
+        if (params.size() != 2)
+            throw runtime_error("You can only vote 'yea' or 'nay'");
+
         std::string vote = params[1].get_str().c_str();
         if(vote != "yay" && vote != "nay") return "You can only vote 'yay' or 'nay'";
         int nVote = 0;
         if(vote == "yay") nVote = 1;
         if(vote == "nay") nVote = -1;
 
+        int success = 0;
+        int failed = 0;
 
         Object resultObj;
 
@@ -628,33 +633,52 @@ Value stormnode(const Array& params, bool fHelp)
             CPubKey pubKeyStormnode;
             CKey keyStormnode;
 
-            if(!activeStormnode.GetStormNodeVin(vin, pubKeyCollateralAddress, keyCollateralAddress, sne.getTxHash(), sne.getOutputIndex())) {
-                return("could not allocate vin");
+            if(!sandStormSigner.SetKey(sne.getPrivKey(), errorMessage, keyStormnode, pubKeyStormnode)){
+                printf(" Error upon calling SetKey for %s\n", sne.getAlias().c_str());
+                failed++;
+                continue;
+            }
+            
+            CStormnode* psn = snodeman.Find(pubKeyStormnode);
+            if(psn == NULL)
+            {
+                printf("Can't find stormnode by pubkey for %s\n", sne.getAlias().c_str());
+                failed++;
+                continue;
             }
 
-            std::string strMessage = vin.ToString() + boost::lexical_cast<std::string>(nVote);
+            std::string strMessage = psn->vin.ToString() + boost::lexical_cast<std::string>(nVote);
 
-            if(!sandStormSigner.SetKey(sne.getPrivKey(), errorMessage, keyStormnode, pubKeyStormnode))
-                return(" Error upon calling SetKey");
+            if(!sandStormSigner.SignMessage(strMessage, errorMessage, vchStormNodeSignature, keyStormnode)){
+                printf(" Error upon calling SignMessage for %s\n", sne.getAlias().c_str());
+                failed++;
+                continue;
+            }
 
-            if(!sandStormSigner.SignMessage(strMessage, errorMessage, vchStormNodeSignature, keyStormnode))
-                return(" Error upon calling SignMessage");
+            if(!sandStormSigner.VerifyMessage(pubKeyStormnode, vchStormNodeSignature, strMessage, errorMessage)){
+                printf(" Error upon calling VerifyMessage for %s\n", sne.getAlias().c_str());
+                failed++;
+                continue;
+            }
 
-            if(!sandStormSigner.VerifyMessage(pubKeyStormnode, vchStormNodeSignature, strMessage, errorMessage))
-                return(" Error upon calling VerifyMessage");
+            success++;
 
             //send to all peers
             LOCK(cs_vNodes);
             BOOST_FOREACH(CNode* pnode, vNodes)
-                pnode->PushMessage("svote", vin, vchStormNodeSignature, nVote);
-
+                pnode->PushMessage("svote", psn->vin, vchStormNodeSignature, nVote);
         }
-    }
+
+        return("Voted successfully " + boost::lexical_cast<std::string>(success) + " time(s) and failed " + boost::lexical_cast<std::string>(failed) + " time(s).");
+     }
 
     if(strCommand == "vote")
     {
         std::vector<CStormnodeConfig::CStormnodeEntry> snEntries;
         snEntries = stormnodeConfig.getEntries();
+
+        if (params.size() != 2)
+            throw runtime_error("You can only vote 'yea' or 'nay'");
 
         std::string vote = params[1].get_str().c_str();
         if(vote != "yay" && vote != "nay") return "You can only vote 'yay' or 'nay'";
@@ -720,7 +744,7 @@ Value stormnodelist(const Array& params, bool fHelp)
                 "  rank           - Print rank of a stormnode based on current block\n"
                 "  status         - Print stormnode status: ENABLED / EXPIRED / VIN_SPENT / REMOVE / POS_ERROR (can be additionally filtered, partial match)\n"
                 "  vin            - Print vin associated with a stormnode (can be additionally filtered, partial match)\n"
-                "  votes          - Print all stormnode votes for a Dash initiative (can be additionally filtered, partial match)\n"
+                "  votes          - Print all stormnode votes for a DarkSilk initiative (can be additionally filtered, partial match)\n"
                 );
     }
 
@@ -817,7 +841,7 @@ Value stormnodelist(const Array& params, bool fHelp)
                     if(sn.nVote == 1) strStatus = "YEA";
                 }
 
-                if(strFilter !="" && (strAddr.find(strFilter) == string::npos || strStatus.find(strFilter) == string::npos)) continue;
+                if(strFilter !="" && (strAddr.find(strFilter) == string::npos && strStatus.find(strFilter) == string::npos)) continue;
                 obj.push_back(Pair(strAddr,       strStatus.c_str()));
             }
         }

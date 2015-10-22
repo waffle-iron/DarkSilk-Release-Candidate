@@ -93,6 +93,7 @@ public:
 
     // Find an entry
     CStormnode* Find(const CTxIn& vin);
+    CStormnode* Find(const CPubKey& pubKeyStormnode);
 
     // Find a random entry
     CStormnode* FindRandom();
@@ -132,9 +133,9 @@ public:
 
     std::vector<CStormnode> GetFullStormnodeVector() { Check(); return vStormnodes; }
 
-    void ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
-
     void ProcessStormnodeConnections();
+
+    void ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
 
     //
     // Relay Stormnode Messages
@@ -143,6 +144,8 @@ public:
     void RelayStormnodeEntry(const CTxIn vin, const CService addr, const std::vector<unsigned char> vchSig, const int64_t nNow, const CPubKey pubkey, const CPubKey pubkey2, const int count, const int current, const int64_t lastUpdated, const int protocolVersion, CScript donationAddress, int donationPercentage);
     void RelayStormnodeEntryPing(const CTxIn vin, const std::vector<unsigned char> vchSig, const int64_t nNow, const bool stop);
 
+    void Remove(CTxIn vin);
+    
 };
 
 #endif

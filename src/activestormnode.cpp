@@ -222,7 +222,10 @@ bool CActiveStormnode::Sseep(CTxIn vin, CService service, CKey keyStormnode, CPu
     CStormnode* psn = snodeman.Find(vin);
     if(psn != NULL)
     {
-        psn->UpdateLastSeen();
+        if(stop)
+            snodeman.Remove(psn->vin);
+        else
+            psn->UpdateLastSeen();
     } else {
     	// Seems like we are trying to send a ping while the stormnode is not registered in the network
     	retErrorMessage = "Sandstorm Stormnode List doesn't include our stormnode, Shutting down stormnode pinging service! " + vin.ToString();

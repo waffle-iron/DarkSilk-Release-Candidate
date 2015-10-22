@@ -228,6 +228,18 @@ CStormnode *CStormnodeMan::FindRandom()
     return &vStormnodes[GetRandInt(vStormnodes.size())];
 }
 
+CStormnode *CStormnodeMan::Find(const CPubKey &pubKeyStormnode)
+{
+    LOCK(cs);
+
+    BOOST_FOREACH(CStormnode& sn, vStormnodes)
+    {
+        if(sn.pubkey2 == pubKeyStormnode)
+            return &sn;
+    }
+    return NULL;
+}
+
 
 CStormnode* CStormnodeMan::FindOldestNotInVec(const std::vector<CTxIn> &vVins, int nMinimumAge, int nMinimumActiveSeconds)
 {
@@ -516,20 +528,6 @@ void CStormnodeMan::ProcessStormnodeConnections()
             pnode->CloseSocketDisconnect();
         }
     }
-}
-
-void CStormnodeMan::RelayStormnodeEntry(const CTxIn vin, const CService addr, const std::vector<unsigned char> vchSig, const int64_t nNow, const CPubKey pubkey, const CPubKey pubkey2, const int count, const int current, const int64_t lastUpdated, const int protocolVersion, CScript donationAddress, int donationPercentage)
-{
-    LOCK(cs_vNodes);
-    BOOST_FOREACH(CNode* pnode, vNodes)
-        pnode->PushMessage("ssee", vin, addr, vchSig, nNow, pubkey, pubkey2, count, current, lastUpdated, protocolVersion, donationAddress, donationPercentage);
- }
-
-void CStormnodeMan::RelayStormnodeEntryPing(const CTxIn vin, const std::vector<unsigned char> vchSig, const int64_t nNow, const bool stop)
-{
-    LOCK(cs_vNodes);
-    BOOST_FOREACH(CNode* pnode, vNodes)
-        pnode->PushMessage("sseep", vin, vchSig, nNow, stop);
 }
 
 void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
@@ -873,6 +871,34 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
         LogPrintf("sseg - Sent %d Stormnode entries to %s\n", i, pfrom->addr.ToString().c_str());
     }
 
+}
+
+void CStormnodeMan::RelayStormnodeEntry(const CTxIn vin, const CService addr, const std::vector<unsigned char> vchSig, const int64_t nNow, const CPubKey pubkey, const CPubKey pubkey2, const int count, const int current, const int64_t lastUpdated, const int protocolVersion, CScript donationAddress, int donationPercentage)
+{
+    LOCK(cs_vNodes);
+    BOOST_FOREACH(CNode* pnode, vNodes)
+        pnode->PushMessage("ssee", vin, addr, vchSig, nNow, pubkey, pubkey2, count, current, lastUpdated, protocolVersion, donationAddress, donationPercentage);
+}
+
+void CStormnodeMan::RelayStormnodeEntryPing(const CTxIn vin, const std::vector<unsigned char> vchSig, const int64_t nNow, const bool stop)
+{
+    LOCK(cs_vNodes);
+    BOOST_FOREACH(CNode* pnode, vNodes)
+        pnode->PushMessage("sseep", vin, vchSig, nNow, stop);
+}
+
+void CStormnodeMan::Remove(CTxIn vin)
+{
+    LOCK(cs);
+
+    vector<CStormnode>::iterator it = vStormnodes.begin();
+    while(it != vStormnodes.end()){
+        if((*it).vin == vin){
+            if(fDebug) LogPrintf("CStormnodeMan: Removing Stormnode %s - %i now\n", (*it).addr.ToString().c_str(), size() - 1);
+            vStormnodes.erase(it);
+            break;
+        }
+    }
 }
 
 std::string CStormnodeMan::ToString() const
