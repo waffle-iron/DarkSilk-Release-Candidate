@@ -418,7 +418,7 @@ public:
     int GetMaxPoolTransactions()
     {   
         //if we're on testnet, just use two transactions per merge
-        if(Params().NetworkID() == CChainParams::TESTNET || Params().NetworkID() == CChainParams::REGTEST) return POOL_MAX_TRANSACTIONS_TESTNET;
+        if(Params().NetworkID() == CChainParams::TESTNET) return POOL_MAX_TRANSACTIONS_TESTNET;
         
         //use the production amount
         return POOL_MAX_TRANSACTIONS;

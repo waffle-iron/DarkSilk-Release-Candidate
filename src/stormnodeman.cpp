@@ -217,10 +217,6 @@ CStormnode* CStormnodeMan::FindOldestNotInVec(const std::vector<CTxIn> &vVins, i
         sn.Check();
         if(!sn.IsEnabled()) continue;
 
-        if(!RegTest()){
-            if(sn.GetStormnodeInputAge() < nMinimumAge || sn.lastTimeSeen - sn.sigTime < nMinimumActiveSeconds) continue;
-        }
-
         bool found = false;
         BOOST_FOREACH(const CTxIn& vin, vVins)
             if(sn.vin == vin)
@@ -511,7 +507,6 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
         }
 
         bool isLocal = addr.IsRFC1918() || addr.IsLocal();
-        //if(RegTest()) isLocal = false;
 
         std::string vchPubKey(pubkey.begin(), pubkey.end());
         std::string vchPubKey2(pubkey2.begin(), pubkey2.end());
