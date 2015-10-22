@@ -214,7 +214,6 @@ CStormnode* CStormnodeMan::FindOldestNotInVec(const std::vector<CTxIn> &vVins)
 
     BOOST_FOREACH(CStormnode &sn, vStormnodes)
     {   
-        printf(" -- sn %s\n", sn.vin.ToString().c_str());
         sn.Check();
         if(!sn.IsEnabled()) continue;
 
@@ -222,21 +221,17 @@ CStormnode* CStormnodeMan::FindOldestNotInVec(const std::vector<CTxIn> &vVins)
         BOOST_FOREACH(const CTxIn& vin, vVins)
             if(sn.vin == vin)
             {   
-                printf(" -- sn2 %s\n", vin.ToString().c_str());
                 found = true;
                 break;
             }
 
-        printf(" -- sn %d\n", found);
         if(found) continue;
 
         if(pOldestStormnode == NULL || pOldestStormnode->GetStormnodeInputAge() < sn.GetStormnodeInputAge()){
-            printf("got sn %s\n", sn.vin.ToString().c_str());
             pOldestStormnode = &sn;
         }
     }
 
-    printf(" -- %d\n", pOldestStormnode != NULL);
     return pOldestStormnode;
 }
 

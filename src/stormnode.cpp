@@ -390,7 +390,7 @@ bool CStormnodePayments::ProcessBlock(int nBlockHeight)
     uint256 hash;
     if(!GetBlockHash(hash, nBlockHeight-10)) return false;
     int nHash;
-    memcpy(&hash, &nHash, 2);
+    memcpy(&Hash, &nhash, 2);
 
     std::vector<CTxIn> vecLastPayments;
     BOOST_REVERSE_FOREACH(CStormnodePaymentWinner& winner, vWinning)
@@ -403,14 +403,15 @@ bool CStormnodePayments::ProcessBlock(int nBlockHeight)
 
     // pay to the oldest SN that still had no payment but its input is old enough and it was active long enough
     CStormnode *psn = snodeman.FindOldestNotInVec(vecLastPayments);
+
     if(psn != NULL)
     {
         newWinner.score = 0;
         newWinner.nBlockHeight = nBlockHeight;
         newWinner.vin = psn->vin;
 
-        if(psn->donationPercentage > 0 && nHash % 100 < psn->donationPercentage){
-            newWinner.payee.SetDestination(psn->donationAddress.GetID());
+        if(psn->donationPercentage > 0 && (nHash % 100) < psn->donationPercentage){
+            newWinner.payee = psn->donationAddress;
         } else {
             newWinner.payee.SetDestination(psn->pubkey.GetID());
         }
@@ -432,8 +433,8 @@ bool CStormnodePayments::ProcessBlock(int nBlockHeight)
                 newWinner.vin = psn->vin;
                 newWinner.payee.SetDestination(psn->pubkey.GetID());
 
-                if(psn->donationPercentage > 0 && nHash % 100 < psn->donationPercentage) {
-                    newWinner.payee.SetDestination(psn->donationAddress.GetID());
+                if(psn->donationPercentage > 0 (nHash % 100) < psn->donationPercentage) {
+                    newWinner.payee = psn->donationAddress;
                 } else {
                     newWinner.payee.SetDestination(psn->pubkey.GetID());
                 }
