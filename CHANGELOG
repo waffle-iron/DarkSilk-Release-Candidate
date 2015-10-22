@@ -123,14 +123,14 @@ SPORK Additions/Changes | SANDSTORM fee removal
 prevent ganing sigTime too much on initial ssee
 SandStorm/InstantX Functionality | Send with SandStorm on sendcoinsdialog.ui
 Fix Filtering for active | add spaces to table-fy console view | add spaces to IP only in full mode
-Merged masternode blinding
+Merged Stormnode blinding
 fix compiling for windows
 fix console spam
-Make masternodes.dat verification more specific, prevent from overwriting corruped
+Make stormnodes.dat verification more specific, prevent from overwriting corruped
 files with unknown format, give more info in debug.log output
 fixed shared key usage
 fix even more console spam
-rename masternodes.dat->mncache.dat / fix strings
+rename stormnodes.dat->mncache.dat / fix strings
 save nsqCount in mncache.dat
 [Qt] add more NULL pointer checks in darksilkgui.cpp
 close wallet regardless of "minimize to tray" settings
@@ -152,9 +152,17 @@ Changed some locks
 Disable relay
 Changed some locks
 Improved donation code/message
-Added "masternode list donation
+Added stormnode list donation
 Fixed ranking issues for PoSe
-Fixed masternode donation miscalculations
+Fixed stormnode donation miscalculations
 Explicitly grab each piece of data from memory for hashing in CStormnode::CalculateScore
 Reducing spam
-New Command: Stormnode list pose - Shows proof-of-service score for Stormnodes
+Removed donation flag
+New Command: stormnode list pose - Shows proof-of-service score for Stormnodes
+Default keypool size in usage text fixed 
+Use strMagicMessage to verify mncache.dat, rewrite (only) if hash and both magic are ok
+Make sure nScanningErrorCount and nLastScanningErrorBlockHeight handled correctly
+Move sn state enum inside class
+Do not check mn unless only active requested
+ProcessStormnodeConnections should work on testnet too
+Don't limit ds-send inputs number artificially, fees should take care of it instead

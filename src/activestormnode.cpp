@@ -121,24 +121,6 @@ void CActiveStormnode::ManageStatus()
             CScript donationAddress = CScript();
             int donationPercentage = 0;
 
-            if(nDonate == 1){
-                std::string strDonationAddress = "";
-                if(Params().NetworkID() == CChainParams::MAIN){
-                    strDonationAddress = "";
-                } else {
-                    strDonationAddress = "";
-                }
-
-                CDarkSilkAddress address;
-                if(!address.SetString(strDonationAddress))
-                {
-                    LogPrintf("CActiveStormnode::Register - Invalid Donation Address\n");
-                    return;
-                }
-                donationAddress.SetDestination(address.Get());
-                donationPercentage = 5; //5%
-            }
-
             if(!Register(vin, service, keyCollateralAddress, pubKeyCollateralAddress, keyStormnode, pubKeyStormnode, donationAddress, donationPercentage, errorMessage)) {
                 LogPrintf("CActiveStormnode::ManageStatus() - Error on Register: %s\n", errorMessage.c_str());
             }

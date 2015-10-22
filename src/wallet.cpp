@@ -2009,6 +2009,7 @@ bool CWallet::SelectCoinsMinConf(int64_t nTargetValue, unsigned int nSpendTime, 
 
 bool CWallet::SelectCoins(int64_t nTargetValue, unsigned int nSpendTime, set<pair<const CWalletTx*,unsigned int> >& setCoinsRet, int64_t& nValueRet, const CCoinControl* coinControl, AvailableCoinsType coin_type, bool useIX) const
 {
+    // Note: this function should never be used for "always free" tx types like sstx
     vector<COutput> vCoins;
     AvailableCoins(vCoins, true, coinControl);
 
@@ -2022,14 +2023,13 @@ bool CWallet::SelectCoins(int64_t nTargetValue, unsigned int nSpendTime, set<pai
             {
                 if(out.tx->vout[out.i].nValue == v                                            //make sure it's the denom we're looking for
                     && nValueRet + out.tx->vout[out.i].nValue < nTargetValue + (0.1*COIN)+100 //round the amount up to .1DRKSLK over
-                    && added <= 100){                                                          //don't add more than 100 of one denom type
-                        CTxIn vin = CTxIn(out.tx->GetHash(),out.i);
-                        int rounds = GetInputSandstormRounds(vin);
-                        // make sure it's actually anonymized
-                        if(rounds < nSandstormRounds) continue;
-                        nValueRet += out.tx->vout[out.i].nValue;
-                        setCoinsRet.insert(make_pair(out.tx, out.i));
-                        added++;
+                ){
+                    CTxIn vin = CTxIn(out.tx->GetHash(),out.i);
+                    int rounds = GetInputSandstormRounds(vin);
+                    // make sure it's actually anonymized
+                    if(rounds < nSandstormRounds) continue;
+                    nValueRet += out.tx->vout[out.i].nValue;
+                    setCoinsRet.insert(make_pair(out.tx, out.i));
                 }
             }
         }

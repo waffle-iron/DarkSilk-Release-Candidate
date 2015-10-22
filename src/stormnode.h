@@ -51,12 +51,6 @@ extern CStormnodePayments stormnodePayments;
 extern map<uint256, CStormnodePaymentWinner> mapSeenStormnodeVotes;
 extern map<int64_t, uint256> mapCacheBlockHashes;
 
-enum masternodeState {
-    STORMNODE_ENABLED = 1,
-    STORMNODE_EXPIRED = 2,
-    STORMNODE_VIN_SPENT = 3,
-    STORMNODE_REMOVE = 4
-};
 
 // manage the stormnode connections
 void ProcessStormnodeConnections();
@@ -79,9 +73,9 @@ public:
     STORMNODE_ENABLED = 1,
     STORMNODE_EXPIRED = 2,
     STORMNODE_VIN_SPENT = 3,
-    STORNNODE_REMOVE = 4,
+    STORMNODE_REMOVE = 4,
     STORMNODE_POS_ERROR = 5
-};
+    };
 
 	static int minProtoVersion;
     CTxIn vin; 
@@ -98,13 +92,13 @@ public:
     bool unitTest;
     bool allowFreeTx;
     int protocolVersion;
-    CScript donationAddress;
-    int donationPercentage;
     int64_t nLastSsq; //the ssq count from the last ssq broadcast of this node
-    int nScanningErrorCount;
-    int nLastScanningErrorBlockHeight;
+    CScript donationAddress;
+    int donationPercentage;    
     int nVote;
     int64_t lastVote;
+    int nScanningErrorCount;
+    int nLastScanningErrorBlockHeight;
 
     CStormnode();
     CStormnode(const CStormnode& other);
@@ -127,13 +121,17 @@ public:
         swap(first.lastSseep, second.lastSseep);
         swap(first.lastTimeSeen, second.lastTimeSeen);
         swap(first.cacheInputAge, second.cacheInputAge);
+        swap(first.unitTest, second.unitTest);
         swap(first.cacheInputAgeBlock, second.cacheInputAgeBlock);
         swap(first.allowFreeTx, second.allowFreeTx);
-        swap(first.protocolVersion, second.protocolVersion);
-        swap(first.unitTest, second.unitTest);
+        swap(first.protocolVersion, second.protocolVersion);        
         swap(first.nLastSsq, second.nLastSsq);
         swap(first.donationAddress, second.donationAddress);
         swap(first.donationPercentage, second.donationPercentage);
+        swap(first.nVote, second.nVote);
+        swap(first.lastVote, second.lastVote);
+        swap(first.nScanningErrorCount, second.nScanningErrorCount);
+        swap(first.nLastScanningErrorBlockHeight, second.nLastScanningErrorBlockHeight);
     }
 
     CStormnode& operator=(CStormnode from)
@@ -178,6 +176,10 @@ public:
                 READWRITE(nLastSsq);
                 READWRITE(donationAddress);
                 READWRITE(donationPercentage);
+                READWRITE(nVote);
+                READWRITE(lastVote);
+                READWRITE(nScanningErrorCount);
+                READWRITE(nLastScanningErrorBlockHeight);
         }
     )
 
@@ -228,18 +230,6 @@ public:
         return cacheInputAge+(pindexBest->nHeight-cacheInputAgeBlock);
     }
 
-    std::string Status() {
-        std::string strStatus = "ACTIVE";
-
-        if(activeState == STORMNODE_ENABLED) strStatus   = "ENABLED";
-        if(activeState == STORMNODE_EXPIRED) strStatus   = "EXPIRED";
-        if(activeState == STORMNODE_VIN_SPENT) strStatus = "VIN_SPENT";
-        if(activeState == STORMNODE_REMOVE) strStatus    = "REMOVE";
-        if(activeState == STORMNODE_POS_ERROR) strStatus = "POS_ERROR";
-
-        return strStatus;
-    }
-    
     void ApplyScanningError(CStormnodeScanningError& snse)
     {
         if(!snse.IsValid()) return;
@@ -254,6 +244,18 @@ public:
             nScanningErrorCount++;
             if(nScanningErrorCount > STORMNODE_SCANNING_ERROR_THESHOLD*2) nScanningErrorCount = STORMNODE_SCANNING_ERROR_THESHOLD*2;
         }
+    }
+
+    std::string Status() {
+    std::string strStatus = "ACTIVE";
+
+    if(activeState == CStormnode::STORMNODE_ENABLED) strStatus   = "ENABLED";
+    if(activeState == CStormnode::STORMNODE_EXPIRED) strStatus   = "EXPIRED";
+    if(activeState == CStormnode::STORMNODE_VIN_SPENT) strStatus = "VIN_SPENT";
+    if(activeState == CStormnode::STORMNODE_REMOVE) strStatus    = "REMOVE";
+    if(activeState == CStormnode::STORMNODE_POS_ERROR) strStatus = "POS_ERROR";
+
+    return strStatus;
     }
 };
 

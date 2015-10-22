@@ -34,15 +34,17 @@ struct CompareValueOnlySN
 CStormnodeDB::CStormnodeDB()
 {
     pathSN = GetDataDir() / "sncache.dat";
+    strMagicMessage = "StormnodeCache";
 }
 
 bool CStormnodeDB::Write(const CStormnodeMan& snodemanToSave)
 {
     int64_t nStart = GetTimeMillis();
 
-    // serialize addresses, checksum data up to that point, then append csum
+    // serialize addresses, checksum data up to that point, then append checksum
     CDataStream ssStormnodes(SER_DISK, CLIENT_VERSION);
-    ssStormnodes << FLATDATA(Params().MessageStart());
+    ssStormnodes << strMagicMessage; // stormnode cache file specific magic message
+    ssStormnodes << FLATDATA(Params().MessageStart()); // network specific magic number
     ssStormnodes << snodemanToSave;
     uint256 hash = Hash(ssStormnodes.begin(), ssStormnodes.end());
     ssStormnodes << hash;
@@ -113,7 +115,19 @@ CStormnodeDB::ReadResult CStormnodeDB::Read(CStormnodeMan& snodemanToLoad)
     }
 
     unsigned char pchMsgTmp[4];
+    std::string strMagicMessageTmp;
     try {
+        // de-serialize file header (stormnode cache file specific magic message) and ..
+
+        ssStormnodes >> strMagicMessageTmp;
+
+        // ... verify the message matches predefined one
+        if (strMagicMessage != strMagicMessageTmp)
+        {
+            error("%s : Invalid stormnode cache magic message", __func__);
+            return IncorrectMagicMessage;
+        }
+
         // de-serialize file header (network specific magic number) and ..
         ssStormnodes >> FLATDATA(pchMsgTmp);
 
@@ -121,10 +135,10 @@ CStormnodeDB::ReadResult CStormnodeDB::Read(CStormnodeMan& snodemanToLoad)
         if (memcmp(pchMsgTmp, Params().MessageStart(), sizeof(pchMsgTmp)))
         {
             error("%s : Invalid network magic number", __func__);
-            return IncorrectMagic;
+            return IncorrectMagicNumber;
         }
 
-        // de-serialize address data into one CMnList object
+        // de-serialize data into CStormnodeMan object
         ssStormnodes >> snodemanToLoad;
     }
     catch (std::exception &e) {
@@ -154,8 +168,14 @@ void DumpStormnodes()
         LogPrintf("Missing stormnode cache file - sncache.dat, will try to recreate\n");
     else if (readResult != CStormnodeDB::Ok)
     {
-        LogPrintf("Stormnode cache file sncache.dat has invalid format\n");
-        return;
+        LogPrintf("Error reading sncache.dat: ");
+        if(readResult == CStormnodeDB::IncorrectFormat)
+            LogPrintf("magic is ok but data has invalid format, will try to recreate\n");
+        else
+        {
+            LogPrintf("file format is unknown or invalid, please fix it manually\n");
+            return;
+        }
     }
     LogPrintf("Writing info to sncache.dat...\n");
     sndb.Write(snodeman);
@@ -272,7 +292,7 @@ void CStormnodeMan::CheckAndRemove()
     //remove inactive
     vector<CStormnode>::iterator it = vStormnodes.begin();
     while(it != vStormnodes.end()){
-        if((*it).activeState == STORMNODE_REMOVE || (*it).activeState == STORMNODE_VIN_SPENT){
+        if((*it).activeState == CStormnode::STORMNODE_REMOVE || (*it).activeState == CStormnode::STORMNODE_VIN_SPENT){
             if(fDebug) LogPrintf("CStormnodeMan: Removing inactive Stormnode %s - %i now\n", (*it).addr.ToString().c_str(), size() - 1);
             it = vStormnodes.erase(it);
         } else {
@@ -383,11 +403,10 @@ int CStormnodeMan::GetStormnodeRank(const CTxIn& vin, int64_t nBlockHeight, int 
     // scan for winner
     BOOST_FOREACH(CStormnode& sn, vStormnodes) {
 
-        sn.Check();
-
         if(sn.protocolVersion < minProtocol) continue;
-        if(fOnlyActive && !sn.IsEnabled()) {
-            continue;
+        if(fOnlyActive) {
+            sn.Check();
+            if(!sn.IsEnabled()) continue;
         }
 
         uint256 n = sn.CalculateScore(1, nBlockHeight);
@@ -454,11 +473,10 @@ CStormnode* CStormnodeMan::GetStormnodeByRank(int nRank, int64_t nBlockHeight, i
     // scan for winner
     BOOST_FOREACH(CStormnode& sn, vStormnodes) {
 
-        sn.Check();
-
         if(sn.protocolVersion < minProtocol) continue;
-        if(fOnlyActive && !sn.IsEnabled()) {
-            continue;
+        if(fOnlyActive) {
+            sn.Check();
+            if(!sn.IsEnabled()) continue;
         }
 
         uint256 n = sn.CalculateScore(1, nBlockHeight);
@@ -483,9 +501,6 @@ CStormnode* CStormnodeMan::GetStormnodeByRank(int nRank, int64_t nBlockHeight, i
 
 void CStormnodeMan::ProcessStormnodeConnections()
 {
-    //we don't care about this for testing
-    if(TestNet) return;
-
     LOCK(cs_vNodes);
 
     if(!sandStormPool.pSubmittedToStormnode) return;

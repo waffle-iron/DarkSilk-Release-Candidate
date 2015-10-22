@@ -127,7 +127,7 @@ Value stormnode(const Array& params, bool fHelp)
 
     if (fHelp  ||
         (strCommand != "start" && strCommand != "start-alias" && strCommand != "start-many" && strCommand != "stop" && strCommand != "stop-alias" && strCommand != "stop-many" && strCommand != "list" && strCommand != "list-conf" && strCommand != "count"  && strCommand != "enforce"
-            && strCommand != "debug" && strCommand != "current" && strCommand != "winners" && strCommand != "genkey" && strCommand != "connect" && strCommand != "outputs" && strCommand != "vote-many" && strCommand != "vote" && strCommand != "donate"))
+            && strCommand != "debug" && strCommand != "current" && strCommand != "winners" && strCommand != "genkey" && strCommand != "connect" && strCommand != "outputs" && strCommand != "vote-many" && strCommand != "vote"))
         throw runtime_error(
                 "stormnode \"command\"... ( \"passphrase\" )\n"
                 "Set of commands to execute stormnode related actions\n"
@@ -152,19 +152,7 @@ Value stormnode(const Array& params, bool fHelp)
                 "  winners      - Print list of stormnode winners\n"
                 "  vote-many    - Vote on a DarkSilk initiative\n"
                 "  vote         - Vote on a DarkSilk initiative\n"
-                "  donate       - Donate to support development (yes or no)\n"
                 );
-
-    // *** string returned when no donation mode is set ****
-    std::string strNoDonateModeSet = "";
-    if(nDonate == 0) {
-        strNoDonateModeSet += "---------- Please Support Dash Development! --------------\n\n";
-        strNoDonateModeSet += "Dash now allows you to support future development by redirecting a small part (5%) of your masternode earnings ";
-        strNoDonateModeSet += "to the Darkcoin Foundation, which will be used to pay developers for bringing this project to the next level. ";
-        strNoDonateModeSet += "If you would like to donate, please execute \"masternode donate yes\" then start your node again. To avoid this ";
-        strNoDonateModeSet += "message in the future add \"donate=yes\" or \"donate=no\" to your configuration.\n";
-    }
-    // ********************************************************
 
     if (strCommand == "stop")
     {
@@ -328,19 +316,6 @@ Value stormnode(const Array& params, bool fHelp)
         return snodeman.size();
     }
 
-    if (strCommand == "donate")
-    {
-
-        std::string strYesOrNo = params[1].get_str().c_str();
-
-        if(strYesOrNo != "yes" && strYesOrNo != "no") return "You can say 'yes' or 'no'";
-        if(strYesOrNo == "yes") nDonate = 1;
-        if(strYesOrNo == "no") nDonate = -1;
-
-        if(strYesOrNo == "yes") return "Thankyou for supporting the development of DarkSilk! You may now start your stormnode(s).";
-        return "Successfully set donation mode to no. You may now start your stormnode(s).";
-    }
-
     if (strCommand == "start")
     {
         if(!fStormNode) return "you must set stormnode=1 in the configuration";
@@ -360,9 +335,6 @@ Value stormnode(const Array& params, bool fHelp)
                 return "incorrect passphrase";
             }
         }
-
-        //ask user to specify if they would like to support the project
-        if(nDonate == 0) return strNoDonateModeSet;
 
         if(activeStormnode.status != STORMNODE_REMOTELY_ENABLED && activeStormnode.status != STORMNODE_IS_CAPABLE){
             activeStormnode.status = STORMNODE_NOT_PROCESSED; // TODO: consider better way
@@ -408,9 +380,6 @@ Value stormnode(const Array& params, bool fHelp)
 
     	bool found = false;
 
-        //ask user to specify if they would like to support the project
-        if(nDonate == 0) return strNoDonateModeSet;
-
 		Object statusObj;
 		statusObj.push_back(Pair("alias", alias));
 
@@ -421,17 +390,7 @@ Value stormnode(const Array& params, bool fHelp)
                 std::string strDonateAddress = sne.getDonationAddress();
                 std::string strDonationPercentage = sne.getDonationPercentage();
 
-                if(nDonate == 1){
-                    if(Params().NetworkID() == CChainParams::MAIN){
-                        strDonateAddress = "";
-                        strDonationPercentage = "5"; //5%
-                    } else {
-                        strDonateAddress = "";
-                        strDonationPercentage = "5"; //5%
-                    }
-                }
-
-               bool result = activeStormnode.Register(sne.getIp(), sne.getPrivKey(), sne.getTxHash(), sne.getOutputIndex(), strDonateAddress, strDonationPercentage, errorMessage);
+                bool result = activeStormnode.Register(sne.getIp(), sne.getPrivKey(), sne.getTxHash(), sne.getOutputIndex(), strDonateAddress, strDonationPercentage, errorMessage);
   
       			statusObj.push_back(Pair("result", result ? "successful" : "failed"));
     			if(!result) {
@@ -478,9 +437,6 @@ Value stormnode(const Array& params, bool fHelp)
 
 		Object resultsObj;
 
-        //ask user to specify if they would like to support the project
-        if(nDonate == 0) return strNoDonateModeSet;
-
 		BOOST_FOREACH(CStormnodeConfig::CStormnodeEntry sne, stormnodeConfig.getEntries()) {
 			total++;
 
@@ -488,17 +444,7 @@ Value stormnode(const Array& params, bool fHelp)
             std::string strDonateAddress = sne.getDonationAddress();
             std::string strDonationPercentage = sne.getDonationPercentage();
 
-            if(nDonate == 1){
-                if(Params().NetworkID() == CChainParams::MAIN){
-                    strDonateAddress = "";
-                    strDonationPercentage = "5"; //5%
-                } else {
-                    strDonateAddress = "";
-                    strDonationPercentage = "5"; //5%
-                }
-            }
-
-                bool result = activeStormnode.Register(sne.getIp(), sne.getPrivKey(), sne.getTxHash(), sne.getOutputIndex(), strDonateAddress, strDonationPercentage, errorMessage);
+            bool result = activeStormnode.Register(sne.getIp(), sne.getPrivKey(), sne.getTxHash(), sne.getOutputIndex(), strDonateAddress, strDonationPercentage, errorMessage);
 
 			Object statusObj;
 			statusObj.push_back(Pair("alias", sne.getAlias()));
@@ -754,7 +700,7 @@ Value stormnodelist(const Array& params, bool fHelp)
     if (params.size() == 2) strFilter = params[1].get_str();
 
     if (fHelp ||
-            (strMode != "active" && strMode != "vin" && strMode != "pubkey" && strMode != "lastseen" && strMode != "activeseconds" && strMode != "rank" 
+            (strMode != "active" && strMode != "vin" && strMode != "pubkey" && strMode != "lastseen" && strMode != "activeseconds" && strMode != "rank"
                 && strMode != "protocol" && strMode != "full" && strMode != "votes" && strMode != "donation" && strMode != "pose"))
     {
         throw runtime_error(

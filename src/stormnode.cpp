@@ -139,6 +139,8 @@ CStormnode::CStormnode()
     donationPercentage = 0;
     nVote = 0;
     lastVote = 0;
+    nScanningErrorCount = 0;
+    nLastScanningErrorBlockHeight = 0;    
 }
 
 CStormnode::CStormnode(const CStormnode& other)
@@ -163,6 +165,8 @@ CStormnode::CStormnode(const CStormnode& other)
     donationPercentage = other.donationPercentage;
     nVote = other.nVote;
     lastVote = other.lastVote;
+    nScanningErrorCount = other.nScanningErrorCount;
+    nLastScanningErrorBlockHeight = other.nLastScanningErrorBlockHeight;
 }
 
 CStormnode::CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::vector<unsigned char> newSig, int64_t newSigTime, CPubKey newPubkey2, int protocolVersionIn, CScript newDonationAddress, int newDonationPercentage)

@@ -36,13 +36,15 @@ class CStormnodeDB
 {
 private:
     boost::filesystem::path pathSN;
+    std::string strMagicMessage;
 public:
     enum ReadResult {
         Ok,
         FileError,
         HashReadError,
         IncorrectHash,
-        IncorrectMagic,
+        IncorrectMagicMessage,
+        IncorrectMagicNumber,
         IncorrectFormat
     };
     CStormnodeDB();

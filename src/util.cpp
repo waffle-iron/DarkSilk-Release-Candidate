@@ -83,8 +83,6 @@ bool fSucessfullyLoaded = false;
 bool fEnableSandstorm = false;
 /** All denominations used by sandstorm */
 std::vector<int64_t> sandStormDenominations;
-// Donate 5% of stormnode earnings to development
-int nDonate = 0;
 
 map<string, string> mapArgs;
 map<string, vector<string> > mapMultiArgs;
