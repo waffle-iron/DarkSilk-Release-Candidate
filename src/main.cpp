@@ -172,7 +172,14 @@ bool AbortNode(const std::string &strMessage, const std::string &userMessage) {
     return false;
 }
 
-
+int GetHeight()
+{
+    while(true){
+        TRY_LOCK(cs_main, lockMain);
+        if(!lockMain) { MilliSleep(50); continue; }
+        return pindexBest->nHeight;
+    }
+}
 
 //////////////////////////////////////////////////////////////////////////////
 //
@@ -2697,6 +2704,14 @@ bool ProcessBlock(CNode* pfrom, CBlock* pblock)
         mapOrphanBlocksByPrev.erase(hashPrev);
     }
 
+    if(!fLiteMode){
+        if (!fImporting && !fReindex && pindexBest->nHeight > Checkpoints::GetTotalBlocksEstimate()){
+            sandStormPool.NewBlock();
+            stormnodePayments.ProcessBlock(GetHeight()+10);
+            snscan.DoStormnodePOSChecks();
+        }
+    }
+
     LogPrintf("ProcessBlock: ACCEPTED\n");
 
     // ppcoin: if responsible for sync-checkpoint send it
@@ -3318,6 +3333,15 @@ void static ProcessGetData(CNode* pfrom)
                         ss.reserve(1000);
                         ss << mapSeenStormnodeVotes[inv.hash];
                         pfrom->PushMessage("snw", ss);
+                        pushed = true;
+                    }
+                }
+                if (!pushed && inv.type == MSG_STORMNODE_SCANNING_ERROR) {
+                    if(mapStormnodeScanningErrors.count(inv.hash)){
+                        CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
+                        ss.reserve(1000);
+                        ss << mapStormnodeScanningErrors[inv.hash];
+                        pfrom->PushMessage("snse", ss);
                         pushed = true;
                     }
                 }
@@ -3998,6 +4022,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         ProcessMessageStormnodePayments(pfrom, strCommand, vRecv);
         ProcessMessageInstantX(pfrom, strCommand, vRecv);
         ProcessSpork(pfrom, strCommand, vRecv);
+        ProcessMessageStormnodePOS(pfrom, strCommand, vRecv);
     if (fSecMsgEnabled)
         SecureMsgReceiveData(pfrom, strCommand, vRecv);
         // Ignore unknown commands for extensibility

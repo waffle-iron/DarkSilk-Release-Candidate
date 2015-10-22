@@ -1156,7 +1156,7 @@ boost::filesystem::path GetConfigFile()
 boost::filesystem::path GetStormnodeConfigFile()
 {
     boost::filesystem::path pathConfigFile(GetArg("-snconf", "stormnode.conf"));
-    if (!pathConfigFile.is_complete()) pathConfigFile = GetDataDir(false) / pathConfigFile;
+    if (!pathConfigFile.is_complete()) pathConfigFile = GetDataDir() / pathConfigFile;
     return pathConfigFile;
 }
 

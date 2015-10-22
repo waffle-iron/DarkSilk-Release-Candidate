@@ -17,6 +17,7 @@
 //#include "script/script.h"
 #include "base58.h"
 #include "main.h"
+#include "stormnode-pos.h"
 #include "timedata.h"
 #include "script.h"
 
@@ -50,7 +51,7 @@ extern CStormnodePayments stormnodePayments;
 extern map<uint256, CStormnodePaymentWinner> mapSeenStormnodeVotes;
 extern map<int64_t, uint256> mapCacheBlockHashes;
 
-enum stormnodeState {
+enum masternodeState {
     STORMNODE_ENABLED = 1,
     STORMNODE_EXPIRED = 2,
     STORMNODE_VIN_SPENT = 3,
@@ -73,6 +74,14 @@ private:
     // critical section to protect the inner data structures
     mutable CCriticalSection cs;
 public:
+    enum state {
+    STORMNODE_ENABLED = 1,
+    STORMNODE_EXPIRED = 2,
+    STORMNODE_VIN_SPENT = 3,
+    STORNNODE_REMOVE = 4,
+    STORMNODE_POS_ERROR = 5
+};
+
 	static int minProtoVersion;
     CTxIn vin; 
     CService addr;
@@ -89,6 +98,8 @@ public:
     bool allowFreeTx;
     int protocolVersion;
     int64_t nLastSsq; //the ssq count from the last ssq broadcast of this node
+    int nScanningErrorCount;
+    int nLastScanningErrorBlockHeight;
 
     CStormnode();
     CStormnode(const CStormnode& other);
@@ -206,6 +217,34 @@ public:
         }
 
         return cacheInputAge+(pindexBest->nHeight-cacheInputAgeBlock);
+    }
+
+    std::string Status() {
+        std::string strStatus = "ACTIVE";
+
+        if(activeState == STORMNODE_ENABLED) strStatus   = "ENABLED";
+        if(activeState == STORMNODE_EXPIRED) strStatus   = "EXPIRED";
+        if(activeState == STORMNODE_VIN_SPENT) strStatus = "VIN_SPENT";
+        if(activeState == STORMNODE_REMOVE) strStatus    = "REMOVE";
+        if(activeState == STORMNODE_POS_ERROR) strStatus = "POS_ERROR";
+
+        return strStatus;
+    }
+    
+    void ApplyScanningError(CStormnodeScanningError& snse)
+    {
+        if(!snse.IsValid()) return;
+
+        if(snse.nBlockHeight == nLastScanningErrorBlockHeight) return;
+        nLastScanningErrorBlockHeight = snse.nBlockHeight;
+
+        if(snse.nErrorType == SCANNING_SUCCESS){
+            nScanningErrorCount--;
+            if(nScanningErrorCount < 0) nScanningErrorCount = 0;
+        } else { //all other codes are equally as bad
+            nScanningErrorCount++;
+            if(nScanningErrorCount > STORMNODE_SCANNING_ERROR_THESHOLD*2) nScanningErrorCount = STORMNODE_SCANNING_ERROR_THESHOLD*2;
+        }
     }
 };
 

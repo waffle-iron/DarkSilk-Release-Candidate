@@ -52,8 +52,20 @@ void CActiveStormnode::ManageStatus()
                 LogPrintf("CActiveStormnode::ManageStatus() - not capable: %s\n", notCapableReason.c_str());
                 return;
             }
+        } else if(service.GetPort() == 31000) {
+            notCapableReason = "Invalid port: " + boost::lexical_cast<string>(service.GetPort()) + " - 31000 is only supported on mainnet.";
+            status = STORMNODE_NOT_CAPABLE;
+            LogPrintf("CActiveStormnode::ManageStatus() - not capable: %s\n", notCapableReason.c_str());
+            return;
+        }
         */
 
+            if(!ConnectNode((CAddress)service, service.ToString().c_str())){
+            notCapableReason = "Could not connect to " + service.ToString();
+            status = STORMNODE_NOT_CAPABLE;
+            LogPrintf("CActiveStormnode::ManageStatus() - not capable: %s\n", notCapableReason.c_str());
+            return;
+            }
         
             if(!ConnectNode((CAddress)service, service.ToString().c_str())){
                 notCapableReason = "Could not connect to " + service.ToString();

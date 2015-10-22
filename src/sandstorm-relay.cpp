@@ -106,7 +106,7 @@ void CSandStormRelay::RelayThroughNode(int nRank)
 {
     CStormnode* psn = snodeman.GetStormnodeByRank(nRank, nBlockHeight, MIN_SANDSTORM_PROTO_VERSION);
 
-    if(psn){
+    if(psn != NULL){
         //printf("RelayThroughNode %s\n", psn->addr.ToString().c_str());
         if(ConnectNode((CAddress)psn->addr, NULL, true)){
             //printf("Connected\n");

@@ -66,7 +66,7 @@ private:
     std::map<COutPoint, int64_t> mWeAskedForStormnodeListEntry;
 
 public:
-    // keep track of ssq count to prevent masternodes from ganing Sandstorm queue
+    // keep track of ssq count to prevent stormnodes from ganing Sandstorm queue
     int64_t nSsqCount;
 
     IMPLEMENT_SERIALIZE
@@ -118,9 +118,8 @@ public:
     // Get the current winner for this block
     CStormnode* GetCurrentStormNode(int mod=1, int64_t nBlockHeight=0, int minProtocol=0);
 
-    int GetStormnodeRank(const CTxIn &vin, int64_t nBlockHeight, int minProtocol=0);
-    std::vector<pair<int, CStormnode> > GetStormnodeRanks(int64_t nBlockHeight, int minProtocol=0); 
-    CStormnode* GetStormnodeByRank(int nRank, int64_t nBlockHeight, int minProtocol=0);
+    int GetStormnodeRank(const CTxIn &vin, int64_t nBlockHeight, int minProtocol=0, bool fOnlyActive=true);
+    CStormnode* GetStormnodeByRank(int nRank, int64_t nBlockHeight, int minProtocol=0, bool fOnlyActive=true);
 
     int CountStormnodesAboveProtocol(int protocolVersion);
 

@@ -270,15 +270,15 @@ void CStormnodeMan::CheckAndRemove()
     //remove inactive
     vector<CStormnode>::iterator it = vStormnodes.begin();
     while(it != vStormnodes.end()){
-        if((*it).activeState == 4 || (*it).activeState == 3){
+        if((*it).activeState == STORMNODE_REMOVE || (*it).activeState == STORMNODE_VIN_SPENT){
             if(fDebug) LogPrintf("CStormnodeMan: Removing inactive Stormnode %s - %i now\n", (*it).addr.ToString().c_str(), size() - 1);
             it = vStormnodes.erase(it);
         } else {
             ++it;
         }
     }
-  
-    // check who's asked for the stormnode list
+
+    // check who's asked for the Stormnode list
     map<CNetAddr, int64_t>::iterator it1 = mWeAskedUsForStormnodeList.begin();
     while(it1 != mWeAskedUsForStormnodeList.end()){
         if((*it1).second < GetTime()) {
@@ -288,7 +288,8 @@ void CStormnodeMan::CheckAndRemove()
         }
     }
 
-    // check who we asked for the stormnode list
+    // check who we asked for the Stormnode list
+    it1 = mWeAskedForStormnodeList.begin();
     while(it1 != mWeAskedForStormnodeList.end()){
         if((*it1).second < GetTime()){
             mWeAskedForStormnodeList.erase(it1++);
@@ -297,7 +298,7 @@ void CStormnodeMan::CheckAndRemove()
         }
     }
 
-    // check which stormnodes we've asked for
+    // check which Stormnodes we've asked for
     map<COutPoint, int64_t>::iterator it2 = mWeAskedForStormnodeListEntry.begin();
     while(it2 != mWeAskedForStormnodeListEntry.end()){
         if((*it2).second < GetTime()){
@@ -306,9 +307,8 @@ void CStormnodeMan::CheckAndRemove()
             ++it2;
         }
     }
+
 }
-
-
 
 int CStormnodeMan::CountStormnodesAboveProtocol(int protocolVersion)
 {
@@ -370,7 +370,7 @@ CStormnode* CStormnodeMan::GetCurrentStormNode(int mod, int64_t nBlockHeight, in
     return winner;
 }
 
-int CStormnodeMan::GetStormnodeRank(const CTxIn& vin, int64_t nBlockHeight, int minProtocol)
+int CStormnodeMan::GetStormnodeRank(const CTxIn& vin, int64_t nBlockHeight, int minProtocol, bool fOnlyActive)
 {
     std::vector<pair<unsigned int, CTxIn> > vecStormnodeScores;
 
@@ -380,7 +380,7 @@ int CStormnodeMan::GetStormnodeRank(const CTxIn& vin, int64_t nBlockHeight, int 
         sn.Check();
 
         if(sn.protocolVersion < minProtocol) continue;
-        if(!sn.IsEnabled()) {
+        if(fOnlyActive && !sn.IsEnabled()) {
             continue;
         }
 
@@ -404,40 +404,7 @@ int CStormnodeMan::GetStormnodeRank(const CTxIn& vin, int64_t nBlockHeight, int 
     return -1;
 }
 
-std::vector<pair<int, CStormnode> > CStormnodeMan::GetStormnodeRanks(int64_t nBlockHeight, int minProtocol)
-{
-    std::vector<pair<unsigned int, CStormnode> > vecStormnodeScores;
-    std::vector<pair<int, CStormnode> > vecStormnodeRanks;
-
-    // scan for winner
-    BOOST_FOREACH(CStormnode& sn, vStormnodes) {
-
-        sn.Check();
-
-        if(sn.protocolVersion < minProtocol) continue;
-        if(!sn.IsEnabled()) {
-            continue;
-        }
-
-        uint256 n = sn.CalculateScore(1, nBlockHeight);
-        unsigned int n2 = 0;
-        memcpy(&n2, &n, sizeof(n2));
-
-        vecStormnodeScores.push_back(make_pair(n2, sn));
-    }
-
-    sort(vecStormnodeScores.rbegin(), vecStormnodeScores.rend(), CompareValueOnlySN());
-
-    int rank = 0;
-    BOOST_FOREACH (PAIRTYPE(unsigned int, CStormnode)& s, vecStormnodeScores){
-        rank++;
-        vecStormnodeRanks.push_back(make_pair(rank, s.second));
-    }
-
-    return vecStormnodeRanks;
-}
-
-CStormnode* CStormnodeMan::GetStormnodeByRank(int nRank, int64_t nBlockHeight, int minProtocol)
+CStormnode* CStormnodeMan::GetStormnodeByRank(int nRank, int64_t nBlockHeight, int minProtocol, bool fOnlyActive)
 {
     std::vector<pair<unsigned int, CTxIn> > vecStormnodeScores;
 
@@ -447,7 +414,7 @@ CStormnode* CStormnodeMan::GetStormnodeByRank(int nRank, int64_t nBlockHeight, i
         sn.Check();
 
         if(sn.protocolVersion < minProtocol) continue;
-        if(!sn.IsEnabled()) {
+        if(fOnlyActive && !sn.IsEnabled()) {
             continue;
         }
 

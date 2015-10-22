@@ -202,7 +202,13 @@ uint256 CStormnode::CalculateScore(int mod, int64_t nBlockHeight)
 void CStormnode::Check()
 {
     LOCK(cs_main);
-    
+
+    if(nScanningErrorCount >= STORMNODE_SCANNING_ERROR_THESHOLD) 
+    {
+        activeState = STORMNODE_POS_ERROR;
+        return;
+    }
+
     //once spent, stop doing the checks
     if(activeState == STORMNODE_VIN_SPENT) return;
 
@@ -227,7 +233,8 @@ void CStormnode::Check()
         //if(!AcceptableInputs(mempool, state, tx)){
         bool* pfMissingInputs = new bool;
         *pfMissingInputs = false;
-	if(!AcceptableInputs(mempool, tx, false, pfMissingInputs)){
+	    
+        if(!AcceptableInputs(mempool, tx, false, pfMissingInputs)){
             activeState = STORMNODE_VIN_SPENT;
             return;
         }

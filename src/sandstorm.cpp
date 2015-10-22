@@ -88,7 +88,7 @@ void CSandstormPool::ProcessMessageSandstorm(CNode* pfrom, std::string& strComma
         if(sessionUsers == 0) {
             if(psn->nLastSsq != 0 &&
                 psn->nLastSsq + snodeman.CountStormnodesAboveProtocol(MIN_SANDSTORM_PROTO_VERSION)/5 > snodeman.nSsqCount){
-                LogPrintf("ssa -- last ssq too recent, must wait. %s \n", psn->addr.ToString().c_str());                
+                LogPrintf("ssa -- last ssq too recent, must wait. %s \n", pfrom->addr.ToString().c_str());                
                 std::string strError = _("Last Sandstorm was too recent.");
                 pfrom->PushMessage("sssu", sessionID, GetState(), GetEntriesCount(), STORMNODE_ACCEPTED, error);
                 return;
@@ -192,18 +192,17 @@ void CSandstormPool::ProcessMessageSandstorm(CNode* pfrom, std::string& strComma
         if(ssr.in == CTxIn() && ssr.nRelayType == SANDSTORM_RELAY_SIG) return;
 
         CStormnode* psn = snodeman.Find(ssr.vinStormnode);
-        if(!psn){
-            LogPrintf("ssr -- unknown Stormnode! %s \n", ssr.vinStormnode.ToString().c_str());
+        if(psn == NULL){
+            LogPrintf("ssai -- unknown Stormnode! %s \n", ssr.vinStormnode.ToString().c_str());
             return;
         }
-
-        int a = snodeman.GetStormnodeRank(activeStormnode.vin, pindexBest->nHeight, MIN_SANDSTORM_PROTO_VERSION);
 
         /*
             For added DDOS protection, clients can only relay through 20 nodes per block.
         */
-        if(a > 20){
-            LogPrintf("ssr -- unknown/invalid Stormnode! %s \n", activeStormnode.vin.ToString().c_str());
+        int rank = snodeman.GetStormnodeRank(activeStormnode.vin, ssr.nBlockHeight, MIN_SANDSTORM_PROTO_VERSION);
+        if(rank > 20){
+            LogPrintf("ssr -- invalid relay Stormnode! %s \n", activeStormnode.vin.ToString().c_str());
             return;
         }
 
@@ -211,7 +210,7 @@ void CSandstormPool::ProcessMessageSandstorm(CNode* pfrom, std::string& strComma
         std::string strMessage = boost::lexical_cast<std::string>(ssr.nBlockHeight);
         std::string errorMessage = "";
         if(!sandStormSigner.VerifyMessage(psn->pubkey2, ssr.vchSig, strMessage, errorMessage)){
-            LogPrintf("ssr - Got bad Stormnode address signature\n");
+            LogPrintf("ssai - Got bad Stormnode address signature\n");
             Misbehaving(pfrom->GetId(), 100);
             return;
         }
@@ -545,7 +544,6 @@ int GetInputSandstormRounds(CTxIn in, int rounds)
         // found and it's not an initial value, just return it
         else if(mDenomWtxes[hash].vout[nout].nRounds != -10)
         {
-            if(fDebug) LogPrintf("GetInputSandstormRounds INFO      %s %3d %d\n", hash.ToString(), nout, mDenomWtxes[hash].vout[nout].nRounds);
             return mDenomWtxes[hash].vout[nout].nRounds;
         }
         // bounds check
@@ -689,8 +687,7 @@ void CSandstormPool::UnlockCoins(){
 //
 void CSandstormPool::Check()
 {
-    if(fDebug) LogPrintf("CSandstormPool::Check()\n");
-    if(fDebug) LogPrintf("CSandstormPool::Check() - entries count %lu\n", entries.size());
+    if(fDebug && fStormNode) LogPrintf("CSandstormPool::Check() - entries count %lu\n", entries.size());
 
     //printf("CSandstormPool::Check() %d - %d - %d\n", state, anonTx.CountEntries(), GetTimeMillis()-lastTimeChanged);
    
@@ -1542,7 +1539,7 @@ bool CSandstormPool::SignFinalTransaction(CTransaction& finalTransactionNew, CNo
 
         std::random_shuffle ( sigs.begin(), sigs.end(), randomizeList);
 
-        printf("sigs count %d\n", (int)sigs.size());
+        LogPrintf("sigs count %d\n", (int)sigs.size());
 
         RelaySignaturesAnon(sigs);
     } else {
@@ -1769,7 +1766,13 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
                             }
                         }
 
-                        pSubmittedToStormnode = snodeman.Find(ssq.vin);
+                        CStormnode* psn = snodeman.Find(ssq.vin);
+                        if(psn == NULL)
+                        {
+                            LogPrintf("DoAutomaticDenominating --- ssq vin %s is not in stormnode list!", ssq.vin.ToString());
+                            continue;
+                        }
+                        pSubmittedToStormnode = psn;
                         vecStormnodesUsed.push_back(ssq.vin);
                         sessionDenom = ssq.nDenom;
 
@@ -2491,11 +2494,11 @@ void CSandstormPool::RelayFinalTransaction(const int sessionID, const CTransacti
 void CSandstormPool::RelaySignaturesAnon(std::vector<CTxIn>& vin)
 {
     //empty
-    CTxOut out;
+    CTxOut emptyOut;
 
     BOOST_FOREACH(CTxIn& in, vin){
         LogPrintf("RelaySignaturesAnon - sig %s\n", in.ToString().c_str());
-        CSandStormRelay ssr(pSubmittedToStormnode->vin, vchStormnodeRelaySig, nStormnodeBlockHeight, SANDSTORM_RELAY_SIG, in, out);
+        CSandStormRelay ssr(pSubmittedToStormnode->vin, vchStormnodeRelaySig, nStormnodeBlockHeight, SANDSTORM_RELAY_SIG, in, emptyOut);
         ssr.Sign(strStormnodeSharedKey);
         ssr.Relay();
     }
@@ -2504,19 +2507,19 @@ void CSandstormPool::RelaySignaturesAnon(std::vector<CTxIn>& vin)
 void CSandstormPool::RelayInAnon(std::vector<CTxIn>& vin, std::vector<CTxOut>& vout)
 {
     //empty in/out
-    CTxOut out;
-    CTxIn in;
+    CTxOut emptyOut;
+    CTxIn emptyIn;
 
     BOOST_FOREACH(CTxIn& in, vin){
         LogPrintf("RelayInAnon - in %s\n", in.ToString().c_str());
-        CSandStormRelay ssr(pSubmittedToStormnode->vin, vchStormnodeRelaySig, nStormnodeBlockHeight, SANDSTORM_RELAY_IN, in, out);
+        CSandStormRelay ssr(pSubmittedToStormnode->vin, vchStormnodeRelaySig, nStormnodeBlockHeight, SANDSTORM_RELAY_IN, in, emptyOut);
         ssr.Sign(strStormnodeSharedKey);
         ssr.Relay();
     }
 
     BOOST_FOREACH(CTxOut& out, vout){
         LogPrintf("RelayInAnon - out %s\n", out.ToString().c_str());
-        CSandStormRelay ssr(pSubmittedToStormnode->vin, vchStormnodeRelaySig, nStormnodeBlockHeight, SANDSTORM_RELAY_OUT, in, out);
+        CSandStormRelay ssr(pSubmittedToStormnode->vin, vchStormnodeRelaySig, nStormnodeBlockHeight, SANDSTORM_RELAY_OUT, emptyIn, out);
         ssr.Sign(strStormnodeSharedKey);
         ssr.Relay();
     }
