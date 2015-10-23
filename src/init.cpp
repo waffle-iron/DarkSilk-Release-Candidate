@@ -12,7 +12,6 @@
 #include "net.h"
 #include "util.h"
 #include "ui_interface.h"
-#include "checkpoints.h"
 #include "activestormnode.h"
 #include "stormnodeman.h"
 #include "spork.h"
@@ -711,12 +710,6 @@ bool AppInit2(boost::thread_group& threadGroup)
         }
     }
 #endif
-
-    if (mapArgs.count("-checkpointkey")) // ppcoin: checkpoint master priv key
-    {
-        if (!Checkpoints::SetCheckpointPrivKey(GetArg("-checkpointkey", "")))
-            InitError(_("Unable to sign checkpoint, wrong checkpointkey?\n"));
-    }
 
     BOOST_FOREACH(string strDest, mapMultiArgs["-seednode"])
         AddOneShot(strDest);
