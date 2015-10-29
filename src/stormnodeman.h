@@ -17,8 +17,8 @@
 #include "main.h"
 #include "stormnode.h"
 
-#define STORMNODES_DUMP_SECONDS               (15*60)
-#define STORMNODES_SSEG_SECONDS              (3*60*60)
+#define STORMNODES_DUMP_SECONDS                (15*60)  // 15 Minutes
+#define STORMNODES_SSEG_SECONDS              (1*60*60)  // 1 Hour 
 
 using namespace std;
 

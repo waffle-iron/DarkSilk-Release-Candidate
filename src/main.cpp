@@ -454,13 +454,11 @@ bool AreInputsStandard(const CTransaction& tx, const MapPrevTx& mapInputs)
                 int tmpExpected = ScriptSigArgsExpected(whichType2, vSolutions2);
                 
                 if (whichType2 == TX_SCRIPTHASH)
-                return false;
-
+                    return false;
                 if (tmpExpected < 0)
                     return false;
 
                 nArgsExpected += tmpExpected;
-
             }
             else
             {

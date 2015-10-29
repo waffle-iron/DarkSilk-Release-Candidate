@@ -40,8 +40,8 @@ class CActiveStormnode;
 #define STORMNODE_REJECTED                    0
 #define STORMNODE_RESET                       -1
 
-#define SANDSTORM_QUEUE_TIMEOUT                 120
-#define SANDSTORM_SIGNING_TIMEOUT               60
+#define SANDSTORM_QUEUE_TIMEOUT                 240
+#define SANDSTORM_SIGNING_TIMEOUT               120
 
 // used for anonymous relaying of inputs/outputs/sigs
 #define SANDSTORM_RELAY_IN                 1
