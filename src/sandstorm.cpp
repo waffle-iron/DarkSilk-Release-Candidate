@@ -755,7 +755,7 @@ void CSandstormPool::ChargeFees(){
                     CWalletTx wtxCollateral = CWalletTx(pwalletMain, txCollateral);
 
                     // Broadcast
-                    if (!wtxCollateral.AcceptToMemoryPool(false))
+                    if (!wtxCollateral.AcceptToMemoryPool(true))
                     {
                         // This must not fail. The transaction has already been signed and recorded.
                         LogPrintf("CSandstormPool::ChargeFees() : Error: Transaction not valid");
@@ -776,7 +776,7 @@ void CSandstormPool::ChargeFees(){
                         CWalletTx wtxCollateral = CWalletTx(pwalletMain, v.collateral);
 
                         // Broadcast
-                        if (!wtxCollateral.AcceptToMemoryPool(true))
+                        if (!wtxCollateral.AcceptToMemoryPool(false))
                         {
                             // This must not fail. The transaction has already been signed and recorded.
                             LogPrintf("CSandstormPool::ChargeFees() : Error: Transaction not valid");
