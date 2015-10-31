@@ -50,6 +50,7 @@ int RequestedStormNodeList = 0;
 void CSandstormPool::ProcessMessageSandstorm(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
 {
     if(fLiteMode) return; //disable all Sandstorm/Stormnode related functionality
+    if(IsInitialBlockDownload()) return;
 
     if (strCommand == "ssa") { //SandStorm Accept Into Pool
 
@@ -806,9 +807,9 @@ void CSandstormPool::ChargeRandomFees(){
                 with using it to stop abuse. Otherwise it could serve as an attack vector and
                 allow endless transaction that would bloat DarkSilk and make it unusable. To
                 stop these kinds of attacks 1 in 50 successful transactions are charged. This
-                adds up to a cost of 0.002DRK per transaction on average.
+                adds up to a cost of 0.001DRK per transaction on average.
             */
-            if(r <= 20)
+            if(r <= 10)
             {
                 LogPrintf("CSandstormPool::ChargeRandomFees -- charging random fees. %u\n", i);
  
@@ -2143,7 +2144,7 @@ bool CSandstormQueue::Relay()
 bool CSandstormQueue::CheckSignature()
 {
     CStormnode* psn = snodeman.Find(vin);
-    if(psn)
+    if(psn != NULL) 
     {
         std::string strMessage = vin.ToString() + boost::lexical_cast<std::string>(nDenom) + boost::lexical_cast<std::string>(time) + boost::lexical_cast<std::string>(ready);
         std::string errorMessage = "";
@@ -2153,6 +2154,7 @@ bool CSandstormQueue::CheckSignature()
 
         return true;
     }
+    
     return false;
 }
 

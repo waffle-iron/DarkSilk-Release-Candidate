@@ -148,7 +148,7 @@ public:
 
     bool IsExpired()
     {
-        return (GetTime() - addedTime) > SANDSTORM_QUEUE_TIMEOUT;// 120 seconds
+        return (GetTime() - addedTime) > SANDSTORM_QUEUE_TIMEOUT;// 240 seconds
     }
 };
 
@@ -210,7 +210,7 @@ public:
 
     bool IsExpired()
     {
-        return (GetTime() - time) > SANDSTORM_QUEUE_TIMEOUT;// 120 seconds
+        return (GetTime() - time) > SANDSTORM_QUEUE_TIMEOUT;// 240 seconds
     }
 
     bool CheckSignature();

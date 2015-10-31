@@ -36,8 +36,6 @@ std::string CSandStormRelay::ToString()
 
 bool CSandStormRelay::Sign(std::string strSharedKey)
 {
-    if(!fStormNode) return false;
-
     std::string strMessage = in.ToString() + out.ToString();
 
     CKey key2;
