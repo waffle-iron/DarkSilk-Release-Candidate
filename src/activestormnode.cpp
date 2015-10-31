@@ -308,9 +308,9 @@ bool CActiveStormnode::Register(CTxIn vin, CService service, CKey keyCollateralA
     if(psn == NULL)
     {
         LogPrintf("CActiveStormnode::Register() - Adding to Stormnode list service: %s - vin: %s\n", service.ToString().c_str(), vin.ToString().c_str());
-        CStormnode mn(service, vin, pubKeyCollateralAddress, vchStormNodeSignature, stormNodeSignatureTime, pubKeyStormnode, PROTOCOL_VERSION, donationAddress, donationPercentage);
-        mn.UpdateLastSeen(stormNodeSignatureTime);
-        snodeman.Add(mn);
+        CStormnode sn(service, vin, pubKeyCollateralAddress, vchStormNodeSignature, stormNodeSignatureTime, pubKeyStormnode, PROTOCOL_VERSION, donationAddress, donationPercentage);
+        sn.UpdateLastSeen(stormNodeSignatureTime);
+        snodeman.Add(sn);
     }
 
     //send to all peers
