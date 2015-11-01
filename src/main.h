@@ -1424,7 +1424,7 @@ protected:
     virtual void SyncTransaction(const CTransaction &tx, const CBlock *pblock, bool fConnect) =0;
     virtual void EraseFromWallet(const uint256 &hash) =0;
     virtual void SetBestChain(const CBlockLocator &locator) =0;
-    virtual void UpdatedTransaction(const uint256 &hash) =0;
+    virtual bool UpdatedTransaction(const uint256 &hash) =0;
     virtual void Inventory(const uint256 &hash) =0;
     virtual void ResendWalletTransactions(bool fForce) =0;
     friend void ::RegisterWallet(CWalletInterface*);
