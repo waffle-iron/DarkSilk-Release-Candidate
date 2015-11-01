@@ -63,16 +63,13 @@ public:
     bool SignatureValid();
     bool Sign();
 
-    ADD_SERIALIZE_METHODS;
-
-    template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-	unsigned int nSerSize = 0;
+    IMPLEMENT_SERIALIZE
+    (
         READWRITE(txHash);
         READWRITE(vinStormnode);
         READWRITE(vchStormNodeSignature);
         READWRITE(nBlockHeight);
-    }
+    )
 };
 
 class CTransactionLock
