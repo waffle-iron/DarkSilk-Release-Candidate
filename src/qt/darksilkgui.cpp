@@ -405,7 +405,7 @@ void DarkSilkGUI::createActions()
     sellsPageAction->setCheckable(true);
     tabGroup->addAction(sellsPageAction);
 
-    stormnodeManagerAction = new QAction(QIcon(":/icons/darksilk"), tr("&Sandstorm"), this);
+    stormnodeManagerAction = new QAction(QIcon(":/icons/darksilk"), tr("&Stormnode Network"), this);
     stormnodeManagerAction->setToolTip(tr("Show Stormnodes status and configure your nodes."));
     stormnodeManagerAction->setCheckable(true);
     tabGroup->addAction(stormnodeManagerAction);
