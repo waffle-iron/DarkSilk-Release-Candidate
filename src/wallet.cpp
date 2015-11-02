@@ -3576,6 +3576,9 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
                 nCredit += pcoin.first->vout[pcoin.second].nValue;
                 vwtxPrev.push_back(pcoin.first);
                 txNew.vout.push_back(CTxOut(0, scriptPubKeyOut));
+                
+                if (nCredit >= GetStakeSplitThreshold())
+                    txNew.vout.push_back(CTxOut(0, txNew.vout[1].scriptPubKey)); //split stake
 
                 LogPrint("coinstake", "CreateCoinStake : added kernel type=%d\n", whichType);
                 fKernelFound = true;
@@ -3681,9 +3684,7 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
     int64_t blockValue = nCredit;
     int64_t stormnodePayment = GetStormnodePayment(pindexPrev->nHeight+1, nReward);
 
-    if (nCredit >= GetStakeSplitThreshold())
-        txNew.vout.push_back(CTxOut(0, txNew.vout[1].scriptPubKey)); //split stake
-
+    
     // Set output amount
     if (!hasPayment && txNew.vout.size() == 3) // 2 stake outputs, stake was split, no stormnode payment
     {
