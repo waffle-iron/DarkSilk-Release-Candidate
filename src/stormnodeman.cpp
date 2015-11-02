@@ -325,7 +325,7 @@ CStormnode *CStormnodeMan::Find(const CTxIn &vin)
 
     BOOST_FOREACH(CStormnode& sn, vStormnodes)
     {
-        if(sn.vin == vin)
+        if(sn.vin.prevout == vin.prevout)
             return &sn;
     }
     return NULL;
@@ -555,7 +555,7 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
         int donationPercentage;
         std::string strMessage;
 
-        // 60020 and greater
+        // 60021 and greater
         vRecv >> vin >> addr >> vchSig >> sigTime >> pubkey >> pubkey2 >> count >> current >> lastUpdated >> protocolVersion >> donationAddress >> donationPercentage;
  
         // make sure signature isn't in the future (past is OK)

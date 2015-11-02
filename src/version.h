@@ -35,21 +35,21 @@ static const int DATABASE_VERSION = 60509;
 // network protocol versioning
 //
 
-static const int PROTOCOL_VERSION = 60020;
+static const int PROTOCOL_VERSION = 60021;
 
 // intial proto version, to be increased after version/verack negotiation
-static const int INIT_PROTO_VERSION = 60020;
+static const int INIT_PROTO_VERSION = 60021;
 
 // disconnect from peers older than this proto version
-static const int MIN_SANDSTORM_PROTO_VERSION = 60020;
+static const int MIN_SANDSTORM_PROTO_VERSION = 60021;
 
 // disconnect from peers older than this proto version
-static const int MIN_PEER_PROTO_VERSION = 60020;
+static const int MIN_PEER_PROTO_VERSION = 60021;
 
-static const int MIN_INSTANTX_PROTO_VERSION = 60020;
+static const int MIN_INSTANTX_PROTO_VERSION = 60021;
 
 //disconnect from Stormnodes older than this proto version
-static const int MIN_SN_PROTO_VERSION = 60020;
+static const int MIN_SN_PROTO_VERSION = 60021;
 
 // nTime field added to CAddress, starting with this version;
 // if possible, avoid requesting addresses nodes older than this
@@ -60,12 +60,12 @@ static const int NOBLKS_VERSION_START = 60002;
 static const int NOBLKS_VERSION_END = 60006;
 
 // BIP 0031, pong message, is enabled for all versions AFTER this one
-static const int BIP0031_VERSION = 60020;
+static const int BIP0031_VERSION = 60021;
 
 // "mempool" command, enhanced "getdata" behavior starts with this version:
 static const int MEMPOOL_GD_VERSION = 60002;
 
 // reject blocks with non-canonical signatures starting from this version
-static const int CANONICAL_BLOCK_SIG_VERSION = 60020;
+static const int CANONICAL_BLOCK_SIG_VERSION = 60021;
 
 #endif

@@ -766,7 +766,8 @@ bool CWallet::AddToWalletIfInvolvingMe(const CTransaction& tx, const CBlock* pbl
     return false;
 }
 
-void CWallet::SyncTransaction(const CTransaction& tx, const CBlock* pblock, bool fConnect) {
+void CWallet::SyncTransaction(const CTransaction& tx, const CBlock* pblock, bool fConnect) 
+{
     if (!fConnect)
     {
         // wallets need to refund inputs when disconnecting coinstake
