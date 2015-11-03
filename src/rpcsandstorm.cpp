@@ -353,7 +353,7 @@ Value stormnode(const Array& params, bool fHelp)
         }
 
         if(activeStormnode.status == STORMNODE_REMOTELY_ENABLED) return "stormnode started remotely";
-        if(activeStormnode.status == STORMNODE_INPUT_TOO_NEW) return "stormnode input must have at least 10 confirmations";
+        if(activeStormnode.status == STORMNODE_INPUT_TOO_NEW) return "stormnode input must have at least 11 confirmations";
         if(activeStormnode.status == STORMNODE_STOPPED) return "stormnode is stopped";
         if(activeStormnode.status == STORMNODE_IS_CAPABLE) return "successfully started stormnode";
         if(activeStormnode.status == STORMNODE_NOT_CAPABLE) return "not capable stormnode: " + activeStormnode.notCapableReason;
@@ -481,7 +481,7 @@ Value stormnode(const Array& params, bool fHelp)
     if (strCommand == "debug")
     {
         if(activeStormnode.status == STORMNODE_REMOTELY_ENABLED) return "stormnode started remotely";
-        if(activeStormnode.status == STORMNODE_INPUT_TOO_NEW) return "stormnode input must have at least 10 confirmations";
+        if(activeStormnode.status == STORMNODE_INPUT_TOO_NEW) return "stormnode input must have at least 11 confirmations";
         if(activeStormnode.status == STORMNODE_IS_CAPABLE) return "successfully started stormnode";
         if(activeStormnode.status == STORMNODE_STOPPED) return "stormnode is stopped";
         if(activeStormnode.status == STORMNODE_NOT_CAPABLE) return "not capable stormnode: " + activeStormnode.notCapableReason;
