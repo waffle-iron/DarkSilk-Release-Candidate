@@ -739,7 +739,7 @@ Value stormnodelist(const Array& params, bool fHelp)
     {
         throw runtime_error(
                 "stormnodelist ( \"mode\" \"filter\" )\n"
-                "Get a list of masternodes in different modes\n"
+                "Get a list of stormnodes in different modes\n"
                 "\nArguments:\n"
                 "1. \"mode\"      (string, optional/required to use filter, defaults = status) The mode to run list in\n"
                 "2. \"filter\"    (string, optional) Filter results. Partial match by IP by default in all modes, additional matches in some modes\n"

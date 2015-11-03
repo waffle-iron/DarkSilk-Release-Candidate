@@ -1118,7 +1118,6 @@ bool CSandstormPool::AddScriptSig(const CTxIn& newVin){
 
 // check to make sure everything is signed
 bool CSandstormPool::SignaturesComplete(){
-
     BOOST_FOREACH(const CSandStormEntry& v, entries) {
         BOOST_FOREACH(const CTxSSIn& s, v.sev){
             if(!s.fHasSig) return false;
@@ -1375,7 +1374,6 @@ void CSandstormPool::CompletedTransaction(bool error, std::string lastMessageNew
         cachedLastSuccess = pindexBest->nHeight;
     }
     lastMessage = lastMessageNew;
-
     completedTransaction = true;
 }
 
@@ -1427,7 +1425,8 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
     }
 
     // ** find the coins we'll use
-    std::vector<CTxIn> vCoins;    int64_t nValueMin = CENT;
+    std::vector<CTxIn> vCoins;    
+    int64_t nValueMin = CENT;
     int64_t nValueIn = 0;
 
     // should not be less than fees in SANDSTORM_COLLATERAL + few (lets say 5) smallest denoms
@@ -1546,8 +1545,6 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
 
                 // connect to Stormnode and submit the queue request
                 if(ConnectNode((CAddress)addr, NULL, true)){
-                    
-
                     CNode* pNode = FindNode(addr);
                     if(pNode)
                     {
@@ -2144,6 +2141,7 @@ bool CSandstormQueue::Relay()
 bool CSandstormQueue::CheckSignature()
 {
     CStormnode* psn = snodeman.Find(vin);
+
     if(psn != NULL) 
     {
         std::string strMessage = vin.ToString() + boost::lexical_cast<std::string>(nDenom) + boost::lexical_cast<std::string>(time) + boost::lexical_cast<std::string>(ready);
@@ -2169,7 +2167,6 @@ void CSandstormPool::RelayFinalTransaction(const int sessionID, const CTransacti
 
 void CSandstormPool::RelayIn(const std::vector<CTxSSIn>& vin, const int64_t& nAmount, const CTransaction& txCollateral, const std::vector<CTxSSOut>& vout)
 {
-    LOCK(cs_vNodes);
 
     std::vector<CTxIn> vin2;
     std::vector<CTxOut> vout2;
@@ -2180,6 +2177,7 @@ void CSandstormPool::RelayIn(const std::vector<CTxSSIn>& vin, const int64_t& nAm
     BOOST_FOREACH(CTxSSOut out, vout)
         vout2.push_back(out);
 
+    LOCK(cs_vNodes);
     BOOST_FOREACH(CNode* pnode, vNodes)
     {
         if(!pSubmittedToStormnode) return;
@@ -2257,8 +2255,7 @@ void ThreadCheckSandStormPool()
 
                         LogPrintf("Successfully synced, asking for Stormnode list and payment list\n");
 
-                        //request full sn list only if Stormnodes.dat was updated quite a long time ago
-                        snodeman.SsegUpdate(pnode);                      
+                        snodeman.SsegUpdate(pnode);  //request full sn list only if Stormnodes.dat was updated quite a long time ago
                         pnode->PushMessage("snget"); //sync payees
                         pnode->PushMessage("getsporks"); //get current network sporks
                         RequestedStormNodeList++;
