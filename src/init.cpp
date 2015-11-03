@@ -13,6 +13,7 @@
 #include "util.h"
 #include "ui_interface.h"
 #include "activestormnode.h"
+#include "stormnode-payments.h"
 #include "stormnodeman.h"
 #include "spork.h"
 #include "stormnodeconfig.h"

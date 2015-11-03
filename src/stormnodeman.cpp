@@ -344,7 +344,7 @@ CStormnode *CStormnodeMan::Find(const CPubKey &pubKeyStormnode)
 }
 
 
-CStormnode* CStormnodeMan::FindOldestNotInVec(const std::vector<CTxIn> &vVins, int nMinimumAge, int nMinimumActiveSeconds)
+CStormnode* CStormnodeMan::FindOldestNotInVec(const std::vector<CTxIn> &vVins, int nMinimumAge)
 {
     LOCK(cs);
 
@@ -355,9 +355,11 @@ CStormnode* CStormnodeMan::FindOldestNotInVec(const std::vector<CTxIn> &vVins, i
         sn.Check();
         if(!sn.IsEnabled()) continue;
 
+        if(sn.GetStormnodeInputAge() < nMinimumAge) continue;
+
         bool found = false;
         BOOST_FOREACH(const CTxIn& vin, vVins)
-            if(sn.vin == vin)
+            if(sn.vin.prevout == vin.prevout)
             {   
                 found = true;
                 break;
@@ -365,14 +367,13 @@ CStormnode* CStormnodeMan::FindOldestNotInVec(const std::vector<CTxIn> &vVins, i
 
         if(found) continue;
 
-        if(pOldestStormnode == NULL || pOldestStormnode->GetStormnodeInputAge() < sn.GetStormnodeInputAge()){
+        if(pOldestStormnode == NULL || pOldestStormnode->SecondsSincePayment() < sn.SecondsSincePayment()){
             pOldestStormnode = &sn;
         }
     }
 
     return pOldestStormnode;
 }
-
 CStormnode *CStormnodeMan::FindRandom()
 {
     LOCK(cs);
@@ -596,6 +597,11 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
         if(pubkeyScript2.size() != 25) {
             LogPrintf("ssee - pubkey2 the wrong size\n");
             Misbehaving(pfrom->GetId(), 100);
+            return;
+        }
+
+        if(!vin.scriptSig.empty()) {
+            LogPrintf("dsee - Ignore Not Empty ScriptSig %s\n",vin.ToString().c_str());
             return;
         }
 

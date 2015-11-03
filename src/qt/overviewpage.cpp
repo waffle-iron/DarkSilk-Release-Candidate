@@ -292,6 +292,13 @@ void OverviewPage::updateSandstormProgress()
         ui->sandstormProgress->setValue(0);
         QString s(tr("No inputs detected"));
         ui->sandstormProgress->setToolTip(s);
+        // when balance is zero just show info from settings
+        QString strSettings = DarkSilkUnits::formatWithUnit(
+                    walletModel->getOptionsModel()->getDisplayUnit(),
+                    nAnonymizeDarkSilkAmount * COIN
+                ) + " / " + tr("%n Rounds", "", nSandstormRounds);
+
+        ui->labelAmountRounds->setText(strSettings);
         return;
     }
 
@@ -304,10 +311,10 @@ void OverviewPage::updateSandstormProgress()
     }
 
     //Get the anon threshold
-    int64_t nMaxToAnonymize = nAnonymizeDarkSilkAmount*COIN;
+    int64_t nMaxToAnonymize = pwalletMain->GetAnonymizableBalance(true);
 
-    // If it's more than the wallet amount, limit to that.
-    if(nMaxToAnonymize > nBalance) nMaxToAnonymize = nBalance;
+    // If it's more than the anon threshold, limit to that.
+    if(nMaxToAnonymize > nAnonymizeDarkSilkAmount*COIN) nMaxToAnonymize = nAnonymizeDarkSilkAmount*COIN;
 
     if(nMaxToAnonymize == 0) return;
 
@@ -319,7 +326,6 @@ void OverviewPage::updateSandstormProgress()
     {
         denomPart = (float)pwalletMain->GetNormalizedAnonymizedBalance() / denominatedBalance;
         denomPart = denomPart > 1 ? 1 : denomPart;
-        if(denomPart == 1 && nMaxToAnonymize > denominatedBalance) nMaxToAnonymize = denominatedBalance;
     }
 
     // % of fully anonymized balance
@@ -337,10 +343,38 @@ void OverviewPage::updateSandstormProgress()
 
     ui->sandstormProgress->setValue(progress);
 
-    std::ostringstream convert;
-    convert << "Progress: " << progress << "%, inputs have an average of " << pwalletMain->GetAverageAnonymizedRounds() << " of " << nSandstormRounds << " rounds";
-    QString s(convert.str().c_str());
-    ui->sandstormProgress->setToolTip(s);
+    QString strToolPip = tr("Progress: %1% (inputs have an average of %2 of %n rounds)", "", nSandstormRounds).arg(progress).arg(pwalletMain->GetAverageAnonymizedRounds());
+    ui->sandstormProgress->setToolTip(strToolPip);
+
+    QString strSettings;
+    if(nMaxToAnonymize >= nAnonymizeDarkSilkAmount * COIN) {
+        ui->labelAmountRounds->setToolTip(tr("Found enough compatible inputs to anonymize %1")
+                                          .arg(DarkSilkUnits::formatWithUnit(
+                                                   walletModel->getOptionsModel()->getDisplayUnit(),
+                                                   nAnonymizeDarkSilkAmount * COIN
+                                               )));
+        strSettings = DarkSilkUnits::formatWithUnit(
+                    walletModel->getOptionsModel()->getDisplayUnit(),
+                    nAnonymizeDarkSilkAmount * COIN
+                ) + " / " + tr("%n Rounds", "", nSandstormRounds);
+    } else {
+        ui->labelAmountRounds->setToolTip(tr("Not enough compatible inputs to anonymize <span style='color:red;'>%1</span>,<br/>"
+                                             "will anonymize <span style='color:red;'>%2</span> instead")
+                                          .arg(DarkSilkUnits::formatWithUnit(
+                                                   walletModel->getOptionsModel()->getDisplayUnit(),
+                                                   nAnonymizeDarkSilkAmount * COIN
+                                               ))
+                                          .arg(DarkSilkUnits::formatWithUnit(
+                                                   walletModel->getOptionsModel()->getDisplayUnit(),
+                                                   nMaxToAnonymize
+                                               )));
+        strSettings = "<span style='color:red;'>" + DarkSilkUnits::formatWithUnit(
+                    walletModel->getOptionsModel()->getDisplayUnit(),
+                    nMaxToAnonymize
+                ) + " / " + tr("%n Rounds", "", nSandstormRounds) + "</span>";
+    }
+
+    ui->labelAmountRounds->setText(strSettings);
 }
 
 
@@ -355,15 +389,6 @@ void OverviewPage::sandStormStatus()
         lastNewBlock = GetTime();
 
         updateSandstormProgress();
-
-        QString strSettings(" " + tr("Rounds"));
-        strSettings.prepend(QString::number(nSandstormRounds)).prepend(" / ");
-        strSettings.prepend(DarkSilkUnits::formatWithUnit(
-            walletModel->getOptionsModel()->getDisplayUnit(),
-            nAnonymizeDarkSilkAmount * COIN)
-        );
-
-        ui->labelAmountRounds->setText(strSettings);
     }
 
     if(!fEnableSandstorm) {

@@ -49,6 +49,15 @@ SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
     connect(ui->pushButtonCoinControl, SIGNAL(clicked()), this, SLOT(coinControlButtonClicked()));
     connect(ui->checkBoxCoinControlChange, SIGNAL(stateChanged(int)), this, SLOT(coinControlChangeChecked(int)));
     connect(ui->lineEditCoinControlChange, SIGNAL(textEdited(const QString &)), this, SLOT(coinControlChangeEdited(const QString &)));
+    
+    // DarkSilk specific
+    if(fLiteMode) {
+        ui->checkUseSandstorm->setChecked(false);
+        ui->checkUseSandstorm->setVisible(false);
+        ui->checkInstantX->setVisible(false);
+        CoinControlDialog::coinControl->useSandStorm = false;
+        CoinControlDialog::coinControl->useInstantX = false;
+    }
     connect(ui->checkUseSandstorm, SIGNAL(stateChanged ( int )), this, SLOT(updateDisplayUnit()));
     connect(ui->checkInstantX, SIGNAL(stateChanged ( int )), this, SLOT(updateInstantX()));
 
@@ -512,6 +521,8 @@ void SendCoinsDialog::coinControlUpdateLabels()
         if(entry)
             CoinControlDialog::payAmounts.append(entry->getValue().amount);
     }
+
+    ui->checkUseSandstorm->setChecked(CoinControlDialog::coinControl->useSandStorm);
 
     if (CoinControlDialog::coinControl->HasSelected())
     {

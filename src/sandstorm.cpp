@@ -1426,25 +1426,28 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
 
     // ** find the coins we'll use
     std::vector<CTxIn> vCoins;    
-    int64_t nValueMin = CENT;
-    int64_t nValueIn = 0;
+    CAmount nValueMin = CENT;
+    CAmount nValueIn = 0;
+
+    CAmount nOnlyDenominatedBalance;
+    CAmount nBalanceNeedsDenominated;
 
     // should not be less than fees in SANDSTORM_COLLATERAL + few (lets say 5) smallest denoms
-    int64_t nLowestDenom = SANDSTORM_COLLATERAL + sandStormDenominations[sandStormDenominations.size() - 1]*5;
+    CAmount nLowestDenom = SANDSTORM_COLLATERAL + sandStormDenominations[sandStormDenominations.size() - 1]*5;
 
     // if there are no SS collateral inputs yet
     if(!pwalletMain->HasCollateralInputs())
         // should have some additional amount for them
         nLowestDenom += SANDSTORM_COLLATERAL*4;
 
-    int64_t nBalanceNeedsAnonymized = nAnonymizeDarkSilkAmount*COIN - pwalletMain->GetAnonymizedBalance();
+    CAmount nBalanceNeedsAnonymized = nAnonymizeDarkSilkAmount*COIN - pwalletMain->GetAnonymizedBalance();
 
     // if balanceNeedsAnonymized is more than pool max, take the pool max
     if(nBalanceNeedsAnonymized > SANDSTORM_POOL_MAX) nBalanceNeedsAnonymized = SANDSTORM_POOL_MAX;
 
     // if balanceNeedsAnonymized is more than non-anonymized, take non-anonymized
-    int64_t nBalanceNotYetAnonymized = pwalletMain->GetBalance() - pwalletMain->GetAnonymizedBalance();
-    if(nBalanceNeedsAnonymized > nBalanceNotYetAnonymized) nBalanceNeedsAnonymized = nBalanceNotYetAnonymized;
+    CAmount nAnonymizableBalance = pwalletMain->GetAnonymizableBalance();
+    if(nBalanceNeedsAnonymized > nAnonymizableBalance) nBalanceNeedsAnonymized = nAnonymizableBalance;
 
     if(nBalanceNeedsAnonymized < nLowestDenom)
     {
@@ -1463,7 +1466,13 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
 
         if (pwalletMain->SelectCoinsDark(nValueMin, 9999999*COIN, vCoins, nValueIn, -2, 0))
         {
-            if(!fDryRun) return CreateDenominated(nBalanceNeedsAnonymized);
+            nOnlyDenominatedBalance = pwalletMain->GetDenominatedBalance(true, false, false);
+            nBalanceNeedsDenominated = nBalanceNeedsAnonymized - nOnlyDenominatedBalance;
+
+            if(nBalanceNeedsDenominated > nValueIn) nBalanceNeedsDenominated = nValueIn;
+
+            if(!fDryRun) return CreateDenominated(nBalanceNeedsDenominated);            
+
             return true;
         } else {
             LogPrintf("DoAutomaticDenominating : Can't denominate - no compatible inputs left\n");
@@ -1472,6 +1481,11 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
         }
 
     }
+
+    nOnlyDenominatedBalance = pwalletMain->GetDenominatedBalance(true, false, false);
+    nBalanceNeedsDenominated = nBalanceNeedsAnonymized - nOnlyDenominatedBalance;
+
+    if(!fDryRun && nBalanceNeedsDenominated > nOnlyDenominatedBalance) return CreateDenominated(nBalanceNeedsDenominated);
 
     //check to see if we have the collateral sized inputs, it requires these
     if(!pwalletMain->HasCollateralInputs()){
@@ -1487,14 +1501,6 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
     if(!sessionFoundStormnode){
         int nUseQueue = rand()%100;
         UpdateState(POOL_STATUS_ACCEPTING_ENTRIES);
-
-        sessionTotalValue = pwalletMain->GetTotalValue(vCoins);
-
-        //randomize the amounts we mix
-        if(sessionTotalValue > nBalanceNeedsAnonymized) sessionTotalValue = nBalanceNeedsAnonymized;
-
-        double fSilkSubmitted = (sessionTotalValue / CENT);
-        LogPrintf("Submitting Sandstorm for %f DRKSLK CENT - sessionTotalValue %d\n", fSilkSubmitted, sessionTotalValue);
 
         if(pwalletMain->GetDenominatedBalance(true, true) > 0){ //get denominated unconfirmed inputs
             LogPrintf("DoAutomaticDenominating -- Found unconfirmed denominated outputs, will wait till they confirm to continue.\n");
@@ -1545,8 +1551,8 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
 
                 // connect to Stormnode and submit the queue request
                 if(ConnectNode((CAddress)addr, NULL, true)){
-                    CNode* pNode = FindNode(addr);
-                    if(pNode)
+                    CNode* pnode = FindNode(addr);
+                    if(pnode)
                     {
                         std::string strReason;
                         if(txCollateral == CTransaction()){
@@ -1566,8 +1572,8 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
                         vecStormnodesUsed.push_back(ssq.vin);
                         sessionDenom = ssq.nDenom;
 
-                        pNode->PushMessage("ssa", sessionDenom, txCollateral);
-                        LogPrintf("DoAutomaticDenominating --- connected (from queue), sending ssa for %d %d - %s\n", sessionDenom, GetDenominationsByAmount(sessionTotalValue), pNode->addr.ToString().c_str());
+                        pnode->PushMessage("ssa", sessionDenom, txCollateral);
+                        LogPrintf("DoAutomaticDenominating --- connected (from queue), sending ssa for %d - %s\n", sessionDenom, pnode->addr.ToString().c_str());
                         strAutoDenomResult = "";
                         return true;
                     }
@@ -1628,13 +1634,14 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
                     pSubmittedToStormnode = psn;
                     vecStormnodesUsed.push_back(psn->vin);
 
-                    std::vector<int64_t> vecAmounts;
+                    std::vector<CAmount> vecAmounts;
                     pwalletMain->ConvertList(vCoins, vecAmounts);
-                    sessionDenom = GetDenominationsByAmounts(vecAmounts);
+                    // try to get random denoms out of vecAmounts
+                    while(sessionDenom == 0)
+                        sessionDenom = GetDenominationsByAmounts(vecAmounts, true);
 
                     pnode->PushMessage("ssa", sessionDenom, txCollateral);
-                    LogPrintf("DoAutomaticDenominating --- connected, sending ssa for %d - denom %d\n", sessionDenom, GetDenominationsByAmount(sessionTotalValue));
-                    strAutoDenomResult = "";
++                    LogPrintf("DoAutomaticDenominating --- connected, sending ssa for %d\n", sessionDenom);                    strAutoDenomResult = "";
                     return true;
                 }
             } else {
@@ -1938,7 +1945,7 @@ int CSandstormPool::GetDenominations(const std::vector<CTxSSOut>& vout){
 }
 
 // return a bitshifted integer representing the denominations in this list
-int CSandstormPool::GetDenominations(const std::vector<CTxOut>& vout){
+int CSandstormPool::GetDenominations(const std::vector<CTxOut>& vout, bool fRandDenom){
     std::vector<pair<int64_t, int> > denomUsed;
 
     // make a list of denominations, with zero uses
@@ -1962,7 +1969,7 @@ int CSandstormPool::GetDenominations(const std::vector<CTxOut>& vout){
     // if the denomination is used, shift the bit on.
     // then move to the next
     BOOST_FOREACH (PAIRTYPE(int64_t, int)& s, denomUsed)
-        denom |= s.second << c++;
+        denom |= ((fRandDenom ? rand()%2 : 1) * s.second) << c++;
 
     // Function returns as follows:
     //
@@ -1975,7 +1982,7 @@ int CSandstormPool::GetDenominations(const std::vector<CTxOut>& vout){
 }
 
 
-int CSandstormPool::GetDenominationsByAmounts(std::vector<int64_t>& vecAmount){
+int CSandstormPool::GetDenominationsByAmounts(std::vector<int64_t>& vecAmount, bool fRandDenom){
     CScript e = CScript();
     std::vector<CTxOut> vout1;
 
@@ -1988,7 +1995,7 @@ int CSandstormPool::GetDenominationsByAmounts(std::vector<int64_t>& vecAmount){
         nOutputs++;
     }
 
-    return GetDenominations(vout1);
+    return GetDenominations(vout1, fRandDenom);
 }
 
 int CSandstormPool::GetDenominationsByAmount(int64_t nAmount, int nDenomTarget){
@@ -2021,12 +2028,6 @@ int CSandstormPool::GetDenominationsByAmount(int64_t nAmount, int nDenomTarget){
             nOutputs++;
         }
         LogPrintf("GetDenominationsByAmount --- %d nOutputs %d\n", v, nOutputs);
-    }
-
-    //add non-denom left overs as change
-    if(nValueLeft > 0){
-        CTxOut o(nValueLeft, e);
-        vout1.push_back(o);
     }
 
     return GetDenominations(vout1);

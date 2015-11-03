@@ -19,6 +19,7 @@
 #include "sandstorm.h"
 #include "instantx.h"
 #include "stormnode.h"
+#include "stormnode-payments.h"
 #include "chainparams.h"
 #include "smessage.h"
 
@@ -1322,6 +1323,40 @@ int64_t CWallet::GetBalanceNoLocks() const
     return nTotal;
 }
 
+CAmount CWallet::GetAnonymizableBalance(bool includeAlreadyAnonymized) const
+{
+    if(fLiteMode) return 0;
+
+    CAmount nTotal = 0;
+    {
+        LOCK2(cs_main, cs_wallet);
+        for (map<uint256, CWalletTx>::const_iterator it = mapWallet.begin(); it != mapWallet.end(); ++it)
+        {
+            const CWalletTx* pcoin = &(*it).second;
+
+            if (pcoin->IsTrusted())
+            {
+                uint256 hash = (*it).first;
+                for (unsigned int i = 0; i < pcoin->vout.size(); i++)
+                {
+                    CTxIn vin = CTxIn(hash, i);
+
+                    if(IsSpent(hash, i) || !IsMine(pcoin->vout[i])) continue;
+                    if (pcoin->IsCoinBase() && pcoin->GetBlocksToMaturity() > 0) continue; // do not count immature
+                    if(pcoin->vout[i].nValue == 42000*COIN) continue; // do not count SN-like outputs
+
+                    int rounds = GetInputSandstormRounds(vin);
+                    if(rounds >=-2 && (rounds < nSandstormRounds || (includeAlreadyAnonymized && rounds >= nSandstormRounds))) {
+                        nTotal += pcoin->vout[i].nValue;
+                    }
+                }
+            }
+        }
+    }
+
+    return nTotal;
+}
+
 CAmount CWallet::GetAnonymizedBalance() const
 {
     if(fLiteMode) return 0;
@@ -1431,41 +1466,38 @@ CAmount CWallet::GetNormalizedAnonymizedBalance() const
     return nTotal;
 }
 
-CAmount CWallet::GetDenominatedBalance(bool onlyDenom, bool onlyUnconfirmed) const
+CAmount CWallet::GetDenominatedBalance(bool onlyDenom, bool onlyUnconfirmed, bool includeAlreadyAnonymized) const
 {
-    int64_t nTotal = 0;
+    CAmount nTotal = 0;
     {
-        LOCK(cs_wallet);
+        LOCK2(cs_main, cs_wallet);
         for (map<uint256, CWalletTx>::const_iterator it = mapWallet.begin(); it != mapWallet.end(); ++it)
         {
             const CWalletTx* pcoin = &(*it).second;
 
-            int nDepth = pcoin->GetDepthInMainChain();
+            int nDepth = pcoin->GetDepthInMainChain(false);
 
             // skip conflicted
             if(nDepth < 0) continue;
 
             bool unconfirmed = (!IsFinalTx(*pcoin) || (!pcoin->IsTrusted() && nDepth == 0));
             if(onlyUnconfirmed != unconfirmed) continue;
+            uint256 hash = (*it).first;
 
             for (unsigned int i = 0; i < pcoin->vout.size(); i++)
             {
-                //isminetype mine = IsMine(pcoin->vout[i]);
-        //bool mine = IsMine(pcoin->vout[i]);
-                //COutput out = COutput(pcoin, i, nDepth, (mine & ISMINE_SPENDABLE) != ISMINE_NO);
-        //COutput out = COutput(pcoin, i, nDepth, mine);
-
-                //if(IsSpent(out.tx->GetHash(), i)) continue;
-        if(pcoin->IsSpent(i)) continue;
+                if(IsSpent(hash, i)) continue;
                 if(!IsMine(pcoin->vout[i])) continue;
                 if(onlyDenom != IsDenominatedAmount(pcoin->vout[i].nValue)) continue;
+
+                CTxIn vin = CTxIn(hash, i);
+                int rounds = GetInputSandstormRounds(vin);
+                if(!includeAlreadyAnonymized && rounds >= nSandstormRounds) continue;
 
                 nTotal += pcoin->vout[i].nValue;
             }
         }
     }
-
-
 
     return nTotal;
 }
@@ -2311,7 +2343,7 @@ bool CWallet::SelectCoinsByDenominations(int nDenom, int64_t nValueMin, int64_t 
     return (nValueRet >= nValueMin && fFound100000 && fFound10000 && fFound1000 && fFound100 && fFound10 && fFound1 && fFoundDot1);
 }
 
-bool CWallet::SelectCoinsDark(int64_t nValueMin, int64_t nValueMax, std::vector<CTxIn>& setCoinsRet, int64_t& nValueRet, int nSandstormRoundsMin, int nSandstormRoundsMax) const
+bool CWallet::SelectCoinsDark(CAmount nValueMin, CAmount nValueMax, std::vector<CTxIn>& setCoinsRet, CAmount& nValueRet, int nSandstormRoundsMin, int nSandstormRoundsMax) const
 {
     CCoinControl *coinControl=NULL;
 
@@ -2329,8 +2361,10 @@ bool CWallet::SelectCoinsDark(int64_t nValueMin, int64_t nValueMax, std::vector<
     //the first thing we get is a fee input, then we'll use as many denominated as possible. then the rest
     BOOST_FOREACH(const COutput& out, vCoins)
     {
-        //there's no reason to allow inputs less than 1 COIN into Sandstorm (other than denominations smaller than that amount)
-        if(out.tx->vout[out.i].nValue < 1*COIN && !IsDenominatedAmount(out.tx->vout[out.i].nValue)) continue;
+        //do not allow inputs less than 1 CENT
+        if(out.tx->vout[out.i].nValue < CENT) continue;
+        //do not allow collaterals to be selected
+        if(IsCollateralAmount(out.tx->vout[out.i].nValue)) continue;
         if(fStormNode && out.tx->vout[out.i].nValue == 42000*COIN) continue; //stormnode input
 
         if(nValueRet + out.tx->vout[out.i].nValue <= nValueMax){
@@ -3667,10 +3701,11 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
     }
 
     CScript payee;
+    CTxIn vin;
     bool hasPayment = true;
     if(bStormNodePayment) {
         //spork
-        if(!stormnodePayments.GetBlockPayee(pindexPrev->nHeight+1, payee)){
+        if(!stormnodePayments.GetBlockPayee(pindexPrev->nHeight+1, payee, vin)){
             CStormnode* winningNode = snodeman.GetCurrentStormNode(1);
             if(winningNode){
                 payee = GetScriptForDestination(winningNode->pubkey.GetID());

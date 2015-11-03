@@ -115,7 +115,7 @@ public:
     CStormnode* Find(const CPubKey& pubKeyStormnode);
 
     //Find an entry thta do not match every entry provided vector
-    CStormnode* FindOldestNotInVec(const std::vector<CTxIn> &vVins, int nMinimumAge, int nMinimumActiveSeconds);
+    CStormnode* FindOldestNotInVec(const std::vector<CTxIn> &vVins, int nMinimumAge);
 
     // Find a random entry
     CStormnode* FindRandom();

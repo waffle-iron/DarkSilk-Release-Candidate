@@ -270,6 +270,7 @@ HEADERS += src/qt/darksilkgui.h \
     src/qt/flowlayout.h \
     src/qt/sandstormconfig.h \
     src/stormnode.h \ 
+    src/stormnode-payments.h \
     src/stormnode-pos.h \
     src/sandstorm.h \    
     src/sandstorm-relay.h \
@@ -391,6 +392,7 @@ SOURCES += src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
     src/qt/flowlayout.cpp \
     src/qt/sandstormconfig.cpp \
     src/stormnode.cpp \
+    src/stormnode-payments.cpp \
     src/stormnode-pos.cpp \
     src/sandstorm.cpp \
     src/sandstorm-relay.cpp \

@@ -22,6 +22,7 @@
 #include "instantx.h"
 #include "sandstorm.h"
 #include "stormnodeman.h"
+#include "stormnode-payments.h"
 #include "spork.h"
 #include "smessage.h"
 #include "market.h"
@@ -2443,7 +2444,8 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
                     bool foundPaymentAndPayee = false;
 
                     CScript payee;
-                    if(!stormnodePayments.GetBlockPayee(pindexBest->nHeight+1, payee) || payee == CScript()){
+                    CTxIn vin;
+                    if(!stormnodePayments.GetBlockPayee(pindexBest->nHeight+1, payee, vin) || payee == CScript()){                        
                         foundPayee = true; //doesn't require a specific payee
                         foundPaymentAmount = true;
                         foundPaymentAndPayee = true;
@@ -2786,6 +2788,17 @@ bool ProcessBlock(CNode* pfrom, CBlock* pblock)
 
     if(!fLiteMode){
         if (!fImporting && !fReindex && pindexBest->nHeight > Checkpoints::GetTotalBlocksEstimate()){
+
+            CScript payee;
+            CTxIn vin;
+            if(stormnodePayments.GetBlockPayee(pindexBest->nHeight, payee, vin)){
+                //UPDATE STORMNODE LAST PAID TIME
+                CStormnode* psn = snodeman.Find(vin);
+                if(psn != NULL) psn->nLastPaid = GetAdjustedTime(); 
+
+                LogPrintf("ProcessBlock() : Update Stormnode Last Paid Time - %d\n", pindexBest->nHeight);
+            }
+
             sandStormPool.NewBlock();
             stormnodePayments.ProcessBlock(GetHeight()+10);
             snscan.DoStormnodePOSChecks();

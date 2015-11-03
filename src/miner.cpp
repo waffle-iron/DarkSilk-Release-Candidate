@@ -8,6 +8,7 @@
 #include "miner.h"
 #include "kernel.h"
 #include "stormnodeman.h"
+#include "stormnode-payments.h"
 
 
 using namespace std;

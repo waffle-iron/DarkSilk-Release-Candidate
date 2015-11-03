@@ -11,6 +11,7 @@
 #include "stormnode.h"
 #include "activestormnode.h"
 #include "stormnodeman.h"
+#include "stormnode-payments.h"
 #include "sandstorm-relay.h"
 
 class CTxIn;
@@ -276,7 +277,6 @@ public:
     int sessionDenom; //Users must submit an denom matching this
     int sessionUsers; //N Users have said they'll join
     bool sessionFoundStormnode; //If we've found a compatible stormnode
-    int64_t sessionTotalValue; //used for autoDenom
     std::vector<CTransaction> vecSessionCollateral;
 
     int cachedLastSuccess;
@@ -467,14 +467,14 @@ public:
     bool CreateDenominated(int64_t nTotalValue);
     
     // get the denominations for a list of outputs (returns a bitshifted integer)
-    int GetDenominations(const std::vector<CTxOut>& vout);
+    int GetDenominations(const std::vector<CTxOut>& vout, bool fRandDenom = false);
     int GetDenominations(const std::vector<CTxSSOut>& vout);
     
     void GetDenominationsToString(int nDenom, std::string& strDenom);
     
     // get the denominations for a specific amount of darksilk.
     int GetDenominationsByAmount(int64_t nAmount, int nDenomTarget=0);
-    int GetDenominationsByAmounts(std::vector<int64_t>& vecAmount);
+    int GetDenominationsByAmounts(std::vector<int64_t>& vecAmount, bool fRandDenom = false);
 
 
     //
