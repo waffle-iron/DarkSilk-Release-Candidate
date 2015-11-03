@@ -217,7 +217,9 @@ bool CActiveStormnode::Sseep(CTxIn vin, CService service, CKey keyStormnode, CPu
             snodeman.Remove(psn->vin);
         else
             psn->UpdateLastSeen();
-    } else {
+    } 
+    else 
+    {
     	// Seems like we are trying to send a ping while the stormnode is not registered in the network
     	retErrorMessage = "Sandstorm Stormnode List doesn't include our stormnode, Shutting down stormnode pinging service! " + vin.ToString();
     	LogPrintf("CActiveStormnode::Sseep() - Error: %s\n", retErrorMessage.c_str());
@@ -391,6 +393,7 @@ bool CActiveStormnode::GetStormNodeVinForPubKey(std::string collateralAddress, C
 }
 
 bool CActiveStormnode::GetStormNodeVinForPubKey(std::string collateralAddress, CTxIn& vin, CPubKey& pubkey, CKey& secretKey, std::string strTxHash, std::string strOutputIndex) {
+    
     CScript pubScript;
 
     // Find possible candidates
