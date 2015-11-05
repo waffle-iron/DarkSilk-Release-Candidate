@@ -1,4 +1,4 @@
-**DarkSilk (DRKSLK) Release Candidate for Version 1.0.0.0**
+# **DarkSilk (DRKSLK) Release Candidate for Version 1.0.0.0**
 
 (FOR TESTING PURPOSES ONLY)
 
@@ -7,26 +7,26 @@ DarkSilk Integration/Staging Tree
 
 **Copyright (c) 2015 The DarkSilk Developers**
 
-What is DarkSilk?
+#### What is DarkSilk?
 ----------------
-Algorithm: Scrypt
-Coin Suffix: DRKSLK
-PoW Period: 42,002 Blocks
-PoW Target Spacing: 60 Seconds
-PoW Difficulty Retarget: 10 Blocks
-PoW Reward per Block: 42 DRKSLK
-Full Confirmation: 10 Blocks
-Maturity: 42 Blocks
-PoS Target Spacing: 64 Seconds
-PoS Difficulty Retarget: 10 Blocks
-PoS Reward: 1 DRKSLK Static PoS Reward
-Minimum Confirmations for Stake: 420 Blocks
-PoS Min: 4 Hours
-PoS Max: Unlimited
-Stormnode Collateral Amount: 42000 DRKSLK
-Stormnode Min Confirmation: 10 Blocks
-Total Coins: 90,000,000 DRKSLK
-Block Size: 50MB (50X Bitcoin Core)
+* Algorithm: Scrypt
+* Coin Suffix: DRKSLK
+* PoW Period: 42,002 Blocks
+* PoW Target Spacing: 60 Seconds
+* PoW Difficulty Retarget: 10 Blocks
+* PoW Reward per Block: 42 DRKSLK
+* Full Confirmation: 10 Blocks
+* Maturity: 42 Blocks
+* PoS Target Spacing: 64 Seconds
+* PoS Difficulty Retarget: 10 Blocks
+* PoS Reward: 1 DRKSLK Static PoS Reward
+* Minimum Confirmations for Stake: 420 Blocks
+* PoS Min: 4 Hours
+* PoS Max: Unlimited
+* Stormnode Collateral Amount: 42000 DRKSLK
+* Stormnode Min Confirmation: 10 Blocks
+* Total Coins: 90,000,000 DRKSLK
+* Block Size: 50MB (50X Bitcoin Core)
 
 DarkSilk is a new digital currency that enables instant payments to anyone, anywhere in the world. DarkSilk uses peer-to-peer technology over I2P/Tor/ClearNet to operate securly with no central authority (centralisation): managing transactions and issuing currency (DRKSLK) are carried out collectively by the DarkSilk network. DarkSilk is the name of open source software which enables the use of the currency DRKSLK.
 
