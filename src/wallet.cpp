@@ -1292,26 +1292,11 @@ void CWallet::ResendWalletTransactions(bool fForce)
 //
 
 
-int64_t CWallet::GetBalance() const
+CAmount CWallet::GetBalance() const
 {
-    int64_t nTotal = 0;
+    CAmount nTotal = 0;
     {
         LOCK2(cs_main, cs_wallet);
-        for (map<uint256, CWalletTx>::const_iterator it = mapWallet.begin(); it != mapWallet.end(); ++it)
-        {
-            const CWalletTx* pcoin = &(*it).second;
-            if (pcoin->IsTrusted())
-                nTotal += pcoin->GetAvailableCredit();
-        }
-    }
-
-    return nTotal;
-}
-
-int64_t CWallet::GetBalanceNoLocks() const
-{
-    int64_t nTotal = 0;
-    {
         for (map<uint256, CWalletTx>::const_iterator it = mapWallet.begin(); it != mapWallet.end(); ++it)
         {
             const CWalletTx* pcoin = &(*it).second;
@@ -1361,7 +1346,7 @@ CAmount CWallet::GetAnonymizedBalance() const
 {
     if(fLiteMode) return 0;
     
-    int64_t nTotal = 0;
+    CAmount nTotal = 0;
     {
         LOCK(cs_wallet);
         for (map<uint256, CWalletTx>::const_iterator it = mapWallet.begin(); it != mapWallet.end(); ++it)
@@ -1434,7 +1419,7 @@ double CWallet::GetAverageAnonymizedRounds() const
 
 CAmount CWallet::GetNormalizedAnonymizedBalance() const
 {
-    int64_t nTotal = 0;
+    CAmount nTotal = 0;
 
     {
         LOCK(cs_wallet);
@@ -1503,9 +1488,9 @@ CAmount CWallet::GetDenominatedBalance(bool onlyDenom, bool onlyUnconfirmed, boo
 }
 
 
-int64_t CWallet::GetUnconfirmedBalance() const
+CAmount CWallet::GetUnconfirmedBalance() const
 {
-    int64_t nTotal = 0;
+    CAmount nTotal = 0;
     {
         LOCK2(cs_main, cs_wallet);
         for (map<uint256, CWalletTx>::const_iterator it = mapWallet.begin(); it != mapWallet.end(); ++it)
@@ -1518,9 +1503,9 @@ int64_t CWallet::GetUnconfirmedBalance() const
     return nTotal;
 }
 
-int64_t CWallet::GetImmatureBalance() const
+CAmount CWallet::GetImmatureBalance() const
 {
-    int64_t nTotal = 0;
+    CAmount nTotal = 0;
     {
         LOCK2(cs_main, cs_wallet);
         for (map<uint256, CWalletTx>::const_iterator it = mapWallet.begin(); it != mapWallet.end(); ++it)

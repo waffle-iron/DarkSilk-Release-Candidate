@@ -93,7 +93,7 @@ Value sandstorm(const Array& params, bool fHelp)
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid darksilk address");
 
     // Amount
-    int64_t nAmount = AmountFromValue(params[1]);
+    CAmount nAmount = AmountFromValue(params[1]);
 
     // Wallet comments
     CWalletTx wtx;
