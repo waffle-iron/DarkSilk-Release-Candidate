@@ -1294,7 +1294,7 @@ void CWallet::ResendWalletTransactions(bool fForce)
 
 CAmount CWallet::GetBalance() const
 {
-    CAmount nTotal = 0;
+    int64_t nTotal = 0;
     {
         LOCK2(cs_main, cs_wallet);
         for (map<uint256, CWalletTx>::const_iterator it = mapWallet.begin(); it != mapWallet.end(); ++it)
@@ -1312,7 +1312,7 @@ CAmount CWallet::GetAnonymizableBalance(bool includeAlreadyAnonymized) const
 {
     if(fLiteMode) return 0;
 
-    CAmount nTotal = 0;
+    int64_t nTotal = 0;
     {
         LOCK2(cs_main, cs_wallet);
         for (map<uint256, CWalletTx>::const_iterator it = mapWallet.begin(); it != mapWallet.end(); ++it)
@@ -1346,7 +1346,7 @@ CAmount CWallet::GetAnonymizedBalance() const
 {
     if(fLiteMode) return 0;
     
-    CAmount nTotal = 0;
+    int64_t nTotal = 0;
     {
         LOCK(cs_wallet);
         for (map<uint256, CWalletTx>::const_iterator it = mapWallet.begin(); it != mapWallet.end(); ++it)
@@ -1419,7 +1419,7 @@ double CWallet::GetAverageAnonymizedRounds() const
 
 CAmount CWallet::GetNormalizedAnonymizedBalance() const
 {
-    CAmount nTotal = 0;
+    int64_t nTotal = 0;
 
     {
         LOCK(cs_wallet);
@@ -1453,7 +1453,7 @@ CAmount CWallet::GetNormalizedAnonymizedBalance() const
 
 CAmount CWallet::GetDenominatedBalance(bool onlyDenom, bool onlyUnconfirmed, bool includeAlreadyAnonymized) const
 {
-    CAmount nTotal = 0;
+    int64_t nTotal = 0;
     {
         LOCK2(cs_main, cs_wallet);
         for (map<uint256, CWalletTx>::const_iterator it = mapWallet.begin(); it != mapWallet.end(); ++it)
@@ -1490,7 +1490,7 @@ CAmount CWallet::GetDenominatedBalance(bool onlyDenom, bool onlyUnconfirmed, boo
 
 CAmount CWallet::GetUnconfirmedBalance() const
 {
-    CAmount nTotal = 0;
+    int64_t nTotal = 0;
     {
         LOCK2(cs_main, cs_wallet);
         for (map<uint256, CWalletTx>::const_iterator it = mapWallet.begin(); it != mapWallet.end(); ++it)
@@ -1505,7 +1505,7 @@ CAmount CWallet::GetUnconfirmedBalance() const
 
 CAmount CWallet::GetImmatureBalance() const
 {
-    CAmount nTotal = 0;
+    int64_t nTotal = 0;
     {
         LOCK2(cs_main, cs_wallet);
         for (map<uint256, CWalletTx>::const_iterator it = mapWallet.begin(); it != mapWallet.end(); ++it)
