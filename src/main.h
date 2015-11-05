@@ -458,11 +458,11 @@ public:
     // and bypass the constness. This is safe, as they update the entire
     // structure, including the hash.
     static const int32_t CURRENT_VERSION=1;
-    int32_t nVersion;
-    uint32_t nTime;
+    int nVersion;
+    unsigned int nTime;
     std::vector<CTxIn> vin;
     std::vector<CTxOut> vout;
-    uint32_t nLockTime;
+    unsigned int nLockTime;
 
     // Denial-of-service detection:
     mutable int nDoS;
@@ -473,19 +473,22 @@ public:
         SetNull();
     }
 
+    CTransaction(int nVersion, unsigned int nTime, const std::vector<CTxIn>& vin, const std::vector<CTxOut>& vout, unsigned int nLockTime)
+        : nVersion(nVersion), nTime(nTime), vin(vin), vout(vout), nLockTime(nLockTime), nDoS(0)
+    {
+    }
+
     /** Convert a CMutableTransaction into a CTransaction. */
     CTransaction(const CMutableTransaction &tx);
 
     IMPLEMENT_SERIALIZE
     (
-        READWRITE(*const_cast<int32_t*>(&this->nVersion));
+        READWRITE(this->nVersion);
         nVersion = this->nVersion;
-        READWRITE(*const_cast<uint32_t*>(&this->nTime));
-        READWRITE(*const_cast<std::vector<CTxIn>*>(&vin));
-        READWRITE(*const_cast<std::vector<CTxOut>*>(&vout));
-        READWRITE(*const_cast<uint32_t*>(&nLockTime));
-        if (fRead)
-            UpdateHash();
+        READWRITE(nTime);
+        READWRITE(vin);
+        READWRITE(vout);
+        READWRITE(nLockTime);
     )
 
     bool ReadFromDisk(CDiskTxPos pos, FILE** pfileRet=NULL)
@@ -518,7 +521,7 @@ public:
     void SetNull()
     {
         nVersion = CTransaction::CURRENT_VERSION;
-        nTime = 0;//GetAdjustedTime();
+        nTime = GetAdjustedTime();
         vin.clear();
         vout.clear();
         nLockTime = 0;
@@ -540,7 +543,7 @@ public:
     bool IsCoinStake() const
     {
         // ppcoin: the coin stake transaction is marked with the first output empty
-        return (vin.size() > 0 && (!vin[0].prevout.IsNull()) && vout.size() >= 2 /*&& vout[0].IsEmpty()*/);
+        return (vin.size() > 0 && (!vin[0].prevout.IsNull()) && vout.size() >= 2 && vout[0].IsEmpty());
     }
 
     unsigned int CalculateModifiedSize(unsigned int nTxSize=0) const;

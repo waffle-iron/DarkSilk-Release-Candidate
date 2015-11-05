@@ -77,15 +77,7 @@ public:
         std::vector<CTxOut> vout;
         vout.resize(1);
         vout[0].SetEmpty();
-
-        //CTransaction txNew(1, 1444948732, vin, vout, 0);
-        CMutableTransaction txNew;
-        txNew.nVersion = 1;
-        txNew.nTime = 1444948732;
-        txNew.vin = vin;
-        txNew.vout = vout;
-        txNew.nLockTime = 0;
-
+        CTransaction txNew(1, 1444948732, vin, vout, 0);
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
