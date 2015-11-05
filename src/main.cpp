@@ -938,11 +938,6 @@ bool AcceptableInputs(CTxMemPool& pool, const CTransaction &txo, bool fLimitFree
         }
     }
 
-
-    /*LogPrint("mempool", "AcceptableInputs : accepted %s (poolsz %u)\n",
-           hash.ToString(),
-           pool.mapTx.size());
-    */
     return true;
 }
 
@@ -980,6 +975,7 @@ CTransaction::CTransaction(const CMutableTransaction &tx) : nVersion(tx.nVersion
 
 CTransaction& CTransaction::operator=(const CTransaction &tx) {
     *const_cast<int*>(&nVersion) = tx.nVersion;
+    *const_cast<unsigned int*>(&nTime) = tx.nTime;
     *const_cast<std::vector<CTxIn>*>(&vin) = tx.vin;
     *const_cast<std::vector<CTxOut>*>(&vout) = tx.vout;
     *const_cast<unsigned int*>(&nLockTime) = tx.nLockTime;
@@ -1026,9 +1022,9 @@ std::string CTransaction::ToString() const
 {
     std::string str;
     str += strprintf("CTransaction(hash=%s, time= %u ver=%d, vin.size=%u, vout.size=%u, nLockTime=%u)\n",
-        GetHash().ToString().substr(0,10),
+        GetHash().ToString().substr(0,16),
+        nTime,
         nVersion,
-        //nTime,
         vin.size(),
         vout.size(),
         nLockTime);
