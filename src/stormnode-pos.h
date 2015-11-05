@@ -25,7 +25,7 @@ class CStormnodeScanningError;
 extern map<uint256, CStormnodeScanningError> mapStormnodeScanningErrors;
 extern CStormnodeScanning snscan;
 
-static const int MIN_STORMNODE_POS_PROTO_VERSION = 60021;
+static const int MIN_STORMNODE_POS_PROTO_VERSION = 60022;
 
 /*
 	1% of the network is scanned every 2.5 minutes, making a full
