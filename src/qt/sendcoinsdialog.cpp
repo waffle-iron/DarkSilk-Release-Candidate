@@ -148,6 +148,32 @@ void SendCoinsDialog::on_sendButton_clicked()
         return;
     }
 
+    QString strFunds = tr("using") + " <b>" + tr("anonymous funds") + "</b>";
+    QString strFee = "";
+    recipients[0].inputType = ONLY_DENOMINATED;
+
+    if(ui->checkUseSandstorm->isChecked()) {
+        recipients[0].inputType = ONLY_DENOMINATED;
+        strFunds = tr("using") + " <b>" + tr("anonymous funds") + "</b>";
+        QString strNearestAmount(
+            DarkSilkUnits::formatWithUnit(
+                model->getOptionsModel()->getDisplayUnit(), 0.1 * COIN));
+        strFee = QString(tr(
+            "(darksend requires this amount to be rounded up to the nearest %1)."
+        ).arg(strNearestAmount));
+    } else {
+        recipients[0].inputType = ALL_COINS;
+        strFunds = tr("using") + " <b>" + tr("any available funds (not recommended)") + "</b>";
+    }
+
+    if(ui->checkInstantX->isChecked()) {
+        recipients[0].useInstantX = true;
+        strFunds += " ";
+        strFunds += tr("and InstantX");
+    } else {
+        recipients[0].useInstantX = false;
+    }
+
     // Format confirmation message
     QStringList formatted;
 
@@ -362,22 +388,35 @@ bool SendCoinsDialog::handleURI(const QString &uri)
     return false;
 }
 
-void SendCoinsDialog::setBalance(qint64 balance, qint64 stake, qint64 unconfirmedBalance, qint64 immatureBalance, qint64 anonymousBalance)
+void SendCoinsDialog::setBalance(qint64 balance, qint64 stake, qint64 unconfirmedBalance, qint64 immatureBalance, qint64 anonymizedBalance)
 { 
  Q_UNUSED(stake);
  Q_UNUSED(unconfirmedBalance);
  Q_UNUSED(immatureBalance);
- Q_UNUSED(anonymousBalance);
+ Q_UNUSED(anonymizedBalance);
 
  if(model && model->getOptionsModel())
  {
- ui->labelBalance->setText(DarkSilkUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), balance));
- }
+        uint64_t bal = 0;
+
+        if(ui->checkUseSandstorm->isChecked()) {
+        bal = anonymizedBalance;
+        } else {
+        bal = balance;
+        }
+
+        ui->labelBalance->setText(DarkSilkUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), bal));
+    }
 }
 
 void SendCoinsDialog::updateDisplayUnit()
 {
-    setBalance(model->getBalance(), 0, 0, 0, 0);
+    if(model && model->getOptionsModel())
+    {
+        setBalance(model->getBalance(), model->getStake(), model->getUnconfirmedBalance(), model->getImmatureBalance(), model->getAnonymizedBalance());
+        // Update labelBalance with the current balance and the current unit
+        ui->labelBalance->setText(DarkSilkUnits::formatWithUnit(model->getOptionsModel()->getDisplayUnit(), model->getBalance()));
+    }
     CoinControlDialog::coinControl->useSandStorm = ui->checkUseSandstorm->isChecked();
     coinControlUpdateLabels();
 }
