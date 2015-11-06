@@ -711,10 +711,6 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree, boo
     {
         CTxDB txdb("r");
 
-        // do we already have it?
-        if (txdb.ContainsTx(hash))
-            return false;
-        
         // do all inputs exist?
         // Note that this does not check for the presence of actual outputs (see the next check for that),
         // only helps filling in pfMissingInputs (to determine missing vs spent).
@@ -1022,7 +1018,7 @@ int CMerkleTx::GetBlocksToMaturity() const
 {
     if (!(IsCoinBase() || IsCoinStake()))
         return 0;
-    return max(0, (nCoinbaseMaturity+1) - GetDepthInMainChain());
+    return max(0, nCoinbaseMaturity - GetDepthInMainChain());
 }
 
 
@@ -2803,6 +2799,11 @@ bool ProcessBlock(CNode* pfrom, CBlock* pblock)
             stormnodePayments.ProcessBlock(GetHeight()+10);
             snscan.DoStormnodePOSChecks();
         }
+    }
+
+    if(!IsInitialBlockDownload()){
+        sandStormPool.CheckTimeout();
+        sandStormPool.NewBlock();
     }
 
     LogPrintf("ProcessBlock: ACCEPTED\n");

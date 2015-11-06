@@ -377,9 +377,10 @@ void OverviewPage::updateSandstormProgress()
     ui->labelAmountRounds->setText(strSettings);
 }
 
-
 void OverviewPage::sandStormStatus()
 {
+    if(IsInitialBlockDownload()) return;
+    
     int nBestHeight = pindexBest->nHeight;
 
     if(nBestHeight != sandStormPool.cachedNumBlocks)
