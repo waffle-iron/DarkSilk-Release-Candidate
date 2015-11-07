@@ -358,21 +358,24 @@ bool IsStandardTx(const CTransaction& tx, string& reason)
         }
     }
 
+
+
     unsigned int nDataOut = 0;
     unsigned int nTxnOut = 0;
 
     txnouttype whichType;
     BOOST_FOREACH(const CTxOut& txout, tx.vout) {
         if (!::IsStandard(txout.scriptPubKey, whichType))
+            reason = "scriptpubkey";
             return false;
         if (whichType == TX_NULL_DATA)
         {
             nDataOut++;
-        } else 
-        {
-            if (txout.nValue == 0) 
+        } else {
+            if (txout.nValue == 0) {
                 reason = "dust";
                 return false;
+            }
             nTxnOut++;
         }
         if (!txout.scriptPubKey.HasCanonicalPushes()) {
