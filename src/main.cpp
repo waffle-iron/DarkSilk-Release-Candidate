@@ -459,13 +459,12 @@ bool AreInputsStandard(const CTransaction& tx, const MapPrevTx& mapInputs)
             txnouttype whichType2;
             if (Solver(subscript, whichType2, vSolutions2))
             {
-                int tmpExpected = ScriptSigArgsExpected(whichType2, vSolutions2);
-                
+                int tmpExpected;
+                tmpExpected = ScriptSigArgsExpected(whichType2, vSolutions2);                
                 if (whichType2 == TX_SCRIPTHASH)
                     return false;
                 if (tmpExpected < 0)
                     return false;
-
                 nArgsExpected += tmpExpected;
             }
             else
