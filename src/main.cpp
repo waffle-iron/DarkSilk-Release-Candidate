@@ -372,24 +372,21 @@ bool IsStandardTx(const CTransaction& tx, string& reason)
         {
             nDataOut++;
         } else {
-            if (txout.nValue == 0) {
-                reason = "dust";
-                return false;
-            }
+            if (txout.nValue == 0) 
+                return false;            
             nTxnOut++;
-        }
-        if (!txout.scriptPubKey.HasCanonicalPushes()) {
-            reason = "scriptpubkey-non-canonical-push";
+        };
+        
+        if (!txout.scriptPubKey.HasCanonicalPushes())
+        {
             return false;
-        }
-    }
+        };
+    };
 
-    // not more than one data txout per non-data txout is permitted
-    // only one data txout is permitted too
-    if (nDataOut > nTxnOut && nDataOut > tx.vout.size()/2) {
-        reason = "multi-op-return";
+
+    // only one OP_RETURN txout per txn out is permitted
+    if (nDataOut > nTxnOut)
         return false;
-    }
 
     return true;
 }
