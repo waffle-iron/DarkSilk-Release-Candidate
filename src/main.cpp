@@ -359,6 +359,8 @@ bool IsStandardTx(const CTransaction& tx, string& reason)
 
 
 
+
+
     unsigned int nDataOut = 0;
     unsigned int nTxnOut = 0;
 
