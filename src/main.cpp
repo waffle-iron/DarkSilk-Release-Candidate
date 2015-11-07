@@ -293,10 +293,9 @@ bool CTransaction::ReadFromDisk(COutPoint prevout)
 
 bool IsStandardTx(const CTransaction& tx, string& reason)
 {
-    if (tx.nVersion > CTransaction::CURRENT_VERSION || tx.nVersion < 1) {
+    if (tx.nVersion > CTransaction::CURRENT_VERSION || tx.nVersion < 1)
         reason = "version";
         return false;
-    }
 
     // Treat non-final transactions as non-standard to prevent a specific type
     // of double-spend attack, as well as DoS attacks. (if the transaction
@@ -318,12 +317,13 @@ bool IsStandardTx(const CTransaction& tx, string& reason)
     if (!IsFinalTx(tx, nBestHeight + 1)) {
         reason = "non-final";
         return false;
-    }
+    };
+    
     // nTime has different purpose from nLockTime but can be used in similar attacks
     if (tx.nTime > FutureDrift(GetAdjustedTime(), true)) {
         reason = "time-too-new";
         return false;
-    }
+    };
 
     // Extremely large transactions with lots of inputs can cost the network
     // almost as much to process as they cost the sender in fees, because
@@ -333,7 +333,7 @@ bool IsStandardTx(const CTransaction& tx, string& reason)
     if (sz >= MAX_STANDARD_TX_SIZE) {
         reason = "tx-size";
         return false;
-    }
+    };
 
     BOOST_FOREACH(const CTxIn& txin, tx.vin)
     {
@@ -347,16 +347,15 @@ bool IsStandardTx(const CTransaction& tx, string& reason)
         if (txin.scriptSig.size() > 1650) {
             reason = "scriptsig-size";
             return false;
-        }
-        if (!txin.scriptSig.IsPushOnly()) {
+        
+        if (!txin.scriptSig.IsPushOnly()) 
             reason = "scriptsig-not-pushonly";
             return false;
-        }
-        if (!txin.scriptSig.HasCanonicalPushes()) {
+        
+        if (!txin.scriptSig.HasCanonicalPushes()) 
             reason = "scriptsig-non-canonical-push";
-            return false;
-        }
-    }
+            return false; 
+    };
 
 
 
