@@ -336,6 +336,12 @@ Value sendtoaddress(const Array& params, bool fHelp)
             + HelpExampleRpc("sendtoaddress", "\"Dh4V55Ebdwsef8gMGL2fhWA9ZmMjt4KPwg\", 0.1, \"donation\", \"seans outpost\"")
         );
 
+    EnsureWalletIsUnlocked();
+
+    if (params[0].get_str().length() > 75
+        && IsStealthAddress(params[0].get_str()))
+        return sendtostealthaddress(params, false);
+
     CDarkSilkAddress address(params[0].get_str());
     if (!address.IsValid())
         throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid DarkSilk address");
@@ -2245,6 +2251,7 @@ Value sendtostealthaddress(const Array& params, bool fHelp)
     if (fHelp || params.size() < 2 || params.size() > 5)
         throw runtime_error(
             "sendtostealthaddress <stealth_address> <amount> [comment] [comment-to] [narration]\n"
+            "sendtostealthaddress <stealth_address> <amount> [narration]\n"
             "<amount> is a real and is rounded to the nearest 0.000001"
             + HelpRequiringPassphrase());
     
@@ -2255,37 +2262,32 @@ Value sendtostealthaddress(const Array& params, bool fHelp)
     CAmount nAmount = AmountFromValue(params[1]);
     
     std::string sNarr;
-    if (params.size() > 4 && params[4].type() != null_type && !params[4].get_str().empty())
-        sNarr = params[4].get_str();
-    
+    if (params.size() == 3 || params.size() == 5)
+    {
+        int nNarr = params.size() - 1;
+        if(params[nNarr].type() != null_type && !params[nNarr].get_str().empty())
+            sNarr = params[nNarr].get_str();
+    }
+
     if (sNarr.length() > 24)
         throw runtime_error("Narration must be 24 characters or less.");
-    
+
     CStealthAddress sxAddr;
-    Object result;
-    
+
     if (!sxAddr.SetEncoded(sEncoded))
-    {
-        result.push_back(Pair("result", "Invalid DarkSilk stealth address."));
-        return result;
-    };
-    
-    
+        throw runtime_error("Invalid DarkSilk stealth address.");
+
     CWalletTx wtx;
-    if (params.size() > 2 && params[2].type() != null_type && !params[2].get_str().empty())
-        wtx.mapValue["comment"] = params[2].get_str();
     if (params.size() > 3 && params[3].type() != null_type && !params[3].get_str().empty())
-        wtx.mapValue["to"]      = params[3].get_str();
-    
+        wtx.mapValue["comment"] = params[3].get_str();
+    if (params.size() > 4 && params[4].type() != null_type && !params[4].get_str().empty())
+        wtx.mapValue["to"]      = params[4].get_str();
+
     std::string sError;
     if (!pwalletMain->SendStealthMoneyToDestination(sxAddr, nAmount, sNarr, wtx, sError))
         throw JSONRPCError(RPC_WALLET_ERROR, sError);
 
     return wtx.GetHash().GetHex();
-    
-    result.push_back(Pair("result", "Not implemented yet."));
-    
-    return result;
 }
 
 Value scanforalltxns(const Array& params, bool fHelp)
