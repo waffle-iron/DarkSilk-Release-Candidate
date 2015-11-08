@@ -135,7 +135,7 @@ bool parseDarkSilkURI(QString uri, SendCoinsRecipient *out)
     //    which will lower-case it (and thus invalidate the address).
     if(uri.startsWith("darksilk://"))
     {
-        uri.replace(0, 12, "darksilk:");
+        uri.replace(0, 11, "darksilk:");
     }
     QUrl uriInstance(uri);
     return parseDarkSilkURI(uriInstance, out);

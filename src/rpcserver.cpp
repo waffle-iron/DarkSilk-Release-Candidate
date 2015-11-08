@@ -308,6 +308,7 @@ static const CRPCCommand vRPCCommands[] =
     { "liststealthaddresses",   &liststealthaddresses,   false,     false,     true},
     { "importstealthaddress",   &importstealthaddress,   false,      false,    true},
     { "sendtostealthaddress",   &sendtostealthaddress,   false,      false,    true},
+    { "scanforalltxns",         &scanforalltxns,         false,      false,    true},
     { "smsgenable",             &smsgenable,             false,     false,     false },
     { "smsgdisable",            &smsgdisable,            false,     false,     false },
     { "smsglocalkeys",          &smsglocalkeys,          false,     false,     false },

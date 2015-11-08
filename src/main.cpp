@@ -35,7 +35,7 @@ using namespace boost;
 //
 
 CBigNum bnProofOfStakeLimit(~uint256(0) >> 20); //PoS starting difficulty = 0.0002441
-        
+
 CCriticalSection cs_setpwalletRegistered;
 set<CWallet*> setpwalletRegistered;
 
@@ -367,7 +367,7 @@ bool IsStandardTx(const CTransaction& tx, string& reason)
         }
         if (whichType == TX_NULL_DATA)
             nDataOut++;
-        if (txout.nValue == 0) {
+        else if (txout.nValue == 0) {
             reason = "dust";
             return false;
         }
@@ -453,7 +453,7 @@ bool AreInputsStandard(const CTransaction& tx, const MapPrevTx& mapInputs)
             if (Solver(subscript, whichType2, vSolutions2))
             {
                 int tmpExpected = ScriptSigArgsExpected(whichType2, vSolutions2);
-                
+
                 if (whichType2 == TX_SCRIPTHASH)
                     return false;
                 if (tmpExpected < 0)
@@ -780,7 +780,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree, boo
             LogPrint("mempool", "Rate limit dFreeCount: %g => %g\n", dFreeCount, dFreeCount+nSize);
             dFreeCount += nSize;
             }
-        }  
+        }
         // Check against previous transactions
         // This is done last to help prevent CPU exhaustion denial-of-service attacks.
         if (!tx.ConnectInputs(txdb, mapInputs, mapUnused, CDiskTxPos(1,1,1), pindexBest, false, false, STANDARD_SCRIPT_VERIFY_FLAGS))
@@ -912,7 +912,7 @@ bool AcceptableInputs(CTxMemPool& pool, const CTransaction &txo, bool fLimitFree
             int64_t nNow = GetTime();
 
              LOCK(csFreeLimiter);
- 
+
             // Use an exponentially decaying ~10-minute window:
             dFreeCount *= pow(1.0 - 1.0/600.0, (double)(nNow - nLastTime));
             nLastTime = nNow;
@@ -1070,7 +1070,7 @@ int GetInputAge(CTxIn& vin)
         return 0;
     }
     else
-    return 0; 
+    return 0;
 }
 
 int CTxIndex::GetDepthInMainChain() const
@@ -1270,7 +1270,7 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
     else if (fProofOfStake && nActualSpacing > nTargetSpacing * 10) {
          nActualSpacing = nTargetSpacing * 10;
     }
-    
+
     // target change every block
     // retarget with exponential moving toward target spacing
     // Includes fix for wrong retargeting difficulty by Mammix2
@@ -1280,7 +1280,7 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
     int64_t nInterval = fProofOfStake ? 10 : 10;
     bnNew *= ((nInterval - 1) * nTargetSpacing + nActualSpacing + nActualSpacing);
     bnNew /= ((nInterval + 1) * nTargetSpacing);
-    
+
     if (bnNew <= 0 || bnNew > bnTargetLimit)
         bnNew = bnTargetLimit;
 
@@ -1338,7 +1338,7 @@ void Misbehaving(NodeId pnode, int howmuch)
             {
                 LogPrintf("Misbehaving: %s (%d -> %d) BAN THRESHOLD EXCEEDED\n", pn->addrName, pn->nMisbehavior-howmuch, pn->nMisbehavior);
                 //pn->fShouldBan = true;
-            } 
+            }
             else
                 LogPrintf("Misbehaving: %s (%d -> %d)\n", pn->addrName, pn->nMisbehavior-howmuch, pn->nMisbehavior);
 
@@ -1544,7 +1544,7 @@ bool CTransaction::ConnectInputs(CTxDB& txdb, MapPrevTx inputs, map<uint256, CTx
                 return DoS(100, error("ConnectInputs() : %s prevout.n out of range %d %u %u prev tx %s\n%s", GetHash().ToString(), prevout.n, txPrev.vout.size(), txindex.vSpent.size(), prevout.hash.ToString(), txPrev.ToString()));
 
             // If prev is coinbase or coinstake, check that it's matured
-            if (txPrev.IsCoinBase() || txPrev.IsCoinStake()) 
+            if (txPrev.IsCoinBase() || txPrev.IsCoinStake())
             {
                 int nSpendDepth;
                 if (IsConfirmedInNPrevBlocks(txindex, pindexBlock, nCoinbaseMaturity, nSpendDepth))
@@ -1736,7 +1736,7 @@ void CBlock::RebuildAddressIndex(CTxDB& txdb)
     {
         uint256 hashTx = tx.GetHash();
     // inputs
-    if(!tx.IsCoinBase()) 
+    if(!tx.IsCoinBase())
     {
             MapPrevTx mapInputs;
         map<uint256, CTxIndex> mapQueuedChangesT;
@@ -1760,7 +1760,7 @@ void CBlock::RebuildAddressIndex(CTxDB& txdb)
             }
             }
         }
-        
+
         }
     // outputs
     BOOST_FOREACH(const CTxOut &atxout, tx.vout) {
@@ -1784,7 +1784,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
     if (!CheckBlock(!fJustCheck, !fJustCheck, false))
         return false;
 
-    unsigned int flags = SCRIPT_VERIFY_NOCACHE | 
+    unsigned int flags = SCRIPT_VERIFY_NOCACHE |
                 SCRIPT_VERIFY_NULLDUMMY |
                 SCRIPT_VERIFY_STRICTENC |
                 SCRIPT_VERIFY_ALLOW_EMPTY_SIG |
@@ -1928,7 +1928,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
     {
         uint256 hashTx = tx.GetHash();
     // inputs
-    if(!tx.IsCoinBase()) 
+    if(!tx.IsCoinBase())
     {
             MapPrevTx mapInputs;
         map<uint256, CTxIndex> mapQueuedChangesT;
@@ -1952,7 +1952,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
             }
             }
         }
-        
+
         }
 
     // outputs
@@ -2234,7 +2234,7 @@ bool CBlock::SetBestChain(CTxDB& txdb, CBlockIndex* pindexNew)
 // ppcoin: total coin age spent in transaction, in the unit of coin-days.
 // Only those coins meeting minimum age requirement counts. As those
 // transactions not in main chain are not currently indexed so we
-// might not find out about their coin age. Older transactions are 
+// might not find out about their coin age. Older transactions are
 // guaranteed to be in main chain by sync-checkpoint. This rule is
 // introduced to help nodes establish a consistent view of the coin
 // age (trust score) of competing branches.
@@ -2415,7 +2415,7 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
 
 
     if(pindexBest->nHeight+1 >= STORMNODE_PAYMENT_START) StormnodePayments = true;
-    
+
 
     if(!IsSporkActive(SPORK_1_STORMNODE_PAYMENTS_ENFORCEMENT)){
         StormnodePayments = false;
@@ -2441,7 +2441,7 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
 
                     CScript payee;
                     CTxIn vin;
-                    if(!stormnodePayments.GetBlockPayee(pindexBest->nHeight+1, payee, vin) || payee == CScript()){                        
+                    if(!stormnodePayments.GetBlockPayee(pindexBest->nHeight+1, payee, vin) || payee == CScript()){
                         foundPayee = true; //doesn't require a specific payee
                         foundPaymentAmount = true;
                         foundPaymentAndPayee = true;
@@ -2686,7 +2686,7 @@ bool ProcessBlock(CNode* pfrom, CBlock* pblock)
     if (!fReindex && !fImporting && pblock->IsProofOfStake() && setStakeSeen.count(pblock->GetProofOfStake()) && !mapOrphanBlocksByPrev.count(hash))
         return error("ProcessBlock() : duplicate proof-of-stake (%s, %d) for block %s", pblock->GetProofOfStake().first.ToString(), pblock->GetProofOfStake().second, hash.ToString());
 
-        if (pblock->hashPrevBlock != hashBestChain) 
+        if (pblock->hashPrevBlock != hashBestChain)
     {
         // Extra checks to prevent "fill up memory by spamming with bogus blocks"
         const CBlockIndex* pcheckpoint = Checkpoints::AutoSelectSyncCheckpoint();
@@ -2790,7 +2790,7 @@ bool ProcessBlock(CNode* pfrom, CBlock* pblock)
             if(stormnodePayments.GetBlockPayee(pindexBest->nHeight, payee, vin)){
                 //UPDATE STORMNODE LAST PAID TIME
                 CStormnode* psn = snodeman.Find(vin);
-                if(psn != NULL) psn->nLastPaid = GetAdjustedTime(); 
+                if(psn != NULL) psn->nLastPaid = GetAdjustedTime();
 
                 LogPrintf("ProcessBlock() : Update Stormnode Last Paid Time - %d\n", pindexBest->nHeight);
             }
@@ -2885,7 +2885,7 @@ bool CBlock::CheckBlockSignature() const
         valtype& vchPubKey = vSolutions[0];
         return CPubKey(vchPubKey).Verify(GetHash(), vchBlockSig);
     }
-    
+
     // Block signing key also can be encoded in the nonspendable output
     // This allows to not pollute UTXO set with useless outputs e.g. in case of multisig staking
 
@@ -2903,7 +2903,7 @@ bool CBlock::CheckBlockSignature() const
     if (!IsCompressedOrUncompressedPubKey(vchPushValue))
         return false;
     return CPubKey(vchPushValue).Verify(GetHash(), vchBlockSig);
-    
+
     return false;
 }
 
@@ -3328,11 +3328,11 @@ void static ProcessGetData(CNode* pfrom)
                 }
             }
             else if (inv.IsKnownType())
-            {   
+            {
                 if(fDebug) LogPrintf("ProcessGetData -- Starting \n");
                 // Send stream from relay memory
                 bool pushed = false;
-                
+
                 /*
                     {
                     LOCK(cs_mapRelay);
@@ -3921,8 +3921,8 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 
     // This asymmetric behavior for inbound and outbound connections was introduced
     // to prevent a fingerprinting attack: an attacker can send specific fake addresses
-    // to users' AddrMan and later request them by sending getaddr messages. 
-    // Making users (which are behind NAT and can only make outgoing connections) ignore 
+    // to users' AddrMan and later request them by sending getaddr messages.
+    // Making users (which are behind NAT and can only make outgoing connections) ignore
     // getaddr message mitigates the attack.
     else if ((strCommand == "getaddr") && (pfrom->fInbound))
     {
@@ -4065,7 +4065,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
 
 
     else
-    {   
+    {
         MarketProcessMessage(pfrom, strCommand, vRecv);
         sandStormPool.ProcessMessageSandstorm(pfrom, strCommand, vRecv);
         snodeman.ProcessMessage(pfrom, strCommand, vRecv);

@@ -11,7 +11,8 @@ INCLUDEPATHS= \
  -I"C:\Develop\deps\db-4.8.30.NC\build_unix" \
  -I"C:\Develop\deps\openssl-1.0.2d\include" \
  -I"C:\Develop\deps\secp256k1-darksilk\include" \
- -I"$(abspath obj)"
+ -I"$(abspath obj)" \
+ -I"$(CURDIR)"
 
 LIBPATHS= \
  -L"C:\Develop\deps\boost_1_59_0\bin.v2\libs" \
@@ -116,6 +117,11 @@ OBJS= \
     obj/smessage.o \
     obj/market.o \
     obj/rpcmarket.o
+
+ifdef USE_NATIVE_I2P
+	OBJS += obj/i2p.o
+	OBJS += obj/i2psam.o
+endif
 
 ifeq (${USE_WALLET}, 1)
     DEFS += -DENABLE_WALLET

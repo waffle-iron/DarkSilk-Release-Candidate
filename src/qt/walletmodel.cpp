@@ -307,7 +307,7 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
                         mapStealthNarr[pos] = sNarr;
                     };
                     
-                    vecSend.push_back(make_pair(scriptP, 1));
+                    vecSend.push_back(make_pair(scriptP, 0));
                     
 
                     continue;
