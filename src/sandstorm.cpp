@@ -389,7 +389,7 @@ int GetInputSandstormRounds(CTxIn in, int rounds)
 {
     static std::map<uint256, CWalletTx> mDenomWtxes;
 
-    if(rounds >= 17) return rounds;
+    if(rounds >= 101) return rounds;
 
     uint256 hash = in.prevout.hash;
     unsigned int nout = in.prevout.n;

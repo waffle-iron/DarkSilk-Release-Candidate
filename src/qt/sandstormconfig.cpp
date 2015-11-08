@@ -51,13 +51,13 @@ void SandstormConfig::clickBasic()
 
 void SandstormConfig::clickHigh()
 {
-    configure(true, 1000, 8);
+    configure(true, 1000, 50);
 
     QString strAmount(DarkSilkUnits::formatWithUnit(
         model->getOptionsModel()->getDisplayUnit(), 1000 * COIN));
     QMessageBox::information(this, tr("Sandstorm Configuration"),
         tr(
-            "Sandstorm was successfully set to high (%1 and 8 rounds). You can change this at any time by opening DarkSilk's configuration screen."
+            "Sandstorm was successfully set to high (%1 and 50 rounds). You can change this at any time by opening DarkSilk's configuration screen."
         ).arg(strAmount)
     );
 
@@ -66,13 +66,13 @@ void SandstormConfig::clickHigh()
 
 void SandstormConfig::clickMax()
 {
-    configure(true, 1000, 16);
+    configure(true, 1000, 100);
 
     QString strAmount(DarkSilkUnits::formatWithUnit(
         model->getOptionsModel()->getDisplayUnit(), 1000 * COIN));
     QMessageBox::information(this, tr("Sandstorm Configuration"),
         tr(
-            "Sandstorm was successfully set to maximum (%1 and 16 rounds). You can change this at any time by opening DarkSilk's configuration screen."
+            "Sandstorm was successfully set to maximum (%1 and 100 rounds). You can change this at any time by opening DarkSilk's configuration screen."
         ).arg(strAmount)
     );
 

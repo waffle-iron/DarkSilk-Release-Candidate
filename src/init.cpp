@@ -268,7 +268,7 @@ std::string HelpMessage()
     strUsage += "  -rpcsslprivatekeyfile=<file.pem>         " + _("Server private key (default: server.pem)") + "\n";
     strUsage += "  -rpcsslciphers=<ciphers>                 " + _("Acceptable ciphers (default: TLSv1.2+HIGH:TLSv1+HIGH:!SSLv2:!aNULL:!eNULL:!3DES:@STRENGTH)") + "\n";
     strUsage += "  -litemode=<n>          " + _("Disable all Stormnode and Sandstorm related functionality (0-1, default: 0)") + "\n";
-strUsage += "\n" + _("Stormnode options:") + "\n";
+    strUsage += "\n" + _("Stormnode options:") + "\n";
     strUsage += "  -stormnode=<n>            " + _("Enable the client to act as a stormnode (0-1, default: 0)") + "\n";
     strUsage += "  -snconf=<file>             " + _("Specify stormnode configuration file (default: stormnode.conf)") + "\n";
     strUsage += "  -snconflock=<n>            " + _("Lock stormnodes from stormnode configuration file (default: 1)") + "\n";
@@ -278,7 +278,7 @@ strUsage += "\n" + _("Stormnode options:") + "\n";
 
     strUsage += "\n" + _("Sandstorm options:") + "\n";
     strUsage += "  -enablesandstorm=<n>          " + _("Enable use of automated sandstorm for funds stored in this wallet (0-1, default: 0)") + "\n";
-    strUsage += "  -sandstormrounds=<n>          " + _("Use N separate stormnodes to anonymize funds  (2-8, default: 2)") + "\n";
+    strUsage += "  -sandstormrounds=<n>          " + _("Use N separate stormnodes to anonymize funds  (2-100, default: 2)") + "\n";
     strUsage += "  -anonymizedarksilkamount=<n> " + _("Keep N DarkSilk anonymized (default: 0)") + "\n";
     strUsage += "  -liquidityprovider=<n>       " + _("Provide liquidity to Sandstorm by infrequently mixing coins on a continual basis (0-100, default: 0, 1=very frequent, high fees, 100=very infrequent, low fees)") + "\n";
 
@@ -958,7 +958,7 @@ bool AppInit2(boost::thread_group& threadGroup)
     fEnableSandstorm = GetBoolArg("-enablesandstorm", false);
 
     nSandstormRounds = GetArg("-sandstormrounds", 2);
-    if(nSandstormRounds > 16) nSandstormRounds = 16;
+    if(nSandstormRounds > 100) nSandstormRounds = 100;
     if(nSandstormRounds < 1) nSandstormRounds = 1;
 
     nLiquidityProvider = GetArg("-liquidityprovider", 0); //0-100
