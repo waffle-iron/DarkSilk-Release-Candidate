@@ -178,7 +178,7 @@ void SendCoinsDialog::on_sendButton_clicked()
             DarkSilkUnits::formatWithUnit(
                 model->getOptionsModel()->getDisplayUnit(), 0.1 * COIN));
         strFee = QString(tr(
-            "(darksend requires this amount to be rounded up to the nearest %1)."
+            "(sandstorm requires this amount to be rounded up to the nearest %1)."
         ).arg(strNearestAmount));
     } else {
         recipients[0].inputType = ALL_COINS;
