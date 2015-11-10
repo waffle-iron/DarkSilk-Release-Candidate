@@ -613,7 +613,6 @@ void CSandstormPool::CheckFinalTransaction()
 
                 // not much we can do in this case
                 UpdateState(POOL_STATUS_ACCEPTING_ENTRIES);
-
                 RelayCompletedTransaction(sessionID, true, "Transaction not valid, please try again");
                 return;
             }
@@ -648,13 +647,13 @@ void CSandstormPool::CheckFinalTransaction()
             string txHash = txNew.GetHash().ToString().c_str();
             if(fDebug) LogPrintf("CSandstormPool::Check() -- txHash %d \n", txHash);
             if(!mapSandstormBroadcastTxes.count(txNew.GetHash())){
-                CSandstormBroadcastTx dstx;
-                dstx.tx = txNew;
-                dstx.vin = activeStormnode.vin;
-                dstx.vchSig = vchSig;
-                dstx.sigTime = sigTime;
+                CSandstormBroadcastTx sstx;
+                sstx.tx = txNew;
+                sstx.vin = activeStormnode.vin;
+                sstx.vchSig = vchSig;
+                sstx.sigTime = sigTime;
 
-                mapSandstormBroadcastTxes.insert(make_pair(txNew.GetHash(), dstx));
+                mapSandstormBroadcastTxes.insert(make_pair(txNew.GetHash(), sstx));
             }
 
             // Broadcast the transaction to the network
