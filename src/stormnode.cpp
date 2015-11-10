@@ -149,7 +149,7 @@ CStormnode::CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::v
 }
 
 //
-// Deterministically calculate a given "score" for a stormnode depending on how close it's hash is to
+// Deterministically calculate a given "score" for a Stormnode depending on how close it's hash is to
 // the proof of work for that block. The further away they are the better, the furthest will win the election
 // and get paid this block
 //
@@ -160,10 +160,19 @@ uint256 CStormnode::CalculateScore(int mod, int64_t nBlockHeight)
     uint256 hash = 0;
     uint256 aux = vin.prevout.hash + vin.prevout.n;
 
-    if(!GetBlockHash(hash, nBlockHeight)) return 0;
+    if(!GetBlockHash(hash, nBlockHeight)) {
+        LogPrintf("CalculateScore ERROR - nHeight %d - Returned 0\n", nBlockHeight);
+        return 0;
+    }
 
-    uint256 hash2 = Hash(BEGIN(hash), END(hash));
-    uint256 hash3 = Hash(BEGIN(hash), END(hash), BEGIN(aux), END(aux));
+    CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
+    ss << hash;
+    uint256 hash2 = ss.GetHash();
+
+    CHashWriter ss2(SER_GETHASH, PROTOCOL_VERSION);
+    ss2 << hash;
+    ss2 << aux;
+    uint256 hash3 = ss2.GetHash();
 
     uint256 r = (hash3 > hash2 ? hash3 - hash2 : hash2 - hash3);
 
@@ -203,11 +212,17 @@ void CStormnode::Check()
         tx.vin.push_back(vin);
         tx.vout.push_back(vout);
 
-        if(!AcceptableInputs(mempool, tx, false)){
-            activeState = STORMNODE_VIN_SPENT;
-            return;
+        {   
+            TRY_LOCK(cs_main, lockMain);
+            if(!lockMain) return;
+
+            if(!AcceptableInputs(mempool, tx, false)){
+                activeState = STORMNODE_VIN_SPENT;
+                return;
+
+            }
         }
     }
 
-    activeState = STORMNODE_ENABLED; // OK   
+    activeState = STORMNODE_ENABLED; // OK
 }
