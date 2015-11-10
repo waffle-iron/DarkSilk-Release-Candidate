@@ -2782,7 +2782,7 @@ bool ProcessBlock(CNode* pfrom, CBlock* pblock)
         mapOrphanBlocksByPrev.erase(hashPrev);
     }
 
-    if(!fLiteMode){
+    if(!fLiteMode && !IsInitialBlockDownload()){
         if (!fImporting && !fReindex && pindexBest->nHeight > Checkpoints::GetTotalBlocksEstimate()){
 
             CScript payee;
@@ -2795,15 +2795,11 @@ bool ProcessBlock(CNode* pfrom, CBlock* pblock)
                 LogPrintf("ProcessBlock() : Update Stormnode Last Paid Time - %d\n", pindexBest->nHeight);
             }
 
+            sandStormPool.CheckTimeout();
             sandStormPool.NewBlock();
             stormnodePayments.ProcessBlock(GetHeight()+10);
             snscan.DoStormnodePOSChecks();
         }
-    }
-
-    if(!IsInitialBlockDownload()){
-        sandStormPool.CheckTimeout();
-        sandStormPool.NewBlock();
     }
 
     LogPrintf("ProcessBlock: ACCEPTED\n");
