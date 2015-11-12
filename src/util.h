@@ -121,6 +121,7 @@ inline void MilliSleep(int64_t n)
 
 extern bool fStormNode;
 extern bool fLiteMode;
+extern bool fEnableInstantX;
 extern int nInstantXDepth;
 extern int nSandstormRounds;
 extern int nAnonymizeDarkSilkAmount;

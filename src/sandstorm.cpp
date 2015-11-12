@@ -1640,7 +1640,7 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
                         sessionDenom = GetDenominationsByAmounts(vecAmounts, true);
 
                     pnode->PushMessage("ssa", sessionDenom, txCollateral);
-+                    LogPrintf("DoAutomaticDenominating --- connected, sending ssa for %d\n", sessionDenom);                    strAutoDenomResult = "";
+                    LogPrintf("DoAutomaticDenominating --- connected, sending ssa for %d\n", sessionDenom);                    strAutoDenomResult = "";
                     return true;
                 }
             } else {
