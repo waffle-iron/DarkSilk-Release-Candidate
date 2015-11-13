@@ -5,6 +5,7 @@
 
 class OptionsModel;
 class AddressTableModel;
+class PeerTableModel;
 class TransactionTableModel;
 class CWallet;
 
@@ -23,6 +24,7 @@ public:
     ~ClientModel();
 
     OptionsModel *getOptionsModel();
+    PeerTableModel *getPeerTableModel();
 
     int getNumConnections() const;
     QString getStormnodeCountString() const;
@@ -62,6 +64,7 @@ public:
 
 private:
     OptionsModel *optionsModel;
+    PeerTableModel *peerTableModel;
 
     int cachedNumBlocks;
 
