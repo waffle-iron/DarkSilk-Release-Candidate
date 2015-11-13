@@ -119,6 +119,7 @@ QMAKE_CXXFLAGS *= -DUSE_SECP256K1
 INCLUDEPATH += src/leveldb/include src/leveldb/helpers
 LIBS += $$PWD/src/leveldb/libleveldb.a $$PWD/src/leveldb/libmemenv.a
 SOURCES += src/txdb-leveldb.cpp
+
 !win32 {
     # we use QMAKE_CXXFLAGS_RELEASE even without RELEASE=1 because we use RELEASE to indicate linking preferences not -O preferences
     genleveldb.commands = cd $$PWD/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX $(MAKE) OPT=\"$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE\" libleveldb.a libmemenv.a
@@ -305,7 +306,8 @@ HEADERS += src/qt/darksilkgui.h \
     src/qt/createmarketlistingdialog.h \
     src/qt/marketlistingdetailsdialog.h \
     src/qt/deliverydetailsdialog.h \
-    src/market.h
+    src/market.h \
+    src/qt/peertablemodel.h
 
 SOURCES += src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
     src/qt/transactiontablemodel.cpp \
@@ -320,6 +322,7 @@ SOURCES += src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
     src/qt/editaddressdialog.cpp \
     src/qt/darksilkaddressvalidator.cpp \
     src/qt/statisticspage.cpp \
+    src/qt/peertablemodel.cpp \
     src/alert.cpp \
     src/chainparams.cpp \
     src/cleanse.cpp \

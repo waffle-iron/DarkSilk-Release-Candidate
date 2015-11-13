@@ -44,6 +44,8 @@ class CNode;
 class CReserveKey;
 class CWallet;
 
+struct CNodeStateStats;
+struct CNodeStateStats;
 
 /** The maximum allowed size for a serialized block, in bytes (network rule) */
 static const unsigned int MAX_BLOCK_SIZE = 50000000; // 50MB Maximum Block Size (50x Bitcoin Core)
@@ -128,6 +130,9 @@ class CTxDB;
 class CTxIndex;
 class CWalletInterface;
 
+/** Get statistics from node state */
+bool GetNodeStateStats(NodeId nodeid, CNodeStateStats &stats);
+
 /** Register a wallet to receive updates from core */
 void RegisterWallet(CWalletInterface* pwalletIn);
 /** Unregister a wallet from core */
@@ -185,6 +190,17 @@ void Misbehaving(NodeId nodeid, int howmuch);
 
 int64_t GetStormnodePayment(int nHeight, int64_t blockValue);
 
+//added for peers UI
+
+
+struct CNodeStateStats {
+    int nMisbehavior;
+    int nSyncHeight;
+    int nCommonHeight;
+    std::vector<int> vHeightInFlight;
+};
+
+//end for peers UI
 
 /** Position on disk for a particular transaction. */
 class CDiskTxPos

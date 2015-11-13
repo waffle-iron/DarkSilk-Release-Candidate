@@ -278,6 +278,7 @@ DarkSilkGUI::DarkSilkGUI(QWidget *parent):
 
     debugConsole = new DEBUGConsole(this);
     connect(openDEBUGConsoleAction, SIGNAL(triggered()), debugConsole, SLOT(show()));
+    connect(openPeersAction, SIGNAL(triggered()), debugConsole, SLOT(showPeers()));
     // prevents an oben debug window from becoming stuck/unusable on client shutdown
     connect(quitAction, SIGNAL(triggered()), debugConsole, SLOT(hide())); // prevents an oben debug window from becoming stuck/unusable on client shutdown
 
@@ -479,6 +480,9 @@ void DarkSilkGUI::createActions()
     openDEBUGConsoleAction = new QAction(tr("&Debug window"), this);
     openDEBUGConsoleAction->setToolTip(tr("Open debugging and diagnostic console"));
 
+    openPeersAction = new QAction(QIcon(":/icons/connect_4"), tr("&Peers list"), this);
+    openPeersAction->setStatusTip(tr("Show peers info"));
+
     connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
     connect(aboutAction, SIGNAL(triggered()), this, SLOT(aboutClicked()));
     connect(aboutQtAction, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
@@ -520,6 +524,7 @@ void DarkSilkGUI::createMenuBar()
 
     QMenu *help = appMenuBar->addMenu(tr("&Help"));
     help->addAction(openDEBUGConsoleAction);
+    help->addAction(openPeersAction);
     help->addSeparator();
     help->addAction(aboutAction);
     help->addAction(aboutQtAction);
