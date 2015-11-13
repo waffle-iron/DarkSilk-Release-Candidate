@@ -2332,7 +2332,8 @@ alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
     <message>
         <location line="+3"/>
-        <source>Generated coins must mature 42 blocks before they can be staked but are fully confirmed after 10 blocks and spendable after 1 block. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <source>
+DRKSLK from standard transactions confirm after 10 blocks and are spendable after just 1 block. Mined coins (PoW or PoS generated) must mature 420 blocks and be held for a minimum of 4 hours before they can be staked or spent. When you generate a PoW or PoS block it is broadcast to the network to be added to the DarkSilk blockchain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another wallet/node generates a block within a few seconds of your wallet/node.</source>
         <translation>Üretilen coinler, harcanmaya başlamadan önce 510 blokta olgunlaşmalıdır. Bu bloğu ürettiğinizde, blok zincirine eklenmek üzere ağda yayınlanır. Eğer blok, zincire girmede başarısız olursa, bloğun durumu &quot;kabul edilmedi&quot;ye dönüşür ve harcanamaz. Bu, başka bir devre sizden birkaç saniye önce bir blok ürettiyse gerçekleşebilir.</translation>
     </message>
     <message>
