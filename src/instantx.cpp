@@ -229,7 +229,7 @@ int64_t CreateNewLock(CTransaction tx)
     int64_t nTxAge = 0;
     BOOST_REVERSE_FOREACH(CTxIn i, tx.vin){
         nTxAge = GetInputAge(i);
-        if(nTxAge < 6)
+        if(nTxAge < 10)
         {
             LogPrintf("CreateNewLock - Transaction not found / too new: %d / %s\n", nTxAge, tx.GetHash().ToString().c_str());
             return 0;
@@ -248,7 +248,7 @@ int64_t CreateNewLock(CTransaction tx)
 
         CTransactionLock newLock;
         newLock.nBlockHeight = nBlockHeight;
-        newLock.nExpiration = GetTime()+(60*60); //locks expire after 60 minutes (6 confirmations)
+        newLock.nExpiration = GetTime()+(10*60); //locks expire after 10 minutes (10 confirmations)
         newLock.nTimeout = GetTime()+(60*5);
         newLock.txHash = tx.GetHash();
         mapTxLocks.insert(make_pair(tx.GetHash(), newLock));
@@ -345,7 +345,7 @@ bool ProcessConsensusVote(CConsensusVote& ctx)
 
         CTransactionLock newLock;
         newLock.nBlockHeight = 0;
-        newLock.nExpiration = GetTime()+(60*60);
+        newLock.nExpiration = GetTime()+(10*60);
         newLock.nTimeout = GetTime()+(60*5);
         newLock.txHash = ctx.txHash;
         mapTxLocks.insert(make_pair(ctx.txHash, newLock));

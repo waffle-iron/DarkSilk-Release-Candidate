@@ -1550,8 +1550,8 @@ void CWallet::AvailableCoins(vector<COutput>& vCoins, bool fOnlyConfirmed, const
             if (nDepth <= 0) // DARKSILKNOTE: coincontrol fix / ignore 0 confirm
                 continue;
 
-            // do not use IX for inputs that have less then 6 blockchain confirmations
-            if (useIX && nDepth < 6)
+            // do not use IX for inputs that have less then 10 blockchain confirmations
+            if (useIX && nDepth < 10)
                 continue;
 
             for (unsigned int i = 0; i < pcoin->vout.size(); i++) {
@@ -1613,8 +1613,8 @@ void CWallet::AvailableCoinsSN(vector<COutput>& vCoins, bool fOnlyConfirmed, con
                 if (!(pcoin->IsSpent(i)) && IsMine(pcoin->vout[i]) && pcoin->vout[i].nValue >= nMinimumInputValue &&
                 (!coinControl || !coinControl->HasSelected() || coinControl->IsSelected((*it).first, i)))
                     vCoins.push_back(COutput(pcoin, i, nDepth));*/
-            // do not use IX for inputs that have less then 6 blockchain confirmations
-            if (useIX && nDepth < 6)
+            // do not use IX for inputs that have less then 10 blockchain confirmations
+            if (useIX && nDepth < 10)
                 continue;
 
             for (unsigned int i = 0; i < pcoin->vout.size(); i++) {
@@ -2622,7 +2622,7 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64_t> >& vecSend, 
                     }
 
                     if(useIX){
-                        strFailReason += _("InstantX requires inputs with at least 6 confirmations, you might need to wait a few minutes and try again.");
+                        strFailReason += _("InstantX requires inputs with at least 10 confirmations, you might need to wait a few minutes and try again.");
                     }
                     return false;
                 }
