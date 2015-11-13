@@ -1482,18 +1482,16 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
 
     }
 
+    if(fDryRun) return true;
+
     nOnlyDenominatedBalance = pwalletMain->GetDenominatedBalance(true, false, false);
     nBalanceNeedsDenominated = nBalanceNeedsAnonymized - nOnlyDenominatedBalance;
 
-    if(!fDryRun && nBalanceNeedsDenominated > nOnlyDenominatedBalance) return CreateDenominated(nBalanceNeedsDenominated);
+    //check if we have should create more denominated inputs
+    if(nBalanceNeedsDenominated > nOnlyDenominatedBalance) return CreateDenominated(nBalanceNeedsDenominated);
 
-    //check to see if we have the collateral sized inputs, it requires these
-    if(!pwalletMain->HasCollateralInputs()){
-        if(!fDryRun) MakeCollateralAmounts();
-        return true;
-    }
-
-    if(fDryRun) return true;
+    //check if we have the collateral sized inputs
+    if(!pwalletMain->HasCollateralInputs()) return MakeCollateralAmounts();
 
     std::vector<CTxOut> vOut;
 
@@ -1753,11 +1751,15 @@ bool CSandstormPool::MakeCollateralAmounts()
 
     reservekeyCollateral.KeepKey();
 
-    // use the same cachedLastSuccess as for SS mixinx to prevent race
-    if(pwalletMain->CommitTransaction(wtx, reservekeyChange))
-        cachedLastSuccess = pindexBest->nHeight;
+    LogPrintf("MakeCollateralAmounts: tx %s\n", wtx.GetHash().GetHex());
 
-    LogPrintf("MakeCollateralAmounts Success: tx %s\n", wtx.GetHash().GetHex().c_str());
+    // use the same cachedLastSuccess as for SS mixinx to prevent race
+    if(!pwalletMain->CommitTransaction(wtx, reservekeyChange)) {
+        LogPrintf("MakeCollateralAmounts: CommitTransaction failed!\n");
+        return false;
+    }
+
+    cachedLastSuccess = pindexBest->nHeight;
 
     return true;
 }
@@ -2256,7 +2258,6 @@ void ThreadCheckSandStormPool()
     RenameThread("DarkSilk-Sandstorm");
 
     unsigned int c = 0;
-    std::string errorMessage;
 
     while (true)
     {
