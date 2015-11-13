@@ -541,7 +541,7 @@ bool AppInit2(boost::thread_group& threadGroup)
     }
 
     //ignore stormnodes below protocol version
-    CStormnode::minProtoVersion = GetArg("-stormnodeminprotocol", MIN_SN_PROTO_VERSION);
+    nStormnodeMinProtocol = GetArg("-stormnodeminprotocol", MIN_SN_PROTO_VERSION);
 
     int64_t nStart;
 

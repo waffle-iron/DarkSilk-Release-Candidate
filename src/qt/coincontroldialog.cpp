@@ -1,15 +1,17 @@
 #include "coincontroldialog.h"
 #include "ui_coincontroldialog.h"
 
-#include "core.h"
-#include "init.h"
-#include "base58.h"
-#include "darksilkunits.h"
-#include "walletmodel.h"
 #include "addresstablemodel.h"
-#include "optionsmodel.h"
+#include "base58.h"
 #include "coincontrol.h"
+#include "core.h"
+#include "darksilkunits.h"
+#include "guiutil.h"
+#include "init.h"
+#include "optionsmodel.h"
 #include "sandstorm.h"
+#include "wallet.h"
+#include "walletmodel.h"
 
 #include <QApplication>
 #include <QCheckBox>
@@ -21,6 +23,7 @@
 #include <QFile>
 #include <QFlags>
 #include <QIcon>
+#include <QSettings>
 #include <QString>
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
@@ -380,6 +383,9 @@ void CoinControlDialog::viewItemChanged(QTreeWidgetItem* item, int column)
             CTxIn vin(outpt);
             int rounds = GetInputSandstormRounds(vin);
             if(coinControl->useSandStorm && rounds < nSandstormRounds) {
+                QMessageBox::warning(this, windowTitle(),
+                    tr("Non-anonymized input selected. <b>Sandstorm will be disabled.</b><br><br>If you still want to use Sandstorm, please deselect all non-nonymized inputs first and then check Darksend checkbox again."),
+                    QMessageBox::Ok, QMessageBox::Ok);
                 coinControl->useSandStorm = false;
             }
         }

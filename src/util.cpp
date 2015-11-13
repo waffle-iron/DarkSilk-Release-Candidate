@@ -84,6 +84,7 @@ int nAnonymizeDarkSilkAmount = 1000;
 int nLiquidityProvider = 0;
 /** Spork enforcement enabled time */
 int64_t enforceStormnodePaymentsTime = 4085657524;
+int nStormnodeMinProtocol = 0;
 bool fSucessfullyLoaded = false;
 bool fEnableSandstorm = false;
 /** All denominations used by sandstorm */

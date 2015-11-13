@@ -227,7 +227,7 @@ void CStormnodeMan::CheckAndRemove()
     //remove inactive
     vector<CStormnode>::iterator it = vStormnodes.begin();
     while(it != vStormnodes.end()){
-        if((*it).activeState == CStormnode::STORMNODE_REMOVE || (*it).activeState == CStormnode::STORMNODE_VIN_SPENT){
+        if((*it).activeState == CStormnode::STORMNODE_REMOVE || (*it).activeState == CStormnode::STORMNODE_VIN_SPENT || (*it).protocolVersion < nStormnodeMinProtocol){
             if(fDebug) LogPrintf("CStormnodeMan: Removing inactive Stormnode %s - %i now\n", (*it).addr.ToString().c_str(), size() - 1);
             it = vStormnodes.erase(it);
         } else {

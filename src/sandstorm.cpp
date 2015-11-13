@@ -103,6 +103,7 @@ void CSandstormPool::ProcessMessageSandstorm(CNode* pfrom, std::string& strComma
             pfrom->PushMessage("sssu", sessionID, GetState(), GetEntriesCount(), STORMNODE_ACCEPTED, error);
             return;
         }
+
     } else if (strCommand == "ssq") { //SandStorm Queue
         TRY_LOCK(cs_sandstorm, lockRecv);
         if(!lockRecv) return;
@@ -234,7 +235,7 @@ void CSandstormPool::ProcessMessageSandstorm(CNode* pfrom, std::string& strComma
                 CTransaction tx2;
                 uint256 hash;
                 //if(GetTransaction(i.prevout.hash, tx2, hash, true)){
-        if(GetTransaction(i.prevout.hash, tx2, hash)){
+                if(GetTransaction(i.prevout.hash, tx2, hash)){
                     if(tx2.vout.size() > i.prevout.n) {
                         nValueIn += tx2.vout[i.prevout.n].nValue;
                     }
@@ -369,15 +370,15 @@ void CSandstormPool::ProcessMessageSandstorm(CNode* pfrom, std::string& strComma
 
         int sessionIDMessage;
         bool error;
-        std::string lastMessage;
-        vRecv >> sessionIDMessage >> error >> lastMessage;
+        int errorID;
+        vRecv >> sessionIDMessage >> error >> errorID;
 
         if(sessionID != sessionIDMessage){
             if (fDebug) LogPrintf("ssc - message doesn't match current Sandstorm session %d %d\n", sandStormPool.sessionID, sessionIDMessage);
             return;
         }
 
-        sandStormPool.CompletedTransaction(error, lastMessage);
+        sandStormPool.CompletedTransaction(error, errorID);
     }
 
 }
@@ -1352,7 +1353,7 @@ void CSandstormPool::NewBlock()
 }
 
 // Sandstorm transaction was completed (failed or successed)
-void CSandstormPool::CompletedTransaction(bool error, std::string lastMessageNew)
+void CSandstormPool::CompletedTransaction(bool error, int errorID)
 {
     if(fStormNode) return;
 
@@ -1372,7 +1373,7 @@ void CSandstormPool::CompletedTransaction(bool error, std::string lastMessageNew
         // To avoid race conditions, we'll only let SS run once per block
         cachedLastSuccess = pindexBest->nHeight;
     }
-    lastMessage = lastMessageNew;
+    lastMessage = GetMessageByID(errorID);
     completedTransaction = true;
 }
 
@@ -1716,39 +1717,44 @@ bool CSandstormPool::SendRandomPaymentToSelf()
 // Split up large inputs or create fee sized inputs
 bool CSandstormPool::MakeCollateralAmounts()
 {
-    // make our change address
-    CReserveKey reservekey(pwalletMain);
-
-    CScript scriptChange;
-    CPubKey vchPubKey;
-    assert(reservekey.GetReservedKey(vchPubKey)); // should never fail, as we just unlocked
-    scriptChange= GetScriptForDestination(vchPubKey.GetID());
-
     CWalletTx wtx;
     int64_t nFeeRet = 0;
     std::string strFail = "";
     vector< pair<CScript, int64_t> > vecSend;
+    CCoinControl *coinControl = NULL;
 
-    vecSend.push_back(make_pair(scriptChange, SANDSTORM_COLLATERAL*4));
+    // make our collateral address
+    CReserveKey reservekeyCollateral(pwalletMain);
+    // make our change address
+    CReserveKey reservekeyChange(pwalletMain);
 
-    CCoinControl *coinControl=NULL;
+    CScript scriptCollateral;
+    CPubKey vchPubKey;
+    assert(reservekeyCollateral.GetReservedKey(vchPubKey)); // should never fail, as we just unlocked
+    scriptCollateral = GetScriptForDestination(vchPubKey.GetID());
+
+    vecSend.push_back(make_pair(scriptCollateral, SANDSTORM_COLLATERAL*4));
+
     int32_t nChangePos;
     // try to use non-denominated and not sn-like funds
-    bool success = pwalletMain->CreateTransaction(vecSend, wtx, reservekey,
+    bool success = pwalletMain->CreateTransaction(vecSend, wtx, reservekeyChange,
             nFeeRet, nChangePos, strFail, coinControl, ONLY_NONDENOMINATED_NOTSN);
     if(!success){
         // if we failed (most likeky not enough funds), try to use denominated instead -
         // SN-like funds should not be touched in any case and we can't mix denominated without collaterals anyway
-        success = pwalletMain->CreateTransaction(vecSend, wtx, reservekey,
+        success = pwalletMain->CreateTransaction(vecSend, wtx, reservekeyChange,
                 nFeeRet, nChangePos, strFail, coinControl, ONLY_DENOMINATED);
         if(!success){
-            LogPrintf("MakeCollateralAmounts: Error - %s\n", strFail.c_str());
+            LogPrintf("MakeCollateralAmounts: ONLY_DENOMINATED Error - %s\n", strFail);
+            reservekeyCollateral.ReturnKey();
             return false;
         }
     }
 
+    reservekeyCollateral.KeepKey();
+
     // use the same cachedLastSuccess as for SS mixinx to prevent race
-    if(pwalletMain->CommitTransaction(wtx, reservekey))
+    if(pwalletMain->CommitTransaction(wtx, reservekeyChange))
         cachedLastSuccess = pindexBest->nHeight;
 
     LogPrintf("MakeCollateralAmounts Success: tx %s\n", wtx.GetHash().GetHex().c_str());
@@ -1759,23 +1765,27 @@ bool CSandstormPool::MakeCollateralAmounts()
 // Create denominations
 bool CSandstormPool::CreateDenominated(int64_t nTotalValue)
 {
-    // make our change address
-    CReserveKey reservekey(pwalletMain);
-
-    CScript scriptChange;
-    CPubKey vchPubKey;
-    assert(reservekey.GetReservedKey(vchPubKey)); // should never fail, as we just unlocked
-    scriptChange = GetScriptForDestination(vchPubKey.GetID());
-
     CWalletTx wtx;
     int64_t nFeeRet = 0;
     std::string strFail = "";
     vector< pair<CScript, int64_t> > vecSend;
     int64_t nValueLeft = nTotalValue;
 
+    // make our collateral address
+    CReserveKey reservekeyCollateral(pwalletMain);
+    // make our change address
+    CReserveKey reservekeyChange(pwalletMain);
+    // make our denom addresses
+    CReserveKey reservekeyDenom(pwalletMain);
+
+    CScript scriptCollateral;
+    CPubKey vchPubKey;
+    assert(reservekeyCollateral.GetReservedKey(vchPubKey)); // should never fail, as we just unlocked
+    scriptCollateral = GetScriptForDestination(vchPubKey.GetID());
+
     // ****** Add collateral outputs ************ /
     if(!pwalletMain->HasCollateralInputs()) {
-        vecSend.push_back(make_pair(scriptChange, SANDSTORM_COLLATERAL*4));
+        vecSend.push_back(make_pair(scriptCollateral, SANDSTORM_COLLATERAL*4));
         nValueLeft -= SANDSTORM_COLLATERAL*4;
     }
 
@@ -1785,14 +1795,15 @@ bool CSandstormPool::CreateDenominated(int64_t nTotalValue)
 
         // add each output up to 10 times until it can't be added again
         while(nValueLeft - v >= SANDSTORM_COLLATERAL && nOutputs <= 10) {
-            CScript scriptChange;
+            CScript scriptDenom;
             CPubKey vchPubKey;
             //use a unique change address
-            assert(reservekey.GetReservedKey(vchPubKey)); // should never fail, as we just unlocked
-            scriptChange= GetScriptForDestination(vchPubKey.GetID());
-            reservekey.KeepKey();
+            assert(reservekeyDenom.GetReservedKey(vchPubKey)); // should never fail, as we just unlocked
+            scriptDenom = GetScriptForDestination(vchPubKey.GetID());
+            // TODO: do not keep reservekeyDenom here
+            reservekeyDenom.KeepKey();
 
-            vecSend.push_back(make_pair(scriptChange, v));
+            vecSend.push_back(make_pair(scriptDenom, v));
 
             //increment outputs and subtract denomination amount
             nOutputs++;
@@ -1808,18 +1819,25 @@ bool CSandstormPool::CreateDenominated(int64_t nTotalValue)
 
     CCoinControl *coinControl=NULL;
     int32_t nChangePos;
-    bool success = pwalletMain->CreateTransaction(vecSend, wtx, reservekey,
+    bool success = pwalletMain->CreateTransaction(vecSend, wtx, reservekeyChange,
             nFeeRet, nChangePos, strFail, coinControl, ONLY_NONDENOMINATED_NOTSN);
     if(!success){
         LogPrintf("CreateDenominated: Error - %s\n", strFail.c_str());
+        // TODO: return reservekeyDenom here
+        reservekeyCollateral.ReturnKey();
         return false;
     }
 
-    // use the same cachedLastSuccess as for SS mixinx to prevent race
-    if(pwalletMain->CommitTransaction(wtx, reservekey))
-        cachedLastSuccess = pindexBest->nHeight;
+    // TODO: keep reservekeyDenom here
+    reservekeyCollateral.KeepKey();
 
-    LogPrintf("CreateDenominated Success: tx %s\n", wtx.GetHash().GetHex().c_str());
+    // use the same cachedLastSuccess as for SS mixinx to prevent race
+    if(pwalletMain->CommitTransaction(wtx, reservekeyChange))
+        cachedLastSuccess = pindexBest->nHeight;
+    else
+        LogPrintf("CreateDenominated: CommitTransaction failed!\n");
+
+    LogPrintf("CreateDenominated: tx %s\n", wtx.GetHash().GetHex().c_str());
 
     return true;
 }
@@ -2030,6 +2048,34 @@ int CSandstormPool::GetDenominationsByAmount(int64_t nAmount, int nDenomTarget){
     }
 
     return GetDenominations(vout1);
+}
+
+std::string CSandstormPool::GetMessageByID(int messageID) {
+    switch (messageID) {
+    case ERR_ALREADY_HAVE: return _("Already have that input.");
+    case ERR_DENOM: return _("No matching denominations found for mixing.");
+    case ERR_ENTRIES_FULL: return _("Entries are full.");
+    case ERR_EXISTING_TX: return _("Not compatible with existing transactions.");
+    case ERR_FEES: return _("Transaction fees are too high.");
+    case ERR_INVALID_COLLATERAL: return _("Collateral not valid.");
+    case ERR_INVALID_INPUT: return _("Input is not valid.");
+    case ERR_INVALID_SCRIPT: return _("Invalid script detected.");
+    case ERR_INVALID_TX: return _("Transaction not valid.");
+    case ERR_MAXIMUM: return _("Value more than Sandstorm pool maximum allows.");
+    case ERR_MN_LIST: return _("Not in the Stormnode list.");
+    case ERR_MODE: return _("Incompatible mode.");
+    case ERR_NON_STANDARD_PUBKEY: return _("Non-standard public key detected.");
+    case ERR_NOT_A_MN: return _("This is not a Stormnode.");
+    case ERR_QUEUE_FULL: return _("Stormnode queue is full.");
+    case ERR_RECENT: return _("Last Sandstorm was too recent.");
+    case ERR_SESSION: return _("Session not complete!");
+    case ERR_MISSING_TX: return _("Missing input transaction information.");
+    case ERR_VERSION: return _("Incompatible version.");
+    case MSG_SUCCESS: return _("Transaction created successfully.");
+    case MSG_NOERR:
+    default:
+        return "";
+    }
 }
 
 bool CSandStormSigner::IsVinAssociatedWithPubkey(CTxIn& vin, CPubKey& pubkey){

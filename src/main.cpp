@@ -2432,12 +2432,12 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
         CBlockIndex *pindex = pindexBest;
         if(pindex != NULL){
             if(pindex->GetBlockHash() == hashPrevBlock){
-                CAmount stormnodePaymentAmount = GetStormnodePayment(pindex->nHeight+1, vtx[0].GetValueOut());
                 bool fIsInitialDownload = IsInitialBlockDownload();
 
                 // If we don't already have its previous block, skip stormnode payment step
-                if (!fIsInitialDownload && pindex != NULL)
+                if (!fIsInitialDownload)
                 {
+                    CAmount stormnodePaymentAmount = GetStormnodePayment(pindex->nHeight+1, vtx[0].GetValueOut());
                     bool foundPaymentAmount = false;
                     bool foundPayee = false;
                     bool foundPaymentAndPayee = false;
@@ -2795,8 +2795,9 @@ bool ProcessBlock(CNode* pfrom, CBlock* pblock)
             if(stormnodePayments.GetBlockPayee(pindexBest->nHeight, payee, vin)){
                 //UPDATE STORMNODE LAST PAID TIME
                 CStormnode* psn = snodeman.Find(vin);
-                if(psn != NULL) psn->nLastPaid = GetAdjustedTime();
-
+                if(psn != NULL) {
+                    psn->nLastPaid = GetAdjustedTime();
+                }
                 LogPrintf("ProcessBlock() : Update Stormnode Last Paid Time - %d\n", pindexBest->nHeight);
             }
 

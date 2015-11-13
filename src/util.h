@@ -129,6 +129,7 @@ extern int nLiquidityProvider;
 extern bool fEnableSandstorm;
 extern int64_t enforceStormnodePaymentsTime;
 extern std::string strStormNodeAddr;
+extern int nStormnodeMinProtocol;
 extern int keysLoaded;
 extern bool fSucessfullyLoaded;
 extern std::vector<int64_t> sandStormDenominations;
