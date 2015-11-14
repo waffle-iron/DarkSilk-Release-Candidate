@@ -275,7 +275,7 @@ public:
     // stormnode entries
     std::vector<CSandStormEntry> entries;
     // the finalized transaction ready for signing
-    CTransaction finalTransaction;
+    CMutableTransaction finalTransaction;
 
     int64_t lastTimeChanged;
     int64_t lastAutoDenomination;
@@ -306,7 +306,7 @@ public:
     int cachedLastSuccess;
     int cachedNumBlocks; //used for the overview screen
     int minBlockSpacing; //required blocks between mixes
-    CTransaction txCollateral;
+    CMutableTransaction txCollateral;
 
     int64_t lastNewBlock;
 
@@ -321,7 +321,7 @@ public:
         cachedLastSuccess = 0;
         cachedNumBlocks = 0;
         unitTest = false;
-        txCollateral = CTransaction();
+        txCollateral = CMutableTransaction();
         minBlockSpacing = 1;
         lastNewBlock = 0;
 

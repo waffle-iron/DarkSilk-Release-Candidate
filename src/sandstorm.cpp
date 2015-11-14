@@ -207,7 +207,7 @@ void CSandstormPool::ProcessMessageSandstorm(CNode* pfrom, std::string& strComma
             bool missingTx = false;
 
             CValidationState state;
-            CTransaction tx;
+            CMutableTransaction tx;
 
             BOOST_FOREACH(CTxOut o, out){
                 nValueOut += o.nValue;
@@ -388,7 +388,7 @@ int randomizeList (int i) { return std::rand()%i;}
 // Recursively determine the rounds of a given input (How deep is the Sandstorm chain for a given input)
 int GetInputSandstormRounds(CTxIn in, int rounds)
 {
-    static std::map<uint256, CWalletTx> mDenomWtxes;
+    static std::map<uint256, CMutableTransaction> mDenomWtxes;
 
     if(rounds >= 101) return rounds;
 
@@ -398,12 +398,12 @@ int GetInputSandstormRounds(CTxIn in, int rounds)
     CWalletTx wtx;
     if(pwalletMain->GetTransaction(hash, wtx))
     {
-        std::map<uint256, CWalletTx>::const_iterator mdwi = mDenomWtxes.find(hash);
+        std::map<uint256, CMutableTransaction>::const_iterator mdwi = mDenomWtxes.find(hash);
         // not known yet, let's add it
         if(mdwi == mDenomWtxes.end())
         {
             if(fDebug) LogPrintf("GetInputSandstormRounds INSERTING %s\n", hash.ToString());
-            mDenomWtxes[hash] = wtx;
+            mDenomWtxes[hash] = CMutableTransaction(wtx);
         }
         // found and it's not an initial value, just return it
         else if(mDenomWtxes[hash].vout[nout].nRounds != -10)
@@ -498,7 +498,7 @@ void CSandstormPool::SetNull(bool clearEverything){
     sessionDenom = 0;
     sessionFoundStormnode = false;
     vecSessionCollateral.clear();
-    txCollateral = CTransaction();
+    txCollateral = CMutableTransaction();
 
     if(clearEverything){
         myEntries.clear();
@@ -555,7 +555,7 @@ void CSandstormPool::Check()
         UpdateState(POOL_STATUS_SIGNING);
 
         if (fStormNode) {
-            CTransaction txNew;
+            CMutableTransaction txNew;
             // make our new transaction
             for(unsigned int i = 0; i < entries.size(); i++){
                 BOOST_FOREACH(const CTxOut& v, entries[i].vout)
@@ -933,7 +933,7 @@ void CSandstormPool::CheckForCompleteQueue(){
 
 // check to see if the signature is valid
 bool CSandstormPool::SignatureValid(const CScript& newSig, const CTxIn& newVin){
-    CTransaction txNew;
+    CMutableTransaction txNew;
     txNew.vin.clear();
     txNew.vout.clear();
 
@@ -1131,7 +1131,7 @@ bool CSandstormPool::SignaturesComplete(){
 // This is only ran from clients
 //
 void CSandstormPool::SendSandstormDenominate(std::vector<CTxIn>& vin, std::vector<CTxOut>& vout, int64_t amount){
-    if(sandStormPool.txCollateral == CTransaction()){
+    if(sandStormPool.txCollateral == CMutableTransaction()){
         LogPrintf ("CSandstormPool:SendSandstormDenominate() - Sandstorm collateral not set");
         return;
     }
@@ -1174,7 +1174,7 @@ void CSandstormPool::SendSandstormDenominate(std::vector<CTxIn>& vin, std::vecto
         int64_t nValueOut = 0;
 
         CValidationState state;
-        CTransaction tx;
+        CMutableTransaction tx;
 
         BOOST_FOREACH(const CTxOut& o, vout){
             nValueOut += o.nValue;
@@ -1507,9 +1507,9 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
         }
 
         //check our collateral
-        if(txCollateral != CTransaction()){
+        if(txCollateral != CMutableTransaction()){
             if(!IsCollateralValid(txCollateral)) {
-                txCollateral = CTransaction();
+                txCollateral = CMutableTransaction();
                 LogPrintf("DoAutomaticDenominating -- Invalid collateral, resetting.\n");
             }
         }
@@ -1553,7 +1553,7 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
                     if(pnode)
                     {
                         std::string strReason;
-                        if(txCollateral == CTransaction()){
+                        if(txCollateral == CMutableTransaction()){
                             if(!pwalletMain->CreateCollateralTransaction(txCollateral, strReason)){
                                 LogPrintf("DoAutomaticDenominating -- ssa error:%s\n", strReason.c_str());
                                 return false;
@@ -1622,7 +1622,7 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
                     if((CNetAddr)pnode->addr != (CNetAddr)psn->addr) continue;
 
                     std::string strReason;
-                    if(txCollateral == CTransaction()){
+                    if(txCollateral == CMutableTransaction()){
                         if(!pwalletMain->CreateCollateralTransaction(txCollateral, strReason)){
                             LogPrintf("DoAutomaticDenominating -- create collateral error:%s\n", strReason.c_str());
                             return false;

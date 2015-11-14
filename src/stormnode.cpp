@@ -249,7 +249,7 @@ void CStormnode::Check()
 
     if(!unitTest){
         CValidationState state;
-        CTransaction tx = CTransaction();
+        CMutableTransaction tx = CMutableTransaction();
         CTxOut vout = CTxOut(STORMNODE_COLLATERAL*COIN, sandStormPool.collateralPubKey);
         tx.vin.push_back(vin);
         tx.vout.push_back(vout);
@@ -452,7 +452,7 @@ bool CStormnodeBroadcast::CheckInputsAndAdd(int& nDoS, bool fRequested)
         if (mi != mapBlockIndex.end() && (*mi).second)
         {
             CBlockIndex* pSNIndex = (*mi).second; // block for 1000 DRKSLK tx -> 1 confirmation
-            CBlockIndex* pConfIndex = chainActive[pSNIndex->nHeight + STORMNODE_MIN_CONFIRMATIONS - 1]; // block where tx got STORMNODE_MIN_CONFIRMATIONS
+            //CBlockIndex* pConfIndex = chainActive[pSNIndex->nHeight + STORMNODE_MIN_CONFIRMATIONS - 1]; // block where tx got STORMNODE_MIN_CONFIRMATIONS
             if(pConfIndex->GetBlockTime() > sigTime)
             {
                 LogPrintf("ssee - Bad sigTime %d for Stormnode %20s %105s (%i conf block is at %d)\n",

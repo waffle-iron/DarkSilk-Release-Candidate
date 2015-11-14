@@ -71,6 +71,7 @@ public:
         // be spent as it did not originally exist in the database.
         
         const char* pszTimestamp = "2015 DarkSilk is Born";
+        CMutableTransaction txNew;
         std::vector<CTxIn> vin;
         vin.resize(1);
         vin[0].scriptSig = CScript() << 0 << CBigNum(42) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));

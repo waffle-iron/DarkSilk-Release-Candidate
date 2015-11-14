@@ -10,6 +10,8 @@
 #include "bignum.h"
 #include "sync.h"
 #include "txmempool.h"
+#include "primitives/block.h"
+#include "primitives/transaction.h"
 #include "net.h"
 #include "script.h"
 #include "scrypt.h"
