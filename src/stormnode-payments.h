@@ -4,55 +4,150 @@
 #ifndef STORMNODE_PAYMENTS_H
 #define STORMNODE_PAYMENTS_H
 
-#include "sync.h"
-#include "net.h"
 #include "key.h"
-#include "util.h"
-#include "base58.h"
 #include "main.h"
 #include "stormnode.h"
-#include "stormnode-pos.h"
-#include "timedata.h"
+#include <boost/lexical_cast.hpp>
 
 class CStormnodePayments;
 class CStormnodePaymentWinner;
+class CStormnodeBlockPayees;
 
 extern CStormnodePayments stormnodePayments;
-extern map<uint256, CStormnodePaymentWinner> mapSeenStormnodeVotes;
+extern std::map<uint256, CStormnodePaymentWinner> mapStormnodePayeeVotes;
+extern std::map<uint256, CStormnodeBlockPayees> mapStormnodeBlocks;
+
+static const int MIN_SNPAYMENTS_PROTO_VERSION = 60020;
+#define MNPAYMENTS_SIGNATURES_REQUIRED           11
+#define MNPAYMENTS_SIGNATURES_TOTAL              20
 
 void ProcessMessageStormnodePayments(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
+bool IsReferenceNode(CTxIn& vin);
+bool IsBlockPayeeValid(const CTransaction& txNew, int64_t nBlockHeight);
+std::string GetRequiredPaymentsString(int64_t nBlockHeight);
+
+class CStormnodePayee : public CTxOut
+{
+public:
+    int nVotes;
+
+    CStormnodePayee() {
+        scriptPubKey = CScript();
+        nValue = 0;
+        nVotes = 0;
+    }
+
+    CStormnodePayee(CAmount nValueIn, CScript payee) {
+        scriptPubKey = payee;
+        nValue = nValueIn;
+        nVotes = 0;
+    }
+};
+
+// Keep track of votes for payees from stormnodes
+class CStormnodeBlockPayees
+{
+public:
+    int nBlockHeight;
+    std::vector<CStormnodePayee> vecPayments;
+
+    CStormnodeBlockPayees(){
+        nBlockHeight = 0;
+        vecPayments.clear();
+    }
+    CStormnodeBlockPayees(int nBlockHeightIn) {
+        nBlockHeight = nBlockHeightIn;
+        vecPayments.clear();
+    }
+
+    void AddPayee(CScript payeeIn, int64_t nAmount, int nIncrement){
+        BOOST_FOREACH(CStormnodePayee& payee, vecPayments){
+            if(payee.scriptPubKey == payeeIn && payee.nValue == nAmount) {
+                payee.nVotes += nIncrement;
+                return;
+            }
+        }
+
+        CStormnodePayee c((CAmount)nAmount, payeeIn);
+        vecPayments.push_back(c);
+    }
+
+    bool GetPayee(CScript& payee)
+    {
+        int nVotes = -1;
+        BOOST_FOREACH(CStormnodePayee& p, vecPayments){
+            if(p.nVotes > nVotes){
+                payee = p.scriptPubKey; 
+                nVotes = p.nVotes;
+            }
+        }        
+
+        return nVotes > -1;
+    }
+
+    bool IsTransactionValid(const CTransaction& txNew);
+    std::string GetRequiredPaymentsString();
+
+    IMPLEMENT_SERIALIZE(
+        READWRITE(nBlockHeight);
+        READWRITE(vecPayments);
+    )
+};
 
 // for storing the winning payments
 class CStormnodePaymentWinner
 {
 public:
+    CTxIn vinStormnode;
     int nBlockHeight;
-    CTxIn vin;
-    CScript payee;
+    CTxOut payee;
     std::vector<unsigned char> vchSig;
-    uint64_t score;
 
     CStormnodePaymentWinner() {
         nBlockHeight = 0;
-        score = 0;
-        vin = CTxIn();
-        payee = CScript();
+        vinStormnode = CTxIn();
+        payee = CTxOut();
+    }
+
+    CStormnodePaymentWinner(CTxIn vinIn) {
+        nBlockHeight = 0;
+        vinStormnode = vinIn;
+        payee = CTxOut();
     }
 
     uint256 GetHash(){
-        uint256 n2 = Hash(BEGIN(nBlockHeight), END(nBlockHeight));
-        uint256 n3 = vin.prevout.hash > n2 ? (vin.prevout.hash - n2) : (n2 - vin.prevout.hash);
+        CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
+        ss << payee;
 
-        return n3;
+        return ss.GetHash(); 
+    }
+
+    bool Sign(CKey& keyStormnode, CPubKey& pubKeyStormnode);
+    bool IsValid();
+    bool SignatureValid();
+    void Relay();
+
+    void AddPayee(CScript payeeIn, int64_t nAmount){
+        payee.scriptPubKey = payeeIn;
+        payee.nValue = nAmount;
     }
 
     IMPLEMENT_SERIALIZE(
+        READWRITE(vinStormnode);
         READWRITE(nBlockHeight);
         READWRITE(payee);
-        READWRITE(vin);
-        READWRITE(score);
         READWRITE(vchSig);
-     )
+    )
+
+    std::string ToString()
+    {
+        std::string ret = "";
+        ret += vinStormnode.ToString();
+        ret += ", " + boost::lexical_cast<std::string>(nBlockHeight);
+        ret += ", " + payee.ToString();
+        ret += ", " + boost::lexical_cast<std::string>((int)vchSig.size());
+        return ret;
+    }
 };
 
 //
@@ -63,40 +158,28 @@ public:
 class CStormnodePayments
 {
 private:
-    std::vector<CStormnodePaymentWinner> vWinning;
     int nSyncedFromPeer;
-    std::string strMasterPrivKey;
-    std::string strMainPubKey;
-    bool enabled;
     int nLastBlockHeight;
 
 public:
 
     CStormnodePayments() {
-        strMainPubKey = "";
-        enabled = false;
+        nSyncedFromPeer = 0;
+        nLastBlockHeight = 0;
     }
 
-    bool SetPrivKey(std::string strPrivKey);
-    bool CheckSignature(CStormnodePaymentWinner& winner);
-    bool Sign(CStormnodePaymentWinner& winner);
-
-    // Deterministically calculate a given "score" for a stormnode depending on how close it's hash is
-    // to the blockHeight. The further away they are the better, the furthest will win the election
-    // and get paid this block
-    //
-
-    uint64_t CalculateScore(uint256 blockHash, CTxIn& vin);
-    bool GetWinningStormnode(int nBlockHeight, CTxIn& vinOut);
     bool AddWinningStormnode(CStormnodePaymentWinner& winner);
     bool ProcessBlock(int nBlockHeight);
-    void Relay(CStormnodePaymentWinner& winner);
     void Sync(CNode* node);
     void CleanPaymentList();
     int LastPayment(CStormnode& sn);
 
-    //slow
-    bool GetBlockPayee(int nBlockHeight, CScript& payee, CTxIn& vin);
+    bool GetBlockPayee(int nBlockHeight, CScript& payee);
+    bool IsTransactionValid(const CTransaction& txNew, int nBlockHeight);
+    bool IsScheduled(CStormnode& sn);
+
+    void ProcessMessageStormnodePayments(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
+    std::string GetRequiredPaymentsString(int nBlockHeight);
 };
 
 #endif

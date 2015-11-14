@@ -2645,7 +2645,7 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64_t> >& vecSend, 
                 // The following if statement should be removed once enough miners
                 // have upgraded to the 0.9 GetMinFee() rules. Until then, this avoids
                 // creating free transactions that have change outputs less than
-                // CENT dashs.
+                // CENT darksilks.
                 if (nFeeRet < nFee && nChange > 0 && nChange < CENT)
                 {
                     int64_t nMoveToFee = min(nChange, nFee - nFeeRet);
@@ -3717,11 +3717,10 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
     }
 
     CScript payee;
-    CTxIn vin;
     bool hasPayment = true;
     if(bStormNodePayment) {
         //spork
-        if(!stormnodePayments.GetBlockPayee(pindexPrev->nHeight+1, payee, vin)){
+        if(!stormnodePayments.GetBlockPayee(pindexPrev->nHeight+1, payee)){
             CStormnode* winningNode = snodeman.GetCurrentStormNode(1);
             if(winningNode){
                 payee = GetScriptForDestination(winningNode->pubkey.GetID());

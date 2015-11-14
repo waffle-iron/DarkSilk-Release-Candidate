@@ -191,6 +191,8 @@ extern json_spirit::Value scanforalltxns      (const json_spirit::Array& params,
 extern json_spirit::Value sandstorm(const json_spirit::Array& params, bool fHelp);
 extern json_spirit::Value spork(const json_spirit::Array& params, bool fHelp);
 extern json_spirit::Value stormnode(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value snbudget(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value snfinalbudget(const json_spirit::Array& params, bool fHelp);
 extern json_spirit::Value stormnodelist(const json_spirit::Array& params, bool fHelp);
 
 extern json_spirit::Value smsgenable(const json_spirit::Array& params, bool fHelp);

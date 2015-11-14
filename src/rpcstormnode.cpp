@@ -9,6 +9,8 @@
 #include "init.h"
 #include "activestormnode.h"
 #include "stormnodeman.h"
+#include "stormnode-payments.h"
+#include "stormnode-budget.h"
 #include "stormnodeconfig.h"
 #include "rpcserver.h"
 #include <boost/lexical_cast.hpp>
@@ -135,8 +137,10 @@ Value stormnode(const Array& params, bool fHelp)
         strCommand = params[0].get_str();
 
     if (fHelp  ||
-        (strCommand != "start" && strCommand != "start-alias" && strCommand != "start-many" && strCommand != "stop" && strCommand != "stop-alias" && strCommand != "stop-many" && strCommand != "list" && strCommand != "list-conf" && strCommand != "count"  && strCommand != "enforce"
-            && strCommand != "debug" && strCommand != "current" && strCommand != "winners" && strCommand != "genkey" && strCommand != "connect" && strCommand != "outputs" && strCommand != "vote-many" && strCommand != "vote"))
+        (strCommand != "start" && strCommand != "start-alias" && strCommand != "start-many" && strCommand != "stop" && strCommand != "stop-alias" &&
+        strCommand != "stop-many" && strCommand != "list" && strCommand != "list-conf" && strCommand != "count"  && strCommand != "enforce" &&
+        strCommand != "debug" && strCommand != "current" && strCommand != "winners" && strCommand != "genkey" && strCommand != "connect" && 
+        strCommand != "outputs"))
         throw runtime_error(
                 "stormnode \"command\"... ( \"passphrase\" )\n"
                 "Set of commands to execute stormnode related actions\n"
@@ -156,8 +160,6 @@ Value stormnode(const Array& params, bool fHelp)
                 "  list         - Print list of all known stormnodes (see stormnodelist for more info)\n"
                 "  list-conf    - Print stormnode.conf in JSON format\n"
                 "  winners      - Print list of stormnode winners\n"
-                "  vote-many    - Vote on a DarkSilk initiative\n"
-                "  vote         - Vote on a DarkSilk initiative\n"
                 );
 
     if (strCommand == "list")
@@ -165,6 +167,11 @@ Value stormnode(const Array& params, bool fHelp)
         Array newParams(params.size() - 1);
         std::copy(params.begin() + 1, params.end(), newParams.begin());
         return stormnodelist(newParams, fHelp);
+    }
+
+    if (strCommand == "budget")
+    {
+        return "Show budgets";
     }
 
     if (strCommand == "count")
@@ -395,28 +402,10 @@ Value stormnode(const Array& params, bool fHelp)
     if (strCommand == "winners")
     {
         Object obj;
-        std::string strMode = "addr";
-    
-        if (params.size() >= 1) strMode = params[0].get_str();
 
         for(int nHeight = pindexBest->nHeight-10; nHeight < pindexBest->nHeight+20; nHeight++)
         {
-            CScript payee;
-            CTxIn vin;
-            if(stormnodePayments.GetBlockPayee(nHeight, payee, vin)){
-                CTxDestination address1;
-                ExtractDestination(payee, address1);
-                CDarkSilkAddress address2(address1);
-
-                if(strMode == "addr")
-                    obj.push_back(Pair(boost::lexical_cast<std::string>(nHeight),       address2.ToString().c_str()));
-
-                if(strMode == "vin")
-                    obj.push_back(Pair(boost::lexical_cast<std::string>(nHeight),       vin.ToString().c_str()));
-
-            } else {
-                obj.push_back(Pair(boost::lexical_cast<std::string>(nHeight),       ""));
-            }
+            obj.push_back(Pair(boost::lexical_cast<std::string>(nHeight),       stormnodePayments.GetRequiredPaymentsString(nHeight).c_str()));
         }
 
         return obj;
@@ -481,114 +470,6 @@ Value stormnode(const Array& params, bool fHelp)
 
     }
 
-    if(strCommand == "vote-many")
-    {
-        std::vector<CStormnodeConfig::CStormnodeEntry> snEntries;
-        snEntries = stormnodeConfig.getEntries();
-
-        if (params.size() != 2)
-            throw runtime_error("You can only vote 'yay' or 'nay'");
-
-        std::string vote = params[1].get_str().c_str();
-        if(vote != "yay" && vote != "nay") return "You can only vote 'yay' or 'nay'";
-        int nVote = 0;
-        if(vote == "yay") nVote = 1;
-        if(vote == "nay") nVote = -1;
-
-        int success = 0;
-        int failed = 0;
-
-        Object resultObj;
-
-        BOOST_FOREACH(CStormnodeConfig::CStormnodeEntry sne, stormnodeConfig.getEntries()) {
-            std::string errorMessage;
-            std::vector<unsigned char> vchStormNodeSignature;
-            std::string strStormNodeSignMessage;
-
-            CPubKey pubKeyCollateralAddress;
-            CKey keyCollateralAddress;
-            CPubKey pubKeyStormnode;
-            CKey keyStormnode;
-
-            if(!sandStormSigner.SetKey(sne.getPrivKey(), errorMessage, keyStormnode, pubKeyStormnode)){
-                printf(" Error upon calling SetKey for %s\n", sne.getAlias().c_str());
-                failed++;
-                continue;
-            }
-            
-            CStormnode* psn = snodeman.Find(pubKeyStormnode);
-            if(psn == NULL)
-            {
-                printf("Can't find stormnode by pubkey for %s\n", sne.getAlias().c_str());
-                failed++;
-                continue;
-            }
-
-            std::string strMessage = psn->vin.ToString() + boost::lexical_cast<std::string>(nVote);
-
-            if(!sandStormSigner.SignMessage(strMessage, errorMessage, vchStormNodeSignature, keyStormnode)){
-                printf(" Error upon calling SignMessage for %s\n", sne.getAlias().c_str());
-                failed++;
-                continue;
-            }
-
-            if(!sandStormSigner.VerifyMessage(pubKeyStormnode, vchStormNodeSignature, strMessage, errorMessage)){
-                printf(" Error upon calling VerifyMessage for %s\n", sne.getAlias().c_str());
-                failed++;
-                continue;
-            }
-
-            success++;
-
-            //send to all peers
-            LOCK(cs_vNodes);
-            BOOST_FOREACH(CNode* pnode, vNodes)
-                pnode->PushMessage("svote", psn->vin, vchStormNodeSignature, nVote);
-        }
-
-        return("Voted successfully " + boost::lexical_cast<std::string>(success) + " time(s) and failed " + boost::lexical_cast<std::string>(failed) + " time(s).");
-     }
-
-    if(strCommand == "vote")
-    {
-        std::vector<CStormnodeConfig::CStormnodeEntry> snEntries;
-        snEntries = stormnodeConfig.getEntries();
-
-        if (params.size() != 2)
-            throw runtime_error("You can only vote 'yay' or 'nay'");
-
-        std::string vote = params[1].get_str().c_str();
-        if(vote != "yay" && vote != "nay") return "You can only vote 'yay' or 'nay'";
-        int nVote = 0;
-        if(vote == "yay") nVote = 1;
-        if(vote == "nay") nVote = -1;
-
-        // Choose coins to use
-        CPubKey pubKeyCollateralAddress;
-        CKey keyCollateralAddress;
-        CPubKey pubKeyStormnode;
-        CKey keyStormnode;
-
-        std::string errorMessage;
-        std::vector<unsigned char> vchStormNodeSignature;
-        std::string strMessage = activeStormnode.vin.ToString() + boost::lexical_cast<std::string>(nVote);
-
-        if(!sandStormSigner.SetKey(strStormNodePrivKey, errorMessage, keyStormnode, pubKeyStormnode))
-            return(" Error upon calling SetKey");
-
-        if(!sandStormSigner.SignMessage(strMessage, errorMessage, vchStormNodeSignature, keyStormnode))
-            return(" Error upon calling SignMessage");
-
-        if(!sandStormSigner.VerifyMessage(pubKeyStormnode, vchStormNodeSignature, strMessage, errorMessage))
-            return(" Error upon calling VerifyMessage");
-
-        //send to all peers
-        LOCK(cs_vNodes);
-        BOOST_FOREACH(CNode* pnode, vNodes)
-            pnode->PushMessage("svote", activeStormnode.vin, vchStormNodeSignature, nVote);
-
-    }
-
     return Value::null;
 }
 
@@ -601,7 +482,7 @@ Value stormnodelist(const Array& params, bool fHelp)
     if (params.size() == 2) strFilter = params[1].get_str();
 
     if (fHelp ||
-            (strMode != "status" && strMode != "vin" && strMode != "pubkey" && strMode != "lastseen" && strMode != "activeseconds" && strMode != "rank"
+            (strMode != "status" && strMode != "vin" && strMode != "pubkey" && strMode != "lastseen" && strMode != "activeseconds" && strMode != "rank" && strMode != "addr"
                  && strMode != "protocol" && strMode != "full" && strMode != "votes" && strMode != "donation" && strMode != "pose" && strMode != "lastpaid"))     {
         throw runtime_error(
                 "stormnodelist ( \"mode\" \"filter\" )\n"
@@ -620,7 +501,6 @@ Value stormnodelist(const Array& params, bool fHelp)
                 "  rank           - Print rank of a stormnode based on current block\n"
                 "  status         - Print stormnode status: ENABLED / EXPIRED / VIN_SPENT / REMOVE / POS_ERROR (can be additionally filtered, partial match)\n"
                 "  addr            - Print ip address associated with a stormnode (can be additionally filtered, partial match)\n"
-                "  votes          - Print all stormnode votes for a DarkSilk initiative (can be additionally filtered, partial match)\n"
                 "  lastpaid       - The last time a node was paid on the network\n"
                 );
     }
@@ -709,18 +589,6 @@ Value stormnodelist(const Array& params, bool fHelp)
                 if(strFilter !="" && sn.vin.prevout.hash.ToString().find(strFilter) == string::npos &&
                     strVin.find(strFilter) == string::npos) continue;
                 obj.push_back(Pair(strVin,       sn.addr.ToString().c_str()));
-            } else if(strMode == "votes"){
-                std::string strStatus = "ABSTAIN";
-
-                //voting lasts 7 days, ignore the last vote if it was older than that
-                if((GetAdjustedTime() - sn.lastVote) < (60*60*8))
-                {
-                    if(sn.nVote == -1) strStatus = "NAY";
-                    if(sn.nVote == 1) strStatus = "YAY";
-                }
-
-                if(strFilter !="" && (strVin.find(strFilter) == string::npos && strStatus.find(strFilter) == string::npos)) continue;
-                obj.push_back(Pair(strVin,       strStatus.c_str()));
             } else if(strMode == "lastpaid"){
                 if(strFilter !="" && sn.vin.prevout.hash.ToString().find(strFilter) == string::npos &&
                     strVin.find(strFilter) == string::npos) continue;

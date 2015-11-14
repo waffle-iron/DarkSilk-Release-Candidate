@@ -34,9 +34,9 @@ class uint256;
 #define STORMNODE_MIN_CONFIRMATIONS           10
 #define STORMNODE_MIN_SNP_SECONDS             (30*60)
 #define STORMNODE_MIN_SSEE_SECONDS            (5*60)
-#define STORMNODE_PING_SECONDS                (1*60)
+#define STORMNODE_PING_SECONDS                (15*60)
 #define STORMNODE_EXPIRATION_SECONDS          (65*60)
-#define STORMNODE_REMOVAL_SECONDS             (70*60)
+#define STORMNODE_REMOVAL_SECONDS             (24*60*60)
 
 using namespace std;
 
@@ -86,12 +86,10 @@ public:
     int64_t nLastSsq; //the ssq count from the last ssq broadcast of this node
     CScript donationAddress;
     int donationPercentage;    
-    int nVote;
-    int64_t lastVote;
     int nScanningErrorCount;
     int nLastScanningErrorBlockHeight;
     int64_t nLastPaid;
-
+    int nVotedTimes;
 
     CStormnode();
     CStormnode(const CStormnode& other);
@@ -122,11 +120,10 @@ public:
         swap(first.nLastSsq, second.nLastSsq);
         swap(first.donationAddress, second.donationAddress);
         swap(first.donationPercentage, second.donationPercentage);
-        swap(first.nVote, second.nVote);
-        swap(first.lastVote, second.lastVote);
         swap(first.nScanningErrorCount, second.nScanningErrorCount);
         swap(first.nLastScanningErrorBlockHeight, second.nLastScanningErrorBlockHeight);
         swap(first.nLastPaid, second.nLastPaid);
+        swap(first.nVotedTimes, second.nVotedTimes);
     }
 
     CStormnode& operator=(CStormnode from)
@@ -172,10 +169,9 @@ public:
                 READWRITE(unitTest);
                 READWRITE(allowFreeTx);
                 READWRITE(nLastSsq);
-                READWRITE(nVote);
-                READWRITE(lastVote);
                 READWRITE(nScanningErrorCount);
                 READWRITE(nLastScanningErrorBlockHeight);
+                READWRITE(nVotedTimes);
         }
     )
 
@@ -289,8 +285,14 @@ public:
         READWRITE(protocolVersion);
         READWRITE(donationAddress);
         READWRITE(donationPercentage);
-        READWRITE(nLastPaid);
     )
+
+    uint256 GetHash(){
+         return Hash(
+            BEGIN(sigTime), END(sigTime), 
+            BEGIN(pubkey), END(pubkey)
+        );
+    }
     
 
 };
@@ -320,7 +322,11 @@ public:
 
     bool CheckAndUpdate(int& nDos);
     bool Sign(CKey& keyStormnode, CPubKey& pubKeyStormnode);
-    void Relay();
+    void Relay();    
+
+    uint256 GetHash(){
+         return Hash(BEGIN(vin), END(vin), BEGIN(sigTime), END(sigTime));
+    }
 
 };
 #endif

@@ -22,6 +22,7 @@
 #include "instantx.h"
 #include "sandstorm.h"
 #include "stormnodeman.h"
+#include "stormnode-budget.h"
 #include "stormnode-payments.h"
 #include "spork.h"
 #include "smessage.h"
@@ -2604,82 +2605,20 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
             }
         }
     } else {
-        if(fDebug) { LogPrintf("CheckBlock() : skipping transaction locking checks\n"); }
+        LogPrintf("CheckBlock() : skipping transaction locking checks\n"); }
     }
 
 
     // ----------- stormnode payments -----------
 
-    bool StormnodePayments = false;
-
-
-    if(pindexBest->nHeight+1 >= STORMNODE_PAYMENT_START) StormnodePayments = true;
-
-
-    if(!IsSporkActive(SPORK_1_STORMNODE_PAYMENTS_ENFORCEMENT)){
-        StormnodePayments = false;
-        if(fDebug) LogPrintf("CheckBlock() : Stormnode payment enforcement is off\n");
-    }
-
-    if(StormnodePayments)
+    CBlockIndex* pindexPrev = pindexBest;
+    if(pindexPrev != NULL)
     {
-        LOCK2(cs_main, mempool.cs);
-
-        CBlockIndex *pindex = pindexBest;
-        if(pindex != NULL){
-            if(pindex->GetBlockHash() == hashPrevBlock){
-                bool fIsInitialDownload = IsInitialBlockDownload();
-
-                // If we don't already have its previous block, skip stormnode payment step
-                if (!fIsInitialDownload)
-                {
-                    CAmount stormnodePaymentAmount = GetStormnodePayment(pindex->nHeight+1, vtx[0].GetValueOut());
-                    bool foundPaymentAmount = false;
-                    bool foundPayee = false;
-                    bool foundPaymentAndPayee = false;
-
-                    CScript payee;
-                    CTxIn vin;
-                    if(!stormnodePayments.GetBlockPayee(pindexBest->nHeight+1, payee, vin) || payee == CScript()){
-                        foundPayee = true; //doesn't require a specific payee
-                        foundPaymentAmount = true;
-                        foundPaymentAndPayee = true;
-                        if(fDebug) { LogPrintf("CheckBlock() : Using non-specific stormnode payments %d\n", pindexBest->nHeight+1); }
-                    }
-
-                    for (unsigned int i = 0; i < vtx[0].vout.size(); i++) {
-                        if(vtx[0].vout[i].nValue == stormnodePaymentAmount )
-                            foundPaymentAmount = true;
-                        if(vtx[0].vout[i].scriptPubKey == payee )
-                            foundPayee = true;
-                        if(vtx[0].vout[i].nValue == stormnodePaymentAmount && vtx[0].vout[i].scriptPubKey == payee)
-                            foundPaymentAndPayee = true;
-                    }
-
-                    CTxDestination address1;
-                    ExtractDestination(payee, address1);
-                    CDarkSilkAddress address2(address1);
-
-                    if(!foundPaymentAndPayee) {
-                        if(fDebug) { LogPrintf("CheckBlock() : Couldn't find stormnode payment(%d|%d) or payee(%d|%s) nHeight %d. \n", foundPaymentAmount, stormnodePaymentAmount, foundPayee, address2.ToString().c_str(), pindexBest->nHeight+1); }
-                        return DoS(100, error("CheckBlock() : Couldn't find stormnode payment or payee"));
-                    } else {
-                        LogPrintf("CheckBlock() : Found payment(%d|%d) or payee(%d|%s) nHeight %d. \n", foundPaymentAmount, stormnodePaymentAmount, foundPayee, address2.ToString().c_str(), pindexBest->nHeight+1);
-                    }
-                } else {
-                    if(fDebug) { LogPrintf("CheckBlock() : Is initial download, skipping stormnode payment check %d\n", pindexBest->nHeight+1); }
-                }
-            } else {
-                if(fDebug) { LogPrintf("CheckBlock() : Skipping stormnode payment check - nHeight %d Hash %s\n", pindexBest->nHeight+1, GetHash().ToString().c_str()); }
-            }
-        } else {
-            if(fDebug) { LogPrintf("CheckBlock() : pindex is null, skipping stormnode payment check\n"); }
+        if(IsBlockPayeeValid(block.vtx[0], pindexPrev->nHeight+1))
+        {
+            return DoS(100, error("CheckBlock() : Couldn't find stormnode payment or payee"));
         }
-    } else {
-        if(fDebug) { LogPrintf("CheckBlock() : skipping stormnode payment checks\n"); }
     }
-
-
 
     // Check transactions
     BOOST_FOREACH(const CTransaction& tx, vtx)
@@ -2988,7 +2927,7 @@ bool ProcessBlock(CNode* pfrom, CBlock* pblock)
 
             CScript payee;
             CTxIn vin;
-            if(stormnodePayments.GetBlockPayee(pindexBest->nHeight, payee, vin)){
+            if(stormnodePayments.GetBlockPayee(pindexBest->nHeight, payee)){
                 //UPDATE STORMNODE LAST PAID TIME
                 CStormnode* psn = snodeman.Find(vin);
                 if(psn != NULL) {
@@ -3001,6 +2940,7 @@ bool ProcessBlock(CNode* pfrom, CBlock* pblock)
             sandStormPool.NewBlock();
             stormnodePayments.ProcessBlock(GetHeight()+10);
             snscan.DoStormnodePOSChecks();
+            budget.NewBlock();
         }
     }
 
@@ -3478,7 +3418,21 @@ bool static AlreadyHave(CTxDB& txdb, const CInv& inv)
     case MSG_SPORK:
         return mapSporks.count(inv.hash);
     case MSG_STORMNODE_WINNER:
-        return mapSeenStormnodeVotes.count(inv.hash);
+        return mapStormnodePayeeVotes.count(inv.hash);
+    case MSG_STORMNODE_SCANNING_ERROR:
+        return mapStormnodeScanningErrors.count(inv.hash);
+    case MSG_BUDGET_VOTE:
+        return mapSeenStormnodeBudgetVotes.count(inv.hash);
+    case MSG_BUDGET_PROPOSAL:
+        return mapSeenStormnodeBudgetProposals.count(inv.hash);
+    case MSG_BUDGET_FINALIZED_VOTE:
+        return mapSeenFinalizedBudgetVotes.count(inv.hash);
+    case MSG_BUDGET_FINALIZED:
+        return mapSeenFinalizedBudgets.count(inv.hash);
+    case MSG_STORMNODE_ANNOUNCE:
+        return mapSeenStormnodeBroadcast.count(inv.hash);
+    case MSG_STORMNODE_PING:
+        return mapSeenStormnodePing.count(inv.hash);
     }
     // Don't know what it is, just say we already got one
     return true;
@@ -3596,10 +3550,10 @@ void static ProcessGetData(CNode* pfrom)
                     }
                 }
                 if (!pushed && inv.type == MSG_STORMNODE_WINNER) {
-                    if(mapSeenStormnodeVotes.count(inv.hash)){
+                    if(mapStormnodePayeeVotes.count(inv.hash)){
                         CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
                         ss.reserve(1000);
-                        ss << mapSeenStormnodeVotes[inv.hash];
+                        ss << mapStormnodePayeeVotes[inv.hash];
                         pfrom->PushMessage("snw", ss);
                         pushed = true;
                     }
@@ -3613,6 +3567,71 @@ void static ProcessGetData(CNode* pfrom)
                         pushed = true;
                     }
                 }
+
+                if (!pushed && inv.type == MSG_BUDGET_VOTE) {
+                    if(mapSeenStormnodeBudgetVotes.count(inv.hash)){
+                        CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
+                        ss.reserve(1000);
+                        ss << mapSeenStormnodeBudgetVotes[inv.hash];
+                        pfrom->PushMessage("svote", ss);
+                        pushed = true;
+                    }
+                }
+
+                if (!pushed && inv.type == MSG_BUDGET_PROPOSAL) {
+                    if(mapSeenStormnodeBudgetProposals.count(inv.hash)){
+                        CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
+                        ss.reserve(1000);
+                        ss << mapSeenStormnodeBudgetProposals[inv.hash];
+                        pfrom->PushMessage("sprop", ss);
+                        pushed = true;
+                    }
+                }
+                
+                if (!pushed && inv.type == MSG_BUDGET_FINALIZED_VOTE) {
+                    if(mapSeenFinalizedBudgetVotes.count(inv.hash)){
+                        CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
+                        ss.reserve(1000);
+                        ss << mapSeenFinalizedBudgetVotes[inv.hash];
+                        pfrom->PushMessage("fbvote", ss);
+                        pushed = true;
+                    }
+                }
+
+                if (!pushed && inv.type == MSG_BUDGET_FINALIZED) {
+                    if(mapSeenFinalizedBudgets.count(inv.hash)){
+                        CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
+                        ss.reserve(1000);
+                        ss << mapSeenFinalizedBudgets[inv.hash];
+                        pfrom->PushMessage("fbs", ss);
+                        pushed = true;
+                    }
+                }
+
+                if (!pushed && inv.type == MSG_STORMNODE_ANNOUNCE) {
+                    if(mapSeenStormnodeBroadcast.count(inv.hash)){
+                        bool fRequested = false; // Requested full stormnode list
+                        CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
+                        ss.reserve(1000);
+                        ss << mapSeenStormnodeBroadcast[inv.hash];
+                        ss << fRequested;
+                        pfrom->PushMessage("snb", ss);
+                        pushed = true;
+                    }
+                }
+
+                if (!pushed && inv.type == MSG_STORMNODE_PING) {
+                    if(mapSeenStormnodePing.count(inv.hash)){
+                        bool fRequested = false; // Requested full stormnode list
+                        CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
+                        ss.reserve(1000);
+                        ss << mapSeenStormnodePing[inv.hash];
+                        ss << fRequested;
+                        pfrom->PushMessage("snp", ss);
+                        pushed = true;
+                    }
+                }
+
                 if (!pushed) {
                     vNotFound.push_back(inv);
                 }
@@ -4267,7 +4286,8 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         MarketProcessMessage(pfrom, strCommand, vRecv);
         sandStormPool.ProcessMessageSandstorm(pfrom, strCommand, vRecv);
         snodeman.ProcessMessage(pfrom, strCommand, vRecv);
-        ProcessMessageStormnodePayments(pfrom, strCommand, vRecv);
+        budget.ProcessMessage(pfrom, strCommand, vRecv);
+        stormnodePayments.ProcessMessageStormnodePayments(pfrom, strCommand, vRecv);
         ProcessMessageInstantX(pfrom, strCommand, vRecv);
         ProcessSpork(pfrom, strCommand, vRecv);
         ProcessMessageStormnodePOS(pfrom, strCommand, vRecv);

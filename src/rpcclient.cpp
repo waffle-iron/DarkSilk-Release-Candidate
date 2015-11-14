@@ -158,6 +158,9 @@ static const CRPCConvertParam vRPCConvertParams[] =
     { "searchrawtransactions", 1 },
     { "searchrawtransactions", 2 },
     { "searchrawtransactions", 3 },
+    { "snbudget", 3 },
+    { "snbudget", 4 },
+    { "snbudget", 6 },
 };
 
 class CRPCConvertTable

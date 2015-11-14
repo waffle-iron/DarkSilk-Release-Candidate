@@ -52,7 +52,7 @@ SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
     connect(ui->checkBoxCoinControlChange, SIGNAL(stateChanged(int)), this, SLOT(coinControlChangeChecked(int)));
     connect(ui->lineEditCoinControlChange, SIGNAL(textEdited(const QString &)), this, SLOT(coinControlChangeEdited(const QString &)));
     
-    // Dash specific
+    // DarkSilk specific
     QSettings settings;
     if (!settings.contains("bUseSandStorm"))
         settings.setValue("bUseSandStorm", false);

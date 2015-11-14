@@ -13,6 +13,7 @@
 #include "util.h"
 #include "ui_interface.h"
 #include "activestormnode.h"
+#include "stormnode-budget.h"
 #include "stormnode-payments.h"
 #include "stormnodeman.h"
 #include "spork.h"
@@ -114,6 +115,7 @@ void Shutdown()
 #endif
     StopNode();
     DumpStormnodes();
+    DumpBudgets();
     UnregisterNodeSignals(GetNodeSignals());
     {
         LOCK(cs_main);
@@ -532,11 +534,9 @@ bool AppInit2(boost::thread_group& threadGroup)
     LogPrintf("Used data directory %s\n", strDataDir);
     std::ostringstream strErrors;
 
-    if (mapArgs.count("-stormnodepaymentskey")) // stormnode payments priv key
+    if (mapArgs.count("-sporkkey")) // spork priv key
     {
-        if (!stormnodePayments.SetPrivKey(GetArg("-stormnodepaymentskey", "")))
-            return InitError(_("Unable to sign stormnode payment winner, wrong key?"));
-        if (!sporkManager.SetPrivKey(GetArg("-stormnodepaymentskey", "")))
+        if (!sporkManager.SetPrivKey(GetArg("-sporkkey", "")))
             return InitError(_("Unable to sign spork message, wrong key?"));
     }
 
@@ -905,6 +905,21 @@ bool AppInit2(boost::thread_group& threadGroup)
     {
         LogPrintf("Error reading sncache.dat: ");
         if(readResult == CStormnodeDB::IncorrectFormat)
+            LogPrintf("magic is ok but data has invalid format, will try to recreate\n");
+        else
+            LogPrintf("file format is unknown or invalid, please fix it manually\n");
+    }
+
+    uiInterface.InitMessage(_("Loading budget cache..."));
+
+    CBudgetDB budgetdb;
+    CBudgetDB::ReadResult readResult2 = budgetdb.Read(budget);
+    if (readResult2 == CBudgetDB::FileError)
+        LogPrintf("Missing budget cache - budget.dat, will try to recreate\n");
+    else if (readResult2 != CBudgetDB::Ok)
+    {
+        LogPrintf("Error reading budget.dat: ");
+        if(readResult2 == CBudgetDB::IncorrectFormat)
             LogPrintf("magic is ok but data has invalid format, will try to recreate\n");
         else
             LogPrintf("file format is unknown or invalid, please fix it manually\n");

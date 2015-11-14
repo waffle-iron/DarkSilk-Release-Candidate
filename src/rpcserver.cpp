@@ -247,14 +247,16 @@ static const CRPCCommand vRPCCommands[] =
     { "validateaddress",        &validateaddress,        true,      false,     false },
     { "validatepubkey",         &validatepubkey,         true,      false,     false },
     { "verifymessage",          &verifymessage,          false,     false,     false },
-    { "searchrawtransactions",  &searchrawtransactions,  false,     false, false },
+    { "searchrawtransactions",  &searchrawtransactions,  false,     false,     false },
 
 /* Dark features */
-    { "spork",                  &spork,                  true,      false,      false },
-    { "stormnode",              &stormnode,             true,      false,      true },
-    { "stormnodelist",          &stormnodelist,         true,      false,      false },
+    { "spork",                  &spork,                  true,      false,     false },
+    { "stormnode",              &stormnode,              true,      false,     true },
+    { "snbudget",               &snbudget,               true,      false,     false },
+    { "snfinalbudget",          &snfinalbudget,          true,      false,     false }, 
+    { "stormnodelist",          &stormnodelist,          true,      false,     false },
 #ifdef ENABLE_WALLET
-    { "sandstorm",              &sandstorm,               false,     false,      true },
+    { "sandstorm",              &sandstorm,              false,     false,     true },
     { "getmininginfo",          &getmininginfo,          true,      false,     false },
     { "getstakinginfo",         &getstakinginfo,         true,      false,     false },
     { "getnewaddress",          &getnewaddress,          true,      false,     true },

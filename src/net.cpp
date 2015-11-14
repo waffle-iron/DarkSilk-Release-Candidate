@@ -1648,7 +1648,9 @@ void ThreadMessageHandler()
         }
 
         if (fSleep)
-            MilliSleep(100);
+            MilliSleep(1);
+
+        boost::this_thread::interruption_point();
     }
 }
 

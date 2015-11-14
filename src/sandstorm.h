@@ -5,7 +5,7 @@
 #ifndef SANDSTORM_H
 #define SANDSTORM_H
 
-//#include "primitives/transaction.h"
+//
 #include "main.h"
 #include "sync.h"
 #include "stormnode.h"
@@ -49,12 +49,16 @@ class CActiveStormnode;
 #define SANDSTORM_RELAY_OUT                2
 #define SANDSTORM_RELAY_SIG                3
 
+#define STORMNODE_LIST_SYNCED            999
+
 extern CSandstormPool sandStormPool;
 extern CSandStormSigner sandStormSigner;
 extern std::vector<CSandstormQueue> vecSandstormQueue;
 extern std::string strStormNodePrivKey;
 extern map<uint256, CSandstormBroadcastTx> mapSandstormBroadcastTxes;
 extern CActiveStormnode activeStormnode;
+
+bool IsSyncingStormnodeAssets();
 
 // get the Sandstorm chain depth for a given input
 int GetInputSandstormRounds(CTxIn in, int rounds=0);

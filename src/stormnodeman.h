@@ -24,6 +24,12 @@ using namespace std;
 
 class CStormnodeMan;
 
+// Keep track of all broadcasts I've seen
+extern map<uint256, CStormnodeBroadcast> mapSeenStormnodeBroadcast;
+
+// Keep track of all pings I've seen
+extern map<uint256, CStormnodePing> mapSeenStormnodePing;
+
 extern CStormnodeMan snodeman;
 
 void DumpStormnodes();
@@ -114,11 +120,14 @@ public:
     CStormnode* Find(const CTxIn& vin);
     CStormnode* Find(const CPubKey& pubKeyStormnode);
 
-    //Find an entry thta do not match every entry provided vector
-    CStormnode* FindOldestNotInVec(const std::vector<CTxIn> &vVins, int nMinimumAge);
+    /// Find an entry in the stormnode list that is next to be paid
+    CStormnode* GetNextStormnodeInQueueForPayment();
 
     // Find a random entry
     CStormnode* FindRandom();
+
+    /// Decrement all stormnode nVotedTimes, called 1/6 blocks (allowing for 100 votes each day)
+    void DecrementVotedTimes();
 
     // Get the current winner for this block
     CStormnode* GetCurrentStormNode(int mod=1, int64_t nBlockHeight=0, int minProtocol=0);

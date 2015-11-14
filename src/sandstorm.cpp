@@ -40,7 +40,10 @@ map<uint256, CSandstormBroadcastTx> mapSandstormBroadcastTxes;
 CActiveStormnode activeStormnode;
 
 // count peers we've requested the list from
-int RequestedStormNodeList = 0;
+int RequestedStormnodeAssets = 0;
+bool IsSyncingStormnodeAssets(){
+    return RequestedStormnodeAssets != STORMNODE_LIST_SYNCED;
+}
 
 /* *** BEGIN SANDSTORM MAGIC  **********
     Copyright 2014, Darkcoin Developers
@@ -2288,7 +2291,7 @@ void ThreadCheckSandStormPool()
         if(c % STORMNODES_DUMP_SECONDS == 0) DumpStormnodes();
 
         //try to sync the Stormnode list and payment list every 5 seconds from at least 3 nodes
-        if(c % 5 == 0 && RequestedStormNodeList < 3){
+        if(c % 5 == 0 && RequestedStormNodeAssets <= 2){
             bool fIsInitialDownload = IsInitialBlockDownload();
             if(!fIsInitialDownload) {
                 LOCK(cs_vNodes);
@@ -2304,11 +2307,15 @@ void ThreadCheckSandStormPool()
 
                         snodeman.SsegUpdate(pnode);  //request full sn list only if Stormnodes.dat was updated quite a long time ago
                         pnode->PushMessage("snget"); //sync payees
+                        pnode->PushMessage("snvs"); //sync stormnode votes
                         pnode->PushMessage("getsporks"); //get current network sporks
-                        RequestedStormNodeList++;
+                        RequestedStormnodeAssets++;
+                        break;
                     }
                 }
             }
+        } else if(c % 60 == 0 && RequestedStormnodeAssets == 3){
+            RequestedStormnodeAssets = STORMNODE_LIST_SYNCED; //done syncing
         }
 
         if(c % 60 == 0){

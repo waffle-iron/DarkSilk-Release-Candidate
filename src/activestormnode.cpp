@@ -176,6 +176,7 @@ bool CActiveStormnode::Snping(CTxIn vin, CService service, CKey keyStormnode, CP
     }
 
     //send to all peers
+    mapSeenStormnodePing[snp.GetHash()] = snp;
     snp.Relay();
 
     return true;
@@ -252,6 +253,8 @@ bool CActiveStormnode::Register(CTxIn vin, CService service, CKey keyCollateralA
     if(psn != NULL)
     {
         CStormnodeBroadcast snb(*psn);
+
+        mapSeenMasternodeBroadcast[mnb.GetHash()] = mnb;
         //send to all peers
         LogPrintf("CActiveStormnode::Register() - RelayElectionEntry vin = %s\n", vin.ToString().c_str());
         snb.Relay(false);

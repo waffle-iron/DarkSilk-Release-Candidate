@@ -86,10 +86,9 @@ CStormnode::CStormnode()
     nLastSsq = 0;
     donationAddress = CScript();
     donationPercentage = 0;
-    nVote = 0;
-    lastVote = 0;
     nScanningErrorCount = 0;
-    nLastScanningErrorBlockHeight = 0;    
+    nLastScanningErrorBlockHeight = 0;
+    nVotedTimes = 0;    
     //mark last paid as current for new entries
     nLastPaid = GetAdjustedTime();
 }
@@ -114,11 +113,10 @@ CStormnode::CStormnode(const CStormnode& other)
     nLastSsq = other.nLastSsq;
     donationAddress = other.donationAddress;
     donationPercentage = other.donationPercentage;
-    nVote = other.nVote;
-    lastVote = other.lastVote;
     nScanningErrorCount = other.nScanningErrorCount;
     nLastScanningErrorBlockHeight = other.nLastScanningErrorBlockHeight;
     nLastPaid = other.nLastPaid;
+    nVotedTimes = other.nVotedTimes;
 }
 
 CStormnode::CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::vector<unsigned char> newSig, int64_t newSigTime, CPubKey newPubkey2, int protocolVersionIn, CScript newDonationAddress, int newDonationPercentage)
@@ -141,11 +139,10 @@ CStormnode::CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::v
     nLastSsq = 0;
     donationAddress = newDonationAddress;
     donationPercentage = newDonationPercentage;
-    nVote = 0;
-    lastVote = 0;
     nScanningErrorCount = 0;
     nLastScanningErrorBlockHeight = 0;    
-    nLastPaid = GetAdjustedTime();    
+    nLastPaid = GetAdjustedTime();
+    nVotedTimes = 0;    
 }
 
 CStormnode::CStormnode(const CStormnodeBroadcast& snb)
@@ -168,11 +165,10 @@ CStormnode::CStormnode(const CStormnodeBroadcast& snb)
     nLastSsq = 0;
     donationAddress = snb.donationAddress;
     donationPercentage = snb.donationPercentage;
-    nVote = 0;
-    lastVote = 0;
     nScanningErrorCount = 0;
     nLastScanningErrorBlockHeight = 0;
     nLastPaid = snb.nLastPaid;
+    nVotedTimes = 0;
 }
 
 //
@@ -288,8 +284,6 @@ CStormnodeBroadcast::CStormnodeBroadcast()
     nLastSsq = 0;
     donationAddress = CScript();
     donationPercentage = 0;
-    nVote = 0;
-    lastVote = 0;
     nScanningErrorCount = 0;
     nLastScanningErrorBlockHeight = 0;
 
@@ -316,8 +310,6 @@ CStormnodeBroadcast::CStormnodeBroadcast(CService newAddr, CTxIn newVin, CPubKey
     nLastSsq = 0;
     donationAddress = newDonationAddress;
     donationPercentage = newDonationPercentage;
-    nVote = 0;
-    lastVote = 0;
     nScanningErrorCount = 0;
     nLastScanningErrorBlockHeight = 0;
     nLastPaid = GetAdjustedTime();  
@@ -342,8 +334,6 @@ CStormnodeBroadcast::CStormnodeBroadcast(const CStormnode& other)
     nLastSsq = other.nLastSsq;
     donationAddress = other.donationAddress;
     donationPercentage = other.donationPercentage;
-    nVote = other.nVote;
-    lastVote = other.lastVote;
     nScanningErrorCount = other.nScanningErrorCount;
     nLastScanningErrorBlockHeight = other.nLastScanningErrorBlockHeight;
     nLastPaid = other.nLastPaid;
@@ -444,7 +434,7 @@ bool CStormnodeBroadcast::CheckInputsAndAdd(int& nDoS, bool fRequested)
         }
 
         // verify that sig time is legit in past
-        // should be at least not earlier than block when 1000 DASH tx got STORMNODE_MIN_CONFIRMATIONS
+        // should be at least not earlier than block when 42000 DRKSLK tx got STORMNODE_MIN_CONFIRMATIONS
         uint256 hashBlock = 0;
         CTransaction tx2;
         GetTransaction(vin.prevout.hash, tx2, hashBlock, true);
@@ -492,9 +482,14 @@ bool CStormnodeBroadcast::CheckInputsAndAdd(int& nDoS, bool fRequested)
 
 void CStormnodeBroadcast::Relay(bool fRequested)
 {
+    CInv inv(MSG_STORMNODE_ANNOUNCE, GetHash());
+
+    vector<CInv> vInv;
+    vInv.push_back(inv);
     LOCK(cs_vNodes);
-    BOOST_FOREACH(CNode* pnode, vNodes)
-        pnode->PushMessage("snb", (*this), fRequested);
+    BOOST_FOREACH(CNode* pnode, vNodes){
+        pnode->PushMessage("inv", vInv);
+    }
 }
 
 bool CStormnodeBroadcast::Sign(CKey& keyCollateralAddress)
@@ -602,9 +597,12 @@ bool CStormnodePing::CheckAndUpdate(int& nDos)
 
 void CStormnodePing::Relay()
 {
-    //const CTxIn vin, const std::vector<unsigned char> vchSig, const int64_t nNow, const bool stop
+    CInv inv(MSG_STORMNODE_PING, GetHash());
 
+    vector<CInv> vInv;
+    vInv.push_back(inv);
     LOCK(cs_vNodes);
-    BOOST_FOREACH(CNode* pnode, vNodes)
-        pnode->PushMessage("snp", (*this));
+    BOOST_FOREACH(CNode* pnode, vNodes){
+        pnode->PushMessage("inv", vInv);
+    }
 }

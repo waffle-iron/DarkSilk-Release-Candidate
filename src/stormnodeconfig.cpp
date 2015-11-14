@@ -45,7 +45,7 @@ bool CStormnodeConfig::read(std::string& strErr) {
             }
             CDarkSilkAddress address(donationAddress);
             if (!address.IsValid()) {
-                strErr = "Invalid Dash address in stormnode.conf line: " + line;
+                strErr = "Invalid DarkSilk address in stormnode.conf line: " + line;
                 streamConfig.close();
                 return false;
             }
