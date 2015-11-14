@@ -1308,8 +1308,30 @@ bool GetTransaction(const uint256 &hash, CTransaction &tx, uint256 &hashBlock)
 
 //////////////////////////////////////////////////////////////////////////////
 //
-// CBlock and CBlockIndex
+// CBlockHeader, CBlock and CBlockIndex
 //
+uint256 CBlockHeader::GetHash() const
+{
+    if (nVersion > 1)
+        return Hash(BEGIN(nVersion), END(nNonce));
+    else
+        return GetPoWHash();
+}
+
+uint256 CBlockHeader::GetPoWHash() const
+{
+    return scrypt_blockhash(CVOIDBEGIN(nVersion));
+}
+
+int64_t CBlockHeader::GetBlockTime() const
+{
+    return (int64_t)nTime;
+}
+
+bool CBlockHeader::IsNull() const
+{
+    return (nBits == 0);
+}
 
 static CBlockIndex* pblockindexFBBHLast;
 CBlockIndex* FindBlockByHeight(int nHeight)

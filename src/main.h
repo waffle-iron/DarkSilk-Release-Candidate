@@ -629,9 +629,6 @@ public:
 };
 
 
-
-
-
 /** Nodes collect new transactions into a block, hash them into a hash tree,
  * and scan through nonce values to make the block's hash satisfy proof-of-work
  * requirements.  When they solve the proof-of-work, they broadcast the block
@@ -642,32 +639,19 @@ public:
  * Blocks are appended to blk0001.dat files on disk.  Their location on disk
  * is indexed by CBlockIndex objects in memory.
  */
-class CBlock
+class CBlockHeader
 {
 public:
     // header
-    static const int CURRENT_VERSION = 2;
-    int nVersion;
+    static const int32_t CURRENT_VERSION=2;
+    int32_t nVersion;
     uint256 hashPrevBlock;
     uint256 hashMerkleRoot;
-    unsigned int nTime;
-    unsigned int nBits;
-    unsigned int nNonce;
+    uint32_t nTime;
+    uint32_t nBits;
+    uint32_t nNonce;
 
-    // network and disk
-    std::vector<CTransaction> vtx;
-
-    // ppcoin: block signature - signed by one of the coin base txout[N]'s owner
-    std::vector<unsigned char> vchBlockSig;
-
-    // memory only
-    mutable std::vector<uint256> vMerkleTree;
-
-    // Denial-of-service detection:
-    mutable int nDoS;
-    bool DoS(int nDoSIn, bool fIn) const { nDoS += nDoSIn; return fIn; }
-
-    CBlock()
+    CBlockHeader()
     {
         SetNull();
     }
@@ -681,10 +665,55 @@ public:
         READWRITE(nTime);
         READWRITE(nBits);
         READWRITE(nNonce);
+    )
 
+    void SetNull()
+    {
+        nVersion = CBlockHeader::CURRENT_VERSION;
+        hashPrevBlock = 0;
+        hashMerkleRoot = 0;
+        nTime = 0;
+        nBits = 0;
+        nNonce = 0;
+    }
+
+    bool IsNull() const;
+
+    uint256 GetHash() const;
+
+    uint256 GetPoWHash() const;
+
+    int64_t GetBlockTime() const;
+};
+
+
+class CBlock : public CBlockHeader
+{
+public:
+    // network and disk
+    std::vector<CTransaction> vtx;
+
+    // ppcoin: block signature - signed by one of the coin base txout[N]'s owner
+    std::vector<unsigned char> vchBlockSig;
+
+    // memory only
+    mutable std::vector<uint256> vMerkleTree;
+
+    // Denial-of-service detection:
+    mutable int32_t nDoS;
+    bool DoS(int nDoSIn, bool fIn) const { nDoS += nDoSIn; return fIn; }
+
+    CBlock()
+    {
+        SetNull();
+    }
+
+    IMPLEMENT_SERIALIZE
+    (
         // ConnectBlock depends on vtx following header to generate CDiskTxPos
         if (!(nType & (SER_GETHASH|SER_BLOCKHEADERONLY)))
         {
+            READWRITE(*(CBlockHeader*)this);
             READWRITE(vtx);
             READWRITE(vchBlockSig);
         }
@@ -697,39 +726,22 @@ public:
 
     void SetNull()
     {
-        nVersion = CBlock::CURRENT_VERSION;
-        hashPrevBlock = 0;
-        hashMerkleRoot = 0;
-        nTime = 0;
-        nBits = 0;
-        nNonce = 0;
         vtx.clear();
         vchBlockSig.clear();
         vMerkleTree.clear();
         nDoS = 0;
     }
 
-    bool IsNull() const
+    CBlockHeader GetBlockHeader() const
     {
-        return (nBits == 0);
-    }
-
-    uint256 GetHash() const
-    {
-        if (nVersion > 1)
-            return Hash(BEGIN(nVersion), END(nNonce));
-        else
-            return GetPoWHash();
-    }
-
-    uint256 GetPoWHash() const
-    {
-        return scrypt_blockhash(CVOIDBEGIN(nVersion));
-    }
-
-    int64_t GetBlockTime() const
-    {
-        return (int64_t)nTime;
+        CBlockHeader block;
+        block.nVersion       = nVersion;
+        block.hashPrevBlock  = hashPrevBlock;
+        block.hashMerkleRoot = hashMerkleRoot;
+        block.nTime          = nTime;
+        block.nBits          = nBits;
+        block.nNonce         = nNonce;
+        return block;
     }
 
     void UpdateTime(const CBlockIndex* pindexPrev);
@@ -871,8 +883,6 @@ public:
         return true;
     }
 
-
-
     std::string ToString() const
     {
         std::stringstream s;
@@ -910,10 +920,6 @@ public:
 private:
     bool SetBestChainInner(CTxDB& txdb, CBlockIndex *pindexNew);
 };
-
-
-
-
 
 
 /** The block chain is a tree shaped structure starting with the
