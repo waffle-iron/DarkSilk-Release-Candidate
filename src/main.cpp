@@ -89,7 +89,7 @@ std::set<uint256> setValidatedTx;
 // Internal stuff
 namespace {
 
-    CBlockIndex *pindexBestInvalid;
+    //CBlockIndex *pindexBestInvalid;
 
     /**
      * The set of all CBlockIndex entries with BLOCK_VALID_TRANSACTIONS (for itself and all ancestors) and
@@ -97,13 +97,13 @@ namespace {
      */
     //set<CBlockIndex*, CBlockIndexWorkComparator> setBlockIndexCandidates;
     /** Number of nodes with fSyncStarted. */
-    int nSyncStarted = 0;
+    //int nSyncStarted = 0;
     /** All pairs A->B, where A (or one if its ancestors) misses transactions, but B has transactions. */
     multimap<CBlockIndex*, CBlockIndex*> mapBlocksUnlinked;
 
     CCriticalSection cs_LastBlockFile;
     //std::vector<CBlockFileInfo> vinfoBlockFile;
-    int nLastBlockFile = 0;
+    //int nLastBlockFile = 0;
 
     /**
      * Every received block is assigned a unique and increasing identifier, so we
@@ -111,7 +111,7 @@ namespace {
      */
     CCriticalSection cs_nBlockSequenceId;
     /** Blocks loaded from disk are assigned id 0, so start the counter at 1. */
-    uint32_t nBlockSequenceId = 1;
+    //uint32_t nBlockSequenceId = 1;
 
     /**
      * Sources of received blocks, to be able to send them reject messages or ban
@@ -133,7 +133,7 @@ namespace {
     int nQueuedValidatedHeaders = 0;
 
     /** Number of preferable block download peers. */
-    int nPreferredDownload = 0;
+    //int nPreferredDownload = 0;
 
     /** Dirty block index entries. */
     set<CBlockIndex*> setDirtyBlockIndex;

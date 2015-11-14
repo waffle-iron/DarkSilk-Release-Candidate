@@ -29,7 +29,6 @@ Value marketalllistings(const Array& params, bool fHelp)
     BOOST_FOREACH(PAIRTYPE(const uint256, CSignedMarketListing)& p, mapListings)
     {
         // only show if no buy requests
-        bool bFound = false;
         CSignedMarketListing item = p.second;
 
         BOOST_FOREACH(PAIRTYPE(const uint256, CBuyRequest)& b, mapBuyRequests)
@@ -51,7 +50,7 @@ Value marketalllistings(const Array& params, bool fHelp)
             obj.push_back(Pair("category", item.listing.sCategory));
             obj.push_back(Pair("itemId", item.GetHash().ToString()));
             obj.push_back(Pair("vendorId", CDarkSilkAddress(item.listing.sellerKey.GetID()).ToString()));
-            obj.push_back(Pair("price", lexical_cast<string>((item.listing.nPrice / COIN, 'f', 8))));
+            obj.push_back(Pair("price", lexical_cast<string>((item.listing.nPrice / COIN))));
             obj.push_back(Pair("status", item.listing.nStatus));
             obj.push_back(Pair("urlImage1", item.listing.sImageOneUrl));
             obj.push_back(Pair("urlImage2", item.listing.sImageTwoUrl));
@@ -114,7 +113,7 @@ Value marketsearchlistings(const Array& params, bool fHelp)
             obj.push_back(Pair("category", item.listing.sCategory));
             obj.push_back(Pair("itemId", item.GetHash().ToString()));
             obj.push_back(Pair("vendorId", CDarkSilkAddress(item.listing.sellerKey.GetID()).ToString()));
-            obj.push_back(Pair("price", lexical_cast<string>((item.listing.nPrice / COIN, 'f', 8))));
+            obj.push_back(Pair("price", lexical_cast<string>((item.listing.nPrice / COIN))));
             obj.push_back(Pair("status", item.listing.nStatus));
             obj.push_back(Pair("urlImage1", item.listing.sImageOneUrl));
             obj.push_back(Pair("urlImage2", item.listing.sImageTwoUrl));
@@ -251,7 +250,7 @@ Value marketmylistings(const Array& params, bool fHelp)
             obj.push_back(Pair("category", item.listing.sCategory));
             obj.push_back(Pair("itemId", item.GetHash().ToString()));
             obj.push_back(Pair("vendorId", CDarkSilkAddress(item.listing.sellerKey.GetID()).ToString()));
-            obj.push_back(Pair("price", lexical_cast<string>((item.listing.nPrice / COIN, 'f', 8))));
+            obj.push_back(Pair("price", lexical_cast<string>((item.listing.nPrice / COIN))));
             obj.push_back(Pair("status", item.listing.nStatus));
             obj.push_back(Pair("urlImage1", item.listing.sImageOneUrl));
             obj.push_back(Pair("urlImage2", item.listing.sImageTwoUrl));
@@ -371,7 +370,7 @@ Value marketbuyrequests(const Array& params, bool fHelp)
                     obj.push_back(Pair("category", item.sCategory));
                     obj.push_back(Pair("itemId", item.GetHash().ToString()));
                     obj.push_back(Pair("vendorId", CDarkSilkAddress(item.sellerKey.GetID()).ToString()));
-                    obj.push_back(Pair("price", lexical_cast<string>((item.nPrice / COIN, 'f', 8))));
+                    obj.push_back(Pair("price", lexical_cast<string>((item.nPrice / COIN))));
                     obj.push_back(Pair("status", statusText));
                     obj.push_back(Pair("urlImage1", item.sImageOneUrl));
                     obj.push_back(Pair("urlImage2", item.sImageTwoUrl));
@@ -450,7 +449,7 @@ Value marketmybuys(const Array& params, bool fHelp)
             obj.push_back(Pair("category", item.sCategory));
             obj.push_back(Pair("itemId", item.GetHash().ToString()));
             obj.push_back(Pair("vendorId", CDarkSilkAddress(item.sellerKey.GetID()).ToString()));
-            obj.push_back(Pair("price", lexical_cast<string>((item.nPrice / COIN, 'f', 8))));
+            obj.push_back(Pair("price", lexical_cast<string>((item.nPrice / COIN))));
             obj.push_back(Pair("status", statusText));
             obj.push_back(Pair("urlImage1", item.sImageOneUrl));
             obj.push_back(Pair("urlImage2", item.sImageTwoUrl));
@@ -575,9 +574,6 @@ Value marketescrowlock(const Array& params, bool fHelp)
     uint256 requestHashId = uint256(requestID);
     CBuyRequest buyRequest = mapBuyRequests[requestHashId];
 
-    bool accepted = false;
-    bool res;
-
     // deserialize the seller's escrow tx
     BOOST_FOREACH(PAIRTYPE(const uint256, CBuyAccept)& p, mapBuyAccepts)
     {
@@ -587,8 +583,11 @@ Value marketescrowlock(const Array& params, bool fHelp)
                 CWalletTx wtxSeller;
                 CDataStream ssTx(p.second.raw.data(), p.second.raw.data() + p.second.raw.size(), SER_NETWORK, CLIENT_VERSION);
                 ssTx >> wtxSeller;
-                accepted = wtxSeller.AcceptToMemoryPool();
-                break;
+                if(wtxSeller.AcceptToMemoryPool()) {
+                    break;
+                } else {
+                     throw runtime_error("Error: marketescrowlock() seller tx failed AcceptToMemoryPool!");
+                }
             }
     }
 
@@ -601,8 +600,12 @@ Value marketescrowlock(const Array& params, bool fHelp)
     std::string strError = "";
     CWalletTx wtxNew;
     CReserveKey reserveKey(pwalletMain);
-    res = CreateEscrowLockTx(buyRequest.escrowAddress, mapListings[buyRequest.listingId].listing.nPrice + (0.01 * COIN), strError, wtxNew);
-    pwalletMain->CommitTransaction(wtxNew, reserveKey);
+    if (CreateEscrowLockTx(buyRequest.escrowAddress, mapListings[buyRequest.listingId].listing.nPrice + (0.01 * COIN), strError, wtxNew))
+    {
+        pwalletMain->CommitTransaction(wtxNew, reserveKey);
+    } else {
+        throw runtime_error("Error: marketrequestpayment() failed to create escrow lock transaction!");
+    }
 
     release.buyerEscrowLockTxHash = wtxNew.GetHash();
     SignEscrowRelease(release, release.vchSig);
