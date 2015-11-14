@@ -32,7 +32,7 @@ class uint256;
 #define STORMNODE_REMOTELY_ENABLED            9
 
 #define STORMNODE_MIN_CONFIRMATIONS           10
-#define STORMNODE_MIN_SSEEP_SECONDS           (30*60)
+#define STORMNODE_MIN_SNP_SECONDS             (30*60)
 #define STORMNODE_MIN_SSEE_SECONDS            (5*60)
 #define STORMNODE_PING_SECONDS                (1*60)
 #define STORMNODE_EXPIRATION_SECONDS          (65*60)
@@ -40,7 +40,9 @@ class uint256;
 
 using namespace std;
 
-class CStormNode;
+class CStormnode;
+class CStormnodeBroadcast;
+class CStormnodePing;
 
 extern CCriticalSection cs_stormnodes;
 extern map<int64_t, uint256> mapCacheBlockHashes;
@@ -74,7 +76,7 @@ public:
     std::vector<unsigned char> sig;
     int activeState;
     int64_t sigTime; //ssee message times
-    int64_t lastSseep;
+    int64_t lastSnping;
     int64_t lastTimeSeen;
     int cacheInputAge;
     int cacheInputAgeBlock;
@@ -93,8 +95,9 @@ public:
 
     CStormnode();
     CStormnode(const CStormnode& other);
-    CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::vector<unsigned char> newSig, int64_t newSigTime, CPubKey newPubkey2, int protocolVersionIn, CScript donationAddress, int donationPercentage);
- 
+    CStormnode(const CStormnodeBroadcast& other);
+    CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::vector<unsigned char> newSig, int64_t newSigTime, CPubKey newPubkey2, int protocolVersionIn, CScript newDonationAddress, int newDonationPercentage);
+
     void swap(CStormnode& first, CStormnode& second) // nothrow    
     {
         // enable ADL (not necessary in our case, but good practice)
@@ -109,7 +112,7 @@ public:
         swap(first.sig, second.sig);
         swap(first.activeState, second.activeState);
         swap(first.sigTime, second.sigTime);
-        swap(first.lastSseep, second.lastSseep);
+        swap(first.lastSnping, second.lastSnping);
         swap(first.lastTimeSeen, second.lastTimeSeen);
         swap(first.cacheInputAge, second.cacheInputAge);
         swap(first.unitTest, second.unitTest);
@@ -156,23 +159,23 @@ public:
                 READWRITE(pubkey);
                 READWRITE(pubkey2);
                 READWRITE(sig);
-                READWRITE(activeState);
                 READWRITE(sigTime);
-                READWRITE(lastSseep);
                 READWRITE(lastTimeSeen);
+                READWRITE(protocolVersion);
+                READWRITE(donationAddress);
+                READWRITE(donationPercentage);
+                READWRITE(nLastPaid);
+                READWRITE(activeState);
+                READWRITE(lastSnping);
                 READWRITE(cacheInputAge);
                 READWRITE(cacheInputAgeBlock);
                 READWRITE(unitTest);
                 READWRITE(allowFreeTx);
-                READWRITE(protocolVersion);
                 READWRITE(nLastSsq);
-                READWRITE(donationAddress);
-                READWRITE(donationPercentage);
                 READWRITE(nVote);
                 READWRITE(lastVote);
                 READWRITE(nScanningErrorCount);
                 READWRITE(nLastScanningErrorBlockHeight);
-                READWRITE(nLastPaid);
         }
     )
 
@@ -180,6 +183,8 @@ public:
     {
         return (GetAdjustedTime() - nLastPaid);
     }
+
+    void UpdateFromNewBroadcast(CStormnodeBroadcast& snb);
 
     void UpdateLastSeen(int64_t override=0)
     {
@@ -257,4 +262,65 @@ public:
     }
 };
 
+//
+// The Stormnode Broadcast Class : Contains a different serialize method for sending Stormnodes through the network
+//
+
+class CStormnodeBroadcast : public CStormnode
+{
+public:
+    CStormnodeBroadcast();
+    CStormnodeBroadcast(CService newAddr, CTxIn newVin, CPubKey newPubkey, CPubKey newPubkey2, int protocolVersionIn, CScript newDonationAddress, int newDonationPercentage);
+    CStormnodeBroadcast(const CStormnode& other);
+
+    bool CheckAndUpdate(int& nDoS, bool fRequested);
+    bool CheckInputsAndAdd(int& nDos, bool fRequested);
+    bool Sign(CKey& keyCollateralAddress);
+    void Relay(bool fRequested);
+
+    IMPLEMENT_SERIALIZE(
+        READWRITE(vin);
+        READWRITE(addr);
+        READWRITE(pubkey);
+        READWRITE(pubkey2);
+        READWRITE(sig);
+        READWRITE(sigTime);
+        READWRITE(lastTimeSeen);
+        READWRITE(protocolVersion);
+        READWRITE(donationAddress);
+        READWRITE(donationPercentage);
+        READWRITE(nLastPaid);
+    )
+    
+
+};
+
+
+//
+// The Stormnode Ping Class : Contains a different serialize method for sending pings from Stormnodes throughout the network
+//
+
+class CStormnodePing
+{
+public:
+
+    CTxIn vin;
+    std::vector<unsigned char> vchSig;
+    int64_t sigTime; //ssee message times
+    //removed stop
+
+    CStormnodePing();
+    CStormnodePing(CTxIn& newVin);
+
+    IMPLEMENT_SERIALIZE(
+        READWRITE(vin);
+        READWRITE(sigTime);
+        READWRITE(vchSig);
+    )
+
+    bool CheckAndUpdate(int& nDos);
+    bool Sign(CKey& keyStormnode, CPubKey& pubKeyStormnode);
+    void Relay();
+
+};
 #endif

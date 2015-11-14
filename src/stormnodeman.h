@@ -138,13 +138,6 @@ public:
 
     std::string ToString() const;
 
-    //
-    // Relay Stormnode Messages
-    //
-
-    void RelayStormnodeEntry(const CTxIn vin, const CService addr, const std::vector<unsigned char> vchSig, const int64_t nNow, const CPubKey pubkey, const CPubKey pubkey2, const int count, const int current, const int64_t lastUpdated, const int protocolVersion, CScript donationAddress, int donationPercentage);
-    void RelayStormnodeEntryPing(const CTxIn vin, const std::vector<unsigned char> vchSig, const int64_t nNow, const bool stop);
-
     void Remove(CTxIn vin);
     
 };

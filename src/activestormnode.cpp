@@ -5,6 +5,7 @@
 #include "protocol.h"
 #include "activestormnode.h"
 #include "stormnodeman.h"
+#include "stormnode.h"
 #include <boost/lexical_cast.hpp>
 #include "clientversion.h"
 
@@ -125,56 +126,15 @@ void CActiveStormnode::ManageStatus()
     }
 
     //send to all peers
-    if(!Sseep(errorMessage)) {
+    if(!SnPing(errorMessage)) {
        LogPrintf("CActiveStormnode::ManageStatus() - Error on Ping: %s\n", errorMessage.c_str());    }
 }
 
-// Send stop sseep to network for remote stormnode
-bool CActiveStormnode::StopStormNode(std::string strService, std::string strKeyStormnode, std::string& errorMessage) {
-	CTxIn vin;
-    CKey keyStormnode;
-    CPubKey pubKeyStormnode;
-
-    if(!sandStormSigner.SetKey(strKeyStormnode, errorMessage, keyStormnode, pubKeyStormnode)) {
-    	LogPrintf("CActiveStormnode::StopStormNode() - Error: %s\n", errorMessage.c_str());
-		return false;
-	}
-
-	return StopStormNode(vin, CService(strService), keyStormnode, pubKeyStormnode, errorMessage);
-}
-
-// Send stop sseep to network for main stormnode
-bool CActiveStormnode::StopStormNode(std::string& errorMessage) {
+// Send stop Snping to network for main stormnode
+bool CActiveStormnode::Snping(std::string& errorMessage) {
 	if(status != STORMNODE_IS_CAPABLE && status != STORMNODE_REMOTELY_ENABLED) {
 		errorMessage = "stormnode is not in a running status";
-    	LogPrintf("CActiveStormnode::StopStormNode() - Error: %s\n", errorMessage.c_str());
-		return false;
-	}
-
-	status = STORMNODE_STOPPED;
-
-    CPubKey pubKeyStormnode;
-    CKey keyStormnode;
-
-    if(!sandStormSigner.SetKey(strStormNodePrivKey, errorMessage, keyStormnode, pubKeyStormnode))
-    {
-    	LogPrintf("Register::ManageStatus() - Error upon calling SetKey: %s\n", errorMessage.c_str());
-    	return false;
-    }
-
-	return StopStormNode(vin, service, keyStormnode, pubKeyStormnode, errorMessage);
-}
-
-// Send stop sseep to network for any stormnode
-bool CActiveStormnode::StopStormNode(CTxIn vin, CService service, CKey keyStormnode, CPubKey pubKeyStormnode, std::string& errorMessage) {
-   	pwalletMain->UnlockCoin(vin.prevout);
-	return Sseep(vin, service, keyStormnode, pubKeyStormnode, errorMessage, true);
-}
-
-bool CActiveStormnode::Sseep(std::string& errorMessage) {
-	if(status != STORMNODE_IS_CAPABLE && status != STORMNODE_REMOTELY_ENABLED) {
-		errorMessage = "stormnode is not in a running status";
-    	LogPrintf("CActiveStormnode::Sseep() - Error: %s\n", errorMessage.c_str());
+    	LogPrintf("CActiveStormnode::Snping() - Error: %s\n", errorMessage.c_str());
 		return false;
 	}
 
@@ -183,54 +143,40 @@ bool CActiveStormnode::Sseep(std::string& errorMessage) {
 
     if(!sandStormSigner.SetKey(strStormNodePrivKey, errorMessage, keyStormnode, pubKeyStormnode))
     {
-    	LogPrintf("ActiveStormnode::Sseep() - Error upon calling SetKey: %s\n", errorMessage.c_str());
+    	LogPrintf("CActiveStormnode::Snping() - Error upon calling SetKey: %s\n", errorMessage.c_str());
     	return false;
     }
 
-	return Sseep(vin, service, keyStormnode, pubKeyStormnode, errorMessage, false);
+	return Snping(vin, service, keyStormnode, pubKeyStormnode, errorMessage);
 }
 
-bool CActiveStormnode::Sseep(CTxIn vin, CService service, CKey keyStormnode, CPubKey pubKeyStormnode, std::string &retErrorMessage, bool stop) {
-    std::string errorMessage;
-    std::vector<unsigned char> vchStormNodeSignature;
-    std::string strStormNodeSignMessage;
-    int64_t stormNodeSignatureTime = GetAdjustedTime();
-
-    std::string strMessage = service.ToString() + boost::lexical_cast<std::string>(stormNodeSignatureTime) + boost::lexical_cast<std::string>(stop);
-
-    if(!sandStormSigner.SignMessage(strMessage, errorMessage, vchStormNodeSignature, keyStormnode)) {
-    	retErrorMessage = "sign message failed: " + errorMessage;
-    	LogPrintf("CActiveStormnode::Sseep() - Error: %s\n", retErrorMessage.c_str());
-        return false;
-    }
-
-    if(!sandStormSigner.VerifyMessage(pubKeyStormnode, vchStormNodeSignature, strMessage, errorMessage)) {
-    	retErrorMessage = "Verify message failed: " + errorMessage;
-    	LogPrintf("CActiveStormnode::Sseep() - Error: %s\n", retErrorMessage.c_str());
+bool CActiveStormnode::Snping(CTxIn vin, CService service, CKey keyStormnode, CPubKey pubKeyStormnode, std::string &retErrorMessage) {
+    //send to all peers
+    LogPrintf("CActiveStormnode::Snping() - RelayStormnodeEntryPing vin = %s\n", vin.ToString().c_str());
+    
+    CStormnodePing snp(vin);
+    if(!snp.Sign(keyStormnode, pubKeyStormnode))
+    {
         return false;
     }
 
     CStormnode* psn = snodeman.Find(vin);
     if(psn != NULL)
     {
-        if(stop)
-            snodeman.Remove(psn->vin);
-        else
-            psn->UpdateLastSeen();
+        psn->UpdateLastSeen();
     } 
     else 
     {
     	// Seems like we are trying to send a ping while the stormnode is not registered in the network
     	retErrorMessage = "Sandstorm Stormnode List doesn't include our stormnode, Shutting down stormnode pinging service! " + vin.ToString();
-    	LogPrintf("CActiveStormnode::Sseep() - Error: %s\n", retErrorMessage.c_str());
+    	LogPrintf("CActiveStormnode::Snping() - Error: %s\n", retErrorMessage.c_str());
         status = STORMNODE_NOT_CAPABLE;
         notCapableReason = retErrorMessage;
         return false;
     }
 
     //send to all peers
-    LogPrintf("CActiveStormnode::Sseep() - RelayStormnodeEntryPing vin = %s\n", vin.ToString().c_str());
-    snodeman.RelayStormnodeEntryPing(vin, vchStormNodeSignature, stormNodeSignatureTime, stop);
+    snp.Relay();
 
     return true;
 }
@@ -284,40 +230,32 @@ bool CActiveStormnode::Register(std::string strService, std::string strKeyStormn
 }
 
 bool CActiveStormnode::Register(CTxIn vin, CService service, CKey keyCollateralAddress, CPubKey pubKeyCollateralAddress, CKey keyStormnode, CPubKey pubKeyStormnode, CScript donationAddress, int donationPercentage, std::string &retErrorMessage) {
-    std::string errorMessage;
-    std::vector<unsigned char> vchStormNodeSignature;
-    std::string strStormNodeSignMessage;
-    int64_t stormNodeSignatureTime = GetAdjustedTime();
-
-    std::string vchPubKey(pubKeyCollateralAddress.begin(), pubKeyCollateralAddress.end());
-    std::string vchPubKey2(pubKeyStormnode.begin(), pubKeyStormnode.end());
-
-    std::string strMessage = service.ToString() + boost::lexical_cast<std::string>(stormNodeSignatureTime) + vchPubKey + vchPubKey2 + boost::lexical_cast<std::string>(PROTOCOL_VERSION) + donationAddress.ToString() + boost::lexical_cast<std::string>(donationPercentage);
-
-    if(!sandStormSigner.SignMessage(strMessage, errorMessage, vchStormNodeSignature, keyCollateralAddress)) {
-        retErrorMessage = "sign message failed: " + errorMessage;
-        LogPrintf("CActiveStormnode::Register() - Error: %s\n", retErrorMessage.c_str());
-        return false;
-    }
-
-    if(!sandStormSigner.VerifyMessage(pubKeyCollateralAddress, vchStormNodeSignature, strMessage, errorMessage)) {
-        retErrorMessage = "Verify message failed: " + errorMessage;
-        LogPrintf("CActiveStormnode::Register() - Error: %s\n", retErrorMessage.c_str());
-        return false;
-    }
 
     CStormnode* psn = snodeman.Find(vin);
     if(psn == NULL)
     {
         LogPrintf("CActiveStormnode::Register() - Adding to Stormnode list service: %s - vin: %s\n", service.ToString().c_str(), vin.ToString().c_str());
-        CStormnode sn(service, vin, pubKeyCollateralAddress, vchStormNodeSignature, stormNodeSignatureTime, pubKeyStormnode, PROTOCOL_VERSION, donationAddress, donationPercentage);
-        sn.UpdateLastSeen(stormNodeSignatureTime);
+        CStormnodeBroadcast snb(service, vin, pubKeyCollateralAddress, pubKeyStormnode, PROTOCOL_VERSION, donationAddress, donationPercentage);
+        if(!snb.Sign(keyCollateralAddress)){
+            //send to all peers
+            LogPrintf("CActiveStormnode::Register() -  Failed to sign %s\n", vin.ToString().c_str());
+            return false;
+        }
+        
+        CStormnode sn(snb);
         snodeman.Add(sn);
     }
 
-    //send to all peers
-    LogPrintf("CActiveStormnode::Register() - RelayElectionEntry vin = %s\n", vin.ToString().c_str());
-    snodeman.RelayStormnodeEntry(vin, service, vchStormNodeSignature, stormNodeSignatureTime, pubKeyCollateralAddress, pubKeyStormnode, -1, -1, stormNodeSignatureTime, PROTOCOL_VERSION, donationAddress, donationPercentage);
+
+    
+    if(psn == NULL) psn = snodeman.Find(vin);
+    if(psn != NULL)
+    {
+        CStormnodeBroadcast snb(*psn);
+        //send to all peers
+        LogPrintf("CActiveStormnode::Register() - RelayElectionEntry vin = %s\n", vin.ToString().c_str());
+        snb.Relay(false);
+    }
 
     return true;
 }
@@ -509,7 +447,7 @@ bool CActiveStormnode::EnableHotColdStormNode(CTxIn& newVin, CService& newServic
 
     status = STORMNODE_REMOTELY_ENABLED;
 
-    //The values below are needed for signing sseep messages going forward
+    //The values below are needed for signing snping messages going forward
     this->vin = newVin;
     this->service = newService;
 

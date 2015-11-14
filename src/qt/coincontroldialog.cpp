@@ -384,7 +384,7 @@ void CoinControlDialog::viewItemChanged(QTreeWidgetItem* item, int column)
             int rounds = GetInputSandstormRounds(vin);
             if(coinControl->useSandStorm && rounds < nSandstormRounds) {
                 QMessageBox::warning(this, windowTitle(),
-                    tr("Non-anonymized input selected. <b>Sandstorm will be disabled.</b><br><br>If you still want to use Sandstorm, please deselect all non-nonymized inputs first and then check Darksend checkbox again."),
+                    tr("Non-anonymized input selected. <b>Sandstorm will be disabled.</b><br><br>If you still want to use Sandstorm, please deselect all non-nonymized inputs first and then check Sandstorm checkbox again."),
                     QMessageBox::Ok, QMessageBox::Ok);
                 coinControl->useSandStorm = false;
             }
