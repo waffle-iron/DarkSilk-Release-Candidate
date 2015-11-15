@@ -541,7 +541,7 @@ void CBudgetProposal::AddOrUpdateVote(CBudgetVote& vote)
 void CBudgetManager::NewBlock()
 {
     //this function should be called 1/6 blocks, allowing up to 100 votes per day on all proposals
-    if(pindexBest->nHeight % 6 != 0) return;
+    if(nBestHeight % 6 != 0) return;
 
     snodeman.DecrementVotedTimes();
 }
