@@ -10,6 +10,7 @@
 #include "txdb.h"
 #include "miner.h"
 #include "kernel.h"
+#include "wallet.h"
 #include "stormnodeman.h"
 #include "stormnode-payments.h"
 

@@ -4,12 +4,12 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "assert.h"
-
 #include "chainparams.h"
 #include "main.h"
 #include "util.h"
+#include "chainparamsseeds.h"
 
+#include "assert.h"
 #include <boost/assign/list_of.hpp>
 
 using namespace boost::assign;
@@ -19,7 +19,7 @@ struct SeedSpec6 {
     uint16_t port;
 };
 
-#include "chainparamsseeds.h"
+
 
 //
 // Main network
@@ -108,7 +108,10 @@ public:
 
         convertSeeds(vFixedSeeds, pnSeed, ARRAYLEN(pnSeed), nDefaultPort);
 
+        //TODO(AA)
+        strStormnodePaymentsPubKey = "";
         nLastPOWBlock = 42002;
+        nStartStormnodePayments = 1446335999; //Wed, 31 Oct 2015 23:59:59 GMT
     }
 
     virtual const CBlock& GenesisBlock() const { return genesis; }
@@ -164,7 +167,10 @@ public:
 
         convertSeeds(vFixedSeeds, pnTestnetSeed, ARRAYLEN(pnTestnetSeed), nDefaultPort);
 
+        //TODO(AA)
+        strStormnodePaymentsPubKey = "";
         nLastPOWBlock = 100;
+        nStartStormnodePayments = 1446335999; //Wed, 31 Oct 2015 23:59:59 GMT
     }
 
     virtual Network NetworkID() const { return CChainParams::TESTNET; }

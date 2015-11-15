@@ -5,6 +5,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "rpcserver.h"
+#include "base58.h"
 #include "chainparams.h"
 #include "main.h"
 #include "db.h"
@@ -622,6 +623,8 @@ Value getblocktemplate(const Array& params, bool fHelp)
         aMutable.push_back("prevblock");
     }
 
+    Array aVotes;
+
     Object result;
     result.push_back(Pair("version", pblock->nVersion));
     result.push_back(Pair("previousblockhash", pblock->hashPrevBlock.GetHex()));
@@ -637,6 +640,22 @@ Value getblocktemplate(const Array& params, bool fHelp)
     result.push_back(Pair("curtime", (int64_t)pblock->nTime));
     result.push_back(Pair("bits", strprintf("%08x", pblock->nBits)));
     result.push_back(Pair("height", (int64_t)(pindexPrev->nHeight+1)));
+    result.push_back(Pair("votes", aVotes));
+
+
+    if(pblock->payee != CScript()){
+        CTxDestination address1;
+        ExtractDestination(pblock->payee, address1);
+        CDarkSilkAddress address2(address1);
+        result.push_back(Pair("payee", address2.ToString().c_str()));
+        result.push_back(Pair("payee_amount", (int64_t)GetStormnodePayment(pindexPrev->nHeight+1, pblock->vtx[0].GetValueOut())));
+    } else {
+        result.push_back(Pair("payee", ""));
+        result.push_back(Pair("payee_amount", ""));
+    }
+
+    result.push_back(Pair("stormnode payments", pblock->nTime > Params().StartStormnodePayments()));
+    result.push_back(Pair("enforce_stormnode_payments", true));
 
     return result;
 }

@@ -534,7 +534,7 @@ Value signrawtransaction(const Array& params, bool fHelp)
         txin.scriptSig.clear();
         // Only sign SIGHASH_SINGLE if there's a corresponding output:
 
-        if (!fHashSingle || (i < mergedTx.vout.size()))
+        //if (!fHashSingle || (i < mergedTx.vout.size()))
             //TODO (AA): Put this back. Get "no matching function for call" error.
             //SignSignature(keystore, prevPubKey, CTransaction(mergedTx), i, nHashType);
 

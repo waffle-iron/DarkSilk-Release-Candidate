@@ -325,27 +325,16 @@ int64_t GetBlockValue(int nBits, int nHeight, const CAmount& nFees)
     // LogPrintf("height %u diff %4.2f reward %i \n", nHeight, dDiff, nSubsidy);
     nSubsidy *= COIN;
 
-    if(Params().NetworkID() == CChainParams::TESTNET){
-        for(int i = 46200; i <= nHeight; i += 210240) nSubsidy -= nSubsidy/14;
-    } else {
-        // yearly decline of production by 7.1% per year, projected 21.3M coins max by year 2050.
-        for(int i = 210240; i <= nHeight; i += 210240) nSubsidy -= nSubsidy/14;
-    }
-
-    /*
-
-        Hard fork will activate on block 328008, reducing the block reward by 10 extra percent (allowing budget super-blocks)
-
-    */
-
-    if(Params().NetworkID() == CChainParams::TESTNET){
-        if(nHeight > 77900+576) nSubsidy -= nSubsidy/10;
-    } else {
-        if(nHeight > 309759+(553*33)) nSubsidy -= nSubsidy/10; // 328008 - 10.0% - September 6, 2015
-    }
-
     return nSubsidy + nFees;
 }
+
+int64_t GetStormnodePayment(int nHeight, int64_t blockValue)
+{
+    int64_t ret = blockValue * 2/3; //67%
+
+    return ret;
+}
+
 
 void InitializeNode(NodeId nodeid, const CNode *pnode) {
     LOCK(cs_main);
@@ -4725,9 +4714,3 @@ bool SendMessages(CNode* pto, bool fSendTrickle)
 
 
 
-int64_t GetStormnodePayment(int nHeight, int64_t blockValue)
-{
-    int64_t ret = blockValue * 2/3; //67%
-
-    return ret;
-}
