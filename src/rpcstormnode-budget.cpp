@@ -12,7 +12,7 @@
 #include "stormnode-budget.h"
 #include "stormnodeconfig.h"
 #include "rpcserver.h"
-#include "utilmoneystr.h"
+//#include "utilmoneystr.h"
 
 #include <boost/lexical_cast.hpp>
 #include <fstream>
@@ -42,7 +42,7 @@ Value snbudget(const Array& params, bool fHelp)
     if(strCommand == "vote-many")
     {
         int nBlockMin = 0;
-        CBlockIndex* pindexPrev = chainActive.Tip();
+        CBlockIndex* pindexPrev = pindexBest;
 
         std::vector<CStormnodeConfig::CStormnodeEntry> snEntries;
         snEntries = stormnodeConfig.getEntries();
@@ -138,7 +138,7 @@ Value snbudget(const Array& params, bool fHelp)
     if(strCommand == "vote")
     {
         int nBlockMin = 0;
-        CBlockIndex* pindexPrev = chainActive.Tip();
+        CBlockIndex* pindexPrev = pindexBest;
 
         std::vector<CStormnodeConfig::CStormnodeEntry> snEntries;
         snEntries = stormnodeConfig.getEntries();
@@ -207,6 +207,8 @@ Value snbudget(const Array& params, bool fHelp)
         budget.UpdateProposal(vote);
 
     }
+
+
 
     if(strCommand == "show")
     {
@@ -324,7 +326,7 @@ Value snfinalbudget(const Array& params, bool fHelp)
         std::vector<CStormnodeConfig::CStormnodeEntry> snEntries;
         snEntries = stormnodeConfig.getEntries();
         
-        CBlockIndex* pindexPrev = chainActive.Tip();
+        CBlockIndex* pindexPrev = pindexBest;
         if(!pindexPrev)
             return "Must be synced to suggest";
 
@@ -378,6 +380,7 @@ Value snfinalbudget(const Array& params, bool fHelp)
         return "success";
 
     }
+
 
     if(strCommand == "vote-many")
     {

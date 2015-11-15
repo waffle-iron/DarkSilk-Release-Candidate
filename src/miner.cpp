@@ -5,7 +5,8 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 
-
+#include "primitives/block.h"
+#include "primitives/transaction.h"
 #include "txdb.h"
 #include "miner.h"
 #include "kernel.h"

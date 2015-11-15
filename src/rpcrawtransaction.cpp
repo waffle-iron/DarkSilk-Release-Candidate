@@ -6,6 +6,7 @@
 
 #include <boost/assign/list_of.hpp>
 
+#include "primitives/transaction.h"
 #include "base58.h"
 #include "rpcserver.h"
 #include "txdb.h"
@@ -532,11 +533,13 @@ Value signrawtransaction(const Array& params, bool fHelp)
 
         txin.scriptSig.clear();
         // Only sign SIGHASH_SINGLE if there's a corresponding output:
+
         if (!fHashSingle || (i < mergedTx.vout.size()))
-            SignSignature(keystore, prevPubKey, mergedTx, i, nHashType);
+            //TODO (AA): Put this back. Get "no matching function for call" error.
+            //SignSignature(keystore, prevPubKey, CTransaction(mergedTx), i, nHashType);
 
         // ... and merge in other signatures:
-        BOOST_FOREACH(const CMutableTransaction& txv, txVariants) {
+        BOOST_FOREACH(const CMutableTransaction& txv, txVariants)
         {
             txin.scriptSig = CombineSignatures(prevPubKey, mergedTx, i, txin.scriptSig, txv.vin[i].scriptSig);
         }
@@ -552,6 +555,7 @@ Value signrawtransaction(const Array& params, bool fHelp)
 
     return result;
 }
+
 
 Value sendrawtransaction(const Array& params, bool fHelp)
 {
@@ -655,3 +659,4 @@ Value searchrawtransactions(const Array &params, bool fHelp)
     }
     return result;
 }
+

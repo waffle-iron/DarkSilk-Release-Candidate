@@ -2,6 +2,7 @@
 
 #include "guiutil.h"
 
+#include "primitives/transaction.h"
 #include "darksilkaddressvalidator.h"
 #include "walletmodel.h"
 #include "darksilkunits.h"

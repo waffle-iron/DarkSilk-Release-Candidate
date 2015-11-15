@@ -211,7 +211,7 @@ bool CStormnodeBlockPayees::IsTransactionValid(const CTransaction& txNew)
     //require at least 6 signatures
 
     BOOST_FOREACH(CStormnodePayee& payee, vecPayments)
-        if(payee.nVotes >= nMaxSignatures && MNPAYMENTS_SIGNATURES_REQUIRED)
+        if(payee.nVotes >= nMaxSignatures && SNPAYMENTS_SIGNATURES_REQUIRED)
             nMaxSignatures = payee.nVotes;
 
     // if we don't have at least 6 signatures on a payee, approve whichever is the longest chain
@@ -228,12 +228,12 @@ bool CStormnodeBlockPayees::IsTransactionValid(const CTransaction& txNew)
         // If nMaxSignatures == 6, the min signatures = 2
         // If nMaxSignatures == 10, the min signatures = 6
         // If nMaxSignatures == 15, the min signatures = 11
-        if(payee.nVotes >= nMaxSignatures-(MNPAYMENTS_SIGNATURES_TOTAL/5)){            
+        if(payee.nVotes >= nMaxSignatures-(SNPAYMENTS_SIGNATURES_TOTAL/5)){            
             if(found) return true;
 
             CTxDestination address1;
             ExtractDestination(payee.scriptPubKey, address1);
-            CBitcoinAddress address2(address1);
+            CDarkSilkAddress address2(address1);
 
             if(strPayeesPossible == ""){
                 strPayeesPossible += address2.ToString()  + ":" + boost::lexical_cast<std::string>(payee.nValue);
@@ -271,7 +271,6 @@ std::string CStormnodePayments::GetRequiredPaymentsString(int nBlockHeight)
 {
     if(mapStormnodeBlocks.count(nBlockHeight)){
         return mapStormnodeBlocks[nBlockHeight].GetRequiredPaymentsString();
-        }
     }
 
     return "Unknown";
@@ -394,7 +393,7 @@ bool CStormnodePayments::ProcessBlock(int nBlockHeight)
 
             CScript payee;
             if(psn->donationPercentage > 0 && (nHash % 100) <= (unsigned int)psn->donationPercentage) {
-                payee = pmn->donationAddress;
+                payee = psn->donationAddress;
             } else {
                 payee = GetScriptForDestination(psn->pubkey.GetID());
             }

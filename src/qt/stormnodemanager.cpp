@@ -332,7 +332,8 @@ void StormnodeManager::on_stopButton_clicked()
     CStormNodeConfig c = pwalletMain->mapMyStormNodes[sAddress];
 
     std::string errorMessage;
-    bool result = activeStormnode.StopStormNode(c.sAddress, c.sStormnodePrivKey, errorMessage);
+    //TODO (AA): put back. StopStormNode undefined.
+    bool result = false;//activeStormnode.StopStormNode(c.sAddress, c.sStormnodePrivKey, errorMessage);
     QMessageBox msg;
     if(result)
     {
@@ -374,16 +375,17 @@ void StormnodeManager::on_stopAllButton_clicked()
     BOOST_FOREACH(PAIRTYPE(std::string, CStormNodeConfig) storm, pwalletMain->mapMyStormNodes)
     {
         CStormNodeConfig c = storm.second;
-	std::string errorMessage;
-        bool result = activeStormnode.StopStormNode(c.sAddress, c.sStormnodePrivKey, errorMessage);
-	if(result)
-	{
-   	    results += c.sAddress + ": STOPPED\n";
-	}	
-	else
-	{
-	    results += c.sAddress + ": ERROR: " + errorMessage + "\n";
-	}
+        std::string errorMessage;
+        //TODO (AA): Put back. StopStormNode is undefined.
+        bool result = false;//activeStormnode.StopStormNode(c.sAddress, c.sStormnodePrivKey, errorMessage);
+        if(result)
+        {
+            results += c.sAddress + ": STOPPED\n";
+        }
+        else
+        {
+            results += c.sAddress + ": ERROR: " + errorMessage + "\n";
+        }
     }
 
     QMessageBox msg;

@@ -252,11 +252,10 @@ void CStormnode::Check()
         {   
             TRY_LOCK(cs_main, lockMain);
             if(!lockMain) return;
-
-            if(!AcceptableInputs(mempool, tx, false)){
+            CTransaction txNew = CTransaction(tx);
+            if(!AcceptableInputs(mempool, txNew, false, true)){
                 activeState = STORMNODE_VIN_SPENT;
                 return;
-
             }
         }
     }
@@ -424,7 +423,9 @@ bool CStormnodeBroadcast::CheckInputsAndAdd(int& nDoS, bool fRequested)
     CTxOut vout = CTxOut(41999.99*COIN, sandStormPool.collateralPubKey);
     tx.vin.push_back(vin);
     tx.vout.push_back(vout);
-    if(AcceptableInputs(mempool, state, CTransaction(tx), false, NULL)){
+    //if(AcceptableInputs(mempool, state, CTransaction(tx), false, NULL)){
+    CTransaction txNew = CTransaction(tx);
+    if(AcceptableInputs(mempool, txNew, false, NULL)){
         if(fDebug) LogPrintf("ssee - Accepted Stormnode entry\n");
 
         if(GetInputAge(vin) < STORMNODE_MIN_CONFIRMATIONS){
@@ -436,19 +437,24 @@ bool CStormnodeBroadcast::CheckInputsAndAdd(int& nDoS, bool fRequested)
         // should be at least not earlier than block when 42000 DRKSLK tx got STORMNODE_MIN_CONFIRMATIONS
         uint256 hashBlock = 0;
         CTransaction tx2;
-        GetTransaction(vin.prevout.hash, tx2, hashBlock, true);
-        BlockMap::iterator mi = mapBlockIndex.find(hashBlock);
+        GetTransaction(vin.prevout.hash, tx2, hashBlock);
+        //TODO (AA): Put this back.  BlockMap is undefined.
+        /*BlockMap::iterator mi = mapBlockIndex.find(hashBlock);
         if (mi != mapBlockIndex.end() && (*mi).second)
         {
             CBlockIndex* pSNIndex = (*mi).second; // block for 1000 DRKSLK tx -> 1 confirmation
-            //CBlockIndex* pConfIndex = chainActive[pSNIndex->nHeight + STORMNODE_MIN_CONFIRMATIONS - 1]; // block where tx got STORMNODE_MIN_CONFIRMATIONS
-            if(pConfIndex->GetBlockTime() > sigTime)
+
+            //All other chainActives have been converted to either pindexBest or pindexBest->nHeight but need to work out the line below:
+            CBlockIndex* pConfIndex = chainActive[pSNIndex->nHeight + STORMNODE_MIN_CONFIRMATIONS - 1]; // block where tx got STORMNODE_MIN_CONFIRMATIONS
+            
+            //if(pConfIndex->GetBlockTime() > sigTime)
+            if(pSNIndex->GetBlockTime() > sigTime)
             {
                 LogPrintf("ssee - Bad sigTime %d for Stormnode %20s %105s (%i conf block is at %d)\n",
-                          sigTime, addr.ToString(), vin.ToString(), STORMNODE_MIN_CONFIRMATIONS, pConfIndex->GetBlockTime());
+                          sigTime, addr.ToString(), vin.ToString(), STORMNODE_MIN_CONFIRMATIONS, pSNIndex->GetBlockTime());
                 return false;
             }
-        }
+        }*/
 
         //doesn't support multisig addresses
         if(donationAddress.IsPayToScriptHash()){

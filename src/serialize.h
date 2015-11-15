@@ -1261,6 +1261,8 @@ public:
         fclose();
     }
 
+    bool IsNull() const         { return (file == NULL); }
+
     void fclose()
     {
         if (file != NULL && file != stdin && file != stdout && file != stderr)

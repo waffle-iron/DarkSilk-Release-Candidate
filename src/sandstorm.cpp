@@ -268,7 +268,8 @@ void CSandstormPool::ProcessMessageSandstorm(CNode* pfrom, std::string& strComma
                 return;
             }
 
-            if(!AcceptableInputs(mempool, tx, false, false)){
+            CTransaction txNew = CTransaction(tx);
+            if(!AcceptableInputs(mempool, txNew, false, false)){
                 LogPrintf("ssi -- transaction not valid! \n");
                 error = _("Transaction not valid.");
                 pfrom->PushMessage("sssu", sessionID, GetState(), GetEntriesCount(), STORMNODE_REJECTED, error);
@@ -1019,7 +1020,8 @@ bool CSandstormPool::IsCollateralValid(const CTransaction& txCollateral){
     if(fDebug) LogPrintf("CSandstormPool::IsCollateralValid %s\n", txCollateral.ToString().c_str());
  
     CValidationState state;
-    if(!AcceptableInputs(mempool, txCollateral, false, false)){
+    CTransaction txNewCollateral = CTransaction(txCollateral);
+    if(!AcceptableInputs(mempool, txNewCollateral, false, false)){
         if(fDebug) LogPrintf ("CSandstormPool::IsCollateralValid - didn't pass IsAcceptable\n");
         return false;
     }
@@ -1135,17 +1137,21 @@ bool CSandstormPool::SignaturesComplete(){
 // This is only ran from clients
 //
 void CSandstormPool::SendSandstormDenominate(std::vector<CTxIn>& vin, std::vector<CTxOut>& vout, int64_t amount){
-    if(sandStormPool.txCollateral == CMutableTransaction()){
+    //if(sandStormPool.txCollateral == CMutableTransaction()){
+    if(sandStormPool.txCollateral.IsNull()){
         LogPrintf ("CSandstormPool:SendSandstormDenominate() - Sandstorm collateral not set");
         return;
     }
 
     // lock the funds we're going to use
     BOOST_FOREACH(CTxIn in, txCollateral.vin)
+    {
         lockedCoins.push_back(in);
-
+    }
     BOOST_FOREACH(CTxIn in, vin)
+    {
         lockedCoins.push_back(in);
+    }
 
     //BOOST_FOREACH(CTxOut o, vout)
     //    LogPrintf(" vout - %s\n", o.ToString().c_str());
@@ -1197,8 +1203,8 @@ void CSandstormPool::SendSandstormDenominate(std::vector<CTxIn>& vin, std::vecto
 
         LogPrintf("Submitting tx %s\n", tx.ToString().c_str());
 
-        
-        if(!AcceptableInputs(mempool, tx, false)){
+        CTransaction txNew = CTransaction(tx);
+        if(!AcceptableInputs(mempool, txNew, false)){
             LogPrintf("ssi -- transaction not valid! %s \n", tx.ToString().c_str());
         UnlockCoins();
         SetNull(true);
@@ -1323,7 +1329,8 @@ bool CSandstormPool::SignFinalTransaction(CTransaction& finalTransactionNew, CNo
                 }
                 
                 if(fDebug) LogPrintf("CSandstormPool::Sign - Signing my input %i\n", mine);
-                if(!SignSignature(*pwalletMain, prevPubKey, finalTransaction, mine, int(SIGHASH_ALL|SIGHASH_ANYONECANPAY))) { // changes scriptSig
+                CTransaction txFinal = CTransaction(finalTransaction);
+                if(!SignSignature(*pwalletMain, prevPubKey, txFinal, mine, int(SIGHASH_ALL|SIGHASH_ANYONECANPAY))) { // changes scriptSig
                     if(fDebug) LogPrintf("CSandstormPool::Sign - Unable to sign my own transaction! \n");
                     // not sure what to do here, it will timeout...?
                 }
@@ -1522,7 +1529,7 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
         //check our collateral and create new if needed
         std::string strReason;
         CValidationState state;
-        if(txCollateral == CMutableTransaction()){
+        if(txCollateral.IsNull()){
             if(!pwalletMain->CreateCollateralTransaction(txCollateral, strReason)){
                 LogPrintf("%s -- create collateral error:%s\n", __func__, strReason.c_str());
                 return false;
@@ -2295,7 +2302,8 @@ void ThreadCheckSandStormPool()
         if(c % STORMNODES_DUMP_SECONDS == 0) DumpStormnodes();
 
         //try to sync the Stormnode list and payment list every 5 seconds from at least 3 nodes
-        if(c % 5 == 0 && RequestedStormNodeAssets <= 2){
+        //TODO (AA): Fix.  RequestedStormNodeAssets undefined.
+        /*if(c % 5 == 0 && RequestedStormNodeAssets <= 2){
             bool fIsInitialDownload = IsInitialBlockDownload();
             if(!fIsInitialDownload) {
                 LOCK(cs_vNodes);
@@ -2321,6 +2329,7 @@ void ThreadCheckSandStormPool()
         } else if(c % 60 == 0 && RequestedStormnodeAssets == 3){
             RequestedStormnodeAssets = STORMNODE_LIST_SYNCED; //done syncing
         }
+*/
 
         if(c % 60 == 0){
             //if we've used 1/5 of the Stormnode list, then clear the list.

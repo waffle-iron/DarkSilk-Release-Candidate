@@ -71,14 +71,13 @@ public:
         // be spent as it did not originally exist in the database.
         
         const char* pszTimestamp = "2015 DarkSilk is Born";
-        CMutableTransaction txNew;
         std::vector<CTxIn> vin;
         vin.resize(1);
         vin[0].scriptSig = CScript() << 0 << CBigNum(42) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
         std::vector<CTxOut> vout;
         vout.resize(1);
         vout[0].SetEmpty();
-        CTransaction txNew(1, 1444948732, vin, vout, 0);
+        CMutableTransaction txNew(1, 1444948732, vin, vout, 0);
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();

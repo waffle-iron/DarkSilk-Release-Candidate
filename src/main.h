@@ -10,8 +10,8 @@
 #include "bignum.h"
 #include "sync.h"
 #include "txmempool.h"
-
-
+#include "primitives/block.h"
+#include "primitives/transaction.h"
 #include "net.h"
 #include "script.h"
 #include "scrypt.h"
@@ -178,8 +178,9 @@ void ThreadStakeMiner(CWallet *pwallet);
 
 /** (try to) add transaction to memory pool **/
 bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree, bool* pfMissingInputs, bool ignoreFees=false);
-
-bool AcceptableInputs(CTxMemPool& pool, const CTransaction &txo, bool fLimitFree, bool ignoreFees=true);
+double ConvertBitsToDouble(unsigned int nBits);
+bool AcceptableInputs(CTxMemPool& pool, CTransaction &txo, bool fLimitFree, bool ignoreFees=true);
+CAmount GetBlockValue(int nBits, int nHeight, const CAmount& nFees);
 
 
 bool FindTransactionsByDestination(const CTxDestination &dest, std::vector<uint256> &vtxhash);
@@ -265,6 +266,7 @@ typedef std::map<uint256, std::pair<CTxIndex, CTransaction> > MapPrevTx;
 int64_t GetMinFee(const CTransaction& tx, unsigned int nBytes, bool fAllowFree, enum GetMinFee_mode mode);
 
 
+struct CMutableTransaction;
 
 /** The basic transaction that is broadcasted on the network and contained in
  * blocks.  A transaction can contain multiple inputs and outputs.
@@ -287,10 +289,14 @@ public:
     {
         SetNull();
     }
+
     CTransaction(int nVersion, unsigned int nTime, const std::vector<CTxIn>& vin, const std::vector<CTxOut>& vout, unsigned int nLockTime)
         : nVersion(nVersion), nTime(nTime), vin(vin), vout(vout), nLockTime(nLockTime), nDoS(0)
     {
     }
+
+    /** Convert a CMutableTransaction into a CTransaction. */
+    CTransaction(const CMutableTransaction &tx);
 
     IMPLEMENT_SERIALIZE
     (
@@ -461,6 +467,50 @@ public:
 };
 
 
+/** A mutable version of CTransaction. */
+struct CMutableTransaction
+{
+    static const int32_t CURRENT_VERSION = 1;
+    int32_t nVersion;
+    uint32_t nTime;
+    std::vector<CTxIn> vin;
+    std::vector<CTxOut> vout;
+    uint32_t nLockTime;
+
+    // Denial-of-service detection:
+    mutable int32_t nDoS;
+    bool DoS(int32_t nDoSIn, bool fIn) const { nDoS += nDoSIn; return fIn; }
+
+    CMutableTransaction();
+    CMutableTransaction(const CTransaction& tx);
+
+    CMutableTransaction(int32_t nVersion, uint32_t nTime, const std::vector<CTxIn>& vin, const std::vector<CTxOut>& vout, uint32_t nLockTime)
+        : nVersion(nVersion), nTime(nTime), vin(vin), vout(vout), nLockTime(nLockTime), nDoS(0)
+    {
+    }
+
+    IMPLEMENT_SERIALIZE
+    (
+        READWRITE(this->nVersion);
+        nVersion = this->nVersion;
+        READWRITE(this->nTime);
+        READWRITE(vin);
+        READWRITE(vout);
+        READWRITE(nLockTime);
+    )
+
+    /** Compute the hash of this CMutableTransaction. This is computed on the
+     * fly, as opposed to GetHash() in CTransaction, which uses a cached result.
+     */
+    uint256 GetHash() const;
+
+    std::string ToString() const;
+
+    bool IsNull() const
+    {
+        return (vin.empty() && vout.empty());
+    }
+};
 
 
 /** wrapper for CTxOut that provides a more compact serialization */

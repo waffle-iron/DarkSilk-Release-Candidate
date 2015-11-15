@@ -191,9 +191,8 @@ public:
         return h1;
     }
 
-    ADD_SERIALIZE_METHODS;
-
-    IMPLEMENT_SERIALIZE(
+    IMPLEMENT_SERIALIZE
+    (
         READWRITE(LIMITED_STRING(strBudgetName, 20));
         READWRITE(vin);
         READWRITE(nBlockStart);

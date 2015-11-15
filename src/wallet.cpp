@@ -23,6 +23,7 @@
 #include "chainparams.h"
 #include "smessage.h"
 
+
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/range/algorithm.hpp>
 #include <boost/numeric/ublas/matrix.hpp>
@@ -2508,13 +2509,15 @@ bool CWallet::CreateCollateralTransaction(CMutableTransaction& txCollateral, std
 
     int vinNumber = 0;
     BOOST_FOREACH(CTxIn v, txCollateral.vin) {
-        if(!SignSignature(*this, v.prevPubKey, txCollateral, vinNumber, int(SIGHASH_ALL|SIGHASH_ANYONECANPAY))) {
-            BOOST_FOREACH(CTxIn v, vCoinsCollateral)
-                UnlockCoin(v.prevout);
+        //TODO (AA): Fix this...
+        //CKeyStore, CTransaction, CTransaction, unsigned int, int
+        //if(!SignSignature(*this, v.prevPubKey, CTransaction(txCollateral), vinNumber, int(SIGHASH_ALL|SIGHASH_ANYONECANPAY))) {
+        //    BOOST_FOREACH(CTxIn v, vCoinsCollateral)
+        //        UnlockCoin(v.prevout);
 
-            strReason = "CSandstormPool::Sign - Unable to sign collateral transaction! \n";
-            return false;
-        }
+        //    strReason = "CSandstormPool::Sign - Unable to sign collateral transaction! \n";
+        //    return false;
+        //}
         vinNumber++;
     }
 

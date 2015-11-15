@@ -13,8 +13,8 @@
 
 #include <stdlib.h>
 
-
-
+#include "primitives/block.h"
+#include "primitives/transaction.h"
 #include "crypter.h"
 #include "main.h"
 #include "key.h"

@@ -20,7 +20,7 @@ std::map<uint256, CFinalizedBudgetBroadcast> mapSeenFinalizedBudgets;
 std::map<uint256, CFinalizedBudgetVote> mapSeenFinalizedBudgetVotes;
 
 int GetBudgetPaymentCycleBlocks(){
-    if(Params().NetworkID() == CBaseChainParams::MAIN) return 43200; //(60*24*30)/1
+    if(Params().NetworkID() == CChainParams::MAIN) return 43200; //(60*24*30)/1
 
     //for testing purposes
     return 50;
@@ -210,8 +210,8 @@ void GetStormnodeBudgetEscrow(CScript& payee)
 {
     std::string strAddress = "";
 
-    if(Params().NetworkID() == CBaseChainParams::MAIN) strAddress = "";
-    if(Params().NetworkID() == CBaseChainParams::TESTNET) strAddress = "";
+    if(Params().NetworkID() == CChainParams::MAIN) strAddress = "";
+    if(Params().NetworkID() == CChainParams::TESTNET) strAddress = "";
 
     CDarkSilkAddress address;
     if (!address.SetString(strAddress))
@@ -288,7 +288,7 @@ CBudgetVote::CBudgetVote(CTxIn vinIn, uint256 nProposalHashIn, int nVoteIn)
 
 bool CBudgetProposal::IsValid()
 {
-    CBlockIndex* pindexPrev = chainActive.Tip();
+    CBlockIndex* pindexPrev = pindexBest;
     if(pindexPrev == NULL) return false;
 
     if(pindexPrev->nHeight - nBlockStart < 0) return false;
@@ -541,7 +541,7 @@ void CBudgetProposal::AddOrUpdateVote(CBudgetVote& vote)
 void CBudgetManager::NewBlock()
 {
     //this function should be called 1/6 blocks, allowing up to 100 votes per day on all proposals
-    if(chainActive.Height() % 6 != 0) return;
+    if(pindexBest->nHeight % 6 != 0) return;
 
     snodeman.DecrementVotedTimes();
 }
@@ -612,7 +612,7 @@ int CBudgetProposal::GetBlockStartCycle()
 
 int CBudgetProposal::GetBlockCurrentCycle()
 {
-    CBlockIndex* pindexPrev = chainActive.Tip();
+    CBlockIndex* pindexPrev = pindexBest;
     if(pindexPrev == NULL) return -1;
 
     if(pindexPrev->nHeight >= GetBlockEndCycle()) return -1;
@@ -639,9 +639,9 @@ int CBudgetProposal::GetRemainingPaymentCount()
 
 int64_t CBudgetManager::GetTotalBudget()
 {
-    if(chainActive.Tip() == NULL) return 0;
+    if(pindexBest == NULL) return 0;
 
-    const CBlockIndex* pindex = chainActive.Tip();
+    const CBlockIndex* pindex = pindexBest;
     return (GetBlockValue(pindex->pprev->nBits, pindex->pprev->nHeight, 0)/100)*15;
 }
 

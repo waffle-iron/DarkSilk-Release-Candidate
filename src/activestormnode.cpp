@@ -126,7 +126,7 @@ void CActiveStormnode::ManageStatus()
     }
 
     //send to all peers
-    if(!SnPing(errorMessage)) {
+    if(!Snping(errorMessage)) {
        LogPrintf("CActiveStormnode::ManageStatus() - Error on Ping: %s\n", errorMessage.c_str());    }
 }
 

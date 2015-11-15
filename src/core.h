@@ -55,6 +55,11 @@ public:
         return strprintf("%s-%u", hash.ToString().substr(0,64), n);
     }
 
+    uint256 GetHash() const
+    {
+        return SerializeHash(*this);
+    }
+
 };
 
 /** An inpoint - a combination of a transaction and an index n into its vin */

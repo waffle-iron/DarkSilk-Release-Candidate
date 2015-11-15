@@ -6,6 +6,7 @@
 #ifndef DARKSILK_TXMEMPOOL_H
 #define DARKSILK_TXMEMPOOL_H
 
+#include "primitives/transaction.h"
 #include "core.h"
 #include "sync.h"
 

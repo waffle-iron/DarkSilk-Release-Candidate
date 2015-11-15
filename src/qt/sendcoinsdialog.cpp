@@ -272,14 +272,15 @@ void SendCoinsDialog::on_sendButton_clicked()
             QMessageBox::Ok, QMessageBox::Ok);
         break;
     case WalletModel::Aborted: // User aborted, nothing to do
-        break;
+        break;    
+    case WalletModel::AnonymizeOnlyUnlocked:
+        QMessageBox::warning(this, tr("Send Coins"),
+            tr("Error: The wallet was unlocked only to anonymize coins."),
+            QMessageBox::Ok, QMessageBox::Ok);
     case WalletModel::OK:
         accept();
         CoinControlDialog::coinControl->UnSelectAll();
         coinControlUpdateLabels();
-        break;
-    case WalletModel::AnonymizeOnlyUnlocked:
-        //TODO: Add code to handle this case
         break;
     }
 

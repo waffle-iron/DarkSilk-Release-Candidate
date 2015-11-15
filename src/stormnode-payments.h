@@ -18,8 +18,8 @@ extern std::map<uint256, CStormnodePaymentWinner> mapStormnodePayeeVotes;
 extern std::map<uint256, CStormnodeBlockPayees> mapStormnodeBlocks;
 
 static const int MIN_SNPAYMENTS_PROTO_VERSION = 60020;
-#define MNPAYMENTS_SIGNATURES_REQUIRED           11
-#define MNPAYMENTS_SIGNATURES_TOTAL              20
+#define SNPAYMENTS_SIGNATURES_REQUIRED           11
+#define SNPAYMENTS_SIGNATURES_TOTAL              20
 
 void ProcessMessageStormnodePayments(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
 bool IsReferenceNode(CTxIn& vin);

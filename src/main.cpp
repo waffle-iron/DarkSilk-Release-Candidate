@@ -276,6 +276,77 @@ CNodeState *State(NodeId pnode) {
     return &it->second;
 }
 
+double ConvertBitsToDouble(unsigned int nBits)
+{
+    int nShift = (nBits >> 24) & 0xff;
+
+    double dDiff =
+        (double)0x0000ffff / (double)(nBits & 0x00ffffff);
+
+    while (nShift < 29)
+    {
+        dDiff *= 256.0;
+        nShift++;
+    }
+    while (nShift > 29)
+    {
+        dDiff /= 256.0;
+        nShift--;
+    }
+
+    return dDiff;
+}
+
+int64_t GetBlockValue(int nBits, int nHeight, const CAmount& nFees)
+{
+    double dDiff = (double)0x0000ffff / (double)(nBits & 0x00ffffff);
+
+    /* fixed bug caused diff to not be correctly calculated */
+    if(nHeight > 4500 || Params().NetworkID() == CChainParams::TESTNET) dDiff = ConvertBitsToDouble(nBits);
+
+    int64_t nSubsidy = 0;
+    if(nHeight >= 5465) {
+        if((nHeight >= 17000 && dDiff > 75) || nHeight >= 24000) { // GPU/ASIC difficulty calc
+            // 2222222/(((x+2600)/9)^2)
+            nSubsidy = (2222222.0 / (pow((dDiff+2600.0)/9.0,2.0)));
+            if (nSubsidy > 25) nSubsidy = 25;
+            if (nSubsidy < 5) nSubsidy = 5;
+        } else { // CPU mining calc
+            nSubsidy = (11111.0 / (pow((dDiff+51.0)/6.0,2.0)));
+            if (nSubsidy > 500) nSubsidy = 500;
+            if (nSubsidy < 25) nSubsidy = 25;
+        }
+    } else {
+        nSubsidy = (1111.0 / (pow((dDiff+1.0),2.0)));
+        if (nSubsidy > 500) nSubsidy = 500;
+        if (nSubsidy < 1) nSubsidy = 1;
+    }
+
+    // LogPrintf("height %u diff %4.2f reward %i \n", nHeight, dDiff, nSubsidy);
+    nSubsidy *= COIN;
+
+    if(Params().NetworkID() == CChainParams::TESTNET){
+        for(int i = 46200; i <= nHeight; i += 210240) nSubsidy -= nSubsidy/14;
+    } else {
+        // yearly decline of production by 7.1% per year, projected 21.3M coins max by year 2050.
+        for(int i = 210240; i <= nHeight; i += 210240) nSubsidy -= nSubsidy/14;
+    }
+
+    /*
+
+        Hard fork will activate on block 328008, reducing the block reward by 10 extra percent (allowing budget super-blocks)
+
+    */
+
+    if(Params().NetworkID() == CChainParams::TESTNET){
+        if(nHeight > 77900+576) nSubsidy -= nSubsidy/10;
+    } else {
+        if(nHeight > 309759+(553*33)) nSubsidy -= nSubsidy/10; // 328008 - 10.0% - September 6, 2015
+    }
+
+    return nSubsidy + nFees;
+}
+
 void InitializeNode(NodeId nodeid, const CNode *pnode) {
     LOCK(cs_main);
     CNodeState &state = mapNodeState.insert(std::make_pair(nodeid, CNodeState())).first->second;
@@ -481,12 +552,12 @@ bool IsStandardTx(const CTransaction& tx, string& reason)
     // the next block.
     //
     // However, IsFinalTx() is confusing... Without arguments, it uses
-    // chainActive.Height() to evaluate nLockTime; when a block is accepted, chainActive.Height()
+    // pindexBest->nHeight to evaluate nLockTime; when a block is accepted, pindexBest->nHeight
     // is set to the value of nHeight in the block. However, when IsFinalTx()
     // is called within CBlock::AcceptBlock(), the height of the block *being*
     // evaluated is what is used. Thus if we want to know if a transaction can
     // be part of the *next* block, we need to call IsFinalTx() with one more
-    // than chainActive.Height().
+    // than pindexBest->nHeight.
     //
     // Timestamps on the other hand don't get any special treatment, because we
     // can't know what timestamp the next block will have, and there aren't
@@ -991,7 +1062,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree, boo
     return true;
 }
 
-bool AcceptableInputs(CTxMemPool& pool, const CTransaction &txo, bool fLimitFree, bool ignoreFees)
+bool AcceptableInputs(CTxMemPool& pool, CTransaction &txo, bool fLimitFree, bool ignoreFees)
 {
     AssertLockHeld(cs_main);
 
@@ -2476,6 +2547,44 @@ bool CTransaction::GetCoinAge(CTxDB& txdb, const CBlockIndex* pindexPrev, uint64
     return true;
 }
 
+CTransaction::CTransaction(const CMutableTransaction &tx) : nVersion(tx.nVersion), nTime(tx.nTime), vin(tx.vin), vout(tx.vout), nLockTime(tx.nLockTime)
+{
+}
+
+CMutableTransaction::CMutableTransaction() : nVersion(CTransaction::CURRENT_VERSION), nLockTime(0)
+{
+    nVersion = CMutableTransaction::CURRENT_VERSION;
+    nTime = GetAdjustedTime();
+    vin.resize(0);
+    vout.resize(0);
+    nLockTime = 0;
+    nDoS = 0;  // Denial-of-service prevention
+}
+
+CMutableTransaction::CMutableTransaction(const CTransaction& tx) : nVersion(tx.nVersion), vin(tx.vin), vout(tx.vout), nLockTime(tx.nLockTime) {}
+
+uint256 CMutableTransaction::GetHash() const
+{
+    return SerializeHash(*this);
+}
+
+std::string CMutableTransaction::ToString() const
+{
+    std::string str;
+    str += strprintf("CMutableTransaction(hash=%s, ver=%d, nTime=&u, vin.size=%u, vout.size=%u, nLockTime=%u)\n",
+        GetHash().ToString(),
+        nVersion,
+        nTime,
+        vin.size(),
+        vout.size(),
+        nLockTime);
+    for (unsigned int i = 0; i < vin.size(); i++)
+        str += "    " + vin[i].ToString() + "\n";
+    for (unsigned int i = 0; i < vout.size(); i++)
+        str += "    " + vout[i].ToString() + "\n";
+    return str;
+}
+
 bool CBlock::AddToBlockIndex(unsigned int nFile, unsigned int nBlockPos, const uint256& hashProof)
 {
     AssertLockHeld(cs_main);
@@ -2605,24 +2714,25 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
             }
         }
     } else {
-        LogPrintf("CheckBlock() : skipping transaction locking checks\n"); }
+        LogPrintf("CheckBlock() : skipping transaction locking checks\n");
     }
 
 
     // ----------- stormnode payments -----------
 
-    CBlockIndex* pindexPrev = pindexBest;
-    if(pindexPrev != NULL)
+    CBlockIndex *pindexPrev = pindexBest;
+
+    if(pindexPrev == NULL)
     {
-        if(IsBlockPayeeValid(block.vtx[0], pindexPrev->nHeight+1))
-        {
-            return DoS(100, error("CheckBlock() : Couldn't find stormnode payment or payee"));
-        }
+        //TODO (AA): Put these back once primitives are completed
+        //if(IsBlockPayeeValid(block.vtx[0], pindexPrev->nHeight+1))
+        //{
+        //    return DoS(100, error("CheckBlock() : Couldn't find stormnode payment or payee"));
+        //}
     }
 
     // Check transactions
-    BOOST_FOREACH(const CTransaction& tx, vtx)
-    {
+    BOOST_FOREACH(const CTransaction& tx, vtx){
         if (!tx.CheckTransaction())
             return DoS(tx.nDoS, error("CheckBlock() : CheckTransaction failed"));
 

@@ -557,6 +557,7 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
 
     LOCK(cs_process_message);
 
+
     if (strCommand == "snb") { //Stormnode Broadcast
         CStormnodeBroadcast snb;
         bool fRequested; //specifically requested?
@@ -566,22 +567,24 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
         mapSeenStormnodeBroadcast[snb.GetHash()] = snb;
 
         int nDoS = 0;
+
+
         if(!snb.CheckAndUpdate(nDoS, fRequested)){
+            //TODO (AA): Put back.  pubkey2 undefined
+            /*
+            CScript pubkeyScript2;
+            pubkeyScript2.SetDestination(pubkey2.GetID());
 
-        CScript pubkeyScript2;
-        pubkeyScript2.SetDestination(pubkey2.GetID());
+            if(pubkeyScript2.size() != 25) {
+                LogPrintf("ssee - pubkey2 the wrong size\n");
+                Misbehaving(pfrom->GetId(), 100);
+                return;
+            }*/
+                if(nDoS > 0)
+                    Misbehaving(pfrom->GetId(), nDoS);
 
-        if(pubkeyScript2.size() != 25) {
-            LogPrintf("ssee - pubkey2 the wrong size\n");
-            Misbehaving(pfrom->GetId(), 100);
-            return;
-        }
-
-            if(nDoS > 0)
-                Misbehaving(pfrom->GetId(), nDoS);
-           
-            //failed
-            return;
+                //failed
+                return;
         }
 
         // make sure the vout that was signed is related to the transaction that spawned the stormnode
@@ -612,6 +615,7 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
             if (nDoS > 0)
                 Misbehaving(pfrom->GetId(), nDoS);
         }
+
     }
 
     else if (strCommand == "snp") { //Stormnode Ping

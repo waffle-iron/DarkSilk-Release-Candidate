@@ -118,7 +118,9 @@ QMAKE_CXXFLAGS *= -DUSE_SECP256K1
 
 INCLUDEPATH += src/leveldb/include src/leveldb/helpers
 LIBS += $$PWD/src/leveldb/libleveldb.a $$PWD/src/leveldb/libmemenv.a
-SOURCES += src/txdb-leveldb.cpp
+SOURCES += src/txdb-leveldb.cpp \
+    src/primitives/block.cpp \
+    src/primitives/transaction.cpp
 
 !win32 {
     # we use QMAKE_CXXFLAGS_RELEASE even without RELEASE=1 because we use RELEASE to indicate linking preferences not -O preferences
@@ -308,7 +310,9 @@ HEADERS += src/qt/darksilkgui.h \
     src/qt/marketlistingdetailsdialog.h \
     src/qt/deliverydetailsdialog.h \
     src/market.h \
-    src/qt/peertablemodel.h
+    src/qt/peertablemodel.h \
+    src/primitives/block.h \
+    src/primitives/transaction.h
 
 SOURCES += src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
     src/qt/transactiontablemodel.cpp \
