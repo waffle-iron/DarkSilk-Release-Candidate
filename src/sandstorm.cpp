@@ -477,6 +477,8 @@ int GetInputSandstormRounds(CTxIn in, int rounds)
 
 void CSandstormPool::Reset(){
     cachedLastSuccess = 0;
+    lastNewBlock = 0;
+    txCollateral = CMutableTransaction();
     vecStormnodesUsed.clear();
     UnlockCoins();
     SetNull();
@@ -495,13 +497,11 @@ void CSandstormPool::SetNull(bool clearEverything){
     entriesCount = 0;
     lastEntryAccepted = 0;
     countEntriesAccepted = 0;
-    lastNewBlock = 0;
 
     sessionUsers = 0;
     sessionDenom = 0;
     sessionFoundStormnode = false;
     vecSessionCollateral.clear();
-    txCollateral = CMutableTransaction();
 
     if(clearEverything){
         myEntries.clear();
@@ -887,6 +887,7 @@ void CSandstormPool::CheckTimeout(){
         if(GetTimeMillis()-lastTimeChanged >= (SANDSTORM_QUEUE_TIMEOUT*1000)+addLagTime){
             lastTimeChanged = GetTimeMillis();
 
+            UnlockCoins();
             SetNull(true);
         }
     } else if(GetTimeMillis()-lastTimeChanged >= (SANDSTORM_QUEUE_TIMEOUT*1000)+addLagTime){
@@ -1158,11 +1159,15 @@ void CSandstormPool::SendSandstormDenominate(std::vector<CTxIn>& vin, std::vecto
         return;
     }
 
-    if (!CheckDiskSpace())
+    if (!CheckDiskSpace()) {
+        UnlockCoins();
         return;
+    }
 
     if(fStormNode) {
         LogPrintf("CSandstormPool::SendSandstormDenominate() - SandStorm from a Stormnode is not supported currently.\n");
+        UnlockCoins();
+        SetNull(true);
         return;
     }
 
@@ -1195,6 +1200,8 @@ void CSandstormPool::SendSandstormDenominate(std::vector<CTxIn>& vin, std::vecto
         
         if(!AcceptableInputs(mempool, tx, false)){
             LogPrintf("ssi -- transaction not valid! %s \n", tx.ToString().c_str());
+        UnlockCoins();
+        SetNull(true);
             return;
         }
     }
@@ -1371,7 +1378,7 @@ void CSandstormPool::CompletedTransaction(bool error, int errorID)
 
         myEntries.clear();
         UnlockCoins();
-        if(!fStormNode) SetNull(true);
+        SetNull(true);
 
         // To avoid race conditions, we'll only let SS run once per block
         cachedLastSuccess = pindexBest->nHeight;
@@ -1500,6 +1507,9 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
 
     // initial phase, find a Stormnode
     if(!sessionFoundStormnode){
+        // Clean if there is anything left from previous session
+        UnlockCoins();
+        SetNull(true);
         int nUseQueue = rand()%100;
         UpdateState(POOL_STATUS_ACCEPTING_ENTRIES);
 
@@ -1509,11 +1519,21 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
             return false;
         }
 
-        //check our collateral
-        if(txCollateral != CMutableTransaction()){
+        //check our collateral and create new if needed
+        std::string strReason;
+        CValidationState state;
+        if(txCollateral == CMutableTransaction()){
+            if(!pwalletMain->CreateCollateralTransaction(txCollateral, strReason)){
+                LogPrintf("%s -- create collateral error:%s\n", __func__, strReason.c_str());
+                return false;
+            }
+        } else {
             if(!IsCollateralValid(txCollateral)) {
-                txCollateral = CMutableTransaction();
-                LogPrintf("DoAutomaticDenominating -- Invalid collateral, resetting.\n");
+                LogPrintf("%s -- invalid collateral, recreating...\n", __func__);
+                if(!pwalletMain->CreateCollateralTransaction(txCollateral, strReason)){
+                    LogPrintf("%s -- create collateral error: %s\n", __func__, strReason.c_str());
+                    return false;
+                }
             }
         }
 
@@ -1555,14 +1575,6 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
                     CNode* pnode = FindNode(addr);
                     if(pnode)
                     {
-                        std::string strReason;
-                        if(txCollateral == CMutableTransaction()){
-                            if(!pwalletMain->CreateCollateralTransaction(txCollateral, strReason)){
-                                LogPrintf("DoAutomaticDenominating -- ssa error:%s\n", strReason.c_str());
-                                return false;
-                            }
-                        }
-
                         CStormnode* psn = snodeman.Find(ssq.vin);
                         if(psn == NULL)
                         {
@@ -1623,14 +1635,6 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
                 BOOST_FOREACH(CNode* pnode, vNodes)
                 {
                     if((CNetAddr)pnode->addr != (CNetAddr)psn->addr) continue;
-
-                    std::string strReason;
-                    if(txCollateral == CMutableTransaction()){
-                        if(!pwalletMain->CreateCollateralTransaction(txCollateral, strReason)){
-                            LogPrintf("DoAutomaticDenominating -- create collateral error:%s\n", strReason.c_str());
-                            return false;
-                        }
-                    }
 
                     pSubmittedToStormnode = psn;
                     vecStormnodesUsed.push_back(psn->vin);
