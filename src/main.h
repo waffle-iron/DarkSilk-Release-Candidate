@@ -28,7 +28,7 @@ static const int TESTNET_STORMNODE_PAYMENT_START = 100; // Block 100
 static const int64_t SANDSTORM_COLLATERAL = (0.01*COIN);
 static const int64_t SANDSTORM_POOL_MAX = (41999.99*COIN);
 
-static const int64_t STATIC_POS_REWARD = COIN * 1; // Static Reward of 1 DRKSLK 
+static const int64_t STATIC_POS_REWARD = COIN * 4; // Static Reward of 4 DRKSLK 
 
 /*
     At 15 signatures, 1/2 of the stormnode network can be owned by
