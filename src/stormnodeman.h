@@ -117,6 +117,7 @@ public:
     void SsegUpdate(CNode* pnode);
 
     // Find an entry
+    CStormnode* Find(const CScript &payee);
     CStormnode* Find(const CTxIn& vin);
     CStormnode* Find(const CPubKey& pubKeyStormnode);
 

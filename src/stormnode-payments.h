@@ -82,7 +82,7 @@ public:
             }
         }        
 
-        return nVotes > -1;
+        return (nVotes > -1);
     }
 
     bool IsTransactionValid(const CTransaction& txNew);
@@ -118,6 +118,8 @@ public:
     uint256 GetHash(){
         CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
         ss << payee;
+        ss << nBlockHeight;
+        ss << vinStormnode.prevout;
 
         return ss.GetHash(); 
     }

@@ -149,7 +149,7 @@ bool CStormnodePaymentWinner::Sign(CKey& keyStormnode, CPubKey& pubKeyStormnode)
 
 bool CStormnodePayments::GetBlockPayee(int nBlockHeight, CScript& payee)
 {
-    if(!mapStormnodeBlocks.count(nBlockHeight)){
+    if(mapStormnodeBlocks.count(nBlockHeight)){
         return mapStormnodeBlocks[nBlockHeight].GetPayee(payee);
     }
 
@@ -167,9 +167,11 @@ bool CStormnodePayments::IsScheduled(CStormnode& sn)
     CScript payee;
     for(int64_t h = pindexPrev->nHeight; h <= pindexPrev->nHeight+10; h++){
         if(mapStormnodeBlocks.count(h)){
-            mapStormnodeBlocks[h].GetPayee(payee);
-            if(payee != CScript() && snpayee == payee) return true;
-            if(sn.donationAddress != CScript() && sn.donationAddress == payee) return true;
+            if(mapStormnodeBlocks[h].GetPayee(payee)){
+                if(snpayee == payee || sn.donationAddress == payee) {
+                    return true;
+                }
+            }
         }
     }
 
@@ -190,7 +192,7 @@ bool CStormnodePayments::AddWinningStormnode(CStormnodePaymentWinner& winnerIn)
     mapStormnodePayeeVotes[winnerIn.GetHash()] = winnerIn;
 
     if(!mapStormnodeBlocks.count(winnerIn.nBlockHeight)){
-       CStormnodeBlockPayees blockPayees;
+       CStormnodeBlockPayees blockPayees(winnerIn.nBlockHeight);
        mapStormnodeBlocks[winnerIn.nBlockHeight] = blockPayees;
     }
 
@@ -257,9 +259,9 @@ std::string CStormnodeBlockPayees::GetRequiredPaymentsString()
         CDarkSilkAddress address2(address1);
 
         if(ret != "Unknown"){
-            ret += ", " + address2.ToString() + ":" + boost::lexical_cast<std::string>(payee.nValue);
-        } else {
-            ret = address2.ToString() + ":" + boost::lexical_cast<std::string>(payee.nValue);
+            ret += ", " + address2.ToString() + ":" + boost::lexical_cast<std::string>(payee.nValue) + ":" + boost::lexical_cast<std::string>(payee.nVotes);
+        } else {            
+            ret = address2.ToString() + ":" + boost::lexical_cast<std::string>(payee.nValue) + ":" + boost::lexical_cast<std::string>(payee.nVotes);
         }
     }
     return ret;

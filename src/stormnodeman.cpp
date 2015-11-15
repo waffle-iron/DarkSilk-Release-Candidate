@@ -325,6 +325,20 @@ void CStormnodeMan::SsegUpdate(CNode* pnode)
     mWeAskedForStormnodeList[pnode->addr] = askAgain;
 }
 
+CStormnode *CStormnodeMan::Find(const CScript &payee)
+{
+    LOCK(cs);
+    CScript payee2;
+
+    BOOST_FOREACH(CStormnode& sn, vStormnodes)
+    {
+        payee2 = GetScriptForDestination(sn.pubkey.GetID());
+        if(payee2 == payee)
+            return &sn;
+    }
+    return NULL;
+}
+
 CStormnode *CStormnodeMan::Find(const CTxIn &vin)
 {
     LOCK(cs);
@@ -350,7 +364,7 @@ CStormnode *CStormnodeMan::Find(const CPubKey &pubKeyStormnode)
 }
 
 
-CStormnode* CMasternodeMan::GetNextMasternodeInQueueForPayment()
+CStormnode* CStormnodeMan::GetNextStormnodeInQueueForPayment()
 {
     LOCK(cs);
 
@@ -588,7 +602,7 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
             snb.nLastPaid = GetAdjustedTime();
         }
 
-        if(mnb.CheckInputsAndAdd(nDoS, fRequested)) {
+        if(snb.CheckInputsAndAdd(nDoS, fRequested)) {
 
             // use this as a peer
             addrman.Add(CAddress(snb.addr), pfrom->addr, 2*60*60); 

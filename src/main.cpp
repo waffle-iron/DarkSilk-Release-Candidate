@@ -2927,9 +2927,9 @@ bool ProcessBlock(CNode* pfrom, CBlock* pblock)
 
             CScript payee;
             CTxIn vin;
-            if(stormnodePayments.GetBlockPayee(pindexBest->nHeight, payee)){
+            if(stormnodePayments.GetBlockPayee(pindexBest->nHeight+1, payee)){
                 //UPDATE STORMNODE LAST PAID TIME
-                CStormnode* psn = snodeman.Find(vin);
+                CStormnode* psn = snodeman.Find(payee);
                 if(psn != NULL) {
                     psn->nLastPaid = GetAdjustedTime();
                 }

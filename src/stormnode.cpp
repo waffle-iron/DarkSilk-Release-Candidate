@@ -89,8 +89,7 @@ CStormnode::CStormnode()
     nScanningErrorCount = 0;
     nLastScanningErrorBlockHeight = 0;
     nVotedTimes = 0;    
-    //mark last paid as current for new entries
-    nLastPaid = GetAdjustedTime();
+    nLastPaid = 0;
 }
 
 CStormnode::CStormnode(const CStormnode& other)
@@ -141,7 +140,7 @@ CStormnode::CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::v
     donationPercentage = newDonationPercentage;
     nScanningErrorCount = 0;
     nLastScanningErrorBlockHeight = 0;    
-    nLastPaid = GetAdjustedTime();
+    nLastPaid = 0;
     nVotedTimes = 0;    
 }
 
@@ -288,7 +287,7 @@ CStormnodeBroadcast::CStormnodeBroadcast()
     nLastScanningErrorBlockHeight = 0;
 
     //mark last paid as current for new entries
-    nLastPaid = GetAdjustedTime();
+    nLastPaid = 0;
 }
 
 CStormnodeBroadcast::CStormnodeBroadcast(CService newAddr, CTxIn newVin, CPubKey newPubkey, CPubKey newPubkey2, int protocolVersionIn, CScript newDonationAddress, int newDonationPercentage)
@@ -312,7 +311,7 @@ CStormnodeBroadcast::CStormnodeBroadcast(CService newAddr, CTxIn newVin, CPubKey
     donationPercentage = newDonationPercentage;
     nScanningErrorCount = 0;
     nLastScanningErrorBlockHeight = 0;
-    nLastPaid = GetAdjustedTime();  
+    nLastPaid = 0;  
 }
 
 CStormnodeBroadcast::CStormnodeBroadcast(const CStormnode& other)
