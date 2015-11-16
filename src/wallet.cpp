@@ -3538,9 +3538,6 @@ uint64_t CWallet::GetStakeWeight() const
         CTxIndex txindex;
         if (pcoin.first->GetDepthInMainChain() >= nStakeMinConfirmations)
                 nWeight += pcoin.first->vout[pcoin.second].nValue;
-
-         if (nCurrentTime - pcoin.first->nTime > nStakeMinAge)
-                nWeight += pcoin.first->vout[pcoin.second].nValue;
     }
 
     return nWeight;
