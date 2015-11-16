@@ -408,12 +408,12 @@ vector<COutput> CActiveStormnode::SelectCoinsStormnode()
     vector<COutput> filteredCoins;
 
     // Retrieve all possible outputs
-    pwalletMain->AvailableCoins(vCoins);
+    pwalletMain->AvailableCoinsSN(vCoins);
 
     // Filter
     BOOST_FOREACH(const COutput& out, vCoins)
     {
-        if(out.tx->vout[out.i].nValue == 42000*COIN) { //exactly
+        if(out.tx->vout[out.i].nValue == STORMNODE_COLLATERAL*COIN) { //exactly
         	filteredCoins.push_back(out);
         }
     }
@@ -430,7 +430,7 @@ vector<COutput> CActiveStormnode::SelectCoinsStormnodeForPubKey(std::string coll
     vector<COutput> filteredCoins;
 
     // Retrieve all possible outputs
-    pwalletMain->AvailableCoins(vCoins);
+    pwalletMain->AvailableCoinsSN(vCoins);
 
     // Filter
     BOOST_FOREACH(const COutput& out, vCoins)

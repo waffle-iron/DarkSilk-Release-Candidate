@@ -1606,7 +1606,7 @@ void CWallet::AvailableCoinsSN(vector<COutput>& vCoins, bool fOnlyConfirmed, con
             if(pcoin->IsCoinStake() && pcoin->GetBlocksToMaturity() > 0)
                 continue;
 
-            int nDepth = pcoin->GetDepthInMainChain(false);
+            int nDepth = pcoin->GetDepthInMainChain();
             if (nDepth <= 0) // TXNOTE: coincontrol fix / ignore 0 confirm
                 continue;
 
