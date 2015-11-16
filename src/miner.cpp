@@ -8,11 +8,13 @@
 #include "primitives/block.h"
 #include "primitives/transaction.h"
 #include "txdb.h"
+#include "main.h"
 #include "miner.h"
 #include "kernel.h"
 #include "wallet.h"
 #include "stormnodeman.h"
 #include "stormnode-payments.h"
+#include "spork.h"
 
 
 using namespace std;
@@ -175,6 +177,53 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
         LOCK2(cs_main, mempool.cs);
         CTxDB txdb("r");
 //>DRKSLK<
+// Stormnode Payments
+    int payments = 1;
+    // start stormnode payments
+    bool bStormNodePayment = false;
+
+    if ( Params().NetworkID() == CChainParams::TESTNET ){
+        if (pindexBest->nHeight+1 >= TESTNET_STORMNODE_PAYMENT_START) {
+            bStormNodePayment = true;
+        }
+    }
+    else
+    {   if ( Params().NetworkID() == CChainParams::MAIN ){
+            if (pindexBest->nHeight+1 >= STORMNODE_PAYMENT_START){
+                bStormNodePayment = true;
+            }
+        }
+    }
+
+    CScript payee;
+    bool hasPayment = true;
+    if(bStormNodePayment) {
+        //spork
+        if(!stormnodePayments.GetBlockPayee(pindexPrev->nHeight+1, payee)){
+            CStormnode* winningNode = snodeman.GetCurrentStormNode(1);
+            if(winningNode){
+                payee = GetScriptForDestination(winningNode->pubkey.GetID());
+            } else {
+                LogPrintf("CreateCoinStake: Failed to detect stormnode to pay\n");
+                hasPayment = false;
+            }
+        }
+    }
+
+    if(hasPayment){
+        payments = txNew.vout.size() + 1;
+        txNew.vout.resize(payments);
+
+        txNew.vout[payments-1].scriptPubKey = payee;
+        txNew.vout[payments-1].nValue = 0;
+
+        CTxDestination address1;
+        ExtractDestination(payee, address1);
+        CDarkSilkAddress address2(address1);
+
+        LogPrintf("Stormnode payment to %s\n", address2.ToString().c_str());
+    }
+
         // Priority order to process transactions
         list<COrphan> vOrphan; // list memory doesn't move
         map<uint256, vector<COrphan*> > mapDependers;
