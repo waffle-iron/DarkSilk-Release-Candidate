@@ -420,7 +420,7 @@ bool CStormnodeBroadcast::CheckInputsAndAdd(int& nDoS, bool fRequested)
 {
     CValidationState state;
     CMutableTransaction tx = CMutableTransaction();
-    CTxOut vout = CTxOut(41999.99*COIN, sandStormPool.collateralPubKey);
+    CTxOut vout = CTxOut(42000*COIN, sandStormPool.collateralPubKey);
     tx.vin.push_back(vin);
     tx.vout.push_back(vout);
     //if(AcceptableInputs(mempool, state, CTransaction(tx), false, NULL)){

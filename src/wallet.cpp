@@ -1606,7 +1606,7 @@ void CWallet::AvailableCoinsSN(vector<COutput>& vCoins, bool fOnlyConfirmed, con
             if(pcoin->IsCoinStake() && pcoin->GetBlocksToMaturity() > 0)
                 continue;
 
-            int nDepth = pcoin->GetDepthInMainChain();
+            int nDepth = pcoin->GetDepthInMainChain(false);
             if (nDepth <= 0) // TXNOTE: coincontrol fix / ignore 0 confirm
                 continue;
 
@@ -3529,7 +3529,6 @@ uint64_t CWallet::GetStakeWeight() const
 
     uint64_t nWeight = 0;
 
-    int64_t nCurrentTime = GetTime();
     CTxDB txdb("r");
 
     LOCK2(cs_main, cs_wallet);
@@ -3537,9 +3536,6 @@ uint64_t CWallet::GetStakeWeight() const
     {
         CTxIndex txindex;
         if (pcoin.first->GetDepthInMainChain() >= nStakeMinConfirmations)
-                nWeight += pcoin.first->vout[pcoin.second].nValue;
-
-         if (nCurrentTime - pcoin.first->nTime > nStakeMinAge)
                 nWeight += pcoin.first->vout[pcoin.second].nValue;
     }
 
@@ -3717,13 +3713,6 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
 
     // Successfully generated coinstake
     return true;
-}
-
-int64_t GetStormnodePayment(int nHeight, int64_t blockValue)
-{
-    int64_t ret = blockValue * 2/3; //67%
-
-    return ret;
 }
 
 // Call after CreateTransaction unless you want to abort

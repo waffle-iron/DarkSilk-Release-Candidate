@@ -197,18 +197,17 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
 
     CScript payee;
     bool hasPayment = true;
-    if(bStormNodePayment) {
+    if(bStormNodePayment) {        
         //spork
         if(!stormnodePayments.GetBlockPayee(pindexPrev->nHeight+1, payee)){
             CStormnode* winningNode = snodeman.GetCurrentStormNode(1);
             if(winningNode){
                 payee = GetScriptForDestination(winningNode->pubkey.GetID());
             } else {
-                LogPrintf("CreateCoinStake: Failed to detect stormnode to pay\n");
+                LogPrintf("CreateNewBlock: Failed to detect stormnode to pay\n");
                 hasPayment = false;
             }
         }
-    }
 
     if(hasPayment){
         payments = txNew.vout.size() + 1;
@@ -222,8 +221,8 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
         CDarkSilkAddress address2(address1);
 
         LogPrintf("Stormnode payment to %s\n", address2.ToString().c_str());
+        }
     }
-
         // Priority order to process transactions
         list<COrphan> vOrphan; // list memory doesn't move
         map<uint256, vector<COrphan*> > mapDependers;
@@ -403,10 +402,44 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
 
         nLastBlockTx = nBlockTx;
         nLastBlockSize = nBlockSize;
+        CAmount blockValue = GetBlockValue(pindexPrev->nBits, pindexPrev->nHeight, nFees);
+        CAmount stormnodePayment = GetStormnodePayment(pindexPrev->nHeight+1, blockValue);
+
+
+        //create stormnode payment
+        if(payments > 1){
+            txNew.vout[payments-1].nValue = stormnodePayment;
+            blockValue -= stormnodePayment;
+        }
+        txNew.vout[0].nValue = blockValue;
 
         if (fDebug && GetBoolArg("-printpriority", false))
             LogPrintf("CreateNewBlock(): total size %u, height: %u\n", nBlockSize, nHeight);
+    
+        // Set output amount
+        if (!hasPayment && txNew.vout.size() == 3) // 2 stake outputs, stake was split, no stormnode payment
+        {
+            txNew.vout[1].nValue = (blockValue / 2 / CENT) * CENT;
+            txNew.vout[2].nValue = blockValue - txNew.vout[1].nValue;
+        }
+        else if(hasPayment && txNew.vout.size() == 4) // 2 stake outputs, stake was split, plus a stormnode payment
+        {
+            txNew.vout[payments-1].nValue = stormnodePayment;
+            blockValue -= stormnodePayment;
+            txNew.vout[1].nValue = (blockValue / 2 / CENT) * CENT;
+            txNew.vout[2].nValue = blockValue - txNew.vout[1].nValue;
+        }
+        else if(!hasPayment && txNew.vout.size() == 2) // only 1 stake output, was not split, no stormnode payment
+            txNew.vout[1].nValue = blockValue;
+        else if(hasPayment && txNew.vout.size() == 3) // only 1 stake output, was not split, plus a stormnode payment
+        {
+            txNew.vout[payments-1].nValue = stormnodePayment;
+            blockValue -= stormnodePayment;
+            txNew.vout[1].nValue = blockValue;
+        }
+
 // >DRKSLK<
+
         if (!fProofOfStake)
             pblock->vtx[0].vout[0].nValue = GetProofOfWorkReward(nFees);
 

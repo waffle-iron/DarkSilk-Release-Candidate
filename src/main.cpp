@@ -1555,6 +1555,13 @@ int64_t GetBlockValue(int nBits, int nHeight, const CAmount& nFees)
     return nSubsidy + nFees;
 }
 
+int64_t GetStormnodePayment(int nHeight, int64_t blockValue)
+{
+    int64_t ret = blockValue * 2/3; //67%
+
+    return ret;
+}
+
 bool IsInitialBlockDownload()
 {
     LOCK(cs_main);
