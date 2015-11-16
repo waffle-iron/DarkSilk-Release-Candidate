@@ -178,8 +178,8 @@ void ThreadStakeMiner(CWallet *pwallet);
 
 /** (try to) add transaction to memory pool **/
 bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree, bool* pfMissingInputs, bool ignoreFees=false);
-double ConvertBitsToDouble(unsigned int nBits);
 bool AcceptableInputs(CTxMemPool& pool, CTransaction &txo, bool fLimitFree, bool ignoreFees=true);
+double ConvertBitsToDouble(unsigned int nBits);
 CAmount GetBlockValue(int nBits, int nHeight, const CAmount& nFees);
 
 

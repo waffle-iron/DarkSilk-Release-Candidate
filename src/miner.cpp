@@ -8,11 +8,13 @@
 #include "primitives/block.h"
 #include "primitives/transaction.h"
 #include "txdb.h"
+#include "main.h"
 #include "miner.h"
 #include "kernel.h"
 #include "wallet.h"
 #include "stormnodeman.h"
 #include "stormnode-payments.h"
+#include "spork.h"
 
 
 using namespace std;
@@ -175,6 +177,52 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
         LOCK2(cs_main, mempool.cs);
         CTxDB txdb("r");
 //>DRKSLK<
+// Stormnode Payments
+    int payments = 1;
+    // start stormnode payments
+    bool bStormNodePayment = false;
+
+    if ( Params().NetworkID() == CChainParams::TESTNET ){
+        if (pindexBest->nHeight+1 >= TESTNET_STORMNODE_PAYMENT_START) {
+            bStormNodePayment = true;
+        }
+    }
+    else
+    {   if ( Params().NetworkID() == CChainParams::MAIN ){
+            if (pindexBest->nHeight+1 >= STORMNODE_PAYMENT_START){
+                bStormNodePayment = true;
+            }
+        }
+    }
+
+    CScript payee;
+    bool hasPayment = true;
+    if(bStormNodePayment) {        
+        //spork
+        if(!stormnodePayments.GetBlockPayee(pindexPrev->nHeight+1, payee)){
+            CStormnode* winningNode = snodeman.GetCurrentStormNode(1);
+            if(winningNode){
+                payee = GetScriptForDestination(winningNode->pubkey.GetID());
+            } else {
+                LogPrintf("CreateNewBlock: Failed to detect stormnode to pay\n");
+                hasPayment = false;
+            }
+        }
+
+    if(hasPayment){
+        payments = txNew.vout.size() + 1;
+        txNew.vout.resize(payments);
+
+        txNew.vout[payments-1].scriptPubKey = payee;
+        txNew.vout[payments-1].nValue = 0;
+
+        CTxDestination address1;
+        ExtractDestination(payee, address1);
+        CDarkSilkAddress address2(address1);
+
+        LogPrintf("Stormnode payment to %s\n", address2.ToString().c_str());
+        }
+    }
         // Priority order to process transactions
         list<COrphan> vOrphan; // list memory doesn't move
         map<uint256, vector<COrphan*> > mapDependers;
@@ -354,10 +402,43 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
 
         nLastBlockTx = nBlockTx;
         nLastBlockSize = nBlockSize;
+        CAmount blockValue = GetBlockValue(pindexPrev->nBits, pindexPrev->nHeight, nFees);
+        CAmount stormnodePayment = GetStormnodePayment(pindexPrev->nHeight+1, blockValue);
+
+
+        //create stormnode payment
+        if(payments > 1){
+            txNew.vout[payments-1].nValue = stormnodePayment;
+            blockValue -= stormnodePayment;
+        }
+        txNew.vout[0].nValue = blockValue;
 
         if (fDebug && GetBoolArg("-printpriority", false))
             LogPrintf("CreateNewBlock(): total size %u, height: %u\n", nBlockSize, nHeight);
 // >DRKSLK<
+
+    // Set output amount
+    if (!hasPayment && txNew.vout.size() == 3) // 2 stake outputs, stake was split, no stormnode payment
+    {
+        txNew.vout[1].nValue = (blockValue / 2 / CENT) * CENT;
+        txNew.vout[2].nValue = blockValue - txNew.vout[1].nValue;
+    }
+    else if(hasPayment && txNew.vout.size() == 4) // 2 stake outputs, stake was split, plus a stormnode payment
+    {
+        txNew.vout[payments-1].nValue = stormnodePayment;
+        blockValue -= stormnodePayment;
+        txNew.vout[1].nValue = (blockValue / 2 / CENT) * CENT;
+        txNew.vout[2].nValue = blockValue - txNew.vout[1].nValue;
+    }
+    else if(!hasPayment && txNew.vout.size() == 2) // only 1 stake output, was not split, no stormnode payment
+        txNew.vout[1].nValue = blockValue;
+    else if(hasPayment && txNew.vout.size() == 3) // only 1 stake output, was not split, plus a stormnode payment
+    {
+        txNew.vout[payments-1].nValue = stormnodePayment;
+        blockValue -= stormnodePayment;
+        txNew.vout[1].nValue = blockValue;
+    }
+
         if (!fProofOfStake)
             pblock->vtx[0].vout[0].nValue = GetProofOfWorkReward(nFees);
 
