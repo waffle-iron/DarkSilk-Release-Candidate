@@ -749,6 +749,7 @@ public:
     std::vector<unsigned char> vchBlockSig;
 
     // memory only
+    mutable CScript payee;
     mutable std::vector<uint256> vMerkleTree;
 
     // Denial-of-service detection:

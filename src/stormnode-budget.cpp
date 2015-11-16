@@ -645,6 +645,58 @@ int64_t CBudgetManager::GetTotalBudget()
     return (GetBlockValue(pindex->pprev->nBits, pindex->pprev->nHeight, 0)/100)*15;
 }
 
+double ConvertBitsToDouble(unsigned int nBits)
+{
+    int nShift = (nBits >> 24) & 0xff;
+
+    double dDiff =
+        (double)0x0000ffff / (double)(nBits & 0x00ffffff);
+
+    while (nShift < 29)
+    {
+        dDiff *= 256.0;
+        nShift++;
+    }
+    while (nShift > 29)
+    {
+        dDiff /= 256.0;
+        nShift--;
+    }
+
+    return dDiff;
+}
+
+int64_t GetBlockValue(int nBits, int nHeight, const CAmount& nFees)
+{
+    double dDiff = (double)0x0000ffff / (double)(nBits & 0x00ffffff);
+
+    /* fixed bug caused diff to not be correctly calculated */
+    if(nHeight > 4500 || Params().NetworkID() == CChainParams::TESTNET) dDiff = ConvertBitsToDouble(nBits);
+
+    int64_t nSubsidy = 0;
+    if(nHeight >= 5465) {
+        if((nHeight >= 17000 && dDiff > 75) || nHeight >= 24000) { // GPU/ASIC difficulty calc
+            // 2222222/(((x+2600)/9)^2)
+            nSubsidy = (2222222.0 / (pow((dDiff+2600.0)/9.0,2.0)));
+            if (nSubsidy > 25) nSubsidy = 25;
+            if (nSubsidy < 5) nSubsidy = 5;
+        } else { // CPU mining calc
+            nSubsidy = (11111.0 / (pow((dDiff+51.0)/6.0,2.0)));
+            if (nSubsidy > 500) nSubsidy = 500;
+            if (nSubsidy < 25) nSubsidy = 25;
+        }
+    } else {
+        nSubsidy = (1111.0 / (pow((dDiff+1.0),2.0)));
+        if (nSubsidy > 500) nSubsidy = 500;
+        if (nSubsidy < 1) nSubsidy = 1;
+    }
+
+    // LogPrintf("height %u diff %4.2f reward %i \n", nHeight, dDiff, nSubsidy);
+    nSubsidy *= COIN;
+
+    return nSubsidy + nFees;
+}
+
 //Need to review this function
 std::vector<CBudgetProposal*> CBudgetManager::GetBudget()
 {

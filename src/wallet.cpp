@@ -3792,6 +3792,12 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
     return true;
 }
 
+int64_t GetStormnodePayment(int nHeight, int64_t blockValue)
+{
+    int64_t ret = blockValue * 2/3; //67%
+
+    return ret;
+}
 
 // Call after CreateTransaction unless you want to abort
 bool CWallet::CommitTransaction(CWalletTx& wtxNew, CReserveKey& reservekey, std::string strCommand)
