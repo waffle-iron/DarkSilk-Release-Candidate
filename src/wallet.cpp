@@ -3702,79 +3702,6 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
         nCredit += nReward;
     }
 
-    // Stormnode Payments
-    int payments = 1;
-    // start stormnode payments
-    bool bStormNodePayment = false;
-
-    if ( Params().NetworkID() == CChainParams::TESTNET ){
-        if (pindexBest->nHeight+1 >= TESTNET_STORMNODE_PAYMENT_START) {
-            bStormNodePayment = true;
-        }
-    }
-    else
-    {   if ( Params().NetworkID() == CChainParams::MAIN ){
-            if (pindexBest->nHeight+1 >= STORMNODE_PAYMENT_START){
-                bStormNodePayment = true;
-            }
-        }
-    }
-
-    CScript payee;
-    bool hasPayment = true;
-    if(bStormNodePayment) {
-        //spork
-        if(!stormnodePayments.GetBlockPayee(pindexPrev->nHeight+1, payee)){
-            CStormnode* winningNode = snodeman.GetCurrentStormNode(1);
-            if(winningNode){
-                payee = GetScriptForDestination(winningNode->pubkey.GetID());
-            } else {
-                LogPrintf("CreateCoinStake: Failed to detect stormnode to pay\n");
-                hasPayment = false;
-            }
-        }
-    }
-
-    if(hasPayment){
-        payments = txNew.vout.size() + 1;
-        txNew.vout.resize(payments);
-
-        txNew.vout[payments-1].scriptPubKey = payee;
-        txNew.vout[payments-1].nValue = 0;
-
-        CTxDestination address1;
-        ExtractDestination(payee, address1);
-        CDarkSilkAddress address2(address1);
-
-        LogPrintf("Stormnode payment to %s\n", address2.ToString().c_str());
-    }
-
-    int64_t blockValue = nCredit;
-    int64_t stormnodePayment = GetStormnodePayment(pindexPrev->nHeight+1, nReward);
-
-
-    // Set output amount
-    if (!hasPayment && txNew.vout.size() == 3) // 2 stake outputs, stake was split, no stormnode payment
-    {
-        txNew.vout[1].nValue = (blockValue / 2 / CENT) * CENT;
-        txNew.vout[2].nValue = blockValue - txNew.vout[1].nValue;
-    }
-    else if(hasPayment && txNew.vout.size() == 4) // 2 stake outputs, stake was split, plus a stormnode payment
-    {
-        txNew.vout[payments-1].nValue = stormnodePayment;
-        blockValue -= stormnodePayment;
-        txNew.vout[1].nValue = (blockValue / 2 / CENT) * CENT;
-        txNew.vout[2].nValue = blockValue - txNew.vout[1].nValue;
-    }
-    else if(!hasPayment && txNew.vout.size() == 2) // only 1 stake output, was not split, no stormnode payment
-        txNew.vout[1].nValue = blockValue;
-    else if(hasPayment && txNew.vout.size() == 3) // only 1 stake output, was not split, plus a stormnode payment
-    {
-        txNew.vout[payments-1].nValue = stormnodePayment;
-        blockValue -= stormnodePayment;
-        txNew.vout[1].nValue = blockValue;
-    }
-
     // Sign
     int nIn = 0;
     BOOST_FOREACH(const CWalletTx* pcoin, vwtxPrev)
@@ -3790,13 +3717,6 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
 
     // Successfully generated coinstake
     return true;
-}
-
-int64_t GetStormnodePayment(int nHeight, int64_t blockValue)
-{
-    int64_t ret = blockValue * 2/3; //67%
-
-    return ret;
 }
 
 // Call after CreateTransaction unless you want to abort
