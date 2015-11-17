@@ -3462,7 +3462,6 @@ uint64_t CWallet::GetStakeWeight() const
 
     uint64_t nWeight = 0;
 
-    int64_t nCurrentTime = GetTime();
     CTxDB txdb("r");
 
     LOCK2(cs_main, cs_wallet);
@@ -3629,6 +3628,37 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
             return false;
 
         nCredit += nReward;
+    }
+
+    if (nCredit >= GetStakeSplitThreshold())
+    txNew.vout.push_back(CTxOut(0, txNew.vout[1].scriptPubKey)); //split stake
+    
+    CScript payee;
+    int payments = 1;
+    bool hasPayment = true;
+    CAmount blockValue = GetBlockValue(pindexPrev->nBits, pindexPrev->nHeight, nFees);
+    CAmount stormnodePayment = GetStormnodePayment(pindexPrev->nHeight+1, blockValue);
+
+    // Set output amount
+    if (!hasPayment && txNew.vout.size() == 3) // 2 stake outputs, stake was split, no stormnode payment
+    {
+        txNew.vout[1].nValue = (blockValue / 2 / CENT) * CENT;
+        txNew.vout[2].nValue = blockValue - txNew.vout[1].nValue;
+    }
+    else if(hasPayment && txNew.vout.size() == 4) // 2 stake outputs, stake was split, plus a stormnode payment
+    {
+        txNew.vout[payments-1].nValue = stormnodePayment;
+        blockValue -= stormnodePayment;
+        txNew.vout[1].nValue = (blockValue / 2 / CENT) * CENT;
+        txNew.vout[2].nValue = blockValue - txNew.vout[1].nValue;
+    }
+    else if(!hasPayment && txNew.vout.size() == 2) // only 1 stake output, was not split, no stormnode payment
+        txNew.vout[1].nValue = blockValue;
+    else if(hasPayment && txNew.vout.size() == 3) // only 1 stake output, was not split, plus a stormnode payment
+    {
+        txNew.vout[payments-1].nValue = stormnodePayment;
+        blockValue -= stormnodePayment;
+        txNew.vout[1].nValue = blockValue;
     }
 
     // Sign

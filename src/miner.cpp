@@ -16,7 +16,6 @@
 #include "stormnode-payments.h"
 #include "spork.h"
 
-
 using namespace std;
 
 //////////////////////////////////////////////////////////////////////////////
@@ -177,7 +176,7 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
         LOCK2(cs_main, mempool.cs);
         CTxDB txdb("r");
 //>DRKSLK<
-// Stormnode Payments
+    // Stormnode Payments
     int payments = 1;
     // start stormnode payments
     bool bStormNodePayment = false;
@@ -223,6 +222,7 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
         LogPrintf("Stormnode payment to %s\n", address2.ToString().c_str());
         }
     }
+    
         // Priority order to process transactions
         list<COrphan> vOrphan; // list memory doesn't move
         map<uint256, vector<COrphan*> > mapDependers;
@@ -400,11 +400,15 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
             }
         }
 
+
         nLastBlockTx = nBlockTx;
         nLastBlockSize = nBlockSize;
+
+
+// >DRKSLK<
+
         CAmount blockValue = GetBlockValue(pindexPrev->nBits, pindexPrev->nHeight, nFees);
         CAmount stormnodePayment = GetStormnodePayment(pindexPrev->nHeight+1, blockValue);
-
 
         //create stormnode payment
         if(payments > 1){
@@ -415,30 +419,6 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
 
         if (fDebug && GetBoolArg("-printpriority", false))
             LogPrintf("CreateNewBlock(): total size %u, height: %u\n", nBlockSize, nHeight);
-    
-        // Set output amount
-        if (!hasPayment && txNew.vout.size() == 3) // 2 stake outputs, stake was split, no stormnode payment
-        {
-            txNew.vout[1].nValue = (blockValue / 2 / CENT) * CENT;
-            txNew.vout[2].nValue = blockValue - txNew.vout[1].nValue;
-        }
-        else if(hasPayment && txNew.vout.size() == 4) // 2 stake outputs, stake was split, plus a stormnode payment
-        {
-            txNew.vout[payments-1].nValue = stormnodePayment;
-            blockValue -= stormnodePayment;
-            txNew.vout[1].nValue = (blockValue / 2 / CENT) * CENT;
-            txNew.vout[2].nValue = blockValue - txNew.vout[1].nValue;
-        }
-        else if(!hasPayment && txNew.vout.size() == 2) // only 1 stake output, was not split, no stormnode payment
-            txNew.vout[1].nValue = blockValue;
-        else if(hasPayment && txNew.vout.size() == 3) // only 1 stake output, was not split, plus a stormnode payment
-        {
-            txNew.vout[payments-1].nValue = stormnodePayment;
-            blockValue -= stormnodePayment;
-            txNew.vout[1].nValue = blockValue;
-        }
-
-// >DRKSLK<
 
         if (!fProofOfStake)
             pblock->vtx[0].vout[0].nValue = GetProofOfWorkReward(nFees);
@@ -470,7 +450,6 @@ void IncrementExtraNonce(CBlock* pblock, CBlockIndex* pindexPrev, unsigned int& 
     ++nExtraNonce;
 
     unsigned int nHeight = pindexPrev->nHeight+1; // Height first in coinbase required for block.version=2
-    CMutableTransaction txCoinbase(pblock->vtx[0]);
     pblock->vtx[0].vin[0].scriptSig = (CScript() << nHeight << CBigNum(nExtraNonce)) + COINBASE_FLAGS;
     assert(pblock->vtx[0].vin[0].scriptSig.size() <= 100);
 

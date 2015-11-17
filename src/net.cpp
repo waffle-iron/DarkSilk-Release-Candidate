@@ -43,12 +43,6 @@ static const int MAX_OUTBOUND_CONNECTIONS = 32;
 
 bool OpenNetworkConnection(const CAddress& addrConnect, CSemaphoreGrant *grantOutbound = NULL, const char *strDest = NULL, bool fOneShot = false);
 
-
-struct LocalServiceInfo {
-    int nScore;
-    int nPort;
-};
-
 //
 // Global state variables
 //
@@ -58,8 +52,8 @@ uint64_t nLocalServices = NODE_I2P | NODE_NETWORK | NODE_MARKET;
 #else
 uint64_t nLocalServices = NODE_NETWORK | NODE_MARKET;
 #endif
-static CCriticalSection cs_mapLocalHost;
-static map<CNetAddr, LocalServiceInfo> mapLocalHost;
+CCriticalSection cs_mapLocalHost;
+map<CNetAddr, LocalServiceInfo> mapLocalHost;
 static bool vfReachable[NET_MAX] = {};
 static bool vfLimited[NET_MAX] = {};
 static CNode* pnodeLocalHost = NULL;
@@ -321,12 +315,18 @@ bool IsLocal(const CService& addr)
     return mapLocalHost.count(addr) > 0;
 }
 
+/** check whether a given network is one we can probably connect to */
+bool IsReachable(enum Network net)
+{
+    LOCK(cs_mapLocalHost);
+    return vfReachable[net] && !vfLimited[net];
+}
+
 /** check whether a given address is in a network we can probably connect to */
 bool IsReachable(const CNetAddr& addr)
 {
-    LOCK(cs_mapLocalHost);
     enum Network net = addr.GetNetwork();
-    return vfReachable[net] && !vfLimited[net];
+    return IsReachable(net);
 }
 
 void AddressCurrentlyConnected(const CService& addr)

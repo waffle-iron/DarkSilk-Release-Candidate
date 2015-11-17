@@ -43,6 +43,17 @@ enum Network ParseNetwork(std::string net) {
     return NET_UNROUTABLE;
 }
 
+std::string GetNetworkName(enum Network net) {
+    switch(net)
+    {
+    case NET_IPV4: return "ipv4";
+    case NET_IPV6: return "ipv6";
+    case NET_TOR: return "onion";
+    case NET_I2P: return "i2p";
+    default: return "";
+    }
+}
+
 void SplitHostPort(std::string in, int &portOut, std::string &hostOut) {
     size_t colon = in.find_last_of(':');
     // if a : is found, and it either follows a [...], or no other : is in the string, treat it as port separator

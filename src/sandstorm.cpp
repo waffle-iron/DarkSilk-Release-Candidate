@@ -478,8 +478,6 @@ int GetInputSandstormRounds(CTxIn in, int rounds)
 
 void CSandstormPool::Reset(){
     cachedLastSuccess = 0;
-    lastNewBlock = 0;
-    txCollateral = CMutableTransaction();
     vecStormnodesUsed.clear();
     UnlockCoins();
     SetNull();
@@ -498,11 +496,13 @@ void CSandstormPool::SetNull(bool clearEverything){
     entriesCount = 0;
     lastEntryAccepted = 0;
     countEntriesAccepted = 0;
+    lastNewBlock = 0;
 
     sessionUsers = 0;
     sessionDenom = 0;
     sessionFoundStormnode = false;
     vecSessionCollateral.clear();
+    txCollateral = CMutableTransaction();
 
     if(clearEverything){
         myEntries.clear();
@@ -1510,6 +1510,8 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
         if(!fDryRun) MakeCollateralAmounts();
         return true;
     }
+
+    if(fDryRun) return true;
 
     std::vector<CTxOut> vOut;
 

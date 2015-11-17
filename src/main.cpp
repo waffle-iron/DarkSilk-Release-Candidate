@@ -47,10 +47,11 @@ CTxMemPool mempool;
 map<uint256, CBlockIndex*> mapBlockIndex;
 set<pair<COutPoint, unsigned int> > setStakeSeen;
 
-unsigned int nStakeMinAge = 4 * 60 * 60; // 4 hours
+//TODO(AA)
+unsigned int nStakeMinAge = 1 * 60; // 4 hours
 unsigned int nModifierInterval = 10 * 60; // 10 minutes to elapse before new modifier is computed
-int nStakeMinConfirmations = 420; // 420 confirmations before coins can be staked
-int nCoinbaseMaturity = 42; // 42 blocks until coins are mature
+int nStakeMinConfirmations = 10; // 420 confirmations before coins can be staked
+int nCoinbaseMaturity = 10; // 42 blocks until coins are mature
 
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -991,11 +992,9 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree, boo
     return true;
 }
 
-bool AcceptableInputs(CTxMemPool& pool, CTransaction &txo, bool fLimitFree, bool ignoreFees)
+bool AcceptableInputs(CTxMemPool& pool, CTransaction &tx, bool fLimitFree, bool ignoreFees)
 {
     AssertLockHeld(cs_main);
-
-    CTransaction tx(txo);
 
     if (!tx.CheckTransaction())
         return error("AcceptableInputs : CheckTransaction failed");
@@ -1557,7 +1556,7 @@ int64_t GetBlockValue(int nBits, int nHeight, const CAmount& nFees)
 
 int64_t GetStormnodePayment(int nHeight, int64_t blockValue)
 {
-    int64_t ret = blockValue * 2/3; //67%
+    int64_t ret = blockValue * 2/4; //50%
 
     return ret;
 }

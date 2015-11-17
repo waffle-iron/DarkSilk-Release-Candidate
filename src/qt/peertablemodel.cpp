@@ -111,7 +111,7 @@ public:
     }
 };
 
-/*static void CopyNodeStats(std::vector<CNodeStats>& vstats)
+static void CopyNodeStats(std::vector<CNodeStats>& vstats)
 {
     vstats.clear();
 
@@ -122,7 +122,7 @@ public:
         pnode->copyStats(stats);
         vstats.push_back(stats);
     }
-}*/
+}
 
 PeerTableModel::PeerTableModel(ClientModel *parent) :
     QAbstractTableModel(parent),
