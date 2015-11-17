@@ -305,6 +305,7 @@ public:
     int sessionDenom; //Users must submit an denom matching this
     int sessionUsers; //N Users have said they'll join
     bool sessionFoundStormnode; //If we've found a compatible stormnode
+    int64_t sessionTotalValue; //used for autoDenom
     std::vector<CTransaction> vecSessionCollateral;
 
     int cachedLastSuccess;

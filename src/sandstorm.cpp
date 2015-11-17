@@ -1499,16 +1499,17 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
 
     }
 
-    if(fDryRun) return true;
-
     nOnlyDenominatedBalance = pwalletMain->GetDenominatedBalance(true, false, false);
     nBalanceNeedsDenominated = nBalanceNeedsAnonymized - nOnlyDenominatedBalance;
 
     //check if we have should create more denominated inputs
-    if(nBalanceNeedsDenominated > nOnlyDenominatedBalance) return CreateDenominated(nBalanceNeedsDenominated);
+    if(!fDryRun && nBalanceNeedsDenominated > nOnlyDenominatedBalance) return CreateDenominated(nBalanceNeedsDenominated);
 
-    //check if we have the collateral sized inputs
-    if(!pwalletMain->HasCollateralInputs()) return MakeCollateralAmounts();
+    //check to see if we have the collateral sized inputs, it requires these
+    if(!pwalletMain->HasCollateralInputs()){
+        if(!fDryRun) MakeCollateralAmounts();
+        return true;
+    }
 
     std::vector<CTxOut> vOut;
 
@@ -1517,8 +1518,17 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun, bool ready)
         // Clean if there is anything left from previous session
         UnlockCoins();
         SetNull(true);
+
         int nUseQueue = rand()%100;
         UpdateState(POOL_STATUS_ACCEPTING_ENTRIES);
+
+        sessionTotalValue = pwalletMain->GetTotalValue(vCoins);
+
+        //randomize the amounts we mix
+        if(sessionTotalValue > nBalanceNeedsAnonymized) sessionTotalValue = nBalanceNeedsAnonymized;
+
+        double fDarkSilkSubmitted = (sessionTotalValue / CENT);
+        LogPrintf("Submitting Sandstorm for %f DRKSLK CENT - sessionTotalValue %d\n", fDarkSilkSubmitted, sessionTotalValue);
 
         if(pwalletMain->GetDenominatedBalance(true, true) > 0){ //get denominated unconfirmed inputs
             LogPrintf("DoAutomaticDenominating -- Found unconfirmed denominated outputs, will wait till they confirm to continue.\n");
@@ -1853,7 +1863,7 @@ bool CSandstormPool::CreateDenominated(int64_t nTotalValue)
     else
         LogPrintf("CreateDenominated: CommitTransaction failed!\n");
 
-    LogPrintf("CreateDenominated: tx %s\n", wtx.GetHash().GetHex().c_str());
+    LogPrintf("CreateDenominated Success: tx %s\n", wtx.GetHash().GetHex().c_str());
 
     return true;
 }
@@ -1949,20 +1959,35 @@ void CSandstormPool::GetDenominationsToString(int nDenom, std::string& strDenom)
 
     if(nDenom & (1 << 0)) {
         if(strDenom.size() > 0) strDenom += "+";
-        strDenom += "100";
+        strDenom += "100000";
     }
 
     if(nDenom & (1 << 1)) {
         if(strDenom.size() > 0) strDenom += "+";
-        strDenom += "10";
+        strDenom += "10000";
     }
 
     if(nDenom & (1 << 2)) {
         if(strDenom.size() > 0) strDenom += "+";
-        strDenom += "1";
+        strDenom += "1000";
     }
 
     if(nDenom & (1 << 3)) {
+        if(strDenom.size() > 0) strDenom += "+";
+        strDenom += "100";
+    }
+
+    if(nDenom & (1 << 4)) {
+        if(strDenom.size() > 0) strDenom += "+";
+        strDenom += "10";
+    }
+
+    if(nDenom & (1 << 5)) {
+        if(strDenom.size() > 0) strDenom += "+";
+        strDenom += "1";
+    }
+
+    if(nDenom & (1 << 6)) {
         if(strDenom.size() > 0) strDenom += "+";
         strDenom += "0.1";
     }
@@ -2006,10 +2031,13 @@ int CSandstormPool::GetDenominations(const std::vector<CTxOut>& vout, bool fRand
 
     // Function returns as follows:
     //
-    // bit 0 - 100DRK+1 ( bit on if present )
-    // bit 1 - 10DRK+1
-    // bit 2 - 1DRK+1
-    // bit 3 - .1DRK+1
+    // bit 0 - 100000DRK+1 ( bit on if present )
+    // bit 1 - 10000DRK+1
+    // bit 2 - 1000DRK+1
+    // bit 3 - 100DRK+1
+    // bit 4 - 10DRKSLK+1
+    // bit 5 - 1DRKSLK+1
+    // bit 6 - 0.1DRKSLK+1   
 
     return denom;
 }
@@ -2207,6 +2235,7 @@ bool CSandstormQueue::CheckSignature()
     if(psn != NULL) 
     {
         std::string strMessage = vin.ToString() + boost::lexical_cast<std::string>(nDenom) + boost::lexical_cast<std::string>(time) + boost::lexical_cast<std::string>(ready);
+        
         std::string errorMessage = "";
         if(!sandStormSigner.VerifyMessage(psn->pubkey2, vchSig, strMessage, errorMessage)){
             return error("CSandstormQueue::CheckSignature() - Got bad Stormnode address signature %s \n", vin.ToString().c_str());
@@ -2267,11 +2296,12 @@ void CSandstormPool::RelayCompletedTransaction(const int sessionID, const bool e
 void ThreadCheckSandStormPool()
 {
     if(fLiteMode) return; //disable all Sandstorm/Stormnode related functionality
-    if(IsInitialBlockDownload()) return;
+    
     // Make this thread recognisable as the wallet flushing thread
     RenameThread("DarkSilk-Sandstorm");
 
     unsigned int c = 0;
+    std::string errorMessage;
 
     while (true)
     {

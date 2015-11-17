@@ -420,10 +420,13 @@ void OverviewPage::sandStormStatus()
     int entries = sandStormPool.GetEntriesCount();
     int accepted = sandStormPool.GetLastEntryAccepted();
 
-    /* ** @TODO this string creation really needs some clean ups ---vertoe ** */
+    /* ** @TODO this string creation really needs some clean ups */
     std::ostringstream convert;
-
-    if(state == POOL_STATUS_IDLE) {
+    QString strStatus;
+    
+    if(pindexBest->nHeight - sandStormPool.cachedLastSuccess < sandStormPool.minBlockSpacing) {
+        strStatus = QString(sandStormPool.strAutoDenomResult.c_str());
+    } else if(state == POOL_STATUS_IDLE) {
         convert << tr("Sandstorm is idle.").toStdString();
     } else if(state == POOL_STATUS_ACCEPTING_ENTRIES) {
         if(entries == 0) {
