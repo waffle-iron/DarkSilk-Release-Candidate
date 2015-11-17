@@ -3529,14 +3529,14 @@ uint64_t CWallet::GetStakeWeight() const
 
     uint64_t nWeight = 0;
 
+    int64_t nCurrentTime = GetTime();
     CTxDB txdb("r");
 
     LOCK2(cs_main, cs_wallet);
     BOOST_FOREACH(PAIRTYPE(const CWalletTx*, unsigned int) pcoin, setCoins)
     {
-        CTxIndex txindex;
         if (pcoin.first->GetDepthInMainChain() >= nStakeMinConfirmations)
-                nWeight += pcoin.first->vout[pcoin.second].nValue;
+            nWeight += pcoin.first->vout[pcoin.second].nValue;
     }
 
     return nWeight;
