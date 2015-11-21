@@ -294,7 +294,8 @@ bool CheckProofOfStake(CBlockIndex* pindexPrev, const CTransaction& tx, unsigned
     CTxDB txdb("r");
     CTransaction txPrev;
     CTxIndex txindex;
-    if (!txPrev.ReadFromDisk(txdb, txin.prevout, txindex))
+    CTransactionPoS txPrevPoS(txPrev);
+    if (!txPrevPoS.ReadFromDisk(txdb, txin.prevout, txindex))
         return tx.DoS(1, error("CheckProofOfStake() : INFO: read txPrev failed"));  // previous transaction not in main chain, may occur during initial download
 
     // Verify signature
@@ -330,7 +331,8 @@ bool CheckKernel(CBlockIndex* pindexPrev, unsigned int nBits, int64_t nTime, con
     CTxDB txdb("r");
     CTransaction txPrev;
     CTxIndex txindex;
-    if (!txPrev.ReadFromDisk(txdb, prevout, txindex))
+    CTransactionPoS txPrevPoS(txPrev);
+    if (!txPrevPoS.ReadFromDisk(txdb, prevout, txindex))
         return false;
 
     // Read block header
