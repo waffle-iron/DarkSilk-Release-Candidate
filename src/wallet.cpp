@@ -3619,23 +3619,11 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
             vwtxPrev.push_back(pcoin.first);
         }
     }
-
-    // Calculate coin age reward
-    int64_t nReward;
-    {
-        nReward = STATIC_POS_REWARD + nFees;
-        if (nReward <= 0)
-            return false;
-
-        nCredit += nReward;
-    }
-
-    if (nCredit >= GetStakeSplitThreshold())
-    txNew.vout.push_back(CTxOut(0, txNew.vout[1].scriptPubKey)); //split stake
     
     CScript payee;
     int payments = 1;
     bool hasPayment = true;
+    // GetBlockValue should return STATIC_POS_REWARD + nFees When you switched to GetBlockValue from nCredit. nCredit is no longer needed past this point.
     CAmount blockValue = GetBlockValue(pindexPrev->nBits, pindexPrev->nHeight, nFees);
     CAmount stormnodePayment = GetStormnodePayment(pindexPrev->nHeight+1, blockValue);
 
