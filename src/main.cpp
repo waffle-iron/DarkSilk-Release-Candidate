@@ -430,37 +430,10 @@ unsigned int LimitOrphanTxSize(unsigned int nMaxOrphans)
 
 //////////////////////////////////////////////////////////////////////////////
 //
-// CTransaction, CTransactionPoS and CTxIndex
+// CTransaction and CTxIndex
 //
-std::string CTransaction::ToString() const
-{
-    std::string str;
-    str += IsCoinBase()? "Coinbase" : (IsCoinStake()? "Coinstake" : "CTransaction");
-    str += strprintf("(hash=%s, nTime=%d, ver=%d, vin.size=%u, vout.size=%u, nLockTime=%d)\n",
-        GetHash().ToString(),
-        nTime,
-        nVersion,
-        vin.size(),
-        vout.size(),
-        nLockTime);
-    for (unsigned int i = 0; i < vin.size(); i++)
-        str += "    " + vin[i].ToString() + "\n";
-    for (unsigned int i = 0; i < vout.size(); i++)
-        str += "    " + vout[i].ToString() + "\n";
-    return str;
-}
 
-CTransactionPoS::CTransactionPoS(CTransaction& tx)
-{
-    _tx = tx;
-}
-
-void CTransactionPoS::SetNull() const
-{
-    _tx.SetNull();
-}
-
-bool CTransactionPoS::ReadFromDisk(CTxDB& txdb, const uint256& hash, CTxIndex& txindexRet)
+bool CTransaction::ReadFromDisk(CTxDB& txdb, const uint256& hash, CTxIndex& txindexRet)
 {
     SetNull();
     if (!txdb.ReadTxIndex(hash, txindexRet))
@@ -470,11 +443,11 @@ bool CTransactionPoS::ReadFromDisk(CTxDB& txdb, const uint256& hash, CTxIndex& t
     return true;
 }
 
-bool CTransactionPoS::ReadFromDisk(CTxDB& txdb, COutPoint prevout, CTxIndex& txindexRet)
+bool CTransaction::ReadFromDisk(CTxDB& txdb, COutPoint prevout, CTxIndex& txindexRet)
 {
     if (!ReadFromDisk(txdb, prevout.hash, txindexRet))
         return false;
-    if (prevout.n >= _tx.vout.size())
+    if (prevout.n >= vout.size())
     {
         SetNull();
         return false;
@@ -482,44 +455,17 @@ bool CTransactionPoS::ReadFromDisk(CTxDB& txdb, COutPoint prevout, CTxIndex& txi
     return true;
 }
 
-bool CTransactionPoS::ReadFromDisk(CTxDB& txdb, COutPoint prevout)
+bool CTransaction::ReadFromDisk(CTxDB& txdb, COutPoint prevout)
 {
     CTxIndex txindex;
     return ReadFromDisk(txdb, prevout, txindex);
 }
 
-bool CTransactionPoS::ReadFromDisk(COutPoint prevout)
+bool CTransaction::ReadFromDisk(COutPoint prevout)
 {
     CTxDB txdb("r");
     CTxIndex txindex;
     return ReadFromDisk(txdb, prevout, txindex);
-}
-
-bool CTransactionPoS::ReadFromDisk(CDiskTxPos pos, FILE** pfileRet=NULL)
-{
-    CAutoFile filein = CAutoFile(OpenBlockFile(pos.nFile, 0, pfileRet ? "rb+" : "rb"), SER_DISK, CLIENT_VERSION);
-    if (!filein)
-        return error("CTransaction::ReadFromDisk() : OpenBlockFile failed");
-
-    // Read transaction
-    if (fseek(filein, pos.nTxPos, SEEK_SET) != 0)
-        return error("CTransactionPoS::ReadFromDisk() : fseek failed");
-
-    try {
-        filein >> *this;
-    }
-    catch (std::exception &e) {
-        return error("%s() : deserialize or I/O error", __PRETTY_FUNCTION__);
-    }
-
-    // Return file pointer
-    if (pfileRet)
-    {
-        if (fseek(filein, pos.nTxPos, SEEK_SET) != 0)
-            return error("CTransactionPoS::ReadFromDisk() : second fseek failed");
-        *pfileRet = filein.release();
-    }
-    return true;
 }
 
 bool IsStandardTx(const CTransaction& tx, string& reason)
@@ -956,8 +902,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree, boo
         MapPrevTx mapInputs;
         map<uint256, CTxIndex> mapUnused;
         bool fInvalid = false;
-        CTransactionPoS txPoS(tx);
-        if (!txPoS.FetchInputs(txdb, mapUnused, false, false, mapInputs, fInvalid))
+        if (!tx.FetchInputs(txdb, mapUnused, false, false, mapInputs, fInvalid))
         {
             if (fInvalid)
                 return error("AcceptToMemoryPool : FetchInputs found invalid tx %s", hash.ToString());
@@ -980,7 +925,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree, boo
                           error("AcceptToMemoryPool : too many sigops %s, %d > %d",
                                 hash.ToString(), nSigOps, MAX_TX_SIGOPS));
 
-        int64_t nFees = tx.GetValueIn(mapInputs) - tx.GetValueOut();
+        int64_t nFees = tx.GetValueIn(mapInputs)-tx.GetValueOut();
         unsigned int nSize = ::GetSerializeSize(tx, SER_NETWORK, PROTOCOL_VERSION);
 
         if(!ignoreFees){
@@ -1015,7 +960,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree, boo
         }
         // Check against previous transactions
         // This is done last to help prevent CPU exhaustion denial-of-service attacks.
-        if (!txPoS.ConnectInputs(txdb, mapInputs, mapUnused, CDiskTxPos(1,1,1), pindexBest, false, false, STANDARD_SCRIPT_VERIFY_FLAGS))
+        if (!tx.ConnectInputs(txdb, mapInputs, mapUnused, CDiskTxPos(1,1,1), pindexBest, false, false, STANDARD_SCRIPT_VERIFY_FLAGS))
         {
             return error("AcceptToMemoryPool : ConnectInputs failed %s", hash.ToString());
         }
@@ -1029,7 +974,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree, boo
         // There is a similar check in CreateNewBlock() to prevent creating
         // invalid blocks, however allowing such transactions into the mempool
         // can be exploited as a DoS attack.
-        if (!txPoS.ConnectInputs(txdb, mapInputs, mapUnused, CDiskTxPos(1,1,1), pindexBest, false, false, MANDATORY_SCRIPT_VERIFY_FLAGS))
+        if (!tx.ConnectInputs(txdb, mapInputs, mapUnused, CDiskTxPos(1,1,1), pindexBest, false, false, MANDATORY_SCRIPT_VERIFY_FLAGS))
         {
             return error("AcceptToMemoryPool: : BUG! PLEASE REPORT THIS! ConnectInputs failed against MANDATORY but not STANDARD flags %s", hash.ToString());
         }
@@ -1097,8 +1042,7 @@ bool AcceptableInputs(CTxMemPool& pool, CTransaction &tx, bool fLimitFree, bool 
         MapPrevTx mapInputs;
         map<uint256, CTxIndex> mapUnused;
         bool fInvalid = false;
-        CTransactionPoS txPoS(tx);
-        if (!txPoS.FetchInputs(txdb, mapUnused, false, false, mapInputs, fInvalid))
+        if (!tx.FetchInputs(txdb, mapUnused, false, false, mapInputs, fInvalid))
         {
             if (fInvalid)
                 return error("AcceptableInputs : FetchInputs found invalid tx %s", hash.ToString());
@@ -1158,7 +1102,7 @@ bool AcceptableInputs(CTxMemPool& pool, CTransaction &tx, bool fLimitFree, bool 
 
         // Check against previous transactions
         // This is done last to help prevent CPU exhaustion denial-of-service attacks.
-        if (!txPoS.ConnectInputs(txdb, mapInputs, mapUnused, CDiskTxPos(1,1,1), pindexBest, true, false, STANDARD_SCRIPT_VERIFY_FLAGS, false))
+        if (!tx.ConnectInputs(txdb, mapInputs, mapUnused, CDiskTxPos(1,1,1), pindexBest, true, false, STANDARD_SCRIPT_VERIFY_FLAGS, false))
         {
             return error("AcceptableInputs : ConnectInputs failed %s", hash.ToString());
         }
@@ -1333,8 +1277,7 @@ bool GetTransaction(const uint256 &hash, CTransaction &tx, uint256 &hashBlock)
         }
         CTxDB txdb("r");
         CTxIndex txindex;
-        CTransactionPoS txPoS = CTransactionPoS(tx);
-        if (txPoS.ReadFromDisk(txdb, hash, txindex))
+        if (tx.ReadFromDisk(txdb, hash, txindex))
         {
             CBlock block;
             if (block.ReadFromDisk(txindex.pos.nFile, txindex.pos.nBlockPos, false))
@@ -1559,9 +1502,56 @@ bool CheckProofOfWork(uint256 hash, unsigned int nBits)
     return true;
 }
 
+double ConvertBitsToDouble(unsigned int nBits)
+{
+    int nShift = (nBits >> 24) & 0xff;
+
+    double dDiff =
+        (double)0x0000ffff / (double)(nBits & 0x00ffffff);
+
+    while (nShift < 29)
+    {
+        dDiff *= 256.0;
+        nShift++;
+    }
+    while (nShift > 29)
+    {
+        dDiff /= 256.0;
+        nShift--;
+    }
+
+    return dDiff;
+}
+
 int64_t GetBlockValue(int nBits, int nHeight, const CAmount& nFees)
 {
-        return STATIC_POS_REWARD + nFees;
+    double dDiff = (double)0x0000ffff / (double)(nBits & 0x00ffffff);
+
+    /* fixed bug caused diff to not be correctly calculated */
+    if(nHeight > 4500 || Params().NetworkID() == CChainParams::TESTNET) dDiff = ConvertBitsToDouble(nBits);
+
+    int64_t nSubsidy = 0;
+    if(nHeight >= 5465) {
+        if((nHeight >= 17000 && dDiff > 75) || nHeight >= 24000) { // GPU/ASIC difficulty calc
+            // 2222222/(((x+2600)/9)^2)
+            nSubsidy = (2222222.0 / (pow((dDiff+2600.0)/9.0,2.0)));
+            if (nSubsidy > 25) nSubsidy = 25;
+            if (nSubsidy < 5) nSubsidy = 5;
+        } else { // CPU mining calc
+            nSubsidy = (11111.0 / (pow((dDiff+51.0)/6.0,2.0)));
+            if (nSubsidy > 500) nSubsidy = 500;
+            if (nSubsidy < 25) nSubsidy = 25;
+        }
+    } else {
+        nSubsidy = (1111.0 / (pow((dDiff+1.0),2.0)));
+        if (nSubsidy > 500) nSubsidy = 500;
+        if (nSubsidy < 1) nSubsidy = 1;
+    }
+
+    // LogPrintf("height %u diff %4.2f reward %i \n", nHeight, dDiff, nSubsidy);
+    nSubsidy *= COIN;
+
+    return nSubsidy + nFees;
 }
 
 int64_t GetStormnodePayment(int nHeight, int64_t blockValue)
@@ -1656,29 +1646,29 @@ bool IsConfirmedInNPrevBlocks(const CTxIndex& txindex, const CBlockIndex* pindex
     return false;
 }
 
-bool CTransactionPoS::DisconnectInputs(CTxDB& txdb)
+bool CTransaction::DisconnectInputs(CTxDB& txdb)
 {
     // Relinquish previous transactions' spent pointers
     if (!IsCoinBase())
     {
-        BOOST_FOREACH(const CTxIn& txin, _tx.vin)
+        BOOST_FOREACH(const CTxIn& txin, vin)
         {
             COutPoint prevout = txin.prevout;
 
             // Get prev txindex from disk
             CTxIndex txindex;
             if (!txdb.ReadTxIndex(prevout.hash, txindex))
-                return error("CTransactionPoS::DisconnectInputs() : ReadTxIndex failed");
+                return error("DisconnectInputs() : ReadTxIndex failed");
 
             if (prevout.n >= txindex.vSpent.size())
-                return error("CTransactionPoS::DisconnectInputs() : prevout.n out of range");
+                return error("DisconnectInputs() : prevout.n out of range");
 
             // Mark outpoint as not spent
             txindex.vSpent[prevout.n].SetNull();
 
             // Write back
             if (!txdb.UpdateTxIndex(prevout.hash, txindex))
-                return error("CTransactionPoS::DisconnectInputs() : UpdateTxIndex failed");
+                return error("DisconnectInputs() : UpdateTxIndex failed");
         }
     }
 
@@ -1686,13 +1676,13 @@ bool CTransactionPoS::DisconnectInputs(CTxDB& txdb)
     // This can fail if a duplicate of this transaction was in a chain that got
     // reorganized away. This is only possible if this transaction was completely
     // spent, so erasing it would be a no-op anyway.
-    txdb.EraseTxIndex(_tx);
+    txdb.EraseTxIndex(*this);
 
     return true;
 }
 
 
-bool CTransactionPoS::FetchInputs(CTxDB& txdb, const map<uint256, CTxIndex>& mapTestPool,
+bool CTransaction::FetchInputs(CTxDB& txdb, const map<uint256, CTxIndex>& mapTestPool,
                                bool fBlock, bool fMiner, MapPrevTx& inputsRet, bool& fInvalid)
 {
     // FetchInputs can return false either because we just haven't seen some inputs
@@ -1704,9 +1694,9 @@ bool CTransactionPoS::FetchInputs(CTxDB& txdb, const map<uint256, CTxIndex>& map
     if (IsCoinBase())
         return true; // Coinbase transactions have no inputs to fetch.
 
-    for (unsigned int i = 0; i < _tx.vin.size(); i++)
+    for (unsigned int i = 0; i < vin.size(); i++)
     {
-        COutPoint prevout = _tx.vin[i].prevout;
+        COutPoint prevout = vin[i].prevout;
         if (inputsRet.count(prevout.hash))
             continue; // Got it already
 
@@ -1739,16 +1729,15 @@ bool CTransactionPoS::FetchInputs(CTxDB& txdb, const map<uint256, CTxIndex>& map
         else
         {
             // Get prev tx from disk
-            CTransactionPoS txPrevPoS(txPrev);
-            if (txPrevPoS.ReadFromDisk(txindex.pos))
+            if (!txPrev.ReadFromDisk(txindex.pos))
                 return error("FetchInputs() : %s ReadFromDisk prev tx %s failed", GetHash().ToString(),  prevout.hash.ToString());
         }
     }
 
     // Make sure all prevout.n indexes are valid:
-    for (unsigned int i = 0; i < _tx.vin.size(); i++)
+    for (unsigned int i = 0; i < vin.size(); i++)
     {
-        const COutPoint prevout = _tx.vin[i].prevout;
+        const COutPoint prevout = vin[i].prevout;
         assert(inputsRet.count(prevout.hash) != 0);
         const CTxIndex& txindex = inputsRet[prevout.hash].first;
         const CTransaction& txPrev = inputsRet[prevout.hash].second;
@@ -1788,21 +1777,10 @@ int64_t CTransaction::GetValueIn(const MapPrevTx& inputs) const
         nResult += GetOutputFor(vin[i], inputs).nValue;
     }
     return nResult;
+
 }
 
-int64_t CTransaction::GetValueOut() const
-{
-    int64_t nValueOut = 0;
-    BOOST_FOREACH(const CTxOut& txout, vout)
-    {
-        nValueOut += txout.nValue;
-        if (!MoneyRange(txout.nValue) || !MoneyRange(nValueOut))
-            throw std::runtime_error("CTransaction::GetValueOut() : value out of range");
-    }
-    return nValueOut;
-}
-
-bool CTransactionPoS::ConnectInputs(CTxDB& txdb, MapPrevTx inputs, map<uint256, CTxIndex>& mapTestPool, const CDiskTxPos& posThisTx,
+bool CTransaction::ConnectInputs(CTxDB& txdb, MapPrevTx inputs, map<uint256, CTxIndex>& mapTestPool, const CDiskTxPos& posThisTx,
     const CBlockIndex* pindexBlock, bool fBlock, bool fMiner, unsigned int flags, bool fValidateSig)
 {
     // Take over previous transactions' spent pointers
@@ -1813,42 +1791,42 @@ bool CTransactionPoS::ConnectInputs(CTxDB& txdb, MapPrevTx inputs, map<uint256, 
     {
         int64_t nValueIn = 0;
         int64_t nFees = 0;
-        for (unsigned int i = 0; i < _tx.vin.size(); i++)
+        for (unsigned int i = 0; i < vin.size(); i++)
         {
-            COutPoint prevout = _tx.vin[i].prevout;
+            COutPoint prevout = vin[i].prevout;
             assert(inputs.count(prevout.hash) > 0);
             CTxIndex& txindex = inputs[prevout.hash].first;
             CTransaction& txPrev = inputs[prevout.hash].second;
 
             if (prevout.n >= txPrev.vout.size() || prevout.n >= txindex.vSpent.size())
-                return DoS(100, error("CTransactionPoS::ConnectInputs() : %s prevout.n out of range %d %u %u prev tx %s\n%s", GetHash().ToString(), prevout.n, txPrev.vout.size(), txindex.vSpent.size(), prevout.hash.ToString(), txPrev.ToString()));
+                return DoS(100, error("ConnectInputs() : %s prevout.n out of range %d %u %u prev tx %s\n%s", GetHash().ToString(), prevout.n, txPrev.vout.size(), txindex.vSpent.size(), prevout.hash.ToString(), txPrev.ToString()));
 
             // If prev is coinbase or coinstake, check that it's matured
             if (txPrev.IsCoinBase() || txPrev.IsCoinStake())
             {
                 int nSpendDepth;
                 if (IsConfirmedInNPrevBlocks(txindex, pindexBlock, nCoinbaseMaturity, nSpendDepth))
-                    return error("CTransactionPoS::ConnectInputs() : tried to spend %s at depth %d", txPrev.IsCoinBase() ? "coinbase" : "coinstake", nSpendDepth);
+                    return error("ConnectInputs() : tried to spend %s at depth %d", txPrev.IsCoinBase() ? "coinbase" : "coinstake", nSpendDepth);
             }
             // ppcoin: check transaction timestamp
-            if (txPrev.nTime > _tx.nTime)
-                return DoS(100, error("CTransactionPoS::ConnectInputs() : transaction timestamp earlier than input transaction"));
+            if (txPrev.nTime > nTime)
+                return DoS(100, error("ConnectInputs() : transaction timestamp earlier than input transaction"));
 
             if (txPrev.vout[prevout.n].IsEmpty())
-                return DoS(1, error("CTransactionPoS::ConnectInputs() : special marker is not spendable"));
+                return DoS(1, error("ConnectInputs() : special marker is not spendable"));
 
             // Check for negative or overflow input values
             nValueIn += txPrev.vout[prevout.n].nValue;
             if (!MoneyRange(txPrev.vout[prevout.n].nValue) || !MoneyRange(nValueIn))
-                return DoS(100, error("CTransactionPoS::ConnectInputs() : txin values out of range"));
+                return DoS(100, error("ConnectInputs() : txin values out of range"));
 
         }
         // The first loop above does all the inexpensive checks.
         // Only if ALL inputs pass do we perform expensive ECDSA signature checks.
         // Helps prevent CPU exhaustion attacks.
-        for (unsigned int i = 0; i < _tx.vin.size(); i++)
+        for (unsigned int i = 0; i < vin.size(); i++)
         {
-            COutPoint prevout = _tx.vin[i].prevout;
+            COutPoint prevout = vin[i].prevout;
             assert(inputs.count(prevout.hash) > 0);
             CTxIndex& txindex = inputs[prevout.hash].first;
             CTransaction& txPrev = inputs[prevout.hash].second;
@@ -1857,7 +1835,7 @@ bool CTransactionPoS::ConnectInputs(CTxDB& txdb, MapPrevTx inputs, map<uint256, 
             // This doesn't trigger the DoS code on purpose; if it did, it would make it easier
             // for an attacker to attempt to split the network.
             if (!txindex.vSpent[prevout.n].IsNull())
-                return fMiner ? false : error("CTransactionPoS::ConnectInputs() : %s prev tx already used at %s", GetHash().ToString(), txindex.vSpent[prevout.n].ToString());
+                return fMiner ? false : error("ConnectInputs() : %s prev tx already used at %s", GetHash().ToString(), txindex.vSpent[prevout.n].ToString());
 
        if(fValidateSig)
        {
@@ -1867,7 +1845,7 @@ bool CTransactionPoS::ConnectInputs(CTxDB& txdb, MapPrevTx inputs, map<uint256, 
             if (!(fBlock && (nBestHeight < Checkpoints::GetTotalBlocksEstimate())))
             {
                 // Verify signature
-                if (!VerifySignature(txPrev, _tx, i, flags, 0))
+                if (!VerifySignature(txPrev, *this, i, flags, 0))
                 {
                     if (flags & STANDARD_NOT_MANDATORY_VERIFY_FLAGS) {
                         // Check whether the failure was caused by a
@@ -1876,8 +1854,8 @@ bool CTransactionPoS::ConnectInputs(CTxDB& txdb, MapPrevTx inputs, map<uint256, 
                         // if so, don't trigger DoS protection to
                         // avoid splitting the network between upgraded and
                         // non-upgraded nodes.
-                        if (VerifySignature(txPrev, _tx, i, flags & ~STANDARD_NOT_MANDATORY_VERIFY_FLAGS, 0))
-                            return error("CTransactionPoS::ConnectInputs() : %s non-mandatory VerifySignature failed", GetHash().ToString());
+                        if (VerifySignature(txPrev, *this, i, flags & ~STANDARD_NOT_MANDATORY_VERIFY_FLAGS, 0))
+                            return error("ConnectInputs() : %s non-mandatory VerifySignature failed", GetHash().ToString());
                     }
                     // Failures of other flags indicate a transaction that is
                     // invalid in new blocks, e.g. a invalid P2SH. We DoS ban
@@ -1886,7 +1864,7 @@ bool CTransactionPoS::ConnectInputs(CTxDB& txdb, MapPrevTx inputs, map<uint256, 
                     // as to the correct behavior - we may want to continue
                     // peering with non-upgraded nodes even after a soft-fork
                     // super-majority vote has passed.
-                    return DoS(100,error("CTransactionPoS::ConnectInputs() : %s VerifySignature failed", GetHash().ToString()));
+                    return DoS(100,error("ConnectInputs() : %s VerifySignature failed", GetHash().ToString()));
                 }
             }
        }
@@ -1903,23 +1881,23 @@ bool CTransactionPoS::ConnectInputs(CTxDB& txdb, MapPrevTx inputs, map<uint256, 
 
         if (!IsCoinStake())
         {
-            if (nValueIn < _tx.GetValueOut())
-                return DoS(100, error("CTransactionPoS::ConnectInputs() : %s value in < value out", GetHash().ToString()));
+            if (nValueIn < GetValueOut())
+                return DoS(100, error("ConnectInputs() : %s value in < value out", GetHash().ToString()));
 
             // Tally transaction fees
-            int64_t nTxFee = nValueIn - _tx.GetValueOut();
+            int64_t nTxFee = nValueIn - GetValueOut();
             if (nTxFee < 0)
-                return DoS(100, error("CTransactionPoS::ConnectInputs() : %s nTxFee < 0", GetHash().ToString()));
+                return DoS(100, error("ConnectInputs() : %s nTxFee < 0", GetHash().ToString()));
 
             /* enforce transaction fees for every block
             int64_t nRequiredFee = GetMinFee(*this);
             if (nTxFee < nRequiredFee)
-                return fBlock? DoS(100, error("CTransactionPoS::ConnectInputs() : %s not paying required fee=%s, paid=%s", GetHash().ToString(), FormatMoney(nRequiredFee), FormatMoney(nTxFee))) : false;
+                return fBlock? DoS(100, error("ConnectInputs() : %s not paying required fee=%s, paid=%s", GetHash().ToString(), FormatMoney(nRequiredFee), FormatMoney(nTxFee))) : false;
             */
 
             nFees += nTxFee;
             if (!MoneyRange(nFees))
-                return DoS(100, error("CTransactionPoS::ConnectInputs() : nFees out of range"));
+                return DoS(100, error("ConnectInputs() : nFees out of range"));
         }
     }
 
@@ -1929,13 +1907,10 @@ bool CTransactionPoS::ConnectInputs(CTxDB& txdb, MapPrevTx inputs, map<uint256, 
 bool CBlock::DisconnectBlock(CTxDB& txdb, CBlockIndex* pindex)
 {
     // Disconnect in reverse order
-
     for (int i = vtx.size()-1; i >= 0; i--)
-    {
-        CTransactionPoS txPoS(this->vtx[i]);
-        if (!txPoS.DisconnectInputs(txdb))
+        if (!vtx[i].DisconnectInputs(txdb))
             return false;
-    }
+
     // Update block index on disk without changing it in memory.
     // The memory index structure will be changed after the db commits.
     if (pindex->pprev)
@@ -2024,9 +1999,8 @@ void CBlock::RebuildAddressIndex(CTxDB& txdb)
             MapPrevTx mapInputs;
         map<uint256, CTxIndex> mapQueuedChangesT;
         bool fInvalid;
-        CTransactionPoS txPoS(tx);
-        if (txPoS.FetchInputs(txdb, mapQueuedChangesT, true, false, mapInputs, fInvalid))
-            return;
+            if (!tx.FetchInputs(txdb, mapQueuedChangesT, true, false, mapInputs, fInvalid))
+                return;
 
         MapPrevTx::const_iterator mi;
         for(MapPrevTx::const_iterator mi = mapInputs.begin(); mi != mapInputs.end(); ++mi)
@@ -2096,7 +2070,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
     BOOST_FOREACH(CTransaction& tx, vtx)
     {
         uint256 hashTx = tx.GetHash();
-        nInputs += tx.vin.size();
+    nInputs += tx.vin.size();
 
         // Do not allow blocks that contain transactions which 'overwrite' older transactions,
         // unless those are already completely spent.
@@ -2131,8 +2105,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
         else
         {
             bool fInvalid;
-            CTransactionPoS txPoS(tx);
-            if (txPoS.FetchInputs(txdb, mapQueuedChanges, true, false, mapInputs, fInvalid))
+            if (!tx.FetchInputs(txdb, mapQueuedChanges, true, false, mapInputs, fInvalid))
                 return false;
 
             // Add in sigops done by pay-to-script-hash inputs;
@@ -2153,10 +2126,8 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
 
         //if(setValidatedTx.find(hashTx) == setValidatedTx.end())
         //{
-            {
-                if (txPoS.ConnectInputs(txdb, mapInputs, mapQueuedChanges, posThisTx, pindex, true, false, flags))
+                if (!tx.ConnectInputs(txdb, mapInputs, mapQueuedChanges, posThisTx, pindex, true, false, flags))
                     return false;
-            }
         //else
         //    setValidatedTx.insert(hashTx);
         //}
@@ -2217,12 +2188,11 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
     // inputs
     if(!tx.IsCoinBase())
     {
-        MapPrevTx mapInputs;
+            MapPrevTx mapInputs;
         map<uint256, CTxIndex> mapQueuedChangesT;
         bool fInvalid;
-        CTransactionPoS txPoS(tx);
-        if (txPoS.FetchInputs(txdb, mapQueuedChangesT, true, false, mapInputs, fInvalid))
-            return false;
+            if (!tx.FetchInputs(txdb, mapQueuedChangesT, true, false, mapInputs, fInvalid))
+                return false;
 
         MapPrevTx::const_iterator mi;
         for(MapPrevTx::const_iterator mi = mapInputs.begin(); mi != mapInputs.end(); ++mi)
@@ -2526,7 +2496,7 @@ bool CBlock::SetBestChain(CTxDB& txdb, CBlockIndex* pindexNew)
 // guaranteed to be in main chain by sync-checkpoint. This rule is
 // introduced to help nodes establish a consistent view of the coin
 // age (trust score) of competing branches.
-bool CTransactionPoS::GetCoinAge(CTxDB& txdb, const CBlockIndex* pindexPrev, uint64_t& nCoinAge) const
+bool CTransaction::GetCoinAge(CTxDB& txdb, const CBlockIndex* pindexPrev, uint64_t& nCoinAge) const
 {
     CBigNum bnCentSecond = 0;  // coin age in the unit of cent-seconds
     nCoinAge = 0;
@@ -2534,15 +2504,14 @@ bool CTransactionPoS::GetCoinAge(CTxDB& txdb, const CBlockIndex* pindexPrev, uin
     if (IsCoinBase())
         return true;
 
-    BOOST_FOREACH(const CTxIn& txin, _tx.vin)
+    BOOST_FOREACH(const CTxIn& txin, vin)
     {
         // First try finding the previous transaction in database
         CTransaction txPrev;
         CTxIndex txindex;
-        CTransactionPoS txPrevPoS(txPrev);
-        if (!txPrevPoS.ReadFromDisk(txdb, txin.prevout, txindex))
+        if (!txPrev.ReadFromDisk(txdb, txin.prevout, txindex))
             continue;  // previous transaction not in main chain
-        if (_tx.nTime < txPrev.nTime)
+        if (nTime < txPrev.nTime)
             return false;  // Transaction timestamp violation
 
         int nSpendDepth;
@@ -2554,9 +2523,9 @@ bool CTransactionPoS::GetCoinAge(CTxDB& txdb, const CBlockIndex* pindexPrev, uin
         }
 
         int64_t nValueIn = txPrev.vout[txin.prevout.n].nValue;
-        bnCentSecond += CBigNum(nValueIn) * (_tx.nTime - txPrev.nTime) / CENT;
+        bnCentSecond += CBigNum(nValueIn) * (nTime-txPrev.nTime) / CENT;
 
-        LogPrint("coinage", "coin age nValueIn=%d nTimeDiff=%d bnCentSecond=%s\n", nValueIn, _tx.nTime - txPrev.nTime, bnCentSecond.ToString());
+        LogPrint("coinage", "coin age nValueIn=%d nTimeDiff=%d bnCentSecond=%s\n", nValueIn, nTime - txPrev.nTime, bnCentSecond.ToString());
     }
 
     CBigNum bnCoinDay = bnCentSecond * CENT / COIN / (24 * 60 * 60);

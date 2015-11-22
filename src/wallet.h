@@ -47,9 +47,9 @@ enum WalletFeature
     FEATURE_BASE = 10500, // the earliest version new wallets supports (only useful for getinfo's clientversion output)
 
     FEATURE_WALLETCRYPT = 40000, // wallet encryption
-    FEATURE_COMPRPUBKEY = 60080, // compressed public keys
+    FEATURE_COMPRPUBKEY = 60040, // compressed public keys
 
-    FEATURE_LATEST = 60080
+    FEATURE_LATEST = 60040
 };
 
 enum AvailableCoinsType

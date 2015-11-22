@@ -590,8 +590,7 @@ Value getblocktemplate(const Array& params, bool fHelp)
         MapPrevTx mapInputs;
         map<uint256, CTxIndex> mapUnused;
         bool fInvalid = false;
-        CTransactionPoS txPoS(tx);
-        if (txPoS.FetchInputs(txdb, mapUnused, false, false, mapInputs, fInvalid))
+        if (tx.FetchInputs(txdb, mapUnused, false, false, mapInputs, fInvalid))
         {
             entry.push_back(Pair("fee", (int64_t)(tx.GetValueIn(mapInputs) - tx.GetValueOut())));
 

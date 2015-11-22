@@ -263,11 +263,10 @@ bool CTxDB::ContainsTx(uint256 hash)
 
 bool CTxDB::ReadDiskTx(uint256 hash, CTransaction& tx, CTxIndex& txindex)
 {
-    CTransactionPoS txPoS(tx);
     tx.SetNull();
     if (!ReadTxIndex(hash, txindex))
         return false;
-    return (txPoS.ReadFromDisk(txindex.pos));
+    return (tx.ReadFromDisk(txindex.pos));
 }
 
 bool CTxDB::ReadDiskTx(uint256 hash, CTransaction& tx)
@@ -484,8 +483,7 @@ bool CTxDB::LoadBlockIndex()
                     {
                         // either an error or a duplicate transaction
                         CTransaction txFound;
-                        CTransactionPoS txFoundPoS(txFound);
-                        if (!txFoundPoS.ReadFromDisk(txindex.pos))
+                        if (!txFound.ReadFromDisk(txindex.pos))
                         {
                             LogPrintf("LoadBlockIndex() : *** cannot read mislocated transaction %s\n", hashTx.ToString());
                             pindexFork = pindex->pprev;
@@ -515,8 +513,7 @@ bool CTxDB::LoadBlockIndex()
                                 if (nCheckLevel>5)
                                 {
                                     CTransaction txSpend;
-                                    CTransactionPoS txSpendPoS(txSpend);
-                                    if (!txSpendPoS.ReadFromDisk(txpos))
+                                    if (!txSpend.ReadFromDisk(txpos))
                                     {
                                         LogPrintf("LoadBlockIndex(): *** cannot read spending transaction of %s:%i from disk\n", hashTx.ToString(), nOutput);
                                         pindexFork = pindex->pprev;
