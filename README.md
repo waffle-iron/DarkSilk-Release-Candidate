@@ -8,6 +8,8 @@ DarkSilk Integration/Staging Tree
 **Copyright (c) 2015 The DarkSilk Developers**
 
 ![DRKSLK logo](https://raw.githubusercontent.com/SCDeveloper/DarkSilk-Release-Candidate/master/src/qt/res/icons/darksilk-128.png)
+
+What is DarkSilk?
 ----------------
 * Algorithm: Scrypt
 * Coin Suffix: DRKSLK
