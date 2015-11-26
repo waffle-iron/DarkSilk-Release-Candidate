@@ -2,12 +2,12 @@
 
 (FOR TESTING PURPOSES ONLY)
 
+![DRKSLK logo](https://raw.githubusercontent.com/SCDeveloper/DarkSilk-Release-Candidate/master/src/qt/res/icons/darksilk-128.png)
+
 DarkSilk Integration/Staging Tree
 ================================
 
 **Copyright (c) 2015 The DarkSilk Developers**
-
-![DRKSLK logo](https://avatars3.githubusercontent.com/u/13841376?v=3&s=460)
 
 #### What is DarkSilk?
 ----------------
