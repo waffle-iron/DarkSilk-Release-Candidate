@@ -2,14 +2,12 @@
 
 (FOR TESTING PURPOSES ONLY)
 
-![DRKSLK logo](https://raw.githubusercontent.com/SCDeveloper/DarkSilk-Release-Candidate/master/src/qt/res/icons/darksilk-128.png)
-
 DarkSilk Integration/Staging Tree
 ================================
 
 **Copyright (c) 2015 The DarkSilk Developers**
 
-#### What is DarkSilk?
+![DRKSLK logo](https://raw.githubusercontent.com/SCDeveloper/DarkSilk-Release-Candidate/master/src/qt/res/icons/darksilk-128.png)
 ----------------
 * Algorithm: Scrypt
 * Coin Suffix: DRKSLK
