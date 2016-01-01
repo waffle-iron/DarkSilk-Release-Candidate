@@ -1,37 +1,30 @@
-
-// Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2014-2016 The Dash developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #ifndef STORMNODEMAN_H
 #define STORMNODEMAN_H
 
-#include "bignum.h"
 #include "sync.h"
 #include "net.h"
 #include "key.h"
-#include "core.h"
 #include "util.h"
-#include "script.h"
 #include "base58.h"
 #include "main.h"
 #include "stormnode.h"
 
-#define STORMNODES_DUMP_SECONDS                (15*60)  // 15 Minutes
-#define STORMNODES_SSEG_SECONDS              (1*60*60)  // 1 Hour 
+static const unsigned int STORMNODES_DUMP_SECONDS = (15*60);// 15 Minutes
+static const unsigned int STORMNODES_SSEG_SECONDS = (1*60*60);// 1 Hour
 
 using namespace std;
 
 class CStormnodeMan;
 
 extern CStormnodeMan snodeman;
-
 void DumpStormnodes();
 
-/*
- Access to the SN database (sncache.dat) 
-*/
- 
+/** Access to the SN database (sncache.dat)
+ */
 class CStormnodeDB
 {
 private:
@@ -50,7 +43,7 @@ public:
 
     CStormnodeDB();
     bool Write(const CStormnodeMan &snodemanToSave);
-    ReadResult Read(CStormnodeMan& snodemanToLoad);
+    ReadResult Read(CStormnodeMan& snodemanToLoad, bool fDryRun = false);
 };
 
 class CStormnodeMan
@@ -59,68 +52,73 @@ private:
     // critical section to protect the inner data structures
     mutable CCriticalSection cs;
 
+    // critical section to protect the inner data structures specifically on messaging
+    mutable CCriticalSection cs_process_message;
+
     // map to hold all SNs
     std::vector<CStormnode> vStormnodes;
-    // who's asked for the stormnode list and the last time
+    // who's asked for the Stormnode list and the last time
     std::map<CNetAddr, int64_t> mAskedUsForStormnodeList;
-    // who we asked for the stormnode list and the last time
+    // who we asked for the Stormnode list and the last time
     std::map<CNetAddr, int64_t> mWeAskedForStormnodeList;
-    // which stormnodes we've asked for
+    // which Stormnodes we've asked for
     std::map<COutPoint, int64_t> mWeAskedForStormnodeListEntry;
 
 public:
-    // keep track of ssq count to prevent stormnodes from ganing Sandstorm queue
+    // Keep track of all broadcasts I've seen
+    map<uint256, CStormnodeBroadcast> mapSeenStormnodeBroadcast;
+    // Keep track of all pings I've seen
+    map<uint256, CStormnodePing> mapSeenStormnodePing;
+
+    // keep track of ssq count to prevent stormnodes from gaining sandstorm queue
     int64_t nSsqCount;
 
-    IMPLEMENT_SERIALIZE
-    (
-        // serialized format:
-        // * version byte (currently 0)
-        // * stormnodes vector
-        {
-                LOCK(cs);
-                unsigned char nVersion = 0;
-                READWRITE(nVersion);
-                READWRITE(vStormnodes);
-                READWRITE(mAskedUsForStormnodeList);
-                READWRITE(mWeAskedForStormnodeList);
-                READWRITE(mWeAskedForStormnodeListEntry);
-                READWRITE(nSsqCount);
-        }
+    IMPLEMENT_SERIALIZE(
+        LOCK(cs);
+        READWRITE(vStormnodes);
+        READWRITE(mAskedUsForStormnodeList);
+        READWRITE(mWeAskedForStormnodeList);
+        READWRITE(mWeAskedForStormnodeListEntry);
+        READWRITE(nSsqCount);
+
+        READWRITE(mapSeenStormnodeBroadcast);
+        READWRITE(mapSeenStormnodePing);
     )
 
     CStormnodeMan();
     CStormnodeMan(CStormnodeMan& other);
-    
-    // Add an entry
+
+    /// Add an entry
     bool Add(CStormnode &sn);
 
-    // Check all stormnodes
+    /// Ask (source) node for snb
+    void AskForSN(CNode *pnode, CTxIn &vin);
+
+    /// Check all Stormnodes
     void Check();
 
-    // Check all stormnodes and remove inactive
-    void CheckAndRemove();
+    /// Check all Stormnodes and remove inactive
+    void CheckAndRemove(bool forceExpiredRemoval = false);
 
-    // Clear stormnode vector
+    /// Clear Stormnode vector
     void Clear();
-    
-    int CountEnabled();
-    
-    int CountStormnodesAboveProtocol(int protocolVersion);
+
+    int CountEnabled(int protocolVersion = -1);
 
     void SsegUpdate(CNode* pnode);
 
-    // Find an entry
+    /// Find an entry
+    CStormnode* Find(const CScript &payee);
     CStormnode* Find(const CTxIn& vin);
     CStormnode* Find(const CPubKey& pubKeyStormnode);
 
-    //Find an entry thta do not match every entry provided vector
-    CStormnode* FindOldestNotInVec(const std::vector<CTxIn> &vVins, int nMinimumAge);
+    /// Find an entry in the stormnode list that is next to be paid
+    CStormnode* GetNextStormnodeInQueueForPayment(int nBlockHeight, bool fFilterSigTime, int& nCount);
 
-    // Find a random entry
-    CStormnode* FindRandom();
+    /// Find a random entry
+    CStormnode* FindRandomNotInVec(std::vector<CTxIn> &vecToExclude, int protocolVersion = -1);
 
-    // Get the current winner for this block
+    /// Get the current winner for this block
     CStormnode* GetCurrentStormNode(int mod=1, int64_t nBlockHeight=0, int minProtocol=0);
 
     std::vector<CStormnode> GetFullStormnodeVector() { Check(); return vStormnodes; }
@@ -133,20 +131,13 @@ public:
 
     void ProcessMessage(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
 
-    // Return the number of (unique) stormnodes
+    /// Return the number of (unique) Stormnodes
     int size() { return vStormnodes.size(); }
 
     std::string ToString() const;
 
-    //
-    // Relay Stormnode Messages
-    //
-
-    void RelayStormnodeEntry(const CTxIn vin, const CService addr, const std::vector<unsigned char> vchSig, const int64_t nNow, const CPubKey pubkey, const CPubKey pubkey2, const int count, const int current, const int64_t lastUpdated, const int protocolVersion, CScript donationAddress, int donationPercentage);
-    void RelayStormnodeEntryPing(const CTxIn vin, const std::vector<unsigned char> vchSig, const int64_t nNow, const bool stop);
-
     void Remove(CTxIn vin);
-    
+
 };
 
 #endif

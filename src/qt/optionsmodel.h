@@ -31,7 +31,6 @@ public:
         DisplayUnit,       // DarkSilkUnits::Unit
         Language,          // QString
         CoinControlFeatures, // bool
-        MinimizeCoinAge,   // bool
         UseBlackTheme,     // bool
         SandstormRounds,    // int
         AnonymizeDarkSilkAmount, //int

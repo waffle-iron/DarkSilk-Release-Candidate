@@ -13,8 +13,8 @@
     </message>
     <message>
         <location line="+41"/>
-        <source>Copyright © 2009-2015 The Bitcoin developers
-Copyright (c) 2015 The DarkSilk Developers</source>
+        <source>Copyright © 2009-2016 The Bitcoin Developers
+Copyright (c) 2015-2016 The Silk Network Developers</source>
         <translation>Telif Hakkı © 2009-2015 Bitcoin geliştiricileri
 Telif Hakkı © 2012-2014 DarkSilk geliştiricileri
 Telif Hakkı © 2014 DarkSilk geliştiricileri</translation>
@@ -2980,8 +2980,8 @@ alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
     <message>
         <location line="+30"/>
-        <source>Set maximum block size in bytes (default: 250000)</source>
-        <translation>Bayt olarak maksimum blok boyutunu belirle (varsayılan: 250000)</translation>
+        <source>Set maximum block size in bytes (default: 50000000)</source>
+        <translation>Bayt olarak maksimum blok boyutunu belirle (varsayılan: 50000000)</translation>
     </message>
     <message>
         <location line="-1"/>

@@ -1,15 +1,15 @@
-// Copyright (c) 2010-2015 Satoshi Nakamoto
-// Copyright (c) 2009-2015 The Bitcoin developers
-// Copyright (c) 2015 The DarkSilk developers
+// Copyright (c) 2009-2016 Satoshi Nakamoto
+// Copyright (c) 2009-2016 The Bitcoin Developers
+// Copyright (c) 2015-2016 The Silk Network Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
-#include "assert.h"
 
 #include "chainparams.h"
 #include "main.h"
 #include "util.h"
+#include "chainparamsseeds.h"
 
+#include "assert.h"
 #include <boost/assign/list_of.hpp>
 
 using namespace boost::assign;
@@ -18,8 +18,6 @@ struct SeedSpec6 {
     uint8_t addr[16];
     uint16_t port;
 };
-
-#include "chainparamsseeds.h"
 
 //
 // Main network
@@ -62,7 +60,7 @@ public:
         pchMessageStart[1] = 0x22;
         pchMessageStart[2] = 0x05;
         pchMessageStart[3] = 0x31;
-        vAlertPubKey = ParseHex("");
+        vAlertPubKey = ParseHex("0450e0acc669231cfe2d0a8f0d164c341547487adff89f09e1e78a5299d204bd1c9f05897cb916365c56a31377d872abddb551a12d8d8163149abfc851be7f88ba");
         nDefaultPort = 31000;
         nRPCPort = 31500;
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 20); // PoW starting difficulty = 0.0002441
@@ -77,7 +75,7 @@ public:
         std::vector<CTxOut> vout;
         vout.resize(1);
         vout[0].SetEmpty();
-        CTransaction txNew(1, 1444948732, vin, vout, 0);
+        CMutableTransaction txNew(1, 1444948732, vin, vout, 0);
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
@@ -99,6 +97,9 @@ public:
 
         assert(hashGenesisBlock == uint256("0xdcc5e22e275eff273799a4c06493f8364316d032813c22845602f05ff13d7ec7"));
         assert(genesis.hashMerkleRoot == uint256("0xfed7550a453e532c460fac58d438740235c380f9908cae2d602b705ca2c2f0a6"));
+
+        vSeeds.push_back(CDNSSeedData("darksilk.org", "ds1.darksilk.org"));
+        vSeeds.push_back(CDNSSeedData("", ""));
         
         base58Prefixes[PUBKEY_ADDRESS] = list_of(30);                     //DarkSilk addresses start with 'D'
         base58Prefixes[SCRIPT_ADDRESS] = list_of(10);                     //DarkSilk script addresses start with '5'
@@ -108,7 +109,13 @@ public:
 
         convertSeeds(vFixedSeeds, pnSeed, ARRAYLEN(pnSeed), nDefaultPort);
 
-        nLastPOWBlock = 42002;
+        //TODO(AA)
+        nPoolMaxTransactions = 3;
+        strSandstormPoolDummyAddress = "DDCxTmWLPytjnEAMd3TCGaryJStEx5caSm"; //private key = MpBeYuuA7c47bqa6ubmBnP8P7hkpmJTSUgwejC8AehSPwsXmkZHD
+        strStormnodePaymentsPubKey = "";
+        nLastPOWBlock = 100;
+        nFirstPOSBlock = 101;
+        nStartStormnodePayments = 1446335999; //Wed, 31 Oct 2015 23:59:59 GMT
     }
 
     virtual const CBlock& GenesisBlock() const { return genesis; }
@@ -164,7 +171,13 @@ public:
 
         convertSeeds(vFixedSeeds, pnTestnetSeed, ARRAYLEN(pnTestnetSeed), nDefaultPort);
 
+        //TODO(Amir): Change pub key and dummy address
+        nPoolMaxTransactions = 3;
+        strStormnodePaymentsPubKey = "";
+        strSandstormPoolDummyAddress = "DDCxTmWLPytjnEAMd3TCGaryJStEx5caSm"; //private key = MpBeYuuA7c47bqa6ubmBnP8P7hkpmJTSUgwejC8AehSPwsXmkZHD
         nLastPOWBlock = 100;
+        nFirstPOSBlock = 101;
+        nStartStormnodePayments = 1446335999; //Wed, 31 Oct 2015 23:59:59 GMT
     }
 
     virtual Network NetworkID() const { return CChainParams::TESTNET; }

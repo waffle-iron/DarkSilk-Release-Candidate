@@ -11,6 +11,7 @@
 #include "transactionfilterproxy.h"
 #include "guiutil.h"
 #include "guiconstants.h"
+#include "init.h"
 
 #include <QAbstractItemDelegate>
 #include <QPainter>
@@ -80,7 +81,7 @@ public:
         }
         painter->drawText(amountRect, Qt::AlignRight|Qt::AlignVCenter, amountText);
 
-        painter->setPen(fUseBlackTheme ? QColor(80, 0, 120) : option.palette.color(QPalette::Text));
+        painter->setPen(fUseBlackTheme ? QColor(67, 67, 67) : option.palette.color(QPalette::Text));
         painter->drawText(amountRect, Qt::AlignLeft|Qt::AlignVCenter, GUIUtil::dateTimeStr(date));
 
         painter->restore();
@@ -110,6 +111,8 @@ OverviewPage::OverviewPage(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    fLiteMode = GetBoolArg("-litemode", false);
+
     ui->frameSandstorm->setVisible(true);
 
     QScroller::grabGesture(ui->scrollArea, QScroller::LeftMouseButtonGesture);
@@ -132,14 +135,15 @@ OverviewPage::OverviewPage(QWidget *parent) :
     ui->labelWalletStatus->setText("(" + tr("out of sync") + ")");
     ui->labelTransactionsStatus->setText("(" + tr("out of sync") + ")");
 
+
     showingSandStormMessage = 0;
     sandstormActionCheck = 0;
     lastNewBlock = 0;
 
     if(fLiteMode){
-        ui->frameSandstorm->setVisible(true);
+        ui->frameSandstorm->setVisible(false);
     } else {
-	qDebug() << "Sandstorm Status Timer";
+    qDebug() << "Sandstorm Status Timer";
         timer = new QTimer(this);
         connect(timer, SIGNAL(timeout()), this, SLOT(sandStormStatus()));
         timer->start(60000);
@@ -420,10 +424,13 @@ void OverviewPage::sandStormStatus()
     int entries = sandStormPool.GetEntriesCount();
     int accepted = sandStormPool.GetLastEntryAccepted();
 
-    /* ** @TODO this string creation really needs some clean ups ---vertoe ** */
+    /* ** @TODO this string creation really needs some clean ups */
     std::ostringstream convert;
-
-    if(state == POOL_STATUS_IDLE) {
+    QString strStatus;
+    
+    if(pindexBest->nHeight - sandStormPool.cachedLastSuccess < sandStormPool.minBlockSpacing) {
+        strStatus = QString(sandStormPool.strAutoDenomResult.c_str());
+    } else if(state == POOL_STATUS_IDLE) {
         convert << tr("Sandstorm is idle.").toStdString();
     } else if(state == POOL_STATUS_ACCEPTING_ENTRIES) {
         if(entries == 0) {

@@ -1,3 +1,6 @@
+// Copyright (c) 2014-2016 The Dash developers
+// Distributed under the MIT/X11 software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "sandstorm-relay.h"
 
@@ -30,8 +33,8 @@ std::string CSandStormRelay::ToString()
         " nRelayType: "  << (int)nRelayType <<
         " in " << in.ToString() <<
         " out " << out.ToString();
-        
-    return info.str();   
+
+    return info.str();
 }
 
 bool CSandStormRelay::Sign(std::string strSharedKey)
@@ -44,18 +47,16 @@ bool CSandStormRelay::Sign(std::string strSharedKey)
 
     if(!sandStormSigner.SetKey(strSharedKey, errorMessage, key2, pubkey2))
     {
-        LogPrintf("CSandStormRelay()::Sign - ERROR: Invalid shared key: '%s'\n", errorMessage.c_str());
+        LogPrintf("CSandStormRelay():Sign - ERROR: Invalid shared key: '%s'\n", errorMessage.c_str());
         return false;
     }
 
-    if(!sandStormSigner.SignMessage(strMessage, errorMessage, vchSig2, key2)) 
-    {
+    if(!sandStormSigner.SignMessage(strMessage, errorMessage, vchSig2, key2)) {
         LogPrintf("CSandStormRelay():Sign - Sign message failed\n");
         return false;
     }
 
-    if(!sandStormSigner.VerifyMessage(pubkey2, vchSig2, strMessage, errorMessage)) 
-    {
+    if(!sandStormSigner.VerifyMessage(pubkey2, vchSig2, strMessage, errorMessage)) {
         LogPrintf("CSandStormRelay():Sign - Verify message failed\n");
         return false;
     }
@@ -74,21 +75,22 @@ bool CSandStormRelay::VerifyMessage(std::string strSharedKey)
     if(!sandStormSigner.SetKey(strSharedKey, errorMessage, key2, pubkey2))
     {
         LogPrintf("CSandStormRelay()::VerifyMessage - ERROR: Invalid shared key: '%s'\n", errorMessage.c_str());
-         return false;
+        return false;
     }
 
     if(!sandStormSigner.VerifyMessage(pubkey2, vchSig2, strMessage, errorMessage)) {
         LogPrintf("CSandStormRelay()::VerifyMessage - Verify message failed\n");
-        return false;    }
+        return false;
+    }
 
     return true;
 }
 
 void CSandStormRelay::Relay()
 {
-    int nCount = std::min(snodeman.CountEnabled(), 20);
-    int nRank1 = (rand() % nCount)+1; 
-    int nRank2 = (rand() % nCount)+1; 
+    int nCount = std::min(snodeman.CountEnabled(MIN_POOL_PEER_PROTO_VERSION), 20);
+    int nRank1 = (rand() % nCount)+1;
+    int nRank2 = (rand() % nCount)+1;
 
     //keep picking another second number till we get one that doesn't match
     while(nRank1 == nRank2) nRank2 = (rand() % nCount)+1;
@@ -102,21 +104,17 @@ void CSandStormRelay::Relay()
 
 void CSandStormRelay::RelayThroughNode(int nRank)
 {
-    CStormnode* psn = snodeman.GetStormnodeByRank(nRank, nBlockHeight, MIN_SANDSTORM_PROTO_VERSION);
+    CStormnode* psn = snodeman.GetStormnodeByRank(nRank, nBlockHeight, MIN_POOL_PEER_PROTO_VERSION);
 
     if(psn != NULL){
         //printf("RelayThroughNode %s\n", psn->addr.ToString().c_str());
-        if(ConnectNode((CAddress)psn->addr, NULL, true)){
+        CNode* pnode = ConnectNode((CAddress)psn->addr, NULL, true);
+        if(pnode){
             //printf("Connected\n");
-            CNode* pNode = FindNode(psn->addr);
-            if(pNode)
-            {
-                //printf("Found\n");
-                pNode->PushMessage("ssr", (*this));
-                return;
-            }
+            pnode->PushMessage("ssr", (*this));
+            return;
         }
     } else {
         //printf("RelayThroughNode NULL\n");
     }
-} 
+}

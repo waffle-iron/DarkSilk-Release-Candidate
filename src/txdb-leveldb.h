@@ -1,4 +1,4 @@
-// Copyright (c) 2009-2015 The Bitcoin Developers.
+// Copyright (c) 2009-2016 The Bitcoin Developers.
 // Authored by Google, Inc.
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -14,6 +14,13 @@
 
 #include <leveldb/db.h>
 #include <leveldb/write_batch.h>
+#include "streams.h"
+
+/// Create a new block index entry for a given block hash
+CBlockIndex * InsertBlockIndex(uint256 hash);
+class CTxIndex;
+class CDiskTxPos;
+class CDiskBlockIndex;
 
 // Class that provides access to a LevelDB. Note that this class is frequently
 // instantiated on the stack and then destroyed again, so instantiation has to

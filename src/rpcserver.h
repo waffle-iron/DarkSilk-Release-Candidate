@@ -1,6 +1,6 @@
-// Copyright (c) 2010-2015 Satoshi Nakamoto
-// Copyright (c) 2009-2015 The Bitcoin developers
-// Copyright (c) 2015 The DarkSilk developers
+// Copyright (c) 2009-2016 Satoshi Nakamoto
+// Copyright (c) 2009-2016 The Bitcoin Developers
+// Copyright (c) 2015-2016 The Silk Network Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -110,6 +110,7 @@ extern json_spirit::Value dumpwallet(const json_spirit::Array& params, bool fHel
 extern json_spirit::Value importwallet(const json_spirit::Array& params, bool fHelp);
 extern json_spirit::Value dumpprivkey(const json_spirit::Array& params, bool fHelp); // in rpcdump.cpp
 extern json_spirit::Value importprivkey(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value importaddress(const json_spirit::Array& params, bool fHelp);
 
 extern json_spirit::Value sendalert(const json_spirit::Array& params, bool fHelp);
 
@@ -191,6 +192,8 @@ extern json_spirit::Value scanforalltxns      (const json_spirit::Array& params,
 extern json_spirit::Value sandstorm(const json_spirit::Array& params, bool fHelp);
 extern json_spirit::Value spork(const json_spirit::Array& params, bool fHelp);
 extern json_spirit::Value stormnode(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value snbudget(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value snfinalbudget(const json_spirit::Array& params, bool fHelp);
 extern json_spirit::Value stormnodelist(const json_spirit::Array& params, bool fHelp);
 
 extern json_spirit::Value smsgenable(const json_spirit::Array& params, bool fHelp);
@@ -206,22 +209,5 @@ extern json_spirit::Value smsgsendanon(const json_spirit::Array& params, bool fH
 extern json_spirit::Value smsginbox(const json_spirit::Array& params, bool fHelp);
 extern json_spirit::Value smsgoutbox(const json_spirit::Array& params, bool fHelp);
 extern json_spirit::Value smsgbuckets(const json_spirit::Array& params, bool fHelp);
-
-extern json_spirit::Value marketalllistings(const json_spirit::Array& params, bool fHelp);
-extern json_spirit::Value marketsearchlistings(const json_spirit::Array& params, bool fHelp);
-extern json_spirit::Value marketbuy(const json_spirit::Array& params, bool fHelp);
-extern json_spirit::Value marketsell(const json_spirit::Array& params, bool fHelp);
-extern json_spirit::Value marketapprovebuy(const json_spirit::Array& params, bool fHelp);
-extern json_spirit::Value marketrejectbuy(const json_spirit::Array& params, bool fHelp);
-extern json_spirit::Value marketbuyrequests(const json_spirit::Array& params, bool fHelp);
-extern json_spirit::Value marketmylistings(const json_spirit::Array& params, bool fHelp);
-extern json_spirit::Value marketcancellisting(const json_spirit::Array& params, bool fHelp);
-extern json_spirit::Value marketcancelescrow(const json_spirit::Array& params, bool fHelp);
-extern json_spirit::Value marketrequestpayment(const json_spirit::Array& params, bool fHelp);
-extern json_spirit::Value marketrefund(const json_spirit::Array& params, bool fHelp);
-extern json_spirit::Value marketmybuys(const json_spirit::Array& params, bool fHelp);
-extern json_spirit::Value marketescrowlock(const json_spirit::Array& params, bool fHelp);
-extern json_spirit::Value marketreleaseescrow(const json_spirit::Array& params, bool fHelp);
-extern json_spirit::Value marketrequestrefund(const json_spirit::Array& params, bool fHelp);
 
 #endif

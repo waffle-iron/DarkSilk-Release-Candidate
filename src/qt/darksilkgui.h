@@ -21,9 +21,6 @@ class DEBUGConsole;
 class BlockBrowser;
 class StatisticsPage;
 class MessagePage;
-class DarkSilkMarket;
-class BuysPage;
-class SellsPage;
 class StormnodeManager;
 
 QT_BEGIN_NAMESPACE
@@ -91,9 +88,6 @@ private:
     BlockBrowser *blockBrowser;
     StatisticsPage *statisticsPage;
     MessagePage *messagePage;
-    DarkSilkMarket *darksilkMarket;
-    BuysPage *buysPage;
-    SellsPage *sellsPage;
     StormnodeManager *stormnodeManagerPage;
 
     QLabel* netLabel;
@@ -133,9 +127,6 @@ private:
     QAction *blockAction;
     QAction *statisticsAction;
     QAction *messageAction;
-    QAction *darksilkMarketAction;
-    QAction *buysPageAction;
-    QAction *sellsPageAction;
     QAction *stormnodeManagerAction;
 
     QSystemTrayIcon *trayIcon;
@@ -211,12 +202,6 @@ private slots:
     void gotoStatisticsPage();
     /** Switch to Message Page*/
     void gotoMessagePage();
-    /** Switch to DarkSilkMarket Page*/
-    void gotoDarkSilkMarket();
-    /** Switch to Buys Page*/
-    void gotoBuysPage();
-    /** Switch to Sells Page*/
-    void gotoSellsPage();
     /** Switch to Stormnode Manager Page*/
     void gotoStormnodeManagerPage();
     /** Show Sign/Verify Message dialog and switch to sign message tab */

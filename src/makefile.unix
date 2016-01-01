@@ -1,4 +1,4 @@
-# Copyright (c) 2009-2010 Satoshi Nakamoto
+# Copyright (c) 2009-2016 Satoshi Nakamoto
 # Distributed under the MIT/X11 software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -9,7 +9,6 @@ LINK:=$(CXX)
 ARCH:=$(system lscpu | head -n 1 | awk '{print $2}')
 
 DEFS += -DBOOST_SPIRIT_THREADSAFE
-DEFS += -DUSE_SECP256K1
 DEFS += $(addprefix -I,$(CURDIR) $(CURDIR)/obj $(BOOST_INCLUDE_PATH) $(BDB_INCLUDE_PATH) $(OPENSSL_INCLUDE_PATH))
 LIBS = $(addprefix -L,$(BOOST_LIB_PATH) $(BDB_LIB_PATH) $(OPENSSL_LIB_PATH))
 
@@ -23,8 +22,7 @@ ifdef STATIC
 endif
 
 LIBS += \
- -Wl,-B$(LMODE) \
-   -l secp256k1
+ -Wl,-B$(LMODE)
 
 # for boost 1.37, add -mt to the boost libraries
 LIBS += \
@@ -103,6 +101,7 @@ xCXXFLAGS=-O2 $(EXT_OPTIONS) -pthread -Wall -Wextra -Wno-ignored-qualifiers -Wfo
 # adds some defaults in front. Unfortunately, LDFLAGS=... $(LDFLAGS) does not work.
 xLDFLAGS=$(LDHARDENING) $(LDFLAGS)
 
+
 OBJS= \
     obj/alert.o \
     obj/cleanse.o \
@@ -112,12 +111,13 @@ OBJS= \
     obj/addrman.o \
     obj/base58.o \
     obj/crypter.o \
-    obj/eckey.o \
+    obj/chain.o \
     obj/key.o \
     obj/init.o \
+    obj/pubkey.o \
+    obj/ecwrapper.o \
     obj/darksilkd.o \
     obj/keystore.o \
-    obj/core.o \
     obj/main.o \
     obj/net.o \
     obj/protocol.o \
@@ -147,14 +147,15 @@ OBJS= \
     obj/activestormnode.o \
     obj/sandstorm.o \
     obj/sandstorm-relay.o \
-    obj/eccryptoverify.o \
     obj/instantx.o \
     obj/stormnodeconfig.o \
     obj/stormnodeman.o \
     obj/stormnode.o \
+    obj/stormnode-budget.o \
     obj/stormnode-payments.o \
-    obj/stormnode-pos.o \
-    obj/rpcsandstorm.o \
+    obj/stormnode-sync.o \
+    obj/rpcstormnode.o \
+    obj/rpcstormnode-budget.o \
     obj/spork.o \
     obj/crypto/hmac_sha256.o \
     obj/crypto/hmac_sha512.o \
@@ -164,9 +165,12 @@ OBJS= \
     obj/crypto/sha256.o \
     obj/crypto/sha512.o \
     obj/smessage.o \
-    obj/rpcmarket.o \
-    obj/market.o \
-    obj/peertablemodel.o
+    obj/coins.o \
+    obj/compressor.o \
+    obj/undo.o \
+    obj/primitives/transaction.o \
+    obj/leveldbwrapper.o \
+    obj/txdb.o
 
 ifdef USE_NATIVE_I2P
 	OBJS += obj/i2p.o
@@ -187,10 +191,16 @@ endif
 
 all: darksilkd
 
+# libsecp256k1 support
+LIBS += $(CURDIR)/secp256k1/src/libsecp256k1_la-secp256k1.o 
+DEFS += $(addprefix -I,$(CURDIR)/secp256k1/include)
+
+# build leveldb	
 LIBS += $(CURDIR)/leveldb/libleveldb.a $(CURDIR)/leveldb/libmemenv.a
 DEFS += $(addprefix -I,$(CURDIR)/leveldb/include)
 DEFS += $(addprefix -I,$(CURDIR)/leveldb/helpers)
 OBJS += obj/txdb-leveldb.o
+
 leveldb/libleveldb.a:
 	@echo "Building LevelDB ..."; cd leveldb; make libleveldb.a libmemenv.a; cd ..;
 obj/txdb-leveldb.o: leveldb/libleveldb.a

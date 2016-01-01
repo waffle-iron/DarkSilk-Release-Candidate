@@ -10,7 +10,7 @@
 #include "timedata.h"
 #include "ui_interface.h"
 #include "wallet.h"
-#include "txdb.h"
+#include "txdb-leveldb.h"
 
 #include <string>
 
@@ -184,8 +184,9 @@ QString TransactionDesc::toHTML(CWallet *wallet, CWalletTx &wtx, TransactionReco
                 strHTML += "<b>" + tr("Debit") + ":</b> " + DarkSilkUnits::formatWithUnit(unit, -nValue) + "<br>";
                 strHTML += "<b>" + tr("Credit") + ":</b> " + DarkSilkUnits::formatWithUnit(unit, nValue) + "<br>";
             }
-
-            int64_t nTxFee = nDebit - wtx.GetValueOut();
+            CTransactionPoS txPoS;
+            CTransaction tx = CTransaction(wtx);
+            int64_t nTxFee = nDebit - txPoS.GetValueOut(tx);
             if (nTxFee > 0)
                 strHTML += "<b>" + tr("Transaction fee") + ":</b> " + DarkSilkUnits::formatWithUnit(unit, -nTxFee) + "<br>";
         }

@@ -27,11 +27,6 @@ greaterThan(QT_MAJOR_VERSION, 4) {
     QMAKE_CXXFLAGS = -fpermissive
 }
 
-linux {
-    SECP256K1_LIB_PATH = /usr/local/lib
-    SECP256K1_INCLUDE_PATH = /usr/local/include
-}
-
 # for boost 1.37, add -mt to the boost libraries
 # use: qmake BOOST_LIB_SUFFIX=-mt
 # for boost thread win32 with _win32 sufix
@@ -113,12 +108,24 @@ contains(DARKSILK_NEED_QT_PLUGINS, 1) {
     QTPLUGIN += qcncodecs qjpcodecs qtwcodecs qkrcodecs qtaccessiblewidgets
 }
 
-# LIBSEC256K1 SUPPORT
-QMAKE_CXXFLAGS *= -DUSE_SECP256K1
+# LIBSECP256K1 SUPPORT
+INCLUDEPATH += src/secp256k1/include src/secp256k1/src
+LIBS += $$PWD/src/secp256k1/src/libsecp256k1_la-secp256k1.o
+!win32 {
+    gensecp256k1.commands = cd $$PWD/src/secp256k1 && ./autogen.sh && ./configure --enable-module-recovery && make
+} else {
+    #Windows ???
+}
+gensecp256k1.target = $$PWD/src/secp256k1/src/libsecp256k1_la-secp256k1.o
+gensecp256k1.depends = FORCE
+PRE_TARGETDEPS += $$PWD/src/secp256k1/src/libsecp256k1_la-secp256k1.o
+QMAKE_EXTRA_TARGETS += gensecp256k1
+QMAKE_CLEAN += $$PWD/src/secp256k1/src/libsecp256k1_la-secp256k1.o; cd $$PWD/src/secp256k1 ; $(MAKE) clean
 
-INCLUDEPATH += src/leveldb/include src/leveldb/helpers
+INCLUDEPATH += src/leveldb/include src/leveldb/helpers src/leveldb/helpers/memenv
 LIBS += $$PWD/src/leveldb/libleveldb.a $$PWD/src/leveldb/libmemenv.a
-SOURCES += src/txdb-leveldb.cpp
+SOURCES += src/txdb-leveldb.cpp \
+    src/txdb.cpp
 
 !win32 {
     # we use QMAKE_CXXFLAGS_RELEASE even without RELEASE=1 because we use RELEASE to indicate linking preferences not -O preferences
@@ -150,7 +157,7 @@ QMAKE_CLEAN += $$PWD/src/leveldb/libleveldb.a; cd $$PWD/src/leveldb ; $(MAKE) cl
 
 #contains(DEFINES, USE_NATIVE_I2P) {
 #    geni2pbuild.depends = FORCE
-#    geni2pbuild.commands = cd $$PWD; /bin/sh share/inc_build_number.sh src/i2pbuild.h bitcoin-qt-build-number
+#    geni2pbuild.commands = cd $$PWD; /bin/sh share/inc_build_number.sh src/i2pbuild.h darksilk-qt-build-number
 #    geni2pbuild.target = src/i2pbuild.h
 #    PRE_TARGETDEPS += src/i2pbuild.h
 #    QMAKE_EXTRA_TARGETS += geni2pbuild
@@ -205,12 +212,12 @@ HEADERS += src/qt/darksilkgui.h \
     src/scrypt.h \
     src/pbkdf2.h \
     src/serialize.h \
-    src/core.h \
     src/main.h \
     src/miner.h \
     src/net.h \
     src/key.h \
-    src/eckey.h \
+    src/ecwrapper.h \
+    src/pubkey.h \
     src/db.h \
     src/txdb.h \
     src/txmempool.h \
@@ -271,8 +278,8 @@ HEADERS += src/qt/darksilkgui.h \
     src/qt/flowlayout.h \
     src/qt/sandstormconfig.h \
     src/stormnode.h \ 
+    src/stormnode-budget.h \
     src/stormnode-payments.h \
-    src/stormnode-pos.h \
     src/sandstorm.h \    
     src/sandstorm-relay.h \
     src/instantx.h \
@@ -282,12 +289,10 @@ HEADERS += src/qt/darksilkgui.h \
     src/crypto/common.h \
     src/crypto/hmac_sha256.h \
     src/crypto/hmac_sha512.h \
-    src/crypto/rfc6979_hmac_sha256.h \
     src/crypto/ripemd160.h \
     src/crypto/sha1.h \
     src/crypto/sha256.h \
     src/crypto/sha512.h \
-    src/eccryptoverify.h \
     src/qt/stormnodemanager.h \
     src/qt/addeditstormnode.h \
     src/qt/stormnodeconfigdialog.h \
@@ -299,15 +304,17 @@ HEADERS += src/qt/darksilkgui.h \
     src/qt/sendmessagesentry.h \
     src/qt/plugins/mrichtexteditor/mrichtextedit.h \
     src/qt/qvalidatedtextedit.h \
-    src/rpcmarket.h \
-    src/qt/darksilkmarket.h \
-    src/qt/buyspage.h \
-    src/qt/sellspage.h \
-    src/qt/createmarketlistingdialog.h \
-    src/qt/marketlistingdetailsdialog.h \
-    src/qt/deliverydetailsdialog.h \
-    src/market.h \
-    src/qt/peertablemodel.h
+    src/qt/peertablemodel.h \
+    src/primitives/block.h \
+    src/primitives/transaction.h \
+    src/stormnode-sync.h \
+    src/chain.h \
+    src/coins.h \
+    src/compressor.h \
+    src/undo.h \
+    src/leveldbwrapper.h \
+    src/streams.h \
+    src/txdb-leveldb.h
 
 SOURCES += src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
     src/qt/transactiontablemodel.cpp \
@@ -333,9 +340,9 @@ SOURCES += src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
     src/hash.cpp \
     src/netbase.cpp \
     src/key.cpp \
-    src/eckey.cpp \
+    src/ecwrapper.cpp \
+    src/pubkey.cpp \
     src/script.cpp \
-    src/core.cpp \
     src/main.cpp \
     src/miner.cpp \
     src/init.cpp \
@@ -395,11 +402,12 @@ SOURCES += src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
     src/qt/flowlayout.cpp \
     src/qt/sandstormconfig.cpp \
     src/stormnode.cpp \
+    src/stormnode-budget.cpp \
     src/stormnode-payments.cpp \
-    src/stormnode-pos.cpp \
     src/sandstorm.cpp \
     src/sandstorm-relay.cpp \
-    src/rpcsandstorm.cpp \
+    src/rpcstormnode.cpp \
+    src/rpcstormnode-budget.cpp \
     src/instantx.cpp \
     src/activestormnode.cpp \
     src/spork.cpp \
@@ -407,12 +415,10 @@ SOURCES += src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
     src/stormnodeman.cpp \
     src/crypto/hmac_sha256.cpp \
     src/crypto/hmac_sha512.cpp \
-    src/crypto/rfc6979_hmac_sha256.cpp \
     src/crypto/ripemd160.cpp \
     src/crypto/sha1.cpp \
     src/crypto/sha256.cpp \
     src/crypto/sha512.cpp \
-    src/eccryptoverify.cpp \
     src/qt/stormnodemanager.cpp \
     src/qt/addeditstormnode.cpp \
     src/qt/stormnodeconfigdialog.cpp \
@@ -425,14 +431,14 @@ SOURCES += src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
     src/qt/qvalidatedtextedit.cpp \
     src/qt/plugins/mrichtexteditor/mrichtextedit.cpp \
     src/rpcsmessage.cpp \
-    src/rpcmarket.cpp \
-    src/qt/darksilkmarket.cpp \
-    src/qt/buyspage.cpp \
-    src/qt/sellspage.cpp \
-    src/qt/createmarketlistingdialog.cpp \
-    src/qt/marketlistingdetailsdialog.cpp \
-    src/qt/deliverydetailsdialog.cpp \
-    src/market.cpp
+    src/primitives/block.cpp \
+    src/primitives/transaction.cpp \
+    src/stormnode-sync.cpp \
+    src/chain.cpp \
+    src/uint256.cpp \
+    src/coins.cpp \
+    src/compressor.cpp \
+    src/leveldbwrapper.cpp
 
 RESOURCES += \
     src/qt/darksilk.qrc
@@ -459,13 +465,7 @@ FORMS += \
     src/qt/forms/messagepage.ui \
     src/qt/forms/sendmessagesentry.ui \
     src/qt/forms/sendmessagesdialog.ui \
-    src/qt/plugins/mrichtexteditor/mrichtextedit.ui \
-    src/qt/forms/darksilkmarket.ui \
-    src/qt/forms/buyspage.ui \
-    src/qt/forms/sellspage.ui \
-    src/qt/forms/createmarketlistingdialog.ui \
-    src/qt/forms/marketlistingdetailsdialog.ui \
-    src/qt/forms/deliverydetailsdialog.ui \
+    src/qt/plugins/mrichtexteditor/mrichtextedit.ui
 
 contains(DEFINES, USE_NATIVE_I2P) {
 HEADERS += src/i2p.h \
@@ -549,13 +549,6 @@ isEmpty(QRENCODE_INCLUDE_PATH) {
     macx:QRENCODE_INCLUDE_PATH = /usr/local/include
 }
 
-isEmpty(SECP256K1_LIB_PATH) {
-    macx:SECP256K1_LIB_PATH = /usr/local/lib
-}
-
-isEmpty(SECP256K1_INCLUDE_PATH) {
-    macx:SECP256K1_INCLUDE_PATH = /usr/local/include
-}
 windows:DEFINES += WIN32
 windows:RC_FILE = src/qt/res/darksilk-qt.rc
 
@@ -582,12 +575,11 @@ macx:QMAKE_CXXFLAGS_THREAD += -pthread
 macx:QMAKE_INFO_PLIST = share/qt/Info.plist
 
 # Set libraries and includes at end, to use platform-defined defaults if not overridden
-INCLUDEPATH += $$SECP256K1_INCLUDE_PATH $$BOOST_INCLUDE_PATH $$BDB_INCLUDE_PATH $$OPENSSL_INCLUDE_PATH $$QRENCODE_INCLUDE_PATH
-LIBS += $$join(SECP256K1_LIB_PATH,,-L,) $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)
+INCLUDEPATH += $$BOOST_INCLUDE_PATH $$BDB_INCLUDE_PATH $$OPENSSL_INCLUDE_PATH $$QRENCODE_INCLUDE_PATH
+LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)
 LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX
 # -lgdi32 has to happen after -lcrypto (see  #681)
 windows:LIBS += -lws2_32 -lshlwapi -lmswsock -lole32 -loleaut32 -luuid -lgdi32
-LIBS += -lsecp256k1
 LIBS += -lboost_system$$BOOST_LIB_SUFFIX -lboost_filesystem$$BOOST_LIB_SUFFIX -lboost_program_options$$BOOST_LIB_SUFFIX -lboost_thread$$BOOST_THREAD_LIB_SUFFIX
 windows:LIBS += -lboost_chrono$$BOOST_LIB_SUFFIX
 
@@ -604,3 +596,10 @@ contains(RELEASE, 1) {
 }
 
 system($$QMAKE_LRELEASE -silent $$_PRO_FILE_)
+
+DISTFILES += \
+    src/makefile.bsd \
+    src/makefile.linux-mingw \
+    src/makefile.mingw \
+    src/makefile.osx \
+    src/makefile.unix

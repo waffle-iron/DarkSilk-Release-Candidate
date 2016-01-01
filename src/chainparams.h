@@ -1,12 +1,13 @@
-// Copyright (c) 2009-2015 Satoshi Nakamoto
-// Copyright (c) 2009-2015 The Bitcoin developers
-// Copyright (c) 2015 The DarkSilk developers
+// Copyright (c) 2009-2016 Satoshi Nakamoto
+// Copyright (c) 2009-2016 The Bitcoin Developers
+// Copyright (c) 2015-2016 The Silk Network Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef DARKSILK_CHAIN_PARAMS_H
 #define DARKSILK_CHAIN_PARAMS_H
 
+#include "primitives/block.h"
 #include "bignum.h"
 #include "uint256.h"
 #include "util.h"
@@ -68,6 +69,12 @@ public:
     virtual const vector<CAddress>& FixedSeeds() const = 0;
     int RPCPort() const { return nRPCPort; }
     int LastPOWBlock() const { return nLastPOWBlock; }
+    int FirstPOSBlock() const { return nFirstPOSBlock; }
+    std::string StormnodePaymentPubKey() const { return strStormnodePaymentsPubKey; }
+    int64_t StartStormnodePayments() const { return nStartStormnodePayments; }
+    int PoolMaxTransactions() const { return nPoolMaxTransactions; }
+    std::string SandstormPoolDummyAddress() const { return strSandstormPoolDummyAddress; }
+
 protected:
     CChainParams() {};
 
@@ -82,7 +89,12 @@ protected:
     string strDataDir;
     vector<CDNSSeedData> vSeeds;
     std::vector<unsigned char> base58Prefixes[MAX_BASE58_TYPES];
+    std::string strStormnodePaymentsPubKey;
+    int64_t nStartStormnodePayments;
     int nLastPOWBlock;
+    int nFirstPOSBlock;
+    int nPoolMaxTransactions;
+    std::string strSandstormPoolDummyAddress;
 };
 
 /**

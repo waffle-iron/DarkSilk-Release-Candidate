@@ -25,6 +25,7 @@
 const int CONSOLE_HISTORY = 50;
 const QSize ICON_SIZE(24, 24);
 
+
 const int INITIAL_TRAFFIC_GRAPH_MINS = 30;
 
 const struct {
@@ -143,6 +144,13 @@ bool parseCommandLine(std::vector<std::string> &args, const std::string &strComm
     }
 }
 
+QString GetBoostVersion()
+{
+   return "Boost v" + QString::number(BOOST_VERSION / 100000) + "." + //major version
+                        QString::number(BOOST_VERSION / 100 % 1000) + "." + // minor version
+                        QString::number(BOOST_VERSION % 100); // patch level
+}
+
 void RPCExecutor::request(const QString &command)
 {
     std::vector<std::string> args;
@@ -211,6 +219,7 @@ DEBUGConsole::DEBUGConsole(QWidget *parent) :
 
     // set OpenSSL version label
     ui->openSSLVersion->setText(SSLeay_version(SSLEAY_VERSION));
+    ui->boostVersion->setText(GetBoostVersion());
 #ifdef ENABLE_WALLET
     ui->berkeleyDBVersion->setText(DbEnv::version(0, 0, 0));
 #else
@@ -450,14 +459,8 @@ void DEBUGConsole::updateNodeDetail(const CNodeCombinedStats *stats)
         // Ban score is init to 0
         ui->peerBanScore->setText(QString("%1").arg(stats->nodeStateStats.nMisbehavior));
 
-        // Sync height is init to -1
-        if (stats->nodeStateStats.nSyncHeight > -1)
-            ui->peerSyncHeight->setText(QString("%1").arg(stats->nodeStateStats.nSyncHeight));
-        else
-            ui->peerSyncHeight->setText(tr("Unknown"));
     } else {
         ui->peerBanScore->setText(tr("Fetching..."));
-        ui->peerSyncHeight->setText(tr("Fetching..."));
     }
 
     ui->detailWidget->show();

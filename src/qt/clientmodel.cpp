@@ -12,6 +12,7 @@
 #include "main.h"
 #include "ui_interface.h"
 #include "stormnodeman.h"
+#include "stormnode-sync.h"
 
 #include <QDateTime>
 #include <QTimer>

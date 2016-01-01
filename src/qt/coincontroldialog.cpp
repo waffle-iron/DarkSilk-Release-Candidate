@@ -4,7 +4,6 @@
 #include "addresstablemodel.h"
 #include "base58.h"
 #include "coincontrol.h"
-#include "core.h"
 #include "darksilkunits.h"
 #include "guiutil.h"
 #include "init.h"
@@ -370,7 +369,8 @@ void CoinControlDialog::radioListMode(bool checked)
 // checkbox clicked by user
 void CoinControlDialog::viewItemChanged(QTreeWidgetItem* item, int column)
 {
-    if (column == COLUMN_CHECKBOX && item->text(COLUMN_TXHASH).length() == 64) // transaction hash is 64 characters (this means its a child node, so its not a parent node in tree mode)
+    //TODO (Amir): redo this with new sandstorm.
+    /*if (column == COLUMN_CHECKBOX && item->text(COLUMN_TXHASH).length() == 64) // transaction hash is 64 characters (this means its a child node, so its not a parent node in tree mode)
     {
         COutPoint outpt(uint256(item->text(COLUMN_TXHASH).toStdString()), item->text(COLUMN_VOUT_INDEX).toUInt());
 
@@ -384,7 +384,7 @@ void CoinControlDialog::viewItemChanged(QTreeWidgetItem* item, int column)
             int rounds = GetInputSandstormRounds(vin);
             if(coinControl->useSandStorm && rounds < nSandstormRounds) {
                 QMessageBox::warning(this, windowTitle(),
-                    tr("Non-anonymized input selected. <b>Sandstorm will be disabled.</b><br><br>If you still want to use Sandstorm, please deselect all non-nonymized inputs first and then check Darksend checkbox again."),
+                    tr("Non-anonymized input selected. <b>Sandstorm will be disabled.</b><br><br>If you still want to use Sandstorm, please deselect all non-nonymized inputs first and then check Sandstorm checkbox again."),
                     QMessageBox::Ok, QMessageBox::Ok);
                 coinControl->useSandStorm = false;
             }
@@ -393,7 +393,7 @@ void CoinControlDialog::viewItemChanged(QTreeWidgetItem* item, int column)
         // selection changed -> update labels
         if (ui->treeWidget->isEnabled()) // do not update on every click for (un)select all
             CoinControlDialog::updateLabels(model, this);
-    }
+    }*/
 }
 // helper function, return human readable label for priority number
 QString CoinControlDialog::getPriorityLabel(double dPriority)
@@ -433,7 +433,7 @@ void CoinControlDialog::updateLabels(WalletModel *model, QDialog* dialog)
     // nPayAmount
     qint64 nPayAmount = 0;
     bool fDust = false;
-    CTransaction txDummy;
+    CTransaction txDummy; //TODO (AA): Do we need CMutableTransaction???
     foreach(const qint64 &amount, CoinControlDialog::payAmounts)
     {
         nPayAmount += amount;
@@ -506,7 +506,7 @@ void CoinControlDialog::updateLabels(WalletModel *model, QDialog* dialog)
         if(coinControl->useInstantX) nFee = max(nFee, CENT);
         
         // Min Fee
-        int64_t nMinFee = GetMinFee(txDummy, nBytes, AllowFree(dPriority), GMF_SEND);
+        int64_t nMinFee = GetMinFee(CTransaction(txDummy), nBytes, AllowFree(dPriority), GMF_SEND);
         
         nPayFee = max(nFee, nMinFee);
         
@@ -514,7 +514,7 @@ void CoinControlDialog::updateLabels(WalletModel *model, QDialog* dialog)
         {
             nChange = nAmount - nPayFee - nPayAmount;
 
-            // DS Fee = overpay
+            // SS Fee = overpay
             if(coinControl->useSandStorm && nChange > 0)
             {
                 nPayFee += nChange;
@@ -708,8 +708,9 @@ void CoinControlDialog::updateView()
             itemOutput->setText(COLUMN_DATE, QDateTime::fromTime_t(out.tx->GetTxTime()).toUTC().toString("yy-MM-dd hh:mm"));
             
             // Sandstorm rounds
-            CTxIn vin = CTxIn(out.tx->GetHash(), out.i);
-            int rounds = GetInputSandstormRounds(vin);
+            //TODO (Amir): put GetInputSandstormRounds back
+            //CTxIn vin = CTxIn(out.tx->GetHash(), out.i);
+            int rounds = 0; //GetInputSandstormRounds(vin);
 
             if(rounds > 0) itemOutput->setText(COLUMN_SANDSTORM_ROUNDS, strPad(QString::number(rounds), 15, " "));
             else itemOutput->setText(COLUMN_SANDSTORM_ROUNDS, strPad(QString("n/a"), 15, " "));

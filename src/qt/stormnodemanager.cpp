@@ -148,7 +148,8 @@ static QString seconds_to_DHMS(quint32 duration)
 
 void StormnodeManager::updateNodeList()
 {
-    TRY_LOCK(cs_stormnodes, lockStormnodes);
+    //TODO (Amir): Put back
+    /*TRY_LOCK(cs_stormnodes, lockStormnodes);
     if(!lockStormnodes)
         return;
 
@@ -195,6 +196,7 @@ void StormnodeManager::updateNodeList()
             updateStormNode(QString::fromStdString(storm.second.sAlias), QString::fromStdString(storm.second.sAddress), QString::fromStdString(storm.second.sStormnodePrivKey), QString::fromStdString(storm.second.sCollateralAddress));
         }
     }
+    */
 }
 
 void StormnodeManager::setClientModel(ClientModel *model)
@@ -306,6 +308,8 @@ void StormnodeManager::on_startButton_clicked()
     std::string sAddress = ui->tableWidget_2->item(r, 1)->text().toStdString();
     CStormNodeConfig c = pwalletMain->mapMyStormNodes[sAddress];
 
+    //TODO (Amir): Put back these lines.
+    /*
     std::string errorMessage;
     bool result = activeStormnode.RegisterByPubKey(c.sAddress, c.sStormnodePrivKey, c.sCollateralAddress, errorMessage);
 
@@ -316,6 +320,7 @@ void StormnodeManager::on_startButton_clicked()
         msg.setText("Error: " + QString::fromStdString(errorMessage));
 
     msg.exec();
+    */
 }
 
 void StormnodeManager::on_stopButton_clicked()
@@ -332,7 +337,8 @@ void StormnodeManager::on_stopButton_clicked()
     CStormNodeConfig c = pwalletMain->mapMyStormNodes[sAddress];
 
     std::string errorMessage;
-    bool result = activeStormnode.StopStormNode(c.sAddress, c.sStormnodePrivKey, errorMessage);
+    //TODO (AA): put back. StopStormNode undefined.
+    bool result = false;//activeStormnode.StopStormNode(c.sAddress, c.sStormnodePrivKey, errorMessage);
     QMessageBox msg;
     if(result)
     {
@@ -347,25 +353,29 @@ void StormnodeManager::on_stopButton_clicked()
 
 void StormnodeManager::on_startAllButton_clicked()
 {
+    //TODO (Amir): Put these lines back.
+    /*
     std::string results;
     BOOST_FOREACH(PAIRTYPE(std::string, CStormNodeConfig) storm, pwalletMain->mapMyStormNodes)
     {
         CStormNodeConfig c = storm.second;
-	std::string errorMessage;
+
+        std::string errorMessage;
         bool result = activeStormnode.RegisterByPubKey(c.sAddress, c.sStormnodePrivKey, c.sCollateralAddress, errorMessage);
-	if(result)
-	{
-   	    results += c.sAddress + ": STARTED\n";
-	}	
-	else
-	{
-	    results += c.sAddress + ": ERROR: " + errorMessage + "\n";
-	}
+        if(result)
+        {
+            results += c.sAddress + ": STARTED\n";
+        }
+        else
+        {
+            results += c.sAddress + ": ERROR: " + errorMessage + "\n";
+        }
     }
 
     QMessageBox msg;
     msg.setText(QString::fromStdString(results));
     msg.exec();
+    */
 }
 
 void StormnodeManager::on_stopAllButton_clicked()
@@ -374,16 +384,17 @@ void StormnodeManager::on_stopAllButton_clicked()
     BOOST_FOREACH(PAIRTYPE(std::string, CStormNodeConfig) storm, pwalletMain->mapMyStormNodes)
     {
         CStormNodeConfig c = storm.second;
-	std::string errorMessage;
-        bool result = activeStormnode.StopStormNode(c.sAddress, c.sStormnodePrivKey, errorMessage);
-	if(result)
-	{
-   	    results += c.sAddress + ": STOPPED\n";
-	}	
-	else
-	{
-	    results += c.sAddress + ": ERROR: " + errorMessage + "\n";
-	}
+        std::string errorMessage;
+        //TODO (AA): Put back. StopStormNode is undefined.
+        bool result = false;//activeStormnode.StopStormNode(c.sAddress, c.sStormnodePrivKey, errorMessage);
+        if(result)
+        {
+            results += c.sAddress + ": STOPPED\n";
+        }
+        else
+        {
+            results += c.sAddress + ": ERROR: " + errorMessage + "\n";
+        }
     }
 
     QMessageBox msg;

@@ -13,11 +13,11 @@
     </message>
     <message>
         <location line="+41"/>
-        <source>Copyright © 2009-2015 The Bitcoin developers
-Copyright (c) 2015 The DarkSilk Developers</source>
-        <translation>コピーライト © 2009-2015 The Bitcoin developers
-コピーライト © 2015 The DarkSilk developers
-コピーライト © 2015 The DarkSilk Developers</translation>
+        <source>Copyright © 2009-2016 The Bitcoin Developers
+Copyright (c) 2015-2016 The Silk Network Developers</source>
+        <translation>コピーライト © 2009-2016 The Bitcoin Developers
+コピーライト © 2015-2016 The Silk Network Developers
+コピーライト © 2015-2016 The Silk Network Developers</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -2974,8 +2974,8 @@ alternate-background-color: rgb(86, 0, 120);)</translation>
     </message>
     <message>
         <location line="+30"/>
-        <source>Set maximum block size in bytes (default: 250000)</source>
-        <translation>最大ブロックサイズをバイトで設定 (初期値: 250000)</translation>
+        <source>Set maximum block size in bytes (default: 50000000)</source>
+        <translation>最大ブロックサイズをバイトで設定 (初期値: 50000000)</translation>
     </message>
     <message>
         <location line="-1"/>

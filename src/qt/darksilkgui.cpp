@@ -1,9 +1,9 @@
 /*
  * Qt5 DarkSilk GUI.
  *
- * W.J. van der Laan 2011-2015
- * The Bitcoin Developers 2011-2015
- * The DarkSilk Developers 2015
+ * W.J. van der Laan 2011-2016
+ * The Bitcoin Developers 2011-2016
+ * Silk Network 2015-2016
  */
 
 #include <QApplication>
@@ -36,9 +36,6 @@
 #include "blockbrowser.h"
 #include "statisticspage.h"
 #include "messagepage.h"
-#include "darksilkmarket.h"
-#include "buyspage.h"
-#include "sellspage.h"
 
 #ifdef USE_NATIVE_I2P
 #include "showi2paddresses.h"
@@ -95,8 +92,9 @@ DarkSilkGUI::DarkSilkGUI(QWidget *parent):
     notificator(0),
     debugConsole(0),
     prevBlocks(0),
-    nWeight(0) {
-    resize(1000, 600);
+    nWeight(0)
+{
+    resize(850+95, 550);
     setWindowTitle(tr("DarkSilk") + " - " + tr("Wallet"));
 #ifndef Q_OS_MAC
     qApp->setWindowIcon(QIcon(":icons/darksilk"));
@@ -122,7 +120,7 @@ DarkSilkGUI::DarkSilkGUI(QWidget *parent):
 
     QPalette p;
     p.setColor(QPalette::Window, QColor(0, 0, 0));
-    p.setColor(QPalette::Text, QColor(80, 0, 120));
+    p.setColor(QPalette::Text, QColor(67, 67, 67));
     setPalette(p);
 
     // Create tabs
@@ -148,12 +146,6 @@ DarkSilkGUI::DarkSilkGUI(QWidget *parent):
 
     messagePage = new MessagePage(this);
 
-    darksilkMarket = new DarkSilkMarket(this);
-
-    buysPage = new BuysPage(this);
-
-    sellsPage = new SellsPage(this);
-
     stormnodeManagerPage = 0;
 
 
@@ -161,9 +153,6 @@ DarkSilkGUI::DarkSilkGUI(QWidget *parent):
     centralStackedWidget->setContentsMargins(0, 0, 0, 0);
     centralStackedWidget->addWidget(overviewPage);
     centralStackedWidget->addWidget(messagePage);
-    centralStackedWidget->addWidget(darksilkMarket);
-    centralStackedWidget->addWidget(buysPage);
-    centralStackedWidget->addWidget(sellsPage);
     centralStackedWidget->addWidget(blockBrowser);
     centralStackedWidget->addWidget(statisticsPage);
     centralStackedWidget->addWidget(transactionsPage);
@@ -249,7 +238,7 @@ DarkSilkGUI::DarkSilkGUI(QWidget *parent):
         QString curStyle = qApp->style()->metaObject()->className();
 
         if(curStyle == "QWindowsStyle" || curStyle == "QWindowsXPStyle") {
-            progressBar->setStyleSheet("QProgressBar { background-color: rgb(0,0,0); border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #500078, stop: 1 #500078); border-radius: 7px; margin: 0px; }");
+            progressBar->setStyleSheet("QProgressBar { background-color: rgb(0,0,0); border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #220050, stop: 1 #500078); border-radius: 7px; margin: 0px; }");
 
             appMenuBar->setStyleSheet("QMenuBar { background-color: rgb(0,0,0); }");
         }
@@ -279,8 +268,8 @@ DarkSilkGUI::DarkSilkGUI(QWidget *parent):
     debugConsole = new DEBUGConsole(this);
     connect(openDEBUGConsoleAction, SIGNAL(triggered()), debugConsole, SLOT(show()));
     connect(openPeersAction, SIGNAL(triggered()), debugConsole, SLOT(showPeers()));
-    // prevents an oben debug window from becoming stuck/unusable on client shutdown
-    connect(quitAction, SIGNAL(triggered()), debugConsole, SLOT(hide())); // prevents an oben debug window from becoming stuck/unusable on client shutdown
+    // prevents an open debug window from becoming stuck/unusable on client shutdown
+    connect(quitAction, SIGNAL(triggered()), debugConsole, SLOT(hide())); // prevents an open debug window from becoming stuck/unusable on client shutdown
 
     gotoOverviewPage();
 }
@@ -380,35 +369,14 @@ void DarkSilkGUI::createActions()
 #endif
     tabGroup->addAction(messageAction);
 
-    darksilkMarketAction = new QAction(QIcon(":/icons/darksilk"), tr("&DarkSilkMarket"), this);
-    darksilkMarketAction->setToolTip(tr("Browse the Market."));
-    darksilkMarketAction->setCheckable(true);
-#ifdef Q_OS_MAC
-    darksilkMarketAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_9));
-#else
-    darksilkMarketAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_9));
-#endif
-    tabGroup->addAction(darksilkMarketAction);
-
-
-    buysPageAction = new QAction(QIcon(":/icons/darksilk"), tr("&Market Purchases"), this);
-    buysPageAction->setToolTip(tr("Show my DarkSilkMarket Buys."));
-    buysPageAction->setCheckable(true);
-#ifdef Q_OS_MAC
-    buysPageAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_0));
-#else
-    buysPageAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_0));
-#endif
-    tabGroup->addAction(buysPageAction);
-
-    sellsPageAction = new QAction(QIcon(":/icons/darksilk"), tr("&Market Sells"), this);
-    sellsPageAction->setToolTip(tr("Show my DarkSilkMarket Sells."));
-    sellsPageAction->setCheckable(true);
-    tabGroup->addAction(sellsPageAction);
-
     stormnodeManagerAction = new QAction(QIcon(":/icons/darksilk"), tr("&Stormnode Network"), this);
     stormnodeManagerAction->setToolTip(tr("Show Stormnodes status and configure your nodes."));
     stormnodeManagerAction->setCheckable(true);
+#ifdef Q_OS_MAC
+    stormnodeManagerAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_9));
+#else
+    stormnodeManagerAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_9));
+#endif
     tabGroup->addAction(stormnodeManagerAction);
 
     connect(overviewAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
@@ -427,12 +395,7 @@ void DarkSilkGUI::createActions()
     connect(statisticsAction, SIGNAL(triggered()), this, SLOT(gotoStatisticsPage()));
     connect(messageAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(messageAction, SIGNAL(triggered()), this, SLOT(gotoMessagePage()));
-    connect(darksilkMarketAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-    connect(darksilkMarketAction, SIGNAL(triggered()), this, SLOT(gotoDarkSilkMarket()));
-    connect(buysPageAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-    connect(buysPageAction, SIGNAL(triggered()), this, SLOT(gotoBuysPage()));
-    connect(sellsPageAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-    connect(sellsPageAction, SIGNAL(triggered()), this, SLOT(gotoSellsPage()));
+
     connect(stormnodeManagerAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(stormnodeManagerAction, SIGNAL(triggered()), this, SLOT(gotoStormnodeManagerPage()));
 
@@ -505,6 +468,12 @@ void DarkSilkGUI::createMenuBar()
     appMenuBar = menuBar();
 #endif
 
+    // workaround for unity's global menu
+    if (qgetenv("QT_QPA_PLATFORMTHEME") == "appmenu-qt5")
+        appMenuBar = menuBar();
+    else
+        appMenuBar = new QMenuBar();
+
     // Configure the menus
     QMenu *file = appMenuBar->addMenu(tr("&File"));
     file->addAction(backupWalletAction);
@@ -533,21 +502,27 @@ void DarkSilkGUI::createMenuBar()
 static QWidget* makeToolBarSpacer() 
 {
     QWidget* spacer = new QWidget();
-
     spacer->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    spacer->setStyleSheet("QWidget { background: none; }");
-
+    spacer->setStyleSheet(fUseBlackTheme ? "QWidget { background: rgb(0,0,0); }" : "QWidget { background: none; }");
     return spacer;
 }
+
+/*static QWidget* makeHeaderSpacer()
+
+ {
+    QWidget* spacer = new QWidget();
+    spacer->setMinimumSize(0,10);
+    spacer->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    spacer->setStyleSheet(fUseBlackTheme ? "QWidget { background: rgb(0,0,0); }" : "QWidget { background: none; }");
+    return spacer;
+}*/
 
 void DarkSilkGUI::createToolBars() 
 {
     QLabel* header = new QLabel();
-    header->setMinimumSize(48, 48);
+    header->setMinimumSize(0, 48);
     header->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-    header->setPixmap(QPixmap(":/icons/darksilk"));
-    header->setMaximumSize(48, 48);
-    header->setScaledContents(true);
+    header->setPixmap(QPixmap(":/icons/header"));
 
     toolbar = new QToolBar(tr("Tabs toolbar"));
     toolbar->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
@@ -565,9 +540,6 @@ void DarkSilkGUI::createToolBars()
     toolbarMenu->addAction(statisticsAction);
     toolbarMenu->addAction(blockAction);
     toolbarMenu->addAction(messageAction);
-    toolbarMenu->addAction(darksilkMarketAction);
-    toolbarMenu->addAction(buysPageAction);
-    toolbarMenu->addAction(sellsPageAction);
     toolbarMenu->addAction(stormnodeManagerAction);
 
     QAction* menuAction = new QAction(QIcon(":/icons/overview"), tr("&Menu"), this);
@@ -867,33 +839,13 @@ void DarkSilkGUI::setNumI2PConnections(int count)
 void DarkSilkGUI::setNumConnections(int count) 
 {
     QString icon;
-
-    switch(count) {
-        case 0:
-            icon = fUseBlackTheme ? ":/icons/black/connect_0" : ":/icons/connect_0";
-            break;
-
-        case 1:
-        case 2:
-        case 3:
-            icon = fUseBlackTheme ? ":/icons/black/connect_1" : ":/icons/connect_1";
-            break;
-
-        case 4:
-        case 5:
-        case 6:
-            icon = fUseBlackTheme ? ":/icons/black/connect_2" : ":/icons/connect_2";
-            break;
-
-        case 7:
-        case 8:
-        case 9:
-            icon = fUseBlackTheme ? ":/icons/black/connect_3" : ":/icons/connect_3";
-            break;
-
-        default:
-            icon = fUseBlackTheme ? ":/icons/black/connect_4" : ":/icons/connect_4";
-            break;
+    switch(count) 
+    {
+        case 0: icon = fUseBlackTheme ? ":/icons/black/connect_0" : ":/icons/connect_0"; break;
+        case 1: case 2: case 3: icon = fUseBlackTheme ? ":/icons/black/connect_1" : ":/icons/connect_1"; break;
+        case 4: case 5: case 6: icon = fUseBlackTheme ? ":/icons/black/connect_2" : ":/icons/connect_2"; break;
+        case 7: case 8: case 9: icon = fUseBlackTheme ? ":/icons/black/connect_3" : ":/icons/connect_3"; break;
+        default: icon = fUseBlackTheme ? ":/icons/black/connect_4" : ":/icons/connect_4"; break;
     }
 
     labelConnectionsIcon->setPixmap(QIcon(icon).pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
@@ -902,14 +854,18 @@ void DarkSilkGUI::setNumConnections(int count)
 
 void DarkSilkGUI::setNumBlocks(int count) 
 {
-    if(!clientModel)
+    // don't show / hide progress bar and its label if we have no connection to the network
+    if (!clientModel || (clientModel->getNumConnections() == 0 && !clientModel->isImporting()))
+    {
+        statusBar()->setVisible(false);
+
         return;
+    }
 
     QString tooltip;
 
     QDateTime lastBlockDate = clientModel->getLastBlockDate();
     QDateTime currentDate = QDateTime::currentDateTime();
-
     int totalSecs = GetTime() - Params().GenesisBlock().GetBlockTime();
     int secs = lastBlockDate.secsTo(currentDate);
 
@@ -951,6 +907,7 @@ void DarkSilkGUI::setNumBlocks(int count)
         progressBar->setMaximum(totalSecs);
         progressBar->setValue(totalSecs - secs);
         progressBar->setVisible(true);
+        //fShowStatusBar = true;
 
         tooltip = tr("Catching up...") + QString("<br>") + tooltip;
 
@@ -1266,50 +1223,6 @@ void DarkSilkGUI::gotoMessagePage()
     connect(exportAction, SIGNAL(triggered()), messagePage, SLOT(exportClicked()));
 }
 
-void DarkSilkGUI::gotoDarkSilkMarket()
-{
-    //DarkSilkMarketAction->setChecked(true);
-    //centralStackedWidget->setCurrentWidget(darksilkMarket);
-
-    //exportAction->setEnabled(false);
-    //disconnect(exportAction, SIGNAL(triggered()), 0, 0);
-    
-    darksilkMarketAction->setChecked(true);
-    
-    centralStackedWidget->setCurrentWidget(darksilkMarket);
-
-    exportAction->setEnabled(false);
-    disconnect(exportAction, SIGNAL(triggered()), 0, 0);
-}
-
-void DarkSilkGUI::gotoBuysPage()
-{
-    //buysPageAction->setChecked(true);
-    //centralStackedWidget->setCurrentWidget(buysPage);
-
-    //exportAction->setEnabled(false);
-    //disconnect(exportAction, SIGNAL(triggered()), 0, 0);
-    
-    centralStackedWidget->setCurrentWidget(buysPage);
-
-    exportAction->setEnabled(false);
-    disconnect(exportAction, SIGNAL(triggered()), 0, 0);
-}
-
-void DarkSilkGUI::gotoSellsPage()
-{
-    //sellsPageAction->setChecked(true);
-    //centralStackedWidget->setCurrentWidget(sellsPage);
-
-    //exportAction->setEnabled(false);
-    //disconnect(exportAction, SIGNAL(triggered()), 0, 0);
-    
-    centralStackedWidget->setCurrentWidget(sellsPage);
-
-    exportAction->setEnabled(false);
-    disconnect(exportAction, SIGNAL(triggered()), 0, 0);
-}
-
 void DarkSilkGUI::gotoStormnodeManagerPage() 
 {
 
@@ -1548,7 +1461,8 @@ void DarkSilkGUI::updateStakingIcon()
 {
     updateWeight();
 
-    if (nLastCoinStakeSearchInterval && nWeight) {
+    if (pindexBest != NULL && nLastCoinStakeSearchInterval && nWeight &&
+            pindexBest->nHeight >= Params().FirstPOSBlock()) {
         uint64_t nWeight = this->nWeight;
         uint64_t nNetworkWeight = GetPoSKernelPS();
 
@@ -1574,7 +1488,9 @@ void DarkSilkGUI::updateStakingIcon()
     } else {
         labelStakingIcon->setPixmap(QIcon(fUseBlackTheme ? ":/icons/black/staking_off" : ":/icons/staking_off").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
 
-        if (pwalletMain && pwalletMain->IsLocked()) {
+        if (pindexBest != NULL && pindexBest->nHeight < Params().FirstPOSBlock()) {
+            labelStakingIcon->setToolTip(tr("Not staking because proof-of-stake has not started"));
+        } else if (pwalletMain && pwalletMain->IsLocked()) {
             labelStakingIcon->setToolTip(tr("Not staking because wallet is locked"));
         } else if (vNodes.empty()) {
             labelStakingIcon->setToolTip(tr("Not staking because wallet is offline"));
@@ -1587,6 +1503,7 @@ void DarkSilkGUI::updateStakingIcon()
         }
     }
 }
+
 
 void DarkSilkGUI::detectShutdown() 
 {

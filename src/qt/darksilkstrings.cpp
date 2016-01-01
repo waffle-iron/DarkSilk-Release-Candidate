@@ -113,7 +113,7 @@ QT_TRANSLATE_NOOP("darksilk-core", "Imports blocks from external blk000?.dat fil
 QT_TRANSLATE_NOOP("darksilk-core", "Keep at most <n> unconnectable blocks in memory (default: %u)"),
 QT_TRANSLATE_NOOP("darksilk-core", "Block creation options:"),
 QT_TRANSLATE_NOOP("darksilk-core", "Set minimum block size in bytes (default: 0)"),
-QT_TRANSLATE_NOOP("darksilk-core", "Set maximum block size in bytes (default: 250000)"),
+QT_TRANSLATE_NOOP("darksilk-core", "Set maximum block size in bytes (default: 50000000)"),
 QT_TRANSLATE_NOOP("darksilk-core", ""
 "Set maximum size of high-priority/low-fee transactions in bytes (default: "
 "27000)"),

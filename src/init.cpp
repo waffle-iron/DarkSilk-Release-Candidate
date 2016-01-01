@@ -1,6 +1,6 @@
-// Copyright (c) 2009-2015 Satoshi Nakamoto
-// Copyright (c) 2009-2015 The Bitcoin developers
-// Copyright (c) 2015 The DarkSilk developers
+// Copyright (c) 2009-2016 Satoshi Nakamoto
+// Copyright (c) 2009-2016 The Bitcoin Developers
+// Copyright (c) 2015-2016 The Silk Network Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -11,25 +11,29 @@
 #include "rpcserver.h"
 #include "net.h"
 #include "util.h"
+#include "key.h"
+#include "pubkey.h"
 #include "ui_interface.h"
 #include "activestormnode.h"
+#include "stormnode-budget.h"
 #include "stormnode-payments.h"
 #include "stormnodeman.h"
 #include "spork.h"
 #include "stormnodeconfig.h"
 #include "smessage.h"
-#include "market.h"
+#include "txdb.h"
+#include "txdb-leveldb.h"
 
 #ifdef ENABLE_WALLET
 #include "wallet.h"
 #include "walletdb.h"
 #endif
-
-#include <boost/filesystem.hpp>
-#include <boost/filesystem/fstream.hpp>
-#include <boost/filesystem/convenience.hpp>
-#include <boost/interprocess/sync/file_lock.hpp>
 #include <boost/algorithm/string/predicate.hpp>
+#include <boost/algorithm/string/replace.hpp>
+#include <boost/bind.hpp>
+#include <boost/filesystem.hpp>
+#include <boost/interprocess/sync/file_lock.hpp>
+#include <boost/thread.hpp>
 #include <openssl/crypto.h>
 
 #ifndef WIN32
@@ -48,12 +52,12 @@ CWallet* pwalletMain = NULL;
 #endif
 CClientUIInterface uiInterface;
 bool fConfChange;
-bool fMinimizeCoinAge;
 unsigned int nNodeLifespan;
 unsigned int nDerivationMethodIndex;
 unsigned int nMinerSleep;
 bool fUseFastIndex;
 bool fOnlyTor = false;
+bool fMinimizeCoinAge;
 
 //////////////////////////////////////////////////////////////////////////////
 //
@@ -86,6 +90,30 @@ bool fOnlyTor = false;
 //
 
 volatile bool fRequestShutdown = false;
+static boost::scoped_ptr<ECCVerifyHandle> globalVerifyHandle;
+
+class CCoinsViewErrorCatcher : public CCoinsViewBacked
+{
+public:
+    CCoinsViewErrorCatcher(CCoinsView* view) : CCoinsViewBacked(view) {}
+    bool GetCoins(const uint256 &txid, CCoins &coins) const {
+        try {
+            return CCoinsViewBacked::GetCoins(txid, coins);
+        } catch(const std::runtime_error& e) {
+            uiInterface.ThreadSafeMessageBox(_("Error reading from database, shutting down."), "", CClientUIInterface::MSG_ERROR);
+            LogPrintf("Error reading from database: %s\n", e.what());
+            // Starting the shutdown sequence and returning false to the caller would be
+            // interpreted as 'entry not found' (as opposed to unable to read data), and
+            // could lead to invalid interpration. Just exit immediately, as we can't
+            // continue anyway, and all writes should be atomic.
+            abort();
+        }
+    }
+    // Writes do not need similar protection, as failure to write is handled by the caller.
+};
+
+static CCoinsViewDB *pcoinsdbview = NULL;
+static CCoinsViewErrorCatcher *pcoinscatcher = NULL;
 
 void StartShutdown()
 {
@@ -114,7 +142,23 @@ void Shutdown()
 #endif
     StopNode();
     DumpStormnodes();
+    DumpBudgets();
+    DumpStormnodePayments();
     UnregisterNodeSignals(GetNodeSignals());
+    {
+        LOCK(cs_main);
+        if (pcoinsTip != NULL) {
+            FlushStateToDisk();
+        }
+        delete pcoinsTip;
+        pcoinsTip = NULL;
+        delete pcoinscatcher;
+        pcoinscatcher = NULL;
+        delete pcoinsdbview;
+        pcoinsdbview = NULL;
+        delete pblocktree;
+        pblocktree = NULL;
+    }
     {
         LOCK(cs_main);
 #ifdef ENABLE_WALLET
@@ -227,6 +271,7 @@ std::string HelpMessage()
     strUsage += "  -daemon                " + _("Run in the background as a daemon and accept commands") + "\n";
 #endif
     strUsage += "  -testnet               " + _("Use the test network") + "\n";
+    strUsage += "  -litemode=<n>          " + strprintf(_("Disable all Darksilk specific functionality (Stormnodes, Sandstorm, InstantX, Budgeting) (0-1, default: %u)"), 0) + "\n";
     strUsage += "  -debug=<category>      " + _("Output debugging information (default: 0, supplying <category> is optional)") + "\n";
     strUsage +=                               _("If <category> is not supplied, output all debugging information.") + "\n";
     strUsage +=                               _("<category> can be:");
@@ -246,7 +291,6 @@ std::string HelpMessage()
     strUsage += "  -blocknotify=<cmd>     " + _("Execute command when the best block changes (%s in cmd is replaced by block hash)") + "\n";
     strUsage += "  -walletnotify=<cmd>    " + _("Execute command when a wallet transaction changes (%s in cmd is replaced by TxID)") + "\n";
     strUsage += "  -confchange            " + _("Require a confirmations for change (default: 0)") + "\n";
-    strUsage += "  -minimizecoinage       " + _("Minimize weight consumption (experimental) (default: 0)") + "\n";
     strUsage += "  -alertnotify=<cmd>     " + _("Execute command when a relevant alert is received (%s in cmd is replaced by message)") + "\n";
     strUsage += "  -upgradewallet         " + _("Upgrade wallet to latest format") + "\n";
     strUsage += "  -keypool=<n>           " + _("Set key pool size to <n> (default: 1000)") + "\n";
@@ -274,7 +318,7 @@ std::string HelpMessage()
     strUsage += "  -snconflock=<n>            " + _("Lock stormnodes from stormnode configuration file (default: 1)") + "\n";
     strUsage += "  -stormnodeprivkey=<n>     " + _("Set the stormnode private key") + "\n";
     strUsage += "  -stormnodeaddr=<n>        " + _("Set external address:port to get to this stormnode (example: address:port)") + "\n";
-    strUsage += "  -stormnodeminprotocol=<n> " + _("Ignore stormnodes less than version (example: 60022; default : 0)") + "\n";
+    strUsage += "  -stormnodeminprotocol=<n> " + _("Ignore stormnodes less than version (example: 60135; default : 0)") + "\n";
 
     strUsage += "\n" + _("Sandstorm options:") + "\n";
     strUsage += "  -enablesandstorm=<n>          " + _("Enable use of automated sandstorm for funds stored in this wallet (0-1, default: 0)") + "\n";
@@ -499,6 +543,10 @@ bool AppInit2(boost::thread_group& threadGroup)
     }
 #endif
 
+    // Initialize elliptic curve code
+    ECC_Start();
+    globalVerifyHandle.reset(new ECCVerifyHandle());
+
     // ********************************************************* Step 4: application initialization: dir lock, daemonize, pidfile, debug log
 
     // Sanity check
@@ -532,11 +580,9 @@ bool AppInit2(boost::thread_group& threadGroup)
     LogPrintf("Used data directory %s\n", strDataDir);
     std::ostringstream strErrors;
 
-    if (mapArgs.count("-stormnodepaymentskey")) // stormnode payments priv key
+    if (mapArgs.count("-sporkkey")) // spork priv key
     {
-        if (!stormnodePayments.SetPrivKey(GetArg("-stormnodepaymentskey", "")))
-            return InitError(_("Unable to sign stormnode payment winner, wrong key?"));
-        if (!sporkManager.SetPrivKey(GetArg("-stormnodepaymentskey", "")))
+        if (!sporkManager.SetPrivKey(GetArg("-sporkkey", "")))
             return InitError(_("Unable to sign spork message, wrong key?"));
     }
 
@@ -709,12 +755,107 @@ bool AppInit2(boost::thread_group& threadGroup)
         return false;
     }
 
+
     uiInterface.InitMessage(_("Loading block index..."));
+
+    // cache size calculations
+    size_t nTotalCache = (GetArg("-dbcache", nDefaultDbCache) << 20);
+    if (nTotalCache < (nMinDbCache << 20))
+        nTotalCache = (nMinDbCache << 20); // total cache cannot be less than nMinDbCache
+    else if (nTotalCache > (nMaxDbCache << 20))
+        nTotalCache = (nMaxDbCache << 20); // total cache cannot be greater than nMaxDbCache
+    size_t nBlockTreeDBCache = nTotalCache / 8;
+    if (nBlockTreeDBCache > (1 << 21) && !GetBoolArg("-txindex", true))
+        nBlockTreeDBCache = (1 << 21); // block tree db cache shouldn't be larger than 2 MiB
+    nTotalCache -= nBlockTreeDBCache;
+    size_t nCoinDBCache = nTotalCache / 2; // use half of the remaining cache for coindb cache
+    nTotalCache -= nCoinDBCache;
+    nCoinCacheSize = nTotalCache / 300; // coins in memory require around 300 bytes
 
     nStart = GetTimeMillis();
     if (!LoadBlockIndex())
         return InitError(_("Error loading block database"));
 
+    bool fLoaded = false;
+    while (!fLoaded) {
+        bool fReset = fReindex;
+        std::string strLoadError;
+
+        uiInterface.InitMessage(_("Loading block index..."));
+
+        nStart = GetTimeMillis();
+        do {
+            try {
+                UnloadBlockIndex();
+                delete pcoinsTip;
+                delete pcoinsdbview;
+                delete pcoinscatcher;
+                delete pblocktree;
+
+                //pblocktree = new CBlockTreeDB(nBlockTreeDBCache, false, fReindex); //TODO (Amir) Put pblocktree new back. causes segfault.
+                pcoinsdbview = new CCoinsViewDB(nCoinDBCache, false, fReindex);
+                pcoinscatcher = new CCoinsViewErrorCatcher(pcoinsdbview);
+                pcoinsTip = new CCoinsViewCache(pcoinscatcher);
+
+                if (fReindex)
+                    pblocktree->WriteReindexing(true);
+
+                if (!LoadBlockIndex()) {
+                    strLoadError = _("Error loading block database");
+                    break;
+                }
+
+                // If the loaded chain has a wrong genesis, bail out immediately
+                // (we're likely using a testnet datadir, or the other way around).
+                if (!mapBlockIndex.empty() && mapBlockIndex.count(Params().HashGenesisBlock()) == 0)
+                    return InitError(_("Incorrect or no genesis block found. Wrong datadir for network?"));
+
+                // Initialize the block index (no-op if non-empty database was already loaded)
+                if (!InitBlockIndex()) {
+                    strLoadError = _("Error initializing block database");
+                    break;
+                }
+
+                // Check for changed -txindex state
+                if (fTxIndex != GetBoolArg("-txindex", true)) {
+                    strLoadError = _("You need to rebuild the database using -reindex to change -txindex");
+                    break;
+                }
+
+                uiInterface.InitMessage(_("Verifying blocks..."));
+                if (!CVerifyDB().VerifyDB(pcoinsdbview, GetArg("-checklevel", 3),
+                              GetArg("-checkblocks", 288))) {
+                    strLoadError = _("Corrupted block database detected");
+                    break;
+                }
+            } catch(std::exception &e) {
+                if (fDebug) LogPrintf("%s\n", e.what());
+                strLoadError = _("Error opening block database");
+                break;
+            }
+
+            fLoaded = true;
+        } while(false);
+
+        //TODO (Amir): implement reindex on load failure.
+        /*if (!fLoaded) {
+            // first suggest a reindex
+            if (!fReset) {
+                bool fRet = uiInterface.ThreadSafeMessageBox(
+                    strLoadError + ".\n\n" + _("Do you want to rebuild the block database now?"),
+                    "", CClientUIInterface::MSG_ERROR | CClientUIInterface::BTN_ABORT);
+                if (fRet) {
+                    fReindex = true;
+                    fRequestShutdown = false;
+                } else {
+                    LogPrintf("Aborted block database rebuild. Exiting.\n");
+                    return false;
+                }
+            } else {
+                return InitError(strLoadError);
+            }
+        }*/
+    }
 
     // as LoadBlockIndex can take several minutes, it's possible the user
     // requested to kill darksilk-qt during the last operation. If so, exit.
@@ -881,10 +1022,6 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     SecureMsgStart(fNoSmsg, GetBoolArg("-smsgscanchain", false));
 
-    // ********************************************************* Step 10.2: start DarkSilkMarket
-
-    MarketInit();
-    
     // ********************************************************* Step 11: start SandStorm
 
     if (!CheckDiskSpace())
@@ -905,6 +1042,21 @@ bool AppInit2(boost::thread_group& threadGroup)
     {
         LogPrintf("Error reading sncache.dat: ");
         if(readResult == CStormnodeDB::IncorrectFormat)
+            LogPrintf("magic is ok but data has invalid format, will try to recreate\n");
+        else
+            LogPrintf("file format is unknown or invalid, please fix it manually\n");
+    }
+
+    uiInterface.InitMessage(_("Loading budget cache..."));
+
+    CBudgetDB budgetdb;
+    CBudgetDB::ReadResult readResult2 = budgetdb.Read(budget);
+    if (readResult2 == CBudgetDB::FileError)
+        LogPrintf("Missing budget cache - budget.dat, will try to recreate\n");
+    else if (readResult2 != CBudgetDB::Ok)
+    {
+        LogPrintf("Error reading budget.dat: ");
+        if(readResult2 == CBudgetDB::IncorrectFormat)
             LogPrintf("magic is ok but data has invalid format, will try to recreate\n");
         else
             LogPrintf("file format is unknown or invalid, please fix it manually\n");
@@ -954,11 +1106,16 @@ bool AppInit2(boost::thread_group& threadGroup)
         }
     }
 
+    //get the mode of budget voting for this stormnode
+    strBudgetMode = GetArg("-budgetvotemode", "auto");
+
     fEnableSandstorm = GetBoolArg("-enablesandstorm", false);
+    fSandstormMultiSession = GetBoolArg("-sandstormmultisession", false);
 
     nSandstormRounds = GetArg("-sandstormrounds", 2);
     if(nSandstormRounds > 100) nSandstormRounds = 100;
     if(nSandstormRounds < 1) nSandstormRounds = 1;
+
 
     nLiquidityProvider = GetArg("-liquidityprovider", 0); //0-100
     if(nLiquidityProvider != 0) {
@@ -985,6 +1142,7 @@ bool AppInit2(boost::thread_group& threadGroup)
     LogPrintf("nInstantXDepth %d\n", nInstantXDepth);
     LogPrintf("Sandstorm rounds %d\n", nSandstormRounds);
     LogPrintf("Anonymize DarkSilk Amount %d\n", nAnonymizeDarkSilkAmount);
+    LogPrintf("Budget Mode %s\n", strBudgetMode.c_str());
 
     /* Denominations
        A note about convertability. Within Sandstorm pools, each denomination
@@ -993,7 +1151,6 @@ bool AppInit2(boost::thread_group& threadGroup)
        1DRK+1000 == (.1DRK+100)*10
        10DRK+10000 == (1DRK+1000)*10
     */
-    sandStormDenominations.push_back( (100000      * COIN)+100000000 );    
     sandStormDenominations.push_back( (10000       * COIN)+10000000 );
     sandStormDenominations.push_back( (1000        * COIN)+1000000 );
     sandStormDenominations.push_back( (100         * COIN)+100000 );
@@ -1018,16 +1175,16 @@ bool AppInit2(boost::thread_group& threadGroup)
     {
         uiInterface.InitMessage(_("Rebuilding address index..."));
         CBlockIndex *pblockAddrIndex = pindexBest;
-	CTxDB txdbAddr("rw");
-	while(pblockAddrIndex)
-	{
-	    uiInterface.InitMessage(strprintf("Rebuilding address index, block %i", pblockAddrIndex->nHeight));
-	    bool ReadFromDisk(const CBlockIndex* pindex, bool fReadTransactions=true);
-	    CBlock pblockAddr;
-	    if(pblockAddr.ReadFromDisk(pblockAddrIndex, true))
-	        pblockAddr.RebuildAddressIndex(txdbAddr);
-	    pblockAddrIndex = pblockAddrIndex->pprev;
-	}
+        CTxDB txdbAddr("rw");
+        while(pblockAddrIndex)
+        {
+            uiInterface.InitMessage(strprintf("Rebuilding address index, block %i", pblockAddrIndex->nHeight));
+            bool ReadFromDisk(const CBlockIndex* pindex, bool fReadTransactions=true);
+            CBlock pblockAddr;
+            if(pblockAddr.ReadFromDisk(pblockAddrIndex, true))
+                pblockAddr.RebuildAddressIndex(txdbAddr);
+            pblockAddrIndex = pblockAddrIndex->pprev;
+        }
     }
 
     //// debug print

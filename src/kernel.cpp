@@ -1,5 +1,5 @@
-// Copyright (c) 2012-2013 The PPCoin developers
-// Copyright (c) 2015 The DarkSilk Developers
+// Copyright (c) 2012-2016 The PPCoin developers
+// Copyright (c) 2015-2016 The Silk Network Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -7,6 +7,7 @@
 
 #include "kernel.h"
 #include "txdb.h"
+#include "txdb-leveldb.h"
 
 using namespace std;
 
@@ -294,7 +295,8 @@ bool CheckProofOfStake(CBlockIndex* pindexPrev, const CTransaction& tx, unsigned
     CTxDB txdb("r");
     CTransaction txPrev;
     CTxIndex txindex;
-    if (!txPrev.ReadFromDisk(txdb, txin.prevout, txindex))
+    CTransactionPoS txPoS;
+    if (!txPoS.ReadFromDisk(txPrev, txdb, txin.prevout, txindex))
         return tx.DoS(1, error("CheckProofOfStake() : INFO: read txPrev failed"));  // previous transaction not in main chain, may occur during initial download
 
     // Verify signature
@@ -330,7 +332,8 @@ bool CheckKernel(CBlockIndex* pindexPrev, unsigned int nBits, int64_t nTime, con
     CTxDB txdb("r");
     CTransaction txPrev;
     CTxIndex txindex;
-    if (!txPrev.ReadFromDisk(txdb, prevout, txindex))
+    CTransactionPoS txPoS;
+    if (!txPoS.ReadFromDisk(txPrev, txdb, prevout, txindex))
         return false;
 
     // Read block header

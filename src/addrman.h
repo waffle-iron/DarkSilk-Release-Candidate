@@ -1,4 +1,4 @@
-// Copyright (c) 2012 Pieter Wuille
+// Copyright (c) 2012-2016 Pieter Wuille
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef _DARKSILK_ADDRMAN
@@ -12,9 +12,6 @@
 
 #include <map>
 #include <vector>
-
-#include <openssl/rand.h>
-
 
 /** Extended statistics about a CAddress */
 class CAddrInfo : public CAddress
@@ -126,7 +123,7 @@ public:
 #define ADDRMAN_TRIED_BUCKET_SIZE 64
 
 // total number of buckets for new addresses
-#define ADDRMAN_NEW_BUCKET_COUNT 256
+#define ADDRMAN_NEW_BUCKET_COUNT 1024
 
 // maximum allowed number of entries in buckets for new addresses
 #define ADDRMAN_NEW_BUCKET_SIZE 64
@@ -384,7 +381,7 @@ public:
     CAddrMan() : vRandom(0), vvTried(ADDRMAN_TRIED_BUCKET_COUNT, std::vector<int>(0)), vvNew(ADDRMAN_NEW_BUCKET_COUNT, std::set<int>())
     {
          nKey.resize(32);
-         RAND_bytes(&nKey[0], 32);
+         GetRandBytes(&nKey[0], 32);
 
          nIdCount = 0;
          nTried = 0;

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) 2013 giv
+# Copyright (c) 2013-2016 giv
 
 if [ $# -lt 2 ]; then
         echo "Usage: $0 <filename.h> <filename_with_version>"

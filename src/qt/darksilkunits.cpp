@@ -1,4 +1,5 @@
 #include "darksilkunits.h"
+#include "primitives/transaction.h"
 
 #include <QStringList>
 

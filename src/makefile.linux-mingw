@@ -1,4 +1,4 @@
-# Copyright (c) 2009-2010 Satoshi Nakamoto
+# Copyright (c) 2009-2016 Satoshi Nakamoto
 # Distributed under the MIT/X11 software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -36,7 +36,6 @@ LIBS= \
  -l db_cxx \
  -l ssl \
  -l crypto \
- -l secp256k1 \
  -l z
 
 DEFS=-D_MT -DWIN32 -D_WINDOWS -DBOOST_THREAD_USE_LIB -DBOOST_SPIRIT_THREADSAFE
@@ -67,12 +66,13 @@ OBJS= \
     obj/netbase.o \
     obj/addrman.o \
     obj/crypter.o \
+    obj/chain.o \
     obj/key.o \
-    obj/eckey.o \
+    obj/pubkey.o \
+    obj/ecwrapper.o \
     obj/init.o \
     obj/darksilkd.o \
     obj/keystore.o \
-    obj/core.o \
     obj/main.o \
     obj/net.o \
     obj/protocol.o \
@@ -102,26 +102,29 @@ OBJS= \
     obj/activestormnode.o \
     obj/sandstorm.o \
     obj/sandstorm-relay.o \
-    obj/eccryptoverify.o \
     obj/instantx.o \
     obj/stormnodeconfig.o \
     obj/stormnodeman.o \
     obj/stormnode.o \
+    obj/stormnode-budget.o \
     obj/stormnode-payments.o \
-    obj/stormnode-pos.o \
-    obj/rpcsandstorm.o \
+    obj/stormnode-sync.o \
+    obj/rpcstormnode.o \
+    obj/rpcstormnode-budget.o \
     obj/spork.o \
     obj/crypto/hmac_sha256.o \
     obj/crypto/hmac_sha512.o \
-    obj/crypto/rfc6979_hmac_sha256.o \
     obj/crypto/ripemd160.o \
     obj/crypto/sha1.o \
     obj/crypto/sha256.o \
     obj/crypto/sha512.o \
     obj/smessage.o \
-    obj/market.o \
-    obj/rpcmarket.o \
-    obj/peertablemodel.o
+    obj/coins.o \
+    obj/compressor.o \
+    obj/undo.o \
+    obj/primitives/transaction.o\
+    obj/leveldbwrapper.o\
+    obj/txdb.o
 
 ifeq (${USE_WALLET}, 1)
     DEFS += -DENABLE_WALLET
@@ -137,6 +140,11 @@ endif
 
 all: darksilkd.exe
 
+# libsecp256k1 support
+LIBS += $(CURDIR)/secp256k1/src/libsecp256k1_la-secp256k1.o
+DEFS += $(addprefix -I,$(CURDIR)/secp256k1/include)
+
+# build leveldb
 LIBS += $(CURDIR)/leveldb/libleveldb.a $(CURDIR)/leveldb/libmemenv.a
 DEFS += -I"$(CURDIR)/leveldb/include"
 DEFS += -I"$(CURDIR)/leveldb/helpers"
@@ -145,8 +153,6 @@ leveldb/libleveldb.a:
 	@echo "Building LevelDB ..." && cd leveldb && CC=$(CC) CXX=$(CXX) TARGET_OS=OS_WINDOWS_CROSSCOMPILE CXXFLAGS="-I$(INCLUDEPATHS)" LDFLAGS="-L$(LIBPATHS)" $(MAKE) libleveldb.a libmemenv.a && $(RANLIB) libleveldb.a && $(RANLIB) libmemenv.a && cd ..
 obj/txdb-leveldb.o: leveldb/libleveldb.a
 
-# libsecp256k1 support 
-DEFS += -DUSE_SECP256K1  
 $(shell cp -rp $(CURDIR)/crypto obj >/dev/null)
 
 obj/build.h: FORCE
@@ -174,6 +180,6 @@ clean:
 	-rm -f darksilkd.exe
 	-rm -f obj/build.h
 	-rm -rf obj/crypto
-	cd leveldb && TARGET_OS=OS_WINDOWS_CROSSCOMPILE $(MAKE) clean && cd ..
+         cd leveldb && TARGET_OS=OS_WINDOWS_CROSSCOMPILE $(MAKE) clean && cd ..
 
 FORCE:

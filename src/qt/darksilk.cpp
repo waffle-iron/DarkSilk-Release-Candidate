@@ -86,7 +86,7 @@ static void InitMessage(const std::string &message)
 {
     if(splashref)
     {
-        splashref->showMessage(QString::fromStdString(message), Qt::AlignBottom|Qt::AlignHCenter, QColor(80,0,120));
+        splashref->showMessage(QString::fromStdString(message), Qt::AlignBottom|Qt::AlignHCenter, QColor(67,67,67));
         QApplication::instance()->processEvents();
     }
     LogPrintf("init message: %s\n", message);

@@ -1,5 +1,5 @@
-// Copyright (c) 2010-2015 Satoshi Nakamoto
-// Copyright (c) 2012-2015 The Bitcoin developers
+// Copyright (c) 2009-2016 Satoshi Nakamoto
+// Copyright (c) 2012-2016 The Bitcoin Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -17,8 +17,6 @@ class CBasicKeyStore;
 class CWallet;
 class uint256;
 class CStormNodeConfig;
-class CSignedMarketListing;
-class CBuyRequest;
 
 /** General change type (added, updated, removed). */
 enum ChangeType
@@ -107,23 +105,6 @@ public:
 
     boost::signals2::signal<void (CStormNodeConfig nodeConfig)> NotifyStormNodeChanged;
 
-    boost::signals2::signal<void (std::string category)> NotifyMarketCategory;
-
-    boost::signals2::signal<void (CSignedMarketListing listing)> NotifyNewSellerListing;
-
-    boost::signals2::signal<void (CBuyRequest buyr)> NotifyBuyRequest;
-
-    boost::signals2::signal<void ()> NotifyRefundRequested;
-
-    boost::signals2::signal<void ()> NotifyDeliveryDetails;
-
-    boost::signals2::signal<void ()> NotifyListingCancelled;
-
-    boost::signals2::signal<void ()> NotifyEscrowPayment;
-    boost::signals2::signal<void ()> NotifyEscrowRelease;
-    boost::signals2::signal<void ()> NotifyBuyAccepted;
-    boost::signals2::signal<void ()> NotifyBuyRejected;
-    boost::signals2::signal<void ()> NotifyPaymentRequest;    
 };
 
 extern CClientUIInterface uiInterface;

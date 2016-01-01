@@ -1,6 +1,6 @@
-// Copyright (c) 2009-2015 Satoshi Nakamoto
-// Copyright (c) 2009-2015 The Bitcoin developers
-// Copyright (c) 2015 The DarkSilk developers
+// Copyright (c) 2009-2016 Satoshi Nakamoto
+// Copyright (c) 2009-2016 The Bitcoin Developers
+// Copyright (c) 2015-2016 The Silk Network Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -78,7 +78,7 @@ string strStormNodePrivKey = "";
 string strStormNodeAddr = "";
 bool fLiteMode = false;
 bool fEnableInstantX = true;
-int nInstantXDepth = 5;
+int nInstantXDepth = 10;
 int nSandstormRounds = 2;
 int nAnonymizeDarkSilkAmount = 1000;
 int nLiquidityProvider = 0;
@@ -89,6 +89,7 @@ bool fSucessfullyLoaded = false;
 bool fEnableSandstorm = false;
 /** All denominations used by sandstorm */
 std::vector<int64_t> sandStormDenominations;
+bool fSandstormMultiSession = false;
 
 map<string, string> mapArgs;
 map<string, vector<string> > mapMultiArgs;
@@ -104,6 +105,7 @@ string strMiscWarning;
 bool fNoListen = false;
 bool fLogTimestamps = false;
 volatile bool fReopenDebugLog = false;
+string strBudgetMode = "";
 
 // Init OpenSSL library multithreading support
 static CCriticalSection** ppmutexOpenSSL;
@@ -149,6 +151,14 @@ public:
 }
 instance_of_cinit;
 
+bool GetRandBytes(unsigned char *buf, int num)
+{
+    if (RAND_bytes(buf, num) == 0) {
+        LogPrint("rand", "%s : OpenSSL RAND_bytes() failed with error: %s\n", __func__, ERR_error_string(ERR_get_error(), NULL));
+        return false;
+    }
+    return true;
+}
 
 void RandAddSeed()
 {
@@ -194,9 +204,9 @@ uint64_t GetRand(uint64_t nMax)
     // to give every possible output value an equal possibility
     uint64_t nRange = (std::numeric_limits<uint64_t>::max() / nMax) * nMax;
     uint64_t nRand = 0;
-    do
-        RAND_bytes((unsigned char*)&nRand, sizeof(nRand));
-    while (nRand >= nRange);
+    do {
+        GetRandBytes((unsigned char*)&nRand, sizeof(nRand));
+    } while (nRand >= nRange);;
     return (nRand % nMax);
 }
 
@@ -208,16 +218,8 @@ int GetRandInt(int nMax)
 uint256 GetRandHash()
 {
     uint256 hash;
-    RAND_bytes((unsigned char*)&hash, sizeof(hash));
+    GetRandBytes((unsigned char*)&hash, sizeof(hash));
     return hash;
-}
-
-void GetRandBytes(unsigned char* buf, int num)
-{
-    if (RAND_bytes(buf, num) != 1) {
-        LogPrintf("%s: OpenSSL RAND_bytes() failed with error: %s\n", __func__, ERR_error_string(ERR_get_error(), NULL));
-        assert(false);
-    }
 }
 
 // LogPrintf() has been broken a couple of times now
@@ -1158,16 +1160,71 @@ boost::filesystem::path GetStormnodeConfigFile()
     return pathConfigFile;
 }
 
+std::string GenerateRandomString(unsigned int len) {
+    if (len == 0){
+        len = 24;
+    }
+    srand(time(NULL) + len); //seed srand before using
+    char s[len];
+    static const char alphanum[] =
+        "0123456789"
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        "abcdefghijklmnopqrstuvwxyz"
+        "@*[]{}+-~";
+
+    for (unsigned int i = 0; i < len; ++i) {
+        s[i] = alphanum[rand() % (sizeof(alphanum) - 1)];
+    }
+    s[len] = 0;
+    std::string sPassword(s);
+    return sPassword;
+}
+
+unsigned int RandomIntegerRange(unsigned int nMin, unsigned int nMax)
+{
+  srand(time(NULL) + nMax); //seed srand before using
+  return nMin + rand() % (nMax - nMin) + 1;
+}
+
+void WriteConfigFile(FILE* configFile)
+{
+    std::string sRPCpassword = "rpcpassword=" + GenerateRandomString(RandomIntegerRange(18, 24)) + "\n";
+    std::string sUserID = "rpcuser=" + GenerateRandomString(RandomIntegerRange(7, 11)) + "\n";
+    fputs (sUserID.c_str(), configFile);
+    fputs (sRPCpassword.c_str(), configFile);
+    fputs ("server=1\n", configFile);
+    fputs ("rpcport=31500\n", configFile); //TODO (Amir): use default rpcport instead...
+    fputs ("gen=1\n" ,configFile);
+    fputs ("listen=1\n", configFile);
+    fputs ("testnet=0\n", configFile);
+    fputs ("daemon=1\n", configFile);
+    fputs ("rpcallow=0\n", configFile);
+    fputs ("rpcallowip=127.0.0.1\n", configFile);
+    fputs ("addnode=159.203.21.45:31000\n", configFile); //TODO (Amir): removed hardcoded addnode...
+    fclose(configFile);
+}
+
+bool FileExists(const char *fileName)
+{
+    std::ifstream infile(fileName);
+    return infile.good();
+}
+
 void ReadConfigFile(map<string, string>& mapSettingsRet,
                     map<string, vector<string> >& mapMultiSettingsRet)
 {
+    if(!FileExists(GetConfigFile().c_str())) {
+        // Create darksilk.conf if it does not exist
+        FILE* configFile = fopen(GetConfigFile().string().c_str(), "a");
+        if (configFile != NULL) {
+            // Write darksilk.conf file with random username and password.
+            WriteConfigFile(configFile);
+        }
+    }
+
     boost::filesystem::ifstream streamConfig(GetConfigFile());
     if (!streamConfig.good()){
-        // Create empty darksilk.conf if it does not excist
-        FILE* configFile = fopen(GetConfigFile().string().c_str(), "a");
-        if (configFile != NULL)
-            fclose(configFile);
-        return; // Nothing to read, so just return
+        throw runtime_error("conf file not found!");
     }
 
     set<string> setOptions;
@@ -1217,6 +1274,25 @@ bool RenameOver(boost::filesystem::path src, boost::filesystem::path dest)
     int rc = std::rename(src.string().c_str(), dest.string().c_str());
     return (rc == 0);
 #endif /* WIN32 */
+}
+
+/**
+ * Ignores exceptions thrown by Boost's create_directory if the requested directory exists.
+ * Specifically handles case where path p exists, but it wasn't possible for the user to
+ * write to the parent directory.
+ */
+bool TryCreateDirectory(const boost::filesystem::path& p)
+{
+    try
+    {
+        return boost::filesystem::create_directory(p);
+    } catch (boost::filesystem::filesystem_error) {
+        if (!boost::filesystem::exists(p) || !boost::filesystem::is_directory(p))
+            throw;
+    }
+
+    // create_directory didn't create the directory, it had to have existed already
+    return false;
 }
 
 void FileCommit(FILE *fileout)
@@ -1300,11 +1376,11 @@ void seed_insecure_rand(bool fDeterministic)
     } else {
         uint32_t tmp;
         do{
-            RAND_bytes((unsigned char*)&tmp,4);
+            GetRandBytes((unsigned char*)&tmp,4);
         }while(tmp==0 || tmp==0x9068ffffU);
         insecure_rand_Rz=tmp;
         do{
-            RAND_bytes((unsigned char*)&tmp,4);
+            GetRandBytes((unsigned char*)&tmp,4);
         }while(tmp==0 || tmp==0x464fffffU);
         insecure_rand_Rw=tmp;
     }
@@ -1400,4 +1476,10 @@ std::string DateTimeStrFormat(const char* pszFormat, int64_t nTime)
     return ss.str();
 }
 
-
+bool TruncateFile(FILE *file, unsigned int length) {
+#if defined(WIN32)
+    return _chsize(_fileno(file), length) == 0;
+#else
+    return ftruncate(fileno(file), length) == 0;
+#endif
+}

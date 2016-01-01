@@ -1,7 +1,7 @@
 #ifndef JSON_SPIRIT_WRITER
 #define JSON_SPIRIT_WRITER
 
-//          Copyright John W. Wilkinson 2007 - 2015.
+//          Copyright John W. Wilkinson 2007 - 2016.
 // Distributed under the MIT License, see accompanying file LICENSE.txt
 
 // json spirit version 4.03

@@ -1,3 +1,6 @@
+// Copyright (c) 2014-2016 The Dash developers
+// Distributed under the MIT/X11 software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "net.h"
 #include "stormnodeconfig.h"
@@ -45,7 +48,7 @@ bool CStormnodeConfig::read(std::string& strErr) {
             }
             CDarkSilkAddress address(donationAddress);
             if (!address.IsValid()) {
-                strErr = "Invalid Dash address in stormnode.conf line: " + line;
+                strErr = "Invalid DarkSilk address in stormnode.conf line: " + line;
                 streamConfig.close();
                 return false;
             }

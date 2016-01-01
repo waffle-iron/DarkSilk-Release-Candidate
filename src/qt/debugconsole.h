@@ -14,6 +14,8 @@ QT_END_NAMESPACE
 
 class ClientModel;
 
+QString GetBoostVersion();
+
 /** Local DarkSilk RPC console. */
 class DEBUGConsole: public QDialog
 {

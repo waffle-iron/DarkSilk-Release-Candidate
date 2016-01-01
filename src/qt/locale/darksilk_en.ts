@@ -15,10 +15,10 @@
     </message>
     <message>
         <location line="+41"/>
-        <source>Copyright © 2009-2015 The Bitcoin developers
+        <source>Copyright © 2009-2016 The Bitcoin Developers
 Copyright © 2011-2015 PPCoin Developers
-Copyright (c) 2015 The DarkSilk Developers
-Copyright (c) 2015 The DarkSilk Developers</source>
+Copyright (c) 2015-2016 The Silk Network Developers
+Copyright (c) 2015-2016 The Silk Network Developers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2988,8 +2988,8 @@ alternate-background-color: rgb(86, 0, 120);)</source>
     </message>
     <message>
         <location line="+34"/>
-        <source>Set maximum block size in bytes (default: 250000)</source>
-        <translation>Set maximum block size in bytes (default: 250000)</translation>
+        <source>Set maximum block size in bytes (default: 50000000)</source>
+        <translation>Set maximum block size in bytes (default: 50000000)</translation>
     </message>
     <message>
         <location line="-1"/>

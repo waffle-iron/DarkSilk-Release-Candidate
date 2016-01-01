@@ -1,4 +1,4 @@
-// Copyright (c) 2015 The DarkSilk Developers
+// Copyright (c) 2015-2016 The Silk Network Developers
 // Copyright (c) 2009-2015 The Darkcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -14,6 +14,7 @@
 #include "protocol.h"
 #include "spork.h"
 #include "main.h"
+#include "stormnode-budget.h"
 #include <boost/lexical_cast.hpp>
 
 using namespace std;
@@ -76,6 +77,7 @@ void ProcessSpork(CNode* pfrom, std::string& strCommand, CDataStream& vRecv)
 
 }
 
+
 // grab the spork, otherwise say it's off
 bool IsSporkActive(int nSporkID)
 {
@@ -89,6 +91,8 @@ bool IsSporkActive(int nSporkID)
         if(nSporkID == SPORK_3_INSTANTX_BLOCK_FILTERING) r = SPORK_3_INSTANTX_BLOCK_FILTERING_DEFAULT;
         if(nSporkID == SPORK_5_MAX_VALUE) r = SPORK_5_MAX_VALUE_DEFAULT;
         if(nSporkID == SPORK_7_STORMNODE_SCANNING) r = SPORK_7_STORMNODE_SCANNING;
+        if(nSporkID == SPORK_8_STORMNODE_PAYMENT_ENFORCEMENT) r = SPORK_8_STORMNODE_PAYMENT_ENFORCEMENT;
+        if(nSporkID == SPORK_9_STORMNODE_BUDGET_ENFORCEMENT) r = SPORK_9_STORMNODE_BUDGET_ENFORCEMENT;
 
         if(r == 0) LogPrintf("GetSpork::Unknown Spork %d\n", nSporkID);
     }
@@ -109,18 +113,64 @@ int GetSporkValue(int nSporkID)
         if(nSporkID == SPORK_2_INSTANTX) r = SPORK_2_INSTANTX_DEFAULT;
         if(nSporkID == SPORK_3_INSTANTX_BLOCK_FILTERING) r = SPORK_3_INSTANTX_BLOCK_FILTERING_DEFAULT;
         if(nSporkID == SPORK_5_MAX_VALUE) r = SPORK_5_MAX_VALUE_DEFAULT;
-        if(nSporkID == SPORK_7_STORMNODE_SCANNING) r = SPORK_7_STORMNODE_SCANNING;
-
+        if(nSporkID == SPORK_7_STORMNODE_SCANNING) r = SPORK_7_STORMNODE_SCANNING_DEFAULT;
+        if(nSporkID == SPORK_8_STORMNODE_PAYMENT_ENFORCEMENT) r = SPORK_8_STORMNODE_PAYMENT_ENFORCEMENT_DEFAULT;
+        if(nSporkID == SPORK_9_STORMNODE_BUDGET_ENFORCEMENT) r = SPORK_9_STORMNODE_BUDGET_ENFORCEMENT_DEFAULT;
         if(r == 0) LogPrintf("GetSpork::Unknown Spork %d\n", nSporkID);
     }
 
     return r;
 }
 
-void ExecuteSpork(int nSporkID, int nValue)
+void ReprocessBlocks(int nBlocks)
 {
+    //TODO (Amir): Put this back. Needs CChain, ActivateBestChain, etc...
+    /*
+    std::map<uint256, int64_t>::iterator it = mapRejectedBlocks.begin();
+    while(it != mapRejectedBlocks.end()){
+        //use a window twice as large as is usual for the nBlocks we want to reset
+
+        if((*it).second  > GetTime() - (nBlocks*60*5)) {
+            BlockMap::iterator mi = mapBlockIndex.find((*it).first);
+            if (mi != mapBlockIndex.end() && (*mi).second) {
+                LOCK(cs_main);
+
+                CBlockIndex* pindex = (*mi).second;
+                LogPrintf("ReprocessBlocks - %s\n", (*it).first.ToString());
+
+                CValidationState state;
+                ReconsiderBlock(state, pindex);
+            }
+        }
+        ++it;
+    }
+
+    CValidationState state;
+    {
+        LOCK(cs_main);
+        DisconnectBlocksAndReprocess(nBlocks);
+    }
+
+    if (state.IsValid()) {
+        ActivateBestChain(state);
+    }
+*/
+    LogPrintf("ReprocessBlocks -- Not implemented! Blocks = %d \n", nBlocks);
 }
 
+void ExecuteSpork(int nSporkID, int nValue)
+{
+    if(nSporkID == SPORK_11_RESET_BUDGET && nValue == 1){
+        budget.Clear();
+    }
+
+    //correct fork via spork technology
+    if(nSporkID == SPORK_12_RECONSIDER_BLOCKS && nValue > 0) {
+        LogPrintf("Spork::ExecuteSpork -- Reconsider Last %d Blocks\n", nValue);
+
+        ReprocessBlocks(nValue);
+    }
+}
 
 bool CSporkManager::CheckSignature(CSporkMessage& spork)
 {
@@ -218,7 +268,8 @@ int CSporkManager::GetSporkIDByName(std::string strName)
     if(strName == "SPORK_3_INSTANTX_BLOCK_FILTERING") return SPORK_3_INSTANTX_BLOCK_FILTERING;
     if(strName == "SPORK_5_MAX_VALUE") return SPORK_5_MAX_VALUE;
     if(strName == "SPORK_7_STORMNODE_SCANNING") return SPORK_7_STORMNODE_SCANNING;
-
+    if(strName == "SPORK_8_STORMNODE_PAYMENT_ENFORCEMENT") return SPORK_8_STORMNODE_PAYMENT_ENFORCEMENT;
+    if(strName == "SPORK_9_STORMNODE_BUDGET_ENFORCEMENT") return SPORK_9_STORMNODE_BUDGET_ENFORCEMENT;
 
     return -1;
 }
@@ -230,6 +281,8 @@ std::string CSporkManager::GetSporkNameByID(int id)
     if(id == SPORK_3_INSTANTX_BLOCK_FILTERING) return "SPORK_3_INSTANTX_BLOCK_FILTERING";
     if(id == SPORK_5_MAX_VALUE) return "SPORK_5_MAX_VALUE";
     if(id == SPORK_7_STORMNODE_SCANNING) return "SPORK_7_STORMNODE_SCANNING";
+    if(id == SPORK_8_STORMNODE_PAYMENT_ENFORCEMENT) return "SPORK_8_STORMNODE_PAYMENT_ENFORCEMENT";
+    if(id == SPORK_9_STORMNODE_BUDGET_ENFORCEMENT) return "SPORK_9_STORMNODE_BUDGET_ENFORCEMENT";
 
     return "Unknown";
     

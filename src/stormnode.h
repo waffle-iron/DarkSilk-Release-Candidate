@@ -1,55 +1,104 @@
-
-// Copyright (c) 2009-2015 Satoshi Nakamoto
-// Copyright (c) 2009-2015 The Darkcoin developers
+// Copyright (c) 2014-2016 The Dash developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #ifndef STORMNODE_H
 #define STORMNODE_H
 
-#include "uint256.h"
-#include "uint256.h"
 #include "sync.h"
 #include "net.h"
 #include "key.h"
 #include "util.h"
 #include "base58.h"
 #include "main.h"
-#include "stormnode.h"
-#include "stormnode-pos.h"
 #include "timedata.h"
-#include "script.h"
 
-class uint256;
-
-#define STORMNODE_NOT_PROCESSED               0 // initial state
-#define STORMNODE_IS_CAPABLE                  1
-#define STORMNODE_NOT_CAPABLE                 2
-#define STORMNODE_STOPPED                     3
-#define STORMNODE_INPUT_TOO_NEW               4
-#define STORMNODE_PORT_NOT_OPEN               6
-#define STORMNODE_PORT_OPEN                   7
-#define STORMNODE_SYNC_IN_PROCESS             8
-#define STORMNODE_REMOTELY_ENABLED            9
-
-#define STORMNODE_MIN_CONFIRMATIONS           10
-#define STORMNODE_MIN_SSEEP_SECONDS           (30*60)
-#define STORMNODE_MIN_SSEE_SECONDS            (5*60)
-#define STORMNODE_PING_SECONDS                (1*60)
-#define STORMNODE_EXPIRATION_SECONDS          (65*60)
-#define STORMNODE_REMOVAL_SECONDS             (70*60)
+static const int STORMNODE_MIN_CONFIRMATIONS = 15;
+static const int STORMNODE_MIN_SNP_SECONDS = (10*60);
+static const int STORMNODE_MIN_SNB_SECONDS = (5*60);
+static const int STORMNODE_PING_SECONDS = (5*60);
+static const int STORMNODE_EXPIRATION_SECONDS = (65*60);
+static const int STORMNODE_REMOVAL_SECONDS = (75*60);
+static const int STORMNODE_CHECK_SECONDS = 5;
 
 using namespace std;
 
-class CStormNode;
-
-extern CCriticalSection cs_stormnodes;
+class CStormnode;
+class CStormnodeBroadcast;
+class CStormnodePing;
 extern map<int64_t, uint256> mapCacheBlockHashes;
-
 
 bool GetBlockHash(uint256& hash, int nBlockHeight);
 
+
 //
-// The Stormnode Class. For managing the sandstorm process. It contains the input of the 1000DRK, signature to prove
+// The Stormnode Ping Class : Contains a different serialize method for sending pings from stormnodes throughout the network
+//
+
+class CStormnodePing
+{
+public:
+
+    CTxIn vin;
+    uint256 blockHash;
+    int64_t sigTime; //snb message times
+    std::vector<unsigned char> vchSig;
+    //removed stop
+
+    CStormnodePing();
+    CStormnodePing(CTxIn& newVin);
+
+    IMPLEMENT_SERIALIZE
+    (
+        READWRITE(vin);
+        READWRITE(blockHash);
+        READWRITE(sigTime);
+        READWRITE(vchSig);
+    )
+
+    bool CheckAndUpdate(int& nDos, bool fRequireEnabled = true);
+    bool Sign(CKey& keyStormnode, CPubKey& pubKeyStormnode);
+    void Relay();
+
+    uint256 GetHash(){
+        CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
+        ss << vin;
+        ss << sigTime;
+        return ss.GetHash();
+    }
+
+    void swap(CStormnodePing& first, CStormnodePing& second) // nothrow
+    {
+        // enable ADL (not necessary in our case, but good practice)
+        using std::swap;
+
+        // by swapping the members of two classes,
+        // the two classes are effectively swapped
+        swap(first.vin, second.vin);
+        swap(first.blockHash, second.blockHash);
+        swap(first.sigTime, second.sigTime);
+        swap(first.vchSig, second.vchSig);
+    }
+
+    CStormnodePing& operator=(CStormnodePing from)
+    {
+        swap(*this, from);
+        return *this;
+    }
+    friend bool operator==(const CStormnodePing& a, const CStormnodePing& b)
+    {
+        return a.vin == b.vin && a.blockHash == b.blockHash;
+    }
+    friend bool operator!=(const CStormnodePing& a, const CStormnodePing& b)
+    {
+        return !(a == b);
+    }
+
+};
+
+
+//
+// The Stormnode Class. For managing the Sandstorm process. It contains the input of the 42000DRKSLK, signature to prove
 // it's the one who own that ip address and code for calculating the payment election.
 //
 class CStormnode
@@ -57,45 +106,40 @@ class CStormnode
 private:
     // critical section to protect the inner data structures
     mutable CCriticalSection cs;
+    int64_t lastTimeChecked;
 public:
     enum state {
-    STORMNODE_ENABLED = 1,
-    STORMNODE_EXPIRED = 2,
-    STORMNODE_VIN_SPENT = 3,
-    STORMNODE_REMOVE = 4,
-    STORMNODE_POS_ERROR = 5
+        STORMNODE_PRE_ENABLED,
+        STORMNODE_ENABLED,
+        STORMNODE_EXPIRED,
+        STORMNODE_VIN_SPENT,
+        STORMNODE_REMOVE,
+        STORMNODE_POS_ERROR
     };
 
-	static int minProtoVersion;
-    CTxIn vin; 
+    CTxIn vin;
     CService addr;
     CPubKey pubkey;
     CPubKey pubkey2;
     std::vector<unsigned char> sig;
     int activeState;
-    int64_t sigTime; //ssee message times
-    int64_t lastSseep;
-    int64_t lastTimeSeen;
+    int64_t sigTime; //snb message time
     int cacheInputAge;
     int cacheInputAgeBlock;
     bool unitTest;
     bool allowFreeTx;
     int protocolVersion;
     int64_t nLastSsq; //the ssq count from the last ssq broadcast of this node
-    CScript donationAddress;
-    int donationPercentage;    
-    int nVote;
-    int64_t lastVote;
     int nScanningErrorCount;
     int nLastScanningErrorBlockHeight;
-    int64_t nLastPaid;
-
+    CStormnodePing lastPing;
 
     CStormnode();
     CStormnode(const CStormnode& other);
-    CStormnode(CService newAddr, CTxIn newVin, CPubKey newPubkey, std::vector<unsigned char> newSig, int64_t newSigTime, CPubKey newPubkey2, int protocolVersionIn, CScript donationAddress, int donationPercentage);
- 
-    void swap(CStormnode& first, CStormnode& second) // nothrow    
+    CStormnode(const CStormnodeBroadcast& snb);
+
+
+    void swap(CStormnode& first, CStormnode& second) // nothrow
     {
         // enable ADL (not necessary in our case, but good practice)
         using std::swap;
@@ -109,21 +153,15 @@ public:
         swap(first.sig, second.sig);
         swap(first.activeState, second.activeState);
         swap(first.sigTime, second.sigTime);
-        swap(first.lastSseep, second.lastSseep);
-        swap(first.lastTimeSeen, second.lastTimeSeen);
+        swap(first.lastPing, second.lastPing);
         swap(first.cacheInputAge, second.cacheInputAge);
-        swap(first.unitTest, second.unitTest);
         swap(first.cacheInputAgeBlock, second.cacheInputAgeBlock);
+        swap(first.unitTest, second.unitTest);
         swap(first.allowFreeTx, second.allowFreeTx);
-        swap(first.protocolVersion, second.protocolVersion);        
+        swap(first.protocolVersion, second.protocolVersion);
         swap(first.nLastSsq, second.nLastSsq);
-        swap(first.donationAddress, second.donationAddress);
-        swap(first.donationPercentage, second.donationPercentage);
-        swap(first.nVote, second.nVote);
-        swap(first.lastVote, second.lastVote);
         swap(first.nScanningErrorCount, second.nScanningErrorCount);
         swap(first.nLastScanningErrorBlockHeight, second.nLastScanningErrorBlockHeight);
-        swap(first.nLastPaid, second.nLastPaid);
     }
 
     CStormnode& operator=(CStormnode from)
@@ -144,51 +182,29 @@ public:
 
     IMPLEMENT_SERIALIZE
     (
-        // serialized format:
-        // * version byte (currently 0)
-        // * all fields (?)
-        {
-                LOCK(cs);
-                unsigned char nVersion = 0;
-                READWRITE(nVersion);
-                READWRITE(vin);
-                READWRITE(addr);
-                READWRITE(pubkey);
-                READWRITE(pubkey2);
-                READWRITE(sig);
-                READWRITE(activeState);
-                READWRITE(sigTime);
-                READWRITE(lastSseep);
-                READWRITE(lastTimeSeen);
-                READWRITE(cacheInputAge);
-                READWRITE(cacheInputAgeBlock);
-                READWRITE(unitTest);
-                READWRITE(allowFreeTx);
-                READWRITE(protocolVersion);
-                READWRITE(nLastSsq);
-                READWRITE(donationAddress);
-                READWRITE(donationPercentage);
-                READWRITE(nVote);
-                READWRITE(lastVote);
-                READWRITE(nScanningErrorCount);
-                READWRITE(nLastScanningErrorBlockHeight);
-                READWRITE(nLastPaid);
-        }
+            LOCK(cs);
+
+            READWRITE(vin);
+            READWRITE(addr);
+            READWRITE(pubkey);
+            READWRITE(pubkey2);
+            READWRITE(sig);
+            READWRITE(sigTime);
+            READWRITE(protocolVersion);
+            READWRITE(activeState);
+            READWRITE(lastPing);
+            READWRITE(cacheInputAge);
+            READWRITE(cacheInputAgeBlock);
+            READWRITE(unitTest);
+            READWRITE(allowFreeTx);
+            READWRITE(nLastSsq);
+            READWRITE(nScanningErrorCount);
+            READWRITE(nLastScanningErrorBlockHeight);
     )
 
-    int64_t SecondsSincePayment()
-    {
-        return (GetAdjustedTime() - nLastPaid);
-    }
+    int64_t SecondsSincePayment();
 
-    void UpdateLastSeen(int64_t override=0)
-    {
-        if(override == 0){
-            lastTimeSeen = GetAdjustedTime();
-        } else {
-            lastTimeSeen = override;
-        }
-    }
+    bool UpdateFromNewBroadcast(CStormnodeBroadcast& snb);
 
     inline uint64_t SliceHash(uint256& hash, int slice)
     {
@@ -197,23 +213,36 @@ public:
         return n;
     }
 
-    void Check();
+    void Check(bool forceCheck = false);
 
-    bool UpdatedWithin(int seconds)
+    bool IsBroadcastedWithin(int seconds)
     {
-        // LogPrintf("UpdatedWithin %d, %d --  %d \n", GetAdjustedTime() , lastTimeSeen, (GetAdjustedTime() - lastTimeSeen) < seconds);
+        return (GetAdjustedTime() - sigTime) < seconds;
+    }
 
-        return (GetAdjustedTime() - lastTimeSeen) < seconds;
+    bool IsPingedWithin(int seconds, int64_t now = -1)
+    {
+        now == -1 ? now = GetAdjustedTime() : now;
+
+        return (lastPing == CStormnodePing())
+                ? false
+                : now - lastPing.sigTime < seconds;
     }
 
     void Disable()
     {
-        lastTimeSeen = 0;
+        sigTime = 0;
+        lastPing = CStormnodePing();
     }
 
     bool IsEnabled()
     {
         return activeState == STORMNODE_ENABLED;
+    }
+
+    bool IsPreEnabled()
+    {
+        return activeState == STORMNODE_PRE_ENABLED;
     }
 
     int GetStormnodeInputAge()
@@ -228,33 +257,60 @@ public:
         return cacheInputAge+(pindexBest->nHeight-cacheInputAgeBlock);
     }
 
-    void ApplyScanningError(CStormnodeScanningError& snse)
-    {
-        if(!snse.IsValid()) return;
-
-        if(snse.nBlockHeight == nLastScanningErrorBlockHeight) return;
-        nLastScanningErrorBlockHeight = snse.nBlockHeight;
-
-        if(snse.nErrorType == SCANNING_SUCCESS){
-            nScanningErrorCount--;
-            if(nScanningErrorCount < 0) nScanningErrorCount = 0;
-        } else { //all other codes are equally as bad
-            nScanningErrorCount++;
-            if(nScanningErrorCount > STORMNODE_SCANNING_ERROR_THESHOLD*2) nScanningErrorCount = STORMNODE_SCANNING_ERROR_THESHOLD*2;
-        }
-    }
-
     std::string Status() {
-    std::string strStatus = "ACTIVE";
+        std::string strStatus = "unknown";
 
-    if(activeState == CStormnode::STORMNODE_ENABLED) strStatus   = "ENABLED";
-    if(activeState == CStormnode::STORMNODE_EXPIRED) strStatus   = "EXPIRED";
-    if(activeState == CStormnode::STORMNODE_VIN_SPENT) strStatus = "VIN_SPENT";
-    if(activeState == CStormnode::STORMNODE_REMOVE) strStatus    = "REMOVE";
-    if(activeState == CStormnode::STORMNODE_POS_ERROR) strStatus = "POS_ERROR";
+        if(activeState == CStormnode::STORMNODE_PRE_ENABLED) strStatus = "PRE_ENABLED";
+        if(activeState == CStormnode::STORMNODE_ENABLED) strStatus     = "ENABLED";
+        if(activeState == CStormnode::STORMNODE_EXPIRED) strStatus     = "EXPIRED";
+        if(activeState == CStormnode::STORMNODE_VIN_SPENT) strStatus   = "VIN_SPENT";
+        if(activeState == CStormnode::STORMNODE_REMOVE) strStatus      = "REMOVE";
+        if(activeState == CStormnode::STORMNODE_POS_ERROR) strStatus   = "POS_ERROR";
 
-    return strStatus;
+        return strStatus;
     }
+
+    int64_t GetLastPaid();
+
+};
+
+
+//
+// The Stormnode Broadcast Class : Contains a different serialize method for sending stormnodes through the network
+//
+
+class CStormnodeBroadcast : public CStormnode
+{
+public:
+    CStormnodeBroadcast();
+    CStormnodeBroadcast(CService newAddr, CTxIn newVin, CPubKey newPubkey, CPubKey newPubkey2, int protocolVersionIn);
+    CStormnodeBroadcast(const CStormnode& sn);
+
+    bool CheckAndUpdate(int& nDoS);
+    bool CheckInputsAndAdd(int& nDos);
+    bool Sign(CKey& keyCollateralAddress);
+    void Relay();
+
+    IMPLEMENT_SERIALIZE
+    (
+        READWRITE(vin);
+        READWRITE(addr);
+        READWRITE(pubkey);
+        READWRITE(pubkey2);
+        READWRITE(sig);
+        READWRITE(sigTime);
+        READWRITE(protocolVersion);
+        READWRITE(lastPing);
+        READWRITE(nLastSsq);
+    )
+
+    uint256 GetHash(){
+        CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);
+        ss << sigTime;
+        ss << pubkey;
+        return ss.GetHash();
+    }
+
 };
 
 #endif

@@ -1,5 +1,5 @@
-// Copyright (c) 2015 The DarkSilk Developers
-// Copyright (c) 2009-2015 The Darkcoin developers
+// Copyright (c) 2015-2016 The Silk Network Developers
+// Copyright (c) 2009-2015 The Dash Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef SPORK_H
@@ -19,21 +19,25 @@ using namespace std;
 using namespace boost;
 
 // Don't ever reuse these IDs for other sporks
-#define SPORK_1_STORMNODE_PAYMENTS_ENFORCEMENT                10000
-#define SPORK_2_INSTANTX                                      10001
-#define SPORK_3_INSTANTX_BLOCK_FILTERING                      10002
-#define SPORK_4_NOTUSED                                       10003
-#define SPORK_5_MAX_VALUE                                     10004
-#define SPORK_6_NOTUSED                                       10005
-#define SPORK_7_STORMNODE_SCANNING                            10006
+static const unsigned int SPORK_1_STORMNODE_PAYMENTS_ENFORCEMENT = 10000;
+static const unsigned int SPORK_2_INSTANTX = 10001;
+static const unsigned int SPORK_3_INSTANTX_BLOCK_FILTERING = 10002;
+static const unsigned int SPORK_5_MAX_VALUE = 10004;
+static const unsigned int SPORK_7_STORMNODE_SCANNING = 10006;
+static const unsigned int SPORK_8_STORMNODE_PAYMENT_ENFORCEMENT = 10007;
+static const unsigned int SPORK_9_STORMNODE_BUDGET_ENFORCEMENT = 10008;
+static const unsigned int SPORK_10_STORMNODE_PAY_UPDATED_NODES = 10009;
+static const unsigned int SPORK_11_RESET_BUDGET = 10010;
+static const unsigned int SPORK_12_RECONSIDER_BLOCKS = 10011;
+static const unsigned int SPORK_13_ENABLE_SUPERBLOCKS = 10012;
 
-#define SPORK_1_STORMNODE_PAYMENTS_ENFORCEMENT_DEFAULT        1446335999  //Wed, 31 Oct 2015 23:59:59 GMT
-#define SPORK_2_INSTANTX_DEFAULT                              978307200   //2001-1-1         
-#define SPORK_3_INSTANTX_BLOCK_FILTERING_DEFAULT              1424217600  //2015-2-18
-#define SPORK_4_RECONVERGE_DEFAULT                            1420070400  //2047-1-1
-#define SPORK_5_MAX_VALUE_DEFAULT                             1000        //1000 DRKSLK
-#define SPORK_6_REPLAY_BLOCKS_DEFAULT                         0
-#define SPORK_7_STORMNODE_SCANNING_DEFAULT                    978307200   //2001-1-1
+static const int SPORK_1_STORMNODE_PAYMENTS_ENFORCEMENT_DEFAULT = 1446335999;  //Wed, 31 Oct 2015 23:59:59 GMT
+static const int SPORK_2_INSTANTX_DEFAULT = 978307200;   //2001-01-01
+static const int SPORK_3_INSTANTX_BLOCK_FILTERING_DEFAULT = 1424217600;  //2015-02-18
+static const unsigned int SPORK_5_MAX_VALUE_DEFAULT = 1000;        //1000 DRKSLK
+static const int SPORK_7_STORMNODE_SCANNING_DEFAULT = 978307200;   //2001-01-01
+static const int SPORK_8_STORMNODE_PAYMENT_ENFORCEMENT_DEFAULT = 1434326400;   //2015-06-15
+static const int SPORK_9_STORMNODE_BUDGET_ENFORCEMENT_DEFAULT = 1434326400;   //2015-06-15
 
 class CSporkMessage;
 class CSporkManager;
@@ -57,6 +61,7 @@ void ProcessSpork(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
 int GetSporkValue(int nSporkID);
 bool IsSporkActive(int nSporkID);
 void ExecuteSpork(int nSporkID, int nValue);
+void ReprocessBlocks(int nBlocks);
 
 //
 // Spork Class

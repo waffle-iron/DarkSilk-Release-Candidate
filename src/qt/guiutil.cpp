@@ -2,6 +2,7 @@
 
 #include "guiutil.h"
 
+#include "primitives/transaction.h"
 #include "darksilkaddressvalidator.h"
 #include "walletmodel.h"
 #include "darksilkunits.h"
@@ -511,7 +512,7 @@ void SetBlackThemeQSS(QApplication& app)
                       "QToolBar       { background: rgb(0,0,0); border: rgb(0,0,0); }"
                       "QTextEdit      { background-color: rgb(0,0,0); color: rgb(255,255,255); }"
                       "QPlainTextEdit { background-color: rgb(0,0,0); color: rgb(255,255,255); }"
-                      "QProgressBar { background-color: rgb(0,0,0); border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #500078, stop: 1 #500078); border-radius: 7px; margin: 0px; }"
+                      "QProgressBar { background-color: rgb(0,0,0); border: 1px solid grey; border-radius: 7px; padding: 1px; text-align: center; } QProgressBar::chunk { background: QLinearGradient(x1: 0, y1: 0, x2: 1, y2: 0, stop: 0 #220050, stop: 1 #500078); border-radius: 7px; margin: 0px; }"
                       );
 }
 
@@ -542,28 +543,14 @@ QString formatDurationStr(int secs)
 
 QString formatServicesStr(quint64 mask)
 {
-    QStringList strList;
+    if (mask == (NODE_I2P | NODE_NETWORK))
+        return "P2P Nodes and I2P";
 
-    // Just scan the last 8 bits for now.
-    for (int i = 0; i < 8; i++) {
-        uint64_t check = 1 << i;
-        if (mask & check)
-        {
-            switch (check)
-            {
-            case NODE_NETWORK:
-                strList.append(QObject::tr("NETWORK"));
-                break;
-            default:
-                strList.append(QString("%1[%2]").arg(QObject::tr("UNKNOWN")).arg(check));
-            }
-        }
-    }
+    if (mask == NODE_NETWORK)
+        return "P2P Nodes";
 
-    if (strList.size())
-        return strList.join(" & ");
-    else
-        return QObject::tr("None");
+    return "Unknown";
+
 }
 
 } // namespace GUIUtil

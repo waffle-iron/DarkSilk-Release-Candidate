@@ -1,6 +1,6 @@
-// Copyright (c) 2010-2015 Satoshi Nakamoto
-// Copyright (c) 2009-2015 The Bitcoin developers
-// Copyright (c) 2015 The DarkSilk developers
+// Copyright (c) 2009-2016 Satoshi Nakamoto
+// Copyright (c) 2009-2016 The Bitcoin Developers
+// Copyright (c) 2015-2016 The Silk Network Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -247,14 +247,16 @@ static const CRPCCommand vRPCCommands[] =
     { "validateaddress",        &validateaddress,        true,      false,     false },
     { "validatepubkey",         &validatepubkey,         true,      false,     false },
     { "verifymessage",          &verifymessage,          false,     false,     false },
-    { "searchrawtransactions",  &searchrawtransactions,  false,     false, false },
+    { "searchrawtransactions",  &searchrawtransactions,  false,     false,     false },
 
 /* Dark features */
-    { "spork",                  &spork,                  true,      false,      false },
-    { "stormnode",              &stormnode,             true,      false,      true },
-    { "stormnodelist",          &stormnodelist,         true,      false,      false },
+    { "spork",                  &spork,                  true,      false,     false },
+    { "stormnode",              &stormnode,              true,      false,     true },
+    { "snbudget",               &snbudget,               true,      false,     false },
+    { "snfinalbudget",          &snfinalbudget,          true,      false,     false }, 
+    { "stormnodelist",          &stormnodelist,          true,      false,     false },
 #ifdef ENABLE_WALLET
-    { "sandstorm",              &sandstorm,               false,     false,      true },
+    { "sandstorm",              &sandstorm,              false,     false,     true },
     { "getmininginfo",          &getmininginfo,          true,      false,     false },
     { "getstakinginfo",         &getstakinginfo,         true,      false,     false },
     { "getnewaddress",          &getnewaddress,          true,      false,     true },
@@ -294,6 +296,7 @@ static const CRPCCommand vRPCCommands[] =
     { "dumpwallet",             &dumpwallet,             true,      false,     true },
     { "importprivkey",          &importprivkey,          false,     false,     true },
     { "importwallet",           &importwallet,           false,     false,     true },
+    { "importaddress",          &importaddress,          false,     false,     true },
     { "listunspent",            &listunspent,            false,     false,     true },
     { "settxfee",               &settxfee,               false,     false,     true },
     { "getsubsidy",             &getsubsidy,             true,      true,      false },
@@ -322,22 +325,6 @@ static const CRPCCommand vRPCCommands[] =
     { "smsginbox",              &smsginbox,              false,     false,     false },
     { "smsgoutbox",             &smsgoutbox,             false,     false,     false },
     { "smsgbuckets",            &smsgbuckets,            false,     false,     false },
-    { "marketalllistings",      &marketalllistings,      false,     false,     false },
-    { "marketsearchlistings",   &marketsearchlistings,   false,     false,     false },
-    { "marketbuy",              &marketbuy,              false,     false,     false },
-    { "marketsell",             &marketsell,             false,     false,     false },
-    { "marketapprovebuy",       &marketapprovebuy,       false,     false,     false },
-    { "marketrejectbuy",        &marketrejectbuy,        false,     false,     false },
-    { "marketbuyrequests",      &marketbuyrequests,      false,     false,     false },
-    { "marketmylistings",       &marketmylistings,       false,     false,     false },
-    { "marketcancellisting",    &marketcancellisting,    false,     false,     false },
-    { "marketcancelescrow",     &marketcancelescrow,     false,     false,     false },
-    { "marketrequestpayment",   &marketrequestpayment,   false,     false,     false },
-    { "marketrefund",           &marketrefund,           false,     false,     false },
-    { "marketmybuys",           &marketmybuys,           false,     false,     false },
-    { "marketescrowlock",       &marketescrowlock,       false,     false,     false },
-    { "marketreleaseescrow",    &marketreleaseescrow,    false,     false,     false },
-    { "marketrequestrefund",    &marketrequestrefund,    false,     false,     false },
 #endif
 };
 
@@ -532,7 +519,7 @@ void StartRPCThreads()
          (mapArgs["-rpcuser"] == mapArgs["-rpcpassword"])) && Params().RequireRPCPassword())
     {
         unsigned char rand_pwd[32];
-        RAND_bytes(rand_pwd, 32);
+        GetRandBytes(rand_pwd, 32);
         string strWhatAmI = "To use darksilkd";
         if (mapArgs.count("-server"))
             strWhatAmI = strprintf(_("To use the %s option"), "\"-server\"");

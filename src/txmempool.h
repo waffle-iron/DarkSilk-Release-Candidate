@@ -1,13 +1,14 @@
-// Copyright (c) 2009-2015 Satoshi Nakamoto
-// Copyright (c) 2009-2015 The Bitcoin developers
-// Copyright (c) 2015 The DarkSilk developers
+// Copyright (c) 2009-2016 Satoshi Nakamoto
+// Copyright (c) 2009-2016 The Bitcoin Developers
+// Copyright (c) 2015-2016 The Silk Network Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef DARKSILK_TXMEMPOOL_H
 #define DARKSILK_TXMEMPOOL_H
 
-#include "core.h"
+#include "primitives/transaction.h"
 #include "sync.h"
+#include "coins.h"
 
 /*
  * CTxMemPool stores valid-according-to-the-current-best-chain
@@ -53,5 +54,9 @@ public:
 
     bool lookup(uint256 hash, CTransaction& result) const;
 };
+
+
+/// Fake height value used in CCoins to signify they are only in the memory pool (since 0.8)
+static const unsigned int MEMPOOL_HEIGHT = 0x7FFFFFFF;
 
 #endif /* DARKSILK_TXMEMPOOL_H */

@@ -1,6 +1,6 @@
-// Copyright (c) 2009-2015 Satoshi Nakamoto
-// Copyright (c) 2009-2015 The Bitcoin developers
-// Copyright (c) 2015 The DarkSilk developers
+// Copyright (c) 2009-2016 Satoshi Nakamoto
+// Copyright (c) 2009-2016 The Bitcoin Developers
+// Copyright (c) 2015-2016 The Silk Network Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -127,13 +127,15 @@ extern int nSandstormRounds;
 extern int nAnonymizeDarkSilkAmount;
 extern int nLiquidityProvider;
 extern bool fEnableSandstorm;
+extern bool fSandstormMultiSession;
 extern int64_t enforceStormnodePaymentsTime;
 extern std::string strStormNodeAddr;
 extern int nStormnodeMinProtocol;
 extern int keysLoaded;
 extern bool fSucessfullyLoaded;
 extern std::vector<int64_t> sandStormDenominations;
-
+extern std::string strBudgetMode;
+extern bool fSandstormMultiSession;
 extern bool fDebug;
 extern bool fDebugSmsg;
 extern bool fNoSmsg;
@@ -152,6 +154,11 @@ bool IsLogOpen();
 bool LogAcceptCategory(const char* category);
 /* Send a string to the log output */
 int LogPrintStr(const std::string &str);
+
+std::string GenerateRandomString(unsigned int len = 24);
+void WriteConfigFile(FILE* configFile);
+bool FileExists(const char *fileName);
+unsigned int RandomIntegerRange(unsigned int nMin, unsigned int nMax);
 
 #define LogPrintf(...) LogPrint(NULL, __VA_ARGS__)
 
@@ -231,6 +238,7 @@ std::string EncodeBase32(const std::string& str);
 void ParseParameters(int argc, const char*const argv[]);
 bool WildcardMatch(const char* psz, const char* mask);
 bool WildcardMatch(const std::string& str, const std::string& mask);
+bool TryCreateDirectory(const boost::filesystem::path& p);
 void FileCommit(FILE *fileout);
 bool RenameOver(boost::filesystem::path src, boost::filesystem::path dest);
 boost::filesystem::path GetDefaultDataDir();
@@ -249,7 +257,7 @@ std::string getTimeString(int64_t timestamp, char *buffer, size_t nBuffer);
 std::string bytesReadable(uint64_t nBytes);
 
 void ShrinkDebugFile();
-void GetRandBytes(unsigned char* buf, int num);
+bool GetRandBytes(unsigned char* buf, int num);
 int GetRandInt(int nMax);
 uint64_t GetRand(uint64_t nMax);
 uint256 GetRandHash();
@@ -258,6 +266,7 @@ void SetMockTime(int64_t nMockTimeIn);
 std::string FormatFullVersion();
 std::string FormatSubVersion(const std::string& name, int nClientVersion, const std::vector<std::string>& comments);
 void runCommand(std::string strCommand);
+bool TruncateFile(FILE *file, unsigned int length);
 
 #ifdef USE_NATIVE_I2P
 std::string FormatI2PNativeFullVersion();

@@ -1,10 +1,11 @@
-// Copyright (c) 2010-2015 Satoshi Nakamoto
-// Copyright (c) 2009-2015 The Bitcoin developers
-// Copyright (c) 2015 The DarkSilk developers
+// Copyright (c) 2009-2016 Satoshi Nakamoto
+// Copyright (c) 2009-2016 The Bitcoin Developers
+// Copyright (c) 2015-2016 The Silk Network Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "rpcserver.h"
+#include "base58.h"
 #include "chainparams.h"
 #include "main.h"
 #include "db.h"
@@ -12,6 +13,7 @@
 #include "init.h"
 #include "miner.h"
 #include "kernel.h"
+#include "txdb-leveldb.h"
 
 #include <boost/assign/list_of.hpp>
 
@@ -589,9 +591,10 @@ Value getblocktemplate(const Array& params, bool fHelp)
         MapPrevTx mapInputs;
         map<uint256, CTxIndex> mapUnused;
         bool fInvalid = false;
-        if (tx.FetchInputs(txdb, mapUnused, false, false, mapInputs, fInvalid))
+        CTransactionPoS txPoS;
+        if (txPoS.FetchInputs(tx, txdb, mapUnused, false, false, mapInputs, fInvalid))
         {
-            entry.push_back(Pair("fee", (int64_t)(tx.GetValueIn(mapInputs) - tx.GetValueOut())));
+            entry.push_back(Pair("fee", (int64_t)(txPoS.GetValueIn(tx, mapInputs) - txPoS.GetValueOut(tx))));
 
             Array deps;
             BOOST_FOREACH (MapPrevTx::value_type& inp, mapInputs)
@@ -622,6 +625,8 @@ Value getblocktemplate(const Array& params, bool fHelp)
         aMutable.push_back("prevblock");
     }
 
+    Array aVotes;
+
     Object result;
     result.push_back(Pair("version", pblock->nVersion));
     result.push_back(Pair("previousblockhash", pblock->hashPrevBlock.GetHex()));
@@ -637,6 +642,23 @@ Value getblocktemplate(const Array& params, bool fHelp)
     result.push_back(Pair("curtime", (int64_t)pblock->nTime));
     result.push_back(Pair("bits", strprintf("%08x", pblock->nBits)));
     result.push_back(Pair("height", (int64_t)(pindexPrev->nHeight+1)));
+    result.push_back(Pair("votes", aVotes));
+
+
+    if(pblock->payee != CScript()){
+        CTxDestination address1;
+        ExtractDestination(pblock->payee, address1);
+        CDarkSilkAddress address2(address1);
+        result.push_back(Pair("payee", address2.ToString().c_str()));
+        CTransactionPoS txPoS;
+        result.push_back(Pair("payee_amount", (int64_t)GetStormnodePayment(pindexPrev->nHeight+1, txPoS.GetValueOut(pblock->vtx[0]))));
+    } else {
+        result.push_back(Pair("payee", ""));
+        result.push_back(Pair("payee_amount", ""));
+    }
+
+    result.push_back(Pair("stormnode payments", pblock->nTime > Params().StartStormnodePayments()));
+    result.push_back(Pair("enforce_stormnode_payments", true));
 
     return result;
 }
@@ -648,7 +670,7 @@ Value submitblock(const Array& params, bool fHelp)
             "submitblock <hex data> [optional-params-obj]\n"
             "[optional-params-obj] parameter is currently ignored.\n"
             "Attempts to submit new block to network.\n"
-            "See https://en.darksilk.it/wiki/BIP_0022 for full specification.");
+            "See https://en.bitcoin.it/wiki/BIP_0022 for full specification.");
 
     vector<unsigned char> blockData(ParseHex(params[0].get_str()));
     CDataStream ssBlock(blockData, SER_NETWORK, PROTOCOL_VERSION);
@@ -660,38 +682,6 @@ Value submitblock(const Array& params, bool fHelp)
         throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Block decode failed");
     }
 
-    if (params.size() > 1)
-    {
-        const Object& oparam = params[1].get_obj();
-
-        const Value& coinstake_v = find_value(oparam, "coinstake");
-        if (coinstake_v.type() == str_type)
-        {
-            vector<unsigned char> txData(ParseHex(coinstake_v.get_str()));
-            CDataStream ssTx(txData, SER_NETWORK, PROTOCOL_VERSION);
-            CTransaction txCoinStake;
-            try {
-                ssTx >> txCoinStake;
-            }
-            catch (std::exception &e) {
-                throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Coinstake decode failed");
-            }
-
-            block.vtx.insert(block.vtx.begin() + 1, txCoinStake);
-            block.hashMerkleRoot = block.BuildMerkleTree();
-
-            CPubKey pubkey;
-            if (!pMiningKey->GetReservedKey(pubkey))
-                throw JSONRPCError(RPC_MISC_ERROR, "GetReservedKey failed");
-
-            CKey key;
-            if (!pwalletMain->GetKey(pubkey.GetID(), key))
-                throw JSONRPCError(RPC_MISC_ERROR, "GetKey failed");
-
-            if (!key.Sign(block.GetHash(), block.vchBlockSig))
-                throw JSONRPCError(RPC_MISC_ERROR, "Sign failed");
-        }
-    }
     bool fAccepted = ProcessBlock(NULL, &block);
     if (!fAccepted)
         return "rejected";

@@ -1,5 +1,5 @@
 #!/usr/bin/python
-# Copyright (c) 2014 Wladmir J. van der Laan
+# Copyright (c) 2014-2016 Wladmir J. van der Laan
 # Distributed under the MIT/X11 software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 '''

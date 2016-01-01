@@ -1,9 +1,10 @@
-// Copyright (c) 2012 Pieter Wuille
+// Copyright (c) 2012-2016 Pieter Wuille
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "addrman.h"
 #include "hash.h"
+#include "streams.h"
 
 using namespace std;
 
@@ -71,9 +72,8 @@ double CAddrInfo::GetChance(int64_t nNow) const
     if (nSinceLastTry < 60*10)
         fChance *= 0.01;
 
-    // deprioritize 50% after each failed attempt
-    for (int n=0; n<nAttempts; n++)
-        fChance /= 1.5;
+    // deprioritize 66% after each failed attempt, but at most 1/28th to avoid the search taking forever or overly penalizing outages.
+    fChance *= pow(0.66, min(nAttempts, 8));
 
     return fChance;
 }
