@@ -113,7 +113,7 @@ private:
     void AddToSpends(const uint256& wtxid);
 
     void SyncMetaData(std::pair<TxSpends::iterator, TxSpends::iterator>);
-    const CWalletTx* GetWalletTx(const uint256& hash) const;
+
     int GetRealInputSandstormRounds(CTxIn in, int rounds) const;
 
 public:
@@ -131,6 +131,8 @@ public:
     bool HasCollateralInputs() const;
     bool IsCollateralAmount(int64_t nInputAmount) const;
     int  CountInputsWithAmount(int64_t nInputAmount);
+
+    const CWalletTx* GetWalletTx(const uint256& hash) const;
 
     bool SelectCoinsCollateral(std::vector<CTxIn>& setCoinsRet, int64_t& nValueRet) const ;
     bool SelectCoinsWithoutDenomination(int64_t nTargetValue, std::set<std::pair<const CWalletTx*,unsigned int> >& setCoinsRet, int64_t& nValueRet) const;
@@ -824,7 +826,7 @@ public:
                 BOOST_FOREACH(const CMerkleTx& tx, vtxPrev)
                     mapPrev[tx.GetHash()] = &tx;
             }
-            
+
             // Trusted if all inputs are from us and are in the mempool:
             BOOST_FOREACH(const CTxIn& txin, ptx->vin)
             {
@@ -833,7 +835,7 @@ public:
                 if (parent == NULL)
                     return false;
                 const CTxOut& parentOut = parent->vout[txin.prevout.n];
-                if (pwallet->IsMine(parentOut) != ISMINE_SPENDABLE)
+                if (pwallet->IsMine(parentOut) != MINE_SPENDABLE)
                     return false;
 
                 vWorkQueue.push_back(mapPrev[txin.prevout.hash]);
