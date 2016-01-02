@@ -4,7 +4,7 @@
 
 DarkSilk Integration/Staging Tree
 ================================
-![DRKSLK logo](https://avatars1.githubusercontent.com/u/13841376?v=3&s=400)
+![DRKSLK logo](https://raw.githubusercontent.com/SCDeveloper/DarkSilk-Release-Candidate/master/src/qt/res/icons/header.png)
 
 **Copyright (c) 2015-2016 The Silk Network Developers**
 
