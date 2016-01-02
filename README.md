@@ -6,7 +6,7 @@ DarkSilk Integration/Staging Tree
 ================================
 ![DRKSLK logo](https://raw.githubusercontent.com/SCDeveloper/DarkSilk-Release-Candidate/master/src/qt/res/icons/header.png)
 
-**Copyright (c) 2015-2016 The Silk Network Developers**
+**Copyright (c) 2015-2016 Silk Network Developers**
 
 What is DarkSilk?
 ----------------
