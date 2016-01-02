@@ -10,7 +10,7 @@ DarkSilk Integration/Staging Tree
 
 What is DarkSilk?
 ----------------
-* Algorithm: Scrypt
+* Algorithm: Argon2d
 * Coin Suffix: DRKSLK
 * PoW Period: 42,002 Blocks
 * PoW Target Spacing: 60 Seconds
