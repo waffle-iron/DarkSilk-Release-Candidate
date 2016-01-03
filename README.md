@@ -10,17 +10,18 @@ DarkSilk Integration/Staging Tree
 
 What is DarkSilk?
 ----------------
-* Algorithm: Argon2d
 * Coin Suffix: DRKSLK
+* PoW Algorithm: Argon2d
 * PoW Period: 42,002 Blocks
 * PoW Target Spacing: 60 Seconds
 * PoW Difficulty Retarget: 10 Blocks
 * PoW Reward per Block: 42 DRKSLK
 * Full Confirmation: 10 Blocks
-* Maturity: 42 Blocks
+* PoS Algorithm: Black2B
 * PoS Target Spacing: 64 Seconds
 * PoS Difficulty Retarget: 10 Blocks
 * PoS Reward: 2 DRKSLK Static PoS Reward
+* Maturity: 42 Blocks
 * Minimum Confirmations for Stake: 420 Blocks
 * PoS Min: 4 Hours
 * PoS Max: Unlimited
@@ -30,7 +31,7 @@ What is DarkSilk?
 * Budget Reward: 10,000 DRKSLK Static Reward Every 41,091 blocks (~once per month)
 * Budget Proposal Fee: 420 DRKSLK, 20 confirmations, First vote eligible in 20 blocks (~21 minutes).
 * Total Coins: 90,000,000 DRKSLK
-* Block Size: 50MB (50X Bitcoin Core)
+* Block Size: 20MB (20X Bitcoin Core)
 
 
 
