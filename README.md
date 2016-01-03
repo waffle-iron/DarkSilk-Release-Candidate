@@ -17,7 +17,7 @@ What is DarkSilk?
 * PoW Difficulty Retarget: 10 Blocks
 * PoW Reward per Block: 42 DRKSLK
 * Full Confirmation: 10 Blocks
-* PoS Algorithm: Black2B
+* PoS Algorithm: Blake2B
 * PoS Target Spacing: 64 Seconds
 * PoS Difficulty Retarget: 10 Blocks
 * PoS Reward: 2 DRKSLK Static PoS Reward
