@@ -12,7 +12,7 @@ What is DarkSilk?
 ----------------
 * Coin Suffix: DRKSLK
 * PoW Algorithm: Argon2d
-* PoW Period: 42,002 Blocks
+* PoW Period: Unlimited
 * PoW Target Spacing: 60 Seconds
 * PoW Difficulty Retarget: 10 Blocks
 * PoW Reward per Block: 42 DRKSLK
@@ -30,7 +30,7 @@ What is DarkSilk?
 * Stormnode Reward: 2 DRKSLK Static Reward
 * Budget Reward: 10,000 DRKSLK Static Reward Every 41,091 blocks (~once per month)
 * Budget Proposal Fee: 420 DRKSLK, 20 confirmations, First vote eligible in 20 blocks (~21 minutes).
-* Total Coins: 20,000,000 DRKSLK
+* Total Coins: 90,000,000 DRKSLK
 * Block Size: 20MB (20X Bitcoin Core)
 
 
