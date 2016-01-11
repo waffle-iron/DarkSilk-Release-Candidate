@@ -22,7 +22,7 @@ What is DarkSilk?
 * PoS Difficulty Retarget: 10 Blocks 
 * PoS Reward: 0.25 DRKSLK Static PoS Reward
 * PoS Stake Split Combined Threshold: 500 DRKSLK
-* Maturity: 10 Blocks (~10 minutes)
+* Maturity: 100 Blocks (~100 minutes)
 * Minimum Confirmations for Stake: 1440 Blocks (~1 day)
 * PoS Min: 1 Hour
 * PoS Max: Unlimited
