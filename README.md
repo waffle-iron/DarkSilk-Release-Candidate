@@ -15,25 +15,24 @@ What is DarkSilk?
 * PoW Period: Unlimited
 * PoW Target Spacing: 60 Seconds
 * PoW Difficulty Retarget: 10 Blocks
-* PoW Reward per Block: 42 DRKSLK
+* PoW Reward per Block: 1 DRKSLK
 * Full Confirmation: 10 Blocks
 * PoS Algorithm: Blake2B
 * PoS Target Spacing: 64 Seconds
-* PoS Difficulty Retarget: 10 Blocks
-* PoS Reward: 2 DRKSLK Static PoS Reward
-* Maturity: 42 Blocks
-* Minimum Confirmations for Stake: 420 Blocks
-* PoS Min: 4 Hours
+* PoS Difficulty Retarget: 10 Blocks 
+* PoS Reward: 0.25 DRKSLK Static PoS Reward
+* PoS Stake Split Combined Threshold: 500 DRKSLK
+* Maturity: 100 Blocks (~100 minutes)
+* Minimum Confirmations for Stake: 1440 Blocks (~1 day)
+* PoS Min: 1 Hour
 * PoS Max: Unlimited
-* Stormnode Collateral Amount: 42000 DRKSLK
+* Stormnode Collateral Amount: 10000 DRKSLK
 * Stormnode Min Confirmation: 10 Blocks
-* Stormnode Reward: 2 DRKSLK Static Reward
-* Budget Reward: 10,000 DRKSLK Static Reward Every 41,091 blocks (~once per month)
-* Budget Proposal Fee: 420 DRKSLK, 20 confirmations, First vote eligible in 20 blocks (~21 minutes).
-* Total Coins: 90,000,000 DRKSLK
+* Stormnode Reward: 0.25 DRKSLK Static Reward
+* Budget Reward: 10,000 DRKSLK Static Reward Every 41,091 blocks (~30 days)
+* Budget Proposal Fee: 100 DRKSLK, 20 confirmations (~20 minutes)
+* Total Coins: 90,000,000 DRKSLK (~75.5 years)
 * Block Size: 20MB (20X Bitcoin Core)
-
-
 
 
 DarkSilk is a new digital currency that enables instant payments to anyone, anywhere in the world. DarkSilk uses peer-to-peer technology over I2P/Tor/ClearNet to operate securly with no central authority (centralisation): managing transactions and issuing currency (DRKSLK) are carried out collectively by the DarkSilk network. DarkSilk is the name of open source software which enables the use of the currency DRKSLK.
