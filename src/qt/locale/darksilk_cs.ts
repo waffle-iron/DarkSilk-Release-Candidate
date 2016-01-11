@@ -2328,7 +2328,7 @@ alternate-background-color: rgb(86, 0, 120);)</translation>
     <message>
         <location line="+3"/>
         <source>
-DRKSLK from standard transactions confirm after 10 blocks and are spendable after just 1 block. Mined coins (PoW or PoS generated) must mature 420 blocks and be held for a minimum of 4 hours before they can be staked or spent. When you generate a PoW or PoS block it is broadcast to the network to be added to the DarkSilk blockchain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another wallet/node generates a block within a few seconds of your wallet/node.</source>
+DRKSLK from standard transactions confirm after 10 blocks and are spendable after just 1 block. Mined coins (PoW or PoS generated) must mature 100 blocks and be held for a minimum of 1 day before they can be staked or spent. When you generate a PoW or PoS block it is broadcast to the network to be added to the DarkSilk blockchain. If it fails to get into the chain, its state will change to &quot;not accepted&quot; and it won&apos;t be spendable. This may occasionally happen if another wallet/node generates a block within a few seconds of your wallet/node.</source>
         <translation>Vygenerované mince musí zrát 510 bloků, než mohou být utraceny. Když jsi vygeneroval tento blok, tak byl vyslán do sítě, aby byl přidán do řetězce bloků. Pokud přidání do řetězce selže, tak se jeho stav změní na &quot;neakceptován&quot; a nebude ho možné utratit. To se někdy může stát, když jiný uzel vygeneruje blok pár vteřin před tím tvým. </translation>
     </message>
     <message>

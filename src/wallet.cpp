@@ -39,7 +39,7 @@ int64_t nMinimumInputValue = 0;
 
 int64_t gcd(int64_t n,int64_t m) { return m == 0 ? n : gcd(m, n % m); }
 
-static int64_t GetStakeCombineThreshold() {return 100 * COIN; }
+static int64_t GetStakeCombineThreshold() {return 500 * COIN; }
 static int64_t GetStakeSplitThreshold() { return 2 * GetStakeCombineThreshold(); }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -1375,7 +1375,7 @@ CAmount CWallet::GetAnonymizableBalance(bool includeAlreadyAnonymized) const
 
                     if(IsSpent(hash, i) || !IsMine(pcoin->vout[i])) continue;
                     if (pcoin->IsCoinBase() && pcoin->GetBlocksToMaturity() > 0) continue; // do not count immature
-                    if(pcoin->vout[i].nValue == 42000*COIN) continue; // do not count SN-like outputs
+                    if(pcoin->vout[i].nValue == 10000*COIN) continue; // do not count SN-like outputs
 
                     int rounds = GetInputSandstormRounds(vin);
                     if(rounds >=-2 && (rounds < nSandstormRounds || (includeAlreadyAnonymized && rounds >= nSandstormRounds))) {
@@ -1714,7 +1714,7 @@ void CWallet::AvailableCoins(vector<COutput>& vCoins, bool fOnlyConfirmed, const
                     found = true;
                     if (IsCollateralAmount(pcoin->vout[i].nValue)) continue; // do not use collateral amounts
                     found = !IsDenominatedAmount(pcoin->vout[i].nValue);
-                    if(found && coin_type == ONLY_NONDENOMINATED_NOTSN) found = (pcoin->vout[i].nValue != 42000*COIN); // do not use SN funds
+                    if(found && coin_type == ONLY_NONDENOMINATED_NOTSN) found = (pcoin->vout[i].nValue != 10000*COIN); // do not use SN funds
                 } else {
                     found = true;
                 }
@@ -2373,7 +2373,7 @@ bool CWallet::SelectCoinsByDenominations(int nDenom, int64_t nValueMin, int64_t 
     BOOST_FOREACH(const COutput& out, vCoins)
     {
         // stormnode-like input should not be selected by AvailableCoins now anyway
-        //if(out.tx->vout[out.i].nValue == 42000*COIN) continue;
+        //if(out.tx->vout[out.i].nValue == 10000*COIN) continue;
         if(nValueRet + out.tx->vout[out.i].nValue <= nValueMax){
             bool fAccepted = false;
 
@@ -2451,7 +2451,7 @@ bool CWallet::SelectCoinsDark(CAmount nValueMin, CAmount nValueMax, std::vector<
         if(out.tx->vout[out.i].nValue < CENT) continue;
         //do not allow collaterals to be selected
         if(IsCollateralAmount(out.tx->vout[out.i].nValue)) continue;
-        if(fStormNode && out.tx->vout[out.i].nValue == 42000*COIN) continue; //stormnode input
+        if(fStormNode && out.tx->vout[out.i].nValue == 10000*COIN) continue; //stormnode input
 
         if(nValueRet + out.tx->vout[out.i].nValue <= nValueMax){
             CTxIn vin = CTxIn(out.tx->GetHash(),out.i);
