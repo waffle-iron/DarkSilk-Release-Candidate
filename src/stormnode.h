@@ -13,7 +13,7 @@
 #include "main.h"
 #include "timedata.h"
 
-static const int STORMNODE_MIN_CONFIRMATIONS = 15;
+static const int STORMNODE_MIN_CONFIRMATIONS = 10;
 static const int STORMNODE_MIN_SNP_SECONDS = (10*60);
 static const int STORMNODE_MIN_SNB_SECONDS = (5*60);
 static const int STORMNODE_PING_SECONDS = (5*60);
