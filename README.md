@@ -15,21 +15,21 @@ What is DarkSilk?
 * PoW Period: Unlimited
 * PoW Target Spacing: 60 Seconds
 * PoW Difficulty Retarget: 10 Blocks
-* PoW Reward per Block: 42 DRKSLK
+* PoW Reward per Block: 1 DRKSLK
 * Full Confirmation: 10 Blocks
 * PoS Algorithm: Blake2B
 * PoS Target Spacing: 64 Seconds
 * PoS Difficulty Retarget: 10 Blocks
-* PoS Reward: 2 DRKSLK Static PoS Reward
+* PoS Reward: 0.25 DRKSLK Static PoS Reward
 * Maturity: 42 Blocks
 * Minimum Confirmations for Stake: 420 Blocks
 * PoS Min: 4 Hours
 * PoS Max: Unlimited
-* Stormnode Collateral Amount: 42000 DRKSLK
+* Stormnode Collateral Amount: 10000 DRKSLK
 * Stormnode Min Confirmation: 10 Blocks
-* Stormnode Reward: 2 DRKSLK Static Reward
+* Stormnode Reward: 0.25 DRKSLK Static Reward
 * Budget Reward: 10,000 DRKSLK Static Reward Every 41,091 blocks (~once per month)
-* Budget Proposal Fee: 420 DRKSLK, 20 confirmations, First vote eligible in 20 blocks (~21 minutes).
+* Budget Proposal Fee: 2.5%, 20 confirmations, First vote eligible in 20 blocks (~21 minutes).
 * Total Coins: 90,000,000 DRKSLK
 * Block Size: 20MB (20X Bitcoin Core)
 
