@@ -28,6 +28,7 @@
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/range/algorithm.hpp>
 #include <boost/numeric/ublas/matrix.hpp>
+#include <boost/thread.hpp>
 
 using namespace std;
 
@@ -2362,12 +2363,12 @@ bool CWallet::SelectCoinsByDenominations(int nDenom, int64_t nValueMin, int64_t 
 
 
 
-    if(!(nDenom & (1 << 1))) fFound10000 = true;
-    if(!(nDenom & (1 << 2))) fFound1000 = true;
-    if(!(nDenom & (1 << 3))) fFound100 = true;
-    if(!(nDenom & (1 << 4))) fFound10 = true;
-    if(!(nDenom & (1 << 5))) fFound1 = true;
-    if(!(nDenom & (1 << 6))) fFoundDot1 = true;
+    if(!(nDenom & (1 << 0))) fFound10000 = true;
+    if(!(nDenom & (1 << 1))) fFound1000 = true;
+    if(!(nDenom & (1 << 2))) fFound100 = true;
+    if(!(nDenom & (1 << 3))) fFound10 = true;
+    if(!(nDenom & (1 << 4))) fFound1 = true;
+    if(!(nDenom & (1 << 5))) fFoundDot1 = true;
 
     BOOST_FOREACH(const COutput& out, vCoins)
     {
