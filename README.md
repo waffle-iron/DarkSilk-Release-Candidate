@@ -29,7 +29,7 @@ What is DarkSilk?
 * Stormnode Min Confirmation: 10 Blocks
 * Stormnode Reward: 0.25 DRKSLK Static Reward
 * Budget Reward: 10,000 DRKSLK Static Reward Every 41,091 blocks (~once per month)
-* Budget Proposal Fee: 100 DRKSLK, 20 confirmations, first vote eligible in 20 blocks (~21 minutes).
+* Budget Proposal Fee: 100 DRKSLK, 20 confirmations (~21 minutes).
 * Total Coins: 90,000,000 DRKSLK
 * Block Size: 20MB (20X Bitcoin Core)
 
