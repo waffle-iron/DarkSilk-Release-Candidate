@@ -202,7 +202,7 @@ void CStormnode::Check(bool forceCheck)
         //TODO (Amir): put this back.
         /*CValidationState state;
         CTransaction tx = CTransaction(); //TODO (Amir): Use CMutableTransaction here?
-        CTxOut vout = CTxOut(41999.99*COIN, sandStormSigner.collateralPubKey);
+        CTxOut vout = CTxOut(9999.99*COIN, sandStormSigner.collateralPubKey);
         tx.vin.push_back(vin);
         tx.vout.push_back(vout);
 
@@ -437,7 +437,7 @@ bool CStormnodeBroadcast::CheckInputsAndAdd(int& nDoS)
 
     CValidationState state;
     CTransaction tx; //TODO (Amir): Use CMutableTransaction here?
-    CTxOut vout = CTxOut(41999.99*COIN, sandStormPool.collateralPubKey);
+    CTxOut vout = CTxOut(9999.99*COIN, sandStormPool.collateralPubKey);
     tx.vin.push_back(vin);
     tx.vout.push_back(vout);
 
@@ -470,7 +470,7 @@ bool CStormnodeBroadcast::CheckInputsAndAdd(int& nDoS)
     }
 
     // verify that sig time is legit in past
-    // should be at least not earlier than block when 42000 DRKSLK tx got STORMNODE_MIN_CONFIRMATIONS
+    // should be at least not earlier than block when 10000 DRKSLK tx got STORMNODE_MIN_CONFIRMATIONS
     uint256 hashBlock = 0;
     CTransaction tx2;
     GetTransaction(vin.prevout.hash, tx2, hashBlock);
@@ -478,7 +478,7 @@ bool CStormnodeBroadcast::CheckInputsAndAdd(int& nDoS)
     /*BlockMap::iterator mi = mapBlockIndex.find(hashBlock);
     if (mi != mapBlockIndex.end() && (*mi).second)
     {
-        CBlockIndex* pSNIndex = (*mi).second; // block for 42000 DRKSLK tx -> 1 confirmation
+        CBlockIndex* pSNIndex = (*mi).second; // block for 10000 DRKSLK tx -> 1 confirmation
         CBlockIndex* pConfIndex = chainActive[pSNIndex->nHeight + STORMNODE_MIN_CONFIRMATIONS - 1]; // block where tx got STORMNODE_MIN_CONFIRMATIONS
         if(pConfIndex->GetBlockTime() > sigTime)
         {

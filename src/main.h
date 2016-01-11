@@ -25,15 +25,15 @@
 
 class CValidationState;
 
-static const int64_t STORMNODE_COLLATERAL = 42000; //Stormnode Collateral Amount
+static const int64_t STORMNODE_COLLATERAL = 10000; //Stormnode Collateral Amount
 
 static const int STORMNODE_PAYMENT_START = 420; // Block 420
 static const int TESTNET_STORMNODE_PAYMENT_START = 100; // Block 100
 
 static const int64_t SANDSTORM_COLLATERAL = (0.01*COIN);
-static const int64_t SANDSTORM_POOL_MAX = (41999.99*COIN);
+static const int64_t SANDSTORM_POOL_MAX = (9999.99*COIN);
 
-static const int64_t STATIC_POS_REWARD = COIN * 4; // Static Reward of 4 DRKSLK 
+static const int64_t STATIC_POS_REWARD = COIN * 0.25; // Static Reward of 0.5 DRKSLK 
 
 /// Number of blocks that can be requested at any given time from a single peer.
 static const int MAX_BLOCKS_IN_TRANSIT_PER_PEER = 128;

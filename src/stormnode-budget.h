@@ -32,7 +32,7 @@ static const int VOTE_ABSTAIN = 0;
 static const int VOTE_YES = 1;
 static const int VOTE_NO = 2;
 
-static const CAmount BUDGET_FEE_TX = (420*COIN); //Proposal fee of 420DRKSLK
+static const CAmount BUDGET_FEE_TX = (100*COIN); //Proposal fee of 100DRKSLK
 static const int64_t BUDGET_FEE_CONFIRMATIONS = 10; 
 static const int64_t BUDGET_VOTE_UPDATE_MIN = 64*20;
 

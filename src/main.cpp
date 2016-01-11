@@ -54,10 +54,10 @@ map<uint256, CBlockIndex*> mapBlockIndex;
 set<pair<COutPoint, unsigned int> > setStakeSeen;
 
 //TODO(AA)
-unsigned int nStakeMinAge = 1 * 60; // 4 hours
+unsigned int nStakeMinAge = 24 * 60 * 60; // 1 day
 unsigned int nModifierInterval = 10 * 60; // 10 minutes to elapse before new modifier is computed
-int nStakeMinConfirmations = 10; // 420 confirmations before coins can be staked
-int nCoinbaseMaturity = 10; // 42 blocks until coins are mature
+int nStakeMinConfirmations = 1440; // ~1 day before coins can be staked
+int nCoinbaseMaturity = 100; // 100 blocks until coins are mature
 bool fTxIndex = true;
 
 CBlockIndex* pindexGenesisBlock = NULL;
@@ -1148,7 +1148,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree, boo
         // but prioritise sstx and don't check fees for it
         if(mapSandstormBroadcastTxes.count(hash)) {
             // Normally we would PrioritiseTransaction But currently it is unimplemented
-             //mempool.PrioritiseTransaction(hash, hash.ToString(), 42000, 0.1 * COIN);  //TODO (Amir): Put this line back. needs PrioritiseTransaction
+             //mempool.PrioritiseTransaction(hash, hash.ToString(), 10000, 0.1 * COIN);  //TODO (Amir): Put this line back. needs PrioritiseTransaction
         } else if(!ignoreFees){
             int64_t txMinFee = GetMinFee(tx, nSize, true, GMF_RELAY);
             if (fLimitFree && nFees < txMinFee)
@@ -1652,7 +1652,7 @@ int64_t GetProofOfWorkReward(int64_t nFees)
     }
     else
     {
-        int64_t nSubsidy = 42 * COIN;
+        int64_t nSubsidy = 1 * COIN;
         LogPrint("creation", "GetProofOfWorkReward() : create=%s nSubsidy=%d\n", FormatMoney(nSubsidy), nSubsidy);
         return nSubsidy + nFees;
     }

@@ -217,7 +217,7 @@ QString TransactionDesc::toHTML(CWallet *wallet, CWalletTx &wtx, TransactionReco
     strHTML += "<b>" + tr("Transaction ID") + ":</b> " + TransactionRecord::formatSubTxId(wtx.GetHash(), rec->idx) + "<br>";
 
     if (wtx.IsCoinBase() || wtx.IsCoinStake())
-        strHTML += "<br>" + tr("DRKSLK from standard transactions confirm after 10 blocks and are spendable after just 1 block. Mined coins (PoW or PoS generated) must mature 420 blocks and be held for a minimum of 4 hours before they can be staked or spent. When you generate a PoW or PoS block it is broadcast to the network to be added to the DarkSilk blockchain. If it fails to get into the chain, its state will change to \"not accepted\" and it won&apos;t be spendable. This may occasionally happen if another wallet/node generates a block within a few seconds of your wallet/node.") + "<br>";
+        strHTML += "<br>" + tr("DRKSLK from standard transactions confirm after 10 blocks and are spendable after just 1 block. Mined coins (PoW or PoS generated) must mature 100 blocks and be held for a minimum of 1 day before they can be staked or spent. When you generate a PoW or PoS block it is broadcast to the network to be added to the DarkSilk blockchain. If it fails to get into the chain, its state will change to \"not accepted\" and it won&apos;t be spendable. This may occasionally happen if another wallet/node generates a block within a few seconds of your wallet/node.") + "<br>";
 
     //
     // Debug view
