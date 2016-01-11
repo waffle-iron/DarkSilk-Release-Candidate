@@ -202,7 +202,7 @@ void CStormnode::Check(bool forceCheck)
         //TODO (Amir): put this back.
         /*CValidationState state;
         CTransaction tx = CTransaction(); //TODO (Amir): Use CMutableTransaction here?
-        CTxOut vout = CTxOut(41999.99*COIN, sandStormSigner.collateralPubKey);
+        CTxOut vout = CTxOut(9999.99*COIN, sandStormSigner.collateralPubKey);
         tx.vin.push_back(vin);
         tx.vout.push_back(vout);
 
@@ -437,7 +437,7 @@ bool CStormnodeBroadcast::CheckInputsAndAdd(int& nDoS)
 
     CValidationState state;
     CTransaction tx; //TODO (Amir): Use CMutableTransaction here?
-    CTxOut vout = CTxOut(41999.99*COIN, sandStormPool.collateralPubKey);
+    CTxOut vout = CTxOut(9999.99*COIN, sandStormPool.collateralPubKey);
     tx.vin.push_back(vin);
     tx.vout.push_back(vout);
 
