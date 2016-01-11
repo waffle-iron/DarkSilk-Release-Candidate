@@ -1666,7 +1666,7 @@ Value gettransaction(const Array& params, bool fHelp)
 
         TxToJSON(wtx, 0, entry);
 
-        int64_t nCredit = wtx.GetCredit();
+        int64_t nCredit = wtx.GetCredit(filter);
         int64_t nDebit = wtx.GetDebit(filter);
         int64_t nNet = nCredit - nDebit;
         CTransactionPoS txPoS;
