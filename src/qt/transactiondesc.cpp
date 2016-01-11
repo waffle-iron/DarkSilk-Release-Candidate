@@ -48,7 +48,7 @@ QString TransactionDesc::toHTML(CWallet *wallet, CWalletTx &wtx, TransactionReco
 
     int64_t nTime = wtx.GetTxTime();
     int64_t nCredit = wtx.GetCredit();
-    int64_t nDebit = wtx.GetDebit();
+    int64_t nDebit = wtx.GetDebit(ISMINE_ALL);
     int64_t nNet = nCredit - nDebit;
 
     strHTML += "<b>" + tr("Status") + ":</b> " + FormatTxStatus(wtx);

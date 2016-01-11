@@ -144,13 +144,16 @@ enum
     SCRIPT_VERIFY_CHECKLOCKTIMEVERIFY = (1U << 10)
 };
 
-/** IsMine() return codes */
+/// IsMine() return codes
 enum isminetype
 {
-   MINE_NO = 0,
-    MINE_WATCH_ONLY = 1,
-    MINE_SPENDABLE = 2,
+    ISMINE_NO = 0,
+    ISMINE_WATCH_ONLY = 1,
+    ISMINE_SPENDABLE = 2,
+    ISMINE_ALL = ISMINE_WATCH_ONLY | ISMINE_SPENDABLE
 };
+/// used for bitflags of isminetype
+typedef uint8_t isminefilter;
 
 // Mandatory script verification flags that all new blocks must comply with for
 // them to be valid. (but old blocks may not comply with)
