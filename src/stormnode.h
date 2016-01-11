@@ -16,7 +16,7 @@
 static const int STORMNODE_MIN_CONFIRMATIONS = 10;
 static const int STORMNODE_MIN_SNP_SECONDS = (10*60);
 static const int STORMNODE_MIN_SNB_SECONDS = (5*60);
-static const int STORMNODE_PING_SECONDS = (5*60);
+static const int STORMNODE_PING_SECONDS = (1*60);
 static const int STORMNODE_EXPIRATION_SECONDS = (65*60);
 static const int STORMNODE_REMOVAL_SECONDS = (75*60);
 static const int STORMNODE_CHECK_SECONDS = 5;
