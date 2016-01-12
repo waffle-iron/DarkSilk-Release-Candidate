@@ -348,14 +348,14 @@ public:
 
 
     isminetype IsMine(const CTxIn& txin) const;
-    int64_t GetDebit(const CTxIn& txin) const;
+
     isminetype IsMine(const CTxOut& txout) const
     {
         return ::IsMine(*this, txout.scriptPubKey);
     }
 
     bool IsChange(const CTxOut& txout) const;
-    int64_t GetChange(const CTxOut& txout) const
+    CAmount GetChange(const CTxOut& txout) const
     {
         if (!MoneyRange(txout.nValue))
             throw std::runtime_error("CWallet::GetChange() : value out of range");
@@ -369,7 +369,7 @@ public:
                 return true;
         return false;
     }
-
+    /// should probably be renamed to IsRelevantToMe
     bool IsFromMe(const CTransaction& tx) const
     {
         return (GetDebit(tx, ISMINE_ALL) > 0);
@@ -793,7 +793,6 @@ public:
         return credit;
     }
 
-    CAmount GetDebit(const CTxIn& txin, const isminefilter& filter) const;
     CAmount GetDebit(const isminefilter& filter) const
     {
         if (vin.empty())

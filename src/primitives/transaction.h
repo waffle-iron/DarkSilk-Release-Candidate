@@ -6,6 +6,7 @@
 #ifndef DARKSILK_PRIMITIVES_TRANSACTION_H
 #define DARKSILK_PRIMITIVES_TRANSACTION_H
 
+#include "amount.h"
 #include "uint256.h"
 #include "serialize.h"
 #include "util.h"
@@ -17,10 +18,6 @@
 
 /// The maximum allowed size for a serialized block, in bytes (network rule)
 static const unsigned int MAX_BLOCK_SIZE = 20000000; // 20MB Maximum Block Size (50x Bitcoin Core)
-/// No amount larger than this (in satoshi) is valid
-static const int64_t MAX_MONEY = 90000000 * COIN; // 45,000,000 instamined from blocks 1 & 2 for Weaver Collateral (main.cpp lines 1129-1143) | 1,679,958 PoW Generated Coins
-
-inline bool MoneyRange(int64_t nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 
 using namespace std;
 

@@ -43,7 +43,13 @@ set<CWallet*> setpwalletRegistered;
 
 CCriticalSection cs_main;
 
-CTxMemPool mempool;
+
+/// Fees smaller than this (in satoshis) are considered zero fee (for relaying and mining)
+/// We are ~xxx times smaller then bitcoin now (2016-01-11), set minRelayTxFee only 10 times higher
+/// so it's still 10 times lower comparing to bitcoin.
+CFeeRate minRelayTxFee = CFeeRate(10000);
+
+CTxMemPool mempool(::minRelayTxFee);
 
 struct COrphanTx {
     CTransaction tx;
@@ -4070,7 +4076,9 @@ bool static FlushStateToDisk(CValidationState &state, FlushStateMode mode) {
              }
              setDirtyBlockIndex.erase(it++);
         }
+
         pblocktree->Sync();
+
         // Finally flush the chainstate (which may refer to block index entries).
         if (!pcoinsTip->Flush())
             return state.Abort("Failed to write to coin database");

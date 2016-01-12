@@ -115,9 +115,10 @@ OBJS= \
     obj/smessage.o \
     obj/coins.o \
     obj/compressor.o \
-    obj/undo.o \
     obj/primitives/transaction.o\
     obj/leveldbwrapper.o\
+    obj/amount.o\
+    obj/uint256.o\
     obj/txdb.o
 
 ifdef USE_NATIVE_I2P
@@ -147,6 +148,7 @@ DEFS += $(addprefix -I,$(CURDIR)/secp256k1/include)
 LIBS += $(CURDIR)/leveldb/libleveldb.a $(CURDIR)/leveldb/libmemenv.a
 DEFS += $(addprefix -I,$(CURDIR)/leveldb/include)
 DEFS += $(addprefix -I,$(CURDIR)/leveldb/helpers)
+DEFS += $(addprefix -I,$(CURDIR)/leveldb/helpers/memenv)
 OBJS += obj/txdb-leveldb.o
 leveldb/libleveldb.a:
 	@echo "Building LevelDB ..." && cd leveldb TARGET_OS=NATIVE_WINDOWS make libleveldb.a libmemenv.a cd ..
