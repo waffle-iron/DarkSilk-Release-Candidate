@@ -124,8 +124,7 @@ QMAKE_CLEAN += $$PWD/src/secp256k1/src/libsecp256k1_la-secp256k1.o; cd $$PWD/src
 
 INCLUDEPATH += src/leveldb/include src/leveldb/helpers src/leveldb/helpers/memenv
 LIBS += $$PWD/src/leveldb/libleveldb.a $$PWD/src/leveldb/libmemenv.a
-SOURCES += src/txdb-leveldb.cpp \
-    src/txdb.cpp
+SOURCES += src/txdb-leveldb.cpp
 
 !win32 {
     # we use QMAKE_CXXFLAGS_RELEASE even without RELEASE=1 because we use RELEASE to indicate linking preferences not -O preferences
@@ -314,7 +313,8 @@ HEADERS += src/qt/darksilkgui.h \
     src/undo.h \
     src/leveldbwrapper.h \
     src/streams.h \
-    src/txdb-leveldb.h
+    src/txdb-leveldb.h \
+    src/amount.h
 
 SOURCES += src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
     src/qt/transactiontablemodel.cpp \
@@ -438,7 +438,9 @@ SOURCES += src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
     src/uint256.cpp \
     src/coins.cpp \
     src/compressor.cpp \
-    src/leveldbwrapper.cpp
+    src/leveldbwrapper.cpp \
+    src/txdb.cpp \
+    src/amount.cpp
 
 RESOURCES += \
     src/qt/darksilk.qrc
