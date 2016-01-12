@@ -1219,6 +1219,7 @@ void ReadConfigFile(map<string, string>& mapSettingsRet,
         if (configFile != NULL) {
             // Write darksilk.conf file with random username and password.
             WriteConfigFile(configFile);
+            return; // Nothing to read, so just return
         }
     }
 
