@@ -21,7 +21,6 @@
 #include "spork.h"
 #include "stormnodeconfig.h"
 #include "smessage.h"
-#include "txdb.h"
 #include "txdb-leveldb.h"
 
 #ifdef ENABLE_WALLET
@@ -58,6 +57,10 @@ unsigned int nMinerSleep;
 bool fUseFastIndex;
 bool fOnlyTor = false;
 bool fMinimizeCoinAge;
+
+bool fFeeEstimatesInitialized = false;
+
+static const char* FEE_ESTIMATES_FILENAME="fee_estimates.dat";
 
 //////////////////////////////////////////////////////////////////////////////
 //
@@ -145,9 +148,20 @@ void Shutdown()
     DumpBudgets();
     DumpStormnodePayments();
     UnregisterNodeSignals(GetNodeSignals());
+
+    if (fFeeEstimatesInitialized)
+    {
+        boost::filesystem::path est_path = GetDataDir() / FEE_ESTIMATES_FILENAME;
+        CAutoFile est_fileout(fopen(est_path.string().c_str(), "wb"), SER_DISK, CLIENT_VERSION);
+        if (!est_fileout.IsNull())
+            mempool.WriteFeeEstimates(est_fileout);
+        else
+            LogPrintf("%s: Failed to write fee estimates to %s\n", __func__, est_path.string());
+        fFeeEstimatesInitialized = false;
+    }
     {
         LOCK(cs_main);
-        if (pcoinsTip != NULL) {
+        if (pcoinsTip != NULL && pblocktree != NULL) {
             FlushStateToDisk();
         }
         delete pcoinsTip;
@@ -590,6 +604,13 @@ bool AppInit2(boost::thread_group& threadGroup)
     nStormnodeMinProtocol = GetArg("-stormnodeminprotocol", MIN_SN_PROTO_VERSION);
 
     int64_t nStart;
+
+    boost::filesystem::path est_path = GetDataDir() / FEE_ESTIMATES_FILENAME;
+    CAutoFile est_filein(fopen(est_path.string().c_str(), "rb"), SER_DISK, CLIENT_VERSION);
+    // Allowed to fail as this file IS missing on first startup.
+    if (!est_filein.IsNull())
+        mempool.ReadFeeEstimates(est_filein);
+    fFeeEstimatesInitialized = true;
 
     // ********************************************************* Step 5: verify database integrity
 #ifdef ENABLE_WALLET

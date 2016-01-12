@@ -5,12 +5,29 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "txmempool.h"
-#include "main.h" // for CTransaction
 
 using namespace std;
 
-CTxMemPool::CTxMemPool()
+CTxMemPool::CTxMemPool(const CFeeRate& _minRelayFee) :
+    nTransactionsUpdated(0),
+    minRelayFee(_minRelayFee)
 {
+    // Sanity checks off by default for performance, because otherwise
+    // accepting transactions becomes O(N^2) where N is the number
+    // of transactions in the pool
+    fSanityCheck = false;
+
+    // 25 blocks is a compromise between using a lot of disk/memory and
+    // trying to give accurate estimates to people who might be willing
+    // to wait a day or two to save a fraction of a penny in fees.
+    // Confirmation times for very-low-fee transactions that take more
+    // than an hour or three to confirm are highly variable.
+    minerPolicyEstimator = new CMinerPolicyEstimator(25);
+}
+
+CTxMemPool::~CTxMemPool()
+{
+    delete minerPolicyEstimator;
 }
 
 unsigned int CTxMemPool::GetTransactionsUpdated() const
@@ -105,4 +122,38 @@ bool CTxMemPool::lookup(uint256 hash, CTransaction& result) const
     result = i->second;
     return true;
 }
+
+bool CTxMemPool::WriteFeeEstimates(CAutoFile& fileout) const
+{
+    try {
+        LOCK(cs);
+        fileout << 120000; // version required to read: 0.12.00 or later
+        fileout << CLIENT_VERSION; // version that wrote the file
+        minerPolicyEstimator->Write(fileout);
+    }
+    catch (const std::exception &) {
+        LogPrintf("CTxMemPool::WriteFeeEstimates() : unable to write policy estimator data (non-fatal)");
+        return false;
+    }
+    return true;
+}
+
+bool CTxMemPool::ReadFeeEstimates(CAutoFile& filein)
+{
+    try {
+        int nVersionRequired, nVersionThatWrote;
+        filein >> nVersionRequired >> nVersionThatWrote;
+        if (nVersionRequired > CLIENT_VERSION)
+            return error("CTxMemPool::ReadFeeEstimates() : up-version (%d) fee estimate file", nVersionRequired);
+
+        LOCK(cs);
+        minerPolicyEstimator->Read(filein, minRelayFee);
+    }
+    catch (const std::exception &) {
+        LogPrintf("CTxMemPool::ReadFeeEstimates() : unable to read policy estimator data (non-fatal)");
+        return false;
+    }
+    return true;
+}
+
 
