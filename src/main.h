@@ -33,7 +33,7 @@ static const int TESTNET_STORMNODE_PAYMENT_START = 100; // Block 100
 static const int64_t SANDSTORM_COLLATERAL = (0.01*COIN);
 static const int64_t SANDSTORM_POOL_MAX = (9999.99*COIN);
 
-static const int64_t STATIC_POS_REWARD = COIN * 0.25; // Static Reward of 0.5 DRKSLK 
+static const int64_t STATIC_POS_REWARD = COIN * 0.1; // Static Reward of 0.1 DRKSLK 
 
 /// Number of blocks that can be requested at any given time from a single peer.
 static const int MAX_BLOCKS_IN_TRANSIT_PER_PEER = 128;
