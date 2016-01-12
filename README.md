@@ -20,7 +20,7 @@ What is DarkSilk?
 * PoS Algorithm: Blake2B
 * PoS Target Spacing: 64 Seconds
 * PoS Difficulty Retarget: 10 Blocks 
-* PoS Reward: 0.25 DRKSLK Static PoS Reward
+* PoS Reward: 0.1 DRKSLK Static PoS Reward
 * PoS Stake Split Combined Threshold: 500 DRKSLK
 * Maturity: 100 Blocks (~100 minutes)
 * Minimum Confirmations for Stake: 1440 Blocks (~1 day)
