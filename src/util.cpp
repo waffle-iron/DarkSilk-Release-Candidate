@@ -1213,19 +1213,15 @@ bool FileExists(const char *fileName)
 void ReadConfigFile(map<string, string>& mapSettingsRet,
                     map<string, vector<string> >& mapMultiSettingsRet)
 {
-    if(!FileExists(GetConfigFile().c_str())) {
+    boost::filesystem::ifstream streamConfig(GetConfigFile());
+    if (!streamConfig.good()){
         // Create darksilk.conf if it does not exist
         FILE* configFile = fopen(GetConfigFile().string().c_str(), "a");
         if (configFile != NULL) {
             // Write darksilk.conf file with random username and password.
             WriteConfigFile(configFile);
-            return; // Nothing to read, so just return
+            // New darksilk.conf file written, now read it.
         }
-    }
-
-    boost::filesystem::ifstream streamConfig(GetConfigFile());
-    if (!streamConfig.good()){
-        throw runtime_error("conf file not found!");
     }
 
     set<string> setOptions;
