@@ -178,6 +178,7 @@ public:
 
     uint256 GetPoWHash() const
     {
+        //return hashArgon2d(BEGIN(nVersion), END(nNonce));
         return scrypt_blockhash(CVOIDBEGIN(nVersion));
     }
 
