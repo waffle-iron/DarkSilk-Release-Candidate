@@ -103,61 +103,57 @@ inline uint256 HashBlake2b(const T1 pbegin, const T1 pend)
 /// Associated data length: 0
 /// Memory cost: 1024
 /// Lanes: 64
+inline int Argon2d_Hash(void *out, size_t outlen, const void *in, size_t inlen, const void *salt, size_t saltlen, unsigned int t_cost,
+        unsigned int m_cost) {
+
+    argon2_context context;
+
+    if (inlen > UINT32_MAX) {
+        return ARGON2_PWD_TOO_LONG;
+    }
+
+    if (outlen > UINT32_MAX) {
+        return ARGON2_OUTPUT_TOO_LONG;
+    }
+
+    if (saltlen > UINT32_MAX) {
+        return ARGON2_SALT_TOO_LONG;
+    }
+
+    context.out = (uint8_t *)out;
+    context.outlen = (uint32_t)outlen;
+    context.pwd = (uint8_t *)in;
+    context.pwdlen = (uint32_t)inlen;
+    context.salt = (uint8_t *)salt;
+    context.saltlen = (uint32_t)saltlen;
+    context.secret = NULL;
+    context.secretlen = 0;
+    context.ad = NULL;
+    context.adlen = 0;
+    context.t_cost = t_cost;
+    context.m_cost = m_cost;
+    context.lanes = 64;
+    context.threads = 1;
+    context.allocate_cbk = NULL;
+    context.free_cbk = NULL;
+    context.flags = ARGON2_DEFAULT_FLAGS;
+
+    return argon2_core(&context, Argon2_d);
+}
+
 template<typename T1>
 inline uint256 hashArgon2d(const T1 pbegin, const T1 pend)
 {
+    unsigned int t_costs = 2;
+    unsigned int m_costs = 1024;
+
     uint256 hash = HashBlake2b(pbegin, pend);
-    argon2_context argonContext;
-    argonContext.outlen = 32; // Output length: 32 bytes.
-    argonContext.saltlen = 80; // Salt length: 80 bytes.
-    argonContext.secretlen = 0; // Secret length: 0
-    argonContext.adlen = 0; // Associated data length: 0
-    argonContext.m_cost = 1024; // Memory cost: 1024
-    argonContext.lanes = 64; // Lanes: 64
-    argonContext.threads = 1;
-    //argonContext.out = static_cast<void*>(&hash);
-    //argonContext.salt = static_cast<void*>(&hash);
-    //argonContext.pwd = static_cast<void*>(&hash);
-    argon2d(&argonContext);
+    Argon2d_Hash(static_cast<void*>(&hash), 32, static_cast<void*>(&hash), 80,
+                    static_cast<void*>(&hash), 80,  t_costs, m_costs);
 
     return hash;
 }
 
-#define OUTLEN 32
-#define SALTLEN 16
-#define PWD "password"
-/*
-template<typename T1>
-inline uint256 hashArgon2d_2(const T1 pbegin, const T1 pend)
-{
-    uint8_t out1[OUTLEN];
-    uint8_t out2[OUTLEN];
-    uint8_t salt[SALTLEN];
-
-    uint8_t *in = (uint8_t *)strdup(PWD);
-    uint32_t inlen = strlen((char *)in);
-
-    uint32_t t_cost = 2;            // 1-pass computation
-    uint32_t m_cost = (1<<16);      // 64 mebibytes memory usage
-
-    // low-level API
-    uint32_t lanes = 64;
-    uint32_t threads = 1;
-    in = (uint8_t *)strdup(PWD);
-    argon2_context context = {
-        out2, OUTLEN,
-        in, inlen,
-        salt, SALTLEN,
-        NULL, 0, // secret data
-        NULL, 0, // associated data
-        t_cost, m_cost, lanes, threads,
-        NULL, NULL, // custom memory allocation / deallocation functions
-        ARGON2_DEFAULT_FLAGS // by default the password is zeroed on exit
-    };
-    argon2i(&context);
-
-}
-*/
 class CHashWriter
 {
 private:
