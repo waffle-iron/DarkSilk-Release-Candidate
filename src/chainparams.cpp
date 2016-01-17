@@ -113,7 +113,6 @@ public:
         nPoolMaxTransactions = 3;
         strSandstormPoolDummyAddress = "DDCxTmWLPytjnEAMd3TCGaryJStEx5caSm"; //private key = MpBeYuuA7c47bqa6ubmBnP8P7hkpmJTSUgwejC8AehSPwsXmkZHD
         strStormnodePaymentsPubKey = "";
-        nLastPOWBlock = -1;
         nFirstPOSBlock = 101;
         nStartStormnodePayments = 1446335999; //Wed, 31 Oct 2015 23:59:59 GMT
     }

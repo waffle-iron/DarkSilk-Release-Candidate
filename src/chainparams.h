@@ -68,7 +68,6 @@ public:
     const std::vector<unsigned char> &Base58Prefix(Base58Type type) const { return base58Prefixes[type]; }
     virtual const vector<CAddress>& FixedSeeds() const = 0;
     int RPCPort() const { return nRPCPort; }
-    int LastPOWBlock() const { return nLastPOWBlock; }
     int FirstPOSBlock() const { return nFirstPOSBlock; }
     std::string StormnodePaymentPubKey() const { return strStormnodePaymentsPubKey; }
     int64_t StartStormnodePayments() const { return nStartStormnodePayments; }
@@ -91,7 +90,6 @@ protected:
     std::vector<unsigned char> base58Prefixes[MAX_BASE58_TYPES];
     std::string strStormnodePaymentsPubKey;
     int64_t nStartStormnodePayments;
-    int nLastPOWBlock;
     int nFirstPOSBlock;
     int nPoolMaxTransactions;
     std::string strSandstormPoolDummyAddress;
