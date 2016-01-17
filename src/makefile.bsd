@@ -161,7 +161,13 @@ OBJS= \
     obj/leveldbwrapper.o\
     obj/amount.o\
     obj/uint256.o\
-    obj/txdb.o
+    obj/txdb.o \
+    obj/crypto/argon2/argon2.c \
+    obj/crypto/argon2/core.c \
+    obj/crypto/argon2/encoding.c \
+    obj/crypto/argon2/thread.c \
+    obj/crypto/argon2/opt.c \
+    obj/crypto/argon2/blake2/blake2b.o
 
 ifeq (${USE_WALLET}, 1)
     DEFS += -DENABLE_WALLET
