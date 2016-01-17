@@ -14,6 +14,8 @@
 
 #include "crypto/ripemd160.h"
 #include "crypto/sha256.h"
+#include "crypto/argon2/blake2/blake2.h"
+#include "crypto/argon2/argon2.h"
 
 #include <vector>
 
@@ -65,7 +67,6 @@ public:
     }
 };
 
-
 template<typename T1>
 inline uint256 Hash(const T1 pbegin, const T1 pend)
 {
@@ -75,6 +76,50 @@ inline uint256 Hash(const T1 pbegin, const T1 pend)
     uint256 hash2;
     SHA256((unsigned char*)&hash1, sizeof(hash1), (unsigned char*)&hash2);
     return hash2;
+}
+
+template<typename T1>
+inline uint256 HashBlake2b(const T1 pbegin, const T1 pend)
+{
+    static unsigned char pblank[1];
+    uint256 hash1;
+    blake2b_state S[1];
+    blake2b_init( S, BLAKE2B_OUTBYTES );
+    blake2b_update( S, (pbegin == pend ? pblank : (unsigned char*)&pbegin[0]), (pend - pbegin) * sizeof(pbegin[0]) );
+    blake2b_final( S, (unsigned char*)&hash1, BLAKE2B_OUTBYTES );
+    return hash1;
+}
+
+/// Argon2d Parameters
+/// Salt and password are the block header.
+/// Output length: 32 bytes.
+/// Input length (in the case of a block header): 80 bytes.
+/// Salt length (same note as input length): 80 bytes.
+/// Input: Block header
+/// Salt: Block header (SAME AS INPUT)
+/// Secret data: None
+/// Secret length: 0
+/// Associated data: None
+/// Associated data length: 0
+/// Memory cost: 1024
+/// Lanes: 64
+template<typename T1>
+inline uint256 hashArgon2d(const T1 pbegin, const T1 pend)
+{
+    uint256 hash = HashBlake2b(pbegin, pend);
+    Argon2_Context argonContext;
+    argonContext.outlen = 32; // Output length: 32 bytes.
+    argonContext.saltlen = 80; // Salt length: 80 bytes.
+    argonContext.secretlen = 0; // Secret length: 0
+    argonContext.adlen = 0; // Associated data length: 0
+    argonContext.m_cost = 1024; // Memory cost: 1024
+    argonContext.lanes = 64; // Lanes: 64
+    argonContext.threads = 1;
+    argonContext.out = static_cast<void*>(&hash);
+    argonContext.salt = static_cast<void*>(&hash);
+    argon2d(&argonContext);
+
+    return hash;
 }
 
 class CHashWriter
