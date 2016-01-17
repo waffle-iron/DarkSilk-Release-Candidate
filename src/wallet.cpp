@@ -2678,8 +2678,8 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, int64_t> >& vecSend, 
         CTxDB txdb("r");
         LOCK2(cs_main, cs_wallet);
         {
-            nFeeRet = 0.01*COIN;
-            int64_t nFee = 0.01*COIN;
+            nFeeRet = MIN_FEE * COIN;
+            int64_t nFee = MIN_FEE * COIN;
             if(useIX) nFeeRet = max(CENT, nFeeRet);
             while (true)
             {

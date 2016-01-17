@@ -35,34 +35,34 @@ static const int DATABASE_VERSION = 60509;
 // network protocol versioning
 //
 
-static const int PROTOCOL_VERSION = 60138;
+static const int PROTOCOL_VERSION = 60140;
 
 // intial proto version, to be increased after version/verack negotiation
-static const int INIT_PROTO_VERSION = 60138;
+static const int INIT_PROTO_VERSION = 60140;
 
 // disconnect from peers older than this proto version
-static const int MIN_SANDSTORM_PROTO_VERSION = 60138;
+static const int MIN_SANDSTORM_PROTO_VERSION = 60140;
 
 /// minimum peer version for stormnode budgets
-static const int MIN_BUDGET_PEER_PROTO_VERSION = 60138;
+static const int MIN_BUDGET_PEER_PROTO_VERSION = 60140;
 
 /// minimum peer version for stormnode winner broadcasts
-static const int MIN_SNW_PEER_PROTO_VERSION = 60138;
+static const int MIN_SNW_PEER_PROTO_VERSION = 60140;
 
 //! minimum peer version that can receive stormnode payments
 // V1 - Last protocol version before update
 // V2 - Newest protocol version
-static const int MIN_STORMNODE_PAYMENT_PROTO_VERSION_1 = 60138;
-static const int MIN_STORMNODE_PAYMENT_PROTO_VERSION_2 = 60138;
+static const int MIN_STORMNODE_PAYMENT_PROTO_VERSION_1 = 60140;
+static const int MIN_STORMNODE_PAYMENT_PROTO_VERSION_2 = 60140;
 
 // disconnect from peers older than this proto version
-static const int MIN_PEER_PROTO_VERSION = 60138;
+static const int MIN_PEER_PROTO_VERSION = 60140;
 
 // disconnect from peers older than this proto version
-static const int MIN_POOL_PEER_PROTO_VERSION = 60138;
+static const int MIN_POOL_PEER_PROTO_VERSION = 60140;
 
 /// minimum peer version accepted by SandstormPool
-static const int MIN_INSTANTX_PROTO_VERSION = 60138;
+static const int MIN_INSTANTX_PROTO_VERSION = 60140;
 
 //disconnect from Stormnodes older than this proto version
 static const int MIN_SN_PROTO_VERSION = 60138;
@@ -79,6 +79,6 @@ static const int NOBLKS_VERSION_END = 60006;
 static const int MEMPOOL_GD_VERSION = 60002;
 
 // reject blocks with non-canonical signatures starting from this version
-static const int CANONICAL_BLOCK_SIG_VERSION = 60138;
+static const int CANONICAL_BLOCK_SIG_VERSION = 60140;
 
 #endif
