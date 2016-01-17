@@ -644,9 +644,13 @@ Value getbalance(const Array& params, bool fHelp)
         );
     }
 
-    int nMinDepth = 0;
+    if (params.size() == 0)
+        return  ValueFromAmount(pwalletMain->GetBalance());
+
+    int nMinDepth = 1;
     if (params.size() > 1)
         nMinDepth = params[1].get_int();
+
     isminefilter filter = ISMINE_SPENDABLE;
     if(params.size() > 2)
         if(params[2].get_bool())

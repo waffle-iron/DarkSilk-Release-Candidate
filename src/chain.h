@@ -170,6 +170,7 @@ public:
     uint256 GetHash() const
     {
         if (nVersion > 1)
+            //return HashBlake2b(BEGIN(nVersion), END(nNonce));
             return Hash(BEGIN(nVersion), END(nNonce));
         else
             return GetPoWHash();
@@ -177,6 +178,7 @@ public:
 
     uint256 GetPoWHash() const
     {
+        //return hashArgon2d(BEGIN(nVersion), END(nNonce));
         return scrypt_blockhash(CVOIDBEGIN(nVersion));
     }
 

@@ -126,6 +126,10 @@ INCLUDEPATH += src/leveldb/include src/leveldb/helpers src/leveldb/helpers/memen
 LIBS += $$PWD/src/leveldb/libleveldb.a $$PWD/src/leveldb/libmemenv.a
 SOURCES += src/txdb-leveldb.cpp
 
+
+INCLUDEPATH +=  src/crypto/argon2 \
+                src/crypto/argon2/blake2
+
 !win32 {
     # we use QMAKE_CXXFLAGS_RELEASE even without RELEASE=1 because we use RELEASE to indicate linking preferences not -O preferences
     genleveldb.commands = cd $$PWD/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX $(MAKE) OPT=\"$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE\" libleveldb.a libmemenv.a
@@ -314,7 +318,16 @@ HEADERS += src/qt/darksilkgui.h \
     src/leveldbwrapper.h \
     src/streams.h \
     src/txdb-leveldb.h \
-    src/amount.h
+    src/amount.h \
+    src/crypto/argon2/argon2.h \
+    src/crypto/argon2/core.h \
+    src/crypto/argon2/encoding.h \
+    src/crypto/argon2/thread.h \
+    src/crypto/argon2/blake2/blake2-impl.h \
+    src/crypto/argon2/blake2/blake2.h \
+    src/crypto/argon2/blake2/blamka-round-opt.h \
+    src/crypto/argon2/blake2/blamka-round-ref.h \
+    src/crypto/argon2/opt.h
 
 SOURCES += src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
     src/qt/transactiontablemodel.cpp \
@@ -440,7 +453,13 @@ SOURCES += src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
     src/compressor.cpp \
     src/leveldbwrapper.cpp \
     src/txdb.cpp \
-    src/amount.cpp
+    src/amount.cpp \
+    src/crypto/argon2/argon2.c \
+    src/crypto/argon2/core.c \
+    src/crypto/argon2/encoding.c \
+    src/crypto/argon2/thread.c \
+    src/crypto/argon2/blake2/blake2b.c \
+    src/crypto/argon2/opt.c
 
 RESOURCES += \
     src/qt/darksilk.qrc
