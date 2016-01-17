@@ -314,7 +314,16 @@ HEADERS += src/qt/darksilkgui.h \
     src/leveldbwrapper.h \
     src/streams.h \
     src/txdb-leveldb.h \
-    src/amount.h
+    src/amount.h \
+    src/crypto/argon2/argon2.h \
+    src/crypto/argon2/core.h \
+    src/crypto/argon2/encoding.h \
+    src/crypto/argon2/thread.h \
+    src/crypto/argon2/blake2/blake2-impl.h \
+    src/crypto/argon2/blake2/blake2.h \
+    src/crypto/argon2/blake2/blamka-round-opt.h \
+    src/crypto/argon2/blake2/blamka-round-ref.h \
+    src/crypto/argon2/opt.h
 
 SOURCES += src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
     src/qt/transactiontablemodel.cpp \
@@ -440,7 +449,13 @@ SOURCES += src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
     src/compressor.cpp \
     src/leveldbwrapper.cpp \
     src/txdb.cpp \
-    src/amount.cpp
+    src/amount.cpp \
+    src/crypto/argon2/argon2.c \
+    src/crypto/argon2/core.c \
+    src/crypto/argon2/encoding.c \
+    src/crypto/argon2/thread.c \
+    src/crypto/argon2/blake2/blake2b.c \
+    src/crypto/argon2/opt.c
 
 RESOURCES += \
     src/qt/darksilk.qrc
