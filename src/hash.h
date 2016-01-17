@@ -14,8 +14,8 @@
 
 #include "crypto/ripemd160.h"
 #include "crypto/sha256.h"
-#include "blake2.h"
-#include "argon2.h"
+#include "crypto/argon2/blake2/blake2.h"
+#include "crypto/argon2/argon2.h"
 
 #include <vector>
 

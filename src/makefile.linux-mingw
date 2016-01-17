@@ -126,11 +126,11 @@ OBJS= \
     obj/amount.o\
     obj/uint256.o\
     obj/txdb.o \
-    obj/crypto/argon2/argon2.c \
-    obj/crypto/argon2/core.c \
-    obj/crypto/argon2/encoding.c \
-    obj/crypto/argon2/thread.c \
-    obj/crypto/argon2/opt.c \
+    obj/crypto/argon2/argon2.o \
+    obj/crypto/argon2/core.o \
+    obj/crypto/argon2/encoding.o \
+    obj/crypto/argon2/thread.o \
+    obj/crypto/argon2/opt.o \
     obj/crypto/argon2/blake2/blake2b.o
 
 ifeq (${USE_WALLET}, 1)
@@ -171,6 +171,12 @@ DEFS += -DHAVE_BUILD_INFO
 obj/%.o: %.cpp $(HEADERS)
 	$(CXX) -c $(CFLAGS) -fpermissive -o $@ $<
 
+obj/crypto/argon2/%.o: crypto/argon2/%.c
+        $(CXX) -c $(xCXXFLAGS) -MMD -o $@ $<
+
+obj/crypto/argon2/blake2/%.o: crypto/argon2/blake2/%.c
+        $(CXX) -c $(xCXXFLAGS) -MMD -o $@ $<
+
 darksilkd.exe: $(OBJS:obj/%=obj/%)
 	$(CXX) $(CFLAGS) $(LDFLAGS) -o $@ $(LIBPATHS) $^ $(LIBS) -lshlwapi
 	$(STRIP) darksilkd.exe
@@ -184,10 +190,24 @@ obj/scrypt-x86_64.o: scrypt-x86_64.S
 obj/scrypt-arm.o: scrypt-arm.S
 	$(CXX) -c $(xCXXFLAGS) -MMD -o $@ $<
 clean:
-	-rm -f obj/*.o
-	-rm -f darksilkd.exe
-	-rm -f obj/build.h
-	-rm -rf obj/crypto
+        -rm -f darksilkd
+        -rm -f obj/*.o
+        -rm -f obj/*.P
+        -rm -f obj/*.d
+        -rm -f obj/build.h
+        -rm -f obj/crypto/*.o
+        -rm -f obj/crypto/*.P
+        -rm -f obj/crypto/*.d
+        -rm -f obj/primitives/*.o
+        -rm -f obj/primitives/*.P
+        -rm -f obj/primitives/*.d
+        -rm -f obj/crypto/argon2/*.o
+        -rm -f obj/crypto/argon2/*.P
+        -rm -f obj/crypto/argon2/*.d
+        -rm -f obj/crypto/argon2/blake2/*.o
+        -rm -f obj/crypto/argon2/blake2/*.P
+        -rm -f obj/crypto/argon2/blake2/*.d
          cd leveldb && TARGET_OS=OS_WINDOWS_CROSSCOMPILE $(MAKE) clean && cd ..
+         cd secp256k1 && TARGET_OS=OS_WINDOWS_CROSSCOMPILE $(MAKE) clean && cd ..
 
 FORCE:
