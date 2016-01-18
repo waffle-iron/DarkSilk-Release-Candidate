@@ -7,7 +7,6 @@
 #ifndef DARKSILK_CHAIN_PARAMS_H
 #define DARKSILK_CHAIN_PARAMS_H
 
-#include "primitives/block.h"
 #include "bignum.h"
 #include "uint256.h"
 #include "util.h"
