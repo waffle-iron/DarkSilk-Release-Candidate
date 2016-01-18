@@ -82,10 +82,6 @@ static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov 5th 00:53:2
 
 static const unsigned int POW_TARGET_SPACING = 1 * 60; // 60 seconds
 static const unsigned int POS_TARGET_SPACING = 1 * 64; // 64 seconds
-static const int64_t POW_DRIFT = 10 * 60; // 600 seconds
-static const int64_t POS_DRIFT = 10 * 64; // 640 seconds
-
-inline int64_t FutureDrift(int64_t nTime, bool fProofOfStake=false) { return nTime + (fProofOfStake ? POS_DRIFT : POW_DRIFT); }
 
 struct BlockHasher
 {
