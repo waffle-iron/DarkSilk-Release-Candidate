@@ -90,4 +90,3 @@ std::string CBlock::ToString() const
     s << "\n";
     return s.str();
 }
-
