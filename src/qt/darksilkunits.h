@@ -1,5 +1,12 @@
+// Copyright (c) 2011-2016 The Bitcoin developers
+// Copyright (c) 2014-2016 The Silk Network developers
+// Distributed under the MIT/X11 software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #ifndef DARKSILKUNITS_H
 #define DARKSILKUNITS_H
+
+#include "amount.h"
 
 #include <QString>
 #include <QAbstractListModel>
@@ -60,6 +67,9 @@ public:
     int rowCount(const QModelIndex &parent) const;
     QVariant data(const QModelIndex &index, int role) const;
     ///@}
+
+    //! Return maximum number of base units (Satoshis)
+    static CAmount maxMoney();
 
 private:
     QList<DarkSilkUnits::Unit> unitlist;

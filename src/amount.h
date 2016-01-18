@@ -1,4 +1,4 @@
-// Copyright (c) 2009-2010 Satoshi Nakamoto
+// Copyright (c) 2009-2016 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
@@ -17,7 +17,7 @@ static const CAmount COIN = 100000000;
 static const CAmount CENT = 1000000;
 
 /// No amount larger than this (in DRKSLK) is valid
-static const int64_t MAX_MONEY = 90000000 * COIN; // 45,000,000 instamined from blocks 1 & 2 for Weaver Collateral (main.cpp lines 1129-1143) | 1,679,958 PoW Generated Coins
+static const CAmount MAX_MONEY = 90000000 * COIN;
 inline bool MoneyRange(const CAmount& nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 
 /// Type-safe wrapper class to for fee rates

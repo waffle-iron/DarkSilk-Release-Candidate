@@ -1,3 +1,8 @@
+// Copyright (c) 2011-2016 The Bitcoin developers
+// Copyright (c) 2014-2016 The Silk Network developers
+// Distributed under the MIT/X11 software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #include "darksilkunits.h"
 #include "primitives/transaction.h"
 
@@ -179,4 +184,9 @@ QVariant DarkSilkUnits::data(const QModelIndex &index, int role) const
         }
     }
     return QVariant();
+}
+
+CAmount DarkSilkUnits::maxMoney()
+{
+    return MAX_MONEY;
 }
