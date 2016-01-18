@@ -8,7 +8,6 @@
 
 #include "primitives/transaction.h"
 #include "crypto/argon2/argon2.h"
-#include "scrypt.h"
 
 class CTxDB;
 class CWallet;
@@ -84,17 +83,11 @@ public:
     {
         if (nVersion > 1)
             return HashBlake2b(BEGIN(nVersion), END(nNonce));
-            //return Hash(BEGIN(nVersion), END(nNonce));
         else
             return GetPoWHash();
     }
 
     uint256 GetPoWHash() const
-    {
-        return scrypt_blockhash(CVOIDBEGIN(nVersion));
-    }
-
-    uint256 GetPoWArgonHash() const
     {
         return hashArgon2d(BEGIN(nVersion), END(nNonce));
     }
