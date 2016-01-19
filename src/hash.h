@@ -19,7 +19,9 @@
 
 #include <vector>
 
-/** A hasher class for DarkSilk's 256-bit hash (double SHA-256). */
+static const unsigned int OUT_BYTES = 32;
+
+/// A hasher class for DarkSilk's 256-bit hash (double SHA-256).
 class CHash256 {
 private:
     CSHA256 sha;
@@ -42,8 +44,32 @@ public:
         return *this;
     }
 };
+/*
+/// A hasher class for DarkSilk's 256-bit hash (double SHA-256).
+class CHash256 {
+private:
+    CSHA256 sha;
+public:
+    static const size_t OUTPUT_SIZE = CSHA256::OUTPUT_SIZE;
 
-/** A hasher class for DarkSilk's 160-bit hash (SHA-256 + RIPEMD-160). */
+    void Finalize(unsigned char hash[OUTPUT_SIZE]) {
+        unsigned char buf[sha.OUTPUT_SIZE];
+        sha.Finalize(buf);
+        sha.Reset().Write(buf, sha.OUTPUT_SIZE).Finalize(hash);
+    }
+
+    CHash256& Write(const unsigned char *data, size_t len) {
+        sha.Write(data, len);
+        return *this;
+    }
+
+    CHash256& Reset() {
+        sha.Reset();
+        return *this;
+    }
+};
+*/
+/// A hasher class for DarkSilk's 160-bit hash (SHA-256 + RIPEMD-160).
 class CHash160 {
 private:
     CSHA256 sha;
@@ -72,22 +98,17 @@ inline uint256 Hash(const T1 pbegin, const T1 pend)
 {
     static unsigned char pblank[1];
     uint256 hash1;
-    SHA256((pbegin == pend ? pblank : (unsigned char*)&pbegin[0]), (pend - pbegin) * sizeof(pbegin[0]), (unsigned char*)&hash1);
-    uint256 hash2;
-    SHA256((unsigned char*)&hash1, sizeof(hash1), (unsigned char*)&hash2);
-    return hash2;
+    blake2b_state S[1];
+    blake2b_init( S, OUT_BYTES );
+    blake2b_update( S, (pbegin == pend ? pblank : (unsigned char*)&pbegin[0]), (pend - pbegin) * sizeof(pbegin[0]) );
+    blake2b_final( S, (unsigned char*)&hash1, OUT_BYTES );
+    return hash1;
 }
 
 template<typename T1>
 inline uint256 HashBlake2b(const T1 pbegin, const T1 pend)
 {
-    static unsigned char pblank[1];
-    uint256 hash1;
-    blake2b_state S[1];
-    blake2b_init( S, BLAKE2B_OUTBYTES );
-    blake2b_update( S, (pbegin == pend ? pblank : (unsigned char*)&pbegin[0]), (pend - pbegin) * sizeof(pbegin[0]) );
-    blake2b_final( S, (unsigned char*)&hash1, BLAKE2B_OUTBYTES );
-    return hash1;
+    return Hash(pbegin, pend);
 }
 
 /// Argon2d Parameters
@@ -141,20 +162,59 @@ inline int Argon2d_Hash(void *out, size_t outlen, const void *in, size_t inlen, 
     return argon2_core(&context, Argon2_d);
 }
 
-template<typename T1>
-inline uint256 hashArgon2d(const T1 pbegin, const T1 pend)
+inline uint256 hashArgon2d(const void* input)
 {
-    unsigned int t_costs = 2;
+    unsigned int t_costs = 1;
     unsigned int m_costs = 1024;
+    size_t inputlen = 80;
+    uint256 result = 0;
 
-    uint256 hash = HashBlake2b(pbegin, pend);
-    Argon2d_Hash(static_cast<void*>(&hash), 32, static_cast<void*>(&hash), 80,
-                    static_cast<void*>(&hash), 80,  t_costs, m_costs);
+    Argon2d_Hash((uint8_t*)&result, OUT_BYTES, (const uint8_t*)input, inputlen,
+                    (const uint8_t*)input, inputlen,  t_costs, m_costs);
 
-    return hash;
+    return result;
 }
 
 class CHashWriter
+{
+private:
+    const size_t size;
+    blake2b_state S[1];
+
+public:
+    int nType;
+    int nVersion;
+
+    void Init() {
+        blake2b_init(S, size);
+    }
+
+    CHashWriter(int nTypeIn, int nVersionIn) : size(OUT_BYTES), nType(nTypeIn), nVersion(nVersionIn) {
+        Init();
+    }
+
+    CHashWriter& write(const char *pch, size_t sizeIn) {
+        blake2b_update(S, pch, sizeIn);
+        return (*this);
+    }
+
+    // invalidates the object
+    uint256 GetHash() {
+        uint256 hash1;
+        blake2b_final( S, (unsigned char*)&hash1, size );
+        return hash1;
+    }
+
+    template<typename T>
+    CHashWriter& operator<<(const T& obj) {
+        // Serialize to this stream
+        ::Serialize(*this, obj, nType, nVersion);
+        return (*this);
+    }
+};
+
+
+class CHashWriterSHA
 {
 private:
     SHA256_CTX ctx;
@@ -167,11 +227,11 @@ public:
         SHA256_Init(&ctx);
     }
 
-    CHashWriter(int nTypeIn, int nVersionIn) : nType(nTypeIn), nVersion(nVersionIn) {
+    CHashWriterSHA(int nTypeIn, int nVersionIn) : nType(nTypeIn), nVersion(nVersionIn) {
         Init();
     }
 
-    CHashWriter& write(const char *pch, size_t size) {
+    CHashWriterSHA& write(const char *pch, size_t size) {
         SHA256_Update(&ctx, pch, size);
         return (*this);
     }
@@ -186,7 +246,7 @@ public:
     }
 
     template<typename T>
-    CHashWriter& operator<<(const T& obj) {
+    CHashWriterSHA& operator<<(const T& obj) {
         // Serialize to this stream
         ::Serialize(*this, obj, nType, nVersion);
         return (*this);
@@ -200,14 +260,12 @@ inline uint256 Hash(const T1 p1begin, const T1 p1end,
 {
     static unsigned char pblank[1];
     uint256 hash1;
-    SHA256_CTX ctx;
-    SHA256_Init(&ctx);
-    SHA256_Update(&ctx, (p1begin == p1end ? pblank : (unsigned char*)&p1begin[0]), (p1end - p1begin) * sizeof(p1begin[0]));
-    SHA256_Update(&ctx, (p2begin == p2end ? pblank : (unsigned char*)&p2begin[0]), (p2end - p2begin) * sizeof(p2begin[0]));
-    SHA256_Final((unsigned char*)&hash1, &ctx);
-    uint256 hash2;
-    SHA256((unsigned char*)&hash1, sizeof(hash1), (unsigned char*)&hash2);
-    return hash2;
+    blake2b_state S[1];
+    blake2b_init( S, OUT_BYTES );
+    blake2b_update( S, (p1begin == p1end ? pblank : (unsigned char*)&p1begin[0]), (p1end - p1begin) * sizeof(p1begin[0]) );
+    blake2b_update( S, (p2begin == p2end ? pblank : (unsigned char*)&p2begin[0]), (p2end - p2begin) * sizeof(p2begin[0]) );
+    blake2b_final( S, (unsigned char*)&hash1, OUT_BYTES );
+    return hash1;
 }
 
 template<typename T1, typename T2, typename T3>
@@ -217,15 +275,13 @@ inline uint256 Hash(const T1 p1begin, const T1 p1end,
 {
     static unsigned char pblank[1];
     uint256 hash1;
-    SHA256_CTX ctx;
-    SHA256_Init(&ctx);
-    SHA256_Update(&ctx, (p1begin == p1end ? pblank : (unsigned char*)&p1begin[0]), (p1end - p1begin) * sizeof(p1begin[0]));
-    SHA256_Update(&ctx, (p2begin == p2end ? pblank : (unsigned char*)&p2begin[0]), (p2end - p2begin) * sizeof(p2begin[0]));
-    SHA256_Update(&ctx, (p3begin == p3end ? pblank : (unsigned char*)&p3begin[0]), (p3end - p3begin) * sizeof(p3begin[0]));
-    SHA256_Final((unsigned char*)&hash1, &ctx);
-    uint256 hash2;
-    SHA256((unsigned char*)&hash1, sizeof(hash1), (unsigned char*)&hash2);
-    return hash2;
+    blake2b_state S[1];
+    blake2b_init( S, OUT_BYTES );
+    blake2b_update(S, (p1begin == p1end ? pblank : (unsigned char*)&p1begin[0]), (p1end - p1begin) * sizeof(p1begin[0]));
+    blake2b_update(S, (p2begin == p2end ? pblank : (unsigned char*)&p2begin[0]), (p2end - p2begin) * sizeof(p2begin[0]));
+    blake2b_update(S, (p3begin == p3end ? pblank : (unsigned char*)&p3begin[0]), (p3end - p3begin) * sizeof(p3begin[0]));
+    blake2b_final( S, (unsigned char*)&hash1, OUT_BYTES );
+    return hash1;
 }
 
 template<typename T>
@@ -241,7 +297,10 @@ inline uint160 Hash160(const T1 pbegin, const T1 pend)
 {
     static unsigned char pblank[1];
     uint256 hash1;
-    SHA256((pbegin == pend ? pblank : (unsigned char*)&pbegin[0]), (pend - pbegin) * sizeof(pbegin[0]), (unsigned char*)&hash1);
+    blake2b_state S[1];
+    blake2b_init( S, OUT_BYTES );
+    blake2b_update( S, (pbegin == pend ? pblank : (unsigned char*)&pbegin[0]), (pend - pbegin) * sizeof(pbegin[0]) );
+    blake2b_final( S, (unsigned char*)&hash1, OUT_BYTES );
     uint160 hash2;
     RIPEMD160((unsigned char*)&hash1, sizeof(hash1), (unsigned char*)&hash2);
     return hash2;
@@ -264,7 +323,7 @@ int HMAC_SHA512_Final(unsigned char *pmd, HMAC_SHA512_CTX *pctx);
 
 void BIP32Hash(const unsigned char chainCode[32], unsigned int nChild, unsigned char header, const unsigned char data[32], unsigned char output[64]); 
 
-/** Compute the 256-bit hash of the concatenation of three objects. */
+/// Compute the 256-bit hash of the concatenation of three objects.
 template<typename T1, typename T2, typename T3, typename T4>
 inline uint256 Hash(const T1 p1begin, const T1 p1end,
                     const T2 p2begin, const T2 p2end,
@@ -280,7 +339,7 @@ inline uint256 Hash(const T1 p1begin, const T1 p1end,
     return result;
 }
 
-/** Compute the 256-bit hash of the concatenation of three objects. */
+/// Compute the 256-bit hash of the concatenation of three objects.
 template<typename T1, typename T2, typename T3, typename T4, typename T5>
 inline uint256 Hash(const T1 p1begin, const T1 p1end,
                     const T2 p2begin, const T2 p2end,
@@ -298,7 +357,7 @@ inline uint256 Hash(const T1 p1begin, const T1 p1end,
     return result;
 }
 
-/** Compute the 256-bit hash of the concatenation of three objects. */
+/// Compute the 256-bit hash of the concatenation of three objects.
 template<typename T1, typename T2, typename T3, typename T4, typename T5, typename T6>
 inline uint256 Hash(const T1 p1begin, const T1 p1end,
                     const T2 p2begin, const T2 p2end,

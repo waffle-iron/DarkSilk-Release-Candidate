@@ -124,7 +124,8 @@ QMAKE_CLEAN += $$PWD/src/secp256k1/src/libsecp256k1_la-secp256k1.o; cd $$PWD/src
 
 INCLUDEPATH += src/leveldb/include src/leveldb/helpers src/leveldb/helpers/memenv
 LIBS += $$PWD/src/leveldb/libleveldb.a $$PWD/src/leveldb/libmemenv.a
-SOURCES += src/txdb-leveldb.cpp
+SOURCES += src/txdb-leveldb.cpp \
+    src/crypto/blake256.cpp
 
 
 INCLUDEPATH +=  src/crypto/argon2 \
@@ -327,7 +328,8 @@ HEADERS += src/qt/darksilkgui.h \
     src/crypto/argon2/blake2/blake2.h \
     src/crypto/argon2/blake2/blamka-round-opt.h \
     src/crypto/argon2/blake2/blamka-round-ref.h \
-    src/crypto/argon2/opt.h
+    src/crypto/argon2/opt.h \
+    src/crypto/blake256.h
 
 SOURCES += src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
     src/qt/transactiontablemodel.cpp \
