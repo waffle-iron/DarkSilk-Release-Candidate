@@ -99,6 +99,8 @@ inline uint256 HashBlake2b(const T1 pbegin, const T1 pend)
 /// Associated data length: 0
 /// Memory cost: 1024
 /// Lanes: 64
+/// TODO (Amir): test hashing:
+/// 0x01 bytes --> 31EC4BC6A98D7CDE7CE9A3B542519225403F5E4573C4BD2F3D210BD2D3B08C9D
 inline int Argon2d_Hash(void *out, size_t outlen, const void *in, size_t inlen, const void *salt, size_t saltlen, unsigned int t_cost,
         unsigned int m_cost) {
 
