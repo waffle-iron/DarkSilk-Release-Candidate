@@ -13,7 +13,6 @@
 #include <openssl/ripemd.h>
 
 #include "crypto/ripemd160.h"
-//#include "crypto/sha256.h"
 #include "crypto/blake256.h"
 #include "crypto/argon2/argon2.h"
 
@@ -188,46 +187,6 @@ public:
         return (*this);
     }
 };
-
-class CHashWriterSHA
-{
-private:
-    SHA256_CTX ctx;
-
-public:
-    int nType;
-    int nVersion;
-
-    void Init() {
-        SHA256_Init(&ctx);
-    }
-
-    CHashWriterSHA(int nTypeIn, int nVersionIn) : nType(nTypeIn), nVersion(nVersionIn) {
-        Init();
-    }
-
-    CHashWriterSHA& write(const char *pch, size_t size) {
-        SHA256_Update(&ctx, pch, size);
-        return (*this);
-    }
-
-    // invalidates the object
-    uint256 GetHash() {
-        uint256 hash1;
-        SHA256_Final((unsigned char*)&hash1, &ctx);
-        uint256 hash2;
-        SHA256((unsigned char*)&hash1, sizeof(hash1), (unsigned char*)&hash2);
-        return hash2;
-    }
-
-    template<typename T>
-    CHashWriterSHA& operator<<(const T& obj) {
-        // Serialize to this stream
-        ::Serialize(*this, obj, nType, nVersion);
-        return (*this);
-    }
-};
-
 
 template<typename T1, typename T2>
 inline uint256 Hash(const T1 p1begin, const T1 p1end,
