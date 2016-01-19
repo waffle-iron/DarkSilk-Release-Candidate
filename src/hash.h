@@ -25,7 +25,7 @@ class CHash256 {
 private:
     CSHA256 sha;
 public:
-    static const size_t OUTPUT_SIZE = sha::OUTPUT_SIZE;
+    static const size_t OUTPUT_SIZE = CSHA256::OUTPUT_SIZE;
 
     void Finalize(unsigned char hash[OUTPUT_SIZE]) {
         unsigned char buf[sha.OUTPUT_SIZE];
