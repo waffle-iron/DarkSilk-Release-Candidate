@@ -15,31 +15,31 @@
 #include "crypto/ripemd160.h"
 #include "crypto/blake256.h"
 #include "crypto/argon2/argon2.h"
-
+#include "crypto/sha256.h"
 #include <vector>
 
 static const unsigned int OUT_BYTES = 32;
 
-/// A hasher class for DarkSilk's 256-bit hash (double Blake-256).
+/// A hasher class for DarkSilk's 256-bit hash (double SHA-256).
 class CHash256 {
 private:
-    CBLAKE2B256 blake;
+    CSHA256 sha;
 public:
-    static const size_t OUTPUT_SIZE = CBLAKE2B256::OUTPUT_SIZE;
+    static const size_t OUTPUT_SIZE = sha::OUTPUT_SIZE;
 
     void Finalize(unsigned char hash[OUTPUT_SIZE]) {
-        unsigned char buf[blake.OUTPUT_SIZE];
-        blake.Finalize(buf);
-        blake.Reset().Write(buf, blake.OUTPUT_SIZE).Finalize(hash);
+        unsigned char buf[sha.OUTPUT_SIZE];
+        sha.Finalize(buf);
+        sha.Reset().Write(buf, sha.OUTPUT_SIZE).Finalize(hash);
     }
 
     CHash256& Write(const unsigned char *data, size_t len) {
-        blake.Write(data, len);
+        sha.Write(data, len);
         return *this;
     }
 
     CHash256& Reset() {
-        blake.Reset();
+        sha.Reset();
         return *this;
     }
 };
