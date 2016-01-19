@@ -85,7 +85,6 @@ public:
         genesis.nNonce   = 763220;
 
         hashGenesisBlock = genesis.GetHash();
-        //uint512 GetHash512 = genesis.GetHash512();
 
         //// debug print
         //printf("hashGenesisBlock: %s\n", hashGenesisBlock.ToString().c_str());
@@ -95,7 +94,7 @@ public:
         //printf("Gensis nBits: %08x\n", genesis.nBits);
         //printf("Gensis Nonce: %u\n\n", genesis.nNonce);
 
-        assert(genesis.GetHash() == uint256("0xb04b545c72f7ad073f937e761a144acd6a3fa7246388ce8c485c4ee60efa1b0b"));
+        assert(hashGenesisBlock == uint256("0xb04b545c72f7ad073f937e761a144acd6a3fa7246388ce8c485c4ee60efa1b0b"));
         assert(genesis.hashMerkleRoot == uint256("0x77a9ada8f10cd4fb7f05dadc582ec1880fcd2af4414ed664a07fb230a4da390d"));
 
         vSeeds.push_back(CDNSSeedData("darksilk.org", "ds1.darksilk.org"));

@@ -142,7 +142,7 @@ public:
     void UpdateTime(const CBlockIndex* pindexPrev);
 
     // entropy bit for stake modifier if chosen by modifier
-    unsigned int GetStakeEntropyBit()
+    unsigned int GetStakeEntropyBit() const
     {
         // Take last bit of block hash as entropy bit
         unsigned int nEntropyBit = ((GetHash().Get64()) & 1llu);

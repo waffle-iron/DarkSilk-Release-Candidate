@@ -13,82 +13,58 @@
 #include <openssl/ripemd.h>
 
 #include "crypto/ripemd160.h"
-#include "crypto/sha256.h"
-#include "crypto/argon2/blake2/blake2.h"
+//#include "crypto/sha256.h"
+#include "crypto/blake256.h"
 #include "crypto/argon2/argon2.h"
 
 #include <vector>
 
 static const unsigned int OUT_BYTES = 32;
 
-/// A hasher class for DarkSilk's 256-bit hash (double SHA-256).
+/// A hasher class for DarkSilk's 256-bit hash (double Blake-256).
 class CHash256 {
 private:
-    CSHA256 sha;
+    CBLAKE2B256 blake;
 public:
-    static const size_t OUTPUT_SIZE = CSHA256::OUTPUT_SIZE;
+    static const size_t OUTPUT_SIZE = CBLAKE2B256::OUTPUT_SIZE;
 
     void Finalize(unsigned char hash[OUTPUT_SIZE]) {
-        unsigned char buf[sha.OUTPUT_SIZE];
-        sha.Finalize(buf);
-        sha.Reset().Write(buf, sha.OUTPUT_SIZE).Finalize(hash);
+        unsigned char buf[blake.OUTPUT_SIZE];
+        blake.Finalize(buf);
+        blake.Reset().Write(buf, blake.OUTPUT_SIZE).Finalize(hash);
     }
 
     CHash256& Write(const unsigned char *data, size_t len) {
-        sha.Write(data, len);
+        blake.Write(data, len);
         return *this;
     }
 
     CHash256& Reset() {
-        sha.Reset();
+        blake.Reset();
         return *this;
     }
 };
-/*
-/// A hasher class for DarkSilk's 256-bit hash (double SHA-256).
-class CHash256 {
-private:
-    CSHA256 sha;
-public:
-    static const size_t OUTPUT_SIZE = CSHA256::OUTPUT_SIZE;
 
-    void Finalize(unsigned char hash[OUTPUT_SIZE]) {
-        unsigned char buf[sha.OUTPUT_SIZE];
-        sha.Finalize(buf);
-        sha.Reset().Write(buf, sha.OUTPUT_SIZE).Finalize(hash);
-    }
-
-    CHash256& Write(const unsigned char *data, size_t len) {
-        sha.Write(data, len);
-        return *this;
-    }
-
-    CHash256& Reset() {
-        sha.Reset();
-        return *this;
-    }
-};
-*/
 /// A hasher class for DarkSilk's 160-bit hash (SHA-256 + RIPEMD-160).
 class CHash160 {
 private:
-    CSHA256 sha;
+    CBLAKE2B256 blake;
 public:
-    static const size_t OUTPUT_SIZE = CRIPEMD160::OUTPUT_SIZE;
+    static const size_t OUTPUT_SIZE = CBLAKE2B256::OUTPUT_SIZE;
 
     void Finalize(unsigned char hash[OUTPUT_SIZE]) {
-        unsigned char buf[sha.OUTPUT_SIZE];
-        sha.Finalize(buf);
-        CRIPEMD160().Write(buf, sha.OUTPUT_SIZE).Finalize(hash);
+        unsigned char buf[blake.OUTPUT_SIZE];
+        blake.Finalize(buf);
+        CRIPEMD160().Write(buf, blake.OUTPUT_SIZE).Finalize(hash);
     }
 
     CHash160& Write(const unsigned char *data, size_t len) {
-        sha.Write(data, len);
+        blake.Write(data, len);
         return *this;
     }
 
     CHash160& Reset() {
-        sha.Reset();
+        blake.Reset();
         return *this;
     }
 };
@@ -212,7 +188,6 @@ public:
         return (*this);
     }
 };
-
 
 class CHashWriterSHA
 {
