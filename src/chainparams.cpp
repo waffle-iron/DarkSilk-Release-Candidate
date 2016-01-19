@@ -84,26 +84,25 @@ public:
         genesis.nBits    = 0x1e0ffff0;
         genesis.nNonce   = 763220;
 
-        hashGenesisBlock = genesis.GetHash(); 
+        hashGenesisBlock = genesis.GetHash();
 
         //// debug print
-        /*
-        printf("Gensis Hash: %s\n", genesis.GetHash().ToString().c_str());
-        printf("Gensis Hash Merkle: %s\n", genesis.hashMerkleRoot.ToString().c_str());
-        printf("Gensis nTime: %u\n", genesis.nTime);
-        printf("Gensis nBits: %08x\n", genesis.nBits);
-        printf("Gensis Nonce: %u\n\n\n", genesis.nNonce);
-        */
+        //printf("hashGenesisBlock: %s\n", hashGenesisBlock.ToString().c_str());
+        //printf("Gensis Hash: %s\n", genesis.GetHash().ToString().c_str());
+        //printf("Gensis Hash Merkle: %s\n", genesis.hashMerkleRoot.ToString().c_str());
+        //printf("Gensis nTime: %u\n", genesis.nTime);
+        //printf("Gensis nBits: %08x\n", genesis.nBits);
+        //printf("Gensis Nonce: %u\n\n", genesis.nNonce);
 
-        assert(hashGenesisBlock == uint256("0xdcc5e22e275eff273799a4c06493f8364316d032813c22845602f05ff13d7ec7"));
-        assert(genesis.hashMerkleRoot == uint256("0xfed7550a453e532c460fac58d438740235c380f9908cae2d602b705ca2c2f0a6"));
+        assert(hashGenesisBlock == uint256("0xb04b545c72f7ad073f937e761a144acd6a3fa7246388ce8c485c4ee60efa1b0b"));
+        assert(genesis.hashMerkleRoot == uint256("0x77a9ada8f10cd4fb7f05dadc582ec1880fcd2af4414ed664a07fb230a4da390d"));
 
         vSeeds.push_back(CDNSSeedData("darksilk.org", "ds1.darksilk.org"));
         vSeeds.push_back(CDNSSeedData("", ""));
         
         base58Prefixes[PUBKEY_ADDRESS] = list_of(30);                     //DarkSilk addresses start with 'D'
         base58Prefixes[SCRIPT_ADDRESS] = list_of(10);                     //DarkSilk script addresses start with '5'
-        base58Prefixes[SECRET_KEY] =     list_of(140);                    //DarkSilk private keys start with 'y'              
+        base58Prefixes[SECRET_KEY]     = list_of(140);                    //DarkSilk private keys start with 'y'
         base58Prefixes[EXT_PUBLIC_KEY] = list_of(0x02)(0xFE)(0x52)(0x7D); //DarkSilk BIP32 pubkeys start with 'drks'
         base58Prefixes[EXT_SECRET_KEY] = list_of(0x02)(0xFE)(0x52)(0x8C); //DarkSilk BIP32 prvkeys start with 'drky'
 
@@ -156,8 +155,15 @@ public:
         genesis.nNonce = 0;
         hashGenesisBlock = genesis.GetHash(); 
 
-        //printf("Test Genesis Hash: %s\n", genesis.GetHash().ToString().c_str());
-        assert(hashGenesisBlock == uint256("0xf788ac4ae46429468897b4b9758651cb8a642a6e01f16968134a75078905e24d"));
+        //// debug print
+        //printf("hashGenesisBlock: %s\n", hashGenesisBlock.ToString().c_str());
+        //printf("Gensis Has: %s\n", genesis.GetHash().ToString().c_str());
+        //printf("Gensis Hash Merkle: %s\n", genesis.hashMerkleRoot.ToString().c_str());
+        //printf("Gensis nTime: %u\n", genesis.nTime);
+        //printf("Gensis nBits: %08x\n", genesis.nBits);
+        //printf("Gensis Nonce: %u\n\n\n", genesis.nNonce);
+
+        assert(genesis.GetHash() == uint256("0x8225229859114bf646b83fb2f07966232c59d9d5785bd173b55362995858c06f"));
 
         vFixedSeeds.clear();
         vSeeds.clear();

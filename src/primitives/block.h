@@ -81,23 +81,21 @@ public:
 
     uint256 GetHash() const
     {
-        if (nVersion > 1)
-            return HashBlake2b(BEGIN(nVersion), END(nNonce));
-        else
-            return GetPoWHash();
+       if (nVersion > 1)
+           return HashBlake2b(BEGIN(nVersion), END(nNonce));
+       else
+           return GetPoWHash();
     }
 
     uint256 GetPoWHash() const
     {
-        return hashArgon2d(BEGIN(nVersion), END(nNonce));
+        return hashArgon2d(UVOIDBEGIN(nVersion));
     }
 
     int64_t GetBlockTime() const
     {
         return (int64_t)nTime;
     }
-
-
 };
 
 class CBlock: public CBlockHeader

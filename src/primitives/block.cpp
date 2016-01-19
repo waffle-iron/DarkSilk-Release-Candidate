@@ -5,6 +5,7 @@
 
 #include "primitives/block.h"
 #include <boost/foreach.hpp>
+#include "chainparams.h"
 
 bool CBlock::CheckBlockSignature() const
 {
