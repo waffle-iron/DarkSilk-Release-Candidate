@@ -63,8 +63,21 @@ bool CBasicKeyStore::AddWatchOnly(const CTxDestination &dest)
     return true;
 }
 
+bool CBasicKeyStore::RemoveWatchOnly(const CTxDestination &dest)
+{
+    LOCK(cs_KeyStore);
+    setWatchOnly.erase(dest);
+    return true;
+}
+
 bool CBasicKeyStore::HaveWatchOnly(const CTxDestination &dest) const
 {
     LOCK(cs_KeyStore);
     return setWatchOnly.count(dest) > 0;
+}
+
+bool CBasicKeyStore::HaveWatchOnly() const
+{
+    LOCK(cs_KeyStore);
+    return (!setWatchOnly.empty());
 }

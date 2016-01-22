@@ -51,7 +51,9 @@ public:
 
     // Support for Watch-only addresses
     virtual bool AddWatchOnly(const CTxDestination &dest) =0;
+    virtual bool RemoveWatchOnly(const CTxDestination &dest) =0;
     virtual bool HaveWatchOnly(const CTxDestination &dest) const =0;
+    virtual bool HaveWatchOnly() const =0;
 };
 
 typedef std::map<CKeyID, CKey> KeyMap;
@@ -108,7 +110,9 @@ public:
     virtual bool GetCScript(const CScriptID &hash, CScript& redeemScriptOut) const;
 
     virtual bool AddWatchOnly(const CTxDestination &dest);
+    virtual bool RemoveWatchOnly(const CTxDestination &dest);
     virtual bool HaveWatchOnly(const CTxDestination &dest) const;
+    virtual bool HaveWatchOnly() const;
 };
 
 typedef std::map<CKeyID, std::pair<CPubKey, std::vector<unsigned char> > > CryptedKeyMap;
