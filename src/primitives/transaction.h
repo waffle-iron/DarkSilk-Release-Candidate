@@ -155,7 +155,7 @@ public:
 class CTxOut
 {
 public:
-    int64_t nValue;
+    CAmount nValue;
     int nRounds;
     CScript scriptPubKey;
 
@@ -164,7 +164,7 @@ public:
         SetNull();
     }
 
-    CTxOut(int64_t nValueIn, CScript scriptPubKeyIn)
+    CTxOut(CAmount nValueIn, CScript scriptPubKeyIn)
     {
         nValue = nValueIn;
         nRounds = -10; // an initial value, should be no way to get this by calculations
@@ -205,7 +205,7 @@ public:
         return SerializeHash(*this);
     }
 
-    bool IsDust(int64_t MIN_RELAY_TX_FEE) const
+    bool IsDust(CAmount MIN_RELAY_TX_FEE) const
     {
         // "Dust" is defined in terms of MIN_RELAY_TX_FEE,
         // which has units satoshis-per-kilobyte.
