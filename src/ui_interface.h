@@ -103,6 +103,9 @@ public:
      */
     boost::signals2::signal<void (const uint256 &hash, ChangeType status)> NotifyAlertChanged;
 
+    /** Show progress e.g. for verifychain */
+    boost::signals2::signal<void (const std::string &title, int nProgress)> ShowProgress;
+
     boost::signals2::signal<void (CStormNodeConfig nodeConfig)> NotifyStormNodeChanged;
 
 };

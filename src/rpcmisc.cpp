@@ -105,7 +105,7 @@ public:
     Object operator()(const CScriptID &scriptID) const {
         Object obj;
         obj.push_back(Pair("isscript", true));
-        if (mine == ISMINE_SPENDABLE) {
+        if (mine != ISMINE_NO) {
             CScript subscript;
             pwalletMain->GetCScript(scriptID, subscript);
             std::vector<CTxDestination> addresses;
@@ -117,7 +117,7 @@ public:
             Array a;
             BOOST_FOREACH(const CTxDestination& addr, addresses)
                 a.push_back(CDarkSilkAddress(addr).ToString());
-            obj.push_back(Pair("addresses", a));
+                obj.push_back(Pair("addresses", a));
             if (whichType == TX_MULTISIG)
                 obj.push_back(Pair("sigsrequired", nRequired));
         }
@@ -151,9 +151,9 @@ Value validateaddress(const Array& params, bool fHelp)
         ret.push_back(Pair("address", currentAddress));
 #ifdef ENABLE_WALLET
         isminetype mine = pwalletMain ? IsMine(*pwalletMain, dest) : ISMINE_NO;
-        ret.push_back(Pair("ismine", mine != ISMINE_NO));
+        ret.push_back(Pair("ismine", (mine & ISMINE_SPENDABLE) ? true : false));
         if (mine != ISMINE_NO) {
-            ret.push_back(Pair("watchonly", mine == ISMINE_WATCH_ONLY));
+            ret.push_back(Pair("iswatchonly", (mine & ISMINE_WATCH_ONLY) ? true: false));
             Object detail = boost::apply_visitor(DescribeAddressVisitor(mine), dest);
             ret.insert(ret.end(), detail.begin(), detail.end());
         }
@@ -191,10 +191,10 @@ Value validatepubkey(const Array& params, bool fHelp)
         ret.push_back(Pair("iscompressed", isCompressed));
 #ifdef ENABLE_WALLET
         isminetype mine = pwalletMain ? IsMine(*pwalletMain, dest) : ISMINE_NO;
-        ret.push_back(Pair("ismine", mine != ISMINE_NO));
+        ret.push_back(Pair("ismine", (mine & ISMINE_SPENDABLE) ? true : false));
         if (mine != ISMINE_NO) {
-            ret.push_back(Pair("watchonly", mine == ISMINE_WATCH_ONLY));
-            Object detail = boost::apply_visitor(DescribeAddressVisitor(mine), dest);
+           ret.push_back(Pair("iswatchonly", (mine & ISMINE_WATCH_ONLY) ? true: false));
+           Object detail = boost::apply_visitor(DescribeAddressVisitor(mine), dest);
             ret.insert(ret.end(), detail.begin(), detail.end());
         }
         if (pwalletMain && pwalletMain->mapAddressBook.count(dest))
