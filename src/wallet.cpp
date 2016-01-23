@@ -1867,7 +1867,7 @@ static void ApproximateBestSubset(vector<pair<int64_t, pair<const CWalletTx*,uns
     for (int nRep = 0; nRep < iterations && nBest != nTargetValue; nRep++)
     {
         vfIncluded.assign(vValue.size(), false);
-        int64_t nTotal = 0;
+        CAmount nTotal = 0;
         bool fReachedTarget = false;
         for (int nPass = 0; nPass < 2 && !fReachedTarget; nPass++)
         {
@@ -2259,14 +2259,26 @@ bool CWallet::SelectCoinsMinConf(const CAmount& nTargetValue, unsigned int nSpen
             return true;
         }
 
+
         if (nTotalLower < nTargetValue)
         {
-            if (coinLowestLarger.second.first == NULL)
-                return false;
+            if (coinLowestLarger.second.first == NULL) // there is no input larger than nTargetValue
+            {
+                if (tryDenom == 0)
+                    // we didn't look at denom yet, let's do it
+                    continue;
+                else
+                    // we looked at everything possible and didn't find anything, no luck
+                    return false;
+            }
             setCoinsRet.insert(coinLowestLarger.second);
             nValueRet += coinLowestLarger.first;
             return true;
         }
+
+        // nTotalLower > nTargetValue
+        break;
+
     }
 
     // Solve subset sum by stochastic approximation
