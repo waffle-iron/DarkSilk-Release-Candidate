@@ -147,13 +147,13 @@ bool CWalletDB::WriteCScript(const uint160& hash, const CScript& redeemScript)
 bool CWalletDB::WriteWatchOnly(const CScript &dest)
 {
     nWalletDBUpdated++;
-    return Write(std::make_pair(std::string("watch"), dest), '1');
+    return Write(std::make_pair(std::string("watchonly"), dest), '1');
 }
 
 bool CWalletDB::EraseWatchOnly(const CScript &dest)
 {
     nWalletDBUpdated++;
-    return Erase(std::make_pair(std::string("watch"), dest));
+    return Erase(std::make_pair(std::string("watchonly"), dest));
 }
 
 bool CWalletDB::WriteBestBlock(const CBlockLocator& locator)
@@ -460,7 +460,7 @@ ReadKeyValue(CWallet* pwallet, CDataStream& ssKey, CDataStream& ssValue,
                     wss.fAnyUnordered = true;
             }
         }
-        else if (strType == "watch")
+        else if (strType == "watchonly")
         {
             CScript script;
             ssKey >> script;
