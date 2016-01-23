@@ -1,5 +1,5 @@
 /*
- * W.J. van der Laan 2011-2015
+ * W.J. van der Laan 2011-2016
  */
 
 #include "darksilkgui.h"

@@ -39,7 +39,7 @@
  * neighboring rights to this file. This work is published from: Canada.
  * ---------------------------------------------------------------------
  *
- * Copyright (c) 2015 Thomas Pornin
+ * Copyright (c) 2015-2016 Thomas Pornin
  */
 
 /* ==================================================================== */
