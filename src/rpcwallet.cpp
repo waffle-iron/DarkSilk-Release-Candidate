@@ -341,15 +341,20 @@ Value setaccount(const Array& params, bool fHelp)
     if (params.size() > 1)
         strAccount = AccountFromValue(params[1]);
 
-    // Detect when changing the account of an address that is the 'unused current key' of another account:
-    if (pwalletMain->mapAddressBook.count(address.Get()))
+    // Only add the account if the address is yours.
+    if (IsMine(*pwalletMain, address.Get()))
     {
-        string strOldAccount = pwalletMain->mapAddressBook[address.Get()];
-        if (address == GetAccountAddress(strOldAccount))
-            GetAccountAddress(strOldAccount, true);
+        // Detect when changing the account of an address that is the 'unused current key' of another account:
+        if (pwalletMain->mapAddressBook.count(address.Get()))
+        {
+            string strOldAccount = pwalletMain->mapAddressBook[address.Get()];
+            if (address == GetAccountAddress(strOldAccount))
+                GetAccountAddress(strOldAccount, true);
+        }
+        pwalletMain->SetAddressBookName(address.Get(), strAccount);
     }
-
-    pwalletMain->SetAddressBookName(address.Get(), strAccount);
+    else
+       throw JSONRPCError(RPC_MISC_ERROR, "setaccount can only be used with own address");
 
     return Value::null;
 }
@@ -1151,11 +1156,13 @@ struct tallyitem
     int nConf;
     int nBCConf;
     vector<uint256> txids;
+    bool fIsWatchonly;
     tallyitem()
     {
         nAmount = 0;
         nConf = std::numeric_limits<int>::max();
         nBCConf = std::numeric_limits<int>::max();
+        fIsWatchonly = false;
     }
 };
 
@@ -1170,6 +1177,11 @@ Value ListReceived(const Array& params, bool fByAccounts)
     bool fIncludeEmpty = false;
     if (params.size() > 1)
         fIncludeEmpty = params[1].get_bool();
+
+    isminefilter filter = ISMINE_SPENDABLE;
+    if(params.size() > 2)
+        if(params[2].get_bool())
+            filter = filter | ISMINE_WATCH_ONLY;
 
     // Tally
     map<CDarkSilkAddress, tallyitem> mapTally;
@@ -1188,13 +1200,20 @@ Value ListReceived(const Array& params, bool fByAccounts)
         BOOST_FOREACH(const CTxOut& txout, wtx.vout)
         {
             CTxDestination address;
-            if (!ExtractDestination(txout.scriptPubKey, address) || !IsMine(*pwalletMain, address))
+            if (!ExtractDestination(txout.scriptPubKey, address))
+                continue;
+
+            isminefilter mine = IsMine(*pwalletMain, address);
+            if(!(mine & filter))
                 continue;
 
             tallyitem& item = mapTally[address];
             item.nAmount += txout.nValue;
             item.nConf = min(item.nConf, nDepth);
             item.nBCConf = min(item.nBCConf, nBCDepth);
+            item.txids.push_back(wtx.GetHash());
+            if (mine & ISMINE_WATCH_ONLY)
+                item.fIsWatchonly = true;
         }
     }
 
@@ -1212,11 +1231,13 @@ Value ListReceived(const Array& params, bool fByAccounts)
         CAmount nAmount = 0;
         int nConf = std::numeric_limits<int>::max();
         int nBCConf = std::numeric_limits<int>::max();
+        bool fIsWatchonly = false;
         if (it != mapTally.end())
         {
             nAmount = (*it).second.nAmount;
             nConf = (*it).second.nConf;
             nBCConf = (*it).second.nBCConf;
+            fIsWatchonly = (*it).second.fIsWatchonly;
         }
 
         if (fByAccounts)
@@ -1225,10 +1246,13 @@ Value ListReceived(const Array& params, bool fByAccounts)
             item.nAmount += nAmount;
             item.nConf = min(item.nConf, nConf);
             item.nBCConf = min(item.nBCConf, nBCConf);
+            item.fIsWatchonly = fIsWatchonly;
         }
         else
         {
             Object obj;
+            if(fIsWatchonly)
+                obj.push_back(Pair("involvesWatchonly", true));
             obj.push_back(Pair("address",       address.ToString()));
             obj.push_back(Pair("account",       strAccount));
             obj.push_back(Pair("amount",        ValueFromAmount(nAmount)));
@@ -1256,6 +1280,8 @@ Value ListReceived(const Array& params, bool fByAccounts)
             int nConf = (*it).second.nConf;
             int nBCConf = (*it).second.nBCConf;
             Object obj;
+            if((*it).second.fIsWatchonly)
+                obj.push_back(Pair("involvesWatchonly", true));
             obj.push_back(Pair("account",       (*it).first));
             obj.push_back(Pair("amount",        ValueFromAmount(nAmount)));
             obj.push_back(Pair("confirmations", (nConf == std::numeric_limits<int>::max() ? 0 : nConf)));
@@ -1269,22 +1295,24 @@ Value ListReceived(const Array& params, bool fByAccounts)
 
 Value listreceivedbyaddress(const Array& params, bool fHelp)
 {
-    if (fHelp || params.size() > 2)
+    if (fHelp || params.size() > 3)
         throw runtime_error(
             "listreceivedbyaddress ( minconf includeempty )\n"
             "\nList balances by receiving address.\n"
             "\nArguments:\n"
             "1. minconf       (numeric, optional, default=1) The minimum number of confirmations before payments are included.\n"
             "2. includeempty  (numeric, optional, dafault=false) Whether to include addresses that haven't received any payments.\n"
+            "3. includeWatchonly (bool, optional, default=false) Whether to include watchonly addresses (see 'importaddress').\n" 
 
             "\nResult:\n"
             "[\n"
             "  {\n"
+            "    \"involvesWatchonly\" : \"true\",    (bool) Only returned if imported addresses were involved in transaction\n" 
             "    \"address\" : \"receivingaddress\",  (string) The receiving address\n"
             "    \"account\" : \"accountname\",       (string) The account of the receiving address. The default account is \"\".\n"
             "    \"amount\" : x.xxx,                  (numeric) The total amount in DRKSLK received by the address\n"
             "    \"confirmations\" : n                (numeric) The number of confirmations of the most recent transaction included\n"
-             "    \"bcconfirmations\" : n              (numeric) The number of blockchain confirmations of the most recent transaction included\n"             
+            "    \"bcconfirmations\" : n              (numeric) The number of blockchain confirmations of the most recent transaction included\n"             
             "  }\n"
             "  ,...\n"
             "]\n"
@@ -1293,6 +1321,7 @@ Value listreceivedbyaddress(const Array& params, bool fHelp)
             + HelpExampleCli("listreceivedbyaddress", "")
             + HelpExampleCli("listreceivedbyaddress", "10 true")
             + HelpExampleRpc("listreceivedbyaddress", "10, true")
+            + HelpExampleRpc("listreceivedbyaddress", "10, true, true")
         );
 
     return ListReceived(params, false);
@@ -1300,21 +1329,23 @@ Value listreceivedbyaddress(const Array& params, bool fHelp)
 
 Value listreceivedbyaccount(const Array& params, bool fHelp)
 {
-    if (fHelp || params.size() > 2)
+    if (fHelp || params.size() > 3)
         throw runtime_error(
             "listreceivedbyaccount ( minconf includeempty )\n"
             "\nList balances by account.\n"
             "\nArguments:\n"
             "1. minconf      (numeric, optional, default=1) The minimum number of confirmations before payments are included.\n"
             "2. includeempty (boolean, optional, default=false) Whether to include accounts that haven't received any payments.\n"
+            "3. includeWatchonly (bool, optional, default=false) Whether to include watchonly addresses (see 'importaddress').\n" 
 
             "\nResult:\n"
             "[\n"
             "  {\n"
+            "    \"involvesWatchonly\" : \"true\",    (bool) Only returned if imported addresses were involved in transaction\n" 
             "    \"account\" : \"accountname\",  (string) The account name of the receiving account\n"
             "    \"amount\" : x.xxx,             (numeric) The total amount received by addresses with this account\n"
             "    \"confirmations\" : n           (numeric) The number of confirmations of the most recent transaction included\n"
-             "    \"bcconfirmations\" : n         (numeric) The number of blockchain confirmations of the most recent transaction included\n"            
+            "    \"bcconfirmations\" : n         (numeric) The number of blockchain confirmations of the most recent transaction included\n"            
             "  }\n"
             "  ,...\n"
             "]\n"
@@ -1432,15 +1463,16 @@ void AcentryToJSON(const CAccountingEntry& acentry, const string& strAccount, Ar
 
 Value listtransactions(const Array& params, bool fHelp)
 {
-    if (fHelp || params.size() > 3)
+    if (fHelp || params.size() > 4)
         throw runtime_error(
-            "listtransactions ( \"account\" count from )\n"
+            "listtransactions ( \"account\" count from includeWatchonly)\n"
             "\nReturns up to 'count' most recent transactions skipping the first 'from' transactions for account 'account'.\n"
             "\nArguments:\n"
             "1. \"account\"    (string, optional) The account name. If not included, it will list all transactions for all accounts.\n"
             "                                     If \"\" is set, it will list transactions for the default account.\n"
             "2. count          (numeric, optional, default=10) The number of transactions to return\n"
             "3. from           (numeric, optional, default=0) The number of transactions to skip\n"
+            "4. includeWatchonly (bool, optional, default=false) Include transactions to watchonly addresses (see 'importaddress')\n" 
 
             "\nResult:\n"
             "[\n"
@@ -1497,7 +1529,6 @@ Value listtransactions(const Array& params, bool fHelp)
     int nFrom = 0;
     if (params.size() > 2)
         nFrom = params[2].get_int();
-
     isminefilter filter = ISMINE_SPENDABLE;
     if(params.size() > 3)
         if(params[3].get_bool())
@@ -1625,11 +1656,12 @@ Value listsinceblock(const Array& params, bool fHelp)
 {
     if (fHelp)
         throw runtime_error(
-            "listsinceblock ( \"blockhash\" target-confirmations )\n"
+            "listsinceblock ( \"blockhash\" target-confirmations includeWatchonly)\n"
             "\nGet all transactions in blocks since block [blockhash], or all transactions if omitted\n"
             "\nArguments:\n"
             "1. \"blockhash\"   (string, optional) The block hash to list transactions since\n"
             "2. target-confirmations:    (numeric, optional) The confirmations required, must be 1 or more\n"
+            "3. includeWatchonly:        (bool, optional, default=false) Include transactions to watchonly addresses (see 'importaddress')"             
             "\nResult:\n"
             "{\n"
             "  \"transactions\": [\n"
@@ -1660,6 +1692,7 @@ Value listsinceblock(const Array& params, bool fHelp)
 
     CBlockIndex *pindex = NULL;
     int target_confirms = 1;
+    isminefilter filter = ISMINE_SPENDABLE;
 
     if (params.size() > 0)
     {
@@ -1677,7 +1710,6 @@ Value listsinceblock(const Array& params, bool fHelp)
             throw JSONRPCError(RPC_INVALID_PARAMETER, "Invalid parameter");
     }
 
-    isminefilter filter = ISMINE_SPENDABLE;
     if(params.size() > 2)
         if(params[2].get_bool())
             filter = filter | ISMINE_WATCH_ONLY;
@@ -1721,12 +1753,13 @@ Value listsinceblock(const Array& params, bool fHelp)
 
 Value gettransaction(const Array& params, bool fHelp)
 {
-    if (fHelp || params.size() != 1)
+    if (fHelp || params.size() < 1 || params.size() > 2)
         throw runtime_error(
             "gettransaction \"txid\"\n"
             "\nGet detailed information about in-wallet transaction <txid>\n"
             "\nArguments:\n"
             "1. \"txid\"    (string, required) The transaction id\n"
+            "2. \"includeWatchonly\"    (bool, optional, default=false) Whether to include watchonly addresses in balance calculation and details[]\n" 
             "\nResult:\n"
             "{\n"
             "  \"amount\" : x.xxx,        (numeric) The transaction amount in DRKSLK\n"
