@@ -235,9 +235,11 @@ public:
     bool LoadCScript(const CScript& redeemScript);
 
     // Adds a watch-only address to the store, and saves it to disk.
-    bool AddWatchOnly(const CTxDestination &dest);
+    bool AddWatchOnly(const CScript &dest);
+    // Removes a watch-only address from the store.
+    bool RemoveWatchOnly(const CScript &dest);
     // Adds a watch-only address to the store, without saving it to disk (used by LoadWallet)
-    bool LoadWatchOnly(const CTxDestination &dest);
+    bool LoadWatchOnly(const CScript &dest);
 
     bool Lock();
     bool Unlock(const SecureString& strWalletPassphrase, bool anonimizeOnly = false);
@@ -279,6 +281,7 @@ public:
     CAmount GetAnonymizableBalance(bool includeAlreadyAnonymized=false) const; 
     CAmount GetAnonymizedBalance() const;
     CAmount GetWatchOnlyBalance() const;
+    CAmount GetWatchOnlyStake() const;
     CAmount GetUnconfirmedWatchOnlyBalance() const;
     CAmount GetImmatureWatchOnlyBalance() const;
     double GetAverageAnonymizedRounds() const;
@@ -467,7 +470,9 @@ public:
     /** Address book entry changed.
      * @note called with lock cs_wallet held.
      */
-    boost::signals2::signal<void (CWallet *wallet, const CTxDestination &address, const std::string &label, bool isMine, ChangeType status)> NotifyAddressBookChanged;
+    boost::signals2::signal<void (CWallet *wallet, const CTxDestination
+        &address, const std::string &label, bool isMine,
+        ChangeType status)> NotifyAddressBookChanged;
 
     /** Wallet transaction added, removed or updated.
      * @note called with lock cs_wallet held.
