@@ -50,11 +50,11 @@ public:
     //! Number of decimals left
     static int decimals(int unit);
     //! Format as string
-    static QString format(int unit, qint64 amount, bool plussign=false);
+    static QString format(int unit, const CAmount& nIn, bool plussign=false);
     //! Format as string (with unit)
-    static QString formatWithUnit(int unit, qint64 amount, bool plussign=false);
+    static QString formatWithUnit(int unit, const CAmount& amount, bool plussign=false);
     //! Parse string to coin amount
-    static bool parse(int unit, const QString &value, qint64 *val_out);
+    static bool parse(int unit, const QString &value, CAmount *val_out);
     ///@}
 
     //! @name AbstractListModel implementation

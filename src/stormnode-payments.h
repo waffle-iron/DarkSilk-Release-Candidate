@@ -29,8 +29,8 @@ void ProcessMessageStormnodePayments(CNode* pfrom, std::string& strCommand, CDat
 bool IsReferenceNode(CTxIn& vin);
 bool IsBlockPayeeValid(const CTransaction& txNew, int nBlockHeight);
 std::string GetRequiredPaymentsString(int nBlockHeight);
-bool IsBlockValueValid(const CBlock& block, int64_t nExpectedValue);
-void FillBlockPayee(CTransaction& txNew, int64_t nFees);
+bool IsBlockValueValid(const CBlock& block, CAmount nExpectedValue);
+void FillBlockPayee(CTransaction& txNew, CAmount nFees);
 
 void DumpStormnodePayments();
 
@@ -258,7 +258,7 @@ public:
     int GetMinStormnodePaymentsProto();
     void ProcessMessageStormnodePayments(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
     std::string GetRequiredPaymentsString(int nBlockHeight);
-    void FillBlockPayee(CTransaction& txNew, int64_t nFees);
+    void FillBlockPayee(CTransaction& txNew, CAmount nFees);
     std::string ToString() const;
     int GetOldestBlock();
     int GetNewestBlock();

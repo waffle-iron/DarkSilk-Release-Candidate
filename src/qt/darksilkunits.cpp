@@ -91,12 +91,13 @@ int DarkSilkUnits::decimals(int unit)
     }
 }
 
-QString DarkSilkUnits::format(int unit, qint64 n, bool fPlus)
+QString DarkSilkUnits::format(int unit, const CAmount& nIn, bool fPlus)
 {
     // Note: not using straight sprintf here because we do NOT want
     // localized number formatting.
     if(!valid(unit))
         return QString(); // Refuse to format invalid unit
+    qint64 n = (qint64)nIn;
     qint64 coin = factor(unit);
     int num_decimals = decimals(unit);
     qint64 n_abs = (n > 0 ? n : -n);
@@ -118,12 +119,12 @@ QString DarkSilkUnits::format(int unit, qint64 n, bool fPlus)
     return quotient_str + QString(".") + remainder_str;
 }
 
-QString DarkSilkUnits::formatWithUnit(int unit, qint64 amount, bool plussign)
+QString DarkSilkUnits::formatWithUnit(int unit, const CAmount& amount, bool plussign)
 {
     return format(unit, amount, plussign) + QString(" ") + name(unit);
 }
 
-bool DarkSilkUnits::parse(int unit, const QString &value, qint64 *val_out)
+bool DarkSilkUnits::parse(int unit, const QString &value, CAmount *val_out)
 {
     if(!valid(unit) || value.isEmpty())
         return false; // Refuse to parse invalid unit or empty string
@@ -152,7 +153,7 @@ bool DarkSilkUnits::parse(int unit, const QString &value, qint64 *val_out)
     {
         return false; // Longer numbers will exceed 63 bits
     }
-    qint64 retvalue = str.toLongLong(&ok);
+    CAmount retvalue = str.toLongLong(&ok);
     if(val_out)
     {
         *val_out = retvalue;
