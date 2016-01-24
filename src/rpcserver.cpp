@@ -84,7 +84,7 @@ void RPCTypeCheck(const Object& o,
     }
 }
 
-int64_t AmountFromValue(const Value& value)
+CAmount AmountFromValue(const Value& value)
 {
     double dAmount = value.get_real();
     if (dAmount <= 0.0 || dAmount > MAX_MONEY)
@@ -95,7 +95,7 @@ int64_t AmountFromValue(const Value& value)
     return nAmount;
 }
 
-Value ValueFromAmount(int64_t amount)
+Value ValueFromAmount(CAmount amount)
 {
     return (double)amount / (double)COIN;
 }

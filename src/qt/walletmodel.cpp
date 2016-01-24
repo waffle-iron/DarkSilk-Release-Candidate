@@ -214,7 +214,7 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
         LOCK2(cs_main, wallet->cs_wallet);
 
         // Sendmany
-        std::vector<std::pair<CScript, int64_t> > vecSend;
+        std::vector<std::pair<CScript, CAmount> > vecSend;
         foreach(const SendCoinsRecipient &rcp, recipients)
         {
             std::string sAddr = rcp.address.toStdString();
@@ -351,7 +351,7 @@ WalletModel::SendCoinsReturn WalletModel::sendCoins(const QList<SendCoinsRecipie
 
         CWalletTx wtx;
         CReserveKey keyChange(wallet);
-        int64_t nFeeRequired = 0;
+        CAmount nFeeRequired = 0;
         int nChangePos = -1;
         std::string strFailReason;
 

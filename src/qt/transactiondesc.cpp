@@ -47,9 +47,9 @@ QString TransactionDesc::toHTML(CWallet *wallet, CWalletTx &wtx, TransactionReco
     strHTML += "<html><font face='verdana, arial, helvetica, sans-serif'>";
 
     int64_t nTime = wtx.GetTxTime();
-    int64_t nCredit = wtx.GetCredit(ISMINE_ALL);
-    int64_t nDebit = wtx.GetDebit(ISMINE_ALL);
-    int64_t nNet = nCredit - nDebit;
+    CAmount nCredit = wtx.GetCredit(ISMINE_ALL);
+    CAmount nDebit = wtx.GetDebit(ISMINE_ALL);
+    CAmount nNet = nCredit - nDebit;
 
     strHTML += "<b>" + tr("Status") + ":</b> " + FormatTxStatus(wtx);
     int nRequests = wtx.GetRequestCount();
@@ -122,7 +122,7 @@ QString TransactionDesc::toHTML(CWallet *wallet, CWalletTx &wtx, TransactionReco
         //
         // Coinbase
         //
-        int64_t nUnmatured = 0;
+        CAmount nUnmatured = 0;
         BOOST_FOREACH(const CTxOut& txout, wtx.vout)
             nUnmatured += wallet->GetCredit(txout, ISMINE_ALL);
         strHTML += "<b>" + tr("Credit") + ":</b> ";
@@ -179,14 +179,14 @@ QString TransactionDesc::toHTML(CWallet *wallet, CWalletTx &wtx, TransactionReco
             if (fAllToMe)
             {
                 // Payment to self
-                int64_t nChange = wtx.GetChange();
-                int64_t nValue = nCredit - nChange;
+                CAmount nChange = wtx.GetChange();
+                CAmount nValue = nCredit - nChange;
                 strHTML += "<b>" + tr("Debit") + ":</b> " + DarkSilkUnits::formatWithUnit(unit, -nValue) + "<br>";
                 strHTML += "<b>" + tr("Credit") + ":</b> " + DarkSilkUnits::formatWithUnit(unit, nValue) + "<br>";
             }
             CTransactionPoS txPoS;
             CTransaction tx = CTransaction(wtx);
-            int64_t nTxFee = nDebit - txPoS.GetValueOut(tx);
+            CAmount nTxFee = nDebit - txPoS.GetValueOut(tx);
             if (nTxFee > 0)
                 strHTML += "<b>" + tr("Transaction fee") + ":</b> " + DarkSilkUnits::formatWithUnit(unit, -nTxFee) + "<br>";
         }

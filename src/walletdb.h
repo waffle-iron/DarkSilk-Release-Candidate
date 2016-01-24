@@ -9,6 +9,7 @@
 #include "db.h"
 #include "keystore.h"
 #include "stealth.h"
+#include "amount.h"
 
 #include <list>
 #include <string>
@@ -170,7 +171,7 @@ private:
     bool WriteAccountingEntry(const uint64_t nAccEntryNum, const CAccountingEntry& acentry);
 public:
     bool WriteAccountingEntry(const CAccountingEntry& acentry);
-    int64_t GetAccountCreditDebit(const std::string& strAccount);
+    CAmount GetAccountCreditDebit(const std::string& strAccount);
     void ListAccountCreditDebit(const std::string& strAccount, std::list<CAccountingEntry>& acentries);
 
     DBErrors ReorderTransactions(CWallet*);

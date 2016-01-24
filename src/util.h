@@ -15,6 +15,7 @@
 
 #include "serialize.h"
 #include "tinyformat.h"
+#include "amount.h"
 
 #include <map>
 #include <list>
@@ -128,7 +129,7 @@ extern std::string strStormNodeAddr;
 extern int nStormnodeMinProtocol;
 extern int keysLoaded;
 extern bool fSucessfullyLoaded;
-extern std::vector<int64_t> sandStormDenominations;
+extern std::vector<CAmount> sandStormDenominations;
 extern std::string strBudgetMode;
 extern bool fSandstormMultiSession;
 extern bool fDebug;
@@ -213,9 +214,9 @@ void RandAddSeedPerfmon();
 void PrintException(std::exception* pex, const char* pszThread);
 void PrintExceptionContinue(std::exception* pex, const char* pszThread);
 void ParseString(const std::string& str, char c, std::vector<std::string>& v);
-std::string FormatMoney(int64_t n, bool fPlus=false);
-bool ParseMoney(const std::string& str, int64_t& nRet);
-bool ParseMoney(const char* pszIn, int64_t& nRet);
+std::string FormatMoney(CAmount n, bool fPlus=false);
+bool ParseMoney(const std::string& str, CAmount& nRet);
+bool ParseMoney(const char* pszIn, CAmount& nRet);
 std::string SanitizeString(const std::string& str);
 std::vector<unsigned char> ParseHex(const char* psz);
 std::vector<unsigned char> ParseHex(const std::string& str);
