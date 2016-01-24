@@ -2311,12 +2311,17 @@ bool CWallet::SelectCoinsMinConf(const CAmount& nTargetValue, unsigned int nSpen
             }
         }
         //TODO (Amir): Remove testing code below.
-        //CAmount nDiff = nValueRet - nTargetValue;
-        //printf("nTargetValue: %ld\n", nValueRet);
-        //printf("nValueRet: %ld\n", nValueRet);
-        //printf("nDiff: %ld\n\n", nDiff);
-        //printf("nBest: %ld\n\n", nBest);
-        LogPrintf("%s - total %s\n", s, FormatMoney(nBest));
+        CAmount nDiff = nValueRet - nTargetValue;
+        printf("nTargetValue: %ld\n", nValueRet);
+        printf("nValueRet: %ld\n", nValueRet);
+        printf("nDiff: %ld\n\n", nDiff);
+        printf("nBest: %ld\n\n", nBest);
+        LogPrint("selectcoins", "SelectCoins() best subset: ");
+        for (unsigned int i = 0; i < vValue.size(); i++)
+            if (vfBest[i])
+                LogPrint("selectcoins", "%s ", FormatMoney(vValue[i].first));
+
+        LogPrintf("selectcoins %s - total %s\n", s, FormatMoney(nBest));
     }
 
     return true;
@@ -2824,7 +2829,7 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, CAmount> >& vecSend, 
                             fOpReturn = true;
                     }
 
-                    if (!fOpReturn && txout.IsDust(MIN_RELAY_TX_FEE))
+                    if (!fOpReturn && txout.IsDust(::minRelayTxFee))
                     {
                         strFailReason = _("Transaction amount too small");
                         return false;
@@ -2922,7 +2927,7 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, CAmount> >& vecSend, 
 
                     // Never create dust outputs; if we would, just
                     // add the dust to the fee.
-                    if (newTxOut.IsDust(MIN_RELAY_TX_FEE))
+                    if (newTxOut.IsDust(::minRelayTxFee))
                     {
                         nFeeRet += nChange;
                         reservekey.ReturnKey();
@@ -2957,7 +2962,7 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, CAmount> >& vecSend, 
                 unsigned int nBytes = ::GetSerializeSize(*(CTransaction*)&wtxNew, SER_NETWORK, PROTOCOL_VERSION);
                 if (nBytes >= MAX_STANDARD_TX_SIZE)
                 {
-                   strFailReason = _("Transaction too large");
+                    strFailReason = _("Transaction too large");
                     return false;
                 }
                 dPriority = wtxNew.ComputePriority(dPriority, nBytes);

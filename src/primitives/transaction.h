@@ -205,17 +205,17 @@ public:
         return SerializeHash(*this);
     }
 
-    bool IsDust(CAmount MIN_RELAY_TX_FEE) const
+    bool IsDust(CFeeRate minRelayTxFee) const
     {
-        // "Dust" is defined in terms of MIN_RELAY_TX_FEE,
-        // which has units satoshis-per-kilobyte.
-        // If you'd pay more than 1/3 in fees
-        // to spend something, then we consider it dust.
-        // A typical txout is 34 bytes big, and will
-        // need a CTxIn of at least 148 bytes to spend,
-        // so dust is a txout less than 546 satoshis
-        // with default nMinRelayTxFee.
-        return ((nValue*1000)/(3*((int)GetSerializeSize(SER_DISK,0)+148)) < MIN_RELAY_TX_FEE);
+        // "Dust" is defined in terms of CTransaction::minRelayTxFee, which has units duffs-per-kilobyte.
+        // If you'd pay more than 1/3 in fees to spend something, then we consider it dust.
+        // A typical txout is 34 bytes big, and will need a CTxIn of at least 148 bytes to spend
+        // i.e. total is 148 + 32 = 182 bytes. Default -minrelaytxfee is 10000 duffs per kB
+        // and that means that fee per txout is 182 * 10000 / 1000 = 1820 duffs.
+        // So dust is a txout less than 1820 *3 = 5460 duffs
+        // with default -minrelaytxfee = minRelayTxFee = 10000 duffs per kB.
+        size_t nSize = GetSerializeSize(SER_DISK,0)+148u;
+        return (nValue < 3*minRelayTxFee.GetFee(nSize));
     }
 
     friend bool operator==(const CTxOut& a, const CTxOut& b)

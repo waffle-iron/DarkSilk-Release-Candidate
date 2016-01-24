@@ -83,6 +83,7 @@ static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov 5th 00:53:2
 static const unsigned int POW_TARGET_SPACING = 1 * 60; // 60 seconds
 static const unsigned int POS_TARGET_SPACING = 1 * 64; // 64 seconds
 
+
 struct BlockHasher
 {
     size_t operator()(const uint256& hash) const { return hash.GetLow64(); }
@@ -138,6 +139,8 @@ extern bool fLargeWorkForkFound;
 extern bool fLargeWorkInvalidChainFound;
 
 extern std::map<uint256, int64_t> mapRejectedBlocks;
+
+extern CFeeRate minRelayTxFee;
 
 // Minimum disk space required - used in CheckDiskSpace()
 static const uint64_t nMinDiskSpace = 52428800;

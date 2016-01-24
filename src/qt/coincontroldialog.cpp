@@ -540,7 +540,7 @@ void CoinControlDialog::updateLabels(WalletModel *model, QDialog* dialog)
             if (nChange > 0 && nChange < CENT)
             {
                 CTxOut txout(nChange, (CScript)vector<unsigned char>(24, 0));
-                if (txout.IsDust(MIN_RELAY_TX_FEE))
+                if (txout.IsDust(::minRelayTxFee))
                 {
                     nPayFee += nChange;
                     nChange = 0;
