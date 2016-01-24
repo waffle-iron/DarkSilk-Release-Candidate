@@ -410,6 +410,8 @@ public:
     void AddTransactionsUpdated(unsigned int n);
     bool ReadFeeEstimates(CAutoFile& filein);
     bool WriteFeeEstimates(CAutoFile& fileout) const;
+    CFeeRate estimateFee(int nBlocks) const;
+    double estimatePriority(int nBlocks) const;
 
     unsigned long size() const
     {
