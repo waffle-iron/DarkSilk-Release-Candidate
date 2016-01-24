@@ -1943,7 +1943,7 @@ bool CWallet::SelectCoinsMinConfByCoinAge(const CAmount& nTargetValue, unsigned 
 
     // List of values less than target
     pair<pair<CAmount,CAmount>, pair<const CWalletTx*,unsigned int> > coinLowestLarger;
-    coinLowestLarger.first.second = std::numeric_limits<int64_t>::max();
+    coinLowestLarger.first.second = std::numeric_limits<CAmount>::max();
     coinLowestLarger.second.first = NULL;
     vector<pair<pair<CAmount,CAmount>,pair<const CWalletTx*,unsigned int> > > vValue;
     CAmount nTotalLower = 0;
@@ -2228,7 +2228,8 @@ bool CWallet::SelectCoinsMinConf(const CAmount& nTargetValue, unsigned int nSpen
 
             CAmount n = pcoin->vout[i].nValue;
 
-            if (tryDenom == 0 && IsDenominatedAmount(n)) continue; // we don't want denom values on first run
+            if (tryDenom == 0 && IsDenominatedAmount(n))
+                continue; // we don't want denom values on first run
 
             pair<CAmount,pair<const CWalletTx*,unsigned int> > coin = make_pair(n,make_pair(pcoin, i));
 
@@ -2309,6 +2310,12 @@ bool CWallet::SelectCoinsMinConf(const CAmount& nTargetValue, unsigned int nSpen
                 s += FormatMoney(vValue[i].first) + " ";
             }
         }
+        //TODO (Amir): Remove testing code below.
+        //CAmount nDiff = nValueRet - nTargetValue;
+        //printf("nTargetValue: %ld\n", nValueRet);
+        //printf("nValueRet: %ld\n", nValueRet);
+        //printf("nDiff: %ld\n\n", nDiff);
+        //printf("nBest: %ld\n\n", nBest);
         LogPrintf("%s - total %s\n", s, FormatMoney(nBest));
     }
 
