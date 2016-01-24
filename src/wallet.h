@@ -24,6 +24,9 @@
 #include "util.h"
 #include "stealth.h"
 
+const CAmount MIN_TX_FEE = 77777; // 0.000077777 DRKSLK Minimum Transaction Fee
+/// Fees smaller than this (in satoshi) are considered zero fee (for relaying)
+const CAmount MIN_RELAY_TX_FEE = MIN_TX_FEE;
 // Settings
 extern CAmount nTransactionFee;
 extern CAmount nReserveBalance;

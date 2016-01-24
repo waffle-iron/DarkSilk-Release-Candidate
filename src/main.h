@@ -70,10 +70,9 @@ static const unsigned int DEFAULT_MAX_ORPHAN_BLOCKS = 1000;
 /// The maximum number of entries in an 'inv' protocol message
 static const unsigned int MAX_INV_SZ = 50000;
 /// Fees smaller than this (in satoshi) are considered zero fee (for transaction creation)
-static const CAmount MIN_TX_FEE = 77777; // 0.000077777 DRKSLK Minimum Transaction Fee
+
 static const double MIN_FEE = 0.00077777; // 0.000077777 DRKSLK Minimum Transaction Fee
-/// Fees smaller than this (in satoshi) are considered zero fee (for relaying)
-static const CAmount MIN_RELAY_TX_FEE = MIN_TX_FEE;
+
 /// Maximum length of reject messages.
 static const unsigned int MAX_REJECT_MESSAGE_LENGTH = 111;
 

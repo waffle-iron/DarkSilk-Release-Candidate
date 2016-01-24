@@ -2968,6 +2968,8 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, CAmount> >& vecSend, 
                 dPriority = wtxNew.ComputePriority(dPriority, nBytes);
 
                 // Check that enough fee is included
+                if (nTransactionFee == 0)
+                    nTransactionFee = MIN_TX_FEE;
                 CAmount nPayFee = nTransactionFee * (1 + (CAmount)nBytes / 1000);
                 bool fAllowFree = AllowFree(dPriority);
                 CAmount nMinFee = GetMinFee(wtxNew, nBytes, fAllowFree, GMF_SEND);
