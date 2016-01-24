@@ -88,7 +88,7 @@ int nStormnodeMinProtocol = 0;
 bool fSucessfullyLoaded = false;
 bool fEnableSandstorm = false;
 /** All denominations used by sandstorm */
-std::vector<int64_t> sandStormDenominations;
+std::vector<CAmount> sandStormDenominations;
 bool fSandstormMultiSession = false;
 
 map<string, string> mapArgs;
@@ -337,7 +337,7 @@ void ParseString(const string& str, char c, vector<string>& v)
 }
 
 
-string FormatMoney(int64_t n, bool fPlus)
+string FormatMoney(CAmount n, bool fPlus)
 {
     // Note: not using straight sprintf here because we do NOT want
     // localized number formatting.
@@ -361,12 +361,12 @@ string FormatMoney(int64_t n, bool fPlus)
 }
 
 
-bool ParseMoney(const string& str, int64_t& nRet)
+bool ParseMoney(const string& str, CAmount& nRet)
 {
     return ParseMoney(str.c_str(), nRet);
 }
 
-bool ParseMoney(const char* pszIn, int64_t& nRet)
+bool ParseMoney(const char* pszIn, CAmount& nRet)
 {
     string strWhole;
     int64_t nUnits = 0;
