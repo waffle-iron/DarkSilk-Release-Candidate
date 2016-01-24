@@ -24,13 +24,23 @@
 #include "util.h"
 #include "stealth.h"
 
+//! -paytxfee default
+static const CAmount DEFAULT_TRANSACTION_FEE = 0;
+//! -maxtxfee default
+static const CAmount DEFAULT_TRANSACTION_MAXFEE = 0.077777 * COIN;
 const CAmount MIN_TX_FEE = 77777; // 0.000077777 DRKSLK Minimum Transaction Fee
 /// Fees smaller than this (in satoshi) are considered zero fee (for relaying)
 const CAmount MIN_RELAY_TX_FEE = MIN_TX_FEE;
+//! Largest (in bytes) free transaction we're willing to create
+static const unsigned int MAX_FREE_TRANSACTION_CREATE_SIZE = 1000;
+
 // Settings
 extern CAmount nTransactionFee;
 extern CAmount nReserveBalance;
 extern CAmount nMinimumInputValue;
+extern unsigned int nTxConfirmTarget;
+extern CFeeRate payTxFee;
+
 extern bool fWalletUnlockStakingOnly;
 extern bool fConfChange;
 
@@ -161,6 +171,8 @@ public:
     std::map<std::string, CStormNodeConfig> mapMyStormNodes;
     bool AddStormNodeConfig(CStormNodeConfig nodeConfig);
 
+    static CFeeRate minTxFee;
+
     int GetInputSandstormRounds(CTxIn in) const;
 
     CWallet()
@@ -289,7 +301,9 @@ public:
     double GetAverageAnonymizedRounds() const;
     CAmount GetNormalizedAnonymizedBalance() const;
     CAmount GetDenominatedBalance(bool onlyDenom=true, bool onlyUnconfirmed=false, bool includeAlreadyAnonymized = true) const; 
- 
+
+    CAmount GetMinimumFee(unsigned int nTxBytes, unsigned int nConfirmTarget, const CTxMemPool& pool);
+
     bool CreateTransaction(const std::vector<std::pair<CScript, CAmount> >& vecSend,
                            CWalletTx& wtxNew, CReserveKey& reservekey, CAmount& nFeeRet, int32_t& nChangePos, std::string& strFailReason, const CCoinControl *coinControl=NULL, AvailableCoinsType coin_type=ALL_COINS, bool useIX=false);
     bool CreateTransaction(CScript scriptPubKey, CAmount nValue, std::string& sNarr,
