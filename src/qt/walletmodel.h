@@ -31,7 +31,7 @@ public:
     QString label;
     QString narration;
     int typeInd;
-    qint64 amount;
+    CAmount amount;
     AvailableCoinsType inputType;
     bool useInstantX;
 };
@@ -72,11 +72,11 @@ public:
     AddressTableModel *getAddressTableModel();
     TransactionTableModel *getTransactionTableModel();
 
-    qint64 getBalance(const CCoinControl *coinControl=NULL) const;
-    qint64 getStake() const;
-    qint64 getUnconfirmedBalance() const;
-    qint64 getImmatureBalance() const;
-    qint64 getAnonymizedBalance() const;
+    CAmount getBalance(const CCoinControl *coinControl=NULL) const;
+    CAmount getStake() const;
+    CAmount getUnconfirmedBalance() const;
+    CAmount getImmatureBalance() const;
+    CAmount getAnonymizedBalance() const;
     EncryptionStatus getEncryptionStatus() const;
 
     // Check address for validity
@@ -86,11 +86,11 @@ public:
     struct SendCoinsReturn
     {
         SendCoinsReturn(StatusCode status=Aborted,
-                         qint64 fee=0,
+                         CAmount fee=0,
                          QString hex=QString()):
             status(status), fee(fee), hex(hex) {}
         StatusCode status;
-        qint64 fee; // is used in case status is "AmountWithFeeExceedsBalance"
+        CAmount fee; // is used in case status is "AmountWithFeeExceedsBalance"
         QString hex; // is filled with the transaction hash if status is "OK"
     };
 
@@ -149,12 +149,12 @@ private:
     TransactionTableModel *transactionTableModel;
 
     // Cache some values to be able to detect changes
-    qint64 cachedBalance;
-    qint64 cachedStake;
-    qint64 cachedUnconfirmedBalance;
-    qint64 cachedImmatureBalance;
-    qint64 cachedAnonymizedBalance;
-    qint64 cachedNumTransactions;
+    CAmount cachedBalance;
+    CAmount cachedStake;
+    CAmount cachedUnconfirmedBalance;
+    CAmount cachedImmatureBalance;
+    CAmount cachedAnonymizedBalance;
+    CAmount cachedNumTransactions;
     int cachedTxLocks;
     int cachedSandstormRounds;
     EncryptionStatus cachedEncryptionStatus;
@@ -179,7 +179,7 @@ public slots:
 
 signals:
     // Signal that balance in wallet changed
-    void balanceChanged(qint64 balance, qint64 stake, qint64 unconfirmedBalance, qint64 immatureBalance, qint64 anonymizedBalance);
+    void balanceChanged(const CAmount& balance, const CAmount& stake, const CAmount& unconfirmedBalance, const CAmount& immatureBalance, const CAmount& anonymizedBalance);
 
     // Encryption status of wallet changed
     void encryptionStatusChanged(int status);
