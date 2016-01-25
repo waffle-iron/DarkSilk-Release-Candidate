@@ -27,6 +27,7 @@ QT_BEGIN_NAMESPACE
 class QLabel;
 class QModelIndex;
 class QProgressBar;
+class QProgressDialog;
 class QStackedWidget;
 class QScrollArea;
 QT_END_NAMESPACE
@@ -97,6 +98,7 @@ private:
     QLabel *labelBlocksIcon;
     QLabel *progressBarLabel;
     QProgressBar *progressBar;
+    QProgressDialog *progressDialog;
 #ifdef USE_NATIVE_I2P
     QLabel* labelI2PConnections;
     QLabel* labelI2POnly;
@@ -244,6 +246,9 @@ private slots:
 
     void updateWeight();
     void updateStakingIcon();
+
+    /** Show progress dialog e.g. for verifychain */
+    void showProgress(const QString &title, int nProgress);
 
     /** called by a timer to check if fRequestShutdown has been set **/
     void detectShutdown();
