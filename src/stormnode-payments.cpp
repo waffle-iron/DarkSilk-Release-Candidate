@@ -410,7 +410,7 @@ void CStormnodePayments::ProcessMessageStormnodePayments(CNode* pfrom, std::stri
 
         if(!winner.SignatureValid()){
             LogPrintf("snw - invalid signature\n");
-            Misbehaving(pfrom->GetId(), 20);
+            if(stormnodeSync.IsSynced()) Misbehaving(pfrom->GetId(), 20);
             // it could just be a non-synced stormnode
             snodeman.AskForSN(pfrom, winner.vinStormnode);
             return;
@@ -672,7 +672,7 @@ bool CStormnodePaymentWinner::IsValid(CNode* pnode, std::string& strError)
         {
             strError = strprintf("Stormnode not in the top %d (%d)", SNPAYMENTS_SIGNATURES_TOTAL, n);
             LogPrintf("CStormnodePaymentWinner::IsValid - %s\n", strError);
-            Misbehaving(pnode->GetId(), 20);
+            if(stormnodeSync.IsSynced()) Misbehaving(pnode->GetId(), 20);
         }
         return false;
     }

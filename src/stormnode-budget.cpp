@@ -961,7 +961,7 @@ void CBudgetManager::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
         mapSeenStormnodeBudgetVotes.insert(make_pair(vote.GetHash(), vote));
         if(!vote.SignatureValid(true)){
             LogPrintf("svote - signature invalid\n");
-            Misbehaving(pfrom->GetId(), 20);
+            if(stormnodeSync.IsSynced()) Misbehaving(pfrom->GetId(), 20);
             // it could just be a non-synced stormnode
             snodeman.AskForSN(pfrom, vote.vin);
             return;
@@ -1031,7 +1031,7 @@ void CBudgetManager::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
         mapSeenFinalizedBudgetVotes.insert(make_pair(vote.GetHash(), vote));
         if(!vote.SignatureValid(true)){
             LogPrintf("fbvote - signature invalid\n");
-            Misbehaving(pfrom->GetId(), 20);
+            if(stormnodeSync.IsSynced()) Misbehaving(pfrom->GetId(), 20);
             // it could just be a non-synced stormnode
             snodeman.AskForSN(pfrom, vote.vin);
             return;

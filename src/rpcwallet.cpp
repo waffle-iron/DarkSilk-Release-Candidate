@@ -52,7 +52,7 @@ void EnsureWalletIsUnlocked()
 void WalletTxToJSON(const CWalletTx& wtx, Object& entry)
 {
     int confirms = wtx.GetDepthInMainChain(false);
-    int confirmsTotal = wtx.GetDepthInMainChain();
+    int confirmsTotal = GetIXConfirmations(wtx.GetHash()) + confirms;
     entry.push_back(Pair("confirmations", confirmsTotal));
     entry.push_back(Pair("bcconfirmations", confirms));    
     if (wtx.IsCoinBase() || wtx.IsCoinStake())
@@ -762,13 +762,6 @@ Value getbalance(const Array& params, bool fHelp)
         if(params[2].get_bool())
             filter = filter | ISMINE_WATCH_ONLY;
 
-    string test = "";
-
-    if (params.size() == 0){
-        test = "*";
-        params.push_back(test);
-    }
-
     if (params[0].get_str() == "*") {
         // Calculate total balance a different way from GetBalance()
         // (GetBalance() sums up all unspent TxOuts)
@@ -1257,7 +1250,7 @@ Value ListReceived(const Array& params, bool fByAccounts)
             obj.push_back(Pair("account",       strAccount));
             obj.push_back(Pair("amount",        ValueFromAmount(nAmount)));
             obj.push_back(Pair("confirmations", (nConf == std::numeric_limits<int>::max() ? 0 : nConf)));
-             obj.push_back(Pair("bcconfirmations", (nBCConf == std::numeric_limits<int>::max() ? 0 : nBCConf)));             
+            obj.push_back(Pair("bcconfirmations", (nBCConf == std::numeric_limits<int>::max() ? 0 : nBCConf)));             
             ret.push_back(obj);
             Array transactions;
             if (it != mapTally.end())

@@ -24,6 +24,16 @@
 #include <boost/unordered_map.hpp>
 
 class CValidationState;
+class CBlock;
+class CBlockIndex;
+class CInv;
+class CKeyItem;
+class CNode;
+class CReserveKey;
+class CWallet;
+class CTxMemPool;
+
+struct CNodeStateStats;
 
 static const CAmount STORMNODE_COLLATERAL = 10000; //Stormnode Collateral Amount
 
@@ -39,17 +49,6 @@ static const CAmount STATIC_POS_REWARD = COIN * 0.1; // Static Reward of 0.1 DRK
 static const int MAX_BLOCKS_IN_TRANSIT_PER_PEER = 128;
 /// Timeout in seconds before considering a block download peer unresponsive.
 static const unsigned int BLOCK_DOWNLOAD_TIMEOUT = 60;
-
-class CBlock;
-class CBlockIndex;
-class CInv;
-class CKeyItem;
-class CNode;
-class CReserveKey;
-class CWallet;
-class CTxMemPool;
-
-struct CNodeStateStats;
 
 /// The maximum size for mined blocks
 static const unsigned int MAX_BLOCK_SIZE_GEN = MAX_BLOCK_SIZE/2;
@@ -87,6 +86,7 @@ struct BlockHasher
 {
     size_t operator()(const uint256& hash) const { return hash.GetLow64(); }
 };
+
 typedef std::map<uint256, CBlockIndex*, BlockHasher> BlockMap; //TODO (Amir): Change to boost::unordered_map.
 
 /// Time to wait (in seconds) between writing blockchain state to disk.

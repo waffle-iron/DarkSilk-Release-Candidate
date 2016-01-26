@@ -354,6 +354,8 @@ void CStormnodeMan::Clear()
     mAskedUsForStormnodeList.clear();
     mWeAskedForStormnodeList.clear();
     mWeAskedForStormnodeListEntry.clear();
+    mapSeenStormnodeBroadcast.clear();
+    mapSeenStormnodePing.clear();
     nSsqCount = 0;
 }
 

@@ -498,6 +498,11 @@ bool AppInit2(boost::thread_group& threadGroup)
             LogPrintf("AppInit2 : parameter interaction: -salvagewallet=1 -> setting -rescan=1\n");
     }
 
+    if(!GetBoolArg("-enableinstantx", fEnableInstantX)){
+        if (SoftSetArg("-instantxdepth", 0))
+            LogPrintf("AppInit2 : parameter interaction: -enableinstantx=false -> setting -nInstantXDepth=0\n");
+    }
+
     // ********************************************************* Step 3: parameter-to-internal-flags
 
     fDebug = !mapMultiArgs["-debug"].empty();
