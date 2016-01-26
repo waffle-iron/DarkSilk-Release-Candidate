@@ -44,6 +44,7 @@ class WalletModel : public QObject
 public:
     explicit WalletModel(CWallet *wallet, OptionsModel *optionsModel, QObject *parent = 0);
     ~WalletModel();
+    bool fHaveWatchOnly;
 
     enum StatusCode // Returned by sendCoins
     {
@@ -65,7 +66,7 @@ public:
         Unencrypted,  // !wallet->IsCrypted()
         Locked,       // wallet->IsCrypted() && wallet->IsLocked()
         Unlocked,      // wallet->IsCrypted() && !wallet->IsLocked()
-	UnlockedForAnonymizationOnly
+        UnlockedForAnonymizationOnly
     };
 
     OptionsModel *getOptionsModel();
@@ -77,6 +78,11 @@ public:
     CAmount getUnconfirmedBalance() const;
     CAmount getImmatureBalance() const;
     CAmount getAnonymizedBalance() const;
+    bool haveWatchOnly() const;
+    CAmount getWatchBalance() const;
+    CAmount getWatchStake() const;
+    CAmount getWatchUnconfirmedBalance() const;
+    CAmount getWatchImmatureBalance() const;
     EncryptionStatus getEncryptionStatus() const;
 
     // Check address for validity

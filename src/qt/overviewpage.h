@@ -19,7 +19,7 @@ QT_BEGIN_NAMESPACE
 class QModelIndex;
 QT_END_NAMESPACE
 
-/** Overview ("home") page widget */
+/// Overview ("home") page widget
 class OverviewPage : public QWidget
 {
     Q_OBJECT
@@ -35,7 +35,9 @@ public:
 
 public slots:
     void sandStormStatus();
-    void setBalance(const CAmount& balance, const CAmount& stake, const CAmount& unconfirmedBalance, const CAmount& immatureBalance, const CAmount& anonymizedBalance);
+    void setBalance(const CAmount& balance, const CAmount& stake, const CAmount& unconfirmedBalance,
+                    const CAmount& immatureBalance, const CAmount& anonymizedBalance, const CAmount& watchOnlyBalance,
+                    const CAmount& watchOnlyStake, const CAmount& watchUnconfBalance, const CAmount& watchImmatureBalance);
 
 signals:
     void transactionClicked(const QModelIndex &index);
@@ -50,7 +52,12 @@ private:
     CAmount currentUnconfirmedBalance;
     CAmount currentImmatureBalance;
     CAmount currentAnonymizedBalance;
-    
+    CAmount currentWatchOnlyBalance;
+    CAmount currentWatchUnconfBalance;
+    CAmount currentWatchImmatureBalance;
+    CAmount currentWatchOnlyStake;
+    int nDisplayUnit;
+
     qint64 lastNewBlock;
 
     int showingSandStormMessage;
