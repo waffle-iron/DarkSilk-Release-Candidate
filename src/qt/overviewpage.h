@@ -1,16 +1,19 @@
 #ifndef OVERVIEWPAGE_H
 #define OVERVIEWPAGE_H
 
+#include "amount.h"
+
 #include <QWidget>
 #include <QTimer>
 
-namespace Ui {
-    class OverviewPage;
-}
 class ClientModel;
 class WalletModel;
 class TxViewDelegate;
 class TransactionFilterProxy;
+
+namespace Ui {
+    class OverviewPage;
+}
 
 QT_BEGIN_NAMESPACE
 class QModelIndex;
@@ -32,7 +35,7 @@ public:
 
 public slots:
     void sandStormStatus();
-    void setBalance(qint64 balance, qint64 stake, qint64 unconfirmedBalance, qint64 immatureBalance, qint64 anonymizedBalance);
+    void setBalance(const CAmount& balance, const CAmount& stake, const CAmount& unconfirmedBalance, const CAmount& immatureBalance, const CAmount& anonymizedBalance);
 
 signals:
     void transactionClicked(const QModelIndex &index);
@@ -42,17 +45,18 @@ private:
     Ui::OverviewPage *ui;
     ClientModel *clientModel;
     WalletModel *walletModel;
-    qint64 currentBalance;
-    qint64 currentStake;
-    qint64 currentUnconfirmedBalance;
-    qint64 currentImmatureBalance;
-    qint64 currentAnonymizedBalance;
-    qint64 cachedTxLocks;
+    CAmount currentBalance;
+    CAmount currentStake;
+    CAmount currentUnconfirmedBalance;
+    CAmount currentImmatureBalance;
+    CAmount currentAnonymizedBalance;
+    
     qint64 lastNewBlock;
 
     int showingSandStormMessage;
     int sandstormActionCheck;
     int cachedNumBlocks;
+    int cachedTxLocks;
     TxViewDelegate *txdelegate;
     TransactionFilterProxy *filter;
 

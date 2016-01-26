@@ -1,6 +1,8 @@
 #ifndef DARKSILKAMOUNTFIELD_H
 #define DARKSILKAMOUNTFIELD_H
 
+#include "amount.h"
+
 #include <QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -13,14 +15,15 @@ QT_END_NAMESPACE
 class DarkSilkAmountField: public QWidget
 {
     Q_OBJECT
-
+    // ugly hack: for some unknown reason CAmount (instead of qint64) does not work here as expected
+    // discussion: https://github.com/bitcoin/bitcoin/pull/5117
     Q_PROPERTY(qint64 value READ value WRITE setValue NOTIFY textChanged USER true)
 
 public:
     explicit DarkSilkAmountField(QWidget *parent = 0);
 
-    qint64 value(bool *valid=0) const;
-    void setValue(qint64 value);
+    CAmount value(bool *valid=0) const;
+    void setValue(const CAmount& value);
 
     /** Mark current value as invalid in UI. */
     void setValid(bool valid);
