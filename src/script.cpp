@@ -330,6 +330,35 @@ const char* GetOpName(opcodetype opcode)
     case OP_NOP9                   : return "OP_NOP9";
     case OP_NOP10                  : return "OP_NOP10";
 
+    //aliases, data aliases
+    case OP_ALIAS_NEW              : return "OP_ALIAS_NEW";
+    case OP_ALIAS_ACTIVATE         : return "OP_ALIAS_ACTIVATE";
+    case OP_ALIAS_UPDATE           : return "OP_ALIAS_UPDATE";
+
+    //distributed exchange
+    case OP_OFFER_NEW              : return "OP_OFFER_NEW";
+    case OP_OFFER_ACTIVATE         : return "OP_OFFER_ACTIVATE";
+    case OP_OFFER_UPDATE           : return "OP_OFFER_UPDATE";
+    case OP_OFFER_ACCEPT           : return "OP_OFFER_ACCEPT";
+    case OP_OFFER_PAY              : return "OP_OFFER_PAY";
+    case OP_OFFER_REFUND           : return "OP_OFFER_REFUND";
+
+    //distributed licensing system
+    case OP_CERT_ACTIVATE          : return "OP_CERT_ACTIVATE";
+    case OP_CERT_UPDATE            : return "OP_CERT_UPDATE";
+    case OP_CERT_TRANSFER          : return "OP_CERT_TRANSFER";
+
+    //assets
+  //  case OP_ASSET                  : return "OP_ASSET";
+  //  case XOP_ASSET_NEW             : return "XOP_ASSET_NEW";
+  //  case XOP_ASSET_ACTIVATE        : return "XOP_ASSET_ACTIVATE";
+  //  case XOP_ASSET_SEND            : return "XOP_ASSET_SEND";
+  //  case XOP_ASSET_PEG             : return "XOP_ASSET_PEG";
+  //  case XOP_ASSET_UPDATE          : return "XOP_ASSET_UPDATE";
+  //  case XOP_ASSET_GENERATE        : return "XOP_ASSET_GENERATE";
+  //  case XOP_ASSET_DISSOLVE        : return "XOP_ASSET_DISSOLVE";
+
+
     case OP_INVALIDOPCODE          : return "OP_INVALIDOPCODE";
 
     // Note:

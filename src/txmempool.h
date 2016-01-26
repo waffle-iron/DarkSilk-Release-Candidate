@@ -10,6 +10,9 @@
 #include "sync.h"
 #include "coins.h"
 #include "amount.h"
+#include "alias.h"
+#include "offer.h"
+#include "cert.h"
 #include <boost/circular_buffer.hpp>
 
 inline double AllowFreeThreshold()
@@ -387,6 +390,7 @@ public:
 class CTxMemPool
 {
 private:
+    CTransaction tx;
     unsigned int nTransactionsUpdated;
     CFeeRate minRelayFee; //! Passed to constructor to avoid dependency on main
 
@@ -410,6 +414,7 @@ public:
     void AddTransactionsUpdated(unsigned int n);
     bool ReadFeeEstimates(CAutoFile& filein);
     bool WriteFeeEstimates(CAutoFile& fileout) const;
+    bool ExistsInMemPool(std::vector<unsigned char> vchToFind, opcodetype type);
 
     unsigned long size() const
     {

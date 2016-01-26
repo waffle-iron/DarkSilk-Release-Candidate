@@ -168,7 +168,10 @@ OBJS= \
     obj/crypto/argon2/encoding.o \
     obj/crypto/argon2/thread.o \
     obj/crypto/argon2/opt.o \
-    obj/crypto/argon2/blake2/blake2b.o
+    obj/crypto/argon2/blake2/blake2b.o \
+    obj/alias.o \
+    obj/offer.o \
+    obj/cert.o 
 
 ifeq (${USE_WALLET}, 1)
     DEFS += -DENABLE_WALLET
@@ -195,7 +198,7 @@ DEFS += $(addprefix -I,$(CURDIR)/leveldb/helpers)
 DEFS += $(addprefix -I,$(CURDIR)/leveldb/helpers/memenv)
 OBJS += obj/txdb-leveldb.o
 leveldb/libleveldb.a:
-	@echo "Building LevelDB ..."; cd leveldb; make libleveldb.a libmemenv.a; cd ..;
+    @echo "Building LevelDB ..."; cd leveldb; make libleveldb.a libmemenv.a; cd ..;
 obj/txdb-leveldb.o: leveldb/libleveldb.a
 
 # auto-generated dependencies:
@@ -251,5 +254,6 @@ clean:
 	-rm -f obj/crypto/argon2/blake2/*.d
 	cd leveldb && TARGET_OS=OS_WINDOWS_CROSSCOMPILE $(MAKE) clean && cd ..
 	cd secp256k1 && TARGET_OS=OS_WINDOWS_CROSSCOMPILE $(MAKE) clean && cd ..
+    cd cryptopp && TARGET_OS=OS_WINDOWS_CROSSCOMPILE $(MAKE) clean && cd ..
 
 FORCE:

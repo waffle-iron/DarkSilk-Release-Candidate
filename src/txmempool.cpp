@@ -156,4 +156,103 @@ bool CTxMemPool::ReadFeeEstimates(CAutoFile& filein)
     return true;
 }
 
+bool CTxMemPool::ExistsInMemPool(std::vector<unsigned char> vchToFind, opcodetype type)
+{
+    for (map<uint256, CTransaction>::iterator mi = mempool.mapTx.begin();
+        mi != mempool.mapTx.end(); ++mi)
+    {
+        CTransaction& tx = (*mi).second;
+        if (tx.IsCoinBase())
+            continue;
+        if (IsAliasOp(type))
+        {
+            vector<vector<unsigned char> > vvch;
+            int op;
+            int nOut;
+
+            if (DecodeAliasTx(tx, op, nOut, vvch, -1))
+            {
+                if (op == type)
+                {
+                    string vchToFindStr = stringFromVch(vchToFind);
+                    string vvchFirstStr = stringFromVch(vvch[0]);
+                    if (vvchFirstStr == vchToFindStr)
+                    {
+                        if (GetTxHashHeight(tx.GetHash()) <= 0)
+                            return true;
+                    }
+                    if (vvch.size() > 1)
+                    {
+                        string vvchSecondStr = HexStr(vvch[1]);
+                        if (vvchSecondStr == vchToFindStr)
+                        {
+                            if (GetTxHashHeight(tx.GetHash()) <= 0)
+                                return true;
+                        }
+                    }
+                }
+            }
+        }
+        else if (IsOfferOp(type))
+        {
+            vector<vector<unsigned char> > vvch;
+            int op;
+            int nOut;
+
+           if (DecodeOfferTx(tx, op, nOut, vvch, -1)) 
+           {
+                if(op == type)
+                {
+                    string vchToFindStr = stringFromVch(vchToFind);
+                    string vvchFirstStr = stringFromVch(vvch[0]);
+                    if(vvchFirstStr == vchToFindStr)
+                    {
+                        if (GetTxHashHeight(tx.GetHash()) <= 0) 
+                            return true;
+                    }
+                    if(vvch.size() > 1)
+                    {
+                        string vvchSecondStr = HexStr(vvch[1]);
+                        if(vvchSecondStr == vchToFindStr)
+                        {
+                            if (GetTxHashHeight(tx.GetHash()) <= 0)
+                                return true;
+                        }
+                    }
+                }
+            } 
+        } 
+        else if(IsCertOp(type))
+        {
+            vector<vector<unsigned char> > vvch;
+            int op;
+            int nOut;
+        
+            if(DecodeCertTx(tx, op, nOut, vvch, -1))   
+            {
+                if(op == type)
+                {
+                    string vchToFindStr = stringFromVch(vchToFind);
+                    string vvchFirstStr = stringFromVch(vvch[0]);
+                    if(vvchFirstStr == vchToFindStr)
+                    {
+                        if (GetTxHashHeight(tx.GetHash()) <= 0)
+                                return true;
+                }
+                if(vvch.size() > 1)
+                {
+                    string vvchSecondStr = HexStr(vvch[1]);
+                    if(vvchSecondStr == vchToFindStr)
+                    {
+                        if (GetTxHashHeight(tx.GetHash()) <= 0) 
+                            return true;
+                    }
+                }
+            }
+        } 
+    }
+    return false;
+}
+}
+
 

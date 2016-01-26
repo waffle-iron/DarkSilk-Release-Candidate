@@ -84,7 +84,7 @@ void RPCTypeCheck(const Object& o,
     }
 }
 
-CAmount AmountFromValue(const Value& value)
+int64_t AmountFromValue(const Value& value)
 {
     double dAmount = value.get_real();
     if (dAmount <= 0.0 || dAmount > MAX_MONEY)
@@ -95,7 +95,7 @@ CAmount AmountFromValue(const Value& value)
     return nAmount;
 }
 
-Value ValueFromAmount(CAmount amount)
+Value ValueFromAmount(int64_t amount)
 {
     return (double)amount / (double)COIN;
 }
@@ -248,6 +248,45 @@ static const CRPCCommand vRPCCommands[] =
     { "validatepubkey",         &validatepubkey,         true,      false,     false },
     { "verifymessage",          &verifymessage,          false,     false,     false },
     { "searchrawtransactions",  &searchrawtransactions,  false,     false,     false },
+
+    // use the blockchain to register namespaced aliases
+    { "aliasnew",               &aliasnew,               false,      true,      true },
+    { "aliasupdate",            &aliasupdate,            false,      true,      true },
+    { "aliaslist",              &aliaslist,              false,      true,      true },
+    { "aliasinfo",              &aliasinfo,              false,      true,      true },
+    { "aliashistory",           &aliashistory,           false,      true,      true },
+    { "aliasfilter",            &aliasfilter,            false,      true,      true },
+    { "aliasscan",              &aliasscan,              false,      true,      true },
+    { "getaliasfees",           &getaliasfees,           false,      true,      true },
+
+    // use the blockchain as a distributed marketplace
+    { "offernew",               &offernew,               false,      true,      true },
+    { "offerupdate",            &offerupdate,            false,      true,      true },
+    { "offeraccept",            &offeraccept,            false,      true,      true },
+    { "offerrefund",            &offerrefund,            false,      true,      true },
+    { "offerlink",              &offerlink,              false,      true,      true },
+    { "offeraddwhitelist",      &offeraddwhitelist,      false,      true,      true },
+    { "offerremovewhitelist",   &offerremovewhitelist,   false,      true,      true },
+    { "offerclearwhitelist",    &offerclearwhitelist,    false,      true,      true },
+    { "offerwhitelist",         &offerwhitelist,         false,      true,      true },
+    { "offerlist",              &offerlist,              false,      true,      true },
+    { "offeracceptlist",        &offeracceptlist,        false,      true,      true },
+    { "offerinfo",              &offerinfo,              false,      true,      true },
+    { "offerhistory",           &offerhistory,           false,      true,      true },
+    { "offerscan",              &offerscan,              false,      true,      true },
+    { "offerfilter",            &offerfilter,            false,      true,      true },
+    { "getofferfees",           &getofferfees,           false,      true,      true },
+
+    // use the blockchain as a certificate issuance platform
+  { "certnew",                  &certnew,                false,      true,      true },
+  { "certupdate",               &certupdate,             false,      true,      true },
+  { "certtransfer",             &certtransfer,           false,      true,      true },
+  { "certlist",                 &certlist,               false,      true,      true },
+  { "certinfo",                 &certinfo,               false,      true,      true },
+  { "certhistory",              &certhistory,            false,      true,      true },
+  { "certscan",                 &certscan,               false,      true,      true },
+  { "certfilter",               &certfilter,             false,      true,      true },
+  { "getcertfees",              &getcertfees,            false,      true,      true },
 
 /* Dark features */
     { "spork",                  &spork,                  true,      false,     false },

@@ -58,7 +58,7 @@ bool CTransaction::CheckTransaction() const
         return DoS(100, error("CTransaction::CheckTransaction() : size limits failed"));
 
     // Check for negative or overflow output values
-    CAmount nValueOut = 0;
+    int64_t nValueOut = 0;
     for (unsigned int i = 0; i < vout.size(); i++)
     {
         const CTxOut& txout = vout[i];
@@ -94,6 +94,96 @@ bool CTransaction::CheckTransaction() const
                 return DoS(10, error("CTransaction::CheckTransaction() : prevout is null"));
     }
 
+    if (nVersion != DRKSLK_TX_VERSION)
+    return true;
+    
+    vector<vector<unsigned char> > vvch;
+    int op;
+    int nOut;
+    string err = "";
+        
+    // alias
+    if(DecodeAliasTx(*this, op, nOut, vvch, -1)) {
+        if (vvch[0].size() > MAX_NAME_LENGTH) {
+            return DoS(100, error("CTransaction::CheckTransaction() : alias transaction with alias too long"));
+        }
+        switch (op) {
+            case OP_ALIAS_ACTIVATE:
+                if (vvch[1].size() > 20)
+                    return DoS(100, error("CTransaction::CheckTransaction() : aliasactivate tx with rand too big"));
+                break;
+            case OP_ALIAS_UPDATE:
+                if (vvch[1].size() > MAX_VALUE_LENGTH)
+                    return DoS(100, error("CTransaction::CheckTransaction() : aliasupdate tx with value too long"));
+                break;
+            default:
+                return DoS(100, error("CTransaction::CheckTransaction() : alias transaction has unknown op"));
+        }
+        
+    }
+
+    // offer
+    else if(DecodeOfferTx(*this, op, nOut, vvch, -1)) {
+        if (vvch[0].size() > MAX_NAME_LENGTH) {
+            return DoS(100, error("CTransaction::CheckTransaction() : offer transaction with offer guid too long"));
+        }
+        switch (op) {
+            case OP_OFFER_ACTIVATE:
+                if (vvch[1].size() > 20)
+                    return DoS(100, error("CTransaction::CheckTransaction() : offeractivate tx with rand too big"));
+                break;
+            case OP_OFFER_UPDATE:
+                if (vvch[1].size() > MAX_VALUE_LENGTH)
+                    return DoS(100, error("CTransaction::CheckTransaction() : offerupdate tx with value too long"));
+                break;
+            case OP_OFFER_ACCEPT: 
+                if (vvch[1].size() > 20)
+                    return DoS(100, error("CTransaction::CheckTransaction() : offeraccept tx with accept rand too big"));
+                break;
+            case OP_OFFER_REFUND: 
+                if (vvch[1].size() > 20)
+                    return DoS(100, error("CTransaction::CheckTransaction() : offerrefund tx with accept rand too big"));
+                if (vvch[2].size() > 20)
+                    return DoS(100, error("CTransaction::CheckTransaction() : offerrefund tx with refund status too long"));
+                break;
+            default:
+                return DoS(100, error("CTransaction::CheckTransaction() : offer transaction has unknown op"));
+        
+        }
+    }
+
+    // cert
+    else if(DecodeCertTx(*this, op, nOut, vvch, -1)) {
+        if (vvch[0].size() > MAX_NAME_LENGTH) {
+            return DoS(100, error("CTransaction::CheckTransaction() : cert transaction with cert title too long"));
+        }
+        switch (op) {
+
+            case OP_CERT_ACTIVATE:
+                if (vvch[1].size() > 20)
+                    return DoS(100, error("CTransaction::CheckTransaction() : cert tx with rand too big"));
+                if (vvch[2].size() > MAX_NAME_LENGTH)
+                    return DoS(100, error("CTransaction::CheckTransaction() : cert tx with value too long"));
+                break;
+            case OP_CERT_UPDATE:
+                if (vvch[1].size() > MAX_NAME_LENGTH)
+                    return DoS(100, error("CTransaction::CheckTransaction() : cert tx with value too long"));
+                break;
+            case OP_CERT_TRANSFER:
+                if (vvch[0].size() > 20)
+                    return DoS(100, error("CTransaction::CheckTransaction() : cert transfer tx with cert rand too big"));
+                if (vvch[1].size() > 20)
+                    return DoS(100, error("CTransaction::CheckTransaction() : cert transfer tx with invalid hash length"));
+                break;
+            default:
+                return DoS(100, error("CTransaction::CheckTransaction() : cert transaction has unknown op"));
+        }
+        
+    }
+    if(err != "")
+    {
+        return DoS(10, error(err.c_str()));
+    }
     return true;
 }
 

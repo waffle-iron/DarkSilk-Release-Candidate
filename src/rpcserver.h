@@ -185,6 +185,42 @@ extern json_spirit::Value getblock(const json_spirit::Array& params, bool fHelp)
 extern json_spirit::Value getblockbynumber(const json_spirit::Array& params, bool fHelp);
 extern json_spirit::Value getcheckpoint(const json_spirit::Array& params, bool fHelp);
 
+extern json_spirit::Value aliasnew(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value aliasupdate(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value aliaslist(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value aliasinfo(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value aliashistory(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value aliasfilter(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value aliasscan(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value getaliasfees(const json_spirit::Array& params, bool fHelp);
+
+extern json_spirit::Value offernew(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value offerupdate(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value offeraccept(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value offerrefund(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value offerlink(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value offeraddwhitelist(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value offerremovewhitelist(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value offerclearwhitelist(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value offerwhitelist(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value offerinfo(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value offerlist(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value offeracceptlist(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value offerhistory(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value offerfilter(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value offerscan(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value getofferfees(const json_spirit::Array& params, bool fHelp);
+
+extern json_spirit::Value certupdate(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value certnew(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value certtransfer(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value certinfo(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value certlist(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value certhistory(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value certfilter(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value certscan(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value getcertfees(const json_spirit::Array& params, bool fHelp);
+
 extern json_spirit::Value getnewstealthaddress(const json_spirit::Array& params, bool fHelp);
 extern json_spirit::Value liststealthaddresses(const json_spirit::Array& params, bool fHelp);
 extern json_spirit::Value importstealthaddress(const json_spirit::Array& params, bool fHelp);

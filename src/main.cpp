@@ -47,7 +47,7 @@ CCriticalSection cs_main;
 /// Fees smaller than this (in satoshis) are considered zero fee (for relaying and mining)
 /// We are ~xxx times smaller then bitcoin now (2016-01-11), set minRelayTxFee only 10 times higher
 /// so it's still 10 times lower comparing to bitcoin.
-CFeeRate minRelayTxFee = CFeeRate(7777);
+CFeeRate minRelayTxFee = CFeeRate(10000);
 
 CTxMemPool mempool(::minRelayTxFee);
 
@@ -568,7 +568,7 @@ unsigned int LimitOrphanTxSize(unsigned int nMaxOrphans)
 
 bool IsStandardTx(const CTransaction& tx, string& reason)
 {
-    if (tx.nVersion > CTransaction::CURRENT_VERSION || tx.nVersion < 1) {
+    if ((tx.nVersion > CTransaction::CURRENT_VERSION || tx.nVersion < 1) && tx.nVersion != DRKSLK_TX_VERSION) {
         reason = "version";
         return false;
     }
@@ -828,12 +828,12 @@ int CMerkleTx::SetMerkleBranch(const CBlock* pblock)
     return pindexBest->nHeight - pindex->nHeight + 1;
 }
 
-CAmount GetMinFee(const CTransaction& tx, unsigned int nBytes, bool fAllowFree, enum GetMinFee_mode mode)
+int64_t GetMinFee(const CTransaction& tx, unsigned int nBytes, bool fAllowFree, enum GetMinFee_mode mode)
 {
     // Base fee is either MIN_TX_FEE or MIN_RELAY_TX_FEE
-    CAmount nBaseFee = (mode == GMF_RELAY) ? MIN_RELAY_TX_FEE : MIN_TX_FEE;
+    int64_t nBaseFee = (mode == GMF_RELAY) ? MIN_RELAY_TX_FEE : MIN_TX_FEE;
 
-    CAmount nMinFee = (1 + (CAmount)nBytes / 1000) * nBaseFee;
+    int64_t nMinFee = (1 + (int64_t)nBytes / 1000) * nBaseFee;
 
     if (fAllowFree)
     {
@@ -940,7 +940,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree, boo
         }
 
         // Check for non-standard pay-to-script-hash in inputs
-        if (!TestNet() && !AreInputsStandard(tx, mapInputs))
+        if ( tx.nVersion != DRKSLK_TX_VERSION && !TestNet() && !AreInputsStandard(tx, mapInputs))
             return error("AcceptToMemoryPool : nonstandard transaction input");
 
         // Check that the transaction doesn't have an excessive number of
@@ -955,11 +955,11 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree, boo
                           error("AcceptToMemoryPool : too many sigops %s, %d > %d",
                                 hash.ToString(), nSigOps, MAX_TX_SIGOPS));
 
-        CAmount nFees = txPoS.GetValueIn(tx, mapInputs) - txPoS.GetValueOut(tx);
+        int64_t nFees = txPoS.GetValueIn(tx, mapInputs) - txPoS.GetValueOut(tx);
         unsigned int nSize = ::GetSerializeSize(tx, SER_NETWORK, PROTOCOL_VERSION);
 
         if(!ignoreFees){
-           CAmount txMinFee = GetMinFee(tx, nSize, true, GMF_RELAY);
+           int64_t txMinFee = GetMinFee(tx, nSize, true, GMF_RELAY);
            if (fLimitFree && nFees < txMinFee)
                return error("AcceptToMemoryPool : not enough fees %s, %d < %d",
                            hash.ToString(),
@@ -1020,6 +1020,12 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree, boo
            hash.ToString(),
            pool.mapTx.size());
     return true;
+
+    if (tx.nVersion == DRKSLK_TX_VERSION) {
+        if (tx.vout.size() < 1) {
+            error("AcceptToMemoryPool() : no output in darksilk tx %s\n", tx.ToString().c_str());
+        }
+    }
 }
 
 /*bool AcceptToMemoryPoolNew(CTxMemPool& pool, CTransaction &tx, bool fLimitFree,  bool* pfMissingInputs, bool fRejectInsaneFee, bool ignoreFees)
@@ -1245,7 +1251,7 @@ bool AcceptableInputs(CTxMemPool& pool, CTransaction &tx, bool fLimitFree,
 
     // Rather not work on nonstandard transactions (unless -testnet)
     //string reason;
-    //if (!TestNet() && !IsStandardTx(tx, reason))
+    //if (tx.nVersion == DRKSLK_TX_VERSION && !TestNet() && !IsStandardTx(tx, reason))
     //    return error("AcceptableInputs : nonstandard transaction: %s",
     //                 reason);
 
@@ -1287,7 +1293,7 @@ bool AcceptableInputs(CTxMemPool& pool, CTransaction &tx, bool fLimitFree,
         }
 
         // Check for non-standard pay-to-script-hash in inputs
-        //if (!TestNet() && !AreInputsStandard(tx, mapInputs))
+        //if (tx.nVersion == DRKSLK_TX_VERSION && !TestNet() && !AreInputsStandard(tx, mapInputs))
           //  return error("AcceptToMemoryPool : nonstandard transaction input");
 
         // Check that the transaction doesn't have an excessive number of
@@ -1302,9 +1308,9 @@ bool AcceptableInputs(CTxMemPool& pool, CTransaction &tx, bool fLimitFree,
                           error("AcceptableInputs : too many sigops %s, %d > %d",
                                 hash.ToString(), nSigOps, MAX_TX_SIGOPS));
 
-        CAmount nFees = txPoS.GetValueIn(tx, mapInputs)-txPoS.GetValueOut(tx);
+        int64_t nFees = txPoS.GetValueIn(tx, mapInputs)-txPoS.GetValueOut(tx);
         unsigned int nSize = ::GetSerializeSize(tx, SER_NETWORK, PROTOCOL_VERSION);
-        CAmount txMinFee = GetMinFee(tx, nSize, true, GMF_RELAY);
+        int64_t txMinFee = GetMinFee(tx, nSize, true, GMF_RELAY);
 
 
         // Don't accept it if it can't get into a block
@@ -1649,16 +1655,16 @@ static CBigNum GetProofOfStakeLimit(int nHeight)
 }
 
 // miner's coin base reward
-CAmount GetProofOfWorkReward(CAmount nFees)
+int64_t GetProofOfWorkReward(int64_t nFees)
 {
     if (pindexBest->nHeight == 0) {
-        CAmount nSubsidy = 4000000 * COIN; // 4,000,000 DarkSilk for 4 Phase Crowdfunding
+        int64_t nSubsidy = 4000000 * COIN; // 4,000,000 DarkSilk for 4 Phase Crowdfunding
         LogPrint("creation", "GetProofOfWorkReward() : create=%s nSubsidy=%d\n", FormatMoney(nSubsidy), nSubsidy);
         return nSubsidy + nFees;
     }
     else
     {
-        CAmount nSubsidy = 1 * COIN;
+        int64_t nSubsidy = 1 * COIN;
         LogPrint("creation", "GetProofOfWorkReward() : create=%s nSubsidy=%d\n", FormatMoney(nSubsidy), nSubsidy);
         return nSubsidy + nFees;
     }
@@ -1712,17 +1718,17 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
     return bnNew.GetCompact();
 }
 
-CAmount GetBlockValue(int nBits, int nHeight, const CAmount& nFees)
+int64_t GetBlockValue(int nBits, int nHeight, const CAmount& nFees)
 {
-    CAmount nSubsidy = STATIC_POS_REWARD;
+    int64_t nSubsidy = STATIC_POS_REWARD;
 
     return nSubsidy + nFees;
 }
 
 
-CAmount GetStormnodePayment(int nHeight, CAmount blockValue)
+int64_t GetStormnodePayment(int nHeight, int64_t blockValue)
 {
-    CAmount ret = blockValue * 2/4; //50%
+    int64_t ret = blockValue * 2/4; //50%
 
     return ret;
 }
@@ -3610,11 +3616,11 @@ bool SendMessages(CNode* pto, bool fSendTrickle)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //CTransactionPoS
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-CAmount CTransactionPoS::GetValueOut(CTransaction& tx) const
+int64_t CTransactionPoS::GetValueOut(CTransaction& tx) const
 {
     set<COutPoint> vInOutPoints;
 
-    CAmount nValueOut = 0;
+    int64_t nValueOut = 0;
     BOOST_FOREACH(const CTxOut& txout, tx.vout)
     {
         nValueOut += txout.nValue;
@@ -3807,12 +3813,12 @@ const CTxOut& CTransactionPoS::GetOutputFor(const CTxIn& input, const MapPrevTx&
     return txPrev.vout[input.prevout.n];
 }
 
-CAmount CTransactionPoS::GetValueIn(CTransaction& tx, const MapPrevTx& inputs) const
+int64_t CTransactionPoS::GetValueIn(CTransaction& tx, const MapPrevTx& inputs) const
 {
     if (tx.IsCoinBase())
         return 0;
 
-    CAmount nResult = 0;
+    int64_t nResult = 0;
     for (unsigned int i = 0; i < tx.vin.size(); i++)
     {
         nResult += GetOutputFor(tx.vin[i], inputs).nValue;
@@ -3830,8 +3836,8 @@ bool CTransactionPoS::ConnectInputs(CTransaction& tx, CTxDB& txdb, MapPrevTx inp
     // ... both are false when called from CTransactionPoS::AcceptToMemoryPool
     if (!tx.IsCoinBase())
     {
-        CAmount nValueIn = 0;
-        CAmount nFees = 0;
+        int64_t nValueIn = 0;
+        int64_t nFees = 0;
         for (unsigned int i = 0; i < tx.vin.size(); i++)
         {
             COutPoint prevout = tx.vin[i].prevout;
@@ -3923,13 +3929,13 @@ bool CTransactionPoS::ConnectInputs(CTransaction& tx, CTxDB& txdb, MapPrevTx inp
         if (!tx.IsCoinStake())
         {
             CTransactionPoS txPoS;
-            CAmount iValOut = txPoS.GetValueOut(tx);
+            int64_t iValOut = txPoS.GetValueOut(tx);
             //int64_t iDiff = iValOut - nValueIn;
             if (nValueIn < iValOut) //TODO (Amir): Tx sending error here...
                 return tx.DoS(100, error("ConnectInputs() : %s value in < value out", tx.GetHash().ToString()));
 
             // Tally transaction fees
-            CAmount nTxFee = nValueIn - iValOut;
+            int64_t nTxFee = nValueIn - iValOut;
             if (nTxFee < 0)
                 return tx.DoS(100, error("ConnectInputs() : %s nTxFee < 0", tx.GetHash().ToString()));
 

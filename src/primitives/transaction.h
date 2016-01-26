@@ -12,6 +12,9 @@
 #include "util.h"
 #include "script.h"
 #include "timedata.h"
+#include "alias.h"
+#include "cert.h"
+#include "offer.h"
 
 #include <stdio.h>
 
@@ -155,7 +158,7 @@ public:
 class CTxOut
 {
 public:
-    CAmount nValue;
+    int64_t nValue;
     int nRounds;
     CScript scriptPubKey;
 
@@ -164,7 +167,7 @@ public:
         SetNull();
     }
 
-    CTxOut(CAmount nValueIn, CScript scriptPubKeyIn)
+    CTxOut(int64_t nValueIn, CScript scriptPubKeyIn)
     {
         nValue = nValueIn;
         nRounds = -10; // an initial value, should be no way to get this by calculations
@@ -205,17 +208,17 @@ public:
         return SerializeHash(*this);
     }
 
-    bool IsDust(CFeeRate minRelayTxFee) const
+    bool IsDust(int64_t MIN_RELAY_TX_FEE) const
     {
-        // "Dust" is defined in terms of CTransaction::minRelayTxFee, which has units duffs-per-kilobyte.
-        // If you'd pay more than 1/3 in fees to spend something, then we consider it dust.
-        // A typical txout is 34 bytes big, and will need a CTxIn of at least 148 bytes to spend
-        // i.e. total is 148 + 32 = 182 bytes. Default -minrelaytxfee is 10000 duffs per kB
-        // and that means that fee per txout is 182 * 10000 / 1000 = 1820 duffs.
-        // So dust is a txout less than 1820 *3 = 5460 duffs
-        // with default -minrelaytxfee = minRelayTxFee = 10000 duffs per kB.
-        size_t nSize = GetSerializeSize(SER_DISK,0)+148u;
-        return (nValue < 3*minRelayTxFee.GetFee(nSize));
+        // "Dust" is defined in terms of MIN_RELAY_TX_FEE,
+        // which has units satoshis-per-kilobyte.
+        // If you'd pay more than 1/3 in fees
+        // to spend something, then we consider it dust.
+        // A typical txout is 34 bytes big, and will
+        // need a CTxIn of at least 148 bytes to spend,
+        // so dust is a txout less than 546 satoshis
+        // with default nMinRelayTxFee.
+        return ((nValue*1000)/(3*((int)GetSerializeSize(SER_DISK,0)+148)) < MIN_RELAY_TX_FEE);
     }
 
     friend bool operator==(const CTxOut& a, const CTxOut& b)
@@ -243,12 +246,14 @@ public:
 class CTransaction
 {
 public:
+    class CDarkSilkAddress;
     static const int CURRENT_VERSION=1;
     int nVersion;
     unsigned int nTime;
     std::vector<CTxIn> vin;
     std::vector<CTxOut> vout;
     unsigned int nLockTime;
+    std::vector<unsigned char> data;
 
     // Denial-of-service detection:
     mutable int nDoS;
@@ -328,9 +333,12 @@ public:
         return !(a == b);
     }
 
-    bool CheckTransaction() const;
-
     std::string ToString() const;
+
+    //marketplace
+    bool CheckTransaction() const;
+    bool ReadFromDisk(const CDiskTxPos&);
+
 };
 
 /// A mutable version of CTransaction.

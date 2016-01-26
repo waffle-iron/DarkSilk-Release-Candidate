@@ -126,7 +126,10 @@ OBJS= \
     obj/crypto/argon2/encoding.o \
     obj/crypto/argon2/thread.o \
     obj/crypto/argon2/opt.o \
-    obj/crypto/argon2/blake2/blake2b.o
+    obj/crypto/argon2/blake2/blake2b.o \
+    obj/alias.o \
+    obj/offer.o \
+    obj/cert.o 
 
 ifdef USE_NATIVE_I2P
 	OBJS += obj/i2p.o
@@ -210,6 +213,7 @@ clean:
 	-rm -f obj/crypto/argon2/blake2/*.d
 	cd leveldb && TARGET_OS=OS_WINDOWS_CROSSCOMPILE $(MAKE) clean && cd ..
 	cd secp256k1 && TARGET_OS=OS_WINDOWS_CROSSCOMPILE $(MAKE) clean && cd ..
+    cd cryptopp && TARGET_OS=OS_WINDOWS_CROSSCOMPILE $(MAKE) clean && cd ..
 
 
 FORCE:
