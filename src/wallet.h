@@ -158,9 +158,6 @@ public:
     MasterKeyMap mapMasterKeys;
     unsigned int nMasterKeyMaxID;
 
-    std::map<std::string, CStormNodeConfig> mapMyStormNodes;
-    bool AddStormNodeConfig(CStormNodeConfig nodeConfig);
-
     int GetInputSandstormRounds(CTxIn in) const;
 
     CWallet()
@@ -266,11 +263,10 @@ public:
     TxItems OrderedTxItems(std::list<CAccountingEntry>& acentries, std::string strAccount = "");
 
     void MarkDirty();
-    bool AddToWallet(const CWalletTx& wtxIn);
+    bool AddToWallet(const CWalletTx& wtxIn, bool fFromLoadWallet=false);
     void SyncTransaction(const CTransaction& tx, const CBlock* pblock, bool fConnect = true);
     bool AddToWalletIfInvolvingMe(const CTransaction& tx, const CBlock* pblock, bool fUpdate);
     void EraseFromWallet(const uint256 &hash);
-    void WalletUpdateSpent(const CTransaction& prevout, bool fBlock = false);
     int ScanForWalletTransactions(CBlockIndex* pindexStart, bool fUpdate = false);
     void ReacceptWalletTransactions();
     void ResendWalletTransactions(bool fForce = false);

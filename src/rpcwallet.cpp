@@ -184,7 +184,6 @@ Value createmultisig(const Array& params, bool fHelp)
     return result;
 }
 
-
 Value getnewpubkey(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() > 1)

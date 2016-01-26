@@ -64,7 +64,7 @@ void CActiveStormnode::ManageStatus()
                 return;
             }
         } else {
-            service = CService(strStormNodeAddr);
+            service = CService(strStormNodeAddr, true);
         }
 
         LogPrintf("CActiveStormnode::ManageStatus() - Checking inbound connection to '%s'\n", service.ToString());
@@ -121,7 +121,7 @@ void CActiveStormnode::ManageStatus()
                 return;
             }
 
-            LogPrintf("CActiveStormnode::ManageStatus() - Is capable storm node!\n");
+            LogPrintf("CActiveStormnode::ManageStatus() - Is capable Stormnode!\n");
             status = ACTIVE_STORMNODE_STARTED;
 
             return;
@@ -248,7 +248,7 @@ bool CActiveStormnode::Register(std::string strService, std::string strKeyStormn
 
     addrman.Add(CAddress(service), CNetAddr("127.0.0.1"), 2*60*60);
 
-    return Register(vin, CService(strService), keyCollateralAddress, pubKeyCollateralAddress, keyStormnode, pubKeyStormnode, errorMessage);
+    return Register(vin, CService(strService, true), keyCollateralAddress, pubKeyCollateralAddress, keyStormnode, pubKeyStormnode, errorMessage);
 }
 
 

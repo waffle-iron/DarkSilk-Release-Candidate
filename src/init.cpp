@@ -1098,7 +1098,7 @@ bool AppInit2(boost::thread_group& threadGroup)
         LogPrintf(" addr %s\n", strStormNodeAddr.c_str());
 
         if(!strStormNodeAddr.empty()){
-            CService addrTest = CService(strStormNodeAddr);
+            CService addrTest = CService(strStormNodeAddr, fNameLookup);
             if (!addrTest.IsValid()) {
                 return InitError("Invalid -stormnodeaddr address: " + strStormNodeAddr);
             }
@@ -1123,7 +1123,7 @@ bool AppInit2(boost::thread_group& threadGroup)
         }
     }
 
-    if(GetBoolArg("-snconflock", true)) {
+    if(GetBoolArg("-snconflock", false)) {
         LogPrintf("Locking Stormnodes:\n");
         uint256 snTxHash;
         BOOST_FOREACH(CStormnodeConfig::CStormnodeEntry sne, stormnodeConfig.getEntries()) {
@@ -1246,11 +1246,6 @@ bool AppInit2(boost::thread_group& threadGroup)
 
 #ifdef ENABLE_WALLET
     if (pwalletMain) {
-	BOOST_FOREACH(PAIRTYPE(std::string, CStormNodeConfig) storm, pwalletMain->mapMyStormNodes)
-	{
-	    uiInterface.NotifyStormNodeChanged(storm.second);
-	}
-
         // Add wallet transactions that aren't already in a block to mapTransactions
         pwalletMain->ReacceptWalletTransactions();
 

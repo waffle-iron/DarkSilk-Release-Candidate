@@ -77,23 +77,6 @@ bool CWalletDB::ReadStealthAddress(CStealthAddress& sxAddr)
     return Read(std::make_pair(std::string("sxAddr"), sxAddr.scan_pubkey), sxAddr);
 }
 
-bool CWalletDB::WriteStormNodeConfig(std::string sAlias, const CStormNodeConfig& nodeConfig)
-{
-    nWalletDBUpdated++;
-    return Write(std::make_pair(std::string("storm"), sAlias), nodeConfig, true);
-}
-
-bool CWalletDB::ReadStormNodeConfig(std::string sAlias, CStormNodeConfig& nodeConfig)
-{
-    return Read(std::make_pair(std::string("storm"), sAlias), nodeConfig);
-}
-
-bool CWalletDB::EraseStormNodeConfig(std::string sAlias)
-{
-    nWalletDBUpdated++;
-    return Erase(std::make_pair(std::string("storm"), sAlias));
-}
-
 bool CWalletDB::WriteKey(const CPubKey& vchPubKey, const CPrivKey& vchPrivKey, const CKeyMetadata& keyMeta)
 {
     nWalletDBUpdated++;
@@ -422,6 +405,8 @@ bool ReadKeyValue(CWallet* pwallet, CDataStream& ssKey, CDataStream& ssValue,
             if (wtx.nOrderPos == -1)
                 wss.fAnyUnordered = true;
 
+            pwallet->AddToWallet(wtx, true);
+
             //// debug print
             //LogPrintf("LoadWallet  %s\n", wtx.GetHash().ToString());
             //LogPrintf(" %12d  %s  %s  %s\n",
@@ -429,8 +414,8 @@ bool ReadKeyValue(CWallet* pwallet, CDataStream& ssKey, CDataStream& ssValue,
             //    DateTimeStrFormat("%x %H:%M:%S", wtx.GetBlockTime()),
             //    wtx.hashBlock.ToString(),
             //    wtx.mapValue["message"]);
-        } else
-        if (strType == "sxAddr")
+        } 
+        else if (strType == "sxAddr")
         {
             if (fDebug)
                 printf("WalletDB ReadKeyValue sxAddr\n");
@@ -632,14 +617,6 @@ bool ReadKeyValue(CWallet* pwallet, CDataStream& ssKey, CDataStream& ssValue,
         {
             ssValue >> pwallet->nOrderPosNext;
         }
-        else if (strType == "storm")
-	{
-	    std::string sAlias;
-	    ssKey >> sAlias;
-	    CStormNodeConfig stormNodeConfig;
-	    ssValue >> stormNodeConfig;
-	    pwallet->mapMyStormNodes.insert(make_pair(sAlias, stormNodeConfig));
-	}
     } catch (...)
     {
         return false;
