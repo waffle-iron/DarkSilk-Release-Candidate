@@ -31,7 +31,7 @@ private:
     bool SendStormnodePing(std::string& errorMessage);
 
     /// Register any Stormnode
-    bool Register(CTxIn vin, CService service, CKey key, CPubKey pubKey, CKey keyStormnode, CPubKey pubKeyStormnode, std::string &errorMessage);
+    bool Register(CTxIn vin, CService service, CKey key, CPubKey pubKey, CKey keyStormnode, CPubKey pubKeyStormnode, std::string &retErrorMessage);
 
     /// Get 4200 DRKSILK input that can be used for the Stormnode
     bool GetStormNodeVin(CTxIn& vin, CPubKey& pubkey, CKey& secretKey, std::string strTxHash, std::string strOutputIndex);

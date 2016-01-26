@@ -24,6 +24,16 @@
 #include <boost/unordered_map.hpp>
 
 class CValidationState;
+class CBlock;
+class CBlockIndex;
+class CInv;
+class CKeyItem;
+class CNode;
+class CReserveKey;
+class CWallet;
+class CTxMemPool;
+
+struct CNodeStateStats;
 
 static const CAmount STORMNODE_COLLATERAL = 10000; //Stormnode Collateral Amount
 
@@ -40,17 +50,6 @@ static const int MAX_BLOCKS_IN_TRANSIT_PER_PEER = 128;
 /// Timeout in seconds before considering a block download peer unresponsive.
 static const unsigned int BLOCK_DOWNLOAD_TIMEOUT = 60;
 
-class CBlock;
-class CBlockIndex;
-class CInv;
-class CKeyItem;
-class CNode;
-class CReserveKey;
-class CWallet;
-class CTxMemPool;
-
-struct CNodeStateStats;
-
 /// The maximum size for mined blocks
 static const unsigned int MAX_BLOCK_SIZE_GEN = MAX_BLOCK_SIZE/2;
 /// Default for -blockprioritysize, maximum space for zero/low-fee transactions
@@ -66,7 +65,7 @@ static const unsigned int MAX_TX_SIGOPS = MAX_BLOCK_SIGOPS/5;
 /// The maximum number of orphan transactions kept in memory
 static const unsigned int MAX_ORPHAN_TRANSACTIONS = MAX_BLOCK_SIZE/10;
 /// Default for -maxorphanblocksmib, maximum memory usage used by orphan blocks
-static const unsigned int DEFAULT_MAX_ORPHAN_BLOCKS = 1000;
+static const unsigned int DEFAULT_MAX_ORPHAN_BLOCKS = 10000;
 /// The maximum number of entries in an 'inv' protocol message
 static const unsigned int MAX_INV_SZ = 50000;
 /// Fees smaller than this (in satoshi) are considered zero fee (for transaction creation)
@@ -87,6 +86,7 @@ struct BlockHasher
 {
     size_t operator()(const uint256& hash) const { return hash.GetLow64(); }
 };
+
 typedef std::map<uint256, CBlockIndex*, BlockHasher> BlockMap; //TODO (Amir): Change to boost::unordered_map.
 
 /// Time to wait (in seconds) between writing blockchain state to disk.

@@ -92,30 +92,6 @@ public:
 
 };
 
-class CStormNodeConfig
-{
-public:
-    int nVersion;
-    std::string sAlias;
-    std::string sAddress;
-    std::string sCollateralAddress;
-    std::string sStormnodePrivKey;
-
-    CStormNodeConfig()
-    {
-	nVersion = 0;
-    }
-
-    IMPLEMENT_SERIALIZE(
-        READWRITE(nVersion);
-        READWRITE(sAlias);
-        READWRITE(sAddress);
-        READWRITE(sCollateralAddress);
-	READWRITE(sStormnodePrivKey);
-    )
-};
-
-
 /** Access to the wallet database (wallet.dat) */
 class CWalletDB : public CDB
 {
@@ -138,10 +114,6 @@ public:
     bool EraseStealthKeyMeta(const CKeyID& keyId);
     bool WriteStealthAddress(const CStealthAddress& sxAddr);    
     bool ReadStealthAddress(CStealthAddress& sxAddr);
-
-    bool WriteStormNodeConfig(std::string sAlias, const CStormNodeConfig& nodeConfig);
-    bool ReadStormNodeConfig(std::string sAlias, CStormNodeConfig& nodeConfig);
-    bool EraseStormNodeConfig(std::string sAlias);
 
     bool WriteKey(const CPubKey& vchPubKey, const CPrivKey& vchPrivKey, const CKeyMetadata &keyMeta);
     bool WriteCryptedKey(const CPubKey& vchPubKey, const std::vector<unsigned char>& vchCryptedSecret, const CKeyMetadata &keyMeta);
