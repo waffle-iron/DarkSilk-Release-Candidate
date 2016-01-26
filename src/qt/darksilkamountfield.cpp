@@ -113,7 +113,7 @@ QWidget *DarkSilkAmountField::setupTabChain(QWidget *prev)
 
 CAmount DarkSilkAmountField::value(bool *valid_out) const
 {
-    qint64 val_out = 0;
+    CAmount val_out = 0;
     bool valid = DarkSilkUnits::parse(currentUnit, text(), &val_out);
     if(valid_out)
     {
