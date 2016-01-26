@@ -801,7 +801,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     bool fLoaded = false;
     while (!fLoaded) {
-        bool fReset = fReindex;
+        //bool fReset = fReindex;
         std::string strLoadError;
 
         uiInterface.InitMessage(_("Loading block index..."));

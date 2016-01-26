@@ -77,6 +77,31 @@ CAmount WalletModel::getAnonymizedBalance() const
     return ret;
 }
 
+bool WalletModel::haveWatchOnly() const
+{
+    return fHaveWatchOnly;
+}
+
+CAmount WalletModel::getWatchBalance() const
+{
+    return wallet->GetWatchOnlyBalance();
+}
+
+CAmount WalletModel::getWatchStake() const
+{
+    return wallet->GetWatchOnlyStake();
+}
+
+CAmount WalletModel::getWatchUnconfirmedBalance() const
+{
+    return wallet->GetUnconfirmedWatchOnlyBalance();
+}
+
+CAmount WalletModel::getWatchImmatureBalance() const
+{
+    return wallet->GetImmatureWatchOnlyBalance();
+}
+
 void WalletModel::updateStatus()
 {
     EncryptionStatus newEncryptionStatus = getEncryptionStatus();
