@@ -95,7 +95,7 @@ public:
     bool isSet;
     std::vector<CTxSSIn> sev;
     std::vector<CTxSSOut> vout;
-    int64_t amount;
+    CAmount amount;
     CTransaction collateral;
     CTransaction txSupporting;
     int64_t addedTime; // time in UTC milliseconds
@@ -108,7 +108,7 @@ public:
     }
 
     /// Add entries to use for Sandstorm
-    bool Add(const std::vector<CTxIn> vinIn, int64_t amountIn, const CTransaction collateralIn, const std::vector<CTxOut> voutIn)
+    bool Add(const std::vector<CTxIn> vinIn, CAmount amountIn, const CTransaction collateralIn, const std::vector<CTxOut> voutIn)
     {
         if(isSet){return false;}
 
@@ -423,7 +423,7 @@ public:
     bool IsCompatibleWithEntries(std::vector<CTxOut>& vout);
 
     /// Is this amount compatible with other client in the pool?
-    bool IsCompatibleWithSession(int64_t nAmount, CTransaction txCollateral, int &errorID);
+    bool IsCompatibleWithSession(CAmount nAmount, CTransaction txCollateral, int &errorID);
 
     /// Passively run Sandstorm in the background according to the configuration in settings (only for QT)
     bool DoAutomaticDenominating(bool fDryRun=false);
@@ -443,13 +443,13 @@ public:
     /// If the collateral is valid given by a client
     bool IsCollateralValid(const CTransaction& txCollateral);
     /// Add a clients entry to the pool
-    bool AddEntry(const std::vector<CTxIn>& newInput, const int64_t& nAmount, const CTransaction& txCollateral, const std::vector<CTxOut>& newOutput, int& errorID);
+    bool AddEntry(const std::vector<CTxIn>& newInput, const CAmount& nAmount, const CTransaction& txCollateral, const std::vector<CTxOut>& newOutput, int& errorID);
     /// Add signature to a vin
     bool AddScriptSig(const CTxIn& newVin);
     /// Check that all inputs are signed. (Are all inputs signed?)
     bool SignaturesComplete();
     /// As a client, send a transaction to a Stormnode to start the denomination process
-    void SendSandstormDenominate(std::vector<CTxIn>& vin, std::vector<CTxOut>& vout, int64_t amount);
+    void SendSandstormDenominate(std::vector<CTxIn>& vin, std::vector<CTxOut>& vout, CAmount amount);
     /// Get Stormnode updates about the progress of Sandstorm
     bool StatusUpdate(int newState, int newEntriesCount, int newAccepted, int &errorID, int newSessionID=0);
 
@@ -467,7 +467,7 @@ public:
 
     /// Split up large inputs or make fee sized inputs
     bool MakeCollateralAmounts();
-    bool CreateDenominated(int64_t nTotalValue);
+    bool CreateDenominated(CAmount nTotalValue);
 
     /// Get the denominations for a list of outputs (returns a bitshifted integer)
     int GetDenominations(const std::vector<CTxOut>& vout, bool fSingleRandomDenom = false);
@@ -476,8 +476,8 @@ public:
     void GetDenominationsToString(int nDenom, std::string& strDenom);
 
     /// Get the denominations for a specific amount of dash.
-    int GetDenominationsByAmount(int64_t nAmount, int nDenomTarget=0); // is not used anymore?
-    int GetDenominationsByAmounts(std::vector<int64_t>& vecAmount);
+    int GetDenominationsByAmount(CAmount nAmount, int nDenomTarget=0); // is not used anymore?
+    int GetDenominationsByAmounts(std::vector<CAmount>& vecAmount);
 
     std::string GetMessageByID(int messageID);
 
@@ -488,7 +488,7 @@ public:
     void RelayFinalTransaction(const int sessionID, const CTransaction& txNew);
     void RelaySignaturesAnon(std::vector<CTxIn>& vin);
     void RelayInAnon(std::vector<CTxIn>& vin, std::vector<CTxOut>& vout);
-    void RelayIn(const std::vector<CTxSSIn>& vin, const int64_t& nAmount, const CTransaction& txCollateral, const std::vector<CTxSSOut>& vout);
+    void RelayIn(const std::vector<CTxSSIn>& vin, const CAmount& nAmount, const CTransaction& txCollateral, const std::vector<CTxSSOut>& vout);
     void RelayStatus(const int sessionID, const int newState, const int newEntriesCount, const int newAccepted, const int errorID=MSG_NOERR);
     void RelayCompletedTransaction(const int sessionID, const bool error, const int errorID);
 };

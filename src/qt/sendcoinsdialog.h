@@ -1,15 +1,19 @@
 #ifndef SENDCOINSDIALOG_H
 #define SENDCOINSDIALOG_H
 
+#include "amount.h"
+
 #include <QDialog>
 #include <QString>
+
+class ClientModel;
+class WalletModel;
+class SendCoinsEntry;
+class SendCoinsRecipient;
 
 namespace Ui {
     class SendCoinsDialog;
 }
-class WalletModel;
-class SendCoinsEntry;
-class SendCoinsRecipient;
 
 QT_BEGIN_NAMESPACE
 class QUrl;
@@ -39,7 +43,7 @@ public slots:
     void accept();
     SendCoinsEntry *addEntry();
     void updateRemoveEnabled();
-    void setBalance(qint64 balance, qint64 stake, qint64 unconfirmedBalance, qint64 immatureBalance, qint64 anonymizedBalance);
+    void setBalance(const CAmount& balance, const CAmount& stake, const CAmount& unconfirmedBalance, const CAmount& immatureBalance, const CAmount& anonymizedBalance);
 
 private:
     Ui::SendCoinsDialog *ui;

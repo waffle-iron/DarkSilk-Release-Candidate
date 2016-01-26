@@ -28,7 +28,7 @@
 #include <QTreeWidgetItem>
 
 using namespace std;
-QList<qint64> CoinControlDialog::payAmounts;
+QList<CAmount> CoinControlDialog::payAmounts;
 CCoinControl* CoinControlDialog::coinControl = new CCoinControl();
 
 CoinControlDialog::CoinControlDialog(QWidget *parent) :
@@ -431,10 +431,10 @@ void CoinControlDialog::updateLabels(WalletModel *model, QDialog* dialog)
     if (!model) return;
 
     // nPayAmount
-    qint64 nPayAmount = 0;
+    CAmount nPayAmount = 0;
     bool fDust = false;
     CTransaction txDummy; //TODO (AA): Do we need CMutableTransaction???
-    foreach(const qint64 &amount, CoinControlDialog::payAmounts)
+    foreach(const CAmount &amount, CoinControlDialog::payAmounts)
     {
         nPayAmount += amount;
 
@@ -447,9 +447,9 @@ void CoinControlDialog::updateLabels(WalletModel *model, QDialog* dialog)
 
     QString sPriorityLabel      = "";
     CAmount nAmount             = 0;
-    int64_t nPayFee             = 0;
-    int64_t nAfterFee           = 0;
-    int64_t nChange             = 0;
+    CAmount nPayFee             = 0;
+    CAmount nAfterFee           = 0;
+    CAmount nChange             = 0;
     unsigned int nBytes         = 0;
     unsigned int nBytesInputs   = 0;
     double dPriority            = 0;
@@ -540,7 +540,7 @@ void CoinControlDialog::updateLabels(WalletModel *model, QDialog* dialog)
             if (nChange > 0 && nChange < CENT)
             {
                 CTxOut txout(nChange, (CScript)vector<unsigned char>(24, 0));
-                if (txout.IsDust(MIN_RELAY_TX_FEE))
+                if (txout.IsDust(::minRelayTxFee))
                 {
                     nPayFee += nChange;
                     nChange = 0;
@@ -650,7 +650,7 @@ void CoinControlDialog::updateView()
             itemWalletAddress->setText(COLUMN_ADDRESS, sWalletAddress);
         }
 
-        int64_t nSum = 0;
+        CAmount nSum = 0;
         double dPrioritySum = 0;
         int nChildren = 0;
         int nInputSum = 0;

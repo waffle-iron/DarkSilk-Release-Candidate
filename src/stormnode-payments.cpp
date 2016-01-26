@@ -182,7 +182,7 @@ void DumpStormnodePayments()
     LogPrintf("Budget dump finished  %dms\n", GetTimeMillis() - nStart);
 }
 
-bool IsBlockValueValid(const CBlock& block, int64_t nExpectedValue){
+bool IsBlockValueValid(const CBlock& block, CAmount nExpectedValue){
     CBlockIndex* pindexPrev = pindexBest;
     if(pindexPrev == NULL) return true;
 
@@ -269,7 +269,7 @@ bool IsBlockPayeeValid(const CTransaction& txNew, int nBlockHeight)
 }
 
 
-void FillBlockPayee(CTransaction& txNew, int64_t nFees) //TODO (Amir): Use CMutableTransaction here
+void FillBlockPayee(CTransaction& txNew, CAmount nFees) //TODO (Amir): Use CMutableTransaction here
 {
     CBlockIndex* pindexPrev = pindexBest;
     if(!pindexPrev) return;
@@ -291,7 +291,7 @@ std::string GetRequiredPaymentsString(int nBlockHeight)
 }
 
 //TODO (Amir): Use CMutableTransaction.
-void CStormnodePayments::FillBlockPayee(CTransaction& txNew, int64_t nFees)
+void CStormnodePayments::FillBlockPayee(CTransaction& txNew, CAmount nFees)
 {
     CBlockIndex* pindexPrev = pindexBest;
     if(!pindexPrev) return;

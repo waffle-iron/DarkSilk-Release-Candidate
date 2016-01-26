@@ -346,7 +346,7 @@ Value snbudget(const Array& params, bool fHelp)
         if (params.size() == 2) strShow = params[1].get_str();
 
         Object resultObj;
-        int64_t nTotalAllotted = 0;
+        CAmount nTotalAllotted = 0;
 
         std::vector<CBudgetProposal*> winningProps = budget.GetAllProposals();
         BOOST_FOREACH(CBudgetProposal* pbudgetProposal, winningProps)

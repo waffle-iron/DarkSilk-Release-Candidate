@@ -1,10 +1,8 @@
 #include "transactionfilterproxy.h"
-
 #include "transactiontablemodel.h"
 #include "transactionrecord.h"
 
 #include <QDateTime>
-
 #include <cstdlib>
 
 // Earliest date that can be represented (far in the past)
@@ -68,7 +66,7 @@ void TransactionFilterProxy::setTypeFilter(quint32 modes)
     invalidateFilter();
 }
 
-void TransactionFilterProxy::setMinAmount(qint64 minimum)
+void TransactionFilterProxy::setMinAmount(const CAmount& minimum)
 {
     this->minAmount = minimum;
     invalidateFilter();

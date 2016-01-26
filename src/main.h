@@ -25,15 +25,15 @@
 
 class CValidationState;
 
-static const int64_t STORMNODE_COLLATERAL = 10000; //Stormnode Collateral Amount
+static const CAmount STORMNODE_COLLATERAL = 10000; //Stormnode Collateral Amount
 
 static const int STORMNODE_PAYMENT_START = 420; // Block 420
 static const int TESTNET_STORMNODE_PAYMENT_START = 100; // Block 100
 
-static const int64_t SANDSTORM_COLLATERAL = (0.01*COIN);
-static const int64_t SANDSTORM_POOL_MAX = (9999.99*COIN);
+static const CAmount SANDSTORM_COLLATERAL = (0.01*COIN);
+static const CAmount SANDSTORM_POOL_MAX = (9999.99*COIN);
 
-static const int64_t STATIC_POS_REWARD = COIN * 0.1; // Static Reward of 0.1 DRKSLK 
+static const CAmount STATIC_POS_REWARD = COIN * 0.1; // Static Reward of 0.1 DRKSLK
 
 /// Number of blocks that can be requested at any given time from a single peer.
 static const int MAX_BLOCKS_IN_TRANSIT_PER_PEER = 128;
@@ -70,10 +70,9 @@ static const unsigned int DEFAULT_MAX_ORPHAN_BLOCKS = 1000;
 /// The maximum number of entries in an 'inv' protocol message
 static const unsigned int MAX_INV_SZ = 50000;
 /// Fees smaller than this (in satoshi) are considered zero fee (for transaction creation)
-static const int64_t MIN_TX_FEE = 10000; // 0.00001 DRKSLK Minimum Transaction Fee
-static const double MIN_FEE = 0.0001; // 0.00001 DRKSLK Minimum Transaction Fee
-/// Fees smaller than this (in satoshi) are considered zero fee (for relaying)
-static const int64_t MIN_RELAY_TX_FEE = MIN_TX_FEE;
+
+static const double MIN_FEE = 0.00077777; // 0.000077777 DRKSLK Minimum Transaction Fee
+
 /// Maximum length of reject messages.
 static const unsigned int MAX_REJECT_MESSAGE_LENGTH = 111;
 
@@ -82,6 +81,7 @@ static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov 5th 00:53:2
 
 static const unsigned int POW_TARGET_SPACING = 1 * 60; // 60 seconds
 static const unsigned int POS_TARGET_SPACING = 1 * 64; // 64 seconds
+
 
 struct BlockHasher
 {
@@ -139,6 +139,8 @@ extern bool fLargeWorkInvalidChainFound;
 
 extern std::map<uint256, int64_t> mapRejectedBlocks;
 
+extern CFeeRate minRelayTxFee;
+
 // Minimum disk space required - used in CheckDiskSpace()
 static const uint64_t nMinDiskSpace = 52428800;
 
@@ -188,7 +190,7 @@ void ThreadImport(std::vector<boost::filesystem::path> vImportFiles);
 
 bool CheckProofOfWork(uint256 hash, unsigned int nBits);
 unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfStake);
-int64_t GetProofOfWorkReward(int64_t nFees);
+CAmount GetProofOfWorkReward(CAmount nFees);
 
 bool IsConfirmedInNPrevBlocks(const CTxIndex& txindex, const CBlockIndex* pindexFrom, int nMaxDepth, int& nActualDepth);
 std::string GetWarnings(std::string strFor);
@@ -212,7 +214,7 @@ bool AbortNode(const std::string &msg, const std::string &userMessage="");
 /// Increase a node's misbehavior score.
 void Misbehaving(NodeId nodeid, int howmuch);
 
-int64_t GetStormnodePayment(int nHeight, int64_t blockValue);
+CAmount GetStormnodePayment(int nHeight, CAmount blockValue);
 
 int GetInputAgeIX(uint256 nTXHash, CTxIn& vin);
 int GetIXConfirmations(uint256 nTXHash);
@@ -290,7 +292,7 @@ enum GetMinFee_mode
 
 typedef std::map<uint256, std::pair<CTxIndex, CTransaction> > MapPrevTx;
 
-int64_t GetMinFee(const CTransaction& tx, unsigned int nBytes, bool fAllowFree, enum GetMinFee_mode mode);
+CAmount GetMinFee(const CTransaction& tx, unsigned int nBytes, bool fAllowFree, enum GetMinFee_mode mode);
 
 class CTransactionPoS
 {
@@ -306,7 +308,7 @@ public:
         nVersion = this->nVersion;
     )
 
-    int64_t GetValueOut(CTransaction& tx) const;
+    CAmount GetValueOut(CTransaction& tx) const;
 
     ///  Amount of darksilks coming in to this transaction
     ///  Note that lightweight clients may not know anything besides the hash of previous transactions,
@@ -314,7 +316,7 @@ public:
     //    @param[in] mapInputs    Map of previous transactions that have outputs we're spending
     //    @return Sum of value of all inputs (scriptSigs)
     //    @see CTransaction::FetchInputs
-    int64_t GetValueIn(CTransaction& tx, const MapPrevTx& mapInputs) const;
+    CAmount GetValueIn(CTransaction& tx, const MapPrevTx& mapInputs) const;
 
     bool ReadFromDisk(CTransaction& tx, CDiskTxPos pos, FILE** pfileRet=NULL);
     bool ReadFromDisk(CTransaction& tx, CTxDB& txdb, const uint256& hash, CTxIndex& txindexRet);
