@@ -107,10 +107,11 @@ OverviewPage::OverviewPage(QWidget *parent) :
     currentStake(-1),
     currentUnconfirmedBalance(-1),
     currentImmatureBalance(-1),
+    currentAnonymizedBalance(-1),
     currentWatchOnlyBalance(-1),
-    currentWatchOnlyStake(-1),
     currentWatchUnconfBalance(-1),
     currentWatchImmatureBalance(-1),
+    currentWatchOnlyStake(-1),
     txdelegate(new TxViewDelegate()),
     filter(0)
 {
