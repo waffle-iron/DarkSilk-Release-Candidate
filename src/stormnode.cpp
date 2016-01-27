@@ -615,7 +615,7 @@ bool CStormnodePing::CheckAndUpdate(int& nDos, bool fRequireEnabled)
             BlockMap::iterator mi = mapBlockIndex.find(blockHash);
             if (mi != mapBlockIndex.end() && (*mi).second)
             {
-                if((*mi).second->nHeight < pindexBest->nHeight - 24)
+                if((*mi).second->nHeight < nBestHeight - 24)
                 {
                     LogPrintf("CStormnodePing::CheckAndUpdate - Stormnode %s block hash %s is too old\n", vin.ToString(), blockHash.ToString());
                     // Do nothing here (no Stormnode update, no snping relay)

@@ -490,7 +490,7 @@ int GetHeight()
     while(true){
         TRY_LOCK(cs_main, lockMain);
         if(!lockMain) { MilliSleep(50); continue; }
-        return pindexBest->nHeight;
+        return nBestHeight;
     }
 }
 
@@ -580,12 +580,12 @@ bool IsStandardTx(const CTransaction& tx, string& reason)
     // the next block.
     //
     // However, IsFinalTx() is confusing... Without arguments, it uses
-    // pindexBest->nHeight to evaluate nLockTime; when a block is accepted, pindexBest->nHeight
+    // nBestHeight to evaluate nLockTime; when a block is accepted, nBestHeight
     // is set to the value of nHeight in the block. However, when IsFinalTx()
     // is called within CBlock::AcceptBlock(), the height of the block *being*
     // evaluated is what is used. Thus if we want to know if a transaction can
     // be part of the *next* block, we need to call IsFinalTx() with one more
-    // than pindexBest->nHeight.
+    // than nBestHeight.
     //
     // Timestamps on the other hand don't get any special treatment, because we
     // can't know what timestamp the next block will have, and there aren't
@@ -825,7 +825,7 @@ int CMerkleTx::SetMerkleBranch(const CBlock* pblock)
     if (!pindex || !pindex->IsInMainChain())
         return 0;
 
-    return pindexBest->nHeight - pindex->nHeight + 1;
+    return nBestHeight - pindex->nHeight + 1;
 }
 
 CAmount GetMinFee(const CTransaction& tx, unsigned int nBytes, bool fAllowFree, enum GetMinFee_mode mode)

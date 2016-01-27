@@ -89,7 +89,6 @@ bool fSucessfullyLoaded = false;
 bool fEnableSandstorm = false;
 /** All denominations used by sandstorm */
 std::vector<CAmount> sandStormDenominations;
-bool fSandstormMultiSession = false;
 
 map<string, string> mapArgs;
 map<string, vector<string> > mapMultiArgs;
