@@ -122,12 +122,13 @@ void WalletModel::pollBalanceChanged()
     if(!lockWallet)
         return;
 
-    if(fForceCheckBalanceChanged || nBestHeight != cachedNumBlocks)
+    if(fForceCheckBalanceChanged || nBestHeight != cachedNumBlocks || nSandstormRounds != cachedSandstormRounds || cachedTxLocks != nCompleteTXLocks)
     {
         fForceCheckBalanceChanged = false;
 
         // Balance and number of transactions might have changed
         cachedNumBlocks = nBestHeight;
+        cachedSandstormRounds = nSandstormRounds;
 
         fForceCheckBalanceChanged = true;
         if(transactionTableModel)

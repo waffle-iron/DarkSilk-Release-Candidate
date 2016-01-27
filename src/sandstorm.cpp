@@ -1376,7 +1376,7 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun)
         return false;
     }
 
-    if(!fSandstormMultiSession && pindexBest->nHeight - cachedLastSuccess < minBlockSpacing) {
+    if(pindexBest->nHeight - cachedLastSuccess < minBlockSpacing) {
         LogPrintf("CSandstormPool::DoAutomaticDenominating - Last successful Sandstorm action was too recent\n");
         strAutoDenomResult = _("Last successful Sandstorm action was too recent.");
         return false;
@@ -1469,7 +1469,7 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun)
         int nUseQueue = rand()%100;
         UpdateState(POOL_STATUS_ACCEPTING_ENTRIES);
 
-        if(!fSandstormMultiSession && pwalletMain->GetDenominatedBalance(true) > 0) { //get denominated unconfirmed inputs
+        if(pwalletMain->GetDenominatedBalance(true) > 0) { //get denominated unconfirmed inputs
             LogPrintf("DoAutomaticDenominating -- Found unconfirmed denominated outputs, will wait till they confirm to continue.\n");
             strAutoDenomResult = _("Found unconfirmed denominated outputs, will wait till they confirm to continue.");
             return false;

@@ -1008,7 +1008,7 @@ bool AppInit2(boost::thread_group& threadGroup)
         if (pindexBest != pindexRescan && pindexBest && pindexRescan && pindexBest->nHeight > pindexRescan->nHeight)
         {
             uiInterface.InitMessage(_("Rescanning..."));
-            LogPrintf("Rescanning last %i blocks (from block %i)...\n", pindexBest->nHeight - pindexRescan->nHeight, pindexRescan->nHeight);
+            LogPrintf("Rescanning last %i blocks (from block %i)...\n", nBestHeight - pindexRescan->nHeight, pindexRescan->nHeight);
             nStart = GetTimeMillis();
             pwalletMain->ScanForWalletTransactions(pindexRescan, true);
             LogPrintf(" rescan      %15dms\n", GetTimeMillis() - nStart);
@@ -1138,7 +1138,6 @@ bool AppInit2(boost::thread_group& threadGroup)
     strBudgetMode = GetArg("-budgetvotemode", "auto");
 
     fEnableSandstorm = GetBoolArg("-enablesandstorm", false);
-    fSandstormMultiSession = GetBoolArg("-sandstormmultisession", false);
 
     nSandstormRounds = GetArg("-sandstormrounds", 2);
     if(nSandstormRounds > 100) nSandstormRounds = 100;

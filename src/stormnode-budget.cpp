@@ -1393,6 +1393,8 @@ bool CBudgetProposal::IsValid(std::string& strError, bool fCheckCollateral)
         return false;
     }
 
+    if(pindexPrev == NULL) {strError = "Tip is NULL"; return true;}
+
     if(GetBlockEnd() < pindexPrev->nHeight - GetBudgetPaymentCycleBlocks()/2 ) return false;
 
 
