@@ -160,6 +160,10 @@ private:
     CAmount cachedUnconfirmedBalance;
     CAmount cachedImmatureBalance;
     CAmount cachedAnonymizedBalance;
+    CAmount cachedWatchOnlyBalance;
+    CAmount cachedWatchOnlyStake;
+    CAmount cachedWatchUnconfBalance;
+    CAmount cachedWatchImmatureBalance;
     CAmount cachedNumTransactions;
     int cachedTxLocks;
     int cachedSandstormRounds;
@@ -174,18 +178,21 @@ private:
 
 
 public slots:
-    /* Wallet status might have changed */
+    /// Wallet status might have changed
     void updateStatus();
-    /* New transaction, or transaction changed status */
+    /// New transaction, or transaction changed status
     void updateTransaction(const QString &hash, int status);
-    /* New, updated or removed address book entry */
+    /// New, updated or removed address book entry
     void updateAddressBook(const QString &address, const QString &label, bool isMine, int status);
-    /* Current, immature or unconfirmed balance might have changed - emit 'balanceChanged' if so */
+    /// Watch-only added
+    void updateWatchOnlyFlag(bool fHaveWatchonly);
+    /// Current, immature or unconfirmed balance might have changed - emit 'balanceChanged' if so
     void pollBalanceChanged();
 
 signals:
     // Signal that balance in wallet changed
-    void balanceChanged(const CAmount& balance, const CAmount& stake, const CAmount& unconfirmedBalance, const CAmount& immatureBalance, const CAmount& anonymizedBalance);
+    void balanceChanged(const CAmount& balance, const CAmount& stake, const CAmount& unconfirmedBalance, const CAmount& immatureBalance, const CAmount& anonymizedBalance,
+        const CAmount& watchOnlyBalance, const CAmount& watchOnlyStake, const CAmount& watchUnconfBalance, const CAmount& watchImmatureBalance);
 
     // Encryption status of wallet changed
     void encryptionStatusChanged(int status);
@@ -197,6 +204,15 @@ signals:
 
     // Asynchronous message notification
     void message(const QString &title, const QString &message, bool modal, unsigned int style);
+
+    // Coins sent: from wallet, to recipient, in (serialized) transaction:
+    void coinsSent(CWallet* wallet, SendCoinsRecipient recipient, QByteArray transaction);
+
+    // Show progress dialog e.g. for rescan
+    void showProgress(const QString &title, int nProgress);
+
+    // Watch-only address added
+    void notifyWatchonlyChanged(bool fHaveWatchonly);
 };
 
 #endif // WALLETMODEL_H

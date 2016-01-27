@@ -258,6 +258,8 @@ void OverviewPage::setWalletModel(WalletModel *model)
         connect(ui->sandstormAuto, SIGNAL(clicked()), this, SLOT(sandstormAuto()));
         connect(ui->sandstormReset, SIGNAL(clicked()), this, SLOT(sandstormReset()));
         connect(ui->toggleSandstorm, SIGNAL(clicked()), this, SLOT(toggleSandstorm()));
+        //updateWatchOnlyLabels(model->haveWatchOnly());
+        connect(model, SIGNAL(notifyWatchonlyChanged(bool)), this, SLOT(updateWatchOnlyLabels(bool)));
     }
 
     // update the display unit, to not use the default ("DRKSLK")
