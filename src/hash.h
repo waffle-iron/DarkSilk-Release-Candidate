@@ -19,6 +19,8 @@
 
 #include <vector>
 
+static const unsigned int OUTPUT_BYTES = 32;
+
 /** A hasher class for DarkSilk's 256-bit hash (double SHA-256). */
 class CHash256 {
 private:
@@ -84,9 +86,9 @@ inline uint256 HashBlake2b(const T1 pbegin, const T1 pend)
     static unsigned char pblank[1];
     uint256 hash1;
     blake2b_state S[1];
-    blake2b_init( S, BLAKE2B_OUTBYTES );
+    blake2b_init( S, OUTPUT_BYTES );
     blake2b_update( S, (pbegin == pend ? pblank : (unsigned char*)&pbegin[0]), (pend - pbegin) * sizeof(pbegin[0]) );
-    blake2b_final( S, (unsigned char*)&hash1, BLAKE2B_OUTBYTES );
+    blake2b_final( S, (unsigned char*)&hash1, OUTPUT_BYTES );
     return hash1;
 }
 
