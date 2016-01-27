@@ -62,8 +62,8 @@ set<pair<COutPoint, unsigned int> > setStakeSeen;
 //TODO(AA)
 unsigned int nStakeMinAge = 24 * 60 * 60; // 1 day
 unsigned int nModifierInterval = 10 * 60; // 10 minutes to elapse before new modifier is computed
-int nStakeMinConfirmations = 2830; // ~1 day before coins can be staked
-int nCoinbaseMaturity = 100; // 100 blocks until coins are mature
+int nStakeMinConfirmations = 10; // ~1 day before coins can be staked
+int nCoinbaseMaturity = 10; // 100 blocks until coins are mature
 bool fTxIndex = true;
 
 CBlockIndex* pindexGenesisBlock = NULL;
