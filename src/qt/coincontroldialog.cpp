@@ -369,8 +369,7 @@ void CoinControlDialog::radioListMode(bool checked)
 // checkbox clicked by user
 void CoinControlDialog::viewItemChanged(QTreeWidgetItem* item, int column)
 {
-    //TODO (Amir): redo this with new sandstorm.
-    /*if (column == COLUMN_CHECKBOX && item->text(COLUMN_TXHASH).length() == 64) // transaction hash is 64 characters (this means its a child node, so its not a parent node in tree mode)
+    if (column == COLUMN_CHECKBOX && item->text(COLUMN_TXHASH).length() == 64) // transaction hash is 64 characters (this means its a child node, so its not a parent node in tree mode)
     {
         COutPoint outpt(uint256(item->text(COLUMN_TXHASH).toStdString()), item->text(COLUMN_VOUT_INDEX).toUInt());
 
@@ -381,7 +380,7 @@ void CoinControlDialog::viewItemChanged(QTreeWidgetItem* item, int column)
         else {
             coinControl->Select(outpt);
             CTxIn vin(outpt);
-            int rounds = GetInputSandstormRounds(vin);
+            int rounds = pwalletMain->GetInputSandstormRounds(vin);
             if(coinControl->useSandStorm && rounds < nSandstormRounds) {
                 QMessageBox::warning(this, windowTitle(),
                     tr("Non-anonymized input selected. <b>Sandstorm will be disabled.</b><br><br>If you still want to use Sandstorm, please deselect all non-nonymized inputs first and then check Sandstorm checkbox again."),
@@ -389,12 +388,25 @@ void CoinControlDialog::viewItemChanged(QTreeWidgetItem* item, int column)
                 coinControl->useSandStorm = false;
             }
         }
-            
+
         // selection changed -> update labels
         if (ui->treeWidget->isEnabled()) // do not update on every click for (un)select all
             CoinControlDialog::updateLabels(model, this);
-    }*/
+    }
+
+    // todo: this is a temporary qt5 fix: when clicking a parent node in tree mode, the parent node
+    //       including all childs are partially selected. But the parent node should be fully selected
+    //       as well as the childs. Childs should never be partially selected in the first place.
+    //       Please remove this ugly fix, once the bug is solved upstream.
+#if QT_VERSION >= 0x050000
+    else if (column == COLUMN_CHECKBOX && item->childCount() > 0)
+    {
+        if (item->checkState(COLUMN_CHECKBOX) == Qt::PartiallyChecked && item->child(0)->checkState(COLUMN_CHECKBOX) == Qt::PartiallyChecked)
+            item->setCheckState(COLUMN_CHECKBOX, Qt::Checked);
+    }
+#endif
 }
+
 // helper function, return human readable label for priority number
 QString CoinControlDialog::getPriorityLabel(double dPriority)
 {
@@ -500,13 +512,13 @@ void CoinControlDialog::updateLabels(WalletModel *model, QDialog* dialog)
         dPriority = dPriorityInputs / (nBytes - nBytesInputs + (nQuantityUncompressed * 29)); // 29 = 180 - 151 (uncompressed public keys are over the limit. max 151 bytes of the input are ignored for priority)         sPriorityLabel = CoinControlDialog::getPriorityLabel(dPriority);
         
         // Fee
-        int64_t nFee = nTransactionFee * (1 + (int64_t)nBytes / 1000);
+        CAmount nFee = nTransactionFee * (1 + (CAmount)nBytes / 1000);
 
         // IX Fee
         if(coinControl->useInstantX) nFee = max(nFee, CENT);
         
         // Min Fee
-        int64_t nMinFee = GetMinFee(CTransaction(txDummy), nBytes, AllowFree(dPriority), GMF_SEND);
+        CAmount nMinFee = GetMinFee(CTransaction(txDummy), nBytes, AllowFree(dPriority), GMF_SEND);
         
         nPayFee = max(nFee, nMinFee);
         
@@ -708,9 +720,8 @@ void CoinControlDialog::updateView()
             itemOutput->setText(COLUMN_DATE, QDateTime::fromTime_t(out.tx->GetTxTime()).toUTC().toString("yy-MM-dd hh:mm"));
             
             // Sandstorm rounds
-            //TODO (Amir): put GetInputSandstormRounds back
-            //CTxIn vin = CTxIn(out.tx->GetHash(), out.i);
-            int rounds = 0; //GetInputSandstormRounds(vin);
+            CTxIn vin = CTxIn(out.tx->GetHash(), out.i);
+            int rounds = pwalletMain->GetInputSandstormRounds(vin);
 
             if(rounds > 0) itemOutput->setText(COLUMN_SANDSTORM_ROUNDS, strPad(QString::number(rounds), 15, " "));
             else itemOutput->setText(COLUMN_SANDSTORM_ROUNDS, strPad(QString("n/a"), 15, " "));
