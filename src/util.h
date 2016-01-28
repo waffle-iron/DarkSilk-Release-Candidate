@@ -131,7 +131,6 @@ extern int keysLoaded;
 extern bool fSucessfullyLoaded;
 extern std::vector<CAmount> sandStormDenominations;
 extern std::string strBudgetMode;
-extern bool fSandstormMultiSession;
 extern bool fDebug;
 extern bool fDebugSmsg;
 extern bool fNoSmsg;

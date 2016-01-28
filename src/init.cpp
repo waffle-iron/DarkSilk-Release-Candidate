@@ -307,7 +307,7 @@ std::string HelpMessage()
     strUsage += "  -confchange            " + _("Require a confirmations for change (default: 0)") + "\n";
     strUsage += "  -alertnotify=<cmd>     " + _("Execute command when a relevant alert is received (%s in cmd is replaced by message)") + "\n";
     strUsage += "  -upgradewallet         " + _("Upgrade wallet to latest format") + "\n";
-    strUsage += "  -keypool=<n>             " + strprintf(_("Set key pool size to <n> (default: %u). Run 'keypoolrefill' to apply this to already existing wallets"), DEFAULT_KEYPOOL_SIZE) + "\n";
+    strUsage += "  -keypool=<n>             " + strprintf(_("Set key pool size to <n> (default: %u). Run 'keypoolrefill' to apply this to already existing wallets"), DEFAULT_KEYPOOL_SIZE) + "\n"; 
     strUsage += "  -rescan                " + _("Rescan the block chain for missing wallet transactions") + "\n";
     strUsage += "  -salvagewallet         " + _("Attempt to recover private keys from a corrupt wallet.dat") + "\n";
     strUsage += "  -checkblocks=<n>       " + _("How many blocks to check at startup (default: 500, 0 = all)") + "\n";
@@ -334,13 +334,12 @@ std::string HelpMessage()
     strUsage += "  -stormnodeaddr=<n>        " + _("Set external address:port to get to this stormnode (example: address:port)") + "\n";
     strUsage += "  -stormnodeminprotocol=<n> " + _("Ignore stormnodes less than version (example: 60135; default : 0)") + "\n";
 
-    strUsage += "\n" + _("Sandstorm options:") + "\n";
     strUsage += "  -enablesandstorm=<n>          " + strprintf(_("Enable use of automated sandstorm for funds stored in this wallet (0-1, default: 0)"), fEnableSandstorm) + "\n";
     strUsage += "  -sandstormmultisession=<n>    " + strprintf(_("Enable multiple sandstorm mixing sessions per block, experimental (0-1, default: %u)"), fSandstormMultiSession) + "\n";
-    strUsage += "  -sandstormrounds=<n>          " + strprintf(_("Use N separate stormnodes to anonymize funds  (2-100, default: 2)"), nSandstormRounds) + "\n";
+    strUsage += "  -sandstormrounds=<n>          " + strprintf(_("Use N separate stormnodes to anonymize funds  (2-50, default: 2)"), nSandstormRounds) + "\n";
     strUsage += "  -anonymizedarksilkamount=<n> " + strprintf(_("Keep N DarkSilk anonymized (default: 0)"), nAnonymizeDarkSilkAmount) + "\n";
     strUsage += "  -liquidityprovider=<n>       " + strprintf(_("Provide liquidity to Sandstorm by infrequently mixing coins on a continual basis (0-100, default: 0, 1=very frequent, high fees, 100=very infrequent, low fees)"), nLiquidityProvider) + "\n";
-
+ 
     strUsage += "\n" + _("InstantX options:") + "\n";
     strUsage += "  -enableinstantx=<n>    " + strprintf(_("Enable instantx, show confirmations for locked transactions (0-1, default: %u)"), "true") + "\n";
     strUsage += "  -instantxdepth=<n>     " + strprintf(_("Show N confirmations for a successfully locked transaction (0-9999, default: %u)"), nInstantXDepth) + "\n"; 
@@ -511,7 +510,7 @@ bool AppInit2(boost::thread_group& threadGroup)
         mapArgs["-sandstormrounds"] = "99999";
         LogPrintf("AppInit2 : parameter interaction: -liquidityprovider=%d -> setting -sandstormrounds=99999\n", nLiqProvTmp);
         mapArgs["-anonymizedarksilkamount"] = "999999";
-        LogPrintf("AppInit2 : parameter interaction: -liquidityprovider=%d -> setting -anonymizedarksilkamount=999999\n", nLiqProvTmp);
+       LogPrintf("AppInit2 : parameter interaction: -liquidityprovider=%d -> setting -anonymizedarksilkamount=999999\n", nLiqProvTmp);
         mapArgs["-sandstormmultisession"] = "0";
         LogPrintf("AppInit2 : parameter interaction: -liquidityprovider=%d -> setting -sandstormmultisession=0\n", nLiqProvTmp);
     }

@@ -278,7 +278,6 @@ private:
     int64_t lastNewBlock;
     std::vector<int64_t> sandStormDenominationsSkipped;
 
-
 public:
     std::string lastMessage;
     unsigned int lastEntryAccepted;
