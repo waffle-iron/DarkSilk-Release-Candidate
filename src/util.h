@@ -123,6 +123,7 @@ extern int nSandstormRounds;
 extern int nAnonymizeDarkSilkAmount;
 extern int nLiquidityProvider;
 extern bool fEnableSandstorm;
+extern bool fSandstormMultiSession;
 extern int64_t enforceStormnodePaymentsTime;
 extern std::string strStormNodeAddr;
 extern int nStormnodeMinProtocol;

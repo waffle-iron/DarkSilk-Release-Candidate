@@ -1403,7 +1403,7 @@ int CWallet::GetRealInputSandstormRounds(CTxIn in, int rounds) const
 {
     static std::map<uint256, CMutableTransaction> mDenomWtxes;
 
-    if(rounds >= 16) return 15; // 16 rounds max
+    if(rounds >= 100) return 99; // 100 rounds max
 
     uint256 hash = in.prevout.hash;
     unsigned int nout = in.prevout.n;
@@ -1477,7 +1477,7 @@ int CWallet::GetRealInputSandstormRounds(CTxIn in, int rounds) const
             }
         }
         mDenomWtxes[hash].vout[nout].nRounds = fDenomFound
-                ? (nShortest >= 15 ? 16 : nShortest + 1) // good, we a +1 to the shortest one but only 16 rounds max allowed
+                ? (nShortest >= 99 ? 100 : nShortest + 1) // good, we a +1 to the shortest one but only 100 rounds max allowed
                 : 0;            // too bad, we are the fist one in that chain
         LogPrint("sandstorm", "GetInputSandstormRounds UPDATED   %s %3d %3d\n", hash.ToString(), nout, mDenomWtxes[hash].vout[nout].nRounds);
         return mDenomWtxes[hash].vout[nout].nRounds;
@@ -2849,6 +2849,8 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, CAmount> >& vecSend, 
                     nFeeRet += nChange;
                     nChange = 0;
                     wtxNew.mapValue["SS"] = "1";
+                    // recheck skipped denominations during next mixing
+                    sandStormPool.ClearSkippedDenominations();
                 }
 
                 if (nChange > 0)
@@ -4098,14 +4100,14 @@ string CWallet::PrepareSandstormDenominate(int minRounds, int maxRounds)
     if (IsLocked())
         return _("Error: Wallet locked, unable to create transaction!");
 
-    //TODO (Amir) put back these two lines... GetMyTransactionCount??
-    //if(sandStormPool.GetState() != POOL_STATUS_ERROR && sandStormPool.GetState() != POOL_STATUS_SUCCESS)
-        //if(sandStormPool.GetMyTransactionCount() > 0)
-            //return _("Error: You already have pending entries in the Sandstorm pool");
+    if(sandStormPool.GetState() != POOL_STATUS_ERROR && sandStormPool.GetState() != POOL_STATUS_SUCCESS)
+        if(sandStormPool.GetEntriesCount() > 0)
+            return _("Error: You already have pending entries in the Sandstorm pool");
 
     // ** find the coins we'll use
     std::vector<CTxIn> vCoins;
     std::vector<COutput> vCoins2;
+    std::vector<CTxIn> vCoinsResult;
     CAmount nValueIn = 0;
     CReserveKey reservekey(this);
 
@@ -4115,15 +4117,19 @@ string CWallet::PrepareSandstormDenominate(int minRounds, int maxRounds)
     */
     if(minRounds >= 0){
         if (!SelectCoinsByDenominations(sandStormPool.sessionDenom, 0.1*COIN, SANDSTORM_POOL_MAX, vCoins, vCoins2, nValueIn, minRounds, maxRounds))
-            return _("Insufficient funds");
+            return _("Error: Can't select current denominated inputs");
+    }
+
+    LogPrintf("PrepareSandstormDenominate - preparing sandstorm denominate . Got: %d \n", nValueIn);
+
+    {
+        LOCK(cs_wallet);
+        BOOST_FOREACH(CTxIn v, vCoins)
+                LockCoin(v.prevout);
     }
 
     // calculate total value out
     CAmount nTotalValue = GetTotalValue(vCoins);
-    LogPrintf("PrepareSandstormDenominate - preparing sandstorm denominate . Got: %d \n", nTotalValue);
-
-    BOOST_FOREACH(CTxIn v, vCoins)
-        LockCoin(v.prevout);
 
     // denominate our funds
     CAmount nValueLeft = nTotalValue;
@@ -4134,35 +4140,15 @@ string CWallet::PrepareSandstormDenominate(int minRounds, int maxRounds)
         TODO: Front load with needed denominations (e.g. .1, 1 )
     */
 
-    /*
-        Add all denominations once
-        The beginning of the list is front loaded with each possible
-        denomination in random order. This means we'll at least get 1
-        of each that is required as outputs.
-    */
-    BOOST_FOREACH(CAmount d, sandStormDenominations){
-        vDenoms.push_back(d);
-        vDenoms.push_back(d);
-    }
+    // Make outputs by looping through denominations: try to add every needed denomination, repeat up to 5-10 times.
+    // This way we can be pretty sure that it should have at least one of each needed denomination.
+    // NOTE: No need to randomize order of inputs because they were
+    // initially shuffled in CWallet::SelectCoinsByDenominations already.
+    int nStep = 0;
+    int nStepsMax = 5 + GetRandInt(5);
+    while(nStep < nStepsMax) {
 
-    //randomize the order of these denominations
-    std::random_shuffle (vDenoms.begin(), vDenoms.end());
-
-    /*
-        Build a long list of denominations
-        Next we'll build a long random list of denominations to add.
-        Eventually as the algorithm goes through these it'll find the ones
-        it nees to get exact change.
-    */
-    for(int i = 0; i <= 500; i++)
-        BOOST_FOREACH(CAmount d, sandStormDenominations)
-            vDenoms.push_back(d);
-
-    //randomize the order of inputs we get back
-    std::random_shuffle (vDenoms.begin() + (int)sandStormDenominations.size() + 1, vDenoms.end());
-
-    // Make outputs by looping through denominations randomly
-    BOOST_REVERSE_FOREACH(CAmount v, vDenoms){
+        BOOST_FOREACH(int64_t v, sandStormDenominations){
         //only use the ones that are approved
         bool fAccepted = false;
         if((sandStormPool.sessionDenom & (1 << 0))      && v == ((10000*COIN) +10000000)) {fAccepted = true;}
@@ -4173,74 +4159,68 @@ string CWallet::PrepareSandstormDenominate(int minRounds, int maxRounds)
         else if((sandStormPool.sessionDenom & (1 << 5)) && v == ((.1*COIN)    +100)) {fAccepted = true;}
         if(!fAccepted) continue;
 
-        int nOutputs = 0;
+            // try to add it
+            if(nValueLeft - v >= 0) {
+                // Note: this relies on a fact that both vectors MUST have same size
+                std::vector<CTxIn>::iterator it = vCoins.begin();
+                std::vector<COutput>::iterator it2 = vCoins2.begin();
+                while(it2 != vCoins2.end()) {
+                    // we have matching inputs
+                    if((*it2).tx->vout[(*it2).i].nValue == v) {
+                        // add new input in resulting vector
+                        vCoinsResult.push_back(*it);
+                        // remove corresponting items from initial vectors
+                        vCoins.erase(it);
+                        vCoins2.erase(it2);
 
-        // add each output up to 10 times until it can't be added again
-        while(nValueLeft - v >= 0 && nOutputs <= 10) {
-            CScript scriptChange;
-            CPubKey vchPubKey;
-            //use a unique change address
-            assert(reservekey.GetReservedKey(vchPubKey)); // should never fail, as we just unlocked
-            scriptChange.SetDestination(vchPubKey.GetID());
-            reservekey.KeepKey();
+                        CScript scriptChange;
+                        CPubKey vchPubKey;
+                        // use a unique change address
+                        assert(reservekey.GetReservedKey(vchPubKey)); // should never fail, as we just unlocked
+                        scriptChange = GetScriptForDestination(vchPubKey.GetID());
+                        reservekey.KeepKey();
 
-            CTxOut o(v, scriptChange);
-            vOut.push_back(o);
+                        // add new output
+                        CTxOut o(v, scriptChange);
+                        vOut.push_back(o);
 
-            //increment outputs and subtract denomination amount
-            nOutputs++;
-            nValueLeft -= v;
+                        // subtract denomination amount
+                        nValueLeft -= v;
+
+                        break;
+                    }
+                    ++it;
+                    ++it2;
+                }
+            }
         }
+
+        nStep++;
 
         if(nValueLeft == 0) break;
     }
 
-    //back up mode , incase we couldn't successfully make the outputs for some reason
-    if(vOut.size() > 40 || sandStormPool.GetDenominations(vOut) != sandStormPool.sessionDenom || nValueLeft != 0){
-        vOut.clear();
-        nValueLeft = nTotalValue;
-
-        // Make outputs by looping through denominations, from small to large
-
-        BOOST_FOREACH(const COutput& out, vCoins2){
-            CScript scriptChange;
-            CPubKey vchPubKey;
-            //use a unique change address
-            assert(reservekey.GetReservedKey(vchPubKey)); // should never fail, as we just unlocked
-            scriptChange.SetDestination(vchPubKey.GetID());
-            reservekey.KeepKey();
-
-            CTxOut o(out.tx->vout[out.i].nValue, scriptChange);
-            vOut.push_back(o);
-
-            //increment outputs and subtract denomination amount
-            nValueLeft -= out.tx->vout[out.i].nValue;
-
-            if(nValueLeft == 0) break;
-        }
-
+    {
+        // unlock unused coins
+        LOCK(cs_wallet);
+        BOOST_FOREACH(CTxIn v, vCoins)
+                UnlockCoin(v.prevout);
     }
 
     if(sandStormPool.GetDenominations(vOut) != sandStormPool.sessionDenom) {
-        BOOST_FOREACH(CTxIn v, vCoins)
+        // unlock used coins on failure
+        LOCK(cs_wallet);
+        BOOST_FOREACH(CTxIn v, vCoinsResult)
             UnlockCoin(v.prevout);
         return "Error: can't make current denominated outputs";
     }
 
-    // we don't support change at all
-    if(nValueLeft != 0) {
-        BOOST_FOREACH(CTxIn v, vCoins)
-            UnlockCoin(v.prevout);
-        return "Error: change left-over in pool. Must use denominations only";
-    }
-
-    //randomize the output order
-    std::random_shuffle (vOut.begin(), vOut.end());
-
-    sandStormPool.SendSandstormDenominate(vCoins, vOut, nValueIn);
+    // We also do not care about full amount as long as we have right denominations, just pass what we found
+    sandStormPool.SendSandstormDenominate(vCoinsResult, vOut, nValueIn - nValueLeft);
 
     return "";
 }
+
 
 DBErrors CWallet::LoadWallet(bool& fFirstRunRet)
 {
@@ -4339,7 +4319,7 @@ bool CWallet::NewKeyPool()
         if (IsLocked())
             return false;
 
-        int64_t nKeys = max(GetArg("-keypool", 1000), (int64_t)0);
+        int64_t nKeys = max(GetArg("-keypool", DEFAULT_KEYPOOL_SIZE), (int64_t) 0);
         for (int i = 0; i < nKeys; i++)
         {
             int64_t nIndex = i+1;
@@ -4366,7 +4346,7 @@ bool CWallet::TopUpKeyPool(unsigned int nSize)
         if (nSize > 0)
             nTargetSize = nSize;
         else
-            nTargetSize = max(GetArg("-keypool", 1000), (int64_t)0);
+            nTargetSize = max(GetArg("-keypool", DEFAULT_KEYPOOL_SIZE), (int64_t) 0);
 
         while (setKeyPool.size() < (nTargetSize + 1))
         {

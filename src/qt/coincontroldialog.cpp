@@ -723,8 +723,8 @@ void CoinControlDialog::updateView()
             CTxIn vin = CTxIn(out.tx->GetHash(), out.i);
             int rounds = pwalletMain->GetInputSandstormRounds(vin);
 
-            if(rounds > 0) itemOutput->setText(COLUMN_SANDSTORM_ROUNDS, strPad(QString::number(rounds), 15, " "));
-            else itemOutput->setText(COLUMN_SANDSTORM_ROUNDS, strPad(QString("n/a"), 15, " "));
+            if(rounds > 0) itemOutput->setText(COLUMN_SANDSTORM_ROUNDS, strPad(QString::number(rounds), 99, " "));
+            else itemOutput->setText(COLUMN_SANDSTORM_ROUNDS, strPad(QString("n/a"), 99, " "));
             // confirmations
             itemOutput->setText(COLUMN_CONFIRMATIONS, strPad(QString::number(out.nDepth), 8, " "));
             

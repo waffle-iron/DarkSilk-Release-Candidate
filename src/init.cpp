@@ -307,7 +307,7 @@ std::string HelpMessage()
     strUsage += "  -confchange            " + _("Require a confirmations for change (default: 0)") + "\n";
     strUsage += "  -alertnotify=<cmd>     " + _("Execute command when a relevant alert is received (%s in cmd is replaced by message)") + "\n";
     strUsage += "  -upgradewallet         " + _("Upgrade wallet to latest format") + "\n";
-    strUsage += "  -keypool=<n>           " + _("Set key pool size to <n> (default: 1000)") + "\n";
+    strUsage += "  -keypool=<n>             " + strprintf(_("Set key pool size to <n> (default: %u). Run 'keypoolrefill' to apply this to already existing wallets"), DEFAULT_KEYPOOL_SIZE) + "\n"; 
     strUsage += "  -rescan                " + _("Rescan the block chain for missing wallet transactions") + "\n";
     strUsage += "  -salvagewallet         " + _("Attempt to recover private keys from a corrupt wallet.dat") + "\n";
     strUsage += "  -checkblocks=<n>       " + _("How many blocks to check at startup (default: 500, 0 = all)") + "\n";
@@ -334,14 +334,14 @@ std::string HelpMessage()
     strUsage += "  -stormnodeaddr=<n>        " + _("Set external address:port to get to this stormnode (example: address:port)") + "\n";
     strUsage += "  -stormnodeminprotocol=<n> " + _("Ignore stormnodes less than version (example: 60135; default : 0)") + "\n";
 
-    strUsage += "\n" + _("Sandstorm options:") + "\n";
-    strUsage += "  -enablesandstorm=<n>          " + _("Enable use of automated sandstorm for funds stored in this wallet (0-1, default: 0)") + "\n";
-    strUsage += "  -sandstormrounds=<n>          " + _("Use N separate stormnodes to anonymize funds  (2-100, default: 2)") + "\n";
-    strUsage += "  -anonymizedarksilkamount=<n> " + _("Keep N DarkSilk anonymized (default: 0)") + "\n";
-    strUsage += "  -liquidityprovider=<n>       " + _("Provide liquidity to Sandstorm by infrequently mixing coins on a continual basis (0-100, default: 0, 1=very frequent, high fees, 100=very infrequent, low fees)") + "\n";
-
+    strUsage += "  -enablesandstorm=<n>          " + strprintf(_("Enable use of automated sandstorm for funds stored in this wallet (0-1, default: 0)"), fEnableSandstorm) + "\n";
+    strUsage += "  -sandstormmultisession=<n>    " + strprintf(_("Enable multiple sandstorm mixing sessions per block, experimental (0-1, default: %u)"), fSandstormMultiSession) + "\n";
+    strUsage += "  -sandstormrounds=<n>          " + strprintf(_("Use N separate stormnodes to anonymize funds  (2-50, default: 2)"), nSandstormRounds) + "\n";
+    strUsage += "  -anonymizedarksilkamount=<n> " + strprintf(_("Keep N DarkSilk anonymized (default: 0)"), nAnonymizeDarkSilkAmount) + "\n";
+    strUsage += "  -liquidityprovider=<n>       " + strprintf(_("Provide liquidity to Sandstorm by infrequently mixing coins on a continual basis (0-100, default: 0, 1=very frequent, high fees, 100=very infrequent, low fees)"), nLiquidityProvider) + "\n";
+ 
     strUsage += "\n" + _("InstantX options:") + "\n";
-    strUsage += "  -enableinstantx=<n>    " + _("Enable instantx, show confirmations for locked transactions (bool, default: true)") + "\n";
+    strUsage += "  -enableinstantx=<n>    " + strprintf(_("Enable instantx, show confirmations for locked transactions (0-1, default: %u)"), "true") + "\n";
     strUsage += "  -instantxdepth=<n>     " + strprintf(_("Show N confirmations for a successfully locked transaction (0-9999, default: %u)"), nInstantXDepth) + "\n"; 
     strUsage += _("Secure messaging options:") + "\n" +
         "  -nosmsg                                  " + _("Disable secure messaging.") + "\n" +
@@ -501,6 +501,18 @@ bool AppInit2(boost::thread_group& threadGroup)
     if(!GetBoolArg("-enableinstantx", fEnableInstantX)){
         if (SoftSetArg("-instantxdepth", 0))
             LogPrintf("AppInit2 : parameter interaction: -enableinstantx=false -> setting -nInstantXDepth=0\n");
+    }
+
+    if (GetArg("-liquidityprovider", 0) > 0) {
+        int nLiqProvTmp = GetArg("-liquidityprovider", 0);
+        mapArgs["-enablesandstorm"] = "1";
+        LogPrintf("AppInit2 : parameter interaction: -liquidityprovider=%d -> setting -enablesandstorm=1\n", nLiqProvTmp);
+        mapArgs["-sandstormrounds"] = "99999";
+        LogPrintf("AppInit2 : parameter interaction: -liquidityprovider=%d -> setting -sandstormrounds=99999\n", nLiqProvTmp);
+        mapArgs["-anonymizedarksilkamount"] = "999999";
+       LogPrintf("AppInit2 : parameter interaction: -liquidityprovider=%d -> setting -anonymizedarksilkamount=999999\n", nLiqProvTmp);
+        mapArgs["-sandstormmultisession"] = "0";
+        LogPrintf("AppInit2 : parameter interaction: -liquidityprovider=%d -> setting -sandstormmultisession=0\n", nLiqProvTmp);
     }
 
     // ********************************************************* Step 3: parameter-to-internal-flags
@@ -1137,23 +1149,16 @@ bool AppInit2(boost::thread_group& threadGroup)
     //get the mode of budget voting for this stormnode
     strBudgetMode = GetArg("-budgetvotemode", "auto");
 
-    fEnableSandstorm = GetBoolArg("-enablesandstorm", false);
+    nLiquidityProvider = GetArg("-liquidityprovider", nLiquidityProvider);
+    nLiquidityProvider = std::min(std::max(nLiquidityProvider, 0), 100);
+    sandStormPool.SetMinBlockSpacing(nLiquidityProvider * 15);
 
-    nSandstormRounds = GetArg("-sandstormrounds", 2);
-    if(nSandstormRounds > 100) nSandstormRounds = 100;
-    if(nSandstormRounds < 1) nSandstormRounds = 1;
-
-
-    nLiquidityProvider = GetArg("-liquidityprovider", 0); //0-100
-    if(nLiquidityProvider != 0) {
-        sandStormPool.SetMinBlockSpacing(std::min(nLiquidityProvider,100)*15);
-        fEnableSandstorm = true;
-        nSandstormRounds = 99999;
-    }
-
-    nAnonymizeDarkSilkAmount = GetArg("-anonymizedarksilkamount", 0);
-    if(nAnonymizeDarkSilkAmount > 999999) nAnonymizeDarkSilkAmount = 999999;
-    if(nAnonymizeDarkSilkAmount < 2) nAnonymizeDarkSilkAmount = 2;
+    fEnableSandstorm = GetBoolArg("-enablesandstorm", fEnableSandstorm);
+    fSandstormMultiSession = GetBoolArg("-sandstormmultisession", fSandstormMultiSession);
+    nSandstormRounds = GetArg("-sandstormrounds", nSandstormRounds);
+    nSandstormRounds = std::min(std::max(nSandstormRounds, 1), 99999);
+    nAnonymizeDarkSilkAmount = GetArg("-anonymizedashamount", nAnonymizeDarkSilkAmount);
+    nAnonymizeDarkSilkAmount = std::min(std::max(nAnonymizeDarkSilkAmount, 2), 999999);
 
     fEnableInstantX = GetBoolArg("-enableinstantx", fEnableInstantX);
     nInstantXDepth = GetArg("-instantxdepth", nInstantXDepth);

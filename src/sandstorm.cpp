@@ -1376,7 +1376,7 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun)
         return false;
     }
 
-    if(pindexBest->nHeight - cachedLastSuccess < minBlockSpacing) {
+    if(!fSandstormMultiSession && pindexBest->nHeight - cachedLastSuccess < minBlockSpacing) {
         LogPrintf("CSandstormPool::DoAutomaticDenominating - Last successful Sandstorm action was too recent\n");
         strAutoDenomResult = _("Last successful Sandstorm action was too recent.");
         return false;
@@ -1397,9 +1397,9 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun)
     CAmount nBalanceNeedsDenominated;
 
     // should not be less than fees in SANDSTORM_COLLATERAL + few (lets say 5) smallest denoms
-    CAmount nLowestDenom = SANDSTORM_COLLATERAL + sandStormDenominations[sandStormDenominations.size() - 1]*5;
+    CAmount nLowestDenom = sandStormDenominations[sandStormDenominations.size() - 1];
 
-    // if there are no SS collateral inputs yet
+    // if there are no confirmed SS collateral inputs yet
     if(!pwalletMain->HasCollateralInputs())
         // should have some additional amount for them
         nLowestDenom += SANDSTORM_COLLATERAL*4;
@@ -1409,16 +1409,21 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun)
     // if balanceNeedsAnonymized is more than pool max, take the pool max
     if(nBalanceNeedsAnonymized > SANDSTORM_POOL_MAX) nBalanceNeedsAnonymized = SANDSTORM_POOL_MAX;
 
-    // if balanceNeedsAnonymized is more than non-anonymized, take non-anonymized
-    CAmount nAnonymizableBalance = pwalletMain->GetAnonymizableBalance();
-    if(nBalanceNeedsAnonymized > nAnonymizableBalance) nBalanceNeedsAnonymized = nAnonymizableBalance;
+    // try to overshoot target DS balance up to nLowestDenom
+    nBalanceNeedsAnonymized += nLowestDenom;
 
-    if(nBalanceNeedsAnonymized < nLowestDenom)
+    CAmount nAnonymizableBalance = pwalletMain->GetAnonymizableBalance();
+
+    // anonymizable balance is way too small
+    if(nAnonymizableBalance < nLowestDenom)
     {
         LogPrintf("DoAutomaticDenominating : No funds detected in need of denominating \n");
         strAutoDenomResult = _("No funds detected in need of denominating.");
         return false;
     }
+
+    // not enough funds to anonymze amount we want, try the max we can
+    if(nBalanceNeedsAnonymized > nAnonymizableBalance) nBalanceNeedsAnonymized = nAnonymizableBalance;
 
     LogPrint("sandstorm", "DoAutomaticDenominating : nLowestDenom=%d, nBalanceNeedsAnonymized=%d\n", nLowestDenom, nBalanceNeedsAnonymized);
 
@@ -1469,13 +1474,13 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun)
         int nUseQueue = rand()%100;
         UpdateState(POOL_STATUS_ACCEPTING_ENTRIES);
 
-        if(pwalletMain->GetDenominatedBalance(true) > 0) { //get denominated unconfirmed inputs
+        if(!fSandstormMultiSession && pwalletMain->GetDenominatedBalance(true) > 0) { //get denominated unconfirmed inputs
             LogPrintf("DoAutomaticDenominating -- Found unconfirmed denominated outputs, will wait till they confirm to continue.\n");
             strAutoDenomResult = _("Found unconfirmed denominated outputs, will wait till they confirm to continue.");
             return false;
         }
 
-        //check our collateral nad create new if needed
+        //check our collateral and create new if needed
         std::string strReason;
         CValidationState state;
         if(txCollateral == CMutableTransaction()){
@@ -1768,10 +1773,24 @@ bool CSandstormPool::CreateDenominated(CAmount nTotalValue)
 
     // ****** Add denoms ************ /
     BOOST_REVERSE_FOREACH(CAmount v, sandStormDenominations){
+
+        // Note: denoms are skipped if there are already DENOMS_COUNT_MAX of them
+
+        // check skipped denoms
+        if(IsDenomSkipped(v)) continue;
+
+        // find new denoms to skip if any (ignore the largest one)
+        if (v != sandStormDenominations[0] && pwalletMain->CountInputsWithAmount(v) > DENOMS_COUNT_MAX){
+            strAutoDenomResult = strprintf(_("Too many %f denominations, removing."), (float)v/COIN);
+            LogPrintf("DoAutomaticDenominating : %s\n", strAutoDenomResult);
+            sandStormDenominationsSkipped.push_back(v);
+            continue;
+        }
+
         int nOutputs = 0;
 
         // add each output up to 10 times until it can't be added again
-        while(nValueLeft - v >= SANDSTORM_COLLATERAL && nOutputs <= 10) {
+        while(nValueLeft - v >= 0 && nOutputs <= 10) {
             CScript scriptDenom;
             CPubKey vchPubKey;
             //use a unique change address

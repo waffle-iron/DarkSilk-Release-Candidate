@@ -27,6 +27,8 @@
 const CAmount MIN_TX_FEE = 77777; // 0.000077777 DRKSLK Minimum Transaction Fee
 /// Fees smaller than this (in satoshi) are considered zero fee (for relaying)
 const CAmount MIN_RELAY_TX_FEE = MIN_TX_FEE;
+//! -keypool default
+static const unsigned int DEFAULT_KEYPOOL_SIZE = 1000;
 // Settings
 extern CAmount nTransactionFee;
 extern CAmount nReserveBalance;
@@ -899,7 +901,11 @@ public:
             const CTxIn vin = CTxIn(hashTx, i);
 
             if(pwallet->IsSpent(hashTx, i) || pwallet->IsLockedCoin(hashTx, i)) continue;
-            if(fStormNode && vout[i].nValue == 10000*COIN) continue; // do not count SN-like outputs
+            // do not count MN-like outputs
+            if(fStormNode && vout[i].nValue == 10000*COIN) continue;
+            // do not count outputs that are 10 times smaller then the smallest denomination
+            // otherwise they will just lead to higher fee / lower priority
+            if(vout[i].nValue <= sandStormDenominations[sandStormDenominations.size() - 1]/10) continue;
 
             const int rounds = pwallet->GetInputSandstormRounds(vin);
             if(rounds >=-2 && rounds < nSandstormRounds) {
