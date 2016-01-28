@@ -49,11 +49,15 @@ public:
 
     CBlockHeader()
     {
-        SetNull();
+        nVersion = CBlockHeader::CURRENT_VERSION;
+        hashPrevBlock = 0;
+        hashMerkleRoot = 0;
+        nTime = 0;
+        nBits = 0;
+        nNonce = 0;
     }
 
-
-    IMPLEMENT_SERIALIZE
+    /*IMPLEMENT_SERIALIZE
     (
         READWRITE(this->nVersion);
         nVersion = this->nVersion;
@@ -62,17 +66,19 @@ public:
         READWRITE(nTime);
         READWRITE(nBits);
         READWRITE(nNonce);
-    )
+    )*/
 
-    void SetNull()
-    {
-        nVersion = CBlockHeader::CURRENT_VERSION;
-        hashPrevBlock = 0;
-        hashMerkleRoot = 0;
-        nTime = 0;
-        nBits = 0;
-        nNonce = 0;
-        nDoS = 0;
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITES(this->nVersion);
+        nVersion = this->nVersion;
+        READWRITES(hashPrevBlock);
+        READWRITES(hashMerkleRoot);
+        READWRITES(nTime);
+        READWRITES(nBits);
+        READWRITES(nNonce);
     }
 
     bool IsNull() const
@@ -103,8 +109,6 @@ public:
     {
         return (int64_t)nTime;
     }
-
-
 };
 
 class CBlock: public CBlockHeader
@@ -120,7 +124,6 @@ public:
     mutable CScript payee;
     mutable std::vector<uint256> vMerkleTree;
 
-
     CBlock()
     {
         SetNull();
@@ -132,7 +135,21 @@ public:
         *((CBlockHeader*)this) = header;
     }
 
-    IMPLEMENT_SERIALIZE
+    void SetNull()
+    {
+        nVersion = CBlockHeader::CURRENT_VERSION;
+        hashPrevBlock = 0;
+        hashMerkleRoot = 0;
+        nTime = 0;
+        nBits = 0;
+        nNonce = 0;
+        vtx.clear();
+        vchBlockSig.clear();
+        vMerkleTree.clear();
+        nDoS = 0;
+    }
+
+    /*IMPLEMENT_SERIALIZE
     (
         READWRITE(*(CBlockHeader*)this);
         // ConnectBlock depends on vtx following header to generate CDiskTxPos
@@ -146,7 +163,24 @@ public:
             const_cast<CBlock*>(this)->vtx.clear();
             const_cast<CBlock*>(this)->vchBlockSig.clear();
         }
-    )
+    )*/
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITES(*(CBlockHeader*)this);
+        // ConnectBlock depends on vtx following header to generate CDiskTxPos
+        if (!(nType & (SER_GETHASH|SER_BLOCKHEADERONLY)))
+        {
+            READWRITES(vtx);
+            READWRITES(vchBlockSig);
+        }
+        else if (ser_action.ForRead())
+        {
+            const_cast<CBlock*>(this)->vtx.clear();
+            const_cast<CBlock*>(this)->vchBlockSig.clear();
+        }
+    }
 
     void UpdateTime(const CBlockIndex* pindexPrev);
 
@@ -247,13 +281,12 @@ public:
     bool AddToBlockIndex(unsigned int nFile, unsigned int nBlockPos, const uint256& hashProof);
     bool CheckBlock(bool fCheckPOW=true, bool fCheckMerkleRoot=true, bool fCheckSig=true) const;
     bool AcceptBlock();
-    bool SignBlock(CWallet& keystore, int64_t nFees);
+    bool SignBlock(CWallet& keystore, CAmount nFees);
     bool CheckBlockSignature() const;
     void RebuildAddressIndex(CTxDB& txdb);
 
 private:
     bool SetBestChainInner(CTxDB& txdb, CBlockIndex *pindexNew);
 };
-
 
 #endif // DARKSILK_PRIMITIVES_BLOCK_H
