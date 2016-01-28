@@ -22,6 +22,8 @@ class CSandstormQueue;
 class CSandstormBroadcastTx;
 class CActiveStormnode;
 
+static const int64_t DENOMS_COUNT_MAX = 100;
+
 // pool states for mixing
 #define POOL_STATUS_UNKNOWN                    0 // waiting for update
 #define POOL_STATUS_IDLE                       1 // waiting for update
@@ -274,6 +276,7 @@ private:
 
     CMutableTransaction txCollateral;
     int64_t lastNewBlock;
+    std::vector<int64_t> sandStormDenominationsSkipped;
 
 
 public:
@@ -349,6 +352,19 @@ public:
 
     void InitCollateralAddress(){
         SetCollateralAddress(Params().SandstormPoolDummyAddress());
+    }
+
+    void ClearSkippedDenominations() {
+        sandStormDenominationsSkipped.clear();
+    }
+
+    bool IsDenomSkipped(int64_t denom) {
+        BOOST_FOREACH(int64_t d, sandStormDenominationsSkipped) {
+            if (d == denom) {
+                return true;
+            }
+        }
+        return false;
     }
 
     void SetMinBlockSpacing(int minBlockSpacingIn){
