@@ -720,9 +720,8 @@ void CoinControlDialog::updateView()
             itemOutput->setText(COLUMN_DATE, QDateTime::fromTime_t(out.tx->GetTxTime()).toUTC().toString("yy-MM-dd hh:mm"));
             
             // Sandstorm rounds
-            //TODO (Amir): put GetInputSandstormRounds back
-            //CTxIn vin = CTxIn(out.tx->GetHash(), out.i);
-            int rounds = 0; //GetInputSandstormRounds(vin);
+            CTxIn vin = CTxIn(out.tx->GetHash(), out.i);
+            int rounds = pwalletMain->GetInputSandstormRounds(vin);
 
             if(rounds > 0) itemOutput->setText(COLUMN_SANDSTORM_ROUNDS, strPad(QString::number(rounds), 15, " "));
             else itemOutput->setText(COLUMN_SANDSTORM_ROUNDS, strPad(QString("n/a"), 15, " "));
