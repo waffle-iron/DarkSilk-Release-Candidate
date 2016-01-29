@@ -47,7 +47,7 @@ CCriticalSection cs_main;
 /// Fees smaller than this (in satoshis) are considered zero fee (for relaying and mining)
 /// We are ~xxx times smaller then bitcoin now (2016-01-11), set minRelayTxFee only 10 times higher
 /// so it's still 10 times lower comparing to bitcoin.
-CFeeRate minRelayTxFee = CFeeRate(7777);
+CFeeRate minRelayTxFee = CFeeRate(MIN_TX_FEE);
 
 CTxMemPool mempool(::minRelayTxFee);
 
