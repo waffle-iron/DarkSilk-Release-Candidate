@@ -203,8 +203,7 @@ public:
     bool CanSupportFeature(enum WalletFeature wf) { AssertLockHeld(cs_wallet); return nWalletMaxVersion >= wf; }
 
     void AvailableCoinsForStaking(std::vector<COutput>& vCoins, unsigned int nSpendTime) const;
-    void AvailableCoins(std::vector<COutput>& vCoins, bool fOnlyConfirmed=true, const CCoinControl *coinControl = NULL, AvailableCoinsType coin_type=ALL_COINS, bool useIX = false) const;
-    bool SelectCoinsMinConf(const CAmount& nTargetValue, unsigned int nSpendTime, int nConfMine, int nConfTheirs, vector<COutput> vCoins, set<pair<const CWalletTx*,unsigned int> >& setCoinsRet, CAmount& nValueRet) const;
+    void AvailableCoins(std::vector<COutput>& vCoins, bool fOnlyConfirmed=true, const CCoinControl *coinControl = NULL, AvailableCoinsType coin_type=ALL_COINS, bool useIX = false) const;    bool SelectCoinsMinConf(const CAmount& nTargetValue, unsigned int nSpendTime, int nConfMine, int nConfTheirs, vector<COutput> vCoins, set<pair<const CWalletTx*,unsigned int> >& setCoinsRet, CAmount& nValueRet) const;
     bool SelectCoinsMinConfByCoinAge(const CAmount& nTargetValue, unsigned int nSpendTime, int nConfMine, int nConfTheirs, vector<COutput> vCoins, set<pair<const CWalletTx*,unsigned int> >& setCoinsRet, CAmount& nValueRet) const;
 
     bool IsSpent(const uint256& hash, unsigned int n) const;
@@ -289,9 +288,9 @@ public:
     CAmount GetDenominatedBalance(bool onlyDenom=true, bool onlyUnconfirmed=false, bool includeAlreadyAnonymized = true) const; 
  
     bool CreateTransaction(const std::vector<std::pair<CScript, CAmount> >& vecSend,
-                           CWalletTx& wtxNew, CReserveKey& reservekey, CAmount& nFeeRet, int32_t& nChangePos, std::string& strFailReason, const CCoinControl *coinControl=NULL, AvailableCoinsType coin_type=ALL_COINS, bool useIX=false);
+                           CWalletTx& wtxNew, CReserveKey& reservekey, CAmount& nFeeRet, int32_t& nChangePos, std::string& strFailReason, const CCoinControl *coinControl = NULL, AvailableCoinsType coin_type=ALL_COINS, bool useIX=false, CAmount nFeePay=0);
     bool CreateTransaction(CScript scriptPubKey, CAmount nValue, std::string& sNarr,
-                           CWalletTx& wtxNew, CReserveKey& reservekey, CAmount& nFeeRet, const CCoinControl *coinControl=NULL);
+                           CWalletTx& wtxNew, CReserveKey& reservekey, CAmount& nFeeRet, const CCoinControl *coinControl = NULL, AvailableCoinsType coin_type=ALL_COINS, bool useIX=false, CAmount nFeePay=0);
 
     bool CommitTransaction(CWalletTx& wtxNew, CReserveKey& reservekey, std::string strCommand="tx");
 
@@ -334,23 +333,9 @@ public:
 
 
     bool IsDenominated(const CTxIn &txin) const;
+    bool IsDenominated(const CTransaction& tx) const;
 
-    bool IsDenominated(const CTransaction& tx) const
-    {
-        /*
-            Return false if ANY inputs are non-denom
-        */
-        bool ret = true;
-        BOOST_FOREACH(const CTxIn& txin, tx.vin)
-        {
-            if(!IsDenominated(txin)) {
-                ret = false;
-            }
-        }
-        return ret;
-    }
-
-    bool IsDenominatedAmount(CAmount nInputAmount) const;
+    bool IsDenominatedAmount(int64_t nInputAmount) const;
 
 
     isminetype IsMine(const CTxIn& txin) const;
