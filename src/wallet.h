@@ -50,11 +50,11 @@ typedef std::map<std::string, std::string> mapValue_t;
 enum WalletFeature
 {
     FEATURE_BASE = 10500, // the earliest version new wallets supports (only useful for getinfo's clientversion output)
-
+    
     FEATURE_WALLETCRYPT = 40000, // wallet encryption
-    FEATURE_COMPRPUBKEY = 60138, // compressed public keys
-
-    FEATURE_LATEST = 60138
+    
+    FEATURE_COMPRPUBKEY = 60141, // compressed public keys
+    FEATURE_LATEST = 60141
 };
 
 enum AvailableCoinsType
@@ -335,7 +335,7 @@ public:
     bool IsDenominated(const CTxIn &txin) const;
     bool IsDenominated(const CTransaction& tx) const;
 
-    bool IsDenominatedAmount(int64_t nInputAmount) const;
+    bool IsDenominatedAmount(CAmount nInputAmount) const;
 
 
     isminetype IsMine(const CTxIn& txin) const;

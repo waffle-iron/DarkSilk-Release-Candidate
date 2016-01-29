@@ -879,9 +879,9 @@ bool CWallet::IsDenominated(const CTransaction& tx) const
 }
 
 
-bool CWallet::IsDenominatedAmount(int64_t nInputAmount) const
+bool CWallet::IsDenominatedAmount(CAmount nInputAmount) const
 {
-    BOOST_FOREACH(int64_t d, sandStormDenominations)
+    BOOST_FOREACH(CAmount d, sandStormDenominations)
         if(nInputAmount == d)
             return true;
     return false;
@@ -2139,7 +2139,7 @@ bool less_then_denom (const COutput& out1, const COutput& out2)
 
     bool found1 = false;
     bool found2 = false;
-    BOOST_FOREACH(int64_t d, sandStormDenominations) // loop through predefined denoms
+    BOOST_FOREACH(CAmount d, sandStormDenominations) // loop through predefined denoms
     {
         if(pcoin1->vout[out1.i].nValue == d) found1 = true;
         if(pcoin2->vout[out2.i].nValue == d) found2 = true;
@@ -2313,7 +2313,7 @@ bool CWallet::SelectCoins(const CAmount& nTargetValue, unsigned int nSpendTime, 
     //if we're doing only denominated, we need to round up to the nearest .1DRKSLK
     if(coin_type == ONLY_DENOMINATED) {
         // Make outputs by looping through denominations, from large to small
-        BOOST_FOREACH(int64_t v, sandStormDenominations)
+        BOOST_FOREACH(CAmount v, sandStormDenominations)
         {
             BOOST_FOREACH(const COutput& out, vCoins)
             {
@@ -2598,7 +2598,7 @@ bool CWallet::HasCollateralInputs() const
     return nFound > 0; // should check only for at least 1 collateral
 }
 
-bool CWallet::IsCollateralAmount(int64_t nInputAmount) const
+bool CWallet::IsCollateralAmount(CAmount nInputAmount) const
 {
     return  nInputAmount != 0 && nInputAmount % SANDSTORM_COLLATERAL == 0 && nInputAmount < SANDSTORM_COLLATERAL * 5 && nInputAmount > SANDSTORM_COLLATERAL;
 }
@@ -2689,9 +2689,9 @@ bool CWallet::GetBudgetSystemCollateralTX(CWalletTx& tx, uint256 hash, bool useI
     CScript scriptChange;
     scriptChange << OP_RETURN << ToByteVector(hash);
 
-    int64_t nFeeRet = 0;
+    CAmount nFeeRet = 0;
     std::string strFail = "";
-    vector< pair<CScript, int64_t> > vecSend;
+    vector< pair<CScript, CAmount> > vecSend;
     vecSend.push_back(make_pair(scriptChange, BUDGET_FEE_TX));
 
     CCoinControl *coinControl=NULL;
