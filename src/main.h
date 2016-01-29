@@ -70,7 +70,7 @@ static const unsigned int DEFAULT_MAX_ORPHAN_BLOCKS = 10000;
 static const unsigned int MAX_INV_SZ = 50000;
 /// Fees smaller than this (in satoshi) are considered zero fee (for transaction creation)
 
-static const double MIN_FEE = 0.00077777; // 0.000077777 DRKSLK Minimum Transaction Fee
+static const double MIN_FEE = 0; // 0.000077777 DRKSLK Minimum Transaction Fee
 
 /// Maximum length of reject messages.
 static const unsigned int MAX_REJECT_MESSAGE_LENGTH = 111;

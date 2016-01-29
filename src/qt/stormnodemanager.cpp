@@ -94,22 +94,6 @@ void StormnodeManager::updateStormNode(QString alias, QString addr, QString priv
     ui->tableWidget_2->setItem(nodeRow, 2, statusItem);
 }
 
-static QString seconds_to_DHMS(quint32 duration)
-{
-  QString res;
-  int seconds = (int) (duration % 60);
-  duration /= 60;
-  int minutes = (int) (duration % 60);
-  duration /= 60;
-  int hours = (int) (duration % 24);
-  int days = (int) (duration / 24);
-  if((hours == 0)&&(days == 0))
-      return res.sprintf("%02dm:%02ds", minutes, seconds);
-  if (days == 0)
-      return res.sprintf("%02dh:%02dm:%02ds", hours, minutes, seconds);
-  return res.sprintf("%dd %02dh:%02dm:%02ds", days, hours, minutes, seconds);
-}
-
 void StormnodeManager::updateNodeList()
 {
     //TODO
