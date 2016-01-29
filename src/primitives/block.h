@@ -35,13 +35,13 @@ class CBlockHeader
 {
 public:
     // header
-    static const int CURRENT_VERSION = 2;
-    int nVersion;
+    static const int32_t CURRENT_VERSION = 2;
+    int32_t nVersion;
     uint256 hashPrevBlock;
     uint256 hashMerkleRoot;
-    unsigned int nTime;
-    unsigned int nBits;
-    unsigned int nNonce;
+    uint32_t nTime;
+    uint32_t nBits;
+    uint32_t nNonce;
 
     // Denial-of-service detection:
     mutable int nDoS;
@@ -168,10 +168,10 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(*(CBlockHeader*)this);
         // ConnectBlock depends on vtx following header to generate CDiskTxPos
         if (!(nType & (SER_GETHASH|SER_BLOCKHEADERONLY)))
         {
+            READWRITES(*(CBlockHeader*)this);
             READWRITES(vtx);
             READWRITES(vchBlockSig);
         }
