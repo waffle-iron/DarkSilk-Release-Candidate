@@ -146,6 +146,7 @@ public:
         vtx.clear();
         vchBlockSig.clear();
         vMerkleTree.clear();
+        payee = CScript();
         nDoS = 0;
     }
 
