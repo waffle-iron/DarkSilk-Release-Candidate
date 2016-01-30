@@ -31,7 +31,13 @@ public:
     COutPoint() { SetNull(); }
     COutPoint(uint256 hashIn, unsigned int nIn) { hash = hashIn; n = nIn; }
 
-    IMPLEMENT_SERIALIZE( READWRITE(FLATDATA(*this)); )
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITES(FLATDATA(*this));
+    }
+
     void SetNull() { hash = 0; n = (unsigned int) -1; }
     bool IsNull() const { return (hash == 0 && n == (unsigned int) -1); }
 
@@ -110,12 +116,14 @@ public:
         nSequence = nSequenceIn;
     }
 
-    IMPLEMENT_SERIALIZE
-    (
-        READWRITE(prevout);
-        READWRITE(scriptSig);
-        READWRITE(nSequence);
-    )
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITES(prevout);
+        READWRITES(scriptSig);
+        READWRITES(nSequence);
+    }
 
     bool IsFinal() const
     {
@@ -171,11 +179,13 @@ public:
         scriptPubKey = scriptPubKeyIn;
     }
 
-    IMPLEMENT_SERIALIZE
-    (
-        READWRITE(nValue);
-        READWRITE(scriptPubKey);
-    )
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITES(nValue);
+        READWRITES(scriptPubKey);
+    }
 
     void SetNull()
     {
@@ -267,15 +277,17 @@ public:
     /// Convert a CMutableTransaction into a CTransaction.
     CTransaction(const CMutableTransaction &tx);
 
-    IMPLEMENT_SERIALIZE
-    (
-        READWRITE(this->nVersion);
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITES(this->nVersion);
         nVersion = this->nVersion;
-        READWRITE(nTime);
-        READWRITE(vin);
-        READWRITE(vout);
-        READWRITE(nLockTime);
-    )
+        READWRITES(nTime);
+        READWRITES(vin);
+        READWRITES(vout);
+        READWRITES(nLockTime);
+    }
 
     void SetNull()
     {
@@ -355,15 +367,17 @@ struct CMutableTransaction
     {
     }
 
-    IMPLEMENT_SERIALIZE
-    (
-        READWRITE(this->nVersion);
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITES(this->nVersion);
         nVersion = this->nVersion;
-        READWRITE(this->nTime);
-        READWRITE(vin);
-        READWRITE(vout);
-        READWRITE(nLockTime);
-    )
+        READWRITES(this->nTime);
+        READWRITES(vin);
+        READWRITES(vout);
+        READWRITES(nLockTime);
+    }
 
     /// Compute the hash of this CMutableTransaction. This is computed on the
     /// fly, as opposed to GetHash() in CTransaction, which uses a cached result.
