@@ -73,10 +73,13 @@ public:
         nVotes = nVotesIn;
     }
 
-    IMPLEMENT_SERIALIZE(
-        READWRITE(scriptPubKey);
-        READWRITE(nVotes);
-     )
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITES(scriptPubKey);
+        READWRITES(nVotes);
+    }
 };
 
 // Keep track of votes for payees from stormnodes
@@ -138,10 +141,13 @@ public:
     bool IsTransactionValid(const CTransaction& txNew);
     std::string GetRequiredPaymentsString();
 
-    IMPLEMENT_SERIALIZE(
-        READWRITE(nBlockHeight);
-        READWRITE(vecPayments);
-     )
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITES(nBlockHeight);
+        READWRITES(vecPayments);
+    }
 };
 
 // for storing the winning payments
@@ -184,13 +190,15 @@ public:
         payee = payeeIn;
     }
 
+    ADD_SERIALIZE_METHODS;
 
-    IMPLEMENT_SERIALIZE(
-        READWRITE(vinStormnode);
-        READWRITE(nBlockHeight);
-        READWRITE(payee);
-        READWRITE(vchSig);
-    )
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITES(vinStormnode);
+        READWRITES(nBlockHeight);
+        READWRITES(payee);
+        READWRITES(vchSig);
+    }
 
     std::string ToString()
     {
@@ -263,10 +271,13 @@ public:
     int GetOldestBlock();
     int GetNewestBlock();
 
-    IMPLEMENT_SERIALIZE(
-        READWRITE(mapStormnodePayeeVotes);
-        READWRITE(mapStormnodeBlocks);
-    )
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITES(mapStormnodePayeeVotes);
+        READWRITES(mapStormnodeBlocks);
+    }
 };
 
 

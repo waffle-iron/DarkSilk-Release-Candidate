@@ -159,18 +159,20 @@ public:
     void CheckAndRemove();
     std::string ToString() const;
 
+    ADD_SERIALIZE_METHODS;
 
-    IMPLEMENT_SERIALIZE(
-        READWRITE(mapSeenStormnodeBudgetProposals);
-        READWRITE(mapSeenStormnodeBudgetVotes);
-        READWRITE(mapSeenFinalizedBudgets);
-        READWRITE(mapSeenFinalizedBudgetVotes);
-        READWRITE(mapOrphanStormnodeBudgetVotes);
-        READWRITE(mapSeenStormnodeBudgetVotes);
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITES(mapSeenStormnodeBudgetProposals);
+        READWRITES(mapSeenStormnodeBudgetVotes);
+        READWRITES(mapSeenFinalizedBudgets);
+        READWRITES(mapSeenFinalizedBudgetVotes);
+        READWRITES(mapOrphanStormnodeBudgetVotes);
+        READWRITES(mapSeenStormnodeBudgetVotes);
 
-        READWRITE(mapProposals);
-        READWRITE(mapFinalizedBudgets);
-    )
+        READWRITES(mapProposals);
+        READWRITES(mapFinalizedBudgets);
+    }
 };
 
 class CTxBudgetPayment
@@ -186,11 +188,14 @@ public:
         nProposalHash = 0;
     }
 
-     IMPLEMENT_SERIALIZE(
-        READWRITE(payee);
-        READWRITE(nAmount);
-        READWRITE(nProposalHash);
-    )
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITES(payee);
+        READWRITES(nAmount);
+        READWRITES(nProposalHash);
+    }
 };
 
 //
@@ -273,16 +278,18 @@ public:
         return h1;
     }
 
-    IMPLEMENT_SERIALIZE
-    (
-        READWRITE(LIMITED_STRING(strBudgetName, 20));
-        READWRITE(nFeeTXHash);
-        READWRITE(nTime);
-        READWRITE(nBlockStart);
-        READWRITE(vecBudgetPayments);
-        READWRITE(fAutoChecked);
-        READWRITE(mapVotes);
-    )
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITES(LIMITED_STRING(strBudgetName, 20));
+        READWRITES(nFeeTXHash);
+        READWRITES(nTime);
+        READWRITES(nBlockStart);
+        READWRITES(vecBudgetPayments);
+        READWRITES(fAutoChecked);
+        READWRITES(mapVotes);
+    }
 };
 
 // FinalizedBudget are cast then sent to peers with this object, which leaves the votes out
@@ -319,14 +326,16 @@ public:
 
     void Relay();
 
-    IMPLEMENT_SERIALIZE
-    (
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         //for syncing with other clients
-        READWRITE(LIMITED_STRING(strBudgetName, 20));
-        READWRITE(nBlockStart);
-        READWRITE(vecBudgetPayments);
-        READWRITE(nFeeTXHash);
-    )
+        READWRITES(LIMITED_STRING(strBudgetName, 20));
+        READWRITES(nBlockStart);
+        READWRITES(vecBudgetPayments);
+        READWRITES(nFeeTXHash);
+    }
 };
 
 //
@@ -358,12 +367,15 @@ public:
             return ss.GetHash();
     }
 
-    IMPLEMENT_SERIALIZE(
-        READWRITE(vin);
-        READWRITE(nBudgetHash);
-        READWRITE(nTime);
-        READWRITE(vchSig);
-    )
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITES(vin);
+        READWRITES(nBudgetHash);
+        READWRITES(nTime);
+        READWRITES(vchSig);
+    }
 };
 
 //
@@ -450,21 +462,24 @@ public:
         return h1;
     }
 
-    IMPLEMENT_SERIALIZE(
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         //for syncing with other clients
-        READWRITE(LIMITED_STRING(strProposalName, 20));
-        READWRITE(LIMITED_STRING(strURL, 64));
-        READWRITE(nTime);
-        READWRITE(nBlockStart);
-        READWRITE(nBlockEnd);
-        READWRITE(nAmount);
-        READWRITE(address);
-        READWRITE(nTime);
-        READWRITE(nFeeTXHash);
+        READWRITES(LIMITED_STRING(strProposalName, 20));
+        READWRITES(LIMITED_STRING(strURL, 64));
+        READWRITES(nTime);
+        READWRITES(nBlockStart);
+        READWRITES(nBlockEnd);
+        READWRITES(nAmount);
+        READWRITES(address);
+        READWRITES(nTime);
+        READWRITES(nFeeTXHash);
 
         //for saving to the serialized db
-        READWRITE(mapVotes);
-    )
+        READWRITES(mapVotes);
+    }
 };
 
 // Proposals are cast then sent to peers with this object, which leaves the votes out
@@ -502,16 +517,19 @@ public:
 
     void Relay();
 
-     IMPLEMENT_SERIALIZE(
-        READWRITE(LIMITED_STRING(strProposalName, 20));
-        READWRITE(LIMITED_STRING(strURL, 64));
-        READWRITE(nTime);
-        READWRITE(nBlockStart);
-        READWRITE(nBlockEnd);
-        READWRITE(nAmount);
-        READWRITE(address);
-        READWRITE(nFeeTXHash);
-    )
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITES(LIMITED_STRING(strProposalName, 20));
+        READWRITES(LIMITED_STRING(strURL, 64));
+        READWRITES(nTime);
+        READWRITES(nBlockStart);
+        READWRITES(nBlockEnd);
+        READWRITES(nAmount);
+        READWRITES(address);
+        READWRITES(nFeeTXHash);
+    }
 };
 // CBudgetVote - Allow a stormnode node to vote and broadcast throughout the network
 //
@@ -551,13 +569,16 @@ public:
         return ss.GetHash();
     }
 
-    IMPLEMENT_SERIALIZE(
-        READWRITE(vin);
-        READWRITE(nProposalHash);
-        READWRITE(nVote);
-        READWRITE(nTime);
-        READWRITE(vchSig);
-    )    
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITES(vin);
+        READWRITES(nProposalHash);
+        READWRITES(nVote);
+        READWRITES(nTime);
+        READWRITES(vchSig);
+    }
 };
 
 #endif

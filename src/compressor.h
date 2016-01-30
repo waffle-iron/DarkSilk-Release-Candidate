@@ -99,8 +99,8 @@ private:
     CTxOut &txout;
 
 public:
-    static uint64_t CompressAmount(uint64_t nAmount);
-    static uint64_t DecompressAmount(uint64_t nAmount);
+    static CAmount CompressAmount(CAmount nAmount);
+    static CAmount DecompressAmount(CAmount nAmount);
 
     CTxOutCompressor(CTxOut &txoutIn) : txout(txoutIn) { }
 
@@ -109,10 +109,10 @@ public:
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         if (!ser_action.ForRead()) {
-            uint64_t nVal = CompressAmount(txout.nValue);
+            CAmount nVal = CompressAmount(txout.nValue);
             READWRITES(VARINT(nVal));
         } else {
-            uint64_t nVal = 0;
+            CAmount nVal = 0;
             READWRITES(VARINT(nVal));
             txout.nValue = DecompressAmount(nVal);
         }

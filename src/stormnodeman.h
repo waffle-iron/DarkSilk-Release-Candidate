@@ -73,17 +73,20 @@ public:
     // keep track of ssq count to prevent stormnodes from gaining sandstorm queue
     int64_t nSsqCount;
 
-    IMPLEMENT_SERIALIZE(
-        LOCK(cs);
-        READWRITE(vStormnodes);
-        READWRITE(mAskedUsForStormnodeList);
-        READWRITE(mWeAskedForStormnodeList);
-        READWRITE(mWeAskedForStormnodeListEntry);
-        READWRITE(nSsqCount);
+    ADD_SERIALIZE_METHODS;
 
-        READWRITE(mapSeenStormnodeBroadcast);
-        READWRITE(mapSeenStormnodePing);
-    )
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        LOCK(cs);
+        READWRITES(vStormnodes);
+        READWRITES(mAskedUsForStormnodeList);
+        READWRITES(mWeAskedForStormnodeList);
+        READWRITES(mWeAskedForStormnodeListEntry);
+        READWRITES(nSsqCount);
+
+        READWRITES(mapSeenStormnodeBroadcast);
+        READWRITES(mapSeenStormnodePing);
+    }
 
     CStormnodeMan();
     CStormnodeMan(CStormnodeMan& other);

@@ -48,13 +48,15 @@ public:
     CStormnodePing();
     CStormnodePing(CTxIn& newVin);
 
-    IMPLEMENT_SERIALIZE
-    (
-        READWRITE(vin);
-        READWRITE(blockHash);
-        READWRITE(sigTime);
-        READWRITE(vchSig);
-    )
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITES(vin);
+        READWRITES(blockHash);
+        READWRITES(sigTime);
+        READWRITES(vchSig);
+    }
 
     bool CheckAndUpdate(int& nDos, bool fRequireEnabled = true);
     bool Sign(CKey& keyStormnode, CPubKey& pubKeyStormnode);
@@ -180,27 +182,29 @@ public:
 
     uint256 CalculateScore(int mod=1, int64_t nBlockHeight=0);
 
-    IMPLEMENT_SERIALIZE
-    (
-            LOCK(cs);
+    ADD_SERIALIZE_METHODS;
 
-            READWRITE(vin);
-            READWRITE(addr);
-            READWRITE(pubkey);
-            READWRITE(pubkey2);
-            READWRITE(sig);
-            READWRITE(sigTime);
-            READWRITE(protocolVersion);
-            READWRITE(activeState);
-            READWRITE(lastPing);
-            READWRITE(cacheInputAge);
-            READWRITE(cacheInputAgeBlock);
-            READWRITE(unitTest);
-            READWRITE(allowFreeTx);
-            READWRITE(nLastSsq);
-            READWRITE(nScanningErrorCount);
-            READWRITE(nLastScanningErrorBlockHeight);
-    )
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        LOCK(cs);
+
+        READWRITES(vin);
+        READWRITES(addr);
+        READWRITES(pubkey);
+        READWRITES(pubkey2);
+        READWRITES(sig);
+        READWRITES(sigTime);
+        READWRITES(protocolVersion);
+        READWRITES(activeState);
+        READWRITES(lastPing);
+        READWRITES(cacheInputAge);
+        READWRITES(cacheInputAgeBlock);
+        READWRITES(unitTest);
+        READWRITES(allowFreeTx);
+        READWRITES(nLastSsq);
+        READWRITES(nScanningErrorCount);
+        READWRITES(nLastScanningErrorBlockHeight);
+    }
 
     int64_t SecondsSincePayment();
 
@@ -291,18 +295,20 @@ public:
     bool Sign(CKey& keyCollateralAddress);
     void Relay();
 
-    IMPLEMENT_SERIALIZE
-    (
-        READWRITE(vin);
-        READWRITE(addr);
-        READWRITE(pubkey);
-        READWRITE(pubkey2);
-        READWRITE(sig);
-        READWRITE(sigTime);
-        READWRITE(protocolVersion);
-        READWRITE(lastPing);
-        READWRITE(nLastSsq);
-    )
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITES(vin);
+        READWRITES(addr);
+        READWRITES(pubkey);
+        READWRITES(pubkey2);
+        READWRITES(sig);
+        READWRITES(sigTime);
+        READWRITES(protocolVersion);
+        READWRITES(lastPing);
+        READWRITES(nLastSsq);
+    }
 
     uint256 GetHash(){
         CHashWriter ss(SER_GETHASH, PROTOCOL_VERSION);

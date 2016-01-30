@@ -34,10 +34,13 @@ struct CDiskBlockPos
     int nFile;
     unsigned int nPos;
 
-   IMPLEMENT_SERIALIZE(
-        READWRITE(VARINT(nFile));
-        READWRITE(VARINT(nPos));
-    )
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITES(VARINT(nFile));
+        READWRITES(VARINT(nPos));
+    }
 
     CDiskBlockPos() {
         SetNull();
@@ -351,41 +354,43 @@ public:
         hashNext = (pnext ? pnext->GetBlockHash() : 0);
     }
 
-    IMPLEMENT_SERIALIZE
-    (
-        if (!(nType & SER_GETHASH))
-            READWRITE(nVersion);
+    ADD_SERIALIZE_METHODS;
 
-        READWRITE(hashNext);
-        READWRITE(nFile);
-        READWRITE(nBlockPos);
-        READWRITE(nHeight);
-        READWRITE(nMint);
-        READWRITE(nMoneySupply);
-        READWRITE(nFlags);
-        READWRITE(nStakeModifier);
-        READWRITE(bnStakeModifierV2);
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        if (!(nType & SER_GETHASH))
+            READWRITES(nVersion);
+
+        READWRITES(hashNext);
+        READWRITES(nFile);
+        READWRITES(nBlockPos);
+        READWRITES(nHeight);
+        READWRITES(nMint);
+        READWRITES(nMoneySupply);
+        READWRITES(nFlags);
+        READWRITES(nStakeModifier);
+        READWRITES(bnStakeModifierV2);
         if (IsProofOfStake())
         {
-            READWRITE(prevoutStake);
-            READWRITE(nStakeTime);
+            READWRITES(prevoutStake);
+            READWRITES(nStakeTime);
         }
-        else if (fRead)
+        else if (ser_action.ForRead())
         {
             const_cast<CDiskBlockIndex*>(this)->prevoutStake.SetNull();
             const_cast<CDiskBlockIndex*>(this)->nStakeTime = 0;
         }
-        READWRITE(hashProof);
+        READWRITES(hashProof);
 
         // block header
-        READWRITE(this->nVersion);
-        READWRITE(hashPrev);
-        READWRITE(hashMerkleRoot);
-        READWRITE(nTime);
-        READWRITE(nBits);
-        READWRITE(nNonce);
-        READWRITE(blockHash);
-    )
+        READWRITES(this->nVersion);
+        READWRITES(hashPrev);
+        READWRITES(hashMerkleRoot);
+        READWRITES(nTime);
+        READWRITES(nBits);
+        READWRITES(nNonce);
+        READWRITES(blockHash);
+    }
 
     uint256 GetBlockHash() const
     {
@@ -447,12 +452,14 @@ public:
         vHave = vHaveIn;
     }
 
-    IMPLEMENT_SERIALIZE
-    (
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         if (!(nType & SER_GETHASH))
-            READWRITE(nVersion);
-        READWRITE(vHave);
-    )
+            READWRITES(nVersion);
+        READWRITES(vHave);
+    }
 
     void SetNull()
     {

@@ -7,15 +7,13 @@
 #define DARKSILK_UNDO_H
 
 #include "compressor.h"
-#include "primitives/transaction.h"
-#include "serialize.h"
 
-/** Undo information for a CTxIn
- *
- *  Contains the prevout's CTxOut being spent, and if this was the
- *  last output of the affected transaction, its metadata as well
- *  (coinbase or not, height, transaction version)
- */
+///  Undo information for a CTxIn
+///  Contains the prevout's CTxOut being spent, and if this was the
+///  last output of the affected transaction, its metadata as well
+///  (coinbase or not, height, transaction version)
+class CTxOutCompressor;
+
 class CTxInUndo
 {
 public:
@@ -29,9 +27,9 @@ public:
 
     //TODO (Amir): Put this back. can't find CTxOutCompressor???
     unsigned int GetSerializeSize(int nType, int nVersion) const {
-        return 0; //::GetSerializeSize(VARINT(nHeight*2+(fCoinBase ? 1 : 0)), nType, nVersion) +
-               //(nHeight > 0 ? ::GetSerializeSize(VARINT(this->nVersion), nType, nVersion) : 0) +
-               //::GetSerializeSize(CTxOutCompressor(REF(txout)), nType, nVersion);
+        return ::GetSerializeSize(VARINT(nHeight*2+(fCoinBase ? 1 : 0)), nType, nVersion) +
+               (nHeight > 0 ? ::GetSerializeSize(VARINT(this->nVersion), nType, nVersion) : 0) +
+               ::GetSerializeSize(CTxOutCompressor(REF(txout)), nType, nVersion);
     }
 
     template<typename Stream>
@@ -54,12 +52,17 @@ public:
     }
 };
 
-/** Undo information for a CTransaction */
+/// Undo information for a CTransaction
 class CTxUndo
 {
 public:
     // undo information for all txins
     std::vector<CTxInUndo> vprevout;
+
+    /*IMPLEMENT_SERIALIZE
+    (
+        READWRITE(vprevout);
+    )*/
 
     ADD_SERIALIZE_METHODS;
 
