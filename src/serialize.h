@@ -97,7 +97,8 @@ enum
 #endif
 };
 
-#define IMPLEMENT_SERIALIZE(statements)    \
+//TODO (Amir): Remove when new serialization macro is tested.
+/*#define IMPLEMENT_SERIALIZE(statements)    \
     unsigned int GetSerializeSize(int nType, int nVersion) const  \
     {                                           \
         CSerActionGetSerializeSize ser_action;  \
@@ -106,7 +107,7 @@ enum
         const bool fRead = false;               \
         unsigned int nSerSize = 0;              \
         ser_streamplaceholder s;                \
-        assert(fGetSize||fWrite||fRead); /* suppress warning */ \
+        assert(fGetSize||fWrite||fRead);/// suppress warning \
         s.nType = nType;                        \
         s.nVersion = nVersion;                  \
         {statements}                            \
@@ -120,7 +121,7 @@ enum
         const bool fWrite = true;               \
         const bool fRead = false;               \
         unsigned int nSerSize = 0;              \
-        assert(fGetSize||fWrite||fRead); /* suppress warning */ \
+        assert(fGetSize||fWrite||fRead); /// suppress warning  \
         {statements}                            \
     }                                           \
     template<typename Stream>                   \
@@ -131,12 +132,13 @@ enum
         const bool fWrite = false;              \
         const bool fRead = true;                \
         unsigned int nSerSize = 0;              \
-        assert(fGetSize||fWrite||fRead); /* suppress warning */ \
+        assert(fGetSize||fWrite||fRead); /// suppress warning  \
         {statements}                            \
     }
+*/
 
-#define READWRITE(obj)      (nSerSize += ::SerReadWrite(s, (obj), nType, nVersion, ser_action))
-
+//#define READWRITE(obj)      (nSerSize += ::SerReadWrite(s, (obj), nType, nVersion, ser_action))
+#define READWRITE(obj)      (::SerReadWrite(s, (obj), nType, nVersion, ser_action))
 #define READWRITES(obj)	    (::SerReadWrite(s, (obj), nType, nVersion, ser_action))
 
 /** 

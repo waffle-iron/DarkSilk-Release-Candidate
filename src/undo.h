@@ -25,11 +25,11 @@ public:
     CTxInUndo() : txout(), fCoinBase(false), nHeight(0), nVersion(0) {}
     CTxInUndo(const CTxOut &txoutIn, bool fCoinBaseIn = false, unsigned int nHeightIn = 0, int nVersionIn = 0) : txout(txoutIn), fCoinBase(fCoinBaseIn), nHeight(nHeightIn), nVersion(nVersionIn) { }
 
-    //TODO (Amir): Put this back. can't find CTxOutCompressor???
+    //TODO (Amir): Put this back. can't find CTxOutCompressor??? Is this the Tx sending issue????
     unsigned int GetSerializeSize(int nType, int nVersion) const {
-        return ::GetSerializeSize(VARINT(nHeight*2+(fCoinBase ? 1 : 0)), nType, nVersion) +
-               (nHeight > 0 ? ::GetSerializeSize(VARINT(this->nVersion), nType, nVersion) : 0) +
-               ::GetSerializeSize(CTxOutCompressor(REF(txout)), nType, nVersion);
+        return 0;//::GetSerializeSize(VARINT(nHeight*2+(fCoinBase ? 1 : 0)), nType, nVersion) +
+               //(nHeight > 0 ? ::GetSerializeSize(VARINT(this->nVersion), nType, nVersion) : 0) +
+               //::GetSerializeSize(CTxOutCompressor(REF(txout)), nType, nVersion);
     }
 
     template<typename Stream>
@@ -58,11 +58,6 @@ class CTxUndo
 public:
     // undo information for all txins
     std::vector<CTxInUndo> vprevout;
-
-    /*IMPLEMENT_SERIALIZE
-    (
-        READWRITE(vprevout);
-    )*/
 
     ADD_SERIALIZE_METHODS;
 
