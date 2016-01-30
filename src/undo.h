@@ -27,9 +27,9 @@ public:
 
     //TODO (Amir): Put this back. can't find CTxOutCompressor??? Is this the Tx sending issue????
     unsigned int GetSerializeSize(int nType, int nVersion) const {
-        return 0;//::GetSerializeSize(VARINT(nHeight*2+(fCoinBase ? 1 : 0)), nType, nVersion) +
-               //(nHeight > 0 ? ::GetSerializeSize(VARINT(this->nVersion), nType, nVersion) : 0) +
-               //::GetSerializeSize(CTxOutCompressor(REF(txout)), nType, nVersion);
+        return ::GetSerializeSize(VARINT(nHeight*2+(fCoinBase ? 1 : 0)), nType, nVersion) +
+               (nHeight > 0 ? ::GetSerializeSize(VARINT(this->nVersion), nType, nVersion) : 0) +
+               ::GetSerializeSize(CTxOutCompressor(REF(txout)), nType, nVersion);
     }
 
     template<typename Stream>
