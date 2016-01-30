@@ -14,12 +14,6 @@
 
 using namespace std;
 
-
-
-
-
-
-
 string EncodeBase64(const unsigned char* pch, size_t len)
 {
     static const char *pbase64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";

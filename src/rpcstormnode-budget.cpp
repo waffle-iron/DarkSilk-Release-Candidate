@@ -343,7 +343,8 @@ Value snbudget(const Array& params, bool fHelp)
             throw runtime_error("Correct usage is 'snbudget list [valid]'");
 
         std::string strShow = "valid";
-        if (params.size() == 2) strShow = params[1].get_str();
+
+        std::string strProposalName = "";
 
         Object resultObj;
         CAmount nTotalAllotted = 0;
@@ -352,6 +353,12 @@ Value snbudget(const Array& params, bool fHelp)
         BOOST_FOREACH(CBudgetProposal* pbudgetProposal, winningProps)
         {
             if(strShow == "valid" && !pbudgetProposal->fValid) continue;
+
+            // if a proposal name is submitted only show that one
+            if (params.size() == 2){
+                strProposalName = SanitizeString(params[1].get_str());
+                if (strProposalName != pbudgetProposal->GetName()) continue;
+            }
 
             nTotalAllotted += pbudgetProposal->GetAllotted();
 
@@ -733,7 +740,7 @@ Value snfinalbudget(const Array& params, bool fHelp)
         if (params.size() != 2)
             throw runtime_error("Correct usage is 'snbudget getvotes <budget-hash>'");
 
-        std::string strHash = params[1].get_str();
+        std::string strHash = SanitizeString(params[1].get_str());
         uint256 hash(strHash);
 
         Object obj;
