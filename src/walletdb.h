@@ -55,12 +55,14 @@ public:
         nCreateTime = nCreateTime_;
     }
 
-    IMPLEMENT_SERIALIZE
-    (
-        READWRITE(this->nVersion);
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITES(this->nVersion);
         nVersion = this->nVersion;
-        READWRITE(nCreateTime);
-    )
+        READWRITES(nCreateTime);
+    }
 
     void SetNull()
     {
@@ -84,12 +86,13 @@ public:
     CPubKey pkEphem;
     CPubKey pkScan;
 
-    IMPLEMENT_SERIALIZE
-    (
-        READWRITE(pkEphem);
-        READWRITE(pkScan);
-    )
+    ADD_SERIALIZE_METHODS;
 
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITES(pkEphem);
+        READWRITES(pkScan);
+    }
 };
 
 /** Access to the wallet database (wallet.dat) */

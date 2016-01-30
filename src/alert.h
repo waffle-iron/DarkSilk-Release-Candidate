@@ -47,24 +47,26 @@ public:
     std::string strStatusBar;
     std::string strReserved;
 
-    IMPLEMENT_SERIALIZE
-    (
-        READWRITE(this->nVersion);
-        nVersion = this->nVersion;
-        READWRITE(nRelayUntil);
-        READWRITE(nExpiration);
-        READWRITE(nID);
-        READWRITE(nCancel);
-        READWRITE(setCancel);
-        READWRITE(nMinVer);
-        READWRITE(nMaxVer);
-        READWRITE(setSubVer);
-        READWRITE(nPriority);
+    ADD_SERIALIZE_METHODS;
 
-        READWRITE(LIMITED_STRING(strComment, 65536));
-        READWRITE(LIMITED_STRING(strStatusBar, 256));
-        READWRITE(LIMITED_STRING(strReserved, 256));
-    )
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITES(this->nVersion);
+        nVersion = this->nVersion;
+        READWRITES(nRelayUntil);
+        READWRITES(nExpiration);
+        READWRITES(nID);
+        READWRITES(nCancel);
+        READWRITES(setCancel);
+        READWRITES(nMinVer);
+        READWRITES(nMaxVer);
+        READWRITES(setSubVer);
+        READWRITES(nPriority);
+
+        READWRITES(LIMITED_STRING(strComment, 65536));
+        READWRITES(LIMITED_STRING(strStatusBar, 256));
+        READWRITES(LIMITED_STRING(strReserved, 256));
+    }
 
     void SetNull();
 
@@ -84,11 +86,13 @@ public:
         SetNull();
     }
 
-    IMPLEMENT_SERIALIZE
-    (
-        READWRITE(vchMsg);
-        READWRITE(vchSig);
-    )
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITES(vchMsg);
+        READWRITES(vchSig);
+    }
 
     void SetNull();
     bool IsNull() const;

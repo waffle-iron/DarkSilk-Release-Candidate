@@ -172,13 +172,16 @@ public:
         ready = false;
     }
 
-    IMPLEMENT_SERIALIZE(
-        READWRITE(nDenom);
-        READWRITE(vin);
-        READWRITE(time);
-        READWRITE(ready);
-        READWRITE(vchSig);
-    )
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITES(nDenom);
+        READWRITES(vin);
+        READWRITES(time);
+        READWRITES(ready);
+        READWRITES(vchSig);
+    }
 
     bool GetAddress(CService &addr)
     {

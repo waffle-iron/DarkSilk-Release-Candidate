@@ -57,17 +57,6 @@ public:
         nNonce = 0;
     }
 
-    /*IMPLEMENT_SERIALIZE
-    (
-        READWRITE(this->nVersion);
-        nVersion = this->nVersion;
-        READWRITE(hashPrevBlock);
-        READWRITE(hashMerkleRoot);
-        READWRITE(nTime);
-        READWRITE(nBits);
-        READWRITE(nNonce);
-    )*/
-
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
@@ -150,21 +139,6 @@ public:
         nDoS = 0;
     }
 
-    /*IMPLEMENT_SERIALIZE
-    (
-        READWRITE(*(CBlockHeader*)this);
-        // ConnectBlock depends on vtx following header to generate CDiskTxPos
-        if (!(nType & (SER_GETHASH|SER_BLOCKHEADERONLY)))
-        {
-            READWRITE(vtx);
-            READWRITE(vchBlockSig);
-        }
-        else if (fRead)
-        {
-            const_cast<CBlock*>(this)->vtx.clear();
-            const_cast<CBlock*>(this)->vchBlockSig.clear();
-        }
-    )*/
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>

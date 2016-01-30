@@ -24,16 +24,18 @@ public:
     CSandStormRelay();
     CSandStormRelay(CTxIn& vinStormnodeIn, vector<unsigned char>& vchSigIn, int nBlockHeightIn, int nRelayTypeIn, CTxIn& in2, CTxOut& out2);
 
-    IMPLEMENT_SERIALIZE
-    (
-        READWRITE(vinStormnode);
-        READWRITE(vchSig);
-        READWRITE(vchSig2);
-        READWRITE(nBlockHeight);
-        READWRITE(nRelayType);
-        READWRITE(in);
-        READWRITE(out);
-    )
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITES(vinStormnode);
+        READWRITES(vchSig);
+        READWRITES(vchSig2);
+        READWRITES(nBlockHeight);
+        READWRITES(nRelayType);
+        READWRITES(in);
+        READWRITES(out);
+    }
 
     std::string ToString();
 

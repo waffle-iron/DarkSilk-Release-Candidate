@@ -104,18 +104,21 @@ public:
 
     CTxOutCompressor(CTxOut &txoutIn) : txout(txoutIn) { }
 
-    IMPLEMENT_SERIALIZE(
-        if (!fRead) {
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        if (!ser_action.ForRead()) {
             uint64_t nVal = CompressAmount(txout.nValue);
-            READWRITE(VARINT(nVal));
+            READWRITES(VARINT(nVal));
         } else {
             uint64_t nVal = 0;
-            READWRITE(VARINT(nVal));
+            READWRITES(VARINT(nVal));
             txout.nValue = DecompressAmount(nVal);
         }
         CScriptCompressor cscript(REF(txout.scriptPubKey));
-        READWRITE(cscript);
-    )
+        READWRITES(cscript);
+    }
 };
 
 #endif // DARKSILK_COMPRESSOR_H
