@@ -26,6 +26,7 @@
 class CAutoFile;
 class CDataStream;
 class CScript;
+class CTxOutCompressor;
 
 static const unsigned int MAX_SIZE = 0x02000000;
 

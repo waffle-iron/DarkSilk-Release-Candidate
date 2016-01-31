@@ -6,9 +6,6 @@
 #ifndef DARKSILK_COINS_H
 #define DARKSILK_COINS_H
 
-#include "compressor.h"
-#include "serialize.h"
-#include "uint256.h"
 #include "undo.h"
 #include "txmempool.h"
 
@@ -17,6 +14,36 @@
 
 #include <boost/foreach.hpp>
 #include <boost/unordered_map.hpp>
+
+class CScriptCompressor;
+/// wrapper for CTxOut that provides a more compact serialization
+class CTxOutCompressorCoin
+{
+private:
+    CTxOut &txout;
+
+public:
+    static uint64_t CompressAmount(uint64_t nAmount);
+    static uint64_t DecompressAmount(uint64_t nAmount);
+
+    CTxOutCompressorCoin(CTxOut &txoutIn) : txout(txoutIn) { }
+
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        if (!ser_action.ForRead()) {
+            CAmount nVal = CompressAmount(txout.nValue);
+            READWRITES(VARINT(nVal));
+        } else {
+            CAmount nVal = 0;
+            READWRITES(VARINT(nVal));
+            txout.nValue = DecompressAmount(nVal);
+        }
+        CScriptCompressor cscript(REF(txout.scriptPubKey));
+        READWRITES(cscript);
+    }
+};
 
 /**
  * Pruned version of CTransaction: only retains metadata and unspent transaction outputs
@@ -70,6 +97,9 @@
  *              * 8c988f1a4a4de2161e0f50aac7f17e7f9555caa4: address uint160
  *  - height = 120891
  */
+
+class CTxInUndo;
+
 class CCoins
 {
 public:
@@ -169,9 +199,8 @@ public:
         // txouts themself
 
         for (unsigned int i = 0; i < vout.size(); i++)
-            //TODO (Amir): Put this back. can't find CTxOutCompressor???
-            //if (!vout[i].IsNull())
-            //    nSize += ::GetSerializeSize(CTxOutCompressor(REF(vout[i])), nType, nVersion);
+            if (!vout[i].IsNull())
+                nSize += ::GetSerializeSize(CTxOutCompressorCoin(REF(vout[i])), nType, nVersion);
 
         // height
         nSize += ::GetSerializeSize(VARINT(nHeight), nType, nVersion);
@@ -201,7 +230,7 @@ public:
         // txouts themself
         for (unsigned int i = 0; i < vout.size(); i++) {
             if (!vout[i].IsNull())
-                ::Serialize(s, CTxOutCompressor(REF(vout[i])), nType, nVersion);
+                ::Serialize(s, CTxOutCompressorCoin(REF(vout[i])), nType, nVersion);
         }
         // coinbase height
         ::Serialize(s, VARINT(nHeight), nType, nVersion);
@@ -234,7 +263,7 @@ public:
         vout.assign(vAvail.size(), CTxOut());
         for (unsigned int i = 0; i < vAvail.size(); i++) {
             if (vAvail[i])
-                ::Unserialize(s, REF(CTxOutCompressor(vout[i])), nType, nVersion);
+                ::Unserialize(s, REF(CTxOutCompressorCoin(vout[i])), nType, nVersion);
         }
         // coinbase height
         ::Unserialize(s, VARINT(nHeight), nType, nVersion);

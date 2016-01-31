@@ -12,7 +12,36 @@
 ///  Contains the prevout's CTxOut being spent, and if this was the
 ///  last output of the affected transaction, its metadata as well
 ///  (coinbase or not, height, transaction version)
-class CTxOutCompressor;
+
+class CScriptCompressor;
+/// wrapper for CTxOut that provides a more compact serialization
+class CTxOutCompressorUndo
+{
+private:
+    CTxOut &txout;
+
+public:
+    static uint64_t CompressAmount(uint64_t nAmount);
+    static uint64_t DecompressAmount(uint64_t nAmount);
+
+    CTxOutCompressorUndo(CTxOut &txoutIn) : txout(txoutIn) { }
+
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        if (!ser_action.ForRead()) {
+            CAmount nVal = CompressAmount(txout.nValue);
+            READWRITES(VARINT(nVal));
+        } else {
+            CAmount nVal = 0;
+            READWRITES(VARINT(nVal));
+            txout.nValue = DecompressAmount(nVal);
+        }
+        CScriptCompressor cscript(REF(txout.scriptPubKey));
+        READWRITES(cscript);
+    }
+};
 
 class CTxInUndo
 {
@@ -25,11 +54,10 @@ public:
     CTxInUndo() : txout(), fCoinBase(false), nHeight(0), nVersion(0) {}
     CTxInUndo(const CTxOut &txoutIn, bool fCoinBaseIn = false, unsigned int nHeightIn = 0, int nVersionIn = 0) : txout(txoutIn), fCoinBase(fCoinBaseIn), nHeight(nHeightIn), nVersion(nVersionIn) { }
 
-    //TODO (Amir): Put this back. can't find CTxOutCompressor??? Is this the Tx sending issue????
     unsigned int GetSerializeSize(int nType, int nVersion) const {
         return ::GetSerializeSize(VARINT(nHeight*2+(fCoinBase ? 1 : 0)), nType, nVersion) +
                (nHeight > 0 ? ::GetSerializeSize(VARINT(this->nVersion), nType, nVersion) : 0) +
-               ::GetSerializeSize(CTxOutCompressor(REF(txout)), nType, nVersion);
+               ::GetSerializeSize(CTxOutCompressorUndo(REF(txout)), nType, nVersion);
     }
 
     template<typename Stream>
@@ -37,7 +65,7 @@ public:
         ::Serialize(s, VARINT(nHeight*2+(fCoinBase ? 1 : 0)), nType, nVersion);
         if (nHeight > 0)
             ::Serialize(s, VARINT(this->nVersion), nType, nVersion);
-        ::Serialize(s, CTxOutCompressor(REF(txout)), nType, nVersion);
+        ::Serialize(s, CTxOutCompressorUndo(REF(txout)), nType, nVersion);
     }
 
     template<typename Stream>
@@ -48,7 +76,7 @@ public:
         fCoinBase = nCode & 1;
         if (nHeight > 0)
             ::Unserialize(s, VARINT(this->nVersion), nType, nVersion);
-        ::Unserialize(s, REF(CTxOutCompressor(REF(txout))), nType, nVersion);
+        ::Unserialize(s, REF(CTxOutCompressorUndo(REF(txout))), nType, nVersion);
     }
 };
 

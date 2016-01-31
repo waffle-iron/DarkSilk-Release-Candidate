@@ -124,7 +124,8 @@ QMAKE_CLEAN += $$PWD/src/secp256k1/src/libsecp256k1_la-secp256k1.o; cd $$PWD/src
 
 INCLUDEPATH += src/leveldb/include src/leveldb/helpers src/leveldb/helpers/memenv
 LIBS += $$PWD/src/leveldb/libleveldb.a $$PWD/src/leveldb/libmemenv.a
-SOURCES += src/txdb-leveldb.cpp
+SOURCES += src/txdb-leveldb.cpp \
+    src/undo.cpp
 
 
 INCLUDEPATH +=  src/crypto/argon2 \
