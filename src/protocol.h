@@ -38,10 +38,10 @@ class CMessageHeader
 
         template <typename Stream, typename Operation>
         inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-            READWRITES(FLATDATA(pchMessageStart));
-            READWRITES(FLATDATA(pchCommand));
-            READWRITES(nMessageSize);
-            READWRITES(nChecksum);
+            READWRITE(FLATDATA(pchMessageStart));
+            READWRITE(FLATDATA(pchCommand));
+            READWRITE(nMessageSize);
+            READWRITE(nChecksum);
         }
 
     // TODO: make private (improves encapsulation)
@@ -88,12 +88,12 @@ class CAddress : public CService
             if (ser_action.ForRead())
                 pthis->Init();
             if (nType & SER_DISK)
-                READWRITES(nVersion);
+                READWRITE(nVersion);
             if ((nType & SER_DISK) ||
                 (nVersion >= CADDR_TIME_VERSION && !(nType & SER_GETHASH)))
-                READWRITES(nTime);
-            READWRITES(nServices);
-            READWRITES(*pip);
+                READWRITE(nTime);
+            READWRITE(nServices);
+            READWRITE(*pip);
         }
 
         void print() const;
@@ -121,8 +121,8 @@ class CInv
 
         template <typename Stream, typename Operation>
         inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-            READWRITES(type);
-            READWRITES(hash);
+            READWRITE(type);
+            READWRITE(hash);
         }
 
         friend bool operator<(const CInv& a, const CInv& b);

@@ -78,14 +78,14 @@ public:
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         LOCK(cs);
-        READWRITES(vStormnodes);
-        READWRITES(mAskedUsForStormnodeList);
-        READWRITES(mWeAskedForStormnodeList);
-        READWRITES(mWeAskedForStormnodeListEntry);
-        READWRITES(nSsqCount);
+        READWRITE(vStormnodes);
+        READWRITE(mAskedUsForStormnodeList);
+        READWRITE(mWeAskedForStormnodeList);
+        READWRITE(mWeAskedForStormnodeListEntry);
+        READWRITE(nSsqCount);
 
-        READWRITES(mapSeenStormnodeBroadcast);
-        READWRITES(mapSeenStormnodePing);
+        READWRITE(mapSeenStormnodeBroadcast);
+        READWRITE(mapSeenStormnodePing);
     }
 
     CStormnodeMan();

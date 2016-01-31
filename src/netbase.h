@@ -100,11 +100,11 @@ class CNetAddr
 
         template <typename Stream, typename Operation>
         inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-            READWRITES(FLATDATA(ip));
+            READWRITE(FLATDATA(ip));
 #ifdef USE_NATIVE_I2P
             if (!(nType & SER_IPADDRONLY))
             {
-               READWRITES(FLATDATA(i2pDest));
+               READWRITE(FLATDATA(i2pDest));
             }
 #endif
         }
@@ -146,15 +146,15 @@ class CService : public CNetAddr
         template <typename Stream, typename Operation>
         inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
             CService* pthis = const_cast<CService*>(this);
-            READWRITES(FLATDATA(ip));
+            READWRITE(FLATDATA(ip));
 #ifdef USE_NATIVE_I2P
             if (!(nType & SER_IPADDRONLY))
             {
-                READWRITES(FLATDATA(i2pDest));
+                READWRITE(FLATDATA(i2pDest));
             }
 #endif
             unsigned short portN = htons(port);
-            READWRITES(portN);
+            READWRITE(portN);
             if (ser_action.ForRead())
                 pthis->port = ntohs(portN);
         }

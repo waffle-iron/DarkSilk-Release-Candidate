@@ -46,11 +46,11 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(vchCryptedKey);
-        READWRITES(vchSalt);
-        READWRITES(nDerivationMethod);
-        READWRITES(nDeriveIterations);
-        READWRITES(vchOtherDerivationParameters);
+        READWRITE(vchCryptedKey);
+        READWRITE(vchSalt);
+        READWRITE(nDerivationMethod);
+        READWRITE(nDeriveIterations);
+        READWRITE(vchOtherDerivationParameters);
     }
 
     CMasterKey()

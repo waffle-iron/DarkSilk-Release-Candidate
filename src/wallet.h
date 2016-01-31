@@ -88,9 +88,9 @@ public:
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         if (!(nType & SER_GETHASH))
-            READWRITES(nVersion);
-            READWRITES(nTime);
-            READWRITES(vchPubKey);
+            READWRITE(nVersion);
+            READWRITE(nTime);
+            READWRITE(vchPubKey);
     }
 };
 
@@ -659,14 +659,14 @@ public:
 
         //TODO (Amir): Review translation of this serialization line:
         //nSerSize += SerReadWrite(s, *(CMerkleTx*)this, nType, nVersion,ser_action);
-        READWRITES(*(CMerkleTx*)this);
-        READWRITES(vtxPrev);
-        READWRITES(mapValue);
-        READWRITES(vOrderForm);
-        READWRITES(fTimeReceivedIsTxTime);
-        READWRITES(nTimeReceived);
-        READWRITES(fFromMe);
-        READWRITES(fSpent);
+        READWRITE(*(CMerkleTx*)this);
+        READWRITE(vtxPrev);
+        READWRITE(mapValue);
+        READWRITE(vOrderForm);
+        READWRITE(fTimeReceivedIsTxTime);
+        READWRITE(nTimeReceived);
+        READWRITE(fFromMe);
+        READWRITE(fSpent);
 
         if (ser_action.ForRead())
         {
@@ -1128,11 +1128,11 @@ public:
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         if (!(nType & SER_GETHASH))
-            READWRITES(nVersion);
-        READWRITES(vchPrivKey);
-        READWRITES(nTimeCreated);
-        READWRITES(nTimeExpires);
-        READWRITES(LIMITED_STRING(strComment, 65536));
+            READWRITE(nVersion);
+        READWRITE(vchPrivKey);
+        READWRITE(nTimeCreated);
+        READWRITE(nTimeExpires);
+        READWRITE(LIMITED_STRING(strComment, 65536));
     }
 };
 
@@ -1164,8 +1164,8 @@ public:
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         if (!(nType & SER_GETHASH))
-            READWRITES(nVersion);
-        READWRITES(vchPubKey);
+            READWRITE(nVersion);
+        READWRITE(vchPubKey);
     }
 };
 
@@ -1207,11 +1207,11 @@ public:
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         CAccountingEntry& me = *const_cast<CAccountingEntry*>(this);
         if (!(nType & SER_GETHASH))
-            READWRITES(nVersion);
+            READWRITE(nVersion);
         // Note: strAccount is serialized as part of the key, not here.
-        READWRITES(nCreditDebit);
-        READWRITES(nTime);
-        READWRITES(LIMITED_STRING(strComment, 65536));
+        READWRITE(nCreditDebit);
+        READWRITE(nTime);
+        READWRITE(LIMITED_STRING(strComment, 65536));
 
         if (!ser_action.ForRead())
         {
@@ -1227,7 +1227,7 @@ public:
             }
         }
 
-        READWRITES(LIMITED_STRING(strComment, 65536));
+        READWRITE(LIMITED_STRING(strComment, 65536));
 
         size_t nSepPos = strComment.find("\0", 0, 1);
         if (ser_action.ForRead())

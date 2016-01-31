@@ -77,8 +77,8 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(scriptPubKey);
-        READWRITES(nVotes);
+        READWRITE(scriptPubKey);
+        READWRITE(nVotes);
     }
 };
 
@@ -145,8 +145,8 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(nBlockHeight);
-        READWRITES(vecPayments);
+        READWRITE(nBlockHeight);
+        READWRITE(vecPayments);
     }
 };
 
@@ -194,10 +194,10 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(vinStormnode);
-        READWRITES(nBlockHeight);
-        READWRITES(payee);
-        READWRITES(vchSig);
+        READWRITE(vinStormnode);
+        READWRITE(nBlockHeight);
+        READWRITE(payee);
+        READWRITE(vchSig);
     }
 
     std::string ToString()
@@ -275,8 +275,8 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(mapStormnodePayeeVotes);
-        READWRITES(mapStormnodeBlocks);
+        READWRITE(mapStormnodePayeeVotes);
+        READWRITE(mapStormnodeBlocks);
     }
 };
 

@@ -77,10 +77,10 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(txHash);
-        READWRITES(vinStormnode);
-        READWRITES(vchStormNodeSignature);
-        READWRITES(nBlockHeight);
+        READWRITE(txHash);
+        READWRITE(vinStormnode);
+        READWRITE(vchStormNodeSignature);
+        READWRITE(nBlockHeight);
     }
 };
 

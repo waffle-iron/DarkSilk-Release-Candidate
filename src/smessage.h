@@ -206,9 +206,9 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(this->sAddress);
-        READWRITES(this->fReceiveEnabled);
-        READWRITES(this->fReceiveAnon);
+        READWRITE(this->sAddress);
+        READWRITE(this->fReceiveEnabled);
+        READWRITE(this->fReceiveAnon);
     }
 };
 
@@ -279,12 +279,12 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(this->timeReceived);
-        READWRITES(this->status);
-        READWRITES(this->folderId);
-        READWRITES(this->sAddrTo);
-        READWRITES(this->sAddrOutbox);
-        READWRITES(this->vchMessage);
+        READWRITE(this->timeReceived);
+        READWRITE(this->status);
+        READWRITE(this->folderId);
+        READWRITE(this->sAddrTo);
+        READWRITE(this->sAddrOutbox);
+        READWRITE(this->vchMessage);
     }
 };
 

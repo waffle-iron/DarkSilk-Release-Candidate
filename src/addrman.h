@@ -47,10 +47,10 @@ public:
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         CAddress* pthis = (CAddress*)(this);
-        READWRITES(*pthis);
-        READWRITES(source);
-        READWRITES(nLastSuccess);
-        READWRITES(nAttempts);
+        READWRITE(*pthis);
+        READWRITE(source);
+        READWRITE(nLastSuccess);
+        READWRITE(nAttempts);
     }
 
     void Init()

@@ -28,13 +28,13 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(vinStormnode);
-        READWRITES(vchSig);
-        READWRITES(vchSig2);
-        READWRITES(nBlockHeight);
-        READWRITES(nRelayType);
-        READWRITES(in);
-        READWRITES(out);
+        READWRITE(vinStormnode);
+        READWRITE(vchSig);
+        READWRITE(vchSig2);
+        READWRITE(nBlockHeight);
+        READWRITE(nRelayType);
+        READWRITE(in);
+        READWRITE(out);
     }
 
     std::string ToString();

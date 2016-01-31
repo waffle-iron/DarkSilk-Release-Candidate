@@ -163,15 +163,15 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(mapSeenStormnodeBudgetProposals);
-        READWRITES(mapSeenStormnodeBudgetVotes);
-        READWRITES(mapSeenFinalizedBudgets);
-        READWRITES(mapSeenFinalizedBudgetVotes);
-        READWRITES(mapOrphanStormnodeBudgetVotes);
-        READWRITES(mapSeenStormnodeBudgetVotes);
+        READWRITE(mapSeenStormnodeBudgetProposals);
+        READWRITE(mapSeenStormnodeBudgetVotes);
+        READWRITE(mapSeenFinalizedBudgets);
+        READWRITE(mapSeenFinalizedBudgetVotes);
+        READWRITE(mapOrphanStormnodeBudgetVotes);
+        READWRITE(mapSeenStormnodeBudgetVotes);
 
-        READWRITES(mapProposals);
-        READWRITES(mapFinalizedBudgets);
+        READWRITE(mapProposals);
+        READWRITE(mapFinalizedBudgets);
     }
 };
 
@@ -192,9 +192,9 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(payee);
-        READWRITES(nAmount);
-        READWRITES(nProposalHash);
+        READWRITE(payee);
+        READWRITE(nAmount);
+        READWRITE(nProposalHash);
     }
 };
 
@@ -282,13 +282,13 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(LIMITED_STRING(strBudgetName, 20));
-        READWRITES(nFeeTXHash);
-        READWRITES(nTime);
-        READWRITES(nBlockStart);
-        READWRITES(vecBudgetPayments);
-        READWRITES(fAutoChecked);
-        READWRITES(mapVotes);
+        READWRITE(LIMITED_STRING(strBudgetName, 20));
+        READWRITE(nFeeTXHash);
+        READWRITE(nTime);
+        READWRITE(nBlockStart);
+        READWRITE(vecBudgetPayments);
+        READWRITE(fAutoChecked);
+        READWRITE(mapVotes);
     }
 };
 
@@ -331,10 +331,10 @@ public:
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         //for syncing with other clients
-        READWRITES(LIMITED_STRING(strBudgetName, 20));
-        READWRITES(nBlockStart);
-        READWRITES(vecBudgetPayments);
-        READWRITES(nFeeTXHash);
+        READWRITE(LIMITED_STRING(strBudgetName, 20));
+        READWRITE(nBlockStart);
+        READWRITE(vecBudgetPayments);
+        READWRITE(nFeeTXHash);
     }
 };
 
@@ -371,10 +371,10 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(vin);
-        READWRITES(nBudgetHash);
-        READWRITES(nTime);
-        READWRITES(vchSig);
+        READWRITE(vin);
+        READWRITE(nBudgetHash);
+        READWRITE(nTime);
+        READWRITE(vchSig);
     }
 };
 
@@ -467,18 +467,18 @@ public:
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         //for syncing with other clients
-        READWRITES(LIMITED_STRING(strProposalName, 20));
-        READWRITES(LIMITED_STRING(strURL, 64));
-        READWRITES(nTime);
-        READWRITES(nBlockStart);
-        READWRITES(nBlockEnd);
-        READWRITES(nAmount);
-        READWRITES(address);
-        READWRITES(nTime);
-        READWRITES(nFeeTXHash);
+        READWRITE(LIMITED_STRING(strProposalName, 20));
+        READWRITE(LIMITED_STRING(strURL, 64));
+        READWRITE(nTime);
+        READWRITE(nBlockStart);
+        READWRITE(nBlockEnd);
+        READWRITE(nAmount);
+        READWRITE(address);
+        READWRITE(nTime);
+        READWRITE(nFeeTXHash);
 
         //for saving to the serialized db
-        READWRITES(mapVotes);
+        READWRITE(mapVotes);
     }
 };
 
@@ -521,14 +521,14 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(LIMITED_STRING(strProposalName, 20));
-        READWRITES(LIMITED_STRING(strURL, 64));
-        READWRITES(nTime);
-        READWRITES(nBlockStart);
-        READWRITES(nBlockEnd);
-        READWRITES(nAmount);
-        READWRITES(address);
-        READWRITES(nFeeTXHash);
+        READWRITE(LIMITED_STRING(strProposalName, 20));
+        READWRITE(LIMITED_STRING(strURL, 64));
+        READWRITE(nTime);
+        READWRITE(nBlockStart);
+        READWRITE(nBlockEnd);
+        READWRITE(nAmount);
+        READWRITE(address);
+        READWRITE(nFeeTXHash);
     }
 };
 // CBudgetVote - Allow a stormnode node to vote and broadcast throughout the network
@@ -573,11 +573,11 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(vin);
-        READWRITES(nProposalHash);
-        READWRITES(nVote);
-        READWRITES(nTime);
-        READWRITES(vchSig);
+        READWRITE(vin);
+        READWRITE(nProposalHash);
+        READWRITE(nVote);
+        READWRITE(nTime);
+        READWRITE(vchSig);
     }
 };
 

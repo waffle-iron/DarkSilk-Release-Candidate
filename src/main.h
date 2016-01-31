@@ -260,7 +260,7 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(FLATDATA(*this));
+        READWRITE(FLATDATA(*this));
     }
 
     void SetNull() { nFile = (unsigned int) -1; nBlockPos = 0; nTxPos = 0; }
@@ -311,7 +311,7 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(this->nVersion);
+        READWRITE(this->nVersion);
         nVersion = this->nVersion;
     }
 
@@ -428,11 +428,11 @@ public:
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         //TODO (Amir): Review translation below.
         //nSerSize += SerReadWrite(s, *(CTransaction*)this, nType, nVersion, ser_action);
-        READWRITES(*(CTransaction*)this);
+        READWRITE(*(CTransaction*)this);
         nVersion = this->nVersion;
-        READWRITES(hashBlock);
-        READWRITES(vMerkleBranch);
-        READWRITES(nIndex);
+        READWRITE(hashBlock);
+        READWRITE(vMerkleBranch);
+        READWRITE(nIndex);
     }
 
     int SetMerkleBranch(const CBlock* pblock=NULL);
@@ -477,9 +477,9 @@ public:
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         if (!(nType & SER_GETHASH))
-            READWRITES(nVersion);
-        READWRITES(pos);
-        READWRITES(vSpent);
+            READWRITE(nVersion);
+        READWRITE(pos);
+        READWRITE(vSpent);
     }
 
     void SetNull()
@@ -609,13 +609,13 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(VARINT(nBlocks));
-        READWRITES(VARINT(nSize));
-        READWRITES(VARINT(nUndoSize));
-        READWRITES(VARINT(nHeightFirst));
-        READWRITES(VARINT(nHeightLast));
-        READWRITES(VARINT(nTimeFirst));
-        READWRITES(VARINT(nTimeLast));
+        READWRITE(VARINT(nBlocks));
+        READWRITE(VARINT(nSize));
+        READWRITE(VARINT(nUndoSize));
+        READWRITE(VARINT(nHeightFirst));
+        READWRITE(VARINT(nHeightLast));
+        READWRITE(VARINT(nTimeFirst));
+        READWRITE(VARINT(nTimeLast));
     }
 
     void SetNull() {

@@ -176,11 +176,11 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(nDenom);
-        READWRITES(vin);
-        READWRITES(time);
-        READWRITES(ready);
-        READWRITES(vchSig);
+        READWRITE(nDenom);
+        READWRITE(vin);
+        READWRITE(time);
+        READWRITE(ready);
+        READWRITE(vchSig);
     }
 
     bool GetAddress(CService &addr)

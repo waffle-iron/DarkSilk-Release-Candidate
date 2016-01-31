@@ -61,13 +61,13 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(this->nVersion);
+        READWRITE(this->nVersion);
         nVersion = this->nVersion;
-        READWRITES(hashPrevBlock);
-        READWRITES(hashMerkleRoot);
-        READWRITES(nTime);
-        READWRITES(nBits);
-        READWRITES(nNonce);
+        READWRITE(hashPrevBlock);
+        READWRITE(hashMerkleRoot);
+        READWRITE(nTime);
+        READWRITE(nBits);
+        READWRITE(nNonce);
     }
 
     bool IsNull() const
@@ -146,9 +146,9 @@ public:
         // ConnectBlock depends on vtx following header to generate CDiskTxPos
         if (!(nType & (SER_GETHASH|SER_BLOCKHEADERONLY)))
         {
-            READWRITES(*(CBlockHeader*)this);
-            READWRITES(vtx);
-            READWRITES(vchBlockSig);
+            READWRITE(*(CBlockHeader*)this);
+            READWRITE(vtx);
+            READWRITE(vchBlockSig);
         }
         else if (ser_action.ForRead())
         {

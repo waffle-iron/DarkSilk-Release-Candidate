@@ -89,13 +89,13 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(this->options);
-        READWRITES(this->scan_pubkey);
-        READWRITES(this->spend_pubkey);
-        READWRITES(this->label);
+        READWRITE(this->options);
+        READWRITE(this->scan_pubkey);
+        READWRITE(this->spend_pubkey);
+        READWRITE(this->label);
 
-        READWRITES(this->scan_secret);
-        READWRITES(this->spend_secret);
+        READWRITE(this->scan_secret);
+        READWRITE(this->spend_secret);
     }
 };
 

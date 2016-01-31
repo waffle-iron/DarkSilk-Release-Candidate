@@ -51,21 +51,21 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(this->nVersion);
+        READWRITE(this->nVersion);
         nVersion = this->nVersion;
-        READWRITES(nRelayUntil);
-        READWRITES(nExpiration);
-        READWRITES(nID);
-        READWRITES(nCancel);
-        READWRITES(setCancel);
-        READWRITES(nMinVer);
-        READWRITES(nMaxVer);
-        READWRITES(setSubVer);
-        READWRITES(nPriority);
+        READWRITE(nRelayUntil);
+        READWRITE(nExpiration);
+        READWRITE(nID);
+        READWRITE(nCancel);
+        READWRITE(setCancel);
+        READWRITE(nMinVer);
+        READWRITE(nMaxVer);
+        READWRITE(setSubVer);
+        READWRITE(nPriority);
 
-        READWRITES(LIMITED_STRING(strComment, 65536));
-        READWRITES(LIMITED_STRING(strStatusBar, 256));
-        READWRITES(LIMITED_STRING(strReserved, 256));
+        READWRITE(LIMITED_STRING(strComment, 65536));
+        READWRITE(LIMITED_STRING(strStatusBar, 256));
+        READWRITE(LIMITED_STRING(strReserved, 256));
     }
 
     void SetNull();
@@ -90,8 +90,8 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(vchMsg);
-        READWRITES(vchSig);
+        READWRITE(vchMsg);
+        READWRITE(vchSig);
     }
 
     void SetNull();

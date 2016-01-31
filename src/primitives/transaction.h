@@ -35,7 +35,7 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(FLATDATA(*this));
+        READWRITE(FLATDATA(*this));
     }
 
     void SetNull() { hash = 0; n = (unsigned int) -1; }
@@ -120,9 +120,9 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(prevout);
-        READWRITES(scriptSig);
-        READWRITES(nSequence);
+        READWRITE(prevout);
+        READWRITE(scriptSig);
+        READWRITE(nSequence);
     }
 
     bool IsFinal() const
@@ -183,8 +183,8 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(nValue);
-        READWRITES(scriptPubKey);
+        READWRITE(nValue);
+        READWRITE(scriptPubKey);
     }
 
     void SetNull()
@@ -281,12 +281,12 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(this->nVersion);
+        READWRITE(this->nVersion);
         nVersion = this->nVersion;
-        READWRITES(nTime);
-        READWRITES(vin);
-        READWRITES(vout);
-        READWRITES(nLockTime);
+        READWRITE(nTime);
+        READWRITE(vin);
+        READWRITE(vout);
+        READWRITE(nLockTime);
     }
 
     void SetNull()
@@ -371,12 +371,12 @@ struct CMutableTransaction
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(this->nVersion);
+        READWRITE(this->nVersion);
         nVersion = this->nVersion;
-        READWRITES(this->nTime);
-        READWRITES(vin);
-        READWRITES(vout);
-        READWRITES(nLockTime);
+        READWRITE(this->nTime);
+        READWRITE(vin);
+        READWRITE(vout);
+        READWRITE(nLockTime);
     }
 
     /// Compute the hash of this CMutableTransaction. This is computed on the

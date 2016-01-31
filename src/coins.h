@@ -34,14 +34,14 @@ public:
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         if (!ser_action.ForRead()) {
             CAmount nVal = CompressAmount(txout.nValue);
-            READWRITES(VARINT(nVal));
+            READWRITE(VARINT(nVal));
         } else {
             CAmount nVal = 0;
-            READWRITES(VARINT(nVal));
+            READWRITE(VARINT(nVal));
             txout.nValue = DecompressAmount(nVal);
         }
         CScriptCompressor cscript(REF(txout.scriptPubKey));
-        READWRITES(cscript);
+        READWRITE(cscript);
     }
 };
 

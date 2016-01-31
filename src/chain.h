@@ -38,8 +38,8 @@ struct CDiskBlockPos
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(VARINT(nFile));
-        READWRITES(VARINT(nPos));
+        READWRITE(VARINT(nFile));
+        READWRITE(VARINT(nPos));
     }
 
     CDiskBlockPos() {
@@ -359,37 +359,37 @@ public:
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         if (!(nType & SER_GETHASH))
-            READWRITES(nVersion);
+            READWRITE(nVersion);
 
-        READWRITES(hashNext);
-        READWRITES(nFile);
-        READWRITES(nBlockPos);
-        READWRITES(nHeight);
-        READWRITES(nMint);
-        READWRITES(nMoneySupply);
-        READWRITES(nFlags);
-        READWRITES(nStakeModifier);
-        READWRITES(bnStakeModifierV2);
+        READWRITE(hashNext);
+        READWRITE(nFile);
+        READWRITE(nBlockPos);
+        READWRITE(nHeight);
+        READWRITE(nMint);
+        READWRITE(nMoneySupply);
+        READWRITE(nFlags);
+        READWRITE(nStakeModifier);
+        READWRITE(bnStakeModifierV2);
         if (IsProofOfStake())
         {
-            READWRITES(prevoutStake);
-            READWRITES(nStakeTime);
+            READWRITE(prevoutStake);
+            READWRITE(nStakeTime);
         }
         else if (ser_action.ForRead())
         {
             const_cast<CDiskBlockIndex*>(this)->prevoutStake.SetNull();
             const_cast<CDiskBlockIndex*>(this)->nStakeTime = 0;
         }
-        READWRITES(hashProof);
+        READWRITE(hashProof);
 
         // block header
-        READWRITES(this->nVersion);
-        READWRITES(hashPrev);
-        READWRITES(hashMerkleRoot);
-        READWRITES(nTime);
-        READWRITES(nBits);
-        READWRITES(nNonce);
-        READWRITES(blockHash);
+        READWRITE(this->nVersion);
+        READWRITE(hashPrev);
+        READWRITE(hashMerkleRoot);
+        READWRITE(nTime);
+        READWRITE(nBits);
+        READWRITE(nNonce);
+        READWRITE(blockHash);
     }
 
     uint256 GetBlockHash() const
@@ -457,8 +457,8 @@ public:
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         if (!(nType & SER_GETHASH))
-            READWRITES(nVersion);
-        READWRITES(vHave);
+            READWRITE(nVersion);
+        READWRITE(vHave);
     }
 
     void SetNull()

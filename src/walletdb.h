@@ -59,9 +59,9 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(this->nVersion);
+        READWRITE(this->nVersion);
         nVersion = this->nVersion;
-        READWRITES(nCreateTime);
+        READWRITE(nCreateTime);
     }
 
     void SetNull()
@@ -90,8 +90,8 @@ public:
 
     template <typename Stream, typename Operation>
     inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(pkEphem);
-        READWRITES(pkScan);
+        READWRITE(pkEphem);
+        READWRITE(pkScan);
     }
 };
 
