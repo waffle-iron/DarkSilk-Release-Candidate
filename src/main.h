@@ -14,7 +14,6 @@
 #include "net.h"
 #include "script.h"
 #include "scrypt.h"
-#include "compressor.h"
 #include "streams.h"
 #include "txdb.h"
 #include "chain.h"
@@ -257,7 +256,13 @@ public:
         nTxPos = nTxPosIn;
     }
 
-    IMPLEMENT_SERIALIZE( READWRITE(FLATDATA(*this)); )
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITE(FLATDATA(*this));
+    }
+
     void SetNull() { nFile = (unsigned int) -1; nBlockPos = 0; nTxPos = 0; }
     bool IsNull() const { return (nFile == (unsigned int) -1); }
 
@@ -302,11 +307,13 @@ public:
 
     CTransactionPoS(){ nVersion = CURRENT_VERSION; }
 
-    IMPLEMENT_SERIALIZE
-    (
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         READWRITE(this->nVersion);
         nVersion = this->nVersion;
-    )
+    }
 
     CAmount GetValueOut(CTransaction& tx) const;
 
@@ -415,16 +422,18 @@ public:
         fMerkleVerified = false;
     }
 
+    ADD_SERIALIZE_METHODS;
 
-    IMPLEMENT_SERIALIZE
-    (
-        nSerSize += SerReadWrite(s, *(CTransaction*)this, nType, nVersion, ser_action);
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        //TODO (Amir): Review translation below.
+        //nSerSize += SerReadWrite(s, *(CTransaction*)this, nType, nVersion, ser_action);
+        READWRITE(*(CTransaction*)this);
         nVersion = this->nVersion;
         READWRITE(hashBlock);
         READWRITE(vMerkleBranch);
         READWRITE(nIndex);
-    )
-
+    }
 
     int SetMerkleBranch(const CBlock* pblock=NULL);
 
@@ -463,13 +472,15 @@ public:
         vSpent.resize(nOutputs);
     }
 
-    IMPLEMENT_SERIALIZE
-    (
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         if (!(nType & SER_GETHASH))
             READWRITE(nVersion);
         READWRITE(pos);
         READWRITE(vSpent);
-    )
+    }
 
     void SetNull()
     {
@@ -594,8 +605,10 @@ public:
     uint64_t nTimeFirst;         //! earliest time of block in file
     uint64_t nTimeLast;          //! latest time of block in file
 
-    IMPLEMENT_SERIALIZE
-    (
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         READWRITE(VARINT(nBlocks));
         READWRITE(VARINT(nSize));
         READWRITE(VARINT(nUndoSize));
@@ -603,9 +616,9 @@ public:
         READWRITE(VARINT(nHeightLast));
         READWRITE(VARINT(nTimeFirst));
         READWRITE(VARINT(nTimeLast));
-    )
+    }
 
-     void SetNull() {
+    void SetNull() {
          nBlocks = 0;
          nSize = 0;
          nUndoSize = 0;

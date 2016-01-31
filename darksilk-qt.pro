@@ -454,6 +454,7 @@ SOURCES += src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
     src/leveldbwrapper.cpp \
     src/txdb.cpp \
     src/amount.cpp \
+    src/undo.cpp \
     src/crypto/argon2/argon2.c \
     src/crypto/argon2/core.c \
     src/crypto/argon2/encoding.c \

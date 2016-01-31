@@ -83,13 +83,15 @@ public:
         vchPubKey = vchPubKeyIn;
     }
 
-    IMPLEMENT_SERIALIZE
-    (
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         if (!(nType & SER_GETHASH))
             READWRITE(nVersion);
             READWRITE(nTime);
             READWRITE(vchPubKey);
-    )
+    }
 };
 
 /** A CWallet is an extension of a keystore, which also maintains a set of transactions and balances,
@@ -627,14 +629,16 @@ public:
         nOrderPos = -1;
     }
 
-    IMPLEMENT_SERIALIZE
-    (
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         CWalletTx* pthis = const_cast<CWalletTx*>(this);
-        if (fRead)
+        if (ser_action.ForRead())
             pthis->Init(NULL);
         char fSpent = false;
 
-        if (!fRead)
+        if (!ser_action.ForRead())
         {
             pthis->mapValue["fromaccount"] = pthis->strFromAccount;
 
@@ -653,7 +657,9 @@ public:
                 pthis->mapValue["timesmart"] = strprintf("%u", nTimeSmart);
         }
 
-        nSerSize += SerReadWrite(s, *(CMerkleTx*)this, nType, nVersion,ser_action);
+        //TODO (Amir): Review translation of this serialization line:
+        //nSerSize += SerReadWrite(s, *(CMerkleTx*)this, nType, nVersion,ser_action);
+        READWRITE(*(CMerkleTx*)this);
         READWRITE(vtxPrev);
         READWRITE(mapValue);
         READWRITE(vOrderForm);
@@ -662,7 +668,7 @@ public:
         READWRITE(fFromMe);
         READWRITE(fSpent);
 
-        if (fRead)
+        if (ser_action.ForRead())
         {
             pthis->strFromAccount = pthis->mapValue["fromaccount"];
 
@@ -682,7 +688,7 @@ public:
         pthis->mapValue.erase("spent");
         pthis->mapValue.erase("n");
         pthis->mapValue.erase("timesmart");
-    )
+    }
 
     // marks certain txout's as spent
     // returns true if any update took place
@@ -1117,15 +1123,17 @@ public:
         nTimeExpires = nExpires;
     }
 
-    IMPLEMENT_SERIALIZE
-    (
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         if (!(nType & SER_GETHASH))
-        READWRITE(nVersion);
+            READWRITE(nVersion);
         READWRITE(vchPrivKey);
         READWRITE(nTimeCreated);
         READWRITE(nTimeExpires);
         READWRITE(LIMITED_STRING(strComment, 65536));
-    )
+    }
 };
 
 
@@ -1151,12 +1159,14 @@ public:
         vchPubKey = CPubKey();
     }
 
-    IMPLEMENT_SERIALIZE
-    (
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         if (!(nType & SER_GETHASH))
             READWRITE(nVersion);
         READWRITE(vchPubKey);
-    )
+    }
 };
 
 
@@ -1191,8 +1201,10 @@ public:
         nOrderPos = -1;
     }
 
-    IMPLEMENT_SERIALIZE
-    (
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         CAccountingEntry& me = *const_cast<CAccountingEntry*>(this);
         if (!(nType & SER_GETHASH))
             READWRITE(nVersion);
@@ -1201,7 +1213,7 @@ public:
         READWRITE(nTime);
         READWRITE(LIMITED_STRING(strComment, 65536));
 
-        if (!fRead)
+        if (!ser_action.ForRead())
         {
             WriteOrderPos(nOrderPos, me.mapValue);
 
@@ -1218,7 +1230,7 @@ public:
         READWRITE(LIMITED_STRING(strComment, 65536));
 
         size_t nSepPos = strComment.find("\0", 0, 1);
-        if (fRead)
+        if (ser_action.ForRead())
         {
             me.mapValue.clear();
             if (std::string::npos != nSepPos)
@@ -1233,8 +1245,7 @@ public:
             me.strComment.erase(nSepPos);
 
         me.mapValue.erase("n");
-    )
-
+    }
 private:
     std::vector<char> _ssExtra;
 };

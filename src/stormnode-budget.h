@@ -159,8 +159,10 @@ public:
     void CheckAndRemove();
     std::string ToString() const;
 
+    ADD_SERIALIZE_METHODS;
 
-    IMPLEMENT_SERIALIZE(
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         READWRITE(mapSeenStormnodeBudgetProposals);
         READWRITE(mapSeenStormnodeBudgetVotes);
         READWRITE(mapSeenFinalizedBudgets);
@@ -170,7 +172,7 @@ public:
 
         READWRITE(mapProposals);
         READWRITE(mapFinalizedBudgets);
-    )
+    }
 };
 
 class CTxBudgetPayment
@@ -186,11 +188,14 @@ public:
         nProposalHash = 0;
     }
 
-     IMPLEMENT_SERIALIZE(
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         READWRITE(payee);
         READWRITE(nAmount);
         READWRITE(nProposalHash);
-    )
+    }
 };
 
 //
@@ -273,8 +278,10 @@ public:
         return h1;
     }
 
-    IMPLEMENT_SERIALIZE
-    (
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         READWRITE(LIMITED_STRING(strBudgetName, 20));
         READWRITE(nFeeTXHash);
         READWRITE(nTime);
@@ -282,7 +289,7 @@ public:
         READWRITE(vecBudgetPayments);
         READWRITE(fAutoChecked);
         READWRITE(mapVotes);
-    )
+    }
 };
 
 // FinalizedBudget are cast then sent to peers with this object, which leaves the votes out
@@ -319,14 +326,16 @@ public:
 
     void Relay();
 
-    IMPLEMENT_SERIALIZE
-    (
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         //for syncing with other clients
         READWRITE(LIMITED_STRING(strBudgetName, 20));
         READWRITE(nBlockStart);
         READWRITE(vecBudgetPayments);
         READWRITE(nFeeTXHash);
-    )
+    }
 };
 
 //
@@ -358,12 +367,15 @@ public:
             return ss.GetHash();
     }
 
-    IMPLEMENT_SERIALIZE(
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         READWRITE(vin);
         READWRITE(nBudgetHash);
         READWRITE(nTime);
         READWRITE(vchSig);
-    )
+    }
 };
 
 //
@@ -450,7 +462,10 @@ public:
         return h1;
     }
 
-    IMPLEMENT_SERIALIZE(
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         //for syncing with other clients
         READWRITE(LIMITED_STRING(strProposalName, 20));
         READWRITE(LIMITED_STRING(strURL, 64));
@@ -464,7 +479,7 @@ public:
 
         //for saving to the serialized db
         READWRITE(mapVotes);
-    )
+    }
 };
 
 // Proposals are cast then sent to peers with this object, which leaves the votes out
@@ -502,7 +517,10 @@ public:
 
     void Relay();
 
-     IMPLEMENT_SERIALIZE(
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         READWRITE(LIMITED_STRING(strProposalName, 20));
         READWRITE(LIMITED_STRING(strURL, 64));
         READWRITE(nTime);
@@ -511,7 +529,7 @@ public:
         READWRITE(nAmount);
         READWRITE(address);
         READWRITE(nFeeTXHash);
-    )
+    }
 };
 // CBudgetVote - Allow a stormnode node to vote and broadcast throughout the network
 //
@@ -551,13 +569,16 @@ public:
         return ss.GetHash();
     }
 
-    IMPLEMENT_SERIALIZE(
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         READWRITE(vin);
         READWRITE(nProposalHash);
         READWRITE(nVote);
         READWRITE(nTime);
         READWRITE(vchSig);
-    )    
+    }
 };
 
 #endif

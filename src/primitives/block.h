@@ -57,8 +57,10 @@ public:
         nNonce = 0;
     }
 
-    /*IMPLEMENT_SERIALIZE
-    (
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
         READWRITE(this->nVersion);
         nVersion = this->nVersion;
         READWRITE(hashPrevBlock);
@@ -66,19 +68,6 @@ public:
         READWRITE(nTime);
         READWRITE(nBits);
         READWRITE(nNonce);
-    )*/
-
-    ADD_SERIALIZE_METHODS;
-
-    template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-        READWRITES(this->nVersion);
-        nVersion = this->nVersion;
-        READWRITES(hashPrevBlock);
-        READWRITES(hashMerkleRoot);
-        READWRITES(nTime);
-        READWRITES(nBits);
-        READWRITES(nNonce);
     }
 
     bool IsNull() const
@@ -89,8 +78,8 @@ public:
     uint256 GetHash() const
     {
         if (nVersion > 1)
-            return HashBlake2b(BEGIN(nVersion), END(nNonce));
-            //return Hash(BEGIN(nVersion), END(nNonce));
+            //return HashBlake2b(BEGIN(nVersion), END(nNonce));
+            return Hash(BEGIN(nVersion), END(nNonce));
         else
             return GetPoWHash();
     }
@@ -150,21 +139,6 @@ public:
         nDoS = 0;
     }
 
-    /*IMPLEMENT_SERIALIZE
-    (
-        READWRITE(*(CBlockHeader*)this);
-        // ConnectBlock depends on vtx following header to generate CDiskTxPos
-        if (!(nType & (SER_GETHASH|SER_BLOCKHEADERONLY)))
-        {
-            READWRITE(vtx);
-            READWRITE(vchBlockSig);
-        }
-        else if (fRead)
-        {
-            const_cast<CBlock*>(this)->vtx.clear();
-            const_cast<CBlock*>(this)->vchBlockSig.clear();
-        }
-    )*/
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
@@ -172,9 +146,9 @@ public:
         // ConnectBlock depends on vtx following header to generate CDiskTxPos
         if (!(nType & (SER_GETHASH|SER_BLOCKHEADERONLY)))
         {
-            READWRITES(*(CBlockHeader*)this);
-            READWRITES(vtx);
-            READWRITES(vchBlockSig);
+            READWRITE(*(CBlockHeader*)this);
+            READWRITE(vtx);
+            READWRITE(vchBlockSig);
         }
         else if (ser_action.ForRead())
         {
