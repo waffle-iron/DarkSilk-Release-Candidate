@@ -21,6 +21,10 @@
 
 static const unsigned int OUTPUT_BYTES = 32;
 
+#ifdef WIN32
+#define UINT32_MAX 0xffffffff  /* 4294967295U */
+#endif
+
 /** A hasher class for DarkSilk's 256-bit hash (double SHA-256). */
 class CHash256 {
 private:
