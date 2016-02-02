@@ -1042,7 +1042,7 @@ void DarkSilkGUI::closeEvent(QCloseEvent *event)
     QMainWindow::closeEvent(event);
 }
 
-void DarkSilkGUI::askFee(qint64 nFeeRequired, bool *payFee) 
+void DarkSilkGUI::askFee(CAmount nFeeRequired, bool *payFee) 
 {
     if (!clientModel || !clientModel->getOptionsModel()) 
     {
