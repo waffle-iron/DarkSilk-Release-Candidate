@@ -421,6 +421,11 @@ bool AppInit2(boost::thread_group& threadGroup)
     sigemptyset(&sa_hup.sa_mask);
     sa_hup.sa_flags = 0;
     sigaction(SIGHUP, &sa_hup, NULL);
+
+#if defined (__SVR4) && defined (__sun)
+    // ignore SIGPIPE on Solaris
+    signal(SIGPIPE, SIG_IGN);
+#endif
 #endif
 
     // ********************************************************* Step 2: parameter interactions
@@ -1017,7 +1022,7 @@ bool AppInit2(boost::thread_group& threadGroup)
             else
                 pindexRescan = pindexGenesisBlock;
         }
-        if (pindexBest != pindexRescan && pindexBest && pindexRescan && pindexBest->nHeight > pindexRescan->nHeight)
+        if (pindexBest && pindexBest != pindexRescan)
         {
             uiInterface.InitMessage(_("Rescanning..."));
             LogPrintf("Rescanning last %i blocks (from block %i)...\n", nBestHeight - pindexRescan->nHeight, pindexRescan->nHeight);
@@ -1091,6 +1096,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     CBudgetDB budgetdb;
     CBudgetDB::ReadResult readResult2 = budgetdb.Read(budget);
+
     if (readResult2 == CBudgetDB::FileError)
         LogPrintf("Missing budget cache - budget.dat, will try to recreate\n");
     else if (readResult2 != CBudgetDB::Ok)
@@ -1102,7 +1108,29 @@ bool AppInit2(boost::thread_group& threadGroup)
             LogPrintf("file format is unknown or invalid, please fix it manually\n");
     }
 
+    //flag our cached items so we send them to our peers
+    budget.ResetSync();
+    budget.ClearSeen();
+
+
+    uiInterface.InitMessage(_("Loading stormnode payment cache..."));
+
+    CStormnodePaymentDB snpayments;
+    CStormnodePaymentDB::ReadResult readResult3 = snpayments.Read(stormnodePayments);
+    
+    if (readResult3 == CStormnodePaymentDB::FileError)
+        LogPrintf("Missing Stormnode payment cache - snpayments.dat, will try to recreate\n");
+    else if (readResult3 != CStormnodePaymentDB::Ok)
+    {
+        LogPrintf("Error reading mnpayments.dat: ");
+        if(readResult3 == CStormnodePaymentDB::IncorrectFormat)
+            LogPrintf("magic is ok but data has invalid format, will try to recreate\n");
+        else
+            LogPrintf("file format is unknown or invalid, please fix it manually\n");
+    }
+
     fStormNode = GetBoolArg("-stormnode", false);
+
     if(fStormNode) {
         LogPrintf("IS SANDSTORM STORMNODE\n");
         strStormNodeAddr = GetArg("-stormnodeaddr", "");
@@ -1135,7 +1163,11 @@ bool AppInit2(boost::thread_group& threadGroup)
         }
     }
 
-    if(GetBoolArg("-snconflock", false)) {
+    //get the mode of budget voting for this stormnode
+    strBudgetMode = GetArg("-budgetvotemode", "auto");
+
+    if(GetBoolArg("-snconflock", false)&& pwalletMain) {
+        LOCK(pwalletMain->cs_wallet);
         LogPrintf("Locking Stormnodes:\n");
         uint256 snTxHash;
         BOOST_FOREACH(CStormnodeConfig::CStormnodeEntry sne, stormnodeConfig.getEntries()) {
@@ -1145,9 +1177,6 @@ bool AppInit2(boost::thread_group& threadGroup)
             pwalletMain->LockCoin(outpoint);
         }
     }
-
-    //get the mode of budget voting for this stormnode
-    strBudgetMode = GetArg("-budgetvotemode", "auto");
 
     nLiquidityProvider = GetArg("-liquidityprovider", nLiquidityProvider);
     nLiquidityProvider = std::min(std::max(nLiquidityProvider, 0), 100);
