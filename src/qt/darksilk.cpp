@@ -67,7 +67,7 @@ static void ThreadSafeMessageBox(const std::string& message, const std::string& 
     }
 }
 
-static bool ThreadSafeAskFee(int64_t nFeeRequired, const std::string& strCaption)
+static bool ThreadSafeAskFee(CAmount nFeeRequired, const std::string& strCaption)
 {
     if(!guiref)
         return false;
@@ -76,7 +76,7 @@ static bool ThreadSafeAskFee(int64_t nFeeRequired, const std::string& strCaption
     bool payFee = false;
 
     QMetaObject::invokeMethod(guiref, "askFee", GUIUtil::blockingGUIThreadConnection(),
-                               Q_ARG(qint64, nFeeRequired),
+                               Q_ARG(CAmount, nFeeRequired),
                                Q_ARG(bool*, &payFee));
 
     return payFee;
