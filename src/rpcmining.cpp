@@ -63,9 +63,9 @@ Value getstakesubsidy(const Array& params, bool fHelp)
 
     vector<unsigned char> txData(ParseHex(params[0].get_str()));
     CDataStream ssData(txData, SER_NETWORK, PROTOCOL_VERSION);
-    CTransactionPoS txPoS;
+    CTransaction tx;
     try {
-        ssData >> txPoS;
+        ssData >> tx;
     }
     catch (std::exception &e) {
         throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "TX decode failed");
