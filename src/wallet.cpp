@@ -1760,7 +1760,7 @@ void CWallet::AvailableCoins(vector<COutput>& vCoins, bool fOnlyConfirmed, const
                         !IsLockedCoin((*it).first, i) && pcoin->vout[i].nValue > 0 &&
                         (!coinControl || !coinControl->HasSelected() || coinControl->IsSelected((*it).first, i)))
                     {
-                       vCoins.push_back(COutput(pcoin, i, nDepth, mine));
+                       vCoins.push_back(COutput(pcoin, i, nDepth, ISMINE_SPENDABLE));
                     }
                 }
             }
