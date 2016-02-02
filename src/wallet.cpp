@@ -1747,7 +1747,7 @@ void CWallet::AvailableCoins(vector<COutput>& vCoins, bool fOnlyConfirmed, const
                     found = true;
                     if (IsCollateralAmount(pcoin->vout[i].nValue)) continue; // do not use collateral amounts
                     found = !IsDenominatedAmount(pcoin->vout[i].nValue);
-                    if(found && coin_type == ONLY_NONDENOMINATED_NOTSN) found = (pcoin->vout[i].nValue != 42000*COIN); // do not use SN funds
+                    if(found && coin_type == ONLY_NONDENOMINATED_NOTSN) found = (pcoin->vout[i].nValue != 10000*COIN); // do not use SN funds
                 } else {
                     found = true;
                 }
