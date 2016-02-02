@@ -2276,12 +2276,7 @@ bool CWallet::SelectCoinsMinConf(const CAmount& nTargetValue, unsigned int nSpen
                 s += FormatMoney(vValue[i].first) + " ";
             }
         }
-        //TODO (Amir): Remove testing code below.
-        CAmount nDiff = nValueRet - nTargetValue;
-        printf("nTargetValue: %ld\n", nValueRet);
-        printf("nValueRet: %ld\n", nValueRet);
-        printf("nDiff: %ld\n\n", nDiff);
-        printf("nBest: %ld\n\n", nBest);
+
         LogPrint("selectcoins", "SelectCoins() best subset: ");
         for (unsigned int i = 0; i < vValue.size(); i++)
             if (vfBest[i])
