@@ -1707,7 +1707,7 @@ CAmount CWallet::GetImmatureWatchOnlyBalance() const
     return nTotal;
 }
 
-// populate vCoins with vector of available COutputs.
+// populate vCoins with vector of spendable COutputs
 void CWallet::AvailableCoins(vector<COutput>& vCoins, bool fOnlyConfirmed, const CCoinControl *coinControl, AvailableCoinsType coin_type, bool useIX) const
 {
     vCoins.clear();
@@ -1753,17 +1753,18 @@ void CWallet::AvailableCoins(vector<COutput>& vCoins, bool fOnlyConfirmed, const
                 }
                 if(!found) continue;
 
-                for (unsigned int i = 0; i < pcoin->vout.size(); i++) {
-                    isminetype mine = IsMine(pcoin->vout[i]);
-                    if (!(pcoin->IsSpent(i)) && mine != ISMINE_NO && pcoin->vout[i].nValue >= nMinimumInputValue &&
+
+                bool mine = IsMine(pcoin->vout[i]);
+
+                if (!(pcoin->IsSpent(i)) && mine &&
+                        !IsLockedCoin((*it).first, i) && pcoin->vout[i].nValue > 0 &&
                         (!coinControl || !coinControl->HasSelected() || coinControl->IsSelected((*it).first, i)))
                     {
-                        vCoins.push_back(COutput(pcoin, i, nDepth, mine & ISMINE_SPENDABLE));
+                       vCoins.push_back(COutput(pcoin, i, nDepth, mine));
                     }
                 }
             }
         }
-    }
 }
 
 void CWallet::AvailableCoinsForStaking(vector<COutput>& vCoins, unsigned int nSpendTime) const
@@ -2275,12 +2276,7 @@ bool CWallet::SelectCoinsMinConf(const CAmount& nTargetValue, unsigned int nSpen
                 s += FormatMoney(vValue[i].first) + " ";
             }
         }
-        //TODO (Amir): Remove testing code below.
-        CAmount nDiff = nValueRet - nTargetValue;
-        printf("nTargetValue: %ld\n", nValueRet);
-        printf("nValueRet: %ld\n", nValueRet);
-        printf("nDiff: %ld\n\n", nDiff);
-        printf("nBest: %ld\n\n", nBest);
+
         LogPrint("selectcoins", "SelectCoins() best subset: ");
         for (unsigned int i = 0; i < vValue.size(); i++)
             if (vfBest[i])
