@@ -32,6 +32,7 @@ What is DarkSilk?
 * Budget Reward: 10,000 DRKSLK Static Reward Every 41,091 blocks (~30 days)
 * Budget Proposal Fee: 100 DRKSLK, 20 confirmations (~20 minutes)
 * Total Coins: 90,000,000 DRKSLK (~105 years)
+* Min TX Fee: 0.00001 DRKSLK
 * Block Size: 20MB (20X Bitcoin Core)
 
 
