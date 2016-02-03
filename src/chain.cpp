@@ -35,7 +35,7 @@ CBlockIndex* FindBlockByHeight(int nHeight)
 }
 
 // darksilk: attempt to generate suitable proof-of-stake
-bool CBlock::SignBlock(CWallet& wallet, int64_t nFees)
+bool CBlock::SignBlock(CWallet& wallet, CAmount nFees)
 {
     // if we are trying to sign
     //    something except proof-of-stake block template
@@ -317,10 +317,10 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
         nTxPos = pindex->nBlockPos + ::GetSerializeSize(CBlock(), SER_DISK, CLIENT_VERSION) - (2 * GetSizeOfCompactSize(0)) + GetSizeOfCompactSize(vtx.size());
 
     map<uint256, CTxIndex> mapQueuedChanges;
-    int64_t nFees = 0;
-    int64_t nValueIn = 0;
-    int64_t nValueOut = 0;
-    int64_t nStakeReward = 0;
+    CAmount nFees = 0;
+    CAmount nValueIn = 0;
+    CAmount nValueOut = 0;
+    CAmount nStakeReward = 0;
     unsigned int nSigOps = 0;
     int nTxCacheHits = 0;
     int nInputs = 0;
@@ -357,8 +357,8 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
             if (nSigOps > MAX_BLOCK_SIGOPS)
                 return DoS(100, error("ConnectBlock() : too many sigops"));
 
-            int64_t nTxValueIn = txPoS.GetValueIn(tx, mapInputs);
-            int64_t nTxValueOut = txPoS.GetValueOut(tx);
+            CAmount nTxValueIn = txPoS.GetValueIn(tx, mapInputs);
+            CAmount nTxValueOut = txPoS.GetValueOut(tx);
             nValueIn += nTxValueIn;
             nValueOut += nTxValueOut;
             if (!tx.IsCoinStake())
@@ -391,7 +391,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
 
     if (IsProofOfWork())
     {
-        int64_t nReward = GetProofOfWorkReward(nFees);
+        CAmount nReward = GetProofOfWorkReward(nFees);
         // Check coinbase reward
         CTransactionPoS txPoS;
         if (txPoS.GetValueOut(vtx[0]) > nReward)
@@ -401,7 +401,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
     }
     if (IsProofOfStake())
     {
-        int64_t nCalculatedStakeReward = STATIC_POS_REWARD + nFees;
+        CAmount nCalculatedStakeReward = STATIC_POS_REWARD + nFees;
 
         if (nStakeReward > nCalculatedStakeReward)
             return DoS(100, error("ConnectBlock() : coinstake pays too much(actual=%d vs calculated=%d)", nStakeReward, nCalculatedStakeReward));
