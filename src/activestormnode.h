@@ -61,7 +61,7 @@ public:
     /// Register remote Stormnode
     bool Register(std::string strService, std::string strKey, std::string strTxHash, std::string strOutputIndex, std::string& errorMessage);
 
-    /// Get 42,000 DRKSLK input that can be used for the Stormnode
+    /// Get 10,000 DRKSLK input that can be used for the Stormnode
     bool GetStormNodeVin(CTxIn& vin, CPubKey& pubkey, CKey& secretKey);
     vector<COutput> SelectCoinsStormnode();
 

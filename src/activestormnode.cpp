@@ -10,7 +10,7 @@
 #include "spork.h"
 
 //
-// Bootup the Stormnode, look for a 42,000 DRKSLK input and register on the network
+// Bootup the Stormnode, look for a 10,000 DRKSLK input and register on the network
 //
 void CActiveStormnode::ManageStatus()
 {
