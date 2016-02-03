@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2016 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Developers
-// Copyright (c) 2015-2016 The Silk Network Developers
+// Copyright (c) 2015-2016 Silk Network
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef DARKSILK_MAIN_H
@@ -34,6 +34,9 @@ class CTxMemPool;
 
 struct CNodeStateStats;
 
+/// Fees smaller than this (in satoshi) are considered zero fee (for transaction creation)
+static const double MIN_FEE = 0.00001; // Minimum Transaction Fee of 0.00001 DRKSLK 
+
 static const CAmount STORMNODE_COLLATERAL = 10000; //Stormnode Collateral Amount
 
 static const int STORMNODE_PAYMENT_START = 420; // Block 420
@@ -62,14 +65,11 @@ static const unsigned int MAX_P2SH_SIGOPS = 15;
 /// The maximum number of sigops we're willing to relay/mine in a single tx
 static const unsigned int MAX_TX_SIGOPS = MAX_BLOCK_SIGOPS/5;
 /// The maximum number of orphan transactions kept in memory
-static const unsigned int MAX_ORPHAN_TRANSACTIONS = MAX_BLOCK_SIZE/10;
-/// Default for -maxorphanblocksmib, maximum memory usage used by orphan blocks
-static const unsigned int DEFAULT_MAX_ORPHAN_BLOCKS = 10000;
+static const unsigned int MAX_ORPHAN_TRANSACTIONS = MAX_BLOCK_SIZE/100;
+/// Default for -maxorphanblocksmib, maximum memory used by orphan blocks
+static const unsigned int DEFAULT_MAX_ORPHAN_BLOCKS = 512;
 /// The maximum number of entries in an 'inv' protocol message
 static const unsigned int MAX_INV_SZ = 50000;
-
-/// Fees smaller than this (in satoshi) are considered zero fee (for transaction creation)
-static const double MIN_FEE = 0.00001; // 0.00001 DRKSLK Minimum Transaction Fee
 
 /// Maximum length of reject messages.
 static const unsigned int MAX_REJECT_MESSAGE_LENGTH = 111;

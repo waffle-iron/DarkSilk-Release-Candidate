@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2016 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Developers
-// Copyright (c) 2015-2016 The Silk Network Developers
+// Copyright (c) 2015-2016 Silk Network
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -440,6 +440,12 @@ Value sendtoaddress(const Array& params, bool fHelp)
             + HelpExampleCli("sendtoaddress", "\"Dh4V55Ebdwsef8gMGL2fhWA9ZmMjt4KPwg\" 0.1 \"donation\" \"seans outpost\"")
             + HelpExampleRpc("sendtoaddress", "\"Dh4V55Ebdwsef8gMGL2fhWA9ZmMjt4KPwg\", 0.1, \"donation\", \"seans outpost\"")
         );
+    
+    EnsureWalletIsUnlocked();
+
+    if (params[0].get_str().length() > 75
+        && IsStealthAddress(params[0].get_str()))
+        return sendtostealthaddress(params, false);
 
     CDarkSilkAddress address(params[0].get_str());
     if (!address.IsValid())
@@ -448,24 +454,24 @@ Value sendtoaddress(const Array& params, bool fHelp)
     // Amount
     CAmount nAmount = AmountFromValue(params[1]);
 
+    CWalletTx wtx;
     std::string sNarr;
-    if (params.size() > 4 && params[4].type() != null_type && !params[4].get_str().empty())
-        sNarr = params[4].get_str();
-    
-    if (sNarr.length() > 24)
-        throw runtime_error("Narration must be 24 characters or less.");
 
     // Wallet comments
-    CWalletTx wtx;
     if (params.size() > 2 && params[2].type() != null_type && !params[2].get_str().empty())
         wtx.mapValue["comment"] = params[2].get_str();
     if (params.size() > 3 && params[3].type() != null_type && !params[3].get_str().empty())
         wtx.mapValue["to"]      = params[3].get_str();
+    if (params.size() > 4 && params[4].type() != null_type && !params[4].get_str().empty())
+        sNarr = params[4].get_str();
+    if (sNarr.length() > 24)
+        throw runtime_error("Narration must be 24 characters or less.");
 
     if (pwalletMain->IsLocked())
         throw JSONRPCError(RPC_WALLET_UNLOCK_NEEDED, "Error: Please enter the wallet passphrase with walletpassphrase first.");
 
     string strError = pwalletMain->SendMoneyToDestination(address.Get(), nAmount, sNarr, wtx);
+    
     if (strError != "")
         throw JSONRPCError(RPC_WALLET_ERROR, strError);
 

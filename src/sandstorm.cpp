@@ -1506,8 +1506,8 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun)
             LogPrint("sandstorm", "  vecStormnodesUsed size %d threshold %d\n", (int)vecStormnodesUsed.size(), nThreshold);
         }
 
-        //don't use the queues all of the time for mixing
-        if(nUseQueue > 33){
+        // don't use the queues all of the time for mixing unless we are a liquidity provider
+        if(nLiquidityProvider || nUseQueue > 33){
 
             // Look through the queues and see if anything matches
             BOOST_FOREACH(CSandstormQueue& ssq, vecSandstormQueue){

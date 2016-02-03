@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2016 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Developers
-// Copyright (c) 2015-2016 The Silk Network Developers
+// Copyright (c) 2015-2016 Silk Network
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -1760,7 +1760,7 @@ void CWallet::AvailableCoins(vector<COutput>& vCoins, bool fOnlyConfirmed, const
                         !IsLockedCoin((*it).first, i) && pcoin->vout[i].nValue > 0 &&
                         (!coinControl || !coinControl->HasSelected() || coinControl->IsSelected((*it).first, i)))
                     {
-                       vCoins.push_back(COutput(pcoin, i, nDepth, mine));
+                       vCoins.push_back(COutput(pcoin, i, nDepth, ISMINE_SPENDABLE));
                     }
                 }
             }

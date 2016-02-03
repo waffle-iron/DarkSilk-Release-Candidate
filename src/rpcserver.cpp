@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2016 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Developers
-// Copyright (c) 2015-2016 The Silk Network Developers
+// Copyright (c) 2015-2016 Silk Network
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -233,9 +233,9 @@ static const CRPCCommand vRPCCommands[] =
     { "getdifficulty",          &getdifficulty,          true,      false,     false },
     { "getinfo",                &getinfo,                true,      false,     false },
     { "getrawmempool",          &getrawmempool,          true,      false,     false },
-    { "getblock",               &getblock,               true,      false,     false },
-    { "getblockbynumber",       &getblockbynumber,       true,     false,     false },
-    { "getblockhash",           &getblockhash,           true,      false,     false },
+    { "getblock",               &getblock,               false,     false,     false },
+    { "getblockbynumber",       &getblockbynumber,       false,     false,     false },
+    { "getblockhash",           &getblockhash,           false,     false,     false },
     { "getrawtransaction",      &getrawtransaction,      false,     false,     false },
     { "createrawtransaction",   &createrawtransaction,   false,     false,     false },
     { "decoderawtransaction",   &decoderawtransaction,   false,     false,     false },

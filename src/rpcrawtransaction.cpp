@@ -1,6 +1,6 @@
 // Copyright (c) 2009-2016 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Developers
-// Copyright (c) 2015-2016 The Silk Network Developers
+// Copyright (c) 2015-2016 Silk Network
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -641,7 +641,15 @@ Value searchrawtransactions(const Array &params, bool fHelp)
         CTransaction tx;
         uint256 hashBlock;
         if (!GetTransaction(*it, tx, hashBlock))
-            throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Cannot read transaction from disk");
+        {
+           // throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "Cannot read transaction from disk");
+           Object obj;
+       obj.push_back(Pair("ERROR", "Cannot read transaction from disk"));
+       result.push_back(obj);
+    }
+    else
+    {
+
         CDataStream ssTx(SER_NETWORK, PROTOCOL_VERSION);
         ssTx << tx;
         string strHex = HexStr(ssTx.begin(), ssTx.end());
@@ -652,6 +660,8 @@ Value searchrawtransactions(const Array &params, bool fHelp)
             result.push_back(object);
         } else {
             result.push_back(strHex);
+        }
+      
         }
         it++;
     }

@@ -4,9 +4,9 @@
 
 DarkSilk Integration/Staging Tree
 ================================
-![DRKSLK logo](https://raw.githubusercontent.com/SCDeveloper/DarkSilk-Release-Candidate/master/src/qt/res/icons/header.png)
+![DRKSLK logo](https://scontent-lhr3-1.xx.fbcdn.net/hphotos-xfa1/v/t1.0-9/12662013_621650008001168_4546399705491232237_n.png?oh=38604d9a10c0823ac6d7d51b9c2878c9&oe=573958C0)
 
-**Copyright (c) 2015-2016 Silk Network Developers**
+**Copyright (c) 2015-2016 Silk Network**
 
 What is DarkSilk?
 ----------------
@@ -32,6 +32,7 @@ What is DarkSilk?
 * Budget Reward: 10,000 DRKSLK Static Reward Every 41,091 blocks (~30 days)
 * Budget Proposal Fee: 100 DRKSLK, 20 confirmations (~20 minutes)
 * Total Coins: 90,000,000 DRKSLK (~105 years)
+* Min TX Fee: 0.00001 DRKSLK
 * Block Size: 20MB (20X Bitcoin Core)
 
 
