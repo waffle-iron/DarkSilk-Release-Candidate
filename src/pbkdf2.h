@@ -1,4 +1,4 @@
-// Copyright (c) 2015-2016 The Silk Network Developers
+// Copyright (c) 2015-2016 Silk Network
 #ifndef PBKDF2_H
 #define PBKDF2_H
 
