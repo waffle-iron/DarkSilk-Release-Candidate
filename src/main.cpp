@@ -62,7 +62,7 @@ set<pair<COutPoint, unsigned int> > setStakeSeen;
 //TODO(AA)
 unsigned int nStakeMinAge = 10 * 60; // 1 day
 unsigned int nModifierInterval = 10 * 60; // 10 minutes to elapse before new modifier is computed
-int nStakeMinConfirmations = 10; // ~1 day before coins can be staked
+int nStakeMinConfirmations = 10; // 2790 blocks or ~1 day before coins can be staked
 int nCoinbaseMaturity = 10; // 100 blocks until coins are mature
 bool fTxIndex = true;
 
