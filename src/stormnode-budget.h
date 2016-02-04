@@ -440,9 +440,10 @@ public:
     int GetBlockCurrentCycle();
     int GetBlockEndCycle();
     double GetRatio();
-    int GetYeas();
-    int GetNays();
-    int GetAbstains();
+    int GetAbsoluteYesCount();
+    int GetYesCount();
+    int GetNoCount();
+    int GetAbstainCount();
     CAmount GetAmount() {return nAmount;}
     void SetAllotted(CAmount nAllotedIn) {nAlloted = nAllotedIn;}
     CAmount GetAllotted() {return nAlloted;}

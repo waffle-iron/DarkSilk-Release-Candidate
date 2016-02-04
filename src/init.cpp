@@ -294,6 +294,7 @@ std::string HelpMessage()
     strUsage += ", qt";
     strUsage += ".\n";
     strUsage += "  -logtimestamps         " + _("Prepend debug output with timestamp (defaultg: 1)") + "\n";    strUsage += "  -shrinkdebugfile       " + _("Shrink debug.log file on client startup (default: 1 when no -debug)") + "\n";
+    strUsage += "  -printtodebuglog       " + strprintf(_("Send trace/debug info to debug.log file (default: %u)"), 1) + "\n";
     strUsage += "  -printtoconsole        " + _("Send trace/debug info to console instead of debug.log file") + "\n";
     strUsage += "  -rpcuser=<user>        " + _("Username for JSON-RPC connections") + "\n";
     strUsage += "  -rpcpassword=<pw>      " + _("Password for JSON-RPC connections") + "\n";
@@ -405,7 +406,15 @@ bool AppInit2(boost::thread_group& threadGroup)
     }
 #endif
 #ifndef WIN32
-    umask(077);
+
+    if (GetBoolArg("-sysperms", false)) {
+#ifdef ENABLE_WALLET
+        if (!GetBoolArg("-disablewallet", false))
+            return InitError("Error: -sysperms is not allowed in combination with enabled wallet functionality");
+#endif
+    } else {
+        umask(077);
+    }
 
     // Clean shutdown on SIGTERM
     struct sigaction sa;
@@ -452,11 +461,6 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     if (!SelectParamsFromCommandLine()) {
         return InitError("Invalid use of -testnet");
-    }
-
-    if (TestNet())
-    {
-        SoftSetBoolArg("-irc", true);
     }
 
     if (mapArgs.count("-bind")) {
@@ -546,6 +550,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     fServer = GetBoolArg("-server", false);
     fPrintToConsole = GetBoolArg("-printtoconsole", false);
+    fPrintToDebugLog = GetBoolArg("-printtodebuglog", true) && !fPrintToConsole;
     fLogTimestamps = GetBoolArg("-logtimestamps", true);
 #ifdef ENABLE_WALLET
     bool fDisableWallet = GetBoolArg("-disablewallet", false);
@@ -823,7 +828,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     bool fLoaded = false;
     while (!fLoaded) {
-        //bool fReset = fReindex;
+        bool fReset = fReindex;
         std::string strLoadError;
 
         uiInterface.InitMessage(_("Loading block index..."));
@@ -887,8 +892,7 @@ bool AppInit2(boost::thread_group& threadGroup)
             // first suggest a reindex
             if (!fReset) {
                 bool fRet = uiInterface.ThreadSafeMessageBox(
-                    strLoadError + ".\n\n" + _("Do you want to rebuild the block database now?"),
-                    "", CClientUIInterface::MSG_ERROR | CClientUIInterface::BTN_ABORT);
+                    strLoadError + ".\n\n" + _("Do you want to rebuild the block database now?"), "", CClientUIInterface::MSG_ERROR | CClientUIInterface::BTN_ABORT);
                 if (fRet) {
                     fReindex = true;
                     fRequestShutdown = false;
