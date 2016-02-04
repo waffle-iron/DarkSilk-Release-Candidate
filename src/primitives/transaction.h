@@ -172,7 +172,7 @@ public:
         SetNull();
     }
 
-    CTxOut(CAmount nValueIn, CScript scriptPubKeyIn)
+    CTxOut(const CAmount& nValueIn, CScript scriptPubKeyIn)
     {
         nValue = nValueIn;
         nRounds = -10; // an initial value, should be no way to get this by calculations

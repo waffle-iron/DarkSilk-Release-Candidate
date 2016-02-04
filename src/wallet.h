@@ -292,7 +292,7 @@ public:
  
     bool CreateTransaction(const std::vector<std::pair<CScript, CAmount> >& vecSend,
                            CWalletTx& wtxNew, CReserveKey& reservekey, CAmount& nFeeRet, int32_t& nChangePos, std::string& strFailReason, const CCoinControl *coinControl = NULL, AvailableCoinsType coin_type=ALL_COINS, bool useIX=false, CAmount nFeePay=0);
-    bool CreateTransaction(CScript scriptPubKey, CAmount nValue, std::string& sNarr,
+    bool CreateTransaction(CScript scriptPubKey, const CAmount& nValue, std::string& sNarr,
                            CWalletTx& wtxNew, CReserveKey& reservekey, CAmount& nFeeRet, const CCoinControl *coinControl = NULL, AvailableCoinsType coin_type=ALL_COINS, bool useIX=false, CAmount nFeePay=0);
 
     bool CommitTransaction(CWalletTx& wtxNew, CReserveKey& reservekey, std::string strCommand="tx");

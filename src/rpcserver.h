@@ -7,6 +7,7 @@
 #ifndef _DARKSILKRPC_SERVER_H_
 #define _DARKSILKRPC_SERVER_H_ 1
 
+#include "amount.h"
 #include "uint256.h"
 #include "rpcprotocol.h"
 
@@ -78,8 +79,8 @@ extern void InitRPCMining();
 extern void ShutdownRPCMining();
 
 extern int64_t nWalletUnlockTime;
-extern int64_t AmountFromValue(const json_spirit::Value& value);
-extern json_spirit::Value ValueFromAmount(int64_t amount);
+extern CAmount AmountFromValue(const json_spirit::Value& value);
+extern json_spirit::Value ValueFromAmount(const CAmount& amount);
 extern double GetDifficulty(const CBlockIndex* blockindex = NULL);
 
 extern double GetPoWMHashPS();
