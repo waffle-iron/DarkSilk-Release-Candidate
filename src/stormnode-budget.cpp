@@ -65,17 +65,17 @@ bool IsBudgetCollateralValid(uint256 nTxCollateralHash, uint256 nExpectedHash, s
     }
 
     int conf = GetIXConfirmations(nTxCollateralHash);
-    //TODO (Amir): put these lines back.
-    /*if (nBlockHash != uint256(0)) {
+   
+    if (nBlockHash != uint256(0)) {
         BlockMap::iterator mi = mapBlockIndex.find(nBlockHash);
         if (mi != mapBlockIndex.end() && (*mi).second) {
             CBlockIndex* pindex = (*mi).second;
-            if (chainActive.Contains(pindex)) {
-                conf += chainActive.Height() - pindex->nHeight + 1;
+            if (pindex->IsInMainChain()) {
+                conf += nBestHeight - pindex->nHeight + 1;
                 nTime = pindex->nTime;
             }
         }
-    }*/
+    }
 
     nConf = conf;
 

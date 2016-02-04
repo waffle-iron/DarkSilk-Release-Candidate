@@ -1045,6 +1045,11 @@ bool AppInit2(boost::thread_group& threadGroup)
             vImportFiles.push_back(strFile);
     }
     threadGroup.create_thread(boost::bind(&ThreadImport, vImportFiles));
+    if (pindexBest == NULL) {
+        LogPrintf("Waiting for genesis block to be imported...\n");
+        while (!fRequestShutdown && pindexBest == NULL)
+            MilliSleep(10);
+    }
 
     // ********************************************************* Step 10: load peers
 
@@ -1258,6 +1263,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 #endif
 
     StartNode(threadGroup);
+    
 #ifdef ENABLE_WALLET
     // InitRPCMining is needed here so getwork/getblocktemplate in the GUI debug console works properly.
     InitRPCMining();
