@@ -5,7 +5,12 @@
 #include "net.h"
 #include "stormnodeconfig.h"
 #include "util.h"
+#include "chainparams.h"
+
 #include <base58.h>
+
+#include <boost/filesystem.hpp>
+#include <boost/filesystem/fstream.hpp>
 
 CStormnodeConfig stormnodeConfig;
 

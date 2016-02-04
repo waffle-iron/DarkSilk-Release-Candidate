@@ -32,6 +32,7 @@
 #include "debugconsole.h"
 #include "wallet.h"
 #include "init.h"
+#include "stormnode-sync.h"
 #include "stormnodemanager.h"
 #include "blockbrowser.h"
 #include "statisticspage.h"

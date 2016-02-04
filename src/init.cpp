@@ -828,7 +828,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     bool fLoaded = false;
     while (!fLoaded) {
-        bool fReset = fReindex;
+        //bool fReset = fReindex;
         std::string strLoadError;
 
         uiInterface.InitMessage(_("Loading block index..."));
@@ -1214,24 +1214,8 @@ bool AppInit2(boost::thread_group& threadGroup)
     LogPrintf("Anonymize DarkSilk Amount %d\n", nAnonymizeDarkSilkAmount);
     LogPrintf("Budget Mode %s\n", strBudgetMode.c_str());
 
-    /* Denominations
-       A note about convertability. Within Sandstorm pools, each denomination
-       is convertable to another.
-       For example:
-       1DRK+1000 == (.1DRK+100)*10
-       10DRK+10000 == (1DRK+1000)*10
-    */
-    sandStormDenominations.push_back( (10000       * COIN)+10000000 );
-    sandStormDenominations.push_back( (1000        * COIN)+1000000 );
-    sandStormDenominations.push_back( (100         * COIN)+100000 );
-    sandStormDenominations.push_back( (10          * COIN)+10000 );
-    sandStormDenominations.push_back( (1           * COIN)+1000 );
-    sandStormDenominations.push_back( (.1          * COIN)+100 );
-    /* Disabled till we need them
-    sandStormDenominations.push_back( (.01      * COIN)+10 );
-    sandStormDenominations.push_back( (.001     * COIN)+1 );
-    */
 
+    sandStormPool.InitDenominations();
     sandStormPool.InitCollateralAddress();
 
     threadGroup.create_thread(boost::bind(&ThreadCheckSandStormPool));

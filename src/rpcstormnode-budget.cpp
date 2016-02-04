@@ -6,10 +6,11 @@
 #include "db.h"
 #include "init.h"
 #include "activestormnode.h"
-#include "stormnodeman.h"
-#include "stormnode-payments.h"
 #include "stormnode-budget.h"
+#include "stormnode-payments.h"
+#include "stormnode-sync.h"
 #include "stormnodeconfig.h"
+#include "stormnodeman.h"
 #include "rpcserver.h"
 #include "util.h"
 

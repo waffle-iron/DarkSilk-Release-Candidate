@@ -5,12 +5,6 @@
 #ifndef SRC_STORMNODECONFIG_H_
 #define SRC_STORMNODECONFIG_H_
 
-#include <string>
-#include <vector>
-
-#include <boost/filesystem.hpp>
-#include <boost/filesystem/fstream.hpp>
-
 class CStormnodeConfig;
 extern CStormnodeConfig stormnodeConfig;
 

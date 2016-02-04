@@ -6,6 +6,8 @@
 #include "main.h"
 #include "init.h"
 #include "util.h"
+#include "stormnode-payments.h"
+#include "stormnode-sync.h"
 #include "stormnodeman.h"
 #include "script.h"
 #include "instantx.h"
@@ -1647,47 +1649,6 @@ bool CSandstormPool::PrepareSandstormDenominate()
     return false;
 }
 
-bool CSandstormPool::SendRandomPaymentToSelf()
-{
-    CAmount nBalance = pwalletMain->GetBalance();
-    CAmount nPayment = (nBalance*0.35) + (rand() % nBalance);
-
-    if(nPayment > nBalance) nPayment = nBalance-(0.1*COIN);
-
-    // make our change address
-    CReserveKey reservekey(pwalletMain);
-
-    CScript scriptChange;
-    CPubKey vchPubKey;
-    assert(reservekey.GetReservedKey(vchPubKey)); // should never fail, as we just unlocked
-    scriptChange = GetScriptForDestination(vchPubKey.GetID());
-
-    CWalletTx wtx;
-    CAmount nFeeRet = 0;
-    std::string strFail = "";
-    vector< pair<CScript, CAmount> > vecSend;
-
-    // ****** Add fees ************ /
-    vecSend.push_back(make_pair(scriptChange, nPayment));
-
-    CCoinControl *coinControl=NULL;
-    //                          CreateTransaction(CAmount& nFeeRet, int32_t& nChangePos, std::string& strFailReason, const CCoinControl* coinControl, AvailableCoinsType coin_type, bool useIX)
-    int nChangePos = -1;
-    bool success = pwalletMain->CreateTransaction(vecSend, wtx, reservekey, nFeeRet, nChangePos, strFail, coinControl, ALL_COINS, false);
-    //TODO (Amir) implement ONLY_DENOMINATED in CreateTransaction
-    //bool success = pwalletMain->CreateTransaction(vecSend, wtx, reservekey, nFeeRet, strFail, coinControl, ONLY_DENOMINATED);
-    if(!success){
-        LogPrintf("SendRandomPaymentToSelf: Error - %s\n", strFail);
-        return false;
-    }
-
-    pwalletMain->CommitTransaction(wtx, reservekey);
-
-    LogPrintf("SendRandomPaymentToSelf Success: tx %s\n", wtx.GetHash().GetHex());
-
-    return true;
-}
-
 // Split up large inputs or create fee sized inputs
 bool CSandstormPool::MakeCollateralAmounts()
 {
@@ -1844,13 +1805,7 @@ bool CSandstormPool::IsCompatibleWithEntries(std::vector<CTxOut>& vout)
 
     BOOST_FOREACH(const CSandStormEntry v, entries) {
         LogPrintf(" IsCompatibleWithEntries %d %d\n", GetDenominations(vout), GetDenominations(v.vout));
-/*
-        BOOST_FOREACH(CTxOut o1, vout)
-            LogPrintf(" vout 1 - %s\n", o1.ToString());
 
-        BOOST_FOREACH(CTxOut o2, v.vout)
-            LogPrintf(" vout 2 - %s\n", o2.ToString());
-*/
         if(GetDenominations(vout) != GetDenominations(v.vout)) return false;
     }
 

@@ -3,9 +3,11 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "stormnodeman.h"
-#include "stormnode.h"
 #include "activestormnode.h"
 #include "sandstorm.h"
+#include "stormnode.h"
+#include "stormnode-payments.h"
+#include "stormnode-sync.h"
 #include "util.h"
 #include "addrman.h"
 #include "spork.h"
@@ -454,7 +456,7 @@ CStormnode* CStormnodeMan::GetNextStormnodeInQueueForPayment(int nBlockHeight, b
         sn.Check();
         if(!sn.IsEnabled()) continue;
 
-        // //check protocol version
+        // check protocol version
         if(sn.protocolVersion < stormnodePayments.GetMinStormnodePaymentsProto()) continue;
 
         //it's in the list (up to 8 entries ahead of current block to allow propagation) -- so let's skip it
