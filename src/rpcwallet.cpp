@@ -418,11 +418,46 @@ Value getaddressesbyaccount(const Array& params, bool fHelp)
     return ret;
 }
 
+void SendMoney(const CTxDestination &address, CAmount nValue, CWalletTx& wtxNew, bool fUseIX=false, bool fUseSS=false)
+{
+    // Check amount
+    if (nValue <= 0)
+        throw JSONRPCError(RPC_INVALID_PARAMETER, "Invalid amount");
+
+    if (nValue > pwalletMain->GetBalance())
+        throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, "Insufficient funds");
+
+    string strError;
+    if (pwalletMain->IsLocked())
+    {
+        strError = "Error: Wallet locked, unable to create transaction!";
+        LogPrintf("SendMoney() : %s", strError);
+        throw JSONRPCError(RPC_WALLET_ERROR, strError);
+    }
+
+    // Parse DarkSilk address
+    CScript scriptPubKey = GetScriptForDestination(address);
+
+    // Create and send the transaction
+    CReserveKey reservekey(pwalletMain);
+    CAmount nFeeRequired;
+    std::string sNarr;
+    if (!pwalletMain->CreateTransaction(scriptPubKey, nValue, sNarr, wtxNew, reservekey, nFeeRequired, NULL, fUseSS ? ONLY_DENOMINATED : ALL_COINS, fUseIX, (CAmount)0))
+    {
+        if (nValue + nFeeRequired > pwalletMain->GetBalance())
+            strError = strprintf("Error: This transaction requires a transaction fee of at least %s because of its amount, complexity, or use of recently received funds!", FormatMoney(nFeeRequired));
+        LogPrintf("SendMoney() : %s\n", strError);
+        throw JSONRPCError(RPC_WALLET_ERROR, strError);
+    }
+    if (!pwalletMain->CommitTransaction(wtxNew, reservekey, (!fUseIX ? "tx" : "ix")))
+        throw JSONRPCError(RPC_WALLET_ERROR, "Error: The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.");
+}
+
 Value sendtoaddress(const Array& params, bool fHelp)
 {
-    if (fHelp || params.size() < 2 || params.size() > 4)
+    if (fHelp || params.size() < 2 || params.size() > 7)
         throw runtime_error(
-            "sendtoaddress \"darksilkaddress\" amount ( \"comment\" \"comment-to\" )\n"
+            "sendtoaddress \"dashaddress\" amount ( \"comment\" \"comment-to\" use_ix use_ss)\n"
             "\nSent an amount to a given address. The amount is a real and is rounded to the nearest 0.00000001\n"
             + HelpRequiringPassphrase() +
             "\nArguments:\n"
@@ -433,6 +468,8 @@ Value sendtoaddress(const Array& params, bool fHelp)
             "4. \"comment-to\"  (string, optional) A comment to store the name of the person or organization \n"
             "                             to which you're sending the transaction. This is not part of the \n"
             "                             transaction, just kept in your wallet.\n"
+            "5. \"use_ix\"      (bool, optional) Send this transaction as IX (default: false)\n"
+            "6. \"use_ss\"      (bool, optional) Use anonymized funds only (default: false)\n"
             "\nResult:\n"
             "\"transactionid\"  (string) The transaction id.\n"
             "\nExamples:\n"
@@ -441,8 +478,6 @@ Value sendtoaddress(const Array& params, bool fHelp)
             + HelpExampleRpc("sendtoaddress", "\"Dh4V55Ebdwsef8gMGL2fhWA9ZmMjt4KPwg\", 0.1, \"donation\", \"seans outpost\"")
         );
     
-    EnsureWalletIsUnlocked();
-
     if (params[0].get_str().length() > 75
         && IsStealthAddress(params[0].get_str()))
         return sendtostealthaddress(params, false);
@@ -467,6 +502,14 @@ Value sendtoaddress(const Array& params, bool fHelp)
     if (sNarr.length() > 24)
         throw runtime_error("Narration must be 24 characters or less.");
 
+    bool fUseIX = false;
+    bool fUseSS = false;
+
+    if (params.size() > 5 && params[5].type() != null_type)
+        fUseIX = params[5].get_bool();
+    if (params.size() > 6 && params[6].type() != null_type)
+        fUseSS = params[6].get_bool();
+
     if (pwalletMain->IsLocked())
         throw JSONRPCError(RPC_WALLET_UNLOCK_NEEDED, "Error: Please enter the wallet passphrase with walletpassphrase first.");
 
@@ -474,6 +517,10 @@ Value sendtoaddress(const Array& params, bool fHelp)
     
     if (strError != "")
         throw JSONRPCError(RPC_WALLET_ERROR, strError);
+
+    EnsureWalletIsUnlocked();
+
+    SendMoney(address.Get(), nAmount, wtx, fUseIX, fUseSS);
 
     return wtx.GetHash().GetHex();
 }
@@ -944,9 +991,9 @@ Value sendfrom(const Array& params, bool fHelp)
 
 Value sendmany(const Array& params, bool fHelp)
 {
-    if (fHelp || params.size() < 2 || params.size() > 4)
+    if (fHelp || params.size() < 2 || params.size() > 6)
         throw runtime_error(
-            "sendmany \"fromaccount\" {\"address\":amount,...} ( minconf \"comment\" )\n"
+ +            "sendmany \"fromaccount\" {\"address\":amount,...} ( minconf \"comment\" use_ix use_ss)\n"
             "\nSend multiple times. Amounts are double-precision floating point numbers."
             + HelpRequiringPassphrase() + "\n"
             "\nArguments:\n"
@@ -958,6 +1005,8 @@ Value sendmany(const Array& params, bool fHelp)
             "    }\n"
             "3. minconf                 (numeric, optional, default=1) Only use the balance confirmed at least this many times.\n"
             "4. \"comment\"             (string, optional) A comment\n"
+            "5. \"use_ix\"      (bool, optional) Send this transaction as IX (default: false)\n"
+            "6. \"use_ss\"      (bool, optional) Use anonymized funds only (default: false)\n"
             "\nResult:\n"
             "\"transactionid\"          (string) The transaction id for the send. Only 1 transaction is created regardless of \n"
             "                                    the number of addresses.\n"
@@ -1016,7 +1065,14 @@ Value sendmany(const Array& params, bool fHelp)
     CAmount nFeeRequired = 0;
     int nChangePos;
     std::string strFailReason;
-    bool fCreated = pwalletMain->CreateTransaction(vecSend, wtx, keyChange, nFeeRequired, nChangePos, strFailReason);
+    bool fUseIX = false;
+    bool fUseSS = false;
+    if (params.size() > 4 && params[4].type() != null_type)
+        fUseIX = params[4].get_bool();
+    if (params.size() > 5 && params[5].type() != null_type)
+        fUseSS = params[5].get_bool();
+    bool fCreated = pwalletMain->CreateTransaction(vecSend, wtx, keyChange, nFeeRequired, nChangePos, strFailReason,
+                                                   NULL, fUseSS ? ONLY_DENOMINATED : ALL_COINS, fUseIX);
     if (!fCreated)
     {
         if (totalAmount + nFeeRequired > pwalletMain->GetBalance())

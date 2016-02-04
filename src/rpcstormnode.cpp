@@ -16,88 +16,50 @@
 #include <fstream>
 using namespace json_spirit;
 
-void SendMoney(const CTxDestination &address, CAmount nValue, CWalletTx& wtxNew, AvailableCoinsType coin_type=ALL_COINS)
-{
-    // Check amount
-    if (nValue <= 0)
-        throw JSONRPCError(RPC_INVALID_PARAMETER, "Invalid amount");
-
-    if (nValue > pwalletMain->GetBalance())
-        throw JSONRPCError(RPC_WALLET_INSUFFICIENT_FUNDS, "Insufficient funds");
-
-    string strError;
-    if (pwalletMain->IsLocked())
-    {
-        strError = "Error: Wallet locked, unable to create transaction!";
-        LogPrintf("SendMoney() : %s", strError);
-        throw JSONRPCError(RPC_WALLET_ERROR, strError);
-    }
-
-    // Parse DarkSilk address
-    CScript scriptPubKey = GetScriptForDestination(address);
-
-    // Create and send the transaction
-    CReserveKey reservekey(pwalletMain);
-    CAmount nFeeRequired;
-    std::string sNarr;
-    if (!pwalletMain->CreateTransaction(scriptPubKey, nValue, sNarr, wtxNew, reservekey, nFeeRequired, NULL))
-    {
-        if (nValue + nFeeRequired > pwalletMain->GetBalance())
-            strError = strprintf("Error: This transaction requires a transaction fee of at least %s because of its amount, complexity, or use of recently received funds!", FormatMoney(nFeeRequired));
-        LogPrintf("SendMoney() : %s\n", strError);
-        throw JSONRPCError(RPC_WALLET_ERROR, strError);
-    }
-    if (!pwalletMain->CommitTransaction(wtxNew, reservekey))
-        throw JSONRPCError(RPC_WALLET_ERROR, "Error: The transaction was rejected! This might happen if some of the coins in your wallet were already spent, such as if you used a copy of wallet.dat and coins were spent in the copy but not marked as spent here.");
-}
-
 Value sandstorm(const Array& params, bool fHelp)
 {
-    if (fHelp || params.size() == 0)
+    if (fHelp || params.size() != 1)
         throw runtime_error(
-            "sandstorm <drkslkaddress> <amount>\n"
-            "drkslkaddress, reset, or auto (AutoDenominate)"
-            "<amount> is a real and will be rounded to the next 0.1"
+            "sandstorm \"command\"\n"
+            "\nArguments:\n"
+            "1. \"command\"        (string or set of strings, required) The command to execute\n"
+            "\nAvailable commands:\n"
+            "  start       - Start mixing\n"
+            "  stop        - Stop mixing\n"
+            "  reset       - Reset mixing\n"
+            "  status      - Print mixing status\n"
             + HelpRequiringPassphrase());
 
-    if (pwalletMain->IsLocked())
-        throw JSONRPCError(RPC_WALLET_UNLOCK_NEEDED, "Error: Please enter the wallet passphrase with walletpassphrase first.");
+    if(params[0].get_str() == "start"){
+        if (pwalletMain->IsLocked())
+            throw JSONRPCError(RPC_WALLET_UNLOCK_NEEDED, "Error: Please enter the wallet passphrase with walletpassphrase first.");
 
-    if(params[0].get_str() == "auto"){
         if(fStormNode)
-            return "SandStorm is not supported from stormnodes";
+            return "Mixing is not supported from stormnodes";
 
-        return "DoAutomaticDenominating " + (sandStormPool.DoAutomaticDenominating() ? "successful" : ("failed: " + sandStormPool.GetStatus()));
+        fEnableSandstorm = true;
+        bool result = sandStormPool.DoAutomaticDenominating();
+//        fEnableSandstorm = result;
+        return "Mixing " + (result ? "started successfully" : ("start failed: " + sandStormPool.GetStatus() + ", will retry"));
+    }
+
+    if(params[0].get_str() == "stop"){
+        fEnableSandstorm = false;
+        return "Mixing was stopped";
     }
 
     if(params[0].get_str() == "reset"){
         sandStormPool.Reset();
-        return "successfully reset sandstorm";
+        return "Mixing was reset";
     }
 
-    if (params.size() != 2)
-        throw runtime_error(
-            "sandstorm <darksilkaddress> <amount>\n"
-            "darksilkaddress, denominate, or auto (AutoDenominate)"
-            "<amount> is a real and will be rounded to the next 0.1"
-            + HelpRequiringPassphrase());
+    if(params[0].get_str() == "status"){
+        return "Mixing status: " + sandStormPool.GetStatus();
+    }
 
-    CDarkSilkAddress address(params[0].get_str());
-    if (!address.IsValid())
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid DarkSilk address");
-
-    // Amount
-    CAmount nAmount = AmountFromValue(params[1]);
-
-    // Wallet comments
-    CWalletTx wtx;
-//    string strError = pwalletMain->SendMoneyToDestination(address.Get(), nAmount, wtx, ONLY_DENOMINATED);
-    SendMoney(address.Get(), nAmount, wtx, ONLY_DENOMINATED);
-//    if (strError != "")
-//        throw JSONRPCError(RPC_WALLET_ERROR, strError);
-
-    return wtx.GetHash().GetHex();
+    return "Unknown command, please see \"help sandstorm\"";
 }
+
 
 Value getpoolinfo(const Array& params, bool fHelp)
 {
