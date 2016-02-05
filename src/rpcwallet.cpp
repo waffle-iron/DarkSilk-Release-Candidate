@@ -457,7 +457,7 @@ Value sendtoaddress(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() < 2 || params.size() > 7)
         throw runtime_error(
-            "sendtoaddress \"dashaddress\" amount ( \"comment\" \"comment-to\" use_ix use_ss)\n"
+            "sendtoaddress \"darksilkaddress\" amount ( \"comment\" \"comment-to\" use_ix use_ss)\n"
             "\nSent an amount to a given address. The amount is a real and is rounded to the nearest 0.00000001\n"
             + HelpRequiringPassphrase() +
             "\nArguments:\n"
