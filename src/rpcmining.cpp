@@ -14,6 +14,7 @@
 #include "miner.h"
 #include "kernel.h"
 #include "txdb-leveldb.h"
+#include "stormnode-sync.h"
 
 #include <boost/assign/list_of.hpp>
 
@@ -616,8 +617,6 @@ Value getblocktemplate(const Array& params, bool fHelp)
         aMutable.push_back("prevblock");
     }
 
-    Array aVotes;
-
     Object result;
     result.push_back(Pair("version", pblock->nVersion));
     result.push_back(Pair("previousblockhash", pblock->hashPrevBlock.GetHex()));
@@ -633,7 +632,6 @@ Value getblocktemplate(const Array& params, bool fHelp)
     result.push_back(Pair("curtime", (int64_t)pblock->nTime));
     result.push_back(Pair("bits", strprintf("%08x", pblock->nBits)));
     result.push_back(Pair("height", (int64_t)(pindexPrev->nHeight+1)));
-    result.push_back(Pair("votes", aVotes));
 
 
     if(pblock->payee != CScript()){

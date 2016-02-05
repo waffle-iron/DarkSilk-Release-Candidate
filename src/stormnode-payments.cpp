@@ -302,7 +302,7 @@ void CStormnodePayments::FillBlockPayee(CTransaction& txNew, CAmount nFees)
     //spork
     if(!stormnodePayments.GetBlockPayee(pindexPrev->nHeight+1, payee)){
         //no stormnode detected
-        CStormnode* winningNode = snodeman.GetCurrentStormNode(1);
+        CStormnode* winningNode = snodeman.GetCurrentStormNode();
         if(winningNode){
             payee = GetScriptForDestination(winningNode->pubkey.GetID());
         } else {

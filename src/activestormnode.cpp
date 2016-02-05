@@ -4,9 +4,9 @@
 #include "addrman.h"
 #include "protocol.h"
 #include "activestormnode.h"
-#include "stormnodeman.h"
-#include "stormnode.h"
+#include "stormnode-sync.h"
 #include "stormnodeconfig.h"
+#include "stormnodeman.h"
 #include "spork.h"
 
 //

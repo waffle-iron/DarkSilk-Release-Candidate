@@ -2140,8 +2140,6 @@ bool CWallet::SelectCoinsMinConfByCoinAge(const CAmount& nTargetValue, unsigned 
     return true;
 }
 
-// TODO: find appropriate place for this sort function
-// move denoms down
 bool less_then_denom (const COutput& out1, const COutput& out2)
 {
     const CWalletTx *pcoin1 = out1.tx;

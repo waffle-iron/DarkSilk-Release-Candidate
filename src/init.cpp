@@ -294,6 +294,7 @@ std::string HelpMessage()
     strUsage += ", qt";
     strUsage += ".\n";
     strUsage += "  -logtimestamps         " + _("Prepend debug output with timestamp (defaultg: 1)") + "\n";    strUsage += "  -shrinkdebugfile       " + _("Shrink debug.log file on client startup (default: 1 when no -debug)") + "\n";
+    strUsage += "  -printtodebuglog       " + strprintf(_("Send trace/debug info to debug.log file (default: %u)"), 1) + "\n";
     strUsage += "  -printtoconsole        " + _("Send trace/debug info to console instead of debug.log file") + "\n";
     strUsage += "  -rpcuser=<user>        " + _("Username for JSON-RPC connections") + "\n";
     strUsage += "  -rpcpassword=<pw>      " + _("Password for JSON-RPC connections") + "\n";
@@ -405,7 +406,15 @@ bool AppInit2(boost::thread_group& threadGroup)
     }
 #endif
 #ifndef WIN32
-    umask(077);
+
+    if (GetBoolArg("-sysperms", false)) {
+#ifdef ENABLE_WALLET
+        if (!GetBoolArg("-disablewallet", false))
+            return InitError("Error: -sysperms is not allowed in combination with enabled wallet functionality");
+#endif
+    } else {
+        umask(077);
+    }
 
     // Clean shutdown on SIGTERM
     struct sigaction sa;
@@ -452,11 +461,6 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     if (!SelectParamsFromCommandLine()) {
         return InitError("Invalid use of -testnet");
-    }
-
-    if (TestNet())
-    {
-        SoftSetBoolArg("-irc", true);
     }
 
     if (mapArgs.count("-bind")) {
@@ -546,6 +550,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     fServer = GetBoolArg("-server", false);
     fPrintToConsole = GetBoolArg("-printtoconsole", false);
+    fPrintToDebugLog = GetBoolArg("-printtodebuglog", true) && !fPrintToConsole;
     fLogTimestamps = GetBoolArg("-logtimestamps", true);
 #ifdef ENABLE_WALLET
     bool fDisableWallet = GetBoolArg("-disablewallet", false);
@@ -887,8 +892,7 @@ bool AppInit2(boost::thread_group& threadGroup)
             // first suggest a reindex
             if (!fReset) {
                 bool fRet = uiInterface.ThreadSafeMessageBox(
-                    strLoadError + ".\n\n" + _("Do you want to rebuild the block database now?"),
-                    "", CClientUIInterface::MSG_ERROR | CClientUIInterface::BTN_ABORT);
+                    strLoadError + ".\n\n" + _("Do you want to rebuild the block database now?"), "", CClientUIInterface::MSG_ERROR | CClientUIInterface::BTN_ABORT);
                 if (fRet) {
                     fReindex = true;
                     fRequestShutdown = false;
@@ -1045,6 +1049,11 @@ bool AppInit2(boost::thread_group& threadGroup)
             vImportFiles.push_back(strFile);
     }
     threadGroup.create_thread(boost::bind(&ThreadImport, vImportFiles));
+    if (pindexBest == NULL) {
+        LogPrintf("Waiting for genesis block to be imported...\n");
+        while (!fRequestShutdown && pindexBest == NULL)
+            MilliSleep(10);
+    }
 
     // ********************************************************* Step 10: load peers
 
@@ -1205,24 +1214,8 @@ bool AppInit2(boost::thread_group& threadGroup)
     LogPrintf("Anonymize DarkSilk Amount %d\n", nAnonymizeDarkSilkAmount);
     LogPrintf("Budget Mode %s\n", strBudgetMode.c_str());
 
-    /* Denominations
-       A note about convertability. Within Sandstorm pools, each denomination
-       is convertable to another.
-       For example:
-       1DRK+1000 == (.1DRK+100)*10
-       10DRK+10000 == (1DRK+1000)*10
-    */
-    sandStormDenominations.push_back( (10000       * COIN)+10000000 );
-    sandStormDenominations.push_back( (1000        * COIN)+1000000 );
-    sandStormDenominations.push_back( (100         * COIN)+100000 );
-    sandStormDenominations.push_back( (10          * COIN)+10000 );
-    sandStormDenominations.push_back( (1           * COIN)+1000 );
-    sandStormDenominations.push_back( (.1          * COIN)+100 );
-    /* Disabled till we need them
-    sandStormDenominations.push_back( (.01      * COIN)+10 );
-    sandStormDenominations.push_back( (.001     * COIN)+1 );
-    */
 
+    sandStormPool.InitDenominations();
     sandStormPool.InitCollateralAddress();
 
     threadGroup.create_thread(boost::bind(&ThreadCheckSandStormPool));
@@ -1258,6 +1251,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 #endif
 
     StartNode(threadGroup);
+    
 #ifdef ENABLE_WALLET
     // InitRPCMining is needed here so getwork/getblocktemplate in the GUI debug console works properly.
     InitRPCMining();

@@ -24,6 +24,7 @@
 #include "stormnodeman.h"
 #include "stormnode-budget.h"
 #include "stormnode-payments.h"
+#include "stormnode-sync.h"
 #include "spork.h"
 #include "smessage.h"
 #include "coins.h"
