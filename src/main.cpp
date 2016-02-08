@@ -4058,11 +4058,10 @@ FILE* OpenUndoFile(const CDiskBlockPos &pos, bool fReadOnly) {
     return OpenDiskFile(pos, "rev", fReadOnly);
 }
 
-/**
- * Update the on-disk chain state.
- * The caches and indexes are flushed if either they're too large, forceWrite is set, or
- * fast is not set and it's been a while since the last write.
- */
+
+///! Update the on-disk chain state.
+///! The caches and indexes are flushed if either they're too large, forceWrite is set, or
+///! fast is not set and it's been a while since the last write.
 bool static FlushStateToDisk(CValidationState &state, FlushStateMode mode) {
     LOCK(cs_main);
     static int64_t nLastWrite = 0;
@@ -4119,6 +4118,154 @@ bool static FlushStateToDisk(CValidationState &state, FlushStateMode mode) {
 void FlushStateToDisk() {
     CValidationState state;
     FlushStateToDisk(state, FLUSH_STATE_ALWAYS);
+}
+
+
+///! Update chainActive and related internal data structures.
+void static UpdateTip(CBlockIndex *pindexNew) {
+    chainActive.SetTip(pindexNew);
+
+    // New best block
+    nTimeBestReceived = GetTime();
+    mempool.AddTransactionsUpdated(1);
+
+    LogPrintf("UpdateTip: new best=%s  height=%d  log2_work=%.8g  tx=%lu  date=%s progress=%f  cache=%u\n",
+      chainActive.Tip()->GetBlockHash().ToString(), chainActive.Height(), log(chainActive.Tip()->nChainWork.getdouble())/log(2.0), (unsigned long)chainActive.Tip()->nChainTx,
+      DateTimeStrFormat("%Y-%m-%d %H:%M:%S", chainActive.Tip()->GetBlockTime()),
+      Checkpoints::GuessVerificationProgress(chainActive.Tip()), (unsigned int)pcoinsTip->GetCacheSize());
+
+    cvBlockChange.notify_all();
+
+    // Check the version of the last 100 blocks to see if we need to upgrade:
+    static bool fWarned = false;
+    if (!IsInitialBlockDownload() && !fWarned)
+    {
+        int nUpgraded = 0;
+        const CBlockIndex* pindex = chainActive.Tip();
+        for (int i = 0; i < 100 && pindex != NULL; i++)
+        {
+            if (pindex->nVersion > CBlock::CURRENT_VERSION)
+                ++nUpgraded;
+            pindex = pindex->pprev;
+        }
+        if (nUpgraded > 0)
+            LogPrintf("SetBestChain: %d of last 100 blocks above version %d\n", nUpgraded, (int)CBlock::CURRENT_VERSION);
+        if (nUpgraded > 100/2)
+        {
+            // strMiscWarning is read by GetWarnings(), called by Qt and the JSON-RPC code to warn the user:
+            strMiscWarning = _("Warning: This version is obsolete, upgrade required!");
+            CAlert::Notify(strMiscWarning, true);
+            fWarned = true;
+        }
+    }
+}
+
+///! Disconnect chainActive's tip.
+bool static DisconnectTip(CValidationState &state) {
+    CBlockIndex *pindexDelete = chainActive.Tip();
+    assert(pindexDelete);
+    mempool.check(pcoinsTip);
+    // Read block from disk.
+    CBlock block;
+    if (!ReadBlockFromDisk(block, pindexDelete))
+        return state.Abort("Failed to read block");
+    // Apply the block atomically to the chain state.
+    int64_t nStart = GetTimeMicros();
+    {
+        CCoinsViewCache view(pcoinsTip);
+        if (!DisconnectBlock(block, state, pindexDelete, view))
+            return error("DisconnectTip() : DisconnectBlock %s failed", pindexDelete->GetBlockHash().ToString());
+        assert(view.Flush());
+    }
+    LogPrint("bench", "- Disconnect block: %.2fms\n", (GetTimeMicros() - nStart) * 0.001);
+    // Write the chain state to disk, if necessary.
+    if (!FlushStateToDisk(state, FLUSH_STATE_IF_NEEDED))
+        return false;
+    // Resurrect mempool transactions from the disconnected block.
+    BOOST_FOREACH(const CTransaction &tx, block.vtx) {
+        // ignore validation errors in resurrected transactions
+        list<CTransaction> removed;
+        CValidationState stateDummy;
+        if (tx.IsCoinBase() || !AcceptToMemoryPool(mempool, stateDummy, tx, false, NULL))
+            mempool.remove(tx, removed, true);
+    }
+    mempool.removeCoinbaseSpends(pcoinsTip, pindexDelete->nHeight);
+    mempool.check(pcoinsTip);
+    // Update chainActive and related variables.
+    UpdateTip(pindexDelete->pprev);
+    // Let wallets know transactions went from 1-confirmed to
+    // 0-confirmed or conflicted:
+    BOOST_FOREACH(const CTransaction &tx, block.vtx) {
+        SyncWithWallets(tx, NULL);
+    }
+    return true;
+}
+
+static int64_t nTimeReadFromDisk = 0;
+static int64_t nTimeConnectTotal = 0;
+static int64_t nTimeFlush = 0;
+static int64_t nTimeChainState = 0;
+static int64_t nTimePostConnect = 0;
+
+///! Connect a new block to chainActive. pblock is either NULL or a pointer to a CBlock
+///! corresponding to pindexNew, to bypass loading it again from disk.
+bool static ConnectTip(CValidationState &state, CBlockIndex *pindexNew, CBlock *pblock) {
+    assert(pindexNew->pprev == chainActive.Tip());
+    mempool.check(pcoinsTip);
+    // Read block from disk.
+    int64_t nTime1 = GetTimeMicros();
+    CBlock block;
+    if (!pblock) {
+        if (!ReadBlockFromDisk(block, pindexNew))
+            return state.Abort("Failed to read block");
+        pblock = &block;
+    }
+    // Apply the block atomically to the chain state.
+    int64_t nTime2 = GetTimeMicros(); nTimeReadFromDisk += nTime2 - nTime1;
+    int64_t nTime3;
+    LogPrint("bench", "  - Load block from disk: %.2fms [%.2fs]\n", (nTime2 - nTime1) * 0.001, nTimeReadFromDisk * 0.000001);
+    {
+        CCoinsViewCache view(pcoinsTip);
+        CInv inv(MSG_BLOCK, pindexNew->GetBlockHash());
+        bool rv = ConnectBlock(*pblock, state, pindexNew, view);
+        g_signals.BlockChecked(*pblock, state);
+        if (!rv) {
+            if (state.IsInvalid())
+                InvalidBlockFound(pindexNew, state);
+            return error("ConnectTip() : ConnectBlock %s failed", pindexNew->GetBlockHash().ToString());
+        }
+        mapBlockSource.erase(inv.hash);
+        nTime3 = GetTimeMicros(); nTimeConnectTotal += nTime3 - nTime2;
+        LogPrint("bench", "  - Connect total: %.2fms [%.2fs]\n", (nTime3 - nTime2) * 0.001, nTimeConnectTotal * 0.000001);
+        assert(view.Flush());
+    }
+    int64_t nTime4 = GetTimeMicros(); nTimeFlush += nTime4 - nTime3;
+    LogPrint("bench", "  - Flush: %.2fms [%.2fs]\n", (nTime4 - nTime3) * 0.001, nTimeFlush * 0.000001);
+    // Write the chain state to disk, if necessary.
+    if (!FlushStateToDisk(state, FLUSH_STATE_IF_NEEDED))
+        return false;
+    int64_t nTime5 = GetTimeMicros(); nTimeChainState += nTime5 - nTime4;
+    LogPrint("bench", "  - Writing chainstate: %.2fms [%.2fs]\n", (nTime5 - nTime4) * 0.001, nTimeChainState * 0.000001);
+    // Remove conflicting transactions from the mempool.
+    list<CTransaction> txConflicted;
+    mempool.removeForBlock(pblock->vtx, pindexNew->nHeight, txConflicted);
+    mempool.check(pcoinsTip);
+    // Update chainActive & related variables.
+    UpdateTip(pindexNew);
+    // Tell wallet about transactions that went from mempool
+    // to conflicted:
+    BOOST_FOREACH(const CTransaction &tx, txConflicted) {
+        SyncWithWallets(tx, NULL);
+    }
+    // ... and about transactions that got confirmed:
+    BOOST_FOREACH(const CTransaction &tx, pblock->vtx) {
+        SyncWithWallets(tx, pblock);
+    }
+
+    int64_t nTime6 = GetTimeMicros(); nTimePostConnect += nTime6 - nTime5; nTimeTotal += nTime6 - nTime1;
+    LogPrint("bench", "  - Connect postprocess: %.2fms [%.2fs]\n", (nTime6 - nTime5) * 0.001, nTimePostConnect * 0.000001);
+    LogPrint("bench", "- Connect block: %.2fms [%.2fs]\n", (nTime6 - nTime1) * 0.001, nTimeTotal * 0.000001);
+    return true;
 }
 
 bool CBlock::SetBestChain(CTxDB& txdb, CBlockIndex* pindexNew)
