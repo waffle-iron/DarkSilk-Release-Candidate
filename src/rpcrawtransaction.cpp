@@ -592,7 +592,8 @@ Value sendrawtransaction(const Array& params, bool fHelp)
     else
     {
         // push to local node
-        if (!AcceptToMemoryPool(mempool, tx, true, NULL))
+        CValidationState state;
+        if (!AcceptToMemoryPool(mempool, state, tx, true, NULL))
             throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "TX rejected");
     }
     RelayTransaction(tx, hashTx);

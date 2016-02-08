@@ -480,7 +480,6 @@ void CoinControlDialog::updateLabels(WalletModel *model, QDialog* dialog)
     double dPriorityInputs      = 0;
     unsigned int nQuantity      = 0;
     int nQuantityUncompressed   = 0;
-    bool fAllowFree             = false;
 
     vector<COutPoint> vCoinControl;
     vector<COutput>   vOutputs;

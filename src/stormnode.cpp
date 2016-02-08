@@ -453,8 +453,7 @@ bool CStormnodeBroadcast::CheckInputsAndAdd(int& nDoS)
         }
 
         //TODO (Amir): Use state in AcceptableInputs
-        //if(!AcceptableInputs(mempool, state, tx, false, NULL)) {
-        if(!AcceptableInputs(mempool, tx, false, NULL)) {
+        if(!AcceptableInputs(mempool, state, tx, false, NULL)) {
             //set nDos
             state.IsInvalid(nDoS);
             return false;
