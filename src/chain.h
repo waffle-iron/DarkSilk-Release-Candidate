@@ -279,6 +279,20 @@ public:
         return ret;
     }
 
+    CDiskBlockPos GetUndoPos() const {
+        CDiskBlockPos ret;
+        if (nStatus & BLOCK_HAVE_UNDO) {
+            ret.nFile = nFile;
+            ret.nPos  = nUndoPos;
+        }
+        return ret;
+    }
+
+    ///! Returns true if there are nRequired or more blocks of minVersion or above
+    ///! in the last Params().ToCheckBlockUpgradeMajority() blocks, starting at pstart
+    ///! and going backwards.
+    static bool IsSuperMajority(int minVersion, const CBlockIndex* pstart, unsigned int nRequired);
+
     enum { nMedianTimeSpan=11 };
 
     int64_t GetMedianTimePast() const

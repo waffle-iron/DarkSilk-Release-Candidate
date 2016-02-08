@@ -72,6 +72,9 @@ public:
     int PoolMaxTransactions() const { return nPoolMaxTransactions; }
     std::string SandstormPoolDummyAddress() const { return strSandstormPoolDummyAddress; }
 
+    ///! Used to check majorities for block version upgrade
+    int EnforceBlockUpgradeMajority() const { return nEnforceBlockUpgradeMajority; }
+
 protected:
     CChainParams() {};
 
@@ -91,6 +94,8 @@ protected:
     int nFirstPOSBlock;
     int nPoolMaxTransactions;
     std::string strSandstormPoolDummyAddress;
+    int nEnforceBlockUpgradeMajority;
+
 };
 
 /**

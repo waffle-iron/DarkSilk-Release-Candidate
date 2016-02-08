@@ -376,6 +376,38 @@ bool WriteBlockToDisk(CBlock& block, CDiskBlockPos& pos);
 bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos);
 bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex);
 
+class CTxUndo;
+///! Undo information for a CBlock
+class CBlockUndo
+{
+public:
+    std::vector<CTxUndo> vtxundo; // for all but the coinbase
+
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITE(vtxundo);
+    }
+
+    bool WriteToDisk(CDiskBlockPos &pos, const uint256 &hashBlock);
+    bool ReadFromDisk(const CDiskBlockPos &pos, const uint256 &hashBlock);
+};
+
+
+/** Functions for validating blocks and updating the block tree */
+
+/** Undo the effects of this block (with given index) on the UTXO set represented by coins.
+ *  In case pfClean is provided, operation will try to be tolerant about errors, and *pfClean
+ *  will be true if no problems were found. Otherwise, the return value will be false in case
+ *  of problems. Note that in any case, coins may be modified. */
+class CCoinsViewCache;
+
+bool DisconnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex, CCoinsViewCache& coins, bool* pfClean = NULL);
+/** Apply the effects of this block (with given index) on the UTXO set represented by coins */
+bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pindex, CCoinsViewCache& coins, bool fJustCheck = false);
+
+
 /** A transaction with a merkle branch linking it to the block chain. */
 class CMerkleTx : public CTransaction
 {
@@ -563,6 +595,7 @@ protected:
     virtual bool UpdatedTransaction(const uint256 &hash) =0;
     virtual void Inventory(const uint256 &hash) =0;
     virtual void ResendWalletTransactions(bool fForce) =0;
+    virtual void BlockChecked(const CBlock&, const CValidationState&) {};
     friend void ::RegisterWallet(CWalletInterface*);
     friend void ::UnregisterWallet(CWalletInterface*);
     friend void ::UnregisterAllWallets();
