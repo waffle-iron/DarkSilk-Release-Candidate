@@ -164,6 +164,59 @@ bool CTxMemPool::WriteFeeEstimates(CAutoFile& fileout) const
     return true;
 }
 
+void CTxMemPool::removeCoinbaseSpends(const CCoinsViewCache *pcoins, unsigned int nMemPoolHeight)
+{
+    // Remove transactions spending a coinbase which are now immature
+    LOCK(cs);
+    list<CTransaction> transactionsToRemove;
+    for (std::map<uint256, CTxMemPoolEntry>::const_iterator it = mapTx.begin(); it != mapTx.end(); it++) {
+        const CTransaction& tx = it->second.GetTx();
+        BOOST_FOREACH(const CTxIn& txin, tx.vin) {
+            std::map<uint256, CTxMemPoolEntry>::const_iterator it2 = mapTx.find(txin.prevout.hash);
+            if (it2 != mapTx.end())
+                continue;
+            const CCoins *coins = pcoins->AccessCoins(txin.prevout.hash);
+            if (fSanityCheck) assert(coins);
+            if (!coins || (coins->IsCoinBase() && nMemPoolHeight - coins->nHeight < nCoinbaseMaturity)) {
+                transactionsToRemove.push_back(tx);
+                break;
+            }
+        }
+    }
+    BOOST_FOREACH(const CTransaction& tx, transactionsToRemove) {
+        list<CTransaction> removed;
+        remove(tx, removed, true);
+    }
+}
+
+void CTxMemPool::ClearPrioritisation(const uint256 hash)
+{
+    LOCK(cs);
+    mapDeltas.erase(hash);
+}
+
+///! Called when a block is connected. Removes from mempool and updates the miner fee estimator.
+void CTxMemPool::removeForBlock(const std::vector<CTransaction>& vtx, unsigned int nBlockHeight,
+                                std::list<CTransaction>& conflicts)
+{
+    LOCK(cs);
+    std::vector<CTxMemPoolEntry> entries;
+    BOOST_FOREACH(const CTransaction& tx, vtx)
+    {
+        uint256 hash = tx.GetHash();
+        if (mapTx.count(hash))
+            entries.push_back(mapTx[hash]);
+    }
+    minerPolicyEstimator->seenBlock(entries, nBlockHeight, minRelayFee);
+    BOOST_FOREACH(const CTransaction& tx, vtx)
+    {
+        std::list<CTransaction> dummy;
+        remove(tx, dummy, false);
+        removeConflicts(tx, conflicts);
+        ClearPrioritisation(tx.GetHash());
+    }
+}
+
 bool CTxMemPool::ReadFeeEstimates(CAutoFile& filein)
 {
     try {

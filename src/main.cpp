@@ -218,6 +218,8 @@ namespace {
         boost::signals2::signal<void (const uint256 &)> Inventory;
         // Tells listeners to broadcast their data.
         boost::signals2::signal<void (bool)> Broadcast;
+        ///! Notifies listeners of a block validation result
+        boost::signals2::signal<void (const CBlock&, const CValidationState&)> BlockChecked;
     } g_signals;
 }
 
@@ -228,9 +230,11 @@ void RegisterWallet(CWalletInterface* pwalletIn) {
     g_signals.SetBestChain.connect(boost::bind(&CWalletInterface::SetBestChain, pwalletIn, _1));
     g_signals.Inventory.connect(boost::bind(&CWalletInterface::Inventory, pwalletIn, _1));
     g_signals.Broadcast.connect(boost::bind(&CWalletInterface::ResendWalletTransactions, pwalletIn, _1));
+    g_signals.BlockChecked.connect(boost::bind(&CValidationInterface::BlockChecked, pwalletIn, _1, _2));
 }
 
 void UnregisterWallet(CWalletInterface* pwalletIn) {
+    g_signals.BlockChecked.disconnect(boost::bind(&CValidationInterface::BlockChecked, pwalletIn, _1, _2));
     g_signals.Broadcast.disconnect(boost::bind(&CWalletInterface::ResendWalletTransactions, pwalletIn, _1));
     g_signals.Inventory.disconnect(boost::bind(&CWalletInterface::Inventory, pwalletIn, _1));
     g_signals.SetBestChain.disconnect(boost::bind(&CWalletInterface::SetBestChain, pwalletIn, _1));
@@ -240,6 +244,7 @@ void UnregisterWallet(CWalletInterface* pwalletIn) {
 }
 
 void UnregisterAllWallets() {
+    g_signals.BlockChecked.disconnect_all_slots();
     g_signals.Broadcast.disconnect_all_slots();
     g_signals.Inventory.disconnect_all_slots();
     g_signals.SetBestChain.disconnect_all_slots();
@@ -1011,8 +1016,13 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState &state, CTransaction 
         }
     }
 
+    CAmount nValueOut = tx.GetValueOut();
+    CAmount nFees = nValueIn-nValueOut;
+    double dPriority = view.GetPriority(tx, chainActive.Height());
+    CTxMemPoolEntry entry(tx, nFees, GetTime(), dPriority, chainActive.Height());
+
     // Store transaction in memory
-    pool.addUnchecked(hash, tx);
+    pool.addUnchecked(hash, entry);
     setValidatedTx.insert(hash);
 
     SyncWithWallets(tx, NULL);
