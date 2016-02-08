@@ -180,7 +180,7 @@ double getTxTotalValue(std::string txid)
     return value;
 }
 
-double convertCoins(int64_t amount)
+double convertCoins(CAmount amount)
 {
     return (double)amount / (double)COIN;
 }

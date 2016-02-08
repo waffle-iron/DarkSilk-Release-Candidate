@@ -177,6 +177,8 @@ void CoinControlDialog::buttonSelectAllClicked()
             if (ui->treeWidget->topLevelItem(i)->checkState(COLUMN_CHECKBOX) != state)
                 ui->treeWidget->topLevelItem(i)->setCheckState(COLUMN_CHECKBOX, state);
     ui->treeWidget->setEnabled(true);
+    if (state == Qt::Unchecked)
+        coinControl->UnSelectAll(); // just to be sure
     CoinControlDialog::updateLabels(model, this);
 }
 
@@ -445,7 +447,7 @@ void CoinControlDialog::updateLabels(WalletModel *model, QDialog* dialog)
     // nPayAmount
     CAmount nPayAmount = 0;
     bool fDust = false;
-    CTransaction txDummy; //TODO (AA): Do we need CMutableTransaction???
+    CMutableTransaction txDummy; //TODO (AA): Do we need CMutableTransaction???
     foreach(const CAmount &amount, CoinControlDialog::payAmounts)
     {
         nPayAmount += amount;
