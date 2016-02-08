@@ -156,4 +156,75 @@ bool CTxMemPool::ReadFeeEstimates(CAutoFile& filein)
     return true;
 }
 
+void CTxMemPool::check(const CCoinsViewCache *pcoins) const
+{
+    if (!fSanityCheck)
+        return;
 
+    LogPrint("mempool", "Checking mempool with %u transactions and %u inputs\n", (unsigned int)mapTx.size(), (unsigned int)mapNextTx.size());
+
+    uint64_t checkTotal = 0;
+
+    CCoinsViewCache mempoolDuplicate(const_cast<CCoinsViewCache*>(pcoins));
+
+    LOCK(cs);
+    list<const CTxMemPoolEntry*> waitingOnDependants;
+    for (std::map<uint256, CTxMemPoolEntry>::const_iterator it = mapTx.begin(); it != mapTx.end(); it++) {
+        unsigned int i = 0;
+        checkTotal += it->second.GetTxSize();
+        const CTransaction& tx = it->second.GetTx();
+        bool fDependsWait = false;
+        BOOST_FOREACH(const CTxIn &txin, tx.vin) {
+            // Check that every mempool transaction's inputs refer to available coins, or other mempool tx's.
+            std::map<uint256, CTxMemPoolEntry>::const_iterator it2 = mapTx.find(txin.prevout.hash);
+            if (it2 != mapTx.end()) {
+                const CTransaction& tx2 = it2->second.GetTx();
+                assert(tx2.vout.size() > txin.prevout.n && !tx2.vout[txin.prevout.n].IsNull());
+                fDependsWait = true;
+            } else {
+                const CCoins* coins = pcoins->AccessCoins(txin.prevout.hash);
+                assert(coins && coins->IsAvailable(txin.prevout.n));
+            }
+            // Check whether its inputs are marked in mapNextTx.
+            std::map<COutPoint, CInPoint>::const_iterator it3 = mapNextTx.find(txin.prevout);
+            assert(it3 != mapNextTx.end());
+            assert(it3->second.ptx == &tx);
+            assert(it3->second.n == i);
+            i++;
+        }
+        if (fDependsWait)
+            waitingOnDependants.push_back(&it->second);
+        else {
+            CValidationState state; CTxUndo undo;
+            assert(CheckInputs(tx, state, mempoolDuplicate, false, 0, false, NULL));
+            UpdateCoins(tx, state, mempoolDuplicate, undo, 1000000);
+        }
+    }
+    unsigned int stepsSinceLastRemove = 0;
+    while (!waitingOnDependants.empty()) {
+        const CTxMemPoolEntry* entry = waitingOnDependants.front();
+        waitingOnDependants.pop_front();
+        CValidationState state;
+        if (!mempoolDuplicate.HaveInputs(entry->GetTx())) {
+            waitingOnDependants.push_back(entry);
+            stepsSinceLastRemove++;
+            assert(stepsSinceLastRemove < waitingOnDependants.size());
+        } else {
+            assert(CheckInputs(entry->GetTx(), state, mempoolDuplicate, false, 0, false, NULL));
+            CTxUndo undo;
+            UpdateCoins(entry->GetTx(), state, mempoolDuplicate, undo, 1000000);
+            stepsSinceLastRemove = 0;
+        }
+    }
+    for (std::map<COutPoint, CInPoint>::const_iterator it = mapNextTx.begin(); it != mapNextTx.end(); it++) {
+        uint256 hash = it->second.ptx->GetHash();
+        map<uint256, CTxMemPoolEntry>::const_iterator it2 = mapTx.find(hash);
+        const CTransaction& tx = it2->second.GetTx();
+        assert(it2 != mapTx.end());
+        assert(&tx == it->second.ptx);
+        assert(tx.vin.size() > it->second.n);
+        assert(it->first == it->second.ptx->vin[it->second.n].prevout);
+    }
+
+    assert(totalTxSize == checkTotal);
+}
