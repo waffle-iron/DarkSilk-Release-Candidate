@@ -231,7 +231,6 @@ bool CActiveStormnode::Register(std::string strService, std::string strKeyStormn
         return false;
     }
 
-    //TODO(AA): Remove and not limit ports? Or shall we limit ports?
     CService service = CService(strService);
     if(Params().NetworkID() == CChainParams::MAIN) {
         if(service.GetPort() != 31000) {
