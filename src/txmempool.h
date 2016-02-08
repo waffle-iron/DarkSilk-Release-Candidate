@@ -401,6 +401,13 @@ public:
     ~CTxMemPool();
 
     bool fSanityCheck;
+
+    ///! If sanity-checking is turned on, check makes sure the pool is
+    ///! consistent (does not contain two transactions that spend the same inputs,
+    ///! all inputs are in the mapNextTx array). If sanity-checking is turned off,
+    ///! check does nothing.
+    void check(const CCoinsViewCache *pcoins) const;
+
     bool addUnchecked(const uint256& hash, CTransaction &tx);
     bool remove(const CTransaction &tx, bool fRecursive = false);
     bool removeConflicts(const CTransaction &tx);
