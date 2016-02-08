@@ -27,6 +27,8 @@ namespace Checkpoints {
     const CBlockIndex* AutoSelectSyncCheckpoint();
     bool CheckSync(int nHeight);
 
+    double GuessVerificationProgress(CBlockIndex* pindex, bool fSigchecks = true);
+
 } // namespace Checkpoints
 
 #endif
