@@ -395,6 +395,7 @@ public:
     std::map<uint256, CTransaction> mapTx;
     std::map<COutPoint, CInPoint> mapNextTx;
     CMinerPolicyEstimator* minerPolicyEstimator;
+    uint64_t totalTxSize; //! sum of all mempool tx' byte sizes
 
     //CTxMemPool();
     CTxMemPool(const CFeeRate& _minRelayFee);
@@ -422,6 +423,12 @@ public:
     {
         LOCK(cs);
         return mapTx.size();
+    }
+
+    uint64_t GetTotalTxSize()
+    {
+        LOCK(cs);
+        return totalTxSize;
     }
 
     bool exists(uint256 hash) const
