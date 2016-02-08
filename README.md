@@ -55,8 +55,6 @@ DarkSilk includes an Address Index feature, based on the address index API (sear
 Ported Masternodes from Dash, rebranded as Stormnodes and modified to use stealth addresses.
 Darksend ported and rebranded as Sandstorm.
 Utilisation of InstantX for instant transaction confirmation.
-Multiple Stormnodes can be ran from the same IP address on varied ports.
-
 
 **MainNet Parameters**
 P2P Port/Stormnodes = 31000

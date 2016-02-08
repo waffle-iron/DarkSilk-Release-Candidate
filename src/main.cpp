@@ -863,7 +863,7 @@ CAmount GetMinFee(const CTransaction& tx, unsigned int nBytes, bool fAllowFree, 
     return nMinFee;
 }
 
-bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree, bool* pfMissingInputs, bool ignoreFees)
+bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState &state, CTransaction &tx, bool fLimitFree, bool* pfMissingInputs, bool ignoreFees)
 {
     AssertLockHeld(cs_main);
     if (pfMissingInputs)
@@ -1228,7 +1228,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree, boo
     return true;
 }*/
 
-bool AcceptableInputs(CTxMemPool& pool, CTransaction &tx, bool fLimitFree,
+bool AcceptableInputs(CTxMemPool& pool, CValidationState &state, CTransaction &tx, bool fLimitFree,
                          bool* pfMissingInputs, bool fRejectInsaneFee, bool isSSTX)
 {
     AssertLockHeld(cs_main);
@@ -1245,7 +1245,7 @@ bool AcceptableInputs(CTxMemPool& pool, CTransaction &tx, bool fLimitFree,
         return tx.DoS(100, error("AcceptableInputs : coinstake as individual tx"));
 
     // Rather not work on nonstandard transactions (unless -testnet)
-    //string reason;
+    string reason;
     //if (!TestNet() && !IsStandardTx(tx, reason))
     //    return error("AcceptableInputs : nonstandard transaction: %s",
     //                 reason);
@@ -1254,6 +1254,18 @@ bool AcceptableInputs(CTxMemPool& pool, CTransaction &tx, bool fLimitFree,
     uint256 hash = tx.GetHash();
     if (pool.exists(hash))
         return false;
+
+    // ----------- instantX transaction scanning -----------
+
+    BOOST_FOREACH(const CTxIn& in, tx.vin){
+        if(mapLockedInputs.count(in.prevout)){
+            if(mapLockedInputs[in.prevout] != tx.GetHash()){
+                return state.DoS(0,
+                                 error("AcceptableInputs : conflicts with existing transaction lock: %s", reason),
+                                 REJECT_INVALID, "tx-lock-conflict");
+            }
+        }
+    }
 
     // Check for conflicts with in-memory transactions
     {
@@ -1442,13 +1454,11 @@ int CMerkleTx::GetBlocksToMaturity() const
     return max(0, nCoinbaseMaturity - GetDepthInMainChain());
 }
 
-
 bool CMerkleTx::AcceptToMemoryPool(bool fLimitFree, bool fRejectInsaneFee, bool ignoreFees)
-{
-    return ::AcceptToMemoryPool(mempool, *this, fLimitFree, NULL, ignoreFees);
+{   
+    CValidationState state;
+    return ::AcceptToMemoryPool(mempool, state, *this, fLimitFree, NULL, ignoreFees);
 }
-
-
 
 bool CWalletTx::AcceptWalletTransaction(CTxDB& txdb)
 {
@@ -3047,10 +3057,11 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         LOCK(cs_main);
 
         bool fMissingInputs = false;
+        CValidationState state;
 
         mapAlreadyAskedFor.erase(inv); 
 
-        if (AcceptToMemoryPool(mempool, tx, true, &fMissingInputs, allowFree))
+        if (AcceptToMemoryPool(mempool, state, tx, true, &fMissingInputs, allowFree))
         {
             RelayTransaction(tx, inv.hash);
             vWorkQueue.push_back(inv.hash);
@@ -3070,7 +3081,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
                     COrphanTx& orphanTx = mapOrphanTransactions[orphanTxHash];
                     bool fMissingInputs2 = false;
 
-                    if (AcceptToMemoryPool(mempool, orphanTx.tx, true, &fMissingInputs2))
+                    if (AcceptToMemoryPool(mempool, state, orphanTx.tx, true, &fMissingInputs2))
                     {
                         LogPrint("mempool", "   accepted orphan tx %s\n", orphanTxHash.ToString());
                         RelayTransaction(orphanTx.tx, orphanTxHash);

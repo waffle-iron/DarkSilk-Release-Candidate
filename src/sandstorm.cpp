@@ -257,7 +257,7 @@ void CSandstormPool::ProcessMessageSandstorm(CNode* pfrom, std::string& strComma
 
             {
                 LOCK(cs_main);
-                if(!AcceptableInputs(mempool, tx, false, NULL, false)) {
+                if(!AcceptableInputs(mempool, state, tx, false, NULL, false)) {
                     LogPrintf("ssi -- transaction not valid! \n");
                     errorID = ERR_INVALID_TX;
                     pfrom->PushMessage("sssu", sessionID, GetState(), GetEntriesCount(), STORMNODE_REJECTED, errorID);
@@ -1158,7 +1158,7 @@ void CSandstormPool::SendSandstormDenominate(std::vector<CTxIn>& vin, std::vecto
         while(true){
             TRY_LOCK(cs_main, lockMain);
             if(!lockMain) { MilliSleep(50); continue;}
-            if(!AcceptableInputs(mempool, tx, false, NULL, false, true)){
+            if(!AcceptableInputs(mempool, state, tx, false, NULL, false, true)){
                 LogPrintf("ssi -- transaction not valid! %s \n", tx.ToString());
                 UnlockCoins();
                 SetNull();

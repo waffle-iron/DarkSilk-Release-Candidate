@@ -70,13 +70,13 @@ void ProcessMessageInstantX(CNode* pfrom, std::string& strCommand, CDataStream& 
         int nBlockHeight = CreateNewLock(tx);
 
         bool fMissingInputs = false;
-        //CValidationState state;
+        CValidationState state;
 
         bool fAccepted = false;
         {
             LOCK(cs_main);
             //TODO (Amir): Pass state to AcceptToMemoryPool
-            fAccepted = AcceptToMemoryPool(mempool, tx, true, &fMissingInputs);
+            fAccepted = AcceptToMemoryPool(mempool, state, tx, true, &fMissingInputs);
         }
         if (fAccepted)
         {

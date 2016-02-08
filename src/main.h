@@ -200,8 +200,8 @@ void ThreadStakeMiner(CWallet *pwallet);
 
 /// (try to) add transaction to memory pool
 //bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree, bool* pfMissingInputs, bool fRejectInsaneFee=false, bool isSSTX=false);
-bool AcceptToMemoryPool(CTxMemPool& pool, CTransaction &tx, bool fLimitFree, bool* pfMissingInputs, bool ignoreFees = false);
-bool AcceptableInputs(CTxMemPool& pool, CTransaction &tx, bool fLimitFree, bool* pfMissingInputs, bool fRejectInsaneFee=false, bool isSSTX=false);
+bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState &state, CTransaction &tx, bool fLimitFree, bool* pfMissingInputs, bool ignoreFees = false);
+bool AcceptableInputs(CTxMemPool& pool, CValidationState &state, CTransaction &tx, bool fLimitFree, bool* pfMissingInputs, bool fRejectInsaneFee=false, bool isSSTX=false);
 
 CAmount GetBlockValue(int nBits, int nHeight, const CAmount& nFees);
 
