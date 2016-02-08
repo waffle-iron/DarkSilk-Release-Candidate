@@ -120,6 +120,8 @@ extern std::map<uint256, int64_t> mapRejectedBlocks;
 
 extern CFeeRate minRelayTxFee;
 
+extern CConditionVariable cvBlockChange;
+
 // Minimum disk space required - used in CheckDiskSpace()
 static const uint64_t nMinDiskSpace = 52428800;
 

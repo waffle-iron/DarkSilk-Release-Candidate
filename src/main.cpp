@@ -4206,6 +4206,7 @@ static int64_t nTimeConnectTotal = 0;
 static int64_t nTimeFlush = 0;
 static int64_t nTimeChainState = 0;
 static int64_t nTimePostConnect = 0;
+static int64_t nTimeTotal = 0;
 
 ///! Connect a new block to chainActive. pblock is either NULL or a pointer to a CBlock
 ///! corresponding to pindexNew, to bypass loading it again from disk.
