@@ -25,6 +25,15 @@ struct CDNSSeedData {
     CDNSSeedData(const string &strName, const string &strHost) : name(strName), host(strHost) {}
 };
 
+typedef std::map<int, uint256> MapCheckpoints;
+
+struct CCheckpointData {
+    MapCheckpoints mapCheckpoints;
+    int64_t nTimeLastCheckpoint;
+    int64_t nTransactionsLastCheckpoint;
+    double fTransactionsPerDay;
+};
+
 /**
  * CChainParams defines various tweakable parameters of a given instance of the
  * DarkSilk system. There are three: the main network on which people trade goods
@@ -65,6 +74,7 @@ public:
     const vector<CDNSSeedData>& DNSSeeds() const { return vSeeds; }
     const std::vector<unsigned char> &Base58Prefix(Base58Type type) const { return base58Prefixes[type]; }
     virtual const vector<CAddress>& FixedSeeds() const = 0;
+    const CCheckpointData& Checkpoints() const { return checkpointData; }
     int RPCPort() const { return nRPCPort; }
     int FirstPOSBlock() const { return nFirstPOSBlock; }
     std::string StormnodePaymentPubKey() const { return strStormnodePaymentsPubKey; }
@@ -91,6 +101,7 @@ protected:
     int nFirstPOSBlock;
     int nPoolMaxTransactions;
     std::string strSandstormPoolDummyAddress;
+    CCheckpointData checkpointData;
 };
 
 /**

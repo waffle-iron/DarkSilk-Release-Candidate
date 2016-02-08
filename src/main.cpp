@@ -79,6 +79,7 @@ CBlockIndex* pindexBest = NULL;
 
 int64_t nTimeBestReceived = 0;
 CConditionVariable cvBlockChange;
+
 bool fImporting = false;
 bool fReindex = false;
 bool fAddrIndex = false;
