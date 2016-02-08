@@ -392,7 +392,8 @@ private:
 
 public:
     mutable CCriticalSection cs;
-    std::map<uint256, CTransaction> mapTx;
+    //std::map<uint256, CTransaction> mapTx;
+    std::map<uint256, CTxMemPoolEntry> mapTx;
     std::map<COutPoint, CInPoint> mapNextTx;
     CMinerPolicyEstimator* minerPolicyEstimator;
     uint64_t totalTxSize; //! sum of all mempool tx' byte sizes
@@ -409,9 +410,9 @@ public:
     ///! check does nothing.
     void check(const CCoinsViewCache *pcoins) const;
 
-    bool addUnchecked(const uint256& hash, CTransaction &tx);
-    bool remove(const CTransaction &tx, bool fRecursive = false);
-    bool removeConflicts(const CTransaction &tx);
+    bool addUnchecked(const uint256& hash, const CTxMemPoolEntry &entry);
+    void remove(const CTransaction &tx, std::list<CTransaction>& removed, bool fRecursive = false);
+    void removeConflicts(const CTransaction &tx, std::list<CTransaction>& removed);
     void clear();
     void queryHashes(std::vector<uint256>& vtxid);
     unsigned int GetTransactionsUpdated() const;
