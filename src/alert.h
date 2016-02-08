@@ -74,7 +74,7 @@ public:
     void print() const;
 };
 
-/** An alert is a combination of a serialized CUnsignedAlert and a signature. */
+///! An alert is a combination of a serialized CUnsignedAlert and a signature.
 class CAlert : public CUnsignedAlert
 {
 public:
@@ -105,9 +105,9 @@ public:
     bool CheckSignature() const;
     bool ProcessAlert(bool fThread = true);
 
-    /*
-     * Get copy of (active) alert object by hash. Returns a null alert if it is not found.
-     */
+    static void Notify(const std::string& strMessage, bool fThread);
+
+    ///! Get copy of (active) alert object by hash. Returns a null alert if it is not found.
     static CAlert getAlertByHash(const uint256 &hash);
 };
 
