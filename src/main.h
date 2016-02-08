@@ -624,6 +624,10 @@ public:
      }
 };
 
+///! The currently-connected chain of blocks.
+class CChain;
+CChain chainActive;
+
 class CCoinsView;
 /// RAII wrapper for VerifyDB: Verify consistency of the block and coin databases
 class CVerifyDB {
