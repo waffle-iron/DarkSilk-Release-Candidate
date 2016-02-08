@@ -1,3 +1,7 @@
+// Copyright (c) 2011-2016 The Bitcoin developers
+// Distributed under the MIT/X11 software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #include "coincontroldialog.h"
 #include "ui_coincontroldialog.h"
 
@@ -109,6 +113,10 @@ CoinControlDialog::CoinControlDialog(QWidget *parent) :
 
     // (un)select all
     connect(ui->pushButtonSelectAll, SIGNAL(clicked()), this, SLOT(buttonSelectAllClicked()));
+
+    // change coin control first column label due Qt4 bug. 
+    // see https://github.com/bitcoin/bitcoin/issues/5716
+    ui->treeWidget->headerItem()->setText(COLUMN_CHECKBOX, QString());
 
     ui->treeWidget->setColumnWidth(COLUMN_CHECKBOX, 84);
     ui->treeWidget->setColumnWidth(COLUMN_AMOUNT, 100);
@@ -456,10 +464,12 @@ void CoinControlDialog::updateLabels(WalletModel *model, QDialog* dialog)
         {
             CTxOut txout(amount, (CScript)vector<unsigned char>(24, 0));
             txDummy.vout.push_back(txout);
+            if (txout.IsDust(::minRelayTxFee))
+               fDust = true;
         }
     }
 
-    QString sPriorityLabel      = "";
+    QString sPriorityLabel      = tr("none");
     CAmount nAmount             = 0;
     CAmount nPayFee             = 0;
     CAmount nAfterFee           = 0;
@@ -470,7 +480,8 @@ void CoinControlDialog::updateLabels(WalletModel *model, QDialog* dialog)
     double dPriorityInputs      = 0;
     unsigned int nQuantity      = 0;
     int nQuantityUncompressed   = 0;
-    
+    bool fAllowFree             = false;
+
     vector<COutPoint> vCoinControl;
     vector<COutput>   vOutputs;
     coinControl->ListSelected(vCoinControl);
@@ -592,13 +603,13 @@ void CoinControlDialog::updateLabels(WalletModel *model, QDialog* dialog)
     dialog->findChild<QLabel *>("labelCoinControlChange")       ->setEnabled(nPayAmount > 0);
     
     // stats
-    l1->setText(QString::number(nQuantity));                                 // Quantity        
+    l1->setText(QString::number(nQuantity));                                  // Quantity        
     l2->setText(DarkSilkUnits::formatWithUnit(nDisplayUnit, nAmount));        // Amount
     l3->setText(DarkSilkUnits::formatWithUnit(nDisplayUnit, nPayFee));        // Fee
     l4->setText(DarkSilkUnits::formatWithUnit(nDisplayUnit, nAfterFee));      // After Fee
-    l5->setText(((nBytes > 0) ? "~" : "") + QString::number(nBytes));                                    // Bytes
-    l6->setText(sPriorityLabel);                                             // Priority
-    l7->setText(fDust ? tr("yes") : tr("no")); // Low Output / Dust
+    l5->setText(((nBytes > 0) ? "~" : "") + QString::number(nBytes));         // Bytes                           // Bytes
+    l6->setText(sPriorityLabel);                                              // Priority
+    l7->setText(fDust ? tr("yes") : tr("no"));                                // Dust
     l8->setText(DarkSilkUnits::formatWithUnit(nDisplayUnit, nChange));        // Change
     
     // turn labels "red"
@@ -725,8 +736,9 @@ void CoinControlDialog::updateView()
             CTxIn vin = CTxIn(out.tx->GetHash(), out.i);
             int rounds = pwalletMain->GetInputSandstormRounds(vin);
 
-            if(rounds > 0) itemOutput->setText(COLUMN_SANDSTORM_ROUNDS, strPad(QString::number(rounds), 99, " "));
-            else itemOutput->setText(COLUMN_SANDSTORM_ROUNDS, strPad(QString("n/a"), 99, " "));
+            if(rounds > 0) itemOutput->setText(COLUMN_SANDSTORM_ROUNDS, strPad(QString::number(rounds), 101, " "));
+            else itemOutput->setText(COLUMN_SANDSTORM_ROUNDS, strPad(QString("n/a"), 101, " "));
+            
             // confirmations
             itemOutput->setText(COLUMN_CONFIRMATIONS, strPad(QString::number(out.nDepth), 8, " "));
             
@@ -764,6 +776,7 @@ void CoinControlDialog::updateView()
             dPrioritySum = dPrioritySum / (nInputSum + 78);
             itemWalletAddress->setText(COLUMN_CHECKBOX, "(" + QString::number(nChildren) + ")");
             itemWalletAddress->setText(COLUMN_AMOUNT, DarkSilkUnits::format(nDisplayUnit, nSum));
+            itemWalletAddress->setToolTip(COLUMN_AMOUNT, DarkSilkUnits::format(nDisplayUnit, nSum));
             itemWalletAddress->setText(COLUMN_AMOUNT_INT64, strPad(QString::number(nSum), 15, " "));
             itemWalletAddress->setText(COLUMN_PRIORITY, CoinControlDialog::getPriorityLabel(dPrioritySum));
             itemWalletAddress->setText(COLUMN_PRIORITY_INT64, strPad(QString::number((int64_t)dPrioritySum), 20, " "));
