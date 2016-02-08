@@ -51,6 +51,8 @@ CFeeRate minRelayTxFee = CFeeRate(MIN_TX_FEE);
 
 CTxMemPool mempool(::minRelayTxFee);
 
+CConditionVariable cvBlockChange;
+
 struct COrphanTx {
     CTransaction tx;
     NodeId fromPeer;
