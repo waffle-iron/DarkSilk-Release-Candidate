@@ -254,7 +254,7 @@ public:
     bool ReadFromDisk(const CBlockIndex* pindex, bool fReadTransactions=true);
     bool SetBestChain(CTxDB& txdb, CBlockIndex* pindexNew);
     bool AddToBlockIndex(unsigned int nFile, unsigned int nBlockPos, const uint256& hashProof);
-    bool CheckBlock(bool fCheckPOW=true, bool fCheckMerkleRoot=true, bool fCheckSig=true) const;
+    bool CheckBlock(CValidationState& state, bool fCheckPOW=true, bool fCheckMerkleRoot=true, bool fCheckSig=true);
     bool AcceptBlock();
     bool SignBlock(CWallet& keystore, CAmount nFees);
     bool CheckBlockSignature() const;

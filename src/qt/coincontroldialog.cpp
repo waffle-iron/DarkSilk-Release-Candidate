@@ -606,15 +606,15 @@ void CoinControlDialog::updateLabels(WalletModel *model, QDialog* dialog)
     l2->setText(DarkSilkUnits::formatWithUnit(nDisplayUnit, nAmount));        // Amount
     l3->setText(DarkSilkUnits::formatWithUnit(nDisplayUnit, nPayFee));        // Fee
     l4->setText(DarkSilkUnits::formatWithUnit(nDisplayUnit, nAfterFee));      // After Fee
-    l5->setText(((nBytes > 0) ? "~" : "") + QString::number(nBytes));         // Bytes                           // Bytes
+    l5->setText(((nBytes > 0) ? "~" : "") + QString::number(nBytes));         // Bytes
     l6->setText(sPriorityLabel);                                              // Priority
     l7->setText(fDust ? tr("yes") : tr("no"));                                // Dust
     l8->setText(DarkSilkUnits::formatWithUnit(nDisplayUnit, nChange));        // Change
     
     // turn labels "red"
-    l5->setStyleSheet((nBytes >= 10000) ? "color:red;" : "");               // Bytes >= 10000
-    l6->setStyleSheet((dPriority <= 576000) ? "color:red;" : "");         // Priority < "medium"
-    l7->setStyleSheet((fDust) ? "color:red;" : "");                                     // Dust = "yes"
+    l5->setStyleSheet((nBytes >= 10000) ? "color:red;" : "");                 // Bytes >= 10000
+    l6->setStyleSheet((dPriority <= 576000) ? "color:red;" : "");             // Priority < "medium"
+    l7->setStyleSheet((fDust) ? "color:red;" : "");                           // Dust = "yes"
 
     // tool tips
     l5->setToolTip(tr("This label turns red, if the transaction size is bigger than 10000 bytes.\n\n This means a fee of at least %1 per kb is required.\n\n Can vary +/- 1 Byte per input.").arg(DarkSilkUnits::formatWithUnit(nDisplayUnit, CENT)));

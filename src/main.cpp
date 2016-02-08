@@ -869,7 +869,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState &state, CTransaction 
     if (pfMissingInputs)
         *pfMissingInputs = false;
 
-    if (!tx.CheckTransaction())
+    if (!tx.CheckTransaction(tx, state))
         return error("AcceptToMemoryPool : CheckTransaction failed");
 
     // Coinbase is only valid in a block, not as a loose transaction
@@ -1233,7 +1233,7 @@ bool AcceptableInputs(CTxMemPool& pool, CValidationState &state, CTransaction &t
 {
     AssertLockHeld(cs_main);
 
-    if (!tx.CheckTransaction())
+    if (!tx.CheckTransaction(tx, state))
         return error("AcceptableInputs : CheckTransaction failed");
 
     // Coinbase is only valid in a block, not as a loose transaction
@@ -1255,7 +1255,7 @@ bool AcceptableInputs(CTxMemPool& pool, CValidationState &state, CTransaction &t
     if (pool.exists(hash))
         return false;
 
-    // ----------- instantX transaction scanning -----------
+    // ----------- InstantX transaction scanning -----------
 
     BOOST_FOREACH(const CTxIn& in, tx.vin){
         if(mapLockedInputs.count(in.prevout)){
@@ -1921,7 +1921,8 @@ bool ProcessBlock(CNode* pfrom, CBlock* pblock)
     }
 
     // Preliminary checks
-    if (!pblock->CheckBlock())
+    CValidationState state;
+    if (!pblock->CheckBlock(state))
         return error("ProcessBlock() : CheckBlock FAILED");
 
     // If we don't already have its previous block, shunt it off to holding area until we get it
