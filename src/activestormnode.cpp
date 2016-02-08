@@ -69,7 +69,6 @@ void CActiveStormnode::ManageStatus()
 
         LogPrintf("CActiveStormnode::ManageStatus() - Checking inbound connection to '%s'\n", service.ToString());
 
-        //TODO(AA): Remove and not limit ports? Or shall we limit ports?
         if(Params().NetworkID() == CChainParams::MAIN) {
             if(service.GetPort() != 31000) {
                 notCapableReason = strprintf("Invalid port: %u - only 31000 is supported on mainnet.", service.GetPort());
