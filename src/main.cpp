@@ -29,7 +29,7 @@
 #include "smessage.h"
 #include "coins.h"
 #include "txdb-leveldb.h"
-
+#include "script/sigcache.h"
 
 using namespace std;
 using namespace boost;
@@ -4416,7 +4416,7 @@ bool static DisconnectTip(CValidationState &state) {
         // ignore validation errors in resurrected transactions
         list<CTransaction> removed;
         CValidationState stateDummy;
-        if (tx.IsCoinBase() || !AcceptToMemoryPool(mempool, stateDummy, &tx, false, NULL))
+        if (tx.IsCoinBase() || !AcceptToMemoryPool(mempool, stateDummy, tx, false, NULL))
             mempool.remove(tx, removed, true);
     }
     mempool.removeCoinbaseSpends(pcoinsTip, pindexDelete->nHeight);
