@@ -46,7 +46,7 @@ double CTransaction::ComputePriority(double dPriorityInputs, unsigned int nTxSiz
     return dPriorityInputs / nTxSize;
 }
 
-bool CTransaction::CheckTransaction() const
+bool CTransaction::CheckTransaction(const CTransaction& tx, CValidationState &state)
 {
     // Basic checks that don't depend on any context
     if (vin.empty())

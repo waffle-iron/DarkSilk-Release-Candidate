@@ -15,6 +15,8 @@
 
 #include <stdio.h>
 
+class CValidationInterface;
+class CValidationState;
 
 /// The maximum allowed size for a serialized block, in bytes (network rule)
 static const unsigned int MAX_BLOCK_SIZE = 20000000; // 20MB Maximum Block Size (50x Bitcoin Core)
@@ -340,7 +342,7 @@ public:
         return !(a == b);
     }
 
-    bool CheckTransaction() const;
+    bool CheckTransaction(const CTransaction& tx, CValidationState &state);
 
     std::string ToString() const;
 };

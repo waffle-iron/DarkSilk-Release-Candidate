@@ -295,9 +295,10 @@ void CBlock::RebuildAddressIndex(CTxDB& txdb)
 static int64_t nTimeConnect = 0;
 
 bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
-{
+{   
+    CValidationState state;
     // Check it again in case a previous version let a bad block in, but skip BlockSig checking
-    if (!CheckBlock(!fJustCheck, !fJustCheck, false))
+    if (!CheckBlock(state, !fJustCheck, !fJustCheck, false))
         return false;
 
     unsigned int flags = SCRIPT_VERIFY_NOCACHE |
@@ -674,7 +675,7 @@ bool IsInitialBlockDownload()
             pindexBest->GetBlockTime() < GetTime() - 8 * 60 * 60);
 }
 
-bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) const
+bool CBlock::CheckBlock(CValidationState& state, bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig)
 {
     // These are checks that are independent of context
     // that can be verified before saving an orphan block.
@@ -753,7 +754,7 @@ bool CBlock::CheckBlock(bool fCheckPOW, bool fCheckMerkleRoot, bool fCheckSig) c
 
     // Check transactions
     BOOST_FOREACH(const CTransaction& tx, vtx){
-        if (!tx.CheckTransaction())
+        if (!tx.CheckTransaction(tx, state))
             return DoS(tx.nDoS, error("CheckBlock() : CheckTransaction failed"));
 
         // ppcoin: check transaction timestamp
