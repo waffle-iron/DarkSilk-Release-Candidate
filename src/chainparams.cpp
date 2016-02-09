@@ -60,6 +60,8 @@ public:
         pchMessageStart[2] = 0x05;
         pchMessageStart[3] = 0x31;
         nEnforceBlockUpgradeMajority = 750;
+        nRejectBlockOutdatedMajority = 950;
+        nToCheckBlockUpgradeMajority = 1000;
         vAlertPubKey = ParseHex("0450e0acc669231cfe2d0a8f0d164c341547487adff89f09e1e78a5299d204bd1c9f05897cb916365c56a31377d872abddb551a12d8d8163149abfc851be7f88ba");
         nDefaultPort = 31000;
         nRPCPort = 31500;
@@ -146,6 +148,9 @@ public:
         pchMessageStart[3] = 0x30;
 
         nEnforceBlockUpgradeMajority = 51;
+
+        nRejectBlockOutdatedMajority = 75;
+        nToCheckBlockUpgradeMajority = 100;
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 16); // PoW starting difficulty = 0.0002441
 
         vAlertPubKey = ParseHex("");

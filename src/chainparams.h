@@ -74,6 +74,8 @@ public:
 
     ///! Used to check majorities for block version upgrade
     int EnforceBlockUpgradeMajority() const { return nEnforceBlockUpgradeMajority; }
+    int RejectBlockOutdatedMajority() const { return nRejectBlockOutdatedMajority; }
+    int ToCheckBlockUpgradeMajority() const { return nToCheckBlockUpgradeMajority; }
 
 protected:
     CChainParams() {};
@@ -95,6 +97,8 @@ protected:
     int nPoolMaxTransactions;
     std::string strSandstormPoolDummyAddress;
     int nEnforceBlockUpgradeMajority;
+    int nRejectBlockOutdatedMajority;
+    int nToCheckBlockUpgradeMajority;
 
 };
 

@@ -13,6 +13,7 @@
 #include "alert.h"
 #include "chainparams.h"
 #include "checkpoints.h"
+#include "checkqueue.h"
 #include "db.h"
 #include "init.h"
 #include "kernel.h"
@@ -4457,8 +4458,9 @@ bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pin
 {
     AssertLockHeld(cs_main);
     // Check it again in case a previous version let a bad block in
-    if (!CheckBlock(block, state, !fJustCheck, !fJustCheck))
-        return false;
+    //TODO (Amir): Put back CheckBlock.  needed for chainActive.
+    //if (!CheckBlock(block, state, !fJustCheck, !fJustCheck))
+    //    return false;
 
     // verify that the view's current state corresponds to the previous block
     uint256 hashPrevBlock = pindex->pprev == NULL ? uint256(0) : pindex->pprev->GetBlockHash();
