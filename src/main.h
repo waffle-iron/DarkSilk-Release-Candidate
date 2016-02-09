@@ -55,7 +55,11 @@ static const unsigned int MAX_ORPHAN_TRANSACTIONS = MAX_BLOCK_SIZE/100;
 static const unsigned int DEFAULT_MAX_ORPHAN_BLOCKS = 512;
 /// The maximum number of entries in an 'inv' protocol message
 static const unsigned int MAX_INV_SZ = 50000;
-// Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp.
+/// The pre-allocation chunk size for rev?????.dat files (since 0.8) */
+static const unsigned int UNDOFILE_CHUNK_SIZE = 0x100000; // 1 MiB
+/// Maximum length of reject messages.
+static const unsigned int MAX_REJECT_MESSAGE_LENGTH = 111;
+/// Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp.
 static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov 5th 00:53:20 1985 UTC
 // Target timing between Proof-of-Work blocks
 static const unsigned int POW_TARGET_SPACING = 1 * 60; // 60 seconds
