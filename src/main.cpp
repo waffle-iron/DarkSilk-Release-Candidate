@@ -12,7 +12,6 @@
 #include "main.h"
 #include "alert.h"
 #include "chainparams.h"
-#include "checkpoints.h"
 #include "checkqueue.h"
 #include "db.h"
 #include "init.h"
@@ -3680,7 +3679,7 @@ bool SendMessages(CNode* pto, bool fSendTrickle)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //CTransactionPoS
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-CAmount CTransactionPoS::GetValueOut(CTransaction& tx) const
+CAmount CTransactionPoS::GetValueOut(const CTransaction& tx) const
 {
     set<COutPoint> vInOutPoints;
 
@@ -4427,7 +4426,7 @@ bool static DisconnectTip(CValidationState &state) {
     if (!FlushStateToDisk(state, FLUSH_STATE_IF_NEEDED))
         return false;
     // Resurrect mempool transactions from the disconnected block.
-    BOOST_FOREACH(const CTransaction &tx, block.vtx) {
+    BOOST_FOREACH(CTransaction &tx, block.vtx) {
         // ignore validation errors in resurrected transactions
         list<CTransaction> removed;
         CValidationState stateDummy;

@@ -9,6 +9,7 @@
 
 #include "bignum.h"
 #include "uint256.h"
+#include "checkpoints.h"
 
 #include <vector>
 
@@ -76,6 +77,7 @@ public:
     int EnforceBlockUpgradeMajority() const { return nEnforceBlockUpgradeMajority; }
     int RejectBlockOutdatedMajority() const { return nRejectBlockOutdatedMajority; }
     int ToCheckBlockUpgradeMajority() const { return nToCheckBlockUpgradeMajority; }
+    virtual const Checkpoints::CCheckpointData& Checkpoints() const = 0;
 
 protected:
     CChainParams() {};

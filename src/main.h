@@ -356,7 +356,7 @@ public:
         nVersion = this->nVersion;
     }
 
-    CAmount GetValueOut(CTransaction& tx) const;
+    CAmount GetValueOut(const CTransaction& tx) const;
 
     ///  Amount of darksilks coming in to this transaction
     ///  Note that lightweight clients may not know anything besides the hash of previous transactions,

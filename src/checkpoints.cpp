@@ -9,13 +9,22 @@
 #include "checkpoints.h"
 
 #include "txdb.h"
-#include "main.h"
+//#include "main.h"
 #include "uint256.h"
 
 
 static const int nCheckpointSpan = 5000;
 
 namespace Checkpoints {
+
+    /**
+     * How many times we expect transactions after the last checkpoint to
+     * be slower. This number is a compromise, as it can't be accurate for
+     * every system. When reindexing from a fast disk with a slow CPU, it
+     * can be up to 20, while when downloading from a slow network with a
+     * fast multicore CPU, it won't be much higher than 1.
+     */
+    static const double SIGCHECK_VERIFICATION_FACTOR = 5.0;
 
     typedef std::map<int, uint256> MapCheckpoints;
 
