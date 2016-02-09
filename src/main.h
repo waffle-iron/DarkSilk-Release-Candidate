@@ -220,6 +220,8 @@ FILE* OpenUndoFile(const CDiskBlockPos &pos, bool fReadOnly = false);
 class CDiskTxPos
 {
 public:
+    unsigned int nTxOffset; // after header
+
     unsigned int nFile;
     unsigned int nBlockPos;
     unsigned int nTxPos;
@@ -243,7 +245,13 @@ public:
         READWRITE(FLATDATA(*this));
     }
 
-    void SetNull() { nFile = (unsigned int) -1; nBlockPos = 0; nTxPos = 0; }
+    void SetNull() {
+        nFile = (unsigned int) -1;
+        nBlockPos = 0;
+        nTxPos = 0;
+        nTxOffset = 0;
+    }
+
     bool IsNull() const { return (nFile == (unsigned int) -1); }
 
     friend bool operator==(const CDiskTxPos& a, const CDiskTxPos& b)
