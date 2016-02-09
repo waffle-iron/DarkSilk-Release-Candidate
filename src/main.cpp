@@ -53,6 +53,7 @@ CFeeRate minRelayTxFee = CFeeRate(MIN_TX_FEE);
 CTxMemPool mempool(::minRelayTxFee);
 
 CConditionVariable cvBlockChange;
+int nScriptCheckThreads = 0;
 
 struct COrphanTx {
     CTransaction tx;
@@ -4440,6 +4441,15 @@ static int64_t nTimeVerify = 0;
 static int64_t nTimeConnect = 0;
 static int64_t nTimeIndex = 0;
 static int64_t nTimeCallbacks = 0;
+static CCheckQueue<CScriptCheck> scriptcheckqueue(128);
+
+bool CScriptCheck::operator()() {
+    const CScript &scriptSig = ptxTo->vin[nIn].scriptSig;
+    if (!VerifyScript(scriptSig, scriptPubKey, nFlags, CachingTransactionSignatureChecker(ptxTo, nIn, cacheStore), &error)) {
+        return ::error("CScriptCheck(): %s:%d VerifySignature failed: %s", ptxTo->GetHash().ToString(), nIn, ScriptErrorString(error));
+    }
+    return true;
+}
 
 bool CBlockIndex::IsSuperMajority(int minVersion, const CBlockIndex* pstart, unsigned int nRequired)
 {

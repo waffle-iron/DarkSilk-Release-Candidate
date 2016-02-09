@@ -395,6 +395,8 @@ public:
 };
 
 
+
+
 /** Functions for validating blocks and updating the block tree */
 
 /** Undo the effects of this block (with given index) on the UTXO set represented by coins.
