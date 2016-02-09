@@ -263,6 +263,8 @@ std::string FormatSubVersion(const std::string& name, int nClientVersion, const 
 void runCommand(std::string strCommand);
 bool TruncateFile(FILE *file, unsigned int length);
 
+void AllocateFileRange(FILE *file, unsigned int offset, unsigned int length);
+
 #ifdef USE_NATIVE_I2P
 std::string FormatI2PNativeFullVersion();
 #endif
