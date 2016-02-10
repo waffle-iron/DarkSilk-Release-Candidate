@@ -6,13 +6,18 @@
 #ifndef DARKSILK_INIT_H
 #define DARKSILK_INIT_H
 
+#ifdef ENABLE_WALLET
 #include "wallet.h"
+#endif
 
 namespace boost {
     class thread_group;
 } // namespace boost
 
+#ifdef ENABLE_WALLET
 extern CWallet* pwalletMain;
+#endif
+
 void StartShutdown();
 bool ShutdownRequested();
 void Shutdown();
