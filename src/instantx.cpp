@@ -14,6 +14,7 @@
 #include "stormnodeman.h"
 #include "sandstorm.h"
 #include "spork.h"
+#include "init.h"
 #include <boost/lexical_cast.hpp>
 
 using namespace std;

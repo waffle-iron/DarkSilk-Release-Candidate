@@ -13,6 +13,7 @@
 #include "stormnodeman.h"
 #include "rpcserver.h"
 #include "util.h"
+#include "sandstorm.h"
 
 #include <fstream>
 using namespace json_spirit;
