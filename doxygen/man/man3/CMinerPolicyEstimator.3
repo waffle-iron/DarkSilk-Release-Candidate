@@ -1,0 +1,67 @@
+.TH "CMinerPolicyEstimator" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CMinerPolicyEstimator \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <txmempool\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCMinerPolicyEstimator\fP (int nEntries)"
+.br
+.ti -1c
+.RI "void \fBseenBlock\fP (const std::vector< \fBCTxMemPoolEntry\fP > &entries, int nBlockHeight, const \fBCFeeRate\fP minRelayFee)"
+.br
+.ti -1c
+.RI "\fBCFeeRate\fP \fBestimateFee\fP (int nBlocksToConfirm)"
+.br
+.ti -1c
+.RI "double \fBestimatePriority\fP (int nBlocksToConfirm)"
+.br
+.ti -1c
+.RI "void \fBWrite\fP (\fBCAutoFile\fP &fileout) const "
+.br
+.ti -1c
+.RI "void \fBRead\fP (\fBCAutoFile\fP &filein, const \fBCFeeRate\fP &minRelayFee)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 156 of file txmempool\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CMinerPolicyEstimator::CMinerPolicyEstimator (int nEntries)\fC [inline]\fP"
+
+.PP
+Definition at line 204 of file txmempool\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBCFeeRate\fP CMinerPolicyEstimator::estimateFee (int nBlocksToConfirm)\fC [inline]\fP"
+Can return \fBCFeeRate(0)\fP if we don't have any data for that many blocks back\&. nBlocksToConfirm is 1 based\&. 
+.PP
+Definition at line 275 of file txmempool\&.h\&.
+.SS "double CMinerPolicyEstimator::estimatePriority (int nBlocksToConfirm)\fC [inline]\fP"
+
+.PP
+Definition at line 310 of file txmempool\&.h\&.
+.SS "void CMinerPolicyEstimator::Read (\fBCAutoFile\fP & filein, const \fBCFeeRate\fP & minRelayFee)\fC [inline]\fP"
+
+.PP
+Definition at line 351 of file txmempool\&.h\&.
+.SS "void CMinerPolicyEstimator::seenBlock (const std::vector< \fBCTxMemPoolEntry\fP > & entries, int nBlockHeight, const \fBCFeeRate\fP minRelayFee)\fC [inline]\fP"
+
+.PP
+Definition at line 209 of file txmempool\&.h\&.
+.SS "void CMinerPolicyEstimator::Write (\fBCAutoFile\fP & fileout) const\fC [inline]\fP"
+
+.PP
+Definition at line 341 of file txmempool\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

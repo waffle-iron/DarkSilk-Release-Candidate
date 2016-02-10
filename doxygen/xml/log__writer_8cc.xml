@@ -1,0 +1,239 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="log__writer_8cc" kind="file" language="C++">
+    <compoundname>log_writer.cc</compoundname>
+    <includes refid="log__writer_8h" local="yes">db/log_writer.h</includes>
+    <includes refid="stdint_8h" local="no">stdint.h</includes>
+    <includes refid="env_8h" local="yes">leveldb/env.h</includes>
+    <includes refid="coding_8h" local="yes">util/coding.h</includes>
+    <includes refid="crc32c_8h" local="yes">util/crc32c.h</includes>
+    <incdepgraph>
+      <node id="7317">
+        <label>stdarg.h</label>
+      </node>
+      <node id="7310">
+        <label>assert.h</label>
+      </node>
+      <node id="7313">
+        <label>string</label>
+      </node>
+      <node id="7320">
+        <label>util/crc32c.h</label>
+        <link refid="crc32c_8h"/>
+        <childnode refid="7311" relation="include">
+        </childnode>
+        <childnode refid="7307" relation="include">
+        </childnode>
+      </node>
+      <node id="7311">
+        <label>stddef.h</label>
+      </node>
+      <node id="7314">
+        <label>leveldb/status.h</label>
+        <link refid="status_8h"/>
+        <childnode refid="7313" relation="include">
+        </childnode>
+        <childnode refid="7309" relation="include">
+        </childnode>
+      </node>
+      <node id="7318">
+        <label>util/coding.h</label>
+        <link refid="coding_8h"/>
+        <childnode refid="7307" relation="include">
+        </childnode>
+        <childnode refid="7312" relation="include">
+        </childnode>
+        <childnode refid="7313" relation="include">
+        </childnode>
+        <childnode refid="7309" relation="include">
+        </childnode>
+        <childnode refid="7319" relation="include">
+        </childnode>
+      </node>
+      <node id="7312">
+        <label>string.h</label>
+      </node>
+      <node id="7306">
+        <label>db/log_writer.h</label>
+        <link refid="log__writer_8h"/>
+        <childnode refid="7307" relation="include">
+        </childnode>
+        <childnode refid="7308" relation="include">
+        </childnode>
+        <childnode refid="7309" relation="include">
+        </childnode>
+        <childnode refid="7314" relation="include">
+        </childnode>
+      </node>
+      <node id="7316">
+        <label>vector</label>
+      </node>
+      <node id="7308">
+        <label>db/log_format.h</label>
+        <link refid="log__format_8h"/>
+      </node>
+      <node id="7319">
+        <label>port/port.h</label>
+        <link refid="port_8h"/>
+        <childnode refid="7312" relation="include">
+        </childnode>
+      </node>
+      <node id="7307">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="7309">
+        <label>leveldb/slice.h</label>
+        <link refid="slice_8h"/>
+        <childnode refid="7310" relation="include">
+        </childnode>
+        <childnode refid="7311" relation="include">
+        </childnode>
+        <childnode refid="7312" relation="include">
+        </childnode>
+        <childnode refid="7313" relation="include">
+        </childnode>
+      </node>
+      <node id="7315">
+        <label>leveldb/env.h</label>
+        <link refid="env_8h"/>
+        <childnode refid="7313" relation="include">
+        </childnode>
+        <childnode refid="7316" relation="include">
+        </childnode>
+        <childnode refid="7317" relation="include">
+        </childnode>
+        <childnode refid="7307" relation="include">
+        </childnode>
+        <childnode refid="7314" relation="include">
+        </childnode>
+      </node>
+      <node id="7305">
+        <label>/home/dev/ds-160209/src/leveldb/db/log_writer.cc</label>
+        <link refid="log_writer.cc"/>
+        <childnode refid="7306" relation="include">
+        </childnode>
+        <childnode refid="7307" relation="include">
+        </childnode>
+        <childnode refid="7315" relation="include">
+        </childnode>
+        <childnode refid="7318" relation="include">
+        </childnode>
+        <childnode refid="7320" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceleveldb">leveldb</innernamespace>
+    <innernamespace refid="namespaceleveldb_1_1log">leveldb::log</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2011-2016<sp/>The<sp/>LevelDB<sp/>Authors.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>of<sp/>this<sp/>source<sp/>code<sp/>is<sp/>governed<sp/>by<sp/>a<sp/>BSD-style<sp/>license<sp/>that<sp/>can<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>found<sp/>in<sp/>the<sp/>LICENSE<sp/>file.<sp/>See<sp/>the<sp/>AUTHORS<sp/>file<sp/>for<sp/>names<sp/>of<sp/>contributors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="log__writer_8h" kindref="compound">db/log_writer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="stdint_8h" kindref="compound">stdint.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="env_8h" kindref="compound">leveldb/env.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="coding_8h" kindref="compound">util/coding.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="crc32c_8h" kindref="compound">util/crc32c.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceleveldb" kindref="compound">leveldb</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">log<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="classleveldb_1_1log_1_1_writer_1a424f67be4485fdf3ef8ba55c9c559c90" refkind="member"><highlight class="normal"><ref refid="classleveldb_1_1log_1_1_writer_1a424f67be4485fdf3ef8ba55c9c559c90" kindref="member">Writer::Writer</ref>(<ref refid="classleveldb_1_1_writable_file" kindref="compound">WritableFile</ref>*<sp/>dest)</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>dest_(dest),</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>block_offset_(0)<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;=<sp/>kMaxRecordType;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>t<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(i);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>type_crc_[i]<sp/>=<sp/><ref refid="namespaceleveldb_1_1crc32c_1ac004d1e3d8c75b033c162e5ae0a5cc2c" kindref="member">crc32c::Value</ref>(&amp;t,<sp/>1);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="classleveldb_1_1log_1_1_writer_1a71bcdee2a87eb535fd60a3fe047e66be" refkind="member"><highlight class="normal"><ref refid="classleveldb_1_1log_1_1_writer_1a71bcdee2a87eb535fd60a3fe047e66be" kindref="member">Writer::~Writer</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classleveldb_1_1log_1_1_writer_1acb4abda5a5348ac1771657ff01bf2fad" refkind="member"><highlight class="normal"><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref><sp/><ref refid="classleveldb_1_1log_1_1_writer_1acb4abda5a5348ac1771657ff01bf2fad" kindref="member">Writer::AddRecord</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/>slice)<sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>ptr<sp/>=<sp/>slice.<ref refid="classleveldb_1_1_slice_1aa64861043d9deee6889461bf0593cf73" kindref="member">data</ref>();</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>left<sp/>=<sp/>slice.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>();</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Fragment<sp/>the<sp/>record<sp/>if<sp/>necessary<sp/>and<sp/>emit<sp/>it.<sp/><sp/>Note<sp/>that<sp/>if<sp/>slice</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>is<sp/>empty,<sp/>we<sp/>still<sp/>want<sp/>to<sp/>iterate<sp/>once<sp/>to<sp/>emit<sp/>a<sp/>single</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>zero-length<sp/>record</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref><sp/>s;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>begin<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>leftover<sp/>=<sp/>kBlockSize<sp/>-<sp/>block_offset_;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(leftover<sp/>&gt;=<sp/>0);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(leftover<sp/>&lt;<sp/>kHeaderSize)<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Switch<sp/>to<sp/>a<sp/>new<sp/>block</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(leftover<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Fill<sp/>the<sp/>trailer<sp/>(literal<sp/>below<sp/>relies<sp/>on<sp/>kHeaderSize<sp/>being<sp/>7)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(kHeaderSize<sp/>==<sp/>7);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dest_-&gt;<ref refid="classleveldb_1_1_writable_file_1a53b41841d9577d28f65d4d90e1660de8" kindref="member">Append</ref>(<ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>(</highlight><highlight class="stringliteral">&quot;\x00\x00\x00\x00\x00\x00&quot;</highlight><highlight class="normal">,<sp/>leftover));</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>block_offset_<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Invariant:<sp/>we<sp/>never<sp/>leave<sp/>&lt;<sp/>kHeaderSize<sp/>bytes<sp/>in<sp/>a<sp/>block.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(kBlockSize<sp/>-<sp/>block_offset_<sp/>-<sp/>kHeaderSize<sp/>&gt;=<sp/>0);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>avail<sp/>=<sp/>kBlockSize<sp/>-<sp/>block_offset_<sp/>-<sp/>kHeaderSize;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>fragment_length<sp/>=<sp/>(left<sp/>&lt;<sp/>avail)<sp/>?<sp/>left<sp/>:<sp/>avail;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceleveldb_1_1log_1a01bdc1b51beb634f14f8fbb70fbd8d2a" kindref="member">RecordType</ref><sp/>type;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>end<sp/>=<sp/>(left<sp/>==<sp/>fragment_length);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(begin<sp/>&amp;&amp;<sp/>end)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>type<sp/>=<sp/><ref refid="namespaceleveldb_1_1log_1a01bdc1b51beb634f14f8fbb70fbd8d2aa2c77e6c3871e8ec5506f9f9c2e7dfb13" kindref="member">kFullType</ref>;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(begin)<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>type<sp/>=<sp/><ref refid="namespaceleveldb_1_1log_1a01bdc1b51beb634f14f8fbb70fbd8d2aa46ff8d418146ec7ce6c3a883e89b48da" kindref="member">kFirstType</ref>;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(end)<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>type<sp/>=<sp/><ref refid="namespaceleveldb_1_1log_1a01bdc1b51beb634f14f8fbb70fbd8d2aa29f913fb4d719f97a9618bca93775dfc" kindref="member">kLastType</ref>;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>type<sp/>=<sp/><ref refid="namespaceleveldb_1_1log_1a01bdc1b51beb634f14f8fbb70fbd8d2aa50ec9d5a2236253d02c0abd55d178e08" kindref="member">kMiddleType</ref>;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>s<sp/>=<sp/>EmitPhysicalRecord(type,<sp/>ptr,<sp/>fragment_length);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>ptr<sp/>+=<sp/>fragment_length;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>left<sp/>-=<sp/>fragment_length;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>begin<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(s.<ref refid="classleveldb_1_1_status_1ab31e89a858c766716e3dc952be857c65" kindref="member">ok</ref>()<sp/>&amp;&amp;<sp/>left<sp/>&gt;<sp/>0);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref><sp/>Writer::EmitPhysicalRecord(<ref refid="namespaceleveldb_1_1log_1a01bdc1b51beb634f14f8fbb70fbd8d2a" kindref="member">RecordType</ref><sp/>t,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>ptr,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n)<sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/>assert(n<sp/>&lt;=<sp/>0xffff);<sp/><sp/></highlight><highlight class="comment">//<sp/>Must<sp/>fit<sp/>in<sp/>two<sp/>bytes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/>assert(block_offset_<sp/>+<sp/>kHeaderSize<sp/>+<sp/>n<sp/>&lt;=<sp/>kBlockSize);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Format<sp/>the<sp/>header</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>buf[kHeaderSize];</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>buf[4]<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(n<sp/>&amp;<sp/>0xff);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/>buf[5]<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(n<sp/>&gt;&gt;<sp/>8);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/>buf[6]<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">char</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(t);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Compute<sp/>the<sp/>crc<sp/>of<sp/>the<sp/>record<sp/>type<sp/>and<sp/>the<sp/>payload.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>crc<sp/>=<sp/><ref refid="namespaceleveldb_1_1crc32c_1ac42fd0618afe635356d722fd29f5ff10" kindref="member">crc32c::Extend</ref>(type_crc_[t],<sp/>ptr,<sp/>n);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/>crc<sp/>=<sp/><ref refid="namespaceleveldb_1_1crc32c_1a3790e1e939714a29609e46383aafd6cf" kindref="member">crc32c::Mask</ref>(crc);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Adjust<sp/>for<sp/>storage</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><ref refid="namespaceleveldb_1a265d1eea2e5d8e42cf86372ed4904886" kindref="member">EncodeFixed32</ref>(buf,<sp/>crc);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Write<sp/>the<sp/>header<sp/>and<sp/>the<sp/>payload</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref><sp/>s<sp/>=<sp/>dest_-&gt;<ref refid="classleveldb_1_1_writable_file_1a53b41841d9577d28f65d4d90e1660de8" kindref="member">Append</ref>(<ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>(buf,<sp/>kHeaderSize));</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(s.<ref refid="classleveldb_1_1_status_1ab31e89a858c766716e3dc952be857c65" kindref="member">ok</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>s<sp/>=<sp/>dest_-&gt;<ref refid="classleveldb_1_1_writable_file_1a53b41841d9577d28f65d4d90e1660de8" kindref="member">Append</ref>(<ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>(ptr,<sp/>n));</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(s.<ref refid="classleveldb_1_1_status_1ab31e89a858c766716e3dc952be857c65" kindref="member">ok</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>s<sp/>=<sp/>dest_-&gt;<ref refid="classleveldb_1_1_writable_file_1ab95759ad32f6a05b0ee4266969fa265e" kindref="member">Flush</ref>();</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/>block_offset_<sp/>+=<sp/>kHeaderSize<sp/>+<sp/>n;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>log</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>leveldb</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/leveldb/db/log_writer.cc"/>
+  </compounddef>
+</doxygen>

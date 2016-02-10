@@ -1,0 +1,221 @@
+.TH "CCoins" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CCoins \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <coins\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBFromTx\fP (const \fBCTransaction\fP &tx, int nHeightIn)"
+.br
+.ti -1c
+.RI "\fBCCoins\fP (const \fBCTransaction\fP &tx, int nHeightIn)"
+.br
+.RI "\fIconstruct a \fBCCoins\fP from a \fBCTransaction\fP, at a given height \fP"
+.ti -1c
+.RI "void \fBClear\fP ()"
+.br
+.ti -1c
+.RI "\fBCCoins\fP ()"
+.br
+.RI "\fIempty constructor \fP"
+.ti -1c
+.RI "void \fBCleanup\fP ()"
+.br
+.RI "\fIremove spent outputs at the end of vout \fP"
+.ti -1c
+.RI "void \fBClearUnspendable\fP ()"
+.br
+.ti -1c
+.RI "void \fBswap\fP (\fBCCoins\fP &to)"
+.br
+.ti -1c
+.RI "void \fBCalcMaskSize\fP (unsigned int &nBytes, unsigned int &nNonzeroBytes) const "
+.br
+.ti -1c
+.RI "bool \fBIsCoinBase\fP () const "
+.br
+.ti -1c
+.RI "unsigned int \fBGetSerializeSize\fP (int nType, int \fBnVersion\fP) const "
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBSerialize\fP (Stream &s, int nType, int \fBnVersion\fP) const "
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBUnserialize\fP (Stream &s, int nType, int \fBnVersion\fP)"
+.br
+.ti -1c
+.RI "bool \fBSpend\fP (const \fBCOutPoint\fP &out, \fBCTxInUndo\fP &undo)"
+.br
+.RI "\fImark an outpoint spent, and construct undo information \fP"
+.ti -1c
+.RI "bool \fBSpend\fP (int nPos)"
+.br
+.RI "\fImark a vout spent \fP"
+.ti -1c
+.RI "bool \fBIsAvailable\fP (unsigned int nPos) const "
+.br
+.RI "\fIcheck whether a particular output is still available \fP"
+.ti -1c
+.RI "bool \fBIsPruned\fP () const "
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBfCoinBase\fP"
+.br
+.RI "\fIwhether transaction is a coinbase \fP"
+.ti -1c
+.RI "std::vector< \fBCTxOut\fP > \fBvout\fP"
+.br
+.RI "\fIunspent transaction outputs; spent outputs are \&.IsNull(); spent outputs at the end of the array are dropped \fP"
+.ti -1c
+.RI "int \fBnHeight\fP"
+.br
+.RI "\fIat which height this transaction was included in the active block chain \fP"
+.ti -1c
+.RI "int \fBnVersion\fP"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBCCoins\fP &a, const \fBCCoins\fP &b)"
+.br
+.RI "\fIequality test \fP"
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBCCoins\fP &a, const \fBCCoins\fP &b)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 103 of file coins\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CCoins::CCoins (const \fBCTransaction\fP & tx, int nHeightIn)\fC [inline]\fP"
+
+.PP
+construct a \fBCCoins\fP from a \fBCTransaction\fP, at a given height 
+.PP
+Definition at line 128 of file coins\&.h\&.
+.SS "CCoins::CCoins ()\fC [inline]\fP"
+
+.PP
+empty constructor 
+.PP
+Definition at line 140 of file coins\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void CCoins::CalcMaskSize (unsigned int & nBytes, unsigned int & nNonzeroBytes) const"
+calculate number of bytes for the bitmask, and its number of non-zero bytes each bit in the bitmask represents the availability of one output, but the availabilities of the first two outputs are encoded separately 
+.PP
+Definition at line 16 of file coins\&.cpp\&.
+.SS "void CCoins::Cleanup ()\fC [inline]\fP"
+
+.PP
+remove spent outputs at the end of vout 
+.PP
+Definition at line 143 of file coins\&.h\&.
+.SS "void CCoins::Clear ()\fC [inline]\fP"
+
+.PP
+Definition at line 132 of file coins\&.h\&.
+.SS "void CCoins::ClearUnspendable ()\fC [inline]\fP"
+
+.PP
+Definition at line 150 of file coins\&.h\&.
+.SS "void CCoins::FromTx (const \fBCTransaction\fP & tx, int nHeightIn)\fC [inline]\fP"
+
+.PP
+Definition at line 119 of file coins\&.h\&.
+.SS "unsigned int CCoins::GetSerializeSize (int nType, int nVersion) const\fC [inline]\fP"
+
+.PP
+Definition at line 185 of file coins\&.h\&.
+.SS "bool CCoins::IsAvailable (unsigned int nPos) const\fC [inline]\fP"
+
+.PP
+check whether a particular output is still available 
+.PP
+Definition at line 280 of file coins\&.h\&.
+.SS "bool CCoins::IsCoinBase () const\fC [inline]\fP"
+
+.PP
+Definition at line 181 of file coins\&.h\&.
+.SS "bool CCoins::IsPruned () const\fC [inline]\fP"
+check whether the entire \fBCCoins\fP is spent note that only !IsPruned() \fBCCoins\fP can be serialized 
+.PP
+Definition at line 286 of file coins\&.h\&.
+.SS "template<typename Stream > void CCoins::Serialize (Stream & s, int nType, int nVersion) const\fC [inline]\fP"
+
+.PP
+Definition at line 211 of file coins\&.h\&.
+.SS "bool CCoins::Spend (const \fBCOutPoint\fP & out, \fBCTxInUndo\fP & undo)"
+
+.PP
+mark an outpoint spent, and construct undo information 
+.PP
+Definition at line 34 of file coins\&.cpp\&.
+.SS "bool CCoins::Spend (int nPos)"
+
+.PP
+mark a vout spent 
+.PP
+Definition at line 50 of file coins\&.cpp\&.
+.SS "void CCoins::swap (\fBCCoins\fP & to)\fC [inline]\fP"
+
+.PP
+Definition at line 158 of file coins\&.h\&.
+.SS "template<typename Stream > void CCoins::Unserialize (Stream & s, int nType, int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 240 of file coins\&.h\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "bool operator!= (const \fBCCoins\fP & a, const \fBCCoins\fP & b)\fC [friend]\fP"
+
+.PP
+Definition at line 175 of file coins\&.h\&.
+.SS "bool operator== (const \fBCCoins\fP & a, const \fBCCoins\fP & b)\fC [friend]\fP"
+
+.PP
+equality test 
+.PP
+Definition at line 166 of file coins\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "bool CCoins::fCoinBase"
+
+.PP
+whether transaction is a coinbase 
+.PP
+Definition at line 107 of file coins\&.h\&.
+.SS "int CCoins::nHeight"
+
+.PP
+at which height this transaction was included in the active block chain 
+.PP
+Definition at line 113 of file coins\&.h\&.
+.SS "int CCoins::nVersion"
+version of the \fBCTransaction\fP; accesses to this value should probably check for nHeight as well, as new tx version will probably only be introduced at certain heights 
+.PP
+Definition at line 117 of file coins\&.h\&.
+.SS "std::vector<\fBCTxOut\fP> CCoins::vout"
+
+.PP
+unspent transaction outputs; spent outputs are \&.IsNull(); spent outputs at the end of the array are dropped 
+.PP
+Definition at line 110 of file coins\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

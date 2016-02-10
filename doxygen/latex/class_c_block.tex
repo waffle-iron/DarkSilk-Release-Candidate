@@ -1,0 +1,444 @@
+\hypertarget{class_c_block}{}\section{C\+Block Class Reference}
+\label{class_c_block}\index{C\+Block@{C\+Block}}
+
+
+{\ttfamily \#include $<$block.\+h$>$}
+
+Inheritance diagram for C\+Block\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_c_block}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_block_aaaf8819d785559699cffbbfccb37a3b6}{C\+Block} ()
+\item 
+\hyperlink{class_c_block_aaeb7e05f86d36f481bbc2802768256bc}{C\+Block} (const \hyperlink{class_c_block_header}{C\+Block\+Header} \&header)
+\item 
+void \hyperlink{class_c_block_a0410d7ba8d60679c4cf364b82ffffea5}{Set\+Null} ()
+\item 
+{\footnotesize template$<$typename Stream , typename Operation $>$ }\\void \hyperlink{class_c_block_aa83bbf64300154e8919249f7778f4c17}{Serialization\+Op} (Stream \&s, Operation ser\+\_\+action, int n\+Type, int \hyperlink{class_c_block_header_ad64b7a76914741861f55f0f38ed66fb5}{n\+Version})
+\item 
+void \hyperlink{class_c_block_a71bb61e73b1ab6b7d4e1867a0d3a2cf8}{Update\+Time} (const \hyperlink{class_c_block_index}{C\+Block\+Index} $\ast$pindex\+Prev)
+\item 
+unsigned int \hyperlink{class_c_block_aa3e358ffbd3c15aa937fd8a4f8cdf0d7}{Get\+Stake\+Entropy\+Bit} () const 
+\item 
+bool \hyperlink{class_c_block_a42d001a1eff1d09a76b61a6ff089da35}{Is\+Proof\+Of\+Stake} () const 
+\item 
+bool \hyperlink{class_c_block_ac6aa1feb7deecb9fffef3978d2745903}{Is\+Proof\+Of\+Work} () const 
+\item 
+std\+::pair$<$ \hyperlink{class_c_out_point}{C\+Out\+Point}, unsigned int $>$ \hyperlink{class_c_block_aee66480cbb9bc01b5f1d27e6ab71f512}{Get\+Proof\+Of\+Stake} () const 
+\item 
+\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} \hyperlink{class_c_block_afea5a853e484ab34d8b5fcb9faaf6c49}{Get\+Max\+Transaction\+Time} () const 
+\item 
+\hyperlink{classuint256}{uint256} \hyperlink{class_c_block_a930d742dbdcd7c78159d3f93431d2d3e}{Build\+Merkle\+Tree} () const 
+\item 
+std\+::vector$<$ \hyperlink{classuint256}{uint256} $>$ \hyperlink{class_c_block_ad857691c46c20eee278c083f7513d0f6}{Get\+Merkle\+Branch} (int n\+Index) const 
+\item 
+bool \hyperlink{class_c_block_a606df2cab7dc67e5dd11b157d288cf2b}{Write\+To\+Disk} (unsigned int \&n\+File\+Ret, unsigned int \&n\+Block\+Pos\+Ret)
+\item 
+bool \hyperlink{class_c_block_a77a1b1e9902e1e557d762f5a5f325cd8}{Read\+From\+Disk} (unsigned int n\+File, unsigned int n\+Block\+Pos, bool f\+Read\+Transactions=true)
+\item 
+std\+::string \hyperlink{class_c_block_a85d1cca7cd03ad1893767ae8305bd3b5}{To\+String} () const 
+\item 
+bool \hyperlink{class_c_block_a9532c041d24701a338ea5c91008b72aa}{Disconnect\+Block} (\hyperlink{class_c_tx_d_b}{C\+Tx\+D\+B} \&\hyperlink{txdb-leveldb_8cpp_a72eff8ae1d84de13daf97a61b8c02bc6}{txdb}, \hyperlink{class_c_block_index}{C\+Block\+Index} $\ast$pindex)
+\item 
+bool \hyperlink{class_c_block_a1ae149d97c7b7eadf48f5cea934b6217}{Connect\+Block} (\hyperlink{class_c_tx_d_b}{C\+Tx\+D\+B} \&\hyperlink{txdb-leveldb_8cpp_a72eff8ae1d84de13daf97a61b8c02bc6}{txdb}, \hyperlink{class_c_block_index}{C\+Block\+Index} $\ast$pindex, bool f\+Just\+Check=false)
+\item 
+bool \hyperlink{class_c_block_ad31bb55c819816d722ebc0980d85cfc7}{Read\+From\+Disk} (const \hyperlink{class_c_block_index}{C\+Block\+Index} $\ast$pindex, bool f\+Read\+Transactions=true)
+\item 
+bool \hyperlink{class_c_block_a6e308b2d75d1cfc4a75eda36feb60ca1}{Set\+Best\+Chain} (\hyperlink{class_c_tx_d_b}{C\+Tx\+D\+B} \&\hyperlink{txdb-leveldb_8cpp_a72eff8ae1d84de13daf97a61b8c02bc6}{txdb}, \hyperlink{class_c_block_index}{C\+Block\+Index} $\ast$pindex\+New)
+\item 
+bool \hyperlink{class_c_block_afab527f890c5575db3b1a2b17f47bf5a}{Add\+To\+Block\+Index} (unsigned int n\+File, unsigned int n\+Block\+Pos, const \hyperlink{classuint256}{uint256} \&hash\+Proof)
+\item 
+bool \hyperlink{class_c_block_aa735790178f95defd59f984dd51bc0f2}{Check\+Block} (\hyperlink{class_c_validation_state}{C\+Validation\+State} \&\hyperlink{version__set_8cc_a6aad002d0db5e5e85dc31927a5a6f503}{state}, bool f\+Check\+P\+O\+W=true, bool f\+Check\+Merkle\+Root=true, bool f\+Check\+Sig=true)
+\item 
+bool \hyperlink{class_c_block_a3f990a713116bd15c1f221c88b012ccf}{Accept\+Block} ()
+\item 
+bool \hyperlink{class_c_block_a5a6b04461fc7ab5b21f00d6c403e35dd}{Sign\+Block} (\hyperlink{class_c_wallet}{C\+Wallet} \&keystore, \hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} n\+Fees)
+\item 
+bool \hyperlink{class_c_block_a7e0103e7a0117173cb9c975702e06392}{Check\+Block\+Signature} () const 
+\item 
+void \hyperlink{class_c_block_aea2c77ad84cd7909720f75a0c3f7ddc2}{Rebuild\+Address\+Index} (\hyperlink{class_c_tx_d_b}{C\+Tx\+D\+B} \&\hyperlink{txdb-leveldb_8cpp_a72eff8ae1d84de13daf97a61b8c02bc6}{txdb})
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classuint256}{uint256} \hyperlink{class_c_block_ab0d596c51fb317e3cb6f444015a652a5}{Check\+Merkle\+Branch} (\hyperlink{classuint256}{uint256} \hyperlink{cache_8cc_a11ecb029164e055f28f4123ce3748862}{hash}, const std\+::vector$<$ \hyperlink{classuint256}{uint256} $>$ \&v\+Merkle\+Branch, int n\+Index)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \hyperlink{class_c_transaction}{C\+Transaction} $>$ \hyperlink{class_c_block_a9b6508d662722775f3029b980b382b66}{vtx}
+\item 
+std\+::vector$<$ unsigned char $>$ \hyperlink{class_c_block_a78f882e24c4416f42039cbc6a67faf6e}{vch\+Block\+Sig}
+\item 
+\hyperlink{class_c_script}{C\+Script} \hyperlink{class_c_block_a1604a6d25f313ab1bf4e3777a6cba948}{payee}
+\item 
+std\+::vector$<$ \hyperlink{classuint256}{uint256} $>$ \hyperlink{class_c_block_a019ae6579acd08974653d3f443dd398a}{v\+Merkle\+Tree}
+\item 
+\hyperlink{class_c_block_a53ba28b86cf6c5b1de640941786fa3b8}{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 103 of file block.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_block_aaaf8819d785559699cffbbfccb37a3b6}{}\index{C\+Block@{C\+Block}!C\+Block@{C\+Block}}
+\index{C\+Block@{C\+Block}!C\+Block@{C\+Block}}
+\subsubsection[{C\+Block}]{\setlength{\rightskip}{0pt plus 5cm}C\+Block\+::\+C\+Block (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_block_aaaf8819d785559699cffbbfccb37a3b6}
+
+
+Definition at line 116 of file block.\+h.
+
+\hypertarget{class_c_block_aaeb7e05f86d36f481bbc2802768256bc}{}\index{C\+Block@{C\+Block}!C\+Block@{C\+Block}}
+\index{C\+Block@{C\+Block}!C\+Block@{C\+Block}}
+\subsubsection[{C\+Block}]{\setlength{\rightskip}{0pt plus 5cm}C\+Block\+::\+C\+Block (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Block\+Header} \&}]{header}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_block_aaeb7e05f86d36f481bbc2802768256bc}
+
+
+Definition at line 121 of file block.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_block_a3f990a713116bd15c1f221c88b012ccf}{}\index{C\+Block@{C\+Block}!Accept\+Block@{Accept\+Block}}
+\index{Accept\+Block@{Accept\+Block}!C\+Block@{C\+Block}}
+\subsubsection[{Accept\+Block}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Block\+::\+Accept\+Block (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_block_a3f990a713116bd15c1f221c88b012ccf}
+
+
+Definition at line 92 of file chain.\+cpp.
+
+\hypertarget{class_c_block_afab527f890c5575db3b1a2b17f47bf5a}{}\index{C\+Block@{C\+Block}!Add\+To\+Block\+Index@{Add\+To\+Block\+Index}}
+\index{Add\+To\+Block\+Index@{Add\+To\+Block\+Index}!C\+Block@{C\+Block}}
+\subsubsection[{Add\+To\+Block\+Index}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Block\+::\+Add\+To\+Block\+Index (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{n\+File, }
+\item[{unsigned int}]{n\+Block\+Pos, }
+\item[{const {\bf uint256} \&}]{hash\+Proof}
+\end{DoxyParamCaption}
+)}\label{class_c_block_afab527f890c5575db3b1a2b17f47bf5a}
+
+
+Definition at line 4244 of file main.\+cpp.
+
+\hypertarget{class_c_block_a930d742dbdcd7c78159d3f93431d2d3e}{}\index{C\+Block@{C\+Block}!Build\+Merkle\+Tree@{Build\+Merkle\+Tree}}
+\index{Build\+Merkle\+Tree@{Build\+Merkle\+Tree}!C\+Block@{C\+Block}}
+\subsubsection[{Build\+Merkle\+Tree}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint256} C\+Block\+::\+Build\+Merkle\+Tree (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_block_a930d742dbdcd7c78159d3f93431d2d3e}
+
+
+Definition at line 196 of file block.\+h.
+
+\hypertarget{class_c_block_aa735790178f95defd59f984dd51bc0f2}{}\index{C\+Block@{C\+Block}!Check\+Block@{Check\+Block}}
+\index{Check\+Block@{Check\+Block}!C\+Block@{C\+Block}}
+\subsubsection[{Check\+Block}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Block\+::\+Check\+Block (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Validation\+State} \&}]{state, }
+\item[{bool}]{f\+Check\+P\+O\+W = {\ttfamily true}, }
+\item[{bool}]{f\+Check\+Merkle\+Root = {\ttfamily true}, }
+\item[{bool}]{f\+Check\+Sig = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{class_c_block_aa735790178f95defd59f984dd51bc0f2}
+
+
+Definition at line 678 of file chain.\+cpp.
+
+\hypertarget{class_c_block_a7e0103e7a0117173cb9c975702e06392}{}\index{C\+Block@{C\+Block}!Check\+Block\+Signature@{Check\+Block\+Signature}}
+\index{Check\+Block\+Signature@{Check\+Block\+Signature}!C\+Block@{C\+Block}}
+\subsubsection[{Check\+Block\+Signature}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Block\+::\+Check\+Block\+Signature (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_c_block_a7e0103e7a0117173cb9c975702e06392}
+
+
+Definition at line 10 of file block.\+cpp.
+
+\hypertarget{class_c_block_ab0d596c51fb317e3cb6f444015a652a5}{}\index{C\+Block@{C\+Block}!Check\+Merkle\+Branch@{Check\+Merkle\+Branch}}
+\index{Check\+Merkle\+Branch@{Check\+Merkle\+Branch}!C\+Block@{C\+Block}}
+\subsubsection[{Check\+Merkle\+Branch}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf uint256} C\+Block\+::\+Check\+Merkle\+Branch (
+\begin{DoxyParamCaption}
+\item[{{\bf uint256}}]{hash, }
+\item[{const std\+::vector$<$ {\bf uint256} $>$ \&}]{v\+Merkle\+Branch, }
+\item[{int}]{n\+Index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\label{class_c_block_ab0d596c51fb317e3cb6f444015a652a5}
+
+
+Definition at line 231 of file block.\+h.
+
+\hypertarget{class_c_block_a1ae149d97c7b7eadf48f5cea934b6217}{}\index{C\+Block@{C\+Block}!Connect\+Block@{Connect\+Block}}
+\index{Connect\+Block@{Connect\+Block}!C\+Block@{C\+Block}}
+\subsubsection[{Connect\+Block}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Block\+::\+Connect\+Block (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Tx\+D\+B} \&}]{txdb, }
+\item[{{\bf C\+Block\+Index} $\ast$}]{pindex, }
+\item[{bool}]{f\+Just\+Check = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{class_c_block_a1ae149d97c7b7eadf48f5cea934b6217}
+
+
+Definition at line 299 of file chain.\+cpp.
+
+\hypertarget{class_c_block_a9532c041d24701a338ea5c91008b72aa}{}\index{C\+Block@{C\+Block}!Disconnect\+Block@{Disconnect\+Block}}
+\index{Disconnect\+Block@{Disconnect\+Block}!C\+Block@{C\+Block}}
+\subsubsection[{Disconnect\+Block}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Block\+::\+Disconnect\+Block (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Tx\+D\+B} \&}]{txdb, }
+\item[{{\bf C\+Block\+Index} $\ast$}]{pindex}
+\end{DoxyParamCaption}
+)}\label{class_c_block_a9532c041d24701a338ea5c91008b72aa}
+
+
+Definition at line 191 of file chain.\+cpp.
+
+\hypertarget{class_c_block_afea5a853e484ab34d8b5fcb9faaf6c49}{}\index{C\+Block@{C\+Block}!Get\+Max\+Transaction\+Time@{Get\+Max\+Transaction\+Time}}
+\index{Get\+Max\+Transaction\+Time@{Get\+Max\+Transaction\+Time}!C\+Block@{C\+Block}}
+\subsubsection[{Get\+Max\+Transaction\+Time}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int64\+\_\+t} C\+Block\+::\+Get\+Max\+Transaction\+Time (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_block_afea5a853e484ab34d8b5fcb9faaf6c49}
+
+
+Definition at line 188 of file block.\+h.
+
+\hypertarget{class_c_block_ad857691c46c20eee278c083f7513d0f6}{}\index{C\+Block@{C\+Block}!Get\+Merkle\+Branch@{Get\+Merkle\+Branch}}
+\index{Get\+Merkle\+Branch@{Get\+Merkle\+Branch}!C\+Block@{C\+Block}}
+\subsubsection[{Get\+Merkle\+Branch}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf uint256}$>$ C\+Block\+::\+Get\+Merkle\+Branch (
+\begin{DoxyParamCaption}
+\item[{int}]{n\+Index}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_block_ad857691c46c20eee278c083f7513d0f6}
+
+
+Definition at line 215 of file block.\+h.
+
+\hypertarget{class_c_block_aee66480cbb9bc01b5f1d27e6ab71f512}{}\index{C\+Block@{C\+Block}!Get\+Proof\+Of\+Stake@{Get\+Proof\+Of\+Stake}}
+\index{Get\+Proof\+Of\+Stake@{Get\+Proof\+Of\+Stake}!C\+Block@{C\+Block}}
+\subsubsection[{Get\+Proof\+Of\+Stake}]{\setlength{\rightskip}{0pt plus 5cm}std\+::pair$<${\bf C\+Out\+Point}, unsigned int$>$ C\+Block\+::\+Get\+Proof\+Of\+Stake (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_block_aee66480cbb9bc01b5f1d27e6ab71f512}
+
+
+Definition at line 182 of file block.\+h.
+
+\hypertarget{class_c_block_aa3e358ffbd3c15aa937fd8a4f8cdf0d7}{}\index{C\+Block@{C\+Block}!Get\+Stake\+Entropy\+Bit@{Get\+Stake\+Entropy\+Bit}}
+\index{Get\+Stake\+Entropy\+Bit@{Get\+Stake\+Entropy\+Bit}!C\+Block@{C\+Block}}
+\subsubsection[{Get\+Stake\+Entropy\+Bit}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int C\+Block\+::\+Get\+Stake\+Entropy\+Bit (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_block_aa3e358ffbd3c15aa937fd8a4f8cdf0d7}
+
+
+Definition at line 163 of file block.\+h.
+
+\hypertarget{class_c_block_a42d001a1eff1d09a76b61a6ff089da35}{}\index{C\+Block@{C\+Block}!Is\+Proof\+Of\+Stake@{Is\+Proof\+Of\+Stake}}
+\index{Is\+Proof\+Of\+Stake@{Is\+Proof\+Of\+Stake}!C\+Block@{C\+Block}}
+\subsubsection[{Is\+Proof\+Of\+Stake}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Block\+::\+Is\+Proof\+Of\+Stake (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_block_a42d001a1eff1d09a76b61a6ff089da35}
+
+
+Definition at line 172 of file block.\+h.
+
+\hypertarget{class_c_block_ac6aa1feb7deecb9fffef3978d2745903}{}\index{C\+Block@{C\+Block}!Is\+Proof\+Of\+Work@{Is\+Proof\+Of\+Work}}
+\index{Is\+Proof\+Of\+Work@{Is\+Proof\+Of\+Work}!C\+Block@{C\+Block}}
+\subsubsection[{Is\+Proof\+Of\+Work}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Block\+::\+Is\+Proof\+Of\+Work (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_block_ac6aa1feb7deecb9fffef3978d2745903}
+
+
+Definition at line 177 of file block.\+h.
+
+\hypertarget{class_c_block_a77a1b1e9902e1e557d762f5a5f325cd8}{}\index{C\+Block@{C\+Block}!Read\+From\+Disk@{Read\+From\+Disk}}
+\index{Read\+From\+Disk@{Read\+From\+Disk}!C\+Block@{C\+Block}}
+\subsubsection[{Read\+From\+Disk}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Block\+::\+Read\+From\+Disk (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{n\+File, }
+\item[{unsigned int}]{n\+Block\+Pos, }
+\item[{bool}]{f\+Read\+Transactions = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{class_c_block_a77a1b1e9902e1e557d762f5a5f325cd8}
+
+
+Definition at line 856 of file chain.\+cpp.
+
+\hypertarget{class_c_block_ad31bb55c819816d722ebc0980d85cfc7}{}\index{C\+Block@{C\+Block}!Read\+From\+Disk@{Read\+From\+Disk}}
+\index{Read\+From\+Disk@{Read\+From\+Disk}!C\+Block@{C\+Block}}
+\subsubsection[{Read\+From\+Disk}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Block\+::\+Read\+From\+Disk (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Block\+Index} $\ast$}]{pindex, }
+\item[{bool}]{f\+Read\+Transactions = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{class_c_block_ad31bb55c819816d722ebc0980d85cfc7}
+
+
+Definition at line 816 of file chain.\+cpp.
+
+\hypertarget{class_c_block_aea2c77ad84cd7909720f75a0c3f7ddc2}{}\index{C\+Block@{C\+Block}!Rebuild\+Address\+Index@{Rebuild\+Address\+Index}}
+\index{Rebuild\+Address\+Index@{Rebuild\+Address\+Index}!C\+Block@{C\+Block}}
+\subsubsection[{Rebuild\+Address\+Index}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Block\+::\+Rebuild\+Address\+Index (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Tx\+D\+B} \&}]{txdb}
+\end{DoxyParamCaption}
+)}\label{class_c_block_aea2c77ad84cd7909720f75a0c3f7ddc2}
+
+
+Definition at line 250 of file chain.\+cpp.
+
+\hypertarget{class_c_block_aa83bbf64300154e8919249f7778f4c17}{}\index{C\+Block@{C\+Block}!Serialization\+Op@{Serialization\+Op}}
+\index{Serialization\+Op@{Serialization\+Op}!C\+Block@{C\+Block}}
+\subsubsection[{Serialization\+Op}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename Operation $>$ void C\+Block\+::\+Serialization\+Op (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{Operation}]{ser\+\_\+action, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_block_aa83bbf64300154e8919249f7778f4c17}
+
+
+Definition at line 145 of file block.\+h.
+
+\hypertarget{class_c_block_a6e308b2d75d1cfc4a75eda36feb60ca1}{}\index{C\+Block@{C\+Block}!Set\+Best\+Chain@{Set\+Best\+Chain}}
+\index{Set\+Best\+Chain@{Set\+Best\+Chain}!C\+Block@{C\+Block}}
+\subsubsection[{Set\+Best\+Chain}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Block\+::\+Set\+Best\+Chain (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Tx\+D\+B} \&}]{txdb, }
+\item[{{\bf C\+Block\+Index} $\ast$}]{pindex\+New}
+\end{DoxyParamCaption}
+)}\label{class_c_block_a6e308b2d75d1cfc4a75eda36feb60ca1}
+
+
+Definition at line 4125 of file main.\+cpp.
+
+\hypertarget{class_c_block_a0410d7ba8d60679c4cf364b82ffffea5}{}\index{C\+Block@{C\+Block}!Set\+Null@{Set\+Null}}
+\index{Set\+Null@{Set\+Null}!C\+Block@{C\+Block}}
+\subsubsection[{Set\+Null}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Block\+::\+Set\+Null (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_block_a0410d7ba8d60679c4cf364b82ffffea5}
+
+
+Definition at line 127 of file block.\+h.
+
+\hypertarget{class_c_block_a5a6b04461fc7ab5b21f00d6c403e35dd}{}\index{C\+Block@{C\+Block}!Sign\+Block@{Sign\+Block}}
+\index{Sign\+Block@{Sign\+Block}!C\+Block@{C\+Block}}
+\subsubsection[{Sign\+Block}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Block\+::\+Sign\+Block (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Wallet} \&}]{keystore, }
+\item[{{\bf C\+Amount}}]{n\+Fees}
+\end{DoxyParamCaption}
+)}\label{class_c_block_a5a6b04461fc7ab5b21f00d6c403e35dd}
+\hypertarget{class_c_block_a85d1cca7cd03ad1893767ae8305bd3b5}{}\index{C\+Block@{C\+Block}!To\+String@{To\+String}}
+\index{To\+String@{To\+String}!C\+Block@{C\+Block}}
+\subsubsection[{To\+String}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string C\+Block\+::\+To\+String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_c_block_a85d1cca7cd03ad1893767ae8305bd3b5}
+
+
+Definition at line 73 of file block.\+cpp.
+
+\hypertarget{class_c_block_a71bb61e73b1ab6b7d4e1867a0d3a2cf8}{}\index{C\+Block@{C\+Block}!Update\+Time@{Update\+Time}}
+\index{Update\+Time@{Update\+Time}!C\+Block@{C\+Block}}
+\subsubsection[{Update\+Time}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Block\+::\+Update\+Time (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Block\+Index} $\ast$}]{pindex\+Prev}
+\end{DoxyParamCaption}
+)}\label{class_c_block_a71bb61e73b1ab6b7d4e1867a0d3a2cf8}
+
+
+Definition at line 52 of file block.\+cpp.
+
+\hypertarget{class_c_block_a606df2cab7dc67e5dd11b157d288cf2b}{}\index{C\+Block@{C\+Block}!Write\+To\+Disk@{Write\+To\+Disk}}
+\index{Write\+To\+Disk@{Write\+To\+Disk}!C\+Block@{C\+Block}}
+\subsubsection[{Write\+To\+Disk}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Block\+::\+Write\+To\+Disk (
+\begin{DoxyParamCaption}
+\item[{unsigned int \&}]{n\+File\+Ret, }
+\item[{unsigned int \&}]{n\+Block\+Pos\+Ret}
+\end{DoxyParamCaption}
+)}\label{class_c_block_a606df2cab7dc67e5dd11b157d288cf2b}
+
+
+Definition at line 830 of file chain.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_c_block_a53ba28b86cf6c5b1de640941786fa3b8}{}\index{C\+Block@{C\+Block}!A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}}
+\index{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}!C\+Block@{C\+Block}}
+\subsubsection[{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}]{\setlength{\rightskip}{0pt plus 5cm}C\+Block\+::\+A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}\label{class_c_block_a53ba28b86cf6c5b1de640941786fa3b8}
+
+
+Definition at line 142 of file block.\+h.
+
+\hypertarget{class_c_block_a1604a6d25f313ab1bf4e3777a6cba948}{}\index{C\+Block@{C\+Block}!payee@{payee}}
+\index{payee@{payee}!C\+Block@{C\+Block}}
+\subsubsection[{payee}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Script} C\+Block\+::payee\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_block_a1604a6d25f313ab1bf4e3777a6cba948}
+
+
+Definition at line 113 of file block.\+h.
+
+\hypertarget{class_c_block_a78f882e24c4416f42039cbc6a67faf6e}{}\index{C\+Block@{C\+Block}!vch\+Block\+Sig@{vch\+Block\+Sig}}
+\index{vch\+Block\+Sig@{vch\+Block\+Sig}!C\+Block@{C\+Block}}
+\subsubsection[{vch\+Block\+Sig}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$unsigned char$>$ C\+Block\+::vch\+Block\+Sig}\label{class_c_block_a78f882e24c4416f42039cbc6a67faf6e}
+
+
+Definition at line 110 of file block.\+h.
+
+\hypertarget{class_c_block_a019ae6579acd08974653d3f443dd398a}{}\index{C\+Block@{C\+Block}!v\+Merkle\+Tree@{v\+Merkle\+Tree}}
+\index{v\+Merkle\+Tree@{v\+Merkle\+Tree}!C\+Block@{C\+Block}}
+\subsubsection[{v\+Merkle\+Tree}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf uint256}$>$ C\+Block\+::v\+Merkle\+Tree\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_block_a019ae6579acd08974653d3f443dd398a}
+
+
+Definition at line 114 of file block.\+h.
+
+\hypertarget{class_c_block_a9b6508d662722775f3029b980b382b66}{}\index{C\+Block@{C\+Block}!vtx@{vtx}}
+\index{vtx@{vtx}!C\+Block@{C\+Block}}
+\subsubsection[{vtx}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf C\+Transaction}$>$ C\+Block\+::vtx}\label{class_c_block_a9b6508d662722775f3029b980b382b66}
+
+
+Definition at line 107 of file block.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/primitives/\hyperlink{primitives_2block_8h}{block.\+h}\item 
+/home/dev/ds-\/160209/src/\hyperlink{chain_8cpp}{chain.\+cpp}\item 
+/home/dev/ds-\/160209/src/\hyperlink{main_8cpp}{main.\+cpp}\item 
+/home/dev/ds-\/160209/src/primitives/\hyperlink{block_8cpp}{block.\+cpp}\end{DoxyCompactItemize}

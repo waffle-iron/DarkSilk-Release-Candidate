@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_signature_checker" kind="class" language="C++" prot="public">
+    <compoundname>SignatureChecker</compoundname>
+    <basecompoundref refid="class_base_signature_checker" prot="public" virt="non-virtual">BaseSignatureChecker</basecompoundref>
+    <includes refid="script_8h" local="no">script.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_signature_checker_1aa4ea0dbb43f8549f4701c946cabcd588" prot="private" static="no" mutable="no">
+        <type>const <ref refid="class_c_transaction" kindref="compound">CTransaction</ref> &amp;</type>
+        <definition>const CTransaction&amp; SignatureChecker::txTo</definition>
+        <argsstring></argsstring>
+        <name>txTo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/script.h" line="954" column="1" bodyfile="/home/dev/ds-160209/src/script.h" bodystart="954" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_signature_checker_1a23dd42b9a4b264bd904e00577abd8389" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int SignatureChecker::nIn</definition>
+        <argsstring></argsstring>
+        <name>nIn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/script.h" line="955" column="1" bodyfile="/home/dev/ds-160209/src/script.h" bodystart="955" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_signature_checker_1a93e6518f83ea215af9c3266de43b5df1" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool SignatureChecker::VerifySignature</definition>
+        <argsstring>(const std::vector&lt; unsigned char &gt; &amp;vchSig, const CPubKey &amp;vchPubKey, const uint256 &amp;sighash) const </argsstring>
+        <name>VerifySignature</name>
+        <param>
+          <type>const std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>vchSig</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_pub_key" kindref="compound">CPubKey</ref> &amp;</type>
+          <declname>vchPubKey</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuint256" kindref="compound">uint256</ref> &amp;</type>
+          <declname>sighash</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/script.h" line="958" column="1" bodyfile="/home/dev/ds-160209/src/script.cpp" bodystart="2795" bodyend="2798"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_signature_checker_1a698e6832345449c494a12960f173d6a1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>SignatureChecker::SignatureChecker</definition>
+        <argsstring>(const CTransaction &amp;txToIn, unsigned int nInIn)</argsstring>
+        <name>SignatureChecker</name>
+        <param>
+          <type>const <ref refid="class_c_transaction" kindref="compound">CTransaction</ref> &amp;</type>
+          <declname>txToIn</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>nInIn</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/script.h" line="961" column="1" bodyfile="/home/dev/ds-160209/src/script.h" bodystart="961" bodyend="961"/>
+      </memberdef>
+      <memberdef kind="function" id="class_signature_checker_1a174607620e5510a69f9083ed68e01776" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool SignatureChecker::CheckSig</definition>
+        <argsstring>(const std::vector&lt; unsigned char &gt; &amp;scriptSig, const std::vector&lt; unsigned char &gt; &amp;vchPubKey, const CScript &amp;scriptCode) const </argsstring>
+        <name>CheckSig</name>
+        <reimplements refid="class_base_signature_checker_1a963bac3b509f0f683dcd20473cd4ecdb">CheckSig</reimplements>
+        <param>
+          <type>const std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>scriptSig</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>vchPubKey</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_script" kindref="compound">CScript</ref> &amp;</type>
+          <declname>scriptCode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/script.h" line="962" column="1" bodyfile="/home/dev/ds-160209/src/script.cpp" bodystart="2800" bodyend="2819"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1699">
+        <label>BaseSignatureChecker</label>
+        <link refid="class_base_signature_checker"/>
+      </node>
+      <node id="1698">
+        <label>SignatureChecker</label>
+        <link refid="class_signature_checker"/>
+        <childnode refid="1699" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1701">
+        <label>BaseSignatureChecker</label>
+        <link refid="class_base_signature_checker"/>
+      </node>
+      <node id="1700">
+        <label>SignatureChecker</label>
+        <link refid="class_signature_checker"/>
+        <childnode refid="1701" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/dev/ds-160209/src/script.h" line="952" column="1" bodyfile="/home/dev/ds-160209/src/script.h" bodystart="951" bodyend="963"/>
+    <listofallmembers>
+      <member refid="class_signature_checker_1a174607620e5510a69f9083ed68e01776" prot="public" virt="virtual"><scope>SignatureChecker</scope><name>CheckSig</name></member>
+      <member refid="class_signature_checker_1a23dd42b9a4b264bd904e00577abd8389" prot="private" virt="non-virtual"><scope>SignatureChecker</scope><name>nIn</name></member>
+      <member refid="class_signature_checker_1a698e6832345449c494a12960f173d6a1" prot="public" virt="non-virtual"><scope>SignatureChecker</scope><name>SignatureChecker</name></member>
+      <member refid="class_signature_checker_1aa4ea0dbb43f8549f4701c946cabcd588" prot="private" virt="non-virtual"><scope>SignatureChecker</scope><name>txTo</name></member>
+      <member refid="class_signature_checker_1a93e6518f83ea215af9c3266de43b5df1" prot="protected" virt="virtual"><scope>SignatureChecker</scope><name>VerifySignature</name></member>
+      <member refid="class_base_signature_checker_1af7444d46a55304ef3ac31601c6b0aed0" prot="public" virt="virtual"><scope>SignatureChecker</scope><name>~BaseSignatureChecker</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,190 @@
+\hypertarget{wallet_8h}{}\section{/home/dev/ds-\/160209/src/wallet.h File Reference}
+\label{wallet_8h}\index{/home/dev/ds-\/160209/src/wallet.\+h@{/home/dev/ds-\/160209/src/wallet.\+h}}
+{\ttfamily \#include \char`\"{}walletdb.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}primitives/block.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}primitives/transaction.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}crypter.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}key.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}keystore.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}script.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}ui\+\_\+interface.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}util.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}stealth.\+h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_c_key_pool}{C\+Key\+Pool}
+\item 
+class \hyperlink{class_c_wallet}{C\+Wallet}
+\item 
+class \hyperlink{class_c_reserve_key}{C\+Reserve\+Key}
+\item 
+class \hyperlink{class_c_wallet_tx}{C\+Wallet\+Tx}
+\item 
+class \hyperlink{class_c_output}{C\+Output}
+\item 
+class \hyperlink{class_c_wallet_key}{C\+Wallet\+Key}
+\item 
+class \hyperlink{class_c_account}{C\+Account}
+\item 
+class \hyperlink{class_c_accounting_entry}{C\+Accounting\+Entry}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::map$<$ \hyperlink{class_c_key_i_d}{C\+Key\+I\+D}, \hyperlink{class_c_stealth_key_metadata}{C\+Stealth\+Key\+Metadata} $>$ \hyperlink{wallet_8h_a926ebc86f983a4476131d7e6f92e2386}{Stealth\+Key\+Meta\+Map}
+\item 
+typedef std\+::map$<$ std\+::string, std\+::string $>$ \hyperlink{wallet_8h_ab1e69952accb0e7c635e4d7f2b19802b}{map\+Value\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{wallet_8h_a39a6b71da3eb95cddc0836d3b27ac7c9}{Wallet\+Feature} \{ \hyperlink{wallet_8h_a39a6b71da3eb95cddc0836d3b27ac7c9a5fea711c20fa9e9721ac59d94b6e5d72}{F\+E\+A\+T\+U\+R\+E\+\_\+\+B\+A\+S\+E} = 10500, 
+\hyperlink{wallet_8h_a39a6b71da3eb95cddc0836d3b27ac7c9a16fc17e025bfd90749cb594e8fc664b0}{F\+E\+A\+T\+U\+R\+E\+\_\+\+W\+A\+L\+L\+E\+T\+C\+R\+Y\+P\+T} = 40000, 
+\hyperlink{wallet_8h_a39a6b71da3eb95cddc0836d3b27ac7c9a9b917e6922fd5de60c0b9fc95a3bf0e4}{F\+E\+A\+T\+U\+R\+E\+\_\+\+C\+O\+M\+P\+R\+P\+U\+B\+K\+E\+Y} = 60141, 
+\hyperlink{wallet_8h_a39a6b71da3eb95cddc0836d3b27ac7c9a867e17547f858859f558244dc96ac2f3}{F\+E\+A\+T\+U\+R\+E\+\_\+\+L\+A\+T\+E\+S\+T} = 60141
+ \}
+\item 
+enum \hyperlink{wallet_8h_a90b09b05f289ac32704a6446a94566ce}{Available\+Coins\+Type} \{ \hyperlink{wallet_8h_a90b09b05f289ac32704a6446a94566cea94cc8a0e81d9490cdbdfc3d3f215e9e7}{A\+L\+L\+\_\+\+C\+O\+I\+N\+S} = 1, 
+\hyperlink{wallet_8h_a90b09b05f289ac32704a6446a94566ceaab4c4a7abab40ebdb2706c1708fff22e}{O\+N\+L\+Y\+\_\+\+D\+E\+N\+O\+M\+I\+N\+A\+T\+E\+D} = 2, 
+\hyperlink{wallet_8h_a90b09b05f289ac32704a6446a94566cea009b510e2a783d13c11717045cb06fe2}{O\+N\+L\+Y\+\_\+\+N\+O\+N\+D\+E\+N\+O\+M\+I\+N\+A\+T\+E\+D} = 3, 
+\hyperlink{wallet_8h_a90b09b05f289ac32704a6446a94566ceab446331eecce8e7c33f941400bbe566a}{O\+N\+L\+Y\+\_\+\+N\+O\+N\+D\+E\+N\+O\+M\+I\+N\+A\+T\+E\+D\+\_\+\+N\+O\+T\+S\+N} = 4
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const \hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{wallet_8h_add67e95cd66a980b74a7a2f434d9cf1c}{M\+I\+N\+\_\+\+T\+X\+\_\+\+F\+E\+E} = 10000
+\item 
+const \hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{wallet_8h_aaf857d36fa12074d08ab75d2e5e2c6de}{M\+I\+N\+\_\+\+R\+E\+L\+A\+Y\+\_\+\+T\+X\+\_\+\+F\+E\+E} = \hyperlink{wallet_8h_add67e95cd66a980b74a7a2f434d9cf1c}{M\+I\+N\+\_\+\+T\+X\+\_\+\+F\+E\+E}
+\begin{DoxyCompactList}\small\item\em Fees smaller than this (in satoshi) are considered zero fee (for relaying) \end{DoxyCompactList}\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{wallet_8h_ab2e46203b8d90f87b0a32524045bef60}{n\+Transaction\+Fee}
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{wallet_8h_a1927c8af76b81444b99a9185af6adae2}{n\+Reserve\+Balance}
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{wallet_8h_a6161012435f37404c65527606c4e0c3d}{n\+Minimum\+Input\+Value}
+\item 
+bool \hyperlink{wallet_8h_a0bc784e958b92854437f2238d4249da0}{f\+Wallet\+Unlock\+Staking\+Only}
+\item 
+bool \hyperlink{wallet_8h_aacdc0cc923bcbbe612f7975b56e05d18}{f\+Conf\+Change}
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{wallet_8h_ab1e69952accb0e7c635e4d7f2b19802b}{}\index{wallet.\+h@{wallet.\+h}!map\+Value\+\_\+t@{map\+Value\+\_\+t}}
+\index{map\+Value\+\_\+t@{map\+Value\+\_\+t}!wallet.\+h@{wallet.\+h}}
+\subsubsection[{map\+Value\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\+::map$<$ std\+::string, std\+::string $>$ {\bf map\+Value\+\_\+t}}\label{wallet_8h_ab1e69952accb0e7c635e4d7f2b19802b}
+
+
+Definition at line 47 of file wallet.\+h.
+
+\hypertarget{wallet_8h_a926ebc86f983a4476131d7e6f92e2386}{}\index{wallet.\+h@{wallet.\+h}!Stealth\+Key\+Meta\+Map@{Stealth\+Key\+Meta\+Map}}
+\index{Stealth\+Key\+Meta\+Map@{Stealth\+Key\+Meta\+Map}!wallet.\+h@{wallet.\+h}}
+\subsubsection[{Stealth\+Key\+Meta\+Map}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\+::map$<${\bf C\+Key\+I\+D}, {\bf C\+Stealth\+Key\+Metadata}$>$ {\bf Stealth\+Key\+Meta\+Map}}\label{wallet_8h_a926ebc86f983a4476131d7e6f92e2386}
+
+
+Definition at line 44 of file wallet.\+h.
+
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{wallet_8h_a90b09b05f289ac32704a6446a94566ce}{}\index{wallet.\+h@{wallet.\+h}!Available\+Coins\+Type@{Available\+Coins\+Type}}
+\index{Available\+Coins\+Type@{Available\+Coins\+Type}!wallet.\+h@{wallet.\+h}}
+\subsubsection[{Available\+Coins\+Type}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Available\+Coins\+Type}}\label{wallet_8h_a90b09b05f289ac32704a6446a94566ce}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{A\+L\+L\+\_\+\+C\+O\+I\+N\+S@{A\+L\+L\+\_\+\+C\+O\+I\+N\+S}!wallet.\+h@{wallet.\+h}}\index{wallet.\+h@{wallet.\+h}!A\+L\+L\+\_\+\+C\+O\+I\+N\+S@{A\+L\+L\+\_\+\+C\+O\+I\+N\+S}}\item[{\em 
+\hypertarget{wallet_8h_a90b09b05f289ac32704a6446a94566cea94cc8a0e81d9490cdbdfc3d3f215e9e7}{}A\+L\+L\+\_\+\+C\+O\+I\+N\+S\label{wallet_8h_a90b09b05f289ac32704a6446a94566cea94cc8a0e81d9490cdbdfc3d3f215e9e7}
+}]\index{O\+N\+L\+Y\+\_\+\+D\+E\+N\+O\+M\+I\+N\+A\+T\+E\+D@{O\+N\+L\+Y\+\_\+\+D\+E\+N\+O\+M\+I\+N\+A\+T\+E\+D}!wallet.\+h@{wallet.\+h}}\index{wallet.\+h@{wallet.\+h}!O\+N\+L\+Y\+\_\+\+D\+E\+N\+O\+M\+I\+N\+A\+T\+E\+D@{O\+N\+L\+Y\+\_\+\+D\+E\+N\+O\+M\+I\+N\+A\+T\+E\+D}}\item[{\em 
+\hypertarget{wallet_8h_a90b09b05f289ac32704a6446a94566ceaab4c4a7abab40ebdb2706c1708fff22e}{}O\+N\+L\+Y\+\_\+\+D\+E\+N\+O\+M\+I\+N\+A\+T\+E\+D\label{wallet_8h_a90b09b05f289ac32704a6446a94566ceaab4c4a7abab40ebdb2706c1708fff22e}
+}]\index{O\+N\+L\+Y\+\_\+\+N\+O\+N\+D\+E\+N\+O\+M\+I\+N\+A\+T\+E\+D@{O\+N\+L\+Y\+\_\+\+N\+O\+N\+D\+E\+N\+O\+M\+I\+N\+A\+T\+E\+D}!wallet.\+h@{wallet.\+h}}\index{wallet.\+h@{wallet.\+h}!O\+N\+L\+Y\+\_\+\+N\+O\+N\+D\+E\+N\+O\+M\+I\+N\+A\+T\+E\+D@{O\+N\+L\+Y\+\_\+\+N\+O\+N\+D\+E\+N\+O\+M\+I\+N\+A\+T\+E\+D}}\item[{\em 
+\hypertarget{wallet_8h_a90b09b05f289ac32704a6446a94566cea009b510e2a783d13c11717045cb06fe2}{}O\+N\+L\+Y\+\_\+\+N\+O\+N\+D\+E\+N\+O\+M\+I\+N\+A\+T\+E\+D\label{wallet_8h_a90b09b05f289ac32704a6446a94566cea009b510e2a783d13c11717045cb06fe2}
+}]\index{O\+N\+L\+Y\+\_\+\+N\+O\+N\+D\+E\+N\+O\+M\+I\+N\+A\+T\+E\+D\+\_\+\+N\+O\+T\+S\+N@{O\+N\+L\+Y\+\_\+\+N\+O\+N\+D\+E\+N\+O\+M\+I\+N\+A\+T\+E\+D\+\_\+\+N\+O\+T\+S\+N}!wallet.\+h@{wallet.\+h}}\index{wallet.\+h@{wallet.\+h}!O\+N\+L\+Y\+\_\+\+N\+O\+N\+D\+E\+N\+O\+M\+I\+N\+A\+T\+E\+D\+\_\+\+N\+O\+T\+S\+N@{O\+N\+L\+Y\+\_\+\+N\+O\+N\+D\+E\+N\+O\+M\+I\+N\+A\+T\+E\+D\+\_\+\+N\+O\+T\+S\+N}}\item[{\em 
+\hypertarget{wallet_8h_a90b09b05f289ac32704a6446a94566ceab446331eecce8e7c33f941400bbe566a}{}O\+N\+L\+Y\+\_\+\+N\+O\+N\+D\+E\+N\+O\+M\+I\+N\+A\+T\+E\+D\+\_\+\+N\+O\+T\+S\+N\label{wallet_8h_a90b09b05f289ac32704a6446a94566ceab446331eecce8e7c33f941400bbe566a}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 60 of file wallet.\+h.
+
+\hypertarget{wallet_8h_a39a6b71da3eb95cddc0836d3b27ac7c9}{}\index{wallet.\+h@{wallet.\+h}!Wallet\+Feature@{Wallet\+Feature}}
+\index{Wallet\+Feature@{Wallet\+Feature}!wallet.\+h@{wallet.\+h}}
+\subsubsection[{Wallet\+Feature}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Wallet\+Feature}}\label{wallet_8h_a39a6b71da3eb95cddc0836d3b27ac7c9}
+(client) version numbers for particular wallet features \begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{F\+E\+A\+T\+U\+R\+E\+\_\+\+B\+A\+S\+E@{F\+E\+A\+T\+U\+R\+E\+\_\+\+B\+A\+S\+E}!wallet.\+h@{wallet.\+h}}\index{wallet.\+h@{wallet.\+h}!F\+E\+A\+T\+U\+R\+E\+\_\+\+B\+A\+S\+E@{F\+E\+A\+T\+U\+R\+E\+\_\+\+B\+A\+S\+E}}\item[{\em 
+\hypertarget{wallet_8h_a39a6b71da3eb95cddc0836d3b27ac7c9a5fea711c20fa9e9721ac59d94b6e5d72}{}F\+E\+A\+T\+U\+R\+E\+\_\+\+B\+A\+S\+E\label{wallet_8h_a39a6b71da3eb95cddc0836d3b27ac7c9a5fea711c20fa9e9721ac59d94b6e5d72}
+}]\index{F\+E\+A\+T\+U\+R\+E\+\_\+\+W\+A\+L\+L\+E\+T\+C\+R\+Y\+P\+T@{F\+E\+A\+T\+U\+R\+E\+\_\+\+W\+A\+L\+L\+E\+T\+C\+R\+Y\+P\+T}!wallet.\+h@{wallet.\+h}}\index{wallet.\+h@{wallet.\+h}!F\+E\+A\+T\+U\+R\+E\+\_\+\+W\+A\+L\+L\+E\+T\+C\+R\+Y\+P\+T@{F\+E\+A\+T\+U\+R\+E\+\_\+\+W\+A\+L\+L\+E\+T\+C\+R\+Y\+P\+T}}\item[{\em 
+\hypertarget{wallet_8h_a39a6b71da3eb95cddc0836d3b27ac7c9a16fc17e025bfd90749cb594e8fc664b0}{}F\+E\+A\+T\+U\+R\+E\+\_\+\+W\+A\+L\+L\+E\+T\+C\+R\+Y\+P\+T\label{wallet_8h_a39a6b71da3eb95cddc0836d3b27ac7c9a16fc17e025bfd90749cb594e8fc664b0}
+}]\index{F\+E\+A\+T\+U\+R\+E\+\_\+\+C\+O\+M\+P\+R\+P\+U\+B\+K\+E\+Y@{F\+E\+A\+T\+U\+R\+E\+\_\+\+C\+O\+M\+P\+R\+P\+U\+B\+K\+E\+Y}!wallet.\+h@{wallet.\+h}}\index{wallet.\+h@{wallet.\+h}!F\+E\+A\+T\+U\+R\+E\+\_\+\+C\+O\+M\+P\+R\+P\+U\+B\+K\+E\+Y@{F\+E\+A\+T\+U\+R\+E\+\_\+\+C\+O\+M\+P\+R\+P\+U\+B\+K\+E\+Y}}\item[{\em 
+\hypertarget{wallet_8h_a39a6b71da3eb95cddc0836d3b27ac7c9a9b917e6922fd5de60c0b9fc95a3bf0e4}{}F\+E\+A\+T\+U\+R\+E\+\_\+\+C\+O\+M\+P\+R\+P\+U\+B\+K\+E\+Y\label{wallet_8h_a39a6b71da3eb95cddc0836d3b27ac7c9a9b917e6922fd5de60c0b9fc95a3bf0e4}
+}]\index{F\+E\+A\+T\+U\+R\+E\+\_\+\+L\+A\+T\+E\+S\+T@{F\+E\+A\+T\+U\+R\+E\+\_\+\+L\+A\+T\+E\+S\+T}!wallet.\+h@{wallet.\+h}}\index{wallet.\+h@{wallet.\+h}!F\+E\+A\+T\+U\+R\+E\+\_\+\+L\+A\+T\+E\+S\+T@{F\+E\+A\+T\+U\+R\+E\+\_\+\+L\+A\+T\+E\+S\+T}}\item[{\em 
+\hypertarget{wallet_8h_a39a6b71da3eb95cddc0836d3b27ac7c9a867e17547f858859f558244dc96ac2f3}{}F\+E\+A\+T\+U\+R\+E\+\_\+\+L\+A\+T\+E\+S\+T\label{wallet_8h_a39a6b71da3eb95cddc0836d3b27ac7c9a867e17547f858859f558244dc96ac2f3}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 50 of file wallet.\+h.
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{wallet_8h_aacdc0cc923bcbbe612f7975b56e05d18}{}\index{wallet.\+h@{wallet.\+h}!f\+Conf\+Change@{f\+Conf\+Change}}
+\index{f\+Conf\+Change@{f\+Conf\+Change}!wallet.\+h@{wallet.\+h}}
+\subsubsection[{f\+Conf\+Change}]{\setlength{\rightskip}{0pt plus 5cm}bool f\+Conf\+Change}\label{wallet_8h_aacdc0cc923bcbbe612f7975b56e05d18}
+
+
+Definition at line 53 of file init.\+cpp.
+
+\hypertarget{wallet_8h_a0bc784e958b92854437f2238d4249da0}{}\index{wallet.\+h@{wallet.\+h}!f\+Wallet\+Unlock\+Staking\+Only@{f\+Wallet\+Unlock\+Staking\+Only}}
+\index{f\+Wallet\+Unlock\+Staking\+Only@{f\+Wallet\+Unlock\+Staking\+Only}!wallet.\+h@{wallet.\+h}}
+\subsubsection[{f\+Wallet\+Unlock\+Staking\+Only}]{\setlength{\rightskip}{0pt plus 5cm}bool f\+Wallet\+Unlock\+Staking\+Only}\label{wallet_8h_a0bc784e958b92854437f2238d4249da0}
+
+
+Definition at line 166 of file wallet.\+cpp.
+
+\hypertarget{wallet_8h_aaf857d36fa12074d08ab75d2e5e2c6de}{}\index{wallet.\+h@{wallet.\+h}!M\+I\+N\+\_\+\+R\+E\+L\+A\+Y\+\_\+\+T\+X\+\_\+\+F\+E\+E@{M\+I\+N\+\_\+\+R\+E\+L\+A\+Y\+\_\+\+T\+X\+\_\+\+F\+E\+E}}
+\index{M\+I\+N\+\_\+\+R\+E\+L\+A\+Y\+\_\+\+T\+X\+\_\+\+F\+E\+E@{M\+I\+N\+\_\+\+R\+E\+L\+A\+Y\+\_\+\+T\+X\+\_\+\+F\+E\+E}!wallet.\+h@{wallet.\+h}}
+\subsubsection[{M\+I\+N\+\_\+\+R\+E\+L\+A\+Y\+\_\+\+T\+X\+\_\+\+F\+E\+E}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf C\+Amount} M\+I\+N\+\_\+\+R\+E\+L\+A\+Y\+\_\+\+T\+X\+\_\+\+F\+E\+E = {\bf M\+I\+N\+\_\+\+T\+X\+\_\+\+F\+E\+E}}\label{wallet_8h_aaf857d36fa12074d08ab75d2e5e2c6de}
+
+
+Fees smaller than this (in satoshi) are considered zero fee (for relaying) 
+
+
+
+Definition at line 29 of file wallet.\+h.
+
+\hypertarget{wallet_8h_add67e95cd66a980b74a7a2f434d9cf1c}{}\index{wallet.\+h@{wallet.\+h}!M\+I\+N\+\_\+\+T\+X\+\_\+\+F\+E\+E@{M\+I\+N\+\_\+\+T\+X\+\_\+\+F\+E\+E}}
+\index{M\+I\+N\+\_\+\+T\+X\+\_\+\+F\+E\+E@{M\+I\+N\+\_\+\+T\+X\+\_\+\+F\+E\+E}!wallet.\+h@{wallet.\+h}}
+\subsubsection[{M\+I\+N\+\_\+\+T\+X\+\_\+\+F\+E\+E}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf C\+Amount} M\+I\+N\+\_\+\+T\+X\+\_\+\+F\+E\+E = 10000}\label{wallet_8h_add67e95cd66a980b74a7a2f434d9cf1c}
+
+
+Definition at line 27 of file wallet.\+h.
+
+\hypertarget{wallet_8h_a6161012435f37404c65527606c4e0c3d}{}\index{wallet.\+h@{wallet.\+h}!n\+Minimum\+Input\+Value@{n\+Minimum\+Input\+Value}}
+\index{n\+Minimum\+Input\+Value@{n\+Minimum\+Input\+Value}!wallet.\+h@{wallet.\+h}}
+\subsubsection[{n\+Minimum\+Input\+Value}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} n\+Minimum\+Input\+Value}\label{wallet_8h_a6161012435f37404c65527606c4e0c3d}
+
+
+Definition at line 42 of file wallet.\+cpp.
+
+\hypertarget{wallet_8h_a1927c8af76b81444b99a9185af6adae2}{}\index{wallet.\+h@{wallet.\+h}!n\+Reserve\+Balance@{n\+Reserve\+Balance}}
+\index{n\+Reserve\+Balance@{n\+Reserve\+Balance}!wallet.\+h@{wallet.\+h}}
+\subsubsection[{n\+Reserve\+Balance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} n\+Reserve\+Balance}\label{wallet_8h_a1927c8af76b81444b99a9185af6adae2}
+
+
+Definition at line 41 of file wallet.\+cpp.
+
+\hypertarget{wallet_8h_ab2e46203b8d90f87b0a32524045bef60}{}\index{wallet.\+h@{wallet.\+h}!n\+Transaction\+Fee@{n\+Transaction\+Fee}}
+\index{n\+Transaction\+Fee@{n\+Transaction\+Fee}!wallet.\+h@{wallet.\+h}}
+\subsubsection[{n\+Transaction\+Fee}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} n\+Transaction\+Fee}\label{wallet_8h_ab2e46203b8d90f87b0a32524045bef60}
+
+
+Definition at line 40 of file wallet.\+cpp.
+

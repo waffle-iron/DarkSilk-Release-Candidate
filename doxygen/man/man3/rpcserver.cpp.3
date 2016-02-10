@@ -1,0 +1,224 @@
+.TH "/home/dev/ds-160209/src/rpcserver.cpp" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/rpcserver.cpp \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'rpcserver\&.h'\fP
+.br
+\fC#include 'base58\&.h'\fP
+.br
+\fC#include 'init\&.h'\fP
+.br
+\fC#include 'util\&.h'\fP
+.br
+\fC#include 'sync\&.h'\fP
+.br
+\fC#include 'db\&.h'\fP
+.br
+\fC#include 'ui_interface\&.h'\fP
+.br
+\fC#include <boost/algorithm/string\&.hpp>\fP
+.br
+\fC#include <boost/asio\&.hpp>\fP
+.br
+\fC#include <boost/asio/ip/v6_only\&.hpp>\fP
+.br
+\fC#include <boost/asio/ssl\&.hpp>\fP
+.br
+\fC#include <boost/bind\&.hpp>\fP
+.br
+\fC#include <boost/filesystem\&.hpp>\fP
+.br
+\fC#include <boost/filesystem/fstream\&.hpp>\fP
+.br
+\fC#include <boost/foreach\&.hpp>\fP
+.br
+\fC#include <boost/iostreams/concepts\&.hpp>\fP
+.br
+\fC#include <boost/iostreams/stream\&.hpp>\fP
+.br
+\fC#include <boost/lexical_cast\&.hpp>\fP
+.br
+\fC#include <boost/shared_ptr\&.hpp>\fP
+.br
+\fC#include <list>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBAcceptedConnection\fP"
+.br
+.ti -1c
+.RI "class \fBAcceptedConnectionImpl< Protocol >\fP"
+.br
+.ti -1c
+.RI "class \fBJSONRequest\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBRPCTypeCheck\fP (const \fBArray\fP &params, const list< \fBValue_type\fP > &typesExpected, bool fAllowNull)"
+.br
+.ti -1c
+.RI "void \fBRPCTypeCheck\fP (const \fBObject\fP &o, const map< string, \fBValue_type\fP > &typesExpected, bool fAllowNull)"
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBAmountFromValue\fP (const \fBValue\fP &\fBvalue\fP)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBValueFromAmount\fP (const \fBCAmount\fP &amount)"
+.br
+.ti -1c
+.RI "\fBuint256\fP \fBParseHashV\fP (const \fBValue\fP &v, string strName)"
+.br
+.ti -1c
+.RI "\fBuint256\fP \fBParseHashO\fP (const \fBObject\fP &o, string strKey)"
+.br
+.ti -1c
+.RI "vector< unsigned char > \fBParseHexV\fP (const \fBValue\fP &v, string strName)"
+.br
+.ti -1c
+.RI "vector< unsigned char > \fBParseHexO\fP (const \fBObject\fP &o, string strKey)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBhelp\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBstop\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "bool \fBHTTPAuthorized\fP (map< string, string > &mapHeaders)"
+.br
+.ti -1c
+.RI "void \fBErrorReply\fP (std::ostream &stream, const \fBObject\fP &objError, const \fBValue\fP &\fBid\fP)"
+.br
+.ti -1c
+.RI "bool \fBClientAllowed\fP (const boost::asio::ip::address &address)"
+.br
+.ti -1c
+.RI "void \fBServiceConnection\fP (\fBAcceptedConnection\fP *conn)"
+.br
+.ti -1c
+.RI "void \fBStartRPCThreads\fP ()"
+.br
+.ti -1c
+.RI "void \fBStopRPCThreads\fP ()"
+.br
+.ti -1c
+.RI "void \fBRPCRunHandler\fP (const boost::system::error_code &err, \fBboost::function\fP< void(void)> \fBfunc\fP)"
+.br
+.ti -1c
+.RI "void \fBRPCRunLater\fP (const std::string &\fBname\fP, \fBboost::function\fP< void(void)> \fBfunc\fP, \fBint64_t\fP nSeconds)"
+.br
+.ti -1c
+.RI "std::string \fBHelpExampleCli\fP (string methodname, string args)"
+.br
+.ti -1c
+.RI "std::string \fBHelpExampleRpc\fP (string methodname, string args)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "const \fBCRPCTable\fP \fBtableRPC\fP"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "\fBCAmount\fP AmountFromValue (const \fBValue\fP & value)"
+
+.PP
+Definition at line 87 of file rpcserver\&.cpp\&.
+.SS "bool ClientAllowed (const boost::asio::ip::address & address)"
+
+.PP
+Definition at line 375 of file rpcserver\&.cpp\&.
+.SS "void ErrorReply (std::ostream & stream, const \fBObject\fP & objError, const \fBValue\fP & id)"
+
+.PP
+Definition at line 364 of file rpcserver\&.cpp\&.
+.SS "\fBValue\fP help (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 186 of file rpcserver\&.cpp\&.
+.SS "std::string HelpExampleCli (string methodname, string args)"
+
+.PP
+Definition at line 872 of file rpcserver\&.cpp\&.
+.SS "std::string HelpExampleRpc (string methodname, string args)"
+
+.PP
+Definition at line 876 of file rpcserver\&.cpp\&.
+.SS "bool HTTPAuthorized (map< string, string > & mapHeaders)"
+
+.PP
+Definition at line 354 of file rpcserver\&.cpp\&.
+.SS "\fBuint256\fP ParseHashO (const \fBObject\fP & o, string strKey)"
+
+.PP
+Definition at line 120 of file rpcserver\&.cpp\&.
+.SS "\fBuint256\fP ParseHashV (const \fBValue\fP & v, string strName)"
+
+.PP
+Definition at line 108 of file rpcserver\&.cpp\&.
+.SS "vector<unsigned char> ParseHexO (const \fBObject\fP & o, string strKey)"
+
+.PP
+Definition at line 135 of file rpcserver\&.cpp\&.
+.SS "vector<unsigned char> ParseHexV (const \fBValue\fP & v, string strName)"
+
+.PP
+Definition at line 125 of file rpcserver\&.cpp\&.
+.SS "void RPCRunHandler (const boost::system::error_code & err, \fBboost::function\fP< void(void)> func)"
+
+.PP
+Definition at line 649 of file rpcserver\&.cpp\&.
+.SS "void RPCRunLater (const std::string & name, \fBboost::function\fP< void(void)> func, \fBint64_t\fP nSeconds)"
+
+.PP
+Definition at line 655 of file rpcserver\&.cpp\&.
+.SS "void RPCTypeCheck (const \fBArray\fP & params, const list< \fBValue_type\fP > & typesExpected, bool fAllowNull)"
+
+.PP
+Definition at line 47 of file rpcserver\&.cpp\&.
+.SS "void RPCTypeCheck (const \fBObject\fP & o, const map< string, \fBValue_type\fP > & typesExpected, bool fAllowNull)"
+
+.PP
+Definition at line 68 of file rpcserver\&.cpp\&.
+.SS "void ServiceConnection (\fBAcceptedConnection\fP * conn)"
+
+.PP
+Definition at line 743 of file rpcserver\&.cpp\&.
+.SS "void StartRPCThreads ()"
+
+.PP
+Definition at line 517 of file rpcserver\&.cpp\&.
+.SS "\fBValue\fP stop (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 201 of file rpcserver\&.cpp\&.
+.SS "void StopRPCThreads ()"
+
+.PP
+Definition at line 636 of file rpcserver\&.cpp\&.
+.SS "\fBValue\fP ValueFromAmount (const \fBCAmount\fP & amount)"
+
+.PP
+Definition at line 98 of file rpcserver\&.cpp\&.
+.SH "Variable Documentation"
+.PP 
+.SS "const \fBCRPCTable\fP tableRPC"
+
+.PP
+Definition at line 881 of file rpcserver\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

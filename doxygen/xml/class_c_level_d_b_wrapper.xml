@@ -1,0 +1,362 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_level_d_b_wrapper" kind="class" language="C++" prot="public">
+    <compoundname>CLevelDBWrapper</compoundname>
+    <derivedcompoundref refid="class_c_block_tree_d_b" prot="public" virt="non-virtual">CBlockTreeDB</derivedcompoundref>
+    <includes refid="leveldbwrapper_8h" local="no">leveldbwrapper.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_c_level_d_b_wrapper_1a77cb10f4311b2e0d9cf9860d5928e793" prot="private" static="no" mutable="no">
+        <type><ref refid="classleveldb_1_1_env" kindref="compound">leveldb::Env</ref> *</type>
+        <definition>leveldb::Env* CLevelDBWrapper::penv</definition>
+        <argsstring></argsstring>
+        <name>penv</name>
+        <briefdescription>
+<para>custom environment this database is using (may be NULL in case of default environment) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldbwrapper.h" line="66" column="1" bodyfile="/home/dev/ds-160209/src/leveldbwrapper.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_level_d_b_wrapper_1a338bb92acad2521bc17ecf5e80862efd" prot="private" static="no" mutable="no">
+        <type><ref refid="structleveldb_1_1_options" kindref="compound">leveldb::Options</ref></type>
+        <definition>leveldb::Options CLevelDBWrapper::options</definition>
+        <argsstring></argsstring>
+        <name>options</name>
+        <briefdescription>
+<para>database options used </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldbwrapper.h" line="69" column="1" bodyfile="/home/dev/ds-160209/src/leveldbwrapper.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_level_d_b_wrapper_1ada6b5ac987e1e4e9765696a9c059454c" prot="private" static="no" mutable="no">
+        <type><ref refid="structleveldb_1_1_read_options" kindref="compound">leveldb::ReadOptions</ref></type>
+        <definition>leveldb::ReadOptions CLevelDBWrapper::readoptions</definition>
+        <argsstring></argsstring>
+        <name>readoptions</name>
+        <briefdescription>
+<para>options used when reading from the database </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldbwrapper.h" line="72" column="1" bodyfile="/home/dev/ds-160209/src/leveldbwrapper.h" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_level_d_b_wrapper_1a284f69f5c017c0537d51ba373291f195" prot="private" static="no" mutable="no">
+        <type><ref refid="structleveldb_1_1_read_options" kindref="compound">leveldb::ReadOptions</ref></type>
+        <definition>leveldb::ReadOptions CLevelDBWrapper::iteroptions</definition>
+        <argsstring></argsstring>
+        <name>iteroptions</name>
+        <briefdescription>
+<para>options used when iterating over values of the database </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldbwrapper.h" line="75" column="1" bodyfile="/home/dev/ds-160209/src/leveldbwrapper.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_level_d_b_wrapper_1a2761173f9be7d16c7306f5a3565068ca" prot="private" static="no" mutable="no">
+        <type><ref refid="structleveldb_1_1_write_options" kindref="compound">leveldb::WriteOptions</ref></type>
+        <definition>leveldb::WriteOptions CLevelDBWrapper::writeoptions</definition>
+        <argsstring></argsstring>
+        <name>writeoptions</name>
+        <briefdescription>
+<para>options used when writing to the database </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldbwrapper.h" line="78" column="1" bodyfile="/home/dev/ds-160209/src/leveldbwrapper.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_level_d_b_wrapper_1a0929ea3b9ae8cdd1fbdeba0caaba6869" prot="private" static="no" mutable="no">
+        <type><ref refid="structleveldb_1_1_write_options" kindref="compound">leveldb::WriteOptions</ref></type>
+        <definition>leveldb::WriteOptions CLevelDBWrapper::syncoptions</definition>
+        <argsstring></argsstring>
+        <name>syncoptions</name>
+        <briefdescription>
+<para>options used when sync writing to the database </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldbwrapper.h" line="81" column="1" bodyfile="/home/dev/ds-160209/src/leveldbwrapper.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_level_d_b_wrapper_1ad3d3c82253cf83457c2df10f63962b76" prot="private" static="no" mutable="no">
+        <type><ref refid="classleveldb_1_1_d_b" kindref="compound">leveldb::DB</ref> *</type>
+        <definition>leveldb::DB* CLevelDBWrapper::pdb</definition>
+        <argsstring></argsstring>
+        <name>pdb</name>
+        <briefdescription>
+<para>the database itself </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldbwrapper.h" line="84" column="1" bodyfile="/home/dev/ds-160209/src/leveldbwrapper.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_level_d_b_wrapper_1ae796b1190c072df6275e0ada4d187943" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CLevelDBWrapper::CLevelDBWrapper</definition>
+        <argsstring>(const boost::filesystem::path &amp;path, size_t nCacheSize, bool fMemory=false, bool fWipe=false)</argsstring>
+        <name>CLevelDBWrapper</name>
+        <param>
+          <type>const boost::filesystem::path &amp;</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>nCacheSize</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fMemory</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fWipe</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldbwrapper.h" line="87" column="1" bodyfile="/home/dev/ds-160209/src/leveldbwrapper.cpp" bodystart="44" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_level_d_b_wrapper_1a7ffe7edeadfcf521d32509216e95403b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CLevelDBWrapper::~CLevelDBWrapper</definition>
+        <argsstring>()</argsstring>
+        <name>~CLevelDBWrapper</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldbwrapper.h" line="88" column="1" bodyfile="/home/dev/ds-160209/src/leveldbwrapper.cpp" bodystart="69" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_level_d_b_wrapper_1aa3b816ae43c930b4bf1f85461bff4b5b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename K</type>
+          </param>
+          <param>
+            <type>typename V</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool CLevelDBWrapper::Read</definition>
+        <argsstring>(const K &amp;key, V &amp;value) const </argsstring>
+        <name>Read</name>
+        <param>
+          <type>const K &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>V &amp;</type>
+          <declname>value</declname>
+        </param>
+        <exceptions> throw (<ref refid="classleveldb__error" kindref="compound">leveldb_error</ref>)</exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldbwrapper.h" line="91" column="1" bodyfile="/home/dev/ds-160209/src/leveldbwrapper.h" bodystart="91" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_level_d_b_wrapper_1a740caa1aefbafc888838ea7f70dc31f4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename K</type>
+          </param>
+          <param>
+            <type>typename V</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool CLevelDBWrapper::Write</definition>
+        <argsstring>(const K &amp;key, const V &amp;value, bool fSync=false)</argsstring>
+        <name>Write</name>
+        <param>
+          <type>const K &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const V &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fSync</declname>
+          <defval>false</defval>
+        </param>
+        <exceptions> throw (<ref refid="classleveldb__error" kindref="compound">leveldb_error</ref>)</exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldbwrapper.h" line="116" column="1" bodyfile="/home/dev/ds-160209/src/leveldbwrapper.h" bodystart="116" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_level_d_b_wrapper_1a9c9d2e1c06c45c5d6883f33136f6718b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename K</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool CLevelDBWrapper::Exists</definition>
+        <argsstring>(const K &amp;key) const </argsstring>
+        <name>Exists</name>
+        <param>
+          <type>const K &amp;</type>
+          <declname>key</declname>
+        </param>
+        <exceptions> throw (<ref refid="classleveldb__error" kindref="compound">leveldb_error</ref>)</exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldbwrapper.h" line="124" column="1" bodyfile="/home/dev/ds-160209/src/leveldbwrapper.h" bodystart="124" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_level_d_b_wrapper_1a9f67e2880ba191fdc9439ba34e315d72" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename K</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool CLevelDBWrapper::Erase</definition>
+        <argsstring>(const K &amp;key, bool fSync=false)</argsstring>
+        <name>Erase</name>
+        <param>
+          <type>const K &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fSync</declname>
+          <defval>false</defval>
+        </param>
+        <exceptions> throw (<ref refid="classleveldb__error" kindref="compound">leveldb_error</ref>)</exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldbwrapper.h" line="143" column="1" bodyfile="/home/dev/ds-160209/src/leveldbwrapper.h" bodystart="143" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_level_d_b_wrapper_1a820484c9e427f9e3400396e750acf4b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CLevelDBWrapper::WriteBatch</definition>
+        <argsstring>(CLevelDBBatch &amp;batch, bool fSync=false)</argsstring>
+        <name>WriteBatch</name>
+        <param>
+          <type><ref refid="class_c_level_d_b_batch" kindref="compound">CLevelDBBatch</ref> &amp;</type>
+          <declname>batch</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fSync</declname>
+          <defval>false</defval>
+        </param>
+        <exceptions> throw (<ref refid="classleveldb__error" kindref="compound">leveldb_error</ref>)</exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldbwrapper.h" line="150" column="1" bodyfile="/home/dev/ds-160209/src/leveldbwrapper.cpp" bodystart="81" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_level_d_b_wrapper_1a639fbfd6652941a1ab570c202197a32a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CLevelDBWrapper::Flush</definition>
+        <argsstring>()</argsstring>
+        <name>Flush</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldbwrapper.h" line="153" column="1" bodyfile="/home/dev/ds-160209/src/leveldbwrapper.h" bodystart="153" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_level_d_b_wrapper_1abd05e914893cd610e8444871f829d8c9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CLevelDBWrapper::Sync</definition>
+        <argsstring>()</argsstring>
+        <name>Sync</name>
+        <exceptions> throw (<ref refid="classleveldb__error" kindref="compound">leveldb_error</ref>)</exceptions>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldbwrapper.h" line="158" column="1" bodyfile="/home/dev/ds-160209/src/leveldbwrapper.h" bodystart="158" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_level_d_b_wrapper_1a5f43d01a8a6b26464b875d190e002d74" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classleveldb_1_1_iterator" kindref="compound">leveldb::Iterator</ref> *</type>
+        <definition>leveldb::Iterator* CLevelDBWrapper::NewIterator</definition>
+        <argsstring>()</argsstring>
+        <name>NewIterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldbwrapper.h" line="165" column="1" bodyfile="/home/dev/ds-160209/src/leveldbwrapper.h" bodystart="165" bodyend="168"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="553">
+        <label>CBlockTreeDB</label>
+        <link refid="class_c_block_tree_d_b"/>
+        <childnode refid="552" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="552">
+        <label>CLevelDBWrapper</label>
+        <link refid="class_c_level_d_b_wrapper"/>
+      </node>
+    </inheritancegraph>
+    <location file="/home/dev/ds-160209/src/leveldbwrapper.h" line="63" column="1" bodyfile="/home/dev/ds-160209/src/leveldbwrapper.h" bodystart="62" bodyend="169"/>
+    <listofallmembers>
+      <member refid="class_c_level_d_b_wrapper_1ae796b1190c072df6275e0ada4d187943" prot="public" virt="non-virtual"><scope>CLevelDBWrapper</scope><name>CLevelDBWrapper</name></member>
+      <member refid="class_c_level_d_b_wrapper_1a9f67e2880ba191fdc9439ba34e315d72" prot="public" virt="non-virtual"><scope>CLevelDBWrapper</scope><name>Erase</name></member>
+      <member refid="class_c_level_d_b_wrapper_1a9c9d2e1c06c45c5d6883f33136f6718b" prot="public" virt="non-virtual"><scope>CLevelDBWrapper</scope><name>Exists</name></member>
+      <member refid="class_c_level_d_b_wrapper_1a639fbfd6652941a1ab570c202197a32a" prot="public" virt="non-virtual"><scope>CLevelDBWrapper</scope><name>Flush</name></member>
+      <member refid="class_c_level_d_b_wrapper_1a284f69f5c017c0537d51ba373291f195" prot="private" virt="non-virtual"><scope>CLevelDBWrapper</scope><name>iteroptions</name></member>
+      <member refid="class_c_level_d_b_wrapper_1a5f43d01a8a6b26464b875d190e002d74" prot="public" virt="non-virtual"><scope>CLevelDBWrapper</scope><name>NewIterator</name></member>
+      <member refid="class_c_level_d_b_wrapper_1a338bb92acad2521bc17ecf5e80862efd" prot="private" virt="non-virtual"><scope>CLevelDBWrapper</scope><name>options</name></member>
+      <member refid="class_c_level_d_b_wrapper_1ad3d3c82253cf83457c2df10f63962b76" prot="private" virt="non-virtual"><scope>CLevelDBWrapper</scope><name>pdb</name></member>
+      <member refid="class_c_level_d_b_wrapper_1a77cb10f4311b2e0d9cf9860d5928e793" prot="private" virt="non-virtual"><scope>CLevelDBWrapper</scope><name>penv</name></member>
+      <member refid="class_c_level_d_b_wrapper_1aa3b816ae43c930b4bf1f85461bff4b5b" prot="public" virt="non-virtual"><scope>CLevelDBWrapper</scope><name>Read</name></member>
+      <member refid="class_c_level_d_b_wrapper_1ada6b5ac987e1e4e9765696a9c059454c" prot="private" virt="non-virtual"><scope>CLevelDBWrapper</scope><name>readoptions</name></member>
+      <member refid="class_c_level_d_b_wrapper_1abd05e914893cd610e8444871f829d8c9" prot="public" virt="non-virtual"><scope>CLevelDBWrapper</scope><name>Sync</name></member>
+      <member refid="class_c_level_d_b_wrapper_1a0929ea3b9ae8cdd1fbdeba0caaba6869" prot="private" virt="non-virtual"><scope>CLevelDBWrapper</scope><name>syncoptions</name></member>
+      <member refid="class_c_level_d_b_wrapper_1a740caa1aefbafc888838ea7f70dc31f4" prot="public" virt="non-virtual"><scope>CLevelDBWrapper</scope><name>Write</name></member>
+      <member refid="class_c_level_d_b_wrapper_1a820484c9e427f9e3400396e750acf4b8" prot="public" virt="non-virtual"><scope>CLevelDBWrapper</scope><name>WriteBatch</name></member>
+      <member refid="class_c_level_d_b_wrapper_1a2761173f9be7d16c7306f5a3565068ca" prot="private" virt="non-virtual"><scope>CLevelDBWrapper</scope><name>writeoptions</name></member>
+      <member refid="class_c_level_d_b_wrapper_1a7ffe7edeadfcf521d32509216e95403b" prot="public" virt="non-virtual"><scope>CLevelDBWrapper</scope><name>~CLevelDBWrapper</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

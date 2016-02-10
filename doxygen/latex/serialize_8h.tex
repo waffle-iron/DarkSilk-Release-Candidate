@@ -1,0 +1,1688 @@
+\hypertarget{serialize_8h}{}\section{/home/dev/ds-\/160209/src/serialize.h File Reference}
+\label{serialize_8h}\index{/home/dev/ds-\/160209/src/serialize.\+h@{/home/dev/ds-\/160209/src/serialize.\+h}}
+{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$map$>$}\\*
+{\ttfamily \#include $<$set$>$}\\*
+{\ttfamily \#include $<$cassert$>$}\\*
+{\ttfamily \#include $<$limits$>$}\\*
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include $<$cstring$>$}\\*
+{\ttfamily \#include $<$cstdio$>$}\\*
+{\ttfamily \#include $<$boost/type\+\_\+traits/is\+\_\+fundamental.\+hpp$>$}\\*
+{\ttfamily \#include $<$boost/tuple/tuple.\+hpp$>$}\\*
+{\ttfamily \#include \char`\"{}allocators.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}version.\+h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_c_flat_data}{C\+Flat\+Data}
+\begin{DoxyCompactList}\small\item\em Wrapper for serializing arrays and P\+O\+D. \end{DoxyCompactList}\item 
+class \hyperlink{class_c_var_int}{C\+Var\+Int$<$ I $>$}
+\item 
+class \hyperlink{class_limited_string}{Limited\+String$<$ Limit $>$}
+\item 
+class \hyperlink{class_c_ser_action_get_serialize_size}{C\+Ser\+Action\+Get\+Serialize\+Size}
+\item 
+struct \hyperlink{struct_c_ser_action_serialize}{C\+Ser\+Action\+Serialize}
+\item 
+struct \hyperlink{struct_c_ser_action_unserialize}{C\+Ser\+Action\+Unserialize}
+\item 
+struct \hyperlink{structser__streamplaceholder}{ser\+\_\+streamplaceholder}
+\item 
+class \hyperlink{class_c_size_computer}{C\+Size\+Computer}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{serialize_8h_a4d7fc7040e01003a01f367b8d90324f1}{R\+E\+A\+D\+W\+R\+I\+T\+E}(obj)~(\+::\hyperlink{serialize_8h_a3f746e0ed1975fa9447ef30050218aa9}{Ser\+Read\+Write}(s, (obj), n\+Type, n\+Version, ser\+\_\+action))
+\item 
+\#define \hyperlink{serialize_8h_ae3f1f459edee39316fb42da787e2d266}{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}
+\item 
+\#define \hyperlink{serialize_8h_ace4c987b030b7520a3a297fc91478d4e}{W\+R\+I\+T\+E\+D\+A\+T\+A}(s,  obj)~s.\+write((char$\ast$)\&(obj), sizeof(obj))
+\item 
+\#define \hyperlink{serialize_8h_a979640faec36eb3983c4f8b44eaac217}{R\+E\+A\+D\+D\+A\+T\+A}(s,  obj)~s.\+read((char$\ast$)\&(obj), sizeof(obj))
+\item 
+\#define \hyperlink{serialize_8h_a9393dd1b6a30ae7fe9cc42240241f741}{F\+L\+A\+T\+D\+A\+T\+A}(obj)~\hyperlink{serialize_8h_abd1caa7e45d4ba31b7dfdda9949c3b05}{R\+E\+F}(\hyperlink{class_c_flat_data}{C\+Flat\+Data}((char$\ast$)\&(obj), (char$\ast$)\&(obj) + sizeof(obj)))
+\item 
+\#define \hyperlink{serialize_8h_a1383f2a4c22ffaeba9b2924d90459f76}{V\+A\+R\+I\+N\+T}(obj)~\hyperlink{serialize_8h_abd1caa7e45d4ba31b7dfdda9949c3b05}{R\+E\+F}(\hyperlink{serialize_8h_a5748d9d17982b234b10a4b9e6f8e9f53}{Wrap\+Var\+Int}(\hyperlink{serialize_8h_abd1caa7e45d4ba31b7dfdda9949c3b05}{R\+E\+F}(obj)))
+\item 
+\#define \hyperlink{serialize_8h_a78e63691a056ce2368984400605e4f6e}{L\+I\+M\+I\+T\+E\+D\+\_\+\+S\+T\+R\+I\+N\+G}(obj,  n)~\hyperlink{serialize_8h_abd1caa7e45d4ba31b7dfdda9949c3b05}{R\+E\+F}(\hyperlink{class_limited_string}{Limited\+String}$<$ n $>$(\hyperlink{serialize_8h_abd1caa7e45d4ba31b7dfdda9949c3b05}{R\+E\+F}(obj)))
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::vector$<$ char, \hyperlink{structzero__after__free__allocator}{zero\+\_\+after\+\_\+free\+\_\+allocator}$<$ char $>$ $>$ \hyperlink{serialize_8h_a77935f92ff5ba1d71d692166f6ce0c1b}{C\+Serialize\+Data}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \\*
+\hyperlink{serialize_8h_a6b7b47dd702d9e331586d485013fd1eaa652754eeaf79fba4fcf4c18597a6961c}{S\+E\+R\+\_\+\+N\+E\+T\+W\+O\+R\+K} = (1 $<$$<$ 0), 
+\hyperlink{serialize_8h_a6b7b47dd702d9e331586d485013fd1eaa34949680c53028d35a449bf88b3c329d}{S\+E\+R\+\_\+\+D\+I\+S\+K} = (1 $<$$<$ 1), 
+\hyperlink{serialize_8h_a6b7b47dd702d9e331586d485013fd1eaaca6c7596d50ce42f28b5b97f39ba178a}{S\+E\+R\+\_\+\+G\+E\+T\+H\+A\+S\+H} = (1 $<$$<$ 2), 
+\hyperlink{serialize_8h_a6b7b47dd702d9e331586d485013fd1eaa0d7b459667b662cab8c9a95be7bc72f0}{S\+E\+R\+\_\+\+S\+K\+I\+P\+S\+I\+G} = (1 $<$$<$ 16), 
+\\*
+\hyperlink{serialize_8h_a6b7b47dd702d9e331586d485013fd1eaa4f355599a80a433c2b6d27f236eb420a}{S\+E\+R\+\_\+\+B\+L\+O\+C\+K\+H\+E\+A\+D\+E\+R\+O\+N\+L\+Y} = (1 $<$$<$ 17)
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \& \hyperlink{serialize_8h_abd1caa7e45d4ba31b7dfdda9949c3b05}{R\+E\+F} (const T \&val)
+\item 
+{\footnotesize template$<$typename T $>$ }\\T $\ast$ \hyperlink{serialize_8h_ae634e39c103baab132dad9beef83ceb5}{N\+C\+O\+N\+S\+T\+\_\+\+P\+T\+R} (const T $\ast$val)
+\item 
+{\footnotesize template$<$class T , class T\+Al $>$ }\\T $\ast$ \hyperlink{serialize_8h_a19966d167c527d2be493ac9aba27c249}{begin\+\_\+ptr} (std\+::vector$<$ T, T\+Al $>$ \&v)
+\item 
+{\footnotesize template$<$class T , class T\+Al $>$ }\\const T $\ast$ \hyperlink{serialize_8h_ac542eee802a7ab8054a1c4cae6061296}{begin\+\_\+ptr} (const std\+::vector$<$ T, T\+Al $>$ \&v)
+\item 
+{\footnotesize template$<$class T , class T\+Al $>$ }\\T $\ast$ \hyperlink{serialize_8h_a9a94418dd6160d4dfd04aa4ef07219f7}{end\+\_\+ptr} (std\+::vector$<$ T, T\+Al $>$ \&v)
+\item 
+{\footnotesize template$<$class T , class T\+Al $>$ }\\const T $\ast$ \hyperlink{serialize_8h_a75886e8bb81b99c85327544f42425058}{end\+\_\+ptr} (const std\+::vector$<$ T, T\+Al $>$ \&v)
+\item 
+unsigned int \hyperlink{serialize_8h_a48239e478ae730373d1984fe304ca025}{Get\+Serialize\+Size} (char a, int, int=0)
+\item 
+unsigned int \hyperlink{serialize_8h_a89340ca6c5c4813911e75b037dae5c57}{Get\+Serialize\+Size} (signed char a, int, int=0)
+\item 
+unsigned int \hyperlink{serialize_8h_a7e67cdca5b5c7a2876cc4ac1ad9e5d21}{Get\+Serialize\+Size} (unsigned char a, int, int=0)
+\item 
+unsigned int \hyperlink{serialize_8h_a38b194303f4eea667c23a17d0c0888bc}{Get\+Serialize\+Size} (signed short a, int, int=0)
+\item 
+unsigned int \hyperlink{serialize_8h_ae67cb45d7bd13659118d8cbc5ee28d26}{Get\+Serialize\+Size} (unsigned short a, int, int=0)
+\item 
+unsigned int \hyperlink{serialize_8h_a60fbfe51f8d379aa7e63b2ebffb0b727}{Get\+Serialize\+Size} (signed int a, int, int=0)
+\item 
+unsigned int \hyperlink{serialize_8h_a3b76fb86c0b530430df97f5019393fc4}{Get\+Serialize\+Size} (unsigned int a, int, int=0)
+\item 
+unsigned int \hyperlink{serialize_8h_a17aa6a3c676b623db0024ab4f6f82e8d}{Get\+Serialize\+Size} (signed long a, int, int=0)
+\item 
+unsigned int \hyperlink{serialize_8h_a8b01f8d853d363005c24e22a14f929d8}{Get\+Serialize\+Size} (unsigned long a, int, int=0)
+\item 
+unsigned int \hyperlink{serialize_8h_a9593ac8e2ea7fb7831b9a3a2ef23028d}{Get\+Serialize\+Size} (signed long long a, int, int=0)
+\item 
+unsigned int \hyperlink{serialize_8h_afee2c07aa76bc1738be2f4db53a905d5}{Get\+Serialize\+Size} (unsigned long long a, int, int=0)
+\item 
+unsigned int \hyperlink{serialize_8h_ab3efcc232be0a7c668bf0f44bf033265}{Get\+Serialize\+Size} (float a, int, int=0)
+\item 
+unsigned int \hyperlink{serialize_8h_ad0b9f055f57604e77b6efe1a20b90069}{Get\+Serialize\+Size} (double a, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_a57a07500f5e1eb9589dc8d57bbd73a18}{Serialize} (Stream \&s, char a, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_a5d531916ca0be3e68a7699c5d54458e3}{Serialize} (Stream \&s, signed char a, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_aa4dffb2013e9982474abb195374a1170}{Serialize} (Stream \&s, unsigned char a, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_afa4b9fe12b2c57f916faf0ccb6380b4d}{Serialize} (Stream \&s, signed short a, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_a772fde82dfb5ff4f38d74e8200221578}{Serialize} (Stream \&s, unsigned short a, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_a9136a9754e353ddf4c3d5cc9b5fcccf1}{Serialize} (Stream \&s, signed int a, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_a4c7a12746abd3d5f41f9aefe97257e7e}{Serialize} (Stream \&s, unsigned int a, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_afc49d4e1b716e8acc02f9c5d7b1f2b78}{Serialize} (Stream \&s, signed long a, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_a34517393955fc4e15ebc5563e9b6382f}{Serialize} (Stream \&s, unsigned long a, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_a7625fb2eae7d26763340602cf33c54f7}{Serialize} (Stream \&s, signed long long a, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_a90c9c43b91ca1bb2771868d3816d960b}{Serialize} (Stream \&s, unsigned long long a, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_a8b8f1dc74e379a9d3308d8d22017e482}{Serialize} (Stream \&s, float a, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_aa261de518247991286be0e2dc515982d}{Serialize} (Stream \&s, double a, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_a6535b70fa93811f2b1df307a424eb317}{Unserialize} (Stream \&s, char \&a, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_a8dce0e0a85c9d38b700e700dc9dda057}{Unserialize} (Stream \&s, signed char \&a, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_aebbb104570e2ff054626fdd0410894b5}{Unserialize} (Stream \&s, unsigned char \&a, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_a984ad5e9f245dc49521f4caee9b59118}{Unserialize} (Stream \&s, signed short \&a, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_a055bba904b0bbf1290b30491a8cfe228}{Unserialize} (Stream \&s, unsigned short \&a, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_adc4aa8c2ea1f3a2402c22ca2a95ffce2}{Unserialize} (Stream \&s, signed int \&a, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_acdb803cab003e2a109d9e813974edf5e}{Unserialize} (Stream \&s, unsigned int \&a, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_aa80f0ffc269713ccbc33d90fe2769381}{Unserialize} (Stream \&s, signed long \&a, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_ae44cef267cf2667912e3ae0394df2f33}{Unserialize} (Stream \&s, unsigned long \&a, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_a1c98bde2b0a04fbbd79d68963478cdb1}{Unserialize} (Stream \&s, signed long long \&a, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_a69b64027fde2d915b2a1b575c8d6eb40}{Unserialize} (Stream \&s, unsigned long long \&a, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_a578d64a23aa8dcada47a3c82a1e4c362}{Unserialize} (Stream \&s, float \&a, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_afb55277651526f6e0554e92d5ff129bb}{Unserialize} (Stream \&s, double \&a, int, int=0)
+\item 
+unsigned int \hyperlink{serialize_8h_a6eb6e1d345d527f1826a8d0731d06ccb}{Get\+Serialize\+Size} (bool a, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_aac3cce93274829a6d598f85f17d09bf0}{Serialize} (Stream \&s, bool a, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_a6d54c28b93b58ccfaeeaf7e89b17c54e}{Unserialize} (Stream \&s, bool \&a, int, int=0)
+\item 
+unsigned int \hyperlink{serialize_8h_a404beecbf8d7aec8d2cdac3cbb71e808}{Get\+Size\+Of\+Compact\+Size} (\hyperlink{stdint_8h_aaa5d1cd013383c889537491c3cfd9aad}{uint64\+\_\+t} n\+Size)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_a02cf7f551f8876dcd142e7c6c8a27e3b}{Write\+Compact\+Size} (Stream \&os, \hyperlink{stdint_8h_aaa5d1cd013383c889537491c3cfd9aad}{uint64\+\_\+t} n\+Size)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\\hyperlink{stdint_8h_aaa5d1cd013383c889537491c3cfd9aad}{uint64\+\_\+t} \hyperlink{serialize_8h_ae3fd928949b7361accfec79c314aa90f}{Read\+Compact\+Size} (Stream \&is)
+\item 
+{\footnotesize template$<$typename I $>$ }\\unsigned int \hyperlink{serialize_8h_aecf191cfbaec6bfce1292f7f9c3dc7ba}{Get\+Size\+Of\+Var\+Int} (I n)
+\item 
+{\footnotesize template$<$typename Stream , typename I $>$ }\\void \hyperlink{serialize_8h_af2cf364ed9c068fd7092f0207a756c22}{Write\+Var\+Int} (Stream \&os, I n)
+\item 
+{\footnotesize template$<$typename Stream , typename I $>$ }\\I \hyperlink{serialize_8h_a6f8a5966f156fb3d7e4acc7121eea648}{Read\+Var\+Int} (Stream \&is)
+\item 
+{\footnotesize template$<$typename I $>$ }\\\hyperlink{class_c_var_int}{C\+Var\+Int}$<$ I $>$ \hyperlink{serialize_8h_a5748d9d17982b234b10a4b9e6f8e9f53}{Wrap\+Var\+Int} (I \&n)
+\item 
+{\footnotesize template$<$typename C $>$ }\\unsigned int \hyperlink{serialize_8h_af2f7bd0287726e890b7d465e09fd7f73}{Get\+Serialize\+Size} (const std\+::basic\+\_\+string$<$ C $>$ \&str, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream , typename C $>$ }\\void \hyperlink{serialize_8h_adee5a9a0b11fd58c829855619c222ab7}{Serialize} (Stream \&os, const std\+::basic\+\_\+string$<$ C $>$ \&str, int, int=0)
+\item 
+{\footnotesize template$<$typename Stream , typename C $>$ }\\void \hyperlink{serialize_8h_aa688c53c27044d715917e33769b4f415}{Unserialize} (Stream \&is, std\+::basic\+\_\+string$<$ C $>$ \&str, int, int=0)
+\item 
+{\footnotesize template$<$typename T , typename A $>$ }\\unsigned int \hyperlink{serialize_8h_a3bbd240ce556fd6d0006f77012177cdf}{Get\+Serialize\+Size\+\_\+impl} (const std\+::vector$<$ T, A $>$ \&v, int n\+Type, int n\+Version, const boost\+::true\+\_\+type \&)
+\item 
+{\footnotesize template$<$typename T , typename A $>$ }\\unsigned int \hyperlink{serialize_8h_a329d6980a25c10b1e34913ac11329fde}{Get\+Serialize\+Size\+\_\+impl} (const std\+::vector$<$ T, A $>$ \&v, int n\+Type, int n\+Version, const boost\+::false\+\_\+type \&)
+\item 
+{\footnotesize template$<$typename T , typename A $>$ }\\unsigned int \hyperlink{serialize_8h_a335ff86321a72847697b886ec6a73b83}{Get\+Serialize\+Size} (const std\+::vector$<$ T, A $>$ \&v, int n\+Type, int n\+Version)
+\item 
+{\footnotesize template$<$typename Stream , typename T , typename A $>$ }\\void \hyperlink{serialize_8h_afb0ab8a2a3c9e6accec44b9310665e75}{Serialize\+\_\+impl} (Stream \&os, const std\+::vector$<$ T, A $>$ \&v, int n\+Type, int n\+Version, const boost\+::true\+\_\+type \&)
+\item 
+{\footnotesize template$<$typename Stream , typename T , typename A $>$ }\\void \hyperlink{serialize_8h_aafb4b2795cb998fdcf76b19a959a1ae1}{Serialize\+\_\+impl} (Stream \&os, const std\+::vector$<$ T, A $>$ \&v, int n\+Type, int n\+Version, const boost\+::false\+\_\+type \&)
+\item 
+{\footnotesize template$<$typename Stream , typename T , typename A $>$ }\\void \hyperlink{serialize_8h_a0d1c9a136a2cc812c3080bd65a20f63c}{Serialize} (Stream \&os, const std\+::vector$<$ T, A $>$ \&v, int n\+Type, int n\+Version)
+\item 
+{\footnotesize template$<$typename Stream , typename T , typename A $>$ }\\void \hyperlink{serialize_8h_ae8594814bba47036e603e447fbfd79ac}{Unserialize\+\_\+impl} (Stream \&is, std\+::vector$<$ T, A $>$ \&v, int n\+Type, int n\+Version, const boost\+::true\+\_\+type \&)
+\item 
+{\footnotesize template$<$typename Stream , typename T , typename A $>$ }\\void \hyperlink{serialize_8h_ac81185ca595a48045a6808b69bf2eb0e}{Unserialize\+\_\+impl} (Stream \&is, std\+::vector$<$ T, A $>$ \&v, int n\+Type, int n\+Version, const boost\+::false\+\_\+type \&)
+\item 
+{\footnotesize template$<$typename Stream , typename T , typename A $>$ }\\void \hyperlink{serialize_8h_aefdf63d8c997767d3e3535a54f35025c}{Unserialize} (Stream \&is, std\+::vector$<$ T, A $>$ \&v, int n\+Type, int n\+Version)
+\item 
+unsigned int \hyperlink{serialize_8h_a111324194564a4e799f5b1ac9b0932eb}{Get\+Serialize\+Size} (const \hyperlink{class_c_script}{C\+Script} \&v, int n\+Type, int n\+Version)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_a4abc2780ddc1498c4a390f1fb88cfea8}{Serialize} (Stream \&os, const \hyperlink{class_c_script}{C\+Script} \&v, int n\+Type, int n\+Version)
+\item 
+{\footnotesize template$<$typename Stream $>$ }\\void \hyperlink{serialize_8h_aef8c207825b645e4156ab2a371101f3a}{Unserialize} (Stream \&is, \hyperlink{class_c_script}{C\+Script} \&v, int n\+Type, int n\+Version)
+\item 
+{\footnotesize template$<$typename K , typename T $>$ }\\unsigned int \hyperlink{serialize_8h_ad79f12b1ba05119c0d2460699dcf01d2}{Get\+Serialize\+Size} (const std\+::pair$<$ K, T $>$ \&item, int n\+Type, int n\+Version)
+\item 
+{\footnotesize template$<$typename Stream , typename K , typename T $>$ }\\void \hyperlink{serialize_8h_ab485c675206b85cf5b2800ce1d3ca2c2}{Serialize} (Stream \&os, const std\+::pair$<$ K, T $>$ \&item, int n\+Type, int n\+Version)
+\item 
+{\footnotesize template$<$typename Stream , typename K , typename T $>$ }\\void \hyperlink{serialize_8h_af0fc057388ad1dbd793bccf02282ec18}{Unserialize} (Stream \&is, std\+::pair$<$ K, T $>$ \&item, int n\+Type, int n\+Version)
+\item 
+{\footnotesize template$<$typename T0 , typename T1 , typename T2 $>$ }\\unsigned int \hyperlink{serialize_8h_ac1fabe16fa95a50b78866fa9f2eb633a}{Get\+Serialize\+Size} (const boost\+::tuple$<$ T0, T1, T2 $>$ \&item, int n\+Type, int n\+Version)
+\item 
+{\footnotesize template$<$typename Stream , typename T0 , typename T1 , typename T2 $>$ }\\void \hyperlink{serialize_8h_a499ddf572293fe1c114b2c1b1c25c5e6}{Serialize} (Stream \&os, const boost\+::tuple$<$ T0, T1, T2 $>$ \&item, int n\+Type, int n\+Version)
+\item 
+{\footnotesize template$<$typename Stream , typename T0 , typename T1 , typename T2 $>$ }\\void \hyperlink{serialize_8h_aa00de3cbf1e973ac2d468e91b79eab2f}{Unserialize} (Stream \&is, boost\+::tuple$<$ T0, T1, T2 $>$ \&item, int n\+Type, int n\+Version)
+\item 
+{\footnotesize template$<$typename T0 , typename T1 , typename T2 , typename T3 $>$ }\\unsigned int \hyperlink{serialize_8h_acffc58951c084ec48df3d3a87d3e398a}{Get\+Serialize\+Size} (const boost\+::tuple$<$ T0, T1, T2, T3 $>$ \&item, int n\+Type, int n\+Version)
+\item 
+{\footnotesize template$<$typename Stream , typename T0 , typename T1 , typename T2 , typename T3 $>$ }\\void \hyperlink{serialize_8h_ae185a8090e06661c56a897c09cdf39d1}{Serialize} (Stream \&os, const boost\+::tuple$<$ T0, T1, T2, T3 $>$ \&item, int n\+Type, int n\+Version)
+\item 
+{\footnotesize template$<$typename Stream , typename T0 , typename T1 , typename T2 , typename T3 $>$ }\\void \hyperlink{serialize_8h_a11f168f2ad0355ad6794090c3035b3d2}{Unserialize} (Stream \&is, boost\+::tuple$<$ T0, T1, T2, T3 $>$ \&item, int n\+Type, int n\+Version)
+\item 
+{\footnotesize template$<$typename K , typename T , typename Pred , typename A $>$ }\\unsigned int \hyperlink{serialize_8h_af3b9d5bc8cc267300cf8ca893c51929e}{Get\+Serialize\+Size} (const std\+::map$<$ K, T, Pred, A $>$ \&m, int n\+Type, int n\+Version)
+\item 
+{\footnotesize template$<$typename Stream , typename K , typename T , typename Pred , typename A $>$ }\\void \hyperlink{serialize_8h_a54baab64cf0b60a61c712546dab7305a}{Serialize} (Stream \&os, const std\+::map$<$ K, T, Pred, A $>$ \&m, int n\+Type, int n\+Version)
+\item 
+{\footnotesize template$<$typename Stream , typename K , typename T , typename Pred , typename A $>$ }\\void \hyperlink{serialize_8h_acda54e31ea371de4eb0787a3e1565aa5}{Unserialize} (Stream \&is, std\+::map$<$ K, T, Pred, A $>$ \&m, int n\+Type, int n\+Version)
+\item 
+{\footnotesize template$<$typename K , typename Pred , typename A $>$ }\\unsigned int \hyperlink{serialize_8h_af597c56aff2d6291fdc3c56cac1551b6}{Get\+Serialize\+Size} (const std\+::set$<$ K, Pred, A $>$ \&m, int n\+Type, int n\+Version)
+\item 
+{\footnotesize template$<$typename Stream , typename K , typename Pred , typename A $>$ }\\void \hyperlink{serialize_8h_a05fbc0a7955ac4f4d7082870474658d5}{Serialize} (Stream \&os, const std\+::set$<$ K, Pred, A $>$ \&m, int n\+Type, int n\+Version)
+\item 
+{\footnotesize template$<$typename Stream , typename K , typename Pred , typename A $>$ }\\void \hyperlink{serialize_8h_a229b67f4ffe4f0c3b3c52dc6cff98db3}{Unserialize} (Stream \&is, std\+::set$<$ K, Pred, A $>$ \&m, int n\+Type, int n\+Version)
+\item 
+{\footnotesize template$<$typename T $>$ }\\unsigned int \hyperlink{serialize_8h_aac816a6c7028a0c84c501ff199289e02}{Get\+Serialize\+Size} (const T \&a, long n\+Type, int n\+Version)
+\item 
+{\footnotesize template$<$typename Stream , typename T $>$ }\\void \hyperlink{serialize_8h_a86951da9392b208f3e0c322d6569af14}{Serialize} (Stream \&os, const T \&a, long n\+Type, int n\+Version)
+\item 
+{\footnotesize template$<$typename Stream , typename T $>$ }\\void \hyperlink{serialize_8h_acd56ffe7d06efdae43157de0da994d4d}{Unserialize} (Stream \&is, T \&a, long n\+Type, int n\+Version)
+\item 
+{\footnotesize template$<$typename T , typename A $>$ }\\unsigned int \hyperlink{serialize_8h_a35c2e36c213f8331ad0cc3c03f88e8d1}{Get\+Serialize\+Size\+\_\+impl} (const std\+::vector$<$ T, A $>$ \&v, int n\+Type, int n\+Version, const unsigned char \&)
+\item 
+{\footnotesize template$<$typename T , typename A , typename V $>$ }\\unsigned int \hyperlink{serialize_8h_a0b138a9106a3690113f0797571843022}{Get\+Serialize\+Size\+\_\+impl} (const std\+::vector$<$ T, A $>$ \&v, int n\+Type, int n\+Version, const V \&)
+\item 
+{\footnotesize template$<$typename Stream , typename T , typename A $>$ }\\void \hyperlink{serialize_8h_a4267253fd8a7173f0a9e6f642ac6538d}{Serialize\+\_\+impl} (Stream \&os, const std\+::vector$<$ T, A $>$ \&v, int n\+Type, int n\+Version, const unsigned char \&)
+\item 
+{\footnotesize template$<$typename Stream , typename T , typename A , typename V $>$ }\\void \hyperlink{serialize_8h_a5ad2f90be2a49996f40cabf489e87cc3}{Serialize\+\_\+impl} (Stream \&os, const std\+::vector$<$ T, A $>$ \&v, int n\+Type, int n\+Version, const V \&)
+\item 
+{\footnotesize template$<$typename Stream , typename T , typename A $>$ }\\void \hyperlink{serialize_8h_a92432e5377aca757f1e248516214932d}{Unserialize\+\_\+impl} (Stream \&is, std\+::vector$<$ T, A $>$ \&v, int n\+Type, int n\+Version, const unsigned char \&)
+\item 
+{\footnotesize template$<$typename Stream , typename T , typename A , typename V $>$ }\\void \hyperlink{serialize_8h_a75bd9f1bb034294d1eb6d602ec98ff59}{Unserialize\+\_\+impl} (Stream \&is, std\+::vector$<$ T, A $>$ \&v, int n\+Type, int n\+Version, const V \&)
+\item 
+{\footnotesize template$<$typename Stream , typename T $>$ }\\unsigned int \hyperlink{serialize_8h_a9cd643cfa4ca2da679b6f9843bf319aa}{Ser\+Read\+Write} (Stream \&s, const T \&obj, int n\+Type, int n\+Version, \hyperlink{class_c_ser_action_get_serialize_size}{C\+Ser\+Action\+Get\+Serialize\+Size} ser\+\_\+action)
+\item 
+{\footnotesize template$<$typename Stream , typename T $>$ }\\unsigned int \hyperlink{serialize_8h_a776251b2973c5c9242ac3478ac1512a5}{Ser\+Read\+Write} (Stream \&s, const T \&obj, int n\+Type, int n\+Version, \hyperlink{struct_c_ser_action_serialize}{C\+Ser\+Action\+Serialize} ser\+\_\+action)
+\item 
+{\footnotesize template$<$typename Stream , typename T $>$ }\\unsigned int \hyperlink{serialize_8h_a3f746e0ed1975fa9447ef30050218aa9}{Ser\+Read\+Write} (Stream \&s, T \&obj, int n\+Type, int n\+Version, \hyperlink{struct_c_ser_action_unserialize}{C\+Ser\+Action\+Unserialize} ser\+\_\+action)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{serialize_8h_ae3f1f459edee39316fb42da787e2d266}{}\index{serialize.\+h@{serialize.\+h}!A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}}
+\index{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}\label{serialize_8h_ae3f1f459edee39316fb42da787e2d266}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordtype}{size\_t} \hyperlink{serialize_8h_a48239e478ae730373d1984fe304ca025}{GetSerializeSize}(\textcolor{keywordtype}{int} nType, \textcolor{keywordtype}{int} nVersion)\textcolor{keyword}{ const }\{                         \(\backslash\)
+        CSizeComputer s(nType, nVersion);                                            
+      \hyperlink{serialize_8h_ae634e39c103baab132dad9beef83ceb5}{\(\backslash\)}
+\hyperlink{serialize_8h_ae634e39c103baab132dad9beef83ceb5}{        NCONST\_PTR}(\textcolor{keyword}{this})->SerializationOp(s, 
+      \hyperlink{struct_c_ser_action_serialize}{CSerActionSerialize}(), nType, nVersion);\(\backslash\)
+        return s.size();                                                             \(\backslash\)
+    \}                                                                                \(\backslash\)
+    template<typename Stream>                                                        \(\backslash\)
+    void \hyperlink{serialize_8h_a57a07500f5e1eb9589dc8d57bbd73a18}{Serialize}(Stream& s, \textcolor{keywordtype}{int} nType, \textcolor{keywordtype}{int} nVersion)\textcolor{keyword}{ const }\{                       
+      \hyperlink{serialize_8h_ae634e39c103baab132dad9beef83ceb5}{\(\backslash\)}
+\hyperlink{serialize_8h_ae634e39c103baab132dad9beef83ceb5}{        NCONST\_PTR}(\textcolor{keyword}{this})->SerializationOp(s, 
+      \hyperlink{struct_c_ser_action_serialize}{CSerActionSerialize}(), nType, nVersion);\(\backslash\)
+    \}                                                                                \(\backslash\)
+    template<typename Stream>                                                        \(\backslash\)
+    void \hyperlink{serialize_8h_a6535b70fa93811f2b1df307a424eb317}{Unserialize}(Stream& s, \textcolor{keywordtype}{int} nType, \textcolor{keywordtype}{int} nVersion) \{                           \(\backslash\)
+        SerializationOp(s, \hyperlink{struct_c_ser_action_unserialize}{CSerActionUnserialize}(), nType, nVersion);                \(\backslash\)
+    \}
+\end{DoxyCode}
+Implement three methods for serializable objects. These are actually wrappers over \char`\"{}\+Serialization\+Op\char`\"{} template, which implements the body of each class\textquotesingle{} serialization code. Adding \char`\"{}\+A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S\char`\"{} in the body of the class causes these wrappers to be added as members. 
+
+Definition at line 109 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a9393dd1b6a30ae7fe9cc42240241f741}{}\index{serialize.\+h@{serialize.\+h}!F\+L\+A\+T\+D\+A\+T\+A@{F\+L\+A\+T\+D\+A\+T\+A}}
+\index{F\+L\+A\+T\+D\+A\+T\+A@{F\+L\+A\+T\+D\+A\+T\+A}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{F\+L\+A\+T\+D\+A\+T\+A}]{\setlength{\rightskip}{0pt plus 5cm}\#define F\+L\+A\+T\+D\+A\+T\+A(
+\begin{DoxyParamCaption}
+\item[{}]{obj}
+\end{DoxyParamCaption}
+)~{\bf R\+E\+F}({\bf C\+Flat\+Data}((char$\ast$)\&(obj), (char$\ast$)\&(obj) + sizeof(obj)))}\label{serialize_8h_a9393dd1b6a30ae7fe9cc42240241f741}
+
+
+Definition at line 329 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a78e63691a056ce2368984400605e4f6e}{}\index{serialize.\+h@{serialize.\+h}!L\+I\+M\+I\+T\+E\+D\+\_\+\+S\+T\+R\+I\+N\+G@{L\+I\+M\+I\+T\+E\+D\+\_\+\+S\+T\+R\+I\+N\+G}}
+\index{L\+I\+M\+I\+T\+E\+D\+\_\+\+S\+T\+R\+I\+N\+G@{L\+I\+M\+I\+T\+E\+D\+\_\+\+S\+T\+R\+I\+N\+G}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{L\+I\+M\+I\+T\+E\+D\+\_\+\+S\+T\+R\+I\+N\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+I\+M\+I\+T\+E\+D\+\_\+\+S\+T\+R\+I\+N\+G(
+\begin{DoxyParamCaption}
+\item[{}]{obj, }
+\item[{}]{n}
+\end{DoxyParamCaption}
+)~{\bf R\+E\+F}({\bf Limited\+String}$<$ n $>$({\bf R\+E\+F}(obj)))}\label{serialize_8h_a78e63691a056ce2368984400605e4f6e}
+
+
+Definition at line 331 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a979640faec36eb3983c4f8b44eaac217}{}\index{serialize.\+h@{serialize.\+h}!R\+E\+A\+D\+D\+A\+T\+A@{R\+E\+A\+D\+D\+A\+T\+A}}
+\index{R\+E\+A\+D\+D\+A\+T\+A@{R\+E\+A\+D\+D\+A\+T\+A}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{R\+E\+A\+D\+D\+A\+T\+A}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+E\+A\+D\+D\+A\+T\+A(
+\begin{DoxyParamCaption}
+\item[{}]{s, }
+\item[{}]{obj}
+\end{DoxyParamCaption}
+)~s.\+read((char$\ast$)\&(obj), sizeof(obj))}\label{serialize_8h_a979640faec36eb3983c4f8b44eaac217}
+
+
+Definition at line 128 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a4d7fc7040e01003a01f367b8d90324f1}{}\index{serialize.\+h@{serialize.\+h}!R\+E\+A\+D\+W\+R\+I\+T\+E@{R\+E\+A\+D\+W\+R\+I\+T\+E}}
+\index{R\+E\+A\+D\+W\+R\+I\+T\+E@{R\+E\+A\+D\+W\+R\+I\+T\+E}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{R\+E\+A\+D\+W\+R\+I\+T\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+E\+A\+D\+W\+R\+I\+T\+E(
+\begin{DoxyParamCaption}
+\item[{}]{obj}
+\end{DoxyParamCaption}
+)~(\+::{\bf Ser\+Read\+Write}(s, (obj), n\+Type, n\+Version, ser\+\_\+action))}\label{serialize_8h_a4d7fc7040e01003a01f367b8d90324f1}
+
+
+Definition at line 101 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a1383f2a4c22ffaeba9b2924d90459f76}{}\index{serialize.\+h@{serialize.\+h}!V\+A\+R\+I\+N\+T@{V\+A\+R\+I\+N\+T}}
+\index{V\+A\+R\+I\+N\+T@{V\+A\+R\+I\+N\+T}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{V\+A\+R\+I\+N\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+A\+R\+I\+N\+T(
+\begin{DoxyParamCaption}
+\item[{}]{obj}
+\end{DoxyParamCaption}
+)~{\bf R\+E\+F}({\bf Wrap\+Var\+Int}({\bf R\+E\+F}(obj)))}\label{serialize_8h_a1383f2a4c22ffaeba9b2924d90459f76}
+
+
+Definition at line 330 of file serialize.\+h.
+
+\hypertarget{serialize_8h_ace4c987b030b7520a3a297fc91478d4e}{}\index{serialize.\+h@{serialize.\+h}!W\+R\+I\+T\+E\+D\+A\+T\+A@{W\+R\+I\+T\+E\+D\+A\+T\+A}}
+\index{W\+R\+I\+T\+E\+D\+A\+T\+A@{W\+R\+I\+T\+E\+D\+A\+T\+A}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{W\+R\+I\+T\+E\+D\+A\+T\+A}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+R\+I\+T\+E\+D\+A\+T\+A(
+\begin{DoxyParamCaption}
+\item[{}]{s, }
+\item[{}]{obj}
+\end{DoxyParamCaption}
+)~s.\+write((char$\ast$)\&(obj), sizeof(obj))}\label{serialize_8h_ace4c987b030b7520a3a297fc91478d4e}
+
+
+Definition at line 127 of file serialize.\+h.
+
+
+
+\subsection{Typedef Documentation}
+\hypertarget{serialize_8h_a77935f92ff5ba1d71d692166f6ce0c1b}{}\index{serialize.\+h@{serialize.\+h}!C\+Serialize\+Data@{C\+Serialize\+Data}}
+\index{C\+Serialize\+Data@{C\+Serialize\+Data}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{C\+Serialize\+Data}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\+::vector$<$char, {\bf zero\+\_\+after\+\_\+free\+\_\+allocator}$<$char$>$ $>$ {\bf C\+Serialize\+Data}}\label{serialize_8h_a77935f92ff5ba1d71d692166f6ce0c1b}
+
+
+Definition at line 836 of file serialize.\+h.
+
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{serialize_8h_a6b7b47dd702d9e331586d485013fd1ea}{}\subsubsection[{anonymous enum}]{\setlength{\rightskip}{0pt plus 5cm}anonymous enum}\label{serialize_8h_a6b7b47dd702d9e331586d485013fd1ea}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{S\+E\+R\+\_\+\+N\+E\+T\+W\+O\+R\+K@{S\+E\+R\+\_\+\+N\+E\+T\+W\+O\+R\+K}!serialize.\+h@{serialize.\+h}}\index{serialize.\+h@{serialize.\+h}!S\+E\+R\+\_\+\+N\+E\+T\+W\+O\+R\+K@{S\+E\+R\+\_\+\+N\+E\+T\+W\+O\+R\+K}}\item[{\em 
+\hypertarget{serialize_8h_a6b7b47dd702d9e331586d485013fd1eaa652754eeaf79fba4fcf4c18597a6961c}{}S\+E\+R\+\_\+\+N\+E\+T\+W\+O\+R\+K\label{serialize_8h_a6b7b47dd702d9e331586d485013fd1eaa652754eeaf79fba4fcf4c18597a6961c}
+}]\index{S\+E\+R\+\_\+\+D\+I\+S\+K@{S\+E\+R\+\_\+\+D\+I\+S\+K}!serialize.\+h@{serialize.\+h}}\index{serialize.\+h@{serialize.\+h}!S\+E\+R\+\_\+\+D\+I\+S\+K@{S\+E\+R\+\_\+\+D\+I\+S\+K}}\item[{\em 
+\hypertarget{serialize_8h_a6b7b47dd702d9e331586d485013fd1eaa34949680c53028d35a449bf88b3c329d}{}S\+E\+R\+\_\+\+D\+I\+S\+K\label{serialize_8h_a6b7b47dd702d9e331586d485013fd1eaa34949680c53028d35a449bf88b3c329d}
+}]\index{S\+E\+R\+\_\+\+G\+E\+T\+H\+A\+S\+H@{S\+E\+R\+\_\+\+G\+E\+T\+H\+A\+S\+H}!serialize.\+h@{serialize.\+h}}\index{serialize.\+h@{serialize.\+h}!S\+E\+R\+\_\+\+G\+E\+T\+H\+A\+S\+H@{S\+E\+R\+\_\+\+G\+E\+T\+H\+A\+S\+H}}\item[{\em 
+\hypertarget{serialize_8h_a6b7b47dd702d9e331586d485013fd1eaaca6c7596d50ce42f28b5b97f39ba178a}{}S\+E\+R\+\_\+\+G\+E\+T\+H\+A\+S\+H\label{serialize_8h_a6b7b47dd702d9e331586d485013fd1eaaca6c7596d50ce42f28b5b97f39ba178a}
+}]\index{S\+E\+R\+\_\+\+S\+K\+I\+P\+S\+I\+G@{S\+E\+R\+\_\+\+S\+K\+I\+P\+S\+I\+G}!serialize.\+h@{serialize.\+h}}\index{serialize.\+h@{serialize.\+h}!S\+E\+R\+\_\+\+S\+K\+I\+P\+S\+I\+G@{S\+E\+R\+\_\+\+S\+K\+I\+P\+S\+I\+G}}\item[{\em 
+\hypertarget{serialize_8h_a6b7b47dd702d9e331586d485013fd1eaa0d7b459667b662cab8c9a95be7bc72f0}{}S\+E\+R\+\_\+\+S\+K\+I\+P\+S\+I\+G\label{serialize_8h_a6b7b47dd702d9e331586d485013fd1eaa0d7b459667b662cab8c9a95be7bc72f0}
+}]\index{S\+E\+R\+\_\+\+B\+L\+O\+C\+K\+H\+E\+A\+D\+E\+R\+O\+N\+L\+Y@{S\+E\+R\+\_\+\+B\+L\+O\+C\+K\+H\+E\+A\+D\+E\+R\+O\+N\+L\+Y}!serialize.\+h@{serialize.\+h}}\index{serialize.\+h@{serialize.\+h}!S\+E\+R\+\_\+\+B\+L\+O\+C\+K\+H\+E\+A\+D\+E\+R\+O\+N\+L\+Y@{S\+E\+R\+\_\+\+B\+L\+O\+C\+K\+H\+E\+A\+D\+E\+R\+O\+N\+L\+Y}}\item[{\em 
+\hypertarget{serialize_8h_a6b7b47dd702d9e331586d485013fd1eaa4f355599a80a433c2b6d27f236eb420a}{}S\+E\+R\+\_\+\+B\+L\+O\+C\+K\+H\+E\+A\+D\+E\+R\+O\+N\+L\+Y\label{serialize_8h_a6b7b47dd702d9e331586d485013fd1eaa4f355599a80a433c2b6d27f236eb420a}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 86 of file serialize.\+h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{serialize_8h_a19966d167c527d2be493ac9aba27c249}{}\index{serialize.\+h@{serialize.\+h}!begin\+\_\+ptr@{begin\+\_\+ptr}}
+\index{begin\+\_\+ptr@{begin\+\_\+ptr}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{begin\+\_\+ptr}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class T\+Al $>$ T$\ast$ begin\+\_\+ptr (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ T, T\+Al $>$ \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a19966d167c527d2be493ac9aba27c249}
+Get begin pointer of vector (non-\/const version). \begin{DoxyNote}{Note}
+These functions avoid the undefined case of indexing into an empty vector, as well as that of indexing after the end of the vector. 
+\end{DoxyNote}
+
+
+Definition at line 57 of file serialize.\+h.
+
+\hypertarget{serialize_8h_ac542eee802a7ab8054a1c4cae6061296}{}\index{serialize.\+h@{serialize.\+h}!begin\+\_\+ptr@{begin\+\_\+ptr}}
+\index{begin\+\_\+ptr@{begin\+\_\+ptr}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{begin\+\_\+ptr}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class T\+Al $>$ const T$\ast$ begin\+\_\+ptr (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ T, T\+Al $>$ \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_ac542eee802a7ab8054a1c4cae6061296}
+Get begin pointer of vector (const version) 
+
+Definition at line 63 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a9a94418dd6160d4dfd04aa4ef07219f7}{}\index{serialize.\+h@{serialize.\+h}!end\+\_\+ptr@{end\+\_\+ptr}}
+\index{end\+\_\+ptr@{end\+\_\+ptr}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{end\+\_\+ptr}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class T\+Al $>$ T$\ast$ end\+\_\+ptr (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ T, T\+Al $>$ \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a9a94418dd6160d4dfd04aa4ef07219f7}
+Get end pointer of vector (non-\/const version) 
+
+Definition at line 69 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a75886e8bb81b99c85327544f42425058}{}\index{serialize.\+h@{serialize.\+h}!end\+\_\+ptr@{end\+\_\+ptr}}
+\index{end\+\_\+ptr@{end\+\_\+ptr}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{end\+\_\+ptr}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T , class T\+Al $>$ const T$\ast$ end\+\_\+ptr (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ T, T\+Al $>$ \&}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a75886e8bb81b99c85327544f42425058}
+Get end pointer of vector (const version) 
+
+Definition at line 75 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a48239e478ae730373d1984fe304ca025}{}\index{serialize.\+h@{serialize.\+h}!Get\+Serialize\+Size@{Get\+Serialize\+Size}}
+\index{Get\+Serialize\+Size@{Get\+Serialize\+Size}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Get\+Serialize\+Size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Get\+Serialize\+Size (
+\begin{DoxyParamCaption}
+\item[{char}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a48239e478ae730373d1984fe304ca025}
+
+
+Definition at line 130 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a89340ca6c5c4813911e75b037dae5c57}{}\index{serialize.\+h@{serialize.\+h}!Get\+Serialize\+Size@{Get\+Serialize\+Size}}
+\index{Get\+Serialize\+Size@{Get\+Serialize\+Size}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Get\+Serialize\+Size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Get\+Serialize\+Size (
+\begin{DoxyParamCaption}
+\item[{signed char}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a89340ca6c5c4813911e75b037dae5c57}
+
+
+Definition at line 131 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a7e67cdca5b5c7a2876cc4ac1ad9e5d21}{}\index{serialize.\+h@{serialize.\+h}!Get\+Serialize\+Size@{Get\+Serialize\+Size}}
+\index{Get\+Serialize\+Size@{Get\+Serialize\+Size}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Get\+Serialize\+Size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Get\+Serialize\+Size (
+\begin{DoxyParamCaption}
+\item[{unsigned char}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a7e67cdca5b5c7a2876cc4ac1ad9e5d21}
+
+
+Definition at line 132 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a38b194303f4eea667c23a17d0c0888bc}{}\index{serialize.\+h@{serialize.\+h}!Get\+Serialize\+Size@{Get\+Serialize\+Size}}
+\index{Get\+Serialize\+Size@{Get\+Serialize\+Size}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Get\+Serialize\+Size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Get\+Serialize\+Size (
+\begin{DoxyParamCaption}
+\item[{signed short}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a38b194303f4eea667c23a17d0c0888bc}
+
+
+Definition at line 133 of file serialize.\+h.
+
+\hypertarget{serialize_8h_ae67cb45d7bd13659118d8cbc5ee28d26}{}\index{serialize.\+h@{serialize.\+h}!Get\+Serialize\+Size@{Get\+Serialize\+Size}}
+\index{Get\+Serialize\+Size@{Get\+Serialize\+Size}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Get\+Serialize\+Size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Get\+Serialize\+Size (
+\begin{DoxyParamCaption}
+\item[{unsigned short}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_ae67cb45d7bd13659118d8cbc5ee28d26}
+
+
+Definition at line 134 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a60fbfe51f8d379aa7e63b2ebffb0b727}{}\index{serialize.\+h@{serialize.\+h}!Get\+Serialize\+Size@{Get\+Serialize\+Size}}
+\index{Get\+Serialize\+Size@{Get\+Serialize\+Size}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Get\+Serialize\+Size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Get\+Serialize\+Size (
+\begin{DoxyParamCaption}
+\item[{signed int}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a60fbfe51f8d379aa7e63b2ebffb0b727}
+
+
+Definition at line 135 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a3b76fb86c0b530430df97f5019393fc4}{}\index{serialize.\+h@{serialize.\+h}!Get\+Serialize\+Size@{Get\+Serialize\+Size}}
+\index{Get\+Serialize\+Size@{Get\+Serialize\+Size}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Get\+Serialize\+Size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Get\+Serialize\+Size (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a3b76fb86c0b530430df97f5019393fc4}
+
+
+Definition at line 136 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a17aa6a3c676b623db0024ab4f6f82e8d}{}\index{serialize.\+h@{serialize.\+h}!Get\+Serialize\+Size@{Get\+Serialize\+Size}}
+\index{Get\+Serialize\+Size@{Get\+Serialize\+Size}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Get\+Serialize\+Size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Get\+Serialize\+Size (
+\begin{DoxyParamCaption}
+\item[{signed long}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a17aa6a3c676b623db0024ab4f6f82e8d}
+
+
+Definition at line 137 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a8b01f8d853d363005c24e22a14f929d8}{}\index{serialize.\+h@{serialize.\+h}!Get\+Serialize\+Size@{Get\+Serialize\+Size}}
+\index{Get\+Serialize\+Size@{Get\+Serialize\+Size}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Get\+Serialize\+Size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Get\+Serialize\+Size (
+\begin{DoxyParamCaption}
+\item[{unsigned long}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a8b01f8d853d363005c24e22a14f929d8}
+
+
+Definition at line 138 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a9593ac8e2ea7fb7831b9a3a2ef23028d}{}\index{serialize.\+h@{serialize.\+h}!Get\+Serialize\+Size@{Get\+Serialize\+Size}}
+\index{Get\+Serialize\+Size@{Get\+Serialize\+Size}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Get\+Serialize\+Size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Get\+Serialize\+Size (
+\begin{DoxyParamCaption}
+\item[{signed long long}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a9593ac8e2ea7fb7831b9a3a2ef23028d}
+
+
+Definition at line 139 of file serialize.\+h.
+
+\hypertarget{serialize_8h_afee2c07aa76bc1738be2f4db53a905d5}{}\index{serialize.\+h@{serialize.\+h}!Get\+Serialize\+Size@{Get\+Serialize\+Size}}
+\index{Get\+Serialize\+Size@{Get\+Serialize\+Size}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Get\+Serialize\+Size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Get\+Serialize\+Size (
+\begin{DoxyParamCaption}
+\item[{unsigned long long}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_afee2c07aa76bc1738be2f4db53a905d5}
+
+
+Definition at line 140 of file serialize.\+h.
+
+\hypertarget{serialize_8h_ab3efcc232be0a7c668bf0f44bf033265}{}\index{serialize.\+h@{serialize.\+h}!Get\+Serialize\+Size@{Get\+Serialize\+Size}}
+\index{Get\+Serialize\+Size@{Get\+Serialize\+Size}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Get\+Serialize\+Size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Get\+Serialize\+Size (
+\begin{DoxyParamCaption}
+\item[{float}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_ab3efcc232be0a7c668bf0f44bf033265}
+
+
+Definition at line 141 of file serialize.\+h.
+
+\hypertarget{serialize_8h_ad0b9f055f57604e77b6efe1a20b90069}{}\index{serialize.\+h@{serialize.\+h}!Get\+Serialize\+Size@{Get\+Serialize\+Size}}
+\index{Get\+Serialize\+Size@{Get\+Serialize\+Size}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Get\+Serialize\+Size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Get\+Serialize\+Size (
+\begin{DoxyParamCaption}
+\item[{double}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_ad0b9f055f57604e77b6efe1a20b90069}
+
+
+Definition at line 142 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a6eb6e1d345d527f1826a8d0731d06ccb}{}\index{serialize.\+h@{serialize.\+h}!Get\+Serialize\+Size@{Get\+Serialize\+Size}}
+\index{Get\+Serialize\+Size@{Get\+Serialize\+Size}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Get\+Serialize\+Size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Get\+Serialize\+Size (
+\begin{DoxyParamCaption}
+\item[{bool}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a6eb6e1d345d527f1826a8d0731d06ccb}
+
+
+Definition at line 172 of file serialize.\+h.
+
+\hypertarget{serialize_8h_af2f7bd0287726e890b7d465e09fd7f73}{}\index{serialize.\+h@{serialize.\+h}!Get\+Serialize\+Size@{Get\+Serialize\+Size}}
+\index{Get\+Serialize\+Size@{Get\+Serialize\+Size}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Get\+Serialize\+Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename C $>$ unsigned int Get\+Serialize\+Size (
+\begin{DoxyParamCaption}
+\item[{const std\+::basic\+\_\+string$<$ C $>$ \&}]{str, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_af2f7bd0287726e890b7d465e09fd7f73}
+
+
+Definition at line 508 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a335ff86321a72847697b886ec6a73b83}{}\index{serialize.\+h@{serialize.\+h}!Get\+Serialize\+Size@{Get\+Serialize\+Size}}
+\index{Get\+Serialize\+Size@{Get\+Serialize\+Size}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Get\+Serialize\+Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename A $>$ unsigned int Get\+Serialize\+Size (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ T, A $>$ \&}]{v, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a335ff86321a72847697b886ec6a73b83}
+
+
+Definition at line 549 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a111324194564a4e799f5b1ac9b0932eb}{}\index{serialize.\+h@{serialize.\+h}!Get\+Serialize\+Size@{Get\+Serialize\+Size}}
+\index{Get\+Serialize\+Size@{Get\+Serialize\+Size}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Get\+Serialize\+Size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Get\+Serialize\+Size (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Script} \&}]{v, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a111324194564a4e799f5b1ac9b0932eb}
+
+
+Definition at line 621 of file serialize.\+h.
+
+\hypertarget{serialize_8h_ad79f12b1ba05119c0d2460699dcf01d2}{}\index{serialize.\+h@{serialize.\+h}!Get\+Serialize\+Size@{Get\+Serialize\+Size}}
+\index{Get\+Serialize\+Size@{Get\+Serialize\+Size}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Get\+Serialize\+Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename K , typename T $>$ unsigned int Get\+Serialize\+Size (
+\begin{DoxyParamCaption}
+\item[{const std\+::pair$<$ K, T $>$ \&}]{item, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_ad79f12b1ba05119c0d2460699dcf01d2}
+
+
+Definition at line 642 of file serialize.\+h.
+
+\hypertarget{serialize_8h_ac1fabe16fa95a50b78866fa9f2eb633a}{}\index{serialize.\+h@{serialize.\+h}!Get\+Serialize\+Size@{Get\+Serialize\+Size}}
+\index{Get\+Serialize\+Size@{Get\+Serialize\+Size}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Get\+Serialize\+Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T0 , typename T1 , typename T2 $>$ unsigned int Get\+Serialize\+Size (
+\begin{DoxyParamCaption}
+\item[{const boost\+::tuple$<$ T0, T1, T2 $>$ \&}]{item, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_ac1fabe16fa95a50b78866fa9f2eb633a}
+
+
+Definition at line 665 of file serialize.\+h.
+
+\hypertarget{serialize_8h_acffc58951c084ec48df3d3a87d3e398a}{}\index{serialize.\+h@{serialize.\+h}!Get\+Serialize\+Size@{Get\+Serialize\+Size}}
+\index{Get\+Serialize\+Size@{Get\+Serialize\+Size}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Get\+Serialize\+Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T0 , typename T1 , typename T2 , typename T3 $>$ unsigned int Get\+Serialize\+Size (
+\begin{DoxyParamCaption}
+\item[{const boost\+::tuple$<$ T0, T1, T2, T3 $>$ \&}]{item, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_acffc58951c084ec48df3d3a87d3e398a}
+
+
+Definition at line 694 of file serialize.\+h.
+
+\hypertarget{serialize_8h_af3b9d5bc8cc267300cf8ca893c51929e}{}\index{serialize.\+h@{serialize.\+h}!Get\+Serialize\+Size@{Get\+Serialize\+Size}}
+\index{Get\+Serialize\+Size@{Get\+Serialize\+Size}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Get\+Serialize\+Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename K , typename T , typename Pred , typename A $>$ unsigned int Get\+Serialize\+Size (
+\begin{DoxyParamCaption}
+\item[{const std\+::map$<$ K, T, Pred, A $>$ \&}]{m, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_af3b9d5bc8cc267300cf8ca893c51929e}
+
+
+Definition at line 726 of file serialize.\+h.
+
+\hypertarget{serialize_8h_af597c56aff2d6291fdc3c56cac1551b6}{}\index{serialize.\+h@{serialize.\+h}!Get\+Serialize\+Size@{Get\+Serialize\+Size}}
+\index{Get\+Serialize\+Size@{Get\+Serialize\+Size}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Get\+Serialize\+Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename K , typename Pred , typename A $>$ unsigned int Get\+Serialize\+Size (
+\begin{DoxyParamCaption}
+\item[{const std\+::set$<$ K, Pred, A $>$ \&}]{m, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_af597c56aff2d6291fdc3c56cac1551b6}
+
+
+Definition at line 760 of file serialize.\+h.
+
+\hypertarget{serialize_8h_aac816a6c7028a0c84c501ff199289e02}{}\index{serialize.\+h@{serialize.\+h}!Get\+Serialize\+Size@{Get\+Serialize\+Size}}
+\index{Get\+Serialize\+Size@{Get\+Serialize\+Size}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Get\+Serialize\+Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ unsigned int Get\+Serialize\+Size (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{a, }
+\item[{long}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_aac816a6c7028a0c84c501ff199289e02}
+
+
+Definition at line 487 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a3bbd240ce556fd6d0006f77012177cdf}{}\index{serialize.\+h@{serialize.\+h}!Get\+Serialize\+Size\+\_\+impl@{Get\+Serialize\+Size\+\_\+impl}}
+\index{Get\+Serialize\+Size\+\_\+impl@{Get\+Serialize\+Size\+\_\+impl}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Get\+Serialize\+Size\+\_\+impl}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename A $>$ unsigned int Get\+Serialize\+Size\+\_\+impl (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ T, A $>$ \&}]{v, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version, }
+\item[{const boost\+::true\+\_\+type \&}]{}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_a3bbd240ce556fd6d0006f77012177cdf}
+\hypertarget{serialize_8h_a329d6980a25c10b1e34913ac11329fde}{}\index{serialize.\+h@{serialize.\+h}!Get\+Serialize\+Size\+\_\+impl@{Get\+Serialize\+Size\+\_\+impl}}
+\index{Get\+Serialize\+Size\+\_\+impl@{Get\+Serialize\+Size\+\_\+impl}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Get\+Serialize\+Size\+\_\+impl}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename A $>$ unsigned int Get\+Serialize\+Size\+\_\+impl (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ T, A $>$ \&}]{v, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version, }
+\item[{const boost\+::false\+\_\+type \&}]{}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_a329d6980a25c10b1e34913ac11329fde}
+\hypertarget{serialize_8h_a35c2e36c213f8331ad0cc3c03f88e8d1}{}\index{serialize.\+h@{serialize.\+h}!Get\+Serialize\+Size\+\_\+impl@{Get\+Serialize\+Size\+\_\+impl}}
+\index{Get\+Serialize\+Size\+\_\+impl@{Get\+Serialize\+Size\+\_\+impl}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Get\+Serialize\+Size\+\_\+impl}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename A $>$ unsigned int Get\+Serialize\+Size\+\_\+impl (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ T, A $>$ \&}]{v, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version, }
+\item[{const unsigned char \&}]{}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_a35c2e36c213f8331ad0cc3c03f88e8d1}
+vector 
+
+Definition at line 534 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a0b138a9106a3690113f0797571843022}{}\index{serialize.\+h@{serialize.\+h}!Get\+Serialize\+Size\+\_\+impl@{Get\+Serialize\+Size\+\_\+impl}}
+\index{Get\+Serialize\+Size\+\_\+impl@{Get\+Serialize\+Size\+\_\+impl}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Get\+Serialize\+Size\+\_\+impl}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename A , typename V $>$ unsigned int Get\+Serialize\+Size\+\_\+impl (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ T, A $>$ \&}]{v, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version, }
+\item[{const V \&}]{}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_a0b138a9106a3690113f0797571843022}
+
+
+Definition at line 540 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a404beecbf8d7aec8d2cdac3cbb71e808}{}\index{serialize.\+h@{serialize.\+h}!Get\+Size\+Of\+Compact\+Size@{Get\+Size\+Of\+Compact\+Size}}
+\index{Get\+Size\+Of\+Compact\+Size@{Get\+Size\+Of\+Compact\+Size}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Get\+Size\+Of\+Compact\+Size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Get\+Size\+Of\+Compact\+Size (
+\begin{DoxyParamCaption}
+\item[{{\bf uint64\+\_\+t}}]{n\+Size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a404beecbf8d7aec8d2cdac3cbb71e808}
+
+
+Definition at line 183 of file serialize.\+h.
+
+\hypertarget{serialize_8h_aecf191cfbaec6bfce1292f7f9c3dc7ba}{}\index{serialize.\+h@{serialize.\+h}!Get\+Size\+Of\+Var\+Int@{Get\+Size\+Of\+Var\+Int}}
+\index{Get\+Size\+Of\+Var\+Int@{Get\+Size\+Of\+Var\+Int}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Get\+Size\+Of\+Var\+Int}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename I $>$ unsigned int Get\+Size\+Of\+Var\+Int (
+\begin{DoxyParamCaption}
+\item[{I}]{n}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_aecf191cfbaec6bfce1292f7f9c3dc7ba}
+
+
+Definition at line 285 of file serialize.\+h.
+
+\hypertarget{serialize_8h_ae634e39c103baab132dad9beef83ceb5}{}\index{serialize.\+h@{serialize.\+h}!N\+C\+O\+N\+S\+T\+\_\+\+P\+T\+R@{N\+C\+O\+N\+S\+T\+\_\+\+P\+T\+R}}
+\index{N\+C\+O\+N\+S\+T\+\_\+\+P\+T\+R@{N\+C\+O\+N\+S\+T\+\_\+\+P\+T\+R}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{N\+C\+O\+N\+S\+T\+\_\+\+P\+T\+R}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T$\ast$ N\+C\+O\+N\+S\+T\+\_\+\+P\+T\+R (
+\begin{DoxyParamCaption}
+\item[{const T $\ast$}]{val}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_ae634e39c103baab132dad9beef83ceb5}
+Used to acquire a non-\/const pointer \char`\"{}this\char`\"{} to generate bodies of const serialization operations from a template 
+
+Definition at line 46 of file serialize.\+h.
+
+\hypertarget{serialize_8h_ae3fd928949b7361accfec79c314aa90f}{}\index{serialize.\+h@{serialize.\+h}!Read\+Compact\+Size@{Read\+Compact\+Size}}
+\index{Read\+Compact\+Size@{Read\+Compact\+Size}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Read\+Compact\+Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ {\bf uint64\+\_\+t} Read\+Compact\+Size (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{is}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_ae3fd928949b7361accfec79c314aa90f}
+
+
+Definition at line 224 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a6f8a5966f156fb3d7e4acc7121eea648}{}\index{serialize.\+h@{serialize.\+h}!Read\+Var\+Int@{Read\+Var\+Int}}
+\index{Read\+Var\+Int@{Read\+Var\+Int}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Read\+Var\+Int}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename I $>$ I Read\+Var\+Int (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{is}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_a6f8a5966f156fb3d7e4acc7121eea648}
+
+
+Definition at line 315 of file serialize.\+h.
+
+\hypertarget{serialize_8h_abd1caa7e45d4ba31b7dfdda9949c3b05}{}\index{serialize.\+h@{serialize.\+h}!R\+E\+F@{R\+E\+F}}
+\index{R\+E\+F@{R\+E\+F}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{R\+E\+F}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T\& R\+E\+F (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{val}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_abd1caa7e45d4ba31b7dfdda9949c3b05}
+
+
+Definition at line 36 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a57a07500f5e1eb9589dc8d57bbd73a18}{}\index{serialize.\+h@{serialize.\+h}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Serialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{char}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a57a07500f5e1eb9589dc8d57bbd73a18}
+
+
+Definition at line 144 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a5d531916ca0be3e68a7699c5d54458e3}{}\index{serialize.\+h@{serialize.\+h}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Serialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{signed char}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a5d531916ca0be3e68a7699c5d54458e3}
+
+
+Definition at line 145 of file serialize.\+h.
+
+\hypertarget{serialize_8h_aa4dffb2013e9982474abb195374a1170}{}\index{serialize.\+h@{serialize.\+h}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Serialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{unsigned char}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_aa4dffb2013e9982474abb195374a1170}
+
+
+Definition at line 146 of file serialize.\+h.
+
+\hypertarget{serialize_8h_afa4b9fe12b2c57f916faf0ccb6380b4d}{}\index{serialize.\+h@{serialize.\+h}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Serialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{signed short}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_afa4b9fe12b2c57f916faf0ccb6380b4d}
+
+
+Definition at line 147 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a772fde82dfb5ff4f38d74e8200221578}{}\index{serialize.\+h@{serialize.\+h}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Serialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{unsigned short}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a772fde82dfb5ff4f38d74e8200221578}
+
+
+Definition at line 148 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a9136a9754e353ddf4c3d5cc9b5fcccf1}{}\index{serialize.\+h@{serialize.\+h}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Serialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{signed int}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a9136a9754e353ddf4c3d5cc9b5fcccf1}
+
+
+Definition at line 149 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a4c7a12746abd3d5f41f9aefe97257e7e}{}\index{serialize.\+h@{serialize.\+h}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Serialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{unsigned int}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a4c7a12746abd3d5f41f9aefe97257e7e}
+
+
+Definition at line 150 of file serialize.\+h.
+
+\hypertarget{serialize_8h_afc49d4e1b716e8acc02f9c5d7b1f2b78}{}\index{serialize.\+h@{serialize.\+h}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Serialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{signed long}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_afc49d4e1b716e8acc02f9c5d7b1f2b78}
+
+
+Definition at line 151 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a34517393955fc4e15ebc5563e9b6382f}{}\index{serialize.\+h@{serialize.\+h}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Serialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{unsigned long}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a34517393955fc4e15ebc5563e9b6382f}
+
+
+Definition at line 152 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a7625fb2eae7d26763340602cf33c54f7}{}\index{serialize.\+h@{serialize.\+h}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Serialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{signed long long}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a7625fb2eae7d26763340602cf33c54f7}
+
+
+Definition at line 153 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a90c9c43b91ca1bb2771868d3816d960b}{}\index{serialize.\+h@{serialize.\+h}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Serialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{unsigned long long}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a90c9c43b91ca1bb2771868d3816d960b}
+
+
+Definition at line 154 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a8b8f1dc74e379a9d3308d8d22017e482}{}\index{serialize.\+h@{serialize.\+h}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Serialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{float}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a8b8f1dc74e379a9d3308d8d22017e482}
+
+
+Definition at line 155 of file serialize.\+h.
+
+\hypertarget{serialize_8h_aa261de518247991286be0e2dc515982d}{}\index{serialize.\+h@{serialize.\+h}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Serialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{double}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_aa261de518247991286be0e2dc515982d}
+
+
+Definition at line 156 of file serialize.\+h.
+
+\hypertarget{serialize_8h_aac3cce93274829a6d598f85f17d09bf0}{}\index{serialize.\+h@{serialize.\+h}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Serialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{bool}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_aac3cce93274829a6d598f85f17d09bf0}
+
+
+Definition at line 173 of file serialize.\+h.
+
+\hypertarget{serialize_8h_adee5a9a0b11fd58c829855619c222ab7}{}\index{serialize.\+h@{serialize.\+h}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename C $>$ void Serialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{os, }
+\item[{const std\+::basic\+\_\+string$<$ C $>$ \&}]{str, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_adee5a9a0b11fd58c829855619c222ab7}
+
+
+Definition at line 514 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a0d1c9a136a2cc812c3080bd65a20f63c}{}\index{serialize.\+h@{serialize.\+h}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename T , typename A $>$ void Serialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{os, }
+\item[{const std\+::vector$<$ T, A $>$ \&}]{v, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a0d1c9a136a2cc812c3080bd65a20f63c}
+
+
+Definition at line 572 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a4abc2780ddc1498c4a390f1fb88cfea8}{}\index{serialize.\+h@{serialize.\+h}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Serialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{os, }
+\item[{const {\bf C\+Script} \&}]{v, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_a4abc2780ddc1498c4a390f1fb88cfea8}
+
+
+Definition at line 627 of file serialize.\+h.
+
+\hypertarget{serialize_8h_ab485c675206b85cf5b2800ce1d3ca2c2}{}\index{serialize.\+h@{serialize.\+h}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename K , typename T $>$ void Serialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{os, }
+\item[{const std\+::pair$<$ K, T $>$ \&}]{item, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_ab485c675206b85cf5b2800ce1d3ca2c2}
+
+
+Definition at line 648 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a499ddf572293fe1c114b2c1b1c25c5e6}{}\index{serialize.\+h@{serialize.\+h}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename T0 , typename T1 , typename T2 $>$ void Serialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{os, }
+\item[{const boost\+::tuple$<$ T0, T1, T2 $>$ \&}]{item, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_a499ddf572293fe1c114b2c1b1c25c5e6}
+
+
+Definition at line 675 of file serialize.\+h.
+
+\hypertarget{serialize_8h_ae185a8090e06661c56a897c09cdf39d1}{}\index{serialize.\+h@{serialize.\+h}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename T0 , typename T1 , typename T2 , typename T3 $>$ void Serialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{os, }
+\item[{const boost\+::tuple$<$ T0, T1, T2, T3 $>$ \&}]{item, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_ae185a8090e06661c56a897c09cdf39d1}
+
+
+Definition at line 705 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a54baab64cf0b60a61c712546dab7305a}{}\index{serialize.\+h@{serialize.\+h}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename K , typename T , typename Pred , typename A $>$ void Serialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{os, }
+\item[{const std\+::map$<$ K, T, Pred, A $>$ \&}]{m, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_a54baab64cf0b60a61c712546dab7305a}
+
+
+Definition at line 735 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a05fbc0a7955ac4f4d7082870474658d5}{}\index{serialize.\+h@{serialize.\+h}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename K , typename Pred , typename A $>$ void Serialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{os, }
+\item[{const std\+::set$<$ K, Pred, A $>$ \&}]{m, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_a05fbc0a7955ac4f4d7082870474658d5}
+
+
+Definition at line 769 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a86951da9392b208f3e0c322d6569af14}{}\index{serialize.\+h@{serialize.\+h}!Serialize@{Serialize}}
+\index{Serialize@{Serialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Serialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename T $>$ void Serialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{os, }
+\item[{const T \&}]{a, }
+\item[{long}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a86951da9392b208f3e0c322d6569af14}
+
+
+Definition at line 493 of file serialize.\+h.
+
+\hypertarget{serialize_8h_afb0ab8a2a3c9e6accec44b9310665e75}{}\index{serialize.\+h@{serialize.\+h}!Serialize\+\_\+impl@{Serialize\+\_\+impl}}
+\index{Serialize\+\_\+impl@{Serialize\+\_\+impl}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Serialize\+\_\+impl}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename T , typename A $>$ void Serialize\+\_\+impl (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{os, }
+\item[{const std\+::vector$<$ T, A $>$ \&}]{v, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version, }
+\item[{const boost\+::true\+\_\+type \&}]{}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_afb0ab8a2a3c9e6accec44b9310665e75}
+\hypertarget{serialize_8h_aafb4b2795cb998fdcf76b19a959a1ae1}{}\index{serialize.\+h@{serialize.\+h}!Serialize\+\_\+impl@{Serialize\+\_\+impl}}
+\index{Serialize\+\_\+impl@{Serialize\+\_\+impl}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Serialize\+\_\+impl}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename T , typename A $>$ void Serialize\+\_\+impl (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{os, }
+\item[{const std\+::vector$<$ T, A $>$ \&}]{v, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version, }
+\item[{const boost\+::false\+\_\+type \&}]{}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_aafb4b2795cb998fdcf76b19a959a1ae1}
+\hypertarget{serialize_8h_a4267253fd8a7173f0a9e6f642ac6538d}{}\index{serialize.\+h@{serialize.\+h}!Serialize\+\_\+impl@{Serialize\+\_\+impl}}
+\index{Serialize\+\_\+impl@{Serialize\+\_\+impl}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Serialize\+\_\+impl}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename T , typename A $>$ void Serialize\+\_\+impl (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{os, }
+\item[{const std\+::vector$<$ T, A $>$ \&}]{v, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version, }
+\item[{const unsigned char \&}]{}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_a4267253fd8a7173f0a9e6f642ac6538d}
+
+
+Definition at line 556 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a5ad2f90be2a49996f40cabf489e87cc3}{}\index{serialize.\+h@{serialize.\+h}!Serialize\+\_\+impl@{Serialize\+\_\+impl}}
+\index{Serialize\+\_\+impl@{Serialize\+\_\+impl}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Serialize\+\_\+impl}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename T , typename A , typename V $>$ void Serialize\+\_\+impl (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{os, }
+\item[{const std\+::vector$<$ T, A $>$ \&}]{v, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version, }
+\item[{const V \&}]{}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_a5ad2f90be2a49996f40cabf489e87cc3}
+
+
+Definition at line 564 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a9cd643cfa4ca2da679b6f9843bf319aa}{}\index{serialize.\+h@{serialize.\+h}!Ser\+Read\+Write@{Ser\+Read\+Write}}
+\index{Ser\+Read\+Write@{Ser\+Read\+Write}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Ser\+Read\+Write}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename T $>$ unsigned int Ser\+Read\+Write (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{const T \&}]{obj, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version, }
+\item[{{\bf C\+Ser\+Action\+Get\+Serialize\+Size}}]{ser\+\_\+action}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a9cd643cfa4ca2da679b6f9843bf319aa}
+
+
+Definition at line 811 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a776251b2973c5c9242ac3478ac1512a5}{}\index{serialize.\+h@{serialize.\+h}!Ser\+Read\+Write@{Ser\+Read\+Write}}
+\index{Ser\+Read\+Write@{Ser\+Read\+Write}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Ser\+Read\+Write}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename T $>$ unsigned int Ser\+Read\+Write (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{const T \&}]{obj, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version, }
+\item[{{\bf C\+Ser\+Action\+Serialize}}]{ser\+\_\+action}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a776251b2973c5c9242ac3478ac1512a5}
+
+
+Definition at line 817 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a3f746e0ed1975fa9447ef30050218aa9}{}\index{serialize.\+h@{serialize.\+h}!Ser\+Read\+Write@{Ser\+Read\+Write}}
+\index{Ser\+Read\+Write@{Ser\+Read\+Write}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Ser\+Read\+Write}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename T $>$ unsigned int Ser\+Read\+Write (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{T \&}]{obj, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version, }
+\item[{{\bf C\+Ser\+Action\+Unserialize}}]{ser\+\_\+action}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a3f746e0ed1975fa9447ef30050218aa9}
+
+
+Definition at line 824 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a6535b70fa93811f2b1df307a424eb317}{}\index{serialize.\+h@{serialize.\+h}!Unserialize@{Unserialize}}
+\index{Unserialize@{Unserialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Unserialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Unserialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{char \&}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a6535b70fa93811f2b1df307a424eb317}
+
+
+Definition at line 158 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a8dce0e0a85c9d38b700e700dc9dda057}{}\index{serialize.\+h@{serialize.\+h}!Unserialize@{Unserialize}}
+\index{Unserialize@{Unserialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Unserialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Unserialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{signed char \&}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a8dce0e0a85c9d38b700e700dc9dda057}
+
+
+Definition at line 159 of file serialize.\+h.
+
+\hypertarget{serialize_8h_aebbb104570e2ff054626fdd0410894b5}{}\index{serialize.\+h@{serialize.\+h}!Unserialize@{Unserialize}}
+\index{Unserialize@{Unserialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Unserialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Unserialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{unsigned char \&}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_aebbb104570e2ff054626fdd0410894b5}
+
+
+Definition at line 160 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a984ad5e9f245dc49521f4caee9b59118}{}\index{serialize.\+h@{serialize.\+h}!Unserialize@{Unserialize}}
+\index{Unserialize@{Unserialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Unserialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Unserialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{signed short \&}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a984ad5e9f245dc49521f4caee9b59118}
+
+
+Definition at line 161 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a055bba904b0bbf1290b30491a8cfe228}{}\index{serialize.\+h@{serialize.\+h}!Unserialize@{Unserialize}}
+\index{Unserialize@{Unserialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Unserialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Unserialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{unsigned short \&}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a055bba904b0bbf1290b30491a8cfe228}
+
+
+Definition at line 162 of file serialize.\+h.
+
+\hypertarget{serialize_8h_adc4aa8c2ea1f3a2402c22ca2a95ffce2}{}\index{serialize.\+h@{serialize.\+h}!Unserialize@{Unserialize}}
+\index{Unserialize@{Unserialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Unserialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Unserialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{signed int \&}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_adc4aa8c2ea1f3a2402c22ca2a95ffce2}
+
+
+Definition at line 163 of file serialize.\+h.
+
+\hypertarget{serialize_8h_acdb803cab003e2a109d9e813974edf5e}{}\index{serialize.\+h@{serialize.\+h}!Unserialize@{Unserialize}}
+\index{Unserialize@{Unserialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Unserialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Unserialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{unsigned int \&}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_acdb803cab003e2a109d9e813974edf5e}
+
+
+Definition at line 164 of file serialize.\+h.
+
+\hypertarget{serialize_8h_aa80f0ffc269713ccbc33d90fe2769381}{}\index{serialize.\+h@{serialize.\+h}!Unserialize@{Unserialize}}
+\index{Unserialize@{Unserialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Unserialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Unserialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{signed long \&}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_aa80f0ffc269713ccbc33d90fe2769381}
+
+
+Definition at line 165 of file serialize.\+h.
+
+\hypertarget{serialize_8h_ae44cef267cf2667912e3ae0394df2f33}{}\index{serialize.\+h@{serialize.\+h}!Unserialize@{Unserialize}}
+\index{Unserialize@{Unserialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Unserialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Unserialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{unsigned long \&}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_ae44cef267cf2667912e3ae0394df2f33}
+
+
+Definition at line 166 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a1c98bde2b0a04fbbd79d68963478cdb1}{}\index{serialize.\+h@{serialize.\+h}!Unserialize@{Unserialize}}
+\index{Unserialize@{Unserialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Unserialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Unserialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{signed long long \&}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a1c98bde2b0a04fbbd79d68963478cdb1}
+
+
+Definition at line 167 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a69b64027fde2d915b2a1b575c8d6eb40}{}\index{serialize.\+h@{serialize.\+h}!Unserialize@{Unserialize}}
+\index{Unserialize@{Unserialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Unserialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Unserialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{unsigned long long \&}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a69b64027fde2d915b2a1b575c8d6eb40}
+
+
+Definition at line 168 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a578d64a23aa8dcada47a3c82a1e4c362}{}\index{serialize.\+h@{serialize.\+h}!Unserialize@{Unserialize}}
+\index{Unserialize@{Unserialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Unserialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Unserialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{float \&}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a578d64a23aa8dcada47a3c82a1e4c362}
+
+
+Definition at line 169 of file serialize.\+h.
+
+\hypertarget{serialize_8h_afb55277651526f6e0554e92d5ff129bb}{}\index{serialize.\+h@{serialize.\+h}!Unserialize@{Unserialize}}
+\index{Unserialize@{Unserialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Unserialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Unserialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{double \&}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_afb55277651526f6e0554e92d5ff129bb}
+
+
+Definition at line 170 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a6d54c28b93b58ccfaeeaf7e89b17c54e}{}\index{serialize.\+h@{serialize.\+h}!Unserialize@{Unserialize}}
+\index{Unserialize@{Unserialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Unserialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Unserialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{bool \&}]{a, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_a6d54c28b93b58ccfaeeaf7e89b17c54e}
+
+
+Definition at line 174 of file serialize.\+h.
+
+\hypertarget{serialize_8h_aa688c53c27044d715917e33769b4f415}{}\index{serialize.\+h@{serialize.\+h}!Unserialize@{Unserialize}}
+\index{Unserialize@{Unserialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Unserialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename C $>$ void Unserialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{is, }
+\item[{std\+::basic\+\_\+string$<$ C $>$ \&}]{str, }
+\item[{int}]{, }
+\item[{int}]{ = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_aa688c53c27044d715917e33769b4f415}
+
+
+Definition at line 522 of file serialize.\+h.
+
+\hypertarget{serialize_8h_aefdf63d8c997767d3e3535a54f35025c}{}\index{serialize.\+h@{serialize.\+h}!Unserialize@{Unserialize}}
+\index{Unserialize@{Unserialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Unserialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename T , typename A $>$ void Unserialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{is, }
+\item[{std\+::vector$<$ T, A $>$ \&}]{v, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_aefdf63d8c997767d3e3535a54f35025c}
+
+
+Definition at line 613 of file serialize.\+h.
+
+\hypertarget{serialize_8h_aef8c207825b645e4156ab2a371101f3a}{}\index{serialize.\+h@{serialize.\+h}!Unserialize@{Unserialize}}
+\index{Unserialize@{Unserialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Unserialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Unserialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{is, }
+\item[{{\bf C\+Script} \&}]{v, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_aef8c207825b645e4156ab2a371101f3a}
+
+
+Definition at line 633 of file serialize.\+h.
+
+\hypertarget{serialize_8h_af0fc057388ad1dbd793bccf02282ec18}{}\index{serialize.\+h@{serialize.\+h}!Unserialize@{Unserialize}}
+\index{Unserialize@{Unserialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Unserialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename K , typename T $>$ void Unserialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{is, }
+\item[{std\+::pair$<$ K, T $>$ \&}]{item, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_af0fc057388ad1dbd793bccf02282ec18}
+
+
+Definition at line 655 of file serialize.\+h.
+
+\hypertarget{serialize_8h_aa00de3cbf1e973ac2d468e91b79eab2f}{}\index{serialize.\+h@{serialize.\+h}!Unserialize@{Unserialize}}
+\index{Unserialize@{Unserialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Unserialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename T0 , typename T1 , typename T2 $>$ void Unserialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{is, }
+\item[{boost\+::tuple$<$ T0, T1, T2 $>$ \&}]{item, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_aa00de3cbf1e973ac2d468e91b79eab2f}
+
+
+Definition at line 683 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a11f168f2ad0355ad6794090c3035b3d2}{}\index{serialize.\+h@{serialize.\+h}!Unserialize@{Unserialize}}
+\index{Unserialize@{Unserialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Unserialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename T0 , typename T1 , typename T2 , typename T3 $>$ void Unserialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{is, }
+\item[{boost\+::tuple$<$ T0, T1, T2, T3 $>$ \&}]{item, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_a11f168f2ad0355ad6794090c3035b3d2}
+
+
+Definition at line 714 of file serialize.\+h.
+
+\hypertarget{serialize_8h_acda54e31ea371de4eb0787a3e1565aa5}{}\index{serialize.\+h@{serialize.\+h}!Unserialize@{Unserialize}}
+\index{Unserialize@{Unserialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Unserialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename K , typename T , typename Pred , typename A $>$ void Unserialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{is, }
+\item[{std\+::map$<$ K, T, Pred, A $>$ \&}]{m, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_acda54e31ea371de4eb0787a3e1565aa5}
+
+
+Definition at line 743 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a229b67f4ffe4f0c3b3c52dc6cff98db3}{}\index{serialize.\+h@{serialize.\+h}!Unserialize@{Unserialize}}
+\index{Unserialize@{Unserialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Unserialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename K , typename Pred , typename A $>$ void Unserialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{is, }
+\item[{std\+::set$<$ K, Pred, A $>$ \&}]{m, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_a229b67f4ffe4f0c3b3c52dc6cff98db3}
+
+
+Definition at line 777 of file serialize.\+h.
+
+\hypertarget{serialize_8h_acd56ffe7d06efdae43157de0da994d4d}{}\index{serialize.\+h@{serialize.\+h}!Unserialize@{Unserialize}}
+\index{Unserialize@{Unserialize}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Unserialize}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename T $>$ void Unserialize (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{is, }
+\item[{T \&}]{a, }
+\item[{long}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{serialize_8h_acd56ffe7d06efdae43157de0da994d4d}
+
+
+Definition at line 499 of file serialize.\+h.
+
+\hypertarget{serialize_8h_ae8594814bba47036e603e447fbfd79ac}{}\index{serialize.\+h@{serialize.\+h}!Unserialize\+\_\+impl@{Unserialize\+\_\+impl}}
+\index{Unserialize\+\_\+impl@{Unserialize\+\_\+impl}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Unserialize\+\_\+impl}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename T , typename A $>$ void Unserialize\+\_\+impl (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{is, }
+\item[{std\+::vector$<$ T, A $>$ \&}]{v, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version, }
+\item[{const boost\+::true\+\_\+type \&}]{}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_ae8594814bba47036e603e447fbfd79ac}
+\hypertarget{serialize_8h_ac81185ca595a48045a6808b69bf2eb0e}{}\index{serialize.\+h@{serialize.\+h}!Unserialize\+\_\+impl@{Unserialize\+\_\+impl}}
+\index{Unserialize\+\_\+impl@{Unserialize\+\_\+impl}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Unserialize\+\_\+impl}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename T , typename A $>$ void Unserialize\+\_\+impl (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{is, }
+\item[{std\+::vector$<$ T, A $>$ \&}]{v, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version, }
+\item[{const boost\+::false\+\_\+type \&}]{}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_ac81185ca595a48045a6808b69bf2eb0e}
+\hypertarget{serialize_8h_a92432e5377aca757f1e248516214932d}{}\index{serialize.\+h@{serialize.\+h}!Unserialize\+\_\+impl@{Unserialize\+\_\+impl}}
+\index{Unserialize\+\_\+impl@{Unserialize\+\_\+impl}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Unserialize\+\_\+impl}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename T , typename A $>$ void Unserialize\+\_\+impl (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{is, }
+\item[{std\+::vector$<$ T, A $>$ \&}]{v, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version, }
+\item[{const unsigned char \&}]{}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_a92432e5377aca757f1e248516214932d}
+
+
+Definition at line 579 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a75bd9f1bb034294d1eb6d602ec98ff59}{}\index{serialize.\+h@{serialize.\+h}!Unserialize\+\_\+impl@{Unserialize\+\_\+impl}}
+\index{Unserialize\+\_\+impl@{Unserialize\+\_\+impl}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Unserialize\+\_\+impl}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename T , typename A , typename V $>$ void Unserialize\+\_\+impl (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{is, }
+\item[{std\+::vector$<$ T, A $>$ \&}]{v, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version, }
+\item[{const V \&}]{}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_a75bd9f1bb034294d1eb6d602ec98ff59}
+
+
+Definition at line 595 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a5748d9d17982b234b10a4b9e6f8e9f53}{}\index{serialize.\+h@{serialize.\+h}!Wrap\+Var\+Int@{Wrap\+Var\+Int}}
+\index{Wrap\+Var\+Int@{Wrap\+Var\+Int}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Wrap\+Var\+Int}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename I $>$ {\bf C\+Var\+Int}$<$I$>$ Wrap\+Var\+Int (
+\begin{DoxyParamCaption}
+\item[{I \&}]{n}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_a5748d9d17982b234b10a4b9e6f8e9f53}
+
+
+Definition at line 428 of file serialize.\+h.
+
+\hypertarget{serialize_8h_a02cf7f551f8876dcd142e7c6c8a27e3b}{}\index{serialize.\+h@{serialize.\+h}!Write\+Compact\+Size@{Write\+Compact\+Size}}
+\index{Write\+Compact\+Size@{Write\+Compact\+Size}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Write\+Compact\+Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream $>$ void Write\+Compact\+Size (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{os, }
+\item[{{\bf uint64\+\_\+t}}]{n\+Size}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_a02cf7f551f8876dcd142e7c6c8a27e3b}
+
+
+Definition at line 192 of file serialize.\+h.
+
+\hypertarget{serialize_8h_af2cf364ed9c068fd7092f0207a756c22}{}\index{serialize.\+h@{serialize.\+h}!Write\+Var\+Int@{Write\+Var\+Int}}
+\index{Write\+Var\+Int@{Write\+Var\+Int}!serialize.\+h@{serialize.\+h}}
+\subsubsection[{Write\+Var\+Int}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename I $>$ void Write\+Var\+Int (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{os, }
+\item[{I}]{n}
+\end{DoxyParamCaption}
+)}\label{serialize_8h_af2cf364ed9c068fd7092f0207a756c22}
+
+
+Definition at line 298 of file serialize.\+h.
+

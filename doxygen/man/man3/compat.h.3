@@ -1,0 +1,152 @@
+.TH "/home/dev/ds-160209/src/compat.h" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/compat.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <sys/fcntl\&.h>\fP
+.br
+\fC#include <sys/mman\&.h>\fP
+.br
+\fC#include <sys/socket\&.h>\fP
+.br
+\fC#include <sys/types\&.h>\fP
+.br
+\fC#include <net/if\&.h>\fP
+.br
+\fC#include <netinet/in\&.h>\fP
+.br
+\fC#include <arpa/inet\&.h>\fP
+.br
+\fC#include <ifaddrs\&.h>\fP
+.br
+\fC#include <limits\&.h>\fP
+.br
+\fC#include <netdb\&.h>\fP
+.br
+\fC#include <unistd\&.h>\fP
+.br
+\fC#include 'errno\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBWSAGetLastError\fP()   errno"
+.br
+.ti -1c
+.RI "#define \fBWSAEINVAL\fP   EINVAL"
+.br
+.ti -1c
+.RI "#define \fBWSAEALREADY\fP   EALREADY"
+.br
+.ti -1c
+.RI "#define \fBWSAEWOULDBLOCK\fP   EWOULDBLOCK"
+.br
+.ti -1c
+.RI "#define \fBWSAEMSGSIZE\fP   EMSGSIZE"
+.br
+.ti -1c
+.RI "#define \fBWSAEINTR\fP   EINTR"
+.br
+.ti -1c
+.RI "#define \fBWSAEINPROGRESS\fP   EINPROGRESS"
+.br
+.ti -1c
+.RI "#define \fBWSAEADDRINUSE\fP   EADDRINUSE"
+.br
+.ti -1c
+.RI "#define \fBWSAENOTSOCK\fP   EBADF"
+.br
+.ti -1c
+.RI "#define \fBINVALID_SOCKET\fP   (\fBSOCKET\fP)(~0)"
+.br
+.ti -1c
+.RI "#define \fBSOCKET_ERROR\fP   -1"
+.br
+.ti -1c
+.RI "#define \fBclosesocket\fP(s)   \fBmyclosesocket\fP(s)"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef u_int \fBSOCKET\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBmyclosesocket\fP (\fBSOCKET\fP &hSocket)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define closesocket(s)   \fBmyclosesocket\fP(s)"
+
+.PP
+Definition at line 75 of file compat\&.h\&.
+.SS "#define INVALID_SOCKET   (\fBSOCKET\fP)(~0)"
+
+.PP
+Definition at line 59 of file compat\&.h\&.
+.SS "#define SOCKET_ERROR   -1"
+
+.PP
+Definition at line 60 of file compat\&.h\&.
+.SS "#define WSAEADDRINUSE   EADDRINUSE"
+
+.PP
+Definition at line 57 of file compat\&.h\&.
+.SS "#define WSAEALREADY   EALREADY"
+
+.PP
+Definition at line 52 of file compat\&.h\&.
+.SS "#define WSAEINPROGRESS   EINPROGRESS"
+
+.PP
+Definition at line 56 of file compat\&.h\&.
+.SS "#define WSAEINTR   EINTR"
+
+.PP
+Definition at line 55 of file compat\&.h\&.
+.SS "#define WSAEINVAL   EINVAL"
+
+.PP
+Definition at line 51 of file compat\&.h\&.
+.SS "#define WSAEMSGSIZE   EMSGSIZE"
+
+.PP
+Definition at line 54 of file compat\&.h\&.
+.SS "#define WSAENOTSOCK   EBADF"
+
+.PP
+Definition at line 58 of file compat\&.h\&.
+.SS "#define WSAEWOULDBLOCK   EWOULDBLOCK"
+
+.PP
+Definition at line 53 of file compat\&.h\&.
+.SS "#define WSAGetLastError()   errno"
+
+.PP
+Definition at line 50 of file compat\&.h\&.
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef u_int \fBSOCKET\fP"
+
+.PP
+Definition at line 48 of file compat\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "int myclosesocket (\fBSOCKET\fP & hSocket)\fC [inline]\fP"
+
+.PP
+Definition at line 63 of file compat\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

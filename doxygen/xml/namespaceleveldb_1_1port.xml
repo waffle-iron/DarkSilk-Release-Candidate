@@ -1,0 +1,239 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="namespaceleveldb_1_1port" kind="namespace" language="C++">
+    <compoundname>leveldb::port</compoundname>
+    <innerclass refid="classleveldb_1_1port_1_1_atomic_pointer" prot="public">leveldb::port::AtomicPointer</innerclass>
+    <innerclass refid="classleveldb_1_1port_1_1_cond_var" prot="public">leveldb::port::CondVar</innerclass>
+    <innerclass refid="classleveldb_1_1port_1_1_mutex" prot="public">leveldb::port::Mutex</innerclass>
+    <innerclass refid="classleveldb_1_1port_1_1_once_type" prot="public">leveldb::port::OnceType</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespaceleveldb_1_1port_1a80651a8fb458d9b7b3c1f492f9abd055" prot="public" static="no">
+        <type>intptr_t</type>
+        <definition>typedef pthread_once_t leveldb::port::OnceType</definition>
+        <argsstring></argsstring>
+        <name>OnceType</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/port/port_example.h" line="69" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/port/port_example.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceleveldb_1_1port_1a1d2c52a3c3be0edb6562c9494b85bfec" prot="public" static="yes" mutable="no">
+        <type>const bool</type>
+        <definition>const bool leveldb::port::kLittleEndian</definition>
+        <argsstring></argsstring>
+        <name>kLittleEndian</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/port/port_example.h" line="21" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/port/port_example.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceleveldb_1_1port_1a1d2c52a3c3be0edb6562c9494b85bfec" prot="public" static="yes" mutable="no">
+        <type>const bool</type>
+        <definition>const bool leveldb::port::kLittleEndian</definition>
+        <argsstring></argsstring>
+        <name>kLittleEndian</name>
+        <initializer>= <ref refid="port__posix_8h_1a70cdc2961c4e178e613d23a851e57f5d" kindref="member">PLATFORM_IS_LITTLE_ENDIAN</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/port/port_posix.h" line="77" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/port/port_posix.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceleveldb_1_1port_1a1d2c52a3c3be0edb6562c9494b85bfec" prot="public" static="yes" mutable="no">
+        <type>const bool</type>
+        <definition>const bool leveldb::port::kLittleEndian</definition>
+        <argsstring></argsstring>
+        <name>kLittleEndian</name>
+        <initializer>= true</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/port/port_win.h" line="50" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/port/port_win.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceleveldb_1_1port_1a1493e91d494e6f0ea086a743a562e983" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::port::InitOnce</definition>
+        <argsstring>(port::OnceType *, void(*initializer)())</argsstring>
+        <name>InitOnce</name>
+        <param>
+          <type><ref refid="classleveldb_1_1port_1_1_once_type" kindref="compound">port::OnceType</ref> *</type>
+          <defname>once</defname>
+        </param>
+        <param>
+          <type>void(*)()</type>
+          <declname>initializer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/port/port_example.h" line="71" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/port/port_posix.cc" bodystart="49" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1port_1ae6e60ac8eb298c7eef3bb70ded8c809f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool leveldb::port::Snappy_Compress</definition>
+        <argsstring>(const char *input, size_t input_length, std::string *output)</argsstring>
+        <name>Snappy_Compress</name>
+        <param>
+          <type>const char *</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>input_length</declname>
+        </param>
+        <param>
+          <type>std::string *</type>
+          <declname>output</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/port/port_example.h" line="106" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1port_1aad536a786dfc1df63d14c6b74178a73b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool leveldb::port::Snappy_GetUncompressedLength</definition>
+        <argsstring>(const char *input, size_t length, size_t *result)</argsstring>
+        <name>Snappy_GetUncompressedLength</name>
+        <param>
+          <type>const char *</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>size_t *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/port/port_example.h" line="112" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/port/port_posix.h" bodystart="129" bodyend="136"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1port_1ab6f0c4381b00450e06d3000a8cb48a55" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool leveldb::port::Snappy_Uncompress</definition>
+        <argsstring>(const char *input_data, size_t input_length, char *output)</argsstring>
+        <name>Snappy_Uncompress</name>
+        <param>
+          <type>const char *</type>
+          <declname>input_data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>input_length</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>output</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/port/port_example.h" line="122" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/port/port_posix.h" bodystart="138" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1port_1a1686423180e60af953153121c615f5fe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool leveldb::port::GetHeapProfile</definition>
+        <argsstring>(void(*func)(void *, const char *, int), void *arg)</argsstring>
+        <name>GetHeapProfile</name>
+        <param>
+          <type>void(*)(void *, const char *, int)</type>
+          <declname>func</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/port/port_example.h" line="130" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/port/port_posix.h" bodystart="147" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1port_1a614e0b6f0b21d697fe4001dbe3d8798b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void leveldb::port::PthreadCall</definition>
+        <argsstring>(const char *label, int result)</argsstring>
+        <name>PthreadCall</name>
+        <param>
+          <type>const char *</type>
+          <declname>label</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/port/port_posix.cc" line="15" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/port/port_posix.cc" bodystart="15" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1port_1a64d0eafc3cfb484000e6afb5cbcc9d87" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool leveldb::port::Snappy_Compress</definition>
+        <argsstring>(const char *input, size_t length,::std::string *output)</argsstring>
+        <name>Snappy_Compress</name>
+        <param>
+          <type>const char *</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>::std::string *</type>
+          <declname>output</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/port/port_posix.h" line="116" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/port/port_posix.h" bodystart="116" bodyend="127"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/leveldb/port/atomic_pointer.h" line="43" column="1"/>
+  </compounddef>
+</doxygen>

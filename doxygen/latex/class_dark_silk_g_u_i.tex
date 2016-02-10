@@ -1,0 +1,288 @@
+\hypertarget{class_dark_silk_g_u_i}{}\section{Dark\+Silk\+G\+U\+I Class Reference}
+\label{class_dark_silk_g_u_i}\index{Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}}
+
+
+{\ttfamily \#include $<$darksilkgui.\+h$>$}
+
+Inheritance diagram for Dark\+Silk\+G\+U\+I\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_dark_silk_g_u_i}
+\end{center}
+\end{figure}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_dark_silk_g_u_i_a7e1e79546bee2c49830d7d11c9bee8bb}{set\+Num\+Connections} (int count)
+\item 
+void \hyperlink{class_dark_silk_g_u_i_a2a303132be32277f46691fe91803f766}{set\+Num\+Blocks} (int count)
+\item 
+void \hyperlink{class_dark_silk_g_u_i_a4be47e469eccc462eec6556b8b8ffb52}{set\+Encryption\+Status} (int status)
+\item 
+void \hyperlink{class_dark_silk_g_u_i_aa5509e7f1502f9b9bc3dd916a31c8d15}{message} (const Q\+String \&title, const Q\+String \&message, bool modal, unsigned int style=\hyperlink{class_c_client_u_i_interface_a568cf07ecac3fac224d63b42a32e8bc1a0551e67c07eb6a81edf6e43fed89759f}{C\+Client\+U\+I\+Interface\+::\+M\+S\+G\+\_\+\+E\+R\+R\+O\+R}, bool $\ast$ret=N\+U\+L\+L)
+\item 
+void \hyperlink{class_dark_silk_g_u_i_aff74bbf8244654f663188e4589d8e311}{ask\+Fee} (\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} n\+Fee\+Required, bool $\ast$pay\+Fee)
+\item 
+void \hyperlink{class_dark_silk_g_u_i_abd255bcdc761c0ed6ea5e3eb285be1d0}{handle\+U\+R\+I} (Q\+String str\+U\+R\+I)
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_dark_silk_g_u_i_a94e64087cc435432dade5c24f3d25650}{Dark\+Silk\+G\+U\+I} (Q\+Widget $\ast$parent=0)
+\item 
+\hyperlink{class_dark_silk_g_u_i_a35b90333e0e26b74dc91a9e255169584}{$\sim$\+Dark\+Silk\+G\+U\+I} ()
+\item 
+void \hyperlink{class_dark_silk_g_u_i_a671bf7d03e729b88040ede8ae3a86ac5}{set\+Client\+Model} (\hyperlink{class_client_model}{Client\+Model} $\ast$client\+Model)
+\item 
+void \hyperlink{class_dark_silk_g_u_i_af1268788bf230b2d09f4213936ee8b9a}{set\+Wallet\+Model} (\hyperlink{class_wallet_model}{Wallet\+Model} $\ast$wallet\+Model)
+\item 
+void \hyperlink{class_dark_silk_g_u_i_a9c03f026ec3610e83fe98b3cc9f514b5}{set\+Message\+Model} (\hyperlink{class_message_model}{Message\+Model} $\ast$message\+Model)
+\item 
+W\+Id \hyperlink{class_dark_silk_g_u_i_a0f34c5c3f927e1e33ad124537dfdfd3b}{get\+Main\+Win\+Id} () const 
+\begin{DoxyCompactList}\small\item\em Get window identifier of Q\+Main\+Window (\hyperlink{class_dark_silk_g_u_i}{Dark\+Silk\+G\+U\+I}) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_dark_silk_g_u_i_a0d0d0c75b36cc12c5d3c99766eefa064}{change\+Event} (Q\+Event $\ast$e)
+\item 
+void \hyperlink{class_dark_silk_g_u_i_a78a6df96dd08ff62500861c2d2a5430a}{close\+Event} (Q\+Close\+Event $\ast$event)
+\item 
+void \hyperlink{class_dark_silk_g_u_i_a14684acdc9bf48e3bc1bf2e1f4619d38}{drag\+Enter\+Event} (Q\+Drag\+Enter\+Event $\ast$event)
+\item 
+void \hyperlink{class_dark_silk_g_u_i_afa1b67b5cb1a0631b7f49a9146d37a1c}{drop\+Event} (Q\+Drop\+Event $\ast$event)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Dark\+Silk G\+U\+I main class. This class represents the main window of the Dark\+Silk U\+I. It communicates with both the client and wallet models to give the user an up-\/to-\/date view of the current core state. 
+
+Definition at line 39 of file darksilkgui.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_dark_silk_g_u_i_a94e64087cc435432dade5c24f3d25650}{}\index{Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}!Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}}
+\index{Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}!Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}}
+\subsubsection[{Dark\+Silk\+G\+U\+I}]{\setlength{\rightskip}{0pt plus 5cm}Dark\+Silk\+G\+U\+I\+::\+Dark\+Silk\+G\+U\+I (
+\begin{DoxyParamCaption}
+\item[{Q\+Widget $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\label{class_dark_silk_g_u_i_a94e64087cc435432dade5c24f3d25650}
+
+
+Definition at line 83 of file darksilkgui.\+cpp.
+
+\hypertarget{class_dark_silk_g_u_i_a35b90333e0e26b74dc91a9e255169584}{}\index{Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}!````~Dark\+Silk\+G\+U\+I@{$\sim$\+Dark\+Silk\+G\+U\+I}}
+\index{````~Dark\+Silk\+G\+U\+I@{$\sim$\+Dark\+Silk\+G\+U\+I}!Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}}
+\subsubsection[{$\sim$\+Dark\+Silk\+G\+U\+I}]{\setlength{\rightskip}{0pt plus 5cm}Dark\+Silk\+G\+U\+I\+::$\sim$\+Dark\+Silk\+G\+U\+I (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_dark_silk_g_u_i_a35b90333e0e26b74dc91a9e255169584}
+
+
+Definition at line 279 of file darksilkgui.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_dark_silk_g_u_i_aff74bbf8244654f663188e4589d8e311}{}\index{Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}!ask\+Fee@{ask\+Fee}}
+\index{ask\+Fee@{ask\+Fee}!Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}}
+\subsubsection[{ask\+Fee}]{\setlength{\rightskip}{0pt plus 5cm}void Dark\+Silk\+G\+U\+I\+::ask\+Fee (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Amount}}]{n\+Fee\+Required, }
+\item[{bool $\ast$}]{pay\+Fee}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_dark_silk_g_u_i_aff74bbf8244654f663188e4589d8e311}
+Asks the user whether to pay the transaction fee or to cancel the transaction. It is currently not possible to pass a return value to another thread through Blocking\+Queued\+Connection, so an indirected pointer is used. \href{https://bugreports.qt-project.org/browse/QTBUG-10440}{\tt https\+://bugreports.\+qt-\/project.\+org/browse/\+Q\+T\+B\+U\+G-\/10440}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em n\+Fee\+Required} & the required fee \\
+\hline
+\mbox{\tt out}  & {\em pay\+Fee} & true to pay the fee, false to not pay the fee \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 1046 of file darksilkgui.\+cpp.
+
+\hypertarget{class_dark_silk_g_u_i_a0d0d0c75b36cc12c5d3c99766eefa064}{}\index{Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}!change\+Event@{change\+Event}}
+\index{change\+Event@{change\+Event}!Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}}
+\subsubsection[{change\+Event}]{\setlength{\rightskip}{0pt plus 5cm}void Dark\+Silk\+G\+U\+I\+::change\+Event (
+\begin{DoxyParamCaption}
+\item[{Q\+Event $\ast$}]{e}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{class_dark_silk_g_u_i_a0d0d0c75b36cc12c5d3c99766eefa064}
+
+
+Definition at line 1008 of file darksilkgui.\+cpp.
+
+\hypertarget{class_dark_silk_g_u_i_a78a6df96dd08ff62500861c2d2a5430a}{}\index{Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}!close\+Event@{close\+Event}}
+\index{close\+Event@{close\+Event}!Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}}
+\subsubsection[{close\+Event}]{\setlength{\rightskip}{0pt plus 5cm}void Dark\+Silk\+G\+U\+I\+::close\+Event (
+\begin{DoxyParamCaption}
+\item[{Q\+Close\+Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{class_dark_silk_g_u_i_a78a6df96dd08ff62500861c2d2a5430a}
+
+
+Definition at line 1030 of file darksilkgui.\+cpp.
+
+\hypertarget{class_dark_silk_g_u_i_a14684acdc9bf48e3bc1bf2e1f4619d38}{}\index{Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}!drag\+Enter\+Event@{drag\+Enter\+Event}}
+\index{drag\+Enter\+Event@{drag\+Enter\+Event}!Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}}
+\subsubsection[{drag\+Enter\+Event}]{\setlength{\rightskip}{0pt plus 5cm}void Dark\+Silk\+G\+U\+I\+::drag\+Enter\+Event (
+\begin{DoxyParamCaption}
+\item[{Q\+Drag\+Enter\+Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{class_dark_silk_g_u_i_a14684acdc9bf48e3bc1bf2e1f4619d38}
+
+
+Definition at line 1247 of file darksilkgui.\+cpp.
+
+\hypertarget{class_dark_silk_g_u_i_afa1b67b5cb1a0631b7f49a9146d37a1c}{}\index{Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}!drop\+Event@{drop\+Event}}
+\index{drop\+Event@{drop\+Event}!Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}}
+\subsubsection[{drop\+Event}]{\setlength{\rightskip}{0pt plus 5cm}void Dark\+Silk\+G\+U\+I\+::drop\+Event (
+\begin{DoxyParamCaption}
+\item[{Q\+Drop\+Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{class_dark_silk_g_u_i_afa1b67b5cb1a0631b7f49a9146d37a1c}
+
+
+Definition at line 1255 of file darksilkgui.\+cpp.
+
+\hypertarget{class_dark_silk_g_u_i_a0f34c5c3f927e1e33ad124537dfdfd3b}{}\index{Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}!get\+Main\+Win\+Id@{get\+Main\+Win\+Id}}
+\index{get\+Main\+Win\+Id@{get\+Main\+Win\+Id}!Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}}
+\subsubsection[{get\+Main\+Win\+Id}]{\setlength{\rightskip}{0pt plus 5cm}W\+Id Dark\+Silk\+G\+U\+I\+::get\+Main\+Win\+Id (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_dark_silk_g_u_i_a0f34c5c3f927e1e33ad124537dfdfd3b}
+
+
+Get window identifier of Q\+Main\+Window (\hyperlink{class_dark_silk_g_u_i}{Dark\+Silk\+G\+U\+I}) 
+
+
+
+Definition at line 1543 of file darksilkgui.\+cpp.
+
+\hypertarget{class_dark_silk_g_u_i_abd255bcdc761c0ed6ea5e3eb285be1d0}{}\index{Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}!handle\+U\+R\+I@{handle\+U\+R\+I}}
+\index{handle\+U\+R\+I@{handle\+U\+R\+I}!Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}}
+\subsubsection[{handle\+U\+R\+I}]{\setlength{\rightskip}{0pt plus 5cm}void Dark\+Silk\+G\+U\+I\+::handle\+U\+R\+I (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{str\+U\+R\+I}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_dark_silk_g_u_i_abd255bcdc761c0ed6ea5e3eb285be1d0}
+
+
+Definition at line 1277 of file darksilkgui.\+cpp.
+
+\hypertarget{class_dark_silk_g_u_i_aa5509e7f1502f9b9bc3dd916a31c8d15}{}\index{Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}!message@{message}}
+\index{message@{message}!Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}}
+\subsubsection[{message}]{\setlength{\rightskip}{0pt plus 5cm}void Dark\+Silk\+G\+U\+I\+::message (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{title, }
+\item[{const Q\+String \&}]{message, }
+\item[{bool}]{modal, }
+\item[{unsigned int}]{style = {\ttfamily {\bf C\+Client\+U\+I\+Interface\+::\+M\+S\+G\+\_\+\+E\+R\+R\+O\+R}}, }
+\item[{bool $\ast$}]{ret = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_dark_silk_g_u_i_aa5509e7f1502f9b9bc3dd916a31c8d15}
+Notify the user of an event from the core network or transaction handling code. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em title} & the message box / notification title \\
+\hline
+\mbox{\tt in}  & {\em message} & the displayed text \\
+\hline
+\mbox{\tt in}  & {\em modal} & true to use a message box, false to use a notification \\
+\hline
+\mbox{\tt in}  & {\em style} & style definitions (icon and used buttons -\/ buttons only for message boxes) \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_c_client_u_i_interface_a568cf07ecac3fac224d63b42a32e8bc1}{C\+Client\+U\+I\+Interface\+::\+Message\+Box\+Flags} 
+\end{DoxySeeAlso}
+
+
+Definition at line 946 of file darksilkgui.\+cpp.
+
+\hypertarget{class_dark_silk_g_u_i_a671bf7d03e729b88040ede8ae3a86ac5}{}\index{Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}!set\+Client\+Model@{set\+Client\+Model}}
+\index{set\+Client\+Model@{set\+Client\+Model}!Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}}
+\subsubsection[{set\+Client\+Model}]{\setlength{\rightskip}{0pt plus 5cm}void Dark\+Silk\+G\+U\+I\+::set\+Client\+Model (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\+Model} $\ast$}]{client\+Model}
+\end{DoxyParamCaption}
+)}\label{class_dark_silk_g_u_i_a671bf7d03e729b88040ede8ae3a86ac5}
+Set the client model. The client model represents the part of the core that communicates with the P2\+P network, and is wallet-\/agnostic. 
+
+Definition at line 570 of file darksilkgui.\+cpp.
+
+\hypertarget{class_dark_silk_g_u_i_a4be47e469eccc462eec6556b8b8ffb52}{}\index{Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}!set\+Encryption\+Status@{set\+Encryption\+Status}}
+\index{set\+Encryption\+Status@{set\+Encryption\+Status}!Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}}
+\subsubsection[{set\+Encryption\+Status}]{\setlength{\rightskip}{0pt plus 5cm}void Dark\+Silk\+G\+U\+I\+::set\+Encryption\+Status (
+\begin{DoxyParamCaption}
+\item[{int}]{status}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_dark_silk_g_u_i_a4be47e469eccc462eec6556b8b8ffb52}
+Set the encryption status as shown in the U\+I. 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em status} & current encryption status \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\hyperlink{class_wallet_model_a58f6f0bb5a7b8b4e4d0812185ccc0616}{Wallet\+Model\+::\+Encryption\+Status} 
+\end{DoxySeeAlso}
+
+
+Definition at line 1288 of file darksilkgui.\+cpp.
+
+\hypertarget{class_dark_silk_g_u_i_a9c03f026ec3610e83fe98b3cc9f514b5}{}\index{Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}!set\+Message\+Model@{set\+Message\+Model}}
+\index{set\+Message\+Model@{set\+Message\+Model}!Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}}
+\subsubsection[{set\+Message\+Model}]{\setlength{\rightskip}{0pt plus 5cm}void Dark\+Silk\+G\+U\+I\+::set\+Message\+Model (
+\begin{DoxyParamCaption}
+\item[{{\bf Message\+Model} $\ast$}]{message\+Model}
+\end{DoxyParamCaption}
+)}\label{class_dark_silk_g_u_i_a9c03f026ec3610e83fe98b3cc9f514b5}
+Set the message model. The message model represents encryption message database, and offers access to the list of messages, address book and sending functionality. 
+
+Definition at line 677 of file darksilkgui.\+cpp.
+
+\hypertarget{class_dark_silk_g_u_i_a2a303132be32277f46691fe91803f766}{}\index{Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}!set\+Num\+Blocks@{set\+Num\+Blocks}}
+\index{set\+Num\+Blocks@{set\+Num\+Blocks}!Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}}
+\subsubsection[{set\+Num\+Blocks}]{\setlength{\rightskip}{0pt plus 5cm}void Dark\+Silk\+G\+U\+I\+::set\+Num\+Blocks (
+\begin{DoxyParamCaption}
+\item[{int}]{count}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_dark_silk_g_u_i_a2a303132be32277f46691fe91803f766}
+Set number of blocks shown in the U\+I 
+
+Definition at line 860 of file darksilkgui.\+cpp.
+
+\hypertarget{class_dark_silk_g_u_i_a7e1e79546bee2c49830d7d11c9bee8bb}{}\index{Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}!set\+Num\+Connections@{set\+Num\+Connections}}
+\index{set\+Num\+Connections@{set\+Num\+Connections}!Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}}
+\subsubsection[{set\+Num\+Connections}]{\setlength{\rightskip}{0pt plus 5cm}void Dark\+Silk\+G\+U\+I\+::set\+Num\+Connections (
+\begin{DoxyParamCaption}
+\item[{int}]{count}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_dark_silk_g_u_i_a7e1e79546bee2c49830d7d11c9bee8bb}
+Set number of connections shown in the U\+I 
+
+Definition at line 844 of file darksilkgui.\+cpp.
+
+\hypertarget{class_dark_silk_g_u_i_af1268788bf230b2d09f4213936ee8b9a}{}\index{Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}!set\+Wallet\+Model@{set\+Wallet\+Model}}
+\index{set\+Wallet\+Model@{set\+Wallet\+Model}!Dark\+Silk\+G\+U\+I@{Dark\+Silk\+G\+U\+I}}
+\subsubsection[{set\+Wallet\+Model}]{\setlength{\rightskip}{0pt plus 5cm}void Dark\+Silk\+G\+U\+I\+::set\+Wallet\+Model (
+\begin{DoxyParamCaption}
+\item[{{\bf Wallet\+Model} $\ast$}]{wallet\+Model}
+\end{DoxyParamCaption}
+)}\label{class_dark_silk_g_u_i_af1268788bf230b2d09f4213936ee8b9a}
+Set the wallet model. The wallet model represents a darksilk wallet, and offers access to the list of transactions, address book and sending functionality. 
+
+Definition at line 649 of file darksilkgui.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/qt/\hyperlink{darksilkgui_8h}{darksilkgui.\+h}\item 
+/home/dev/ds-\/160209/src/qt/\hyperlink{darksilkgui_8cpp}{darksilkgui.\+cpp}\end{DoxyCompactItemize}

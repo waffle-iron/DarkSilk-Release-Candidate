@@ -1,0 +1,544 @@
+\hypertarget{namespaceleveldb_1_1log}{}\section{leveldb\+:\+:log Namespace Reference}
+\label{namespaceleveldb_1_1log}\index{leveldb\+::log@{leveldb\+::log}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}
+\item 
+class \hyperlink{classleveldb_1_1log_1_1_reader}{Reader}
+\item 
+class \hyperlink{classleveldb_1_1log_1_1_writer}{Writer}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{namespaceleveldb_1_1log_a01bdc1b51beb634f14f8fbb70fbd8d2a}{Record\+Type} \{ \\*
+\hyperlink{namespaceleveldb_1_1log_a01bdc1b51beb634f14f8fbb70fbd8d2aa5a96fbcdf2a8be4834c61233ec2cea2e}{k\+Zero\+Type} = 0, 
+\hyperlink{namespaceleveldb_1_1log_a01bdc1b51beb634f14f8fbb70fbd8d2aa2c77e6c3871e8ec5506f9f9c2e7dfb13}{k\+Full\+Type} = 1, 
+\hyperlink{namespaceleveldb_1_1log_a01bdc1b51beb634f14f8fbb70fbd8d2aa46ff8d418146ec7ce6c3a883e89b48da}{k\+First\+Type} = 2, 
+\hyperlink{namespaceleveldb_1_1log_a01bdc1b51beb634f14f8fbb70fbd8d2aa50ec9d5a2236253d02c0abd55d178e08}{k\+Middle\+Type} = 3, 
+\\*
+\hyperlink{namespaceleveldb_1_1log_a01bdc1b51beb634f14f8fbb70fbd8d2aa29f913fb4d719f97a9618bca93775dfc}{k\+Last\+Type} = 4
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{namespaceleveldb_1_1log_ab8a02b9419477420eca51cfd47d5f172}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Empty)
+\item 
+\hyperlink{namespaceleveldb_1_1log_aabca07adceffd87baf38b81665d92bb4}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Read\+Write)
+\item 
+\hyperlink{namespaceleveldb_1_1log_a60249ea325a8656fdc31898d7c5f4ad9}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Many\+Blocks)
+\item 
+\hyperlink{namespaceleveldb_1_1log_ac15e5779ff43d83522727b8cc44882a2}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Fragmentation)
+\item 
+\hyperlink{namespaceleveldb_1_1log_a9721de928c01ac50b5770b8b4cbb98e1}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Marginal\+Trailer)
+\item 
+\hyperlink{namespaceleveldb_1_1log_aad9c4a11c674359115f4d16c97e33ad1}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Marginal\+Trailer2)
+\item 
+\hyperlink{namespaceleveldb_1_1log_a1a1972ff9493353cfb4546cacd33ddb7}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Short\+Trailer)
+\item 
+\hyperlink{namespaceleveldb_1_1log_a55d554f8c576d9d4d99e35d3fe0c169f}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Aligned\+Eof)
+\item 
+\hyperlink{namespaceleveldb_1_1log_a52d33034be964c0d0e40efdf4b423452}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Random\+Read)
+\item 
+\hyperlink{namespaceleveldb_1_1log_a47ffd653cde9cb9bc00c0a9914da48fd}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Read\+Error)
+\item 
+\hyperlink{namespaceleveldb_1_1log_a4fd335e6dbc3a27ea10e985387f69d6d}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Bad\+Record\+Type)
+\item 
+\hyperlink{namespaceleveldb_1_1log_aa1e3f8be0b7799bfb21c5c4bf40d22c3}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Truncated\+Trailing\+Record\+Is\+Ignored)
+\item 
+\hyperlink{namespaceleveldb_1_1log_a024a8bc0f558ffe46b3a15ab43018402}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Bad\+Length)
+\item 
+\hyperlink{namespaceleveldb_1_1log_a22b6e6d2a3de82f3e05d63e13f44b9fd}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Bad\+Length\+At\+End\+Is\+Ignored)
+\item 
+\hyperlink{namespaceleveldb_1_1log_a2dccd9d88a61eb0f59fdea07edfe2022}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Checksum\+Mismatch)
+\item 
+\hyperlink{namespaceleveldb_1_1log_ae2aa67608715051976e4cbb2008e3b52}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Unexpected\+Middle\+Type)
+\item 
+\hyperlink{namespaceleveldb_1_1log_ad618b3ff1dc35a8641c019d8eb4a4e8b}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Unexpected\+Last\+Type)
+\item 
+\hyperlink{namespaceleveldb_1_1log_a178460e2ee7a665f0aef08a28217a6d3}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Unexpected\+Full\+Type)
+\item 
+\hyperlink{namespaceleveldb_1_1log_a7c8a46287bbb1e185ccfcb78c5ae94e3}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Unexpected\+First\+Type)
+\item 
+\hyperlink{namespaceleveldb_1_1log_a965e5192bb2f0467f987fe54995d0c89}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Missing\+Last\+Is\+Ignored)
+\item 
+\hyperlink{namespaceleveldb_1_1log_acae9dd4e93ded56d6585082822964b71}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Partial\+Last\+Is\+Ignored)
+\item 
+\hyperlink{namespaceleveldb_1_1log_a2ea9cc0af9f5d8b6bdc74e3126bd389a}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Error\+Joins\+Records)
+\item 
+\hyperlink{namespaceleveldb_1_1log_a6ee7068a33cb134e26e7d1cf58327064}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Read\+Start)
+\item 
+\hyperlink{namespaceleveldb_1_1log_af9cc8dffe50b0cefff163fdca58d1a08}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Read\+Second\+One\+Off)
+\item 
+\hyperlink{namespaceleveldb_1_1log_ab734bca6b78216dc41b112075258dbe7}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Read\+Second\+Ten\+Thousand)
+\item 
+\hyperlink{namespaceleveldb_1_1log_aa9e212a334431228c79a843316480db0}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Read\+Second\+Start)
+\item 
+\hyperlink{namespaceleveldb_1_1log_af5f8505f08225382f290158f5175cca0}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Read\+Third\+One\+Off)
+\item 
+\hyperlink{namespaceleveldb_1_1log_a87cfcd7bb0a248dc72d9856e1d00d519}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Read\+Third\+Start)
+\item 
+\hyperlink{namespaceleveldb_1_1log_abbda151ff0e2439ac1dfa823a6089439}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Read\+Fourth\+One\+Off)
+\item 
+\hyperlink{namespaceleveldb_1_1log_a85f6833939c09f181924774403bfbe4f}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Read\+Fourth\+First\+Block\+Trailer)
+\item 
+\hyperlink{namespaceleveldb_1_1log_a6fb47c0abe5c036d95a4f9aeb1d62174}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Read\+Fourth\+Middle\+Block)
+\item 
+\hyperlink{namespaceleveldb_1_1log_a9c80a844e21aec7c6fbde209e99c1ad8}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Read\+Fourth\+Last\+Block)
+\item 
+\hyperlink{namespaceleveldb_1_1log_aa652940a4e7bff7fa21f0d1c941712d7}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Read\+Fourth\+Start)
+\item 
+\hyperlink{namespaceleveldb_1_1log_a74e0fb6c39041d1ef2193114b0a2275b}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Read\+End)
+\item 
+\hyperlink{namespaceleveldb_1_1log_ae1081d375c33d8b2f01d5593ecd5f4a7}{T\+E\+S\+T} (\hyperlink{classleveldb_1_1log_1_1_log_test}{Log\+Test}, Read\+Past\+End)
+\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{namespaceleveldb_1_1log_a01bdc1b51beb634f14f8fbb70fbd8d2a}{}\index{leveldb\+::log@{leveldb\+::log}!Record\+Type@{Record\+Type}}
+\index{Record\+Type@{Record\+Type}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{Record\+Type}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf leveldb\+::log\+::\+Record\+Type}}\label{namespaceleveldb_1_1log_a01bdc1b51beb634f14f8fbb70fbd8d2a}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{k\+Zero\+Type@{k\+Zero\+Type}!leveldb\+::log@{leveldb\+::log}}\index{leveldb\+::log@{leveldb\+::log}!k\+Zero\+Type@{k\+Zero\+Type}}\item[{\em 
+\hypertarget{namespaceleveldb_1_1log_a01bdc1b51beb634f14f8fbb70fbd8d2aa5a96fbcdf2a8be4834c61233ec2cea2e}{}k\+Zero\+Type\label{namespaceleveldb_1_1log_a01bdc1b51beb634f14f8fbb70fbd8d2aa5a96fbcdf2a8be4834c61233ec2cea2e}
+}]\index{k\+Full\+Type@{k\+Full\+Type}!leveldb\+::log@{leveldb\+::log}}\index{leveldb\+::log@{leveldb\+::log}!k\+Full\+Type@{k\+Full\+Type}}\item[{\em 
+\hypertarget{namespaceleveldb_1_1log_a01bdc1b51beb634f14f8fbb70fbd8d2aa2c77e6c3871e8ec5506f9f9c2e7dfb13}{}k\+Full\+Type\label{namespaceleveldb_1_1log_a01bdc1b51beb634f14f8fbb70fbd8d2aa2c77e6c3871e8ec5506f9f9c2e7dfb13}
+}]\index{k\+First\+Type@{k\+First\+Type}!leveldb\+::log@{leveldb\+::log}}\index{leveldb\+::log@{leveldb\+::log}!k\+First\+Type@{k\+First\+Type}}\item[{\em 
+\hypertarget{namespaceleveldb_1_1log_a01bdc1b51beb634f14f8fbb70fbd8d2aa46ff8d418146ec7ce6c3a883e89b48da}{}k\+First\+Type\label{namespaceleveldb_1_1log_a01bdc1b51beb634f14f8fbb70fbd8d2aa46ff8d418146ec7ce6c3a883e89b48da}
+}]\index{k\+Middle\+Type@{k\+Middle\+Type}!leveldb\+::log@{leveldb\+::log}}\index{leveldb\+::log@{leveldb\+::log}!k\+Middle\+Type@{k\+Middle\+Type}}\item[{\em 
+\hypertarget{namespaceleveldb_1_1log_a01bdc1b51beb634f14f8fbb70fbd8d2aa50ec9d5a2236253d02c0abd55d178e08}{}k\+Middle\+Type\label{namespaceleveldb_1_1log_a01bdc1b51beb634f14f8fbb70fbd8d2aa50ec9d5a2236253d02c0abd55d178e08}
+}]\index{k\+Last\+Type@{k\+Last\+Type}!leveldb\+::log@{leveldb\+::log}}\index{leveldb\+::log@{leveldb\+::log}!k\+Last\+Type@{k\+Last\+Type}}\item[{\em 
+\hypertarget{namespaceleveldb_1_1log_a01bdc1b51beb634f14f8fbb70fbd8d2aa29f913fb4d719f97a9618bca93775dfc}{}k\+Last\+Type\label{namespaceleveldb_1_1log_a01bdc1b51beb634f14f8fbb70fbd8d2aa29f913fb4d719f97a9618bca93775dfc}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 14 of file log\+\_\+format.\+h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{namespaceleveldb_1_1log_ab8a02b9419477420eca51cfd47d5f172}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Empty}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_ab8a02b9419477420eca51cfd47d5f172}
+
+
+Definition at line 238 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_aabca07adceffd87baf38b81665d92bb4}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Read\+Write}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_aabca07adceffd87baf38b81665d92bb4}
+
+
+Definition at line 242 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_a60249ea325a8656fdc31898d7c5f4ad9}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Many\+Blocks}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_a60249ea325a8656fdc31898d7c5f4ad9}
+
+
+Definition at line 255 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_ac15e5779ff43d83522727b8cc44882a2}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Fragmentation}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_ac15e5779ff43d83522727b8cc44882a2}
+
+
+Definition at line 265 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_a9721de928c01ac50b5770b8b4cbb98e1}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Marginal\+Trailer}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_a9721de928c01ac50b5770b8b4cbb98e1}
+
+
+Definition at line 275 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_aad9c4a11c674359115f4d16c97e33ad1}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Marginal\+Trailer2}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_aad9c4a11c674359115f4d16c97e33ad1}
+
+
+Definition at line 288 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_a1a1972ff9493353cfb4546cacd33ddb7}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Short\+Trailer}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_a1a1972ff9493353cfb4546cacd33ddb7}
+
+
+Definition at line 301 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_a55d554f8c576d9d4d99e35d3fe0c169f}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Aligned\+Eof}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_a55d554f8c576d9d4d99e35d3fe0c169f}
+
+
+Definition at line 313 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_a52d33034be964c0d0e40efdf4b423452}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Random\+Read}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_a52d33034be964c0d0e40efdf4b423452}
+
+
+Definition at line 321 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_a47ffd653cde9cb9bc00c0a9914da48fd}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Read\+Error}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_a47ffd653cde9cb9bc00c0a9914da48fd}
+
+
+Definition at line 336 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_a4fd335e6dbc3a27ea10e985387f69d6d}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Bad\+Record\+Type}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_a4fd335e6dbc3a27ea10e985387f69d6d}
+
+
+Definition at line 344 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_aa1e3f8be0b7799bfb21c5c4bf40d22c3}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Truncated\+Trailing\+Record\+Is\+Ignored}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_aa1e3f8be0b7799bfb21c5c4bf40d22c3}
+
+
+Definition at line 354 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_a024a8bc0f558ffe46b3a15ab43018402}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Bad\+Length}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_a024a8bc0f558ffe46b3a15ab43018402}
+
+
+Definition at line 363 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_a22b6e6d2a3de82f3e05d63e13f44b9fd}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Bad\+Length\+At\+End\+Is\+Ignored}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_a22b6e6d2a3de82f3e05d63e13f44b9fd}
+
+
+Definition at line 374 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_a2dccd9d88a61eb0f59fdea07edfe2022}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Checksum\+Mismatch}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_a2dccd9d88a61eb0f59fdea07edfe2022}
+
+
+Definition at line 382 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_ae2aa67608715051976e4cbb2008e3b52}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Unexpected\+Middle\+Type}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_ae2aa67608715051976e4cbb2008e3b52}
+
+
+Definition at line 390 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_ad618b3ff1dc35a8641c019d8eb4a4e8b}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Unexpected\+Last\+Type}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_ad618b3ff1dc35a8641c019d8eb4a4e8b}
+
+
+Definition at line 399 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_a178460e2ee7a665f0aef08a28217a6d3}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Unexpected\+Full\+Type}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_a178460e2ee7a665f0aef08a28217a6d3}
+
+
+Definition at line 408 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_a7c8a46287bbb1e185ccfcb78c5ae94e3}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Unexpected\+First\+Type}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_a7c8a46287bbb1e185ccfcb78c5ae94e3}
+
+
+Definition at line 419 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_a965e5192bb2f0467f987fe54995d0c89}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Missing\+Last\+Is\+Ignored}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_a965e5192bb2f0467f987fe54995d0c89}
+
+
+Definition at line 430 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_acae9dd4e93ded56d6585082822964b71}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Partial\+Last\+Is\+Ignored}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_acae9dd4e93ded56d6585082822964b71}
+
+
+Definition at line 439 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_a2ea9cc0af9f5d8b6bdc74e3126bd389a}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Error\+Joins\+Records}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_a2ea9cc0af9f5d8b6bdc74e3126bd389a}
+
+
+Definition at line 448 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_a6ee7068a33cb134e26e7d1cf58327064}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Read\+Start}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_a6ee7068a33cb134e26e7d1cf58327064}
+
+
+Definition at line 471 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_af9cc8dffe50b0cefff163fdca58d1a08}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Read\+Second\+One\+Off}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_af9cc8dffe50b0cefff163fdca58d1a08}
+
+
+Definition at line 475 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_ab734bca6b78216dc41b112075258dbe7}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Read\+Second\+Ten\+Thousand}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_ab734bca6b78216dc41b112075258dbe7}
+
+
+Definition at line 479 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_aa9e212a334431228c79a843316480db0}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Read\+Second\+Start}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_aa9e212a334431228c79a843316480db0}
+
+
+Definition at line 483 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_af5f8505f08225382f290158f5175cca0}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Read\+Third\+One\+Off}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_af5f8505f08225382f290158f5175cca0}
+
+
+Definition at line 487 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_a87cfcd7bb0a248dc72d9856e1d00d519}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Read\+Third\+Start}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_a87cfcd7bb0a248dc72d9856e1d00d519}
+
+
+Definition at line 491 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_abbda151ff0e2439ac1dfa823a6089439}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Read\+Fourth\+One\+Off}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_abbda151ff0e2439ac1dfa823a6089439}
+
+
+Definition at line 495 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_a85f6833939c09f181924774403bfbe4f}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Read\+Fourth\+First\+Block\+Trailer}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_a85f6833939c09f181924774403bfbe4f}
+
+
+Definition at line 499 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_a6fb47c0abe5c036d95a4f9aeb1d62174}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Read\+Fourth\+Middle\+Block}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_a6fb47c0abe5c036d95a4f9aeb1d62174}
+
+
+Definition at line 503 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_a9c80a844e21aec7c6fbde209e99c1ad8}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Read\+Fourth\+Last\+Block}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_a9c80a844e21aec7c6fbde209e99c1ad8}
+
+
+Definition at line 507 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_aa652940a4e7bff7fa21f0d1c941712d7}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Read\+Fourth\+Start}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_aa652940a4e7bff7fa21f0d1c941712d7}
+
+
+Definition at line 511 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_a74e0fb6c39041d1ef2193114b0a2275b}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Read\+End}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_a74e0fb6c39041d1ef2193114b0a2275b}
+
+
+Definition at line 517 of file log\+\_\+test.\+cc.
+
+\hypertarget{namespaceleveldb_1_1log_ae1081d375c33d8b2f01d5593ecd5f4a7}{}\index{leveldb\+::log@{leveldb\+::log}!T\+E\+S\+T@{T\+E\+S\+T}}
+\index{T\+E\+S\+T@{T\+E\+S\+T}!leveldb\+::log@{leveldb\+::log}}
+\subsubsection[{T\+E\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}leveldb\+::log\+::\+T\+E\+S\+T (
+\begin{DoxyParamCaption}
+\item[{{\bf Log\+Test}}]{, }
+\item[{Read\+Past\+End}]{}
+\end{DoxyParamCaption}
+)}\label{namespaceleveldb_1_1log_ae1081d375c33d8b2f01d5593ecd5f4a7}
+
+
+Definition at line 521 of file log\+\_\+test.\+cc.
+

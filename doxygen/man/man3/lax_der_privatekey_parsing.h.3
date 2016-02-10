@@ -1,0 +1,42 @@
+.TH "/home/dev/ds-160209/src/secp256k1/contrib/lax_der_privatekey_parsing.h" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/secp256k1/contrib/lax_der_privatekey_parsing.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <secp256k1\&.h>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSECP256K1_WARN_UNUSED_RESULT\fP int \fBec_privkey_export_der\fP (const \fBsecp256k1_context\fP *ctx, unsigned char *privkey, size_t *privkeylen, const unsigned char *seckey, int compressed) \fBSECP256K1_ARG_NONNULL\fP(1) \fBSECP256K1_ARG_NONNULL\fP(2) \fBSECP256K1_ARG_NONNULL\fP(3) \fBSECP256K1_ARG_NONNULL\fP(4)"
+.br
+.ti -1c
+.RI "\fBSECP256K1_WARN_UNUSED_RESULT\fP int \fBec_privkey_import_der\fP (const \fBsecp256k1_context\fP *ctx, unsigned char *seckey, const unsigned char *privkey, size_t privkeylen) \fBSECP256K1_ARG_NONNULL\fP(1) \fBSECP256K1_ARG_NONNULL\fP(2) \fBSECP256K1_ARG_NONNULL\fP(3)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "\fBSECP256K1_WARN_UNUSED_RESULT\fP int ec_privkey_export_der (const \fBsecp256k1_context\fP * ctx, unsigned char * privkey, size_t * privkeylen, const unsigned char * seckey, int compressed)"
+Export a private key in DER format\&.
+.PP
+Returns: 1 if the private key was valid\&. Args: ctx: pointer to a context object, initialized for signing (cannot be NULL) Out: privkey: pointer to an array for storing the private key in BER\&. Should have space for 279 bytes, and cannot be NULL\&. privkeylen: Pointer to an int where the length of the private key in privkey will be stored\&. In: seckey: pointer to a 32-byte secret key to export\&. compressed: 1 if the key should be exported in compressed format, 0 otherwise
+.PP
+This function is purely meant for compatibility with applications that require BER encoded keys\&. When working with secp256k1-specific code, the simple 32-byte private keys are sufficient\&.
+.PP
+Note that this function does not guarantee correct DER output\&. It is guaranteed to be parsable by secp256k1_ec_privkey_import_der 
+.PP
+Definition at line 56 of file lax_der_privatekey_parsing\&.c\&.
+.SS "\fBSECP256K1_WARN_UNUSED_RESULT\fP int ec_privkey_import_der (const \fBsecp256k1_context\fP * ctx, unsigned char * seckey, const unsigned char * privkey, size_t privkeylen)"
+Import a private key in DER format\&. Returns: 1 if a private key was extracted\&. Args: ctx: pointer to a context object (cannot be NULL)\&. Out: seckey: pointer to a 32-byte array for storing the private key\&. (cannot be NULL)\&. In: privkey: pointer to a private key in DER format (cannot be NULL)\&. privkeylen: length of the DER private key pointed to be privkey\&.
+.PP
+This function will accept more than just strict DER, and even allow some BER violations\&. The public key stored inside the DER-encoded private key is not verified for correctness, nor are the curve parameters\&. Use this function only if you know in advance it is supposed to contain a secp256k1 private key\&. 
+.PP
+Definition at line 12 of file lax_der_privatekey_parsing\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

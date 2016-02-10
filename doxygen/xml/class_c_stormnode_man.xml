@@ -1,0 +1,673 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_stormnode_man" kind="class" language="C++" prot="public">
+    <compoundname>CStormnodeMan</compoundname>
+    <includes refid="stormnodeman_8h" local="no">stormnodeman.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_c_stormnode_man_1af95a3624b7cb77e13ae08c809dc0e108" prot="private" static="no" mutable="yes">
+        <type><ref refid="sync_8h_1a37a4692b2d517f2843655ca11af7668a" kindref="member">CCriticalSection</ref></type>
+        <definition>CCriticalSection CStormnodeMan::cs</definition>
+        <argsstring></argsstring>
+        <name>cs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="53" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_stormnode_man_1ae3dcad3baeba1ded45b105ca7ba76588" prot="private" static="no" mutable="yes">
+        <type><ref refid="sync_8h_1a37a4692b2d517f2843655ca11af7668a" kindref="member">CCriticalSection</ref></type>
+        <definition>CCriticalSection CStormnodeMan::cs_process_message</definition>
+        <argsstring></argsstring>
+        <name>cs_process_message</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="56" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_stormnode_man_1acb373fe7d56e3b1ac5d31d2d7e96e35c" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_c_stormnode" kindref="compound">CStormnode</ref> &gt;</type>
+        <definition>std::vector&lt;CStormnode&gt; CStormnodeMan::vStormnodes</definition>
+        <argsstring></argsstring>
+        <name>vStormnodes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="59" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_stormnode_man_1ad4f1f1027522a5fa7d8e35714b90c3d3" prot="private" static="no" mutable="no">
+        <type>std::map&lt; <ref refid="class_c_net_addr" kindref="compound">CNetAddr</ref>, <ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref> &gt;</type>
+        <definition>std::map&lt;CNetAddr, int64_t&gt; CStormnodeMan::mAskedUsForStormnodeList</definition>
+        <argsstring></argsstring>
+        <name>mAskedUsForStormnodeList</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="61" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_stormnode_man_1a2b23ea4d62ceb28a7b4d859180994754" prot="private" static="no" mutable="no">
+        <type>std::map&lt; <ref refid="class_c_net_addr" kindref="compound">CNetAddr</ref>, <ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref> &gt;</type>
+        <definition>std::map&lt;CNetAddr, int64_t&gt; CStormnodeMan::mWeAskedForStormnodeList</definition>
+        <argsstring></argsstring>
+        <name>mWeAskedForStormnodeList</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="63" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_stormnode_man_1a8068dc932793e4c2eaf4682706c04485" prot="private" static="no" mutable="no">
+        <type>std::map&lt; <ref refid="class_c_out_point" kindref="compound">COutPoint</ref>, <ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref> &gt;</type>
+        <definition>std::map&lt;COutPoint, int64_t&gt; CStormnodeMan::mWeAskedForStormnodeListEntry</definition>
+        <argsstring></argsstring>
+        <name>mWeAskedForStormnodeListEntry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="65" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_c_stormnode_man_1a320b85dcbbc8f01a412c96b23bca5424" prot="public" static="no" mutable="no">
+        <type>map&lt; <ref refid="classuint256" kindref="compound">uint256</ref>, <ref refid="class_c_stormnode_broadcast" kindref="compound">CStormnodeBroadcast</ref> &gt;</type>
+        <definition>map&lt;uint256, CStormnodeBroadcast&gt; CStormnodeMan::mapSeenStormnodeBroadcast</definition>
+        <argsstring></argsstring>
+        <name>mapSeenStormnodeBroadcast</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="69" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.h" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_stormnode_man_1a9d4e8bbd492630f16b61eec58b722a86" prot="public" static="no" mutable="no">
+        <type>map&lt; <ref refid="classuint256" kindref="compound">uint256</ref>, <ref refid="class_c_stormnode_ping" kindref="compound">CStormnodePing</ref> &gt;</type>
+        <definition>map&lt;uint256, CStormnodePing&gt; CStormnodeMan::mapSeenStormnodePing</definition>
+        <argsstring></argsstring>
+        <name>mapSeenStormnodePing</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="71" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.h" bodystart="71" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_stormnode_man_1a28c2a3dcb6098e416de7b1758b8d48da" prot="public" static="no" mutable="no">
+        <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+        <definition>int64_t CStormnodeMan::nSsqCount</definition>
+        <argsstring></argsstring>
+        <name>nSsqCount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="74" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_stormnode_man_1a3a52c5c9b8e3d7da4cb5c649cb9a6ca3" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>CStormnodeMan::ADD_SERIALIZE_METHODS</definition>
+        <argsstring></argsstring>
+        <name>ADD_SERIALIZE_METHODS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="76" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.h" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_stormnode_man_1a2eb7be1ad46598e33b6c60248bc7b7e1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Stream</type>
+          </param>
+          <param>
+            <type>typename Operation</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void CStormnodeMan::SerializationOp</definition>
+        <argsstring>(Stream &amp;s, Operation ser_action, int nType, int nVersion)</argsstring>
+        <name>SerializationOp</name>
+        <param>
+          <type>Stream &amp;</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>Operation</type>
+          <declname>ser_action</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nType</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nVersion</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="79" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.h" bodystart="79" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_man_1a72855bd5da6330e45c0964f6e1f9ade1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CStormnodeMan::CStormnodeMan</definition>
+        <argsstring>()</argsstring>
+        <name>CStormnodeMan</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="91" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.cpp" bodystart="207" bodyend="209"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_man_1a0870cfe9ca46157c0e6ad9cf9f9cc1d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CStormnodeMan::CStormnodeMan</definition>
+        <argsstring>(CStormnodeMan &amp;other)</argsstring>
+        <name>CStormnodeMan</name>
+        <param>
+          <type><ref refid="class_c_stormnode_man" kindref="compound">CStormnodeMan</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="92" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_man_1aa4a3ed2fe6508a7922e7b7bd1cbf89c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CStormnodeMan::Add</definition>
+        <argsstring>(CStormnode &amp;sn)</argsstring>
+        <name>Add</name>
+        <param>
+          <type><ref refid="class_c_stormnode" kindref="compound">CStormnode</ref> &amp;</type>
+          <declname>sn</declname>
+        </param>
+        <briefdescription>
+<para>Add an entry. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="95" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.cpp" bodystart="211" bodyend="227"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_man_1a918a4ccb668808449809a77adc036301" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CStormnodeMan::AskForSN</definition>
+        <argsstring>(CNode *pnode, CTxIn &amp;vin)</argsstring>
+        <name>AskForSN</name>
+        <param>
+          <type><ref refid="class_c_node" kindref="compound">CNode</ref> *</type>
+          <declname>pnode</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_tx_in" kindref="compound">CTxIn</ref> &amp;</type>
+          <declname>vin</declname>
+        </param>
+        <briefdescription>
+<para>Ask (source) node for snb. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="98" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.cpp" bodystart="229" bodyend="244"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_man_1a2e0f73af79892b3f86b7d1b07eaa85ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CStormnodeMan::Check</definition>
+        <argsstring>()</argsstring>
+        <name>Check</name>
+        <briefdescription>
+<para>Check all Stormnodes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="101" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.cpp" bodystart="246" bodyend="253"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_man_1a6d8c3a832ea7d6f4780a59e2ae0441b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CStormnodeMan::CheckAndRemove</definition>
+        <argsstring>(bool forceExpiredRemoval=false)</argsstring>
+        <name>CheckAndRemove</name>
+        <param>
+          <type>bool</type>
+          <declname>forceExpiredRemoval</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+<para>Check all Stormnodes and remove inactive. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="104" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.cpp" bodystart="255" bodyend="350"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_man_1aef04ea77a6774bf594f205362ba8f91d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CStormnodeMan::Clear</definition>
+        <argsstring>()</argsstring>
+        <name>Clear</name>
+        <briefdescription>
+<para>Clear Stormnode vector. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="107" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.cpp" bodystart="352" bodyend="362"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_man_1a02b9b11565e19f2c9dafbe132341fabd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int CStormnodeMan::CountEnabled</definition>
+        <argsstring>(int protocolVersion=-1)</argsstring>
+        <name>CountEnabled</name>
+        <param>
+          <type>int</type>
+          <declname>protocolVersion</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="109" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.cpp" bodystart="364" bodyend="376"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_man_1a3f8f9f86f01df701533b544903b55113" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CStormnodeMan::SsegUpdate</definition>
+        <argsstring>(CNode *pnode)</argsstring>
+        <name>SsegUpdate</name>
+        <param>
+          <type><ref refid="class_c_node" kindref="compound">CNode</ref> *</type>
+          <declname>pnode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="111" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.cpp" bodystart="378" bodyend="398"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_man_1a346025e5a78a04ddfa80252ea1433c72" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_c_stormnode" kindref="compound">CStormnode</ref> *</type>
+        <definition>CStormnode * CStormnodeMan::Find</definition>
+        <argsstring>(const CScript &amp;payee)</argsstring>
+        <name>Find</name>
+        <param>
+          <type>const <ref refid="class_c_script" kindref="compound">CScript</ref> &amp;</type>
+          <declname>payee</declname>
+        </param>
+        <briefdescription>
+<para>Find an entry. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="114" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.cpp" bodystart="400" bodyend="412"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_man_1a64b6022d93220e65e739c5cf8ba74918" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_c_stormnode" kindref="compound">CStormnode</ref> *</type>
+        <definition>CStormnode * CStormnodeMan::Find</definition>
+        <argsstring>(const CTxIn &amp;vin)</argsstring>
+        <name>Find</name>
+        <param>
+          <type>const <ref refid="class_c_tx_in" kindref="compound">CTxIn</ref> &amp;</type>
+          <declname>vin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="115" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.cpp" bodystart="414" bodyend="424"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_man_1a8daba6b955faaf839f9441b754bd7eef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_c_stormnode" kindref="compound">CStormnode</ref> *</type>
+        <definition>CStormnode * CStormnodeMan::Find</definition>
+        <argsstring>(const CPubKey &amp;pubKeyStormnode)</argsstring>
+        <name>Find</name>
+        <param>
+          <type>const <ref refid="class_c_pub_key" kindref="compound">CPubKey</ref> &amp;</type>
+          <declname>pubKeyStormnode</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="116" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.cpp" bodystart="427" bodyend="437"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_man_1aeaaefff98af62a3d79d72e23f5539a72" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_c_stormnode" kindref="compound">CStormnode</ref> *</type>
+        <definition>CStormnode * CStormnodeMan::GetNextStormnodeInQueueForPayment</definition>
+        <argsstring>(int nBlockHeight, bool fFilterSigTime, int &amp;nCount)</argsstring>
+        <name>GetNextStormnodeInQueueForPayment</name>
+        <param>
+          <type>int</type>
+          <declname>nBlockHeight</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fFilterSigTime</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>nCount</declname>
+        </param>
+        <briefdescription>
+<para>Find an entry in the stormnode list that is next to be paid. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="119" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.cpp" bodystart="442" bodyend="502"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_man_1a24417dae3da8762e9be495f25b0a6d30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_c_stormnode" kindref="compound">CStormnode</ref> *</type>
+        <definition>CStormnode * CStormnodeMan::FindRandomNotInVec</definition>
+        <argsstring>(std::vector&lt; CTxIn &gt; &amp;vecToExclude, int protocolVersion=-1)</argsstring>
+        <name>FindRandomNotInVec</name>
+        <param>
+          <type>std::vector&lt; <ref refid="class_c_tx_in" kindref="compound">CTxIn</ref> &gt; &amp;</type>
+          <declname>vecToExclude</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>protocolVersion</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+<para>Find a random entry. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="122" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.cpp" bodystart="504" bodyend="534"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_man_1aad6c3131e73e2b686f3847148b536448" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_c_stormnode" kindref="compound">CStormnode</ref> *</type>
+        <definition>CStormnode * CStormnodeMan::GetCurrentStormNode</definition>
+        <argsstring>(int mod=1, int64_t nBlockHeight=0, int minProtocol=0)</argsstring>
+        <name>GetCurrentStormNode</name>
+        <param>
+          <type>int</type>
+          <declname>mod</declname>
+          <defval>1</defval>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+          <declname>nBlockHeight</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>minProtocol</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+<para>Get the current winner for this block. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="125" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.cpp" bodystart="536" bodyend="558"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_man_1a7002dd29b10a0db885c361f1d9981de8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="class_c_stormnode" kindref="compound">CStormnode</ref> &gt;</type>
+        <definition>std::vector&lt;CStormnode&gt; CStormnodeMan::GetFullStormnodeVector</definition>
+        <argsstring>()</argsstring>
+        <name>GetFullStormnodeVector</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="127" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.h" bodystart="127" bodyend="127"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_man_1a5337440744bbc51b2e7a9752c3613a26" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; pair&lt; int, <ref refid="class_c_stormnode" kindref="compound">CStormnode</ref> &gt; &gt;</type>
+        <definition>std::vector&lt; pair&lt; int, CStormnode &gt; &gt; CStormnodeMan::GetStormnodeRanks</definition>
+        <argsstring>(int64_t nBlockHeight, int minProtocol=0)</argsstring>
+        <name>GetStormnodeRanks</name>
+        <param>
+          <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+          <declname>nBlockHeight</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>minProtocol</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="129" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.cpp" bodystart="594" bodyend="628"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_man_1ad1fb56e4ee364e2b18bab57210f3f3cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int CStormnodeMan::GetStormnodeRank</definition>
+        <argsstring>(const CTxIn &amp;vin, int64_t nBlockHeight, int minProtocol=0, bool fOnlyActive=true)</argsstring>
+        <name>GetStormnodeRank</name>
+        <param>
+          <type>const <ref refid="class_c_tx_in" kindref="compound">CTxIn</ref> &amp;</type>
+          <declname>vin</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+          <declname>nBlockHeight</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>minProtocol</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fOnlyActive</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="130" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.cpp" bodystart="560" bodyend="592"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_man_1af631f4c124f3022e4c388d759ca69605" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_c_stormnode" kindref="compound">CStormnode</ref> *</type>
+        <definition>CStormnode * CStormnodeMan::GetStormnodeByRank</definition>
+        <argsstring>(int nRank, int64_t nBlockHeight, int minProtocol=0, bool fOnlyActive=true)</argsstring>
+        <name>GetStormnodeByRank</name>
+        <param>
+          <type>int</type>
+          <declname>nRank</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+          <declname>nBlockHeight</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>minProtocol</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fOnlyActive</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="131" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.cpp" bodystart="630" bodyend="660"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_man_1a52708159ad91808d18a0b6082ed6daca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CStormnodeMan::ProcessStormnodeConnections</definition>
+        <argsstring>()</argsstring>
+        <name>ProcessStormnodeConnections</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="133" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.cpp" bodystart="662" bodyend="672"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_man_1ae30d0b9b493e23c3d14ec48c77be7b6f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CStormnodeMan::ProcessMessage</definition>
+        <argsstring>(CNode *pfrom, std::string &amp;strCommand, CDataStream &amp;vRecv)</argsstring>
+        <name>ProcessMessage</name>
+        <param>
+          <type><ref refid="class_c_node" kindref="compound">CNode</ref> *</type>
+          <declname>pfrom</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>strCommand</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_data_stream" kindref="compound">CDataStream</ref> &amp;</type>
+          <declname>vRecv</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="135" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.cpp" bodystart="674" bodyend="803"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_man_1ad15cbc672903cce82c757118b74c267c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int CStormnodeMan::size</definition>
+        <argsstring>()</argsstring>
+        <name>size</name>
+        <briefdescription>
+<para>Return the number of (unique) Stormnodes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="138" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.h" bodystart="138" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_man_1a5c49bb4788cad79574d90fdca8ea7464" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string CStormnodeMan::ToString</definition>
+        <argsstring>() const </argsstring>
+        <name>ToString</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="140" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.cpp" bodystart="820" bodyend="831"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_man_1ad1732f409f53dc6186c6bb40894f1ed5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CStormnodeMan::Remove</definition>
+        <argsstring>(CTxIn vin)</argsstring>
+        <name>Remove</name>
+        <param>
+          <type><ref refid="class_c_tx_in" kindref="compound">CTxIn</ref></type>
+          <declname>vin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnodeman.h" line="142" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.cpp" bodystart="805" bodyend="818"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/stormnodeman.h" line="50" column="1" bodyfile="/home/dev/ds-160209/src/stormnodeman.h" bodystart="49" bodyend="144"/>
+    <listofallmembers>
+      <member refid="class_c_stormnode_man_1aa4a3ed2fe6508a7922e7b7bd1cbf89c3" prot="public" virt="non-virtual"><scope>CStormnodeMan</scope><name>Add</name></member>
+      <member refid="class_c_stormnode_man_1a3a52c5c9b8e3d7da4cb5c649cb9a6ca3" prot="public" virt="non-virtual"><scope>CStormnodeMan</scope><name>ADD_SERIALIZE_METHODS</name></member>
+      <member refid="class_c_stormnode_man_1a918a4ccb668808449809a77adc036301" prot="public" virt="non-virtual"><scope>CStormnodeMan</scope><name>AskForSN</name></member>
+      <member refid="class_c_stormnode_man_1a2e0f73af79892b3f86b7d1b07eaa85ce" prot="public" virt="non-virtual"><scope>CStormnodeMan</scope><name>Check</name></member>
+      <member refid="class_c_stormnode_man_1a6d8c3a832ea7d6f4780a59e2ae0441b8" prot="public" virt="non-virtual"><scope>CStormnodeMan</scope><name>CheckAndRemove</name></member>
+      <member refid="class_c_stormnode_man_1aef04ea77a6774bf594f205362ba8f91d" prot="public" virt="non-virtual"><scope>CStormnodeMan</scope><name>Clear</name></member>
+      <member refid="class_c_stormnode_man_1a02b9b11565e19f2c9dafbe132341fabd" prot="public" virt="non-virtual"><scope>CStormnodeMan</scope><name>CountEnabled</name></member>
+      <member refid="class_c_stormnode_man_1af95a3624b7cb77e13ae08c809dc0e108" prot="private" virt="non-virtual"><scope>CStormnodeMan</scope><name>cs</name></member>
+      <member refid="class_c_stormnode_man_1ae3dcad3baeba1ded45b105ca7ba76588" prot="private" virt="non-virtual"><scope>CStormnodeMan</scope><name>cs_process_message</name></member>
+      <member refid="class_c_stormnode_man_1a72855bd5da6330e45c0964f6e1f9ade1" prot="public" virt="non-virtual"><scope>CStormnodeMan</scope><name>CStormnodeMan</name></member>
+      <member refid="class_c_stormnode_man_1a0870cfe9ca46157c0e6ad9cf9f9cc1d7" prot="public" virt="non-virtual"><scope>CStormnodeMan</scope><name>CStormnodeMan</name></member>
+      <member refid="class_c_stormnode_man_1a346025e5a78a04ddfa80252ea1433c72" prot="public" virt="non-virtual"><scope>CStormnodeMan</scope><name>Find</name></member>
+      <member refid="class_c_stormnode_man_1a64b6022d93220e65e739c5cf8ba74918" prot="public" virt="non-virtual"><scope>CStormnodeMan</scope><name>Find</name></member>
+      <member refid="class_c_stormnode_man_1a8daba6b955faaf839f9441b754bd7eef" prot="public" virt="non-virtual"><scope>CStormnodeMan</scope><name>Find</name></member>
+      <member refid="class_c_stormnode_man_1a24417dae3da8762e9be495f25b0a6d30" prot="public" virt="non-virtual"><scope>CStormnodeMan</scope><name>FindRandomNotInVec</name></member>
+      <member refid="class_c_stormnode_man_1aad6c3131e73e2b686f3847148b536448" prot="public" virt="non-virtual"><scope>CStormnodeMan</scope><name>GetCurrentStormNode</name></member>
+      <member refid="class_c_stormnode_man_1a7002dd29b10a0db885c361f1d9981de8" prot="public" virt="non-virtual"><scope>CStormnodeMan</scope><name>GetFullStormnodeVector</name></member>
+      <member refid="class_c_stormnode_man_1aeaaefff98af62a3d79d72e23f5539a72" prot="public" virt="non-virtual"><scope>CStormnodeMan</scope><name>GetNextStormnodeInQueueForPayment</name></member>
+      <member refid="class_c_stormnode_man_1af631f4c124f3022e4c388d759ca69605" prot="public" virt="non-virtual"><scope>CStormnodeMan</scope><name>GetStormnodeByRank</name></member>
+      <member refid="class_c_stormnode_man_1ad1fb56e4ee364e2b18bab57210f3f3cd" prot="public" virt="non-virtual"><scope>CStormnodeMan</scope><name>GetStormnodeRank</name></member>
+      <member refid="class_c_stormnode_man_1a5337440744bbc51b2e7a9752c3613a26" prot="public" virt="non-virtual"><scope>CStormnodeMan</scope><name>GetStormnodeRanks</name></member>
+      <member refid="class_c_stormnode_man_1a320b85dcbbc8f01a412c96b23bca5424" prot="public" virt="non-virtual"><scope>CStormnodeMan</scope><name>mapSeenStormnodeBroadcast</name></member>
+      <member refid="class_c_stormnode_man_1a9d4e8bbd492630f16b61eec58b722a86" prot="public" virt="non-virtual"><scope>CStormnodeMan</scope><name>mapSeenStormnodePing</name></member>
+      <member refid="class_c_stormnode_man_1ad4f1f1027522a5fa7d8e35714b90c3d3" prot="private" virt="non-virtual"><scope>CStormnodeMan</scope><name>mAskedUsForStormnodeList</name></member>
+      <member refid="class_c_stormnode_man_1a2b23ea4d62ceb28a7b4d859180994754" prot="private" virt="non-virtual"><scope>CStormnodeMan</scope><name>mWeAskedForStormnodeList</name></member>
+      <member refid="class_c_stormnode_man_1a8068dc932793e4c2eaf4682706c04485" prot="private" virt="non-virtual"><scope>CStormnodeMan</scope><name>mWeAskedForStormnodeListEntry</name></member>
+      <member refid="class_c_stormnode_man_1a28c2a3dcb6098e416de7b1758b8d48da" prot="public" virt="non-virtual"><scope>CStormnodeMan</scope><name>nSsqCount</name></member>
+      <member refid="class_c_stormnode_man_1ae30d0b9b493e23c3d14ec48c77be7b6f" prot="public" virt="non-virtual"><scope>CStormnodeMan</scope><name>ProcessMessage</name></member>
+      <member refid="class_c_stormnode_man_1a52708159ad91808d18a0b6082ed6daca" prot="public" virt="non-virtual"><scope>CStormnodeMan</scope><name>ProcessStormnodeConnections</name></member>
+      <member refid="class_c_stormnode_man_1ad1732f409f53dc6186c6bb40894f1ed5" prot="public" virt="non-virtual"><scope>CStormnodeMan</scope><name>Remove</name></member>
+      <member refid="class_c_stormnode_man_1a2eb7be1ad46598e33b6c60248bc7b7e1" prot="public" virt="non-virtual"><scope>CStormnodeMan</scope><name>SerializationOp</name></member>
+      <member refid="class_c_stormnode_man_1ad15cbc672903cce82c757118b74c267c" prot="public" virt="non-virtual"><scope>CStormnodeMan</scope><name>size</name></member>
+      <member refid="class_c_stormnode_man_1a3f8f9f86f01df701533b544903b55113" prot="public" virt="non-virtual"><scope>CStormnodeMan</scope><name>SsegUpdate</name></member>
+      <member refid="class_c_stormnode_man_1a5c49bb4788cad79574d90fdca8ea7464" prot="public" virt="non-virtual"><scope>CStormnodeMan</scope><name>ToString</name></member>
+      <member refid="class_c_stormnode_man_1acb373fe7d56e3b1ac5d31d2d7e96e35c" prot="private" virt="non-virtual"><scope>CStormnodeMan</scope><name>vStormnodes</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

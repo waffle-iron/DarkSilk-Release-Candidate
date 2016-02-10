@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="trafficgraphwidget_8h" kind="file" language="C++">
+    <compoundname>trafficgraphwidget.h</compoundname>
+    <includes local="no">QWidget</includes>
+    <includes local="no">QQueue</includes>
+    <includedby refid="trafficgraphwidget_8cpp" local="yes">/home/dev/ds-160209/src/qt/trafficgraphwidget.cpp</includedby>
+    <incdepgraph>
+      <node id="18071">
+        <label>/home/dev/ds-160209/src/qt/trafficgraphwidget.h</label>
+        <link refid="trafficgraphwidget.h"/>
+        <childnode refid="18072" relation="include">
+        </childnode>
+        <childnode refid="18073" relation="include">
+        </childnode>
+      </node>
+      <node id="18072">
+        <label>QWidget</label>
+      </node>
+      <node id="18073">
+        <label>QQueue</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="18074">
+        <label>/home/dev/ds-160209/src/qt/trafficgraphwidget.h</label>
+        <link refid="trafficgraphwidget.h"/>
+        <childnode refid="18075" relation="include">
+        </childnode>
+      </node>
+      <node id="18075">
+        <label>/home/dev/ds-160209/src/qt/trafficgraphwidget.cpp</label>
+        <link refid="trafficgraphwidget_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_traffic_graph_widget" prot="public">TrafficGraphWidget</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>TRAFFICGRAPHWIDGET_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TRAFFICGRAPHWIDGET_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QWidget&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QQueue&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_client_model" kindref="compound">ClientModel</ref>;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal">QT_BEGIN_NAMESPACE</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">QPaintEvent;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">QTimer;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">QT_END_NAMESPACE</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="class_traffic_graph_widget" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_traffic_graph_widget" kindref="compound">TrafficGraphWidget</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>QWidget</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_OBJECT</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="class_traffic_graph_widget_1a99f4f3f14bab99bef8918cb4f5f69aa6" kindref="member">TrafficGraphWidget</ref>(QWidget<sp/>*parent<sp/>=<sp/>0);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_traffic_graph_widget_1a8f627aaf6171695d94a0e83b239fe1ac" kindref="member">setClientModel</ref>(<ref refid="class_client_model" kindref="compound">ClientModel</ref><sp/>*model);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_traffic_graph_widget_1a5ce07b8f9c222d49bcc65703fbaf9be6" kindref="member">getGraphRangeMins</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_traffic_graph_widget_1a728112be94b731a17ff36136e48adcb2" kindref="member">paintEvent</ref>(QPaintEvent<sp/>*);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>slots:</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_traffic_graph_widget_1a5a1ae0d0a8cc43c67386de4aa1111340" kindref="member">updateRates</ref>();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_traffic_graph_widget_1aa08cb5ae735e58a79bdff42b933ec4c4" kindref="member">setGraphRangeMins</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>mins);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_traffic_graph_widget_1a71c23db2649ab8781fa9a294e540b7ee" kindref="member">clear</ref>();</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>paintPath(QPainterPath<sp/>&amp;path,<sp/>QQueue&lt;float&gt;<sp/>&amp;samples);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>QTimer<sp/>*timer;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>fMax;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nMins;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>QQueue&lt;float&gt;<sp/>vSamplesIn;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>QQueue&lt;float&gt;<sp/>vSamplesOut;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>quint64<sp/>nLastBytesIn;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>quint64<sp/>nLastBytesOut;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_client_model" kindref="compound">ClientModel</ref><sp/>*clientModel;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>TRAFFICGRAPHWIDGET_H</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/qt/trafficgraphwidget.h"/>
+  </compounddef>
+</doxygen>

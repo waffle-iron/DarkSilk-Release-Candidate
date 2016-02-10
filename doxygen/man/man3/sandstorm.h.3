@@ -1,0 +1,229 @@
+.TH "/home/dev/ds-160209/src/sandstorm.h" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/sandstorm.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'sync\&.h'\fP
+.br
+\fC#include 'activestormnode\&.h'\fP
+.br
+\fC#include 'stormnodeman\&.h'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBCTxSSIn\fP"
+.br
+.ti -1c
+.RI "class \fBCTxSSOut\fP"
+.br
+.ti -1c
+.RI "class \fBCSandStormEntry\fP"
+.br
+.ti -1c
+.RI "class \fBCSandstormQueue\fP"
+.br
+.ti -1c
+.RI "class \fBCSandstormBroadcastTx\fP"
+.br
+.ti -1c
+.RI "class \fBCSandStormSigner\fP"
+.br
+.ti -1c
+.RI "class \fBCSandstormPool\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBPOOL_STATUS_UNKNOWN\fP   0"
+.br
+.ti -1c
+.RI "#define \fBPOOL_STATUS_IDLE\fP   1"
+.br
+.ti -1c
+.RI "#define \fBPOOL_STATUS_QUEUE\fP   2"
+.br
+.ti -1c
+.RI "#define \fBPOOL_STATUS_ACCEPTING_ENTRIES\fP   3"
+.br
+.ti -1c
+.RI "#define \fBPOOL_STATUS_FINALIZE_TRANSACTION\fP   4"
+.br
+.ti -1c
+.RI "#define \fBPOOL_STATUS_SIGNING\fP   5"
+.br
+.ti -1c
+.RI "#define \fBPOOL_STATUS_TRANSMISSION\fP   6"
+.br
+.ti -1c
+.RI "#define \fBPOOL_STATUS_ERROR\fP   7"
+.br
+.ti -1c
+.RI "#define \fBPOOL_STATUS_SUCCESS\fP   8"
+.br
+.ti -1c
+.RI "#define \fBSTORMNODE_ACCEPTED\fP   1"
+.br
+.ti -1c
+.RI "#define \fBSTORMNODE_REJECTED\fP   0"
+.br
+.ti -1c
+.RI "#define \fBSTORMNODE_RESET\fP   -1"
+.br
+.ti -1c
+.RI "#define \fBSANDSTORM_QUEUE_TIMEOUT\fP   30"
+.br
+.ti -1c
+.RI "#define \fBSANDSTORM_SIGNING_TIMEOUT\fP   15"
+.br
+.ti -1c
+.RI "#define \fBSANDSTORM_RELAY_IN\fP   1"
+.br
+.ti -1c
+.RI "#define \fBSANDSTORM_RELAY_OUT\fP   2"
+.br
+.ti -1c
+.RI "#define \fBSANDSTORM_RELAY_SIG\fP   3"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBThreadCheckSandStormPool\fP ()"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBCSandstormPool\fP \fBsandStormPool\fP"
+.br
+.ti -1c
+.RI "\fBCSandStormSigner\fP \fBsandStormSigner\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBCSandstormQueue\fP > \fBvecSandstormQueue\fP"
+.br
+.ti -1c
+.RI "std::string \fBstrStormNodePrivKey\fP"
+.br
+.ti -1c
+.RI "map< \fBuint256\fP, \fBCSandstormBroadcastTx\fP > \fBmapSandstormBroadcastTxes\fP"
+.br
+.ti -1c
+.RI "\fBCActiveStormnode\fP \fBactiveStormnode\fP"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define POOL_STATUS_ACCEPTING_ENTRIES   3"
+
+.PP
+Definition at line 24 of file sandstorm\&.h\&.
+.SS "#define POOL_STATUS_ERROR   7"
+
+.PP
+Definition at line 28 of file sandstorm\&.h\&.
+.SS "#define POOL_STATUS_FINALIZE_TRANSACTION   4"
+
+.PP
+Definition at line 25 of file sandstorm\&.h\&.
+.SS "#define POOL_STATUS_IDLE   1"
+
+.PP
+Definition at line 22 of file sandstorm\&.h\&.
+.SS "#define POOL_STATUS_QUEUE   2"
+
+.PP
+Definition at line 23 of file sandstorm\&.h\&.
+.SS "#define POOL_STATUS_SIGNING   5"
+
+.PP
+Definition at line 26 of file sandstorm\&.h\&.
+.SS "#define POOL_STATUS_SUCCESS   8"
+
+.PP
+Definition at line 29 of file sandstorm\&.h\&.
+.SS "#define POOL_STATUS_TRANSMISSION   6"
+
+.PP
+Definition at line 27 of file sandstorm\&.h\&.
+.SS "#define POOL_STATUS_UNKNOWN   0"
+
+.PP
+Definition at line 21 of file sandstorm\&.h\&.
+.SS "#define SANDSTORM_QUEUE_TIMEOUT   30"
+
+.PP
+Definition at line 36 of file sandstorm\&.h\&.
+.SS "#define SANDSTORM_RELAY_IN   1"
+
+.PP
+Definition at line 40 of file sandstorm\&.h\&.
+.SS "#define SANDSTORM_RELAY_OUT   2"
+
+.PP
+Definition at line 41 of file sandstorm\&.h\&.
+.SS "#define SANDSTORM_RELAY_SIG   3"
+
+.PP
+Definition at line 42 of file sandstorm\&.h\&.
+.SS "#define SANDSTORM_SIGNING_TIMEOUT   15"
+
+.PP
+Definition at line 37 of file sandstorm\&.h\&.
+.SS "#define STORMNODE_ACCEPTED   1"
+
+.PP
+Definition at line 32 of file sandstorm\&.h\&.
+.SS "#define STORMNODE_REJECTED   0"
+
+.PP
+Definition at line 33 of file sandstorm\&.h\&.
+.SS "#define STORMNODE_RESET   -1"
+
+.PP
+Definition at line 34 of file sandstorm\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "void ThreadCheckSandStormPool ()"
+
+.PP
+Definition at line 2196 of file sandstorm\&.cpp\&.
+.SH "Variable Documentation"
+.PP 
+.SS "\fBCActiveStormnode\fP activeStormnode"
+
+.PP
+Definition at line 36 of file sandstorm\&.cpp\&.
+.SS "map<\fBuint256\fP, \fBCSandstormBroadcastTx\fP> mapSandstormBroadcastTxes"
+
+.PP
+Definition at line 34 of file sandstorm\&.cpp\&.
+.SS "\fBCSandstormPool\fP sandStormPool"
+
+.PP
+Definition at line 26 of file sandstorm\&.cpp\&.
+.SS "\fBCSandStormSigner\fP sandStormSigner"
+
+.PP
+Definition at line 28 of file sandstorm\&.cpp\&.
+.SS "std::string strStormNodePrivKey"
+
+.PP
+Definition at line 77 of file util\&.cpp\&.
+.SS "std::vector<\fBCSandstormQueue\fP> vecSandstormQueue"
+
+.PP
+Definition at line 30 of file sandstorm\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

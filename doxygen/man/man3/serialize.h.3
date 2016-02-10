@@ -1,0 +1,858 @@
+.TH "/home/dev/ds-160209/src/serialize.h" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/serialize.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <string>\fP
+.br
+\fC#include <vector>\fP
+.br
+\fC#include <map>\fP
+.br
+\fC#include <set>\fP
+.br
+\fC#include <cassert>\fP
+.br
+\fC#include <limits>\fP
+.br
+\fC#include <stdint\&.h>\fP
+.br
+\fC#include <cstring>\fP
+.br
+\fC#include <cstdio>\fP
+.br
+\fC#include <boost/type_traits/is_fundamental\&.hpp>\fP
+.br
+\fC#include <boost/tuple/tuple\&.hpp>\fP
+.br
+\fC#include 'allocators\&.h'\fP
+.br
+\fC#include 'version\&.h'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBCFlatData\fP"
+.br
+.RI "\fIWrapper for serializing arrays and POD\&. \fP"
+.ti -1c
+.RI "class \fBCVarInt< I >\fP"
+.br
+.ti -1c
+.RI "class \fBLimitedString< Limit >\fP"
+.br
+.ti -1c
+.RI "class \fBCSerActionGetSerializeSize\fP"
+.br
+.ti -1c
+.RI "struct \fBCSerActionSerialize\fP"
+.br
+.ti -1c
+.RI "struct \fBCSerActionUnserialize\fP"
+.br
+.ti -1c
+.RI "struct \fBser_streamplaceholder\fP"
+.br
+.ti -1c
+.RI "class \fBCSizeComputer\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBREADWRITE\fP(obj)   (::\fBSerReadWrite\fP(s, (obj), nType, nVersion, ser_action))"
+.br
+.ti -1c
+.RI "#define \fBADD_SERIALIZE_METHODS\fP"
+.br
+.ti -1c
+.RI "#define \fBWRITEDATA\fP(s,  obj)   s\&.write((char*)&(obj), sizeof(obj))"
+.br
+.ti -1c
+.RI "#define \fBREADDATA\fP(s,  obj)   s\&.read((char*)&(obj), sizeof(obj))"
+.br
+.ti -1c
+.RI "#define \fBFLATDATA\fP(obj)   \fBREF\fP(\fBCFlatData\fP((char*)&(obj), (char*)&(obj) + sizeof(obj)))"
+.br
+.ti -1c
+.RI "#define \fBVARINT\fP(obj)   \fBREF\fP(\fBWrapVarInt\fP(\fBREF\fP(obj)))"
+.br
+.ti -1c
+.RI "#define \fBLIMITED_STRING\fP(obj,  n)   \fBREF\fP(\fBLimitedString\fP< n >(\fBREF\fP(obj)))"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef std::vector< char, \fBzero_after_free_allocator\fP< char > > \fBCSerializeData\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBSER_NETWORK\fP = (1 << 0), \fBSER_DISK\fP = (1 << 1), \fBSER_GETHASH\fP = (1 << 2), \fBSER_SKIPSIG\fP = (1 << 16), \fBSER_BLOCKHEADERONLY\fP = (1 << 17) }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename T > T & \fBREF\fP (const T &val)"
+.br
+.ti -1c
+.RI "template<typename T > T * \fBNCONST_PTR\fP (const T *val)"
+.br
+.ti -1c
+.RI "template<class T , class TAl > T * \fBbegin_ptr\fP (std::vector< T, TAl > &v)"
+.br
+.ti -1c
+.RI "template<class T , class TAl > const T * \fBbegin_ptr\fP (const std::vector< T, TAl > &v)"
+.br
+.ti -1c
+.RI "template<class T , class TAl > T * \fBend_ptr\fP (std::vector< T, TAl > &v)"
+.br
+.ti -1c
+.RI "template<class T , class TAl > const T * \fBend_ptr\fP (const std::vector< T, TAl > &v)"
+.br
+.ti -1c
+.RI "unsigned int \fBGetSerializeSize\fP (char a, int, int=0)"
+.br
+.ti -1c
+.RI "unsigned int \fBGetSerializeSize\fP (signed char a, int, int=0)"
+.br
+.ti -1c
+.RI "unsigned int \fBGetSerializeSize\fP (unsigned char a, int, int=0)"
+.br
+.ti -1c
+.RI "unsigned int \fBGetSerializeSize\fP (signed short a, int, int=0)"
+.br
+.ti -1c
+.RI "unsigned int \fBGetSerializeSize\fP (unsigned short a, int, int=0)"
+.br
+.ti -1c
+.RI "unsigned int \fBGetSerializeSize\fP (signed int a, int, int=0)"
+.br
+.ti -1c
+.RI "unsigned int \fBGetSerializeSize\fP (unsigned int a, int, int=0)"
+.br
+.ti -1c
+.RI "unsigned int \fBGetSerializeSize\fP (signed long a, int, int=0)"
+.br
+.ti -1c
+.RI "unsigned int \fBGetSerializeSize\fP (unsigned long a, int, int=0)"
+.br
+.ti -1c
+.RI "unsigned int \fBGetSerializeSize\fP (signed long long a, int, int=0)"
+.br
+.ti -1c
+.RI "unsigned int \fBGetSerializeSize\fP (unsigned long long a, int, int=0)"
+.br
+.ti -1c
+.RI "unsigned int \fBGetSerializeSize\fP (float a, int, int=0)"
+.br
+.ti -1c
+.RI "unsigned int \fBGetSerializeSize\fP (double a, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBSerialize\fP (Stream &s, char a, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBSerialize\fP (Stream &s, signed char a, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBSerialize\fP (Stream &s, unsigned char a, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBSerialize\fP (Stream &s, signed short a, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBSerialize\fP (Stream &s, unsigned short a, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBSerialize\fP (Stream &s, signed int a, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBSerialize\fP (Stream &s, unsigned int a, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBSerialize\fP (Stream &s, signed long a, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBSerialize\fP (Stream &s, unsigned long a, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBSerialize\fP (Stream &s, signed long long a, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBSerialize\fP (Stream &s, unsigned long long a, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBSerialize\fP (Stream &s, float a, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBSerialize\fP (Stream &s, double a, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBUnserialize\fP (Stream &s, char &a, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBUnserialize\fP (Stream &s, signed char &a, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBUnserialize\fP (Stream &s, unsigned char &a, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBUnserialize\fP (Stream &s, signed short &a, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBUnserialize\fP (Stream &s, unsigned short &a, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBUnserialize\fP (Stream &s, signed int &a, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBUnserialize\fP (Stream &s, unsigned int &a, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBUnserialize\fP (Stream &s, signed long &a, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBUnserialize\fP (Stream &s, unsigned long &a, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBUnserialize\fP (Stream &s, signed long long &a, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBUnserialize\fP (Stream &s, unsigned long long &a, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBUnserialize\fP (Stream &s, float &a, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBUnserialize\fP (Stream &s, double &a, int, int=0)"
+.br
+.ti -1c
+.RI "unsigned int \fBGetSerializeSize\fP (bool a, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBSerialize\fP (Stream &s, bool a, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBUnserialize\fP (Stream &s, bool &a, int, int=0)"
+.br
+.ti -1c
+.RI "unsigned int \fBGetSizeOfCompactSize\fP (\fBuint64_t\fP nSize)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBWriteCompactSize\fP (Stream &os, \fBuint64_t\fP nSize)"
+.br
+.ti -1c
+.RI "template<typename Stream > \fBuint64_t\fP \fBReadCompactSize\fP (Stream &is)"
+.br
+.ti -1c
+.RI "template<typename I > unsigned int \fBGetSizeOfVarInt\fP (I n)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename I > void \fBWriteVarInt\fP (Stream &os, I n)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename I > I \fBReadVarInt\fP (Stream &is)"
+.br
+.ti -1c
+.RI "template<typename I > \fBCVarInt\fP< I > \fBWrapVarInt\fP (I &n)"
+.br
+.ti -1c
+.RI "template<typename C > unsigned int \fBGetSerializeSize\fP (const std::basic_string< C > &str, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename C > void \fBSerialize\fP (Stream &os, const std::basic_string< C > &str, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename C > void \fBUnserialize\fP (Stream &is, std::basic_string< C > &str, int, int=0)"
+.br
+.ti -1c
+.RI "template<typename T , typename A > unsigned int \fBGetSerializeSize_impl\fP (const std::vector< T, A > &v, int nType, int nVersion, const boost::true_type &)"
+.br
+.ti -1c
+.RI "template<typename T , typename A > unsigned int \fBGetSerializeSize_impl\fP (const std::vector< T, A > &v, int nType, int nVersion, const boost::false_type &)"
+.br
+.ti -1c
+.RI "template<typename T , typename A > unsigned int \fBGetSerializeSize\fP (const std::vector< T, A > &v, int nType, int nVersion)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename T , typename A > void \fBSerialize_impl\fP (Stream &os, const std::vector< T, A > &v, int nType, int nVersion, const boost::true_type &)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename T , typename A > void \fBSerialize_impl\fP (Stream &os, const std::vector< T, A > &v, int nType, int nVersion, const boost::false_type &)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename T , typename A > void \fBSerialize\fP (Stream &os, const std::vector< T, A > &v, int nType, int nVersion)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename T , typename A > void \fBUnserialize_impl\fP (Stream &is, std::vector< T, A > &v, int nType, int nVersion, const boost::true_type &)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename T , typename A > void \fBUnserialize_impl\fP (Stream &is, std::vector< T, A > &v, int nType, int nVersion, const boost::false_type &)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename T , typename A > void \fBUnserialize\fP (Stream &is, std::vector< T, A > &v, int nType, int nVersion)"
+.br
+.ti -1c
+.RI "unsigned int \fBGetSerializeSize\fP (const \fBCScript\fP &v, int nType, int nVersion)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBSerialize\fP (Stream &os, const \fBCScript\fP &v, int nType, int nVersion)"
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBUnserialize\fP (Stream &is, \fBCScript\fP &v, int nType, int nVersion)"
+.br
+.ti -1c
+.RI "template<typename K , typename T > unsigned int \fBGetSerializeSize\fP (const std::pair< K, T > &item, int nType, int nVersion)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename K , typename T > void \fBSerialize\fP (Stream &os, const std::pair< K, T > &item, int nType, int nVersion)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename K , typename T > void \fBUnserialize\fP (Stream &is, std::pair< K, T > &item, int nType, int nVersion)"
+.br
+.ti -1c
+.RI "template<typename T0 , typename T1 , typename T2 > unsigned int \fBGetSerializeSize\fP (const boost::tuple< T0, T1, T2 > &item, int nType, int nVersion)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename T0 , typename T1 , typename T2 > void \fBSerialize\fP (Stream &os, const boost::tuple< T0, T1, T2 > &item, int nType, int nVersion)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename T0 , typename T1 , typename T2 > void \fBUnserialize\fP (Stream &is, boost::tuple< T0, T1, T2 > &item, int nType, int nVersion)"
+.br
+.ti -1c
+.RI "template<typename T0 , typename T1 , typename T2 , typename T3 > unsigned int \fBGetSerializeSize\fP (const boost::tuple< T0, T1, T2, T3 > &item, int nType, int nVersion)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename T0 , typename T1 , typename T2 , typename T3 > void \fBSerialize\fP (Stream &os, const boost::tuple< T0, T1, T2, T3 > &item, int nType, int nVersion)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename T0 , typename T1 , typename T2 , typename T3 > void \fBUnserialize\fP (Stream &is, boost::tuple< T0, T1, T2, T3 > &item, int nType, int nVersion)"
+.br
+.ti -1c
+.RI "template<typename K , typename T , typename Pred , typename A > unsigned int \fBGetSerializeSize\fP (const std::map< K, T, Pred, A > &m, int nType, int nVersion)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename K , typename T , typename Pred , typename A > void \fBSerialize\fP (Stream &os, const std::map< K, T, Pred, A > &m, int nType, int nVersion)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename K , typename T , typename Pred , typename A > void \fBUnserialize\fP (Stream &is, std::map< K, T, Pred, A > &m, int nType, int nVersion)"
+.br
+.ti -1c
+.RI "template<typename K , typename Pred , typename A > unsigned int \fBGetSerializeSize\fP (const std::set< K, Pred, A > &m, int nType, int nVersion)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename K , typename Pred , typename A > void \fBSerialize\fP (Stream &os, const std::set< K, Pred, A > &m, int nType, int nVersion)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename K , typename Pred , typename A > void \fBUnserialize\fP (Stream &is, std::set< K, Pred, A > &m, int nType, int nVersion)"
+.br
+.ti -1c
+.RI "template<typename T > unsigned int \fBGetSerializeSize\fP (const T &a, long nType, int nVersion)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename T > void \fBSerialize\fP (Stream &os, const T &a, long nType, int nVersion)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename T > void \fBUnserialize\fP (Stream &is, T &a, long nType, int nVersion)"
+.br
+.ti -1c
+.RI "template<typename T , typename A > unsigned int \fBGetSerializeSize_impl\fP (const std::vector< T, A > &v, int nType, int nVersion, const unsigned char &)"
+.br
+.ti -1c
+.RI "template<typename T , typename A , typename V > unsigned int \fBGetSerializeSize_impl\fP (const std::vector< T, A > &v, int nType, int nVersion, const V &)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename T , typename A > void \fBSerialize_impl\fP (Stream &os, const std::vector< T, A > &v, int nType, int nVersion, const unsigned char &)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename T , typename A , typename V > void \fBSerialize_impl\fP (Stream &os, const std::vector< T, A > &v, int nType, int nVersion, const V &)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename T , typename A > void \fBUnserialize_impl\fP (Stream &is, std::vector< T, A > &v, int nType, int nVersion, const unsigned char &)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename T , typename A , typename V > void \fBUnserialize_impl\fP (Stream &is, std::vector< T, A > &v, int nType, int nVersion, const V &)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename T > unsigned int \fBSerReadWrite\fP (Stream &s, const T &obj, int nType, int nVersion, \fBCSerActionGetSerializeSize\fP ser_action)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename T > unsigned int \fBSerReadWrite\fP (Stream &s, const T &obj, int nType, int nVersion, \fBCSerActionSerialize\fP ser_action)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename T > unsigned int \fBSerReadWrite\fP (Stream &s, T &obj, int nType, int nVersion, \fBCSerActionUnserialize\fP ser_action)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define ADD_SERIALIZE_METHODS"
+\fBValue:\fP
+.PP
+.nf
+size_t GetSerializeSize(int nType, int nVersion) const {                         \
+        CSizeComputer s(nType, nVersion);                                            \\
+        NCONST_PTR(this)->SerializationOp(s, CSerActionSerialize(), nType, nVersion);\
+        return s\&.size();                                                             \
+    }                                                                                \
+    template<typename Stream>                                                        \
+    void Serialize(Stream& s, int nType, int nVersion) const {                       \\
+        NCONST_PTR(this)->SerializationOp(s, CSerActionSerialize(), nType, nVersion);\
+    }                                                                                \
+    template<typename Stream>                                                        \
+    void Unserialize(Stream& s, int nType, int nVersion) {                           \
+        SerializationOp(s, CSerActionUnserialize(), nType, nVersion);                \
+    }
+.fi
+Implement three methods for serializable objects\&. These are actually wrappers over 'SerializationOp' template, which implements the body of each class' serialization code\&. Adding 'ADD_SERIALIZE_METHODS' in the body of the class causes these wrappers to be added as members\&. 
+.PP
+Definition at line 109 of file serialize\&.h\&.
+.SS "#define FLATDATA(obj)   \fBREF\fP(\fBCFlatData\fP((char*)&(obj), (char*)&(obj) + sizeof(obj)))"
+
+.PP
+Definition at line 329 of file serialize\&.h\&.
+.SS "#define LIMITED_STRING(obj, n)   \fBREF\fP(\fBLimitedString\fP< n >(\fBREF\fP(obj)))"
+
+.PP
+Definition at line 331 of file serialize\&.h\&.
+.SS "#define READDATA(s, obj)   s\&.read((char*)&(obj), sizeof(obj))"
+
+.PP
+Definition at line 128 of file serialize\&.h\&.
+.SS "#define READWRITE(obj)   (::\fBSerReadWrite\fP(s, (obj), nType, nVersion, ser_action))"
+
+.PP
+Definition at line 101 of file serialize\&.h\&.
+.SS "#define VARINT(obj)   \fBREF\fP(\fBWrapVarInt\fP(\fBREF\fP(obj)))"
+
+.PP
+Definition at line 330 of file serialize\&.h\&.
+.SS "#define WRITEDATA(s, obj)   s\&.write((char*)&(obj), sizeof(obj))"
+
+.PP
+Definition at line 127 of file serialize\&.h\&.
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef std::vector<char, \fBzero_after_free_allocator\fP<char> > \fBCSerializeData\fP"
+
+.PP
+Definition at line 836 of file serialize\&.h\&.
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fISER_NETWORK \fP\fP
+.TP
+\fB\fISER_DISK \fP\fP
+.TP
+\fB\fISER_GETHASH \fP\fP
+.TP
+\fB\fISER_SKIPSIG \fP\fP
+.TP
+\fB\fISER_BLOCKHEADERONLY \fP\fP
+.PP
+Definition at line 86 of file serialize\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "template<class T , class TAl > T* begin_ptr (std::vector< T, TAl > & v)\fC [inline]\fP"
+Get begin pointer of vector (non-const version)\&. 
+.PP
+\fBNote:\fP
+.RS 4
+These functions avoid the undefined case of indexing into an empty vector, as well as that of indexing after the end of the vector\&. 
+.RE
+.PP
+
+.PP
+Definition at line 57 of file serialize\&.h\&.
+.SS "template<class T , class TAl > const T* begin_ptr (const std::vector< T, TAl > & v)\fC [inline]\fP"
+Get begin pointer of vector (const version) 
+.PP
+Definition at line 63 of file serialize\&.h\&.
+.SS "template<class T , class TAl > T* end_ptr (std::vector< T, TAl > & v)\fC [inline]\fP"
+Get end pointer of vector (non-const version) 
+.PP
+Definition at line 69 of file serialize\&.h\&.
+.SS "template<class T , class TAl > const T* end_ptr (const std::vector< T, TAl > & v)\fC [inline]\fP"
+Get end pointer of vector (const version) 
+.PP
+Definition at line 75 of file serialize\&.h\&.
+.SS "unsigned int GetSerializeSize (char a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 130 of file serialize\&.h\&.
+.SS "unsigned int GetSerializeSize (signed char a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 131 of file serialize\&.h\&.
+.SS "unsigned int GetSerializeSize (unsigned char a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 132 of file serialize\&.h\&.
+.SS "unsigned int GetSerializeSize (signed short a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 133 of file serialize\&.h\&.
+.SS "unsigned int GetSerializeSize (unsigned short a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 134 of file serialize\&.h\&.
+.SS "unsigned int GetSerializeSize (signed int a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 135 of file serialize\&.h\&.
+.SS "unsigned int GetSerializeSize (unsigned int a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 136 of file serialize\&.h\&.
+.SS "unsigned int GetSerializeSize (signed long a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 137 of file serialize\&.h\&.
+.SS "unsigned int GetSerializeSize (unsigned long a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 138 of file serialize\&.h\&.
+.SS "unsigned int GetSerializeSize (signed long long a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 139 of file serialize\&.h\&.
+.SS "unsigned int GetSerializeSize (unsigned long long a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 140 of file serialize\&.h\&.
+.SS "unsigned int GetSerializeSize (float a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 141 of file serialize\&.h\&.
+.SS "unsigned int GetSerializeSize (double a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 142 of file serialize\&.h\&.
+.SS "unsigned int GetSerializeSize (bool a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 172 of file serialize\&.h\&.
+.SS "template<typename C > unsigned int GetSerializeSize (const std::basic_string< C > & str, int, int = \fC0\fP)"
+
+.PP
+Definition at line 508 of file serialize\&.h\&.
+.SS "template<typename T , typename A > unsigned int GetSerializeSize (const std::vector< T, A > & v, int nType, int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 549 of file serialize\&.h\&.
+.SS "unsigned int GetSerializeSize (const \fBCScript\fP & v, int nType, int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 621 of file serialize\&.h\&.
+.SS "template<typename K , typename T > unsigned int GetSerializeSize (const std::pair< K, T > & item, int nType, int nVersion)"
+
+.PP
+Definition at line 642 of file serialize\&.h\&.
+.SS "template<typename T0 , typename T1 , typename T2 > unsigned int GetSerializeSize (const boost::tuple< T0, T1, T2 > & item, int nType, int nVersion)"
+
+.PP
+Definition at line 665 of file serialize\&.h\&.
+.SS "template<typename T0 , typename T1 , typename T2 , typename T3 > unsigned int GetSerializeSize (const boost::tuple< T0, T1, T2, T3 > & item, int nType, int nVersion)"
+
+.PP
+Definition at line 694 of file serialize\&.h\&.
+.SS "template<typename K , typename T , typename Pred , typename A > unsigned int GetSerializeSize (const std::map< K, T, Pred, A > & m, int nType, int nVersion)"
+
+.PP
+Definition at line 726 of file serialize\&.h\&.
+.SS "template<typename K , typename Pred , typename A > unsigned int GetSerializeSize (const std::set< K, Pred, A > & m, int nType, int nVersion)"
+
+.PP
+Definition at line 760 of file serialize\&.h\&.
+.SS "template<typename T > unsigned int GetSerializeSize (const T & a, long nType, int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 487 of file serialize\&.h\&.
+.SS "template<typename T , typename A > unsigned int GetSerializeSize_impl (const std::vector< T, A > & v, int nType, int nVersion, const boost::true_type &)"
+
+.SS "template<typename T , typename A > unsigned int GetSerializeSize_impl (const std::vector< T, A > & v, int nType, int nVersion, const boost::false_type &)"
+
+.SS "template<typename T , typename A > unsigned int GetSerializeSize_impl (const std::vector< T, A > & v, int nType, int nVersion, const unsigned char &)"
+vector 
+.PP
+Definition at line 534 of file serialize\&.h\&.
+.SS "template<typename T , typename A , typename V > unsigned int GetSerializeSize_impl (const std::vector< T, A > & v, int nType, int nVersion, const V &)"
+
+.PP
+Definition at line 540 of file serialize\&.h\&.
+.SS "unsigned int GetSizeOfCompactSize (\fBuint64_t\fP nSize)\fC [inline]\fP"
+
+.PP
+Definition at line 183 of file serialize\&.h\&.
+.SS "template<typename I > unsigned int GetSizeOfVarInt (I n)\fC [inline]\fP"
+
+.PP
+Definition at line 285 of file serialize\&.h\&.
+.SS "template<typename T > T* NCONST_PTR (const T * val)\fC [inline]\fP"
+Used to acquire a non-const pointer 'this' to generate bodies of const serialization operations from a template 
+.PP
+Definition at line 46 of file serialize\&.h\&.
+.SS "template<typename Stream > \fBuint64_t\fP ReadCompactSize (Stream & is)"
+
+.PP
+Definition at line 224 of file serialize\&.h\&.
+.SS "template<typename Stream , typename I > I ReadVarInt (Stream & is)"
+
+.PP
+Definition at line 315 of file serialize\&.h\&.
+.SS "template<typename T > T& REF (const T & val)\fC [inline]\fP"
+
+.PP
+Definition at line 36 of file serialize\&.h\&.
+.SS "template<typename Stream > void Serialize (Stream & s, char a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 144 of file serialize\&.h\&.
+.SS "template<typename Stream > void Serialize (Stream & s, signed char a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 145 of file serialize\&.h\&.
+.SS "template<typename Stream > void Serialize (Stream & s, unsigned char a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 146 of file serialize\&.h\&.
+.SS "template<typename Stream > void Serialize (Stream & s, signed short a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 147 of file serialize\&.h\&.
+.SS "template<typename Stream > void Serialize (Stream & s, unsigned short a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 148 of file serialize\&.h\&.
+.SS "template<typename Stream > void Serialize (Stream & s, signed int a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 149 of file serialize\&.h\&.
+.SS "template<typename Stream > void Serialize (Stream & s, unsigned int a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 150 of file serialize\&.h\&.
+.SS "template<typename Stream > void Serialize (Stream & s, signed long a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 151 of file serialize\&.h\&.
+.SS "template<typename Stream > void Serialize (Stream & s, unsigned long a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 152 of file serialize\&.h\&.
+.SS "template<typename Stream > void Serialize (Stream & s, signed long long a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 153 of file serialize\&.h\&.
+.SS "template<typename Stream > void Serialize (Stream & s, unsigned long long a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 154 of file serialize\&.h\&.
+.SS "template<typename Stream > void Serialize (Stream & s, float a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 155 of file serialize\&.h\&.
+.SS "template<typename Stream > void Serialize (Stream & s, double a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 156 of file serialize\&.h\&.
+.SS "template<typename Stream > void Serialize (Stream & s, bool a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 173 of file serialize\&.h\&.
+.SS "template<typename Stream , typename C > void Serialize (Stream & os, const std::basic_string< C > & str, int, int = \fC0\fP)"
+
+.PP
+Definition at line 514 of file serialize\&.h\&.
+.SS "template<typename Stream , typename T , typename A > void Serialize (Stream & os, const std::vector< T, A > & v, int nType, int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 572 of file serialize\&.h\&.
+.SS "template<typename Stream > void Serialize (Stream & os, const \fBCScript\fP & v, int nType, int nVersion)"
+
+.PP
+Definition at line 627 of file serialize\&.h\&.
+.SS "template<typename Stream , typename K , typename T > void Serialize (Stream & os, const std::pair< K, T > & item, int nType, int nVersion)"
+
+.PP
+Definition at line 648 of file serialize\&.h\&.
+.SS "template<typename Stream , typename T0 , typename T1 , typename T2 > void Serialize (Stream & os, const boost::tuple< T0, T1, T2 > & item, int nType, int nVersion)"
+
+.PP
+Definition at line 675 of file serialize\&.h\&.
+.SS "template<typename Stream , typename T0 , typename T1 , typename T2 , typename T3 > void Serialize (Stream & os, const boost::tuple< T0, T1, T2, T3 > & item, int nType, int nVersion)"
+
+.PP
+Definition at line 705 of file serialize\&.h\&.
+.SS "template<typename Stream , typename K , typename T , typename Pred , typename A > void Serialize (Stream & os, const std::map< K, T, Pred, A > & m, int nType, int nVersion)"
+
+.PP
+Definition at line 735 of file serialize\&.h\&.
+.SS "template<typename Stream , typename K , typename Pred , typename A > void Serialize (Stream & os, const std::set< K, Pred, A > & m, int nType, int nVersion)"
+
+.PP
+Definition at line 769 of file serialize\&.h\&.
+.SS "template<typename Stream , typename T > void Serialize (Stream & os, const T & a, long nType, int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 493 of file serialize\&.h\&.
+.SS "template<typename Stream , typename T , typename A > void Serialize_impl (Stream & os, const std::vector< T, A > & v, int nType, int nVersion, const boost::true_type &)"
+
+.SS "template<typename Stream , typename T , typename A > void Serialize_impl (Stream & os, const std::vector< T, A > & v, int nType, int nVersion, const boost::false_type &)"
+
+.SS "template<typename Stream , typename T , typename A > void Serialize_impl (Stream & os, const std::vector< T, A > & v, int nType, int nVersion, const unsigned char &)"
+
+.PP
+Definition at line 556 of file serialize\&.h\&.
+.SS "template<typename Stream , typename T , typename A , typename V > void Serialize_impl (Stream & os, const std::vector< T, A > & v, int nType, int nVersion, const V &)"
+
+.PP
+Definition at line 564 of file serialize\&.h\&.
+.SS "template<typename Stream , typename T > unsigned int SerReadWrite (Stream & s, const T & obj, int nType, int nVersion, \fBCSerActionGetSerializeSize\fP ser_action)\fC [inline]\fP"
+
+.PP
+Definition at line 811 of file serialize\&.h\&.
+.SS "template<typename Stream , typename T > unsigned int SerReadWrite (Stream & s, const T & obj, int nType, int nVersion, \fBCSerActionSerialize\fP ser_action)\fC [inline]\fP"
+
+.PP
+Definition at line 817 of file serialize\&.h\&.
+.SS "template<typename Stream , typename T > unsigned int SerReadWrite (Stream & s, T & obj, int nType, int nVersion, \fBCSerActionUnserialize\fP ser_action)\fC [inline]\fP"
+
+.PP
+Definition at line 824 of file serialize\&.h\&.
+.SS "template<typename Stream > void Unserialize (Stream & s, char & a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 158 of file serialize\&.h\&.
+.SS "template<typename Stream > void Unserialize (Stream & s, signed char & a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 159 of file serialize\&.h\&.
+.SS "template<typename Stream > void Unserialize (Stream & s, unsigned char & a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 160 of file serialize\&.h\&.
+.SS "template<typename Stream > void Unserialize (Stream & s, signed short & a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 161 of file serialize\&.h\&.
+.SS "template<typename Stream > void Unserialize (Stream & s, unsigned short & a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 162 of file serialize\&.h\&.
+.SS "template<typename Stream > void Unserialize (Stream & s, signed int & a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 163 of file serialize\&.h\&.
+.SS "template<typename Stream > void Unserialize (Stream & s, unsigned int & a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 164 of file serialize\&.h\&.
+.SS "template<typename Stream > void Unserialize (Stream & s, signed long & a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 165 of file serialize\&.h\&.
+.SS "template<typename Stream > void Unserialize (Stream & s, unsigned long & a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 166 of file serialize\&.h\&.
+.SS "template<typename Stream > void Unserialize (Stream & s, signed long long & a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 167 of file serialize\&.h\&.
+.SS "template<typename Stream > void Unserialize (Stream & s, unsigned long long & a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 168 of file serialize\&.h\&.
+.SS "template<typename Stream > void Unserialize (Stream & s, float & a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 169 of file serialize\&.h\&.
+.SS "template<typename Stream > void Unserialize (Stream & s, double & a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 170 of file serialize\&.h\&.
+.SS "template<typename Stream > void Unserialize (Stream & s, bool & a, int, int = \fC0\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 174 of file serialize\&.h\&.
+.SS "template<typename Stream , typename C > void Unserialize (Stream & is, std::basic_string< C > & str, int, int = \fC0\fP)"
+
+.PP
+Definition at line 522 of file serialize\&.h\&.
+.SS "template<typename Stream , typename T , typename A > void Unserialize (Stream & is, std::vector< T, A > & v, int nType, int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 613 of file serialize\&.h\&.
+.SS "template<typename Stream > void Unserialize (Stream & is, \fBCScript\fP & v, int nType, int nVersion)"
+
+.PP
+Definition at line 633 of file serialize\&.h\&.
+.SS "template<typename Stream , typename K , typename T > void Unserialize (Stream & is, std::pair< K, T > & item, int nType, int nVersion)"
+
+.PP
+Definition at line 655 of file serialize\&.h\&.
+.SS "template<typename Stream , typename T0 , typename T1 , typename T2 > void Unserialize (Stream & is, boost::tuple< T0, T1, T2 > & item, int nType, int nVersion)"
+
+.PP
+Definition at line 683 of file serialize\&.h\&.
+.SS "template<typename Stream , typename T0 , typename T1 , typename T2 , typename T3 > void Unserialize (Stream & is, boost::tuple< T0, T1, T2, T3 > & item, int nType, int nVersion)"
+
+.PP
+Definition at line 714 of file serialize\&.h\&.
+.SS "template<typename Stream , typename K , typename T , typename Pred , typename A > void Unserialize (Stream & is, std::map< K, T, Pred, A > & m, int nType, int nVersion)"
+
+.PP
+Definition at line 743 of file serialize\&.h\&.
+.SS "template<typename Stream , typename K , typename Pred , typename A > void Unserialize (Stream & is, std::set< K, Pred, A > & m, int nType, int nVersion)"
+
+.PP
+Definition at line 777 of file serialize\&.h\&.
+.SS "template<typename Stream , typename T > void Unserialize (Stream & is, T & a, long nType, int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 499 of file serialize\&.h\&.
+.SS "template<typename Stream , typename T , typename A > void Unserialize_impl (Stream & is, std::vector< T, A > & v, int nType, int nVersion, const boost::true_type &)"
+
+.SS "template<typename Stream , typename T , typename A > void Unserialize_impl (Stream & is, std::vector< T, A > & v, int nType, int nVersion, const boost::false_type &)"
+
+.SS "template<typename Stream , typename T , typename A > void Unserialize_impl (Stream & is, std::vector< T, A > & v, int nType, int nVersion, const unsigned char &)"
+
+.PP
+Definition at line 579 of file serialize\&.h\&.
+.SS "template<typename Stream , typename T , typename A , typename V > void Unserialize_impl (Stream & is, std::vector< T, A > & v, int nType, int nVersion, const V &)"
+
+.PP
+Definition at line 595 of file serialize\&.h\&.
+.SS "template<typename I > \fBCVarInt\fP<I> WrapVarInt (I & n)"
+
+.PP
+Definition at line 428 of file serialize\&.h\&.
+.SS "template<typename Stream > void WriteCompactSize (Stream & os, \fBuint64_t\fP nSize)"
+
+.PP
+Definition at line 192 of file serialize\&.h\&.
+.SS "template<typename Stream , typename I > void WriteVarInt (Stream & os, I n)"
+
+.PP
+Definition at line 298 of file serialize\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

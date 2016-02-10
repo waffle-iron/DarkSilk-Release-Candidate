@@ -1,0 +1,521 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="table_8cc" kind="file" language="C++">
+    <compoundname>table.cc</compoundname>
+    <includes refid="table_8h" local="yes">leveldb/table.h</includes>
+    <includes refid="cache_8h" local="yes">leveldb/cache.h</includes>
+    <includes refid="comparator_8h" local="yes">leveldb/comparator.h</includes>
+    <includes refid="env_8h" local="yes">leveldb/env.h</includes>
+    <includes refid="filter__policy_8h" local="yes">leveldb/filter_policy.h</includes>
+    <includes refid="options_8h" local="yes">leveldb/options.h</includes>
+    <includes refid="leveldb_2table_2block_8h" local="yes">table/block.h</includes>
+    <includes refid="filter__block_8h" local="yes">table/filter_block.h</includes>
+    <includes refid="format_8h" local="yes">table/format.h</includes>
+    <includes refid="two__level__iterator_8h" local="yes">table/two_level_iterator.h</includes>
+    <includes refid="coding_8h" local="yes">util/coding.h</includes>
+    <incdepgraph>
+      <node id="9916">
+        <label>leveldb/table.h</label>
+        <link refid="table_8h"/>
+        <childnode refid="9917" relation="include">
+        </childnode>
+        <childnode refid="9918" relation="include">
+        </childnode>
+      </node>
+      <node id="9929">
+        <label>stdarg.h</label>
+      </node>
+      <node id="9920">
+        <label>assert.h</label>
+      </node>
+      <node id="9931">
+        <label>leveldb/options.h</label>
+        <link refid="options_8h"/>
+        <childnode refid="9921" relation="include">
+        </childnode>
+      </node>
+      <node id="9923">
+        <label>string</label>
+      </node>
+      <node id="9937">
+        <label>table/two_level_iterator.h</label>
+        <link refid="two__level__iterator_8h"/>
+        <childnode refid="9918" relation="include">
+        </childnode>
+      </node>
+      <node id="9921">
+        <label>stddef.h</label>
+      </node>
+      <node id="9925">
+        <label>leveldb/cache.h</label>
+        <link refid="cache_8h"/>
+        <childnode refid="9917" relation="include">
+        </childnode>
+        <childnode refid="9919" relation="include">
+        </childnode>
+      </node>
+      <node id="9924">
+        <label>leveldb/status.h</label>
+        <link refid="status_8h"/>
+        <childnode refid="9923" relation="include">
+        </childnode>
+        <childnode refid="9919" relation="include">
+        </childnode>
+      </node>
+      <node id="9938">
+        <label>util/coding.h</label>
+        <link refid="coding_8h"/>
+        <childnode refid="9917" relation="include">
+        </childnode>
+        <childnode refid="9922" relation="include">
+        </childnode>
+        <childnode refid="9923" relation="include">
+        </childnode>
+        <childnode refid="9919" relation="include">
+        </childnode>
+        <childnode refid="9939" relation="include">
+        </childnode>
+      </node>
+      <node id="9933">
+        <label>table/filter_block.h</label>
+        <link refid="filter__block_8h"/>
+        <childnode refid="9921" relation="include">
+        </childnode>
+        <childnode refid="9917" relation="include">
+        </childnode>
+        <childnode refid="9923" relation="include">
+        </childnode>
+        <childnode refid="9928" relation="include">
+        </childnode>
+        <childnode refid="9919" relation="include">
+        </childnode>
+        <childnode refid="9934" relation="include">
+        </childnode>
+      </node>
+      <node id="9922">
+        <label>string.h</label>
+      </node>
+      <node id="9928">
+        <label>vector</label>
+      </node>
+      <node id="9932">
+        <label>table/block.h</label>
+        <link refid="leveldb_2table_2block_8h"/>
+        <childnode refid="9921" relation="include">
+        </childnode>
+        <childnode refid="9917" relation="include">
+        </childnode>
+        <childnode refid="9918" relation="include">
+        </childnode>
+      </node>
+      <node id="9939">
+        <label>port/port.h</label>
+        <link refid="port_8h"/>
+        <childnode refid="9922" relation="include">
+        </childnode>
+      </node>
+      <node id="9917">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="9936">
+        <label>leveldb/table_builder.h</label>
+        <link refid="table__builder_8h"/>
+        <childnode refid="9917" relation="include">
+        </childnode>
+        <childnode refid="9931" relation="include">
+        </childnode>
+        <childnode refid="9924" relation="include">
+        </childnode>
+      </node>
+      <node id="9919">
+        <label>leveldb/slice.h</label>
+        <link refid="slice_8h"/>
+        <childnode refid="9920" relation="include">
+        </childnode>
+        <childnode refid="9921" relation="include">
+        </childnode>
+        <childnode refid="9922" relation="include">
+        </childnode>
+        <childnode refid="9923" relation="include">
+        </childnode>
+      </node>
+      <node id="9935">
+        <label>table/format.h</label>
+        <link refid="format_8h"/>
+        <childnode refid="9923" relation="include">
+        </childnode>
+        <childnode refid="9917" relation="include">
+        </childnode>
+        <childnode refid="9919" relation="include">
+        </childnode>
+        <childnode refid="9924" relation="include">
+        </childnode>
+        <childnode refid="9936" relation="include">
+        </childnode>
+      </node>
+      <node id="9927">
+        <label>leveldb/env.h</label>
+        <link refid="env_8h"/>
+        <childnode refid="9923" relation="include">
+        </childnode>
+        <childnode refid="9928" relation="include">
+        </childnode>
+        <childnode refid="9929" relation="include">
+        </childnode>
+        <childnode refid="9917" relation="include">
+        </childnode>
+        <childnode refid="9924" relation="include">
+        </childnode>
+      </node>
+      <node id="9934">
+        <label>util/hash.h</label>
+        <link refid="leveldb_2util_2hash_8h"/>
+        <childnode refid="9921" relation="include">
+        </childnode>
+        <childnode refid="9917" relation="include">
+        </childnode>
+      </node>
+      <node id="9930">
+        <label>leveldb/filter_policy.h</label>
+        <link refid="filter__policy_8h"/>
+        <childnode refid="9923" relation="include">
+        </childnode>
+      </node>
+      <node id="9926">
+        <label>leveldb/comparator.h</label>
+        <link refid="comparator_8h"/>
+        <childnode refid="9923" relation="include">
+        </childnode>
+      </node>
+      <node id="9918">
+        <label>leveldb/iterator.h</label>
+        <link refid="iterator_8h"/>
+        <childnode refid="9919" relation="include">
+        </childnode>
+        <childnode refid="9924" relation="include">
+        </childnode>
+      </node>
+      <node id="9915">
+        <label>/home/dev/ds-160209/src/leveldb/table/table.cc</label>
+        <link refid="table.cc"/>
+        <childnode refid="9916" relation="include">
+        </childnode>
+        <childnode refid="9925" relation="include">
+        </childnode>
+        <childnode refid="9926" relation="include">
+        </childnode>
+        <childnode refid="9927" relation="include">
+        </childnode>
+        <childnode refid="9930" relation="include">
+        </childnode>
+        <childnode refid="9931" relation="include">
+        </childnode>
+        <childnode refid="9932" relation="include">
+        </childnode>
+        <childnode refid="9933" relation="include">
+        </childnode>
+        <childnode refid="9935" relation="include">
+        </childnode>
+        <childnode refid="9937" relation="include">
+        </childnode>
+        <childnode refid="9938" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structleveldb_1_1_table_1_1_rep" prot="public">leveldb::Table::Rep</innerclass>
+    <innernamespace refid="namespaceleveldb">leveldb</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2011-2016<sp/>The<sp/>LevelDB<sp/>Authors.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>of<sp/>this<sp/>source<sp/>code<sp/>is<sp/>governed<sp/>by<sp/>a<sp/>BSD-style<sp/>license<sp/>that<sp/>can<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>found<sp/>in<sp/>the<sp/>LICENSE<sp/>file.<sp/>See<sp/>the<sp/>AUTHORS<sp/>file<sp/>for<sp/>names<sp/>of<sp/>contributors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="table_8h" kindref="compound">leveldb/table.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="cache_8h" kindref="compound">leveldb/cache.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="comparator_8h" kindref="compound">leveldb/comparator.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="env_8h" kindref="compound">leveldb/env.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="filter__policy_8h" kindref="compound">leveldb/filter_policy.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="options_8h" kindref="compound">leveldb/options.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="leveldb_2table_2block_8h" kindref="compound">table/block.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="filter__block_8h" kindref="compound">table/filter_block.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="format_8h" kindref="compound">table/format.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="two__level__iterator_8h" kindref="compound">table/two_level_iterator.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="coding_8h" kindref="compound">util/coding.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceleveldb" kindref="compound">leveldb</ref><sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="structleveldb_1_1_table_1_1_rep" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structleveldb_1_1_table_1_1_rep" kindref="compound">Table::Rep</ref><sp/>{</highlight></codeline>
+<codeline lineno="21" refid="structleveldb_1_1_table_1_1_rep_1a589eccb49554eb53054c95f5e6b5aac3" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structleveldb_1_1_table_1_1_rep_1a589eccb49554eb53054c95f5e6b5aac3" kindref="member">~Rep</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/><ref refid="structleveldb_1_1_table_1_1_rep_1a35acf83732a3dea3df5869cb05c1cb5f" kindref="member">filter</ref>;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>[]<sp/><ref refid="structleveldb_1_1_table_1_1_rep_1a2dd458aa96c0a357414f13354810cea9" kindref="member">filter_data</ref>;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/><ref refid="structleveldb_1_1_table_1_1_rep_1ae69d991c9b8ec7330b22acc06a932fe8" kindref="member">index_block</ref>;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="structleveldb_1_1_table_1_1_rep_1a96ff2b389369e1b0706b090961065740" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structleveldb_1_1_options" kindref="compound">Options</ref><sp/><ref refid="structleveldb_1_1_table_1_1_rep_1a96ff2b389369e1b0706b090961065740" kindref="member">options</ref>;</highlight></codeline>
+<codeline lineno="28" refid="structleveldb_1_1_table_1_1_rep_1aceaddad6024db9f34af2358503e4c089" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref><sp/><ref refid="structleveldb_1_1_table_1_1_rep_1aceaddad6024db9f34af2358503e4c089" kindref="member">status</ref>;</highlight></codeline>
+<codeline lineno="29" refid="structleveldb_1_1_table_1_1_rep_1a5b96b0d545bb3dbe2bccdefab1a83092" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_random_access_file" kindref="compound">RandomAccessFile</ref>*<sp/><ref refid="structleveldb_1_1_table_1_1_rep_1a5b96b0d545bb3dbe2bccdefab1a83092" kindref="member">file</ref>;</highlight></codeline>
+<codeline lineno="30" refid="structleveldb_1_1_table_1_1_rep_1af5beb2186a60560f5381271ad53420b8" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/><ref refid="structleveldb_1_1_table_1_1_rep_1af5beb2186a60560f5381271ad53420b8" kindref="member">cache_id</ref>;</highlight></codeline>
+<codeline lineno="31" refid="structleveldb_1_1_table_1_1_rep_1a35acf83732a3dea3df5869cb05c1cb5f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_filter_block_reader" kindref="compound">FilterBlockReader</ref>*<sp/><ref refid="structleveldb_1_1_table_1_1_rep_1a35acf83732a3dea3df5869cb05c1cb5f" kindref="member">filter</ref>;</highlight></codeline>
+<codeline lineno="32" refid="structleveldb_1_1_table_1_1_rep_1a2dd458aa96c0a357414f13354810cea9" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="structleveldb_1_1_table_1_1_rep_1a2dd458aa96c0a357414f13354810cea9" kindref="member">filter_data</ref>;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="structleveldb_1_1_table_1_1_rep_1a11500653a2db8ba301bca5027a508789" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_block_handle" kindref="compound">BlockHandle</ref><sp/><ref refid="structleveldb_1_1_table_1_1_rep_1a11500653a2db8ba301bca5027a508789" kindref="member">metaindex_handle</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>Handle<sp/>to<sp/>metaindex_block:<sp/>saved<sp/>from<sp/>footer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="structleveldb_1_1_table_1_1_rep_1ae69d991c9b8ec7330b22acc06a932fe8" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_block" kindref="compound">Block</ref>*<sp/><ref refid="structleveldb_1_1_table_1_1_rep_1ae69d991c9b8ec7330b22acc06a932fe8" kindref="member">index_block</ref>;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classleveldb_1_1_table_1aa25d0e074ab4de46e583522a8c0e9582" refkind="member"><highlight class="normal"><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref><sp/><ref refid="classleveldb_1_1_table_1aa25d0e074ab4de46e583522a8c0e9582" kindref="member">Table::Open</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structleveldb_1_1_options" kindref="compound">Options</ref>&amp;<sp/>options,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classleveldb_1_1_random_access_file" kindref="compound">RandomAccessFile</ref>*<sp/>file,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>size,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classleveldb_1_1_table" kindref="compound">Table</ref>**<sp/>table)<sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/>*table<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(size<sp/>&lt;<sp/><ref refid="classleveldb_1_1_footer_1a83b9789b124c3963f4d9cedd47b58ff6a52c5b622f817edcfaf2bb274851a3791" kindref="member">Footer::kEncodedLength</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_status_1a755b1ee5b0029cf9ea1128f1cdff5855" kindref="member">Status::Corruption</ref>(</highlight><highlight class="stringliteral">&quot;file<sp/>is<sp/>too<sp/>short<sp/>to<sp/>be<sp/>an<sp/>sstable&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>footer_space[<ref refid="classleveldb_1_1_footer_1a83b9789b124c3963f4d9cedd47b58ff6a52c5b622f817edcfaf2bb274851a3791" kindref="member">Footer::kEncodedLength</ref>];</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref><sp/>footer_input;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref><sp/>s<sp/>=<sp/>file-&gt;<ref refid="classleveldb_1_1_random_access_file_1a1a09fadcec904d9791a968acabca98d0" kindref="member">Read</ref>(size<sp/>-<sp/><ref refid="classleveldb_1_1_footer_1a83b9789b124c3963f4d9cedd47b58ff6a52c5b622f817edcfaf2bb274851a3791" kindref="member">Footer::kEncodedLength</ref>,<sp/><ref refid="classleveldb_1_1_footer_1a83b9789b124c3963f4d9cedd47b58ff6a52c5b622f817edcfaf2bb274851a3791" kindref="member">Footer::kEncodedLength</ref>,</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;footer_input,<sp/>footer_space);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!s.<ref refid="classleveldb_1_1_status_1ab31e89a858c766716e3dc952be857c65" kindref="member">ok</ref>())<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_footer" kindref="compound">Footer</ref><sp/>footer;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/>s<sp/>=<sp/>footer.<ref refid="classleveldb_1_1_footer_1a3cbcb311694e4cf410358f97d53d94e3" kindref="member">DecodeFrom</ref>(&amp;footer_input);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!s.<ref refid="classleveldb_1_1_status_1ab31e89a858c766716e3dc952be857c65" kindref="member">ok</ref>())<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>the<sp/>index<sp/>block</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><ref refid="structleveldb_1_1_block_contents" kindref="compound">BlockContents</ref><sp/>contents;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_block" kindref="compound">Block</ref>*<sp/>index_block<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(s.<ref refid="classleveldb_1_1_status_1ab31e89a858c766716e3dc952be857c65" kindref="member">ok</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structleveldb_1_1_read_options" kindref="compound">ReadOptions</ref><sp/>opt;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(options.<ref refid="structleveldb_1_1_options_1a4263dcc655493100eecc9daf6737a10b" kindref="member">paranoid_checks</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>opt.<ref refid="structleveldb_1_1_read_options_1a43731d67b707995e20571ad33c1f53f2" kindref="member">verify_checksums</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>s<sp/>=<sp/><ref refid="namespaceleveldb_1a63198fc7656081fd62695dade629790b" kindref="member">ReadBlock</ref>(file,<sp/>opt,<sp/>footer.<ref refid="classleveldb_1_1_footer_1aae1a72a668da9eae3fa2f6620e3ea559" kindref="member">index_handle</ref>(),<sp/>&amp;contents);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(s.<ref refid="classleveldb_1_1_status_1ab31e89a858c766716e3dc952be857c65" kindref="member">ok</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>index_block<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_block" kindref="compound">Block</ref>(contents);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(s.<ref refid="classleveldb_1_1_status_1ab31e89a858c766716e3dc952be857c65" kindref="member">ok</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>We&apos;ve<sp/>successfully<sp/>read<sp/>the<sp/>footer<sp/>and<sp/>the<sp/>index<sp/>block:<sp/>we&apos;re</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ready<sp/>to<sp/>serve<sp/>requests.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structleveldb_1_1_table_1_1_rep" kindref="compound">Rep</ref>*<sp/>rep<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="structleveldb_1_1_table_1_1_rep" kindref="compound">Table::Rep</ref>;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>rep-&gt;<ref refid="structleveldb_1_1_table_1_1_rep_1a96ff2b389369e1b0706b090961065740" kindref="member">options</ref><sp/>=<sp/>options;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>rep-&gt;<ref refid="structleveldb_1_1_table_1_1_rep_1a5b96b0d545bb3dbe2bccdefab1a83092" kindref="member">file</ref><sp/>=<sp/>file;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>rep-&gt;<ref refid="structleveldb_1_1_table_1_1_rep_1a11500653a2db8ba301bca5027a508789" kindref="member">metaindex_handle</ref><sp/>=<sp/>footer.<ref refid="classleveldb_1_1_footer_1a44f2334ed064f7045d76b898f5fadb6a" kindref="member">metaindex_handle</ref>();</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>rep-&gt;<ref refid="structleveldb_1_1_table_1_1_rep_1ae69d991c9b8ec7330b22acc06a932fe8" kindref="member">index_block</ref><sp/>=<sp/>index_block;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>rep-&gt;<ref refid="structleveldb_1_1_table_1_1_rep_1af5beb2186a60560f5381271ad53420b8" kindref="member">cache_id</ref><sp/>=<sp/>(options.<ref refid="structleveldb_1_1_options_1a4e87749ebac1ba28dff6bb63eb2059e5" kindref="member">block_cache</ref><sp/>?<sp/>options.<ref refid="structleveldb_1_1_options_1a4e87749ebac1ba28dff6bb63eb2059e5" kindref="member">block_cache</ref>-&gt;<ref refid="classleveldb_1_1_cache_1ae2d79bfe747fc6c165c77398cc31e125" kindref="member">NewId</ref>()<sp/>:<sp/>0);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>rep-&gt;<ref refid="structleveldb_1_1_table_1_1_rep_1a2dd458aa96c0a357414f13354810cea9" kindref="member">filter_data</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>rep-&gt;<ref refid="structleveldb_1_1_table_1_1_rep_1a35acf83732a3dea3df5869cb05c1cb5f" kindref="member">filter</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>*table<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_table" kindref="compound">Table</ref>(rep);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>(*table)-&gt;ReadMeta(footer);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(index_block)<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>index_block;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Table::ReadMeta(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_footer" kindref="compound">Footer</ref>&amp;<sp/>footer)<sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rep_-&gt;<ref refid="structleveldb_1_1_table_1_1_rep_1a96ff2b389369e1b0706b090961065740" kindref="member">options</ref>.<ref refid="structleveldb_1_1_options_1a24c88997a866d535e68de15b5c3cd02b" kindref="member">filter_policy</ref><sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;<sp/><sp/></highlight><highlight class="comment">//<sp/>Do<sp/>not<sp/>need<sp/>any<sp/>metadata</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO(sanjay):<sp/>Skip<sp/>this<sp/>if<sp/>footer.metaindex_handle()<sp/>size<sp/>indicates</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>it<sp/>is<sp/>an<sp/>empty<sp/>block.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/>ReadOptions<sp/>opt;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rep_-&gt;<ref refid="structleveldb_1_1_table_1_1_rep_1a96ff2b389369e1b0706b090961065740" kindref="member">options</ref>.<ref refid="structleveldb_1_1_options_1a4263dcc655493100eecc9daf6737a10b" kindref="member">paranoid_checks</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>opt.verify_checksums<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/>BlockContents<sp/>contents;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="namespaceleveldb_1a63198fc7656081fd62695dade629790b" kindref="member">ReadBlock</ref>(rep_-&gt;<ref refid="structleveldb_1_1_table_1_1_rep_1a5b96b0d545bb3dbe2bccdefab1a83092" kindref="member">file</ref>,<sp/>opt,<sp/>footer.<ref refid="classleveldb_1_1_footer_1a44f2334ed064f7045d76b898f5fadb6a" kindref="member">metaindex_handle</ref>(),<sp/>&amp;contents).ok())<sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Do<sp/>not<sp/>propagate<sp/>errors<sp/>since<sp/>meta<sp/>info<sp/>is<sp/>not<sp/>needed<sp/>for<sp/>operation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/>Block*<sp/><ref refid="repair_8cc_1a6b8f1f5fc8f36aa1678fff8fa5aecd0b" kindref="member">meta</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>Block(contents);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/>Iterator*<sp/>iter<sp/>=<sp/>meta-&gt;NewIterator(<ref refid="namespaceleveldb_1acd67740962c806afe8f4098cb153d25c" kindref="member">BytewiseComparator</ref>());</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/>std::string<sp/>key<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;filter.&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/>key.append(rep_-&gt;<ref refid="structleveldb_1_1_table_1_1_rep_1a96ff2b389369e1b0706b090961065740" kindref="member">options</ref>.<ref refid="structleveldb_1_1_options_1a24c88997a866d535e68de15b5c3cd02b" kindref="member">filter_policy</ref>-&gt;<ref refid="classleveldb_1_1_filter_policy_1afd5e951892a2e740f186c0658913ea1b" kindref="member">Name</ref>());</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/>iter-&gt;Seek(key);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(iter-&gt;Valid()<sp/>&amp;&amp;<sp/>iter-&gt;key()<sp/>==<sp/>Slice(key))<sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>ReadFilter(iter-&gt;value());</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>iter;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/><ref refid="repair_8cc_1a6b8f1f5fc8f36aa1678fff8fa5aecd0b" kindref="member">meta</ref>;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Table::ReadFilter(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Slice&amp;<sp/>filter_handle_value)<sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/>Slice<sp/>v<sp/>=<sp/>filter_handle_value;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/>BlockHandle<sp/>filter_handle;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!filter_handle.DecodeFrom(&amp;v).ok())<sp/>{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>might<sp/>want<sp/>to<sp/>unify<sp/>with<sp/>ReadBlock()<sp/>if<sp/>we<sp/>start</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>requiring<sp/>checksum<sp/>verification<sp/>in<sp/>Table::Open.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/>ReadOptions<sp/>opt;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rep_-&gt;<ref refid="structleveldb_1_1_table_1_1_rep_1a96ff2b389369e1b0706b090961065740" kindref="member">options</ref>.<ref refid="structleveldb_1_1_options_1a4263dcc655493100eecc9daf6737a10b" kindref="member">paranoid_checks</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>opt.verify_checksums<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/>BlockContents<sp/><ref refid="core_8h_1ace80c27428e237fe24f54ae915a36133" kindref="member">block</ref>;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="namespaceleveldb_1a63198fc7656081fd62695dade629790b" kindref="member">ReadBlock</ref>(rep_-&gt;<ref refid="structleveldb_1_1_table_1_1_rep_1a5b96b0d545bb3dbe2bccdefab1a83092" kindref="member">file</ref>,<sp/>opt,<sp/>filter_handle,<sp/>&amp;block).<ref refid="classleveldb_1_1_status_1ab31e89a858c766716e3dc952be857c65" kindref="member">ok</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(block.heap_allocated)<sp/>{</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>rep_-&gt;<ref refid="structleveldb_1_1_table_1_1_rep_1a2dd458aa96c0a357414f13354810cea9" kindref="member">filter_data</ref><sp/>=<sp/>block.data.data();<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Will<sp/>need<sp/>to<sp/>delete<sp/>later</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/>rep_-&gt;<ref refid="structleveldb_1_1_table_1_1_rep_1a35acf83732a3dea3df5869cb05c1cb5f" kindref="member">filter</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>FilterBlockReader(rep_-&gt;<ref refid="structleveldb_1_1_table_1_1_rep_1a96ff2b389369e1b0706b090961065740" kindref="member">options</ref>.<ref refid="structleveldb_1_1_options_1a24c88997a866d535e68de15b5c3cd02b" kindref="member">filter_policy</ref>,<sp/>block.data);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143" refid="classleveldb_1_1_table_1a945f1f97b4f53402f5d55422a4dd3af2" refkind="member"><highlight class="normal"><ref refid="classleveldb_1_1_table_1a945f1f97b4f53402f5d55422a4dd3af2" kindref="member">Table::~Table</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>rep_;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DeleteBlock(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="env__posix_8cc_1a9ce2ec4812a92cb6ab39f6e81e9173a9" kindref="member">arg</ref>,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>ignored)<sp/>{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal"><ref refid="classleveldb_1_1_block" kindref="compound">Block</ref>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="env__posix_8cc_1a9ce2ec4812a92cb6ab39f6e81e9173a9" kindref="member">arg</ref>);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DeleteCachedBlock(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Slice&amp;<sp/>key,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="version__set_8cc_1a38c8b88c432e666ad10b0c5573e1160a" kindref="member">value</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/>Block*<sp/>block<sp/>=<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal">Block*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="version__set_8cc_1a38c8b88c432e666ad10b0c5573e1160a" kindref="member">value</ref>);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/><ref refid="core_8h_1ace80c27428e237fe24f54ae915a36133" kindref="member">block</ref>;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ReleaseBlock(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="env__posix_8cc_1a9ce2ec4812a92cb6ab39f6e81e9173a9" kindref="member">arg</ref>,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>h)<sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/>Cache*<sp/>cache<sp/>=<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal">Cache*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="env__posix_8cc_1a9ce2ec4812a92cb6ab39f6e81e9173a9" kindref="member">arg</ref>);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/>Cache::Handle*<sp/>handle<sp/>=<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal">Cache::Handle*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(h);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/>cache-&gt;Release(handle);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Convert<sp/>an<sp/>index<sp/>iterator<sp/>value<sp/>(i.e.,<sp/>an<sp/>encoded<sp/>BlockHandle)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight><highlight class="comment">//<sp/>into<sp/>an<sp/>iterator<sp/>over<sp/>the<sp/>contents<sp/>of<sp/>the<sp/>corresponding<sp/>block.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal">Iterator*<sp/>Table::BlockReader(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>arg,</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>ReadOptions&amp;<sp/>options,</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Slice&amp;<sp/>index_value)<sp/>{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/>Table*<sp/>table<sp/>=<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal">Table*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="env__posix_8cc_1a9ce2ec4812a92cb6ab39f6e81e9173a9" kindref="member">arg</ref>);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/>Cache*<sp/>block_cache<sp/>=<sp/>table-&gt;rep_-&gt;options.block_cache;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/>Block*<sp/>block<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/>Cache::Handle*<sp/>cache_handle<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/>BlockHandle<sp/>handle;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/>Slice<sp/>input<sp/>=<sp/>index_value;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/>Status<sp/>s<sp/>=<sp/>handle.DecodeFrom(&amp;input);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>intentionally<sp/>allow<sp/>extra<sp/>stuff<sp/>in<sp/>index_value<sp/>so<sp/>that<sp/>we</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>can<sp/>add<sp/>more<sp/>features<sp/>in<sp/>the<sp/>future.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(s.ok())<sp/>{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>BlockContents<sp/>contents;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(block_cache<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>cache_key_buffer[16];</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceleveldb_1a725a2c0ebf763116b4ca3fb78564ff70" kindref="member">EncodeFixed64</ref>(cache_key_buffer,<sp/>table-&gt;rep_-&gt;cache_id);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceleveldb_1a725a2c0ebf763116b4ca3fb78564ff70" kindref="member">EncodeFixed64</ref>(cache_key_buffer+8,<sp/>handle.offset());</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Slice<sp/>key(cache_key_buffer,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(cache_key_buffer));</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>cache_handle<sp/>=<sp/>block_cache-&gt;Lookup(key);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cache_handle<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>block<sp/>=<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal">Block*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(block_cache-&gt;Value(cache_handle));</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s<sp/>=<sp/><ref refid="namespaceleveldb_1a63198fc7656081fd62695dade629790b" kindref="member">ReadBlock</ref>(table-&gt;rep_-&gt;file,<sp/>options,<sp/>handle,<sp/>&amp;contents);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(s.ok())<sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>block<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>Block(contents);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(contents.cachable<sp/>&amp;&amp;<sp/>options.fill_cache)<sp/>{</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cache_handle<sp/>=<sp/>block_cache-&gt;Insert(</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>key,<sp/>block,<sp/>block-&gt;size(),<sp/>&amp;DeleteCachedBlock);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>s<sp/>=<sp/><ref refid="namespaceleveldb_1a63198fc7656081fd62695dade629790b" kindref="member">ReadBlock</ref>(table-&gt;rep_-&gt;file,<sp/>options,<sp/>handle,<sp/>&amp;contents);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(s.ok())<sp/>{</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>block<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>Block(contents);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/>Iterator*<sp/>iter;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(block<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/>iter<sp/>=<sp/>block-&gt;NewIterator(table-&gt;rep_-&gt;options.comparator);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cache_handle<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>iter-&gt;RegisterCleanup(&amp;DeleteBlock,<sp/>block,<sp/>NULL);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>iter-&gt;RegisterCleanup(&amp;ReleaseBlock,<sp/>block_cache,<sp/>cache_handle);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/>iter<sp/>=<sp/><ref refid="namespaceleveldb_1ab2c425a5fcb13b97e50e32c7b93186f5" kindref="member">NewErrorIterator</ref>(s);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>iter;</highlight></codeline>
+<codeline lineno="218"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220" refid="classleveldb_1_1_table_1ad354f57ece050ca0c5f42669b7c01cc2" refkind="member"><highlight class="normal"><ref refid="classleveldb_1_1_iterator" kindref="compound">Iterator</ref>*<sp/><ref refid="classleveldb_1_1_table_1ad354f57ece050ca0c5f42669b7c01cc2" kindref="member">Table::NewIterator</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structleveldb_1_1_read_options" kindref="compound">ReadOptions</ref>&amp;<sp/>options)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1a44a9b2f992cf66b7046581b72a095ea1" kindref="member">NewTwoLevelIterator</ref>(</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rep_-&gt;<ref refid="structleveldb_1_1_table_1_1_rep_1ae69d991c9b8ec7330b22acc06a932fe8" kindref="member">index_block</ref>-&gt;<ref refid="classleveldb_1_1_block_1a336289029f37d18d31a1a3c178afc7b3" kindref="member">NewIterator</ref>(rep_-&gt;<ref refid="structleveldb_1_1_table_1_1_rep_1a96ff2b389369e1b0706b090961065740" kindref="member">options</ref>.<ref refid="structleveldb_1_1_options_1a7522fbf79de73c4f73ef8d9392e8c80b" kindref="member">comparator</ref>),</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&amp;Table::BlockReader,<sp/></highlight><highlight class="keyword">const_cast&lt;</highlight><highlight class="normal"><ref refid="classleveldb_1_1_table" kindref="compound">Table</ref>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight><highlight class="keyword">this</highlight><highlight class="normal">),<sp/>options);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref><sp/>Table::InternalGet(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structleveldb_1_1_read_options" kindref="compound">ReadOptions</ref>&amp;<sp/>options,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/>k,</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>arg,</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>(*saver)(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;))<sp/>{</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref><sp/>s;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_iterator" kindref="compound">Iterator</ref>*<sp/>iiter<sp/>=<sp/>rep_-&gt;<ref refid="structleveldb_1_1_table_1_1_rep_1ae69d991c9b8ec7330b22acc06a932fe8" kindref="member">index_block</ref>-&gt;<ref refid="classleveldb_1_1_block_1a336289029f37d18d31a1a3c178afc7b3" kindref="member">NewIterator</ref>(rep_-&gt;<ref refid="structleveldb_1_1_table_1_1_rep_1a96ff2b389369e1b0706b090961065740" kindref="member">options</ref>.<ref refid="structleveldb_1_1_options_1a7522fbf79de73c4f73ef8d9392e8c80b" kindref="member">comparator</ref>);</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/>iiter-&gt;<ref refid="classleveldb_1_1_iterator_1a97a556e97ded60c677fbf4de7321ec44" kindref="member">Seek</ref>(k);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(iiter-&gt;<ref refid="classleveldb_1_1_iterator_1a38614978bfa0586327b8e237bcb46012" kindref="member">Valid</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref><sp/>handle_value<sp/>=<sp/>iiter-&gt;<ref refid="classleveldb_1_1_iterator_1a613ac2e965518aad7a064c64c72bcf7c" kindref="member">value</ref>();</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classleveldb_1_1_filter_block_reader" kindref="compound">FilterBlockReader</ref>*<sp/>filter<sp/>=<sp/>rep_-&gt;<ref refid="structleveldb_1_1_table_1_1_rep_1a35acf83732a3dea3df5869cb05c1cb5f" kindref="member">filter</ref>;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classleveldb_1_1_block_handle" kindref="compound">BlockHandle</ref><sp/>handle;</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(filter<sp/>!=<sp/>NULL<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handle.<ref refid="classleveldb_1_1_block_handle_1a1660fd202984d8d5bfa4bed6c5613621" kindref="member">DecodeFrom</ref>(&amp;handle_value).<ref refid="classleveldb_1_1_status_1ab31e89a858c766716e3dc952be857c65" kindref="member">ok</ref>()<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>!filter-&gt;<ref refid="classleveldb_1_1_filter_block_reader_1a2c1c0cd8311b99fd92d3548b7aa240d0" kindref="member">KeyMayMatch</ref>(handle.<ref refid="classleveldb_1_1_block_handle_1a31071c24f77e52a3bfc3a228f9f6c133" kindref="member">offset</ref>(),<sp/>k))<sp/>{</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Not<sp/>found</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Iterator*<sp/>block_iter<sp/>=<sp/>BlockReader(</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>options,<sp/>iiter-&gt;<ref refid="classleveldb_1_1_iterator_1a613ac2e965518aad7a064c64c72bcf7c" kindref="member">value</ref>());</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>block_iter-&gt;<ref refid="classleveldb_1_1_iterator_1a97a556e97ded60c677fbf4de7321ec44" kindref="member">Seek</ref>(k);</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(block_iter-&gt;Valid())<sp/>{</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(*saver)(<ref refid="env__posix_8cc_1a9ce2ec4812a92cb6ab39f6e81e9173a9" kindref="member">arg</ref>,<sp/>block_iter-&gt;key(),<sp/>block_iter-&gt;value());</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>s<sp/>=<sp/>block_iter-&gt;status();</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>block_iter;</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(s.<ref refid="classleveldb_1_1_status_1ab31e89a858c766716e3dc952be857c65" kindref="member">ok</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/>s<sp/>=<sp/>iiter-&gt;<ref refid="classleveldb_1_1_iterator_1ac84f34623a031b7eeb23409320f76376" kindref="member">status</ref>();</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>iiter;</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="255"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="258" refid="classleveldb_1_1_table_1a1795d45c54945ee7652b19e6ad6c030b" refkind="member"><highlight class="normal"><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/><ref refid="classleveldb_1_1_table_1a1795d45c54945ee7652b19e6ad6c030b" kindref="member">Table::ApproximateOffsetOf</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/>key)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_iterator" kindref="compound">Iterator</ref>*<sp/>index_iter<sp/>=</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rep_-&gt;<ref refid="structleveldb_1_1_table_1_1_rep_1ae69d991c9b8ec7330b22acc06a932fe8" kindref="member">index_block</ref>-&gt;<ref refid="classleveldb_1_1_block_1a336289029f37d18d31a1a3c178afc7b3" kindref="member">NewIterator</ref>(rep_-&gt;<ref refid="structleveldb_1_1_table_1_1_rep_1a96ff2b389369e1b0706b090961065740" kindref="member">options</ref>.<ref refid="structleveldb_1_1_options_1a7522fbf79de73c4f73ef8d9392e8c80b" kindref="member">comparator</ref>);</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/>index_iter-&gt;<ref refid="classleveldb_1_1_iterator_1a97a556e97ded60c677fbf4de7321ec44" kindref="member">Seek</ref>(key);</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>result;</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(index_iter-&gt;<ref refid="classleveldb_1_1_iterator_1a38614978bfa0586327b8e237bcb46012" kindref="member">Valid</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classleveldb_1_1_block_handle" kindref="compound">BlockHandle</ref><sp/>handle;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref><sp/>input<sp/>=<sp/>index_iter-&gt;<ref refid="classleveldb_1_1_iterator_1a613ac2e965518aad7a064c64c72bcf7c" kindref="member">value</ref>();</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref><sp/>s<sp/>=<sp/>handle.<ref refid="classleveldb_1_1_block_handle_1a1660fd202984d8d5bfa4bed6c5613621" kindref="member">DecodeFrom</ref>(&amp;input);</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(s.<ref refid="classleveldb_1_1_status_1ab31e89a858c766716e3dc952be857c65" kindref="member">ok</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>handle.<ref refid="classleveldb_1_1_block_handle_1a31071c24f77e52a3bfc3a228f9f6c133" kindref="member">offset</ref>();</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Strange:<sp/>we<sp/>can&apos;t<sp/>decode<sp/>the<sp/>block<sp/>handle<sp/>in<sp/>the<sp/>index<sp/>block.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>We&apos;ll<sp/>just<sp/>return<sp/>the<sp/>offset<sp/>of<sp/>the<sp/>metaindex<sp/>block,<sp/>which<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>close<sp/>to<sp/>the<sp/>whole<sp/>file<sp/>size<sp/>for<sp/>this<sp/>case.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>rep_-&gt;<ref refid="structleveldb_1_1_table_1_1_rep_1a11500653a2db8ba301bca5027a508789" kindref="member">metaindex_handle</ref>.<ref refid="classleveldb_1_1_block_handle_1a31071c24f77e52a3bfc3a228f9f6c133" kindref="member">offset</ref>();</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>key<sp/>is<sp/>past<sp/>the<sp/>last<sp/>key<sp/>in<sp/>the<sp/>file.<sp/><sp/>Approximate<sp/>the<sp/>offset</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>by<sp/>returning<sp/>the<sp/>offset<sp/>of<sp/>the<sp/>metaindex<sp/>block<sp/>(which<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>right<sp/>near<sp/>the<sp/>end<sp/>of<sp/>the<sp/>file).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/>result<sp/>=<sp/>rep_-&gt;<ref refid="structleveldb_1_1_table_1_1_rep_1a11500653a2db8ba301bca5027a508789" kindref="member">metaindex_handle</ref>.<ref refid="classleveldb_1_1_block_handle_1a31071c24f77e52a3bfc3a228f9f6c133" kindref="member">offset</ref>();</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>index_iter;</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="283"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>leveldb</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/leveldb/table/table.cc"/>
+  </compounddef>
+</doxygen>

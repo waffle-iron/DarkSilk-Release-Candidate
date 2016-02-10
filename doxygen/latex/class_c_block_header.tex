@@ -1,0 +1,233 @@
+\hypertarget{class_c_block_header}{}\section{C\+Block\+Header Class Reference}
+\label{class_c_block_header}\index{C\+Block\+Header@{C\+Block\+Header}}
+
+
+{\ttfamily \#include $<$block.\+h$>$}
+
+Inheritance diagram for C\+Block\+Header\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_c_block_header}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_c_block_header_a514e4d5250fa700272ac467fecf7fa7b}{Do\+S} (int n\+Do\+S\+In, bool f\+In) const 
+\item 
+\hyperlink{class_c_block_header_a9afed57bea877bbd25b5eb6740c6990d}{C\+Block\+Header} ()
+\item 
+{\footnotesize template$<$typename Stream , typename Operation $>$ }\\void \hyperlink{class_c_block_header_ae564e96da45702d79c83e3ad0ce19873}{Serialization\+Op} (Stream \&s, Operation ser\+\_\+action, int n\+Type, int \hyperlink{class_c_block_header_ad64b7a76914741861f55f0f38ed66fb5}{n\+Version})
+\item 
+bool \hyperlink{class_c_block_header_a5c179f4a8b5728ba381a26d0450403b8}{Is\+Null} () const 
+\item 
+\hyperlink{classuint256}{uint256} \hyperlink{class_c_block_header_ae1165e54882d364b030fb33673d64dbd}{Get\+Hash} () const 
+\item 
+\hyperlink{classuint256}{uint256} \hyperlink{class_c_block_header_ace82f72f060caa4fd96759b4ff99a25e}{Get\+Po\+W\+Hash} () const 
+\item 
+\hyperlink{classuint256}{uint256} \hyperlink{class_c_block_header_a795e040a33329757f6b31dfbcabbb2a5}{Get\+Po\+W\+Argon\+Hash} () const 
+\item 
+\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} \hyperlink{class_c_block_header_a2972ebc9d970b4b12434876263c4c2b5}{Get\+Block\+Time} () const 
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{stdint_8h_ab1967d8591af1a4e48c37fd2b0f184d0}{int32\+\_\+t} \hyperlink{class_c_block_header_ad64b7a76914741861f55f0f38ed66fb5}{n\+Version}
+\item 
+\hyperlink{classuint256}{uint256} \hyperlink{class_c_block_header_ad9b904df502d648309342e5e5b0949a6}{hash\+Prev\+Block}
+\item 
+\hyperlink{classuint256}{uint256} \hyperlink{class_c_block_header_ae9ef013abbcfbd9f8bc23dbcda0fd5af}{hash\+Merkle\+Root}
+\item 
+\hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} \hyperlink{class_c_block_header_aa435a58a8f13a304681e797366e0d56d}{n\+Time}
+\item 
+\hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} \hyperlink{class_c_block_header_a88d501b1da4d34d7dc80c65bd4837670}{n\+Bits}
+\item 
+\hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} \hyperlink{class_c_block_header_a3826d43cd36673027e17ecc674450e71}{n\+Nonce}
+\item 
+int \hyperlink{class_c_block_header_af07deb221708fa7a992e65ec20d13534}{n\+Do\+S}
+\item 
+\hyperlink{class_c_block_header_abddc9307695fbe6bd9bb1a7f48d38011}{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const \hyperlink{stdint_8h_ab1967d8591af1a4e48c37fd2b0f184d0}{int32\+\_\+t} \hyperlink{class_c_block_header_a1da5740e22d124df509383a1ff96eb7c}{C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+E\+R\+S\+I\+O\+N} = 2
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Nodes collect new transactions into a block, hash them into a hash tree, and scan through nonce values to make the block\textquotesingle{}s hash satisfy proof-\/of-\/work requirements. When they solve the proof-\/of-\/work, they broadcast the block to everyone and the block is added to the block chain. The first transaction in the block is a special one that creates a new coin owned by the creator of the block.
+
+Blocks are appended to blk0001.\+dat files on disk. Their location on disk is indexed by \hyperlink{class_c_block_index}{C\+Block\+Index} objects in memory. 
+
+Definition at line 34 of file block.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_block_header_a9afed57bea877bbd25b5eb6740c6990d}{}\index{C\+Block\+Header@{C\+Block\+Header}!C\+Block\+Header@{C\+Block\+Header}}
+\index{C\+Block\+Header@{C\+Block\+Header}!C\+Block\+Header@{C\+Block\+Header}}
+\subsubsection[{C\+Block\+Header}]{\setlength{\rightskip}{0pt plus 5cm}C\+Block\+Header\+::\+C\+Block\+Header (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_block_header_a9afed57bea877bbd25b5eb6740c6990d}
+
+
+Definition at line 50 of file block.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_block_header_a514e4d5250fa700272ac467fecf7fa7b}{}\index{C\+Block\+Header@{C\+Block\+Header}!Do\+S@{Do\+S}}
+\index{Do\+S@{Do\+S}!C\+Block\+Header@{C\+Block\+Header}}
+\subsubsection[{Do\+S}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Block\+Header\+::\+Do\+S (
+\begin{DoxyParamCaption}
+\item[{int}]{n\+Do\+S\+In, }
+\item[{bool}]{f\+In}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_block_header_a514e4d5250fa700272ac467fecf7fa7b}
+
+
+Definition at line 48 of file block.\+h.
+
+\hypertarget{class_c_block_header_a2972ebc9d970b4b12434876263c4c2b5}{}\index{C\+Block\+Header@{C\+Block\+Header}!Get\+Block\+Time@{Get\+Block\+Time}}
+\index{Get\+Block\+Time@{Get\+Block\+Time}!C\+Block\+Header@{C\+Block\+Header}}
+\subsubsection[{Get\+Block\+Time}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int64\+\_\+t} C\+Block\+Header\+::\+Get\+Block\+Time (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_block_header_a2972ebc9d970b4b12434876263c4c2b5}
+
+
+Definition at line 97 of file block.\+h.
+
+\hypertarget{class_c_block_header_ae1165e54882d364b030fb33673d64dbd}{}\index{C\+Block\+Header@{C\+Block\+Header}!Get\+Hash@{Get\+Hash}}
+\index{Get\+Hash@{Get\+Hash}!C\+Block\+Header@{C\+Block\+Header}}
+\subsubsection[{Get\+Hash}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint256} C\+Block\+Header\+::\+Get\+Hash (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_block_header_ae1165e54882d364b030fb33673d64dbd}
+
+
+Definition at line 78 of file block.\+h.
+
+\hypertarget{class_c_block_header_a795e040a33329757f6b31dfbcabbb2a5}{}\index{C\+Block\+Header@{C\+Block\+Header}!Get\+Po\+W\+Argon\+Hash@{Get\+Po\+W\+Argon\+Hash}}
+\index{Get\+Po\+W\+Argon\+Hash@{Get\+Po\+W\+Argon\+Hash}!C\+Block\+Header@{C\+Block\+Header}}
+\subsubsection[{Get\+Po\+W\+Argon\+Hash}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint256} C\+Block\+Header\+::\+Get\+Po\+W\+Argon\+Hash (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_block_header_a795e040a33329757f6b31dfbcabbb2a5}
+
+
+Definition at line 92 of file block.\+h.
+
+\hypertarget{class_c_block_header_ace82f72f060caa4fd96759b4ff99a25e}{}\index{C\+Block\+Header@{C\+Block\+Header}!Get\+Po\+W\+Hash@{Get\+Po\+W\+Hash}}
+\index{Get\+Po\+W\+Hash@{Get\+Po\+W\+Hash}!C\+Block\+Header@{C\+Block\+Header}}
+\subsubsection[{Get\+Po\+W\+Hash}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint256} C\+Block\+Header\+::\+Get\+Po\+W\+Hash (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_block_header_ace82f72f060caa4fd96759b4ff99a25e}
+
+
+Definition at line 87 of file block.\+h.
+
+\hypertarget{class_c_block_header_a5c179f4a8b5728ba381a26d0450403b8}{}\index{C\+Block\+Header@{C\+Block\+Header}!Is\+Null@{Is\+Null}}
+\index{Is\+Null@{Is\+Null}!C\+Block\+Header@{C\+Block\+Header}}
+\subsubsection[{Is\+Null}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Block\+Header\+::\+Is\+Null (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_block_header_a5c179f4a8b5728ba381a26d0450403b8}
+
+
+Definition at line 73 of file block.\+h.
+
+\hypertarget{class_c_block_header_ae564e96da45702d79c83e3ad0ce19873}{}\index{C\+Block\+Header@{C\+Block\+Header}!Serialization\+Op@{Serialization\+Op}}
+\index{Serialization\+Op@{Serialization\+Op}!C\+Block\+Header@{C\+Block\+Header}}
+\subsubsection[{Serialization\+Op}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename Operation $>$ void C\+Block\+Header\+::\+Serialization\+Op (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{Operation}]{ser\+\_\+action, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_block_header_ae564e96da45702d79c83e3ad0ce19873}
+
+
+Definition at line 63 of file block.\+h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_c_block_header_abddc9307695fbe6bd9bb1a7f48d38011}{}\index{C\+Block\+Header@{C\+Block\+Header}!A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}}
+\index{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}!C\+Block\+Header@{C\+Block\+Header}}
+\subsubsection[{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}]{\setlength{\rightskip}{0pt plus 5cm}C\+Block\+Header\+::\+A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}\label{class_c_block_header_abddc9307695fbe6bd9bb1a7f48d38011}
+
+
+Definition at line 60 of file block.\+h.
+
+\hypertarget{class_c_block_header_a1da5740e22d124df509383a1ff96eb7c}{}\index{C\+Block\+Header@{C\+Block\+Header}!C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+E\+R\+S\+I\+O\+N@{C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+E\+R\+S\+I\+O\+N}}
+\index{C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+E\+R\+S\+I\+O\+N@{C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+E\+R\+S\+I\+O\+N}!C\+Block\+Header@{C\+Block\+Header}}
+\subsubsection[{C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+E\+R\+S\+I\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf int32\+\_\+t} C\+Block\+Header\+::\+C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+E\+R\+S\+I\+O\+N = 2\hspace{0.3cm}{\ttfamily [static]}}\label{class_c_block_header_a1da5740e22d124df509383a1ff96eb7c}
+
+
+Definition at line 38 of file block.\+h.
+
+\hypertarget{class_c_block_header_ae9ef013abbcfbd9f8bc23dbcda0fd5af}{}\index{C\+Block\+Header@{C\+Block\+Header}!hash\+Merkle\+Root@{hash\+Merkle\+Root}}
+\index{hash\+Merkle\+Root@{hash\+Merkle\+Root}!C\+Block\+Header@{C\+Block\+Header}}
+\subsubsection[{hash\+Merkle\+Root}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint256} C\+Block\+Header\+::hash\+Merkle\+Root}\label{class_c_block_header_ae9ef013abbcfbd9f8bc23dbcda0fd5af}
+
+
+Definition at line 41 of file block.\+h.
+
+\hypertarget{class_c_block_header_ad9b904df502d648309342e5e5b0949a6}{}\index{C\+Block\+Header@{C\+Block\+Header}!hash\+Prev\+Block@{hash\+Prev\+Block}}
+\index{hash\+Prev\+Block@{hash\+Prev\+Block}!C\+Block\+Header@{C\+Block\+Header}}
+\subsubsection[{hash\+Prev\+Block}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint256} C\+Block\+Header\+::hash\+Prev\+Block}\label{class_c_block_header_ad9b904df502d648309342e5e5b0949a6}
+
+
+Definition at line 40 of file block.\+h.
+
+\hypertarget{class_c_block_header_a88d501b1da4d34d7dc80c65bd4837670}{}\index{C\+Block\+Header@{C\+Block\+Header}!n\+Bits@{n\+Bits}}
+\index{n\+Bits@{n\+Bits}!C\+Block\+Header@{C\+Block\+Header}}
+\subsubsection[{n\+Bits}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32\+\_\+t} C\+Block\+Header\+::n\+Bits}\label{class_c_block_header_a88d501b1da4d34d7dc80c65bd4837670}
+
+
+Definition at line 43 of file block.\+h.
+
+\hypertarget{class_c_block_header_af07deb221708fa7a992e65ec20d13534}{}\index{C\+Block\+Header@{C\+Block\+Header}!n\+Do\+S@{n\+Do\+S}}
+\index{n\+Do\+S@{n\+Do\+S}!C\+Block\+Header@{C\+Block\+Header}}
+\subsubsection[{n\+Do\+S}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Block\+Header\+::n\+Do\+S\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_block_header_af07deb221708fa7a992e65ec20d13534}
+
+
+Definition at line 47 of file block.\+h.
+
+\hypertarget{class_c_block_header_a3826d43cd36673027e17ecc674450e71}{}\index{C\+Block\+Header@{C\+Block\+Header}!n\+Nonce@{n\+Nonce}}
+\index{n\+Nonce@{n\+Nonce}!C\+Block\+Header@{C\+Block\+Header}}
+\subsubsection[{n\+Nonce}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32\+\_\+t} C\+Block\+Header\+::n\+Nonce}\label{class_c_block_header_a3826d43cd36673027e17ecc674450e71}
+
+
+Definition at line 44 of file block.\+h.
+
+\hypertarget{class_c_block_header_aa435a58a8f13a304681e797366e0d56d}{}\index{C\+Block\+Header@{C\+Block\+Header}!n\+Time@{n\+Time}}
+\index{n\+Time@{n\+Time}!C\+Block\+Header@{C\+Block\+Header}}
+\subsubsection[{n\+Time}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32\+\_\+t} C\+Block\+Header\+::n\+Time}\label{class_c_block_header_aa435a58a8f13a304681e797366e0d56d}
+
+
+Definition at line 42 of file block.\+h.
+
+\hypertarget{class_c_block_header_ad64b7a76914741861f55f0f38ed66fb5}{}\index{C\+Block\+Header@{C\+Block\+Header}!n\+Version@{n\+Version}}
+\index{n\+Version@{n\+Version}!C\+Block\+Header@{C\+Block\+Header}}
+\subsubsection[{n\+Version}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int32\+\_\+t} C\+Block\+Header\+::n\+Version}\label{class_c_block_header_ad64b7a76914741861f55f0f38ed66fb5}
+
+
+Definition at line 39 of file block.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/primitives/\hyperlink{primitives_2block_8h}{block.\+h}\end{DoxyCompactItemize}

@@ -1,0 +1,165 @@
+.TH "SendMessagesDialog" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SendMessagesDialog \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <sendmessagesdialog\&.h>\fP
+.PP
+Inherits QDialog\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBMode\fP { \fBEncrypted\fP, \fBAnonymous\fP }"
+.br
+.ti -1c
+.RI "enum \fBType\fP { \fBPage\fP, \fBDialog\fP }"
+.br
+.in -1c
+.SS "Public Slots"
+
+.in +1c
+.ti -1c
+.RI "void \fBdone\fP (int retval)"
+.br
+.ti -1c
+.RI "void \fBclear\fP ()"
+.br
+.ti -1c
+.RI "void \fBreject\fP ()"
+.br
+.ti -1c
+.RI "void \fBaccept\fP ()"
+.br
+.ti -1c
+.RI "\fBSendMessagesEntry\fP * \fBaddEntry\fP ()"
+.br
+.ti -1c
+.RI "void \fBupdateRemoveEnabled\fP ()"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSendMessagesDialog\fP (\fBMode\fP mode, \fBType\fP type, QWidget *parent=0)"
+.br
+.ti -1c
+.RI "\fB~SendMessagesDialog\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetModel\fP (\fBMessageModel\fP *model)"
+.br
+.ti -1c
+.RI "void \fBloadRow\fP (int row)"
+.br
+.ti -1c
+.RI "bool \fBcheckMode\fP (\fBMode\fP mode)"
+.br
+.ti -1c
+.RI "bool \fBvalidate\fP ()"
+.br
+.ti -1c
+.RI "QWidget * \fBsetupTabChain\fP (QWidget *\fBprev\fP)"
+.br
+.ti -1c
+.RI "void \fBpasteEntry\fP (const \fBSendMessagesRecipient\fP &rv)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Dialog for sending messages 
+.PP
+Definition at line 20 of file sendmessagesdialog\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBSendMessagesDialog::Mode\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIEncrypted \fP\fP
+.TP
+\fB\fIAnonymous \fP\fP
+.PP
+Definition at line 26 of file sendmessagesdialog\&.h\&.
+.SS "enum \fBSendMessagesDialog::Type\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIPage \fP\fP
+.TP
+\fB\fIDialog \fP\fP
+.PP
+Definition at line 31 of file sendmessagesdialog\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SendMessagesDialog::SendMessagesDialog (\fBMode\fP mode, \fBType\fP type, QWidget * parent = \fC0\fP)\fC [explicit]\fP"
+
+.PP
+Definition at line 18 of file sendmessagesdialog\&.cpp\&.
+.SS "SendMessagesDialog::~SendMessagesDialog ()"
+
+.PP
+Definition at line 100 of file sendmessagesdialog\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void SendMessagesDialog::accept ()\fC [slot]\fP"
+
+.PP
+Definition at line 241 of file sendmessagesdialog\&.cpp\&.
+.SS "\fBSendMessagesEntry\fP * SendMessagesDialog::addEntry ()\fC [slot]\fP"
+
+.PP
+Definition at line 258 of file sendmessagesdialog\&.cpp\&.
+.SS "bool SendMessagesDialog::checkMode (\fBMode\fP mode)"
+
+.PP
+Definition at line 83 of file sendmessagesdialog\&.cpp\&.
+.SS "void SendMessagesDialog::clear ()\fC [slot]\fP"
+
+.PP
+Definition at line 220 of file sendmessagesdialog\&.cpp\&.
+.SS "void SendMessagesDialog::done (int retval)\fC [slot]\fP"
+
+.PP
+Definition at line 250 of file sendmessagesdialog\&.cpp\&.
+.SS "void SendMessagesDialog::loadRow (int row)"
+
+.PP
+Definition at line 67 of file sendmessagesdialog\&.cpp\&.
+.SS "void SendMessagesDialog::pasteEntry (const \fBSendMessagesRecipient\fP & rv)"
+
+.PP
+Definition at line 320 of file sendmessagesdialog\&.cpp\&.
+.SS "void SendMessagesDialog::reject ()\fC [slot]\fP"
+
+.PP
+Definition at line 233 of file sendmessagesdialog\&.cpp\&.
+.SS "void SendMessagesDialog::setModel (\fBMessageModel\fP * model)"
+
+.PP
+Definition at line 54 of file sendmessagesdialog\&.cpp\&.
+.SS "QWidget * SendMessagesDialog::setupTabChain (QWidget * prev)"
+Set up the tab chain manually, as Qt messes up the tab chain by default in some cases (issue https://bugreports.qt-project.org/browse/QTBUG-10907)\&. 
+.PP
+Definition at line 303 of file sendmessagesdialog\&.cpp\&.
+.SS "void SendMessagesDialog::updateRemoveEnabled ()\fC [slot]\fP"
+
+.PP
+Definition at line 281 of file sendmessagesdialog\&.cpp\&.
+.SS "bool SendMessagesDialog::validate ()"
+
+.PP
+Definition at line 88 of file sendmessagesdialog\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

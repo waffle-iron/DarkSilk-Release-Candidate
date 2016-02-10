@@ -1,0 +1,386 @@
+\hypertarget{class_c_finalized_budget}{}\section{C\+Finalized\+Budget Class Reference}
+\label{class_c_finalized_budget}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+
+
+{\ttfamily \#include $<$stormnode-\/budget.\+h$>$}
+
+Inheritance diagram for C\+Finalized\+Budget\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_c_finalized_budget}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_finalized_budget_a70a5842e7be58407c5ff5daade0e6e45}{C\+Finalized\+Budget} ()
+\item 
+\hyperlink{class_c_finalized_budget_a701687a3f6f5dadaa8cf20b188306005}{C\+Finalized\+Budget} (const \hyperlink{class_c_finalized_budget}{C\+Finalized\+Budget} \&other)
+\item 
+void \hyperlink{class_c_finalized_budget_a11cbbc4f8f84e5ffb2b7257168da98be}{Clean\+And\+Remove} (bool f\+Signature\+Check)
+\item 
+bool \hyperlink{class_c_finalized_budget_a63fadb286f5d0f9f735bc33deba56b02}{Add\+Or\+Update\+Vote} (\hyperlink{class_c_finalized_budget_vote}{C\+Finalized\+Budget\+Vote} \&vote, std\+::string \&str\+Error)
+\item 
+double \hyperlink{class_c_finalized_budget_aadcaaf7b39cfe0400253db00c5fe0b03}{Get\+Score} ()
+\item 
+bool \hyperlink{class_c_finalized_budget_a96b19202f64cb941239a500e7895c048}{Has\+Minimum\+Required\+Support} ()
+\item 
+bool \hyperlink{class_c_finalized_budget_ae91a3b63f88979a2cf5252b91b9f339d}{Is\+Valid} (std\+::string \&str\+Error, bool f\+Check\+Collateral=true)
+\item 
+std\+::string \hyperlink{class_c_finalized_budget_adc46e6b0931fd6335d0788311886a1ba}{Get\+Name} ()
+\item 
+std\+::string \hyperlink{class_c_finalized_budget_a49cb2b919e0de352628d6157cfa1e1c8}{Get\+Proposals} ()
+\item 
+int \hyperlink{class_c_finalized_budget_adf320ff0b74a982c0aadc5d8a5e168db}{Get\+Block\+Start} ()
+\item 
+int \hyperlink{class_c_finalized_budget_a45b354d7c3ea65128130cf28e78f4bf4}{Get\+Block\+End} ()
+\item 
+int \hyperlink{class_c_finalized_budget_a6958b394133bceca95b49c25ce337b06}{Get\+Vote\+Count} ()
+\item 
+bool \hyperlink{class_c_finalized_budget_a32c98c7a24100e099093e7d33b9330f2}{Is\+Transaction\+Valid} (const \hyperlink{class_c_transaction}{C\+Transaction} \&tx\+New, int n\+Block\+Height)
+\item 
+bool \hyperlink{class_c_finalized_budget_aa5ec8ed8c03ce6bbc1c49edd942501c8}{Get\+Budget\+Payment\+By\+Block} (\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} n\+Block\+Height, \hyperlink{class_c_tx_budget_payment}{C\+Tx\+Budget\+Payment} \&payment)
+\item 
+bool \hyperlink{class_c_finalized_budget_a75c6ae33fd0079e732e1103d29501d01}{Get\+Payee\+And\+Amount} (\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} n\+Block\+Height, \hyperlink{class_c_script}{C\+Script} \&payee, \hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \&n\+Amount)
+\item 
+void \hyperlink{class_c_finalized_budget_a88614fdccb5cdf722403c11832df2ad0}{Auto\+Check} ()
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{class_c_finalized_budget_a20f2cdac9403d59688b527a98474cc7a}{Get\+Total\+Payout} ()
+\item 
+void \hyperlink{class_c_finalized_budget_a8d5710eaf0fe541dcdce1d5f2ebee51c}{Submit\+Vote} ()
+\item 
+string \hyperlink{class_c_finalized_budget_a9a6fbb2d494342fb6d1c48a98d7cc856}{Get\+Status} ()
+\item 
+\hyperlink{classuint256}{uint256} \hyperlink{class_c_finalized_budget_a0ce6295086247f5982f93ee3cea956e6}{Get\+Hash} ()
+\item 
+{\footnotesize template$<$typename Stream , typename Operation $>$ }\\void \hyperlink{class_c_finalized_budget_a1bbf758b27a7fb175e2889290f5ef78f}{Serialization\+Op} (Stream \&s, Operation ser\+\_\+action, int n\+Type, int n\+Version)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_c_finalized_budget_a00d9e3055bebaaef28543bd67e4ca162}{f\+Valid}
+\item 
+std\+::string \hyperlink{class_c_finalized_budget_ae2a467abad2985ff3c32b29fc75500aa}{str\+Budget\+Name}
+\item 
+int \hyperlink{class_c_finalized_budget_a1d04c262e10f4588b17eb3aba5ed9b52}{n\+Block\+Start}
+\item 
+std\+::vector$<$ \hyperlink{class_c_tx_budget_payment}{C\+Tx\+Budget\+Payment} $>$ \hyperlink{class_c_finalized_budget_a639e7be9254d99deb42aeeb15de63174}{vec\+Budget\+Payments}
+\item 
+map$<$ \hyperlink{classuint256}{uint256}, \hyperlink{class_c_finalized_budget_vote}{C\+Finalized\+Budget\+Vote} $>$ \hyperlink{class_c_finalized_budget_a756460095ed59fd39e7f3018b4b208dd}{map\+Votes}
+\item 
+\hyperlink{classuint256}{uint256} \hyperlink{class_c_finalized_budget_a699a2f3cbea723957c2a944b08484bb5}{n\+Fee\+T\+X\+Hash}
+\item 
+\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} \hyperlink{class_c_finalized_budget_a3bb3cb1d44021d5ef9996a81f3e09734}{n\+Time}
+\item 
+\hyperlink{class_c_finalized_budget_ad426a5e67867bcb8f73df4aef50ac588}{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 204 of file stormnode-\/budget.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_finalized_budget_a70a5842e7be58407c5ff5daade0e6e45}{}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\subsubsection[{C\+Finalized\+Budget}]{\setlength{\rightskip}{0pt plus 5cm}C\+Finalized\+Budget\+::\+C\+Finalized\+Budget (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_finalized_budget_a70a5842e7be58407c5ff5daade0e6e45}
+
+
+Definition at line 1646 of file stormnode-\/budget.\+cpp.
+
+\hypertarget{class_c_finalized_budget_a701687a3f6f5dadaa8cf20b188306005}{}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\subsubsection[{C\+Finalized\+Budget}]{\setlength{\rightskip}{0pt plus 5cm}C\+Finalized\+Budget\+::\+C\+Finalized\+Budget (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Finalized\+Budget} \&}]{other}
+\end{DoxyParamCaption}
+)}\label{class_c_finalized_budget_a701687a3f6f5dadaa8cf20b188306005}
+
+
+Definition at line 1658 of file stormnode-\/budget.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_finalized_budget_a63fadb286f5d0f9f735bc33deba56b02}{}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!Add\+Or\+Update\+Vote@{Add\+Or\+Update\+Vote}}
+\index{Add\+Or\+Update\+Vote@{Add\+Or\+Update\+Vote}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\subsubsection[{Add\+Or\+Update\+Vote}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Finalized\+Budget\+::\+Add\+Or\+Update\+Vote (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Finalized\+Budget\+Vote} \&}]{vote, }
+\item[{std\+::string \&}]{str\+Error}
+\end{DoxyParamCaption}
+)}\label{class_c_finalized_budget_a63fadb286f5d0f9f735bc33deba56b02}
+
+
+Definition at line 1670 of file stormnode-\/budget.\+cpp.
+
+\hypertarget{class_c_finalized_budget_a88614fdccb5cdf722403c11832df2ad0}{}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!Auto\+Check@{Auto\+Check}}
+\index{Auto\+Check@{Auto\+Check}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\subsubsection[{Auto\+Check}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Finalized\+Budget\+::\+Auto\+Check (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_finalized_budget_a88614fdccb5cdf722403c11832df2ad0}
+
+
+Definition at line 1699 of file stormnode-\/budget.\+cpp.
+
+\hypertarget{class_c_finalized_budget_a11cbbc4f8f84e5ffb2b7257168da98be}{}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!Clean\+And\+Remove@{Clean\+And\+Remove}}
+\index{Clean\+And\+Remove@{Clean\+And\+Remove}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\subsubsection[{Clean\+And\+Remove}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Finalized\+Budget\+::\+Clean\+And\+Remove (
+\begin{DoxyParamCaption}
+\item[{bool}]{f\+Signature\+Check}
+\end{DoxyParamCaption}
+)}\label{class_c_finalized_budget_a11cbbc4f8f84e5ffb2b7257168da98be}
+
+
+Definition at line 1777 of file stormnode-\/budget.\+cpp.
+
+\hypertarget{class_c_finalized_budget_a45b354d7c3ea65128130cf28e78f4bf4}{}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!Get\+Block\+End@{Get\+Block\+End}}
+\index{Get\+Block\+End@{Get\+Block\+End}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\subsubsection[{Get\+Block\+End}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Finalized\+Budget\+::\+Get\+Block\+End (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_finalized_budget_a45b354d7c3ea65128130cf28e78f4bf4}
+
+
+Definition at line 233 of file stormnode-\/budget.\+h.
+
+\hypertarget{class_c_finalized_budget_adf320ff0b74a982c0aadc5d8a5e168db}{}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!Get\+Block\+Start@{Get\+Block\+Start}}
+\index{Get\+Block\+Start@{Get\+Block\+Start}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\subsubsection[{Get\+Block\+Start}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Finalized\+Budget\+::\+Get\+Block\+Start (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_finalized_budget_adf320ff0b74a982c0aadc5d8a5e168db}
+
+
+Definition at line 232 of file stormnode-\/budget.\+h.
+
+\hypertarget{class_c_finalized_budget_aa5ec8ed8c03ce6bbc1c49edd942501c8}{}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!Get\+Budget\+Payment\+By\+Block@{Get\+Budget\+Payment\+By\+Block}}
+\index{Get\+Budget\+Payment\+By\+Block@{Get\+Budget\+Payment\+By\+Block}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\subsubsection[{Get\+Budget\+Payment\+By\+Block}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Finalized\+Budget\+::\+Get\+Budget\+Payment\+By\+Block (
+\begin{DoxyParamCaption}
+\item[{{\bf int64\+\_\+t}}]{n\+Block\+Height, }
+\item[{{\bf C\+Tx\+Budget\+Payment} \&}]{payment}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_finalized_budget_aa5ec8ed8c03ce6bbc1c49edd942501c8}
+
+
+Definition at line 238 of file stormnode-\/budget.\+h.
+
+\hypertarget{class_c_finalized_budget_a0ce6295086247f5982f93ee3cea956e6}{}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!Get\+Hash@{Get\+Hash}}
+\index{Get\+Hash@{Get\+Hash}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\subsubsection[{Get\+Hash}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint256} C\+Finalized\+Budget\+::\+Get\+Hash (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_finalized_budget_a0ce6295086247f5982f93ee3cea956e6}
+
+
+Definition at line 270 of file stormnode-\/budget.\+h.
+
+\hypertarget{class_c_finalized_budget_adc46e6b0931fd6335d0788311886a1ba}{}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!Get\+Name@{Get\+Name}}
+\index{Get\+Name@{Get\+Name}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\subsubsection[{Get\+Name}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string C\+Finalized\+Budget\+::\+Get\+Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_finalized_budget_adc46e6b0931fd6335d0788311886a1ba}
+
+
+Definition at line 230 of file stormnode-\/budget.\+h.
+
+\hypertarget{class_c_finalized_budget_a75c6ae33fd0079e732e1103d29501d01}{}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!Get\+Payee\+And\+Amount@{Get\+Payee\+And\+Amount}}
+\index{Get\+Payee\+And\+Amount@{Get\+Payee\+And\+Amount}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\subsubsection[{Get\+Payee\+And\+Amount}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Finalized\+Budget\+::\+Get\+Payee\+And\+Amount (
+\begin{DoxyParamCaption}
+\item[{{\bf int64\+\_\+t}}]{n\+Block\+Height, }
+\item[{{\bf C\+Script} \&}]{payee, }
+\item[{{\bf C\+Amount} \&}]{n\+Amount}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_finalized_budget_a75c6ae33fd0079e732e1103d29501d01}
+
+
+Definition at line 248 of file stormnode-\/budget.\+h.
+
+\hypertarget{class_c_finalized_budget_a49cb2b919e0de352628d6157cfa1e1c8}{}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!Get\+Proposals@{Get\+Proposals}}
+\index{Get\+Proposals@{Get\+Proposals}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\subsubsection[{Get\+Proposals}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string C\+Finalized\+Budget\+::\+Get\+Proposals (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_finalized_budget_a49cb2b919e0de352628d6157cfa1e1c8}
+
+
+Definition at line 1799 of file stormnode-\/budget.\+cpp.
+
+\hypertarget{class_c_finalized_budget_aadcaaf7b39cfe0400253db00c5fe0b03}{}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!Get\+Score@{Get\+Score}}
+\index{Get\+Score@{Get\+Score}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\subsubsection[{Get\+Score}]{\setlength{\rightskip}{0pt plus 5cm}double C\+Finalized\+Budget\+::\+Get\+Score (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_finalized_budget_aadcaaf7b39cfe0400253db00c5fe0b03}
+\hypertarget{class_c_finalized_budget_a9a6fbb2d494342fb6d1c48a98d7cc856}{}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!Get\+Status@{Get\+Status}}
+\index{Get\+Status@{Get\+Status}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\subsubsection[{Get\+Status}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string C\+Finalized\+Budget\+::\+Get\+Status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_finalized_budget_a9a6fbb2d494342fb6d1c48a98d7cc856}
+
+
+Definition at line 1816 of file stormnode-\/budget.\+cpp.
+
+\hypertarget{class_c_finalized_budget_a20f2cdac9403d59688b527a98474cc7a}{}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!Get\+Total\+Payout@{Get\+Total\+Payout}}
+\index{Get\+Total\+Payout@{Get\+Total\+Payout}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\subsubsection[{Get\+Total\+Payout}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} C\+Finalized\+Budget\+::\+Get\+Total\+Payout (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_finalized_budget_a20f2cdac9403d59688b527a98474cc7a}
+
+
+Definition at line 1788 of file stormnode-\/budget.\+cpp.
+
+\hypertarget{class_c_finalized_budget_a6958b394133bceca95b49c25ce337b06}{}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!Get\+Vote\+Count@{Get\+Vote\+Count}}
+\index{Get\+Vote\+Count@{Get\+Vote\+Count}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\subsubsection[{Get\+Vote\+Count}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Finalized\+Budget\+::\+Get\+Vote\+Count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_finalized_budget_a6958b394133bceca95b49c25ce337b06}
+
+
+Definition at line 234 of file stormnode-\/budget.\+h.
+
+\hypertarget{class_c_finalized_budget_a96b19202f64cb941239a500e7895c048}{}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!Has\+Minimum\+Required\+Support@{Has\+Minimum\+Required\+Support}}
+\index{Has\+Minimum\+Required\+Support@{Has\+Minimum\+Required\+Support}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\subsubsection[{Has\+Minimum\+Required\+Support}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Finalized\+Budget\+::\+Has\+Minimum\+Required\+Support (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_finalized_budget_a96b19202f64cb941239a500e7895c048}
+\hypertarget{class_c_finalized_budget_a32c98c7a24100e099093e7d33b9330f2}{}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!Is\+Transaction\+Valid@{Is\+Transaction\+Valid}}
+\index{Is\+Transaction\+Valid@{Is\+Transaction\+Valid}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\subsubsection[{Is\+Transaction\+Valid}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Finalized\+Budget\+::\+Is\+Transaction\+Valid (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Transaction} \&}]{tx\+New, }
+\item[{int}]{n\+Block\+Height}
+\end{DoxyParamCaption}
+)}\label{class_c_finalized_budget_a32c98c7a24100e099093e7d33b9330f2}
+
+
+Definition at line 1884 of file stormnode-\/budget.\+cpp.
+
+\hypertarget{class_c_finalized_budget_ae91a3b63f88979a2cf5252b91b9f339d}{}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!Is\+Valid@{Is\+Valid}}
+\index{Is\+Valid@{Is\+Valid}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\subsubsection[{Is\+Valid}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Finalized\+Budget\+::\+Is\+Valid (
+\begin{DoxyParamCaption}
+\item[{std\+::string \&}]{str\+Error, }
+\item[{bool}]{f\+Check\+Collateral = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{class_c_finalized_budget_ae91a3b63f88979a2cf5252b91b9f339d}
+
+
+Definition at line 1853 of file stormnode-\/budget.\+cpp.
+
+\hypertarget{class_c_finalized_budget_a1bbf758b27a7fb175e2889290f5ef78f}{}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!Serialization\+Op@{Serialization\+Op}}
+\index{Serialization\+Op@{Serialization\+Op}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\subsubsection[{Serialization\+Op}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename Operation $>$ void C\+Finalized\+Budget\+::\+Serialization\+Op (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{Operation}]{ser\+\_\+action, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_finalized_budget_a1bbf758b27a7fb175e2889290f5ef78f}
+
+
+Definition at line 284 of file stormnode-\/budget.\+h.
+
+\hypertarget{class_c_finalized_budget_a8d5710eaf0fe541dcdce1d5f2ebee51c}{}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!Submit\+Vote@{Submit\+Vote}}
+\index{Submit\+Vote@{Submit\+Vote}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\subsubsection[{Submit\+Vote}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Finalized\+Budget\+::\+Submit\+Vote (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_finalized_budget_a8d5710eaf0fe541dcdce1d5f2ebee51c}
+
+
+Definition at line 1914 of file stormnode-\/budget.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_c_finalized_budget_ad426a5e67867bcb8f73df4aef50ac588}{}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}}
+\index{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\subsubsection[{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}]{\setlength{\rightskip}{0pt plus 5cm}C\+Finalized\+Budget\+::\+A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}\label{class_c_finalized_budget_ad426a5e67867bcb8f73df4aef50ac588}
+
+
+Definition at line 281 of file stormnode-\/budget.\+h.
+
+\hypertarget{class_c_finalized_budget_a00d9e3055bebaaef28543bd67e4ca162}{}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!f\+Valid@{f\+Valid}}
+\index{f\+Valid@{f\+Valid}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\subsubsection[{f\+Valid}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Finalized\+Budget\+::f\+Valid}\label{class_c_finalized_budget_a00d9e3055bebaaef28543bd67e4ca162}
+
+
+Definition at line 212 of file stormnode-\/budget.\+h.
+
+\hypertarget{class_c_finalized_budget_a756460095ed59fd39e7f3018b4b208dd}{}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!map\+Votes@{map\+Votes}}
+\index{map\+Votes@{map\+Votes}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\subsubsection[{map\+Votes}]{\setlength{\rightskip}{0pt plus 5cm}map$<${\bf uint256}, {\bf C\+Finalized\+Budget\+Vote}$>$ C\+Finalized\+Budget\+::map\+Votes}\label{class_c_finalized_budget_a756460095ed59fd39e7f3018b4b208dd}
+
+
+Definition at line 216 of file stormnode-\/budget.\+h.
+
+\hypertarget{class_c_finalized_budget_a1d04c262e10f4588b17eb3aba5ed9b52}{}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!n\+Block\+Start@{n\+Block\+Start}}
+\index{n\+Block\+Start@{n\+Block\+Start}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\subsubsection[{n\+Block\+Start}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Finalized\+Budget\+::n\+Block\+Start}\label{class_c_finalized_budget_a1d04c262e10f4588b17eb3aba5ed9b52}
+
+
+Definition at line 214 of file stormnode-\/budget.\+h.
+
+\hypertarget{class_c_finalized_budget_a699a2f3cbea723957c2a944b08484bb5}{}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!n\+Fee\+T\+X\+Hash@{n\+Fee\+T\+X\+Hash}}
+\index{n\+Fee\+T\+X\+Hash@{n\+Fee\+T\+X\+Hash}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\subsubsection[{n\+Fee\+T\+X\+Hash}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint256} C\+Finalized\+Budget\+::n\+Fee\+T\+X\+Hash}\label{class_c_finalized_budget_a699a2f3cbea723957c2a944b08484bb5}
+
+
+Definition at line 217 of file stormnode-\/budget.\+h.
+
+\hypertarget{class_c_finalized_budget_a3bb3cb1d44021d5ef9996a81f3e09734}{}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!n\+Time@{n\+Time}}
+\index{n\+Time@{n\+Time}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\subsubsection[{n\+Time}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int64\+\_\+t} C\+Finalized\+Budget\+::n\+Time}\label{class_c_finalized_budget_a3bb3cb1d44021d5ef9996a81f3e09734}
+
+
+Definition at line 218 of file stormnode-\/budget.\+h.
+
+\hypertarget{class_c_finalized_budget_ae2a467abad2985ff3c32b29fc75500aa}{}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!str\+Budget\+Name@{str\+Budget\+Name}}
+\index{str\+Budget\+Name@{str\+Budget\+Name}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\subsubsection[{str\+Budget\+Name}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string C\+Finalized\+Budget\+::str\+Budget\+Name}\label{class_c_finalized_budget_ae2a467abad2985ff3c32b29fc75500aa}
+
+
+Definition at line 213 of file stormnode-\/budget.\+h.
+
+\hypertarget{class_c_finalized_budget_a639e7be9254d99deb42aeeb15de63174}{}\index{C\+Finalized\+Budget@{C\+Finalized\+Budget}!vec\+Budget\+Payments@{vec\+Budget\+Payments}}
+\index{vec\+Budget\+Payments@{vec\+Budget\+Payments}!C\+Finalized\+Budget@{C\+Finalized\+Budget}}
+\subsubsection[{vec\+Budget\+Payments}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf C\+Tx\+Budget\+Payment}$>$ C\+Finalized\+Budget\+::vec\+Budget\+Payments}\label{class_c_finalized_budget_a639e7be9254d99deb42aeeb15de63174}
+
+
+Definition at line 215 of file stormnode-\/budget.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/\hyperlink{stormnode-budget_8h}{stormnode-\/budget.\+h}\item 
+/home/dev/ds-\/160209/src/\hyperlink{stormnode-budget_8cpp}{stormnode-\/budget.\+cpp}\end{DoxyCompactItemize}

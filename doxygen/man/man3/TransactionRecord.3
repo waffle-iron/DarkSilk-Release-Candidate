@@ -1,0 +1,205 @@
+.TH "TransactionRecord" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TransactionRecord \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <transactionrecord\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBType\fP { \fBOther\fP, \fBGenerated\fP, \fBSendToAddress\fP, \fBSendToOther\fP, \fBRecvWithAddress\fP, \fBRecvFromOther\fP, \fBSendToSelf\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTransactionRecord\fP ()"
+.br
+.ti -1c
+.RI "\fBTransactionRecord\fP (\fBuint256\fP \fBhash\fP, \fBint64_t\fP \fBtime\fP)"
+.br
+.ti -1c
+.RI "\fBTransactionRecord\fP (\fBuint256\fP \fBhash\fP, \fBint64_t\fP \fBtime\fP, \fBType\fP \fBtype\fP, const std::string &\fBaddress\fP, const \fBCAmount\fP &\fBdebit\fP, const \fBCAmount\fP &\fBcredit\fP)"
+.br
+.ti -1c
+.RI "QString \fBgetTxID\fP () const "
+.br
+.ti -1c
+.RI "void \fBupdateStatus\fP (const \fBCWalletTx\fP &wtx)"
+.br
+.ti -1c
+.RI "bool \fBstatusUpdateNeeded\fP ()"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBshowTransaction\fP (const \fBCWalletTx\fP &wtx)"
+.br
+.ti -1c
+.RI "static QList< \fBTransactionRecord\fP > \fBdecomposeTransaction\fP (const \fBCWallet\fP *wallet, const \fBCWalletTx\fP &wtx)"
+.br
+.ti -1c
+.RI "static QString \fBformatSubTxId\fP (const \fBuint256\fP &\fBhash\fP, int vout)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBidx\fP"
+.br
+.ti -1c
+.RI "\fBTransactionStatus\fP \fBstatus\fP"
+.br
+.in -1c
+.PP
+.RI "\fBImmutable transaction attributes\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBuint256\fP \fBhash\fP"
+.br
+.ti -1c
+.RI "qint64 \fBtime\fP"
+.br
+.ti -1c
+.RI "\fBType\fP \fBtype\fP"
+.br
+.ti -1c
+.RI "std::string \fBaddress\fP"
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBdebit\fP"
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBcredit\fP"
+.br
+.in -1c
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static const int \fBRecommendedNumConfirmations\fP = 10"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+UI model for a transaction\&. A core transaction can be represented by multiple UI transactions if it has multiple outputs\&. 
+.PP
+Definition at line 67 of file transactionrecord\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBTransactionRecord::Type\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIOther \fP\fP
+.TP
+\fB\fIGenerated \fP\fP
+.TP
+\fB\fISendToAddress \fP\fP
+.TP
+\fB\fISendToOther \fP\fP
+.TP
+\fB\fIRecvWithAddress \fP\fP
+.TP
+\fB\fIRecvFromOther \fP\fP
+.TP
+\fB\fISendToSelf \fP\fP
+.PP
+Definition at line 70 of file transactionrecord\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TransactionRecord::TransactionRecord ()\fC [inline]\fP"
+
+.PP
+Definition at line 84 of file transactionrecord\&.h\&.
+.SS "TransactionRecord::TransactionRecord (\fBuint256\fP hash, \fBint64_t\fP time)\fC [inline]\fP"
+
+.PP
+Definition at line 89 of file transactionrecord\&.h\&.
+.SS "TransactionRecord::TransactionRecord (\fBuint256\fP hash, \fBint64_t\fP time, \fBType\fP type, const std::string & address, const \fBCAmount\fP & debit, const \fBCAmount\fP & credit)\fC [inline]\fP"
+
+.PP
+Definition at line 95 of file transactionrecord\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "QList< \fBTransactionRecord\fP > TransactionRecord::decomposeTransaction (const \fBCWallet\fP * wallet, const \fBCWalletTx\fP & wtx)\fC [static]\fP"
+
+.PP
+Definition at line 29 of file transactionrecord\&.cpp\&.
+.SS "QString TransactionRecord::formatSubTxId (const \fBuint256\fP & hash, int vout)\fC [static]\fP"
+Format subtransaction id 
+.PP
+Definition at line 262 of file transactionrecord\&.cpp\&.
+.SS "QString TransactionRecord::getTxID () const"
+Return the unique identifier for this transaction (part) 
+.PP
+Definition at line 257 of file transactionrecord\&.cpp\&.
+.SS "bool TransactionRecord::showTransaction (const \fBCWalletTx\fP & wtx)\fC [static]\fP"
+Decompose \fBCWallet\fP transaction to model transaction records\&. 
+.PP
+Definition at line 13 of file transactionrecord\&.cpp\&.
+.SS "bool TransactionRecord::statusUpdateNeeded ()"
+Return whether a status update is needed\&. 
+.PP
+Definition at line 251 of file transactionrecord\&.cpp\&.
+.SS "void TransactionRecord::updateStatus (const \fBCWalletTx\fP & wtx)"
+Update status from core wallet tx\&. 
+.PP
+Definition at line 165 of file transactionrecord\&.cpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "std::string TransactionRecord::address"
+
+.PP
+Definition at line 113 of file transactionrecord\&.h\&.
+.SS "\fBCAmount\fP TransactionRecord::credit"
+
+.PP
+Definition at line 115 of file transactionrecord\&.h\&.
+.SS "\fBCAmount\fP TransactionRecord::debit"
+
+.PP
+Definition at line 114 of file transactionrecord\&.h\&.
+.SS "\fBuint256\fP TransactionRecord::hash"
+
+.PP
+Definition at line 110 of file transactionrecord\&.h\&.
+.SS "int TransactionRecord::idx"
+Subtransaction index, for sort key 
+.PP
+Definition at line 119 of file transactionrecord\&.h\&.
+.SS "const int TransactionRecord::RecommendedNumConfirmations = 10\fC [static]\fP"
+Number of confirmation recommended for accepting a transaction 
+.PP
+Definition at line 82 of file transactionrecord\&.h\&.
+.SS "\fBTransactionStatus\fP TransactionRecord::status"
+Status: can change with block chain update 
+.PP
+Definition at line 122 of file transactionrecord\&.h\&.
+.SS "qint64 TransactionRecord::time"
+
+.PP
+Definition at line 111 of file transactionrecord\&.h\&.
+.SS "\fBType\fP TransactionRecord::type"
+
+.PP
+Definition at line 112 of file transactionrecord\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

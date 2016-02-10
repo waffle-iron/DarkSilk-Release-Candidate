@@ -1,0 +1,60 @@
+.TH "leveldb::TableCache" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+leveldb::TableCache \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <table_cache\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTableCache\fP (const std::string &dbname, const \fBOptions\fP *options, int entries)"
+.br
+.ti -1c
+.RI "\fB~TableCache\fP ()"
+.br
+.ti -1c
+.RI "\fBIterator\fP * \fBNewIterator\fP (const \fBReadOptions\fP &options, \fBuint64_t\fP file_number, \fBuint64_t\fP file_size, \fBTable\fP **tableptr=NULL)"
+.br
+.ti -1c
+.RI "\fBStatus\fP \fBGet\fP (const \fBReadOptions\fP &options, \fBuint64_t\fP file_number, \fBuint64_t\fP file_size, const \fBSlice\fP &k, void *\fBarg\fP, void(*handle_result)(void *, const \fBSlice\fP &, const \fBSlice\fP &))"
+.br
+.ti -1c
+.RI "void \fBEvict\fP (\fBuint64_t\fP file_number)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 21 of file table_cache\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "leveldb::TableCache::TableCache (const std::string & dbname, const \fBOptions\fP * options, int entries)"
+
+.PP
+Definition at line 32 of file table_cache\&.cc\&.
+.SS "leveldb::TableCache::~TableCache ()"
+
+.PP
+Definition at line 41 of file table_cache\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void leveldb::TableCache::Evict (\fBuint64_t\fP file_number)"
+
+.PP
+Definition at line 121 of file table_cache\&.cc\&.
+.SS "\fBStatus\fP leveldb::TableCache::Get (const \fBReadOptions\fP & options, \fBuint64_t\fP file_number, \fBuint64_t\fP file_size, const \fBSlice\fP & k, void * arg, void(*)(void *, const \fBSlice\fP &, const \fBSlice\fP &) handle_result)"
+
+.PP
+Definition at line 105 of file table_cache\&.cc\&.
+.SS "\fBIterator\fP * leveldb::TableCache::NewIterator (const \fBReadOptions\fP & options, \fBuint64_t\fP file_number, \fBuint64_t\fP file_size, \fBTable\fP ** tableptr = \fCNULL\fP)"
+
+.PP
+Definition at line 82 of file table_cache\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

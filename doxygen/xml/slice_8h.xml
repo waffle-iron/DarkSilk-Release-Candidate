@@ -1,0 +1,2065 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="slice_8h" kind="file" language="C++">
+    <compoundname>slice.h</compoundname>
+    <includes local="no">assert.h</includes>
+    <includes local="no">stddef.h</includes>
+    <includes local="no">string.h</includes>
+    <includes local="no">string</includes>
+    <includedby refid="dbformat_8h" local="yes">/home/dev/ds-160209/src/leveldb/db/dbformat.h</includedby>
+    <includedby refid="filename_8h" local="yes">/home/dev/ds-160209/src/leveldb/db/filename.h</includedby>
+    <includedby refid="log__reader_8h" local="yes">/home/dev/ds-160209/src/leveldb/db/log_reader.h</includedby>
+    <includedby refid="log__writer_8h" local="yes">/home/dev/ds-160209/src/leveldb/db/log_writer.h</includedby>
+    <includedby refid="cache_8h" local="yes">/home/dev/ds-160209/src/leveldb/include/leveldb/cache.h</includedby>
+    <includedby refid="iterator_8h" local="yes">/home/dev/ds-160209/src/leveldb/include/leveldb/iterator.h</includedby>
+    <includedby refid="status_8h" local="yes">/home/dev/ds-160209/src/leveldb/include/leveldb/status.h</includedby>
+    <includedby refid="block__builder_8h" local="yes">/home/dev/ds-160209/src/leveldb/table/block_builder.h</includedby>
+    <includedby refid="filter__block_8h" local="yes">/home/dev/ds-160209/src/leveldb/table/filter_block.h</includedby>
+    <includedby refid="format_8h" local="yes">/home/dev/ds-160209/src/leveldb/table/format.h</includedby>
+    <includedby refid="bloom_8cc" local="yes">/home/dev/ds-160209/src/leveldb/util/bloom.cc</includedby>
+    <includedby refid="coding_8h" local="yes">/home/dev/ds-160209/src/leveldb/util/coding.h</includedby>
+    <includedby refid="comparator_8cc" local="yes">/home/dev/ds-160209/src/leveldb/util/comparator.cc</includedby>
+    <includedby refid="env__posix_8cc" local="yes">/home/dev/ds-160209/src/leveldb/util/env_posix.cc</includedby>
+    <includedby refid="logging_8cc" local="yes">/home/dev/ds-160209/src/leveldb/util/logging.cc</includedby>
+    <includedby refid="testharness_8h" local="yes">/home/dev/ds-160209/src/leveldb/util/testharness.h</includedby>
+    <includedby refid="testutil_8h" local="yes">/home/dev/ds-160209/src/leveldb/util/testutil.h</includedby>
+    <incdepgraph>
+      <node id="8428">
+        <label>assert.h</label>
+      </node>
+      <node id="8431">
+        <label>string</label>
+      </node>
+      <node id="8429">
+        <label>stddef.h</label>
+      </node>
+      <node id="8430">
+        <label>string.h</label>
+      </node>
+      <node id="8427">
+        <label>/home/dev/ds-160209/src/leveldb/include/leveldb/slice.h</label>
+        <link refid="slice.h"/>
+        <childnode refid="8428" relation="include">
+        </childnode>
+        <childnode refid="8429" relation="include">
+        </childnode>
+        <childnode refid="8430" relation="include">
+        </childnode>
+        <childnode refid="8431" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="8599">
+        <label>/home/dev/ds-160209/src/leveldb/table/filter_block_test.cc</label>
+        <link refid="filter__block__test_8cc"/>
+      </node>
+      <node id="8576">
+        <label>/home/dev/ds-160209/src/leveldb/include/leveldb/table.h</label>
+        <link refid="table_8h"/>
+        <childnode refid="8438" relation="include">
+        </childnode>
+        <childnode refid="8435" relation="include">
+        </childnode>
+        <childnode refid="8441" relation="include">
+        </childnode>
+        <childnode refid="8447" relation="include">
+        </childnode>
+        <childnode refid="8457" relation="include">
+        </childnode>
+        <childnode refid="8456" relation="include">
+        </childnode>
+        <childnode refid="8471" relation="include">
+        </childnode>
+        <childnode refid="8455" relation="include">
+        </childnode>
+        <childnode refid="8577" relation="include">
+        </childnode>
+      </node>
+      <node id="8516">
+        <label>/home/dev/ds-160209/src/qt/darksilkgui.cpp</label>
+        <link refid="darksilkgui_8cpp"/>
+      </node>
+      <node id="8613">
+        <label>/home/dev/ds-160209/src/leveldb/include/leveldb/write_batch.h</label>
+        <link refid="write__batch_8h"/>
+        <childnode refid="8478" relation="include">
+        </childnode>
+        <childnode refid="8555" relation="include">
+        </childnode>
+        <childnode refid="8513" relation="include">
+        </childnode>
+        <childnode refid="8470" relation="include">
+        </childnode>
+        <childnode refid="8438" relation="include">
+        </childnode>
+        <childnode refid="8439" relation="include">
+        </childnode>
+        <childnode refid="8447" relation="include">
+        </childnode>
+        <childnode refid="8453" relation="include">
+        </childnode>
+        <childnode refid="8614" relation="include">
+        </childnode>
+        <childnode refid="8574" relation="include">
+        </childnode>
+      </node>
+      <node id="8582">
+        <label>/home/dev/ds-160209/src/leveldb/table/merger.cc</label>
+        <link refid="merger_8cc"/>
+      </node>
+      <node id="8500">
+        <label>/home/dev/ds-160209/src/stormnodeman.cpp</label>
+        <link refid="stormnodeman_8cpp"/>
+      </node>
+      <node id="8521">
+        <label>/home/dev/ds-160209/src/rpcsmessage.cpp</label>
+        <link refid="rpcsmessage_8cpp"/>
+      </node>
+      <node id="8592">
+        <label>/home/dev/ds-160209/src/leveldb/util/env.cc</label>
+        <link refid="env_8cc"/>
+      </node>
+      <node id="8434">
+        <label>/home/dev/ds-160209/src/leveldb/db/builder.cc</label>
+        <link refid="builder_8cc"/>
+      </node>
+      <node id="8591">
+        <label>/home/dev/ds-160209/src/leveldb/table/table_builder.cc</label>
+        <link refid="table__builder_8cc"/>
+      </node>
+      <node id="8501">
+        <label>/home/dev/ds-160209/src/wallet.cpp</label>
+        <link refid="wallet_8cpp"/>
+      </node>
+      <node id="8529">
+        <label>/home/dev/ds-160209/src/qt/guiutil.cpp</label>
+        <link refid="guiutil_8cpp"/>
+      </node>
+      <node id="8435">
+        <label>/home/dev/ds-160209/src/leveldb/db/db_impl.cc</label>
+        <link refid="db__impl_8cc"/>
+      </node>
+      <node id="8554">
+        <label>/home/dev/ds-160209/src/stormnode-budget.h</label>
+        <link refid="stormnode-budget_8h"/>
+        <childnode refid="8491" relation="include">
+        </childnode>
+        <childnode refid="8493" relation="include">
+        </childnode>
+        <childnode refid="8507" relation="include">
+        </childnode>
+        <childnode refid="8508" relation="include">
+        </childnode>
+        <childnode refid="8497" relation="include">
+        </childnode>
+        <childnode refid="8511" relation="include">
+        </childnode>
+        <childnode refid="8498" relation="include">
+        </childnode>
+        <childnode refid="8499" relation="include">
+        </childnode>
+        <childnode refid="8501" relation="include">
+        </childnode>
+      </node>
+      <node id="8514">
+        <label>/home/dev/ds-160209/src/qt/messagemodel.h</label>
+        <link refid="messagemodel_8h"/>
+        <childnode refid="8515" relation="include">
+        </childnode>
+        <childnode refid="8516" relation="include">
+        </childnode>
+        <childnode refid="8517" relation="include">
+        </childnode>
+        <childnode refid="8518" relation="include">
+        </childnode>
+        <childnode refid="8519" relation="include">
+        </childnode>
+        <childnode refid="8520" relation="include">
+        </childnode>
+      </node>
+      <node id="8527">
+        <label>/home/dev/ds-160209/src/qt/addresstablemodel.cpp</label>
+        <link refid="addresstablemodel_8cpp"/>
+      </node>
+      <node id="8615">
+        <label>/home/dev/ds-160209/src/leveldb/util/status.cc</label>
+        <link refid="status_8cc"/>
+      </node>
+      <node id="8502">
+        <label>/home/dev/ds-160209/src/net.cpp</label>
+        <link refid="net_8cpp"/>
+      </node>
+      <node id="8488">
+        <label>/home/dev/ds-160209/src/sandstorm.h</label>
+        <link refid="sandstorm_8h"/>
+        <childnode refid="8489" relation="include">
+        </childnode>
+        <childnode refid="8492" relation="include">
+        </childnode>
+        <childnode refid="8493" relation="include">
+        </childnode>
+        <childnode refid="8502" relation="include">
+        </childnode>
+        <childnode refid="8503" relation="include">
+        </childnode>
+        <childnode refid="8504" relation="include">
+        </childnode>
+        <childnode refid="8505" relation="include">
+        </childnode>
+        <childnode refid="8506" relation="include">
+        </childnode>
+        <childnode refid="8507" relation="include">
+        </childnode>
+        <childnode refid="8508" relation="include">
+        </childnode>
+        <childnode refid="8509" relation="include">
+        </childnode>
+        <childnode refid="8510" relation="include">
+        </childnode>
+        <childnode refid="8511" relation="include">
+        </childnode>
+        <childnode refid="8498" relation="include">
+        </childnode>
+        <childnode refid="8512" relation="include">
+        </childnode>
+        <childnode refid="8500" relation="include">
+        </childnode>
+        <childnode refid="8501" relation="include">
+        </childnode>
+      </node>
+      <node id="8549">
+        <label>/home/dev/ds-160209/src/stormnode-sync.h</label>
+        <link refid="stormnode-sync_8h"/>
+        <childnode refid="8487" relation="include">
+        </childnode>
+        <childnode refid="8492" relation="include">
+        </childnode>
+        <childnode refid="8493" relation="include">
+        </childnode>
+        <childnode refid="8550" relation="include">
+        </childnode>
+        <childnode refid="8516" relation="include">
+        </childnode>
+        <childnode refid="8524" relation="include">
+        </childnode>
+        <childnode refid="8496" relation="include">
+        </childnode>
+        <childnode refid="8507" relation="include">
+        </childnode>
+        <childnode refid="8508" relation="include">
+        </childnode>
+        <childnode refid="8510" relation="include">
+        </childnode>
+        <childnode refid="8511" relation="include">
+        </childnode>
+        <childnode refid="8498" relation="include">
+        </childnode>
+        <childnode refid="8499" relation="include">
+        </childnode>
+        <childnode refid="8512" relation="include">
+        </childnode>
+        <childnode refid="8500" relation="include">
+        </childnode>
+      </node>
+      <node id="8483">
+        <label>/home/dev/ds-160209/src/txmempool.h</label>
+        <link refid="txmempool_8h"/>
+        <childnode refid="8484" relation="include">
+        </childnode>
+        <childnode refid="8482" relation="include">
+        </childnode>
+        <childnode refid="8569" relation="include">
+        </childnode>
+      </node>
+      <node id="8497">
+        <label>/home/dev/ds-160209/src/spork.cpp</label>
+        <link refid="spork_8cpp"/>
+      </node>
+      <node id="8542">
+        <label>/home/dev/ds-160209/src/qt/transactiondesc.cpp</label>
+        <link refid="transactiondesc_8cpp"/>
+      </node>
+      <node id="8550">
+        <label>/home/dev/ds-160209/src/qt/clientmodel.cpp</label>
+        <link refid="clientmodel_8cpp"/>
+      </node>
+      <node id="8604">
+        <label>/home/dev/ds-160209/src/leveldb/util/hash_test.cc</label>
+        <link refid="hash__test_8cc"/>
+      </node>
+      <node id="8536">
+        <label>/home/dev/ds-160209/src/qt/transactionview.cpp</label>
+        <link refid="transactionview_8cpp"/>
+      </node>
+      <node id="8605">
+        <label>/home/dev/ds-160209/src/leveldb/util/testharness.cc</label>
+        <link refid="testharness_8cc"/>
+      </node>
+      <node id="8579">
+        <label>/home/dev/ds-160209/src/leveldb/table/block.cc</label>
+        <link refid="block_8cc"/>
+      </node>
+      <node id="8508">
+        <label>/home/dev/ds-160209/src/rpcstormnode.cpp</label>
+        <link refid="rpcstormnode_8cpp"/>
+      </node>
+      <node id="8503">
+        <label>/home/dev/ds-160209/src/qt/coincontroldialog.cpp</label>
+        <link refid="coincontroldialog_8cpp"/>
+      </node>
+      <node id="8570">
+        <label>/home/dev/ds-160209/src/coins.cpp</label>
+        <link refid="coins_8cpp"/>
+      </node>
+      <node id="8517">
+        <label>/home/dev/ds-160209/src/qt/messagemodel.cpp</label>
+        <link refid="messagemodel_8cpp"/>
+      </node>
+      <node id="8458">
+        <label>/home/dev/ds-160209/src/leveldb/db/version_edit.h</label>
+        <link refid="version__edit_8h"/>
+        <childnode refid="8434" relation="include">
+        </childnode>
+        <childnode refid="8447" relation="include">
+        </childnode>
+        <childnode refid="8442" relation="include">
+        </childnode>
+        <childnode refid="8459" relation="include">
+        </childnode>
+        <childnode refid="8460" relation="include">
+        </childnode>
+        <childnode refid="8461" relation="include">
+        </childnode>
+      </node>
+      <node id="8597">
+        <label>/home/dev/ds-160209/src/leveldb/util/posix_logger.h</label>
+        <link refid="posix__logger_8h"/>
+        <childnode refid="8593" relation="include">
+        </childnode>
+      </node>
+      <node id="8482">
+        <label>/home/dev/ds-160209/src/coins.h</label>
+        <link refid="coins_8h"/>
+        <childnode refid="8483" relation="include">
+        </childnode>
+        <childnode refid="8570" relation="include">
+        </childnode>
+        <childnode refid="8493" relation="include">
+        </childnode>
+      </node>
+      <node id="8460">
+        <label>/home/dev/ds-160209/src/leveldb/db/version_edit_test.cc</label>
+        <link refid="version__edit__test_8cc"/>
+      </node>
+      <node id="8513">
+        <label>/home/dev/ds-160209/src/smessage.h</label>
+        <link refid="smessage_8h"/>
+        <childnode refid="8491" relation="include">
+        </childnode>
+        <childnode refid="8493" relation="include">
+        </childnode>
+        <childnode refid="8514" relation="include">
+        </childnode>
+        <childnode refid="8520" relation="include">
+        </childnode>
+        <childnode refid="8495" relation="include">
+        </childnode>
+        <childnode refid="8521" relation="include">
+        </childnode>
+        <childnode refid="8522" relation="include">
+        </childnode>
+        <childnode refid="8501" relation="include">
+        </childnode>
+      </node>
+      <node id="8433">
+        <label>/home/dev/ds-160209/src/leveldb/db/dbformat.h</label>
+        <link refid="dbformat_8h"/>
+        <childnode refid="8434" relation="include">
+        </childnode>
+        <childnode refid="8435" relation="include">
+        </childnode>
+        <childnode refid="8436" relation="include">
+        </childnode>
+        <childnode refid="8440" relation="include">
+        </childnode>
+        <childnode refid="8444" relation="include">
+        </childnode>
+        <childnode refid="8445" relation="include">
+        </childnode>
+        <childnode refid="8446" relation="include">
+        </childnode>
+        <childnode refid="8447" relation="include">
+        </childnode>
+        <childnode refid="8448" relation="include">
+        </childnode>
+        <childnode refid="8449" relation="include">
+        </childnode>
+        <childnode refid="8450" relation="include">
+        </childnode>
+        <childnode refid="8451" relation="include">
+        </childnode>
+        <childnode refid="8442" relation="include">
+        </childnode>
+        <childnode refid="8456" relation="include">
+        </childnode>
+        <childnode refid="8458" relation="include">
+        </childnode>
+        <childnode refid="8461" relation="include">
+        </childnode>
+        <childnode refid="8453" relation="include">
+        </childnode>
+        <childnode refid="8455" relation="include">
+        </childnode>
+      </node>
+      <node id="8577">
+        <label>/home/dev/ds-160209/src/leveldb/table/two_level_iterator.cc</label>
+        <link refid="two__level__iterator_8cc"/>
+      </node>
+      <node id="8515">
+        <label>/home/dev/ds-160209/src/qt/darksilk.cpp</label>
+        <link refid="darksilk_8cpp"/>
+      </node>
+      <node id="8543">
+        <label>/home/dev/ds-160209/src/rpcwallet.cpp</label>
+        <link refid="rpcwallet_8cpp"/>
+      </node>
+      <node id="8472">
+        <label>/home/dev/ds-160209/src/leveldb/util/cache.cc</label>
+        <link refid="cache_8cc"/>
+      </node>
+      <node id="8609">
+        <label>/home/dev/ds-160209/src/leveldb/util/testutil.cc</label>
+        <link refid="testutil_8cc"/>
+      </node>
+      <node id="8459">
+        <label>/home/dev/ds-160209/src/leveldb/db/version_edit.cc</label>
+        <link refid="version__edit_8cc"/>
+      </node>
+      <node id="8565">
+        <label>/home/dev/ds-160209/src/rpcblockchain.cpp</label>
+        <link refid="rpcblockchain_8cpp"/>
+        <childnode refid="8540" relation="include">
+        </childnode>
+      </node>
+      <node id="8470">
+        <label>/home/dev/ds-160209/src/leveldb/db/c.cc</label>
+        <link refid="c_8cc"/>
+      </node>
+      <node id="8601">
+        <label>/home/dev/ds-160209/src/leveldb/util/bloom_test.cc</label>
+        <link refid="bloom__test_8cc"/>
+      </node>
+      <node id="8569">
+        <label>/home/dev/ds-160209/src/txmempool.cpp</label>
+        <link refid="txmempool_8cpp"/>
+      </node>
+      <node id="8548">
+        <label>/home/dev/ds-160209/src/stormnode-payments.h</label>
+        <link refid="stormnode-payments_8h"/>
+        <childnode refid="8549" relation="include">
+        </childnode>
+        <childnode refid="8491" relation="include">
+        </childnode>
+        <childnode refid="8493" relation="include">
+        </childnode>
+        <childnode refid="8494" relation="include">
+        </childnode>
+        <childnode refid="8507" relation="include">
+        </childnode>
+        <childnode refid="8508" relation="include">
+        </childnode>
+        <childnode refid="8510" relation="include">
+        </childnode>
+        <childnode refid="8498" relation="include">
+        </childnode>
+        <childnode refid="8499" relation="include">
+        </childnode>
+        <childnode refid="8512" relation="include">
+        </childnode>
+        <childnode refid="8500" relation="include">
+        </childnode>
+        <childnode refid="8501" relation="include">
+        </childnode>
+      </node>
+      <node id="8540">
+        <label>/home/dev/ds-160209/src/qt/statisticspage.cpp</label>
+        <link refid="statisticspage_8cpp"/>
+      </node>
+      <node id="8532">
+        <label>/home/dev/ds-160209/src/qt/sendcoinsentry.cpp</label>
+        <link refid="sendcoinsentry_8cpp"/>
+      </node>
+      <node id="8562">
+        <label>/home/dev/ds-160209/src/qt/debugconsole.h</label>
+        <link refid="debugconsole_8h"/>
+        <childnode refid="8516" relation="include">
+        </childnode>
+        <childnode refid="8563" relation="include">
+        </childnode>
+      </node>
+      <node id="8607">
+        <label>/home/dev/ds-160209/src/leveldb/doc/bench/db_bench_sqlite3.cc</label>
+        <link refid="db__bench__sqlite3_8cc"/>
+      </node>
+      <node id="8559">
+        <label>/home/dev/ds-160209/src/chainparams.cpp</label>
+        <link refid="chainparams_8cpp"/>
+      </node>
+      <node id="8495">
+        <label>/home/dev/ds-160209/src/qt/walletmodel.cpp</label>
+        <link refid="walletmodel_8cpp"/>
+      </node>
+      <node id="8466">
+        <label>/home/dev/ds-160209/src/leveldb/db/log_test.cc</label>
+        <link refid="log__test_8cc"/>
+      </node>
+      <node id="8593">
+        <label>/home/dev/ds-160209/src/leveldb/util/env_posix.cc</label>
+        <link refid="env__posix_8cc"/>
+      </node>
+      <node id="8572">
+        <label>/home/dev/ds-160209/src/compressor.cpp</label>
+        <link refid="compressor_8cpp"/>
+      </node>
+      <node id="8448">
+        <label>/home/dev/ds-160209/src/leveldb/db/filename.cc</label>
+        <link refid="filename_8cc"/>
+      </node>
+      <node id="8621">
+        <label>/home/dev/ds-160209/src/leveldb/util/coding.cc</label>
+        <link refid="coding_8cc"/>
+      </node>
+      <node id="8534">
+        <label>/home/dev/ds-160209/src/qt/test/uritests.cpp</label>
+        <link refid="uritests_8cpp"/>
+      </node>
+      <node id="8477">
+        <label>/home/dev/ds-160209/src/leveldb/include/leveldb/db.h</label>
+        <link refid="leveldb_2include_2leveldb_2db_8h"/>
+        <childnode refid="8478" relation="include">
+        </childnode>
+        <childnode refid="8555" relation="include">
+        </childnode>
+        <childnode refid="8513" relation="include">
+        </childnode>
+        <childnode refid="8437" relation="include">
+        </childnode>
+        <childnode refid="8434" relation="include">
+        </childnode>
+        <childnode refid="8470" relation="include">
+        </childnode>
+        <childnode refid="8438" relation="include">
+        </childnode>
+        <childnode refid="8439" relation="include">
+        </childnode>
+        <childnode refid="8435" relation="include">
+        </childnode>
+        <childnode refid="8436" relation="include">
+        </childnode>
+        <childnode refid="8444" relation="include">
+        </childnode>
+        <childnode refid="8441" relation="include">
+        </childnode>
+        <childnode refid="8433" relation="include">
+        </childnode>
+        <childnode refid="8451" relation="include">
+        </childnode>
+        <childnode refid="8442" relation="include">
+        </childnode>
+        <childnode refid="8573" relation="include">
+        </childnode>
+        <childnode refid="8453" relation="include">
+        </childnode>
+        <childnode refid="8454" relation="include">
+        </childnode>
+        <childnode refid="8443" relation="include">
+        </childnode>
+        <childnode refid="8574" relation="include">
+        </childnode>
+        <childnode refid="8575" relation="include">
+        </childnode>
+        <childnode refid="8455" relation="include">
+        </childnode>
+      </node>
+      <node id="8580">
+        <label>/home/dev/ds-160209/src/leveldb/table/format.cc</label>
+        <link refid="format_8cc"/>
+      </node>
+      <node id="8587">
+        <label>/home/dev/ds-160209/src/leveldb/helpers/memenv/memenv.cc</label>
+        <link refid="memenv_8cc"/>
+      </node>
+      <node id="8485">
+        <label>/home/dev/ds-160209/src/wallet.h</label>
+        <link refid="wallet_8h"/>
+        <childnode refid="8486" relation="include">
+        </childnode>
+        <childnode refid="8490" relation="include">
+        </childnode>
+        <childnode refid="8513" relation="include">
+        </childnode>
+        <childnode refid="8523" relation="include">
+        </childnode>
+        <childnode refid="8502" relation="include">
+        </childnode>
+        <childnode refid="8525" relation="include">
+        </childnode>
+        <childnode refid="8526" relation="include">
+        </childnode>
+        <childnode refid="8527" relation="include">
+        </childnode>
+        <childnode refid="8537" relation="include">
+        </childnode>
+        <childnode refid="8538" relation="include">
+        </childnode>
+        <childnode refid="8503" relation="include">
+        </childnode>
+        <childnode refid="8515" relation="include">
+        </childnode>
+        <childnode refid="8516" relation="include">
+        </childnode>
+        <childnode refid="8539" relation="include">
+        </childnode>
+        <childnode refid="8541" relation="include">
+        </childnode>
+        <childnode refid="8533" relation="include">
+        </childnode>
+        <childnode refid="8540" relation="include">
+        </childnode>
+        <childnode refid="8505" relation="include">
+        </childnode>
+        <childnode refid="8542" relation="include">
+        </childnode>
+        <childnode refid="8506" relation="include">
+        </childnode>
+        <childnode refid="8535" relation="include">
+        </childnode>
+        <childnode refid="8495" relation="include">
+        </childnode>
+        <childnode refid="8543" relation="include">
+        </childnode>
+        <childnode refid="8544" relation="include">
+        </childnode>
+        <childnode refid="8545" relation="include">
+        </childnode>
+        <childnode refid="8546" relation="include">
+        </childnode>
+        <childnode refid="8501" relation="include">
+        </childnode>
+        <childnode refid="8547" relation="include">
+        </childnode>
+      </node>
+      <node id="8566">
+        <label>/home/dev/ds-160209/src/rpcnet.cpp</label>
+        <link refid="rpcnet_8cpp"/>
+      </node>
+      <node id="8558">
+        <label>/home/dev/ds-160209/src/txdb.cpp</label>
+        <link refid="txdb_8cpp"/>
+      </node>
+      <node id="8533">
+        <label>/home/dev/ds-160209/src/qt/signverifymessagedialog.cpp</label>
+        <link refid="signverifymessagedialog_8cpp"/>
+      </node>
+      <node id="8494">
+        <label>/home/dev/ds-160209/src/miner.cpp</label>
+        <link refid="miner_8cpp"/>
+      </node>
+      <node id="8499">
+        <label>/home/dev/ds-160209/src/stormnode-sync.cpp</label>
+        <link refid="stormnode-sync_8cpp"/>
+      </node>
+      <node id="8594">
+        <label>/home/dev/ds-160209/src/leveldb/util/env_test.cc</label>
+        <link refid="env__test_8cc"/>
+      </node>
+      <node id="8524">
+        <label>/home/dev/ds-160209/src/rpcmining.cpp</label>
+        <link refid="rpcmining_8cpp"/>
+      </node>
+      <node id="8616">
+        <label>/home/dev/ds-160209/src/leveldb/table/block_builder.h</label>
+        <link refid="block__builder_8h"/>
+        <childnode refid="8611" relation="include">
+        </childnode>
+        <childnode refid="8591" relation="include">
+        </childnode>
+        <childnode refid="8455" relation="include">
+        </childnode>
+      </node>
+      <node id="8596">
+        <label>/home/dev/ds-160209/src/leveldb/util/options.cc</label>
+        <link refid="options_8cc"/>
+      </node>
+      <node id="8575">
+        <label>/home/dev/ds-160209/src/leveldb/issues/issue200_test.cc</label>
+        <link refid="issue200__test_8cc"/>
+      </node>
+      <node id="8606">
+        <label>/home/dev/ds-160209/src/leveldb/util/testutil.h</label>
+        <link refid="testutil_8h"/>
+        <childnode refid="8437" relation="include">
+        </childnode>
+        <childnode refid="8438" relation="include">
+        </childnode>
+        <childnode refid="8439" relation="include">
+        </childnode>
+        <childnode refid="8441" relation="include">
+        </childnode>
+        <childnode refid="8462" relation="include">
+        </childnode>
+        <childnode refid="8607" relation="include">
+        </childnode>
+        <childnode refid="8608" relation="include">
+        </childnode>
+        <childnode refid="8599" relation="include">
+        </childnode>
+        <childnode refid="8455" relation="include">
+        </childnode>
+        <childnode refid="8601" relation="include">
+        </childnode>
+        <childnode refid="8609" relation="include">
+        </childnode>
+      </node>
+      <node id="8553">
+        <label>/home/dev/ds-160209/src/sandstorm-relay.h</label>
+        <link refid="sandstorm-relay_8h"/>
+        <childnode refid="8509" relation="include">
+        </childnode>
+      </node>
+      <node id="8583">
+        <label>/home/dev/ds-160209/src/leveldb/table/two_level_iterator.h</label>
+        <link refid="two__level__iterator_8h"/>
+        <childnode refid="8435" relation="include">
+        </childnode>
+        <childnode refid="8452" relation="include">
+        </childnode>
+        <childnode refid="8471" relation="include">
+        </childnode>
+        <childnode refid="8577" relation="include">
+        </childnode>
+      </node>
+      <node id="8538">
+        <label>/home/dev/ds-160209/src/qt/blockbrowser.cpp</label>
+        <link refid="blockbrowser_8cpp"/>
+      </node>
+      <node id="8551">
+        <label>/home/dev/ds-160209/src/stormnode.h</label>
+        <link refid="stormnode_8h"/>
+        <childnode refid="8548" relation="include">
+        </childnode>
+        <childnode refid="8552" relation="include">
+        </childnode>
+        <childnode refid="8554" relation="include">
+        </childnode>
+        <childnode refid="8505" relation="include">
+        </childnode>
+        <childnode refid="8511" relation="include">
+        </childnode>
+        <childnode refid="8499" relation="include">
+        </childnode>
+        <childnode refid="8512" relation="include">
+        </childnode>
+        <childnode refid="8500" relation="include">
+        </childnode>
+        <childnode refid="8501" relation="include">
+        </childnode>
+      </node>
+      <node id="8454">
+        <label>/home/dev/ds-160209/src/leveldb/db/write_batch_test.cc</label>
+        <link refid="write__batch__test_8cc"/>
+      </node>
+      <node id="8478">
+        <label>/home/dev/ds-160209/src/leveldbwrapper.h</label>
+        <link refid="leveldbwrapper_8h"/>
+        <childnode refid="8479" relation="include">
+        </childnode>
+        <childnode refid="8474" relation="include">
+        </childnode>
+      </node>
+      <node id="8618">
+        <label>/home/dev/ds-160209/src/leveldb/table/filter_block.cc</label>
+        <link refid="filter__block_8cc"/>
+      </node>
+      <node id="8622">
+        <label>/home/dev/ds-160209/src/leveldb/util/crc32c.cc</label>
+        <link refid="crc32c_8cc"/>
+      </node>
+      <node id="8475">
+        <label>/home/dev/ds-160209/src/txdb-leveldb.cpp</label>
+        <link refid="txdb-leveldb_8cpp"/>
+      </node>
+      <node id="8469">
+        <label>/home/dev/ds-160209/src/leveldb/include/leveldb/cache.h</label>
+        <link refid="cache_8h"/>
+        <childnode refid="8437" relation="include">
+        </childnode>
+        <childnode refid="8470" relation="include">
+        </childnode>
+        <childnode refid="8438" relation="include">
+        </childnode>
+        <childnode refid="8439" relation="include">
+        </childnode>
+        <childnode refid="8441" relation="include">
+        </childnode>
+        <childnode refid="8456" relation="include">
+        </childnode>
+        <childnode refid="8471" relation="include">
+        </childnode>
+        <childnode refid="8472" relation="include">
+        </childnode>
+        <childnode refid="8473" relation="include">
+        </childnode>
+        <childnode refid="8474" relation="include">
+        </childnode>
+        <childnode refid="8475" relation="include">
+        </childnode>
+      </node>
+      <node id="8506">
+        <label>/home/dev/ds-160209/src/qt/transactionrecord.cpp</label>
+        <link refid="transactionrecord_8cpp"/>
+      </node>
+      <node id="8464">
+        <label>/home/dev/ds-160209/src/leveldb/db/log_reader.h</label>
+        <link refid="log__reader_8h"/>
+        <childnode refid="8435" relation="include">
+        </childnode>
+        <childnode refid="8447" relation="include">
+        </childnode>
+        <childnode refid="8465" relation="include">
+        </childnode>
+        <childnode refid="8466" relation="include">
+        </childnode>
+        <childnode refid="8442" relation="include">
+        </childnode>
+        <childnode refid="8452" relation="include">
+        </childnode>
+      </node>
+      <node id="8481">
+        <label>/home/dev/ds-160209/src/undo.h</label>
+        <link refid="undo_8h"/>
+        <childnode refid="8482" relation="include">
+        </childnode>
+        <childnode refid="8571" relation="include">
+        </childnode>
+      </node>
+      <node id="8452">
+        <label>/home/dev/ds-160209/src/leveldb/db/version_set.cc</label>
+        <link refid="version__set_8cc"/>
+      </node>
+      <node id="8449">
+        <label>/home/dev/ds-160209/src/leveldb/db/filename_test.cc</label>
+        <link refid="filename__test_8cc"/>
+      </node>
+      <node id="8584">
+        <label>/home/dev/ds-160209/src/leveldb/include/leveldb/status.h</label>
+        <link refid="status_8h"/>
+        <childnode refid="8585" relation="include">
+        </childnode>
+        <childnode refid="8470" relation="include">
+        </childnode>
+        <childnode refid="8435" relation="include">
+        </childnode>
+        <childnode refid="8447" relation="include">
+        </childnode>
+        <childnode refid="8463" relation="include">
+        </childnode>
+        <childnode refid="8586" relation="include">
+        </childnode>
+        <childnode refid="8464" relation="include">
+        </childnode>
+        <childnode refid="8467" relation="include">
+        </childnode>
+        <childnode refid="8587" relation="include">
+        </childnode>
+        <childnode refid="8588" relation="include">
+        </childnode>
+        <childnode refid="8589" relation="include">
+        </childnode>
+        <childnode refid="8476" relation="include">
+        </childnode>
+        <childnode refid="8610" relation="include">
+        </childnode>
+        <childnode refid="8613" relation="include">
+        </childnode>
+        <childnode refid="8612" relation="include">
+        </childnode>
+        <childnode refid="8615" relation="include">
+        </childnode>
+      </node>
+      <node id="8568">
+        <label>/home/dev/ds-160209/src/test/allocator_tests.cpp</label>
+        <link refid="allocator__tests_8cpp"/>
+      </node>
+      <node id="8581">
+        <label>/home/dev/ds-160209/src/leveldb/table/iterator.cc</label>
+        <link refid="iterator_8cc"/>
+      </node>
+      <node id="8439">
+        <label>/home/dev/ds-160209/src/leveldb/db/db_bench.cc</label>
+        <link refid="db__bench_8cc"/>
+      </node>
+      <node id="8567">
+        <label>/home/dev/ds-160209/src/script.cpp</label>
+        <link refid="script_8cpp"/>
+      </node>
+      <node id="8545">
+        <label>/home/dev/ds-160209/src/test/base64_tests.cpp</label>
+        <link refid="base64__tests_8cpp"/>
+      </node>
+      <node id="8505">
+        <label>/home/dev/ds-160209/src/qt/stormnodemanager.cpp</label>
+        <link refid="stormnodemanager_8cpp"/>
+      </node>
+      <node id="8444">
+        <label>/home/dev/ds-160209/src/leveldb/db/db_iter.h</label>
+        <link refid="db__iter_8h"/>
+        <childnode refid="8435" relation="include">
+        </childnode>
+        <childnode refid="8440" relation="include">
+        </childnode>
+      </node>
+      <node id="8461">
+        <label>/home/dev/ds-160209/src/leveldb/db/version_set.h</label>
+        <link refid="version__set_8h"/>
+        <childnode refid="8438" relation="include">
+        </childnode>
+        <childnode refid="8439" relation="include">
+        </childnode>
+        <childnode refid="8435" relation="include">
+        </childnode>
+        <childnode refid="8441" relation="include">
+        </childnode>
+        <childnode refid="8459" relation="include">
+        </childnode>
+        <childnode refid="8452" relation="include">
+        </childnode>
+        <childnode refid="8462" relation="include">
+        </childnode>
+      </node>
+      <node id="8530">
+        <label>/home/dev/ds-160209/src/qt/sandstormconfig.cpp</label>
+        <link refid="sandstormconfig_8cpp"/>
+      </node>
+      <node id="8595">
+        <label>/home/dev/ds-160209/src/leveldb/util/logging.cc</label>
+        <link refid="logging_8cc"/>
+      </node>
+      <node id="8620">
+        <label>/home/dev/ds-160209/src/leveldb/util/coding.h</label>
+        <link refid="coding_8h"/>
+        <childnode refid="8435" relation="include">
+        </childnode>
+        <childnode refid="8445" relation="include">
+        </childnode>
+        <childnode refid="8433" relation="include">
+        </childnode>
+        <childnode refid="8465" relation="include">
+        </childnode>
+        <childnode refid="8466" relation="include">
+        </childnode>
+        <childnode refid="8468" relation="include">
+        </childnode>
+        <childnode refid="8450" relation="include">
+        </childnode>
+        <childnode refid="8457" relation="include">
+        </childnode>
+        <childnode refid="8459" relation="include">
+        </childnode>
+        <childnode refid="8452" relation="include">
+        </childnode>
+        <childnode refid="8453" relation="include">
+        </childnode>
+        <childnode refid="8579" relation="include">
+        </childnode>
+        <childnode refid="8611" relation="include">
+        </childnode>
+        <childnode refid="8618" relation="include">
+        </childnode>
+        <childnode refid="8599" relation="include">
+        </childnode>
+        <childnode refid="8580" relation="include">
+        </childnode>
+        <childnode refid="8471" relation="include">
+        </childnode>
+        <childnode refid="8591" relation="include">
+        </childnode>
+        <childnode refid="8601" relation="include">
+        </childnode>
+        <childnode refid="8473" relation="include">
+        </childnode>
+        <childnode refid="8621" relation="include">
+        </childnode>
+        <childnode refid="8602" relation="include">
+        </childnode>
+        <childnode refid="8622" relation="include">
+        </childnode>
+        <childnode refid="8623" relation="include">
+        </childnode>
+      </node>
+      <node id="8498">
+        <label>/home/dev/ds-160209/src/stormnode-payments.cpp</label>
+        <link refid="stormnode-payments_8cpp"/>
+      </node>
+      <node id="8617">
+        <label>/home/dev/ds-160209/src/leveldb/table/filter_block.h</label>
+        <link refid="filter__block_8h"/>
+        <childnode refid="8618" relation="include">
+        </childnode>
+        <childnode refid="8599" relation="include">
+        </childnode>
+        <childnode refid="8471" relation="include">
+        </childnode>
+        <childnode refid="8591" relation="include">
+        </childnode>
+      </node>
+      <node id="8603">
+        <label>/home/dev/ds-160209/src/leveldb/util/crc32c_test.cc</label>
+        <link refid="crc32c__test_8cc"/>
+      </node>
+      <node id="8546">
+        <label>/home/dev/ds-160209/src/test/wallet_tests.cpp</label>
+        <link refid="wallet__tests_8cpp"/>
+      </node>
+      <node id="8442">
+        <label>/home/dev/ds-160209/src/leveldb/db/repair.cc</label>
+        <link refid="repair_8cc"/>
+      </node>
+      <node id="8624">
+        <label>/home/dev/ds-160209/src/leveldb/util/comparator.cc</label>
+        <link refid="comparator_8cc"/>
+      </node>
+      <node id="8541">
+        <label>/home/dev/ds-160209/src/qt/optionsmodel.cpp</label>
+        <link refid="optionsmodel_8cpp"/>
+      </node>
+      <node id="8544">
+        <label>/home/dev/ds-160209/src/test/accounting_tests.cpp</label>
+        <link refid="accounting__tests_8cpp"/>
+      </node>
+      <node id="8557">
+        <label>/home/dev/ds-160209/src/rpcrawtransaction.cpp</label>
+        <link refid="rpcrawtransaction_8cpp"/>
+      </node>
+      <node id="8463">
+        <label>/home/dev/ds-160209/src/leveldb/db/filename.h</label>
+        <link refid="filename_8h"/>
+        <childnode refid="8434" relation="include">
+        </childnode>
+        <childnode refid="8438" relation="include">
+        </childnode>
+        <childnode refid="8435" relation="include">
+        </childnode>
+        <childnode refid="8440" relation="include">
+        </childnode>
+        <childnode refid="8441" relation="include">
+        </childnode>
+        <childnode refid="8447" relation="include">
+        </childnode>
+        <childnode refid="8448" relation="include">
+        </childnode>
+        <childnode refid="8449" relation="include">
+        </childnode>
+        <childnode refid="8442" relation="include">
+        </childnode>
+        <childnode refid="8457" relation="include">
+        </childnode>
+        <childnode refid="8452" relation="include">
+        </childnode>
+      </node>
+      <node id="8473">
+        <label>/home/dev/ds-160209/src/leveldb/util/cache_test.cc</label>
+        <link refid="cache__test_8cc"/>
+      </node>
+      <node id="8484">
+        <label>/home/dev/ds-160209/src/main.h</label>
+        <link refid="main_8h"/>
+        <childnode refid="8485" relation="include">
+        </childnode>
+        <childnode refid="8479" relation="include">
+        </childnode>
+        <childnode refid="8548" relation="include">
+        </childnode>
+        <childnode refid="8551" relation="include">
+        </childnode>
+        <childnode refid="8549" relation="include">
+        </childnode>
+        <childnode refid="8552" relation="include">
+        </childnode>
+        <childnode refid="8489" relation="include">
+        </childnode>
+        <childnode refid="8555" relation="include">
+        </childnode>
+        <childnode refid="8559" relation="include">
+        </childnode>
+        <childnode refid="8560" relation="include">
+        </childnode>
+        <childnode refid="8491" relation="include">
+        </childnode>
+        <childnode refid="8554" relation="include">
+        </childnode>
+        <childnode refid="8493" relation="include">
+        </childnode>
+        <childnode refid="8502" relation="include">
+        </childnode>
+        <childnode refid="8537" relation="include">
+        </childnode>
+        <childnode refid="8538" relation="include">
+        </childnode>
+        <childnode refid="8561" relation="include">
+        </childnode>
+        <childnode refid="8550" relation="include">
+        </childnode>
+        <childnode refid="8539" relation="include">
+        </childnode>
+        <childnode refid="8533" relation="include">
+        </childnode>
+        <childnode refid="8540" relation="include">
+        </childnode>
+        <childnode refid="8542" relation="include">
+        </childnode>
+        <childnode refid="8565" relation="include">
+        </childnode>
+        <childnode refid="8524" relation="include">
+        </childnode>
+        <childnode refid="8496" relation="include">
+        </childnode>
+        <childnode refid="8566" relation="include">
+        </childnode>
+        <childnode refid="8557" relation="include">
+        </childnode>
+        <childnode refid="8521" relation="include">
+        </childnode>
+        <childnode refid="8507" relation="include">
+        </childnode>
+        <childnode refid="8508" relation="include">
+        </childnode>
+        <childnode refid="8567" relation="include">
+        </childnode>
+        <childnode refid="8497" relation="include">
+        </childnode>
+        <childnode refid="8511" relation="include">
+        </childnode>
+        <childnode refid="8568" relation="include">
+        </childnode>
+        <childnode refid="8545" relation="include">
+        </childnode>
+        <childnode refid="8546" relation="include">
+        </childnode>
+        <childnode refid="8475" relation="include">
+        </childnode>
+      </node>
+      <node id="8509">
+        <label>/home/dev/ds-160209/src/sandstorm-relay.cpp</label>
+        <link refid="sandstorm-relay_8cpp"/>
+      </node>
+      <node id="8453">
+        <label>/home/dev/ds-160209/src/leveldb/db/write_batch.cc</label>
+        <link refid="write__batch_8cc"/>
+      </node>
+      <node id="8552">
+        <label>/home/dev/ds-160209/src/stormnodeman.h</label>
+        <link refid="stormnodeman_8h"/>
+        <childnode refid="8487" relation="include">
+        </childnode>
+        <childnode refid="8488" relation="include">
+        </childnode>
+        <childnode refid="8491" relation="include">
+        </childnode>
+        <childnode refid="8492" relation="include">
+        </childnode>
+        <childnode refid="8493" relation="include">
+        </childnode>
+        <childnode refid="8494" relation="include">
+        </childnode>
+        <childnode refid="8550" relation="include">
+        </childnode>
+        <childnode refid="8505" relation="include">
+        </childnode>
+        <childnode refid="8507" relation="include">
+        </childnode>
+        <childnode refid="8508" relation="include">
+        </childnode>
+        <childnode refid="8553" relation="include">
+        </childnode>
+        <childnode refid="8511" relation="include">
+        </childnode>
+        <childnode refid="8498" relation="include">
+        </childnode>
+        <childnode refid="8499" relation="include">
+        </childnode>
+        <childnode refid="8512" relation="include">
+        </childnode>
+        <childnode refid="8500" relation="include">
+        </childnode>
+      </node>
+      <node id="8467">
+        <label>/home/dev/ds-160209/src/leveldb/db/log_writer.h</label>
+        <link refid="log__writer_8h"/>
+        <childnode refid="8435" relation="include">
+        </childnode>
+        <childnode refid="8436" relation="include">
+        </childnode>
+        <childnode refid="8466" relation="include">
+        </childnode>
+        <childnode refid="8468" relation="include">
+        </childnode>
+        <childnode refid="8442" relation="include">
+        </childnode>
+        <childnode refid="8452" relation="include">
+        </childnode>
+      </node>
+      <node id="8436">
+        <label>/home/dev/ds-160209/src/leveldb/db/db_impl.h</label>
+        <link refid="db__impl_8h"/>
+        <childnode refid="8437" relation="include">
+        </childnode>
+        <childnode refid="8438" relation="include">
+        </childnode>
+        <childnode refid="8439" relation="include">
+        </childnode>
+        <childnode refid="8435" relation="include">
+        </childnode>
+        <childnode refid="8440" relation="include">
+        </childnode>
+        <childnode refid="8441" relation="include">
+        </childnode>
+        <childnode refid="8442" relation="include">
+        </childnode>
+        <childnode refid="8443" relation="include">
+        </childnode>
+      </node>
+      <node id="8556">
+        <label>/home/dev/ds-160209/src/kernel.cpp</label>
+        <link refid="kernel_8cpp"/>
+      </node>
+      <node id="8528">
+        <label>/home/dev/ds-160209/src/qt/askpassphrasedialog.cpp</label>
+        <link refid="askpassphrasedialog_8cpp"/>
+      </node>
+      <node id="8457">
+        <label>/home/dev/ds-160209/src/leveldb/db/table_cache.cc</label>
+        <link refid="table__cache_8cc"/>
+      </node>
+      <node id="8507">
+        <label>/home/dev/ds-160209/src/rpcstormnode-budget.cpp</label>
+        <link refid="rpcstormnode-budget_8cpp"/>
+      </node>
+      <node id="8446">
+        <label>/home/dev/ds-160209/src/leveldb/db/dbformat_test.cc</label>
+        <link refid="dbformat__test_8cc"/>
+      </node>
+      <node id="8480">
+        <label>/home/dev/ds-160209/src/compressor.h</label>
+        <link refid="compressor_8h"/>
+        <childnode refid="8481" relation="include">
+        </childnode>
+        <childnode refid="8572" relation="include">
+        </childnode>
+      </node>
+      <node id="8474">
+        <label>/home/dev/ds-160209/src/leveldbwrapper.cpp</label>
+        <link refid="leveldbwrapper_8cpp"/>
+      </node>
+      <node id="8487">
+        <label>/home/dev/ds-160209/src/activestormnode.cpp</label>
+        <link refid="activestormnode_8cpp"/>
+      </node>
+      <node id="8547">
+        <label>/home/dev/ds-160209/src/walletdb.cpp</label>
+        <link refid="walletdb_8cpp"/>
+      </node>
+      <node id="8440">
+        <label>/home/dev/ds-160209/src/leveldb/db/db_iter.cc</label>
+        <link refid="db__iter_8cc"/>
+      </node>
+      <node id="8490">
+        <label>/home/dev/ds-160209/src/chain.cpp</label>
+        <link refid="chain_8cpp"/>
+      </node>
+      <node id="8614">
+        <label>/home/dev/ds-160209/src/leveldb/db/write_batch_internal.h</label>
+        <link refid="write__batch__internal_8h"/>
+        <childnode refid="8435" relation="include">
+        </childnode>
+        <childnode refid="8441" relation="include">
+        </childnode>
+        <childnode refid="8447" relation="include">
+        </childnode>
+        <childnode refid="8442" relation="include">
+        </childnode>
+        <childnode refid="8453" relation="include">
+        </childnode>
+        <childnode refid="8454" relation="include">
+        </childnode>
+        <childnode refid="8455" relation="include">
+        </childnode>
+      </node>
+      <node id="8511">
+        <label>/home/dev/ds-160209/src/stormnode-budget.cpp</label>
+        <link refid="stormnode-budget_8cpp"/>
+      </node>
+      <node id="8571">
+        <label>/home/dev/ds-160209/src/undo.cpp</label>
+        <link refid="undo_8cpp"/>
+      </node>
+      <node id="8555">
+        <label>/home/dev/ds-160209/src/txdb-leveldb.h</label>
+        <link refid="txdb-leveldb_8h"/>
+        <childnode refid="8490" relation="include">
+        </childnode>
+        <childnode refid="8491" relation="include">
+        </childnode>
+        <childnode refid="8556" relation="include">
+        </childnode>
+        <childnode refid="8493" relation="include">
+        </childnode>
+        <childnode refid="8494" relation="include">
+        </childnode>
+        <childnode refid="8542" relation="include">
+        </childnode>
+        <childnode refid="8524" relation="include">
+        </childnode>
+        <childnode refid="8557" relation="include">
+        </childnode>
+        <childnode refid="8522" relation="include">
+        </childnode>
+        <childnode refid="8475" relation="include">
+        </childnode>
+        <childnode refid="8558" relation="include">
+        </childnode>
+        <childnode refid="8501" relation="include">
+        </childnode>
+      </node>
+      <node id="8437">
+        <label>/home/dev/ds-160209/src/leveldb/db/autocompact_test.cc</label>
+        <link refid="autocompact__test_8cc"/>
+      </node>
+      <node id="8525">
+        <label>/home/dev/ds-160209/src/qt/addeditstormnode.cpp</label>
+        <link refid="addeditstormnode_8cpp"/>
+      </node>
+      <node id="8578">
+        <label>/home/dev/ds-160209/src/leveldb/table/block.h</label>
+        <link refid="leveldb_2table_2block_8h"/>
+        <childnode refid="8435" relation="include">
+        </childnode>
+        <childnode refid="8579" relation="include">
+        </childnode>
+        <childnode refid="8580" relation="include">
+        </childnode>
+        <childnode refid="8471" relation="include">
+        </childnode>
+        <childnode refid="8455" relation="include">
+        </childnode>
+        <childnode refid="8577" relation="include">
+        </childnode>
+      </node>
+      <node id="8492">
+        <label>/home/dev/ds-160209/src/instantx.cpp</label>
+        <link refid="instantx_8cpp"/>
+      </node>
+      <node id="8491">
+        <label>/home/dev/ds-160209/src/init.cpp</label>
+        <link refid="init_8cpp"/>
+      </node>
+      <node id="8590">
+        <label>/home/dev/ds-160209/src/leveldb/db/skiplist_test.cc</label>
+        <link refid="skiplist__test_8cc"/>
+      </node>
+      <node id="8561">
+        <label>/home/dev/ds-160209/src/qt/peertablemodel.h</label>
+        <link refid="peertablemodel_8h"/>
+        <childnode refid="8550" relation="include">
+        </childnode>
+        <childnode refid="8562" relation="include">
+        </childnode>
+        <childnode refid="8564" relation="include">
+        </childnode>
+      </node>
+      <node id="8518">
+        <label>/home/dev/ds-160209/src/qt/messagepage.cpp</label>
+        <link refid="messagepage_8cpp"/>
+      </node>
+      <node id="8451">
+        <label>/home/dev/ds-160209/src/leveldb/db/memtable.h</label>
+        <link refid="memtable_8h"/>
+        <childnode refid="8435" relation="include">
+        </childnode>
+        <childnode refid="8450" relation="include">
+        </childnode>
+        <childnode refid="8442" relation="include">
+        </childnode>
+        <childnode refid="8452" relation="include">
+        </childnode>
+        <childnode refid="8453" relation="include">
+        </childnode>
+        <childnode refid="8454" relation="include">
+        </childnode>
+        <childnode refid="8455" relation="include">
+        </childnode>
+      </node>
+      <node id="8489">
+        <label>/home/dev/ds-160209/src/spork.h</label>
+        <link refid="spork_8h"/>
+        <childnode refid="8487" relation="include">
+        </childnode>
+        <childnode refid="8490" relation="include">
+        </childnode>
+        <childnode refid="8491" relation="include">
+        </childnode>
+        <childnode refid="8492" relation="include">
+        </childnode>
+        <childnode refid="8493" relation="include">
+        </childnode>
+        <childnode refid="8494" relation="include">
+        </childnode>
+        <childnode refid="8495" relation="include">
+        </childnode>
+        <childnode refid="8496" relation="include">
+        </childnode>
+        <childnode refid="8497" relation="include">
+        </childnode>
+        <childnode refid="8498" relation="include">
+        </childnode>
+        <childnode refid="8499" relation="include">
+        </childnode>
+        <childnode refid="8500" relation="include">
+        </childnode>
+        <childnode refid="8501" relation="include">
+        </childnode>
+      </node>
+      <node id="8611">
+        <label>/home/dev/ds-160209/src/leveldb/table/block_builder.cc</label>
+        <link refid="block__builder_8cc"/>
+      </node>
+      <node id="8443">
+        <label>/home/dev/ds-160209/src/leveldb/helpers/memenv/memenv_test.cc</label>
+        <link refid="memenv__test_8cc"/>
+      </node>
+      <node id="8608">
+        <label>/home/dev/ds-160209/src/leveldb/doc/bench/db_bench_tree_db.cc</label>
+        <link refid="db__bench__tree__db_8cc"/>
+      </node>
+      <node id="8519">
+        <label>/home/dev/ds-160209/src/qt/sendmessagesdialog.cpp</label>
+        <link refid="sendmessagesdialog_8cpp"/>
+      </node>
+      <node id="8520">
+        <label>/home/dev/ds-160209/src/qt/sendmessagesentry.cpp</label>
+        <link refid="sendmessagesentry_8cpp"/>
+      </node>
+      <node id="8523">
+        <label>/home/dev/ds-160209/src/miner.h</label>
+        <link refid="miner_8h"/>
+        <childnode refid="8494" relation="include">
+        </childnode>
+        <childnode refid="8524" relation="include">
+        </childnode>
+      </node>
+      <node id="8610">
+        <label>/home/dev/ds-160209/src/leveldb/include/leveldb/table_builder.h</label>
+        <link refid="table__builder_8h"/>
+        <childnode refid="8435" relation="include">
+        </childnode>
+        <childnode refid="8433" relation="include">
+        </childnode>
+        <childnode refid="8452" relation="include">
+        </childnode>
+        <childnode refid="8611" relation="include">
+        </childnode>
+        <childnode refid="8612" relation="include">
+        </childnode>
+        <childnode refid="8591" relation="include">
+        </childnode>
+        <childnode refid="8455" relation="include">
+        </childnode>
+      </node>
+      <node id="8588">
+        <label>/home/dev/ds-160209/src/leveldb/include/leveldb/dumpfile.h</label>
+        <link refid="dumpfile_8h"/>
+        <childnode refid="8586" relation="include">
+        </childnode>
+      </node>
+      <node id="8522">
+        <label>/home/dev/ds-160209/src/smessage.cpp</label>
+        <link refid="smessage_8cpp"/>
+      </node>
+      <node id="8564">
+        <label>/home/dev/ds-160209/src/qt/peertablemodel.cpp</label>
+        <link refid="peertablemodel_8cpp"/>
+      </node>
+      <node id="8455">
+        <label>/home/dev/ds-160209/src/leveldb/table/table_test.cc</label>
+        <link refid="table__test_8cc"/>
+      </node>
+      <node id="8539">
+        <label>/home/dev/ds-160209/src/qt/statisticspage.h</label>
+        <link refid="statisticspage_8h"/>
+        <childnode refid="8516" relation="include">
+        </childnode>
+        <childnode refid="8540" relation="include">
+        </childnode>
+      </node>
+      <node id="8598">
+        <label>/home/dev/ds-160209/src/leveldb/util/testharness.h</label>
+        <link refid="testharness_8h"/>
+        <childnode refid="8437" relation="include">
+        </childnode>
+        <childnode refid="8438" relation="include">
+        </childnode>
+        <childnode refid="8441" relation="include">
+        </childnode>
+        <childnode refid="8446" relation="include">
+        </childnode>
+        <childnode refid="8449" relation="include">
+        </childnode>
+        <childnode refid="8466" relation="include">
+        </childnode>
+        <childnode refid="8590" relation="include">
+        </childnode>
+        <childnode refid="8460" relation="include">
+        </childnode>
+        <childnode refid="8462" relation="include">
+        </childnode>
+        <childnode refid="8454" relation="include">
+        </childnode>
+        <childnode refid="8443" relation="include">
+        </childnode>
+        <childnode refid="8574" relation="include">
+        </childnode>
+        <childnode refid="8575" relation="include">
+        </childnode>
+        <childnode refid="8599" relation="include">
+        </childnode>
+        <childnode refid="8455" relation="include">
+        </childnode>
+        <childnode refid="8600" relation="include">
+        </childnode>
+        <childnode refid="8601" relation="include">
+        </childnode>
+        <childnode refid="8473" relation="include">
+        </childnode>
+        <childnode refid="8602" relation="include">
+        </childnode>
+        <childnode refid="8603" relation="include">
+        </childnode>
+        <childnode refid="8594" relation="include">
+        </childnode>
+        <childnode refid="8604" relation="include">
+        </childnode>
+        <childnode refid="8605" relation="include">
+        </childnode>
+      </node>
+      <node id="8573">
+        <label>/home/dev/ds-160209/src/leveldb/db/snapshot.h</label>
+        <link refid="snapshot_8h"/>
+        <childnode refid="8436" relation="include">
+        </childnode>
+      </node>
+      <node id="8450">
+        <label>/home/dev/ds-160209/src/leveldb/db/memtable.cc</label>
+        <link refid="memtable_8cc"/>
+      </node>
+      <node id="8441">
+        <label>/home/dev/ds-160209/src/leveldb/db/db_test.cc</label>
+        <link refid="db__test_8cc"/>
+      </node>
+      <node id="8445">
+        <label>/home/dev/ds-160209/src/leveldb/db/dbformat.cc</label>
+        <link refid="dbformat_8cc"/>
+      </node>
+      <node id="8432">
+        <label>/home/dev/ds-160209/src/leveldb/include/leveldb/slice.h</label>
+        <link refid="slice.h"/>
+        <childnode refid="8433" relation="include">
+        </childnode>
+        <childnode refid="8463" relation="include">
+        </childnode>
+        <childnode refid="8464" relation="include">
+        </childnode>
+        <childnode refid="8467" relation="include">
+        </childnode>
+        <childnode refid="8469" relation="include">
+        </childnode>
+        <childnode refid="8476" relation="include">
+        </childnode>
+        <childnode refid="8584" relation="include">
+        </childnode>
+        <childnode refid="8616" relation="include">
+        </childnode>
+        <childnode refid="8617" relation="include">
+        </childnode>
+        <childnode refid="8612" relation="include">
+        </childnode>
+        <childnode refid="8619" relation="include">
+        </childnode>
+        <childnode refid="8620" relation="include">
+        </childnode>
+        <childnode refid="8624" relation="include">
+        </childnode>
+        <childnode refid="8593" relation="include">
+        </childnode>
+        <childnode refid="8595" relation="include">
+        </childnode>
+        <childnode refid="8598" relation="include">
+        </childnode>
+        <childnode refid="8606" relation="include">
+        </childnode>
+      </node>
+      <node id="8456">
+        <label>/home/dev/ds-160209/src/leveldb/db/table_cache.h</label>
+        <link refid="table__cache_8h"/>
+        <childnode refid="8434" relation="include">
+        </childnode>
+        <childnode refid="8435" relation="include">
+        </childnode>
+        <childnode refid="8442" relation="include">
+        </childnode>
+        <childnode refid="8457" relation="include">
+        </childnode>
+        <childnode refid="8452" relation="include">
+        </childnode>
+      </node>
+      <node id="8612">
+        <label>/home/dev/ds-160209/src/leveldb/table/format.h</label>
+        <link refid="format_8h"/>
+        <childnode refid="8579" relation="include">
+        </childnode>
+        <childnode refid="8580" relation="include">
+        </childnode>
+        <childnode refid="8471" relation="include">
+        </childnode>
+        <childnode refid="8591" relation="include">
+        </childnode>
+        <childnode refid="8455" relation="include">
+        </childnode>
+        <childnode refid="8577" relation="include">
+        </childnode>
+      </node>
+      <node id="8479">
+        <label>/home/dev/ds-160209/src/txdb.h</label>
+        <link refid="txdb_8h"/>
+        <childnode refid="8480" relation="include">
+        </childnode>
+        <childnode refid="8484" relation="include">
+        </childnode>
+        <childnode refid="8560" relation="include">
+        </childnode>
+        <childnode refid="8570" relation="include">
+        </childnode>
+        <childnode refid="8491" relation="include">
+        </childnode>
+        <childnode refid="8556" relation="include">
+        </childnode>
+        <childnode refid="8493" relation="include">
+        </childnode>
+        <childnode refid="8494" relation="include">
+        </childnode>
+        <childnode refid="8524" relation="include">
+        </childnode>
+        <childnode refid="8557" relation="include">
+        </childnode>
+        <childnode refid="8522" relation="include">
+        </childnode>
+        <childnode refid="8475" relation="include">
+        </childnode>
+        <childnode refid="8558" relation="include">
+        </childnode>
+        <childnode refid="8501" relation="include">
+        </childnode>
+      </node>
+      <node id="8535">
+        <label>/home/dev/ds-160209/src/qt/transactiontablemodel.cpp</label>
+        <link refid="transactiontablemodel_8cpp"/>
+      </node>
+      <node id="8589">
+        <label>/home/dev/ds-160209/src/leveldb/include/leveldb/env.h</label>
+        <link refid="env_8h"/>
+        <childnode refid="8434" relation="include">
+        </childnode>
+        <childnode refid="8470" relation="include">
+        </childnode>
+        <childnode refid="8438" relation="include">
+        </childnode>
+        <childnode refid="8439" relation="include">
+        </childnode>
+        <childnode refid="8435" relation="include">
+        </childnode>
+        <childnode refid="8436" relation="include">
+        </childnode>
+        <childnode refid="8440" relation="include">
+        </childnode>
+        <childnode refid="8441" relation="include">
+        </childnode>
+        <childnode refid="8447" relation="include">
+        </childnode>
+        <childnode refid="8448" relation="include">
+        </childnode>
+        <childnode refid="8586" relation="include">
+        </childnode>
+        <childnode refid="8465" relation="include">
+        </childnode>
+        <childnode refid="8466" relation="include">
+        </childnode>
+        <childnode refid="8468" relation="include">
+        </childnode>
+        <childnode refid="8450" relation="include">
+        </childnode>
+        <childnode refid="8442" relation="include">
+        </childnode>
+        <childnode refid="8590" relation="include">
+        </childnode>
+        <childnode refid="8457" relation="include">
+        </childnode>
+        <childnode refid="8452" relation="include">
+        </childnode>
+        <childnode refid="8454" relation="include">
+        </childnode>
+        <childnode refid="8587" relation="include">
+        </childnode>
+        <childnode refid="8443" relation="include">
+        </childnode>
+        <childnode refid="8588" relation="include">
+        </childnode>
+        <childnode refid="8580" relation="include">
+        </childnode>
+        <childnode refid="8471" relation="include">
+        </childnode>
+        <childnode refid="8591" relation="include">
+        </childnode>
+        <childnode refid="8455" relation="include">
+        </childnode>
+        <childnode refid="8592" relation="include">
+        </childnode>
+        <childnode refid="8593" relation="include">
+        </childnode>
+        <childnode refid="8594" relation="include">
+        </childnode>
+        <childnode refid="8595" relation="include">
+        </childnode>
+        <childnode refid="8596" relation="include">
+        </childnode>
+        <childnode refid="8597" relation="include">
+        </childnode>
+        <childnode refid="8598" relation="include">
+        </childnode>
+        <childnode refid="8606" relation="include">
+        </childnode>
+        <childnode refid="8474" relation="include">
+        </childnode>
+        <childnode refid="8475" relation="include">
+        </childnode>
+      </node>
+      <node id="8586">
+        <label>/home/dev/ds-160209/src/leveldb/db/leveldb_main.cc</label>
+        <link refid="leveldb__main_8cc"/>
+      </node>
+      <node id="8619">
+        <label>/home/dev/ds-160209/src/leveldb/util/bloom.cc</label>
+        <link refid="bloom_8cc"/>
+      </node>
+      <node id="8602">
+        <label>/home/dev/ds-160209/src/leveldb/util/coding_test.cc</label>
+        <link refid="coding__test_8cc"/>
+      </node>
+      <node id="8493">
+        <label>/home/dev/ds-160209/src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="8496">
+        <label>/home/dev/ds-160209/src/rpcmisc.cpp</label>
+        <link refid="rpcmisc_8cpp"/>
+      </node>
+      <node id="8531">
+        <label>/home/dev/ds-160209/src/qt/sendcoinsdialog.cpp</label>
+        <link refid="sendcoinsdialog_8cpp"/>
+      </node>
+      <node id="8465">
+        <label>/home/dev/ds-160209/src/leveldb/db/log_reader.cc</label>
+        <link refid="log__reader_8cc"/>
+      </node>
+      <node id="8486">
+        <label>/home/dev/ds-160209/src/activestormnode.h</label>
+        <link refid="activestormnode_8h"/>
+        <childnode refid="8487" relation="include">
+        </childnode>
+        <childnode refid="8488" relation="include">
+        </childnode>
+        <childnode refid="8491" relation="include">
+        </childnode>
+        <childnode refid="8492" relation="include">
+        </childnode>
+        <childnode refid="8505" relation="include">
+        </childnode>
+        <childnode refid="8507" relation="include">
+        </childnode>
+        <childnode refid="8508" relation="include">
+        </childnode>
+        <childnode refid="8499" relation="include">
+        </childnode>
+        <childnode refid="8500" relation="include">
+        </childnode>
+      </node>
+      <node id="8526">
+        <label>/home/dev/ds-160209/src/qt/walletmodel.h</label>
+        <link refid="walletmodel_8h"/>
+        <childnode refid="8527" relation="include">
+        </childnode>
+        <childnode refid="8528" relation="include">
+        </childnode>
+        <childnode refid="8503" relation="include">
+        </childnode>
+        <childnode refid="8515" relation="include">
+        </childnode>
+        <childnode refid="8516" relation="include">
+        </childnode>
+        <childnode refid="8529" relation="include">
+        </childnode>
+        <childnode refid="8517" relation="include">
+        </childnode>
+        <childnode refid="8504" relation="include">
+        </childnode>
+        <childnode refid="8530" relation="include">
+        </childnode>
+        <childnode refid="8531" relation="include">
+        </childnode>
+        <childnode refid="8532" relation="include">
+        </childnode>
+        <childnode refid="8519" relation="include">
+        </childnode>
+        <childnode refid="8520" relation="include">
+        </childnode>
+        <childnode refid="8533" relation="include">
+        </childnode>
+        <childnode refid="8505" relation="include">
+        </childnode>
+        <childnode refid="8534" relation="include">
+        </childnode>
+        <childnode refid="8535" relation="include">
+        </childnode>
+        <childnode refid="8536" relation="include">
+        </childnode>
+        <childnode refid="8495" relation="include">
+        </childnode>
+      </node>
+      <node id="8438">
+        <label>/home/dev/ds-160209/src/leveldb/db/corruption_test.cc</label>
+        <link refid="corruption__test_8cc"/>
+      </node>
+      <node id="8510">
+        <label>/home/dev/ds-160209/src/sandstorm.cpp</label>
+        <link refid="sandstorm_8cpp"/>
+      </node>
+      <node id="8623">
+        <label>/home/dev/ds-160209/src/leveldb/util/hash.cc</label>
+        <link refid="hash_8cc"/>
+      </node>
+      <node id="8537">
+        <label>/home/dev/ds-160209/src/qt/blockbrowser.h</label>
+        <link refid="blockbrowser_8h"/>
+        <childnode refid="8538" relation="include">
+        </childnode>
+        <childnode refid="8516" relation="include">
+        </childnode>
+      </node>
+      <node id="8504">
+        <label>/home/dev/ds-160209/src/qt/overviewpage.cpp</label>
+        <link refid="overviewpage_8cpp"/>
+      </node>
+      <node id="8560">
+        <label>/home/dev/ds-160209/src/checkpoints.cpp</label>
+        <link refid="checkpoints_8cpp"/>
+      </node>
+      <node id="8512">
+        <label>/home/dev/ds-160209/src/stormnode.cpp</label>
+        <link refid="stormnode_8cpp"/>
+      </node>
+      <node id="8462">
+        <label>/home/dev/ds-160209/src/leveldb/db/version_set_test.cc</label>
+        <link refid="version__set__test_8cc"/>
+      </node>
+      <node id="8447">
+        <label>/home/dev/ds-160209/src/leveldb/db/dumpfile.cc</label>
+        <link refid="dumpfile_8cc"/>
+      </node>
+      <node id="8476">
+        <label>/home/dev/ds-160209/src/leveldb/include/leveldb/iterator.h</label>
+        <link refid="iterator_8h"/>
+        <childnode refid="8434" relation="include">
+        </childnode>
+        <childnode refid="8470" relation="include">
+        </childnode>
+        <childnode refid="8440" relation="include">
+        </childnode>
+        <childnode refid="8447" relation="include">
+        </childnode>
+        <childnode refid="8450" relation="include">
+        </childnode>
+        <childnode refid="8477" relation="include">
+        </childnode>
+        <childnode refid="8576" relation="include">
+        </childnode>
+        <childnode refid="8578" relation="include">
+        </childnode>
+        <childnode refid="8581" relation="include">
+        </childnode>
+        <childnode refid="8582" relation="include">
+        </childnode>
+        <childnode refid="8455" relation="include">
+        </childnode>
+        <childnode refid="8583" relation="include">
+        </childnode>
+      </node>
+      <node id="8468">
+        <label>/home/dev/ds-160209/src/leveldb/db/log_writer.cc</label>
+        <link refid="log__writer_8cc"/>
+      </node>
+      <node id="8563">
+        <label>/home/dev/ds-160209/src/qt/debugconsole.cpp</label>
+        <link refid="debugconsole_8cpp"/>
+      </node>
+      <node id="8471">
+        <label>/home/dev/ds-160209/src/leveldb/table/table.cc</label>
+        <link refid="table_8cc"/>
+      </node>
+      <node id="8585">
+        <label>/home/dev/ds-160209/src/leveldb/db/builder.h</label>
+        <link refid="builder_8h"/>
+        <childnode refid="8434" relation="include">
+        </childnode>
+        <childnode refid="8435" relation="include">
+        </childnode>
+        <childnode refid="8442" relation="include">
+        </childnode>
+      </node>
+      <node id="8574">
+        <label>/home/dev/ds-160209/src/leveldb/issues/issue178_test.cc</label>
+        <link refid="issue178__test_8cc"/>
+      </node>
+      <node id="8600">
+        <label>/home/dev/ds-160209/src/leveldb/util/arena_test.cc</label>
+        <link refid="arena__test_8cc"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classleveldb_1_1_slice" prot="public">leveldb::Slice</innerclass>
+    <innernamespace refid="namespaceleveldb">leveldb</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2011-2016<sp/>The<sp/>LevelDB<sp/>Authors.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>of<sp/>this<sp/>source<sp/>code<sp/>is<sp/>governed<sp/>by<sp/>a<sp/>BSD-style<sp/>license<sp/>that<sp/>can<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>found<sp/>in<sp/>the<sp/>LICENSE<sp/>file.<sp/>See<sp/>the<sp/>AUTHORS<sp/>file<sp/>for<sp/>names<sp/>of<sp/>contributors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Slice<sp/>is<sp/>a<sp/>simple<sp/>structure<sp/>containing<sp/>a<sp/>pointer<sp/>into<sp/>some<sp/>external</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>storage<sp/>and<sp/>a<sp/>size.<sp/><sp/>The<sp/>user<sp/>of<sp/>a<sp/>Slice<sp/>must<sp/>ensure<sp/>that<sp/>the<sp/>slice</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>is<sp/>not<sp/>used<sp/>after<sp/>the<sp/>corresponding<sp/>external<sp/>storage<sp/>has<sp/>been</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/>deallocated.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Multiple<sp/>threads<sp/>can<sp/>invoke<sp/>const<sp/>methods<sp/>on<sp/>a<sp/>Slice<sp/>without</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>external<sp/>synchronization,<sp/>but<sp/>if<sp/>any<sp/>of<sp/>the<sp/>threads<sp/>may<sp/>call<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>non-const<sp/>method,<sp/>all<sp/>threads<sp/>accessing<sp/>the<sp/>same<sp/>Slice<sp/>must<sp/>use</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/>external<sp/>synchronization.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>STORAGE_LEVELDB_INCLUDE_SLICE_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STORAGE_LEVELDB_INCLUDE_SLICE_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;assert.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceleveldb" kindref="compound">leveldb</ref><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="classleveldb_1_1_slice" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref><sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>an<sp/>empty<sp/>slice.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classleveldb_1_1_slice_1a5a57e9733fb783aceec1aecfe068ad85" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_slice_1a5a57e9733fb783aceec1aecfe068ad85" kindref="member">Slice</ref>()<sp/>:<sp/>data_(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">),<sp/>size_(0)<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a<sp/>slice<sp/>that<sp/>refers<sp/>to<sp/>d[0,n-1].</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classleveldb_1_1_slice_1ae77bd1d4353bd94d768474d467657c85" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_slice_1ae77bd1d4353bd94d768474d467657c85" kindref="member">Slice</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>d,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n)<sp/>:<sp/>data_(d),<sp/>size_(n)<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a<sp/>slice<sp/>that<sp/>refers<sp/>to<sp/>the<sp/>contents<sp/>of<sp/>&quot;s&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classleveldb_1_1_slice_1ab79b60f33aa094179fe36880bc220853" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_slice_1ab79b60f33aa094179fe36880bc220853" kindref="member">Slice</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>s)<sp/>:<sp/>data_(s.<ref refid="classleveldb_1_1_slice_1aa64861043d9deee6889461bf0593cf73" kindref="member">data</ref>()),<sp/>size_(s.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>())<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a<sp/>slice<sp/>that<sp/>refers<sp/>to<sp/>s[0,strlen(s)-1]</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="classleveldb_1_1_slice_1a429c530560405fe1a7cd745f7afecf5a" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_slice_1a429c530560405fe1a7cd745f7afecf5a" kindref="member">Slice</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>s)<sp/>:<sp/>data_(s),<sp/>size_(strlen(s))<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>a<sp/>pointer<sp/>to<sp/>the<sp/>beginning<sp/>of<sp/>the<sp/>referenced<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="classleveldb_1_1_slice_1aa64861043d9deee6889461bf0593cf73" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classleveldb_1_1_slice_1aa64861043d9deee6889461bf0593cf73" kindref="member">data</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>data_;<sp/>}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>length<sp/>(in<sp/>bytes)<sp/>of<sp/>the<sp/>referenced<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>size_;<sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>true<sp/>iff<sp/>the<sp/>length<sp/>of<sp/>the<sp/>referenced<sp/>data<sp/>is<sp/>zero</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classleveldb_1_1_slice_1a7d0b93d5801bff5656068647759dcb8f" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice_1a7d0b93d5801bff5656068647759dcb8f" kindref="member">empty</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>size_<sp/>==<sp/>0;<sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>ith<sp/>byte<sp/>in<sp/>the<sp/>referenced<sp/>data.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>REQUIRES:<sp/>n<sp/>&lt;<sp/>size()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="classleveldb_1_1_slice_1aee7728645cecb259e9804b3b058a40dd" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice_1aee7728645cecb259e9804b3b058a40dd" kindref="member">operator[]</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(n<sp/>&lt;<sp/><ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>());</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>data_[n];</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Change<sp/>this<sp/>slice<sp/>to<sp/>refer<sp/>to<sp/>an<sp/>empty<sp/>array</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="classleveldb_1_1_slice_1ab9b6e340e8a483a5cf713f6be17709e3" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice_1ab9b6e340e8a483a5cf713f6be17709e3" kindref="member">clear</ref>()<sp/>{<sp/>data_<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;<sp/>size_<sp/>=<sp/>0;<sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Drop<sp/>the<sp/>first<sp/>&quot;n&quot;<sp/>bytes<sp/>from<sp/>this<sp/>slice.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="classleveldb_1_1_slice_1a1be5b22958a115ebecb2b017aad2b3f6" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice_1a1be5b22958a115ebecb2b017aad2b3f6" kindref="member">remove_prefix</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n)<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(n<sp/>&lt;=<sp/><ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>());</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>data_<sp/>+=<sp/>n;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>size_<sp/>-=<sp/>n;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>a<sp/>string<sp/>that<sp/>contains<sp/>the<sp/>copy<sp/>of<sp/>the<sp/>referenced<sp/>data.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="classleveldb_1_1_slice_1a2cdd9fb649105033fde510afc9416732" refkind="member"><highlight class="normal"><sp/><sp/>std::string<sp/><ref refid="classleveldb_1_1_slice_1a2cdd9fb649105033fde510afc9416732" kindref="member">ToString</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>std::string(data_,<sp/>size_);<sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Three-way<sp/>comparison.<sp/><sp/>Returns<sp/>value:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/>&lt;<sp/><sp/>0<sp/>iff<sp/>&quot;*this&quot;<sp/>&lt;<sp/><sp/>&quot;b&quot;,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/>==<sp/>0<sp/>iff<sp/>&quot;*this&quot;<sp/>==<sp/>&quot;b&quot;,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/>&gt;<sp/><sp/>0<sp/>iff<sp/>&quot;*this&quot;<sp/>&gt;<sp/><sp/>&quot;b&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice_1add751a5852d57a6d0697c85c1e0f3c94" kindref="member">compare</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/>b)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>true<sp/>iff<sp/>&quot;x&quot;<sp/>is<sp/>a<sp/>prefix<sp/>of<sp/>&quot;*this&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75" refid="classleveldb_1_1_slice_1aac9a3ee9b05567c8c93793e7593a5f13" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice_1aac9a3ee9b05567c8c93793e7593a5f13" kindref="member">starts_with</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/>x)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((size_<sp/>&gt;=<sp/>x.size_)<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(memcmp(data_,<sp/>x.data_,<sp/>x.size_)<sp/>==<sp/>0));</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>data_;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size_;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Intentionally<sp/>copyable</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="namespaceleveldb_1a53c443def2386ea299281cf36de3ae4b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1a53c443def2386ea299281cf36de3ae4b" kindref="member">operator==</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/>x,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/>y)<sp/>{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((x.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>()<sp/>==<sp/>y.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>())<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(memcmp(x.<ref refid="classleveldb_1_1_slice_1aa64861043d9deee6889461bf0593cf73" kindref="member">data</ref>(),<sp/>y.<ref refid="classleveldb_1_1_slice_1aa64861043d9deee6889461bf0593cf73" kindref="member">data</ref>(),<sp/>x.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>())<sp/>==<sp/>0));</highlight></codeline>
+<codeline lineno="90"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="namespaceleveldb_1a6592a36834e5a52b66cc8357c7ef806b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1a6592a36834e5a52b66cc8357c7ef806b" kindref="member">operator!=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/>x,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/>y)<sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>!(x<sp/>==<sp/>y);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="classleveldb_1_1_slice_1add751a5852d57a6d0697c85c1e0f3c94" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice_1add751a5852d57a6d0697c85c1e0f3c94" kindref="member">Slice::compare</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/>b)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>min_len<sp/>=<sp/>(size_<sp/>&lt;<sp/>b.size_)<sp/>?<sp/>size_<sp/>:<sp/>b.size_;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>r<sp/>=<sp/>memcmp(data_,<sp/>b.data_,<sp/>min_len);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(r<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(size_<sp/>&lt;<sp/>b.size_)<sp/>r<sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(size_<sp/>&gt;<sp/>b.size_)<sp/>r<sp/>=<sp/>+1;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>r;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>leveldb</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/>//<sp/>STORAGE_LEVELDB_INCLUDE_SLICE_H_</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/slice.h"/>
+  </compounddef>
+</doxygen>

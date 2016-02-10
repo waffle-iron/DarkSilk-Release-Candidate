@@ -1,0 +1,39 @@
+.TH "CCoinsKeyHasher" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CCoinsKeyHasher \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <coins\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCCoinsKeyHasher\fP ()"
+.br
+.ti -1c
+.RI "size_t \fBoperator()\fP (const \fBuint256\fP &key) const "
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 294 of file coins\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CCoinsKeyHasher::CCoinsKeyHasher ()"
+
+.PP
+Definition at line 72 of file coins\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "size_t CCoinsKeyHasher::operator() (const \fBuint256\fP & key) const\fC [inline]\fP"
+This \fImust\fP return size_t\&. With Boost 1\&.46 on 32-bit systems the unordered_map will behave unpredictably if the custom hasher returns a uint64_t, resulting in failures when syncing the chain (#4634)\&. 
+.PP
+Definition at line 307 of file coins\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

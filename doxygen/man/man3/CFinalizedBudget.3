@@ -1,0 +1,232 @@
+.TH "CFinalizedBudget" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CFinalizedBudget \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <stormnode-budget\&.h>\fP
+.PP
+Inherited by \fBCFinalizedBudgetBroadcast\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCFinalizedBudget\fP ()"
+.br
+.ti -1c
+.RI "\fBCFinalizedBudget\fP (const \fBCFinalizedBudget\fP &other)"
+.br
+.ti -1c
+.RI "void \fBCleanAndRemove\fP (bool fSignatureCheck)"
+.br
+.ti -1c
+.RI "bool \fBAddOrUpdateVote\fP (\fBCFinalizedBudgetVote\fP &vote, std::string &strError)"
+.br
+.ti -1c
+.RI "double \fBGetScore\fP ()"
+.br
+.ti -1c
+.RI "bool \fBHasMinimumRequiredSupport\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsValid\fP (std::string &strError, bool fCheckCollateral=true)"
+.br
+.ti -1c
+.RI "std::string \fBGetName\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBGetProposals\fP ()"
+.br
+.ti -1c
+.RI "int \fBGetBlockStart\fP ()"
+.br
+.ti -1c
+.RI "int \fBGetBlockEnd\fP ()"
+.br
+.ti -1c
+.RI "int \fBGetVoteCount\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsTransactionValid\fP (const \fBCTransaction\fP &txNew, int nBlockHeight)"
+.br
+.ti -1c
+.RI "bool \fBGetBudgetPaymentByBlock\fP (\fBint64_t\fP nBlockHeight, \fBCTxBudgetPayment\fP &payment)"
+.br
+.ti -1c
+.RI "bool \fBGetPayeeAndAmount\fP (\fBint64_t\fP nBlockHeight, \fBCScript\fP &payee, \fBCAmount\fP &nAmount)"
+.br
+.ti -1c
+.RI "void \fBAutoCheck\fP ()"
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetTotalPayout\fP ()"
+.br
+.ti -1c
+.RI "void \fBSubmitVote\fP ()"
+.br
+.ti -1c
+.RI "string \fBGetStatus\fP ()"
+.br
+.ti -1c
+.RI "\fBuint256\fP \fBGetHash\fP ()"
+.br
+.ti -1c
+.RI "template<typename Stream , typename Operation > void \fBSerializationOp\fP (Stream &s, Operation ser_action, int nType, int nVersion)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBfValid\fP"
+.br
+.ti -1c
+.RI "std::string \fBstrBudgetName\fP"
+.br
+.ti -1c
+.RI "int \fBnBlockStart\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBCTxBudgetPayment\fP > \fBvecBudgetPayments\fP"
+.br
+.ti -1c
+.RI "map< \fBuint256\fP, \fBCFinalizedBudgetVote\fP > \fBmapVotes\fP"
+.br
+.ti -1c
+.RI "\fBuint256\fP \fBnFeeTXHash\fP"
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBnTime\fP"
+.br
+.ti -1c
+.RI "\fBADD_SERIALIZE_METHODS\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 204 of file stormnode-budget\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CFinalizedBudget::CFinalizedBudget ()"
+
+.PP
+Definition at line 1646 of file stormnode-budget\&.cpp\&.
+.SS "CFinalizedBudget::CFinalizedBudget (const \fBCFinalizedBudget\fP & other)"
+
+.PP
+Definition at line 1658 of file stormnode-budget\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool CFinalizedBudget::AddOrUpdateVote (\fBCFinalizedBudgetVote\fP & vote, std::string & strError)"
+
+.PP
+Definition at line 1670 of file stormnode-budget\&.cpp\&.
+.SS "void CFinalizedBudget::AutoCheck ()"
+
+.PP
+Definition at line 1699 of file stormnode-budget\&.cpp\&.
+.SS "void CFinalizedBudget::CleanAndRemove (bool fSignatureCheck)"
+
+.PP
+Definition at line 1777 of file stormnode-budget\&.cpp\&.
+.SS "int CFinalizedBudget::GetBlockEnd ()\fC [inline]\fP"
+
+.PP
+Definition at line 233 of file stormnode-budget\&.h\&.
+.SS "int CFinalizedBudget::GetBlockStart ()\fC [inline]\fP"
+
+.PP
+Definition at line 232 of file stormnode-budget\&.h\&.
+.SS "bool CFinalizedBudget::GetBudgetPaymentByBlock (\fBint64_t\fP nBlockHeight, \fBCTxBudgetPayment\fP & payment)\fC [inline]\fP"
+
+.PP
+Definition at line 238 of file stormnode-budget\&.h\&.
+.SS "\fBuint256\fP CFinalizedBudget::GetHash ()\fC [inline]\fP"
+
+.PP
+Definition at line 270 of file stormnode-budget\&.h\&.
+.SS "std::string CFinalizedBudget::GetName ()\fC [inline]\fP"
+
+.PP
+Definition at line 230 of file stormnode-budget\&.h\&.
+.SS "bool CFinalizedBudget::GetPayeeAndAmount (\fBint64_t\fP nBlockHeight, \fBCScript\fP & payee, \fBCAmount\fP & nAmount)\fC [inline]\fP"
+
+.PP
+Definition at line 248 of file stormnode-budget\&.h\&.
+.SS "std::string CFinalizedBudget::GetProposals ()"
+
+.PP
+Definition at line 1799 of file stormnode-budget\&.cpp\&.
+.SS "double CFinalizedBudget::GetScore ()"
+
+.SS "std::string CFinalizedBudget::GetStatus ()"
+
+.PP
+Definition at line 1816 of file stormnode-budget\&.cpp\&.
+.SS "\fBCAmount\fP CFinalizedBudget::GetTotalPayout ()"
+
+.PP
+Definition at line 1788 of file stormnode-budget\&.cpp\&.
+.SS "int CFinalizedBudget::GetVoteCount ()\fC [inline]\fP"
+
+.PP
+Definition at line 234 of file stormnode-budget\&.h\&.
+.SS "bool CFinalizedBudget::HasMinimumRequiredSupport ()"
+
+.SS "bool CFinalizedBudget::IsTransactionValid (const \fBCTransaction\fP & txNew, int nBlockHeight)"
+
+.PP
+Definition at line 1884 of file stormnode-budget\&.cpp\&.
+.SS "bool CFinalizedBudget::IsValid (std::string & strError, bool fCheckCollateral = \fCtrue\fP)"
+
+.PP
+Definition at line 1853 of file stormnode-budget\&.cpp\&.
+.SS "template<typename Stream , typename Operation > void CFinalizedBudget::SerializationOp (Stream & s, Operation ser_action, int nType, int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 284 of file stormnode-budget\&.h\&.
+.SS "void CFinalizedBudget::SubmitVote ()"
+
+.PP
+Definition at line 1914 of file stormnode-budget\&.cpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "CFinalizedBudget::ADD_SERIALIZE_METHODS"
+
+.PP
+Definition at line 281 of file stormnode-budget\&.h\&.
+.SS "bool CFinalizedBudget::fValid"
+
+.PP
+Definition at line 212 of file stormnode-budget\&.h\&.
+.SS "map<\fBuint256\fP, \fBCFinalizedBudgetVote\fP> CFinalizedBudget::mapVotes"
+
+.PP
+Definition at line 216 of file stormnode-budget\&.h\&.
+.SS "int CFinalizedBudget::nBlockStart"
+
+.PP
+Definition at line 214 of file stormnode-budget\&.h\&.
+.SS "\fBuint256\fP CFinalizedBudget::nFeeTXHash"
+
+.PP
+Definition at line 217 of file stormnode-budget\&.h\&.
+.SS "\fBint64_t\fP CFinalizedBudget::nTime"
+
+.PP
+Definition at line 218 of file stormnode-budget\&.h\&.
+.SS "std::string CFinalizedBudget::strBudgetName"
+
+.PP
+Definition at line 213 of file stormnode-budget\&.h\&.
+.SS "std::vector<\fBCTxBudgetPayment\fP> CFinalizedBudget::vecBudgetPayments"
+
+.PP
+Definition at line 215 of file stormnode-budget\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

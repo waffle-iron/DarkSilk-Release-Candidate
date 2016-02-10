@@ -1,0 +1,77 @@
+.TH "/home/dev/ds-160209/src/key.h" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/key.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'allocators\&.h'\fP
+.br
+\fC#include 'pubkey\&.h'\fP
+.br
+\fC#include <stdexcept>\fP
+.br
+\fC#include <vector>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBCKey\fP"
+.br
+.ti -1c
+.RI "struct \fBCExtKey\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef std::vector< unsigned char, \fBsecure_allocator\fP< unsigned char > > \fBCPrivKey\fP"
+.br
+.ti -1c
+.RI "typedef std::vector< unsigned char, \fBsecure_allocator\fP< unsigned char > > \fBCSecret\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBECC_Start\fP (void)"
+.br
+.ti -1c
+.RI "void \fBECC_Stop\fP (void)"
+.br
+.ti -1c
+.RI "bool \fBECC_InitSanityCheck\fP (void)"
+.br
+.in -1c
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef std::vector<unsigned char, \fBsecure_allocator\fP<unsigned char> > \fBCPrivKey\fP"
+
+.PP
+Definition at line 24 of file key\&.h\&.
+.SS "typedef std::vector<unsigned char, \fBsecure_allocator\fP<unsigned char> > \fBCSecret\fP"
+
+.PP
+Definition at line 26 of file key\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "bool ECC_InitSanityCheck (void)"
+Check that required EC support is available at runtime\&. 
+.PP
+Definition at line 313 of file key\&.cpp\&.
+.SS "void ECC_Start (void)"
+Initialize the elliptic curve support\&. May not be called twice without calling ECC_Stop first\&. 
+.PP
+Definition at line 321 of file key\&.cpp\&.
+.SS "void ECC_Stop (void)"
+Deinitialize the elliptic curve support\&. No-op if ECC_Start wasn't called first\&. 
+.PP
+Definition at line 340 of file key\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

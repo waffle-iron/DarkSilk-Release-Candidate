@@ -1,0 +1,134 @@
+.TH "/home/dev/ds-160209/src/sync.h" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/sync.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'threadsafety\&.h'\fP
+.br
+\fC#include <boost/thread/condition_variable\&.hpp>\fP
+.br
+\fC#include <boost/thread/locks\&.hpp>\fP
+.br
+\fC#include <boost/thread/mutex\&.hpp>\fP
+.br
+\fC#include <boost/thread/recursive_mutex\&.hpp>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBAnnotatedMixin< PARENT >\fP"
+.br
+.ti -1c
+.RI "class \fBCMutexLock< Mutex >\fP"
+.br
+.ti -1c
+.RI "class \fBCSemaphore\fP"
+.br
+.ti -1c
+.RI "class \fBCSemaphoreGrant\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBAssertLockHeld\fP(cs)   AssertLockHeldInternal(#cs, __FILE__, __LINE__, &cs)"
+.br
+.ti -1c
+.RI "#define \fBLOCK\fP(cs)   \fBCCriticalBlock\fP criticalblock(cs, #cs, __FILE__, __LINE__)"
+.br
+.ti -1c
+.RI "#define \fBLOCK2\fP(cs1,  cs2)   \fBCCriticalBlock\fP criticalblock1(cs1, #cs1, __FILE__, __LINE__),criticalblock2(cs2, #cs2, __FILE__, __LINE__)"
+.br
+.ti -1c
+.RI "#define \fBTRY_LOCK\fP(cs,  \fBname\fP)   \fBCCriticalBlock\fP \fBname\fP(cs, #cs, __FILE__, __LINE__, true)"
+.br
+.ti -1c
+.RI "#define \fBENTER_CRITICAL_SECTION\fP(cs)"
+.br
+.ti -1c
+.RI "#define \fBLEAVE_CRITICAL_SECTION\fP(cs)"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef \fBAnnotatedMixin\fP< boost::recursive_mutex > \fBCCriticalSection\fP"
+.br
+.ti -1c
+.RI "typedef \fBAnnotatedMixin\fP< boost::mutex > \fBCWaitableCriticalSection\fP"
+.br
+.ti -1c
+.RI "typedef boost::condition_variable \fBCConditionVariable\fP"
+.br
+.ti -1c
+.RI "typedef \fBCMutexLock\fP< \fBCCriticalSection\fP > \fBCCriticalBlock\fP"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define AssertLockHeld(cs)   AssertLockHeldInternal(#cs, __FILE__, __LINE__, &cs)"
+
+.PP
+Definition at line 100 of file sync\&.h\&.
+.SS "#define ENTER_CRITICAL_SECTION(cs)"
+\fBValue:\fP
+.PP
+.nf
+{ \
+        EnterCritical(#cs, __FILE__, __LINE__, (void*)(&cs)); \
+        (cs)\&.lock(); \
+    }
+.fi
+.PP
+Definition at line 163 of file sync\&.h\&.
+.SS "#define LEAVE_CRITICAL_SECTION(cs)"
+\fBValue:\fP
+.PP
+.nf
+{ \
+        (cs)\&.unlock(); \
+        LeaveCritical(); \
+    }
+.fi
+.PP
+Definition at line 169 of file sync\&.h\&.
+.SS "#define LOCK(cs)   \fBCCriticalBlock\fP criticalblock(cs, #cs, __FILE__, __LINE__)"
+
+.PP
+Definition at line 159 of file sync\&.h\&.
+.SS "#define LOCK2(cs1, cs2)   \fBCCriticalBlock\fP criticalblock1(cs1, #cs1, __FILE__, __LINE__),criticalblock2(cs2, #cs2, __FILE__, __LINE__)"
+
+.PP
+Definition at line 160 of file sync\&.h\&.
+.SS "#define TRY_LOCK(cs, \fBname\fP)   \fBCCriticalBlock\fP \fBname\fP(cs, #cs, __FILE__, __LINE__, true)"
+
+.PP
+Definition at line 161 of file sync\&.h\&.
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef boost::condition_variable \fBCConditionVariable\fP"
+Just a typedef for boost::condition_variable, can be wrapped later if desired 
+.PP
+Definition at line 88 of file sync\&.h\&.
+.SS "typedef \fBCMutexLock\fP<\fBCCriticalSection\fP> \fBCCriticalBlock\fP"
+
+.PP
+Definition at line 157 of file sync\&.h\&.
+.SS "typedef \fBAnnotatedMixin\fP<boost::recursive_mutex> \fBCCriticalSection\fP"
+Wrapped boost mutex: supports recursive locking, but no waiting 
+.PP
+Definition at line 82 of file sync\&.h\&.
+.SS "typedef \fBAnnotatedMixin\fP<boost::mutex> \fBCWaitableCriticalSection\fP"
+Wrapped boost mutex: supports waiting but not recursive locking 
+.PP
+Definition at line 85 of file sync\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

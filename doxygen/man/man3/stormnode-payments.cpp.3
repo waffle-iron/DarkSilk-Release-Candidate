@@ -1,0 +1,116 @@
+.TH "/home/dev/ds-160209/src/stormnode-payments.cpp" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/stormnode-payments.cpp \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'stormnode-payments\&.h'\fP
+.br
+\fC#include 'stormnode-budget\&.h'\fP
+.br
+\fC#include 'stormnode-sync\&.h'\fP
+.br
+\fC#include 'stormnodeman\&.h'\fP
+.br
+\fC#include 'sandstorm\&.h'\fP
+.br
+\fC#include 'util\&.h'\fP
+.br
+\fC#include 'sync\&.h'\fP
+.br
+\fC#include 'spork\&.h'\fP
+.br
+\fC#include 'addrman\&.h'\fP
+.br
+\fC#include <boost/lexical_cast\&.hpp>\fP
+.br
+\fC#include <boost/filesystem\&.hpp>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBDumpStormnodePayments\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsBlockValueValid\fP (const \fBCBlock\fP &\fBblock\fP, \fBCAmount\fP nExpectedValue)"
+.br
+.ti -1c
+.RI "bool \fBIsBlockPayeeValid\fP (const \fBCTransaction\fP &txNew, int nBlockHeight)"
+.br
+.ti -1c
+.RI "void \fBFillBlockPayee\fP (\fBCTransaction\fP &txNew, \fBCAmount\fP nFees)"
+.br
+.ti -1c
+.RI "std::string \fBGetRequiredPaymentsString\fP (int nBlockHeight)"
+.br
+.ti -1c
+.RI "bool \fBIsReferenceNode\fP (\fBCTxIn\fP &vin)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBCStormnodePayments\fP \fBstormnodePayments\fP"
+.br
+.ti -1c
+.RI "\fBCCriticalSection\fP \fBcs_vecPayments\fP"
+.br
+.ti -1c
+.RI "\fBCCriticalSection\fP \fBcs_mapStormnodeBlocks\fP"
+.br
+.ti -1c
+.RI "\fBCCriticalSection\fP \fBcs_mapStormnodePayeeVotes\fP"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void DumpStormnodePayments ()"
+
+.PP
+Definition at line 156 of file stormnode-payments\&.cpp\&.
+.SS "void FillBlockPayee (\fBCTransaction\fP & txNew, \fBCAmount\fP nFees)"
+
+.PP
+Definition at line 272 of file stormnode-payments\&.cpp\&.
+.SS "std::string GetRequiredPaymentsString (int nBlockHeight)"
+
+.PP
+Definition at line 284 of file stormnode-payments\&.cpp\&.
+.SS "bool IsBlockPayeeValid (const \fBCTransaction\fP & txNew, int nBlockHeight)"
+
+.PP
+Definition at line 230 of file stormnode-payments\&.cpp\&.
+.SS "bool IsBlockValueValid (const \fBCBlock\fP & block, \fBCAmount\fP nExpectedValue)"
+
+.PP
+Definition at line 185 of file stormnode-payments\&.cpp\&.
+.SS "bool IsReferenceNode (\fBCTxIn\fP & vin)"
+
+.PP
+Definition at line 634 of file stormnode-payments\&.cpp\&.
+.SH "Variable Documentation"
+.PP 
+.SS "\fBCCriticalSection\fP cs_mapStormnodeBlocks"
+
+.PP
+Definition at line 21 of file stormnode-payments\&.cpp\&.
+.SS "\fBCCriticalSection\fP cs_mapStormnodePayeeVotes"
+
+.PP
+Definition at line 22 of file stormnode-payments\&.cpp\&.
+.SS "\fBCCriticalSection\fP cs_vecPayments"
+
+.PP
+Definition at line 20 of file stormnode-payments\&.cpp\&.
+.SS "\fBCStormnodePayments\fP stormnodePayments"
+Object for who's going to get paid on which blocks 
+.PP
+Definition at line 18 of file stormnode-payments\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

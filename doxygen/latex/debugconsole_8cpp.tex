@@ -1,0 +1,144 @@
+\hypertarget{debugconsole_8cpp}{}\section{/home/dev/ds-\/160209/src/qt/debugconsole.cpp File Reference}
+\label{debugconsole_8cpp}\index{/home/dev/ds-\/160209/src/qt/debugconsole.\+cpp@{/home/dev/ds-\/160209/src/qt/debugconsole.\+cpp}}
+{\ttfamily \#include \char`\"{}debugconsole.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}ui\+\_\+debugconsole.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}clientmodel.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}guiutil.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}rpcserver.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}rpcclient.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$Q\+Time$>$}\\*
+{\ttfamily \#include $<$Q\+Thread$>$}\\*
+{\ttfamily \#include $<$Q\+Key\+Event$>$}\\*
+{\ttfamily \#include $<$Q\+Url$>$}\\*
+{\ttfamily \#include $<$Q\+Scroll\+Bar$>$}\\*
+{\ttfamily \#include $<$openssl/crypto.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}debugconsole.\+moc\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_r_p_c_executor}{R\+P\+C\+Executor}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const Q\+Size \hyperlink{debugconsole_8cpp_a2e32342d4d52b2cb14b9430673f4e23d}{I\+C\+O\+N\+\_\+\+S\+I\+Z\+E} (24, 24)
+\item 
+bool \hyperlink{debugconsole_8cpp_ad139c257618acd8da234564d2c2e5952}{parse\+Command\+Line} (std\+::vector$<$ std\+::string $>$ \&args, const std\+::string \&str\+Command)
+\item 
+Q\+String \hyperlink{debugconsole_8cpp_a69b80f325b30d83cafe0e6664a288c86}{Get\+Boost\+Version} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const int \hyperlink{debugconsole_8cpp_aadcd48ab7261b9dc336efb8919a2ecda}{C\+O\+N\+S\+O\+L\+E\+\_\+\+H\+I\+S\+T\+O\+R\+Y} = 50
+\item 
+const int \hyperlink{debugconsole_8cpp_a961badc4978c4eb0ac616b70e952940b}{I\+N\+I\+T\+I\+A\+L\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+G\+R\+A\+P\+H\+\_\+\+M\+I\+N\+S} = 30
+\item 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>const char $\ast$ \hyperlink{debugconsole_8cpp_aec657bef26e5ff27b9442563a591d9ec}{url}\\
+\>const char $\ast$ \hyperlink{debugconsole_8cpp_af2ed45b90afa2ef4ec6e09625335a082}{source}\\
+\} \hyperlink{debugconsole_8cpp_afefb3cb19778c9218396dcf4707f0ae8}{ICON\_MAPPING} \mbox{[}$\,$\mbox{]}\\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{debugconsole_8cpp_a69b80f325b30d83cafe0e6664a288c86}{}\index{debugconsole.\+cpp@{debugconsole.\+cpp}!Get\+Boost\+Version@{Get\+Boost\+Version}}
+\index{Get\+Boost\+Version@{Get\+Boost\+Version}!debugconsole.\+cpp@{debugconsole.\+cpp}}
+\subsubsection[{Get\+Boost\+Version}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Get\+Boost\+Version (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{debugconsole_8cpp_a69b80f325b30d83cafe0e6664a288c86}
+
+
+Definition at line 147 of file debugconsole.\+cpp.
+
+\hypertarget{debugconsole_8cpp_a2e32342d4d52b2cb14b9430673f4e23d}{}\index{debugconsole.\+cpp@{debugconsole.\+cpp}!I\+C\+O\+N\+\_\+\+S\+I\+Z\+E@{I\+C\+O\+N\+\_\+\+S\+I\+Z\+E}}
+\index{I\+C\+O\+N\+\_\+\+S\+I\+Z\+E@{I\+C\+O\+N\+\_\+\+S\+I\+Z\+E}!debugconsole.\+cpp@{debugconsole.\+cpp}}
+\subsubsection[{I\+C\+O\+N\+\_\+\+S\+I\+Z\+E}]{\setlength{\rightskip}{0pt plus 5cm}const Q\+Size I\+C\+O\+N\+\_\+\+S\+I\+Z\+E (
+\begin{DoxyParamCaption}
+\item[{24}]{, }
+\item[{24}]{}
+\end{DoxyParamCaption}
+)}\label{debugconsole_8cpp_a2e32342d4d52b2cb14b9430673f4e23d}
+\hypertarget{debugconsole_8cpp_ad139c257618acd8da234564d2c2e5952}{}\index{debugconsole.\+cpp@{debugconsole.\+cpp}!parse\+Command\+Line@{parse\+Command\+Line}}
+\index{parse\+Command\+Line@{parse\+Command\+Line}!debugconsole.\+cpp@{debugconsole.\+cpp}}
+\subsubsection[{parse\+Command\+Line}]{\setlength{\rightskip}{0pt plus 5cm}bool parse\+Command\+Line (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ std\+::string $>$ \&}]{args, }
+\item[{const std\+::string \&}]{str\+Command}
+\end{DoxyParamCaption}
+)}\label{debugconsole_8cpp_ad139c257618acd8da234564d2c2e5952}
+Split shell command line into a list of arguments. Aims to emulate {\ttfamily bash} and friends.
+
+
+\begin{DoxyItemize}
+\item Arguments are delimited with whitespace
+\item Extra whitespace at the beginning and end and between arguments will be ignored
+\item Text can be \char`\"{}double\char`\"{} or \textquotesingle{}single\textquotesingle{} quoted
+\item The backslash {\ttfamily \textbackslash{}} is used as escape character
+\begin{DoxyItemize}
+\item Outside quotes, any character can be escaped
+\item Within double quotes, only escape {\ttfamily \char`\"{} and backslashes before a \textbackslash{}c \char`\"{}} or another backslash
+\item Within single quotes, no escaping is possible and no special interpretation takes place
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt out}  & {\em args} & Parsed arguments will be appended to this list \\
+\hline
+\mbox{\tt in}  & {\em str\+Command} & Command line to split \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 77 of file debugconsole.\+cpp.
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{debugconsole_8cpp_aadcd48ab7261b9dc336efb8919a2ecda}{}\index{debugconsole.\+cpp@{debugconsole.\+cpp}!C\+O\+N\+S\+O\+L\+E\+\_\+\+H\+I\+S\+T\+O\+R\+Y@{C\+O\+N\+S\+O\+L\+E\+\_\+\+H\+I\+S\+T\+O\+R\+Y}}
+\index{C\+O\+N\+S\+O\+L\+E\+\_\+\+H\+I\+S\+T\+O\+R\+Y@{C\+O\+N\+S\+O\+L\+E\+\_\+\+H\+I\+S\+T\+O\+R\+Y}!debugconsole.\+cpp@{debugconsole.\+cpp}}
+\subsubsection[{C\+O\+N\+S\+O\+L\+E\+\_\+\+H\+I\+S\+T\+O\+R\+Y}]{\setlength{\rightskip}{0pt plus 5cm}const int C\+O\+N\+S\+O\+L\+E\+\_\+\+H\+I\+S\+T\+O\+R\+Y = 50}\label{debugconsole_8cpp_aadcd48ab7261b9dc336efb8919a2ecda}
+
+
+Definition at line 25 of file debugconsole.\+cpp.
+
+\hypertarget{debugconsole_8cpp_afefb3cb19778c9218396dcf4707f0ae8}{}\index{debugconsole.\+cpp@{debugconsole.\+cpp}!I\+C\+O\+N\+\_\+\+M\+A\+P\+P\+I\+N\+G@{I\+C\+O\+N\+\_\+\+M\+A\+P\+P\+I\+N\+G}}
+\index{I\+C\+O\+N\+\_\+\+M\+A\+P\+P\+I\+N\+G@{I\+C\+O\+N\+\_\+\+M\+A\+P\+P\+I\+N\+G}!debugconsole.\+cpp@{debugconsole.\+cpp}}
+\subsubsection[{I\+C\+O\+N\+\_\+\+M\+A\+P\+P\+I\+N\+G}]{\setlength{\rightskip}{0pt plus 5cm}const \{ ... \}   I\+C\+O\+N\+\_\+\+M\+A\+P\+P\+I\+N\+G\mbox{[}$\,$\mbox{]}}\label{debugconsole_8cpp_afefb3cb19778c9218396dcf4707f0ae8}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    \{\textcolor{stringliteral}{"cmd-request"}, \textcolor{stringliteral}{":/icons/tx\_input"}\},
+    \{\textcolor{stringliteral}{"cmd-reply"}, \textcolor{stringliteral}{":/icons/tx\_output"}\},
+    \{\textcolor{stringliteral}{"cmd-error"}, \textcolor{stringliteral}{":/icons/tx\_output"}\},
+    \{\textcolor{stringliteral}{"misc"}, \textcolor{stringliteral}{":/icons/tx\_inout"}\},
+    \{NULL, NULL\}
+\}
+\end{DoxyCode}
+\hypertarget{debugconsole_8cpp_a961badc4978c4eb0ac616b70e952940b}{}\index{debugconsole.\+cpp@{debugconsole.\+cpp}!I\+N\+I\+T\+I\+A\+L\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+G\+R\+A\+P\+H\+\_\+\+M\+I\+N\+S@{I\+N\+I\+T\+I\+A\+L\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+G\+R\+A\+P\+H\+\_\+\+M\+I\+N\+S}}
+\index{I\+N\+I\+T\+I\+A\+L\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+G\+R\+A\+P\+H\+\_\+\+M\+I\+N\+S@{I\+N\+I\+T\+I\+A\+L\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+G\+R\+A\+P\+H\+\_\+\+M\+I\+N\+S}!debugconsole.\+cpp@{debugconsole.\+cpp}}
+\subsubsection[{I\+N\+I\+T\+I\+A\+L\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+G\+R\+A\+P\+H\+\_\+\+M\+I\+N\+S}]{\setlength{\rightskip}{0pt plus 5cm}const int I\+N\+I\+T\+I\+A\+L\+\_\+\+T\+R\+A\+F\+F\+I\+C\+\_\+\+G\+R\+A\+P\+H\+\_\+\+M\+I\+N\+S = 30}\label{debugconsole_8cpp_a961badc4978c4eb0ac616b70e952940b}
+
+
+Definition at line 29 of file debugconsole.\+cpp.
+
+\hypertarget{debugconsole_8cpp_af2ed45b90afa2ef4ec6e09625335a082}{}\index{debugconsole.\+cpp@{debugconsole.\+cpp}!source@{source}}
+\index{source@{source}!debugconsole.\+cpp@{debugconsole.\+cpp}}
+\subsubsection[{source}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ source}\label{debugconsole_8cpp_af2ed45b90afa2ef4ec6e09625335a082}
+
+
+Definition at line 33 of file debugconsole.\+cpp.
+
+\hypertarget{debugconsole_8cpp_aec657bef26e5ff27b9442563a591d9ec}{}\index{debugconsole.\+cpp@{debugconsole.\+cpp}!url@{url}}
+\index{url@{url}!debugconsole.\+cpp@{debugconsole.\+cpp}}
+\subsubsection[{url}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ url}\label{debugconsole_8cpp_aec657bef26e5ff27b9442563a591d9ec}
+
+
+Definition at line 32 of file debugconsole.\+cpp.
+

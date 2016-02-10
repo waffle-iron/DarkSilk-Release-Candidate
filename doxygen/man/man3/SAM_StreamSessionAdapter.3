@@ -1,0 +1,160 @@
+.TH "SAM::StreamSessionAdapter" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SAM::StreamSessionAdapter \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <i2p\&.h>\fP
+.PP
+Inherited by \fBI2PSession\fP\fC [private]\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBSessionHolder\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBStreamSessionAdapter\fP (const std::string &nickname, const std::string &SAMHost=\fBSAM_DEFAULT_ADDRESS\fP, \fBuint16_t\fP SAMPort=\fBSAM_DEFAULT_PORT\fP, const std::string &myDestination=\fBSAM_GENERATE_MY_DESTINATION\fP, const std::string &i2pOptions=\fBSAM_DEFAULT_I2P_OPTIONS\fP, const std::string &minVer=\fBSAM_DEFAULT_MIN_VER\fP, const std::string &maxVer=\fBSAM_DEFAULT_MAX_VER\fP)"
+.br
+.ti -1c
+.RI "\fB~StreamSessionAdapter\fP ()"
+.br
+.ti -1c
+.RI "\fBSAM::SOCKET\fP \fBaccept\fP (bool silent)"
+.br
+.ti -1c
+.RI "\fBSAM::SOCKET\fP \fBconnect\fP (const std::string &destination, bool silent)"
+.br
+.ti -1c
+.RI "bool \fBforward\fP (const std::string &host, \fBuint16_t\fP port, bool silent)"
+.br
+.ti -1c
+.RI "std::string \fBnamingLookup\fP (const std::string &\fBname\fP) const "
+.br
+.ti -1c
+.RI "\fBSAM::FullDestination\fP \fBdestGenerate\fP () const "
+.br
+.ti -1c
+.RI "void \fBstopForwarding\fP (const std::string &host, \fBuint16_t\fP port)"
+.br
+.ti -1c
+.RI "void \fBstopForwardingAll\fP ()"
+.br
+.ti -1c
+.RI "const \fBSAM::FullDestination\fP & \fBgetMyDestination\fP () const "
+.br
+.ti -1c
+.RI "const sockaddr_in & \fBgetSAMAddress\fP () const "
+.br
+.ti -1c
+.RI "const std::string & \fBgetSAMHost\fP () const "
+.br
+.ti -1c
+.RI "\fBuint16_t\fP \fBgetSAMPort\fP () const "
+.br
+.ti -1c
+.RI "const std::string & \fBgetNickname\fP () const "
+.br
+.ti -1c
+.RI "const std::string & \fBgetSAMMinVer\fP () const "
+.br
+.ti -1c
+.RI "const std::string & \fBgetSAMMaxVer\fP () const "
+.br
+.ti -1c
+.RI "const std::string & \fBgetSAMVersion\fP () const "
+.br
+.ti -1c
+.RI "const std::string & \fBgetOptions\fP () const "
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 30 of file i2p\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SAM::StreamSessionAdapter::StreamSessionAdapter (const std::string & nickname, const std::string & SAMHost = \fC\fBSAM_DEFAULT_ADDRESS\fP\fP, \fBuint16_t\fP SAMPort = \fC\fBSAM_DEFAULT_PORT\fP\fP, const std::string & myDestination = \fC\fBSAM_GENERATE_MY_DESTINATION\fP\fP, const std::string & i2pOptions = \fC\fBSAM_DEFAULT_I2P_OPTIONS\fP\fP, const std::string & minVer = \fC\fBSAM_DEFAULT_MIN_VER\fP\fP, const std::string & maxVer = \fC\fBSAM_DEFAULT_MAX_VER\fP\fP)"
+
+.PP
+Definition at line 73 of file i2p\&.cpp\&.
+.SS "SAM::StreamSessionAdapter::~StreamSessionAdapter ()"
+
+.PP
+Definition at line 87 of file i2p\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBSAM::SOCKET\fP SAM::StreamSessionAdapter::accept (bool silent)"
+
+.PP
+Definition at line 90 of file i2p\&.cpp\&.
+.SS "\fBSAM::SOCKET\fP SAM::StreamSessionAdapter::connect (const std::string & destination, bool silent)"
+
+.PP
+Definition at line 97 of file i2p\&.cpp\&.
+.SS "\fBSAM::FullDestination\fP SAM::StreamSessionAdapter::destGenerate () const"
+
+.PP
+Definition at line 115 of file i2p\&.cpp\&.
+.SS "bool SAM::StreamSessionAdapter::forward (const std::string & host, \fBuint16_t\fP port, bool silent)"
+
+.PP
+Definition at line 104 of file i2p\&.cpp\&.
+.SS "const \fBSAM::FullDestination\fP & SAM::StreamSessionAdapter::getMyDestination () const"
+
+.PP
+Definition at line 131 of file i2p\&.cpp\&.
+.SS "const std::string & SAM::StreamSessionAdapter::getNickname () const"
+
+.PP
+Definition at line 151 of file i2p\&.cpp\&.
+.SS "const std::string & SAM::StreamSessionAdapter::getOptions () const"
+
+.PP
+Definition at line 171 of file i2p\&.cpp\&.
+.SS "const sockaddr_in & SAM::StreamSessionAdapter::getSAMAddress () const"
+
+.PP
+Definition at line 136 of file i2p\&.cpp\&.
+.SS "const std::string & SAM::StreamSessionAdapter::getSAMHost () const"
+
+.PP
+Definition at line 141 of file i2p\&.cpp\&.
+.SS "const std::string & SAM::StreamSessionAdapter::getSAMMaxVer () const"
+
+.PP
+Definition at line 161 of file i2p\&.cpp\&.
+.SS "const std::string & SAM::StreamSessionAdapter::getSAMMinVer () const"
+
+.PP
+Definition at line 156 of file i2p\&.cpp\&.
+.SS "\fBuint16_t\fP SAM::StreamSessionAdapter::getSAMPort () const"
+
+.PP
+Definition at line 146 of file i2p\&.cpp\&.
+.SS "const std::string & SAM::StreamSessionAdapter::getSAMVersion () const"
+
+.PP
+Definition at line 166 of file i2p\&.cpp\&.
+.SS "std::string SAM::StreamSessionAdapter::namingLookup (const std::string & name) const"
+
+.PP
+Definition at line 109 of file i2p\&.cpp\&.
+.SS "void SAM::StreamSessionAdapter::stopForwarding (const std::string & host, \fBuint16_t\fP port)"
+
+.PP
+Definition at line 121 of file i2p\&.cpp\&.
+.SS "void SAM::StreamSessionAdapter::stopForwardingAll ()"
+
+.PP
+Definition at line 126 of file i2p\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

@@ -1,0 +1,50 @@
+.TH "/home/dev/ds-160209/src/pbkdf2.cpp" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/pbkdf2.cpp \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <string\&.h>\fP
+.br
+\fC#include 'pbkdf2\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBHMAC_SHA256_Init\fP (\fBHMAC_SHA256_CTX\fP *ctx, const void *_K, size_t Klen)"
+.br
+.ti -1c
+.RI "void \fBHMAC_SHA256_Update\fP (\fBHMAC_SHA256_CTX\fP *ctx, const void *in, size_t len)"
+.br
+.ti -1c
+.RI "void \fBHMAC_SHA256_Final\fP (unsigned char digest[32], \fBHMAC_SHA256_CTX\fP *ctx)"
+.br
+.ti -1c
+.RI "void \fBPBKDF2_SHA256\fP (const \fBuint8_t\fP *passwd, size_t passwdlen, const \fBuint8_t\fP *salt, size_t saltlen, \fBuint64_t\fP c, \fBuint8_t\fP *buf, size_t dkLen)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void HMAC_SHA256_Final (unsigned char digest[32], \fBHMAC_SHA256_CTX\fP * ctx)"
+
+.PP
+Definition at line 75 of file pbkdf2\&.cpp\&.
+.SS "void HMAC_SHA256_Init (\fBHMAC_SHA256_CTX\fP * ctx, const void * _K, size_t Klen)"
+
+.PP
+Definition at line 30 of file pbkdf2\&.cpp\&.
+.SS "void HMAC_SHA256_Update (\fBHMAC_SHA256_CTX\fP * ctx, const void * in, size_t len)"
+
+.PP
+Definition at line 66 of file pbkdf2\&.cpp\&.
+.SS "void PBKDF2_SHA256 (const \fBuint8_t\fP * passwd, size_t passwdlen, const \fBuint8_t\fP * salt, size_t saltlen, \fBuint64_t\fP c, \fBuint8_t\fP * buf, size_t dkLen)"
+PBKDF2_SHA256(passwd, passwdlen, salt, saltlen, c, buf, dkLen): Compute PBKDF2(passwd, salt, c, dkLen) using HMAC-SHA256 as the PRF, and write the output to buf\&. The value dkLen must be at most 32 * (2^32 - 1)\&. 
+.PP
+Definition at line 98 of file pbkdf2\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

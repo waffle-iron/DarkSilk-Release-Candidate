@@ -1,0 +1,204 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="json__spirit__stream__reader_8h" kind="file" language="C++">
+    <compoundname>json_spirit_stream_reader.h</compoundname>
+    <includes refid="json__spirit__reader__template_8h" local="yes">json_spirit_reader_template.h</includes>
+    <incdepgraph>
+      <node id="5825">
+        <label>boost/version.hpp</label>
+      </node>
+      <node id="5820">
+        <label>boost/shared_ptr.hpp</label>
+      </node>
+      <node id="5826">
+        <label>boost/spirit/core.hpp</label>
+      </node>
+      <node id="5822">
+        <label>json_spirit_error_position.h</label>
+        <link refid="json__spirit__error__position_8h"/>
+        <childnode refid="5814" relation="include">
+        </childnode>
+      </node>
+      <node id="5830">
+        <label>boost/spirit/iterator/position_iterator.hpp</label>
+      </node>
+      <node id="5815">
+        <label>cassert</label>
+      </node>
+      <node id="5817">
+        <label>stdexcept</label>
+      </node>
+      <node id="5814">
+        <label>string</label>
+      </node>
+      <node id="5813">
+        <label>map</label>
+      </node>
+      <node id="5810">
+        <label>json_spirit_reader_template.h</label>
+        <link refid="json__spirit__reader__template_8h"/>
+        <childnode refid="5811" relation="include">
+        </childnode>
+        <childnode refid="5822" relation="include">
+        </childnode>
+        <childnode refid="5823" relation="include">
+        </childnode>
+        <childnode refid="5824" relation="include">
+        </childnode>
+        <childnode refid="5825" relation="include">
+        </childnode>
+        <childnode refid="5826" relation="include">
+        </childnode>
+        <childnode refid="5827" relation="include">
+        </childnode>
+        <childnode refid="5828" relation="include">
+        </childnode>
+        <childnode refid="5829" relation="include">
+        </childnode>
+        <childnode refid="5830" relation="include">
+        </childnode>
+      </node>
+      <node id="5809">
+        <label>/home/dev/ds-160209/src/json/json_spirit_stream_reader.h</label>
+        <link refid="json_spirit_stream_reader.h"/>
+        <childnode refid="5810" relation="include">
+        </childnode>
+      </node>
+      <node id="5821">
+        <label>boost/variant.hpp</label>
+      </node>
+      <node id="5824">
+        <label>boost/function.hpp</label>
+      </node>
+      <node id="5812">
+        <label>vector</label>
+      </node>
+      <node id="5828">
+        <label>boost/spirit/utility/escape_char.hpp</label>
+      </node>
+      <node id="5816">
+        <label>sstream</label>
+      </node>
+      <node id="5818">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="5823">
+        <label>boost/bind.hpp</label>
+      </node>
+      <node id="5819">
+        <label>boost/config.hpp</label>
+      </node>
+      <node id="5811">
+        <label>json_spirit_value.h</label>
+        <link refid="json__spirit__value_8h"/>
+        <childnode refid="5812" relation="include">
+        </childnode>
+        <childnode refid="5813" relation="include">
+        </childnode>
+        <childnode refid="5814" relation="include">
+        </childnode>
+        <childnode refid="5815" relation="include">
+        </childnode>
+        <childnode refid="5816" relation="include">
+        </childnode>
+        <childnode refid="5817" relation="include">
+        </childnode>
+        <childnode refid="5818" relation="include">
+        </childnode>
+        <childnode refid="5819" relation="include">
+        </childnode>
+        <childnode refid="5820" relation="include">
+        </childnode>
+        <childnode refid="5821" relation="include">
+        </childnode>
+      </node>
+      <node id="5829">
+        <label>boost/spirit/iterator/multi_pass.hpp</label>
+      </node>
+      <node id="5827">
+        <label>boost/spirit/utility/confix.hpp</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classjson__spirit_1_1_stream__reader" prot="public">json_spirit::Stream_reader</innerclass>
+    <innerclass refid="classjson__spirit_1_1_stream__reader__thrower" prot="public">json_spirit::Stream_reader_thrower</innerclass>
+    <innernamespace refid="namespacejson__spirit">json_spirit</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>JSON_SPIRIT_READ_STREAM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>JSON_SPIRIT_READ_STREAM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Copyright<sp/>John<sp/>W.<sp/>Wilkinson<sp/>2007<sp/>-<sp/>2016.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Distributed<sp/>under<sp/>the<sp/>MIT<sp/>License,<sp/>see<sp/>accompanying<sp/>file<sp/>LICENSE.txt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>json<sp/>spirit<sp/>version<sp/>4.03</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(_MSC_VER)<sp/>&amp;&amp;<sp/>(_MSC_VER<sp/>&gt;=<sp/>1020)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="json__spirit__reader__template_8h" kindref="compound">json_spirit_reader_template.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacejson__spirit" kindref="compound">json_spirit</ref></highlight></codeline>
+<codeline lineno="16"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>these<sp/>classes<sp/>allows<sp/>you<sp/>to<sp/>read<sp/>multiple<sp/>top<sp/>level<sp/>contiguous<sp/>values<sp/>from<sp/>a<sp/>stream,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>normal<sp/>stream<sp/>read<sp/>functions<sp/>have<sp/>a<sp/>bug<sp/>that<sp/>prevent<sp/>multiple<sp/>top<sp/>level<sp/>values<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>from<sp/>being<sp/>read<sp/>unless<sp/>they<sp/>are<sp/>separated<sp/>by<sp/>spaces</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Istream_type,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Value_type<sp/>&gt;</highlight></codeline>
+<codeline lineno="22" refid="classjson__spirit_1_1_stream__reader" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classjson__spirit_1_1_stream__reader" kindref="compound">Stream_reader</ref></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classjson__spirit_1_1_stream__reader_1a8aca8be9215894693176cd89f2d10091" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classjson__spirit_1_1_stream__reader_1a8aca8be9215894693176cd89f2d10091" kindref="member">Stream_reader</ref>(<sp/>Istream_type&amp;<sp/>is<sp/>)</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><sp/><sp/>iters_(<sp/>is<sp/>)</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classjson__spirit_1_1_stream__reader_1acd723ec164d87c00088b60bd364a606d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classjson__spirit_1_1_stream__reader_1acd723ec164d87c00088b60bd364a606d" kindref="member">read_next</ref>(<sp/><ref refid="namespacejson__spirit_1aeaad57c912e0370a76f60cd510ad3d74" kindref="member">Value_type</ref>&amp;<sp/><ref refid="version__set_8cc_1a38c8b88c432e666ad10b0c5573e1160a" kindref="member">value</ref><sp/>)</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespacejson__spirit_1a7d872b9b58689ef3797d0b56556a3326" kindref="member">read_range</ref>(<sp/>iters_.<ref refid="structjson__spirit_1_1_multi__pass__iters_1a529ba1f47c74054bff695c277ec3b3b4" kindref="member">begin_</ref>,<sp/>iters_.<ref refid="structjson__spirit_1_1_multi__pass__iters_1afd43bdc90a846d2caa93846a069f9cbe" kindref="member">end_</ref>,<sp/>value<sp/>);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="structjson__spirit_1_1_multi__pass__iters" kindref="compound">Multi_pass_iters&lt; Istream_type &gt;</ref><sp/>Mp_iters;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Mp_iters<sp/>iters_;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Istream_type,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Value_type<sp/>&gt;</highlight></codeline>
+<codeline lineno="44" refid="classjson__spirit_1_1_stream__reader__thrower" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classjson__spirit_1_1_stream__reader__thrower" kindref="compound">Stream_reader_thrower</ref></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="classjson__spirit_1_1_stream__reader__thrower_1a702cfd4fc32e9ec5dd7009e8393b5f9b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classjson__spirit_1_1_stream__reader__thrower_1a702cfd4fc32e9ec5dd7009e8393b5f9b" kindref="member">Stream_reader_thrower</ref>(<sp/>Istream_type&amp;<sp/>is<sp/>)</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><sp/><sp/>iters_(<sp/>is<sp/>)</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/><sp/><sp/><sp/>posn_begin_(<sp/>iters_.begin_,<sp/>iters_.end_<sp/>)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/><sp/><sp/><sp/>posn_end_(<sp/>iters_.end_,<sp/>iters_.end_<sp/>)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="classjson__spirit_1_1_stream__reader__thrower_1a81a7d8e8705c328a9947d5ddccecc5f7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classjson__spirit_1_1_stream__reader__thrower_1a81a7d8e8705c328a9947d5ddccecc5f7" kindref="member">read_next</ref>(<sp/><ref refid="namespacejson__spirit_1aeaad57c912e0370a76f60cd510ad3d74" kindref="member">Value_type</ref>&amp;<sp/><ref refid="version__set_8cc_1a38c8b88c432e666ad10b0c5573e1160a" kindref="member">value</ref><sp/>)</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>posn_begin_<sp/>=<sp/><ref refid="namespacejson__spirit_1a51fe762aa870e8b669cb7fdde4b8d5a1" kindref="member">read_range_or_throw</ref>(<sp/>posn_begin_,<sp/>posn_end_,<sp/>value<sp/>);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="structjson__spirit_1_1_multi__pass__iters" kindref="compound">Multi_pass_iters&lt; Istream_type &gt;</ref><sp/>Mp_iters;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>spirit_namespace::position_iterator&lt;<sp/>typename<sp/>Mp_iters::Mp_iter<sp/>&gt;<sp/>Posn_iter_t;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Mp_iters<sp/>iters_;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Posn_iter_t<sp/>posn_begin_,<sp/>posn_end_;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/json/json_spirit_stream_reader.h"/>
+  </compounddef>
+</doxygen>

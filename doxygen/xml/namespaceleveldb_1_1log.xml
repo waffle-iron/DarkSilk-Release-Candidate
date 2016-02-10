@@ -1,0 +1,836 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="namespaceleveldb_1_1log" kind="namespace" language="C++">
+    <compoundname>leveldb::log</compoundname>
+    <innerclass refid="classleveldb_1_1log_1_1_log_test" prot="public">leveldb::log::LogTest</innerclass>
+    <innerclass refid="classleveldb_1_1log_1_1_reader" prot="public">leveldb::log::Reader</innerclass>
+    <innerclass refid="classleveldb_1_1log_1_1_writer" prot="public">leveldb::log::Writer</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="namespaceleveldb_1_1log_1a01bdc1b51beb634f14f8fbb70fbd8d2a" prot="public" static="no">
+        <name>RecordType</name>
+        <enumvalue id="namespaceleveldb_1_1log_1a01bdc1b51beb634f14f8fbb70fbd8d2aa5a96fbcdf2a8be4834c61233ec2cea2e" prot="public">
+          <name>kZeroType</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceleveldb_1_1log_1a01bdc1b51beb634f14f8fbb70fbd8d2aa2c77e6c3871e8ec5506f9f9c2e7dfb13" prot="public">
+          <name>kFullType</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceleveldb_1_1log_1a01bdc1b51beb634f14f8fbb70fbd8d2aa46ff8d418146ec7ce6c3a883e89b48da" prot="public">
+          <name>kFirstType</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceleveldb_1_1log_1a01bdc1b51beb634f14f8fbb70fbd8d2aa50ec9d5a2236253d02c0abd55d178e08" prot="public">
+          <name>kMiddleType</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespaceleveldb_1_1log_1a01bdc1b51beb634f14f8fbb70fbd8d2aa29f913fb4d719f97a9618bca93775dfc" prot="public">
+          <name>kLastType</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_format.h" line="14" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_format.h" bodystart="14" bodyend="24"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespaceleveldb_1_1log_1a45cb8306b6156236656172086c1394df" prot="public" static="yes" mutable="no">
+        <type>const int</type>
+        <definition>const int leveldb::log::kMaxRecordType</definition>
+        <argsstring></argsstring>
+        <name>kMaxRecordType</name>
+        <initializer>= <ref refid="namespaceleveldb_1_1log_1a01bdc1b51beb634f14f8fbb70fbd8d2aa29f913fb4d719f97a9618bca93775dfc" kindref="member">kLastType</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_format.h" line="25" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_format.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceleveldb_1_1log_1a2daa4274b5fc09292a7d856072f379b2" prot="public" static="yes" mutable="no">
+        <type>const int</type>
+        <definition>const int leveldb::log::kBlockSize</definition>
+        <argsstring></argsstring>
+        <name>kBlockSize</name>
+        <initializer>= 32768</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_format.h" line="27" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_format.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespaceleveldb_1_1log_1a3771f9a7e5d0e9057d33fbfd371f7e83" prot="public" static="yes" mutable="no">
+        <type>const int</type>
+        <definition>const int leveldb::log::kHeaderSize</definition>
+        <argsstring></argsstring>
+        <name>kHeaderSize</name>
+        <initializer>= 4 + 2 + 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_format.h" line="30" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_format.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1a211dcbca77b4ff487c70016c09af674e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>static std::string leveldb::log::BigString</definition>
+        <argsstring>(const std::string &amp;partial_string, size_t n)</argsstring>
+        <name>BigString</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>partial_string</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="18" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="18" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1a851536d606f5ecc9857ee45430a23465" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>static std::string leveldb::log::NumberString</definition>
+        <argsstring>(int n)</argsstring>
+        <name>NumberString</name>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="28" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="28" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1a4f28769ffa840923fea43c6825a6a0e2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>static std::string leveldb::log::RandomSkewedString</definition>
+        <argsstring>(int i, Random *rnd)</argsstring>
+        <name>RandomSkewedString</name>
+        <param>
+          <type>int</type>
+          <declname>i</declname>
+        </param>
+        <param>
+          <type><ref refid="classleveldb_1_1_random" kindref="compound">Random</ref> *</type>
+          <declname>rnd</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="35" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="35" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1ab8a02b9419477420eca51cfd47d5f172" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, Empty)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>Empty</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="238" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="238" bodyend="240"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1aabca07adceffd87baf38b81665d92bb4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, ReadWrite)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>ReadWrite</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="242" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="242" bodyend="253"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1a60249ea325a8656fdc31898d7c5f4ad9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, ManyBlocks)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>ManyBlocks</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="255" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="255" bodyend="263"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1ac15e5779ff43d83522727b8cc44882a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, Fragmentation)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>Fragmentation</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="265" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="265" bodyend="273"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1a9721de928c01ac50b5770b8b4cbb98e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, MarginalTrailer)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>MarginalTrailer</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="275" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="275" bodyend="286"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1aad9c4a11c674359115f4d16c97e33ad1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, MarginalTrailer2)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>MarginalTrailer2</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="288" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="288" bodyend="299"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1a1a1972ff9493353cfb4546cacd33ddb7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, ShortTrailer)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>ShortTrailer</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="301" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="301" bodyend="311"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1a55d554f8c576d9d4d99e35d3fe0c169f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, AlignedEof)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>AlignedEof</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="313" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="313" bodyend="319"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1a52d33034be964c0d0e40efdf4b423452" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, RandomRead)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>RandomRead</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="321" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="321" bodyend="332"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1a47ffd653cde9cb9bc00c0a9914da48fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, ReadError)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>ReadError</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="336" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="336" bodyend="342"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1a4fd335e6dbc3a27ea10e985387f69d6d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, BadRecordType)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>BadRecordType</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="344" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="344" bodyend="352"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1aa1e3f8be0b7799bfb21c5c4bf40d22c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, TruncatedTrailingRecordIsIgnored)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>TruncatedTrailingRecordIsIgnored</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="354" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="354" bodyend="361"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1a024a8bc0f558ffe46b3a15ab43018402" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, BadLength)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>BadLength</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="363" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="363" bodyend="372"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1a22b6e6d2a3de82f3e05d63e13f44b9fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, BadLengthAtEndIsIgnored)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>BadLengthAtEndIsIgnored</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="374" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="374" bodyend="380"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1a2dccd9d88a61eb0f59fdea07edfe2022" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, ChecksumMismatch)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>ChecksumMismatch</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="382" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="382" bodyend="388"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1ae2aa67608715051976e4cbb2008e3b52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, UnexpectedMiddleType)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>UnexpectedMiddleType</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="390" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="390" bodyend="397"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1ad618b3ff1dc35a8641c019d8eb4a4e8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, UnexpectedLastType)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>UnexpectedLastType</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="399" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="399" bodyend="406"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1a178460e2ee7a665f0aef08a28217a6d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, UnexpectedFullType)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>UnexpectedFullType</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="408" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="408" bodyend="417"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1a7c8a46287bbb1e185ccfcb78c5ae94e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, UnexpectedFirstType)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>UnexpectedFirstType</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="419" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="419" bodyend="428"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1a965e5192bb2f0467f987fe54995d0c89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, MissingLastIsIgnored)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>MissingLastIsIgnored</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="430" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="430" bodyend="437"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1acae9dd4e93ded56d6585082822964b71" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, PartialLastIsIgnored)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>PartialLastIsIgnored</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="439" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="439" bodyend="446"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1a2ea9cc0af9f5d8b6bdc74e3126bd389a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, ErrorJoinsRecords)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>ErrorJoinsRecords</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="448" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="448" bodyend="469"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1a6ee7068a33cb134e26e7d1cf58327064" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, ReadStart)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>ReadStart</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="471" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="471" bodyend="473"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1af9cc8dffe50b0cefff163fdca58d1a08" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, ReadSecondOneOff)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>ReadSecondOneOff</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="475" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="475" bodyend="477"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1ab734bca6b78216dc41b112075258dbe7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, ReadSecondTenThousand)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>ReadSecondTenThousand</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="479" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="479" bodyend="481"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1aa9e212a334431228c79a843316480db0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, ReadSecondStart)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>ReadSecondStart</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="483" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="483" bodyend="485"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1af5f8505f08225382f290158f5175cca0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, ReadThirdOneOff)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>ReadThirdOneOff</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="487" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="487" bodyend="489"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1a87cfcd7bb0a248dc72d9856e1d00d519" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, ReadThirdStart)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>ReadThirdStart</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="491" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="491" bodyend="493"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1abbda151ff0e2439ac1dfa823a6089439" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, ReadFourthOneOff)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>ReadFourthOneOff</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="495" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="495" bodyend="497"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1a85f6833939c09f181924774403bfbe4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, ReadFourthFirstBlockTrailer)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>ReadFourthFirstBlockTrailer</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="499" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="499" bodyend="501"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1a6fb47c0abe5c036d95a4f9aeb1d62174" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, ReadFourthMiddleBlock)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>ReadFourthMiddleBlock</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="503" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="503" bodyend="505"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1a9c80a844e21aec7c6fbde209e99c1ad8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, ReadFourthLastBlock)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>ReadFourthLastBlock</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="507" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="507" bodyend="509"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1aa652940a4e7bff7fa21f0d1c941712d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, ReadFourthStart)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>ReadFourthStart</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="511" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="511" bodyend="515"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1a74e0fb6c39041d1ef2193114b0a2275b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, ReadEnd)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>ReadEnd</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="517" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="517" bodyend="519"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceleveldb_1_1log_1ae1081d375c33d8b2f01d5593ecd5f4a7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::log::TEST</definition>
+        <argsstring>(LogTest, ReadPastEnd)</argsstring>
+        <name>TEST</name>
+        <param>
+          <type><ref refid="classleveldb_1_1log_1_1_log_test" kindref="compound">LogTest</ref></type>
+        </param>
+        <param>
+          <type>ReadPastEnd</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/log_test.cc" line="521" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/log_test.cc" bodystart="521" bodyend="523"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/leveldb/db/log_format.h" line="12" column="1"/>
+  </compounddef>
+</doxygen>

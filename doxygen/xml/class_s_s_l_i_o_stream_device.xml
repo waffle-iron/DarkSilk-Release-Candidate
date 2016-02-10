@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_s_s_l_i_o_stream_device" kind="class" language="C++" prot="public">
+    <compoundname>SSLIOStreamDevice</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">boost::iostreams::device&lt; boost::iostreams::bidirectional &gt;</basecompoundref>
+    <includes refid="rpcprotocol_8h" local="no">rpcprotocol.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>Protocol</declname>
+        <defname>Protocol</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_s_s_l_i_o_stream_device_1aa4fb4c46834f04259fdc080c9d3063a8" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SSLIOStreamDevice&lt; Protocol &gt;::fNeedHandshake</definition>
+        <argsstring></argsstring>
+        <name>fNeedHandshake</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcprotocol.h" line="123" column="1" bodyfile="/home/dev/ds-160209/src/rpcprotocol.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_s_s_l_i_o_stream_device_1a3ad92d1ead014bfb9d8ca78193be46c0" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SSLIOStreamDevice&lt; Protocol &gt;::fUseSSL</definition>
+        <argsstring></argsstring>
+        <name>fUseSSL</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcprotocol.h" line="124" column="1" bodyfile="/home/dev/ds-160209/src/rpcprotocol.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_s_s_l_i_o_stream_device_1afeed99aa4a07be84ab0daba508c1dcd7" prot="private" static="no" mutable="no">
+        <type>boost::asio::ssl::stream&lt; typename Protocol::socket &gt; &amp;</type>
+        <definition>boost::asio::ssl::stream&lt;typename Protocol::socket&gt;&amp; SSLIOStreamDevice&lt; Protocol &gt;::stream</definition>
+        <argsstring></argsstring>
+        <name>stream</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcprotocol.h" line="125" column="1" bodyfile="/home/dev/ds-160209/src/rpcprotocol.h" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_s_s_l_i_o_stream_device_1a603e5709babdeaaa68c159a2895d7f2e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>SSLIOStreamDevice&lt; Protocol &gt;::SSLIOStreamDevice</definition>
+        <argsstring>(boost::asio::ssl::stream&lt; typename Protocol::socket &gt; &amp;streamIn, bool fUseSSLIn)</argsstring>
+        <name>SSLIOStreamDevice</name>
+        <param>
+          <type>boost::asio::ssl::stream&lt; typename Protocol::socket &gt; &amp;</type>
+          <declname>streamIn</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fUseSSLIn</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcprotocol.h" line="81" column="1" bodyfile="/home/dev/ds-160209/src/rpcprotocol.h" bodystart="81" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="class_s_s_l_i_o_stream_device_1a6607d02de410f1c731bf1dcf3bac9bb5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void SSLIOStreamDevice&lt; Protocol &gt;::handshake</definition>
+        <argsstring>(boost::asio::ssl::stream_base::handshake_type role)</argsstring>
+        <name>handshake</name>
+        <param>
+          <type>boost::asio::ssl::stream_base::handshake_type</type>
+          <declname>role</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcprotocol.h" line="87" column="1" bodyfile="/home/dev/ds-160209/src/rpcprotocol.h" bodystart="87" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="class_s_s_l_i_o_stream_device_1a8beb626f163adac311a5ec507c3e495a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::streamsize</type>
+        <definition>std::streamsize SSLIOStreamDevice&lt; Protocol &gt;::read</definition>
+        <argsstring>(char *s, std::streamsize n)</argsstring>
+        <name>read</name>
+        <param>
+          <type>char *</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>std::streamsize</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcprotocol.h" line="93" column="1" bodyfile="/home/dev/ds-160209/src/rpcprotocol.h" bodystart="93" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="function" id="class_s_s_l_i_o_stream_device_1aa4bfad893484ffdf9dbcdce97c462ad0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::streamsize</type>
+        <definition>std::streamsize SSLIOStreamDevice&lt; Protocol &gt;::write</definition>
+        <argsstring>(const char *s, std::streamsize n)</argsstring>
+        <name>write</name>
+        <param>
+          <type>const char *</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>std::streamsize</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcprotocol.h" line="99" column="1" bodyfile="/home/dev/ds-160209/src/rpcprotocol.h" bodystart="99" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="class_s_s_l_i_o_stream_device_1acdded14a6c79e263989ebf8aea392405" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SSLIOStreamDevice&lt; Protocol &gt;::connect</definition>
+        <argsstring>(const std::string &amp;server, const std::string &amp;port)</argsstring>
+        <name>connect</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>server</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>port</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcprotocol.h" line="105" column="1" bodyfile="/home/dev/ds-160209/src/rpcprotocol.h" bodystart="105" bodyend="120"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1736">
+        <label>SSLIOStreamDevice&lt; Protocol &gt;</label>
+        <link refid="class_s_s_l_i_o_stream_device"/>
+        <childnode refid="1737" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1737">
+        <label>boost::iostreams::device&lt; boost::iostreams::bidirectional &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1738">
+        <label>SSLIOStreamDevice&lt; Protocol &gt;</label>
+        <link refid="class_s_s_l_i_o_stream_device"/>
+        <childnode refid="1739" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1739">
+        <label>boost::iostreams::device&lt; boost::iostreams::bidirectional &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/dev/ds-160209/src/rpcprotocol.h" line="79" column="1" bodyfile="/home/dev/ds-160209/src/rpcprotocol.h" bodystart="79" bodyend="126"/>
+    <listofallmembers>
+      <member refid="class_s_s_l_i_o_stream_device_1acdded14a6c79e263989ebf8aea392405" prot="public" virt="non-virtual"><scope>SSLIOStreamDevice</scope><name>connect</name></member>
+      <member refid="class_s_s_l_i_o_stream_device_1aa4fb4c46834f04259fdc080c9d3063a8" prot="private" virt="non-virtual"><scope>SSLIOStreamDevice</scope><name>fNeedHandshake</name></member>
+      <member refid="class_s_s_l_i_o_stream_device_1a3ad92d1ead014bfb9d8ca78193be46c0" prot="private" virt="non-virtual"><scope>SSLIOStreamDevice</scope><name>fUseSSL</name></member>
+      <member refid="class_s_s_l_i_o_stream_device_1a6607d02de410f1c731bf1dcf3bac9bb5" prot="public" virt="non-virtual"><scope>SSLIOStreamDevice</scope><name>handshake</name></member>
+      <member refid="class_s_s_l_i_o_stream_device_1a8beb626f163adac311a5ec507c3e495a" prot="public" virt="non-virtual"><scope>SSLIOStreamDevice</scope><name>read</name></member>
+      <member refid="class_s_s_l_i_o_stream_device_1a603e5709babdeaaa68c159a2895d7f2e" prot="public" virt="non-virtual"><scope>SSLIOStreamDevice</scope><name>SSLIOStreamDevice</name></member>
+      <member refid="class_s_s_l_i_o_stream_device_1afeed99aa4a07be84ab0daba508c1dcd7" prot="private" virt="non-virtual"><scope>SSLIOStreamDevice</scope><name>stream</name></member>
+      <member refid="class_s_s_l_i_o_stream_device_1aa4bfad893484ffdf9dbcdce97c462ad0" prot="public" virt="non-virtual"><scope>SSLIOStreamDevice</scope><name>write</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

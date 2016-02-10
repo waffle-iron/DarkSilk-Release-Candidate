@@ -1,0 +1,143 @@
+.TH "CBudgetVote" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CBudgetVote \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <stormnode-budget\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCBudgetVote\fP ()"
+.br
+.ti -1c
+.RI "\fBCBudgetVote\fP (\fBCTxIn\fP \fBvin\fP, \fBuint256\fP \fBnProposalHash\fP, int nVoteIn)"
+.br
+.ti -1c
+.RI "bool \fBSign\fP (\fBCKey\fP &keyStormnode, \fBCPubKey\fP &pubKeyStormnode)"
+.br
+.ti -1c
+.RI "bool \fBSignatureValid\fP (bool fSignatureCheck)"
+.br
+.ti -1c
+.RI "void \fBRelay\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBGetVoteString\fP ()"
+.br
+.ti -1c
+.RI "\fBuint256\fP \fBGetHash\fP ()"
+.br
+.ti -1c
+.RI "template<typename Stream , typename Operation > void \fBSerializationOp\fP (Stream &s, Operation ser_action, int nType, int nVersion)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBfValid\fP"
+.br
+.ti -1c
+.RI "bool \fBfSynced\fP"
+.br
+.ti -1c
+.RI "\fBCTxIn\fP \fBvin\fP"
+.br
+.ti -1c
+.RI "\fBuint256\fP \fBnProposalHash\fP"
+.br
+.ti -1c
+.RI "int \fBnVote\fP"
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBnTime\fP"
+.br
+.ti -1c
+.RI "std::vector< unsigned char > \fBvchSig\fP"
+.br
+.ti -1c
+.RI "\fBADD_SERIALIZE_METHODS\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 538 of file stormnode-budget\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CBudgetVote::CBudgetVote ()"
+
+.PP
+Definition at line 1575 of file stormnode-budget\&.cpp\&.
+.SS "CBudgetVote::CBudgetVote (\fBCTxIn\fP vin, \fBuint256\fP nProposalHash, int nVoteIn)"
+
+.PP
+Definition at line 1585 of file stormnode-budget\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBuint256\fP CBudgetVote::GetHash ()\fC [inline]\fP"
+
+.PP
+Definition at line 564 of file stormnode-budget\&.h\&.
+.SS "std::string CBudgetVote::GetVoteString ()\fC [inline]\fP"
+
+.PP
+Definition at line 557 of file stormnode-budget\&.h\&.
+.SS "void CBudgetVote::Relay ()"
+
+.PP
+Definition at line 1595 of file stormnode-budget\&.cpp\&.
+.SS "template<typename Stream , typename Operation > void CBudgetVote::SerializationOp (Stream & s, Operation ser_action, int nType, int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 576 of file stormnode-budget\&.h\&.
+.SS "bool CBudgetVote::Sign (\fBCKey\fP & keyStormnode, \fBCPubKey\fP & pubKeyStormnode)"
+
+.PP
+Definition at line 1601 of file stormnode-budget\&.cpp\&.
+.SS "bool CBudgetVote::SignatureValid (bool fSignatureCheck)"
+
+.PP
+Definition at line 1623 of file stormnode-budget\&.cpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "CBudgetVote::ADD_SERIALIZE_METHODS"
+
+.PP
+Definition at line 573 of file stormnode-budget\&.h\&.
+.SS "bool CBudgetVote::fSynced"
+
+.PP
+Definition at line 542 of file stormnode-budget\&.h\&.
+.SS "bool CBudgetVote::fValid"
+
+.PP
+Definition at line 541 of file stormnode-budget\&.h\&.
+.SS "\fBuint256\fP CBudgetVote::nProposalHash"
+
+.PP
+Definition at line 545 of file stormnode-budget\&.h\&.
+.SS "\fBint64_t\fP CBudgetVote::nTime"
+
+.PP
+Definition at line 547 of file stormnode-budget\&.h\&.
+.SS "int CBudgetVote::nVote"
+
+.PP
+Definition at line 546 of file stormnode-budget\&.h\&.
+.SS "std::vector<unsigned char> CBudgetVote::vchSig"
+
+.PP
+Definition at line 548 of file stormnode-budget\&.h\&.
+.SS "\fBCTxIn\fP CBudgetVote::vin"
+
+.PP
+Definition at line 544 of file stormnode-budget\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

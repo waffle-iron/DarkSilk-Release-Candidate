@@ -1,0 +1,267 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_script_compressor" kind="class" language="C++" prot="public">
+    <compoundname>CScriptCompressor</compoundname>
+    <includes refid="compressor_8h" local="no">compressor.h</includes>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="class_c_script_compressor_1a3f0dc2a613a667745ee24a476ce21337" prot="private" static="yes" mutable="no">
+        <type>const unsigned int</type>
+        <definition>const unsigned int CScriptCompressor::nSpecialScripts</definition>
+        <argsstring></argsstring>
+        <name>nSpecialScripts</name>
+        <initializer>= 6</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>make this static for now (there are only 6 special scripts defined) this can potentially be extended together with a new nVersion for transactions, in which case this value becomes dependent on nVersion and nHeight of the enclosing transaction. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/compressor.h" line="36" column="1" bodyfile="/home/dev/ds-160209/src/compressor.h" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_c_script_compressor_1afb1c3fb4b9ff4870501705c030cef056" prot="private" static="no" mutable="no">
+        <type><ref refid="class_c_script" kindref="compound">CScript</ref> &amp;</type>
+        <definition>CScript&amp; CScriptCompressor::script</definition>
+        <argsstring></argsstring>
+        <name>script</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/compressor.h" line="38" column="1" bodyfile="/home/dev/ds-160209/src/compressor.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_c_script_compressor_1a13afc45e3a0a8a3d634cfafba9b2a040" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CScriptCompressor::IsToKeyID</definition>
+        <argsstring>(CKeyID &amp;hash) const </argsstring>
+        <name>IsToKeyID</name>
+        <param>
+          <type><ref refid="class_c_key_i_d" kindref="compound">CKeyID</ref> &amp;</type>
+          <declname>hash</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>These check for scripts for which a special case with a shorter encoding is defined. They are implemented separately from the <ref refid="class_c_script" kindref="compound">CScript</ref> test, as these test for exact byte sequence correspondences, and are more strict. For example, IsToPubKey also verifies whether the public key is valid (as invalid ones cannot be represented in compressed form). </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/compressor.h" line="47" column="1" bodyfile="/home/dev/ds-160209/src/compressor.cpp" bodystart="11" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_script_compressor_1a6da015ff028139ef52e7376166b04928" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CScriptCompressor::IsToScriptID</definition>
+        <argsstring>(CScriptID &amp;hash) const </argsstring>
+        <name>IsToScriptID</name>
+        <param>
+          <type><ref refid="class_c_script_i_d" kindref="compound">CScriptID</ref> &amp;</type>
+          <declname>hash</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/compressor.h" line="48" column="1" bodyfile="/home/dev/ds-160209/src/compressor.cpp" bodystart="22" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_script_compressor_1a4cec58b09c4ab7873b5884ed690ed0f9" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CScriptCompressor::IsToPubKey</definition>
+        <argsstring>(CPubKey &amp;pubkey) const </argsstring>
+        <name>IsToPubKey</name>
+        <param>
+          <type><ref refid="class_c_pub_key" kindref="compound">CPubKey</ref> &amp;</type>
+          <declname>pubkey</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/compressor.h" line="49" column="1" bodyfile="/home/dev/ds-160209/src/compressor.cpp" bodystart="32" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_script_compressor_1a98cb19f185efc85a395a5332574ef56b" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CScriptCompressor::Compress</definition>
+        <argsstring>(std::vector&lt; unsigned char &gt; &amp;out) const </argsstring>
+        <name>Compress</name>
+        <param>
+          <type>std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>out</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/compressor.h" line="51" column="1" bodyfile="/home/dev/ds-160209/src/compressor.cpp" bodystart="47" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_script_compressor_1a0e4f4c405f4a937c95fd4270db4d7d66" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int CScriptCompressor::GetSpecialSize</definition>
+        <argsstring>(unsigned int nSize) const </argsstring>
+        <name>GetSpecialSize</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>nSize</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/compressor.h" line="52" column="1" bodyfile="/home/dev/ds-160209/src/compressor.cpp" bodystart="78" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_script_compressor_1a1feb663ddab3a45218c7cb02f2a25717" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CScriptCompressor::Decompress</definition>
+        <argsstring>(unsigned int nSize, const std::vector&lt; unsigned char &gt; &amp;out)</argsstring>
+        <name>Decompress</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>nSize</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>out</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/compressor.h" line="53" column="1" bodyfile="/home/dev/ds-160209/src/compressor.cpp" bodystart="87" bodyend="130"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_script_compressor_1aad31afe3d14387b163b5c043e834ca2b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CScriptCompressor::CScriptCompressor</definition>
+        <argsstring>(CScript &amp;scriptIn)</argsstring>
+        <name>CScriptCompressor</name>
+        <param>
+          <type><ref refid="class_c_script" kindref="compound">CScript</ref> &amp;</type>
+          <declname>scriptIn</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/compressor.h" line="55" column="1" bodyfile="/home/dev/ds-160209/src/compressor.h" bodystart="55" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_script_compressor_1a3b3dd61547c3dc2f7ba9325f74b9ec5f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int CScriptCompressor::GetSerializeSize</definition>
+        <argsstring>(int nType, int nVersion) const </argsstring>
+        <name>GetSerializeSize</name>
+        <param>
+          <type>int</type>
+          <declname>nType</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nVersion</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/compressor.h" line="57" column="1" bodyfile="/home/dev/ds-160209/src/compressor.h" bodystart="57" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_script_compressor_1a9d8168293e0a6d0fd8c4aeb63a346525" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Stream</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void CScriptCompressor::Serialize</definition>
+        <argsstring>(Stream &amp;s, int nType, int nVersion) const </argsstring>
+        <name>Serialize</name>
+        <param>
+          <type>Stream &amp;</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nType</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nVersion</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/compressor.h" line="66" column="1" bodyfile="/home/dev/ds-160209/src/compressor.h" bodystart="66" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_script_compressor_1a016fa6e3d2735d95fcf773271da073d5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Stream</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void CScriptCompressor::Unserialize</definition>
+        <argsstring>(Stream &amp;s, int nType, int nVersion)</argsstring>
+        <name>Unserialize</name>
+        <param>
+          <type>Stream &amp;</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nType</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nVersion</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/compressor.h" line="78" column="1" bodyfile="/home/dev/ds-160209/src/compressor.h" bodystart="78" bodyend="90"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Compact serializer for scripts.</para><para>It detects common cases and encodes them much more efficiently. 3 special cases are defined:<itemizedlist>
+<listitem><para>Pay to pubkey hash (encoded as 21 bytes)</para></listitem><listitem><para>Pay to script hash (encoded as 21 bytes)</para></listitem><listitem><para>Pay to pubkey starting with 0x02, 0x03 or 0x04 (encoded as 33 bytes)</para></listitem></itemizedlist>
+</para><para>Other scripts up to 121 bytes require 1 byte + script length. Above that, scripts up to 16505 bytes require 2 bytes + script length. </para>    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/compressor.h" line="28" column="1" bodyfile="/home/dev/ds-160209/src/compressor.h" bodystart="27" bodyend="91"/>
+    <listofallmembers>
+      <member refid="class_c_script_compressor_1a98cb19f185efc85a395a5332574ef56b" prot="protected" virt="non-virtual"><scope>CScriptCompressor</scope><name>Compress</name></member>
+      <member refid="class_c_script_compressor_1aad31afe3d14387b163b5c043e834ca2b" prot="public" virt="non-virtual"><scope>CScriptCompressor</scope><name>CScriptCompressor</name></member>
+      <member refid="class_c_script_compressor_1a1feb663ddab3a45218c7cb02f2a25717" prot="protected" virt="non-virtual"><scope>CScriptCompressor</scope><name>Decompress</name></member>
+      <member refid="class_c_script_compressor_1a3b3dd61547c3dc2f7ba9325f74b9ec5f" prot="public" virt="non-virtual"><scope>CScriptCompressor</scope><name>GetSerializeSize</name></member>
+      <member refid="class_c_script_compressor_1a0e4f4c405f4a937c95fd4270db4d7d66" prot="protected" virt="non-virtual"><scope>CScriptCompressor</scope><name>GetSpecialSize</name></member>
+      <member refid="class_c_script_compressor_1a13afc45e3a0a8a3d634cfafba9b2a040" prot="protected" virt="non-virtual"><scope>CScriptCompressor</scope><name>IsToKeyID</name></member>
+      <member refid="class_c_script_compressor_1a4cec58b09c4ab7873b5884ed690ed0f9" prot="protected" virt="non-virtual"><scope>CScriptCompressor</scope><name>IsToPubKey</name></member>
+      <member refid="class_c_script_compressor_1a6da015ff028139ef52e7376166b04928" prot="protected" virt="non-virtual"><scope>CScriptCompressor</scope><name>IsToScriptID</name></member>
+      <member refid="class_c_script_compressor_1a3f0dc2a613a667745ee24a476ce21337" prot="private" virt="non-virtual"><scope>CScriptCompressor</scope><name>nSpecialScripts</name></member>
+      <member refid="class_c_script_compressor_1afb1c3fb4b9ff4870501705c030cef056" prot="private" virt="non-virtual"><scope>CScriptCompressor</scope><name>script</name></member>
+      <member refid="class_c_script_compressor_1a9d8168293e0a6d0fd8c4aeb63a346525" prot="public" virt="non-virtual"><scope>CScriptCompressor</scope><name>Serialize</name></member>
+      <member refid="class_c_script_compressor_1a016fa6e3d2735d95fcf773271da073d5" prot="public" virt="non-virtual"><scope>CScriptCompressor</scope><name>Unserialize</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

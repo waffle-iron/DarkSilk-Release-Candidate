@@ -1,0 +1,204 @@
+\hypertarget{class_c_tx_in}{}\section{C\+Tx\+In Class Reference}
+\label{class_c_tx_in}\index{C\+Tx\+In@{C\+Tx\+In}}
+
+
+{\ttfamily \#include $<$transaction.\+h$>$}
+
+Inheritance diagram for C\+Tx\+In\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_c_tx_in}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_tx_in_abcf9f5a65b0a016b31912f4cd1f32c73}{C\+Tx\+In} ()
+\item 
+\hyperlink{class_c_tx_in_a243c4c394d5534ed10999b31d025be13}{C\+Tx\+In} (\hyperlink{class_c_out_point}{C\+Out\+Point} prevout\+In, \hyperlink{class_c_script}{C\+Script} script\+Sig\+In=\hyperlink{class_c_script}{C\+Script}(), unsigned int n\+Sequence\+In=std\+::numeric\+\_\+limits$<$ unsigned int $>$\+::max())
+\item 
+\hyperlink{class_c_tx_in_a168382e68612df987e0241740771ab4e}{C\+Tx\+In} (\hyperlink{classuint256}{uint256} hash\+Prev\+Tx, unsigned int n\+Out, \hyperlink{class_c_script}{C\+Script} script\+Sig\+In=\hyperlink{class_c_script}{C\+Script}(), unsigned int n\+Sequence\+In=std\+::numeric\+\_\+limits$<$ unsigned int $>$\+::max())
+\item 
+{\footnotesize template$<$typename Stream , typename Operation $>$ }\\void \hyperlink{class_c_tx_in_a3d23c5264c6d93ecf3cf65dd13c55db3}{Serialization\+Op} (Stream \&s, Operation ser\+\_\+action, int n\+Type, int n\+Version)
+\item 
+bool \hyperlink{class_c_tx_in_aa8110f711e2cdecff45c294ba2ee0a26}{Is\+Final} () const 
+\item 
+std\+::string \hyperlink{class_c_tx_in_aeac9b3abd4b2d81e9ec4401d1383778d}{To\+String} () const 
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_out_point}{C\+Out\+Point} \hyperlink{class_c_tx_in_aed9312051a25380cbd7f123408ab7c20}{prevout}
+\item 
+\hyperlink{class_c_script}{C\+Script} \hyperlink{class_c_tx_in_aba540fd902366210a6ad6cd9a18fe763}{script\+Sig}
+\item 
+\hyperlink{class_c_script}{C\+Script} \hyperlink{class_c_tx_in_a91732c5ffb13520a6989b162ff6683fc}{prev\+Pub\+Key}
+\item 
+unsigned int \hyperlink{class_c_tx_in_aa0dd08a6ecd0a595d9ef4dad020c1ea5}{n\+Sequence}
+\item 
+\hyperlink{class_c_tx_in_aad2fd3fef5ad4ebe7e54c0db0cc34be4}{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_c_tx_in_a1bb37c4cd8573c3014a194e8ce4d8daa}{operator==} (const \hyperlink{class_c_tx_in}{C\+Tx\+In} \&a, const \hyperlink{class_c_tx_in}{C\+Tx\+In} \&b)
+\item 
+bool \hyperlink{class_c_tx_in_a4188c5f0807185c03e80598a7a3ace72}{operator!=} (const \hyperlink{class_c_tx_in}{C\+Tx\+In} \&a, const \hyperlink{class_c_tx_in}{C\+Tx\+In} \&b)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An input of a transaction. It contains the location of the previous transaction\textquotesingle{}s output that it claims and a signature that matches the output\textquotesingle{}s public key. 
+
+Definition at line 94 of file transaction.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_tx_in_abcf9f5a65b0a016b31912f4cd1f32c73}{}\index{C\+Tx\+In@{C\+Tx\+In}!C\+Tx\+In@{C\+Tx\+In}}
+\index{C\+Tx\+In@{C\+Tx\+In}!C\+Tx\+In@{C\+Tx\+In}}
+\subsubsection[{C\+Tx\+In}]{\setlength{\rightskip}{0pt plus 5cm}C\+Tx\+In\+::\+C\+Tx\+In (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_tx_in_abcf9f5a65b0a016b31912f4cd1f32c73}
+
+
+Definition at line 102 of file transaction.\+h.
+
+\hypertarget{class_c_tx_in_a243c4c394d5534ed10999b31d025be13}{}\index{C\+Tx\+In@{C\+Tx\+In}!C\+Tx\+In@{C\+Tx\+In}}
+\index{C\+Tx\+In@{C\+Tx\+In}!C\+Tx\+In@{C\+Tx\+In}}
+\subsubsection[{C\+Tx\+In}]{\setlength{\rightskip}{0pt plus 5cm}C\+Tx\+In\+::\+C\+Tx\+In (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Out\+Point}}]{prevout\+In, }
+\item[{{\bf C\+Script}}]{script\+Sig\+In = {\ttfamily {\bf C\+Script}()}, }
+\item[{unsigned int}]{n\+Sequence\+In = {\ttfamily std\+:\+:numeric\+\_\+limits$<$unsigned~int$>$\+:\+:max()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}\label{class_c_tx_in_a243c4c394d5534ed10999b31d025be13}
+
+
+Definition at line 107 of file transaction.\+h.
+
+\hypertarget{class_c_tx_in_a168382e68612df987e0241740771ab4e}{}\index{C\+Tx\+In@{C\+Tx\+In}!C\+Tx\+In@{C\+Tx\+In}}
+\index{C\+Tx\+In@{C\+Tx\+In}!C\+Tx\+In@{C\+Tx\+In}}
+\subsubsection[{C\+Tx\+In}]{\setlength{\rightskip}{0pt plus 5cm}C\+Tx\+In\+::\+C\+Tx\+In (
+\begin{DoxyParamCaption}
+\item[{{\bf uint256}}]{hash\+Prev\+Tx, }
+\item[{unsigned int}]{n\+Out, }
+\item[{{\bf C\+Script}}]{script\+Sig\+In = {\ttfamily {\bf C\+Script}()}, }
+\item[{unsigned int}]{n\+Sequence\+In = {\ttfamily std\+:\+:numeric\+\_\+limits$<$unsigned~int$>$\+:\+:max()}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}\label{class_c_tx_in_a168382e68612df987e0241740771ab4e}
+
+
+Definition at line 114 of file transaction.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_tx_in_aa8110f711e2cdecff45c294ba2ee0a26}{}\index{C\+Tx\+In@{C\+Tx\+In}!Is\+Final@{Is\+Final}}
+\index{Is\+Final@{Is\+Final}!C\+Tx\+In@{C\+Tx\+In}}
+\subsubsection[{Is\+Final}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Tx\+In\+::\+Is\+Final (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_tx_in_aa8110f711e2cdecff45c294ba2ee0a26}
+
+
+Definition at line 130 of file transaction.\+h.
+
+\hypertarget{class_c_tx_in_a3d23c5264c6d93ecf3cf65dd13c55db3}{}\index{C\+Tx\+In@{C\+Tx\+In}!Serialization\+Op@{Serialization\+Op}}
+\index{Serialization\+Op@{Serialization\+Op}!C\+Tx\+In@{C\+Tx\+In}}
+\subsubsection[{Serialization\+Op}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename Operation $>$ void C\+Tx\+In\+::\+Serialization\+Op (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{Operation}]{ser\+\_\+action, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_tx_in_a3d23c5264c6d93ecf3cf65dd13c55db3}
+
+
+Definition at line 124 of file transaction.\+h.
+
+\hypertarget{class_c_tx_in_aeac9b3abd4b2d81e9ec4401d1383778d}{}\index{C\+Tx\+In@{C\+Tx\+In}!To\+String@{To\+String}}
+\index{To\+String@{To\+String}!C\+Tx\+In@{C\+Tx\+In}}
+\subsubsection[{To\+String}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string C\+Tx\+In\+::\+To\+String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_tx_in_aeac9b3abd4b2d81e9ec4401d1383778d}
+
+
+Definition at line 147 of file transaction.\+h.
+
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{class_c_tx_in_a4188c5f0807185c03e80598a7a3ace72}{}\index{C\+Tx\+In@{C\+Tx\+In}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!C\+Tx\+In@{C\+Tx\+In}}
+\subsubsection[{operator"!=}]{\setlength{\rightskip}{0pt plus 5cm}bool operator!= (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Tx\+In} \&}]{a, }
+\item[{const {\bf C\+Tx\+In} \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\label{class_c_tx_in_a4188c5f0807185c03e80598a7a3ace72}
+
+
+Definition at line 142 of file transaction.\+h.
+
+\hypertarget{class_c_tx_in_a1bb37c4cd8573c3014a194e8ce4d8daa}{}\index{C\+Tx\+In@{C\+Tx\+In}!operator==@{operator==}}
+\index{operator==@{operator==}!C\+Tx\+In@{C\+Tx\+In}}
+\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}bool operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Tx\+In} \&}]{a, }
+\item[{const {\bf C\+Tx\+In} \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\label{class_c_tx_in_a1bb37c4cd8573c3014a194e8ce4d8daa}
+
+
+Definition at line 135 of file transaction.\+h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_c_tx_in_aad2fd3fef5ad4ebe7e54c0db0cc34be4}{}\index{C\+Tx\+In@{C\+Tx\+In}!A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}}
+\index{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}!C\+Tx\+In@{C\+Tx\+In}}
+\subsubsection[{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}]{\setlength{\rightskip}{0pt plus 5cm}C\+Tx\+In\+::\+A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}\label{class_c_tx_in_aad2fd3fef5ad4ebe7e54c0db0cc34be4}
+
+
+Definition at line 121 of file transaction.\+h.
+
+\hypertarget{class_c_tx_in_aa0dd08a6ecd0a595d9ef4dad020c1ea5}{}\index{C\+Tx\+In@{C\+Tx\+In}!n\+Sequence@{n\+Sequence}}
+\index{n\+Sequence@{n\+Sequence}!C\+Tx\+In@{C\+Tx\+In}}
+\subsubsection[{n\+Sequence}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int C\+Tx\+In\+::n\+Sequence}\label{class_c_tx_in_aa0dd08a6ecd0a595d9ef4dad020c1ea5}
+
+
+Definition at line 100 of file transaction.\+h.
+
+\hypertarget{class_c_tx_in_aed9312051a25380cbd7f123408ab7c20}{}\index{C\+Tx\+In@{C\+Tx\+In}!prevout@{prevout}}
+\index{prevout@{prevout}!C\+Tx\+In@{C\+Tx\+In}}
+\subsubsection[{prevout}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Out\+Point} C\+Tx\+In\+::prevout}\label{class_c_tx_in_aed9312051a25380cbd7f123408ab7c20}
+
+
+Definition at line 97 of file transaction.\+h.
+
+\hypertarget{class_c_tx_in_a91732c5ffb13520a6989b162ff6683fc}{}\index{C\+Tx\+In@{C\+Tx\+In}!prev\+Pub\+Key@{prev\+Pub\+Key}}
+\index{prev\+Pub\+Key@{prev\+Pub\+Key}!C\+Tx\+In@{C\+Tx\+In}}
+\subsubsection[{prev\+Pub\+Key}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Script} C\+Tx\+In\+::prev\+Pub\+Key}\label{class_c_tx_in_a91732c5ffb13520a6989b162ff6683fc}
+
+
+Definition at line 99 of file transaction.\+h.
+
+\hypertarget{class_c_tx_in_aba540fd902366210a6ad6cd9a18fe763}{}\index{C\+Tx\+In@{C\+Tx\+In}!script\+Sig@{script\+Sig}}
+\index{script\+Sig@{script\+Sig}!C\+Tx\+In@{C\+Tx\+In}}
+\subsubsection[{script\+Sig}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Script} C\+Tx\+In\+::script\+Sig}\label{class_c_tx_in_aba540fd902366210a6ad6cd9a18fe763}
+
+
+Definition at line 98 of file transaction.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/primitives/\hyperlink{transaction_8h}{transaction.\+h}\end{DoxyCompactItemize}

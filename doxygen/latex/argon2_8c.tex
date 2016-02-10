@@ -1,0 +1,315 @@
+\hypertarget{argon2_8c}{}\section{/home/dev/ds-\/160209/src/crypto/argon2/argon2.c File Reference}
+\label{argon2_8c}\index{/home/dev/ds-\/160209/src/crypto/argon2/argon2.\+c@{/home/dev/ds-\/160209/src/crypto/argon2/argon2.\+c}}
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}argon2.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}encoding.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}core.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{argon2_8c_a46052a12b5448759fa3b5de616cb783a}{argon2\+\_\+core} (\hyperlink{argon2_8h_a43c74dc5ed515632feee9b2e1ff3e09f}{argon2\+\_\+context} $\ast$context, \hyperlink{argon2_8h_af51eac9927f7f234943d076166aacf84}{argon2\+\_\+type} type)
+\item 
+int \hyperlink{argon2_8c_a49e50c1bc7f51a1230d1ce7bbcf18f9f}{argon2\+\_\+hash} (const \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} t\+\_\+cost, const \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} m\+\_\+cost, const \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} parallelism, const void $\ast$pwd, const size\+\_\+t pwdlen, const void $\ast$salt, const size\+\_\+t saltlen, void $\ast$\hyperlink{cache_8cc_a11ecb029164e055f28f4123ce3748862}{hash}, const size\+\_\+t hashlen, char $\ast$encoded, const size\+\_\+t encodedlen, \hyperlink{argon2_8h_af51eac9927f7f234943d076166aacf84}{argon2\+\_\+type} type)
+\item 
+int \hyperlink{argon2_8c_a19ec5f1953d16f093d108038f9775152}{argon2i\+\_\+hash\+\_\+encoded} (const \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} t\+\_\+cost, const \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} m\+\_\+cost, const \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} parallelism, const void $\ast$pwd, const size\+\_\+t pwdlen, const void $\ast$salt, const size\+\_\+t saltlen, const size\+\_\+t hashlen, char $\ast$encoded, const size\+\_\+t encodedlen)
+\item 
+int \hyperlink{argon2_8c_ae8ae3f9f9cc2ddc28864204b3de63ffb}{argon2i\+\_\+hash\+\_\+raw} (const \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} t\+\_\+cost, const \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} m\+\_\+cost, const \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} parallelism, const void $\ast$pwd, const size\+\_\+t pwdlen, const void $\ast$salt, const size\+\_\+t saltlen, void $\ast$\hyperlink{cache_8cc_a11ecb029164e055f28f4123ce3748862}{hash}, const size\+\_\+t hashlen)
+\item 
+int \hyperlink{argon2_8c_a031b576645a1a8feed09dc68be6cce26}{argon2d\+\_\+hash\+\_\+encoded} (const \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} t\+\_\+cost, const \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} m\+\_\+cost, const \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} parallelism, const void $\ast$pwd, const size\+\_\+t pwdlen, const void $\ast$salt, const size\+\_\+t saltlen, const size\+\_\+t hashlen, char $\ast$encoded, const size\+\_\+t encodedlen)
+\item 
+int \hyperlink{argon2_8c_a61eff8ab40b266a9c54af31014935ebd}{argon2d\+\_\+hash\+\_\+raw} (const \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} t\+\_\+cost, const \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} m\+\_\+cost, const \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} parallelism, const void $\ast$pwd, const size\+\_\+t pwdlen, const void $\ast$salt, const size\+\_\+t saltlen, void $\ast$\hyperlink{cache_8cc_a11ecb029164e055f28f4123ce3748862}{hash}, const size\+\_\+t hashlen)
+\item 
+int \hyperlink{argon2_8c_a6dbd567c6037a5c55987312158d5bb0a}{argon2\+\_\+verify} (const char $\ast$encoded, const void $\ast$pwd, const size\+\_\+t pwdlen, \hyperlink{argon2_8h_af51eac9927f7f234943d076166aacf84}{argon2\+\_\+type} type)
+\item 
+int \hyperlink{argon2_8c_aaea586048f3c25a2f03449b5ead4b561}{argon2i\+\_\+verify} (const char $\ast$encoded, const void $\ast$pwd, const size\+\_\+t pwdlen)
+\item 
+int \hyperlink{argon2_8c_ae735d68dccc28d839cbd7043283c065a}{argon2d\+\_\+verify} (const char $\ast$encoded, const void $\ast$pwd, const size\+\_\+t pwdlen)
+\item 
+int \hyperlink{argon2_8c_ac9984f1d62fb3cda555e8555dbfe3129}{argon2d} (\hyperlink{argon2_8h_a43c74dc5ed515632feee9b2e1ff3e09f}{argon2\+\_\+context} $\ast$context)
+\item 
+int \hyperlink{argon2_8c_ac709795078c9fb5384fb20d54c5b957d}{argon2i} (\hyperlink{argon2_8h_a43c74dc5ed515632feee9b2e1ff3e09f}{argon2\+\_\+context} $\ast$context)
+\item 
+int \hyperlink{argon2_8c_a8692a5e365ca1757f8234c0cf9fd87b4}{verify\+\_\+d} (\hyperlink{argon2_8h_a43c74dc5ed515632feee9b2e1ff3e09f}{argon2\+\_\+context} $\ast$context, const char $\ast$\hyperlink{cache_8cc_a11ecb029164e055f28f4123ce3748862}{hash})
+\item 
+int \hyperlink{argon2_8c_ad418420c81b8a399a23fa2cdf39a926b}{verify\+\_\+i} (\hyperlink{argon2_8h_a43c74dc5ed515632feee9b2e1ff3e09f}{argon2\+\_\+context} $\ast$context, const char $\ast$\hyperlink{cache_8cc_a11ecb029164e055f28f4123ce3748862}{hash})
+\item 
+const char $\ast$ \hyperlink{argon2_8c_aecedea424e516e50709e8a7b08ece644}{error\+\_\+message} (int error\+\_\+code)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{argon2_8c_a46052a12b5448759fa3b5de616cb783a}{}\index{argon2.\+c@{argon2.\+c}!argon2\+\_\+core@{argon2\+\_\+core}}
+\index{argon2\+\_\+core@{argon2\+\_\+core}!argon2.\+c@{argon2.\+c}}
+\subsubsection[{argon2\+\_\+core}]{\setlength{\rightskip}{0pt plus 5cm}int argon2\+\_\+core (
+\begin{DoxyParamCaption}
+\item[{{\bf argon2\+\_\+context} $\ast$}]{context, }
+\item[{{\bf argon2\+\_\+type}}]{type}
+\end{DoxyParamCaption}
+)}\label{argon2_8c_a46052a12b5448759fa3b5de616cb783a}
+
+
+Definition at line 109 of file argon2.\+c.
+
+\hypertarget{argon2_8c_a49e50c1bc7f51a1230d1ce7bbcf18f9f}{}\index{argon2.\+c@{argon2.\+c}!argon2\+\_\+hash@{argon2\+\_\+hash}}
+\index{argon2\+\_\+hash@{argon2\+\_\+hash}!argon2.\+c@{argon2.\+c}}
+\subsubsection[{argon2\+\_\+hash}]{\setlength{\rightskip}{0pt plus 5cm}int argon2\+\_\+hash (
+\begin{DoxyParamCaption}
+\item[{const {\bf uint32\+\_\+t}}]{t\+\_\+cost, }
+\item[{const {\bf uint32\+\_\+t}}]{m\+\_\+cost, }
+\item[{const {\bf uint32\+\_\+t}}]{parallelism, }
+\item[{const void $\ast$}]{pwd, }
+\item[{const size\+\_\+t}]{pwdlen, }
+\item[{const void $\ast$}]{salt, }
+\item[{const size\+\_\+t}]{saltlen, }
+\item[{void $\ast$}]{hash, }
+\item[{const size\+\_\+t}]{hashlen, }
+\item[{char $\ast$}]{encoded, }
+\item[{const size\+\_\+t}]{encodedlen, }
+\item[{{\bf argon2\+\_\+type}}]{type}
+\end{DoxyParamCaption}
+)}\label{argon2_8c_a49e50c1bc7f51a1230d1ce7bbcf18f9f}
+
+
+Definition at line 166 of file argon2.\+c.
+
+\hypertarget{argon2_8c_a6dbd567c6037a5c55987312158d5bb0a}{}\index{argon2.\+c@{argon2.\+c}!argon2\+\_\+verify@{argon2\+\_\+verify}}
+\index{argon2\+\_\+verify@{argon2\+\_\+verify}!argon2.\+c@{argon2.\+c}}
+\subsubsection[{argon2\+\_\+verify}]{\setlength{\rightskip}{0pt plus 5cm}int argon2\+\_\+verify (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{encoded, }
+\item[{const void $\ast$}]{pwd, }
+\item[{const size\+\_\+t}]{pwdlen, }
+\item[{{\bf argon2\+\_\+type}}]{type}
+\end{DoxyParamCaption}
+)}\label{argon2_8c_a6dbd567c6037a5c55987312158d5bb0a}
+
+
+Definition at line 289 of file argon2.\+c.
+
+\hypertarget{argon2_8c_ac9984f1d62fb3cda555e8555dbfe3129}{}\index{argon2.\+c@{argon2.\+c}!argon2d@{argon2d}}
+\index{argon2d@{argon2d}!argon2.\+c@{argon2.\+c}}
+\subsubsection[{argon2d}]{\setlength{\rightskip}{0pt plus 5cm}int argon2d (
+\begin{DoxyParamCaption}
+\item[{{\bf argon2\+\_\+context} $\ast$}]{context}
+\end{DoxyParamCaption}
+)}\label{argon2_8c_ac9984f1d62fb3cda555e8555dbfe3129}
+
+
+Definition at line 353 of file argon2.\+c.
+
+\hypertarget{argon2_8c_a031b576645a1a8feed09dc68be6cce26}{}\index{argon2.\+c@{argon2.\+c}!argon2d\+\_\+hash\+\_\+encoded@{argon2d\+\_\+hash\+\_\+encoded}}
+\index{argon2d\+\_\+hash\+\_\+encoded@{argon2d\+\_\+hash\+\_\+encoded}!argon2.\+c@{argon2.\+c}}
+\subsubsection[{argon2d\+\_\+hash\+\_\+encoded}]{\setlength{\rightskip}{0pt plus 5cm}int argon2d\+\_\+hash\+\_\+encoded (
+\begin{DoxyParamCaption}
+\item[{const {\bf uint32\+\_\+t}}]{t\+\_\+cost, }
+\item[{const {\bf uint32\+\_\+t}}]{m\+\_\+cost, }
+\item[{const {\bf uint32\+\_\+t}}]{parallelism, }
+\item[{const void $\ast$}]{pwd, }
+\item[{const size\+\_\+t}]{pwdlen, }
+\item[{const void $\ast$}]{salt, }
+\item[{const size\+\_\+t}]{saltlen, }
+\item[{const size\+\_\+t}]{hashlen, }
+\item[{char $\ast$}]{encoded, }
+\item[{const size\+\_\+t}]{encodedlen}
+\end{DoxyParamCaption}
+)}\label{argon2_8c_a031b576645a1a8feed09dc68be6cce26}
+
+
+Definition at line 260 of file argon2.\+c.
+
+\hypertarget{argon2_8c_a61eff8ab40b266a9c54af31014935ebd}{}\index{argon2.\+c@{argon2.\+c}!argon2d\+\_\+hash\+\_\+raw@{argon2d\+\_\+hash\+\_\+raw}}
+\index{argon2d\+\_\+hash\+\_\+raw@{argon2d\+\_\+hash\+\_\+raw}!argon2.\+c@{argon2.\+c}}
+\subsubsection[{argon2d\+\_\+hash\+\_\+raw}]{\setlength{\rightskip}{0pt plus 5cm}int argon2d\+\_\+hash\+\_\+raw (
+\begin{DoxyParamCaption}
+\item[{const {\bf uint32\+\_\+t}}]{t\+\_\+cost, }
+\item[{const {\bf uint32\+\_\+t}}]{m\+\_\+cost, }
+\item[{const {\bf uint32\+\_\+t}}]{parallelism, }
+\item[{const void $\ast$}]{pwd, }
+\item[{const size\+\_\+t}]{pwdlen, }
+\item[{const void $\ast$}]{salt, }
+\item[{const size\+\_\+t}]{saltlen, }
+\item[{void $\ast$}]{hash, }
+\item[{const size\+\_\+t}]{hashlen}
+\end{DoxyParamCaption}
+)}\label{argon2_8c_a61eff8ab40b266a9c54af31014935ebd}
+
+
+Definition at line 270 of file argon2.\+c.
+
+\hypertarget{argon2_8c_ae735d68dccc28d839cbd7043283c065a}{}\index{argon2.\+c@{argon2.\+c}!argon2d\+\_\+verify@{argon2d\+\_\+verify}}
+\index{argon2d\+\_\+verify@{argon2d\+\_\+verify}!argon2.\+c@{argon2.\+c}}
+\subsubsection[{argon2d\+\_\+verify}]{\setlength{\rightskip}{0pt plus 5cm}int argon2d\+\_\+verify (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{encoded, }
+\item[{const void $\ast$}]{pwd, }
+\item[{const size\+\_\+t}]{pwdlen}
+\end{DoxyParamCaption}
+)}\label{argon2_8c_ae735d68dccc28d839cbd7043283c065a}
+
+
+Definition at line 348 of file argon2.\+c.
+
+\hypertarget{argon2_8c_ac709795078c9fb5384fb20d54c5b957d}{}\index{argon2.\+c@{argon2.\+c}!argon2i@{argon2i}}
+\index{argon2i@{argon2i}!argon2.\+c@{argon2.\+c}}
+\subsubsection[{argon2i}]{\setlength{\rightskip}{0pt plus 5cm}int argon2i (
+\begin{DoxyParamCaption}
+\item[{{\bf argon2\+\_\+context} $\ast$}]{context}
+\end{DoxyParamCaption}
+)}\label{argon2_8c_ac709795078c9fb5384fb20d54c5b957d}
+
+
+Definition at line 355 of file argon2.\+c.
+
+\hypertarget{argon2_8c_a19ec5f1953d16f093d108038f9775152}{}\index{argon2.\+c@{argon2.\+c}!argon2i\+\_\+hash\+\_\+encoded@{argon2i\+\_\+hash\+\_\+encoded}}
+\index{argon2i\+\_\+hash\+\_\+encoded@{argon2i\+\_\+hash\+\_\+encoded}!argon2.\+c@{argon2.\+c}}
+\subsubsection[{argon2i\+\_\+hash\+\_\+encoded}]{\setlength{\rightskip}{0pt plus 5cm}int argon2i\+\_\+hash\+\_\+encoded (
+\begin{DoxyParamCaption}
+\item[{const {\bf uint32\+\_\+t}}]{t\+\_\+cost, }
+\item[{const {\bf uint32\+\_\+t}}]{m\+\_\+cost, }
+\item[{const {\bf uint32\+\_\+t}}]{parallelism, }
+\item[{const void $\ast$}]{pwd, }
+\item[{const size\+\_\+t}]{pwdlen, }
+\item[{const void $\ast$}]{salt, }
+\item[{const size\+\_\+t}]{saltlen, }
+\item[{const size\+\_\+t}]{hashlen, }
+\item[{char $\ast$}]{encoded, }
+\item[{const size\+\_\+t}]{encodedlen}
+\end{DoxyParamCaption}
+)}\label{argon2_8c_a19ec5f1953d16f093d108038f9775152}
+Hashes a password with Argon2i, producing an encoded hash 
+\begin{DoxyParams}{Parameters}
+{\em t\+\_\+cost} & Number of iterations \\
+\hline
+{\em m\+\_\+cost} & Sets memory usage to m\+\_\+cost kibibytes \\
+\hline
+{\em parallelism} & Number of threads and compute lanes \\
+\hline
+{\em pwd} & Pointer to password \\
+\hline
+{\em pwdlen} & Password size in bytes \\
+\hline
+{\em salt} & Pointer to salt \\
+\hline
+{\em saltlen} & Salt size in bytes \\
+\hline
+{\em hashlen} & Desired length of the hash in bytes \\
+\hline
+{\em encoded} & Buffer where to write the encoded hash \\
+\hline
+{\em encodedlen} & Size of the buffer (thus max size of the encoded hash) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+Different parallelism levels will give different results 
+
+Returns A\+R\+G\+O\+N2\+\_\+\+O\+K if successful 
+\end{DoxyPrecond}
+
+
+Definition at line 241 of file argon2.\+c.
+
+\hypertarget{argon2_8c_ae8ae3f9f9cc2ddc28864204b3de63ffb}{}\index{argon2.\+c@{argon2.\+c}!argon2i\+\_\+hash\+\_\+raw@{argon2i\+\_\+hash\+\_\+raw}}
+\index{argon2i\+\_\+hash\+\_\+raw@{argon2i\+\_\+hash\+\_\+raw}!argon2.\+c@{argon2.\+c}}
+\subsubsection[{argon2i\+\_\+hash\+\_\+raw}]{\setlength{\rightskip}{0pt plus 5cm}int argon2i\+\_\+hash\+\_\+raw (
+\begin{DoxyParamCaption}
+\item[{const {\bf uint32\+\_\+t}}]{t\+\_\+cost, }
+\item[{const {\bf uint32\+\_\+t}}]{m\+\_\+cost, }
+\item[{const {\bf uint32\+\_\+t}}]{parallelism, }
+\item[{const void $\ast$}]{pwd, }
+\item[{const size\+\_\+t}]{pwdlen, }
+\item[{const void $\ast$}]{salt, }
+\item[{const size\+\_\+t}]{saltlen, }
+\item[{void $\ast$}]{hash, }
+\item[{const size\+\_\+t}]{hashlen}
+\end{DoxyParamCaption}
+)}\label{argon2_8c_ae8ae3f9f9cc2ddc28864204b3de63ffb}
+Hashes a password with Argon2i, producing a raw hash 
+\begin{DoxyParams}{Parameters}
+{\em t\+\_\+cost} & Number of iterations \\
+\hline
+{\em m\+\_\+cost} & Sets memory usage to m\+\_\+cost kibibytes \\
+\hline
+{\em parallelism} & Number of threads and compute lanes \\
+\hline
+{\em pwd} & Pointer to password \\
+\hline
+{\em pwdlen} & Password size in bytes \\
+\hline
+{\em salt} & Pointer to salt \\
+\hline
+{\em saltlen} & Salt size in bytes \\
+\hline
+{\em hash} & Buffer where to write the raw hash \\
+\hline
+{\em hashlen} & Desired length of the hash in bytes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+Different parallelism levels will give different results 
+
+Returns A\+R\+G\+O\+N2\+\_\+\+O\+K if successful 
+\end{DoxyPrecond}
+
+
+Definition at line 251 of file argon2.\+c.
+
+\hypertarget{argon2_8c_aaea586048f3c25a2f03449b5ead4b561}{}\index{argon2.\+c@{argon2.\+c}!argon2i\+\_\+verify@{argon2i\+\_\+verify}}
+\index{argon2i\+\_\+verify@{argon2i\+\_\+verify}!argon2.\+c@{argon2.\+c}}
+\subsubsection[{argon2i\+\_\+verify}]{\setlength{\rightskip}{0pt plus 5cm}int argon2i\+\_\+verify (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{encoded, }
+\item[{const void $\ast$}]{pwd, }
+\item[{const size\+\_\+t}]{pwdlen}
+\end{DoxyParamCaption}
+)}\label{argon2_8c_aaea586048f3c25a2f03449b5ead4b561}
+Verifies a password against an encoded string 
+\begin{DoxyParams}{Parameters}
+{\em encoded} & String encoding parameters, salt, hash \\
+\hline
+{\em pwd} & Pointer to password \\
+\hline
+\end{DoxyParams}
+\begin{DoxyPrecond}{Precondition}
+Returns A\+R\+G\+O\+N2\+\_\+\+O\+K if successful 
+\end{DoxyPrecond}
+
+
+Definition at line 343 of file argon2.\+c.
+
+\hypertarget{argon2_8c_aecedea424e516e50709e8a7b08ece644}{}\index{argon2.\+c@{argon2.\+c}!error\+\_\+message@{error\+\_\+message}}
+\index{error\+\_\+message@{error\+\_\+message}!argon2.\+c@{argon2.\+c}}
+\subsubsection[{error\+\_\+message}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ error\+\_\+message (
+\begin{DoxyParamCaption}
+\item[{int}]{error\+\_\+code}
+\end{DoxyParamCaption}
+)}\label{argon2_8c_aecedea424e516e50709e8a7b08ece644}
+
+
+Definition at line 388 of file argon2.\+c.
+
+\hypertarget{argon2_8c_a8692a5e365ca1757f8234c0cf9fd87b4}{}\index{argon2.\+c@{argon2.\+c}!verify\+\_\+d@{verify\+\_\+d}}
+\index{verify\+\_\+d@{verify\+\_\+d}!argon2.\+c@{argon2.\+c}}
+\subsubsection[{verify\+\_\+d}]{\setlength{\rightskip}{0pt plus 5cm}int verify\+\_\+d (
+\begin{DoxyParamCaption}
+\item[{{\bf argon2\+\_\+context} $\ast$}]{context, }
+\item[{const char $\ast$}]{hash}
+\end{DoxyParamCaption}
+)}\label{argon2_8c_a8692a5e365ca1757f8234c0cf9fd87b4}
+
+
+Definition at line 357 of file argon2.\+c.
+
+\hypertarget{argon2_8c_ad418420c81b8a399a23fa2cdf39a926b}{}\index{argon2.\+c@{argon2.\+c}!verify\+\_\+i@{verify\+\_\+i}}
+\index{verify\+\_\+i@{verify\+\_\+i}!argon2.\+c@{argon2.\+c}}
+\subsubsection[{verify\+\_\+i}]{\setlength{\rightskip}{0pt plus 5cm}int verify\+\_\+i (
+\begin{DoxyParamCaption}
+\item[{{\bf argon2\+\_\+context} $\ast$}]{context, }
+\item[{const char $\ast$}]{hash}
+\end{DoxyParamCaption}
+)}\label{argon2_8c_ad418420c81b8a399a23fa2cdf39a926b}
+
+
+Definition at line 372 of file argon2.\+c.
+

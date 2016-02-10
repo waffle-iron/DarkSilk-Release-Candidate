@@ -1,0 +1,119 @@
+.TH "md__home_dev_ds-160209_src_secp256k1__r_e_a_d_m_e" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+md__home_dev_ds-160209_src_secp256k1__r_e_a_d_m_e \- libsecp256k1 
+\fC![Build Status](https://travis-ci\&.org/bitcoin/secp256k1\&.svg?branch=master)\fP
+.PP
+Optimized C library for EC operations on curve secp256k1\&.
+.PP
+This library is a work in progress and is being used to research best practices\&. Use at your own risk\&.
+.PP
+Features:
+.IP "\(bu" 2
+secp256k1 ECDSA signing/verification and key generation\&.
+.IP "\(bu" 2
+Adding/multiplying private/public keys\&.
+.IP "\(bu" 2
+Serialization/parsing of private keys, public keys, signatures\&.
+.IP "\(bu" 2
+Constant time, constant memory access signing and pubkey generation\&.
+.IP "\(bu" 2
+Derandomized DSA (via RFC6979 or with a caller provided function\&.)
+.IP "\(bu" 2
+Very efficient implementation\&.
+.PP
+.PP
+.SS "Implementation details "
+.PP
+.IP "\(bu" 2
+General
+.IP "  \(bu" 4
+No runtime heap allocation\&.
+.IP "  \(bu" 4
+Extensive testing infrastructure\&.
+.IP "  \(bu" 4
+Structured to facilitate review and analysis\&.
+.IP "  \(bu" 4
+Intended to be portable to any system with a C89 compiler and uint64_t support\&.
+.IP "  \(bu" 4
+Expose only higher level interfaces to minimize the API surface and improve application security\&. ('Be difficult to use insecurely\&.')
+.PP
+
+.IP "\(bu" 2
+Field operations
+.IP "  \(bu" 4
+Optimized implementation of arithmetic modulo the curve's field size (2^256 - 0x1000003D1)\&.
+.IP "    \(bu" 6
+Using 5 52-bit limbs (including hand-optimized assembly for x86_64, by Diederik Huys)\&.
+.IP "    \(bu" 6
+Using 10 26-bit limbs\&.
+.PP
+
+.IP "  \(bu" 4
+Field inverses and square roots using a sliding window over blocks of 1s (by Peter Dettman)\&.
+.PP
+
+.IP "\(bu" 2
+Scalar operations
+.IP "  \(bu" 4
+Optimized implementation without data-dependent branches of arithmetic modulo the curve's order\&.
+.IP "    \(bu" 6
+Using 4 64-bit limbs (relying on __int128 support in the compiler)\&.
+.IP "    \(bu" 6
+Using 8 32-bit limbs\&.
+.PP
+
+.PP
+
+.IP "\(bu" 2
+Group operations
+.IP "  \(bu" 4
+Point addition formula specifically simplified for the curve equation (y^2 = x^3 + 7)\&.
+.IP "  \(bu" 4
+Use addition between points in Jacobian and affine coordinates where possible\&.
+.IP "  \(bu" 4
+Use a unified addition/doubling formula where necessary to avoid data-dependent branches\&.
+.IP "  \(bu" 4
+Point/x comparison without a field inversion by comparison in the Jacobian coordinate space\&.
+.PP
+
+.IP "\(bu" 2
+Point multiplication for verification (a*P + b*G)\&.
+.IP "  \(bu" 4
+Use wNAF notation for point multiplicands\&.
+.IP "  \(bu" 4
+Use a much larger window for multiples of G, using precomputed multiples\&.
+.IP "  \(bu" 4
+Use Shamir's trick to do the multiplication with the public key and the generator simultaneously\&.
+.IP "  \(bu" 4
+Optionally (off by default) use secp256k1's efficiently-computable endomorphism to split the P multiplicand into 2 half-sized ones\&.
+.PP
+
+.IP "\(bu" 2
+Point multiplication for signing
+.IP "  \(bu" 4
+Use a precomputed table of multiples of powers of 16 multiplied with the generator, so general multiplication becomes a series of additions\&.
+.IP "  \(bu" 4
+Access the table with branch-free conditional moves so memory access is uniform\&.
+.IP "  \(bu" 4
+No data-dependent branches
+.IP "  \(bu" 4
+The precomputed tables add and eventually subtract points for which no known scalar (private key) is known, preventing even an attacker with control over the private key used to control the data internally\&.
+.PP
+
+.PP
+.PP
+.SS "Build steps "
+.PP
+libsecp256k1 is built using autotools: 
+.PP
+.nf
+$ ./autogen.sh
+$ ./configure
+$ make
+$ ./tests
+$ sudo make install  # optional
+.fi
+.PP
+ 

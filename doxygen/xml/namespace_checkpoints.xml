@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="namespace_checkpoints" kind="namespace" language="C++">
+    <compoundname>Checkpoints</compoundname>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="namespace_checkpoints_1a996cca530c4568a2eb4516e8f351b9a2" prot="public" static="no">
+        <type>std::map&lt; int, <ref refid="classuint256" kindref="compound">uint256</ref> &gt;</type>
+        <definition>typedef std::map&lt;int, uint256&gt; Checkpoints::MapCheckpoints</definition>
+        <argsstring></argsstring>
+        <name>MapCheckpoints</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/checkpoints.cpp" line="20" column="1" bodyfile="/home/dev/ds-160209/src/checkpoints.cpp" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespace_checkpoints_1aa1627e6513521f57d949be771ef9c8ae" prot="public" static="yes" mutable="no">
+        <type><ref refid="namespace_checkpoints_1a996cca530c4568a2eb4516e8f351b9a2" kindref="member">MapCheckpoints</ref></type>
+        <definition>MapCheckpoints Checkpoints::mapCheckpoints</definition>
+        <argsstring></argsstring>
+        <name>mapCheckpoints</name>
+        <initializer>=
+        boost::assign::map_list_of
+        ( 0, <ref refid="classuint256" kindref="compound">uint256</ref>(&quot;0xdcc5e22e275eff273799a4c06493f8364316d032813c22845602f05ff13d7ec7&quot;) )</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/checkpoints.cpp" line="29" column="1" bodyfile="/home/dev/ds-160209/src/checkpoints.cpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespace_checkpoints_1adbd2868ceb026e5abc618490d0d4c1d9" prot="public" static="yes" mutable="no">
+        <type><ref refid="namespace_checkpoints_1a996cca530c4568a2eb4516e8f351b9a2" kindref="member">MapCheckpoints</ref></type>
+        <definition>MapCheckpoints Checkpoints::mapCheckpointsTestnet</definition>
+        <argsstring></argsstring>
+        <name>mapCheckpointsTestnet</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/checkpoints.cpp" line="35" column="1" bodyfile="/home/dev/ds-160209/src/checkpoints.cpp" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespace_checkpoints_1a896b098d769129c8e84c511f838baaa7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Checkpoints::CheckHardened</definition>
+        <argsstring>(int nHeight, const uint256 &amp;hash)</argsstring>
+        <name>CheckHardened</name>
+        <param>
+          <type>int</type>
+          <declname>nHeight</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuint256" kindref="compound">uint256</ref> &amp;</type>
+          <declname>hash</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/checkpoints.cpp" line="37" column="1" bodyfile="/home/dev/ds-160209/src/checkpoints.cpp" bodystart="37" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_checkpoints_1ac4dc0a0ba00009be52fee3eef694c2c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Checkpoints::GetTotalBlocksEstimate</definition>
+        <argsstring>()</argsstring>
+        <name>GetTotalBlocksEstimate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/checkpoints.cpp" line="46" column="1" bodyfile="/home/dev/ds-160209/src/checkpoints.cpp" bodystart="46" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_checkpoints_1ad91375160e77c30d6e6ccbfe1c682195" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_c_block_index" kindref="compound">CBlockIndex</ref> *</type>
+        <definition>CBlockIndex * Checkpoints::GetLastCheckpoint</definition>
+        <argsstring>(const std::map&lt; uint256, CBlockIndex * &gt; &amp;mapBlockIndex)</argsstring>
+        <name>GetLastCheckpoint</name>
+        <param>
+          <type>const std::map&lt; <ref refid="classuint256" kindref="compound">uint256</ref>, <ref refid="class_c_block_index" kindref="compound">CBlockIndex</ref> * &gt; &amp;</type>
+          <declname>mapBlockIndex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/checkpoints.cpp" line="55" column="1" bodyfile="/home/dev/ds-160209/src/checkpoints.cpp" bodystart="55" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_checkpoints_1aa1915d9b1ed1c988b8477c3cc7ed1416" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="class_c_block_index" kindref="compound">CBlockIndex</ref> *</type>
+        <definition>const CBlockIndex * Checkpoints::AutoSelectSyncCheckpoint</definition>
+        <argsstring>()</argsstring>
+        <name>AutoSelectSyncCheckpoint</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/checkpoints.cpp" line="70" column="1" bodyfile="/home/dev/ds-160209/src/checkpoints.cpp" bodystart="70" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="namespace_checkpoints_1ab698c7033e4afdd7f7173bbe22b7c2c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Checkpoints::CheckSync</definition>
+        <argsstring>(int nHeight)</argsstring>
+        <name>CheckSync</name>
+        <param>
+          <type>int</type>
+          <declname>nHeight</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/checkpoints.cpp" line="80" column="1" bodyfile="/home/dev/ds-160209/src/checkpoints.cpp" bodystart="80" bodyend="87"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Block-chain checkpoints are compiled-in sanity checks. They are updated every release or three. </para>    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/checkpoints.cpp" line="18" column="1"/>
+  </compounddef>
+</doxygen>

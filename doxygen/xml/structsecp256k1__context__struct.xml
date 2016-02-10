@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="structsecp256k1__context__struct" kind="struct" language="C++" prot="public">
+    <compoundname>secp256k1_context_struct</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structsecp256k1__context__struct_1ab6a825dd98cab724df0f0060cf515eab" prot="public" static="no" mutable="no">
+        <type><ref refid="structsecp256k1__ecmult__context" kindref="compound">secp256k1_ecmult_context</ref></type>
+        <definition>secp256k1_ecmult_context secp256k1_context_struct::ecmult_ctx</definition>
+        <argsstring></argsstring>
+        <name>ecmult_ctx</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/secp256k1.c" line="54" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/secp256k1.c" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structsecp256k1__context__struct_1aacc2071a68f9c5a6c05eb783f523b9eb" prot="public" static="no" mutable="no">
+        <type><ref refid="structsecp256k1__ecmult__gen__context" kindref="compound">secp256k1_ecmult_gen_context</ref></type>
+        <definition>secp256k1_ecmult_gen_context secp256k1_context_struct::ecmult_gen_ctx</definition>
+        <argsstring></argsstring>
+        <name>ecmult_gen_ctx</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/secp256k1.c" line="55" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/secp256k1.c" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structsecp256k1__context__struct_1a6f73572b18e62b306c5699e9e1470ab5" prot="public" static="no" mutable="no">
+        <type><ref refid="structsecp256k1__callback" kindref="compound">secp256k1_callback</ref></type>
+        <definition>secp256k1_callback secp256k1_context_struct::illegal_callback</definition>
+        <argsstring></argsstring>
+        <name>illegal_callback</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/secp256k1.c" line="56" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/secp256k1.c" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structsecp256k1__context__struct_1aa34a996f869676899e8625adfb6c6f1d" prot="public" static="no" mutable="no">
+        <type><ref refid="structsecp256k1__callback" kindref="compound">secp256k1_callback</ref></type>
+        <definition>secp256k1_callback secp256k1_context_struct::error_callback</definition>
+        <argsstring></argsstring>
+        <name>error_callback</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/secp256k1.c" line="57" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/secp256k1.c" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1613">
+        <label>secp256k1_callback</label>
+        <link refid="structsecp256k1__callback"/>
+      </node>
+      <node id="1608">
+        <label>secp256k1_scalar</label>
+        <link refid="structsecp256k1__scalar"/>
+      </node>
+      <node id="1614">
+        <label>secp256k1_ecmult_context</label>
+        <link refid="structsecp256k1__ecmult__context"/>
+        <childnode refid="1611" relation="usage">
+          <edgelabel>pre_g</edgelabel>
+        </childnode>
+      </node>
+      <node id="1606">
+        <label>secp256k1_context_struct</label>
+        <link refid="structsecp256k1__context__struct"/>
+        <childnode refid="1607" relation="usage">
+          <edgelabel>ecmult_gen_ctx</edgelabel>
+        </childnode>
+        <childnode refid="1613" relation="usage">
+          <edgelabel>illegal_callback</edgelabel>
+          <edgelabel>error_callback</edgelabel>
+        </childnode>
+        <childnode refid="1614" relation="usage">
+          <edgelabel>ecmult_ctx</edgelabel>
+        </childnode>
+      </node>
+      <node id="1607">
+        <label>secp256k1_ecmult_gen_context</label>
+        <link refid="structsecp256k1__ecmult__gen__context"/>
+        <childnode refid="1608" relation="usage">
+          <edgelabel>blind</edgelabel>
+        </childnode>
+        <childnode refid="1609" relation="usage">
+          <edgelabel>initial</edgelabel>
+        </childnode>
+        <childnode refid="1611" relation="usage">
+          <edgelabel>prec</edgelabel>
+        </childnode>
+      </node>
+      <node id="1611">
+        <label>secp256k1_ge_storage</label>
+        <link refid="structsecp256k1__ge__storage"/>
+        <childnode refid="1612" relation="usage">
+          <edgelabel>x</edgelabel>
+          <edgelabel>y</edgelabel>
+        </childnode>
+      </node>
+      <node id="1609">
+        <label>secp256k1_gej</label>
+        <link refid="structsecp256k1__gej"/>
+        <childnode refid="1610" relation="usage">
+          <edgelabel>x</edgelabel>
+          <edgelabel>y</edgelabel>
+          <edgelabel>z</edgelabel>
+        </childnode>
+      </node>
+      <node id="1610">
+        <label>secp256k1_fe</label>
+        <link refid="structsecp256k1__fe"/>
+      </node>
+      <node id="1612">
+        <label>secp256k1_fe_storage</label>
+        <link refid="structsecp256k1__fe__storage"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/dev/ds-160209/src/secp256k1/src/secp256k1.c" line="53" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/secp256k1.c" bodystart="53" bodyend="58"/>
+    <listofallmembers>
+      <member refid="structsecp256k1__context__struct_1ab6a825dd98cab724df0f0060cf515eab" prot="public" virt="non-virtual"><scope>secp256k1_context_struct</scope><name>ecmult_ctx</name></member>
+      <member refid="structsecp256k1__context__struct_1aacc2071a68f9c5a6c05eb783f523b9eb" prot="public" virt="non-virtual"><scope>secp256k1_context_struct</scope><name>ecmult_gen_ctx</name></member>
+      <member refid="structsecp256k1__context__struct_1aa34a996f869676899e8625adfb6c6f1d" prot="public" virt="non-virtual"><scope>secp256k1_context_struct</scope><name>error_callback</name></member>
+      <member refid="structsecp256k1__context__struct_1a6f73572b18e62b306c5699e9e1470ab5" prot="public" virt="non-virtual"><scope>secp256k1_context_struct</scope><name>illegal_callback</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,101 @@
+\hypertarget{ecmult__impl_8h}{}\section{/home/dev/ds-\/160209/src/secp256k1/src/ecmult\+\_\+impl.h File Reference}
+\label{ecmult__impl_8h}\index{/home/dev/ds-\/160209/src/secp256k1/src/ecmult\+\_\+impl.\+h@{/home/dev/ds-\/160209/src/secp256k1/src/ecmult\+\_\+impl.\+h}}
+{\ttfamily \#include \char`\"{}group.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}scalar.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}ecmult.\+h\char`\"{}}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{ecmult__impl_8h_a6216c81c6adbb8796c55fe0c8d3b6718}{W\+I\+N\+D\+O\+W\+\_\+\+A}~5
+\item 
+\#define \hyperlink{ecmult__impl_8h_afe951ac62b5b06848cb4e6f4dbc69616}{W\+I\+N\+D\+O\+W\+\_\+\+G}~16
+\item 
+\#define \hyperlink{ecmult__impl_8h_a97c6c6e5aa98f202eec77c4c931e02f1}{E\+C\+M\+U\+L\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+S\+I\+Z\+E}(w)~(1 $<$$<$ ((w)-\/2))
+\item 
+\#define \hyperlink{ecmult__impl_8h_afe9218069a15709b99aacd7af0ba2636}{E\+C\+M\+U\+L\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+G\+E\+T\+\_\+\+G\+E}(r,  pre,  n,  w)
+\item 
+\#define \hyperlink{ecmult__impl_8h_a45d4a36e1a06a0214837d20789239f8b}{E\+C\+M\+U\+L\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+G\+E\+T\+\_\+\+G\+E\+\_\+\+S\+T\+O\+R\+A\+G\+E}(r,  pre,  n,  w)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{ecmult__impl_8h_afe9218069a15709b99aacd7af0ba2636}{}\index{ecmult\+\_\+impl.\+h@{ecmult\+\_\+impl.\+h}!E\+C\+M\+U\+L\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+G\+E\+T\+\_\+\+G\+E@{E\+C\+M\+U\+L\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+G\+E\+T\+\_\+\+G\+E}}
+\index{E\+C\+M\+U\+L\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+G\+E\+T\+\_\+\+G\+E@{E\+C\+M\+U\+L\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+G\+E\+T\+\_\+\+G\+E}!ecmult\+\_\+impl.\+h@{ecmult\+\_\+impl.\+h}}
+\subsubsection[{E\+C\+M\+U\+L\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+G\+E\+T\+\_\+\+G\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+C\+M\+U\+L\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+G\+E\+T\+\_\+\+G\+E(
+\begin{DoxyParamCaption}
+\item[{}]{r, }
+\item[{}]{pre, }
+\item[{}]{n, }
+\item[{}]{w}
+\end{DoxyParamCaption}
+)}\label{ecmult__impl_8h_afe9218069a15709b99aacd7af0ba2636}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \hyperlink{secp256k1_2src_2util_8h_aca8ac5ae73fd966db106de59160a178b}{\(\backslash\)}
+\hyperlink{secp256k1_2src_2util_8h_aca8ac5ae73fd966db106de59160a178b}{    VERIFY\_CHECK}(((n) & 1) == 1); \hyperlink{secp256k1_2src_2util_8h_aca8ac5ae73fd966db106de59160a178b}{\(\backslash\)}
+\hyperlink{secp256k1_2src_2util_8h_aca8ac5ae73fd966db106de59160a178b}{    VERIFY\_CHECK}((n) >= -((1 << ((w)-1)) - 1)); \hyperlink{secp256k1_2src_2util_8h_aca8ac5ae73fd966db106de59160a178b}{\(\backslash\)}
+\hyperlink{secp256k1_2src_2util_8h_aca8ac5ae73fd966db106de59160a178b}{    VERIFY\_CHECK}((n) <=  ((1 << ((w)-1)) - 1)); \(\backslash\)
+    if ((n) > 0) \{ \(\backslash\)
+        *(r) = (pre)[((n)-1)/2]; \(\backslash\)
+    \} \textcolor{keywordflow}{else} \{ \(\backslash\)
+        secp256k1\_ge\_neg((r), &(pre)[(-(n)-1)/2]); \(\backslash\)
+    \} \(\backslash\)
+\} \textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+The following two macro retrieves a particular odd multiple from a table of precomputed multiples. 
+
+Definition at line 117 of file ecmult\+\_\+impl.\+h.
+
+\hypertarget{ecmult__impl_8h_a45d4a36e1a06a0214837d20789239f8b}{}\index{ecmult\+\_\+impl.\+h@{ecmult\+\_\+impl.\+h}!E\+C\+M\+U\+L\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+G\+E\+T\+\_\+\+G\+E\+\_\+\+S\+T\+O\+R\+A\+G\+E@{E\+C\+M\+U\+L\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+G\+E\+T\+\_\+\+G\+E\+\_\+\+S\+T\+O\+R\+A\+G\+E}}
+\index{E\+C\+M\+U\+L\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+G\+E\+T\+\_\+\+G\+E\+\_\+\+S\+T\+O\+R\+A\+G\+E@{E\+C\+M\+U\+L\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+G\+E\+T\+\_\+\+G\+E\+\_\+\+S\+T\+O\+R\+A\+G\+E}!ecmult\+\_\+impl.\+h@{ecmult\+\_\+impl.\+h}}
+\subsubsection[{E\+C\+M\+U\+L\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+G\+E\+T\+\_\+\+G\+E\+\_\+\+S\+T\+O\+R\+A\+G\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+C\+M\+U\+L\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+G\+E\+T\+\_\+\+G\+E\+\_\+\+S\+T\+O\+R\+A\+G\+E(
+\begin{DoxyParamCaption}
+\item[{}]{r, }
+\item[{}]{pre, }
+\item[{}]{n, }
+\item[{}]{w}
+\end{DoxyParamCaption}
+)}\label{ecmult__impl_8h_a45d4a36e1a06a0214837d20789239f8b}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \hyperlink{secp256k1_2src_2util_8h_aca8ac5ae73fd966db106de59160a178b}{\(\backslash\)}
+\hyperlink{secp256k1_2src_2util_8h_aca8ac5ae73fd966db106de59160a178b}{    VERIFY\_CHECK}(((n) & 1) == 1); \hyperlink{secp256k1_2src_2util_8h_aca8ac5ae73fd966db106de59160a178b}{\(\backslash\)}
+\hyperlink{secp256k1_2src_2util_8h_aca8ac5ae73fd966db106de59160a178b}{    VERIFY\_CHECK}((n) >= -((1 << ((w)-1)) - 1)); \hyperlink{secp256k1_2src_2util_8h_aca8ac5ae73fd966db106de59160a178b}{\(\backslash\)}
+\hyperlink{secp256k1_2src_2util_8h_aca8ac5ae73fd966db106de59160a178b}{    VERIFY\_CHECK}((n) <=  ((1 << ((w)-1)) - 1)); \(\backslash\)
+    if ((n) > 0) \{ \(\backslash\)
+        secp256k1\_ge\_from\_storage((r), &(pre)[((n)-1)/2]); \(\backslash\)
+    \} \textcolor{keywordflow}{else} \{ \(\backslash\)
+        secp256k1\_ge\_from\_storage((r), &(pre)[(-(n)-1)/2]); \(\backslash\)
+        secp256k1\_ge\_neg((r), (r)); \(\backslash\)
+    \} \(\backslash\)
+\} \textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+
+
+Definition at line 128 of file ecmult\+\_\+impl.\+h.
+
+\hypertarget{ecmult__impl_8h_a97c6c6e5aa98f202eec77c4c931e02f1}{}\index{ecmult\+\_\+impl.\+h@{ecmult\+\_\+impl.\+h}!E\+C\+M\+U\+L\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+S\+I\+Z\+E@{E\+C\+M\+U\+L\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+S\+I\+Z\+E}}
+\index{E\+C\+M\+U\+L\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+S\+I\+Z\+E@{E\+C\+M\+U\+L\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+S\+I\+Z\+E}!ecmult\+\_\+impl.\+h@{ecmult\+\_\+impl.\+h}}
+\subsubsection[{E\+C\+M\+U\+L\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+S\+I\+Z\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+C\+M\+U\+L\+T\+\_\+\+T\+A\+B\+L\+E\+\_\+\+S\+I\+Z\+E(
+\begin{DoxyParamCaption}
+\item[{}]{w}
+\end{DoxyParamCaption}
+)~(1 $<$$<$ ((w)-\/2))}\label{ecmult__impl_8h_a97c6c6e5aa98f202eec77c4c931e02f1}
+The number of entries a table with precomputed multiples needs to have. 
+
+Definition at line 28 of file ecmult\+\_\+impl.\+h.
+
+\hypertarget{ecmult__impl_8h_a6216c81c6adbb8796c55fe0c8d3b6718}{}\index{ecmult\+\_\+impl.\+h@{ecmult\+\_\+impl.\+h}!W\+I\+N\+D\+O\+W\+\_\+\+A@{W\+I\+N\+D\+O\+W\+\_\+\+A}}
+\index{W\+I\+N\+D\+O\+W\+\_\+\+A@{W\+I\+N\+D\+O\+W\+\_\+\+A}!ecmult\+\_\+impl.\+h@{ecmult\+\_\+impl.\+h}}
+\subsubsection[{W\+I\+N\+D\+O\+W\+\_\+\+A}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+I\+N\+D\+O\+W\+\_\+\+A~5}\label{ecmult__impl_8h_a6216c81c6adbb8796c55fe0c8d3b6718}
+
+
+Definition at line 15 of file ecmult\+\_\+impl.\+h.
+
+\hypertarget{ecmult__impl_8h_afe951ac62b5b06848cb4e6f4dbc69616}{}\index{ecmult\+\_\+impl.\+h@{ecmult\+\_\+impl.\+h}!W\+I\+N\+D\+O\+W\+\_\+\+G@{W\+I\+N\+D\+O\+W\+\_\+\+G}}
+\index{W\+I\+N\+D\+O\+W\+\_\+\+G@{W\+I\+N\+D\+O\+W\+\_\+\+G}!ecmult\+\_\+impl.\+h@{ecmult\+\_\+impl.\+h}}
+\subsubsection[{W\+I\+N\+D\+O\+W\+\_\+\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+I\+N\+D\+O\+W\+\_\+\+G~16}\label{ecmult__impl_8h_afe951ac62b5b06848cb4e6f4dbc69616}
+larger numbers may result in slightly better performance, at the cost of exponentially larger precomputed tables. One table for window size 16\+: 1.\+375 Mi\+B. 
+
+Definition at line 24 of file ecmult\+\_\+impl.\+h.
+

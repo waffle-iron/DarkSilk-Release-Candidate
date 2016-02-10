@@ -1,0 +1,648 @@
+\hypertarget{smessage_8cpp}{}\section{/home/dev/ds-\/160209/src/smessage.cpp File Reference}
+\label{smessage_8cpp}\index{/home/dev/ds-\/160209/src/smessage.\+cpp@{/home/dev/ds-\/160209/src/smessage.\+cpp}}
+{\ttfamily \#include \char`\"{}smessage.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include $<$time.\+h$>$}\\*
+{\ttfamily \#include $<$map$>$}\\*
+{\ttfamily \#include $<$stdexcept$>$}\\*
+{\ttfamily \#include $<$sstream$>$}\\*
+{\ttfamily \#include $<$errno.\+h$>$}\\*
+{\ttfamily \#include $<$openssl/crypto.\+h$>$}\\*
+{\ttfamily \#include $<$openssl/ec.\+h$>$}\\*
+{\ttfamily \#include $<$openssl/ecdh.\+h$>$}\\*
+{\ttfamily \#include $<$openssl/sha.\+h$>$}\\*
+{\ttfamily \#include $<$openssl/aes.\+h$>$}\\*
+{\ttfamily \#include $<$openssl/evp.\+h$>$}\\*
+{\ttfamily \#include $<$openssl/hmac.\+h$>$}\\*
+{\ttfamily \#include $<$boost/lexical\+\_\+cast.\+hpp$>$}\\*
+{\ttfamily \#include $<$boost/algorithm/string/predicate.\+hpp$>$}\\*
+{\ttfamily \#include \char`\"{}base58.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}db.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}init.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}txdb.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}sync.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}ecwrapper.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}txdb-\/leveldb.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}lz4/lz4.\+c\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}xxhash/xxhash.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}xxhash/xxhash.\+c\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_sec_msg_batch_scanner}{Sec\+Msg\+Batch\+Scanner}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{smessage_8cpp_a67cfe472b1e783b85b09ebfeb43afbab}{Thread\+Secure\+Msg} ()
+\item 
+void \hyperlink{smessage_8cpp_a204d88d2eba6d30ae7f9df2f44df7cb6}{Thread\+Secure\+Msg\+Pow} ()
+\item 
+int \hyperlink{smessage_8cpp_a925f4769284eaf73a3beda3c2b15e91d}{Secure\+Msg\+Build\+Bucket\+Set} ()
+\item 
+int \hyperlink{smessage_8cpp_ab47945fac81152e28647920d324ec630}{Secure\+Msg\+Add\+Wallet\+Addresses} ()
+\item 
+int \hyperlink{smessage_8cpp_aebaa05e870f58d8a3736c922295e286a}{Secure\+Msg\+Read\+Ini} ()
+\item 
+int \hyperlink{smessage_8cpp_ad6d4790245bc722b427671aad60f5a07}{Secure\+Msg\+Write\+Ini} ()
+\item 
+bool \hyperlink{smessage_8cpp_a4c2723040974201407c876e9365ed74c}{Secure\+Msg\+Start} (bool f\+Dont\+Start, bool f\+Scan\+Chain)
+\item 
+bool \hyperlink{smessage_8cpp_a49c8b6520e51ba498f92accf33eb6c17}{Secure\+Msg\+Shutdown} ()
+\item 
+bool \hyperlink{smessage_8cpp_a7e096c63f30bea527e14fef0e7cca460}{Secure\+Msg\+Enable} ()
+\item 
+bool \hyperlink{smessage_8cpp_a37253b307b8569fe0d8c3548c15e8e20}{Secure\+Msg\+Disable} ()
+\item 
+bool \hyperlink{smessage_8cpp_a10fcf201b1c7066a376692b50988cdbf}{Secure\+Msg\+Receive\+Data} (\hyperlink{class_c_node}{C\+Node} $\ast$pfrom, std\+::string str\+Command, \hyperlink{class_c_data_stream}{C\+Data\+Stream} \&v\+Recv)
+\item 
+bool \hyperlink{smessage_8cpp_abb934a23a076a4af443e2fb0610d7833}{Secure\+Msg\+Send\+Data} (\hyperlink{class_c_node}{C\+Node} $\ast$pto, bool f\+Send\+Trickle)
+\item 
+int \hyperlink{smessage_8cpp_abedd17ef0763598b8ea28f83438a1858}{Secure\+Msg\+Insert\+Address} (\hyperlink{class_c_key_i_d}{C\+Key\+I\+D} \&hash\+Key, \hyperlink{class_c_pub_key}{C\+Pub\+Key} \&pub\+Key)
+\item 
+bool \hyperlink{smessage_8cpp_a9bd026d2eb7c6dee89c539e99ecac49f}{Secure\+Msg\+Scan\+Block} (\hyperlink{class_c_block}{C\+Block} \&\hyperlink{core_8h_ace80c27428e237fe24f54ae915a36133}{block})
+\item 
+bool \hyperlink{smessage_8cpp_a440b38f2f513f80283993a2d81e908b5}{Scan\+Chain\+For\+Public\+Keys} (\hyperlink{class_c_block_index}{C\+Block\+Index} $\ast$pindex\+Start)
+\item 
+bool \hyperlink{smessage_8cpp_a9cd9dbe9178ad2ffc192762b1f5ef8f4}{Secure\+Msg\+Scan\+Block\+Chain} ()
+\item 
+bool \hyperlink{smessage_8cpp_ae6a19a8d011fefc72c9cab3d0df014bd}{Secure\+Msg\+Scan\+Buckets} ()
+\item 
+int \hyperlink{smessage_8cpp_adf0fa2a06615363dc3ea6360be0939ec}{Secure\+Msg\+Wallet\+Unlocked} ()
+\item 
+int \hyperlink{smessage_8cpp_a2a1e22a7c3bbeb96983dc3f28407657e}{Secure\+Msg\+Wallet\+Key\+Changed} (std\+::string s\+Address, std\+::string s\+Label, \hyperlink{ui__interface_8h_a293ba931937e469a6327b8d6b4872969}{Change\+Type} mode)
+\item 
+int \hyperlink{smessage_8cpp_a31bf2f77c776bbf1fb39bbe79b6e9f5f}{Secure\+Msg\+Scan\+Message} (\hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$p\+Header, \hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$p\+Payload, \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} n\+Payload, bool report\+To\+Gui)
+\item 
+int \hyperlink{smessage_8cpp_a430258e823bdead36f823a51fd6a4510}{Secure\+Msg\+Get\+Local\+Key} (\hyperlink{class_c_key_i_d}{C\+Key\+I\+D} \&ckid, \hyperlink{class_c_pub_key}{C\+Pub\+Key} \&cpk\+Out)
+\item 
+int \hyperlink{smessage_8cpp_a6dadcd107f4196325fd1b0841dbffd2a}{Secure\+Msg\+Get\+Local\+Public\+Key} (std\+::string \&str\+Address, std\+::string \&str\+Public\+Key)
+\item 
+int \hyperlink{smessage_8cpp_a1341706507a851babcff6ce436b8ce2d}{Secure\+Msg\+Get\+Stored\+Key} (\hyperlink{class_c_key_i_d}{C\+Key\+I\+D} \&ckid, \hyperlink{class_c_pub_key}{C\+Pub\+Key} \&cpk\+Out)
+\item 
+int \hyperlink{smessage_8cpp_a7d84ccbc16eb3d679638ba37b822a5e2}{Secure\+Msg\+Add\+Address} (std\+::string \&address, std\+::string \&public\+Key)
+\item 
+int \hyperlink{smessage_8cpp_a9a34bfa72cc027350d71f9daaefb8fef}{Secure\+Msg\+Retrieve} (\hyperlink{class_sec_msg_token}{Sec\+Msg\+Token} \&token, std\+::vector$<$ \hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $>$ \&vch\+Data)
+\item 
+int \hyperlink{smessage_8cpp_a76ffa50f445c2a6089504aead1239e9f}{Secure\+Msg\+Receive} (\hyperlink{class_c_node}{C\+Node} $\ast$pfrom, std\+::vector$<$ \hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $>$ \&vch\+Data)
+\item 
+int \hyperlink{smessage_8cpp_abdde7d50a54a2f54a3aea64c47af535a}{Secure\+Msg\+Store\+Unscanned} (\hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$p\+Header, \hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$p\+Payload, \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} n\+Payload)
+\item 
+int \hyperlink{smessage_8cpp_a1d8fd52e96428c7fe6561d3857363fc9}{Secure\+Msg\+Store} (\hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$p\+Header, \hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$p\+Payload, \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} n\+Payload, bool f\+Update\+Bucket)
+\item 
+int \hyperlink{smessage_8cpp_ae5f8acf9cccf634cdb27b3f77b451f9d}{Secure\+Msg\+Store} (\hyperlink{class_secure_message}{Secure\+Message} \&smsg, bool f\+Update\+Bucket)
+\item 
+int \hyperlink{smessage_8cpp_ae4abbffb060bb486b9e15053f83cbcbf}{Secure\+Msg\+Validate} (\hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$p\+Header, \hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$p\+Payload, \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} n\+Payload)
+\item 
+int \hyperlink{smessage_8cpp_ac434a0295e161eb2ebdad951f4049dc6}{Secure\+Msg\+Set\+Hash} (\hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$p\+Header, \hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$p\+Payload, \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} n\+Payload)
+\item 
+int \hyperlink{smessage_8cpp_a1a9885d0f94a7d5322eafb31bcf2f90a}{Secure\+Msg\+Encrypt} (\hyperlink{class_secure_message}{Secure\+Message} \&smsg, const std\+::string \&address\+From, const std\+::string \&address\+To, const std\+::string \&message)
+\item 
+int \hyperlink{smessage_8cpp_acbe2815144396344354ffa3022300278}{Secure\+Msg\+Send} (std\+::string \&address\+From, std\+::string \&address\+To, std\+::string \&message, std\+::string \&s\+Error)
+\item 
+int \hyperlink{smessage_8cpp_a2edb582fcb7f69b543174479231647be}{Secure\+Msg\+Decrypt} (bool f\+Test\+Only, std\+::string \&address, \hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$p\+Header, \hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$p\+Payload, \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} n\+Payload, \hyperlink{class_message_data}{Message\+Data} \&msg)
+\item 
+int \hyperlink{smessage_8cpp_a7710a63b846d5a4f35f233cfeae6027b}{Secure\+Msg\+Decrypt} (bool f\+Test\+Only, std\+::string \&address, \hyperlink{class_secure_message}{Secure\+Message} \&smsg, \hyperlink{class_message_data}{Message\+Data} \&msg)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+boost\+::thread\+\_\+group \hyperlink{smessage_8cpp_a8042449955e3a583fe5bf56df94b6353}{thread\+Group\+Smsg}
+\item 
+boost\+::signals2\+::signal$<$ void(\hyperlink{class_sec_msg_stored}{Sec\+Msg\+Stored} \&inbox\+Hdr)$>$ \hyperlink{smessage_8cpp_a93126f5e674af8370c3f10f3f8de8a37}{Notify\+Sec\+Msg\+Inbox\+Changed}
+\item 
+boost\+::signals2\+::signal$<$ void(\hyperlink{class_sec_msg_stored}{Sec\+Msg\+Stored} \&outbox\+Hdr)$>$ \hyperlink{smessage_8cpp_aa848b072a4193ed7af7f01276f819170}{Notify\+Sec\+Msg\+Outbox\+Changed}
+\item 
+boost\+::signals2\+::signal$<$ void()$>$ \hyperlink{smessage_8cpp_ac81e578e38c2f309e808d36f4c36dc62}{Notify\+Sec\+Msg\+Wallet\+Unlocked}
+\item 
+bool \hyperlink{smessage_8cpp_a6a38441245ee84417e8fb4a77860dc09}{f\+Sec\+Msg\+Enabled} = false
+\item 
+std\+::map$<$ \hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t}, \hyperlink{class_sec_msg_bucket}{Sec\+Msg\+Bucket} $>$ \hyperlink{smessage_8cpp_aff7c48d987b8a7eb24801d262a30fb6e}{smsg\+Buckets}
+\item 
+std\+::vector$<$ \hyperlink{class_sec_msg_address}{Sec\+Msg\+Address} $>$ \hyperlink{smessage_8cpp_a5a56ac0f79a9871c59a6482b1323acf5}{smsg\+Addresses}
+\item 
+\hyperlink{class_sec_msg_options}{Sec\+Msg\+Options} \hyperlink{smessage_8cpp_ac6ee7d290a6b6af015c10b95d61c704d}{smsg\+Options}
+\item 
+\hyperlink{sync_8h_a37a4692b2d517f2843655ca11af7668a}{C\+Critical\+Section} \hyperlink{smessage_8cpp_a06b6584a0cc47952cc6b071c17c7cbd7}{cs\+\_\+smsg}
+\item 
+\hyperlink{sync_8h_a37a4692b2d517f2843655ca11af7668a}{C\+Critical\+Section} \hyperlink{smessage_8cpp_ac42d4f2a114c9e994ebb1379df8ac6d2}{cs\+\_\+smsg\+D\+B}
+\item 
+\hyperlink{sync_8h_a37a4692b2d517f2843655ca11af7668a}{C\+Critical\+Section} \hyperlink{smessage_8cpp_aeea900cb7ff619635360a3d14af80abd}{cs\+\_\+smsg\+Threads}
+\item 
+\hyperlink{classleveldb_1_1_d_b}{leveldb\+::\+D\+B} $\ast$ \hyperlink{smessage_8cpp_add742de1cada2e96dadcac92efb72b91}{smsg\+D\+B} = N\+U\+L\+L
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{smessage_8cpp_a440b38f2f513f80283993a2d81e908b5}{}\index{smessage.\+cpp@{smessage.\+cpp}!Scan\+Chain\+For\+Public\+Keys@{Scan\+Chain\+For\+Public\+Keys}}
+\index{Scan\+Chain\+For\+Public\+Keys@{Scan\+Chain\+For\+Public\+Keys}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Scan\+Chain\+For\+Public\+Keys}]{\setlength{\rightskip}{0pt plus 5cm}bool Scan\+Chain\+For\+Public\+Keys (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Block\+Index} $\ast$}]{pindex\+Start}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_a440b38f2f513f80283993a2d81e908b5}
+
+
+Definition at line 2073 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_a7d84ccbc16eb3d679638ba37b822a5e2}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Add\+Address@{Secure\+Msg\+Add\+Address}}
+\index{Secure\+Msg\+Add\+Address@{Secure\+Msg\+Add\+Address}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Add\+Address}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Add\+Address (
+\begin{DoxyParamCaption}
+\item[{std\+::string \&}]{address, }
+\item[{std\+::string \&}]{public\+Key}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_a7d84ccbc16eb3d679638ba37b822a5e2}
+
+
+Definition at line 2676 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_ab47945fac81152e28647920d324ec630}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Add\+Wallet\+Addresses@{Secure\+Msg\+Add\+Wallet\+Addresses}}
+\index{Secure\+Msg\+Add\+Wallet\+Addresses@{Secure\+Msg\+Add\+Wallet\+Addresses}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Add\+Wallet\+Addresses}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Add\+Wallet\+Addresses (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_ab47945fac81152e28647920d324ec630}
+
+
+Definition at line 911 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_a925f4769284eaf73a3beda3c2b15e91d}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Build\+Bucket\+Set@{Secure\+Msg\+Build\+Bucket\+Set}}
+\index{Secure\+Msg\+Build\+Bucket\+Set@{Secure\+Msg\+Build\+Bucket\+Set}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Build\+Bucket\+Set}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Build\+Bucket\+Set (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_a925f4769284eaf73a3beda3c2b15e91d}
+
+
+Definition at line 768 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_a2edb582fcb7f69b543174479231647be}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Decrypt@{Secure\+Msg\+Decrypt}}
+\index{Secure\+Msg\+Decrypt@{Secure\+Msg\+Decrypt}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Decrypt}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Decrypt (
+\begin{DoxyParamCaption}
+\item[{bool}]{f\+Test\+Only, }
+\item[{std\+::string \&}]{address, }
+\item[{{\bf uint8\+\_\+t} $\ast$}]{p\+Header, }
+\item[{{\bf uint8\+\_\+t} $\ast$}]{p\+Payload, }
+\item[{{\bf uint32\+\_\+t}}]{n\+Payload, }
+\item[{{\bf Message\+Data} \&}]{msg}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_a2edb582fcb7f69b543174479231647be}
+
+
+Definition at line 3702 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_a7710a63b846d5a4f35f233cfeae6027b}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Decrypt@{Secure\+Msg\+Decrypt}}
+\index{Secure\+Msg\+Decrypt@{Secure\+Msg\+Decrypt}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Decrypt}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Decrypt (
+\begin{DoxyParamCaption}
+\item[{bool}]{f\+Test\+Only, }
+\item[{std\+::string \&}]{address, }
+\item[{{\bf Secure\+Message} \&}]{smsg, }
+\item[{{\bf Message\+Data} \&}]{msg}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_a7710a63b846d5a4f35f233cfeae6027b}
+
+
+Definition at line 3948 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_a37253b307b8569fe0d8c3548c15e8e20}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Disable@{Secure\+Msg\+Disable}}
+\index{Secure\+Msg\+Disable@{Secure\+Msg\+Disable}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Disable}]{\setlength{\rightskip}{0pt plus 5cm}bool Secure\+Msg\+Disable (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_a37253b307b8569fe0d8c3548c15e8e20}
+
+
+Definition at line 1231 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_a7e096c63f30bea527e14fef0e7cca460}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Enable@{Secure\+Msg\+Enable}}
+\index{Secure\+Msg\+Enable@{Secure\+Msg\+Enable}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Enable}]{\setlength{\rightskip}{0pt plus 5cm}bool Secure\+Msg\+Enable (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_a7e096c63f30bea527e14fef0e7cca460}
+
+
+Definition at line 1170 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_a1a9885d0f94a7d5322eafb31bcf2f90a}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Encrypt@{Secure\+Msg\+Encrypt}}
+\index{Secure\+Msg\+Encrypt@{Secure\+Msg\+Encrypt}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Encrypt}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Encrypt (
+\begin{DoxyParamCaption}
+\item[{{\bf Secure\+Message} \&}]{smsg, }
+\item[{const std\+::string \&}]{address\+From, }
+\item[{const std\+::string \&}]{address\+To, }
+\item[{const std\+::string \&}]{message}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_a1a9885d0f94a7d5322eafb31bcf2f90a}
+
+
+Definition at line 3276 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_a430258e823bdead36f823a51fd6a4510}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Get\+Local\+Key@{Secure\+Msg\+Get\+Local\+Key}}
+\index{Secure\+Msg\+Get\+Local\+Key@{Secure\+Msg\+Get\+Local\+Key}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Get\+Local\+Key}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Get\+Local\+Key (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Key\+I\+D} \&}]{ckid, }
+\item[{{\bf C\+Pub\+Key} \&}]{cpk\+Out}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_a430258e823bdead36f823a51fd6a4510}
+
+
+Definition at line 2601 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_a6dadcd107f4196325fd1b0841dbffd2a}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Get\+Local\+Public\+Key@{Secure\+Msg\+Get\+Local\+Public\+Key}}
+\index{Secure\+Msg\+Get\+Local\+Public\+Key@{Secure\+Msg\+Get\+Local\+Public\+Key}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Get\+Local\+Public\+Key}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Get\+Local\+Public\+Key (
+\begin{DoxyParamCaption}
+\item[{std\+::string \&}]{str\+Address, }
+\item[{std\+::string \&}]{str\+Public\+Key}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_a6dadcd107f4196325fd1b0841dbffd2a}
+
+
+Definition at line 2619 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_a1341706507a851babcff6ce436b8ce2d}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Get\+Stored\+Key@{Secure\+Msg\+Get\+Stored\+Key}}
+\index{Secure\+Msg\+Get\+Stored\+Key@{Secure\+Msg\+Get\+Stored\+Key}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Get\+Stored\+Key}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Get\+Stored\+Key (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Key\+I\+D} \&}]{ckid, }
+\item[{{\bf C\+Pub\+Key} \&}]{cpk\+Out}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_a1341706507a851babcff6ce436b8ce2d}
+
+
+Definition at line 2649 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_abedd17ef0763598b8ea28f83438a1858}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Insert\+Address@{Secure\+Msg\+Insert\+Address}}
+\index{Secure\+Msg\+Insert\+Address@{Secure\+Msg\+Insert\+Address}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Insert\+Address}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Insert\+Address (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Key\+I\+D} \&}]{hash\+Key, }
+\item[{{\bf C\+Pub\+Key} \&}]{pub\+Key}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_abedd17ef0763598b8ea28f83438a1858}
+
+
+Definition at line 1922 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_aebaa05e870f58d8a3736c922295e286a}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Read\+Ini@{Secure\+Msg\+Read\+Ini}}
+\index{Secure\+Msg\+Read\+Ini@{Secure\+Msg\+Read\+Ini}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Read\+Ini}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Read\+Ini (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_aebaa05e870f58d8a3736c922295e286a}
+
+
+Definition at line 964 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_a76ffa50f445c2a6089504aead1239e9f}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Receive@{Secure\+Msg\+Receive}}
+\index{Secure\+Msg\+Receive@{Secure\+Msg\+Receive}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Receive}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Receive (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Node} $\ast$}]{pfrom, }
+\item[{std\+::vector$<$ {\bf uint8\+\_\+t} $>$ \&}]{vch\+Data}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_a76ffa50f445c2a6089504aead1239e9f}
+
+
+Definition at line 2796 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_a10fcf201b1c7066a376692b50988cdbf}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Receive\+Data@{Secure\+Msg\+Receive\+Data}}
+\index{Secure\+Msg\+Receive\+Data@{Secure\+Msg\+Receive\+Data}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Receive\+Data}]{\setlength{\rightskip}{0pt plus 5cm}bool Secure\+Msg\+Receive\+Data (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Node} $\ast$}]{pfrom, }
+\item[{std\+::string}]{str\+Command, }
+\item[{{\bf C\+Data\+Stream} \&}]{v\+Recv}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_a10fcf201b1c7066a376692b50988cdbf}
+
+
+Definition at line 1292 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_a9a34bfa72cc027350d71f9daaefb8fef}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Retrieve@{Secure\+Msg\+Retrieve}}
+\index{Secure\+Msg\+Retrieve@{Secure\+Msg\+Retrieve}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Retrieve}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Retrieve (
+\begin{DoxyParamCaption}
+\item[{{\bf Sec\+Msg\+Token} \&}]{token, }
+\item[{std\+::vector$<$ {\bf uint8\+\_\+t} $>$ \&}]{vch\+Data}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_a9a34bfa72cc027350d71f9daaefb8fef}
+
+
+Definition at line 2731 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_a9bd026d2eb7c6dee89c539e99ecac49f}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Scan\+Block@{Secure\+Msg\+Scan\+Block}}
+\index{Secure\+Msg\+Scan\+Block@{Secure\+Msg\+Scan\+Block}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Scan\+Block}]{\setlength{\rightskip}{0pt plus 5cm}bool Secure\+Msg\+Scan\+Block (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Block} \&}]{block}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_a9bd026d2eb7c6dee89c539e99ecac49f}
+
+
+Definition at line 2037 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_a9cd9dbe9178ad2ffc192762b1f5ef8f4}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Scan\+Block\+Chain@{Secure\+Msg\+Scan\+Block\+Chain}}
+\index{Secure\+Msg\+Scan\+Block\+Chain@{Secure\+Msg\+Scan\+Block\+Chain}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Scan\+Block\+Chain}]{\setlength{\rightskip}{0pt plus 5cm}bool Secure\+Msg\+Scan\+Block\+Chain (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_a9cd9dbe9178ad2ffc192762b1f5ef8f4}
+
+
+Definition at line 2123 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_ae6a19a8d011fefc72c9cab3d0df014bd}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Scan\+Buckets@{Secure\+Msg\+Scan\+Buckets}}
+\index{Secure\+Msg\+Scan\+Buckets@{Secure\+Msg\+Scan\+Buckets}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Scan\+Buckets}]{\setlength{\rightskip}{0pt plus 5cm}bool Secure\+Msg\+Scan\+Buckets (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_ae6a19a8d011fefc72c9cab3d0df014bd}
+
+
+Definition at line 2153 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_a31bf2f77c776bbf1fb39bbe79b6e9f5f}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Scan\+Message@{Secure\+Msg\+Scan\+Message}}
+\index{Secure\+Msg\+Scan\+Message@{Secure\+Msg\+Scan\+Message}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Scan\+Message}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Scan\+Message (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8\+\_\+t} $\ast$}]{p\+Header, }
+\item[{{\bf uint8\+\_\+t} $\ast$}]{p\+Payload, }
+\item[{{\bf uint32\+\_\+t}}]{n\+Payload, }
+\item[{bool}]{report\+To\+Gui}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_a31bf2f77c776bbf1fb39bbe79b6e9f5f}
+
+
+Definition at line 2482 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_acbe2815144396344354ffa3022300278}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Send@{Secure\+Msg\+Send}}
+\index{Secure\+Msg\+Send@{Secure\+Msg\+Send}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Send}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Send (
+\begin{DoxyParamCaption}
+\item[{std\+::string \&}]{address\+From, }
+\item[{std\+::string \&}]{address\+To, }
+\item[{std\+::string \&}]{message, }
+\item[{std\+::string \&}]{s\+Error}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_acbe2815144396344354ffa3022300278}
+
+
+Definition at line 3533 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_abb934a23a076a4af443e2fb0610d7833}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Send\+Data@{Secure\+Msg\+Send\+Data}}
+\index{Secure\+Msg\+Send\+Data@{Secure\+Msg\+Send\+Data}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Send\+Data}]{\setlength{\rightskip}{0pt plus 5cm}bool Secure\+Msg\+Send\+Data (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Node} $\ast$}]{pto, }
+\item[{bool}]{f\+Send\+Trickle}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_abb934a23a076a4af443e2fb0610d7833}
+
+
+Definition at line 1783 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_ac434a0295e161eb2ebdad951f4049dc6}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Set\+Hash@{Secure\+Msg\+Set\+Hash}}
+\index{Secure\+Msg\+Set\+Hash@{Secure\+Msg\+Set\+Hash}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Set\+Hash}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Set\+Hash (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8\+\_\+t} $\ast$}]{p\+Header, }
+\item[{{\bf uint8\+\_\+t} $\ast$}]{p\+Payload, }
+\item[{{\bf uint32\+\_\+t}}]{n\+Payload}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_ac434a0295e161eb2ebdad951f4049dc6}
+
+
+Definition at line 3168 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_a49c8b6520e51ba498f92accf33eb6c17}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Shutdown@{Secure\+Msg\+Shutdown}}
+\index{Secure\+Msg\+Shutdown@{Secure\+Msg\+Shutdown}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Shutdown}]{\setlength{\rightskip}{0pt plus 5cm}bool Secure\+Msg\+Shutdown (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_a49c8b6520e51ba498f92accf33eb6c17}
+
+
+Definition at line 1144 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_a4c2723040974201407c876e9365ed74c}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Start@{Secure\+Msg\+Start}}
+\index{Secure\+Msg\+Start@{Secure\+Msg\+Start}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Start}]{\setlength{\rightskip}{0pt plus 5cm}bool Secure\+Msg\+Start (
+\begin{DoxyParamCaption}
+\item[{bool}]{f\+Dont\+Start, }
+\item[{bool}]{f\+Scan\+Chain}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_a4c2723040974201407c876e9365ed74c}
+called from \hyperlink{init_8cpp_a1a4c1bfbf6ba1db77e988b89b9cadfd3}{App\+Init2()} in \hyperlink{init_8cpp}{init.\+cpp} 
+
+Definition at line 1104 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_a1d8fd52e96428c7fe6561d3857363fc9}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Store@{Secure\+Msg\+Store}}
+\index{Secure\+Msg\+Store@{Secure\+Msg\+Store}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Store}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Store (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8\+\_\+t} $\ast$}]{p\+Header, }
+\item[{{\bf uint8\+\_\+t} $\ast$}]{p\+Payload, }
+\item[{{\bf uint32\+\_\+t}}]{n\+Payload, }
+\item[{bool}]{f\+Update\+Bucket}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_a1d8fd52e96428c7fe6561d3857363fc9}
+
+
+Definition at line 2978 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_ae5f8acf9cccf634cdb27b3f77b451f9d}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Store@{Secure\+Msg\+Store}}
+\index{Secure\+Msg\+Store@{Secure\+Msg\+Store}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Store}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Store (
+\begin{DoxyParamCaption}
+\item[{{\bf Secure\+Message} \&}]{smsg, }
+\item[{bool}]{f\+Update\+Bucket}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_ae5f8acf9cccf634cdb27b3f77b451f9d}
+
+
+Definition at line 3094 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_abdde7d50a54a2f54a3aea64c47af535a}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Store\+Unscanned@{Secure\+Msg\+Store\+Unscanned}}
+\index{Secure\+Msg\+Store\+Unscanned@{Secure\+Msg\+Store\+Unscanned}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Store\+Unscanned}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Store\+Unscanned (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8\+\_\+t} $\ast$}]{p\+Header, }
+\item[{{\bf uint8\+\_\+t} $\ast$}]{p\+Payload, }
+\item[{{\bf uint32\+\_\+t}}]{n\+Payload}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_abdde7d50a54a2f54a3aea64c47af535a}
+
+
+Definition at line 2911 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_ae4abbffb060bb486b9e15053f83cbcbf}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Validate@{Secure\+Msg\+Validate}}
+\index{Secure\+Msg\+Validate@{Secure\+Msg\+Validate}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Validate}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Validate (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8\+\_\+t} $\ast$}]{p\+Header, }
+\item[{{\bf uint8\+\_\+t} $\ast$}]{p\+Payload, }
+\item[{{\bf uint32\+\_\+t}}]{n\+Payload}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_ae4abbffb060bb486b9e15053f83cbcbf}
+
+
+Definition at line 3099 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_a2a1e22a7c3bbeb96983dc3f28407657e}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Wallet\+Key\+Changed@{Secure\+Msg\+Wallet\+Key\+Changed}}
+\index{Secure\+Msg\+Wallet\+Key\+Changed@{Secure\+Msg\+Wallet\+Key\+Changed}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Wallet\+Key\+Changed}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Wallet\+Key\+Changed (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{s\+Address, }
+\item[{std\+::string}]{s\+Label, }
+\item[{{\bf Change\+Type}}]{mode}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_a2a1e22a7c3bbeb96983dc3f28407657e}
+
+
+Definition at line 2446 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_adf0fa2a06615363dc3ea6360be0939ec}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Wallet\+Unlocked@{Secure\+Msg\+Wallet\+Unlocked}}
+\index{Secure\+Msg\+Wallet\+Unlocked@{Secure\+Msg\+Wallet\+Unlocked}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Wallet\+Unlocked}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Wallet\+Unlocked (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_adf0fa2a06615363dc3ea6360be0939ec}
+
+
+Definition at line 2301 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_ad6d4790245bc722b427671aad60f5a07}{}\index{smessage.\+cpp@{smessage.\+cpp}!Secure\+Msg\+Write\+Ini@{Secure\+Msg\+Write\+Ini}}
+\index{Secure\+Msg\+Write\+Ini@{Secure\+Msg\+Write\+Ini}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Secure\+Msg\+Write\+Ini}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Write\+Ini (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_ad6d4790245bc722b427671aad60f5a07}
+
+
+Definition at line 1038 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_a67cfe472b1e783b85b09ebfeb43afbab}{}\index{smessage.\+cpp@{smessage.\+cpp}!Thread\+Secure\+Msg@{Thread\+Secure\+Msg}}
+\index{Thread\+Secure\+Msg@{Thread\+Secure\+Msg}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Thread\+Secure\+Msg}]{\setlength{\rightskip}{0pt plus 5cm}void Thread\+Secure\+Msg (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_a67cfe472b1e783b85b09ebfeb43afbab}
+
+
+Definition at line 579 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_a204d88d2eba6d30ae7f9df2f44df7cb6}{}\index{smessage.\+cpp@{smessage.\+cpp}!Thread\+Secure\+Msg\+Pow@{Thread\+Secure\+Msg\+Pow}}
+\index{Thread\+Secure\+Msg\+Pow@{Thread\+Secure\+Msg\+Pow}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Thread\+Secure\+Msg\+Pow}]{\setlength{\rightskip}{0pt plus 5cm}void Thread\+Secure\+Msg\+Pow (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{smessage_8cpp_a204d88d2eba6d30ae7f9df2f44df7cb6}
+
+
+Definition at line 687 of file smessage.\+cpp.
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{smessage_8cpp_a06b6584a0cc47952cc6b071c17c7cbd7}{}\index{smessage.\+cpp@{smessage.\+cpp}!cs\+\_\+smsg@{cs\+\_\+smsg}}
+\index{cs\+\_\+smsg@{cs\+\_\+smsg}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{cs\+\_\+smsg}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Critical\+Section} cs\+\_\+smsg}\label{smessage_8cpp_a06b6584a0cc47952cc6b071c17c7cbd7}
+
+
+Definition at line 81 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_ac42d4f2a114c9e994ebb1379df8ac6d2}{}\index{smessage.\+cpp@{smessage.\+cpp}!cs\+\_\+smsg\+D\+B@{cs\+\_\+smsg\+D\+B}}
+\index{cs\+\_\+smsg\+D\+B@{cs\+\_\+smsg\+D\+B}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{cs\+\_\+smsg\+D\+B}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Critical\+Section} cs\+\_\+smsg\+D\+B}\label{smessage_8cpp_ac42d4f2a114c9e994ebb1379df8ac6d2}
+
+
+Definition at line 82 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_aeea900cb7ff619635360a3d14af80abd}{}\index{smessage.\+cpp@{smessage.\+cpp}!cs\+\_\+smsg\+Threads@{cs\+\_\+smsg\+Threads}}
+\index{cs\+\_\+smsg\+Threads@{cs\+\_\+smsg\+Threads}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{cs\+\_\+smsg\+Threads}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Critical\+Section} cs\+\_\+smsg\+Threads}\label{smessage_8cpp_aeea900cb7ff619635360a3d14af80abd}
+
+
+Definition at line 83 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_a6a38441245ee84417e8fb4a77860dc09}{}\index{smessage.\+cpp@{smessage.\+cpp}!f\+Sec\+Msg\+Enabled@{f\+Sec\+Msg\+Enabled}}
+\index{f\+Sec\+Msg\+Enabled@{f\+Sec\+Msg\+Enabled}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{f\+Sec\+Msg\+Enabled}]{\setlength{\rightskip}{0pt plus 5cm}bool f\+Sec\+Msg\+Enabled = false}\label{smessage_8cpp_a6a38441245ee84417e8fb4a77860dc09}
+
+
+Definition at line 74 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_a93126f5e674af8370c3f10f3f8de8a37}{}\index{smessage.\+cpp@{smessage.\+cpp}!Notify\+Sec\+Msg\+Inbox\+Changed@{Notify\+Sec\+Msg\+Inbox\+Changed}}
+\index{Notify\+Sec\+Msg\+Inbox\+Changed@{Notify\+Sec\+Msg\+Inbox\+Changed}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Notify\+Sec\+Msg\+Inbox\+Changed}]{\setlength{\rightskip}{0pt plus 5cm}boost\+::signals2\+::signal$<$void ({\bf Sec\+Msg\+Stored}\& inbox\+Hdr)$>$ Notify\+Sec\+Msg\+Inbox\+Changed}\label{smessage_8cpp_a93126f5e674af8370c3f10f3f8de8a37}
+
+
+Definition at line 70 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_aa848b072a4193ed7af7f01276f819170}{}\index{smessage.\+cpp@{smessage.\+cpp}!Notify\+Sec\+Msg\+Outbox\+Changed@{Notify\+Sec\+Msg\+Outbox\+Changed}}
+\index{Notify\+Sec\+Msg\+Outbox\+Changed@{Notify\+Sec\+Msg\+Outbox\+Changed}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Notify\+Sec\+Msg\+Outbox\+Changed}]{\setlength{\rightskip}{0pt plus 5cm}boost\+::signals2\+::signal$<$void ({\bf Sec\+Msg\+Stored}\& outbox\+Hdr)$>$ Notify\+Sec\+Msg\+Outbox\+Changed}\label{smessage_8cpp_aa848b072a4193ed7af7f01276f819170}
+
+
+Definition at line 71 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_ac81e578e38c2f309e808d36f4c36dc62}{}\index{smessage.\+cpp@{smessage.\+cpp}!Notify\+Sec\+Msg\+Wallet\+Unlocked@{Notify\+Sec\+Msg\+Wallet\+Unlocked}}
+\index{Notify\+Sec\+Msg\+Wallet\+Unlocked@{Notify\+Sec\+Msg\+Wallet\+Unlocked}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{Notify\+Sec\+Msg\+Wallet\+Unlocked}]{\setlength{\rightskip}{0pt plus 5cm}boost\+::signals2\+::signal$<$void ()$>$ Notify\+Sec\+Msg\+Wallet\+Unlocked}\label{smessage_8cpp_ac81e578e38c2f309e808d36f4c36dc62}
+
+
+Definition at line 72 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_a5a56ac0f79a9871c59a6482b1323acf5}{}\index{smessage.\+cpp@{smessage.\+cpp}!smsg\+Addresses@{smsg\+Addresses}}
+\index{smsg\+Addresses@{smsg\+Addresses}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{smsg\+Addresses}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Sec\+Msg\+Address}$>$ smsg\+Addresses}\label{smessage_8cpp_a5a56ac0f79a9871c59a6482b1323acf5}
+
+
+Definition at line 77 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_aff7c48d987b8a7eb24801d262a30fb6e}{}\index{smessage.\+cpp@{smessage.\+cpp}!smsg\+Buckets@{smsg\+Buckets}}
+\index{smsg\+Buckets@{smsg\+Buckets}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{smsg\+Buckets}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<${\bf int64\+\_\+t}, {\bf Sec\+Msg\+Bucket}$>$ smsg\+Buckets}\label{smessage_8cpp_aff7c48d987b8a7eb24801d262a30fb6e}
+
+
+Definition at line 76 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_add742de1cada2e96dadcac92efb72b91}{}\index{smessage.\+cpp@{smessage.\+cpp}!smsg\+D\+B@{smsg\+D\+B}}
+\index{smsg\+D\+B@{smsg\+D\+B}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{smsg\+D\+B}]{\setlength{\rightskip}{0pt plus 5cm}{\bf leveldb\+::\+D\+B}$\ast$ smsg\+D\+B = N\+U\+L\+L}\label{smessage_8cpp_add742de1cada2e96dadcac92efb72b91}
+
+
+Definition at line 85 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_ac6ee7d290a6b6af015c10b95d61c704d}{}\index{smessage.\+cpp@{smessage.\+cpp}!smsg\+Options@{smsg\+Options}}
+\index{smsg\+Options@{smsg\+Options}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{smsg\+Options}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sec\+Msg\+Options} smsg\+Options}\label{smessage_8cpp_ac6ee7d290a6b6af015c10b95d61c704d}
+
+
+Definition at line 78 of file smessage.\+cpp.
+
+\hypertarget{smessage_8cpp_a8042449955e3a583fe5bf56df94b6353}{}\index{smessage.\+cpp@{smessage.\+cpp}!thread\+Group\+Smsg@{thread\+Group\+Smsg}}
+\index{thread\+Group\+Smsg@{thread\+Group\+Smsg}!smessage.\+cpp@{smessage.\+cpp}}
+\subsubsection[{thread\+Group\+Smsg}]{\setlength{\rightskip}{0pt plus 5cm}boost\+::thread\+\_\+group thread\+Group\+Smsg}\label{smessage_8cpp_a8042449955e3a583fe5bf56df94b6353}
+
+
+Definition at line 68 of file smessage.\+cpp.
+

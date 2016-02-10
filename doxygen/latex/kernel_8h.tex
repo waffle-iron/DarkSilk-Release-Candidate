@@ -1,0 +1,137 @@
+\hypertarget{kernel_8h}{}\section{/home/dev/ds-\/160209/src/kernel.h File Reference}
+\label{kernel_8h}\index{/home/dev/ds-\/160209/src/kernel.\+h@{/home/dev/ds-\/160209/src/kernel.\+h}}
+{\ttfamily \#include \char`\"{}chain.\+h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{kernel_8h_aa58b095aa0abb6f956cc68169124099a}{Compute\+Next\+Stake\+Modifier} (const \hyperlink{class_c_block_index}{C\+Block\+Index} $\ast$pindex\+Prev, \hyperlink{stdint_8h_aaa5d1cd013383c889537491c3cfd9aad}{uint64\+\_\+t} \&n\+Stake\+Modifier, bool \&f\+Generated\+Stake\+Modifier)
+\item 
+\hyperlink{classuint256}{uint256} \hyperlink{kernel_8h_ae7cea47493b7e179fe492df175c9cfdc}{Compute\+Stake\+Modifier\+V2} (const \hyperlink{class_c_block_index}{C\+Block\+Index} $\ast$pindex\+Prev, const \hyperlink{classuint256}{uint256} \&kernel)
+\item 
+bool \hyperlink{kernel_8h_a92f7a1863b9988c21166341c849e26db}{Check\+Stake\+Kernel\+Hash} (\hyperlink{class_c_block_index}{C\+Block\+Index} $\ast$pindex\+Prev, unsigned int n\+Bits, unsigned int n\+Time\+Block\+From, const \hyperlink{class_c_transaction}{C\+Transaction} \&tx\+Prev, const \hyperlink{class_c_out_point}{C\+Out\+Point} \&prevout, unsigned int n\+Time\+Tx, \hyperlink{classuint256}{uint256} \&hash\+Proof\+Of\+Stake, \hyperlink{classuint256}{uint256} \&target\+Proof\+Of\+Stake, bool f\+Print\+Proof\+Of\+Stake=false)
+\item 
+bool \hyperlink{kernel_8h_a01e09fbdb926d4581ea48c4cf2f337a1}{Check\+Proof\+Of\+Stake} (\hyperlink{class_c_block_index}{C\+Block\+Index} $\ast$pindex\+Prev, const \hyperlink{class_c_transaction}{C\+Transaction} \&tx, unsigned int n\+Bits, \hyperlink{classuint256}{uint256} \&hash\+Proof\+Of\+Stake, \hyperlink{classuint256}{uint256} \&target\+Proof\+Of\+Stake)
+\item 
+bool \hyperlink{kernel_8h_a03754eb0da5023cee284ac6aa68cb4e0}{Check\+Coin\+Stake\+Timestamp} (int n\+Height, \hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} n\+Time\+Block, \hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} n\+Time\+Tx)
+\item 
+\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} \hyperlink{kernel_8h_a65c0eeb113370d36da64a679e184bc16}{Get\+Weight} (\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} n\+Interval\+Beginning, \hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} n\+Interval\+End)
+\item 
+bool \hyperlink{kernel_8h_a65bf2727fbb2781621c1b66999fb0f98}{Check\+Kernel} (\hyperlink{class_c_block_index}{C\+Block\+Index} $\ast$pindex\+Prev, unsigned int n\+Bits, \hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} n\+Time, const \hyperlink{class_c_out_point}{C\+Out\+Point} \&prevout, \hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} $\ast$p\+Block\+Time=N\+U\+L\+L)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \hyperlink{kernel_8h_a12388da9cd7b3a99208684bd4535f098}{n\+Modifier\+Interval}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{kernel_8h_a03754eb0da5023cee284ac6aa68cb4e0}{}\index{kernel.\+h@{kernel.\+h}!Check\+Coin\+Stake\+Timestamp@{Check\+Coin\+Stake\+Timestamp}}
+\index{Check\+Coin\+Stake\+Timestamp@{Check\+Coin\+Stake\+Timestamp}!kernel.\+h@{kernel.\+h}}
+\subsubsection[{Check\+Coin\+Stake\+Timestamp}]{\setlength{\rightskip}{0pt plus 5cm}bool Check\+Coin\+Stake\+Timestamp (
+\begin{DoxyParamCaption}
+\item[{int}]{n\+Height, }
+\item[{{\bf int64\+\_\+t}}]{n\+Time\+Block, }
+\item[{{\bf int64\+\_\+t}}]{n\+Time\+Tx}
+\end{DoxyParamCaption}
+)}\label{kernel_8h_a03754eb0da5023cee284ac6aa68cb4e0}
+
+
+Definition at line 323 of file kernel.\+cpp.
+
+\hypertarget{kernel_8h_a65bf2727fbb2781621c1b66999fb0f98}{}\index{kernel.\+h@{kernel.\+h}!Check\+Kernel@{Check\+Kernel}}
+\index{Check\+Kernel@{Check\+Kernel}!kernel.\+h@{kernel.\+h}}
+\subsubsection[{Check\+Kernel}]{\setlength{\rightskip}{0pt plus 5cm}bool Check\+Kernel (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Block\+Index} $\ast$}]{pindex\+Prev, }
+\item[{unsigned int}]{n\+Bits, }
+\item[{{\bf int64\+\_\+t}}]{n\+Time, }
+\item[{const {\bf C\+Out\+Point} \&}]{prevout, }
+\item[{{\bf int64\+\_\+t} $\ast$}]{p\+Block\+Time = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}\label{kernel_8h_a65bf2727fbb2781621c1b66999fb0f98}
+
+
+Definition at line 328 of file kernel.\+cpp.
+
+\hypertarget{kernel_8h_a01e09fbdb926d4581ea48c4cf2f337a1}{}\index{kernel.\+h@{kernel.\+h}!Check\+Proof\+Of\+Stake@{Check\+Proof\+Of\+Stake}}
+\index{Check\+Proof\+Of\+Stake@{Check\+Proof\+Of\+Stake}!kernel.\+h@{kernel.\+h}}
+\subsubsection[{Check\+Proof\+Of\+Stake}]{\setlength{\rightskip}{0pt plus 5cm}bool Check\+Proof\+Of\+Stake (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Block\+Index} $\ast$}]{pindex\+Prev, }
+\item[{const {\bf C\+Transaction} \&}]{tx, }
+\item[{unsigned int}]{n\+Bits, }
+\item[{{\bf uint256} \&}]{hash\+Proof\+Of\+Stake, }
+\item[{{\bf uint256} \&}]{target\+Proof\+Of\+Stake}
+\end{DoxyParamCaption}
+)}\label{kernel_8h_a01e09fbdb926d4581ea48c4cf2f337a1}
+
+
+Definition at line 286 of file kernel.\+cpp.
+
+\hypertarget{kernel_8h_a92f7a1863b9988c21166341c849e26db}{}\index{kernel.\+h@{kernel.\+h}!Check\+Stake\+Kernel\+Hash@{Check\+Stake\+Kernel\+Hash}}
+\index{Check\+Stake\+Kernel\+Hash@{Check\+Stake\+Kernel\+Hash}!kernel.\+h@{kernel.\+h}}
+\subsubsection[{Check\+Stake\+Kernel\+Hash}]{\setlength{\rightskip}{0pt plus 5cm}bool Check\+Stake\+Kernel\+Hash (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Block\+Index} $\ast$}]{pindex\+Prev, }
+\item[{unsigned int}]{n\+Bits, }
+\item[{unsigned int}]{n\+Time\+Block\+From, }
+\item[{const {\bf C\+Transaction} \&}]{tx\+Prev, }
+\item[{const {\bf C\+Out\+Point} \&}]{prevout, }
+\item[{unsigned int}]{n\+Time\+Tx, }
+\item[{{\bf uint256} \&}]{hash\+Proof\+Of\+Stake, }
+\item[{{\bf uint256} \&}]{target\+Proof\+Of\+Stake, }
+\item[{bool}]{f\+Print\+Proof\+Of\+Stake = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{kernel_8h_a92f7a1863b9988c21166341c849e26db}
+
+
+Definition at line 227 of file kernel.\+cpp.
+
+\hypertarget{kernel_8h_aa58b095aa0abb6f956cc68169124099a}{}\index{kernel.\+h@{kernel.\+h}!Compute\+Next\+Stake\+Modifier@{Compute\+Next\+Stake\+Modifier}}
+\index{Compute\+Next\+Stake\+Modifier@{Compute\+Next\+Stake\+Modifier}!kernel.\+h@{kernel.\+h}}
+\subsubsection[{Compute\+Next\+Stake\+Modifier}]{\setlength{\rightskip}{0pt plus 5cm}bool Compute\+Next\+Stake\+Modifier (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Block\+Index} $\ast$}]{pindex\+Prev, }
+\item[{{\bf uint64\+\_\+t} \&}]{n\+Stake\+Modifier, }
+\item[{bool \&}]{f\+Generated\+Stake\+Modifier}
+\end{DoxyParamCaption}
+)}\label{kernel_8h_aa58b095aa0abb6f956cc68169124099a}
+
+
+Definition at line 111 of file kernel.\+cpp.
+
+\hypertarget{kernel_8h_ae7cea47493b7e179fe492df175c9cfdc}{}\index{kernel.\+h@{kernel.\+h}!Compute\+Stake\+Modifier\+V2@{Compute\+Stake\+Modifier\+V2}}
+\index{Compute\+Stake\+Modifier\+V2@{Compute\+Stake\+Modifier\+V2}!kernel.\+h@{kernel.\+h}}
+\subsubsection[{Compute\+Stake\+Modifier\+V2}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint256} Compute\+Stake\+Modifier\+V2 (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Block\+Index} $\ast$}]{pindex\+Prev, }
+\item[{const {\bf uint256} \&}]{kernel}
+\end{DoxyParamCaption}
+)}\label{kernel_8h_ae7cea47493b7e179fe492df175c9cfdc}
+
+
+Definition at line 196 of file kernel.\+cpp.
+
+\hypertarget{kernel_8h_a65c0eeb113370d36da64a679e184bc16}{}\index{kernel.\+h@{kernel.\+h}!Get\+Weight@{Get\+Weight}}
+\index{Get\+Weight@{Get\+Weight}!kernel.\+h@{kernel.\+h}}
+\subsubsection[{Get\+Weight}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int64\+\_\+t} Get\+Weight (
+\begin{DoxyParamCaption}
+\item[{{\bf int64\+\_\+t}}]{n\+Interval\+Beginning, }
+\item[{{\bf int64\+\_\+t}}]{n\+Interval\+End}
+\end{DoxyParamCaption}
+)}\label{kernel_8h_a65c0eeb113370d36da64a679e184bc16}
+
+
+Definition at line 15 of file kernel.\+cpp.
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{kernel_8h_a12388da9cd7b3a99208684bd4535f098}{}\index{kernel.\+h@{kernel.\+h}!n\+Modifier\+Interval@{n\+Modifier\+Interval}}
+\index{n\+Modifier\+Interval@{n\+Modifier\+Interval}!kernel.\+h@{kernel.\+h}}
+\subsubsection[{n\+Modifier\+Interval}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int n\+Modifier\+Interval}\label{kernel_8h_a12388da9cd7b3a99208684bd4535f098}
+
+
+Definition at line 64 of file main.\+cpp.
+

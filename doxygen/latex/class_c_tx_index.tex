@@ -1,0 +1,177 @@
+\hypertarget{class_c_tx_index}{}\section{C\+Tx\+Index Class Reference}
+\label{class_c_tx_index}\index{C\+Tx\+Index@{C\+Tx\+Index}}
+
+
+{\ttfamily \#include $<$main.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_tx_index_a08f6b57bc2852af37dd5a13b9d5877cc}{C\+Tx\+Index} ()
+\item 
+\hyperlink{class_c_tx_index_ad01109597d73bef7ea576d1e1613415f}{C\+Tx\+Index} (const \hyperlink{class_c_disk_tx_pos}{C\+Disk\+Tx\+Pos} \&pos\+In, unsigned int n\+Outputs)
+\item 
+{\footnotesize template$<$typename Stream , typename Operation $>$ }\\void \hyperlink{class_c_tx_index_a8d7003336ce67c83268dac7dcae14199}{Serialization\+Op} (Stream \&s, Operation ser\+\_\+action, int n\+Type, int n\+Version)
+\item 
+void \hyperlink{class_c_tx_index_a379327d4654c726dea38486f1c1f800d}{Set\+Null} ()
+\item 
+bool \hyperlink{class_c_tx_index_a27f2d2e6bc1fad724bd5bff9eeb694fc}{Is\+Null} ()
+\item 
+int \hyperlink{class_c_tx_index_ab6119cf086e8e4b2c690f36c15479220}{Get\+Depth\+In\+Main\+Chain} () const 
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_disk_tx_pos}{C\+Disk\+Tx\+Pos} \hyperlink{class_c_tx_index_ac68a69ed4335b3f50b954c71ec0a9c32}{pos}
+\item 
+std\+::vector$<$ \hyperlink{class_c_disk_tx_pos}{C\+Disk\+Tx\+Pos} $>$ \hyperlink{class_c_tx_index_a88317d56c02acd1faec4863bcb293d2c}{v\+Spent}
+\item 
+\hyperlink{class_c_tx_index_a1bafe447bd4fcead6588a984167a7c36}{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_c_tx_index_acad959e5335e3527d1d94d7da3d5725d}{operator==} (const \hyperlink{class_c_tx_index}{C\+Tx\+Index} \&a, const \hyperlink{class_c_tx_index}{C\+Tx\+Index} \&b)
+\item 
+bool \hyperlink{class_c_tx_index_a959f40582946a134bc75e7b3092419eb}{operator!=} (const \hyperlink{class_c_tx_index}{C\+Tx\+Index} \&a, const \hyperlink{class_c_tx_index}{C\+Tx\+Index} \&b)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A txdb record that contains the disk location of a transaction and the locations of transactions that spend its outputs. v\+Spent is really only used as a flag, but having the location is very helpful for debugging. 
+
+Definition at line 443 of file main.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_tx_index_a08f6b57bc2852af37dd5a13b9d5877cc}{}\index{C\+Tx\+Index@{C\+Tx\+Index}!C\+Tx\+Index@{C\+Tx\+Index}}
+\index{C\+Tx\+Index@{C\+Tx\+Index}!C\+Tx\+Index@{C\+Tx\+Index}}
+\subsubsection[{C\+Tx\+Index}]{\setlength{\rightskip}{0pt plus 5cm}C\+Tx\+Index\+::\+C\+Tx\+Index (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_tx_index_a08f6b57bc2852af37dd5a13b9d5877cc}
+
+
+Definition at line 449 of file main.\+h.
+
+\hypertarget{class_c_tx_index_ad01109597d73bef7ea576d1e1613415f}{}\index{C\+Tx\+Index@{C\+Tx\+Index}!C\+Tx\+Index@{C\+Tx\+Index}}
+\index{C\+Tx\+Index@{C\+Tx\+Index}!C\+Tx\+Index@{C\+Tx\+Index}}
+\subsubsection[{C\+Tx\+Index}]{\setlength{\rightskip}{0pt plus 5cm}C\+Tx\+Index\+::\+C\+Tx\+Index (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Disk\+Tx\+Pos} \&}]{pos\+In, }
+\item[{unsigned int}]{n\+Outputs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_tx_index_ad01109597d73bef7ea576d1e1613415f}
+
+
+Definition at line 454 of file main.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_tx_index_ab6119cf086e8e4b2c690f36c15479220}{}\index{C\+Tx\+Index@{C\+Tx\+Index}!Get\+Depth\+In\+Main\+Chain@{Get\+Depth\+In\+Main\+Chain}}
+\index{Get\+Depth\+In\+Main\+Chain@{Get\+Depth\+In\+Main\+Chain}!C\+Tx\+Index@{C\+Tx\+Index}}
+\subsubsection[{Get\+Depth\+In\+Main\+Chain}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Tx\+Index\+::\+Get\+Depth\+In\+Main\+Chain (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_c_tx_index_ab6119cf086e8e4b2c690f36c15479220}
+
+
+Definition at line 1540 of file main.\+cpp.
+
+\hypertarget{class_c_tx_index_a27f2d2e6bc1fad724bd5bff9eeb694fc}{}\index{C\+Tx\+Index@{C\+Tx\+Index}!Is\+Null@{Is\+Null}}
+\index{Is\+Null@{Is\+Null}!C\+Tx\+Index@{C\+Tx\+Index}}
+\subsubsection[{Is\+Null}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Tx\+Index\+::\+Is\+Null (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_tx_index_a27f2d2e6bc1fad724bd5bff9eeb694fc}
+
+
+Definition at line 476 of file main.\+h.
+
+\hypertarget{class_c_tx_index_a8d7003336ce67c83268dac7dcae14199}{}\index{C\+Tx\+Index@{C\+Tx\+Index}!Serialization\+Op@{Serialization\+Op}}
+\index{Serialization\+Op@{Serialization\+Op}!C\+Tx\+Index@{C\+Tx\+Index}}
+\subsubsection[{Serialization\+Op}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename Operation $>$ void C\+Tx\+Index\+::\+Serialization\+Op (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{Operation}]{ser\+\_\+action, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_tx_index_a8d7003336ce67c83268dac7dcae14199}
+
+
+Definition at line 463 of file main.\+h.
+
+\hypertarget{class_c_tx_index_a379327d4654c726dea38486f1c1f800d}{}\index{C\+Tx\+Index@{C\+Tx\+Index}!Set\+Null@{Set\+Null}}
+\index{Set\+Null@{Set\+Null}!C\+Tx\+Index@{C\+Tx\+Index}}
+\subsubsection[{Set\+Null}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Tx\+Index\+::\+Set\+Null (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_tx_index_a379327d4654c726dea38486f1c1f800d}
+
+
+Definition at line 470 of file main.\+h.
+
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{class_c_tx_index_a959f40582946a134bc75e7b3092419eb}{}\index{C\+Tx\+Index@{C\+Tx\+Index}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!C\+Tx\+Index@{C\+Tx\+Index}}
+\subsubsection[{operator"!=}]{\setlength{\rightskip}{0pt plus 5cm}bool operator!= (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Tx\+Index} \&}]{a, }
+\item[{const {\bf C\+Tx\+Index} \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\label{class_c_tx_index_a959f40582946a134bc75e7b3092419eb}
+
+
+Definition at line 487 of file main.\+h.
+
+\hypertarget{class_c_tx_index_acad959e5335e3527d1d94d7da3d5725d}{}\index{C\+Tx\+Index@{C\+Tx\+Index}!operator==@{operator==}}
+\index{operator==@{operator==}!C\+Tx\+Index@{C\+Tx\+Index}}
+\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}bool operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Tx\+Index} \&}]{a, }
+\item[{const {\bf C\+Tx\+Index} \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\label{class_c_tx_index_acad959e5335e3527d1d94d7da3d5725d}
+
+
+Definition at line 481 of file main.\+h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_c_tx_index_a1bafe447bd4fcead6588a984167a7c36}{}\index{C\+Tx\+Index@{C\+Tx\+Index}!A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}}
+\index{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}!C\+Tx\+Index@{C\+Tx\+Index}}
+\subsubsection[{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}]{\setlength{\rightskip}{0pt plus 5cm}C\+Tx\+Index\+::\+A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}\label{class_c_tx_index_a1bafe447bd4fcead6588a984167a7c36}
+
+
+Definition at line 460 of file main.\+h.
+
+\hypertarget{class_c_tx_index_ac68a69ed4335b3f50b954c71ec0a9c32}{}\index{C\+Tx\+Index@{C\+Tx\+Index}!pos@{pos}}
+\index{pos@{pos}!C\+Tx\+Index@{C\+Tx\+Index}}
+\subsubsection[{pos}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Disk\+Tx\+Pos} C\+Tx\+Index\+::pos}\label{class_c_tx_index_ac68a69ed4335b3f50b954c71ec0a9c32}
+
+
+Definition at line 446 of file main.\+h.
+
+\hypertarget{class_c_tx_index_a88317d56c02acd1faec4863bcb293d2c}{}\index{C\+Tx\+Index@{C\+Tx\+Index}!v\+Spent@{v\+Spent}}
+\index{v\+Spent@{v\+Spent}!C\+Tx\+Index@{C\+Tx\+Index}}
+\subsubsection[{v\+Spent}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf C\+Disk\+Tx\+Pos}$>$ C\+Tx\+Index\+::v\+Spent}\label{class_c_tx_index_a88317d56c02acd1faec4863bcb293d2c}
+
+
+Definition at line 447 of file main.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/\hyperlink{main_8h}{main.\+h}\item 
+/home/dev/ds-\/160209/src/\hyperlink{main_8cpp}{main.\+cpp}\end{DoxyCompactItemize}

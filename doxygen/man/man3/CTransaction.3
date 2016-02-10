@@ -1,0 +1,216 @@
+.TH "CTransaction" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CTransaction \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <transaction\&.h>\fP
+.PP
+Inherited by \fBCMerkleTx\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBDoS\fP (int nDoSIn, bool fIn) const "
+.br
+.ti -1c
+.RI "\fBCTransaction\fP ()"
+.br
+.ti -1c
+.RI "\fBCTransaction\fP (int \fBnVersion\fP, unsigned int \fBnTime\fP, const std::vector< \fBCTxIn\fP > &\fBvin\fP, const std::vector< \fBCTxOut\fP > &\fBvout\fP, unsigned int \fBnLockTime\fP)"
+.br
+.ti -1c
+.RI "\fBCTransaction\fP (const \fBCMutableTransaction\fP &tx)"
+.br
+.RI "\fIConvert a \fBCMutableTransaction\fP into a \fBCTransaction\fP\&. \fP"
+.ti -1c
+.RI "template<typename Stream , typename Operation > void \fBSerializationOp\fP (Stream &s, Operation ser_action, int nType, int \fBnVersion\fP)"
+.br
+.ti -1c
+.RI "void \fBSetNull\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsNull\fP () const "
+.br
+.ti -1c
+.RI "\fBuint256\fP \fBGetHash\fP () const "
+.br
+.ti -1c
+.RI "bool \fBIsCoinBase\fP () const "
+.br
+.ti -1c
+.RI "bool \fBIsCoinStake\fP () const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetValueOut\fP () const "
+.br
+.ti -1c
+.RI "double \fBComputePriority\fP (double dPriorityInputs, unsigned int nTxSize=0) const "
+.br
+.ti -1c
+.RI "bool \fBCheckTransaction\fP (\fBCValidationState\fP &\fBstate\fP)"
+.br
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBnVersion\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBnTime\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBCTxIn\fP > \fBvin\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBCTxOut\fP > \fBvout\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBnLockTime\fP"
+.br
+.ti -1c
+.RI "int \fBnDoS\fP"
+.br
+.ti -1c
+.RI "\fBADD_SERIALIZE_METHODS\fP"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static const int \fBCURRENT_VERSION\fP =1"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBCTransaction\fP &a, const \fBCTransaction\fP &b)"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBCTransaction\fP &a, const \fBCTransaction\fP &b)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+The basic transaction that is broadcasted on the network and contained in blocks\&. A transaction can contain multiple inputs and outputs\&. 
+.PP
+Definition at line 255 of file transaction\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CTransaction::CTransaction ()\fC [inline]\fP"
+
+.PP
+Definition at line 269 of file transaction\&.h\&.
+.SS "CTransaction::CTransaction (int nVersion, unsigned int nTime, const std::vector< \fBCTxIn\fP > & vin, const std::vector< \fBCTxOut\fP > & vout, unsigned int nLockTime)\fC [inline]\fP"
+
+.PP
+Definition at line 274 of file transaction\&.h\&.
+.SS "CTransaction::CTransaction (const \fBCMutableTransaction\fP & tx)"
+
+.PP
+Convert a \fBCMutableTransaction\fP into a \fBCTransaction\fP\&. 
+.PP
+Definition at line 8 of file transaction\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool CTransaction::CheckTransaction (\fBCValidationState\fP & state)"
+
+.PP
+Definition at line 49 of file transaction\&.cpp\&.
+.SS "double CTransaction::ComputePriority (double dPriorityInputs, unsigned int nTxSize = \fC0\fP) const"
+
+.PP
+Definition at line 30 of file transaction\&.cpp\&.
+.SS "bool CTransaction::DoS (int nDoSIn, bool fIn) const\fC [inline]\fP"
+
+.PP
+Definition at line 267 of file transaction\&.h\&.
+.SS "\fBuint256\fP CTransaction::GetHash () const\fC [inline]\fP"
+
+.PP
+Definition at line 309 of file transaction\&.h\&.
+.SS "\fBCAmount\fP CTransaction::GetValueOut () const"
+
+.PP
+Definition at line 100 of file transaction\&.cpp\&.
+.SS "bool CTransaction::IsCoinBase () const\fC [inline]\fP"
+
+.PP
+Definition at line 314 of file transaction\&.h\&.
+.SS "bool CTransaction::IsCoinStake () const\fC [inline]\fP"
+
+.PP
+Definition at line 319 of file transaction\&.h\&.
+.SS "bool CTransaction::IsNull () const\fC [inline]\fP"
+
+.PP
+Definition at line 304 of file transaction\&.h\&.
+.SS "template<typename Stream , typename Operation > void CTransaction::SerializationOp (Stream & s, Operation ser_action, int nType, int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 285 of file transaction\&.h\&.
+.SS "void CTransaction::SetNull ()\fC [inline]\fP"
+
+.PP
+Definition at line 294 of file transaction\&.h\&.
+.SS "std::string CTransaction::ToString () const"
+
+.PP
+Definition at line 12 of file transaction\&.cpp\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "bool operator!= (const \fBCTransaction\fP & a, const \fBCTransaction\fP & b)\fC [friend]\fP"
+
+.PP
+Definition at line 340 of file transaction\&.h\&.
+.SS "bool operator== (const \fBCTransaction\fP & a, const \fBCTransaction\fP & b)\fC [friend]\fP"
+
+.PP
+Definition at line 330 of file transaction\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "CTransaction::ADD_SERIALIZE_METHODS"
+
+.PP
+Definition at line 282 of file transaction\&.h\&.
+.SS "const int CTransaction::CURRENT_VERSION =1\fC [static]\fP"
+
+.PP
+Definition at line 258 of file transaction\&.h\&.
+.SS "int CTransaction::nDoS\fC [mutable]\fP"
+
+.PP
+Definition at line 266 of file transaction\&.h\&.
+.SS "unsigned int CTransaction::nLockTime"
+
+.PP
+Definition at line 263 of file transaction\&.h\&.
+.SS "unsigned int CTransaction::nTime"
+
+.PP
+Definition at line 260 of file transaction\&.h\&.
+.SS "int CTransaction::nVersion"
+
+.PP
+Definition at line 259 of file transaction\&.h\&.
+.SS "std::vector<\fBCTxIn\fP> CTransaction::vin"
+
+.PP
+Definition at line 261 of file transaction\&.h\&.
+.SS "std::vector<\fBCTxOut\fP> CTransaction::vout"
+
+.PP
+Definition at line 262 of file transaction\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

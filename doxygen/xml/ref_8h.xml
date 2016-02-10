@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="ref_8h" kind="file" language="C++">
+    <compoundname>ref.h</compoundname>
+    <includes refid="core_8h" local="yes">core.h</includes>
+    <includedby refid="ref_8c" local="yes">/home/dev/ds-160209/src/crypto/argon2/ref.c</includedby>
+    <incdepgraph>
+      <node id="4074">
+        <label>stddef.h</label>
+      </node>
+      <node id="4075">
+        <label>limits.h</label>
+      </node>
+      <node id="4070">
+        <label>/home/dev/ds-160209/src/crypto/argon2/ref.h</label>
+        <link refid="ref.h"/>
+        <childnode refid="4071" relation="include">
+        </childnode>
+      </node>
+      <node id="4073">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="4072">
+        <label>argon2.h</label>
+        <link refid="argon2_8h"/>
+        <childnode refid="4073" relation="include">
+        </childnode>
+        <childnode refid="4074" relation="include">
+        </childnode>
+        <childnode refid="4075" relation="include">
+        </childnode>
+      </node>
+      <node id="4071">
+        <label>core.h</label>
+        <link refid="core_8h"/>
+        <childnode refid="4072" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="4077">
+        <label>/home/dev/ds-160209/src/crypto/argon2/ref.c</label>
+        <link refid="ref_8c"/>
+      </node>
+      <node id="4076">
+        <label>/home/dev/ds-160209/src/crypto/argon2/ref.h</label>
+        <link refid="ref.h"/>
+        <childnode refid="4077" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="ref_8h_1a815c1bdb75f515c4b6bf35bcbf185c06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void fill_block</definition>
+        <argsstring>(const block *prev_block, const block *ref_block, block *next_block)</argsstring>
+        <name>fill_block</name>
+        <param>
+          <type>const <ref refid="core_8h_1ace80c27428e237fe24f54ae915a36133" kindref="member">block</ref> *</type>
+          <declname>prev_block</declname>
+        </param>
+        <param>
+          <type>const <ref refid="core_8h_1ace80c27428e237fe24f54ae915a36133" kindref="member">block</ref> *</type>
+          <declname>ref_block</declname>
+        </param>
+        <param>
+          <type><ref refid="core_8h_1ace80c27428e237fe24f54ae915a36133" kindref="member">block</ref> *</type>
+          <declname>next_block</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/ref.h" line="26" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/ref.c" bodystart="25" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="ref_8h_1a4109a2142513c6e3fc7441fdfa64a25f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void generate_addresses</definition>
+        <argsstring>(const argon2_instance_t *instance, const argon2_position_t *position, uint64_t *pseudo_rands)</argsstring>
+        <name>generate_addresses</name>
+        <param>
+          <type>const <ref refid="core_8h_1ac888abc6f5f9faa538ff23dc92b1e1c2" kindref="member">argon2_instance_t</ref> *</type>
+          <declname>instance</declname>
+        </param>
+        <param>
+          <type>const <ref refid="core_8h_1a24aa65731593323bf283524ded8b6cdb" kindref="member">argon2_position_t</ref> *</type>
+          <declname>position</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref> *</type>
+          <declname>pseudo_rands</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/ref.h" line="37" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/opt.c" bodystart="51" bodyend="84"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Argon2<sp/>source<sp/>code<sp/>package</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Written<sp/>by<sp/>Daniel<sp/>Dinu<sp/>and<sp/>Dmitry<sp/>Khovratovich,<sp/>2015</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>This<sp/>work<sp/>is<sp/>licensed<sp/>under<sp/>a<sp/>Creative<sp/>Commons<sp/>CC0<sp/>1.0<sp/>License/Waiver.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>CC0<sp/>Public<sp/>Domain<sp/>Dedication<sp/>along</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>with</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>this<sp/>software.<sp/>If<sp/>not,<sp/>see</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>&lt;http://creativecommons.org/publicdomain/zero/1.0/&gt;.</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>ARGON2_REF_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ARGON2_REF_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="core_8h" kindref="compound">core.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>Function<sp/>fills<sp/>a<sp/>new<sp/>memory<sp/>block</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>@param<sp/>prev_block<sp/>Pointer<sp/>to<sp/>the<sp/>previous<sp/>block</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>@param<sp/>ref_block<sp/>Pointer<sp/>to<sp/>the<sp/>reference<sp/>block</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@param<sp/>next_block<sp/>Pointer<sp/>to<sp/>the<sp/>block<sp/>to<sp/>be<sp/>constructed</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>@pre<sp/>all<sp/>block<sp/>pointers<sp/>must<sp/>be<sp/>valid</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="ref_8h_1a815c1bdb75f515c4b6bf35bcbf185c06" kindref="member">fill_block</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structblock__" kindref="compound">block</ref><sp/>*prev_block,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structblock__" kindref="compound">block</ref><sp/>*ref_block,</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structblock__" kindref="compound">block</ref><sp/>*next_block);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/>Generate<sp/>pseudo-random<sp/>values<sp/>to<sp/>reference<sp/>blocks<sp/>in<sp/>the<sp/>segment<sp/>and<sp/>puts</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/>them<sp/>into<sp/>the<sp/>array</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>@param<sp/>instance<sp/>Pointer<sp/>to<sp/>the<sp/>current<sp/>instance</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>@param<sp/>position<sp/>Pointer<sp/>to<sp/>the<sp/>current<sp/>position</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*<sp/>@param<sp/>pseudo_rands<sp/>Pointer<sp/>to<sp/>the<sp/>array<sp/>of<sp/>64-bit<sp/>values</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/>@pre<sp/>pseudo_rands<sp/>must<sp/>point<sp/>to<sp/>@a<sp/>instance-&gt;segment_length<sp/>allocated<sp/>values</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="ref_8h_1a4109a2142513c6e3fc7441fdfa64a25f" kindref="member">generate_addresses</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_argon2__instance__t" kindref="compound">argon2_instance_t</ref><sp/>*instance,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_argon2__position__t" kindref="compound">argon2_position_t</ref><sp/>*position,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>*pseudo_rands);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/></highlight><highlight class="comment">/*<sp/>ARGON2_REF_H<sp/>*/</highlight><highlight class="preprocessor"></highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/crypto/argon2/ref.h"/>
+  </compounddef>
+</doxygen>

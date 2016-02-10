@@ -1,0 +1,301 @@
+.TH "leveldb::log" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+leveldb::log \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBLogTest\fP"
+.br
+.ti -1c
+.RI "class \fBReader\fP"
+.br
+.ti -1c
+.RI "class \fBWriter\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBRecordType\fP { \fBkZeroType\fP = 0, \fBkFullType\fP = 1, \fBkFirstType\fP = 2, \fBkMiddleType\fP = 3, \fBkLastType\fP = 4 }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, Empty)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, ReadWrite)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, ManyBlocks)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, Fragmentation)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, MarginalTrailer)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, MarginalTrailer2)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, ShortTrailer)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, AlignedEof)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, RandomRead)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, ReadError)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, BadRecordType)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, TruncatedTrailingRecordIsIgnored)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, BadLength)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, BadLengthAtEndIsIgnored)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, ChecksumMismatch)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, UnexpectedMiddleType)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, UnexpectedLastType)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, UnexpectedFullType)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, UnexpectedFirstType)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, MissingLastIsIgnored)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, PartialLastIsIgnored)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, ErrorJoinsRecords)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, ReadStart)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, ReadSecondOneOff)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, ReadSecondTenThousand)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, ReadSecondStart)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, ReadThirdOneOff)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, ReadThirdStart)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, ReadFourthOneOff)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, ReadFourthFirstBlockTrailer)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, ReadFourthMiddleBlock)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, ReadFourthLastBlock)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, ReadFourthStart)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, ReadEnd)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBLogTest\fP, ReadPastEnd)"
+.br
+.in -1c
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBleveldb::log::RecordType\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIkZeroType \fP\fP
+.TP
+\fB\fIkFullType \fP\fP
+.TP
+\fB\fIkFirstType \fP\fP
+.TP
+\fB\fIkMiddleType \fP\fP
+.TP
+\fB\fIkLastType \fP\fP
+.PP
+Definition at line 14 of file log_format\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "leveldb::log::TEST (\fBLogTest\fP, Empty)"
+
+.PP
+Definition at line 238 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, ReadWrite)"
+
+.PP
+Definition at line 242 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, ManyBlocks)"
+
+.PP
+Definition at line 255 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, Fragmentation)"
+
+.PP
+Definition at line 265 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, MarginalTrailer)"
+
+.PP
+Definition at line 275 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, MarginalTrailer2)"
+
+.PP
+Definition at line 288 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, ShortTrailer)"
+
+.PP
+Definition at line 301 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, AlignedEof)"
+
+.PP
+Definition at line 313 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, RandomRead)"
+
+.PP
+Definition at line 321 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, ReadError)"
+
+.PP
+Definition at line 336 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, BadRecordType)"
+
+.PP
+Definition at line 344 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, TruncatedTrailingRecordIsIgnored)"
+
+.PP
+Definition at line 354 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, BadLength)"
+
+.PP
+Definition at line 363 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, BadLengthAtEndIsIgnored)"
+
+.PP
+Definition at line 374 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, ChecksumMismatch)"
+
+.PP
+Definition at line 382 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, UnexpectedMiddleType)"
+
+.PP
+Definition at line 390 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, UnexpectedLastType)"
+
+.PP
+Definition at line 399 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, UnexpectedFullType)"
+
+.PP
+Definition at line 408 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, UnexpectedFirstType)"
+
+.PP
+Definition at line 419 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, MissingLastIsIgnored)"
+
+.PP
+Definition at line 430 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, PartialLastIsIgnored)"
+
+.PP
+Definition at line 439 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, ErrorJoinsRecords)"
+
+.PP
+Definition at line 448 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, ReadStart)"
+
+.PP
+Definition at line 471 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, ReadSecondOneOff)"
+
+.PP
+Definition at line 475 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, ReadSecondTenThousand)"
+
+.PP
+Definition at line 479 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, ReadSecondStart)"
+
+.PP
+Definition at line 483 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, ReadThirdOneOff)"
+
+.PP
+Definition at line 487 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, ReadThirdStart)"
+
+.PP
+Definition at line 491 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, ReadFourthOneOff)"
+
+.PP
+Definition at line 495 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, ReadFourthFirstBlockTrailer)"
+
+.PP
+Definition at line 499 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, ReadFourthMiddleBlock)"
+
+.PP
+Definition at line 503 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, ReadFourthLastBlock)"
+
+.PP
+Definition at line 507 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, ReadFourthStart)"
+
+.PP
+Definition at line 511 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, ReadEnd)"
+
+.PP
+Definition at line 517 of file log_test\&.cc\&.
+.SS "leveldb::log::TEST (\fBLogTest\fP, ReadPastEnd)"
+
+.PP
+Definition at line 521 of file log_test\&.cc\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

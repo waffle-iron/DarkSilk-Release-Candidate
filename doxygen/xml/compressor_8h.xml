@@ -1,0 +1,1842 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="compressor_8h" kind="file" language="C++">
+    <compoundname>compressor.h</compoundname>
+    <includes refid="transaction_8h" local="yes">primitives/transaction.h</includes>
+    <includes refid="txdb_8h" local="yes">txdb.h</includes>
+    <includedby refid="undo_8h" local="yes">/home/dev/ds-160209/src/undo.h</includedby>
+    <includedby refid="compressor_8cpp" local="yes">/home/dev/ds-160209/src/compressor.cpp</includedby>
+    <incdepgraph>
+      <node id="3236">
+        <label>list</label>
+      </node>
+      <node id="3205">
+        <label>boost/thread/mutex.hpp</label>
+      </node>
+      <node id="3262">
+        <label>leveldb/write_batch.h</label>
+        <link refid="write__batch_8h"/>
+        <childnode refid="3190" relation="include">
+        </childnode>
+        <childnode refid="3260" relation="include">
+        </childnode>
+      </node>
+      <node id="3285">
+        <label>netinet/in.h</label>
+      </node>
+      <node id="3188">
+        <label>amount.h</label>
+        <link refid="amount_8h"/>
+        <childnode refid="3189" relation="include">
+        </childnode>
+        <childnode refid="3203" relation="include">
+        </childnode>
+        <childnode refid="3190" relation="include">
+        </childnode>
+      </node>
+      <node id="3278">
+        <label>arpa/inet.h</label>
+      </node>
+      <node id="3267">
+        <label>boost/thread/condition_variable.hpp</label>
+      </node>
+      <node id="3195">
+        <label>limits</label>
+      </node>
+      <node id="3223">
+        <label>crypto/sha256.h</label>
+        <link refid="sha256_8h"/>
+        <childnode refid="3196" relation="include">
+        </childnode>
+        <childnode refid="3203" relation="include">
+        </childnode>
+      </node>
+      <node id="3224">
+        <label>crypto/argon2/blake2/blake2.h</label>
+        <link refid="blake2_8h"/>
+        <childnode refid="3225" relation="include">
+        </childnode>
+        <childnode refid="3196" relation="include">
+        </childnode>
+        <childnode refid="3207" relation="include">
+        </childnode>
+      </node>
+      <node id="3187">
+        <label>primitives/transaction.h</label>
+        <link refid="transaction_8h"/>
+        <childnode refid="3188" relation="include">
+        </childnode>
+        <childnode refid="3211" relation="include">
+        </childnode>
+        <childnode refid="3189" relation="include">
+        </childnode>
+        <childnode refid="3214" relation="include">
+        </childnode>
+        <childnode refid="3215" relation="include">
+        </childnode>
+        <childnode refid="3251" relation="include">
+        </childnode>
+        <childnode refid="3249" relation="include">
+        </childnode>
+      </node>
+      <node id="3215">
+        <label>script.h</label>
+        <link refid="script_8h"/>
+        <childnode refid="3190" relation="include">
+        </childnode>
+        <childnode refid="3191" relation="include">
+        </childnode>
+        <childnode refid="3196" relation="include">
+        </childnode>
+        <childnode refid="3216" relation="include">
+        </childnode>
+        <childnode refid="3217" relation="include">
+        </childnode>
+        <childnode refid="3218" relation="include">
+        </childnode>
+        <childnode refid="3227" relation="include">
+        </childnode>
+        <childnode refid="3229" relation="include">
+        </childnode>
+        <childnode refid="3248" relation="include">
+        </childnode>
+      </node>
+      <node id="3247">
+        <label>openssl/rand.h</label>
+      </node>
+      <node id="3212">
+        <label>assert.h</label>
+      </node>
+      <node id="3200">
+        <label>boost/tuple/tuple.hpp</label>
+      </node>
+      <node id="3284">
+        <label>net/if.h</label>
+      </node>
+      <node id="3264">
+        <label>txmempool.h</label>
+        <link refid="txmempool_8h"/>
+        <childnode refid="3187" relation="include">
+        </childnode>
+        <childnode refid="3265" relation="include">
+        </childnode>
+        <childnode refid="3270" relation="include">
+        </childnode>
+        <childnode refid="3188" relation="include">
+        </childnode>
+        <childnode refid="3273" relation="include">
+        </childnode>
+      </node>
+      <node id="3261">
+        <label>leveldb/options.h</label>
+        <link refid="options_8h"/>
+        <childnode refid="3225" relation="include">
+        </childnode>
+      </node>
+      <node id="3269">
+        <label>boost/thread/recursive_mutex.hpp</label>
+      </node>
+      <node id="3209">
+        <label>version.h</label>
+        <link refid="version_8h"/>
+        <childnode refid="3210" relation="include">
+        </childnode>
+        <childnode refid="3190" relation="include">
+        </childnode>
+      </node>
+      <node id="3270">
+        <label>coins.h</label>
+        <link refid="coins_8h"/>
+        <childnode refid="3271" relation="include">
+        </childnode>
+        <childnode refid="3264" relation="include">
+        </childnode>
+        <childnode refid="3212" relation="include">
+        </childnode>
+        <childnode refid="3196" relation="include">
+        </childnode>
+        <childnode refid="3216" relation="include">
+        </childnode>
+        <childnode refid="3272" relation="include">
+        </childnode>
+      </node>
+      <node id="3206">
+        <label>sys/mman.h</label>
+      </node>
+      <node id="3203">
+        <label>stdlib.h</label>
+      </node>
+      <node id="3292">
+        <label>chain.h</label>
+        <link refid="chain_8h"/>
+        <childnode refid="3293" relation="include">
+        </childnode>
+        <childnode refid="3229" relation="include">
+        </childnode>
+        <childnode refid="3290" relation="include">
+        </childnode>
+        <childnode refid="3191" relation="include">
+        </childnode>
+        <childnode refid="3216" relation="include">
+        </childnode>
+      </node>
+      <node id="3216">
+        <label>boost/foreach.hpp</label>
+      </node>
+      <node id="3246">
+        <label>openssl/crypto.h</label>
+      </node>
+      <node id="3281">
+        <label>compat.h</label>
+        <link refid="compat_8h"/>
+        <childnode refid="3282" relation="include">
+        </childnode>
+        <childnode refid="3206" relation="include">
+        </childnode>
+        <childnode refid="3283" relation="include">
+        </childnode>
+        <childnode refid="3230" relation="include">
+        </childnode>
+        <childnode refid="3284" relation="include">
+        </childnode>
+        <childnode refid="3285" relation="include">
+        </childnode>
+        <childnode refid="3278" relation="include">
+        </childnode>
+        <childnode refid="3286" relation="include">
+        </childnode>
+        <childnode refid="3207" relation="include">
+        </childnode>
+        <childnode refid="3287" relation="include">
+        </childnode>
+        <childnode refid="3208" relation="include">
+        </childnode>
+        <childnode refid="3288" relation="include">
+        </childnode>
+      </node>
+      <node id="3242">
+        <label>boost/date_time/posix_time/posix_time_types.hpp</label>
+      </node>
+      <node id="3220">
+        <label>openssl/sha.h</label>
+      </node>
+      <node id="3288">
+        <label>errno.h</label>
+      </node>
+      <node id="3194">
+        <label>cassert</label>
+      </node>
+      <node id="3213">
+        <label>stdexcept</label>
+      </node>
+      <node id="3229">
+        <label>util.h</label>
+        <link refid="util_8h"/>
+        <childnode refid="3230" relation="include">
+        </childnode>
+        <childnode refid="3231" relation="include">
+        </childnode>
+        <childnode refid="3232" relation="include">
+        </childnode>
+        <childnode refid="3189" relation="include">
+        </childnode>
+        <childnode refid="3233" relation="include">
+        </childnode>
+        <childnode refid="3188" relation="include">
+        </childnode>
+        <childnode refid="3192" relation="include">
+        </childnode>
+        <childnode refid="3236" relation="include">
+        </childnode>
+        <childnode refid="3237" relation="include">
+        </childnode>
+        <childnode refid="3191" relation="include">
+        </childnode>
+        <childnode refid="3190" relation="include">
+        </childnode>
+        <childnode refid="3238" relation="include">
+        </childnode>
+        <childnode refid="3239" relation="include">
+        </childnode>
+        <childnode refid="3240" relation="include">
+        </childnode>
+        <childnode refid="3241" relation="include">
+        </childnode>
+        <childnode refid="3242" relation="include">
+        </childnode>
+        <childnode refid="3243" relation="include">
+        </childnode>
+        <childnode refid="3244" relation="include">
+        </childnode>
+        <childnode refid="3245" relation="include">
+        </childnode>
+        <childnode refid="3246" relation="include">
+        </childnode>
+        <childnode refid="3247" relation="include">
+        </childnode>
+        <childnode refid="3228" relation="include">
+        </childnode>
+        <childnode refid="3196" relation="include">
+        </childnode>
+      </node>
+      <node id="3289">
+        <label>protocol.h</label>
+        <link refid="protocol_8h"/>
+        <childnode refid="3290" relation="include">
+        </childnode>
+        <childnode refid="3189" relation="include">
+        </childnode>
+        <childnode refid="3280" relation="include">
+        </childnode>
+        <childnode refid="3196" relation="include">
+        </childnode>
+        <childnode refid="3190" relation="include">
+        </childnode>
+      </node>
+      <node id="3241">
+        <label>boost/date_time/gregorian/gregorian_types.hpp</label>
+      </node>
+      <node id="3257">
+        <label>leveldb/db.h</label>
+        <link refid="leveldb_2include_2leveldb_2db_8h"/>
+        <childnode refid="3196" relation="include">
+        </childnode>
+        <childnode refid="3249" relation="include">
+        </childnode>
+        <childnode refid="3258" relation="include">
+        </childnode>
+        <childnode refid="3261" relation="include">
+        </childnode>
+      </node>
+      <node id="3190">
+        <label>string</label>
+      </node>
+      <node id="3294">
+        <label>scrypt.h</label>
+        <link refid="scrypt_8h"/>
+        <childnode refid="3196" relation="include">
+        </childnode>
+        <childnode refid="3203" relation="include">
+        </childnode>
+        <childnode refid="3229" relation="include">
+        </childnode>
+        <childnode refid="3274" relation="include">
+        </childnode>
+      </node>
+      <node id="3192">
+        <label>map</label>
+      </node>
+      <node id="3238">
+        <label>boost/thread.hpp</label>
+      </node>
+      <node id="3291">
+        <label>addrman.h</label>
+        <link refid="addrman_8h"/>
+        <childnode refid="3280" relation="include">
+        </childnode>
+        <childnode refid="3289" relation="include">
+        </childnode>
+        <childnode refid="3265" relation="include">
+        </childnode>
+        <childnode refid="3251" relation="include">
+        </childnode>
+        <childnode refid="3229" relation="include">
+        </childnode>
+        <childnode refid="3192" relation="include">
+        </childnode>
+        <childnode refid="3191" relation="include">
+        </childnode>
+      </node>
+      <node id="3253">
+        <label>leveldbwrapper.h</label>
+        <link refid="leveldbwrapper_8h"/>
+        <childnode refid="3189" relation="include">
+        </childnode>
+        <childnode refid="3254" relation="include">
+        </childnode>
+        <childnode refid="3229" relation="include">
+        </childnode>
+        <childnode refid="3240" relation="include">
+        </childnode>
+        <childnode refid="3257" relation="include">
+        </childnode>
+        <childnode refid="3262" relation="include">
+        </childnode>
+      </node>
+      <node id="3225">
+        <label>stddef.h</label>
+      </node>
+      <node id="3217">
+        <label>boost/variant.hpp</label>
+      </node>
+      <node id="3287">
+        <label>netdb.h</label>
+      </node>
+      <node id="3282">
+        <label>sys/fcntl.h</label>
+      </node>
+      <node id="3271">
+        <label>undo.h</label>
+        <link refid="undo_8h"/>
+        <childnode refid="3186" relation="include">
+        </childnode>
+      </node>
+      <node id="3260">
+        <label>leveldb/status.h</label>
+        <link refid="status_8h"/>
+        <childnode refid="3190" relation="include">
+        </childnode>
+        <childnode refid="3259" relation="include">
+        </childnode>
+      </node>
+      <node id="3273">
+        <label>boost/circular_buffer.hpp</label>
+      </node>
+      <node id="3189">
+        <label>serialize.h</label>
+        <link refid="serialize_8h"/>
+        <childnode refid="3190" relation="include">
+        </childnode>
+        <childnode refid="3191" relation="include">
+        </childnode>
+        <childnode refid="3192" relation="include">
+        </childnode>
+        <childnode refid="3193" relation="include">
+        </childnode>
+        <childnode refid="3194" relation="include">
+        </childnode>
+        <childnode refid="3195" relation="include">
+        </childnode>
+        <childnode refid="3196" relation="include">
+        </childnode>
+        <childnode refid="3197" relation="include">
+        </childnode>
+        <childnode refid="3198" relation="include">
+        </childnode>
+        <childnode refid="3199" relation="include">
+        </childnode>
+        <childnode refid="3200" relation="include">
+        </childnode>
+        <childnode refid="3201" relation="include">
+        </childnode>
+        <childnode refid="3209" relation="include">
+        </childnode>
+      </node>
+      <node id="3207">
+        <label>limits.h</label>
+      </node>
+      <node id="3266">
+        <label>threadsafety.h</label>
+        <link refid="threadsafety_8h"/>
+      </node>
+      <node id="3279">
+        <label>mruset.h</label>
+        <link refid="mruset_8h"/>
+        <childnode refid="3193" relation="include">
+        </childnode>
+        <childnode refid="3275" relation="include">
+        </childnode>
+      </node>
+      <node id="3232">
+        <label>sys/resource.h</label>
+      </node>
+      <node id="3243">
+        <label>openssl/bio.h</label>
+      </node>
+      <node id="3277">
+        <label>boost/signals2/signal.hpp</label>
+      </node>
+      <node id="3280">
+        <label>netbase.h</label>
+        <link refid="netbase_8h"/>
+        <childnode refid="3190" relation="include">
+        </childnode>
+        <childnode refid="3191" relation="include">
+        </childnode>
+        <childnode refid="3189" relation="include">
+        </childnode>
+        <childnode refid="3281" relation="include">
+        </childnode>
+      </node>
+      <node id="3219">
+        <label>hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="3211" relation="include">
+        </childnode>
+        <childnode refid="3189" relation="include">
+        </childnode>
+        <childnode refid="3220" relation="include">
+        </childnode>
+        <childnode refid="3221" relation="include">
+        </childnode>
+        <childnode refid="3222" relation="include">
+        </childnode>
+        <childnode refid="3223" relation="include">
+        </childnode>
+        <childnode refid="3224" relation="include">
+        </childnode>
+        <childnode refid="3226" relation="include">
+        </childnode>
+        <childnode refid="3191" relation="include">
+        </childnode>
+      </node>
+      <node id="3286">
+        <label>ifaddrs.h</label>
+      </node>
+      <node id="3248">
+        <label>stealth.h</label>
+        <link refid="stealth_8h"/>
+        <childnode refid="3229" relation="include">
+        </childnode>
+        <childnode refid="3189" relation="include">
+        </childnode>
+        <childnode refid="3203" relation="include">
+        </childnode>
+        <childnode refid="3249" relation="include">
+        </childnode>
+        <childnode refid="3191" relation="include">
+        </childnode>
+        <childnode refid="3250" relation="include">
+        </childnode>
+      </node>
+      <node id="3230">
+        <label>sys/types.h</label>
+      </node>
+      <node id="3256">
+        <label>ios</label>
+      </node>
+      <node id="3204">
+        <label>string.h</label>
+      </node>
+      <node id="3210">
+        <label>clientversion.h</label>
+        <link refid="clientversion_8h"/>
+      </node>
+      <node id="3198">
+        <label>cstdio</label>
+      </node>
+      <node id="3268">
+        <label>boost/thread/locks.hpp</label>
+      </node>
+      <node id="3245">
+        <label>openssl/buffer.h</label>
+      </node>
+      <node id="3199">
+        <label>boost/type_traits/is_fundamental.hpp</label>
+      </node>
+      <node id="3263">
+        <label>main.h</label>
+        <link refid="main_8h"/>
+        <childnode refid="3264" relation="include">
+        </childnode>
+        <childnode refid="3274" relation="include">
+        </childnode>
+        <childnode refid="3215" relation="include">
+        </childnode>
+        <childnode refid="3254" relation="include">
+        </childnode>
+        <childnode refid="3252" relation="include">
+        </childnode>
+        <childnode refid="3292" relation="include">
+        </childnode>
+        <childnode refid="3236" relation="include">
+        </childnode>
+        <childnode refid="3272" relation="include">
+        </childnode>
+      </node>
+      <node id="3240">
+        <label>boost/filesystem/path.hpp</label>
+      </node>
+      <node id="3272">
+        <label>boost/unordered_map.hpp</label>
+      </node>
+      <node id="3218">
+        <label>pubkey.h</label>
+        <link refid="pubkey_8h"/>
+        <childnode refid="3219" relation="include">
+        </childnode>
+        <childnode refid="3189" relation="include">
+        </childnode>
+        <childnode refid="3211" relation="include">
+        </childnode>
+        <childnode refid="3213" relation="include">
+        </childnode>
+        <childnode refid="3191" relation="include">
+        </childnode>
+      </node>
+      <node id="3208">
+        <label>unistd.h</label>
+      </node>
+      <node id="3191">
+        <label>vector</label>
+      </node>
+      <node id="3227">
+        <label>bignum.h</label>
+        <link refid="bignum_8h"/>
+        <childnode refid="3189" relation="include">
+        </childnode>
+        <childnode refid="3211" relation="include">
+        </childnode>
+        <childnode refid="3228" relation="include">
+        </childnode>
+        <childnode refid="3213" relation="include">
+        </childnode>
+        <childnode refid="3191" relation="include">
+        </childnode>
+        <childnode refid="3196" relation="include">
+        </childnode>
+      </node>
+      <node id="3274">
+        <label>net.h</label>
+        <link refid="net_8h"/>
+        <childnode refid="3275" relation="include">
+        </childnode>
+        <childnode refid="3276" relation="include">
+        </childnode>
+        <childnode refid="3216" relation="include">
+        </childnode>
+        <childnode refid="3277" relation="include">
+        </childnode>
+        <childnode refid="3247" relation="include">
+        </childnode>
+        <childnode refid="3278" relation="include">
+        </childnode>
+        <childnode refid="3279" relation="include">
+        </childnode>
+        <childnode refid="3280" relation="include">
+        </childnode>
+        <childnode refid="3289" relation="include">
+        </childnode>
+        <childnode refid="3291" relation="include">
+        </childnode>
+        <childnode refid="3219" relation="include">
+        </childnode>
+        <childnode refid="3254" relation="include">
+        </childnode>
+      </node>
+      <node id="3221">
+        <label>openssl/ripemd.h</label>
+      </node>
+      <node id="3239">
+        <label>boost/filesystem.hpp</label>
+      </node>
+      <node id="3237">
+        <label>utility</label>
+      </node>
+      <node id="3186">
+        <label>/home/dev/ds-160209/src/compressor.h</label>
+        <link refid="compressor.h"/>
+        <childnode refid="3187" relation="include">
+        </childnode>
+        <childnode refid="3252" relation="include">
+        </childnode>
+      </node>
+      <node id="3235">
+        <label>sstream</label>
+      </node>
+      <node id="3244">
+        <label>openssl/evp.h</label>
+      </node>
+      <node id="3233">
+        <label>tinyformat.h</label>
+        <link refid="tinyformat_8h"/>
+        <childnode refid="3194" relation="include">
+        </childnode>
+        <childnode refid="3234" relation="include">
+        </childnode>
+        <childnode refid="3235" relation="include">
+        </childnode>
+        <childnode refid="3213" relation="include">
+        </childnode>
+      </node>
+      <node id="3196">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="3254">
+        <label>streams.h</label>
+        <link refid="streams_8h"/>
+        <childnode refid="3201" relation="include">
+        </childnode>
+        <childnode refid="3189" relation="include">
+        </childnode>
+        <childnode refid="3255" relation="include">
+        </childnode>
+        <childnode refid="3212" relation="include">
+        </childnode>
+        <childnode refid="3256" relation="include">
+        </childnode>
+        <childnode refid="3195" relation="include">
+        </childnode>
+        <childnode refid="3192" relation="include">
+        </childnode>
+        <childnode refid="3193" relation="include">
+        </childnode>
+        <childnode refid="3196" relation="include">
+        </childnode>
+        <childnode refid="3190" relation="include">
+        </childnode>
+        <childnode refid="3204" relation="include">
+        </childnode>
+        <childnode refid="3237" relation="include">
+        </childnode>
+        <childnode refid="3191" relation="include">
+        </childnode>
+      </node>
+      <node id="3226">
+        <label>crypto/argon2/argon2.h</label>
+        <link refid="argon2_8h"/>
+        <childnode refid="3196" relation="include">
+        </childnode>
+        <childnode refid="3225" relation="include">
+        </childnode>
+        <childnode refid="3207" relation="include">
+        </childnode>
+      </node>
+      <node id="3231">
+        <label>sys/time.h</label>
+      </node>
+      <node id="3234">
+        <label>iostream</label>
+      </node>
+      <node id="3275">
+        <label>deque</label>
+      </node>
+      <node id="3211">
+        <label>uint256.h</label>
+        <link refid="uint256_8h"/>
+        <childnode refid="3212" relation="include">
+        </childnode>
+        <childnode refid="3197" relation="include">
+        </childnode>
+        <childnode refid="3213" relation="include">
+        </childnode>
+        <childnode refid="3196" relation="include">
+        </childnode>
+        <childnode refid="3190" relation="include">
+        </childnode>
+        <childnode refid="3191" relation="include">
+        </childnode>
+      </node>
+      <node id="3283">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="3259">
+        <label>leveldb/slice.h</label>
+        <link refid="slice_8h"/>
+        <childnode refid="3212" relation="include">
+        </childnode>
+        <childnode refid="3225" relation="include">
+        </childnode>
+        <childnode refid="3204" relation="include">
+        </childnode>
+        <childnode refid="3190" relation="include">
+        </childnode>
+      </node>
+      <node id="3276">
+        <label>boost/array.hpp</label>
+      </node>
+      <node id="3228">
+        <label>openssl/bn.h</label>
+      </node>
+      <node id="3252">
+        <label>txdb.h</label>
+        <link refid="txdb_8h"/>
+        <childnode refid="3253" relation="include">
+        </childnode>
+        <childnode refid="3263" relation="include">
+        </childnode>
+        <childnode refid="3192" relation="include">
+        </childnode>
+        <childnode refid="3190" relation="include">
+        </childnode>
+        <childnode refid="3237" relation="include">
+        </childnode>
+        <childnode refid="3191" relation="include">
+        </childnode>
+      </node>
+      <node id="3251">
+        <label>timedata.h</label>
+        <link refid="timedata_8h"/>
+        <childnode refid="3196" relation="include">
+        </childnode>
+      </node>
+      <node id="3201">
+        <label>allocators.h</label>
+        <link refid="allocators_8h"/>
+        <childnode refid="3202" relation="include">
+        </childnode>
+        <childnode refid="3204" relation="include">
+        </childnode>
+        <childnode refid="3190" relation="include">
+        </childnode>
+        <childnode refid="3205" relation="include">
+        </childnode>
+        <childnode refid="3192" relation="include">
+        </childnode>
+        <childnode refid="3206" relation="include">
+        </childnode>
+        <childnode refid="3207" relation="include">
+        </childnode>
+        <childnode refid="3208" relation="include">
+        </childnode>
+      </node>
+      <node id="3290">
+        <label>chainparams.h</label>
+        <link refid="chainparams_8h"/>
+        <childnode refid="3227" relation="include">
+        </childnode>
+        <childnode refid="3211" relation="include">
+        </childnode>
+        <childnode refid="3191" relation="include">
+        </childnode>
+      </node>
+      <node id="3193">
+        <label>set</label>
+      </node>
+      <node id="3255">
+        <label>algorithm</label>
+      </node>
+      <node id="3222">
+        <label>crypto/ripemd160.h</label>
+        <link refid="ripemd160_8h"/>
+        <childnode refid="3196" relation="include">
+        </childnode>
+        <childnode refid="3203" relation="include">
+        </childnode>
+      </node>
+      <node id="3214">
+        <label>util.h</label>
+      </node>
+      <node id="3249">
+        <label>stdio.h</label>
+      </node>
+      <node id="3202">
+        <label>cleanse.h</label>
+        <link refid="cleanse_8h"/>
+        <childnode refid="3203" relation="include">
+        </childnode>
+      </node>
+      <node id="3197">
+        <label>cstring</label>
+      </node>
+      <node id="3265">
+        <label>sync.h</label>
+        <link refid="sync_8h"/>
+        <childnode refid="3266" relation="include">
+        </childnode>
+        <childnode refid="3267" relation="include">
+        </childnode>
+        <childnode refid="3268" relation="include">
+        </childnode>
+        <childnode refid="3205" relation="include">
+        </childnode>
+        <childnode refid="3269" relation="include">
+        </childnode>
+      </node>
+      <node id="3250">
+        <label>inttypes.h</label>
+      </node>
+      <node id="3258">
+        <label>leveldb/iterator.h</label>
+        <link refid="iterator_8h"/>
+        <childnode refid="3259" relation="include">
+        </childnode>
+        <childnode refid="3260" relation="include">
+        </childnode>
+      </node>
+      <node id="3293">
+        <label>primitives/block.h</label>
+        <link refid="primitives_2block_8h"/>
+        <childnode refid="3187" relation="include">
+        </childnode>
+        <childnode refid="3226" relation="include">
+        </childnode>
+        <childnode refid="3294" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="3331">
+        <label>/home/dev/ds-160209/src/qt/darksilkgui.cpp</label>
+        <link refid="darksilkgui_8cpp"/>
+      </node>
+      <node id="3315">
+        <label>/home/dev/ds-160209/src/stormnodeman.cpp</label>
+        <link refid="stormnodeman_8cpp"/>
+      </node>
+      <node id="3336">
+        <label>/home/dev/ds-160209/src/rpcsmessage.cpp</label>
+        <link refid="rpcsmessage_8cpp"/>
+      </node>
+      <node id="3316">
+        <label>/home/dev/ds-160209/src/wallet.cpp</label>
+        <link refid="wallet_8cpp"/>
+      </node>
+      <node id="3344">
+        <label>/home/dev/ds-160209/src/qt/guiutil.cpp</label>
+        <link refid="guiutil_8cpp"/>
+      </node>
+      <node id="3376">
+        <label>/home/dev/ds-160209/src/stormnode-budget.h</label>
+        <link refid="stormnode-budget_8h"/>
+        <childnode refid="3306" relation="include">
+        </childnode>
+        <childnode refid="3308" relation="include">
+        </childnode>
+        <childnode refid="3322" relation="include">
+        </childnode>
+        <childnode refid="3323" relation="include">
+        </childnode>
+        <childnode refid="3312" relation="include">
+        </childnode>
+        <childnode refid="3326" relation="include">
+        </childnode>
+        <childnode refid="3313" relation="include">
+        </childnode>
+        <childnode refid="3314" relation="include">
+        </childnode>
+        <childnode refid="3316" relation="include">
+        </childnode>
+      </node>
+      <node id="3329">
+        <label>/home/dev/ds-160209/src/qt/messagemodel.h</label>
+        <link refid="messagemodel_8h"/>
+        <childnode refid="3330" relation="include">
+        </childnode>
+        <childnode refid="3331" relation="include">
+        </childnode>
+        <childnode refid="3332" relation="include">
+        </childnode>
+        <childnode refid="3333" relation="include">
+        </childnode>
+        <childnode refid="3334" relation="include">
+        </childnode>
+        <childnode refid="3335" relation="include">
+        </childnode>
+      </node>
+      <node id="3342">
+        <label>/home/dev/ds-160209/src/qt/addresstablemodel.cpp</label>
+        <link refid="addresstablemodel_8cpp"/>
+      </node>
+      <node id="3317">
+        <label>/home/dev/ds-160209/src/net.cpp</label>
+        <link refid="net_8cpp"/>
+      </node>
+      <node id="3303">
+        <label>/home/dev/ds-160209/src/sandstorm.h</label>
+        <link refid="sandstorm_8h"/>
+        <childnode refid="3304" relation="include">
+        </childnode>
+        <childnode refid="3307" relation="include">
+        </childnode>
+        <childnode refid="3308" relation="include">
+        </childnode>
+        <childnode refid="3317" relation="include">
+        </childnode>
+        <childnode refid="3318" relation="include">
+        </childnode>
+        <childnode refid="3319" relation="include">
+        </childnode>
+        <childnode refid="3320" relation="include">
+        </childnode>
+        <childnode refid="3321" relation="include">
+        </childnode>
+        <childnode refid="3322" relation="include">
+        </childnode>
+        <childnode refid="3323" relation="include">
+        </childnode>
+        <childnode refid="3324" relation="include">
+        </childnode>
+        <childnode refid="3325" relation="include">
+        </childnode>
+        <childnode refid="3326" relation="include">
+        </childnode>
+        <childnode refid="3313" relation="include">
+        </childnode>
+        <childnode refid="3327" relation="include">
+        </childnode>
+        <childnode refid="3315" relation="include">
+        </childnode>
+        <childnode refid="3316" relation="include">
+        </childnode>
+      </node>
+      <node id="3371">
+        <label>/home/dev/ds-160209/src/stormnode-sync.h</label>
+        <link refid="stormnode-sync_8h"/>
+        <childnode refid="3302" relation="include">
+        </childnode>
+        <childnode refid="3307" relation="include">
+        </childnode>
+        <childnode refid="3308" relation="include">
+        </childnode>
+        <childnode refid="3372" relation="include">
+        </childnode>
+        <childnode refid="3331" relation="include">
+        </childnode>
+        <childnode refid="3339" relation="include">
+        </childnode>
+        <childnode refid="3311" relation="include">
+        </childnode>
+        <childnode refid="3322" relation="include">
+        </childnode>
+        <childnode refid="3323" relation="include">
+        </childnode>
+        <childnode refid="3325" relation="include">
+        </childnode>
+        <childnode refid="3326" relation="include">
+        </childnode>
+        <childnode refid="3313" relation="include">
+        </childnode>
+        <childnode refid="3314" relation="include">
+        </childnode>
+        <childnode refid="3327" relation="include">
+        </childnode>
+        <childnode refid="3315" relation="include">
+        </childnode>
+      </node>
+      <node id="3298">
+        <label>/home/dev/ds-160209/src/txmempool.h</label>
+        <link refid="txmempool_8h"/>
+        <childnode refid="3299" relation="include">
+        </childnode>
+        <childnode refid="3297" relation="include">
+        </childnode>
+        <childnode refid="3387" relation="include">
+        </childnode>
+      </node>
+      <node id="3312">
+        <label>/home/dev/ds-160209/src/spork.cpp</label>
+        <link refid="spork_8cpp"/>
+      </node>
+      <node id="3357">
+        <label>/home/dev/ds-160209/src/qt/transactiondesc.cpp</label>
+        <link refid="transactiondesc_8cpp"/>
+      </node>
+      <node id="3372">
+        <label>/home/dev/ds-160209/src/qt/clientmodel.cpp</label>
+        <link refid="clientmodel_8cpp"/>
+      </node>
+      <node id="3351">
+        <label>/home/dev/ds-160209/src/qt/transactionview.cpp</label>
+        <link refid="transactionview_8cpp"/>
+      </node>
+      <node id="3323">
+        <label>/home/dev/ds-160209/src/rpcstormnode.cpp</label>
+        <link refid="rpcstormnode_8cpp"/>
+      </node>
+      <node id="3318">
+        <label>/home/dev/ds-160209/src/qt/coincontroldialog.cpp</label>
+        <link refid="coincontroldialog_8cpp"/>
+      </node>
+      <node id="3365">
+        <label>/home/dev/ds-160209/src/coins.cpp</label>
+        <link refid="coins_8cpp"/>
+      </node>
+      <node id="3332">
+        <label>/home/dev/ds-160209/src/qt/messagemodel.cpp</label>
+        <link refid="messagemodel_8cpp"/>
+      </node>
+      <node id="3297">
+        <label>/home/dev/ds-160209/src/coins.h</label>
+        <link refid="coins_8h"/>
+        <childnode refid="3298" relation="include">
+        </childnode>
+        <childnode refid="3365" relation="include">
+        </childnode>
+        <childnode refid="3308" relation="include">
+        </childnode>
+      </node>
+      <node id="3328">
+        <label>/home/dev/ds-160209/src/smessage.h</label>
+        <link refid="smessage_8h"/>
+        <childnode refid="3306" relation="include">
+        </childnode>
+        <childnode refid="3308" relation="include">
+        </childnode>
+        <childnode refid="3329" relation="include">
+        </childnode>
+        <childnode refid="3335" relation="include">
+        </childnode>
+        <childnode refid="3310" relation="include">
+        </childnode>
+        <childnode refid="3336" relation="include">
+        </childnode>
+        <childnode refid="3337" relation="include">
+        </childnode>
+        <childnode refid="3316" relation="include">
+        </childnode>
+      </node>
+      <node id="3330">
+        <label>/home/dev/ds-160209/src/qt/darksilk.cpp</label>
+        <link refid="darksilk_8cpp"/>
+      </node>
+      <node id="3358">
+        <label>/home/dev/ds-160209/src/rpcwallet.cpp</label>
+        <link refid="rpcwallet_8cpp"/>
+      </node>
+      <node id="3383">
+        <label>/home/dev/ds-160209/src/rpcblockchain.cpp</label>
+        <link refid="rpcblockchain_8cpp"/>
+        <childnode refid="3355" relation="include">
+        </childnode>
+      </node>
+      <node id="3387">
+        <label>/home/dev/ds-160209/src/txmempool.cpp</label>
+        <link refid="txmempool_8cpp"/>
+      </node>
+      <node id="3370">
+        <label>/home/dev/ds-160209/src/stormnode-payments.h</label>
+        <link refid="stormnode-payments_8h"/>
+        <childnode refid="3371" relation="include">
+        </childnode>
+        <childnode refid="3306" relation="include">
+        </childnode>
+        <childnode refid="3308" relation="include">
+        </childnode>
+        <childnode refid="3309" relation="include">
+        </childnode>
+        <childnode refid="3322" relation="include">
+        </childnode>
+        <childnode refid="3323" relation="include">
+        </childnode>
+        <childnode refid="3325" relation="include">
+        </childnode>
+        <childnode refid="3313" relation="include">
+        </childnode>
+        <childnode refid="3314" relation="include">
+        </childnode>
+        <childnode refid="3327" relation="include">
+        </childnode>
+        <childnode refid="3315" relation="include">
+        </childnode>
+        <childnode refid="3316" relation="include">
+        </childnode>
+      </node>
+      <node id="3355">
+        <label>/home/dev/ds-160209/src/qt/statisticspage.cpp</label>
+        <link refid="statisticspage_8cpp"/>
+      </node>
+      <node id="3347">
+        <label>/home/dev/ds-160209/src/qt/sendcoinsentry.cpp</label>
+        <link refid="sendcoinsentry_8cpp"/>
+      </node>
+      <node id="3380">
+        <label>/home/dev/ds-160209/src/qt/debugconsole.h</label>
+        <link refid="debugconsole_8h"/>
+        <childnode refid="3331" relation="include">
+        </childnode>
+        <childnode refid="3381" relation="include">
+        </childnode>
+      </node>
+      <node id="3378">
+        <label>/home/dev/ds-160209/src/chainparams.cpp</label>
+        <link refid="chainparams_8cpp"/>
+      </node>
+      <node id="3310">
+        <label>/home/dev/ds-160209/src/qt/walletmodel.cpp</label>
+        <link refid="walletmodel_8cpp"/>
+      </node>
+      <node id="3389">
+        <label>/home/dev/ds-160209/src/compressor.cpp</label>
+        <link refid="compressor_8cpp"/>
+      </node>
+      <node id="3349">
+        <label>/home/dev/ds-160209/src/qt/test/uritests.cpp</label>
+        <link refid="uritests_8cpp"/>
+      </node>
+      <node id="3300">
+        <label>/home/dev/ds-160209/src/wallet.h</label>
+        <link refid="wallet_8h"/>
+        <childnode refid="3301" relation="include">
+        </childnode>
+        <childnode refid="3305" relation="include">
+        </childnode>
+        <childnode refid="3328" relation="include">
+        </childnode>
+        <childnode refid="3338" relation="include">
+        </childnode>
+        <childnode refid="3317" relation="include">
+        </childnode>
+        <childnode refid="3340" relation="include">
+        </childnode>
+        <childnode refid="3341" relation="include">
+        </childnode>
+        <childnode refid="3342" relation="include">
+        </childnode>
+        <childnode refid="3352" relation="include">
+        </childnode>
+        <childnode refid="3353" relation="include">
+        </childnode>
+        <childnode refid="3318" relation="include">
+        </childnode>
+        <childnode refid="3330" relation="include">
+        </childnode>
+        <childnode refid="3331" relation="include">
+        </childnode>
+        <childnode refid="3354" relation="include">
+        </childnode>
+        <childnode refid="3356" relation="include">
+        </childnode>
+        <childnode refid="3348" relation="include">
+        </childnode>
+        <childnode refid="3355" relation="include">
+        </childnode>
+        <childnode refid="3320" relation="include">
+        </childnode>
+        <childnode refid="3357" relation="include">
+        </childnode>
+        <childnode refid="3321" relation="include">
+        </childnode>
+        <childnode refid="3350" relation="include">
+        </childnode>
+        <childnode refid="3310" relation="include">
+        </childnode>
+        <childnode refid="3358" relation="include">
+        </childnode>
+        <childnode refid="3359" relation="include">
+        </childnode>
+        <childnode refid="3360" relation="include">
+        </childnode>
+        <childnode refid="3361" relation="include">
+        </childnode>
+        <childnode refid="3316" relation="include">
+        </childnode>
+        <childnode refid="3362" relation="include">
+        </childnode>
+      </node>
+      <node id="3384">
+        <label>/home/dev/ds-160209/src/rpcnet.cpp</label>
+        <link refid="rpcnet_8cpp"/>
+      </node>
+      <node id="3369">
+        <label>/home/dev/ds-160209/src/txdb.cpp</label>
+        <link refid="txdb_8cpp"/>
+      </node>
+      <node id="3348">
+        <label>/home/dev/ds-160209/src/qt/signverifymessagedialog.cpp</label>
+        <link refid="signverifymessagedialog_8cpp"/>
+      </node>
+      <node id="3309">
+        <label>/home/dev/ds-160209/src/miner.cpp</label>
+        <link refid="miner_8cpp"/>
+      </node>
+      <node id="3314">
+        <label>/home/dev/ds-160209/src/stormnode-sync.cpp</label>
+        <link refid="stormnode-sync_8cpp"/>
+      </node>
+      <node id="3339">
+        <label>/home/dev/ds-160209/src/rpcmining.cpp</label>
+        <link refid="rpcmining_8cpp"/>
+      </node>
+      <node id="3375">
+        <label>/home/dev/ds-160209/src/sandstorm-relay.h</label>
+        <link refid="sandstorm-relay_8h"/>
+        <childnode refid="3324" relation="include">
+        </childnode>
+      </node>
+      <node id="3353">
+        <label>/home/dev/ds-160209/src/qt/blockbrowser.cpp</label>
+        <link refid="blockbrowser_8cpp"/>
+      </node>
+      <node id="3373">
+        <label>/home/dev/ds-160209/src/stormnode.h</label>
+        <link refid="stormnode_8h"/>
+        <childnode refid="3370" relation="include">
+        </childnode>
+        <childnode refid="3374" relation="include">
+        </childnode>
+        <childnode refid="3376" relation="include">
+        </childnode>
+        <childnode refid="3320" relation="include">
+        </childnode>
+        <childnode refid="3326" relation="include">
+        </childnode>
+        <childnode refid="3314" relation="include">
+        </childnode>
+        <childnode refid="3327" relation="include">
+        </childnode>
+        <childnode refid="3315" relation="include">
+        </childnode>
+        <childnode refid="3316" relation="include">
+        </childnode>
+      </node>
+      <node id="3368">
+        <label>/home/dev/ds-160209/src/txdb-leveldb.cpp</label>
+        <link refid="txdb-leveldb_8cpp"/>
+      </node>
+      <node id="3321">
+        <label>/home/dev/ds-160209/src/qt/transactionrecord.cpp</label>
+        <link refid="transactionrecord_8cpp"/>
+      </node>
+      <node id="3296">
+        <label>/home/dev/ds-160209/src/undo.h</label>
+        <link refid="undo_8h"/>
+        <childnode refid="3297" relation="include">
+        </childnode>
+        <childnode refid="3388" relation="include">
+        </childnode>
+      </node>
+      <node id="3386">
+        <label>/home/dev/ds-160209/src/test/allocator_tests.cpp</label>
+        <link refid="allocator__tests_8cpp"/>
+      </node>
+      <node id="3385">
+        <label>/home/dev/ds-160209/src/script.cpp</label>
+        <link refid="script_8cpp"/>
+      </node>
+      <node id="3360">
+        <label>/home/dev/ds-160209/src/test/base64_tests.cpp</label>
+        <link refid="base64__tests_8cpp"/>
+      </node>
+      <node id="3320">
+        <label>/home/dev/ds-160209/src/qt/stormnodemanager.cpp</label>
+        <link refid="stormnodemanager_8cpp"/>
+      </node>
+      <node id="3345">
+        <label>/home/dev/ds-160209/src/qt/sandstormconfig.cpp</label>
+        <link refid="sandstormconfig_8cpp"/>
+      </node>
+      <node id="3313">
+        <label>/home/dev/ds-160209/src/stormnode-payments.cpp</label>
+        <link refid="stormnode-payments_8cpp"/>
+      </node>
+      <node id="3361">
+        <label>/home/dev/ds-160209/src/test/wallet_tests.cpp</label>
+        <link refid="wallet__tests_8cpp"/>
+      </node>
+      <node id="3356">
+        <label>/home/dev/ds-160209/src/qt/optionsmodel.cpp</label>
+        <link refid="optionsmodel_8cpp"/>
+      </node>
+      <node id="3359">
+        <label>/home/dev/ds-160209/src/test/accounting_tests.cpp</label>
+        <link refid="accounting__tests_8cpp"/>
+      </node>
+      <node id="3367">
+        <label>/home/dev/ds-160209/src/rpcrawtransaction.cpp</label>
+        <link refid="rpcrawtransaction_8cpp"/>
+      </node>
+      <node id="3299">
+        <label>/home/dev/ds-160209/src/main.h</label>
+        <link refid="main_8h"/>
+        <childnode refid="3300" relation="include">
+        </childnode>
+        <childnode refid="3363" relation="include">
+        </childnode>
+        <childnode refid="3370" relation="include">
+        </childnode>
+        <childnode refid="3373" relation="include">
+        </childnode>
+        <childnode refid="3371" relation="include">
+        </childnode>
+        <childnode refid="3374" relation="include">
+        </childnode>
+        <childnode refid="3304" relation="include">
+        </childnode>
+        <childnode refid="3377" relation="include">
+        </childnode>
+        <childnode refid="3378" relation="include">
+        </childnode>
+        <childnode refid="3364" relation="include">
+        </childnode>
+        <childnode refid="3306" relation="include">
+        </childnode>
+        <childnode refid="3376" relation="include">
+        </childnode>
+        <childnode refid="3308" relation="include">
+        </childnode>
+        <childnode refid="3317" relation="include">
+        </childnode>
+        <childnode refid="3352" relation="include">
+        </childnode>
+        <childnode refid="3353" relation="include">
+        </childnode>
+        <childnode refid="3379" relation="include">
+        </childnode>
+        <childnode refid="3372" relation="include">
+        </childnode>
+        <childnode refid="3354" relation="include">
+        </childnode>
+        <childnode refid="3348" relation="include">
+        </childnode>
+        <childnode refid="3355" relation="include">
+        </childnode>
+        <childnode refid="3357" relation="include">
+        </childnode>
+        <childnode refid="3383" relation="include">
+        </childnode>
+        <childnode refid="3339" relation="include">
+        </childnode>
+        <childnode refid="3311" relation="include">
+        </childnode>
+        <childnode refid="3384" relation="include">
+        </childnode>
+        <childnode refid="3367" relation="include">
+        </childnode>
+        <childnode refid="3336" relation="include">
+        </childnode>
+        <childnode refid="3322" relation="include">
+        </childnode>
+        <childnode refid="3323" relation="include">
+        </childnode>
+        <childnode refid="3385" relation="include">
+        </childnode>
+        <childnode refid="3312" relation="include">
+        </childnode>
+        <childnode refid="3326" relation="include">
+        </childnode>
+        <childnode refid="3386" relation="include">
+        </childnode>
+        <childnode refid="3360" relation="include">
+        </childnode>
+        <childnode refid="3361" relation="include">
+        </childnode>
+        <childnode refid="3368" relation="include">
+        </childnode>
+      </node>
+      <node id="3324">
+        <label>/home/dev/ds-160209/src/sandstorm-relay.cpp</label>
+        <link refid="sandstorm-relay_8cpp"/>
+      </node>
+      <node id="3374">
+        <label>/home/dev/ds-160209/src/stormnodeman.h</label>
+        <link refid="stormnodeman_8h"/>
+        <childnode refid="3302" relation="include">
+        </childnode>
+        <childnode refid="3303" relation="include">
+        </childnode>
+        <childnode refid="3306" relation="include">
+        </childnode>
+        <childnode refid="3307" relation="include">
+        </childnode>
+        <childnode refid="3308" relation="include">
+        </childnode>
+        <childnode refid="3309" relation="include">
+        </childnode>
+        <childnode refid="3372" relation="include">
+        </childnode>
+        <childnode refid="3320" relation="include">
+        </childnode>
+        <childnode refid="3322" relation="include">
+        </childnode>
+        <childnode refid="3323" relation="include">
+        </childnode>
+        <childnode refid="3375" relation="include">
+        </childnode>
+        <childnode refid="3326" relation="include">
+        </childnode>
+        <childnode refid="3313" relation="include">
+        </childnode>
+        <childnode refid="3314" relation="include">
+        </childnode>
+        <childnode refid="3327" relation="include">
+        </childnode>
+        <childnode refid="3315" relation="include">
+        </childnode>
+      </node>
+      <node id="3366">
+        <label>/home/dev/ds-160209/src/kernel.cpp</label>
+        <link refid="kernel_8cpp"/>
+      </node>
+      <node id="3343">
+        <label>/home/dev/ds-160209/src/qt/askpassphrasedialog.cpp</label>
+        <link refid="askpassphrasedialog_8cpp"/>
+      </node>
+      <node id="3322">
+        <label>/home/dev/ds-160209/src/rpcstormnode-budget.cpp</label>
+        <link refid="rpcstormnode-budget_8cpp"/>
+      </node>
+      <node id="3295">
+        <label>/home/dev/ds-160209/src/compressor.h</label>
+        <link refid="compressor.h"/>
+        <childnode refid="3296" relation="include">
+        </childnode>
+        <childnode refid="3389" relation="include">
+        </childnode>
+      </node>
+      <node id="3302">
+        <label>/home/dev/ds-160209/src/activestormnode.cpp</label>
+        <link refid="activestormnode_8cpp"/>
+      </node>
+      <node id="3362">
+        <label>/home/dev/ds-160209/src/walletdb.cpp</label>
+        <link refid="walletdb_8cpp"/>
+      </node>
+      <node id="3305">
+        <label>/home/dev/ds-160209/src/chain.cpp</label>
+        <link refid="chain_8cpp"/>
+      </node>
+      <node id="3326">
+        <label>/home/dev/ds-160209/src/stormnode-budget.cpp</label>
+        <link refid="stormnode-budget_8cpp"/>
+      </node>
+      <node id="3388">
+        <label>/home/dev/ds-160209/src/undo.cpp</label>
+        <link refid="undo_8cpp"/>
+      </node>
+      <node id="3377">
+        <label>/home/dev/ds-160209/src/txdb-leveldb.h</label>
+        <link refid="txdb-leveldb_8h"/>
+        <childnode refid="3305" relation="include">
+        </childnode>
+        <childnode refid="3306" relation="include">
+        </childnode>
+        <childnode refid="3366" relation="include">
+        </childnode>
+        <childnode refid="3308" relation="include">
+        </childnode>
+        <childnode refid="3309" relation="include">
+        </childnode>
+        <childnode refid="3357" relation="include">
+        </childnode>
+        <childnode refid="3339" relation="include">
+        </childnode>
+        <childnode refid="3367" relation="include">
+        </childnode>
+        <childnode refid="3337" relation="include">
+        </childnode>
+        <childnode refid="3368" relation="include">
+        </childnode>
+        <childnode refid="3369" relation="include">
+        </childnode>
+        <childnode refid="3316" relation="include">
+        </childnode>
+      </node>
+      <node id="3340">
+        <label>/home/dev/ds-160209/src/qt/addeditstormnode.cpp</label>
+        <link refid="addeditstormnode_8cpp"/>
+      </node>
+      <node id="3307">
+        <label>/home/dev/ds-160209/src/instantx.cpp</label>
+        <link refid="instantx_8cpp"/>
+      </node>
+      <node id="3306">
+        <label>/home/dev/ds-160209/src/init.cpp</label>
+        <link refid="init_8cpp"/>
+      </node>
+      <node id="3379">
+        <label>/home/dev/ds-160209/src/qt/peertablemodel.h</label>
+        <link refid="peertablemodel_8h"/>
+        <childnode refid="3372" relation="include">
+        </childnode>
+        <childnode refid="3380" relation="include">
+        </childnode>
+        <childnode refid="3382" relation="include">
+        </childnode>
+      </node>
+      <node id="3333">
+        <label>/home/dev/ds-160209/src/qt/messagepage.cpp</label>
+        <link refid="messagepage_8cpp"/>
+      </node>
+      <node id="3304">
+        <label>/home/dev/ds-160209/src/spork.h</label>
+        <link refid="spork_8h"/>
+        <childnode refid="3302" relation="include">
+        </childnode>
+        <childnode refid="3305" relation="include">
+        </childnode>
+        <childnode refid="3306" relation="include">
+        </childnode>
+        <childnode refid="3307" relation="include">
+        </childnode>
+        <childnode refid="3308" relation="include">
+        </childnode>
+        <childnode refid="3309" relation="include">
+        </childnode>
+        <childnode refid="3310" relation="include">
+        </childnode>
+        <childnode refid="3311" relation="include">
+        </childnode>
+        <childnode refid="3312" relation="include">
+        </childnode>
+        <childnode refid="3313" relation="include">
+        </childnode>
+        <childnode refid="3314" relation="include">
+        </childnode>
+        <childnode refid="3315" relation="include">
+        </childnode>
+        <childnode refid="3316" relation="include">
+        </childnode>
+      </node>
+      <node id="3334">
+        <label>/home/dev/ds-160209/src/qt/sendmessagesdialog.cpp</label>
+        <link refid="sendmessagesdialog_8cpp"/>
+      </node>
+      <node id="3335">
+        <label>/home/dev/ds-160209/src/qt/sendmessagesentry.cpp</label>
+        <link refid="sendmessagesentry_8cpp"/>
+      </node>
+      <node id="3338">
+        <label>/home/dev/ds-160209/src/miner.h</label>
+        <link refid="miner_8h"/>
+        <childnode refid="3309" relation="include">
+        </childnode>
+        <childnode refid="3339" relation="include">
+        </childnode>
+      </node>
+      <node id="3337">
+        <label>/home/dev/ds-160209/src/smessage.cpp</label>
+        <link refid="smessage_8cpp"/>
+      </node>
+      <node id="3382">
+        <label>/home/dev/ds-160209/src/qt/peertablemodel.cpp</label>
+        <link refid="peertablemodel_8cpp"/>
+      </node>
+      <node id="3354">
+        <label>/home/dev/ds-160209/src/qt/statisticspage.h</label>
+        <link refid="statisticspage_8h"/>
+        <childnode refid="3331" relation="include">
+        </childnode>
+        <childnode refid="3355" relation="include">
+        </childnode>
+      </node>
+      <node id="3363">
+        <label>/home/dev/ds-160209/src/txdb.h</label>
+        <link refid="txdb_8h"/>
+        <childnode refid="3295" relation="include">
+        </childnode>
+        <childnode refid="3299" relation="include">
+        </childnode>
+        <childnode refid="3364" relation="include">
+        </childnode>
+        <childnode refid="3365" relation="include">
+        </childnode>
+        <childnode refid="3306" relation="include">
+        </childnode>
+        <childnode refid="3366" relation="include">
+        </childnode>
+        <childnode refid="3308" relation="include">
+        </childnode>
+        <childnode refid="3309" relation="include">
+        </childnode>
+        <childnode refid="3339" relation="include">
+        </childnode>
+        <childnode refid="3367" relation="include">
+        </childnode>
+        <childnode refid="3337" relation="include">
+        </childnode>
+        <childnode refid="3368" relation="include">
+        </childnode>
+        <childnode refid="3369" relation="include">
+        </childnode>
+        <childnode refid="3316" relation="include">
+        </childnode>
+      </node>
+      <node id="3350">
+        <label>/home/dev/ds-160209/src/qt/transactiontablemodel.cpp</label>
+        <link refid="transactiontablemodel_8cpp"/>
+      </node>
+      <node id="3308">
+        <label>/home/dev/ds-160209/src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="3311">
+        <label>/home/dev/ds-160209/src/rpcmisc.cpp</label>
+        <link refid="rpcmisc_8cpp"/>
+      </node>
+      <node id="3346">
+        <label>/home/dev/ds-160209/src/qt/sendcoinsdialog.cpp</label>
+        <link refid="sendcoinsdialog_8cpp"/>
+      </node>
+      <node id="3301">
+        <label>/home/dev/ds-160209/src/activestormnode.h</label>
+        <link refid="activestormnode_8h"/>
+        <childnode refid="3302" relation="include">
+        </childnode>
+        <childnode refid="3303" relation="include">
+        </childnode>
+        <childnode refid="3306" relation="include">
+        </childnode>
+        <childnode refid="3307" relation="include">
+        </childnode>
+        <childnode refid="3320" relation="include">
+        </childnode>
+        <childnode refid="3322" relation="include">
+        </childnode>
+        <childnode refid="3323" relation="include">
+        </childnode>
+        <childnode refid="3314" relation="include">
+        </childnode>
+        <childnode refid="3315" relation="include">
+        </childnode>
+      </node>
+      <node id="3341">
+        <label>/home/dev/ds-160209/src/qt/walletmodel.h</label>
+        <link refid="walletmodel_8h"/>
+        <childnode refid="3342" relation="include">
+        </childnode>
+        <childnode refid="3343" relation="include">
+        </childnode>
+        <childnode refid="3318" relation="include">
+        </childnode>
+        <childnode refid="3330" relation="include">
+        </childnode>
+        <childnode refid="3331" relation="include">
+        </childnode>
+        <childnode refid="3344" relation="include">
+        </childnode>
+        <childnode refid="3332" relation="include">
+        </childnode>
+        <childnode refid="3319" relation="include">
+        </childnode>
+        <childnode refid="3345" relation="include">
+        </childnode>
+        <childnode refid="3346" relation="include">
+        </childnode>
+        <childnode refid="3347" relation="include">
+        </childnode>
+        <childnode refid="3334" relation="include">
+        </childnode>
+        <childnode refid="3335" relation="include">
+        </childnode>
+        <childnode refid="3348" relation="include">
+        </childnode>
+        <childnode refid="3320" relation="include">
+        </childnode>
+        <childnode refid="3349" relation="include">
+        </childnode>
+        <childnode refid="3350" relation="include">
+        </childnode>
+        <childnode refid="3351" relation="include">
+        </childnode>
+        <childnode refid="3310" relation="include">
+        </childnode>
+      </node>
+      <node id="3325">
+        <label>/home/dev/ds-160209/src/sandstorm.cpp</label>
+        <link refid="sandstorm_8cpp"/>
+      </node>
+      <node id="3352">
+        <label>/home/dev/ds-160209/src/qt/blockbrowser.h</label>
+        <link refid="blockbrowser_8h"/>
+        <childnode refid="3353" relation="include">
+        </childnode>
+        <childnode refid="3331" relation="include">
+        </childnode>
+      </node>
+      <node id="3319">
+        <label>/home/dev/ds-160209/src/qt/overviewpage.cpp</label>
+        <link refid="overviewpage_8cpp"/>
+      </node>
+      <node id="3364">
+        <label>/home/dev/ds-160209/src/checkpoints.cpp</label>
+        <link refid="checkpoints_8cpp"/>
+      </node>
+      <node id="3327">
+        <label>/home/dev/ds-160209/src/stormnode.cpp</label>
+        <link refid="stormnode_8cpp"/>
+      </node>
+      <node id="3381">
+        <label>/home/dev/ds-160209/src/qt/debugconsole.cpp</label>
+        <link refid="debugconsole_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_c_script_compressor" prot="public">CScriptCompressor</innerclass>
+    <innerclass refid="class_c_tx_out_compressor" prot="public">CTxOutCompressor</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2009-2016<sp/>Satoshi<sp/>Nakamoto</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2009-2016<sp/>The<sp/>Bitcoin<sp/>developers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Distributed<sp/>under<sp/>the<sp/>MIT<sp/>software<sp/>license,<sp/>see<sp/>the<sp/>accompanying</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>file<sp/>COPYING<sp/>or<sp/>http://www.opensource.org/licenses/mit-license.php.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>DARKSILK_COMPRESSOR_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DARKSILK_COMPRESSOR_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="transaction_8h" kindref="compound">primitives/transaction.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="txdb_8h" kindref="compound">txdb.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_c_key_i_d" kindref="compound">CKeyID</ref>;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_c_pub_key" kindref="compound">CPubKey</ref>;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_c_script_i_d" kindref="compound">CScriptID</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="class_c_script_compressor" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_c_script_compressor" kindref="compound">CScriptCompressor</ref></highlight></codeline>
+<codeline lineno="28"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nSpecialScripts<sp/>=<sp/>6;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_script" kindref="compound">CScript</ref><sp/>&amp;script;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_script_compressor_1a13afc45e3a0a8a3d634cfafba9b2a040" kindref="member">IsToKeyID</ref>(<ref refid="class_c_key_i_d" kindref="compound">CKeyID</ref><sp/>&amp;<ref refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" kindref="member">hash</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_script_compressor_1a6da015ff028139ef52e7376166b04928" kindref="member">IsToScriptID</ref>(<ref refid="class_c_script_i_d" kindref="compound">CScriptID</ref><sp/>&amp;hash)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_script_compressor_1a4cec58b09c4ab7873b5884ed690ed0f9" kindref="member">IsToPubKey</ref>(<ref refid="class_c_pub_key" kindref="compound">CPubKey</ref><sp/>&amp;pubkey)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_script_compressor_1a98cb19f185efc85a395a5332574ef56b" kindref="member">Compress</ref>(std::vector&lt;unsigned<sp/>char&gt;<sp/>&amp;out)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_c_script_compressor_1a0e4f4c405f4a937c95fd4270db4d7d66" kindref="member">GetSpecialSize</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nSize)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_script_compressor_1a1feb663ddab3a45218c7cb02f2a25717" kindref="member">Decompress</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nSize,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;unsigned<sp/>char&gt;<sp/>&amp;out);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="55" refid="class_c_script_compressor_1aad31afe3d14387b163b5c043e834ca2b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_script_compressor_1aad31afe3d14387b163b5c043e834ca2b" kindref="member">CScriptCompressor</ref>(<ref refid="class_c_script" kindref="compound">CScript</ref><sp/>&amp;scriptIn)<sp/>:<sp/>script(scriptIn)<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="class_c_script_compressor_1a3b3dd61547c3dc2f7ba9325f74b9ec5f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_c_script_compressor_1a3b3dd61547c3dc2f7ba9325f74b9ec5f" kindref="member">GetSerializeSize</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nType,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nVersion)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;unsigned<sp/>char&gt;<sp/>compr;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_c_script_compressor_1a98cb19f185efc85a395a5332574ef56b" kindref="member">Compress</ref>(compr))</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>compr.size();</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nSize<sp/>=<sp/>script.size()<sp/>+<sp/>nSpecialScripts;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>script.size()<sp/>+<sp/><ref refid="serialize_8h_1a1383f2a4c22ffaeba9b2924d90459f76" kindref="member">VARINT</ref>(nSize).GetSerializeSize(nType,<sp/>nVersion);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Stream&gt;</highlight></codeline>
+<codeline lineno="66" refid="class_c_script_compressor_1a9d8168293e0a6d0fd8c4aeb63a346525" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_c_script_compressor_1a9d8168293e0a6d0fd8c4aeb63a346525" kindref="member">Serialize</ref>(Stream<sp/>&amp;s,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nType,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nVersion)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;unsigned<sp/>char&gt;<sp/>compr;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_c_script_compressor_1a98cb19f185efc85a395a5332574ef56b" kindref="member">Compress</ref>(compr))<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s<sp/>&lt;&lt;<sp/><ref refid="class_c_flat_data" kindref="compound">CFlatData</ref>(compr);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nSize<sp/>=<sp/>script.size()<sp/>+<sp/>nSpecialScripts;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s<sp/>&lt;&lt;<sp/><ref refid="serialize_8h_1a1383f2a4c22ffaeba9b2924d90459f76" kindref="member">VARINT</ref>(nSize);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s<sp/>&lt;&lt;<sp/><ref refid="class_c_flat_data" kindref="compound">CFlatData</ref>(script);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Stream&gt;</highlight></codeline>
+<codeline lineno="78" refid="class_c_script_compressor_1a016fa6e3d2735d95fcf773271da073d5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_c_script_compressor_1a016fa6e3d2735d95fcf773271da073d5" kindref="member">Unserialize</ref>(Stream<sp/>&amp;s,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nType,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nVersion)<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nSize<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s<sp/>&gt;&gt;<sp/><ref refid="serialize_8h_1a1383f2a4c22ffaeba9b2924d90459f76" kindref="member">VARINT</ref>(nSize);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nSize<sp/>&lt;<sp/>nSpecialScripts)<sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;unsigned<sp/>char&gt;<sp/>vch(<ref refid="class_c_script_compressor_1a0e4f4c405f4a937c95fd4270db4d7d66" kindref="member">GetSpecialSize</ref>(nSize),<sp/>0x00);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s<sp/>&gt;&gt;<sp/><ref refid="serialize_8h_1abd1caa7e45d4ba31b7dfdda9949c3b05" kindref="member">REF</ref>(<ref refid="class_c_flat_data" kindref="compound">CFlatData</ref>(vch));</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_script_compressor_1a1feb663ddab3a45218c7cb02f2a25717" kindref="member">Decompress</ref>(nSize,<sp/>vch);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nSize<sp/>-=<sp/>nSpecialScripts;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>script.resize(nSize);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>s<sp/>&gt;&gt;<sp/><ref refid="serialize_8h_1abd1caa7e45d4ba31b7dfdda9949c3b05" kindref="member">REF</ref>(<ref refid="class_c_flat_data" kindref="compound">CFlatData</ref>(script));</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94" refid="class_c_tx_out_compressor" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_c_tx_out_compressor" kindref="compound">CTxOutCompressor</ref></highlight></codeline>
+<codeline lineno="95"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_tx_out" kindref="compound">CTxOut</ref><sp/>&amp;txout;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/><ref refid="class_c_tx_out_compressor_1a4141cec8885a2da956abb79130c963a8" kindref="member">CompressAmount</ref>(<ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>nAmount);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/><ref refid="class_c_tx_out_compressor_1a97751249d6a23b2a2b7bbc1165973371" kindref="member">DecompressAmount</ref>(<ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>nAmount);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103" refid="class_c_tx_out_compressor_1a38ef1033989cd003de65598620d15cea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_tx_out_compressor_1a38ef1033989cd003de65598620d15cea" kindref="member">CTxOutCompressor</ref>(<ref refid="class_c_tx_out" kindref="compound">CTxOut</ref><sp/>&amp;txoutIn)<sp/>:<sp/>txout(txoutIn)<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="class_c_tx_out_compressor_1a520b323886560ededcfe303c4672481e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_tx_out_compressor_1a520b323886560ededcfe303c4672481e" kindref="member">ADD_SERIALIZE_METHODS</ref>;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Stream,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Operation&gt;</highlight></codeline>
+<codeline lineno="108" refid="class_c_tx_out_compressor_1aad933ec09f7d6a764bd49da399f9083b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_c_tx_out_compressor_1aad933ec09f7d6a764bd49da399f9083b" kindref="member">SerializationOp</ref>(Stream&amp;<sp/>s,<sp/>Operation<sp/>ser_action,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nType,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nVersion)<sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!ser_action.ForRead())<sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>nVal<sp/>=<sp/><ref refid="class_c_tx_out_compressor_1a4141cec8885a2da956abb79130c963a8" kindref="member">CompressAmount</ref>(txout.<ref refid="class_c_tx_out_1ab278ecef3817a972cb6bc5360d13f197" kindref="member">nValue</ref>);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="serialize_8h_1a4d7fc7040e01003a01f367b8d90324f1" kindref="member">READWRITE</ref>(<ref refid="serialize_8h_1a1383f2a4c22ffaeba9b2924d90459f76" kindref="member">VARINT</ref>(nVal));</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>nVal<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="serialize_8h_1a4d7fc7040e01003a01f367b8d90324f1" kindref="member">READWRITE</ref>(<ref refid="serialize_8h_1a1383f2a4c22ffaeba9b2924d90459f76" kindref="member">VARINT</ref>(nVal));</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>txout.<ref refid="class_c_tx_out_1ab278ecef3817a972cb6bc5360d13f197" kindref="member">nValue</ref><sp/>=<sp/><ref refid="class_c_tx_out_compressor_1a97751249d6a23b2a2b7bbc1165973371" kindref="member">DecompressAmount</ref>(nVal);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_script_compressor" kindref="compound">CScriptCompressor</ref><sp/>cscript(<ref refid="serialize_8h_1abd1caa7e45d4ba31b7dfdda9949c3b05" kindref="member">REF</ref>(txout.<ref refid="class_c_tx_out_1a25bf3f2f4befb22a6a0be45784fe57e2" kindref="member">scriptPubKey</ref>));</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="serialize_8h_1a4d7fc7040e01003a01f367b8d90324f1" kindref="member">READWRITE</ref>(cscript);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>DARKSILK_COMPRESSOR_H</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/compressor.h"/>
+  </compounddef>
+</doxygen>

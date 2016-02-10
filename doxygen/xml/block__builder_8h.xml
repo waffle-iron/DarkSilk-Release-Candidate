@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="block__builder_8h" kind="file" language="C++">
+    <compoundname>block_builder.h</compoundname>
+    <includes local="no">vector</includes>
+    <includes refid="stdint_8h" local="no">stdint.h</includes>
+    <includes refid="slice_8h" local="yes">leveldb/slice.h</includes>
+    <includedby refid="block__builder_8cc" local="yes">/home/dev/ds-160209/src/leveldb/table/block_builder.cc</includedby>
+    <includedby refid="table__builder_8cc" local="yes">/home/dev/ds-160209/src/leveldb/table/table_builder.cc</includedby>
+    <includedby refid="table__test_8cc" local="yes">/home/dev/ds-160209/src/leveldb/table/table_test.cc</includedby>
+    <incdepgraph>
+      <node id="9788">
+        <label>assert.h</label>
+      </node>
+      <node id="9791">
+        <label>string</label>
+      </node>
+      <node id="9784">
+        <label>/home/dev/ds-160209/src/leveldb/table/block_builder.h</label>
+        <link refid="block_builder.h"/>
+        <childnode refid="9785" relation="include">
+        </childnode>
+        <childnode refid="9786" relation="include">
+        </childnode>
+        <childnode refid="9787" relation="include">
+        </childnode>
+      </node>
+      <node id="9789">
+        <label>stddef.h</label>
+      </node>
+      <node id="9790">
+        <label>string.h</label>
+      </node>
+      <node id="9785">
+        <label>vector</label>
+      </node>
+      <node id="9786">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="9787">
+        <label>leveldb/slice.h</label>
+        <link refid="slice_8h"/>
+        <childnode refid="9788" relation="include">
+        </childnode>
+        <childnode refid="9789" relation="include">
+        </childnode>
+        <childnode refid="9790" relation="include">
+        </childnode>
+        <childnode refid="9791" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="9794">
+        <label>/home/dev/ds-160209/src/leveldb/table/table_builder.cc</label>
+        <link refid="table__builder_8cc"/>
+      </node>
+      <node id="9792">
+        <label>/home/dev/ds-160209/src/leveldb/table/block_builder.h</label>
+        <link refid="block_builder.h"/>
+        <childnode refid="9793" relation="include">
+        </childnode>
+        <childnode refid="9794" relation="include">
+        </childnode>
+        <childnode refid="9795" relation="include">
+        </childnode>
+      </node>
+      <node id="9793">
+        <label>/home/dev/ds-160209/src/leveldb/table/block_builder.cc</label>
+        <link refid="block__builder_8cc"/>
+      </node>
+      <node id="9795">
+        <label>/home/dev/ds-160209/src/leveldb/table/table_test.cc</label>
+        <link refid="table__test_8cc"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classleveldb_1_1_block_builder" prot="public">leveldb::BlockBuilder</innerclass>
+    <innernamespace refid="namespaceleveldb">leveldb</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2011-2016<sp/>The<sp/>LevelDB<sp/>Authors.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>of<sp/>this<sp/>source<sp/>code<sp/>is<sp/>governed<sp/>by<sp/>a<sp/>BSD-style<sp/>license<sp/>that<sp/>can<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>found<sp/>in<sp/>the<sp/>LICENSE<sp/>file.<sp/>See<sp/>the<sp/>AUTHORS<sp/>file<sp/>for<sp/>names<sp/>of<sp/>contributors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>STORAGE_LEVELDB_TABLE_BLOCK_BUILDER_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STORAGE_LEVELDB_TABLE_BLOCK_BUILDER_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="stdint_8h" kindref="compound">stdint.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="slice_8h" kindref="compound">leveldb/slice.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceleveldb" kindref="compound">leveldb</ref><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">Options;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classleveldb_1_1_block_builder" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classleveldb_1_1_block_builder" kindref="compound">BlockBuilder</ref><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_block_builder_1a697ffa03ff6e8f5dec0558c05136f89c" kindref="member">BlockBuilder</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structleveldb_1_1_options" kindref="compound">Options</ref>*<sp/>options);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Reset<sp/>the<sp/>contents<sp/>as<sp/>if<sp/>the<sp/>BlockBuilder<sp/>was<sp/>just<sp/>constructed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_block_builder_1a812168608c24de2dfa1651fcdd88e49b" kindref="member">Reset</ref>();</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>REQUIRES:<sp/>Finish()<sp/>has<sp/>not<sp/>been<sp/>called<sp/>since<sp/>the<sp/>last<sp/>call<sp/>to<sp/>Reset().</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>REQUIRES:<sp/>key<sp/>is<sp/>larger<sp/>than<sp/>any<sp/>previously<sp/>added<sp/>key</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_block_builder_1a17d0e23f1e7afcb874b22a0cb0b6cf17" kindref="member">Add</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/>key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/><ref refid="version__set_8cc_1a38c8b88c432e666ad10b0c5573e1160a" kindref="member">value</ref>);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Finish<sp/>building<sp/>the<sp/>block<sp/>and<sp/>return<sp/>a<sp/>slice<sp/>that<sp/>refers<sp/>to<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>block<sp/>contents.<sp/><sp/>The<sp/>returned<sp/>slice<sp/>will<sp/>remain<sp/>valid<sp/>for<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>lifetime<sp/>of<sp/>this<sp/>builder<sp/>or<sp/>until<sp/>Reset()<sp/>is<sp/>called.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref><sp/><ref refid="classleveldb_1_1_block_builder_1ab345ab44def13fb180502e9637b28bcd" kindref="member">Finish</ref>();</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Returns<sp/>an<sp/>estimate<sp/>of<sp/>the<sp/>current<sp/>(uncompressed)<sp/>size<sp/>of<sp/>the<sp/>block</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>we<sp/>are<sp/>building.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_block_builder_1a836fd5dfd46b72d2438a7d59a984a72f" kindref="member">CurrentSizeEstimate</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>true<sp/>iff<sp/>no<sp/>entries<sp/>have<sp/>been<sp/>added<sp/>since<sp/>the<sp/>last<sp/>Reset()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classleveldb_1_1_block_builder_1ae8d2223984da12b810124688aa56fdcd" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_block_builder_1ae8d2223984da12b810124688aa56fdcd" kindref="member">empty</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>buffer_.empty();</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structleveldb_1_1_options" kindref="compound">Options</ref>*<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>options_;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/>std::string<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>buffer_;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Destination<sp/>buffer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/>std::vector&lt;uint32_t&gt;<sp/>restarts_;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Restart<sp/>points</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>counter_;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Number<sp/>of<sp/>entries<sp/>emitted<sp/>since<sp/>restart</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>finished_;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Has<sp/>Finish()<sp/>been<sp/>called?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>std::string<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>last_key_;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>copying<sp/>allowed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_block_builder_1a697ffa03ff6e8f5dec0558c05136f89c" kindref="member">BlockBuilder</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_block_builder" kindref="compound">BlockBuilder</ref>&amp;);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>operator=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_block_builder" kindref="compound">BlockBuilder</ref>&amp;);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>leveldb</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/>//<sp/>STORAGE_LEVELDB_TABLE_BLOCK_BUILDER_H_</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/leveldb/table/block_builder.h"/>
+  </compounddef>
+</doxygen>

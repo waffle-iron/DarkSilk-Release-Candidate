@@ -1,0 +1,1793 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="darksilk_8cpp" kind="file" language="C++">
+    <compoundname>darksilk.cpp</compoundname>
+    <includes refid="darksilkgui_8h" local="yes">darksilkgui.h</includes>
+    <includes refid="clientmodel_8h" local="yes">clientmodel.h</includes>
+    <includes refid="walletmodel_8h" local="yes">walletmodel.h</includes>
+    <includes refid="messagemodel_8h" local="yes">messagemodel.h</includes>
+    <includes refid="optionsmodel_8h" local="yes">optionsmodel.h</includes>
+    <includes refid="guiutil_8h" local="yes">guiutil.h</includes>
+    <includes refid="guiconstants_8h" local="yes">guiconstants.h</includes>
+    <includes refid="init_8h" local="yes">init.h</includes>
+    <includes local="yes">util.h</includes>
+    <includes refid="wallet_8h" local="yes">wallet.h</includes>
+    <includes refid="ui__interface_8h" local="yes">ui_interface.h</includes>
+    <includes refid="paymentserver_8h" local="yes">paymentserver.h</includes>
+    <includes refid="winshutdownmonitor_8h" local="yes">winshutdownmonitor.h</includes>
+    <includes local="no">QApplication</includes>
+    <includes local="no">QMessageBox</includes>
+    <includes local="no">QFile</includes>
+    <includes local="no">QDir</includes>
+    <includes local="no">QTextStream</includes>
+    <includes local="no">QTextCodec</includes>
+    <includes local="no">QLocale</includes>
+    <includes local="no">QTimer</includes>
+    <includes local="no">QTranslator</includes>
+    <includes local="no">QSplashScreen</includes>
+    <includes local="no">QLibraryInfo</includes>
+    <incdepgraph>
+      <node id="14167">
+        <label>list</label>
+      </node>
+      <node id="14129">
+        <label>boost/thread/mutex.hpp</label>
+      </node>
+      <node id="14229">
+        <label>leveldb/write_batch.h</label>
+        <link refid="write__batch_8h"/>
+        <childnode refid="14115" relation="include">
+        </childnode>
+        <childnode refid="14227" relation="include">
+        </childnode>
+      </node>
+      <node id="14209">
+        <label>netinet/in.h</label>
+      </node>
+      <node id="14113">
+        <label>amount.h</label>
+        <link refid="amount_8h"/>
+        <childnode refid="14114" relation="include">
+        </childnode>
+        <childnode refid="14127" relation="include">
+        </childnode>
+        <childnode refid="14115" relation="include">
+        </childnode>
+      </node>
+      <node id="14202">
+        <label>arpa/inet.h</label>
+      </node>
+      <node id="14188">
+        <label>boost/thread/condition_variable.hpp</label>
+      </node>
+      <node id="14120">
+        <label>limits</label>
+      </node>
+      <node id="14248">
+        <label>init.h</label>
+        <link refid="init_8h"/>
+      </node>
+      <node id="14154">
+        <label>crypto/sha256.h</label>
+        <link refid="sha256_8h"/>
+        <childnode refid="14111" relation="include">
+        </childnode>
+        <childnode refid="14127" relation="include">
+        </childnode>
+      </node>
+      <node id="14233">
+        <label>messagemodel.h</label>
+        <link refid="messagemodel_8h"/>
+        <childnode refid="14142" relation="include">
+        </childnode>
+        <childnode refid="14116" relation="include">
+        </childnode>
+        <childnode refid="14125" relation="include">
+        </childnode>
+        <childnode refid="14234" relation="include">
+        </childnode>
+        <childnode refid="14117" relation="include">
+        </childnode>
+        <childnode refid="14237" relation="include">
+        </childnode>
+        <childnode refid="14238" relation="include">
+        </childnode>
+        <childnode refid="14239" relation="include">
+        </childnode>
+        <childnode refid="14240" relation="include">
+        </childnode>
+      </node>
+      <node id="14155">
+        <label>crypto/argon2/blake2/blake2.h</label>
+        <link refid="blake2_8h"/>
+        <childnode refid="14156" relation="include">
+        </childnode>
+        <childnode refid="14111" relation="include">
+        </childnode>
+        <childnode refid="14131" relation="include">
+        </childnode>
+      </node>
+      <node id="14141">
+        <label>primitives/transaction.h</label>
+        <link refid="transaction_8h"/>
+        <childnode refid="14113" relation="include">
+        </childnode>
+        <childnode refid="14142" relation="include">
+        </childnode>
+        <childnode refid="14114" relation="include">
+        </childnode>
+        <childnode refid="14145" relation="include">
+        </childnode>
+        <childnode refid="14146" relation="include">
+        </childnode>
+        <childnode refid="14182" relation="include">
+        </childnode>
+        <childnode refid="14180" relation="include">
+        </childnode>
+      </node>
+      <node id="14146">
+        <label>script.h</label>
+        <link refid="script_8h"/>
+        <childnode refid="14115" relation="include">
+        </childnode>
+        <childnode refid="14116" relation="include">
+        </childnode>
+        <childnode refid="14111" relation="include">
+        </childnode>
+        <childnode refid="14147" relation="include">
+        </childnode>
+        <childnode refid="14148" relation="include">
+        </childnode>
+        <childnode refid="14149" relation="include">
+        </childnode>
+        <childnode refid="14158" relation="include">
+        </childnode>
+        <childnode refid="14160" relation="include">
+        </childnode>
+        <childnode refid="14179" relation="include">
+        </childnode>
+      </node>
+      <node id="14178">
+        <label>openssl/rand.h</label>
+      </node>
+      <node id="14245">
+        <label>QMessageBox</label>
+      </node>
+      <node id="14184">
+        <label>walletdb.h</label>
+        <link refid="walletdb_8h"/>
+        <childnode refid="14185" relation="include">
+        </childnode>
+        <childnode refid="14195" relation="include">
+        </childnode>
+        <childnode refid="14179" relation="include">
+        </childnode>
+        <childnode refid="14113" relation="include">
+        </childnode>
+        <childnode refid="14167" relation="include">
+        </childnode>
+        <childnode refid="14115" relation="include">
+        </childnode>
+        <childnode refid="14168" relation="include">
+        </childnode>
+        <childnode refid="14116" relation="include">
+        </childnode>
+      </node>
+      <node id="14143">
+        <label>assert.h</label>
+      </node>
+      <node id="14124">
+        <label>boost/tuple/tuple.hpp</label>
+      </node>
+      <node id="14237">
+        <label>QSortFilterProxyModel</label>
+      </node>
+      <node id="14208">
+        <label>net/if.h</label>
+      </node>
+      <node id="14218">
+        <label>txmempool.h</label>
+        <link refid="txmempool_8h"/>
+        <childnode refid="14141" relation="include">
+        </childnode>
+        <childnode refid="14186" relation="include">
+        </childnode>
+        <childnode refid="14219" relation="include">
+        </childnode>
+        <childnode refid="14113" relation="include">
+        </childnode>
+        <childnode refid="14231" relation="include">
+        </childnode>
+      </node>
+      <node id="14247">
+        <label>guiconstants.h</label>
+        <link refid="guiconstants_8h"/>
+      </node>
+      <node id="14240">
+        <label>QDateTime</label>
+      </node>
+      <node id="14228">
+        <label>leveldb/options.h</label>
+        <link refid="options_8h"/>
+        <childnode refid="14156" relation="include">
+        </childnode>
+      </node>
+      <node id="14138">
+        <label>QObject</label>
+      </node>
+      <node id="14190">
+        <label>boost/thread/recursive_mutex.hpp</label>
+      </node>
+      <node id="14235">
+        <label>base58.h</label>
+        <link refid="base58_8h"/>
+        <childnode refid="14214" relation="include">
+        </childnode>
+        <childnode refid="14149" relation="include">
+        </childnode>
+        <childnode refid="14196" relation="include">
+        </childnode>
+        <childnode refid="14146" relation="include">
+        </childnode>
+        <childnode refid="14125" relation="include">
+        </childnode>
+        <childnode refid="14115" relation="include">
+        </childnode>
+        <childnode refid="14116" relation="include">
+        </childnode>
+      </node>
+      <node id="14133">
+        <label>version.h</label>
+        <link refid="version_8h"/>
+        <childnode refid="14134" relation="include">
+        </childnode>
+        <childnode refid="14115" relation="include">
+        </childnode>
+      </node>
+      <node id="14236">
+        <label>lz4/lz4.h</label>
+        <link refid="lz4_8h"/>
+      </node>
+      <node id="14219">
+        <label>coins.h</label>
+        <link refid="coins_8h"/>
+        <childnode refid="14220" relation="include">
+        </childnode>
+        <childnode refid="14218" relation="include">
+        </childnode>
+        <childnode refid="14143" relation="include">
+        </childnode>
+        <childnode refid="14111" relation="include">
+        </childnode>
+        <childnode refid="14147" relation="include">
+        </childnode>
+        <childnode refid="14230" relation="include">
+        </childnode>
+      </node>
+      <node id="14130">
+        <label>sys/mman.h</label>
+      </node>
+      <node id="14127">
+        <label>stdlib.h</label>
+      </node>
+      <node id="14232">
+        <label>chain.h</label>
+        <link refid="chain_8h"/>
+        <childnode refid="14197" relation="include">
+        </childnode>
+        <childnode refid="14160" relation="include">
+        </childnode>
+        <childnode refid="14214" relation="include">
+        </childnode>
+        <childnode refid="14116" relation="include">
+        </childnode>
+        <childnode refid="14147" relation="include">
+        </childnode>
+      </node>
+      <node id="14241">
+        <label>optionsmodel.h</label>
+        <link refid="optionsmodel_8h"/>
+        <childnode refid="14242" relation="include">
+        </childnode>
+      </node>
+      <node id="14234">
+        <label>smessage.h</label>
+        <link refid="smessage_8h"/>
+        <childnode refid="14224" relation="include">
+        </childnode>
+        <childnode refid="14229" relation="include">
+        </childnode>
+        <childnode refid="14199" relation="include">
+        </childnode>
+        <childnode refid="14185" relation="include">
+        </childnode>
+        <childnode refid="14183" relation="include">
+        </childnode>
+        <childnode refid="14235" relation="include">
+        </childnode>
+        <childnode refid="14236" relation="include">
+        </childnode>
+      </node>
+      <node id="14147">
+        <label>boost/foreach.hpp</label>
+      </node>
+      <node id="14137">
+        <label>clientmodel.h</label>
+        <link refid="clientmodel_8h"/>
+        <childnode refid="14138" relation="include">
+        </childnode>
+      </node>
+      <node id="14107">
+        <label>/home/dev/ds-160209/src/qt/darksilk.cpp</label>
+        <link refid="darksilk.cpp"/>
+        <childnode refid="14108" relation="include">
+        </childnode>
+        <childnode refid="14137" relation="include">
+        </childnode>
+        <childnode refid="14139" relation="include">
+        </childnode>
+        <childnode refid="14233" relation="include">
+        </childnode>
+        <childnode refid="14241" relation="include">
+        </childnode>
+        <childnode refid="14243" relation="include">
+        </childnode>
+        <childnode refid="14247" relation="include">
+        </childnode>
+        <childnode refid="14248" relation="include">
+        </childnode>
+        <childnode refid="14145" relation="include">
+        </childnode>
+        <childnode refid="14183" relation="include">
+        </childnode>
+        <childnode refid="14112" relation="include">
+        </childnode>
+        <childnode refid="14249" relation="include">
+        </childnode>
+        <childnode refid="14250" relation="include">
+        </childnode>
+        <childnode refid="14251" relation="include">
+        </childnode>
+        <childnode refid="14245" relation="include">
+        </childnode>
+        <childnode refid="14252" relation="include">
+        </childnode>
+        <childnode refid="14253" relation="include">
+        </childnode>
+        <childnode refid="14254" relation="include">
+        </childnode>
+        <childnode refid="14255" relation="include">
+        </childnode>
+        <childnode refid="14256" relation="include">
+        </childnode>
+        <childnode refid="14257" relation="include">
+        </childnode>
+        <childnode refid="14258" relation="include">
+        </childnode>
+        <childnode refid="14259" relation="include">
+        </childnode>
+        <childnode refid="14260" relation="include">
+        </childnode>
+      </node>
+      <node id="14108">
+        <label>darksilkgui.h</label>
+        <link refid="darksilkgui_8h"/>
+        <childnode refid="14109" relation="include">
+        </childnode>
+        <childnode refid="14110" relation="include">
+        </childnode>
+        <childnode refid="14111" relation="include">
+        </childnode>
+        <childnode refid="14112" relation="include">
+        </childnode>
+      </node>
+      <node id="14177">
+        <label>openssl/crypto.h</label>
+      </node>
+      <node id="14205">
+        <label>compat.h</label>
+        <link refid="compat_8h"/>
+        <childnode refid="14206" relation="include">
+        </childnode>
+        <childnode refid="14130" relation="include">
+        </childnode>
+        <childnode refid="14207" relation="include">
+        </childnode>
+        <childnode refid="14161" relation="include">
+        </childnode>
+        <childnode refid="14208" relation="include">
+        </childnode>
+        <childnode refid="14209" relation="include">
+        </childnode>
+        <childnode refid="14202" relation="include">
+        </childnode>
+        <childnode refid="14210" relation="include">
+        </childnode>
+        <childnode refid="14131" relation="include">
+        </childnode>
+        <childnode refid="14211" relation="include">
+        </childnode>
+        <childnode refid="14132" relation="include">
+        </childnode>
+        <childnode refid="14212" relation="include">
+        </childnode>
+      </node>
+      <node id="14173">
+        <label>boost/date_time/posix_time/posix_time_types.hpp</label>
+      </node>
+      <node id="14151">
+        <label>openssl/sha.h</label>
+      </node>
+      <node id="14212">
+        <label>errno.h</label>
+      </node>
+      <node id="14119">
+        <label>cassert</label>
+      </node>
+      <node id="14144">
+        <label>stdexcept</label>
+      </node>
+      <node id="14160">
+        <label>util.h</label>
+        <link refid="util_8h"/>
+        <childnode refid="14161" relation="include">
+        </childnode>
+        <childnode refid="14162" relation="include">
+        </childnode>
+        <childnode refid="14163" relation="include">
+        </childnode>
+        <childnode refid="14114" relation="include">
+        </childnode>
+        <childnode refid="14164" relation="include">
+        </childnode>
+        <childnode refid="14113" relation="include">
+        </childnode>
+        <childnode refid="14117" relation="include">
+        </childnode>
+        <childnode refid="14167" relation="include">
+        </childnode>
+        <childnode refid="14168" relation="include">
+        </childnode>
+        <childnode refid="14116" relation="include">
+        </childnode>
+        <childnode refid="14115" relation="include">
+        </childnode>
+        <childnode refid="14169" relation="include">
+        </childnode>
+        <childnode refid="14170" relation="include">
+        </childnode>
+        <childnode refid="14171" relation="include">
+        </childnode>
+        <childnode refid="14172" relation="include">
+        </childnode>
+        <childnode refid="14173" relation="include">
+        </childnode>
+        <childnode refid="14174" relation="include">
+        </childnode>
+        <childnode refid="14175" relation="include">
+        </childnode>
+        <childnode refid="14176" relation="include">
+        </childnode>
+        <childnode refid="14177" relation="include">
+        </childnode>
+        <childnode refid="14178" relation="include">
+        </childnode>
+        <childnode refid="14159" relation="include">
+        </childnode>
+        <childnode refid="14111" relation="include">
+        </childnode>
+      </node>
+      <node id="14213">
+        <label>protocol.h</label>
+        <link refid="protocol_8h"/>
+        <childnode refid="14214" relation="include">
+        </childnode>
+        <childnode refid="14114" relation="include">
+        </childnode>
+        <childnode refid="14204" relation="include">
+        </childnode>
+        <childnode refid="14111" relation="include">
+        </childnode>
+        <childnode refid="14115" relation="include">
+        </childnode>
+      </node>
+      <node id="14172">
+        <label>boost/date_time/gregorian/gregorian_types.hpp</label>
+      </node>
+      <node id="14224">
+        <label>leveldb/db.h</label>
+        <link refid="leveldb_2include_2leveldb_2db_8h"/>
+        <childnode refid="14111" relation="include">
+        </childnode>
+        <childnode refid="14180" relation="include">
+        </childnode>
+        <childnode refid="14225" relation="include">
+        </childnode>
+        <childnode refid="14228" relation="include">
+        </childnode>
+      </node>
+      <node id="14115">
+        <label>string</label>
+      </node>
+      <node id="14109">
+        <label>QMainWindow</label>
+      </node>
+      <node id="14110">
+        <label>QSystemTrayIcon</label>
+      </node>
+      <node id="14183">
+        <label>wallet.h</label>
+        <link refid="wallet_8h"/>
+        <childnode refid="14184" relation="include">
+        </childnode>
+        <childnode refid="14115" relation="include">
+        </childnode>
+        <childnode refid="14116" relation="include">
+        </childnode>
+        <childnode refid="14127" relation="include">
+        </childnode>
+        <childnode refid="14197" relation="include">
+        </childnode>
+        <childnode refid="14141" relation="include">
+        </childnode>
+        <childnode refid="14216" relation="include">
+        </childnode>
+        <childnode refid="14217" relation="include">
+        </childnode>
+        <childnode refid="14196" relation="include">
+        </childnode>
+        <childnode refid="14195" relation="include">
+        </childnode>
+        <childnode refid="14146" relation="include">
+        </childnode>
+        <childnode refid="14112" relation="include">
+        </childnode>
+        <childnode refid="14160" relation="include">
+        </childnode>
+        <childnode refid="14179" relation="include">
+        </childnode>
+      </node>
+      <node id="14198">
+        <label>scrypt.h</label>
+        <link refid="scrypt_8h"/>
+        <childnode refid="14111" relation="include">
+        </childnode>
+        <childnode refid="14127" relation="include">
+        </childnode>
+        <childnode refid="14160" relation="include">
+        </childnode>
+        <childnode refid="14199" relation="include">
+        </childnode>
+      </node>
+      <node id="14117">
+        <label>map</label>
+      </node>
+      <node id="14169">
+        <label>boost/thread.hpp</label>
+      </node>
+      <node id="14215">
+        <label>addrman.h</label>
+        <link refid="addrman_8h"/>
+        <childnode refid="14204" relation="include">
+        </childnode>
+        <childnode refid="14213" relation="include">
+        </childnode>
+        <childnode refid="14186" relation="include">
+        </childnode>
+        <childnode refid="14182" relation="include">
+        </childnode>
+        <childnode refid="14160" relation="include">
+        </childnode>
+        <childnode refid="14117" relation="include">
+        </childnode>
+        <childnode refid="14116" relation="include">
+        </childnode>
+      </node>
+      <node id="14249">
+        <label>paymentserver.h</label>
+        <link refid="paymentserver_8h"/>
+        <childnode refid="14138" relation="include">
+        </childnode>
+        <childnode refid="14244" relation="include">
+        </childnode>
+      </node>
+      <node id="14112">
+        <label>ui_interface.h</label>
+        <link refid="ui__interface_8h"/>
+        <childnode refid="14113" relation="include">
+        </childnode>
+        <childnode refid="14135" relation="include">
+        </childnode>
+        <childnode refid="14136" relation="include">
+        </childnode>
+        <childnode refid="14115" relation="include">
+        </childnode>
+        <childnode refid="14111" relation="include">
+        </childnode>
+      </node>
+      <node id="14223">
+        <label>leveldbwrapper.h</label>
+        <link refid="leveldbwrapper_8h"/>
+        <childnode refid="14114" relation="include">
+        </childnode>
+        <childnode refid="14191" relation="include">
+        </childnode>
+        <childnode refid="14160" relation="include">
+        </childnode>
+        <childnode refid="14171" relation="include">
+        </childnode>
+        <childnode refid="14224" relation="include">
+        </childnode>
+        <childnode refid="14229" relation="include">
+        </childnode>
+      </node>
+      <node id="14156">
+        <label>stddef.h</label>
+      </node>
+      <node id="14148">
+        <label>boost/variant.hpp</label>
+      </node>
+      <node id="14140">
+        <label>instantx.h</label>
+        <link refid="instantx_8h"/>
+        <childnode refid="14141" relation="include">
+        </childnode>
+      </node>
+      <node id="14211">
+        <label>netdb.h</label>
+      </node>
+      <node id="14206">
+        <label>sys/fcntl.h</label>
+      </node>
+      <node id="14220">
+        <label>undo.h</label>
+        <link refid="undo_8h"/>
+        <childnode refid="14221" relation="include">
+        </childnode>
+      </node>
+      <node id="14227">
+        <label>leveldb/status.h</label>
+        <link refid="status_8h"/>
+        <childnode refid="14115" relation="include">
+        </childnode>
+        <childnode refid="14226" relation="include">
+        </childnode>
+      </node>
+      <node id="14231">
+        <label>boost/circular_buffer.hpp</label>
+      </node>
+      <node id="14114">
+        <label>serialize.h</label>
+        <link refid="serialize_8h"/>
+        <childnode refid="14115" relation="include">
+        </childnode>
+        <childnode refid="14116" relation="include">
+        </childnode>
+        <childnode refid="14117" relation="include">
+        </childnode>
+        <childnode refid="14118" relation="include">
+        </childnode>
+        <childnode refid="14119" relation="include">
+        </childnode>
+        <childnode refid="14120" relation="include">
+        </childnode>
+        <childnode refid="14111" relation="include">
+        </childnode>
+        <childnode refid="14121" relation="include">
+        </childnode>
+        <childnode refid="14122" relation="include">
+        </childnode>
+        <childnode refid="14123" relation="include">
+        </childnode>
+        <childnode refid="14124" relation="include">
+        </childnode>
+        <childnode refid="14125" relation="include">
+        </childnode>
+        <childnode refid="14133" relation="include">
+        </childnode>
+      </node>
+      <node id="14131">
+        <label>limits.h</label>
+      </node>
+      <node id="14187">
+        <label>threadsafety.h</label>
+        <link refid="threadsafety_8h"/>
+      </node>
+      <node id="14203">
+        <label>mruset.h</label>
+        <link refid="mruset_8h"/>
+        <childnode refid="14118" relation="include">
+        </childnode>
+        <childnode refid="14200" relation="include">
+        </childnode>
+      </node>
+      <node id="14163">
+        <label>sys/resource.h</label>
+      </node>
+      <node id="14260">
+        <label>QLibraryInfo</label>
+      </node>
+      <node id="14174">
+        <label>openssl/bio.h</label>
+      </node>
+      <node id="14216">
+        <label>crypter.h</label>
+        <link refid="crypter_8h"/>
+        <childnode refid="14125" relation="include">
+        </childnode>
+        <childnode refid="14114" relation="include">
+        </childnode>
+        <childnode refid="14195" relation="include">
+        </childnode>
+      </node>
+      <node id="14136">
+        <label>boost/signals2/signal.hpp</label>
+      </node>
+      <node id="14204">
+        <label>netbase.h</label>
+        <link refid="netbase_8h"/>
+        <childnode refid="14115" relation="include">
+        </childnode>
+        <childnode refid="14116" relation="include">
+        </childnode>
+        <childnode refid="14114" relation="include">
+        </childnode>
+        <childnode refid="14205" relation="include">
+        </childnode>
+      </node>
+      <node id="14195">
+        <label>keystore.h</label>
+        <link refid="keystore_8h"/>
+        <childnode refid="14196" relation="include">
+        </childnode>
+        <childnode refid="14149" relation="include">
+        </childnode>
+        <childnode refid="14186" relation="include">
+        </childnode>
+        <childnode refid="14146" relation="include">
+        </childnode>
+        <childnode refid="14136" relation="include">
+        </childnode>
+        <childnode refid="14148" relation="include">
+        </childnode>
+      </node>
+      <node id="14150">
+        <label>hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="14142" relation="include">
+        </childnode>
+        <childnode refid="14114" relation="include">
+        </childnode>
+        <childnode refid="14151" relation="include">
+        </childnode>
+        <childnode refid="14152" relation="include">
+        </childnode>
+        <childnode refid="14153" relation="include">
+        </childnode>
+        <childnode refid="14154" relation="include">
+        </childnode>
+        <childnode refid="14155" relation="include">
+        </childnode>
+        <childnode refid="14157" relation="include">
+        </childnode>
+        <childnode refid="14116" relation="include">
+        </childnode>
+      </node>
+      <node id="14210">
+        <label>ifaddrs.h</label>
+      </node>
+      <node id="14179">
+        <label>stealth.h</label>
+        <link refid="stealth_8h"/>
+        <childnode refid="14160" relation="include">
+        </childnode>
+        <childnode refid="14114" relation="include">
+        </childnode>
+        <childnode refid="14127" relation="include">
+        </childnode>
+        <childnode refid="14180" relation="include">
+        </childnode>
+        <childnode refid="14116" relation="include">
+        </childnode>
+        <childnode refid="14181" relation="include">
+        </childnode>
+      </node>
+      <node id="14161">
+        <label>sys/types.h</label>
+      </node>
+      <node id="14256">
+        <label>QLocale</label>
+      </node>
+      <node id="14193">
+        <label>ios</label>
+      </node>
+      <node id="14128">
+        <label>string.h</label>
+      </node>
+      <node id="14134">
+        <label>clientversion.h</label>
+        <link refid="clientversion_8h"/>
+      </node>
+      <node id="14251">
+        <label>QApplication</label>
+      </node>
+      <node id="14122">
+        <label>cstdio</label>
+      </node>
+      <node id="14189">
+        <label>boost/thread/locks.hpp</label>
+      </node>
+      <node id="14176">
+        <label>openssl/buffer.h</label>
+      </node>
+      <node id="14123">
+        <label>boost/type_traits/is_fundamental.hpp</label>
+      </node>
+      <node id="14217">
+        <label>main.h</label>
+        <link refid="main_8h"/>
+        <childnode refid="14218" relation="include">
+        </childnode>
+        <childnode refid="14199" relation="include">
+        </childnode>
+        <childnode refid="14146" relation="include">
+        </childnode>
+        <childnode refid="14191" relation="include">
+        </childnode>
+        <childnode refid="14222" relation="include">
+        </childnode>
+        <childnode refid="14232" relation="include">
+        </childnode>
+        <childnode refid="14167" relation="include">
+        </childnode>
+        <childnode refid="14230" relation="include">
+        </childnode>
+      </node>
+      <node id="14171">
+        <label>boost/filesystem/path.hpp</label>
+      </node>
+      <node id="14230">
+        <label>boost/unordered_map.hpp</label>
+      </node>
+      <node id="14149">
+        <label>pubkey.h</label>
+        <link refid="pubkey_8h"/>
+        <childnode refid="14150" relation="include">
+        </childnode>
+        <childnode refid="14114" relation="include">
+        </childnode>
+        <childnode refid="14142" relation="include">
+        </childnode>
+        <childnode refid="14144" relation="include">
+        </childnode>
+        <childnode refid="14116" relation="include">
+        </childnode>
+      </node>
+      <node id="14132">
+        <label>unistd.h</label>
+      </node>
+      <node id="14194">
+        <label>db_cxx.h</label>
+      </node>
+      <node id="14257">
+        <label>QTimer</label>
+      </node>
+      <node id="14116">
+        <label>vector</label>
+      </node>
+      <node id="14158">
+        <label>bignum.h</label>
+        <link refid="bignum_8h"/>
+        <childnode refid="14114" relation="include">
+        </childnode>
+        <childnode refid="14142" relation="include">
+        </childnode>
+        <childnode refid="14159" relation="include">
+        </childnode>
+        <childnode refid="14144" relation="include">
+        </childnode>
+        <childnode refid="14116" relation="include">
+        </childnode>
+        <childnode refid="14111" relation="include">
+        </childnode>
+      </node>
+      <node id="14199">
+        <label>net.h</label>
+        <link refid="net_8h"/>
+        <childnode refid="14200" relation="include">
+        </childnode>
+        <childnode refid="14201" relation="include">
+        </childnode>
+        <childnode refid="14147" relation="include">
+        </childnode>
+        <childnode refid="14136" relation="include">
+        </childnode>
+        <childnode refid="14178" relation="include">
+        </childnode>
+        <childnode refid="14202" relation="include">
+        </childnode>
+        <childnode refid="14203" relation="include">
+        </childnode>
+        <childnode refid="14204" relation="include">
+        </childnode>
+        <childnode refid="14213" relation="include">
+        </childnode>
+        <childnode refid="14215" relation="include">
+        </childnode>
+        <childnode refid="14150" relation="include">
+        </childnode>
+        <childnode refid="14191" relation="include">
+        </childnode>
+      </node>
+      <node id="14152">
+        <label>openssl/ripemd.h</label>
+      </node>
+      <node id="14170">
+        <label>boost/filesystem.hpp</label>
+      </node>
+      <node id="14168">
+        <label>utility</label>
+      </node>
+      <node id="14221">
+        <label>compressor.h</label>
+        <link refid="compressor_8h"/>
+        <childnode refid="14141" relation="include">
+        </childnode>
+        <childnode refid="14222" relation="include">
+        </childnode>
+      </node>
+      <node id="14166">
+        <label>sstream</label>
+      </node>
+      <node id="14244">
+        <label>QString</label>
+      </node>
+      <node id="14252">
+        <label>QFile</label>
+      </node>
+      <node id="14135">
+        <label>boost/signals2/last_value.hpp</label>
+      </node>
+      <node id="14196">
+        <label>key.h</label>
+        <link refid="key_8h"/>
+        <childnode refid="14125" relation="include">
+        </childnode>
+        <childnode refid="14149" relation="include">
+        </childnode>
+        <childnode refid="14144" relation="include">
+        </childnode>
+        <childnode refid="14116" relation="include">
+        </childnode>
+      </node>
+      <node id="14175">
+        <label>openssl/evp.h</label>
+      </node>
+      <node id="14258">
+        <label>QTranslator</label>
+      </node>
+      <node id="14246">
+        <label>QLabel</label>
+      </node>
+      <node id="14164">
+        <label>tinyformat.h</label>
+        <link refid="tinyformat_8h"/>
+        <childnode refid="14119" relation="include">
+        </childnode>
+        <childnode refid="14165" relation="include">
+        </childnode>
+        <childnode refid="14166" relation="include">
+        </childnode>
+        <childnode refid="14144" relation="include">
+        </childnode>
+      </node>
+      <node id="14111">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="14185">
+        <label>db.h</label>
+        <link refid="db_8h"/>
+        <childnode refid="14114" relation="include">
+        </childnode>
+        <childnode refid="14186" relation="include">
+        </childnode>
+        <childnode refid="14191" relation="include">
+        </childnode>
+        <childnode refid="14117" relation="include">
+        </childnode>
+        <childnode refid="14115" relation="include">
+        </childnode>
+        <childnode refid="14116" relation="include">
+        </childnode>
+        <childnode refid="14171" relation="include">
+        </childnode>
+        <childnode refid="14194" relation="include">
+        </childnode>
+      </node>
+      <node id="14191">
+        <label>streams.h</label>
+        <link refid="streams_8h"/>
+        <childnode refid="14125" relation="include">
+        </childnode>
+        <childnode refid="14114" relation="include">
+        </childnode>
+        <childnode refid="14192" relation="include">
+        </childnode>
+        <childnode refid="14143" relation="include">
+        </childnode>
+        <childnode refid="14193" relation="include">
+        </childnode>
+        <childnode refid="14120" relation="include">
+        </childnode>
+        <childnode refid="14117" relation="include">
+        </childnode>
+        <childnode refid="14118" relation="include">
+        </childnode>
+        <childnode refid="14111" relation="include">
+        </childnode>
+        <childnode refid="14115" relation="include">
+        </childnode>
+        <childnode refid="14128" relation="include">
+        </childnode>
+        <childnode refid="14168" relation="include">
+        </childnode>
+        <childnode refid="14116" relation="include">
+        </childnode>
+      </node>
+      <node id="14157">
+        <label>crypto/argon2/argon2.h</label>
+        <link refid="argon2_8h"/>
+        <childnode refid="14111" relation="include">
+        </childnode>
+        <childnode refid="14156" relation="include">
+        </childnode>
+        <childnode refid="14131" relation="include">
+        </childnode>
+      </node>
+      <node id="14162">
+        <label>sys/time.h</label>
+      </node>
+      <node id="14165">
+        <label>iostream</label>
+      </node>
+      <node id="14259">
+        <label>QSplashScreen</label>
+      </node>
+      <node id="14200">
+        <label>deque</label>
+      </node>
+      <node id="14142">
+        <label>uint256.h</label>
+        <link refid="uint256_8h"/>
+        <childnode refid="14143" relation="include">
+        </childnode>
+        <childnode refid="14121" relation="include">
+        </childnode>
+        <childnode refid="14144" relation="include">
+        </childnode>
+        <childnode refid="14111" relation="include">
+        </childnode>
+        <childnode refid="14115" relation="include">
+        </childnode>
+        <childnode refid="14116" relation="include">
+        </childnode>
+      </node>
+      <node id="14207">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="14226">
+        <label>leveldb/slice.h</label>
+        <link refid="slice_8h"/>
+        <childnode refid="14143" relation="include">
+        </childnode>
+        <childnode refid="14156" relation="include">
+        </childnode>
+        <childnode refid="14128" relation="include">
+        </childnode>
+        <childnode refid="14115" relation="include">
+        </childnode>
+      </node>
+      <node id="14253">
+        <label>QDir</label>
+      </node>
+      <node id="14254">
+        <label>QTextStream</label>
+      </node>
+      <node id="14201">
+        <label>boost/array.hpp</label>
+      </node>
+      <node id="14159">
+        <label>openssl/bn.h</label>
+      </node>
+      <node id="14222">
+        <label>txdb.h</label>
+        <link refid="txdb_8h"/>
+        <childnode refid="14223" relation="include">
+        </childnode>
+        <childnode refid="14217" relation="include">
+        </childnode>
+        <childnode refid="14117" relation="include">
+        </childnode>
+        <childnode refid="14115" relation="include">
+        </childnode>
+        <childnode refid="14168" relation="include">
+        </childnode>
+        <childnode refid="14116" relation="include">
+        </childnode>
+      </node>
+      <node id="14182">
+        <label>timedata.h</label>
+        <link refid="timedata_8h"/>
+        <childnode refid="14111" relation="include">
+        </childnode>
+      </node>
+      <node id="14125">
+        <label>allocators.h</label>
+        <link refid="allocators_8h"/>
+        <childnode refid="14126" relation="include">
+        </childnode>
+        <childnode refid="14128" relation="include">
+        </childnode>
+        <childnode refid="14115" relation="include">
+        </childnode>
+        <childnode refid="14129" relation="include">
+        </childnode>
+        <childnode refid="14117" relation="include">
+        </childnode>
+        <childnode refid="14130" relation="include">
+        </childnode>
+        <childnode refid="14131" relation="include">
+        </childnode>
+        <childnode refid="14132" relation="include">
+        </childnode>
+      </node>
+      <node id="14250">
+        <label>winshutdownmonitor.h</label>
+        <link refid="winshutdownmonitor_8h"/>
+      </node>
+      <node id="14242">
+        <label>QAbstractListModel</label>
+      </node>
+      <node id="14214">
+        <label>chainparams.h</label>
+        <link refid="chainparams_8h"/>
+        <childnode refid="14158" relation="include">
+        </childnode>
+        <childnode refid="14142" relation="include">
+        </childnode>
+        <childnode refid="14116" relation="include">
+        </childnode>
+      </node>
+      <node id="14118">
+        <label>set</label>
+      </node>
+      <node id="14243">
+        <label>guiutil.h</label>
+        <link refid="guiutil_8h"/>
+        <childnode refid="14244" relation="include">
+        </childnode>
+        <childnode refid="14138" relation="include">
+        </childnode>
+        <childnode refid="14245" relation="include">
+        </childnode>
+        <childnode refid="14246" relation="include">
+        </childnode>
+      </node>
+      <node id="14192">
+        <label>algorithm</label>
+      </node>
+      <node id="14239">
+        <label>QStringList</label>
+      </node>
+      <node id="14139">
+        <label>walletmodel.h</label>
+        <link refid="walletmodel_8h"/>
+        <childnode refid="14138" relation="include">
+        </childnode>
+        <childnode refid="14116" relation="include">
+        </childnode>
+        <childnode refid="14117" relation="include">
+        </childnode>
+        <childnode refid="14125" relation="include">
+        </childnode>
+        <childnode refid="14140" relation="include">
+        </childnode>
+        <childnode refid="14183" relation="include">
+        </childnode>
+      </node>
+      <node id="14153">
+        <label>crypto/ripemd160.h</label>
+        <link refid="ripemd160_8h"/>
+        <childnode refid="14111" relation="include">
+        </childnode>
+        <childnode refid="14127" relation="include">
+        </childnode>
+      </node>
+      <node id="14145">
+        <label>util.h</label>
+      </node>
+      <node id="14180">
+        <label>stdio.h</label>
+      </node>
+      <node id="14126">
+        <label>cleanse.h</label>
+        <link refid="cleanse_8h"/>
+        <childnode refid="14127" relation="include">
+        </childnode>
+      </node>
+      <node id="14121">
+        <label>cstring</label>
+      </node>
+      <node id="14186">
+        <label>sync.h</label>
+        <link refid="sync_8h"/>
+        <childnode refid="14187" relation="include">
+        </childnode>
+        <childnode refid="14188" relation="include">
+        </childnode>
+        <childnode refid="14189" relation="include">
+        </childnode>
+        <childnode refid="14129" relation="include">
+        </childnode>
+        <childnode refid="14190" relation="include">
+        </childnode>
+      </node>
+      <node id="14238">
+        <label>QAbstractTableModel</label>
+      </node>
+      <node id="14255">
+        <label>QTextCodec</label>
+      </node>
+      <node id="14181">
+        <label>inttypes.h</label>
+      </node>
+      <node id="14225">
+        <label>leveldb/iterator.h</label>
+        <link refid="iterator_8h"/>
+        <childnode refid="14226" relation="include">
+        </childnode>
+        <childnode refid="14227" relation="include">
+        </childnode>
+      </node>
+      <node id="14197">
+        <label>primitives/block.h</label>
+        <link refid="primitives_2block_8h"/>
+        <childnode refid="14141" relation="include">
+        </childnode>
+        <childnode refid="14157" relation="include">
+        </childnode>
+        <childnode refid="14198" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="darksilk_8cpp_1a10cac5f5d5e3e206f7647c480a4833e1" prot="public" static="yes" mutable="no">
+        <type><ref refid="class_dark_silk_g_u_i" kindref="compound">DarkSilkGUI</ref> *</type>
+        <definition>DarkSilkGUI* guiref</definition>
+        <argsstring></argsstring>
+        <name>guiref</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/darksilk.cpp" line="46" column="1" bodyfile="/home/dev/ds-160209/src/qt/darksilk.cpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="darksilk_8cpp_1ae080302b12cc99a5aa5cec36b578689b" prot="public" static="yes" mutable="no">
+        <type>QSplashScreen *</type>
+        <definition>QSplashScreen* splashref</definition>
+        <argsstring></argsstring>
+        <name>splashref</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/darksilk.cpp" line="47" column="1" bodyfile="/home/dev/ds-160209/src/qt/darksilk.cpp" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="darksilk_8cpp_1a3032df312a60d582b78c289aa3a23da5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void ThreadSafeMessageBox</definition>
+        <argsstring>(const std::string &amp;message, const std::string &amp;caption, unsigned int style)</argsstring>
+        <name>ThreadSafeMessageBox</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>caption</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>style</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/darksilk.cpp" line="49" column="1" bodyfile="/home/dev/ds-160209/src/qt/darksilk.cpp" bodystart="49" bodyend="68"/>
+      </memberdef>
+      <memberdef kind="function" id="darksilk_8cpp_1a9a783852edbeac8b4900f5396f4daf6e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool ThreadSafeAskFee</definition>
+        <argsstring>(CAmount nFeeRequired, const std::string &amp;strCaption)</argsstring>
+        <name>ThreadSafeAskFee</name>
+        <param>
+          <type><ref refid="amount_8h_1a4eaf3a5239714d8c45b851527f7cb564" kindref="member">CAmount</ref></type>
+          <declname>nFeeRequired</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>strCaption</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/darksilk.cpp" line="70" column="1" bodyfile="/home/dev/ds-160209/src/qt/darksilk.cpp" bodystart="70" bodyend="83"/>
+      </memberdef>
+      <memberdef kind="function" id="darksilk_8cpp_1ac4bb60eacd8d565ce47666cae3394a18" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void InitMessage</definition>
+        <argsstring>(const std::string &amp;message)</argsstring>
+        <name>InitMessage</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>message</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/darksilk.cpp" line="85" column="1" bodyfile="/home/dev/ds-160209/src/qt/darksilk.cpp" bodystart="85" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="darksilk_8cpp_1af100d586a7138182fabc2cdcb4f3da9f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>static std::string Translate</definition>
+        <argsstring>(const char *psz)</argsstring>
+        <name>Translate</name>
+        <param>
+          <type>const char *</type>
+          <declname>psz</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/darksilk.cpp" line="98" column="1" bodyfile="/home/dev/ds-160209/src/qt/darksilk.cpp" bodystart="98" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="darksilk_8cpp_1acfb8010c2ea266b1b49e7d76cdf5ea2e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void handleRunawayException</definition>
+        <argsstring>(std::exception *e)</argsstring>
+        <name>handleRunawayException</name>
+        <param>
+          <type>std::exception *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/darksilk.cpp" line="105" column="1" bodyfile="/home/dev/ds-160209/src/qt/darksilk.cpp" bodystart="105" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="darksilk_8cpp_1a1ed8f80e9c52d5867b2b1d22c0099a10" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void DebugMessageHandler</definition>
+        <argsstring>(QtMsgType type, const char *msg)</argsstring>
+        <name>DebugMessageHandler</name>
+        <param>
+          <type>QtMsgType</type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/darksilk.cpp" line="114" column="1" bodyfile="/home/dev/ds-160209/src/qt/darksilk.cpp" bodystart="114" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="darksilk_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>(int argc, char *argv[])</argsstring>
+        <name>main</name>
+        <param>
+          <type>int</type>
+          <declname>argc</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>argv</declname>
+          <array>[]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/darksilk.cpp" line="128" column="1" bodyfile="/home/dev/ds-160209/src/qt/darksilk.cpp" bodystart="128" bodyend="350"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>W.J.<sp/>van<sp/>der<sp/>Laan<sp/>2011-2016</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="darksilkgui_8h" kindref="compound">darksilkgui.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="clientmodel_8h" kindref="compound">clientmodel.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="walletmodel_8h" kindref="compound">walletmodel.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="messagemodel_8h" kindref="compound">messagemodel.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="optionsmodel_8h" kindref="compound">optionsmodel.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="guiutil_8h" kindref="compound">guiutil.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="guiconstants_8h" kindref="compound">guiconstants.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="init_8h" kindref="compound">init.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;util.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="wallet_8h" kindref="compound">wallet.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="ui__interface_8h" kindref="compound">ui_interface.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="paymentserver_8h" kindref="compound">paymentserver.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="winshutdownmonitor_8h" kindref="compound">winshutdownmonitor.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>Q_OS_MAC</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="macdockiconhandler_8h" kindref="compound">macdockiconhandler.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QApplication&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QMessageBox&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QFile&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QDir&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QTextStream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QTextCodec&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QLocale&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QTimer&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QTranslator&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QSplashScreen&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QLibraryInfo&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(DARKSILK_NEED_QT_PLUGINS)<sp/>&amp;&amp;<sp/>!defined(_DARKSILK_QT_PLUGINS_INCLUDED)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_DARKSILK_QT_PLUGINS_INCLUDED</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__INSURE__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QtPlugin&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal">Q_IMPORT_PLUGIN(qcncodecs)</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">Q_IMPORT_PLUGIN(qjpcodecs)</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">Q_IMPORT_PLUGIN(qtwcodecs)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">Q_IMPORT_PLUGIN(qkrcodecs)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">Q_IMPORT_PLUGIN(qtaccessiblewidgets)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Need<sp/>a<sp/>global<sp/>reference<sp/>for<sp/>the<sp/>notifications<sp/>to<sp/>find<sp/>the<sp/>GUI</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="class_dark_silk_g_u_i" kindref="compound">DarkSilkGUI</ref><sp/>*guiref;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>QSplashScreen<sp/>*splashref;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ThreadSafeMessageBox(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>message,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>caption,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>style)</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Message<sp/>from<sp/>network<sp/>thread</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(guiref)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>modal<sp/>=<sp/>(style<sp/>&amp;<sp/><ref refid="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1ab03a110663fb005d666b74954a741304" kindref="member">CClientUIInterface::MODAL</ref>);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>In<sp/>case<sp/>of<sp/>modal<sp/>message,<sp/>use<sp/>blocking<sp/>connection<sp/>to<sp/>wait<sp/>for<sp/>user<sp/>to<sp/>click<sp/>a<sp/>button</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QMetaObject::invokeMethod(guiref,<sp/></highlight><highlight class="stringliteral">&quot;message&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>modal<sp/>?<sp/><ref refid="namespace_g_u_i_util_1a2046fc343a70996c23cae6fe7f8d94f2" kindref="member">GUIUtil::blockingGUIThreadConnection</ref>()<sp/>:<sp/>Qt::QueuedConnection,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Q_ARG(QString,<sp/>QString::fromStdString(caption)),</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Q_ARG(QString,<sp/>QString::fromStdString(message)),</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Q_ARG(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">,<sp/>modal),</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Q_ARG(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">,<sp/>style));</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" kindref="member">LogPrintf</ref>(</highlight><highlight class="stringliteral">&quot;%s:<sp/>%s\n&quot;</highlight><highlight class="normal">,<sp/>caption,<sp/>message);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fprintf(stderr,<sp/></highlight><highlight class="stringliteral">&quot;%s:<sp/>%s\n&quot;</highlight><highlight class="normal">,<sp/>caption.c_str(),<sp/>message.c_str());</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>ThreadSafeAskFee(<ref refid="amount_8h_1a4eaf3a5239714d8c45b851527f7cb564" kindref="member">CAmount</ref><sp/>nFeeRequired,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>strCaption)</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!guiref)</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(nFeeRequired<sp/>&lt;<sp/><ref refid="wallet_8h_1add67e95cd66a980b74a7a2f434d9cf1c" kindref="member">MIN_TX_FEE</ref><sp/>||<sp/>nFeeRequired<sp/>&lt;=<sp/><ref refid="wallet_8cpp_1ab2e46203b8d90f87b0a32524045bef60" kindref="member">nTransactionFee</ref>)</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>payFee<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>QMetaObject::invokeMethod(guiref,<sp/></highlight><highlight class="stringliteral">&quot;askFee&quot;</highlight><highlight class="normal">,<sp/><ref refid="namespace_g_u_i_util_1a2046fc343a70996c23cae6fe7f8d94f2" kindref="member">GUIUtil::blockingGUIThreadConnection</ref>(),</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Q_ARG(<ref refid="amount_8h_1a4eaf3a5239714d8c45b851527f7cb564" kindref="member">CAmount</ref>,<sp/>nFeeRequired),</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Q_ARG(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal">*,<sp/>&amp;payFee));</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>payFee;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>InitMessage(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;message)</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(splashref)</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>splashref-&gt;showMessage(QString::fromStdString(message),<sp/>Qt::AlignBottom|Qt::AlignHCenter,<sp/>QColor(67,67,67));</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QApplication::instance()-&gt;processEvents();</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" kindref="member">LogPrintf</ref>(</highlight><highlight class="stringliteral">&quot;init<sp/>message:<sp/>%s\n&quot;</highlight><highlight class="normal">,<sp/>message);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="96"><highlight class="comment"><sp/><sp/><sp/>Translate<sp/>string<sp/>to<sp/>current<sp/>locale<sp/>using<sp/>Qt.</highlight></codeline>
+<codeline lineno="97"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::string<sp/>Translate(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>psz)</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>QCoreApplication::translate(</highlight><highlight class="stringliteral">&quot;darksilk-core&quot;</highlight><highlight class="normal">,<sp/>psz).toStdString();</highlight></codeline>
+<codeline lineno="101"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Handle<sp/>runaway<sp/>exceptions.<sp/>Shows<sp/>a<sp/>message<sp/>box<sp/>with<sp/>the<sp/>problem<sp/>and<sp/>quits<sp/>the<sp/>program.</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>handleRunawayException(std::exception<sp/>*e)</highlight></codeline>
+<codeline lineno="106"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="util_8cpp_1a477231880f761159de1567ad6fb98fac" kindref="member">PrintExceptionContinue</ref>(e,<sp/></highlight><highlight class="stringliteral">&quot;Runaway<sp/>exception&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>QMessageBox::critical(0,<sp/></highlight><highlight class="stringliteral">&quot;Runaway<sp/>exception&quot;</highlight><highlight class="normal">,<sp/>DarkSilkGUI::tr(</highlight><highlight class="stringliteral">&quot;A<sp/>fatal<sp/>error<sp/>occurred.<sp/>DarkSilk<sp/>can<sp/>no<sp/>longer<sp/>continue<sp/>safely<sp/>and<sp/>will<sp/>quit.&quot;</highlight><highlight class="normal">)<sp/>+<sp/>QString(</highlight><highlight class="stringliteral">&quot;\n\n&quot;</highlight><highlight class="normal">)<sp/>+<sp/>QString::fromStdString(<ref refid="util_8cpp_1a396fd0b4e52260e1ddf379fa6e09d887" kindref="member">strMiscWarning</ref>));</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>exit(1);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>qDebug()<sp/>message<sp/>handler<sp/>--&gt;<sp/>debug.log<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>QT_VERSION<sp/>&lt;<sp/>0x050000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114" refid="darksilk_8cpp_1a1ed8f80e9c52d5867b2b1d22c0099a10" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="darksilk_8cpp_1a1ed8f80e9c52d5867b2b1d22c0099a10" kindref="member">DebugMessageHandler</ref>(QtMsgType<sp/>type,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/>msg)</highlight></codeline>
+<codeline lineno="115"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*category<sp/>=<sp/>(type<sp/>==<sp/>QtDebugMsg)<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;qt&quot;</highlight><highlight class="normal"><sp/>:<sp/>NULL;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>LogPrint(category,<sp/></highlight><highlight class="stringliteral">&quot;GUI:<sp/>%s\n&quot;</highlight><highlight class="normal">,<sp/>msg);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="darksilk_8cpp_1a1ed8f80e9c52d5867b2b1d22c0099a10" kindref="member">DebugMessageHandler</ref>(QtMsgType<sp/>type,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QMessageLogContext&amp;<sp/>context,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;msg)</highlight></codeline>
+<codeline lineno="121"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*category<sp/>=<sp/>(type<sp/>==<sp/>QtDebugMsg)<sp/>?<sp/></highlight><highlight class="stringliteral">&quot;qt&quot;</highlight><highlight class="normal"><sp/>:<sp/>NULL;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>LogPrint(category,<sp/></highlight><highlight class="stringliteral">&quot;GUI:<sp/>%s\n&quot;</highlight><highlight class="normal">,<sp/>msg.toStdString());</highlight></codeline>
+<codeline lineno="124"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>DARKSILK_QT_TEST</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128" refid="darksilk_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="darksilk_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kindref="member">main</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*argv[])</highlight></codeline>
+<codeline lineno="129"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Command-line<sp/>options<sp/>take<sp/>precedence:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="util_8cpp_1a4cfc6f116964c12bc24442828c2da007" kindref="member">ParseParameters</ref>(argc,<sp/>argv);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>QT_VERSION<sp/>&lt;<sp/>0x050000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Internal<sp/>string<sp/>conversion<sp/>is<sp/>all<sp/>UTF-8</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>QTextCodec::setCodecForTr(QTextCodec::codecForName(</highlight><highlight class="stringliteral">&quot;UTF-8&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>QTextCodec::setCodecForCStrings(QTextCodec::codecForTr());</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_INIT_RESOURCE(darksilk);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>QApplication<sp/>app(argc,<sp/>argv);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Do<sp/>this<sp/>early<sp/>as<sp/>we<sp/>don&apos;t<sp/>want<sp/>to<sp/>bother<sp/>initializing<sp/>if<sp/>we<sp/>are<sp/>just<sp/>calling<sp/>IPC</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>...<sp/>but<sp/>do<sp/>it<sp/>after<sp/>creating<sp/>app,<sp/>so<sp/>QCoreApplication::arguments<sp/>is<sp/>initialized:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_payment_server_1a1cc71c8771bce09eac09f342a4d48220" kindref="member">PaymentServer::ipcSendCommandLine</ref>())</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>exit(0);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_payment_server" kindref="compound">PaymentServer</ref>*<sp/>paymentServer<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="class_payment_server" kindref="compound">PaymentServer</ref>(&amp;app);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Install<sp/>global<sp/>event<sp/>filter<sp/>that<sp/>makes<sp/>sure<sp/>that<sp/>long<sp/>tooltips<sp/>can<sp/>be<sp/>word-wrapped</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>app.installEventFilter(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="class_g_u_i_util_1_1_tool_tip_to_rich_text_filter" kindref="compound">GUIUtil::ToolTipToRichTextFilter</ref>(TOOLTIP_WRAP_THRESHOLD,<sp/>&amp;app));</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Install<sp/>qDebug()<sp/>message<sp/>handler<sp/>to<sp/>route<sp/>to<sp/>debug.log</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>QT_VERSION<sp/>&lt;<sp/>0x050000</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>qInstallMsgHandler(<ref refid="darksilk_8cpp_1a1ed8f80e9c52d5867b2b1d22c0099a10" kindref="member">DebugMessageHandler</ref>);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>qInstallMessageHandler(<ref refid="darksilk_8cpp_1a1ed8f80e9c52d5867b2b1d22c0099a10" kindref="member">DebugMessageHandler</ref>);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Command-line<sp/>options<sp/>take<sp/>precedence:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="util_8cpp_1a4cfc6f116964c12bc24442828c2da007" kindref="member">ParseParameters</ref>(argc,<sp/>argv);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>...<sp/>then<sp/>darksilk.conf:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!boost::filesystem::is_directory(<ref refid="util_8cpp_1ab83866a054745d4b30a3948a1b44beba" kindref="member">GetDataDir</ref>(</highlight><highlight class="keyword">false</highlight><highlight class="normal">)))</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>message<sp/>can<sp/>not<sp/>be<sp/>translated,<sp/>as<sp/>translation<sp/>is<sp/>not<sp/>initialized<sp/>yet</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>(which<sp/>not<sp/>yet<sp/>possible<sp/>because<sp/>lang=XX<sp/>can<sp/>be<sp/>overridden<sp/>in<sp/>darksilk.conf<sp/>in<sp/>the<sp/>data<sp/>directory)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QMessageBox::critical(0,<sp/></highlight><highlight class="stringliteral">&quot;DarkSilk&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QString(</highlight><highlight class="stringliteral">&quot;Error:<sp/>Specified<sp/>data<sp/>directory<sp/>\&quot;%1\&quot;<sp/>does<sp/>not<sp/>exist.&quot;</highlight><highlight class="normal">).<ref refid="env__posix_8cc_1a9ce2ec4812a92cb6ab39f6e81e9173a9" kindref="member">arg</ref>(QString::fromStdString(<ref refid="util_8cpp_1a0502b74b88db99500ee21dcb446311e5" kindref="member">mapArgs</ref>[</highlight><highlight class="stringliteral">&quot;-datadir&quot;</highlight><highlight class="normal">])));</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="util_8cpp_1a27ba417174a3ee63cb8ee1abb279a668" kindref="member">ReadConfigFile</ref>(<ref refid="util_8cpp_1a0502b74b88db99500ee21dcb446311e5" kindref="member">mapArgs</ref>,<sp/><ref refid="util_8cpp_1a34d23466f937db99d45620bc7ea5d2fb" kindref="member">mapMultiArgs</ref>);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Application<sp/>identification<sp/>(must<sp/>be<sp/>set<sp/>before<sp/>OptionsModel<sp/>is<sp/>initialized,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>as<sp/>it<sp/>is<sp/>used<sp/>to<sp/>locate<sp/>QSettings)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>app.setOrganizationName(</highlight><highlight class="stringliteral">&quot;DarkSilk&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//XXX<sp/>app.setOrganizationDomain(&quot;&quot;);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="util_8cpp_1a64d956f1dda7f9a80ab5d594532b906d" kindref="member">GetBoolArg</ref>(</highlight><highlight class="stringliteral">&quot;-testnet&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">))<sp/></highlight><highlight class="comment">//<sp/>Separate<sp/>UI<sp/>settings<sp/>for<sp/>testnet</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>app.setApplicationName(</highlight><highlight class="stringliteral">&quot;DarkSilk-Qt-testnet&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>app.setApplicationName(</highlight><highlight class="stringliteral">&quot;DarkSilk-Qt&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>...<sp/>then<sp/>GUI<sp/>settings:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_options_model" kindref="compound">OptionsModel</ref><sp/>optionsModel;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Get<sp/>desired<sp/>locale<sp/>(e.g.<sp/>&quot;de_DE&quot;)<sp/>from<sp/>command<sp/>line<sp/>or<sp/>use<sp/>system<sp/>locale</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/>lang_territory<sp/>=<sp/>QString::fromStdString(<ref refid="util_8cpp_1a24f685720bf40370e5bd2a192ad50cd8" kindref="member">GetArg</ref>(</highlight><highlight class="stringliteral">&quot;-lang&quot;</highlight><highlight class="normal">,<sp/>QLocale::system().<ref refid="testharness_8cc_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>().toStdString()));</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/>lang<sp/>=<sp/>lang_territory;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>to<sp/>&quot;de&quot;<sp/>only<sp/>by<sp/>truncating<sp/>&quot;_DE&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>lang.truncate(lang_territory.lastIndexOf(</highlight><highlight class="charliteral">&apos;_&apos;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>QTranslator<sp/>qtTranslatorBase,<sp/>qtTranslator,<sp/>translatorBase,<sp/>translator;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Load<sp/>language<sp/>files<sp/>for<sp/>configured<sp/>locale:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>-<sp/>First<sp/>load<sp/>the<sp/>translator<sp/>for<sp/>the<sp/>base<sp/>language,<sp/>without<sp/>territory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>-<sp/>Then<sp/>load<sp/>the<sp/>more<sp/>specific<sp/>locale<sp/>translator</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Load<sp/>e.g.<sp/>qt_de.qm</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(qtTranslatorBase.load(</highlight><highlight class="stringliteral">&quot;qt_&quot;</highlight><highlight class="normal"><sp/>+<sp/>lang,<sp/>QLibraryInfo::location(QLibraryInfo::TranslationsPath)))</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>app.installTranslator(&amp;qtTranslatorBase);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Load<sp/>e.g.<sp/>qt_de_DE.qm</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(qtTranslator.load(</highlight><highlight class="stringliteral">&quot;qt_&quot;</highlight><highlight class="normal"><sp/>+<sp/>lang_territory,<sp/>QLibraryInfo::location(QLibraryInfo::TranslationsPath)))</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>app.installTranslator(&amp;qtTranslator);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Load<sp/>e.g.<sp/>darksilk_de.qm<sp/>(shortcut<sp/>&quot;de&quot;<sp/>needs<sp/>to<sp/>be<sp/>defined<sp/>in<sp/>darksilk.qrc)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(translatorBase.load(lang,<sp/></highlight><highlight class="stringliteral">&quot;:/translations/&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>app.installTranslator(&amp;translatorBase);</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Load<sp/>e.g.<sp/>darksilk_de_DE.qm<sp/>(shortcut<sp/>&quot;de_DE&quot;<sp/>needs<sp/>to<sp/>be<sp/>defined<sp/>in<sp/>darksilk.qrc)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(translator.load(lang_territory,<sp/></highlight><highlight class="stringliteral">&quot;:/translations/&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>app.installTranslator(&amp;translator);</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Subscribe<sp/>to<sp/>global<sp/>signals<sp/>from<sp/>core</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="init_8cpp_1a4fe31b510fc1c2b95321cedb9f89e8de" kindref="member">uiInterface</ref>.<ref refid="class_c_client_u_i_interface_1ab3f23c730300df11cf9ff369fbae0635" kindref="member">ThreadSafeMessageBox</ref>.connect(ThreadSafeMessageBox);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="init_8cpp_1a4fe31b510fc1c2b95321cedb9f89e8de" kindref="member">uiInterface</ref>.<ref refid="class_c_client_u_i_interface_1a11db1bca5727c45f52714bc63108ce6a" kindref="member">ThreadSafeAskFee</ref>.connect(ThreadSafeAskFee);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="init_8cpp_1a4fe31b510fc1c2b95321cedb9f89e8de" kindref="member">uiInterface</ref>.<ref refid="class_c_client_u_i_interface_1abc63cc3f3e5e15632f713d859dbc6bc2" kindref="member">InitMessage</ref>.connect(InitMessage);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="init_8cpp_1a4fe31b510fc1c2b95321cedb9f89e8de" kindref="member">uiInterface</ref>.<ref refid="class_c_client_u_i_interface_1a996160f65965769cf7fc50e6fd17dc9a" kindref="member">Translate</ref>.connect(Translate);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Show<sp/>help<sp/>message<sp/>immediately<sp/>after<sp/>parsing<sp/>command-line<sp/>options<sp/>(for<sp/>&quot;-lang&quot;)<sp/>and<sp/>setting<sp/>locale,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>but<sp/>before<sp/>showing<sp/>splash<sp/>screen.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="util_8cpp_1a0502b74b88db99500ee21dcb446311e5" kindref="member">mapArgs</ref>.count(</highlight><highlight class="stringliteral">&quot;-?&quot;</highlight><highlight class="normal">)<sp/>||<sp/><ref refid="util_8cpp_1a0502b74b88db99500ee21dcb446311e5" kindref="member">mapArgs</ref>.count(</highlight><highlight class="stringliteral">&quot;--help&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_g_u_i_util_1_1_help_message_box" kindref="compound">GUIUtil::HelpMessageBox</ref><sp/><ref refid="rpcserver_8cpp_1a64b7a85139e261640892b6ac1a2a23aa" kindref="member">help</ref>;</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>help.<ref refid="class_g_u_i_util_1_1_help_message_box_1a6302786b8f88ca0980047262940b144e" kindref="member">showOrPrint</ref>();</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>Q_OS_MAC</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>on<sp/>mac,<sp/>also<sp/>change<sp/>the<sp/>icon<sp/>now<sp/>because<sp/>it<sp/>would<sp/>look<sp/>strange<sp/>to<sp/>have<sp/>a<sp/>testnet<sp/>splash<sp/>(green)<sp/>and<sp/>a<sp/>std<sp/>app<sp/>icon<sp/>(orange)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="util_8cpp_1a64d956f1dda7f9a80ab5d594532b906d" kindref="member">GetBoolArg</ref>(</highlight><highlight class="stringliteral">&quot;-testnet&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_mac_dock_icon_handler_1afd3ef7126d0b6ef02eaf85e5455fe6f4" kindref="member">MacDockIconHandler::instance</ref>()-&gt;<ref refid="class_mac_dock_icon_handler_1a537f8eb3c9752089e3e2e0e30011a65b" kindref="member">setIcon</ref>(QIcon(</highlight><highlight class="stringliteral">&quot;:icons/darksilk_testnet&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/>QSplashScreen<sp/>splash(QPixmap(</highlight><highlight class="stringliteral">&quot;:/images/splash&quot;</highlight><highlight class="normal">),<sp/>0);</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="util_8cpp_1a64d956f1dda7f9a80ab5d594532b906d" kindref="member">GetBoolArg</ref>(</highlight><highlight class="stringliteral">&quot;-splash&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>&amp;&amp;<sp/>!<ref refid="util_8cpp_1a64d956f1dda7f9a80ab5d594532b906d" kindref="member">GetBoolArg</ref>(</highlight><highlight class="stringliteral">&quot;-min&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>splash.show();</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>splashref<sp/>=<sp/>&amp;splash;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="util_8cpp_1a0502b74b88db99500ee21dcb446311e5" kindref="member">mapArgs</ref>.count(</highlight><highlight class="stringliteral">&quot;-style&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QString<sp/>filename<sp/>=<sp/>QString::fromStdString((std::string)<ref refid="util_8cpp_1ab83866a054745d4b30a3948a1b44beba" kindref="member">GetDataDir</ref>().</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">());</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>filename<sp/>=<sp/>filename.append(QDir::separator()).append(QString::fromStdString((std::string)<ref refid="util_8cpp_1a0502b74b88db99500ee21dcb446311e5" kindref="member">mapArgs</ref>[</highlight><highlight class="stringliteral">&quot;-style&quot;</highlight><highlight class="normal">]));</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QFile<sp/>file(filename);</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(file.exists())</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(file.open(QIODevice::ReadOnly<sp/>|<sp/>QIODevice::Text))</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QTextStream<sp/>in(&amp;file);</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QString<sp/>content<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!in.atEnd())</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>content.append(in.readLine());</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>app.setStyleSheet(content);</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QMessageBox::warning(NULL,<sp/>DarkSilkGUI::tr(</highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>load<sp/>style!&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>DarkSilkGUI::tr(</highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>load<sp/>the<sp/>stylesheet<sp/>provided.&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QMessageBox::Ok,<sp/>QMessageBox::Ok);</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/>app.processEvents();</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/>app.setQuitOnLastWindowClosed(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="optionsmodel_8cpp_1aa86dd631bdc5c1627d6050784c2b571f" kindref="member">fUseBlackTheme</ref>)</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_g_u_i_util_1a5dcebf0def16e303ecb89b832e114a10" kindref="member">GUIUtil::SetBlackThemeQSS</ref>(app);</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Regenerate<sp/>startup<sp/>link,<sp/>to<sp/>fix<sp/>links<sp/>to<sp/>old<sp/>versions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="namespace_g_u_i_util_1adca0cdbc1de324bc53c891bdcafa6513" kindref="member">GUIUtil::GetStartOnSystemStartup</ref>())</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespace_g_u_i_util_1a82afe76b9469d777217438a25ab7f95e" kindref="member">GUIUtil::SetStartOnSystemStartup</ref>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>boost::thread_group<sp/>threadGroup;</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_dark_silk_g_u_i" kindref="compound">DarkSilkGUI</ref><sp/>window;</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>guiref<sp/>=<sp/>&amp;window;</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QTimer*<sp/>pollShutdownTimer<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>QTimer(guiref);</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QObject::connect(pollShutdownTimer,<sp/>SIGNAL(timeout()),<sp/>guiref,<sp/>SLOT(detectShutdown()));</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pollShutdownTimer-&gt;start(200);</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="init_8cpp_1a1a4c1bfbf6ba1db77e988b89b9cadfd3" kindref="member">AppInit2</ref>(threadGroup))</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Put<sp/>this<sp/>in<sp/>a<sp/>block,<sp/>so<sp/>that<sp/>the<sp/>Model<sp/>objects<sp/>are<sp/>cleaned<sp/>up<sp/>before</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>calling<sp/>Shutdown().</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>paymentServer-&gt;<ref refid="class_payment_server_1a468fb163f5172c8428c434631aeb4132" kindref="member">setOptionsModel</ref>(&amp;optionsModel);</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(splashref)</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>splash.finish(&amp;window);</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_client_model" kindref="compound">ClientModel</ref><sp/>clientModel(&amp;optionsModel);</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_wallet_model" kindref="compound">WalletModel</ref><sp/>walletModel(<ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>,<sp/>&amp;optionsModel);</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_message_model" kindref="compound">MessageModel</ref><sp/>messageModel(<ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>,<sp/>&amp;walletModel);</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"></highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>window.<ref refid="class_dark_silk_g_u_i_1a671bf7d03e729b88040ede8ae3a86ac5" kindref="member">setClientModel</ref>(&amp;clientModel);</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>window.<ref refid="class_dark_silk_g_u_i_1af1268788bf230b2d09f4213936ee8b9a" kindref="member">setWalletModel</ref>(&amp;walletModel);</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>window.<ref refid="class_dark_silk_g_u_i_1a9c03f026ec3610e83fe98b3cc9f514b5" kindref="member">setMessageModel</ref>(&amp;messageModel);</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>-min<sp/>option<sp/>passed,<sp/>start<sp/>window<sp/>minimized.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="util_8cpp_1a64d956f1dda7f9a80ab5d594532b906d" kindref="member">GetBoolArg</ref>(</highlight><highlight class="stringliteral">&quot;-min&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>window.showMinimized();</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>window.show();</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Now<sp/>that<sp/>initialization/startup<sp/>is<sp/>done,<sp/>process<sp/>any<sp/>command-line</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>darksilk:<sp/>URIs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QObject::connect(paymentServer,<sp/>SIGNAL(receivedURI(QString)),<sp/>&amp;window,<sp/>SLOT(handleURI(QString)));</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QTimer::singleShot(100,<sp/>paymentServer,<sp/>SLOT(uiReady()));</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>app.exec();</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>window.hide();</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>window.<ref refid="class_dark_silk_g_u_i_1a671bf7d03e729b88040ede8ae3a86ac5" kindref="member">setClientModel</ref>(0);</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>window.<ref refid="class_dark_silk_g_u_i_1af1268788bf230b2d09f4213936ee8b9a" kindref="member">setWalletModel</ref>(0);</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>window.<ref refid="class_dark_silk_g_u_i_1a9c03f026ec3610e83fe98b3cc9f514b5" kindref="member">setMessageModel</ref>(0);</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>guiref<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Shutdown<sp/>the<sp/>core<sp/>and<sp/>its<sp/>threads,<sp/>but<sp/>don&apos;t<sp/>exit<sp/>DarkSilk-Qt<sp/>here</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>threadGroup.interrupt_all();</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>threadGroup.join_all();</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="init_8cpp_1ac5f038c2b480cf9ef5e19e3eba8dbaf9" kindref="member">Shutdown</ref>();</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>threadGroup.interrupt_all();</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>threadGroup.join_all();</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="init_8cpp_1ac5f038c2b480cf9ef5e19e3eba8dbaf9" kindref="member">Shutdown</ref>();</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(std::exception&amp;<sp/>e)<sp/>{</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handleRunawayException(&amp;e);</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(...)<sp/>{</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>handleRunawayException(NULL);</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="350"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>DARKSILK_QT_TEST</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/qt/darksilk.cpp"/>
+  </compounddef>
+</doxygen>

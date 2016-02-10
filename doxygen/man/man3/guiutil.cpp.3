@@ -1,0 +1,128 @@
+.TH "/home/dev/ds-160209/src/qt/guiutil.cpp" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/qt/guiutil.cpp \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <QApplication>\fP
+.br
+\fC#include 'guiutil\&.h'\fP
+.br
+\fC#include 'primitives/transaction\&.h'\fP
+.br
+\fC#include 'darksilkaddressvalidator\&.h'\fP
+.br
+\fC#include 'walletmodel\&.h'\fP
+.br
+\fC#include 'darksilkunits\&.h'\fP
+.br
+\fC#include 'util\&.h'\fP
+.br
+\fC#include 'init\&.h'\fP
+.br
+\fC#include <QDateTime>\fP
+.br
+\fC#include <QDoubleValidator>\fP
+.br
+\fC#include <QFont>\fP
+.br
+\fC#include <QLineEdit>\fP
+.br
+\fC#include <QUrl>\fP
+.br
+\fC#include <QTextDocument>\fP
+.br
+\fC#include <QAbstractItemView>\fP
+.br
+\fC#include <QClipboard>\fP
+.br
+\fC#include <QFileDialog>\fP
+.br
+\fC#include <QDesktopServices>\fP
+.br
+\fC#include <QThread>\fP
+.br
+\fC#include <boost/filesystem\&.hpp>\fP
+.br
+\fC#include <boost/filesystem/fstream\&.hpp>\fP
+.br
+
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBGUIUtil\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "QString \fBGUIUtil::dateTimeStr\fP (const QDateTime &date)"
+.br
+.ti -1c
+.RI "QString \fBGUIUtil::dateTimeStr\fP (qint64 nTime)"
+.br
+.ti -1c
+.RI "QFont \fBGUIUtil::darksilkAddressFont\fP ()"
+.br
+.ti -1c
+.RI "void \fBGUIUtil::setupAddressWidget\fP (QLineEdit *widget, QWidget *parent)"
+.br
+.ti -1c
+.RI "void \fBGUIUtil::setupAmountWidget\fP (QLineEdit *widget, QWidget *parent)"
+.br
+.ti -1c
+.RI "bool \fBGUIUtil::parseDarkSilkURI\fP (const QUrl &uri, \fBSendCoinsRecipient\fP *out)"
+.br
+.ti -1c
+.RI "bool \fBGUIUtil::parseDarkSilkURI\fP (QString uri, \fBSendCoinsRecipient\fP *out)"
+.br
+.ti -1c
+.RI "QString \fBGUIUtil::HtmlEscape\fP (const QString &str, bool fMultiLine)"
+.br
+.ti -1c
+.RI "QString \fBGUIUtil::HtmlEscape\fP (const std::string &str, bool fMultiLine)"
+.br
+.ti -1c
+.RI "void \fBGUIUtil::copyEntryData\fP (QAbstractItemView *view, int column, int role)"
+.br
+.ti -1c
+.RI "QString \fBGUIUtil::getSaveFileName\fP (QWidget *parent, const QString &caption, const QString &dir, const QString &filter, QString *selectedSuffixOut)"
+.br
+.ti -1c
+.RI "Qt::ConnectionType \fBGUIUtil::blockingGUIThreadConnection\fP ()"
+.br
+.ti -1c
+.RI "bool \fBGUIUtil::checkPoint\fP (const QPoint &p, const QWidget *w)"
+.br
+.ti -1c
+.RI "bool \fBGUIUtil::isObscured\fP (QWidget *w)"
+.br
+.ti -1c
+.RI "void \fBGUIUtil::openDebugLogfile\fP ()"
+.br
+.ti -1c
+.RI "bool \fBGUIUtil::GetStartOnSystemStartup\fP ()"
+.br
+.ti -1c
+.RI "bool \fBGUIUtil::SetStartOnSystemStartup\fP (bool fAutoStart)"
+.br
+.ti -1c
+.RI "void \fBGUIUtil::SetBlackThemeQSS\fP (QApplication &app)"
+.br
+.ti -1c
+.RI "QString \fBGUIUtil::formatPingTime\fP (double dPingTime)"
+.br
+.ti -1c
+.RI "QString \fBGUIUtil::formatDurationStr\fP (int secs)"
+.br
+.ti -1c
+.RI "QString \fBGUIUtil::formatServicesStr\fP (quint64 mask)"
+.br
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

@@ -1,0 +1,405 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="log__reader_8cc" kind="file" language="C++">
+    <compoundname>log_reader.cc</compoundname>
+    <includes refid="log__reader_8h" local="yes">db/log_reader.h</includes>
+    <includes local="no">stdio.h</includes>
+    <includes refid="env_8h" local="yes">leveldb/env.h</includes>
+    <includes refid="coding_8h" local="yes">util/coding.h</includes>
+    <includes refid="crc32c_8h" local="yes">util/crc32c.h</includes>
+    <incdepgraph>
+      <node id="7261">
+        <label>stdarg.h</label>
+      </node>
+      <node id="7253">
+        <label>assert.h</label>
+      </node>
+      <node id="7256">
+        <label>string</label>
+      </node>
+      <node id="7264">
+        <label>util/crc32c.h</label>
+        <link refid="crc32c_8h"/>
+        <childnode refid="7254" relation="include">
+        </childnode>
+        <childnode refid="7250" relation="include">
+        </childnode>
+      </node>
+      <node id="7254">
+        <label>stddef.h</label>
+      </node>
+      <node id="7249">
+        <label>db/log_reader.h</label>
+        <link refid="log__reader_8h"/>
+        <childnode refid="7250" relation="include">
+        </childnode>
+        <childnode refid="7251" relation="include">
+        </childnode>
+        <childnode refid="7252" relation="include">
+        </childnode>
+        <childnode refid="7257" relation="include">
+        </childnode>
+      </node>
+      <node id="7257">
+        <label>leveldb/status.h</label>
+        <link refid="status_8h"/>
+        <childnode refid="7256" relation="include">
+        </childnode>
+        <childnode refid="7252" relation="include">
+        </childnode>
+      </node>
+      <node id="7262">
+        <label>util/coding.h</label>
+        <link refid="coding_8h"/>
+        <childnode refid="7250" relation="include">
+        </childnode>
+        <childnode refid="7255" relation="include">
+        </childnode>
+        <childnode refid="7256" relation="include">
+        </childnode>
+        <childnode refid="7252" relation="include">
+        </childnode>
+        <childnode refid="7263" relation="include">
+        </childnode>
+      </node>
+      <node id="7255">
+        <label>string.h</label>
+      </node>
+      <node id="7260">
+        <label>vector</label>
+      </node>
+      <node id="7251">
+        <label>db/log_format.h</label>
+        <link refid="log__format_8h"/>
+      </node>
+      <node id="7263">
+        <label>port/port.h</label>
+        <link refid="port_8h"/>
+        <childnode refid="7255" relation="include">
+        </childnode>
+      </node>
+      <node id="7250">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="7252">
+        <label>leveldb/slice.h</label>
+        <link refid="slice_8h"/>
+        <childnode refid="7253" relation="include">
+        </childnode>
+        <childnode refid="7254" relation="include">
+        </childnode>
+        <childnode refid="7255" relation="include">
+        </childnode>
+        <childnode refid="7256" relation="include">
+        </childnode>
+      </node>
+      <node id="7259">
+        <label>leveldb/env.h</label>
+        <link refid="env_8h"/>
+        <childnode refid="7256" relation="include">
+        </childnode>
+        <childnode refid="7260" relation="include">
+        </childnode>
+        <childnode refid="7261" relation="include">
+        </childnode>
+        <childnode refid="7250" relation="include">
+        </childnode>
+        <childnode refid="7257" relation="include">
+        </childnode>
+      </node>
+      <node id="7248">
+        <label>/home/dev/ds-160209/src/leveldb/db/log_reader.cc</label>
+        <link refid="log_reader.cc"/>
+        <childnode refid="7249" relation="include">
+        </childnode>
+        <childnode refid="7258" relation="include">
+        </childnode>
+        <childnode refid="7259" relation="include">
+        </childnode>
+        <childnode refid="7262" relation="include">
+        </childnode>
+        <childnode refid="7264" relation="include">
+        </childnode>
+      </node>
+      <node id="7258">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceleveldb">leveldb</innernamespace>
+    <innernamespace refid="namespaceleveldb_1_1log">leveldb::log</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2011-2016<sp/>The<sp/>LevelDB<sp/>Authors.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>of<sp/>this<sp/>source<sp/>code<sp/>is<sp/>governed<sp/>by<sp/>a<sp/>BSD-style<sp/>license<sp/>that<sp/>can<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>found<sp/>in<sp/>the<sp/>LICENSE<sp/>file.<sp/>See<sp/>the<sp/>AUTHORS<sp/>file<sp/>for<sp/>names<sp/>of<sp/>contributors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="log__reader_8h" kindref="compound">db/log_reader.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="env_8h" kindref="compound">leveldb/env.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="coding_8h" kindref="compound">util/coding.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="crc32c_8h" kindref="compound">util/crc32c.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceleveldb" kindref="compound">leveldb</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">log<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="classleveldb_1_1log_1_1_reader_1_1_reporter_1a7dddb01b6aec1f9c4b4a5ae65af10a92" refkind="member"><highlight class="normal"><ref refid="classleveldb_1_1log_1_1_reader_1_1_reporter_1a7dddb01b6aec1f9c4b4a5ae65af10a92" kindref="member">Reader::Reporter::~Reporter</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="classleveldb_1_1log_1_1_reader_1a38c1a9988741af5429dad60cf79f0556" refkind="member"><highlight class="normal"><ref refid="classleveldb_1_1log_1_1_reader_1a38c1a9988741af5429dad60cf79f0556" kindref="member">Reader::Reader</ref>(<ref refid="classleveldb_1_1_sequential_file" kindref="compound">SequentialFile</ref>*<sp/>file,<sp/><ref refid="classleveldb_1_1log_1_1_reader_1_1_reporter" kindref="compound">Reporter</ref>*<sp/>reporter,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>checksum,</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>initial_offset)</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>file_(file),</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>reporter_(reporter),</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>checksum_(checksum),</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>backing_store_(new<sp/>char[kBlockSize]),</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>buffer_(),</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>eof_(false),</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>last_record_offset_(0),</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>end_of_buffer_offset_(0),</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>initial_offset_(initial_offset)<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classleveldb_1_1log_1_1_reader_1a52bc3896f8a0baee92f8c699553e7841" refkind="member"><highlight class="normal"><ref refid="classleveldb_1_1log_1_1_reader_1a52bc3896f8a0baee92f8c699553e7841" kindref="member">Reader::~Reader</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">[]<sp/>backing_store_;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>Reader::SkipToInitialBlock()<sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>offset_in_block<sp/>=<sp/>initial_offset_<sp/>%<sp/>kBlockSize;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>block_start_location<sp/>=<sp/>initial_offset_<sp/>-<sp/>offset_in_block;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Don&apos;t<sp/>search<sp/>a<sp/>block<sp/>if<sp/>we&apos;d<sp/>be<sp/>in<sp/>the<sp/>trailer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(offset_in_block<sp/>&gt;<sp/>kBlockSize<sp/>-<sp/>6)<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>offset_in_block<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>block_start_location<sp/>+=<sp/>kBlockSize;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/>end_of_buffer_offset_<sp/>=<sp/>block_start_location;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Skip<sp/>to<sp/>start<sp/>of<sp/>first<sp/>block<sp/>that<sp/>can<sp/>contain<sp/>the<sp/>initial<sp/>record</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(block_start_location<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref><sp/>skip_status<sp/>=<sp/>file_-&gt;<ref refid="classleveldb_1_1_sequential_file_1a18c94279fc058cad4d03cdfe04b12179" kindref="member">Skip</ref>(block_start_location);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!skip_status.<ref refid="classleveldb_1_1_status_1ab31e89a858c766716e3dc952be857c65" kindref="member">ok</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ReportDrop(block_start_location,<sp/>skip_status);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="classleveldb_1_1log_1_1_reader_1a84059598c9367cb677a9d70d77993282" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1log_1_1_reader_1a84059598c9367cb677a9d70d77993282" kindref="member">Reader::ReadRecord</ref>(<ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>*<sp/>record,<sp/>std::string*<sp/>scratch)<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(last_record_offset_<sp/>&lt;<sp/>initial_offset_)<sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!SkipToInitialBlock())<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>scratch-&gt;clear();</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>record-&gt;<ref refid="classleveldb_1_1_slice_1ab9b6e340e8a483a5cf713f6be17709e3" kindref="member">clear</ref>();</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>in_fragmented_record<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Record<sp/>offset<sp/>of<sp/>the<sp/>logical<sp/>record<sp/>that<sp/>we&apos;re<sp/>reading</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>0<sp/>is<sp/>a<sp/>dummy<sp/>value<sp/>to<sp/>make<sp/>compilers<sp/>happy</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>prospective_record_offset<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref><sp/>fragment;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>physical_record_offset<sp/>=<sp/>end_of_buffer_offset_<sp/>-<sp/>buffer_.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>();</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>record_type<sp/>=<sp/>ReadPhysicalRecord(&amp;fragment);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(record_type)<sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1_1log_1a01bdc1b51beb634f14f8fbb70fbd8d2aa2c77e6c3871e8ec5506f9f9c2e7dfb13" kindref="member">kFullType</ref>:</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(in_fragmented_record)<sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Handle<sp/>bug<sp/>in<sp/>earlier<sp/>versions<sp/>of<sp/>log::Writer<sp/>where</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>it<sp/>could<sp/>emit<sp/>an<sp/>empty<sp/>kFirstType<sp/>record<sp/>at<sp/>the<sp/>tail<sp/>end</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>of<sp/>a<sp/>block<sp/>followed<sp/>by<sp/>a<sp/>kFullType<sp/>or<sp/>kFirstType<sp/>record</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>at<sp/>the<sp/>beginning<sp/>of<sp/>the<sp/>next<sp/>block.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(scratch-&gt;empty())<sp/>{</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>in_fragmented_record<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ReportCorruption(scratch-&gt;size(),<sp/></highlight><highlight class="stringliteral">&quot;partial<sp/>record<sp/>without<sp/>end(1)&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>prospective_record_offset<sp/>=<sp/>physical_record_offset;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>scratch-&gt;clear();</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*record<sp/>=<sp/>fragment;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>last_record_offset_<sp/>=<sp/>prospective_record_offset;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1_1log_1a01bdc1b51beb634f14f8fbb70fbd8d2aa46ff8d418146ec7ce6c3a883e89b48da" kindref="member">kFirstType</ref>:</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(in_fragmented_record)<sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Handle<sp/>bug<sp/>in<sp/>earlier<sp/>versions<sp/>of<sp/>log::Writer<sp/>where</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>it<sp/>could<sp/>emit<sp/>an<sp/>empty<sp/>kFirstType<sp/>record<sp/>at<sp/>the<sp/>tail<sp/>end</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>of<sp/>a<sp/>block<sp/>followed<sp/>by<sp/>a<sp/>kFullType<sp/>or<sp/>kFirstType<sp/>record</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>at<sp/>the<sp/>beginning<sp/>of<sp/>the<sp/>next<sp/>block.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(scratch-&gt;empty())<sp/>{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>in_fragmented_record<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ReportCorruption(scratch-&gt;size(),<sp/></highlight><highlight class="stringliteral">&quot;partial<sp/>record<sp/>without<sp/>end(2)&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>prospective_record_offset<sp/>=<sp/>physical_record_offset;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>scratch-&gt;assign(fragment.<ref refid="classleveldb_1_1_slice_1aa64861043d9deee6889461bf0593cf73" kindref="member">data</ref>(),<sp/>fragment.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>());</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>in_fragmented_record<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1_1log_1a01bdc1b51beb634f14f8fbb70fbd8d2aa50ec9d5a2236253d02c0abd55d178e08" kindref="member">kMiddleType</ref>:</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!in_fragmented_record)<sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ReportCorruption(fragment.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>(),</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;missing<sp/>start<sp/>of<sp/>fragmented<sp/>record(1)&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>scratch-&gt;append(fragment.<ref refid="classleveldb_1_1_slice_1aa64861043d9deee6889461bf0593cf73" kindref="member">data</ref>(),<sp/>fragment.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>());</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1_1log_1a01bdc1b51beb634f14f8fbb70fbd8d2aa29f913fb4d719f97a9618bca93775dfc" kindref="member">kLastType</ref>:</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!in_fragmented_record)<sp/>{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ReportCorruption(fragment.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>(),</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;missing<sp/>start<sp/>of<sp/>fragmented<sp/>record(2)&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>scratch-&gt;append(fragment.<ref refid="classleveldb_1_1_slice_1aa64861043d9deee6889461bf0593cf73" kindref="member">data</ref>(),<sp/>fragment.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>());</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*record<sp/>=<sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>(*scratch);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>last_record_offset_<sp/>=<sp/>prospective_record_offset;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>kEof:</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(in_fragmented_record)<sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>can<sp/>be<sp/>caused<sp/>by<sp/>the<sp/>writer<sp/>dying<sp/>immediately<sp/>after</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>writing<sp/>a<sp/>physical<sp/>record<sp/>but<sp/>before<sp/>completing<sp/>the<sp/>next;<sp/>don&apos;t</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>treat<sp/>it<sp/>as<sp/>a<sp/>corruption,<sp/>just<sp/>ignore<sp/>the<sp/>entire<sp/>logical<sp/>record.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>scratch-&gt;clear();</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>kBadRecord:</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(in_fragmented_record)<sp/>{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ReportCorruption(scratch-&gt;size(),<sp/></highlight><highlight class="stringliteral">&quot;error<sp/>in<sp/>middle<sp/>of<sp/>record&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>in_fragmented_record<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>scratch-&gt;clear();</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:<sp/>{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>buf[40];</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>snprintf(buf,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(buf),<sp/></highlight><highlight class="stringliteral">&quot;unknown<sp/>record<sp/>type<sp/>%u&quot;</highlight><highlight class="normal">,<sp/>record_type);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ReportCorruption(</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(fragment.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>()<sp/>+<sp/>(in_fragmented_record<sp/>?<sp/>scratch-&gt;size()<sp/>:<sp/>0)),</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>buf);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>in_fragmented_record<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>scratch-&gt;clear();</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166" refid="classleveldb_1_1log_1_1_reader_1a358c5545069d86a61948ac0a021aa7f6" refkind="member"><highlight class="normal"><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/><ref refid="classleveldb_1_1log_1_1_reader_1a358c5545069d86a61948ac0a021aa7f6" kindref="member">Reader::LastRecordOffset</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>last_record_offset_;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Reader::ReportCorruption(<ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>bytes,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>reason)<sp/>{</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/>ReportDrop(bytes,<sp/><ref refid="classleveldb_1_1_status_1a755b1ee5b0029cf9ea1128f1cdff5855" kindref="member">Status::Corruption</ref>(reason));</highlight></codeline>
+<codeline lineno="172"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Reader::ReportDrop(<ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>bytes,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref>&amp;<sp/>reason)<sp/>{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(reporter_<sp/>!=<sp/>NULL<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>end_of_buffer_offset_<sp/>-<sp/>buffer_.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>()<sp/>-<sp/>bytes<sp/>&gt;=<sp/>initial_offset_)<sp/>{</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>reporter_-&gt;<ref refid="classleveldb_1_1log_1_1_reader_1_1_reporter_1a2d28d30f9559d5fc9f94af41d239932e" kindref="member">Corruption</ref>(static_cast&lt;size_t&gt;(bytes),<sp/>reason);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="179"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Reader::ReadPhysicalRecord(Slice*<sp/>result)<sp/>{</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(buffer_.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>()<sp/>&lt;<sp/>kHeaderSize)<sp/>{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!eof_)<sp/>{</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Last<sp/>read<sp/>was<sp/>a<sp/>full<sp/>read,<sp/>so<sp/>this<sp/>is<sp/>a<sp/>trailer<sp/>to<sp/>skip</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>buffer_.<ref refid="classleveldb_1_1_slice_1ab9b6e340e8a483a5cf713f6be17709e3" kindref="member">clear</ref>();</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Status<sp/>status<sp/>=<sp/>file_-&gt;<ref refid="classleveldb_1_1_sequential_file_1a4136bef1546cdb9fbbd477a635460261" kindref="member">Read</ref>(kBlockSize,<sp/>&amp;buffer_,<sp/>backing_store_);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>end_of_buffer_offset_<sp/>+=<sp/>buffer_.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>();</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!status.ok())<sp/>{</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>buffer_.<ref refid="classleveldb_1_1_slice_1ab9b6e340e8a483a5cf713f6be17709e3" kindref="member">clear</ref>();</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ReportDrop(kBlockSize,<sp/>status);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>eof_<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>kEof;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(buffer_.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>()<sp/>&lt;<sp/>kBlockSize)<sp/>{</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>eof_<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Note<sp/>that<sp/>if<sp/>buffer_<sp/>is<sp/>non-empty,<sp/>we<sp/>have<sp/>a<sp/>truncated<sp/>header<sp/>at<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>end<sp/>of<sp/>the<sp/>file,<sp/>which<sp/>can<sp/>be<sp/>caused<sp/>by<sp/>the<sp/>writer<sp/>crashing<sp/>in<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>middle<sp/>of<sp/>writing<sp/>the<sp/>header.<sp/>Instead<sp/>of<sp/>considering<sp/>this<sp/>an<sp/>error,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>just<sp/>report<sp/>EOF.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>buffer_.<ref refid="classleveldb_1_1_slice_1ab9b6e340e8a483a5cf713f6be17709e3" kindref="member">clear</ref>();</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>kEof;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Parse<sp/>the<sp/>header</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>header<sp/>=<sp/>buffer_.<ref refid="classleveldb_1_1_slice_1aa64861043d9deee6889461bf0593cf73" kindref="member">data</ref>();</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>a<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(header[4])<sp/>&amp;<sp/>0xff;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>b<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(header[5])<sp/>&amp;<sp/>0xff;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>type<sp/>=<sp/>header[6];</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>length<sp/>=<sp/>a<sp/>|<sp/>(b<sp/>&lt;&lt;<sp/>8);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(kHeaderSize<sp/>+<sp/>length<sp/>&gt;<sp/>buffer_.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>drop_size<sp/>=<sp/>buffer_.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>();</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>buffer_.<ref refid="classleveldb_1_1_slice_1ab9b6e340e8a483a5cf713f6be17709e3" kindref="member">clear</ref>();</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!eof_)<sp/>{</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ReportCorruption(drop_size,<sp/></highlight><highlight class="stringliteral">&quot;bad<sp/>record<sp/>length&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>kBadRecord;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>the<sp/>end<sp/>of<sp/>the<sp/>file<sp/>has<sp/>been<sp/>reached<sp/>without<sp/>reading<sp/>|length|<sp/>bytes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>of<sp/>payload,<sp/>assume<sp/>the<sp/>writer<sp/>died<sp/>in<sp/>the<sp/>middle<sp/>of<sp/>writing<sp/>the<sp/>record.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Don&apos;t<sp/>report<sp/>a<sp/>corruption.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>kEof;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(type<sp/>==<sp/><ref refid="namespaceleveldb_1_1log_1a01bdc1b51beb634f14f8fbb70fbd8d2aa5a96fbcdf2a8be4834c61233ec2cea2e" kindref="member">kZeroType</ref><sp/>&amp;&amp;<sp/>length<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Skip<sp/>zero<sp/>length<sp/>record<sp/>without<sp/>reporting<sp/>any<sp/>drops<sp/>since</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>such<sp/>records<sp/>are<sp/>produced<sp/>by<sp/>the<sp/>mmap<sp/>based<sp/>writing<sp/>code<sp/>in</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>env_posix.cc<sp/>that<sp/>preallocates<sp/>file<sp/>regions.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>buffer_.<ref refid="classleveldb_1_1_slice_1ab9b6e340e8a483a5cf713f6be17709e3" kindref="member">clear</ref>();</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>kBadRecord;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Check<sp/>crc</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(checksum_)<sp/>{</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>expected_crc<sp/>=<sp/><ref refid="namespaceleveldb_1_1crc32c_1aef7889069ea26dd145509fff4c4e6b66" kindref="member">crc32c::Unmask</ref>(<ref refid="namespaceleveldb_1adae574304f9d1ed3e95742167cd449a9" kindref="member">DecodeFixed32</ref>(header));</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>actual_crc<sp/>=<sp/><ref refid="namespaceleveldb_1_1crc32c_1ac004d1e3d8c75b033c162e5ae0a5cc2c" kindref="member">crc32c::Value</ref>(header<sp/>+<sp/>6,<sp/>1<sp/>+<sp/>length);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(actual_crc<sp/>!=<sp/>expected_crc)<sp/>{</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Drop<sp/>the<sp/>rest<sp/>of<sp/>the<sp/>buffer<sp/>since<sp/>&quot;length&quot;<sp/>itself<sp/>may<sp/>have</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>been<sp/>corrupted<sp/>and<sp/>if<sp/>we<sp/>trust<sp/>it,<sp/>we<sp/>could<sp/>find<sp/>some</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>fragment<sp/>of<sp/>a<sp/>real<sp/>log<sp/>record<sp/>that<sp/>just<sp/>happens<sp/>to<sp/>look</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>like<sp/>a<sp/>valid<sp/>log<sp/>record.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>drop_size<sp/>=<sp/>buffer_.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>();</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>buffer_.<ref refid="classleveldb_1_1_slice_1ab9b6e340e8a483a5cf713f6be17709e3" kindref="member">clear</ref>();</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ReportCorruption(drop_size,<sp/></highlight><highlight class="stringliteral">&quot;checksum<sp/>mismatch&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>kBadRecord;</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/>buffer_.<ref refid="classleveldb_1_1_slice_1a1be5b22958a115ebecb2b017aad2b3f6" kindref="member">remove_prefix</ref>(kHeaderSize<sp/>+<sp/>length);</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Skip<sp/>physical<sp/>record<sp/>that<sp/>started<sp/>before<sp/>initial_offset_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(end_of_buffer_offset_<sp/>-<sp/>buffer_.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>()<sp/>-<sp/>kHeaderSize<sp/>-<sp/>length<sp/>&lt;</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>initial_offset_)<sp/>{</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>result-&gt;clear();</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>kBadRecord;</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/>*result<sp/>=<sp/>Slice(header<sp/>+<sp/>kHeaderSize,<sp/>length);</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>type;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="263"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>log</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>leveldb</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/leveldb/db/log_reader.cc"/>
+  </compounddef>
+</doxygen>

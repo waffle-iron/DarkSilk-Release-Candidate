@@ -1,0 +1,444 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_d_b_env" kind="class" language="C++" prot="public">
+    <compoundname>CDBEnv</compoundname>
+    <includes refid="db_8h" local="no">db.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_c_d_b_env_1a6fbf26da5d7f8f64a77a3ba15e4df244" prot="public" static="no">
+        <name>VerifyResult</name>
+        <enumvalue id="class_c_d_b_env_1a6fbf26da5d7f8f64a77a3ba15e4df244ad1e78ccddf6bdf55ecf09d6936760661" prot="public">
+          <name>VERIFY_OK</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_d_b_env_1a6fbf26da5d7f8f64a77a3ba15e4df244a25eebe1e7f52e4e07a4c9b1e6abc4274" prot="public">
+          <name>RECOVER_OK</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_d_b_env_1a6fbf26da5d7f8f64a77a3ba15e4df244a0c9f58677b786e700258e8ad29579d75" prot="public">
+          <name>RECOVER_FAIL</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/db.h" line="61" column="1" bodyfile="/home/dev/ds-160209/src/db.h" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="typedef" id="class_c_d_b_env_1a53fd285f09c312973caa6f90b33937f5" prot="public" static="no">
+        <type>std::pair&lt; std::vector&lt; unsigned char &gt;, std::vector&lt; unsigned char &gt; &gt;</type>
+        <definition>typedef std::pair&lt;std::vector&lt;unsigned char&gt;, std::vector&lt;unsigned char&gt; &gt; CDBEnv::KeyValPair</definition>
+        <argsstring></argsstring>
+        <name>KeyValPair</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/db.h" line="70" column="1" bodyfile="/home/dev/ds-160209/src/db.h" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_c_d_b_env_1acd021fd5274b0d0a46bb888fd3dfd8b5" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CDBEnv::fDbEnvInit</definition>
+        <argsstring></argsstring>
+        <name>fDbEnvInit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/db.h" line="37" column="1" bodyfile="/home/dev/ds-160209/src/db.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_d_b_env_1af2f8f2ad96b7da4f50fa0af6ba711257" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CDBEnv::fMockDb</definition>
+        <argsstring></argsstring>
+        <name>fMockDb</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/db.h" line="38" column="1" bodyfile="/home/dev/ds-160209/src/db.h" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_d_b_env_1aa8bafe76363d3567a6f29818ac4f14a6" prot="private" static="no" mutable="no">
+        <type>boost::filesystem::path</type>
+        <definition>boost::filesystem::path CDBEnv::pathEnv</definition>
+        <argsstring></argsstring>
+        <name>pathEnv</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/db.h" line="39" column="1" bodyfile="/home/dev/ds-160209/src/db.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_d_b_env_1aaab563b01f3631c6a80b6ce3cf73fc8b" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string CDBEnv::strPath</definition>
+        <argsstring></argsstring>
+        <name>strPath</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/db.h" line="40" column="1" bodyfile="/home/dev/ds-160209/src/db.h" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_c_d_b_env_1af71bf28f9142c38aedc550353270b2b7" prot="public" static="no" mutable="yes">
+        <type><ref refid="sync_8h_1a37a4692b2d517f2843655ca11af7668a" kindref="member">CCriticalSection</ref></type>
+        <definition>CCriticalSection CDBEnv::cs_db</definition>
+        <argsstring></argsstring>
+        <name>cs_db</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/db.h" line="45" column="1" bodyfile="/home/dev/ds-160209/src/db.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_d_b_env_1a50a70690e7f688f5e92a972e7fa18668" prot="public" static="no" mutable="no">
+        <type>DbEnv</type>
+        <definition>DbEnv CDBEnv::dbenv</definition>
+        <argsstring></argsstring>
+        <name>dbenv</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/db.h" line="46" column="1" bodyfile="/home/dev/ds-160209/src/db.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_d_b_env_1a3b8a3caf48395ef3f05e3717b33bf32c" prot="public" static="no" mutable="no">
+        <type>std::map&lt; std::string, int &gt;</type>
+        <definition>std::map&lt;std::string, int&gt; CDBEnv::mapFileUseCount</definition>
+        <argsstring></argsstring>
+        <name>mapFileUseCount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/db.h" line="47" column="1" bodyfile="/home/dev/ds-160209/src/db.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_d_b_env_1a89184b6635285b963fa4d80fc292b386" prot="public" static="no" mutable="no">
+        <type>std::map&lt; std::string, Db * &gt;</type>
+        <definition>std::map&lt;std::string, Db*&gt; CDBEnv::mapDb</definition>
+        <argsstring></argsstring>
+        <name>mapDb</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/db.h" line="48" column="1" bodyfile="/home/dev/ds-160209/src/db.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_c_d_b_env_1a5179ad1064b9f78d6d320c6e036217e2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CDBEnv::EnvShutdown</definition>
+        <argsstring>()</argsstring>
+        <name>EnvShutdown</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/db.h" line="42" column="1" bodyfile="/home/dev/ds-160209/src/db.cpp" bodystart="34" bodyend="45"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_d_b_env_1a6b24104a8fcc5a9ebfbdfcac725e9bbc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CDBEnv::CDBEnv</definition>
+        <argsstring>()</argsstring>
+        <name>CDBEnv</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/db.h" line="50" column="1" bodyfile="/home/dev/ds-160209/src/db.cpp" bodystart="47" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_d_b_env_1a217f5a20e4fc0790e495f9fa78ee8708" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CDBEnv::~CDBEnv</definition>
+        <argsstring>()</argsstring>
+        <name>~CDBEnv</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/db.h" line="51" column="1" bodyfile="/home/dev/ds-160209/src/db.cpp" bodystart="53" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_d_b_env_1ab352b9f28a8329037fd942f9912797e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CDBEnv::MakeMock</definition>
+        <argsstring>()</argsstring>
+        <name>MakeMock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/db.h" line="52" column="1" bodyfile="/home/dev/ds-160209/src/db.cpp" bodystart="116" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_d_b_env_1ae44129114301a41635c3707c6bc92ab1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CDBEnv::IsMock</definition>
+        <argsstring>()</argsstring>
+        <name>IsMock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/db.h" line="53" column="1" bodyfile="/home/dev/ds-160209/src/db.h" bodystart="53" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_d_b_env_1a9d04604da4ad6f063e150b34d5df392d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_c_d_b_env_1a6fbf26da5d7f8f64a77a3ba15e4df244" kindref="member">VerifyResult</ref></type>
+        <definition>CDBEnv::VerifyResult CDBEnv::Verify</definition>
+        <argsstring>(std::string strFile, bool(*recoverFunc)(CDBEnv &amp;dbenv, std::string strFile))</argsstring>
+        <name>Verify</name>
+        <param>
+          <type>std::string</type>
+          <declname>strFile</declname>
+        </param>
+        <param>
+          <type>bool(*)(<ref refid="class_c_d_b_env" kindref="compound">CDBEnv</ref> &amp;<ref refid="class_c_d_b_env_1a50a70690e7f688f5e92a972e7fa18668" kindref="member">dbenv</ref>, std::string strFile)</type>
+          <declname>recoverFunc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/db.h" line="62" column="1" bodyfile="/home/dev/ds-160209/src/db.cpp" bodystart="150" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_d_b_env_1a08726637bff0809ab9c7c493383a3914" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CDBEnv::Salvage</definition>
+        <argsstring>(std::string strFile, bool fAggressive, std::vector&lt; KeyValPair &gt; &amp;vResult)</argsstring>
+        <name>Salvage</name>
+        <param>
+          <type>std::string</type>
+          <declname>strFile</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fAggressive</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="class_c_d_b_env_1a53fd285f09c312973caa6f90b33937f5" kindref="member">KeyValPair</ref> &gt; &amp;</type>
+          <declname>vResult</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/db.h" line="71" column="1" bodyfile="/home/dev/ds-160209/src/db.cpp" bodystart="167" bodyend="219"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_d_b_env_1a1a81be1585305e5cedd2bccd6c7570c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CDBEnv::Open</definition>
+        <argsstring>(boost::filesystem::path pathEnv_)</argsstring>
+        <name>Open</name>
+        <param>
+          <type>boost::filesystem::path</type>
+          <declname>pathEnv_</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>debug </para>        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/db.h" line="73" column="1" bodyfile="/home/dev/ds-160209/src/db.cpp" bodystart="63" bodyend="114"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_d_b_env_1a0bf3b64c05bf0d7f0a7dbaa9a072c0bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CDBEnv::Close</definition>
+        <argsstring>()</argsstring>
+        <name>Close</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/db.h" line="74" column="1" bodyfile="/home/dev/ds-160209/src/db.cpp" bodystart="58" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_d_b_env_1a09c5850b88919553a8db416ce288ff1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CDBEnv::Flush</definition>
+        <argsstring>(bool fShutdown)</argsstring>
+        <name>Flush</name>
+        <param>
+          <type>bool</type>
+          <declname>fShutdown</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/db.h" line="75" column="1" bodyfile="/home/dev/ds-160209/src/db.cpp" bodystart="428" bodyend="470"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_d_b_env_1aa4e0fe52dfc0da22fe9bf59eeda57fba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CDBEnv::CheckpointLSN</definition>
+        <argsstring>(const std::string &amp;strFile)</argsstring>
+        <name>CheckpointLSN</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>strFile</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/db.h" line="76" column="1" bodyfile="/home/dev/ds-160209/src/db.cpp" bodystart="222" bodyend="228"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_d_b_env_1ac53fd53afdd1e0881b8ffbb11a89b556" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CDBEnv::CloseDb</definition>
+        <argsstring>(const std::string &amp;strFile)</argsstring>
+        <name>CloseDb</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>strFile</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/db.h" line="78" column="1" bodyfile="/home/dev/ds-160209/src/db.cpp" bodystart="319" bodyend="332"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_d_b_env_1a1a53f94daf3096e047d7b041e6a885d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CDBEnv::RemoveDb</definition>
+        <argsstring>(const std::string &amp;strFile)</argsstring>
+        <name>RemoveDb</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>strFile</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/db.h" line="79" column="1" bodyfile="/home/dev/ds-160209/src/db.cpp" bodystart="334" bodyend="341"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_d_b_env_1a5f1daab338b2098ea693efad6edefb9b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>DbTxn *</type>
+        <definition>DbTxn* CDBEnv::TxnBegin</definition>
+        <argsstring>(int flags=DB_TXN_WRITE_NOSYNC)</argsstring>
+        <name>TxnBegin</name>
+        <param>
+          <type>int</type>
+          <declname>flags</declname>
+          <defval>DB_TXN_WRITE_NOSYNC</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/db.h" line="81" column="1" bodyfile="/home/dev/ds-160209/src/db.h" bodystart="81" bodyend="88"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="449">
+        <label>boost::recursive_mutex</label>
+      </node>
+      <node id="448">
+        <label>AnnotatedMixin&lt; boost::recursive_mutex &gt;</label>
+        <link refid="class_annotated_mixin"/>
+        <childnode refid="449" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="447">
+        <label>CDBEnv</label>
+        <link refid="class_c_d_b_env"/>
+        <childnode refid="448" relation="usage">
+          <edgelabel>cs_db</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/dev/ds-160209/src/db.h" line="35" column="1" bodyfile="/home/dev/ds-160209/src/db.h" bodystart="34" bodyend="89"/>
+    <listofallmembers>
+      <member refid="class_c_d_b_env_1a6b24104a8fcc5a9ebfbdfcac725e9bbc" prot="public" virt="non-virtual"><scope>CDBEnv</scope><name>CDBEnv</name></member>
+      <member refid="class_c_d_b_env_1aa4e0fe52dfc0da22fe9bf59eeda57fba" prot="public" virt="non-virtual"><scope>CDBEnv</scope><name>CheckpointLSN</name></member>
+      <member refid="class_c_d_b_env_1a0bf3b64c05bf0d7f0a7dbaa9a072c0bc" prot="public" virt="non-virtual"><scope>CDBEnv</scope><name>Close</name></member>
+      <member refid="class_c_d_b_env_1ac53fd53afdd1e0881b8ffbb11a89b556" prot="public" virt="non-virtual"><scope>CDBEnv</scope><name>CloseDb</name></member>
+      <member refid="class_c_d_b_env_1af71bf28f9142c38aedc550353270b2b7" prot="public" virt="non-virtual"><scope>CDBEnv</scope><name>cs_db</name></member>
+      <member refid="class_c_d_b_env_1a50a70690e7f688f5e92a972e7fa18668" prot="public" virt="non-virtual"><scope>CDBEnv</scope><name>dbenv</name></member>
+      <member refid="class_c_d_b_env_1a5179ad1064b9f78d6d320c6e036217e2" prot="private" virt="non-virtual"><scope>CDBEnv</scope><name>EnvShutdown</name></member>
+      <member refid="class_c_d_b_env_1acd021fd5274b0d0a46bb888fd3dfd8b5" prot="private" virt="non-virtual"><scope>CDBEnv</scope><name>fDbEnvInit</name></member>
+      <member refid="class_c_d_b_env_1a09c5850b88919553a8db416ce288ff1a" prot="public" virt="non-virtual"><scope>CDBEnv</scope><name>Flush</name></member>
+      <member refid="class_c_d_b_env_1af2f8f2ad96b7da4f50fa0af6ba711257" prot="private" virt="non-virtual"><scope>CDBEnv</scope><name>fMockDb</name></member>
+      <member refid="class_c_d_b_env_1ae44129114301a41635c3707c6bc92ab1" prot="public" virt="non-virtual"><scope>CDBEnv</scope><name>IsMock</name></member>
+      <member refid="class_c_d_b_env_1a53fd285f09c312973caa6f90b33937f5" prot="public" virt="non-virtual"><scope>CDBEnv</scope><name>KeyValPair</name></member>
+      <member refid="class_c_d_b_env_1ab352b9f28a8329037fd942f9912797e3" prot="public" virt="non-virtual"><scope>CDBEnv</scope><name>MakeMock</name></member>
+      <member refid="class_c_d_b_env_1a89184b6635285b963fa4d80fc292b386" prot="public" virt="non-virtual"><scope>CDBEnv</scope><name>mapDb</name></member>
+      <member refid="class_c_d_b_env_1a3b8a3caf48395ef3f05e3717b33bf32c" prot="public" virt="non-virtual"><scope>CDBEnv</scope><name>mapFileUseCount</name></member>
+      <member refid="class_c_d_b_env_1a1a81be1585305e5cedd2bccd6c7570c3" prot="public" virt="non-virtual"><scope>CDBEnv</scope><name>Open</name></member>
+      <member refid="class_c_d_b_env_1aa8bafe76363d3567a6f29818ac4f14a6" prot="private" virt="non-virtual"><scope>CDBEnv</scope><name>pathEnv</name></member>
+      <member refid="class_c_d_b_env_1a6fbf26da5d7f8f64a77a3ba15e4df244a0c9f58677b786e700258e8ad29579d75" prot="public" virt="non-virtual"><scope>CDBEnv</scope><name>RECOVER_FAIL</name></member>
+      <member refid="class_c_d_b_env_1a6fbf26da5d7f8f64a77a3ba15e4df244a25eebe1e7f52e4e07a4c9b1e6abc4274" prot="public" virt="non-virtual"><scope>CDBEnv</scope><name>RECOVER_OK</name></member>
+      <member refid="class_c_d_b_env_1a1a53f94daf3096e047d7b041e6a885d6" prot="public" virt="non-virtual"><scope>CDBEnv</scope><name>RemoveDb</name></member>
+      <member refid="class_c_d_b_env_1a08726637bff0809ab9c7c493383a3914" prot="public" virt="non-virtual"><scope>CDBEnv</scope><name>Salvage</name></member>
+      <member refid="class_c_d_b_env_1aaab563b01f3631c6a80b6ce3cf73fc8b" prot="private" virt="non-virtual"><scope>CDBEnv</scope><name>strPath</name></member>
+      <member refid="class_c_d_b_env_1a5f1daab338b2098ea693efad6edefb9b" prot="public" virt="non-virtual"><scope>CDBEnv</scope><name>TxnBegin</name></member>
+      <member refid="class_c_d_b_env_1a9d04604da4ad6f063e150b34d5df392d" prot="public" virt="non-virtual"><scope>CDBEnv</scope><name>Verify</name></member>
+      <member refid="class_c_d_b_env_1a6fbf26da5d7f8f64a77a3ba15e4df244ad1e78ccddf6bdf55ecf09d6936760661" prot="public" virt="non-virtual"><scope>CDBEnv</scope><name>VERIFY_OK</name></member>
+      <member refid="class_c_d_b_env_1a6fbf26da5d7f8f64a77a3ba15e4df244" prot="public" virt="non-virtual"><scope>CDBEnv</scope><name>VerifyResult</name></member>
+      <member refid="class_c_d_b_env_1a217f5a20e4fc0790e495f9fa78ee8708" prot="public" virt="non-virtual"><scope>CDBEnv</scope><name>~CDBEnv</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

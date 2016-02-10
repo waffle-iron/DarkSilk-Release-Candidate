@@ -1,0 +1,267 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="classleveldb_1_1_cache" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>leveldb::Cache</compoundname>
+    <includes refid="cache_8h" local="no">cache.h</includes>
+    <innerclass refid="structleveldb_1_1_cache_1_1_handle" prot="public">leveldb::Cache::Handle</innerclass>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classleveldb_1_1_cache_1aceb7389e9fbb571dcab109d4824e9960" prot="private" static="no" mutable="no">
+        <type>Rep *</type>
+        <definition>Rep* leveldb::Cache::rep_</definition>
+        <argsstring></argsstring>
+        <name>rep_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/cache.h" line="90" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/include/leveldb/cache.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classleveldb_1_1_cache_1ac9b129b21ba8eda181645fc3f6a8dfe6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::Cache::Cache</definition>
+        <argsstring>()</argsstring>
+        <name>Cache</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/cache.h" line="34" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/include/leveldb/cache.h" bodystart="34" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_cache_1a1369f94b24a31099443f714b8b8ab527" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>leveldb::Cache::~Cache</definition>
+        <argsstring>()</argsstring>
+        <name>~Cache</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/cache.h" line="38" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/util/cache.cc" bodystart="16" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_cache_1af0b55b7fa0e64184fa62e0dbe9ba9eae" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structleveldb_1_1_cache_1_1_handle" kindref="compound">Handle</ref> *</type>
+        <definition>virtual Handle* leveldb::Cache::Insert</definition>
+        <argsstring>(const Slice &amp;key, void *value, size_t charge, void(*deleter)(const Slice &amp;key, void *value))=0</argsstring>
+        <name>Insert</name>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>charge</declname>
+        </param>
+        <param>
+          <type>void(*)(const <ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref> &amp;key, void *<ref refid="cache_8cc_1a0f61d63b009d0880a89c843bd50d8d76" kindref="member">value</ref>)</type>
+          <declname>deleter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/cache.h" line="52" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_cache_1af90785205182a25cf741dc13a48d76cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="structleveldb_1_1_cache_1_1_handle" kindref="compound">Handle</ref> *</type>
+        <definition>virtual Handle* leveldb::Cache::Lookup</definition>
+        <argsstring>(const Slice &amp;key)=0</argsstring>
+        <name>Lookup</name>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/cache.h" line="60" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_cache_1a712618c8bf3bfa48b7bab1fbc23c3002" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void leveldb::Cache::Release</definition>
+        <argsstring>(Handle *handle)=0</argsstring>
+        <name>Release</name>
+        <param>
+          <type><ref refid="structleveldb_1_1_cache_1_1_handle" kindref="compound">Handle</ref> *</type>
+          <declname>handle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/cache.h" line="65" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_cache_1a454920df8e68917adcf011dfb3538661" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void *</type>
+        <definition>virtual void* leveldb::Cache::Value</definition>
+        <argsstring>(Handle *handle)=0</argsstring>
+        <name>Value</name>
+        <param>
+          <type><ref refid="structleveldb_1_1_cache_1_1_handle" kindref="compound">Handle</ref> *</type>
+          <declname>handle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/cache.h" line="71" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_cache_1af833a38763598253338de37aba079db6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void leveldb::Cache::Erase</definition>
+        <argsstring>(const Slice &amp;key)=0</argsstring>
+        <name>Erase</name>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/cache.h" line="76" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_cache_1ae2d79bfe747fc6c165c77398cc31e125" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref></type>
+        <definition>virtual uint64_t leveldb::Cache::NewId</definition>
+        <argsstring>()=0</argsstring>
+        <name>NewId</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/cache.h" line="82" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classleveldb_1_1_cache_1ae92ff3b0f33bd9bf346928069974950a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::Cache::LRU_Remove</definition>
+        <argsstring>(Handle *e)</argsstring>
+        <name>LRU_Remove</name>
+        <param>
+          <type><ref refid="structleveldb_1_1_cache_1_1_handle" kindref="compound">Handle</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/cache.h" line="85" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_cache_1acc07bab282052c2eb1310d098cd4f99e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::Cache::LRU_Append</definition>
+        <argsstring>(Handle *e)</argsstring>
+        <name>LRU_Append</name>
+        <param>
+          <type><ref refid="structleveldb_1_1_cache_1_1_handle" kindref="compound">Handle</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/cache.h" line="86" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_cache_1a1b1489f524cd29e05ae3f679a2552b98" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::Cache::Unref</definition>
+        <argsstring>(Handle *e)</argsstring>
+        <name>Unref</name>
+        <param>
+          <type><ref refid="structleveldb_1_1_cache_1_1_handle" kindref="compound">Handle</ref> *</type>
+          <declname>e</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/cache.h" line="87" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_cache_1aacc66de3a00854fa38fc53625aecc569" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::Cache::Cache</definition>
+        <argsstring>(const Cache &amp;)</argsstring>
+        <name>Cache</name>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_cache" kindref="compound">Cache</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/cache.h" line="93" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_cache_1a62c682ea6c99e53156229053b3fccb5f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::Cache::operator=</definition>
+        <argsstring>(const Cache &amp;)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_cache" kindref="compound">Cache</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/cache.h" line="94" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/cache.h" line="32" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/include/leveldb/cache.h" bodystart="32" bodyend="95"/>
+    <listofallmembers>
+      <member refid="classleveldb_1_1_cache_1ac9b129b21ba8eda181645fc3f6a8dfe6" prot="public" virt="non-virtual"><scope>leveldb::Cache</scope><name>Cache</name></member>
+      <member refid="classleveldb_1_1_cache_1aacc66de3a00854fa38fc53625aecc569" prot="private" virt="non-virtual"><scope>leveldb::Cache</scope><name>Cache</name></member>
+      <member refid="classleveldb_1_1_cache_1af833a38763598253338de37aba079db6" prot="public" virt="pure-virtual"><scope>leveldb::Cache</scope><name>Erase</name></member>
+      <member refid="classleveldb_1_1_cache_1af0b55b7fa0e64184fa62e0dbe9ba9eae" prot="public" virt="pure-virtual"><scope>leveldb::Cache</scope><name>Insert</name></member>
+      <member refid="classleveldb_1_1_cache_1af90785205182a25cf741dc13a48d76cb" prot="public" virt="pure-virtual"><scope>leveldb::Cache</scope><name>Lookup</name></member>
+      <member refid="classleveldb_1_1_cache_1acc07bab282052c2eb1310d098cd4f99e" prot="private" virt="non-virtual"><scope>leveldb::Cache</scope><name>LRU_Append</name></member>
+      <member refid="classleveldb_1_1_cache_1ae92ff3b0f33bd9bf346928069974950a" prot="private" virt="non-virtual"><scope>leveldb::Cache</scope><name>LRU_Remove</name></member>
+      <member refid="classleveldb_1_1_cache_1ae2d79bfe747fc6c165c77398cc31e125" prot="public" virt="pure-virtual"><scope>leveldb::Cache</scope><name>NewId</name></member>
+      <member refid="classleveldb_1_1_cache_1a62c682ea6c99e53156229053b3fccb5f" prot="private" virt="non-virtual"><scope>leveldb::Cache</scope><name>operator=</name></member>
+      <member refid="classleveldb_1_1_cache_1a712618c8bf3bfa48b7bab1fbc23c3002" prot="public" virt="pure-virtual"><scope>leveldb::Cache</scope><name>Release</name></member>
+      <member refid="classleveldb_1_1_cache_1aceb7389e9fbb571dcab109d4824e9960" prot="private" virt="non-virtual"><scope>leveldb::Cache</scope><name>rep_</name></member>
+      <member refid="classleveldb_1_1_cache_1a1b1489f524cd29e05ae3f679a2552b98" prot="private" virt="non-virtual"><scope>leveldb::Cache</scope><name>Unref</name></member>
+      <member refid="classleveldb_1_1_cache_1a454920df8e68917adcf011dfb3538661" prot="public" virt="pure-virtual"><scope>leveldb::Cache</scope><name>Value</name></member>
+      <member refid="classleveldb_1_1_cache_1a1369f94b24a31099443f714b8b8ab527" prot="public" virt="virtual"><scope>leveldb::Cache</scope><name>~Cache</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

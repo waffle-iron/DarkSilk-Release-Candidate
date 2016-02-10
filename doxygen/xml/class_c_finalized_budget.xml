@@ -1,0 +1,563 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_finalized_budget" kind="class" language="C++" prot="public">
+    <compoundname>CFinalizedBudget</compoundname>
+    <derivedcompoundref refid="class_c_finalized_budget_broadcast" prot="public" virt="non-virtual">CFinalizedBudgetBroadcast</derivedcompoundref>
+    <includes refid="stormnode-budget_8h" local="no">stormnode-budget.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_c_finalized_budget_1ac4528756f0b3567e0b77caae6d350c82" prot="private" static="no" mutable="yes">
+        <type><ref refid="sync_8h_1a37a4692b2d517f2843655ca11af7668a" kindref="member">CCriticalSection</ref></type>
+        <definition>CCriticalSection CFinalizedBudget::cs</definition>
+        <argsstring></argsstring>
+        <name>cs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="208" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.h" bodystart="208" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_finalized_budget_1a65ec226ae3afb684ba03c793990b9ce5" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CFinalizedBudget::fAutoChecked</definition>
+        <argsstring></argsstring>
+        <name>fAutoChecked</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="209" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.h" bodystart="209" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_c_finalized_budget_1a00d9e3055bebaaef28543bd67e4ca162" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CFinalizedBudget::fValid</definition>
+        <argsstring></argsstring>
+        <name>fValid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="212" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.h" bodystart="212" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_finalized_budget_1ae2a467abad2985ff3c32b29fc75500aa" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string CFinalizedBudget::strBudgetName</definition>
+        <argsstring></argsstring>
+        <name>strBudgetName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="213" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.h" bodystart="213" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_finalized_budget_1a1d04c262e10f4588b17eb3aba5ed9b52" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CFinalizedBudget::nBlockStart</definition>
+        <argsstring></argsstring>
+        <name>nBlockStart</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="214" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.h" bodystart="214" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_finalized_budget_1a639e7be9254d99deb42aeeb15de63174" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_c_tx_budget_payment" kindref="compound">CTxBudgetPayment</ref> &gt;</type>
+        <definition>std::vector&lt;CTxBudgetPayment&gt; CFinalizedBudget::vecBudgetPayments</definition>
+        <argsstring></argsstring>
+        <name>vecBudgetPayments</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="215" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.h" bodystart="215" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_finalized_budget_1a756460095ed59fd39e7f3018b4b208dd" prot="public" static="no" mutable="no">
+        <type>map&lt; <ref refid="classuint256" kindref="compound">uint256</ref>, <ref refid="class_c_finalized_budget_vote" kindref="compound">CFinalizedBudgetVote</ref> &gt;</type>
+        <definition>map&lt;uint256, CFinalizedBudgetVote&gt; CFinalizedBudget::mapVotes</definition>
+        <argsstring></argsstring>
+        <name>mapVotes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="216" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.h" bodystart="216" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_finalized_budget_1a699a2f3cbea723957c2a944b08484bb5" prot="public" static="no" mutable="no">
+        <type><ref refid="classuint256" kindref="compound">uint256</ref></type>
+        <definition>uint256 CFinalizedBudget::nFeeTXHash</definition>
+        <argsstring></argsstring>
+        <name>nFeeTXHash</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="217" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.h" bodystart="217" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_finalized_budget_1a3bb3cb1d44021d5ef9996a81f3e09734" prot="public" static="no" mutable="no">
+        <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+        <definition>int64_t CFinalizedBudget::nTime</definition>
+        <argsstring></argsstring>
+        <name>nTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="218" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.h" bodystart="218" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_finalized_budget_1ad426a5e67867bcb8f73df4aef50ac588" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>CFinalizedBudget::ADD_SERIALIZE_METHODS</definition>
+        <argsstring></argsstring>
+        <name>ADD_SERIALIZE_METHODS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="281" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.h" bodystart="281" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_finalized_budget_1a70a5842e7be58407c5ff5daade0e6e45" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CFinalizedBudget::CFinalizedBudget</definition>
+        <argsstring>()</argsstring>
+        <name>CFinalizedBudget</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="220" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.cpp" bodystart="1646" bodyend="1656"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_finalized_budget_1a701687a3f6f5dadaa8cf20b188306005" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CFinalizedBudget::CFinalizedBudget</definition>
+        <argsstring>(const CFinalizedBudget &amp;other)</argsstring>
+        <name>CFinalizedBudget</name>
+        <param>
+          <type>const <ref refid="class_c_finalized_budget" kindref="compound">CFinalizedBudget</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="221" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.cpp" bodystart="1658" bodyend="1668"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_finalized_budget_1a11cbbc4f8f84e5ffb2b7257168da98be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CFinalizedBudget::CleanAndRemove</definition>
+        <argsstring>(bool fSignatureCheck)</argsstring>
+        <name>CleanAndRemove</name>
+        <param>
+          <type>bool</type>
+          <declname>fSignatureCheck</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="223" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.cpp" bodystart="1777" bodyend="1785"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_finalized_budget_1a63fadb286f5d0f9f735bc33deba56b02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CFinalizedBudget::AddOrUpdateVote</definition>
+        <argsstring>(CFinalizedBudgetVote &amp;vote, std::string &amp;strError)</argsstring>
+        <name>AddOrUpdateVote</name>
+        <param>
+          <type><ref refid="class_c_finalized_budget_vote" kindref="compound">CFinalizedBudgetVote</ref> &amp;</type>
+          <declname>vote</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>strError</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="224" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.cpp" bodystart="1670" bodyend="1696"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_finalized_budget_1aadcaaf7b39cfe0400253db00c5fe0b03" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>double</type>
+        <definition>double CFinalizedBudget::GetScore</definition>
+        <argsstring>()</argsstring>
+        <name>GetScore</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="225" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_finalized_budget_1a96b19202f64cb941239a500e7895c048" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CFinalizedBudget::HasMinimumRequiredSupport</definition>
+        <argsstring>()</argsstring>
+        <name>HasMinimumRequiredSupport</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="226" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_finalized_budget_1ae91a3b63f88979a2cf5252b91b9f339d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CFinalizedBudget::IsValid</definition>
+        <argsstring>(std::string &amp;strError, bool fCheckCollateral=true)</argsstring>
+        <name>IsValid</name>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>strError</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fCheckCollateral</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="228" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.cpp" bodystart="1853" bodyend="1882"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_finalized_budget_1adc46e6b0931fd6335d0788311886a1ba" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string CFinalizedBudget::GetName</definition>
+        <argsstring>()</argsstring>
+        <name>GetName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="230" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.h" bodystart="230" bodyend="230"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_finalized_budget_1a49cb2b919e0de352628d6157cfa1e1c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string CFinalizedBudget::GetProposals</definition>
+        <argsstring>()</argsstring>
+        <name>GetProposals</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="231" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.cpp" bodystart="1799" bodyend="1814"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_finalized_budget_1adf320ff0b74a982c0aadc5d8a5e168db" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int CFinalizedBudget::GetBlockStart</definition>
+        <argsstring>()</argsstring>
+        <name>GetBlockStart</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="232" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.h" bodystart="232" bodyend="232"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_finalized_budget_1a45b354d7c3ea65128130cf28e78f4bf4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int CFinalizedBudget::GetBlockEnd</definition>
+        <argsstring>()</argsstring>
+        <name>GetBlockEnd</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="233" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.h" bodystart="233" bodyend="233"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_finalized_budget_1a6958b394133bceca95b49c25ce337b06" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int CFinalizedBudget::GetVoteCount</definition>
+        <argsstring>()</argsstring>
+        <name>GetVoteCount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="234" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.h" bodystart="234" bodyend="234"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_finalized_budget_1a32c98c7a24100e099093e7d33b9330f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CFinalizedBudget::IsTransactionValid</definition>
+        <argsstring>(const CTransaction &amp;txNew, int nBlockHeight)</argsstring>
+        <name>IsTransactionValid</name>
+        <param>
+          <type>const <ref refid="class_c_transaction" kindref="compound">CTransaction</ref> &amp;</type>
+          <declname>txNew</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nBlockHeight</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="236" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.cpp" bodystart="1884" bodyend="1912"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_finalized_budget_1aa5ec8ed8c03ce6bbc1c49edd942501c8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CFinalizedBudget::GetBudgetPaymentByBlock</definition>
+        <argsstring>(int64_t nBlockHeight, CTxBudgetPayment &amp;payment)</argsstring>
+        <name>GetBudgetPaymentByBlock</name>
+        <param>
+          <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+          <declname>nBlockHeight</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_tx_budget_payment" kindref="compound">CTxBudgetPayment</ref> &amp;</type>
+          <declname>payment</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="238" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.h" bodystart="238" bodyend="247"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_finalized_budget_1a75c6ae33fd0079e732e1103d29501d01" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CFinalizedBudget::GetPayeeAndAmount</definition>
+        <argsstring>(int64_t nBlockHeight, CScript &amp;payee, CAmount &amp;nAmount)</argsstring>
+        <name>GetPayeeAndAmount</name>
+        <param>
+          <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+          <declname>nBlockHeight</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_script" kindref="compound">CScript</ref> &amp;</type>
+          <declname>payee</declname>
+        </param>
+        <param>
+          <type><ref refid="amount_8h_1a4eaf3a5239714d8c45b851527f7cb564" kindref="member">CAmount</ref> &amp;</type>
+          <declname>nAmount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="248" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.h" bodystart="248" bodyend="258"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_finalized_budget_1a88614fdccb5cdf722403c11832df2ad0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CFinalizedBudget::AutoCheck</definition>
+        <argsstring>()</argsstring>
+        <name>AutoCheck</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="261" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.cpp" bodystart="1699" bodyend="1775"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_finalized_budget_1a20f2cdac9403d59688b527a98474cc7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="amount_8h_1a4eaf3a5239714d8c45b851527f7cb564" kindref="member">CAmount</ref></type>
+        <definition>CAmount CFinalizedBudget::GetTotalPayout</definition>
+        <argsstring>()</argsstring>
+        <name>GetTotalPayout</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="263" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.cpp" bodystart="1788" bodyend="1797"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_finalized_budget_1a8d5710eaf0fe541dcdce1d5f2ebee51c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CFinalizedBudget::SubmitVote</definition>
+        <argsstring>()</argsstring>
+        <name>SubmitVote</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="265" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.cpp" bodystart="1914" bodyend="1940"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_finalized_budget_1a9a6fbb2d494342fb6d1c48a98d7cc856" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>string</type>
+        <definition>std::string CFinalizedBudget::GetStatus</definition>
+        <argsstring>()</argsstring>
+        <name>GetStatus</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="268" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.cpp" bodystart="1816" bodyend="1851"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_finalized_budget_1a0ce6295086247f5982f93ee3cea956e6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classuint256" kindref="compound">uint256</ref></type>
+        <definition>uint256 CFinalizedBudget::GetHash</definition>
+        <argsstring>()</argsstring>
+        <name>GetHash</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="270" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.h" bodystart="270" bodyend="279"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_finalized_budget_1a1bbf758b27a7fb175e2889290f5ef78f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Stream</type>
+          </param>
+          <param>
+            <type>typename Operation</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void CFinalizedBudget::SerializationOp</definition>
+        <argsstring>(Stream &amp;s, Operation ser_action, int nType, int nVersion)</argsstring>
+        <name>SerializationOp</name>
+        <param>
+          <type>Stream &amp;</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>Operation</type>
+          <declname>ser_action</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nType</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nVersion</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="284" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.h" bodystart="284" bodyend="292"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="473">
+        <label>CFinalizedBudget</label>
+        <link refid="class_c_finalized_budget"/>
+      </node>
+      <node id="474">
+        <label>CFinalizedBudgetBroadcast</label>
+        <link refid="class_c_finalized_budget_broadcast"/>
+        <childnode refid="473" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="477">
+        <label>base_uint&lt; 256 &gt;</label>
+        <link refid="classbase__uint"/>
+      </node>
+      <node id="476">
+        <label>uint256</label>
+        <link refid="classuint256"/>
+        <childnode refid="477" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="475">
+        <label>CFinalizedBudget</label>
+        <link refid="class_c_finalized_budget"/>
+        <childnode refid="476" relation="usage">
+          <edgelabel>nFeeTXHash</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/dev/ds-160209/src/stormnode-budget.h" line="205" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-budget.h" bodystart="204" bodyend="293"/>
+    <listofallmembers>
+      <member refid="class_c_finalized_budget_1ad426a5e67867bcb8f73df4aef50ac588" prot="public" virt="non-virtual"><scope>CFinalizedBudget</scope><name>ADD_SERIALIZE_METHODS</name></member>
+      <member refid="class_c_finalized_budget_1a63fadb286f5d0f9f735bc33deba56b02" prot="public" virt="non-virtual"><scope>CFinalizedBudget</scope><name>AddOrUpdateVote</name></member>
+      <member refid="class_c_finalized_budget_1a88614fdccb5cdf722403c11832df2ad0" prot="public" virt="non-virtual"><scope>CFinalizedBudget</scope><name>AutoCheck</name></member>
+      <member refid="class_c_finalized_budget_1a70a5842e7be58407c5ff5daade0e6e45" prot="public" virt="non-virtual"><scope>CFinalizedBudget</scope><name>CFinalizedBudget</name></member>
+      <member refid="class_c_finalized_budget_1a701687a3f6f5dadaa8cf20b188306005" prot="public" virt="non-virtual"><scope>CFinalizedBudget</scope><name>CFinalizedBudget</name></member>
+      <member refid="class_c_finalized_budget_1a11cbbc4f8f84e5ffb2b7257168da98be" prot="public" virt="non-virtual"><scope>CFinalizedBudget</scope><name>CleanAndRemove</name></member>
+      <member refid="class_c_finalized_budget_1ac4528756f0b3567e0b77caae6d350c82" prot="private" virt="non-virtual"><scope>CFinalizedBudget</scope><name>cs</name></member>
+      <member refid="class_c_finalized_budget_1a65ec226ae3afb684ba03c793990b9ce5" prot="private" virt="non-virtual"><scope>CFinalizedBudget</scope><name>fAutoChecked</name></member>
+      <member refid="class_c_finalized_budget_1a00d9e3055bebaaef28543bd67e4ca162" prot="public" virt="non-virtual"><scope>CFinalizedBudget</scope><name>fValid</name></member>
+      <member refid="class_c_finalized_budget_1a45b354d7c3ea65128130cf28e78f4bf4" prot="public" virt="non-virtual"><scope>CFinalizedBudget</scope><name>GetBlockEnd</name></member>
+      <member refid="class_c_finalized_budget_1adf320ff0b74a982c0aadc5d8a5e168db" prot="public" virt="non-virtual"><scope>CFinalizedBudget</scope><name>GetBlockStart</name></member>
+      <member refid="class_c_finalized_budget_1aa5ec8ed8c03ce6bbc1c49edd942501c8" prot="public" virt="non-virtual"><scope>CFinalizedBudget</scope><name>GetBudgetPaymentByBlock</name></member>
+      <member refid="class_c_finalized_budget_1a0ce6295086247f5982f93ee3cea956e6" prot="public" virt="non-virtual"><scope>CFinalizedBudget</scope><name>GetHash</name></member>
+      <member refid="class_c_finalized_budget_1adc46e6b0931fd6335d0788311886a1ba" prot="public" virt="non-virtual"><scope>CFinalizedBudget</scope><name>GetName</name></member>
+      <member refid="class_c_finalized_budget_1a75c6ae33fd0079e732e1103d29501d01" prot="public" virt="non-virtual"><scope>CFinalizedBudget</scope><name>GetPayeeAndAmount</name></member>
+      <member refid="class_c_finalized_budget_1a49cb2b919e0de352628d6157cfa1e1c8" prot="public" virt="non-virtual"><scope>CFinalizedBudget</scope><name>GetProposals</name></member>
+      <member refid="class_c_finalized_budget_1aadcaaf7b39cfe0400253db00c5fe0b03" prot="public" virt="non-virtual"><scope>CFinalizedBudget</scope><name>GetScore</name></member>
+      <member refid="class_c_finalized_budget_1a9a6fbb2d494342fb6d1c48a98d7cc856" prot="public" virt="non-virtual"><scope>CFinalizedBudget</scope><name>GetStatus</name></member>
+      <member refid="class_c_finalized_budget_1a20f2cdac9403d59688b527a98474cc7a" prot="public" virt="non-virtual"><scope>CFinalizedBudget</scope><name>GetTotalPayout</name></member>
+      <member refid="class_c_finalized_budget_1a6958b394133bceca95b49c25ce337b06" prot="public" virt="non-virtual"><scope>CFinalizedBudget</scope><name>GetVoteCount</name></member>
+      <member refid="class_c_finalized_budget_1a96b19202f64cb941239a500e7895c048" prot="public" virt="non-virtual"><scope>CFinalizedBudget</scope><name>HasMinimumRequiredSupport</name></member>
+      <member refid="class_c_finalized_budget_1a32c98c7a24100e099093e7d33b9330f2" prot="public" virt="non-virtual"><scope>CFinalizedBudget</scope><name>IsTransactionValid</name></member>
+      <member refid="class_c_finalized_budget_1ae91a3b63f88979a2cf5252b91b9f339d" prot="public" virt="non-virtual"><scope>CFinalizedBudget</scope><name>IsValid</name></member>
+      <member refid="class_c_finalized_budget_1a756460095ed59fd39e7f3018b4b208dd" prot="public" virt="non-virtual"><scope>CFinalizedBudget</scope><name>mapVotes</name></member>
+      <member refid="class_c_finalized_budget_1a1d04c262e10f4588b17eb3aba5ed9b52" prot="public" virt="non-virtual"><scope>CFinalizedBudget</scope><name>nBlockStart</name></member>
+      <member refid="class_c_finalized_budget_1a699a2f3cbea723957c2a944b08484bb5" prot="public" virt="non-virtual"><scope>CFinalizedBudget</scope><name>nFeeTXHash</name></member>
+      <member refid="class_c_finalized_budget_1a3bb3cb1d44021d5ef9996a81f3e09734" prot="public" virt="non-virtual"><scope>CFinalizedBudget</scope><name>nTime</name></member>
+      <member refid="class_c_finalized_budget_1a1bbf758b27a7fb175e2889290f5ef78f" prot="public" virt="non-virtual"><scope>CFinalizedBudget</scope><name>SerializationOp</name></member>
+      <member refid="class_c_finalized_budget_1ae2a467abad2985ff3c32b29fc75500aa" prot="public" virt="non-virtual"><scope>CFinalizedBudget</scope><name>strBudgetName</name></member>
+      <member refid="class_c_finalized_budget_1a8d5710eaf0fe541dcdce1d5f2ebee51c" prot="public" virt="non-virtual"><scope>CFinalizedBudget</scope><name>SubmitVote</name></member>
+      <member refid="class_c_finalized_budget_1a639e7be9254d99deb42aeeb15de63174" prot="public" virt="non-virtual"><scope>CFinalizedBudget</scope><name>vecBudgetPayments</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,139 @@
+.TH "/home/dev/ds-160209/src/crypto/argon2/blake2/blake2.h" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/crypto/argon2/blake2/blake2.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stddef\&.h>\fP
+.br
+\fC#include <stdint\&.h>\fP
+.br
+\fC#include <limits\&.h>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fB__blake2b_param\fP"
+.br
+.ti -1c
+.RI "struct \fB__blake2b_state\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef struct \fB__blake2b_param\fP \fBblake2b_param\fP"
+.br
+.ti -1c
+.RI "typedef struct \fB__blake2b_state\fP \fBblake2b_state\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBblake2b_constant\fP { \fBBLAKE2B_BLOCKBYTES\fP = 128, \fBBLAKE2B_OUTBYTES\fP = 64, \fBBLAKE2B_KEYBYTES\fP = 64, \fBBLAKE2B_SALTBYTES\fP = 16, \fBBLAKE2B_PERSONALBYTES\fP = 16 }"
+.br
+.ti -1c
+.RI "enum { \fBblake2_size_check_0\fP = 1 / !!(CHAR_BIT == 8), \fBblake2_size_check_2\fP }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBblake2b_init\fP (\fBblake2b_state\fP *S, size_t outlen)"
+.br
+.ti -1c
+.RI "int \fBblake2b_init_key\fP (\fBblake2b_state\fP *S, size_t outlen, const void *key, size_t keylen)"
+.br
+.ti -1c
+.RI "int \fBblake2b_init_param\fP (\fBblake2b_state\fP *S, const \fBblake2b_param\fP *P)"
+.br
+.ti -1c
+.RI "int \fBblake2b_update\fP (\fBblake2b_state\fP *S, const void *in, size_t inlen)"
+.br
+.ti -1c
+.RI "int \fBblake2b_final\fP (\fBblake2b_state\fP *S, void *out, size_t outlen)"
+.br
+.ti -1c
+.RI "int \fBblake2b\fP (void *out, size_t outlen, const void *in, size_t inlen, const void *key, size_t keylen)"
+.br
+.ti -1c
+.RI "int \fBblake2b_long\fP (void *out, size_t outlen, const void *in, size_t inlen)"
+.br
+.in -1c
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef struct \fB__blake2b_param\fP  \fBblake2b_param\fP"
+
+.SS "typedef struct \fB__blake2b_state\fP  \fBblake2b_state\fP"
+
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIblake2_size_check_0 \fP\fP
+.TP
+\fB\fIblake2_size_check_2 \fP\fP
+.PP
+Definition at line 48 of file blake2\&.h\&.
+.SS "enum \fBblake2b_constant\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIBLAKE2B_BLOCKBYTES \fP\fP
+.TP
+\fB\fIBLAKE2B_OUTBYTES \fP\fP
+.TP
+\fB\fIBLAKE2B_KEYBYTES \fP\fP
+.TP
+\fB\fIBLAKE2B_SALTBYTES \fP\fP
+.TP
+\fB\fIBLAKE2B_PERSONALBYTES \fP\fP
+.PP
+Definition at line 12 of file blake2\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "int blake2b (void * out, size_t outlen, const void * in, size_t inlen, const void * key, size_t keylen)"
+
+.PP
+Definition at line 276 of file blake2b\&.c\&.
+.SS "int blake2b_final (\fBblake2b_state\fP * S, void * out, size_t outlen)"
+
+.PP
+Definition at line 246 of file blake2b\&.c\&.
+.SS "int blake2b_init (\fBblake2b_state\fP * S, size_t outlen)"
+
+.PP
+Definition at line 74 of file blake2b\&.c\&.
+.SS "int blake2b_init_key (\fBblake2b_state\fP * S, size_t outlen, const void * key, size_t keylen)"
+
+.PP
+Definition at line 102 of file blake2b\&.c\&.
+.SS "int blake2b_init_param (\fBblake2b_state\fP * S, const \fBblake2b_param\fP * P)"
+
+.PP
+Definition at line 56 of file blake2b\&.c\&.
+.SS "int blake2b_long (void * out, size_t outlen, const void * in, size_t inlen)"
+
+.PP
+Definition at line 315 of file blake2b\&.c\&.
+.SS "int blake2b_update (\fBblake2b_state\fP * S, const void * in, size_t inlen)"
+
+.PP
+Definition at line 206 of file blake2b\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

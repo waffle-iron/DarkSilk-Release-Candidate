@@ -1,0 +1,141 @@
+.TH "CBlockFileInfo" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CBlockFileInfo \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <main\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename Stream , typename Operation > void \fBSerializationOp\fP (Stream &s, Operation ser_action, int nType, int nVersion)"
+.br
+.ti -1c
+.RI "void \fBSetNull\fP ()"
+.br
+.ti -1c
+.RI "\fBCBlockFileInfo\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.ti -1c
+.RI "void \fBAddBlock\fP (unsigned int nHeightIn, \fBuint64_t\fP nTimeIn)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "unsigned int \fBnBlocks\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBnSize\fP"
+.br
+.RI "\fInumber of blocks stored in file \fP"
+.ti -1c
+.RI "unsigned int \fBnUndoSize\fP"
+.br
+.RI "\fInumber of used bytes of block file \fP"
+.ti -1c
+.RI "unsigned int \fBnHeightFirst\fP"
+.br
+.RI "\fInumber of used bytes in the undo file \fP"
+.ti -1c
+.RI "unsigned int \fBnHeightLast\fP"
+.br
+.RI "\fIlowest height of block in file \fP"
+.ti -1c
+.RI "\fBuint64_t\fP \fBnTimeFirst\fP"
+.br
+.RI "\fIhighest height of block in file \fP"
+.ti -1c
+.RI "\fBuint64_t\fP \fBnTimeLast\fP"
+.br
+.RI "\fIearliest time of block in file \fP"
+.ti -1c
+.RI "\fBADD_SERIALIZE_METHODS\fP"
+.br
+.RI "\fIlatest time of block in file \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 580 of file main\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CBlockFileInfo::CBlockFileInfo ()\fC [inline]\fP"
+
+.PP
+Definition at line 614 of file main\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void CBlockFileInfo::AddBlock (unsigned int nHeightIn, \fBuint64_t\fP nTimeIn)\fC [inline]\fP"
+update statistics (does not update nSize) 
+.PP
+Definition at line 621 of file main\&.h\&.
+.SS "template<typename Stream , typename Operation > void CBlockFileInfo::SerializationOp (Stream & s, Operation ser_action, int nType, int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 594 of file main\&.h\&.
+.SS "void CBlockFileInfo::SetNull ()\fC [inline]\fP"
+
+.PP
+Definition at line 604 of file main\&.h\&.
+.SS "std::string CBlockFileInfo::ToString () const"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "CBlockFileInfo::ADD_SERIALIZE_METHODS"
+
+.PP
+latest time of block in file 
+.PP
+Definition at line 591 of file main\&.h\&.
+.SS "unsigned int CBlockFileInfo::nBlocks"
+
+.PP
+Definition at line 583 of file main\&.h\&.
+.SS "unsigned int CBlockFileInfo::nHeightFirst"
+
+.PP
+number of used bytes in the undo file 
+.PP
+Definition at line 586 of file main\&.h\&.
+.SS "unsigned int CBlockFileInfo::nHeightLast"
+
+.PP
+lowest height of block in file 
+.PP
+Definition at line 587 of file main\&.h\&.
+.SS "unsigned int CBlockFileInfo::nSize"
+
+.PP
+number of blocks stored in file 
+.PP
+Definition at line 584 of file main\&.h\&.
+.SS "\fBuint64_t\fP CBlockFileInfo::nTimeFirst"
+
+.PP
+highest height of block in file 
+.PP
+Definition at line 588 of file main\&.h\&.
+.SS "\fBuint64_t\fP CBlockFileInfo::nTimeLast"
+
+.PP
+earliest time of block in file 
+.PP
+Definition at line 589 of file main\&.h\&.
+.SS "unsigned int CBlockFileInfo::nUndoSize"
+
+.PP
+number of used bytes of block file 
+.PP
+Definition at line 585 of file main\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

@@ -1,0 +1,466 @@
+.TH "/home/dev/ds-160209/src/net.h" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/net.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <deque>\fP
+.br
+\fC#include <boost/array\&.hpp>\fP
+.br
+\fC#include <boost/foreach\&.hpp>\fP
+.br
+\fC#include <boost/signals2/signal\&.hpp>\fP
+.br
+\fC#include <openssl/rand\&.h>\fP
+.br
+\fC#include <arpa/inet\&.h>\fP
+.br
+\fC#include 'mruset\&.h'\fP
+.br
+\fC#include 'netbase\&.h'\fP
+.br
+\fC#include 'protocol\&.h'\fP
+.br
+\fC#include 'addrman\&.h'\fP
+.br
+\fC#include 'hash\&.h'\fP
+.br
+\fC#include 'streams\&.h'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBCNodeSignals\fP"
+.br
+.ti -1c
+.RI "struct \fBLocalServiceInfo\fP"
+.br
+.ti -1c
+.RI "class \fBCNodeStats\fP"
+.br
+.ti -1c
+.RI "class \fBCNetMessage\fP"
+.br
+.ti -1c
+.RI "class \fBSecMsgNode\fP"
+.br
+.ti -1c
+.RI "class \fBCNode\fP"
+.br
+.RI "\fIInformation about a peer\&. \fP"
+.ti -1c
+.RI "class \fBCAddrDB\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef int \fBNodeId\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBLOCAL_NONE\fP, \fBLOCAL_IF\fP, \fBLOCAL_BIND\fP, \fBLOCAL_UPNP\fP, \fBLOCAL_MANUAL\fP, \fBLOCAL_MAX\fP }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "unsigned int \fBReceiveFloodSize\fP ()"
+.br
+.ti -1c
+.RI "unsigned int \fBSendBufferSize\fP ()"
+.br
+.ti -1c
+.RI "void \fBAddOneShot\fP (std::string strDest)"
+.br
+.ti -1c
+.RI "bool \fBRecvLine\fP (\fBSOCKET\fP hSocket, std::string &strLine)"
+.br
+.ti -1c
+.RI "void \fBAddressCurrentlyConnected\fP (const \fBCService\fP &addr)"
+.br
+.ti -1c
+.RI "\fBCNode\fP * \fBFindNode\fP (const \fBCNetAddr\fP &ip)"
+.br
+.ti -1c
+.RI "\fBCNode\fP * \fBFindNode\fP (const std::string &addrName)"
+.br
+.ti -1c
+.RI "\fBCNode\fP * \fBFindNode\fP (const \fBCService\fP &ip)"
+.br
+.ti -1c
+.RI "\fBCNode\fP * \fBConnectNode\fP (\fBCAddress\fP addrConnect, const char *strDest=NULL, bool sandStormnode=false)"
+.br
+.ti -1c
+.RI "void \fBMapPort\fP (bool fUseUPnP)"
+.br
+.ti -1c
+.RI "unsigned short \fBGetListenPort\fP ()"
+.br
+.ti -1c
+.RI "bool \fBBindListenPort\fP (const \fBCService\fP &bindAddr, std::string &strError=\fBREF\fP(std::string()))"
+.br
+.ti -1c
+.RI "void \fBStartNode\fP (boost::thread_group &threadGroup)"
+.br
+.ti -1c
+.RI "bool \fBStopNode\fP ()"
+.br
+.ti -1c
+.RI "void \fBSocketSendData\fP (\fBCNode\fP *pnode)"
+.br
+.ti -1c
+.RI "void \fBRelayInv\fP (\fBCInv\fP &inv, const int minProtoVersion=MIN_PEER_PROTO_VERSION)"
+.br
+.ti -1c
+.RI "\fBCNodeSignals\fP & \fBGetNodeSignals\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsPeerAddrLocalGood\fP (\fBCNode\fP *pnode)"
+.br
+.ti -1c
+.RI "void \fBSetLimited\fP (enum \fBNetwork\fP net, bool fLimited=true)"
+.br
+.ti -1c
+.RI "bool \fBIsLimited\fP (enum \fBNetwork\fP net)"
+.br
+.ti -1c
+.RI "bool \fBIsLimited\fP (const \fBCNetAddr\fP &addr)"
+.br
+.ti -1c
+.RI "bool \fBAddLocal\fP (const \fBCService\fP &addr, int nScore=\fBLOCAL_NONE\fP)"
+.br
+.ti -1c
+.RI "bool \fBAddLocal\fP (const \fBCNetAddr\fP &addr, int nScore=\fBLOCAL_NONE\fP)"
+.br
+.ti -1c
+.RI "bool \fBSeenLocal\fP (const \fBCService\fP &addr)"
+.br
+.ti -1c
+.RI "bool \fBIsLocal\fP (const \fBCService\fP &addr)"
+.br
+.ti -1c
+.RI "bool \fBGetLocal\fP (\fBCService\fP &addr, const \fBCNetAddr\fP *paddrPeer=NULL)"
+.br
+.ti -1c
+.RI "bool \fBIsReachable\fP (enum \fBNetwork\fP net)"
+.br
+.ti -1c
+.RI "bool \fBIsReachable\fP (const \fBCNetAddr\fP &addr)"
+.br
+.ti -1c
+.RI "void \fBSetReachable\fP (enum \fBNetwork\fP net, bool fFlag=true)"
+.br
+.ti -1c
+.RI "\fBCAddress\fP \fBGetLocalAddress\fP (const \fBCNetAddr\fP *paddrPeer=NULL)"
+.br
+.ti -1c
+.RI "void \fBRelayInventory\fP (const \fBCInv\fP &inv)"
+.br
+.ti -1c
+.RI "void \fBRelayTransaction\fP (const \fBCTransaction\fP &tx, const \fBuint256\fP &\fBhash\fP)"
+.br
+.ti -1c
+.RI "void \fBRelayTransaction\fP (const \fBCTransaction\fP &tx, const \fBuint256\fP &\fBhash\fP, const \fBCDataStream\fP &ss)"
+.br
+.ti -1c
+.RI "void \fBRelayTransactionLockReq\fP (const \fBCTransaction\fP &tx, const \fBuint256\fP &\fBhash\fP, bool relayToAll=false)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "int \fBnBestHeight\fP"
+.br
+.ti -1c
+.RI "bool \fBfDiscover\fP"
+.br
+.ti -1c
+.RI "\fBuint64_t\fP \fBnLocalServices\fP"
+.br
+.ti -1c
+.RI "\fBuint64_t\fP \fBnLocalHostNonce\fP"
+.br
+.ti -1c
+.RI "\fBCAddrMan\fP \fBaddrman\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBCNode\fP * > \fBvNodes\fP"
+.br
+.ti -1c
+.RI "\fBCCriticalSection\fP \fBcs_vNodes\fP"
+.br
+.ti -1c
+.RI "std::map< \fBCInv\fP, \fBCDataStream\fP > \fBmapRelay\fP"
+.br
+.ti -1c
+.RI "std::deque< std::pair< \fBint64_t\fP, \fBCInv\fP > > \fBvRelayExpiration\fP"
+.br
+.ti -1c
+.RI "\fBCCriticalSection\fP \fBcs_mapRelay\fP"
+.br
+.ti -1c
+.RI "std::map< \fBCInv\fP, \fBint64_t\fP > \fBmapAlreadyAskedFor\fP"
+.br
+.ti -1c
+.RI "std::vector< std::string > \fBvAddedNodes\fP"
+.br
+.ti -1c
+.RI "\fBCCriticalSection\fP \fBcs_vAddedNodes\fP"
+.br
+.ti -1c
+.RI "\fBNodeId\fP \fBnLastNodeId\fP"
+.br
+.ti -1c
+.RI "\fBCCriticalSection\fP \fBcs_nLastNodeId\fP"
+.br
+.ti -1c
+.RI "\fBCCriticalSection\fP \fBcs_mapLocalHost\fP"
+.br
+.ti -1c
+.RI "std::map< \fBCNetAddr\fP, \fBLocalServiceInfo\fP > \fBmapLocalHost\fP"
+.br
+.in -1c
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef int \fBNodeId\fP"
+
+.PP
+Definition at line 55 of file net\&.h\&.
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fILOCAL_NONE \fP\fP
+.TP
+\fB\fILOCAL_IF \fP\fP
+.TP
+\fB\fILOCAL_BIND \fP\fP
+.TP
+\fB\fILOCAL_UPNP \fP\fP
+.TP
+\fB\fILOCAL_MANUAL \fP\fP
+.TP
+\fB\fILOCAL_MAX \fP\fP
+.PP
+Definition at line 79 of file net\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "bool AddLocal (const \fBCService\fP & addr, int nScore = \fC\fBLOCAL_NONE\fP\fP)"
+
+.PP
+Definition at line 247 of file net\&.cpp\&.
+.SS "bool AddLocal (const \fBCNetAddr\fP & addr, int nScore = \fC\fBLOCAL_NONE\fP\fP)"
+
+.PP
+Definition at line 276 of file net\&.cpp\&.
+.SS "void AddOneShot (std::string strDest)"
+
+.SS "void AddressCurrentlyConnected (const \fBCService\fP & addr)"
+
+.PP
+Definition at line 337 of file net\&.cpp\&.
+.SS "bool BindListenPort (const \fBCService\fP & bindAddr, std::string & strError = \fC\fBREF\fP(std::string())\fP)"
+
+.SS "\fBCNode\fP* ConnectNode (\fBCAddress\fP addrConnect, const char * strDest = \fCNULL\fP, bool sandStormnode = \fCfalse\fP)"
+debug print 
+.PP
+Definition at line 378 of file net\&.cpp\&.
+.SS "\fBCNode\fP* FindNode (const \fBCNetAddr\fP & ip)"
+
+.PP
+Definition at line 347 of file net\&.cpp\&.
+.SS "\fBCNode\fP* FindNode (const std::string & addrName)"
+
+.PP
+Definition at line 358 of file net\&.cpp\&.
+.SS "\fBCNode\fP* FindNode (const \fBCService\fP & ip)"
+
+.PP
+Definition at line 367 of file net\&.cpp\&.
+.SS "unsigned short GetListenPort ()"
+
+.PP
+Definition at line 99 of file net\&.cpp\&.
+.SS "bool GetLocal (\fBCService\fP & addr, const \fBCNetAddr\fP * paddrPeer = \fCNULL\fP)"
+
+.PP
+Definition at line 105 of file net\&.cpp\&.
+.SS "\fBCAddress\fP GetLocalAddress (const \fBCNetAddr\fP * paddrPeer = \fCNULL\fP)"
+
+.PP
+Definition at line 133 of file net\&.cpp\&.
+.SS "\fBCNodeSignals\fP& GetNodeSignals ()"
+
+.PP
+Definition at line 91 of file net\&.cpp\&.
+.SS "bool IsLimited (enum \fBNetwork\fP net)"
+
+.PP
+Definition at line 290 of file net\&.cpp\&.
+.SS "bool IsLimited (const \fBCNetAddr\fP & addr)"
+
+.PP
+Definition at line 296 of file net\&.cpp\&.
+.SS "bool IsLocal (const \fBCService\fP & addr)"
+check whether a given address is potentially local 
+.PP
+Definition at line 317 of file net\&.cpp\&.
+.SS "bool IsPeerAddrLocalGood (\fBCNode\fP * pnode)"
+
+.PP
+Definition at line 213 of file net\&.cpp\&.
+.SS "bool IsReachable (enum \fBNetwork\fP net)"
+check whether a given network is one we can probably connect to 
+.PP
+Definition at line 324 of file net\&.cpp\&.
+.SS "bool IsReachable (const \fBCNetAddr\fP & addr)"
+check whether a given address is in a network we can probably connect to 
+.PP
+Definition at line 331 of file net\&.cpp\&.
+.SS "void MapPort (bool fUseUPnP)"
+
+.PP
+Definition at line 1248 of file net\&.cpp\&.
+.SS "unsigned int ReceiveFloodSize ()\fC [inline]\fP"
+
+.PP
+Definition at line 37 of file net\&.h\&.
+.SS "bool RecvLine (\fBSOCKET\fP hSocket, std::string & strLine)"
+
+.SS "void RelayInv (\fBCInv\fP & inv, const int minProtoVersion = \fCMIN_PEER_PROTO_VERSION\fP)"
+
+.PP
+Definition at line 196 of file net\&.cpp\&.
+.SS "void RelayInventory (const \fBCInv\fP & inv)\fC [inline]\fP"
+
+.PP
+Definition at line 848 of file net\&.h\&.
+.SS "void RelayTransaction (const \fBCTransaction\fP & tx, const \fBuint256\fP & hash)"
+
+.PP
+Definition at line 1945 of file net\&.cpp\&.
+.SS "void RelayTransaction (const \fBCTransaction\fP & tx, const \fBuint256\fP & hash, const \fBCDataStream\fP & ss)"
+
+.PP
+Definition at line 1953 of file net\&.cpp\&.
+.SS "void RelayTransactionLockReq (const \fBCTransaction\fP & tx, const \fBuint256\fP & hash, bool relayToAll = \fCfalse\fP)"
+
+.PP
+Definition at line 1973 of file net\&.cpp\&.
+.SS "bool SeenLocal (const \fBCService\fP & addr)"
+vote for a local address 
+.PP
+Definition at line 302 of file net\&.cpp\&.
+.SS "unsigned int SendBufferSize ()\fC [inline]\fP"
+
+.PP
+Definition at line 38 of file net\&.h\&.
+.SS "void SetLimited (enum \fBNetwork\fP net, bool fLimited)"
+Make a particular network entirely off-limits (no automatic connects to it) 
+.PP
+Definition at line 282 of file net\&.cpp\&.
+.SS "void SetReachable (enum \fBNetwork\fP net, bool fFlag = \fCtrue\fP)"
+
+.PP
+Definition at line 238 of file net\&.cpp\&.
+.SS "void SocketSendData (\fBCNode\fP * pnode)"
+
+.PP
+Definition at line 709 of file net\&.cpp\&.
+.SS "void StartNode (boost::thread_group & threadGroup)"
+
+.PP
+Definition at line 1858 of file net\&.cpp\&.
+.SS "bool StopNode ()"
+
+.PP
+Definition at line 1901 of file net\&.cpp\&.
+.SH "Variable Documentation"
+.PP 
+.SS "\fBCAddrMan\fP addrman"
+
+.PP
+Definition at line 61 of file net\&.cpp\&.
+.SS "\fBCCriticalSection\fP cs_mapLocalHost"
+
+.PP
+Definition at line 53 of file net\&.cpp\&.
+.SS "\fBCCriticalSection\fP cs_mapRelay"
+
+.PP
+Definition at line 72 of file net\&.cpp\&.
+.SS "\fBCCriticalSection\fP cs_nLastNodeId"
+
+.PP
+Definition at line 85 of file net\&.cpp\&.
+.SS "\fBCCriticalSection\fP cs_vAddedNodes"
+
+.PP
+Definition at line 82 of file net\&.cpp\&.
+.SS "\fBCCriticalSection\fP cs_vNodes"
+
+.PP
+Definition at line 69 of file net\&.cpp\&.
+.SS "bool fDiscover"
+
+.PP
+Definition at line 47 of file net\&.cpp\&.
+.SS "std::map<\fBCInv\fP, \fBint64_t\fP> mapAlreadyAskedFor"
+
+.PP
+Definition at line 73 of file net\&.cpp\&.
+.SS "std::map<\fBCNetAddr\fP, \fBLocalServiceInfo\fP> mapLocalHost"
+
+.PP
+Definition at line 54 of file net\&.cpp\&.
+.SS "std::map<\fBCInv\fP, \fBCDataStream\fP> mapRelay"
+
+.PP
+Definition at line 70 of file net\&.cpp\&.
+.SS "int nBestHeight"
+
+.PP
+Definition at line 70 of file main\&.cpp\&.
+.SS "\fBNodeId\fP nLastNodeId"
+
+.PP
+Definition at line 84 of file net\&.cpp\&.
+.SS "\fBuint64_t\fP nLocalHostNonce"
+
+.PP
+Definition at line 59 of file net\&.cpp\&.
+.SS "\fBuint64_t\fP nLocalServices"
+
+.PP
+Definition at line 51 of file net\&.cpp\&.
+.SS "std::vector<std::string> vAddedNodes"
+
+.PP
+Definition at line 81 of file net\&.cpp\&.
+.SS "std::vector<\fBCNode\fP*> vNodes"
+
+.PP
+Definition at line 68 of file net\&.cpp\&.
+.SS "std::deque<std::pair<\fBint64_t\fP, \fBCInv\fP> > vRelayExpiration"
+
+.PP
+Definition at line 71 of file net\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

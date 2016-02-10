@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="transactiondescdialog_8cpp" kind="file" language="C++">
+    <compoundname>transactiondescdialog.cpp</compoundname>
+    <includes refid="transactiondescdialog_8h" local="yes">transactiondescdialog.h</includes>
+    <includes local="yes">ui_transactiondescdialog.h</includes>
+    <includes refid="transactiontablemodel_8h" local="yes">transactiontablemodel.h</includes>
+    <includes local="no">QModelIndex</includes>
+    <incdepgraph>
+      <node id="18222">
+        <label>QModelIndex</label>
+      </node>
+      <node id="18218">
+        <label>ui_transactiondescdialog.h</label>
+      </node>
+      <node id="18215">
+        <label>/home/dev/ds-160209/src/qt/transactiondescdialog.cpp</label>
+        <link refid="transactiondescdialog.cpp"/>
+        <childnode refid="18216" relation="include">
+        </childnode>
+        <childnode refid="18218" relation="include">
+        </childnode>
+        <childnode refid="18219" relation="include">
+        </childnode>
+        <childnode refid="18222" relation="include">
+        </childnode>
+      </node>
+      <node id="18217">
+        <label>QDialog</label>
+      </node>
+      <node id="18219">
+        <label>transactiontablemodel.h</label>
+        <link refid="transactiontablemodel_8h"/>
+        <childnode refid="18220" relation="include">
+        </childnode>
+        <childnode refid="18221" relation="include">
+        </childnode>
+      </node>
+      <node id="18216">
+        <label>transactiondescdialog.h</label>
+        <link refid="transactiondescdialog_8h"/>
+        <childnode refid="18217" relation="include">
+        </childnode>
+      </node>
+      <node id="18221">
+        <label>QStringList</label>
+      </node>
+      <node id="18220">
+        <label>QAbstractTableModel</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="transactiondescdialog_8h" kindref="compound">transactiondescdialog.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ui_transactiondescdialog.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="transactiontablemodel_8h" kindref="compound">transactiontablemodel.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QModelIndex&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8" refid="class_transaction_desc_dialog_1aa4431a7da806415ed068437cabd6e9bc" refkind="member"><highlight class="normal"><ref refid="class_transaction_desc_dialog_1aa4431a7da806415ed068437cabd6e9bc" kindref="member">TransactionDescDialog::TransactionDescDialog</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QModelIndex<sp/>&amp;idx,<sp/>QWidget<sp/>*parent)<sp/>:</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>QDialog(parent),</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>ui(new<sp/><ref refid="namespace_ui" kindref="compound">Ui</ref>::<ref refid="class_transaction_desc_dialog" kindref="compound">TransactionDescDialog</ref>)</highlight></codeline>
+<codeline lineno="11"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>ui-&gt;setupUi(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/>desc<sp/>=<sp/>idx.data(<ref refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6a2957b8435634d7602e74b513d392d82c" kindref="member">TransactionTableModel::LongDescriptionRole</ref>).toString();</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>ui-&gt;detailText-&gt;setHtml(desc);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="class_transaction_desc_dialog_1a887f552189e29b64e28e1917fc617a52" refkind="member"><highlight class="normal"><ref refid="class_transaction_desc_dialog_1a887f552189e29b64e28e1917fc617a52" kindref="member">TransactionDescDialog::~TransactionDescDialog</ref>()</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>ui;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/qt/transactiondescdialog.cpp"/>
+  </compounddef>
+</doxygen>

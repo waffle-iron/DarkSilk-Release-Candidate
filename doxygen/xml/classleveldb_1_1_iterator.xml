@@ -1,0 +1,339 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="classleveldb_1_1_iterator" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>leveldb::Iterator</compoundname>
+    <derivedcompoundref refid="classleveldb_1_1_block_1_1_iter" prot="public" virt="non-virtual">leveldb::Block::Iter</derivedcompoundref>
+    <derivedcompoundref refid="classleveldb_1_1_key_converting_iterator" prot="public" virt="non-virtual">leveldb::KeyConvertingIterator</derivedcompoundref>
+    <derivedcompoundref refid="classleveldb_1_1_mem_table_iterator" prot="public" virt="non-virtual">leveldb::MemTableIterator</derivedcompoundref>
+    <derivedcompoundref refid="classleveldb_1_1_version_1_1_level_file_num_iterator" prot="public" virt="non-virtual">leveldb::Version::LevelFileNumIterator</derivedcompoundref>
+    <includes refid="iterator_8h" local="no">iterator.h</includes>
+    <innerclass refid="structleveldb_1_1_iterator_1_1_cleanup" prot="private">leveldb::Iterator::Cleanup</innerclass>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classleveldb_1_1_iterator_1ae40c9eedd82a722d24fde1fd8bee4afa" prot="public" static="no">
+        <type>void(*</type>
+        <definition>typedef void(* leveldb::Iterator::CleanupFunction) (void *arg1, void *arg2)</definition>
+        <argsstring>)(void *arg1, void *arg2)</argsstring>
+        <name>CleanupFunction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/iterator.h" line="75" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/include/leveldb/iterator.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classleveldb_1_1_iterator_1aa65451661a270eab5db682d4e4a01773" prot="private" static="no" mutable="no">
+        <type>Cleanup</type>
+        <definition>Cleanup leveldb::Iterator::cleanup_</definition>
+        <argsstring></argsstring>
+        <name>cleanup_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/iterator.h" line="85" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/include/leveldb/iterator.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classleveldb_1_1_iterator_1a1dc1cbc893e55a3fc990f08cf191480a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::Iterator::Iterator</definition>
+        <argsstring>()</argsstring>
+        <name>Iterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/iterator.h" line="25" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/table/iterator.cc" bodystart="9" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_iterator_1a2c9ce32aa57b2202d1e0d4a38c2676a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>leveldb::Iterator::~Iterator</definition>
+        <argsstring>()</argsstring>
+        <name>~Iterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/iterator.h" line="26" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/table/iterator.cc" bodystart="14" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_iterator_1a38614978bfa0586327b8e237bcb46012" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool leveldb::Iterator::Valid</definition>
+        <argsstring>() const =0</argsstring>
+        <name>Valid</name>
+        <reimplementedby refid="classleveldb_1_1_mem_table_iterator_1a95a8909aa37acb52f85a88c97329fa11">Valid</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_block_1_1_iter_1ac4be155bfc93e1d2b90cfd670f22c1ba">Valid</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_version_1_1_level_file_num_iterator_1afb097a457cd972895393b3fbde7e2ad2">Valid</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_key_converting_iterator_1a941cabf2e0b1c9647faa037b7ad55668">Valid</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/iterator.h" line="30" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_iterator_1a3594967cf26ddf1d37c7b886bb48627e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void leveldb::Iterator::SeekToFirst</definition>
+        <argsstring>()=0</argsstring>
+        <name>SeekToFirst</name>
+        <reimplementedby refid="classleveldb_1_1_mem_table_iterator_1a72eaf5c1bcb6d513f71d4edcb8db3f98">SeekToFirst</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_version_1_1_level_file_num_iterator_1a8e5d34bf0c1e17e83bbb9941821a7ee2">SeekToFirst</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_block_1_1_iter_1aecc19bb6d8a219e7fb8e695fb5b57bd3">SeekToFirst</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_key_converting_iterator_1a56a6b7b97747d5e33981a66c28670cc9">SeekToFirst</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/iterator.h" line="34" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_iterator_1a8ad637f0a759e6d94cca6c5b4db440d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void leveldb::Iterator::SeekToLast</definition>
+        <argsstring>()=0</argsstring>
+        <name>SeekToLast</name>
+        <reimplementedby refid="classleveldb_1_1_mem_table_iterator_1aaed044dc887a51c924086f2a2844a5f0">SeekToLast</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_version_1_1_level_file_num_iterator_1ac7fafc33c049d1e33fdf9b5ae99f73d8">SeekToLast</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_block_1_1_iter_1a3007d98d17a03138c629fc2b2eb56204">SeekToLast</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_key_converting_iterator_1a9db639879c442a67234fc345887b19fc">SeekToLast</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/iterator.h" line="38" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_iterator_1a97a556e97ded60c677fbf4de7321ec44" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void leveldb::Iterator::Seek</definition>
+        <argsstring>(const Slice &amp;target)=0</argsstring>
+        <name>Seek</name>
+        <reimplementedby refid="classleveldb_1_1_mem_table_iterator_1a140f9575286994337de9b49ea7fe62cb">Seek</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_block_1_1_iter_1a3dcefc0609937b33c046ac7fafb52ad7">Seek</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_version_1_1_level_file_num_iterator_1adbe855f4a783c2f578e1ff2fbb5259b2">Seek</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_key_converting_iterator_1a6af9b763a5831c2fdcd8c3bebfef6ae4">Seek</reimplementedby>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref> &amp;</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/iterator.h" line="43" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_iterator_1aea54a5ca7eb942eb15770820529410e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void leveldb::Iterator::Next</definition>
+        <argsstring>()=0</argsstring>
+        <name>Next</name>
+        <reimplementedby refid="classleveldb_1_1_mem_table_iterator_1a8ce5457cf61b989ce1ceec80084f891c">Next</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_block_1_1_iter_1a27dacbefa903333a5ad003ccd3e424b6">Next</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_version_1_1_level_file_num_iterator_1a7f470d4bd4dd27ff653bd1e61ccfd759">Next</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_key_converting_iterator_1a6b468c158da3f6abbc697f7728811da8">Next</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/iterator.h" line="48" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_iterator_1a28798d802a203788587dc6adc5bc729e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void leveldb::Iterator::Prev</definition>
+        <argsstring>()=0</argsstring>
+        <name>Prev</name>
+        <reimplementedby refid="classleveldb_1_1_mem_table_iterator_1a61f8a385b268158a1e7bd0cba29a83c1">Prev</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_block_1_1_iter_1a096747ff77d5090579fe4cd4e464a3c9">Prev</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_version_1_1_level_file_num_iterator_1ab39c60a98d579590231034fdb665cb42">Prev</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_key_converting_iterator_1adff607836b7b3d117a524b3d440bc55a">Prev</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/iterator.h" line="53" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_iterator_1ad17feced6e24a1b21db5ae6940c1f220" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref></type>
+        <definition>virtual Slice leveldb::Iterator::key</definition>
+        <argsstring>() const =0</argsstring>
+        <name>key</name>
+        <reimplementedby refid="classleveldb_1_1_mem_table_iterator_1a3e9b1c478d4ba8747dae4c8acb77a289">key</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_block_1_1_iter_1a1378d5e1fb17638427fd0a0f7fc7a010">key</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_version_1_1_level_file_num_iterator_1a8c2ee5f532fd05b2864f8d69d5c01f45">key</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_key_converting_iterator_1a46402aaa27d57c5b2bee4f560c2dc04b">key</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/iterator.h" line="59" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_iterator_1a613ac2e965518aad7a064c64c72bcf7c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref></type>
+        <definition>virtual Slice leveldb::Iterator::value</definition>
+        <argsstring>() const =0</argsstring>
+        <name>value</name>
+        <reimplementedby refid="classleveldb_1_1_mem_table_iterator_1a5910c8d44980cdec2d8ba603aabb98b8">value</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_block_1_1_iter_1afb28e69efec54ca9306fc504e139bf3f">value</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_version_1_1_level_file_num_iterator_1ac09a8ed595aca29d90e6af91e80a4f00">value</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_key_converting_iterator_1aa7a0281f93fbd520bf54d94bac77197a">value</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/iterator.h" line="65" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_iterator_1ac84f34623a031b7eeb23409320f76376" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref></type>
+        <definition>virtual Status leveldb::Iterator::status</definition>
+        <argsstring>() const =0</argsstring>
+        <name>status</name>
+        <reimplementedby refid="classleveldb_1_1_mem_table_iterator_1a1669aab641ff394968c30581a6b63f2a">status</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_block_1_1_iter_1a39f400b72dc79931145600a702b71c61">status</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_version_1_1_level_file_num_iterator_1a98bae41a244b6a5a6675a7f7b322281d">status</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_key_converting_iterator_1a10d0f5b6b83bc967ba5c73d6bfc919f3">status</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/iterator.h" line="68" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_iterator_1a8c0281f9e4a2c9dceb37aad8128b636f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::Iterator::RegisterCleanup</definition>
+        <argsstring>(CleanupFunction function, void *arg1, void *arg2)</argsstring>
+        <name>RegisterCleanup</name>
+        <param>
+          <type><ref refid="classleveldb_1_1_iterator_1ae40c9eedd82a722d24fde1fd8bee4afa" kindref="member">CleanupFunction</ref></type>
+          <declname>function</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>arg1</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>arg2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/iterator.h" line="76" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/table/iterator.cc" bodystart="26" bodyend="39"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classleveldb_1_1_iterator_1a6bbdbbdd8d98fa68335d0c6be23192d3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::Iterator::Iterator</definition>
+        <argsstring>(const Iterator &amp;)</argsstring>
+        <name>Iterator</name>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_iterator" kindref="compound">Iterator</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/iterator.h" line="88" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_iterator_1ae34607d7e20f4b74914d21e8ab2402ca" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::Iterator::operator=</definition>
+        <argsstring>(const Iterator &amp;)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_iterator" kindref="compound">Iterator</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/iterator.h" line="89" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1239">
+        <label>leveldb::MemTableIterator</label>
+        <link refid="classleveldb_1_1_mem_table_iterator"/>
+        <childnode refid="1236" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1236">
+        <label>leveldb::Iterator</label>
+        <link refid="classleveldb_1_1_iterator"/>
+      </node>
+      <node id="1238">
+        <label>leveldb::KeyConvertingIterator</label>
+        <link refid="classleveldb_1_1_key_converting_iterator"/>
+        <childnode refid="1236" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1237">
+        <label>leveldb::Block::Iter</label>
+        <link refid="classleveldb_1_1_block_1_1_iter"/>
+        <childnode refid="1236" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1240">
+        <label>leveldb::Version::LevelFileNumIterator</label>
+        <link refid="classleveldb_1_1_version_1_1_level_file_num_iterator"/>
+        <childnode refid="1236" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/iterator.h" line="23" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/include/leveldb/iterator.h" bodystart="23" bodyend="90"/>
+    <listofallmembers>
+      <member refid="classleveldb_1_1_iterator_1aa65451661a270eab5db682d4e4a01773" prot="private" virt="non-virtual"><scope>leveldb::Iterator</scope><name>cleanup_</name></member>
+      <member refid="classleveldb_1_1_iterator_1ae40c9eedd82a722d24fde1fd8bee4afa" prot="public" virt="non-virtual"><scope>leveldb::Iterator</scope><name>CleanupFunction</name></member>
+      <member refid="classleveldb_1_1_iterator_1a1dc1cbc893e55a3fc990f08cf191480a" prot="public" virt="non-virtual"><scope>leveldb::Iterator</scope><name>Iterator</name></member>
+      <member refid="classleveldb_1_1_iterator_1a6bbdbbdd8d98fa68335d0c6be23192d3" prot="private" virt="non-virtual"><scope>leveldb::Iterator</scope><name>Iterator</name></member>
+      <member refid="classleveldb_1_1_iterator_1ad17feced6e24a1b21db5ae6940c1f220" prot="public" virt="pure-virtual"><scope>leveldb::Iterator</scope><name>key</name></member>
+      <member refid="classleveldb_1_1_iterator_1aea54a5ca7eb942eb15770820529410e7" prot="public" virt="pure-virtual"><scope>leveldb::Iterator</scope><name>Next</name></member>
+      <member refid="classleveldb_1_1_iterator_1ae34607d7e20f4b74914d21e8ab2402ca" prot="private" virt="non-virtual"><scope>leveldb::Iterator</scope><name>operator=</name></member>
+      <member refid="classleveldb_1_1_iterator_1a28798d802a203788587dc6adc5bc729e" prot="public" virt="pure-virtual"><scope>leveldb::Iterator</scope><name>Prev</name></member>
+      <member refid="classleveldb_1_1_iterator_1a8c0281f9e4a2c9dceb37aad8128b636f" prot="public" virt="non-virtual"><scope>leveldb::Iterator</scope><name>RegisterCleanup</name></member>
+      <member refid="classleveldb_1_1_iterator_1a97a556e97ded60c677fbf4de7321ec44" prot="public" virt="pure-virtual"><scope>leveldb::Iterator</scope><name>Seek</name></member>
+      <member refid="classleveldb_1_1_iterator_1a3594967cf26ddf1d37c7b886bb48627e" prot="public" virt="pure-virtual"><scope>leveldb::Iterator</scope><name>SeekToFirst</name></member>
+      <member refid="classleveldb_1_1_iterator_1a8ad637f0a759e6d94cca6c5b4db440d3" prot="public" virt="pure-virtual"><scope>leveldb::Iterator</scope><name>SeekToLast</name></member>
+      <member refid="classleveldb_1_1_iterator_1ac84f34623a031b7eeb23409320f76376" prot="public" virt="pure-virtual"><scope>leveldb::Iterator</scope><name>status</name></member>
+      <member refid="classleveldb_1_1_iterator_1a38614978bfa0586327b8e237bcb46012" prot="public" virt="pure-virtual"><scope>leveldb::Iterator</scope><name>Valid</name></member>
+      <member refid="classleveldb_1_1_iterator_1a613ac2e965518aad7a064c64c72bcf7c" prot="public" virt="pure-virtual"><scope>leveldb::Iterator</scope><name>value</name></member>
+      <member refid="classleveldb_1_1_iterator_1a2c9ce32aa57b2202d1e0d4a38c2676a1" prot="public" virt="virtual"><scope>leveldb::Iterator</scope><name>~Iterator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

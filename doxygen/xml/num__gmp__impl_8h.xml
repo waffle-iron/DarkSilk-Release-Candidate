@@ -1,0 +1,719 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="num__gmp__impl_8h" kind="file" language="C++">
+    <compoundname>num_gmp_impl.h</compoundname>
+    <includes local="no">string.h</includes>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">gmp.h</includes>
+    <includes refid="secp256k1_2src_2util_8h" local="yes">util.h</includes>
+    <includes refid="num_8h" local="yes">num.h</includes>
+    <incdepgraph>
+      <node id="22603">
+        <label>stdlib.h</label>
+      </node>
+      <node id="22608">
+        <label>num.h</label>
+        <link refid="num_8h"/>
+      </node>
+      <node id="22602">
+        <label>string.h</label>
+      </node>
+      <node id="22605">
+        <label>util.h</label>
+        <link refid="secp256k1_2src_2util_8h"/>
+        <childnode refid="22603" relation="include">
+        </childnode>
+        <childnode refid="22606" relation="include">
+        </childnode>
+        <childnode refid="22607" relation="include">
+        </childnode>
+      </node>
+      <node id="22606">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="22604">
+        <label>gmp.h</label>
+      </node>
+      <node id="22601">
+        <label>/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h</label>
+        <link refid="num_gmp_impl.h"/>
+        <childnode refid="22602" relation="include">
+        </childnode>
+        <childnode refid="22603" relation="include">
+        </childnode>
+        <childnode refid="22604" relation="include">
+        </childnode>
+        <childnode refid="22605" relation="include">
+        </childnode>
+        <childnode refid="22608" relation="include">
+        </childnode>
+      </node>
+      <node id="22607">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="num__gmp__impl_8h_1af6e306e9cb6c96b80d5ebfd7abdbde0e" prot="public" static="no">
+        <name>secp256k1_num_sanity</name>
+        <param><defname>a</defname></param>
+        <initializer>do { } while(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" line="22" column="10" bodyfile="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" bodystart="22" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="num__gmp__impl_8h_1a8e164da794a6a512b0bce7a2339d35f9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void secp256k1_num_copy</definition>
+        <argsstring>(secp256k1_num *r, const secp256k1_num *a)</argsstring>
+        <name>secp256k1_num_copy</name>
+        <param>
+          <type><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" line="25" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" bodystart="25" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="num__gmp__impl_8h_1aada7ead84b86388284323f31b9d05bca" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void secp256k1_num_get_bin</definition>
+        <argsstring>(unsigned char *r, unsigned int rlen, const secp256k1_num *a)</argsstring>
+        <name>secp256k1_num_get_bin</name>
+        <param>
+          <type>unsigned char *</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>rlen</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" line="29" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" bodystart="29" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="num__gmp__impl_8h_1a4a7f500a93d330df44bbe3adda388868" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void secp256k1_num_set_bin</definition>
+        <argsstring>(secp256k1_num *r, const unsigned char *a, unsigned int alen)</argsstring>
+        <name>secp256k1_num_set_bin</name>
+        <param>
+          <type><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>const unsigned char *</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>alen</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" line="45" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" bodystart="45" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="num__gmp__impl_8h_1a3f041b2b8c554b6cbd276467e5b8351e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void secp256k1_num_add_abs</definition>
+        <argsstring>(secp256k1_num *r, const secp256k1_num *a, const secp256k1_num *b)</argsstring>
+        <name>secp256k1_num_add_abs</name>
+        <param>
+          <type><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" line="62" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" bodystart="62" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="num__gmp__impl_8h_1ab91615231aec0531471a43b9390421c1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void secp256k1_num_sub_abs</definition>
+        <argsstring>(secp256k1_num *r, const secp256k1_num *a, const secp256k1_num *b)</argsstring>
+        <name>secp256k1_num_sub_abs</name>
+        <param>
+          <type><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" line="71" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" bodystart="71" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="num__gmp__impl_8h_1af30b363582f76292c16da36d8240bbed" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void secp256k1_num_mod</definition>
+        <argsstring>(secp256k1_num *r, const secp256k1_num *m)</argsstring>
+        <name>secp256k1_num_mod</name>
+        <param>
+          <type><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" line="81" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" bodystart="81" bodyend="99"/>
+      </memberdef>
+      <memberdef kind="function" id="num__gmp__impl_8h_1a96a66a341ddf203e7dbf85d1cca1c178" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void secp256k1_num_mod_inverse</definition>
+        <argsstring>(secp256k1_num *r, const secp256k1_num *a, const secp256k1_num *m)</argsstring>
+        <name>secp256k1_num_mod_inverse</name>
+        <param>
+          <type><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>m</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>mpn_gcdext computes: (G,S) = gcdext(U,V), where<itemizedlist>
+<listitem><para>G = gcd(U,V)</para></listitem><listitem><para>G = U*S + V*T</para></listitem><listitem><para>U has equal or more limbs than V, and V has no padding If we set U to be (a padded version of) a, and V = m: G = a*S + m*T G = a*S mod m Assuming G=1: S = 1/a mod m</para></listitem></itemizedlist>
+</para>        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" line="101" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" bodystart="101" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="num__gmp__impl_8h_1ad15ded36e7a6704a702666bd2fd5cbff" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>static int secp256k1_num_is_zero</definition>
+        <argsstring>(const secp256k1_num *a)</argsstring>
+        <name>secp256k1_num_is_zero</name>
+        <param>
+          <type>const <ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" line="147" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" bodystart="147" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="num__gmp__impl_8h_1a15349a6540e199082bde2ce0466d82cb" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>static int secp256k1_num_is_neg</definition>
+        <argsstring>(const secp256k1_num *a)</argsstring>
+        <name>secp256k1_num_is_neg</name>
+        <param>
+          <type>const <ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" line="151" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" bodystart="151" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="num__gmp__impl_8h_1a2ede1c020471b52d634890089c5374be" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>static int secp256k1_num_cmp</definition>
+        <argsstring>(const secp256k1_num *a, const secp256k1_num *b)</argsstring>
+        <name>secp256k1_num_cmp</name>
+        <param>
+          <type>const <ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" line="155" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" bodystart="155" bodyend="163"/>
+      </memberdef>
+      <memberdef kind="function" id="num__gmp__impl_8h_1a8763cac72f4a6760d12cb93897f468c5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>static int secp256k1_num_eq</definition>
+        <argsstring>(const secp256k1_num *a, const secp256k1_num *b)</argsstring>
+        <name>secp256k1_num_eq</name>
+        <param>
+          <type>const <ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" line="165" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" bodystart="165" bodyend="176"/>
+      </memberdef>
+      <memberdef kind="function" id="num__gmp__impl_8h_1ade08e33c2964e9b6e5ca7160363b21df" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void secp256k1_num_subadd</definition>
+        <argsstring>(secp256k1_num *r, const secp256k1_num *a, const secp256k1_num *b, int bneg)</argsstring>
+        <name>secp256k1_num_subadd</name>
+        <param>
+          <type><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>bneg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" line="178" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" bodystart="178" bodyend="195"/>
+      </memberdef>
+      <memberdef kind="function" id="num__gmp__impl_8h_1a2a2407a291e6646a94ade2d5c90f961b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void secp256k1_num_add</definition>
+        <argsstring>(secp256k1_num *r, const secp256k1_num *a, const secp256k1_num *b)</argsstring>
+        <name>secp256k1_num_add</name>
+        <param>
+          <type><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" line="197" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" bodystart="197" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="num__gmp__impl_8h_1ad5ad0fd05f4f7d29d75f92fa540ede0a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void secp256k1_num_sub</definition>
+        <argsstring>(secp256k1_num *r, const secp256k1_num *a, const secp256k1_num *b)</argsstring>
+        <name>secp256k1_num_sub</name>
+        <param>
+          <type><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" line="203" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" bodystart="203" bodyend="207"/>
+      </memberdef>
+      <memberdef kind="function" id="num__gmp__impl_8h_1a3a5b983d5028a690f4446c10f78c2978" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void secp256k1_num_mul</definition>
+        <argsstring>(secp256k1_num *r, const secp256k1_num *a, const secp256k1_num *b)</argsstring>
+        <name>secp256k1_num_mul</name>
+        <param>
+          <type><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" line="209" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" bodystart="209" bodyend="234"/>
+      </memberdef>
+      <memberdef kind="function" id="num__gmp__impl_8h_1adc4af999a060e6310b0fdeb99418b31c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void secp256k1_num_shift</definition>
+        <argsstring>(secp256k1_num *r, int bits)</argsstring>
+        <name>secp256k1_num_shift</name>
+        <param>
+          <type><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>bits</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" line="236" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" bodystart="236" bodyend="256"/>
+      </memberdef>
+      <memberdef kind="function" id="num__gmp__impl_8h_1a678834381238e96e24f63c317740df95" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void secp256k1_num_negate</definition>
+        <argsstring>(secp256k1_num *r)</argsstring>
+        <name>secp256k1_num_negate</name>
+        <param>
+          <type><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref> *</type>
+          <declname>r</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" line="258" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h" bodystart="258" bodyend="260"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**********************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2013,<sp/>2014<sp/>Pieter<sp/>Wuille<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Distributed<sp/>under<sp/>the<sp/>MIT<sp/>software<sp/>license,<sp/>see<sp/>the<sp/>accompanying<sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>file<sp/>COPYING<sp/>or<sp/>http://www.opensource.org/licenses/mit-license.php.*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>**********************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>_SECP256K1_NUM_REPR_IMPL_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_SECP256K1_NUM_REPR_IMPL_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;gmp.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="secp256k1_2src_2util_8h" kindref="compound">util.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="num_8h" kindref="compound">num.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>VERIFY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="num__gmp__impl_8h_1af6e306e9cb6c96b80d5ebfd7abdbde0e" kindref="member">secp256k1_num_sanity</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*a)<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>(a-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>==<sp/>1<sp/>||<sp/>(a-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>&gt;<sp/>1<sp/>&amp;&amp;<sp/>a-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>[a-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>-1]<sp/>!=<sp/>0));</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="num__gmp__impl_8h_1af6e306e9cb6c96b80d5ebfd7abdbde0e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>secp256k1_num_sanity(a)<sp/>do<sp/>{<sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>secp256k1_num_copy(<ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*r,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*a)<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>*r<sp/>=<sp/>*a;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>secp256k1_num_get_bin(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*r,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>rlen,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*a)<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>tmp[65];</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>len<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>shift<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(a-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>&gt;1<sp/>||<sp/>a-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>[0]<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>len<sp/>=<sp/>mpn_get_str(tmp,<sp/>256,<sp/>(mp_limb_t*)a-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>,<sp/>a-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(shift<sp/>&lt;<sp/>len<sp/>&amp;&amp;<sp/>tmp[shift]<sp/>==<sp/>0)<sp/>shift++;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>(len-shift<sp/>&lt;=<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)rlen);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(r,<sp/>0,<sp/>rlen<sp/>-<sp/>len<sp/>+<sp/>shift);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(len<sp/>&gt;<sp/>shift)<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(r<sp/>+<sp/>rlen<sp/>-<sp/>len<sp/>+<sp/>shift,<sp/>tmp<sp/>+<sp/>shift,<sp/>len<sp/>-<sp/>shift);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(tmp,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(tmp));</highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>secp256k1_num_set_bin(<ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*r,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*a,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>alen)<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>len;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>(alen<sp/>&gt;<sp/>0);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>(alen<sp/>&lt;=<sp/>64);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>len<sp/>=<sp/>mpn_set_str(r-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>,<sp/>a,<sp/>alen,<sp/>256);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(len<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>[0]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>len<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>(len<sp/>&lt;=<sp/><ref refid="num__gmp_8h_1aee9ddf197331cb600f0a5e5cb8ff146c" kindref="member">NUM_LIMBS</ref>*2);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>=<sp/>len;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>r-&gt;<ref refid="structsecp256k1__num_1a5d762d76e2a0fe84313ed5e41397b10b" kindref="member">neg</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>&gt;<sp/>1<sp/>&amp;&amp;<sp/>r-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>[r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>-1]==0)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>--;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>secp256k1_num_add_abs(<ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*r,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*b)<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>mp_limb_t<sp/>c<sp/>=<sp/>mpn_add(r-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>,<sp/>a-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>,<sp/>a-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>,<sp/>b-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>,<sp/>b-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>=<sp/>a-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(c<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>(r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>&lt;<sp/>2*<ref refid="num__gmp_8h_1aee9ddf197331cb600f0a5e5cb8ff146c" kindref="member">NUM_LIMBS</ref>);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>[r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>++]<sp/>=<sp/>c;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>secp256k1_num_sub_abs(<ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*r,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*b)<sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>mp_limb_t<sp/>c<sp/>=<sp/>mpn_sub(r-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>,<sp/>a-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>,<sp/>a-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>,<sp/>b-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>,<sp/>b-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)c;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>(c<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>=<sp/>a-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>&gt;<sp/>1<sp/>&amp;&amp;<sp/>r-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>[r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>-1]==0)<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>--;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>secp256k1_num_mod(<ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*r,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*m)<sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="num__gmp__impl_8h_1af6e306e9cb6c96b80d5ebfd7abdbde0e" kindref="member">secp256k1_num_sanity</ref>(r);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="num__gmp__impl_8h_1af6e306e9cb6c96b80d5ebfd7abdbde0e" kindref="member">secp256k1_num_sanity</ref>(m);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>&gt;=<sp/>m-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mp_limb_t<sp/>t[2*<ref refid="num__gmp_8h_1aee9ddf197331cb600f0a5e5cb8ff146c" kindref="member">NUM_LIMBS</ref>];</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mpn_tdiv_qr(t,<sp/>r-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>,<sp/>0,<sp/>r-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>,<sp/>r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>,<sp/>m-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>,<sp/>m-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memset(t,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(t));</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>=<sp/>m-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>&gt;<sp/>1<sp/>&amp;&amp;<sp/>r-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>[r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>-1]==0)<sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>--;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(r-&gt;<ref refid="structsecp256k1__num_1a5d762d76e2a0fe84313ed5e41397b10b" kindref="member">neg</ref><sp/>&amp;&amp;<sp/>(r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>&gt;<sp/>1<sp/>||<sp/>r-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>[0]<sp/>!=<sp/>0))<sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_num_sub_abs(r,<sp/>m,<sp/>r);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r-&gt;<ref refid="structsecp256k1__num_1a5d762d76e2a0fe84313ed5e41397b10b" kindref="member">neg</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>secp256k1_num_mod_inverse(<ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*r,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*m)<sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>mp_limb_t<sp/>g[<ref refid="num__gmp_8h_1aee9ddf197331cb600f0a5e5cb8ff146c" kindref="member">NUM_LIMBS</ref>+1];</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>mp_limb_t<sp/>u[<ref refid="num__gmp_8h_1aee9ddf197331cb600f0a5e5cb8ff146c" kindref="member">NUM_LIMBS</ref>+1];</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>mp_limb_t<sp/>v[<ref refid="num__gmp_8h_1aee9ddf197331cb600f0a5e5cb8ff146c" kindref="member">NUM_LIMBS</ref>+1];</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>mp_size_t<sp/>sn;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>mp_size_t<sp/>gn;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="num__gmp__impl_8h_1af6e306e9cb6c96b80d5ebfd7abdbde0e" kindref="member">secp256k1_num_sanity</ref>(a);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="num__gmp__impl_8h_1af6e306e9cb6c96b80d5ebfd7abdbde0e" kindref="member">secp256k1_num_sanity</ref>(m);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>(m-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>&lt;=<sp/><ref refid="num__gmp_8h_1aee9ddf197331cb600f0a5e5cb8ff146c" kindref="member">NUM_LIMBS</ref>);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>(m-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>[m-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>-1]<sp/>!=<sp/>0);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>m-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>u[i]<sp/>=<sp/>(i<sp/>&lt;<sp/>a-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>)<sp/>?<sp/>a-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>[i]<sp/>:<sp/>0;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v[i]<sp/>=<sp/>m-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>[i];</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>sn<sp/>=<sp/><ref refid="num__gmp_8h_1aee9ddf197331cb600f0a5e5cb8ff146c" kindref="member">NUM_LIMBS</ref>+1;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>gn<sp/>=<sp/>mpn_gcdext(g,<sp/>r-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>,<sp/>&amp;sn,<sp/>u,<sp/>m-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>,<sp/>v,<sp/>m-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>(void)gn;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>(gn<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>(g[0]<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>r-&gt;<ref refid="structsecp256k1__num_1a5d762d76e2a0fe84313ed5e41397b10b" kindref="member">neg</ref><sp/>=<sp/>a-&gt;<ref refid="structsecp256k1__num_1a5d762d76e2a0fe84313ed5e41397b10b" kindref="member">neg</ref><sp/>^<sp/>m-&gt;<ref refid="structsecp256k1__num_1a5d762d76e2a0fe84313ed5e41397b10b" kindref="member">neg</ref>;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sn<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mpn_sub(r-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>,<sp/>m-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>,<sp/>m-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>,<sp/>r-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>,<sp/>-sn);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>=<sp/>m-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>&gt;<sp/>1<sp/>&amp;&amp;<sp/>r-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>[r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>-1]==0)<sp/>{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>--;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>=<sp/>sn;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(g,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(g));</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(u,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(u));</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(v,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(v));</highlight></codeline>
+<codeline lineno="145"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>secp256k1_num_is_zero(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*a)<sp/>{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(a-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>==<sp/>1<sp/>&amp;&amp;<sp/>a-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>[0]<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>secp256k1_num_is_neg(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*a)<sp/>{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(a-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>&gt;<sp/>1<sp/>||<sp/>a-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>[0]<sp/>!=<sp/>0)<sp/>&amp;&amp;<sp/>a-&gt;<ref refid="structsecp256k1__num_1a5d762d76e2a0fe84313ed5e41397b10b" kindref="member">neg</ref>;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>secp256k1_num_cmp(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*b)<sp/>{</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(a-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>&gt;<sp/>b-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(a-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>&lt;<sp/>b-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mpn_cmp(a-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>,<sp/>b-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>,<sp/>a-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>secp256k1_num_eq(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*b)<sp/>{</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(a-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>&gt;<sp/>b-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(a-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>&lt;<sp/>b-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((a-&gt;<ref refid="structsecp256k1__num_1a5d762d76e2a0fe84313ed5e41397b10b" kindref="member">neg</ref><sp/>&amp;&amp;<sp/>!secp256k1_num_is_zero(a))<sp/>!=<sp/>(b-&gt;<ref refid="structsecp256k1__num_1a5d762d76e2a0fe84313ed5e41397b10b" kindref="member">neg</ref><sp/>&amp;&amp;<sp/>!secp256k1_num_is_zero(b)))<sp/>{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mpn_cmp(a-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>,<sp/>b-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>,<sp/>a-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>)<sp/>==<sp/>0;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>secp256k1_num_subadd(<ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*r,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*b,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>bneg)<sp/>{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!(b-&gt;<ref refid="structsecp256k1__num_1a5d762d76e2a0fe84313ed5e41397b10b" kindref="member">neg</ref><sp/>^<sp/>bneg<sp/>^<sp/>a-&gt;<ref refid="structsecp256k1__num_1a5d762d76e2a0fe84313ed5e41397b10b" kindref="member">neg</ref>))<sp/>{<sp/></highlight><highlight class="comment">/*<sp/>a<sp/>and<sp/>b<sp/>have<sp/>the<sp/>same<sp/>sign<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r-&gt;<ref refid="structsecp256k1__num_1a5d762d76e2a0fe84313ed5e41397b10b" kindref="member">neg</ref><sp/>=<sp/>a-&gt;<ref refid="structsecp256k1__num_1a5d762d76e2a0fe84313ed5e41397b10b" kindref="member">neg</ref>;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(a-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>&gt;=<sp/>b-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_num_add_abs(r,<sp/>a,<sp/>b);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_num_add_abs(r,<sp/>b,<sp/>a);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(secp256k1_num_cmp(a,<sp/>b)<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r-&gt;<ref refid="structsecp256k1__num_1a5d762d76e2a0fe84313ed5e41397b10b" kindref="member">neg</ref><sp/>=<sp/>a-&gt;<ref refid="structsecp256k1__num_1a5d762d76e2a0fe84313ed5e41397b10b" kindref="member">neg</ref>;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_num_sub_abs(r,<sp/>a,<sp/>b);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r-&gt;<ref refid="structsecp256k1__num_1a5d762d76e2a0fe84313ed5e41397b10b" kindref="member">neg</ref><sp/>=<sp/>b-&gt;<ref refid="structsecp256k1__num_1a5d762d76e2a0fe84313ed5e41397b10b" kindref="member">neg</ref><sp/>^<sp/>bneg;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_num_sub_abs(r,<sp/>b,<sp/>a);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="195"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>secp256k1_num_add(<ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*r,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*b)<sp/>{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="num__gmp__impl_8h_1af6e306e9cb6c96b80d5ebfd7abdbde0e" kindref="member">secp256k1_num_sanity</ref>(a);</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="num__gmp__impl_8h_1af6e306e9cb6c96b80d5ebfd7abdbde0e" kindref="member">secp256k1_num_sanity</ref>(b);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>secp256k1_num_subadd(r,<sp/>a,<sp/>b,<sp/>0);</highlight></codeline>
+<codeline lineno="201"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>secp256k1_num_sub(<ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*r,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*b)<sp/>{</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="num__gmp__impl_8h_1af6e306e9cb6c96b80d5ebfd7abdbde0e" kindref="member">secp256k1_num_sanity</ref>(a);</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="num__gmp__impl_8h_1af6e306e9cb6c96b80d5ebfd7abdbde0e" kindref="member">secp256k1_num_sanity</ref>(b);</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>secp256k1_num_subadd(r,<sp/>a,<sp/>b,<sp/>1);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>secp256k1_num_mul(<ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*r,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*b)<sp/>{</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>mp_limb_t<sp/>tmp[2*<ref refid="num__gmp_8h_1aee9ddf197331cb600f0a5e5cb8ff146c" kindref="member">NUM_LIMBS</ref>+1];</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="num__gmp__impl_8h_1af6e306e9cb6c96b80d5ebfd7abdbde0e" kindref="member">secp256k1_num_sanity</ref>(a);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="num__gmp__impl_8h_1af6e306e9cb6c96b80d5ebfd7abdbde0e" kindref="member">secp256k1_num_sanity</ref>(b);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>(a-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>+<sp/>b-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>&lt;=<sp/>2*<ref refid="num__gmp_8h_1aee9ddf197331cb600f0a5e5cb8ff146c" kindref="member">NUM_LIMBS</ref>+1);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((a-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>==1<sp/>&amp;&amp;<sp/>a-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>[0]==0)<sp/>||<sp/>(b-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>==1<sp/>&amp;&amp;<sp/>b-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>[0]==0))<sp/>{</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r-&gt;<ref refid="structsecp256k1__num_1a5d762d76e2a0fe84313ed5e41397b10b" kindref="member">neg</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>[0]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(a-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>&gt;=<sp/>b-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mpn_mul(tmp,<sp/>a-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>,<sp/>a-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>,<sp/>b-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>,<sp/>b-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mpn_mul(tmp,<sp/>b-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>,<sp/>b-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>,<sp/>a-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>,<sp/>a-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>=<sp/>a-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>+<sp/>b-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>&gt;<sp/>1<sp/>&amp;&amp;<sp/>tmp[r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>-<sp/>1]==0)<sp/>{</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>--;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>(r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref><sp/>&lt;=<sp/>2*<ref refid="num__gmp_8h_1aee9ddf197331cb600f0a5e5cb8ff146c" kindref="member">NUM_LIMBS</ref>);</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/>mpn_copyi(r-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>,<sp/>tmp,<sp/>r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>r-&gt;<ref refid="structsecp256k1__num_1a5d762d76e2a0fe84313ed5e41397b10b" kindref="member">neg</ref><sp/>=<sp/>a-&gt;<ref refid="structsecp256k1__num_1a5d762d76e2a0fe84313ed5e41397b10b" kindref="member">neg</ref><sp/>^<sp/>b-&gt;<ref refid="structsecp256k1__num_1a5d762d76e2a0fe84313ed5e41397b10b" kindref="member">neg</ref>;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(tmp,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(tmp));</highlight></codeline>
+<codeline lineno="234"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>secp256k1_num_shift(<ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*r,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>bits)<sp/>{</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(bits<sp/>%<sp/>GMP_NUMB_BITS)<sp/>{</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Shift<sp/>within<sp/>limbs.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mpn_rshift(r-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>,<sp/>r-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>,<sp/>r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>,<sp/>bits<sp/>%<sp/>GMP_NUMB_BITS);</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(bits<sp/>&gt;=<sp/>GMP_NUMB_BITS)<sp/>{</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Shift<sp/>full<sp/>limbs.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>index<sp/>=<sp/>i<sp/>+<sp/>(bits<sp/>/<sp/>GMP_NUMB_BITS);</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(index<sp/>&lt;<sp/>r-&gt;limbs<sp/>&amp;&amp;<sp/>index<sp/>&lt;<sp/>2*<ref refid="num__gmp_8h_1aee9ddf197331cb600f0a5e5cb8ff146c" kindref="member">NUM_LIMBS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>[i]<sp/>=<sp/>r-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>[index];</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>[i]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>&gt;1<sp/>&amp;&amp;<sp/>r-&gt;<ref refid="structsecp256k1__num_1aa8875ac503e1cc8ac5abef8d542d2c70" kindref="member">data</ref>[r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>-1]==0)<sp/>{</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r-&gt;<ref refid="structsecp256k1__num_1ab283e099d0543cb7e222a9e74a39aa94" kindref="member">limbs</ref>--;</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="256"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>secp256k1_num_negate(<ref refid="structsecp256k1__num" kindref="compound">secp256k1_num</ref><sp/>*r)<sp/>{</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/>r-&gt;<ref refid="structsecp256k1__num_1a5d762d76e2a0fe84313ed5e41397b10b" kindref="member">neg</ref><sp/>^=<sp/>1;</highlight></codeline>
+<codeline lineno="260"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/secp256k1/src/num_gmp_impl.h"/>
+  </compounddef>
+</doxygen>

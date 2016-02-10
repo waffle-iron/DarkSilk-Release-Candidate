@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_crypter" kind="class" language="C++" prot="public">
+    <compoundname>CCrypter</compoundname>
+    <includes refid="crypter_8h" local="no">crypter.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_c_crypter_1a11ec47962b8d46116877957726aeb291" prot="private" static="no" mutable="no">
+        <type>unsigned char</type>
+        <definition>unsigned char CCrypter::chKey[WALLET_CRYPTO_KEY_SIZE]</definition>
+        <argsstring>[WALLET_CRYPTO_KEY_SIZE]</argsstring>
+        <name>chKey</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="91" column="1" bodyfile="/home/dev/ds-160209/src/crypter.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_crypter_1a4d7a740fe37b389b9ec8447d193bcfc7" prot="private" static="no" mutable="no">
+        <type>unsigned char</type>
+        <definition>unsigned char CCrypter::chIV[WALLET_CRYPTO_KEY_SIZE]</definition>
+        <argsstring>[WALLET_CRYPTO_KEY_SIZE]</argsstring>
+        <name>chIV</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="92" column="1" bodyfile="/home/dev/ds-160209/src/crypter.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_crypter_1a4a1485fd00acb8424cfef256c78ac176" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CCrypter::fKeySet</definition>
+        <argsstring></argsstring>
+        <name>fKeySet</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="93" column="1" bodyfile="/home/dev/ds-160209/src/crypter.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_crypter_1a5368279e4a1549d3c1d15d8aa2179708" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CCrypter::SetKeyFromPassphrase</definition>
+        <argsstring>(const SecureString &amp;strKeyData, const std::vector&lt; unsigned char &gt; &amp;chSalt, const unsigned int nRounds, const unsigned int nDerivationMethod)</argsstring>
+        <name>SetKeyFromPassphrase</name>
+        <param>
+          <type>const <ref refid="allocators_8h_1a396ed773a5ac24aec28c8f7dc413c7ac" kindref="member">SecureString</ref> &amp;</type>
+          <declname>strKeyData</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>chSalt</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>nRounds</declname>
+        </param>
+        <param>
+          <type>const unsigned int</type>
+          <declname>nDerivationMethod</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="96" column="1" bodyfile="/home/dev/ds-160209/src/crypter.cpp" bodystart="25" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_crypter_1a124fcd3021569a660ce2daa3391c8ea4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CCrypter::Encrypt</definition>
+        <argsstring>(const CKeyingMaterial &amp;vchPlaintext, std::vector&lt; unsigned char &gt; &amp;vchCiphertext)</argsstring>
+        <name>Encrypt</name>
+        <param>
+          <type>const <ref refid="crypter_8h_1a64709c9a3acc8f5694515789a183ad7b" kindref="member">CKeyingMaterial</ref> &amp;</type>
+          <declname>vchPlaintext</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>vchCiphertext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="97" column="1" bodyfile="/home/dev/ds-160209/src/crypter.cpp" bodystart="71" bodyend="96"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_crypter_1a4dbabed4975d4435d22c76deac43df7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CCrypter::Decrypt</definition>
+        <argsstring>(const std::vector&lt; unsigned char &gt; &amp;vchCiphertext, CKeyingMaterial &amp;vchPlaintext)</argsstring>
+        <name>Decrypt</name>
+        <param>
+          <type>const std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>vchCiphertext</declname>
+        </param>
+        <param>
+          <type><ref refid="crypter_8h_1a64709c9a3acc8f5694515789a183ad7b" kindref="member">CKeyingMaterial</ref> &amp;</type>
+          <declname>vchPlaintext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="98" column="1" bodyfile="/home/dev/ds-160209/src/crypter.cpp" bodystart="98" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_crypter_1a0d948dd4796e2420e1dd9c1ddbf7974e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CCrypter::SetKey</definition>
+        <argsstring>(const CKeyingMaterial &amp;chNewKey, const std::vector&lt; unsigned char &gt; &amp;chNewIV)</argsstring>
+        <name>SetKey</name>
+        <param>
+          <type>const <ref refid="crypter_8h_1a64709c9a3acc8f5694515789a183ad7b" kindref="member">CKeyingMaterial</ref> &amp;</type>
+          <declname>chNewKey</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>chNewIV</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="99" column="1" bodyfile="/home/dev/ds-160209/src/crypter.cpp" bodystart="59" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_crypter_1a6910b4cff4ee40e33fbb3789dc12c139" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CCrypter::CleanKey</definition>
+        <argsstring>()</argsstring>
+        <name>CleanKey</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="101" column="1" bodyfile="/home/dev/ds-160209/src/crypter.h" bodystart="101" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_crypter_1a4bbf5c23b0350f04e0c8e3b4ef28615e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CCrypter::CCrypter</definition>
+        <argsstring>()</argsstring>
+        <name>CCrypter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="108" column="1" bodyfile="/home/dev/ds-160209/src/crypter.h" bodystart="108" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_crypter_1ac0dccc762fb60fe9605409232ebfaa0f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CCrypter::~CCrypter</definition>
+        <argsstring>()</argsstring>
+        <name>~CCrypter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="119" column="1" bodyfile="/home/dev/ds-160209/src/crypter.h" bodystart="119" bodyend="125"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Encryption/decryption context with key information </para>    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/crypter.h" line="89" column="1" bodyfile="/home/dev/ds-160209/src/crypter.h" bodystart="88" bodyend="126"/>
+    <listofallmembers>
+      <member refid="class_c_crypter_1a4bbf5c23b0350f04e0c8e3b4ef28615e" prot="public" virt="non-virtual"><scope>CCrypter</scope><name>CCrypter</name></member>
+      <member refid="class_c_crypter_1a4d7a740fe37b389b9ec8447d193bcfc7" prot="private" virt="non-virtual"><scope>CCrypter</scope><name>chIV</name></member>
+      <member refid="class_c_crypter_1a11ec47962b8d46116877957726aeb291" prot="private" virt="non-virtual"><scope>CCrypter</scope><name>chKey</name></member>
+      <member refid="class_c_crypter_1a6910b4cff4ee40e33fbb3789dc12c139" prot="public" virt="non-virtual"><scope>CCrypter</scope><name>CleanKey</name></member>
+      <member refid="class_c_crypter_1a4dbabed4975d4435d22c76deac43df7f" prot="public" virt="non-virtual"><scope>CCrypter</scope><name>Decrypt</name></member>
+      <member refid="class_c_crypter_1a124fcd3021569a660ce2daa3391c8ea4" prot="public" virt="non-virtual"><scope>CCrypter</scope><name>Encrypt</name></member>
+      <member refid="class_c_crypter_1a4a1485fd00acb8424cfef256c78ac176" prot="private" virt="non-virtual"><scope>CCrypter</scope><name>fKeySet</name></member>
+      <member refid="class_c_crypter_1a0d948dd4796e2420e1dd9c1ddbf7974e" prot="public" virt="non-virtual"><scope>CCrypter</scope><name>SetKey</name></member>
+      <member refid="class_c_crypter_1a5368279e4a1549d3c1d15d8aa2179708" prot="public" virt="non-virtual"><scope>CCrypter</scope><name>SetKeyFromPassphrase</name></member>
+      <member refid="class_c_crypter_1ac0dccc762fb60fe9605409232ebfaa0f" prot="public" virt="non-virtual"><scope>CCrypter</scope><name>~CCrypter</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

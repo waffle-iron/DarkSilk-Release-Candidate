@@ -1,0 +1,288 @@
+\hypertarget{rpcprotocol_8h}{}\section{/home/dev/ds-\/160209/src/rpcprotocol.h File Reference}
+\label{rpcprotocol_8h}\index{/home/dev/ds-\/160209/src/rpcprotocol.\+h@{/home/dev/ds-\/160209/src/rpcprotocol.\+h}}
+{\ttfamily \#include \char`\"{}compat.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$list$>$}\\*
+{\ttfamily \#include $<$map$>$}\\*
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include $<$boost/iostreams/concepts.\+hpp$>$}\\*
+{\ttfamily \#include $<$boost/iostreams/stream.\+hpp$>$}\\*
+{\ttfamily \#include $<$boost/asio.\+hpp$>$}\\*
+{\ttfamily \#include $<$boost/asio/ssl.\+hpp$>$}\\*
+{\ttfamily \#include \char`\"{}json/json\+\_\+spirit\+\_\+reader\+\_\+template.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}json/json\+\_\+spirit\+\_\+utils.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}json/json\+\_\+spirit\+\_\+writer\+\_\+template.\+h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_s_s_l_i_o_stream_device}{S\+S\+L\+I\+O\+Stream\+Device$<$ Protocol $>$}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{rpcprotocol_8h_ab0a9668b7d736b4d4d621ec010928a46}{H\+T\+T\+P\+Status\+Code} \{ \\*
+\hyperlink{rpcprotocol_8h_ab0a9668b7d736b4d4d621ec010928a46a43f8027764325bbcad2f773511156d0a}{H\+T\+T\+P\+\_\+\+O\+K} = 200, 
+\hyperlink{rpcprotocol_8h_ab0a9668b7d736b4d4d621ec010928a46a173b2a55d636fe537b9069a4fb3388f2}{H\+T\+T\+P\+\_\+\+B\+A\+D\+\_\+\+R\+E\+Q\+U\+E\+S\+T} = 400, 
+\hyperlink{rpcprotocol_8h_ab0a9668b7d736b4d4d621ec010928a46a74677f364201a3d068bc6b9db7359288}{H\+T\+T\+P\+\_\+\+U\+N\+A\+U\+T\+H\+O\+R\+I\+Z\+E\+D} = 401, 
+\hyperlink{rpcprotocol_8h_ab0a9668b7d736b4d4d621ec010928a46a7aec6e8ecb79ff84830a69e52ff01d17}{H\+T\+T\+P\+\_\+\+F\+O\+R\+B\+I\+D\+D\+E\+N} = 403, 
+\\*
+\hyperlink{rpcprotocol_8h_ab0a9668b7d736b4d4d621ec010928a46a7a2f2a109c030ee9d2d5afe761232451}{H\+T\+T\+P\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+N\+D} = 404, 
+\hyperlink{rpcprotocol_8h_ab0a9668b7d736b4d4d621ec010928a46ac7d2e49bfead01d65a890a2e80e5b3a6}{H\+T\+T\+P\+\_\+\+I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+S\+E\+R\+V\+E\+R\+\_\+\+E\+R\+R\+O\+R} = 500
+ \}
+\item 
+enum \hyperlink{rpcprotocol_8h_af867221d51315471f28ed8cdac85dead}{R\+P\+C\+Error\+Code} \{ \\*
+\hyperlink{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadaf8310a778a7a84d76adde337d695fd0d}{R\+P\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+R\+E\+Q\+U\+E\+S\+T} = -\/32600, 
+\hyperlink{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada730bd898e0c5940282c275f49470a794}{R\+P\+C\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+N\+D} = -\/32601, 
+\hyperlink{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada784a3cc09b65fa47ff1d70fbd3bfbaca}{R\+P\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+P\+A\+R\+A\+M\+S} = -\/32602, 
+\hyperlink{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadad4f5ea69465f2a32fda9b9bf5e698803}{R\+P\+C\+\_\+\+I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+E\+R\+R\+O\+R} = -\/32603, 
+\\*
+\hyperlink{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada3632e7ba1deeda31ff77fe80bdaf7fe6}{R\+P\+C\+\_\+\+P\+A\+R\+S\+E\+\_\+\+E\+R\+R\+O\+R} = -\/32700, 
+\hyperlink{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada5aa884a9e263e1fad4ad13ec564d33d5}{R\+P\+C\+\_\+\+M\+I\+S\+C\+\_\+\+E\+R\+R\+O\+R} = -\/1, 
+\hyperlink{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada456d9eafa45bb1041024b834a063ea80}{R\+P\+C\+\_\+\+F\+O\+R\+B\+I\+D\+D\+E\+N\+\_\+\+B\+Y\+\_\+\+S\+A\+F\+E\+\_\+\+M\+O\+D\+E} = -\/2, 
+\hyperlink{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada7c63246a7c7bc5912d499fb117358506}{R\+P\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+E\+R\+R\+O\+R} = -\/3, 
+\\*
+\hyperlink{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadafb8d27e000f4a668b66974c73256a576}{R\+P\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+O\+R\+\_\+\+K\+E\+Y} = -\/5, 
+\hyperlink{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada2b50733804d98a7d4f2252563d864a66}{R\+P\+C\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+M\+E\+M\+O\+R\+Y} = -\/7, 
+\hyperlink{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadab38a9a653209a57acfc9a551c310e4dc}{R\+P\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+E\+R} = -\/8, 
+\hyperlink{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadadcfa95f6aca9c3a474fffac8c8ab1dd1}{R\+P\+C\+\_\+\+D\+A\+T\+A\+B\+A\+S\+E\+\_\+\+E\+R\+R\+O\+R} = -\/20, 
+\\*
+\hyperlink{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadae41723a0e8091c7853a1e582e317b272}{R\+P\+C\+\_\+\+D\+E\+S\+E\+R\+I\+A\+L\+I\+Z\+A\+T\+I\+O\+N\+\_\+\+E\+R\+R\+O\+R} = -\/22, 
+\hyperlink{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada20e49eed4831ce6cdb5626a2faf5dc76}{R\+P\+C\+\_\+\+S\+E\+R\+V\+E\+R\+\_\+\+N\+O\+T\+\_\+\+S\+T\+A\+R\+T\+E\+D} = -\/18, 
+\hyperlink{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadaab5f4888435073da8cd11d99d274c8af}{R\+P\+C\+\_\+\+C\+L\+I\+E\+N\+T\+\_\+\+N\+O\+T\+\_\+\+C\+O\+N\+N\+E\+C\+T\+E\+D} = -\/9, 
+\hyperlink{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadadd3692758a03ba3dcd1accbdd656b27f}{R\+P\+C\+\_\+\+C\+L\+I\+E\+N\+T\+\_\+\+I\+N\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+D\+O\+W\+N\+L\+O\+A\+D} = -\/10, 
+\\*
+\hyperlink{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada69beae07cb7520bde6d66c32ebde05c4}{R\+P\+C\+\_\+\+C\+L\+I\+E\+N\+T\+\_\+\+N\+O\+D\+E\+\_\+\+A\+L\+R\+E\+A\+D\+Y\+\_\+\+A\+D\+D\+E\+D} = -\/23, 
+\hyperlink{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadadd603a70e2d6eb11ef5b3aad2f83fd70}{R\+P\+C\+\_\+\+C\+L\+I\+E\+N\+T\+\_\+\+N\+O\+D\+E\+\_\+\+N\+O\+T\+\_\+\+A\+D\+D\+E\+D} = -\/24, 
+\hyperlink{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadaba6f8682002fa223d3a405b743b5a540}{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+E\+R\+R\+O\+R} = -\/4, 
+\hyperlink{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada5e46fc2ff7c51b8423b6eaf5b33ebfb9}{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+I\+N\+S\+U\+F\+F\+I\+C\+I\+E\+N\+T\+\_\+\+F\+U\+N\+D\+S} = -\/6, 
+\\*
+\hyperlink{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada05642c62794bf107e9be801e76a4c89e}{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+C\+C\+O\+U\+N\+T\+\_\+\+N\+A\+M\+E} = -\/11, 
+\hyperlink{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadadacb2152d14607886f90ed134c94e21d}{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+K\+E\+Y\+P\+O\+O\+L\+\_\+\+R\+A\+N\+\_\+\+O\+U\+T} = -\/12, 
+\hyperlink{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada0c1fbdf17d83da9f5124f2dbf0ba4765}{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+U\+N\+L\+O\+C\+K\+\_\+\+N\+E\+E\+D\+E\+D} = -\/13, 
+\hyperlink{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadae7f578c2ec4458c79250e204505dedcc}{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+P\+A\+S\+S\+P\+H\+R\+A\+S\+E\+\_\+\+I\+N\+C\+O\+R\+R\+E\+C\+T} = -\/14, 
+\\*
+\hyperlink{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada6aa5da515d4b7230dfeb65017b9fd38d}{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+W\+R\+O\+N\+G\+\_\+\+E\+N\+C\+\_\+\+S\+T\+A\+T\+E} = -\/15, 
+\hyperlink{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada796c728d5ec3fc308609494e1d608940}{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+E\+N\+C\+R\+Y\+P\+T\+I\+O\+N\+\_\+\+F\+A\+I\+L\+E\+D} = -\/16, 
+\hyperlink{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada13d89bf3248220d312af052959f71b0b}{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+A\+L\+R\+E\+A\+D\+Y\+\_\+\+U\+N\+L\+O\+C\+K\+E\+D} = -\/17
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{rpcprotocol_8h_a6ce552952d1a270cd92e12e53a53df90}{H\+T\+T\+P\+Post} (const std\+::string \&str\+Msg, const std\+::map$<$ std\+::string, std\+::string $>$ \&map\+Request\+Headers)
+\item 
+std\+::string \hyperlink{rpcprotocol_8h_aa3a6ad4a7d1b01eb440e43214280c2d6}{H\+T\+T\+P\+Reply} (int n\+Status, const std\+::string \&str\+Msg, bool keepalive)
+\item 
+bool \hyperlink{rpcprotocol_8h_afbaac856b5edb9692407fc3f2254a5c0}{Read\+H\+T\+T\+P\+Request\+Line} (std\+::basic\+\_\+istream$<$ char $>$ \&stream, int \&proto, std\+::string \&http\+\_\+method, std\+::string \&http\+\_\+uri)
+\item 
+int \hyperlink{rpcprotocol_8h_af615c564cc7794d255e5adfacade4066}{Read\+H\+T\+T\+P\+Status} (std\+::basic\+\_\+istream$<$ char $>$ \&stream, int \&proto)
+\item 
+int \hyperlink{rpcprotocol_8h_a440857adcf1e52899fdf8843e3e943af}{Read\+H\+T\+T\+P\+Headers} (std\+::basic\+\_\+istream$<$ char $>$ \&stream, std\+::map$<$ std\+::string, std\+::string $>$ \&map\+Headers\+Ret)
+\item 
+int \hyperlink{rpcprotocol_8h_ae3fa5c9e35e8a2824f721e136e9c7cf9}{Read\+H\+T\+T\+P\+Message} (std\+::basic\+\_\+istream$<$ char $>$ \&stream, std\+::map$<$ std\+::string, std\+::string $>$ \&map\+Headers\+Ret, std\+::string \&str\+Message\+Ret, int n\+Proto, size\+\_\+t max\+\_\+size)
+\item 
+std\+::string \hyperlink{rpcprotocol_8h_af563d02a95e56442fbe9ed93605d2405}{J\+S\+O\+N\+R\+P\+C\+Request} (const std\+::string \&str\+Method, const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{json\+\_\+spirit\+::\+Array} \&params, const \hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{json\+\_\+spirit\+::\+Value} \&\hyperlink{db__test_8cc_a7441ef0865bcb3db9b8064dd7375c1ea}{id})
+\item 
+\hyperlink{namespacejson__spirit_aa1e2c4032be0d25e7b42eb17115dabb2}{json\+\_\+spirit\+::\+Object} \hyperlink{rpcprotocol_8h_aebdc56873bd962e1d9b310c34e7dde0a}{J\+S\+O\+N\+R\+P\+C\+Reply\+Obj} (const \hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{json\+\_\+spirit\+::\+Value} \&result, const \hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{json\+\_\+spirit\+::\+Value} \&error, const \hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{json\+\_\+spirit\+::\+Value} \&\hyperlink{db__test_8cc_a7441ef0865bcb3db9b8064dd7375c1ea}{id})
+\item 
+std\+::string \hyperlink{rpcprotocol_8h_a0684e3796b75355730f1657a05ea6bcc}{J\+S\+O\+N\+R\+P\+C\+Reply} (const \hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{json\+\_\+spirit\+::\+Value} \&result, const \hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{json\+\_\+spirit\+::\+Value} \&error, const \hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{json\+\_\+spirit\+::\+Value} \&\hyperlink{db__test_8cc_a7441ef0865bcb3db9b8064dd7375c1ea}{id})
+\item 
+\hyperlink{namespacejson__spirit_aa1e2c4032be0d25e7b42eb17115dabb2}{json\+\_\+spirit\+::\+Object} \hyperlink{rpcprotocol_8h_a2f8638568f8f83e5a0a79a109540a18c}{J\+S\+O\+N\+R\+P\+C\+Error} (int code, const std\+::string \&message)
+\end{DoxyCompactItemize}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{rpcprotocol_8h_ab0a9668b7d736b4d4d621ec010928a46}{}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!H\+T\+T\+P\+Status\+Code@{H\+T\+T\+P\+Status\+Code}}
+\index{H\+T\+T\+P\+Status\+Code@{H\+T\+T\+P\+Status\+Code}!rpcprotocol.\+h@{rpcprotocol.\+h}}
+\subsubsection[{H\+T\+T\+P\+Status\+Code}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf H\+T\+T\+P\+Status\+Code}}\label{rpcprotocol_8h_ab0a9668b7d736b4d4d621ec010928a46}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{H\+T\+T\+P\+\_\+\+O\+K@{H\+T\+T\+P\+\_\+\+O\+K}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!H\+T\+T\+P\+\_\+\+O\+K@{H\+T\+T\+P\+\_\+\+O\+K}}\item[{\em 
+\hypertarget{rpcprotocol_8h_ab0a9668b7d736b4d4d621ec010928a46a43f8027764325bbcad2f773511156d0a}{}H\+T\+T\+P\+\_\+\+O\+K\label{rpcprotocol_8h_ab0a9668b7d736b4d4d621ec010928a46a43f8027764325bbcad2f773511156d0a}
+}]\index{H\+T\+T\+P\+\_\+\+B\+A\+D\+\_\+\+R\+E\+Q\+U\+E\+S\+T@{H\+T\+T\+P\+\_\+\+B\+A\+D\+\_\+\+R\+E\+Q\+U\+E\+S\+T}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!H\+T\+T\+P\+\_\+\+B\+A\+D\+\_\+\+R\+E\+Q\+U\+E\+S\+T@{H\+T\+T\+P\+\_\+\+B\+A\+D\+\_\+\+R\+E\+Q\+U\+E\+S\+T}}\item[{\em 
+\hypertarget{rpcprotocol_8h_ab0a9668b7d736b4d4d621ec010928a46a173b2a55d636fe537b9069a4fb3388f2}{}H\+T\+T\+P\+\_\+\+B\+A\+D\+\_\+\+R\+E\+Q\+U\+E\+S\+T\label{rpcprotocol_8h_ab0a9668b7d736b4d4d621ec010928a46a173b2a55d636fe537b9069a4fb3388f2}
+}]\index{H\+T\+T\+P\+\_\+\+U\+N\+A\+U\+T\+H\+O\+R\+I\+Z\+E\+D@{H\+T\+T\+P\+\_\+\+U\+N\+A\+U\+T\+H\+O\+R\+I\+Z\+E\+D}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!H\+T\+T\+P\+\_\+\+U\+N\+A\+U\+T\+H\+O\+R\+I\+Z\+E\+D@{H\+T\+T\+P\+\_\+\+U\+N\+A\+U\+T\+H\+O\+R\+I\+Z\+E\+D}}\item[{\em 
+\hypertarget{rpcprotocol_8h_ab0a9668b7d736b4d4d621ec010928a46a74677f364201a3d068bc6b9db7359288}{}H\+T\+T\+P\+\_\+\+U\+N\+A\+U\+T\+H\+O\+R\+I\+Z\+E\+D\label{rpcprotocol_8h_ab0a9668b7d736b4d4d621ec010928a46a74677f364201a3d068bc6b9db7359288}
+}]\index{H\+T\+T\+P\+\_\+\+F\+O\+R\+B\+I\+D\+D\+E\+N@{H\+T\+T\+P\+\_\+\+F\+O\+R\+B\+I\+D\+D\+E\+N}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!H\+T\+T\+P\+\_\+\+F\+O\+R\+B\+I\+D\+D\+E\+N@{H\+T\+T\+P\+\_\+\+F\+O\+R\+B\+I\+D\+D\+E\+N}}\item[{\em 
+\hypertarget{rpcprotocol_8h_ab0a9668b7d736b4d4d621ec010928a46a7aec6e8ecb79ff84830a69e52ff01d17}{}H\+T\+T\+P\+\_\+\+F\+O\+R\+B\+I\+D\+D\+E\+N\label{rpcprotocol_8h_ab0a9668b7d736b4d4d621ec010928a46a7aec6e8ecb79ff84830a69e52ff01d17}
+}]\index{H\+T\+T\+P\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+N\+D@{H\+T\+T\+P\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+N\+D}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!H\+T\+T\+P\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+N\+D@{H\+T\+T\+P\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+N\+D}}\item[{\em 
+\hypertarget{rpcprotocol_8h_ab0a9668b7d736b4d4d621ec010928a46a7a2f2a109c030ee9d2d5afe761232451}{}H\+T\+T\+P\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+N\+D\label{rpcprotocol_8h_ab0a9668b7d736b4d4d621ec010928a46a7a2f2a109c030ee9d2d5afe761232451}
+}]\index{H\+T\+T\+P\+\_\+\+I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+S\+E\+R\+V\+E\+R\+\_\+\+E\+R\+R\+O\+R@{H\+T\+T\+P\+\_\+\+I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+S\+E\+R\+V\+E\+R\+\_\+\+E\+R\+R\+O\+R}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!H\+T\+T\+P\+\_\+\+I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+S\+E\+R\+V\+E\+R\+\_\+\+E\+R\+R\+O\+R@{H\+T\+T\+P\+\_\+\+I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+S\+E\+R\+V\+E\+R\+\_\+\+E\+R\+R\+O\+R}}\item[{\em 
+\hypertarget{rpcprotocol_8h_ab0a9668b7d736b4d4d621ec010928a46ac7d2e49bfead01d65a890a2e80e5b3a6}{}H\+T\+T\+P\+\_\+\+I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+S\+E\+R\+V\+E\+R\+\_\+\+E\+R\+R\+O\+R\label{rpcprotocol_8h_ab0a9668b7d736b4d4d621ec010928a46ac7d2e49bfead01d65a890a2e80e5b3a6}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 26 of file rpcprotocol.\+h.
+
+\hypertarget{rpcprotocol_8h_af867221d51315471f28ed8cdac85dead}{}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!R\+P\+C\+Error\+Code@{R\+P\+C\+Error\+Code}}
+\index{R\+P\+C\+Error\+Code@{R\+P\+C\+Error\+Code}!rpcprotocol.\+h@{rpcprotocol.\+h}}
+\subsubsection[{R\+P\+C\+Error\+Code}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf R\+P\+C\+Error\+Code}}\label{rpcprotocol_8h_af867221d51315471f28ed8cdac85dead}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{R\+P\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+R\+E\+Q\+U\+E\+S\+T@{R\+P\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+R\+E\+Q\+U\+E\+S\+T}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!R\+P\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+R\+E\+Q\+U\+E\+S\+T@{R\+P\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+R\+E\+Q\+U\+E\+S\+T}}\item[{\em 
+\hypertarget{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadaf8310a778a7a84d76adde337d695fd0d}{}R\+P\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+R\+E\+Q\+U\+E\+S\+T\label{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadaf8310a778a7a84d76adde337d695fd0d}
+}]\index{R\+P\+C\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+N\+D@{R\+P\+C\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+N\+D}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!R\+P\+C\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+N\+D@{R\+P\+C\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+N\+D}}\item[{\em 
+\hypertarget{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada730bd898e0c5940282c275f49470a794}{}R\+P\+C\+\_\+\+M\+E\+T\+H\+O\+D\+\_\+\+N\+O\+T\+\_\+\+F\+O\+U\+N\+D\label{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada730bd898e0c5940282c275f49470a794}
+}]\index{R\+P\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+P\+A\+R\+A\+M\+S@{R\+P\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+P\+A\+R\+A\+M\+S}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!R\+P\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+P\+A\+R\+A\+M\+S@{R\+P\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+P\+A\+R\+A\+M\+S}}\item[{\em 
+\hypertarget{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada784a3cc09b65fa47ff1d70fbd3bfbaca}{}R\+P\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+P\+A\+R\+A\+M\+S\label{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada784a3cc09b65fa47ff1d70fbd3bfbaca}
+}]\index{R\+P\+C\+\_\+\+I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+E\+R\+R\+O\+R@{R\+P\+C\+\_\+\+I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+E\+R\+R\+O\+R}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!R\+P\+C\+\_\+\+I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+E\+R\+R\+O\+R@{R\+P\+C\+\_\+\+I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+E\+R\+R\+O\+R}}\item[{\em 
+\hypertarget{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadad4f5ea69465f2a32fda9b9bf5e698803}{}R\+P\+C\+\_\+\+I\+N\+T\+E\+R\+N\+A\+L\+\_\+\+E\+R\+R\+O\+R\label{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadad4f5ea69465f2a32fda9b9bf5e698803}
+}]\index{R\+P\+C\+\_\+\+P\+A\+R\+S\+E\+\_\+\+E\+R\+R\+O\+R@{R\+P\+C\+\_\+\+P\+A\+R\+S\+E\+\_\+\+E\+R\+R\+O\+R}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!R\+P\+C\+\_\+\+P\+A\+R\+S\+E\+\_\+\+E\+R\+R\+O\+R@{R\+P\+C\+\_\+\+P\+A\+R\+S\+E\+\_\+\+E\+R\+R\+O\+R}}\item[{\em 
+\hypertarget{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada3632e7ba1deeda31ff77fe80bdaf7fe6}{}R\+P\+C\+\_\+\+P\+A\+R\+S\+E\+\_\+\+E\+R\+R\+O\+R\label{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada3632e7ba1deeda31ff77fe80bdaf7fe6}
+}]\index{R\+P\+C\+\_\+\+M\+I\+S\+C\+\_\+\+E\+R\+R\+O\+R@{R\+P\+C\+\_\+\+M\+I\+S\+C\+\_\+\+E\+R\+R\+O\+R}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!R\+P\+C\+\_\+\+M\+I\+S\+C\+\_\+\+E\+R\+R\+O\+R@{R\+P\+C\+\_\+\+M\+I\+S\+C\+\_\+\+E\+R\+R\+O\+R}}\item[{\em 
+\hypertarget{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada5aa884a9e263e1fad4ad13ec564d33d5}{}R\+P\+C\+\_\+\+M\+I\+S\+C\+\_\+\+E\+R\+R\+O\+R\label{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada5aa884a9e263e1fad4ad13ec564d33d5}
+}]\index{R\+P\+C\+\_\+\+F\+O\+R\+B\+I\+D\+D\+E\+N\+\_\+\+B\+Y\+\_\+\+S\+A\+F\+E\+\_\+\+M\+O\+D\+E@{R\+P\+C\+\_\+\+F\+O\+R\+B\+I\+D\+D\+E\+N\+\_\+\+B\+Y\+\_\+\+S\+A\+F\+E\+\_\+\+M\+O\+D\+E}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!R\+P\+C\+\_\+\+F\+O\+R\+B\+I\+D\+D\+E\+N\+\_\+\+B\+Y\+\_\+\+S\+A\+F\+E\+\_\+\+M\+O\+D\+E@{R\+P\+C\+\_\+\+F\+O\+R\+B\+I\+D\+D\+E\+N\+\_\+\+B\+Y\+\_\+\+S\+A\+F\+E\+\_\+\+M\+O\+D\+E}}\item[{\em 
+\hypertarget{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada456d9eafa45bb1041024b834a063ea80}{}R\+P\+C\+\_\+\+F\+O\+R\+B\+I\+D\+D\+E\+N\+\_\+\+B\+Y\+\_\+\+S\+A\+F\+E\+\_\+\+M\+O\+D\+E\label{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada456d9eafa45bb1041024b834a063ea80}
+}]\index{R\+P\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+E\+R\+R\+O\+R@{R\+P\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+E\+R\+R\+O\+R}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!R\+P\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+E\+R\+R\+O\+R@{R\+P\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+E\+R\+R\+O\+R}}\item[{\em 
+\hypertarget{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada7c63246a7c7bc5912d499fb117358506}{}R\+P\+C\+\_\+\+T\+Y\+P\+E\+\_\+\+E\+R\+R\+O\+R\label{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada7c63246a7c7bc5912d499fb117358506}
+}]\index{R\+P\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+O\+R\+\_\+\+K\+E\+Y@{R\+P\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+O\+R\+\_\+\+K\+E\+Y}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!R\+P\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+O\+R\+\_\+\+K\+E\+Y@{R\+P\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+O\+R\+\_\+\+K\+E\+Y}}\item[{\em 
+\hypertarget{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadafb8d27e000f4a668b66974c73256a576}{}R\+P\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+D\+D\+R\+E\+S\+S\+\_\+\+O\+R\+\_\+\+K\+E\+Y\label{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadafb8d27e000f4a668b66974c73256a576}
+}]\index{R\+P\+C\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+M\+E\+M\+O\+R\+Y@{R\+P\+C\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+M\+E\+M\+O\+R\+Y}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!R\+P\+C\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+M\+E\+M\+O\+R\+Y@{R\+P\+C\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+M\+E\+M\+O\+R\+Y}}\item[{\em 
+\hypertarget{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada2b50733804d98a7d4f2252563d864a66}{}R\+P\+C\+\_\+\+O\+U\+T\+\_\+\+O\+F\+\_\+\+M\+E\+M\+O\+R\+Y\label{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada2b50733804d98a7d4f2252563d864a66}
+}]\index{R\+P\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+E\+R@{R\+P\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+E\+R}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!R\+P\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+E\+R@{R\+P\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+E\+R}}\item[{\em 
+\hypertarget{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadab38a9a653209a57acfc9a551c310e4dc}{}R\+P\+C\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+P\+A\+R\+A\+M\+E\+T\+E\+R\label{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadab38a9a653209a57acfc9a551c310e4dc}
+}]\index{R\+P\+C\+\_\+\+D\+A\+T\+A\+B\+A\+S\+E\+\_\+\+E\+R\+R\+O\+R@{R\+P\+C\+\_\+\+D\+A\+T\+A\+B\+A\+S\+E\+\_\+\+E\+R\+R\+O\+R}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!R\+P\+C\+\_\+\+D\+A\+T\+A\+B\+A\+S\+E\+\_\+\+E\+R\+R\+O\+R@{R\+P\+C\+\_\+\+D\+A\+T\+A\+B\+A\+S\+E\+\_\+\+E\+R\+R\+O\+R}}\item[{\em 
+\hypertarget{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadadcfa95f6aca9c3a474fffac8c8ab1dd1}{}R\+P\+C\+\_\+\+D\+A\+T\+A\+B\+A\+S\+E\+\_\+\+E\+R\+R\+O\+R\label{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadadcfa95f6aca9c3a474fffac8c8ab1dd1}
+}]\index{R\+P\+C\+\_\+\+D\+E\+S\+E\+R\+I\+A\+L\+I\+Z\+A\+T\+I\+O\+N\+\_\+\+E\+R\+R\+O\+R@{R\+P\+C\+\_\+\+D\+E\+S\+E\+R\+I\+A\+L\+I\+Z\+A\+T\+I\+O\+N\+\_\+\+E\+R\+R\+O\+R}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!R\+P\+C\+\_\+\+D\+E\+S\+E\+R\+I\+A\+L\+I\+Z\+A\+T\+I\+O\+N\+\_\+\+E\+R\+R\+O\+R@{R\+P\+C\+\_\+\+D\+E\+S\+E\+R\+I\+A\+L\+I\+Z\+A\+T\+I\+O\+N\+\_\+\+E\+R\+R\+O\+R}}\item[{\em 
+\hypertarget{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadae41723a0e8091c7853a1e582e317b272}{}R\+P\+C\+\_\+\+D\+E\+S\+E\+R\+I\+A\+L\+I\+Z\+A\+T\+I\+O\+N\+\_\+\+E\+R\+R\+O\+R\label{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadae41723a0e8091c7853a1e582e317b272}
+}]\index{R\+P\+C\+\_\+\+S\+E\+R\+V\+E\+R\+\_\+\+N\+O\+T\+\_\+\+S\+T\+A\+R\+T\+E\+D@{R\+P\+C\+\_\+\+S\+E\+R\+V\+E\+R\+\_\+\+N\+O\+T\+\_\+\+S\+T\+A\+R\+T\+E\+D}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!R\+P\+C\+\_\+\+S\+E\+R\+V\+E\+R\+\_\+\+N\+O\+T\+\_\+\+S\+T\+A\+R\+T\+E\+D@{R\+P\+C\+\_\+\+S\+E\+R\+V\+E\+R\+\_\+\+N\+O\+T\+\_\+\+S\+T\+A\+R\+T\+E\+D}}\item[{\em 
+\hypertarget{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada20e49eed4831ce6cdb5626a2faf5dc76}{}R\+P\+C\+\_\+\+S\+E\+R\+V\+E\+R\+\_\+\+N\+O\+T\+\_\+\+S\+T\+A\+R\+T\+E\+D\label{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada20e49eed4831ce6cdb5626a2faf5dc76}
+}]\index{R\+P\+C\+\_\+\+C\+L\+I\+E\+N\+T\+\_\+\+N\+O\+T\+\_\+\+C\+O\+N\+N\+E\+C\+T\+E\+D@{R\+P\+C\+\_\+\+C\+L\+I\+E\+N\+T\+\_\+\+N\+O\+T\+\_\+\+C\+O\+N\+N\+E\+C\+T\+E\+D}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!R\+P\+C\+\_\+\+C\+L\+I\+E\+N\+T\+\_\+\+N\+O\+T\+\_\+\+C\+O\+N\+N\+E\+C\+T\+E\+D@{R\+P\+C\+\_\+\+C\+L\+I\+E\+N\+T\+\_\+\+N\+O\+T\+\_\+\+C\+O\+N\+N\+E\+C\+T\+E\+D}}\item[{\em 
+\hypertarget{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadaab5f4888435073da8cd11d99d274c8af}{}R\+P\+C\+\_\+\+C\+L\+I\+E\+N\+T\+\_\+\+N\+O\+T\+\_\+\+C\+O\+N\+N\+E\+C\+T\+E\+D\label{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadaab5f4888435073da8cd11d99d274c8af}
+}]\index{R\+P\+C\+\_\+\+C\+L\+I\+E\+N\+T\+\_\+\+I\+N\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+D\+O\+W\+N\+L\+O\+A\+D@{R\+P\+C\+\_\+\+C\+L\+I\+E\+N\+T\+\_\+\+I\+N\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+D\+O\+W\+N\+L\+O\+A\+D}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!R\+P\+C\+\_\+\+C\+L\+I\+E\+N\+T\+\_\+\+I\+N\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+D\+O\+W\+N\+L\+O\+A\+D@{R\+P\+C\+\_\+\+C\+L\+I\+E\+N\+T\+\_\+\+I\+N\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+D\+O\+W\+N\+L\+O\+A\+D}}\item[{\em 
+\hypertarget{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadadd3692758a03ba3dcd1accbdd656b27f}{}R\+P\+C\+\_\+\+C\+L\+I\+E\+N\+T\+\_\+\+I\+N\+\_\+\+I\+N\+I\+T\+I\+A\+L\+\_\+\+D\+O\+W\+N\+L\+O\+A\+D\label{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadadd3692758a03ba3dcd1accbdd656b27f}
+}]\index{R\+P\+C\+\_\+\+C\+L\+I\+E\+N\+T\+\_\+\+N\+O\+D\+E\+\_\+\+A\+L\+R\+E\+A\+D\+Y\+\_\+\+A\+D\+D\+E\+D@{R\+P\+C\+\_\+\+C\+L\+I\+E\+N\+T\+\_\+\+N\+O\+D\+E\+\_\+\+A\+L\+R\+E\+A\+D\+Y\+\_\+\+A\+D\+D\+E\+D}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!R\+P\+C\+\_\+\+C\+L\+I\+E\+N\+T\+\_\+\+N\+O\+D\+E\+\_\+\+A\+L\+R\+E\+A\+D\+Y\+\_\+\+A\+D\+D\+E\+D@{R\+P\+C\+\_\+\+C\+L\+I\+E\+N\+T\+\_\+\+N\+O\+D\+E\+\_\+\+A\+L\+R\+E\+A\+D\+Y\+\_\+\+A\+D\+D\+E\+D}}\item[{\em 
+\hypertarget{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada69beae07cb7520bde6d66c32ebde05c4}{}R\+P\+C\+\_\+\+C\+L\+I\+E\+N\+T\+\_\+\+N\+O\+D\+E\+\_\+\+A\+L\+R\+E\+A\+D\+Y\+\_\+\+A\+D\+D\+E\+D\label{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada69beae07cb7520bde6d66c32ebde05c4}
+}]\index{R\+P\+C\+\_\+\+C\+L\+I\+E\+N\+T\+\_\+\+N\+O\+D\+E\+\_\+\+N\+O\+T\+\_\+\+A\+D\+D\+E\+D@{R\+P\+C\+\_\+\+C\+L\+I\+E\+N\+T\+\_\+\+N\+O\+D\+E\+\_\+\+N\+O\+T\+\_\+\+A\+D\+D\+E\+D}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!R\+P\+C\+\_\+\+C\+L\+I\+E\+N\+T\+\_\+\+N\+O\+D\+E\+\_\+\+N\+O\+T\+\_\+\+A\+D\+D\+E\+D@{R\+P\+C\+\_\+\+C\+L\+I\+E\+N\+T\+\_\+\+N\+O\+D\+E\+\_\+\+N\+O\+T\+\_\+\+A\+D\+D\+E\+D}}\item[{\em 
+\hypertarget{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadadd603a70e2d6eb11ef5b3aad2f83fd70}{}R\+P\+C\+\_\+\+C\+L\+I\+E\+N\+T\+\_\+\+N\+O\+D\+E\+\_\+\+N\+O\+T\+\_\+\+A\+D\+D\+E\+D\label{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadadd603a70e2d6eb11ef5b3aad2f83fd70}
+}]\index{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+E\+R\+R\+O\+R@{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+E\+R\+R\+O\+R}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+E\+R\+R\+O\+R@{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+E\+R\+R\+O\+R}}\item[{\em 
+\hypertarget{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadaba6f8682002fa223d3a405b743b5a540}{}R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+E\+R\+R\+O\+R\label{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadaba6f8682002fa223d3a405b743b5a540}
+}]\index{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+I\+N\+S\+U\+F\+F\+I\+C\+I\+E\+N\+T\+\_\+\+F\+U\+N\+D\+S@{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+I\+N\+S\+U\+F\+F\+I\+C\+I\+E\+N\+T\+\_\+\+F\+U\+N\+D\+S}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+I\+N\+S\+U\+F\+F\+I\+C\+I\+E\+N\+T\+\_\+\+F\+U\+N\+D\+S@{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+I\+N\+S\+U\+F\+F\+I\+C\+I\+E\+N\+T\+\_\+\+F\+U\+N\+D\+S}}\item[{\em 
+\hypertarget{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada5e46fc2ff7c51b8423b6eaf5b33ebfb9}{}R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+I\+N\+S\+U\+F\+F\+I\+C\+I\+E\+N\+T\+\_\+\+F\+U\+N\+D\+S\label{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada5e46fc2ff7c51b8423b6eaf5b33ebfb9}
+}]\index{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+C\+C\+O\+U\+N\+T\+\_\+\+N\+A\+M\+E@{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+C\+C\+O\+U\+N\+T\+\_\+\+N\+A\+M\+E}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+C\+C\+O\+U\+N\+T\+\_\+\+N\+A\+M\+E@{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+C\+C\+O\+U\+N\+T\+\_\+\+N\+A\+M\+E}}\item[{\em 
+\hypertarget{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada05642c62794bf107e9be801e76a4c89e}{}R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+I\+N\+V\+A\+L\+I\+D\+\_\+\+A\+C\+C\+O\+U\+N\+T\+\_\+\+N\+A\+M\+E\label{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada05642c62794bf107e9be801e76a4c89e}
+}]\index{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+K\+E\+Y\+P\+O\+O\+L\+\_\+\+R\+A\+N\+\_\+\+O\+U\+T@{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+K\+E\+Y\+P\+O\+O\+L\+\_\+\+R\+A\+N\+\_\+\+O\+U\+T}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+K\+E\+Y\+P\+O\+O\+L\+\_\+\+R\+A\+N\+\_\+\+O\+U\+T@{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+K\+E\+Y\+P\+O\+O\+L\+\_\+\+R\+A\+N\+\_\+\+O\+U\+T}}\item[{\em 
+\hypertarget{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadadacb2152d14607886f90ed134c94e21d}{}R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+K\+E\+Y\+P\+O\+O\+L\+\_\+\+R\+A\+N\+\_\+\+O\+U\+T\label{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadadacb2152d14607886f90ed134c94e21d}
+}]\index{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+U\+N\+L\+O\+C\+K\+\_\+\+N\+E\+E\+D\+E\+D@{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+U\+N\+L\+O\+C\+K\+\_\+\+N\+E\+E\+D\+E\+D}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+U\+N\+L\+O\+C\+K\+\_\+\+N\+E\+E\+D\+E\+D@{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+U\+N\+L\+O\+C\+K\+\_\+\+N\+E\+E\+D\+E\+D}}\item[{\em 
+\hypertarget{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada0c1fbdf17d83da9f5124f2dbf0ba4765}{}R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+U\+N\+L\+O\+C\+K\+\_\+\+N\+E\+E\+D\+E\+D\label{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada0c1fbdf17d83da9f5124f2dbf0ba4765}
+}]\index{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+P\+A\+S\+S\+P\+H\+R\+A\+S\+E\+\_\+\+I\+N\+C\+O\+R\+R\+E\+C\+T@{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+P\+A\+S\+S\+P\+H\+R\+A\+S\+E\+\_\+\+I\+N\+C\+O\+R\+R\+E\+C\+T}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+P\+A\+S\+S\+P\+H\+R\+A\+S\+E\+\_\+\+I\+N\+C\+O\+R\+R\+E\+C\+T@{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+P\+A\+S\+S\+P\+H\+R\+A\+S\+E\+\_\+\+I\+N\+C\+O\+R\+R\+E\+C\+T}}\item[{\em 
+\hypertarget{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadae7f578c2ec4458c79250e204505dedcc}{}R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+P\+A\+S\+S\+P\+H\+R\+A\+S\+E\+\_\+\+I\+N\+C\+O\+R\+R\+E\+C\+T\label{rpcprotocol_8h_af867221d51315471f28ed8cdac85deadae7f578c2ec4458c79250e204505dedcc}
+}]\index{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+W\+R\+O\+N\+G\+\_\+\+E\+N\+C\+\_\+\+S\+T\+A\+T\+E@{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+W\+R\+O\+N\+G\+\_\+\+E\+N\+C\+\_\+\+S\+T\+A\+T\+E}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+W\+R\+O\+N\+G\+\_\+\+E\+N\+C\+\_\+\+S\+T\+A\+T\+E@{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+W\+R\+O\+N\+G\+\_\+\+E\+N\+C\+\_\+\+S\+T\+A\+T\+E}}\item[{\em 
+\hypertarget{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada6aa5da515d4b7230dfeb65017b9fd38d}{}R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+W\+R\+O\+N\+G\+\_\+\+E\+N\+C\+\_\+\+S\+T\+A\+T\+E\label{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada6aa5da515d4b7230dfeb65017b9fd38d}
+}]\index{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+E\+N\+C\+R\+Y\+P\+T\+I\+O\+N\+\_\+\+F\+A\+I\+L\+E\+D@{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+E\+N\+C\+R\+Y\+P\+T\+I\+O\+N\+\_\+\+F\+A\+I\+L\+E\+D}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+E\+N\+C\+R\+Y\+P\+T\+I\+O\+N\+\_\+\+F\+A\+I\+L\+E\+D@{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+E\+N\+C\+R\+Y\+P\+T\+I\+O\+N\+\_\+\+F\+A\+I\+L\+E\+D}}\item[{\em 
+\hypertarget{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada796c728d5ec3fc308609494e1d608940}{}R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+E\+N\+C\+R\+Y\+P\+T\+I\+O\+N\+\_\+\+F\+A\+I\+L\+E\+D\label{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada796c728d5ec3fc308609494e1d608940}
+}]\index{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+A\+L\+R\+E\+A\+D\+Y\+\_\+\+U\+N\+L\+O\+C\+K\+E\+D@{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+A\+L\+R\+E\+A\+D\+Y\+\_\+\+U\+N\+L\+O\+C\+K\+E\+D}!rpcprotocol.\+h@{rpcprotocol.\+h}}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+A\+L\+R\+E\+A\+D\+Y\+\_\+\+U\+N\+L\+O\+C\+K\+E\+D@{R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+A\+L\+R\+E\+A\+D\+Y\+\_\+\+U\+N\+L\+O\+C\+K\+E\+D}}\item[{\em 
+\hypertarget{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada13d89bf3248220d312af052959f71b0b}{}R\+P\+C\+\_\+\+W\+A\+L\+L\+E\+T\+\_\+\+A\+L\+R\+E\+A\+D\+Y\+\_\+\+U\+N\+L\+O\+C\+K\+E\+D\label{rpcprotocol_8h_af867221d51315471f28ed8cdac85deada13d89bf3248220d312af052959f71b0b}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 37 of file rpcprotocol.\+h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{rpcprotocol_8h_a6ce552952d1a270cd92e12e53a53df90}{}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!H\+T\+T\+P\+Post@{H\+T\+T\+P\+Post}}
+\index{H\+T\+T\+P\+Post@{H\+T\+T\+P\+Post}!rpcprotocol.\+h@{rpcprotocol.\+h}}
+\subsubsection[{H\+T\+T\+P\+Post}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string H\+T\+T\+P\+Post (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{str\+Msg, }
+\item[{const std\+::map$<$ std\+::string, std\+::string $>$ \&}]{map\+Request\+Headers}
+\end{DoxyParamCaption}
+)}\label{rpcprotocol_8h_a6ce552952d1a270cd92e12e53a53df90}
+\hypertarget{rpcprotocol_8h_aa3a6ad4a7d1b01eb440e43214280c2d6}{}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!H\+T\+T\+P\+Reply@{H\+T\+T\+P\+Reply}}
+\index{H\+T\+T\+P\+Reply@{H\+T\+T\+P\+Reply}!rpcprotocol.\+h@{rpcprotocol.\+h}}
+\subsubsection[{H\+T\+T\+P\+Reply}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string H\+T\+T\+P\+Reply (
+\begin{DoxyParamCaption}
+\item[{int}]{n\+Status, }
+\item[{const std\+::string \&}]{str\+Msg, }
+\item[{bool}]{keepalive}
+\end{DoxyParamCaption}
+)}\label{rpcprotocol_8h_aa3a6ad4a7d1b01eb440e43214280c2d6}
+\hypertarget{rpcprotocol_8h_a2f8638568f8f83e5a0a79a109540a18c}{}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!J\+S\+O\+N\+R\+P\+C\+Error@{J\+S\+O\+N\+R\+P\+C\+Error}}
+\index{J\+S\+O\+N\+R\+P\+C\+Error@{J\+S\+O\+N\+R\+P\+C\+Error}!rpcprotocol.\+h@{rpcprotocol.\+h}}
+\subsubsection[{J\+S\+O\+N\+R\+P\+C\+Error}]{\setlength{\rightskip}{0pt plus 5cm}{\bf json\+\_\+spirit\+::\+Object} J\+S\+O\+N\+R\+P\+C\+Error (
+\begin{DoxyParamCaption}
+\item[{int}]{code, }
+\item[{const std\+::string \&}]{message}
+\end{DoxyParamCaption}
+)}\label{rpcprotocol_8h_a2f8638568f8f83e5a0a79a109540a18c}
+\hypertarget{rpcprotocol_8h_a0684e3796b75355730f1657a05ea6bcc}{}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!J\+S\+O\+N\+R\+P\+C\+Reply@{J\+S\+O\+N\+R\+P\+C\+Reply}}
+\index{J\+S\+O\+N\+R\+P\+C\+Reply@{J\+S\+O\+N\+R\+P\+C\+Reply}!rpcprotocol.\+h@{rpcprotocol.\+h}}
+\subsubsection[{J\+S\+O\+N\+R\+P\+C\+Reply}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string J\+S\+O\+N\+R\+P\+C\+Reply (
+\begin{DoxyParamCaption}
+\item[{const {\bf json\+\_\+spirit\+::\+Value} \&}]{result, }
+\item[{const {\bf json\+\_\+spirit\+::\+Value} \&}]{error, }
+\item[{const {\bf json\+\_\+spirit\+::\+Value} \&}]{id}
+\end{DoxyParamCaption}
+)}\label{rpcprotocol_8h_a0684e3796b75355730f1657a05ea6bcc}
+
+
+Definition at line 254 of file rpcprotocol.\+cpp.
+
+\hypertarget{rpcprotocol_8h_aebdc56873bd962e1d9b310c34e7dde0a}{}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!J\+S\+O\+N\+R\+P\+C\+Reply\+Obj@{J\+S\+O\+N\+R\+P\+C\+Reply\+Obj}}
+\index{J\+S\+O\+N\+R\+P\+C\+Reply\+Obj@{J\+S\+O\+N\+R\+P\+C\+Reply\+Obj}!rpcprotocol.\+h@{rpcprotocol.\+h}}
+\subsubsection[{J\+S\+O\+N\+R\+P\+C\+Reply\+Obj}]{\setlength{\rightskip}{0pt plus 5cm}{\bf json\+\_\+spirit\+::\+Object} J\+S\+O\+N\+R\+P\+C\+Reply\+Obj (
+\begin{DoxyParamCaption}
+\item[{const {\bf json\+\_\+spirit\+::\+Value} \&}]{result, }
+\item[{const {\bf json\+\_\+spirit\+::\+Value} \&}]{error, }
+\item[{const {\bf json\+\_\+spirit\+::\+Value} \&}]{id}
+\end{DoxyParamCaption}
+)}\label{rpcprotocol_8h_aebdc56873bd962e1d9b310c34e7dde0a}
+
+
+Definition at line 242 of file rpcprotocol.\+cpp.
+
+\hypertarget{rpcprotocol_8h_af563d02a95e56442fbe9ed93605d2405}{}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!J\+S\+O\+N\+R\+P\+C\+Request@{J\+S\+O\+N\+R\+P\+C\+Request}}
+\index{J\+S\+O\+N\+R\+P\+C\+Request@{J\+S\+O\+N\+R\+P\+C\+Request}!rpcprotocol.\+h@{rpcprotocol.\+h}}
+\subsubsection[{J\+S\+O\+N\+R\+P\+C\+Request}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string J\+S\+O\+N\+R\+P\+C\+Request (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{str\+Method, }
+\item[{const {\bf json\+\_\+spirit\+::\+Array} \&}]{params, }
+\item[{const {\bf json\+\_\+spirit\+::\+Value} \&}]{id}
+\end{DoxyParamCaption}
+)}\label{rpcprotocol_8h_af563d02a95e56442fbe9ed93605d2405}
+\hypertarget{rpcprotocol_8h_a440857adcf1e52899fdf8843e3e943af}{}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!Read\+H\+T\+T\+P\+Headers@{Read\+H\+T\+T\+P\+Headers}}
+\index{Read\+H\+T\+T\+P\+Headers@{Read\+H\+T\+T\+P\+Headers}!rpcprotocol.\+h@{rpcprotocol.\+h}}
+\subsubsection[{Read\+H\+T\+T\+P\+Headers}]{\setlength{\rightskip}{0pt plus 5cm}int Read\+H\+T\+T\+P\+Headers (
+\begin{DoxyParamCaption}
+\item[{std\+::basic\+\_\+istream$<$ char $>$ \&}]{stream, }
+\item[{std\+::map$<$ std\+::string, std\+::string $>$ \&}]{map\+Headers\+Ret}
+\end{DoxyParamCaption}
+)}\label{rpcprotocol_8h_a440857adcf1e52899fdf8843e3e943af}
+\hypertarget{rpcprotocol_8h_ae3fa5c9e35e8a2824f721e136e9c7cf9}{}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!Read\+H\+T\+T\+P\+Message@{Read\+H\+T\+T\+P\+Message}}
+\index{Read\+H\+T\+T\+P\+Message@{Read\+H\+T\+T\+P\+Message}!rpcprotocol.\+h@{rpcprotocol.\+h}}
+\subsubsection[{Read\+H\+T\+T\+P\+Message}]{\setlength{\rightskip}{0pt plus 5cm}int Read\+H\+T\+T\+P\+Message (
+\begin{DoxyParamCaption}
+\item[{std\+::basic\+\_\+istream$<$ char $>$ \&}]{stream, }
+\item[{std\+::map$<$ std\+::string, std\+::string $>$ \&}]{map\+Headers\+Ret, }
+\item[{std\+::string \&}]{str\+Message\+Ret, }
+\item[{int}]{n\+Proto, }
+\item[{size\+\_\+t}]{max\+\_\+size}
+\end{DoxyParamCaption}
+)}\label{rpcprotocol_8h_ae3fa5c9e35e8a2824f721e136e9c7cf9}
+\hypertarget{rpcprotocol_8h_afbaac856b5edb9692407fc3f2254a5c0}{}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!Read\+H\+T\+T\+P\+Request\+Line@{Read\+H\+T\+T\+P\+Request\+Line}}
+\index{Read\+H\+T\+T\+P\+Request\+Line@{Read\+H\+T\+T\+P\+Request\+Line}!rpcprotocol.\+h@{rpcprotocol.\+h}}
+\subsubsection[{Read\+H\+T\+T\+P\+Request\+Line}]{\setlength{\rightskip}{0pt plus 5cm}bool Read\+H\+T\+T\+P\+Request\+Line (
+\begin{DoxyParamCaption}
+\item[{std\+::basic\+\_\+istream$<$ char $>$ \&}]{stream, }
+\item[{int \&}]{proto, }
+\item[{std\+::string \&}]{http\+\_\+method, }
+\item[{std\+::string \&}]{http\+\_\+uri}
+\end{DoxyParamCaption}
+)}\label{rpcprotocol_8h_afbaac856b5edb9692407fc3f2254a5c0}
+\hypertarget{rpcprotocol_8h_af615c564cc7794d255e5adfacade4066}{}\index{rpcprotocol.\+h@{rpcprotocol.\+h}!Read\+H\+T\+T\+P\+Status@{Read\+H\+T\+T\+P\+Status}}
+\index{Read\+H\+T\+T\+P\+Status@{Read\+H\+T\+T\+P\+Status}!rpcprotocol.\+h@{rpcprotocol.\+h}}
+\subsubsection[{Read\+H\+T\+T\+P\+Status}]{\setlength{\rightskip}{0pt plus 5cm}int Read\+H\+T\+T\+P\+Status (
+\begin{DoxyParamCaption}
+\item[{std\+::basic\+\_\+istream$<$ char $>$ \&}]{stream, }
+\item[{int \&}]{proto}
+\end{DoxyParamCaption}
+)}\label{rpcprotocol_8h_af615c564cc7794d255e5adfacade4066}
+
+
+Definition at line 140 of file rpcprotocol.\+cpp.
+

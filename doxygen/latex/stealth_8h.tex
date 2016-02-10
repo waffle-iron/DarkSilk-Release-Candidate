@@ -1,0 +1,234 @@
+\hypertarget{stealth_8h}{}\section{/home/dev/ds-\/160209/src/stealth.h File Reference}
+\label{stealth_8h}\index{/home/dev/ds-\/160209/src/stealth.\+h@{/home/dev/ds-\/160209/src/stealth.\+h}}
+{\ttfamily \#include \char`\"{}util.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}serialize.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$inttypes.\+h$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structec__secret}{ec\+\_\+secret}
+\item 
+struct \hyperlink{structstealth__prefix}{stealth\+\_\+prefix}
+\item 
+class \hyperlink{class_c_stealth_address}{C\+Stealth\+Address}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::vector$<$ \hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $>$ \hyperlink{stealth_8h_ad92186dd18ebcc998b0efbbafed7a398}{data\+\_\+chunk}
+\item 
+typedef struct \hyperlink{structec__secret}{ec\+\_\+secret} \hyperlink{stealth_8h_a5e8b43d14749012647bc4e75efd9ffd8}{ec\+\_\+secret}
+\item 
+typedef \hyperlink{stealth_8h_ad92186dd18ebcc998b0efbbafed7a398}{data\+\_\+chunk} \hyperlink{stealth_8h_ad3f41152eaa5a117a5e3f553c8aacec0}{ec\+\_\+point}
+\item 
+typedef \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} \hyperlink{stealth_8h_a08216bd133211b2b931197ca400e8105}{stealth\+\_\+bitfield}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T , typename Iterator $>$ }\\T \hyperlink{stealth_8h_aa6ec789679a1ef3588bb857d02de703f}{from\+\_\+big\+\_\+endian} (Iterator in)
+\item 
+{\footnotesize template$<$typename T , typename Iterator $>$ }\\T \hyperlink{stealth_8h_a5b5ce52d1fd5368d0aaa6d2be9c4d944}{from\+\_\+little\+\_\+endian} (Iterator in)
+\item 
+void \hyperlink{stealth_8h_aa4f182dc0efd181cef81ca75ae960533}{Append\+Checksum} (\hyperlink{stealth_8h_ad92186dd18ebcc998b0efbbafed7a398}{data\+\_\+chunk} \&data)
+\item 
+bool \hyperlink{stealth_8h_a5ff6f6775db5f747f5088c7ef8264b74}{Verify\+Checksum} (const \hyperlink{stealth_8h_ad92186dd18ebcc998b0efbbafed7a398}{data\+\_\+chunk} \&data)
+\item 
+int \hyperlink{stealth_8h_ab09bf0ded4faa17a866c79087b0b20a8}{Generate\+Random\+Secret} (\hyperlink{structec__secret}{ec\+\_\+secret} \&out)
+\item 
+int \hyperlink{stealth_8h_a002000940ba18203d651e6d83164c0e7}{Secret\+To\+Public\+Key} (const \hyperlink{structec__secret}{ec\+\_\+secret} \&secret, \hyperlink{stealth_8h_ad3f41152eaa5a117a5e3f553c8aacec0}{ec\+\_\+point} \&out)
+\item 
+int \hyperlink{stealth_8h_a855232bf5220ad0159c57e75887a60db}{Stealth\+Secret} (\hyperlink{structec__secret}{ec\+\_\+secret} \&secret, \hyperlink{stealth_8h_ad3f41152eaa5a117a5e3f553c8aacec0}{ec\+\_\+point} \&pubkey, const \hyperlink{stealth_8h_ad3f41152eaa5a117a5e3f553c8aacec0}{ec\+\_\+point} \&pk\+Spend, \hyperlink{structec__secret}{ec\+\_\+secret} \&shared\+S\+Out, \hyperlink{stealth_8h_ad3f41152eaa5a117a5e3f553c8aacec0}{ec\+\_\+point} \&pk\+Out)
+\item 
+int \hyperlink{stealth_8h_affc748a85c8f88db9b08acf27f371053}{Stealth\+Secret\+Spend} (\hyperlink{structec__secret}{ec\+\_\+secret} \&scan\+Secret, \hyperlink{stealth_8h_ad3f41152eaa5a117a5e3f553c8aacec0}{ec\+\_\+point} \&ephem\+Pubkey, \hyperlink{structec__secret}{ec\+\_\+secret} \&spend\+Secret, \hyperlink{structec__secret}{ec\+\_\+secret} \&secret\+Out)
+\item 
+int \hyperlink{stealth_8h_a2ac1f28c3a2a9e8e9fd67fb6bbbd5325}{Stealth\+Shared\+To\+Secret\+Spend} (\hyperlink{structec__secret}{ec\+\_\+secret} \&shared\+S, \hyperlink{structec__secret}{ec\+\_\+secret} \&spend\+Secret, \hyperlink{structec__secret}{ec\+\_\+secret} \&secret\+Out)
+\item 
+bool \hyperlink{stealth_8h_a26c89afcb720e8b1a9c9dadaee26757b}{Is\+Stealth\+Address} (const std\+::string \&encoded\+Address)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const size\+\_\+t \hyperlink{stealth_8h_a9ebf73ce7586af72448f2d5f3dd57c78}{ec\+\_\+secret\+\_\+size} = 32
+\item 
+const size\+\_\+t \hyperlink{stealth_8h_a84da682045a61e4ebcebe1f7459365a6}{ec\+\_\+compressed\+\_\+size} = 33
+\item 
+const size\+\_\+t \hyperlink{stealth_8h_a75fa1101803fff7d8b6422b9236edd3e}{ec\+\_\+uncompressed\+\_\+size} = 65
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{stealth_8h_ad92186dd18ebcc998b0efbbafed7a398}{}\index{stealth.\+h@{stealth.\+h}!data\+\_\+chunk@{data\+\_\+chunk}}
+\index{data\+\_\+chunk@{data\+\_\+chunk}!stealth.\+h@{stealth.\+h}}
+\subsubsection[{data\+\_\+chunk}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\+::vector$<${\bf uint8\+\_\+t}$>$ {\bf data\+\_\+chunk}}\label{stealth_8h_ad92186dd18ebcc998b0efbbafed7a398}
+
+
+Definition at line 17 of file stealth.\+h.
+
+\hypertarget{stealth_8h_ad3f41152eaa5a117a5e3f553c8aacec0}{}\index{stealth.\+h@{stealth.\+h}!ec\+\_\+point@{ec\+\_\+point}}
+\index{ec\+\_\+point@{ec\+\_\+point}!stealth.\+h@{stealth.\+h}}
+\subsubsection[{ec\+\_\+point}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf data\+\_\+chunk} {\bf ec\+\_\+point}}\label{stealth_8h_ad3f41152eaa5a117a5e3f553c8aacec0}
+
+
+Definition at line 24 of file stealth.\+h.
+
+\hypertarget{stealth_8h_a5e8b43d14749012647bc4e75efd9ffd8}{}\index{stealth.\+h@{stealth.\+h}!ec\+\_\+secret@{ec\+\_\+secret}}
+\index{ec\+\_\+secret@{ec\+\_\+secret}!stealth.\+h@{stealth.\+h}}
+\subsubsection[{ec\+\_\+secret}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf ec\+\_\+secret}  {\bf ec\+\_\+secret}}\label{stealth_8h_a5e8b43d14749012647bc4e75efd9ffd8}
+\hypertarget{stealth_8h_a08216bd133211b2b931197ca400e8105}{}\index{stealth.\+h@{stealth.\+h}!stealth\+\_\+bitfield@{stealth\+\_\+bitfield}}
+\index{stealth\+\_\+bitfield@{stealth\+\_\+bitfield}!stealth.\+h@{stealth.\+h}}
+\subsubsection[{stealth\+\_\+bitfield}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf uint32\+\_\+t} {\bf stealth\+\_\+bitfield}}\label{stealth_8h_a08216bd133211b2b931197ca400e8105}
+
+
+Definition at line 26 of file stealth.\+h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{stealth_8h_aa4f182dc0efd181cef81ca75ae960533}{}\index{stealth.\+h@{stealth.\+h}!Append\+Checksum@{Append\+Checksum}}
+\index{Append\+Checksum@{Append\+Checksum}!stealth.\+h@{stealth.\+h}}
+\subsubsection[{Append\+Checksum}]{\setlength{\rightskip}{0pt plus 5cm}void Append\+Checksum (
+\begin{DoxyParamCaption}
+\item[{{\bf data\+\_\+chunk} \&}]{data}
+\end{DoxyParamCaption}
+)}\label{stealth_8h_aa4f182dc0efd181cef81ca75ae960533}
+
+
+Definition at line 104 of file stealth.\+cpp.
+
+\hypertarget{stealth_8h_aa6ec789679a1ef3588bb857d02de703f}{}\index{stealth.\+h@{stealth.\+h}!from\+\_\+big\+\_\+endian@{from\+\_\+big\+\_\+endian}}
+\index{from\+\_\+big\+\_\+endian@{from\+\_\+big\+\_\+endian}!stealth.\+h@{stealth.\+h}}
+\subsubsection[{from\+\_\+big\+\_\+endian}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Iterator $>$ T from\+\_\+big\+\_\+endian (
+\begin{DoxyParamCaption}
+\item[{Iterator}]{in}
+\end{DoxyParamCaption}
+)}\label{stealth_8h_aa6ec789679a1ef3588bb857d02de703f}
+
+
+Definition at line 35 of file stealth.\+h.
+
+\hypertarget{stealth_8h_a5b5ce52d1fd5368d0aaa6d2be9c4d944}{}\index{stealth.\+h@{stealth.\+h}!from\+\_\+little\+\_\+endian@{from\+\_\+little\+\_\+endian}}
+\index{from\+\_\+little\+\_\+endian@{from\+\_\+little\+\_\+endian}!stealth.\+h@{stealth.\+h}}
+\subsubsection[{from\+\_\+little\+\_\+endian}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T , typename Iterator $>$ T from\+\_\+little\+\_\+endian (
+\begin{DoxyParamCaption}
+\item[{Iterator}]{in}
+\end{DoxyParamCaption}
+)}\label{stealth_8h_a5b5ce52d1fd5368d0aaa6d2be9c4d944}
+
+
+Definition at line 46 of file stealth.\+h.
+
+\hypertarget{stealth_8h_ab09bf0ded4faa17a866c79087b0b20a8}{}\index{stealth.\+h@{stealth.\+h}!Generate\+Random\+Secret@{Generate\+Random\+Secret}}
+\index{Generate\+Random\+Secret@{Generate\+Random\+Secret}!stealth.\+h@{stealth.\+h}}
+\subsubsection[{Generate\+Random\+Secret}]{\setlength{\rightskip}{0pt plus 5cm}int Generate\+Random\+Secret (
+\begin{DoxyParamCaption}
+\item[{{\bf ec\+\_\+secret} \&}]{out}
+\end{DoxyParamCaption}
+)}\label{stealth_8h_ab09bf0ded4faa17a866c79087b0b20a8}
+
+
+Definition at line 132 of file stealth.\+cpp.
+
+\hypertarget{stealth_8h_a26c89afcb720e8b1a9c9dadaee26757b}{}\index{stealth.\+h@{stealth.\+h}!Is\+Stealth\+Address@{Is\+Stealth\+Address}}
+\index{Is\+Stealth\+Address@{Is\+Stealth\+Address}!stealth.\+h@{stealth.\+h}}
+\subsubsection[{Is\+Stealth\+Address}]{\setlength{\rightskip}{0pt plus 5cm}bool Is\+Stealth\+Address (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{encoded\+Address}
+\end{DoxyParamCaption}
+)}\label{stealth_8h_a26c89afcb720e8b1a9c9dadaee26757b}
+
+
+Definition at line 649 of file stealth.\+cpp.
+
+\hypertarget{stealth_8h_a002000940ba18203d651e6d83164c0e7}{}\index{stealth.\+h@{stealth.\+h}!Secret\+To\+Public\+Key@{Secret\+To\+Public\+Key}}
+\index{Secret\+To\+Public\+Key@{Secret\+To\+Public\+Key}!stealth.\+h@{stealth.\+h}}
+\subsubsection[{Secret\+To\+Public\+Key}]{\setlength{\rightskip}{0pt plus 5cm}int Secret\+To\+Public\+Key (
+\begin{DoxyParamCaption}
+\item[{const {\bf ec\+\_\+secret} \&}]{secret, }
+\item[{{\bf ec\+\_\+point} \&}]{out}
+\end{DoxyParamCaption}
+)}\label{stealth_8h_a002000940ba18203d651e6d83164c0e7}
+
+
+Definition at line 162 of file stealth.\+cpp.
+
+\hypertarget{stealth_8h_a855232bf5220ad0159c57e75887a60db}{}\index{stealth.\+h@{stealth.\+h}!Stealth\+Secret@{Stealth\+Secret}}
+\index{Stealth\+Secret@{Stealth\+Secret}!stealth.\+h@{stealth.\+h}}
+\subsubsection[{Stealth\+Secret}]{\setlength{\rightskip}{0pt plus 5cm}int Stealth\+Secret (
+\begin{DoxyParamCaption}
+\item[{{\bf ec\+\_\+secret} \&}]{secret, }
+\item[{{\bf ec\+\_\+point} \&}]{pubkey, }
+\item[{const {\bf ec\+\_\+point} \&}]{pk\+Spend, }
+\item[{{\bf ec\+\_\+secret} \&}]{shared\+S\+Out, }
+\item[{{\bf ec\+\_\+point} \&}]{pk\+Out}
+\end{DoxyParamCaption}
+)}\label{stealth_8h_a855232bf5220ad0159c57e75887a60db}
+
+
+Definition at line 214 of file stealth.\+cpp.
+
+\hypertarget{stealth_8h_affc748a85c8f88db9b08acf27f371053}{}\index{stealth.\+h@{stealth.\+h}!Stealth\+Secret\+Spend@{Stealth\+Secret\+Spend}}
+\index{Stealth\+Secret\+Spend@{Stealth\+Secret\+Spend}!stealth.\+h@{stealth.\+h}}
+\subsubsection[{Stealth\+Secret\+Spend}]{\setlength{\rightskip}{0pt plus 5cm}int Stealth\+Secret\+Spend (
+\begin{DoxyParamCaption}
+\item[{{\bf ec\+\_\+secret} \&}]{scan\+Secret, }
+\item[{{\bf ec\+\_\+point} \&}]{ephem\+Pubkey, }
+\item[{{\bf ec\+\_\+secret} \&}]{spend\+Secret, }
+\item[{{\bf ec\+\_\+secret} \&}]{secret\+Out}
+\end{DoxyParamCaption}
+)}\label{stealth_8h_affc748a85c8f88db9b08acf27f371053}
+
+
+Definition at line 419 of file stealth.\+cpp.
+
+\hypertarget{stealth_8h_a2ac1f28c3a2a9e8e9fd67fb6bbbd5325}{}\index{stealth.\+h@{stealth.\+h}!Stealth\+Shared\+To\+Secret\+Spend@{Stealth\+Shared\+To\+Secret\+Spend}}
+\index{Stealth\+Shared\+To\+Secret\+Spend@{Stealth\+Shared\+To\+Secret\+Spend}!stealth.\+h@{stealth.\+h}}
+\subsubsection[{Stealth\+Shared\+To\+Secret\+Spend}]{\setlength{\rightskip}{0pt plus 5cm}int Stealth\+Shared\+To\+Secret\+Spend (
+\begin{DoxyParamCaption}
+\item[{{\bf ec\+\_\+secret} \&}]{shared\+S, }
+\item[{{\bf ec\+\_\+secret} \&}]{spend\+Secret, }
+\item[{{\bf ec\+\_\+secret} \&}]{secret\+Out}
+\end{DoxyParamCaption}
+)}\label{stealth_8h_a2ac1f28c3a2a9e8e9fd67fb6bbbd5325}
+
+
+Definition at line 567 of file stealth.\+cpp.
+
+\hypertarget{stealth_8h_a5ff6f6775db5f747f5088c7ef8264b74}{}\index{stealth.\+h@{stealth.\+h}!Verify\+Checksum@{Verify\+Checksum}}
+\index{Verify\+Checksum@{Verify\+Checksum}!stealth.\+h@{stealth.\+h}}
+\subsubsection[{Verify\+Checksum}]{\setlength{\rightskip}{0pt plus 5cm}bool Verify\+Checksum (
+\begin{DoxyParamCaption}
+\item[{const {\bf data\+\_\+chunk} \&}]{data}
+\end{DoxyParamCaption}
+)}\label{stealth_8h_a5ff6f6775db5f747f5088c7ef8264b74}
+
+
+Definition at line 121 of file stealth.\+cpp.
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{stealth_8h_a84da682045a61e4ebcebe1f7459365a6}{}\index{stealth.\+h@{stealth.\+h}!ec\+\_\+compressed\+\_\+size@{ec\+\_\+compressed\+\_\+size}}
+\index{ec\+\_\+compressed\+\_\+size@{ec\+\_\+compressed\+\_\+size}!stealth.\+h@{stealth.\+h}}
+\subsubsection[{ec\+\_\+compressed\+\_\+size}]{\setlength{\rightskip}{0pt plus 5cm}const size\+\_\+t ec\+\_\+compressed\+\_\+size = 33}\label{stealth_8h_a84da682045a61e4ebcebe1f7459365a6}
+
+
+Definition at line 20 of file stealth.\+h.
+
+\hypertarget{stealth_8h_a9ebf73ce7586af72448f2d5f3dd57c78}{}\index{stealth.\+h@{stealth.\+h}!ec\+\_\+secret\+\_\+size@{ec\+\_\+secret\+\_\+size}}
+\index{ec\+\_\+secret\+\_\+size@{ec\+\_\+secret\+\_\+size}!stealth.\+h@{stealth.\+h}}
+\subsubsection[{ec\+\_\+secret\+\_\+size}]{\setlength{\rightskip}{0pt plus 5cm}const size\+\_\+t ec\+\_\+secret\+\_\+size = 32}\label{stealth_8h_a9ebf73ce7586af72448f2d5f3dd57c78}
+
+
+Definition at line 19 of file stealth.\+h.
+
+\hypertarget{stealth_8h_a75fa1101803fff7d8b6422b9236edd3e}{}\index{stealth.\+h@{stealth.\+h}!ec\+\_\+uncompressed\+\_\+size@{ec\+\_\+uncompressed\+\_\+size}}
+\index{ec\+\_\+uncompressed\+\_\+size@{ec\+\_\+uncompressed\+\_\+size}!stealth.\+h@{stealth.\+h}}
+\subsubsection[{ec\+\_\+uncompressed\+\_\+size}]{\setlength{\rightskip}{0pt plus 5cm}const size\+\_\+t ec\+\_\+uncompressed\+\_\+size = 65}\label{stealth_8h_a75fa1101803fff7d8b6422b9236edd3e}
+
+
+Definition at line 21 of file stealth.\+h.
+

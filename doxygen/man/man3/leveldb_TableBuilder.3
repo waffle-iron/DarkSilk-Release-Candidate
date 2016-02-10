@@ -1,0 +1,102 @@
+.TH "leveldb::TableBuilder" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+leveldb::TableBuilder \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <table_builder\&.h>\fP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBRep\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTableBuilder\fP (const \fBOptions\fP &options, \fBWritableFile\fP *file)"
+.br
+.ti -1c
+.RI "\fB~TableBuilder\fP ()"
+.br
+.ti -1c
+.RI "\fBStatus\fP \fBChangeOptions\fP (const \fBOptions\fP &options)"
+.br
+.ti -1c
+.RI "void \fBAdd\fP (const \fBSlice\fP &key, const \fBSlice\fP &\fBvalue\fP)"
+.br
+.ti -1c
+.RI "void \fBFlush\fP ()"
+.br
+.ti -1c
+.RI "\fBStatus\fP \fBstatus\fP () const "
+.br
+.ti -1c
+.RI "\fBStatus\fP \fBFinish\fP ()"
+.br
+.ti -1c
+.RI "void \fBAbandon\fP ()"
+.br
+.ti -1c
+.RI "\fBuint64_t\fP \fBNumEntries\fP () const "
+.br
+.ti -1c
+.RI "\fBuint64_t\fP \fBFileSize\fP () const "
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 26 of file table_builder\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "leveldb::TableBuilder::TableBuilder (const \fBOptions\fP & options, \fBWritableFile\fP * file)"
+
+.PP
+Definition at line 63 of file table_builder\&.cc\&.
+.SS "leveldb::TableBuilder::~TableBuilder ()"
+
+.PP
+Definition at line 70 of file table_builder\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void leveldb::TableBuilder::Abandon ()"
+
+.PP
+Definition at line 256 of file table_builder\&.cc\&.
+.SS "void leveldb::TableBuilder::Add (const \fBSlice\fP & key, const \fBSlice\fP & value)"
+
+.PP
+Definition at line 92 of file table_builder\&.cc\&.
+.SS "\fBStatus\fP leveldb::TableBuilder::ChangeOptions (const \fBOptions\fP & options)"
+
+.PP
+Definition at line 76 of file table_builder\&.cc\&.
+.SS "\fBuint64_t\fP leveldb::TableBuilder::FileSize () const"
+
+.PP
+Definition at line 266 of file table_builder\&.cc\&.
+.SS "\fBStatus\fP leveldb::TableBuilder::Finish ()"
+
+.PP
+Definition at line 199 of file table_builder\&.cc\&.
+.SS "void leveldb::TableBuilder::Flush ()"
+
+.PP
+Definition at line 123 of file table_builder\&.cc\&.
+.SS "\fBuint64_t\fP leveldb::TableBuilder::NumEntries () const"
+
+.PP
+Definition at line 262 of file table_builder\&.cc\&.
+.SS "\fBStatus\fP leveldb::TableBuilder::status () const"
+
+.PP
+Definition at line 195 of file table_builder\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

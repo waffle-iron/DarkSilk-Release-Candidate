@@ -1,0 +1,102 @@
+\hypertarget{class_c_coins_view_mem_pool}{}\section{C\+Coins\+View\+Mem\+Pool Class Reference}
+\label{class_c_coins_view_mem_pool}\index{C\+Coins\+View\+Mem\+Pool@{C\+Coins\+View\+Mem\+Pool}}
+
+
+{\ttfamily \#include $<$coins.\+h$>$}
+
+Inheritance diagram for C\+Coins\+View\+Mem\+Pool\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_c_coins_view_mem_pool}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_coins_view_mem_pool_aab9a206c304acec322fddf646c7bafb9}{C\+Coins\+View\+Mem\+Pool} (\hyperlink{class_c_coins_view}{C\+Coins\+View} $\ast$base\+In, \hyperlink{class_c_tx_mem_pool}{C\+Tx\+Mem\+Pool} \&mempool\+In)
+\item 
+bool \hyperlink{class_c_coins_view_mem_pool_a01564f29ff2673ddd0d27414e576f1bc}{Get\+Coins} (const \hyperlink{classuint256}{uint256} \&txid, \hyperlink{class_c_coins}{C\+Coins} \&coins) const 
+\begin{DoxyCompactList}\small\item\em Retrieve the \hyperlink{class_c_coins}{C\+Coins} (unspent transaction outputs) for a given txid. \end{DoxyCompactList}\item 
+bool \hyperlink{class_c_coins_view_mem_pool_a965e6c8e378fe937620ba2c180d1ed74}{Have\+Coins} (const \hyperlink{classuint256}{uint256} \&txid) const 
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_tx_mem_pool}{C\+Tx\+Mem\+Pool} \& \hyperlink{class_c_coins_view_mem_pool_a7a3870fc65376cb311a0b3abb28fec10}{mempool}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{class_c_coins_view}{C\+Coins\+View} that brings transactions from a memorypool into view. It does not check for spendings by memory pool transactions. 
+
+Definition at line 496 of file coins.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_coins_view_mem_pool_aab9a206c304acec322fddf646c7bafb9}{}\index{C\+Coins\+View\+Mem\+Pool@{C\+Coins\+View\+Mem\+Pool}!C\+Coins\+View\+Mem\+Pool@{C\+Coins\+View\+Mem\+Pool}}
+\index{C\+Coins\+View\+Mem\+Pool@{C\+Coins\+View\+Mem\+Pool}!C\+Coins\+View\+Mem\+Pool@{C\+Coins\+View\+Mem\+Pool}}
+\subsubsection[{C\+Coins\+View\+Mem\+Pool}]{\setlength{\rightskip}{0pt plus 5cm}C\+Coins\+View\+Mem\+Pool\+::\+C\+Coins\+View\+Mem\+Pool (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Coins\+View} $\ast$}]{base\+In, }
+\item[{{\bf C\+Tx\+Mem\+Pool} \&}]{mempool\+In}
+\end{DoxyParamCaption}
+)}\label{class_c_coins_view_mem_pool_aab9a206c304acec322fddf646c7bafb9}
+
+
+Definition at line 355 of file coins.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_coins_view_mem_pool_a01564f29ff2673ddd0d27414e576f1bc}{}\index{C\+Coins\+View\+Mem\+Pool@{C\+Coins\+View\+Mem\+Pool}!Get\+Coins@{Get\+Coins}}
+\index{Get\+Coins@{Get\+Coins}!C\+Coins\+View\+Mem\+Pool@{C\+Coins\+View\+Mem\+Pool}}
+\subsubsection[{Get\+Coins}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Coins\+View\+Mem\+Pool\+::\+Get\+Coins (
+\begin{DoxyParamCaption}
+\item[{const {\bf uint256} \&}]{txid, }
+\item[{{\bf C\+Coins} \&}]{coins}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_c_coins_view_mem_pool_a01564f29ff2673ddd0d27414e576f1bc}
+
+
+Retrieve the \hyperlink{class_c_coins}{C\+Coins} (unspent transaction outputs) for a given txid. 
+
+
+
+Reimplemented from \hyperlink{class_c_coins_view_backed_a21b95a9910f94e9b7ebed62a6f329ea0}{C\+Coins\+View\+Backed}.
+
+
+
+Definition at line 357 of file coins.\+cpp.
+
+\hypertarget{class_c_coins_view_mem_pool_a965e6c8e378fe937620ba2c180d1ed74}{}\index{C\+Coins\+View\+Mem\+Pool@{C\+Coins\+View\+Mem\+Pool}!Have\+Coins@{Have\+Coins}}
+\index{Have\+Coins@{Have\+Coins}!C\+Coins\+View\+Mem\+Pool@{C\+Coins\+View\+Mem\+Pool}}
+\subsubsection[{Have\+Coins}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Coins\+View\+Mem\+Pool\+::\+Have\+Coins (
+\begin{DoxyParamCaption}
+\item[{const {\bf uint256} \&}]{txid}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_c_coins_view_mem_pool_a965e6c8e378fe937620ba2c180d1ed74}
+Just check whether we have data for a given txid. This may (but cannot always) return true for fully spent transactions 
+
+Reimplemented from \hyperlink{class_c_coins_view_backed_a6a769cf9cc55128dea8e1a2798056e71}{C\+Coins\+View\+Backed}.
+
+
+
+Definition at line 369 of file coins.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_c_coins_view_mem_pool_a7a3870fc65376cb311a0b3abb28fec10}{}\index{C\+Coins\+View\+Mem\+Pool@{C\+Coins\+View\+Mem\+Pool}!mempool@{mempool}}
+\index{mempool@{mempool}!C\+Coins\+View\+Mem\+Pool@{C\+Coins\+View\+Mem\+Pool}}
+\subsubsection[{mempool}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Tx\+Mem\+Pool}\& C\+Coins\+View\+Mem\+Pool\+::mempool\hspace{0.3cm}{\ttfamily [protected]}}\label{class_c_coins_view_mem_pool_a7a3870fc65376cb311a0b3abb28fec10}
+
+
+Definition at line 499 of file coins.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/\hyperlink{coins_8h}{coins.\+h}\item 
+/home/dev/ds-\/160209/src/\hyperlink{coins_8cpp}{coins.\+cpp}\end{DoxyCompactItemize}

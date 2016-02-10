@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_locked_page_manager_base" kind="class" language="C++" prot="public">
+    <compoundname>LockedPageManagerBase</compoundname>
+    <includes refid="allocators_8h" local="no">allocators.h</includes>
+    <templateparamlist>
+      <param>
+        <type>class</type>
+        <declname>Locker</declname>
+        <defname>Locker</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_locked_page_manager_base_1a6ce9183524cc3b6f13a14d06aba0a1af" prot="private" static="no">
+        <type>std::map&lt; size_t, int &gt;</type>
+        <definition>typedef std::map&lt;size_t,int&gt; LockedPageManagerBase&lt; Locker &gt;::Histogram</definition>
+        <argsstring></argsstring>
+        <name>Histogram</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/allocators.h" line="116" column="1" bodyfile="/home/dev/ds-160209/src/allocators.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_locked_page_manager_base_1ae0994649da9e34eea0fc730906d344ee" prot="private" static="no" mutable="no">
+        <type>Locker</type>
+        <definition>Locker LockedPageManagerBase&lt; Locker &gt;::locker</definition>
+        <argsstring></argsstring>
+        <name>locker</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/allocators.h" line="112" column="1" bodyfile="/home/dev/ds-160209/src/allocators.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_locked_page_manager_base_1aad524407f30c493f2053147a5b00befe" prot="private" static="no" mutable="no">
+        <type>boost::mutex</type>
+        <definition>boost::mutex LockedPageManagerBase&lt; Locker &gt;::mutex</definition>
+        <argsstring></argsstring>
+        <name>mutex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/allocators.h" line="113" column="1" bodyfile="/home/dev/ds-160209/src/allocators.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_locked_page_manager_base_1af485e095ca992fa134d5a441accfbf21" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t LockedPageManagerBase&lt; Locker &gt;::page_size</definition>
+        <argsstring></argsstring>
+        <name>page_size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/allocators.h" line="114" column="1" bodyfile="/home/dev/ds-160209/src/allocators.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_locked_page_manager_base_1a66c97623d29545b8c8b49161079d9c4f" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t LockedPageManagerBase&lt; Locker &gt;::page_mask</definition>
+        <argsstring></argsstring>
+        <name>page_mask</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/allocators.h" line="114" column="1" bodyfile="/home/dev/ds-160209/src/allocators.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_locked_page_manager_base_1aeefe329fc52ffa918d3a2447a3afe44f" prot="private" static="no" mutable="no">
+        <type>Histogram</type>
+        <definition>Histogram LockedPageManagerBase&lt; Locker &gt;::histogram</definition>
+        <argsstring></argsstring>
+        <name>histogram</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/allocators.h" line="117" column="1" bodyfile="/home/dev/ds-160209/src/allocators.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_locked_page_manager_base_1ad1974eafb41a3cae3358e34b7896419a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>LockedPageManagerBase&lt; Locker &gt;::LockedPageManagerBase</definition>
+        <argsstring>(size_t page_size)</argsstring>
+        <name>LockedPageManagerBase</name>
+        <param>
+          <type>size_t</type>
+          <declname>page_size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/allocators.h" line="50" column="1" bodyfile="/home/dev/ds-160209/src/allocators.h" bodystart="50" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="class_locked_page_manager_base_1ae24ac08899505b892d451404133fa494" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void LockedPageManagerBase&lt; Locker &gt;::LockRange</definition>
+        <argsstring>(void *p, size_t size)</argsstring>
+        <name>LockRange</name>
+        <param>
+          <type>void *</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/allocators.h" line="59" column="1" bodyfile="/home/dev/ds-160209/src/allocators.h" bodystart="59" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="class_locked_page_manager_base_1a34bcf7b9120295ed178fe9545ed229af" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void LockedPageManagerBase&lt; Locker &gt;::UnlockRange</definition>
+        <argsstring>(void *p, size_t size)</argsstring>
+        <name>UnlockRange</name>
+        <param>
+          <type>void *</type>
+          <declname>p</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/allocators.h" line="82" column="1" bodyfile="/home/dev/ds-160209/src/allocators.h" bodystart="82" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="class_locked_page_manager_base_1a8074f7d1b43cc8dd34b3ba9cdb2eca50" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int LockedPageManagerBase&lt; Locker &gt;::GetLockedPageCount</definition>
+        <argsstring>()</argsstring>
+        <name>GetLockedPageCount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/allocators.h" line="105" column="1" bodyfile="/home/dev/ds-160209/src/allocators.h" bodystart="105" bodyend="109"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Thread-safe class to keep track of locked (ie, non-swappable) memory pages.</para><para>Memory locks do not stack, that is, pages which have been locked several times by calls to mlock() will be unlocked by a single call to munlock(). This can result in keying material ending up in swap when those functions are used naively. This class simulates stacking memory locks by keeping a counter per page.</para><para><simplesect kind="note"><para>By using a map from each page base address to lock count, this class is optimized for small objects that span up to a few pages, mostly smaller than a page. To support large allocations, something like an interval tree would be the preferred data structure. </para></simplesect>
+</para>    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/allocators.h" line="48" column="1" bodyfile="/home/dev/ds-160209/src/allocators.h" bodystart="47" bodyend="118"/>
+    <listofallmembers>
+      <member refid="class_locked_page_manager_base_1a8074f7d1b43cc8dd34b3ba9cdb2eca50" prot="public" virt="non-virtual"><scope>LockedPageManagerBase</scope><name>GetLockedPageCount</name></member>
+      <member refid="class_locked_page_manager_base_1a6ce9183524cc3b6f13a14d06aba0a1af" prot="private" virt="non-virtual"><scope>LockedPageManagerBase</scope><name>Histogram</name></member>
+      <member refid="class_locked_page_manager_base_1aeefe329fc52ffa918d3a2447a3afe44f" prot="private" virt="non-virtual"><scope>LockedPageManagerBase</scope><name>histogram</name></member>
+      <member refid="class_locked_page_manager_base_1ad1974eafb41a3cae3358e34b7896419a" prot="public" virt="non-virtual"><scope>LockedPageManagerBase</scope><name>LockedPageManagerBase</name></member>
+      <member refid="class_locked_page_manager_base_1ae0994649da9e34eea0fc730906d344ee" prot="private" virt="non-virtual"><scope>LockedPageManagerBase</scope><name>locker</name></member>
+      <member refid="class_locked_page_manager_base_1ae24ac08899505b892d451404133fa494" prot="public" virt="non-virtual"><scope>LockedPageManagerBase</scope><name>LockRange</name></member>
+      <member refid="class_locked_page_manager_base_1aad524407f30c493f2053147a5b00befe" prot="private" virt="non-virtual"><scope>LockedPageManagerBase</scope><name>mutex</name></member>
+      <member refid="class_locked_page_manager_base_1a66c97623d29545b8c8b49161079d9c4f" prot="private" virt="non-virtual"><scope>LockedPageManagerBase</scope><name>page_mask</name></member>
+      <member refid="class_locked_page_manager_base_1af485e095ca992fa134d5a441accfbf21" prot="private" virt="non-virtual"><scope>LockedPageManagerBase</scope><name>page_size</name></member>
+      <member refid="class_locked_page_manager_base_1a34bcf7b9120295ed178fe9545ed229af" prot="public" virt="non-virtual"><scope>LockedPageManagerBase</scope><name>UnlockRange</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

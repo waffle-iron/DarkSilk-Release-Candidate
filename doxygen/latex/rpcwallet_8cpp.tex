@@ -1,0 +1,838 @@
+\hypertarget{rpcwallet_8cpp}{}\section{/home/dev/ds-\/160209/src/rpcwallet.cpp File Reference}
+\label{rpcwallet_8cpp}\index{/home/dev/ds-\/160209/src/rpcwallet.\+cpp@{/home/dev/ds-\/160209/src/rpcwallet.\+cpp}}
+{\ttfamily \#include \char`\"{}base58.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}rpcserver.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}init.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}net.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}netbase.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}timedata.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}util.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}wallet.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}walletdb.\+h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structtallyitem}{tallyitem}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{rpcwallet_8cpp_aba644e892d0fe242879f44311747ec76}{Tx\+To\+J\+S\+O\+N} (const \hyperlink{class_c_transaction}{C\+Transaction} \&tx, const \hyperlink{classuint256}{uint256} hash\+Block, \hyperlink{namespacejson__spirit_aa1e2c4032be0d25e7b42eb17115dabb2}{json\+\_\+spirit\+::\+Object} \&entry)
+\item 
+std\+::string \hyperlink{rpcwallet_8cpp_abcfbb0ad9335791f2832c01209b8f12d}{Help\+Requiring\+Passphrase} ()
+\item 
+void \hyperlink{rpcwallet_8cpp_a8f837f6d506b9719cef93188db00fd3c}{Ensure\+Wallet\+Is\+Unlocked} ()
+\item 
+void \hyperlink{rpcwallet_8cpp_a28e51f3edfce43e075603e9e315f40c4}{Wallet\+Tx\+To\+J\+S\+O\+N} (const \hyperlink{class_c_wallet_tx}{C\+Wallet\+Tx} \&wtx, \hyperlink{namespacejson__spirit_aa1e2c4032be0d25e7b42eb17115dabb2}{Object} \&entry)
+\item 
+string \hyperlink{rpcwallet_8cpp_a3039648e370837eb1e7b4dc669f3ef0f}{Account\+From\+Value} (const \hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \&\hyperlink{cache_8cc_a0f61d63b009d0880a89c843bd50d8d76}{value})
+\item 
+\hyperlink{class_c_script}{C\+Script} \hyperlink{rpcwallet_8cpp_aca53a9372c92e81fc665cbdeb8fcdbc5}{\+\_\+createmultisig} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a10f145bcadd06025abb3b065e2fa7a84}{createmultisig} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a3f3bb4d519074126a20dd609a6886a72}{getnewpubkey} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_aead824d845d670fbd8f187ebd4f9a535}{getnewaddress} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{class_c_dark_silk_address}{C\+Dark\+Silk\+Address} \hyperlink{rpcwallet_8cpp_a19f70769435acea67b97050309dde6eb}{Get\+Account\+Address} (string str\+Account, bool b\+Force\+New=false)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a92145bcb3cfb45eb47dca18f1c94c434}{getaccountaddress} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a6bf0dc200554f841a4549a2e5087f699}{setaccount} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_ae8b2f525d311992d732a971b6333c8ea}{getaccount} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_af7f6462458033e5fcd024bc4fecf2da8}{getaddressesbyaccount} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+void \hyperlink{rpcwallet_8cpp_a33a914aa20f1ded289040800898a0e79}{Send\+Money} (const \hyperlink{keystore_8h_a8f46ecba0ddeb036be6b58d6ed1909cd}{C\+Tx\+Destination} \&address, \hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} n\+Value, \hyperlink{class_c_wallet_tx}{C\+Wallet\+Tx} \&wtx\+New, bool f\+Use\+I\+X=false, bool f\+Use\+S\+S=false)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a134064858f9cfa4775a6ae34cac2b133}{sendtoaddress} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a6be618acd7a7b1fb454dacbf24294317}{listaddressgroupings} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a315b42a2c859c4b50a54c1b05984928c}{signmessage} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_abbb6475509aa2e69844f0b3a8bcb422a}{getreceivedbyaddress} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+void \hyperlink{rpcwallet_8cpp_ab3b12a6a2aa18b0a0d9c12ed7c90ace9}{Get\+Account\+Addresses} (string str\+Account, set$<$ \hyperlink{keystore_8h_a8f46ecba0ddeb036be6b58d6ed1909cd}{C\+Tx\+Destination} $>$ \&set\+Address)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a07526be5270b0e55b4a0b79c01205f3d}{getreceivedbyaccount} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{rpcwallet_8cpp_a5dd4970f17f0d3a59169b7fe82390d75}{Get\+Account\+Balance} (\hyperlink{class_c_wallet_d_b}{C\+Wallet\+D\+B} \&walletdb, const string \&str\+Account, int n\+Min\+Depth, const \hyperlink{script_8h_aaa5e1639d76aef50f70532acc3302c4b}{isminefilter} \&filter)
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{rpcwallet_8cpp_a5412d8eb7f083abd527240461e8c2046}{Get\+Account\+Balance} (const string \&str\+Account, int n\+Min\+Depth, const \hyperlink{script_8h_aaa5e1639d76aef50f70532acc3302c4b}{isminefilter} \&filter)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a1fdcef480c78c033eb587bd442ec305f}{getbalance} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a7dcb5aa63b46944bc4874719c8e1db15}{movecmd} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a845eaefd9ec7752b1145c183205524d0}{sendfrom} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_adeb5f23f20fb4e589dab23cadf75c92d}{sendmany} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{class_c_script}{C\+Script} \hyperlink{rpcwallet_8cpp_aa9b91e060b2d18fffb3b57a679441e68}{\+\_\+createmultisig\+\_\+redeem\+Script} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a01e8a83cbd4209f10c71719383d7ca2d}{addmultisigaddress} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a6bdf3775b3749a2b216576b62af4f801}{addredeemscript} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a0cc958f67a8d6d0002cb4fee19eddb5c}{List\+Received} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+By\+Accounts)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a34b36ceb4a7e36e0dab24cf675c49da5}{listreceivedbyaddress} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_ab7e240a25a3d2d30ffb65bdfdfa082eb}{listreceivedbyaccount} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+void \hyperlink{rpcwallet_8cpp_a460d931e7f098979bea783409c971d53}{List\+Transactions} (const \hyperlink{class_c_wallet_tx}{C\+Wallet\+Tx} \&wtx, const string \&str\+Account, int n\+Min\+Depth, bool f\+Long, \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&ret, const \hyperlink{script_8h_aaa5e1639d76aef50f70532acc3302c4b}{isminefilter} \&filter)
+\item 
+void \hyperlink{rpcwallet_8cpp_af19d4e3078c194d869f5d60c4103bc08}{Acentry\+To\+J\+S\+O\+N} (const \hyperlink{class_c_accounting_entry}{C\+Accounting\+Entry} \&acentry, const string \&str\+Account, \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&ret)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a3247ccfc52f810122e28895d423e13fd}{listtransactions} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a0cd5dc1112a6c6d5a29a381cd7967fc5}{listaccounts} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a53cf4975a89f414ef3bd180f6b4773cd}{listsinceblock} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a845c15a1402787fcf2cc021111ea89f5}{gettransaction} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a7813bcc93d80c6c4ad0ae846f80cff3e}{backupwallet} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_afe8615fcf2c8e5319166c2fa8c638e08}{keypoolrefill} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a733f7c70e7c18783935e6de9643c0086}{walletpassphrase} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a84ad884957e24688433be32a9ca70933}{walletpassphrasechange} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a387555bfc9c8d51759001ec4e3be3e83}{walletlock} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a5fb49bac2748015a256c63e9f8ccc539}{encryptwallet} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_ac121309c99bd91b41eb61a3a8f1ab902}{reservebalance} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_ac95c27d6c75d33b4b348e5a1dc3e8373}{checkwallet} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a108a0edf8845aea1cb901523c05bb9ea}{repairwallet} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a8f5f5ea7520a9c1b4400a19df8572226}{resendtx} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a99fe5f539a487e6da84f74ac47ae5ba6}{makekeypair} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a68e2fb93e252e5b3a97dd629815a9159}{settxfee} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a59139de50de79af3d3960ddbb5ee5340}{getnewstealthaddress} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a122c17b0d58ddd7ba5a7471d0089c1b9}{liststealthaddresses} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a4bde25c1b4a97ec6068d2808594c9820}{importstealthaddress} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_ad901105908c7eea072067a49643a906e}{sendtostealthaddress} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a798669ad37caa71ddd18f73bc5aa5841}{scanforalltxns} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcwallet_8cpp_a0ccac8f2681d64203d20324d6c06f2e3}{scanforstealthtxns} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} \hyperlink{rpcwallet_8cpp_a8c30ff08026dc3d08b61141b5a6aa411}{n\+Wallet\+Unlock\+Time}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{rpcwallet_8cpp_aca53a9372c92e81fc665cbdeb8fcdbc5}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!\+\_\+createmultisig@{\+\_\+createmultisig}}
+\index{\+\_\+createmultisig@{\+\_\+createmultisig}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{\+\_\+createmultisig}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Script} \+\_\+createmultisig (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_aca53a9372c92e81fc665cbdeb8fcdbc5}
+
+
+Definition at line 89 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_aa9b91e060b2d18fffb3b57a679441e68}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!\+\_\+createmultisig\+\_\+redeem\+Script@{\+\_\+createmultisig\+\_\+redeem\+Script}}
+\index{\+\_\+createmultisig\+\_\+redeem\+Script@{\+\_\+createmultisig\+\_\+redeem\+Script}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{\+\_\+createmultisig\+\_\+redeem\+Script}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Script} \+\_\+createmultisig\+\_\+redeem\+Script (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_aa9b91e060b2d18fffb3b57a679441e68}
+\hypertarget{rpcwallet_8cpp_a3039648e370837eb1e7b4dc669f3ef0f}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!Account\+From\+Value@{Account\+From\+Value}}
+\index{Account\+From\+Value@{Account\+From\+Value}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{Account\+From\+Value}]{\setlength{\rightskip}{0pt plus 5cm}string Account\+From\+Value (
+\begin{DoxyParamCaption}
+\item[{const {\bf Value} \&}]{value}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a3039648e370837eb1e7b4dc669f3ef0f}
+
+
+Definition at line 78 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_af19d4e3078c194d869f5d60c4103bc08}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!Acentry\+To\+J\+S\+O\+N@{Acentry\+To\+J\+S\+O\+N}}
+\index{Acentry\+To\+J\+S\+O\+N@{Acentry\+To\+J\+S\+O\+N}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{Acentry\+To\+J\+S\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}void Acentry\+To\+J\+S\+O\+N (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Accounting\+Entry} \&}]{acentry, }
+\item[{const string \&}]{str\+Account, }
+\item[{{\bf Array} \&}]{ret}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_af19d4e3078c194d869f5d60c4103bc08}
+
+
+Definition at line 1501 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a01e8a83cbd4209f10c71719383d7ca2d}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!addmultisigaddress@{addmultisigaddress}}
+\index{addmultisigaddress@{addmultisigaddress}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{addmultisigaddress}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} addmultisigaddress (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a01e8a83cbd4209f10c71719383d7ca2d}
+
+
+Definition at line 1091 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a6bdf3775b3749a2b216576b62af4f801}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!addredeemscript@{addredeemscript}}
+\index{addredeemscript@{addredeemscript}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{addredeemscript}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} addredeemscript (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a6bdf3775b3749a2b216576b62af4f801}
+
+
+Definition at line 1182 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a7813bcc93d80c6c4ad0ae846f80cff3e}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!backupwallet@{backupwallet}}
+\index{backupwallet@{backupwallet}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{backupwallet}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} backupwallet (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a7813bcc93d80c6c4ad0ae846f80cff3e}
+
+
+Definition at line 1909 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_ac95c27d6c75d33b4b348e5a1dc3e8373}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!checkwallet@{checkwallet}}
+\index{checkwallet@{checkwallet}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{checkwallet}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} checkwallet (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_ac95c27d6c75d33b4b348e5a1dc3e8373}
+
+
+Definition at line 2203 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a10f145bcadd06025abb3b065e2fa7a84}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!createmultisig@{createmultisig}}
+\index{createmultisig@{createmultisig}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{createmultisig}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} createmultisig (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a10f145bcadd06025abb3b065e2fa7a84}
+
+
+Definition at line 144 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a5fb49bac2748015a256c63e9f8ccc539}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!encryptwallet@{encryptwallet}}
+\index{encryptwallet@{encryptwallet}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{encryptwallet}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} encryptwallet (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a5fb49bac2748015a256c63e9f8ccc539}
+
+
+Definition at line 2110 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a8f837f6d506b9719cef93188db00fd3c}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!Ensure\+Wallet\+Is\+Unlocked@{Ensure\+Wallet\+Is\+Unlocked}}
+\index{Ensure\+Wallet\+Is\+Unlocked@{Ensure\+Wallet\+Is\+Unlocked}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{Ensure\+Wallet\+Is\+Unlocked}]{\setlength{\rightskip}{0pt plus 5cm}void Ensure\+Wallet\+Is\+Unlocked (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a8f837f6d506b9719cef93188db00fd3c}
+
+
+Definition at line 44 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_ae8b2f525d311992d732a971b6333c8ea}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!getaccount@{getaccount}}
+\index{getaccount@{getaccount}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{getaccount}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} getaccount (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_ae8b2f525d311992d732a971b6333c8ea}
+
+
+Definition at line 362 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a19f70769435acea67b97050309dde6eb}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!Get\+Account\+Address@{Get\+Account\+Address}}
+\index{Get\+Account\+Address@{Get\+Account\+Address}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{Get\+Account\+Address}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Dark\+Silk\+Address} Get\+Account\+Address (
+\begin{DoxyParamCaption}
+\item[{string}]{str\+Account, }
+\item[{bool}]{b\+Force\+New = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a19f70769435acea67b97050309dde6eb}
+
+
+Definition at line 253 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a92145bcb3cfb45eb47dca18f1c94c434}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!getaccountaddress@{getaccountaddress}}
+\index{getaccountaddress@{getaccountaddress}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{getaccountaddress}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} getaccountaddress (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a92145bcb3cfb45eb47dca18f1c94c434}
+
+
+Definition at line 291 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_ab3b12a6a2aa18b0a0d9c12ed7c90ace9}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!Get\+Account\+Addresses@{Get\+Account\+Addresses}}
+\index{Get\+Account\+Addresses@{Get\+Account\+Addresses}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{Get\+Account\+Addresses}]{\setlength{\rightskip}{0pt plus 5cm}void Get\+Account\+Addresses (
+\begin{DoxyParamCaption}
+\item[{string}]{str\+Account, }
+\item[{set$<$ {\bf C\+Tx\+Destination} $>$ \&}]{set\+Address}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_ab3b12a6a2aa18b0a0d9c12ed7c90ace9}
+
+
+Definition at line 680 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a5dd4970f17f0d3a59169b7fe82390d75}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!Get\+Account\+Balance@{Get\+Account\+Balance}}
+\index{Get\+Account\+Balance@{Get\+Account\+Balance}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{Get\+Account\+Balance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} Get\+Account\+Balance (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Wallet\+D\+B} \&}]{walletdb, }
+\item[{const string \&}]{str\+Account, }
+\item[{int}]{n\+Min\+Depth, }
+\item[{const {\bf isminefilter} \&}]{filter}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a5dd4970f17f0d3a59169b7fe82390d75}
+
+
+Definition at line 745 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a5412d8eb7f083abd527240461e8c2046}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!Get\+Account\+Balance@{Get\+Account\+Balance}}
+\index{Get\+Account\+Balance@{Get\+Account\+Balance}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{Get\+Account\+Balance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} Get\+Account\+Balance (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{str\+Account, }
+\item[{int}]{n\+Min\+Depth, }
+\item[{const {\bf isminefilter} \&}]{filter}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a5412d8eb7f083abd527240461e8c2046}
+
+
+Definition at line 770 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_af7f6462458033e5fcd024bc4fecf2da8}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!getaddressesbyaccount@{getaddressesbyaccount}}
+\index{getaddressesbyaccount@{getaddressesbyaccount}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{getaddressesbyaccount}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} getaddressesbyaccount (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_af7f6462458033e5fcd024bc4fecf2da8}
+
+
+Definition at line 389 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a1fdcef480c78c033eb587bd442ec305f}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!getbalance@{getbalance}}
+\index{getbalance@{getbalance}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{getbalance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} getbalance (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a1fdcef480c78c033eb587bd442ec305f}
+
+
+Definition at line 776 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_aead824d845d670fbd8f187ebd4f9a535}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!getnewaddress@{getnewaddress}}
+\index{getnewaddress@{getnewaddress}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{getnewaddress}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} getnewaddress (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_aead824d845d670fbd8f187ebd4f9a535}
+
+
+Definition at line 214 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a3f3bb4d519074126a20dd609a6886a72}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!getnewpubkey@{getnewpubkey}}
+\index{getnewpubkey@{getnewpubkey}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{getnewpubkey}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} getnewpubkey (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a3f3bb4d519074126a20dd609a6886a72}
+
+
+Definition at line 187 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a59139de50de79af3d3960ddbb5ee5340}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!getnewstealthaddress@{getnewstealthaddress}}
+\index{getnewstealthaddress@{getnewstealthaddress}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{getnewstealthaddress}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} getnewstealthaddress (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a59139de50de79af3d3960ddbb5ee5340}
+
+
+Definition at line 2306 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a07526be5270b0e55b4a0b79c01205f3d}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!getreceivedbyaccount@{getreceivedbyaccount}}
+\index{getreceivedbyaccount@{getreceivedbyaccount}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{getreceivedbyaccount}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} getreceivedbyaccount (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a07526be5270b0e55b4a0b79c01205f3d}
+
+
+Definition at line 691 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_abbb6475509aa2e69844f0b3a8bcb422a}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!getreceivedbyaddress@{getreceivedbyaddress}}
+\index{getreceivedbyaddress@{getreceivedbyaddress}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{getreceivedbyaddress}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} getreceivedbyaddress (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_abbb6475509aa2e69844f0b3a8bcb422a}
+
+
+Definition at line 626 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a845c15a1402787fcf2cc021111ea89f5}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!gettransaction@{gettransaction}}
+\index{gettransaction@{gettransaction}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{gettransaction}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} gettransaction (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a845c15a1402787fcf2cc021111ea89f5}
+
+
+Definition at line 1808 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_abcfbb0ad9335791f2832c01209b8f12d}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!Help\+Requiring\+Passphrase@{Help\+Requiring\+Passphrase}}
+\index{Help\+Requiring\+Passphrase@{Help\+Requiring\+Passphrase}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{Help\+Requiring\+Passphrase}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Help\+Requiring\+Passphrase (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_abcfbb0ad9335791f2832c01209b8f12d}
+
+
+Definition at line 37 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a4bde25c1b4a97ec6068d2808594c9820}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!importstealthaddress@{importstealthaddress}}
+\index{importstealthaddress@{importstealthaddress}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{importstealthaddress}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} importstealthaddress (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a4bde25c1b4a97ec6068d2808594c9820}
+
+
+Definition at line 2383 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_afe8615fcf2c8e5319166c2fa8c638e08}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!keypoolrefill@{keypoolrefill}}
+\index{keypoolrefill@{keypoolrefill}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{keypoolrefill}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} keypoolrefill (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_afe8615fcf2c8e5319166c2fa8c638e08}
+
+
+Definition at line 1930 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a0cd5dc1112a6c6d5a29a381cd7967fc5}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!listaccounts@{listaccounts}}
+\index{listaccounts@{listaccounts}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{listaccounts}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} listaccounts (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a0cd5dc1112a6c6d5a29a381cd7967fc5}
+
+
+Definition at line 1632 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a6be618acd7a7b1fb454dacbf24294317}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!listaddressgroupings@{listaddressgroupings}}
+\index{listaddressgroupings@{listaddressgroupings}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{listaddressgroupings}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} listaddressgroupings (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a6be618acd7a7b1fb454dacbf24294317}
+
+
+Definition at line 528 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a0cc958f67a8d6d0002cb4fee19eddb5c}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!List\+Received@{List\+Received}}
+\index{List\+Received@{List\+Received}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{List\+Received}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} List\+Received (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+By\+Accounts}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a0cc958f67a8d6d0002cb4fee19eddb5c}
+
+
+Definition at line 1223 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_ab7e240a25a3d2d30ffb65bdfdfa082eb}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!listreceivedbyaccount@{listreceivedbyaccount}}
+\index{listreceivedbyaccount@{listreceivedbyaccount}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{listreceivedbyaccount}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} listreceivedbyaccount (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_ab7e240a25a3d2d30ffb65bdfdfa082eb}
+
+
+Definition at line 1384 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a34b36ceb4a7e36e0dab24cf675c49da5}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!listreceivedbyaddress@{listreceivedbyaddress}}
+\index{listreceivedbyaddress@{listreceivedbyaddress}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{listreceivedbyaddress}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} listreceivedbyaddress (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a34b36ceb4a7e36e0dab24cf675c49da5}
+
+
+Definition at line 1350 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a53cf4975a89f414ef3bd180f6b4773cd}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!listsinceblock@{listsinceblock}}
+\index{listsinceblock@{listsinceblock}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{listsinceblock}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} listsinceblock (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a53cf4975a89f414ef3bd180f6b4773cd}
+
+
+Definition at line 1709 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a122c17b0d58ddd7ba5a7471d0089c1b9}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!liststealthaddresses@{liststealthaddresses}}
+\index{liststealthaddresses@{liststealthaddresses}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{liststealthaddresses}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} liststealthaddresses (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a122c17b0d58ddd7ba5a7471d0089c1b9}
+
+
+Definition at line 2331 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a460d931e7f098979bea783409c971d53}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!List\+Transactions@{List\+Transactions}}
+\index{List\+Transactions@{List\+Transactions}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{List\+Transactions}]{\setlength{\rightskip}{0pt plus 5cm}void List\+Transactions (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Wallet\+Tx} \&}]{wtx, }
+\item[{const string \&}]{str\+Account, }
+\item[{int}]{n\+Min\+Depth, }
+\item[{bool}]{f\+Long, }
+\item[{{\bf Array} \&}]{ret, }
+\item[{const {\bf isminefilter} \&}]{filter}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a460d931e7f098979bea783409c971d53}
+
+
+Definition at line 1423 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a3247ccfc52f810122e28895d423e13fd}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!listtransactions@{listtransactions}}
+\index{listtransactions@{listtransactions}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{listtransactions}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} listtransactions (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a3247ccfc52f810122e28895d423e13fd}
+
+
+Definition at line 1518 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a99fe5f539a487e6da84f74ac47ae5ba6}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!makekeypair@{makekeypair}}
+\index{makekeypair@{makekeypair}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{makekeypair}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} makekeypair (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a99fe5f539a487e6da84f74ac47ae5ba6}
+
+
+Definition at line 2262 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a7dcb5aa63b46944bc4874719c8e1db15}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!movecmd@{movecmd}}
+\index{movecmd@{movecmd}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{movecmd}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} movecmd (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a7dcb5aa63b46944bc4874719c8e1db15}
+
+
+Definition at line 854 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a108a0edf8845aea1cb901523c05bb9ea}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!repairwallet@{repairwallet}}
+\index{repairwallet@{repairwallet}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{repairwallet}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} repairwallet (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a108a0edf8845aea1cb901523c05bb9ea}
+
+
+Definition at line 2226 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a8f5f5ea7520a9c1b4400a19df8572226}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!resendtx@{resendtx}}
+\index{resendtx@{resendtx}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{resendtx}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} resendtx (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a8f5f5ea7520a9c1b4400a19df8572226}
+
+
+Definition at line 2248 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_ac121309c99bd91b41eb61a3a8f1ab902}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!reservebalance@{reservebalance}}
+\index{reservebalance@{reservebalance}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{reservebalance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} reservebalance (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_ac121309c99bd91b41eb61a3a8f1ab902}
+
+
+Definition at line 2164 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a798669ad37caa71ddd18f73bc5aa5841}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!scanforalltxns@{scanforalltxns}}
+\index{scanforalltxns@{scanforalltxns}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{scanforalltxns}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} scanforalltxns (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a798669ad37caa71ddd18f73bc5aa5841}
+
+
+Definition at line 2538 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a0ccac8f2681d64203d20324d6c06f2e3}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!scanforstealthtxns@{scanforstealthtxns}}
+\index{scanforstealthtxns@{scanforstealthtxns}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{scanforstealthtxns}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} scanforstealthtxns (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a0ccac8f2681d64203d20324d6c06f2e3}
+
+
+Definition at line 2580 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a845eaefd9ec7752b1145c183205524d0}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!sendfrom@{sendfrom}}
+\index{sendfrom@{sendfrom}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{sendfrom}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} sendfrom (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a845eaefd9ec7752b1145c183205524d0}
+
+
+Definition at line 922 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_adeb5f23f20fb4e589dab23cadf75c92d}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!sendmany@{sendmany}}
+\index{sendmany@{sendmany}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{sendmany}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} sendmany (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_adeb5f23f20fb4e589dab23cadf75c92d}
+
+
+Definition at line 992 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a33a914aa20f1ded289040800898a0e79}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!Send\+Money@{Send\+Money}}
+\index{Send\+Money@{Send\+Money}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{Send\+Money}]{\setlength{\rightskip}{0pt plus 5cm}void Send\+Money (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Tx\+Destination} \&}]{address, }
+\item[{{\bf C\+Amount}}]{n\+Value, }
+\item[{{\bf C\+Wallet\+Tx} \&}]{wtx\+New, }
+\item[{bool}]{f\+Use\+I\+X = {\ttfamily false}, }
+\item[{bool}]{f\+Use\+S\+S = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a33a914aa20f1ded289040800898a0e79}
+
+
+Definition at line 421 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a134064858f9cfa4775a6ae34cac2b133}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!sendtoaddress@{sendtoaddress}}
+\index{sendtoaddress@{sendtoaddress}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{sendtoaddress}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} sendtoaddress (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a134064858f9cfa4775a6ae34cac2b133}
+
+
+Definition at line 456 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_ad901105908c7eea072067a49643a906e}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!sendtostealthaddress@{sendtostealthaddress}}
+\index{sendtostealthaddress@{sendtostealthaddress}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{sendtostealthaddress}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} sendtostealthaddress (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_ad901105908c7eea072067a49643a906e}
+
+
+Definition at line 2490 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a6bf0dc200554f841a4549a2e5087f699}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!setaccount@{setaccount}}
+\index{setaccount@{setaccount}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{setaccount}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} setaccount (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a6bf0dc200554f841a4549a2e5087f699}
+
+
+Definition at line 320 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a68e2fb93e252e5b3a97dd629815a9159}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!settxfee@{settxfee}}
+\index{settxfee@{settxfee}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{settxfee}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} settxfee (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a68e2fb93e252e5b3a97dd629815a9159}
+
+
+Definition at line 2284 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a315b42a2c859c4b50a54c1b05984928c}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!signmessage@{signmessage}}
+\index{signmessage@{signmessage}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{signmessage}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} signmessage (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a315b42a2c859c4b50a54c1b05984928c}
+
+
+Definition at line 575 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_aba644e892d0fe242879f44311747ec76}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!Tx\+To\+J\+S\+O\+N@{Tx\+To\+J\+S\+O\+N}}
+\index{Tx\+To\+J\+S\+O\+N@{Tx\+To\+J\+S\+O\+N}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{Tx\+To\+J\+S\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}void Tx\+To\+J\+S\+O\+N (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Transaction} \&}]{tx, }
+\item[{const {\bf uint256}}]{hash\+Block, }
+\item[{{\bf json\+\_\+spirit\+::\+Object} \&}]{entry}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_aba644e892d0fe242879f44311747ec76}
+
+
+Definition at line 53 of file rpcrawtransaction.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a387555bfc9c8d51759001ec4e3be3e83}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!walletlock@{walletlock}}
+\index{walletlock@{walletlock}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{walletlock}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} walletlock (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a387555bfc9c8d51759001ec4e3be3e83}
+
+
+Definition at line 2076 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a733f7c70e7c18783935e6de9643c0086}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!walletpassphrase@{walletpassphrase}}
+\index{walletpassphrase@{walletpassphrase}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{walletpassphrase}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} walletpassphrase (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a733f7c70e7c18783935e6de9643c0086}
+
+
+Definition at line 1969 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a84ad884957e24688433be32a9ca70933}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!walletpassphrasechange@{walletpassphrasechange}}
+\index{walletpassphrasechange@{walletpassphrasechange}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{walletpassphrasechange}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} walletpassphrasechange (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a84ad884957e24688433be32a9ca70933}
+
+
+Definition at line 2035 of file rpcwallet.\+cpp.
+
+\hypertarget{rpcwallet_8cpp_a28e51f3edfce43e075603e9e315f40c4}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!Wallet\+Tx\+To\+J\+S\+O\+N@{Wallet\+Tx\+To\+J\+S\+O\+N}}
+\index{Wallet\+Tx\+To\+J\+S\+O\+N@{Wallet\+Tx\+To\+J\+S\+O\+N}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{Wallet\+Tx\+To\+J\+S\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}void Wallet\+Tx\+To\+J\+S\+O\+N (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Wallet\+Tx} \&}]{wtx, }
+\item[{{\bf Object} \&}]{entry}
+\end{DoxyParamCaption}
+)}\label{rpcwallet_8cpp_a28e51f3edfce43e075603e9e315f40c4}
+
+
+Definition at line 52 of file rpcwallet.\+cpp.
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{rpcwallet_8cpp_a8c30ff08026dc3d08b61141b5a6aa411}{}\index{rpcwallet.\+cpp@{rpcwallet.\+cpp}!n\+Wallet\+Unlock\+Time@{n\+Wallet\+Unlock\+Time}}
+\index{n\+Wallet\+Unlock\+Time@{n\+Wallet\+Unlock\+Time}!rpcwallet.\+cpp@{rpcwallet.\+cpp}}
+\subsubsection[{n\+Wallet\+Unlock\+Time}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int64\+\_\+t} n\+Wallet\+Unlock\+Time}\label{rpcwallet_8cpp_a8c30ff08026dc3d08b61141b5a6aa411}
+
+
+Definition at line 20 of file rpcwallet.\+cpp.
+

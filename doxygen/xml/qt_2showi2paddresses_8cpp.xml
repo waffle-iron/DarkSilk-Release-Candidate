@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="qt_2showi2paddresses_8cpp" kind="file" language="C++">
+    <compoundname>showi2paddresses.cpp</compoundname>
+    <includes refid="qt_2showi2paddresses_8h" local="yes">showi2paddresses.h</includes>
+    <includes local="yes">ui_showi2paddresses.h</includes>
+    <incdepgraph>
+      <node id="17267">
+        <label>showi2paddresses.h</label>
+        <link refid="qt_2showi2paddresses_8h"/>
+        <childnode refid="17268" relation="include">
+        </childnode>
+      </node>
+      <node id="17266">
+        <label>/home/dev/ds-160209/src/qt/showi2paddresses.cpp</label>
+        <link refid="qt/showi2paddresses.cpp"/>
+        <childnode refid="17267" relation="include">
+        </childnode>
+        <childnode refid="17269" relation="include">
+        </childnode>
+      </node>
+      <node id="17268">
+        <label>QDialog</label>
+      </node>
+      <node id="17269">
+        <label>ui_showi2paddresses.h</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="qt_2showi2paddresses_8h" kindref="compound">showi2paddresses.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ui_showi2paddresses.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4" refid="class_show_i2_p_addresses_1a3e179105873e6a9a0d196baae99dff24" refkind="member"><highlight class="normal"><ref refid="class_show_i2_p_addresses_1a3e179105873e6a9a0d196baae99dff24" kindref="member">ShowI2PAddresses::ShowI2PAddresses</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString&amp;<sp/>caption,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString&amp;<sp/>pub,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString&amp;<sp/>priv,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString&amp;<sp/>b32,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString&amp;<sp/>configFileName,<sp/>QWidget<sp/>*parent)<sp/>:</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"><sp/><sp/><sp/><sp/>QDialog(parent),</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/>ui(new<sp/><ref refid="namespace_ui" kindref="compound">Ui</ref>::<ref refid="class_show_i2_p_addresses" kindref="compound">ShowI2PAddresses</ref>)</highlight></codeline>
+<codeline lineno="7"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/>ui-&gt;setupUi(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;setWindowTitle(caption);</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>ui-&gt;pubText-&gt;setPlainText(pub);</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>ui-&gt;privText-&gt;setText(</highlight><highlight class="stringliteral">&quot;&lt;b&gt;mydestination=&lt;/b&gt;&quot;</highlight><highlight class="normal"><sp/>+<sp/>priv);</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>ui-&gt;b32Line-&gt;setText(b32);</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>ui-&gt;label-&gt;setText(ui-&gt;label-&gt;text()<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal"><sp/>+<sp/>configFileName);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(ui-&gt;privButton,<sp/>SIGNAL(clicked()),</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ui-&gt;privText,<sp/>SLOT(selectAll()));</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(ui-&gt;privButton,<sp/>SIGNAL(clicked()),</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ui-&gt;privText,<sp/>SLOT(copy()));</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(ui-&gt;pubButton,<sp/>SIGNAL(clicked()),</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ui-&gt;pubText,<sp/>SLOT(selectAll()));</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(ui-&gt;pubButton,<sp/>SIGNAL(clicked()),</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ui-&gt;pubText,<sp/>SLOT(copy()));</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(ui-&gt;b32Button,<sp/>SIGNAL(clicked()),</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ui-&gt;b32Line,<sp/>SLOT(selectAll()));</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(ui-&gt;b32Button,<sp/>SIGNAL(clicked()),</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ui-&gt;b32Line,<sp/>SLOT(copy()));</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="class_show_i2_p_addresses_1aa656299035626d75777594accd83a05c" refkind="member"><highlight class="normal"><ref refid="class_show_i2_p_addresses_1aa656299035626d75777594accd83a05c" kindref="member">ShowI2PAddresses::~ShowI2PAddresses</ref>()</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>ui;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/qt/showi2paddresses.cpp"/>
+  </compounddef>
+</doxygen>

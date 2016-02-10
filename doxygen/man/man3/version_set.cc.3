@@ -1,0 +1,92 @@
+.TH "/home/dev/ds-160209/src/leveldb/db/version_set.cc" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/leveldb/db/version_set.cc \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'db/version_set\&.h'\fP
+.br
+\fC#include <algorithm>\fP
+.br
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include 'db/filename\&.h'\fP
+.br
+\fC#include 'db/log_reader\&.h'\fP
+.br
+\fC#include 'db/log_writer\&.h'\fP
+.br
+\fC#include 'db/memtable\&.h'\fP
+.br
+\fC#include 'db/table_cache\&.h'\fP
+.br
+\fC#include 'leveldb/env\&.h'\fP
+.br
+\fC#include 'leveldb/table_builder\&.h'\fP
+.br
+\fC#include 'table/merger\&.h'\fP
+.br
+\fC#include 'table/two_level_iterator\&.h'\fP
+.br
+\fC#include 'util/coding\&.h'\fP
+.br
+\fC#include 'util/logging\&.h'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBleveldb::Version::LevelFileNumIterator\fP"
+.br
+.ti -1c
+.RI "class \fBleveldb::VersionSet::Builder\fP"
+.br
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBleveldb\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBSaverState\fP "
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBleveldb::FindFile\fP (const InternalKeyComparator &icmp, const std::vector< FileMetaData * > &files, const Slice &key)"
+.br
+.ti -1c
+.RI "bool \fBleveldb::SomeFileOverlapsRange\fP (const InternalKeyComparator &icmp, bool disjoint_sorted_files, const std::vector< FileMetaData * > &files, const Slice *smallest_user_key, const Slice *largest_user_key)"
+.br
+.in -1c
+.SH "Variable Documentation"
+.PP 
+.SS "SaverState state"
+
+.PP
+Definition at line 253 of file version_set\&.cc\&.
+.SS "const Comparator* ucmp"
+
+.PP
+Definition at line 254 of file version_set\&.cc\&.
+.SS "Slice user_key"
+
+.PP
+Definition at line 255 of file version_set\&.cc\&.
+.SS "std::string* value"
+
+.PP
+Definition at line 256 of file version_set\&.cc\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

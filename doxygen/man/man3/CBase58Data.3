@@ -1,0 +1,150 @@
+.TH "CBase58Data" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CBase58Data \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <base58\&.h>\fP
+.PP
+Inherited by \fBCDarkSilkAddress\fP, \fBCDarkSilkExtKeyBase< K, Size, Type >\fP, and \fBCDarkSilkSecret\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBSetString\fP (const char *psz, unsigned int nVersionBytes=1)"
+.br
+.ti -1c
+.RI "bool \fBSetString\fP (const std::string &str)"
+.br
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.ti -1c
+.RI "int \fBCompareTo\fP (const \fBCBase58Data\fP &b58) const "
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBCBase58Data\fP &b58) const "
+.br
+.ti -1c
+.RI "bool \fBoperator<=\fP (const \fBCBase58Data\fP &b58) const "
+.br
+.ti -1c
+.RI "bool \fBoperator>=\fP (const \fBCBase58Data\fP &b58) const "
+.br
+.ti -1c
+.RI "bool \fBoperator<\fP (const \fBCBase58Data\fP &b58) const "
+.br
+.ti -1c
+.RI "bool \fBoperator>\fP (const \fBCBase58Data\fP &b58) const "
+.br
+.in -1c
+.SS "Protected Types"
+
+.in +1c
+.ti -1c
+.RI "typedef std::vector< unsigned char, \fBzero_after_free_allocator\fP< unsigned char > > \fBvector_uchar\fP"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCBase58Data\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetData\fP (const std::vector< unsigned char > &vchVersionIn, const void *pdata, size_t nSize)"
+.br
+.ti -1c
+.RI "void \fBSetData\fP (const std::vector< unsigned char > &vchVersionIn, const unsigned char *pbegin, const unsigned char *pend)"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::vector< unsigned char > \fBvchVersion\fP"
+.br
+.ti -1c
+.RI "\fBvector_uchar\fP \fBvchData\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class for all base58-encoded data 
+.PP
+Definition at line 70 of file base58\&.h\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "typedef std::vector<unsigned char, \fBzero_after_free_allocator\fP<unsigned char> > \fBCBase58Data::vector_uchar\fP\fC [protected]\fP"
+
+.PP
+Definition at line 77 of file base58\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CBase58Data::CBase58Data ()\fC [protected]\fP"
+
+.PP
+Definition at line 139 of file base58\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int CBase58Data::CompareTo (const \fBCBase58Data\fP & b58) const"
+
+.PP
+Definition at line 181 of file base58\&.cpp\&.
+.SS "bool CBase58Data::operator< (const \fBCBase58Data\fP & b58) const\fC [inline]\fP"
+
+.PP
+Definition at line 93 of file base58\&.h\&.
+.SS "bool CBase58Data::operator<= (const \fBCBase58Data\fP & b58) const\fC [inline]\fP"
+
+.PP
+Definition at line 91 of file base58\&.h\&.
+.SS "bool CBase58Data::operator== (const \fBCBase58Data\fP & b58) const\fC [inline]\fP"
+
+.PP
+Definition at line 90 of file base58\&.h\&.
+.SS "bool CBase58Data::operator> (const \fBCBase58Data\fP & b58) const\fC [inline]\fP"
+
+.PP
+Definition at line 94 of file base58\&.h\&.
+.SS "bool CBase58Data::operator>= (const \fBCBase58Data\fP & b58) const\fC [inline]\fP"
+
+.PP
+Definition at line 92 of file base58\&.h\&.
+.SS "void CBase58Data::SetData (const std::vector< unsigned char > & vchVersionIn, const void * pdata, size_t nSize)\fC [protected]\fP"
+
+.PP
+Definition at line 144 of file base58\&.cpp\&.
+.SS "void CBase58Data::SetData (const std::vector< unsigned char > & vchVersionIn, const unsigned char * pbegin, const unsigned char * pend)\fC [protected]\fP"
+
+.PP
+Definition at line 151 of file base58\&.cpp\&.
+.SS "bool CBase58Data::SetString (const char * psz, unsigned int nVersionBytes = \fC1\fP)"
+
+.PP
+Definition at line 155 of file base58\&.cpp\&.
+.SS "bool CBase58Data::SetString (const std::string & str)"
+
+.PP
+Definition at line 171 of file base58\&.cpp\&.
+.SS "std::string CBase58Data::ToString () const"
+
+.PP
+Definition at line 175 of file base58\&.cpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBvector_uchar\fP CBase58Data::vchData\fC [protected]\fP"
+
+.PP
+Definition at line 78 of file base58\&.h\&.
+.SS "std::vector<unsigned char> CBase58Data::vchVersion\fC [protected]\fP"
+
+.PP
+Definition at line 74 of file base58\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

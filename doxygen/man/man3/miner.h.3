@@ -1,0 +1,62 @@
+.TH "/home/dev/ds-160209/src/miner.h" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/miner.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'wallet\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCBlock\fP * \fBCreateNewBlock\fP (\fBCReserveKey\fP &reservekey, bool fProofOfStake=false, \fBCAmount\fP *pFees=0)"
+.br
+.ti -1c
+.RI "void \fBIncrementExtraNonce\fP (\fBCBlock\fP *pblock, \fBCBlockIndex\fP *pindexPrev, unsigned int &nExtraNonce)"
+.br
+.ti -1c
+.RI "void \fBFormatHashBuffers\fP (\fBCBlock\fP *pblock, char *pmidstate, char *pdata, char *phash1)"
+.br
+.ti -1c
+.RI "bool \fBCheckWork\fP (\fBCBlock\fP *pblock, \fBCWallet\fP &wallet, \fBCReserveKey\fP &reservekey)"
+.br
+.ti -1c
+.RI "bool \fBCheckStake\fP (\fBCBlock\fP *pblock, \fBCWallet\fP &wallet)"
+.br
+.ti -1c
+.RI "void \fBSHA256Transform\fP (void *pstate, void *pinput, const void *pinit)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "bool CheckStake (\fBCBlock\fP * pblock, \fBCWallet\fP & wallet)"
+Check mined proof-of-stake block 
+.PP
+Definition at line 487 of file miner\&.cpp\&.
+.SS "bool CheckWork (\fBCBlock\fP * pblock, \fBCWallet\fP & wallet, \fBCReserveKey\fP & reservekey)"
+Check mined proof-of-work block 
+.PP
+Definition at line 447 of file miner\&.cpp\&.
+.SS "\fBCBlock\fP* CreateNewBlock (\fBCReserveKey\fP & reservekey, bool fProofOfStake = \fCfalse\fP, \fBCAmount\fP * pFees = \fC0\fP)"
+
+.PP
+Definition at line 107 of file miner\&.cpp\&.
+.SS "void FormatHashBuffers (\fBCBlock\fP * pblock, char * pmidstate, char * pdata, char * phash1)"
+Do mining precalculation 
+.PP
+Definition at line 401 of file miner\&.cpp\&.
+.SS "void IncrementExtraNonce (\fBCBlock\fP * pblock, \fBCBlockIndex\fP * pindexPrev, unsigned int & nExtraNonce)"
+Modify the extranonce in a block 
+.PP
+Definition at line 383 of file miner\&.cpp\&.
+.SS "void SHA256Transform (void * pstate, void * pinput, const void * pinit)"
+Base \fBsha256\fP mining transform 
+.PP
+Definition at line 43 of file miner\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

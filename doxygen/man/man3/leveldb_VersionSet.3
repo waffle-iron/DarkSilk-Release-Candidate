@@ -1,0 +1,216 @@
+.TH "leveldb::VersionSet" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+leveldb::VersionSet \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <version_set\&.h>\fP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBBuilder\fP"
+.br
+.ti -1c
+.RI "struct \fBLevelSummaryStorage\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBVersionSet\fP (const std::string &dbname, const \fBOptions\fP *options, \fBTableCache\fP *table_cache, const \fBInternalKeyComparator\fP *)"
+.br
+.ti -1c
+.RI "\fB~VersionSet\fP ()"
+.br
+.ti -1c
+.RI "\fBStatus\fP \fBLogAndApply\fP (\fBVersionEdit\fP *edit, \fBport::Mutex\fP *\fBmu\fP) \fBEXCLUSIVE_LOCKS_REQUIRED\fP(\fBmu\fP)"
+.br
+.ti -1c
+.RI "\fBStatus\fP \fBRecover\fP ()"
+.br
+.ti -1c
+.RI "\fBVersion\fP * \fBcurrent\fP () const "
+.br
+.ti -1c
+.RI "\fBuint64_t\fP \fBManifestFileNumber\fP () const "
+.br
+.ti -1c
+.RI "\fBuint64_t\fP \fBNewFileNumber\fP ()"
+.br
+.ti -1c
+.RI "void \fBReuseFileNumber\fP (\fBuint64_t\fP file_number)"
+.br
+.ti -1c
+.RI "int \fBNumLevelFiles\fP (int level) const "
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBNumLevelBytes\fP (int level) const "
+.br
+.ti -1c
+.RI "\fBuint64_t\fP \fBLastSequence\fP () const "
+.br
+.ti -1c
+.RI "void \fBSetLastSequence\fP (\fBuint64_t\fP s)"
+.br
+.ti -1c
+.RI "void \fBMarkFileNumberUsed\fP (\fBuint64_t\fP number)"
+.br
+.ti -1c
+.RI "\fBuint64_t\fP \fBLogNumber\fP () const "
+.br
+.ti -1c
+.RI "\fBuint64_t\fP \fBPrevLogNumber\fP () const "
+.br
+.ti -1c
+.RI "\fBCompaction\fP * \fBPickCompaction\fP ()"
+.br
+.ti -1c
+.RI "\fBCompaction\fP * \fBCompactRange\fP (int level, const \fBInternalKey\fP *begin, const \fBInternalKey\fP *end)"
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBMaxNextLevelOverlappingBytes\fP ()"
+.br
+.ti -1c
+.RI "\fBIterator\fP * \fBMakeInputIterator\fP (\fBCompaction\fP *c)"
+.br
+.ti -1c
+.RI "bool \fBNeedsCompaction\fP () const "
+.br
+.ti -1c
+.RI "void \fBAddLiveFiles\fP (std::set< \fBuint64_t\fP > *live)"
+.br
+.ti -1c
+.RI "\fBuint64_t\fP \fBApproximateOffsetOf\fP (\fBVersion\fP *v, const \fBInternalKey\fP &key)"
+.br
+.ti -1c
+.RI "const char * \fBLevelSummary\fP (\fBLevelSummaryStorage\fP *scratch) const "
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBCompaction\fP"
+.br
+.ti -1c
+.RI "class \fBVersion\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 165 of file version_set\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "leveldb::VersionSet::VersionSet (const std::string & dbname, const \fBOptions\fP * options, \fBTableCache\fP * table_cache, const \fBInternalKeyComparator\fP * cmp)"
+
+.PP
+Definition at line 766 of file version_set\&.cc\&.
+.SS "leveldb::VersionSet::~VersionSet ()"
+
+.PP
+Definition at line 787 of file version_set\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void leveldb::VersionSet::AddLiveFiles (std::set< \fBuint64_t\fP > * live)"
+
+.PP
+Definition at line 1137 of file version_set\&.cc\&.
+.SS "\fBuint64_t\fP leveldb::VersionSet::ApproximateOffsetOf (\fBVersion\fP * v, const \fBInternalKey\fP & key)"
+
+.PP
+Definition at line 1105 of file version_set\&.cc\&.
+.SS "\fBCompaction\fP * leveldb::VersionSet::CompactRange (int level, const \fBInternalKey\fP * begin, const \fBInternalKey\fP * end)"
+
+.PP
+Definition at line 1364 of file version_set\&.cc\&.
+.SS "\fBVersion\fP* leveldb::VersionSet::current () const\fC [inline]\fP"
+
+.PP
+Definition at line 185 of file version_set\&.h\&.
+.SS "\fBuint64_t\fP leveldb::VersionSet::LastSequence () const\fC [inline]\fP"
+
+.PP
+Definition at line 209 of file version_set\&.h\&.
+.SS "const char * leveldb::VersionSet::LevelSummary (\fBLevelSummaryStorage\fP * scratch) const"
+
+.PP
+Definition at line 1090 of file version_set\&.cc\&.
+.SS "\fBStatus\fP leveldb::VersionSet::LogAndApply (\fBVersionEdit\fP * edit, \fBport::Mutex\fP * mu)"
+
+.PP
+Definition at line 811 of file version_set\&.cc\&.
+.SS "\fBuint64_t\fP leveldb::VersionSet::LogNumber () const\fC [inline]\fP"
+
+.PP
+Definition at line 221 of file version_set\&.h\&.
+.SS "\fBIterator\fP * leveldb::VersionSet::MakeInputIterator (\fBCompaction\fP * c)"
+
+.PP
+Definition at line 1210 of file version_set\&.cc\&.
+.SS "\fBuint64_t\fP leveldb::VersionSet::ManifestFileNumber () const\fC [inline]\fP"
+
+.PP
+Definition at line 188 of file version_set\&.h\&.
+.SS "void leveldb::VersionSet::MarkFileNumberUsed (\fBuint64_t\fP number)"
+
+.PP
+Definition at line 1011 of file version_set\&.cc\&.
+.SS "\fBint64_t\fP leveldb::VersionSet::MaxNextLevelOverlappingBytes ()"
+
+.PP
+Definition at line 1156 of file version_set\&.cc\&.
+.SS "bool leveldb::VersionSet::NeedsCompaction () const\fC [inline]\fP"
+
+.PP
+Definition at line 251 of file version_set\&.h\&.
+.SS "\fBuint64_t\fP leveldb::VersionSet::NewFileNumber ()\fC [inline]\fP"
+
+.PP
+Definition at line 191 of file version_set\&.h\&.
+.SS "\fBint64_t\fP leveldb::VersionSet::NumLevelBytes (int level) const"
+
+.PP
+Definition at line 1150 of file version_set\&.cc\&.
+.SS "int leveldb::VersionSet::NumLevelFiles (int level) const"
+
+.PP
+Definition at line 1084 of file version_set\&.cc\&.
+.SS "\fBCompaction\fP * leveldb::VersionSet::PickCompaction ()"
+
+.PP
+Definition at line 1243 of file version_set\&.cc\&.
+.SS "\fBuint64_t\fP leveldb::VersionSet::PrevLogNumber () const\fC [inline]\fP"
+
+.PP
+Definition at line 225 of file version_set\&.h\&.
+.SS "\fBStatus\fP leveldb::VersionSet::Recover ()"
+
+.PP
+Definition at line 896 of file version_set\&.cc\&.
+.SS "void leveldb::VersionSet::ReuseFileNumber (\fBuint64_t\fP file_number)\fC [inline]\fP"
+
+.PP
+Definition at line 196 of file version_set\&.h\&.
+.SS "void leveldb::VersionSet::SetLastSequence (\fBuint64_t\fP s)\fC [inline]\fP"
+
+.PP
+Definition at line 212 of file version_set\&.h\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBCompaction\fP\fC [friend]\fP"
+
+.PP
+Definition at line 272 of file version_set\&.h\&.
+.SS "friend class \fBVersion\fP\fC [friend]\fP"
+
+.PP
+Definition at line 275 of file version_set\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

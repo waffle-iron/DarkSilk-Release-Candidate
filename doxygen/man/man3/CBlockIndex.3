@@ -1,0 +1,392 @@
+.TH "CBlockIndex" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CBlockIndex \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <chain\&.h>\fP
+.PP
+Inherited by \fBCDiskBlockIndex\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBBLOCK_PROOF_OF_STAKE\fP = (1 << 0), \fBBLOCK_STAKE_ENTROPY\fP = (1 << 1), \fBBLOCK_STAKE_MODIFIER\fP = (1 << 2) }"
+.br
+.ti -1c
+.RI "enum { \fBnMedianTimeSpan\fP =11 }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCBlockIndex\fP ()"
+.br
+.ti -1c
+.RI "\fBCBlockIndex\fP (unsigned int nFileIn, unsigned int nBlockPosIn, \fBCBlock\fP &\fBblock\fP)"
+.br
+.ti -1c
+.RI "\fBCBlock\fP \fBGetBlockHeader\fP () const "
+.br
+.ti -1c
+.RI "\fBuint256\fP \fBGetBlockHash\fP () const "
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBGetBlockTime\fP () const "
+.br
+.ti -1c
+.RI "\fBuint256\fP \fBGetBlockTrust\fP () const "
+.br
+.ti -1c
+.RI "bool \fBIsInMainChain\fP () const "
+.br
+.ti -1c
+.RI "bool \fBCheckIndex\fP () const "
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBGetPastTimeLimit\fP () const "
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBGetMedianTimePast\fP () const "
+.br
+.ti -1c
+.RI "bool \fBIsProofOfWork\fP () const "
+.br
+.ti -1c
+.RI "bool \fBIsProofOfStake\fP () const "
+.br
+.ti -1c
+.RI "void \fBSetProofOfStake\fP ()"
+.br
+.ti -1c
+.RI "unsigned int \fBGetStakeEntropyBit\fP () const "
+.br
+.ti -1c
+.RI "bool \fBSetStakeEntropyBit\fP (unsigned int nEntropyBit)"
+.br
+.ti -1c
+.RI "bool \fBGeneratedStakeModifier\fP () const "
+.br
+.ti -1c
+.RI "void \fBSetStakeModifier\fP (\fBuint64_t\fP nModifier, bool fGeneratedStakeModifier)"
+.br
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "const \fBuint256\fP * \fBphashBlock\fP"
+.br
+.ti -1c
+.RI "\fBCBlockIndex\fP * \fBpprev\fP"
+.br
+.ti -1c
+.RI "\fBCBlockIndex\fP * \fBpnext\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBnFile\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBnBlockPos\fP"
+.br
+.ti -1c
+.RI "\fBuint256\fP \fBnChainTrust\fP"
+.br
+.ti -1c
+.RI "int \fBnHeight\fP"
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBnMint\fP"
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBnMoneySupply\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBnFlags\fP"
+.br
+.ti -1c
+.RI "\fBuint64_t\fP \fBnStakeModifier\fP"
+.br
+.ti -1c
+.RI "\fBuint256\fP \fBbnStakeModifierV2\fP"
+.br
+.ti -1c
+.RI "\fBCOutPoint\fP \fBprevoutStake\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBnStakeTime\fP"
+.br
+.ti -1c
+.RI "\fBuint256\fP \fBhashProof\fP"
+.br
+.ti -1c
+.RI "int \fBnVersion\fP"
+.br
+.ti -1c
+.RI "\fBuint256\fP \fBhashMerkleRoot\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBnTime\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBnBits\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBnNonce\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBnDataPos\fP"
+.br
+.RI "\fIByte offset within blk?????\&.dat where this block's data is stored\&. \fP"
+.ti -1c
+.RI "unsigned int \fBnUndoPos\fP"
+.br
+.RI "\fIByte offset within rev?????\&.dat where this block's undo data is stored\&. \fP"
+.ti -1c
+.RI "\fBuint256\fP \fBnChainWork\fP"
+.br
+.RI "\fI(memory only) Total amount of work (expected number of hashes) in the chain up to and including this block \fP"
+.ti -1c
+.RI "\fBuint32_t\fP \fBnSequenceId\fP"
+.br
+.RI "\fI(memory only) Sequential id assigned to distinguish order in which blocks are received\&. \fP"
+.ti -1c
+.RI "unsigned int \fBnStatus\fP"
+.br
+.RI "\fIVerification status of this block\&. See enum BlockStatus\&. \fP"
+.ti -1c
+.RI "unsigned int \fBnTx\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+The block chain is a tree shaped structure starting with the genesis block at the root, with each block potentially having multiple candidates to be the next block\&. pprev and pnext link a path through the main/longest chain\&. A blockindex may have multiple pprev pointing back to it, but pnext will only point forward to the longest branch, or will be null if the block is not part of the longest chain\&. 
+.PP
+Definition at line 107 of file chain\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIBLOCK_PROOF_OF_STAKE \fP\fP
+.TP
+\fB\fIBLOCK_STAKE_ENTROPY \fP\fP
+.TP
+\fB\fIBLOCK_STAKE_MODIFIER \fP\fP
+.PP
+Definition at line 122 of file chain\&.h\&.
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fInMedianTimeSpan \fP\fP
+.PP
+Definition at line 260 of file chain\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CBlockIndex::CBlockIndex ()\fC [inline]\fP"
+
+.PP
+Definition at line 161 of file chain\&.h\&.
+.SS "CBlockIndex::CBlockIndex (unsigned int nFileIn, unsigned int nBlockPosIn, \fBCBlock\fP & block)\fC [inline]\fP"
+
+.PP
+Definition at line 186 of file chain\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool CBlockIndex::CheckIndex () const\fC [inline]\fP"
+
+.PP
+Definition at line 250 of file chain\&.h\&.
+.SS "bool CBlockIndex::GeneratedStakeModifier () const\fC [inline]\fP"
+
+.PP
+Definition at line 304 of file chain\&.h\&.
+.SS "\fBuint256\fP CBlockIndex::GetBlockHash () const\fC [inline]\fP"
+
+.PP
+Definition at line 233 of file chain\&.h\&.
+.SS "\fBCBlock\fP CBlockIndex::GetBlockHeader () const\fC [inline]\fP"
+
+.PP
+Definition at line 220 of file chain\&.h\&.
+.SS "\fBint64_t\fP CBlockIndex::GetBlockTime () const\fC [inline]\fP"
+
+.PP
+Definition at line 238 of file chain\&.h\&.
+.SS "\fBuint256\fP CBlockIndex::GetBlockTrust () const"
+
+.PP
+Definition at line 615 of file chain\&.cpp\&.
+.SS "\fBint64_t\fP CBlockIndex::GetMedianTimePast () const\fC [inline]\fP"
+
+.PP
+Definition at line 262 of file chain\&.h\&.
+.SS "\fBint64_t\fP CBlockIndex::GetPastTimeLimit () const\fC [inline]\fP"
+
+.PP
+Definition at line 255 of file chain\&.h\&.
+.SS "unsigned int CBlockIndex::GetStakeEntropyBit () const\fC [inline]\fP"
+
+.PP
+Definition at line 291 of file chain\&.h\&.
+.SS "bool CBlockIndex::IsInMainChain () const\fC [inline]\fP"
+
+.PP
+Definition at line 245 of file chain\&.h\&.
+.SS "bool CBlockIndex::IsProofOfStake () const\fC [inline]\fP"
+
+.PP
+Definition at line 281 of file chain\&.h\&.
+.SS "bool CBlockIndex::IsProofOfWork () const\fC [inline]\fP"
+
+.PP
+Definition at line 276 of file chain\&.h\&.
+.SS "void CBlockIndex::SetProofOfStake ()\fC [inline]\fP"
+
+.PP
+Definition at line 286 of file chain\&.h\&.
+.SS "bool CBlockIndex::SetStakeEntropyBit (unsigned int nEntropyBit)\fC [inline]\fP"
+
+.PP
+Definition at line 296 of file chain\&.h\&.
+.SS "void CBlockIndex::SetStakeModifier (\fBuint64_t\fP nModifier, bool fGeneratedStakeModifier)\fC [inline]\fP"
+
+.PP
+Definition at line 309 of file chain\&.h\&.
+.SS "std::string CBlockIndex::ToString () const\fC [inline]\fP"
+
+.PP
+Definition at line 316 of file chain\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBuint256\fP CBlockIndex::bnStakeModifierV2"
+
+.PP
+Definition at line 130 of file chain\&.h\&.
+.SS "\fBuint256\fP CBlockIndex::hashMerkleRoot"
+
+.PP
+Definition at line 140 of file chain\&.h\&.
+.SS "\fBuint256\fP CBlockIndex::hashProof"
+
+.PP
+Definition at line 136 of file chain\&.h\&.
+.SS "unsigned int CBlockIndex::nBits"
+
+.PP
+Definition at line 142 of file chain\&.h\&.
+.SS "unsigned int CBlockIndex::nBlockPos"
+
+.PP
+Definition at line 114 of file chain\&.h\&.
+.SS "\fBuint256\fP CBlockIndex::nChainTrust"
+
+.PP
+Definition at line 115 of file chain\&.h\&.
+.SS "\fBuint256\fP CBlockIndex::nChainWork"
+
+.PP
+(memory only) Total amount of work (expected number of hashes) in the chain up to and including this block 
+.PP
+Definition at line 150 of file chain\&.h\&.
+.SS "unsigned int CBlockIndex::nDataPos"
+
+.PP
+Byte offset within blk?????\&.dat where this block's data is stored\&. 
+.PP
+Definition at line 146 of file chain\&.h\&.
+.SS "unsigned int CBlockIndex::nFile"
+
+.PP
+Definition at line 113 of file chain\&.h\&.
+.SS "unsigned int CBlockIndex::nFlags"
+
+.PP
+Definition at line 121 of file chain\&.h\&.
+.SS "int CBlockIndex::nHeight"
+
+.PP
+Definition at line 116 of file chain\&.h\&.
+.SS "\fBint64_t\fP CBlockIndex::nMint"
+
+.PP
+Definition at line 118 of file chain\&.h\&.
+.SS "\fBint64_t\fP CBlockIndex::nMoneySupply"
+
+.PP
+Definition at line 119 of file chain\&.h\&.
+.SS "unsigned int CBlockIndex::nNonce"
+
+.PP
+Definition at line 143 of file chain\&.h\&.
+.SS "\fBuint32_t\fP CBlockIndex::nSequenceId"
+
+.PP
+(memory only) Sequential id assigned to distinguish order in which blocks are received\&. 
+.PP
+Definition at line 152 of file chain\&.h\&.
+.SS "\fBuint64_t\fP CBlockIndex::nStakeModifier"
+
+.PP
+Definition at line 129 of file chain\&.h\&.
+.SS "unsigned int CBlockIndex::nStakeTime"
+
+.PP
+Definition at line 134 of file chain\&.h\&.
+.SS "unsigned int CBlockIndex::nStatus"
+
+.PP
+Verification status of this block\&. See enum BlockStatus\&. 
+.PP
+Definition at line 155 of file chain\&.h\&.
+.SS "unsigned int CBlockIndex::nTime"
+
+.PP
+Definition at line 141 of file chain\&.h\&.
+.SS "unsigned int CBlockIndex::nTx"
+Number of transactions in this block\&. Note: in a potential headers-first mode, this number cannot be relied upon 
+.PP
+Definition at line 159 of file chain\&.h\&.
+.SS "unsigned int CBlockIndex::nUndoPos"
+
+.PP
+Byte offset within rev?????\&.dat where this block's undo data is stored\&. 
+.PP
+Definition at line 148 of file chain\&.h\&.
+.SS "int CBlockIndex::nVersion"
+
+.PP
+Definition at line 139 of file chain\&.h\&.
+.SS "const \fBuint256\fP* CBlockIndex::phashBlock"
+
+.PP
+Definition at line 110 of file chain\&.h\&.
+.SS "\fBCBlockIndex\fP* CBlockIndex::pnext"
+
+.PP
+Definition at line 112 of file chain\&.h\&.
+.SS "\fBCBlockIndex\fP* CBlockIndex::pprev"
+
+.PP
+Definition at line 111 of file chain\&.h\&.
+.SS "\fBCOutPoint\fP CBlockIndex::prevoutStake"
+
+.PP
+Definition at line 133 of file chain\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

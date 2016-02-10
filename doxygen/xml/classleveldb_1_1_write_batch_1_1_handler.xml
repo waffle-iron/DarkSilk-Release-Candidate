@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="classleveldb_1_1_write_batch_1_1_handler" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>leveldb::WriteBatch::Handler</compoundname>
+    <derivedcompoundref refid="class_c_batch_scanner" prot="public" virt="non-virtual">CBatchScanner</derivedcompoundref>
+    <derivedcompoundref refid="class_sec_msg_batch_scanner" prot="public" virt="non-virtual">SecMsgBatchScanner</derivedcompoundref>
+    <includes refid="write__batch_8h" local="no">write_batch.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classleveldb_1_1_write_batch_1_1_handler_1a85fd79c7fb47ef448719379499c5d090" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>leveldb::WriteBatch::Handler::~Handler</definition>
+        <argsstring>()</argsstring>
+        <name>~Handler</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/write_batch.h" line="48" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/write_batch.cc" bodystart="35" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_write_batch_1_1_handler_1ad41d4985db289b94e29921167d206d4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void leveldb::WriteBatch::Handler::Put</definition>
+        <argsstring>(const Slice &amp;key, const Slice &amp;value)=0</argsstring>
+        <name>Put</name>
+        <reimplementedby refid="class_c_batch_scanner_1ae993b8af4417559238d9d985975f9f09">Put</reimplementedby>
+        <reimplementedby refid="class_sec_msg_batch_scanner_1ad43a3dd99b44578696b0582c4e08f158">Put</reimplementedby>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/write_batch.h" line="49" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_write_batch_1_1_handler_1aeab6526b87bf5b50fb64216b69b34b17" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void leveldb::WriteBatch::Handler::Delete</definition>
+        <argsstring>(const Slice &amp;key)=0</argsstring>
+        <name>Delete</name>
+        <reimplementedby refid="class_c_batch_scanner_1a5569f5c1c04cbdaa1e226895d9cdb51a">Delete</reimplementedby>
+        <reimplementedby refid="class_sec_msg_batch_scanner_1a353fc7e6d79d762092646f00c7dc0f60">Delete</reimplementedby>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/write_batch.h" line="50" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1182">
+        <label>SecMsgBatchScanner</label>
+        <link refid="class_sec_msg_batch_scanner"/>
+        <childnode refid="1180" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1180">
+        <label>leveldb::WriteBatch::Handler</label>
+        <link refid="classleveldb_1_1_write_batch_1_1_handler"/>
+      </node>
+      <node id="1181">
+        <label>CBatchScanner</label>
+        <link refid="class_c_batch_scanner"/>
+        <childnode refid="1180" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/write_batch.h" line="46" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/include/leveldb/write_batch.h" bodystart="46" bodyend="51"/>
+    <listofallmembers>
+      <member refid="classleveldb_1_1_write_batch_1_1_handler_1aeab6526b87bf5b50fb64216b69b34b17" prot="public" virt="pure-virtual"><scope>leveldb::WriteBatch::Handler</scope><name>Delete</name></member>
+      <member refid="classleveldb_1_1_write_batch_1_1_handler_1ad41d4985db289b94e29921167d206d4b" prot="public" virt="pure-virtual"><scope>leveldb::WriteBatch::Handler</scope><name>Put</name></member>
+      <member refid="classleveldb_1_1_write_batch_1_1_handler_1a85fd79c7fb47ef448719379499c5d090" prot="public" virt="virtual"><scope>leveldb::WriteBatch::Handler</scope><name>~Handler</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

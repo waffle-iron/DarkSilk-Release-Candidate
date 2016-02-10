@@ -1,0 +1,121 @@
+\hypertarget{spork_8cpp}{}\section{/home/dev/ds-\/160209/src/spork.cpp File Reference}
+\label{spork_8cpp}\index{/home/dev/ds-\/160209/src/spork.\+cpp@{/home/dev/ds-\/160209/src/spork.\+cpp}}
+{\ttfamily \#include \char`\"{}bignum.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}sync.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}net.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}key.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}util.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}script.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}base58.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}protocol.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}spork.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}stormnode-\/budget.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$boost/lexical\+\_\+cast.\+hpp$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{spork_8cpp_a3f9c24c1f4c012152fb4422ca981610a}{Process\+Spork} (\hyperlink{class_c_node}{C\+Node} $\ast$pfrom, std\+::string \&str\+Command, \hyperlink{class_c_data_stream}{C\+Data\+Stream} \&v\+Recv)
+\item 
+bool \hyperlink{spork_8cpp_a3305663176e21e81c80dc951a7f8ea5e}{Is\+Spork\+Active} (int n\+Spork\+I\+D)
+\item 
+int \hyperlink{spork_8cpp_a8ae4e3d41526bf334ac3bb100db62146}{Get\+Spork\+Value} (int n\+Spork\+I\+D)
+\item 
+void \hyperlink{spork_8cpp_a6b20cdba297d137a4d7a91691cc4457b}{Reprocess\+Blocks} (int n\+Blocks)
+\item 
+void \hyperlink{spork_8cpp_aa6bf94bc9d68d2931ea6cbf013e52f5a}{Execute\+Spork} (int n\+Spork\+I\+D, int n\+Value)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+std\+::map$<$ \hyperlink{classuint256}{uint256}, \hyperlink{class_c_spork_message}{C\+Spork\+Message} $>$ \hyperlink{spork_8cpp_af58b736428e7bc0e4a7fc590f2da8d2e}{map\+Sporks}
+\item 
+std\+::map$<$ int, \hyperlink{class_c_spork_message}{C\+Spork\+Message} $>$ \hyperlink{spork_8cpp_a2a71a101417469de26e8505fb929462d}{map\+Sporks\+Active}
+\item 
+\hyperlink{class_c_spork_manager}{C\+Spork\+Manager} \hyperlink{spork_8cpp_af6873019c3095ea6b554795e4040395c}{spork\+Manager}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{spork_8cpp_aa6bf94bc9d68d2931ea6cbf013e52f5a}{}\index{spork.\+cpp@{spork.\+cpp}!Execute\+Spork@{Execute\+Spork}}
+\index{Execute\+Spork@{Execute\+Spork}!spork.\+cpp@{spork.\+cpp}}
+\subsubsection[{Execute\+Spork}]{\setlength{\rightskip}{0pt plus 5cm}void Execute\+Spork (
+\begin{DoxyParamCaption}
+\item[{int}]{n\+Spork\+I\+D, }
+\item[{int}]{n\+Value}
+\end{DoxyParamCaption}
+)}\label{spork_8cpp_aa6bf94bc9d68d2931ea6cbf013e52f5a}
+
+
+Definition at line 161 of file spork.\+cpp.
+
+\hypertarget{spork_8cpp_a8ae4e3d41526bf334ac3bb100db62146}{}\index{spork.\+cpp@{spork.\+cpp}!Get\+Spork\+Value@{Get\+Spork\+Value}}
+\index{Get\+Spork\+Value@{Get\+Spork\+Value}!spork.\+cpp@{spork.\+cpp}}
+\subsubsection[{Get\+Spork\+Value}]{\setlength{\rightskip}{0pt plus 5cm}int Get\+Spork\+Value (
+\begin{DoxyParamCaption}
+\item[{int}]{n\+Spork\+I\+D}
+\end{DoxyParamCaption}
+)}\label{spork_8cpp_a8ae4e3d41526bf334ac3bb100db62146}
+
+
+Definition at line 105 of file spork.\+cpp.
+
+\hypertarget{spork_8cpp_a3305663176e21e81c80dc951a7f8ea5e}{}\index{spork.\+cpp@{spork.\+cpp}!Is\+Spork\+Active@{Is\+Spork\+Active}}
+\index{Is\+Spork\+Active@{Is\+Spork\+Active}!spork.\+cpp@{spork.\+cpp}}
+\subsubsection[{Is\+Spork\+Active}]{\setlength{\rightskip}{0pt plus 5cm}bool Is\+Spork\+Active (
+\begin{DoxyParamCaption}
+\item[{int}]{n\+Spork\+I\+D}
+\end{DoxyParamCaption}
+)}\label{spork_8cpp_a3305663176e21e81c80dc951a7f8ea5e}
+
+
+Definition at line 82 of file spork.\+cpp.
+
+\hypertarget{spork_8cpp_a3f9c24c1f4c012152fb4422ca981610a}{}\index{spork.\+cpp@{spork.\+cpp}!Process\+Spork@{Process\+Spork}}
+\index{Process\+Spork@{Process\+Spork}!spork.\+cpp@{spork.\+cpp}}
+\subsubsection[{Process\+Spork}]{\setlength{\rightskip}{0pt plus 5cm}void Process\+Spork (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Node} $\ast$}]{pfrom, }
+\item[{std\+::string \&}]{str\+Command, }
+\item[{{\bf C\+Data\+Stream} \&}]{v\+Recv}
+\end{DoxyParamCaption}
+)}\label{spork_8cpp_a3f9c24c1f4c012152fb4422ca981610a}
+
+
+Definition at line 30 of file spork.\+cpp.
+
+\hypertarget{spork_8cpp_a6b20cdba297d137a4d7a91691cc4457b}{}\index{spork.\+cpp@{spork.\+cpp}!Reprocess\+Blocks@{Reprocess\+Blocks}}
+\index{Reprocess\+Blocks@{Reprocess\+Blocks}!spork.\+cpp@{spork.\+cpp}}
+\subsubsection[{Reprocess\+Blocks}]{\setlength{\rightskip}{0pt plus 5cm}void Reprocess\+Blocks (
+\begin{DoxyParamCaption}
+\item[{int}]{n\+Blocks}
+\end{DoxyParamCaption}
+)}\label{spork_8cpp_a6b20cdba297d137a4d7a91691cc4457b}
+
+
+Definition at line 125 of file spork.\+cpp.
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{spork_8cpp_af58b736428e7bc0e4a7fc590f2da8d2e}{}\index{spork.\+cpp@{spork.\+cpp}!map\+Sporks@{map\+Sporks}}
+\index{map\+Sporks@{map\+Sporks}!spork.\+cpp@{spork.\+cpp}}
+\subsubsection[{map\+Sporks}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<${\bf uint256}, {\bf C\+Spork\+Message}$>$ map\+Sporks}\label{spork_8cpp_af58b736428e7bc0e4a7fc590f2da8d2e}
+
+
+Definition at line 24 of file spork.\+cpp.
+
+\hypertarget{spork_8cpp_a2a71a101417469de26e8505fb929462d}{}\index{spork.\+cpp@{spork.\+cpp}!map\+Sporks\+Active@{map\+Sporks\+Active}}
+\index{map\+Sporks\+Active@{map\+Sporks\+Active}!spork.\+cpp@{spork.\+cpp}}
+\subsubsection[{map\+Sporks\+Active}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<$int, {\bf C\+Spork\+Message}$>$ map\+Sporks\+Active}\label{spork_8cpp_a2a71a101417469de26e8505fb929462d}
+
+
+Definition at line 27 of file spork.\+cpp.
+
+\hypertarget{spork_8cpp_af6873019c3095ea6b554795e4040395c}{}\index{spork.\+cpp@{spork.\+cpp}!spork\+Manager@{spork\+Manager}}
+\index{spork\+Manager@{spork\+Manager}!spork.\+cpp@{spork.\+cpp}}
+\subsubsection[{spork\+Manager}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Spork\+Manager} spork\+Manager}\label{spork_8cpp_af6873019c3095ea6b554795e4040395c}
+
+
+Definition at line 28 of file spork.\+cpp.
+

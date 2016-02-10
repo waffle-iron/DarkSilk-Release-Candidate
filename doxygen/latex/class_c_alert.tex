@@ -1,0 +1,243 @@
+\hypertarget{class_c_alert}{}\section{C\+Alert Class Reference}
+\label{class_c_alert}\index{C\+Alert@{C\+Alert}}
+
+
+{\ttfamily \#include $<$alert.\+h$>$}
+
+Inheritance diagram for C\+Alert\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_c_alert}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_alert_a116117e2318b9468a5ca80472c0b5157}{C\+Alert} ()
+\item 
+{\footnotesize template$<$typename Stream , typename Operation $>$ }\\void \hyperlink{class_c_alert_a51d73ab316bb42e65b87ec14ac536b14}{Serialization\+Op} (Stream \&s, Operation ser\+\_\+action, int n\+Type, int \hyperlink{class_c_unsigned_alert_ad8fad8e8f62caaf8162fad19170de2cf}{n\+Version})
+\item 
+void \hyperlink{class_c_alert_a93fd881c55ab448213787f49e316eb99}{Set\+Null} ()
+\item 
+bool \hyperlink{class_c_alert_ae7e110993e592a1a4f99379ab4fcfa08}{Is\+Null} () const 
+\item 
+\hyperlink{classuint256}{uint256} \hyperlink{class_c_alert_a59a57a4b4e93bd186ef18d4f09ebd844}{Get\+Hash} () const 
+\item 
+bool \hyperlink{class_c_alert_a00a8ae5ba7bc54ac7943558c33021190}{Is\+In\+Effect} () const 
+\item 
+bool \hyperlink{class_c_alert_a90d31fb31348f81b767f16dc5465871b}{Cancels} (const \hyperlink{class_c_alert}{C\+Alert} \&alert) const 
+\item 
+bool \hyperlink{class_c_alert_add9f485e29a3d1ffea20e6a5a4e42f26}{Applies\+To} (int \hyperlink{class_c_unsigned_alert_ad8fad8e8f62caaf8162fad19170de2cf}{n\+Version}, std\+::string str\+Sub\+Ver\+In) const 
+\item 
+bool \hyperlink{class_c_alert_a0a7fab6a971781904afb3e4a0ee29e12}{Applies\+To\+Me} () const 
+\item 
+bool \hyperlink{class_c_alert_ae89d673f6f1285eefcc343b3c029dab5}{Relay\+To} (\hyperlink{class_c_node}{C\+Node} $\ast$pnode) const 
+\item 
+bool \hyperlink{class_c_alert_a40b71fc58ec056e3e539663152092030}{Check\+Signature} () const 
+\item 
+bool \hyperlink{class_c_alert_af3e6b2e5d3584f58c5d7be9dbd72b4cc}{Process\+Alert} (bool f\+Thread=true)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_c_alert}{C\+Alert} \hyperlink{class_c_alert_aa37df9d177a6841ec5fa1e611c42b968}{get\+Alert\+By\+Hash} (const \hyperlink{classuint256}{uint256} \&\hyperlink{cache_8cc_a11ecb029164e055f28f4123ce3748862}{hash})
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ unsigned char $>$ \hyperlink{class_c_alert_abfcb3b339d052cd3dd6670b03286758a}{vch\+Msg}
+\item 
+std\+::vector$<$ unsigned char $>$ \hyperlink{class_c_alert_a541b49670ebf387a5f8b7de59277fed0}{vch\+Sig}
+\item 
+\hyperlink{class_c_alert_aca9310112e67fb38ef88f385a4ac6fc0}{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An alert is a combination of a serialized \hyperlink{class_c_unsigned_alert}{C\+Unsigned\+Alert} and a signature. 
+
+Definition at line 78 of file alert.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_alert_a116117e2318b9468a5ca80472c0b5157}{}\index{C\+Alert@{C\+Alert}!C\+Alert@{C\+Alert}}
+\index{C\+Alert@{C\+Alert}!C\+Alert@{C\+Alert}}
+\subsubsection[{C\+Alert}]{\setlength{\rightskip}{0pt plus 5cm}C\+Alert\+::\+C\+Alert (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_alert_a116117e2318b9468a5ca80472c0b5157}
+
+
+Definition at line 84 of file alert.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_alert_add9f485e29a3d1ffea20e6a5a4e42f26}{}\index{C\+Alert@{C\+Alert}!Applies\+To@{Applies\+To}}
+\index{Applies\+To@{Applies\+To}!C\+Alert@{C\+Alert}}
+\subsubsection[{Applies\+To}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Alert\+::\+Applies\+To (
+\begin{DoxyParamCaption}
+\item[{int}]{n\+Version, }
+\item[{std\+::string}]{str\+Sub\+Ver\+In}
+\end{DoxyParamCaption}
+) const}\label{class_c_alert_add9f485e29a3d1ffea20e6a5a4e42f26}
+
+
+Definition at line 116 of file alert.\+cpp.
+
+\hypertarget{class_c_alert_a0a7fab6a971781904afb3e4a0ee29e12}{}\index{C\+Alert@{C\+Alert}!Applies\+To\+Me@{Applies\+To\+Me}}
+\index{Applies\+To\+Me@{Applies\+To\+Me}!C\+Alert@{C\+Alert}}
+\subsubsection[{Applies\+To\+Me}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Alert\+::\+Applies\+To\+Me (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_c_alert_a0a7fab6a971781904afb3e4a0ee29e12}
+
+
+Definition at line 124 of file alert.\+cpp.
+
+\hypertarget{class_c_alert_a90d31fb31348f81b767f16dc5465871b}{}\index{C\+Alert@{C\+Alert}!Cancels@{Cancels}}
+\index{Cancels@{Cancels}!C\+Alert@{C\+Alert}}
+\subsubsection[{Cancels}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Alert\+::\+Cancels (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Alert} \&}]{alert}
+\end{DoxyParamCaption}
+) const}\label{class_c_alert_a90d31fb31348f81b767f16dc5465871b}
+
+
+Definition at line 109 of file alert.\+cpp.
+
+\hypertarget{class_c_alert_a40b71fc58ec056e3e539663152092030}{}\index{C\+Alert@{C\+Alert}!Check\+Signature@{Check\+Signature}}
+\index{Check\+Signature@{Check\+Signature}!C\+Alert@{C\+Alert}}
+\subsubsection[{Check\+Signature}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Alert\+::\+Check\+Signature (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_c_alert_a40b71fc58ec056e3e539663152092030}
+
+
+Definition at line 150 of file alert.\+cpp.
+
+\hypertarget{class_c_alert_aa37df9d177a6841ec5fa1e611c42b968}{}\index{C\+Alert@{C\+Alert}!get\+Alert\+By\+Hash@{get\+Alert\+By\+Hash}}
+\index{get\+Alert\+By\+Hash@{get\+Alert\+By\+Hash}!C\+Alert@{C\+Alert}}
+\subsubsection[{get\+Alert\+By\+Hash}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Alert} C\+Alert\+::get\+Alert\+By\+Hash (
+\begin{DoxyParamCaption}
+\item[{const {\bf uint256} \&}]{hash}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_c_alert_aa37df9d177a6841ec5fa1e611c42b968}
+
+
+Definition at line 162 of file alert.\+cpp.
+
+\hypertarget{class_c_alert_a59a57a4b4e93bd186ef18d4f09ebd844}{}\index{C\+Alert@{C\+Alert}!Get\+Hash@{Get\+Hash}}
+\index{Get\+Hash@{Get\+Hash}!C\+Alert@{C\+Alert}}
+\subsubsection[{Get\+Hash}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint256} C\+Alert\+::\+Get\+Hash (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_c_alert_a59a57a4b4e93bd186ef18d4f09ebd844}
+
+
+Definition at line 99 of file alert.\+cpp.
+
+\hypertarget{class_c_alert_a00a8ae5ba7bc54ac7943558c33021190}{}\index{C\+Alert@{C\+Alert}!Is\+In\+Effect@{Is\+In\+Effect}}
+\index{Is\+In\+Effect@{Is\+In\+Effect}!C\+Alert@{C\+Alert}}
+\subsubsection[{Is\+In\+Effect}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Alert\+::\+Is\+In\+Effect (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_c_alert_a00a8ae5ba7bc54ac7943558c33021190}
+
+
+Definition at line 104 of file alert.\+cpp.
+
+\hypertarget{class_c_alert_ae7e110993e592a1a4f99379ab4fcfa08}{}\index{C\+Alert@{C\+Alert}!Is\+Null@{Is\+Null}}
+\index{Is\+Null@{Is\+Null}!C\+Alert@{C\+Alert}}
+\subsubsection[{Is\+Null}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Alert\+::\+Is\+Null (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_c_alert_ae7e110993e592a1a4f99379ab4fcfa08}
+
+
+Definition at line 94 of file alert.\+cpp.
+
+\hypertarget{class_c_alert_af3e6b2e5d3584f58c5d7be9dbd72b4cc}{}\index{C\+Alert@{C\+Alert}!Process\+Alert@{Process\+Alert}}
+\index{Process\+Alert@{Process\+Alert}!C\+Alert@{C\+Alert}}
+\subsubsection[{Process\+Alert}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Alert\+::\+Process\+Alert (
+\begin{DoxyParamCaption}
+\item[{bool}]{f\+Thread = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{class_c_alert_af3e6b2e5d3584f58c5d7be9dbd72b4cc}
+
+
+Definition at line 174 of file alert.\+cpp.
+
+\hypertarget{class_c_alert_ae89d673f6f1285eefcc343b3c029dab5}{}\index{C\+Alert@{C\+Alert}!Relay\+To@{Relay\+To}}
+\index{Relay\+To@{Relay\+To}!C\+Alert@{C\+Alert}}
+\subsubsection[{Relay\+To}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Alert\+::\+Relay\+To (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Node} $\ast$}]{pnode}
+\end{DoxyParamCaption}
+) const}\label{class_c_alert_ae89d673f6f1285eefcc343b3c029dab5}
+
+
+Definition at line 129 of file alert.\+cpp.
+
+\hypertarget{class_c_alert_a51d73ab316bb42e65b87ec14ac536b14}{}\index{C\+Alert@{C\+Alert}!Serialization\+Op@{Serialization\+Op}}
+\index{Serialization\+Op@{Serialization\+Op}!C\+Alert@{C\+Alert}}
+\subsubsection[{Serialization\+Op}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename Operation $>$ void C\+Alert\+::\+Serialization\+Op (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{Operation}]{ser\+\_\+action, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_alert_a51d73ab316bb42e65b87ec14ac536b14}
+
+
+Definition at line 92 of file alert.\+h.
+
+\hypertarget{class_c_alert_a93fd881c55ab448213787f49e316eb99}{}\index{C\+Alert@{C\+Alert}!Set\+Null@{Set\+Null}}
+\index{Set\+Null@{Set\+Null}!C\+Alert@{C\+Alert}}
+\subsubsection[{Set\+Null}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Alert\+::\+Set\+Null (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_alert_a93fd881c55ab448213787f49e316eb99}
+
+
+Definition at line 87 of file alert.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_c_alert_aca9310112e67fb38ef88f385a4ac6fc0}{}\index{C\+Alert@{C\+Alert}!A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}}
+\index{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}!C\+Alert@{C\+Alert}}
+\subsubsection[{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}]{\setlength{\rightskip}{0pt plus 5cm}C\+Alert\+::\+A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}\label{class_c_alert_aca9310112e67fb38ef88f385a4ac6fc0}
+
+
+Definition at line 89 of file alert.\+h.
+
+\hypertarget{class_c_alert_abfcb3b339d052cd3dd6670b03286758a}{}\index{C\+Alert@{C\+Alert}!vch\+Msg@{vch\+Msg}}
+\index{vch\+Msg@{vch\+Msg}!C\+Alert@{C\+Alert}}
+\subsubsection[{vch\+Msg}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$unsigned char$>$ C\+Alert\+::vch\+Msg}\label{class_c_alert_abfcb3b339d052cd3dd6670b03286758a}
+
+
+Definition at line 81 of file alert.\+h.
+
+\hypertarget{class_c_alert_a541b49670ebf387a5f8b7de59277fed0}{}\index{C\+Alert@{C\+Alert}!vch\+Sig@{vch\+Sig}}
+\index{vch\+Sig@{vch\+Sig}!C\+Alert@{C\+Alert}}
+\subsubsection[{vch\+Sig}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$unsigned char$>$ C\+Alert\+::vch\+Sig}\label{class_c_alert_a541b49670ebf387a5f8b7de59277fed0}
+
+
+Definition at line 82 of file alert.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/\hyperlink{alert_8h}{alert.\+h}\item 
+/home/dev/ds-\/160209/src/\hyperlink{alert_8cpp}{alert.\+cpp}\end{DoxyCompactItemize}

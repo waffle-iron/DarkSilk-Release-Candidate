@@ -1,0 +1,156 @@
+.TH "/home/dev/ds-160209/src/utilstrencodings.cpp" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/utilstrencodings.cpp \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'utilstrencodings\&.h'\fP
+.br
+\fC#include 'tinyformat\&.h'\fP
+.br
+\fC#include <errno\&.h>\fP
+.br
+\fC#include <limits>\fP
+.br
+\fC#include <cstdlib>\fP
+.br
+\fC#include <cstring>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "string \fBEncodeBase64\fP (const unsigned char *pch, size_t len)"
+.br
+.ti -1c
+.RI "string \fBEncodeBase64\fP (const string &str)"
+.br
+.ti -1c
+.RI "vector< unsigned char > \fBDecodeBase64\fP (const char *p, bool *pfInvalid)"
+.br
+.ti -1c
+.RI "string \fBDecodeBase64\fP (const string &str)"
+.br
+.ti -1c
+.RI "\fBSecureString\fP \fBEncodeBase64Secure\fP (const \fBSecureString\fP &input)"
+.br
+.ti -1c
+.RI "\fBSecureString\fP \fBDecodeBase64Secure\fP (const \fBSecureString\fP &input)"
+.br
+.ti -1c
+.RI "string \fBEncodeBase32\fP (const unsigned char *pch, size_t len)"
+.br
+.ti -1c
+.RI "string \fBEncodeBase32\fP (const string &str)"
+.br
+.ti -1c
+.RI "vector< unsigned char > \fBDecodeBase32\fP (const char *p, bool *pfInvalid)"
+.br
+.ti -1c
+.RI "string \fBDecodeBase32\fP (const string &str)"
+.br
+.ti -1c
+.RI "bool \fBParseInt32\fP (const std::string &str, \fBint32_t\fP *out)"
+.br
+.ti -1c
+.RI "std::string \fBFormatParagraph\fP (const std::string in, size_t width, size_t indent)"
+.br
+.ti -1c
+.RI "std::string \fBi64tostr\fP (\fBint64_t\fP n)"
+.br
+.ti -1c
+.RI "std::string \fBitostr\fP (int n)"
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBatoi64\fP (const char *psz)"
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBatoi64\fP (const std::string &str)"
+.br
+.ti -1c
+.RI "int \fBatoi\fP (const std::string &str)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "int atoi (const std::string & str)\fC [inline]\fP"
+
+.PP
+Definition at line 480 of file utilstrencodings\&.cpp\&.
+.SS "\fBint64_t\fP atoi64 (const char * psz)\fC [inline]\fP"
+
+.PP
+Definition at line 462 of file utilstrencodings\&.cpp\&.
+.SS "\fBint64_t\fP atoi64 (const std::string & str)\fC [inline]\fP"
+
+.PP
+Definition at line 471 of file utilstrencodings\&.cpp\&.
+.SS "vector<unsigned char> DecodeBase32 (const char * p, bool * pfInvalid)"
+
+.PP
+Definition at line 280 of file utilstrencodings\&.cpp\&.
+.SS "string DecodeBase32 (const string & str)"
+
+.PP
+Definition at line 397 of file utilstrencodings\&.cpp\&.
+.SS "vector<unsigned char> DecodeBase64 (const char * p, bool * pfInvalid)"
+
+.PP
+Definition at line 68 of file utilstrencodings\&.cpp\&.
+.SS "string DecodeBase64 (const string & str)"
+
+.PP
+Definition at line 151 of file utilstrencodings\&.cpp\&.
+.SS "\fBSecureString\fP DecodeBase64Secure (const \fBSecureString\fP & input)"
+
+.PP
+Definition at line 185 of file utilstrencodings\&.cpp\&.
+.SS "string EncodeBase32 (const unsigned char * pch, size_t len)"
+
+.PP
+Definition at line 216 of file utilstrencodings\&.cpp\&.
+.SS "string EncodeBase32 (const string & str)"
+
+.PP
+Definition at line 275 of file utilstrencodings\&.cpp\&.
+.SS "string EncodeBase64 (const unsigned char * pch, size_t len)"
+
+.PP
+Definition at line 17 of file utilstrencodings\&.cpp\&.
+.SS "string EncodeBase64 (const string & str)"
+
+.PP
+Definition at line 63 of file utilstrencodings\&.cpp\&.
+.SS "\fBSecureString\fP EncodeBase64Secure (const \fBSecureString\fP & input)"
+
+.PP
+Definition at line 158 of file utilstrencodings\&.cpp\&.
+.SS "std::string FormatParagraph (const std::string in, size_t width = \fC79\fP, size_t indent = \fC0\fP)"
+Format a paragraph of text to a fixed width, adding spaces for indentation to any added line\&. 
+.PP
+Definition at line 417 of file utilstrencodings\&.cpp\&.
+.SS "std::string i64tostr (\fBint64_t\fP n)\fC [inline]\fP"
+
+.PP
+Definition at line 452 of file utilstrencodings\&.cpp\&.
+.SS "std::string itostr (int n)\fC [inline]\fP"
+
+.PP
+Definition at line 457 of file utilstrencodings\&.cpp\&.
+.SS "bool ParseInt32 (const std::string & str, \fBint32_t\fP * out)"
+Convert string to signed 32-bit integer with strict parse error feedback\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true if the entire string could be parsed as valid integer, false if not the entire string could be parsed or when overflow or underflow occurred\&. 
+.RE
+.PP
+
+.PP
+Definition at line 403 of file utilstrencodings\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

@@ -1,0 +1,113 @@
+.TH "AskPassphraseDialog" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+AskPassphraseDialog \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <askpassphrasedialog\&.h>\fP
+.PP
+Inherits QDialog\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBMode\fP { \fBEncrypt\fP, \fBUnlockStaking\fP, \fBUnlock\fP, \fBChangePass\fP, \fBDecrypt\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBAskPassphraseDialog\fP (\fBMode\fP mode, QWidget *parent=0)"
+.br
+.ti -1c
+.RI "\fB~AskPassphraseDialog\fP ()"
+.br
+.ti -1c
+.RI "void \fBaccept\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetModel\fP (\fBWalletModel\fP *model)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBevent\fP (QEvent *event)"
+.br
+.ti -1c
+.RI "bool \fBeventFilter\fP (QObject *, QEvent *\fBevent\fP)"
+.br
+.ti -1c
+.RI "void \fBsecureClearPassFields\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Multifunctional dialog to ask for passphrases\&. Used for encryption, unlocking, and changing the passphrase\&. 
+.PP
+Definition at line 13 of file askpassphrasedialog\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBAskPassphraseDialog::Mode\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIEncrypt \fP\fP
+Ask passphrase twice and encrypt 
+.TP
+\fB\fIUnlockStaking \fP\fP
+Ask passphrase and unlock 
+.TP
+\fB\fIUnlock \fP\fP
+Ask passphrase and unlock 
+.TP
+\fB\fIChangePass \fP\fP
+Ask old passphrase + new passphrase twice 
+.TP
+\fB\fIDecrypt \fP\fP
+Ask passphrase and decrypt wallet 
+.PP
+Definition at line 18 of file askpassphrasedialog\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "AskPassphraseDialog::AskPassphraseDialog (\fBMode\fP mode, QWidget * parent = \fC0\fP)\fC [explicit]\fP"
+
+.PP
+Definition at line 13 of file askpassphrasedialog\&.cpp\&.
+.SS "AskPassphraseDialog::~AskPassphraseDialog ()"
+
+.PP
+Definition at line 72 of file askpassphrasedialog\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void AskPassphraseDialog::accept ()"
+
+.PP
+Definition at line 83 of file askpassphrasedialog\&.cpp\&.
+.SS "bool AskPassphraseDialog::event (QEvent * event)\fC [protected]\fP"
+
+.PP
+Definition at line 217 of file askpassphrasedialog\&.cpp\&.
+.SS "bool AskPassphraseDialog::eventFilter (QObject * object, QEvent * event)\fC [protected]\fP"
+
+.PP
+Definition at line 234 of file askpassphrasedialog\&.cpp\&.
+.SS "void AskPassphraseDialog::secureClearPassFields ()\fC [protected]\fP"
+
+.PP
+Definition at line 260 of file askpassphrasedialog\&.cpp\&.
+.SS "void AskPassphraseDialog::setModel (\fBWalletModel\fP * model)"
+
+.PP
+Definition at line 78 of file askpassphrasedialog\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

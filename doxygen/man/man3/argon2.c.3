@@ -1,0 +1,204 @@
+.TH "/home/dev/ds-160209/src/crypto/argon2/argon2.c" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/crypto/argon2/argon2.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <string\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include 'argon2\&.h'\fP
+.br
+\fC#include 'encoding\&.h'\fP
+.br
+\fC#include 'core\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBargon2_core\fP (\fBargon2_context\fP *context, \fBargon2_type\fP type)"
+.br
+.ti -1c
+.RI "int \fBargon2_hash\fP (const \fBuint32_t\fP t_cost, const \fBuint32_t\fP m_cost, const \fBuint32_t\fP parallelism, const void *pwd, const size_t pwdlen, const void *salt, const size_t saltlen, void *\fBhash\fP, const size_t hashlen, char *encoded, const size_t encodedlen, \fBargon2_type\fP type)"
+.br
+.ti -1c
+.RI "int \fBargon2i_hash_encoded\fP (const \fBuint32_t\fP t_cost, const \fBuint32_t\fP m_cost, const \fBuint32_t\fP parallelism, const void *pwd, const size_t pwdlen, const void *salt, const size_t saltlen, const size_t hashlen, char *encoded, const size_t encodedlen)"
+.br
+.ti -1c
+.RI "int \fBargon2i_hash_raw\fP (const \fBuint32_t\fP t_cost, const \fBuint32_t\fP m_cost, const \fBuint32_t\fP parallelism, const void *pwd, const size_t pwdlen, const void *salt, const size_t saltlen, void *\fBhash\fP, const size_t hashlen)"
+.br
+.ti -1c
+.RI "int \fBargon2d_hash_encoded\fP (const \fBuint32_t\fP t_cost, const \fBuint32_t\fP m_cost, const \fBuint32_t\fP parallelism, const void *pwd, const size_t pwdlen, const void *salt, const size_t saltlen, const size_t hashlen, char *encoded, const size_t encodedlen)"
+.br
+.ti -1c
+.RI "int \fBargon2d_hash_raw\fP (const \fBuint32_t\fP t_cost, const \fBuint32_t\fP m_cost, const \fBuint32_t\fP parallelism, const void *pwd, const size_t pwdlen, const void *salt, const size_t saltlen, void *\fBhash\fP, const size_t hashlen)"
+.br
+.ti -1c
+.RI "int \fBargon2_verify\fP (const char *encoded, const void *pwd, const size_t pwdlen, \fBargon2_type\fP type)"
+.br
+.ti -1c
+.RI "int \fBargon2i_verify\fP (const char *encoded, const void *pwd, const size_t pwdlen)"
+.br
+.ti -1c
+.RI "int \fBargon2d_verify\fP (const char *encoded, const void *pwd, const size_t pwdlen)"
+.br
+.ti -1c
+.RI "int \fBargon2d\fP (\fBargon2_context\fP *context)"
+.br
+.ti -1c
+.RI "int \fBargon2i\fP (\fBargon2_context\fP *context)"
+.br
+.ti -1c
+.RI "int \fBverify_d\fP (\fBargon2_context\fP *context, const char *\fBhash\fP)"
+.br
+.ti -1c
+.RI "int \fBverify_i\fP (\fBargon2_context\fP *context, const char *\fBhash\fP)"
+.br
+.ti -1c
+.RI "const char * \fBerror_message\fP (int error_code)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "int argon2_core (\fBargon2_context\fP * context, \fBargon2_type\fP type)"
+
+.PP
+Definition at line 109 of file argon2\&.c\&.
+.SS "int argon2_hash (const \fBuint32_t\fP t_cost, const \fBuint32_t\fP m_cost, const \fBuint32_t\fP parallelism, const void * pwd, const size_t pwdlen, const void * salt, const size_t saltlen, void * hash, const size_t hashlen, char * encoded, const size_t encodedlen, \fBargon2_type\fP type)"
+
+.PP
+Definition at line 166 of file argon2\&.c\&.
+.SS "int argon2_verify (const char * encoded, const void * pwd, const size_t pwdlen, \fBargon2_type\fP type)"
+
+.PP
+Definition at line 289 of file argon2\&.c\&.
+.SS "int argon2d (\fBargon2_context\fP * context)"
+
+.PP
+Definition at line 353 of file argon2\&.c\&.
+.SS "int argon2d_hash_encoded (const \fBuint32_t\fP t_cost, const \fBuint32_t\fP m_cost, const \fBuint32_t\fP parallelism, const void * pwd, const size_t pwdlen, const void * salt, const size_t saltlen, const size_t hashlen, char * encoded, const size_t encodedlen)"
+
+.PP
+Definition at line 260 of file argon2\&.c\&.
+.SS "int argon2d_hash_raw (const \fBuint32_t\fP t_cost, const \fBuint32_t\fP m_cost, const \fBuint32_t\fP parallelism, const void * pwd, const size_t pwdlen, const void * salt, const size_t saltlen, void * hash, const size_t hashlen)"
+
+.PP
+Definition at line 270 of file argon2\&.c\&.
+.SS "int argon2d_verify (const char * encoded, const void * pwd, const size_t pwdlen)"
+
+.PP
+Definition at line 348 of file argon2\&.c\&.
+.SS "int argon2i (\fBargon2_context\fP * context)"
+
+.PP
+Definition at line 355 of file argon2\&.c\&.
+.SS "int argon2i_hash_encoded (const \fBuint32_t\fP t_cost, const \fBuint32_t\fP m_cost, const \fBuint32_t\fP parallelism, const void * pwd, const size_t pwdlen, const void * salt, const size_t saltlen, const size_t hashlen, char * encoded, const size_t encodedlen)"
+Hashes a password with Argon2i, producing an encoded hash 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIt_cost\fP Number of iterations 
+.br
+\fIm_cost\fP Sets memory usage to m_cost kibibytes 
+.br
+\fIparallelism\fP Number of threads and compute lanes 
+.br
+\fIpwd\fP Pointer to password 
+.br
+\fIpwdlen\fP Password size in bytes 
+.br
+\fIsalt\fP Pointer to salt 
+.br
+\fIsaltlen\fP Salt size in bytes 
+.br
+\fIhashlen\fP Desired length of the hash in bytes 
+.br
+\fIencoded\fP Buffer where to write the encoded hash 
+.br
+\fIencodedlen\fP Size of the buffer (thus max size of the encoded hash) 
+.RE
+.PP
+\fBPrecondition:\fP
+.RS 4
+Different parallelism levels will give different results 
+.PP
+Returns ARGON2_OK if successful 
+.RE
+.PP
+
+.PP
+Definition at line 241 of file argon2\&.c\&.
+.SS "int argon2i_hash_raw (const \fBuint32_t\fP t_cost, const \fBuint32_t\fP m_cost, const \fBuint32_t\fP parallelism, const void * pwd, const size_t pwdlen, const void * salt, const size_t saltlen, void * hash, const size_t hashlen)"
+Hashes a password with Argon2i, producing a raw hash 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIt_cost\fP Number of iterations 
+.br
+\fIm_cost\fP Sets memory usage to m_cost kibibytes 
+.br
+\fIparallelism\fP Number of threads and compute lanes 
+.br
+\fIpwd\fP Pointer to password 
+.br
+\fIpwdlen\fP Password size in bytes 
+.br
+\fIsalt\fP Pointer to salt 
+.br
+\fIsaltlen\fP Salt size in bytes 
+.br
+\fIhash\fP Buffer where to write the raw hash 
+.br
+\fIhashlen\fP Desired length of the hash in bytes 
+.RE
+.PP
+\fBPrecondition:\fP
+.RS 4
+Different parallelism levels will give different results 
+.PP
+Returns ARGON2_OK if successful 
+.RE
+.PP
+
+.PP
+Definition at line 251 of file argon2\&.c\&.
+.SS "int argon2i_verify (const char * encoded, const void * pwd, const size_t pwdlen)"
+Verifies a password against an encoded string 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIencoded\fP String encoding parameters, salt, hash 
+.br
+\fIpwd\fP Pointer to password 
+.RE
+.PP
+\fBPrecondition:\fP
+.RS 4
+Returns ARGON2_OK if successful 
+.RE
+.PP
+
+.PP
+Definition at line 343 of file argon2\&.c\&.
+.SS "const char* error_message (int error_code)"
+
+.PP
+Definition at line 388 of file argon2\&.c\&.
+.SS "int verify_d (\fBargon2_context\fP * context, const char * hash)"
+
+.PP
+Definition at line 357 of file argon2\&.c\&.
+.SS "int verify_i (\fBargon2_context\fP * context, const char * hash)"
+
+.PP
+Definition at line 372 of file argon2\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

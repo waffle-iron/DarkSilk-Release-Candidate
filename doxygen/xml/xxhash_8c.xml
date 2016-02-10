@@ -1,0 +1,1167 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="xxhash_8c" kind="file" language="C++">
+    <compoundname>xxhash.c</compoundname>
+    <includes refid="xxhash_8h" local="yes">xxhash.h</includes>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">string.h</includes>
+    <includedby refid="smessage_8cpp" local="yes">/home/dev/ds-160209/src/smessage.cpp</includedby>
+    <incdepgraph>
+      <node id="29452">
+        <label>/home/dev/ds-160209/src/xxhash/xxhash.c</label>
+        <link refid="xxhash.c"/>
+        <childnode refid="29453" relation="include">
+        </childnode>
+        <childnode refid="29454" relation="include">
+        </childnode>
+        <childnode refid="29455" relation="include">
+        </childnode>
+      </node>
+      <node id="29453">
+        <label>xxhash.h</label>
+        <link refid="xxhash_8h"/>
+      </node>
+      <node id="29454">
+        <label>stdlib.h</label>
+      </node>
+      <node id="29455">
+        <label>string.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="29456">
+        <label>/home/dev/ds-160209/src/xxhash/xxhash.c</label>
+        <link refid="xxhash.c"/>
+        <childnode refid="29457" relation="include">
+        </childnode>
+      </node>
+      <node id="29457">
+        <label>/home/dev/ds-160209/src/smessage.cpp</label>
+        <link refid="smessage_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="struct___u32___s" prot="public">_U32_S</innerclass>
+    <innerclass refid="struct_x_x_h__state32__t" prot="public">XXH_state32_t</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="xxhash_8c_1afd620e67e55f7db0b0d700af3edff885" prot="public" static="no">
+        <name>XXH_FORCE_NATIVE_FORMAT</name>
+        <initializer>0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="59" column="9" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="xxhash_8c_1ac032d233a8ebfcd82fd49d0824eefb18" prot="public" static="no">
+        <name>FORCE_INLINE</name>
+        <initializer>static inline</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="76" column="17" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="xxhash_8c_1ade97e94b3a4ec6a61b6150fdd8f8052c" prot="public" static="no">
+        <name>_PACKED_XXH</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="116" column="12" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="xxhash_8c_1ae4b4181194ae9eeb3ef87413566be546" prot="public" static="no">
+        <name>A32_XXH</name>
+        <param><defname>x</defname></param>
+        <initializer>(((<ref refid="xxhash_8c_1aa56cebb14699c76a8e2c3ed1b23a569f" kindref="member">U32_S_XXH</ref> *)(x))-&gt;v)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="134" column="9" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="xxhash_8c_1adbba0f726fc66d7100916c683b7568ae" prot="public" static="no">
+        <name>GCC_VERSION</name>
+        <initializer>(__GNUC__ * 100 + __GNUC_MINOR__)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="140" column="9" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="140" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="xxhash_8c_1a70a4b202f9523a2a811da16cde3f52eb" prot="public" static="no">
+        <name>XXH_rotl32</name>
+        <param><defname>x</defname></param>
+        <param><defname>r</defname></param>
+        <initializer>((x &lt;&lt; r) | (x &gt;&gt; (32 - r)))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="146" column="12" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="xxhash_8c_1a2adf937638c249c83681816c9ce9d3c6" prot="public" static="no">
+        <name>PRIME32_1</name>
+        <initializer>2654435761U</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="165" column="9" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="165" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="xxhash_8c_1a6cfe9a3ed9c4749c8f57afe91c9749a1" prot="public" static="no">
+        <name>PRIME32_2</name>
+        <initializer>2246822519U</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="166" column="9" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="166" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="xxhash_8c_1a2f4882ee52b72f7ddb05389eb8ea52c8" prot="public" static="no">
+        <name>PRIME32_3</name>
+        <initializer>3266489917U</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="167" column="9" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="167" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="xxhash_8c_1ae99c796b385596b539bdc1e29cb1f713" prot="public" static="no">
+        <name>PRIME32_4</name>
+        <initializer>668265263U</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="168" column="9" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="168" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="xxhash_8c_1a9d6d9526a72bc430e549171e147b9b08" prot="public" static="no">
+        <name>PRIME32_5</name>
+        <initializer>374761393U</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="169" column="9" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="169" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="xxhash_8c_1a408fac02658eb4a81f7a1877f1ca3b3f" prot="public" static="no">
+        <name>XXH_CPU_LITTLE_ENDIAN</name>
+        <initializer>(*(char*)(&amp;one))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="178" column="12" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="178" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="xxhash_8c_1a3bc33577f47cf99f8b35a52d87c642c4" prot="public" static="no">
+        <name>XXH_STATIC_ASSERT</name>
+        <param><defname>c</defname></param>
+        <initializer>{ enum { XXH_static_assert = 1/(!!(c)) }; }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="185" column="9" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="185" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="xxhash_8c_1a235e518684d715cbb04353c997ad81e9" prot="public" static="no">
+        <name>XXH_endianess</name>
+        <enumvalue id="xxhash_8c_1a235e518684d715cbb04353c997ad81e9ae38c7420bad548564395edb8cb4b6b60" prot="public">
+          <name>XXH_bigEndian</name>
+          <initializer>=0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="xxhash_8c_1a235e518684d715cbb04353c997ad81e9ab42c8f08d82d02dee14a685dc4c39539" prot="public">
+          <name>XXH_littleEndian</name>
+          <initializer>=1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="175" column="1" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="175" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="enum" id="xxhash_8c_1adec56fccd4f83e34902b6b09ecccfff5" prot="public" static="no">
+        <name>XXH_alignment</name>
+        <enumvalue id="xxhash_8c_1adec56fccd4f83e34902b6b09ecccfff5a41340c9f33fe739cef7a1c56dc617194" prot="public">
+          <name>XXH_aligned</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="xxhash_8c_1adec56fccd4f83e34902b6b09ecccfff5ab082c14fd7eef12bcb1dfda2e813586f" prot="public">
+          <name>XXH_unaligned</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="191" column="1" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="191" bodyend="191"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="xxhash_8c_1a4ae1dab0fb4b072a66584546209e7d58" prot="public" static="no">
+        <type>unsigned char</type>
+        <definition>typedef unsigned char BYTE</definition>
+        <argsstring></argsstring>
+        <name>BYTE</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="106" column="1" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="xxhash_8c_1adf928e51a60dba0df29d615401cc55a8" prot="public" static="no">
+        <type>unsigned short</type>
+        <definition>typedef unsigned short U16</definition>
+        <argsstring></argsstring>
+        <name>U16</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="107" column="1" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="xxhash_8c_1ac3df7cf3c8cb172a588adec881447d68" prot="public" static="no">
+        <type>unsigned int</type>
+        <definition>typedef unsigned int U32</definition>
+        <argsstring></argsstring>
+        <name>U32</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="108" column="1" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="xxhash_8c_1a57a2244776e01ad620c556de58eb7880" prot="public" static="no">
+        <type>signed int</type>
+        <definition>typedef signed int S32</definition>
+        <argsstring></argsstring>
+        <name>S32</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="109" column="1" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="xxhash_8c_1a24c386d3758eba951eb7532fdbb45804" prot="public" static="no">
+        <type>unsigned long long</type>
+        <definition>typedef unsigned long long U64</definition>
+        <argsstring></argsstring>
+        <name>U64</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="110" column="1" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="xxhash_8c_1aa56cebb14699c76a8e2c3ed1b23a569f" prot="public" static="no">
+        <type>struct <ref refid="struct___u32___s" kindref="compound">_U32_S</ref></type>
+        <definition>typedef struct _U32_S U32_S_XXH</definition>
+        <argsstring></argsstring>
+        <name>U32_S_XXH</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="128" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="xxhash_8c_1a91c24f18b9bb6f72c0843ea3ab2bbede" prot="public" static="yes" mutable="no">
+        <type>const int</type>
+        <definition>const int one</definition>
+        <argsstring></argsstring>
+        <name>one</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="177" column="1" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="177" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="xxhash_8c_1a9572f7bf38985424889eaf9410bb5117" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="xxhash_8c_1ac032d233a8ebfcd82fd49d0824eefb18" kindref="member">FORCE_INLINE</ref> void *</type>
+        <definition>FORCE_INLINE void* XXH_malloc</definition>
+        <argsstring>(size_t s)</argsstring>
+        <name>XXH_malloc</name>
+        <param>
+          <type>size_t</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="88" column="1" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="88" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="xxhash_8c_1a5b76a6a057004859868b41d12681981e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="xxhash_8c_1ac032d233a8ebfcd82fd49d0824eefb18" kindref="member">FORCE_INLINE</ref> void</type>
+        <definition>FORCE_INLINE void XXH_free</definition>
+        <argsstring>(void *p)</argsstring>
+        <name>XXH_free</name>
+        <param>
+          <type>void *</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="89" column="1" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="89" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="xxhash_8c_1a794805594aedd7450e014c2cb441d3a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="xxhash_8c_1ac032d233a8ebfcd82fd49d0824eefb18" kindref="member">FORCE_INLINE</ref> void *</type>
+        <definition>FORCE_INLINE void* XXH_memcpy</definition>
+        <argsstring>(void *dest, const void *src, size_t size)</argsstring>
+        <name>XXH_memcpy</name>
+        <param>
+          <type>void *</type>
+          <declname>dest</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="92" column="1" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="92" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="xxhash_8c_1a77a5849877fe70d96dc3c64cb1b0a94e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref></type>
+        <definition>static U32 XXH_swap32</definition>
+        <argsstring>(U32 x)</argsstring>
+        <name>XXH_swap32</name>
+        <param>
+          <type><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref></type>
+          <declname>x</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="154" column="1" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="154" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="xxhash_8c_1affc2ae1484ba2fc666d46488c10028f0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="xxhash_8c_1ac032d233a8ebfcd82fd49d0824eefb18" kindref="member">FORCE_INLINE</ref> <ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref></type>
+        <definition>FORCE_INLINE U32 XXH_readLE32_align</definition>
+        <argsstring>(const U32 *ptr, XXH_endianess endian, XXH_alignment align)</argsstring>
+        <name>XXH_readLE32_align</name>
+        <param>
+          <type>const <ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref> *</type>
+          <declname>ptr</declname>
+        </param>
+        <param>
+          <type><ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9" kindref="member">XXH_endianess</ref></type>
+          <declname>endian</declname>
+        </param>
+        <param>
+          <type><ref refid="xxhash_8c_1adec56fccd4f83e34902b6b09ecccfff5" kindref="member">XXH_alignment</ref></type>
+          <declname>align</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="193" column="1" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="193" bodyend="199"/>
+      </memberdef>
+      <memberdef kind="function" id="xxhash_8c_1a35cc0677340176473e3f3650520afe94" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="xxhash_8c_1ac032d233a8ebfcd82fd49d0824eefb18" kindref="member">FORCE_INLINE</ref> <ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref></type>
+        <definition>FORCE_INLINE U32 XXH_readLE32</definition>
+        <argsstring>(const U32 *ptr, XXH_endianess endian)</argsstring>
+        <name>XXH_readLE32</name>
+        <param>
+          <type>const <ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref> *</type>
+          <declname>ptr</declname>
+        </param>
+        <param>
+          <type><ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9" kindref="member">XXH_endianess</ref></type>
+          <declname>endian</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="201" column="1" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="201" bodyend="201"/>
+      </memberdef>
+      <memberdef kind="function" id="xxhash_8c_1a8e9fe56b765f2e078843b976ec69b9db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="xxhash_8c_1ac032d233a8ebfcd82fd49d0824eefb18" kindref="member">FORCE_INLINE</ref> <ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref></type>
+        <definition>FORCE_INLINE U32 XXH32_endian_align</definition>
+        <argsstring>(const void *input, int len, U32 seed, XXH_endianess endian, XXH_alignment align)</argsstring>
+        <name>XXH32_endian_align</name>
+        <param>
+          <type>const void *</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>len</declname>
+        </param>
+        <param>
+          <type><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref></type>
+          <declname>seed</declname>
+        </param>
+        <param>
+          <type><ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9" kindref="member">XXH_endianess</ref></type>
+          <declname>endian</declname>
+        </param>
+        <param>
+          <type><ref refid="xxhash_8c_1adec56fccd4f83e34902b6b09ecccfff5" kindref="member">XXH_alignment</ref></type>
+          <declname>align</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="207" column="1" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="207" bodyend="263"/>
+      </memberdef>
+      <memberdef kind="function" id="xxhash_8c_1aeefc29f525feb758b0d0331f09d5ab88" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref></type>
+        <definition>U32 XXH32</definition>
+        <argsstring>(const void *input, int len, U32 seed)</argsstring>
+        <name>XXH32</name>
+        <param>
+          <type>const void *</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>len</declname>
+        </param>
+        <param>
+          <type><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref></type>
+          <declname>seed</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="266" column="1" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="266" bodyend="291"/>
+      </memberdef>
+      <memberdef kind="function" id="xxhash_8c_1a563951f8d161bcee0edbc43b59c59244" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int XXH32_sizeofState</definition>
+        <argsstring>()</argsstring>
+        <name>XXH32_sizeofState</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="311" column="1" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="311" bodyend="315"/>
+      </memberdef>
+      <memberdef kind="function" id="xxhash_8c_1aa0c3ae88a7c58b593dd465786729d53b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="xxhash_8h_1a5020905455674b8c83c1dbc73f0d3534" kindref="member">XXH_errorcode</ref></type>
+        <definition>XXH_errorcode XXH32_resetState</definition>
+        <argsstring>(void *state_in, U32 seed)</argsstring>
+        <name>XXH32_resetState</name>
+        <param>
+          <type>void *</type>
+          <declname>state_in</declname>
+        </param>
+        <param>
+          <type><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref></type>
+          <declname>seed</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="318" column="1" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="318" bodyend="329"/>
+      </memberdef>
+      <memberdef kind="function" id="xxhash_8c_1a14dea44906862dbf59aad697342aad6d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void *</type>
+        <definition>void* XXH32_init</definition>
+        <argsstring>(U32 seed)</argsstring>
+        <name>XXH32_init</name>
+        <param>
+          <type><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref></type>
+          <declname>seed</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="332" column="1" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="332" bodyend="337"/>
+      </memberdef>
+      <memberdef kind="function" id="xxhash_8c_1a4f77fcbf32f9071051a8e9b9569c3c80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="xxhash_8c_1ac032d233a8ebfcd82fd49d0824eefb18" kindref="member">FORCE_INLINE</ref> <ref refid="xxhash_8h_1a5020905455674b8c83c1dbc73f0d3534" kindref="member">XXH_errorcode</ref></type>
+        <definition>FORCE_INLINE XXH_errorcode XXH32_update_endian</definition>
+        <argsstring>(void *state_in, const void *input, int len, XXH_endianess endian)</argsstring>
+        <name>XXH32_update_endian</name>
+        <param>
+          <type>void *</type>
+          <declname>state_in</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>len</declname>
+        </param>
+        <param>
+          <type><ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9" kindref="member">XXH_endianess</ref></type>
+          <declname>endian</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="340" column="1" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="340" bodyend="402"/>
+      </memberdef>
+      <memberdef kind="function" id="xxhash_8c_1a7cc3b7efa347c6a8a632b92e9d796826" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="xxhash_8h_1a5020905455674b8c83c1dbc73f0d3534" kindref="member">XXH_errorcode</ref></type>
+        <definition>XXH_errorcode XXH32_update</definition>
+        <argsstring>(void *state_in, const void *input, int len)</argsstring>
+        <name>XXH32_update</name>
+        <param>
+          <type>void *</type>
+          <declname>state_in</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="404" column="1" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="404" bodyend="412"/>
+      </memberdef>
+      <memberdef kind="function" id="xxhash_8c_1a91a5a40fdeb240dc0e129b37ef6f1cca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="xxhash_8c_1ac032d233a8ebfcd82fd49d0824eefb18" kindref="member">FORCE_INLINE</ref> <ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref></type>
+        <definition>FORCE_INLINE U32 XXH32_intermediateDigest_endian</definition>
+        <argsstring>(void *state_in, XXH_endianess endian)</argsstring>
+        <name>XXH32_intermediateDigest_endian</name>
+        <param>
+          <type>void *</type>
+          <declname>state_in</declname>
+        </param>
+        <param>
+          <type><ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9" kindref="member">XXH_endianess</ref></type>
+          <declname>endian</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="416" column="1" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="416" bodyend="455"/>
+      </memberdef>
+      <memberdef kind="function" id="xxhash_8c_1a320da5579e901032eebebd6aba8d0310" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref></type>
+        <definition>U32 XXH32_intermediateDigest</definition>
+        <argsstring>(void *state_in)</argsstring>
+        <name>XXH32_intermediateDigest</name>
+        <param>
+          <type>void *</type>
+          <declname>state_in</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="458" column="1" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="458" bodyend="466"/>
+      </memberdef>
+      <memberdef kind="function" id="xxhash_8c_1a0976366f488672f0fe1e4ee81b63345f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref></type>
+        <definition>U32 XXH32_digest</definition>
+        <argsstring>(void *state_in)</argsstring>
+        <name>XXH32_digest</name>
+        <param>
+          <type>void *</type>
+          <declname>state_in</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/xxhash/xxhash.c" line="469" column="1" bodyfile="/home/dev/ds-160209/src/xxhash/xxhash.c" bodystart="469" bodyend="476"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment">xxHash<sp/>-<sp/>Fast<sp/>Hash<sp/>algorithm</highlight></codeline>
+<codeline lineno="3"><highlight class="comment">Copyright<sp/>(C)<sp/>2012-2016,<sp/>Yann<sp/>Collet.</highlight></codeline>
+<codeline lineno="4"><highlight class="comment">BSD<sp/>2-Clause<sp/>License<sp/>(http://www.opensource.org/licenses/bsd-license.php)</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"></highlight></codeline>
+<codeline lineno="6"><highlight class="comment">Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without</highlight></codeline>
+<codeline lineno="7"><highlight class="comment">modification,<sp/>are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are</highlight></codeline>
+<codeline lineno="8"><highlight class="comment">met:</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"></highlight></codeline>
+<codeline lineno="10"><highlight class="comment">*<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>retain<sp/>the<sp/>above<sp/>copyright</highlight></codeline>
+<codeline lineno="11"><highlight class="comment">notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer.</highlight></codeline>
+<codeline lineno="12"><highlight class="comment">*<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">copyright<sp/>notice,<sp/>this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">in<sp/>the<sp/>documentation<sp/>and/or<sp/>other<sp/>materials<sp/>provided<sp/>with<sp/>the</highlight></codeline>
+<codeline lineno="15"><highlight class="comment">distribution.</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"></highlight></codeline>
+<codeline lineno="17"><highlight class="comment">THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS</highlight></codeline>
+<codeline lineno="18"><highlight class="comment">&quot;AS<sp/>IS&quot;<sp/>AND<sp/>ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT</highlight></codeline>
+<codeline lineno="19"><highlight class="comment">LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED<sp/>WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR</highlight></codeline>
+<codeline lineno="20"><highlight class="comment">A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE<sp/>DISCLAIMED.<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT</highlight></codeline>
+<codeline lineno="21"><highlight class="comment">OWNER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR<sp/>ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,</highlight></codeline>
+<codeline lineno="22"><highlight class="comment">SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES<sp/>(INCLUDING,<sp/>BUT<sp/>NOT</highlight></codeline>
+<codeline lineno="23"><highlight class="comment">LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;<sp/>LOSS<sp/>OF<sp/>USE,</highlight></codeline>
+<codeline lineno="24"><highlight class="comment">DATA,<sp/>OR<sp/>PROFITS;<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON<sp/>ANY</highlight></codeline>
+<codeline lineno="25"><highlight class="comment">THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT</highlight></codeline>
+<codeline lineno="26"><highlight class="comment">(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE</highlight></codeline>
+<codeline lineno="27"><highlight class="comment">OF<sp/>THIS<sp/>SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"></highlight></codeline>
+<codeline lineno="29"><highlight class="comment">You<sp/>can<sp/>contact<sp/>the<sp/>author<sp/>at<sp/>:</highlight></codeline>
+<codeline lineno="30"><highlight class="comment">-<sp/>xxHash<sp/>source<sp/>repository<sp/>:<sp/>http://code.google.com/p/xxhash/</highlight></codeline>
+<codeline lineno="31"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//**************************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Tuning<sp/>parameters</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//**************************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Unaligned<sp/>memory<sp/>access<sp/>is<sp/>automatically<sp/>enabled<sp/>for<sp/>&quot;common&quot;<sp/>CPU,<sp/>such<sp/>as<sp/>x86.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>For<sp/>others<sp/>CPU,<sp/>the<sp/>compiler<sp/>will<sp/>be<sp/>more<sp/>cautious,<sp/>and<sp/>insert<sp/>extra<sp/>code<sp/>to<sp/>ensure<sp/>aligned<sp/>access<sp/>is<sp/>respected.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="comment">//<sp/>If<sp/>you<sp/>know<sp/>your<sp/>target<sp/>CPU<sp/>supports<sp/>unaligned<sp/>memory<sp/>access,<sp/>you<sp/>want<sp/>to<sp/>force<sp/>this<sp/>option<sp/>manually<sp/>to<sp/>improve<sp/>performance.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="comment">//<sp/>You<sp/>can<sp/>also<sp/>enable<sp/>this<sp/>parameter<sp/>if<sp/>you<sp/>know<sp/>your<sp/>input<sp/>data<sp/>will<sp/>always<sp/>be<sp/>aligned<sp/>(boundaries<sp/>of<sp/>4,<sp/>for<sp/>U32).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__ARM_FEATURE_UNALIGNED)<sp/>||<sp/>defined(__i386)<sp/>||<sp/>defined(_M_IX86)<sp/>||<sp/>defined(__x86_64__)<sp/>||<sp/>defined(_M_X64)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/>define<sp/>XXH_USE_UNALIGNED_ACCESS<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XXH_ACCEPT_NULL_INPUT_POINTER<sp/>:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">//<sp/>If<sp/>the<sp/>input<sp/>pointer<sp/>is<sp/>a<sp/>null<sp/>pointer,<sp/>xxHash<sp/>default<sp/>behavior<sp/>is<sp/>to<sp/>trigger<sp/>a<sp/>memory<sp/>access<sp/>error,<sp/>since<sp/>it<sp/>is<sp/>a<sp/>bad<sp/>pointer.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight><highlight class="comment">//<sp/>When<sp/>this<sp/>option<sp/>is<sp/>enabled,<sp/>xxHash<sp/>output<sp/>for<sp/>null<sp/>input<sp/>pointers<sp/>will<sp/>be<sp/>the<sp/>same<sp/>as<sp/>a<sp/>null-length<sp/>input.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>option<sp/>has<sp/>a<sp/>very<sp/>small<sp/>performance<sp/>cost<sp/>(only<sp/>measurable<sp/>on<sp/>small<sp/>inputs).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>By<sp/>default,<sp/>this<sp/>option<sp/>is<sp/>disabled.<sp/>To<sp/>enable<sp/>it,<sp/>uncomment<sp/>below<sp/>define<sp/>:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//#define<sp/>XXH_ACCEPT_NULL_INPUT_POINTER<sp/>1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">//<sp/>XXH_FORCE_NATIVE_FORMAT<sp/>:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">//<sp/>By<sp/>default,<sp/>xxHash<sp/>library<sp/>provides<sp/>endian-independant<sp/>Hash<sp/>values,<sp/>based<sp/>on<sp/>little-endian<sp/>convention.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Results<sp/>are<sp/>therefore<sp/>identical<sp/>for<sp/>little-endian<sp/>and<sp/>big-endian<sp/>CPU.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>comes<sp/>at<sp/>a<sp/>performance<sp/>cost<sp/>for<sp/>big-endian<sp/>CPU,<sp/>since<sp/>some<sp/>swapping<sp/>is<sp/>required<sp/>to<sp/>emulate<sp/>little-endian<sp/>format.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Should<sp/>endian-independance<sp/>be<sp/>of<sp/>no<sp/>importance<sp/>for<sp/>your<sp/>application,<sp/>you<sp/>may<sp/>set<sp/>the<sp/>#define<sp/>below<sp/>to<sp/>1.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">//<sp/>It<sp/>will<sp/>improve<sp/>speed<sp/>for<sp/>Big-endian<sp/>CPU.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>option<sp/>has<sp/>no<sp/>impact<sp/>on<sp/>Little_Endian<sp/>CPU.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="xxhash_8c_1afd620e67e55f7db0b0d700af3edff885" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>XXH_FORCE_NATIVE_FORMAT<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="comment">//**************************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Compiler<sp/>Specific<sp/>Options</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">//**************************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Disable<sp/>some<sp/>Visual<sp/>warning<sp/>messages</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>_MSC_VER<sp/><sp/>//<sp/>Visual<sp/>Studio</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/>pragma<sp/>warning(disable<sp/>:<sp/>4127)<sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>disable:<sp/>C4127:<sp/>conditional<sp/>expression<sp/>is<sp/>constant</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>_MSC_VER<sp/><sp/><sp/><sp/>//<sp/>Visual<sp/>Studio</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/>define<sp/>FORCE_INLINE<sp/>static<sp/>__forceinline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="preprocessor">#else<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/>ifdef<sp/>__GNUC__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/>define<sp/>FORCE_INLINE<sp/>static<sp/>inline<sp/>__attribute__((always_inline))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/>else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="xxhash_8c_1ac032d233a8ebfcd82fd49d0824eefb18" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/>define<sp/>FORCE_INLINE<sp/>static<sp/>inline</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/>endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="comment">//**************************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Includes<sp/>&amp;<sp/>Memory<sp/>related<sp/>functions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="comment">//**************************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="xxhash_8h" kindref="compound">xxhash.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Modify<sp/>the<sp/>local<sp/>functions<sp/>below<sp/>should<sp/>you<sp/>wish<sp/>to<sp/>use<sp/>some<sp/>other<sp/>memory<sp/>related<sp/>routines</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="comment">//<sp/>for<sp/>malloc(),<sp/>free()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="xxhash_8c_1a9572f7bf38985424889eaf9410bb5117" refkind="member"><highlight class="normal"><ref refid="xxhash_8c_1ac032d233a8ebfcd82fd49d0824eefb18" kindref="member">FORCE_INLINE</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="xxhash_8c_1a9572f7bf38985424889eaf9410bb5117" kindref="member">XXH_malloc</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>s)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>malloc(s);<sp/>}</highlight></codeline>
+<codeline lineno="89" refid="xxhash_8c_1a5b76a6a057004859868b41d12681981e" refkind="member"><highlight class="normal"><ref refid="xxhash_8c_1ac032d233a8ebfcd82fd49d0824eefb18" kindref="member">FORCE_INLINE</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/><ref refid="xxhash_8c_1a5b76a6a057004859868b41d12681981e" kindref="member">XXH_free</ref><sp/><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>p)<sp/><sp/>{<sp/>free(p);<sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="comment">//<sp/>for<sp/>memcpy()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92" refid="xxhash_8c_1a794805594aedd7450e014c2cb441d3a0" refkind="member"><highlight class="normal"><ref refid="xxhash_8c_1ac032d233a8ebfcd82fd49d0824eefb18" kindref="member">FORCE_INLINE</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="xxhash_8c_1a794805594aedd7450e014c2cb441d3a0" kindref="member">XXH_memcpy</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>dest,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>src,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>memcpy(dest,src,size);<sp/>}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="comment">//**************************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Basic<sp/>Types</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="comment">//**************************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined<sp/>(__STDC_VERSION__)<sp/>&amp;&amp;<sp/>__STDC_VERSION__<sp/>&gt;=<sp/>199901L<sp/><sp/><sp/>//<sp/>C99</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>include<sp/>&lt;<ref refid="stdint_8h" kindref="compound">stdint.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref><sp/><sp/><ref refid="xxhash_8c_1a4ae1dab0fb4b072a66584546209e7d58" kindref="member">BYTE</ref>;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a273cf69d639a59973b6019625df33e30" kindref="member">uint16_t</ref><sp/><ref refid="xxhash_8c_1adf928e51a60dba0df29d615401cc55a8" kindref="member">U16</ref>;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/><ref refid="xxhash_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref>;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><sp/><ref refid="stdint_8h_1ab1967d8591af1a4e48c37fd2b0f184d0" kindref="member">int32_t</ref><sp/><ref refid="xxhash_8c_1a57a2244776e01ad620c556de58eb7880" kindref="member">S32</ref>;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/><ref refid="xxhash_8c_1a24c386d3758eba951eb7532fdbb45804" kindref="member">U64</ref>;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106" refid="xxhash_8c_1a4ae1dab0fb4b072a66584546209e7d58" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="xxhash_8c_1a4ae1dab0fb4b072a66584546209e7d58" kindref="member">BYTE</ref>;</highlight></codeline>
+<codeline lineno="107" refid="xxhash_8c_1adf928e51a60dba0df29d615401cc55a8" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">short</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><ref refid="xxhash_8c_1adf928e51a60dba0df29d615401cc55a8" kindref="member">U16</ref>;</highlight></codeline>
+<codeline lineno="108" refid="xxhash_8c_1ac3df7cf3c8cb172a588adec881447d68" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="xxhash_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref>;</highlight></codeline>
+<codeline lineno="109" refid="xxhash_8c_1a57a2244776e01ad620c556de58eb7880" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keywordtype">signed</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="xxhash_8c_1a57a2244776e01ad620c556de58eb7880" kindref="member">S32</ref>;</highlight></codeline>
+<codeline lineno="110" refid="xxhash_8c_1a24c386d3758eba951eb7532fdbb45804" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/><ref refid="xxhash_8c_1a24c386d3758eba951eb7532fdbb45804" kindref="member">U64</ref>;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(__GNUC__)<sp/><sp/>&amp;&amp;<sp/>!defined(XXH_USE_UNALIGNED_ACCESS)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/>define<sp/>_PACKED_XXH<sp/>__attribute__<sp/>((packed))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="xxhash_8c_1ade97e94b3a4ec6a61b6150fdd8f8052c" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/>define<sp/>_PACKED_XXH</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!defined(XXH_USE_UNALIGNED_ACCESS)<sp/>&amp;&amp;<sp/>!defined(__GNUC__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/>ifdef<sp/>__IBMC__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/>pragma<sp/>pack(1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/>else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/><sp/>pragma<sp/>pack(push,<sp/>1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/>endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128" refid="struct___u32___s_1a9e62321efa6315b0fb8b252add8029b4" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct___u32___s" kindref="compound">_U32_S</ref><sp/>{<sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/><ref refid="struct___u32___s_1a9e62321efa6315b0fb8b252add8029b4" kindref="member">v</ref>;<sp/>}<sp/><ref refid="xxhash_8c_1ade97e94b3a4ec6a61b6150fdd8f8052c" kindref="member">_PACKED_XXH</ref><sp/><ref refid="xxhash_8c_1aa56cebb14699c76a8e2c3ed1b23a569f" kindref="member">U32_S_XXH</ref>;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>!defined(XXH_USE_UNALIGNED_ACCESS)<sp/>&amp;&amp;<sp/>!defined(__GNUC__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/>pragma<sp/>pack(pop)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134" refid="xxhash_8c_1ae4b4181194ae9eeb3ef87413566be546" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>A32_XXH(x)<sp/>(((U32_S_XXH<sp/>*)(x))-&gt;v)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="comment">//***************************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Compiler-specific<sp/>Functions<sp/>and<sp/>Macros</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="comment">//***************************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140" refid="xxhash_8c_1adbba0f726fc66d7100916c683b7568ae" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>GCC_VERSION<sp/>(__GNUC__<sp/>*<sp/>100<sp/>+<sp/>__GNUC_MINOR__)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Note<sp/>:<sp/>although<sp/>_rotl<sp/>exists<sp/>for<sp/>minGW<sp/>(GCC<sp/>under<sp/>windows),<sp/>performance<sp/>seems<sp/>poor</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(_MSC_VER)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/>define<sp/>XXH_rotl32(x,r)<sp/>_rotl(x,r)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146" refid="xxhash_8c_1a70a4b202f9523a2a811da16cde3f52eb" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/>define<sp/>XXH_rotl32(x,r)<sp/>((x<sp/>&lt;&lt;<sp/>r)<sp/>|<sp/>(x<sp/>&gt;&gt;<sp/>(32<sp/>-<sp/>r)))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(_MSC_VER)<sp/><sp/><sp/><sp/><sp/>//<sp/>Visual<sp/>Studio</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/>define<sp/>XXH_swap32<sp/>_byteswap_ulong</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight><highlight class="preprocessor">#elif<sp/>GCC_VERSION<sp/>&gt;=<sp/>403</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/>define<sp/>XXH_swap32<sp/>__builtin_bswap32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/>XXH_swap32<sp/>(<ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/>x)<sp/>{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><sp/>((x<sp/>&lt;&lt;<sp/>24)<sp/>&amp;<sp/>0xff000000<sp/>)<sp/>|</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((x<sp/>&lt;&lt;<sp/><sp/>8)<sp/>&amp;<sp/>0x00ff0000<sp/>)<sp/>|</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((x<sp/>&gt;&gt;<sp/><sp/>8)<sp/>&amp;<sp/>0x0000ff00<sp/>)<sp/>|</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((x<sp/>&gt;&gt;<sp/>24)<sp/>&amp;<sp/>0x000000ff<sp/>);}</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight><highlight class="comment">//**************************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Constants</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight><highlight class="comment">//**************************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165" refid="xxhash_8c_1a2adf937638c249c83681816c9ce9d3c6" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PRIME32_1<sp/><sp/><sp/>2654435761U</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166" refid="xxhash_8c_1a6cfe9a3ed9c4749c8f57afe91c9749a1" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PRIME32_2<sp/><sp/><sp/>2246822519U</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167" refid="xxhash_8c_1a2f4882ee52b72f7ddb05389eb8ea52c8" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PRIME32_3<sp/><sp/><sp/>3266489917U</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168" refid="xxhash_8c_1ae99c796b385596b539bdc1e29cb1f713" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PRIME32_4<sp/><sp/><sp/><sp/>668265263U</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169" refid="xxhash_8c_1a9d6d9526a72bc430e549171e147b9b08" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>PRIME32_5<sp/><sp/><sp/><sp/>374761393U</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="comment">//**************************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Architecture<sp/>Macros</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight><highlight class="comment">//**************************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175" refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9ab42c8f08d82d02dee14a685dc4c39539" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{<sp/><ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9ae38c7420bad548564395edb8cb4b6b60" kindref="member">XXH_bigEndian</ref>=0,<sp/><ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9ab42c8f08d82d02dee14a685dc4c39539" kindref="member">XXH_littleEndian</ref>=1<sp/>}<sp/><ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9" kindref="member">XXH_endianess</ref>;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>XXH_CPU_LITTLE_ENDIAN<sp/><sp/><sp/>//<sp/>It<sp/>is<sp/>possible<sp/>to<sp/>define<sp/>XXH_CPU_LITTLE_ENDIAN<sp/>externally,<sp/>for<sp/>example<sp/>using<sp/>a<sp/>compiler<sp/>switch</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>one<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="178" refid="xxhash_8c_1a408fac02658eb4a81f7a1877f1ca3b3f" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>define<sp/>XXH_CPU_LITTLE_ENDIAN<sp/><sp/><sp/>(*(char*)(&amp;one))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight><highlight class="comment">//**************************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Macros</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight><highlight class="comment">//**************************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="185" refid="xxhash_8c_1a3bc33577f47cf99f8b35a52d87c642c4" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>XXH_STATIC_ASSERT(c)<sp/><sp/><sp/>{<sp/>enum<sp/>{<sp/>XXH_static_assert<sp/>=<sp/>1/(!!(c))<sp/>};<sp/>}<sp/><sp/><sp/><sp/>//<sp/>use<sp/>only<sp/>*after*<sp/>variable<sp/>declarations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight><highlight class="comment">//****************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Memory<sp/>reads</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight><highlight class="comment">//****************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191" refid="xxhash_8c_1adec56fccd4f83e34902b6b09ecccfff5ab082c14fd7eef12bcb1dfda2e813586f" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{<sp/><ref refid="xxhash_8c_1adec56fccd4f83e34902b6b09ecccfff5a41340c9f33fe739cef7a1c56dc617194" kindref="member">XXH_aligned</ref>,<sp/><ref refid="xxhash_8c_1adec56fccd4f83e34902b6b09ecccfff5ab082c14fd7eef12bcb1dfda2e813586f" kindref="member">XXH_unaligned</ref><sp/>}<sp/><ref refid="xxhash_8c_1adec56fccd4f83e34902b6b09ecccfff5" kindref="member">XXH_alignment</ref>;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193" refid="xxhash_8c_1affc2ae1484ba2fc666d46488c10028f0" refkind="member"><highlight class="normal"><ref refid="xxhash_8c_1ac032d233a8ebfcd82fd49d0824eefb18" kindref="member">FORCE_INLINE</ref><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/><ref refid="xxhash_8c_1affc2ae1484ba2fc666d46488c10028f0" kindref="member">XXH_readLE32_align</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref>*<sp/>ptr,<sp/><ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9" kindref="member">XXH_endianess</ref><sp/>endian,<sp/><ref refid="xxhash_8c_1adec56fccd4f83e34902b6b09ecccfff5" kindref="member">XXH_alignment</ref><sp/>align)</highlight></codeline>
+<codeline lineno="194"><highlight class="normal">{<sp/></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(align==<ref refid="xxhash_8c_1adec56fccd4f83e34902b6b09ecccfff5ab082c14fd7eef12bcb1dfda2e813586f" kindref="member">XXH_unaligned</ref>)</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>endian==<ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9ab42c8f08d82d02dee14a685dc4c39539" kindref="member">XXH_littleEndian</ref><sp/>?<sp/><ref refid="xxhash_8c_1ae4b4181194ae9eeb3ef87413566be546" kindref="member">A32_XXH</ref>(ptr)<sp/>:<sp/>XXH_swap32(<ref refid="xxhash_8c_1ae4b4181194ae9eeb3ef87413566be546" kindref="member">A32_XXH</ref>(ptr));<sp/></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>endian==<ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9ab42c8f08d82d02dee14a685dc4c39539" kindref="member">XXH_littleEndian</ref><sp/>?<sp/>*ptr<sp/>:<sp/>XXH_swap32(*ptr);<sp/></highlight></codeline>
+<codeline lineno="199"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201" refid="xxhash_8c_1a35cc0677340176473e3f3650520afe94" refkind="member"><highlight class="normal"><ref refid="xxhash_8c_1ac032d233a8ebfcd82fd49d0824eefb18" kindref="member">FORCE_INLINE</ref><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/><ref refid="xxhash_8c_1a35cc0677340176473e3f3650520afe94" kindref="member">XXH_readLE32</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref>*<sp/>ptr,<sp/><ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9" kindref="member">XXH_endianess</ref><sp/>endian)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="xxhash_8c_1affc2ae1484ba2fc666d46488c10028f0" kindref="member">XXH_readLE32_align</ref>(ptr,<sp/>endian,<sp/><ref refid="xxhash_8c_1adec56fccd4f83e34902b6b09ecccfff5ab082c14fd7eef12bcb1dfda2e813586f" kindref="member">XXH_unaligned</ref>);<sp/>}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight><highlight class="comment">//****************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Simple<sp/>Hash<sp/>Functions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight><highlight class="comment">//****************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="207" refid="xxhash_8c_1a8e9fe56b765f2e078843b976ec69b9db" refkind="member"><highlight class="normal"><ref refid="xxhash_8c_1ac032d233a8ebfcd82fd49d0824eefb18" kindref="member">FORCE_INLINE</ref><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/><ref refid="xxhash_8c_1a8e9fe56b765f2e078843b976ec69b9db" kindref="member">XXH32_endian_align</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>input,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>len,<sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/>seed,<sp/><ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9" kindref="member">XXH_endianess</ref><sp/>endian,<sp/><ref refid="xxhash_8c_1adec56fccd4f83e34902b6b09ecccfff5" kindref="member">XXH_alignment</ref><sp/>align)</highlight></codeline>
+<codeline lineno="208"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="lz4_8c_1a4ae1dab0fb4b072a66584546209e7d58" kindref="member">BYTE</ref>*<sp/>p<sp/>=<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="lz4_8c_1a4ae1dab0fb4b072a66584546209e7d58" kindref="member">BYTE</ref>*)input;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="lz4_8c_1a4ae1dab0fb4b072a66584546209e7d58" kindref="member">BYTE</ref>*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>bEnd<sp/>=<sp/>p<sp/>+<sp/>len;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/>h32;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>XXH_ACCEPT_NULL_INPUT_POINTER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(p==NULL)<sp/>{<sp/>len=0;<sp/>p=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="lz4_8c_1a4ae1dab0fb4b072a66584546209e7d58" kindref="member">BYTE</ref>*)(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">)16;<sp/>}</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(len&gt;=16)</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="lz4_8c_1a4ae1dab0fb4b072a66584546209e7d58" kindref="member">BYTE</ref>*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>limit<sp/>=<sp/>bEnd<sp/>-<sp/>16;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/>v1<sp/>=<sp/>seed<sp/>+<sp/><ref refid="xxhash_8c_1a2adf937638c249c83681816c9ce9d3c6" kindref="member">PRIME32_1</ref><sp/>+<sp/><ref refid="xxhash_8c_1a6cfe9a3ed9c4749c8f57afe91c9749a1" kindref="member">PRIME32_2</ref>;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/>v2<sp/>=<sp/>seed<sp/>+<sp/><ref refid="xxhash_8c_1a6cfe9a3ed9c4749c8f57afe91c9749a1" kindref="member">PRIME32_2</ref>;</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/>v3<sp/>=<sp/>seed<sp/>+<sp/>0;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/>v4<sp/>=<sp/>seed<sp/>-<sp/><ref refid="xxhash_8c_1a2adf937638c249c83681816c9ce9d3c6" kindref="member">PRIME32_1</ref>;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v1<sp/>+=<sp/><ref refid="xxhash_8c_1affc2ae1484ba2fc666d46488c10028f0" kindref="member">XXH_readLE32_align</ref>((</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref>*)p,<sp/>endian,<sp/>align)<sp/>*<sp/><ref refid="xxhash_8c_1a6cfe9a3ed9c4749c8f57afe91c9749a1" kindref="member">PRIME32_2</ref>;<sp/>v1<sp/>=<sp/><ref refid="xxhash_8c_1a70a4b202f9523a2a811da16cde3f52eb" kindref="member">XXH_rotl32</ref>(v1,<sp/>13);<sp/>v1<sp/>*=<sp/><ref refid="xxhash_8c_1a2adf937638c249c83681816c9ce9d3c6" kindref="member">PRIME32_1</ref>;<sp/>p+=4;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v2<sp/>+=<sp/><ref refid="xxhash_8c_1affc2ae1484ba2fc666d46488c10028f0" kindref="member">XXH_readLE32_align</ref>((</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref>*)p,<sp/>endian,<sp/>align)<sp/>*<sp/><ref refid="xxhash_8c_1a6cfe9a3ed9c4749c8f57afe91c9749a1" kindref="member">PRIME32_2</ref>;<sp/>v2<sp/>=<sp/><ref refid="xxhash_8c_1a70a4b202f9523a2a811da16cde3f52eb" kindref="member">XXH_rotl32</ref>(v2,<sp/>13);<sp/>v2<sp/>*=<sp/><ref refid="xxhash_8c_1a2adf937638c249c83681816c9ce9d3c6" kindref="member">PRIME32_1</ref>;<sp/>p+=4;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v3<sp/>+=<sp/><ref refid="xxhash_8c_1affc2ae1484ba2fc666d46488c10028f0" kindref="member">XXH_readLE32_align</ref>((</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref>*)p,<sp/>endian,<sp/>align)<sp/>*<sp/><ref refid="xxhash_8c_1a6cfe9a3ed9c4749c8f57afe91c9749a1" kindref="member">PRIME32_2</ref>;<sp/>v3<sp/>=<sp/><ref refid="xxhash_8c_1a70a4b202f9523a2a811da16cde3f52eb" kindref="member">XXH_rotl32</ref>(v3,<sp/>13);<sp/>v3<sp/>*=<sp/><ref refid="xxhash_8c_1a2adf937638c249c83681816c9ce9d3c6" kindref="member">PRIME32_1</ref>;<sp/>p+=4;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v4<sp/>+=<sp/><ref refid="xxhash_8c_1affc2ae1484ba2fc666d46488c10028f0" kindref="member">XXH_readLE32_align</ref>((</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref>*)p,<sp/>endian,<sp/>align)<sp/>*<sp/><ref refid="xxhash_8c_1a6cfe9a3ed9c4749c8f57afe91c9749a1" kindref="member">PRIME32_2</ref>;<sp/>v4<sp/>=<sp/><ref refid="xxhash_8c_1a70a4b202f9523a2a811da16cde3f52eb" kindref="member">XXH_rotl32</ref>(v4,<sp/>13);<sp/>v4<sp/>*=<sp/><ref refid="xxhash_8c_1a2adf937638c249c83681816c9ce9d3c6" kindref="member">PRIME32_1</ref>;<sp/>p+=4;</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(p&lt;=limit);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>h32<sp/>=<sp/><ref refid="xxhash_8c_1a70a4b202f9523a2a811da16cde3f52eb" kindref="member">XXH_rotl32</ref>(v1,<sp/>1)<sp/>+<sp/><ref refid="xxhash_8c_1a70a4b202f9523a2a811da16cde3f52eb" kindref="member">XXH_rotl32</ref>(v2,<sp/>7)<sp/>+<sp/><ref refid="xxhash_8c_1a70a4b202f9523a2a811da16cde3f52eb" kindref="member">XXH_rotl32</ref>(v3,<sp/>12)<sp/>+<sp/><ref refid="xxhash_8c_1a70a4b202f9523a2a811da16cde3f52eb" kindref="member">XXH_rotl32</ref>(v4,<sp/>18);</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>h32<sp/><sp/>=<sp/>seed<sp/>+<sp/><ref refid="xxhash_8c_1a9d6d9526a72bc430e549171e147b9b08" kindref="member">PRIME32_5</ref>;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>h32<sp/>+=<sp/>(<ref refid="xxhash_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref>)<sp/>len;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(p&lt;=bEnd-4)</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>h32<sp/>+=<sp/><ref refid="xxhash_8c_1affc2ae1484ba2fc666d46488c10028f0" kindref="member">XXH_readLE32_align</ref>((</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref>*)p,<sp/>endian,<sp/>align)<sp/>*<sp/><ref refid="xxhash_8c_1a2f4882ee52b72f7ddb05389eb8ea52c8" kindref="member">PRIME32_3</ref>;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>h32<sp/><sp/>=<sp/><ref refid="xxhash_8c_1a70a4b202f9523a2a811da16cde3f52eb" kindref="member">XXH_rotl32</ref>(h32,<sp/>17)<sp/>*<sp/><ref refid="xxhash_8c_1ae99c796b385596b539bdc1e29cb1f713" kindref="member">PRIME32_4</ref><sp/>;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p+=4;</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(p&lt;bEnd)</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>h32<sp/>+=<sp/>(*p)<sp/>*<sp/><ref refid="xxhash_8c_1a9d6d9526a72bc430e549171e147b9b08" kindref="member">PRIME32_5</ref>;</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>h32<sp/>=<sp/><ref refid="xxhash_8c_1a70a4b202f9523a2a811da16cde3f52eb" kindref="member">XXH_rotl32</ref>(h32,<sp/>11)<sp/>*<sp/><ref refid="xxhash_8c_1a2adf937638c249c83681816c9ce9d3c6" kindref="member">PRIME32_1</ref><sp/>;</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p++;</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/>h32<sp/>^=<sp/>h32<sp/>&gt;&gt;<sp/>15;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/>h32<sp/>*=<sp/><ref refid="xxhash_8c_1a6cfe9a3ed9c4749c8f57afe91c9749a1" kindref="member">PRIME32_2</ref>;</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/>h32<sp/>^=<sp/>h32<sp/>&gt;&gt;<sp/>13;</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/>h32<sp/>*=<sp/><ref refid="xxhash_8c_1a2f4882ee52b72f7ddb05389eb8ea52c8" kindref="member">PRIME32_3</ref>;</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/>h32<sp/>^=<sp/>h32<sp/>&gt;&gt;<sp/>16;</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>h32;</highlight></codeline>
+<codeline lineno="263"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight></codeline>
+<codeline lineno="266" refid="xxhash_8h_1a527858ec33a0c2effc026ddd8667eaef" refkind="member"><highlight class="normal"><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/><ref refid="xxhash_8c_1aeefc29f525feb758b0d0331f09d5ab88" kindref="member">XXH32</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>input,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>len,<sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/>seed)</highlight></codeline>
+<codeline lineno="267"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Simple<sp/>version,<sp/>good<sp/>for<sp/>code<sp/>maintenance,<sp/>but<sp/>unfortunately<sp/>slow<sp/>for<sp/>small<sp/>inputs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="db__test_8cc_1a42432b4356adce5579ccf597f6e83e54" kindref="member">state</ref><sp/>=<sp/><ref refid="xxhash_8c_1a14dea44906862dbf59aad697342aad6d" kindref="member">XXH32_init</ref>(seed);</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="xxhash_8c_1a7cc3b7efa347c6a8a632b92e9d796826" kindref="member">XXH32_update</ref>(state,<sp/>input,<sp/>len);</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="xxhash_8c_1a0976366f488672f0fe1e4ee81b63345f" kindref="member">XXH32_digest</ref>(state);</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9" kindref="member">XXH_endianess</ref><sp/>endian_detected<sp/>=<sp/>(<ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9" kindref="member">XXH_endianess</ref>)<ref refid="xxhash_8c_1a408fac02658eb4a81f7a1877f1ca3b3f" kindref="member">XXH_CPU_LITTLE_ENDIAN</ref>;</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/>if<sp/>!defined(XXH_USE_UNALIGNED_ACCESS)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((((</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">)input)<sp/>&amp;<sp/>3))<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Input<sp/>is<sp/>aligned,<sp/>let&apos;s<sp/>leverage<sp/>the<sp/>speed<sp/>advantage</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((endian_detected==<ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9ab42c8f08d82d02dee14a685dc4c39539" kindref="member">XXH_littleEndian</ref>)<sp/>||<sp/><ref refid="xxhash_8c_1afd620e67e55f7db0b0d700af3edff885" kindref="member">XXH_FORCE_NATIVE_FORMAT</ref>)</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="xxhash_8c_1a8e9fe56b765f2e078843b976ec69b9db" kindref="member">XXH32_endian_align</ref>(input,<sp/>len,<sp/>seed,<sp/><ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9ab42c8f08d82d02dee14a685dc4c39539" kindref="member">XXH_littleEndian</ref>,<sp/><ref refid="xxhash_8c_1adec56fccd4f83e34902b6b09ecccfff5a41340c9f33fe739cef7a1c56dc617194" kindref="member">XXH_aligned</ref>);</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="xxhash_8c_1a8e9fe56b765f2e078843b976ec69b9db" kindref="member">XXH32_endian_align</ref>(input,<sp/>len,<sp/>seed,<sp/><ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9ae38c7420bad548564395edb8cb4b6b60" kindref="member">XXH_bigEndian</ref>,<sp/><ref refid="xxhash_8c_1adec56fccd4f83e34902b6b09ecccfff5a41340c9f33fe739cef7a1c56dc617194" kindref="member">XXH_aligned</ref>);</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/>endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((endian_detected==<ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9ab42c8f08d82d02dee14a685dc4c39539" kindref="member">XXH_littleEndian</ref>)<sp/>||<sp/><ref refid="xxhash_8c_1afd620e67e55f7db0b0d700af3edff885" kindref="member">XXH_FORCE_NATIVE_FORMAT</ref>)</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="xxhash_8c_1a8e9fe56b765f2e078843b976ec69b9db" kindref="member">XXH32_endian_align</ref>(input,<sp/>len,<sp/>seed,<sp/><ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9ab42c8f08d82d02dee14a685dc4c39539" kindref="member">XXH_littleEndian</ref>,<sp/><ref refid="xxhash_8c_1adec56fccd4f83e34902b6b09ecccfff5ab082c14fd7eef12bcb1dfda2e813586f" kindref="member">XXH_unaligned</ref>);</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="xxhash_8c_1a8e9fe56b765f2e078843b976ec69b9db" kindref="member">XXH32_endian_align</ref>(input,<sp/>len,<sp/>seed,<sp/><ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9ae38c7420bad548564395edb8cb4b6b60" kindref="member">XXH_bigEndian</ref>,<sp/><ref refid="xxhash_8c_1adec56fccd4f83e34902b6b09ecccfff5ab082c14fd7eef12bcb1dfda2e813586f" kindref="member">XXH_unaligned</ref>);</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight><highlight class="comment">//****************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Advanced<sp/>Hash<sp/>Functions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight><highlight class="comment">//****************************</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"></highlight></codeline>
+<codeline lineno="298" refid="struct_x_x_h__state32__t" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_x_x_h__state32__t" kindref="compound">XXH_state32_t</ref></highlight></codeline>
+<codeline lineno="299"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="300" refid="struct_x_x_h__state32__t_1a968184eb96ed6c2c47e77d0e7b2562e2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="lz4_8c_1a24c386d3758eba951eb7532fdbb45804" kindref="member">U64</ref><sp/><ref refid="struct_x_x_h__state32__t_1a968184eb96ed6c2c47e77d0e7b2562e2" kindref="member">total_len</ref>;</highlight></codeline>
+<codeline lineno="301" refid="struct_x_x_h__state32__t_1aa198d97d2ccb2e940e58c5676dd07b9f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/><ref refid="struct_x_x_h__state32__t_1aa198d97d2ccb2e940e58c5676dd07b9f" kindref="member">seed</ref>;</highlight></codeline>
+<codeline lineno="302" refid="struct_x_x_h__state32__t_1a52d93caf96ab3cfa4d19faa232627402" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/><ref refid="struct_x_x_h__state32__t_1a52d93caf96ab3cfa4d19faa232627402" kindref="member">v1</ref>;</highlight></codeline>
+<codeline lineno="303" refid="struct_x_x_h__state32__t_1a77ca5f7d04bf820d40c0b849e69c932b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/><ref refid="struct_x_x_h__state32__t_1a77ca5f7d04bf820d40c0b849e69c932b" kindref="member">v2</ref>;</highlight></codeline>
+<codeline lineno="304" refid="struct_x_x_h__state32__t_1a766430cd39ae981afd8a64d10329ec3d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/><ref refid="struct_x_x_h__state32__t_1a766430cd39ae981afd8a64d10329ec3d" kindref="member">v3</ref>;</highlight></codeline>
+<codeline lineno="305" refid="struct_x_x_h__state32__t_1a33ede79f26b162219c1475e39766148d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/><ref refid="struct_x_x_h__state32__t_1a33ede79f26b162219c1475e39766148d" kindref="member">v4</ref>;</highlight></codeline>
+<codeline lineno="306" refid="struct_x_x_h__state32__t_1a7d511c88afd3fc22cbdff9153af8424d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="struct_x_x_h__state32__t_1a7d511c88afd3fc22cbdff9153af8424d" kindref="member">memsize</ref>;</highlight></codeline>
+<codeline lineno="307" refid="struct_x_x_h__state32__t_1ade592624e217dcdd46f37634992c2f98" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="struct_x_x_h__state32__t_1ade592624e217dcdd46f37634992c2f98" kindref="member">memory</ref>[16];</highlight></codeline>
+<codeline lineno="308"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311" refid="xxhash_8h_1ac87e4599905f4e2d6d28e1499b67dfe2" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="xxhash_8c_1a563951f8d161bcee0edbc43b59c59244" kindref="member">XXH32_sizeofState</ref>()<sp/></highlight></codeline>
+<codeline lineno="312"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="xxhash_8c_1a3bc33577f47cf99f8b35a52d87c642c4" kindref="member">XXH_STATIC_ASSERT</ref>(<ref refid="xxhash_8h_1a7193b472201c133d4edb218227b27f2b" kindref="member">XXH32_SIZEOFSTATE</ref><sp/>&gt;=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="struct_x_x_h__state32__t" kindref="compound">XXH_state32_t</ref>));<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>compilation<sp/>error<sp/>here<sp/>means<sp/>XXH32_SIZEOFSTATE<sp/>is<sp/>not<sp/>large<sp/>enough</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_x_x_h__state32__t" kindref="compound">XXH_state32_t</ref>);<sp/></highlight></codeline>
+<codeline lineno="315"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight></codeline>
+<codeline lineno="318" refid="xxhash_8h_1a9760c389eaa825239fdcb08ab09a4b03" refkind="member"><highlight class="normal"><ref refid="xxhash_8h_1a5020905455674b8c83c1dbc73f0d3534" kindref="member">XXH_errorcode</ref><sp/><ref refid="xxhash_8c_1aa0c3ae88a7c58b593dd465786729d53b" kindref="member">XXH32_resetState</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>state_in,<sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/><ref refid="struct_x_x_h__state32__t_1aa198d97d2ccb2e940e58c5676dd07b9f" kindref="member">seed</ref>)</highlight></codeline>
+<codeline lineno="319"><highlight class="normal">{<sp/></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_x_x_h__state32__t" kindref="compound">XXH_state32_t</ref><sp/>*<sp/><ref refid="db__test_8cc_1a42432b4356adce5579ccf597f6e83e54" kindref="member">state</ref><sp/>=<sp/>(</highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_x_x_h__state32__t" kindref="compound">XXH_state32_t</ref><sp/>*)<sp/>state_in;</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1aa198d97d2ccb2e940e58c5676dd07b9f" kindref="member">seed</ref><sp/>=<sp/><ref refid="struct_x_x_h__state32__t_1aa198d97d2ccb2e940e58c5676dd07b9f" kindref="member">seed</ref>;</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a52d93caf96ab3cfa4d19faa232627402" kindref="member">v1</ref><sp/>=<sp/>seed<sp/>+<sp/><ref refid="xxhash_8c_1a2adf937638c249c83681816c9ce9d3c6" kindref="member">PRIME32_1</ref><sp/>+<sp/><ref refid="xxhash_8c_1a6cfe9a3ed9c4749c8f57afe91c9749a1" kindref="member">PRIME32_2</ref>;</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a77ca5f7d04bf820d40c0b849e69c932b" kindref="member">v2</ref><sp/>=<sp/>seed<sp/>+<sp/><ref refid="xxhash_8c_1a6cfe9a3ed9c4749c8f57afe91c9749a1" kindref="member">PRIME32_2</ref>;</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a766430cd39ae981afd8a64d10329ec3d" kindref="member">v3</ref><sp/>=<sp/>seed<sp/>+<sp/>0;</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a33ede79f26b162219c1475e39766148d" kindref="member">v4</ref><sp/>=<sp/>seed<sp/>-<sp/><ref refid="xxhash_8c_1a2adf937638c249c83681816c9ce9d3c6" kindref="member">PRIME32_1</ref>;</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a968184eb96ed6c2c47e77d0e7b2562e2" kindref="member">total_len</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a7d511c88afd3fc22cbdff9153af8424d" kindref="member">memsize</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="xxhash_8h_1a5020905455674b8c83c1dbc73f0d3534abd20b092d624344e301b0cadd29d5bd6" kindref="member">XXH_OK</ref>;</highlight></codeline>
+<codeline lineno="329"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"></highlight></codeline>
+<codeline lineno="331"><highlight class="normal"></highlight></codeline>
+<codeline lineno="332" refid="xxhash_8h_1a366fceb2db2000c44211dc704493fbe0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="xxhash_8c_1a14dea44906862dbf59aad697342aad6d" kindref="member">XXH32_init</ref><sp/>(<ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/><ref refid="struct_x_x_h__state32__t_1aa198d97d2ccb2e940e58c5676dd07b9f" kindref="member">seed</ref>)</highlight></codeline>
+<codeline lineno="333"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="db__test_8cc_1a42432b4356adce5579ccf597f6e83e54" kindref="member">state</ref><sp/>=<sp/><ref refid="xxhash_8c_1a9572f7bf38985424889eaf9410bb5117" kindref="member">XXH_malloc</ref><sp/>(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(</highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="struct_x_x_h__state32__t" kindref="compound">XXH_state32_t</ref>));</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="xxhash_8c_1aa0c3ae88a7c58b593dd465786729d53b" kindref="member">XXH32_resetState</ref>(state,<sp/>seed);</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db__test_8cc_1a42432b4356adce5579ccf597f6e83e54" kindref="member">state</ref>;</highlight></codeline>
+<codeline lineno="337"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"></highlight></codeline>
+<codeline lineno="339"><highlight class="normal"></highlight></codeline>
+<codeline lineno="340" refid="xxhash_8c_1a4f77fcbf32f9071051a8e9b9569c3c80" refkind="member"><highlight class="normal"><ref refid="xxhash_8c_1ac032d233a8ebfcd82fd49d0824eefb18" kindref="member">FORCE_INLINE</ref><sp/><ref refid="xxhash_8h_1a5020905455674b8c83c1dbc73f0d3534" kindref="member">XXH_errorcode</ref><sp/><ref refid="xxhash_8c_1a4f77fcbf32f9071051a8e9b9569c3c80" kindref="member">XXH32_update_endian</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>state_in,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>input,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>len,<sp/><ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9" kindref="member">XXH_endianess</ref><sp/>endian)</highlight></codeline>
+<codeline lineno="341"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_x_x_h__state32__t" kindref="compound">XXH_state32_t</ref><sp/>*<sp/><ref refid="db__test_8cc_1a42432b4356adce5579ccf597f6e83e54" kindref="member">state</ref><sp/>=<sp/>(</highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_x_x_h__state32__t" kindref="compound">XXH_state32_t</ref><sp/>*)<sp/>state_in;</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="lz4_8c_1a4ae1dab0fb4b072a66584546209e7d58" kindref="member">BYTE</ref>*<sp/>p<sp/>=<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="lz4_8c_1a4ae1dab0fb4b072a66584546209e7d58" kindref="member">BYTE</ref>*)input;</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="lz4_8c_1a4ae1dab0fb4b072a66584546209e7d58" kindref="member">BYTE</ref>*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>bEnd<sp/>=<sp/>p<sp/>+<sp/>len;</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"></highlight></codeline>
+<codeline lineno="346"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>XXH_ACCEPT_NULL_INPUT_POINTER</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(input==NULL)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="xxhash_8h_1a5020905455674b8c83c1dbc73f0d3534a462a18276729783125c7116cf102667f" kindref="member">XXH_ERROR</ref>;</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="349"><highlight class="normal"></highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a968184eb96ed6c2c47e77d0e7b2562e2" kindref="member">total_len</ref><sp/>+=<sp/>len;</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"></highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;<ref refid="struct_x_x_h__state32__t_1a7d511c88afd3fc22cbdff9153af8424d" kindref="member">memsize</ref><sp/>+<sp/>len<sp/>&lt;<sp/>16)<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>fill<sp/>in<sp/>tmp<sp/>buffer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="xxhash_8c_1a794805594aedd7450e014c2cb441d3a0" kindref="member">XXH_memcpy</ref>(state-&gt;<ref refid="struct_x_x_h__state32__t_1ade592624e217dcdd46f37634992c2f98" kindref="member">memory</ref><sp/>+<sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a7d511c88afd3fc22cbdff9153af8424d" kindref="member">memsize</ref>,<sp/>input,<sp/>len);</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a7d511c88afd3fc22cbdff9153af8424d" kindref="member">memsize</ref><sp/>+=<sp/><sp/>len;</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="xxhash_8h_1a5020905455674b8c83c1dbc73f0d3534abd20b092d624344e301b0cadd29d5bd6" kindref="member">XXH_OK</ref>;</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"></highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;<ref refid="struct_x_x_h__state32__t_1a7d511c88afd3fc22cbdff9153af8424d" kindref="member">memsize</ref>)<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>some<sp/>data<sp/>left<sp/>from<sp/>previous<sp/>update</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="xxhash_8c_1a794805594aedd7450e014c2cb441d3a0" kindref="member">XXH_memcpy</ref>(state-&gt;<ref refid="struct_x_x_h__state32__t_1ade592624e217dcdd46f37634992c2f98" kindref="member">memory</ref><sp/>+<sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a7d511c88afd3fc22cbdff9153af8424d" kindref="member">memsize</ref>,<sp/>input,<sp/>16-state-&gt;<ref refid="struct_x_x_h__state32__t_1a7d511c88afd3fc22cbdff9153af8424d" kindref="member">memsize</ref>);</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref>*<sp/>p32<sp/>=<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref>*)state-&gt;<ref refid="struct_x_x_h__state32__t_1ade592624e217dcdd46f37634992c2f98" kindref="member">memory</ref>;</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a52d93caf96ab3cfa4d19faa232627402" kindref="member">v1</ref><sp/>+=<sp/><ref refid="xxhash_8c_1a35cc0677340176473e3f3650520afe94" kindref="member">XXH_readLE32</ref>(p32,<sp/>endian)<sp/>*<sp/><ref refid="xxhash_8c_1a6cfe9a3ed9c4749c8f57afe91c9749a1" kindref="member">PRIME32_2</ref>;<sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a52d93caf96ab3cfa4d19faa232627402" kindref="member">v1</ref><sp/>=<sp/><ref refid="xxhash_8c_1a70a4b202f9523a2a811da16cde3f52eb" kindref="member">XXH_rotl32</ref>(state-&gt;<ref refid="struct_x_x_h__state32__t_1a52d93caf96ab3cfa4d19faa232627402" kindref="member">v1</ref>,<sp/>13);<sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a52d93caf96ab3cfa4d19faa232627402" kindref="member">v1</ref><sp/>*=<sp/><ref refid="xxhash_8c_1a2adf937638c249c83681816c9ce9d3c6" kindref="member">PRIME32_1</ref>;<sp/>p32++;</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a77ca5f7d04bf820d40c0b849e69c932b" kindref="member">v2</ref><sp/>+=<sp/><ref refid="xxhash_8c_1a35cc0677340176473e3f3650520afe94" kindref="member">XXH_readLE32</ref>(p32,<sp/>endian)<sp/>*<sp/><ref refid="xxhash_8c_1a6cfe9a3ed9c4749c8f57afe91c9749a1" kindref="member">PRIME32_2</ref>;<sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a77ca5f7d04bf820d40c0b849e69c932b" kindref="member">v2</ref><sp/>=<sp/><ref refid="xxhash_8c_1a70a4b202f9523a2a811da16cde3f52eb" kindref="member">XXH_rotl32</ref>(state-&gt;<ref refid="struct_x_x_h__state32__t_1a77ca5f7d04bf820d40c0b849e69c932b" kindref="member">v2</ref>,<sp/>13);<sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a77ca5f7d04bf820d40c0b849e69c932b" kindref="member">v2</ref><sp/>*=<sp/><ref refid="xxhash_8c_1a2adf937638c249c83681816c9ce9d3c6" kindref="member">PRIME32_1</ref>;<sp/>p32++;<sp/></highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a766430cd39ae981afd8a64d10329ec3d" kindref="member">v3</ref><sp/>+=<sp/><ref refid="xxhash_8c_1a35cc0677340176473e3f3650520afe94" kindref="member">XXH_readLE32</ref>(p32,<sp/>endian)<sp/>*<sp/><ref refid="xxhash_8c_1a6cfe9a3ed9c4749c8f57afe91c9749a1" kindref="member">PRIME32_2</ref>;<sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a766430cd39ae981afd8a64d10329ec3d" kindref="member">v3</ref><sp/>=<sp/><ref refid="xxhash_8c_1a70a4b202f9523a2a811da16cde3f52eb" kindref="member">XXH_rotl32</ref>(state-&gt;<ref refid="struct_x_x_h__state32__t_1a766430cd39ae981afd8a64d10329ec3d" kindref="member">v3</ref>,<sp/>13);<sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a766430cd39ae981afd8a64d10329ec3d" kindref="member">v3</ref><sp/>*=<sp/><ref refid="xxhash_8c_1a2adf937638c249c83681816c9ce9d3c6" kindref="member">PRIME32_1</ref>;<sp/>p32++;</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a33ede79f26b162219c1475e39766148d" kindref="member">v4</ref><sp/>+=<sp/><ref refid="xxhash_8c_1a35cc0677340176473e3f3650520afe94" kindref="member">XXH_readLE32</ref>(p32,<sp/>endian)<sp/>*<sp/><ref refid="xxhash_8c_1a6cfe9a3ed9c4749c8f57afe91c9749a1" kindref="member">PRIME32_2</ref>;<sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a33ede79f26b162219c1475e39766148d" kindref="member">v4</ref><sp/>=<sp/><ref refid="xxhash_8c_1a70a4b202f9523a2a811da16cde3f52eb" kindref="member">XXH_rotl32</ref>(state-&gt;<ref refid="struct_x_x_h__state32__t_1a33ede79f26b162219c1475e39766148d" kindref="member">v4</ref>,<sp/>13);<sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a33ede79f26b162219c1475e39766148d" kindref="member">v4</ref><sp/>*=<sp/><ref refid="xxhash_8c_1a2adf937638c249c83681816c9ce9d3c6" kindref="member">PRIME32_1</ref>;<sp/>p32++;</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p<sp/>+=<sp/>16-state-&gt;<ref refid="struct_x_x_h__state32__t_1a7d511c88afd3fc22cbdff9153af8424d" kindref="member">memsize</ref>;</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a7d511c88afd3fc22cbdff9153af8424d" kindref="member">memsize</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"></highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(p<sp/>&lt;=<sp/>bEnd-16)</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="lz4_8c_1a4ae1dab0fb4b072a66584546209e7d58" kindref="member">BYTE</ref>*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>limit<sp/>=<sp/>bEnd<sp/>-<sp/>16;</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/><ref refid="struct_x_x_h__state32__t_1a52d93caf96ab3cfa4d19faa232627402" kindref="member">v1</ref><sp/>=<sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a52d93caf96ab3cfa4d19faa232627402" kindref="member">v1</ref>;</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/><ref refid="struct_x_x_h__state32__t_1a77ca5f7d04bf820d40c0b849e69c932b" kindref="member">v2</ref><sp/>=<sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a77ca5f7d04bf820d40c0b849e69c932b" kindref="member">v2</ref>;</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/><ref refid="struct_x_x_h__state32__t_1a766430cd39ae981afd8a64d10329ec3d" kindref="member">v3</ref><sp/>=<sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a766430cd39ae981afd8a64d10329ec3d" kindref="member">v3</ref>;</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/><ref refid="struct_x_x_h__state32__t_1a33ede79f26b162219c1475e39766148d" kindref="member">v4</ref><sp/>=<sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a33ede79f26b162219c1475e39766148d" kindref="member">v4</ref>;</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"></highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v1<sp/>+=<sp/><ref refid="xxhash_8c_1a35cc0677340176473e3f3650520afe94" kindref="member">XXH_readLE32</ref>((</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref>*)p,<sp/>endian)<sp/>*<sp/><ref refid="xxhash_8c_1a6cfe9a3ed9c4749c8f57afe91c9749a1" kindref="member">PRIME32_2</ref>;<sp/>v1<sp/>=<sp/><ref refid="xxhash_8c_1a70a4b202f9523a2a811da16cde3f52eb" kindref="member">XXH_rotl32</ref>(v1,<sp/>13);<sp/>v1<sp/>*=<sp/><ref refid="xxhash_8c_1a2adf937638c249c83681816c9ce9d3c6" kindref="member">PRIME32_1</ref>;<sp/>p+=4;</highlight></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v2<sp/>+=<sp/><ref refid="xxhash_8c_1a35cc0677340176473e3f3650520afe94" kindref="member">XXH_readLE32</ref>((</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref>*)p,<sp/>endian)<sp/>*<sp/><ref refid="xxhash_8c_1a6cfe9a3ed9c4749c8f57afe91c9749a1" kindref="member">PRIME32_2</ref>;<sp/>v2<sp/>=<sp/><ref refid="xxhash_8c_1a70a4b202f9523a2a811da16cde3f52eb" kindref="member">XXH_rotl32</ref>(v2,<sp/>13);<sp/>v2<sp/>*=<sp/><ref refid="xxhash_8c_1a2adf937638c249c83681816c9ce9d3c6" kindref="member">PRIME32_1</ref>;<sp/>p+=4;</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v3<sp/>+=<sp/><ref refid="xxhash_8c_1a35cc0677340176473e3f3650520afe94" kindref="member">XXH_readLE32</ref>((</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref>*)p,<sp/>endian)<sp/>*<sp/><ref refid="xxhash_8c_1a6cfe9a3ed9c4749c8f57afe91c9749a1" kindref="member">PRIME32_2</ref>;<sp/>v3<sp/>=<sp/><ref refid="xxhash_8c_1a70a4b202f9523a2a811da16cde3f52eb" kindref="member">XXH_rotl32</ref>(v3,<sp/>13);<sp/>v3<sp/>*=<sp/><ref refid="xxhash_8c_1a2adf937638c249c83681816c9ce9d3c6" kindref="member">PRIME32_1</ref>;<sp/>p+=4;</highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v4<sp/>+=<sp/><ref refid="xxhash_8c_1a35cc0677340176473e3f3650520afe94" kindref="member">XXH_readLE32</ref>((</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref>*)p,<sp/>endian)<sp/>*<sp/><ref refid="xxhash_8c_1a6cfe9a3ed9c4749c8f57afe91c9749a1" kindref="member">PRIME32_2</ref>;<sp/>v4<sp/>=<sp/><ref refid="xxhash_8c_1a70a4b202f9523a2a811da16cde3f52eb" kindref="member">XXH_rotl32</ref>(v4,<sp/>13);<sp/>v4<sp/>*=<sp/><ref refid="xxhash_8c_1a2adf937638c249c83681816c9ce9d3c6" kindref="member">PRIME32_1</ref>;<sp/>p+=4;</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(p&lt;=limit);</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"></highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a52d93caf96ab3cfa4d19faa232627402" kindref="member">v1</ref><sp/>=<sp/><ref refid="struct_x_x_h__state32__t_1a52d93caf96ab3cfa4d19faa232627402" kindref="member">v1</ref>;</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a77ca5f7d04bf820d40c0b849e69c932b" kindref="member">v2</ref><sp/>=<sp/><ref refid="struct_x_x_h__state32__t_1a77ca5f7d04bf820d40c0b849e69c932b" kindref="member">v2</ref>;</highlight></codeline>
+<codeline lineno="391"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a766430cd39ae981afd8a64d10329ec3d" kindref="member">v3</ref><sp/>=<sp/><ref refid="struct_x_x_h__state32__t_1a766430cd39ae981afd8a64d10329ec3d" kindref="member">v3</ref>;</highlight></codeline>
+<codeline lineno="392"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a33ede79f26b162219c1475e39766148d" kindref="member">v4</ref><sp/>=<sp/><ref refid="struct_x_x_h__state32__t_1a33ede79f26b162219c1475e39766148d" kindref="member">v4</ref>;</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="394"><highlight class="normal"></highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(p<sp/>&lt;<sp/>bEnd)</highlight></codeline>
+<codeline lineno="396"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="xxhash_8c_1a794805594aedd7450e014c2cb441d3a0" kindref="member">XXH_memcpy</ref>(state-&gt;<ref refid="struct_x_x_h__state32__t_1ade592624e217dcdd46f37634992c2f98" kindref="member">memory</ref>,<sp/>p,<sp/>bEnd-p);</highlight></codeline>
+<codeline lineno="398"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a7d511c88afd3fc22cbdff9153af8424d" kindref="member">memsize</ref><sp/>=<sp/>(int)(bEnd-p);</highlight></codeline>
+<codeline lineno="399"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="400"><highlight class="normal"></highlight></codeline>
+<codeline lineno="401"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="xxhash_8h_1a5020905455674b8c83c1dbc73f0d3534abd20b092d624344e301b0cadd29d5bd6" kindref="member">XXH_OK</ref>;</highlight></codeline>
+<codeline lineno="402"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="403"><highlight class="normal"></highlight></codeline>
+<codeline lineno="404" refid="xxhash_8h_1a4428914ff78e245781ef2f523ff86638" refkind="member"><highlight class="normal"><ref refid="xxhash_8h_1a5020905455674b8c83c1dbc73f0d3534" kindref="member">XXH_errorcode</ref><sp/><ref refid="xxhash_8c_1a7cc3b7efa347c6a8a632b92e9d796826" kindref="member">XXH32_update</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>state_in,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>input,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>len)</highlight></codeline>
+<codeline lineno="405"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="406"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9" kindref="member">XXH_endianess</ref><sp/>endian_detected<sp/>=<sp/>(<ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9" kindref="member">XXH_endianess</ref>)<ref refid="xxhash_8c_1a408fac02658eb4a81f7a1877f1ca3b3f" kindref="member">XXH_CPU_LITTLE_ENDIAN</ref>;</highlight></codeline>
+<codeline lineno="407"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="408"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((endian_detected==<ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9ab42c8f08d82d02dee14a685dc4c39539" kindref="member">XXH_littleEndian</ref>)<sp/>||<sp/><ref refid="xxhash_8c_1afd620e67e55f7db0b0d700af3edff885" kindref="member">XXH_FORCE_NATIVE_FORMAT</ref>)</highlight></codeline>
+<codeline lineno="409"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="xxhash_8c_1a4f77fcbf32f9071051a8e9b9569c3c80" kindref="member">XXH32_update_endian</ref>(state_in,<sp/>input,<sp/>len,<sp/><ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9ab42c8f08d82d02dee14a685dc4c39539" kindref="member">XXH_littleEndian</ref>);</highlight></codeline>
+<codeline lineno="410"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="411"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="xxhash_8c_1a4f77fcbf32f9071051a8e9b9569c3c80" kindref="member">XXH32_update_endian</ref>(state_in,<sp/>input,<sp/>len,<sp/><ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9ae38c7420bad548564395edb8cb4b6b60" kindref="member">XXH_bigEndian</ref>);</highlight></codeline>
+<codeline lineno="412"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="413"><highlight class="normal"></highlight></codeline>
+<codeline lineno="414"><highlight class="normal"></highlight></codeline>
+<codeline lineno="415"><highlight class="normal"></highlight></codeline>
+<codeline lineno="416" refid="xxhash_8c_1a91a5a40fdeb240dc0e129b37ef6f1cca" refkind="member"><highlight class="normal"><ref refid="xxhash_8c_1ac032d233a8ebfcd82fd49d0824eefb18" kindref="member">FORCE_INLINE</ref><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/><ref refid="xxhash_8c_1a91a5a40fdeb240dc0e129b37ef6f1cca" kindref="member">XXH32_intermediateDigest_endian</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>state_in,<sp/><ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9" kindref="member">XXH_endianess</ref><sp/>endian)</highlight></codeline>
+<codeline lineno="417"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="418"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_x_x_h__state32__t" kindref="compound">XXH_state32_t</ref><sp/>*<sp/><ref refid="db__test_8cc_1a42432b4356adce5579ccf597f6e83e54" kindref="member">state</ref><sp/>=<sp/>(</highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="struct_x_x_h__state32__t" kindref="compound">XXH_state32_t</ref><sp/>*)<sp/>state_in;</highlight></codeline>
+<codeline lineno="419"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="lz4_8c_1a4ae1dab0fb4b072a66584546209e7d58" kindref="member">BYTE</ref><sp/>*<sp/>p<sp/>=<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="lz4_8c_1a4ae1dab0fb4b072a66584546209e7d58" kindref="member">BYTE</ref>*)state-&gt;<ref refid="struct_x_x_h__state32__t_1ade592624e217dcdd46f37634992c2f98" kindref="member">memory</ref>;</highlight></codeline>
+<codeline lineno="420"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="lz4_8c_1a4ae1dab0fb4b072a66584546209e7d58" kindref="member">BYTE</ref>*<sp/>bEnd<sp/>=<sp/>(<ref refid="lz4_8c_1a4ae1dab0fb4b072a66584546209e7d58" kindref="member">BYTE</ref>*)state-&gt;<ref refid="struct_x_x_h__state32__t_1ade592624e217dcdd46f37634992c2f98" kindref="member">memory</ref><sp/>+<sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a7d511c88afd3fc22cbdff9153af8424d" kindref="member">memsize</ref>;</highlight></codeline>
+<codeline lineno="421"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/>h32;</highlight></codeline>
+<codeline lineno="422"><highlight class="normal"></highlight></codeline>
+<codeline lineno="423"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state-&gt;<ref refid="struct_x_x_h__state32__t_1a968184eb96ed6c2c47e77d0e7b2562e2" kindref="member">total_len</ref><sp/>&gt;=<sp/>16)</highlight></codeline>
+<codeline lineno="424"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="425"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>h32<sp/>=<sp/><ref refid="xxhash_8c_1a70a4b202f9523a2a811da16cde3f52eb" kindref="member">XXH_rotl32</ref>(state-&gt;<ref refid="struct_x_x_h__state32__t_1a52d93caf96ab3cfa4d19faa232627402" kindref="member">v1</ref>,<sp/>1)<sp/>+<sp/><ref refid="xxhash_8c_1a70a4b202f9523a2a811da16cde3f52eb" kindref="member">XXH_rotl32</ref>(state-&gt;<ref refid="struct_x_x_h__state32__t_1a77ca5f7d04bf820d40c0b849e69c932b" kindref="member">v2</ref>,<sp/>7)<sp/>+<sp/><ref refid="xxhash_8c_1a70a4b202f9523a2a811da16cde3f52eb" kindref="member">XXH_rotl32</ref>(state-&gt;<ref refid="struct_x_x_h__state32__t_1a766430cd39ae981afd8a64d10329ec3d" kindref="member">v3</ref>,<sp/>12)<sp/>+<sp/><ref refid="xxhash_8c_1a70a4b202f9523a2a811da16cde3f52eb" kindref="member">XXH_rotl32</ref>(state-&gt;<ref refid="struct_x_x_h__state32__t_1a33ede79f26b162219c1475e39766148d" kindref="member">v4</ref>,<sp/>18);</highlight></codeline>
+<codeline lineno="426"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="427"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="428"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="429"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>h32<sp/><sp/>=<sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1aa198d97d2ccb2e940e58c5676dd07b9f" kindref="member">seed</ref><sp/>+<sp/><ref refid="xxhash_8c_1a9d6d9526a72bc430e549171e147b9b08" kindref="member">PRIME32_5</ref>;</highlight></codeline>
+<codeline lineno="430"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="431"><highlight class="normal"></highlight></codeline>
+<codeline lineno="432"><highlight class="normal"><sp/><sp/><sp/><sp/>h32<sp/>+=<sp/>(<ref refid="xxhash_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref>)<sp/>state-&gt;<ref refid="struct_x_x_h__state32__t_1a968184eb96ed6c2c47e77d0e7b2562e2" kindref="member">total_len</ref>;</highlight></codeline>
+<codeline lineno="433"><highlight class="normal"></highlight></codeline>
+<codeline lineno="434"><highlight class="normal"><sp/><sp/><sp/><sp/>while<sp/>(p&lt;=bEnd-4)</highlight></codeline>
+<codeline lineno="435"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="436"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>h32<sp/>+=<sp/><ref refid="xxhash_8c_1a35cc0677340176473e3f3650520afe94" kindref="member">XXH_readLE32</ref>((</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref>*)p,<sp/>endian)<sp/>*<sp/><ref refid="xxhash_8c_1a2f4882ee52b72f7ddb05389eb8ea52c8" kindref="member">PRIME32_3</ref>;</highlight></codeline>
+<codeline lineno="437"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>h32<sp/><sp/>=<sp/><ref refid="xxhash_8c_1a70a4b202f9523a2a811da16cde3f52eb" kindref="member">XXH_rotl32</ref>(h32,<sp/>17)<sp/>*<sp/><ref refid="xxhash_8c_1ae99c796b385596b539bdc1e29cb1f713" kindref="member">PRIME32_4</ref>;</highlight></codeline>
+<codeline lineno="438"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p+=4;</highlight></codeline>
+<codeline lineno="439"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="440"><highlight class="normal"></highlight></codeline>
+<codeline lineno="441"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(p&lt;bEnd)</highlight></codeline>
+<codeline lineno="442"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="443"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>h32<sp/>+=<sp/>(*p)<sp/>*<sp/><ref refid="xxhash_8c_1a9d6d9526a72bc430e549171e147b9b08" kindref="member">PRIME32_5</ref>;</highlight></codeline>
+<codeline lineno="444"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>h32<sp/>=<sp/><ref refid="xxhash_8c_1a70a4b202f9523a2a811da16cde3f52eb" kindref="member">XXH_rotl32</ref>(h32,<sp/>11)<sp/>*<sp/><ref refid="xxhash_8c_1a2adf937638c249c83681816c9ce9d3c6" kindref="member">PRIME32_1</ref>;</highlight></codeline>
+<codeline lineno="445"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>p++;</highlight></codeline>
+<codeline lineno="446"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="447"><highlight class="normal"></highlight></codeline>
+<codeline lineno="448"><highlight class="normal"><sp/><sp/><sp/><sp/>h32<sp/>^=<sp/>h32<sp/>&gt;&gt;<sp/>15;</highlight></codeline>
+<codeline lineno="449"><highlight class="normal"><sp/><sp/><sp/><sp/>h32<sp/>*=<sp/><ref refid="xxhash_8c_1a6cfe9a3ed9c4749c8f57afe91c9749a1" kindref="member">PRIME32_2</ref>;</highlight></codeline>
+<codeline lineno="450"><highlight class="normal"><sp/><sp/><sp/><sp/>h32<sp/>^=<sp/>h32<sp/>&gt;&gt;<sp/>13;</highlight></codeline>
+<codeline lineno="451"><highlight class="normal"><sp/><sp/><sp/><sp/>h32<sp/>*=<sp/><ref refid="xxhash_8c_1a2f4882ee52b72f7ddb05389eb8ea52c8" kindref="member">PRIME32_3</ref>;</highlight></codeline>
+<codeline lineno="452"><highlight class="normal"><sp/><sp/><sp/><sp/>h32<sp/>^=<sp/>h32<sp/>&gt;&gt;<sp/>16;</highlight></codeline>
+<codeline lineno="453"><highlight class="normal"></highlight></codeline>
+<codeline lineno="454"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>h32;</highlight></codeline>
+<codeline lineno="455"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="456"><highlight class="normal"></highlight></codeline>
+<codeline lineno="457"><highlight class="normal"></highlight></codeline>
+<codeline lineno="458" refid="xxhash_8h_1afba1e5525dd99f3d8693959240f22c11" refkind="member"><highlight class="normal"><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/><ref refid="xxhash_8c_1a320da5579e901032eebebd6aba8d0310" kindref="member">XXH32_intermediateDigest</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>state_in)</highlight></codeline>
+<codeline lineno="459"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="460"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9" kindref="member">XXH_endianess</ref><sp/>endian_detected<sp/>=<sp/>(<ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9" kindref="member">XXH_endianess</ref>)<ref refid="xxhash_8c_1a408fac02658eb4a81f7a1877f1ca3b3f" kindref="member">XXH_CPU_LITTLE_ENDIAN</ref>;</highlight></codeline>
+<codeline lineno="461"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="462"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((endian_detected==<ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9ab42c8f08d82d02dee14a685dc4c39539" kindref="member">XXH_littleEndian</ref>)<sp/>||<sp/><ref refid="xxhash_8c_1afd620e67e55f7db0b0d700af3edff885" kindref="member">XXH_FORCE_NATIVE_FORMAT</ref>)</highlight></codeline>
+<codeline lineno="463"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="xxhash_8c_1a91a5a40fdeb240dc0e129b37ef6f1cca" kindref="member">XXH32_intermediateDigest_endian</ref>(state_in,<sp/><ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9ab42c8f08d82d02dee14a685dc4c39539" kindref="member">XXH_littleEndian</ref>);</highlight></codeline>
+<codeline lineno="464"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="465"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="xxhash_8c_1a91a5a40fdeb240dc0e129b37ef6f1cca" kindref="member">XXH32_intermediateDigest_endian</ref>(state_in,<sp/><ref refid="xxhash_8c_1a235e518684d715cbb04353c997ad81e9ae38c7420bad548564395edb8cb4b6b60" kindref="member">XXH_bigEndian</ref>);</highlight></codeline>
+<codeline lineno="466"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="467"><highlight class="normal"></highlight></codeline>
+<codeline lineno="468"><highlight class="normal"></highlight></codeline>
+<codeline lineno="469" refid="xxhash_8h_1a98fc461fc698a511b24c1c6afe835e0c" refkind="member"><highlight class="normal"><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/><ref refid="xxhash_8c_1a0976366f488672f0fe1e4ee81b63345f" kindref="member">XXH32_digest</ref><sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>state_in)</highlight></codeline>
+<codeline lineno="470"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="471"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="lz4_8c_1ac3df7cf3c8cb172a588adec881447d68" kindref="member">U32</ref><sp/>h32<sp/>=<sp/><ref refid="xxhash_8c_1a320da5579e901032eebebd6aba8d0310" kindref="member">XXH32_intermediateDigest</ref>(state_in);</highlight></codeline>
+<codeline lineno="472"><highlight class="normal"></highlight></codeline>
+<codeline lineno="473"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="xxhash_8c_1a5b76a6a057004859868b41d12681981e" kindref="member">XXH_free</ref>(state_in);</highlight></codeline>
+<codeline lineno="474"><highlight class="normal"></highlight></codeline>
+<codeline lineno="475"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>h32;</highlight></codeline>
+<codeline lineno="476"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/xxhash/xxhash.c"/>
+  </compounddef>
+</doxygen>

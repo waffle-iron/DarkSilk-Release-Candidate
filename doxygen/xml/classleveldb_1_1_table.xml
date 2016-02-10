@@ -1,0 +1,278 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="classleveldb_1_1_table" kind="class" language="C++" prot="public">
+    <compoundname>leveldb::Table</compoundname>
+    <includes refid="table_8h" local="no">table.h</includes>
+    <innerclass refid="structleveldb_1_1_table_1_1_rep" prot="public">leveldb::Table::Rep</innerclass>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classleveldb_1_1_table_1a5f452efeff7114793e2943215d4c6121" prot="private" static="no" mutable="no">
+        <type><ref refid="structleveldb_1_1_table_1_1_rep" kindref="compound">Rep</ref> *</type>
+        <definition>Rep* leveldb::Table::rep_</definition>
+        <argsstring></argsstring>
+        <name>rep_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/table.h" line="60" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/include/leveldb/table.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classleveldb_1_1_table_1ae1e5f7bae4682672cfcc68d0add43199" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class TableCache</definition>
+        <argsstring></argsstring>
+        <name>TableCache</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/table.h" line="68" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/include/leveldb/table.h" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classleveldb_1_1_table_1aa25d0e074ab4de46e583522a8c0e9582" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref></type>
+        <definition>Status leveldb::Table::Open</definition>
+        <argsstring>(const Options &amp;options, RandomAccessFile *file, uint64_t file_size, Table **table)</argsstring>
+        <name>Open</name>
+        <param>
+          <type>const <ref refid="structleveldb_1_1_options" kindref="compound">Options</ref> &amp;</type>
+          <declname>options</declname>
+        </param>
+        <param>
+          <type><ref refid="classleveldb_1_1_random_access_file" kindref="compound">RandomAccessFile</ref> *</type>
+          <declname>file</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref></type>
+          <declname>file_size</declname>
+        </param>
+        <param>
+          <type><ref refid="classleveldb_1_1_table" kindref="compound">Table</ref> **</type>
+          <declname>table</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/table.h" line="38" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/table/table.cc" bodystart="38" bodyend="89"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classleveldb_1_1_table_1a945f1f97b4f53402f5d55422a4dd3af2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::Table::~Table</definition>
+        <argsstring>()</argsstring>
+        <name>~Table</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/table.h" line="43" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/table/table.cc" bodystart="143" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_table_1ad354f57ece050ca0c5f42669b7c01cc2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classleveldb_1_1_iterator" kindref="compound">Iterator</ref> *</type>
+        <definition>Iterator * leveldb::Table::NewIterator</definition>
+        <argsstring>(const ReadOptions &amp;) const </argsstring>
+        <name>NewIterator</name>
+        <param>
+          <type>const <ref refid="structleveldb_1_1_read_options" kindref="compound">ReadOptions</ref> &amp;</type>
+          <defname>options</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/table.h" line="48" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/table/table.cc" bodystart="220" bodyend="224"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_table_1a1795d45c54945ee7652b19e6ad6c030b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref></type>
+        <definition>uint64_t leveldb::Table::ApproximateOffsetOf</definition>
+        <argsstring>(const Slice &amp;key) const </argsstring>
+        <name>ApproximateOffsetOf</name>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/table.h" line="56" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/table/table.cc" bodystart="258" bodyend="283"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classleveldb_1_1_table_1a145d0ed70dfb8cb92956bb554db222e5" prot="private" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::Table::Table</definition>
+        <argsstring>(Rep *rep)</argsstring>
+        <name>Table</name>
+        <param>
+          <type><ref refid="structleveldb_1_1_table_1_1_rep" kindref="compound">Rep</ref> *</type>
+          <declname>rep</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/table.h" line="62" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/include/leveldb/table.h" bodystart="62" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_table_1aea7233eff55aec8dad19befe6de5bd99" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref></type>
+        <definition>Status leveldb::Table::InternalGet</definition>
+        <argsstring>(const ReadOptions &amp;, const Slice &amp;key, void *arg, void(*handle_result)(void *arg, const Slice &amp;k, const Slice &amp;v))</argsstring>
+        <name>InternalGet</name>
+        <param>
+          <type>const <ref refid="structleveldb_1_1_read_options" kindref="compound">ReadOptions</ref> &amp;</type>
+        </param>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>arg</declname>
+        </param>
+        <param>
+          <type>void(*)(void *<ref refid="env__posix_8cc_1a9ce2ec4812a92cb6ab39f6e81e9173a9" kindref="member">arg</ref>, const <ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref> &amp;k, const <ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref> &amp;v)</type>
+          <declname>handle_result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/table.h" line="69" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/table/table.cc" bodystart="226" bodyend="255"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_table_1ac7b765e08d8285b2019e1faa6905368e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::Table::ReadMeta</definition>
+        <argsstring>(const Footer &amp;footer)</argsstring>
+        <name>ReadMeta</name>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_footer" kindref="compound">Footer</ref> &amp;</type>
+          <declname>footer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/table.h" line="75" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/table/table.cc" bodystart="91" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_table_1abe6a44b25318fa50b8e73b5570ef3911" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::Table::ReadFilter</definition>
+        <argsstring>(const Slice &amp;filter_handle_value)</argsstring>
+        <name>ReadFilter</name>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref> &amp;</type>
+          <declname>filter_handle_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/table.h" line="76" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/table/table.cc" bodystart="120" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_table_1ae65d769b917c37227f66221dbd3fe850" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::Table::Table</definition>
+        <argsstring>(const Table &amp;)</argsstring>
+        <name>Table</name>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_table" kindref="compound">Table</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/table.h" line="79" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_table_1a859ec9ca8d2745df17559b0613ac9cba" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::Table::operator=</definition>
+        <argsstring>(const Table &amp;)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_table" kindref="compound">Table</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/table.h" line="80" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classleveldb_1_1_table_1a93b3e7e277493cbc63a55e2b141b1f30" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classleveldb_1_1_iterator" kindref="compound">Iterator</ref> *</type>
+        <definition>Iterator * leveldb::Table::BlockReader</definition>
+        <argsstring>(void *, const ReadOptions &amp;, const Slice &amp;)</argsstring>
+        <name>BlockReader</name>
+        <param>
+          <type>void *</type>
+          <defname>arg</defname>
+        </param>
+        <param>
+          <type>const <ref refid="structleveldb_1_1_read_options" kindref="compound">ReadOptions</ref> &amp;</type>
+          <defname>options</defname>
+        </param>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref> &amp;</type>
+          <defname>index_value</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/table.h" line="63" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/table/table.cc" bodystart="164" bodyend="218"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/table.h" line="24" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/include/leveldb/table.h" bodystart="24" bodyend="81"/>
+    <listofallmembers>
+      <member refid="classleveldb_1_1_table_1a1795d45c54945ee7652b19e6ad6c030b" prot="public" virt="non-virtual"><scope>leveldb::Table</scope><name>ApproximateOffsetOf</name></member>
+      <member refid="classleveldb_1_1_table_1a93b3e7e277493cbc63a55e2b141b1f30" prot="private" virt="non-virtual"><scope>leveldb::Table</scope><name>BlockReader</name></member>
+      <member refid="classleveldb_1_1_table_1aea7233eff55aec8dad19befe6de5bd99" prot="private" virt="non-virtual"><scope>leveldb::Table</scope><name>InternalGet</name></member>
+      <member refid="classleveldb_1_1_table_1ad354f57ece050ca0c5f42669b7c01cc2" prot="public" virt="non-virtual"><scope>leveldb::Table</scope><name>NewIterator</name></member>
+      <member refid="classleveldb_1_1_table_1aa25d0e074ab4de46e583522a8c0e9582" prot="public" virt="non-virtual"><scope>leveldb::Table</scope><name>Open</name></member>
+      <member refid="classleveldb_1_1_table_1a859ec9ca8d2745df17559b0613ac9cba" prot="private" virt="non-virtual"><scope>leveldb::Table</scope><name>operator=</name></member>
+      <member refid="classleveldb_1_1_table_1abe6a44b25318fa50b8e73b5570ef3911" prot="private" virt="non-virtual"><scope>leveldb::Table</scope><name>ReadFilter</name></member>
+      <member refid="classleveldb_1_1_table_1ac7b765e08d8285b2019e1faa6905368e" prot="private" virt="non-virtual"><scope>leveldb::Table</scope><name>ReadMeta</name></member>
+      <member refid="classleveldb_1_1_table_1a5f452efeff7114793e2943215d4c6121" prot="private" virt="non-virtual"><scope>leveldb::Table</scope><name>rep_</name></member>
+      <member refid="classleveldb_1_1_table_1a145d0ed70dfb8cb92956bb554db222e5" prot="private" virt="non-virtual"><scope>leveldb::Table</scope><name>Table</name></member>
+      <member refid="classleveldb_1_1_table_1ae65d769b917c37227f66221dbd3fe850" prot="private" virt="non-virtual"><scope>leveldb::Table</scope><name>Table</name></member>
+      <member refid="classleveldb_1_1_table_1ae1e5f7bae4682672cfcc68d0add43199" prot="private" virt="non-virtual"><scope>leveldb::Table</scope><name>TableCache</name></member>
+      <member refid="classleveldb_1_1_table_1a945f1f97b4f53402f5d55422a4dd3af2" prot="public" virt="non-virtual"><scope>leveldb::Table</scope><name>~Table</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
