@@ -5,10 +5,7 @@
 #ifndef SANDSTORM_RELAY_H
 #define SANDSTORM_RELAY_H
 
-#include "main.h"
-#include "activestormnode.h"
 #include "stormnodeman.h"
-
 
 class CSandStormRelay
 {
