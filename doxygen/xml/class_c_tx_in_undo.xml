@@ -29,6 +29,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dev/ds-160209/src/undo.h" line="50" column="1" bodyfile="/home/dev/ds-160209/src/undo.h" bodystart="50" bodyend="-1"/>
+        <referencedby refid="class_c_coins_1a8d5fe8c1ab0c9558620448a19ecdb8b2" compoundref="coins_8cpp" startline="34" endline="48">CCoins::Spend</referencedby>
       </memberdef>
       <memberdef kind="variable" id="class_c_tx_in_undo_1af022118f015a9b1b9ab96e04e8452292" prot="public" static="no" mutable="no">
         <type>unsigned int</type>
@@ -42,6 +43,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dev/ds-160209/src/undo.h" line="51" column="1" bodyfile="/home/dev/ds-160209/src/undo.h" bodystart="51" bodyend="-1"/>
+        <referencedby refid="class_c_coins_1a8d5fe8c1ab0c9558620448a19ecdb8b2" compoundref="coins_8cpp" startline="34" endline="48">CCoins::Spend</referencedby>
       </memberdef>
       <memberdef kind="variable" id="class_c_tx_in_undo_1a193281289475ca792e436a7a02de23ef" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -55,6 +57,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dev/ds-160209/src/undo.h" line="52" column="1" bodyfile="/home/dev/ds-160209/src/undo.h" bodystart="52" bodyend="-1"/>
+        <referencedby refid="class_c_coins_1a8d5fe8c1ab0c9558620448a19ecdb8b2" compoundref="coins_8cpp" startline="34" endline="48">CCoins::Spend</referencedby>
+        <referencedby refid="class_c_tx_in_undo_1a6f992d64f9d4ee6299cbd3305e4fd90f" compoundref="undo_8h" startline="57" endline="61">GetSerializeSize</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -123,6 +127,10 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dev/ds-160209/src/undo.h" line="57" column="1" bodyfile="/home/dev/ds-160209/src/undo.h" bodystart="57" bodyend="61"/>
+        <references refid="serialize_8h_1a48239e478ae730373d1984fe304ca025" compoundref="serialize_8h" startline="130" endline="130">GetSerializeSize</references>
+        <references refid="serialize_8h_1a1383f2a4c22ffaeba9b2924d90459f76" compoundref="serialize_8h" startline="330">VARINT</references>
+        <references refid="serialize_8h_1abd1caa7e45d4ba31b7dfdda9949c3b05" compoundref="serialize_8h" startline="36" endline="39">REF</references>
+        <references refid="class_c_tx_in_undo_1a193281289475ca792e436a7a02de23ef" compoundref="undo_8h" startline="52">nVersion</references>
       </memberdef>
       <memberdef kind="function" id="class_c_tx_in_undo_1a37cebff3e836226b36e51d91e7cc2739" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -153,6 +161,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dev/ds-160209/src/undo.h" line="64" column="1" bodyfile="/home/dev/ds-160209/src/undo.h" bodystart="64" bodyend="69"/>
+        <references refid="serialize_8h_1a1383f2a4c22ffaeba9b2924d90459f76" compoundref="serialize_8h" startline="330">VARINT</references>
+        <references refid="serialize_8h_1abd1caa7e45d4ba31b7dfdda9949c3b05" compoundref="serialize_8h" startline="36" endline="39">REF</references>
       </memberdef>
       <memberdef kind="function" id="class_c_tx_in_undo_1a0a2b82f03edad7ad85a66e63e4552af9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
@@ -183,6 +193,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dev/ds-160209/src/undo.h" line="72" column="1" bodyfile="/home/dev/ds-160209/src/undo.h" bodystart="72" bodyend="80"/>
+        <references refid="serialize_8h_1a1383f2a4c22ffaeba9b2924d90459f76" compoundref="serialize_8h" startline="330">VARINT</references>
+        <references refid="serialize_8h_1abd1caa7e45d4ba31b7dfdda9949c3b05" compoundref="serialize_8h" startline="36" endline="39">REF</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -190,27 +202,27 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="964">
+      <node id="2877">
         <label>CTxOut</label>
         <link refid="class_c_tx_out"/>
-        <childnode refid="965" relation="usage">
+        <childnode refid="2878" relation="usage">
           <edgelabel>scriptPubKey</edgelabel>
         </childnode>
       </node>
-      <node id="963">
+      <node id="2876">
         <label>CTxInUndo</label>
         <link refid="class_c_tx_in_undo"/>
-        <childnode refid="964" relation="usage">
+        <childnode refid="2877" relation="usage">
           <edgelabel>txout</edgelabel>
         </childnode>
       </node>
-      <node id="965">
+      <node id="2878">
         <label>CScript</label>
         <link refid="class_c_script"/>
-        <childnode refid="966" relation="public-inheritance">
+        <childnode refid="2879" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="966">
+      <node id="2879">
         <label>std::vector&lt; unsigned char &gt;</label>
       </node>
     </collaborationgraph>

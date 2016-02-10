@@ -16,6 +16,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dev/ds-160209/src/instantx.h" line="84" column="1" bodyfile="/home/dev/ds-160209/src/instantx.h" bodystart="84" bodyend="-1"/>
+        <referencedby refid="instantx_8h_1a3774b6dae3dfa0a6c85e3604e742150c" compoundref="instantx_8cpp" startline="221" endline="256">CreateNewLock</referencedby>
+        <referencedby refid="instantx_8h_1a5d4434bfb70f64f95aa4de9286cbae94" compoundref="instantx_8cpp" startline="302" endline="394">ProcessConsensusVote</referencedby>
       </memberdef>
       <memberdef kind="variable" id="class_c_transaction_lock_1a9d4babccfcdf7fe3806dd3ec1b56d08a" prot="public" static="no" mutable="no">
         <type><ref refid="classuint256" kindref="compound">uint256</ref></type>
@@ -83,6 +85,13 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dev/ds-160209/src/instantx.h" line="90" column="1" bodyfile="/home/dev/ds-160209/src/instantx.cpp" bodystart="523" bodyend="549"/>
+        <references refid="stormnodeman_8cpp_1a1e28814877e5fb4ed8113e3621ca13ff" compoundref="stormnodeman_8cpp" startline="18">snodeman</references>
+        <references refid="class_c_stormnode_man_1ad1fb56e4ee364e2b18bab57210f3f3cd" compoundref="stormnodeman_8cpp" startline="560" endline="592">CStormnodeMan::GetStormnodeRank</references>
+        <references refid="class_c_consensus_vote_1ab3a273669aecfba15f77c34d33c0ca93" compoundref="instantx_8h" startline="60">CConsensusVote::vinStormnode</references>
+        <references refid="class_c_consensus_vote_1a19f39b69e4adf3f9b5557d465cabc7ed" compoundref="instantx_8h" startline="62">CConsensusVote::nBlockHeight</references>
+        <references refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" compoundref="util_8h" startline="158">LogPrintf</references>
+        <references refid="instantx_8h_1ae0987d3c018640d462e6fa67fc3bfcb6" compoundref="instantx_8h" startline="20">INSTANTX_SIGNATURES_TOTAL</references>
+        <references refid="class_c_consensus_vote_1ac6550a89acee255e0035e189a42a6310" compoundref="instantx_8cpp" startline="471" endline="491">CConsensusVote::SignatureValid</references>
       </memberdef>
       <memberdef kind="function" id="class_c_transaction_lock_1aa74b16eec6daee397785a91193fc3306" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -96,6 +105,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dev/ds-160209/src/instantx.h" line="91" column="1" bodyfile="/home/dev/ds-160209/src/instantx.cpp" bodystart="556" bodyend="572"/>
+        <references refid="class_c_consensus_vote_1a19f39b69e4adf3f9b5557d465cabc7ed" compoundref="instantx_8h" startline="62">CConsensusVote::nBlockHeight</references>
       </memberdef>
       <memberdef kind="function" id="class_c_transaction_lock_1a8f09c2c0453950fb6deadcccf5f518d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -133,21 +143,21 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="929">
+      <node id="2842">
         <label>CTransactionLock</label>
         <link refid="class_c_transaction_lock"/>
-        <childnode refid="930" relation="usage">
+        <childnode refid="2843" relation="usage">
           <edgelabel>txHash</edgelabel>
         </childnode>
       </node>
-      <node id="931">
+      <node id="2844">
         <label>base_uint&lt; 256 &gt;</label>
         <link refid="classbase__uint"/>
       </node>
-      <node id="930">
+      <node id="2843">
         <label>uint256</label>
         <link refid="classuint256"/>
-        <childnode refid="931" relation="public-inheritance">
+        <childnode refid="2844" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>
