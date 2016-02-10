@@ -8,52 +8,52 @@
     <includes refid="blake2_8h" local="yes">blake2.h</includes>
     <includes refid="blake2-impl_8h" local="yes">blake2-impl.h</includes>
     <incdepgraph>
-      <node id="3953">
+      <node id="33415">
         <label>blake2.h</label>
         <link refid="blake2_8h"/>
-        <childnode refid="3954" relation="include">
+        <childnode refid="33416" relation="include">
         </childnode>
-        <childnode refid="3950" relation="include">
+        <childnode refid="33412" relation="include">
         </childnode>
-        <childnode refid="3955" relation="include">
+        <childnode refid="33417" relation="include">
         </childnode>
       </node>
-      <node id="3954">
+      <node id="33416">
         <label>stddef.h</label>
       </node>
-      <node id="3949">
+      <node id="33411">
         <label>/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c</label>
         <link refid="blake2b.c"/>
-        <childnode refid="3950" relation="include">
+        <childnode refid="33412" relation="include">
         </childnode>
-        <childnode refid="3951" relation="include">
+        <childnode refid="33413" relation="include">
         </childnode>
-        <childnode refid="3952" relation="include">
+        <childnode refid="33414" relation="include">
         </childnode>
-        <childnode refid="3953" relation="include">
+        <childnode refid="33415" relation="include">
         </childnode>
-        <childnode refid="3956" relation="include">
+        <childnode refid="33418" relation="include">
         </childnode>
       </node>
-      <node id="3956">
+      <node id="33418">
         <label>blake2-impl.h</label>
         <link refid="blake2-impl_8h"/>
-        <childnode refid="3950" relation="include">
+        <childnode refid="33412" relation="include">
         </childnode>
-        <childnode refid="3951" relation="include">
+        <childnode refid="33413" relation="include">
         </childnode>
       </node>
-      <node id="3955">
+      <node id="33417">
         <label>limits.h</label>
       </node>
-      <node id="3951">
+      <node id="33413">
         <label>string.h</label>
       </node>
-      <node id="3950">
+      <node id="33412">
         <label>stdint.h</label>
         <link refid="stdint_8h"/>
       </node>
-      <node id="3952">
+      <node id="33414">
         <label>stdio.h</label>
       </node>
     </incdepgraph>
@@ -121,6 +121,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" line="328" column="9"/>
+        <referencedby refid="blake2b_8c_1a9b077c7edb6f72a00f66c3db94ae6398" compoundref="blake2b_8c" startline="315" endline="371">blake2b_long</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="var">
@@ -280,6 +281,11 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" line="56" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" bodystart="56" bodyend="71"/>
+        <references refid="struct____blake2b__state_1a98f8e01951c0944e82dff97c9a5ae700" compoundref="blake2_8h" startline="37">__blake2b_state::h</references>
+        <references refid="struct____blake2b__state_1aa5803608622e985dd48d6b36f8761a57" compoundref="blake2_8h" startline="42">__blake2b_state::outlen</references>
+        <references refid="struct____blake2b__param_1acf01a39fc0926ef22177a9bda686163f" compoundref="blake2_8h" startline="22">__blake2b_param::digest_length</references>
+        <referencedby refid="blake2b_8c_1a7cefd211bfec58d37d8b67741955ce8a" compoundref="blake2b_8c" startline="74" endline="100">blake2b_init</referencedby>
+        <referencedby refid="blake2b_8c_1a039b52f87e2ba0ca16ebbc62bfd3f02a" compoundref="blake2b_8c" startline="102" endline="146">blake2b_init_key</referencedby>
       </memberdef>
       <memberdef kind="function" id="blake2b_8c_1a7cefd211bfec58d37d8b67741955ce8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -301,6 +307,23 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" line="74" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" bodystart="74" bodyend="100"/>
+        <references refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" compoundref="blake2_8h" startline="14">BLAKE2B_OUTBYTES</references>
+        <references refid="struct____blake2b__param_1acf01a39fc0926ef22177a9bda686163f" compoundref="blake2_8h" startline="22">__blake2b_param::digest_length</references>
+        <references refid="struct____blake2b__param_1af01234225a1b6d0dce3e6c6709af01fa" compoundref="blake2_8h" startline="23">__blake2b_param::key_length</references>
+        <references refid="struct____blake2b__param_1acb6bd7b19ce82dbfc6968bfaef5ddb31" compoundref="blake2_8h" startline="24">__blake2b_param::fanout</references>
+        <references refid="struct____blake2b__param_1ad7bf5379885d9b50022af74eae90a525" compoundref="blake2_8h" startline="25">__blake2b_param::depth</references>
+        <references refid="struct____blake2b__param_1a960e7c6fed53742f78acd3b6bcb93c71" compoundref="blake2_8h" startline="26">__blake2b_param::leaf_length</references>
+        <references refid="struct____blake2b__param_1ada6a88bf4b6f3e08132df538e6c63285" compoundref="blake2_8h" startline="27">__blake2b_param::node_offset</references>
+        <references refid="struct____blake2b__param_1aa1b2a90e439a538f609032d3bf852751" compoundref="blake2_8h" startline="28">__blake2b_param::node_depth</references>
+        <references refid="struct____blake2b__param_1a8a299b985fc0aee524628a9863d1839e" compoundref="blake2_8h" startline="29">__blake2b_param::inner_length</references>
+        <references refid="struct____blake2b__param_1a03f80ec4887f254dabe4baa9626fd5ab" compoundref="blake2_8h" startline="30">__blake2b_param::reserved</references>
+        <references refid="struct____blake2b__param_1ad53420f1ce170abad76166fe101a46b5" compoundref="blake2_8h" startline="31">__blake2b_param::salt</references>
+        <references refid="struct____blake2b__param_1af8ec1991e3458f8c8cddb70fd0ee7ce5" compoundref="blake2_8h" startline="32">__blake2b_param::personal</references>
+        <references refid="blake2b_8c_1ae453d8f2798df27cd1f4ea9b00b3a520" compoundref="blake2b_8c" startline="56" endline="71">blake2b_init_param</references>
+        <referencedby refid="blake2b_8c_1a5cf706554b84e6b4d763084ecefd6391" compoundref="blake2b_8c" startline="276" endline="312">blake2b</referencedby>
+        <referencedby refid="blake2b_8c_1a9b077c7edb6f72a00f66c3db94ae6398" compoundref="blake2b_8c" startline="315" endline="371">blake2b_long</referencedby>
+        <referencedby refid="core_8h_1a777bb6205a6ad0da9b85a7c2ae61f7c8" compoundref="core_8c" startline="485" endline="557">initial_hash</referencedby>
+        <referencedby refid="hash_8h_1a52050dfad4b22ccef10e459e5ffc284b" compoundref="hash_8h" startline="88" endline="97">HashBlake2b</referencedby>
       </memberdef>
       <memberdef kind="function" id="blake2b_8c_1a039b52f87e2ba0ca16ebbc62bfd3f02a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -330,6 +353,23 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" line="102" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" bodystart="102" bodyend="146"/>
+        <references refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" compoundref="blake2_8h" startline="14">BLAKE2B_OUTBYTES</references>
+        <references refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5a8dfea1685718cfdbbfc48b85cec868e4" compoundref="blake2_8h" startline="15">BLAKE2B_KEYBYTES</references>
+        <references refid="struct____blake2b__param_1acf01a39fc0926ef22177a9bda686163f" compoundref="blake2_8h" startline="22">__blake2b_param::digest_length</references>
+        <references refid="struct____blake2b__param_1af01234225a1b6d0dce3e6c6709af01fa" compoundref="blake2_8h" startline="23">__blake2b_param::key_length</references>
+        <references refid="struct____blake2b__param_1acb6bd7b19ce82dbfc6968bfaef5ddb31" compoundref="blake2_8h" startline="24">__blake2b_param::fanout</references>
+        <references refid="struct____blake2b__param_1ad7bf5379885d9b50022af74eae90a525" compoundref="blake2_8h" startline="25">__blake2b_param::depth</references>
+        <references refid="struct____blake2b__param_1a960e7c6fed53742f78acd3b6bcb93c71" compoundref="blake2_8h" startline="26">__blake2b_param::leaf_length</references>
+        <references refid="struct____blake2b__param_1ada6a88bf4b6f3e08132df538e6c63285" compoundref="blake2_8h" startline="27">__blake2b_param::node_offset</references>
+        <references refid="struct____blake2b__param_1aa1b2a90e439a538f609032d3bf852751" compoundref="blake2_8h" startline="28">__blake2b_param::node_depth</references>
+        <references refid="struct____blake2b__param_1a8a299b985fc0aee524628a9863d1839e" compoundref="blake2_8h" startline="29">__blake2b_param::inner_length</references>
+        <references refid="struct____blake2b__param_1a03f80ec4887f254dabe4baa9626fd5ab" compoundref="blake2_8h" startline="30">__blake2b_param::reserved</references>
+        <references refid="struct____blake2b__param_1ad53420f1ce170abad76166fe101a46b5" compoundref="blake2_8h" startline="31">__blake2b_param::salt</references>
+        <references refid="struct____blake2b__param_1af8ec1991e3458f8c8cddb70fd0ee7ce5" compoundref="blake2_8h" startline="32">__blake2b_param::personal</references>
+        <references refid="blake2b_8c_1ae453d8f2798df27cd1f4ea9b00b3a520" compoundref="blake2b_8c" startline="56" endline="71">blake2b_init_param</references>
+        <references refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5aea9f79a4ec90a788ea0590ae5dfda693" compoundref="blake2_8h" startline="13">BLAKE2B_BLOCKBYTES</references>
+        <references refid="blake2b_8c_1a1ee160fb796e342c9ee8a99ea0ffab0a" compoundref="blake2b_8c" startline="206" endline="244">blake2b_update</references>
+        <referencedby refid="blake2b_8c_1a5cf706554b84e6b4d763084ecefd6391" compoundref="blake2b_8c" startline="276" endline="312">blake2b</referencedby>
       </memberdef>
       <memberdef kind="function" id="blake2b_8c_1a004655394b4249e59d4469070e94f7e9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -376,6 +416,15 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" line="206" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" bodystart="206" bodyend="244"/>
+        <references refid="struct____blake2b__state_1a611101aaef0e6a2916d83266696ddf45" compoundref="blake2_8h" startline="39">__blake2b_state::f</references>
+        <references refid="struct____blake2b__state_1a613f0decce59102cabda809ef7ff7f3b" compoundref="blake2_8h" startline="41">__blake2b_state::buflen</references>
+        <references refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5aea9f79a4ec90a788ea0590ae5dfda693" compoundref="blake2_8h" startline="13">BLAKE2B_BLOCKBYTES</references>
+        <references refid="struct____blake2b__state_1ab56d8559f6de9a905c64df6214113e94" compoundref="blake2_8h" startline="40">__blake2b_state::buf</references>
+        <referencedby refid="blake2b_8c_1a039b52f87e2ba0ca16ebbc62bfd3f02a" compoundref="blake2b_8c" startline="102" endline="146">blake2b_init_key</referencedby>
+        <referencedby refid="blake2b_8c_1a5cf706554b84e6b4d763084ecefd6391" compoundref="blake2b_8c" startline="276" endline="312">blake2b</referencedby>
+        <referencedby refid="blake2b_8c_1a9b077c7edb6f72a00f66c3db94ae6398" compoundref="blake2b_8c" startline="315" endline="371">blake2b_long</referencedby>
+        <referencedby refid="core_8h_1a777bb6205a6ad0da9b85a7c2ae61f7c8" compoundref="core_8c" startline="485" endline="557">initial_hash</referencedby>
+        <referencedby refid="hash_8h_1a52050dfad4b22ccef10e459e5ffc284b" compoundref="hash_8h" startline="88" endline="97">HashBlake2b</referencedby>
       </memberdef>
       <memberdef kind="function" id="blake2b_8c_1ae3265f4a4ba468da48c850ad815bed2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -401,6 +450,17 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" line="246" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" bodystart="246" bodyend="274"/>
+        <references refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" compoundref="blake2_8h" startline="14">BLAKE2B_OUTBYTES</references>
+        <references refid="struct____blake2b__state_1a611101aaef0e6a2916d83266696ddf45" compoundref="blake2_8h" startline="39">__blake2b_state::f</references>
+        <references refid="struct____blake2b__state_1a613f0decce59102cabda809ef7ff7f3b" compoundref="blake2_8h" startline="41">__blake2b_state::buflen</references>
+        <references refid="struct____blake2b__state_1ab56d8559f6de9a905c64df6214113e94" compoundref="blake2_8h" startline="40">__blake2b_state::buf</references>
+        <references refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5aea9f79a4ec90a788ea0590ae5dfda693" compoundref="blake2_8h" startline="13">BLAKE2B_BLOCKBYTES</references>
+        <references refid="struct____blake2b__state_1a98f8e01951c0944e82dff97c9a5ae700" compoundref="blake2_8h" startline="37">__blake2b_state::h</references>
+        <references refid="struct____blake2b__state_1aa5803608622e985dd48d6b36f8761a57" compoundref="blake2_8h" startline="42">__blake2b_state::outlen</references>
+        <referencedby refid="blake2b_8c_1a5cf706554b84e6b4d763084ecefd6391" compoundref="blake2b_8c" startline="276" endline="312">blake2b</referencedby>
+        <referencedby refid="blake2b_8c_1a9b077c7edb6f72a00f66c3db94ae6398" compoundref="blake2b_8c" startline="315" endline="371">blake2b_long</referencedby>
+        <referencedby refid="core_8h_1a777bb6205a6ad0da9b85a7c2ae61f7c8" compoundref="core_8c" startline="485" endline="557">initial_hash</referencedby>
+        <referencedby refid="hash_8h_1a52050dfad4b22ccef10e459e5ffc284b" compoundref="hash_8h" startline="88" endline="97">HashBlake2b</referencedby>
       </memberdef>
       <memberdef kind="function" id="blake2b_8c_1a5cf706554b84e6b4d763084ecefd6391" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -438,6 +498,13 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" line="276" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" bodystart="276" bodyend="312"/>
+        <references refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" compoundref="blake2_8h" startline="14">BLAKE2B_OUTBYTES</references>
+        <references refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5a8dfea1685718cfdbbfc48b85cec868e4" compoundref="blake2_8h" startline="15">BLAKE2B_KEYBYTES</references>
+        <references refid="blake2b_8c_1a039b52f87e2ba0ca16ebbc62bfd3f02a" compoundref="blake2b_8c" startline="102" endline="146">blake2b_init_key</references>
+        <references refid="blake2b_8c_1a7cefd211bfec58d37d8b67741955ce8a" compoundref="blake2b_8c" startline="74" endline="100">blake2b_init</references>
+        <references refid="blake2b_8c_1a1ee160fb796e342c9ee8a99ea0ffab0a" compoundref="blake2b_8c" startline="206" endline="244">blake2b_update</references>
+        <references refid="blake2b_8c_1ae3265f4a4ba468da48c850ad815bed2d" compoundref="blake2b_8c" startline="246" endline="274">blake2b_final</references>
+        <referencedby refid="blake2b_8c_1a9b077c7edb6f72a00f66c3db94ae6398" compoundref="blake2b_8c" startline="315" endline="371">blake2b_long</referencedby>
       </memberdef>
       <memberdef kind="function" id="blake2b_8c_1a9b077c7edb6f72a00f66c3db94ae6398" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>int</type>
@@ -467,6 +534,14 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" line="315" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" bodystart="315" bodyend="371"/>
+        <references refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" compoundref="blake2_8h" startline="14">BLAKE2B_OUTBYTES</references>
+        <references refid="blake2b_8c_1a9631a68bc0c927f3d068b07ee8d052ff">TRY</references>
+        <references refid="blake2b_8c_1a7cefd211bfec58d37d8b67741955ce8a" compoundref="blake2b_8c" startline="74" endline="100">blake2b_init</references>
+        <references refid="blake2b_8c_1a1ee160fb796e342c9ee8a99ea0ffab0a" compoundref="blake2b_8c" startline="206" endline="244">blake2b_update</references>
+        <references refid="blake2b_8c_1ae3265f4a4ba468da48c850ad815bed2d" compoundref="blake2b_8c" startline="246" endline="274">blake2b_final</references>
+        <references refid="blake2b_8c_1a5cf706554b84e6b4d763084ecefd6391" compoundref="blake2b_8c" startline="276" endline="312">blake2b</references>
+        <referencedby refid="core_8h_1aafd756bf3475038e2eada05bcaf31b18" compoundref="core_8c" startline="127" endline="168">finalize</referencedby>
+        <referencedby refid="core_8h_1a96c3c9f5727d9f0224b923c723f0ed8e" compoundref="core_8c" startline="462" endline="483">fill_first_blocks</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>

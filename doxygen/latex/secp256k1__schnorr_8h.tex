@@ -1,6 +1,10 @@
 \hypertarget{secp256k1__schnorr_8h}{}\section{/home/dev/ds-\/160209/src/secp256k1/include/secp256k1\+\_\+schnorr.h File Reference}
 \label{secp256k1__schnorr_8h}\index{/home/dev/ds-\/160209/src/secp256k1/include/secp256k1\+\_\+schnorr.\+h@{/home/dev/ds-\/160209/src/secp256k1/include/secp256k1\+\_\+schnorr.\+h}}
 {\ttfamily \#include \char`\"{}secp256k1.\+h\char`\"{}}\\*
+Include dependency graph for secp256k1\+\_\+schnorr.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -38,6 +42,12 @@ Do not use the output as a private/public key pair for signing/validation.
 
 Definition at line 91 of file main\+\_\+impl.\+h.
 
+
+
+Here is the caller graph for this function\+:
+% FIG 2
+
+
 \hypertarget{secp256k1__schnorr_8h_a3e2e970becbc63f9d1cd0ef054488b58}{}\index{secp256k1\+\_\+schnorr.\+h@{secp256k1\+\_\+schnorr.\+h}!secp256k1\+\_\+schnorr\+\_\+partial\+\_\+combine@{secp256k1\+\_\+schnorr\+\_\+partial\+\_\+combine}}
 \index{secp256k1\+\_\+schnorr\+\_\+partial\+\_\+combine@{secp256k1\+\_\+schnorr\+\_\+partial\+\_\+combine}!secp256k1\+\_\+schnorr.\+h@{secp256k1\+\_\+schnorr.\+h}}
 \subsubsection[{secp256k1\+\_\+schnorr\+\_\+partial\+\_\+combine}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} {\bf S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T} int secp256k1\+\_\+schnorr\+\_\+partial\+\_\+combine (
@@ -51,6 +61,12 @@ Definition at line 91 of file main\+\_\+impl.\+h.
 Combine multiple Schnorr partial signatures. Returns\+: 1\+: the passed signatures were successfully combined. 0\+: the resulting signature is not valid (chance of 1 in 2$^\wedge$256) -\/1\+: some inputs were invalid, or the signatures were not created using the same set of nonces Args\+: ctx\+: pointer to a context object Out\+: sig64\+: pointer to a 64-\/byte array to place the combined signature (cannot be N\+U\+L\+L) In\+: sig64sin\+: pointer to an array of n pointers to 64-\/byte input signatures n\+: the number of signatures to combine (at least 1) 
 
 Definition at line 157 of file main\+\_\+impl.\+h.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
 
 \hypertarget{secp256k1__schnorr_8h_a9887da00f1d053c0c86b865bad5b8d82}{}\index{secp256k1\+\_\+schnorr.\+h@{secp256k1\+\_\+schnorr.\+h}!secp256k1\+\_\+schnorr\+\_\+partial\+\_\+sign@{secp256k1\+\_\+schnorr\+\_\+partial\+\_\+sign}}
 \index{secp256k1\+\_\+schnorr\+\_\+partial\+\_\+sign@{secp256k1\+\_\+schnorr\+\_\+partial\+\_\+sign}!secp256k1\+\_\+schnorr.\+h@{secp256k1\+\_\+schnorr.\+h}}
@@ -81,6 +97,12 @@ Note that secp256k1\+\_\+schnorr\+\_\+partial\+\_\+combine and secp256k1\+\_\+ec
 
 Definition at line 133 of file main\+\_\+impl.\+h.
 
+
+
+Here is the caller graph for this function\+:
+% FIG 4
+
+
 \hypertarget{secp256k1__schnorr_8h_aa15ce0fb89d5eacfd2a11a88ee70636c}{}\index{secp256k1\+\_\+schnorr.\+h@{secp256k1\+\_\+schnorr.\+h}!secp256k1\+\_\+schnorr\+\_\+recover@{secp256k1\+\_\+schnorr\+\_\+recover}}
 \index{secp256k1\+\_\+schnorr\+\_\+recover@{secp256k1\+\_\+schnorr\+\_\+recover}!secp256k1\+\_\+schnorr.\+h@{secp256k1\+\_\+schnorr.\+h}}
 \subsubsection[{secp256k1\+\_\+schnorr\+\_\+recover}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} int secp256k1\+\_\+schnorr\+\_\+recover (
@@ -94,6 +116,12 @@ Definition at line 133 of file main\+\_\+impl.\+h.
 Recover an E\+C public key from a Schnorr signature created using secp256k1\+\_\+schnorr\+\_\+sign. Returns\+: 1\+: public key successfully recovered (which guarantees a correct signature). 0\+: otherwise. Args\+: ctx\+: pointer to a context object, initialized for verification (cannot be N\+U\+L\+L) Out\+: pubkey\+: pointer to a pubkey to set to the recovered public key (cannot be N\+U\+L\+L). In\+: sig64\+: signature as 64 byte array (cannot be N\+U\+L\+L) msg32\+: the 32-\/byte message hash assumed to be signed (cannot be N\+U\+L\+L) 
 
 Definition at line 73 of file main\+\_\+impl.\+h.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 5
+
 
 \hypertarget{secp256k1__schnorr_8h_ab7e18ffba471cded051c249f5f8cab48}{}\index{secp256k1\+\_\+schnorr.\+h@{secp256k1\+\_\+schnorr.\+h}!secp256k1\+\_\+schnorr\+\_\+sign@{secp256k1\+\_\+schnorr\+\_\+sign}}
 \index{secp256k1\+\_\+schnorr\+\_\+sign@{secp256k1\+\_\+schnorr\+\_\+sign}!secp256k1\+\_\+schnorr.\+h@{secp256k1\+\_\+schnorr.\+h}}
@@ -111,6 +139,12 @@ Create a signature using a custom E\+C-\/\+Schnorr-\/\+S\+H\+A256 construction. 
 
 Definition at line 23 of file main\+\_\+impl.\+h.
 
+
+
+Here is the caller graph for this function\+:
+% FIG 6
+
+
 \hypertarget{secp256k1__schnorr_8h_ab9bcde80df113d29823401a460ea9bcc}{}\index{secp256k1\+\_\+schnorr.\+h@{secp256k1\+\_\+schnorr.\+h}!secp256k1\+\_\+schnorr\+\_\+verify@{secp256k1\+\_\+schnorr\+\_\+verify}}
 \index{secp256k1\+\_\+schnorr\+\_\+verify@{secp256k1\+\_\+schnorr\+\_\+verify}!secp256k1\+\_\+schnorr.\+h@{secp256k1\+\_\+schnorr.\+h}}
 \subsubsection[{secp256k1\+\_\+schnorr\+\_\+verify}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} {\bf S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T} int secp256k1\+\_\+schnorr\+\_\+verify (
@@ -124,4 +158,10 @@ Definition at line 23 of file main\+\_\+impl.\+h.
 Verify a signature created by secp256k1\+\_\+schnorr\+\_\+sign. Returns\+: 1\+: correct signature 0\+: incorrect signature Args\+: ctx\+: a secp256k1 context object, initialized for verification. In\+: sig64\+: the 64-\/byte signature being verified (cannot be N\+U\+L\+L) msg32\+: the 32-\/byte message hash being verified (cannot be N\+U\+L\+L) pubkey\+: the public key to verify with (cannot be N\+U\+L\+L) 
 
 Definition at line 61 of file main\+\_\+impl.\+h.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 7
+
 

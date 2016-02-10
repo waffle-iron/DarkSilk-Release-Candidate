@@ -17,6 +17,9 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dev/ds-160209/src/sandstorm.h" line="56" column="1" bodyfile="/home/dev/ds-160209/src/sandstorm.h" bodystart="56" bodyend="-1"/>
+        <referencedby refid="class_c_sandstorm_pool_1a76f820f131dbb15d80f826f0c788249a" compoundref="sandstorm_8cpp" startline="646" endline="746">CSandstormPool::ChargeFees</referencedby>
+        <referencedby refid="class_c_sandstorm_pool_1a4b6bc55b02bfbce6a467507541a137bd" compoundref="sandstorm_8cpp" startline="1077" endline="1084">CSandstormPool::SignaturesComplete</referencedby>
+        <referencedby refid="class_c_sand_storm_entry_1afa10b9e19a0a0916b9d3153e2adce11b" compoundref="sandstorm_8h" startline="124" endline="138">CSandStormEntry::AddSig</referencedby>
       </memberdef>
       <memberdef kind="variable" id="class_c_tx_s_s_in_1a1e4cb4930ca28196efe956ddc3310b28" prot="public" static="no" mutable="no">
         <type>int</type>
@@ -49,6 +52,10 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/dev/ds-160209/src/sandstorm.h" line="59" column="1" bodyfile="/home/dev/ds-160209/src/sandstorm.h" bodystart="59" bodyend="67"/>
+        <references refid="class_c_tx_in_1aed9312051a25380cbd7f123408ab7c20" compoundref="transaction_8h" startline="97">CTxIn::prevout</references>
+        <references refid="class_c_tx_in_1aba540fd902366210a6ad6cd9a18fe763" compoundref="transaction_8h" startline="98">CTxIn::scriptSig</references>
+        <references refid="class_c_tx_in_1a91732c5ffb13520a6989b162ff6683fc" compoundref="transaction_8h" startline="99">CTxIn::prevPubKey</references>
+        <references refid="class_c_tx_in_1aa0dd08a6ecd0a595d9ef4dad020c1ea5" compoundref="transaction_8h" startline="100">CTxIn::nSequence</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -56,59 +63,59 @@
     <detaileddescription>
 <para>Holds an Sandstorm input </para>    </detaileddescription>
     <inheritancegraph>
-      <node id="986">
+      <node id="2899">
         <label>CTxIn</label>
         <link refid="class_c_tx_in"/>
       </node>
-      <node id="985">
+      <node id="2898">
         <label>CTxSSIn</label>
         <link refid="class_c_tx_s_s_in"/>
-        <childnode refid="986" relation="public-inheritance">
+        <childnode refid="2899" relation="public-inheritance">
         </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
-      <node id="993">
+      <node id="2906">
         <label>base_uint&lt; 256 &gt;</label>
         <link refid="classbase__uint"/>
       </node>
-      <node id="988">
+      <node id="2901">
         <label>CTxIn</label>
         <link refid="class_c_tx_in"/>
-        <childnode refid="989" relation="usage">
+        <childnode refid="2902" relation="usage">
           <edgelabel>scriptSig</edgelabel>
           <edgelabel>prevPubKey</edgelabel>
         </childnode>
-        <childnode refid="991" relation="usage">
+        <childnode refid="2904" relation="usage">
           <edgelabel>prevout</edgelabel>
         </childnode>
       </node>
-      <node id="992">
+      <node id="2905">
         <label>uint256</label>
         <link refid="classuint256"/>
-        <childnode refid="993" relation="public-inheritance">
+        <childnode refid="2906" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="991">
+      <node id="2904">
         <label>COutPoint</label>
         <link refid="class_c_out_point"/>
-        <childnode refid="992" relation="usage">
+        <childnode refid="2905" relation="usage">
           <edgelabel>hash</edgelabel>
         </childnode>
       </node>
-      <node id="989">
+      <node id="2902">
         <label>CScript</label>
         <link refid="class_c_script"/>
-        <childnode refid="990" relation="public-inheritance">
+        <childnode refid="2903" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="990">
+      <node id="2903">
         <label>std::vector&lt; unsigned char &gt;</label>
       </node>
-      <node id="987">
+      <node id="2900">
         <label>CTxSSIn</label>
         <link refid="class_c_tx_s_s_in"/>
-        <childnode refid="988" relation="public-inheritance">
+        <childnode refid="2901" relation="public-inheritance">
         </childnode>
       </node>
     </collaborationgraph>

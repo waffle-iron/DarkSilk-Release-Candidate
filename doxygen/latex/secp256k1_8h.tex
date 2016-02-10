@@ -1,6 +1,10 @@
 \hypertarget{secp256k1_8h}{}\section{/home/dev/ds-\/160209/src/secp256k1/include/secp256k1.h File Reference}
 \label{secp256k1_8h}\index{/home/dev/ds-\/160209/src/secp256k1/include/secp256k1.\+h@{/home/dev/ds-\/160209/src/secp256k1/include/secp256k1.\+h}}
 {\ttfamily \#include $<$stddef.\+h$>$}\\*
+Include dependency graph for secp256k1.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
@@ -273,6 +277,12 @@ Returns\+: a newly created context object. Args\+: ctx\+: an existing context to
 
 Definition at line 85 of file secp256k1.\+c.
 
+
+
+Here is the caller graph for this function\+:
+% FIG 2
+
+
 \hypertarget{secp256k1_8h_a769d478f352afbb55200e33970533a3c}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+context\+\_\+create@{secp256k1\+\_\+context\+\_\+create}}
 \index{secp256k1\+\_\+context\+\_\+create@{secp256k1\+\_\+context\+\_\+create}!secp256k1.\+h@{secp256k1.\+h}}
 \subsubsection[{secp256k1\+\_\+context\+\_\+create}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} {\bf secp256k1\+\_\+context}$\ast$ secp256k1\+\_\+context\+\_\+create (
@@ -285,6 +295,12 @@ Create a secp256k1 context object.
 Returns\+: a newly created context object. In\+: flags\+: which parts of the context to initialize. 
 
 Definition at line 60 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
 
 \hypertarget{secp256k1_8h_af8569fb9aa73c0acf46afce4df662950}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+context\+\_\+destroy@{secp256k1\+\_\+context\+\_\+destroy}}
 \index{secp256k1\+\_\+context\+\_\+destroy@{secp256k1\+\_\+context\+\_\+destroy}!secp256k1.\+h@{secp256k1.\+h}}
@@ -299,6 +315,12 @@ The context pointer may not be used afterwards. Args\+: ctx\+: an existing conte
 
 Definition at line 94 of file secp256k1.\+c.
 
+
+
+Here is the caller graph for this function\+:
+% FIG 4
+
+
 \hypertarget{secp256k1_8h_a1b81d70feb6ed24dc902cbbd5ba569e7}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+context\+\_\+randomize@{secp256k1\+\_\+context\+\_\+randomize}}
 \index{secp256k1\+\_\+context\+\_\+randomize@{secp256k1\+\_\+context\+\_\+randomize}!secp256k1.\+h@{secp256k1.\+h}}
 \subsubsection[{secp256k1\+\_\+context\+\_\+randomize}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} {\bf S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T} int secp256k1\+\_\+context\+\_\+randomize (
@@ -310,6 +332,12 @@ Definition at line 94 of file secp256k1.\+c.
 Updates the context randomization. Returns\+: 1\+: randomization successfully updated 0\+: error Args\+: ctx\+: pointer to a context object (cannot be N\+U\+L\+L) In\+: seed32\+: pointer to a 32-\/byte random seed (N\+U\+L\+L resets to initial state) 
 
 Definition at line 527 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 5
+
 
 \hypertarget{secp256k1_8h_a35106efb325f03468bcf5faa524c1cc4}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+context\+\_\+set\+\_\+error\+\_\+callback@{secp256k1\+\_\+context\+\_\+set\+\_\+error\+\_\+callback}}
 \index{secp256k1\+\_\+context\+\_\+set\+\_\+error\+\_\+callback@{secp256k1\+\_\+context\+\_\+set\+\_\+error\+\_\+callback}!secp256k1.\+h@{secp256k1.\+h}}
@@ -327,6 +355,12 @@ This can only trigger in case of a hardware failure, miscompilation, memory corr
 Args\+: ctx\+: an existing context object (cannot be N\+U\+L\+L) In\+: fun\+: a pointer to a function to call when an internal error occurs, taking a message and an opaque pointer (N\+U\+L\+L restores a default handler that calls abort). data\+: the opaque pointer to pass to fun above. 
 
 Definition at line 111 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 6
+
 
 \hypertarget{secp256k1_8h_a3ec29bece9974f9535337eb7d91b351c}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+context\+\_\+set\+\_\+illegal\+\_\+callback@{secp256k1\+\_\+context\+\_\+set\+\_\+illegal\+\_\+callback}}
 \index{secp256k1\+\_\+context\+\_\+set\+\_\+illegal\+\_\+callback@{secp256k1\+\_\+context\+\_\+set\+\_\+illegal\+\_\+callback}!secp256k1.\+h@{secp256k1.\+h}}
@@ -347,6 +381,12 @@ Args\+: ctx\+: an existing context object (cannot be N\+U\+L\+L) In\+: fun\+: a 
 
 Definition at line 103 of file secp256k1.\+c.
 
+
+
+Here is the caller graph for this function\+:
+% FIG 7
+
+
 \hypertarget{secp256k1_8h_a0f9125cd8c970342ec5118f7bfacc0c5}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ec\+\_\+privkey\+\_\+tweak\+\_\+add@{secp256k1\+\_\+ec\+\_\+privkey\+\_\+tweak\+\_\+add}}
 \index{secp256k1\+\_\+ec\+\_\+privkey\+\_\+tweak\+\_\+add@{secp256k1\+\_\+ec\+\_\+privkey\+\_\+tweak\+\_\+add}!secp256k1.\+h@{secp256k1.\+h}}
 \subsubsection[{secp256k1\+\_\+ec\+\_\+privkey\+\_\+tweak\+\_\+add}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} {\bf S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T} int secp256k1\+\_\+ec\+\_\+privkey\+\_\+tweak\+\_\+add (
@@ -360,6 +400,12 @@ Tweak a private key by adding tweak to it. Returns\+: 0 if the tweak was out of 
 
 Definition at line 432 of file secp256k1.\+c.
 
+
+
+Here is the caller graph for this function\+:
+% FIG 8
+
+
 \hypertarget{secp256k1_8h_abe078cbb6b642d792f123ea67494f7e3}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ec\+\_\+privkey\+\_\+tweak\+\_\+mul@{secp256k1\+\_\+ec\+\_\+privkey\+\_\+tweak\+\_\+mul}}
 \index{secp256k1\+\_\+ec\+\_\+privkey\+\_\+tweak\+\_\+mul@{secp256k1\+\_\+ec\+\_\+privkey\+\_\+tweak\+\_\+mul}!secp256k1.\+h@{secp256k1.\+h}}
 \subsubsection[{secp256k1\+\_\+ec\+\_\+privkey\+\_\+tweak\+\_\+mul}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} {\bf S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T} int secp256k1\+\_\+ec\+\_\+privkey\+\_\+tweak\+\_\+mul (
@@ -372,6 +418,12 @@ Definition at line 432 of file secp256k1.\+c.
 Tweak a private key by multiplying it by a tweak. Returns\+: 0 if the tweak was out of range (chance of around 1 in 2$^\wedge$128 for uniformly random 32-\/byte arrays, or equal to zero. 1 otherwise. Args\+: ctx\+: pointer to a context object (cannot be N\+U\+L\+L). In/\+Out\+: seckey\+: pointer to a 32-\/byte private key. In\+: tweak\+: pointer to a 32-\/byte tweak. 
 
 Definition at line 480 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 9
+
 
 \hypertarget{secp256k1_8h_a4d9b18720afc67f3685a9f171bac6737}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ec\+\_\+pubkey\+\_\+combine@{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+combine}}
 \index{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+combine@{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+combine}!secp256k1.\+h@{secp256k1.\+h}}
@@ -387,6 +439,12 @@ Add a number of public keys together. Returns\+: 1\+: the sum of the public keys
 
 Definition at line 534 of file secp256k1.\+c.
 
+
+
+Here is the caller graph for this function\+:
+% FIG 10
+
+
 \hypertarget{secp256k1_8h_a7438071aa8a6dc4697abe4f4659f2161}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ec\+\_\+pubkey\+\_\+create@{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+create}}
 \index{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+create@{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+create}!secp256k1.\+h@{secp256k1.\+h}}
 \subsubsection[{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+create}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} {\bf S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T} int secp256k1\+\_\+ec\+\_\+pubkey\+\_\+create (
@@ -401,6 +459,12 @@ Compute the public key for a secret key.
 Returns\+: 1\+: secret was valid, public key stores 0\+: secret was invalid, try again Args\+: ctx\+: pointer to a context object, initialized for signing (cannot be N\+U\+L\+L) Out\+: pubkey\+: pointer to the created public key (cannot be N\+U\+L\+L) In\+: seckey\+: pointer to a 32-\/byte private key (cannot be N\+U\+L\+L) 
 
 Definition at line 409 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 11
+
 
 \hypertarget{secp256k1_8h_a4e5dc8952c9a7e791376505ef2023ca1}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ec\+\_\+pubkey\+\_\+parse@{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+parse}}
 \index{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+parse@{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+parse}!secp256k1.\+h@{secp256k1.\+h}}
@@ -420,6 +484,12 @@ This function supports parsing compressed (33 bytes, header byte 0x02 or 0x03), 
 
 Definition at line 152 of file secp256k1.\+c.
 
+
+
+Here is the caller graph for this function\+:
+% FIG 12
+
+
 \hypertarget{secp256k1_8h_a34977bf00322e510e881160c421836d7}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ec\+\_\+pubkey\+\_\+serialize@{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+serialize}}
 \index{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+serialize@{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+serialize}!secp256k1.\+h@{secp256k1.\+h}}
 \subsubsection[{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+serialize}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} int secp256k1\+\_\+ec\+\_\+pubkey\+\_\+serialize (
@@ -437,6 +507,12 @@ Returns\+: 1 always. Args\+: ctx\+: a secp256k1 context object. Out\+: output\+:
 
 Definition at line 168 of file secp256k1.\+c.
 
+
+
+Here is the caller graph for this function\+:
+% FIG 13
+
+
 \hypertarget{secp256k1_8h_a2381cde2a0ee44d90dcfa77e28b5eb79}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ec\+\_\+pubkey\+\_\+tweak\+\_\+add@{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+tweak\+\_\+add}}
 \index{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+tweak\+\_\+add@{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+tweak\+\_\+add}!secp256k1.\+h@{secp256k1.\+h}}
 \subsubsection[{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+tweak\+\_\+add}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} {\bf S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T} int secp256k1\+\_\+ec\+\_\+pubkey\+\_\+tweak\+\_\+add (
@@ -449,6 +525,12 @@ Definition at line 168 of file secp256k1.\+c.
 Tweak a public key by adding tweak times the generator to it. Returns\+: 0 if the tweak was out of range (chance of around 1 in 2$^\wedge$128 for uniformly random 32-\/byte arrays, or if the resulting public key would be invalid (only when the tweak is the complement of the corresponding private key). 1 otherwise. Args\+: ctx\+: pointer to a context object initialized for validation (cannot be N\+U\+L\+L). In/\+Out\+: pubkey\+: pointer to a public key object. In\+: tweak\+: pointer to a 32-\/byte tweak. 
 
 Definition at line 456 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 14
+
 
 \hypertarget{secp256k1_8h_a0351b25239f1146573d62477c3b2119a}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ec\+\_\+pubkey\+\_\+tweak\+\_\+mul@{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+tweak\+\_\+mul}}
 \index{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+tweak\+\_\+mul@{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+tweak\+\_\+mul}!secp256k1.\+h@{secp256k1.\+h}}
@@ -463,6 +545,12 @@ Tweak a public key by multiplying it by a tweak value. Returns\+: 0 if the tweak
 
 Definition at line 503 of file secp256k1.\+c.
 
+
+
+Here is the caller graph for this function\+:
+% FIG 15
+
+
 \hypertarget{secp256k1_8h_a366f922fc0c787351e82ff8e3a95f652}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ec\+\_\+seckey\+\_\+verify@{secp256k1\+\_\+ec\+\_\+seckey\+\_\+verify}}
 \index{secp256k1\+\_\+ec\+\_\+seckey\+\_\+verify@{secp256k1\+\_\+ec\+\_\+seckey\+\_\+verify}!secp256k1.\+h@{secp256k1.\+h}}
 \subsubsection[{secp256k1\+\_\+ec\+\_\+seckey\+\_\+verify}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} {\bf S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T} int secp256k1\+\_\+ec\+\_\+seckey\+\_\+verify (
@@ -476,6 +564,12 @@ Verify an E\+C\+D\+S\+A secret key.
 Returns\+: 1\+: secret key is valid 0\+: secret key is invalid Args\+: ctx\+: pointer to a context object (cannot be N\+U\+L\+L) In\+: seckey\+: pointer to a 32-\/byte secret key (cannot be N\+U\+L\+L) 
 
 Definition at line 395 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 16
+
 
 \hypertarget{secp256k1_8h_a691c048f3a3b4e7f51417c57ec058be7}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ecdsa\+\_\+sign@{secp256k1\+\_\+ecdsa\+\_\+sign}}
 \index{secp256k1\+\_\+ecdsa\+\_\+sign@{secp256k1\+\_\+ecdsa\+\_\+sign}!secp256k1.\+h@{secp256k1.\+h}}
@@ -496,6 +590,12 @@ Returns\+: 1\+: signature created 0\+: the nonce generation function failed, or 
 The created signature is always in lower-\/\+S form. See secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+normalize for more details. 
 
 Definition at line 349 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 17
+
 
 \hypertarget{secp256k1_8h_a93ec36a19229f08acc5ff1ca613ab3a1}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+normalize@{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+normalize}}
 \index{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+normalize@{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+normalize}!secp256k1.\+h@{secp256k1.\+h}}
@@ -524,6 +624,12 @@ The secp256k1\+\_\+ecdsa\+\_\+sign function will by default create signatures in
 
 Definition at line 278 of file secp256k1.\+c.
 
+
+
+Here is the caller graph for this function\+:
+% FIG 18
+
+
 \hypertarget{secp256k1_8h_a2aff2802eca3d15ec54298e879579897}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+parse\+\_\+compact@{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+parse\+\_\+compact}}
 \index{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+parse\+\_\+compact@{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+parse\+\_\+compact}!secp256k1.\+h@{secp256k1.\+h}}
 \subsubsection[{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+parse\+\_\+compact}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} int secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+parse\+\_\+compact (
@@ -542,6 +648,12 @@ The signature must consist of a 32-\/byte big endian R value, followed by a 32-\
 After the call, sig will always be initialized. If parsing failed or R or S are zero, the resulting sig value is guaranteed to fail validation for any message and public key. 
 
 Definition at line 232 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 19
+
 
 \hypertarget{secp256k1_8h_a57d390dd5baa54855b0cb20628034b90}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+parse\+\_\+der@{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+parse\+\_\+der}}
 \index{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+parse\+\_\+der@{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+parse\+\_\+der}!secp256k1.\+h@{secp256k1.\+h}}
@@ -563,6 +675,12 @@ After the call, sig will always be initialized. If parsing failed or the encoded
 
 Definition at line 216 of file secp256k1.\+c.
 
+
+
+Here is the caller graph for this function\+:
+% FIG 20
+
+
 \hypertarget{secp256k1_8h_af8571ca8dcfb7f892519b337504dc700}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+serialize\+\_\+compact@{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+serialize\+\_\+compact}}
 \index{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+serialize\+\_\+compact@{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+serialize\+\_\+compact}!secp256k1.\+h@{secp256k1.\+h}}
 \subsubsection[{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+serialize\+\_\+compact}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} int secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+serialize\+\_\+compact (
@@ -580,6 +698,12 @@ See secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+parse\+\_\+compact for details abou
 
 Definition at line 265 of file secp256k1.\+c.
 
+
+
+Here is the caller graph for this function\+:
+% FIG 21
+
+
 \hypertarget{secp256k1_8h_ac07809ca872ec967ab4d3b1a95eafe0b}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+serialize\+\_\+der@{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+serialize\+\_\+der}}
 \index{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+serialize\+\_\+der@{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+serialize\+\_\+der}!secp256k1.\+h@{secp256k1.\+h}}
 \subsubsection[{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+serialize\+\_\+der}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} int secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+serialize\+\_\+der (
@@ -595,6 +719,12 @@ Serialize an E\+C\+D\+S\+A signature in D\+E\+R format.
 Returns\+: 1 if enough space was available to serialize, 0 otherwise Args\+: ctx\+: a secp256k1 context object Out\+: output\+: a pointer to an array to store the D\+E\+R serialization In/\+Out\+: outputlen\+: a pointer to a length integer. Initially, this integer should be set to the length of output. After the call it will be set to the length of the serialization (even if 0 was returned). In\+: sig\+: a pointer to an initialized signature object 
 
 Definition at line 253 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 22
+
 
 \hypertarget{secp256k1_8h_a41065390f9039c4140ec04999724987d}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ecdsa\+\_\+verify@{secp256k1\+\_\+ecdsa\+\_\+verify}}
 \index{secp256k1\+\_\+ecdsa\+\_\+verify@{secp256k1\+\_\+ecdsa\+\_\+verify}!secp256k1.\+h@{secp256k1.\+h}}
@@ -617,6 +747,12 @@ If you need to accept E\+C\+D\+S\+A signatures from sources that do not obey thi
 For details, see the comments for that function. 
 
 Definition at line 297 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 23
+
 
 
 
