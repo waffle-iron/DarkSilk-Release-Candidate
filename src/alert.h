@@ -9,6 +9,7 @@
 
 #include "serialize.h"
 #include "sync.h"
+#include "uint256.h"
 
 #include <map>
 #include <set>
@@ -17,7 +18,6 @@
 
 class CAlert;
 class CNode;
-class uint256;
 
 extern std::map<uint256, CAlert> mapAlerts;
 extern CCriticalSection cs_mapAlerts;
