@@ -20,7 +20,6 @@
 #include <boost/iostreams/stream.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/shared_ptr.hpp>
-#include "json/json_spirit_writer_template.h"
 
 using namespace std;
 using namespace boost;
