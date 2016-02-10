@@ -6,9 +6,7 @@
 #ifndef DARKSILK_MAIN_H
 #define DARKSILK_MAIN_H
 
-#include "sync.h"
 #include "txmempool.h"
-#include "primitives/block.h"
 #include "net.h"
 #include "script.h"
 #include "streams.h"
