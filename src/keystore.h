@@ -13,10 +13,6 @@
 #include <boost/signals2/signal.hpp>
 #include <boost/variant.hpp>
 
-
-
-class CScript;
-
 /** A txout script template with a specific destination. It is either:
  *  * CNoDestination: no destination set
  *  * CKeyID: TX_PUBKEYHASH destination

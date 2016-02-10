@@ -636,7 +636,7 @@ void CChain::SetTip(CBlockIndex *pindex) {
     }
 }
 
-static FILE* AppendBlockFile(unsigned int& nFileRet)
+FILE* AppendBlockFile(unsigned int& nFileRet)
 {
     nFileRet = 0;
     while (true)
@@ -754,7 +754,7 @@ bool CBlock::CheckBlock(CValidationState& state, bool fCheckPOW, bool fCheckMerk
 
     // Check transactions
     BOOST_FOREACH(const CTransaction& tx, vtx){
-        if (!tx.CheckTransaction(tx, state))
+        if (!tx.CheckTransaction(state))
             return DoS(tx.nDoS, error("CheckBlock() : CheckTransaction failed"));
 
         // ppcoin: check transaction timestamp

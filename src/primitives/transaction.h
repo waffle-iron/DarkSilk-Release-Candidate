@@ -342,7 +342,7 @@ public:
         return !(a == b);
     }
 
-    bool CheckTransaction(const CTransaction& tx, CValidationState &state);
+    bool CheckTransaction(CValidationState &state);
 
     std::string ToString() const;
 };
