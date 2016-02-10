@@ -7,6 +7,8 @@
 #include "wallet.h"
 #include "checkpoints.h"
 #include "spork.h"
+#include "kernel.h"
+#include "txdb-leveldb.h"
 
 #include <boost/algorithm/string/replace.hpp>
 
@@ -16,6 +18,7 @@ extern std::map<COutPoint, uint256> mapLockedInputs;
 CBlockIndex* pblockindexFBBHLast;
 
 static unsigned int nCurrentBlockFile = 1;
+
 
 CBlockIndex* FindBlockByHeight(int nHeight)
 {
@@ -261,34 +264,33 @@ void CBlock::RebuildAddressIndex(CTxDB& txdb)
 
         MapPrevTx::const_iterator mi;
         for(MapPrevTx::const_iterator mi = mapInputs.begin(); mi != mapInputs.end(); ++mi)
-        {
-            BOOST_FOREACH(const CTxOut &atxout, (*mi).second.second.vout)
             {
-                std::vector<uint160> addrIds;
-                if(BuildAddrIndex(atxout.scriptPubKey, addrIds))
+                BOOST_FOREACH(const CTxOut &atxout, (*mi).second.second.vout)
                 {
-                                BOOST_FOREACH(uint160 addrId, addrIds)
-                        {
-                        if(!txdb.WriteAddrIndex(addrId, hashTx))
-                        LogPrintf("RebuildAddressIndex(): txins WriteAddrIndex failed addrId: %s txhash: %s\n", addrId.ToString().c_str(), hashTx.ToString().c_str());
-                                }
+                    std::vector<uint160> addrIds;
+                    if(BuildAddrIndex(atxout.scriptPubKey, addrIds))
+                    {
+                                    BOOST_FOREACH(uint160 addrId, addrIds)
+                            {
+                            if(!txdb.WriteAddrIndex(addrId, hashTx))
+                            LogPrintf("RebuildAddressIndex(): txins WriteAddrIndex failed addrId: %s txhash: %s\n", addrId.ToString().c_str(), hashTx.ToString().c_str());
+                                    }
+                    }
                 }
             }
         }
-
+        // outputs
+        BOOST_FOREACH(const CTxOut &atxout, tx.vout) {
+            std::vector<uint160> addrIds;
+                if(BuildAddrIndex(atxout.scriptPubKey, addrIds))
+            {
+            BOOST_FOREACH(uint160 addrId, addrIds)
+            {
+                if(!txdb.WriteAddrIndex(addrId, hashTx))
+                    LogPrintf("RebuildAddressIndex(): txouts WriteAddrIndex failed addrId: %s txhash: %s\n", addrId.ToString().c_str(), hashTx.ToString().c_str());
+                    }
+            }
         }
-    // outputs
-    BOOST_FOREACH(const CTxOut &atxout, tx.vout) {
-        std::vector<uint160> addrIds;
-            if(BuildAddrIndex(atxout.scriptPubKey, addrIds))
-        {
-        BOOST_FOREACH(uint160 addrId, addrIds)
-        {
-            if(!txdb.WriteAddrIndex(addrId, hashTx))
-                LogPrintf("RebuildAddressIndex(): txouts WriteAddrIndex failed addrId: %s txhash: %s\n", addrId.ToString().c_str(), hashTx.ToString().c_str());
-                }
-        }
-    }
     }
 }
 
@@ -386,8 +388,8 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
     int64_t nTime1 = GetTimeMicros(); nTimeConnect += nTime1 - nTimeStart;
     if(fDebug)
     {
-    LogPrintf("bench      - Connect %u transactions: %.2fms (%.3fms/tx, %.3fms/txin) [%.2fs]\n", (unsigned)vtx.size(), 0.001 * (nTime1 - nTimeStart), 0.001 * (nTime1 - nTimeStart) / vtx.size(), nInputs <= 1 ? 0 : 0.001 * (nTime1 - nTimeStart) / (nInputs-1), nTimeConnect * 0.000001);
-    LogPrintf("bench      - %u transaction validations cached\n", nTxCacheHits);
+        LogPrintf("bench      - Connect %u transactions: %.2fms (%.3fms/tx, %.3fms/txin) [%.2fs]\n", (unsigned)vtx.size(), 0.001 * (nTime1 - nTimeStart), 0.001 * (nTime1 - nTimeStart) / vtx.size(), nInputs <= 1 ? 0 : 0.001 * (nTime1 - nTimeStart) / (nInputs-1), nTimeConnect * 0.000001);
+        LogPrintf("bench      - %u transaction validations cached\n", nTxCacheHits);
     }
 
     if (IsProofOfWork())
@@ -424,52 +426,50 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
             return error("ConnectBlock() : UpdateTxIndex failed");
     }
 
-
     // Write Address Index
     BOOST_FOREACH(CTransaction& tx, vtx)
     {
         uint256 hashTx = tx.GetHash();
-    // inputs
-    if(!tx.IsCoinBase())
-    {
-            MapPrevTx mapInputs;
-        map<uint256, CTxIndex> mapQueuedChangesT;
-        bool fInvalid;
-        CTransactionPoS txPoS;
-        if (!txPoS.FetchInputs(tx, txdb, mapQueuedChangesT, true, false, mapInputs, fInvalid))
-            return false;
-
-        MapPrevTx::const_iterator mi;
-        for(MapPrevTx::const_iterator mi = mapInputs.begin(); mi != mapInputs.end(); ++mi)
+        // inputs
+        if(!tx.IsCoinBase())
         {
-            BOOST_FOREACH(const CTxOut &atxout, (*mi).second.second.vout)
+            MapPrevTx mapInputs;
+            map<uint256, CTxIndex> mapQueuedChangesT;
+            bool fInvalid;
+            CTransactionPoS txPoS;
+            if (!txPoS.FetchInputs(tx, txdb, mapQueuedChangesT, true, false, mapInputs, fInvalid))
+                return false;
+
+            MapPrevTx::const_iterator mi;
+            for(MapPrevTx::const_iterator mi = mapInputs.begin(); mi != mapInputs.end(); ++mi)
             {
+                BOOST_FOREACH(const CTxOut &atxout, (*mi).second.second.vout)
+                {
+                std::vector<uint160> addrIds;
+                if(BuildAddrIndex(atxout.scriptPubKey, addrIds))
+                {
+                                BOOST_FOREACH(uint160 addrId, addrIds)
+                        {
+                        if(!txdb.WriteAddrIndex(addrId, hashTx))
+                        LogPrintf("ConnectBlock(): txins WriteAddrIndex failed addrId: %s txhash: %s\n", addrId.ToString().c_str(), hashTx.ToString().c_str());
+                                }
+                }
+                }
+            }
+        }
+
+        // outputs
+        BOOST_FOREACH(const CTxOut &atxout, tx.vout) {
             std::vector<uint160> addrIds;
             if(BuildAddrIndex(atxout.scriptPubKey, addrIds))
             {
-                            BOOST_FOREACH(uint160 addrId, addrIds)
-                    {
+                BOOST_FOREACH(uint160 addrId, addrIds)
+                {
                     if(!txdb.WriteAddrIndex(addrId, hashTx))
-                    LogPrintf("ConnectBlock(): txins WriteAddrIndex failed addrId: %s txhash: %s\n", addrId.ToString().c_str(), hashTx.ToString().c_str());
-                            }
-            }
-            }
-        }
-
-        }
-
-    // outputs
-    BOOST_FOREACH(const CTxOut &atxout, tx.vout) {
-        std::vector<uint160> addrIds;
-            if(BuildAddrIndex(atxout.scriptPubKey, addrIds))
-        {
-        BOOST_FOREACH(uint160 addrId, addrIds)
-        {
-            if(!txdb.WriteAddrIndex(addrId, hashTx))
-                LogPrintf("ConnectBlock(): txouts WriteAddrIndex failed addrId: %s txhash: %s\n", addrId.ToString().c_str(), hashTx.ToString().c_str());
+                        LogPrintf("ConnectBlock(): txouts WriteAddrIndex failed addrId: %s txhash: %s\n", addrId.ToString().c_str(), hashTx.ToString().c_str());
                 }
+            }
         }
-    }
     }
 
     // Update block index on disk without changing it in memory.
@@ -636,7 +636,7 @@ void CChain::SetTip(CBlockIndex *pindex) {
     }
 }
 
-FILE* AppendBlockFile(unsigned int& nFileRet)
+static FILE* AppendBlockFile(unsigned int& nFileRet)
 {
     nFileRet = 0;
     while (true)
