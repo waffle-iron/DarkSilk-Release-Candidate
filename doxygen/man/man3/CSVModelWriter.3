@@ -1,0 +1,64 @@
+.TH "CSVModelWriter" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CSVModelWriter \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <csvmodelwriter\&.h>\fP
+.PP
+Inherits QObject\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCSVModelWriter\fP (const QString &filename, QObject *parent=0)"
+.br
+.ti -1c
+.RI "void \fBsetModel\fP (const QAbstractItemModel *model)"
+.br
+.ti -1c
+.RI "void \fBaddColumn\fP (const QString &title, int column, int role=Qt::EditRole)"
+.br
+.ti -1c
+.RI "bool \fBwrite\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Export a Qt table model to a CSV file\&. This is useful for analyzing or post-processing the data in a spreadsheet\&. 
+.PP
+Definition at line 14 of file csvmodelwriter\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CSVModelWriter::CSVModelWriter (const QString & filename, QObject * parent = \fC0\fP)\fC [explicit]\fP"
+
+.PP
+Definition at line 7 of file csvmodelwriter\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void CSVModelWriter::addColumn (const QString & title, int column, int role = \fCQt::EditRole\fP)"
+
+.PP
+Definition at line 18 of file csvmodelwriter\&.cpp\&.
+.SS "void CSVModelWriter::setModel (const QAbstractItemModel * model)"
+
+.PP
+Definition at line 13 of file csvmodelwriter\&.cpp\&.
+.SS "bool CSVModelWriter::write ()"
+Perform export of the model to CSV\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true on success, false otherwise 
+.RE
+.PP
+
+.PP
+Definition at line 45 of file csvmodelwriter\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

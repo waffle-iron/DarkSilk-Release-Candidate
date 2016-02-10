@@ -1,0 +1,527 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="skiplist_8h" kind="file" language="C++">
+    <compoundname>skiplist.h</compoundname>
+    <includes local="no">assert.h</includes>
+    <includes local="no">stdlib.h</includes>
+    <includes refid="port_8h" local="yes">port/port.h</includes>
+    <includes refid="arena_8h" local="yes">util/arena.h</includes>
+    <includes refid="random_8h" local="yes">util/random.h</includes>
+    <includedby refid="memtable_8h" local="yes">/home/dev/ds-160209/src/leveldb/db/memtable.h</includedby>
+    <includedby refid="skiplist__test_8cc" local="yes">/home/dev/ds-160209/src/leveldb/db/skiplist_test.cc</includedby>
+    <incdepgraph>
+      <node id="7449">
+        <label>/home/dev/ds-160209/src/leveldb/db/skiplist.h</label>
+        <link refid="skiplist.h"/>
+        <childnode refid="7450" relation="include">
+        </childnode>
+        <childnode refid="7451" relation="include">
+        </childnode>
+        <childnode refid="7452" relation="include">
+        </childnode>
+        <childnode refid="7454" relation="include">
+        </childnode>
+        <childnode refid="7458" relation="include">
+        </childnode>
+      </node>
+      <node id="7458">
+        <label>util/random.h</label>
+        <link refid="random_8h"/>
+        <childnode refid="7457" relation="include">
+        </childnode>
+      </node>
+      <node id="7450">
+        <label>assert.h</label>
+      </node>
+      <node id="7454">
+        <label>util/arena.h</label>
+        <link refid="arena_8h"/>
+        <childnode refid="7455" relation="include">
+        </childnode>
+        <childnode refid="7450" relation="include">
+        </childnode>
+        <childnode refid="7456" relation="include">
+        </childnode>
+        <childnode refid="7457" relation="include">
+        </childnode>
+      </node>
+      <node id="7451">
+        <label>stdlib.h</label>
+      </node>
+      <node id="7456">
+        <label>stddef.h</label>
+      </node>
+      <node id="7453">
+        <label>string.h</label>
+      </node>
+      <node id="7455">
+        <label>vector</label>
+      </node>
+      <node id="7452">
+        <label>port/port.h</label>
+        <link refid="port_8h"/>
+        <childnode refid="7453" relation="include">
+        </childnode>
+      </node>
+      <node id="7457">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="7459">
+        <label>/home/dev/ds-160209/src/leveldb/db/skiplist.h</label>
+        <link refid="skiplist.h"/>
+        <childnode refid="7460" relation="include">
+        </childnode>
+        <childnode refid="7468" relation="include">
+        </childnode>
+      </node>
+      <node id="7461">
+        <label>/home/dev/ds-160209/src/leveldb/db/db_impl.cc</label>
+        <link refid="db__impl_8cc"/>
+      </node>
+      <node id="7466">
+        <label>/home/dev/ds-160209/src/leveldb/db/write_batch_test.cc</label>
+        <link refid="write__batch__test_8cc"/>
+      </node>
+      <node id="7464">
+        <label>/home/dev/ds-160209/src/leveldb/db/version_set.cc</label>
+        <link refid="version__set_8cc"/>
+      </node>
+      <node id="7463">
+        <label>/home/dev/ds-160209/src/leveldb/db/repair.cc</label>
+        <link refid="repair_8cc"/>
+      </node>
+      <node id="7465">
+        <label>/home/dev/ds-160209/src/leveldb/db/write_batch.cc</label>
+        <link refid="write__batch_8cc"/>
+      </node>
+      <node id="7468">
+        <label>/home/dev/ds-160209/src/leveldb/db/skiplist_test.cc</label>
+        <link refid="skiplist__test_8cc"/>
+      </node>
+      <node id="7460">
+        <label>/home/dev/ds-160209/src/leveldb/db/memtable.h</label>
+        <link refid="memtable_8h"/>
+        <childnode refid="7461" relation="include">
+        </childnode>
+        <childnode refid="7462" relation="include">
+        </childnode>
+        <childnode refid="7463" relation="include">
+        </childnode>
+        <childnode refid="7464" relation="include">
+        </childnode>
+        <childnode refid="7465" relation="include">
+        </childnode>
+        <childnode refid="7466" relation="include">
+        </childnode>
+        <childnode refid="7467" relation="include">
+        </childnode>
+      </node>
+      <node id="7467">
+        <label>/home/dev/ds-160209/src/leveldb/table/table_test.cc</label>
+        <link refid="table__test_8cc"/>
+      </node>
+      <node id="7462">
+        <label>/home/dev/ds-160209/src/leveldb/db/memtable.cc</label>
+        <link refid="memtable_8cc"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classleveldb_1_1_skip_list" prot="public">leveldb::SkipList</innerclass>
+    <innerclass refid="classleveldb_1_1_skip_list_1_1_iterator" prot="public">leveldb::SkipList::Iterator</innerclass>
+    <innerclass refid="structleveldb_1_1_skip_list_1_1_node" prot="public">leveldb::SkipList::Node</innerclass>
+    <innernamespace refid="namespaceleveldb">leveldb</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>STORAGE_LEVELDB_DB_SKIPLIST_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STORAGE_LEVELDB_DB_SKIPLIST_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2011-2016<sp/>The<sp/>LevelDB<sp/>Authors.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>of<sp/>this<sp/>source<sp/>code<sp/>is<sp/>governed<sp/>by<sp/>a<sp/>BSD-style<sp/>license<sp/>that<sp/>can<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>found<sp/>in<sp/>the<sp/>LICENSE<sp/>file.<sp/>See<sp/>the<sp/>AUTHORS<sp/>file<sp/>for<sp/>names<sp/>of<sp/>contributors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Thread<sp/>safety</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//<sp/>-------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Writes<sp/>require<sp/>external<sp/>synchronization,<sp/>most<sp/>likely<sp/>a<sp/>mutex.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Reads<sp/>require<sp/>a<sp/>guarantee<sp/>that<sp/>the<sp/>SkipList<sp/>will<sp/>not<sp/>be<sp/>destroyed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/>while<sp/>the<sp/>read<sp/>is<sp/>in<sp/>progress.<sp/><sp/>Apart<sp/>from<sp/>that,<sp/>reads<sp/>progress</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/>without<sp/>any<sp/>internal<sp/>locking<sp/>or<sp/>synchronization.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Invariants:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/>(1)<sp/>Allocated<sp/>nodes<sp/>are<sp/>never<sp/>deleted<sp/>until<sp/>the<sp/>SkipList<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>destroyed.<sp/><sp/>This<sp/>is<sp/>trivially<sp/>guaranteed<sp/>by<sp/>the<sp/>code<sp/>since<sp/>we</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>never<sp/>delete<sp/>any<sp/>skip<sp/>list<sp/>nodes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/>(2)<sp/>The<sp/>contents<sp/>of<sp/>a<sp/>Node<sp/>except<sp/>for<sp/>the<sp/>next/prev<sp/>pointers<sp/>are</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//<sp/>immutable<sp/>after<sp/>the<sp/>Node<sp/>has<sp/>been<sp/>linked<sp/>into<sp/>the<sp/>SkipList.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Only<sp/>Insert()<sp/>modifies<sp/>the<sp/>list,<sp/>and<sp/>it<sp/>is<sp/>careful<sp/>to<sp/>initialize</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/>a<sp/>node<sp/>and<sp/>use<sp/>release-stores<sp/>to<sp/>publish<sp/>the<sp/>nodes<sp/>in<sp/>one<sp/>or</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/>more<sp/>lists.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/>...<sp/>prev<sp/>vs.<sp/>next<sp/>pointer<sp/>ordering<sp/>...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;assert.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="port_8h" kindref="compound">port/port.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arena_8h" kindref="compound">util/arena.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="random_8h" kindref="compound">util/random.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceleveldb" kindref="compound">leveldb</ref><sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Arena;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Key,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Comparator&gt;</highlight></codeline>
+<codeline lineno="41" refid="classleveldb_1_1_skip_list" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classleveldb_1_1_skip_list" kindref="compound">SkipList</ref><sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structleveldb_1_1_skip_list_1_1_node" kindref="compound">Node</ref>;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>a<sp/>new<sp/>SkipList<sp/>object<sp/>that<sp/>will<sp/>use<sp/>&quot;cmp&quot;<sp/>for<sp/>comparing<sp/>keys,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>will<sp/>allocate<sp/>memory<sp/>using<sp/>&quot;*arena&quot;.<sp/><sp/>Objects<sp/>allocated<sp/>in<sp/>the<sp/>arena</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>must<sp/>remain<sp/>allocated<sp/>for<sp/>the<sp/>lifetime<sp/>of<sp/>the<sp/>skiplist<sp/>object.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_skip_list_1a793060fb1b44b01c6f510aa16387c6ee" kindref="member">SkipList</ref>(<ref refid="structleveldb_1_1_comparator" kindref="compound">Comparator</ref><sp/><ref refid="table__test_8cc_1a87863e435922f0910ca8db43f02a6c0b" kindref="member">cmp</ref>,<sp/><ref refid="classleveldb_1_1_arena" kindref="compound">Arena</ref>*<sp/>arena);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Insert<sp/>key<sp/>into<sp/>the<sp/>list.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>REQUIRES:<sp/>nothing<sp/>that<sp/>compares<sp/>equal<sp/>to<sp/>key<sp/>is<sp/>currently<sp/>in<sp/>the<sp/>list.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_skip_list_1af1ed755f0825f38272aafe3cae4da644" kindref="member">Insert</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref>&amp;<sp/>key);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Returns<sp/>true<sp/>iff<sp/>an<sp/>entry<sp/>that<sp/>compares<sp/>equal<sp/>to<sp/>key<sp/>is<sp/>in<sp/>the<sp/>list.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_skip_list_1a134b36bafbfecf325bb7b57bc2490f87" kindref="member">Contains</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref>&amp;<sp/>key)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Iteration<sp/>over<sp/>the<sp/>contents<sp/>of<sp/>a<sp/>skip<sp/>list</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="classleveldb_1_1_skip_list_1_1_iterator" refkind="compound"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classleveldb_1_1_skip_list_1_1_iterator" kindref="compound">Iterator</ref><sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>an<sp/>iterator<sp/>over<sp/>the<sp/>specified<sp/>list.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>returned<sp/>iterator<sp/>is<sp/>not<sp/>valid.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_skip_list_1_1_iterator_1ab27d6dd0959d67ed26f2bd451c18270c" kindref="member">Iterator</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_skip_list" kindref="compound">SkipList</ref>*<sp/>list);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Returns<sp/>true<sp/>iff<sp/>the<sp/>iterator<sp/>is<sp/>positioned<sp/>at<sp/>a<sp/>valid<sp/>node.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_skip_list_1_1_iterator_1ac074827b7e9ded32283385e6228ef8cd" kindref="member">Valid</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Returns<sp/>the<sp/>key<sp/>at<sp/>the<sp/>current<sp/>position.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>REQUIRES:<sp/>Valid()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref>&amp;<sp/><ref refid="classleveldb_1_1_skip_list_1_1_iterator_1a5d2a82038f440d557b32afb398c7eb57" kindref="member">key</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Advances<sp/>to<sp/>the<sp/>next<sp/>position.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>REQUIRES:<sp/>Valid()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_skip_list_1_1_iterator_1ade5a684c74056f578f85237735da0cef" kindref="member">Next</ref>();</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Advances<sp/>to<sp/>the<sp/>previous<sp/>position.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>REQUIRES:<sp/>Valid()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_skip_list_1_1_iterator_1a10dbaf45640ab2b9f61a96c82e7227e5" kindref="member">Prev</ref>();</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Advance<sp/>to<sp/>the<sp/>first<sp/>entry<sp/>with<sp/>a<sp/>key<sp/>&gt;=<sp/>target</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_skip_list_1_1_iterator_1a6c641d5cd37386abdb0aa8d73454611a" kindref="member">Seek</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref>&amp;<sp/>target);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Position<sp/>at<sp/>the<sp/>first<sp/>entry<sp/>in<sp/>list.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Final<sp/>state<sp/>of<sp/>iterator<sp/>is<sp/>Valid()<sp/>iff<sp/>list<sp/>is<sp/>not<sp/>empty.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_skip_list_1_1_iterator_1adf69c04f0480a66f10a125c49e19caa7" kindref="member">SeekToFirst</ref>();</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Position<sp/>at<sp/>the<sp/>last<sp/>entry<sp/>in<sp/>list.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Final<sp/>state<sp/>of<sp/>iterator<sp/>is<sp/>Valid()<sp/>iff<sp/>list<sp/>is<sp/>not<sp/>empty.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_skip_list_1_1_iterator_1afe892ff436137b85216c2ed124f3c6dd" kindref="member">SeekToLast</ref>();</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_skip_list" kindref="compound">SkipList</ref>*<sp/>list_;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structleveldb_1_1_skip_list_1_1_node" kindref="compound">Node</ref>*<sp/>node_;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Intentionally<sp/>copyable</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{<sp/>kMaxHeight<sp/>=<sp/>12<sp/>};</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Immutable<sp/>after<sp/>construction</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><ref refid="structleveldb_1_1_comparator" kindref="compound">Comparator</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>compare_;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_arena" kindref="compound">Arena</ref>*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>arena_;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Arena<sp/>used<sp/>for<sp/>allocations<sp/>of<sp/>nodes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/>Node*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>head_;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Modified<sp/>only<sp/>by<sp/>Insert().<sp/><sp/>Read<sp/>racily<sp/>by<sp/>readers,<sp/>but<sp/>stale</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>values<sp/>are<sp/>ok.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1port_1_1_atomic_pointer" kindref="compound">port::AtomicPointer</ref><sp/>max_height_;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Height<sp/>of<sp/>the<sp/>entire<sp/>list</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>GetMaxHeight()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal">intptr_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(max_height_.<ref refid="classleveldb_1_1port_1_1_atomic_pointer_1a6f1579bd734aa549f237eeb4f486cfd3" kindref="member">NoBarrier_Load</ref>()));</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Read/written<sp/>only<sp/>by<sp/>Insert().</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/>Random<sp/>rnd_;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/>Node*<sp/>NewNode(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref>&amp;<sp/>key,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>height);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>RandomHeight();</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>Equal(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref>&amp;<sp/>a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref>&amp;<sp/>b)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(compare_(a,<sp/>b)<sp/>==<sp/>0);<sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>true<sp/>if<sp/>key<sp/>is<sp/>greater<sp/>than<sp/>the<sp/>data<sp/>stored<sp/>in<sp/>&quot;n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>KeyIsAfterNode(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref>&amp;<sp/>key,<sp/>Node*<sp/>n)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>earliest<sp/>node<sp/>that<sp/>comes<sp/>at<sp/>or<sp/>after<sp/>key.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>NULL<sp/>if<sp/>there<sp/>is<sp/>no<sp/>such<sp/>node.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>prev<sp/>is<sp/>non-NULL,<sp/>fills<sp/>prev[level]<sp/>with<sp/>pointer<sp/>to<sp/>previous</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>node<sp/>at<sp/>&quot;level&quot;<sp/>for<sp/>every<sp/>level<sp/>in<sp/>[0..max_height_-1].</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/>Node*<sp/>FindGreaterOrEqual(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref>&amp;<sp/>key,<sp/>Node**<sp/><ref refid="cache_8cc_1aabbd2f01bb8ec4a7a0128bce5f8cdb1b" kindref="member">prev</ref>)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>latest<sp/>node<sp/>with<sp/>a<sp/>key<sp/>&lt;<sp/>key.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>head_<sp/>if<sp/>there<sp/>is<sp/>no<sp/>such<sp/>node.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/>Node*<sp/>FindLessThan(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref>&amp;<sp/>key)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>last<sp/>node<sp/>in<sp/>the<sp/>list.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>head_<sp/>if<sp/>list<sp/>is<sp/>empty.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/>Node*<sp/>FindLast()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>copying<sp/>allowed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_skip_list_1a793060fb1b44b01c6f510aa16387c6ee" kindref="member">SkipList</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_skip_list_1a793060fb1b44b01c6f510aa16387c6ee" kindref="member">SkipList</ref>&amp;);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>operator=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_skip_list_1a793060fb1b44b01c6f510aa16387c6ee" kindref="member">SkipList</ref>&amp;);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Implementation<sp/>details<sp/>follow</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Key,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Comparator&gt;</highlight></codeline>
+<codeline lineno="147" refid="structleveldb_1_1_skip_list_1_1_node" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="classleveldb_1_1_skip_list" kindref="compound">SkipList</ref>&lt;<ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref>,<ref refid="structleveldb_1_1_comparator" kindref="compound">Comparator</ref>&gt;::<ref refid="structleveldb_1_1_skip_list_1_1_node" kindref="compound">Node</ref><sp/>{</highlight></codeline>
+<codeline lineno="148" refid="structleveldb_1_1_skip_list_1_1_node_1a7dec52445f4f05892239a77407d109b0" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="structleveldb_1_1_skip_list_1_1_node_1a7dec52445f4f05892239a77407d109b0" kindref="member">Node</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref>&amp;<sp/>k)<sp/>:<sp/>key(k)<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150" refid="structleveldb_1_1_skip_list_1_1_node_1a654f196e057edd294e4dbcbb6dabb844" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structleveldb_1_1_skip_list_1_1_node_1a654f196e057edd294e4dbcbb6dabb844" kindref="member">key</ref>;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Accessors/mutators<sp/>for<sp/>links.<sp/><sp/>Wrapped<sp/>in<sp/>methods<sp/>so<sp/>we<sp/>can</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>add<sp/>the<sp/>appropriate<sp/>barriers<sp/>as<sp/>necessary.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154" refid="structleveldb_1_1_skip_list_1_1_node_1aca7f18fc57f6c8e8a8dfe176eedbde74" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structleveldb_1_1_skip_list_1_1_node" kindref="compound">Node</ref>*<sp/><ref refid="structleveldb_1_1_skip_list_1_1_node_1aca7f18fc57f6c8e8a8dfe176eedbde74" kindref="member">Next</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n)<sp/>{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(n<sp/>&gt;=<sp/>0);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Use<sp/>an<sp/>&apos;acquire<sp/>load&apos;<sp/>so<sp/>that<sp/>we<sp/>observe<sp/>a<sp/>fully<sp/>initialized</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>version<sp/>of<sp/>the<sp/>returned<sp/>Node.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal"><ref refid="structleveldb_1_1_skip_list_1_1_node" kindref="compound">Node</ref>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(next_[n].Acquire_Load());</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="160" refid="structleveldb_1_1_skip_list_1_1_node_1a46c7cc10db3d77c85df7e411b720a8f4" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structleveldb_1_1_skip_list_1_1_node_1a46c7cc10db3d77c85df7e411b720a8f4" kindref="member">SetNext</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n,<sp/><ref refid="structleveldb_1_1_skip_list_1_1_node" kindref="compound">Node</ref>*<sp/>x)<sp/>{</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(n<sp/>&gt;=<sp/>0);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Use<sp/>a<sp/>&apos;release<sp/>store&apos;<sp/>so<sp/>that<sp/>anybody<sp/>who<sp/>reads<sp/>through<sp/>this</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>pointer<sp/>observes<sp/>a<sp/>fully<sp/>initialized<sp/>version<sp/>of<sp/>the<sp/>inserted<sp/>node.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>next_[n].Release_Store(x);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>No-barrier<sp/>variants<sp/>that<sp/>can<sp/>be<sp/>safely<sp/>used<sp/>in<sp/>a<sp/>few<sp/>locations.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168" refid="structleveldb_1_1_skip_list_1_1_node_1a96b7213d1fd9ef893f3a7baecc5c4801" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="structleveldb_1_1_skip_list_1_1_node" kindref="compound">Node</ref>*<sp/><ref refid="structleveldb_1_1_skip_list_1_1_node_1a96b7213d1fd9ef893f3a7baecc5c4801" kindref="member">NoBarrier_Next</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n)<sp/>{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(n<sp/>&gt;=<sp/>0);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal"><ref refid="structleveldb_1_1_skip_list_1_1_node" kindref="compound">Node</ref>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(next_[n].NoBarrier_Load());</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="172" refid="structleveldb_1_1_skip_list_1_1_node_1af93b362f5e38fcf645820e02377cca64" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="structleveldb_1_1_skip_list_1_1_node_1af93b362f5e38fcf645820e02377cca64" kindref="member">NoBarrier_SetNext</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n,<sp/><ref refid="structleveldb_1_1_skip_list_1_1_node" kindref="compound">Node</ref>*<sp/>x)<sp/>{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(n<sp/>&gt;=<sp/>0);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>next_[n].NoBarrier_Store(x);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Array<sp/>of<sp/>length<sp/>equal<sp/>to<sp/>the<sp/>node<sp/>height.<sp/><sp/>next_[0]<sp/>is<sp/>lowest<sp/>level<sp/>link.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1port_1_1_atomic_pointer" kindref="compound">port::AtomicPointer</ref><sp/>next_[1];</highlight></codeline>
+<codeline lineno="180"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Key,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Comparator&gt;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/><ref refid="structleveldb_1_1_skip_list_1_1_node" kindref="compound">SkipList&lt;Key,Comparator&gt;::Node</ref>*</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><ref refid="classleveldb_1_1_skip_list" kindref="compound">SkipList&lt;Key,Comparator&gt;::NewNode</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref>&amp;<sp/>key,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>height)<sp/>{</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="db__impl_8cc_1a1a1fa02d49bbc4c0896ff1cb12618dc3" kindref="member">mem</ref><sp/>=<sp/>arena_-&gt;<ref refid="classleveldb_1_1_arena_1a9c1e8e695fe25ac96063f9fbacefee9e" kindref="member">AllocateAligned</ref>(</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(Node)<sp/>+<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="classleveldb_1_1port_1_1_atomic_pointer" kindref="compound">port::AtomicPointer</ref>)<sp/>*<sp/>(height<sp/>-<sp/>1));</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>(<ref refid="db__impl_8cc_1a1a1fa02d49bbc4c0896ff1cb12618dc3" kindref="member">mem</ref>)<sp/>Node(key);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Key,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Comparator&gt;</highlight></codeline>
+<codeline lineno="191" refid="classleveldb_1_1_skip_list_1_1_iterator_1ab27d6dd0959d67ed26f2bd451c18270c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_skip_list_1_1_iterator_1ab27d6dd0959d67ed26f2bd451c18270c" kindref="member">SkipList&lt;Key,Comparator&gt;::Iterator::Iterator</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_skip_list" kindref="compound">SkipList</ref>*<sp/>list)<sp/>{</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/>list_<sp/>=<sp/>list;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/>node_<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Key,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Comparator&gt;</highlight></codeline>
+<codeline lineno="197" refid="classleveldb_1_1_skip_list_1_1_iterator_1ac074827b7e9ded32283385e6228ef8cd" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_skip_list_1_1_iterator_1ac074827b7e9ded32283385e6228ef8cd" kindref="member">SkipList&lt;Key,Comparator&gt;::Iterator::Valid</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>node_<sp/>!=<sp/>NULL;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Key,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Comparator&gt;</highlight></codeline>
+<codeline lineno="202" refid="classleveldb_1_1_skip_list_1_1_iterator_1a5d2a82038f440d557b32afb398c7eb57" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref>&amp;<sp/><ref refid="classleveldb_1_1_skip_list_1_1_iterator_1a5d2a82038f440d557b32afb398c7eb57" kindref="member">SkipList&lt;Key,Comparator&gt;::Iterator::key</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/>assert(Valid());</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>node_-&gt;key;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Key,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Comparator&gt;</highlight></codeline>
+<codeline lineno="208" refid="classleveldb_1_1_skip_list_1_1_iterator_1ade5a684c74056f578f85237735da0cef" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_skip_list_1_1_iterator_1ade5a684c74056f578f85237735da0cef" kindref="member">SkipList&lt;Key,Comparator&gt;::Iterator::Next</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/>assert(Valid());</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/>node_<sp/>=<sp/>node_-&gt;Next(0);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Key,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Comparator&gt;</highlight></codeline>
+<codeline lineno="214" refid="classleveldb_1_1_skip_list_1_1_iterator_1a10dbaf45640ab2b9f61a96c82e7227e5" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_skip_list_1_1_iterator_1a10dbaf45640ab2b9f61a96c82e7227e5" kindref="member">SkipList&lt;Key,Comparator&gt;::Iterator::Prev</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Instead<sp/>of<sp/>using<sp/>explicit<sp/>&quot;prev&quot;<sp/>links,<sp/>we<sp/>just<sp/>search<sp/>for<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>last<sp/>node<sp/>that<sp/>falls<sp/>before<sp/>key.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/>assert(Valid());</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/>node_<sp/>=<sp/><ref refid="cache_8cc_1a2d97c9d385cbc36b0cb8e560f68f23ea" kindref="member">list_</ref>-&gt;FindLessThan(node_-&gt;key);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(node_<sp/>==<sp/><ref refid="cache_8cc_1a2d97c9d385cbc36b0cb8e560f68f23ea" kindref="member">list_</ref>-&gt;head_)<sp/>{</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>node_<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Key,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Comparator&gt;</highlight></codeline>
+<codeline lineno="225" refid="classleveldb_1_1_skip_list_1_1_iterator_1a6c641d5cd37386abdb0aa8d73454611a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_skip_list_1_1_iterator_1a6c641d5cd37386abdb0aa8d73454611a" kindref="member">SkipList&lt;Key,Comparator&gt;::Iterator::Seek</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref>&amp;<sp/>target)<sp/>{</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/>node_<sp/>=<sp/><ref refid="cache_8cc_1a2d97c9d385cbc36b0cb8e560f68f23ea" kindref="member">list_</ref>-&gt;FindGreaterOrEqual(target,<sp/>NULL);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Key,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Comparator&gt;</highlight></codeline>
+<codeline lineno="230" refid="classleveldb_1_1_skip_list_1_1_iterator_1adf69c04f0480a66f10a125c49e19caa7" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_skip_list_1_1_iterator_1adf69c04f0480a66f10a125c49e19caa7" kindref="member">SkipList&lt;Key,Comparator&gt;::Iterator::SeekToFirst</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/>node_<sp/>=<sp/><ref refid="cache_8cc_1a2d97c9d385cbc36b0cb8e560f68f23ea" kindref="member">list_</ref>-&gt;head_-&gt;Next(0);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Key,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Comparator&gt;</highlight></codeline>
+<codeline lineno="235" refid="classleveldb_1_1_skip_list_1_1_iterator_1afe892ff436137b85216c2ed124f3c6dd" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_skip_list_1_1_iterator_1afe892ff436137b85216c2ed124f3c6dd" kindref="member">SkipList&lt;Key,Comparator&gt;::Iterator::SeekToLast</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/>node_<sp/>=<sp/><ref refid="cache_8cc_1a2d97c9d385cbc36b0cb8e560f68f23ea" kindref="member">list_</ref>-&gt;FindLast();</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(node_<sp/>==<sp/><ref refid="cache_8cc_1a2d97c9d385cbc36b0cb8e560f68f23ea" kindref="member">list_</ref>-&gt;head_)<sp/>{</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/>node_<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="240"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Key,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Comparator&gt;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_skip_list" kindref="compound">SkipList&lt;Key,Comparator&gt;::RandomHeight</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Increase<sp/>height<sp/>with<sp/>probability<sp/>1<sp/>in<sp/>kBranching</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>kBranching<sp/>=<sp/>4;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>height<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(height<sp/>&lt;<sp/>kMaxHeight<sp/>&amp;&amp;<sp/>((rnd_.Next()<sp/>%<sp/>kBranching)<sp/>==<sp/>0))<sp/>{</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/>height++;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/>assert(height<sp/>&gt;<sp/>0);</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/>assert(height<sp/>&lt;=<sp/>kMaxHeight);</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>height;</highlight></codeline>
+<codeline lineno="253"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Key,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Comparator&gt;</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>SkipList&lt;Key,Comparator&gt;::KeyIsAfterNode(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref>&amp;<sp/>key,<sp/>Node*<sp/>n)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>NULL<sp/>n<sp/>is<sp/>considered<sp/>infinite</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(n<sp/>!=<sp/>NULL)<sp/>&amp;&amp;<sp/>(compare_(n-&gt;key,<sp/>key)<sp/>&lt;<sp/>0);</highlight></codeline>
+<codeline lineno="259"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Key,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Comparator&gt;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>SkipList&lt;Key,Comparator&gt;::Node*<sp/>SkipList&lt;Key,Comparator&gt;::FindGreaterOrEqual(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref>&amp;<sp/>key,<sp/>Node**<sp/><ref refid="cache_8cc_1aabbd2f01bb8ec4a7a0128bce5f8cdb1b" kindref="member">prev</ref>)</highlight><highlight class="keyword"></highlight></codeline>
+<codeline lineno="263"><highlight class="keyword"><sp/><sp/><sp/><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/>Node*<sp/>x<sp/>=<sp/>head_;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>level<sp/>=<sp/>GetMaxHeight()<sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/>Node*<sp/><ref refid="cache_8cc_1a5211876d3837bbfa503cb931cb9cecbe" kindref="member">next</ref><sp/>=<sp/>x-&gt;Next(level);</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(KeyIsAfterNode(key,<sp/>next))<sp/>{</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Keep<sp/>searching<sp/>in<sp/>this<sp/>list</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>x<sp/>=<sp/><ref refid="cache_8cc_1a5211876d3837bbfa503cb931cb9cecbe" kindref="member">next</ref>;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(prev<sp/>!=<sp/>NULL)<sp/>prev[level]<sp/>=<sp/>x;</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(level<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="cache_8cc_1a5211876d3837bbfa503cb931cb9cecbe" kindref="member">next</ref>;</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Switch<sp/>to<sp/>next<sp/>list</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>level--;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="281"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Key,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Comparator&gt;</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>SkipList&lt;Key,Comparator&gt;::Node*</highlight></codeline>
+<codeline lineno="285"><highlight class="normal">SkipList&lt;Key,Comparator&gt;::FindLessThan(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref>&amp;<sp/>key)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/>Node*<sp/>x<sp/>=<sp/>head_;</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>level<sp/>=<sp/>GetMaxHeight()<sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(x<sp/>==<sp/>head_<sp/>||<sp/>compare_(x-&gt;key,<sp/>key)<sp/>&lt;<sp/>0);</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/>Node*<sp/>next<sp/>=<sp/>x-&gt;Next(level);</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(next<sp/>==<sp/>NULL<sp/>||<sp/>compare_(next-&gt;key,<sp/>key)<sp/>&gt;=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(level<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>x;</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Switch<sp/>to<sp/>next<sp/>list</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>level--;</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>x<sp/>=<sp/><ref refid="cache_8cc_1a5211876d3837bbfa503cb931cb9cecbe" kindref="member">next</ref>;</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="302"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"></highlight></codeline>
+<codeline lineno="304"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Key,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Comparator&gt;</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>SkipList&lt;Key,Comparator&gt;::Node*<sp/>SkipList&lt;Key,Comparator&gt;::FindLast()</highlight><highlight class="keyword"></highlight></codeline>
+<codeline lineno="306"><highlight class="keyword"><sp/><sp/><sp/><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/>Node*<sp/>x<sp/>=<sp/>head_;</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>level<sp/>=<sp/>GetMaxHeight()<sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/>Node*<sp/>next<sp/>=<sp/>x-&gt;Next(level);</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(next<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(level<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>x;</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Switch<sp/>to<sp/>next<sp/>list</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>level--;</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>x<sp/>=<sp/><ref refid="cache_8cc_1a5211876d3837bbfa503cb931cb9cecbe" kindref="member">next</ref>;</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="322"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Key,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Comparator&gt;</highlight></codeline>
+<codeline lineno="325" refid="classleveldb_1_1_skip_list_1a793060fb1b44b01c6f510aa16387c6ee" refkind="member"><highlight class="normal"><ref refid="classleveldb_1_1_skip_list_1a793060fb1b44b01c6f510aa16387c6ee" kindref="member">SkipList&lt;Key,Comparator&gt;::SkipList</ref>(<ref refid="structleveldb_1_1_comparator" kindref="compound">Comparator</ref><sp/>cmp,<sp/><ref refid="classleveldb_1_1_arena" kindref="compound">Arena</ref>*<sp/>arena)</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>compare_(cmp),</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>arena_(arena),</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>head_(NewNode(0<sp/></highlight><highlight class="comment">/*<sp/>any<sp/>key<sp/>will<sp/>do<sp/>*/</highlight><highlight class="normal">,<sp/>kMaxHeight)),</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>max_height_(reinterpret_cast&lt;void*&gt;(1)),</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>rnd_(0xdeadbeef)<sp/>{</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>kMaxHeight;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/>head_-&gt;SetNext(i,<sp/>NULL);</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="334"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"></highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Key,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Comparator&gt;</highlight></codeline>
+<codeline lineno="337" refid="classleveldb_1_1_skip_list_1af1ed755f0825f38272aafe3cae4da644" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_skip_list_1af1ed755f0825f38272aafe3cae4da644" kindref="member">SkipList&lt;Key,Comparator&gt;::Insert</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref>&amp;<sp/>key)<sp/>{</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO(opt):<sp/>We<sp/>can<sp/>use<sp/>a<sp/>barrier-free<sp/>variant<sp/>of<sp/>FindGreaterOrEqual()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>here<sp/>since<sp/>Insert()<sp/>is<sp/>externally<sp/>synchronized.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><ref refid="structleveldb_1_1_skip_list_1_1_node" kindref="compound">Node</ref>*<sp/>prev[kMaxHeight];</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><ref refid="structleveldb_1_1_skip_list_1_1_node" kindref="compound">Node</ref>*<sp/>x<sp/>=<sp/>FindGreaterOrEqual(key,<sp/>prev);</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Our<sp/>data<sp/>structure<sp/>does<sp/>not<sp/>allow<sp/>duplicate<sp/>insertion</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/>assert(x<sp/>==<sp/>NULL<sp/>||<sp/>!Equal(key,<sp/>x-&gt;<ref refid="structleveldb_1_1_skip_list_1_1_node_1a654f196e057edd294e4dbcbb6dabb844" kindref="member">key</ref>));</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"></highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>height<sp/>=<sp/>RandomHeight();</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(height<sp/>&gt;<sp/>GetMaxHeight())<sp/>{</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>GetMaxHeight();<sp/>i<sp/>&lt;<sp/>height;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>prev[i]<sp/>=<sp/>head_;</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//fprintf(stderr,<sp/>&quot;Change<sp/>height<sp/>from<sp/>%d<sp/>to<sp/>%d\n&quot;,<sp/>max_height_,<sp/>height);</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="352"><highlight class="normal"></highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>It<sp/>is<sp/>ok<sp/>to<sp/>mutate<sp/>max_height_<sp/>without<sp/>any<sp/>synchronization</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>with<sp/>concurrent<sp/>readers.<sp/><sp/>A<sp/>concurrent<sp/>reader<sp/>that<sp/>observes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>new<sp/>value<sp/>of<sp/>max_height_<sp/>will<sp/>see<sp/>either<sp/>the<sp/>old<sp/>value<sp/>of</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>new<sp/>level<sp/>pointers<sp/>from<sp/>head_<sp/>(NULL),<sp/>or<sp/>a<sp/>new<sp/>value<sp/>set<sp/>in</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>loop<sp/>below.<sp/><sp/>In<sp/>the<sp/>former<sp/>case<sp/>the<sp/>reader<sp/>will</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>immediately<sp/>drop<sp/>to<sp/>the<sp/>next<sp/>level<sp/>since<sp/>NULL<sp/>sorts<sp/>after<sp/>all</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>keys.<sp/><sp/>In<sp/>the<sp/>latter<sp/>case<sp/>the<sp/>reader<sp/>will<sp/>use<sp/>the<sp/>new<sp/>node.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/>max_height_.<ref refid="classleveldb_1_1port_1_1_atomic_pointer_1aa7faab23777d1fe3c1a96d32a28ed20c" kindref="member">NoBarrier_Store</ref>(reinterpret_cast&lt;void*&gt;(height));</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"></highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/>x<sp/>=<sp/>NewNode(key,<sp/>height);</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>height;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>NoBarrier_SetNext()<sp/>suffices<sp/>since<sp/>we<sp/>will<sp/>add<sp/>a<sp/>barrier<sp/>when</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>we<sp/>publish<sp/>a<sp/>pointer<sp/>to<sp/>&quot;x&quot;<sp/>in<sp/>prev[i].</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/>x-&gt;<ref refid="structleveldb_1_1_skip_list_1_1_node_1af93b362f5e38fcf645820e02377cca64" kindref="member">NoBarrier_SetNext</ref>(i,<sp/>prev[i]-&gt;NoBarrier_Next(i));</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/>prev[i]-&gt;<ref refid="structleveldb_1_1_skip_list_1_1_node_1a46c7cc10db3d77c85df7e411b720a8f4" kindref="member">SetNext</ref>(i,<sp/>x);</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="370"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"></highlight></codeline>
+<codeline lineno="372"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Key,<sp/></highlight><highlight class="keyword">class</highlight><highlight class="normal"><sp/>Comparator&gt;</highlight></codeline>
+<codeline lineno="373" refid="classleveldb_1_1_skip_list_1a134b36bafbfecf325bb7b57bc2490f87" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_skip_list_1a134b36bafbfecf325bb7b57bc2490f87" kindref="member">SkipList&lt;Key,Comparator&gt;::Contains</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref>&amp;<sp/>key)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><ref refid="structleveldb_1_1_skip_list_1_1_node" kindref="compound">Node</ref>*<sp/>x<sp/>=<sp/>FindGreaterOrEqual(key,<sp/>NULL);</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(x<sp/>!=<sp/>NULL<sp/>&amp;&amp;<sp/>Equal(key,<sp/>x-&gt;<ref refid="structleveldb_1_1_skip_list_1_1_node_1a654f196e057edd294e4dbcbb6dabb844" kindref="member">key</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="380"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"></highlight></codeline>
+<codeline lineno="382"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>leveldb</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="383"><highlight class="normal"></highlight></codeline>
+<codeline lineno="384"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/>//<sp/>STORAGE_LEVELDB_DB_SKIPLIST_H_</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/leveldb/db/skiplist.h"/>
+  </compounddef>
+</doxygen>

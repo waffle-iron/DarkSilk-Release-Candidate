@@ -1,0 +1,1393 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="rpcdump_8cpp" kind="file" language="C++">
+    <compoundname>rpcdump.cpp</compoundname>
+    <includes local="no">iostream</includes>
+    <includes local="no">fstream</includes>
+    <includes refid="init_8h" local="yes">init.h</includes>
+    <includes refid="rpcserver_8h" local="yes">rpcserver.h</includes>
+    <includes refid="ui__interface_8h" local="yes">ui_interface.h</includes>
+    <includes refid="base58_8h" local="yes">base58.h</includes>
+    <includes local="no">boost/date_time/posix_time/posix_time.hpp</includes>
+    <includes local="no">boost/variant/get.hpp</includes>
+    <includes local="no">boost/algorithm/string.hpp</includes>
+    <incdepgraph>
+      <node id="19365">
+        <label>list</label>
+      </node>
+      <node id="19345">
+        <label>boost/thread/mutex.hpp</label>
+      </node>
+      <node id="19427">
+        <label>boost/algorithm/string.hpp</label>
+      </node>
+      <node id="19360">
+        <label>netinet/in.h</label>
+      </node>
+      <node id="19328">
+        <label>amount.h</label>
+        <link refid="amount_8h"/>
+        <childnode refid="19329" relation="include">
+        </childnode>
+        <childnode refid="19343" relation="include">
+        </childnode>
+        <childnode refid="19330" relation="include">
+        </childnode>
+      </node>
+      <node id="19361">
+        <label>arpa/inet.h</label>
+      </node>
+      <node id="19387">
+        <label>iomanip</label>
+      </node>
+      <node id="19379">
+        <label>boost/version.hpp</label>
+      </node>
+      <node id="19374">
+        <label>boost/shared_ptr.hpp</label>
+      </node>
+      <node id="19335">
+        <label>limits</label>
+      </node>
+      <node id="19326">
+        <label>init.h</label>
+        <link refid="init_8h"/>
+      </node>
+      <node id="19400">
+        <label>crypto/sha256.h</label>
+        <link refid="sha256_8h"/>
+        <childnode refid="19336" relation="include">
+        </childnode>
+        <childnode refid="19343" relation="include">
+        </childnode>
+      </node>
+      <node id="19401">
+        <label>crypto/argon2/blake2/blake2.h</label>
+        <link refid="blake2_8h"/>
+        <childnode refid="19402" relation="include">
+        </childnode>
+        <childnode refid="19336" relation="include">
+        </childnode>
+        <childnode refid="19347" relation="include">
+        </childnode>
+      </node>
+      <node id="19405">
+        <label>script.h</label>
+        <link refid="script_8h"/>
+        <childnode refid="19330" relation="include">
+        </childnode>
+        <childnode refid="19331" relation="include">
+        </childnode>
+        <childnode refid="19336" relation="include">
+        </childnode>
+        <childnode refid="19406" relation="include">
+        </childnode>
+        <childnode refid="19375" relation="include">
+        </childnode>
+        <childnode refid="19395" relation="include">
+        </childnode>
+        <childnode refid="19393" relation="include">
+        </childnode>
+        <childnode refid="19407" relation="include">
+        </childnode>
+        <childnode refid="19422" relation="include">
+        </childnode>
+      </node>
+      <node id="19421">
+        <label>openssl/rand.h</label>
+      </node>
+      <node id="19380">
+        <label>boost/spirit/core.hpp</label>
+      </node>
+      <node id="19352">
+        <label>assert.h</label>
+      </node>
+      <node id="19340">
+        <label>boost/tuple/tuple.hpp</label>
+      </node>
+      <node id="19359">
+        <label>net/if.h</label>
+      </node>
+      <node id="19391">
+        <label>base58.h</label>
+        <link refid="base58_8h"/>
+        <childnode refid="19392" relation="include">
+        </childnode>
+        <childnode refid="19395" relation="include">
+        </childnode>
+        <childnode refid="19404" relation="include">
+        </childnode>
+        <childnode refid="19405" relation="include">
+        </childnode>
+        <childnode refid="19341" relation="include">
+        </childnode>
+        <childnode refid="19330" relation="include">
+        </childnode>
+        <childnode refid="19331" relation="include">
+        </childnode>
+      </node>
+      <node id="19349">
+        <label>version.h</label>
+        <link refid="version_8h"/>
+        <childnode refid="19350" relation="include">
+        </childnode>
+        <childnode refid="19330" relation="include">
+        </childnode>
+      </node>
+      <node id="19346">
+        <label>sys/mman.h</label>
+      </node>
+      <node id="19343">
+        <label>stdlib.h</label>
+      </node>
+      <node id="19406">
+        <label>boost/foreach.hpp</label>
+      </node>
+      <node id="19420">
+        <label>openssl/crypto.h</label>
+      </node>
+      <node id="19376">
+        <label>json_spirit_error_position.h</label>
+        <link refid="json__spirit__error__position_8h"/>
+        <childnode refid="19330" relation="include">
+        </childnode>
+      </node>
+      <node id="19384">
+        <label>boost/spirit/iterator/position_iterator.hpp</label>
+      </node>
+      <node id="19355">
+        <label>compat.h</label>
+        <link refid="compat_8h"/>
+        <childnode refid="19356" relation="include">
+        </childnode>
+        <childnode refid="19346" relation="include">
+        </childnode>
+        <childnode refid="19357" relation="include">
+        </childnode>
+        <childnode refid="19358" relation="include">
+        </childnode>
+        <childnode refid="19359" relation="include">
+        </childnode>
+        <childnode refid="19360" relation="include">
+        </childnode>
+        <childnode refid="19361" relation="include">
+        </childnode>
+        <childnode refid="19362" relation="include">
+        </childnode>
+        <childnode refid="19347" relation="include">
+        </childnode>
+        <childnode refid="19363" relation="include">
+        </childnode>
+        <childnode refid="19348" relation="include">
+        </childnode>
+        <childnode refid="19364" relation="include">
+        </childnode>
+      </node>
+      <node id="19416">
+        <label>boost/date_time/posix_time/posix_time_types.hpp</label>
+      </node>
+      <node id="19397">
+        <label>openssl/sha.h</label>
+      </node>
+      <node id="19364">
+        <label>errno.h</label>
+      </node>
+      <node id="19334">
+        <label>cassert</label>
+      </node>
+      <node id="19353">
+        <label>stdexcept</label>
+      </node>
+      <node id="19407">
+        <label>util.h</label>
+        <link refid="util_8h"/>
+        <childnode refid="19358" relation="include">
+        </childnode>
+        <childnode refid="19408" relation="include">
+        </childnode>
+        <childnode refid="19409" relation="include">
+        </childnode>
+        <childnode refid="19329" relation="include">
+        </childnode>
+        <childnode refid="19410" relation="include">
+        </childnode>
+        <childnode refid="19328" relation="include">
+        </childnode>
+        <childnode refid="19332" relation="include">
+        </childnode>
+        <childnode refid="19365" relation="include">
+        </childnode>
+        <childnode refid="19411" relation="include">
+        </childnode>
+        <childnode refid="19331" relation="include">
+        </childnode>
+        <childnode refid="19330" relation="include">
+        </childnode>
+        <childnode refid="19412" relation="include">
+        </childnode>
+        <childnode refid="19413" relation="include">
+        </childnode>
+        <childnode refid="19414" relation="include">
+        </childnode>
+        <childnode refid="19415" relation="include">
+        </childnode>
+        <childnode refid="19416" relation="include">
+        </childnode>
+        <childnode refid="19417" relation="include">
+        </childnode>
+        <childnode refid="19418" relation="include">
+        </childnode>
+        <childnode refid="19419" relation="include">
+        </childnode>
+        <childnode refid="19420" relation="include">
+        </childnode>
+        <childnode refid="19421" relation="include">
+        </childnode>
+        <childnode refid="19394" relation="include">
+        </childnode>
+        <childnode refid="19336" relation="include">
+        </childnode>
+      </node>
+      <node id="19385">
+        <label>json/json_spirit_utils.h</label>
+        <link refid="json__spirit__utils_8h"/>
+        <childnode refid="19371" relation="include">
+        </childnode>
+        <childnode refid="19332" relation="include">
+        </childnode>
+      </node>
+      <node id="19415">
+        <label>boost/date_time/gregorian/gregorian_types.hpp</label>
+      </node>
+      <node id="19330">
+        <label>string</label>
+      </node>
+      <node id="19332">
+        <label>map</label>
+      </node>
+      <node id="19367">
+        <label>boost/iostreams/stream.hpp</label>
+      </node>
+      <node id="19412">
+        <label>boost/thread.hpp</label>
+      </node>
+      <node id="19370">
+        <label>json/json_spirit_reader_template.h</label>
+        <link refid="json__spirit__reader__template_8h"/>
+        <childnode refid="19371" relation="include">
+        </childnode>
+        <childnode refid="19376" relation="include">
+        </childnode>
+        <childnode refid="19377" relation="include">
+        </childnode>
+        <childnode refid="19378" relation="include">
+        </childnode>
+        <childnode refid="19379" relation="include">
+        </childnode>
+        <childnode refid="19380" relation="include">
+        </childnode>
+        <childnode refid="19381" relation="include">
+        </childnode>
+        <childnode refid="19382" relation="include">
+        </childnode>
+        <childnode refid="19383" relation="include">
+        </childnode>
+        <childnode refid="19384" relation="include">
+        </childnode>
+      </node>
+      <node id="19388">
+        <label>ui_interface.h</label>
+        <link refid="ui__interface_8h"/>
+        <childnode refid="19328" relation="include">
+        </childnode>
+        <childnode refid="19389" relation="include">
+        </childnode>
+        <childnode refid="19390" relation="include">
+        </childnode>
+        <childnode refid="19330" relation="include">
+        </childnode>
+        <childnode refid="19336" relation="include">
+        </childnode>
+      </node>
+      <node id="19426">
+        <label>boost/variant/get.hpp</label>
+      </node>
+      <node id="19402">
+        <label>stddef.h</label>
+      </node>
+      <node id="19375">
+        <label>boost/variant.hpp</label>
+      </node>
+      <node id="19323">
+        <label>/home/dev/ds-160209/src/rpcdump.cpp</label>
+        <link refid="rpcdump.cpp"/>
+        <childnode refid="19324" relation="include">
+        </childnode>
+        <childnode refid="19325" relation="include">
+        </childnode>
+        <childnode refid="19326" relation="include">
+        </childnode>
+        <childnode refid="19327" relation="include">
+        </childnode>
+        <childnode refid="19388" relation="include">
+        </childnode>
+        <childnode refid="19391" relation="include">
+        </childnode>
+        <childnode refid="19425" relation="include">
+        </childnode>
+        <childnode refid="19426" relation="include">
+        </childnode>
+        <childnode refid="19427" relation="include">
+        </childnode>
+      </node>
+      <node id="19325">
+        <label>fstream</label>
+      </node>
+      <node id="19366">
+        <label>boost/iostreams/concepts.hpp</label>
+      </node>
+      <node id="19363">
+        <label>netdb.h</label>
+      </node>
+      <node id="19356">
+        <label>sys/fcntl.h</label>
+      </node>
+      <node id="19378">
+        <label>boost/function.hpp</label>
+      </node>
+      <node id="19329">
+        <label>serialize.h</label>
+        <link refid="serialize_8h"/>
+        <childnode refid="19330" relation="include">
+        </childnode>
+        <childnode refid="19331" relation="include">
+        </childnode>
+        <childnode refid="19332" relation="include">
+        </childnode>
+        <childnode refid="19333" relation="include">
+        </childnode>
+        <childnode refid="19334" relation="include">
+        </childnode>
+        <childnode refid="19335" relation="include">
+        </childnode>
+        <childnode refid="19336" relation="include">
+        </childnode>
+        <childnode refid="19337" relation="include">
+        </childnode>
+        <childnode refid="19338" relation="include">
+        </childnode>
+        <childnode refid="19339" relation="include">
+        </childnode>
+        <childnode refid="19340" relation="include">
+        </childnode>
+        <childnode refid="19341" relation="include">
+        </childnode>
+        <childnode refid="19349" relation="include">
+        </childnode>
+      </node>
+      <node id="19347">
+        <label>limits.h</label>
+      </node>
+      <node id="19409">
+        <label>sys/resource.h</label>
+      </node>
+      <node id="19417">
+        <label>openssl/bio.h</label>
+      </node>
+      <node id="19390">
+        <label>boost/signals2/signal.hpp</label>
+      </node>
+      <node id="19368">
+        <label>boost/asio.hpp</label>
+      </node>
+      <node id="19396">
+        <label>hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="19351" relation="include">
+        </childnode>
+        <childnode refid="19329" relation="include">
+        </childnode>
+        <childnode refid="19397" relation="include">
+        </childnode>
+        <childnode refid="19398" relation="include">
+        </childnode>
+        <childnode refid="19399" relation="include">
+        </childnode>
+        <childnode refid="19400" relation="include">
+        </childnode>
+        <childnode refid="19401" relation="include">
+        </childnode>
+        <childnode refid="19403" relation="include">
+        </childnode>
+        <childnode refid="19331" relation="include">
+        </childnode>
+      </node>
+      <node id="19369">
+        <label>boost/asio/ssl.hpp</label>
+      </node>
+      <node id="19362">
+        <label>ifaddrs.h</label>
+      </node>
+      <node id="19425">
+        <label>boost/date_time/posix_time/posix_time.hpp</label>
+      </node>
+      <node id="19422">
+        <label>stealth.h</label>
+        <link refid="stealth_8h"/>
+        <childnode refid="19407" relation="include">
+        </childnode>
+        <childnode refid="19329" relation="include">
+        </childnode>
+        <childnode refid="19343" relation="include">
+        </childnode>
+        <childnode refid="19423" relation="include">
+        </childnode>
+        <childnode refid="19331" relation="include">
+        </childnode>
+        <childnode refid="19424" relation="include">
+        </childnode>
+      </node>
+      <node id="19358">
+        <label>sys/types.h</label>
+      </node>
+      <node id="19344">
+        <label>string.h</label>
+      </node>
+      <node id="19350">
+        <label>clientversion.h</label>
+        <link refid="clientversion_8h"/>
+      </node>
+      <node id="19338">
+        <label>cstdio</label>
+      </node>
+      <node id="19419">
+        <label>openssl/buffer.h</label>
+      </node>
+      <node id="19339">
+        <label>boost/type_traits/is_fundamental.hpp</label>
+      </node>
+      <node id="19414">
+        <label>boost/filesystem/path.hpp</label>
+      </node>
+      <node id="19395">
+        <label>pubkey.h</label>
+        <link refid="pubkey_8h"/>
+        <childnode refid="19396" relation="include">
+        </childnode>
+        <childnode refid="19329" relation="include">
+        </childnode>
+        <childnode refid="19351" relation="include">
+        </childnode>
+        <childnode refid="19353" relation="include">
+        </childnode>
+        <childnode refid="19331" relation="include">
+        </childnode>
+      </node>
+      <node id="19348">
+        <label>unistd.h</label>
+      </node>
+      <node id="19331">
+        <label>vector</label>
+      </node>
+      <node id="19393">
+        <label>bignum.h</label>
+        <link refid="bignum_8h"/>
+        <childnode refid="19329" relation="include">
+        </childnode>
+        <childnode refid="19351" relation="include">
+        </childnode>
+        <childnode refid="19394" relation="include">
+        </childnode>
+        <childnode refid="19353" relation="include">
+        </childnode>
+        <childnode refid="19331" relation="include">
+        </childnode>
+        <childnode refid="19336" relation="include">
+        </childnode>
+      </node>
+      <node id="19354">
+        <label>rpcprotocol.h</label>
+        <link refid="rpcprotocol_8h"/>
+        <childnode refid="19355" relation="include">
+        </childnode>
+        <childnode refid="19365" relation="include">
+        </childnode>
+        <childnode refid="19332" relation="include">
+        </childnode>
+        <childnode refid="19336" relation="include">
+        </childnode>
+        <childnode refid="19330" relation="include">
+        </childnode>
+        <childnode refid="19366" relation="include">
+        </childnode>
+        <childnode refid="19367" relation="include">
+        </childnode>
+        <childnode refid="19368" relation="include">
+        </childnode>
+        <childnode refid="19369" relation="include">
+        </childnode>
+        <childnode refid="19370" relation="include">
+        </childnode>
+        <childnode refid="19385" relation="include">
+        </childnode>
+        <childnode refid="19386" relation="include">
+        </childnode>
+      </node>
+      <node id="19386">
+        <label>json/json_spirit_writer_template.h</label>
+        <link refid="json__spirit__writer__template_8h"/>
+        <childnode refid="19371" relation="include">
+        </childnode>
+        <childnode refid="19334" relation="include">
+        </childnode>
+        <childnode refid="19372" relation="include">
+        </childnode>
+        <childnode refid="19387" relation="include">
+        </childnode>
+      </node>
+      <node id="19398">
+        <label>openssl/ripemd.h</label>
+      </node>
+      <node id="19413">
+        <label>boost/filesystem.hpp</label>
+      </node>
+      <node id="19382">
+        <label>boost/spirit/utility/escape_char.hpp</label>
+      </node>
+      <node id="19411">
+        <label>utility</label>
+      </node>
+      <node id="19372">
+        <label>sstream</label>
+      </node>
+      <node id="19389">
+        <label>boost/signals2/last_value.hpp</label>
+      </node>
+      <node id="19404">
+        <label>key.h</label>
+        <link refid="key_8h"/>
+        <childnode refid="19341" relation="include">
+        </childnode>
+        <childnode refid="19395" relation="include">
+        </childnode>
+        <childnode refid="19353" relation="include">
+        </childnode>
+        <childnode refid="19331" relation="include">
+        </childnode>
+      </node>
+      <node id="19418">
+        <label>openssl/evp.h</label>
+      </node>
+      <node id="19410">
+        <label>tinyformat.h</label>
+        <link refid="tinyformat_8h"/>
+        <childnode refid="19334" relation="include">
+        </childnode>
+        <childnode refid="19324" relation="include">
+        </childnode>
+        <childnode refid="19372" relation="include">
+        </childnode>
+        <childnode refid="19353" relation="include">
+        </childnode>
+      </node>
+      <node id="19336">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="19403">
+        <label>crypto/argon2/argon2.h</label>
+        <link refid="argon2_8h"/>
+        <childnode refid="19336" relation="include">
+        </childnode>
+        <childnode refid="19402" relation="include">
+        </childnode>
+        <childnode refid="19347" relation="include">
+        </childnode>
+      </node>
+      <node id="19408">
+        <label>sys/time.h</label>
+      </node>
+      <node id="19324">
+        <label>iostream</label>
+      </node>
+      <node id="19327">
+        <label>rpcserver.h</label>
+        <link refid="rpcserver_8h"/>
+        <childnode refid="19328" relation="include">
+        </childnode>
+        <childnode refid="19351" relation="include">
+        </childnode>
+        <childnode refid="19354" relation="include">
+        </childnode>
+        <childnode refid="19365" relation="include">
+        </childnode>
+        <childnode refid="19332" relation="include">
+        </childnode>
+      </node>
+      <node id="19351">
+        <label>uint256.h</label>
+        <link refid="uint256_8h"/>
+        <childnode refid="19352" relation="include">
+        </childnode>
+        <childnode refid="19337" relation="include">
+        </childnode>
+        <childnode refid="19353" relation="include">
+        </childnode>
+        <childnode refid="19336" relation="include">
+        </childnode>
+        <childnode refid="19330" relation="include">
+        </childnode>
+        <childnode refid="19331" relation="include">
+        </childnode>
+      </node>
+      <node id="19377">
+        <label>boost/bind.hpp</label>
+      </node>
+      <node id="19373">
+        <label>boost/config.hpp</label>
+      </node>
+      <node id="19357">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="19371">
+        <label>json_spirit_value.h</label>
+        <link refid="json__spirit__value_8h"/>
+        <childnode refid="19331" relation="include">
+        </childnode>
+        <childnode refid="19332" relation="include">
+        </childnode>
+        <childnode refid="19330" relation="include">
+        </childnode>
+        <childnode refid="19334" relation="include">
+        </childnode>
+        <childnode refid="19372" relation="include">
+        </childnode>
+        <childnode refid="19353" relation="include">
+        </childnode>
+        <childnode refid="19336" relation="include">
+        </childnode>
+        <childnode refid="19373" relation="include">
+        </childnode>
+        <childnode refid="19374" relation="include">
+        </childnode>
+        <childnode refid="19375" relation="include">
+        </childnode>
+      </node>
+      <node id="19394">
+        <label>openssl/bn.h</label>
+      </node>
+      <node id="19341">
+        <label>allocators.h</label>
+        <link refid="allocators_8h"/>
+        <childnode refid="19342" relation="include">
+        </childnode>
+        <childnode refid="19344" relation="include">
+        </childnode>
+        <childnode refid="19330" relation="include">
+        </childnode>
+        <childnode refid="19345" relation="include">
+        </childnode>
+        <childnode refid="19332" relation="include">
+        </childnode>
+        <childnode refid="19346" relation="include">
+        </childnode>
+        <childnode refid="19347" relation="include">
+        </childnode>
+        <childnode refid="19348" relation="include">
+        </childnode>
+      </node>
+      <node id="19383">
+        <label>boost/spirit/iterator/multi_pass.hpp</label>
+      </node>
+      <node id="19392">
+        <label>chainparams.h</label>
+        <link refid="chainparams_8h"/>
+        <childnode refid="19393" relation="include">
+        </childnode>
+        <childnode refid="19351" relation="include">
+        </childnode>
+        <childnode refid="19331" relation="include">
+        </childnode>
+      </node>
+      <node id="19333">
+        <label>set</label>
+      </node>
+      <node id="19399">
+        <label>crypto/ripemd160.h</label>
+        <link refid="ripemd160_8h"/>
+        <childnode refid="19336" relation="include">
+        </childnode>
+        <childnode refid="19343" relation="include">
+        </childnode>
+      </node>
+      <node id="19423">
+        <label>stdio.h</label>
+      </node>
+      <node id="19342">
+        <label>cleanse.h</label>
+        <link refid="cleanse_8h"/>
+        <childnode refid="19343" relation="include">
+        </childnode>
+      </node>
+      <node id="19337">
+        <label>cstring</label>
+      </node>
+      <node id="19424">
+        <label>inttypes.h</label>
+      </node>
+      <node id="19381">
+        <label>boost/spirit/utility/confix.hpp</label>
+      </node>
+    </incdepgraph>
+    <innerclass refid="class_c_tx_dump" prot="public">CTxDump</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="rpcdump_8cpp_1ad6cd1b92ba2841ef90d3011187d12cbe" prot="public" static="no" mutable="no">
+        <type>const std::locale</type>
+        <definition>const std::locale formats[]</definition>
+        <argsstring>[]</argsstring>
+        <name>formats</name>
+        <initializer>= {
+    std::locale(std::locale::classic(),new bt::time_input_facet(&quot;%Y-%m-%dT%H:%M:%SZ&quot;)),
+    std::locale(std::locale::classic(),new bt::time_input_facet(&quot;%Y-%m-%d %H:%M:%S&quot;)),
+    std::locale(std::locale::classic(),new bt::time_input_facet(&quot;%Y/%m/%d %H:%M:%S&quot;)),
+    std::locale(std::locale::classic(),new bt::time_input_facet(&quot;%d.%m.%Y %H:%M:%S&quot;)),
+    std::locale(std::locale::classic(),new bt::time_input_facet(&quot;%Y-%m-%d&quot;))
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcdump.cpp" line="26" column="1" bodyfile="/home/dev/ds-160209/src/rpcdump.cpp" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="rpcdump_8cpp_1a3ab2ee389c23790b9ac18796a1338942" prot="public" static="no" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t formats_n</definition>
+        <argsstring></argsstring>
+        <name>formats_n</name>
+        <initializer>= sizeof(<ref refid="rpcdump_8cpp_1ad6cd1b92ba2841ef90d3011187d12cbe" kindref="member">formats</ref>)/sizeof(<ref refid="rpcdump_8cpp_1ad6cd1b92ba2841ef90d3011187d12cbe" kindref="member">formats</ref>[0])</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcdump.cpp" line="34" column="1" bodyfile="/home/dev/ds-160209/src/rpcdump.cpp" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="rpcdump_8cpp_1a8f837f6d506b9719cef93188db00fd3c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void EnsureWalletIsUnlocked</definition>
+        <argsstring>()</argsstring>
+        <name>EnsureWalletIsUnlocked</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcdump.cpp" line="20" column="1" bodyfile="/home/dev/ds-160209/src/rpcwallet.cpp" bodystart="44" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="rpcdump_8cpp_1a5aff05ff6a2fa11eddbf183bf7be64c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::time_t</type>
+        <definition>std::time_t pt_to_time_t</definition>
+        <argsstring>(const bt::ptime &amp;pt)</argsstring>
+        <name>pt_to_time_t</name>
+        <param>
+          <type>const bt::ptime &amp;</type>
+          <declname>pt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcdump.cpp" line="36" column="1" bodyfile="/home/dev/ds-160209/src/rpcdump.cpp" bodystart="36" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="rpcdump_8cpp_1a8343d580e36c13378fa20f419257dd52" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+        <definition>int64_t DecodeDumpTime</definition>
+        <argsstring>(const std::string &amp;s)</argsstring>
+        <name>DecodeDumpTime</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcdump.cpp" line="43" column="1" bodyfile="/home/dev/ds-160209/src/rpcdump.cpp" bodystart="43" bodyend="56"/>
+      </memberdef>
+      <memberdef kind="function" id="rpcdump_8cpp_1a7508f988f8fe1737d50343804d7fc7c8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>static std::string EncodeDumpTime</definition>
+        <argsstring>(int64_t nTime)</argsstring>
+        <name>EncodeDumpTime</name>
+        <param>
+          <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+          <declname>nTime</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcdump.cpp" line="58" column="1" bodyfile="/home/dev/ds-160209/src/rpcdump.cpp" bodystart="58" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="rpcdump_8cpp_1a6cd1bf37c3deb795c043096acb2b87e7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>static std::string EncodeDumpString</definition>
+        <argsstring>(const std::string &amp;str)</argsstring>
+        <name>EncodeDumpString</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcdump.cpp" line="62" column="1" bodyfile="/home/dev/ds-160209/src/rpcdump.cpp" bodystart="62" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="rpcdump_8cpp_1aac0419ba6427cf5f0873a6a0c815db83" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string DecodeDumpString</definition>
+        <argsstring>(const std::string &amp;str)</argsstring>
+        <name>DecodeDumpString</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcdump.cpp" line="74" column="1" bodyfile="/home/dev/ds-160209/src/rpcdump.cpp" bodystart="74" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="rpcdump_8cpp_1a3a6fdb974fce01220a895393d444e981" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacejson__spirit_1a28e6abc99fda7b06c430ca38802527a3" kindref="member">Value</ref></type>
+        <definition>Value importprivkey</definition>
+        <argsstring>(const Array &amp;params, bool fHelp)</argsstring>
+        <name>importprivkey</name>
+        <param>
+          <type>const <ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref> &amp;</type>
+          <declname>params</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fHelp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcdump.cpp" line="106" column="1" bodyfile="/home/dev/ds-160209/src/rpcdump.cpp" bodystart="106" bodyend="159"/>
+      </memberdef>
+      <memberdef kind="function" id="rpcdump_8cpp_1a457bc572859c8265c72a0afd1a6db56c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacejson__spirit_1a28e6abc99fda7b06c430ca38802527a3" kindref="member">Value</ref></type>
+        <definition>Value importaddress</definition>
+        <argsstring>(const Array &amp;params, bool fHelp)</argsstring>
+        <name>importaddress</name>
+        <param>
+          <type>const <ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref> &amp;</type>
+          <declname>params</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fHelp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcdump.cpp" line="161" column="1" bodyfile="/home/dev/ds-160209/src/rpcdump.cpp" bodystart="161" bodyend="230"/>
+      </memberdef>
+      <memberdef kind="function" id="rpcdump_8cpp_1a2566d5c9dd1938b74e70398cdb3ac5c1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacejson__spirit_1a28e6abc99fda7b06c430ca38802527a3" kindref="member">Value</ref></type>
+        <definition>Value importwallet</definition>
+        <argsstring>(const Array &amp;params, bool fHelp)</argsstring>
+        <name>importwallet</name>
+        <param>
+          <type>const <ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref> &amp;</type>
+          <declname>params</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fHelp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcdump.cpp" line="232" column="1" bodyfile="/home/dev/ds-160209/src/rpcdump.cpp" bodystart="232" bodyend="318"/>
+      </memberdef>
+      <memberdef kind="function" id="rpcdump_8cpp_1a4010fb238298e15c540d3e5ecd60f858" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacejson__spirit_1a28e6abc99fda7b06c430ca38802527a3" kindref="member">Value</ref></type>
+        <definition>Value dumpprivkey</definition>
+        <argsstring>(const Array &amp;params, bool fHelp)</argsstring>
+        <name>dumpprivkey</name>
+        <param>
+          <type>const <ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref> &amp;</type>
+          <declname>params</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fHelp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcdump.cpp" line="321" column="1" bodyfile="/home/dev/ds-160209/src/rpcdump.cpp" bodystart="321" bodyend="343"/>
+      </memberdef>
+      <memberdef kind="function" id="rpcdump_8cpp_1a831ddf746d4f2500ba6f6c07f63445cd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacejson__spirit_1a28e6abc99fda7b06c430ca38802527a3" kindref="member">Value</ref></type>
+        <definition>Value dumpwallet</definition>
+        <argsstring>(const Array &amp;params, bool fHelp)</argsstring>
+        <name>dumpwallet</name>
+        <param>
+          <type>const <ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref> &amp;</type>
+          <declname>params</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fHelp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcdump.cpp" line="345" column="1" bodyfile="/home/dev/ds-160209/src/rpcdump.cpp" bodystart="345" bodyend="401"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2009-2016<sp/>Bitcoin<sp/>Developers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Distributed<sp/>under<sp/>the<sp/>MIT/X11<sp/>software<sp/>license,<sp/>see<sp/>the<sp/>accompanying</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>file<sp/>COPYING<sp/>or<sp/>http://www.opensource.org/licenses/mit-license.php.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="init_8h" kindref="compound">init.h</ref>&quot;</highlight><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>for<sp/>pwalletMain</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="rpcserver_8h" kindref="compound">rpcserver.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="ui__interface_8h" kindref="compound">ui_interface.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="base58_8h" kindref="compound">base58.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/date_time/posix_time/posix_time.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/variant/get.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/algorithm/string.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespacejson__spirit" kindref="compound">json_spirit</ref>;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespacestd" kindref="compound">std</ref>;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="rpcdump_8cpp_1a8f837f6d506b9719cef93188db00fd3c" kindref="member">EnsureWalletIsUnlocked</ref>();</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">bt<sp/>=<sp/>boost::posix_time;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Extended<sp/>DecodeDumpTime<sp/>implementation,<sp/>see<sp/>this<sp/>page<sp/>for<sp/>details:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/>http://stackoverflow.com/questions/3786201/parsing-of-date-time-from-string-boost</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="rpcdump_8cpp_1ad6cd1b92ba2841ef90d3011187d12cbe" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::locale<sp/><ref refid="rpcdump_8cpp_1ad6cd1b92ba2841ef90d3011187d12cbe" kindref="member">formats</ref>[]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>std::locale(std::locale::classic(),</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>bt::time_input_facet(</highlight><highlight class="stringliteral">&quot;%Y-%m-%dT%H:%M:%SZ&quot;</highlight><highlight class="normal">)),</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>std::locale(std::locale::classic(),</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>bt::time_input_facet(</highlight><highlight class="stringliteral">&quot;%Y-%m-%d<sp/>%H:%M:%S&quot;</highlight><highlight class="normal">)),</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>std::locale(std::locale::classic(),</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>bt::time_input_facet(</highlight><highlight class="stringliteral">&quot;%Y/%m/%d<sp/>%H:%M:%S&quot;</highlight><highlight class="normal">)),</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>std::locale(std::locale::classic(),</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>bt::time_input_facet(</highlight><highlight class="stringliteral">&quot;%d.%m.%Y<sp/>%H:%M:%S&quot;</highlight><highlight class="normal">)),</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>std::locale(std::locale::classic(),</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>bt::time_input_facet(</highlight><highlight class="stringliteral">&quot;%Y-%m-%d&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="rpcdump_8cpp_1a3ab2ee389c23790b9ac18796a1338942" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="rpcdump_8cpp_1a3ab2ee389c23790b9ac18796a1338942" kindref="member">formats_n</ref><sp/>=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="rpcdump_8cpp_1ad6cd1b92ba2841ef90d3011187d12cbe" kindref="member">formats</ref>)/</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="rpcdump_8cpp_1ad6cd1b92ba2841ef90d3011187d12cbe" kindref="member">formats</ref>[0]);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="rpcdump_8cpp_1a5aff05ff6a2fa11eddbf183bf7be64c8" refkind="member"><highlight class="normal">std::time_t<sp/><ref refid="rpcdump_8cpp_1a5aff05ff6a2fa11eddbf183bf7be64c8" kindref="member">pt_to_time_t</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>bt::ptime&amp;<sp/>pt)</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>bt::ptime<sp/>timet_start(boost::gregorian::date(1970,1,1));</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>bt::time_duration<sp/>diff<sp/>=<sp/>pt<sp/>-<sp/>timet_start;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>diff.ticks()/bt::time_duration::rep_type::ticks_per_second;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="rpcdump_8cpp_1a8343d580e36c13378fa20f419257dd52" refkind="member"><highlight class="normal"><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref><sp/><ref refid="rpcdump_8cpp_1a8343d580e36c13378fa20f419257dd52" kindref="member">DecodeDumpTime</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>s)</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>bt::ptime<sp/>pt;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;<ref refid="rpcdump_8cpp_1a3ab2ee389c23790b9ac18796a1338942" kindref="member">formats_n</ref>;<sp/>++i)</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::istringstream<sp/>is(s);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is.imbue(<ref refid="rpcdump_8cpp_1ad6cd1b92ba2841ef90d3011187d12cbe" kindref="member">formats</ref>[i]);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>is<sp/>&gt;&gt;<sp/>pt;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(pt<sp/>!=<sp/>bt::ptime())<sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="rpcdump_8cpp_1a5aff05ff6a2fa11eddbf183bf7be64c8" kindref="member">pt_to_time_t</ref>(pt);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal">std::string<sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>EncodeDumpTime(<ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref><sp/>nTime)<sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="util_8cpp_1a749bc6776c8ec72d7c5e4dea56aee415" kindref="member">DateTimeStrFormat</ref>(</highlight><highlight class="stringliteral">&quot;%Y-%m-%dT%H:%M:%SZ&quot;</highlight><highlight class="normal">,<sp/>nTime);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal">std::string<sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>EncodeDumpString(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;str)<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>std::stringstream<sp/>ret;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>BOOST_FOREACH(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>c,<sp/>str)<sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(c<sp/>&lt;=<sp/>32<sp/>||<sp/>c<sp/>&gt;=<sp/>128<sp/>||<sp/>c<sp/>==<sp/></highlight><highlight class="charliteral">&apos;%&apos;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>&lt;&lt;<sp/></highlight><highlight class="charliteral">&apos;%&apos;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/><ref refid="util_8h_1ace13a819ca4e98c22847d26b3b357e75" kindref="member">HexStr</ref>(&amp;c,<sp/>&amp;c<sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>&lt;&lt;<sp/>c;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret.str();</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="rpcdump_8cpp_1aac0419ba6427cf5f0873a6a0c815db83" refkind="member"><highlight class="normal">std::string<sp/><ref refid="rpcdump_8cpp_1aac0419ba6427cf5f0873a6a0c815db83" kindref="member">DecodeDumpString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;str)<sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>std::stringstream<sp/>ret;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pos<sp/>=<sp/>0;<sp/>pos<sp/>&lt;<sp/>str.length();<sp/>pos++)<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>c<sp/>=<sp/>str[pos];</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(c<sp/>==<sp/></highlight><highlight class="charliteral">&apos;%&apos;</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>pos+2<sp/>&lt;<sp/>str.length())<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c<sp/>=<sp/>(((str[pos+1]&gt;&gt;6)*9+((str[pos+1]-</highlight><highlight class="charliteral">&apos;0&apos;</highlight><highlight class="normal">)&amp;15))<sp/>&lt;&lt;<sp/>4)<sp/>|<sp/></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((str[pos+2]&gt;&gt;6)*9+((str[pos+2]-</highlight><highlight class="charliteral">&apos;0&apos;</highlight><highlight class="normal">)&amp;15));</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pos<sp/>+=<sp/>2;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>&lt;&lt;<sp/>c;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret.str();</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="class_c_tx_dump" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_c_tx_dump" kindref="compound">CTxDump</ref></highlight></codeline>
+<codeline lineno="89"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="91" refid="class_c_tx_dump_1a98da78bae1b040ff7e8f33cd7a91ccd0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_block_index" kindref="compound">CBlockIndex</ref><sp/>*<ref refid="class_c_tx_dump_1a98da78bae1b040ff7e8f33cd7a91ccd0" kindref="member">pindex</ref>;</highlight></codeline>
+<codeline lineno="92" refid="class_c_tx_dump_1afca3ced942672136928b8f2cefc77ee7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref><sp/><ref refid="class_c_tx_dump_1afca3ced942672136928b8f2cefc77ee7" kindref="member">nValue</ref>;</highlight></codeline>
+<codeline lineno="93" refid="class_c_tx_dump_1ab9414670ba3167741093b69bf8ff3d3c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_tx_dump_1ab9414670ba3167741093b69bf8ff3d3c" kindref="member">fSpent</ref>;</highlight></codeline>
+<codeline lineno="94" refid="class_c_tx_dump_1a35bc70e8a048c6a5c7d7d75007d23d24" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_wallet_tx" kindref="compound">CWalletTx</ref>*<sp/><ref refid="class_c_tx_dump_1a35bc70e8a048c6a5c7d7d75007d23d24" kindref="member">ptx</ref>;</highlight></codeline>
+<codeline lineno="95" refid="class_c_tx_dump_1a4b59015f367c546b94f2710c8410f3df" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_c_tx_dump_1a4b59015f367c546b94f2710c8410f3df" kindref="member">nOut</ref>;</highlight></codeline>
+<codeline lineno="96" refid="class_c_tx_dump_1a24c253b4afd04471ca984a5cda09c4b6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_tx_dump_1a24c253b4afd04471ca984a5cda09c4b6" kindref="member">CTxDump</ref>(<ref refid="class_c_wallet_tx" kindref="compound">CWalletTx</ref>*<sp/>ptx<sp/>=<sp/>NULL,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nOut<sp/>=<sp/>-1)</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pindex<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nValue<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fSpent<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;ptx<sp/>=<sp/>ptx;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;nOut<sp/>=<sp/>nOut;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106" refid="rpcdump_8cpp_1a3a6fdb974fce01220a895393d444e981" refkind="member"><highlight class="normal"><ref refid="classjson__spirit_1_1_value__impl" kindref="compound">Value</ref><sp/><ref refid="rpcdump_8cpp_1a3a6fdb974fce01220a895393d444e981" kindref="member">importprivkey</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref>&amp;<sp/>params,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fHelp)</highlight></codeline>
+<codeline lineno="107"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fHelp<sp/>||<sp/>params.size()<sp/>&lt;<sp/>1<sp/>||<sp/>params.size()<sp/>&gt;<sp/>3)</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>runtime_error(</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;importprivkey<sp/>&lt;darksilkprivkey&gt;<sp/>[label]<sp/>[rescan=true]\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Adds<sp/>a<sp/>private<sp/>key<sp/>(as<sp/>returned<sp/>by<sp/>dumpprivkey)<sp/>to<sp/>your<sp/>wallet.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>strSecret<sp/>=<sp/>params[0].<ref refid="classjson__spirit_1_1_value__impl_1a0e02b3a4e65ae45f069ee938fee40f80" kindref="member">get_str</ref>();</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>strLabel<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(params.size()<sp/>&gt;<sp/>1)</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strLabel<sp/>=<sp/>params[1].<ref refid="namespacejson__spirit_1acdef70e45909522ba51a74b68e186b25" kindref="member">get_str</ref>();</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Whether<sp/>to<sp/>perform<sp/>rescan<sp/>after<sp/>import</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fRescan<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(params.size()<sp/>&gt;<sp/>2)</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fRescan<sp/>=<sp/>params[2].get_bool();</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_dark_silk_secret" kindref="compound">CDarkSilkSecret</ref><sp/>vchSecret;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fGood<sp/>=<sp/>vchSecret.<ref refid="class_c_dark_silk_secret_1a06075192fb631c3b406a6ca231d2f926" kindref="member">SetString</ref>(strSecret);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!fGood)<sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="rpcprotocol_8cpp_1a17b1bb111ab339efc951929834766039" kindref="member">JSONRPCError</ref>(<ref refid="rpcprotocol_8h_1af867221d51315471f28ed8cdac85deadafb8d27e000f4a668b66974c73256a576" kindref="member">RPC_INVALID_ADDRESS_OR_KEY</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Invalid<sp/>private<sp/>key&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="askpassphrasedialog_8cpp_1a0bc784e958b92854437f2238d4249da0" kindref="member">fWalletUnlockStakingOnly</ref>)</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="rpcprotocol_8cpp_1a17b1bb111ab339efc951929834766039" kindref="member">JSONRPCError</ref>(<ref refid="rpcprotocol_8h_1af867221d51315471f28ed8cdac85deada0c1fbdf17d83da9f5124f2dbf0ba4765" kindref="member">RPC_WALLET_UNLOCK_NEEDED</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Wallet<sp/>is<sp/>unlocked<sp/>for<sp/>staking<sp/>only.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_key" kindref="compound">CKey</ref><sp/>key<sp/>=<sp/>vchSecret.<ref refid="class_c_dark_silk_secret_1af7b026d90efb897f6e592ce424c8d2c9" kindref="member">GetKey</ref>();</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_pub_key" kindref="compound">CPubKey</ref><sp/>pubkey<sp/>=<sp/>key.<ref refid="class_c_key_1ae4b61da6ec62f676fe6362ac5fc26aca" kindref="member">GetPubKey</ref>();</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(key.<ref refid="class_c_key_1a3890764f7a2e5d9cdeffb3e102e4545d" kindref="member">VerifyPubKey</ref>(pubkey));</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_key_i_d" kindref="compound">CKeyID</ref><sp/>vchAddress<sp/>=<sp/>pubkey.<ref refid="class_c_pub_key_1a9c1908fef34fd9e1c4b5e0ffd5d3834e" kindref="member">GetID</ref>();</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="sync_8h_1a35644e2b75a93da0cb0f6c768f34efa8" kindref="member">LOCK2</ref>(<ref refid="main_8cpp_1a1ed8285f0fe3c6799c53265ce72552c8" kindref="member">cs_main</ref>,<sp/><ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1a4e6eb889f7638ed9695fdc0731581428" kindref="member">cs_wallet</ref>);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1a26fd9a9f48230daf346500d2afb6115e" kindref="member">MarkDirty</ref>();</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1a95d2dd3693db562aa11afbecf33e1276" kindref="member">SetAddressBookName</ref>(vchAddress,<sp/>strLabel);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Don&apos;t<sp/>throw<sp/>error<sp/>in<sp/>case<sp/>a<sp/>key<sp/>is<sp/>already<sp/>there</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_crypto_key_store_1a0cefe933dd3a6ac7744432493696bffc" kindref="member">HaveKey</ref>(vchAddress))</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classjson__spirit_1_1_value__impl_1abb8ef4f2732e2c842afa716c456cb35d" kindref="member">Value::null</ref>;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1acfd09bc5a2daee930f9f988efac8dbb7" kindref="member">mapKeyMetadata</ref>[vchAddress].nCreateTime<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1a3240da36cd717146296969227a3e0bd5" kindref="member">AddKeyPubKey</ref>(key,<sp/>pubkey))</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="rpcprotocol_8cpp_1a17b1bb111ab339efc951929834766039" kindref="member">JSONRPCError</ref>(<ref refid="rpcprotocol_8h_1af867221d51315471f28ed8cdac85deadaba6f8682002fa223d3a405b743b5a540" kindref="member">RPC_WALLET_ERROR</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>adding<sp/>key<sp/>to<sp/>wallet&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>whenever<sp/>a<sp/>key<sp/>is<sp/>imported,<sp/>we<sp/>need<sp/>to<sp/>scan<sp/>the<sp/>whole<sp/>chain</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1a817c0d1034377a7bd70a714140a5a8ca" kindref="member">nTimeFirstKey</ref><sp/>=<sp/>1;<sp/></highlight><highlight class="comment">//<sp/>0<sp/>would<sp/>be<sp/>considered<sp/>&apos;no<sp/>value&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fRescan)<sp/>{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1a979a17e80e4897ed1f4ae9a4be7c493c" kindref="member">ScanForWalletTransactions</ref>(<ref refid="chain_8h_1a1e7c54b8b26730f52b5527163fc33d8f" kindref="member">pindexGenesisBlock</ref>,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1a796c23450c8482e10e0c75ae5c1fa8ed" kindref="member">ReacceptWalletTransactions</ref>();</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classjson__spirit_1_1_value__impl_1abb8ef4f2732e2c842afa716c456cb35d" kindref="member">Value::null</ref>;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161" refid="rpcdump_8cpp_1a457bc572859c8265c72a0afd1a6db56c" refkind="member"><highlight class="normal"><ref refid="classjson__spirit_1_1_value__impl" kindref="compound">Value</ref><sp/><ref refid="rpcdump_8cpp_1a457bc572859c8265c72a0afd1a6db56c" kindref="member">importaddress</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref>&amp;<sp/>params,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fHelp)</highlight></codeline>
+<codeline lineno="162"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fHelp<sp/>||<sp/>params.size()<sp/>&lt;<sp/>1<sp/>||<sp/>params.size()<sp/>&gt;<sp/>3)</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>runtime_error(</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;importaddress<sp/>\&quot;address\&quot;<sp/>(<sp/>\&quot;label\&quot;<sp/>rescan<sp/>)\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;\nAdds<sp/>an<sp/>address<sp/>or<sp/>script<sp/>(in<sp/>HEX)<sp/>that<sp/>can<sp/>be<sp/>watched<sp/>as<sp/>if<sp/>it<sp/>were<sp/>in<sp/>your<sp/>wallet<sp/>but<sp/>cannot<sp/>be<sp/>used<sp/>to<sp/>spend.\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;\nArguments:\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;1.<sp/>\&quot;address\&quot;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(string,<sp/>required)<sp/>The<sp/>address\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;2.<sp/>\&quot;label\&quot;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(string,<sp/>optional,<sp/>default=\&quot;\&quot;)<sp/>An<sp/>optional<sp/>label\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;3.<sp/>rescan<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(boolean,<sp/>optional,<sp/>default=true)<sp/>Rescan<sp/>the<sp/>wallet<sp/>for<sp/>transactions\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;\nNote:<sp/>This<sp/>call<sp/>can<sp/>take<sp/>minutes<sp/>to<sp/>complete<sp/>if<sp/>rescan<sp/>is<sp/>true.\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;\nExamples:\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;\nImport<sp/>an<sp/>address<sp/>with<sp/>rescan\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/><ref refid="rpcserver_8cpp_1ac01ac6eab5467567ed0da106814e04ec" kindref="member">HelpExampleCli</ref>(</highlight><highlight class="stringliteral">&quot;importaddress&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;\&quot;myaddress\&quot;&quot;</highlight><highlight class="normal">)<sp/>+</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;\nImport<sp/>using<sp/>a<sp/>label<sp/>without<sp/>rescan\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/><ref refid="rpcserver_8cpp_1ac01ac6eab5467567ed0da106814e04ec" kindref="member">HelpExampleCli</ref>(</highlight><highlight class="stringliteral">&quot;importaddress&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;\&quot;myaddress\&quot;<sp/>\&quot;testing\&quot;<sp/>false&quot;</highlight><highlight class="normal">)<sp/>+</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;\nAs<sp/>a<sp/>JSON-RPC<sp/>call\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/><ref refid="rpcserver_8cpp_1a06ea60e24e5a1053a14a11b1009bf9ef" kindref="member">HelpExampleRpc</ref>(</highlight><highlight class="stringliteral">&quot;importaddress&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;\&quot;myaddress\&quot;,<sp/>\&quot;testing\&quot;,<sp/>false&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_script" kindref="compound">CScript</ref><sp/>script;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_dark_silk_address" kindref="compound">CDarkSilkAddress</ref><sp/>address(params[0].<ref refid="namespacejson__spirit_1acdef70e45909522ba51a74b68e186b25" kindref="member">get_str</ref>());</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(address.<ref refid="class_c_dark_silk_address_1ab98113189d0746ea660447efe3700103" kindref="member">IsValid</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>script<sp/>=<sp/><ref refid="script_8cpp_1ae40f28d3b46c21033f6ee1f1200d0321" kindref="member">GetScriptForDestination</ref>(address.<ref refid="class_c_dark_silk_address_1a907e63758c7914a246b5807f6babf97d" kindref="member">Get</ref>());</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="util_8cpp_1aa4e3553d2b2fe693c106f4296685f75c" kindref="member">IsHex</ref>(params[0].<ref refid="namespacejson__spirit_1acdef70e45909522ba51a74b68e186b25" kindref="member">get_str</ref>()))<sp/>{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;unsigned<sp/>char&gt;<sp/>data(<ref refid="util_8cpp_1abea395175fbc4a788ed0f0a41710b8a7" kindref="member">ParseHex</ref>(params[0].<ref refid="namespacejson__spirit_1acdef70e45909522ba51a74b68e186b25" kindref="member">get_str</ref>()));</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>script<sp/>=<sp/><ref refid="class_c_script" kindref="compound">CScript</ref>(data.begin(),<sp/>data.end());</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="rpcprotocol_8cpp_1a17b1bb111ab339efc951929834766039" kindref="member">JSONRPCError</ref>(<ref refid="rpcprotocol_8h_1af867221d51315471f28ed8cdac85deadafb8d27e000f4a668b66974c73256a576" kindref="member">RPC_INVALID_ADDRESS_OR_KEY</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Invalid<sp/>DarkSilk<sp/>address<sp/>or<sp/>script&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>strLabel<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(params.size()<sp/>&gt;<sp/>1)</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strLabel<sp/>=<sp/>params[1].<ref refid="namespacejson__spirit_1acdef70e45909522ba51a74b68e186b25" kindref="member">get_str</ref>();</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Whether<sp/>to<sp/>perform<sp/>rescan<sp/>after<sp/>import</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fRescan<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(params.size()<sp/>&gt;<sp/>2)</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fRescan<sp/>=<sp/>params[2].get_bool();</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="sync_8h_1a35644e2b75a93da0cb0f6c768f34efa8" kindref="member">LOCK2</ref>(<ref refid="main_8cpp_1a1ed8285f0fe3c6799c53265ce72552c8" kindref="member">cs_main</ref>,<sp/><ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1a4e6eb889f7638ed9695fdc0731581428" kindref="member">cs_wallet</ref>);</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(::<ref refid="script_8cpp_1adc59cf67d903c1ba1ef225561b85bfce" kindref="member">IsMine</ref>(*<ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>,<sp/>script)<sp/>==<sp/><ref refid="script_8h_1a66f67ca6dd4cabac4eea13042b18e20daaf93acf4732907100f55dc017b6daf58" kindref="member">ISMINE_SPENDABLE</ref>)</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="rpcprotocol_8cpp_1a17b1bb111ab339efc951929834766039" kindref="member">JSONRPCError</ref>(<ref refid="rpcprotocol_8h_1af867221d51315471f28ed8cdac85deadaba6f8682002fa223d3a405b743b5a540" kindref="member">RPC_WALLET_ERROR</ref>,<sp/></highlight><highlight class="stringliteral">&quot;The<sp/>wallet<sp/>already<sp/>contains<sp/>the<sp/>private<sp/>key<sp/>for<sp/>this<sp/>address<sp/>or<sp/>script&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>add<sp/>to<sp/>address<sp/>book<sp/>or<sp/>update<sp/>label</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(address.<ref refid="class_c_dark_silk_address_1ab98113189d0746ea660447efe3700103" kindref="member">IsValid</ref>())</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1a95d2dd3693db562aa11afbecf33e1276" kindref="member">SetAddressBookName</ref>(address.<ref refid="class_c_dark_silk_address_1a907e63758c7914a246b5807f6babf97d" kindref="member">Get</ref>(),<sp/>strLabel);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Don&apos;t<sp/>throw<sp/>error<sp/>in<sp/>case<sp/>an<sp/>address<sp/>is<sp/>already<sp/>there</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_basic_key_store_1a51d4c7e95cb782d749939d01612926f7" kindref="member">HaveWatchOnly</ref>(script))</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classjson__spirit_1_1_value__impl_1abb8ef4f2732e2c842afa716c456cb35d" kindref="member">Value::null</ref>;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1a26fd9a9f48230daf346500d2afb6115e" kindref="member">MarkDirty</ref>();</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1a95d2dd3693db562aa11afbecf33e1276" kindref="member">SetAddressBookName</ref>(address.<ref refid="class_c_dark_silk_address_1a907e63758c7914a246b5807f6babf97d" kindref="member">Get</ref>(),<sp/>strLabel);</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1a022f12d5f56bbe831136388e2ac19969" kindref="member">AddWatchOnly</ref>(script))</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="rpcprotocol_8cpp_1a17b1bb111ab339efc951929834766039" kindref="member">JSONRPCError</ref>(<ref refid="rpcprotocol_8h_1af867221d51315471f28ed8cdac85deadaba6f8682002fa223d3a405b743b5a540" kindref="member">RPC_WALLET_ERROR</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>adding<sp/>address<sp/>to<sp/>wallet&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fRescan)</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1a979a17e80e4897ed1f4ae9a4be7c493c" kindref="member">ScanForWalletTransactions</ref>(<ref refid="chain_8h_1a1e7c54b8b26730f52b5527163fc33d8f" kindref="member">pindexGenesisBlock</ref>,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1a796c23450c8482e10e0c75ae5c1fa8ed" kindref="member">ReacceptWalletTransactions</ref>();</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classjson__spirit_1_1_value__impl_1abb8ef4f2732e2c842afa716c456cb35d" kindref="member">Value::null</ref>;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232" refid="rpcdump_8cpp_1a2566d5c9dd1938b74e70398cdb3ac5c1" refkind="member"><highlight class="normal"><ref refid="classjson__spirit_1_1_value__impl" kindref="compound">Value</ref><sp/><ref refid="rpcdump_8cpp_1a2566d5c9dd1938b74e70398cdb3ac5c1" kindref="member">importwallet</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref>&amp;<sp/>params,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fHelp)</highlight></codeline>
+<codeline lineno="233"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fHelp<sp/>||<sp/>params.size()<sp/>!=<sp/>1)</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>runtime_error(</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;importwallet<sp/>&lt;filename&gt;\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Imports<sp/>keys<sp/>from<sp/>a<sp/>wallet<sp/>dump<sp/>file<sp/>(see<sp/>dumpwallet).&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="rpcdump_8cpp_1a8f837f6d506b9719cef93188db00fd3c" kindref="member">EnsureWalletIsUnlocked</ref>();</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>ifstream<sp/>file;</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/>file.open(params[0].<ref refid="namespacejson__spirit_1acdef70e45909522ba51a74b68e186b25" kindref="member">get_str</ref>().c_str());</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!file.is_open())</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="rpcprotocol_8cpp_1a17b1bb111ab339efc951929834766039" kindref="member">JSONRPCError</ref>(<ref refid="rpcprotocol_8h_1af867221d51315471f28ed8cdac85deadab38a9a653209a57acfc9a551c310e4dc" kindref="member">RPC_INVALID_PARAMETER</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>open<sp/>wallet<sp/>dump<sp/>file&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref><sp/>nTimeBegin<sp/>=<sp/><ref refid="chain_8h_1a6454ad864029344132a0a0b59b1456ee" kindref="member">pindexBest</ref>-&gt;<ref refid="class_c_block_index_1a4b687a226e9e166b0f91c1b616b543a6" kindref="member">nTime</ref>;</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref><sp/>nFilesize<sp/>=<sp/>std::max((<ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref>)1,<sp/>(<ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref>)file.tellg());</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fGood<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1a845a2f2911b9b022f0e58ab577e795ea" kindref="member">ShowProgress</ref>(<ref refid="ui__interface_8h_1aad133bb6103b53cebf03fd01e2f11ba1" kindref="member">_</ref>(</highlight><highlight class="stringliteral">&quot;Importing...&quot;</highlight><highlight class="normal">),<sp/>0);<sp/></highlight><highlight class="comment">//<sp/>show<sp/>progress<sp/>dialog<sp/>in<sp/>GUI</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(file.good())<sp/>{</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1a845a2f2911b9b022f0e58ab577e795ea" kindref="member">ShowProgress</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,<sp/>std::max(1,<sp/>std::min(99,<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)(((</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">)file.tellg()<sp/>/<sp/>(double)nFilesize)<sp/>*<sp/>100))));</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>line;</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::getline(file,<sp/>line);</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(line.empty()<sp/>||<sp/>line[0]<sp/>==<sp/></highlight><highlight class="charliteral">&apos;#&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;std::string&gt;<sp/>vstr;</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>boost::split(vstr,<sp/>line,<sp/>boost::is_any_of(</highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(vstr.size()<sp/>&lt;<sp/>2)</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_dark_silk_secret" kindref="compound">CDarkSilkSecret</ref><sp/>vchSecret;</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!vchSecret.<ref refid="class_c_dark_silk_secret_1a06075192fb631c3b406a6ca231d2f926" kindref="member">SetString</ref>(vstr[0]))</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_key" kindref="compound">CKey</ref><sp/>key<sp/>=<sp/>vchSecret.<ref refid="class_c_dark_silk_secret_1af7b026d90efb897f6e592ce424c8d2c9" kindref="member">GetKey</ref>();</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_pub_key" kindref="compound">CPubKey</ref><sp/>pubkey<sp/>=<sp/>key.<ref refid="class_c_key_1ae4b61da6ec62f676fe6362ac5fc26aca" kindref="member">GetPubKey</ref>();</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(key.<ref refid="class_c_key_1a3890764f7a2e5d9cdeffb3e102e4545d" kindref="member">VerifyPubKey</ref>(pubkey));</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_key_i_d" kindref="compound">CKeyID</ref><sp/>keyid<sp/>=<sp/>pubkey.<ref refid="class_c_pub_key_1a9c1908fef34fd9e1c4b5e0ffd5d3834e" kindref="member">GetID</ref>();</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_crypto_key_store_1a0cefe933dd3a6ac7744432493696bffc" kindref="member">HaveKey</ref>(keyid))<sp/>{</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" kindref="member">LogPrintf</ref>(</highlight><highlight class="stringliteral">&quot;Skipping<sp/>import<sp/>of<sp/>%s<sp/>(key<sp/>already<sp/>present)\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="class_c_dark_silk_address" kindref="compound">CDarkSilkAddress</ref>(keyid).ToString());</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref><sp/>nTime<sp/>=<sp/><ref refid="rpcdump_8cpp_1a8343d580e36c13378fa20f419257dd52" kindref="member">DecodeDumpTime</ref>(vstr[1]);</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>strLabel;</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fLabel<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nStr<sp/>=<sp/>2;<sp/>nStr<sp/>&lt;<sp/>vstr.size();<sp/>nStr++)<sp/>{</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(boost::algorithm::starts_with(vstr[nStr],<sp/></highlight><highlight class="stringliteral">&quot;#&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(vstr[nStr]<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;change=1&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fLabel<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(vstr[nStr]<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;reserve=1&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fLabel<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(boost::algorithm::starts_with(vstr[nStr],<sp/></highlight><highlight class="stringliteral">&quot;label=&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strLabel<sp/>=<sp/><ref refid="rpcdump_8cpp_1aac0419ba6427cf5f0873a6a0c815db83" kindref="member">DecodeDumpString</ref>(vstr[nStr].substr(6));</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fLabel<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" kindref="member">LogPrintf</ref>(</highlight><highlight class="stringliteral">&quot;Importing<sp/>%s...\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="class_c_dark_silk_address" kindref="compound">CDarkSilkAddress</ref>(keyid).ToString());</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_key_store_1a0b4ca43724cfcc6e2ea70c0baa192750" kindref="member">AddKey</ref>(key))<sp/>{</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fGood<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1acfd09bc5a2daee930f9f988efac8dbb7" kindref="member">mapKeyMetadata</ref>[keyid].nCreateTime<sp/>=<sp/>nTime;</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fLabel)</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1a95d2dd3693db562aa11afbecf33e1276" kindref="member">SetAddressBookName</ref>(keyid,<sp/>strLabel);</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nTimeBegin<sp/>=<sp/>std::min(nTimeBegin,<sp/>nTime);</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/>file.close();</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1a845a2f2911b9b022f0e58ab577e795ea" kindref="member">ShowProgress</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,<sp/>100);<sp/></highlight><highlight class="comment">//<sp/>hide<sp/>progress<sp/>dialog<sp/>in<sp/>GUI</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_block_index" kindref="compound">CBlockIndex</ref><sp/>*pindex<sp/>=<sp/><ref refid="chain_8h_1a6454ad864029344132a0a0b59b1456ee" kindref="member">pindexBest</ref>;</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(pindex<sp/>&amp;&amp;<sp/>pindex-&gt;<ref refid="class_c_block_index_1a1ef11137155df1dd5c81491630cece39" kindref="member">pprev</ref><sp/>&amp;&amp;<sp/>pindex-&gt;<ref refid="class_c_block_index_1a4b687a226e9e166b0f91c1b616b543a6" kindref="member">nTime</ref><sp/>&gt;<sp/>nTimeBegin<sp/>-<sp/>7200)</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pindex<sp/>=<sp/>pindex-&gt;<ref refid="class_c_block_index_1a1ef11137155df1dd5c81491630cece39" kindref="member">pprev</ref>;</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1a817c0d1034377a7bd70a714140a5a8ca" kindref="member">nTimeFirstKey</ref><sp/>||<sp/>nTimeBegin<sp/>&lt;<sp/>pwalletMain-&gt;nTimeFirstKey)</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1a817c0d1034377a7bd70a714140a5a8ca" kindref="member">nTimeFirstKey</ref><sp/>=<sp/>nTimeBegin;</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" kindref="member">LogPrintf</ref>(</highlight><highlight class="stringliteral">&quot;Rescanning<sp/>last<sp/>%i<sp/>blocks\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="main_8cpp_1a843f1984796a7e44a9e23fccd6a8af34" kindref="member">nBestHeight</ref><sp/>-<sp/>pindex-&gt;<ref refid="class_c_block_index_1aebfc8d6b95852546760e742553d7bfd5" kindref="member">nHeight</ref><sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1a979a17e80e4897ed1f4ae9a4be7c493c" kindref="member">ScanForWalletTransactions</ref>(pindex);</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1a796c23450c8482e10e0c75ae5c1fa8ed" kindref="member">ReacceptWalletTransactions</ref>();</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1a26fd9a9f48230daf346500d2afb6115e" kindref="member">MarkDirty</ref>();</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!fGood)</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="rpcprotocol_8cpp_1a17b1bb111ab339efc951929834766039" kindref="member">JSONRPCError</ref>(<ref refid="rpcprotocol_8h_1af867221d51315471f28ed8cdac85deadaba6f8682002fa223d3a405b743b5a540" kindref="member">RPC_WALLET_ERROR</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Error<sp/>adding<sp/>some<sp/>keys<sp/>to<sp/>wallet&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classjson__spirit_1_1_value__impl_1abb8ef4f2732e2c842afa716c456cb35d" kindref="member">Value::null</ref>;</highlight></codeline>
+<codeline lineno="318"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"></highlight></codeline>
+<codeline lineno="321" refid="rpcdump_8cpp_1a4010fb238298e15c540d3e5ecd60f858" refkind="member"><highlight class="normal"><ref refid="classjson__spirit_1_1_value__impl" kindref="compound">Value</ref><sp/><ref refid="rpcdump_8cpp_1a4010fb238298e15c540d3e5ecd60f858" kindref="member">dumpprivkey</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref>&amp;<sp/>params,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fHelp)</highlight></codeline>
+<codeline lineno="322"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fHelp<sp/>||<sp/>params.size()<sp/>!=<sp/>1)</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>runtime_error(</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;dumpprivkey<sp/>&lt;darksilkaddress&gt;\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Reveals<sp/>the<sp/>private<sp/>key<sp/>corresponding<sp/>to<sp/>&lt;darksilkaddress&gt;.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"></highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="rpcdump_8cpp_1a8f837f6d506b9719cef93188db00fd3c" kindref="member">EnsureWalletIsUnlocked</ref>();</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"></highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>strAddress<sp/>=<sp/>params[0].get_str();</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_dark_silk_address" kindref="compound">CDarkSilkAddress</ref><sp/>address;</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!address.<ref refid="class_c_base58_data_1a250fa3bc97d03c7d87de5485c8b49b57" kindref="member">SetString</ref>(strAddress))</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="rpcprotocol_8cpp_1a17b1bb111ab339efc951929834766039" kindref="member">JSONRPCError</ref>(<ref refid="rpcprotocol_8h_1af867221d51315471f28ed8cdac85deadafb8d27e000f4a668b66974c73256a576" kindref="member">RPC_INVALID_ADDRESS_OR_KEY</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Invalid<sp/>DarkSilk<sp/>address&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="askpassphrasedialog_8cpp_1a0bc784e958b92854437f2238d4249da0" kindref="member">fWalletUnlockStakingOnly</ref>)</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="rpcprotocol_8cpp_1a17b1bb111ab339efc951929834766039" kindref="member">JSONRPCError</ref>(<ref refid="rpcprotocol_8h_1af867221d51315471f28ed8cdac85deada0c1fbdf17d83da9f5124f2dbf0ba4765" kindref="member">RPC_WALLET_UNLOCK_NEEDED</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Wallet<sp/>is<sp/>unlocked<sp/>for<sp/>staking<sp/>only.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_key_i_d" kindref="compound">CKeyID</ref><sp/>keyID;</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!address.<ref refid="class_c_dark_silk_address_1ab305645f49be30fdeac6290debf029ec" kindref="member">GetKeyID</ref>(keyID))</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="rpcprotocol_8cpp_1a17b1bb111ab339efc951929834766039" kindref="member">JSONRPCError</ref>(<ref refid="rpcprotocol_8h_1af867221d51315471f28ed8cdac85deada7c63246a7c7bc5912d499fb117358506" kindref="member">RPC_TYPE_ERROR</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Address<sp/>does<sp/>not<sp/>refer<sp/>to<sp/>a<sp/>key&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_key" kindref="compound">CKey</ref><sp/>vchSecret;</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_crypto_key_store_1a58cfb3c490318ef82de8fc9be6637269" kindref="member">GetKey</ref>(keyID,<sp/>vchSecret))</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="rpcprotocol_8cpp_1a17b1bb111ab339efc951929834766039" kindref="member">JSONRPCError</ref>(<ref refid="rpcprotocol_8h_1af867221d51315471f28ed8cdac85deadaba6f8682002fa223d3a405b743b5a540" kindref="member">RPC_WALLET_ERROR</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Private<sp/>key<sp/>for<sp/>address<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>strAddress<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>is<sp/>not<sp/>known&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_c_dark_silk_secret" kindref="compound">CDarkSilkSecret</ref>(vchSecret).<ref refid="class_c_base58_data_1a9a47b10dadff15b8d6a6d0e63ce3ae32" kindref="member">ToString</ref>();</highlight></codeline>
+<codeline lineno="343"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"></highlight></codeline>
+<codeline lineno="345" refid="rpcdump_8cpp_1a831ddf746d4f2500ba6f6c07f63445cd" refkind="member"><highlight class="normal"><ref refid="classjson__spirit_1_1_value__impl" kindref="compound">Value</ref><sp/><ref refid="rpcdump_8cpp_1a831ddf746d4f2500ba6f6c07f63445cd" kindref="member">dumpwallet</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref>&amp;<sp/>params,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fHelp)</highlight></codeline>
+<codeline lineno="346"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fHelp<sp/>||<sp/>params.size()<sp/>!=<sp/>1)</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>runtime_error(</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;dumpwallet<sp/>&lt;filename&gt;\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Dumps<sp/>all<sp/>wallet<sp/>keys<sp/>in<sp/>a<sp/>human-readable<sp/>format.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"></highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="rpcdump_8cpp_1a8f837f6d506b9719cef93188db00fd3c" kindref="member">EnsureWalletIsUnlocked</ref>();</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"></highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/>ofstream<sp/>file;</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/>file.open(params[0].<ref refid="namespacejson__spirit_1acdef70e45909522ba51a74b68e186b25" kindref="member">get_str</ref>().c_str());</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!file.is_open())</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="rpcprotocol_8cpp_1a17b1bb111ab339efc951929834766039" kindref="member">JSONRPCError</ref>(<ref refid="rpcprotocol_8h_1af867221d51315471f28ed8cdac85deadab38a9a653209a57acfc9a551c310e4dc" kindref="member">RPC_INVALID_PARAMETER</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Cannot<sp/>open<sp/>wallet<sp/>dump<sp/>file&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"></highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/>std::map&lt;CKeyID,<sp/>int64_t&gt;<sp/>mapKeyBirth;</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"></highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/>std::set&lt;CKeyID&gt;<sp/>setKeyPool;</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"></highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1a15a34ea53ce86d9f613693b09b74807f" kindref="member">GetKeyBirthTimes</ref>(mapKeyBirth);</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"></highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1afb9667058b54ae153b0897684ddb9f20" kindref="member">GetAllReserveKeys</ref>(setKeyPool);</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"></highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>sort<sp/>time/key<sp/>pairs</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;std::pair&lt;int64_t,<sp/>CKeyID&gt;<sp/>&gt;<sp/>vKeyBirth;</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(std::map&lt;CKeyID,<sp/>int64_t&gt;::const_iterator<sp/>it<sp/>=<sp/>mapKeyBirth.begin();<sp/>it<sp/>!=<sp/>mapKeyBirth.end();<sp/>it++)<sp/>{</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vKeyBirth.push_back(std::make_pair(it-&gt;second,<sp/>it-&gt;first));</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/>mapKeyBirth.clear();</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/>std::sort(vKeyBirth.begin(),<sp/>vKeyBirth.end());</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"></highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>produce<sp/>output</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/>file<sp/>&lt;&lt;<sp/><ref refid="tinyformat_8h_1a56c674871a61baaad36ad52238c08857" kindref="member">strprintf</ref>(</highlight><highlight class="stringliteral">&quot;#<sp/>Wallet<sp/>dump<sp/>created<sp/>by<sp/>DarkSilk<sp/>%s<sp/>(%s)\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="version_8h_1a1a5e163cdc615d789b2db896d591230b" kindref="member">CLIENT_BUILD</ref>,<sp/><ref refid="version_8h_1a9d36ad6318ca298d6b7d38701212ce20" kindref="member">CLIENT_DATE</ref>);</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/>file<sp/>&lt;&lt;<sp/><ref refid="tinyformat_8h_1a56c674871a61baaad36ad52238c08857" kindref="member">strprintf</ref>(</highlight><highlight class="stringliteral">&quot;#<sp/>*<sp/>Created<sp/>on<sp/>%s\n&quot;</highlight><highlight class="normal">,<sp/>EncodeDumpTime(<ref refid="util_8cpp_1a46fac5fba8ba905b5f9acb364f5d8c6f" kindref="member">GetTime</ref>()));</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/>file<sp/>&lt;&lt;<sp/><ref refid="tinyformat_8h_1a56c674871a61baaad36ad52238c08857" kindref="member">strprintf</ref>(</highlight><highlight class="stringliteral">&quot;#<sp/>*<sp/>Best<sp/>block<sp/>at<sp/>time<sp/>of<sp/>backup<sp/>was<sp/>%i<sp/>(%s),\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="main_8cpp_1a843f1984796a7e44a9e23fccd6a8af34" kindref="member">nBestHeight</ref>,<sp/><ref refid="main_8cpp_1ace9c3343567f488a96598abe61e1d309" kindref="member">hashBestChain</ref>.<ref refid="classbase__uint_1ac3080a72402cadf28dbc9f9b69cc60be" kindref="member">ToString</ref>());</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/>file<sp/>&lt;&lt;<sp/><ref refid="tinyformat_8h_1a56c674871a61baaad36ad52238c08857" kindref="member">strprintf</ref>(</highlight><highlight class="stringliteral">&quot;#<sp/><sp/><sp/>mined<sp/>on<sp/>%s\n&quot;</highlight><highlight class="normal">,<sp/>EncodeDumpTime(<ref refid="chain_8h_1a6454ad864029344132a0a0b59b1456ee" kindref="member">pindexBest</ref>-&gt;<ref refid="class_c_block_index_1a4b687a226e9e166b0f91c1b616b543a6" kindref="member">nTime</ref>));</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/>file<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(std::vector&lt;std::pair&lt;int64_t,<sp/>CKeyID&gt;<sp/>&gt;::const_iterator<sp/>it<sp/>=<sp/>vKeyBirth.begin();<sp/>it<sp/>!=<sp/>vKeyBirth.end();<sp/>it++)<sp/>{</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_key_i_d" kindref="compound">CKeyID</ref><sp/>&amp;keyid<sp/>=<sp/>it-&gt;second;</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>strTime<sp/>=<sp/>EncodeDumpTime(it-&gt;first);</highlight></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>strAddr<sp/>=<sp/><ref refid="class_c_dark_silk_address" kindref="compound">CDarkSilkAddress</ref>(keyid).<ref refid="class_c_base58_data_1a9a47b10dadff15b8d6a6d0e63ce3ae32" kindref="member">ToString</ref>();</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"></highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_key" kindref="compound">CKey</ref><sp/>key;</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_crypto_key_store_1a58cfb3c490318ef82de8fc9be6637269" kindref="member">GetKey</ref>(keyid,<sp/>key))<sp/>{</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1afed31f2489c987e0f76233121ed84ab7" kindref="member">mapAddressBook</ref>.count(keyid))<sp/>{</highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>file<sp/>&lt;&lt;<sp/><ref refid="tinyformat_8h_1a56c674871a61baaad36ad52238c08857" kindref="member">strprintf</ref>(</highlight><highlight class="stringliteral">&quot;%s<sp/>%s<sp/>label=%s<sp/>#<sp/>addr=%s\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="class_c_dark_silk_secret" kindref="compound">CDarkSilkSecret</ref>(key).ToString(),<sp/>strTime,<sp/>EncodeDumpString(<ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1afed31f2489c987e0f76233121ed84ab7" kindref="member">mapAddressBook</ref>[keyid]),<sp/>strAddr);</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(setKeyPool.count(keyid))<sp/>{</highlight></codeline>
+<codeline lineno="391"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>file<sp/>&lt;&lt;<sp/><ref refid="tinyformat_8h_1a56c674871a61baaad36ad52238c08857" kindref="member">strprintf</ref>(</highlight><highlight class="stringliteral">&quot;%s<sp/>%s<sp/>reserve=1<sp/>#<sp/>addr=%s\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="class_c_dark_silk_secret" kindref="compound">CDarkSilkSecret</ref>(key).ToString(),<sp/>strTime,<sp/>strAddr);</highlight></codeline>
+<codeline lineno="392"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>file<sp/>&lt;&lt;<sp/><ref refid="tinyformat_8h_1a56c674871a61baaad36ad52238c08857" kindref="member">strprintf</ref>(</highlight><highlight class="stringliteral">&quot;%s<sp/>%s<sp/>change=1<sp/>#<sp/>addr=%s\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="class_c_dark_silk_secret" kindref="compound">CDarkSilkSecret</ref>(key).ToString(),<sp/>strTime,<sp/>strAddr);</highlight></codeline>
+<codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="396"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"><sp/><sp/><sp/><sp/>file<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="398"><highlight class="normal"><sp/><sp/><sp/><sp/>file<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;#<sp/>End<sp/>of<sp/>dump\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="399"><highlight class="normal"><sp/><sp/><sp/><sp/>file.close();</highlight></codeline>
+<codeline lineno="400"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classjson__spirit_1_1_value__impl_1abb8ef4f2732e2c842afa716c456cb35d" kindref="member">Value::null</ref>;</highlight></codeline>
+<codeline lineno="401"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/rpcdump.cpp"/>
+  </compounddef>
+</doxygen>

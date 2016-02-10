@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['date',['Date',['../class_transaction_table_model.html#aca9d1efb507b6e471b31dc8c73c5bb43a6916d94be4921d53694134b7cdaaf1b5',1,'TransactionTableModel']]],
+  ['daterole',['DateRole',['../class_transaction_table_model.html#a4b248508c36df598476affbf9871d1e6a46e879bd509162d980df3692c65eb66e',1,'TransactionTableModel']]],
+  ['db_5fcorrupt',['DB_CORRUPT',['../walletdb_8h.html#a7558d92e9ea1d446075da1b514c4a944a5eb73e7d323c832e22611f0ff94b1655',1,'walletdb.h']]],
+  ['db_5fload_5ffail',['DB_LOAD_FAIL',['../walletdb_8h.html#a7558d92e9ea1d446075da1b514c4a944ab5a338e1c914e0d9107fab0dbcd3c64c',1,'walletdb.h']]],
+  ['db_5fload_5fok',['DB_LOAD_OK',['../walletdb_8h.html#a7558d92e9ea1d446075da1b514c4a944aa2367ec374804930406cea446fbb3fd2',1,'walletdb.h']]],
+  ['db_5fneed_5frewrite',['DB_NEED_REWRITE',['../walletdb_8h.html#a7558d92e9ea1d446075da1b514c4a944aef89bee2c244fcd980d6cf7edc5bf2d6',1,'walletdb.h']]],
+  ['db_5fnoncritical_5ferror',['DB_NONCRITICAL_ERROR',['../walletdb_8h.html#a7558d92e9ea1d446075da1b514c4a944ac83155a59a0d2ca8fc325075f58060c5',1,'walletdb.h']]],
+  ['db_5ftest',['DB_TEST',['../namespaceleveldb.html#aefcb8349b9101fe6eeff98a1682f1342aa533718fc4477e8662fb49275ff8c908',1,'leveldb']]],
+  ['db_5ftoo_5fnew',['DB_TOO_NEW',['../walletdb_8h.html#a7558d92e9ea1d446075da1b514c4a944a0e0f7a1f3a38544a975bd97fba1eed58',1,'walletdb.h']]],
+  ['decrypt',['Decrypt',['../class_ask_passphrase_dialog.html#a96abf4d3c36c1ef9e268fb546ae76538aac5e2489527af224fc5e1316a77ba478',1,'AskPassphraseDialog']]],
+  ['dialog',['Dialog',['../class_send_messages_dialog.html#ae5855bcf6efac64a72d85546f1cabc35a5f0ef29c027d54a2e0309ad07e01efcd',1,'SendMessagesDialog']]],
+  ['dirty',['DIRTY',['../struct_c_coins_cache_entry.html#a1d5ac74da0f6ff5ab056e47ce79753c7ac8cbd1b21d937e8618f9fecdf2c7223e',1,'CCoinsCacheEntry']]],
+  ['displayunit',['DisplayUnit',['../class_options_model.html#a5c6c9ca8a01aca9f53e91f118e4878d2a1cdf6f58a7333e1c224b5eaccd5d17b9',1,'OptionsModel']]],
+  ['done',['DONE',['../classleveldb_1_1_test_state.html#a1bf1f0a16815237ff1f29d2925d9a4ada5d7f032453f326a46f7ebd8b3f0c7d83',1,'leveldb::TestState']]],
+  ['drkslk',['DRKSLK',['../class_dark_silk_units.html#a588cf5f654ad4aa646647ffde0031482a0edba4fddfbef1b8abc52ce9b516971d',1,'DarkSilkUnits']]],
+  ['duplicate_5faddress',['DUPLICATE_ADDRESS',['../class_address_table_model.html#a3d502b85fc09461e779dae4589c29956af9cc220dea0573d7819eebfa84c1691f',1,'AddressTableModel']]],
+  ['duplicateaddress',['DuplicateAddress',['../class_message_model.html#adac070d47edccd1bc8358cdc976f8509a883e447082b3ece01f526be9c46fee8e',1,'MessageModel::DuplicateAddress()'],['../class_wallet_model.html#afb93f64411320dce4692c2190b7d35ccac4b89d8f7cde6aa46fed5c881acd969e',1,'WalletModel::DuplicateAddress()']]],
+  ['duplicated_5fdest',['DUPLICATED_DEST',['../class_s_a_m_1_1_message.html#a5f7e317defb90f107fc1a017a4552ae9a60c4f8b74323a76ccc33d343d3be2be2',1,'SAM::Message']]],
+  ['duplicated_5fid',['DUPLICATED_ID',['../class_s_a_m_1_1_message.html#a5f7e317defb90f107fc1a017a4552ae9ac910cf4ebbd28ea0b278ff7d5e68db7e',1,'SAM::Message']]]
+];

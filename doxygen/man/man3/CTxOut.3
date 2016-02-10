@@ -1,0 +1,153 @@
+.TH "CTxOut" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CTxOut \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <transaction\&.h>\fP
+.PP
+Inherited by \fBCTxSSOut\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCTxOut\fP ()"
+.br
+.ti -1c
+.RI "\fBCTxOut\fP (const \fBCAmount\fP &nValueIn, \fBCScript\fP scriptPubKeyIn)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename Operation > void \fBSerializationOp\fP (Stream &s, Operation ser_action, int nType, int nVersion)"
+.br
+.ti -1c
+.RI "void \fBSetNull\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsNull\fP () const "
+.br
+.ti -1c
+.RI "void \fBSetEmpty\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsEmpty\fP () const "
+.br
+.ti -1c
+.RI "\fBuint256\fP \fBGetHash\fP () const "
+.br
+.ti -1c
+.RI "bool \fBIsDust\fP (\fBCFeeRate\fP \fBminRelayTxFee\fP) const "
+.br
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBCAmount\fP \fBnValue\fP"
+.br
+.ti -1c
+.RI "int \fBnRounds\fP"
+.br
+.ti -1c
+.RI "\fBCScript\fP \fBscriptPubKey\fP"
+.br
+.ti -1c
+.RI "\fBADD_SERIALIZE_METHODS\fP"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBCTxOut\fP &a, const \fBCTxOut\fP &b)"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBCTxOut\fP &a, const \fBCTxOut\fP &b)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+An output of a transaction\&. It contains the public key that the next input must be able to sign with to claim it\&. 
+.PP
+Definition at line 165 of file transaction\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CTxOut::CTxOut ()\fC [inline]\fP"
+
+.PP
+Definition at line 172 of file transaction\&.h\&.
+.SS "CTxOut::CTxOut (const \fBCAmount\fP & nValueIn, \fBCScript\fP scriptPubKeyIn)\fC [inline]\fP"
+
+.PP
+Definition at line 177 of file transaction\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBuint256\fP CTxOut::GetHash () const\fC [inline]\fP"
+
+.PP
+Definition at line 215 of file transaction\&.h\&.
+.SS "bool CTxOut::IsDust (\fBCFeeRate\fP minRelayTxFee) const\fC [inline]\fP"
+
+.PP
+Definition at line 220 of file transaction\&.h\&.
+.SS "bool CTxOut::IsEmpty () const\fC [inline]\fP"
+
+.PP
+Definition at line 210 of file transaction\&.h\&.
+.SS "bool CTxOut::IsNull () const\fC [inline]\fP"
+
+.PP
+Definition at line 199 of file transaction\&.h\&.
+.SS "template<typename Stream , typename Operation > void CTxOut::SerializationOp (Stream & s, Operation ser_action, int nType, int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 187 of file transaction\&.h\&.
+.SS "void CTxOut::SetEmpty ()\fC [inline]\fP"
+
+.PP
+Definition at line 204 of file transaction\&.h\&.
+.SS "void CTxOut::SetNull ()\fC [inline]\fP"
+
+.PP
+Definition at line 192 of file transaction\&.h\&.
+.SS "std::string CTxOut::ToString () const\fC [inline]\fP"
+
+.PP
+Definition at line 245 of file transaction\&.h\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "bool operator!= (const \fBCTxOut\fP & a, const \fBCTxOut\fP & b)\fC [friend]\fP"
+
+.PP
+Definition at line 240 of file transaction\&.h\&.
+.SS "bool operator== (const \fBCTxOut\fP & a, const \fBCTxOut\fP & b)\fC [friend]\fP"
+
+.PP
+Definition at line 233 of file transaction\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "CTxOut::ADD_SERIALIZE_METHODS"
+
+.PP
+Definition at line 184 of file transaction\&.h\&.
+.SS "int CTxOut::nRounds"
+
+.PP
+Definition at line 169 of file transaction\&.h\&.
+.SS "\fBCAmount\fP CTxOut::nValue"
+
+.PP
+Definition at line 168 of file transaction\&.h\&.
+.SS "\fBCScript\fP CTxOut::scriptPubKey"
+
+.PP
+Definition at line 170 of file transaction\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

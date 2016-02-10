@@ -1,0 +1,658 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_transaction_table_model" kind="class" language="C++" prot="public">
+    <compoundname>TransactionTableModel</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QAbstractTableModel</basecompoundref>
+    <includes refid="transactiontablemodel_8h" local="no">transactiontablemodel.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_transaction_table_model_1aca9d1efb507b6e471b31dc8c73c5bb43" prot="public" static="no">
+        <name>ColumnIndex</name>
+        <enumvalue id="class_transaction_table_model_1aca9d1efb507b6e471b31dc8c73c5bb43a33e6cfb6b9321da77974a1989dd35ca8" prot="public">
+          <name>Status</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_transaction_table_model_1aca9d1efb507b6e471b31dc8c73c5bb43a6916d94be4921d53694134b7cdaaf1b5" prot="public">
+          <name>Date</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_transaction_table_model_1aca9d1efb507b6e471b31dc8c73c5bb43a3ef3e4550a1dd3d68e1fc8ac5fbf2aed" prot="public">
+          <name>Type</name>
+          <initializer>= 2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_transaction_table_model_1aca9d1efb507b6e471b31dc8c73c5bb43a48e207f3b69d4439c58f90671d91bd48" prot="public">
+          <name>ToAddress</name>
+          <initializer>= 3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_transaction_table_model_1aca9d1efb507b6e471b31dc8c73c5bb43a89e945eea985253e45d0643f53c52e24" prot="public">
+          <name>Amount</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactiontablemodel.h" line="22" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactiontablemodel.h" bodystart="22" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6" prot="public" static="no">
+        <name>RoleIndex</name>
+        <enumvalue id="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6a35c49f8c0732954b2812c67e4c745840" prot="public">
+          <name>TypeRole</name>
+          <initializer>= Qt::UserRole</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Type of transaction </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6a46e879bd509162d980df3692c65eb66e" prot="public">
+          <name>DateRole</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Date and time this transaction was created </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6a2957b8435634d7602e74b513d392d82c" prot="public">
+          <name>LongDescriptionRole</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Long description (HTML format) </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6ab82599f86b9cf8d0907e42bc8158ef16" prot="public">
+          <name>AddressRole</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Address of transaction </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6a286d79e8b1e0bfc8cb6bb72bbec78de2" prot="public">
+          <name>LabelRole</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Label of address related to transaction </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6ace07f7f11257526cef9d6613c23cfff4" prot="public">
+          <name>AmountRole</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Net amount of transaction </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6aaf979aec852c99afac10243f78a8a1e0" prot="public">
+          <name>TxIDRole</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Unique identifier </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6ae4fb059af39604caf75e71f9176edb16" prot="public">
+          <name>ConfirmedRole</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Is transaction confirmed? </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6affd966c654a96ad65574e30986f80563" prot="public">
+          <name>FormattedAmountRole</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Formatted amount, without brackets when unconfirmed </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6a3f8e62622565f361805b2d050da5b2b6" prot="public">
+          <name>StatusRole</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Transaction status (TransactionRecord::Status) </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Roles to get specific information from a transaction row. These are independent of colusn. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactiontablemodel.h" line="33" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactiontablemodel.h" bodystart="33" bodyend="54"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_transaction_table_model_1a16d87a7dc0c2d32384527b0b3fce9f4c" prot="private" static="no" mutable="no">
+        <type><ref refid="class_c_wallet" kindref="compound">CWallet</ref> *</type>
+        <definition>CWallet* TransactionTableModel::wallet</definition>
+        <argsstring></argsstring>
+        <name>wallet</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactiontablemodel.h" line="63" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactiontablemodel.h" bodystart="63" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_transaction_table_model_1a9b6548eb4eee79c9b0fa2f9cb5c1b9e4" prot="private" static="no" mutable="no">
+        <type><ref refid="class_wallet_model" kindref="compound">WalletModel</ref> *</type>
+        <definition>WalletModel* TransactionTableModel::walletModel</definition>
+        <argsstring></argsstring>
+        <name>walletModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactiontablemodel.h" line="64" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactiontablemodel.h" bodystart="64" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_transaction_table_model_1a45555c133bf61acaa0efad7c123c853c" prot="private" static="no" mutable="no">
+        <type>QStringList</type>
+        <definition>QStringList TransactionTableModel::columns</definition>
+        <argsstring></argsstring>
+        <name>columns</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactiontablemodel.h" line="65" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactiontablemodel.h" bodystart="65" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_transaction_table_model_1a278ed25f5f79120934ab94ee54611618" prot="private" static="no" mutable="no">
+        <type><ref refid="class_transaction_table_priv" kindref="compound">TransactionTablePriv</ref> *</type>
+        <definition>TransactionTablePriv* TransactionTableModel::priv</definition>
+        <argsstring></argsstring>
+        <name>priv</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactiontablemodel.h" line="66" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactiontablemodel.h" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_transaction_table_model_1a39d3ddddb3af12905ad5538a91753736" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class TransactionTablePriv</definition>
+        <argsstring></argsstring>
+        <name>TransactionTablePriv</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactiontablemodel.h" line="84" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactiontablemodel.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_transaction_table_model_1a6c10b7cab9804eee6df9e049a978dc62" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TransactionTableModel::TransactionTableModel</definition>
+        <argsstring>(CWallet *wallet, WalletModel *parent=0)</argsstring>
+        <name>TransactionTableModel</name>
+        <param>
+          <type><ref refid="class_c_wallet" kindref="compound">CWallet</ref> *</type>
+          <declname>wallet</declname>
+        </param>
+        <param>
+          <type><ref refid="class_wallet_model" kindref="compound">WalletModel</ref> *</type>
+          <declname>parent</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactiontablemodel.h" line="19" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactiontablemodel.cpp" bodystart="225" bodyend="236"/>
+      </memberdef>
+      <memberdef kind="function" id="class_transaction_table_model_1a02b12458092e9584bc19ec7b65d8bd58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TransactionTableModel::~TransactionTableModel</definition>
+        <argsstring>()</argsstring>
+        <name>~TransactionTableModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactiontablemodel.h" line="20" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactiontablemodel.cpp" bodystart="238" bodyend="241"/>
+      </memberdef>
+      <memberdef kind="function" id="class_transaction_table_model_1ae50798bd2339dca750223b2e9eb8721b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int TransactionTableModel::rowCount</definition>
+        <argsstring>(const QModelIndex &amp;parent) const </argsstring>
+        <name>rowCount</name>
+        <param>
+          <type>const QModelIndex &amp;</type>
+          <declname>parent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactiontablemodel.h" line="56" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactiontablemodel.cpp" bodystart="261" bodyend="265"/>
+      </memberdef>
+      <memberdef kind="function" id="class_transaction_table_model_1a6608bf57c7424b84714b2810d9cf51e1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int TransactionTableModel::columnCount</definition>
+        <argsstring>(const QModelIndex &amp;parent) const </argsstring>
+        <name>columnCount</name>
+        <param>
+          <type>const QModelIndex &amp;</type>
+          <declname>parent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactiontablemodel.h" line="57" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactiontablemodel.cpp" bodystart="267" bodyend="271"/>
+      </memberdef>
+      <memberdef kind="function" id="class_transaction_table_model_1a416d0751ab9a95ecd87d3f7bed4f0b06" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QVariant</type>
+        <definition>QVariant TransactionTableModel::data</definition>
+        <argsstring>(const QModelIndex &amp;index, int role) const </argsstring>
+        <name>data</name>
+        <param>
+          <type>const QModelIndex &amp;</type>
+          <declname>index</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>role</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactiontablemodel.h" line="58" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactiontablemodel.cpp" bodystart="481" bodyend="572"/>
+      </memberdef>
+      <memberdef kind="function" id="class_transaction_table_model_1a0e114cae04d5a5ec03d82a80ea1d2594" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QVariant</type>
+        <definition>QVariant TransactionTableModel::headerData</definition>
+        <argsstring>(int section, Qt::Orientation orientation, int role) const </argsstring>
+        <name>headerData</name>
+        <param>
+          <type>int</type>
+          <declname>section</declname>
+        </param>
+        <param>
+          <type>Qt::Orientation</type>
+          <declname>orientation</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>role</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactiontablemodel.h" line="59" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactiontablemodel.cpp" bodystart="574" bodyend="603"/>
+      </memberdef>
+      <memberdef kind="function" id="class_transaction_table_model_1aaaf3cea9a5373fff771ce81d2f26de6e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QModelIndex</type>
+        <definition>QModelIndex TransactionTableModel::index</definition>
+        <argsstring>(int row, int column, const QModelIndex &amp;parent=QModelIndex()) const </argsstring>
+        <name>index</name>
+        <param>
+          <type>int</type>
+          <declname>row</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>column</declname>
+        </param>
+        <param>
+          <type>const QModelIndex &amp;</type>
+          <declname>parent</declname>
+          <defval>QModelIndex()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactiontablemodel.h" line="60" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactiontablemodel.cpp" bodystart="605" bodyend="617"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_transaction_table_model_1ae91197328e8309f252ba6d2924227c1c" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString TransactionTableModel::lookupAddress</definition>
+        <argsstring>(const std::string &amp;address, bool tooltip) const </argsstring>
+        <name>lookupAddress</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>tooltip</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactiontablemodel.h" line="68" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactiontablemodel.cpp" bodystart="329" bodyend="342"/>
+      </memberdef>
+      <memberdef kind="function" id="class_transaction_table_model_1a335af23b7fc385cb9d91e944d7c94e6a" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QVariant</type>
+        <definition>QVariant TransactionTableModel::addressColor</definition>
+        <argsstring>(const TransactionRecord *wtx) const </argsstring>
+        <name>addressColor</name>
+        <param>
+          <type>const <ref refid="class_transaction_record" kindref="compound">TransactionRecord</ref> *</type>
+          <declname>wtx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactiontablemodel.h" line="69" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactiontablemodel.cpp" bodystart="400" bodyend="419"/>
+      </memberdef>
+      <memberdef kind="function" id="class_transaction_table_model_1aac6d477a653da15d63cbdf5d6aaba463" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString TransactionTableModel::formatTxStatus</definition>
+        <argsstring>(const TransactionRecord *wtx) const </argsstring>
+        <name>formatTxStatus</name>
+        <param>
+          <type>const <ref refid="class_transaction_record" kindref="compound">TransactionRecord</ref> *</type>
+          <declname>wtx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactiontablemodel.h" line="70" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactiontablemodel.cpp" bodystart="273" bodyend="312"/>
+      </memberdef>
+      <memberdef kind="function" id="class_transaction_table_model_1a78dc7fc1522f909b8982cbc0db267a35" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString TransactionTableModel::formatTxDate</definition>
+        <argsstring>(const TransactionRecord *wtx) const </argsstring>
+        <name>formatTxDate</name>
+        <param>
+          <type>const <ref refid="class_transaction_record" kindref="compound">TransactionRecord</ref> *</type>
+          <declname>wtx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactiontablemodel.h" line="71" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactiontablemodel.cpp" bodystart="314" bodyend="324"/>
+      </memberdef>
+      <memberdef kind="function" id="class_transaction_table_model_1afe47024a8d364c854e07c7cef5908987" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString TransactionTableModel::formatTxType</definition>
+        <argsstring>(const TransactionRecord *wtx) const </argsstring>
+        <name>formatTxType</name>
+        <param>
+          <type>const <ref refid="class_transaction_record" kindref="compound">TransactionRecord</ref> *</type>
+          <declname>wtx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactiontablemodel.h" line="72" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactiontablemodel.cpp" bodystart="344" bodyend="362"/>
+      </memberdef>
+      <memberdef kind="function" id="class_transaction_table_model_1aa48d6e350454723a32c801362e4647ef" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString TransactionTableModel::formatTxToAddress</definition>
+        <argsstring>(const TransactionRecord *wtx, bool tooltip) const </argsstring>
+        <name>formatTxToAddress</name>
+        <param>
+          <type>const <ref refid="class_transaction_record" kindref="compound">TransactionRecord</ref> *</type>
+          <declname>wtx</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>tooltip</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactiontablemodel.h" line="73" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactiontablemodel.cpp" bodystart="382" bodyend="398"/>
+      </memberdef>
+      <memberdef kind="function" id="class_transaction_table_model_1abcec6af1000e66d990e3d07bcc9b8617" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString TransactionTableModel::formatTxAmount</definition>
+        <argsstring>(const TransactionRecord *wtx, bool showUnconfirmed=true) const </argsstring>
+        <name>formatTxAmount</name>
+        <param>
+          <type>const <ref refid="class_transaction_record" kindref="compound">TransactionRecord</ref> *</type>
+          <declname>wtx</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>showUnconfirmed</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactiontablemodel.h" line="74" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactiontablemodel.cpp" bodystart="421" bodyend="432"/>
+      </memberdef>
+      <memberdef kind="function" id="class_transaction_table_model_1a55917dc63edf980cf6f81ed17fbb9bca" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString TransactionTableModel::formatTooltip</definition>
+        <argsstring>(const TransactionRecord *rec) const </argsstring>
+        <name>formatTooltip</name>
+        <param>
+          <type>const <ref refid="class_transaction_record" kindref="compound">TransactionRecord</ref> *</type>
+          <declname>rec</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactiontablemodel.h" line="75" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactiontablemodel.cpp" bodystart="470" bodyend="479"/>
+      </memberdef>
+      <memberdef kind="function" id="class_transaction_table_model_1ae3e39030b7f4c7fca470d20d4c693307" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QVariant</type>
+        <definition>QVariant TransactionTableModel::txStatusDecoration</definition>
+        <argsstring>(const TransactionRecord *wtx) const </argsstring>
+        <name>txStatusDecoration</name>
+        <param>
+          <type>const <ref refid="class_transaction_record" kindref="compound">TransactionRecord</ref> *</type>
+          <declname>wtx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactiontablemodel.h" line="76" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactiontablemodel.cpp" bodystart="434" bodyend="468"/>
+      </memberdef>
+      <memberdef kind="function" id="class_transaction_table_model_1a79540ec0dc8011a07c5d88f4c3fb35f4" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QVariant</type>
+        <definition>QVariant TransactionTableModel::txAddressDecoration</definition>
+        <argsstring>(const TransactionRecord *wtx) const </argsstring>
+        <name>txAddressDecoration</name>
+        <param>
+          <type>const <ref refid="class_transaction_record" kindref="compound">TransactionRecord</ref> *</type>
+          <declname>wtx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactiontablemodel.h" line="77" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactiontablemodel.cpp" bodystart="364" bodyend="380"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-slot">
+      <memberdef kind="slot" id="class_transaction_table_model_1abb93b1812f27622f67aed0302bc90ee6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TransactionTableModel::updateTransaction</definition>
+        <argsstring>(const QString &amp;hash, int status)</argsstring>
+        <name>updateTransaction</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>hash</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>status</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactiontablemodel.h" line="80" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactiontablemodel.cpp" bodystart="243" bodyend="249"/>
+      </memberdef>
+      <memberdef kind="slot" id="class_transaction_table_model_1a5899d9eda6465bfb16d2846b6459567e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TransactionTableModel::updateConfirmations</definition>
+        <argsstring>()</argsstring>
+        <name>updateConfirmations</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactiontablemodel.h" line="81" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactiontablemodel.cpp" bodystart="251" bodyend="259"/>
+      </memberdef>
+      <memberdef kind="slot" id="class_transaction_table_model_1a8b73ff7d72ec2dd69790bc61bbe8575e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TransactionTableModel::updateDisplayUnit</definition>
+        <argsstring>()</argsstring>
+        <name>updateDisplayUnit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactiontablemodel.h" line="82" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactiontablemodel.cpp" bodystart="619" bodyend="623"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>UI model for the transaction table of a wallet. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="1869">
+        <label>TransactionTableModel</label>
+        <link refid="class_transaction_table_model"/>
+        <childnode refid="1870" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1870">
+        <label>QAbstractTableModel</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1871">
+        <label>TransactionTableModel</label>
+        <link refid="class_transaction_table_model"/>
+        <childnode refid="1872" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1872">
+        <label>QAbstractTableModel</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/dev/ds-160209/src/qt/transactiontablemodel.h" line="15" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactiontablemodel.h" bodystart="14" bodyend="85"/>
+    <listofallmembers>
+      <member refid="class_transaction_table_model_1a335af23b7fc385cb9d91e944d7c94e6a" prot="private" virt="non-virtual"><scope>TransactionTableModel</scope><name>addressColor</name></member>
+      <member refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6ab82599f86b9cf8d0907e42bc8158ef16" prot="public" virt="non-virtual"><scope>TransactionTableModel</scope><name>AddressRole</name></member>
+      <member refid="class_transaction_table_model_1aca9d1efb507b6e471b31dc8c73c5bb43a89e945eea985253e45d0643f53c52e24" prot="public" virt="non-virtual"><scope>TransactionTableModel</scope><name>Amount</name></member>
+      <member refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6ace07f7f11257526cef9d6613c23cfff4" prot="public" virt="non-virtual"><scope>TransactionTableModel</scope><name>AmountRole</name></member>
+      <member refid="class_transaction_table_model_1a6608bf57c7424b84714b2810d9cf51e1" prot="public" virt="non-virtual"><scope>TransactionTableModel</scope><name>columnCount</name></member>
+      <member refid="class_transaction_table_model_1aca9d1efb507b6e471b31dc8c73c5bb43" prot="public" virt="non-virtual"><scope>TransactionTableModel</scope><name>ColumnIndex</name></member>
+      <member refid="class_transaction_table_model_1a45555c133bf61acaa0efad7c123c853c" prot="private" virt="non-virtual"><scope>TransactionTableModel</scope><name>columns</name></member>
+      <member refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6ae4fb059af39604caf75e71f9176edb16" prot="public" virt="non-virtual"><scope>TransactionTableModel</scope><name>ConfirmedRole</name></member>
+      <member refid="class_transaction_table_model_1a416d0751ab9a95ecd87d3f7bed4f0b06" prot="public" virt="non-virtual"><scope>TransactionTableModel</scope><name>data</name></member>
+      <member refid="class_transaction_table_model_1aca9d1efb507b6e471b31dc8c73c5bb43a6916d94be4921d53694134b7cdaaf1b5" prot="public" virt="non-virtual"><scope>TransactionTableModel</scope><name>Date</name></member>
+      <member refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6a46e879bd509162d980df3692c65eb66e" prot="public" virt="non-virtual"><scope>TransactionTableModel</scope><name>DateRole</name></member>
+      <member refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6affd966c654a96ad65574e30986f80563" prot="public" virt="non-virtual"><scope>TransactionTableModel</scope><name>FormattedAmountRole</name></member>
+      <member refid="class_transaction_table_model_1a55917dc63edf980cf6f81ed17fbb9bca" prot="private" virt="non-virtual"><scope>TransactionTableModel</scope><name>formatTooltip</name></member>
+      <member refid="class_transaction_table_model_1abcec6af1000e66d990e3d07bcc9b8617" prot="private" virt="non-virtual"><scope>TransactionTableModel</scope><name>formatTxAmount</name></member>
+      <member refid="class_transaction_table_model_1a78dc7fc1522f909b8982cbc0db267a35" prot="private" virt="non-virtual"><scope>TransactionTableModel</scope><name>formatTxDate</name></member>
+      <member refid="class_transaction_table_model_1aac6d477a653da15d63cbdf5d6aaba463" prot="private" virt="non-virtual"><scope>TransactionTableModel</scope><name>formatTxStatus</name></member>
+      <member refid="class_transaction_table_model_1aa48d6e350454723a32c801362e4647ef" prot="private" virt="non-virtual"><scope>TransactionTableModel</scope><name>formatTxToAddress</name></member>
+      <member refid="class_transaction_table_model_1afe47024a8d364c854e07c7cef5908987" prot="private" virt="non-virtual"><scope>TransactionTableModel</scope><name>formatTxType</name></member>
+      <member refid="class_transaction_table_model_1a0e114cae04d5a5ec03d82a80ea1d2594" prot="public" virt="non-virtual"><scope>TransactionTableModel</scope><name>headerData</name></member>
+      <member refid="class_transaction_table_model_1aaaf3cea9a5373fff771ce81d2f26de6e" prot="public" virt="non-virtual"><scope>TransactionTableModel</scope><name>index</name></member>
+      <member refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6a286d79e8b1e0bfc8cb6bb72bbec78de2" prot="public" virt="non-virtual"><scope>TransactionTableModel</scope><name>LabelRole</name></member>
+      <member refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6a2957b8435634d7602e74b513d392d82c" prot="public" virt="non-virtual"><scope>TransactionTableModel</scope><name>LongDescriptionRole</name></member>
+      <member refid="class_transaction_table_model_1ae91197328e8309f252ba6d2924227c1c" prot="private" virt="non-virtual"><scope>TransactionTableModel</scope><name>lookupAddress</name></member>
+      <member refid="class_transaction_table_model_1a278ed25f5f79120934ab94ee54611618" prot="private" virt="non-virtual"><scope>TransactionTableModel</scope><name>priv</name></member>
+      <member refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6" prot="public" virt="non-virtual"><scope>TransactionTableModel</scope><name>RoleIndex</name></member>
+      <member refid="class_transaction_table_model_1ae50798bd2339dca750223b2e9eb8721b" prot="public" virt="non-virtual"><scope>TransactionTableModel</scope><name>rowCount</name></member>
+      <member refid="class_transaction_table_model_1aca9d1efb507b6e471b31dc8c73c5bb43a33e6cfb6b9321da77974a1989dd35ca8" prot="public" virt="non-virtual"><scope>TransactionTableModel</scope><name>Status</name></member>
+      <member refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6a3f8e62622565f361805b2d050da5b2b6" prot="public" virt="non-virtual"><scope>TransactionTableModel</scope><name>StatusRole</name></member>
+      <member refid="class_transaction_table_model_1aca9d1efb507b6e471b31dc8c73c5bb43a48e207f3b69d4439c58f90671d91bd48" prot="public" virt="non-virtual"><scope>TransactionTableModel</scope><name>ToAddress</name></member>
+      <member refid="class_transaction_table_model_1a6c10b7cab9804eee6df9e049a978dc62" prot="public" virt="non-virtual"><scope>TransactionTableModel</scope><name>TransactionTableModel</name></member>
+      <member refid="class_transaction_table_model_1a39d3ddddb3af12905ad5538a91753736" prot="public" virt="non-virtual"><scope>TransactionTableModel</scope><name>TransactionTablePriv</name></member>
+      <member refid="class_transaction_table_model_1a79540ec0dc8011a07c5d88f4c3fb35f4" prot="private" virt="non-virtual"><scope>TransactionTableModel</scope><name>txAddressDecoration</name></member>
+      <member refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6aaf979aec852c99afac10243f78a8a1e0" prot="public" virt="non-virtual"><scope>TransactionTableModel</scope><name>TxIDRole</name></member>
+      <member refid="class_transaction_table_model_1ae3e39030b7f4c7fca470d20d4c693307" prot="private" virt="non-virtual"><scope>TransactionTableModel</scope><name>txStatusDecoration</name></member>
+      <member refid="class_transaction_table_model_1aca9d1efb507b6e471b31dc8c73c5bb43a3ef3e4550a1dd3d68e1fc8ac5fbf2aed" prot="public" virt="non-virtual"><scope>TransactionTableModel</scope><name>Type</name></member>
+      <member refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6a35c49f8c0732954b2812c67e4c745840" prot="public" virt="non-virtual"><scope>TransactionTableModel</scope><name>TypeRole</name></member>
+      <member refid="class_transaction_table_model_1a5899d9eda6465bfb16d2846b6459567e" prot="public" virt="non-virtual"><scope>TransactionTableModel</scope><name>updateConfirmations</name></member>
+      <member refid="class_transaction_table_model_1a8b73ff7d72ec2dd69790bc61bbe8575e" prot="public" virt="non-virtual"><scope>TransactionTableModel</scope><name>updateDisplayUnit</name></member>
+      <member refid="class_transaction_table_model_1abb93b1812f27622f67aed0302bc90ee6" prot="public" virt="non-virtual"><scope>TransactionTableModel</scope><name>updateTransaction</name></member>
+      <member refid="class_transaction_table_model_1a16d87a7dc0c2d32384527b0b3fce9f4c" prot="private" virt="non-virtual"><scope>TransactionTableModel</scope><name>wallet</name></member>
+      <member refid="class_transaction_table_model_1a9b6548eb4eee79c9b0fa2f9cb5c1b9e4" prot="private" virt="non-virtual"><scope>TransactionTableModel</scope><name>walletModel</name></member>
+      <member refid="class_transaction_table_model_1a02b12458092e9584bc19ec7b65d8bd58" prot="public" virt="non-virtual"><scope>TransactionTableModel</scope><name>~TransactionTableModel</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

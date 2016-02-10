@@ -1,0 +1,121 @@
+.TH "CBlockTreeDB" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CBlockTreeDB \- Access to the block database (blocks/index/)  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <txdb\&.h>\fP
+.PP
+Inherits \fBCLevelDBWrapper\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCBlockTreeDB\fP (size_t nCacheSize, bool fMemory=false, bool fWipe=false)"
+.br
+.ti -1c
+.RI "bool \fBWriteBlockIndex\fP (const \fBCDiskBlockIndex\fP &blockindex)"
+.br
+.ti -1c
+.RI "bool \fBReadBlockFileInfo\fP (int nFile, \fBCBlockFileInfo\fP &fileinfo)"
+.br
+.ti -1c
+.RI "bool \fBWriteBlockFileInfo\fP (int nFile, const \fBCBlockFileInfo\fP &fileinfo)"
+.br
+.ti -1c
+.RI "bool \fBReadLastBlockFile\fP (int &nFile)"
+.br
+.ti -1c
+.RI "bool \fBWriteLastBlockFile\fP (int nFile)"
+.br
+.ti -1c
+.RI "bool \fBWriteReindexing\fP (bool \fBfReindex\fP)"
+.br
+.ti -1c
+.RI "bool \fBReadReindexing\fP (bool &\fBfReindex\fP)"
+.br
+.ti -1c
+.RI "bool \fBReadTxIndex\fP (const \fBuint256\fP &txid, \fBCDiskTxPos\fP &pos)"
+.br
+.ti -1c
+.RI "bool \fBWriteTxIndex\fP (const std::vector< std::pair< \fBuint256\fP, \fBCDiskTxPos\fP > > &list)"
+.br
+.ti -1c
+.RI "bool \fBWriteFlag\fP (const std::string &\fBname\fP, bool fValue)"
+.br
+.ti -1c
+.RI "bool \fBReadFlag\fP (const std::string &\fBname\fP, bool &fValue)"
+.br
+.ti -1c
+.RI "bool \fBLoadBlockIndexGuts\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Access to the block database (blocks/index/) 
+.PP
+Definition at line 38 of file txdb\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CBlockTreeDB::CBlockTreeDB (size_t nCacheSize, bool fMemory = \fCfalse\fP, bool fWipe = \fCfalse\fP)"
+
+.PP
+Definition at line 27 of file txdb\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool CBlockTreeDB::LoadBlockIndexGuts ()"
+
+.PP
+Definition at line 86 of file txdb\&.cpp\&.
+.SS "bool CBlockTreeDB::ReadBlockFileInfo (int nFile, \fBCBlockFileInfo\fP & fileinfo)"
+
+.PP
+Definition at line 39 of file txdb\&.cpp\&.
+.SS "bool CBlockTreeDB::ReadFlag (const std::string & name, bool & fValue)"
+
+.PP
+Definition at line 78 of file txdb\&.cpp\&.
+.SS "bool CBlockTreeDB::ReadLastBlockFile (int & nFile)"
+
+.PP
+Definition at line 59 of file txdb\&.cpp\&.
+.SS "bool CBlockTreeDB::ReadReindexing (bool & fReindex)"
+
+.PP
+Definition at line 54 of file txdb\&.cpp\&.
+.SS "bool CBlockTreeDB::ReadTxIndex (const \fBuint256\fP & txid, \fBCDiskTxPos\fP & pos)"
+
+.PP
+Definition at line 63 of file txdb\&.cpp\&.
+.SS "bool CBlockTreeDB::WriteBlockFileInfo (int nFile, const \fBCBlockFileInfo\fP & fileinfo)"
+
+.PP
+Definition at line 35 of file txdb\&.cpp\&.
+.SS "bool CBlockTreeDB::WriteBlockIndex (const \fBCDiskBlockIndex\fP & blockindex)"
+
+.PP
+Definition at line 30 of file txdb\&.cpp\&.
+.SS "bool CBlockTreeDB::WriteFlag (const std::string & name, bool fValue)"
+
+.PP
+Definition at line 74 of file txdb\&.cpp\&.
+.SS "bool CBlockTreeDB::WriteLastBlockFile (int nFile)"
+
+.PP
+Definition at line 43 of file txdb\&.cpp\&.
+.SS "bool CBlockTreeDB::WriteReindexing (bool fReindex)"
+
+.PP
+Definition at line 47 of file txdb\&.cpp\&.
+.SS "bool CBlockTreeDB::WriteTxIndex (const std::vector< std::pair< \fBuint256\fP, \fBCDiskTxPos\fP > > & list)"
+
+.PP
+Definition at line 67 of file txdb\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

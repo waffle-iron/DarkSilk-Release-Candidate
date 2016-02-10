@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_batch_scanner" kind="class" language="C++" prot="public">
+    <compoundname>CBatchScanner</compoundname>
+    <basecompoundref refid="classleveldb_1_1_write_batch_1_1_handler" prot="public" virt="non-virtual">leveldb::WriteBatch::Handler</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_c_batch_scanner_1ae04f7151c91676f9f6209737cdc3d086" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string CBatchScanner::needle</definition>
+        <argsstring></argsstring>
+        <name>needle</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.cpp" line="166" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="166" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_batch_scanner_1afdb6e59a53fed441090c43750c3c2617" prot="public" static="no" mutable="no">
+        <type>bool *</type>
+        <definition>bool* CBatchScanner::deleted</definition>
+        <argsstring></argsstring>
+        <name>deleted</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.cpp" line="167" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="167" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_batch_scanner_1a3a82f2f7068f469eb535435a0b9ae640" prot="public" static="no" mutable="no">
+        <type>std::string *</type>
+        <definition>std::string* CBatchScanner::foundValue</definition>
+        <argsstring></argsstring>
+        <name>foundValue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.cpp" line="168" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="168" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_batch_scanner_1ad2669c1d3fbd8c206b1f42348dde8cf0" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CBatchScanner::foundEntry</definition>
+        <argsstring></argsstring>
+        <name>foundEntry</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.cpp" line="169" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="169" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_batch_scanner_1adca0bf13e3c7eb3f70cf324da1901a4a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CBatchScanner::CBatchScanner</definition>
+        <argsstring>()</argsstring>
+        <name>CBatchScanner</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.cpp" line="171" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="171" bodyend="171"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_batch_scanner_1ae993b8af4417559238d9d985975f9f09" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void CBatchScanner::Put</definition>
+        <argsstring>(const leveldb::Slice &amp;key, const leveldb::Slice &amp;value)</argsstring>
+        <name>Put</name>
+        <reimplements refid="classleveldb_1_1_write_batch_1_1_handler_1ad41d4985db289b94e29921167d206d4b">Put</reimplements>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_slice" kindref="compound">leveldb::Slice</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_slice" kindref="compound">leveldb::Slice</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.cpp" line="173" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="173" bodyend="179"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_batch_scanner_1a5569f5c1c04cbdaa1e226895d9cdb51a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void CBatchScanner::Delete</definition>
+        <argsstring>(const leveldb::Slice &amp;key)</argsstring>
+        <name>Delete</name>
+        <reimplements refid="classleveldb_1_1_write_batch_1_1_handler_1aeab6526b87bf5b50fb64216b69b34b17">Delete</reimplements>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_slice" kindref="compound">leveldb::Slice</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.cpp" line="181" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="181" bodyend="186"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="258">
+        <label>leveldb::WriteBatch::Handler</label>
+        <link refid="classleveldb_1_1_write_batch_1_1_handler"/>
+      </node>
+      <node id="257">
+        <label>CBatchScanner</label>
+        <link refid="class_c_batch_scanner"/>
+        <childnode refid="258" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="260">
+        <label>leveldb::WriteBatch::Handler</label>
+        <link refid="classleveldb_1_1_write_batch_1_1_handler"/>
+      </node>
+      <node id="259">
+        <label>CBatchScanner</label>
+        <link refid="class_c_batch_scanner"/>
+        <childnode refid="260" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/dev/ds-160209/src/txdb-leveldb.cpp" line="164" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="164" bodyend="187"/>
+    <listofallmembers>
+      <member refid="class_c_batch_scanner_1adca0bf13e3c7eb3f70cf324da1901a4a" prot="public" virt="non-virtual"><scope>CBatchScanner</scope><name>CBatchScanner</name></member>
+      <member refid="class_c_batch_scanner_1a5569f5c1c04cbdaa1e226895d9cdb51a" prot="public" virt="virtual"><scope>CBatchScanner</scope><name>Delete</name></member>
+      <member refid="class_c_batch_scanner_1afdb6e59a53fed441090c43750c3c2617" prot="public" virt="non-virtual"><scope>CBatchScanner</scope><name>deleted</name></member>
+      <member refid="class_c_batch_scanner_1ad2669c1d3fbd8c206b1f42348dde8cf0" prot="public" virt="non-virtual"><scope>CBatchScanner</scope><name>foundEntry</name></member>
+      <member refid="class_c_batch_scanner_1a3a82f2f7068f469eb535435a0b9ae640" prot="public" virt="non-virtual"><scope>CBatchScanner</scope><name>foundValue</name></member>
+      <member refid="class_c_batch_scanner_1ae04f7151c91676f9f6209737cdc3d086" prot="public" virt="non-virtual"><scope>CBatchScanner</scope><name>needle</name></member>
+      <member refid="class_c_batch_scanner_1ae993b8af4417559238d9d985975f9f09" prot="public" virt="virtual"><scope>CBatchScanner</scope><name>Put</name></member>
+      <member refid="classleveldb_1_1_write_batch_1_1_handler_1a85fd79c7fb47ef448719379499c5d090" prot="public" virt="virtual"><scope>CBatchScanner</scope><name>~Handler</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

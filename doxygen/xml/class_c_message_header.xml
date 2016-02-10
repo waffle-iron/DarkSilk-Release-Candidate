@@ -1,0 +1,256 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_message_header" kind="class" language="C++" prot="public">
+    <compoundname>CMessageHeader</compoundname>
+    <includes refid="protocol_8h" local="no">protocol.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_c_message_header_1a00659410ff6010c972826dc3020e18b1" prot="public" static="no">
+        <name>@13</name>
+        <enumvalue id="class_c_message_header_1a00659410ff6010c972826dc3020e18b1a8c1bfc0fa6a63c8b73abef30555a5e54" prot="public">
+          <name>COMMAND_SIZE</name>
+          <initializer>=12</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_message_header_1a00659410ff6010c972826dc3020e18b1a223ee9c2e0e31d0afe31c713b41400d2" prot="public">
+          <name>MESSAGE_SIZE_SIZE</name>
+          <initializer>=sizeof(int)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_message_header_1a00659410ff6010c972826dc3020e18b1ac92b66287a05d5c96bf494ff5a48e726" prot="public">
+          <name>CHECKSUM_SIZE</name>
+          <initializer>=sizeof(int)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_message_header_1a00659410ff6010c972826dc3020e18b1a73cc507b1a2c32fba10305201e40f2b3" prot="public">
+          <name>MESSAGE_SIZE_OFFSET</name>
+          <initializer>=MESSAGE_START_SIZE+COMMAND_SIZE</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_message_header_1a00659410ff6010c972826dc3020e18b1ad4e76479ab116367800a146dbb299393" prot="public">
+          <name>CHECKSUM_OFFSET</name>
+          <initializer>=MESSAGE_SIZE_OFFSET+MESSAGE_SIZE_SIZE</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_message_header_1a00659410ff6010c972826dc3020e18b1add8582d526addef583c978e5261dfec1" prot="public">
+          <name>HEADER_SIZE</name>
+          <initializer>=MESSAGE_START_SIZE+COMMAND_SIZE+MESSAGE_SIZE_SIZE+CHECKSUM_SIZE</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/protocol.h" line="49" column="1" bodyfile="/home/dev/ds-160209/src/protocol.h" bodystart="49" bodyend="57"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_c_message_header_1a447044c3fbf9d5e98dcc4121ac808d2f" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>CMessageHeader::ADD_SERIALIZE_METHODS</definition>
+        <argsstring></argsstring>
+        <name>ADD_SERIALIZE_METHODS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/protocol.h" line="37" column="1" bodyfile="/home/dev/ds-160209/src/protocol.h" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_message_header_1a4284bf1d2fd792af89e1c93b7e6e274e" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char CMessageHeader::pchMessageStart[MESSAGE_START_SIZE]</definition>
+        <argsstring>[MESSAGE_START_SIZE]</argsstring>
+        <name>pchMessageStart</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/protocol.h" line="58" column="1" bodyfile="/home/dev/ds-160209/src/protocol.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_message_header_1a87d62b0d9afb3889f318991700a34431" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char CMessageHeader::pchCommand[COMMAND_SIZE]</definition>
+        <argsstring>[COMMAND_SIZE]</argsstring>
+        <name>pchCommand</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/protocol.h" line="59" column="1" bodyfile="/home/dev/ds-160209/src/protocol.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_message_header_1a67ccb9f1f23af69e309a8d6c8bfff751" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int CMessageHeader::nMessageSize</definition>
+        <argsstring></argsstring>
+        <name>nMessageSize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/protocol.h" line="60" column="1" bodyfile="/home/dev/ds-160209/src/protocol.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_message_header_1ab9c6bec3694e2c110b4f358af9e55984" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int CMessageHeader::nChecksum</definition>
+        <argsstring></argsstring>
+        <name>nChecksum</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/protocol.h" line="61" column="1" bodyfile="/home/dev/ds-160209/src/protocol.h" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_message_header_1a188435dbfe51172b368873e8e7f688b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CMessageHeader::CMessageHeader</definition>
+        <argsstring>()</argsstring>
+        <name>CMessageHeader</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/protocol.h" line="31" column="1" bodyfile="/home/dev/ds-160209/src/protocol.cpp" bodystart="38" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_message_header_1a4e68c30f9e7e485c13157a27c4ebff8c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CMessageHeader::CMessageHeader</definition>
+        <argsstring>(const char *pszCommand, unsigned int nMessageSizeIn)</argsstring>
+        <name>CMessageHeader</name>
+        <param>
+          <type>const char *</type>
+          <declname>pszCommand</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>nMessageSizeIn</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/protocol.h" line="32" column="1" bodyfile="/home/dev/ds-160209/src/protocol.cpp" bodystart="47" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_message_header_1a71f022e98bff1acd65be4b75ce4cc038" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string CMessageHeader::GetCommand</definition>
+        <argsstring>() const </argsstring>
+        <name>GetCommand</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/protocol.h" line="34" column="1" bodyfile="/home/dev/ds-160209/src/protocol.cpp" bodystart="55" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_message_header_1a21f5760d034d4a040b00d6c34e927be0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CMessageHeader::IsValid</definition>
+        <argsstring>() const </argsstring>
+        <name>IsValid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/protocol.h" line="35" column="1" bodyfile="/home/dev/ds-160209/src/protocol.cpp" bodystart="63" bodyend="91"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_message_header_1a3881923a93297c3a7a8e413ab3730408" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Stream</type>
+          </param>
+          <param>
+            <type>typename Operation</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void CMessageHeader::SerializationOp</definition>
+        <argsstring>(Stream &amp;s, Operation ser_action, int nType, int nVersion)</argsstring>
+        <name>SerializationOp</name>
+        <param>
+          <type>Stream &amp;</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>Operation</type>
+          <declname>ser_action</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nType</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nVersion</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/protocol.h" line="40" column="1" bodyfile="/home/dev/ds-160209/src/protocol.h" bodystart="40" bodyend="45"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Message header. (4) message start. (12) command. (4) size. (4) checksum. </para>    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/protocol.h" line="29" column="1" bodyfile="/home/dev/ds-160209/src/protocol.h" bodystart="28" bodyend="62"/>
+    <listofallmembers>
+      <member refid="class_c_message_header_1a447044c3fbf9d5e98dcc4121ac808d2f" prot="public" virt="non-virtual"><scope>CMessageHeader</scope><name>ADD_SERIALIZE_METHODS</name></member>
+      <member refid="class_c_message_header_1a00659410ff6010c972826dc3020e18b1ad4e76479ab116367800a146dbb299393" prot="public" virt="non-virtual"><scope>CMessageHeader</scope><name>CHECKSUM_OFFSET</name></member>
+      <member refid="class_c_message_header_1a00659410ff6010c972826dc3020e18b1ac92b66287a05d5c96bf494ff5a48e726" prot="public" virt="non-virtual"><scope>CMessageHeader</scope><name>CHECKSUM_SIZE</name></member>
+      <member refid="class_c_message_header_1a188435dbfe51172b368873e8e7f688b0" prot="public" virt="non-virtual"><scope>CMessageHeader</scope><name>CMessageHeader</name></member>
+      <member refid="class_c_message_header_1a4e68c30f9e7e485c13157a27c4ebff8c" prot="public" virt="non-virtual"><scope>CMessageHeader</scope><name>CMessageHeader</name></member>
+      <member refid="class_c_message_header_1a00659410ff6010c972826dc3020e18b1a8c1bfc0fa6a63c8b73abef30555a5e54" prot="public" virt="non-virtual"><scope>CMessageHeader</scope><name>COMMAND_SIZE</name></member>
+      <member refid="class_c_message_header_1a71f022e98bff1acd65be4b75ce4cc038" prot="public" virt="non-virtual"><scope>CMessageHeader</scope><name>GetCommand</name></member>
+      <member refid="class_c_message_header_1a00659410ff6010c972826dc3020e18b1add8582d526addef583c978e5261dfec1" prot="public" virt="non-virtual"><scope>CMessageHeader</scope><name>HEADER_SIZE</name></member>
+      <member refid="class_c_message_header_1a21f5760d034d4a040b00d6c34e927be0" prot="public" virt="non-virtual"><scope>CMessageHeader</scope><name>IsValid</name></member>
+      <member refid="class_c_message_header_1a00659410ff6010c972826dc3020e18b1a73cc507b1a2c32fba10305201e40f2b3" prot="public" virt="non-virtual"><scope>CMessageHeader</scope><name>MESSAGE_SIZE_OFFSET</name></member>
+      <member refid="class_c_message_header_1a00659410ff6010c972826dc3020e18b1a223ee9c2e0e31d0afe31c713b41400d2" prot="public" virt="non-virtual"><scope>CMessageHeader</scope><name>MESSAGE_SIZE_SIZE</name></member>
+      <member refid="class_c_message_header_1ab9c6bec3694e2c110b4f358af9e55984" prot="public" virt="non-virtual"><scope>CMessageHeader</scope><name>nChecksum</name></member>
+      <member refid="class_c_message_header_1a67ccb9f1f23af69e309a8d6c8bfff751" prot="public" virt="non-virtual"><scope>CMessageHeader</scope><name>nMessageSize</name></member>
+      <member refid="class_c_message_header_1a87d62b0d9afb3889f318991700a34431" prot="public" virt="non-virtual"><scope>CMessageHeader</scope><name>pchCommand</name></member>
+      <member refid="class_c_message_header_1a4284bf1d2fd792af89e1c93b7e6e274e" prot="public" virt="non-virtual"><scope>CMessageHeader</scope><name>pchMessageStart</name></member>
+      <member refid="class_c_message_header_1a3881923a93297c3a7a8e413ab3730408" prot="public" virt="non-virtual"><scope>CMessageHeader</scope><name>SerializationOp</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

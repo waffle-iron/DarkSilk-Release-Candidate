@@ -1,0 +1,260 @@
+\hypertarget{encoding_8c}{}\section{/home/dev/ds-\/160209/src/crypto/argon2/encoding.c File Reference}
+\label{encoding_8c}\index{/home/dev/ds-\/160209/src/crypto/argon2/encoding.\+c@{/home/dev/ds-\/160209/src/crypto/argon2/encoding.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$limits.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}encoding.\+h\char`\"{}}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{encoding_8c_a67a26698612a951cb54a963f77cee538}{E\+Q}(x,  y)~((((0\+U-\/((unsigned)(x) $^\wedge$ (unsigned)(y))) $>$$>$ 8) \& 0x\+F\+F) $^\wedge$ 0x\+F\+F)
+\item 
+\#define \hyperlink{encoding_8c_a8df7ad109bbbe1c1278157e968aecc1d}{G\+T}(x,  y)~((((unsigned)(y) -\/ (unsigned)(x)) $>$$>$ 8) \& 0x\+F\+F)
+\item 
+\#define \hyperlink{encoding_8c_a14e32c27dc9b188856093ae003f78b5c}{G\+E}(x,  y)~(\hyperlink{encoding_8c_a8df7ad109bbbe1c1278157e968aecc1d}{G\+T}(y, x) $^\wedge$ 0x\+F\+F)
+\item 
+\#define \hyperlink{encoding_8c_a375b5090161790d5783d4bdd92f3f750}{L\+T}(x,  y)~\hyperlink{encoding_8c_a8df7ad109bbbe1c1278157e968aecc1d}{G\+T}(y, x)
+\item 
+\#define \hyperlink{encoding_8c_a2196b2e9c04f037b20b9c064276ee7c9}{L\+E}(x,  y)~\hyperlink{encoding_8c_a14e32c27dc9b188856093ae003f78b5c}{G\+E}(y, x)
+\item 
+\#define \hyperlink{encoding_8c_ac6381bc4d22ad438bf6147de6e70f92d}{C\+C}(prefix)
+\item 
+\#define \hyperlink{encoding_8c_adbfcfbedd27ae340a857ead140cc35c4}{C\+C\+\_\+opt}(prefix,  code)
+\item 
+\#define \hyperlink{encoding_8c_a261bd8f8874ffe8d498f9c3cb9af7f5c}{D\+E\+C\+I\+M\+A\+L}(x)
+\item 
+\#define \hyperlink{encoding_8c_a3950f91d72812c941f721b223375c05b}{B\+I\+N}(buf,  max\+\_\+len,  len)
+\item 
+\#define \hyperlink{encoding_8c_af1fd7ab6e49ecda96b670504d375aa62}{S\+S}(str)
+\item 
+\#define \hyperlink{encoding_8c_a7a8f554f6ea8ea5af44d22d1b6e58650}{S\+X}(x)
+\item 
+\#define \hyperlink{encoding_8c_a5f842c4b7ea72ba8f526d8c0d5122a62}{S\+B}(buf,  len)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{encoding_8c_ada8ceb318c3429ae16f8fe41ee7eb61b}{decode\+\_\+string} (\hyperlink{argon2_8h_a43c74dc5ed515632feee9b2e1ff3e09f}{argon2\+\_\+context} $\ast$ctx, const char $\ast$str, \hyperlink{argon2_8h_af51eac9927f7f234943d076166aacf84}{argon2\+\_\+type} type)
+\item 
+int \hyperlink{encoding_8c_ad48815d59634a275959d0cbaf09756b7}{encode\+\_\+string} (char $\ast$dst, size\+\_\+t dst\+\_\+len, \hyperlink{argon2_8h_a43c74dc5ed515632feee9b2e1ff3e09f}{argon2\+\_\+context} $\ast$ctx, \hyperlink{argon2_8h_af51eac9927f7f234943d076166aacf84}{argon2\+\_\+type} type)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{encoding_8c_a3950f91d72812c941f721b223375c05b}{}\index{encoding.\+c@{encoding.\+c}!B\+I\+N@{B\+I\+N}}
+\index{B\+I\+N@{B\+I\+N}!encoding.\+c@{encoding.\+c}}
+\subsubsection[{B\+I\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+I\+N(
+\begin{DoxyParamCaption}
+\item[{}]{buf, }
+\item[{}]{max\+\_\+len, }
+\item[{}]{len}
+\end{DoxyParamCaption}
+)}\label{encoding_8c_a3950f91d72812c941f721b223375c05b}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                                                                       \(\backslash\)
+        size\_t bin\_len = (max\_len);                                            \(\backslash\)
+        str = from\_base64(buf, &bin\_len, str);                                 \(\backslash\)
+        if (str == NULL || bin\_len > UINT32\_MAX) \{                             \(\backslash\)
+            return 0;                                                          \(\backslash\)
+        \}                                                                      \(\backslash\)
+        (len) = (\hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\_t})bin\_len;                                             \(\backslash\)
+    \} \textcolor{keywordflow}{while} ((\textcolor{keywordtype}{void})0, 0)
+\end{DoxyCode}
+\hypertarget{encoding_8c_ac6381bc4d22ad438bf6147de6e70f92d}{}\index{encoding.\+c@{encoding.\+c}!C\+C@{C\+C}}
+\index{C\+C@{C\+C}!encoding.\+c@{encoding.\+c}}
+\subsubsection[{C\+C}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+C(
+\begin{DoxyParamCaption}
+\item[{}]{prefix}
+\end{DoxyParamCaption}
+)}\label{encoding_8c_ac6381bc4d22ad438bf6147de6e70f92d}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                                                                       \(\backslash\)
+        size\_t cc\_len = strlen(prefix);                                        \(\backslash\)
+        if (strncmp(str, prefix, cc\_len) != 0) \{                               \(\backslash\)
+            return 0;                                                          \(\backslash\)
+        \}                                                                      \(\backslash\)
+        str += cc\_len;                                                         \(\backslash\)
+    \} \textcolor{keywordflow}{while} ((\textcolor{keywordtype}{void})0, 0)
+\end{DoxyCode}
+\hypertarget{encoding_8c_adbfcfbedd27ae340a857ead140cc35c4}{}\index{encoding.\+c@{encoding.\+c}!C\+C\+\_\+opt@{C\+C\+\_\+opt}}
+\index{C\+C\+\_\+opt@{C\+C\+\_\+opt}!encoding.\+c@{encoding.\+c}}
+\subsubsection[{C\+C\+\_\+opt}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+C\+\_\+opt(
+\begin{DoxyParamCaption}
+\item[{}]{prefix, }
+\item[{}]{code}
+\end{DoxyParamCaption}
+)}\label{encoding_8c_adbfcfbedd27ae340a857ead140cc35c4}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                                                                       \(\backslash\)
+        size\_t cc\_len = strlen(prefix);                                        \(\backslash\)
+        if (strncmp(str, prefix, cc\_len) == 0) \{                               \(\backslash\)
+            str += cc\_len;                                                     \(\backslash\)
+            \{ code; \}                                                          \(\backslash\)
+        \}                                                                      \(\backslash\)
+    \} \textcolor{keywordflow}{while} ((\textcolor{keywordtype}{void})0, 0)
+\end{DoxyCode}
+\hypertarget{encoding_8c_a261bd8f8874ffe8d498f9c3cb9af7f5c}{}\index{encoding.\+c@{encoding.\+c}!D\+E\+C\+I\+M\+A\+L@{D\+E\+C\+I\+M\+A\+L}}
+\index{D\+E\+C\+I\+M\+A\+L@{D\+E\+C\+I\+M\+A\+L}!encoding.\+c@{encoding.\+c}}
+\subsubsection[{D\+E\+C\+I\+M\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+E\+C\+I\+M\+A\+L(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)}\label{encoding_8c_a261bd8f8874ffe8d498f9c3cb9af7f5c}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                                                                       \(\backslash\)
+        unsigned \textcolor{keywordtype}{long} dec\_x;                                                   \(\backslash\)
+        str = decode\_decimal(str, &dec\_x);                                     \(\backslash\)
+        if (str == NULL) \{                                                     \(\backslash\)
+            return 0;                                                          \(\backslash\)
+        \}                                                                      \(\backslash\)
+        (x) = dec\_x;                                                           \(\backslash\)
+    \} \textcolor{keywordflow}{while} ((\textcolor{keywordtype}{void})0, 0)
+\end{DoxyCode}
+\hypertarget{encoding_8c_a67a26698612a951cb54a963f77cee538}{}\index{encoding.\+c@{encoding.\+c}!E\+Q@{E\+Q}}
+\index{E\+Q@{E\+Q}!encoding.\+c@{encoding.\+c}}
+\subsubsection[{E\+Q}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+Q(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{y}
+\end{DoxyParamCaption}
+)~((((0\+U-\/((unsigned)(x) $^\wedge$ (unsigned)(y))) $>$$>$ 8) \& 0x\+F\+F) $^\wedge$ 0x\+F\+F)}\label{encoding_8c_a67a26698612a951cb54a963f77cee538}
+
+
+Definition at line 61 of file encoding.\+c.
+
+\hypertarget{encoding_8c_a14e32c27dc9b188856093ae003f78b5c}{}\index{encoding.\+c@{encoding.\+c}!G\+E@{G\+E}}
+\index{G\+E@{G\+E}!encoding.\+c@{encoding.\+c}}
+\subsubsection[{G\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\+E(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{y}
+\end{DoxyParamCaption}
+)~({\bf G\+T}(y, x) $^\wedge$ 0x\+F\+F)}\label{encoding_8c_a14e32c27dc9b188856093ae003f78b5c}
+
+
+Definition at line 63 of file encoding.\+c.
+
+\hypertarget{encoding_8c_a8df7ad109bbbe1c1278157e968aecc1d}{}\index{encoding.\+c@{encoding.\+c}!G\+T@{G\+T}}
+\index{G\+T@{G\+T}!encoding.\+c@{encoding.\+c}}
+\subsubsection[{G\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\+T(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{y}
+\end{DoxyParamCaption}
+)~((((unsigned)(y) -\/ (unsigned)(x)) $>$$>$ 8) \& 0x\+F\+F)}\label{encoding_8c_a8df7ad109bbbe1c1278157e968aecc1d}
+
+
+Definition at line 62 of file encoding.\+c.
+
+\hypertarget{encoding_8c_a2196b2e9c04f037b20b9c064276ee7c9}{}\index{encoding.\+c@{encoding.\+c}!L\+E@{L\+E}}
+\index{L\+E@{L\+E}!encoding.\+c@{encoding.\+c}}
+\subsubsection[{L\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+E(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{y}
+\end{DoxyParamCaption}
+)~{\bf G\+E}(y, x)}\label{encoding_8c_a2196b2e9c04f037b20b9c064276ee7c9}
+
+
+Definition at line 65 of file encoding.\+c.
+
+\hypertarget{encoding_8c_a375b5090161790d5783d4bdd92f3f750}{}\index{encoding.\+c@{encoding.\+c}!L\+T@{L\+T}}
+\index{L\+T@{L\+T}!encoding.\+c@{encoding.\+c}}
+\subsubsection[{L\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define L\+T(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{y}
+\end{DoxyParamCaption}
+)~{\bf G\+T}(y, x)}\label{encoding_8c_a375b5090161790d5783d4bdd92f3f750}
+
+
+Definition at line 64 of file encoding.\+c.
+
+\hypertarget{encoding_8c_a5f842c4b7ea72ba8f526d8c0d5122a62}{}\index{encoding.\+c@{encoding.\+c}!S\+B@{S\+B}}
+\index{S\+B@{S\+B}!encoding.\+c@{encoding.\+c}}
+\subsubsection[{S\+B}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+B(
+\begin{DoxyParamCaption}
+\item[{}]{buf, }
+\item[{}]{len}
+\end{DoxyParamCaption}
+)}\label{encoding_8c_a5f842c4b7ea72ba8f526d8c0d5122a62}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                                                                       \(\backslash\)
+        size\_t sb\_len = to\_base64(dst, dst\_len, buf, len);                     \(\backslash\)
+        if (sb\_len == (\textcolor{keywordtype}{size\_t})-1) \{                                            \(\backslash\)
+            return 0;                                                          \(\backslash\)
+        \}                                                                      \(\backslash\)
+        dst += sb\_len;                                                         \(\backslash\)
+        dst\_len -= sb\_len;                                                     \(\backslash\)
+    \} \textcolor{keywordflow}{while} ((\textcolor{keywordtype}{void})0, 0)
+\end{DoxyCode}
+\hypertarget{encoding_8c_af1fd7ab6e49ecda96b670504d375aa62}{}\index{encoding.\+c@{encoding.\+c}!S\+S@{S\+S}}
+\index{S\+S@{S\+S}!encoding.\+c@{encoding.\+c}}
+\subsubsection[{S\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+S(
+\begin{DoxyParamCaption}
+\item[{}]{str}
+\end{DoxyParamCaption}
+)}\label{encoding_8c_af1fd7ab6e49ecda96b670504d375aa62}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                                                                       \(\backslash\)
+        size\_t pp\_len = strlen(str);                                           \(\backslash\)
+        if (pp\_len >= dst\_len) \{                                               \(\backslash\)
+            return 0;                                                          \(\backslash\)
+        \}                                                                      \(\backslash\)
+        memcpy(dst, str, pp\_len + 1);                                          \(\backslash\)
+        dst += pp\_len;                                                         \(\backslash\)
+        dst\_len -= pp\_len;                                                     \(\backslash\)
+    \} \textcolor{keywordflow}{while} ((\textcolor{keywordtype}{void})0, 0)
+\end{DoxyCode}
+\hypertarget{encoding_8c_a7a8f554f6ea8ea5af44d22d1b6e58650}{}\index{encoding.\+c@{encoding.\+c}!S\+X@{S\+X}}
+\index{S\+X@{S\+X}!encoding.\+c@{encoding.\+c}}
+\subsubsection[{S\+X}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+X(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)}\label{encoding_8c_a7a8f554f6ea8ea5af44d22d1b6e58650}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                                                                       \(\backslash\)
+        char tmp[30];                                                          \(\backslash\)
+        sprintf(tmp, \textcolor{stringliteral}{"%lu"}, (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{long})(x));                               \hyperlink{encoding_8c_af1fd7ab6e49ecda96b670504d375aa62}{\(\backslash\)}
+\hyperlink{encoding_8c_af1fd7ab6e49ecda96b670504d375aa62}{        SS}(tmp);                                                               \(\backslash\)
+    \} \textcolor{keywordflow}{while} ((\textcolor{keywordtype}{void})0, 0)
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\hypertarget{encoding_8c_ada8ceb318c3429ae16f8fe41ee7eb61b}{}\index{encoding.\+c@{encoding.\+c}!decode\+\_\+string@{decode\+\_\+string}}
+\index{decode\+\_\+string@{decode\+\_\+string}!encoding.\+c@{encoding.\+c}}
+\subsubsection[{decode\+\_\+string}]{\setlength{\rightskip}{0pt plus 5cm}int decode\+\_\+string (
+\begin{DoxyParamCaption}
+\item[{{\bf argon2\+\_\+context} $\ast$}]{ctx, }
+\item[{const char $\ast$}]{str, }
+\item[{{\bf argon2\+\_\+type}}]{type}
+\end{DoxyParamCaption}
+)}\label{encoding_8c_ada8ceb318c3429ae16f8fe41ee7eb61b}
+
+
+Definition at line 249 of file encoding.\+c.
+
+\hypertarget{encoding_8c_ad48815d59634a275959d0cbaf09756b7}{}\index{encoding.\+c@{encoding.\+c}!encode\+\_\+string@{encode\+\_\+string}}
+\index{encode\+\_\+string@{encode\+\_\+string}!encoding.\+c@{encoding.\+c}}
+\subsubsection[{encode\+\_\+string}]{\setlength{\rightskip}{0pt plus 5cm}int encode\+\_\+string (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{dst, }
+\item[{size\+\_\+t}]{dst\+\_\+len, }
+\item[{{\bf argon2\+\_\+context} $\ast$}]{ctx, }
+\item[{{\bf argon2\+\_\+type}}]{type}
+\end{DoxyParamCaption}
+)}\label{encoding_8c_ad48815d59634a275959d0cbaf09756b7}
+
+
+Definition at line 371 of file encoding.\+c.
+

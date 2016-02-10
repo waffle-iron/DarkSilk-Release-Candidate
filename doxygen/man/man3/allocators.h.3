@@ -1,0 +1,86 @@
+.TH "/home/dev/ds-160209/src/allocators.h" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/allocators.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'cleanse\&.h'\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+\fC#include <string>\fP
+.br
+\fC#include <boost/thread/mutex\&.hpp>\fP
+.br
+\fC#include <map>\fP
+.br
+\fC#include <sys/mman\&.h>\fP
+.br
+\fC#include <limits\&.h>\fP
+.br
+\fC#include <unistd\&.h>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBLockedPageManagerBase< Locker >\fP"
+.br
+.ti -1c
+.RI "class \fBMemoryPageLocker\fP"
+.br
+.ti -1c
+.RI "class \fBLockedPageManager\fP"
+.br
+.ti -1c
+.RI "struct \fBsecure_allocator< T >\fP"
+.br
+.ti -1c
+.RI "struct \fBsecure_allocator< T >::rebind< _Other >\fP"
+.br
+.ti -1c
+.RI "struct \fBzero_after_free_allocator< T >\fP"
+.br
+.ti -1c
+.RI "struct \fBzero_after_free_allocator< T >::rebind< _Other >\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef std::basic_string< char, std::char_traits< char >, \fBsecure_allocator\fP< char > > \fBSecureString\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename T > void \fBLockObject\fP (const T &t)"
+.br
+.ti -1c
+.RI "template<typename T > void \fBUnlockObject\fP (const T &t)"
+.br
+.in -1c
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef std::basic_string<char, std::char_traits<char>, \fBsecure_allocator\fP<char> > \fBSecureString\fP"
+
+.PP
+Definition at line 271 of file allocators\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "template<typename T > void LockObject (const T & t)"
+
+.PP
+Definition at line 185 of file allocators\&.h\&.
+.SS "template<typename T > void UnlockObject (const T & t)"
+
+.PP
+Definition at line 189 of file allocators\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="mutexlock_8h" kind="file" language="C++">
+    <compoundname>mutexlock.h</compoundname>
+    <includes refid="port_8h" local="yes">port/port.h</includes>
+    <includes refid="thread__annotations_8h" local="yes">port/thread_annotations.h</includes>
+    <includedby refid="db__bench_8cc" local="yes">/home/dev/ds-160209/src/leveldb/db/db_bench.cc</includedby>
+    <includedby refid="db__impl_8cc" local="yes">/home/dev/ds-160209/src/leveldb/db/db_impl.cc</includedby>
+    <includedby refid="db__iter_8cc" local="yes">/home/dev/ds-160209/src/leveldb/db/db_iter.cc</includedby>
+    <includedby refid="db__test_8cc" local="yes">/home/dev/ds-160209/src/leveldb/db/db_test.cc</includedby>
+    <includedby refid="memenv_8cc" local="yes">/home/dev/ds-160209/src/leveldb/helpers/memenv/memenv.cc</includedby>
+    <includedby refid="cache_8cc" local="yes">/home/dev/ds-160209/src/leveldb/util/cache.cc</includedby>
+    <includedby refid="env__posix_8cc" local="yes">/home/dev/ds-160209/src/leveldb/util/env_posix.cc</includedby>
+    <incdepgraph>
+      <node id="10453">
+        <label>/home/dev/ds-160209/src/leveldb/util/mutexlock.h</label>
+        <link refid="mutexlock.h"/>
+        <childnode refid="10454" relation="include">
+        </childnode>
+        <childnode refid="10456" relation="include">
+        </childnode>
+      </node>
+      <node id="10455">
+        <label>string.h</label>
+      </node>
+      <node id="10454">
+        <label>port/port.h</label>
+        <link refid="port_8h"/>
+        <childnode refid="10455" relation="include">
+        </childnode>
+      </node>
+      <node id="10456">
+        <label>port/thread_annotations.h</label>
+        <link refid="thread__annotations_8h"/>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="10457">
+        <label>/home/dev/ds-160209/src/leveldb/util/mutexlock.h</label>
+        <link refid="mutexlock.h"/>
+        <childnode refid="10458" relation="include">
+        </childnode>
+        <childnode refid="10459" relation="include">
+        </childnode>
+        <childnode refid="10460" relation="include">
+        </childnode>
+        <childnode refid="10461" relation="include">
+        </childnode>
+        <childnode refid="10462" relation="include">
+        </childnode>
+        <childnode refid="10463" relation="include">
+        </childnode>
+        <childnode refid="10464" relation="include">
+        </childnode>
+      </node>
+      <node id="10459">
+        <label>/home/dev/ds-160209/src/leveldb/db/db_impl.cc</label>
+        <link refid="db__impl_8cc"/>
+      </node>
+      <node id="10463">
+        <label>/home/dev/ds-160209/src/leveldb/util/cache.cc</label>
+        <link refid="cache_8cc"/>
+      </node>
+      <node id="10464">
+        <label>/home/dev/ds-160209/src/leveldb/util/env_posix.cc</label>
+        <link refid="env__posix_8cc"/>
+      </node>
+      <node id="10462">
+        <label>/home/dev/ds-160209/src/leveldb/helpers/memenv/memenv.cc</label>
+        <link refid="memenv_8cc"/>
+      </node>
+      <node id="10458">
+        <label>/home/dev/ds-160209/src/leveldb/db/db_bench.cc</label>
+        <link refid="db__bench_8cc"/>
+      </node>
+      <node id="10460">
+        <label>/home/dev/ds-160209/src/leveldb/db/db_iter.cc</label>
+        <link refid="db__iter_8cc"/>
+      </node>
+      <node id="10461">
+        <label>/home/dev/ds-160209/src/leveldb/db/db_test.cc</label>
+        <link refid="db__test_8cc"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classleveldb_1_1_mutex_lock" prot="public">leveldb::MutexLock</innerclass>
+    <innernamespace refid="namespaceleveldb">leveldb</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2011-2016<sp/>The<sp/>LevelDB<sp/>Authors.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>of<sp/>this<sp/>source<sp/>code<sp/>is<sp/>governed<sp/>by<sp/>a<sp/>BSD-style<sp/>license<sp/>that<sp/>can<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>found<sp/>in<sp/>the<sp/>LICENSE<sp/>file.<sp/>See<sp/>the<sp/>AUTHORS<sp/>file<sp/>for<sp/>names<sp/>of<sp/>contributors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>STORAGE_LEVELDB_UTIL_MUTEXLOCK_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STORAGE_LEVELDB_UTIL_MUTEXLOCK_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="port_8h" kindref="compound">port/port.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="thread__annotations_8h" kindref="compound">port/thread_annotations.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceleveldb" kindref="compound">leveldb</ref><sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Helper<sp/>class<sp/>that<sp/>locks<sp/>a<sp/>mutex<sp/>on<sp/>construction<sp/>and<sp/>unlocks<sp/>the<sp/>mutex<sp/>when</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>destructor<sp/>of<sp/>the<sp/>MutexLock<sp/>object<sp/>is<sp/>invoked.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Typical<sp/>usage:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>void<sp/>MyClass::MyMethod()<sp/>{</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>MutexLock<sp/>l(&amp;mu_);<sp/><sp/><sp/><sp/><sp/><sp/><sp/>//<sp/>mu_<sp/>is<sp/>an<sp/>instance<sp/>variable</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>...<sp/>some<sp/>complex<sp/>code,<sp/>possibly<sp/>with<sp/>multiple<sp/>return<sp/>paths<sp/>...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classleveldb_1_1_mutex_lock" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="thread__annotations_8h_1a954d07e5a857905a2f333504beacef0d" kindref="member">SCOPED_LOCKABLE</ref><sp/><ref refid="classleveldb_1_1_mutex_lock" kindref="compound">MutexLock</ref><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="25" refid="classleveldb_1_1_mutex_lock_1a1501eaa9a404460e06d47468e0e04ef2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_mutex_lock_1a1501eaa9a404460e06d47468e0e04ef2" kindref="member">MutexLock</ref>(<ref refid="classleveldb_1_1port_1_1_mutex" kindref="compound">port::Mutex</ref><sp/>*<ref refid="db__bench_8cc_1a1a5c2f3b52d2dec1d9896cec4b02d17e" kindref="member">mu</ref>)<sp/><ref refid="thread__annotations_8h_1a77729163b7f6867da40ad5daa5f926f3" kindref="member">EXCLUSIVE_LOCK_FUNCTION</ref>(<ref refid="db__bench_8cc_1a1a5c2f3b52d2dec1d9896cec4b02d17e" kindref="member">mu</ref>)</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="db__test_8cc_1a7409a2fd2bde9ec649030b2513a568b8" kindref="member">mu_</ref>(<ref refid="db__bench_8cc_1a1a5c2f3b52d2dec1d9896cec4b02d17e" kindref="member">mu</ref>)<sp/><sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;<ref refid="db__test_8cc_1a7409a2fd2bde9ec649030b2513a568b8" kindref="member">mu_</ref>-&gt;Lock();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="29" refid="classleveldb_1_1_mutex_lock_1ad8ee2ca0a48e81adfb4b97d438a34065" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_mutex_lock_1ad8ee2ca0a48e81adfb4b97d438a34065" kindref="member">~MutexLock</ref>()<sp/><ref refid="thread__annotations_8h_1abd56e19f9b4781b1a5212a46951cf5c3" kindref="member">UNLOCK_FUNCTION</ref>()<sp/>{<sp/>this-&gt;<ref refid="db__test_8cc_1a7409a2fd2bde9ec649030b2513a568b8" kindref="member">mu_</ref>-&gt;Unlock();<sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1port_1_1_mutex" kindref="compound">port::Mutex</ref><sp/>*</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="db__test_8cc_1a7409a2fd2bde9ec649030b2513a568b8" kindref="member">mu_</ref>;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>copying<sp/>allowed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_mutex_lock" kindref="compound">MutexLock</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_mutex_lock" kindref="compound">MutexLock</ref>&amp;);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>operator=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_mutex_lock" kindref="compound">MutexLock</ref>&amp;);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>leveldb</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/>//<sp/>STORAGE_LEVELDB_UTIL_MUTEXLOCK_H_</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/leveldb/util/mutexlock.h"/>
+  </compounddef>
+</doxygen>

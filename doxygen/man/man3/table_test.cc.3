@@ -1,0 +1,157 @@
+.TH "/home/dev/ds-160209/src/leveldb/table/table_test.cc" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/leveldb/table/table_test.cc \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'leveldb/table\&.h'\fP
+.br
+\fC#include <map>\fP
+.br
+\fC#include <string>\fP
+.br
+\fC#include 'db/dbformat\&.h'\fP
+.br
+\fC#include 'db/memtable\&.h'\fP
+.br
+\fC#include 'db/write_batch_internal\&.h'\fP
+.br
+\fC#include 'leveldb/db\&.h'\fP
+.br
+\fC#include 'leveldb/env\&.h'\fP
+.br
+\fC#include 'leveldb/iterator\&.h'\fP
+.br
+\fC#include 'leveldb/table_builder\&.h'\fP
+.br
+\fC#include 'table/block\&.h'\fP
+.br
+\fC#include 'table/block_builder\&.h'\fP
+.br
+\fC#include 'table/format\&.h'\fP
+.br
+\fC#include 'util/random\&.h'\fP
+.br
+\fC#include 'util/testharness\&.h'\fP
+.br
+\fC#include 'util/testutil\&.h'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBleveldb::StringSink\fP"
+.br
+.ti -1c
+.RI "class \fBleveldb::StringSource\fP"
+.br
+.ti -1c
+.RI "class \fBleveldb::Constructor\fP"
+.br
+.ti -1c
+.RI "class \fBleveldb::BlockConstructor\fP"
+.br
+.ti -1c
+.RI "class \fBleveldb::TableConstructor\fP"
+.br
+.ti -1c
+.RI "class \fBleveldb::KeyConvertingIterator\fP"
+.br
+.ti -1c
+.RI "class \fBleveldb::MemTableConstructor\fP"
+.br
+.ti -1c
+.RI "class \fBleveldb::DBConstructor\fP"
+.br
+.ti -1c
+.RI "struct \fBleveldb::TestArgs\fP"
+.br
+.ti -1c
+.RI "class \fBleveldb::Harness\fP"
+.br
+.ti -1c
+.RI "class \fBleveldb::MemTableTest\fP"
+.br
+.ti -1c
+.RI "class \fBleveldb::TableTest\fP"
+.br
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBleveldb\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef std::map< std::string, std::string, STLLessThan > \fBleveldb::KVMap\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBleveldb::TestType\fP { \fBleveldb::TABLE_TEST\fP, \fBleveldb::BLOCK_TEST\fP, \fBleveldb::MEMTABLE_TEST\fP, \fBleveldb::DB_TEST\fP }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBleveldb::TEST\fP (Harness, Empty)"
+.br
+.ti -1c
+.RI "\fBleveldb::TEST\fP (Harness, ZeroRestartPointsInBlock)"
+.br
+.ti -1c
+.RI "\fBleveldb::TEST\fP (Harness, SimpleEmptyKey)"
+.br
+.ti -1c
+.RI "\fBleveldb::TEST\fP (Harness, SimpleSingle)"
+.br
+.ti -1c
+.RI "\fBleveldb::TEST\fP (Harness, SimpleMulti)"
+.br
+.ti -1c
+.RI "\fBleveldb::TEST\fP (Harness, SimpleSpecialKey)"
+.br
+.ti -1c
+.RI "\fBleveldb::TEST\fP (Harness, Randomized)"
+.br
+.ti -1c
+.RI "\fBleveldb::TEST\fP (Harness, RandomizedLongDB)"
+.br
+.ti -1c
+.RI "\fBleveldb::TEST\fP (MemTableTest, Simple)"
+.br
+.ti -1c
+.RI "\fBleveldb::TEST\fP (TableTest, ApproximateOffsetOfPlain)"
+.br
+.ti -1c
+.RI "\fBleveldb::TEST\fP (TableTest, ApproximateOffsetOfCompressed)"
+.br
+.ti -1c
+.RI "int \fBmain\fP (int argc, char **argv)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "int main (int argc, char ** argv)"
+
+.PP
+Definition at line 866 of file table_test\&.cc\&.
+.SH "Variable Documentation"
+.PP 
+.SS "const Comparator* cmp"
+
+.PP
+Definition at line 80 of file table_test\&.cc\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

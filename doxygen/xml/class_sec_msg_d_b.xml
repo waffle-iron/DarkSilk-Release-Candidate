@@ -1,0 +1,379 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_sec_msg_d_b" kind="class" language="C++" prot="public">
+    <compoundname>SecMsgDB</compoundname>
+    <includes refid="smessage_8h" local="no">smessage.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_sec_msg_d_b_1a3715bf85e5e420c6c3ec5335bec80ed0" prot="public" static="no" mutable="no">
+        <type><ref refid="classleveldb_1_1_d_b" kindref="compound">leveldb::DB</ref> *</type>
+        <definition>leveldb::DB* SecMsgDB::pdb</definition>
+        <argsstring></argsstring>
+        <name>pdb</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/smessage.h" line="326" column="1" bodyfile="/home/dev/ds-160209/src/smessage.h" bodystart="326" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_sec_msg_d_b_1add6d2066ed0af0b4fcaef2739663e2c4" prot="public" static="no" mutable="no">
+        <type><ref refid="classleveldb_1_1_write_batch" kindref="compound">leveldb::WriteBatch</ref> *</type>
+        <definition>leveldb::WriteBatch* SecMsgDB::activeBatch</definition>
+        <argsstring></argsstring>
+        <name>activeBatch</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/smessage.h" line="327" column="1" bodyfile="/home/dev/ds-160209/src/smessage.h" bodystart="327" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_sec_msg_d_b_1a903159afeb64ca142f9f2634929e57fd" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>SecMsgDB::SecMsgDB</definition>
+        <argsstring>()</argsstring>
+        <name>SecMsgDB</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/smessage.h" line="294" column="1" bodyfile="/home/dev/ds-160209/src/smessage.h" bodystart="294" bodyend="297"/>
+      </memberdef>
+      <memberdef kind="function" id="class_sec_msg_d_b_1ac73f225e8632a99aeb3fb618935b0599" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>SecMsgDB::~SecMsgDB</definition>
+        <argsstring>()</argsstring>
+        <name>~SecMsgDB</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/smessage.h" line="299" column="1" bodyfile="/home/dev/ds-160209/src/smessage.h" bodystart="299" bodyend="305"/>
+      </memberdef>
+      <memberdef kind="function" id="class_sec_msg_d_b_1a1fc6ac45b72e4df75be07fdadfc356ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SecMsgDB::Open</definition>
+        <argsstring>(const char *pszMode=&quot;r+&quot;)</argsstring>
+        <name>Open</name>
+        <param>
+          <type>const char *</type>
+          <declname>pszMode</declname>
+          <defval>&quot;r+&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/smessage.h" line="307" column="1" bodyfile="/home/dev/ds-160209/src/smessage.cpp" bodystart="188" bodyend="221"/>
+      </memberdef>
+      <memberdef kind="function" id="class_sec_msg_d_b_1af26665a96e391711f4df702861d1557a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SecMsgDB::ScanBatch</definition>
+        <argsstring>(const CDataStream &amp;key, std::string *value, bool *deleted) const </argsstring>
+        <name>ScanBatch</name>
+        <param>
+          <type>const <ref refid="class_c_data_stream" kindref="compound">CDataStream</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>std::string *</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>deleted</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/smessage.h" line="309" column="1" bodyfile="/home/dev/ds-160209/src/smessage.cpp" bodystart="259" bodyend="277"/>
+      </memberdef>
+      <memberdef kind="function" id="class_sec_msg_d_b_1a0bbc537adf50f87a8bfaa68664e41c41" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SecMsgDB::TxnBegin</definition>
+        <argsstring>()</argsstring>
+        <name>TxnBegin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/smessage.h" line="311" column="1" bodyfile="/home/dev/ds-160209/src/smessage.cpp" bodystart="279" bodyend="285"/>
+      </memberdef>
+      <memberdef kind="function" id="class_sec_msg_d_b_1accabf13445ca07b9d37f456a3db6fe2f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SecMsgDB::TxnCommit</definition>
+        <argsstring>()</argsstring>
+        <name>TxnCommit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/smessage.h" line="312" column="1" bodyfile="/home/dev/ds-160209/src/smessage.cpp" bodystart="287" bodyend="305"/>
+      </memberdef>
+      <memberdef kind="function" id="class_sec_msg_d_b_1a49e50670db162f8c9e192b7b00f0a813" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SecMsgDB::TxnAbort</definition>
+        <argsstring>()</argsstring>
+        <name>TxnAbort</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/smessage.h" line="313" column="1" bodyfile="/home/dev/ds-160209/src/smessage.cpp" bodystart="307" bodyend="312"/>
+      </memberdef>
+      <memberdef kind="function" id="class_sec_msg_d_b_1aabce57e714b562302cee71bcea5e340f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SecMsgDB::ReadPK</definition>
+        <argsstring>(CKeyID &amp;addr, CPubKey &amp;pubkey)</argsstring>
+        <name>ReadPK</name>
+        <param>
+          <type><ref refid="class_c_key_i_d" kindref="compound">CKeyID</ref> &amp;</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_pub_key" kindref="compound">CPubKey</ref> &amp;</type>
+          <declname>pubkey</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/smessage.h" line="315" column="1" bodyfile="/home/dev/ds-160209/src/smessage.cpp" bodystart="314" bodyend="357"/>
+      </memberdef>
+      <memberdef kind="function" id="class_sec_msg_d_b_1a77131fcd232e503a57ab8569d3ab9fd8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SecMsgDB::WritePK</definition>
+        <argsstring>(CKeyID &amp;addr, CPubKey &amp;pubkey)</argsstring>
+        <name>WritePK</name>
+        <param>
+          <type><ref refid="class_c_key_i_d" kindref="compound">CKeyID</ref> &amp;</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_pub_key" kindref="compound">CPubKey</ref> &amp;</type>
+          <declname>pubkey</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/smessage.h" line="316" column="1" bodyfile="/home/dev/ds-160209/src/smessage.cpp" bodystart="359" bodyend="389"/>
+      </memberdef>
+      <memberdef kind="function" id="class_sec_msg_d_b_1ad039b1d29fc0e82695d3bd30087765b9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SecMsgDB::ExistsPK</definition>
+        <argsstring>(CKeyID &amp;addr)</argsstring>
+        <name>ExistsPK</name>
+        <param>
+          <type><ref refid="class_c_key_i_d" kindref="compound">CKeyID</ref> &amp;</type>
+          <declname>addr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/smessage.h" line="317" column="1" bodyfile="/home/dev/ds-160209/src/smessage.cpp" bodystart="391" bodyend="414"/>
+      </memberdef>
+      <memberdef kind="function" id="class_sec_msg_d_b_1ac16426690cd634af83b90aa39a7a5d51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SecMsgDB::NextSmesg</definition>
+        <argsstring>(leveldb::Iterator *it, std::string &amp;prefix, uint8_t *vchKey, SecMsgStored &amp;smsgStored)</argsstring>
+        <name>NextSmesg</name>
+        <param>
+          <type><ref refid="classleveldb_1_1_iterator" kindref="compound">leveldb::Iterator</ref> *</type>
+          <declname>it</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>prefix</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref> *</type>
+          <declname>vchKey</declname>
+        </param>
+        <param>
+          <type><ref refid="class_sec_msg_stored" kindref="compound">SecMsgStored</ref> &amp;</type>
+          <declname>smsgStored</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/smessage.h" line="319" column="1" bodyfile="/home/dev/ds-160209/src/smessage.cpp" bodystart="417" bodyend="443"/>
+      </memberdef>
+      <memberdef kind="function" id="class_sec_msg_d_b_1a6aa8320d9850912374a74823024df701" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SecMsgDB::NextSmesgKey</definition>
+        <argsstring>(leveldb::Iterator *it, std::string &amp;prefix, uint8_t *vchKey)</argsstring>
+        <name>NextSmesgKey</name>
+        <param>
+          <type><ref refid="classleveldb_1_1_iterator" kindref="compound">leveldb::Iterator</ref> *</type>
+          <declname>it</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>prefix</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref> *</type>
+          <declname>vchKey</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/smessage.h" line="320" column="1" bodyfile="/home/dev/ds-160209/src/smessage.cpp" bodystart="445" bodyend="463"/>
+      </memberdef>
+      <memberdef kind="function" id="class_sec_msg_d_b_1a35c86d596ed6c60f4d62cc3e551356d2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SecMsgDB::ReadSmesg</definition>
+        <argsstring>(uint8_t *chKey, SecMsgStored &amp;smsgStored)</argsstring>
+        <name>ReadSmesg</name>
+        <param>
+          <type><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref> *</type>
+          <declname>chKey</declname>
+        </param>
+        <param>
+          <type><ref refid="class_sec_msg_stored" kindref="compound">SecMsgStored</ref> &amp;</type>
+          <declname>smsgStored</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/smessage.h" line="321" column="1" bodyfile="/home/dev/ds-160209/src/smessage.cpp" bodystart="465" bodyend="505"/>
+      </memberdef>
+      <memberdef kind="function" id="class_sec_msg_d_b_1af254b80ad938946841361c77cb09be0a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SecMsgDB::WriteSmesg</definition>
+        <argsstring>(uint8_t *chKey, SecMsgStored &amp;smsgStored)</argsstring>
+        <name>WriteSmesg</name>
+        <param>
+          <type><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref> *</type>
+          <declname>chKey</declname>
+        </param>
+        <param>
+          <type><ref refid="class_sec_msg_stored" kindref="compound">SecMsgStored</ref> &amp;</type>
+          <declname>smsgStored</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/smessage.h" line="322" column="1" bodyfile="/home/dev/ds-160209/src/smessage.cpp" bodystart="507" bodyend="533"/>
+      </memberdef>
+      <memberdef kind="function" id="class_sec_msg_d_b_1ad9869377019ded94b70a3c4a9ba2afb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SecMsgDB::ExistsSmesg</definition>
+        <argsstring>(uint8_t *chKey)</argsstring>
+        <name>ExistsSmesg</name>
+        <param>
+          <type><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref> *</type>
+          <declname>chKey</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/smessage.h" line="323" column="1" bodyfile="/home/dev/ds-160209/src/smessage.cpp" bodystart="535" bodyend="556"/>
+      </memberdef>
+      <memberdef kind="function" id="class_sec_msg_d_b_1a7d00fef57cf02d33e0b076ca114f7af5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SecMsgDB::EraseSmesg</definition>
+        <argsstring>(uint8_t *chKey)</argsstring>
+        <name>EraseSmesg</name>
+        <param>
+          <type><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref> *</type>
+          <declname>chKey</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/smessage.h" line="324" column="1" bodyfile="/home/dev/ds-160209/src/smessage.cpp" bodystart="558" bodyend="577"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="1592">
+        <label>leveldb::DB</label>
+        <link refid="classleveldb_1_1_d_b"/>
+      </node>
+      <node id="1591">
+        <label>leveldb::WriteBatch</label>
+        <link refid="classleveldb_1_1_write_batch"/>
+      </node>
+      <node id="1590">
+        <label>SecMsgDB</label>
+        <link refid="class_sec_msg_d_b"/>
+        <childnode refid="1591" relation="usage">
+          <edgelabel>activeBatch</edgelabel>
+        </childnode>
+        <childnode refid="1592" relation="usage">
+          <edgelabel>pdb</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/dev/ds-160209/src/smessage.h" line="292" column="1" bodyfile="/home/dev/ds-160209/src/smessage.h" bodystart="291" bodyend="329"/>
+    <listofallmembers>
+      <member refid="class_sec_msg_d_b_1add6d2066ed0af0b4fcaef2739663e2c4" prot="public" virt="non-virtual"><scope>SecMsgDB</scope><name>activeBatch</name></member>
+      <member refid="class_sec_msg_d_b_1a7d00fef57cf02d33e0b076ca114f7af5" prot="public" virt="non-virtual"><scope>SecMsgDB</scope><name>EraseSmesg</name></member>
+      <member refid="class_sec_msg_d_b_1ad039b1d29fc0e82695d3bd30087765b9" prot="public" virt="non-virtual"><scope>SecMsgDB</scope><name>ExistsPK</name></member>
+      <member refid="class_sec_msg_d_b_1ad9869377019ded94b70a3c4a9ba2afb0" prot="public" virt="non-virtual"><scope>SecMsgDB</scope><name>ExistsSmesg</name></member>
+      <member refid="class_sec_msg_d_b_1ac16426690cd634af83b90aa39a7a5d51" prot="public" virt="non-virtual"><scope>SecMsgDB</scope><name>NextSmesg</name></member>
+      <member refid="class_sec_msg_d_b_1a6aa8320d9850912374a74823024df701" prot="public" virt="non-virtual"><scope>SecMsgDB</scope><name>NextSmesgKey</name></member>
+      <member refid="class_sec_msg_d_b_1a1fc6ac45b72e4df75be07fdadfc356ce" prot="public" virt="non-virtual"><scope>SecMsgDB</scope><name>Open</name></member>
+      <member refid="class_sec_msg_d_b_1a3715bf85e5e420c6c3ec5335bec80ed0" prot="public" virt="non-virtual"><scope>SecMsgDB</scope><name>pdb</name></member>
+      <member refid="class_sec_msg_d_b_1aabce57e714b562302cee71bcea5e340f" prot="public" virt="non-virtual"><scope>SecMsgDB</scope><name>ReadPK</name></member>
+      <member refid="class_sec_msg_d_b_1a35c86d596ed6c60f4d62cc3e551356d2" prot="public" virt="non-virtual"><scope>SecMsgDB</scope><name>ReadSmesg</name></member>
+      <member refid="class_sec_msg_d_b_1af26665a96e391711f4df702861d1557a" prot="public" virt="non-virtual"><scope>SecMsgDB</scope><name>ScanBatch</name></member>
+      <member refid="class_sec_msg_d_b_1a903159afeb64ca142f9f2634929e57fd" prot="public" virt="non-virtual"><scope>SecMsgDB</scope><name>SecMsgDB</name></member>
+      <member refid="class_sec_msg_d_b_1a49e50670db162f8c9e192b7b00f0a813" prot="public" virt="non-virtual"><scope>SecMsgDB</scope><name>TxnAbort</name></member>
+      <member refid="class_sec_msg_d_b_1a0bbc537adf50f87a8bfaa68664e41c41" prot="public" virt="non-virtual"><scope>SecMsgDB</scope><name>TxnBegin</name></member>
+      <member refid="class_sec_msg_d_b_1accabf13445ca07b9d37f456a3db6fe2f" prot="public" virt="non-virtual"><scope>SecMsgDB</scope><name>TxnCommit</name></member>
+      <member refid="class_sec_msg_d_b_1a77131fcd232e503a57ab8569d3ab9fd8" prot="public" virt="non-virtual"><scope>SecMsgDB</scope><name>WritePK</name></member>
+      <member refid="class_sec_msg_d_b_1af254b80ad938946841361c77cb09be0a" prot="public" virt="non-virtual"><scope>SecMsgDB</scope><name>WriteSmesg</name></member>
+      <member refid="class_sec_msg_d_b_1ac73f225e8632a99aeb3fb618935b0599" prot="public" virt="non-virtual"><scope>SecMsgDB</scope><name>~SecMsgDB</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,137 @@
+.TH "CFeeRate" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CFeeRate \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <amount\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCFeeRate\fP ()"
+.br
+.ti -1c
+.RI "\fBCFeeRate\fP (const \fBCAmount\fP &_nSatoshisPerK)"
+.br
+.ti -1c
+.RI "\fBCFeeRate\fP (const \fBCAmount\fP &nFeePaid, size_t nSize)"
+.br
+.ti -1c
+.RI "\fBCFeeRate\fP (const \fBCFeeRate\fP &other)"
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetFee\fP (size_t size) const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetFeePerK\fP () const "
+.br
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.ti -1c
+.RI "template<typename Stream , typename Operation > void \fBSerializationOp\fP (Stream &s, Operation ser_action, int nType, int nVersion)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBADD_SERIALIZE_METHODS\fP"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "bool \fBoperator<\fP (const \fBCFeeRate\fP &a, const \fBCFeeRate\fP &b)"
+.br
+.ti -1c
+.RI "bool \fBoperator>\fP (const \fBCFeeRate\fP &a, const \fBCFeeRate\fP &b)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBCFeeRate\fP &a, const \fBCFeeRate\fP &b)"
+.br
+.ti -1c
+.RI "bool \fBoperator<=\fP (const \fBCFeeRate\fP &a, const \fBCFeeRate\fP &b)"
+.br
+.ti -1c
+.RI "bool \fBoperator>=\fP (const \fBCFeeRate\fP &a, const \fBCFeeRate\fP &b)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Type-safe wrapper class to for fee rates (how much to pay based on transaction size) 
+.PP
+Definition at line 25 of file amount\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CFeeRate::CFeeRate ()\fC [inline]\fP"
+
+.PP
+Definition at line 30 of file amount\&.h\&.
+.SS "CFeeRate::CFeeRate (const \fBCAmount\fP & _nSatoshisPerK)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Definition at line 31 of file amount\&.h\&.
+.SS "CFeeRate::CFeeRate (const \fBCAmount\fP & nFeePaid, size_t nSize)"
+
+.PP
+Definition at line 9 of file amount\&.cpp\&.
+.SS "CFeeRate::CFeeRate (const \fBCFeeRate\fP & other)\fC [inline]\fP"
+
+.PP
+Definition at line 33 of file amount\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBCAmount\fP CFeeRate::GetFee (size_t size) const"
+
+.PP
+Definition at line 17 of file amount\&.cpp\&.
+.SS "\fBCAmount\fP CFeeRate::GetFeePerK () const\fC [inline]\fP"
+
+.PP
+Definition at line 36 of file amount\&.h\&.
+.SS "template<typename Stream , typename Operation > void CFeeRate::SerializationOp (Stream & s, Operation ser_action, int nType, int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 48 of file amount\&.h\&.
+.SS "std::string CFeeRate::ToString () const"
+
+.PP
+Definition at line 27 of file amount\&.cpp\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "bool operator< (const \fBCFeeRate\fP & a, const \fBCFeeRate\fP & b)\fC [friend]\fP"
+
+.PP
+Definition at line 38 of file amount\&.h\&.
+.SS "bool operator<= (const \fBCFeeRate\fP & a, const \fBCFeeRate\fP & b)\fC [friend]\fP"
+
+.PP
+Definition at line 41 of file amount\&.h\&.
+.SS "bool operator== (const \fBCFeeRate\fP & a, const \fBCFeeRate\fP & b)\fC [friend]\fP"
+
+.PP
+Definition at line 40 of file amount\&.h\&.
+.SS "bool operator> (const \fBCFeeRate\fP & a, const \fBCFeeRate\fP & b)\fC [friend]\fP"
+
+.PP
+Definition at line 39 of file amount\&.h\&.
+.SS "bool operator>= (const \fBCFeeRate\fP & a, const \fBCFeeRate\fP & b)\fC [friend]\fP"
+
+.PP
+Definition at line 42 of file amount\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "CFeeRate::ADD_SERIALIZE_METHODS"
+
+.PP
+Definition at line 45 of file amount\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

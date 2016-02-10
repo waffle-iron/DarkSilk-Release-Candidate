@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_coins_view_error_catcher" kind="class" language="C++" prot="public">
+    <compoundname>CCoinsViewErrorCatcher</compoundname>
+    <basecompoundref refid="class_c_coins_view_backed" prot="public" virt="non-virtual">CCoinsViewBacked</basecompoundref>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_coins_view_error_catcher_1aa8295e2f5ce5ad9880c5bd86d52e014c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CCoinsViewErrorCatcher::CCoinsViewErrorCatcher</definition>
+        <argsstring>(CCoinsView *view)</argsstring>
+        <name>CCoinsViewErrorCatcher</name>
+        <param>
+          <type><ref refid="class_c_coins_view" kindref="compound">CCoinsView</ref> *</type>
+          <declname>view</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/init.cpp" line="101" column="1" bodyfile="/home/dev/ds-160209/src/init.cpp" bodystart="101" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_coins_view_error_catcher_1a762969de31b62e55d01f1cdf0b178eb9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool CCoinsViewErrorCatcher::GetCoins</definition>
+        <argsstring>(const uint256 &amp;txid, CCoins &amp;coins) const </argsstring>
+        <name>GetCoins</name>
+        <reimplements refid="class_c_coins_view_backed_1a21b95a9910f94e9b7ebed62a6f329ea0">GetCoins</reimplements>
+        <param>
+          <type>const <ref refid="classuint256" kindref="compound">uint256</ref> &amp;</type>
+          <declname>txid</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_coins" kindref="compound">CCoins</ref> &amp;</type>
+          <declname>coins</declname>
+        </param>
+        <briefdescription>
+<para>Retrieve the <ref refid="class_c_coins" kindref="compound">CCoins</ref> (unspent transaction outputs) for a given txid. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/init.cpp" line="102" column="1" bodyfile="/home/dev/ds-160209/src/init.cpp" bodystart="102" bodyend="114"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="389">
+        <label>CCoinsView</label>
+        <link refid="class_c_coins_view"/>
+      </node>
+      <node id="387">
+        <label>CCoinsViewErrorCatcher</label>
+        <link refid="class_c_coins_view_error_catcher"/>
+        <childnode refid="388" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="388">
+        <label>CCoinsViewBacked</label>
+        <link refid="class_c_coins_view_backed"/>
+        <childnode refid="389" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="392">
+        <label>CCoinsView</label>
+        <link refid="class_c_coins_view"/>
+      </node>
+      <node id="390">
+        <label>CCoinsViewErrorCatcher</label>
+        <link refid="class_c_coins_view_error_catcher"/>
+        <childnode refid="391" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="391">
+        <label>CCoinsViewBacked</label>
+        <link refid="class_c_coins_view_backed"/>
+        <childnode refid="392" relation="public-inheritance">
+        </childnode>
+        <childnode refid="392" relation="usage">
+          <edgelabel>base</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/dev/ds-160209/src/init.cpp" line="99" column="1" bodyfile="/home/dev/ds-160209/src/init.cpp" bodystart="98" bodyend="116"/>
+    <listofallmembers>
+      <member refid="class_c_coins_view_backed_1a901472317114adc4c104efd61dcf6203" prot="protected" virt="non-virtual"><scope>CCoinsViewErrorCatcher</scope><name>base</name></member>
+      <member refid="class_c_coins_view_backed_1ace15da3934c9d7a9cb9c7a787f92f764" prot="public" virt="virtual"><scope>CCoinsViewErrorCatcher</scope><name>BatchWrite</name></member>
+      <member refid="class_c_coins_view_backed_1af86a3b07433e8d84678772411791125e" prot="public" virt="non-virtual"><scope>CCoinsViewErrorCatcher</scope><name>CCoinsViewBacked</name></member>
+      <member refid="class_c_coins_view_error_catcher_1aa8295e2f5ce5ad9880c5bd86d52e014c" prot="public" virt="non-virtual"><scope>CCoinsViewErrorCatcher</scope><name>CCoinsViewErrorCatcher</name></member>
+      <member refid="class_c_coins_view_backed_1a8465dc4764fd5b01591b824551cbbfab" prot="public" virt="virtual"><scope>CCoinsViewErrorCatcher</scope><name>GetBestBlock</name></member>
+      <member refid="class_c_coins_view_error_catcher_1a762969de31b62e55d01f1cdf0b178eb9" prot="public" virt="virtual"><scope>CCoinsViewErrorCatcher</scope><name>GetCoins</name></member>
+      <member refid="class_c_coins_view_backed_1a368f277ac68652a91ac171f46f02edca" prot="public" virt="virtual"><scope>CCoinsViewErrorCatcher</scope><name>GetStats</name></member>
+      <member refid="class_c_coins_view_backed_1a6a769cf9cc55128dea8e1a2798056e71" prot="public" virt="virtual"><scope>CCoinsViewErrorCatcher</scope><name>HaveCoins</name></member>
+      <member refid="class_c_coins_view_backed_1a7eaddfbfd401a95c2fda2a8d8feaaf73" prot="public" virt="non-virtual"><scope>CCoinsViewErrorCatcher</scope><name>SetBackend</name></member>
+      <member refid="class_c_coins_view_1a7ffb4218bf991ddff47339e44c8710da" prot="public" virt="virtual"><scope>CCoinsViewErrorCatcher</scope><name>~CCoinsView</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

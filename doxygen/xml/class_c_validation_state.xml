@@ -1,0 +1,345 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_validation_state" kind="class" language="C++" prot="public">
+    <compoundname>CValidationState</compoundname>
+    <includes refid="main_8h" local="no">main.h</includes>
+      <sectiondef kind="private-type">
+      <memberdef kind="enum" id="class_c_validation_state_1ab736e95a8d13a9425fe0b79c9e3b6be5" prot="private" static="no">
+        <name>mode_state</name>
+        <enumvalue id="class_c_validation_state_1ab736e95a8d13a9425fe0b79c9e3b6be5a64b45da69daed754ee47cdd72c42f0ee" prot="private">
+          <name>MODE_VALID</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_validation_state_1ab736e95a8d13a9425fe0b79c9e3b6be5a403c817bf0ca7b969c122b791de732e4" prot="private">
+          <name>MODE_INVALID</name>
+          <briefdescription>
+<para>everything ok </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_validation_state_1ab736e95a8d13a9425fe0b79c9e3b6be5ab0400d1ba2df7b278e53d7a8b2db6eb4" prot="private">
+          <name>MODE_ERROR</name>
+          <briefdescription>
+<para>network rule violation (DoS value may be set) </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="498" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="498" bodyend="502"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_c_validation_state_1a9d16568fc700a1295e3f7b243ef185f1" prot="private" static="no" mutable="no">
+        <type>enum CValidationState::mode_state</type>
+        <definition>enum CValidationState::mode_state  CValidationState::mode</definition>
+        <argsstring></argsstring>
+        <name>mode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="502" column="1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_validation_state_1ad4ed6a368ba6be2017ed991971e9424f" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CValidationState::nDoS</definition>
+        <argsstring></argsstring>
+        <name>nDoS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="503" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="503" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_validation_state_1a398d7f133ac0e48f311029ae55aab1af" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string CValidationState::strRejectReason</definition>
+        <argsstring></argsstring>
+        <name>strRejectReason</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="504" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="504" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_validation_state_1afbfb8847c4fe8019df213695fd1a4849" prot="private" static="no" mutable="no">
+        <type>unsigned char</type>
+        <definition>unsigned char CValidationState::chRejectCode</definition>
+        <argsstring></argsstring>
+        <name>chRejectCode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="505" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="505" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_validation_state_1afa4ef2d2c42ffb3e6180c616ae5489da" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CValidationState::corruptionPossible</definition>
+        <argsstring></argsstring>
+        <name>corruptionPossible</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="506" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="506" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_validation_state_1a4c89cdea0b8e6983baa531bc756d8584" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CValidationState::CValidationState</definition>
+        <argsstring>()</argsstring>
+        <name>CValidationState</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="508" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="508" bodyend="508"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_validation_state_1a3c6786d00da8d1c5df25b4c3876409e8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CValidationState::DoS</definition>
+        <argsstring>(int level, bool ret=false, unsigned char chRejectCodeIn=0, std::string strRejectReasonIn=&quot;&quot;, bool corruptionIn=false)</argsstring>
+        <name>DoS</name>
+        <param>
+          <type>int</type>
+          <declname>level</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>ret</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>unsigned char</type>
+          <declname>chRejectCodeIn</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>strRejectReasonIn</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>corruptionIn</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="509" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="509" bodyend="520"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_validation_state_1a88ff08b67f7f44bb3c7f7053bb1ee6fc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CValidationState::Invalid</definition>
+        <argsstring>(bool ret=false, unsigned char _chRejectCode=0, std::string _strRejectReason=&quot;&quot;)</argsstring>
+        <name>Invalid</name>
+        <param>
+          <type>bool</type>
+          <declname>ret</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>unsigned char</type>
+          <declname>_chRejectCode</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>_strRejectReason</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="521" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="521" bodyend="524"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_validation_state_1abf67ad56f62df5679d47c289684c554c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CValidationState::Error</definition>
+        <argsstring>(std::string strRejectReasonIn=&quot;&quot;)</argsstring>
+        <name>Error</name>
+        <param>
+          <type>std::string</type>
+          <declname>strRejectReasonIn</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="525" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="525" bodyend="530"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_validation_state_1a6788cb521cf538ac80413a1c6c3da5e8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CValidationState::Abort</definition>
+        <argsstring>(const std::string &amp;msg)</argsstring>
+        <name>Abort</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="531" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="531" bodyend="534"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_validation_state_1af4c51946b39b2234b8004d58fbc164a5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CValidationState::IsValid</definition>
+        <argsstring>() const </argsstring>
+        <name>IsValid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="535" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="535" bodyend="537"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_validation_state_1aba47277dbc39192208515fd8cc685879" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CValidationState::IsInvalid</definition>
+        <argsstring>() const </argsstring>
+        <name>IsInvalid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="538" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="538" bodyend="540"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_validation_state_1a8c608ada2395e5af099661ff353dbb3f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CValidationState::IsError</definition>
+        <argsstring>() const </argsstring>
+        <name>IsError</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="541" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="541" bodyend="543"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_validation_state_1aba30a9e05436871a43e6acfb8e484963" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CValidationState::IsInvalid</definition>
+        <argsstring>(int &amp;nDoSOut) const </argsstring>
+        <name>IsInvalid</name>
+        <param>
+          <type>int &amp;</type>
+          <declname>nDoSOut</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="544" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="544" bodyend="550"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_validation_state_1a5b09f68e838c43ef20af29e725920a01" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CValidationState::CorruptionPossible</definition>
+        <argsstring>() const </argsstring>
+        <name>CorruptionPossible</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="551" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="551" bodyend="553"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_validation_state_1a8bbd27130d1810d60735e1df5e4ea69b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned char</type>
+        <definition>unsigned char CValidationState::GetRejectCode</definition>
+        <argsstring>() const </argsstring>
+        <name>GetRejectCode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="554" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="554" bodyend="554"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_validation_state_1a2e7ea577adfdf90aaff44ad0fa16adde" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string CValidationState::GetRejectReason</definition>
+        <argsstring>() const </argsstring>
+        <name>GetRejectReason</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="555" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="555" bodyend="555"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Capture information about block/transaction validation </para>    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/main.h" line="496" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="496" bodyend="556"/>
+    <listofallmembers>
+      <member refid="class_c_validation_state_1a6788cb521cf538ac80413a1c6c3da5e8" prot="public" virt="non-virtual"><scope>CValidationState</scope><name>Abort</name></member>
+      <member refid="class_c_validation_state_1afbfb8847c4fe8019df213695fd1a4849" prot="private" virt="non-virtual"><scope>CValidationState</scope><name>chRejectCode</name></member>
+      <member refid="class_c_validation_state_1a5b09f68e838c43ef20af29e725920a01" prot="public" virt="non-virtual"><scope>CValidationState</scope><name>CorruptionPossible</name></member>
+      <member refid="class_c_validation_state_1afa4ef2d2c42ffb3e6180c616ae5489da" prot="private" virt="non-virtual"><scope>CValidationState</scope><name>corruptionPossible</name></member>
+      <member refid="class_c_validation_state_1a4c89cdea0b8e6983baa531bc756d8584" prot="public" virt="non-virtual"><scope>CValidationState</scope><name>CValidationState</name></member>
+      <member refid="class_c_validation_state_1a3c6786d00da8d1c5df25b4c3876409e8" prot="public" virt="non-virtual"><scope>CValidationState</scope><name>DoS</name></member>
+      <member refid="class_c_validation_state_1abf67ad56f62df5679d47c289684c554c" prot="public" virt="non-virtual"><scope>CValidationState</scope><name>Error</name></member>
+      <member refid="class_c_validation_state_1a8bbd27130d1810d60735e1df5e4ea69b" prot="public" virt="non-virtual"><scope>CValidationState</scope><name>GetRejectCode</name></member>
+      <member refid="class_c_validation_state_1a2e7ea577adfdf90aaff44ad0fa16adde" prot="public" virt="non-virtual"><scope>CValidationState</scope><name>GetRejectReason</name></member>
+      <member refid="class_c_validation_state_1a88ff08b67f7f44bb3c7f7053bb1ee6fc" prot="public" virt="non-virtual"><scope>CValidationState</scope><name>Invalid</name></member>
+      <member refid="class_c_validation_state_1a8c608ada2395e5af099661ff353dbb3f" prot="public" virt="non-virtual"><scope>CValidationState</scope><name>IsError</name></member>
+      <member refid="class_c_validation_state_1aba47277dbc39192208515fd8cc685879" prot="public" virt="non-virtual"><scope>CValidationState</scope><name>IsInvalid</name></member>
+      <member refid="class_c_validation_state_1aba30a9e05436871a43e6acfb8e484963" prot="public" virt="non-virtual"><scope>CValidationState</scope><name>IsInvalid</name></member>
+      <member refid="class_c_validation_state_1af4c51946b39b2234b8004d58fbc164a5" prot="public" virt="non-virtual"><scope>CValidationState</scope><name>IsValid</name></member>
+      <member refid="class_c_validation_state_1a9d16568fc700a1295e3f7b243ef185f1" prot="private" virt="non-virtual"><scope>CValidationState</scope><name>mode</name></member>
+      <member refid="class_c_validation_state_1ab736e95a8d13a9425fe0b79c9e3b6be5ab0400d1ba2df7b278e53d7a8b2db6eb4" prot="private" virt="non-virtual"><scope>CValidationState</scope><name>MODE_ERROR</name></member>
+      <member refid="class_c_validation_state_1ab736e95a8d13a9425fe0b79c9e3b6be5a403c817bf0ca7b969c122b791de732e4" prot="private" virt="non-virtual"><scope>CValidationState</scope><name>MODE_INVALID</name></member>
+      <member refid="class_c_validation_state_1ab736e95a8d13a9425fe0b79c9e3b6be5" prot="private" virt="non-virtual"><scope>CValidationState</scope><name>mode_state</name></member>
+      <member refid="class_c_validation_state_1ab736e95a8d13a9425fe0b79c9e3b6be5a64b45da69daed754ee47cdd72c42f0ee" prot="private" virt="non-virtual"><scope>CValidationState</scope><name>MODE_VALID</name></member>
+      <member refid="class_c_validation_state_1ad4ed6a368ba6be2017ed991971e9424f" prot="private" virt="non-virtual"><scope>CValidationState</scope><name>nDoS</name></member>
+      <member refid="class_c_validation_state_1a398d7f133ac0e48f311029ae55aab1af" prot="private" virt="non-virtual"><scope>CValidationState</scope><name>strRejectReason</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,94 @@
+.TH "leveldb::MemTable" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+leveldb::MemTable \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <memtable\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMemTable\fP (const \fBInternalKeyComparator\fP &comparator)"
+.br
+.ti -1c
+.RI "void \fBRef\fP ()"
+.br
+.ti -1c
+.RI "void \fBUnref\fP ()"
+.br
+.ti -1c
+.RI "size_t \fBApproximateMemoryUsage\fP ()"
+.br
+.ti -1c
+.RI "\fBIterator\fP * \fBNewIterator\fP ()"
+.br
+.ti -1c
+.RI "void \fBAdd\fP (\fBSequenceNumber\fP seq, \fBValueType\fP type, const \fBSlice\fP &key, const \fBSlice\fP &\fBvalue\fP)"
+.br
+.ti -1c
+.RI "bool \fBGet\fP (const \fBLookupKey\fP &key, std::string *\fBvalue\fP, \fBStatus\fP *s)"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBMemTableIterator\fP"
+.br
+.ti -1c
+.RI "class \fBMemTableBackwardIterator\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 20 of file memtable\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "leveldb::MemTable::MemTable (const \fBInternalKeyComparator\fP & comparator)\fC [explicit]\fP"
+
+.PP
+Definition at line 21 of file memtable\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void leveldb::MemTable::Add (\fBSequenceNumber\fP seq, \fBValueType\fP type, const \fBSlice\fP & key, const \fBSlice\fP & value)"
+
+.PP
+Definition at line 82 of file memtable\&.cc\&.
+.SS "size_t leveldb::MemTable::ApproximateMemoryUsage ()"
+
+.PP
+Definition at line 31 of file memtable\&.cc\&.
+.SS "bool leveldb::MemTable::Get (const \fBLookupKey\fP & key, std::string * value, \fBStatus\fP * s)"
+
+.PP
+Definition at line 108 of file memtable\&.cc\&.
+.SS "\fBIterator\fP * leveldb::MemTable::NewIterator ()"
+
+.PP
+Definition at line 78 of file memtable\&.cc\&.
+.SS "void leveldb::MemTable::Ref ()\fC [inline]\fP"
+
+.PP
+Definition at line 27 of file memtable\&.h\&.
+.SS "void leveldb::MemTable::Unref ()\fC [inline]\fP"
+
+.PP
+Definition at line 30 of file memtable\&.h\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class MemTableBackwardIterator\fC [friend]\fP"
+
+.PP
+Definition at line 75 of file memtable\&.h\&.
+.SS "friend class \fBMemTableIterator\fP\fC [friend]\fP"
+
+.PP
+Definition at line 74 of file memtable\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

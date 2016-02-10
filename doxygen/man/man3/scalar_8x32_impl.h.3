@@ -1,0 +1,311 @@
+.TH "/home/dev/ds-160209/src/secp256k1/src/scalar_8x32_impl.h" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/secp256k1/src/scalar_8x32_impl.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBSECP256K1_N_0\fP   ((\fBuint32_t\fP)0xD0364141UL)"
+.br
+.ti -1c
+.RI "#define \fBSECP256K1_N_1\fP   ((\fBuint32_t\fP)0xBFD25E8CUL)"
+.br
+.ti -1c
+.RI "#define \fBSECP256K1_N_2\fP   ((\fBuint32_t\fP)0xAF48A03BUL)"
+.br
+.ti -1c
+.RI "#define \fBSECP256K1_N_3\fP   ((\fBuint32_t\fP)0xBAAEDCE6UL)"
+.br
+.ti -1c
+.RI "#define \fBSECP256K1_N_4\fP   ((\fBuint32_t\fP)0xFFFFFFFEUL)"
+.br
+.ti -1c
+.RI "#define \fBSECP256K1_N_5\fP   ((\fBuint32_t\fP)0xFFFFFFFFUL)"
+.br
+.ti -1c
+.RI "#define \fBSECP256K1_N_6\fP   ((\fBuint32_t\fP)0xFFFFFFFFUL)"
+.br
+.ti -1c
+.RI "#define \fBSECP256K1_N_7\fP   ((\fBuint32_t\fP)0xFFFFFFFFUL)"
+.br
+.ti -1c
+.RI "#define \fBSECP256K1_N_C_0\fP   (~\fBSECP256K1_N_0\fP + 1)"
+.br
+.ti -1c
+.RI "#define \fBSECP256K1_N_C_1\fP   (~\fBSECP256K1_N_1\fP)"
+.br
+.ti -1c
+.RI "#define \fBSECP256K1_N_C_2\fP   (~\fBSECP256K1_N_2\fP)"
+.br
+.ti -1c
+.RI "#define \fBSECP256K1_N_C_3\fP   (~\fBSECP256K1_N_3\fP)"
+.br
+.ti -1c
+.RI "#define \fBSECP256K1_N_C_4\fP   (1)"
+.br
+.ti -1c
+.RI "#define \fBSECP256K1_N_H_0\fP   ((\fBuint32_t\fP)0x681B20A0UL)"
+.br
+.ti -1c
+.RI "#define \fBSECP256K1_N_H_1\fP   ((\fBuint32_t\fP)0xDFE92F46UL)"
+.br
+.ti -1c
+.RI "#define \fBSECP256K1_N_H_2\fP   ((\fBuint32_t\fP)0x57A4501DUL)"
+.br
+.ti -1c
+.RI "#define \fBSECP256K1_N_H_3\fP   ((\fBuint32_t\fP)0x5D576E73UL)"
+.br
+.ti -1c
+.RI "#define \fBSECP256K1_N_H_4\fP   ((\fBuint32_t\fP)0xFFFFFFFFUL)"
+.br
+.ti -1c
+.RI "#define \fBSECP256K1_N_H_5\fP   ((\fBuint32_t\fP)0xFFFFFFFFUL)"
+.br
+.ti -1c
+.RI "#define \fBSECP256K1_N_H_6\fP   ((\fBuint32_t\fP)0xFFFFFFFFUL)"
+.br
+.ti -1c
+.RI "#define \fBSECP256K1_N_H_7\fP   ((\fBuint32_t\fP)0x7FFFFFFFUL)"
+.br
+.ti -1c
+.RI "#define \fBmuladd\fP(a,  b)"
+.br
+.ti -1c
+.RI "#define \fBmuladd_fast\fP(a,  b)"
+.br
+.ti -1c
+.RI "#define \fBmuladd2\fP(a,  b)"
+.br
+.ti -1c
+.RI "#define \fBsumadd\fP(a)"
+.br
+.ti -1c
+.RI "#define \fBsumadd_fast\fP(a)"
+.br
+.ti -1c
+.RI "#define \fBextract\fP(n)"
+.br
+.ti -1c
+.RI "#define \fBextract_fast\fP(n)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define extract(n)"
+\fBValue:\fP
+.PP
+.nf
+{ \
+    (n) = c0; \
+    c0 = c1; \
+    c1 = c2; \
+    c2 = 0; \
+}
+.fi
+Extract the lowest 32 bits of (c0,c1,c2) into n, and left shift the number 32 bits\&. 
+.PP
+Definition at line 334 of file scalar_8x32_impl\&.h\&.
+.SS "#define extract_fast(n)"
+\fBValue:\fP
+.PP
+.nf
+{ \
+    (n) = c0; \
+    c0 = c1; \
+    c1 = 0; \\
+    VERIFY_CHECK(c2 == 0); \
+}
+.fi
+Extract the lowest 32 bits of (c0,c1,c2) into n, and left shift the number 32 bits\&. c2 is required to be zero\&. 
+.PP
+Definition at line 342 of file scalar_8x32_impl\&.h\&.
+.SS "#define muladd(a, b)"
+\fBValue:\fP
+.PP
+.nf
+{ \\
+    uint32_t tl, th; \
+    { \\
+        uint64_t t = (uint64_t)a * b; \
+        th = t >> 32;         /* at most 0xFFFFFFFE */ \
+        tl = t; \
+    } \
+    c0 += tl;                 /* overflow is handled on the next line */ \
+    th += (c0 < tl) ? 1 : 0;  /* at most 0xFFFFFFFF */ \
+    c1 += th;                 /* overflow is handled on the next line */ \
+    c2 += (c1 < th) ? 1 : 0;  /* never overflows by contract (verified in the next line) */ \\
+    VERIFY_CHECK((c1 >= th) || (c2 != 0)); \
+}
+.fi
+Add a*b to the number defined by (c0,c1,c2)\&. c2 must never overflow\&. 
+.PP
+Definition at line 266 of file scalar_8x32_impl\&.h\&.
+.SS "#define muladd2(a, b)"
+\fBValue:\fP
+.PP
+.nf
+{ \\
+    uint32_t tl, th, th2, tl2; \
+    { \\
+        uint64_t t = (uint64_t)a * b; \
+        th = t >> 32;               /* at most 0xFFFFFFFE */ \
+        tl = t; \
+    } \
+    th2 = th + th;                  /* at most 0xFFFFFFFE (in case th was 0x7FFFFFFF) */ \
+    c2 += (th2 < th) ? 1 : 0;       /* never overflows by contract (verified the next line) */ \\
+    VERIFY_CHECK((th2 >= th) || (c2 != 0)); \
+    tl2 = tl + tl;                  /* at most 0xFFFFFFFE (in case the lowest 63 bits of tl were 0x7FFFFFFF) */ \
+    th2 += (tl2 < tl) ? 1 : 0;      /* at most 0xFFFFFFFF */ \
+    c0 += tl2;                      /* overflow is handled on the next line */ \
+    th2 += (c0 < tl2) ? 1 : 0;      /* second overflow is handled on the next line */ \
+    c2 += (c0 < tl2) & (th2 == 0);  /* never overflows by contract (verified the next line) */ \\
+    VERIFY_CHECK((c0 >= tl2) || (th2 != 0) || (c2 != 0)); \
+    c1 += th2;                      /* overflow is handled on the next line */ \
+    c2 += (c1 < th2) ? 1 : 0;       /* never overflows by contract (verified the next line) */ \\
+    VERIFY_CHECK((c1 >= th2) || (c2 != 0)); \
+}
+.fi
+Add 2*a*b to the number defined by (c0,c1,c2)\&. c2 must never overflow\&. 
+.PP
+Definition at line 295 of file scalar_8x32_impl\&.h\&.
+.SS "#define muladd_fast(a, b)"
+\fBValue:\fP
+.PP
+.nf
+{ \\
+    uint32_t tl, th; \
+    { \\
+        uint64_t t = (uint64_t)a * b; \
+        th = t >> 32;         /* at most 0xFFFFFFFE */ \
+        tl = t; \
+    } \
+    c0 += tl;                 /* overflow is handled on the next line */ \
+    th += (c0 < tl) ? 1 : 0;  /* at most 0xFFFFFFFF */ \
+    c1 += th;                 /* never overflows by contract (verified in the next line) */ \\
+    VERIFY_CHECK(c1 >= th); \
+}
+.fi
+Add a*b to the number defined by (c0,c1)\&. c1 must never overflow\&. 
+.PP
+Definition at line 281 of file scalar_8x32_impl\&.h\&.
+.SS "#define SECP256K1_N_0   ((\fBuint32_t\fP)0xD0364141UL)"
+
+.PP
+Definition at line 11 of file scalar_8x32_impl\&.h\&.
+.SS "#define SECP256K1_N_1   ((\fBuint32_t\fP)0xBFD25E8CUL)"
+
+.PP
+Definition at line 12 of file scalar_8x32_impl\&.h\&.
+.SS "#define SECP256K1_N_2   ((\fBuint32_t\fP)0xAF48A03BUL)"
+
+.PP
+Definition at line 13 of file scalar_8x32_impl\&.h\&.
+.SS "#define SECP256K1_N_3   ((\fBuint32_t\fP)0xBAAEDCE6UL)"
+
+.PP
+Definition at line 14 of file scalar_8x32_impl\&.h\&.
+.SS "#define SECP256K1_N_4   ((\fBuint32_t\fP)0xFFFFFFFEUL)"
+
+.PP
+Definition at line 15 of file scalar_8x32_impl\&.h\&.
+.SS "#define SECP256K1_N_5   ((\fBuint32_t\fP)0xFFFFFFFFUL)"
+
+.PP
+Definition at line 16 of file scalar_8x32_impl\&.h\&.
+.SS "#define SECP256K1_N_6   ((\fBuint32_t\fP)0xFFFFFFFFUL)"
+
+.PP
+Definition at line 17 of file scalar_8x32_impl\&.h\&.
+.SS "#define SECP256K1_N_7   ((\fBuint32_t\fP)0xFFFFFFFFUL)"
+
+.PP
+Definition at line 18 of file scalar_8x32_impl\&.h\&.
+.SS "#define SECP256K1_N_C_0   (~\fBSECP256K1_N_0\fP + 1)"
+
+.PP
+Definition at line 21 of file scalar_8x32_impl\&.h\&.
+.SS "#define SECP256K1_N_C_1   (~\fBSECP256K1_N_1\fP)"
+
+.PP
+Definition at line 22 of file scalar_8x32_impl\&.h\&.
+.SS "#define SECP256K1_N_C_2   (~\fBSECP256K1_N_2\fP)"
+
+.PP
+Definition at line 23 of file scalar_8x32_impl\&.h\&.
+.SS "#define SECP256K1_N_C_3   (~\fBSECP256K1_N_3\fP)"
+
+.PP
+Definition at line 24 of file scalar_8x32_impl\&.h\&.
+.SS "#define SECP256K1_N_C_4   (1)"
+
+.PP
+Definition at line 25 of file scalar_8x32_impl\&.h\&.
+.SS "#define SECP256K1_N_H_0   ((\fBuint32_t\fP)0x681B20A0UL)"
+
+.PP
+Definition at line 28 of file scalar_8x32_impl\&.h\&.
+.SS "#define SECP256K1_N_H_1   ((\fBuint32_t\fP)0xDFE92F46UL)"
+
+.PP
+Definition at line 29 of file scalar_8x32_impl\&.h\&.
+.SS "#define SECP256K1_N_H_2   ((\fBuint32_t\fP)0x57A4501DUL)"
+
+.PP
+Definition at line 30 of file scalar_8x32_impl\&.h\&.
+.SS "#define SECP256K1_N_H_3   ((\fBuint32_t\fP)0x5D576E73UL)"
+
+.PP
+Definition at line 31 of file scalar_8x32_impl\&.h\&.
+.SS "#define SECP256K1_N_H_4   ((\fBuint32_t\fP)0xFFFFFFFFUL)"
+
+.PP
+Definition at line 32 of file scalar_8x32_impl\&.h\&.
+.SS "#define SECP256K1_N_H_5   ((\fBuint32_t\fP)0xFFFFFFFFUL)"
+
+.PP
+Definition at line 33 of file scalar_8x32_impl\&.h\&.
+.SS "#define SECP256K1_N_H_6   ((\fBuint32_t\fP)0xFFFFFFFFUL)"
+
+.PP
+Definition at line 34 of file scalar_8x32_impl\&.h\&.
+.SS "#define SECP256K1_N_H_7   ((\fBuint32_t\fP)0x7FFFFFFFUL)"
+
+.PP
+Definition at line 35 of file scalar_8x32_impl\&.h\&.
+.SS "#define sumadd(a)"
+\fBValue:\fP
+.PP
+.nf
+{ \
+    unsigned int over; \
+    c0 += (a);                  /* overflow is handled on the next line */ \
+    over = (c0 < (a)) ? 1 : 0; \
+    c1 += over;                 /* overflow is handled on the next line */ \
+    c2 += (c1 < over) ? 1 : 0;  /* never overflows by contract */ \
+}
+.fi
+Add a to the number defined by (c0,c1,c2)\&. c2 must never overflow\&. 
+.PP
+Definition at line 317 of file scalar_8x32_impl\&.h\&.
+.SS "#define sumadd_fast(a)"
+\fBValue:\fP
+.PP
+.nf
+{ \
+    c0 += (a);                 /* overflow is handled on the next line */ \
+    c1 += (c0 < (a)) ? 1 : 0;  /* never overflows by contract (verified the next line) */ \\
+    VERIFY_CHECK((c1 != 0) | (c0 >= (a))); \\
+    VERIFY_CHECK(c2 == 0); \
+}
+.fi
+Add a to the number defined by (c0,c1)\&. c1 must never overflow, c2 must be zero\&. 
+.PP
+Definition at line 326 of file scalar_8x32_impl\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

@@ -1,0 +1,279 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="eckey_8h" kind="file" language="C++">
+    <compoundname>eckey.h</compoundname>
+    <includes local="no">stddef.h</includes>
+    <includes refid="group_8h" local="yes">group.h</includes>
+    <includes refid="scalar_8h" local="yes">scalar.h</includes>
+    <includes refid="ecmult_8h" local="yes">ecmult.h</includes>
+    <includes refid="ecmult__gen_8h" local="yes">ecmult_gen.h</includes>
+    <includedby refid="eckey__impl_8h" local="yes">/home/dev/ds-160209/src/secp256k1/src/eckey_impl.h</includedby>
+    <incdepgraph>
+      <node id="22250">
+        <label>scalar.h</label>
+        <link refid="scalar_8h"/>
+        <childnode refid="22248" relation="include">
+        </childnode>
+      </node>
+      <node id="22248">
+        <label>num.h</label>
+        <link refid="num_8h"/>
+      </node>
+      <node id="22247">
+        <label>group.h</label>
+        <link refid="group_8h"/>
+        <childnode refid="22248" relation="include">
+        </childnode>
+        <childnode refid="22249" relation="include">
+        </childnode>
+      </node>
+      <node id="22246">
+        <label>stddef.h</label>
+      </node>
+      <node id="22251">
+        <label>ecmult.h</label>
+        <link refid="ecmult_8h"/>
+        <childnode refid="22248" relation="include">
+        </childnode>
+        <childnode refid="22247" relation="include">
+        </childnode>
+      </node>
+      <node id="22252">
+        <label>ecmult_gen.h</label>
+        <link refid="ecmult__gen_8h"/>
+        <childnode refid="22250" relation="include">
+        </childnode>
+        <childnode refid="22247" relation="include">
+        </childnode>
+      </node>
+      <node id="22249">
+        <label>field.h</label>
+        <link refid="field_8h"/>
+      </node>
+      <node id="22245">
+        <label>/home/dev/ds-160209/src/secp256k1/src/eckey.h</label>
+        <link refid="eckey.h"/>
+        <childnode refid="22246" relation="include">
+        </childnode>
+        <childnode refid="22247" relation="include">
+        </childnode>
+        <childnode refid="22250" relation="include">
+        </childnode>
+        <childnode refid="22251" relation="include">
+        </childnode>
+        <childnode refid="22252" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="22257">
+        <label>/home/dev/ds-160209/src/secp256k1/src/tests.c</label>
+        <link refid="tests_8c"/>
+      </node>
+      <node id="22255">
+        <label>/home/dev/ds-160209/src/secp256k1/src/secp256k1.c</label>
+        <link refid="secp256k1_8c"/>
+        <childnode refid="22256" relation="include">
+        </childnode>
+        <childnode refid="22257" relation="include">
+        </childnode>
+      </node>
+      <node id="22254">
+        <label>/home/dev/ds-160209/src/secp256k1/src/eckey_impl.h</label>
+        <link refid="eckey__impl_8h"/>
+        <childnode refid="22255" relation="include">
+        </childnode>
+      </node>
+      <node id="22253">
+        <label>/home/dev/ds-160209/src/secp256k1/src/eckey.h</label>
+        <link refid="eckey.h"/>
+        <childnode refid="22254" relation="include">
+        </childnode>
+      </node>
+      <node id="22256">
+        <label>/home/dev/ds-160209/src/secp256k1/src/bench_internal.c</label>
+        <link refid="bench__internal_8c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="eckey_8h_1ae0cdb1eef2dc770d70aac0ad50a35e9a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>static int secp256k1_eckey_pubkey_parse</definition>
+        <argsstring>(secp256k1_ge *elem, const unsigned char *pub, size_t size)</argsstring>
+        <name>secp256k1_eckey_pubkey_parse</name>
+        <param>
+          <type><ref refid="structsecp256k1__ge" kindref="compound">secp256k1_ge</ref> *</type>
+          <declname>elem</declname>
+        </param>
+        <param>
+          <type>const unsigned char *</type>
+          <declname>pub</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/eckey.h" line="17" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="eckey_8h_1ae1f52342d70928f16c8e606da59e6aa6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>static int secp256k1_eckey_pubkey_serialize</definition>
+        <argsstring>(secp256k1_ge *elem, unsigned char *pub, size_t *size, int compressed)</argsstring>
+        <name>secp256k1_eckey_pubkey_serialize</name>
+        <param>
+          <type><ref refid="structsecp256k1__ge" kindref="compound">secp256k1_ge</ref> *</type>
+          <declname>elem</declname>
+        </param>
+        <param>
+          <type>unsigned char *</type>
+          <declname>pub</declname>
+        </param>
+        <param>
+          <type>size_t *</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>compressed</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/eckey.h" line="18" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="eckey_8h_1a1e0abdeb32c835f0ed6f73b8eed56019" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>static int secp256k1_eckey_privkey_tweak_add</definition>
+        <argsstring>(secp256k1_scalar *key, const secp256k1_scalar *tweak)</argsstring>
+        <name>secp256k1_eckey_privkey_tweak_add</name>
+        <param>
+          <type><ref refid="structsecp256k1__scalar" kindref="compound">secp256k1_scalar</ref> *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsecp256k1__scalar" kindref="compound">secp256k1_scalar</ref> *</type>
+          <declname>tweak</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/eckey.h" line="20" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="eckey_8h_1a62b92feda0e18c392cb4efdc4036772f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>static int secp256k1_eckey_pubkey_tweak_add</definition>
+        <argsstring>(const secp256k1_ecmult_context *ctx, secp256k1_ge *key, const secp256k1_scalar *tweak)</argsstring>
+        <name>secp256k1_eckey_pubkey_tweak_add</name>
+        <param>
+          <type>const <ref refid="structsecp256k1__ecmult__context" kindref="compound">secp256k1_ecmult_context</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type><ref refid="structsecp256k1__ge" kindref="compound">secp256k1_ge</ref> *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsecp256k1__scalar" kindref="compound">secp256k1_scalar</ref> *</type>
+          <declname>tweak</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/eckey.h" line="21" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="eckey_8h_1a44d6fea032144d033d49fd5c19f51a95" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>static int secp256k1_eckey_privkey_tweak_mul</definition>
+        <argsstring>(secp256k1_scalar *key, const secp256k1_scalar *tweak)</argsstring>
+        <name>secp256k1_eckey_privkey_tweak_mul</name>
+        <param>
+          <type><ref refid="structsecp256k1__scalar" kindref="compound">secp256k1_scalar</ref> *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsecp256k1__scalar" kindref="compound">secp256k1_scalar</ref> *</type>
+          <declname>tweak</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/eckey.h" line="22" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="eckey_8h_1a00b21d4a9893fc7446668279a9f94ceb" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>static int secp256k1_eckey_pubkey_tweak_mul</definition>
+        <argsstring>(const secp256k1_ecmult_context *ctx, secp256k1_ge *key, const secp256k1_scalar *tweak)</argsstring>
+        <name>secp256k1_eckey_pubkey_tweak_mul</name>
+        <param>
+          <type>const <ref refid="structsecp256k1__ecmult__context" kindref="compound">secp256k1_ecmult_context</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type><ref refid="structsecp256k1__ge" kindref="compound">secp256k1_ge</ref> *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsecp256k1__scalar" kindref="compound">secp256k1_scalar</ref> *</type>
+          <declname>tweak</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/eckey.h" line="23" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**********************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2013,<sp/>2014<sp/>Pieter<sp/>Wuille<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Distributed<sp/>under<sp/>the<sp/>MIT<sp/>software<sp/>license,<sp/>see<sp/>the<sp/>accompanying<sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>file<sp/>COPYING<sp/>or<sp/>http://www.opensource.org/licenses/mit-license.php.*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>**********************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>_SECP256K1_ECKEY_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_SECP256K1_ECKEY_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="group_8h" kindref="compound">group.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="scalar_8h" kindref="compound">scalar.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="ecmult_8h" kindref="compound">ecmult.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="ecmult__gen_8h" kindref="compound">ecmult_gen.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>secp256k1_eckey_pubkey_parse(<ref refid="structsecp256k1__ge" kindref="compound">secp256k1_ge</ref><sp/>*elem,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*pub,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>secp256k1_eckey_pubkey_serialize(<ref refid="structsecp256k1__ge" kindref="compound">secp256k1_ge</ref><sp/>*elem,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*pub,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>*size,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>compressed);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>secp256k1_eckey_privkey_tweak_add(<ref refid="structsecp256k1__scalar" kindref="compound">secp256k1_scalar</ref><sp/>*key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__scalar" kindref="compound">secp256k1_scalar</ref><sp/>*tweak);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>secp256k1_eckey_pubkey_tweak_add(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__ecmult__context" kindref="compound">secp256k1_ecmult_context</ref><sp/>*ctx,<sp/><ref refid="structsecp256k1__ge" kindref="compound">secp256k1_ge</ref><sp/>*key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__scalar" kindref="compound">secp256k1_scalar</ref><sp/>*tweak);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>secp256k1_eckey_privkey_tweak_mul(<ref refid="structsecp256k1__scalar" kindref="compound">secp256k1_scalar</ref><sp/>*key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__scalar" kindref="compound">secp256k1_scalar</ref><sp/>*tweak);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>secp256k1_eckey_pubkey_tweak_mul(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__ecmult__context" kindref="compound">secp256k1_ecmult_context</ref><sp/>*ctx,<sp/><ref refid="structsecp256k1__ge" kindref="compound">secp256k1_ge</ref><sp/>*key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__scalar" kindref="compound">secp256k1_scalar</ref><sp/>*tweak);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/secp256k1/src/eckey.h"/>
+  </compounddef>
+</doxygen>

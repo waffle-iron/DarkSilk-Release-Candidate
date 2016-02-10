@@ -1,0 +1,107 @@
+\hypertarget{c__test_8c}{}\section{/home/dev/ds-\/160209/src/leveldb/db/c\+\_\+test.c File Reference}
+\label{c__test_8c}\index{/home/dev/ds-\/160209/src/leveldb/db/c\+\_\+test.\+c@{/home/dev/ds-\/160209/src/leveldb/db/c\+\_\+test.\+c}}
+{\ttfamily \#include \char`\"{}leveldb/c.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stddef.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$sys/types.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{c__test_8c_af3270e97d4196e9f0d1fba6d99720822}{Check\+No\+Error}(err)
+\item 
+\#define \hyperlink{c__test_8c_a7a32a221eb96896ffcfcdfcd0f691252}{Check\+Condition}(cond)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned char \hyperlink{c__test_8c_a117a386d47165a2d2c5ef9beda9bde94}{Filter\+Key\+Match} (void $\ast$\hyperlink{env__posix_8cc_a9ce2ec4812a92cb6ab39f6e81e9173a9}{arg}, const char $\ast$key, size\+\_\+t length, const char $\ast$filter, size\+\_\+t filter\+\_\+length)
+\item 
+int \hyperlink{c__test_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const char $\ast$ \hyperlink{c__test_8c_aa66920db8e335b57326a73d5592f1273}{phase} = \char`\"{}\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{c__test_8c_a7a32a221eb96896ffcfcdfcd0f691252}{}\index{c\+\_\+test.\+c@{c\+\_\+test.\+c}!Check\+Condition@{Check\+Condition}}
+\index{Check\+Condition@{Check\+Condition}!c\+\_\+test.\+c@{c\+\_\+test.\+c}}
+\subsubsection[{Check\+Condition}]{\setlength{\rightskip}{0pt plus 5cm}\#define Check\+Condition(
+\begin{DoxyParamCaption}
+\item[{}]{cond}
+\end{DoxyParamCaption}
+)}\label{c__test_8c_a7a32a221eb96896ffcfcdfcd0f691252}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{if} (!(cond)) \{                                                        \(\backslash\)
+    fprintf(stderr, \textcolor{stringliteral}{"%s:%d: %s: %s\(\backslash\)n"}, \_\_FILE\_\_, \_\_LINE\_\_, \hyperlink{c__test_8c_aa66920db8e335b57326a73d5592f1273}{phase}, #cond); \(\backslash\)
+    abort();                                                            \(\backslash\)
+  \}
+\end{DoxyCode}
+
+
+Definition at line 35 of file c\+\_\+test.\+c.
+
+\hypertarget{c__test_8c_af3270e97d4196e9f0d1fba6d99720822}{}\index{c\+\_\+test.\+c@{c\+\_\+test.\+c}!Check\+No\+Error@{Check\+No\+Error}}
+\index{Check\+No\+Error@{Check\+No\+Error}!c\+\_\+test.\+c@{c\+\_\+test.\+c}}
+\subsubsection[{Check\+No\+Error}]{\setlength{\rightskip}{0pt plus 5cm}\#define Check\+No\+Error(
+\begin{DoxyParamCaption}
+\item[{}]{err}
+\end{DoxyParamCaption}
+)}\label{c__test_8c_af3270e97d4196e9f0d1fba6d99720822}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{if} ((err) != NULL) \{                                                  \(\backslash\)
+    fprintf(stderr, \textcolor{stringliteral}{"%s:%d: %s: %s\(\backslash\)n"}, \_\_FILE\_\_, \_\_LINE\_\_, \hyperlink{c__test_8c_aa66920db8e335b57326a73d5592f1273}{phase}, (err)); \(\backslash\)
+    abort();                                                            \(\backslash\)
+  \}
+\end{DoxyCode}
+
+
+Definition at line 29 of file c\+\_\+test.\+c.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{c__test_8c_a117a386d47165a2d2c5ef9beda9bde94}{}\index{c\+\_\+test.\+c@{c\+\_\+test.\+c}!Filter\+Key\+Match@{Filter\+Key\+Match}}
+\index{Filter\+Key\+Match@{Filter\+Key\+Match}!c\+\_\+test.\+c@{c\+\_\+test.\+c}}
+\subsubsection[{Filter\+Key\+Match}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char Filter\+Key\+Match (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg, }
+\item[{const char $\ast$}]{key, }
+\item[{size\+\_\+t}]{length, }
+\item[{const char $\ast$}]{filter, }
+\item[{size\+\_\+t}]{filter\+\_\+length}
+\end{DoxyParamCaption}
+)}\label{c__test_8c_a117a386d47165a2d2c5ef9beda9bde94}
+
+
+Definition at line 148 of file c\+\_\+test.\+c.
+
+\hypertarget{c__test_8c_a3c04138a5bfe5d72780bb7e82a18e627}{}\index{c\+\_\+test.\+c@{c\+\_\+test.\+c}!main@{main}}
+\index{main@{main}!c\+\_\+test.\+c@{c\+\_\+test.\+c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}\label{c__test_8c_a3c04138a5bfe5d72780bb7e82a18e627}
+
+
+Definition at line 157 of file c\+\_\+test.\+c.
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{c__test_8c_aa66920db8e335b57326a73d5592f1273}{}\index{c\+\_\+test.\+c@{c\+\_\+test.\+c}!phase@{phase}}
+\index{phase@{phase}!c\+\_\+test.\+c@{c\+\_\+test.\+c}}
+\subsubsection[{phase}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ phase = \char`\"{}\char`\"{}}\label{c__test_8c_aa66920db8e335b57326a73d5592f1273}
+
+
+Definition at line 14 of file c\+\_\+test.\+c.
+

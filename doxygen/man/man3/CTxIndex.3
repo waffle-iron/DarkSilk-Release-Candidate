@@ -1,0 +1,116 @@
+.TH "CTxIndex" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CTxIndex \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <main\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCTxIndex\fP ()"
+.br
+.ti -1c
+.RI "\fBCTxIndex\fP (const \fBCDiskTxPos\fP &posIn, unsigned int nOutputs)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename Operation > void \fBSerializationOp\fP (Stream &s, Operation ser_action, int nType, int nVersion)"
+.br
+.ti -1c
+.RI "void \fBSetNull\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsNull\fP ()"
+.br
+.ti -1c
+.RI "int \fBGetDepthInMainChain\fP () const "
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBCDiskTxPos\fP \fBpos\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBCDiskTxPos\fP > \fBvSpent\fP"
+.br
+.ti -1c
+.RI "\fBADD_SERIALIZE_METHODS\fP"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBCTxIndex\fP &a, const \fBCTxIndex\fP &b)"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBCTxIndex\fP &a, const \fBCTxIndex\fP &b)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A txdb record that contains the disk location of a transaction and the locations of transactions that spend its outputs\&. vSpent is really only used as a flag, but having the location is very helpful for debugging\&. 
+.PP
+Definition at line 443 of file main\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CTxIndex::CTxIndex ()\fC [inline]\fP"
+
+.PP
+Definition at line 449 of file main\&.h\&.
+.SS "CTxIndex::CTxIndex (const \fBCDiskTxPos\fP & posIn, unsigned int nOutputs)\fC [inline]\fP"
+
+.PP
+Definition at line 454 of file main\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int CTxIndex::GetDepthInMainChain () const"
+
+.PP
+Definition at line 1540 of file main\&.cpp\&.
+.SS "bool CTxIndex::IsNull ()\fC [inline]\fP"
+
+.PP
+Definition at line 476 of file main\&.h\&.
+.SS "template<typename Stream , typename Operation > void CTxIndex::SerializationOp (Stream & s, Operation ser_action, int nType, int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 463 of file main\&.h\&.
+.SS "void CTxIndex::SetNull ()\fC [inline]\fP"
+
+.PP
+Definition at line 470 of file main\&.h\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "bool operator!= (const \fBCTxIndex\fP & a, const \fBCTxIndex\fP & b)\fC [friend]\fP"
+
+.PP
+Definition at line 487 of file main\&.h\&.
+.SS "bool operator== (const \fBCTxIndex\fP & a, const \fBCTxIndex\fP & b)\fC [friend]\fP"
+
+.PP
+Definition at line 481 of file main\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "CTxIndex::ADD_SERIALIZE_METHODS"
+
+.PP
+Definition at line 460 of file main\&.h\&.
+.SS "\fBCDiskTxPos\fP CTxIndex::pos"
+
+.PP
+Definition at line 446 of file main\&.h\&.
+.SS "std::vector<\fBCDiskTxPos\fP> CTxIndex::vSpent"
+
+.PP
+Definition at line 447 of file main\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

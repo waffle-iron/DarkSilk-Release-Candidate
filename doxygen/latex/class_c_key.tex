@@ -1,0 +1,307 @@
+\hypertarget{class_c_key}{}\section{C\+Key Class Reference}
+\label{class_c_key}\index{C\+Key@{C\+Key}}
+
+
+{\ttfamily \#include $<$key.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_key_a8f4ca910c7b7e729a3f2a5c59d060d3d}{C\+Key} ()
+\item 
+\hyperlink{class_c_key_afcea34cefd25675f4cf9b03eaa4bb7d9}{C\+Key} (const \hyperlink{class_c_key}{C\+Key} \&secret)
+\item 
+\hyperlink{class_c_key_a57d5b254748cef054c40f99c1c339147}{$\sim$\+C\+Key} ()
+\item 
+{\footnotesize template$<$typename T $>$ }\\void \hyperlink{class_c_key_aaa13d5f08456bba094210c5eeabf64c8}{Set} (const T pbegin, const T pend, bool f\+Compressed\+In)
+\item 
+unsigned int \hyperlink{class_c_key_a6329a38926a8af8112d06da96afbfe39}{size} () const 
+\item 
+const unsigned char $\ast$ \hyperlink{class_c_key_aabd29e0d5faf30032cc8519a1ce62a5a}{begin} () const 
+\item 
+const unsigned char $\ast$ \hyperlink{class_c_key_a651d1e10b4085da5e4c4a764f3a384df}{end} () const 
+\item 
+bool \hyperlink{class_c_key_a62094263b7422a45b45ac508396f19eb}{Is\+Valid} () const 
+\item 
+bool \hyperlink{class_c_key_abdc7d807f7a1b27ff3ad9dd5164a2273}{Is\+Compressed} () const 
+\item 
+bool \hyperlink{class_c_key_aa62c082c9037565fce02b457cc335e7b}{Set\+Priv\+Key} (const \hyperlink{key_8h_a1da569b8b6e5b3fa1196cc1b877e7f54}{C\+Priv\+Key} \&vch\+Priv\+Key, bool f\+Compressed)
+\item 
+void \hyperlink{class_c_key_a9d12ed9d297e4286250fd7ea6b59e1a5}{Make\+New\+Key} (bool f\+Compressed)
+\item 
+\hyperlink{key_8h_a1da569b8b6e5b3fa1196cc1b877e7f54}{C\+Priv\+Key} \hyperlink{class_c_key_ab38813e7091f658612dfb14f17c9e317}{Get\+Priv\+Key} () const 
+\item 
+\hyperlink{class_c_pub_key}{C\+Pub\+Key} \hyperlink{class_c_key_ae4b61da6ec62f676fe6362ac5fc26aca}{Get\+Pub\+Key} () const 
+\item 
+bool \hyperlink{class_c_key_a3b161899b4fa79f5a7036d2ccf12ce3a}{Sign} (const \hyperlink{classuint256}{uint256} \&\hyperlink{cache_8cc_a11ecb029164e055f28f4123ce3748862}{hash}, std\+::vector$<$ unsigned char $>$ \&vch\+Sig, \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} test\+\_\+case=0) const 
+\item 
+bool \hyperlink{class_c_key_a59afeabf3f63d99dfdbd3722087853a1}{Sign\+Compact} (const \hyperlink{classuint256}{uint256} \&\hyperlink{cache_8cc_a11ecb029164e055f28f4123ce3748862}{hash}, std\+::vector$<$ unsigned char $>$ \&vch\+Sig) const 
+\item 
+bool \hyperlink{class_c_key_abb0091d4390dcece3c56ea4c1fdd6036}{Derive} (\hyperlink{class_c_key}{C\+Key} \&key\+Child, unsigned char cc\+Child\mbox{[}32\mbox{]}, unsigned int n\+Child, const unsigned char cc\mbox{[}32\mbox{]}) const 
+\item 
+bool \hyperlink{class_c_key_a3890764f7a2e5d9cdeffb3e102e4545d}{Verify\+Pub\+Key} (const \hyperlink{class_c_pub_key}{C\+Pub\+Key} \&vch\+Pub\+Key) const 
+\item 
+bool \hyperlink{class_c_key_a141751588f8bfe5f1b6fc27f4e64b63f}{Load} (\hyperlink{key_8h_a1da569b8b6e5b3fa1196cc1b877e7f54}{C\+Priv\+Key} \&privkey, \hyperlink{class_c_pub_key}{C\+Pub\+Key} \&vch\+Pub\+Key, bool f\+Skip\+Check)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{class_c_key_a625c363d9adfbd4dda22f3a67a898cf4}{Check\+Signature\+Element} (const unsigned char $\ast$vch, int len, bool half)
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_c_key_a381efd9184dc467e73e690329c70371d}{operator==} (const \hyperlink{class_c_key}{C\+Key} \&a, const \hyperlink{class_c_key}{C\+Key} \&b)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An encapsulated private key. 
+
+Definition at line 29 of file key.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_key_a8f4ca910c7b7e729a3f2a5c59d060d3d}{}\index{C\+Key@{C\+Key}!C\+Key@{C\+Key}}
+\index{C\+Key@{C\+Key}!C\+Key@{C\+Key}}
+\subsubsection[{C\+Key}]{\setlength{\rightskip}{0pt plus 5cm}C\+Key\+::\+C\+Key (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_key_a8f4ca910c7b7e729a3f2a5c59d060d3d}
+
+
+Definition at line 46 of file key.\+h.
+
+\hypertarget{class_c_key_afcea34cefd25675f4cf9b03eaa4bb7d9}{}\index{C\+Key@{C\+Key}!C\+Key@{C\+Key}}
+\index{C\+Key@{C\+Key}!C\+Key@{C\+Key}}
+\subsubsection[{C\+Key}]{\setlength{\rightskip}{0pt plus 5cm}C\+Key\+::\+C\+Key (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Key} \&}]{secret}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_key_afcea34cefd25675f4cf9b03eaa4bb7d9}
+
+
+Definition at line 51 of file key.\+h.
+
+\hypertarget{class_c_key_a57d5b254748cef054c40f99c1c339147}{}\index{C\+Key@{C\+Key}!````~C\+Key@{$\sim$\+C\+Key}}
+\index{````~C\+Key@{$\sim$\+C\+Key}!C\+Key@{C\+Key}}
+\subsubsection[{$\sim$\+C\+Key}]{\setlength{\rightskip}{0pt plus 5cm}C\+Key\+::$\sim$\+C\+Key (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_key_a57d5b254748cef054c40f99c1c339147}
+
+
+Definition at line 57 of file key.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_key_aabd29e0d5faf30032cc8519a1ce62a5a}{}\index{C\+Key@{C\+Key}!begin@{begin}}
+\index{begin@{begin}!C\+Key@{C\+Key}}
+\subsubsection[{begin}]{\setlength{\rightskip}{0pt plus 5cm}const unsigned char$\ast$ C\+Key\+::begin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_key_aabd29e0d5faf30032cc8519a1ce62a5a}
+
+
+Definition at line 84 of file key.\+h.
+
+\hypertarget{class_c_key_a625c363d9adfbd4dda22f3a67a898cf4}{}\index{C\+Key@{C\+Key}!Check\+Signature\+Element@{Check\+Signature\+Element}}
+\index{Check\+Signature\+Element@{Check\+Signature\+Element}!C\+Key@{C\+Key}}
+\subsubsection[{Check\+Signature\+Element}]{\setlength{\rightskip}{0pt plus 5cm}static bool C\+Key\+::\+Check\+Signature\+Element (
+\begin{DoxyParamCaption}
+\item[{const unsigned char $\ast$}]{vch, }
+\item[{int}]{len, }
+\item[{bool}]{half}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_c_key_a625c363d9adfbd4dda22f3a67a898cf4}
+\hypertarget{class_c_key_abb0091d4390dcece3c56ea4c1fdd6036}{}\index{C\+Key@{C\+Key}!Derive@{Derive}}
+\index{Derive@{Derive}!C\+Key@{C\+Key}}
+\subsubsection[{Derive}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Key\+::\+Derive (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Key} \&}]{key\+Child, }
+\item[{unsigned char}]{cc\+Child\mbox{[}32\mbox{]}, }
+\item[{unsigned int}]{n\+Child, }
+\item[{const unsigned char}]{cc\mbox{[}32\mbox{]}}
+\end{DoxyParamCaption}
+) const}\label{class_c_key_abb0091d4390dcece3c56ea4c1fdd6036}
+
+
+Definition at line 238 of file key.\+cpp.
+
+\hypertarget{class_c_key_a651d1e10b4085da5e4c4a764f3a384df}{}\index{C\+Key@{C\+Key}!end@{end}}
+\index{end@{end}!C\+Key@{C\+Key}}
+\subsubsection[{end}]{\setlength{\rightskip}{0pt plus 5cm}const unsigned char$\ast$ C\+Key\+::end (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_key_a651d1e10b4085da5e4c4a764f3a384df}
+
+
+Definition at line 85 of file key.\+h.
+
+\hypertarget{class_c_key_ab38813e7091f658612dfb14f17c9e317}{}\index{C\+Key@{C\+Key}!Get\+Priv\+Key@{Get\+Priv\+Key}}
+\index{Get\+Priv\+Key@{Get\+Priv\+Key}!C\+Key@{C\+Key}}
+\subsubsection[{Get\+Priv\+Key}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Priv\+Key} C\+Key\+::\+Get\+Priv\+Key (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_c_key_ab38813e7091f658612dfb14f17c9e317}
+
+
+Definition at line 156 of file key.\+cpp.
+
+\hypertarget{class_c_key_ae4b61da6ec62f676fe6362ac5fc26aca}{}\index{C\+Key@{C\+Key}!Get\+Pub\+Key@{Get\+Pub\+Key}}
+\index{Get\+Pub\+Key@{Get\+Pub\+Key}!C\+Key@{C\+Key}}
+\subsubsection[{Get\+Pub\+Key}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Pub\+Key} C\+Key\+::\+Get\+Pub\+Key (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_c_key_ae4b61da6ec62f676fe6362ac5fc26aca}
+
+
+Definition at line 169 of file key.\+cpp.
+
+\hypertarget{class_c_key_abdc7d807f7a1b27ff3ad9dd5164a2273}{}\index{C\+Key@{C\+Key}!Is\+Compressed@{Is\+Compressed}}
+\index{Is\+Compressed@{Is\+Compressed}!C\+Key@{C\+Key}}
+\subsubsection[{Is\+Compressed}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Key\+::\+Is\+Compressed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_key_abdc7d807f7a1b27ff3ad9dd5164a2273}
+
+
+Definition at line 91 of file key.\+h.
+
+\hypertarget{class_c_key_a62094263b7422a45b45ac508396f19eb}{}\index{C\+Key@{C\+Key}!Is\+Valid@{Is\+Valid}}
+\index{Is\+Valid@{Is\+Valid}!C\+Key@{C\+Key}}
+\subsubsection[{Is\+Valid}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Key\+::\+Is\+Valid (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_key_a62094263b7422a45b45ac508396f19eb}
+
+
+Definition at line 88 of file key.\+h.
+
+\hypertarget{class_c_key_a141751588f8bfe5f1b6fc27f4e64b63f}{}\index{C\+Key@{C\+Key}!Load@{Load}}
+\index{Load@{Load}!C\+Key@{C\+Key}}
+\subsubsection[{Load}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Key\+::\+Load (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Priv\+Key} \&}]{privkey, }
+\item[{{\bf C\+Pub\+Key} \&}]{vch\+Pub\+Key, }
+\item[{bool}]{f\+Skip\+Check = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{class_c_key_a141751588f8bfe5f1b6fc27f4e64b63f}
+
+
+Definition at line 226 of file key.\+cpp.
+
+\hypertarget{class_c_key_a9d12ed9d297e4286250fd7ea6b59e1a5}{}\index{C\+Key@{C\+Key}!Make\+New\+Key@{Make\+New\+Key}}
+\index{Make\+New\+Key@{Make\+New\+Key}!C\+Key@{C\+Key}}
+\subsubsection[{Make\+New\+Key}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Key\+::\+Make\+New\+Key (
+\begin{DoxyParamCaption}
+\item[{bool}]{f\+Compressed}
+\end{DoxyParamCaption}
+)}\label{class_c_key_a9d12ed9d297e4286250fd7ea6b59e1a5}
+
+
+Definition at line 139 of file key.\+cpp.
+
+\hypertarget{class_c_key_aaa13d5f08456bba094210c5eeabf64c8}{}\index{C\+Key@{C\+Key}!Set@{Set}}
+\index{Set@{Set}!C\+Key@{C\+Key}}
+\subsubsection[{Set}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void C\+Key\+::\+Set (
+\begin{DoxyParamCaption}
+\item[{const T}]{pbegin, }
+\item[{const T}]{pend, }
+\item[{bool}]{f\+Compressed\+In}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_key_aaa13d5f08456bba094210c5eeabf64c8}
+
+
+Definition at line 68 of file key.\+h.
+
+\hypertarget{class_c_key_aa62c082c9037565fce02b457cc335e7b}{}\index{C\+Key@{C\+Key}!Set\+Priv\+Key@{Set\+Priv\+Key}}
+\index{Set\+Priv\+Key@{Set\+Priv\+Key}!C\+Key@{C\+Key}}
+\subsubsection[{Set\+Priv\+Key}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Key\+::\+Set\+Priv\+Key (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Priv\+Key} \&}]{vch\+Priv\+Key, }
+\item[{bool}]{f\+Compressed}
+\end{DoxyParamCaption}
+)}\label{class_c_key_aa62c082c9037565fce02b457cc335e7b}
+
+
+Definition at line 148 of file key.\+cpp.
+
+\hypertarget{class_c_key_a3b161899b4fa79f5a7036d2ccf12ce3a}{}\index{C\+Key@{C\+Key}!Sign@{Sign}}
+\index{Sign@{Sign}!C\+Key@{C\+Key}}
+\subsubsection[{Sign}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Key\+::\+Sign (
+\begin{DoxyParamCaption}
+\item[{const {\bf uint256} \&}]{hash, }
+\item[{std\+::vector$<$ unsigned char $>$ \&}]{vch\+Sig, }
+\item[{{\bf uint32\+\_\+t}}]{test\+\_\+case = {\ttfamily 0}}
+\end{DoxyParamCaption}
+) const}\label{class_c_key_a3b161899b4fa79f5a7036d2ccf12ce3a}
+Create a D\+E\+R-\/serialized signature. The test\+\_\+case parameter tweaks the deterministic nonce. 
+
+Definition at line 182 of file key.\+cpp.
+
+\hypertarget{class_c_key_a59afeabf3f63d99dfdbd3722087853a1}{}\index{C\+Key@{C\+Key}!Sign\+Compact@{Sign\+Compact}}
+\index{Sign\+Compact@{Sign\+Compact}!C\+Key@{C\+Key}}
+\subsubsection[{Sign\+Compact}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Key\+::\+Sign\+Compact (
+\begin{DoxyParamCaption}
+\item[{const {\bf uint256} \&}]{hash, }
+\item[{std\+::vector$<$ unsigned char $>$ \&}]{vch\+Sig}
+\end{DoxyParamCaption}
+) const}\label{class_c_key_a59afeabf3f63d99dfdbd3722087853a1}
+
+
+Definition at line 211 of file key.\+cpp.
+
+\hypertarget{class_c_key_a6329a38926a8af8112d06da96afbfe39}{}\index{C\+Key@{C\+Key}!size@{size}}
+\index{size@{size}!C\+Key@{C\+Key}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int C\+Key\+::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_key_a6329a38926a8af8112d06da96afbfe39}
+
+
+Definition at line 83 of file key.\+h.
+
+\hypertarget{class_c_key_a3890764f7a2e5d9cdeffb3e102e4545d}{}\index{C\+Key@{C\+Key}!Verify\+Pub\+Key@{Verify\+Pub\+Key}}
+\index{Verify\+Pub\+Key@{Verify\+Pub\+Key}!C\+Key@{C\+Key}}
+\subsubsection[{Verify\+Pub\+Key}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Key\+::\+Verify\+Pub\+Key (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Pub\+Key} \&}]{vch\+Pub\+Key}
+\end{DoxyParamCaption}
+) const}\label{class_c_key_a3890764f7a2e5d9cdeffb3e102e4545d}
+Verify thoroughly whether a private key and a public key match. This is done using a different mechanism than just regenerating it. 
+
+Definition at line 197 of file key.\+cpp.
+
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{class_c_key_a381efd9184dc467e73e690329c70371d}{}\index{C\+Key@{C\+Key}!operator==@{operator==}}
+\index{operator==@{operator==}!C\+Key@{C\+Key}}
+\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}bool operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Key} \&}]{a, }
+\item[{const {\bf C\+Key} \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\label{class_c_key_a381efd9184dc467e73e690329c70371d}
+
+
+Definition at line 61 of file key.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/\hyperlink{key_8h}{key.\+h}\item 
+/home/dev/ds-\/160209/src/\hyperlink{key_8cpp}{key.\+cpp}\end{DoxyCompactItemize}

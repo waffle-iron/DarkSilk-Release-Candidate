@@ -1,0 +1,162 @@
+.TH "TransactionStatus" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TransactionStatus \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <transactionrecord\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBStatus\fP { \fBConfirmed\fP, \fBOpenUntilDate\fP, \fBOpenUntilBlock\fP, \fBOffline\fP, \fBUnconfirmed\fP, \fBConfirming\fP, \fBConflicted\fP, \fBImmature\fP, \fBMaturesWarning\fP, \fBNotAccepted\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTransactionStatus\fP ()"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBcountsForBalance\fP"
+.br
+.RI "\fITransaction counts towards available balance\&. \fP"
+.ti -1c
+.RI "std::string \fBsortKey\fP"
+.br
+.RI "\fISorting key based on status\&. \fP"
+.ti -1c
+.RI "int \fBcur_num_blocks\fP"
+.br
+.ti -1c
+.RI "int \fBcur_num_ix_locks\fP"
+.br
+.in -1c
+.PP
+.RI "\fBGenerated (mined) transactions\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "int \fBmatures_in\fP"
+.br
+.in -1c
+.in -1c
+.PP
+.RI "\fBReported status\fP"
+.br
+
+.in +1c
+.in +1c
+.ti -1c
+.RI "\fBStatus\fP \fBstatus\fP"
+.br
+.ti -1c
+.RI "qint64 \fBdepth\fP"
+.br
+.ti -1c
+.RI "qint64 \fBopen_for\fP"
+.br
+.in -1c
+.in -1c
+.SH "Detailed Description"
+.PP 
+UI model for transaction status\&. The transaction status is the part of a transaction that will change over time\&. 
+.PP
+Definition at line 15 of file transactionrecord\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBTransactionStatus::Status\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIConfirmed \fP\fP
+Have 6 or more confirmations (normal tx) or fully mature (mined tx) 
+.TP
+\fB\fIOpenUntilDate \fP\fP
+Normal (sent/received) transactions\&. Transaction not yet final, waiting for date 
+.TP
+\fB\fIOpenUntilBlock \fP\fP
+Transaction not yet final, waiting for block 
+.TP
+\fB\fIOffline \fP\fP
+Not sent to any other nodes 
+.TP
+\fB\fIUnconfirmed \fP\fP
+Not yet mined into a block 
+.TP
+\fB\fIConfirming \fP\fP
+Confirmed, but waiting for the recommended number of confirmations 
+.TP
+\fB\fIConflicted \fP\fP
+Conflicts with other transaction or mempool 
+.TP
+\fB\fIImmature \fP\fP
+Generated (mined) transactions\&. Mined but waiting for maturity 
+.TP
+\fB\fIMaturesWarning \fP\fP
+Transaction will likely not mature because no nodes have confirmed 
+.TP
+\fB\fINotAccepted \fP\fP
+Mined but not accepted 
+.PP
+Definition at line 23 of file transactionrecord\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TransactionStatus::TransactionStatus ()\fC [inline]\fP"
+
+.PP
+Definition at line 18 of file transactionrecord\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "bool TransactionStatus::countsForBalance"
+
+.PP
+Transaction counts towards available balance\&. 
+.PP
+Definition at line 39 of file transactionrecord\&.h\&.
+.SS "int TransactionStatus::cur_num_blocks"
+Current number of blocks (to know whether cached status is still valid) 
+.PP
+Definition at line 58 of file transactionrecord\&.h\&.
+.SS "int TransactionStatus::cur_num_ix_locks"
+
+.PP
+Definition at line 61 of file transactionrecord\&.h\&.
+.SS "qint64 TransactionStatus::depth"
+
+.PP
+Definition at line 51 of file transactionrecord\&.h\&.
+.SS "int TransactionStatus::matures_in"
+
+.PP
+Definition at line 45 of file transactionrecord\&.h\&.
+.SS "qint64 TransactionStatus::open_for"
+Timestamp if status==OpenUntilDate, otherwise number of additional blocks that need to be mined before finalization 
+.PP
+Definition at line 52 of file transactionrecord\&.h\&.
+.SS "std::string TransactionStatus::sortKey"
+
+.PP
+Sorting key based on status\&. 
+.PP
+Definition at line 41 of file transactionrecord\&.h\&.
+.SS "\fBStatus\fP TransactionStatus::status"
+
+.PP
+Definition at line 50 of file transactionrecord\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

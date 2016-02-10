@@ -1,0 +1,119 @@
+.TH "CAddrInfo" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CAddrInfo \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <addrman\&.h>\fP
+.PP
+Inherits \fBCAddress\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename Stream , typename Operation > void \fBSerializationOp\fP (Stream &s, Operation ser_action, int nType, int nVersion)"
+.br
+.ti -1c
+.RI "void \fBInit\fP ()"
+.br
+.ti -1c
+.RI "\fBCAddrInfo\fP (const \fBCAddress\fP &addrIn, const \fBCNetAddr\fP &addrSource)"
+.br
+.ti -1c
+.RI "\fBCAddrInfo\fP ()"
+.br
+.ti -1c
+.RI "int \fBGetTriedBucket\fP (const std::vector< unsigned char > &nKey) const "
+.br
+.ti -1c
+.RI "int \fBGetNewBucket\fP (const std::vector< unsigned char > &nKey, const \fBCNetAddr\fP &src) const "
+.br
+.ti -1c
+.RI "int \fBGetNewBucket\fP (const std::vector< unsigned char > &nKey) const "
+.br
+.ti -1c
+.RI "bool \fBIsTerrible\fP (\fBint64_t\fP nNow=\fBGetAdjustedTime\fP()) const "
+.br
+.ti -1c
+.RI "double \fBGetChance\fP (\fBint64_t\fP nNow=\fBGetAdjustedTime\fP()) const "
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBADD_SERIALIZE_METHODS\fP"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBCAddrMan\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Extended statistics about a \fBCAddress\fP 
+.PP
+Definition at line 17 of file addrman\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CAddrInfo::CAddrInfo (const \fBCAddress\fP & addrIn, const \fBCNetAddr\fP & addrSource)\fC [inline]\fP"
+
+.PP
+Definition at line 66 of file addrman\&.h\&.
+.SS "CAddrInfo::CAddrInfo ()\fC [inline]\fP"
+
+.PP
+Definition at line 71 of file addrman\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "double CAddrInfo::GetChance (\fBint64_t\fP nNow = \fC\fBGetAdjustedTime\fP()\fP) const"
+
+.PP
+Definition at line 59 of file addrman\&.cpp\&.
+.SS "int CAddrInfo::GetNewBucket (const std::vector< unsigned char > & nKey, const \fBCNetAddr\fP & src) const"
+
+.PP
+Definition at line 25 of file addrman\&.cpp\&.
+.SS "int CAddrInfo::GetNewBucket (const std::vector< unsigned char > & nKey) const\fC [inline]\fP"
+
+.PP
+Definition at line 83 of file addrman\&.h\&.
+.SS "int CAddrInfo::GetTriedBucket (const std::vector< unsigned char > & nKey) const"
+
+.PP
+Definition at line 11 of file addrman\&.cpp\&.
+.SS "void CAddrInfo::Init ()\fC [inline]\fP"
+
+.PP
+Definition at line 56 of file addrman\&.h\&.
+.SS "bool CAddrInfo::IsTerrible (\fBint64_t\fP nNow = \fC\fBGetAdjustedTime\fP()\fP) const"
+
+.PP
+Definition at line 39 of file addrman\&.cpp\&.
+.SS "template<typename Stream , typename Operation > void CAddrInfo::SerializationOp (Stream & s, Operation ser_action, int nType, int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 48 of file addrman\&.h\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBCAddrMan\fP\fC [friend]\fP"
+
+.PP
+Definition at line 41 of file addrman\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "CAddrInfo::ADD_SERIALIZE_METHODS"
+
+.PP
+Definition at line 45 of file addrman\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

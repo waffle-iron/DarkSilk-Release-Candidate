@@ -1,0 +1,86 @@
+.TH "CTxMemPoolEntry" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CTxMemPoolEntry \- \fBCTxMemPool\fP stores these:  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <txmempool\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCTxMemPoolEntry\fP (const \fBCTransaction\fP &_tx, const \fBCAmount\fP &_nFee, \fBint64_t\fP _nTime, double _dPriority, unsigned int _nHeight)"
+.br
+.RI "\fIChain height when entering the mempool\&. \fP"
+.ti -1c
+.RI "\fBCTxMemPoolEntry\fP ()"
+.br
+.ti -1c
+.RI "\fBCTxMemPoolEntry\fP (const \fBCTxMemPoolEntry\fP &other)"
+.br
+.ti -1c
+.RI "const \fBCTransaction\fP & \fBGetTx\fP () const "
+.br
+.ti -1c
+.RI "double \fBGetPriority\fP (unsigned int currentHeight) const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetFee\fP () const "
+.br
+.ti -1c
+.RI "size_t \fBGetTxSize\fP () const "
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBGetTime\fP () const "
+.br
+.ti -1c
+.RI "unsigned int \fBGetHeight\fP () const "
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBCTxMemPool\fP stores these: 
+.PP
+Definition at line 28 of file txmempool\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CTxMemPoolEntry::CTxMemPoolEntry (const \fBCTransaction\fP & _tx, const \fBCAmount\fP & _nFee, \fBint64_t\fP _nTime, double _dPriority, unsigned int _nHeight)"
+
+.PP
+Chain height when entering the mempool\&. 
+.SS "CTxMemPoolEntry::CTxMemPoolEntry ()"
+
+.SS "CTxMemPoolEntry::CTxMemPoolEntry (const \fBCTxMemPoolEntry\fP & other)"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBCAmount\fP CTxMemPoolEntry::GetFee () const\fC [inline]\fP"
+
+.PP
+Definition at line 47 of file txmempool\&.h\&.
+.SS "unsigned int CTxMemPoolEntry::GetHeight () const\fC [inline]\fP"
+
+.PP
+Definition at line 50 of file txmempool\&.h\&.
+.SS "double CTxMemPoolEntry::GetPriority (unsigned int currentHeight) const"
+
+.SS "\fBint64_t\fP CTxMemPoolEntry::GetTime () const\fC [inline]\fP"
+
+.PP
+Definition at line 49 of file txmempool\&.h\&.
+.SS "const \fBCTransaction\fP& CTxMemPoolEntry::GetTx () const\fC [inline]\fP"
+
+.PP
+Definition at line 45 of file txmempool\&.h\&.
+.SS "size_t CTxMemPoolEntry::GetTxSize () const\fC [inline]\fP"
+
+.PP
+Definition at line 48 of file txmempool\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

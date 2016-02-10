@@ -1,0 +1,704 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_addr_man" kind="class" language="C++" prot="public">
+    <compoundname>CAddrMan</compoundname>
+    <includes refid="addrman_8h" local="no">addrman.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_c_addr_man_1aa4519d05a02e493046e5ece1ce87c084" prot="private" static="no" mutable="yes">
+        <type><ref refid="sync_8h_1a37a4692b2d517f2843655ca11af7668a" kindref="member">CCriticalSection</ref></type>
+        <definition>CCriticalSection CAddrMan::cs</definition>
+        <argsstring></argsstring>
+        <name>cs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="169" column="1" bodyfile="/home/dev/ds-160209/src/addrman.h" bodystart="169" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_addr_man_1a158cb7e936caa65e2fbf889d3b97e17b" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; unsigned char &gt;</type>
+        <definition>std::vector&lt;unsigned char&gt; CAddrMan::nKey</definition>
+        <argsstring></argsstring>
+        <name>nKey</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="172" column="1" bodyfile="/home/dev/ds-160209/src/addrman.h" bodystart="172" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_addr_man_1a77ff8bd51009324f2be012bd759b37d0" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CAddrMan::nIdCount</definition>
+        <argsstring></argsstring>
+        <name>nIdCount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="175" column="1" bodyfile="/home/dev/ds-160209/src/addrman.h" bodystart="175" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_addr_man_1a1232db343240bf03c45eaea7bcec550b" prot="private" static="no" mutable="no">
+        <type>std::map&lt; int, <ref refid="class_c_addr_info" kindref="compound">CAddrInfo</ref> &gt;</type>
+        <definition>std::map&lt;int, CAddrInfo&gt; CAddrMan::mapInfo</definition>
+        <argsstring></argsstring>
+        <name>mapInfo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="178" column="1" bodyfile="/home/dev/ds-160209/src/addrman.h" bodystart="178" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_addr_man_1a5c387857d8553818a56a4faac33fb691" prot="private" static="no" mutable="no">
+        <type>std::map&lt; <ref refid="class_c_net_addr" kindref="compound">CNetAddr</ref>, int &gt;</type>
+        <definition>std::map&lt;CNetAddr, int&gt; CAddrMan::mapAddr</definition>
+        <argsstring></argsstring>
+        <name>mapAddr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="181" column="1" bodyfile="/home/dev/ds-160209/src/addrman.h" bodystart="181" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_addr_man_1af9c2199d29d7a1a7c6c5c1e3abec4102" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; int &gt;</type>
+        <definition>std::vector&lt;int&gt; CAddrMan::vRandom</definition>
+        <argsstring></argsstring>
+        <name>vRandom</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="184" column="1" bodyfile="/home/dev/ds-160209/src/addrman.h" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_addr_man_1ae8566be810e6429012f1c2c1609b4540" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CAddrMan::nTried</definition>
+        <argsstring></argsstring>
+        <name>nTried</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="187" column="1" bodyfile="/home/dev/ds-160209/src/addrman.h" bodystart="187" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_addr_man_1af067a03d9f44566c6e84ef0564442faa" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::vector&lt; int &gt; &gt;</type>
+        <definition>std::vector&lt;std::vector&lt;int&gt; &gt; CAddrMan::vvTried</definition>
+        <argsstring></argsstring>
+        <name>vvTried</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="190" column="1" bodyfile="/home/dev/ds-160209/src/addrman.h" bodystart="190" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_addr_man_1a469f5f8e9ac527812338d7894b784986" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CAddrMan::nNew</definition>
+        <argsstring></argsstring>
+        <name>nNew</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="193" column="1" bodyfile="/home/dev/ds-160209/src/addrman.h" bodystart="193" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_addr_man_1aa207ddbbfca038be4c868a62ecf9f812" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::set&lt; int &gt; &gt;</type>
+        <definition>std::vector&lt;std::set&lt;int&gt; &gt; CAddrMan::vvNew</definition>
+        <argsstring></argsstring>
+        <name>vvNew</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="196" column="1" bodyfile="/home/dev/ds-160209/src/addrman.h" bodystart="196" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_c_addr_man_1ac961ead1a1afde144fc486b6d7c7369d" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_c_addr_info" kindref="compound">CAddrInfo</ref> *</type>
+        <definition>CAddrInfo * CAddrMan::Find</definition>
+        <argsstring>(const CNetAddr &amp;addr, int *pnId=NULL)</argsstring>
+        <name>Find</name>
+        <param>
+          <type>const <ref refid="class_c_net_addr" kindref="compound">CNetAddr</ref> &amp;</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>pnId</declname>
+          <defval>NULL</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="201" column="1" bodyfile="/home/dev/ds-160209/src/addrman.cpp" bodystart="81" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_addr_man_1aac93f51c0580e38a950a0f63b053bedb" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_c_addr_info" kindref="compound">CAddrInfo</ref> *</type>
+        <definition>CAddrInfo * CAddrMan::Create</definition>
+        <argsstring>(const CAddress &amp;addr, const CNetAddr &amp;addrSource, int *pnId=NULL)</argsstring>
+        <name>Create</name>
+        <param>
+          <type>const <ref refid="class_c_address" kindref="compound">CAddress</ref> &amp;</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_net_addr" kindref="compound">CNetAddr</ref> &amp;</type>
+          <declname>addrSource</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>pnId</declname>
+          <defval>NULL</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="205" column="1" bodyfile="/home/dev/ds-160209/src/addrman.cpp" bodystart="94" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_addr_man_1a3074bc8e3dcfb5348054613f575dc38e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CAddrMan::SwapRandom</definition>
+        <argsstring>(unsigned int nRandomPos1, unsigned int nRandomPos2)</argsstring>
+        <name>SwapRandom</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>nRandomPos1</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>nRandomPos2</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="208" column="1" bodyfile="/home/dev/ds-160209/src/addrman.cpp" bodystart="106" bodyend="124"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_addr_man_1a9c466eca7afe5c12554da5734f89e656" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int CAddrMan::SelectTried</definition>
+        <argsstring>(int nKBucket)</argsstring>
+        <name>SelectTried</name>
+        <param>
+          <type>int</type>
+          <declname>nKBucket</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="211" column="1" bodyfile="/home/dev/ds-160209/src/addrman.cpp" bodystart="126" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_addr_man_1aebf83da3addc3bcee487a87ece3f9a2b" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int CAddrMan::ShrinkNew</definition>
+        <argsstring>(int nUBucket)</argsstring>
+        <name>ShrinkNew</name>
+        <param>
+          <type>int</type>
+          <declname>nUBucket</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="216" column="1" bodyfile="/home/dev/ds-160209/src/addrman.cpp" bodystart="150" bodyend="202"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_addr_man_1a0fd16da2a89fb973e8e0e1bb6183264a" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CAddrMan::MakeTried</definition>
+        <argsstring>(CAddrInfo &amp;info, int nId, int nOrigin)</argsstring>
+        <name>MakeTried</name>
+        <param>
+          <type><ref refid="class_c_addr_info" kindref="compound">CAddrInfo</ref> &amp;</type>
+          <declname>info</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nId</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nOrigin</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="220" column="1" bodyfile="/home/dev/ds-160209/src/addrman.cpp" bodystart="204" bodyend="260"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_addr_man_1a33ec6a4584cf4b17af821e6e35216459" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CAddrMan::Good_</definition>
+        <argsstring>(const CService &amp;addr, int64_t nTime)</argsstring>
+        <name>Good_</name>
+        <param>
+          <type>const <ref refid="class_c_service" kindref="compound">CService</ref> &amp;</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+          <declname>nTime</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="223" column="1" bodyfile="/home/dev/ds-160209/src/addrman.cpp" bodystart="262" bodyend="309"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_addr_man_1a9dd6df8b1904548a86054d19d4a90724" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CAddrMan::Add_</definition>
+        <argsstring>(const CAddress &amp;addr, const CNetAddr &amp;source, int64_t nTimePenalty)</argsstring>
+        <name>Add_</name>
+        <param>
+          <type>const <ref refid="class_c_address" kindref="compound">CAddress</ref> &amp;</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_net_addr" kindref="compound">CNetAddr</ref> &amp;</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+          <declname>nTimePenalty</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="226" column="1" bodyfile="/home/dev/ds-160209/src/addrman.cpp" bodystart="311" bodyend="366"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_addr_man_1ab1a1bfa8b435ef139570c88de1a5245f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CAddrMan::Attempt_</definition>
+        <argsstring>(const CService &amp;addr, int64_t nTime)</argsstring>
+        <name>Attempt_</name>
+        <param>
+          <type>const <ref refid="class_c_service" kindref="compound">CService</ref> &amp;</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+          <declname>nTime</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="229" column="1" bodyfile="/home/dev/ds-160209/src/addrman.cpp" bodystart="368" bodyend="385"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_addr_man_1acd799cecb73e466d1369e6e2f23d3a8d" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_c_address" kindref="compound">CAddress</ref></type>
+        <definition>CAddress CAddrMan::Select_</definition>
+        <argsstring>(int nUnkBias)</argsstring>
+        <name>Select_</name>
+        <param>
+          <type>int</type>
+          <declname>nUnkBias</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="233" column="1" bodyfile="/home/dev/ds-160209/src/addrman.cpp" bodystart="387" bodyend="429"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_addr_man_1aff86d04dc7c0e0afae3ff5998417db17" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CAddrMan::GetAddr_</definition>
+        <argsstring>(std::vector&lt; CAddress &gt; &amp;vAddr)</argsstring>
+        <name>GetAddr_</name>
+        <param>
+          <type>std::vector&lt; <ref refid="class_c_address" kindref="compound">CAddress</ref> &gt; &amp;</type>
+          <declname>vAddr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="241" column="1" bodyfile="/home/dev/ds-160209/src/addrman.cpp" bodystart="491" bodyend="511"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_addr_man_1a1ae72643c51293f3f3345e74ce0368ca" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CAddrMan::Connected_</definition>
+        <argsstring>(const CService &amp;addr, int64_t nTime)</argsstring>
+        <name>Connected_</name>
+        <param>
+          <type>const <ref refid="class_c_service" kindref="compound">CService</ref> &amp;</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+          <declname>nTime</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="244" column="1" bodyfile="/home/dev/ds-160209/src/addrman.cpp" bodystart="513" bodyend="531"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_addr_man_1a88d4327f77fa70d9a88917897c3c6c97" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Stream</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void CAddrMan::Serialize</definition>
+        <argsstring>(Stream &amp;s, int nType, int nVersionDummy) const </argsstring>
+        <name>Serialize</name>
+        <param>
+          <type>Stream &amp;</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nType</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nVersionDummy</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="271" column="1" bodyfile="/home/dev/ds-160209/src/addrman.h" bodystart="271" bodyend="312"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_addr_man_1a68eaf1797ecb8bff380aa7f9fc452e14" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Stream</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void CAddrMan::Unserialize</definition>
+        <argsstring>(Stream &amp;s, int nType, int nVersionDummy)</argsstring>
+        <name>Unserialize</name>
+        <param>
+          <type>Stream &amp;</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nType</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nVersionDummy</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="315" column="1" bodyfile="/home/dev/ds-160209/src/addrman.h" bodystart="315" bodyend="377"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_addr_man_1aa2266bea9d5336b0a93fe703a8601e55" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int CAddrMan::GetSerializeSize</definition>
+        <argsstring>(int nType, int nVersion) const </argsstring>
+        <name>GetSerializeSize</name>
+        <param>
+          <type>int</type>
+          <declname>nType</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nVersion</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="379" column="1" bodyfile="/home/dev/ds-160209/src/addrman.h" bodystart="379" bodyend="382"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_addr_man_1ad9179d1c36c2ea3492e221576f340d33" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CAddrMan::CAddrMan</definition>
+        <argsstring>()</argsstring>
+        <name>CAddrMan</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="384" column="1" bodyfile="/home/dev/ds-160209/src/addrman.h" bodystart="384" bodyend="392"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_addr_man_1a15b8e72f55344b6fbd1bc1bda3cdc5bc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int CAddrMan::size</definition>
+        <argsstring>()</argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="395" column="1" bodyfile="/home/dev/ds-160209/src/addrman.h" bodystart="395" bodyend="398"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_addr_man_1a0c2677ae50ce0d680f0105b285d1f5d0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CAddrMan::Check</definition>
+        <argsstring>()</argsstring>
+        <name>Check</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="401" column="1" bodyfile="/home/dev/ds-160209/src/addrman.h" bodystart="401" bodyend="411"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_addr_man_1a03fcc7109b5f014760dc50a81f68c5ec" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CAddrMan::Add</definition>
+        <argsstring>(const CAddress &amp;addr, const CNetAddr &amp;source, int64_t nTimePenalty=0)</argsstring>
+        <name>Add</name>
+        <param>
+          <type>const <ref refid="class_c_address" kindref="compound">CAddress</ref> &amp;</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_net_addr" kindref="compound">CNetAddr</ref> &amp;</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+          <declname>nTimePenalty</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="414" column="1" bodyfile="/home/dev/ds-160209/src/addrman.h" bodystart="414" bodyend="426"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_addr_man_1aa2ae2abdf710b2d81fa37f072bab028e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CAddrMan::Add</definition>
+        <argsstring>(const std::vector&lt; CAddress &gt; &amp;vAddr, const CNetAddr &amp;source, int64_t nTimePenalty=0)</argsstring>
+        <name>Add</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="class_c_address" kindref="compound">CAddress</ref> &gt; &amp;</type>
+          <declname>vAddr</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_net_addr" kindref="compound">CNetAddr</ref> &amp;</type>
+          <declname>source</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+          <declname>nTimePenalty</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="429" column="1" bodyfile="/home/dev/ds-160209/src/addrman.h" bodystart="429" bodyend="442"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_addr_man_1a993e80e74701d7bc6bb49880c387b847" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CAddrMan::Good</definition>
+        <argsstring>(const CService &amp;addr, int64_t nTime=GetAdjustedTime())</argsstring>
+        <name>Good</name>
+        <param>
+          <type>const <ref refid="class_c_service" kindref="compound">CService</ref> &amp;</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+          <declname>nTime</declname>
+          <defval><ref refid="timedata_8h_1a09f81b9c7650f898cf3cf305b87547e6" kindref="member">GetAdjustedTime</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="445" column="1" bodyfile="/home/dev/ds-160209/src/addrman.h" bodystart="445" bodyend="453"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_addr_man_1afcddc2573121065177dc981cea710789" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CAddrMan::Attempt</definition>
+        <argsstring>(const CService &amp;addr, int64_t nTime=GetAdjustedTime())</argsstring>
+        <name>Attempt</name>
+        <param>
+          <type>const <ref refid="class_c_service" kindref="compound">CService</ref> &amp;</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+          <declname>nTime</declname>
+          <defval><ref refid="timedata_8h_1a09f81b9c7650f898cf3cf305b87547e6" kindref="member">GetAdjustedTime</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="456" column="1" bodyfile="/home/dev/ds-160209/src/addrman.h" bodystart="456" bodyend="464"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_addr_man_1a6aa6708d0ee55dba9ec6cefc9811c8e3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_c_address" kindref="compound">CAddress</ref></type>
+        <definition>CAddress CAddrMan::Select</definition>
+        <argsstring>(int nUnkBias=50)</argsstring>
+        <name>Select</name>
+        <param>
+          <type>int</type>
+          <declname>nUnkBias</declname>
+          <defval>50</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="468" column="1" bodyfile="/home/dev/ds-160209/src/addrman.h" bodystart="468" bodyend="478"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_addr_man_1a69cc6138e696cf88de60925d26023bf2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="class_c_address" kindref="compound">CAddress</ref> &gt;</type>
+        <definition>std::vector&lt;CAddress&gt; CAddrMan::GetAddr</definition>
+        <argsstring>()</argsstring>
+        <name>GetAddr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="481" column="1" bodyfile="/home/dev/ds-160209/src/addrman.h" bodystart="481" bodyend="491"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_addr_man_1a7aba66d9e9527522fed974567d34c322" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CAddrMan::Connected</definition>
+        <argsstring>(const CService &amp;addr, int64_t nTime=GetAdjustedTime())</argsstring>
+        <name>Connected</name>
+        <param>
+          <type>const <ref refid="class_c_service" kindref="compound">CService</ref> &amp;</type>
+          <declname>addr</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+          <declname>nTime</declname>
+          <defval><ref refid="timedata_8h_1a09f81b9c7650f898cf3cf305b87547e6" kindref="member">GetAdjustedTime</ref>()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/addrman.h" line="494" column="1" bodyfile="/home/dev/ds-160209/src/addrman.h" bodystart="494" bodyend="502"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Stochastical (IP) address manager </para>    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/addrman.h" line="166" column="1" bodyfile="/home/dev/ds-160209/src/addrman.h" bodystart="165" bodyend="503"/>
+    <listofallmembers>
+      <member refid="class_c_addr_man_1a03fcc7109b5f014760dc50a81f68c5ec" prot="public" virt="non-virtual"><scope>CAddrMan</scope><name>Add</name></member>
+      <member refid="class_c_addr_man_1aa2ae2abdf710b2d81fa37f072bab028e" prot="public" virt="non-virtual"><scope>CAddrMan</scope><name>Add</name></member>
+      <member refid="class_c_addr_man_1a9dd6df8b1904548a86054d19d4a90724" prot="protected" virt="non-virtual"><scope>CAddrMan</scope><name>Add_</name></member>
+      <member refid="class_c_addr_man_1afcddc2573121065177dc981cea710789" prot="public" virt="non-virtual"><scope>CAddrMan</scope><name>Attempt</name></member>
+      <member refid="class_c_addr_man_1ab1a1bfa8b435ef139570c88de1a5245f" prot="protected" virt="non-virtual"><scope>CAddrMan</scope><name>Attempt_</name></member>
+      <member refid="class_c_addr_man_1ad9179d1c36c2ea3492e221576f340d33" prot="public" virt="non-virtual"><scope>CAddrMan</scope><name>CAddrMan</name></member>
+      <member refid="class_c_addr_man_1a0c2677ae50ce0d680f0105b285d1f5d0" prot="public" virt="non-virtual"><scope>CAddrMan</scope><name>Check</name></member>
+      <member refid="class_c_addr_man_1a7aba66d9e9527522fed974567d34c322" prot="public" virt="non-virtual"><scope>CAddrMan</scope><name>Connected</name></member>
+      <member refid="class_c_addr_man_1a1ae72643c51293f3f3345e74ce0368ca" prot="protected" virt="non-virtual"><scope>CAddrMan</scope><name>Connected_</name></member>
+      <member refid="class_c_addr_man_1aac93f51c0580e38a950a0f63b053bedb" prot="protected" virt="non-virtual"><scope>CAddrMan</scope><name>Create</name></member>
+      <member refid="class_c_addr_man_1aa4519d05a02e493046e5ece1ce87c084" prot="private" virt="non-virtual"><scope>CAddrMan</scope><name>cs</name></member>
+      <member refid="class_c_addr_man_1ac961ead1a1afde144fc486b6d7c7369d" prot="protected" virt="non-virtual"><scope>CAddrMan</scope><name>Find</name></member>
+      <member refid="class_c_addr_man_1a69cc6138e696cf88de60925d26023bf2" prot="public" virt="non-virtual"><scope>CAddrMan</scope><name>GetAddr</name></member>
+      <member refid="class_c_addr_man_1aff86d04dc7c0e0afae3ff5998417db17" prot="protected" virt="non-virtual"><scope>CAddrMan</scope><name>GetAddr_</name></member>
+      <member refid="class_c_addr_man_1aa2266bea9d5336b0a93fe703a8601e55" prot="public" virt="non-virtual"><scope>CAddrMan</scope><name>GetSerializeSize</name></member>
+      <member refid="class_c_addr_man_1a993e80e74701d7bc6bb49880c387b847" prot="public" virt="non-virtual"><scope>CAddrMan</scope><name>Good</name></member>
+      <member refid="class_c_addr_man_1a33ec6a4584cf4b17af821e6e35216459" prot="protected" virt="non-virtual"><scope>CAddrMan</scope><name>Good_</name></member>
+      <member refid="class_c_addr_man_1a0fd16da2a89fb973e8e0e1bb6183264a" prot="protected" virt="non-virtual"><scope>CAddrMan</scope><name>MakeTried</name></member>
+      <member refid="class_c_addr_man_1a5c387857d8553818a56a4faac33fb691" prot="private" virt="non-virtual"><scope>CAddrMan</scope><name>mapAddr</name></member>
+      <member refid="class_c_addr_man_1a1232db343240bf03c45eaea7bcec550b" prot="private" virt="non-virtual"><scope>CAddrMan</scope><name>mapInfo</name></member>
+      <member refid="class_c_addr_man_1a77ff8bd51009324f2be012bd759b37d0" prot="private" virt="non-virtual"><scope>CAddrMan</scope><name>nIdCount</name></member>
+      <member refid="class_c_addr_man_1a158cb7e936caa65e2fbf889d3b97e17b" prot="private" virt="non-virtual"><scope>CAddrMan</scope><name>nKey</name></member>
+      <member refid="class_c_addr_man_1a469f5f8e9ac527812338d7894b784986" prot="private" virt="non-virtual"><scope>CAddrMan</scope><name>nNew</name></member>
+      <member refid="class_c_addr_man_1ae8566be810e6429012f1c2c1609b4540" prot="private" virt="non-virtual"><scope>CAddrMan</scope><name>nTried</name></member>
+      <member refid="class_c_addr_man_1a6aa6708d0ee55dba9ec6cefc9811c8e3" prot="public" virt="non-virtual"><scope>CAddrMan</scope><name>Select</name></member>
+      <member refid="class_c_addr_man_1acd799cecb73e466d1369e6e2f23d3a8d" prot="protected" virt="non-virtual"><scope>CAddrMan</scope><name>Select_</name></member>
+      <member refid="class_c_addr_man_1a9c466eca7afe5c12554da5734f89e656" prot="protected" virt="non-virtual"><scope>CAddrMan</scope><name>SelectTried</name></member>
+      <member refid="class_c_addr_man_1a88d4327f77fa70d9a88917897c3c6c97" prot="public" virt="non-virtual"><scope>CAddrMan</scope><name>Serialize</name></member>
+      <member refid="class_c_addr_man_1aebf83da3addc3bcee487a87ece3f9a2b" prot="protected" virt="non-virtual"><scope>CAddrMan</scope><name>ShrinkNew</name></member>
+      <member refid="class_c_addr_man_1a15b8e72f55344b6fbd1bc1bda3cdc5bc" prot="public" virt="non-virtual"><scope>CAddrMan</scope><name>size</name></member>
+      <member refid="class_c_addr_man_1a3074bc8e3dcfb5348054613f575dc38e" prot="protected" virt="non-virtual"><scope>CAddrMan</scope><name>SwapRandom</name></member>
+      <member refid="class_c_addr_man_1a68eaf1797ecb8bff380aa7f9fc452e14" prot="public" virt="non-virtual"><scope>CAddrMan</scope><name>Unserialize</name></member>
+      <member refid="class_c_addr_man_1af9c2199d29d7a1a7c6c5c1e3abec4102" prot="private" virt="non-virtual"><scope>CAddrMan</scope><name>vRandom</name></member>
+      <member refid="class_c_addr_man_1aa207ddbbfca038be4c868a62ecf9f812" prot="private" virt="non-virtual"><scope>CAddrMan</scope><name>vvNew</name></member>
+      <member refid="class_c_addr_man_1af067a03d9f44566c6e84ef0564442faa" prot="private" virt="non-virtual"><scope>CAddrMan</scope><name>vvTried</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

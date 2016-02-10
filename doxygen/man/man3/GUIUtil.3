@@ -1,0 +1,216 @@
+.TH "GUIUtil" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+GUIUtil \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBClickableLabel\fP"
+.br
+.ti -1c
+.RI "class \fBHelpMessageBox\fP"
+.br
+.ti -1c
+.RI "class \fBToolTipToRichTextFilter\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "QString \fBdateTimeStr\fP (const QDateTime &date)"
+.br
+.ti -1c
+.RI "QString \fBdateTimeStr\fP (qint64 nTime)"
+.br
+.ti -1c
+.RI "QFont \fBdarksilkAddressFont\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetupAddressWidget\fP (QLineEdit *widget, QWidget *parent)"
+.br
+.ti -1c
+.RI "void \fBsetupAmountWidget\fP (QLineEdit *widget, QWidget *parent)"
+.br
+.ti -1c
+.RI "bool \fBparseDarkSilkURI\fP (const QUrl &uri, \fBSendCoinsRecipient\fP *out)"
+.br
+.ti -1c
+.RI "bool \fBparseDarkSilkURI\fP (QString uri, \fBSendCoinsRecipient\fP *out)"
+.br
+.ti -1c
+.RI "QString \fBHtmlEscape\fP (const QString &str, bool fMultiLine)"
+.br
+.ti -1c
+.RI "QString \fBHtmlEscape\fP (const std::string &str, bool fMultiLine)"
+.br
+.ti -1c
+.RI "void \fBcopyEntryData\fP (QAbstractItemView *view, int column, int role)"
+.br
+.ti -1c
+.RI "QString \fBgetSaveFileName\fP (QWidget *parent, const QString &caption, const QString &dir, const QString &filter, QString *selectedSuffixOut)"
+.br
+.ti -1c
+.RI "Qt::ConnectionType \fBblockingGUIThreadConnection\fP ()"
+.br
+.ti -1c
+.RI "bool \fBcheckPoint\fP (const QPoint &p, const QWidget *w)"
+.br
+.ti -1c
+.RI "bool \fBisObscured\fP (QWidget *w)"
+.br
+.ti -1c
+.RI "void \fBopenDebugLogfile\fP ()"
+.br
+.ti -1c
+.RI "bool \fBGetStartOnSystemStartup\fP ()"
+.br
+.ti -1c
+.RI "bool \fBSetStartOnSystemStartup\fP (bool fAutoStart)"
+.br
+.ti -1c
+.RI "void \fBSetBlackThemeQSS\fP (QApplication &app)"
+.br
+.ti -1c
+.RI "QString \fBformatPingTime\fP (double dPingTime)"
+.br
+.ti -1c
+.RI "QString \fBformatDurationStr\fP (int secs)"
+.br
+.ti -1c
+.RI "QString \fBformatServicesStr\fP (quint64 mask)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Utility functions used by the DarkSilk Qt UI\&. 
+.SH "Function Documentation"
+.PP 
+.SS "Qt::ConnectionType GUIUtil::blockingGUIThreadConnection ()"
+Get connection type to call object slot in GUI thread with invokeMethod\&. The call will be blocking\&.
+.PP
+\fBReturns:\fP
+.RS 4
+If called from the GUI thread, return a Qt::DirectConnection\&. If called from another thread, return a Qt::BlockingQueuedConnection\&. 
+.RE
+.PP
+
+.PP
+Definition at line 220 of file guiutil\&.cpp\&.
+.SS "bool GUIUtil::checkPoint (const QPoint & p, const QWidget * w)"
+
+.PP
+Definition at line 232 of file guiutil\&.cpp\&.
+.SS "void GUIUtil::copyEntryData (QAbstractItemView * view, int column, int role = \fCQt::EditRole\fP)"
+Copy a field of the currently selected entry of a view to the clipboard\&. Does nothing if nothing is selected\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcolumn\fP Data column to extract from the model 
+.br
+\fIrole\fP Data role to extract from the model 
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+TransactionView::copyLabel, TransactionView::copyAmount, TransactionView::copyAddress 
+.RE
+.PP
+
+.PP
+Definition at line 161 of file guiutil\&.cpp\&.
+.SS "QFont GUIUtil::darksilkAddressFont ()"
+
+.PP
+Definition at line 58 of file guiutil\&.cpp\&.
+.SS "QString GUIUtil::dateTimeStr (const QDateTime & date)"
+
+.PP
+Definition at line 48 of file guiutil\&.cpp\&.
+.SS "QString GUIUtil::dateTimeStr (qint64 nTime)"
+
+.PP
+Definition at line 53 of file guiutil\&.cpp\&.
+.SS "QString GUIUtil::formatDurationStr (int secs)"
+
+.PP
+Definition at line 524 of file guiutil\&.cpp\&.
+.SS "QString GUIUtil::formatPingTime (double dPingTime)"
+
+.PP
+Definition at line 519 of file guiutil\&.cpp\&.
+.SS "QString GUIUtil::formatServicesStr (quint64 mask)"
+
+.PP
+Definition at line 544 of file guiutil\&.cpp\&.
+.SS "QString GUIUtil::getSaveFileName (QWidget * parent = \fC0\fP, const QString & caption = \fCQString()\fP, const QString & dir = \fCQString()\fP, const QString & filter = \fCQString()\fP, QString * selectedSuffixOut = \fC0\fP)"
+Get save filename, mimics QFileDialog::getSaveFileName, except that it appends a default suffix when no suffix is provided by the user\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparent\fP Parent window (or 0) 
+.br
+\fIcaption\fP Window caption (or empty, for default) 
+.br
+\fIdir\fP Starting directory (or empty, to default to documents directory) 
+.br
+\fIfilter\fP Filter specification such as 'Comma Separated Files (*\&.csv)' 
+.br
+\fIselectedSuffixOut\fP Pointer to return the suffix (file type) that was selected (or 0)\&. Can be useful when choosing the save file format based on suffix\&. 
+.RE
+.PP
+
+.PP
+Definition at line 174 of file guiutil\&.cpp\&.
+.SS "bool GUIUtil::GetStartOnSystemStartup ()"
+
+.PP
+Definition at line 420 of file guiutil\&.cpp\&.
+.SS "QString GUIUtil::HtmlEscape (const QString & str, bool fMultiLine)"
+
+.PP
+Definition at line 145 of file guiutil\&.cpp\&.
+.SS "QString GUIUtil::HtmlEscape (const std::string & str, bool fMultiLine)"
+
+.PP
+Definition at line 156 of file guiutil\&.cpp\&.
+.SS "bool GUIUtil::isObscured (QWidget * w)"
+
+.PP
+Definition at line 239 of file guiutil\&.cpp\&.
+.SS "void GUIUtil::openDebugLogfile ()"
+
+.PP
+Definition at line 248 of file guiutil\&.cpp\&.
+.SS "bool GUIUtil::parseDarkSilkURI (const QUrl & uri, \fBSendCoinsRecipient\fP * out)"
+
+.PP
+Definition at line 85 of file guiutil\&.cpp\&.
+.SS "bool GUIUtil::parseDarkSilkURI (QString uri, \fBSendCoinsRecipient\fP * out)"
+
+.PP
+Definition at line 131 of file guiutil\&.cpp\&.
+.SS "void GUIUtil::SetBlackThemeQSS (QApplication & app)"
+
+.PP
+Definition at line 481 of file guiutil\&.cpp\&.
+.SS "bool GUIUtil::SetStartOnSystemStartup (bool fAutoStart)"
+
+.PP
+Definition at line 421 of file guiutil\&.cpp\&.
+.SS "void GUIUtil::setupAddressWidget (QLineEdit * widget, QWidget * parent)"
+
+.PP
+Definition at line 69 of file guiutil\&.cpp\&.
+.SS "void GUIUtil::setupAmountWidget (QLineEdit * widget, QWidget * parent)"
+
+.PP
+Definition at line 76 of file guiutil\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

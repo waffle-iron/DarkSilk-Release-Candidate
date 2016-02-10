@@ -1,0 +1,741 @@
+.TH "/home/dev/ds-160209/src/tinyformat.h" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/tinyformat.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <cassert>\fP
+.br
+\fC#include <iostream>\fP
+.br
+\fC#include <sstream>\fP
+.br
+\fC#include <stdexcept>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBtinyformat::detail::is_convertible< T1, T2 >\fP"
+.br
+.ti -1c
+.RI "struct \fBtinyformat::detail::is_wchar< T >\fP"
+.br
+.ti -1c
+.RI "struct \fBtinyformat::detail::is_wchar< wchar_t * >\fP"
+.br
+.ti -1c
+.RI "struct \fBtinyformat::detail::is_wchar< const wchar_t * >\fP"
+.br
+.ti -1c
+.RI "struct \fBtinyformat::detail::is_wchar< const wchar_t[n]>\fP"
+.br
+.ti -1c
+.RI "struct \fBtinyformat::detail::is_wchar< wchar_t[n]>\fP"
+.br
+.ti -1c
+.RI "struct \fBtinyformat::detail::formatValueAsType< T, fmtT, convertible >\fP"
+.br
+.ti -1c
+.RI "struct \fBtinyformat::detail::formatValueAsType< T, fmtT, true >\fP"
+.br
+.ti -1c
+.RI "struct \fBtinyformat::detail::convertToInt< T, convertible >\fP"
+.br
+.ti -1c
+.RI "struct \fBtinyformat::detail::convertToInt< T, true >\fP"
+.br
+.ti -1c
+.RI "class \fBtinyformat::detail::FormatIterator\fP"
+.br
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBtinyformat\fP"
+.br
+.ti -1c
+.RI " \fBtinyformat::detail\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBTINYFORMAT_ERROR\fP(reasonString)   throw std::runtime_error(reasonString)"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_NOINLINE\fP"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_DEFINE_FORMATVALUE_CHAR\fP(charType)"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_ARGTYPES\fP(n)   TINYFORMAT_ARGTYPES_ ## n"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_VARARGS\fP(n)   TINYFORMAT_VARARGS_ ## n"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS\fP(n)   TINYFORMAT_PASSARGS_ ## n"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_TAIL\fP(n)   TINYFORMAT_PASSARGS_TAIL_ ## n"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_ARGTYPES_1\fP   class T1"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_ARGTYPES_2\fP   class T1, class T2"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_ARGTYPES_3\fP   class T1, class T2, class T3"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_ARGTYPES_4\fP   class T1, class T2, class T3, class T4"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_ARGTYPES_5\fP   class T1, class T2, class T3, class T4, class T5"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_ARGTYPES_6\fP   class T1, class T2, class T3, class T4, class T5, class T6"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_ARGTYPES_7\fP   class T1, class T2, class T3, class T4, class T5, class T6, class T7"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_ARGTYPES_8\fP   class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_ARGTYPES_9\fP   class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_ARGTYPES_10\fP   class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9, class T10"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_ARGTYPES_11\fP   class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9, class T10, class T11"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_ARGTYPES_12\fP   class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9, class T10, class T11, class T12"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_ARGTYPES_13\fP   class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9, class T10, class T11, class T12, class T13"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_ARGTYPES_14\fP   class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9, class T10, class T11, class T12, class T13, class T14"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_ARGTYPES_15\fP   class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9, class T10, class T11, class T12, class T13, class T14, class T15"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_ARGTYPES_16\fP   class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9, class T10, class T11, class T12, class T13, class T14, class T15, class T16"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_VARARGS_1\fP   const T1& v1"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_VARARGS_2\fP   const T1& v1, const T2& v2"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_VARARGS_3\fP   const T1& v1, const T2& v2, const T3& v3"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_VARARGS_4\fP   const T1& v1, const T2& v2, const T3& v3, const T4& v4"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_VARARGS_5\fP   const T1& v1, const T2& v2, const T3& v3, const T4& v4, const T5& v5"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_VARARGS_6\fP   const T1& v1, const T2& v2, const T3& v3, const T4& v4, const T5& v5, const T6& v6"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_VARARGS_7\fP   const T1& v1, const T2& v2, const T3& v3, const T4& v4, const T5& v5, const T6& v6, const T7& v7"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_VARARGS_8\fP   const T1& v1, const T2& v2, const T3& v3, const T4& v4, const T5& v5, const T6& v6, const T7& v7, const T8& v8"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_VARARGS_9\fP   const T1& v1, const T2& v2, const T3& v3, const T4& v4, const T5& v5, const T6& v6, const T7& v7, const T8& v8, const T9& v9"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_VARARGS_10\fP   const T1& v1, const T2& v2, const T3& v3, const T4& v4, const T5& v5, const T6& v6, const T7& v7, const T8& v8, const T9& v9, const T10& v10"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_VARARGS_11\fP   const T1& v1, const T2& v2, const T3& v3, const T4& v4, const T5& v5, const T6& v6, const T7& v7, const T8& v8, const T9& v9, const T10& v10, const T11& v11"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_VARARGS_12\fP   const T1& v1, const T2& v2, const T3& v3, const T4& v4, const T5& v5, const T6& v6, const T7& v7, const T8& v8, const T9& v9, const T10& v10, const T11& v11, const T12& v12"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_VARARGS_13\fP   const T1& v1, const T2& v2, const T3& v3, const T4& v4, const T5& v5, const T6& v6, const T7& v7, const T8& v8, const T9& v9, const T10& v10, const T11& v11, const T12& v12, const T13& v13"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_VARARGS_14\fP   const T1& v1, const T2& v2, const T3& v3, const T4& v4, const T5& v5, const T6& v6, const T7& v7, const T8& v8, const T9& v9, const T10& v10, const T11& v11, const T12& v12, const T13& v13, const T14& v14"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_VARARGS_15\fP   const T1& v1, const T2& v2, const T3& v3, const T4& v4, const T5& v5, const T6& v6, const T7& v7, const T8& v8, const T9& v9, const T10& v10, const T11& v11, const T12& v12, const T13& v13, const T14& v14, const T15& v15"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_VARARGS_16\fP   const T1& v1, const T2& v2, const T3& v3, const T4& v4, const T5& v5, const T6& v6, const T7& v7, const T8& v8, const T9& v9, const T10& v10, const T11& v11, const T12& v12, const T13& v13, const T14& v14, const T15& v15, const T16& v16"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_1\fP   v1"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_2\fP   v1, v2"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_3\fP   v1, v2, v3"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_4\fP   v1, v2, v3, v4"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_5\fP   v1, v2, v3, v4, v5"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_6\fP   v1, v2, v3, v4, v5, v6"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_7\fP   v1, v2, v3, v4, v5, v6, v7"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_8\fP   v1, v2, v3, v4, v5, v6, v7, v8"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_9\fP   v1, v2, v3, v4, v5, v6, v7, v8, v9"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_10\fP   v1, v2, v3, v4, v5, v6, v7, v8, v9, v10"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_11\fP   v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_12\fP   v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_13\fP   v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_14\fP   v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_15\fP   v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_16\fP   v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_TAIL_1\fP"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_TAIL_2\fP   , v2"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_TAIL_3\fP   , v2, v3"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_TAIL_4\fP   , v2, v3, v4"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_TAIL_5\fP   , v2, v3, v4, v5"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_TAIL_6\fP   , v2, v3, v4, v5, v6"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_TAIL_7\fP   , v2, v3, v4, v5, v6, v7"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_TAIL_8\fP   , v2, v3, v4, v5, v6, v7, v8"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_TAIL_9\fP   , v2, v3, v4, v5, v6, v7, v8, v9"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_TAIL_10\fP   , v2, v3, v4, v5, v6, v7, v8, v9, v10"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_TAIL_11\fP   , v2, v3, v4, v5, v6, v7, v8, v9, v10, v11"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_TAIL_12\fP   , v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_TAIL_13\fP   , v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_TAIL_14\fP   , v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_TAIL_15\fP   , v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_PASSARGS_TAIL_16\fP   , v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_FOREACH_ARGNUM\fP(m)   m(1) m(2) m(3) m(4) m(5) m(6) m(7) m(8) m(9) m(10) m(11) m(12) m(13) m(14) m(15) m(16)"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_DEFINE_FORMAT_C_STRING_TRUNCATE\fP(type)"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_MAKE_FORMAT_DETAIL\fP(n)"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_MAKE_FORMAT_FUNCS\fP(n)"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_WRAP_FORMAT_EXTRA_ARGS\fP"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_WRAP_FORMAT_N\fP(n,  returnType,  funcName,  funcDeclSuffix, bodyPrefix,  streamName,  bodySuffix)"
+.br
+.ti -1c
+.RI "#define \fBTINYFORMAT_WRAP_FORMAT\fP(returnType,  funcName,  funcDeclSuffix, bodyPrefix,  streamName,  bodySuffix)"
+.br
+.ti -1c
+.RI "#define \fBstrprintf\fP   tfm::format"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename T > void \fBtinyformat::formatValue\fP (std::ostream &out, const char *, const char *fmtEnd, const T &\fBvalue\fP)"
+.br
+.ti -1c
+.RI "void \fBtinyformat::detail::format\fP (FormatIterator &fmtIter)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define strprintf   tfm::format"
+
+.PP
+Definition at line 1011 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_ARGTYPES(n)   TINYFORMAT_ARGTYPES_ ## n"
+
+.PP
+Definition at line 321 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_ARGTYPES_1   class T1"
+
+.PP
+Definition at line 362 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_ARGTYPES_10   class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9, class T10"
+
+.PP
+Definition at line 371 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_ARGTYPES_11   class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9, class T10, class T11"
+
+.PP
+Definition at line 372 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_ARGTYPES_12   class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9, class T10, class T11, class T12"
+
+.PP
+Definition at line 373 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_ARGTYPES_13   class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9, class T10, class T11, class T12, class T13"
+
+.PP
+Definition at line 374 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_ARGTYPES_14   class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9, class T10, class T11, class T12, class T13, class T14"
+
+.PP
+Definition at line 375 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_ARGTYPES_15   class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9, class T10, class T11, class T12, class T13, class T14, class T15"
+
+.PP
+Definition at line 376 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_ARGTYPES_16   class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9, class T10, class T11, class T12, class T13, class T14, class T15, class T16"
+
+.PP
+Definition at line 377 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_ARGTYPES_2   class T1, class T2"
+
+.PP
+Definition at line 363 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_ARGTYPES_3   class T1, class T2, class T3"
+
+.PP
+Definition at line 364 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_ARGTYPES_4   class T1, class T2, class T3, class T4"
+
+.PP
+Definition at line 365 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_ARGTYPES_5   class T1, class T2, class T3, class T4, class T5"
+
+.PP
+Definition at line 366 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_ARGTYPES_6   class T1, class T2, class T3, class T4, class T5, class T6"
+
+.PP
+Definition at line 367 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_ARGTYPES_7   class T1, class T2, class T3, class T4, class T5, class T6, class T7"
+
+.PP
+Definition at line 368 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_ARGTYPES_8   class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8"
+
+.PP
+Definition at line 369 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_ARGTYPES_9   class T1, class T2, class T3, class T4, class T5, class T6, class T7, class T8, class T9"
+
+.PP
+Definition at line 370 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_DEFINE_FORMAT_C_STRING_TRUNCATE(type)"
+\fBValue:\fP
+.PP
+.nf
+static bool formatCStringTruncate(std::ostream& out, type* value,  \
+                                        std::streamsize truncLen)          \
+        {                                                                  \
+            std::streamsize len = 0;                                       \
+            while(len < truncLen && value[len] != 0)                       \
+                ++len;                                                     \
+            out\&.write(value, len);                                         \
+            return true;                                                   \
+        }
+.fi
+.PP
+Definition at line 510 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_DEFINE_FORMATVALUE_CHAR(charType)"
+\fBValue:\fP
+.PP
+.nf
+inline void formatValue(std::ostream& out, const char* /*fmtBegin*/,  \
+                        const char* fmtEnd, charType value)           \
+{                                                                     \
+    switch(*(fmtEnd-1))                                               \
+    {                                                                 \
+        case 'u': case 'd': case 'i': case 'o': case 'X': case 'x':   \
+            out << static_cast<int>(value); break;                    \
+        default:                                                      \
+            out << value;                   break;                    \
+    }                                                                 \
+}
+.fi
+.PP
+Definition at line 297 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_ERROR(reasonString)   throw std::runtime_error(reasonString)"
+
+.PP
+Definition at line 112 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_FOREACH_ARGNUM(m)   m(1) m(2) m(3) m(4) m(5) m(6) m(7) m(8) m(9) m(10) m(11) m(12) m(13) m(14) m(15) m(16)"
+
+.PP
+Definition at line 430 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_MAKE_FORMAT_DETAIL(n)"
+\fBValue:\fP
+.PP
+.nf
+template<TINYFORMAT_ARGTYPES(n)>                                          \
+void format(detail::FormatIterator& fmtIter, TINYFORMAT_VARARGS(n))       \
+{                                                                         \
+    fmtIter\&.accept(v1);                                                   \\
+    format(fmtIter TINYFORMAT_PASSARGS_TAIL(n));                          \
+}
+.fi
+.PP
+Definition at line 876 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_MAKE_FORMAT_FUNCS(n)"
+\fBValue:\fP
+.PP
+.nf
+\
+template<TINYFORMAT_ARGTYPES(n)>                                          \
+void format(std::ostream& out, const char* fmt, TINYFORMAT_VARARGS(n))    \
+{                                                                         \
+    tinyformat::detail::FormatIterator fmtIter(out, fmt);                 \\
+    tinyformat::detail::format(fmtIter, TINYFORMAT_PASSARGS(n));          \
+}                                                                         \
+                                                                          \
+template<TINYFORMAT_ARGTYPES(n)>                                          \
+std::string format(const char* fmt, TINYFORMAT_VARARGS(n))                \
+{                                                                         \
+    std::ostringstream oss;                                               \\
+    tinyformat::format(oss, fmt, TINYFORMAT_PASSARGS(n));                 \
+    return oss\&.str();                                                     \
+}                                                                         \
+                                                                          \
+template<TINYFORMAT_ARGTYPES(n)>                                          \
+std::string format(const std::string &fmt, TINYFORMAT_VARARGS(n))         \
+{                                                                         \
+    std::ostringstream oss;                                               \\
+    tinyformat::format(oss, fmt\&.c_str(), TINYFORMAT_PASSARGS(n));         \
+    return oss\&.str();                                                     \
+}                                                                         \
+                                                                          \
+template<TINYFORMAT_ARGTYPES(n)>                                          \
+void printf(const char* fmt, TINYFORMAT_VARARGS(n))                       \
+{                                                                         \\
+    tinyformat::format(std::cout, fmt, TINYFORMAT_PASSARGS(n));           \
+}
+.fi
+.PP
+Definition at line 930 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_NOINLINE"
+
+.PP
+Definition at line 141 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS(n)   TINYFORMAT_PASSARGS_ ## n"
+
+.PP
+Definition at line 323 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_1   v1"
+
+.PP
+Definition at line 396 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_10   v1, v2, v3, v4, v5, v6, v7, v8, v9, v10"
+
+.PP
+Definition at line 405 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_11   v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11"
+
+.PP
+Definition at line 406 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_12   v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12"
+
+.PP
+Definition at line 407 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_13   v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13"
+
+.PP
+Definition at line 408 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_14   v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14"
+
+.PP
+Definition at line 409 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_15   v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15"
+
+.PP
+Definition at line 410 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_16   v1, v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16"
+
+.PP
+Definition at line 411 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_2   v1, v2"
+
+.PP
+Definition at line 397 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_3   v1, v2, v3"
+
+.PP
+Definition at line 398 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_4   v1, v2, v3, v4"
+
+.PP
+Definition at line 399 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_5   v1, v2, v3, v4, v5"
+
+.PP
+Definition at line 400 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_6   v1, v2, v3, v4, v5, v6"
+
+.PP
+Definition at line 401 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_7   v1, v2, v3, v4, v5, v6, v7"
+
+.PP
+Definition at line 402 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_8   v1, v2, v3, v4, v5, v6, v7, v8"
+
+.PP
+Definition at line 403 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_9   v1, v2, v3, v4, v5, v6, v7, v8, v9"
+
+.PP
+Definition at line 404 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_TAIL(n)   TINYFORMAT_PASSARGS_TAIL_ ## n"
+
+.PP
+Definition at line 324 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_TAIL_1"
+
+.PP
+Definition at line 413 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_TAIL_10   , v2, v3, v4, v5, v6, v7, v8, v9, v10"
+
+.PP
+Definition at line 422 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_TAIL_11   , v2, v3, v4, v5, v6, v7, v8, v9, v10, v11"
+
+.PP
+Definition at line 423 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_TAIL_12   , v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12"
+
+.PP
+Definition at line 424 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_TAIL_13   , v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13"
+
+.PP
+Definition at line 425 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_TAIL_14   , v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14"
+
+.PP
+Definition at line 426 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_TAIL_15   , v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15"
+
+.PP
+Definition at line 427 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_TAIL_16   , v2, v3, v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15, v16"
+
+.PP
+Definition at line 428 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_TAIL_2   , v2"
+
+.PP
+Definition at line 414 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_TAIL_3   , v2, v3"
+
+.PP
+Definition at line 415 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_TAIL_4   , v2, v3, v4"
+
+.PP
+Definition at line 416 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_TAIL_5   , v2, v3, v4, v5"
+
+.PP
+Definition at line 417 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_TAIL_6   , v2, v3, v4, v5, v6"
+
+.PP
+Definition at line 418 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_TAIL_7   , v2, v3, v4, v5, v6, v7"
+
+.PP
+Definition at line 419 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_TAIL_8   , v2, v3, v4, v5, v6, v7, v8"
+
+.PP
+Definition at line 420 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_PASSARGS_TAIL_9   , v2, v3, v4, v5, v6, v7, v8, v9"
+
+.PP
+Definition at line 421 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_VARARGS(n)   TINYFORMAT_VARARGS_ ## n"
+
+.PP
+Definition at line 322 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_VARARGS_1   const T1& v1"
+
+.PP
+Definition at line 379 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_VARARGS_10   const T1& v1, const T2& v2, const T3& v3, const T4& v4, const T5& v5, const T6& v6, const T7& v7, const T8& v8, const T9& v9, const T10& v10"
+
+.PP
+Definition at line 388 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_VARARGS_11   const T1& v1, const T2& v2, const T3& v3, const T4& v4, const T5& v5, const T6& v6, const T7& v7, const T8& v8, const T9& v9, const T10& v10, const T11& v11"
+
+.PP
+Definition at line 389 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_VARARGS_12   const T1& v1, const T2& v2, const T3& v3, const T4& v4, const T5& v5, const T6& v6, const T7& v7, const T8& v8, const T9& v9, const T10& v10, const T11& v11, const T12& v12"
+
+.PP
+Definition at line 390 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_VARARGS_13   const T1& v1, const T2& v2, const T3& v3, const T4& v4, const T5& v5, const T6& v6, const T7& v7, const T8& v8, const T9& v9, const T10& v10, const T11& v11, const T12& v12, const T13& v13"
+
+.PP
+Definition at line 391 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_VARARGS_14   const T1& v1, const T2& v2, const T3& v3, const T4& v4, const T5& v5, const T6& v6, const T7& v7, const T8& v8, const T9& v9, const T10& v10, const T11& v11, const T12& v12, const T13& v13, const T14& v14"
+
+.PP
+Definition at line 392 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_VARARGS_15   const T1& v1, const T2& v2, const T3& v3, const T4& v4, const T5& v5, const T6& v6, const T7& v7, const T8& v8, const T9& v9, const T10& v10, const T11& v11, const T12& v12, const T13& v13, const T14& v14, const T15& v15"
+
+.PP
+Definition at line 393 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_VARARGS_16   const T1& v1, const T2& v2, const T3& v3, const T4& v4, const T5& v5, const T6& v6, const T7& v7, const T8& v8, const T9& v9, const T10& v10, const T11& v11, const T12& v12, const T13& v13, const T14& v14, const T15& v15, const T16& v16"
+
+.PP
+Definition at line 394 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_VARARGS_2   const T1& v1, const T2& v2"
+
+.PP
+Definition at line 380 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_VARARGS_3   const T1& v1, const T2& v2, const T3& v3"
+
+.PP
+Definition at line 381 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_VARARGS_4   const T1& v1, const T2& v2, const T3& v3, const T4& v4"
+
+.PP
+Definition at line 382 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_VARARGS_5   const T1& v1, const T2& v2, const T3& v3, const T4& v4, const T5& v5"
+
+.PP
+Definition at line 383 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_VARARGS_6   const T1& v1, const T2& v2, const T3& v3, const T4& v4, const T5& v5, const T6& v6"
+
+.PP
+Definition at line 384 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_VARARGS_7   const T1& v1, const T2& v2, const T3& v3, const T4& v4, const T5& v5, const T6& v6, const T7& v7"
+
+.PP
+Definition at line 385 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_VARARGS_8   const T1& v1, const T2& v2, const T3& v3, const T4& v4, const T5& v5, const T6& v6, const T7& v7, const T8& v8"
+
+.PP
+Definition at line 386 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_VARARGS_9   const T1& v1, const T2& v2, const T3& v3, const T4& v4, const T5& v5, const T6& v6, const T7& v7, const T8& v8, const T9& v9"
+
+.PP
+Definition at line 387 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_WRAP_FORMAT(returnType, funcName, funcDeclSuffix, bodyPrefix, streamName, bodySuffix)"
+\fBValue:\fP
+.PP
+.nf
+inline                                                                     \
+returnType funcName(TINYFORMAT_WRAP_FORMAT_EXTRA_ARGS const char* fmt      \
+                    ) funcDeclSuffix                                       \
+{                                                                          \
+    bodyPrefix                                                             \
+    tinyformat::detail::FormatIterator(streamName, fmt)\&.finish();          \
+    bodySuffix                                                             \
+}                                                                          \\
+TINYFORMAT_WRAP_FORMAT_N(1 , returnType, funcName, funcDeclSuffix, bodyPrefix, streamName, bodySuffix) \\
+TINYFORMAT_WRAP_FORMAT_N(2 , returnType, funcName, funcDeclSuffix, bodyPrefix, streamName, bodySuffix) \\
+TINYFORMAT_WRAP_FORMAT_N(3 , returnType, funcName, funcDeclSuffix, bodyPrefix, streamName, bodySuffix) \\
+TINYFORMAT_WRAP_FORMAT_N(4 , returnType, funcName, funcDeclSuffix, bodyPrefix, streamName, bodySuffix) \\
+TINYFORMAT_WRAP_FORMAT_N(5 , returnType, funcName, funcDeclSuffix, bodyPrefix, streamName, bodySuffix) \\
+TINYFORMAT_WRAP_FORMAT_N(6 , returnType, funcName, funcDeclSuffix, bodyPrefix, streamName, bodySuffix) \\
+TINYFORMAT_WRAP_FORMAT_N(7 , returnType, funcName, funcDeclSuffix, bodyPrefix, streamName, bodySuffix) \\
+TINYFORMAT_WRAP_FORMAT_N(8 , returnType, funcName, funcDeclSuffix, bodyPrefix, streamName, bodySuffix) \\
+TINYFORMAT_WRAP_FORMAT_N(9 , returnType, funcName, funcDeclSuffix, bodyPrefix, streamName, bodySuffix) \\
+TINYFORMAT_WRAP_FORMAT_N(10, returnType, funcName, funcDeclSuffix, bodyPrefix, streamName, bodySuffix) \\
+TINYFORMAT_WRAP_FORMAT_N(11, returnType, funcName, funcDeclSuffix, bodyPrefix, streamName, bodySuffix) \\
+TINYFORMAT_WRAP_FORMAT_N(12, returnType, funcName, funcDeclSuffix, bodyPrefix, streamName, bodySuffix) \\
+TINYFORMAT_WRAP_FORMAT_N(13, returnType, funcName, funcDeclSuffix, bodyPrefix, streamName, bodySuffix) \\
+TINYFORMAT_WRAP_FORMAT_N(14, returnType, funcName, funcDeclSuffix, bodyPrefix, streamName, bodySuffix) \\
+TINYFORMAT_WRAP_FORMAT_N(15, returnType, funcName, funcDeclSuffix, bodyPrefix, streamName, bodySuffix) \\
+TINYFORMAT_WRAP_FORMAT_N(16, returnType, funcName, funcDeclSuffix, bodyPrefix, streamName, bodySuffix) \
+.fi
+.PP
+Definition at line 981 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_WRAP_FORMAT_EXTRA_ARGS"
+
+.PP
+Definition at line 969 of file tinyformat\&.h\&.
+.SS "#define TINYFORMAT_WRAP_FORMAT_N(n, returnType, funcName, funcDeclSuffix, bodyPrefix, streamName, bodySuffix)"
+\fBValue:\fP
+.PP
+.nf
+template<TINYFORMAT_ARGTYPES(n)>                                           \
+returnType funcName(TINYFORMAT_WRAP_FORMAT_EXTRA_ARGS const char* fmt,     \
+                    TINYFORMAT_VARARGS(n)) funcDeclSuffix                  \
+{                                                                          \\
+    bodyPrefix                                                             \\
+    tinyformat::format(streamName, fmt, TINYFORMAT_PASSARGS(n));           \
+    bodySuffix                                                             \
+}                                                                          \
+.fi
+.PP
+Definition at line 970 of file tinyformat\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

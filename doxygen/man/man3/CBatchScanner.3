@@ -1,0 +1,84 @@
+.TH "CBatchScanner" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CBatchScanner \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBleveldb::WriteBatch::Handler\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCBatchScanner\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBPut\fP (const \fBleveldb::Slice\fP &key, const \fBleveldb::Slice\fP &\fBvalue\fP)"
+.br
+.ti -1c
+.RI "virtual void \fBDelete\fP (const \fBleveldb::Slice\fP &key)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBneedle\fP"
+.br
+.ti -1c
+.RI "bool * \fBdeleted\fP"
+.br
+.ti -1c
+.RI "std::string * \fBfoundValue\fP"
+.br
+.ti -1c
+.RI "bool \fBfoundEntry\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 164 of file txdb-leveldb\&.cpp\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CBatchScanner::CBatchScanner ()\fC [inline]\fP"
+
+.PP
+Definition at line 171 of file txdb-leveldb\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void CBatchScanner::Delete (const \fBleveldb::Slice\fP & key)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBleveldb::WriteBatch::Handler\fP\&.
+.PP
+Definition at line 181 of file txdb-leveldb\&.cpp\&.
+.SS "virtual void CBatchScanner::Put (const \fBleveldb::Slice\fP & key, const \fBleveldb::Slice\fP & value)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBleveldb::WriteBatch::Handler\fP\&.
+.PP
+Definition at line 173 of file txdb-leveldb\&.cpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "bool* CBatchScanner::deleted"
+
+.PP
+Definition at line 167 of file txdb-leveldb\&.cpp\&.
+.SS "bool CBatchScanner::foundEntry"
+
+.PP
+Definition at line 169 of file txdb-leveldb\&.cpp\&.
+.SS "std::string* CBatchScanner::foundValue"
+
+.PP
+Definition at line 168 of file txdb-leveldb\&.cpp\&.
+.SS "std::string CBatchScanner::needle"
+
+.PP
+Definition at line 166 of file txdb-leveldb\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

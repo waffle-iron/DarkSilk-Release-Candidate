@@ -1,0 +1,135 @@
+.TH "CBlockLocator" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CBlockLocator \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <chain\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCBlockLocator\fP ()"
+.br
+.ti -1c
+.RI "\fBCBlockLocator\fP (const \fBCBlockIndex\fP *pindex)"
+.br
+.ti -1c
+.RI "\fBCBlockLocator\fP (\fBuint256\fP hashBlock)"
+.br
+.ti -1c
+.RI "\fBCBlockLocator\fP (const std::vector< \fBuint256\fP > &vHaveIn)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename Operation > void \fBSerializationOp\fP (Stream &s, Operation ser_action, int nType, int nVersion)"
+.br
+.ti -1c
+.RI "void \fBSetNull\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsNull\fP ()"
+.br
+.ti -1c
+.RI "void \fBSet\fP (const \fBCBlockIndex\fP *pindex)"
+.br
+.ti -1c
+.RI "int \fBGetDistanceBack\fP ()"
+.br
+.ti -1c
+.RI "\fBCBlockIndex\fP * \fBGetBlockIndex\fP ()"
+.br
+.ti -1c
+.RI "\fBuint256\fP \fBGetBlockHash\fP ()"
+.br
+.ti -1c
+.RI "int \fBGetHeight\fP ()"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBADD_SERIALIZE_METHODS\fP"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::vector< \fBuint256\fP > \fBvHave\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Describes a place in the block chain to another node such that if the other node doesn't have the same branch, it can find a recent common trunk\&. The further back it is, the further before the fork it may be\&. 
+.PP
+Definition at line 424 of file chain\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CBlockLocator::CBlockLocator ()\fC [inline]\fP"
+
+.PP
+Definition at line 430 of file chain\&.h\&.
+.SS "CBlockLocator::CBlockLocator (const \fBCBlockIndex\fP * pindex)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Definition at line 434 of file chain\&.h\&.
+.SS "CBlockLocator::CBlockLocator (\fBuint256\fP hashBlock)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Definition at line 439 of file chain\&.h\&.
+.SS "CBlockLocator::CBlockLocator (const std::vector< \fBuint256\fP > & vHaveIn)\fC [inline]\fP"
+
+.PP
+Definition at line 446 of file chain\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBuint256\fP CBlockLocator::GetBlockHash ()\fC [inline]\fP"
+
+.PP
+Definition at line 524 of file chain\&.h\&.
+.SS "\fBCBlockIndex\fP* CBlockLocator::GetBlockIndex ()\fC [inline]\fP"
+
+.PP
+Definition at line 508 of file chain\&.h\&.
+.SS "int CBlockLocator::GetDistanceBack ()\fC [inline]\fP"
+
+.PP
+Definition at line 487 of file chain\&.h\&.
+.SS "int CBlockLocator::GetHeight ()\fC [inline]\fP"
+
+.PP
+Definition at line 540 of file chain\&.h\&.
+.SS "bool CBlockLocator::IsNull ()\fC [inline]\fP"
+
+.PP
+Definition at line 465 of file chain\&.h\&.
+.SS "template<typename Stream , typename Operation > void CBlockLocator::SerializationOp (Stream & s, Operation ser_action, int nType, int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 454 of file chain\&.h\&.
+.SS "void CBlockLocator::Set (const \fBCBlockIndex\fP * pindex)\fC [inline]\fP"
+
+.PP
+Definition at line 470 of file chain\&.h\&.
+.SS "void CBlockLocator::SetNull ()\fC [inline]\fP"
+
+.PP
+Definition at line 460 of file chain\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "CBlockLocator::ADD_SERIALIZE_METHODS"
+
+.PP
+Definition at line 451 of file chain\&.h\&.
+.SS "std::vector<\fBuint256\fP> CBlockLocator::vHave\fC [protected]\fP"
+
+.PP
+Definition at line 427 of file chain\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

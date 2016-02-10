@@ -3,12 +3,10 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "sandstorm.h"
-#include "main.h"
 #include "init.h"
 #include "util.h"
 #include "stormnode-payments.h"
 #include "stormnode-sync.h"
-#include "stormnodeman.h"
 #include "script.h"
 #include "instantx.h"
 #include "ui_interface.h"

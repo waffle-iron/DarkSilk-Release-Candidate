@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="stormnodemanager_8h" kind="file" language="C++">
+    <compoundname>stormnodemanager.h</compoundname>
+    <includes local="yes">util.h</includes>
+    <includes refid="sync_8h" local="yes">sync.h</includes>
+    <includes local="no">QWidget</includes>
+    <includes local="no">QTimer</includes>
+    <includedby refid="addeditstormnode_8cpp" local="yes">/home/dev/ds-160209/src/qt/addeditstormnode.cpp</includedby>
+    <includedby refid="darksilkgui_8cpp" local="yes">/home/dev/ds-160209/src/qt/darksilkgui.cpp</includedby>
+    <includedby refid="stormnodemanager_8cpp" local="yes">/home/dev/ds-160209/src/qt/stormnodemanager.cpp</includedby>
+    <incdepgraph>
+      <node id="17911">
+        <label>boost/thread/mutex.hpp</label>
+      </node>
+      <node id="17909">
+        <label>boost/thread/condition_variable.hpp</label>
+      </node>
+      <node id="17912">
+        <label>boost/thread/recursive_mutex.hpp</label>
+      </node>
+      <node id="17908">
+        <label>threadsafety.h</label>
+        <link refid="threadsafety_8h"/>
+      </node>
+      <node id="17910">
+        <label>boost/thread/locks.hpp</label>
+      </node>
+      <node id="17914">
+        <label>QTimer</label>
+      </node>
+      <node id="17913">
+        <label>QWidget</label>
+      </node>
+      <node id="17905">
+        <label>/home/dev/ds-160209/src/qt/stormnodemanager.h</label>
+        <link refid="stormnodemanager.h"/>
+        <childnode refid="17906" relation="include">
+        </childnode>
+        <childnode refid="17907" relation="include">
+        </childnode>
+        <childnode refid="17913" relation="include">
+        </childnode>
+        <childnode refid="17914" relation="include">
+        </childnode>
+      </node>
+      <node id="17906">
+        <label>util.h</label>
+      </node>
+      <node id="17907">
+        <label>sync.h</label>
+        <link refid="sync_8h"/>
+        <childnode refid="17908" relation="include">
+        </childnode>
+        <childnode refid="17909" relation="include">
+        </childnode>
+        <childnode refid="17910" relation="include">
+        </childnode>
+        <childnode refid="17911" relation="include">
+        </childnode>
+        <childnode refid="17912" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="17917">
+        <label>/home/dev/ds-160209/src/qt/darksilkgui.cpp</label>
+        <link refid="darksilkgui_8cpp"/>
+      </node>
+      <node id="17918">
+        <label>/home/dev/ds-160209/src/qt/stormnodemanager.cpp</label>
+        <link refid="stormnodemanager_8cpp"/>
+      </node>
+      <node id="17915">
+        <label>/home/dev/ds-160209/src/qt/stormnodemanager.h</label>
+        <link refid="stormnodemanager.h"/>
+        <childnode refid="17916" relation="include">
+        </childnode>
+        <childnode refid="17917" relation="include">
+        </childnode>
+        <childnode refid="17918" relation="include">
+        </childnode>
+      </node>
+      <node id="17916">
+        <label>/home/dev/ds-160209/src/qt/addeditstormnode.cpp</label>
+        <link refid="addeditstormnode_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_stormnode_manager" prot="public">StormnodeManager</innerclass>
+    <innernamespace refid="namespace_ui">Ui</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>STORMNODEMANAGER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STORMNODEMANAGER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;util.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="sync_8h" kindref="compound">sync.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QWidget&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QTimer&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_ui" kindref="compound">Ui</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_stormnode_manager" kindref="compound">StormnodeManager</ref>;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_client_model" kindref="compound">ClientModel</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_wallet_model" kindref="compound">WalletModel</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal">QT_BEGIN_NAMESPACE</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">QModelIndex;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">QT_END_NAMESPACE</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="class_stormnode_manager" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_stormnode_manager" kindref="compound">StormnodeManager</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>QWidget</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_OBJECT</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="class_stormnode_manager_1abbf5b0f2ae3578d576182fe7a3a92488" kindref="member">StormnodeManager</ref>(QWidget<sp/>*parent<sp/>=<sp/>0);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_stormnode_manager_1ab11545626564a6297afa91ef575a6fd9" kindref="member">~StormnodeManager</ref>();</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_stormnode_manager_1ab44da43c24ef293ea3c548883d270f99" kindref="member">setClientModel</ref>(<ref refid="class_client_model" kindref="compound">ClientModel</ref><sp/>*clientModel);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_stormnode_manager_1a624b7c64eed1e9691733bd9473e98344" kindref="member">setWalletModel</ref>(<ref refid="class_wallet_model" kindref="compound">WalletModel</ref><sp/>*walletModel);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>slots:</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_stormnode_manager_1a5cba8d5a6fda3cb986372678f766170f" kindref="member">updateNodeList</ref>();</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_stormnode_manager_1a44edd7083dc8e92e1083b492e781513b" kindref="member">updateStormNode</ref>(QString<sp/>alias,<sp/>QString<sp/>addr,<sp/>QString<sp/>privkey,<sp/>QString<sp/>txHash,<sp/>QString<sp/>txIndex,<sp/>QString<sp/>status);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_stormnode_manager_1a8176df10b7594a5d37aeb8d41941a52b" kindref="member">on_UpdateButton_clicked</ref>();</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal">signals:</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>QTimer<sp/>*timer;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>Ui::StormnodeManager<sp/>*ui;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_client_model" kindref="compound">ClientModel</ref><sp/>*clientModel;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_wallet_model" kindref="compound">WalletModel</ref><sp/>*walletModel;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_annotated_mixin" kindref="compound">CCriticalSection</ref><sp/>cs_storm;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/>slots:</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>on_createButton_clicked();</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>on_startButton_clicked();</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>on_startAllButton_clicked();</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>on_tableWidget_2_itemSelectionChanged();</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>STORMNODEMANAGER_H</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/qt/stormnodemanager.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,104 @@
+.TH "CCoinsViewDB" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CCoinsViewDB \- \fBCCoinsView\fP backed by the LevelDB coin database (chainstate/)  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <coins\&.h>\fP
+.PP
+Inherits \fBCCoinsView\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCCoinsViewDB\fP (size_t nCacheSize, bool fMemory=false, bool fWipe=false)"
+.br
+.ti -1c
+.RI "bool \fBGetCoins\fP (const \fBuint256\fP &txid, \fBCCoins\fP &coins) const "
+.br
+.RI "\fIRetrieve the \fBCCoins\fP (unspent transaction outputs) for a given txid\&. \fP"
+.ti -1c
+.RI "bool \fBHaveCoins\fP (const \fBuint256\fP &txid) const "
+.br
+.ti -1c
+.RI "\fBuint256\fP \fBGetBestBlock\fP () const "
+.br
+.RI "\fIRetrieve the block hash whose state this \fBCCoinsView\fP currently represents\&. \fP"
+.ti -1c
+.RI "bool \fBBatchWrite\fP (\fBCCoinsMap\fP &mapCoins, const \fBuint256\fP &hashBlock)"
+.br
+.ti -1c
+.RI "bool \fBGetStats\fP (\fBCCoinsStats\fP &\fBstats\fP) const "
+.br
+.RI "\fICalculate statistics about the unspent transaction output set\&. \fP"
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBCLevelDBWrapper\fP \fBdb\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBCCoinsView\fP backed by the LevelDB coin database (chainstate/) 
+.PP
+Definition at line 367 of file coins\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CCoinsViewDB::CCoinsViewDB (size_t nCacheSize, bool fMemory = \fCfalse\fP, bool fWipe = \fCfalse\fP)"
+
+.PP
+Definition at line 264 of file coins\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool CCoinsViewDB::BatchWrite (\fBCCoinsMap\fP & mapCoins, const \fBuint256\fP & hashBlock)\fC [virtual]\fP"
+Do a bulk modification (multiple \fBCCoins\fP changes + BestBlock change)\&. The passed mapCoins can be modified\&. 
+.PP
+Reimplemented from \fBCCoinsView\fP\&.
+.PP
+Definition at line 282 of file coins\&.cpp\&.
+.SS "\fBuint256\fP CCoinsViewDB::GetBestBlock () const\fC [virtual]\fP"
+
+.PP
+Retrieve the block hash whose state this \fBCCoinsView\fP currently represents\&. 
+.PP
+Reimplemented from \fBCCoinsView\fP\&.
+.PP
+Definition at line 275 of file coins\&.cpp\&.
+.SS "bool CCoinsViewDB::GetCoins (const \fBuint256\fP & txid, \fBCCoins\fP & coins) const\fC [virtual]\fP"
+
+.PP
+Retrieve the \fBCCoins\fP (unspent transaction outputs) for a given txid\&. 
+.PP
+Reimplemented from \fBCCoinsView\fP\&.
+.PP
+Definition at line 267 of file coins\&.cpp\&.
+.SS "bool CCoinsViewDB::GetStats (\fBCCoinsStats\fP & stats) const\fC [virtual]\fP"
+
+.PP
+Calculate statistics about the unspent transaction output set\&. 
+.PP
+Reimplemented from \fBCCoinsView\fP\&.
+.PP
+Definition at line 302 of file coins\&.cpp\&.
+.SS "bool CCoinsViewDB::HaveCoins (const \fBuint256\fP & txid) const\fC [virtual]\fP"
+Just check whether we have data for a given txid\&. This may (but cannot always) return true for fully spent transactions 
+.PP
+Reimplemented from \fBCCoinsView\fP\&.
+.PP
+Definition at line 271 of file coins\&.cpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBCLevelDBWrapper\fP CCoinsViewDB::db\fC [protected]\fP"
+
+.PP
+Definition at line 369 of file coins\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

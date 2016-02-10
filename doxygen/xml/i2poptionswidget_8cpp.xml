@@ -1,0 +1,191 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="i2poptionswidget_8cpp" kind="file" language="C++">
+    <compoundname>i2poptionswidget.cpp</compoundname>
+    <includes refid="i2poptionswidget_8h" local="yes">i2poptionswidget.h</includes>
+    <includes local="yes">ui_i2poptionswidget.h</includes>
+    <includes refid="optionsmodel_8h" local="yes">optionsmodel.h</includes>
+    <includes refid="monitoreddatamapper_8h" local="yes">monitoreddatamapper.h</includes>
+    <includes refid="qt_2showi2paddresses_8h" local="yes">showi2paddresses.h</includes>
+    <includes local="yes">util.h</includes>
+    <includes refid="clientmodel_8h" local="yes">clientmodel.h</includes>
+    <incdepgraph>
+      <node id="15182">
+        <label>/home/dev/ds-160209/src/qt/i2poptionswidget.cpp</label>
+        <link refid="i2poptionswidget.cpp"/>
+        <childnode refid="15183" relation="include">
+        </childnode>
+        <childnode refid="15185" relation="include">
+        </childnode>
+        <childnode refid="15186" relation="include">
+        </childnode>
+        <childnode refid="15188" relation="include">
+        </childnode>
+        <childnode refid="15190" relation="include">
+        </childnode>
+        <childnode refid="15192" relation="include">
+        </childnode>
+        <childnode refid="15193" relation="include">
+        </childnode>
+      </node>
+      <node id="15190">
+        <label>showi2paddresses.h</label>
+        <link refid="qt_2showi2paddresses_8h"/>
+        <childnode refid="15191" relation="include">
+        </childnode>
+      </node>
+      <node id="15194">
+        <label>QObject</label>
+      </node>
+      <node id="15186">
+        <label>optionsmodel.h</label>
+        <link refid="optionsmodel_8h"/>
+        <childnode refid="15187" relation="include">
+        </childnode>
+      </node>
+      <node id="15193">
+        <label>clientmodel.h</label>
+        <link refid="clientmodel_8h"/>
+        <childnode refid="15194" relation="include">
+        </childnode>
+      </node>
+      <node id="15189">
+        <label>QDataWidgetMapper</label>
+      </node>
+      <node id="15185">
+        <label>ui_i2poptionswidget.h</label>
+      </node>
+      <node id="15191">
+        <label>QDialog</label>
+      </node>
+      <node id="15184">
+        <label>QWidget</label>
+      </node>
+      <node id="15187">
+        <label>QAbstractListModel</label>
+      </node>
+      <node id="15183">
+        <label>i2poptionswidget.h</label>
+        <link refid="i2poptionswidget_8h"/>
+        <childnode refid="15184" relation="include">
+        </childnode>
+      </node>
+      <node id="15192">
+        <label>util.h</label>
+      </node>
+      <node id="15188">
+        <label>monitoreddatamapper.h</label>
+        <link refid="monitoreddatamapper_8h"/>
+        <childnode refid="15189" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="i2poptionswidget_8h" kindref="compound">i2poptionswidget.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ui_i2poptionswidget.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="optionsmodel_8h" kindref="compound">optionsmodel.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="monitoreddatamapper_8h" kindref="compound">monitoreddatamapper.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="qt_2showi2paddresses_8h" kindref="compound">showi2paddresses.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//#include<sp/>&quot;i2p.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;util.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="clientmodel_8h" kindref="compound">clientmodel.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="class_i2_p_options_widget_1acc81cb498f44f4b877c0c35bc4a308e5" refkind="member"><highlight class="normal"><ref refid="class_i2_p_options_widget_1acc81cb498f44f4b877c0c35bc4a308e5" kindref="member">I2POptionsWidget::I2POptionsWidget</ref>(QWidget<sp/>*parent)<sp/>:</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>QWidget(parent),</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>ui(new<sp/><ref refid="namespace_ui" kindref="compound">Ui</ref>::<ref refid="class_i2_p_options_widget" kindref="compound">I2POptionsWidget</ref>),</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>clientModel(0)</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>ui-&gt;setupUi(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(ui-&gt;pushButtonCurrentI2PAddress,<sp/><sp/>SIGNAL(clicked()),<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>SLOT(ShowCurrentI2PAddress()));</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(ui-&gt;pushButtonGenerateI2PAddress,<sp/>SIGNAL(clicked()),<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>SLOT(GenerateNewI2PAddress()));</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(ui-&gt;checkBoxAllowZeroHop<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>SIGNAL(stateChanged(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">))<sp/><sp/><sp/>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>SIGNAL(<ref refid="class_i2_p_options_widget_1af736252192d753c976d43b01c3c1203b" kindref="member">settingsChanged</ref>()));</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(ui-&gt;checkBoxInboundAllowZeroHop<sp/><sp/>,<sp/>SIGNAL(stateChanged(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">))<sp/><sp/><sp/>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>SIGNAL(<ref refid="class_i2_p_options_widget_1af736252192d753c976d43b01c3c1203b" kindref="member">settingsChanged</ref>()));</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(ui-&gt;checkBoxUseI2POnly<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>SIGNAL(stateChanged(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">))<sp/><sp/><sp/>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>SIGNAL(<ref refid="class_i2_p_options_widget_1af736252192d753c976d43b01c3c1203b" kindref="member">settingsChanged</ref>()));</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(ui-&gt;lineEditSAMHost<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>SIGNAL(textChanged(QString)),<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>SIGNAL(<ref refid="class_i2_p_options_widget_1af736252192d753c976d43b01c3c1203b" kindref="member">settingsChanged</ref>()));</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(ui-&gt;lineEditTunnelName<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>SIGNAL(textChanged(QString)),<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>SIGNAL(<ref refid="class_i2_p_options_widget_1af736252192d753c976d43b01c3c1203b" kindref="member">settingsChanged</ref>()));</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(ui-&gt;spinBoxInboundBackupQuality<sp/><sp/>,<sp/>SIGNAL(valueChanged(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">))<sp/><sp/><sp/>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>SIGNAL(<ref refid="class_i2_p_options_widget_1af736252192d753c976d43b01c3c1203b" kindref="member">settingsChanged</ref>()));</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(ui-&gt;spinBoxInboundIPRestriction<sp/><sp/>,<sp/>SIGNAL(valueChanged(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">))<sp/><sp/><sp/>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>SIGNAL(<ref refid="class_i2_p_options_widget_1af736252192d753c976d43b01c3c1203b" kindref="member">settingsChanged</ref>()));</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(ui-&gt;spinBoxInboundLength<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>SIGNAL(valueChanged(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">))<sp/><sp/><sp/>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>SIGNAL(<ref refid="class_i2_p_options_widget_1af736252192d753c976d43b01c3c1203b" kindref="member">settingsChanged</ref>()));</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(ui-&gt;spinBoxInboundLengthVariance<sp/>,<sp/>SIGNAL(valueChanged(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">))<sp/><sp/><sp/>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>SIGNAL(<ref refid="class_i2_p_options_widget_1af736252192d753c976d43b01c3c1203b" kindref="member">settingsChanged</ref>()));</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(ui-&gt;spinBoxInboundQuantity<sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>SIGNAL(valueChanged(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">))<sp/><sp/><sp/>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>SIGNAL(<ref refid="class_i2_p_options_widget_1af736252192d753c976d43b01c3c1203b" kindref="member">settingsChanged</ref>()));</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(ui-&gt;spinBoxOutboundBackupQuantity,<sp/>SIGNAL(valueChanged(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">))<sp/><sp/><sp/>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>SIGNAL(<ref refid="class_i2_p_options_widget_1af736252192d753c976d43b01c3c1203b" kindref="member">settingsChanged</ref>()));</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(ui-&gt;spinBoxOutboundIPRestriction<sp/>,<sp/>SIGNAL(valueChanged(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">))<sp/><sp/><sp/>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>SIGNAL(<ref refid="class_i2_p_options_widget_1af736252192d753c976d43b01c3c1203b" kindref="member">settingsChanged</ref>()));</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(ui-&gt;spinBoxOutboundLength<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>SIGNAL(valueChanged(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">))<sp/><sp/><sp/>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>SIGNAL(<ref refid="class_i2_p_options_widget_1af736252192d753c976d43b01c3c1203b" kindref="member">settingsChanged</ref>()));</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(ui-&gt;spinBoxOutboundLengthVariance,<sp/>SIGNAL(valueChanged(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">))<sp/><sp/><sp/>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>SIGNAL(<ref refid="class_i2_p_options_widget_1af736252192d753c976d43b01c3c1203b" kindref="member">settingsChanged</ref>()));</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(ui-&gt;spinBoxOutboundPriority<sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>SIGNAL(valueChanged(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">))<sp/><sp/><sp/>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>SIGNAL(<ref refid="class_i2_p_options_widget_1af736252192d753c976d43b01c3c1203b" kindref="member">settingsChanged</ref>()));</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(ui-&gt;spinBoxOutboundQuantity<sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>SIGNAL(valueChanged(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">))<sp/><sp/><sp/>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>SIGNAL(<ref refid="class_i2_p_options_widget_1af736252192d753c976d43b01c3c1203b" kindref="member">settingsChanged</ref>()));</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>QObject::connect(ui-&gt;spinBoxSAMPort<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>SIGNAL(valueChanged(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">))<sp/><sp/><sp/>,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>SIGNAL(<ref refid="class_i2_p_options_widget_1af736252192d753c976d43b01c3c1203b" kindref="member">settingsChanged</ref>()));</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="class_i2_p_options_widget_1aa871b5127452be0087c66998ef0a63ae" refkind="member"><highlight class="normal"><ref refid="class_i2_p_options_widget_1aa871b5127452be0087c66998ef0a63ae" kindref="member">I2POptionsWidget::~I2POptionsWidget</ref>()</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>ui;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="class_i2_p_options_widget_1ae87e45f309b5a3abd782f3b6020eac4f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_i2_p_options_widget_1ae87e45f309b5a3abd782f3b6020eac4f" kindref="member">I2POptionsWidget::setMapper</ref>(<ref refid="class_monitored_data_mapper" kindref="compound">MonitoredDataMapper</ref>&amp;<sp/>mapper)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>mapper.<ref refid="class_monitored_data_mapper_1a5ddfc6ef4e955211948c7b24994dfd7e" kindref="member">addMapping</ref>(ui-&gt;checkBoxUseI2POnly<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>OptionsModel::I2PUseI2POnly);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>mapper.<ref refid="class_monitored_data_mapper_1a5ddfc6ef4e955211948c7b24994dfd7e" kindref="member">addMapping</ref>(ui-&gt;lineEditSAMHost<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>OptionsModel::I2PSAMHost);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>mapper.<ref refid="class_monitored_data_mapper_1a5ddfc6ef4e955211948c7b24994dfd7e" kindref="member">addMapping</ref>(ui-&gt;spinBoxSAMPort<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>OptionsModel::I2PSAMPort);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>mapper.<ref refid="class_monitored_data_mapper_1a5ddfc6ef4e955211948c7b24994dfd7e" kindref="member">addMapping</ref>(ui-&gt;lineEditTunnelName<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>OptionsModel::I2PSessionName);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>mapper.<ref refid="class_monitored_data_mapper_1a5ddfc6ef4e955211948c7b24994dfd7e" kindref="member">addMapping</ref>(ui-&gt;spinBoxInboundQuantity<sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>OptionsModel::I2PInboundQuantity);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>mapper.<ref refid="class_monitored_data_mapper_1a5ddfc6ef4e955211948c7b24994dfd7e" kindref="member">addMapping</ref>(ui-&gt;spinBoxInboundLength<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>OptionsModel::I2PInboundLength);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>mapper.<ref refid="class_monitored_data_mapper_1a5ddfc6ef4e955211948c7b24994dfd7e" kindref="member">addMapping</ref>(ui-&gt;spinBoxInboundLengthVariance<sp/>,<sp/>OptionsModel::I2PInboundLengthVariance);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>mapper.<ref refid="class_monitored_data_mapper_1a5ddfc6ef4e955211948c7b24994dfd7e" kindref="member">addMapping</ref>(ui-&gt;spinBoxInboundBackupQuality<sp/><sp/>,<sp/>OptionsModel::I2PInboundBackupQuantity);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>mapper.<ref refid="class_monitored_data_mapper_1a5ddfc6ef4e955211948c7b24994dfd7e" kindref="member">addMapping</ref>(ui-&gt;checkBoxInboundAllowZeroHop<sp/><sp/>,<sp/>OptionsModel::I2PInboundAllowZeroHop);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>mapper.<ref refid="class_monitored_data_mapper_1a5ddfc6ef4e955211948c7b24994dfd7e" kindref="member">addMapping</ref>(ui-&gt;spinBoxInboundIPRestriction<sp/><sp/>,<sp/>OptionsModel::I2PInboundIPRestriction);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>mapper.<ref refid="class_monitored_data_mapper_1a5ddfc6ef4e955211948c7b24994dfd7e" kindref="member">addMapping</ref>(ui-&gt;spinBoxOutboundQuantity<sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>OptionsModel::I2POutboundQuantity);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>mapper.<ref refid="class_monitored_data_mapper_1a5ddfc6ef4e955211948c7b24994dfd7e" kindref="member">addMapping</ref>(ui-&gt;spinBoxOutboundLength<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>OptionsModel::I2POutboundLength);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>mapper.<ref refid="class_monitored_data_mapper_1a5ddfc6ef4e955211948c7b24994dfd7e" kindref="member">addMapping</ref>(ui-&gt;spinBoxOutboundLengthVariance,<sp/>OptionsModel::I2POutboundLengthVariance);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>mapper.<ref refid="class_monitored_data_mapper_1a5ddfc6ef4e955211948c7b24994dfd7e" kindref="member">addMapping</ref>(ui-&gt;spinBoxOutboundBackupQuantity,<sp/>OptionsModel::I2POutboundBackupQuantity);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>mapper.<ref refid="class_monitored_data_mapper_1a5ddfc6ef4e955211948c7b24994dfd7e" kindref="member">addMapping</ref>(ui-&gt;checkBoxAllowZeroHop<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>OptionsModel::I2POutboundAllowZeroHop);</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>mapper.<ref refid="class_monitored_data_mapper_1a5ddfc6ef4e955211948c7b24994dfd7e" kindref="member">addMapping</ref>(ui-&gt;spinBoxOutboundIPRestriction<sp/>,<sp/>OptionsModel::I2POutboundIPRestriction);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>mapper.<ref refid="class_monitored_data_mapper_1a5ddfc6ef4e955211948c7b24994dfd7e" kindref="member">addMapping</ref>(ui-&gt;spinBoxOutboundPriority<sp/><sp/><sp/><sp/><sp/><sp/>,<sp/>OptionsModel::I2POutboundIPRestriction);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="class_i2_p_options_widget_1af29f341419d72dd0cfb031d2656d4588" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_i2_p_options_widget_1af29f341419d72dd0cfb031d2656d4588" kindref="member">I2POptionsWidget::setModel</ref>(<ref refid="class_client_model" kindref="compound">ClientModel</ref>*<sp/>model)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>clientModel<sp/>=<sp/>model;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>I2POptionsWidget::ShowCurrentI2PAddress()</highlight></codeline>
+<codeline lineno="73"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(clientModel)</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>pub<sp/>=<sp/>clientModel-&gt;getPublicI2PKey();</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>priv<sp/>=<sp/>clientModel-&gt;getPrivateI2PKey();</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>b32<sp/>=<sp/>clientModel-&gt;getB32Address(pub);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>configFile<sp/>=<sp/>QString::fromStdString(<ref refid="util_8cpp_1a7d86fadf98dfaba55f80b9be0ab0f978" kindref="member">GetConfigFile</ref>().</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">());</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_show_i2_p_addresses" kindref="compound">ShowI2PAddresses</ref><sp/>i2pCurrDialog(</highlight><highlight class="stringliteral">&quot;Your<sp/>current<sp/>I2P-address&quot;</highlight><highlight class="normal">,<sp/>pub,<sp/>priv,<sp/>b32,<sp/>configFile,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i2pCurrDialog.exec();</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>I2POptionsWidget::GenerateNewI2PAddress()</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(clientModel)</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QString<sp/>pub,<sp/>priv;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>clientModel-&gt;generateI2PDestination(pub,<sp/>priv);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>b32<sp/>=<sp/>clientModel-&gt;getB32Address(pub);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>configFile<sp/>=<sp/>QString::fromStdString(<ref refid="util_8cpp_1a7d86fadf98dfaba55f80b9be0ab0f978" kindref="member">GetConfigFile</ref>().</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">());</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_show_i2_p_addresses" kindref="compound">ShowI2PAddresses</ref><sp/>i2pCurrDialog(</highlight><highlight class="stringliteral">&quot;Generated<sp/>I2P<sp/>address&quot;</highlight><highlight class="normal">,<sp/>pub,<sp/>priv,<sp/>b32,<sp/>configFile,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>i2pCurrDialog.exec();</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/qt/i2poptionswidget.cpp"/>
+  </compounddef>
+</doxygen>

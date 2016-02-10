@@ -1,0 +1,197 @@
+\hypertarget{db__bench_8cc}{}\section{/home/dev/ds-\/160209/src/leveldb/db/db\+\_\+bench.cc File Reference}
+\label{db__bench_8cc}\index{/home/dev/ds-\/160209/src/leveldb/db/db\+\_\+bench.\+cc@{/home/dev/ds-\/160209/src/leveldb/db/db\+\_\+bench.\+cc}}
+{\ttfamily \#include $<$sys/types.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}db/db\+\_\+impl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}db/version\+\_\+set.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}leveldb/cache.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}leveldb/db.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}leveldb/env.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}leveldb/write\+\_\+batch.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}port/port.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}util/crc32c.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}util/histogram.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}util/mutexlock.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}util/random.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}util/testutil.\+h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classleveldb_1_1_benchmark}{leveldb\+::\+Benchmark}
+\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespaceleveldb}{leveldb}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{db__bench_8cc_a3c04138a5bfe5d72780bb7e82a18e627}{main} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{db__bench_8cc_a3c04138a5bfe5d72780bb7e82a18e627}{}\index{db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}!main@{main}}
+\index{main@{main}!db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}\label{db__bench_8cc_a3c04138a5bfe5d72780bb7e82a18e627}
+
+
+Definition at line 925 of file db\+\_\+bench.\+cc.
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{db__bench_8cc_a84700f2ecbdcf9d6fc2cd12a679b0920}{}\index{db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}!bytes\+\_\+@{bytes\+\_\+}}
+\index{bytes\+\_\+@{bytes\+\_\+}!db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}}
+\subsubsection[{bytes\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int64\+\_\+t} bytes\+\_\+}\label{db__bench_8cc_a84700f2ecbdcf9d6fc2cd12a679b0920}
+
+
+Definition at line 168 of file db\+\_\+bench.\+cc.
+
+\hypertarget{db__bench_8cc_aa35826d3f6dc34ef1f1b35dee6db9d91}{}\index{db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}!cv@{cv}}
+\index{cv@{cv}!db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}}
+\subsubsection[{cv}]{\setlength{\rightskip}{0pt plus 5cm}port\+::\+Cond\+Var cv}\label{db__bench_8cc_aa35826d3f6dc34ef1f1b35dee6db9d91}
+
+
+Definition at line 271 of file db\+\_\+bench.\+cc.
+
+\hypertarget{db__bench_8cc_ad89985b46f05e1611048282ca9abac3d}{}\index{db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}!data\+\_\+@{data\+\_\+}}
+\index{data\+\_\+@{data\+\_\+}!db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}}
+\subsubsection[{data\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string data\+\_\+}\label{db__bench_8cc_ad89985b46f05e1611048282ca9abac3d}
+
+
+Definition at line 112 of file db\+\_\+bench.\+cc.
+
+\hypertarget{db__bench_8cc_a8ec1339ea1000cfdf61b7ebab380b465}{}\index{db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}!done\+\_\+@{done\+\_\+}}
+\index{done\+\_\+@{done\+\_\+}!db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}}
+\subsubsection[{done\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}int done\+\_\+}\label{db__bench_8cc_a8ec1339ea1000cfdf61b7ebab380b465}
+
+
+Definition at line 166 of file db\+\_\+bench.\+cc.
+
+\hypertarget{db__bench_8cc_a59700c1631526f6c2d0fec39133747e3}{}\index{db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}!finish\+\_\+@{finish\+\_\+}}
+\index{finish\+\_\+@{finish\+\_\+}!db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}}
+\subsubsection[{finish\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}double finish\+\_\+}\label{db__bench_8cc_a59700c1631526f6c2d0fec39133747e3}
+
+
+Definition at line 164 of file db\+\_\+bench.\+cc.
+
+\hypertarget{db__bench_8cc_a129325bc0df58690663ae4939cec647a}{}\index{db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}!hist\+\_\+@{hist\+\_\+}}
+\index{hist\+\_\+@{hist\+\_\+}!db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}}
+\subsubsection[{hist\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}Histogram hist\+\_\+}\label{db__bench_8cc_a129325bc0df58690663ae4939cec647a}
+
+
+Definition at line 170 of file db\+\_\+bench.\+cc.
+
+\hypertarget{db__bench_8cc_a66ecede1671386c072a6b094bb71745c}{}\index{db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}!last\+\_\+op\+\_\+finish\+\_\+@{last\+\_\+op\+\_\+finish\+\_\+}}
+\index{last\+\_\+op\+\_\+finish\+\_\+@{last\+\_\+op\+\_\+finish\+\_\+}!db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}}
+\subsubsection[{last\+\_\+op\+\_\+finish\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}double last\+\_\+op\+\_\+finish\+\_\+}\label{db__bench_8cc_a66ecede1671386c072a6b094bb71745c}
+
+
+Definition at line 169 of file db\+\_\+bench.\+cc.
+
+\hypertarget{db__bench_8cc_a4136f421e413f118b2b0da52e128ba5b}{}\index{db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}!message\+\_\+@{message\+\_\+}}
+\index{message\+\_\+@{message\+\_\+}!db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}}
+\subsubsection[{message\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string message\+\_\+}\label{db__bench_8cc_a4136f421e413f118b2b0da52e128ba5b}
+
+
+Definition at line 171 of file db\+\_\+bench.\+cc.
+
+\hypertarget{db__bench_8cc_a1a5c2f3b52d2dec1d9896cec4b02d17e}{}\index{db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}!mu@{mu}}
+\index{mu@{mu}!db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}}
+\subsubsection[{mu}]{\setlength{\rightskip}{0pt plus 5cm}port\+::\+Mutex mu}\label{db__bench_8cc_a1a5c2f3b52d2dec1d9896cec4b02d17e}
+
+
+Definition at line 270 of file db\+\_\+bench.\+cc.
+
+\hypertarget{db__bench_8cc_a4e828e8d843a21a51e1e24d0902550fd}{}\index{db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}!next\+\_\+report\+\_\+@{next\+\_\+report\+\_\+}}
+\index{next\+\_\+report\+\_\+@{next\+\_\+report\+\_\+}!db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}}
+\subsubsection[{next\+\_\+report\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}int next\+\_\+report\+\_\+}\label{db__bench_8cc_a4e828e8d843a21a51e1e24d0902550fd}
+
+
+Definition at line 167 of file db\+\_\+bench.\+cc.
+
+\hypertarget{db__bench_8cc_a0ea1509241fe84bfe6bf9f1f0582292c}{}\index{db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}!num\+\_\+done@{num\+\_\+done}}
+\index{num\+\_\+done@{num\+\_\+done}!db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}}
+\subsubsection[{num\+\_\+done}]{\setlength{\rightskip}{0pt plus 5cm}int num\+\_\+done}\label{db__bench_8cc_a0ea1509241fe84bfe6bf9f1f0582292c}
+
+
+Definition at line 281 of file db\+\_\+bench.\+cc.
+
+\hypertarget{db__bench_8cc_a5f30212b0616a62bfa40f20fcf34f056}{}\index{db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}!num\+\_\+initialized@{num\+\_\+initialized}}
+\index{num\+\_\+initialized@{num\+\_\+initialized}!db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}}
+\subsubsection[{num\+\_\+initialized}]{\setlength{\rightskip}{0pt plus 5cm}int num\+\_\+initialized}\label{db__bench_8cc_a5f30212b0616a62bfa40f20fcf34f056}
+
+
+Definition at line 280 of file db\+\_\+bench.\+cc.
+
+\hypertarget{db__bench_8cc_a74404be11bd9401ffe90696e5baa8d0a}{}\index{db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}!pos\+\_\+@{pos\+\_\+}}
+\index{pos\+\_\+@{pos\+\_\+}!db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}}
+\subsubsection[{pos\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}int pos\+\_\+}\label{db__bench_8cc_a74404be11bd9401ffe90696e5baa8d0a}
+
+
+Definition at line 113 of file db\+\_\+bench.\+cc.
+
+\hypertarget{db__bench_8cc_a2391b9dab13f09bae65ae349c8d4c271}{}\index{db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}!rand@{rand}}
+\index{rand@{rand}!db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}}
+\subsubsection[{rand}]{\setlength{\rightskip}{0pt plus 5cm}Random rand}\label{db__bench_8cc_a2391b9dab13f09bae65ae349c8d4c271}
+
+
+Definition at line 290 of file db\+\_\+bench.\+cc.
+
+\hypertarget{db__bench_8cc_a4bcb2ad2c565fa2c097d4bba246acdd7}{}\index{db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}!seconds\+\_\+@{seconds\+\_\+}}
+\index{seconds\+\_\+@{seconds\+\_\+}!db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}}
+\subsubsection[{seconds\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}double seconds\+\_\+}\label{db__bench_8cc_a4bcb2ad2c565fa2c097d4bba246acdd7}
+
+
+Definition at line 165 of file db\+\_\+bench.\+cc.
+
+\hypertarget{db__bench_8cc_af670cad03774a4316fb28a8634d33a56}{}\index{db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}!shared@{shared}}
+\index{shared@{shared}!db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}}
+\subsubsection[{shared}]{\setlength{\rightskip}{0pt plus 5cm}Shared\+State$\ast$ shared}\label{db__bench_8cc_af670cad03774a4316fb28a8634d33a56}
+
+
+Definition at line 292 of file db\+\_\+bench.\+cc.
+
+\hypertarget{db__bench_8cc_ab376b87f96a574a793c03c53e75afec8}{}\index{db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}!start@{start}}
+\index{start@{start}!db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}}
+\subsubsection[{start}]{\setlength{\rightskip}{0pt plus 5cm}bool start}\label{db__bench_8cc_ab376b87f96a574a793c03c53e75afec8}
+
+
+Definition at line 282 of file db\+\_\+bench.\+cc.
+
+\hypertarget{db__bench_8cc_a792d499857ed9d45deb633ef47ee2634}{}\index{db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}!start\+\_\+@{start\+\_\+}}
+\index{start\+\_\+@{start\+\_\+}!db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}}
+\subsubsection[{start\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}double start\+\_\+}\label{db__bench_8cc_a792d499857ed9d45deb633ef47ee2634}
+
+
+Definition at line 163 of file db\+\_\+bench.\+cc.
+
+\hypertarget{db__bench_8cc_a5925d216740c89f43482df806fd14e8c}{}\index{db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}!stats@{stats}}
+\index{stats@{stats}!db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}}
+\subsubsection[{stats}]{\setlength{\rightskip}{0pt plus 5cm}Stats stats}\label{db__bench_8cc_a5925d216740c89f43482df806fd14e8c}
+
+
+Definition at line 291 of file db\+\_\+bench.\+cc.
+
+\hypertarget{db__bench_8cc_a8cc3dd191f714ba4ae35b2d3ac5b557a}{}\index{db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}!tid@{tid}}
+\index{tid@{tid}!db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}}
+\subsubsection[{tid}]{\setlength{\rightskip}{0pt plus 5cm}int tid}\label{db__bench_8cc_a8cc3dd191f714ba4ae35b2d3ac5b557a}
+
+
+Definition at line 289 of file db\+\_\+bench.\+cc.
+
+\hypertarget{db__bench_8cc_ac7af894858cf396a219d632f40afdc8d}{}\index{db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}!total@{total}}
+\index{total@{total}!db\+\_\+bench.\+cc@{db\+\_\+bench.\+cc}}
+\subsubsection[{total}]{\setlength{\rightskip}{0pt plus 5cm}int total}\label{db__bench_8cc_ac7af894858cf396a219d632f40afdc8d}
+
+
+Definition at line 272 of file db\+\_\+bench.\+cc.
+

@@ -1,0 +1,87 @@
+.TH "/home/dev/ds-160209/src/secp256k1/src/ecmult_impl.h" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/secp256k1/src/ecmult_impl.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'group\&.h'\fP
+.br
+\fC#include 'scalar\&.h'\fP
+.br
+\fC#include 'ecmult\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBWINDOW_A\fP   5"
+.br
+.ti -1c
+.RI "#define \fBWINDOW_G\fP   16"
+.br
+.ti -1c
+.RI "#define \fBECMULT_TABLE_SIZE\fP(w)   (1 << ((w)-2))"
+.br
+.ti -1c
+.RI "#define \fBECMULT_TABLE_GET_GE\fP(r,  pre,  n,  w)"
+.br
+.ti -1c
+.RI "#define \fBECMULT_TABLE_GET_GE_STORAGE\fP(r,  pre,  n,  w)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define ECMULT_TABLE_GET_GE(r, pre, n, w)"
+\fBValue:\fP
+.PP
+.nf
+do { \\
+    VERIFY_CHECK(((n) & 1) == 1); \\
+    VERIFY_CHECK((n) >= -((1 << ((w)-1)) - 1)); \\
+    VERIFY_CHECK((n) <=  ((1 << ((w)-1)) - 1)); \
+    if ((n) > 0) { \
+        *(r) = (pre)[((n)-1)/2]; \
+    } else { \
+        secp256k1_ge_neg((r), &(pre)[(-(n)-1)/2]); \
+    } \
+} while(0)
+.fi
+The following two macro retrieves a particular odd multiple from a table of precomputed multiples\&. 
+.PP
+Definition at line 117 of file ecmult_impl\&.h\&.
+.SS "#define ECMULT_TABLE_GET_GE_STORAGE(r, pre, n, w)"
+\fBValue:\fP
+.PP
+.nf
+do { \\
+    VERIFY_CHECK(((n) & 1) == 1); \\
+    VERIFY_CHECK((n) >= -((1 << ((w)-1)) - 1)); \\
+    VERIFY_CHECK((n) <=  ((1 << ((w)-1)) - 1)); \
+    if ((n) > 0) { \
+        secp256k1_ge_from_storage((r), &(pre)[((n)-1)/2]); \
+    } else { \
+        secp256k1_ge_from_storage((r), &(pre)[(-(n)-1)/2]); \
+        secp256k1_ge_neg((r), (r)); \
+    } \
+} while(0)
+.fi
+.PP
+Definition at line 128 of file ecmult_impl\&.h\&.
+.SS "#define ECMULT_TABLE_SIZE(w)   (1 << ((w)-2))"
+The number of entries a table with precomputed multiples needs to have\&. 
+.PP
+Definition at line 28 of file ecmult_impl\&.h\&.
+.SS "#define WINDOW_A   5"
+
+.PP
+Definition at line 15 of file ecmult_impl\&.h\&.
+.SS "#define WINDOW_G   16"
+larger numbers may result in slightly better performance, at the cost of exponentially larger precomputed tables\&. One table for window size 16: 1\&.375 MiB\&. 
+.PP
+Definition at line 24 of file ecmult_impl\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

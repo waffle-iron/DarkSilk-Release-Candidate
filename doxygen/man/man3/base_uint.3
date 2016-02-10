@@ -1,0 +1,535 @@
+.TH "base_uint< BITS >" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+base_uint< BITS > \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <uint256\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBbase_uint\fP ()"
+.br
+.ti -1c
+.RI "\fBbase_uint\fP (const \fBbase_uint\fP &b)"
+.br
+.ti -1c
+.RI "\fBbase_uint\fP & \fBoperator=\fP (const \fBbase_uint\fP &b)"
+.br
+.ti -1c
+.RI "\fBbase_uint\fP (\fBuint64_t\fP b)"
+.br
+.ti -1c
+.RI "\fBbase_uint\fP (const std::string &str)"
+.br
+.ti -1c
+.RI "\fBbase_uint\fP (const std::vector< unsigned char > &vch)"
+.br
+.ti -1c
+.RI "bool \fBoperator!\fP () const "
+.br
+.ti -1c
+.RI "const \fBbase_uint\fP \fBoperator~\fP () const "
+.br
+.ti -1c
+.RI "const \fBbase_uint\fP \fBoperator-\fP () const "
+.br
+.ti -1c
+.RI "double \fBgetdouble\fP () const "
+.br
+.ti -1c
+.RI "\fBbase_uint\fP & \fBoperator=\fP (\fBuint64_t\fP b)"
+.br
+.ti -1c
+.RI "\fBbase_uint\fP & \fBoperator^=\fP (const \fBbase_uint\fP &b)"
+.br
+.ti -1c
+.RI "\fBbase_uint\fP & \fBoperator&=\fP (const \fBbase_uint\fP &b)"
+.br
+.ti -1c
+.RI "\fBbase_uint\fP & \fBoperator|=\fP (const \fBbase_uint\fP &b)"
+.br
+.ti -1c
+.RI "\fBbase_uint\fP & \fBoperator^=\fP (\fBuint64_t\fP b)"
+.br
+.ti -1c
+.RI "\fBbase_uint\fP & \fBoperator|=\fP (\fBuint64_t\fP b)"
+.br
+.ti -1c
+.RI "\fBbase_uint\fP & \fBoperator<<=\fP (unsigned int shift)"
+.br
+.ti -1c
+.RI "\fBbase_uint\fP & \fBoperator>>=\fP (unsigned int shift)"
+.br
+.ti -1c
+.RI "\fBbase_uint\fP & \fBoperator+=\fP (const \fBbase_uint\fP &b)"
+.br
+.ti -1c
+.RI "\fBbase_uint\fP & \fBoperator-=\fP (const \fBbase_uint\fP &b)"
+.br
+.ti -1c
+.RI "\fBbase_uint\fP & \fBoperator+=\fP (\fBuint64_t\fP b64)"
+.br
+.ti -1c
+.RI "\fBbase_uint\fP & \fBoperator-=\fP (\fBuint64_t\fP b64)"
+.br
+.ti -1c
+.RI "\fBbase_uint\fP & \fBoperator*=\fP (\fBuint32_t\fP b32)"
+.br
+.ti -1c
+.RI "\fBbase_uint\fP & \fBoperator*=\fP (const \fBbase_uint\fP &b)"
+.br
+.ti -1c
+.RI "\fBbase_uint\fP & \fBoperator/=\fP (const \fBbase_uint\fP &b)"
+.br
+.ti -1c
+.RI "\fBbase_uint\fP & \fBoperator++\fP ()"
+.br
+.ti -1c
+.RI "const \fBbase_uint\fP \fBoperator++\fP (int)"
+.br
+.ti -1c
+.RI "\fBbase_uint\fP & \fBoperator--\fP ()"
+.br
+.ti -1c
+.RI "const \fBbase_uint\fP \fBoperator--\fP (int)"
+.br
+.ti -1c
+.RI "int \fBCompareTo\fP (const \fBbase_uint\fP &b) const "
+.br
+.ti -1c
+.RI "bool \fBEqualTo\fP (\fBuint64_t\fP b) const "
+.br
+.ti -1c
+.RI "std::string \fBGetHex\fP () const "
+.br
+.ti -1c
+.RI "void \fBSetHex\fP (const char *psz)"
+.br
+.ti -1c
+.RI "void \fBSetHex\fP (const std::string &str)"
+.br
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.ti -1c
+.RI "unsigned char * \fBbegin\fP ()"
+.br
+.ti -1c
+.RI "unsigned char * \fBend\fP ()"
+.br
+.ti -1c
+.RI "const unsigned char * \fBbegin\fP () const "
+.br
+.ti -1c
+.RI "const unsigned char * \fBend\fP () const "
+.br
+.ti -1c
+.RI "unsigned int \fBsize\fP () const "
+.br
+.ti -1c
+.RI "\fBuint64_t\fP \fBGet64\fP (int n=0) const "
+.br
+.ti -1c
+.RI "unsigned int \fBbits\fP () const "
+.br
+.ti -1c
+.RI "\fBuint64_t\fP \fBGetLow64\fP () const "
+.br
+.ti -1c
+.RI "unsigned int \fBGetSerializeSize\fP (int nType, int nVersion) const "
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBSerialize\fP (Stream &s, int nType, int nVersion) const "
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBUnserialize\fP (Stream &s, int nType, int nVersion)"
+.br
+.in -1c
+.SS "Protected Types"
+
+.in +1c
+.ti -1c
+.RI "enum { \fBWIDTH\fP =BITS/32 }"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBuint32_t\fP \fBpn\fP [\fBWIDTH\fP]"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBuint160\fP"
+.br
+.ti -1c
+.RI "class \fBuint256\fP"
+.br
+.ti -1c
+.RI "class \fBuint512\fP"
+.br
+.ti -1c
+.RI "const \fBbase_uint\fP \fBoperator+\fP (const \fBbase_uint\fP &a, const \fBbase_uint\fP &b)"
+.br
+.ti -1c
+.RI "const \fBbase_uint\fP \fBoperator-\fP (const \fBbase_uint\fP &a, const \fBbase_uint\fP &b)"
+.br
+.ti -1c
+.RI "const \fBbase_uint\fP \fBoperator*\fP (const \fBbase_uint\fP &a, const \fBbase_uint\fP &b)"
+.br
+.ti -1c
+.RI "const \fBbase_uint\fP \fBoperator/\fP (const \fBbase_uint\fP &a, const \fBbase_uint\fP &b)"
+.br
+.ti -1c
+.RI "const \fBbase_uint\fP \fBoperator|\fP (const \fBbase_uint\fP &a, const \fBbase_uint\fP &b)"
+.br
+.ti -1c
+.RI "const \fBbase_uint\fP \fBoperator&\fP (const \fBbase_uint\fP &a, const \fBbase_uint\fP &b)"
+.br
+.ti -1c
+.RI "const \fBbase_uint\fP \fBoperator^\fP (const \fBbase_uint\fP &a, const \fBbase_uint\fP &b)"
+.br
+.ti -1c
+.RI "const \fBbase_uint\fP \fBoperator>>\fP (const \fBbase_uint\fP &a, int shift)"
+.br
+.ti -1c
+.RI "const \fBbase_uint\fP \fBoperator<<\fP (const \fBbase_uint\fP &a, int shift)"
+.br
+.ti -1c
+.RI "const \fBbase_uint\fP \fBoperator*\fP (const \fBbase_uint\fP &a, \fBuint32_t\fP b)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBbase_uint\fP &a, const \fBbase_uint\fP &b)"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBbase_uint\fP &a, const \fBbase_uint\fP &b)"
+.br
+.ti -1c
+.RI "bool \fBoperator>\fP (const \fBbase_uint\fP &a, const \fBbase_uint\fP &b)"
+.br
+.ti -1c
+.RI "bool \fBoperator<\fP (const \fBbase_uint\fP &a, const \fBbase_uint\fP &b)"
+.br
+.ti -1c
+.RI "bool \fBoperator>=\fP (const \fBbase_uint\fP &a, const \fBbase_uint\fP &b)"
+.br
+.ti -1c
+.RI "bool \fBoperator<=\fP (const \fBbase_uint\fP &a, const \fBbase_uint\fP &b)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBbase_uint\fP &a, \fBuint64_t\fP b)"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBbase_uint\fP &a, \fBuint64_t\fP b)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<unsigned int BITS>class base_uint< BITS >"
+Template base class for unsigned big integers\&. 
+.PP
+Definition at line 31 of file uint256\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "template<unsigned int BITS> anonymous enum\fC [protected]\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIWIDTH \fP\fP
+.PP
+Definition at line 34 of file uint256\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<unsigned int BITS> \fBbase_uint\fP< BITS >::\fBbase_uint\fP ()\fC [inline]\fP"
+
+.PP
+Definition at line 38 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> \fBbase_uint\fP< BITS >::\fBbase_uint\fP (const \fBbase_uint\fP< BITS > & b)\fC [inline]\fP"
+
+.PP
+Definition at line 44 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> \fBbase_uint\fP< BITS >::\fBbase_uint\fP (\fBuint64_t\fP b)\fC [inline]\fP"
+
+.PP
+Definition at line 57 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> \fBbase_uint\fP< BITS >::\fBbase_uint\fP (const std::string & str)\fC [explicit]\fP"
+
+.PP
+Definition at line 14 of file uint256\&.cpp\&.
+.SS "template<unsigned int BITS> \fBbase_uint\fP< BITS >::\fBbase_uint\fP (const std::vector< unsigned char > & vch)\fC [explicit]\fP"
+
+.PP
+Definition at line 20 of file uint256\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<unsigned int BITS> unsigned char* \fBbase_uint\fP< BITS >::begin ()\fC [inline]\fP"
+
+.PP
+Definition at line 241 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> const unsigned char* \fBbase_uint\fP< BITS >::begin () const\fC [inline]\fP"
+
+.PP
+Definition at line 251 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> unsigned int \fBbase_uint\fP< BITS >::bits () const"
+Returns the position of the highest bit set plus one, or zero if the value is zero\&. 
+.PP
+Definition at line 204 of file uint256\&.cpp\&.
+.SS "template<unsigned int BITS> int \fBbase_uint\fP< BITS >::CompareTo (const \fBbase_uint\fP< BITS > & b) const"
+
+.PP
+Definition at line 116 of file uint256\&.cpp\&.
+.SS "template<unsigned int BITS> unsigned char* \fBbase_uint\fP< BITS >::end ()\fC [inline]\fP"
+
+.PP
+Definition at line 246 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> const unsigned char* \fBbase_uint\fP< BITS >::end () const\fC [inline]\fP"
+
+.PP
+Definition at line 256 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> bool \fBbase_uint\fP< BITS >::EqualTo (\fBuint64_t\fP b) const"
+
+.PP
+Definition at line 128 of file uint256\&.cpp\&.
+.SS "template<unsigned int BITS> \fBuint64_t\fP \fBbase_uint\fP< BITS >::Get64 (int n = \fC0\fP) const\fC [inline]\fP"
+
+.PP
+Definition at line 266 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> double \fBbase_uint\fP< BITS >::getdouble () const"
+
+.PP
+Definition at line 142 of file uint256\&.cpp\&.
+.SS "template<unsigned int BITS> std::string \fBbase_uint\fP< BITS >::GetHex () const"
+
+.PP
+Definition at line 154 of file uint256\&.cpp\&.
+.SS "template<unsigned int BITS> \fBuint64_t\fP \fBbase_uint\fP< BITS >::GetLow64 () const\fC [inline]\fP"
+
+.PP
+Definition at line 276 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> unsigned int \fBbase_uint\fP< BITS >::GetSerializeSize (int nType, int nVersion) const\fC [inline]\fP"
+
+.PP
+Definition at line 282 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> bool \fBbase_uint\fP< BITS >::operator! () const\fC [inline]\fP"
+
+.PP
+Definition at line 68 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> \fBbase_uint\fP& \fBbase_uint\fP< BITS >::operator&= (const \fBbase_uint\fP< BITS > & b)\fC [inline]\fP"
+
+.PP
+Definition at line 111 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> \fBbase_uint\fP< BITS > & \fBbase_uint\fP< BITS >::operator*= (\fBuint32_t\fP b32)"
+
+.PP
+Definition at line 62 of file uint256\&.cpp\&.
+.SS "template<unsigned int BITS> \fBbase_uint\fP< BITS > & \fBbase_uint\fP< BITS >::operator*= (const \fBbase_uint\fP< BITS > & b)"
+
+.PP
+Definition at line 74 of file uint256\&.cpp\&.
+.SS "template<unsigned int BITS> \fBbase_uint\fP& \fBbase_uint\fP< BITS >::operator++ ()\fC [inline]\fP"
+
+.PP
+Definition at line 180 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> const \fBbase_uint\fP \fBbase_uint\fP< BITS >::operator++ (int)\fC [inline]\fP"
+
+.PP
+Definition at line 189 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> \fBbase_uint\fP& \fBbase_uint\fP< BITS >::operator+= (const \fBbase_uint\fP< BITS > & b)\fC [inline]\fP"
+
+.PP
+Definition at line 142 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> \fBbase_uint\fP& \fBbase_uint\fP< BITS >::operator+= (\fBuint64_t\fP b64)\fC [inline]\fP"
+
+.PP
+Definition at line 160 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> const \fBbase_uint\fP \fBbase_uint\fP< BITS >::operator- () const\fC [inline]\fP"
+
+.PP
+Definition at line 84 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> \fBbase_uint\fP& \fBbase_uint\fP< BITS >::operator-- ()\fC [inline]\fP"
+
+.PP
+Definition at line 197 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> const \fBbase_uint\fP \fBbase_uint\fP< BITS >::operator-- (int)\fC [inline]\fP"
+
+.PP
+Definition at line 206 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> \fBbase_uint\fP& \fBbase_uint\fP< BITS >::operator-= (const \fBbase_uint\fP< BITS > & b)\fC [inline]\fP"
+
+.PP
+Definition at line 154 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> \fBbase_uint\fP& \fBbase_uint\fP< BITS >::operator-= (\fBuint64_t\fP b64)\fC [inline]\fP"
+
+.PP
+Definition at line 168 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> \fBbase_uint\fP< BITS > & \fBbase_uint\fP< BITS >::operator/= (const \fBbase_uint\fP< BITS > & b)"
+
+.PP
+Definition at line 90 of file uint256\&.cpp\&.
+.SS "template<unsigned int BITS> \fBbase_uint\fP< BITS > & \fBbase_uint\fP< BITS >::operator<<= (unsigned int shift)"
+
+.PP
+Definition at line 28 of file uint256\&.cpp\&.
+.SS "template<unsigned int BITS> \fBbase_uint\fP& \fBbase_uint\fP< BITS >::operator= (const \fBbase_uint\fP< BITS > & b)\fC [inline]\fP"
+
+.PP
+Definition at line 50 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> \fBbase_uint\fP& \fBbase_uint\fP< BITS >::operator= (\fBuint64_t\fP b)\fC [inline]\fP"
+
+.PP
+Definition at line 95 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> \fBbase_uint\fP< BITS > & \fBbase_uint\fP< BITS >::operator>>= (unsigned int shift)"
+
+.PP
+Definition at line 45 of file uint256\&.cpp\&.
+.SS "template<unsigned int BITS> \fBbase_uint\fP& \fBbase_uint\fP< BITS >::operator^= (const \fBbase_uint\fP< BITS > & b)\fC [inline]\fP"
+
+.PP
+Definition at line 104 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> \fBbase_uint\fP& \fBbase_uint\fP< BITS >::operator^= (\fBuint64_t\fP b)\fC [inline]\fP"
+
+.PP
+Definition at line 125 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> \fBbase_uint\fP& \fBbase_uint\fP< BITS >::operator|= (const \fBbase_uint\fP< BITS > & b)\fC [inline]\fP"
+
+.PP
+Definition at line 118 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> \fBbase_uint\fP& \fBbase_uint\fP< BITS >::operator|= (\fBuint64_t\fP b)\fC [inline]\fP"
+
+.PP
+Definition at line 132 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> const \fBbase_uint\fP \fBbase_uint\fP< BITS >::operator~ () const\fC [inline]\fP"
+
+.PP
+Definition at line 76 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> template<typename Stream > void \fBbase_uint\fP< BITS >::Serialize (Stream & s, int nType, int nVersion) const\fC [inline]\fP"
+
+.PP
+Definition at line 288 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> void \fBbase_uint\fP< BITS >::SetHex (const char * psz)"
+
+.PP
+Definition at line 163 of file uint256\&.cpp\&.
+.SS "template<unsigned int BITS> void \fBbase_uint\fP< BITS >::SetHex (const std::string & str)"
+
+.PP
+Definition at line 192 of file uint256\&.cpp\&.
+.SS "template<unsigned int BITS> unsigned int \fBbase_uint\fP< BITS >::size () const\fC [inline]\fP"
+
+.PP
+Definition at line 261 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> std::string \fBbase_uint\fP< BITS >::ToString () const"
+
+.PP
+Definition at line 198 of file uint256\&.cpp\&.
+.SS "template<unsigned int BITS> template<typename Stream > void \fBbase_uint\fP< BITS >::Unserialize (Stream & s, int nType, int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 294 of file uint256\&.h\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "template<unsigned int BITS> bool \fBoperator!\fP= (const \fBbase_uint\fP< BITS > & a, const \fBbase_uint\fP< BITS > & b)\fC [friend]\fP"
+
+.PP
+Definition at line 228 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> bool \fBoperator!\fP= (const \fBbase_uint\fP< BITS > & a, \fBuint64_t\fP b)\fC [friend]\fP"
+
+.PP
+Definition at line 234 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> const \fBbase_uint\fP operator& (const \fBbase_uint\fP< BITS > & a, const \fBbase_uint\fP< BITS > & b)\fC [friend]\fP"
+
+.PP
+Definition at line 222 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> const \fBbase_uint\fP operator* (const \fBbase_uint\fP< BITS > & a, const \fBbase_uint\fP< BITS > & b)\fC [friend]\fP"
+
+.PP
+Definition at line 219 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> const \fBbase_uint\fP operator* (const \fBbase_uint\fP< BITS > & a, \fBuint32_t\fP b)\fC [friend]\fP"
+
+.PP
+Definition at line 226 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> const \fBbase_uint\fP operator+ (const \fBbase_uint\fP< BITS > & a, const \fBbase_uint\fP< BITS > & b)\fC [friend]\fP"
+
+.PP
+Definition at line 217 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> const \fBbase_uint\fP operator- (const \fBbase_uint\fP< BITS > & a, const \fBbase_uint\fP< BITS > & b)\fC [friend]\fP"
+
+.PP
+Definition at line 218 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> const \fBbase_uint\fP operator/ (const \fBbase_uint\fP< BITS > & a, const \fBbase_uint\fP< BITS > & b)\fC [friend]\fP"
+
+.PP
+Definition at line 220 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> bool operator< (const \fBbase_uint\fP< BITS > & a, const \fBbase_uint\fP< BITS > & b)\fC [friend]\fP"
+
+.PP
+Definition at line 230 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> const \fBbase_uint\fP operator<< (const \fBbase_uint\fP< BITS > & a, int shift)\fC [friend]\fP"
+
+.PP
+Definition at line 225 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> bool operator<= (const \fBbase_uint\fP< BITS > & a, const \fBbase_uint\fP< BITS > & b)\fC [friend]\fP"
+
+.PP
+Definition at line 232 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> bool operator== (const \fBbase_uint\fP< BITS > & a, const \fBbase_uint\fP< BITS > & b)\fC [friend]\fP"
+
+.PP
+Definition at line 227 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> bool operator== (const \fBbase_uint\fP< BITS > & a, \fBuint64_t\fP b)\fC [friend]\fP"
+
+.PP
+Definition at line 233 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> bool operator> (const \fBbase_uint\fP< BITS > & a, const \fBbase_uint\fP< BITS > & b)\fC [friend]\fP"
+
+.PP
+Definition at line 229 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> bool operator>= (const \fBbase_uint\fP< BITS > & a, const \fBbase_uint\fP< BITS > & b)\fC [friend]\fP"
+
+.PP
+Definition at line 231 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> const \fBbase_uint\fP operator>> (const \fBbase_uint\fP< BITS > & a, int shift)\fC [friend]\fP"
+
+.PP
+Definition at line 224 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> const \fBbase_uint\fP operator^ (const \fBbase_uint\fP< BITS > & a, const \fBbase_uint\fP< BITS > & b)\fC [friend]\fP"
+
+.PP
+Definition at line 223 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> const \fBbase_uint\fP operator| (const \fBbase_uint\fP< BITS > & a, const \fBbase_uint\fP< BITS > & b)\fC [friend]\fP"
+
+.PP
+Definition at line 221 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> friend class \fBuint160\fP\fC [friend]\fP"
+
+.PP
+Definition at line 299 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> friend class \fBuint256\fP\fC [friend]\fP"
+
+.PP
+Definition at line 300 of file uint256\&.h\&.
+.SS "template<unsigned int BITS> friend class \fBuint512\fP\fC [friend]\fP"
+
+.PP
+Definition at line 301 of file uint256\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "template<unsigned int BITS> \fBuint32_t\fP \fBbase_uint\fP< BITS >::pn[\fBWIDTH\fP]\fC [protected]\fP"
+
+.PP
+Definition at line 35 of file uint256\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

@@ -1,0 +1,332 @@
+.TH "CNetAddr" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CNetAddr \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <netbase\&.h>\fP
+.PP
+Inherited by \fBCService\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCNetAddr\fP ()"
+.br
+.ti -1c
+.RI "\fBCNetAddr\fP (const struct in_addr &ipv4Addr)"
+.br
+.ti -1c
+.RI "\fBCNetAddr\fP (const char *pszIp, bool fAllowLookup=false)"
+.br
+.ti -1c
+.RI "\fBCNetAddr\fP (const std::string &strIp, bool fAllowLookup=false)"
+.br
+.ti -1c
+.RI "void \fBInit\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetIP\fP (const \fBCNetAddr\fP &\fBip\fP)"
+.br
+.ti -1c
+.RI "bool \fBSetSpecial\fP (const std::string &strName)"
+.br
+.ti -1c
+.RI "bool \fBIsIPv4\fP () const "
+.br
+.ti -1c
+.RI "bool \fBIsIPv6\fP () const "
+.br
+.ti -1c
+.RI "bool \fBIsRFC1918\fP () const "
+.br
+.ti -1c
+.RI "bool \fBIsRFC3849\fP () const "
+.br
+.ti -1c
+.RI "bool \fBIsRFC3927\fP () const "
+.br
+.ti -1c
+.RI "bool \fBIsRFC3964\fP () const "
+.br
+.ti -1c
+.RI "bool \fBIsRFC4193\fP () const "
+.br
+.ti -1c
+.RI "bool \fBIsRFC4380\fP () const "
+.br
+.ti -1c
+.RI "bool \fBIsRFC4843\fP () const "
+.br
+.ti -1c
+.RI "bool \fBIsRFC4862\fP () const "
+.br
+.ti -1c
+.RI "bool \fBIsRFC6052\fP () const "
+.br
+.ti -1c
+.RI "bool \fBIsRFC6145\fP () const "
+.br
+.ti -1c
+.RI "bool \fBIsTor\fP () const "
+.br
+.ti -1c
+.RI "bool \fBIsI2P\fP () const "
+.br
+.ti -1c
+.RI "bool \fBIsLocal\fP () const "
+.br
+.ti -1c
+.RI "bool \fBIsRoutable\fP () const "
+.br
+.ti -1c
+.RI "bool \fBIsValid\fP () const "
+.br
+.ti -1c
+.RI "bool \fBIsMulticast\fP () const "
+.br
+.ti -1c
+.RI "enum \fBNetwork\fP \fBGetNetwork\fP () const "
+.br
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.ti -1c
+.RI "std::string \fBToStringIP\fP () const "
+.br
+.ti -1c
+.RI "unsigned int \fBGetByte\fP (int n) const "
+.br
+.ti -1c
+.RI "\fBuint64_t\fP \fBGetHash\fP () const "
+.br
+.ti -1c
+.RI "bool \fBGetInAddr\fP (struct in_addr *pipv4Addr) const "
+.br
+.ti -1c
+.RI "std::vector< unsigned char > \fBGetGroup\fP () const "
+.br
+.ti -1c
+.RI "int \fBGetReachabilityFrom\fP (const \fBCNetAddr\fP *paddrPartner=NULL) const "
+.br
+.ti -1c
+.RI "\fBCNetAddr\fP (const struct in6_addr &pipv6Addr)"
+.br
+.ti -1c
+.RI "bool \fBGetIn6Addr\fP (struct in6_addr *pipv6Addr) const "
+.br
+.ti -1c
+.RI "template<typename Stream , typename Operation > void \fBSerializationOp\fP (Stream &s, Operation ser_action, int nType, int nVersion)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBADD_SERIALIZE_METHODS\fP"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "unsigned char \fBip\fP [16]"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBCNetAddr\fP &a, const \fBCNetAddr\fP &b)"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBCNetAddr\fP &a, const \fBCNetAddr\fP &b)"
+.br
+.ti -1c
+.RI "bool \fBoperator<\fP (const \fBCNetAddr\fP &a, const \fBCNetAddr\fP &b)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+IP address (IPv6, or IPv4 using mapped IPv6 range (::FFFF:0:0/96)) 
+.PP
+Definition at line 43 of file netbase\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CNetAddr::CNetAddr ()"
+
+.PP
+Definition at line 593 of file netbase\&.cpp\&.
+.SS "CNetAddr::CNetAddr (const struct in_addr & ipv4Addr)"
+
+.PP
+Definition at line 598 of file netbase\&.cpp\&.
+.SS "CNetAddr::CNetAddr (const char * pszIp, bool fAllowLookup = \fCfalse\fP)\fC [explicit]\fP"
+
+.PP
+Definition at line 615 of file netbase\&.cpp\&.
+.SS "CNetAddr::CNetAddr (const std::string & strIp, bool fAllowLookup = \fCfalse\fP)\fC [explicit]\fP"
+
+.PP
+Definition at line 623 of file netbase\&.cpp\&.
+.SS "CNetAddr::CNetAddr (const struct in6_addr & pipv6Addr)"
+
+.PP
+Definition at line 607 of file netbase\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "unsigned int CNetAddr::GetByte (int n) const"
+
+.PP
+Definition at line 631 of file netbase\&.cpp\&.
+.SS "std::vector< unsigned char > CNetAddr::GetGroup () const"
+
+.PP
+Definition at line 902 of file netbase\&.cpp\&.
+.SS "\fBuint64_t\fP CNetAddr::GetHash () const"
+
+.PP
+Definition at line 985 of file netbase\&.cpp\&.
+.SS "bool CNetAddr::GetIn6Addr (struct in6_addr * pipv6Addr) const"
+
+.PP
+Definition at line 890 of file netbase\&.cpp\&.
+.SS "bool CNetAddr::GetInAddr (struct in_addr * pipv4Addr) const"
+
+.PP
+Definition at line 882 of file netbase\&.cpp\&.
+.SS "enum \fBNetwork\fP CNetAddr::GetNetwork () const"
+
+.PP
+Definition at line 800 of file netbase\&.cpp\&.
+.SS "int CNetAddr::GetReachabilityFrom (const \fBCNetAddr\fP * paddrPartner = \fCNULL\fP) const"
+Calculates a metric for how reachable (*this) is from a given partner 
+.PP
+Definition at line 1007 of file netbase\&.cpp\&.
+.SS "void CNetAddr::Init ()"
+
+.PP
+Definition at line 541 of file netbase\&.cpp\&.
+.SS "bool CNetAddr::IsI2P () const"
+
+.PP
+Definition at line 724 of file netbase\&.cpp\&.
+.SS "bool CNetAddr::IsIPv4 () const"
+
+.PP
+Definition at line 636 of file netbase\&.cpp\&.
+.SS "bool CNetAddr::IsIPv6 () const"
+
+.PP
+Definition at line 641 of file netbase\&.cpp\&.
+.SS "bool CNetAddr::IsLocal () const"
+
+.PP
+Definition at line 729 of file netbase\&.cpp\&.
+.SS "bool CNetAddr::IsMulticast () const"
+
+.PP
+Definition at line 748 of file netbase\&.cpp\&.
+.SS "bool CNetAddr::IsRFC1918 () const"
+
+.PP
+Definition at line 650 of file netbase\&.cpp\&.
+.SS "bool CNetAddr::IsRFC3849 () const"
+
+.PP
+Definition at line 663 of file netbase\&.cpp\&.
+.SS "bool CNetAddr::IsRFC3927 () const"
+
+.PP
+Definition at line 658 of file netbase\&.cpp\&.
+.SS "bool CNetAddr::IsRFC3964 () const"
+
+.PP
+Definition at line 668 of file netbase\&.cpp\&.
+.SS "bool CNetAddr::IsRFC4193 () const"
+
+.PP
+Definition at line 690 of file netbase\&.cpp\&.
+.SS "bool CNetAddr::IsRFC4380 () const"
+
+.PP
+Definition at line 679 of file netbase\&.cpp\&.
+.SS "bool CNetAddr::IsRFC4843 () const"
+
+.PP
+Definition at line 701 of file netbase\&.cpp\&.
+.SS "bool CNetAddr::IsRFC4862 () const"
+
+.PP
+Definition at line 684 of file netbase\&.cpp\&.
+.SS "bool CNetAddr::IsRFC6052 () const"
+
+.PP
+Definition at line 673 of file netbase\&.cpp\&.
+.SS "bool CNetAddr::IsRFC6145 () const"
+
+.PP
+Definition at line 695 of file netbase\&.cpp\&.
+.SS "bool CNetAddr::IsRoutable () const"
+
+.PP
+Definition at line 795 of file netbase\&.cpp\&.
+.SS "bool CNetAddr::IsTor () const"
+
+.PP
+Definition at line 706 of file netbase\&.cpp\&.
+.SS "bool CNetAddr::IsValid () const"
+
+.PP
+Definition at line 754 of file netbase\&.cpp\&.
+.SS "template<typename Stream , typename Operation > void CNetAddr::SerializationOp (Stream & s, Operation ser_action, int nType, int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 102 of file netbase\&.h\&.
+.SS "void CNetAddr::SetIP (const \fBCNetAddr\fP & ip)"
+
+.PP
+Definition at line 549 of file netbase\&.cpp\&.
+.SS "bool CNetAddr::SetSpecial (const std::string & strName)"
+
+.PP
+Definition at line 560 of file netbase\&.cpp\&.
+.SS "std::string CNetAddr::ToString () const"
+
+.PP
+Definition at line 850 of file netbase\&.cpp\&.
+.SS "std::string CNetAddr::ToStringIP () const"
+
+.PP
+Definition at line 822 of file netbase\&.cpp\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "bool operator!= (const \fBCNetAddr\fP & a, const \fBCNetAddr\fP & b)\fC [friend]\fP"
+
+.PP
+Definition at line 864 of file netbase\&.cpp\&.
+.SS "bool operator< (const \fBCNetAddr\fP & a, const \fBCNetAddr\fP & b)\fC [friend]\fP"
+
+.PP
+Definition at line 873 of file netbase\&.cpp\&.
+.SS "bool operator== (const \fBCNetAddr\fP & a, const \fBCNetAddr\fP & b)\fC [friend]\fP"
+
+.PP
+Definition at line 855 of file netbase\&.cpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "CNetAddr::ADD_SERIALIZE_METHODS"
+
+.PP
+Definition at line 99 of file netbase\&.h\&.
+.SS "unsigned char CNetAddr::ip[16]\fC [protected]\fP"
+
+.PP
+Definition at line 46 of file netbase\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

@@ -1,0 +1,73 @@
+.TH "CTxOutCompressorCoin" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CTxOutCompressorCoin \- wrapper for \fBCTxOut\fP that provides a more compact serialization  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <coins\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCTxOutCompressorCoin\fP (\fBCTxOut\fP &txoutIn)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename Operation > void \fBSerializationOp\fP (Stream &s, Operation ser_action, int nType, int nVersion)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBuint64_t\fP \fBCompressAmount\fP (\fBuint64_t\fP nAmount)"
+.br
+.ti -1c
+.RI "static \fBuint64_t\fP \fBDecompressAmount\fP (\fBuint64_t\fP nAmount)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBADD_SERIALIZE_METHODS\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+wrapper for \fBCTxOut\fP that provides a more compact serialization 
+.PP
+Definition at line 20 of file coins\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CTxOutCompressorCoin::CTxOutCompressorCoin (\fBCTxOut\fP & txoutIn)\fC [inline]\fP"
+
+.PP
+Definition at line 29 of file coins\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBuint64_t\fP CTxOutCompressorCoin::CompressAmount (\fBuint64_t\fP nAmount)\fC [static]\fP"
+
+.PP
+Definition at line 382 of file coins\&.cpp\&.
+.SS "\fBuint64_t\fP CTxOutCompressorCoin::DecompressAmount (\fBuint64_t\fP nAmount)\fC [static]\fP"
+
+.PP
+Definition at line 401 of file coins\&.cpp\&.
+.SS "template<typename Stream , typename Operation > void CTxOutCompressorCoin::SerializationOp (Stream & s, Operation ser_action, int nType, int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 34 of file coins\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "CTxOutCompressorCoin::ADD_SERIALIZE_METHODS"
+
+.PP
+Definition at line 31 of file coins\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

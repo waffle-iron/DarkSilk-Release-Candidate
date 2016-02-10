@@ -1,0 +1,70 @@
+.TH "CCoinsViewMemPool" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CCoinsViewMemPool \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <coins\&.h>\fP
+.PP
+Inherits \fBCCoinsViewBacked\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCCoinsViewMemPool\fP (\fBCCoinsView\fP *baseIn, \fBCTxMemPool\fP &mempoolIn)"
+.br
+.ti -1c
+.RI "bool \fBGetCoins\fP (const \fBuint256\fP &txid, \fBCCoins\fP &coins) const "
+.br
+.RI "\fIRetrieve the \fBCCoins\fP (unspent transaction outputs) for a given txid\&. \fP"
+.ti -1c
+.RI "bool \fBHaveCoins\fP (const \fBuint256\fP &txid) const "
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBCTxMemPool\fP & \fBmempool\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBCCoinsView\fP that brings transactions from a memorypool into view\&. It does not check for spendings by memory pool transactions\&. 
+.PP
+Definition at line 496 of file coins\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CCoinsViewMemPool::CCoinsViewMemPool (\fBCCoinsView\fP * baseIn, \fBCTxMemPool\fP & mempoolIn)"
+
+.PP
+Definition at line 355 of file coins\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool CCoinsViewMemPool::GetCoins (const \fBuint256\fP & txid, \fBCCoins\fP & coins) const\fC [virtual]\fP"
+
+.PP
+Retrieve the \fBCCoins\fP (unspent transaction outputs) for a given txid\&. 
+.PP
+Reimplemented from \fBCCoinsViewBacked\fP\&.
+.PP
+Definition at line 357 of file coins\&.cpp\&.
+.SS "bool CCoinsViewMemPool::HaveCoins (const \fBuint256\fP & txid) const\fC [virtual]\fP"
+Just check whether we have data for a given txid\&. This may (but cannot always) return true for fully spent transactions 
+.PP
+Reimplemented from \fBCCoinsViewBacked\fP\&.
+.PP
+Definition at line 369 of file coins\&.cpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBCTxMemPool\fP& CCoinsViewMemPool::mempool\fC [protected]\fP"
+
+.PP
+Definition at line 499 of file coins\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

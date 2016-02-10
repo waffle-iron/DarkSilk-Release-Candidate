@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="genkat_8h" kind="file" language="C++">
+    <compoundname>genkat.h</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="genkat_8h_1a28a5cfda428fc2ab9dd743f5d44d66a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void initial_kat</definition>
+        <argsstring>(const uint8_t *blockhash, const argon2_context *context, argon2_type type)</argsstring>
+        <name>initial_kat</name>
+        <param>
+          <type>const <ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref> *</type>
+          <declname>blockhash</declname>
+        </param>
+        <param>
+          <type>const <ref refid="argon2_8h_1a43c74dc5ed515632feee9b2e1ff3e09f" kindref="member">argon2_context</ref> *</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type><ref refid="argon2_8h_1af51eac9927f7f234943d076166aacf84" kindref="member">argon2_type</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/genkat.h" line="26" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/genkat.c" bodystart="21" bodyend="94"/>
+      </memberdef>
+      <memberdef kind="function" id="genkat_8h_1ae9f51a4f9ebe1b42c724153dae1e181e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void print_tag</definition>
+        <argsstring>(const void *out, uint32_t outlen)</argsstring>
+        <name>print_tag</name>
+        <param>
+          <type>const void *</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref></type>
+          <declname>outlen</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/genkat.h" line="35" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/genkat.c" bodystart="96" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="genkat_8h_1a612941d3015f44d978fbd01598212929" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void internal_kat</definition>
+        <argsstring>(const argon2_instance_t *instance, uint32_t pass)</argsstring>
+        <name>internal_kat</name>
+        <param>
+          <type>const <ref refid="core_8h_1ac888abc6f5f9faa538ff23dc92b1e1c2" kindref="member">argon2_instance_t</ref> *</type>
+          <declname>instance</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref></type>
+          <declname>pass</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/genkat.h" line="43" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/genkat.c" bodystart="109" bodyend="126"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Argon2<sp/>source<sp/>code<sp/>package</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Written<sp/>by<sp/>Daniel<sp/>Dinu<sp/>and<sp/>Dmitry<sp/>Khovratovich,<sp/>2015</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>This<sp/>work<sp/>is<sp/>licensed<sp/>under<sp/>a<sp/>Creative<sp/>Commons<sp/>CC0<sp/>1.0<sp/>License/Waiver.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>CC0<sp/>Public<sp/>Domain<sp/>Dedication<sp/>along</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>with</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>this<sp/>software.<sp/>If<sp/>not,<sp/>see</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>&lt;http://creativecommons.org/publicdomain/zero/1.0/&gt;.</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>ARGON2_KAT_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ARGON2_KAT_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*<sp/>Initial<sp/>KAT<sp/>function<sp/>that<sp/>prints<sp/>the<sp/>inputs<sp/>to<sp/>the<sp/>file</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>@param<sp/><sp/>blockhash<sp/><sp/>Array<sp/>that<sp/>contains<sp/>pre-hashing<sp/>digest</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>@param<sp/><sp/>context<sp/>Holds<sp/>inputs</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>@param<sp/><sp/>type<sp/>Argon2<sp/>type</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>@pre<sp/>blockhash<sp/>must<sp/>point<sp/>to<sp/>INPUT_INITIAL_HASH_LENGTH<sp/>bytes</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*<sp/>@pre<sp/>context<sp/>member<sp/>pointers<sp/>must<sp/>point<sp/>to<sp/>allocated<sp/>memory<sp/>of<sp/>size<sp/>according</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>to<sp/>the<sp/>length<sp/>values</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="genkat_8h_1a28a5cfda428fc2ab9dd743f5d44d66a6" kindref="member">initial_kat</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref><sp/>*blockhash,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_argon2___context" kindref="compound">argon2_context</ref><sp/>*context,</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="argon2_8h_1af51eac9927f7f234943d076166aacf84" kindref="member">argon2_type</ref><sp/>type);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/>Function<sp/>that<sp/>prints<sp/>the<sp/>output<sp/>tag</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*<sp/>@param<sp/><sp/>out<sp/><sp/>output<sp/>array<sp/>pointer</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>@param<sp/><sp/>outlen<sp/>digest<sp/>length</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>@pre<sp/>out<sp/>must<sp/>point<sp/>to<sp/>@a<sp/>outlen<sp/>bytes</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>**/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="genkat_8h_1ae9f51a4f9ebe1b42c724153dae1e181e" kindref="member">print_tag</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*out,<sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>outlen);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/>Function<sp/>that<sp/>prints<sp/>the<sp/>internal<sp/>state<sp/>at<sp/>given<sp/>moment</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/>@param<sp/><sp/>instance<sp/>pointer<sp/>to<sp/>the<sp/>current<sp/>instance</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/>@param<sp/><sp/>pass<sp/>current<sp/>pass<sp/>number</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>@pre<sp/>instance<sp/>must<sp/>have<sp/>necessary<sp/>memory<sp/>allocated</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>**/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="genkat_8h_1a612941d3015f44d978fbd01598212929" kindref="member">internal_kat</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_argon2__instance__t" kindref="compound">argon2_instance_t</ref><sp/>*instance,<sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>pass);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/crypto/argon2/genkat.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_peer_table_priv" kind="class" language="C++" prot="public">
+    <compoundname>PeerTablePriv</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_peer_table_priv_1a8da9d0256d11f205dfa1cdce86843761" prot="public" static="no" mutable="no">
+        <type>QList&lt; <ref refid="struct_c_node_combined_stats" kindref="compound">CNodeCombinedStats</ref> &gt;</type>
+        <definition>QList&lt;CNodeCombinedStats&gt; PeerTablePriv::cachedNodeStats</definition>
+        <argsstring></argsstring>
+        <name>cachedNodeStats</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Local cache of peer information </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/peertablemodel.cpp" line="44" column="1" bodyfile="/home/dev/ds-160209/src/qt/peertablemodel.cpp" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_peer_table_priv_1a4917597853d2d5f0055be017b8ab33c5" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int PeerTablePriv::sortColumn</definition>
+        <argsstring></argsstring>
+        <name>sortColumn</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Column to sort nodes by </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/peertablemodel.cpp" line="46" column="1" bodyfile="/home/dev/ds-160209/src/qt/peertablemodel.cpp" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_peer_table_priv_1adb95d4bbc4fb13a21a360108aeca5c32" prot="public" static="no" mutable="no">
+        <type>Qt::SortOrder</type>
+        <definition>Qt::SortOrder PeerTablePriv::sortOrder</definition>
+        <argsstring></argsstring>
+        <name>sortOrder</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Order (ascending or descending) to sort nodes by </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/peertablemodel.cpp" line="48" column="1" bodyfile="/home/dev/ds-160209/src/qt/peertablemodel.cpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_peer_table_priv_1ae27db14bcbe769f494c4db56ef27fb08" prot="public" static="no" mutable="no">
+        <type>std::map&lt; <ref refid="net_8h_1a954d746a58632565552615fd0a4ee660" kindref="member">NodeId</ref>, int &gt;</type>
+        <definition>std::map&lt;NodeId, int&gt; PeerTablePriv::mapNodeRows</definition>
+        <argsstring></argsstring>
+        <name>mapNodeRows</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Index of rows by node ID </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/peertablemodel.cpp" line="50" column="1" bodyfile="/home/dev/ds-160209/src/qt/peertablemodel.cpp" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_peer_table_priv_1a304d99874f6cd0c67ed207546a5ca904" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void PeerTablePriv::refreshPeers</definition>
+        <argsstring>()</argsstring>
+        <name>refreshPeers</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Pull a full list of peers from vNodes into our cache </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/peertablemodel.cpp" line="53" column="1" bodyfile="/home/dev/ds-160209/src/qt/peertablemodel.cpp" bodystart="53" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="class_peer_table_priv_1abc703185b3067489b0d5ad22c2147112" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int PeerTablePriv::size</definition>
+        <argsstring>()</argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/peertablemodel.cpp" line="99" column="1" bodyfile="/home/dev/ds-160209/src/qt/peertablemodel.cpp" bodystart="99" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="class_peer_table_priv_1a58c817cce967ddd5ae4bad622bfaecb4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="struct_c_node_combined_stats" kindref="compound">CNodeCombinedStats</ref> *</type>
+        <definition>CNodeCombinedStats* PeerTablePriv::index</definition>
+        <argsstring>(int idx)</argsstring>
+        <name>index</name>
+        <param>
+          <type>int</type>
+          <declname>idx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/peertablemodel.cpp" line="104" column="1" bodyfile="/home/dev/ds-160209/src/qt/peertablemodel.cpp" bodystart="104" bodyend="111"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/qt/peertablemodel.cpp" line="41" column="1" bodyfile="/home/dev/ds-160209/src/qt/peertablemodel.cpp" bodystart="40" bodyend="112"/>
+    <listofallmembers>
+      <member refid="class_peer_table_priv_1a8da9d0256d11f205dfa1cdce86843761" prot="public" virt="non-virtual"><scope>PeerTablePriv</scope><name>cachedNodeStats</name></member>
+      <member refid="class_peer_table_priv_1a58c817cce967ddd5ae4bad622bfaecb4" prot="public" virt="non-virtual"><scope>PeerTablePriv</scope><name>index</name></member>
+      <member refid="class_peer_table_priv_1ae27db14bcbe769f494c4db56ef27fb08" prot="public" virt="non-virtual"><scope>PeerTablePriv</scope><name>mapNodeRows</name></member>
+      <member refid="class_peer_table_priv_1a304d99874f6cd0c67ed207546a5ca904" prot="public" virt="non-virtual"><scope>PeerTablePriv</scope><name>refreshPeers</name></member>
+      <member refid="class_peer_table_priv_1abc703185b3067489b0d5ad22c2147112" prot="public" virt="non-virtual"><scope>PeerTablePriv</scope><name>size</name></member>
+      <member refid="class_peer_table_priv_1a4917597853d2d5f0055be017b8ab33c5" prot="public" virt="non-virtual"><scope>PeerTablePriv</scope><name>sortColumn</name></member>
+      <member refid="class_peer_table_priv_1adb95d4bbc4fb13a21a360108aeca5c32" prot="public" virt="non-virtual"><scope>PeerTablePriv</scope><name>sortOrder</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

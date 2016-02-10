@@ -1,0 +1,519 @@
+\hypertarget{class_message_model}{}\section{Message\+Model Class Reference}
+\label{class_message_model}\index{Message\+Model@{Message\+Model}}
+
+
+{\ttfamily \#include $<$messagemodel.\+h$>$}
+
+Inheritance diagram for Message\+Model\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_message_model}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_message_model_adac070d47edccd1bc8358cdc976f8509}{Status\+Code} \{ \\*
+\hyperlink{class_message_model_adac070d47edccd1bc8358cdc976f8509a0ac8092e6dc45d02798074612826cc43}{O\+K}, 
+\hyperlink{class_message_model_adac070d47edccd1bc8358cdc976f8509ae4b0314d8f665b726423ee7fe0c0713d}{Invalid\+Address}, 
+\hyperlink{class_message_model_adac070d47edccd1bc8358cdc976f8509a8132a7431b90de1dbf0cb50165bbf7d0}{Invalid\+Message}, 
+\hyperlink{class_message_model_adac070d47edccd1bc8358cdc976f8509a883e447082b3ece01f526be9c46fee8e}{Duplicate\+Address}, 
+\\*
+\hyperlink{class_message_model_adac070d47edccd1bc8358cdc976f8509aec250445cabd6a1cffc7e55661b85299}{Message\+Creation\+Failed}, 
+\hyperlink{class_message_model_adac070d47edccd1bc8358cdc976f8509accf1cad016b19465ce9ddd55a4bcd406}{Message\+Commit\+Failed}, 
+\hyperlink{class_message_model_adac070d47edccd1bc8358cdc976f8509a89565743283160a08f41e42406b3dbbd}{Aborted}, 
+\hyperlink{class_message_model_adac070d47edccd1bc8358cdc976f8509ae86208c061871c17117ffc330478fa80}{Failed\+Error\+Shown}
+ \}
+\item 
+enum \hyperlink{class_message_model_a06abed7ec66ac487a58ca87fd84e2053}{Column\+Index} \{ \\*
+\hyperlink{class_message_model_a06abed7ec66ac487a58ca87fd84e2053a35b041fc060add8ce4952b59797b93b9}{Type} = 0, 
+\hyperlink{class_message_model_a06abed7ec66ac487a58ca87fd84e2053a9d846a413ba2eff3ae06b87abea5584d}{Sent\+Date\+Time} = 1, 
+\hyperlink{class_message_model_a06abed7ec66ac487a58ca87fd84e2053a1e67305ebd1a4457769b04e39d1f4f07}{Received\+Date\+Time} = 2, 
+\hyperlink{class_message_model_a06abed7ec66ac487a58ca87fd84e2053a289fb42f068383bcffc0dc4e1cd82cc7}{Label} = 3, 
+\\*
+\hyperlink{class_message_model_a06abed7ec66ac487a58ca87fd84e2053adff233d32a8b9156960e9d64e2eb1141}{To\+Address} = 4, 
+\hyperlink{class_message_model_a06abed7ec66ac487a58ca87fd84e2053a64311bb700e834e162491cda3b31504c}{From\+Address} = 5, 
+\hyperlink{class_message_model_a06abed7ec66ac487a58ca87fd84e2053a0a005184da622ffd683210fe9c477b14}{Message} = 6, 
+\hyperlink{class_message_model_a06abed7ec66ac487a58ca87fd84e2053a8b10f5cfd2c331fce7bb26debbdc8d47}{Type\+Int} = 7, 
+\\*
+\hyperlink{class_message_model_a06abed7ec66ac487a58ca87fd84e2053a7109be637fef36b090f57b6285cb5f04}{Key} = 8, 
+\hyperlink{class_message_model_a06abed7ec66ac487a58ca87fd84e2053a21cdf1e17d71ffbf41e55d9fe2bf2d7e}{H\+T\+M\+L} = 9
+ \}
+\item 
+enum \hyperlink{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3}{Role\+Index} \{ \\*
+\hyperlink{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3ab7fbe93e354957746e56ebb06ff84e8e}{Type\+Role} = Qt\+:\+:User\+Role, 
+\hyperlink{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3a8cf6b70dbc62d5db3500e1aac2ee9902}{Key\+Role}, 
+\hyperlink{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3a18464878ccb612094c65126c30fd70f0}{Sent\+Date\+Role}, 
+\hyperlink{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3aad50f3d8ab2bcca417dba4a285d51d73}{Received\+Date\+Role}, 
+\\*
+\hyperlink{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3adb0b890a4cab8e2ccab36900b7dca8af}{From\+Address\+Role}, 
+\hyperlink{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3af1bf26da06172cb73d0f9b50662ff098}{To\+Address\+Role}, 
+\hyperlink{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3a7a8fcd59311ac87d588b81fca1378374}{Filter\+Address\+Role}, 
+\hyperlink{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3aca94175abc1ed61e6911b891e3eac28d}{Label\+Role}, 
+\\*
+\hyperlink{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3a3745144b2cbfba76015d1ef2b98565e3}{Message\+Role}, 
+\hyperlink{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3aaa9e495035e17c614e655409b4c70aaa}{Short\+Message\+Role}, 
+\hyperlink{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3a9fe1770d03a7c9ccbc25d883f1c6cdd6}{H\+T\+M\+L\+Role}, 
+\hyperlink{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3a254150a5edd3791c0e9c2b2dd819f209}{Ambiguous}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_message_model_ad6a392da2be132233531d54e14383dfb}{new\+Message} (const \hyperlink{class_sec_msg_stored}{Sec\+Msg\+Stored} \&smsg)
+\item 
+void \hyperlink{class_message_model_a7a1396e1047438ce30c8a3a1373d0dfd}{new\+Outbox\+Message} (const \hyperlink{class_sec_msg_stored}{Sec\+Msg\+Stored} \&smsg)
+\item 
+void \hyperlink{class_message_model_ad4f38a637dda717acc6b3bcec2b8f23f}{wallet\+Unlocked} ()
+\item 
+void \hyperlink{class_message_model_a4e1d19da83fffaea5883ba3771d62949}{set\+Encryption\+Status} (int status)
+\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_message_model_a506804d291f1cae01b8fbc22c0a12693}{error} (const Q\+String \&title, const Q\+String \&message, bool modal)
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_message_model_abb708f049aab665144d273ae56baf2ec}{Message\+Model} (\hyperlink{class_c_wallet}{C\+Wallet} $\ast$wallet, \hyperlink{class_wallet_model}{Wallet\+Model} $\ast$wallet\+Model, Q\+Object $\ast$parent=0)
+\item 
+\hyperlink{class_message_model_a70a4aef17be44ef4a07ad17f5f630a30}{$\sim$\+Message\+Model} ()
+\item 
+int \hyperlink{class_message_model_aae76e8457be0de6ca10fe602d2be68f4}{lookup\+Message} (const Q\+String \&message) const 
+\item 
+\hyperlink{class_wallet_model}{Wallet\+Model} $\ast$ \hyperlink{class_message_model_ac397797af720d2da96739ba7deecd938}{get\+Wallet\+Model} ()
+\item 
+\hyperlink{class_options_model}{Options\+Model} $\ast$ \hyperlink{class_message_model_ae7eb986b2f9e4074871406e3fb0cfb91}{get\+Options\+Model} ()
+\item 
+void \hyperlink{class_message_model_a0a4f4df3a21e41803449692592f8d343}{reset\+Filter} ()
+\item 
+bool \hyperlink{class_message_model_a272e7ceeba4664046472e6f7c4d49d23}{get\+Address\+Or\+Pubkey} (Q\+String \&Address, Q\+String \&Pubkey) const 
+\item 
+\hyperlink{class_message_model_adac070d47edccd1bc8358cdc976f8509}{Status\+Code} \hyperlink{class_message_model_abeda81bd7dd800217f6f9c196559810b}{send\+Messages} (const Q\+List$<$ \hyperlink{class_send_messages_recipient}{Send\+Messages\+Recipient} $>$ \&recipients)
+\item 
+\hyperlink{class_message_model_adac070d47edccd1bc8358cdc976f8509}{Status\+Code} \hyperlink{class_message_model_a76c42a7c0940348d6c2bdd2111cc6424}{send\+Messages} (const Q\+List$<$ \hyperlink{class_send_messages_recipient}{Send\+Messages\+Recipient} $>$ \&recipients, const Q\+String \&address\+From)
+\end{DoxyCompactItemize}
+\begin{Indent}{\bf Methods overridden from Q\+Abstract\+Table\+Model}\par
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_message_model_a3a48dbe500910f5c9afca70e7e968ad2}{row\+Count} (const Q\+Model\+Index \&parent) const 
+\item 
+int \hyperlink{class_message_model_a9c9f80216f2f14f0647e42f9cd9e7d0d}{column\+Count} (const Q\+Model\+Index \&parent) const 
+\item 
+Q\+Variant \hyperlink{class_message_model_af124db796fce9dab2c5d92625b9affb4}{data} (const Q\+Model\+Index \&\hyperlink{class_message_model_aad9e6963e446cf236c0a71ccd0e9f21c}{index}, int role) const 
+\item 
+Q\+Variant \hyperlink{class_message_model_adaffb10641c1117c5034621f4aa7b2aa}{header\+Data} (int section, Qt\+::\+Orientation orientation, int role) const 
+\item 
+Q\+Model\+Index \hyperlink{class_message_model_aad9e6963e446cf236c0a71ccd0e9f21c}{index} (int row, int column, const Q\+Model\+Index \&parent) const 
+\item 
+bool \hyperlink{class_message_model_a0bf2ae180e0d137be51b1e1567e66eee}{remove\+Rows} (int row, int count, const Q\+Model\+Index \&parent=Q\+Model\+Index())
+\item 
+Qt\+::\+Item\+Flags \hyperlink{class_message_model_afe81099417dbc6283025cce4f6a8748a}{flags} (const Q\+Model\+Index \&\hyperlink{class_message_model_aad9e6963e446cf236c0a71ccd0e9f21c}{index}) const 
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\+Sort\+Filter\+Proxy\+Model $\ast$ \hyperlink{class_message_model_a8248581c9ad7c1f00c4918f4b8b82404}{proxy\+Model}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const Q\+String \hyperlink{class_message_model_ae5014d3052e4cec590f673d22edb9cd0}{Sent} = \char`\"{}Sent\char`\"{}
+\item 
+static const Q\+String \hyperlink{class_message_model_a8539de55f3325f8237617fb50d7f632c}{Received} = \char`\"{}Received\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_message_model_a5c879241490f0146eae8b49e54d610ac}{Message\+Table\+Priv}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Interface to Dark\+Silk Secure Messaging from Qt view code. 
+
+Definition at line 71 of file messagemodel.\+h.
+
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{class_message_model_a06abed7ec66ac487a58ca87fd84e2053}{}\index{Message\+Model@{Message\+Model}!Column\+Index@{Column\+Index}}
+\index{Column\+Index@{Column\+Index}!Message\+Model@{Message\+Model}}
+\subsubsection[{Column\+Index}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Message\+Model\+::\+Column\+Index}}\label{class_message_model_a06abed7ec66ac487a58ca87fd84e2053}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{Type@{Type}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!Type@{Type}}\item[{\em 
+\hypertarget{class_message_model_a06abed7ec66ac487a58ca87fd84e2053a35b041fc060add8ce4952b59797b93b9}{}Type\label{class_message_model_a06abed7ec66ac487a58ca87fd84e2053a35b041fc060add8ce4952b59797b93b9}
+}]Sent/\+Received \index{Sent\+Date\+Time@{Sent\+Date\+Time}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!Sent\+Date\+Time@{Sent\+Date\+Time}}\item[{\em 
+\hypertarget{class_message_model_a06abed7ec66ac487a58ca87fd84e2053a9d846a413ba2eff3ae06b87abea5584d}{}Sent\+Date\+Time\label{class_message_model_a06abed7ec66ac487a58ca87fd84e2053a9d846a413ba2eff3ae06b87abea5584d}
+}]Time Sent \index{Received\+Date\+Time@{Received\+Date\+Time}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!Received\+Date\+Time@{Received\+Date\+Time}}\item[{\em 
+\hypertarget{class_message_model_a06abed7ec66ac487a58ca87fd84e2053a1e67305ebd1a4457769b04e39d1f4f07}{}Received\+Date\+Time\label{class_message_model_a06abed7ec66ac487a58ca87fd84e2053a1e67305ebd1a4457769b04e39d1f4f07}
+}]Time Received \index{Label@{Label}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!Label@{Label}}\item[{\em 
+\hypertarget{class_message_model_a06abed7ec66ac487a58ca87fd84e2053a289fb42f068383bcffc0dc4e1cd82cc7}{}Label\label{class_message_model_a06abed7ec66ac487a58ca87fd84e2053a289fb42f068383bcffc0dc4e1cd82cc7}
+}]User specified label \index{To\+Address@{To\+Address}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!To\+Address@{To\+Address}}\item[{\em 
+\hypertarget{class_message_model_a06abed7ec66ac487a58ca87fd84e2053adff233d32a8b9156960e9d64e2eb1141}{}To\+Address\label{class_message_model_a06abed7ec66ac487a58ca87fd84e2053adff233d32a8b9156960e9d64e2eb1141}
+}]To Dark\+Silk address \index{From\+Address@{From\+Address}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!From\+Address@{From\+Address}}\item[{\em 
+\hypertarget{class_message_model_a06abed7ec66ac487a58ca87fd84e2053a64311bb700e834e162491cda3b31504c}{}From\+Address\label{class_message_model_a06abed7ec66ac487a58ca87fd84e2053a64311bb700e834e162491cda3b31504c}
+}]From Dark\+Silk address \index{Message@{Message}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!Message@{Message}}\item[{\em 
+\hypertarget{class_message_model_a06abed7ec66ac487a58ca87fd84e2053a0a005184da622ffd683210fe9c477b14}{}Message\label{class_message_model_a06abed7ec66ac487a58ca87fd84e2053a0a005184da622ffd683210fe9c477b14}
+}]Plaintext \index{Type\+Int@{Type\+Int}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!Type\+Int@{Type\+Int}}\item[{\em 
+\hypertarget{class_message_model_a06abed7ec66ac487a58ca87fd84e2053a8b10f5cfd2c331fce7bb26debbdc8d47}{}Type\+Int\label{class_message_model_a06abed7ec66ac487a58ca87fd84e2053a8b10f5cfd2c331fce7bb26debbdc8d47}
+}]Plaintext \index{Key@{Key}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!Key@{Key}}\item[{\em 
+\hypertarget{class_message_model_a06abed7ec66ac487a58ca87fd84e2053a7109be637fef36b090f57b6285cb5f04}{}Key\label{class_message_model_a06abed7ec66ac487a58ca87fd84e2053a7109be637fef36b090f57b6285cb5f04}
+}]ch\+Key \index{H\+T\+M\+L@{H\+T\+M\+L}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!H\+T\+M\+L@{H\+T\+M\+L}}\item[{\em 
+\hypertarget{class_message_model_a06abed7ec66ac487a58ca87fd84e2053a21cdf1e17d71ffbf41e55d9fe2bf2d7e}{}H\+T\+M\+L\label{class_message_model_a06abed7ec66ac487a58ca87fd84e2053a21cdf1e17d71ffbf41e55d9fe2bf2d7e}
+}]H\+T\+M\+L Formatted Data \end{description}
+\end{Desc}
+
+
+Definition at line 91 of file messagemodel.\+h.
+
+\hypertarget{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3}{}\index{Message\+Model@{Message\+Model}!Role\+Index@{Role\+Index}}
+\index{Role\+Index@{Role\+Index}!Message\+Model@{Message\+Model}}
+\subsubsection[{Role\+Index}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Message\+Model\+::\+Role\+Index}}\label{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3}
+Roles to get specific information from a message row. These are independent of column. \begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{Type\+Role@{Type\+Role}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!Type\+Role@{Type\+Role}}\item[{\em 
+\hypertarget{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3ab7fbe93e354957746e56ebb06ff84e8e}{}Type\+Role\label{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3ab7fbe93e354957746e56ebb06ff84e8e}
+}]Type of message \index{Key\+Role@{Key\+Role}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!Key\+Role@{Key\+Role}}\item[{\em 
+\hypertarget{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3a8cf6b70dbc62d5db3500e1aac2ee9902}{}Key\+Role\label{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3a8cf6b70dbc62d5db3500e1aac2ee9902}
+}]Date and time this message was sent message key \index{Sent\+Date\+Role@{Sent\+Date\+Role}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!Sent\+Date\+Role@{Sent\+Date\+Role}}\item[{\em 
+\hypertarget{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3a18464878ccb612094c65126c30fd70f0}{}Sent\+Date\+Role\label{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3a18464878ccb612094c65126c30fd70f0}
+}]\index{Received\+Date\+Role@{Received\+Date\+Role}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!Received\+Date\+Role@{Received\+Date\+Role}}\item[{\em 
+\hypertarget{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3aad50f3d8ab2bcca417dba4a285d51d73}{}Received\+Date\+Role\label{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3aad50f3d8ab2bcca417dba4a285d51d73}
+}]Date and time this message was received \index{From\+Address\+Role@{From\+Address\+Role}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!From\+Address\+Role@{From\+Address\+Role}}\item[{\em 
+\hypertarget{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3adb0b890a4cab8e2ccab36900b7dca8af}{}From\+Address\+Role\label{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3adb0b890a4cab8e2ccab36900b7dca8af}
+}]From Address of message \index{To\+Address\+Role@{To\+Address\+Role}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!To\+Address\+Role@{To\+Address\+Role}}\item[{\em 
+\hypertarget{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3af1bf26da06172cb73d0f9b50662ff098}{}To\+Address\+Role\label{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3af1bf26da06172cb73d0f9b50662ff098}
+}]To Address of message \index{Filter\+Address\+Role@{Filter\+Address\+Role}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!Filter\+Address\+Role@{Filter\+Address\+Role}}\item[{\em 
+\hypertarget{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3a7a8fcd59311ac87d588b81fca1378374}{}Filter\+Address\+Role\label{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3a7a8fcd59311ac87d588b81fca1378374}
+}]Filter address related to message \index{Label\+Role@{Label\+Role}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!Label\+Role@{Label\+Role}}\item[{\em 
+\hypertarget{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3aca94175abc1ed61e6911b891e3eac28d}{}Label\+Role\label{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3aca94175abc1ed61e6911b891e3eac28d}
+}]Label of address related to message \index{Message\+Role@{Message\+Role}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!Message\+Role@{Message\+Role}}\item[{\em 
+\hypertarget{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3a3745144b2cbfba76015d1ef2b98565e3}{}Message\+Role\label{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3a3745144b2cbfba76015d1ef2b98565e3}
+}]Full Message \index{Short\+Message\+Role@{Short\+Message\+Role}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!Short\+Message\+Role@{Short\+Message\+Role}}\item[{\em 
+\hypertarget{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3aaa9e495035e17c614e655409b4c70aaa}{}Short\+Message\+Role\label{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3aaa9e495035e17c614e655409b4c70aaa}
+}]Short Message \index{H\+T\+M\+L\+Role@{H\+T\+M\+L\+Role}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!H\+T\+M\+L\+Role@{H\+T\+M\+L\+Role}}\item[{\em 
+\hypertarget{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3a9fe1770d03a7c9ccbc25d883f1c6cdd6}{}H\+T\+M\+L\+Role\label{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3a9fe1770d03a7c9ccbc25d883f1c6cdd6}
+}]H\+T\+M\+L Formatted \index{Ambiguous@{Ambiguous}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!Ambiguous@{Ambiguous}}\item[{\em 
+\hypertarget{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3a254150a5edd3791c0e9c2b2dd819f209}{}Ambiguous\label{class_message_model_a0d9dd8cb118971ea3ed37cd9cf84b2e3a254150a5edd3791c0e9c2b2dd819f209}
+}]Ambiguous bool \end{description}
+\end{Desc}
+
+
+Definition at line 107 of file messagemodel.\+h.
+
+\hypertarget{class_message_model_adac070d47edccd1bc8358cdc976f8509}{}\index{Message\+Model@{Message\+Model}!Status\+Code@{Status\+Code}}
+\index{Status\+Code@{Status\+Code}!Message\+Model@{Message\+Model}}
+\subsubsection[{Status\+Code}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Message\+Model\+::\+Status\+Code}}\label{class_message_model_adac070d47edccd1bc8358cdc976f8509}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{O\+K@{O\+K}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!O\+K@{O\+K}}\item[{\em 
+\hypertarget{class_message_model_adac070d47edccd1bc8358cdc976f8509a0ac8092e6dc45d02798074612826cc43}{}O\+K\label{class_message_model_adac070d47edccd1bc8358cdc976f8509a0ac8092e6dc45d02798074612826cc43}
+}]\index{Invalid\+Address@{Invalid\+Address}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!Invalid\+Address@{Invalid\+Address}}\item[{\em 
+\hypertarget{class_message_model_adac070d47edccd1bc8358cdc976f8509ae4b0314d8f665b726423ee7fe0c0713d}{}Invalid\+Address\label{class_message_model_adac070d47edccd1bc8358cdc976f8509ae4b0314d8f665b726423ee7fe0c0713d}
+}]\index{Invalid\+Message@{Invalid\+Message}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!Invalid\+Message@{Invalid\+Message}}\item[{\em 
+\hypertarget{class_message_model_adac070d47edccd1bc8358cdc976f8509a8132a7431b90de1dbf0cb50165bbf7d0}{}Invalid\+Message\label{class_message_model_adac070d47edccd1bc8358cdc976f8509a8132a7431b90de1dbf0cb50165bbf7d0}
+}]\index{Duplicate\+Address@{Duplicate\+Address}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!Duplicate\+Address@{Duplicate\+Address}}\item[{\em 
+\hypertarget{class_message_model_adac070d47edccd1bc8358cdc976f8509a883e447082b3ece01f526be9c46fee8e}{}Duplicate\+Address\label{class_message_model_adac070d47edccd1bc8358cdc976f8509a883e447082b3ece01f526be9c46fee8e}
+}]\index{Message\+Creation\+Failed@{Message\+Creation\+Failed}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!Message\+Creation\+Failed@{Message\+Creation\+Failed}}\item[{\em 
+\hypertarget{class_message_model_adac070d47edccd1bc8358cdc976f8509aec250445cabd6a1cffc7e55661b85299}{}Message\+Creation\+Failed\label{class_message_model_adac070d47edccd1bc8358cdc976f8509aec250445cabd6a1cffc7e55661b85299}
+}]\index{Message\+Commit\+Failed@{Message\+Commit\+Failed}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!Message\+Commit\+Failed@{Message\+Commit\+Failed}}\item[{\em 
+\hypertarget{class_message_model_adac070d47edccd1bc8358cdc976f8509accf1cad016b19465ce9ddd55a4bcd406}{}Message\+Commit\+Failed\label{class_message_model_adac070d47edccd1bc8358cdc976f8509accf1cad016b19465ce9ddd55a4bcd406}
+}]\index{Aborted@{Aborted}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!Aborted@{Aborted}}\item[{\em 
+\hypertarget{class_message_model_adac070d47edccd1bc8358cdc976f8509a89565743283160a08f41e42406b3dbbd}{}Aborted\label{class_message_model_adac070d47edccd1bc8358cdc976f8509a89565743283160a08f41e42406b3dbbd}
+}]\index{Failed\+Error\+Shown@{Failed\+Error\+Shown}!Message\+Model@{Message\+Model}}\index{Message\+Model@{Message\+Model}!Failed\+Error\+Shown@{Failed\+Error\+Shown}}\item[{\em 
+\hypertarget{class_message_model_adac070d47edccd1bc8358cdc976f8509ae86208c061871c17117ffc330478fa80}{}Failed\+Error\+Shown\label{class_message_model_adac070d47edccd1bc8358cdc976f8509ae86208c061871c17117ffc330478fa80}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 79 of file messagemodel.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_message_model_abb708f049aab665144d273ae56baf2ec}{}\index{Message\+Model@{Message\+Model}!Message\+Model@{Message\+Model}}
+\index{Message\+Model@{Message\+Model}!Message\+Model@{Message\+Model}}
+\subsubsection[{Message\+Model}]{\setlength{\rightskip}{0pt plus 5cm}Message\+Model\+::\+Message\+Model (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Wallet} $\ast$}]{wallet, }
+\item[{{\bf Wallet\+Model} $\ast$}]{wallet\+Model, }
+\item[{Q\+Object $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\label{class_message_model_abb708f049aab665144d273ae56baf2ec}
+
+
+Definition at line 307 of file messagemodel.\+cpp.
+
+\hypertarget{class_message_model_a70a4aef17be44ef4a07ad17f5f630a30}{}\index{Message\+Model@{Message\+Model}!````~Message\+Model@{$\sim$\+Message\+Model}}
+\index{````~Message\+Model@{$\sim$\+Message\+Model}!Message\+Model@{Message\+Model}}
+\subsubsection[{$\sim$\+Message\+Model}]{\setlength{\rightskip}{0pt plus 5cm}Message\+Model\+::$\sim$\+Message\+Model (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_message_model_a70a4aef17be44ef4a07ad17f5f630a30}
+
+
+Definition at line 322 of file messagemodel.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_message_model_a9c9f80216f2f14f0647e42f9cd9e7d0d}{}\index{Message\+Model@{Message\+Model}!column\+Count@{column\+Count}}
+\index{column\+Count@{column\+Count}!Message\+Model@{Message\+Model}}
+\subsubsection[{column\+Count}]{\setlength{\rightskip}{0pt plus 5cm}int Message\+Model\+::column\+Count (
+\begin{DoxyParamCaption}
+\item[{const Q\+Model\+Index \&}]{parent}
+\end{DoxyParamCaption}
+) const}\label{class_message_model_a9c9f80216f2f14f0647e42f9cd9e7d0d}
+
+
+Definition at line 433 of file messagemodel.\+cpp.
+
+\hypertarget{class_message_model_af124db796fce9dab2c5d92625b9affb4}{}\index{Message\+Model@{Message\+Model}!data@{data}}
+\index{data@{data}!Message\+Model@{Message\+Model}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Variant Message\+Model\+::data (
+\begin{DoxyParamCaption}
+\item[{const Q\+Model\+Index \&}]{index, }
+\item[{int}]{role}
+\end{DoxyParamCaption}
+) const}\label{class_message_model_af124db796fce9dab2c5d92625b9affb4}
+
+
+Definition at line 439 of file messagemodel.\+cpp.
+
+\hypertarget{class_message_model_a506804d291f1cae01b8fbc22c0a12693}{}\index{Message\+Model@{Message\+Model}!error@{error}}
+\index{error@{error}!Message\+Model@{Message\+Model}}
+\subsubsection[{error}]{\setlength{\rightskip}{0pt plus 5cm}void Message\+Model\+::error (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{title, }
+\item[{const Q\+String \&}]{message, }
+\item[{bool}]{modal}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\label{class_message_model_a506804d291f1cae01b8fbc22c0a12693}
+\hypertarget{class_message_model_afe81099417dbc6283025cce4f6a8748a}{}\index{Message\+Model@{Message\+Model}!flags@{flags}}
+\index{flags@{flags}!Message\+Model@{Message\+Model}}
+\subsubsection[{flags}]{\setlength{\rightskip}{0pt plus 5cm}Qt\+::\+Item\+Flags Message\+Model\+::flags (
+\begin{DoxyParamCaption}
+\item[{const Q\+Model\+Index \&}]{index}
+\end{DoxyParamCaption}
+) const}\label{class_message_model_afe81099417dbc6283025cce4f6a8748a}
+
+
+Definition at line 512 of file messagemodel.\+cpp.
+
+\hypertarget{class_message_model_a272e7ceeba4664046472e6f7c4d49d23}{}\index{Message\+Model@{Message\+Model}!get\+Address\+Or\+Pubkey@{get\+Address\+Or\+Pubkey}}
+\index{get\+Address\+Or\+Pubkey@{get\+Address\+Or\+Pubkey}!Message\+Model@{Message\+Model}}
+\subsubsection[{get\+Address\+Or\+Pubkey}]{\setlength{\rightskip}{0pt plus 5cm}bool Message\+Model\+::get\+Address\+Or\+Pubkey (
+\begin{DoxyParamCaption}
+\item[{Q\+String \&}]{Address, }
+\item[{Q\+String \&}]{Pubkey}
+\end{DoxyParamCaption}
+) const}\label{class_message_model_a272e7ceeba4664046472e6f7c4d49d23}
+
+
+Definition at line 331 of file messagemodel.\+cpp.
+
+\hypertarget{class_message_model_ae7eb986b2f9e4074871406e3fb0cfb91}{}\index{Message\+Model@{Message\+Model}!get\+Options\+Model@{get\+Options\+Model}}
+\index{get\+Options\+Model@{get\+Options\+Model}!Message\+Model@{Message\+Model}}
+\subsubsection[{get\+Options\+Model}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Options\+Model} $\ast$ Message\+Model\+::get\+Options\+Model (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_message_model_ae7eb986b2f9e4074871406e3fb0cfb91}
+
+
+Definition at line 359 of file messagemodel.\+cpp.
+
+\hypertarget{class_message_model_ac397797af720d2da96739ba7deecd938}{}\index{Message\+Model@{Message\+Model}!get\+Wallet\+Model@{get\+Wallet\+Model}}
+\index{get\+Wallet\+Model@{get\+Wallet\+Model}!Message\+Model@{Message\+Model}}
+\subsubsection[{get\+Wallet\+Model}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Wallet\+Model} $\ast$ Message\+Model\+::get\+Wallet\+Model (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_message_model_ac397797af720d2da96739ba7deecd938}
+
+
+Definition at line 354 of file messagemodel.\+cpp.
+
+\hypertarget{class_message_model_adaffb10641c1117c5034621f4aa7b2aa}{}\index{Message\+Model@{Message\+Model}!header\+Data@{header\+Data}}
+\index{header\+Data@{header\+Data}!Message\+Model@{Message\+Model}}
+\subsubsection[{header\+Data}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Variant Message\+Model\+::header\+Data (
+\begin{DoxyParamCaption}
+\item[{int}]{section, }
+\item[{Qt\+::\+Orientation}]{orientation, }
+\item[{int}]{role}
+\end{DoxyParamCaption}
+) const}\label{class_message_model_adaffb10641c1117c5034621f4aa7b2aa}
+
+
+Definition at line 507 of file messagemodel.\+cpp.
+
+\hypertarget{class_message_model_aad9e6963e446cf236c0a71ccd0e9f21c}{}\index{Message\+Model@{Message\+Model}!index@{index}}
+\index{index@{index}!Message\+Model@{Message\+Model}}
+\subsubsection[{index}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Model\+Index Message\+Model\+::index (
+\begin{DoxyParamCaption}
+\item[{int}]{row, }
+\item[{int}]{column, }
+\item[{const Q\+Model\+Index \&}]{parent}
+\end{DoxyParamCaption}
+) const}\label{class_message_model_aad9e6963e446cf236c0a71ccd0e9f21c}
+
+
+Definition at line 520 of file messagemodel.\+cpp.
+
+\hypertarget{class_message_model_aae76e8457be0de6ca10fe602d2be68f4}{}\index{Message\+Model@{Message\+Model}!lookup\+Message@{lookup\+Message}}
+\index{lookup\+Message@{lookup\+Message}!Message\+Model@{Message\+Model}}
+\subsubsection[{lookup\+Message}]{\setlength{\rightskip}{0pt plus 5cm}int Message\+Model\+::lookup\+Message (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{message}
+\end{DoxyParamCaption}
+) const}\label{class_message_model_aae76e8457be0de6ca10fe602d2be68f4}
+\hypertarget{class_message_model_ad6a392da2be132233531d54e14383dfb}{}\index{Message\+Model@{Message\+Model}!new\+Message@{new\+Message}}
+\index{new\+Message@{new\+Message}!Message\+Model@{Message\+Model}}
+\subsubsection[{new\+Message}]{\setlength{\rightskip}{0pt plus 5cm}void Message\+Model\+::new\+Message (
+\begin{DoxyParamCaption}
+\item[{const {\bf Sec\+Msg\+Stored} \&}]{smsg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_message_model_ad6a392da2be132233531d54e14383dfb}
+
+
+Definition at line 558 of file messagemodel.\+cpp.
+
+\hypertarget{class_message_model_a7a1396e1047438ce30c8a3a1373d0dfd}{}\index{Message\+Model@{Message\+Model}!new\+Outbox\+Message@{new\+Outbox\+Message}}
+\index{new\+Outbox\+Message@{new\+Outbox\+Message}!Message\+Model@{Message\+Model}}
+\subsubsection[{new\+Outbox\+Message}]{\setlength{\rightskip}{0pt plus 5cm}void Message\+Model\+::new\+Outbox\+Message (
+\begin{DoxyParamCaption}
+\item[{const {\bf Sec\+Msg\+Stored} \&}]{smsg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_message_model_a7a1396e1047438ce30c8a3a1373d0dfd}
+
+
+Definition at line 564 of file messagemodel.\+cpp.
+
+\hypertarget{class_message_model_a0bf2ae180e0d137be51b1e1567e66eee}{}\index{Message\+Model@{Message\+Model}!remove\+Rows@{remove\+Rows}}
+\index{remove\+Rows@{remove\+Rows}!Message\+Model@{Message\+Model}}
+\subsubsection[{remove\+Rows}]{\setlength{\rightskip}{0pt plus 5cm}bool Message\+Model\+::remove\+Rows (
+\begin{DoxyParamCaption}
+\item[{int}]{row, }
+\item[{int}]{count, }
+\item[{const Q\+Model\+Index \&}]{parent = {\ttfamily QModelIndex()}}
+\end{DoxyParamCaption}
+)}\label{class_message_model_a0bf2ae180e0d137be51b1e1567e66eee}
+
+
+Definition at line 527 of file messagemodel.\+cpp.
+
+\hypertarget{class_message_model_a0a4f4df3a21e41803449692592f8d343}{}\index{Message\+Model@{Message\+Model}!reset\+Filter@{reset\+Filter}}
+\index{reset\+Filter@{reset\+Filter}!Message\+Model@{Message\+Model}}
+\subsubsection[{reset\+Filter}]{\setlength{\rightskip}{0pt plus 5cm}void Message\+Model\+::reset\+Filter (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_message_model_a0a4f4df3a21e41803449692592f8d343}
+
+
+Definition at line 553 of file messagemodel.\+cpp.
+
+\hypertarget{class_message_model_a3a48dbe500910f5c9afca70e7e968ad2}{}\index{Message\+Model@{Message\+Model}!row\+Count@{row\+Count}}
+\index{row\+Count@{row\+Count}!Message\+Model@{Message\+Model}}
+\subsubsection[{row\+Count}]{\setlength{\rightskip}{0pt plus 5cm}int Message\+Model\+::row\+Count (
+\begin{DoxyParamCaption}
+\item[{const Q\+Model\+Index \&}]{parent}
+\end{DoxyParamCaption}
+) const}\label{class_message_model_a3a48dbe500910f5c9afca70e7e968ad2}
+
+
+Definition at line 427 of file messagemodel.\+cpp.
+
+\hypertarget{class_message_model_abeda81bd7dd800217f6f9c196559810b}{}\index{Message\+Model@{Message\+Model}!send\+Messages@{send\+Messages}}
+\index{send\+Messages@{send\+Messages}!Message\+Model@{Message\+Model}}
+\subsubsection[{send\+Messages}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Message\+Model\+::\+Status\+Code} Message\+Model\+::send\+Messages (
+\begin{DoxyParamCaption}
+\item[{const Q\+List$<$ {\bf Send\+Messages\+Recipient} $>$ \&}]{recipients}
+\end{DoxyParamCaption}
+)}\label{class_message_model_abeda81bd7dd800217f6f9c196559810b}
+
+
+Definition at line 422 of file messagemodel.\+cpp.
+
+\hypertarget{class_message_model_a76c42a7c0940348d6c2bdd2111cc6424}{}\index{Message\+Model@{Message\+Model}!send\+Messages@{send\+Messages}}
+\index{send\+Messages@{send\+Messages}!Message\+Model@{Message\+Model}}
+\subsubsection[{send\+Messages}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Message\+Model\+::\+Status\+Code} Message\+Model\+::send\+Messages (
+\begin{DoxyParamCaption}
+\item[{const Q\+List$<$ {\bf Send\+Messages\+Recipient} $>$ \&}]{recipients, }
+\item[{const Q\+String \&}]{address\+From}
+\end{DoxyParamCaption}
+)}\label{class_message_model_a76c42a7c0940348d6c2bdd2111cc6424}
+
+
+Definition at line 364 of file messagemodel.\+cpp.
+
+\hypertarget{class_message_model_a4e1d19da83fffaea5883ba3771d62949}{}\index{Message\+Model@{Message\+Model}!set\+Encryption\+Status@{set\+Encryption\+Status}}
+\index{set\+Encryption\+Status@{set\+Encryption\+Status}!Message\+Model@{Message\+Model}}
+\subsubsection[{set\+Encryption\+Status}]{\setlength{\rightskip}{0pt plus 5cm}void Message\+Model\+::set\+Encryption\+Status (
+\begin{DoxyParamCaption}
+\item[{int}]{status}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_message_model_a4e1d19da83fffaea5883ba3771d62949}
+
+
+Definition at line 575 of file messagemodel.\+cpp.
+
+\hypertarget{class_message_model_ad4f38a637dda717acc6b3bcec2b8f23f}{}\index{Message\+Model@{Message\+Model}!wallet\+Unlocked@{wallet\+Unlocked}}
+\index{wallet\+Unlocked@{wallet\+Unlocked}!Message\+Model@{Message\+Model}}
+\subsubsection[{wallet\+Unlocked}]{\setlength{\rightskip}{0pt plus 5cm}void Message\+Model\+::wallet\+Unlocked (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_message_model_ad4f38a637dda717acc6b3bcec2b8f23f}
+
+
+Definition at line 570 of file messagemodel.\+cpp.
+
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{class_message_model_a5c879241490f0146eae8b49e54d610ac}{}\index{Message\+Model@{Message\+Model}!Message\+Table\+Priv@{Message\+Table\+Priv}}
+\index{Message\+Table\+Priv@{Message\+Table\+Priv}!Message\+Model@{Message\+Model}}
+\subsubsection[{Message\+Table\+Priv}]{\setlength{\rightskip}{0pt plus 5cm}friend class {\bf Message\+Table\+Priv}\hspace{0.3cm}{\ttfamily [friend]}}\label{class_message_model_a5c879241490f0146eae8b49e54d610ac}
+
+
+Definition at line 188 of file messagemodel.\+h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_message_model_a8248581c9ad7c1f00c4918f4b8b82404}{}\index{Message\+Model@{Message\+Model}!proxy\+Model@{proxy\+Model}}
+\index{proxy\+Model@{proxy\+Model}!Message\+Model@{Message\+Model}}
+\subsubsection[{proxy\+Model}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Sort\+Filter\+Proxy\+Model$\ast$ Message\+Model\+::proxy\+Model}\label{class_message_model_a8248581c9ad7c1f00c4918f4b8b82404}
+
+
+Definition at line 166 of file messagemodel.\+h.
+
+\hypertarget{class_message_model_a8539de55f3325f8237617fb50d7f632c}{}\index{Message\+Model@{Message\+Model}!Received@{Received}}
+\index{Received@{Received}!Message\+Model@{Message\+Model}}
+\subsubsection[{Received}]{\setlength{\rightskip}{0pt plus 5cm}const Q\+String Message\+Model\+::\+Received = \char`\"{}Received\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}\label{class_message_model_a8539de55f3325f8237617fb50d7f632c}
+Specifies sent message 
+
+Definition at line 135 of file messagemodel.\+h.
+
+\hypertarget{class_message_model_ae5014d3052e4cec590f673d22edb9cd0}{}\index{Message\+Model@{Message\+Model}!Sent@{Sent}}
+\index{Sent@{Sent}!Message\+Model@{Message\+Model}}
+\subsubsection[{Sent}]{\setlength{\rightskip}{0pt plus 5cm}const Q\+String Message\+Model\+::\+Sent = \char`\"{}Sent\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}\label{class_message_model_ae5014d3052e4cec590f673d22edb9cd0}
+Specifies sent message 
+
+Definition at line 134 of file messagemodel.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/qt/\hyperlink{messagemodel_8h}{messagemodel.\+h}\item 
+/home/dev/ds-\/160209/src/qt/\hyperlink{messagemodel_8cpp}{messagemodel.\+cpp}\end{DoxyCompactItemize}

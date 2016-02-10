@@ -1,0 +1,560 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_transaction_view" kind="class" language="C++" prot="public">
+    <compoundname>TransactionView</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QWidget</basecompoundref>
+    <includes refid="transactionview_8h" local="no">transactionview.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_transaction_view_1a73d1bbedc72fa131591aadb3aba150f8" prot="public" static="no">
+        <name>DateEnum</name>
+        <enumvalue id="class_transaction_view_1a73d1bbedc72fa131591aadb3aba150f8a4c8bf710ad7b3be71d6da978c62e49fe" prot="public">
+          <name>All</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_transaction_view_1a73d1bbedc72fa131591aadb3aba150f8af944f2a9373333fc348d517aad15fd93" prot="public">
+          <name>Today</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_transaction_view_1a73d1bbedc72fa131591aadb3aba150f8ad690fc9e22dbb55e86f2198553d26bec" prot="public">
+          <name>ThisWeek</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_transaction_view_1a73d1bbedc72fa131591aadb3aba150f8a34f3d05ba9262c629e7d6a4e809ab927" prot="public">
+          <name>ThisMonth</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_transaction_view_1a73d1bbedc72fa131591aadb3aba150f8ab119e2fd1a4a132c780c82cfe982f218" prot="public">
+          <name>LastMonth</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_transaction_view_1a73d1bbedc72fa131591aadb3aba150f8a783e0105c0ec8447b33a84ce44951eb5" prot="public">
+          <name>ThisYear</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_transaction_view_1a73d1bbedc72fa131591aadb3aba150f8a5282c94849c51ee19eaa9cf929428b10" prot="public">
+          <name>Range</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="33" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.h" bodystart="32" bodyend="41"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_transaction_view_1a06a93328d9ce20a850a3830d246b195c" prot="private" static="no" mutable="no">
+        <type><ref refid="class_wallet_model" kindref="compound">WalletModel</ref> *</type>
+        <definition>WalletModel* TransactionView::model</definition>
+        <argsstring></argsstring>
+        <name>model</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="44" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.h" bodystart="44" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_transaction_view_1a941a92702d4adc4f388007d304532b32" prot="private" static="no" mutable="no">
+        <type><ref refid="class_transaction_filter_proxy" kindref="compound">TransactionFilterProxy</ref> *</type>
+        <definition>TransactionFilterProxy* TransactionView::transactionProxyModel</definition>
+        <argsstring></argsstring>
+        <name>transactionProxyModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="45" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.h" bodystart="45" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_transaction_view_1aa3e626f7153376a86d60e5e4d3562b97" prot="private" static="no" mutable="no">
+        <type>QTableView *</type>
+        <definition>QTableView* TransactionView::transactionView</definition>
+        <argsstring></argsstring>
+        <name>transactionView</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="46" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_transaction_view_1acc54e9aee244fb3fa7fd94e9fe39076b" prot="private" static="no" mutable="no">
+        <type>QComboBox *</type>
+        <definition>QComboBox* TransactionView::dateWidget</definition>
+        <argsstring></argsstring>
+        <name>dateWidget</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="48" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_transaction_view_1a1eb4d5258aa59a92a8513109b7e8c99c" prot="private" static="no" mutable="no">
+        <type>QComboBox *</type>
+        <definition>QComboBox* TransactionView::typeWidget</definition>
+        <argsstring></argsstring>
+        <name>typeWidget</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="49" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_transaction_view_1a3d380b8ea48761f027d6efe61b5104c1" prot="private" static="no" mutable="no">
+        <type>QLineEdit *</type>
+        <definition>QLineEdit* TransactionView::addressWidget</definition>
+        <argsstring></argsstring>
+        <name>addressWidget</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="50" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_transaction_view_1af389b21503e220bb8aa6a2b5b3767c01" prot="private" static="no" mutable="no">
+        <type>QLineEdit *</type>
+        <definition>QLineEdit* TransactionView::amountWidget</definition>
+        <argsstring></argsstring>
+        <name>amountWidget</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="51" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_transaction_view_1a21740dc2428d8fd14296e93b3c659b67" prot="private" static="no" mutable="no">
+        <type>QMenu *</type>
+        <definition>QMenu* TransactionView::contextMenu</definition>
+        <argsstring></argsstring>
+        <name>contextMenu</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="53" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_transaction_view_1a8130e1d90d098a325d705dc1339be507" prot="private" static="no" mutable="no">
+        <type>QFrame *</type>
+        <definition>QFrame* TransactionView::dateRangeWidget</definition>
+        <argsstring></argsstring>
+        <name>dateRangeWidget</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="55" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_transaction_view_1a2bdec02590acb5fc5d29141e0ae3fbeb" prot="private" static="no" mutable="no">
+        <type>QDateTimeEdit *</type>
+        <definition>QDateTimeEdit* TransactionView::dateFrom</definition>
+        <argsstring></argsstring>
+        <name>dateFrom</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="56" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_transaction_view_1a8e997a38970509e6d9a99890d85a645c" prot="private" static="no" mutable="no">
+        <type>QDateTimeEdit *</type>
+        <definition>QDateTimeEdit* TransactionView::dateTo</definition>
+        <argsstring></argsstring>
+        <name>dateTo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="57" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_transaction_view_1a0c5e8b90206b4e8b8bf68dd7e319798f" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TransactionView::TransactionView</definition>
+        <argsstring>(QWidget *parent=0)</argsstring>
+        <name>TransactionView</name>
+        <param>
+          <type>QWidget *</type>
+          <declname>parent</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="27" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.cpp" bodystart="30" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="function" id="class_transaction_view_1a4920c2cd57d72eb50248948fa160c83c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TransactionView::setModel</definition>
+        <argsstring>(WalletModel *model)</argsstring>
+        <name>setModel</name>
+        <param>
+          <type><ref refid="class_wallet_model" kindref="compound">WalletModel</ref> *</type>
+          <declname>model</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="29" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.cpp" bodystart="158" bodyend="187"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_transaction_view_1a4455d37773d81280d068f0b7751150f7" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QWidget *</type>
+        <definition>QWidget * TransactionView::createDateRangeWidget</definition>
+        <argsstring>()</argsstring>
+        <name>createDateRangeWidget</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="59" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.cpp" bodystart="390" bodyend="424"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-slot">
+      <memberdef kind="slot" id="class_transaction_view_1abe5793b86a4ea6f80a6d822ee878e646" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TransactionView::contextualMenu</definition>
+        <argsstring>(const QPoint &amp;)</argsstring>
+        <name>contextualMenu</name>
+        <param>
+          <type>const QPoint &amp;</type>
+          <defname>point</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="62" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.cpp" bodystart="303" bodyend="310"/>
+      </memberdef>
+      <memberdef kind="slot" id="class_transaction_view_1ab9000969ec2cc3617b9c06caf33e747a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TransactionView::dateRangeChanged</definition>
+        <argsstring>()</argsstring>
+        <name>dateRangeChanged</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="63" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.cpp" bodystart="426" bodyend="433"/>
+      </memberdef>
+      <memberdef kind="slot" id="class_transaction_view_1ae62e0e0941a219c927d83190c3b5def6" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TransactionView::showDetails</definition>
+        <argsstring>()</argsstring>
+        <name>showDetails</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="64" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.cpp" bodystart="378" bodyend="388"/>
+      </memberdef>
+      <memberdef kind="slot" id="class_transaction_view_1a768ffc4deca27f0cfffb39003bf46f75" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TransactionView::copyAddress</definition>
+        <argsstring>()</argsstring>
+        <name>copyAddress</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="65" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.cpp" bodystart="312" bodyend="315"/>
+      </memberdef>
+      <memberdef kind="slot" id="class_transaction_view_1a18817639384e53f94fc1ad956d7263d9" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TransactionView::editLabel</definition>
+        <argsstring>()</argsstring>
+        <name>editLabel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="66" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.cpp" bodystart="332" bodyend="376"/>
+      </memberdef>
+      <memberdef kind="slot" id="class_transaction_view_1a78d63230a1b7810108f46bb2366b2038" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TransactionView::copyLabel</definition>
+        <argsstring>()</argsstring>
+        <name>copyLabel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="67" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.cpp" bodystart="317" bodyend="320"/>
+      </memberdef>
+      <memberdef kind="slot" id="class_transaction_view_1a83e5ce148e328b673c1b6af09a1d94ea" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TransactionView::copyAmount</definition>
+        <argsstring>()</argsstring>
+        <name>copyAmount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="68" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.cpp" bodystart="322" bodyend="325"/>
+      </memberdef>
+      <memberdef kind="slot" id="class_transaction_view_1a465c51f03cf28f66492766b4a5da8896" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TransactionView::copyTxID</definition>
+        <argsstring>()</argsstring>
+        <name>copyTxID</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="69" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.cpp" bodystart="327" bodyend="330"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="signal">
+      <memberdef kind="signal" id="class_transaction_view_1ad7f18fdb4db9a4a307eeba8bf1fec4e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TransactionView::doubleClicked</definition>
+        <argsstring>(const QModelIndex &amp;)</argsstring>
+        <name>doubleClicked</name>
+        <param>
+          <type>const QModelIndex &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="72" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-slot">
+      <memberdef kind="slot" id="class_transaction_view_1abd49a0777b14f7bf5a72a4d5901d033d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TransactionView::chooseDate</definition>
+        <argsstring>(int idx)</argsstring>
+        <name>chooseDate</name>
+        <param>
+          <type>int</type>
+          <declname>idx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="75" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.cpp" bodystart="189" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="slot" id="class_transaction_view_1a590f0edc4ab4d59f88d7fc494e852f80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TransactionView::chooseType</definition>
+        <argsstring>(int idx)</argsstring>
+        <name>chooseType</name>
+        <param>
+          <type>int</type>
+          <declname>idx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="76" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.cpp" bodystart="244" bodyend="250"/>
+      </memberdef>
+      <memberdef kind="slot" id="class_transaction_view_1ac2ed41556913e588c667490860717efa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TransactionView::changedPrefix</definition>
+        <argsstring>(const QString &amp;prefix)</argsstring>
+        <name>changedPrefix</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>prefix</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="77" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.cpp" bodystart="252" bodyend="257"/>
+      </memberdef>
+      <memberdef kind="slot" id="class_transaction_view_1a0075048c06bb54da5c5e5d2691198984" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TransactionView::changedAmount</definition>
+        <argsstring>(const QString &amp;amount)</argsstring>
+        <name>changedAmount</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>amount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="78" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.cpp" bodystart="259" bodyend="272"/>
+      </memberdef>
+      <memberdef kind="slot" id="class_transaction_view_1a5983022ff1e5395f87de3c5728eff8da" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TransactionView::exportClicked</definition>
+        <argsstring>()</argsstring>
+        <name>exportClicked</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="79" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.cpp" bodystart="274" bodyend="301"/>
+      </memberdef>
+      <memberdef kind="slot" id="class_transaction_view_1ab6d126806467ae9dc273cbe19a7477cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TransactionView::focusTransaction</definition>
+        <argsstring>(const QModelIndex &amp;)</argsstring>
+        <name>focusTransaction</name>
+        <param>
+          <type>const QModelIndex &amp;</type>
+          <defname>idx</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="80" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.cpp" bodystart="435" bodyend="443"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Widget showing the transaction list for a wallet, including a filter row. Using the filter row, the user can view or export a subset of the transactions. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="1886">
+        <label>QWidget</label>
+      </node>
+      <node id="1885">
+        <label>TransactionView</label>
+        <link refid="class_transaction_view"/>
+        <childnode refid="1886" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1888">
+        <label>QWidget</label>
+      </node>
+      <node id="1887">
+        <label>TransactionView</label>
+        <link refid="class_transaction_view"/>
+        <childnode refid="1888" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/dev/ds-160209/src/qt/transactionview.h" line="23" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionview.h" bodystart="22" bodyend="82"/>
+    <listofallmembers>
+      <member refid="class_transaction_view_1a3d380b8ea48761f027d6efe61b5104c1" prot="private" virt="non-virtual"><scope>TransactionView</scope><name>addressWidget</name></member>
+      <member refid="class_transaction_view_1a73d1bbedc72fa131591aadb3aba150f8a4c8bf710ad7b3be71d6da978c62e49fe" prot="public" virt="non-virtual"><scope>TransactionView</scope><name>All</name></member>
+      <member refid="class_transaction_view_1af389b21503e220bb8aa6a2b5b3767c01" prot="private" virt="non-virtual"><scope>TransactionView</scope><name>amountWidget</name></member>
+      <member refid="class_transaction_view_1a0075048c06bb54da5c5e5d2691198984" prot="public" virt="non-virtual"><scope>TransactionView</scope><name>changedAmount</name></member>
+      <member refid="class_transaction_view_1ac2ed41556913e588c667490860717efa" prot="public" virt="non-virtual"><scope>TransactionView</scope><name>changedPrefix</name></member>
+      <member refid="class_transaction_view_1abd49a0777b14f7bf5a72a4d5901d033d" prot="public" virt="non-virtual"><scope>TransactionView</scope><name>chooseDate</name></member>
+      <member refid="class_transaction_view_1a590f0edc4ab4d59f88d7fc494e852f80" prot="public" virt="non-virtual"><scope>TransactionView</scope><name>chooseType</name></member>
+      <member refid="class_transaction_view_1a21740dc2428d8fd14296e93b3c659b67" prot="private" virt="non-virtual"><scope>TransactionView</scope><name>contextMenu</name></member>
+      <member refid="class_transaction_view_1abe5793b86a4ea6f80a6d822ee878e646" prot="private" virt="non-virtual"><scope>TransactionView</scope><name>contextualMenu</name></member>
+      <member refid="class_transaction_view_1a768ffc4deca27f0cfffb39003bf46f75" prot="private" virt="non-virtual"><scope>TransactionView</scope><name>copyAddress</name></member>
+      <member refid="class_transaction_view_1a83e5ce148e328b673c1b6af09a1d94ea" prot="private" virt="non-virtual"><scope>TransactionView</scope><name>copyAmount</name></member>
+      <member refid="class_transaction_view_1a78d63230a1b7810108f46bb2366b2038" prot="private" virt="non-virtual"><scope>TransactionView</scope><name>copyLabel</name></member>
+      <member refid="class_transaction_view_1a465c51f03cf28f66492766b4a5da8896" prot="private" virt="non-virtual"><scope>TransactionView</scope><name>copyTxID</name></member>
+      <member refid="class_transaction_view_1a4455d37773d81280d068f0b7751150f7" prot="private" virt="non-virtual"><scope>TransactionView</scope><name>createDateRangeWidget</name></member>
+      <member refid="class_transaction_view_1a73d1bbedc72fa131591aadb3aba150f8" prot="public" virt="non-virtual"><scope>TransactionView</scope><name>DateEnum</name></member>
+      <member refid="class_transaction_view_1a2bdec02590acb5fc5d29141e0ae3fbeb" prot="private" virt="non-virtual"><scope>TransactionView</scope><name>dateFrom</name></member>
+      <member refid="class_transaction_view_1ab9000969ec2cc3617b9c06caf33e747a" prot="private" virt="non-virtual"><scope>TransactionView</scope><name>dateRangeChanged</name></member>
+      <member refid="class_transaction_view_1a8130e1d90d098a325d705dc1339be507" prot="private" virt="non-virtual"><scope>TransactionView</scope><name>dateRangeWidget</name></member>
+      <member refid="class_transaction_view_1a8e997a38970509e6d9a99890d85a645c" prot="private" virt="non-virtual"><scope>TransactionView</scope><name>dateTo</name></member>
+      <member refid="class_transaction_view_1acc54e9aee244fb3fa7fd94e9fe39076b" prot="private" virt="non-virtual"><scope>TransactionView</scope><name>dateWidget</name></member>
+      <member refid="class_transaction_view_1ad7f18fdb4db9a4a307eeba8bf1fec4e3" prot="public" virt="non-virtual"><scope>TransactionView</scope><name>doubleClicked</name></member>
+      <member refid="class_transaction_view_1a18817639384e53f94fc1ad956d7263d9" prot="private" virt="non-virtual"><scope>TransactionView</scope><name>editLabel</name></member>
+      <member refid="class_transaction_view_1a5983022ff1e5395f87de3c5728eff8da" prot="public" virt="non-virtual"><scope>TransactionView</scope><name>exportClicked</name></member>
+      <member refid="class_transaction_view_1ab6d126806467ae9dc273cbe19a7477cc" prot="public" virt="non-virtual"><scope>TransactionView</scope><name>focusTransaction</name></member>
+      <member refid="class_transaction_view_1a73d1bbedc72fa131591aadb3aba150f8ab119e2fd1a4a132c780c82cfe982f218" prot="public" virt="non-virtual"><scope>TransactionView</scope><name>LastMonth</name></member>
+      <member refid="class_transaction_view_1a06a93328d9ce20a850a3830d246b195c" prot="private" virt="non-virtual"><scope>TransactionView</scope><name>model</name></member>
+      <member refid="class_transaction_view_1a73d1bbedc72fa131591aadb3aba150f8a5282c94849c51ee19eaa9cf929428b10" prot="public" virt="non-virtual"><scope>TransactionView</scope><name>Range</name></member>
+      <member refid="class_transaction_view_1a4920c2cd57d72eb50248948fa160c83c" prot="public" virt="non-virtual"><scope>TransactionView</scope><name>setModel</name></member>
+      <member refid="class_transaction_view_1ae62e0e0941a219c927d83190c3b5def6" prot="private" virt="non-virtual"><scope>TransactionView</scope><name>showDetails</name></member>
+      <member refid="class_transaction_view_1a73d1bbedc72fa131591aadb3aba150f8a34f3d05ba9262c629e7d6a4e809ab927" prot="public" virt="non-virtual"><scope>TransactionView</scope><name>ThisMonth</name></member>
+      <member refid="class_transaction_view_1a73d1bbedc72fa131591aadb3aba150f8ad690fc9e22dbb55e86f2198553d26bec" prot="public" virt="non-virtual"><scope>TransactionView</scope><name>ThisWeek</name></member>
+      <member refid="class_transaction_view_1a73d1bbedc72fa131591aadb3aba150f8a783e0105c0ec8447b33a84ce44951eb5" prot="public" virt="non-virtual"><scope>TransactionView</scope><name>ThisYear</name></member>
+      <member refid="class_transaction_view_1a73d1bbedc72fa131591aadb3aba150f8af944f2a9373333fc348d517aad15fd93" prot="public" virt="non-virtual"><scope>TransactionView</scope><name>Today</name></member>
+      <member refid="class_transaction_view_1a941a92702d4adc4f388007d304532b32" prot="private" virt="non-virtual"><scope>TransactionView</scope><name>transactionProxyModel</name></member>
+      <member refid="class_transaction_view_1a0c5e8b90206b4e8b8bf68dd7e319798f" prot="public" virt="non-virtual"><scope>TransactionView</scope><name>TransactionView</name></member>
+      <member refid="class_transaction_view_1aa3e626f7153376a86d60e5e4d3562b97" prot="private" virt="non-virtual"><scope>TransactionView</scope><name>transactionView</name></member>
+      <member refid="class_transaction_view_1a1eb4d5258aa59a92a8513109b7e8c99c" prot="private" virt="non-virtual"><scope>TransactionView</scope><name>typeWidget</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

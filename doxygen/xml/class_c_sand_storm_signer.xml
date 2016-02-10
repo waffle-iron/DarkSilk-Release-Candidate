@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_sand_storm_signer" kind="class" language="C++" prot="public">
+    <compoundname>CSandStormSigner</compoundname>
+    <includes refid="sandstorm_8h" local="no">sandstorm.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_sand_storm_signer_1a21af58bfa950441f5d61e789a876ddda" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CSandStormSigner::IsVinAssociatedWithPubkey</definition>
+        <argsstring>(CTxIn &amp;vin, CPubKey &amp;pubkey)</argsstring>
+        <name>IsVinAssociatedWithPubkey</name>
+        <param>
+          <type><ref refid="class_c_tx_in" kindref="compound">CTxIn</ref> &amp;</type>
+          <declname>vin</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_pub_key" kindref="compound">CPubKey</ref> &amp;</type>
+          <declname>pubkey</declname>
+        </param>
+        <briefdescription>
+<para>Is the inputs associated with this public key? (and there is 1000 DASH - checking if valid stormnode) </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/sandstorm.h" line="241" column="1" bodyfile="/home/dev/ds-160209/src/sandstorm.cpp" bodystart="2027" bodyend="2042"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_sand_storm_signer_1ac9823b3f497f6e9f1e3d426f662af92b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CSandStormSigner::SetKey</definition>
+        <argsstring>(std::string strSecret, std::string &amp;errorMessage, CKey &amp;key, CPubKey &amp;pubkey)</argsstring>
+        <name>SetKey</name>
+        <param>
+          <type>std::string</type>
+          <declname>strSecret</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>errorMessage</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_key" kindref="compound">CKey</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_pub_key" kindref="compound">CPubKey</ref> &amp;</type>
+          <declname>pubkey</declname>
+        </param>
+        <briefdescription>
+<para>Set the private/public key values, returns true if successful. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/sandstorm.h" line="243" column="1" bodyfile="/home/dev/ds-160209/src/sandstorm.cpp" bodystart="2044" bodyend="2057"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_sand_storm_signer_1a5c9a3f21a823f17e2831247573931698" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CSandStormSigner::SignMessage</definition>
+        <argsstring>(std::string strMessage, std::string &amp;errorMessage, std::vector&lt; unsigned char &gt; &amp;vchSig, CKey key)</argsstring>
+        <name>SignMessage</name>
+        <param>
+          <type>std::string</type>
+          <declname>strMessage</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>errorMessage</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>vchSig</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_key" kindref="compound">CKey</ref></type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+<para>Sign the message, returns true if successful. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/sandstorm.h" line="245" column="1" bodyfile="/home/dev/ds-160209/src/sandstorm.cpp" bodystart="2059" bodyend="2071"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_sand_storm_signer_1a8d2fb7c16fcfb1be633101dd5436d3ae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CSandStormSigner::VerifyMessage</definition>
+        <argsstring>(CPubKey pubkey, std::vector&lt; unsigned char &gt; &amp;vchSig, std::string strMessage, std::string &amp;errorMessage)</argsstring>
+        <name>VerifyMessage</name>
+        <param>
+          <type><ref refid="class_c_pub_key" kindref="compound">CPubKey</ref></type>
+          <declname>pubkey</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>vchSig</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>strMessage</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>errorMessage</declname>
+        </param>
+        <briefdescription>
+<para>Verify the message, returns true if succcessful. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/sandstorm.h" line="247" column="1" bodyfile="/home/dev/ds-160209/src/sandstorm.cpp" bodystart="2073" bodyend="2089"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Helper object for signing and checking signatures </para>    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/sandstorm.h" line="238" column="1" bodyfile="/home/dev/ds-160209/src/sandstorm.h" bodystart="237" bodyend="248"/>
+    <listofallmembers>
+      <member refid="class_c_sand_storm_signer_1a21af58bfa950441f5d61e789a876ddda" prot="public" virt="non-virtual"><scope>CSandStormSigner</scope><name>IsVinAssociatedWithPubkey</name></member>
+      <member refid="class_c_sand_storm_signer_1ac9823b3f497f6e9f1e3d426f662af92b" prot="public" virt="non-virtual"><scope>CSandStormSigner</scope><name>SetKey</name></member>
+      <member refid="class_c_sand_storm_signer_1a5c9a3f21a823f17e2831247573931698" prot="public" virt="non-virtual"><scope>CSandStormSigner</scope><name>SignMessage</name></member>
+      <member refid="class_c_sand_storm_signer_1a8d2fb7c16fcfb1be633101dd5436d3ae" prot="public" virt="non-virtual"><scope>CSandStormSigner</scope><name>VerifyMessage</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

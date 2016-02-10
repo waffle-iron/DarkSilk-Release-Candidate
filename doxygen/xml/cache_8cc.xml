@@ -1,0 +1,709 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="cache_8cc" kind="file" language="C++">
+    <compoundname>cache.cc</compoundname>
+    <includes local="no">assert.h</includes>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">stdlib.h</includes>
+    <includes refid="cache_8h" local="yes">leveldb/cache.h</includes>
+    <includes refid="port_8h" local="yes">port/port.h</includes>
+    <includes refid="leveldb_2util_2hash_8h" local="yes">util/hash.h</includes>
+    <includes refid="mutexlock_8h" local="yes">util/mutexlock.h</includes>
+    <incdepgraph>
+      <node id="10119">
+        <label>util/mutexlock.h</label>
+        <link refid="mutexlock_8h"/>
+        <childnode refid="10117" relation="include">
+        </childnode>
+        <childnode refid="10120" relation="include">
+        </childnode>
+      </node>
+      <node id="10108">
+        <label>assert.h</label>
+      </node>
+      <node id="10110">
+        <label>stdlib.h</label>
+      </node>
+      <node id="10107">
+        <label>/home/dev/ds-160209/src/leveldb/util/cache.cc</label>
+        <link refid="cache.cc"/>
+        <childnode refid="10108" relation="include">
+        </childnode>
+        <childnode refid="10109" relation="include">
+        </childnode>
+        <childnode refid="10110" relation="include">
+        </childnode>
+        <childnode refid="10111" relation="include">
+        </childnode>
+        <childnode refid="10117" relation="include">
+        </childnode>
+        <childnode refid="10118" relation="include">
+        </childnode>
+        <childnode refid="10119" relation="include">
+        </childnode>
+      </node>
+      <node id="10116">
+        <label>string</label>
+      </node>
+      <node id="10114">
+        <label>stddef.h</label>
+      </node>
+      <node id="10111">
+        <label>leveldb/cache.h</label>
+        <link refid="cache_8h"/>
+        <childnode refid="10112" relation="include">
+        </childnode>
+        <childnode refid="10113" relation="include">
+        </childnode>
+      </node>
+      <node id="10115">
+        <label>string.h</label>
+      </node>
+      <node id="10117">
+        <label>port/port.h</label>
+        <link refid="port_8h"/>
+        <childnode refid="10115" relation="include">
+        </childnode>
+      </node>
+      <node id="10112">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="10113">
+        <label>leveldb/slice.h</label>
+        <link refid="slice_8h"/>
+        <childnode refid="10108" relation="include">
+        </childnode>
+        <childnode refid="10114" relation="include">
+        </childnode>
+        <childnode refid="10115" relation="include">
+        </childnode>
+        <childnode refid="10116" relation="include">
+        </childnode>
+      </node>
+      <node id="10120">
+        <label>port/thread_annotations.h</label>
+        <link refid="thread__annotations_8h"/>
+      </node>
+      <node id="10109">
+        <label>stdio.h</label>
+      </node>
+      <node id="10118">
+        <label>util/hash.h</label>
+        <link refid="leveldb_2util_2hash_8h"/>
+        <childnode refid="10114" relation="include">
+        </childnode>
+        <childnode refid="10112" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceleveldb">leveldb</innernamespace>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="cache_8cc_1a0f61d63b009d0880a89c843bd50d8d76" prot="public" static="no" mutable="no">
+        <type>void *</type>
+        <definition>void* value</definition>
+        <argsstring></argsstring>
+        <name>value</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/util/cache.cc" line="26" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/util/cache.cc" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="cache_8cc_1accd93a4ec30e3a96658ecae0c6a724fe" prot="public" static="no" mutable="no">
+        <type>void(*</type>
+        <definition>void(* deleter) (const Slice &amp;, void *value)</definition>
+        <argsstring>)(const Slice &amp;, void *value)</argsstring>
+        <name>deleter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/util/cache.cc" line="27" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/util/cache.cc" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="cache_8cc_1a537c3b39a177d2f89a23c36cdb9bfc5c" prot="public" static="no" mutable="no">
+        <type>LRUHandle *</type>
+        <definition>LRUHandle* next_hash</definition>
+        <argsstring></argsstring>
+        <name>next_hash</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/util/cache.cc" line="28" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/util/cache.cc" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="cache_8cc_1a5211876d3837bbfa503cb931cb9cecbe" prot="public" static="no" mutable="no">
+        <type>LRUHandle *</type>
+        <definition>LRUHandle* next</definition>
+        <argsstring></argsstring>
+        <name>next</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/util/cache.cc" line="29" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/util/cache.cc" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="cache_8cc_1aabbd2f01bb8ec4a7a0128bce5f8cdb1b" prot="public" static="no" mutable="no">
+        <type>LRUHandle *</type>
+        <definition>LRUHandle* prev</definition>
+        <argsstring></argsstring>
+        <name>prev</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/util/cache.cc" line="30" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/util/cache.cc" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="cache_8cc_1a7476acc4f60747f9d9032e9cbdf5eb79" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t charge</definition>
+        <argsstring></argsstring>
+        <name>charge</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/util/cache.cc" line="31" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/util/cache.cc" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="cache_8cc_1ab8d33547e1ef26613cc6d92a7909d99a" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t key_length</definition>
+        <argsstring></argsstring>
+        <name>key_length</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/util/cache.cc" line="32" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/util/cache.cc" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="cache_8cc_1a630e1e65f274486cd91266b349e043fa" prot="public" static="no" mutable="no">
+        <type><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref></type>
+        <definition>uint32_t refs</definition>
+        <argsstring></argsstring>
+        <name>refs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/util/cache.cc" line="33" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/util/cache.cc" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="cache_8cc_1a11ecb029164e055f28f4123ce3748862" prot="public" static="no" mutable="no">
+        <type><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref></type>
+        <definition>uint32_t hash</definition>
+        <argsstring></argsstring>
+        <name>hash</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/util/cache.cc" line="34" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/util/cache.cc" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="cache_8cc_1ad7b582862f8a4e707af8207a34280e2d" prot="public" static="no" mutable="no">
+        <type>char</type>
+        <definition>char key_data[1]</definition>
+        <argsstring>[1]</argsstring>
+        <name>key_data</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/util/cache.cc" line="35" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/util/cache.cc" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="cache_8cc_1a33a84d9f0ba0b3f27d549544aca2686f" prot="public" static="no" mutable="no">
+        <type><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref></type>
+        <definition>uint32_t length_</definition>
+        <argsstring></argsstring>
+        <name>length_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/util/cache.cc" line="91" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/util/cache.cc" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="cache_8cc_1aa67d7770b9a769983073ec2830d052e0" prot="public" static="no" mutable="no">
+        <type><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref></type>
+        <definition>uint32_t elems_</definition>
+        <argsstring></argsstring>
+        <name>elems_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/util/cache.cc" line="92" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/util/cache.cc" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="cache_8cc_1a2d97c9d385cbc36b0cb8e560f68f23ea" prot="public" static="no" mutable="no">
+        <type>LRUHandle **</type>
+        <definition>LRUHandle** list_</definition>
+        <argsstring></argsstring>
+        <name>list_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/util/cache.cc" line="93" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/util/cache.cc" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="cache_8cc_1aa3099a4c2b0b3ab5ba4188b4a8f59b26" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t capacity_</definition>
+        <argsstring></argsstring>
+        <name>capacity_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/util/cache.cc" line="157" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/util/cache.cc" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="cache_8cc_1ab1b7efa1bbe0578df2c74e7c31a79a92" prot="public" static="no" mutable="no">
+        <type>port::Mutex</type>
+        <definition>port::Mutex mutex_</definition>
+        <argsstring></argsstring>
+        <name>mutex_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/util/cache.cc" line="160" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/util/cache.cc" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="cache_8cc_1a428ee80699f3b7e005b52f1be7ecc438" prot="public" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t usage_</definition>
+        <argsstring></argsstring>
+        <name>usage_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/util/cache.cc" line="161" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/util/cache.cc" bodystart="161" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="cache_8cc_1a4a786aa336549943ac36df80baae2212" prot="public" static="no" mutable="no">
+        <type>LRUHandle</type>
+        <definition>LRUHandle lru_</definition>
+        <argsstring></argsstring>
+        <name>lru_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/util/cache.cc" line="165" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/util/cache.cc" bodystart="165" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="cache_8cc_1ae64a918efc86efd2537d69b8e5652d8e" prot="public" static="no" mutable="no">
+        <type>HandleTable</type>
+        <definition>HandleTable table_</definition>
+        <argsstring></argsstring>
+        <name>table_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/util/cache.cc" line="167" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/util/cache.cc" bodystart="167" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="cache_8cc_1a2b45e355f2b466c51e196274d6cd4888" prot="public" static="no" mutable="no">
+        <type>LRUCache</type>
+        <definition>LRUCache shard_[kNumShards]</definition>
+        <argsstring>[kNumShards]</argsstring>
+        <name>shard_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/util/cache.cc" line="272" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/util/cache.cc" bodystart="272" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="cache_8cc_1ab411b7a934e7fcc7571beaf86fb24f30" prot="public" static="no" mutable="no">
+        <type>port::Mutex</type>
+        <definition>port::Mutex id_mutex_</definition>
+        <argsstring></argsstring>
+        <name>id_mutex_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/util/cache.cc" line="273" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/util/cache.cc" bodystart="273" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="cache_8cc_1aaa0da5f07b10b4f5c469d76891acc621" prot="public" static="no" mutable="no">
+        <type><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref></type>
+        <definition>uint64_t last_id_</definition>
+        <argsstring></argsstring>
+        <name>last_id_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/util/cache.cc" line="274" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/util/cache.cc" bodystart="274" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2011-2016<sp/>The<sp/>LevelDB<sp/>Authors.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>of<sp/>this<sp/>source<sp/>code<sp/>is<sp/>governed<sp/>by<sp/>a<sp/>BSD-style<sp/>license<sp/>that<sp/>can<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>found<sp/>in<sp/>the<sp/>LICENSE<sp/>file.<sp/>See<sp/>the<sp/>AUTHORS<sp/>file<sp/>for<sp/>names<sp/>of<sp/>contributors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;assert.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="cache_8h" kindref="compound">leveldb/cache.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="port_8h" kindref="compound">port/port.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="leveldb_2util_2hash_8h" kindref="compound">util/hash.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mutexlock_8h" kindref="compound">util/mutexlock.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceleveldb" kindref="compound">leveldb</ref><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="classleveldb_1_1_cache_1a1369f94b24a31099443f714b8b8ab527" refkind="member"><highlight class="normal"><ref refid="classleveldb_1_1_cache_1a1369f94b24a31099443f714b8b8ab527" kindref="member">Cache::~Cache</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/>LRU<sp/>cache<sp/>implementation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//<sp/>An<sp/>entry<sp/>is<sp/>a<sp/>variable<sp/>length<sp/>heap-allocated<sp/>structure.<sp/><sp/>Entries</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>are<sp/>kept<sp/>in<sp/>a<sp/>circular<sp/>doubly<sp/>linked<sp/>list<sp/>ordered<sp/>by<sp/>access<sp/>time.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">LRUHandle<sp/>{</highlight></codeline>
+<codeline lineno="26" refid="cache_8cc_1a0f61d63b009d0880a89c843bd50d8d76" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="cache_8cc_1a0f61d63b009d0880a89c843bd50d8d76" kindref="member">value</ref>;</highlight></codeline>
+<codeline lineno="27" refid="cache_8cc_1accd93a4ec30e3a96658ecae0c6a724fe" refkind="member"><highlight class="normal"><sp/><sp/>void<sp/>(*<ref refid="cache_8cc_1accd93a4ec30e3a96658ecae0c6a724fe" kindref="member">deleter</ref>)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Slice&amp;,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="cache_8cc_1a0f61d63b009d0880a89c843bd50d8d76" kindref="member">value</ref>);</highlight></codeline>
+<codeline lineno="28" refid="cache_8cc_1a537c3b39a177d2f89a23c36cdb9bfc5c" refkind="member"><highlight class="normal"><sp/><sp/>LRUHandle*<sp/><ref refid="cache_8cc_1a537c3b39a177d2f89a23c36cdb9bfc5c" kindref="member">next_hash</ref>;</highlight></codeline>
+<codeline lineno="29" refid="cache_8cc_1a5211876d3837bbfa503cb931cb9cecbe" refkind="member"><highlight class="normal"><sp/><sp/>LRUHandle*<sp/><ref refid="cache_8cc_1a5211876d3837bbfa503cb931cb9cecbe" kindref="member">next</ref>;</highlight></codeline>
+<codeline lineno="30" refid="cache_8cc_1aabbd2f01bb8ec4a7a0128bce5f8cdb1b" refkind="member"><highlight class="normal"><sp/><sp/>LRUHandle*<sp/><ref refid="cache_8cc_1aabbd2f01bb8ec4a7a0128bce5f8cdb1b" kindref="member">prev</ref>;</highlight></codeline>
+<codeline lineno="31" refid="cache_8cc_1a7476acc4f60747f9d9032e9cbdf5eb79" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="cache_8cc_1a7476acc4f60747f9d9032e9cbdf5eb79" kindref="member">charge</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO(opt):<sp/>Only<sp/>allow<sp/>uint32_t?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="cache_8cc_1ab8d33547e1ef26613cc6d92a7909d99a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="cache_8cc_1ab8d33547e1ef26613cc6d92a7909d99a" kindref="member">key_length</ref>;</highlight></codeline>
+<codeline lineno="33" refid="cache_8cc_1a630e1e65f274486cd91266b349e043fa" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/><ref refid="cache_8cc_1a630e1e65f274486cd91266b349e043fa" kindref="member">refs</ref>;</highlight></codeline>
+<codeline lineno="34" refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/><ref refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" kindref="member">hash</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Hash<sp/>of<sp/>key();<sp/>used<sp/>for<sp/>fast<sp/>sharding<sp/>and<sp/>comparisons</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="cache_8cc_1ad7b582862f8a4e707af8207a34280e2d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="cache_8cc_1ad7b582862f8a4e707af8207a34280e2d" kindref="member">key_data</ref>[1];<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Beginning<sp/>of<sp/>key</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/>Slice<sp/>key()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>cheaper<sp/>lookups,<sp/>we<sp/>allow<sp/>a<sp/>temporary<sp/>Handle<sp/>object</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>to<sp/>store<sp/>a<sp/>pointer<sp/>to<sp/>a<sp/>key<sp/>in<sp/>&quot;value&quot;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(next<sp/>==<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*(</highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal">Slice*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="cache_8cc_1a0f61d63b009d0880a89c843bd50d8d76" kindref="member">value</ref>));</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Slice(key_data,<sp/>key_length);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight><highlight class="comment">//<sp/>We<sp/>provide<sp/>our<sp/>own<sp/>simple<sp/>hash<sp/>table<sp/>since<sp/>it<sp/>removes<sp/>a<sp/>whole<sp/>bunch</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>of<sp/>porting<sp/>hacks<sp/>and<sp/>is<sp/>also<sp/>faster<sp/>than<sp/>some<sp/>of<sp/>the<sp/>built-in<sp/>hash</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">//<sp/>table<sp/>implementations<sp/>in<sp/>some<sp/>of<sp/>the<sp/>compiler/runtime<sp/>combinations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">//<sp/>we<sp/>have<sp/>tested.<sp/><sp/>E.g.,<sp/>readrandom<sp/>speeds<sp/>up<sp/>by<sp/>~5%<sp/>over<sp/>the<sp/>g++</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">//<sp/>4.4.3&apos;s<sp/>builtin<sp/>hashtable.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">HandleTable<sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/>HandleTable()<sp/>:<sp/><ref refid="cache_8cc_1a33a84d9f0ba0b3f27d549544aca2686f" kindref="member">length_</ref>(0),<sp/><ref refid="cache_8cc_1aa67d7770b9a769983073ec2830d052e0" kindref="member">elems_</ref>(0),<sp/><ref refid="cache_8cc_1a2d97c9d385cbc36b0cb8e560f68f23ea" kindref="member">list_</ref>(NULL)<sp/>{<sp/>Resize();<sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/>~HandleTable()<sp/>{<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">[]<sp/><ref refid="cache_8cc_1a2d97c9d385cbc36b0cb8e560f68f23ea" kindref="member">list_</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/>LRUHandle*<sp/><ref refid="netbase_8cpp_1a56a2f4bcb9fb77b5efe358f804f642cc" kindref="member">Lookup</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Slice&amp;<sp/>key,<sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/><ref refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" kindref="member">hash</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*FindPointer(key,<sp/>hash);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/>LRUHandle*<sp/>Insert(LRUHandle*<sp/>h)<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>LRUHandle**<sp/>ptr<sp/>=<sp/>FindPointer(h-&gt;key(),<sp/>h-&gt;hash);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>LRUHandle*<sp/>old<sp/>=<sp/>*ptr;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>h-&gt;next_hash<sp/>=<sp/>(old<sp/>==<sp/>NULL<sp/>?<sp/>NULL<sp/>:<sp/>old-&gt;next_hash);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>*ptr<sp/>=<sp/>h;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(old<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>++<ref refid="cache_8cc_1aa67d7770b9a769983073ec2830d052e0" kindref="member">elems_</ref>;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="cache_8cc_1aa67d7770b9a769983073ec2830d052e0" kindref="member">elems_</ref><sp/>&gt;<sp/><ref refid="cache_8cc_1a33a84d9f0ba0b3f27d549544aca2686f" kindref="member">length_</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Since<sp/>each<sp/>cache<sp/>entry<sp/>is<sp/>fairly<sp/>large,<sp/>we<sp/>aim<sp/>for<sp/>a<sp/>small</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>average<sp/>linked<sp/>list<sp/>length<sp/>(&lt;=<sp/>1).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Resize();</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>old;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/>LRUHandle*<sp/>Remove(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Slice&amp;<sp/>key,<sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/><ref refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" kindref="member">hash</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>LRUHandle**<sp/>ptr<sp/>=<sp/>FindPointer(key,<sp/>hash);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>LRUHandle*<sp/>result<sp/>=<sp/>*ptr;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>*ptr<sp/>=<sp/>result-&gt;next_hash;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>--<ref refid="cache_8cc_1aa67d7770b9a769983073ec2830d052e0" kindref="member">elems_</ref>;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>table<sp/>consists<sp/>of<sp/>an<sp/>array<sp/>of<sp/>buckets<sp/>where<sp/>each<sp/>bucket<sp/>is</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>a<sp/>linked<sp/>list<sp/>of<sp/>cache<sp/>entries<sp/>that<sp/>hash<sp/>into<sp/>the<sp/>bucket.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="cache_8cc_1a33a84d9f0ba0b3f27d549544aca2686f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/><ref refid="cache_8cc_1a33a84d9f0ba0b3f27d549544aca2686f" kindref="member">length_</ref>;</highlight></codeline>
+<codeline lineno="92" refid="cache_8cc_1aa67d7770b9a769983073ec2830d052e0" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/><ref refid="cache_8cc_1aa67d7770b9a769983073ec2830d052e0" kindref="member">elems_</ref>;</highlight></codeline>
+<codeline lineno="93" refid="cache_8cc_1a2d97c9d385cbc36b0cb8e560f68f23ea" refkind="member"><highlight class="normal"><sp/><sp/>LRUHandle**<sp/><ref refid="cache_8cc_1a2d97c9d385cbc36b0cb8e560f68f23ea" kindref="member">list_</ref>;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>a<sp/>pointer<sp/>to<sp/>slot<sp/>that<sp/>points<sp/>to<sp/>a<sp/>cache<sp/>entry<sp/>that</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>matches<sp/>key/hash.<sp/><sp/>If<sp/>there<sp/>is<sp/>no<sp/>such<sp/>cache<sp/>entry,<sp/>return<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>pointer<sp/>to<sp/>the<sp/>trailing<sp/>slot<sp/>in<sp/>the<sp/>corresponding<sp/>linked<sp/>list.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/>LRUHandle**<sp/>FindPointer(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Slice&amp;<sp/>key,<sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>hash)<sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>LRUHandle**<sp/>ptr<sp/>=<sp/>&amp;list_[hash<sp/>&amp;<sp/>(length_<sp/>-<sp/>1)];</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(*ptr<sp/>!=<sp/>NULL<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((*ptr)-&gt;hash<sp/>!=<sp/>hash<sp/>||<sp/>key<sp/>!=<sp/>(*ptr)-&gt;key()))<sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ptr<sp/>=<sp/>&amp;(*ptr)-&gt;next_hash;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ptr;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Resize()<sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>new_length<sp/>=<sp/>4;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(new_length<sp/>&lt;<sp/>elems_)<sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>new_length<sp/>*=<sp/>2;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>LRUHandle**<sp/>new_list<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>LRUHandle*[new_length];</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(new_list,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(new_list[0])<sp/>*<sp/>new_length);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(<ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="cache_8cc_1a33a84d9f0ba0b3f27d549544aca2686f" kindref="member">length_</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>LRUHandle*<sp/>h<sp/>=<sp/>list_[i];</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(h<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LRUHandle*<sp/><ref refid="cache_8cc_1a5211876d3837bbfa503cb931cb9cecbe" kindref="member">next</ref><sp/>=<sp/>h-&gt;next_hash;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>hash<sp/>=<sp/>h-&gt;hash;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>LRUHandle**<sp/>ptr<sp/>=<sp/>&amp;new_list[hash<sp/>&amp;<sp/>(new_length<sp/>-<sp/>1)];</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>h-&gt;next_hash<sp/>=<sp/>*ptr;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*ptr<sp/>=<sp/>h;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>h<sp/>=<sp/><ref refid="cache_8cc_1a5211876d3837bbfa503cb931cb9cecbe" kindref="member">next</ref>;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>count++;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(elems_<sp/>==<sp/>count);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">[]<sp/><ref refid="cache_8cc_1a2d97c9d385cbc36b0cb8e560f68f23ea" kindref="member">list_</ref>;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>list_<sp/>=<sp/>new_list;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>length_<sp/>=<sp/>new_length;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="comment">//<sp/>A<sp/>single<sp/>shard<sp/>of<sp/>sharded<sp/>cache.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">LRUCache<sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/>LRUCache();</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/>~LRUCache();</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Separate<sp/>from<sp/>constructor<sp/>so<sp/>caller<sp/>can<sp/>easily<sp/>make<sp/>an<sp/>array<sp/>of<sp/>LRUCache</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>SetCapacity(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>capacity)<sp/>{<sp/><ref refid="cache_8cc_1aa3099a4c2b0b3ab5ba4188b4a8f59b26" kindref="member">capacity_</ref><sp/>=<sp/>capacity;<sp/>}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Like<sp/>Cache<sp/>methods,<sp/>but<sp/>with<sp/>an<sp/>extra<sp/>&quot;hash&quot;<sp/>parameter.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/>Cache::Handle*<sp/>Insert(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Slice&amp;<sp/>key,<sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>hash,</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="cache_8cc_1a0f61d63b009d0880a89c843bd50d8d76" kindref="member">value</ref>,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="cache_8cc_1a7476acc4f60747f9d9032e9cbdf5eb79" kindref="member">charge</ref>,</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>(*<ref refid="cache_8cc_1accd93a4ec30e3a96658ecae0c6a724fe" kindref="member">deleter</ref>)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Slice&amp;<sp/>key,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>value));</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/>Cache::Handle*<sp/><ref refid="netbase_8cpp_1a56a2f4bcb9fb77b5efe358f804f642cc" kindref="member">Lookup</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Slice&amp;<sp/>key,<sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>hash);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Release(Cache::Handle*<sp/>handle);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Erase(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Slice&amp;<sp/>key,<sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>hash);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LRU_Remove(LRUHandle*<sp/>e);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LRU_Append(LRUHandle*<sp/>e);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Unref(LRUHandle*<sp/>e);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialized<sp/>before<sp/>use.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="157" refid="cache_8cc_1aa3099a4c2b0b3ab5ba4188b4a8f59b26" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="cache_8cc_1aa3099a4c2b0b3ab5ba4188b4a8f59b26" kindref="member">capacity_</ref>;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>mutex_<sp/>protects<sp/>the<sp/>following<sp/>state.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160" refid="cache_8cc_1ab1b7efa1bbe0578df2c74e7c31a79a92" refkind="member"><highlight class="normal"><sp/><sp/>port::Mutex<sp/><ref refid="cache_8cc_1ab1b7efa1bbe0578df2c74e7c31a79a92" kindref="member">mutex_</ref>;</highlight></codeline>
+<codeline lineno="161" refid="cache_8cc_1a428ee80699f3b7e005b52f1be7ecc438" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="cache_8cc_1a428ee80699f3b7e005b52f1be7ecc438" kindref="member">usage_</ref>;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Dummy<sp/>head<sp/>of<sp/>LRU<sp/>list.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>lru.prev<sp/>is<sp/>newest<sp/>entry,<sp/>lru.next<sp/>is<sp/>oldest<sp/>entry.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165" refid="cache_8cc_1a4a786aa336549943ac36df80baae2212" refkind="member"><highlight class="normal"><sp/><sp/>LRUHandle<sp/><ref refid="cache_8cc_1a4a786aa336549943ac36df80baae2212" kindref="member">lru_</ref>;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167" refid="cache_8cc_1ae64a918efc86efd2537d69b8e5652d8e" refkind="member"><highlight class="normal"><sp/><sp/>HandleTable<sp/><ref refid="cache_8cc_1ae64a918efc86efd2537d69b8e5652d8e" kindref="member">table_</ref>;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal">LRUCache::LRUCache()</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/><ref refid="cache_8cc_1a428ee80699f3b7e005b52f1be7ecc438" kindref="member">usage_</ref>(0)<sp/>{</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Make<sp/>empty<sp/>circular<sp/>linked<sp/>list</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><ref refid="cache_8cc_1a4a786aa336549943ac36df80baae2212" kindref="member">lru_</ref>.next<sp/>=<sp/>&amp;<ref refid="cache_8cc_1a4a786aa336549943ac36df80baae2212" kindref="member">lru_</ref>;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><ref refid="cache_8cc_1a4a786aa336549943ac36df80baae2212" kindref="member">lru_</ref>.prev<sp/>=<sp/>&amp;<ref refid="cache_8cc_1a4a786aa336549943ac36df80baae2212" kindref="member">lru_</ref>;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal">LRUCache::~LRUCache()<sp/>{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(LRUHandle*<sp/>e<sp/>=<sp/><ref refid="cache_8cc_1a4a786aa336549943ac36df80baae2212" kindref="member">lru_</ref>.next;<sp/>e<sp/>!=<sp/>&amp;<ref refid="cache_8cc_1a4a786aa336549943ac36df80baae2212" kindref="member">lru_</ref>;<sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>LRUHandle*<sp/><ref refid="cache_8cc_1a5211876d3837bbfa503cb931cb9cecbe" kindref="member">next</ref><sp/>=<sp/>e-&gt;next;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(e-&gt;refs<sp/>==<sp/>1);<sp/><sp/></highlight><highlight class="comment">//<sp/>Error<sp/>if<sp/>caller<sp/>has<sp/>an<sp/>unreleased<sp/>handle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>Unref(e);</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>e<sp/>=<sp/><ref refid="cache_8cc_1a5211876d3837bbfa503cb931cb9cecbe" kindref="member">next</ref>;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="184"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LRUCache::Unref(LRUHandle*<sp/>e)<sp/>{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/>assert(e-&gt;refs<sp/>&gt;<sp/>0);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/>e-&gt;refs--;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(e-&gt;refs<sp/>&lt;=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="cache_8cc_1a428ee80699f3b7e005b52f1be7ecc438" kindref="member">usage_</ref><sp/>-=<sp/>e-&gt;charge;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>(*e-&gt;deleter)(e-&gt;key(),<sp/>e-&gt;value);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>free(e);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LRUCache::LRU_Remove(LRUHandle*<sp/>e)<sp/>{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/>e-&gt;next-&gt;prev<sp/>=<sp/>e-&gt;prev;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/>e-&gt;prev-&gt;next<sp/>=<sp/>e-&gt;next;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LRUCache::LRU_Append(LRUHandle*<sp/>e)<sp/>{</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Make<sp/>&quot;e&quot;<sp/>newest<sp/>entry<sp/>by<sp/>inserting<sp/>just<sp/>before<sp/>lru_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/>e-&gt;next<sp/>=<sp/>&amp;<ref refid="cache_8cc_1a4a786aa336549943ac36df80baae2212" kindref="member">lru_</ref>;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/>e-&gt;prev<sp/>=<sp/><ref refid="cache_8cc_1a4a786aa336549943ac36df80baae2212" kindref="member">lru_</ref>.prev;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/>e-&gt;prev-&gt;next<sp/>=<sp/>e;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/>e-&gt;next-&gt;prev<sp/>=<sp/>e;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal">Cache::Handle*<sp/><ref refid="netbase_8cpp_1a56a2f4bcb9fb77b5efe358f804f642cc" kindref="member">LRUCache::Lookup</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Slice&amp;<sp/>key,<sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>hash)<sp/>{</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/>MutexLock<sp/>l(&amp;<ref refid="cache_8cc_1ab1b7efa1bbe0578df2c74e7c31a79a92" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/>LRUHandle*<sp/>e<sp/>=<sp/><ref refid="cache_8cc_1ae64a918efc86efd2537d69b8e5652d8e" kindref="member">table_</ref>.Lookup(key,<sp/>hash);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(e<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>e-&gt;refs++;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/>LRU_Remove(e);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/>LRU_Append(e);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal">Cache::Handle*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(e);</highlight></codeline>
+<codeline lineno="218"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LRUCache::Release(Cache::Handle*<sp/>handle)<sp/>{</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/>MutexLock<sp/>l(&amp;<ref refid="cache_8cc_1ab1b7efa1bbe0578df2c74e7c31a79a92" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/>Unref(reinterpret_cast&lt;LRUHandle*&gt;(handle));</highlight></codeline>
+<codeline lineno="223"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal">Cache::Handle*<sp/>LRUCache::Insert(</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Slice&amp;<sp/>key,<sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>hash,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>value,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>charge,</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>(*<ref refid="cache_8cc_1accd93a4ec30e3a96658ecae0c6a724fe" kindref="member">deleter</ref>)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Slice&amp;<sp/>key,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>value))<sp/>{</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/>MutexLock<sp/>l(&amp;<ref refid="cache_8cc_1ab1b7efa1bbe0578df2c74e7c31a79a92" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/>LRUHandle*<sp/>e<sp/>=<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal">LRUHandle*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>malloc(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(LRUHandle)-1<sp/>+<sp/>key.size()));</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/>e-&gt;value<sp/>=<sp/><ref refid="cache_8cc_1a0f61d63b009d0880a89c843bd50d8d76" kindref="member">value</ref>;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/>e-&gt;deleter<sp/>=<sp/><ref refid="cache_8cc_1accd93a4ec30e3a96658ecae0c6a724fe" kindref="member">deleter</ref>;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/>e-&gt;charge<sp/>=<sp/><ref refid="cache_8cc_1a7476acc4f60747f9d9032e9cbdf5eb79" kindref="member">charge</ref>;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/>e-&gt;key_length<sp/>=<sp/>key.size();</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/>e-&gt;hash<sp/>=<sp/><ref refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" kindref="member">hash</ref>;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/>e-&gt;refs<sp/>=<sp/>2;<sp/><sp/></highlight><highlight class="comment">//<sp/>One<sp/>from<sp/>LRUCache,<sp/>one<sp/>for<sp/>the<sp/>returned<sp/>handle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/>memcpy(e-&gt;key_data,<sp/>key.data(),<sp/>key.size());</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/>LRU_Append(e);</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><ref refid="cache_8cc_1a428ee80699f3b7e005b52f1be7ecc438" kindref="member">usage_</ref><sp/>+=<sp/><ref refid="cache_8cc_1a7476acc4f60747f9d9032e9cbdf5eb79" kindref="member">charge</ref>;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/>LRUHandle*<sp/>old<sp/>=<sp/><ref refid="cache_8cc_1ae64a918efc86efd2537d69b8e5652d8e" kindref="member">table_</ref>.Insert(e);</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(old<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/>LRU_Remove(old);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/>Unref(old);</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<ref refid="cache_8cc_1a428ee80699f3b7e005b52f1be7ecc438" kindref="member">usage_</ref><sp/>&gt;<sp/><ref refid="cache_8cc_1aa3099a4c2b0b3ab5ba4188b4a8f59b26" kindref="member">capacity_</ref><sp/>&amp;&amp;<sp/><ref refid="cache_8cc_1a4a786aa336549943ac36df80baae2212" kindref="member">lru_</ref>.next<sp/>!=<sp/>&amp;<ref refid="cache_8cc_1a4a786aa336549943ac36df80baae2212" kindref="member">lru_</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/>LRUHandle*<sp/>old<sp/>=<sp/><ref refid="cache_8cc_1a4a786aa336549943ac36df80baae2212" kindref="member">lru_</ref>.next;</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/>LRU_Remove(old);</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="cache_8cc_1ae64a918efc86efd2537d69b8e5652d8e" kindref="member">table_</ref>.Remove(old-&gt;key(),<sp/>old-&gt;hash);</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/>Unref(old);</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal">Cache::Handle*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(e);</highlight></codeline>
+<codeline lineno="256"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>LRUCache::Erase(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Slice&amp;<sp/>key,<sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>hash)<sp/>{</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/>MutexLock<sp/>l(&amp;<ref refid="cache_8cc_1ab1b7efa1bbe0578df2c74e7c31a79a92" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/>LRUHandle*<sp/>e<sp/>=<sp/><ref refid="cache_8cc_1ae64a918efc86efd2537d69b8e5652d8e" kindref="member">table_</ref>.Remove(key,<sp/>hash);</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(e<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/>LRU_Remove(e);</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/>Unref(e);</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="265"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>kNumShardBits<sp/>=<sp/>4;</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>kNumShards<sp/>=<sp/>1<sp/>&lt;&lt;<sp/>kNumShardBits;</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">ShardedLRUCache<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>Cache<sp/>{</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="272" refid="cache_8cc_1a2b45e355f2b466c51e196274d6cd4888" refkind="member"><highlight class="normal"><sp/><sp/>LRUCache<sp/><ref refid="cache_8cc_1a2b45e355f2b466c51e196274d6cd4888" kindref="member">shard_</ref>[kNumShards];</highlight></codeline>
+<codeline lineno="273" refid="cache_8cc_1ab411b7a934e7fcc7571beaf86fb24f30" refkind="member"><highlight class="normal"><sp/><sp/>port::Mutex<sp/><ref refid="cache_8cc_1ab411b7a934e7fcc7571beaf86fb24f30" kindref="member">id_mutex_</ref>;</highlight></codeline>
+<codeline lineno="274" refid="cache_8cc_1aaa0da5f07b10b4f5c469d76891acc621" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/><ref refid="cache_8cc_1aaa0da5f07b10b4f5c469d76891acc621" kindref="member">last_id_</ref>;</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>HashSlice(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Slice&amp;<sp/>s)<sp/>{</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="hash_8h_1ab3f6c437460137530d86e09c2c102e99" kindref="member">Hash</ref>(s.data(),<sp/>s.size(),<sp/>0);</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>Shard(<ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>hash)<sp/>{</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>hash<sp/>&gt;&gt;<sp/>(32<sp/>-<sp/>kNumShardBits);</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/>ShardedLRUCache(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>capacity)</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>last_id_(0)<sp/>{</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>per_shard<sp/>=<sp/>(capacity<sp/>+<sp/>(kNumShards<sp/>-<sp/>1))<sp/>/<sp/>kNumShards;</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>s<sp/>=<sp/>0;<sp/>s<sp/>&lt;<sp/>kNumShards;<sp/>s++)<sp/>{</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>shard_[s].SetCapacity(per_shard);</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~ShardedLRUCache()<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>Handle*<sp/>Insert(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Slice&amp;<sp/>key,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>value,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>charge,</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>(*<ref refid="cache_8cc_1accd93a4ec30e3a96658ecae0c6a724fe" kindref="member">deleter</ref>)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Slice&amp;<sp/>key,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>value))<sp/>{</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>hash<sp/>=<sp/>HashSlice(key);</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>shard_[Shard(hash)].Insert(key,<sp/>hash,<sp/>value,<sp/>charge,<sp/><ref refid="cache_8cc_1accd93a4ec30e3a96658ecae0c6a724fe" kindref="member">deleter</ref>);</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>Handle*<sp/><ref refid="netbase_8cpp_1a56a2f4bcb9fb77b5efe358f804f642cc" kindref="member">Lookup</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Slice&amp;<sp/>key)<sp/>{</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>hash<sp/>=<sp/>HashSlice(key);</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>shard_[Shard(hash)].Lookup(key,<sp/>hash);</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Release(Handle*<sp/>handle)<sp/>{</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/>LRUHandle*<sp/>h<sp/>=<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal">LRUHandle*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(handle);</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/>shard_[Shard(h-&gt;hash)].Release(handle);</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Erase(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Slice&amp;<sp/>key)<sp/>{</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>hash<sp/>=<sp/>HashSlice(key);</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/>shard_[Shard(hash)].Erase(key,<sp/>hash);</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="namespacejson__spirit_1a28e6abc99fda7b06c430ca38802527a3" kindref="member">Value</ref>(Handle*<sp/>handle)<sp/>{</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal">LRUHandle*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(handle)-&gt;value;</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>NewId()<sp/>{</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/>MutexLock<sp/>l(&amp;id_mutex_);</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>++(<ref refid="cache_8cc_1aaa0da5f07b10b4f5c469d76891acc621" kindref="member">last_id_</ref>);</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="317"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>end<sp/>anonymous<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"></highlight></codeline>
+<codeline lineno="321" refid="namespaceleveldb_1a231e1b41322a8b342c91a15a78e425d4" refkind="member"><highlight class="normal"><ref refid="classleveldb_1_1_cache" kindref="compound">Cache</ref>*<sp/><ref refid="namespaceleveldb_1a231e1b41322a8b342c91a15a78e425d4" kindref="member">NewLRUCache</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>capacity)<sp/>{</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>ShardedLRUCache(capacity);</highlight></codeline>
+<codeline lineno="323"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>leveldb</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/leveldb/util/cache.cc"/>
+  </compounddef>
+</doxygen>

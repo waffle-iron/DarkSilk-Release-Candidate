@@ -1,0 +1,694 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_block" kind="class" language="C++" prot="public">
+    <compoundname>CBlock</compoundname>
+    <basecompoundref refid="class_c_block_header" prot="public" virt="non-virtual">CBlockHeader</basecompoundref>
+    <includes refid="primitives_2block_8h" local="no">block.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_c_block_1a9b6508d662722775f3029b980b382b66" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="class_c_transaction" kindref="compound">CTransaction</ref> &gt;</type>
+        <definition>std::vector&lt;CTransaction&gt; CBlock::vtx</definition>
+        <argsstring></argsstring>
+        <name>vtx</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="107" column="1" bodyfile="/home/dev/ds-160209/src/primitives/block.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_block_1a78f882e24c4416f42039cbc6a67faf6e" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; unsigned char &gt;</type>
+        <definition>std::vector&lt;unsigned char&gt; CBlock::vchBlockSig</definition>
+        <argsstring></argsstring>
+        <name>vchBlockSig</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="110" column="1" bodyfile="/home/dev/ds-160209/src/primitives/block.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_block_1a1604a6d25f313ab1bf4e3777a6cba948" prot="public" static="no" mutable="yes">
+        <type><ref refid="class_c_script" kindref="compound">CScript</ref></type>
+        <definition>CScript CBlock::payee</definition>
+        <argsstring></argsstring>
+        <name>payee</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="113" column="1" bodyfile="/home/dev/ds-160209/src/primitives/block.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_block_1a019ae6579acd08974653d3f443dd398a" prot="public" static="no" mutable="yes">
+        <type>std::vector&lt; <ref refid="classuint256" kindref="compound">uint256</ref> &gt;</type>
+        <definition>std::vector&lt;uint256&gt; CBlock::vMerkleTree</definition>
+        <argsstring></argsstring>
+        <name>vMerkleTree</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="114" column="1" bodyfile="/home/dev/ds-160209/src/primitives/block.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_block_1a53ba28b86cf6c5b1de640941786fa3b8" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>CBlock::ADD_SERIALIZE_METHODS</definition>
+        <argsstring></argsstring>
+        <name>ADD_SERIALIZE_METHODS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="142" column="1" bodyfile="/home/dev/ds-160209/src/primitives/block.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_block_1aaaf8819d785559699cffbbfccb37a3b6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CBlock::CBlock</definition>
+        <argsstring>()</argsstring>
+        <name>CBlock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="116" column="1" bodyfile="/home/dev/ds-160209/src/primitives/block.h" bodystart="116" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_1aaeb7e05f86d36f481bbc2802768256bc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CBlock::CBlock</definition>
+        <argsstring>(const CBlockHeader &amp;header)</argsstring>
+        <name>CBlock</name>
+        <param>
+          <type>const <ref refid="class_c_block_header" kindref="compound">CBlockHeader</ref> &amp;</type>
+          <declname>header</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="121" column="1" bodyfile="/home/dev/ds-160209/src/primitives/block.h" bodystart="121" bodyend="125"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_1a0410d7ba8d60679c4cf364b82ffffea5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CBlock::SetNull</definition>
+        <argsstring>()</argsstring>
+        <name>SetNull</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="127" column="1" bodyfile="/home/dev/ds-160209/src/primitives/block.h" bodystart="127" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_1aa83bbf64300154e8919249f7778f4c17" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Stream</type>
+          </param>
+          <param>
+            <type>typename Operation</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void CBlock::SerializationOp</definition>
+        <argsstring>(Stream &amp;s, Operation ser_action, int nType, int nVersion)</argsstring>
+        <name>SerializationOp</name>
+        <param>
+          <type>Stream &amp;</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>Operation</type>
+          <declname>ser_action</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nType</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nVersion</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="145" column="1" bodyfile="/home/dev/ds-160209/src/primitives/block.h" bodystart="145" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_1a71bb61e73b1ab6b7d4e1867a0d3a2cf8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CBlock::UpdateTime</definition>
+        <argsstring>(const CBlockIndex *pindexPrev)</argsstring>
+        <name>UpdateTime</name>
+        <param>
+          <type>const <ref refid="class_c_block_index" kindref="compound">CBlockIndex</ref> *</type>
+          <declname>pindexPrev</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="160" column="1" bodyfile="/home/dev/ds-160209/src/primitives/block.cpp" bodystart="52" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_1aa3e358ffbd3c15aa937fd8a4f8cdf0d7" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int CBlock::GetStakeEntropyBit</definition>
+        <argsstring>() const </argsstring>
+        <name>GetStakeEntropyBit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="163" column="1" bodyfile="/home/dev/ds-160209/src/primitives/block.h" bodystart="163" bodyend="169"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_1a42d001a1eff1d09a76b61a6ff089da35" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CBlock::IsProofOfStake</definition>
+        <argsstring>() const </argsstring>
+        <name>IsProofOfStake</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="172" column="1" bodyfile="/home/dev/ds-160209/src/primitives/block.h" bodystart="172" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_1ac6aa1feb7deecb9fffef3978d2745903" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CBlock::IsProofOfWork</definition>
+        <argsstring>() const </argsstring>
+        <name>IsProofOfWork</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="177" column="1" bodyfile="/home/dev/ds-160209/src/primitives/block.h" bodystart="177" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_1aee66480cbb9bc01b5f1d27e6ab71f512" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::pair&lt; <ref refid="class_c_out_point" kindref="compound">COutPoint</ref>, unsigned int &gt;</type>
+        <definition>std::pair&lt;COutPoint, unsigned int&gt; CBlock::GetProofOfStake</definition>
+        <argsstring>() const </argsstring>
+        <name>GetProofOfStake</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="182" column="1" bodyfile="/home/dev/ds-160209/src/primitives/block.h" bodystart="182" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_1afea5a853e484ab34d8b5fcb9faaf6c49" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+        <definition>int64_t CBlock::GetMaxTransactionTime</definition>
+        <argsstring>() const </argsstring>
+        <name>GetMaxTransactionTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="188" column="1" bodyfile="/home/dev/ds-160209/src/primitives/block.h" bodystart="188" bodyend="194"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_1a930d742dbdcd7c78159d3f93431d2d3e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classuint256" kindref="compound">uint256</ref></type>
+        <definition>uint256 CBlock::BuildMerkleTree</definition>
+        <argsstring>() const </argsstring>
+        <name>BuildMerkleTree</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="196" column="1" bodyfile="/home/dev/ds-160209/src/primitives/block.h" bodystart="196" bodyend="213"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_1ad857691c46c20eee278c083f7513d0f6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="classuint256" kindref="compound">uint256</ref> &gt;</type>
+        <definition>std::vector&lt;uint256&gt; CBlock::GetMerkleBranch</definition>
+        <argsstring>(int nIndex) const </argsstring>
+        <name>GetMerkleBranch</name>
+        <param>
+          <type>int</type>
+          <declname>nIndex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="215" column="1" bodyfile="/home/dev/ds-160209/src/primitives/block.h" bodystart="215" bodyend="229"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_1a606df2cab7dc67e5dd11b157d288cf2b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CBlock::WriteToDisk</definition>
+        <argsstring>(unsigned int &amp;nFileRet, unsigned int &amp;nBlockPosRet)</argsstring>
+        <name>WriteToDisk</name>
+        <param>
+          <type>unsigned int &amp;</type>
+          <declname>nFileRet</declname>
+        </param>
+        <param>
+          <type>unsigned int &amp;</type>
+          <declname>nBlockPosRet</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="246" column="1" bodyfile="/home/dev/ds-160209/src/chain.cpp" bodystart="830" bodyend="854"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_1a77a1b1e9902e1e557d762f5a5f325cd8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CBlock::ReadFromDisk</definition>
+        <argsstring>(unsigned int nFile, unsigned int nBlockPos, bool fReadTransactions=true)</argsstring>
+        <name>ReadFromDisk</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>nFile</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>nBlockPos</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fReadTransactions</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="248" column="1" bodyfile="/home/dev/ds-160209/src/chain.cpp" bodystart="856" bodyend="880"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_1a85d1cca7cd03ad1893767ae8305bd3b5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string CBlock::ToString</definition>
+        <argsstring>() const </argsstring>
+        <name>ToString</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="250" column="1" bodyfile="/home/dev/ds-160209/src/primitives/block.cpp" bodystart="73" bodyend="93"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_1a9532c041d24701a338ea5c91008b72aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CBlock::DisconnectBlock</definition>
+        <argsstring>(CTxDB &amp;txdb, CBlockIndex *pindex)</argsstring>
+        <name>DisconnectBlock</name>
+        <param>
+          <type><ref refid="class_c_tx_d_b" kindref="compound">CTxDB</ref> &amp;</type>
+          <declname>txdb</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_block_index" kindref="compound">CBlockIndex</ref> *</type>
+          <declname>pindex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="252" column="1" bodyfile="/home/dev/ds-160209/src/chain.cpp" bodystart="191" bodyend="214"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_1a1ae149d97c7b7eadf48f5cea934b6217" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CBlock::ConnectBlock</definition>
+        <argsstring>(CTxDB &amp;txdb, CBlockIndex *pindex, bool fJustCheck=false)</argsstring>
+        <name>ConnectBlock</name>
+        <param>
+          <type><ref refid="class_c_tx_d_b" kindref="compound">CTxDB</ref> &amp;</type>
+          <declname>txdb</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_block_index" kindref="compound">CBlockIndex</ref> *</type>
+          <declname>pindex</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fJustCheck</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="253" column="1" bodyfile="/home/dev/ds-160209/src/chain.cpp" bodystart="299" bodyend="490"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_1ad31bb55c819816d722ebc0980d85cfc7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CBlock::ReadFromDisk</definition>
+        <argsstring>(const CBlockIndex *pindex, bool fReadTransactions=true)</argsstring>
+        <name>ReadFromDisk</name>
+        <param>
+          <type>const <ref refid="class_c_block_index" kindref="compound">CBlockIndex</ref> *</type>
+          <declname>pindex</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fReadTransactions</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="254" column="1" bodyfile="/home/dev/ds-160209/src/chain.cpp" bodystart="816" bodyend="828"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_1a6e308b2d75d1cfc4a75eda36feb60ca1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CBlock::SetBestChain</definition>
+        <argsstring>(CTxDB &amp;txdb, CBlockIndex *pindexNew)</argsstring>
+        <name>SetBestChain</name>
+        <param>
+          <type><ref refid="class_c_tx_d_b" kindref="compound">CTxDB</ref> &amp;</type>
+          <declname>txdb</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_block_index" kindref="compound">CBlockIndex</ref> *</type>
+          <declname>pindexNew</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="255" column="1" bodyfile="/home/dev/ds-160209/src/main.cpp" bodystart="4125" bodyend="4242"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_1afab527f890c5575db3b1a2b17f47bf5a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CBlock::AddToBlockIndex</definition>
+        <argsstring>(unsigned int nFile, unsigned int nBlockPos, const uint256 &amp;hashProof)</argsstring>
+        <name>AddToBlockIndex</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>nFile</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>nBlockPos</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuint256" kindref="compound">uint256</ref> &amp;</type>
+          <declname>hashProof</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="256" column="1" bodyfile="/home/dev/ds-160209/src/main.cpp" bodystart="4244" bodyend="4311"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_1aa735790178f95defd59f984dd51bc0f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CBlock::CheckBlock</definition>
+        <argsstring>(CValidationState &amp;state, bool fCheckPOW=true, bool fCheckMerkleRoot=true, bool fCheckSig=true)</argsstring>
+        <name>CheckBlock</name>
+        <param>
+          <type><ref refid="class_c_validation_state" kindref="compound">CValidationState</ref> &amp;</type>
+          <declname>state</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fCheckPOW</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fCheckMerkleRoot</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fCheckSig</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="257" column="1" bodyfile="/home/dev/ds-160209/src/chain.cpp" bodystart="678" bodyend="789"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_1a3f990a713116bd15c1f221c88b012ccf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CBlock::AcceptBlock</definition>
+        <argsstring>()</argsstring>
+        <name>AcceptBlock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="258" column="1" bodyfile="/home/dev/ds-160209/src/chain.cpp" bodystart="92" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_1a5a6b04461fc7ab5b21f00d6c403e35dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CBlock::SignBlock</definition>
+        <argsstring>(CWallet &amp;keystore, CAmount nFees)</argsstring>
+        <name>SignBlock</name>
+        <param>
+          <type><ref refid="class_c_wallet" kindref="compound">CWallet</ref> &amp;</type>
+          <declname>keystore</declname>
+        </param>
+        <param>
+          <type><ref refid="amount_8h_1a4eaf3a5239714d8c45b851527f7cb564" kindref="member">CAmount</ref></type>
+          <declname>nFees</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="259" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_1a7e0103e7a0117173cb9c975702e06392" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CBlock::CheckBlockSignature</definition>
+        <argsstring>() const </argsstring>
+        <name>CheckBlockSignature</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="260" column="1" bodyfile="/home/dev/ds-160209/src/primitives/block.cpp" bodystart="10" bodyend="50"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_1aea2c77ad84cd7909720f75a0c3f7ddc2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CBlock::RebuildAddressIndex</definition>
+        <argsstring>(CTxDB &amp;txdb)</argsstring>
+        <name>RebuildAddressIndex</name>
+        <param>
+          <type><ref refid="class_c_tx_d_b" kindref="compound">CTxDB</ref> &amp;</type>
+          <declname>txdb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="261" column="1" bodyfile="/home/dev/ds-160209/src/chain.cpp" bodystart="250" bodyend="295"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_c_block_1ab0d596c51fb317e3cb6f444015a652a5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classuint256" kindref="compound">uint256</ref></type>
+        <definition>static uint256 CBlock::CheckMerkleBranch</definition>
+        <argsstring>(uint256 hash, const std::vector&lt; uint256 &gt; &amp;vMerkleBranch, int nIndex)</argsstring>
+        <name>CheckMerkleBranch</name>
+        <param>
+          <type><ref refid="classuint256" kindref="compound">uint256</ref></type>
+          <declname>hash</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; <ref refid="classuint256" kindref="compound">uint256</ref> &gt; &amp;</type>
+          <declname>vMerkleBranch</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nIndex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="231" column="1" bodyfile="/home/dev/ds-160209/src/primitives/block.h" bodystart="231" bodyend="244"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_c_block_1a82c90ccbecf89a38ff56d8429514e2c2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CBlock::SetBestChainInner</definition>
+        <argsstring>(CTxDB &amp;txdb, CBlockIndex *pindexNew)</argsstring>
+        <name>SetBestChainInner</name>
+        <param>
+          <type><ref refid="class_c_tx_d_b" kindref="compound">CTxDB</ref> &amp;</type>
+          <declname>txdb</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_block_index" kindref="compound">CBlockIndex</ref> *</type>
+          <declname>pindexNew</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/primitives/block.h" line="264" column="1" bodyfile="/home/dev/ds-160209/src/chain.cpp" bodystart="792" bodyend="814"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="266">
+        <label>CBlockHeader</label>
+        <link refid="class_c_block_header"/>
+      </node>
+      <node id="265">
+        <label>CBlock</label>
+        <link refid="class_c_block"/>
+        <childnode refid="266" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="270">
+        <label>base_uint&lt; 256 &gt;</label>
+        <link refid="classbase__uint"/>
+      </node>
+      <node id="268">
+        <label>CBlockHeader</label>
+        <link refid="class_c_block_header"/>
+        <childnode refid="269" relation="usage">
+          <edgelabel>hashPrevBlock</edgelabel>
+          <edgelabel>hashMerkleRoot</edgelabel>
+        </childnode>
+      </node>
+      <node id="269">
+        <label>uint256</label>
+        <link refid="classuint256"/>
+        <childnode refid="270" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="271">
+        <label>CScript</label>
+        <link refid="class_c_script"/>
+        <childnode refid="272" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="272">
+        <label>std::vector&lt; unsigned char &gt;</label>
+      </node>
+      <node id="267">
+        <label>CBlock</label>
+        <link refid="class_c_block"/>
+        <childnode refid="268" relation="public-inheritance">
+        </childnode>
+        <childnode refid="271" relation="usage">
+          <edgelabel>payee</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/dev/ds-160209/src/primitives/block.h" line="104" column="1" bodyfile="/home/dev/ds-160209/src/primitives/block.h" bodystart="103" bodyend="265"/>
+    <listofallmembers>
+      <member refid="class_c_block_1a3f990a713116bd15c1f221c88b012ccf" prot="public" virt="non-virtual"><scope>CBlock</scope><name>AcceptBlock</name></member>
+      <member refid="class_c_block_1a53ba28b86cf6c5b1de640941786fa3b8" prot="public" virt="non-virtual"><scope>CBlock</scope><name>ADD_SERIALIZE_METHODS</name></member>
+      <member refid="class_c_block_1afab527f890c5575db3b1a2b17f47bf5a" prot="public" virt="non-virtual"><scope>CBlock</scope><name>AddToBlockIndex</name></member>
+      <member refid="class_c_block_1a930d742dbdcd7c78159d3f93431d2d3e" prot="public" virt="non-virtual"><scope>CBlock</scope><name>BuildMerkleTree</name></member>
+      <member refid="class_c_block_1aaaf8819d785559699cffbbfccb37a3b6" prot="public" virt="non-virtual"><scope>CBlock</scope><name>CBlock</name></member>
+      <member refid="class_c_block_1aaeb7e05f86d36f481bbc2802768256bc" prot="public" virt="non-virtual"><scope>CBlock</scope><name>CBlock</name></member>
+      <member refid="class_c_block_header_1a9afed57bea877bbd25b5eb6740c6990d" prot="public" virt="non-virtual"><scope>CBlock</scope><name>CBlockHeader</name></member>
+      <member refid="class_c_block_1aa735790178f95defd59f984dd51bc0f2" prot="public" virt="non-virtual"><scope>CBlock</scope><name>CheckBlock</name></member>
+      <member refid="class_c_block_1a7e0103e7a0117173cb9c975702e06392" prot="public" virt="non-virtual"><scope>CBlock</scope><name>CheckBlockSignature</name></member>
+      <member refid="class_c_block_1ab0d596c51fb317e3cb6f444015a652a5" prot="public" virt="non-virtual"><scope>CBlock</scope><name>CheckMerkleBranch</name></member>
+      <member refid="class_c_block_1a1ae149d97c7b7eadf48f5cea934b6217" prot="public" virt="non-virtual"><scope>CBlock</scope><name>ConnectBlock</name></member>
+      <member refid="class_c_block_header_1a1da5740e22d124df509383a1ff96eb7c" prot="public" virt="non-virtual"><scope>CBlock</scope><name>CURRENT_VERSION</name></member>
+      <member refid="class_c_block_1a9532c041d24701a338ea5c91008b72aa" prot="public" virt="non-virtual"><scope>CBlock</scope><name>DisconnectBlock</name></member>
+      <member refid="class_c_block_header_1a514e4d5250fa700272ac467fecf7fa7b" prot="public" virt="non-virtual"><scope>CBlock</scope><name>DoS</name></member>
+      <member refid="class_c_block_header_1a2972ebc9d970b4b12434876263c4c2b5" prot="public" virt="non-virtual"><scope>CBlock</scope><name>GetBlockTime</name></member>
+      <member refid="class_c_block_header_1ae1165e54882d364b030fb33673d64dbd" prot="public" virt="non-virtual"><scope>CBlock</scope><name>GetHash</name></member>
+      <member refid="class_c_block_1afea5a853e484ab34d8b5fcb9faaf6c49" prot="public" virt="non-virtual"><scope>CBlock</scope><name>GetMaxTransactionTime</name></member>
+      <member refid="class_c_block_1ad857691c46c20eee278c083f7513d0f6" prot="public" virt="non-virtual"><scope>CBlock</scope><name>GetMerkleBranch</name></member>
+      <member refid="class_c_block_header_1a795e040a33329757f6b31dfbcabbb2a5" prot="public" virt="non-virtual"><scope>CBlock</scope><name>GetPoWArgonHash</name></member>
+      <member refid="class_c_block_header_1ace82f72f060caa4fd96759b4ff99a25e" prot="public" virt="non-virtual"><scope>CBlock</scope><name>GetPoWHash</name></member>
+      <member refid="class_c_block_1aee66480cbb9bc01b5f1d27e6ab71f512" prot="public" virt="non-virtual"><scope>CBlock</scope><name>GetProofOfStake</name></member>
+      <member refid="class_c_block_1aa3e358ffbd3c15aa937fd8a4f8cdf0d7" prot="public" virt="non-virtual"><scope>CBlock</scope><name>GetStakeEntropyBit</name></member>
+      <member refid="class_c_block_header_1ae9ef013abbcfbd9f8bc23dbcda0fd5af" prot="public" virt="non-virtual"><scope>CBlock</scope><name>hashMerkleRoot</name></member>
+      <member refid="class_c_block_header_1ad9b904df502d648309342e5e5b0949a6" prot="public" virt="non-virtual"><scope>CBlock</scope><name>hashPrevBlock</name></member>
+      <member refid="class_c_block_header_1a5c179f4a8b5728ba381a26d0450403b8" prot="public" virt="non-virtual"><scope>CBlock</scope><name>IsNull</name></member>
+      <member refid="class_c_block_1a42d001a1eff1d09a76b61a6ff089da35" prot="public" virt="non-virtual"><scope>CBlock</scope><name>IsProofOfStake</name></member>
+      <member refid="class_c_block_1ac6aa1feb7deecb9fffef3978d2745903" prot="public" virt="non-virtual"><scope>CBlock</scope><name>IsProofOfWork</name></member>
+      <member refid="class_c_block_header_1a88d501b1da4d34d7dc80c65bd4837670" prot="public" virt="non-virtual"><scope>CBlock</scope><name>nBits</name></member>
+      <member refid="class_c_block_header_1af07deb221708fa7a992e65ec20d13534" prot="public" virt="non-virtual"><scope>CBlock</scope><name>nDoS</name></member>
+      <member refid="class_c_block_header_1a3826d43cd36673027e17ecc674450e71" prot="public" virt="non-virtual"><scope>CBlock</scope><name>nNonce</name></member>
+      <member refid="class_c_block_header_1aa435a58a8f13a304681e797366e0d56d" prot="public" virt="non-virtual"><scope>CBlock</scope><name>nTime</name></member>
+      <member refid="class_c_block_header_1ad64b7a76914741861f55f0f38ed66fb5" prot="public" virt="non-virtual"><scope>CBlock</scope><name>nVersion</name></member>
+      <member refid="class_c_block_1a1604a6d25f313ab1bf4e3777a6cba948" prot="public" virt="non-virtual"><scope>CBlock</scope><name>payee</name></member>
+      <member refid="class_c_block_1a77a1b1e9902e1e557d762f5a5f325cd8" prot="public" virt="non-virtual"><scope>CBlock</scope><name>ReadFromDisk</name></member>
+      <member refid="class_c_block_1ad31bb55c819816d722ebc0980d85cfc7" prot="public" virt="non-virtual"><scope>CBlock</scope><name>ReadFromDisk</name></member>
+      <member refid="class_c_block_1aea2c77ad84cd7909720f75a0c3f7ddc2" prot="public" virt="non-virtual"><scope>CBlock</scope><name>RebuildAddressIndex</name></member>
+      <member refid="class_c_block_1aa83bbf64300154e8919249f7778f4c17" prot="public" virt="non-virtual"><scope>CBlock</scope><name>SerializationOp</name></member>
+      <member refid="class_c_block_1a6e308b2d75d1cfc4a75eda36feb60ca1" prot="public" virt="non-virtual"><scope>CBlock</scope><name>SetBestChain</name></member>
+      <member refid="class_c_block_1a82c90ccbecf89a38ff56d8429514e2c2" prot="private" virt="non-virtual"><scope>CBlock</scope><name>SetBestChainInner</name></member>
+      <member refid="class_c_block_1a0410d7ba8d60679c4cf364b82ffffea5" prot="public" virt="non-virtual"><scope>CBlock</scope><name>SetNull</name></member>
+      <member refid="class_c_block_1a5a6b04461fc7ab5b21f00d6c403e35dd" prot="public" virt="non-virtual"><scope>CBlock</scope><name>SignBlock</name></member>
+      <member refid="class_c_block_1a85d1cca7cd03ad1893767ae8305bd3b5" prot="public" virt="non-virtual"><scope>CBlock</scope><name>ToString</name></member>
+      <member refid="class_c_block_1a71bb61e73b1ab6b7d4e1867a0d3a2cf8" prot="public" virt="non-virtual"><scope>CBlock</scope><name>UpdateTime</name></member>
+      <member refid="class_c_block_1a78f882e24c4416f42039cbc6a67faf6e" prot="public" virt="non-virtual"><scope>CBlock</scope><name>vchBlockSig</name></member>
+      <member refid="class_c_block_1a019ae6579acd08974653d3f443dd398a" prot="public" virt="non-virtual"><scope>CBlock</scope><name>vMerkleTree</name></member>
+      <member refid="class_c_block_1a9b6508d662722775f3029b980b382b66" prot="public" virt="non-virtual"><scope>CBlock</scope><name>vtx</name></member>
+      <member refid="class_c_block_1a606df2cab7dc67e5dd11b157d288cf2b" prot="public" virt="non-virtual"><scope>CBlock</scope><name>WriteToDisk</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

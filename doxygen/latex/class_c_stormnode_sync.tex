@@ -1,0 +1,389 @@
+\hypertarget{class_c_stormnode_sync}{}\section{C\+Stormnode\+Sync Class Reference}
+\label{class_c_stormnode_sync}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+
+
+{\ttfamily \#include $<$stormnode-\/sync.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_stormnode_sync_ab51f592abb72b888aa291dc4e5f5ca01}{C\+Stormnode\+Sync} ()
+\item 
+void \hyperlink{class_c_stormnode_sync_ad9e9ad7392c3fa1ec0af4b178b3c62c0}{Added\+Stormnode\+List} (\hyperlink{classuint256}{uint256} \hyperlink{cache_8cc_a11ecb029164e055f28f4123ce3748862}{hash})
+\item 
+void \hyperlink{class_c_stormnode_sync_a686a36163137e9079365e7fd0ede826c}{Added\+Stormnode\+Winner} (\hyperlink{classuint256}{uint256} \hyperlink{cache_8cc_a11ecb029164e055f28f4123ce3748862}{hash})
+\item 
+void \hyperlink{class_c_stormnode_sync_af200f11664c64e5256ad77bd0465b634}{Added\+Budget\+Item} (\hyperlink{classuint256}{uint256} \hyperlink{cache_8cc_a11ecb029164e055f28f4123ce3748862}{hash})
+\item 
+void \hyperlink{class_c_stormnode_sync_a3c70130712267c3c100a69d35b97acf8}{Get\+Next\+Asset} ()
+\item 
+std\+::string \hyperlink{class_c_stormnode_sync_a11096b1811db2d0b8d495a82010969d9}{Get\+Sync\+Status} ()
+\item 
+void \hyperlink{class_c_stormnode_sync_aaca810ce9a48fed7e8608f73c0d5f29d}{Process\+Message} (\hyperlink{class_c_node}{C\+Node} $\ast$pfrom, std\+::string \&str\+Command, \hyperlink{class_c_data_stream}{C\+Data\+Stream} \&v\+Recv)
+\item 
+bool \hyperlink{class_c_stormnode_sync_a71a5cb2516527d38bca276b5bc90c3f1}{Is\+Budget\+Fin\+Empty} ()
+\item 
+bool \hyperlink{class_c_stormnode_sync_a85c30a78fdad0ac91f6fc1a4c17077e5}{Is\+Budget\+Prop\+Empty} ()
+\item 
+void \hyperlink{class_c_stormnode_sync_a14d6ee22d6cd11c4045b9fb8c7891551}{Reset} ()
+\item 
+void \hyperlink{class_c_stormnode_sync_adaaeb592c3432c8a459560523c7be207}{Process} ()
+\item 
+bool \hyperlink{class_c_stormnode_sync_a0f196a2ca46b0cc4de3a488a4cbc2374}{Is\+Synced} ()
+\item 
+bool \hyperlink{class_c_stormnode_sync_adfb3343f29476ca833084be0320a7d50}{Is\+Blockchain\+Synced} ()
+\item 
+void \hyperlink{class_c_stormnode_sync_a4852378d102b54360f8656731d264c04}{Clear\+Fulfilled\+Request} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::map$<$ \hyperlink{classuint256}{uint256}, int $>$ \hyperlink{class_c_stormnode_sync_ab5874fbd02e921572983d1530cc7d69e}{map\+Seen\+Sync\+S\+N\+B}
+\item 
+std\+::map$<$ \hyperlink{classuint256}{uint256}, int $>$ \hyperlink{class_c_stormnode_sync_aa691249c2bfd876d49d24b82b3df7048}{map\+Seen\+Sync\+S\+N\+W}
+\item 
+std\+::map$<$ \hyperlink{classuint256}{uint256}, int $>$ \hyperlink{class_c_stormnode_sync_a7555b263aa695f48c81f4051c1a4788c}{map\+Seen\+Sync\+Budget}
+\item 
+\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} \hyperlink{class_c_stormnode_sync_aeb0a6f0e92f6f1f25c5d9fa6c2b15bbd}{last\+Stormnode\+List}
+\item 
+\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} \hyperlink{class_c_stormnode_sync_a84ac2bc44ac623f8e679f2ba58034c7a}{last\+Stormnode\+Winner}
+\item 
+\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} \hyperlink{class_c_stormnode_sync_a5499eabbf28dc8ec6f77cfef1569dbb7}{last\+Budget\+Item}
+\item 
+\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} \hyperlink{class_c_stormnode_sync_a8b236ed2df48f8d8fdbec1e07872f34f}{last\+Failure}
+\item 
+int \hyperlink{class_c_stormnode_sync_ad7944c7fc57bc0288472b1f88fbd88e6}{n\+Count\+Failures}
+\item 
+int \hyperlink{class_c_stormnode_sync_a3049bd8c09a2b946e99bb1ffca5ebd97}{sum\+Stormnode\+List}
+\item 
+int \hyperlink{class_c_stormnode_sync_a37b84e2f05256e44f9d0c80a87b26895}{sum\+Stormnode\+Winner}
+\item 
+int \hyperlink{class_c_stormnode_sync_a04a5e8c869c0b3802ce5ab2b8d0c7952}{sum\+Budget\+Item\+Prop}
+\item 
+int \hyperlink{class_c_stormnode_sync_ae54e3ff056c6bab202db68c4ceb0792e}{sum\+Budget\+Item\+Fin}
+\item 
+int \hyperlink{class_c_stormnode_sync_a5b480191e47be00a7b1919244b5f9714}{count\+Stormnode\+List}
+\item 
+int \hyperlink{class_c_stormnode_sync_ad0db06b3a1913c0c40c8e6719953d346}{count\+Stormnode\+Winner}
+\item 
+int \hyperlink{class_c_stormnode_sync_af73aa6104e72c120d7def3f42bab1dc5}{count\+Budget\+Item\+Prop}
+\item 
+int \hyperlink{class_c_stormnode_sync_a2a5824d8f6eddbdb6aec4daa51cae6a4}{count\+Budget\+Item\+Fin}
+\item 
+int \hyperlink{class_c_stormnode_sync_abd82a675dc58c17710dac55b20426945}{Requested\+Stormnode\+Assets}
+\item 
+int \hyperlink{class_c_stormnode_sync_a66dcbc68478f042210ec161a7aba7fd5}{Requested\+Stormnode\+Attempt}
+\item 
+\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} \hyperlink{class_c_stormnode_sync_a2e7baab6709175db874ce9bc325c762d}{n\+Asset\+Sync\+Started}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 31 of file stormnode-\/sync.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_stormnode_sync_ab51f592abb72b888aa291dc4e5f5ca01}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{C\+Stormnode\+Sync}]{\setlength{\rightskip}{0pt plus 5cm}C\+Stormnode\+Sync\+::\+C\+Stormnode\+Sync (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_sync_ab51f592abb72b888aa291dc4e5f5ca01}
+
+
+Definition at line 18 of file stormnode-\/sync.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_stormnode_sync_af200f11664c64e5256ad77bd0465b634}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!Added\+Budget\+Item@{Added\+Budget\+Item}}
+\index{Added\+Budget\+Item@{Added\+Budget\+Item}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{Added\+Budget\+Item}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Stormnode\+Sync\+::\+Added\+Budget\+Item (
+\begin{DoxyParamCaption}
+\item[{{\bf uint256}}]{hash}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_sync_af200f11664c64e5256ad77bd0465b634}
+
+
+Definition at line 108 of file stormnode-\/sync.\+cpp.
+
+\hypertarget{class_c_stormnode_sync_ad9e9ad7392c3fa1ec0af4b178b3c62c0}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!Added\+Stormnode\+List@{Added\+Stormnode\+List}}
+\index{Added\+Stormnode\+List@{Added\+Stormnode\+List}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{Added\+Stormnode\+List}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Stormnode\+Sync\+::\+Added\+Stormnode\+List (
+\begin{DoxyParamCaption}
+\item[{{\bf uint256}}]{hash}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_sync_ad9e9ad7392c3fa1ec0af4b178b3c62c0}
+
+
+Definition at line 82 of file stormnode-\/sync.\+cpp.
+
+\hypertarget{class_c_stormnode_sync_a686a36163137e9079365e7fd0ede826c}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!Added\+Stormnode\+Winner@{Added\+Stormnode\+Winner}}
+\index{Added\+Stormnode\+Winner@{Added\+Stormnode\+Winner}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{Added\+Stormnode\+Winner}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Stormnode\+Sync\+::\+Added\+Stormnode\+Winner (
+\begin{DoxyParamCaption}
+\item[{{\bf uint256}}]{hash}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_sync_a686a36163137e9079365e7fd0ede826c}
+
+
+Definition at line 95 of file stormnode-\/sync.\+cpp.
+
+\hypertarget{class_c_stormnode_sync_a4852378d102b54360f8656731d264c04}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!Clear\+Fulfilled\+Request@{Clear\+Fulfilled\+Request}}
+\index{Clear\+Fulfilled\+Request@{Clear\+Fulfilled\+Request}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{Clear\+Fulfilled\+Request}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Stormnode\+Sync\+::\+Clear\+Fulfilled\+Request (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_sync_a4852378d102b54360f8656731d264c04}
+
+
+Definition at line 211 of file stormnode-\/sync.\+cpp.
+
+\hypertarget{class_c_stormnode_sync_a3c70130712267c3c100a69d35b97acf8}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!Get\+Next\+Asset@{Get\+Next\+Asset}}
+\index{Get\+Next\+Asset@{Get\+Next\+Asset}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{Get\+Next\+Asset}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Stormnode\+Sync\+::\+Get\+Next\+Asset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_sync_a3c70130712267c3c100a69d35b97acf8}
+
+
+Definition at line 132 of file stormnode-\/sync.\+cpp.
+
+\hypertarget{class_c_stormnode_sync_a11096b1811db2d0b8d495a82010969d9}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!Get\+Sync\+Status@{Get\+Sync\+Status}}
+\index{Get\+Sync\+Status@{Get\+Sync\+Status}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{Get\+Sync\+Status}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string C\+Stormnode\+Sync\+::\+Get\+Sync\+Status (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_sync_a11096b1811db2d0b8d495a82010969d9}
+
+
+Definition at line 159 of file stormnode-\/sync.\+cpp.
+
+\hypertarget{class_c_stormnode_sync_adfb3343f29476ca833084be0320a7d50}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!Is\+Blockchain\+Synced@{Is\+Blockchain\+Synced}}
+\index{Is\+Blockchain\+Synced@{Is\+Blockchain\+Synced}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{Is\+Blockchain\+Synced}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Stormnode\+Sync\+::\+Is\+Blockchain\+Synced (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_sync_adfb3343f29476ca833084be0320a7d50}
+
+
+Definition at line 28 of file stormnode-\/sync.\+cpp.
+
+\hypertarget{class_c_stormnode_sync_a71a5cb2516527d38bca276b5bc90c3f1}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!Is\+Budget\+Fin\+Empty@{Is\+Budget\+Fin\+Empty}}
+\index{Is\+Budget\+Fin\+Empty@{Is\+Budget\+Fin\+Empty}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{Is\+Budget\+Fin\+Empty}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Stormnode\+Sync\+::\+Is\+Budget\+Fin\+Empty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_sync_a71a5cb2516527d38bca276b5bc90c3f1}
+
+
+Definition at line 127 of file stormnode-\/sync.\+cpp.
+
+\hypertarget{class_c_stormnode_sync_a85c30a78fdad0ac91f6fc1a4c17077e5}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!Is\+Budget\+Prop\+Empty@{Is\+Budget\+Prop\+Empty}}
+\index{Is\+Budget\+Prop\+Empty@{Is\+Budget\+Prop\+Empty}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{Is\+Budget\+Prop\+Empty}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Stormnode\+Sync\+::\+Is\+Budget\+Prop\+Empty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_sync_a85c30a78fdad0ac91f6fc1a4c17077e5}
+
+
+Definition at line 122 of file stormnode-\/sync.\+cpp.
+
+\hypertarget{class_c_stormnode_sync_a0f196a2ca46b0cc4de3a488a4cbc2374}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!Is\+Synced@{Is\+Synced}}
+\index{Is\+Synced@{Is\+Synced}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{Is\+Synced}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Stormnode\+Sync\+::\+Is\+Synced (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_sync_a0f196a2ca46b0cc4de3a488a4cbc2374}
+
+
+Definition at line 23 of file stormnode-\/sync.\+cpp.
+
+\hypertarget{class_c_stormnode_sync_adaaeb592c3432c8a459560523c7be207}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!Process@{Process}}
+\index{Process@{Process}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{Process}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Stormnode\+Sync\+::\+Process (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_sync_adaaeb592c3432c8a459560523c7be207}
+
+
+Definition at line 225 of file stormnode-\/sync.\+cpp.
+
+\hypertarget{class_c_stormnode_sync_aaca810ce9a48fed7e8608f73c0d5f29d}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!Process\+Message@{Process\+Message}}
+\index{Process\+Message@{Process\+Message}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{Process\+Message}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Stormnode\+Sync\+::\+Process\+Message (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Node} $\ast$}]{pfrom, }
+\item[{std\+::string \&}]{str\+Command, }
+\item[{{\bf C\+Data\+Stream} \&}]{v\+Recv}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_sync_aaca810ce9a48fed7e8608f73c0d5f29d}
+
+
+Definition at line 173 of file stormnode-\/sync.\+cpp.
+
+\hypertarget{class_c_stormnode_sync_a14d6ee22d6cd11c4045b9fb8c7891551}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!Reset@{Reset}}
+\index{Reset@{Reset}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{Reset}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Stormnode\+Sync\+::\+Reset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_sync_a14d6ee22d6cd11c4045b9fb8c7891551}
+
+
+Definition at line 59 of file stormnode-\/sync.\+cpp.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_c_stormnode_sync_a2a5824d8f6eddbdb6aec4daa51cae6a4}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!count\+Budget\+Item\+Fin@{count\+Budget\+Item\+Fin}}
+\index{count\+Budget\+Item\+Fin@{count\+Budget\+Item\+Fin}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{count\+Budget\+Item\+Fin}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Stormnode\+Sync\+::count\+Budget\+Item\+Fin}\label{class_c_stormnode_sync_a2a5824d8f6eddbdb6aec4daa51cae6a4}
+
+
+Definition at line 53 of file stormnode-\/sync.\+h.
+
+\hypertarget{class_c_stormnode_sync_af73aa6104e72c120d7def3f42bab1dc5}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!count\+Budget\+Item\+Prop@{count\+Budget\+Item\+Prop}}
+\index{count\+Budget\+Item\+Prop@{count\+Budget\+Item\+Prop}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{count\+Budget\+Item\+Prop}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Stormnode\+Sync\+::count\+Budget\+Item\+Prop}\label{class_c_stormnode_sync_af73aa6104e72c120d7def3f42bab1dc5}
+
+
+Definition at line 52 of file stormnode-\/sync.\+h.
+
+\hypertarget{class_c_stormnode_sync_a5b480191e47be00a7b1919244b5f9714}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!count\+Stormnode\+List@{count\+Stormnode\+List}}
+\index{count\+Stormnode\+List@{count\+Stormnode\+List}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{count\+Stormnode\+List}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Stormnode\+Sync\+::count\+Stormnode\+List}\label{class_c_stormnode_sync_a5b480191e47be00a7b1919244b5f9714}
+
+
+Definition at line 50 of file stormnode-\/sync.\+h.
+
+\hypertarget{class_c_stormnode_sync_ad0db06b3a1913c0c40c8e6719953d346}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!count\+Stormnode\+Winner@{count\+Stormnode\+Winner}}
+\index{count\+Stormnode\+Winner@{count\+Stormnode\+Winner}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{count\+Stormnode\+Winner}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Stormnode\+Sync\+::count\+Stormnode\+Winner}\label{class_c_stormnode_sync_ad0db06b3a1913c0c40c8e6719953d346}
+
+
+Definition at line 51 of file stormnode-\/sync.\+h.
+
+\hypertarget{class_c_stormnode_sync_a5499eabbf28dc8ec6f77cfef1569dbb7}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!last\+Budget\+Item@{last\+Budget\+Item}}
+\index{last\+Budget\+Item@{last\+Budget\+Item}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{last\+Budget\+Item}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int64\+\_\+t} C\+Stormnode\+Sync\+::last\+Budget\+Item}\label{class_c_stormnode_sync_a5499eabbf28dc8ec6f77cfef1569dbb7}
+
+
+Definition at line 40 of file stormnode-\/sync.\+h.
+
+\hypertarget{class_c_stormnode_sync_a8b236ed2df48f8d8fdbec1e07872f34f}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!last\+Failure@{last\+Failure}}
+\index{last\+Failure@{last\+Failure}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{last\+Failure}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int64\+\_\+t} C\+Stormnode\+Sync\+::last\+Failure}\label{class_c_stormnode_sync_a8b236ed2df48f8d8fdbec1e07872f34f}
+
+
+Definition at line 41 of file stormnode-\/sync.\+h.
+
+\hypertarget{class_c_stormnode_sync_aeb0a6f0e92f6f1f25c5d9fa6c2b15bbd}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!last\+Stormnode\+List@{last\+Stormnode\+List}}
+\index{last\+Stormnode\+List@{last\+Stormnode\+List}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{last\+Stormnode\+List}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int64\+\_\+t} C\+Stormnode\+Sync\+::last\+Stormnode\+List}\label{class_c_stormnode_sync_aeb0a6f0e92f6f1f25c5d9fa6c2b15bbd}
+
+
+Definition at line 38 of file stormnode-\/sync.\+h.
+
+\hypertarget{class_c_stormnode_sync_a84ac2bc44ac623f8e679f2ba58034c7a}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!last\+Stormnode\+Winner@{last\+Stormnode\+Winner}}
+\index{last\+Stormnode\+Winner@{last\+Stormnode\+Winner}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{last\+Stormnode\+Winner}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int64\+\_\+t} C\+Stormnode\+Sync\+::last\+Stormnode\+Winner}\label{class_c_stormnode_sync_a84ac2bc44ac623f8e679f2ba58034c7a}
+
+
+Definition at line 39 of file stormnode-\/sync.\+h.
+
+\hypertarget{class_c_stormnode_sync_a7555b263aa695f48c81f4051c1a4788c}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!map\+Seen\+Sync\+Budget@{map\+Seen\+Sync\+Budget}}
+\index{map\+Seen\+Sync\+Budget@{map\+Seen\+Sync\+Budget}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{map\+Seen\+Sync\+Budget}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<${\bf uint256}, int$>$ C\+Stormnode\+Sync\+::map\+Seen\+Sync\+Budget}\label{class_c_stormnode_sync_a7555b263aa695f48c81f4051c1a4788c}
+
+
+Definition at line 36 of file stormnode-\/sync.\+h.
+
+\hypertarget{class_c_stormnode_sync_ab5874fbd02e921572983d1530cc7d69e}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!map\+Seen\+Sync\+S\+N\+B@{map\+Seen\+Sync\+S\+N\+B}}
+\index{map\+Seen\+Sync\+S\+N\+B@{map\+Seen\+Sync\+S\+N\+B}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{map\+Seen\+Sync\+S\+N\+B}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<${\bf uint256}, int$>$ C\+Stormnode\+Sync\+::map\+Seen\+Sync\+S\+N\+B}\label{class_c_stormnode_sync_ab5874fbd02e921572983d1530cc7d69e}
+
+
+Definition at line 34 of file stormnode-\/sync.\+h.
+
+\hypertarget{class_c_stormnode_sync_aa691249c2bfd876d49d24b82b3df7048}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!map\+Seen\+Sync\+S\+N\+W@{map\+Seen\+Sync\+S\+N\+W}}
+\index{map\+Seen\+Sync\+S\+N\+W@{map\+Seen\+Sync\+S\+N\+W}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{map\+Seen\+Sync\+S\+N\+W}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<${\bf uint256}, int$>$ C\+Stormnode\+Sync\+::map\+Seen\+Sync\+S\+N\+W}\label{class_c_stormnode_sync_aa691249c2bfd876d49d24b82b3df7048}
+
+
+Definition at line 35 of file stormnode-\/sync.\+h.
+
+\hypertarget{class_c_stormnode_sync_a2e7baab6709175db874ce9bc325c762d}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!n\+Asset\+Sync\+Started@{n\+Asset\+Sync\+Started}}
+\index{n\+Asset\+Sync\+Started@{n\+Asset\+Sync\+Started}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{n\+Asset\+Sync\+Started}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int64\+\_\+t} C\+Stormnode\+Sync\+::n\+Asset\+Sync\+Started}\label{class_c_stormnode_sync_a2e7baab6709175db874ce9bc325c762d}
+
+
+Definition at line 60 of file stormnode-\/sync.\+h.
+
+\hypertarget{class_c_stormnode_sync_ad7944c7fc57bc0288472b1f88fbd88e6}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!n\+Count\+Failures@{n\+Count\+Failures}}
+\index{n\+Count\+Failures@{n\+Count\+Failures}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{n\+Count\+Failures}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Stormnode\+Sync\+::n\+Count\+Failures}\label{class_c_stormnode_sync_ad7944c7fc57bc0288472b1f88fbd88e6}
+
+
+Definition at line 42 of file stormnode-\/sync.\+h.
+
+\hypertarget{class_c_stormnode_sync_abd82a675dc58c17710dac55b20426945}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!Requested\+Stormnode\+Assets@{Requested\+Stormnode\+Assets}}
+\index{Requested\+Stormnode\+Assets@{Requested\+Stormnode\+Assets}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{Requested\+Stormnode\+Assets}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Stormnode\+Sync\+::\+Requested\+Stormnode\+Assets}\label{class_c_stormnode_sync_abd82a675dc58c17710dac55b20426945}
+
+
+Definition at line 56 of file stormnode-\/sync.\+h.
+
+\hypertarget{class_c_stormnode_sync_a66dcbc68478f042210ec161a7aba7fd5}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!Requested\+Stormnode\+Attempt@{Requested\+Stormnode\+Attempt}}
+\index{Requested\+Stormnode\+Attempt@{Requested\+Stormnode\+Attempt}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{Requested\+Stormnode\+Attempt}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Stormnode\+Sync\+::\+Requested\+Stormnode\+Attempt}\label{class_c_stormnode_sync_a66dcbc68478f042210ec161a7aba7fd5}
+
+
+Definition at line 57 of file stormnode-\/sync.\+h.
+
+\hypertarget{class_c_stormnode_sync_ae54e3ff056c6bab202db68c4ceb0792e}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!sum\+Budget\+Item\+Fin@{sum\+Budget\+Item\+Fin}}
+\index{sum\+Budget\+Item\+Fin@{sum\+Budget\+Item\+Fin}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{sum\+Budget\+Item\+Fin}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Stormnode\+Sync\+::sum\+Budget\+Item\+Fin}\label{class_c_stormnode_sync_ae54e3ff056c6bab202db68c4ceb0792e}
+
+
+Definition at line 48 of file stormnode-\/sync.\+h.
+
+\hypertarget{class_c_stormnode_sync_a04a5e8c869c0b3802ce5ab2b8d0c7952}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!sum\+Budget\+Item\+Prop@{sum\+Budget\+Item\+Prop}}
+\index{sum\+Budget\+Item\+Prop@{sum\+Budget\+Item\+Prop}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{sum\+Budget\+Item\+Prop}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Stormnode\+Sync\+::sum\+Budget\+Item\+Prop}\label{class_c_stormnode_sync_a04a5e8c869c0b3802ce5ab2b8d0c7952}
+
+
+Definition at line 47 of file stormnode-\/sync.\+h.
+
+\hypertarget{class_c_stormnode_sync_a3049bd8c09a2b946e99bb1ffca5ebd97}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!sum\+Stormnode\+List@{sum\+Stormnode\+List}}
+\index{sum\+Stormnode\+List@{sum\+Stormnode\+List}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{sum\+Stormnode\+List}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Stormnode\+Sync\+::sum\+Stormnode\+List}\label{class_c_stormnode_sync_a3049bd8c09a2b946e99bb1ffca5ebd97}
+
+
+Definition at line 45 of file stormnode-\/sync.\+h.
+
+\hypertarget{class_c_stormnode_sync_a37b84e2f05256e44f9d0c80a87b26895}{}\index{C\+Stormnode\+Sync@{C\+Stormnode\+Sync}!sum\+Stormnode\+Winner@{sum\+Stormnode\+Winner}}
+\index{sum\+Stormnode\+Winner@{sum\+Stormnode\+Winner}!C\+Stormnode\+Sync@{C\+Stormnode\+Sync}}
+\subsubsection[{sum\+Stormnode\+Winner}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Stormnode\+Sync\+::sum\+Stormnode\+Winner}\label{class_c_stormnode_sync_a37b84e2f05256e44f9d0c80a87b26895}
+
+
+Definition at line 46 of file stormnode-\/sync.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/\hyperlink{stormnode-sync_8h}{stormnode-\/sync.\+h}\item 
+/home/dev/ds-\/160209/src/\hyperlink{stormnode-sync_8cpp}{stormnode-\/sync.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="lax__der__parsing_8h" kind="file" language="C++">
+    <compoundname>lax_der_parsing.h</compoundname>
+    <includes refid="secp256k1_8h" local="no">secp256k1.h</includes>
+    <includedby refid="lax__der__parsing_8c" local="yes">/home/dev/ds-160209/src/secp256k1/contrib/lax_der_parsing.c</includedby>
+    <incdepgraph>
+      <node id="22047">
+        <label>secp256k1.h</label>
+        <link refid="secp256k1_8h"/>
+        <childnode refid="22048" relation="include">
+        </childnode>
+      </node>
+      <node id="22048">
+        <label>stddef.h</label>
+      </node>
+      <node id="22046">
+        <label>/home/dev/ds-160209/src/secp256k1/contrib/lax_der_parsing.h</label>
+        <link refid="lax_der_parsing.h"/>
+        <childnode refid="22047" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="22051">
+        <label>/home/dev/ds-160209/src/secp256k1/src/tests.c</label>
+        <link refid="tests_8c"/>
+      </node>
+      <node id="22050">
+        <label>/home/dev/ds-160209/src/secp256k1/contrib/lax_der_parsing.c</label>
+        <link refid="lax__der__parsing_8c"/>
+        <childnode refid="22051" relation="include">
+        </childnode>
+      </node>
+      <node id="22049">
+        <label>/home/dev/ds-160209/src/secp256k1/contrib/lax_der_parsing.h</label>
+        <link refid="lax_der_parsing.h"/>
+        <childnode refid="22050" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="lax__der__parsing_8h_1a8c6e1225540c46bf7080cabde2c4e691" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int ecdsa_signature_parse_der_lax</definition>
+        <argsstring>(const secp256k1_context *ctx, secp256k1_ecdsa_signature *sig, const unsigned char *input, size_t inputlen) SECP256K1_ARG_NONNULL(1) SECP256K1_ARG_NONNULL(2) SECP256K1_ARG_NONNULL(3)</argsstring>
+        <name>ecdsa_signature_parse_der_lax</name>
+        <param>
+          <type>const <ref refid="secp256k1_8h_1a282ec9e6dfec8c35955c3eb2f7476e5e" kindref="member">secp256k1_context</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type><ref refid="structsecp256k1__ecdsa__signature" kindref="compound">secp256k1_ecdsa_signature</ref> *</type>
+          <declname>sig</declname>
+        </param>
+        <param>
+          <type>const unsigned char *</type>
+          <declname>input</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>inputlen</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Parse a signature in &quot;lax DER&quot; format</para><para>Returns: 1 when the signature could be parsed, 0 otherwise. Args: ctx: a secp256k1 context object Out: sig: a pointer to a signature object In: input: a pointer to the signature to be parsed inputlen: the length of the array pointed to be input</para><para>This function will accept any valid DER encoded signature, even if the encoded numbers are out of range. In addition, it will accept signatures which violate the DER spec in various ways. Its purpose is to allow validation of the Bitcoin blockchain, which includes non-DER signatures from before the network rules were updated to enforce DER. Note that the set of supported violations is a strict subset of what OpenSSL will accept.</para><para>After the call, sig will always be initialized. If parsing failed or the encoded numbers are out of range, signature validation with it is guaranteed to fail for every message and public key. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/contrib/lax_der_parsing.h" line="80" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/contrib/lax_der_parsing.c" bodystart="12" bodyend="149"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**********************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2015-2016<sp/>Pieter<sp/>Wuille<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Distributed<sp/>under<sp/>the<sp/>MIT<sp/>software<sp/>license,<sp/>see<sp/>the<sp/>accompanying<sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>file<sp/>COPYING<sp/>or<sp/>http://www.opensource.org/licenses/mit-license.php.*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>**********************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">/****</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>Please<sp/>do<sp/>not<sp/>link<sp/>this<sp/>file<sp/>directly.<sp/>It<sp/>is<sp/>not<sp/>part<sp/>of<sp/>the<sp/>libsecp256k1</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>project<sp/>and<sp/>does<sp/>not<sp/>promise<sp/>any<sp/>stability<sp/>in<sp/>its<sp/>API,<sp/>functionality<sp/>or</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>presence.<sp/>Projects<sp/>which<sp/>use<sp/>this<sp/>code<sp/>should<sp/>instead<sp/>copy<sp/>this<sp/>header</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>and<sp/>its<sp/>accompanying<sp/>.c<sp/>file<sp/>directly<sp/>into<sp/>their<sp/>codebase.</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>****/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>This<sp/>file<sp/>defines<sp/>a<sp/>function<sp/>that<sp/>parses<sp/>DER<sp/>with<sp/>various<sp/>errors<sp/>and</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"><sp/>*<sp/>violations.<sp/>This<sp/>is<sp/>not<sp/>a<sp/>part<sp/>of<sp/>the<sp/>library<sp/>itself,<sp/>because<sp/>the<sp/>allowed</highlight></codeline>
+<codeline lineno="16"><highlight class="comment"><sp/>*<sp/>violations<sp/>are<sp/>chosen<sp/>arbitrarily<sp/>and<sp/>do<sp/>not<sp/>follow<sp/>or<sp/>establish<sp/>any</highlight></codeline>
+<codeline lineno="17"><highlight class="comment"><sp/>*<sp/>standard.</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="19"><highlight class="comment"><sp/>*<sp/>In<sp/>many<sp/>places<sp/>it<sp/>matters<sp/>that<sp/>different<sp/>implementations<sp/>do<sp/>not<sp/>only<sp/>accept</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"><sp/>*<sp/>the<sp/>same<sp/>set<sp/>of<sp/>valid<sp/>signatures,<sp/>but<sp/>also<sp/>reject<sp/>the<sp/>same<sp/>set<sp/>of<sp/>signatures.</highlight></codeline>
+<codeline lineno="21"><highlight class="comment"><sp/>*<sp/>The<sp/>only<sp/>means<sp/>to<sp/>accomplish<sp/>that<sp/>is<sp/>by<sp/>strictly<sp/>obeying<sp/>a<sp/>standard,<sp/>and<sp/>not</highlight></codeline>
+<codeline lineno="22"><highlight class="comment"><sp/>*<sp/>accepting<sp/>anything<sp/>else.</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"><sp/>*<sp/>Nonetheless,<sp/>sometimes<sp/>there<sp/>is<sp/>a<sp/>need<sp/>for<sp/>compatibility<sp/>with<sp/>systems<sp/>that</highlight></codeline>
+<codeline lineno="25"><highlight class="comment"><sp/>*<sp/>use<sp/>signatures<sp/>which<sp/>do<sp/>not<sp/>strictly<sp/>obey<sp/>DER.<sp/>The<sp/>snippet<sp/>below<sp/>shows<sp/>how</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"><sp/>*<sp/>certain<sp/>violations<sp/>are<sp/>easily<sp/>supported.<sp/>You<sp/>may<sp/>need<sp/>to<sp/>adapt<sp/>it.</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="28"><highlight class="comment"><sp/>*<sp/>Do<sp/>not<sp/>use<sp/>this<sp/>for<sp/>new<sp/>systems.<sp/>Use<sp/>well-defined<sp/>DER<sp/>or<sp/>compact<sp/>signatures</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"><sp/>*<sp/>instead<sp/>if<sp/>you<sp/>have<sp/>the<sp/>choice<sp/>(see<sp/>secp256k1_ecdsa_signature_parse_der<sp/>and</highlight></codeline>
+<codeline lineno="30"><highlight class="comment"><sp/>*<sp/>secp256k1_ecdsa_signature_parse_compact).</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="32"><highlight class="comment"><sp/>*<sp/>The<sp/>supported<sp/>violations<sp/>are:</highlight></codeline>
+<codeline lineno="33"><highlight class="comment"><sp/>*<sp/>-<sp/>All<sp/>numbers<sp/>are<sp/>parsed<sp/>as<sp/>nonnegative<sp/>integers,<sp/>even<sp/>though<sp/>X.609-0207</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"><sp/>*<sp/><sp/><sp/>section<sp/>8.3.3<sp/>specifies<sp/>that<sp/>integers<sp/>are<sp/>always<sp/>encoded<sp/>as<sp/>two&apos;s</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/>*<sp/><sp/><sp/>complement.</highlight></codeline>
+<codeline lineno="36"><highlight class="comment"><sp/>*<sp/>-<sp/>Integers<sp/>can<sp/>have<sp/>length<sp/>0,<sp/>even<sp/>though<sp/>section<sp/>8.3.1<sp/>says<sp/>they<sp/>can&apos;t.</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/>*<sp/>-<sp/>Integers<sp/>with<sp/>overly<sp/>long<sp/>padding<sp/>are<sp/>accepted,<sp/>violation<sp/>section</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/>*<sp/><sp/><sp/>8.3.2.</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/>*<sp/>-<sp/>127-byte<sp/>long<sp/>length<sp/>descriptors<sp/>are<sp/>accepted,<sp/>even<sp/>though<sp/>section</highlight></codeline>
+<codeline lineno="40"><highlight class="comment"><sp/>*<sp/><sp/><sp/>8.1.3.5.c<sp/>says<sp/>that<sp/>they<sp/>are<sp/>not.</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"><sp/>*<sp/>-<sp/>Trailing<sp/>garbage<sp/>data<sp/>inside<sp/>or<sp/>after<sp/>the<sp/>signature<sp/>is<sp/>ignored.</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"><sp/>*<sp/>-<sp/>The<sp/>length<sp/>descriptor<sp/>of<sp/>the<sp/>sequence<sp/>is<sp/>ignored.</highlight></codeline>
+<codeline lineno="43"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"><sp/>*<sp/>Compared<sp/>to<sp/>for<sp/>example<sp/>OpenSSL,<sp/>many<sp/>violations<sp/>are<sp/>NOT<sp/>supported:</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"><sp/>*<sp/>-<sp/>Using<sp/>overly<sp/>long<sp/>tag<sp/>descriptors<sp/>for<sp/>the<sp/>sequence<sp/>or<sp/>integers<sp/>inside,</highlight></codeline>
+<codeline lineno="46"><highlight class="comment"><sp/>*<sp/><sp/><sp/>violating<sp/>section<sp/>8.1.2.2.</highlight></codeline>
+<codeline lineno="47"><highlight class="comment"><sp/>*<sp/>-<sp/>Encoding<sp/>primitive<sp/>integers<sp/>as<sp/>constructed<sp/>values,<sp/>violating<sp/>section</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"><sp/>*<sp/><sp/><sp/>8.3.1.</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>_SECP256K1_CONTRIB_LAX_DER_PARSING_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_SECP256K1_CONTRIB_LAX_DER_PARSING_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="secp256k1_8h" kindref="compound">secp256k1.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;C&quot;</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="lax__der__parsing_8h_1a8c6e1225540c46bf7080cabde2c4e691" kindref="member">ecdsa_signature_parse_der_lax</ref>(</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__context__struct" kindref="compound">secp256k1_context</ref>*<sp/>ctx,</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structsecp256k1__ecdsa__signature" kindref="compound">secp256k1_ecdsa_signature</ref>*<sp/>sig,</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*input,</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>inputlen</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">)<sp/><ref refid="secp256k1_8h_1a03c194d8fa91b9b66758b36c91e0b5cb" kindref="member">SECP256K1_ARG_NONNULL</ref>(1)<sp/><ref refid="secp256k1_8h_1a03c194d8fa91b9b66758b36c91e0b5cb" kindref="member">SECP256K1_ARG_NONNULL</ref>(2)<sp/><ref refid="secp256k1_8h_1a03c194d8fa91b9b66758b36c91e0b5cb" kindref="member">SECP256K1_ARG_NONNULL</ref>(3);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>__cplusplus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/secp256k1/contrib/lax_der_parsing.h"/>
+  </compounddef>
+</doxygen>

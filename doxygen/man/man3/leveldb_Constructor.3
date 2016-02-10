@@ -1,0 +1,83 @@
+.TH "leveldb::Constructor" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+leveldb::Constructor \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherited by \fBleveldb::BlockConstructor\fP, \fBleveldb::DBConstructor\fP, \fBleveldb::MemTableConstructor\fP, and \fBleveldb::TableConstructor\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBConstructor\fP (const \fBComparator\fP *\fBcmp\fP)"
+.br
+.ti -1c
+.RI "virtual \fB~Constructor\fP ()"
+.br
+.ti -1c
+.RI "void \fBAdd\fP (const std::string &key, const \fBSlice\fP &\fBvalue\fP)"
+.br
+.ti -1c
+.RI "void \fBFinish\fP (const \fBOptions\fP &options, std::vector< std::string > *keys, \fBKVMap\fP *kvmap)"
+.br
+.ti -1c
+.RI "virtual \fBStatus\fP \fBFinishImpl\fP (const \fBOptions\fP &options, const \fBKVMap\fP &\fBdata\fP)=0"
+.br
+.ti -1c
+.RI "virtual \fBIterator\fP * \fBNewIterator\fP () const =0"
+.br
+.ti -1c
+.RI "virtual const \fBKVMap\fP & \fBdata\fP ()"
+.br
+.ti -1c
+.RI "virtual \fBDB\fP * \fBdb\fP () const "
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 141 of file table_test\&.cc\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "leveldb::Constructor::Constructor (const \fBComparator\fP * cmp)\fC [inline]\fP, \fC [explicit]\fP"
+
+.PP
+Definition at line 143 of file table_test\&.cc\&.
+.SS "virtual leveldb::Constructor::~Constructor ()\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 144 of file table_test\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void leveldb::Constructor::Add (const std::string & key, const \fBSlice\fP & value)\fC [inline]\fP"
+
+.PP
+Definition at line 146 of file table_test\&.cc\&.
+.SS "virtual const \fBKVMap\fP& leveldb::Constructor::data ()\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 173 of file table_test\&.cc\&.
+.SS "virtual \fBDB\fP* leveldb::Constructor::db () const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Reimplemented in \fBleveldb::DBConstructor\fP\&.
+.PP
+Definition at line 175 of file table_test\&.cc\&.
+.SS "void leveldb::Constructor::Finish (const \fBOptions\fP & options, std::vector< std::string > * keys, \fBKVMap\fP * kvmap)\fC [inline]\fP"
+
+.PP
+Definition at line 153 of file table_test\&.cc\&.
+.SS "virtual \fBStatus\fP leveldb::Constructor::FinishImpl (const \fBOptions\fP & options, const \fBKVMap\fP & data)\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBleveldb::DBConstructor\fP, \fBleveldb::MemTableConstructor\fP, \fBleveldb::TableConstructor\fP, and \fBleveldb::BlockConstructor\fP\&.
+.SS "virtual \fBIterator\fP* leveldb::Constructor::NewIterator () const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBleveldb::DBConstructor\fP, \fBleveldb::MemTableConstructor\fP, \fBleveldb::TableConstructor\fP, and \fBleveldb::BlockConstructor\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

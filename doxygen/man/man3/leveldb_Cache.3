@@ -1,0 +1,76 @@
+.TH "leveldb::Cache" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+leveldb::Cache \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <cache\&.h>\fP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBHandle\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCache\fP ()"
+.br
+.ti -1c
+.RI "virtual \fB~Cache\fP ()"
+.br
+.ti -1c
+.RI "virtual \fBHandle\fP * \fBInsert\fP (const \fBSlice\fP &key, void *\fBvalue\fP, size_t \fBcharge\fP, void(*\fBdeleter\fP)(const \fBSlice\fP &key, void *\fBvalue\fP))=0"
+.br
+.ti -1c
+.RI "virtual \fBHandle\fP * \fBLookup\fP (const \fBSlice\fP &key)=0"
+.br
+.ti -1c
+.RI "virtual void \fBRelease\fP (\fBHandle\fP *handle)=0"
+.br
+.ti -1c
+.RI "virtual void * \fBValue\fP (\fBHandle\fP *handle)=0"
+.br
+.ti -1c
+.RI "virtual void \fBErase\fP (const \fBSlice\fP &key)=0"
+.br
+.ti -1c
+.RI "virtual \fBuint64_t\fP \fBNewId\fP ()=0"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 32 of file cache\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "leveldb::Cache::Cache ()\fC [inline]\fP"
+
+.PP
+Definition at line 34 of file cache\&.h\&.
+.SS "leveldb::Cache::~Cache ()\fC [virtual]\fP"
+
+.PP
+Definition at line 16 of file cache\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void leveldb::Cache::Erase (const \fBSlice\fP & key)\fC [pure virtual]\fP"
+
+.SS "virtual \fBHandle\fP* leveldb::Cache::Insert (const \fBSlice\fP & key, void * value, size_t charge, void(*)(const \fBSlice\fP &key, void *\fBvalue\fP) deleter)\fC [pure virtual]\fP"
+
+.SS "virtual \fBHandle\fP* leveldb::Cache::Lookup (const \fBSlice\fP & key)\fC [pure virtual]\fP"
+
+.SS "virtual \fBuint64_t\fP leveldb::Cache::NewId ()\fC [pure virtual]\fP"
+
+.SS "virtual void leveldb::Cache::Release (\fBHandle\fP * handle)\fC [pure virtual]\fP"
+
+.SS "virtual void* leveldb::Cache::Value (\fBHandle\fP * handle)\fC [pure virtual]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

@@ -1,0 +1,331 @@
+\hypertarget{core_8h}{}\section{/home/dev/ds-\/160209/src/crypto/argon2/core.h File Reference}
+\label{core_8h}\index{/home/dev/ds-\/160209/src/crypto/argon2/core.\+h@{/home/dev/ds-\/160209/src/crypto/argon2/core.\+h}}
+{\ttfamily \#include \char`\"{}argon2.\+h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structblock__}{block\+\_\+}
+\item 
+struct \hyperlink{struct_argon2__instance__t}{Argon2\+\_\+instance\+\_\+t}
+\item 
+struct \hyperlink{struct_argon2__position__t}{Argon2\+\_\+position\+\_\+t}
+\item 
+struct \hyperlink{struct_argon2__thread__data}{Argon2\+\_\+thread\+\_\+data}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{core_8h_abe7f8cd9a0ce69b71567a3870415be66}{A\+L\+I\+G\+N}(x)
+\item 
+\#define \hyperlink{core_8h_a2f0e75e2f3550734177e96d518a16131}{C\+O\+N\+S\+T\+\_\+\+C\+A\+S\+T}(x)~(x)(uintptr\+\_\+t)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structblock__}{block\+\_\+} \hyperlink{core_8h_ace80c27428e237fe24f54ae915a36133}{block}
+\item 
+typedef struct \hyperlink{struct_argon2__instance__t}{Argon2\+\_\+instance\+\_\+t} \hyperlink{core_8h_ac888abc6f5f9faa538ff23dc92b1e1c2}{argon2\+\_\+instance\+\_\+t}
+\item 
+typedef struct \hyperlink{struct_argon2__position__t}{Argon2\+\_\+position\+\_\+t} \hyperlink{core_8h_a24aa65731593323bf283524ded8b6cdb}{argon2\+\_\+position\+\_\+t}
+\item 
+typedef struct \hyperlink{struct_argon2__thread__data}{Argon2\+\_\+thread\+\_\+data} \hyperlink{core_8h_a27cd8868d8f007ca6ee66a0239336c33}{argon2\+\_\+thread\+\_\+data}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{core_8h_a7f5657d0a2dc42b3d802b8200858b93c}{argon2\+\_\+core\+\_\+constants} \{ \\*
+\hyperlink{core_8h_a7f5657d0a2dc42b3d802b8200858b93ca7df6eafcd1c55e7d3e8a345df7dc1573}{A\+R\+G\+O\+N2\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+N\+U\+M\+B\+E\+R} = 0x10, 
+\hyperlink{core_8h_a7f5657d0a2dc42b3d802b8200858b93ca7e67b2b3fa64292ce300e481924d0f00}{A\+R\+G\+O\+N2\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+Z\+E} = 1024, 
+\hyperlink{core_8h_a7f5657d0a2dc42b3d802b8200858b93cae7f95c31492458d44a7c7511a9212e18}{A\+R\+G\+O\+N2\+\_\+\+Q\+W\+O\+R\+D\+S\+\_\+\+I\+N\+\_\+\+B\+L\+O\+C\+K} = A\+R\+G\+O\+N2\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+Z\+E / 8, 
+\hyperlink{core_8h_a7f5657d0a2dc42b3d802b8200858b93cad77d2fc87fee45d7465b0664d47c3789}{A\+R\+G\+O\+N2\+\_\+\+O\+W\+O\+R\+D\+S\+\_\+\+I\+N\+\_\+\+B\+L\+O\+C\+K} = A\+R\+G\+O\+N2\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+Z\+E / 16, 
+\\*
+\hyperlink{core_8h_a7f5657d0a2dc42b3d802b8200858b93ca3e55548ad9759ef13649dc00ec9043f9}{A\+R\+G\+O\+N2\+\_\+\+A\+D\+D\+R\+E\+S\+S\+E\+S\+\_\+\+I\+N\+\_\+\+B\+L\+O\+C\+K} = 128, 
+\hyperlink{core_8h_a7f5657d0a2dc42b3d802b8200858b93caf287344a0238ddbec64b9ab12c03facd}{A\+R\+G\+O\+N2\+\_\+\+P\+R\+E\+H\+A\+S\+H\+\_\+\+D\+I\+G\+E\+S\+T\+\_\+\+L\+E\+N\+G\+T\+H} = 64, 
+\hyperlink{core_8h_a7f5657d0a2dc42b3d802b8200858b93ca7e78c4d3c85cf3491030e561ff21133b}{A\+R\+G\+O\+N2\+\_\+\+P\+R\+E\+H\+A\+S\+H\+\_\+\+S\+E\+E\+D\+\_\+\+L\+E\+N\+G\+T\+H} = 72
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{core_8h_a7115f6986a42420746ebdd264404a05c}{init\+\_\+block\+\_\+value} (\hyperlink{core_8h_ace80c27428e237fe24f54ae915a36133}{block} $\ast$b, \hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} in)
+\item 
+void \hyperlink{core_8h_a7c9154420e1de71f92c54207dbfb9f53}{copy\+\_\+block} (\hyperlink{core_8h_ace80c27428e237fe24f54ae915a36133}{block} $\ast$dst, const \hyperlink{core_8h_ace80c27428e237fe24f54ae915a36133}{block} $\ast$src)
+\item 
+void \hyperlink{core_8h_abd86e6d9a6a744ec69ee9cba596a84fb}{xor\+\_\+block} (\hyperlink{core_8h_ace80c27428e237fe24f54ae915a36133}{block} $\ast$dst, const \hyperlink{core_8h_ace80c27428e237fe24f54ae915a36133}{block} $\ast$src)
+\item 
+int \hyperlink{core_8h_a583432693a831e17af94e1c22997b700}{allocate\+\_\+memory} (\hyperlink{core_8h_ace80c27428e237fe24f54ae915a36133}{block} $\ast$$\ast$memory, \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} m\+\_\+cost)
+\item 
+void \hyperlink{core_8h_aecea0a34f254c587bcf1b05a35816488}{secure\+\_\+wipe\+\_\+memory} (void $\ast$v, size\+\_\+t n)
+\item 
+void \hyperlink{core_8h_a6d372c2918bb6ae9838a25df7167d471}{clear\+\_\+memory} (\hyperlink{core_8h_ac888abc6f5f9faa538ff23dc92b1e1c2}{argon2\+\_\+instance\+\_\+t} $\ast$instance, int clear)
+\item 
+void \hyperlink{core_8h_a2374821cf76a4624e6577b00653094e2}{free\+\_\+memory} (\hyperlink{core_8h_ace80c27428e237fe24f54ae915a36133}{block} $\ast$memory)
+\item 
+\hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} \hyperlink{core_8h_a67f6f4720426f8e34553e2f1608f70bf}{index\+\_\+alpha} (const \hyperlink{core_8h_ac888abc6f5f9faa538ff23dc92b1e1c2}{argon2\+\_\+instance\+\_\+t} $\ast$instance, const \hyperlink{core_8h_a24aa65731593323bf283524ded8b6cdb}{argon2\+\_\+position\+\_\+t} $\ast$position, \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} pseudo\+\_\+rand, int same\+\_\+lane)
+\item 
+int \hyperlink{core_8h_afff47dd1eae5498564ec99545dedece8}{validate\+\_\+inputs} (const \hyperlink{argon2_8h_a43c74dc5ed515632feee9b2e1ff3e09f}{argon2\+\_\+context} $\ast$context)
+\item 
+void \hyperlink{core_8h_a777bb6205a6ad0da9b85a7c2ae61f7c8}{initial\+\_\+hash} (\hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$blockhash, \hyperlink{argon2_8h_a43c74dc5ed515632feee9b2e1ff3e09f}{argon2\+\_\+context} $\ast$context, \hyperlink{argon2_8h_af51eac9927f7f234943d076166aacf84}{argon2\+\_\+type} type)
+\item 
+void \hyperlink{core_8h_a96c3c9f5727d9f0224b923c723f0ed8e}{fill\+\_\+first\+\_\+blocks} (\hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$blockhash, const \hyperlink{core_8h_ac888abc6f5f9faa538ff23dc92b1e1c2}{argon2\+\_\+instance\+\_\+t} $\ast$instance)
+\item 
+int \hyperlink{core_8h_ac4f3546c9e156e161179b7cb1b6565e5}{initialize} (\hyperlink{core_8h_ac888abc6f5f9faa538ff23dc92b1e1c2}{argon2\+\_\+instance\+\_\+t} $\ast$instance, \hyperlink{argon2_8h_a43c74dc5ed515632feee9b2e1ff3e09f}{argon2\+\_\+context} $\ast$context)
+\item 
+void \hyperlink{core_8h_aafd756bf3475038e2eada05bcaf31b18}{finalize} (const \hyperlink{argon2_8h_a43c74dc5ed515632feee9b2e1ff3e09f}{argon2\+\_\+context} $\ast$context, \hyperlink{core_8h_ac888abc6f5f9faa538ff23dc92b1e1c2}{argon2\+\_\+instance\+\_\+t} $\ast$instance)
+\item 
+void \hyperlink{core_8h_a7ba7d65e159824e7011eb23068e15f72}{fill\+\_\+segment} (const \hyperlink{core_8h_ac888abc6f5f9faa538ff23dc92b1e1c2}{argon2\+\_\+instance\+\_\+t} $\ast$instance, \hyperlink{core_8h_a24aa65731593323bf283524ded8b6cdb}{argon2\+\_\+position\+\_\+t} position)
+\item 
+int \hyperlink{core_8h_afc8e1540c9738230c2a993c9efcf2620}{fill\+\_\+memory\+\_\+blocks} (\hyperlink{core_8h_ac888abc6f5f9faa538ff23dc92b1e1c2}{argon2\+\_\+instance\+\_\+t} $\ast$instance)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{core_8h_abe7f8cd9a0ce69b71567a3870415be66}{}\index{core.\+h@{core.\+h}!A\+L\+I\+G\+N@{A\+L\+I\+G\+N}}
+\index{A\+L\+I\+G\+N@{A\+L\+I\+G\+N}!core.\+h@{core.\+h}}
+\subsubsection[{A\+L\+I\+G\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+L\+I\+G\+N(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)}\label{core_8h_abe7f8cd9a0ce69b71567a3870415be66}
+
+
+Definition at line 24 of file core.\+h.
+
+\hypertarget{core_8h_a2f0e75e2f3550734177e96d518a16131}{}\index{core.\+h@{core.\+h}!C\+O\+N\+S\+T\+\_\+\+C\+A\+S\+T@{C\+O\+N\+S\+T\+\_\+\+C\+A\+S\+T}}
+\index{C\+O\+N\+S\+T\+\_\+\+C\+A\+S\+T@{C\+O\+N\+S\+T\+\_\+\+C\+A\+S\+T}!core.\+h@{core.\+h}}
+\subsubsection[{C\+O\+N\+S\+T\+\_\+\+C\+A\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+O\+N\+S\+T\+\_\+\+C\+A\+S\+T(
+\begin{DoxyParamCaption}
+\item[{}]{x}
+\end{DoxyParamCaption}
+)~(x)(uintptr\+\_\+t)}\label{core_8h_a2f0e75e2f3550734177e96d518a16131}
+
+
+Definition at line 27 of file core.\+h.
+
+
+
+\subsection{Typedef Documentation}
+\hypertarget{core_8h_ac888abc6f5f9faa538ff23dc92b1e1c2}{}\index{core.\+h@{core.\+h}!argon2\+\_\+instance\+\_\+t@{argon2\+\_\+instance\+\_\+t}}
+\index{argon2\+\_\+instance\+\_\+t@{argon2\+\_\+instance\+\_\+t}!core.\+h@{core.\+h}}
+\subsubsection[{argon2\+\_\+instance\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Argon2\+\_\+instance\+\_\+t}  {\bf argon2\+\_\+instance\+\_\+t}}\label{core_8h_ac888abc6f5f9faa538ff23dc92b1e1c2}
+\hypertarget{core_8h_a24aa65731593323bf283524ded8b6cdb}{}\index{core.\+h@{core.\+h}!argon2\+\_\+position\+\_\+t@{argon2\+\_\+position\+\_\+t}}
+\index{argon2\+\_\+position\+\_\+t@{argon2\+\_\+position\+\_\+t}!core.\+h@{core.\+h}}
+\subsubsection[{argon2\+\_\+position\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Argon2\+\_\+position\+\_\+t}  {\bf argon2\+\_\+position\+\_\+t}}\label{core_8h_a24aa65731593323bf283524ded8b6cdb}
+\hypertarget{core_8h_a27cd8868d8f007ca6ee66a0239336c33}{}\index{core.\+h@{core.\+h}!argon2\+\_\+thread\+\_\+data@{argon2\+\_\+thread\+\_\+data}}
+\index{argon2\+\_\+thread\+\_\+data@{argon2\+\_\+thread\+\_\+data}!core.\+h@{core.\+h}}
+\subsubsection[{argon2\+\_\+thread\+\_\+data}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf Argon2\+\_\+thread\+\_\+data}  {\bf argon2\+\_\+thread\+\_\+data}}\label{core_8h_a27cd8868d8f007ca6ee66a0239336c33}
+\hypertarget{core_8h_ace80c27428e237fe24f54ae915a36133}{}\index{core.\+h@{core.\+h}!block@{block}}
+\index{block@{block}!core.\+h@{core.\+h}}
+\subsubsection[{block}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf block\+\_\+}  {\bf block}}\label{core_8h_ace80c27428e237fe24f54ae915a36133}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{core_8h_a7f5657d0a2dc42b3d802b8200858b93c}{}\index{core.\+h@{core.\+h}!argon2\+\_\+core\+\_\+constants@{argon2\+\_\+core\+\_\+constants}}
+\index{argon2\+\_\+core\+\_\+constants@{argon2\+\_\+core\+\_\+constants}!core.\+h@{core.\+h}}
+\subsubsection[{argon2\+\_\+core\+\_\+constants}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf argon2\+\_\+core\+\_\+constants}}\label{core_8h_a7f5657d0a2dc42b3d802b8200858b93c}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{A\+R\+G\+O\+N2\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+N\+U\+M\+B\+E\+R@{A\+R\+G\+O\+N2\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+N\+U\+M\+B\+E\+R}!core.\+h@{core.\+h}}\index{core.\+h@{core.\+h}!A\+R\+G\+O\+N2\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+N\+U\+M\+B\+E\+R@{A\+R\+G\+O\+N2\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+N\+U\+M\+B\+E\+R}}\item[{\em 
+\hypertarget{core_8h_a7f5657d0a2dc42b3d802b8200858b93ca7df6eafcd1c55e7d3e8a345df7dc1573}{}A\+R\+G\+O\+N2\+\_\+\+V\+E\+R\+S\+I\+O\+N\+\_\+\+N\+U\+M\+B\+E\+R\label{core_8h_a7f5657d0a2dc42b3d802b8200858b93ca7df6eafcd1c55e7d3e8a345df7dc1573}
+}]\index{A\+R\+G\+O\+N2\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+Z\+E@{A\+R\+G\+O\+N2\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+Z\+E}!core.\+h@{core.\+h}}\index{core.\+h@{core.\+h}!A\+R\+G\+O\+N2\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+Z\+E@{A\+R\+G\+O\+N2\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+Z\+E}}\item[{\em 
+\hypertarget{core_8h_a7f5657d0a2dc42b3d802b8200858b93ca7e67b2b3fa64292ce300e481924d0f00}{}A\+R\+G\+O\+N2\+\_\+\+B\+L\+O\+C\+K\+\_\+\+S\+I\+Z\+E\label{core_8h_a7f5657d0a2dc42b3d802b8200858b93ca7e67b2b3fa64292ce300e481924d0f00}
+}]\index{A\+R\+G\+O\+N2\+\_\+\+Q\+W\+O\+R\+D\+S\+\_\+\+I\+N\+\_\+\+B\+L\+O\+C\+K@{A\+R\+G\+O\+N2\+\_\+\+Q\+W\+O\+R\+D\+S\+\_\+\+I\+N\+\_\+\+B\+L\+O\+C\+K}!core.\+h@{core.\+h}}\index{core.\+h@{core.\+h}!A\+R\+G\+O\+N2\+\_\+\+Q\+W\+O\+R\+D\+S\+\_\+\+I\+N\+\_\+\+B\+L\+O\+C\+K@{A\+R\+G\+O\+N2\+\_\+\+Q\+W\+O\+R\+D\+S\+\_\+\+I\+N\+\_\+\+B\+L\+O\+C\+K}}\item[{\em 
+\hypertarget{core_8h_a7f5657d0a2dc42b3d802b8200858b93cae7f95c31492458d44a7c7511a9212e18}{}A\+R\+G\+O\+N2\+\_\+\+Q\+W\+O\+R\+D\+S\+\_\+\+I\+N\+\_\+\+B\+L\+O\+C\+K\label{core_8h_a7f5657d0a2dc42b3d802b8200858b93cae7f95c31492458d44a7c7511a9212e18}
+}]\index{A\+R\+G\+O\+N2\+\_\+\+O\+W\+O\+R\+D\+S\+\_\+\+I\+N\+\_\+\+B\+L\+O\+C\+K@{A\+R\+G\+O\+N2\+\_\+\+O\+W\+O\+R\+D\+S\+\_\+\+I\+N\+\_\+\+B\+L\+O\+C\+K}!core.\+h@{core.\+h}}\index{core.\+h@{core.\+h}!A\+R\+G\+O\+N2\+\_\+\+O\+W\+O\+R\+D\+S\+\_\+\+I\+N\+\_\+\+B\+L\+O\+C\+K@{A\+R\+G\+O\+N2\+\_\+\+O\+W\+O\+R\+D\+S\+\_\+\+I\+N\+\_\+\+B\+L\+O\+C\+K}}\item[{\em 
+\hypertarget{core_8h_a7f5657d0a2dc42b3d802b8200858b93cad77d2fc87fee45d7465b0664d47c3789}{}A\+R\+G\+O\+N2\+\_\+\+O\+W\+O\+R\+D\+S\+\_\+\+I\+N\+\_\+\+B\+L\+O\+C\+K\label{core_8h_a7f5657d0a2dc42b3d802b8200858b93cad77d2fc87fee45d7465b0664d47c3789}
+}]\index{A\+R\+G\+O\+N2\+\_\+\+A\+D\+D\+R\+E\+S\+S\+E\+S\+\_\+\+I\+N\+\_\+\+B\+L\+O\+C\+K@{A\+R\+G\+O\+N2\+\_\+\+A\+D\+D\+R\+E\+S\+S\+E\+S\+\_\+\+I\+N\+\_\+\+B\+L\+O\+C\+K}!core.\+h@{core.\+h}}\index{core.\+h@{core.\+h}!A\+R\+G\+O\+N2\+\_\+\+A\+D\+D\+R\+E\+S\+S\+E\+S\+\_\+\+I\+N\+\_\+\+B\+L\+O\+C\+K@{A\+R\+G\+O\+N2\+\_\+\+A\+D\+D\+R\+E\+S\+S\+E\+S\+\_\+\+I\+N\+\_\+\+B\+L\+O\+C\+K}}\item[{\em 
+\hypertarget{core_8h_a7f5657d0a2dc42b3d802b8200858b93ca3e55548ad9759ef13649dc00ec9043f9}{}A\+R\+G\+O\+N2\+\_\+\+A\+D\+D\+R\+E\+S\+S\+E\+S\+\_\+\+I\+N\+\_\+\+B\+L\+O\+C\+K\label{core_8h_a7f5657d0a2dc42b3d802b8200858b93ca3e55548ad9759ef13649dc00ec9043f9}
+}]\index{A\+R\+G\+O\+N2\+\_\+\+P\+R\+E\+H\+A\+S\+H\+\_\+\+D\+I\+G\+E\+S\+T\+\_\+\+L\+E\+N\+G\+T\+H@{A\+R\+G\+O\+N2\+\_\+\+P\+R\+E\+H\+A\+S\+H\+\_\+\+D\+I\+G\+E\+S\+T\+\_\+\+L\+E\+N\+G\+T\+H}!core.\+h@{core.\+h}}\index{core.\+h@{core.\+h}!A\+R\+G\+O\+N2\+\_\+\+P\+R\+E\+H\+A\+S\+H\+\_\+\+D\+I\+G\+E\+S\+T\+\_\+\+L\+E\+N\+G\+T\+H@{A\+R\+G\+O\+N2\+\_\+\+P\+R\+E\+H\+A\+S\+H\+\_\+\+D\+I\+G\+E\+S\+T\+\_\+\+L\+E\+N\+G\+T\+H}}\item[{\em 
+\hypertarget{core_8h_a7f5657d0a2dc42b3d802b8200858b93caf287344a0238ddbec64b9ab12c03facd}{}A\+R\+G\+O\+N2\+\_\+\+P\+R\+E\+H\+A\+S\+H\+\_\+\+D\+I\+G\+E\+S\+T\+\_\+\+L\+E\+N\+G\+T\+H\label{core_8h_a7f5657d0a2dc42b3d802b8200858b93caf287344a0238ddbec64b9ab12c03facd}
+}]\index{A\+R\+G\+O\+N2\+\_\+\+P\+R\+E\+H\+A\+S\+H\+\_\+\+S\+E\+E\+D\+\_\+\+L\+E\+N\+G\+T\+H@{A\+R\+G\+O\+N2\+\_\+\+P\+R\+E\+H\+A\+S\+H\+\_\+\+S\+E\+E\+D\+\_\+\+L\+E\+N\+G\+T\+H}!core.\+h@{core.\+h}}\index{core.\+h@{core.\+h}!A\+R\+G\+O\+N2\+\_\+\+P\+R\+E\+H\+A\+S\+H\+\_\+\+S\+E\+E\+D\+\_\+\+L\+E\+N\+G\+T\+H@{A\+R\+G\+O\+N2\+\_\+\+P\+R\+E\+H\+A\+S\+H\+\_\+\+S\+E\+E\+D\+\_\+\+L\+E\+N\+G\+T\+H}}\item[{\em 
+\hypertarget{core_8h_a7f5657d0a2dc42b3d802b8200858b93ca7e78c4d3c85cf3491030e561ff21133b}{}A\+R\+G\+O\+N2\+\_\+\+P\+R\+E\+H\+A\+S\+H\+\_\+\+S\+E\+E\+D\+\_\+\+L\+E\+N\+G\+T\+H\label{core_8h_a7f5657d0a2dc42b3d802b8200858b93ca7e78c4d3c85cf3491030e561ff21133b}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 32 of file core.\+h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{core_8h_a583432693a831e17af94e1c22997b700}{}\index{core.\+h@{core.\+h}!allocate\+\_\+memory@{allocate\+\_\+memory}}
+\index{allocate\+\_\+memory@{allocate\+\_\+memory}!core.\+h@{core.\+h}}
+\subsubsection[{allocate\+\_\+memory}]{\setlength{\rightskip}{0pt plus 5cm}int allocate\+\_\+memory (
+\begin{DoxyParamCaption}
+\item[{{\bf block} $\ast$$\ast$}]{memory, }
+\item[{{\bf uint32\+\_\+t}}]{m\+\_\+cost}
+\end{DoxyParamCaption}
+)}\label{core_8h_a583432693a831e17af94e1c22997b700}
+
+
+Definition at line 82 of file core.\+c.
+
+\hypertarget{core_8h_a6d372c2918bb6ae9838a25df7167d471}{}\index{core.\+h@{core.\+h}!clear\+\_\+memory@{clear\+\_\+memory}}
+\index{clear\+\_\+memory@{clear\+\_\+memory}!core.\+h@{core.\+h}}
+\subsubsection[{clear\+\_\+memory}]{\setlength{\rightskip}{0pt plus 5cm}void clear\+\_\+memory (
+\begin{DoxyParamCaption}
+\item[{{\bf argon2\+\_\+instance\+\_\+t} $\ast$}]{instance, }
+\item[{int}]{clear}
+\end{DoxyParamCaption}
+)}\label{core_8h_a6d372c2918bb6ae9838a25df7167d471}
+
+
+Definition at line 118 of file core.\+c.
+
+\hypertarget{core_8h_a7c9154420e1de71f92c54207dbfb9f53}{}\index{core.\+h@{core.\+h}!copy\+\_\+block@{copy\+\_\+block}}
+\index{copy\+\_\+block@{copy\+\_\+block}!core.\+h@{core.\+h}}
+\subsubsection[{copy\+\_\+block}]{\setlength{\rightskip}{0pt plus 5cm}void copy\+\_\+block (
+\begin{DoxyParamCaption}
+\item[{{\bf block} $\ast$}]{dst, }
+\item[{const {\bf block} $\ast$}]{src}
+\end{DoxyParamCaption}
+)}\label{core_8h_a7c9154420e1de71f92c54207dbfb9f53}
+
+
+Definition at line 56 of file core.\+c.
+
+\hypertarget{core_8h_a96c3c9f5727d9f0224b923c723f0ed8e}{}\index{core.\+h@{core.\+h}!fill\+\_\+first\+\_\+blocks@{fill\+\_\+first\+\_\+blocks}}
+\index{fill\+\_\+first\+\_\+blocks@{fill\+\_\+first\+\_\+blocks}!core.\+h@{core.\+h}}
+\subsubsection[{fill\+\_\+first\+\_\+blocks}]{\setlength{\rightskip}{0pt plus 5cm}void fill\+\_\+first\+\_\+blocks (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8\+\_\+t} $\ast$}]{blockhash, }
+\item[{const {\bf argon2\+\_\+instance\+\_\+t} $\ast$}]{instance}
+\end{DoxyParamCaption}
+)}\label{core_8h_a96c3c9f5727d9f0224b923c723f0ed8e}
+
+
+Definition at line 462 of file core.\+c.
+
+\hypertarget{core_8h_afc8e1540c9738230c2a993c9efcf2620}{}\index{core.\+h@{core.\+h}!fill\+\_\+memory\+\_\+blocks@{fill\+\_\+memory\+\_\+blocks}}
+\index{fill\+\_\+memory\+\_\+blocks@{fill\+\_\+memory\+\_\+blocks}!core.\+h@{core.\+h}}
+\subsubsection[{fill\+\_\+memory\+\_\+blocks}]{\setlength{\rightskip}{0pt plus 5cm}int fill\+\_\+memory\+\_\+blocks (
+\begin{DoxyParamCaption}
+\item[{{\bf argon2\+\_\+instance\+\_\+t} $\ast$}]{instance}
+\end{DoxyParamCaption}
+)}\label{core_8h_afc8e1540c9738230c2a993c9efcf2620}
+
+
+Definition at line 252 of file core.\+c.
+
+\hypertarget{core_8h_a7ba7d65e159824e7011eb23068e15f72}{}\index{core.\+h@{core.\+h}!fill\+\_\+segment@{fill\+\_\+segment}}
+\index{fill\+\_\+segment@{fill\+\_\+segment}!core.\+h@{core.\+h}}
+\subsubsection[{fill\+\_\+segment}]{\setlength{\rightskip}{0pt plus 5cm}void fill\+\_\+segment (
+\begin{DoxyParamCaption}
+\item[{const {\bf argon2\+\_\+instance\+\_\+t} $\ast$}]{instance, }
+\item[{{\bf argon2\+\_\+position\+\_\+t}}]{position}
+\end{DoxyParamCaption}
+)}\label{core_8h_a7ba7d65e159824e7011eb23068e15f72}
+
+
+Definition at line 86 of file opt.\+c.
+
+\hypertarget{core_8h_aafd756bf3475038e2eada05bcaf31b18}{}\index{core.\+h@{core.\+h}!finalize@{finalize}}
+\index{finalize@{finalize}!core.\+h@{core.\+h}}
+\subsubsection[{finalize}]{\setlength{\rightskip}{0pt plus 5cm}void finalize (
+\begin{DoxyParamCaption}
+\item[{const {\bf argon2\+\_\+context} $\ast$}]{context, }
+\item[{{\bf argon2\+\_\+instance\+\_\+t} $\ast$}]{instance}
+\end{DoxyParamCaption}
+)}\label{core_8h_aafd756bf3475038e2eada05bcaf31b18}
+
+
+Definition at line 127 of file core.\+c.
+
+\hypertarget{core_8h_a2374821cf76a4624e6577b00653094e2}{}\index{core.\+h@{core.\+h}!free\+\_\+memory@{free\+\_\+memory}}
+\index{free\+\_\+memory@{free\+\_\+memory}!core.\+h@{core.\+h}}
+\subsubsection[{free\+\_\+memory}]{\setlength{\rightskip}{0pt plus 5cm}void free\+\_\+memory (
+\begin{DoxyParamCaption}
+\item[{{\bf block} $\ast$}]{memory}
+\end{DoxyParamCaption}
+)}\label{core_8h_a2374821cf76a4624e6577b00653094e2}
+
+
+Definition at line 125 of file core.\+c.
+
+\hypertarget{core_8h_a67f6f4720426f8e34553e2f1608f70bf}{}\index{core.\+h@{core.\+h}!index\+\_\+alpha@{index\+\_\+alpha}}
+\index{index\+\_\+alpha@{index\+\_\+alpha}!core.\+h@{core.\+h}}
+\subsubsection[{index\+\_\+alpha}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint32\+\_\+t} index\+\_\+alpha (
+\begin{DoxyParamCaption}
+\item[{const {\bf argon2\+\_\+instance\+\_\+t} $\ast$}]{instance, }
+\item[{const {\bf argon2\+\_\+position\+\_\+t} $\ast$}]{position, }
+\item[{{\bf uint32\+\_\+t}}]{pseudo\+\_\+rand, }
+\item[{int}]{same\+\_\+lane}
+\end{DoxyParamCaption}
+)}\label{core_8h_a67f6f4720426f8e34553e2f1608f70bf}
+
+
+Definition at line 170 of file core.\+c.
+
+\hypertarget{core_8h_a7115f6986a42420746ebdd264404a05c}{}\index{core.\+h@{core.\+h}!init\+\_\+block\+\_\+value@{init\+\_\+block\+\_\+value}}
+\index{init\+\_\+block\+\_\+value@{init\+\_\+block\+\_\+value}!core.\+h@{core.\+h}}
+\subsubsection[{init\+\_\+block\+\_\+value}]{\setlength{\rightskip}{0pt plus 5cm}void init\+\_\+block\+\_\+value (
+\begin{DoxyParamCaption}
+\item[{{\bf block} $\ast$}]{b, }
+\item[{{\bf uint8\+\_\+t}}]{in}
+\end{DoxyParamCaption}
+)}\label{core_8h_a7115f6986a42420746ebdd264404a05c}
+
+
+Definition at line 54 of file core.\+c.
+
+\hypertarget{core_8h_a777bb6205a6ad0da9b85a7c2ae61f7c8}{}\index{core.\+h@{core.\+h}!initial\+\_\+hash@{initial\+\_\+hash}}
+\index{initial\+\_\+hash@{initial\+\_\+hash}!core.\+h@{core.\+h}}
+\subsubsection[{initial\+\_\+hash}]{\setlength{\rightskip}{0pt plus 5cm}void initial\+\_\+hash (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8\+\_\+t} $\ast$}]{blockhash, }
+\item[{{\bf argon2\+\_\+context} $\ast$}]{context, }
+\item[{{\bf argon2\+\_\+type}}]{type}
+\end{DoxyParamCaption}
+)}\label{core_8h_a777bb6205a6ad0da9b85a7c2ae61f7c8}
+
+
+Definition at line 485 of file core.\+c.
+
+\hypertarget{core_8h_ac4f3546c9e156e161179b7cb1b6565e5}{}\index{core.\+h@{core.\+h}!initialize@{initialize}}
+\index{initialize@{initialize}!core.\+h@{core.\+h}}
+\subsubsection[{initialize}]{\setlength{\rightskip}{0pt plus 5cm}int initialize (
+\begin{DoxyParamCaption}
+\item[{{\bf argon2\+\_\+instance\+\_\+t} $\ast$}]{instance, }
+\item[{{\bf argon2\+\_\+context} $\ast$}]{context}
+\end{DoxyParamCaption}
+)}\label{core_8h_ac4f3546c9e156e161179b7cb1b6565e5}
+
+
+Definition at line 559 of file core.\+c.
+
+\hypertarget{core_8h_aecea0a34f254c587bcf1b05a35816488}{}\index{core.\+h@{core.\+h}!secure\+\_\+wipe\+\_\+memory@{secure\+\_\+wipe\+\_\+memory}}
+\index{secure\+\_\+wipe\+\_\+memory@{secure\+\_\+wipe\+\_\+memory}!core.\+h@{core.\+h}}
+\subsubsection[{secure\+\_\+wipe\+\_\+memory}]{\setlength{\rightskip}{0pt plus 5cm}void secure\+\_\+wipe\+\_\+memory (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{v, }
+\item[{size\+\_\+t}]{n}
+\end{DoxyParamCaption}
+)}\label{core_8h_aecea0a34f254c587bcf1b05a35816488}
+
+
+Definition at line 103 of file core.\+c.
+
+\hypertarget{core_8h_afff47dd1eae5498564ec99545dedece8}{}\index{core.\+h@{core.\+h}!validate\+\_\+inputs@{validate\+\_\+inputs}}
+\index{validate\+\_\+inputs@{validate\+\_\+inputs}!core.\+h@{core.\+h}}
+\subsubsection[{validate\+\_\+inputs}]{\setlength{\rightskip}{0pt plus 5cm}int validate\+\_\+inputs (
+\begin{DoxyParamCaption}
+\item[{const {\bf argon2\+\_\+context} $\ast$}]{context}
+\end{DoxyParamCaption}
+)}\label{core_8h_afff47dd1eae5498564ec99545dedece8}
+
+
+Definition at line 333 of file core.\+c.
+
+\hypertarget{core_8h_abd86e6d9a6a744ec69ee9cba596a84fb}{}\index{core.\+h@{core.\+h}!xor\+\_\+block@{xor\+\_\+block}}
+\index{xor\+\_\+block@{xor\+\_\+block}!core.\+h@{core.\+h}}
+\subsubsection[{xor\+\_\+block}]{\setlength{\rightskip}{0pt plus 5cm}void xor\+\_\+block (
+\begin{DoxyParamCaption}
+\item[{{\bf block} $\ast$}]{dst, }
+\item[{const {\bf block} $\ast$}]{src}
+\end{DoxyParamCaption}
+)}\label{core_8h_abd86e6d9a6a744ec69ee9cba596a84fb}
+
+
+Definition at line 60 of file core.\+c.
+

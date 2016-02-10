@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="options_8cc" kind="file" language="C++">
+    <compoundname>options.cc</compoundname>
+    <includes refid="options_8h" local="yes">leveldb/options.h</includes>
+    <includes refid="comparator_8h" local="yes">leveldb/comparator.h</includes>
+    <includes refid="env_8h" local="yes">leveldb/env.h</includes>
+    <incdepgraph>
+      <node id="10472">
+        <label>stdarg.h</label>
+      </node>
+      <node id="10476">
+        <label>assert.h</label>
+      </node>
+      <node id="10466">
+        <label>leveldb/options.h</label>
+        <link refid="options_8h"/>
+        <childnode refid="10467" relation="include">
+        </childnode>
+      </node>
+      <node id="10469">
+        <label>string</label>
+      </node>
+      <node id="10465">
+        <label>/home/dev/ds-160209/src/leveldb/util/options.cc</label>
+        <link refid="options.cc"/>
+        <childnode refid="10466" relation="include">
+        </childnode>
+        <childnode refid="10468" relation="include">
+        </childnode>
+        <childnode refid="10470" relation="include">
+        </childnode>
+      </node>
+      <node id="10467">
+        <label>stddef.h</label>
+      </node>
+      <node id="10474">
+        <label>leveldb/status.h</label>
+        <link refid="status_8h"/>
+        <childnode refid="10469" relation="include">
+        </childnode>
+        <childnode refid="10475" relation="include">
+        </childnode>
+      </node>
+      <node id="10477">
+        <label>string.h</label>
+      </node>
+      <node id="10471">
+        <label>vector</label>
+      </node>
+      <node id="10473">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="10475">
+        <label>leveldb/slice.h</label>
+        <link refid="slice_8h"/>
+        <childnode refid="10476" relation="include">
+        </childnode>
+        <childnode refid="10467" relation="include">
+        </childnode>
+        <childnode refid="10477" relation="include">
+        </childnode>
+        <childnode refid="10469" relation="include">
+        </childnode>
+      </node>
+      <node id="10470">
+        <label>leveldb/env.h</label>
+        <link refid="env_8h"/>
+        <childnode refid="10469" relation="include">
+        </childnode>
+        <childnode refid="10471" relation="include">
+        </childnode>
+        <childnode refid="10472" relation="include">
+        </childnode>
+        <childnode refid="10473" relation="include">
+        </childnode>
+        <childnode refid="10474" relation="include">
+        </childnode>
+      </node>
+      <node id="10468">
+        <label>leveldb/comparator.h</label>
+        <link refid="comparator_8h"/>
+        <childnode refid="10469" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceleveldb">leveldb</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2011-2016<sp/>The<sp/>LevelDB<sp/>Authors.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>of<sp/>this<sp/>source<sp/>code<sp/>is<sp/>governed<sp/>by<sp/>a<sp/>BSD-style<sp/>license<sp/>that<sp/>can<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>found<sp/>in<sp/>the<sp/>LICENSE<sp/>file.<sp/>See<sp/>the<sp/>AUTHORS<sp/>file<sp/>for<sp/>names<sp/>of<sp/>contributors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="options_8h" kindref="compound">leveldb/options.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="comparator_8h" kindref="compound">leveldb/comparator.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="env_8h" kindref="compound">leveldb/env.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceleveldb" kindref="compound">leveldb</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="structleveldb_1_1_options_1a52d77c894795ba83077045daeab3d581" refkind="member"><highlight class="normal"><ref refid="structleveldb_1_1_options_1a52d77c894795ba83077045daeab3d581" kindref="member">Options::Options</ref>()</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/>comparator(<ref refid="namespaceleveldb_1acd67740962c806afe8f4098cb153d25c" kindref="member">BytewiseComparator</ref>()),</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>create_if_missing(false),</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>error_if_exists(false),</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>paranoid_checks(false),</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>env(<ref refid="classleveldb_1_1_env" kindref="compound">Env</ref>::Default()),</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>info_log(NULL),</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>write_buffer_size(4&lt;&lt;20),</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>max_open_files(1000),</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>block_cache(NULL),</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>block_size(4096),</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>block_restart_interval(16),</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>compression(<ref refid="namespaceleveldb_1a047a8e77a76becb82bab4720994f6f9bad0d4e00e3596bcc3b9bdfd970900a06e" kindref="member">kSnappyCompression</ref>),</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>filter_policy(NULL)<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>leveldb</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/leveldb/util/options.cc"/>
+  </compounddef>
+</doxygen>

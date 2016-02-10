@@ -1,0 +1,239 @@
+\hypertarget{class_c_key_store}{}\section{C\+Key\+Store Class Reference}
+\label{class_c_key_store}\index{C\+Key\+Store@{C\+Key\+Store}}
+
+
+{\ttfamily \#include $<$keystore.\+h$>$}
+
+Inheritance diagram for C\+Key\+Store\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_c_key_store}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \hyperlink{class_c_key_store_a9bfaef2bcd6effc467a96043f44044a0}{$\sim$\+C\+Key\+Store} ()
+\item 
+virtual bool \hyperlink{class_c_key_store_a1956e4f5860ded321d6f697047d8236a}{Add\+Key\+Pub\+Key} (const \hyperlink{class_c_key}{C\+Key} \&key, const \hyperlink{class_c_pub_key}{C\+Pub\+Key} \&pubkey)=0
+\item 
+virtual bool \hyperlink{class_c_key_store_a0b4ca43724cfcc6e2ea70c0baa192750}{Add\+Key} (const \hyperlink{class_c_key}{C\+Key} \&key)
+\item 
+virtual bool \hyperlink{class_c_key_store_a9398451d4270fae27b29f686a9d43a65}{Have\+Key} (const \hyperlink{class_c_key_i_d}{C\+Key\+I\+D} \&address) const =0
+\item 
+virtual bool \hyperlink{class_c_key_store_a2dffca468fef2e5da2e42a7c983d968a}{Get\+Key} (const \hyperlink{class_c_key_i_d}{C\+Key\+I\+D} \&address, \hyperlink{class_c_key}{C\+Key} \&key\+Out) const =0
+\item 
+virtual void \hyperlink{class_c_key_store_aca5044014720308f191113e7ba297d13}{Get\+Keys} (std\+::set$<$ \hyperlink{class_c_key_i_d}{C\+Key\+I\+D} $>$ \&set\+Address) const =0
+\item 
+virtual bool \hyperlink{class_c_key_store_aba866c1e71c129e7ac2d5d1e5223c8a5}{Get\+Pub\+Key} (const \hyperlink{class_c_key_i_d}{C\+Key\+I\+D} \&address, \hyperlink{class_c_pub_key}{C\+Pub\+Key} \&vch\+Pub\+Key\+Out) const 
+\item 
+virtual bool \hyperlink{class_c_key_store_a2fb2e02e8cdc364607efd5ebb14b8064}{Add\+C\+Script} (const \hyperlink{class_c_script}{C\+Script} \&redeem\+Script)=0
+\item 
+virtual bool \hyperlink{class_c_key_store_a51c9fc86b2c3fece10d86146231fa58d}{Have\+C\+Script} (const \hyperlink{class_c_script_i_d}{C\+Script\+I\+D} \&\hyperlink{cache_8cc_a11ecb029164e055f28f4123ce3748862}{hash}) const =0
+\item 
+virtual bool \hyperlink{class_c_key_store_ae6bf4dbeb0705e199250e48aa5d34264}{Get\+C\+Script} (const \hyperlink{class_c_script_i_d}{C\+Script\+I\+D} \&\hyperlink{cache_8cc_a11ecb029164e055f28f4123ce3748862}{hash}, \hyperlink{class_c_script}{C\+Script} \&redeem\+Script\+Out) const =0
+\item 
+virtual bool \hyperlink{class_c_key_store_a12cd4eaa01bd4f4231c0bf68425a44af}{Add\+Watch\+Only} (const \hyperlink{class_c_script}{C\+Script} \&dest)=0
+\item 
+virtual bool \hyperlink{class_c_key_store_ad510747f28d129123a5200e4df8f7f61}{Remove\+Watch\+Only} (const \hyperlink{class_c_script}{C\+Script} \&dest)=0
+\item 
+virtual bool \hyperlink{class_c_key_store_a15066cfd57feaffe0b9f4103c9311109}{Have\+Watch\+Only} (const \hyperlink{class_c_script}{C\+Script} \&dest) const =0
+\item 
+virtual bool \hyperlink{class_c_key_store_a9169351f4acf62d299afb824174cbfa8}{Have\+Watch\+Only} () const =0
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{sync_8h_a37a4692b2d517f2843655ca11af7668a}{C\+Critical\+Section} \hyperlink{class_c_key_store_a386524ff4a00959b81c195cb39fe307d}{cs\+\_\+\+Key\+Store}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A virtual base class for key stores 
+
+Definition at line 25 of file keystore.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_key_store_a9bfaef2bcd6effc467a96043f44044a0}{}\index{C\+Key\+Store@{C\+Key\+Store}!````~C\+Key\+Store@{$\sim$\+C\+Key\+Store}}
+\index{````~C\+Key\+Store@{$\sim$\+C\+Key\+Store}!C\+Key\+Store@{C\+Key\+Store}}
+\subsubsection[{$\sim$\+C\+Key\+Store}]{\setlength{\rightskip}{0pt plus 5cm}virtual C\+Key\+Store\+::$\sim$\+C\+Key\+Store (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\label{class_c_key_store_a9bfaef2bcd6effc467a96043f44044a0}
+
+
+Definition at line 31 of file keystore.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_key_store_a2fb2e02e8cdc364607efd5ebb14b8064}{}\index{C\+Key\+Store@{C\+Key\+Store}!Add\+C\+Script@{Add\+C\+Script}}
+\index{Add\+C\+Script@{Add\+C\+Script}!C\+Key\+Store@{C\+Key\+Store}}
+\subsubsection[{Add\+C\+Script}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool C\+Key\+Store\+::\+Add\+C\+Script (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Script} \&}]{redeem\+Script}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{class_c_key_store_a2fb2e02e8cdc364607efd5ebb14b8064}
+
+
+Implemented in \hyperlink{class_c_wallet_ad7edacad1c926bc4b7fe0dc1be95ce31}{C\+Wallet}, and \hyperlink{class_c_basic_key_store_a56249ce3540398999cd397eeb662e836}{C\+Basic\+Key\+Store}.
+
+\hypertarget{class_c_key_store_a0b4ca43724cfcc6e2ea70c0baa192750}{}\index{C\+Key\+Store@{C\+Key\+Store}!Add\+Key@{Add\+Key}}
+\index{Add\+Key@{Add\+Key}!C\+Key\+Store@{C\+Key\+Store}}
+\subsubsection[{Add\+Key}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Key\+Store\+::\+Add\+Key (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Key} \&}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_c_key_store_a0b4ca43724cfcc6e2ea70c0baa192750}
+
+
+Definition at line 18 of file keystore.\+cpp.
+
+\hypertarget{class_c_key_store_a1956e4f5860ded321d6f697047d8236a}{}\index{C\+Key\+Store@{C\+Key\+Store}!Add\+Key\+Pub\+Key@{Add\+Key\+Pub\+Key}}
+\index{Add\+Key\+Pub\+Key@{Add\+Key\+Pub\+Key}!C\+Key\+Store@{C\+Key\+Store}}
+\subsubsection[{Add\+Key\+Pub\+Key}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool C\+Key\+Store\+::\+Add\+Key\+Pub\+Key (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Key} \&}]{key, }
+\item[{const {\bf C\+Pub\+Key} \&}]{pubkey}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{class_c_key_store_a1956e4f5860ded321d6f697047d8236a}
+
+
+Implemented in \hyperlink{class_c_wallet_a3240da36cd717146296969227a3e0bd5}{C\+Wallet}, \hyperlink{class_c_crypto_key_store_a340109b8673267676a34664a76ed3274}{C\+Crypto\+Key\+Store}, and \hyperlink{class_c_basic_key_store_acc2e33f319de88e88f86b0dc79bdcb65}{C\+Basic\+Key\+Store}.
+
+\hypertarget{class_c_key_store_a12cd4eaa01bd4f4231c0bf68425a44af}{}\index{C\+Key\+Store@{C\+Key\+Store}!Add\+Watch\+Only@{Add\+Watch\+Only}}
+\index{Add\+Watch\+Only@{Add\+Watch\+Only}!C\+Key\+Store@{C\+Key\+Store}}
+\subsubsection[{Add\+Watch\+Only}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool C\+Key\+Store\+::\+Add\+Watch\+Only (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Script} \&}]{dest}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{class_c_key_store_a12cd4eaa01bd4f4231c0bf68425a44af}
+
+
+Implemented in \hyperlink{class_c_wallet_a022f12d5f56bbe831136388e2ac19969}{C\+Wallet}, and \hyperlink{class_c_basic_key_store_a2417d0ae4e654c88cf47a1ba5f71b5a3}{C\+Basic\+Key\+Store}.
+
+\hypertarget{class_c_key_store_ae6bf4dbeb0705e199250e48aa5d34264}{}\index{C\+Key\+Store@{C\+Key\+Store}!Get\+C\+Script@{Get\+C\+Script}}
+\index{Get\+C\+Script@{Get\+C\+Script}!C\+Key\+Store@{C\+Key\+Store}}
+\subsubsection[{Get\+C\+Script}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool C\+Key\+Store\+::\+Get\+C\+Script (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Script\+I\+D} \&}]{hash, }
+\item[{{\bf C\+Script} \&}]{redeem\+Script\+Out}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{class_c_key_store_ae6bf4dbeb0705e199250e48aa5d34264}
+
+
+Implemented in \hyperlink{class_c_basic_key_store_aa7b10f974cfdc078f55fdb6adf8774a5}{C\+Basic\+Key\+Store}.
+
+\hypertarget{class_c_key_store_a2dffca468fef2e5da2e42a7c983d968a}{}\index{C\+Key\+Store@{C\+Key\+Store}!Get\+Key@{Get\+Key}}
+\index{Get\+Key@{Get\+Key}!C\+Key\+Store@{C\+Key\+Store}}
+\subsubsection[{Get\+Key}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool C\+Key\+Store\+::\+Get\+Key (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Key\+I\+D} \&}]{address, }
+\item[{{\bf C\+Key} \&}]{key\+Out}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{class_c_key_store_a2dffca468fef2e5da2e42a7c983d968a}
+
+
+Implemented in \hyperlink{class_c_crypto_key_store_a58cfb3c490318ef82de8fc9be6637269}{C\+Crypto\+Key\+Store}, and \hyperlink{class_c_basic_key_store_a3cf9b5d002a8af75e7f90ae7654a234f}{C\+Basic\+Key\+Store}.
+
+\hypertarget{class_c_key_store_aca5044014720308f191113e7ba297d13}{}\index{C\+Key\+Store@{C\+Key\+Store}!Get\+Keys@{Get\+Keys}}
+\index{Get\+Keys@{Get\+Keys}!C\+Key\+Store@{C\+Key\+Store}}
+\subsubsection[{Get\+Keys}]{\setlength{\rightskip}{0pt plus 5cm}virtual void C\+Key\+Store\+::\+Get\+Keys (
+\begin{DoxyParamCaption}
+\item[{std\+::set$<$ {\bf C\+Key\+I\+D} $>$ \&}]{set\+Address}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{class_c_key_store_aca5044014720308f191113e7ba297d13}
+
+
+Implemented in \hyperlink{class_c_crypto_key_store_a4f13246f58b7edbaf125d603f7d0d4b4}{C\+Crypto\+Key\+Store}, and \hyperlink{class_c_basic_key_store_a60f46db5eec334d41e5ad6e342ae2957}{C\+Basic\+Key\+Store}.
+
+\hypertarget{class_c_key_store_aba866c1e71c129e7ac2d5d1e5223c8a5}{}\index{C\+Key\+Store@{C\+Key\+Store}!Get\+Pub\+Key@{Get\+Pub\+Key}}
+\index{Get\+Pub\+Key@{Get\+Pub\+Key}!C\+Key\+Store@{C\+Key\+Store}}
+\subsubsection[{Get\+Pub\+Key}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Key\+Store\+::\+Get\+Pub\+Key (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Key\+I\+D} \&}]{address, }
+\item[{{\bf C\+Pub\+Key} \&}]{vch\+Pub\+Key\+Out}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_c_key_store_aba866c1e71c129e7ac2d5d1e5223c8a5}
+
+
+Reimplemented in \hyperlink{class_c_crypto_key_store_abd897aff07ec5679235b14cb4485dc37}{C\+Crypto\+Key\+Store}.
+
+
+
+Definition at line 9 of file keystore.\+cpp.
+
+\hypertarget{class_c_key_store_a51c9fc86b2c3fece10d86146231fa58d}{}\index{C\+Key\+Store@{C\+Key\+Store}!Have\+C\+Script@{Have\+C\+Script}}
+\index{Have\+C\+Script@{Have\+C\+Script}!C\+Key\+Store@{C\+Key\+Store}}
+\subsubsection[{Have\+C\+Script}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool C\+Key\+Store\+::\+Have\+C\+Script (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Script\+I\+D} \&}]{hash}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{class_c_key_store_a51c9fc86b2c3fece10d86146231fa58d}
+
+
+Implemented in \hyperlink{class_c_basic_key_store_a2e21398364927d920b15d3e10171cd97}{C\+Basic\+Key\+Store}.
+
+\hypertarget{class_c_key_store_a9398451d4270fae27b29f686a9d43a65}{}\index{C\+Key\+Store@{C\+Key\+Store}!Have\+Key@{Have\+Key}}
+\index{Have\+Key@{Have\+Key}!C\+Key\+Store@{C\+Key\+Store}}
+\subsubsection[{Have\+Key}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool C\+Key\+Store\+::\+Have\+Key (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Key\+I\+D} \&}]{address}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{class_c_key_store_a9398451d4270fae27b29f686a9d43a65}
+
+
+Implemented in \hyperlink{class_c_crypto_key_store_a0cefe933dd3a6ac7744432493696bffc}{C\+Crypto\+Key\+Store}, and \hyperlink{class_c_basic_key_store_a29a60832d549913b1fa8be77b95205a5}{C\+Basic\+Key\+Store}.
+
+\hypertarget{class_c_key_store_a15066cfd57feaffe0b9f4103c9311109}{}\index{C\+Key\+Store@{C\+Key\+Store}!Have\+Watch\+Only@{Have\+Watch\+Only}}
+\index{Have\+Watch\+Only@{Have\+Watch\+Only}!C\+Key\+Store@{C\+Key\+Store}}
+\subsubsection[{Have\+Watch\+Only}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool C\+Key\+Store\+::\+Have\+Watch\+Only (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Script} \&}]{dest}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{class_c_key_store_a15066cfd57feaffe0b9f4103c9311109}
+
+
+Implemented in \hyperlink{class_c_basic_key_store_a51d4c7e95cb782d749939d01612926f7}{C\+Basic\+Key\+Store}.
+
+\hypertarget{class_c_key_store_a9169351f4acf62d299afb824174cbfa8}{}\index{C\+Key\+Store@{C\+Key\+Store}!Have\+Watch\+Only@{Have\+Watch\+Only}}
+\index{Have\+Watch\+Only@{Have\+Watch\+Only}!C\+Key\+Store@{C\+Key\+Store}}
+\subsubsection[{Have\+Watch\+Only}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool C\+Key\+Store\+::\+Have\+Watch\+Only (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{class_c_key_store_a9169351f4acf62d299afb824174cbfa8}
+
+
+Implemented in \hyperlink{class_c_basic_key_store_a3d89af8d9e9e0bb4eb90f331a638ff6d}{C\+Basic\+Key\+Store}.
+
+\hypertarget{class_c_key_store_ad510747f28d129123a5200e4df8f7f61}{}\index{C\+Key\+Store@{C\+Key\+Store}!Remove\+Watch\+Only@{Remove\+Watch\+Only}}
+\index{Remove\+Watch\+Only@{Remove\+Watch\+Only}!C\+Key\+Store@{C\+Key\+Store}}
+\subsubsection[{Remove\+Watch\+Only}]{\setlength{\rightskip}{0pt plus 5cm}virtual bool C\+Key\+Store\+::\+Remove\+Watch\+Only (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Script} \&}]{dest}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [pure virtual]}}\label{class_c_key_store_ad510747f28d129123a5200e4df8f7f61}
+
+
+Implemented in \hyperlink{class_c_wallet_a5be12b9afcf63079b8c009038843b5a2}{C\+Wallet}, and \hyperlink{class_c_basic_key_store_a20c0eccf943d6d16e24c6e2fb63fb527}{C\+Basic\+Key\+Store}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_c_key_store_a386524ff4a00959b81c195cb39fe307d}{}\index{C\+Key\+Store@{C\+Key\+Store}!cs\+\_\+\+Key\+Store@{cs\+\_\+\+Key\+Store}}
+\index{cs\+\_\+\+Key\+Store@{cs\+\_\+\+Key\+Store}!C\+Key\+Store@{C\+Key\+Store}}
+\subsubsection[{cs\+\_\+\+Key\+Store}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Critical\+Section} C\+Key\+Store\+::cs\+\_\+\+Key\+Store\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [protected]}}\label{class_c_key_store_a386524ff4a00959b81c195cb39fe307d}
+
+
+Definition at line 28 of file keystore.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/\hyperlink{keystore_8h}{keystore.\+h}\item 
+/home/dev/ds-\/160209/src/\hyperlink{keystore_8cpp}{keystore.\+cpp}\end{DoxyCompactItemize}

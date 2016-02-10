@@ -1,0 +1,1700 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="stormnodemanager_8cpp" kind="file" language="C++">
+    <compoundname>stormnodemanager.cpp</compoundname>
+    <includes refid="stormnodemanager_8h" local="yes">stormnodemanager.h</includes>
+    <includes local="yes">ui_stormnodemanager.h</includes>
+    <includes refid="addeditstormnode_8h" local="yes">addeditstormnode.h</includes>
+    <includes refid="stormnodeconfigdialog_8h" local="yes">stormnodeconfigdialog.h</includes>
+    <includes refid="sync_8h" local="yes">sync.h</includes>
+    <includes refid="clientmodel_8h" local="yes">clientmodel.h</includes>
+    <includes refid="walletmodel_8h" local="yes">walletmodel.h</includes>
+    <includes refid="activestormnode_8h" local="yes">activestormnode.h</includes>
+    <includes refid="stormnodeconfig_8h" local="yes">stormnodeconfig.h</includes>
+    <includes refid="stormnode_8h" local="yes">stormnode.h</includes>
+    <includes refid="stormnodeman_8h" local="yes">stormnodeman.h</includes>
+    <includes refid="walletdb_8h" local="yes">walletdb.h</includes>
+    <includes refid="wallet_8h" local="yes">wallet.h</includes>
+    <includes refid="init_8h" local="yes">init.h</includes>
+    <includes refid="rpcserver_8h" local="yes">rpcserver.h</includes>
+    <includes refid="sandstorm_8h" local="yes">sandstorm.h</includes>
+    <includes local="no">boost/lexical_cast.hpp</includes>
+    <includes local="no">fstream</includes>
+    <includes local="no">QAbstractItemDelegate</includes>
+    <includes local="no">QPainter</includes>
+    <includes local="no">QTimer</includes>
+    <includes local="no">QDebug</includes>
+    <includes local="no">QScrollArea</includes>
+    <includes local="no">QScroller</includes>
+    <includes local="no">QDateTime</includes>
+    <includes local="no">QApplication</includes>
+    <includes local="no">QClipboard</includes>
+    <includes local="no">QMessageBox</includes>
+    <incdepgraph>
+      <node id="17801">
+        <label>list</label>
+      </node>
+      <node id="17740">
+        <label>boost/thread/mutex.hpp</label>
+      </node>
+      <node id="17858">
+        <label>leveldb/write_batch.h</label>
+        <link refid="write__batch_8h"/>
+        <childnode refid="17759" relation="include">
+        </childnode>
+        <childnode refid="17856" relation="include">
+        </childnode>
+      </node>
+      <node id="17838">
+        <label>netinet/in.h</label>
+      </node>
+      <node id="17765">
+        <label>amount.h</label>
+        <link refid="amount_8h"/>
+        <childnode refid="17766" relation="include">
+        </childnode>
+        <childnode refid="17757" relation="include">
+        </childnode>
+        <childnode refid="17759" relation="include">
+        </childnode>
+      </node>
+      <node id="17831">
+        <label>arpa/inet.h</label>
+      </node>
+      <node id="17738">
+        <label>boost/thread/condition_variable.hpp</label>
+      </node>
+      <node id="17891">
+        <label>iomanip</label>
+      </node>
+      <node id="17883">
+        <label>boost/version.hpp</label>
+      </node>
+      <node id="17879">
+        <label>boost/shared_ptr.hpp</label>
+      </node>
+      <node id="17769">
+        <label>limits</label>
+      </node>
+      <node id="17869">
+        <label>init.h</label>
+        <link refid="init_8h"/>
+      </node>
+      <node id="17788">
+        <label>crypto/sha256.h</label>
+        <link refid="sha256_8h"/>
+        <childnode refid="17770" relation="include">
+        </childnode>
+        <childnode refid="17757" relation="include">
+        </childnode>
+      </node>
+      <node id="17789">
+        <label>crypto/argon2/blake2/blake2.h</label>
+        <link refid="blake2_8h"/>
+        <childnode refid="17790" relation="include">
+        </childnode>
+        <childnode refid="17770" relation="include">
+        </childnode>
+        <childnode refid="17761" relation="include">
+        </childnode>
+      </node>
+      <node id="17764">
+        <label>primitives/transaction.h</label>
+        <link refid="transaction_8h"/>
+        <childnode refid="17765" relation="include">
+        </childnode>
+        <childnode refid="17777" relation="include">
+        </childnode>
+        <childnode refid="17766" relation="include">
+        </childnode>
+        <childnode refid="17735" relation="include">
+        </childnode>
+        <childnode refid="17780" relation="include">
+        </childnode>
+        <childnode refid="17815" relation="include">
+        </childnode>
+        <childnode refid="17813" relation="include">
+        </childnode>
+      </node>
+      <node id="17780">
+        <label>script.h</label>
+        <link refid="script_8h"/>
+        <childnode refid="17759" relation="include">
+        </childnode>
+        <childnode refid="17753" relation="include">
+        </childnode>
+        <childnode refid="17770" relation="include">
+        </childnode>
+        <childnode refid="17781" relation="include">
+        </childnode>
+        <childnode refid="17782" relation="include">
+        </childnode>
+        <childnode refid="17783" relation="include">
+        </childnode>
+        <childnode refid="17792" relation="include">
+        </childnode>
+        <childnode refid="17794" relation="include">
+        </childnode>
+        <childnode refid="17812" relation="include">
+        </childnode>
+      </node>
+      <node id="17811">
+        <label>openssl/rand.h</label>
+      </node>
+      <node id="17903">
+        <label>QMessageBox</label>
+      </node>
+      <node id="17817">
+        <label>walletdb.h</label>
+        <link refid="walletdb_8h"/>
+        <childnode refid="17818" relation="include">
+        </childnode>
+        <childnode refid="17823" relation="include">
+        </childnode>
+        <childnode refid="17812" relation="include">
+        </childnode>
+        <childnode refid="17765" relation="include">
+        </childnode>
+        <childnode refid="17801" relation="include">
+        </childnode>
+        <childnode refid="17759" relation="include">
+        </childnode>
+        <childnode refid="17802" relation="include">
+        </childnode>
+        <childnode refid="17753" relation="include">
+        </childnode>
+      </node>
+      <node id="17884">
+        <label>boost/spirit/core.hpp</label>
+      </node>
+      <node id="17778">
+        <label>assert.h</label>
+      </node>
+      <node id="17774">
+        <label>boost/tuple/tuple.hpp</label>
+      </node>
+      <node id="17837">
+        <label>net/if.h</label>
+      </node>
+      <node id="17892">
+        <label>sandstorm.h</label>
+        <link refid="sandstorm_8h"/>
+        <childnode refid="17736" relation="include">
+        </childnode>
+        <childnode refid="17864" relation="include">
+        </childnode>
+        <childnode refid="17868" relation="include">
+        </childnode>
+      </node>
+      <node id="17847">
+        <label>txmempool.h</label>
+        <link refid="txmempool_8h"/>
+        <childnode refid="17764" relation="include">
+        </childnode>
+        <childnode refid="17736" relation="include">
+        </childnode>
+        <childnode refid="17848" relation="include">
+        </childnode>
+        <childnode refid="17765" relation="include">
+        </childnode>
+        <childnode refid="17860" relation="include">
+        </childnode>
+      </node>
+      <node id="17893">
+        <label>boost/lexical_cast.hpp</label>
+      </node>
+      <node id="17900">
+        <label>QDateTime</label>
+      </node>
+      <node id="17857">
+        <label>leveldb/options.h</label>
+        <link refid="options_8h"/>
+        <childnode refid="17790" relation="include">
+        </childnode>
+      </node>
+      <node id="17751">
+        <label>QObject</label>
+      </node>
+      <node id="17741">
+        <label>boost/thread/recursive_mutex.hpp</label>
+      </node>
+      <node id="17867">
+        <label>base58.h</label>
+        <link refid="base58_8h"/>
+        <childnode refid="17843" relation="include">
+        </childnode>
+        <childnode refid="17783" relation="include">
+        </childnode>
+        <childnode refid="17824" relation="include">
+        </childnode>
+        <childnode refid="17780" relation="include">
+        </childnode>
+        <childnode refid="17755" relation="include">
+        </childnode>
+        <childnode refid="17759" relation="include">
+        </childnode>
+        <childnode refid="17753" relation="include">
+        </childnode>
+      </node>
+      <node id="17775">
+        <label>version.h</label>
+        <link refid="version_8h"/>
+        <childnode refid="17776" relation="include">
+        </childnode>
+        <childnode refid="17759" relation="include">
+        </childnode>
+      </node>
+      <node id="17848">
+        <label>coins.h</label>
+        <link refid="coins_8h"/>
+        <childnode refid="17849" relation="include">
+        </childnode>
+        <childnode refid="17847" relation="include">
+        </childnode>
+        <childnode refid="17778" relation="include">
+        </childnode>
+        <childnode refid="17770" relation="include">
+        </childnode>
+        <childnode refid="17781" relation="include">
+        </childnode>
+        <childnode refid="17859" relation="include">
+        </childnode>
+      </node>
+      <node id="17760">
+        <label>sys/mman.h</label>
+      </node>
+      <node id="17757">
+        <label>stdlib.h</label>
+      </node>
+      <node id="17861">
+        <label>chain.h</label>
+        <link refid="chain_8h"/>
+        <childnode refid="17826" relation="include">
+        </childnode>
+        <childnode refid="17794" relation="include">
+        </childnode>
+        <childnode refid="17843" relation="include">
+        </childnode>
+        <childnode refid="17753" relation="include">
+        </childnode>
+        <childnode refid="17781" relation="include">
+        </childnode>
+      </node>
+      <node id="17745">
+        <label>addeditstormnode.h</label>
+        <link refid="addeditstormnode_8h"/>
+        <childnode refid="17746" relation="include">
+        </childnode>
+        <childnode refid="17747" relation="include">
+        </childnode>
+        <childnode refid="17748" relation="include">
+        </childnode>
+      </node>
+      <node id="17781">
+        <label>boost/foreach.hpp</label>
+      </node>
+      <node id="17750">
+        <label>clientmodel.h</label>
+        <link refid="clientmodel_8h"/>
+        <childnode refid="17751" relation="include">
+        </childnode>
+      </node>
+      <node id="17810">
+        <label>openssl/crypto.h</label>
+      </node>
+      <node id="17880">
+        <label>json_spirit_error_position.h</label>
+        <link refid="json__spirit__error__position_8h"/>
+        <childnode refid="17759" relation="include">
+        </childnode>
+      </node>
+      <node id="17748">
+        <label>boost/filesystem/fstream.hpp</label>
+      </node>
+      <node id="17888">
+        <label>boost/spirit/iterator/position_iterator.hpp</label>
+      </node>
+      <node id="17834">
+        <label>compat.h</label>
+        <link refid="compat_8h"/>
+        <childnode refid="17835" relation="include">
+        </childnode>
+        <childnode refid="17760" relation="include">
+        </childnode>
+        <childnode refid="17836" relation="include">
+        </childnode>
+        <childnode refid="17795" relation="include">
+        </childnode>
+        <childnode refid="17837" relation="include">
+        </childnode>
+        <childnode refid="17838" relation="include">
+        </childnode>
+        <childnode refid="17831" relation="include">
+        </childnode>
+        <childnode refid="17839" relation="include">
+        </childnode>
+        <childnode refid="17761" relation="include">
+        </childnode>
+        <childnode refid="17840" relation="include">
+        </childnode>
+        <childnode refid="17762" relation="include">
+        </childnode>
+        <childnode refid="17841" relation="include">
+        </childnode>
+      </node>
+      <node id="17806">
+        <label>boost/date_time/posix_time/posix_time_types.hpp</label>
+      </node>
+      <node id="17785">
+        <label>openssl/sha.h</label>
+      </node>
+      <node id="17841">
+        <label>errno.h</label>
+      </node>
+      <node id="17768">
+        <label>cassert</label>
+      </node>
+      <node id="17779">
+        <label>stdexcept</label>
+      </node>
+      <node id="17794">
+        <label>util.h</label>
+        <link refid="util_8h"/>
+        <childnode refid="17795" relation="include">
+        </childnode>
+        <childnode refid="17796" relation="include">
+        </childnode>
+        <childnode refid="17797" relation="include">
+        </childnode>
+        <childnode refid="17766" relation="include">
+        </childnode>
+        <childnode refid="17798" relation="include">
+        </childnode>
+        <childnode refid="17765" relation="include">
+        </childnode>
+        <childnode refid="17754" relation="include">
+        </childnode>
+        <childnode refid="17801" relation="include">
+        </childnode>
+        <childnode refid="17802" relation="include">
+        </childnode>
+        <childnode refid="17753" relation="include">
+        </childnode>
+        <childnode refid="17759" relation="include">
+        </childnode>
+        <childnode refid="17803" relation="include">
+        </childnode>
+        <childnode refid="17747" relation="include">
+        </childnode>
+        <childnode refid="17804" relation="include">
+        </childnode>
+        <childnode refid="17805" relation="include">
+        </childnode>
+        <childnode refid="17806" relation="include">
+        </childnode>
+        <childnode refid="17807" relation="include">
+        </childnode>
+        <childnode refid="17808" relation="include">
+        </childnode>
+        <childnode refid="17809" relation="include">
+        </childnode>
+        <childnode refid="17810" relation="include">
+        </childnode>
+        <childnode refid="17811" relation="include">
+        </childnode>
+        <childnode refid="17793" relation="include">
+        </childnode>
+        <childnode refid="17770" relation="include">
+        </childnode>
+      </node>
+      <node id="17842">
+        <label>protocol.h</label>
+        <link refid="protocol_8h"/>
+        <childnode refid="17843" relation="include">
+        </childnode>
+        <childnode refid="17766" relation="include">
+        </childnode>
+        <childnode refid="17833" relation="include">
+        </childnode>
+        <childnode refid="17770" relation="include">
+        </childnode>
+        <childnode refid="17759" relation="include">
+        </childnode>
+      </node>
+      <node id="17889">
+        <label>json/json_spirit_utils.h</label>
+        <link refid="json__spirit__utils_8h"/>
+        <childnode refid="17877" relation="include">
+        </childnode>
+        <childnode refid="17754" relation="include">
+        </childnode>
+      </node>
+      <node id="17805">
+        <label>boost/date_time/gregorian/gregorian_types.hpp</label>
+      </node>
+      <node id="17853">
+        <label>leveldb/db.h</label>
+        <link refid="leveldb_2include_2leveldb_2db_8h"/>
+        <childnode refid="17770" relation="include">
+        </childnode>
+        <childnode refid="17813" relation="include">
+        </childnode>
+        <childnode refid="17854" relation="include">
+        </childnode>
+        <childnode refid="17857" relation="include">
+        </childnode>
+      </node>
+      <node id="17759">
+        <label>string</label>
+      </node>
+      <node id="17816">
+        <label>wallet.h</label>
+        <link refid="wallet_8h"/>
+        <childnode refid="17817" relation="include">
+        </childnode>
+        <childnode refid="17759" relation="include">
+        </childnode>
+        <childnode refid="17753" relation="include">
+        </childnode>
+        <childnode refid="17757" relation="include">
+        </childnode>
+        <childnode refid="17826" relation="include">
+        </childnode>
+        <childnode refid="17764" relation="include">
+        </childnode>
+        <childnode refid="17845" relation="include">
+        </childnode>
+        <childnode refid="17846" relation="include">
+        </childnode>
+        <childnode refid="17824" relation="include">
+        </childnode>
+        <childnode refid="17823" relation="include">
+        </childnode>
+        <childnode refid="17780" relation="include">
+        </childnode>
+        <childnode refid="17862" relation="include">
+        </childnode>
+        <childnode refid="17794" relation="include">
+        </childnode>
+        <childnode refid="17812" relation="include">
+        </childnode>
+      </node>
+      <node id="17827">
+        <label>scrypt.h</label>
+        <link refid="scrypt_8h"/>
+        <childnode refid="17770" relation="include">
+        </childnode>
+        <childnode refid="17757" relation="include">
+        </childnode>
+        <childnode refid="17794" relation="include">
+        </childnode>
+        <childnode refid="17828" relation="include">
+        </childnode>
+      </node>
+      <node id="17754">
+        <label>map</label>
+      </node>
+      <node id="17873">
+        <label>boost/iostreams/stream.hpp</label>
+      </node>
+      <node id="17803">
+        <label>boost/thread.hpp</label>
+      </node>
+      <node id="17844">
+        <label>addrman.h</label>
+        <link refid="addrman_8h"/>
+        <childnode refid="17833" relation="include">
+        </childnode>
+        <childnode refid="17842" relation="include">
+        </childnode>
+        <childnode refid="17736" relation="include">
+        </childnode>
+        <childnode refid="17815" relation="include">
+        </childnode>
+        <childnode refid="17794" relation="include">
+        </childnode>
+        <childnode refid="17754" relation="include">
+        </childnode>
+        <childnode refid="17753" relation="include">
+        </childnode>
+      </node>
+      <node id="17902">
+        <label>QClipboard</label>
+      </node>
+      <node id="17866">
+        <label>stormnode.h</label>
+        <link refid="stormnode_8h"/>
+        <childnode refid="17736" relation="include">
+        </childnode>
+        <childnode refid="17828" relation="include">
+        </childnode>
+        <childnode refid="17824" relation="include">
+        </childnode>
+        <childnode refid="17794" relation="include">
+        </childnode>
+        <childnode refid="17867" relation="include">
+        </childnode>
+        <childnode refid="17846" relation="include">
+        </childnode>
+        <childnode refid="17815" relation="include">
+        </childnode>
+      </node>
+      <node id="17876">
+        <label>json/json_spirit_reader_template.h</label>
+        <link refid="json__spirit__reader__template_8h"/>
+        <childnode refid="17877" relation="include">
+        </childnode>
+        <childnode refid="17880" relation="include">
+        </childnode>
+        <childnode refid="17881" relation="include">
+        </childnode>
+        <childnode refid="17882" relation="include">
+        </childnode>
+        <childnode refid="17883" relation="include">
+        </childnode>
+        <childnode refid="17884" relation="include">
+        </childnode>
+        <childnode refid="17885" relation="include">
+        </childnode>
+        <childnode refid="17886" relation="include">
+        </childnode>
+        <childnode refid="17887" relation="include">
+        </childnode>
+        <childnode refid="17888" relation="include">
+        </childnode>
+      </node>
+      <node id="17862">
+        <label>ui_interface.h</label>
+        <link refid="ui__interface_8h"/>
+        <childnode refid="17765" relation="include">
+        </childnode>
+        <childnode refid="17863" relation="include">
+        </childnode>
+        <childnode refid="17825" relation="include">
+        </childnode>
+        <childnode refid="17759" relation="include">
+        </childnode>
+        <childnode refid="17770" relation="include">
+        </childnode>
+      </node>
+      <node id="17852">
+        <label>leveldbwrapper.h</label>
+        <link refid="leveldbwrapper_8h"/>
+        <childnode refid="17766" relation="include">
+        </childnode>
+        <childnode refid="17819" relation="include">
+        </childnode>
+        <childnode refid="17794" relation="include">
+        </childnode>
+        <childnode refid="17804" relation="include">
+        </childnode>
+        <childnode refid="17853" relation="include">
+        </childnode>
+        <childnode refid="17858" relation="include">
+        </childnode>
+      </node>
+      <node id="17790">
+        <label>stddef.h</label>
+      </node>
+      <node id="17782">
+        <label>boost/variant.hpp</label>
+      </node>
+      <node id="17763">
+        <label>instantx.h</label>
+        <link refid="instantx_8h"/>
+        <childnode refid="17764" relation="include">
+        </childnode>
+      </node>
+      <node id="17894">
+        <label>fstream</label>
+      </node>
+      <node id="17872">
+        <label>boost/iostreams/concepts.hpp</label>
+      </node>
+      <node id="17840">
+        <label>netdb.h</label>
+      </node>
+      <node id="17835">
+        <label>sys/fcntl.h</label>
+      </node>
+      <node id="17849">
+        <label>undo.h</label>
+        <link refid="undo_8h"/>
+        <childnode refid="17850" relation="include">
+        </childnode>
+      </node>
+      <node id="17856">
+        <label>leveldb/status.h</label>
+        <link refid="status_8h"/>
+        <childnode refid="17759" relation="include">
+        </childnode>
+        <childnode refid="17855" relation="include">
+        </childnode>
+      </node>
+      <node id="17860">
+        <label>boost/circular_buffer.hpp</label>
+      </node>
+      <node id="17882">
+        <label>boost/function.hpp</label>
+      </node>
+      <node id="17766">
+        <label>serialize.h</label>
+        <link refid="serialize_8h"/>
+        <childnode refid="17759" relation="include">
+        </childnode>
+        <childnode refid="17753" relation="include">
+        </childnode>
+        <childnode refid="17754" relation="include">
+        </childnode>
+        <childnode refid="17767" relation="include">
+        </childnode>
+        <childnode refid="17768" relation="include">
+        </childnode>
+        <childnode refid="17769" relation="include">
+        </childnode>
+        <childnode refid="17770" relation="include">
+        </childnode>
+        <childnode refid="17771" relation="include">
+        </childnode>
+        <childnode refid="17772" relation="include">
+        </childnode>
+        <childnode refid="17773" relation="include">
+        </childnode>
+        <childnode refid="17774" relation="include">
+        </childnode>
+        <childnode refid="17755" relation="include">
+        </childnode>
+        <childnode refid="17775" relation="include">
+        </childnode>
+      </node>
+      <node id="17761">
+        <label>limits.h</label>
+      </node>
+      <node id="17733">
+        <label>/home/dev/ds-160209/src/qt/stormnodemanager.cpp</label>
+        <link refid="stormnodemanager.cpp"/>
+        <childnode refid="17734" relation="include">
+        </childnode>
+        <childnode refid="17744" relation="include">
+        </childnode>
+        <childnode refid="17745" relation="include">
+        </childnode>
+        <childnode refid="17749" relation="include">
+        </childnode>
+        <childnode refid="17736" relation="include">
+        </childnode>
+        <childnode refid="17750" relation="include">
+        </childnode>
+        <childnode refid="17752" relation="include">
+        </childnode>
+        <childnode refid="17864" relation="include">
+        </childnode>
+        <childnode refid="17865" relation="include">
+        </childnode>
+        <childnode refid="17866" relation="include">
+        </childnode>
+        <childnode refid="17868" relation="include">
+        </childnode>
+        <childnode refid="17817" relation="include">
+        </childnode>
+        <childnode refid="17816" relation="include">
+        </childnode>
+        <childnode refid="17869" relation="include">
+        </childnode>
+        <childnode refid="17870" relation="include">
+        </childnode>
+        <childnode refid="17892" relation="include">
+        </childnode>
+        <childnode refid="17893" relation="include">
+        </childnode>
+        <childnode refid="17894" relation="include">
+        </childnode>
+        <childnode refid="17895" relation="include">
+        </childnode>
+        <childnode refid="17896" relation="include">
+        </childnode>
+        <childnode refid="17743" relation="include">
+        </childnode>
+        <childnode refid="17897" relation="include">
+        </childnode>
+        <childnode refid="17898" relation="include">
+        </childnode>
+        <childnode refid="17899" relation="include">
+        </childnode>
+        <childnode refid="17900" relation="include">
+        </childnode>
+        <childnode refid="17901" relation="include">
+        </childnode>
+        <childnode refid="17902" relation="include">
+        </childnode>
+        <childnode refid="17903" relation="include">
+        </childnode>
+      </node>
+      <node id="17737">
+        <label>threadsafety.h</label>
+        <link refid="threadsafety_8h"/>
+      </node>
+      <node id="17832">
+        <label>mruset.h</label>
+        <link refid="mruset_8h"/>
+        <childnode refid="17767" relation="include">
+        </childnode>
+        <childnode refid="17829" relation="include">
+        </childnode>
+      </node>
+      <node id="17797">
+        <label>sys/resource.h</label>
+      </node>
+      <node id="17807">
+        <label>openssl/bio.h</label>
+      </node>
+      <node id="17896">
+        <label>QPainter</label>
+      </node>
+      <node id="17845">
+        <label>crypter.h</label>
+        <link refid="crypter_8h"/>
+        <childnode refid="17755" relation="include">
+        </childnode>
+        <childnode refid="17766" relation="include">
+        </childnode>
+        <childnode refid="17823" relation="include">
+        </childnode>
+      </node>
+      <node id="17825">
+        <label>boost/signals2/signal.hpp</label>
+      </node>
+      <node id="17833">
+        <label>netbase.h</label>
+        <link refid="netbase_8h"/>
+        <childnode refid="17759" relation="include">
+        </childnode>
+        <childnode refid="17753" relation="include">
+        </childnode>
+        <childnode refid="17766" relation="include">
+        </childnode>
+        <childnode refid="17834" relation="include">
+        </childnode>
+      </node>
+      <node id="17823">
+        <label>keystore.h</label>
+        <link refid="keystore_8h"/>
+        <childnode refid="17824" relation="include">
+        </childnode>
+        <childnode refid="17783" relation="include">
+        </childnode>
+        <childnode refid="17736" relation="include">
+        </childnode>
+        <childnode refid="17780" relation="include">
+        </childnode>
+        <childnode refid="17825" relation="include">
+        </childnode>
+        <childnode refid="17782" relation="include">
+        </childnode>
+      </node>
+      <node id="17874">
+        <label>boost/asio.hpp</label>
+      </node>
+      <node id="17875">
+        <label>boost/asio/ssl.hpp</label>
+      </node>
+      <node id="17784">
+        <label>hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="17777" relation="include">
+        </childnode>
+        <childnode refid="17766" relation="include">
+        </childnode>
+        <childnode refid="17785" relation="include">
+        </childnode>
+        <childnode refid="17786" relation="include">
+        </childnode>
+        <childnode refid="17787" relation="include">
+        </childnode>
+        <childnode refid="17788" relation="include">
+        </childnode>
+        <childnode refid="17789" relation="include">
+        </childnode>
+        <childnode refid="17791" relation="include">
+        </childnode>
+        <childnode refid="17753" relation="include">
+        </childnode>
+      </node>
+      <node id="17839">
+        <label>ifaddrs.h</label>
+      </node>
+      <node id="17898">
+        <label>QScrollArea</label>
+      </node>
+      <node id="17812">
+        <label>stealth.h</label>
+        <link refid="stealth_8h"/>
+        <childnode refid="17794" relation="include">
+        </childnode>
+        <childnode refid="17766" relation="include">
+        </childnode>
+        <childnode refid="17757" relation="include">
+        </childnode>
+        <childnode refid="17813" relation="include">
+        </childnode>
+        <childnode refid="17753" relation="include">
+        </childnode>
+        <childnode refid="17814" relation="include">
+        </childnode>
+      </node>
+      <node id="17795">
+        <label>sys/types.h</label>
+      </node>
+      <node id="17821">
+        <label>ios</label>
+      </node>
+      <node id="17758">
+        <label>string.h</label>
+      </node>
+      <node id="17776">
+        <label>clientversion.h</label>
+        <link refid="clientversion_8h"/>
+      </node>
+      <node id="17901">
+        <label>QApplication</label>
+      </node>
+      <node id="17772">
+        <label>cstdio</label>
+      </node>
+      <node id="17739">
+        <label>boost/thread/locks.hpp</label>
+      </node>
+      <node id="17809">
+        <label>openssl/buffer.h</label>
+      </node>
+      <node id="17773">
+        <label>boost/type_traits/is_fundamental.hpp</label>
+      </node>
+      <node id="17846">
+        <label>main.h</label>
+        <link refid="main_8h"/>
+        <childnode refid="17847" relation="include">
+        </childnode>
+        <childnode refid="17828" relation="include">
+        </childnode>
+        <childnode refid="17780" relation="include">
+        </childnode>
+        <childnode refid="17819" relation="include">
+        </childnode>
+        <childnode refid="17851" relation="include">
+        </childnode>
+        <childnode refid="17861" relation="include">
+        </childnode>
+        <childnode refid="17801" relation="include">
+        </childnode>
+        <childnode refid="17859" relation="include">
+        </childnode>
+      </node>
+      <node id="17804">
+        <label>boost/filesystem/path.hpp</label>
+      </node>
+      <node id="17868">
+        <label>stormnodeman.h</label>
+        <link refid="stormnodeman_8h"/>
+        <childnode refid="17736" relation="include">
+        </childnode>
+        <childnode refid="17828" relation="include">
+        </childnode>
+        <childnode refid="17824" relation="include">
+        </childnode>
+        <childnode refid="17794" relation="include">
+        </childnode>
+        <childnode refid="17867" relation="include">
+        </childnode>
+        <childnode refid="17846" relation="include">
+        </childnode>
+        <childnode refid="17866" relation="include">
+        </childnode>
+      </node>
+      <node id="17895">
+        <label>QAbstractItemDelegate</label>
+      </node>
+      <node id="17859">
+        <label>boost/unordered_map.hpp</label>
+      </node>
+      <node id="17783">
+        <label>pubkey.h</label>
+        <link refid="pubkey_8h"/>
+        <childnode refid="17784" relation="include">
+        </childnode>
+        <childnode refid="17766" relation="include">
+        </childnode>
+        <childnode refid="17777" relation="include">
+        </childnode>
+        <childnode refid="17779" relation="include">
+        </childnode>
+        <childnode refid="17753" relation="include">
+        </childnode>
+      </node>
+      <node id="17746">
+        <label>QDialog</label>
+      </node>
+      <node id="17897">
+        <label>QDebug</label>
+      </node>
+      <node id="17762">
+        <label>unistd.h</label>
+      </node>
+      <node id="17822">
+        <label>db_cxx.h</label>
+      </node>
+      <node id="17743">
+        <label>QTimer</label>
+      </node>
+      <node id="17753">
+        <label>vector</label>
+      </node>
+      <node id="17792">
+        <label>bignum.h</label>
+        <link refid="bignum_8h"/>
+        <childnode refid="17766" relation="include">
+        </childnode>
+        <childnode refid="17777" relation="include">
+        </childnode>
+        <childnode refid="17793" relation="include">
+        </childnode>
+        <childnode refid="17779" relation="include">
+        </childnode>
+        <childnode refid="17753" relation="include">
+        </childnode>
+        <childnode refid="17770" relation="include">
+        </childnode>
+      </node>
+      <node id="17871">
+        <label>rpcprotocol.h</label>
+        <link refid="rpcprotocol_8h"/>
+        <childnode refid="17834" relation="include">
+        </childnode>
+        <childnode refid="17801" relation="include">
+        </childnode>
+        <childnode refid="17754" relation="include">
+        </childnode>
+        <childnode refid="17770" relation="include">
+        </childnode>
+        <childnode refid="17759" relation="include">
+        </childnode>
+        <childnode refid="17872" relation="include">
+        </childnode>
+        <childnode refid="17873" relation="include">
+        </childnode>
+        <childnode refid="17874" relation="include">
+        </childnode>
+        <childnode refid="17875" relation="include">
+        </childnode>
+        <childnode refid="17876" relation="include">
+        </childnode>
+        <childnode refid="17889" relation="include">
+        </childnode>
+        <childnode refid="17890" relation="include">
+        </childnode>
+      </node>
+      <node id="17828">
+        <label>net.h</label>
+        <link refid="net_8h"/>
+        <childnode refid="17829" relation="include">
+        </childnode>
+        <childnode refid="17830" relation="include">
+        </childnode>
+        <childnode refid="17781" relation="include">
+        </childnode>
+        <childnode refid="17825" relation="include">
+        </childnode>
+        <childnode refid="17811" relation="include">
+        </childnode>
+        <childnode refid="17831" relation="include">
+        </childnode>
+        <childnode refid="17832" relation="include">
+        </childnode>
+        <childnode refid="17833" relation="include">
+        </childnode>
+        <childnode refid="17842" relation="include">
+        </childnode>
+        <childnode refid="17844" relation="include">
+        </childnode>
+        <childnode refid="17784" relation="include">
+        </childnode>
+        <childnode refid="17819" relation="include">
+        </childnode>
+      </node>
+      <node id="17890">
+        <label>json/json_spirit_writer_template.h</label>
+        <link refid="json__spirit__writer__template_8h"/>
+        <childnode refid="17877" relation="include">
+        </childnode>
+        <childnode refid="17768" relation="include">
+        </childnode>
+        <childnode refid="17800" relation="include">
+        </childnode>
+        <childnode refid="17891" relation="include">
+        </childnode>
+      </node>
+      <node id="17742">
+        <label>QWidget</label>
+      </node>
+      <node id="17786">
+        <label>openssl/ripemd.h</label>
+      </node>
+      <node id="17747">
+        <label>boost/filesystem.hpp</label>
+      </node>
+      <node id="17886">
+        <label>boost/spirit/utility/escape_char.hpp</label>
+      </node>
+      <node id="17802">
+        <label>utility</label>
+      </node>
+      <node id="17850">
+        <label>compressor.h</label>
+        <link refid="compressor_8h"/>
+        <childnode refid="17764" relation="include">
+        </childnode>
+        <childnode refid="17851" relation="include">
+        </childnode>
+      </node>
+      <node id="17800">
+        <label>sstream</label>
+      </node>
+      <node id="17734">
+        <label>stormnodemanager.h</label>
+        <link refid="stormnodemanager_8h"/>
+        <childnode refid="17735" relation="include">
+        </childnode>
+        <childnode refid="17736" relation="include">
+        </childnode>
+        <childnode refid="17742" relation="include">
+        </childnode>
+        <childnode refid="17743" relation="include">
+        </childnode>
+      </node>
+      <node id="17863">
+        <label>boost/signals2/last_value.hpp</label>
+      </node>
+      <node id="17824">
+        <label>key.h</label>
+        <link refid="key_8h"/>
+        <childnode refid="17755" relation="include">
+        </childnode>
+        <childnode refid="17783" relation="include">
+        </childnode>
+        <childnode refid="17779" relation="include">
+        </childnode>
+        <childnode refid="17753" relation="include">
+        </childnode>
+      </node>
+      <node id="17808">
+        <label>openssl/evp.h</label>
+      </node>
+      <node id="17798">
+        <label>tinyformat.h</label>
+        <link refid="tinyformat_8h"/>
+        <childnode refid="17768" relation="include">
+        </childnode>
+        <childnode refid="17799" relation="include">
+        </childnode>
+        <childnode refid="17800" relation="include">
+        </childnode>
+        <childnode refid="17779" relation="include">
+        </childnode>
+      </node>
+      <node id="17770">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="17818">
+        <label>db.h</label>
+        <link refid="db_8h"/>
+        <childnode refid="17766" relation="include">
+        </childnode>
+        <childnode refid="17736" relation="include">
+        </childnode>
+        <childnode refid="17819" relation="include">
+        </childnode>
+        <childnode refid="17754" relation="include">
+        </childnode>
+        <childnode refid="17759" relation="include">
+        </childnode>
+        <childnode refid="17753" relation="include">
+        </childnode>
+        <childnode refid="17804" relation="include">
+        </childnode>
+        <childnode refid="17822" relation="include">
+        </childnode>
+      </node>
+      <node id="17819">
+        <label>streams.h</label>
+        <link refid="streams_8h"/>
+        <childnode refid="17755" relation="include">
+        </childnode>
+        <childnode refid="17766" relation="include">
+        </childnode>
+        <childnode refid="17820" relation="include">
+        </childnode>
+        <childnode refid="17778" relation="include">
+        </childnode>
+        <childnode refid="17821" relation="include">
+        </childnode>
+        <childnode refid="17769" relation="include">
+        </childnode>
+        <childnode refid="17754" relation="include">
+        </childnode>
+        <childnode refid="17767" relation="include">
+        </childnode>
+        <childnode refid="17770" relation="include">
+        </childnode>
+        <childnode refid="17759" relation="include">
+        </childnode>
+        <childnode refid="17758" relation="include">
+        </childnode>
+        <childnode refid="17802" relation="include">
+        </childnode>
+        <childnode refid="17753" relation="include">
+        </childnode>
+      </node>
+      <node id="17791">
+        <label>crypto/argon2/argon2.h</label>
+        <link refid="argon2_8h"/>
+        <childnode refid="17770" relation="include">
+        </childnode>
+        <childnode refid="17790" relation="include">
+        </childnode>
+        <childnode refid="17761" relation="include">
+        </childnode>
+      </node>
+      <node id="17796">
+        <label>sys/time.h</label>
+      </node>
+      <node id="17799">
+        <label>iostream</label>
+      </node>
+      <node id="17870">
+        <label>rpcserver.h</label>
+        <link refid="rpcserver_8h"/>
+        <childnode refid="17765" relation="include">
+        </childnode>
+        <childnode refid="17777" relation="include">
+        </childnode>
+        <childnode refid="17871" relation="include">
+        </childnode>
+        <childnode refid="17801" relation="include">
+        </childnode>
+        <childnode refid="17754" relation="include">
+        </childnode>
+      </node>
+      <node id="17865">
+        <label>stormnodeconfig.h</label>
+        <link refid="stormnodeconfig_8h"/>
+      </node>
+      <node id="17749">
+        <label>stormnodeconfigdialog.h</label>
+        <link refid="stormnodeconfigdialog_8h"/>
+        <childnode refid="17746" relation="include">
+        </childnode>
+      </node>
+      <node id="17829">
+        <label>deque</label>
+      </node>
+      <node id="17777">
+        <label>uint256.h</label>
+        <link refid="uint256_8h"/>
+        <childnode refid="17778" relation="include">
+        </childnode>
+        <childnode refid="17771" relation="include">
+        </childnode>
+        <childnode refid="17779" relation="include">
+        </childnode>
+        <childnode refid="17770" relation="include">
+        </childnode>
+        <childnode refid="17759" relation="include">
+        </childnode>
+        <childnode refid="17753" relation="include">
+        </childnode>
+      </node>
+      <node id="17881">
+        <label>boost/bind.hpp</label>
+      </node>
+      <node id="17878">
+        <label>boost/config.hpp</label>
+      </node>
+      <node id="17836">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="17855">
+        <label>leveldb/slice.h</label>
+        <link refid="slice_8h"/>
+        <childnode refid="17778" relation="include">
+        </childnode>
+        <childnode refid="17790" relation="include">
+        </childnode>
+        <childnode refid="17758" relation="include">
+        </childnode>
+        <childnode refid="17759" relation="include">
+        </childnode>
+      </node>
+      <node id="17877">
+        <label>json_spirit_value.h</label>
+        <link refid="json__spirit__value_8h"/>
+        <childnode refid="17753" relation="include">
+        </childnode>
+        <childnode refid="17754" relation="include">
+        </childnode>
+        <childnode refid="17759" relation="include">
+        </childnode>
+        <childnode refid="17768" relation="include">
+        </childnode>
+        <childnode refid="17800" relation="include">
+        </childnode>
+        <childnode refid="17779" relation="include">
+        </childnode>
+        <childnode refid="17770" relation="include">
+        </childnode>
+        <childnode refid="17878" relation="include">
+        </childnode>
+        <childnode refid="17879" relation="include">
+        </childnode>
+        <childnode refid="17782" relation="include">
+        </childnode>
+      </node>
+      <node id="17744">
+        <label>ui_stormnodemanager.h</label>
+      </node>
+      <node id="17830">
+        <label>boost/array.hpp</label>
+      </node>
+      <node id="17793">
+        <label>openssl/bn.h</label>
+      </node>
+      <node id="17851">
+        <label>txdb.h</label>
+        <link refid="txdb_8h"/>
+        <childnode refid="17852" relation="include">
+        </childnode>
+        <childnode refid="17846" relation="include">
+        </childnode>
+        <childnode refid="17754" relation="include">
+        </childnode>
+        <childnode refid="17759" relation="include">
+        </childnode>
+        <childnode refid="17802" relation="include">
+        </childnode>
+        <childnode refid="17753" relation="include">
+        </childnode>
+      </node>
+      <node id="17815">
+        <label>timedata.h</label>
+        <link refid="timedata_8h"/>
+        <childnode refid="17770" relation="include">
+        </childnode>
+      </node>
+      <node id="17755">
+        <label>allocators.h</label>
+        <link refid="allocators_8h"/>
+        <childnode refid="17756" relation="include">
+        </childnode>
+        <childnode refid="17758" relation="include">
+        </childnode>
+        <childnode refid="17759" relation="include">
+        </childnode>
+        <childnode refid="17740" relation="include">
+        </childnode>
+        <childnode refid="17754" relation="include">
+        </childnode>
+        <childnode refid="17760" relation="include">
+        </childnode>
+        <childnode refid="17761" relation="include">
+        </childnode>
+        <childnode refid="17762" relation="include">
+        </childnode>
+      </node>
+      <node id="17887">
+        <label>boost/spirit/iterator/multi_pass.hpp</label>
+      </node>
+      <node id="17843">
+        <label>chainparams.h</label>
+        <link refid="chainparams_8h"/>
+        <childnode refid="17792" relation="include">
+        </childnode>
+        <childnode refid="17777" relation="include">
+        </childnode>
+        <childnode refid="17753" relation="include">
+        </childnode>
+      </node>
+      <node id="17767">
+        <label>set</label>
+      </node>
+      <node id="17820">
+        <label>algorithm</label>
+      </node>
+      <node id="17864">
+        <label>activestormnode.h</label>
+        <link refid="activestormnode_8h"/>
+        <childnode refid="17736" relation="include">
+        </childnode>
+        <childnode refid="17824" relation="include">
+        </childnode>
+        <childnode refid="17816" relation="include">
+        </childnode>
+      </node>
+      <node id="17752">
+        <label>walletmodel.h</label>
+        <link refid="walletmodel_8h"/>
+        <childnode refid="17751" relation="include">
+        </childnode>
+        <childnode refid="17753" relation="include">
+        </childnode>
+        <childnode refid="17754" relation="include">
+        </childnode>
+        <childnode refid="17755" relation="include">
+        </childnode>
+        <childnode refid="17763" relation="include">
+        </childnode>
+        <childnode refid="17816" relation="include">
+        </childnode>
+      </node>
+      <node id="17787">
+        <label>crypto/ripemd160.h</label>
+        <link refid="ripemd160_8h"/>
+        <childnode refid="17770" relation="include">
+        </childnode>
+        <childnode refid="17757" relation="include">
+        </childnode>
+      </node>
+      <node id="17735">
+        <label>util.h</label>
+      </node>
+      <node id="17813">
+        <label>stdio.h</label>
+      </node>
+      <node id="17756">
+        <label>cleanse.h</label>
+        <link refid="cleanse_8h"/>
+        <childnode refid="17757" relation="include">
+        </childnode>
+      </node>
+      <node id="17771">
+        <label>cstring</label>
+      </node>
+      <node id="17736">
+        <label>sync.h</label>
+        <link refid="sync_8h"/>
+        <childnode refid="17737" relation="include">
+        </childnode>
+        <childnode refid="17738" relation="include">
+        </childnode>
+        <childnode refid="17739" relation="include">
+        </childnode>
+        <childnode refid="17740" relation="include">
+        </childnode>
+        <childnode refid="17741" relation="include">
+        </childnode>
+      </node>
+      <node id="17899">
+        <label>QScroller</label>
+      </node>
+      <node id="17814">
+        <label>inttypes.h</label>
+      </node>
+      <node id="17854">
+        <label>leveldb/iterator.h</label>
+        <link refid="iterator_8h"/>
+        <childnode refid="17855" relation="include">
+        </childnode>
+        <childnode refid="17856" relation="include">
+        </childnode>
+      </node>
+      <node id="17885">
+        <label>boost/spirit/utility/confix.hpp</label>
+      </node>
+      <node id="17826">
+        <label>primitives/block.h</label>
+        <link refid="primitives_2block_8h"/>
+        <childnode refid="17764" relation="include">
+        </childnode>
+        <childnode refid="17791" relation="include">
+        </childnode>
+        <childnode refid="17827" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="stormnodemanager_8h" kindref="compound">stormnodemanager.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ui_stormnodemanager.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="addeditstormnode_8h" kindref="compound">addeditstormnode.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="stormnodeconfigdialog_8h" kindref="compound">stormnodeconfigdialog.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="sync_8h" kindref="compound">sync.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="clientmodel_8h" kindref="compound">clientmodel.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="walletmodel_8h" kindref="compound">walletmodel.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="activestormnode_8h" kindref="compound">activestormnode.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="stormnodeconfig_8h" kindref="compound">stormnodeconfig.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="stormnode_8h" kindref="compound">stormnode.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="stormnodeman_8h" kindref="compound">stormnodeman.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="walletdb_8h" kindref="compound">walletdb.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="wallet_8h" kindref="compound">wallet.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="init_8h" kindref="compound">init.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="rpcserver_8h" kindref="compound">rpcserver.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="sandstorm_8h" kindref="compound">sandstorm.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/lexical_cast.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fstream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QAbstractItemDelegate&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QPainter&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QTimer&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QDebug&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QScrollArea&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QScroller&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QDateTime&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QApplication&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QClipboard&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QMessageBox&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespacejson__spirit" kindref="compound">json_spirit</ref>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespacestd" kindref="compound">std</ref>;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36" refid="class_stormnode_manager_1abbf5b0f2ae3578d576182fe7a3a92488" refkind="member"><highlight class="normal"><ref refid="class_stormnode_manager_1abbf5b0f2ae3578d576182fe7a3a92488" kindref="member">StormnodeManager::StormnodeManager</ref>(QWidget<sp/>*parent)<sp/>:</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>QWidget(parent),</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>ui(new<sp/><ref refid="namespace_ui" kindref="compound">Ui</ref>::<ref refid="class_stormnode_manager" kindref="compound">StormnodeManager</ref>),</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>clientModel(0),</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>walletModel(0)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>ui-&gt;setupUi(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>ui-&gt;editButton-&gt;setEnabled(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>ui-&gt;startButton-&gt;setEnabled(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>ui-&gt;tableWidget-&gt;horizontalHeader()-&gt;setSectionResizeMode(QHeaderView::ResizeToContents);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>ui-&gt;tableWidget_2-&gt;horizontalHeader()-&gt;setSectionResizeMode(QHeaderView::ResizeToContents);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>timer<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>QTimer(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>connect(timer,<sp/>SIGNAL(timeout()),<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>SLOT(<ref refid="class_stormnode_manager_1a5cba8d5a6fda3cb986372678f766170f" kindref="member">updateNodeList</ref>()));</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>timer-&gt;start(30000);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_stormnode_manager_1a5cba8d5a6fda3cb986372678f766170f" kindref="member">updateNodeList</ref>();</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="class_stormnode_manager_1ab11545626564a6297afa91ef575a6fd9" refkind="member"><highlight class="normal"><ref refid="class_stormnode_manager_1ab11545626564a6297afa91ef575a6fd9" kindref="member">StormnodeManager::~StormnodeManager</ref>()</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>ui;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>StormnodeManager::on_tableWidget_2_itemSelectionChanged()</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ui-&gt;tableWidget_2-&gt;selectedItems().count()<sp/>&gt;<sp/>0)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ui-&gt;editButton-&gt;setEnabled(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ui-&gt;startButton-&gt;setEnabled(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71" refid="class_stormnode_manager_1a44edd7083dc8e92e1083b492e781513b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_stormnode_manager_1a44edd7083dc8e92e1083b492e781513b" kindref="member">StormnodeManager::updateStormNode</ref>(QString<sp/>alias,<sp/>QString<sp/>addr,<sp/>QString<sp/>privkey,<sp/>QString<sp/>txHash,<sp/>QString<sp/>txIndex,<sp/>QString<sp/>status)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" kindref="member">LOCK</ref>(cs_storm);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bFound<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nodeRow<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i<sp/>&lt;<sp/>ui-&gt;tableWidget_2-&gt;rowCount();<sp/>i++)</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(ui-&gt;tableWidget_2-&gt;item(i,<sp/>0)-&gt;text()<sp/>==<sp/>alias)</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bFound<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nodeRow<sp/>=<sp/>i;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(nodeRow<sp/>==<sp/>0<sp/>&amp;&amp;<sp/>!bFound)</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ui-&gt;tableWidget_2-&gt;insertRow(0);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>QTableWidgetItem<sp/>*aliasItem<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>QTableWidgetItem(alias);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>QTableWidgetItem<sp/>*addrItem<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>QTableWidgetItem(addr);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>QTableWidgetItem<sp/>*statusItem<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>QTableWidgetItem(status);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>ui-&gt;tableWidget_2-&gt;setItem(nodeRow,<sp/>0,<sp/>aliasItem);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>ui-&gt;tableWidget_2-&gt;setItem(nodeRow,<sp/>1,<sp/>addrItem);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>ui-&gt;tableWidget_2-&gt;setItem(nodeRow,<sp/>2,<sp/>statusItem);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98" refid="class_stormnode_manager_1a5cba8d5a6fda3cb986372678f766170f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_stormnode_manager_1a5cba8d5a6fda3cb986372678f766170f" kindref="member">StormnodeManager::updateNodeList</ref>()</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//TODO</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*TRY_LOCK(cs_stormnodes,<sp/>lockStormnodes);</highlight></codeline>
+<codeline lineno="102"><highlight class="comment"><sp/><sp/><sp/><sp/>if(!lockStormnodes)</highlight></codeline>
+<codeline lineno="103"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>return;</highlight></codeline>
+<codeline lineno="104"><highlight class="comment"></highlight></codeline>
+<codeline lineno="105"><highlight class="comment"><sp/><sp/><sp/><sp/>ui-&gt;countLabel-&gt;setText(&quot;Updating...&quot;);</highlight></codeline>
+<codeline lineno="106"><highlight class="comment"><sp/><sp/><sp/><sp/>ui-&gt;tableWidget-&gt;clearContents();</highlight></codeline>
+<codeline lineno="107"><highlight class="comment"><sp/><sp/><sp/><sp/>ui-&gt;tableWidget-&gt;setRowCount(0);</highlight></codeline>
+<codeline lineno="108"><highlight class="comment"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="109"><highlight class="comment"><sp/><sp/><sp/><sp/>std::vector&lt;CStormnode&gt;<sp/>vStormnodes<sp/>=<sp/>snodeman.GetFullStormnodeVector();</highlight></codeline>
+<codeline lineno="110"><highlight class="comment"><sp/><sp/><sp/><sp/>BOOST_FOREACH(CStormnode&amp;<sp/>sn,<sp/>vStormnodes)</highlight></codeline>
+<codeline lineno="111"><highlight class="comment"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>int<sp/>snRow<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="113"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ui-&gt;tableWidget-&gt;insertRow(0);</highlight></codeline>
+<codeline lineno="114"><highlight class="comment"></highlight></codeline>
+<codeline lineno="115"><highlight class="comment"><sp/><sp/><sp/><sp/>//<sp/>populate<sp/>list</highlight></codeline>
+<codeline lineno="116"><highlight class="comment"><sp/><sp/><sp/><sp/>//<sp/>Address,<sp/>Rank,<sp/>Active,<sp/>Active<sp/>Seconds,<sp/>Last<sp/>Seen,<sp/>Pub<sp/>Key</highlight></codeline>
+<codeline lineno="117"><highlight class="comment"><sp/><sp/><sp/><sp/>QTableWidgetItem<sp/>*activeItem<sp/>=<sp/>new<sp/>QTableWidgetItem(QString::number(sn.IsEnabled()));</highlight></codeline>
+<codeline lineno="118"><highlight class="comment"><sp/><sp/><sp/><sp/>QTableWidgetItem<sp/>*addressItem<sp/>=<sp/>new<sp/>QTableWidgetItem(QString::fromStdString(sn.addr.ToString()));</highlight></codeline>
+<codeline lineno="119"><highlight class="comment"><sp/><sp/><sp/><sp/>QTableWidgetItem<sp/>*rankItem<sp/>=<sp/>new<sp/>QTableWidgetItem(QString::number(snodeman.GetStormnodeRank(sn.vin,<sp/>pindexBest-&gt;nHeight)));</highlight></codeline>
+<codeline lineno="120"><highlight class="comment"><sp/><sp/><sp/><sp/>QTableWidgetItem<sp/>*activeSecondsItem<sp/>=<sp/>new<sp/>QTableWidgetItem(seconds_to_DHMS((qint64)(sn.lastTimeSeen<sp/>-<sp/>sn.sigTime)));</highlight></codeline>
+<codeline lineno="121"><highlight class="comment"><sp/><sp/><sp/><sp/>QTableWidgetItem<sp/>*lastSeenItem<sp/>=<sp/>new<sp/>QTableWidgetItem(QString::fromStdString(DateTimeStrFormat(sn.lastTimeSeen)));</highlight></codeline>
+<codeline lineno="122"><highlight class="comment"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="123"><highlight class="comment"><sp/><sp/><sp/><sp/>CScript<sp/>pubkey;</highlight></codeline>
+<codeline lineno="124"><highlight class="comment"><sp/><sp/><sp/><sp/>pubkey<sp/>=<sp/>GetScriptForDestination(sn.pubkey.GetID());</highlight></codeline>
+<codeline lineno="125"><highlight class="comment"><sp/><sp/><sp/><sp/>CTxDestination<sp/>address1;</highlight></codeline>
+<codeline lineno="126"><highlight class="comment"><sp/><sp/><sp/><sp/>ExtractDestination(pubkey,<sp/>address1);</highlight></codeline>
+<codeline lineno="127"><highlight class="comment"><sp/><sp/><sp/><sp/>CDarkSilkAddress<sp/>address2(address1);</highlight></codeline>
+<codeline lineno="128"><highlight class="comment"><sp/><sp/><sp/><sp/>QTableWidgetItem<sp/>*pubkeyItem<sp/>=<sp/>new<sp/>QTableWidgetItem(QString::fromStdString(address2.ToString()));</highlight></codeline>
+<codeline lineno="129"><highlight class="comment"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="130"><highlight class="comment"><sp/><sp/><sp/><sp/>ui-&gt;tableWidget-&gt;setItem(snRow,<sp/>0,<sp/>addressItem);</highlight></codeline>
+<codeline lineno="131"><highlight class="comment"><sp/><sp/><sp/><sp/>ui-&gt;tableWidget-&gt;setItem(snRow,<sp/>1,<sp/>rankItem);</highlight></codeline>
+<codeline lineno="132"><highlight class="comment"><sp/><sp/><sp/><sp/>ui-&gt;tableWidget-&gt;setItem(snRow,<sp/>2,<sp/>activeItem);</highlight></codeline>
+<codeline lineno="133"><highlight class="comment"><sp/><sp/><sp/><sp/>ui-&gt;tableWidget-&gt;setItem(snRow,<sp/>3,<sp/>activeSecondsItem);</highlight></codeline>
+<codeline lineno="134"><highlight class="comment"><sp/><sp/><sp/><sp/>ui-&gt;tableWidget-&gt;setItem(snRow,<sp/>4,<sp/>lastSeenItem);</highlight></codeline>
+<codeline lineno="135"><highlight class="comment"><sp/><sp/><sp/><sp/>ui-&gt;tableWidget-&gt;setItem(snRow,<sp/>5,<sp/>pubkeyItem);</highlight></codeline>
+<codeline lineno="136"><highlight class="comment"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="137"><highlight class="comment"></highlight></codeline>
+<codeline lineno="138"><highlight class="comment"><sp/><sp/><sp/><sp/>ui-&gt;countLabel-&gt;setText(QString::number(ui-&gt;tableWidget-&gt;rowCount()));</highlight></codeline>
+<codeline lineno="139"><highlight class="comment"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="140"><highlight class="comment"><sp/><sp/><sp/><sp/>on_UpdateButton_clicked();*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143" refid="class_stormnode_manager_1ab44da43c24ef293ea3c548883d270f99" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_stormnode_manager_1ab44da43c24ef293ea3c548883d270f99" kindref="member">StormnodeManager::setClientModel</ref>(<ref refid="class_client_model" kindref="compound">ClientModel</ref><sp/>*model)</highlight></codeline>
+<codeline lineno="144"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;clientModel<sp/>=<sp/>model;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(model)</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151" refid="class_stormnode_manager_1a624b7c64eed1e9691733bd9473e98344" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_stormnode_manager_1a624b7c64eed1e9691733bd9473e98344" kindref="member">StormnodeManager::setWalletModel</ref>(<ref refid="class_wallet_model" kindref="compound">WalletModel</ref><sp/>*model)</highlight></codeline>
+<codeline lineno="152"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;walletModel<sp/>=<sp/>model;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(model<sp/>&amp;&amp;<sp/>model-&gt;<ref refid="class_wallet_model_1a96d53e56b3f8f07537ea2523f7a7d300" kindref="member">getOptionsModel</ref>())</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>StormnodeManager::on_createButton_clicked()</highlight></codeline>
+<codeline lineno="161"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_add_edit_storm_node" kindref="compound">AddEditStormNode</ref>*<sp/>aenode<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="class_add_edit_storm_node" kindref="compound">AddEditStormNode</ref>();</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>aenode-&gt;exec();</highlight></codeline>
+<codeline lineno="164"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>StormnodeManager::on_startButton_clicked()</highlight></codeline>
+<codeline lineno="167"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>start<sp/>the<sp/>node</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>QItemSelectionModel*<sp/>selectionModel<sp/>=<sp/>ui-&gt;tableWidget_2-&gt;selectionModel();</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>QModelIndexList<sp/>selected<sp/>=<sp/>selectionModel-&gt;selectedRows();</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(selected.count()<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>QModelIndex<sp/>index<sp/>=<sp/>selected.at(0);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>r<sp/>=<sp/>index.row();</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>sAlias<sp/>=<sp/>ui-&gt;tableWidget_2-&gt;item(r,<sp/>0)-&gt;text().toStdString();</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_crypto_key_store_1a1c3ebef555fd13676d67509b95820fcf" kindref="member">IsLocked</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>statusObj;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>statusObj<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;&lt;center&gt;Alias:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>sAlias;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>BOOST_FOREACH(<ref refid="class_c_stormnode_config_1_1_c_stormnode_entry" kindref="compound">CStormnodeConfig::CStormnodeEntry</ref><sp/>sne,<sp/><ref refid="stormnodeconfig_8cpp_1a399e6911e15f2ad43696d708ebd56cf2" kindref="member">stormnodeConfig</ref>.<ref refid="class_c_stormnode_config_1aadf8ea91de17d416d1046987f07c4d1a" kindref="member">getEntries</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(sne.<ref refid="class_c_stormnode_config_1_1_c_stormnode_entry_1ae6bc0007a5896e6edd061bca02251dbf" kindref="member">getAlias</ref>()<sp/>==<sp/>sAlias)<sp/>{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>errorMessage;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>result<sp/>=<sp/><ref refid="sandstorm_8cpp_1ac75d1761e37a1f1cbf71007bcbadf5b0" kindref="member">activeStormnode</ref>.Register(sne.<ref refid="class_c_stormnode_config_1_1_c_stormnode_entry_1af8e47485670e314e68ccb2a007d4f97e" kindref="member">getIp</ref>(),<sp/>sne.<ref refid="class_c_stormnode_config_1_1_c_stormnode_entry_1a02796f15b7991ec6682193b211353265" kindref="member">getPrivKey</ref>(),<sp/>sne.<ref refid="class_c_stormnode_config_1_1_c_stormnode_entry_1a96b1b54ab8cd92c2fa1bd22834963512" kindref="member">getTxHash</ref>(),<sp/>sne.<ref refid="class_c_stormnode_config_1_1_c_stormnode_entry_1ab46bd1124cbb3b970e58e306ffe799ae" kindref="member">getOutputIndex</ref>(),<sp/>errorMessage);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(result)<sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>statusObj<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;&lt;br&gt;Successfully<sp/>started<sp/>Stormnode.&quot;</highlight><highlight class="normal"><sp/>;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>statusObj<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;&lt;br&gt;Failed<sp/>to<sp/>start<sp/>Stormnode.&lt;br&gt;Error:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>errorMessage;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>statusObj<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;&lt;/center&gt;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1a0404b6bc1cb804aadc69b9902b52282a" kindref="member">Lock</ref>();</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>QMessageBox<sp/>msg;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>msg.setText(QString::fromStdString(statusObj));</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>msg.exec();</highlight></codeline>
+<codeline lineno="204"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>StormnodeManager::on_startAllButton_clicked()</highlight></codeline>
+<codeline lineno="207"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_crypto_key_store_1a1c3ebef555fd13676d67509b95820fcf" kindref="member">IsLocked</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;CStormnodeConfig::CStormnodeEntry&gt;<sp/>snEntries;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="db__bench_8cc_1ac7af894858cf396a219d632f40afdc8d" kindref="member">total</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>successful<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>fail<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>statusObj;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>BOOST_FOREACH(<ref refid="class_c_stormnode_config_1_1_c_stormnode_entry" kindref="compound">CStormnodeConfig::CStormnodeEntry</ref><sp/>sne,<sp/><ref refid="stormnodeconfig_8cpp_1a399e6911e15f2ad43696d708ebd56cf2" kindref="member">stormnodeConfig</ref>.<ref refid="class_c_stormnode_config_1aadf8ea91de17d416d1046987f07c4d1a" kindref="member">getEntries</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>total++;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>errorMessage;</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//std::string<sp/>strDonateAddress<sp/>=<sp/>sne.getDonationAddress();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//std::string<sp/>strDonationPercentage<sp/>=<sp/>sne.getDonationPercentage();</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>result<sp/>=<sp/><ref refid="sandstorm_8cpp_1ac75d1761e37a1f1cbf71007bcbadf5b0" kindref="member">activeStormnode</ref>.Register(sne.<ref refid="class_c_stormnode_config_1_1_c_stormnode_entry_1af8e47485670e314e68ccb2a007d4f97e" kindref="member">getIp</ref>(),<sp/>sne.<ref refid="class_c_stormnode_config_1_1_c_stormnode_entry_1a02796f15b7991ec6682193b211353265" kindref="member">getPrivKey</ref>(),<sp/>sne.<ref refid="class_c_stormnode_config_1_1_c_stormnode_entry_1a96b1b54ab8cd92c2fa1bd22834963512" kindref="member">getTxHash</ref>(),<sp/>sne.<ref refid="class_c_stormnode_config_1_1_c_stormnode_entry_1ab46bd1124cbb3b970e58e306ffe799ae" kindref="member">getOutputIndex</ref>(),<sp/>errorMessage);</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(result)<sp/>{</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>successful++;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fail++;</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>statusObj<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;\nFailed<sp/>to<sp/>start<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>sne.<ref refid="class_c_stormnode_config_1_1_c_stormnode_entry_1ae6bc0007a5896e6edd061bca02251dbf" kindref="member">getAlias</ref>()<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;.<sp/>Error:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>errorMessage;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="darksilkgui_8cpp_1a8c747077ad84071cba8b87f34fe38920" kindref="member">pwalletMain</ref>-&gt;<ref refid="class_c_wallet_1a0404b6bc1cb804aadc69b9902b52282a" kindref="member">Lock</ref>();</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>returnObj;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/>returnObj<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Successfully<sp/>started<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>boost::lexical_cast&lt;std::string&gt;(successful)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>Stormnodes,<sp/>failed<sp/>to<sp/>start<sp/>&quot;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>boost::lexical_cast&lt;std::string&gt;(fail)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;,<sp/>total<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>boost::lexical_cast&lt;std::string&gt;(<ref refid="db__bench_8cc_1ac7af894858cf396a219d632f40afdc8d" kindref="member">total</ref>);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fail<sp/>&gt;<sp/>0)</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>returnObj<sp/>+=<sp/>statusObj;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/>QMessageBox<sp/>msg;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/>msg.setText(QString::fromStdString(returnObj));</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/>msg.exec();</highlight></codeline>
+<codeline lineno="245"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247" refid="class_stormnode_manager_1a8176df10b7594a5d37aeb8d41941a52b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_stormnode_manager_1a8176df10b7594a5d37aeb8d41941a52b" kindref="member">StormnodeManager::on_UpdateButton_clicked</ref>()</highlight></codeline>
+<codeline lineno="248"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/>BOOST_FOREACH(<ref refid="class_c_stormnode_config_1_1_c_stormnode_entry" kindref="compound">CStormnodeConfig::CStormnodeEntry</ref><sp/>sne,<sp/><ref refid="stormnodeconfig_8cpp_1a399e6911e15f2ad43696d708ebd56cf2" kindref="member">stormnodeConfig</ref>.<ref refid="class_c_stormnode_config_1aadf8ea91de17d416d1046987f07c4d1a" kindref="member">getEntries</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>errorMessage;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::vector&lt;CStormnode&gt;<sp/>vStormnodes<sp/>=<sp/><ref refid="stormnodeman_8cpp_1a1e28814877e5fb4ed8113e3621ca13ff" kindref="member">snodeman</ref>.<ref refid="class_c_stormnode_man_1a7002dd29b10a0db885c361f1d9981de8" kindref="member">GetFullStormnodeVector</ref>();</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(errorMessage<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">){</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_stormnode_manager_1a44edd7083dc8e92e1083b492e781513b" kindref="member">updateStormNode</ref>(QString::fromStdString(sne.<ref refid="class_c_stormnode_config_1_1_c_stormnode_entry_1ae6bc0007a5896e6edd061bca02251dbf" kindref="member">getAlias</ref>()),<sp/>QString::fromStdString(sne.<ref refid="class_c_stormnode_config_1_1_c_stormnode_entry_1af8e47485670e314e68ccb2a007d4f97e" kindref="member">getIp</ref>()),<sp/>QString::fromStdString(sne.<ref refid="class_c_stormnode_config_1_1_c_stormnode_entry_1a02796f15b7991ec6682193b211353265" kindref="member">getPrivKey</ref>()),<sp/>QString::fromStdString(sne.<ref refid="class_c_stormnode_config_1_1_c_stormnode_entry_1a96b1b54ab8cd92c2fa1bd22834963512" kindref="member">getTxHash</ref>()),</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QString::fromStdString(sne.<ref refid="class_c_stormnode_config_1_1_c_stormnode_entry_1ab46bd1124cbb3b970e58e306ffe799ae" kindref="member">getOutputIndex</ref>()),<sp/>QString::fromStdString(</highlight><highlight class="stringliteral">&quot;Not<sp/>in<sp/>the<sp/>Stormnode<sp/>list.&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_stormnode_manager_1a44edd7083dc8e92e1083b492e781513b" kindref="member">updateStormNode</ref>(QString::fromStdString(sne.<ref refid="class_c_stormnode_config_1_1_c_stormnode_entry_1ae6bc0007a5896e6edd061bca02251dbf" kindref="member">getAlias</ref>()),<sp/>QString::fromStdString(sne.<ref refid="class_c_stormnode_config_1_1_c_stormnode_entry_1af8e47485670e314e68ccb2a007d4f97e" kindref="member">getIp</ref>()),<sp/>QString::fromStdString(sne.<ref refid="class_c_stormnode_config_1_1_c_stormnode_entry_1a02796f15b7991ec6682193b211353265" kindref="member">getPrivKey</ref>()),<sp/>QString::fromStdString(sne.<ref refid="class_c_stormnode_config_1_1_c_stormnode_entry_1a96b1b54ab8cd92c2fa1bd22834963512" kindref="member">getTxHash</ref>()),</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QString::fromStdString(sne.<ref refid="class_c_stormnode_config_1_1_c_stormnode_entry_1ab46bd1124cbb3b970e58e306ffe799ae" kindref="member">getOutputIndex</ref>()),<sp/>QString::fromStdString(errorMessage));</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOST_FOREACH(<ref refid="class_c_stormnode" kindref="compound">CStormnode</ref>&amp;<sp/>sn,<sp/>vStormnodes)<sp/>{</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sn.<ref refid="class_c_stormnode_1a31e0681a92d1f4d0da756b680c695d66" kindref="member">addr</ref>.<ref refid="class_c_service_1a336f9848fe9364e260c76499be0351a5" kindref="member">ToString</ref>().c_str()<sp/>==<sp/>sne.<ref refid="class_c_stormnode_config_1_1_c_stormnode_entry_1af8e47485670e314e68ccb2a007d4f97e" kindref="member">getIp</ref>()){</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_stormnode_manager_1a44edd7083dc8e92e1083b492e781513b" kindref="member">updateStormNode</ref>(QString::fromStdString(sne.<ref refid="class_c_stormnode_config_1_1_c_stormnode_entry_1ae6bc0007a5896e6edd061bca02251dbf" kindref="member">getAlias</ref>()),<sp/>QString::fromStdString(sne.<ref refid="class_c_stormnode_config_1_1_c_stormnode_entry_1af8e47485670e314e68ccb2a007d4f97e" kindref="member">getIp</ref>()),<sp/>QString::fromStdString(sne.<ref refid="class_c_stormnode_config_1_1_c_stormnode_entry_1a02796f15b7991ec6682193b211353265" kindref="member">getPrivKey</ref>()),<sp/>QString::fromStdString(sne.<ref refid="class_c_stormnode_config_1_1_c_stormnode_entry_1a96b1b54ab8cd92c2fa1bd22834963512" kindref="member">getTxHash</ref>()),</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QString::fromStdString(sne.<ref refid="class_c_stormnode_config_1_1_c_stormnode_entry_1ab46bd1124cbb3b970e58e306ffe799ae" kindref="member">getOutputIndex</ref>()),<sp/>QString::fromStdString(</highlight><highlight class="stringliteral">&quot;Stormnode<sp/>is<sp/>Running.&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="269"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/qt/stormnodemanager.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,112 @@
+.TH "/home/dev/ds-160209/src/spork.h" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/spork.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'bignum\&.h'\fP
+.br
+\fC#include 'sync\&.h'\fP
+.br
+\fC#include 'net\&.h'\fP
+.br
+\fC#include 'key\&.h'\fP
+.br
+\fC#include 'util\&.h'\fP
+.br
+\fC#include 'script\&.h'\fP
+.br
+\fC#include 'base58\&.h'\fP
+.br
+\fC#include 'main\&.h'\fP
+.br
+\fC#include 'protocol\&.h'\fP
+.br
+\fC#include 'sandstorm\&.h'\fP
+.br
+\fC#include <boost/lexical_cast\&.hpp>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBCSporkMessage\fP"
+.br
+.ti -1c
+.RI "class \fBCSporkManager\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBProcessSpork\fP (\fBCNode\fP *pfrom, std::string &strCommand, \fBCDataStream\fP &vRecv)"
+.br
+.ti -1c
+.RI "int \fBGetSporkValue\fP (int nSporkID)"
+.br
+.ti -1c
+.RI "bool \fBIsSporkActive\fP (int nSporkID)"
+.br
+.ti -1c
+.RI "void \fBExecuteSpork\fP (int nSporkID, int nValue)"
+.br
+.ti -1c
+.RI "void \fBReprocessBlocks\fP (int nBlocks)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "std::map< \fBuint256\fP, \fBCSporkMessage\fP > \fBmapSporks\fP"
+.br
+.ti -1c
+.RI "std::map< int, \fBCSporkMessage\fP > \fBmapSporksActive\fP"
+.br
+.ti -1c
+.RI "\fBCSporkManager\fP \fBsporkManager\fP"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void ExecuteSpork (int nSporkID, int nValue)"
+
+.PP
+Definition at line 161 of file spork\&.cpp\&.
+.SS "int GetSporkValue (int nSporkID)"
+
+.PP
+Definition at line 105 of file spork\&.cpp\&.
+.SS "bool IsSporkActive (int nSporkID)"
+
+.PP
+Definition at line 82 of file spork\&.cpp\&.
+.SS "void ProcessSpork (\fBCNode\fP * pfrom, std::string & strCommand, \fBCDataStream\fP & vRecv)"
+
+.PP
+Definition at line 30 of file spork\&.cpp\&.
+.SS "void ReprocessBlocks (int nBlocks)"
+
+.PP
+Definition at line 125 of file spork\&.cpp\&.
+.SH "Variable Documentation"
+.PP 
+.SS "std::map<\fBuint256\fP, \fBCSporkMessage\fP> mapSporks"
+
+.PP
+Definition at line 24 of file spork\&.cpp\&.
+.SS "std::map<int, \fBCSporkMessage\fP> mapSporksActive"
+
+.PP
+Definition at line 27 of file spork\&.cpp\&.
+.SS "\fBCSporkManager\fP sporkManager"
+
+.PP
+Definition at line 28 of file spork\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

@@ -1,0 +1,365 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="classleveldb_1_1_skip_list" kind="class" language="C++" prot="public">
+    <compoundname>leveldb::SkipList</compoundname>
+    <includes refid="skiplist_8h" local="no">skiplist.h</includes>
+    <innerclass refid="classleveldb_1_1_skip_list_1_1_iterator" prot="public">leveldb::SkipList::Iterator</innerclass>
+    <innerclass refid="structleveldb_1_1_skip_list_1_1_node" prot="public">leveldb::SkipList::Node</innerclass>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>Key</declname>
+        <defname>Key</defname>
+      </param>
+      <param>
+        <type>class</type>
+        <declname>Comparator</declname>
+        <defname>Comparator</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-type">
+      <memberdef kind="enum" id="classleveldb_1_1_skip_list_1ad588016c44fe3691f5bfff80652875bb" prot="private" static="no">
+        <name>@4</name>
+        <enumvalue id="classleveldb_1_1_skip_list_1ad588016c44fe3691f5bfff80652875bba60ca280962bbbc6e8055b14fb11a81b5" prot="private">
+          <name>kMaxHeight</name>
+          <initializer>= 12</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/skiplist.h" line="98" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/skiplist.h" bodystart="98" bodyend="98"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classleveldb_1_1_skip_list_1ab59a01d670b82316fd0532c17cb45a37" prot="private" static="no" mutable="no">
+        <type><ref refid="structleveldb_1_1_comparator" kindref="compound">Comparator</ref> const</type>
+        <definition>Comparator const leveldb::SkipList&lt; Key, Comparator &gt;::compare_</definition>
+        <argsstring></argsstring>
+        <name>compare_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/skiplist.h" line="101" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/skiplist.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classleveldb_1_1_skip_list_1ae5eb0912ac01174439bc009ab74e366c" prot="private" static="no" mutable="no">
+        <type><ref refid="classleveldb_1_1_arena" kindref="compound">Arena</ref> *const</type>
+        <definition>Arena* const leveldb::SkipList&lt; Key, Comparator &gt;::arena_</definition>
+        <argsstring></argsstring>
+        <name>arena_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/skiplist.h" line="102" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/skiplist.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classleveldb_1_1_skip_list_1abe0e7aa843a469bf63d1d1c9b64582f0" prot="private" static="no" mutable="no">
+        <type><ref refid="structleveldb_1_1_skip_list_1_1_node" kindref="compound">Node</ref> *const</type>
+        <definition>Node* const leveldb::SkipList&lt; Key, Comparator &gt;::head_</definition>
+        <argsstring></argsstring>
+        <name>head_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/skiplist.h" line="104" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/skiplist.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classleveldb_1_1_skip_list_1a08b97b9da8e1fd93d2c6ae4915dc132f" prot="private" static="no" mutable="no">
+        <type><ref refid="classleveldb_1_1port_1_1_atomic_pointer" kindref="compound">port::AtomicPointer</ref></type>
+        <definition>port::AtomicPointer leveldb::SkipList&lt; Key, Comparator &gt;::max_height_</definition>
+        <argsstring></argsstring>
+        <name>max_height_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/skiplist.h" line="108" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/skiplist.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classleveldb_1_1_skip_list_1ae418eb7ce6b8e0a4ea95b8b782e02c9e" prot="private" static="no" mutable="no">
+        <type><ref refid="classleveldb_1_1_random" kindref="compound">Random</ref></type>
+        <definition>Random leveldb::SkipList&lt; Key, Comparator &gt;::rnd_</definition>
+        <argsstring></argsstring>
+        <name>rnd_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/skiplist.h" line="116" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/skiplist.h" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classleveldb_1_1_skip_list_1a793060fb1b44b01c6f510aa16387c6ee" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::SkipList&lt; Key, Comparator &gt;::SkipList</definition>
+        <argsstring>(Comparator cmp, Arena *arena)</argsstring>
+        <name>SkipList</name>
+        <param>
+          <type><ref refid="structleveldb_1_1_comparator" kindref="compound">Comparator</ref></type>
+          <declname>cmp</declname>
+        </param>
+        <param>
+          <type><ref refid="classleveldb_1_1_arena" kindref="compound">Arena</ref> *</type>
+          <declname>arena</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/skiplist.h" line="49" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/skiplist.h" bodystart="325" bodyend="334"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_skip_list_1af1ed755f0825f38272aafe3cae4da644" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::SkipList&lt; Key, Comparator &gt;::Insert</definition>
+        <argsstring>(const Key &amp;key)</argsstring>
+        <name>Insert</name>
+        <param>
+          <type>const <ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/skiplist.h" line="53" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/skiplist.h" bodystart="337" bodyend="370"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_skip_list_1a134b36bafbfecf325bb7b57bc2490f87" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool leveldb::SkipList&lt; Key, Comparator &gt;::Contains</definition>
+        <argsstring>(const Key &amp;key) const </argsstring>
+        <name>Contains</name>
+        <param>
+          <type>const <ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/skiplist.h" line="56" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/skiplist.h" bodystart="373" bodyend="380"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classleveldb_1_1_skip_list_1a7820710f000cf55fc053b50e683a8bab" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int leveldb::SkipList&lt; Key, Comparator &gt;::GetMaxHeight</definition>
+        <argsstring>() const </argsstring>
+        <name>GetMaxHeight</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/skiplist.h" line="110" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/skiplist.h" bodystart="110" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_skip_list_1a23405bab83b4d978887961deff9d0463" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structleveldb_1_1_skip_list_1_1_node" kindref="compound">Node</ref> *</type>
+        <definition>SkipList&lt; Key, Comparator &gt;::Node * leveldb::SkipList&lt; Key, Comparator &gt;::NewNode</definition>
+        <argsstring>(const Key &amp;key, int height)</argsstring>
+        <name>NewNode</name>
+        <param>
+          <type>const <ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>height</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/skiplist.h" line="118" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/skiplist.h" bodystart="184" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_skip_list_1a43d757e80d1a4f36c97dbb43ca92cbfc" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int leveldb::SkipList&lt; Key, Comparator &gt;::RandomHeight</definition>
+        <argsstring>()</argsstring>
+        <name>RandomHeight</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/skiplist.h" line="119" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/skiplist.h" bodystart="243" bodyend="253"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_skip_list_1a3e92dac7be899964ee57e2d81593c55f" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool leveldb::SkipList&lt; Key, Comparator &gt;::Equal</definition>
+        <argsstring>(const Key &amp;a, const Key &amp;b) const </argsstring>
+        <name>Equal</name>
+        <param>
+          <type>const <ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref> &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/skiplist.h" line="120" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/skiplist.h" bodystart="120" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_skip_list_1a24eabc6719de6d2df1d9f104667b84d5" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool leveldb::SkipList&lt; Key, Comparator &gt;::KeyIsAfterNode</definition>
+        <argsstring>(const Key &amp;key, Node *n) const </argsstring>
+        <name>KeyIsAfterNode</name>
+        <param>
+          <type>const <ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type><ref refid="structleveldb_1_1_skip_list_1_1_node" kindref="compound">Node</ref> *</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/skiplist.h" line="123" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/skiplist.h" bodystart="256" bodyend="259"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_skip_list_1a6b9fbc50fe94ffc52c2db181ecd32a97" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structleveldb_1_1_skip_list_1_1_node" kindref="compound">Node</ref> *</type>
+        <definition>SkipList&lt; Key, Comparator &gt;::Node * leveldb::SkipList&lt; Key, Comparator &gt;::FindGreaterOrEqual</definition>
+        <argsstring>(const Key &amp;key, Node **prev) const </argsstring>
+        <name>FindGreaterOrEqual</name>
+        <param>
+          <type>const <ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type><ref refid="structleveldb_1_1_skip_list_1_1_node" kindref="compound">Node</ref> **</type>
+          <declname>prev</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/skiplist.h" line="130" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/skiplist.h" bodystart="262" bodyend="281"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_skip_list_1af276177e6a17c21a7a26f425eefc46e3" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structleveldb_1_1_skip_list_1_1_node" kindref="compound">Node</ref> *</type>
+        <definition>SkipList&lt; Key, Comparator &gt;::Node * leveldb::SkipList&lt; Key, Comparator &gt;::FindLessThan</definition>
+        <argsstring>(const Key &amp;key) const </argsstring>
+        <name>FindLessThan</name>
+        <param>
+          <type>const <ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/skiplist.h" line="134" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/skiplist.h" bodystart="285" bodyend="302"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_skip_list_1acfda915a018c2f918477f48cf12bcc10" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structleveldb_1_1_skip_list_1_1_node" kindref="compound">Node</ref> *</type>
+        <definition>SkipList&lt; Key, Comparator &gt;::Node * leveldb::SkipList&lt; Key, Comparator &gt;::FindLast</definition>
+        <argsstring>() const </argsstring>
+        <name>FindLast</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/skiplist.h" line="138" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/skiplist.h" bodystart="305" bodyend="322"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_skip_list_1afb4f491cba16d06b82e96ac6bfcb5fb7" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::SkipList&lt; Key, Comparator &gt;::SkipList</definition>
+        <argsstring>(const SkipList &amp;)</argsstring>
+        <name>SkipList</name>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_skip_list" kindref="compound">SkipList</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/skiplist.h" line="141" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_skip_list_1a0185293e08c7e581693ba7491298cda9" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::SkipList&lt; Key, Comparator &gt;::operator=</definition>
+        <argsstring>(const SkipList &amp;)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_skip_list" kindref="compound">SkipList</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/skiplist.h" line="142" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/leveldb/db/skiplist.h" line="41" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/skiplist.h" bodystart="41" bodyend="143"/>
+    <listofallmembers>
+      <member refid="classleveldb_1_1_skip_list_1ae5eb0912ac01174439bc009ab74e366c" prot="private" virt="non-virtual"><scope>leveldb::SkipList</scope><name>arena_</name></member>
+      <member refid="classleveldb_1_1_skip_list_1ab59a01d670b82316fd0532c17cb45a37" prot="private" virt="non-virtual"><scope>leveldb::SkipList</scope><name>compare_</name></member>
+      <member refid="classleveldb_1_1_skip_list_1a134b36bafbfecf325bb7b57bc2490f87" prot="public" virt="non-virtual"><scope>leveldb::SkipList</scope><name>Contains</name></member>
+      <member refid="classleveldb_1_1_skip_list_1a3e92dac7be899964ee57e2d81593c55f" prot="private" virt="non-virtual"><scope>leveldb::SkipList</scope><name>Equal</name></member>
+      <member refid="classleveldb_1_1_skip_list_1a6b9fbc50fe94ffc52c2db181ecd32a97" prot="private" virt="non-virtual"><scope>leveldb::SkipList</scope><name>FindGreaterOrEqual</name></member>
+      <member refid="classleveldb_1_1_skip_list_1acfda915a018c2f918477f48cf12bcc10" prot="private" virt="non-virtual"><scope>leveldb::SkipList</scope><name>FindLast</name></member>
+      <member refid="classleveldb_1_1_skip_list_1af276177e6a17c21a7a26f425eefc46e3" prot="private" virt="non-virtual"><scope>leveldb::SkipList</scope><name>FindLessThan</name></member>
+      <member refid="classleveldb_1_1_skip_list_1a7820710f000cf55fc053b50e683a8bab" prot="private" virt="non-virtual"><scope>leveldb::SkipList</scope><name>GetMaxHeight</name></member>
+      <member refid="classleveldb_1_1_skip_list_1abe0e7aa843a469bf63d1d1c9b64582f0" prot="private" virt="non-virtual"><scope>leveldb::SkipList</scope><name>head_</name></member>
+      <member refid="classleveldb_1_1_skip_list_1af1ed755f0825f38272aafe3cae4da644" prot="public" virt="non-virtual"><scope>leveldb::SkipList</scope><name>Insert</name></member>
+      <member refid="classleveldb_1_1_skip_list_1a24eabc6719de6d2df1d9f104667b84d5" prot="private" virt="non-virtual"><scope>leveldb::SkipList</scope><name>KeyIsAfterNode</name></member>
+      <member refid="classleveldb_1_1_skip_list_1ad588016c44fe3691f5bfff80652875bba60ca280962bbbc6e8055b14fb11a81b5" prot="private" virt="non-virtual"><scope>leveldb::SkipList</scope><name>kMaxHeight</name></member>
+      <member refid="classleveldb_1_1_skip_list_1a08b97b9da8e1fd93d2c6ae4915dc132f" prot="private" virt="non-virtual"><scope>leveldb::SkipList</scope><name>max_height_</name></member>
+      <member refid="classleveldb_1_1_skip_list_1a23405bab83b4d978887961deff9d0463" prot="private" virt="non-virtual"><scope>leveldb::SkipList</scope><name>NewNode</name></member>
+      <member refid="classleveldb_1_1_skip_list_1a0185293e08c7e581693ba7491298cda9" prot="private" virt="non-virtual"><scope>leveldb::SkipList</scope><name>operator=</name></member>
+      <member refid="classleveldb_1_1_skip_list_1a43d757e80d1a4f36c97dbb43ca92cbfc" prot="private" virt="non-virtual"><scope>leveldb::SkipList</scope><name>RandomHeight</name></member>
+      <member refid="classleveldb_1_1_skip_list_1ae418eb7ce6b8e0a4ea95b8b782e02c9e" prot="private" virt="non-virtual"><scope>leveldb::SkipList</scope><name>rnd_</name></member>
+      <member refid="classleveldb_1_1_skip_list_1a793060fb1b44b01c6f510aa16387c6ee" prot="public" virt="non-virtual"><scope>leveldb::SkipList</scope><name>SkipList</name></member>
+      <member refid="classleveldb_1_1_skip_list_1afb4f491cba16d06b82e96ac6bfcb5fb7" prot="private" virt="non-virtual"><scope>leveldb::SkipList</scope><name>SkipList</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

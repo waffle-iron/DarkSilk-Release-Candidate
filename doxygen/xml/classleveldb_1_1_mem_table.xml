@@ -1,0 +1,301 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="classleveldb_1_1_mem_table" kind="class" language="C++" prot="public">
+    <compoundname>leveldb::MemTable</compoundname>
+    <includes refid="memtable_8h" local="no">memtable.h</includes>
+    <innerclass refid="structleveldb_1_1_mem_table_1_1_key_comparator" prot="private">leveldb::MemTable::KeyComparator</innerclass>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="classleveldb_1_1_mem_table_1af42bc32bc4c20aea12fc647ee41df058" prot="private" static="no">
+        <type><ref refid="classleveldb_1_1_skip_list" kindref="compound">SkipList</ref>&lt; const char *, KeyComparator &gt;</type>
+        <definition>typedef SkipList&lt;const char*, KeyComparator&gt; leveldb::MemTable::Table</definition>
+        <argsstring></argsstring>
+        <name>Table</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/memtable.h" line="77" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/memtable.h" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classleveldb_1_1_mem_table_1ad6cb602bccb9af617c8cb348ae693d4a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class MemTableIterator</definition>
+        <argsstring></argsstring>
+        <name>MemTableIterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/memtable.h" line="74" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/memtable.h" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="classleveldb_1_1_mem_table_1ab6427243fb396d56604898725f9f2327" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class MemTableBackwardIterator</definition>
+        <argsstring></argsstring>
+        <name>MemTableBackwardIterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/memtable.h" line="75" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/memtable.h" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classleveldb_1_1_mem_table_1ade7c99a1ef260f4d69c3109d87af6c36" prot="private" static="no" mutable="no">
+        <type>KeyComparator</type>
+        <definition>KeyComparator leveldb::MemTable::comparator_</definition>
+        <argsstring></argsstring>
+        <name>comparator_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/memtable.h" line="79" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/memtable.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classleveldb_1_1_mem_table_1ac58a2b477ed0df577aa863e7e8619542" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int leveldb::MemTable::refs_</definition>
+        <argsstring></argsstring>
+        <name>refs_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/memtable.h" line="80" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/memtable.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classleveldb_1_1_mem_table_1ad72f453899d3a7532ee9e8156b9c0610" prot="private" static="no" mutable="no">
+        <type><ref refid="classleveldb_1_1_arena" kindref="compound">Arena</ref></type>
+        <definition>Arena leveldb::MemTable::arena_</definition>
+        <argsstring></argsstring>
+        <name>arena_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/memtable.h" line="81" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/memtable.h" bodystart="81" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classleveldb_1_1_mem_table_1a9337befab75dc6796fe652a5714db255" prot="private" static="no" mutable="no">
+        <type><ref refid="classleveldb_1_1_skip_list" kindref="compound">Table</ref></type>
+        <definition>Table leveldb::MemTable::table_</definition>
+        <argsstring></argsstring>
+        <name>table_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/memtable.h" line="82" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/memtable.h" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classleveldb_1_1_mem_table_1a23add92a4a6e5d1521f3b6695dba5c2d" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::MemTable::MemTable</definition>
+        <argsstring>(const InternalKeyComparator &amp;comparator)</argsstring>
+        <name>MemTable</name>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_internal_key_comparator" kindref="compound">InternalKeyComparator</ref> &amp;</type>
+          <declname>comparator</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/memtable.h" line="24" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/memtable.cc" bodystart="21" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_mem_table_1a332484cffd2ebc7d6a51f22eeeeeb71b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::MemTable::Ref</definition>
+        <argsstring>()</argsstring>
+        <name>Ref</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/memtable.h" line="27" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/memtable.h" bodystart="27" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_mem_table_1a5dcbf17d1477e6098a30dadd0745cfb2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::MemTable::Unref</definition>
+        <argsstring>()</argsstring>
+        <name>Unref</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/memtable.h" line="30" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/memtable.h" bodystart="30" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_mem_table_1a667a1ada274201f0bdd3615baf1bd882" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t leveldb::MemTable::ApproximateMemoryUsage</definition>
+        <argsstring>()</argsstring>
+        <name>ApproximateMemoryUsage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/memtable.h" line="43" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/memtable.cc" bodystart="31" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_mem_table_1a396b8ba5e2ea0de25b666026f3b9235f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classleveldb_1_1_iterator" kindref="compound">Iterator</ref> *</type>
+        <definition>Iterator * leveldb::MemTable::NewIterator</definition>
+        <argsstring>()</argsstring>
+        <name>NewIterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/memtable.h" line="51" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/memtable.cc" bodystart="78" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_mem_table_1a37bec80954badb2354426aa175e9371f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::MemTable::Add</definition>
+        <argsstring>(SequenceNumber seq, ValueType type, const Slice &amp;key, const Slice &amp;value)</argsstring>
+        <name>Add</name>
+        <param>
+          <type><ref refid="namespaceleveldb_1a5481ededd221c36d652c371249f869fa" kindref="member">SequenceNumber</ref></type>
+          <declname>seq</declname>
+        </param>
+        <param>
+          <type><ref refid="namespaceleveldb_1acc038cb0d608414730cafa459a4ba866" kindref="member">ValueType</ref></type>
+          <declname>type</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref> &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/memtable.h" line="56" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/memtable.cc" bodystart="82" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_mem_table_1af94f80a5909a440d0675afa68f8765c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool leveldb::MemTable::Get</definition>
+        <argsstring>(const LookupKey &amp;key, std::string *value, Status *s)</argsstring>
+        <name>Get</name>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_lookup_key" kindref="compound">LookupKey</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>std::string *</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref> *</type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/memtable.h" line="64" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/memtable.cc" bodystart="108" bodyend="143"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classleveldb_1_1_mem_table_1a5d61fe1bfd5265b3f6978495e9bbfeb0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::MemTable::~MemTable</definition>
+        <argsstring>()</argsstring>
+        <name>~MemTable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/memtable.h" line="67" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/memtable.cc" bodystart="27" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_mem_table_1affbcb1af721f7f96cb944e6bef88480a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::MemTable::MemTable</definition>
+        <argsstring>(const MemTable &amp;)</argsstring>
+        <name>MemTable</name>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_mem_table" kindref="compound">MemTable</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/memtable.h" line="85" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_mem_table_1a24726c634ae97afb9af73a0c422e567d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::MemTable::operator=</definition>
+        <argsstring>(const MemTable &amp;)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_mem_table" kindref="compound">MemTable</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/memtable.h" line="86" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/leveldb/db/memtable.h" line="20" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/memtable.h" bodystart="20" bodyend="87"/>
+    <listofallmembers>
+      <member refid="classleveldb_1_1_mem_table_1a37bec80954badb2354426aa175e9371f" prot="public" virt="non-virtual"><scope>leveldb::MemTable</scope><name>Add</name></member>
+      <member refid="classleveldb_1_1_mem_table_1a667a1ada274201f0bdd3615baf1bd882" prot="public" virt="non-virtual"><scope>leveldb::MemTable</scope><name>ApproximateMemoryUsage</name></member>
+      <member refid="classleveldb_1_1_mem_table_1ad72f453899d3a7532ee9e8156b9c0610" prot="private" virt="non-virtual"><scope>leveldb::MemTable</scope><name>arena_</name></member>
+      <member refid="classleveldb_1_1_mem_table_1ade7c99a1ef260f4d69c3109d87af6c36" prot="private" virt="non-virtual"><scope>leveldb::MemTable</scope><name>comparator_</name></member>
+      <member refid="classleveldb_1_1_mem_table_1af94f80a5909a440d0675afa68f8765c5" prot="public" virt="non-virtual"><scope>leveldb::MemTable</scope><name>Get</name></member>
+      <member refid="classleveldb_1_1_mem_table_1a23add92a4a6e5d1521f3b6695dba5c2d" prot="public" virt="non-virtual"><scope>leveldb::MemTable</scope><name>MemTable</name></member>
+      <member refid="classleveldb_1_1_mem_table_1affbcb1af721f7f96cb944e6bef88480a" prot="private" virt="non-virtual"><scope>leveldb::MemTable</scope><name>MemTable</name></member>
+      <member refid="classleveldb_1_1_mem_table_1ab6427243fb396d56604898725f9f2327" prot="private" virt="non-virtual"><scope>leveldb::MemTable</scope><name>MemTableBackwardIterator</name></member>
+      <member refid="classleveldb_1_1_mem_table_1ad6cb602bccb9af617c8cb348ae693d4a" prot="private" virt="non-virtual"><scope>leveldb::MemTable</scope><name>MemTableIterator</name></member>
+      <member refid="classleveldb_1_1_mem_table_1a396b8ba5e2ea0de25b666026f3b9235f" prot="public" virt="non-virtual"><scope>leveldb::MemTable</scope><name>NewIterator</name></member>
+      <member refid="classleveldb_1_1_mem_table_1a24726c634ae97afb9af73a0c422e567d" prot="private" virt="non-virtual"><scope>leveldb::MemTable</scope><name>operator=</name></member>
+      <member refid="classleveldb_1_1_mem_table_1a332484cffd2ebc7d6a51f22eeeeeb71b" prot="public" virt="non-virtual"><scope>leveldb::MemTable</scope><name>Ref</name></member>
+      <member refid="classleveldb_1_1_mem_table_1ac58a2b477ed0df577aa863e7e8619542" prot="private" virt="non-virtual"><scope>leveldb::MemTable</scope><name>refs_</name></member>
+      <member refid="classleveldb_1_1_mem_table_1af42bc32bc4c20aea12fc647ee41df058" prot="private" virt="non-virtual"><scope>leveldb::MemTable</scope><name>Table</name></member>
+      <member refid="classleveldb_1_1_mem_table_1a9337befab75dc6796fe652a5714db255" prot="private" virt="non-virtual"><scope>leveldb::MemTable</scope><name>table_</name></member>
+      <member refid="classleveldb_1_1_mem_table_1a5dcbf17d1477e6098a30dadd0745cfb2" prot="public" virt="non-virtual"><scope>leveldb::MemTable</scope><name>Unref</name></member>
+      <member refid="classleveldb_1_1_mem_table_1a5d61fe1bfd5265b3f6978495e9bbfeb0" prot="private" virt="non-virtual"><scope>leveldb::MemTable</scope><name>~MemTable</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

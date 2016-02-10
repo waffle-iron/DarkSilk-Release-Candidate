@@ -1,0 +1,1127 @@
+\hypertarget{tests_8c}{}\section{/home/dev/ds-\/160209/src/secp256k1/src/tests.c File Reference}
+\label{tests_8c}\index{/home/dev/ds-\/160209/src/secp256k1/src/tests.\+c@{/home/dev/ds-\/160209/src/secp256k1/src/tests.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$time.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}secp256k1.\+c\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}include/secp256k1.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}testrand\+\_\+impl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}contrib/lax\+\_\+der\+\_\+parsing.\+c\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}contrib/lax\+\_\+der\+\_\+privatekey\+\_\+parsing.\+c\char`\"{}}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{tests_8c_a6b8df892995b6bb70db94dbbd6988d20}{V\+G\+\_\+\+U\+N\+D\+E\+F}(x,  y)
+\item 
+\#define \hyperlink{tests_8c_a4219659d3b30fc34dea25be22dccae04}{V\+G\+\_\+\+C\+H\+E\+C\+K}(x,  y)
+\item 
+\#define \hyperlink{tests_8c_a4064b14fff65941d6f9046d53e900e89}{S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+P\+A\+R\+S\+E\+\_\+\+T\+E\+S\+T\+\_\+\+N\+V\+A\+L\+I\+D}~(12)
+\item 
+\#define \hyperlink{tests_8c_afa8c0d29706dca1ca0cffb9b3bb6d209}{S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+P\+A\+R\+S\+E\+\_\+\+T\+E\+S\+T\+\_\+\+N\+X\+V\+A\+L\+I\+D}~(4)
+\item 
+\#define \hyperlink{tests_8c_a279d9ab9cbf85037ed552544b15c69fd}{S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+P\+A\+R\+S\+E\+\_\+\+T\+E\+S\+T\+\_\+\+N\+I\+N\+V\+A\+L\+I\+D}~(7)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{tests_8c_af038dec65d22bf5050a82de7b4ad4bca}{random\+\_\+field\+\_\+element\+\_\+test} (\hyperlink{structsecp256k1__fe}{secp256k1\+\_\+fe} $\ast$fe)
+\item 
+void \hyperlink{tests_8c_a4ae0ffabe31b809b14bc5e14e3f4e953}{random\+\_\+field\+\_\+element\+\_\+magnitude} (\hyperlink{structsecp256k1__fe}{secp256k1\+\_\+fe} $\ast$fe)
+\item 
+void \hyperlink{tests_8c_a63a7c68b6b72356c59cfdaaab131c73b}{random\+\_\+group\+\_\+element\+\_\+test} (\hyperlink{structsecp256k1__ge}{secp256k1\+\_\+ge} $\ast$ge)
+\item 
+void \hyperlink{tests_8c_a92dafcbafa2a878e07b5ff22f573be7f}{random\+\_\+group\+\_\+element\+\_\+jacobian\+\_\+test} (\hyperlink{structsecp256k1__gej}{secp256k1\+\_\+gej} $\ast$gej, const \hyperlink{structsecp256k1__ge}{secp256k1\+\_\+ge} $\ast$ge)
+\item 
+void \hyperlink{tests_8c_a51e09e6745e0afdb0d596ee0f4b3c3f7}{random\+\_\+scalar\+\_\+order\+\_\+test} (\hyperlink{structsecp256k1__scalar}{secp256k1\+\_\+scalar} $\ast$num)
+\item 
+void \hyperlink{tests_8c_a01cf4b4fc9b4ab8cb3e04fd3dc2ff57f}{random\+\_\+scalar\+\_\+order} (\hyperlink{structsecp256k1__scalar}{secp256k1\+\_\+scalar} $\ast$num)
+\item 
+void \hyperlink{tests_8c_a2f9713526b1e988694c6e2026a6fce69}{run\+\_\+context\+\_\+tests} (void)
+\item 
+void \hyperlink{tests_8c_a2d74e805d6154620fef868e2319c99c9}{run\+\_\+sha256\+\_\+tests} (void)
+\item 
+void \hyperlink{tests_8c_a696245307bfe2110594f353cf47dad17}{run\+\_\+hmac\+\_\+sha256\+\_\+tests} (void)
+\item 
+void \hyperlink{tests_8c_add06855ef2be3d3b6a4506590a7b468e}{run\+\_\+rfc6979\+\_\+hmac\+\_\+sha256\+\_\+tests} (void)
+\item 
+void \hyperlink{tests_8c_afbb9dd769d4d12035edc846bb697a0a3}{test\+\_\+rand\+\_\+bits} (int rand32, int bits)
+\item 
+void \hyperlink{tests_8c_a72cd51f28d0b6b8e83edde291fb1bd75}{test\+\_\+rand\+\_\+int} (\hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} range, \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} subrange)
+\item 
+void \hyperlink{tests_8c_a90b7eac05cebf27de5b429888bb5beff}{run\+\_\+rand\+\_\+bits} (void)
+\item 
+void \hyperlink{tests_8c_a775a4718709171ff67d821ff4a97c9a7}{run\+\_\+rand\+\_\+int} (void)
+\item 
+void \hyperlink{tests_8c_a4affe0b607e5c6beab553c6668f9ab34}{random\+\_\+num\+\_\+negate} (\hyperlink{structsecp256k1__num}{secp256k1\+\_\+num} $\ast$num)
+\item 
+void \hyperlink{tests_8c_ae0a527e6943a8aeeb762d6d386930148}{random\+\_\+num\+\_\+order\+\_\+test} (\hyperlink{structsecp256k1__num}{secp256k1\+\_\+num} $\ast$num)
+\item 
+void \hyperlink{tests_8c_a15c58dba0f6924a65cfd4441083dbba8}{random\+\_\+num\+\_\+order} (\hyperlink{structsecp256k1__num}{secp256k1\+\_\+num} $\ast$num)
+\item 
+void \hyperlink{tests_8c_a6cccf1ffe3b4863fec653e8bae8c0cb0}{test\+\_\+num\+\_\+negate} (void)
+\item 
+void \hyperlink{tests_8c_afee6025ad0daa3ed03a0e666a42bb0e7}{test\+\_\+num\+\_\+add\+\_\+sub} (void)
+\item 
+void \hyperlink{tests_8c_a6744389614cf74a9b2c10c29e2ddba5c}{run\+\_\+num\+\_\+smalltests} (void)
+\item 
+void \hyperlink{tests_8c_a0ac2e9ed5b8ba27e48fba5150cebfa82}{scalar\+\_\+test} (void)
+\item 
+void \hyperlink{tests_8c_afc29a3cda8faeba097ce967f24fcb9d1}{run\+\_\+scalar\+\_\+tests} (void)
+\item 
+void \hyperlink{tests_8c_ad49b2c3065041ff986c8a4d71a329c79}{random\+\_\+fe} (\hyperlink{structsecp256k1__fe}{secp256k1\+\_\+fe} $\ast$x)
+\item 
+void \hyperlink{tests_8c_a786a875eccc29ad918255883d89f00a1}{random\+\_\+fe\+\_\+test} (\hyperlink{structsecp256k1__fe}{secp256k1\+\_\+fe} $\ast$x)
+\item 
+void \hyperlink{tests_8c_a7f2c9aa1daa06bbd70798f8b8a6d978a}{random\+\_\+fe\+\_\+non\+\_\+zero} (\hyperlink{structsecp256k1__fe}{secp256k1\+\_\+fe} $\ast$nz)
+\item 
+void \hyperlink{tests_8c_acb56afe8a17a3048470c0c299150a36a}{random\+\_\+fe\+\_\+non\+\_\+square} (\hyperlink{structsecp256k1__fe}{secp256k1\+\_\+fe} $\ast$ns)
+\item 
+int \hyperlink{tests_8c_ae88750c3ab1238b2d8f8fa8a8ab67855}{check\+\_\+fe\+\_\+equal} (const \hyperlink{structsecp256k1__fe}{secp256k1\+\_\+fe} $\ast$a, const \hyperlink{structsecp256k1__fe}{secp256k1\+\_\+fe} $\ast$b)
+\item 
+int \hyperlink{tests_8c_a9fe4a53634c0f9e17b1f74e55ea8de99}{check\+\_\+fe\+\_\+inverse} (const \hyperlink{structsecp256k1__fe}{secp256k1\+\_\+fe} $\ast$a, const \hyperlink{structsecp256k1__fe}{secp256k1\+\_\+fe} $\ast$ai)
+\item 
+void \hyperlink{tests_8c_a3fb0153a38fe54783b46ab4bc39d9912}{run\+\_\+field\+\_\+convert} (void)
+\item 
+int \hyperlink{tests_8c_a5b444bc3ba72dbbc46729ebd85204a6d}{fe\+\_\+memcmp} (const \hyperlink{structsecp256k1__fe}{secp256k1\+\_\+fe} $\ast$a, const \hyperlink{structsecp256k1__fe}{secp256k1\+\_\+fe} $\ast$b)
+\item 
+void \hyperlink{tests_8c_a407b4cff8cbc365e753f2a1d70b45f81}{run\+\_\+field\+\_\+misc} (void)
+\item 
+void \hyperlink{tests_8c_ad636c10e982fafdb8f6ddeb3d1424b2d}{run\+\_\+field\+\_\+inv} (void)
+\item 
+void \hyperlink{tests_8c_ad83214628412557c86e3c1d01270c83a}{run\+\_\+field\+\_\+inv\+\_\+var} (void)
+\item 
+void \hyperlink{tests_8c_afb738ef4c7077ce703c56beefcb29653}{run\+\_\+field\+\_\+inv\+\_\+all\+\_\+var} (void)
+\item 
+void \hyperlink{tests_8c_aebe6e77bbe66e58eb7d0230d9506dc61}{run\+\_\+sqr} (void)
+\item 
+void \hyperlink{tests_8c_a42744351538fd01fc266d1cac41401a8}{test\+\_\+sqrt} (const \hyperlink{structsecp256k1__fe}{secp256k1\+\_\+fe} $\ast$a, const \hyperlink{structsecp256k1__fe}{secp256k1\+\_\+fe} $\ast$k)
+\item 
+void \hyperlink{tests_8c_a9f14566c39814625ca83d68d1dddb684}{run\+\_\+sqrt} (void)
+\item 
+void \hyperlink{tests_8c_a6e3e2f3948ab2013a46f0a356f1057ae}{ge\+\_\+equals\+\_\+ge} (const \hyperlink{structsecp256k1__ge}{secp256k1\+\_\+ge} $\ast$a, const \hyperlink{structsecp256k1__ge}{secp256k1\+\_\+ge} $\ast$b)
+\item 
+int \hyperlink{tests_8c_a9ce0d67d2ba57bdc32e660cafcaaef2f}{gej\+\_\+xyz\+\_\+equals\+\_\+gej} (const \hyperlink{structsecp256k1__gej}{secp256k1\+\_\+gej} $\ast$a, const \hyperlink{structsecp256k1__gej}{secp256k1\+\_\+gej} $\ast$b)
+\item 
+void \hyperlink{tests_8c_a7930deeb9d6815fba34afad98b8dfa69}{ge\+\_\+equals\+\_\+gej} (const \hyperlink{structsecp256k1__ge}{secp256k1\+\_\+ge} $\ast$a, const \hyperlink{structsecp256k1__gej}{secp256k1\+\_\+gej} $\ast$b)
+\item 
+void \hyperlink{tests_8c_a3084bb11900a5e4d33115904d0ceb847}{test\+\_\+ge} (void)
+\item 
+void \hyperlink{tests_8c_a849e08074670ab1644fdec5cc5ef08a7}{test\+\_\+add\+\_\+neg\+\_\+y\+\_\+diff\+\_\+x} (void)
+\item 
+void \hyperlink{tests_8c_aa7ad70a73e9a44f0b9486ffe6f46ca39}{run\+\_\+ge} (void)
+\item 
+void \hyperlink{tests_8c_af668387a475fa94107e316b2ddc003cf}{test\+\_\+ec\+\_\+combine} (void)
+\item 
+void \hyperlink{tests_8c_a394075284eed27ac8d87935f73d4c673}{run\+\_\+ec\+\_\+combine} (void)
+\item 
+void \hyperlink{tests_8c_abf8379c326274c3162ebb26491a31611}{test\+\_\+group\+\_\+decompress} (const \hyperlink{structsecp256k1__fe}{secp256k1\+\_\+fe} $\ast$x)
+\item 
+void \hyperlink{tests_8c_a03817b02604d9e2c9b5f049fc01d4a99}{run\+\_\+group\+\_\+decompress} (void)
+\item 
+void \hyperlink{tests_8c_aec6ef7189f31c2b9628cedf9154f6929}{run\+\_\+ecmult\+\_\+chain} (void)
+\item 
+void \hyperlink{tests_8c_a5760a028e03f061e5aed00cb7839138e}{test\+\_\+point\+\_\+times\+\_\+order} (const \hyperlink{structsecp256k1__gej}{secp256k1\+\_\+gej} $\ast$point)
+\item 
+void \hyperlink{tests_8c_accc1ed100e6e73e61ce30e82cf4f0bbb}{run\+\_\+point\+\_\+times\+\_\+order} (void)
+\item 
+void \hyperlink{tests_8c_a2e747532c49b7e398aff44547a7ff477}{ecmult\+\_\+const\+\_\+random\+\_\+mult} (void)
+\item 
+void \hyperlink{tests_8c_ab1ac8e94f017ab831c8c50cc7384fd87}{ecmult\+\_\+const\+\_\+commutativity} (void)
+\item 
+void \hyperlink{tests_8c_aa7d1b408b3e21121300c1a6348251ab2}{ecmult\+\_\+const\+\_\+mult\+\_\+zero\+\_\+one} (void)
+\item 
+void \hyperlink{tests_8c_a5f38325377d0160eb1c5100b1a4f1c0f}{ecmult\+\_\+const\+\_\+chain\+\_\+multiply} (void)
+\item 
+void \hyperlink{tests_8c_af69d927b217be17f076754b9d4e4f326}{run\+\_\+ecmult\+\_\+const\+\_\+tests} (void)
+\item 
+void \hyperlink{tests_8c_a7ca78a9b379dc40e8b025b145dd5648a}{test\+\_\+wnaf} (const \hyperlink{structsecp256k1__scalar}{secp256k1\+\_\+scalar} $\ast$number, int w)
+\item 
+void \hyperlink{tests_8c_ad9c7802400ac86e07d8b5eb46055afaf}{test\+\_\+constant\+\_\+wnaf\+\_\+negate} (const \hyperlink{structsecp256k1__scalar}{secp256k1\+\_\+scalar} $\ast$number)
+\item 
+void \hyperlink{tests_8c_ab1b83b06f2b16b37ec472a91775d1a94}{test\+\_\+constant\+\_\+wnaf} (const \hyperlink{structsecp256k1__scalar}{secp256k1\+\_\+scalar} $\ast$number, int w)
+\item 
+void \hyperlink{tests_8c_af3c34e47a9088ad0f5f0df779303a85a}{run\+\_\+wnaf} (void)
+\item 
+void \hyperlink{tests_8c_ab02e05e21c96c34d9497e2bdd44d2e3a}{test\+\_\+ecmult\+\_\+constants} (void)
+\item 
+void \hyperlink{tests_8c_a93c275726298d7a59a4f027996a958b4}{run\+\_\+ecmult\+\_\+constants} (void)
+\item 
+void \hyperlink{tests_8c_ab353fbc77d15cd48e25d995ea3f33795}{test\+\_\+ecmult\+\_\+gen\+\_\+blind} (void)
+\item 
+void \hyperlink{tests_8c_a375b2994cf6e867644abdf5ae3f93abe}{test\+\_\+ecmult\+\_\+gen\+\_\+blind\+\_\+reset} (void)
+\item 
+void \hyperlink{tests_8c_ac3003b8a1d7eed5ebb0497a3f0dd97b6}{run\+\_\+ecmult\+\_\+gen\+\_\+blind} (void)
+\item 
+void \hyperlink{tests_8c_ab33610b81949f135f12a8f2aab3dc192}{ec\+\_\+pubkey\+\_\+parse\+\_\+pointtest} (const unsigned char $\ast$input, int xvalid, int yvalid)
+\item 
+void \hyperlink{tests_8c_a24bd2af11fcef9c3f2abb62862d6fe97}{run\+\_\+ec\+\_\+pubkey\+\_\+parse\+\_\+test} (void)
+\item 
+void \hyperlink{tests_8c_a32498e86a99a258f68cd4b1176f47966}{run\+\_\+eckey\+\_\+edge\+\_\+case\+\_\+test} (void)
+\item 
+void \hyperlink{tests_8c_a5c5253164e8444359849fd66e27bbe5a}{random\+\_\+sign} (\hyperlink{structsecp256k1__scalar}{secp256k1\+\_\+scalar} $\ast$sigr, \hyperlink{structsecp256k1__scalar}{secp256k1\+\_\+scalar} $\ast$sigs, const \hyperlink{structsecp256k1__scalar}{secp256k1\+\_\+scalar} $\ast$key, const \hyperlink{structsecp256k1__scalar}{secp256k1\+\_\+scalar} $\ast$msg, int $\ast$recid)
+\item 
+void \hyperlink{tests_8c_a9f741d7d63a637666b9884c5241abd00}{test\+\_\+ecdsa\+\_\+sign\+\_\+verify} (void)
+\item 
+void \hyperlink{tests_8c_a8b33b5c265c09b165c29d92c05c641d8}{run\+\_\+ecdsa\+\_\+sign\+\_\+verify} (void)
+\item 
+int \hyperlink{tests_8c_a7e817ef3d73f5d5b1dbf1ccffa0cf77b}{is\+\_\+empty\+\_\+signature} (const \hyperlink{structsecp256k1__ecdsa__signature}{secp256k1\+\_\+ecdsa\+\_\+signature} $\ast$sig)
+\item 
+void \hyperlink{tests_8c_a3fc9dc1908215215a68690ea1bfa8bcd}{test\+\_\+ecdsa\+\_\+end\+\_\+to\+\_\+end} (void)
+\item 
+void \hyperlink{tests_8c_a9f06c34f3caa68b5da0ad133c86f5e3c}{test\+\_\+random\+\_\+pubkeys} (void)
+\item 
+void \hyperlink{tests_8c_a0697fbce6e63c1c95aec0c67cb27f31c}{run\+\_\+random\+\_\+pubkeys} (void)
+\item 
+void \hyperlink{tests_8c_ab05096657be701bf9ca8616475bb9491}{run\+\_\+ecdsa\+\_\+end\+\_\+to\+\_\+end} (void)
+\item 
+int \hyperlink{tests_8c_a1cb741ffd2cea46124f7abc2c506717a}{test\+\_\+ecdsa\+\_\+der\+\_\+parse} (const unsigned char $\ast$sig, size\+\_\+t siglen, int certainly\+\_\+der, int certainly\+\_\+not\+\_\+der)
+\item 
+void \hyperlink{tests_8c_aed8d29b89e89ae8bf370483684b1f7d2}{run\+\_\+ecdsa\+\_\+der\+\_\+parse} (void)
+\item 
+void \hyperlink{tests_8c_abbcb27d1eb13654db9b2e281ffce021e}{test\+\_\+ecdsa\+\_\+edge\+\_\+cases} (void)
+\item 
+void \hyperlink{tests_8c_ad6c8109b62ea1d0ed1b382678a2a08b1}{run\+\_\+ecdsa\+\_\+edge\+\_\+cases} (void)
+\item 
+int \hyperlink{tests_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{tests_8c_a279d9ab9cbf85037ed552544b15c69fd}{}\index{tests.\+c@{tests.\+c}!S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+P\+A\+R\+S\+E\+\_\+\+T\+E\+S\+T\+\_\+\+N\+I\+N\+V\+A\+L\+I\+D@{S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+P\+A\+R\+S\+E\+\_\+\+T\+E\+S\+T\+\_\+\+N\+I\+N\+V\+A\+L\+I\+D}}
+\index{S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+P\+A\+R\+S\+E\+\_\+\+T\+E\+S\+T\+\_\+\+N\+I\+N\+V\+A\+L\+I\+D@{S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+P\+A\+R\+S\+E\+\_\+\+T\+E\+S\+T\+\_\+\+N\+I\+N\+V\+A\+L\+I\+D}!tests.\+c@{tests.\+c}}
+\subsubsection[{S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+P\+A\+R\+S\+E\+\_\+\+T\+E\+S\+T\+\_\+\+N\+I\+N\+V\+A\+L\+I\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+P\+A\+R\+S\+E\+\_\+\+T\+E\+S\+T\+\_\+\+N\+I\+N\+V\+A\+L\+I\+D~(7)}\label{tests_8c_a279d9ab9cbf85037ed552544b15c69fd}
+\hypertarget{tests_8c_a4064b14fff65941d6f9046d53e900e89}{}\index{tests.\+c@{tests.\+c}!S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+P\+A\+R\+S\+E\+\_\+\+T\+E\+S\+T\+\_\+\+N\+V\+A\+L\+I\+D@{S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+P\+A\+R\+S\+E\+\_\+\+T\+E\+S\+T\+\_\+\+N\+V\+A\+L\+I\+D}}
+\index{S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+P\+A\+R\+S\+E\+\_\+\+T\+E\+S\+T\+\_\+\+N\+V\+A\+L\+I\+D@{S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+P\+A\+R\+S\+E\+\_\+\+T\+E\+S\+T\+\_\+\+N\+V\+A\+L\+I\+D}!tests.\+c@{tests.\+c}}
+\subsubsection[{S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+P\+A\+R\+S\+E\+\_\+\+T\+E\+S\+T\+\_\+\+N\+V\+A\+L\+I\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+P\+A\+R\+S\+E\+\_\+\+T\+E\+S\+T\+\_\+\+N\+V\+A\+L\+I\+D~(12)}\label{tests_8c_a4064b14fff65941d6f9046d53e900e89}
+\hypertarget{tests_8c_afa8c0d29706dca1ca0cffb9b3bb6d209}{}\index{tests.\+c@{tests.\+c}!S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+P\+A\+R\+S\+E\+\_\+\+T\+E\+S\+T\+\_\+\+N\+X\+V\+A\+L\+I\+D@{S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+P\+A\+R\+S\+E\+\_\+\+T\+E\+S\+T\+\_\+\+N\+X\+V\+A\+L\+I\+D}}
+\index{S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+P\+A\+R\+S\+E\+\_\+\+T\+E\+S\+T\+\_\+\+N\+X\+V\+A\+L\+I\+D@{S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+P\+A\+R\+S\+E\+\_\+\+T\+E\+S\+T\+\_\+\+N\+X\+V\+A\+L\+I\+D}!tests.\+c@{tests.\+c}}
+\subsubsection[{S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+P\+A\+R\+S\+E\+\_\+\+T\+E\+S\+T\+\_\+\+N\+X\+V\+A\+L\+I\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+P\+A\+R\+S\+E\+\_\+\+T\+E\+S\+T\+\_\+\+N\+X\+V\+A\+L\+I\+D~(4)}\label{tests_8c_afa8c0d29706dca1ca0cffb9b3bb6d209}
+\hypertarget{tests_8c_a4219659d3b30fc34dea25be22dccae04}{}\index{tests.\+c@{tests.\+c}!V\+G\+\_\+\+C\+H\+E\+C\+K@{V\+G\+\_\+\+C\+H\+E\+C\+K}}
+\index{V\+G\+\_\+\+C\+H\+E\+C\+K@{V\+G\+\_\+\+C\+H\+E\+C\+K}!tests.\+c@{tests.\+c}}
+\subsubsection[{V\+G\+\_\+\+C\+H\+E\+C\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+G\+\_\+\+C\+H\+E\+C\+K(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{y}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a4219659d3b30fc34dea25be22dccae04}
+
+
+Definition at line 37 of file tests.\+c.
+
+\hypertarget{tests_8c_a6b8df892995b6bb70db94dbbd6988d20}{}\index{tests.\+c@{tests.\+c}!V\+G\+\_\+\+U\+N\+D\+E\+F@{V\+G\+\_\+\+U\+N\+D\+E\+F}}
+\index{V\+G\+\_\+\+U\+N\+D\+E\+F@{V\+G\+\_\+\+U\+N\+D\+E\+F}!tests.\+c@{tests.\+c}}
+\subsubsection[{V\+G\+\_\+\+U\+N\+D\+E\+F}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+G\+\_\+\+U\+N\+D\+E\+F(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{y}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a6b8df892995b6bb70db94dbbd6988d20}
+
+
+Definition at line 36 of file tests.\+c.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{tests_8c_ae88750c3ab1238b2d8f8fa8a8ab67855}{}\index{tests.\+c@{tests.\+c}!check\+\_\+fe\+\_\+equal@{check\+\_\+fe\+\_\+equal}}
+\index{check\+\_\+fe\+\_\+equal@{check\+\_\+fe\+\_\+equal}!tests.\+c@{tests.\+c}}
+\subsubsection[{check\+\_\+fe\+\_\+equal}]{\setlength{\rightskip}{0pt plus 5cm}int check\+\_\+fe\+\_\+equal (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+fe} $\ast$}]{a, }
+\item[{const {\bf secp256k1\+\_\+fe} $\ast$}]{b}
+\end{DoxyParamCaption}
+)}\label{tests_8c_ae88750c3ab1238b2d8f8fa8a8ab67855}
+
+
+Definition at line 1454 of file tests.\+c.
+
+\hypertarget{tests_8c_a9fe4a53634c0f9e17b1f74e55ea8de99}{}\index{tests.\+c@{tests.\+c}!check\+\_\+fe\+\_\+inverse@{check\+\_\+fe\+\_\+inverse}}
+\index{check\+\_\+fe\+\_\+inverse@{check\+\_\+fe\+\_\+inverse}!tests.\+c@{tests.\+c}}
+\subsubsection[{check\+\_\+fe\+\_\+inverse}]{\setlength{\rightskip}{0pt plus 5cm}int check\+\_\+fe\+\_\+inverse (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+fe} $\ast$}]{a, }
+\item[{const {\bf secp256k1\+\_\+fe} $\ast$}]{ai}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a9fe4a53634c0f9e17b1f74e55ea8de99}
+
+
+Definition at line 1462 of file tests.\+c.
+
+\hypertarget{tests_8c_ab33610b81949f135f12a8f2aab3dc192}{}\index{tests.\+c@{tests.\+c}!ec\+\_\+pubkey\+\_\+parse\+\_\+pointtest@{ec\+\_\+pubkey\+\_\+parse\+\_\+pointtest}}
+\index{ec\+\_\+pubkey\+\_\+parse\+\_\+pointtest@{ec\+\_\+pubkey\+\_\+parse\+\_\+pointtest}!tests.\+c@{tests.\+c}}
+\subsubsection[{ec\+\_\+pubkey\+\_\+parse\+\_\+pointtest}]{\setlength{\rightskip}{0pt plus 5cm}void ec\+\_\+pubkey\+\_\+parse\+\_\+pointtest (
+\begin{DoxyParamCaption}
+\item[{const unsigned char $\ast$}]{input, }
+\item[{int}]{xvalid, }
+\item[{int}]{yvalid}
+\end{DoxyParamCaption}
+)}\label{tests_8c_ab33610b81949f135f12a8f2aab3dc192}
+
+
+Definition at line 2561 of file tests.\+c.
+
+\hypertarget{tests_8c_a5f38325377d0160eb1c5100b1a4f1c0f}{}\index{tests.\+c@{tests.\+c}!ecmult\+\_\+const\+\_\+chain\+\_\+multiply@{ecmult\+\_\+const\+\_\+chain\+\_\+multiply}}
+\index{ecmult\+\_\+const\+\_\+chain\+\_\+multiply@{ecmult\+\_\+const\+\_\+chain\+\_\+multiply}!tests.\+c@{tests.\+c}}
+\subsubsection[{ecmult\+\_\+const\+\_\+chain\+\_\+multiply}]{\setlength{\rightskip}{0pt plus 5cm}void ecmult\+\_\+const\+\_\+chain\+\_\+multiply (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a5f38325377d0160eb1c5100b1a4f1c0f}
+
+
+Definition at line 2300 of file tests.\+c.
+
+\hypertarget{tests_8c_ab1ac8e94f017ab831c8c50cc7384fd87}{}\index{tests.\+c@{tests.\+c}!ecmult\+\_\+const\+\_\+commutativity@{ecmult\+\_\+const\+\_\+commutativity}}
+\index{ecmult\+\_\+const\+\_\+commutativity@{ecmult\+\_\+const\+\_\+commutativity}!tests.\+c@{tests.\+c}}
+\subsubsection[{ecmult\+\_\+const\+\_\+commutativity}]{\setlength{\rightskip}{0pt plus 5cm}void ecmult\+\_\+const\+\_\+commutativity (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_ab1ac8e94f017ab831c8c50cc7384fd87}
+
+
+Definition at line 2257 of file tests.\+c.
+
+\hypertarget{tests_8c_aa7d1b408b3e21121300c1a6348251ab2}{}\index{tests.\+c@{tests.\+c}!ecmult\+\_\+const\+\_\+mult\+\_\+zero\+\_\+one@{ecmult\+\_\+const\+\_\+mult\+\_\+zero\+\_\+one}}
+\index{ecmult\+\_\+const\+\_\+mult\+\_\+zero\+\_\+one@{ecmult\+\_\+const\+\_\+mult\+\_\+zero\+\_\+one}!tests.\+c@{tests.\+c}}
+\subsubsection[{ecmult\+\_\+const\+\_\+mult\+\_\+zero\+\_\+one}]{\setlength{\rightskip}{0pt plus 5cm}void ecmult\+\_\+const\+\_\+mult\+\_\+zero\+\_\+one (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_aa7d1b408b3e21121300c1a6348251ab2}
+
+
+Definition at line 2278 of file tests.\+c.
+
+\hypertarget{tests_8c_a2e747532c49b7e398aff44547a7ff477}{}\index{tests.\+c@{tests.\+c}!ecmult\+\_\+const\+\_\+random\+\_\+mult@{ecmult\+\_\+const\+\_\+random\+\_\+mult}}
+\index{ecmult\+\_\+const\+\_\+random\+\_\+mult@{ecmult\+\_\+const\+\_\+random\+\_\+mult}!tests.\+c@{tests.\+c}}
+\subsubsection[{ecmult\+\_\+const\+\_\+random\+\_\+mult}]{\setlength{\rightskip}{0pt plus 5cm}void ecmult\+\_\+const\+\_\+random\+\_\+mult (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a2e747532c49b7e398aff44547a7ff477}
+
+
+Definition at line 2230 of file tests.\+c.
+
+\hypertarget{tests_8c_a5b444bc3ba72dbbc46729ebd85204a6d}{}\index{tests.\+c@{tests.\+c}!fe\+\_\+memcmp@{fe\+\_\+memcmp}}
+\index{fe\+\_\+memcmp@{fe\+\_\+memcmp}!tests.\+c@{tests.\+c}}
+\subsubsection[{fe\+\_\+memcmp}]{\setlength{\rightskip}{0pt plus 5cm}int fe\+\_\+memcmp (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+fe} $\ast$}]{a, }
+\item[{const {\bf secp256k1\+\_\+fe} $\ast$}]{b}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a5b444bc3ba72dbbc46729ebd85204a6d}
+
+
+Definition at line 1499 of file tests.\+c.
+
+\hypertarget{tests_8c_a6e3e2f3948ab2013a46f0a356f1057ae}{}\index{tests.\+c@{tests.\+c}!ge\+\_\+equals\+\_\+ge@{ge\+\_\+equals\+\_\+ge}}
+\index{ge\+\_\+equals\+\_\+ge@{ge\+\_\+equals\+\_\+ge}!tests.\+c@{tests.\+c}}
+\subsubsection[{ge\+\_\+equals\+\_\+ge}]{\setlength{\rightskip}{0pt plus 5cm}void ge\+\_\+equals\+\_\+ge (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+ge} $\ast$}]{a, }
+\item[{const {\bf secp256k1\+\_\+ge} $\ast$}]{b}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a6e3e2f3948ab2013a46f0a356f1057ae}
+
+
+Definition at line 1692 of file tests.\+c.
+
+\hypertarget{tests_8c_a7930deeb9d6815fba34afad98b8dfa69}{}\index{tests.\+c@{tests.\+c}!ge\+\_\+equals\+\_\+gej@{ge\+\_\+equals\+\_\+gej}}
+\index{ge\+\_\+equals\+\_\+gej@{ge\+\_\+equals\+\_\+gej}!tests.\+c@{tests.\+c}}
+\subsubsection[{ge\+\_\+equals\+\_\+gej}]{\setlength{\rightskip}{0pt plus 5cm}void ge\+\_\+equals\+\_\+gej (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+ge} $\ast$}]{a, }
+\item[{const {\bf secp256k1\+\_\+gej} $\ast$}]{b}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a7930deeb9d6815fba34afad98b8dfa69}
+
+
+Definition at line 1723 of file tests.\+c.
+
+\hypertarget{tests_8c_a9ce0d67d2ba57bdc32e660cafcaaef2f}{}\index{tests.\+c@{tests.\+c}!gej\+\_\+xyz\+\_\+equals\+\_\+gej@{gej\+\_\+xyz\+\_\+equals\+\_\+gej}}
+\index{gej\+\_\+xyz\+\_\+equals\+\_\+gej@{gej\+\_\+xyz\+\_\+equals\+\_\+gej}!tests.\+c@{tests.\+c}}
+\subsubsection[{gej\+\_\+xyz\+\_\+equals\+\_\+gej}]{\setlength{\rightskip}{0pt plus 5cm}int gej\+\_\+xyz\+\_\+equals\+\_\+gej (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+gej} $\ast$}]{a, }
+\item[{const {\bf secp256k1\+\_\+gej} $\ast$}]{b}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a9ce0d67d2ba57bdc32e660cafcaaef2f}
+
+
+Definition at line 1702 of file tests.\+c.
+
+\hypertarget{tests_8c_a7e817ef3d73f5d5b1dbf1ccffa0cf77b}{}\index{tests.\+c@{tests.\+c}!is\+\_\+empty\+\_\+signature@{is\+\_\+empty\+\_\+signature}}
+\index{is\+\_\+empty\+\_\+signature@{is\+\_\+empty\+\_\+signature}!tests.\+c@{tests.\+c}}
+\subsubsection[{is\+\_\+empty\+\_\+signature}]{\setlength{\rightskip}{0pt plus 5cm}int is\+\_\+empty\+\_\+signature (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+ecdsa\+\_\+signature} $\ast$}]{sig}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a7e817ef3d73f5d5b1dbf1ccffa0cf77b}
+
+
+Definition at line 3283 of file tests.\+c.
+
+\hypertarget{tests_8c_a3c04138a5bfe5d72780bb7e82a18e627}{}\index{tests.\+c@{tests.\+c}!main@{main}}
+\index{main@{main}!tests.\+c@{tests.\+c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a3c04138a5bfe5d72780bb7e82a18e627}
+
+
+Definition at line 4252 of file tests.\+c.
+
+\hypertarget{tests_8c_ad49b2c3065041ff986c8a4d71a329c79}{}\index{tests.\+c@{tests.\+c}!random\+\_\+fe@{random\+\_\+fe}}
+\index{random\+\_\+fe@{random\+\_\+fe}!tests.\+c@{tests.\+c}}
+\subsubsection[{random\+\_\+fe}]{\setlength{\rightskip}{0pt plus 5cm}void random\+\_\+fe (
+\begin{DoxyParamCaption}
+\item[{{\bf secp256k1\+\_\+fe} $\ast$}]{x}
+\end{DoxyParamCaption}
+)}\label{tests_8c_ad49b2c3065041ff986c8a4d71a329c79}
+
+
+Definition at line 1413 of file tests.\+c.
+
+\hypertarget{tests_8c_acb56afe8a17a3048470c0c299150a36a}{}\index{tests.\+c@{tests.\+c}!random\+\_\+fe\+\_\+non\+\_\+square@{random\+\_\+fe\+\_\+non\+\_\+square}}
+\index{random\+\_\+fe\+\_\+non\+\_\+square@{random\+\_\+fe\+\_\+non\+\_\+square}!tests.\+c@{tests.\+c}}
+\subsubsection[{random\+\_\+fe\+\_\+non\+\_\+square}]{\setlength{\rightskip}{0pt plus 5cm}void random\+\_\+fe\+\_\+non\+\_\+square (
+\begin{DoxyParamCaption}
+\item[{{\bf secp256k1\+\_\+fe} $\ast$}]{ns}
+\end{DoxyParamCaption}
+)}\label{tests_8c_acb56afe8a17a3048470c0c299150a36a}
+
+
+Definition at line 1446 of file tests.\+c.
+
+\hypertarget{tests_8c_a7f2c9aa1daa06bbd70798f8b8a6d978a}{}\index{tests.\+c@{tests.\+c}!random\+\_\+fe\+\_\+non\+\_\+zero@{random\+\_\+fe\+\_\+non\+\_\+zero}}
+\index{random\+\_\+fe\+\_\+non\+\_\+zero@{random\+\_\+fe\+\_\+non\+\_\+zero}!tests.\+c@{tests.\+c}}
+\subsubsection[{random\+\_\+fe\+\_\+non\+\_\+zero}]{\setlength{\rightskip}{0pt plus 5cm}void random\+\_\+fe\+\_\+non\+\_\+zero (
+\begin{DoxyParamCaption}
+\item[{{\bf secp256k1\+\_\+fe} $\ast$}]{nz}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a7f2c9aa1daa06bbd70798f8b8a6d978a}
+
+
+Definition at line 1433 of file tests.\+c.
+
+\hypertarget{tests_8c_a786a875eccc29ad918255883d89f00a1}{}\index{tests.\+c@{tests.\+c}!random\+\_\+fe\+\_\+test@{random\+\_\+fe\+\_\+test}}
+\index{random\+\_\+fe\+\_\+test@{random\+\_\+fe\+\_\+test}!tests.\+c@{tests.\+c}}
+\subsubsection[{random\+\_\+fe\+\_\+test}]{\setlength{\rightskip}{0pt plus 5cm}void random\+\_\+fe\+\_\+test (
+\begin{DoxyParamCaption}
+\item[{{\bf secp256k1\+\_\+fe} $\ast$}]{x}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a786a875eccc29ad918255883d89f00a1}
+
+
+Definition at line 1423 of file tests.\+c.
+
+\hypertarget{tests_8c_a4ae0ffabe31b809b14bc5e14e3f4e953}{}\index{tests.\+c@{tests.\+c}!random\+\_\+field\+\_\+element\+\_\+magnitude@{random\+\_\+field\+\_\+element\+\_\+magnitude}}
+\index{random\+\_\+field\+\_\+element\+\_\+magnitude@{random\+\_\+field\+\_\+element\+\_\+magnitude}!tests.\+c@{tests.\+c}}
+\subsubsection[{random\+\_\+field\+\_\+element\+\_\+magnitude}]{\setlength{\rightskip}{0pt plus 5cm}void random\+\_\+field\+\_\+element\+\_\+magnitude (
+\begin{DoxyParamCaption}
+\item[{{\bf secp256k1\+\_\+fe} $\ast$}]{fe}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a4ae0ffabe31b809b14bc5e14e3f4e953}
+
+
+Definition at line 70 of file tests.\+c.
+
+\hypertarget{tests_8c_af038dec65d22bf5050a82de7b4ad4bca}{}\index{tests.\+c@{tests.\+c}!random\+\_\+field\+\_\+element\+\_\+test@{random\+\_\+field\+\_\+element\+\_\+test}}
+\index{random\+\_\+field\+\_\+element\+\_\+test@{random\+\_\+field\+\_\+element\+\_\+test}!tests.\+c@{tests.\+c}}
+\subsubsection[{random\+\_\+field\+\_\+element\+\_\+test}]{\setlength{\rightskip}{0pt plus 5cm}void random\+\_\+field\+\_\+element\+\_\+test (
+\begin{DoxyParamCaption}
+\item[{{\bf secp256k1\+\_\+fe} $\ast$}]{fe}
+\end{DoxyParamCaption}
+)}\label{tests_8c_af038dec65d22bf5050a82de7b4ad4bca}
+
+
+Definition at line 60 of file tests.\+c.
+
+\hypertarget{tests_8c_a92dafcbafa2a878e07b5ff22f573be7f}{}\index{tests.\+c@{tests.\+c}!random\+\_\+group\+\_\+element\+\_\+jacobian\+\_\+test@{random\+\_\+group\+\_\+element\+\_\+jacobian\+\_\+test}}
+\index{random\+\_\+group\+\_\+element\+\_\+jacobian\+\_\+test@{random\+\_\+group\+\_\+element\+\_\+jacobian\+\_\+test}!tests.\+c@{tests.\+c}}
+\subsubsection[{random\+\_\+group\+\_\+element\+\_\+jacobian\+\_\+test}]{\setlength{\rightskip}{0pt plus 5cm}void random\+\_\+group\+\_\+element\+\_\+jacobian\+\_\+test (
+\begin{DoxyParamCaption}
+\item[{{\bf secp256k1\+\_\+gej} $\ast$}]{gej, }
+\item[{const {\bf secp256k1\+\_\+ge} $\ast$}]{ge}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a92dafcbafa2a878e07b5ff22f573be7f}
+
+
+Definition at line 95 of file tests.\+c.
+
+\hypertarget{tests_8c_a63a7c68b6b72356c59cfdaaab131c73b}{}\index{tests.\+c@{tests.\+c}!random\+\_\+group\+\_\+element\+\_\+test@{random\+\_\+group\+\_\+element\+\_\+test}}
+\index{random\+\_\+group\+\_\+element\+\_\+test@{random\+\_\+group\+\_\+element\+\_\+test}!tests.\+c@{tests.\+c}}
+\subsubsection[{random\+\_\+group\+\_\+element\+\_\+test}]{\setlength{\rightskip}{0pt plus 5cm}void random\+\_\+group\+\_\+element\+\_\+test (
+\begin{DoxyParamCaption}
+\item[{{\bf secp256k1\+\_\+ge} $\ast$}]{ge}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a63a7c68b6b72356c59cfdaaab131c73b}
+
+
+Definition at line 84 of file tests.\+c.
+
+\hypertarget{tests_8c_a4affe0b607e5c6beab553c6668f9ab34}{}\index{tests.\+c@{tests.\+c}!random\+\_\+num\+\_\+negate@{random\+\_\+num\+\_\+negate}}
+\index{random\+\_\+num\+\_\+negate@{random\+\_\+num\+\_\+negate}!tests.\+c@{tests.\+c}}
+\subsubsection[{random\+\_\+num\+\_\+negate}]{\setlength{\rightskip}{0pt plus 5cm}void random\+\_\+num\+\_\+negate (
+\begin{DoxyParamCaption}
+\item[{{\bf secp256k1\+\_\+num} $\ast$}]{num}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a4affe0b607e5c6beab553c6668f9ab34}
+
+
+Definition at line 437 of file tests.\+c.
+
+\hypertarget{tests_8c_a15c58dba0f6924a65cfd4441083dbba8}{}\index{tests.\+c@{tests.\+c}!random\+\_\+num\+\_\+order@{random\+\_\+num\+\_\+order}}
+\index{random\+\_\+num\+\_\+order@{random\+\_\+num\+\_\+order}!tests.\+c@{tests.\+c}}
+\subsubsection[{random\+\_\+num\+\_\+order}]{\setlength{\rightskip}{0pt plus 5cm}void random\+\_\+num\+\_\+order (
+\begin{DoxyParamCaption}
+\item[{{\bf secp256k1\+\_\+num} $\ast$}]{num}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a15c58dba0f6924a65cfd4441083dbba8}
+
+
+Definition at line 449 of file tests.\+c.
+
+\hypertarget{tests_8c_ae0a527e6943a8aeeb762d6d386930148}{}\index{tests.\+c@{tests.\+c}!random\+\_\+num\+\_\+order\+\_\+test@{random\+\_\+num\+\_\+order\+\_\+test}}
+\index{random\+\_\+num\+\_\+order\+\_\+test@{random\+\_\+num\+\_\+order\+\_\+test}!tests.\+c@{tests.\+c}}
+\subsubsection[{random\+\_\+num\+\_\+order\+\_\+test}]{\setlength{\rightskip}{0pt plus 5cm}void random\+\_\+num\+\_\+order\+\_\+test (
+\begin{DoxyParamCaption}
+\item[{{\bf secp256k1\+\_\+num} $\ast$}]{num}
+\end{DoxyParamCaption}
+)}\label{tests_8c_ae0a527e6943a8aeeb762d6d386930148}
+
+
+Definition at line 443 of file tests.\+c.
+
+\hypertarget{tests_8c_a01cf4b4fc9b4ab8cb3e04fd3dc2ff57f}{}\index{tests.\+c@{tests.\+c}!random\+\_\+scalar\+\_\+order@{random\+\_\+scalar\+\_\+order}}
+\index{random\+\_\+scalar\+\_\+order@{random\+\_\+scalar\+\_\+order}!tests.\+c@{tests.\+c}}
+\subsubsection[{random\+\_\+scalar\+\_\+order}]{\setlength{\rightskip}{0pt plus 5cm}void random\+\_\+scalar\+\_\+order (
+\begin{DoxyParamCaption}
+\item[{{\bf secp256k1\+\_\+scalar} $\ast$}]{num}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a01cf4b4fc9b4ab8cb3e04fd3dc2ff57f}
+
+
+Definition at line 123 of file tests.\+c.
+
+\hypertarget{tests_8c_a51e09e6745e0afdb0d596ee0f4b3c3f7}{}\index{tests.\+c@{tests.\+c}!random\+\_\+scalar\+\_\+order\+\_\+test@{random\+\_\+scalar\+\_\+order\+\_\+test}}
+\index{random\+\_\+scalar\+\_\+order\+\_\+test@{random\+\_\+scalar\+\_\+order\+\_\+test}!tests.\+c@{tests.\+c}}
+\subsubsection[{random\+\_\+scalar\+\_\+order\+\_\+test}]{\setlength{\rightskip}{0pt plus 5cm}void random\+\_\+scalar\+\_\+order\+\_\+test (
+\begin{DoxyParamCaption}
+\item[{{\bf secp256k1\+\_\+scalar} $\ast$}]{num}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a51e09e6745e0afdb0d596ee0f4b3c3f7}
+
+
+Definition at line 110 of file tests.\+c.
+
+\hypertarget{tests_8c_a5c5253164e8444359849fd66e27bbe5a}{}\index{tests.\+c@{tests.\+c}!random\+\_\+sign@{random\+\_\+sign}}
+\index{random\+\_\+sign@{random\+\_\+sign}!tests.\+c@{tests.\+c}}
+\subsubsection[{random\+\_\+sign}]{\setlength{\rightskip}{0pt plus 5cm}void random\+\_\+sign (
+\begin{DoxyParamCaption}
+\item[{{\bf secp256k1\+\_\+scalar} $\ast$}]{sigr, }
+\item[{{\bf secp256k1\+\_\+scalar} $\ast$}]{sigs, }
+\item[{const {\bf secp256k1\+\_\+scalar} $\ast$}]{key, }
+\item[{const {\bf secp256k1\+\_\+scalar} $\ast$}]{msg, }
+\item[{int $\ast$}]{recid}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a5c5253164e8444359849fd66e27bbe5a}
+
+
+Definition at line 3199 of file tests.\+c.
+
+\hypertarget{tests_8c_a2f9713526b1e988694c6e2026a6fce69}{}\index{tests.\+c@{tests.\+c}!run\+\_\+context\+\_\+tests@{run\+\_\+context\+\_\+tests}}
+\index{run\+\_\+context\+\_\+tests@{run\+\_\+context\+\_\+tests}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+context\+\_\+tests}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+context\+\_\+tests (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a2f9713526b1e988694c6e2026a6fce69}
+
+
+Definition at line 136 of file tests.\+c.
+
+\hypertarget{tests_8c_a394075284eed27ac8d87935f73d4c673}{}\index{tests.\+c@{tests.\+c}!run\+\_\+ec\+\_\+combine@{run\+\_\+ec\+\_\+combine}}
+\index{run\+\_\+ec\+\_\+combine@{run\+\_\+ec\+\_\+combine}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+ec\+\_\+combine}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+ec\+\_\+combine (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a394075284eed27ac8d87935f73d4c673}
+
+
+Definition at line 2044 of file tests.\+c.
+
+\hypertarget{tests_8c_a24bd2af11fcef9c3f2abb62862d6fe97}{}\index{tests.\+c@{tests.\+c}!run\+\_\+ec\+\_\+pubkey\+\_\+parse\+\_\+test@{run\+\_\+ec\+\_\+pubkey\+\_\+parse\+\_\+test}}
+\index{run\+\_\+ec\+\_\+pubkey\+\_\+parse\+\_\+test@{run\+\_\+ec\+\_\+pubkey\+\_\+parse\+\_\+test}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+ec\+\_\+pubkey\+\_\+parse\+\_\+test}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+ec\+\_\+pubkey\+\_\+parse\+\_\+test (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a24bd2af11fcef9c3f2abb62862d6fe97}
+
+
+Definition at line 2636 of file tests.\+c.
+
+\hypertarget{tests_8c_aed8d29b89e89ae8bf370483684b1f7d2}{}\index{tests.\+c@{tests.\+c}!run\+\_\+ecdsa\+\_\+der\+\_\+parse@{run\+\_\+ecdsa\+\_\+der\+\_\+parse}}
+\index{run\+\_\+ecdsa\+\_\+der\+\_\+parse@{run\+\_\+ecdsa\+\_\+der\+\_\+parse}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+ecdsa\+\_\+der\+\_\+parse}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+ecdsa\+\_\+der\+\_\+parse (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_aed8d29b89e89ae8bf370483684b1f7d2}
+
+
+Definition at line 3780 of file tests.\+c.
+
+\hypertarget{tests_8c_ad6c8109b62ea1d0ed1b382678a2a08b1}{}\index{tests.\+c@{tests.\+c}!run\+\_\+ecdsa\+\_\+edge\+\_\+cases@{run\+\_\+ecdsa\+\_\+edge\+\_\+cases}}
+\index{run\+\_\+ecdsa\+\_\+edge\+\_\+cases@{run\+\_\+ecdsa\+\_\+edge\+\_\+cases}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+ecdsa\+\_\+edge\+\_\+cases}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+ecdsa\+\_\+edge\+\_\+cases (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_ad6c8109b62ea1d0ed1b382678a2a08b1}
+
+
+Definition at line 4180 of file tests.\+c.
+
+\hypertarget{tests_8c_ab05096657be701bf9ca8616475bb9491}{}\index{tests.\+c@{tests.\+c}!run\+\_\+ecdsa\+\_\+end\+\_\+to\+\_\+end@{run\+\_\+ecdsa\+\_\+end\+\_\+to\+\_\+end}}
+\index{run\+\_\+ecdsa\+\_\+end\+\_\+to\+\_\+end@{run\+\_\+ecdsa\+\_\+end\+\_\+to\+\_\+end}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+ecdsa\+\_\+end\+\_\+to\+\_\+end}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+ecdsa\+\_\+end\+\_\+to\+\_\+end (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_ab05096657be701bf9ca8616475bb9491}
+
+
+Definition at line 3478 of file tests.\+c.
+
+\hypertarget{tests_8c_a8b33b5c265c09b165c29d92c05c641d8}{}\index{tests.\+c@{tests.\+c}!run\+\_\+ecdsa\+\_\+sign\+\_\+verify@{run\+\_\+ecdsa\+\_\+sign\+\_\+verify}}
+\index{run\+\_\+ecdsa\+\_\+sign\+\_\+verify@{run\+\_\+ecdsa\+\_\+sign\+\_\+verify}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+ecdsa\+\_\+sign\+\_\+verify}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+ecdsa\+\_\+sign\+\_\+verify (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a8b33b5c265c09b165c29d92c05c641d8}
+
+
+Definition at line 3229 of file tests.\+c.
+
+\hypertarget{tests_8c_a32498e86a99a258f68cd4b1176f47966}{}\index{tests.\+c@{tests.\+c}!run\+\_\+eckey\+\_\+edge\+\_\+case\+\_\+test@{run\+\_\+eckey\+\_\+edge\+\_\+case\+\_\+test}}
+\index{run\+\_\+eckey\+\_\+edge\+\_\+case\+\_\+test@{run\+\_\+eckey\+\_\+edge\+\_\+case\+\_\+test}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+eckey\+\_\+edge\+\_\+case\+\_\+test}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+eckey\+\_\+edge\+\_\+case\+\_\+test (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a32498e86a99a258f68cd4b1176f47966}
+
+
+Definition at line 2963 of file tests.\+c.
+
+\hypertarget{tests_8c_aec6ef7189f31c2b9628cedf9154f6929}{}\index{tests.\+c@{tests.\+c}!run\+\_\+ecmult\+\_\+chain@{run\+\_\+ecmult\+\_\+chain}}
+\index{run\+\_\+ecmult\+\_\+chain@{run\+\_\+ecmult\+\_\+chain}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+ecmult\+\_\+chain}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+ecmult\+\_\+chain (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_aec6ef7189f31c2b9628cedf9154f6929}
+
+
+Definition at line 2109 of file tests.\+c.
+
+\hypertarget{tests_8c_af69d927b217be17f076754b9d4e4f326}{}\index{tests.\+c@{tests.\+c}!run\+\_\+ecmult\+\_\+const\+\_\+tests@{run\+\_\+ecmult\+\_\+const\+\_\+tests}}
+\index{run\+\_\+ecmult\+\_\+const\+\_\+tests@{run\+\_\+ecmult\+\_\+const\+\_\+tests}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+ecmult\+\_\+const\+\_\+tests}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+ecmult\+\_\+const\+\_\+tests (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_af69d927b217be17f076754b9d4e4f326}
+
+
+Definition at line 2326 of file tests.\+c.
+
+\hypertarget{tests_8c_a93c275726298d7a59a4f027996a958b4}{}\index{tests.\+c@{tests.\+c}!run\+\_\+ecmult\+\_\+constants@{run\+\_\+ecmult\+\_\+constants}}
+\index{run\+\_\+ecmult\+\_\+constants@{run\+\_\+ecmult\+\_\+constants}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+ecmult\+\_\+constants}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+ecmult\+\_\+constants (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a93c275726298d7a59a4f027996a958b4}
+
+
+Definition at line 2484 of file tests.\+c.
+
+\hypertarget{tests_8c_ac3003b8a1d7eed5ebb0497a3f0dd97b6}{}\index{tests.\+c@{tests.\+c}!run\+\_\+ecmult\+\_\+gen\+\_\+blind@{run\+\_\+ecmult\+\_\+gen\+\_\+blind}}
+\index{run\+\_\+ecmult\+\_\+gen\+\_\+blind@{run\+\_\+ecmult\+\_\+gen\+\_\+blind}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+ecmult\+\_\+gen\+\_\+blind}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+ecmult\+\_\+gen\+\_\+blind (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_ac3003b8a1d7eed5ebb0497a3f0dd97b6}
+
+
+Definition at line 2523 of file tests.\+c.
+
+\hypertarget{tests_8c_a3fb0153a38fe54783b46ab4bc39d9912}{}\index{tests.\+c@{tests.\+c}!run\+\_\+field\+\_\+convert@{run\+\_\+field\+\_\+convert}}
+\index{run\+\_\+field\+\_\+convert@{run\+\_\+field\+\_\+convert}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+field\+\_\+convert}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+field\+\_\+convert (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a3fb0153a38fe54783b46ab4bc39d9912}
+
+
+Definition at line 1469 of file tests.\+c.
+
+\hypertarget{tests_8c_ad636c10e982fafdb8f6ddeb3d1424b2d}{}\index{tests.\+c@{tests.\+c}!run\+\_\+field\+\_\+inv@{run\+\_\+field\+\_\+inv}}
+\index{run\+\_\+field\+\_\+inv@{run\+\_\+field\+\_\+inv}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+field\+\_\+inv}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+field\+\_\+inv (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_ad636c10e982fafdb8f6ddeb3d1424b2d}
+
+
+Definition at line 1580 of file tests.\+c.
+
+\hypertarget{tests_8c_afb738ef4c7077ce703c56beefcb29653}{}\index{tests.\+c@{tests.\+c}!run\+\_\+field\+\_\+inv\+\_\+all\+\_\+var@{run\+\_\+field\+\_\+inv\+\_\+all\+\_\+var}}
+\index{run\+\_\+field\+\_\+inv\+\_\+all\+\_\+var@{run\+\_\+field\+\_\+inv\+\_\+all\+\_\+var}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+field\+\_\+inv\+\_\+all\+\_\+var}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+field\+\_\+inv\+\_\+all\+\_\+var (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_afb738ef4c7077ce703c56beefcb29653}
+
+
+Definition at line 1604 of file tests.\+c.
+
+\hypertarget{tests_8c_ad83214628412557c86e3c1d01270c83a}{}\index{tests.\+c@{tests.\+c}!run\+\_\+field\+\_\+inv\+\_\+var@{run\+\_\+field\+\_\+inv\+\_\+var}}
+\index{run\+\_\+field\+\_\+inv\+\_\+var@{run\+\_\+field\+\_\+inv\+\_\+var}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+field\+\_\+inv\+\_\+var}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+field\+\_\+inv\+\_\+var (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_ad83214628412557c86e3c1d01270c83a}
+
+
+Definition at line 1592 of file tests.\+c.
+
+\hypertarget{tests_8c_a407b4cff8cbc365e753f2a1d70b45f81}{}\index{tests.\+c@{tests.\+c}!run\+\_\+field\+\_\+misc@{run\+\_\+field\+\_\+misc}}
+\index{run\+\_\+field\+\_\+misc@{run\+\_\+field\+\_\+misc}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+field\+\_\+misc}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+field\+\_\+misc (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a407b4cff8cbc365e753f2a1d70b45f81}
+
+
+Definition at line 1508 of file tests.\+c.
+
+\hypertarget{tests_8c_aa7ad70a73e9a44f0b9486ffe6f46ca39}{}\index{tests.\+c@{tests.\+c}!run\+\_\+ge@{run\+\_\+ge}}
+\index{run\+\_\+ge@{run\+\_\+ge}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+ge}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+ge (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_aa7ad70a73e9a44f0b9486ffe6f46ca39}
+
+
+Definition at line 2011 of file tests.\+c.
+
+\hypertarget{tests_8c_a03817b02604d9e2c9b5f049fc01d4a99}{}\index{tests.\+c@{tests.\+c}!run\+\_\+group\+\_\+decompress@{run\+\_\+group\+\_\+decompress}}
+\index{run\+\_\+group\+\_\+decompress@{run\+\_\+group\+\_\+decompress}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+group\+\_\+decompress}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+group\+\_\+decompress (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a03817b02604d9e2c9b5f049fc01d4a99}
+
+
+Definition at line 2098 of file tests.\+c.
+
+\hypertarget{tests_8c_a696245307bfe2110594f353cf47dad17}{}\index{tests.\+c@{tests.\+c}!run\+\_\+hmac\+\_\+sha256\+\_\+tests@{run\+\_\+hmac\+\_\+sha256\+\_\+tests}}
+\index{run\+\_\+hmac\+\_\+sha256\+\_\+tests@{run\+\_\+hmac\+\_\+sha256\+\_\+tests}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+hmac\+\_\+sha256\+\_\+tests}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+hmac\+\_\+sha256\+\_\+tests (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a696245307bfe2110594f353cf47dad17}
+
+
+Definition at line 277 of file tests.\+c.
+
+\hypertarget{tests_8c_a6744389614cf74a9b2c10c29e2ddba5c}{}\index{tests.\+c@{tests.\+c}!run\+\_\+num\+\_\+smalltests@{run\+\_\+num\+\_\+smalltests}}
+\index{run\+\_\+num\+\_\+smalltests@{run\+\_\+num\+\_\+smalltests}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+num\+\_\+smalltests}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+num\+\_\+smalltests (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a6744389614cf74a9b2c10c29e2ddba5c}
+
+
+Definition at line 503 of file tests.\+c.
+
+\hypertarget{tests_8c_accc1ed100e6e73e61ce30e82cf4f0bbb}{}\index{tests.\+c@{tests.\+c}!run\+\_\+point\+\_\+times\+\_\+order@{run\+\_\+point\+\_\+times\+\_\+order}}
+\index{run\+\_\+point\+\_\+times\+\_\+order@{run\+\_\+point\+\_\+times\+\_\+order}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+point\+\_\+times\+\_\+order}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+point\+\_\+times\+\_\+order (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_accc1ed100e6e73e61ce30e82cf4f0bbb}
+
+
+Definition at line 2208 of file tests.\+c.
+
+\hypertarget{tests_8c_a90b7eac05cebf27de5b429888bb5beff}{}\index{tests.\+c@{tests.\+c}!run\+\_\+rand\+\_\+bits@{run\+\_\+rand\+\_\+bits}}
+\index{run\+\_\+rand\+\_\+bits@{run\+\_\+rand\+\_\+bits}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+rand\+\_\+bits}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+rand\+\_\+bits (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a90b7eac05cebf27de5b429888bb5beff}
+
+
+Definition at line 415 of file tests.\+c.
+
+\hypertarget{tests_8c_a775a4718709171ff67d821ff4a97c9a7}{}\index{tests.\+c@{tests.\+c}!run\+\_\+rand\+\_\+int@{run\+\_\+rand\+\_\+int}}
+\index{run\+\_\+rand\+\_\+int@{run\+\_\+rand\+\_\+int}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+rand\+\_\+int}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+rand\+\_\+int (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a775a4718709171ff67d821ff4a97c9a7}
+
+
+Definition at line 423 of file tests.\+c.
+
+\hypertarget{tests_8c_a0697fbce6e63c1c95aec0c67cb27f31c}{}\index{tests.\+c@{tests.\+c}!run\+\_\+random\+\_\+pubkeys@{run\+\_\+random\+\_\+pubkeys}}
+\index{run\+\_\+random\+\_\+pubkeys@{run\+\_\+random\+\_\+pubkeys}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+random\+\_\+pubkeys}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+random\+\_\+pubkeys (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a0697fbce6e63c1c95aec0c67cb27f31c}
+
+
+Definition at line 3471 of file tests.\+c.
+
+\hypertarget{tests_8c_add06855ef2be3d3b6a4506590a7b468e}{}\index{tests.\+c@{tests.\+c}!run\+\_\+rfc6979\+\_\+hmac\+\_\+sha256\+\_\+tests@{run\+\_\+rfc6979\+\_\+hmac\+\_\+sha256\+\_\+tests}}
+\index{run\+\_\+rfc6979\+\_\+hmac\+\_\+sha256\+\_\+tests@{run\+\_\+rfc6979\+\_\+hmac\+\_\+sha256\+\_\+tests}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+rfc6979\+\_\+hmac\+\_\+sha256\+\_\+tests}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+rfc6979\+\_\+hmac\+\_\+sha256\+\_\+tests (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_add06855ef2be3d3b6a4506590a7b468e}
+
+
+Definition at line 321 of file tests.\+c.
+
+\hypertarget{tests_8c_afc29a3cda8faeba097ce967f24fcb9d1}{}\index{tests.\+c@{tests.\+c}!run\+\_\+scalar\+\_\+tests@{run\+\_\+scalar\+\_\+tests}}
+\index{run\+\_\+scalar\+\_\+tests@{run\+\_\+scalar\+\_\+tests}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+scalar\+\_\+tests}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+scalar\+\_\+tests (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_afc29a3cda8faeba097ce967f24fcb9d1}
+
+
+Definition at line 799 of file tests.\+c.
+
+\hypertarget{tests_8c_a2d74e805d6154620fef868e2319c99c9}{}\index{tests.\+c@{tests.\+c}!run\+\_\+sha256\+\_\+tests@{run\+\_\+sha256\+\_\+tests}}
+\index{run\+\_\+sha256\+\_\+tests@{run\+\_\+sha256\+\_\+tests}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+sha256\+\_\+tests}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+sha256\+\_\+tests (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a2d74e805d6154620fef868e2319c99c9}
+
+
+Definition at line 241 of file tests.\+c.
+
+\hypertarget{tests_8c_aebe6e77bbe66e58eb7d0230d9506dc61}{}\index{tests.\+c@{tests.\+c}!run\+\_\+sqr@{run\+\_\+sqr}}
+\index{run\+\_\+sqr@{run\+\_\+sqr}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+sqr}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+sqr (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_aebe6e77bbe66e58eb7d0230d9506dc61}
+
+
+Definition at line 1626 of file tests.\+c.
+
+\hypertarget{tests_8c_a9f14566c39814625ca83d68d1dddb684}{}\index{tests.\+c@{tests.\+c}!run\+\_\+sqrt@{run\+\_\+sqrt}}
+\index{run\+\_\+sqrt@{run\+\_\+sqrt}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+sqrt}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+sqrt (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a9f14566c39814625ca83d68d1dddb684}
+
+
+Definition at line 1656 of file tests.\+c.
+
+\hypertarget{tests_8c_af3c34e47a9088ad0f5f0df779303a85a}{}\index{tests.\+c@{tests.\+c}!run\+\_\+wnaf@{run\+\_\+wnaf}}
+\index{run\+\_\+wnaf@{run\+\_\+wnaf}!tests.\+c@{tests.\+c}}
+\subsubsection[{run\+\_\+wnaf}]{\setlength{\rightskip}{0pt plus 5cm}void run\+\_\+wnaf (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_af3c34e47a9088ad0f5f0df779303a85a}
+
+
+Definition at line 2427 of file tests.\+c.
+
+\hypertarget{tests_8c_a0ac2e9ed5b8ba27e48fba5150cebfa82}{}\index{tests.\+c@{tests.\+c}!scalar\+\_\+test@{scalar\+\_\+test}}
+\index{scalar\+\_\+test@{scalar\+\_\+test}!tests.\+c@{tests.\+c}}
+\subsubsection[{scalar\+\_\+test}]{\setlength{\rightskip}{0pt plus 5cm}void scalar\+\_\+test (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a0ac2e9ed5b8ba27e48fba5150cebfa82}
+
+
+Definition at line 514 of file tests.\+c.
+
+\hypertarget{tests_8c_a849e08074670ab1644fdec5cc5ef08a7}{}\index{tests.\+c@{tests.\+c}!test\+\_\+add\+\_\+neg\+\_\+y\+\_\+diff\+\_\+x@{test\+\_\+add\+\_\+neg\+\_\+y\+\_\+diff\+\_\+x}}
+\index{test\+\_\+add\+\_\+neg\+\_\+y\+\_\+diff\+\_\+x@{test\+\_\+add\+\_\+neg\+\_\+y\+\_\+diff\+\_\+x}!tests.\+c@{tests.\+c}}
+\subsubsection[{test\+\_\+add\+\_\+neg\+\_\+y\+\_\+diff\+\_\+x}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+add\+\_\+neg\+\_\+y\+\_\+diff\+\_\+x (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a849e08074670ab1644fdec5cc5ef08a7}
+
+
+Definition at line 1944 of file tests.\+c.
+
+\hypertarget{tests_8c_ab1b83b06f2b16b37ec472a91775d1a94}{}\index{tests.\+c@{tests.\+c}!test\+\_\+constant\+\_\+wnaf@{test\+\_\+constant\+\_\+wnaf}}
+\index{test\+\_\+constant\+\_\+wnaf@{test\+\_\+constant\+\_\+wnaf}!tests.\+c@{tests.\+c}}
+\subsubsection[{test\+\_\+constant\+\_\+wnaf}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+constant\+\_\+wnaf (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+scalar} $\ast$}]{number, }
+\item[{int}]{w}
+\end{DoxyParamCaption}
+)}\label{tests_8c_ab1b83b06f2b16b37ec472a91775d1a94}
+
+
+Definition at line 2382 of file tests.\+c.
+
+\hypertarget{tests_8c_ad9c7802400ac86e07d8b5eb46055afaf}{}\index{tests.\+c@{tests.\+c}!test\+\_\+constant\+\_\+wnaf\+\_\+negate@{test\+\_\+constant\+\_\+wnaf\+\_\+negate}}
+\index{test\+\_\+constant\+\_\+wnaf\+\_\+negate@{test\+\_\+constant\+\_\+wnaf\+\_\+negate}!tests.\+c@{tests.\+c}}
+\subsubsection[{test\+\_\+constant\+\_\+wnaf\+\_\+negate}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+constant\+\_\+wnaf\+\_\+negate (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+scalar} $\ast$}]{number}
+\end{DoxyParamCaption}
+)}\label{tests_8c_ad9c7802400ac86e07d8b5eb46055afaf}
+
+
+Definition at line 2367 of file tests.\+c.
+
+\hypertarget{tests_8c_af668387a475fa94107e316b2ddc003cf}{}\index{tests.\+c@{tests.\+c}!test\+\_\+ec\+\_\+combine@{test\+\_\+ec\+\_\+combine}}
+\index{test\+\_\+ec\+\_\+combine@{test\+\_\+ec\+\_\+combine}!tests.\+c@{tests.\+c}}
+\subsubsection[{test\+\_\+ec\+\_\+combine}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+ec\+\_\+combine (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_af668387a475fa94107e316b2ddc003cf}
+
+
+Definition at line 2019 of file tests.\+c.
+
+\hypertarget{tests_8c_a1cb741ffd2cea46124f7abc2c506717a}{}\index{tests.\+c@{tests.\+c}!test\+\_\+ecdsa\+\_\+der\+\_\+parse@{test\+\_\+ecdsa\+\_\+der\+\_\+parse}}
+\index{test\+\_\+ecdsa\+\_\+der\+\_\+parse@{test\+\_\+ecdsa\+\_\+der\+\_\+parse}!tests.\+c@{tests.\+c}}
+\subsubsection[{test\+\_\+ecdsa\+\_\+der\+\_\+parse}]{\setlength{\rightskip}{0pt plus 5cm}int test\+\_\+ecdsa\+\_\+der\+\_\+parse (
+\begin{DoxyParamCaption}
+\item[{const unsigned char $\ast$}]{sig, }
+\item[{size\+\_\+t}]{siglen, }
+\item[{int}]{certainly\+\_\+der, }
+\item[{int}]{certainly\+\_\+not\+\_\+der}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a1cb741ffd2cea46124f7abc2c506717a}
+
+
+Definition at line 3485 of file tests.\+c.
+
+\hypertarget{tests_8c_abbcb27d1eb13654db9b2e281ffce021e}{}\index{tests.\+c@{tests.\+c}!test\+\_\+ecdsa\+\_\+edge\+\_\+cases@{test\+\_\+ecdsa\+\_\+edge\+\_\+cases}}
+\index{test\+\_\+ecdsa\+\_\+edge\+\_\+cases@{test\+\_\+ecdsa\+\_\+edge\+\_\+cases}!tests.\+c@{tests.\+c}}
+\subsubsection[{test\+\_\+ecdsa\+\_\+edge\+\_\+cases}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+ecdsa\+\_\+edge\+\_\+cases (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_abbcb27d1eb13654db9b2e281ffce021e}
+
+
+Definition at line 3811 of file tests.\+c.
+
+\hypertarget{tests_8c_a3fc9dc1908215215a68690ea1bfa8bcd}{}\index{tests.\+c@{tests.\+c}!test\+\_\+ecdsa\+\_\+end\+\_\+to\+\_\+end@{test\+\_\+ecdsa\+\_\+end\+\_\+to\+\_\+end}}
+\index{test\+\_\+ecdsa\+\_\+end\+\_\+to\+\_\+end@{test\+\_\+ecdsa\+\_\+end\+\_\+to\+\_\+end}!tests.\+c@{tests.\+c}}
+\subsubsection[{test\+\_\+ecdsa\+\_\+end\+\_\+to\+\_\+end}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+ecdsa\+\_\+end\+\_\+to\+\_\+end (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a3fc9dc1908215215a68690ea1bfa8bcd}
+
+
+Definition at line 3288 of file tests.\+c.
+
+\hypertarget{tests_8c_a9f741d7d63a637666b9884c5241abd00}{}\index{tests.\+c@{tests.\+c}!test\+\_\+ecdsa\+\_\+sign\+\_\+verify@{test\+\_\+ecdsa\+\_\+sign\+\_\+verify}}
+\index{test\+\_\+ecdsa\+\_\+sign\+\_\+verify@{test\+\_\+ecdsa\+\_\+sign\+\_\+verify}!tests.\+c@{tests.\+c}}
+\subsubsection[{test\+\_\+ecdsa\+\_\+sign\+\_\+verify}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+ecdsa\+\_\+sign\+\_\+verify (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a9f741d7d63a637666b9884c5241abd00}
+
+
+Definition at line 3206 of file tests.\+c.
+
+\hypertarget{tests_8c_ab02e05e21c96c34d9497e2bdd44d2e3a}{}\index{tests.\+c@{tests.\+c}!test\+\_\+ecmult\+\_\+constants@{test\+\_\+ecmult\+\_\+constants}}
+\index{test\+\_\+ecmult\+\_\+constants@{test\+\_\+ecmult\+\_\+constants}!tests.\+c@{tests.\+c}}
+\subsubsection[{test\+\_\+ecmult\+\_\+constants}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+ecmult\+\_\+constants (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_ab02e05e21c96c34d9497e2bdd44d2e3a}
+
+
+Definition at line 2451 of file tests.\+c.
+
+\hypertarget{tests_8c_ab353fbc77d15cd48e25d995ea3f33795}{}\index{tests.\+c@{tests.\+c}!test\+\_\+ecmult\+\_\+gen\+\_\+blind@{test\+\_\+ecmult\+\_\+gen\+\_\+blind}}
+\index{test\+\_\+ecmult\+\_\+gen\+\_\+blind@{test\+\_\+ecmult\+\_\+gen\+\_\+blind}!tests.\+c@{tests.\+c}}
+\subsubsection[{test\+\_\+ecmult\+\_\+gen\+\_\+blind}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+ecmult\+\_\+gen\+\_\+blind (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_ab353fbc77d15cd48e25d995ea3f33795}
+
+
+Definition at line 2488 of file tests.\+c.
+
+\hypertarget{tests_8c_a375b2994cf6e867644abdf5ae3f93abe}{}\index{tests.\+c@{tests.\+c}!test\+\_\+ecmult\+\_\+gen\+\_\+blind\+\_\+reset@{test\+\_\+ecmult\+\_\+gen\+\_\+blind\+\_\+reset}}
+\index{test\+\_\+ecmult\+\_\+gen\+\_\+blind\+\_\+reset@{test\+\_\+ecmult\+\_\+gen\+\_\+blind\+\_\+reset}!tests.\+c@{tests.\+c}}
+\subsubsection[{test\+\_\+ecmult\+\_\+gen\+\_\+blind\+\_\+reset}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+ecmult\+\_\+gen\+\_\+blind\+\_\+reset (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a375b2994cf6e867644abdf5ae3f93abe}
+
+
+Definition at line 2511 of file tests.\+c.
+
+\hypertarget{tests_8c_a3084bb11900a5e4d33115904d0ceb847}{}\index{tests.\+c@{tests.\+c}!test\+\_\+ge@{test\+\_\+ge}}
+\index{test\+\_\+ge@{test\+\_\+ge}!tests.\+c@{tests.\+c}}
+\subsubsection[{test\+\_\+ge}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+ge (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a3084bb11900a5e4d33115904d0ceb847}
+
+
+Definition at line 1740 of file tests.\+c.
+
+\hypertarget{tests_8c_abf8379c326274c3162ebb26491a31611}{}\index{tests.\+c@{tests.\+c}!test\+\_\+group\+\_\+decompress@{test\+\_\+group\+\_\+decompress}}
+\index{test\+\_\+group\+\_\+decompress@{test\+\_\+group\+\_\+decompress}!tests.\+c@{tests.\+c}}
+\subsubsection[{test\+\_\+group\+\_\+decompress}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+group\+\_\+decompress (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+fe} $\ast$}]{x}
+\end{DoxyParamCaption}
+)}\label{tests_8c_abf8379c326274c3162ebb26491a31611}
+
+
+Definition at line 2051 of file tests.\+c.
+
+\hypertarget{tests_8c_afee6025ad0daa3ed03a0e666a42bb0e7}{}\index{tests.\+c@{tests.\+c}!test\+\_\+num\+\_\+add\+\_\+sub@{test\+\_\+num\+\_\+add\+\_\+sub}}
+\index{test\+\_\+num\+\_\+add\+\_\+sub@{test\+\_\+num\+\_\+add\+\_\+sub}!tests.\+c@{tests.\+c}}
+\subsubsection[{test\+\_\+num\+\_\+add\+\_\+sub}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+num\+\_\+add\+\_\+sub (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_afee6025ad0daa3ed03a0e666a42bb0e7}
+
+
+Definition at line 475 of file tests.\+c.
+
+\hypertarget{tests_8c_a6cccf1ffe3b4863fec653e8bae8c0cb0}{}\index{tests.\+c@{tests.\+c}!test\+\_\+num\+\_\+negate@{test\+\_\+num\+\_\+negate}}
+\index{test\+\_\+num\+\_\+negate@{test\+\_\+num\+\_\+negate}!tests.\+c@{tests.\+c}}
+\subsubsection[{test\+\_\+num\+\_\+negate}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+num\+\_\+negate (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a6cccf1ffe3b4863fec653e8bae8c0cb0}
+
+
+Definition at line 455 of file tests.\+c.
+
+\hypertarget{tests_8c_a5760a028e03f061e5aed00cb7839138e}{}\index{tests.\+c@{tests.\+c}!test\+\_\+point\+\_\+times\+\_\+order@{test\+\_\+point\+\_\+times\+\_\+order}}
+\index{test\+\_\+point\+\_\+times\+\_\+order@{test\+\_\+point\+\_\+times\+\_\+order}!tests.\+c@{tests.\+c}}
+\subsubsection[{test\+\_\+point\+\_\+times\+\_\+order}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+point\+\_\+times\+\_\+order (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+gej} $\ast$}]{point}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a5760a028e03f061e5aed00cb7839138e}
+
+
+Definition at line 2173 of file tests.\+c.
+
+\hypertarget{tests_8c_afbb9dd769d4d12035edc846bb697a0a3}{}\index{tests.\+c@{tests.\+c}!test\+\_\+rand\+\_\+bits@{test\+\_\+rand\+\_\+bits}}
+\index{test\+\_\+rand\+\_\+bits@{test\+\_\+rand\+\_\+bits}!tests.\+c@{tests.\+c}}
+\subsubsection[{test\+\_\+rand\+\_\+bits}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+rand\+\_\+bits (
+\begin{DoxyParamCaption}
+\item[{int}]{rand32, }
+\item[{int}]{bits}
+\end{DoxyParamCaption}
+)}\label{tests_8c_afbb9dd769d4d12035edc846bb697a0a3}
+
+
+Definition at line 364 of file tests.\+c.
+
+\hypertarget{tests_8c_a72cd51f28d0b6b8e83edde291fb1bd75}{}\index{tests.\+c@{tests.\+c}!test\+\_\+rand\+\_\+int@{test\+\_\+rand\+\_\+int}}
+\index{test\+\_\+rand\+\_\+int@{test\+\_\+rand\+\_\+int}!tests.\+c@{tests.\+c}}
+\subsubsection[{test\+\_\+rand\+\_\+int}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+rand\+\_\+int (
+\begin{DoxyParamCaption}
+\item[{{\bf uint32\+\_\+t}}]{range, }
+\item[{{\bf uint32\+\_\+t}}]{subrange}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a72cd51f28d0b6b8e83edde291fb1bd75}
+
+
+Definition at line 399 of file tests.\+c.
+
+\hypertarget{tests_8c_a9f06c34f3caa68b5da0ad133c86f5e3c}{}\index{tests.\+c@{tests.\+c}!test\+\_\+random\+\_\+pubkeys@{test\+\_\+random\+\_\+pubkeys}}
+\index{test\+\_\+random\+\_\+pubkeys@{test\+\_\+random\+\_\+pubkeys}!tests.\+c@{tests.\+c}}
+\subsubsection[{test\+\_\+random\+\_\+pubkeys}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+random\+\_\+pubkeys (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a9f06c34f3caa68b5da0ad133c86f5e3c}
+
+
+Definition at line 3411 of file tests.\+c.
+
+\hypertarget{tests_8c_a42744351538fd01fc266d1cac41401a8}{}\index{tests.\+c@{tests.\+c}!test\+\_\+sqrt@{test\+\_\+sqrt}}
+\index{test\+\_\+sqrt@{test\+\_\+sqrt}!tests.\+c@{tests.\+c}}
+\subsubsection[{test\+\_\+sqrt}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+sqrt (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+fe} $\ast$}]{a, }
+\item[{const {\bf secp256k1\+\_\+fe} $\ast$}]{k}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a42744351538fd01fc266d1cac41401a8}
+
+
+Definition at line 1642 of file tests.\+c.
+
+\hypertarget{tests_8c_a7ca78a9b379dc40e8b025b145dd5648a}{}\index{tests.\+c@{tests.\+c}!test\+\_\+wnaf@{test\+\_\+wnaf}}
+\index{test\+\_\+wnaf@{test\+\_\+wnaf}!tests.\+c@{tests.\+c}}
+\subsubsection[{test\+\_\+wnaf}]{\setlength{\rightskip}{0pt plus 5cm}void test\+\_\+wnaf (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+scalar} $\ast$}]{number, }
+\item[{int}]{w}
+\end{DoxyParamCaption}
+)}\label{tests_8c_a7ca78a9b379dc40e8b025b145dd5648a}
+
+
+Definition at line 2333 of file tests.\+c.
+

@@ -1,0 +1,154 @@
+.TH "CClientUIInterface" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CClientUIInterface \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ui_interface\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBMessageBoxFlags\fP { \fBICON_INFORMATION\fP = 0, \fBICON_WARNING\fP = (1U << 0), \fBICON_ERROR\fP = (1U << 1), \fBICON_MASK\fP = (ICON_INFORMATION | ICON_WARNING | ICON_ERROR), \fBBTN_OK\fP = 0x00000400U, \fBBTN_YES\fP = 0x00004000U, \fBBTN_NO\fP = 0x00010000U, \fBBTN_ABORT\fP = 0x00040000U, \fBBTN_RETRY\fP = 0x00080000U, \fBBTN_IGNORE\fP = 0x00100000U, \fBBTN_CLOSE\fP = 0x00200000U, \fBBTN_CANCEL\fP = 0x00400000U, \fBBTN_DISCARD\fP = 0x00800000U, \fBBTN_HELP\fP = 0x01000000U, \fBBTN_APPLY\fP = 0x02000000U, \fBBTN_RESET\fP = 0x04000000U, \fBBTN_MASK\fP, \fBMODAL\fP = 0x10000000U, \fBNOSHOWGUI\fP = 0x20000000U, \fBMSG_INFORMATION\fP = (ICON_INFORMATION | BTN_OK), \fBMSG_WARNING\fP = (ICON_WARNING | BTN_OK | MODAL), \fBMSG_ERROR\fP = (ICON_ERROR | BTN_OK | MODAL) }"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "boost::signals2::signal< void(const std::string &message, const std::string &caption, unsigned int style)> \fBThreadSafeMessageBox\fP"
+.br
+.ti -1c
+.RI "boost::signals2::signal< bool(\fBCAmount\fP nFeeRequired, const std::string &strCaption), boost::signals2::last_value< bool > > \fBThreadSafeAskFee\fP"
+.br
+.ti -1c
+.RI "boost::signals2::signal< void(const std::string &strURI)> \fBThreadSafeHandleURI\fP"
+.br
+.ti -1c
+.RI "boost::signals2::signal< void(const std::string &message)> \fBInitMessage\fP"
+.br
+.ti -1c
+.RI "boost::signals2::signal< std::string(const char *psz)> \fBTranslate\fP"
+.br
+.ti -1c
+.RI "boost::signals2::signal< void(int newNumConnections)> \fBNotifyNumConnectionsChanged\fP"
+.br
+.ti -1c
+.RI "boost::signals2::signal< void(const \fBuint256\fP &\fBhash\fP, \fBChangeType\fP status)> \fBNotifyAlertChanged\fP"
+.br
+.ti -1c
+.RI "boost::signals2::signal< void(const std::string &title, int nProgress)> \fBShowProgress\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Signals for UI communication\&. 
+.PP
+Definition at line 31 of file ui_interface\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBCClientUIInterface::MessageBoxFlags\fP"
+Flags for \fBCClientUIInterface::ThreadSafeMessageBox\fP 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIICON_INFORMATION \fP\fP
+.TP
+\fB\fIICON_WARNING \fP\fP
+.TP
+\fB\fIICON_ERROR \fP\fP
+.TP
+\fB\fIICON_MASK \fP\fP
+Mask of all available icons in \fBCClientUIInterface::MessageBoxFlags\fP This needs to be updated, when icons are changed there! 
+.TP
+\fB\fIBTN_OK \fP\fP
+These values are taken from qmessagebox\&.h 'enum StandardButton' to be directly usable 
+.TP
+\fB\fIBTN_YES \fP\fP
+.TP
+\fB\fIBTN_NO \fP\fP
+.TP
+\fB\fIBTN_ABORT \fP\fP
+.TP
+\fB\fIBTN_RETRY \fP\fP
+.TP
+\fB\fIBTN_IGNORE \fP\fP
+.TP
+\fB\fIBTN_CLOSE \fP\fP
+.TP
+\fB\fIBTN_CANCEL \fP\fP
+.TP
+\fB\fIBTN_DISCARD \fP\fP
+.TP
+\fB\fIBTN_HELP \fP\fP
+.TP
+\fB\fIBTN_APPLY \fP\fP
+.TP
+\fB\fIBTN_RESET \fP\fP
+.TP
+\fB\fIBTN_MASK \fP\fP
+Mask of all available buttons in \fBCClientUIInterface::MessageBoxFlags\fP This needs to be updated, when buttons are changed there! 
+.TP
+\fB\fIMODAL \fP\fP
+Force blocking, modal message box dialog (not just OS notification) 
+.TP
+\fB\fINOSHOWGUI \fP\fP
+Don't bring GUI to foreground\&. Use for messages during initialization 
+.TP
+\fB\fIMSG_INFORMATION \fP\fP
+Predefined combinations for certain default usage cases 
+.TP
+\fB\fIMSG_WARNING \fP\fP
+.TP
+\fB\fIMSG_ERROR \fP\fP
+.PP
+Definition at line 35 of file ui_interface\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "boost::signals2::signal<void (const std::string &message)> CClientUIInterface::InitMessage"
+Progress message during initialization\&. 
+.PP
+Definition at line 93 of file ui_interface\&.h\&.
+.SS "boost::signals2::signal<void (const \fBuint256\fP &\fBhash\fP, \fBChangeType\fP status)> CClientUIInterface::NotifyAlertChanged"
+New, updated or cancelled alert\&. 
+.PP
+\fBNote:\fP
+.RS 4
+called with lock cs_mapAlerts held\&. 
+.RE
+.PP
+
+.PP
+Definition at line 105 of file ui_interface\&.h\&.
+.SS "boost::signals2::signal<void (int newNumConnections)> CClientUIInterface::NotifyNumConnectionsChanged"
+Number of network connections changed\&. 
+.PP
+Definition at line 99 of file ui_interface\&.h\&.
+.SS "boost::signals2::signal<void (const std::string &title, int nProgress)> CClientUIInterface::ShowProgress"
+Show progress e\&.g\&. for verifychain 
+.PP
+Definition at line 108 of file ui_interface\&.h\&.
+.SS "boost::signals2::signal<bool (\fBCAmount\fP nFeeRequired, const std::string& strCaption), boost::signals2::last_value<bool> > CClientUIInterface::ThreadSafeAskFee"
+Ask the user whether they want to pay a fee or not\&. 
+.PP
+Definition at line 81 of file ui_interface\&.h\&.
+.SS "boost::signals2::signal<void (const std::string& strURI)> CClientUIInterface::ThreadSafeHandleURI"
+Handle a URL passed at the command line\&. 
+.PP
+Definition at line 84 of file ui_interface\&.h\&.
+.SS "boost::signals2::signal<void (const std::string& message, const std::string& caption, unsigned int style)> CClientUIInterface::ThreadSafeMessageBox"
+Show message box\&. 
+.PP
+Definition at line 78 of file ui_interface\&.h\&.
+.SS "boost::signals2::signal<std::string (const char* psz)> CClientUIInterface::Translate"
+Translate a message to the native language of the user\&. 
+.PP
+Definition at line 96 of file ui_interface\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

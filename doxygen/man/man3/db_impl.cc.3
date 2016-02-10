@@ -1,0 +1,125 @@
+.TH "/home/dev/ds-160209/src/leveldb/db/db_impl.cc" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/leveldb/db/db_impl.cc \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'db/db_impl\&.h'\fP
+.br
+\fC#include <algorithm>\fP
+.br
+\fC#include <set>\fP
+.br
+\fC#include <string>\fP
+.br
+\fC#include <stdint\&.h>\fP
+.br
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include <vector>\fP
+.br
+\fC#include 'db/builder\&.h'\fP
+.br
+\fC#include 'db/db_iter\&.h'\fP
+.br
+\fC#include 'db/dbformat\&.h'\fP
+.br
+\fC#include 'db/filename\&.h'\fP
+.br
+\fC#include 'db/log_reader\&.h'\fP
+.br
+\fC#include 'db/log_writer\&.h'\fP
+.br
+\fC#include 'db/memtable\&.h'\fP
+.br
+\fC#include 'db/table_cache\&.h'\fP
+.br
+\fC#include 'db/version_set\&.h'\fP
+.br
+\fC#include 'db/write_batch_internal\&.h'\fP
+.br
+\fC#include 'leveldb/db\&.h'\fP
+.br
+\fC#include 'leveldb/env\&.h'\fP
+.br
+\fC#include 'leveldb/status\&.h'\fP
+.br
+\fC#include 'leveldb/table\&.h'\fP
+.br
+\fC#include 'leveldb/table_builder\&.h'\fP
+.br
+\fC#include 'port/port\&.h'\fP
+.br
+\fC#include 'table/block\&.h'\fP
+.br
+\fC#include 'table/merger\&.h'\fP
+.br
+\fC#include 'table/two_level_iterator\&.h'\fP
+.br
+\fC#include 'util/coding\&.h'\fP
+.br
+\fC#include 'util/logging\&.h'\fP
+.br
+\fC#include 'util/mutexlock\&.h'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBleveldb::DBImpl::Writer\fP"
+.br
+.ti -1c
+.RI "struct \fBleveldb::DBImpl::CompactionState\fP"
+.br
+.ti -1c
+.RI "struct \fBleveldb::DBImpl::CompactionState::Output\fP"
+.br
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBleveldb\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "Options \fBleveldb::SanitizeOptions\fP (const std::string &dbname, const InternalKeyComparator *icmp, const InternalFilterPolicy *ipolicy, const Options &src)"
+.br
+.ti -1c
+.RI "Status \fBleveldb::DestroyDB\fP (const std::string &dbname, const Options &options)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "const int \fBleveldb::kNumNonTableCacheFiles\fP = 10"
+.br
+.in -1c
+.SH "Variable Documentation"
+.PP 
+.SS "MemTable* imm"
+
+.PP
+Definition at line 1021 of file db_impl\&.cc\&.
+.SS "MemTable* mem"
+
+.PP
+Definition at line 1020 of file db_impl\&.cc\&.
+.SS "port::Mutex* mu"
+
+.PP
+Definition at line 1018 of file db_impl\&.cc\&.
+.SS "Version* version"
+
+.PP
+Definition at line 1019 of file db_impl\&.cc\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

@@ -1,0 +1,141 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="crc32c_8h" kind="file" language="C++">
+    <compoundname>crc32c.h</compoundname>
+    <includes local="no">stddef.h</includes>
+    <includes refid="stdint_8h" local="no">stdint.h</includes>
+    <includedby refid="db__bench_8cc" local="yes">/home/dev/ds-160209/src/leveldb/db/db_bench.cc</includedby>
+    <includedby refid="log__reader_8cc" local="yes">/home/dev/ds-160209/src/leveldb/db/log_reader.cc</includedby>
+    <includedby refid="log__test_8cc" local="yes">/home/dev/ds-160209/src/leveldb/db/log_test.cc</includedby>
+    <includedby refid="log__writer_8cc" local="yes">/home/dev/ds-160209/src/leveldb/db/log_writer.cc</includedby>
+    <includedby refid="format_8cc" local="yes">/home/dev/ds-160209/src/leveldb/table/format.cc</includedby>
+    <includedby refid="table__builder_8cc" local="yes">/home/dev/ds-160209/src/leveldb/table/table_builder.cc</includedby>
+    <includedby refid="crc32c_8cc" local="yes">/home/dev/ds-160209/src/leveldb/util/crc32c.cc</includedby>
+    <includedby refid="crc32c__test_8cc" local="yes">/home/dev/ds-160209/src/leveldb/util/crc32c_test.cc</includedby>
+    <incdepgraph>
+      <node id="10250">
+        <label>/home/dev/ds-160209/src/leveldb/util/crc32c.h</label>
+        <link refid="crc32c.h"/>
+        <childnode refid="10251" relation="include">
+        </childnode>
+        <childnode refid="10252" relation="include">
+        </childnode>
+      </node>
+      <node id="10251">
+        <label>stddef.h</label>
+      </node>
+      <node id="10252">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="10259">
+        <label>/home/dev/ds-160209/src/leveldb/table/table_builder.cc</label>
+        <link refid="table__builder_8cc"/>
+      </node>
+      <node id="10256">
+        <label>/home/dev/ds-160209/src/leveldb/db/log_test.cc</label>
+        <link refid="log__test_8cc"/>
+      </node>
+      <node id="10258">
+        <label>/home/dev/ds-160209/src/leveldb/table/format.cc</label>
+        <link refid="format_8cc"/>
+      </node>
+      <node id="10253">
+        <label>/home/dev/ds-160209/src/leveldb/util/crc32c.h</label>
+        <link refid="crc32c.h"/>
+        <childnode refid="10254" relation="include">
+        </childnode>
+        <childnode refid="10255" relation="include">
+        </childnode>
+        <childnode refid="10256" relation="include">
+        </childnode>
+        <childnode refid="10257" relation="include">
+        </childnode>
+        <childnode refid="10258" relation="include">
+        </childnode>
+        <childnode refid="10259" relation="include">
+        </childnode>
+        <childnode refid="10260" relation="include">
+        </childnode>
+        <childnode refid="10261" relation="include">
+        </childnode>
+      </node>
+      <node id="10260">
+        <label>/home/dev/ds-160209/src/leveldb/util/crc32c.cc</label>
+        <link refid="crc32c_8cc"/>
+      </node>
+      <node id="10254">
+        <label>/home/dev/ds-160209/src/leveldb/db/db_bench.cc</label>
+        <link refid="db__bench_8cc"/>
+      </node>
+      <node id="10261">
+        <label>/home/dev/ds-160209/src/leveldb/util/crc32c_test.cc</label>
+        <link refid="crc32c__test_8cc"/>
+      </node>
+      <node id="10255">
+        <label>/home/dev/ds-160209/src/leveldb/db/log_reader.cc</label>
+        <link refid="log__reader_8cc"/>
+      </node>
+      <node id="10257">
+        <label>/home/dev/ds-160209/src/leveldb/db/log_writer.cc</label>
+        <link refid="log__writer_8cc"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceleveldb">leveldb</innernamespace>
+    <innernamespace refid="namespaceleveldb_1_1crc32c">leveldb::crc32c</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2011-2016<sp/>The<sp/>LevelDB<sp/>Authors.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>of<sp/>this<sp/>source<sp/>code<sp/>is<sp/>governed<sp/>by<sp/>a<sp/>BSD-style<sp/>license<sp/>that<sp/>can<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>found<sp/>in<sp/>the<sp/>LICENSE<sp/>file.<sp/>See<sp/>the<sp/>AUTHORS<sp/>file<sp/>for<sp/>names<sp/>of<sp/>contributors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>STORAGE_LEVELDB_UTIL_CRC32C_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STORAGE_LEVELDB_UTIL_CRC32C_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="stdint_8h" kindref="compound">stdint.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceleveldb" kindref="compound">leveldb</ref><sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">crc32c<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>crc32c<sp/>of<sp/>concat(A,<sp/>data[0,n-1])<sp/>where<sp/>init_crc<sp/>is<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/>crc32c<sp/>of<sp/>some<sp/>string<sp/>A.<sp/><sp/>Extend()<sp/>is<sp/>often<sp/>used<sp/>to<sp/>maintain<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/>crc32c<sp/>of<sp/>a<sp/>stream<sp/>of<sp/>data.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/><ref refid="namespaceleveldb_1_1crc32c_1ac42fd0618afe635356d722fd29f5ff10" kindref="member">Extend</ref>(<ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>init_crc,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>crc32c<sp/>of<sp/>data[0,n-1]</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="namespaceleveldb_1_1crc32c_1ac004d1e3d8c75b033c162e5ae0a5cc2c" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/><ref refid="namespaceleveldb_1_1crc32c_1ac004d1e3d8c75b033c162e5ae0a5cc2c" kindref="member">Value</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n)<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1_1crc32c_1ac42fd0618afe635356d722fd29f5ff10" kindref="member">Extend</ref>(0,<sp/>data,<sp/>n);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>kMaskDelta<sp/>=<sp/>0xa282ead8ul;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Return<sp/>a<sp/>masked<sp/>representation<sp/>of<sp/>crc.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Motivation:<sp/>it<sp/>is<sp/>problematic<sp/>to<sp/>compute<sp/>the<sp/>CRC<sp/>of<sp/>a<sp/>string<sp/>that</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="comment">//<sp/>contains<sp/>embedded<sp/>CRCs.<sp/><sp/>Therefore<sp/>we<sp/>recommend<sp/>that<sp/>CRCs<sp/>stored</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="comment">//<sp/>somewhere<sp/>(e.g.,<sp/>in<sp/>files)<sp/>should<sp/>be<sp/>masked<sp/>before<sp/>being<sp/>stored.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="namespaceleveldb_1_1crc32c_1a3790e1e939714a29609e46383aafd6cf" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/><ref refid="namespaceleveldb_1_1crc32c_1a3790e1e939714a29609e46383aafd6cf" kindref="member">Mask</ref>(<ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>crc)<sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Rotate<sp/>right<sp/>by<sp/>15<sp/>bits<sp/>and<sp/>add<sp/>a<sp/>constant.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((crc<sp/>&gt;&gt;<sp/>15)<sp/>|<sp/>(crc<sp/>&lt;&lt;<sp/>17))<sp/>+<sp/>kMaskDelta;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>crc<sp/>whose<sp/>masked<sp/>representation<sp/>is<sp/>masked_crc.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="namespaceleveldb_1_1crc32c_1aef7889069ea26dd145509fff4c4e6b66" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/><ref refid="namespaceleveldb_1_1crc32c_1aef7889069ea26dd145509fff4c4e6b66" kindref="member">Unmask</ref>(<ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>masked_crc)<sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>rot<sp/>=<sp/>masked_crc<sp/>-<sp/>kMaskDelta;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((rot<sp/>&gt;&gt;<sp/>17)<sp/>|<sp/>(rot<sp/>&lt;&lt;<sp/>15));</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>crc32c</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>leveldb</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/>//<sp/>STORAGE_LEVELDB_UTIL_CRC32C_H_</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/leveldb/util/crc32c.h"/>
+  </compounddef>
+</doxygen>

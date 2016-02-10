@@ -1,0 +1,246 @@
+.TH "leveldb::DBTest" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+leveldb::DBTest \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDBTest\fP ()"
+.br
+.ti -1c
+.RI "\fB~DBTest\fP ()"
+.br
+.ti -1c
+.RI "bool \fBChangeOptions\fP ()"
+.br
+.ti -1c
+.RI "\fBOptions\fP \fBCurrentOptions\fP ()"
+.br
+.ti -1c
+.RI "\fBDBImpl\fP * \fBdbfull\fP ()"
+.br
+.ti -1c
+.RI "void \fBReopen\fP (\fBOptions\fP *options=NULL)"
+.br
+.ti -1c
+.RI "void \fBClose\fP ()"
+.br
+.ti -1c
+.RI "void \fBDestroyAndReopen\fP (\fBOptions\fP *options=NULL)"
+.br
+.ti -1c
+.RI "\fBStatus\fP \fBTryReopen\fP (\fBOptions\fP *options)"
+.br
+.ti -1c
+.RI "\fBStatus\fP \fBPut\fP (const std::string &k, const std::string &v)"
+.br
+.ti -1c
+.RI "\fBStatus\fP \fBDelete\fP (const std::string &k)"
+.br
+.ti -1c
+.RI "std::string \fBGet\fP (const std::string &k, const \fBSnapshot\fP *snapshot=NULL)"
+.br
+.ti -1c
+.RI "std::string \fBContents\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBAllEntriesFor\fP (const \fBSlice\fP &\fBuser_key\fP)"
+.br
+.ti -1c
+.RI "int \fBNumTableFilesAtLevel\fP (int level)"
+.br
+.ti -1c
+.RI "int \fBTotalTableFiles\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBFilesPerLevel\fP ()"
+.br
+.ti -1c
+.RI "int \fBCountFiles\fP ()"
+.br
+.ti -1c
+.RI "\fBuint64_t\fP \fBSize\fP (const \fBSlice\fP &\fBstart\fP, const \fBSlice\fP &limit)"
+.br
+.ti -1c
+.RI "void \fBCompact\fP (const \fBSlice\fP &\fBstart\fP, const \fBSlice\fP &limit)"
+.br
+.ti -1c
+.RI "void \fBMakeTables\fP (int n, const std::string &small, const std::string &large)"
+.br
+.ti -1c
+.RI "void \fBFillLevels\fP (const std::string &smallest, const std::string &largest)"
+.br
+.ti -1c
+.RI "void \fBDumpFileCounts\fP (const char *label)"
+.br
+.ti -1c
+.RI "std::string \fBDumpSSTableList\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBIterStatus\fP (\fBIterator\fP *iter)"
+.br
+.ti -1c
+.RI "bool \fBDeleteAnSSTFile\fP ()"
+.br
+.ti -1c
+.RI "int \fBRenameLDBToSST\fP ()"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBdbname_\fP"
+.br
+.ti -1c
+.RI "\fBSpecialEnv\fP * \fBenv_\fP"
+.br
+.ti -1c
+.RI "\fBDB\fP * \fBdb_\fP"
+.br
+.ti -1c
+.RI "\fBOptions\fP \fBlast_options_\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 189 of file db_test\&.cc\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "leveldb::DBTest::DBTest ()\fC [inline]\fP"
+
+.PP
+Definition at line 209 of file db_test\&.cc\&.
+.SS "leveldb::DBTest::~DBTest ()\fC [inline]\fP"
+
+.PP
+Definition at line 218 of file db_test\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "std::string leveldb::DBTest::AllEntriesFor (const \fBSlice\fP & user_key)\fC [inline]\fP"
+
+.PP
+Definition at line 336 of file db_test\&.cc\&.
+.SS "bool leveldb::DBTest::ChangeOptions ()\fC [inline]\fP"
+
+.PP
+Definition at line 227 of file db_test\&.cc\&.
+.SS "void leveldb::DBTest::Close ()\fC [inline]\fP"
+
+.PP
+Definition at line 261 of file db_test\&.cc\&.
+.SS "void leveldb::DBTest::Compact (const \fBSlice\fP & start, const \fBSlice\fP & limit)\fC [inline]\fP"
+
+.PP
+Definition at line 424 of file db_test\&.cc\&.
+.SS "std::string leveldb::DBTest::Contents ()\fC [inline]\fP"
+
+.PP
+Definition at line 311 of file db_test\&.cc\&.
+.SS "int leveldb::DBTest::CountFiles ()\fC [inline]\fP"
+
+.PP
+Definition at line 411 of file db_test\&.cc\&.
+.SS "\fBOptions\fP leveldb::DBTest::CurrentOptions ()\fC [inline]\fP"
+
+.PP
+Definition at line 238 of file db_test\&.cc\&.
+.SS "\fBDBImpl\fP* leveldb::DBTest::dbfull ()\fC [inline]\fP"
+
+.PP
+Definition at line 253 of file db_test\&.cc\&.
+.SS "\fBStatus\fP leveldb::DBTest::Delete (const std::string & k)\fC [inline]\fP"
+
+.PP
+Definition at line 292 of file db_test\&.cc\&.
+.SS "bool leveldb::DBTest::DeleteAnSSTFile ()\fC [inline]\fP"
+
+.PP
+Definition at line 473 of file db_test\&.cc\&.
+.SS "void leveldb::DBTest::DestroyAndReopen (\fBOptions\fP * options = \fCNULL\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 266 of file db_test\&.cc\&.
+.SS "void leveldb::DBTest::DumpFileCounts (const char * label)\fC [inline]\fP"
+
+.PP
+Definition at line 444 of file db_test\&.cc\&.
+.SS "std::string leveldb::DBTest::DumpSSTableList ()\fC [inline]\fP"
+
+.PP
+Definition at line 457 of file db_test\&.cc\&.
+.SS "std::string leveldb::DBTest::FilesPerLevel ()\fC [inline]\fP"
+
+.PP
+Definition at line 395 of file db_test\&.cc\&.
+.SS "void leveldb::DBTest::FillLevels (const std::string & smallest, const std::string & largest)\fC [inline]\fP"
+
+.PP
+Definition at line 440 of file db_test\&.cc\&.
+.SS "std::string leveldb::DBTest::Get (const std::string & k, const \fBSnapshot\fP * snapshot = \fCNULL\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 296 of file db_test\&.cc\&.
+.SS "std::string leveldb::DBTest::IterStatus (\fBIterator\fP * iter)\fC [inline]\fP"
+
+.PP
+Definition at line 463 of file db_test\&.cc\&.
+.SS "void leveldb::DBTest::MakeTables (int n, const std::string & small, const std::string & large)\fC [inline]\fP"
+
+.PP
+Definition at line 430 of file db_test\&.cc\&.
+.SS "int leveldb::DBTest::NumTableFilesAtLevel (int level)\fC [inline]\fP"
+
+.PP
+Definition at line 378 of file db_test\&.cc\&.
+.SS "\fBStatus\fP leveldb::DBTest::Put (const std::string & k, const std::string & v)\fC [inline]\fP"
+
+.PP
+Definition at line 288 of file db_test\&.cc\&.
+.SS "int leveldb::DBTest::RenameLDBToSST ()\fC [inline]\fP"
+
+.PP
+Definition at line 488 of file db_test\&.cc\&.
+.SS "void leveldb::DBTest::Reopen (\fBOptions\fP * options = \fCNULL\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 257 of file db_test\&.cc\&.
+.SS "\fBuint64_t\fP leveldb::DBTest::Size (const \fBSlice\fP & start, const \fBSlice\fP & limit)\fC [inline]\fP"
+
+.PP
+Definition at line 417 of file db_test\&.cc\&.
+.SS "int leveldb::DBTest::TotalTableFiles ()\fC [inline]\fP"
+
+.PP
+Definition at line 386 of file db_test\&.cc\&.
+.SS "\fBStatus\fP leveldb::DBTest::TryReopen (\fBOptions\fP * options)\fC [inline]\fP"
+
+.PP
+Definition at line 273 of file db_test\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBDB\fP* leveldb::DBTest::db_"
+
+.PP
+Definition at line 205 of file db_test\&.cc\&.
+.SS "std::string leveldb::DBTest::dbname_"
+
+.PP
+Definition at line 203 of file db_test\&.cc\&.
+.SS "\fBSpecialEnv\fP* leveldb::DBTest::env_"
+
+.PP
+Definition at line 204 of file db_test\&.cc\&.
+.SS "\fBOptions\fP leveldb::DBTest::last_options_"
+
+.PP
+Definition at line 207 of file db_test\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

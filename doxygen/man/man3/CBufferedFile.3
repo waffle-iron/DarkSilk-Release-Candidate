@@ -1,0 +1,113 @@
+.TH "CBufferedFile" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CBufferedFile \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <streams\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCBufferedFile\fP (FILE *fileIn, \fBuint64_t\fP nBufSize, \fBuint64_t\fP nRewindIn, int nTypeIn, int nVersionIn)"
+.br
+.ti -1c
+.RI "\fB~CBufferedFile\fP ()"
+.br
+.ti -1c
+.RI "void \fBfclose\fP ()"
+.br
+.ti -1c
+.RI "bool \fBeof\fP () const "
+.br
+.ti -1c
+.RI "\fBCBufferedFile\fP & \fBread\fP (char *pch, size_t nSize)"
+.br
+.ti -1c
+.RI "\fBuint64_t\fP \fBGetPos\fP ()"
+.br
+.ti -1c
+.RI "bool \fBSetPos\fP (\fBuint64_t\fP nPos)"
+.br
+.ti -1c
+.RI "bool \fBSeek\fP (\fBuint64_t\fP nPos)"
+.br
+.ti -1c
+.RI "bool \fBSetLimit\fP (\fBuint64_t\fP nPos=(\fBuint64_t\fP)(-1))"
+.br
+.ti -1c
+.RI "template<typename T > \fBCBufferedFile\fP & \fBoperator>>\fP (T &obj)"
+.br
+.ti -1c
+.RI "void \fBFindByte\fP (char ch)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBFill\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 431 of file streams\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CBufferedFile::CBufferedFile (FILE * fileIn, \fBuint64_t\fP nBufSize, \fBuint64_t\fP nRewindIn, int nTypeIn, int nVersionIn)\fC [inline]\fP"
+
+.PP
+Definition at line 468 of file streams\&.h\&.
+.SS "CBufferedFile::~CBufferedFile ()\fC [inline]\fP"
+
+.PP
+Definition at line 476 of file streams\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool CBufferedFile::eof () const\fC [inline]\fP"
+
+.PP
+Definition at line 490 of file streams\&.h\&.
+.SS "void CBufferedFile::fclose ()\fC [inline]\fP"
+
+.PP
+Definition at line 481 of file streams\&.h\&.
+.SS "bool CBufferedFile::Fill ()\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Definition at line 450 of file streams\&.h\&.
+.SS "void CBufferedFile::FindByte (char ch)\fC [inline]\fP"
+
+.PP
+Definition at line 565 of file streams\&.h\&.
+.SS "\fBuint64_t\fP CBufferedFile::GetPos ()\fC [inline]\fP"
+
+.PP
+Definition at line 518 of file streams\&.h\&.
+.SS "template<typename T > \fBCBufferedFile\fP& CBufferedFile::operator>> (T & obj)\fC [inline]\fP"
+
+.PP
+Definition at line 558 of file streams\&.h\&.
+.SS "\fBCBufferedFile\fP& CBufferedFile::read (char * pch, size_t nSize)\fC [inline]\fP"
+
+.PP
+Definition at line 495 of file streams\&.h\&.
+.SS "bool CBufferedFile::Seek (\fBuint64_t\fP nPos)\fC [inline]\fP"
+
+.PP
+Definition at line 536 of file streams\&.h\&.
+.SS "bool CBufferedFile::SetLimit (\fBuint64_t\fP nPos = \fC(\fBuint64_t\fP)(-1)\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 550 of file streams\&.h\&.
+.SS "bool CBufferedFile::SetPos (\fBuint64_t\fP nPos)\fC [inline]\fP"
+
+.PP
+Definition at line 523 of file streams\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

@@ -1,0 +1,293 @@
+\hypertarget{hash_8h}{}\section{/home/dev/ds-\/160209/src/hash.h File Reference}
+\label{hash_8h}\index{/home/dev/ds-\/160209/src/hash.\+h@{/home/dev/ds-\/160209/src/hash.\+h}}
+{\ttfamily \#include \char`\"{}uint256.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}serialize.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$openssl/sha.\+h$>$}\\*
+{\ttfamily \#include $<$openssl/ripemd.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}crypto/ripemd160.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}crypto/sha256.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}crypto/argon2/blake2/blake2.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}crypto/argon2/argon2.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_c_hash256}{C\+Hash256}
+\item 
+class \hyperlink{class_c_hash160}{C\+Hash160}
+\item 
+class \hyperlink{class_c_hash_writer}{C\+Hash\+Writer}
+\item 
+struct \hyperlink{struct_h_m_a_c___s_h_a512___c_t_x}{H\+M\+A\+C\+\_\+\+S\+H\+A512\+\_\+\+C\+T\+X}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T1 $>$ }\\\hyperlink{classuint256}{uint256} \hyperlink{hash_8h_ab3f6c437460137530d86e09c2c102e99}{Hash} (const T1 pbegin, const T1 pend)
+\item 
+{\footnotesize template$<$typename T1 $>$ }\\\hyperlink{classuint256}{uint256} \hyperlink{hash_8h_a52050dfad4b22ccef10e459e5ffc284b}{Hash\+Blake2b} (const T1 pbegin, const T1 pend)
+\item 
+int \hyperlink{hash_8h_af436e83e55018b521de4f912cf4b91ef}{Argon2d\+\_\+\+Hash} (void $\ast$out, size\+\_\+t outlen, const void $\ast$in, size\+\_\+t inlen, const void $\ast$salt, size\+\_\+t saltlen, unsigned int t\+\_\+cost, unsigned int m\+\_\+cost)
+\item 
+{\footnotesize template$<$typename T1 $>$ }\\\hyperlink{classuint256}{uint256} \hyperlink{hash_8h_a56d12e978cb15670e334b04e9ee22059}{hash\+Argon2d} (const T1 pbegin, const T1 pend)
+\item 
+{\footnotesize template$<$typename T1 , typename T2 $>$ }\\\hyperlink{classuint256}{uint256} \hyperlink{hash_8h_aea8943bbdf28dfc2030d00b330f4cdd6}{Hash} (const T1 p1begin, const T1 p1end, const T2 p2begin, const T2 p2end)
+\item 
+{\footnotesize template$<$typename T1 , typename T2 , typename T3 $>$ }\\\hyperlink{classuint256}{uint256} \hyperlink{hash_8h_aba727a7a2611f58d8c64b1ab2b80f611}{Hash} (const T1 p1begin, const T1 p1end, const T2 p2begin, const T2 p2end, const T3 p3begin, const T3 p3end)
+\item 
+{\footnotesize template$<$typename T $>$ }\\\hyperlink{classuint256}{uint256} \hyperlink{hash_8h_a6de694e43f17c62025c6883965b65e63}{Serialize\+Hash} (const T \&obj, int n\+Type=\hyperlink{serialize_8h_a6b7b47dd702d9e331586d485013fd1eaaca6c7596d50ce42f28b5b97f39ba178a}{S\+E\+R\+\_\+\+G\+E\+T\+H\+A\+S\+H}, int n\+Version=P\+R\+O\+T\+O\+C\+O\+L\+\_\+\+V\+E\+R\+S\+I\+O\+N)
+\item 
+{\footnotesize template$<$typename T1 $>$ }\\\hyperlink{classuint160}{uint160} \hyperlink{hash_8h_a4490f70ddae16e9e48460a0416a48a6b}{Hash160} (const T1 pbegin, const T1 pend)
+\item 
+\hyperlink{classuint160}{uint160} \hyperlink{hash_8h_a78eccd4352c5377b614ad3f5a1b5b223}{Hash160} (const std\+::vector$<$ unsigned char $>$ \&vch)
+\item 
+int \hyperlink{hash_8h_a4b8c72838f26539d69f31e256fd6dc5c}{H\+M\+A\+C\+\_\+\+S\+H\+A512\+\_\+\+Init} (\hyperlink{struct_h_m_a_c___s_h_a512___c_t_x}{H\+M\+A\+C\+\_\+\+S\+H\+A512\+\_\+\+C\+T\+X} $\ast$pctx, const void $\ast$pkey, size\+\_\+t len)
+\item 
+int \hyperlink{hash_8h_a252e477655e0e6373143178d65e7a931}{H\+M\+A\+C\+\_\+\+S\+H\+A512\+\_\+\+Update} (\hyperlink{struct_h_m_a_c___s_h_a512___c_t_x}{H\+M\+A\+C\+\_\+\+S\+H\+A512\+\_\+\+C\+T\+X} $\ast$pctx, const void $\ast$pdata, size\+\_\+t len)
+\item 
+int \hyperlink{hash_8h_a3e0fccfdb4599881e52d5fe8497f961f}{H\+M\+A\+C\+\_\+\+S\+H\+A512\+\_\+\+Final} (unsigned char $\ast$pmd, \hyperlink{struct_h_m_a_c___s_h_a512___c_t_x}{H\+M\+A\+C\+\_\+\+S\+H\+A512\+\_\+\+C\+T\+X} $\ast$pctx)
+\item 
+void \hyperlink{hash_8h_af81a4d88d7eaba27c63313aec22b01a4}{B\+I\+P32\+Hash} (const unsigned char chain\+Code\mbox{[}32\mbox{]}, unsigned int n\+Child, unsigned char header, const unsigned char data\mbox{[}32\mbox{]}, unsigned char output\mbox{[}64\mbox{]})
+\item 
+{\footnotesize template$<$typename T1 , typename T2 , typename T3 , typename T4 $>$ }\\\hyperlink{classuint256}{uint256} \hyperlink{hash_8h_a73c05dfb31fbc5ea4875887ac6692f5a}{Hash} (const T1 p1begin, const T1 p1end, const T2 p2begin, const T2 p2end, const T3 p3begin, const T3 p3end, const T4 p4begin, const T4 p4end)
+\item 
+{\footnotesize template$<$typename T1 , typename T2 , typename T3 , typename T4 , typename T5 $>$ }\\\hyperlink{classuint256}{uint256} \hyperlink{hash_8h_a53cf60ed8d837a927de6d24e9aae31da}{Hash} (const T1 p1begin, const T1 p1end, const T2 p2begin, const T2 p2end, const T3 p3begin, const T3 p3end, const T4 p4begin, const T4 p4end, const T5 p5begin, const T5 p5end)
+\item 
+{\footnotesize template$<$typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 $>$ }\\\hyperlink{classuint256}{uint256} \hyperlink{hash_8h_ae9498055eab5d7a259cf3c13b86f1f33}{Hash} (const T1 p1begin, const T1 p1end, const T2 p2begin, const T2 p2end, const T3 p3begin, const T3 p3end, const T4 p4begin, const T4 p4end, const T5 p5begin, const T5 p5end, const T6 p6begin, const T6 p6end)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{hash_8h_af436e83e55018b521de4f912cf4b91ef}{}\index{hash.\+h@{hash.\+h}!Argon2d\+\_\+\+Hash@{Argon2d\+\_\+\+Hash}}
+\index{Argon2d\+\_\+\+Hash@{Argon2d\+\_\+\+Hash}!hash.\+h@{hash.\+h}}
+\subsubsection[{Argon2d\+\_\+\+Hash}]{\setlength{\rightskip}{0pt plus 5cm}int Argon2d\+\_\+\+Hash (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{out, }
+\item[{size\+\_\+t}]{outlen, }
+\item[{const void $\ast$}]{in, }
+\item[{size\+\_\+t}]{inlen, }
+\item[{const void $\ast$}]{salt, }
+\item[{size\+\_\+t}]{saltlen, }
+\item[{unsigned int}]{t\+\_\+cost, }
+\item[{unsigned int}]{m\+\_\+cost}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{hash_8h_af436e83e55018b521de4f912cf4b91ef}
+Argon2d Parameters Salt and password are the block header. Output length\+: 32 bytes. Input length (in the case of a block header)\+: 80 bytes. Salt length (same note as input length)\+: 80 bytes. Input\+: Block header Salt\+: Block header (S\+A\+M\+E A\+S I\+N\+P\+U\+T) Secret data\+: None Secret length\+: 0 Associated data\+: None Associated data length\+: 0 Memory cost\+: 1024 Lanes\+: 64 
+
+Definition at line 112 of file hash.\+h.
+
+\hypertarget{hash_8h_af81a4d88d7eaba27c63313aec22b01a4}{}\index{hash.\+h@{hash.\+h}!B\+I\+P32\+Hash@{B\+I\+P32\+Hash}}
+\index{B\+I\+P32\+Hash@{B\+I\+P32\+Hash}!hash.\+h@{hash.\+h}}
+\subsubsection[{B\+I\+P32\+Hash}]{\setlength{\rightskip}{0pt plus 5cm}void B\+I\+P32\+Hash (
+\begin{DoxyParamCaption}
+\item[{const unsigned char}]{chain\+Code\mbox{[}32\mbox{]}, }
+\item[{unsigned int}]{n\+Child, }
+\item[{unsigned char}]{header, }
+\item[{const unsigned char}]{data\mbox{[}32\mbox{]}, }
+\item[{unsigned char}]{output\mbox{[}64\mbox{]}}
+\end{DoxyParamCaption}
+)}\label{hash_8h_af81a4d88d7eaba27c63313aec22b01a4}
+
+
+Definition at line 44 of file hash.\+cpp.
+
+\hypertarget{hash_8h_ab3f6c437460137530d86e09c2c102e99}{}\index{hash.\+h@{hash.\+h}!Hash@{Hash}}
+\index{Hash@{Hash}!hash.\+h@{hash.\+h}}
+\subsubsection[{Hash}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T1 $>$ {\bf uint256} Hash (
+\begin{DoxyParamCaption}
+\item[{const T1}]{pbegin, }
+\item[{const T1}]{pend}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{hash_8h_ab3f6c437460137530d86e09c2c102e99}
+
+
+Definition at line 77 of file hash.\+h.
+
+\hypertarget{hash_8h_aea8943bbdf28dfc2030d00b330f4cdd6}{}\index{hash.\+h@{hash.\+h}!Hash@{Hash}}
+\index{Hash@{Hash}!hash.\+h@{hash.\+h}}
+\subsubsection[{Hash}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T1 , typename T2 $>$ {\bf uint256} Hash (
+\begin{DoxyParamCaption}
+\item[{const T1}]{p1begin, }
+\item[{const T1}]{p1end, }
+\item[{const T2}]{p2begin, }
+\item[{const T2}]{p2end}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{hash_8h_aea8943bbdf28dfc2030d00b330f4cdd6}
+
+
+Definition at line 204 of file hash.\+h.
+
+\hypertarget{hash_8h_aba727a7a2611f58d8c64b1ab2b80f611}{}\index{hash.\+h@{hash.\+h}!Hash@{Hash}}
+\index{Hash@{Hash}!hash.\+h@{hash.\+h}}
+\subsubsection[{Hash}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T1 , typename T2 , typename T3 $>$ {\bf uint256} Hash (
+\begin{DoxyParamCaption}
+\item[{const T1}]{p1begin, }
+\item[{const T1}]{p1end, }
+\item[{const T2}]{p2begin, }
+\item[{const T2}]{p2end, }
+\item[{const T3}]{p3begin, }
+\item[{const T3}]{p3end}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{hash_8h_aba727a7a2611f58d8c64b1ab2b80f611}
+
+
+Definition at line 220 of file hash.\+h.
+
+\hypertarget{hash_8h_a73c05dfb31fbc5ea4875887ac6692f5a}{}\index{hash.\+h@{hash.\+h}!Hash@{Hash}}
+\index{Hash@{Hash}!hash.\+h@{hash.\+h}}
+\subsubsection[{Hash}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T1 , typename T2 , typename T3 , typename T4 $>$ {\bf uint256} Hash (
+\begin{DoxyParamCaption}
+\item[{const T1}]{p1begin, }
+\item[{const T1}]{p1end, }
+\item[{const T2}]{p2begin, }
+\item[{const T2}]{p2end, }
+\item[{const T3}]{p3begin, }
+\item[{const T3}]{p3end, }
+\item[{const T4}]{p4begin, }
+\item[{const T4}]{p4end}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{hash_8h_a73c05dfb31fbc5ea4875887ac6692f5a}
+Compute the 256-\/bit hash of the concatenation of three objects. 
+
+Definition at line 275 of file hash.\+h.
+
+\hypertarget{hash_8h_a53cf60ed8d837a927de6d24e9aae31da}{}\index{hash.\+h@{hash.\+h}!Hash@{Hash}}
+\index{Hash@{Hash}!hash.\+h@{hash.\+h}}
+\subsubsection[{Hash}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T1 , typename T2 , typename T3 , typename T4 , typename T5 $>$ {\bf uint256} Hash (
+\begin{DoxyParamCaption}
+\item[{const T1}]{p1begin, }
+\item[{const T1}]{p1end, }
+\item[{const T2}]{p2begin, }
+\item[{const T2}]{p2end, }
+\item[{const T3}]{p3begin, }
+\item[{const T3}]{p3end, }
+\item[{const T4}]{p4begin, }
+\item[{const T4}]{p4end, }
+\item[{const T5}]{p5begin, }
+\item[{const T5}]{p5end}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{hash_8h_a53cf60ed8d837a927de6d24e9aae31da}
+Compute the 256-\/bit hash of the concatenation of three objects. 
+
+Definition at line 291 of file hash.\+h.
+
+\hypertarget{hash_8h_ae9498055eab5d7a259cf3c13b86f1f33}{}\index{hash.\+h@{hash.\+h}!Hash@{Hash}}
+\index{Hash@{Hash}!hash.\+h@{hash.\+h}}
+\subsubsection[{Hash}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T1 , typename T2 , typename T3 , typename T4 , typename T5 , typename T6 $>$ {\bf uint256} Hash (
+\begin{DoxyParamCaption}
+\item[{const T1}]{p1begin, }
+\item[{const T1}]{p1end, }
+\item[{const T2}]{p2begin, }
+\item[{const T2}]{p2end, }
+\item[{const T3}]{p3begin, }
+\item[{const T3}]{p3end, }
+\item[{const T4}]{p4begin, }
+\item[{const T4}]{p4end, }
+\item[{const T5}]{p5begin, }
+\item[{const T5}]{p5end, }
+\item[{const T6}]{p6begin, }
+\item[{const T6}]{p6end}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{hash_8h_ae9498055eab5d7a259cf3c13b86f1f33}
+Compute the 256-\/bit hash of the concatenation of three objects. 
+
+Definition at line 309 of file hash.\+h.
+
+\hypertarget{hash_8h_a4490f70ddae16e9e48460a0416a48a6b}{}\index{hash.\+h@{hash.\+h}!Hash160@{Hash160}}
+\index{Hash160@{Hash160}!hash.\+h@{hash.\+h}}
+\subsubsection[{Hash160}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T1 $>$ {\bf uint160} Hash160 (
+\begin{DoxyParamCaption}
+\item[{const T1}]{pbegin, }
+\item[{const T1}]{pend}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{hash_8h_a4490f70ddae16e9e48460a0416a48a6b}
+
+
+Definition at line 246 of file hash.\+h.
+
+\hypertarget{hash_8h_a78eccd4352c5377b614ad3f5a1b5b223}{}\index{hash.\+h@{hash.\+h}!Hash160@{Hash160}}
+\index{Hash160@{Hash160}!hash.\+h@{hash.\+h}}
+\subsubsection[{Hash160}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint160} Hash160 (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ unsigned char $>$ \&}]{vch}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{hash_8h_a78eccd4352c5377b614ad3f5a1b5b223}
+
+
+Definition at line 256 of file hash.\+h.
+
+\hypertarget{hash_8h_a56d12e978cb15670e334b04e9ee22059}{}\index{hash.\+h@{hash.\+h}!hash\+Argon2d@{hash\+Argon2d}}
+\index{hash\+Argon2d@{hash\+Argon2d}!hash.\+h@{hash.\+h}}
+\subsubsection[{hash\+Argon2d}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T1 $>$ {\bf uint256} hash\+Argon2d (
+\begin{DoxyParamCaption}
+\item[{const T1}]{pbegin, }
+\item[{const T1}]{pend}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{hash_8h_a56d12e978cb15670e334b04e9ee22059}
+
+
+Definition at line 151 of file hash.\+h.
+
+\hypertarget{hash_8h_a52050dfad4b22ccef10e459e5ffc284b}{}\index{hash.\+h@{hash.\+h}!Hash\+Blake2b@{Hash\+Blake2b}}
+\index{Hash\+Blake2b@{Hash\+Blake2b}!hash.\+h@{hash.\+h}}
+\subsubsection[{Hash\+Blake2b}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T1 $>$ {\bf uint256} Hash\+Blake2b (
+\begin{DoxyParamCaption}
+\item[{const T1}]{pbegin, }
+\item[{const T1}]{pend}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{hash_8h_a52050dfad4b22ccef10e459e5ffc284b}
+
+
+Definition at line 88 of file hash.\+h.
+
+\hypertarget{hash_8h_a3e0fccfdb4599881e52d5fe8497f961f}{}\index{hash.\+h@{hash.\+h}!H\+M\+A\+C\+\_\+\+S\+H\+A512\+\_\+\+Final@{H\+M\+A\+C\+\_\+\+S\+H\+A512\+\_\+\+Final}}
+\index{H\+M\+A\+C\+\_\+\+S\+H\+A512\+\_\+\+Final@{H\+M\+A\+C\+\_\+\+S\+H\+A512\+\_\+\+Final}!hash.\+h@{hash.\+h}}
+\subsubsection[{H\+M\+A\+C\+\_\+\+S\+H\+A512\+\_\+\+Final}]{\setlength{\rightskip}{0pt plus 5cm}int H\+M\+A\+C\+\_\+\+S\+H\+A512\+\_\+\+Final (
+\begin{DoxyParamCaption}
+\item[{unsigned char $\ast$}]{pmd, }
+\item[{{\bf H\+M\+A\+C\+\_\+\+S\+H\+A512\+\_\+\+C\+T\+X} $\ast$}]{pctx}
+\end{DoxyParamCaption}
+)}\label{hash_8h_a3e0fccfdb4599881e52d5fe8497f961f}
+
+
+Definition at line 36 of file hash.\+cpp.
+
+\hypertarget{hash_8h_a4b8c72838f26539d69f31e256fd6dc5c}{}\index{hash.\+h@{hash.\+h}!H\+M\+A\+C\+\_\+\+S\+H\+A512\+\_\+\+Init@{H\+M\+A\+C\+\_\+\+S\+H\+A512\+\_\+\+Init}}
+\index{H\+M\+A\+C\+\_\+\+S\+H\+A512\+\_\+\+Init@{H\+M\+A\+C\+\_\+\+S\+H\+A512\+\_\+\+Init}!hash.\+h@{hash.\+h}}
+\subsubsection[{H\+M\+A\+C\+\_\+\+S\+H\+A512\+\_\+\+Init}]{\setlength{\rightskip}{0pt plus 5cm}int H\+M\+A\+C\+\_\+\+S\+H\+A512\+\_\+\+Init (
+\begin{DoxyParamCaption}
+\item[{{\bf H\+M\+A\+C\+\_\+\+S\+H\+A512\+\_\+\+C\+T\+X} $\ast$}]{pctx, }
+\item[{const void $\ast$}]{pkey, }
+\item[{size\+\_\+t}]{len}
+\end{DoxyParamCaption}
+)}\label{hash_8h_a4b8c72838f26539d69f31e256fd6dc5c}
+
+
+Definition at line 3 of file hash.\+cpp.
+
+\hypertarget{hash_8h_a252e477655e0e6373143178d65e7a931}{}\index{hash.\+h@{hash.\+h}!H\+M\+A\+C\+\_\+\+S\+H\+A512\+\_\+\+Update@{H\+M\+A\+C\+\_\+\+S\+H\+A512\+\_\+\+Update}}
+\index{H\+M\+A\+C\+\_\+\+S\+H\+A512\+\_\+\+Update@{H\+M\+A\+C\+\_\+\+S\+H\+A512\+\_\+\+Update}!hash.\+h@{hash.\+h}}
+\subsubsection[{H\+M\+A\+C\+\_\+\+S\+H\+A512\+\_\+\+Update}]{\setlength{\rightskip}{0pt plus 5cm}int H\+M\+A\+C\+\_\+\+S\+H\+A512\+\_\+\+Update (
+\begin{DoxyParamCaption}
+\item[{{\bf H\+M\+A\+C\+\_\+\+S\+H\+A512\+\_\+\+C\+T\+X} $\ast$}]{pctx, }
+\item[{const void $\ast$}]{pdata, }
+\item[{size\+\_\+t}]{len}
+\end{DoxyParamCaption}
+)}\label{hash_8h_a252e477655e0e6373143178d65e7a931}
+
+
+Definition at line 31 of file hash.\+cpp.
+
+\hypertarget{hash_8h_a6de694e43f17c62025c6883965b65e63}{}\index{hash.\+h@{hash.\+h}!Serialize\+Hash@{Serialize\+Hash}}
+\index{Serialize\+Hash@{Serialize\+Hash}!hash.\+h@{hash.\+h}}
+\subsubsection[{Serialize\+Hash}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ {\bf uint256} Serialize\+Hash (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{obj, }
+\item[{int}]{n\+Type = {\ttfamily {\bf S\+E\+R\+\_\+\+G\+E\+T\+H\+A\+S\+H}}, }
+\item[{int}]{n\+Version = {\ttfamily PROTOCOL\+\_\+VERSION}}
+\end{DoxyParamCaption}
+)}\label{hash_8h_a6de694e43f17c62025c6883965b65e63}
+
+
+Definition at line 238 of file hash.\+h.
+

@@ -1,0 +1,403 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_merkle_tx" kind="class" language="C++" prot="public">
+    <compoundname>CMerkleTx</compoundname>
+    <basecompoundref refid="class_c_transaction" prot="public" virt="non-virtual">CTransaction</basecompoundref>
+    <derivedcompoundref refid="class_c_wallet_tx" prot="public" virt="non-virtual">CWalletTx</derivedcompoundref>
+    <includes refid="main_8h" local="no">main.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_c_merkle_tx_1a788ee54c14b6d9706eb3737404663238" prot="public" static="no" mutable="no">
+        <type><ref refid="classuint256" kindref="compound">uint256</ref></type>
+        <definition>uint256 CMerkleTx::hashBlock</definition>
+        <argsstring></argsstring>
+        <name>hashBlock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="385" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="385" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_merkle_tx_1a9ae6a408be914f486ebbb4161879ee69" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classuint256" kindref="compound">uint256</ref> &gt;</type>
+        <definition>std::vector&lt;uint256&gt; CMerkleTx::vMerkleBranch</definition>
+        <argsstring></argsstring>
+        <name>vMerkleBranch</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="386" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="386" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_merkle_tx_1a829655e70702fdf97b6e534dd3227b0b" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CMerkleTx::nIndex</definition>
+        <argsstring></argsstring>
+        <name>nIndex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="387" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="387" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_merkle_tx_1a3626572f7dbb86eb1c36a6570d740c7f" prot="public" static="no" mutable="yes">
+        <type>bool</type>
+        <definition>bool CMerkleTx::fMerkleVerified</definition>
+        <argsstring></argsstring>
+        <name>fMerkleVerified</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="390" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="390" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_merkle_tx_1a86d607a3e47700ed5ebcdd4d4fcda4d7" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>CMerkleTx::ADD_SERIALIZE_METHODS</definition>
+        <argsstring></argsstring>
+        <name>ADD_SERIALIZE_METHODS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="410" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="410" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_c_merkle_tx_1a650229fec7fe661aa7a137902bc745a3" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int CMerkleTx::GetDepthInMainChainINTERNAL</definition>
+        <argsstring>(CBlockIndex *&amp;pindexRet) const </argsstring>
+        <name>GetDepthInMainChainINTERNAL</name>
+        <param>
+          <type><ref refid="class_c_block_index" kindref="compound">CBlockIndex</ref> *&amp;</type>
+          <declname>pindexRet</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="383" column="1" bodyfile="/home/dev/ds-160209/src/main.cpp" bodystart="1377" bodyend="1401"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_merkle_tx_1a381bb26e9a8924b8a1311d45dfd18809" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CMerkleTx::CMerkleTx</definition>
+        <argsstring>()</argsstring>
+        <name>CMerkleTx</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="393" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="393" bodyend="396"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_merkle_tx_1aaf4aeddb032c6bb34559fa443bfc3476" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CMerkleTx::CMerkleTx</definition>
+        <argsstring>(const CTransaction &amp;txIn)</argsstring>
+        <name>CMerkleTx</name>
+        <param>
+          <type>const <ref refid="class_c_transaction" kindref="compound">CTransaction</ref> &amp;</type>
+          <declname>txIn</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="398" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="398" bodyend="401"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_merkle_tx_1ac57628e321f98642976d06b6cc231162" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CMerkleTx::Init</definition>
+        <argsstring>()</argsstring>
+        <name>Init</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="403" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="403" bodyend="408"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_merkle_tx_1afefd3a26c9505f1fa81587c19c22f09c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Stream</type>
+          </param>
+          <param>
+            <type>typename Operation</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void CMerkleTx::SerializationOp</definition>
+        <argsstring>(Stream &amp;s, Operation ser_action, int nType, int nVersion)</argsstring>
+        <name>SerializationOp</name>
+        <param>
+          <type>Stream &amp;</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>Operation</type>
+          <declname>ser_action</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nType</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nVersion</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="413" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="413" bodyend="421"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_merkle_tx_1a7286c83e09ddaebc6bba39ee38a5a012" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int CMerkleTx::SetMerkleBranch</definition>
+        <argsstring>(const CBlock *pblock=NULL)</argsstring>
+        <name>SetMerkleBranch</name>
+        <param>
+          <type>const <ref refid="class_c_block" kindref="compound">CBlock</ref> *</type>
+          <declname>pblock</declname>
+          <defval>NULL</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="423" column="1" bodyfile="/home/dev/ds-160209/src/main.cpp" bodystart="786" bodyend="829"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_merkle_tx_1a4208943ef656d3787c02ef9973d63f4a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int CMerkleTx::GetDepthInMainChain</definition>
+        <argsstring>(CBlockIndex *&amp;pindexRet, bool enableIX=true) const </argsstring>
+        <name>GetDepthInMainChain</name>
+        <param>
+          <type><ref refid="class_c_block_index" kindref="compound">CBlockIndex</ref> *&amp;</type>
+          <declname>pindexRet</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>enableIX</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="429" column="1" bodyfile="/home/dev/ds-160209/src/main.cpp" bodystart="1430" bodyend="1447"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_merkle_tx_1aa26936095eff1cc6d01b7e2d44cbf8f6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int CMerkleTx::GetDepthInMainChain</definition>
+        <argsstring>(bool enableIX=true) const </argsstring>
+        <name>GetDepthInMainChain</name>
+        <param>
+          <type>bool</type>
+          <declname>enableIX</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="430" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="430" bodyend="430"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_merkle_tx_1adf24748ee829f589ac8d6e99ec6121de" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CMerkleTx::IsInMainChain</definition>
+        <argsstring>() const </argsstring>
+        <name>IsInMainChain</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="431" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="431" bodyend="431"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_merkle_tx_1a8bd25cf06de6a443d0925ec8ba66c949" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int CMerkleTx::GetBlocksToMaturity</definition>
+        <argsstring>() const </argsstring>
+        <name>GetBlocksToMaturity</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="432" column="1" bodyfile="/home/dev/ds-160209/src/main.cpp" bodystart="1449" bodyend="1454"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_merkle_tx_1a61126e811a53b941b3efdf5a4e83db90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CMerkleTx::AcceptToMemoryPool</definition>
+        <argsstring>(bool fLimitFree=true, bool fRejectInsaneFee=true, bool ignoreFees=false)</argsstring>
+        <name>AcceptToMemoryPool</name>
+        <param>
+          <type>bool</type>
+          <declname>fLimitFree</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fRejectInsaneFee</declname>
+          <defval>true</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>ignoreFees</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="433" column="1" bodyfile="/home/dev/ds-160209/src/main.cpp" bodystart="1456" bodyend="1460"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_merkle_tx_1a6782c78aec9fd63e637dbf0668c8506e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int CMerkleTx::GetTransactionLockSignatures</definition>
+        <argsstring>() const </argsstring>
+        <name>GetTransactionLockSignatures</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="434" column="1" bodyfile="/home/dev/ds-160209/src/main.cpp" bodystart="1403" bodyend="1415"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_merkle_tx_1a31b0765b267cab5f76b308d1fe5d9375" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CMerkleTx::IsTransactionLockTimedOut</definition>
+        <argsstring>() const </argsstring>
+        <name>IsTransactionLockTimedOut</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/main.h" line="435" column="1" bodyfile="/home/dev/ds-160209/src/main.cpp" bodystart="1417" bodyend="1428"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A transaction with a merkle branch linking it to the block chain. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="580">
+        <label>CMerkleTx</label>
+        <link refid="class_c_merkle_tx"/>
+        <childnode refid="581" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="581">
+        <label>CTransaction</label>
+        <link refid="class_c_transaction"/>
+      </node>
+      <node id="582">
+        <label>CWalletTx</label>
+        <link refid="class_c_wallet_tx"/>
+        <childnode refid="580" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="586">
+        <label>base_uint&lt; 256 &gt;</label>
+        <link refid="classbase__uint"/>
+      </node>
+      <node id="585">
+        <label>uint256</label>
+        <link refid="classuint256"/>
+        <childnode refid="586" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="583">
+        <label>CMerkleTx</label>
+        <link refid="class_c_merkle_tx"/>
+        <childnode refid="584" relation="public-inheritance">
+        </childnode>
+        <childnode refid="585" relation="usage">
+          <edgelabel>hashBlock</edgelabel>
+        </childnode>
+      </node>
+      <node id="584">
+        <label>CTransaction</label>
+        <link refid="class_c_transaction"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/dev/ds-160209/src/main.h" line="381" column="1" bodyfile="/home/dev/ds-160209/src/main.h" bodystart="380" bodyend="437"/>
+    <listofallmembers>
+      <member refid="class_c_merkle_tx_1a61126e811a53b941b3efdf5a4e83db90" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>AcceptToMemoryPool</name></member>
+      <member refid="class_c_merkle_tx_1a86d607a3e47700ed5ebcdd4d4fcda4d7" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>ADD_SERIALIZE_METHODS</name></member>
+      <member refid="class_c_transaction_1afa2875bea30d31900a30baf7fd56b96b" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>CheckTransaction</name></member>
+      <member refid="class_c_merkle_tx_1a381bb26e9a8924b8a1311d45dfd18809" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>CMerkleTx</name></member>
+      <member refid="class_c_merkle_tx_1aaf4aeddb032c6bb34559fa443bfc3476" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>CMerkleTx</name></member>
+      <member refid="class_c_transaction_1ad2452fe2ae424f43e5fd767c28517b3b" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>ComputePriority</name></member>
+      <member refid="class_c_transaction_1a41717180530fca69eb0163c1024ae286" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>CTransaction</name></member>
+      <member refid="class_c_transaction_1a6f91dd80b9f92ce99185d55b59dbce13" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>CTransaction</name></member>
+      <member refid="class_c_transaction_1a6607e95af3e2851ee3b7fe335a05eb4c" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>CTransaction</name></member>
+      <member refid="class_c_transaction_1aa728c112d5cdd174ee156a67107f1cf4" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>CURRENT_VERSION</name></member>
+      <member refid="class_c_transaction_1a52eaee52d8827b7265f9dcd308b2a812" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>DoS</name></member>
+      <member refid="class_c_merkle_tx_1a3626572f7dbb86eb1c36a6570d740c7f" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>fMerkleVerified</name></member>
+      <member refid="class_c_merkle_tx_1a8bd25cf06de6a443d0925ec8ba66c949" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>GetBlocksToMaturity</name></member>
+      <member refid="class_c_merkle_tx_1a4208943ef656d3787c02ef9973d63f4a" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>GetDepthInMainChain</name></member>
+      <member refid="class_c_merkle_tx_1aa26936095eff1cc6d01b7e2d44cbf8f6" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>GetDepthInMainChain</name></member>
+      <member refid="class_c_merkle_tx_1a650229fec7fe661aa7a137902bc745a3" prot="private" virt="non-virtual"><scope>CMerkleTx</scope><name>GetDepthInMainChainINTERNAL</name></member>
+      <member refid="class_c_transaction_1a3f8666d2a275c40da14bd5eaf47dc004" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>GetHash</name></member>
+      <member refid="class_c_merkle_tx_1a6782c78aec9fd63e637dbf0668c8506e" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>GetTransactionLockSignatures</name></member>
+      <member refid="class_c_transaction_1aef472df5cb11c53281d975ee9e7cf133" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>GetValueOut</name></member>
+      <member refid="class_c_merkle_tx_1a788ee54c14b6d9706eb3737404663238" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>hashBlock</name></member>
+      <member refid="class_c_merkle_tx_1ac57628e321f98642976d06b6cc231162" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>Init</name></member>
+      <member refid="class_c_transaction_1a274384ecbb50d71355cd287b7a6bca51" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>IsCoinBase</name></member>
+      <member refid="class_c_transaction_1a8d924e18ddcf4c31bc7483b3a157113d" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>IsCoinStake</name></member>
+      <member refid="class_c_merkle_tx_1adf24748ee829f589ac8d6e99ec6121de" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>IsInMainChain</name></member>
+      <member refid="class_c_transaction_1af2f0fe5a8853ea2928f77b97581031a6" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>IsNull</name></member>
+      <member refid="class_c_merkle_tx_1a31b0765b267cab5f76b308d1fe5d9375" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>IsTransactionLockTimedOut</name></member>
+      <member refid="class_c_transaction_1a2a1fd6929add85d3df299249da78d015" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>nDoS</name></member>
+      <member refid="class_c_merkle_tx_1a829655e70702fdf97b6e534dd3227b0b" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>nIndex</name></member>
+      <member refid="class_c_transaction_1ab01e4e451d2f3f84b01380979c8fdacc" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>nLockTime</name></member>
+      <member refid="class_c_transaction_1a8ccb4b6020669bc562095e3417715e41" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>nTime</name></member>
+      <member refid="class_c_transaction_1a6c29bdd822859c7b21b7b6c22dca6825" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>nVersion</name></member>
+      <member refid="class_c_merkle_tx_1afefd3a26c9505f1fa81587c19c22f09c" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>SerializationOp</name></member>
+      <member refid="class_c_merkle_tx_1a7286c83e09ddaebc6bba39ee38a5a012" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>SetMerkleBranch</name></member>
+      <member refid="class_c_transaction_1a1aa7a38971e9c045b12a3efab67647e9" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>SetNull</name></member>
+      <member refid="class_c_transaction_1ae5fde44ffb46045dd48bd9cfff9492b6" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>ToString</name></member>
+      <member refid="class_c_transaction_1a53fa787e4ea57374b4fa2a28e9a957b2" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>vin</name></member>
+      <member refid="class_c_merkle_tx_1a9ae6a408be914f486ebbb4161879ee69" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>vMerkleBranch</name></member>
+      <member refid="class_c_transaction_1ae42c0032a464c3054c508017c7d040ef" prot="public" virt="non-virtual"><scope>CMerkleTx</scope><name>vout</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

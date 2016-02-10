@@ -1,0 +1,119 @@
+.TH "/home/dev/ds-160209/src/stormnode-budget.cpp" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/stormnode-budget.cpp \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'main\&.h'\fP
+.br
+\fC#include 'init\&.h'\fP
+.br
+\fC#include 'stormnode-budget\&.h'\fP
+.br
+\fC#include 'stormnode\&.h'\fP
+.br
+\fC#include 'sandstorm\&.h'\fP
+.br
+\fC#include 'stormnodeman\&.h'\fP
+.br
+\fC#include 'stormnode-sync\&.h'\fP
+.br
+\fC#include 'util\&.h'\fP
+.br
+\fC#include 'addrman\&.h'\fP
+.br
+\fC#include <boost/filesystem\&.hpp>\fP
+.br
+\fC#include <boost/lexical_cast\&.hpp>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBsortProposalsByVotes\fP"
+.br
+.ti -1c
+.RI "struct \fBsortFinalizedBudgetsByVotes\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBGetBudgetPaymentCycleBlocks\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsBudgetCollateralValid\fP (\fBuint256\fP nTxCollateralHash, \fBuint256\fP nExpectedHash, std::string &strError, \fBint64_t\fP &nTime, int &nConf)"
+.br
+.ti -1c
+.RI "void \fBDumpBudgets\fP ()"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBCBudgetManager\fP \fBbudget\fP"
+.br
+.ti -1c
+.RI "\fBCCriticalSection\fP \fBcs_budget\fP"
+.br
+.ti -1c
+.RI "std::map< \fBuint256\fP, \fBint64_t\fP > \fBaskedForSourceProposalOrBudget\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBCBudgetProposalBroadcast\fP > \fBvecImmatureBudgetProposals\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBCFinalizedBudgetBroadcast\fP > \fBvecImmatureFinalizedBudgets\fP"
+.br
+.ti -1c
+.RI "int \fBnSubmittedFinalBudget\fP"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void DumpBudgets ()"
+
+.PP
+Definition at line 335 of file stormnode-budget\&.cpp\&.
+.SS "int GetBudgetPaymentCycleBlocks ()"
+
+.PP
+Definition at line 27 of file stormnode-budget\&.cpp\&.
+.SS "bool IsBudgetCollateralValid (\fBuint256\fP nTxCollateralHash, \fBuint256\fP nExpectedHash, std::string & strError, \fBint64_t\fP & nTime, int & nConf)"
+
+.PP
+Definition at line 35 of file stormnode-budget\&.cpp\&.
+.SH "Variable Documentation"
+.PP 
+.SS "std::map<\fBuint256\fP, \fBint64_t\fP> askedForSourceProposalOrBudget"
+
+.PP
+Definition at line 21 of file stormnode-budget\&.cpp\&.
+.SS "\fBCBudgetManager\fP budget"
+
+.PP
+Definition at line 18 of file stormnode-budget\&.cpp\&.
+.SS "\fBCCriticalSection\fP cs_budget"
+
+.PP
+Definition at line 19 of file stormnode-budget\&.cpp\&.
+.SS "int nSubmittedFinalBudget"
+
+.PP
+Definition at line 25 of file stormnode-budget\&.cpp\&.
+.SS "std::vector<\fBCBudgetProposalBroadcast\fP> vecImmatureBudgetProposals"
+
+.PP
+Definition at line 22 of file stormnode-budget\&.cpp\&.
+.SS "std::vector<\fBCFinalizedBudgetBroadcast\fP> vecImmatureFinalizedBudgets"
+
+.PP
+Definition at line 23 of file stormnode-budget\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

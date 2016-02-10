@@ -1,0 +1,177 @@
+\hypertarget{xxhash_8h}{}\section{/home/dev/ds-\/160209/src/xxhash/xxhash.h File Reference}
+\label{xxhash_8h}\index{/home/dev/ds-\/160209/src/xxhash/xxhash.\+h@{/home/dev/ds-\/160209/src/xxhash/xxhash.\+h}}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_x_x_h32__state_space__t}{X\+X\+H32\+\_\+state\+Space\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{xxhash_8h_a7193b472201c133d4edb218227b27f2b}{X\+X\+H32\+\_\+\+S\+I\+Z\+E\+O\+F\+S\+T\+A\+T\+E}~48
+\item 
+\#define \hyperlink{xxhash_8h_afc34198799ed4a6c2b16d8a51833bb79}{X\+X\+H32\+\_\+feed}~\hyperlink{xxhash_8h_a4428914ff78e245781ef2f523ff86638}{X\+X\+H32\+\_\+update}
+\item 
+\#define \hyperlink{xxhash_8h_a89181d9554faa4e2765f26b80eb91f87}{X\+X\+H32\+\_\+result}~\hyperlink{xxhash_8h_a98fc461fc698a511b24c1c6afe835e0c}{X\+X\+H32\+\_\+digest}
+\item 
+\#define \hyperlink{xxhash_8h_a951c9c6764bbf44f588b606c46ee2988}{X\+X\+H32\+\_\+get\+Intermediate\+Result}~\hyperlink{xxhash_8h_afba1e5525dd99f3d8693959240f22c11}{X\+X\+H32\+\_\+intermediate\+Digest}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{xxhash_8h_a5020905455674b8c83c1dbc73f0d3534}{X\+X\+H\+\_\+errorcode} \{ \hyperlink{xxhash_8h_a5020905455674b8c83c1dbc73f0d3534abd20b092d624344e301b0cadd29d5bd6}{X\+X\+H\+\_\+\+O\+K} =0, 
+\hyperlink{xxhash_8h_a5020905455674b8c83c1dbc73f0d3534a462a18276729783125c7116cf102667f}{X\+X\+H\+\_\+\+E\+R\+R\+O\+R}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \hyperlink{xxhash_8h_a527858ec33a0c2effc026ddd8667eaef}{X\+X\+H32} (const void $\ast$input, int len, unsigned int seed)
+\item 
+void $\ast$ \hyperlink{xxhash_8h_a366fceb2db2000c44211dc704493fbe0}{X\+X\+H32\+\_\+init} (unsigned int seed)
+\item 
+\hyperlink{xxhash_8h_a5020905455674b8c83c1dbc73f0d3534}{X\+X\+H\+\_\+errorcode} \hyperlink{xxhash_8h_a4428914ff78e245781ef2f523ff86638}{X\+X\+H32\+\_\+update} (void $\ast$\hyperlink{version__set_8cc_a6aad002d0db5e5e85dc31927a5a6f503}{state}, const void $\ast$input, int len)
+\item 
+unsigned int \hyperlink{xxhash_8h_a98fc461fc698a511b24c1c6afe835e0c}{X\+X\+H32\+\_\+digest} (void $\ast$\hyperlink{version__set_8cc_a6aad002d0db5e5e85dc31927a5a6f503}{state})
+\item 
+int \hyperlink{xxhash_8h_ac87e4599905f4e2d6d28e1499b67dfe2}{X\+X\+H32\+\_\+sizeof\+State} (void)
+\item 
+\hyperlink{xxhash_8h_a5020905455674b8c83c1dbc73f0d3534}{X\+X\+H\+\_\+errorcode} \hyperlink{xxhash_8h_a9760c389eaa825239fdcb08ab09a4b03}{X\+X\+H32\+\_\+reset\+State} (void $\ast$\hyperlink{version__set_8cc_a6aad002d0db5e5e85dc31927a5a6f503}{state}, unsigned int seed)
+\item 
+unsigned int \hyperlink{xxhash_8h_afba1e5525dd99f3d8693959240f22c11}{X\+X\+H32\+\_\+intermediate\+Digest} (void $\ast$\hyperlink{version__set_8cc_a6aad002d0db5e5e85dc31927a5a6f503}{state})
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{xxhash_8h_afc34198799ed4a6c2b16d8a51833bb79}{}\index{xxhash.\+h@{xxhash.\+h}!X\+X\+H32\+\_\+feed@{X\+X\+H32\+\_\+feed}}
+\index{X\+X\+H32\+\_\+feed@{X\+X\+H32\+\_\+feed}!xxhash.\+h@{xxhash.\+h}}
+\subsubsection[{X\+X\+H32\+\_\+feed}]{\setlength{\rightskip}{0pt plus 5cm}\#define X\+X\+H32\+\_\+feed~{\bf X\+X\+H32\+\_\+update}}\label{xxhash_8h_afc34198799ed4a6c2b16d8a51833bb79}
+
+
+Definition at line 156 of file xxhash.\+h.
+
+\hypertarget{xxhash_8h_a951c9c6764bbf44f588b606c46ee2988}{}\index{xxhash.\+h@{xxhash.\+h}!X\+X\+H32\+\_\+get\+Intermediate\+Result@{X\+X\+H32\+\_\+get\+Intermediate\+Result}}
+\index{X\+X\+H32\+\_\+get\+Intermediate\+Result@{X\+X\+H32\+\_\+get\+Intermediate\+Result}!xxhash.\+h@{xxhash.\+h}}
+\subsubsection[{X\+X\+H32\+\_\+get\+Intermediate\+Result}]{\setlength{\rightskip}{0pt plus 5cm}\#define X\+X\+H32\+\_\+get\+Intermediate\+Result~{\bf X\+X\+H32\+\_\+intermediate\+Digest}}\label{xxhash_8h_a951c9c6764bbf44f588b606c46ee2988}
+
+
+Definition at line 158 of file xxhash.\+h.
+
+\hypertarget{xxhash_8h_a89181d9554faa4e2765f26b80eb91f87}{}\index{xxhash.\+h@{xxhash.\+h}!X\+X\+H32\+\_\+result@{X\+X\+H32\+\_\+result}}
+\index{X\+X\+H32\+\_\+result@{X\+X\+H32\+\_\+result}!xxhash.\+h@{xxhash.\+h}}
+\subsubsection[{X\+X\+H32\+\_\+result}]{\setlength{\rightskip}{0pt plus 5cm}\#define X\+X\+H32\+\_\+result~{\bf X\+X\+H32\+\_\+digest}}\label{xxhash_8h_a89181d9554faa4e2765f26b80eb91f87}
+
+
+Definition at line 157 of file xxhash.\+h.
+
+\hypertarget{xxhash_8h_a7193b472201c133d4edb218227b27f2b}{}\index{xxhash.\+h@{xxhash.\+h}!X\+X\+H32\+\_\+\+S\+I\+Z\+E\+O\+F\+S\+T\+A\+T\+E@{X\+X\+H32\+\_\+\+S\+I\+Z\+E\+O\+F\+S\+T\+A\+T\+E}}
+\index{X\+X\+H32\+\_\+\+S\+I\+Z\+E\+O\+F\+S\+T\+A\+T\+E@{X\+X\+H32\+\_\+\+S\+I\+Z\+E\+O\+F\+S\+T\+A\+T\+E}!xxhash.\+h@{xxhash.\+h}}
+\subsubsection[{X\+X\+H32\+\_\+\+S\+I\+Z\+E\+O\+F\+S\+T\+A\+T\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define X\+X\+H32\+\_\+\+S\+I\+Z\+E\+O\+F\+S\+T\+A\+T\+E~48}\label{xxhash_8h_a7193b472201c133d4edb218227b27f2b}
+
+
+Definition at line 127 of file xxhash.\+h.
+
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{xxhash_8h_a5020905455674b8c83c1dbc73f0d3534}{}\index{xxhash.\+h@{xxhash.\+h}!X\+X\+H\+\_\+errorcode@{X\+X\+H\+\_\+errorcode}}
+\index{X\+X\+H\+\_\+errorcode@{X\+X\+H\+\_\+errorcode}!xxhash.\+h@{xxhash.\+h}}
+\subsubsection[{X\+X\+H\+\_\+errorcode}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf X\+X\+H\+\_\+errorcode}}\label{xxhash_8h_a5020905455674b8c83c1dbc73f0d3534}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{X\+X\+H\+\_\+\+O\+K@{X\+X\+H\+\_\+\+O\+K}!xxhash.\+h@{xxhash.\+h}}\index{xxhash.\+h@{xxhash.\+h}!X\+X\+H\+\_\+\+O\+K@{X\+X\+H\+\_\+\+O\+K}}\item[{\em 
+\hypertarget{xxhash_8h_a5020905455674b8c83c1dbc73f0d3534abd20b092d624344e301b0cadd29d5bd6}{}X\+X\+H\+\_\+\+O\+K\label{xxhash_8h_a5020905455674b8c83c1dbc73f0d3534abd20b092d624344e301b0cadd29d5bd6}
+}]\index{X\+X\+H\+\_\+\+E\+R\+R\+O\+R@{X\+X\+H\+\_\+\+E\+R\+R\+O\+R}!xxhash.\+h@{xxhash.\+h}}\index{xxhash.\+h@{xxhash.\+h}!X\+X\+H\+\_\+\+E\+R\+R\+O\+R@{X\+X\+H\+\_\+\+E\+R\+R\+O\+R}}\item[{\em 
+\hypertarget{xxhash_8h_a5020905455674b8c83c1dbc73f0d3534a462a18276729783125c7116cf102667f}{}X\+X\+H\+\_\+\+E\+R\+R\+O\+R\label{xxhash_8h_a5020905455674b8c83c1dbc73f0d3534a462a18276729783125c7116cf102667f}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 70 of file xxhash.\+h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{xxhash_8h_a527858ec33a0c2effc026ddd8667eaef}{}\index{xxhash.\+h@{xxhash.\+h}!X\+X\+H32@{X\+X\+H32}}
+\index{X\+X\+H32@{X\+X\+H32}!xxhash.\+h@{xxhash.\+h}}
+\subsubsection[{X\+X\+H32}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int X\+X\+H32 (
+\begin{DoxyParamCaption}
+\item[{const void $\ast$}]{input, }
+\item[{int}]{len, }
+\item[{unsigned int}]{seed}
+\end{DoxyParamCaption}
+)}\label{xxhash_8h_a527858ec33a0c2effc026ddd8667eaef}
+
+
+Definition at line 266 of file xxhash.\+c.
+
+\hypertarget{xxhash_8h_a98fc461fc698a511b24c1c6afe835e0c}{}\index{xxhash.\+h@{xxhash.\+h}!X\+X\+H32\+\_\+digest@{X\+X\+H32\+\_\+digest}}
+\index{X\+X\+H32\+\_\+digest@{X\+X\+H32\+\_\+digest}!xxhash.\+h@{xxhash.\+h}}
+\subsubsection[{X\+X\+H32\+\_\+digest}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int X\+X\+H32\+\_\+digest (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{state}
+\end{DoxyParamCaption}
+)}\label{xxhash_8h_a98fc461fc698a511b24c1c6afe835e0c}
+
+
+Definition at line 469 of file xxhash.\+c.
+
+\hypertarget{xxhash_8h_a366fceb2db2000c44211dc704493fbe0}{}\index{xxhash.\+h@{xxhash.\+h}!X\+X\+H32\+\_\+init@{X\+X\+H32\+\_\+init}}
+\index{X\+X\+H32\+\_\+init@{X\+X\+H32\+\_\+init}!xxhash.\+h@{xxhash.\+h}}
+\subsubsection[{X\+X\+H32\+\_\+init}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ X\+X\+H32\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{seed}
+\end{DoxyParamCaption}
+)}\label{xxhash_8h_a366fceb2db2000c44211dc704493fbe0}
+
+
+Definition at line 332 of file xxhash.\+c.
+
+\hypertarget{xxhash_8h_afba1e5525dd99f3d8693959240f22c11}{}\index{xxhash.\+h@{xxhash.\+h}!X\+X\+H32\+\_\+intermediate\+Digest@{X\+X\+H32\+\_\+intermediate\+Digest}}
+\index{X\+X\+H32\+\_\+intermediate\+Digest@{X\+X\+H32\+\_\+intermediate\+Digest}!xxhash.\+h@{xxhash.\+h}}
+\subsubsection[{X\+X\+H32\+\_\+intermediate\+Digest}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int X\+X\+H32\+\_\+intermediate\+Digest (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{state}
+\end{DoxyParamCaption}
+)}\label{xxhash_8h_afba1e5525dd99f3d8693959240f22c11}
+
+
+Definition at line 458 of file xxhash.\+c.
+
+\hypertarget{xxhash_8h_a9760c389eaa825239fdcb08ab09a4b03}{}\index{xxhash.\+h@{xxhash.\+h}!X\+X\+H32\+\_\+reset\+State@{X\+X\+H32\+\_\+reset\+State}}
+\index{X\+X\+H32\+\_\+reset\+State@{X\+X\+H32\+\_\+reset\+State}!xxhash.\+h@{xxhash.\+h}}
+\subsubsection[{X\+X\+H32\+\_\+reset\+State}]{\setlength{\rightskip}{0pt plus 5cm}{\bf X\+X\+H\+\_\+errorcode} X\+X\+H32\+\_\+reset\+State (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{state, }
+\item[{unsigned int}]{seed}
+\end{DoxyParamCaption}
+)}\label{xxhash_8h_a9760c389eaa825239fdcb08ab09a4b03}
+
+
+Definition at line 318 of file xxhash.\+c.
+
+\hypertarget{xxhash_8h_ac87e4599905f4e2d6d28e1499b67dfe2}{}\index{xxhash.\+h@{xxhash.\+h}!X\+X\+H32\+\_\+sizeof\+State@{X\+X\+H32\+\_\+sizeof\+State}}
+\index{X\+X\+H32\+\_\+sizeof\+State@{X\+X\+H32\+\_\+sizeof\+State}!xxhash.\+h@{xxhash.\+h}}
+\subsubsection[{X\+X\+H32\+\_\+sizeof\+State}]{\setlength{\rightskip}{0pt plus 5cm}int X\+X\+H32\+\_\+sizeof\+State (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{xxhash_8h_ac87e4599905f4e2d6d28e1499b67dfe2}
+
+
+Definition at line 311 of file xxhash.\+c.
+
+\hypertarget{xxhash_8h_a4428914ff78e245781ef2f523ff86638}{}\index{xxhash.\+h@{xxhash.\+h}!X\+X\+H32\+\_\+update@{X\+X\+H32\+\_\+update}}
+\index{X\+X\+H32\+\_\+update@{X\+X\+H32\+\_\+update}!xxhash.\+h@{xxhash.\+h}}
+\subsubsection[{X\+X\+H32\+\_\+update}]{\setlength{\rightskip}{0pt plus 5cm}{\bf X\+X\+H\+\_\+errorcode} X\+X\+H32\+\_\+update (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{state, }
+\item[{const void $\ast$}]{input, }
+\item[{int}]{len}
+\end{DoxyParamCaption}
+)}\label{xxhash_8h_a4428914ff78e245781ef2f523ff86638}
+
+
+Definition at line 404 of file xxhash.\+c.
+

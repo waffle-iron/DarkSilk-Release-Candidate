@@ -1,0 +1,514 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="db__impl_8h" kind="file" language="C++">
+    <compoundname>db_impl.h</compoundname>
+    <includes local="no">deque</includes>
+    <includes local="no">set</includes>
+    <includes refid="dbformat_8h" local="yes">db/dbformat.h</includes>
+    <includes refid="log__writer_8h" local="yes">db/log_writer.h</includes>
+    <includes refid="snapshot_8h" local="yes">db/snapshot.h</includes>
+    <includes refid="leveldb_2include_2leveldb_2db_8h" local="yes">leveldb/db.h</includes>
+    <includes refid="env_8h" local="yes">leveldb/env.h</includes>
+    <includes refid="port_8h" local="yes">port/port.h</includes>
+    <includes refid="thread__annotations_8h" local="yes">port/thread_annotations.h</includes>
+    <includedby refid="autocompact__test_8cc" local="yes">/home/dev/ds-160209/src/leveldb/db/autocompact_test.cc</includedby>
+    <includedby refid="corruption__test_8cc" local="yes">/home/dev/ds-160209/src/leveldb/db/corruption_test.cc</includedby>
+    <includedby refid="db__bench_8cc" local="yes">/home/dev/ds-160209/src/leveldb/db/db_bench.cc</includedby>
+    <includedby refid="db__impl_8cc" local="yes">/home/dev/ds-160209/src/leveldb/db/db_impl.cc</includedby>
+    <includedby refid="db__iter_8cc" local="yes">/home/dev/ds-160209/src/leveldb/db/db_iter.cc</includedby>
+    <includedby refid="db__test_8cc" local="yes">/home/dev/ds-160209/src/leveldb/db/db_test.cc</includedby>
+    <includedby refid="repair_8cc" local="yes">/home/dev/ds-160209/src/leveldb/db/repair.cc</includedby>
+    <includedby refid="memenv__test_8cc" local="yes">/home/dev/ds-160209/src/leveldb/helpers/memenv/memenv_test.cc</includedby>
+    <incdepgraph>
+      <node id="6902">
+        <label>stdarg.h</label>
+      </node>
+      <node id="6896">
+        <label>util/logging.h</label>
+        <link refid="logging_8h"/>
+        <childnode refid="6880" relation="include">
+        </childnode>
+        <childnode refid="6884" relation="include">
+        </childnode>
+        <childnode refid="6882" relation="include">
+        </childnode>
+        <childnode refid="6895" relation="include">
+        </childnode>
+      </node>
+      <node id="6887">
+        <label>assert.h</label>
+      </node>
+      <node id="6891">
+        <label>leveldb/options.h</label>
+        <link refid="options_8h"/>
+        <childnode refid="6888" relation="include">
+        </childnode>
+      </node>
+      <node id="6879">
+        <label>db/dbformat.h</label>
+        <link refid="dbformat_8h"/>
+        <childnode refid="6880" relation="include">
+        </childnode>
+        <childnode refid="6881" relation="include">
+        </childnode>
+        <childnode refid="6883" relation="include">
+        </childnode>
+        <childnode refid="6892" relation="include">
+        </childnode>
+        <childnode refid="6886" relation="include">
+        </childnode>
+        <childnode refid="6893" relation="include">
+        </childnode>
+        <childnode refid="6894" relation="include">
+        </childnode>
+        <childnode refid="6896" relation="include">
+        </childnode>
+      </node>
+      <node id="6883">
+        <label>leveldb/db.h</label>
+        <link refid="leveldb_2include_2leveldb_2db_8h"/>
+        <childnode refid="6884" relation="include">
+        </childnode>
+        <childnode refid="6880" relation="include">
+        </childnode>
+        <childnode refid="6885" relation="include">
+        </childnode>
+        <childnode refid="6891" relation="include">
+        </childnode>
+      </node>
+      <node id="6882">
+        <label>string</label>
+      </node>
+      <node id="6888">
+        <label>stddef.h</label>
+      </node>
+      <node id="6890">
+        <label>leveldb/status.h</label>
+        <link refid="status_8h"/>
+        <childnode refid="6882" relation="include">
+        </childnode>
+        <childnode refid="6886" relation="include">
+        </childnode>
+      </node>
+      <node id="6894">
+        <label>util/coding.h</label>
+        <link refid="coding_8h"/>
+        <childnode refid="6884" relation="include">
+        </childnode>
+        <childnode refid="6889" relation="include">
+        </childnode>
+        <childnode refid="6882" relation="include">
+        </childnode>
+        <childnode refid="6886" relation="include">
+        </childnode>
+        <childnode refid="6895" relation="include">
+        </childnode>
+      </node>
+      <node id="6889">
+        <label>string.h</label>
+      </node>
+      <node id="6897">
+        <label>db/log_writer.h</label>
+        <link refid="log__writer_8h"/>
+        <childnode refid="6884" relation="include">
+        </childnode>
+        <childnode refid="6898" relation="include">
+        </childnode>
+        <childnode refid="6886" relation="include">
+        </childnode>
+        <childnode refid="6890" relation="include">
+        </childnode>
+      </node>
+      <node id="6876">
+        <label>/home/dev/ds-160209/src/leveldb/db/db_impl.h</label>
+        <link refid="db_impl.h"/>
+        <childnode refid="6877" relation="include">
+        </childnode>
+        <childnode refid="6878" relation="include">
+        </childnode>
+        <childnode refid="6879" relation="include">
+        </childnode>
+        <childnode refid="6897" relation="include">
+        </childnode>
+        <childnode refid="6899" relation="include">
+        </childnode>
+        <childnode refid="6883" relation="include">
+        </childnode>
+        <childnode refid="6900" relation="include">
+        </childnode>
+        <childnode refid="6895" relation="include">
+        </childnode>
+        <childnode refid="6903" relation="include">
+        </childnode>
+      </node>
+      <node id="6901">
+        <label>vector</label>
+      </node>
+      <node id="6898">
+        <label>db/log_format.h</label>
+        <link refid="log__format_8h"/>
+      </node>
+      <node id="6895">
+        <label>port/port.h</label>
+        <link refid="port_8h"/>
+        <childnode refid="6889" relation="include">
+        </childnode>
+      </node>
+      <node id="6884">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="6877">
+        <label>deque</label>
+      </node>
+      <node id="6893">
+        <label>leveldb/table_builder.h</label>
+        <link refid="table__builder_8h"/>
+        <childnode refid="6884" relation="include">
+        </childnode>
+        <childnode refid="6891" relation="include">
+        </childnode>
+        <childnode refid="6890" relation="include">
+        </childnode>
+      </node>
+      <node id="6899">
+        <label>db/snapshot.h</label>
+        <link refid="snapshot_8h"/>
+        <childnode refid="6883" relation="include">
+        </childnode>
+      </node>
+      <node id="6886">
+        <label>leveldb/slice.h</label>
+        <link refid="slice_8h"/>
+        <childnode refid="6887" relation="include">
+        </childnode>
+        <childnode refid="6888" relation="include">
+        </childnode>
+        <childnode refid="6889" relation="include">
+        </childnode>
+        <childnode refid="6882" relation="include">
+        </childnode>
+      </node>
+      <node id="6900">
+        <label>leveldb/env.h</label>
+        <link refid="env_8h"/>
+        <childnode refid="6882" relation="include">
+        </childnode>
+        <childnode refid="6901" relation="include">
+        </childnode>
+        <childnode refid="6902" relation="include">
+        </childnode>
+        <childnode refid="6884" relation="include">
+        </childnode>
+        <childnode refid="6890" relation="include">
+        </childnode>
+      </node>
+      <node id="6878">
+        <label>set</label>
+      </node>
+      <node id="6903">
+        <label>port/thread_annotations.h</label>
+        <link refid="thread__annotations_8h"/>
+      </node>
+      <node id="6880">
+        <label>stdio.h</label>
+      </node>
+      <node id="6892">
+        <label>leveldb/filter_policy.h</label>
+        <link refid="filter__policy_8h"/>
+        <childnode refid="6882" relation="include">
+        </childnode>
+      </node>
+      <node id="6881">
+        <label>leveldb/comparator.h</label>
+        <link refid="comparator_8h"/>
+        <childnode refid="6882" relation="include">
+        </childnode>
+      </node>
+      <node id="6885">
+        <label>leveldb/iterator.h</label>
+        <link refid="iterator_8h"/>
+        <childnode refid="6886" relation="include">
+        </childnode>
+        <childnode refid="6890" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="6908">
+        <label>/home/dev/ds-160209/src/leveldb/db/db_impl.cc</label>
+        <link refid="db__impl_8cc"/>
+      </node>
+      <node id="6907">
+        <label>/home/dev/ds-160209/src/leveldb/db/db_bench.cc</label>
+        <link refid="db__bench_8cc"/>
+      </node>
+      <node id="6911">
+        <label>/home/dev/ds-160209/src/leveldb/db/repair.cc</label>
+        <link refid="repair_8cc"/>
+      </node>
+      <node id="6904">
+        <label>/home/dev/ds-160209/src/leveldb/db/db_impl.h</label>
+        <link refid="db_impl.h"/>
+        <childnode refid="6905" relation="include">
+        </childnode>
+        <childnode refid="6906" relation="include">
+        </childnode>
+        <childnode refid="6907" relation="include">
+        </childnode>
+        <childnode refid="6908" relation="include">
+        </childnode>
+        <childnode refid="6909" relation="include">
+        </childnode>
+        <childnode refid="6910" relation="include">
+        </childnode>
+        <childnode refid="6911" relation="include">
+        </childnode>
+        <childnode refid="6912" relation="include">
+        </childnode>
+      </node>
+      <node id="6909">
+        <label>/home/dev/ds-160209/src/leveldb/db/db_iter.cc</label>
+        <link refid="db__iter_8cc"/>
+      </node>
+      <node id="6905">
+        <label>/home/dev/ds-160209/src/leveldb/db/autocompact_test.cc</label>
+        <link refid="autocompact__test_8cc"/>
+      </node>
+      <node id="6912">
+        <label>/home/dev/ds-160209/src/leveldb/helpers/memenv/memenv_test.cc</label>
+        <link refid="memenv__test_8cc"/>
+      </node>
+      <node id="6910">
+        <label>/home/dev/ds-160209/src/leveldb/db/db_test.cc</label>
+        <link refid="db__test_8cc"/>
+      </node>
+      <node id="6906">
+        <label>/home/dev/ds-160209/src/leveldb/db/corruption_test.cc</label>
+        <link refid="corruption__test_8cc"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classleveldb_1_1_d_b_impl" prot="public">leveldb::DBImpl</innerclass>
+    <innerclass refid="structleveldb_1_1_d_b_impl_1_1_manual_compaction" prot="private">leveldb::DBImpl::ManualCompaction</innerclass>
+    <innerclass refid="structleveldb_1_1_d_b_impl_1_1_compaction_stats" prot="private">leveldb::DBImpl::CompactionStats</innerclass>
+    <innernamespace refid="namespaceleveldb">leveldb</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2011-2016<sp/>The<sp/>LevelDB<sp/>Authors.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>of<sp/>this<sp/>source<sp/>code<sp/>is<sp/>governed<sp/>by<sp/>a<sp/>BSD-style<sp/>license<sp/>that<sp/>can<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>found<sp/>in<sp/>the<sp/>LICENSE<sp/>file.<sp/>See<sp/>the<sp/>AUTHORS<sp/>file<sp/>for<sp/>names<sp/>of<sp/>contributors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>STORAGE_LEVELDB_DB_DB_IMPL_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STORAGE_LEVELDB_DB_DB_IMPL_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;deque&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;set&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dbformat_8h" kindref="compound">db/dbformat.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="log__writer_8h" kindref="compound">db/log_writer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="snapshot_8h" kindref="compound">db/snapshot.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="leveldb_2include_2leveldb_2db_8h" kindref="compound">leveldb/db.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="env_8h" kindref="compound">leveldb/env.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="port_8h" kindref="compound">port/port.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="thread__annotations_8h" kindref="compound">port/thread_annotations.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceleveldb" kindref="compound">leveldb</ref><sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">MemTable;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">TableCache;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Version;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">VersionEdit;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">VersionSet;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classleveldb_1_1_d_b_impl" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classleveldb_1_1_d_b_impl" kindref="compound">DBImpl</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_d_b" kindref="compound">DB</ref><sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_d_b_impl_1a269b55605b27271d6ca5fee68af0d8f3" kindref="member">DBImpl</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structleveldb_1_1_options" kindref="compound">Options</ref>&amp;<sp/>options,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>dbname);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_d_b_impl_1a07a233a94a2531aed9d3718c9b9ed40d" kindref="member">~DBImpl</ref>();</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Implementations<sp/>of<sp/>the<sp/>DB<sp/>interface</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref><sp/><ref refid="classleveldb_1_1_d_b_impl_1ad0d56aeb4d84ff9632c9a7f3f1b7c4d5" kindref="member">Put</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structleveldb_1_1_write_options" kindref="compound">WriteOptions</ref>&amp;,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/>key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/><ref refid="version__set_8cc_1a38c8b88c432e666ad10b0c5573e1160a" kindref="member">value</ref>);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref><sp/><ref refid="classleveldb_1_1_d_b_impl_1af050f77e8c22bd6638fed5a46a59399d" kindref="member">Delete</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structleveldb_1_1_write_options" kindref="compound">WriteOptions</ref>&amp;,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/>key);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref><sp/><ref refid="classleveldb_1_1_d_b_impl_1ac0d0b472717099d6a02ad9dace4e8ef4" kindref="member">Write</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structleveldb_1_1_write_options" kindref="compound">WriteOptions</ref>&amp;<sp/>options,<sp/><ref refid="classleveldb_1_1_write_batch" kindref="compound">WriteBatch</ref>*<sp/>updates);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref><sp/><ref refid="classleveldb_1_1_d_b_impl_1a089964ddcd1f5dc85e73499ae57be508" kindref="member">Get</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structleveldb_1_1_read_options" kindref="compound">ReadOptions</ref>&amp;<sp/>options,</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/>key,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string*<sp/>value);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_iterator" kindref="compound">Iterator</ref>*<sp/><ref refid="classleveldb_1_1_d_b_impl_1ae955dc8f2a1c38588723a0882653cb58" kindref="member">NewIterator</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structleveldb_1_1_read_options" kindref="compound">ReadOptions</ref>&amp;);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_snapshot" kindref="compound">Snapshot</ref>*<sp/><ref refid="classleveldb_1_1_d_b_impl_1a4bec3d8ffd65fec562b2dd1f6eaba137" kindref="member">GetSnapshot</ref>();</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_d_b_impl_1a6c0b6abfc9a30cc8e5412d4fc3e8c886" kindref="member">ReleaseSnapshot</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_snapshot" kindref="compound">Snapshot</ref>*<sp/>snapshot);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_d_b_impl_1ad1a2023ce171c8f8476664f5b1cbab4d" kindref="member">GetProperty</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/>property,<sp/>std::string*<sp/>value);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_d_b_impl_1af08e218d92064699942c195ce0f06010" kindref="member">GetApproximateSizes</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structleveldb_1_1_range" kindref="compound">Range</ref>*<sp/>range,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n,<sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref>*<sp/>sizes);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_d_b_impl_1aa6df0739fc0b49380c284347e411b8ed" kindref="member">CompactRange</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>*<sp/>begin,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>*<sp/>end);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Extra<sp/>methods<sp/>(for<sp/>testing)<sp/>that<sp/>are<sp/>not<sp/>in<sp/>the<sp/>public<sp/>DB<sp/>interface</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Compact<sp/>any<sp/>files<sp/>in<sp/>the<sp/>named<sp/>level<sp/>that<sp/>overlap<sp/>[*begin,*end]</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_d_b_impl_1a63fcb49466b689a534ba77d32cf84f99" kindref="member">TEST_CompactRange</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>level,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>*<sp/>begin,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>*<sp/>end);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Force<sp/>current<sp/>memtable<sp/>contents<sp/>to<sp/>be<sp/>compacted.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref><sp/><ref refid="classleveldb_1_1_d_b_impl_1a8642703fd1398cd8e3f5f24ee0b9da23" kindref="member">TEST_CompactMemTable</ref>();</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>an<sp/>internal<sp/>iterator<sp/>over<sp/>the<sp/>current<sp/>state<sp/>of<sp/>the<sp/>database.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>keys<sp/>of<sp/>this<sp/>iterator<sp/>are<sp/>internal<sp/>keys<sp/>(see<sp/>format.h).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>The<sp/>returned<sp/>iterator<sp/>should<sp/>be<sp/>deleted<sp/>when<sp/>no<sp/>longer<sp/>needed.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_iterator" kindref="compound">Iterator</ref>*<sp/><ref refid="classleveldb_1_1_d_b_impl_1adba5bf4252bd94f7db50e62921b7ba53" kindref="member">TEST_NewInternalIterator</ref>();</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>maximum<sp/>overlapping<sp/>data<sp/>(in<sp/>bytes)<sp/>at<sp/>next<sp/>level<sp/>for<sp/>any</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>file<sp/>at<sp/>a<sp/>level<sp/>&gt;=<sp/>1.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref><sp/><ref refid="classleveldb_1_1_d_b_impl_1af621636048b8d3cfaa21238fe26ef0ca" kindref="member">TEST_MaxNextLevelOverlappingBytes</ref>();</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Record<sp/>a<sp/>sample<sp/>of<sp/>bytes<sp/>read<sp/>at<sp/>the<sp/>specified<sp/>internal<sp/>key.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Samples<sp/>are<sp/>taken<sp/>approximately<sp/>once<sp/>every<sp/>config::kReadBytesPeriod</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>bytes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_d_b_impl_1a254ae98e3425046c28ed0aa6d78b37d8" kindref="member">RecordReadSample</ref>(<ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref><sp/>key);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="68" refid="classleveldb_1_1_d_b_impl_1ad22eb7a23cbf34de526efa966c578d4a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classleveldb_1_1_d_b" kindref="compound">DB</ref>;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structleveldb_1_1_d_b_impl_1_1_compaction_state" kindref="compound">CompactionState</ref>;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structleveldb_1_1_d_b_impl_1_1_writer" kindref="compound">Writer</ref>;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_iterator" kindref="compound">Iterator</ref>*<sp/>NewInternalIterator(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structleveldb_1_1_read_options" kindref="compound">ReadOptions</ref>&amp;,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceleveldb_1a5481ededd221c36d652c371249f869fa" kindref="member">SequenceNumber</ref>*<sp/>latest_snapshot,</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref>*<sp/>seed);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref><sp/>NewDB();</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Recover<sp/>the<sp/>descriptor<sp/>from<sp/>persistent<sp/>storage.<sp/><sp/>May<sp/>do<sp/>a<sp/>significant</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>amount<sp/>of<sp/>work<sp/>to<sp/>recover<sp/>recently<sp/>logged<sp/>updates.<sp/><sp/>Any<sp/>changes<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>be<sp/>made<sp/>to<sp/>the<sp/>descriptor<sp/>are<sp/>added<sp/>to<sp/>*edit.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref><sp/>Recover(<ref refid="classleveldb_1_1_version_edit" kindref="compound">VersionEdit</ref>*<sp/>edit)<sp/><ref refid="thread__annotations_8h_1a0e2e86b0f11d9778240b0a0b263047b1" kindref="member">EXCLUSIVE_LOCKS_REQUIRED</ref>(<ref refid="memenv_8cc_1ab1b7efa1bbe0578df2c74e7c31a79a92" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>MaybeIgnoreError(<ref refid="classleveldb_1_1_status" kindref="compound">Status</ref>*<sp/>s)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Delete<sp/>any<sp/>unneeded<sp/>files<sp/>and<sp/>stale<sp/>in-memory<sp/>entries.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DeleteObsoleteFiles();</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Compact<sp/>the<sp/>in-memory<sp/>write<sp/>buffer<sp/>to<sp/>disk.<sp/><sp/>Switches<sp/>to<sp/>a<sp/>new</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>log-file/memtable<sp/>and<sp/>writes<sp/>a<sp/>new<sp/>descriptor<sp/>iff<sp/>successful.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Errors<sp/>are<sp/>recorded<sp/>in<sp/>bg_error_.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>CompactMemTable()<sp/><ref refid="thread__annotations_8h_1a0e2e86b0f11d9778240b0a0b263047b1" kindref="member">EXCLUSIVE_LOCKS_REQUIRED</ref>(<ref refid="memenv_8cc_1ab1b7efa1bbe0578df2c74e7c31a79a92" kindref="member">mutex_</ref>);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref><sp/>RecoverLogFile(<ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>log_number,</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classleveldb_1_1_version_edit" kindref="compound">VersionEdit</ref>*<sp/>edit,</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceleveldb_1a5481ededd221c36d652c371249f869fa" kindref="member">SequenceNumber</ref>*<sp/><ref refid="repair_8cc_1a52c1b794512261f530db50c720acb0c4" kindref="member">max_sequence</ref>)</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="thread__annotations_8h_1a0e2e86b0f11d9778240b0a0b263047b1" kindref="member">EXCLUSIVE_LOCKS_REQUIRED</ref>(mutex_);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref><sp/>WriteLevel0Table(<ref refid="classleveldb_1_1_mem_table" kindref="compound">MemTable</ref>*<sp/><ref refid="db__impl_8cc_1a1a1fa02d49bbc4c0896ff1cb12618dc3" kindref="member">mem</ref>,<sp/><ref refid="classleveldb_1_1_version_edit" kindref="compound">VersionEdit</ref>*<sp/>edit,<sp/><ref refid="classleveldb_1_1_version" kindref="compound">Version</ref>*<sp/><ref refid="testharness_8cc_1a70ff0f6c026c3dd1ef6aaf504e7fddc3" kindref="member">base</ref>)</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="thread__annotations_8h_1a0e2e86b0f11d9778240b0a0b263047b1" kindref="member">EXCLUSIVE_LOCKS_REQUIRED</ref>(mutex_);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref><sp/>MakeRoomForWrite(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>force<sp/></highlight><highlight class="comment">/*<sp/>compact<sp/>even<sp/>if<sp/>there<sp/>is<sp/>room?<sp/>*/</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="thread__annotations_8h_1a0e2e86b0f11d9778240b0a0b263047b1" kindref="member">EXCLUSIVE_LOCKS_REQUIRED</ref>(mutex_);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_write_batch" kindref="compound">WriteBatch</ref>*<sp/>BuildBatchGroup(<ref refid="structleveldb_1_1_d_b_impl_1_1_writer" kindref="compound">Writer</ref>**<sp/>last_writer);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>RecordBackgroundError(const<sp/><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref>&amp;<sp/>s);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>MaybeScheduleCompaction()<sp/><ref refid="thread__annotations_8h_1a0e2e86b0f11d9778240b0a0b263047b1" kindref="member">EXCLUSIVE_LOCKS_REQUIRED</ref>(mutex_);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/>static<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>BGWork(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>db);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>BackgroundCall();</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><sp/>BackgroundCompaction()<sp/><ref refid="thread__annotations_8h_1a0e2e86b0f11d9778240b0a0b263047b1" kindref="member">EXCLUSIVE_LOCKS_REQUIRED</ref>(mutex_);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>CleanupCompaction(<ref refid="structleveldb_1_1_d_b_impl_1_1_compaction_state" kindref="compound">CompactionState</ref>*<sp/>compact)</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="thread__annotations_8h_1a0e2e86b0f11d9778240b0a0b263047b1" kindref="member">EXCLUSIVE_LOCKS_REQUIRED</ref>(mutex_);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref><sp/>DoCompactionWork(<ref refid="structleveldb_1_1_d_b_impl_1_1_compaction_state" kindref="compound">CompactionState</ref>*<sp/>compact)</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="thread__annotations_8h_1a0e2e86b0f11d9778240b0a0b263047b1" kindref="member">EXCLUSIVE_LOCKS_REQUIRED</ref>(mutex_);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref><sp/>OpenCompactionOutputFile(<ref refid="structleveldb_1_1_d_b_impl_1_1_compaction_state" kindref="compound">CompactionState</ref>*<sp/>compact);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref><sp/>FinishCompactionOutputFile(<ref refid="structleveldb_1_1_d_b_impl_1_1_compaction_state" kindref="compound">CompactionState</ref>*<sp/>compact,<sp/><ref refid="classleveldb_1_1_iterator" kindref="compound">Iterator</ref>*<sp/>input);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref><sp/>InstallCompactionResults(<ref refid="structleveldb_1_1_d_b_impl_1_1_compaction_state" kindref="compound">CompactionState</ref>*<sp/>compact)</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="thread__annotations_8h_1a0e2e86b0f11d9778240b0a0b263047b1" kindref="member">EXCLUSIVE_LOCKS_REQUIRED</ref>(mutex_);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Constant<sp/>after<sp/>construction</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_env" kindref="compound">Env</ref>*<sp/>const<sp/><ref refid="repair_8cc_1a35fd5bd2e765194573cc90809e6aca7b" kindref="member">env_</ref>;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/>const<sp/><ref refid="classleveldb_1_1_internal_key_comparator" kindref="compound">InternalKeyComparator</ref><sp/>internal_comparator_;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/>const<sp/><ref refid="classleveldb_1_1_internal_filter_policy" kindref="compound">InternalFilterPolicy</ref><sp/>internal_filter_policy_;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/>const<sp/><ref refid="structleveldb_1_1_options" kindref="compound">Options</ref><sp/><ref refid="repair_8cc_1a277741aecbdc3655b3bde5df34d80513" kindref="member">options_</ref>;<sp/><sp/></highlight><highlight class="comment">//<sp/>options_.comparator<sp/>==<sp/>&amp;internal_comparator_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="repair_8cc_1a00e765ceb00e4ddd070299d67fd3a296" kindref="member">owns_info_log_</ref>;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="repair_8cc_1aca5d7cdba901420c7476a4821272b65a" kindref="member">owns_cache_</ref>;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/>const<sp/><ref refid="namespacestd" kindref="compound">std</ref>::</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="repair_8cc_1a2661128a4b7cbc28cec2dfc2fa13816f" kindref="member">dbname_</ref>;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>table_cache_<sp/>provides<sp/>its<sp/>own<sp/>synchronization</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_table_cache" kindref="compound">TableCache</ref>*<sp/><ref refid="repair_8cc_1a3a1b17e04f2f36697594146dfd0cdab1" kindref="member">table_cache_</ref>;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Lock<sp/>over<sp/>the<sp/>persistent<sp/>DB<sp/>state.<sp/><sp/>Non-NULL<sp/>iff<sp/>successfully<sp/>acquired.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_file_lock" kindref="compound">FileLock</ref>*<sp/>db_lock_;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>State<sp/>below<sp/>is<sp/>protected<sp/>by<sp/>mutex_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/>port::Mutex<sp/>mutex_;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/>port::AtomicPointer<sp/>shutting_down_;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/>port::CondVar<sp/>bg_cv_;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Signalled<sp/>when<sp/>background<sp/>work<sp/>finishes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_mem_table" kindref="compound">MemTable</ref>*<sp/><ref refid="write__batch_8cc_1a2283818d68088365bff4c006b75d4cfb" kindref="member">mem_</ref>;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_mem_table" kindref="compound">MemTable</ref>*<sp/>imm_;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Memtable<sp/>being<sp/>compacted</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/>port::AtomicPointer<sp/>has_imm_;<sp/><sp/></highlight><highlight class="comment">//<sp/>So<sp/>bg<sp/>thread<sp/>can<sp/>detect<sp/>non-NULL<sp/>imm_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_writable_file" kindref="compound">WritableFile</ref>*<sp/>logfile_;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>logfile_number_;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/>log::<ref refid="structleveldb_1_1_d_b_impl_1_1_writer" kindref="compound">Writer</ref>*<sp/>log_;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>seed_;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>For<sp/>sampling.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Queue<sp/>of<sp/>writers.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><ref refid="namespacestd" kindref="compound">std</ref>::deque&lt;<ref refid="structleveldb_1_1_d_b_impl_1_1_writer" kindref="compound">Writer</ref>*&gt;<sp/>writers_;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_write_batch" kindref="compound">WriteBatch</ref>*<sp/>tmp_batch_;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_snapshot_list" kindref="compound">SnapshotList</ref><sp/>snapshots_;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>of<sp/>table<sp/>files<sp/>to<sp/>protect<sp/>from<sp/>deletion<sp/>because<sp/>they<sp/>are</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>part<sp/>of<sp/>ongoing<sp/>compactions.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><ref refid="namespacestd" kindref="compound">std</ref>::set&lt;<ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref>&gt;<sp/>pending_outputs_;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Has<sp/>a<sp/>background<sp/>compaction<sp/>been<sp/>scheduled<sp/>or<sp/>is<sp/>running?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>bg_compaction_scheduled_;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Information<sp/>for<sp/>a<sp/>manual<sp/>compaction</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/>struct<sp/>ManualCompaction<sp/>{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>level;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>done;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_internal_key" kindref="compound">InternalKey</ref>*<sp/>begin;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>NULL<sp/>means<sp/>beginning<sp/>of<sp/>key<sp/>range</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_internal_key" kindref="compound">InternalKey</ref>*<sp/>end;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>NULL<sp/>means<sp/>end<sp/>of<sp/>key<sp/>range</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classleveldb_1_1_internal_key" kindref="compound">InternalKey</ref><sp/>tmp_storage;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Used<sp/>to<sp/>keep<sp/>track<sp/>of<sp/>compaction<sp/>progress</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/>ManualCompaction*<sp/>manual_compaction_;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_version_set" kindref="compound">VersionSet</ref>*<sp/>versions_;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Have<sp/>we<sp/>encountered<sp/>a<sp/>background<sp/>error<sp/>in<sp/>paranoid<sp/>mode?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref><sp/>bg_error_;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Per<sp/>level<sp/>compaction<sp/>stats.<sp/><sp/>stats_[level]<sp/>stores<sp/>the<sp/>stats<sp/>for</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>compactions<sp/>that<sp/>produced<sp/>data<sp/>for<sp/>the<sp/>specified<sp/>&quot;level&quot;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">CompactionStats<sp/>{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref><sp/>micros;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref><sp/>bytes_read;</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref><sp/>bytes_written;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>CompactionStats()<sp/>:<sp/>micros(0),<sp/>bytes_read(0),<sp/>bytes_written(0)<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Add(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>CompactionStats&amp;<sp/>c)<sp/>{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;micros<sp/>+=<sp/>c.micros;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;bytes_read<sp/>+=<sp/>c.bytes_read;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>this-&gt;bytes_written<sp/>+=<sp/>c.bytes_written;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/>CompactionStats<sp/>stats_[config::kNumLevels];</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>copying<sp/>allowed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_d_b_impl_1a269b55605b27271d6ca5fee68af0d8f3" kindref="member">DBImpl</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_d_b_impl_1a269b55605b27271d6ca5fee68af0d8f3" kindref="member">DBImpl</ref>&amp;);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>operator=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_d_b_impl_1a269b55605b27271d6ca5fee68af0d8f3" kindref="member">DBImpl</ref>&amp;);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Comparator*<sp/>user_comparator()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>internal_comparator_.<ref refid="classleveldb_1_1_internal_key_comparator_1a86ca575a4560bb76e2bcebc0618abd31" kindref="member">user_comparator</ref>();</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="200"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Sanitize<sp/>db<sp/>options.<sp/><sp/>The<sp/>caller<sp/>should<sp/>delete<sp/>result.info_log<sp/>if</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight><highlight class="comment">//<sp/>it<sp/>is<sp/>not<sp/>equal<sp/>to<sp/>src.info_log.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/>Options<sp/><ref refid="namespaceleveldb_1aa4783e598841dca4393a97d360d10f56" kindref="member">SanitizeOptions</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>db,</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>InternalKeyComparator*<sp/>icmp,</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>InternalFilterPolicy*<sp/>ipolicy,</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Options&amp;<sp/>src);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>leveldb</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/>//<sp/>STORAGE_LEVELDB_DB_DB_IMPL_H_</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/leveldb/db/db_impl.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,138 @@
+.TH "COutPoint" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+COutPoint \- An outpoint - a combination of a transaction hash and an index n into its vout\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <transaction\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCOutPoint\fP ()"
+.br
+.ti -1c
+.RI "\fBCOutPoint\fP (\fBuint256\fP hashIn, unsigned int nIn)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename Operation > void \fBSerializationOp\fP (Stream &s, Operation ser_action, int nType, int nVersion)"
+.br
+.ti -1c
+.RI "void \fBSetNull\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsNull\fP () const "
+.br
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.ti -1c
+.RI "std::string \fBToStringShort\fP () const "
+.br
+.ti -1c
+.RI "\fBuint256\fP \fBGetHash\fP () const "
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBuint256\fP \fBhash\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBn\fP"
+.br
+.ti -1c
+.RI "\fBADD_SERIALIZE_METHODS\fP"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "bool \fBoperator<\fP (const \fBCOutPoint\fP &a, const \fBCOutPoint\fP &b)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBCOutPoint\fP &a, const \fBCOutPoint\fP &b)"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBCOutPoint\fP &a, const \fBCOutPoint\fP &b)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+An outpoint - a combination of a transaction hash and an index n into its vout\&. 
+.PP
+Definition at line 27 of file transaction\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "COutPoint::COutPoint ()\fC [inline]\fP"
+
+.PP
+Definition at line 33 of file transaction\&.h\&.
+.SS "COutPoint::COutPoint (\fBuint256\fP hashIn, unsigned int nIn)\fC [inline]\fP"
+
+.PP
+Definition at line 34 of file transaction\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBuint256\fP COutPoint::GetHash () const\fC [inline]\fP"
+
+.PP
+Definition at line 71 of file transaction\&.h\&.
+.SS "bool COutPoint::IsNull () const\fC [inline]\fP"
+
+.PP
+Definition at line 44 of file transaction\&.h\&.
+.SS "template<typename Stream , typename Operation > void COutPoint::SerializationOp (Stream & s, Operation ser_action, int nType, int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 39 of file transaction\&.h\&.
+.SS "void COutPoint::SetNull ()\fC [inline]\fP"
+
+.PP
+Definition at line 43 of file transaction\&.h\&.
+.SS "std::string COutPoint::ToString () const\fC [inline]\fP"
+
+.PP
+Definition at line 61 of file transaction\&.h\&.
+.SS "std::string COutPoint::ToStringShort () const\fC [inline]\fP"
+
+.PP
+Definition at line 66 of file transaction\&.h\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "bool operator!= (const \fBCOutPoint\fP & a, const \fBCOutPoint\fP & b)\fC [friend]\fP"
+
+.PP
+Definition at line 56 of file transaction\&.h\&.
+.SS "bool operator< (const \fBCOutPoint\fP & a, const \fBCOutPoint\fP & b)\fC [friend]\fP"
+
+.PP
+Definition at line 46 of file transaction\&.h\&.
+.SS "bool operator== (const \fBCOutPoint\fP & a, const \fBCOutPoint\fP & b)\fC [friend]\fP"
+
+.PP
+Definition at line 51 of file transaction\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "COutPoint::ADD_SERIALIZE_METHODS"
+
+.PP
+Definition at line 36 of file transaction\&.h\&.
+.SS "\fBuint256\fP COutPoint::hash"
+
+.PP
+Definition at line 30 of file transaction\&.h\&.
+.SS "unsigned int COutPoint::n"
+
+.PP
+Definition at line 31 of file transaction\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

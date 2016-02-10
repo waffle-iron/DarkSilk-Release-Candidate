@@ -1,0 +1,66 @@
+.TH "LockedPageManagerBase< Locker >" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+LockedPageManagerBase< Locker > \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <allocators\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLockedPageManagerBase\fP (size_t page_size)"
+.br
+.ti -1c
+.RI "void \fBLockRange\fP (void *p, size_t size)"
+.br
+.ti -1c
+.RI "void \fBUnlockRange\fP (void *p, size_t size)"
+.br
+.ti -1c
+.RI "int \fBGetLockedPageCount\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<class Locker>class LockedPageManagerBase< Locker >"
+Thread-safe class to keep track of locked (ie, non-swappable) memory pages\&.
+.PP
+Memory locks do not stack, that is, pages which have been locked several times by calls to mlock() will be unlocked by a single call to munlock()\&. This can result in keying material ending up in swap when those functions are used naively\&. This class simulates stacking memory locks by keeping a counter per page\&.
+.PP
+\fBNote:\fP
+.RS 4
+By using a map from each page base address to lock count, this class is optimized for small objects that span up to a few pages, mostly smaller than a page\&. To support large allocations, something like an interval tree would be the preferred data structure\&. 
+.RE
+.PP
+
+.PP
+Definition at line 47 of file allocators\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<class Locker> \fBLockedPageManagerBase\fP< Locker >::\fBLockedPageManagerBase\fP (size_t page_size)\fC [inline]\fP"
+
+.PP
+Definition at line 50 of file allocators\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<class Locker> int \fBLockedPageManagerBase\fP< Locker >::GetLockedPageCount ()\fC [inline]\fP"
+
+.PP
+Definition at line 105 of file allocators\&.h\&.
+.SS "template<class Locker> void \fBLockedPageManagerBase\fP< Locker >::LockRange (void * p, size_t size)\fC [inline]\fP"
+
+.PP
+Definition at line 59 of file allocators\&.h\&.
+.SS "template<class Locker> void \fBLockedPageManagerBase\fP< Locker >::UnlockRange (void * p, size_t size)\fC [inline]\fP"
+
+.PP
+Definition at line 82 of file allocators\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

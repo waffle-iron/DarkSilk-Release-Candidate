@@ -1,0 +1,117 @@
+.TH "SendCoinsDialog" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SendCoinsDialog \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <sendcoinsdialog\&.h>\fP
+.PP
+Inherits QDialog\&.
+.SS "Public Slots"
+
+.in +1c
+.ti -1c
+.RI "void \fBclear\fP ()"
+.br
+.ti -1c
+.RI "void \fBreject\fP ()"
+.br
+.ti -1c
+.RI "void \fBaccept\fP ()"
+.br
+.ti -1c
+.RI "\fBSendCoinsEntry\fP * \fBaddEntry\fP ()"
+.br
+.ti -1c
+.RI "void \fBupdateRemoveEnabled\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetBalance\fP (const \fBCAmount\fP &balance, const \fBCAmount\fP &stake, const \fBCAmount\fP &unconfirmedBalance, const \fBCAmount\fP &immatureBalance, const \fBCAmount\fP &anonymizedBalance, const \fBCAmount\fP &watchOnlyBalance, const \fBCAmount\fP &watchOnlyStake, const \fBCAmount\fP &watchUnconfBalance, const \fBCAmount\fP &watchImmatureBalance)"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSendCoinsDialog\fP (QWidget *parent=0)"
+.br
+.ti -1c
+.RI "\fB~SendCoinsDialog\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetModel\fP (\fBWalletModel\fP *model)"
+.br
+.ti -1c
+.RI "QWidget * \fBsetupTabChain\fP (QWidget *\fBprev\fP)"
+.br
+.ti -1c
+.RI "void \fBpasteEntry\fP (const \fBSendCoinsRecipient\fP &rv)"
+.br
+.ti -1c
+.RI "bool \fBhandleURI\fP (const QString &uri)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Dialog for sending darksilks 
+.PP
+Definition at line 23 of file sendcoinsdialog\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SendCoinsDialog::SendCoinsDialog (QWidget * parent = \fC0\fP)\fC [explicit]\fP"
+
+.PP
+Definition at line 25 of file sendcoinsdialog\&.cpp\&.
+.SS "SendCoinsDialog::~SendCoinsDialog ()"
+
+.PP
+Definition at line 141 of file sendcoinsdialog\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void SendCoinsDialog::accept ()\fC [slot]\fP"
+
+.PP
+Definition at line 310 of file sendcoinsdialog\&.cpp\&.
+.SS "\fBSendCoinsEntry\fP * SendCoinsDialog::addEntry ()\fC [slot]\fP"
+
+.PP
+Definition at line 315 of file sendcoinsdialog\&.cpp\&.
+.SS "void SendCoinsDialog::clear ()\fC [slot]\fP"
+
+.PP
+Definition at line 291 of file sendcoinsdialog\&.cpp\&.
+.SS "bool SendCoinsDialog::handleURI (const QString & uri)"
+
+.PP
+Definition at line 396 of file sendcoinsdialog\&.cpp\&.
+.SS "void SendCoinsDialog::pasteEntry (const \fBSendCoinsRecipient\fP & rv)"
+
+.PP
+Definition at line 373 of file sendcoinsdialog\&.cpp\&.
+.SS "void SendCoinsDialog::reject ()\fC [slot]\fP"
+
+.PP
+Definition at line 305 of file sendcoinsdialog\&.cpp\&.
+.SS "void SendCoinsDialog::setBalance (const \fBCAmount\fP & balance, const \fBCAmount\fP & stake, const \fBCAmount\fP & unconfirmedBalance, const \fBCAmount\fP & immatureBalance, const \fBCAmount\fP & anonymizedBalance, const \fBCAmount\fP & watchOnlyBalance, const \fBCAmount\fP & watchOnlyStake, const \fBCAmount\fP & watchUnconfBalance, const \fBCAmount\fP & watchImmatureBalance)\fC [slot]\fP"
+
+.PP
+Definition at line 412 of file sendcoinsdialog\&.cpp\&.
+.SS "void SendCoinsDialog::setModel (\fBWalletModel\fP * model)"
+
+.PP
+Definition at line 111 of file sendcoinsdialog\&.cpp\&.
+.SS "QWidget * SendCoinsDialog::setupTabChain (QWidget * prev)"
+Set up the tab chain manually, as Qt messes up the tab chain by default in some cases (issue https://bugreports.qt-project.org/browse/QTBUG-10907)\&. 
+.PP
+Definition at line 358 of file sendcoinsdialog\&.cpp\&.
+.SS "void SendCoinsDialog::updateRemoveEnabled ()\fC [slot]\fP"
+
+.PP
+Definition at line 336 of file sendcoinsdialog\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

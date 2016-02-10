@@ -1,0 +1,160 @@
+.TH "CBlockHeader" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CBlockHeader \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <block\&.h>\fP
+.PP
+Inherited by \fBCBlock\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBDoS\fP (int nDoSIn, bool fIn) const "
+.br
+.ti -1c
+.RI "\fBCBlockHeader\fP ()"
+.br
+.ti -1c
+.RI "template<typename Stream , typename Operation > void \fBSerializationOp\fP (Stream &s, Operation ser_action, int nType, int \fBnVersion\fP)"
+.br
+.ti -1c
+.RI "bool \fBIsNull\fP () const "
+.br
+.ti -1c
+.RI "\fBuint256\fP \fBGetHash\fP () const "
+.br
+.ti -1c
+.RI "\fBuint256\fP \fBGetPoWHash\fP () const "
+.br
+.ti -1c
+.RI "\fBuint256\fP \fBGetPoWArgonHash\fP () const "
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBGetBlockTime\fP () const "
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBint32_t\fP \fBnVersion\fP"
+.br
+.ti -1c
+.RI "\fBuint256\fP \fBhashPrevBlock\fP"
+.br
+.ti -1c
+.RI "\fBuint256\fP \fBhashMerkleRoot\fP"
+.br
+.ti -1c
+.RI "\fBuint32_t\fP \fBnTime\fP"
+.br
+.ti -1c
+.RI "\fBuint32_t\fP \fBnBits\fP"
+.br
+.ti -1c
+.RI "\fBuint32_t\fP \fBnNonce\fP"
+.br
+.ti -1c
+.RI "int \fBnDoS\fP"
+.br
+.ti -1c
+.RI "\fBADD_SERIALIZE_METHODS\fP"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static const \fBint32_t\fP \fBCURRENT_VERSION\fP = 2"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Nodes collect new transactions into a block, hash them into a hash tree, and scan through nonce values to make the block's hash satisfy proof-of-work requirements\&. When they solve the proof-of-work, they broadcast the block to everyone and the block is added to the block chain\&. The first transaction in the block is a special one that creates a new coin owned by the creator of the block\&.
+.PP
+Blocks are appended to blk0001\&.dat files on disk\&. Their location on disk is indexed by \fBCBlockIndex\fP objects in memory\&. 
+.PP
+Definition at line 34 of file block\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CBlockHeader::CBlockHeader ()\fC [inline]\fP"
+
+.PP
+Definition at line 50 of file block\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool CBlockHeader::DoS (int nDoSIn, bool fIn) const\fC [inline]\fP"
+
+.PP
+Definition at line 48 of file block\&.h\&.
+.SS "\fBint64_t\fP CBlockHeader::GetBlockTime () const\fC [inline]\fP"
+
+.PP
+Definition at line 97 of file block\&.h\&.
+.SS "\fBuint256\fP CBlockHeader::GetHash () const\fC [inline]\fP"
+
+.PP
+Definition at line 78 of file block\&.h\&.
+.SS "\fBuint256\fP CBlockHeader::GetPoWArgonHash () const\fC [inline]\fP"
+
+.PP
+Definition at line 92 of file block\&.h\&.
+.SS "\fBuint256\fP CBlockHeader::GetPoWHash () const\fC [inline]\fP"
+
+.PP
+Definition at line 87 of file block\&.h\&.
+.SS "bool CBlockHeader::IsNull () const\fC [inline]\fP"
+
+.PP
+Definition at line 73 of file block\&.h\&.
+.SS "template<typename Stream , typename Operation > void CBlockHeader::SerializationOp (Stream & s, Operation ser_action, int nType, int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 63 of file block\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "CBlockHeader::ADD_SERIALIZE_METHODS"
+
+.PP
+Definition at line 60 of file block\&.h\&.
+.SS "const \fBint32_t\fP CBlockHeader::CURRENT_VERSION = 2\fC [static]\fP"
+
+.PP
+Definition at line 38 of file block\&.h\&.
+.SS "\fBuint256\fP CBlockHeader::hashMerkleRoot"
+
+.PP
+Definition at line 41 of file block\&.h\&.
+.SS "\fBuint256\fP CBlockHeader::hashPrevBlock"
+
+.PP
+Definition at line 40 of file block\&.h\&.
+.SS "\fBuint32_t\fP CBlockHeader::nBits"
+
+.PP
+Definition at line 43 of file block\&.h\&.
+.SS "int CBlockHeader::nDoS\fC [mutable]\fP"
+
+.PP
+Definition at line 47 of file block\&.h\&.
+.SS "\fBuint32_t\fP CBlockHeader::nNonce"
+
+.PP
+Definition at line 44 of file block\&.h\&.
+.SS "\fBuint32_t\fP CBlockHeader::nTime"
+
+.PP
+Definition at line 42 of file block\&.h\&.
+.SS "\fBint32_t\fP CBlockHeader::nVersion"
+
+.PP
+Definition at line 39 of file block\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

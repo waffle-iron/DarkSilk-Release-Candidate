@@ -13,11 +13,8 @@ using namespace boost;
 
 #include "script.h"
 #include "keystore.h"
-#include "bignum.h"
-#include "pubkey.h"
 #include "main.h"
 #include "sync.h"
-#include "util.h"
 #include "crypto/ripemd160.h"
 #include "crypto/sha1.h"
 #include "crypto/sha256.h"

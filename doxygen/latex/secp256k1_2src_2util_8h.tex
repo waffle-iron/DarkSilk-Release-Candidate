@@ -1,0 +1,124 @@
+\hypertarget{secp256k1_2src_2util_8h}{}\section{/home/dev/ds-\/160209/src/secp256k1/src/util.h File Reference}
+\label{secp256k1_2src_2util_8h}\index{/home/dev/ds-\/160209/src/secp256k1/src/util.\+h@{/home/dev/ds-\/160209/src/secp256k1/src/util.\+h}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structsecp256k1__callback}{secp256k1\+\_\+callback}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{secp256k1_2src_2util_8h_ac39417c5a18bbf27875c39fcfc8b271b}{T\+E\+S\+T\+\_\+\+F\+A\+I\+L\+U\+R\+E}(msg)
+\item 
+\#define \hyperlink{secp256k1_2src_2util_8h_a76e8a689f16456e44a2cc438a6821025}{E\+X\+P\+E\+C\+T}(x,  c)~(x)
+\item 
+\#define \hyperlink{secp256k1_2src_2util_8h_aba1590ff86288c886c47dc8a27b30467}{C\+H\+E\+C\+K}(cond)
+\item 
+\#define \hyperlink{secp256k1_2src_2util_8h_aca8ac5ae73fd966db106de59160a178b}{V\+E\+R\+I\+F\+Y\+\_\+\+C\+H\+E\+C\+K}(cond)~do \{ (void)(cond); \} while(0)
+\item 
+\#define \hyperlink{secp256k1_2src_2util_8h_aa116d8999575e97182121de504f7a130}{V\+E\+R\+I\+F\+Y\+\_\+\+S\+E\+T\+U\+P}(stmt)
+\item 
+\#define \hyperlink{secp256k1_2src_2util_8h_ad3e284f8cb00286e85a753265f6b17b8}{S\+E\+C\+P256\+K1\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T}
+\item 
+\#define \hyperlink{secp256k1_2src_2util_8h_a125544a079312fb3a28a8d1a40ebc7e6}{I64\+F\+O\+R\+M\+A\+T}~\char`\"{}lld\char`\"{}
+\item 
+\#define \hyperlink{secp256k1_2src_2util_8h_aa4f83048799b3a95129ed0671519f456}{I64u\+F\+O\+R\+M\+A\+T}~\char`\"{}llu\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{secp256k1_2src_2util_8h_aba1590ff86288c886c47dc8a27b30467}{}\index{secp256k1/src/util.\+h@{secp256k1/src/util.\+h}!C\+H\+E\+C\+K@{C\+H\+E\+C\+K}}
+\index{C\+H\+E\+C\+K@{C\+H\+E\+C\+K}!secp256k1/src/util.\+h@{secp256k1/src/util.\+h}}
+\subsubsection[{C\+H\+E\+C\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+H\+E\+C\+K(
+\begin{DoxyParamCaption}
+\item[{}]{cond}
+\end{DoxyParamCaption}
+)}\label{secp256k1_2src_2util_8h_aba1590ff86288c886c47dc8a27b30467}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+    if (\hyperlink{secp256k1_2src_2util_8h_a76e8a689f16456e44a2cc438a6821025}{EXPECT}(!(cond), 0)) \{ \hyperlink{secp256k1_2src_2util_8h_ac39417c5a18bbf27875c39fcfc8b271b}{\(\backslash\)}
+\hyperlink{secp256k1_2src_2util_8h_ac39417c5a18bbf27875c39fcfc8b271b}{        TEST\_FAILURE}(\textcolor{stringliteral}{"test condition failed: "} #cond); \(\backslash\)
+    \} \(\backslash\)
+\} \textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+
+
+Definition at line 52 of file util.\+h.
+
+\hypertarget{secp256k1_2src_2util_8h_a76e8a689f16456e44a2cc438a6821025}{}\index{secp256k1/src/util.\+h@{secp256k1/src/util.\+h}!E\+X\+P\+E\+C\+T@{E\+X\+P\+E\+C\+T}}
+\index{E\+X\+P\+E\+C\+T@{E\+X\+P\+E\+C\+T}!secp256k1/src/util.\+h@{secp256k1/src/util.\+h}}
+\subsubsection[{E\+X\+P\+E\+C\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+X\+P\+E\+C\+T(
+\begin{DoxyParamCaption}
+\item[{}]{x, }
+\item[{}]{c}
+\end{DoxyParamCaption}
+)~(x)}\label{secp256k1_2src_2util_8h_a76e8a689f16456e44a2cc438a6821025}
+
+
+Definition at line 42 of file util.\+h.
+
+\hypertarget{secp256k1_2src_2util_8h_a125544a079312fb3a28a8d1a40ebc7e6}{}\index{secp256k1/src/util.\+h@{secp256k1/src/util.\+h}!I64\+F\+O\+R\+M\+A\+T@{I64\+F\+O\+R\+M\+A\+T}}
+\index{I64\+F\+O\+R\+M\+A\+T@{I64\+F\+O\+R\+M\+A\+T}!secp256k1/src/util.\+h@{secp256k1/src/util.\+h}}
+\subsubsection[{I64\+F\+O\+R\+M\+A\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define I64\+F\+O\+R\+M\+A\+T~\char`\"{}lld\char`\"{}}\label{secp256k1_2src_2util_8h_a125544a079312fb3a28a8d1a40ebc7e6}
+
+
+Definition at line 97 of file util.\+h.
+
+\hypertarget{secp256k1_2src_2util_8h_aa4f83048799b3a95129ed0671519f456}{}\index{secp256k1/src/util.\+h@{secp256k1/src/util.\+h}!I64u\+F\+O\+R\+M\+A\+T@{I64u\+F\+O\+R\+M\+A\+T}}
+\index{I64u\+F\+O\+R\+M\+A\+T@{I64u\+F\+O\+R\+M\+A\+T}!secp256k1/src/util.\+h@{secp256k1/src/util.\+h}}
+\subsubsection[{I64u\+F\+O\+R\+M\+A\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define I64u\+F\+O\+R\+M\+A\+T~\char`\"{}llu\char`\"{}}\label{secp256k1_2src_2util_8h_aa4f83048799b3a95129ed0671519f456}
+
+
+Definition at line 98 of file util.\+h.
+
+\hypertarget{secp256k1_2src_2util_8h_ad3e284f8cb00286e85a753265f6b17b8}{}\index{secp256k1/src/util.\+h@{secp256k1/src/util.\+h}!S\+E\+C\+P256\+K1\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T@{S\+E\+C\+P256\+K1\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T}}
+\index{S\+E\+C\+P256\+K1\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T@{S\+E\+C\+P256\+K1\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T}!secp256k1/src/util.\+h@{secp256k1/src/util.\+h}}
+\subsubsection[{S\+E\+C\+P256\+K1\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+C\+P256\+K1\+\_\+\+R\+E\+S\+T\+R\+I\+C\+T}\label{secp256k1_2src_2util_8h_ad3e284f8cb00286e85a753265f6b17b8}
+
+
+Definition at line 86 of file util.\+h.
+
+\hypertarget{secp256k1_2src_2util_8h_ac39417c5a18bbf27875c39fcfc8b271b}{}\index{secp256k1/src/util.\+h@{secp256k1/src/util.\+h}!T\+E\+S\+T\+\_\+\+F\+A\+I\+L\+U\+R\+E@{T\+E\+S\+T\+\_\+\+F\+A\+I\+L\+U\+R\+E}}
+\index{T\+E\+S\+T\+\_\+\+F\+A\+I\+L\+U\+R\+E@{T\+E\+S\+T\+\_\+\+F\+A\+I\+L\+U\+R\+E}!secp256k1/src/util.\+h@{secp256k1/src/util.\+h}}
+\subsubsection[{T\+E\+S\+T\+\_\+\+F\+A\+I\+L\+U\+R\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+E\+S\+T\+\_\+\+F\+A\+I\+L\+U\+R\+E(
+\begin{DoxyParamCaption}
+\item[{}]{msg}
+\end{DoxyParamCaption}
+)}\label{secp256k1_2src_2util_8h_ac39417c5a18bbf27875c39fcfc8b271b}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{ \(\backslash\)
+    fprintf(stderr, \textcolor{stringliteral}{"%s:%d: %s\(\backslash\)n"}, \_\_FILE\_\_, \_\_LINE\_\_, msg); \(\backslash\)
+    abort(); \(\backslash\)
+\} \textcolor{keywordflow}{while}(0)
+\end{DoxyCode}
+
+
+Definition at line 33 of file util.\+h.
+
+\hypertarget{secp256k1_2src_2util_8h_aca8ac5ae73fd966db106de59160a178b}{}\index{secp256k1/src/util.\+h@{secp256k1/src/util.\+h}!V\+E\+R\+I\+F\+Y\+\_\+\+C\+H\+E\+C\+K@{V\+E\+R\+I\+F\+Y\+\_\+\+C\+H\+E\+C\+K}}
+\index{V\+E\+R\+I\+F\+Y\+\_\+\+C\+H\+E\+C\+K@{V\+E\+R\+I\+F\+Y\+\_\+\+C\+H\+E\+C\+K}!secp256k1/src/util.\+h@{secp256k1/src/util.\+h}}
+\subsubsection[{V\+E\+R\+I\+F\+Y\+\_\+\+C\+H\+E\+C\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+E\+R\+I\+F\+Y\+\_\+\+C\+H\+E\+C\+K(
+\begin{DoxyParamCaption}
+\item[{}]{cond}
+\end{DoxyParamCaption}
+)~do \{ (void)(cond); \} while(0)}\label{secp256k1_2src_2util_8h_aca8ac5ae73fd966db106de59160a178b}
+
+
+Definition at line 64 of file util.\+h.
+
+\hypertarget{secp256k1_2src_2util_8h_aa116d8999575e97182121de504f7a130}{}\index{secp256k1/src/util.\+h@{secp256k1/src/util.\+h}!V\+E\+R\+I\+F\+Y\+\_\+\+S\+E\+T\+U\+P@{V\+E\+R\+I\+F\+Y\+\_\+\+S\+E\+T\+U\+P}}
+\index{V\+E\+R\+I\+F\+Y\+\_\+\+S\+E\+T\+U\+P@{V\+E\+R\+I\+F\+Y\+\_\+\+S\+E\+T\+U\+P}!secp256k1/src/util.\+h@{secp256k1/src/util.\+h}}
+\subsubsection[{V\+E\+R\+I\+F\+Y\+\_\+\+S\+E\+T\+U\+P}]{\setlength{\rightskip}{0pt plus 5cm}\#define V\+E\+R\+I\+F\+Y\+\_\+\+S\+E\+T\+U\+P(
+\begin{DoxyParamCaption}
+\item[{}]{stmt}
+\end{DoxyParamCaption}
+)}\label{secp256k1_2src_2util_8h_aa116d8999575e97182121de504f7a130}
+
+
+Definition at line 65 of file util.\+h.
+

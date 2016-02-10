@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="aboutdialog_8cpp" kind="file" language="C++">
+    <compoundname>aboutdialog.cpp</compoundname>
+    <includes refid="aboutdialog_8h" local="yes">aboutdialog.h</includes>
+    <includes local="yes">ui_aboutdialog.h</includes>
+    <includes refid="clientmodel_8h" local="yes">clientmodel.h</includes>
+    <includes refid="version_8h" local="yes">version.h</includes>
+    <incdepgraph>
+      <node id="12910">
+        <label>QObject</label>
+      </node>
+      <node id="12905">
+        <label>/home/dev/ds-160209/src/qt/aboutdialog.cpp</label>
+        <link refid="aboutdialog.cpp"/>
+        <childnode refid="12906" relation="include">
+        </childnode>
+        <childnode refid="12908" relation="include">
+        </childnode>
+        <childnode refid="12909" relation="include">
+        </childnode>
+        <childnode refid="12911" relation="include">
+        </childnode>
+      </node>
+      <node id="12911">
+        <label>version.h</label>
+        <link refid="version_8h"/>
+        <childnode refid="12912" relation="include">
+        </childnode>
+        <childnode refid="12913" relation="include">
+        </childnode>
+      </node>
+      <node id="12909">
+        <label>clientmodel.h</label>
+        <link refid="clientmodel_8h"/>
+        <childnode refid="12910" relation="include">
+        </childnode>
+      </node>
+      <node id="12913">
+        <label>string</label>
+      </node>
+      <node id="12908">
+        <label>ui_aboutdialog.h</label>
+      </node>
+      <node id="12906">
+        <label>aboutdialog.h</label>
+        <link refid="aboutdialog_8h"/>
+        <childnode refid="12907" relation="include">
+        </childnode>
+      </node>
+      <node id="12912">
+        <label>clientversion.h</label>
+        <link refid="clientversion_8h"/>
+      </node>
+      <node id="12907">
+        <label>QDialog</label>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="aboutdialog_8h" kindref="compound">aboutdialog.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;ui_aboutdialog.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="clientmodel_8h" kindref="compound">clientmodel.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="version_8h" kindref="compound">version.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="class_about_dialog_1ad96fc2ce8de7568ace543b7c69c71c56" refkind="member"><highlight class="normal"><ref refid="class_about_dialog_1ad96fc2ce8de7568ace543b7c69c71c56" kindref="member">AboutDialog::AboutDialog</ref>(QWidget<sp/>*parent)<sp/>:</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/>QDialog(parent),</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>ui(new<sp/><ref refid="namespace_ui" kindref="compound">Ui</ref>::<ref refid="class_about_dialog" kindref="compound">AboutDialog</ref>)</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>ui-&gt;setupUi(</highlight><highlight class="keyword">this</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="class_about_dialog_1ad15ee5cad707263d7b39ba7803bb6def" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_about_dialog_1ad15ee5cad707263d7b39ba7803bb6def" kindref="member">AboutDialog::setModel</ref>(<ref refid="class_client_model" kindref="compound">ClientModel</ref><sp/>*model)</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(model)</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ui-&gt;versionLabel-&gt;setText(model-&gt;<ref refid="class_client_model_1a1c93d11fd03ef9aabf9b694e73698710" kindref="member">formatFullVersion</ref>());</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="class_about_dialog_1a3d87f5a26a175bb2573965c98af6d4ca" refkind="member"><highlight class="normal"><ref refid="class_about_dialog_1a3d87f5a26a175bb2573965c98af6d4ca" kindref="member">AboutDialog::~AboutDialog</ref>()</highlight></codeline>
+<codeline lineno="23"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>ui;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>AboutDialog::on_buttonBox_accepted()</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>close();</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/qt/aboutdialog.cpp"/>
+  </compounddef>
+</doxygen>

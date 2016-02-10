@@ -1,0 +1,713 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_tx_d_b" kind="class" language="C++" prot="public">
+    <compoundname>CTxDB</compoundname>
+    <includes refid="txdb-leveldb_8h" local="no">txdb-leveldb.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_c_tx_d_b_1a7bf556386c6cd3513deb2c6550a78f67" prot="private" static="no" mutable="no">
+        <type><ref refid="classleveldb_1_1_d_b" kindref="compound">leveldb::DB</ref> *</type>
+        <definition>leveldb::DB* CTxDB::pdb</definition>
+        <argsstring></argsstring>
+        <name>pdb</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="51" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_tx_d_b_1a9493953c1152c7e53ad8a925e7c11c69" prot="private" static="no" mutable="no">
+        <type><ref refid="classleveldb_1_1_write_batch" kindref="compound">leveldb::WriteBatch</ref> *</type>
+        <definition>leveldb::WriteBatch* CTxDB::activeBatch</definition>
+        <argsstring></argsstring>
+        <name>activeBatch</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="55" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_tx_d_b_1ad9b13681ef2a79e342e7bbc8e99dbd21" prot="private" static="no" mutable="no">
+        <type><ref refid="structleveldb_1_1_options" kindref="compound">leveldb::Options</ref></type>
+        <definition>leveldb::Options CTxDB::options</definition>
+        <argsstring></argsstring>
+        <name>options</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="56" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_tx_d_b_1ae8d505436aa1423068ed0cc566b2da7f" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CTxDB::fReadOnly</definition>
+        <argsstring></argsstring>
+        <name>fReadOnly</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="57" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_tx_d_b_1a92c74b09e94f8923d48d1bd656e85601" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CTxDB::nVersion</definition>
+        <argsstring></argsstring>
+        <name>nVersion</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="58" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_tx_d_b_1a15efd656b7f86b0abf8d99183cae493a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CTxDB::CTxDB</definition>
+        <argsstring>(const char *pszMode=&quot;r+&quot;)</argsstring>
+        <name>CTxDB</name>
+        <param>
+          <type>const char *</type>
+          <declname>pszMode</declname>
+          <defval>&quot;r+&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="40" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="77" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a279b844a6669e94680c95c2f2bf45580" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CTxDB::~CTxDB</definition>
+        <argsstring>()</argsstring>
+        <name>~CTxDB</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="41" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.h" bodystart="41" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1ad319e9c15a7a03b9b80d7affb7fb655e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CTxDB::Close</definition>
+        <argsstring>()</argsstring>
+        <name>Close</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="48" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="132" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1af3c27c5cb8f922b5c03840feda844016" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::TxnBegin</definition>
+        <argsstring>()</argsstring>
+        <name>TxnBegin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="173" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="144" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1aff04f078df2fc3640d559ce62fc9a6a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::TxnCommit</definition>
+        <argsstring>()</argsstring>
+        <name>TxnCommit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="174" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="151" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1ac984bce763c97af6fd90f3056367b521" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::TxnAbort</definition>
+        <argsstring>()</argsstring>
+        <name>TxnAbort</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="175" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.h" bodystart="175" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a24938c7578577c08b2a3eae7617dfa1e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::ReadVersion</definition>
+        <argsstring>(int &amp;nVersion)</argsstring>
+        <name>ReadVersion</name>
+        <param>
+          <type>int &amp;</type>
+          <declname>nVersion</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="182" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.h" bodystart="182" bodyend="186"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1aa30dbf235b1c229896097e1eb1ea9520" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::WriteVersion</definition>
+        <argsstring>(int nVersion)</argsstring>
+        <name>WriteVersion</name>
+        <param>
+          <type>int</type>
+          <declname>nVersion</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="188" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.h" bodystart="188" bodyend="191"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1af1a1c0835bf9eb9a59e9d197678b0a4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::ReadAddrIndex</definition>
+        <argsstring>(uint160 addrHash, std::vector&lt; uint256 &gt; &amp;txHashes)</argsstring>
+        <name>ReadAddrIndex</name>
+        <param>
+          <type><ref refid="classuint160" kindref="compound">uint160</ref></type>
+          <declname>addrHash</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="classuint256" kindref="compound">uint256</ref> &gt; &amp;</type>
+          <declname>txHashes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="193" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="230" bodyend="233"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1aa661acc6807641aa0b27c41864c3102c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::WriteAddrIndex</definition>
+        <argsstring>(uint160 addrHash, uint256 txHash)</argsstring>
+        <name>WriteAddrIndex</name>
+        <param>
+          <type><ref refid="classuint160" kindref="compound">uint160</ref></type>
+          <declname>addrHash</declname>
+        </param>
+        <param>
+          <type><ref refid="classuint256" kindref="compound">uint256</ref></type>
+          <declname>txHash</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="194" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="208" bodyend="228"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a8a138e5dcc3ef98991abaa16eaa8ddeb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::ReadTxIndex</definition>
+        <argsstring>(uint256 hash, CTxIndex &amp;txindex)</argsstring>
+        <name>ReadTxIndex</name>
+        <param>
+          <type><ref refid="classuint256" kindref="compound">uint256</ref></type>
+          <declname>hash</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_tx_index" kindref="compound">CTxIndex</ref> &amp;</type>
+          <declname>txindex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="195" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="235" bodyend="239"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a62fb371022854dc8cb247bed36302df2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::UpdateTxIndex</definition>
+        <argsstring>(uint256 hash, const CTxIndex &amp;txindex)</argsstring>
+        <name>UpdateTxIndex</name>
+        <param>
+          <type><ref refid="classuint256" kindref="compound">uint256</ref></type>
+          <declname>hash</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_tx_index" kindref="compound">CTxIndex</ref> &amp;</type>
+          <declname>txindex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="196" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="241" bodyend="244"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a6c0d7c688e8fd7ac28afde78ae6b624e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::AddTxIndex</definition>
+        <argsstring>(const CTransaction &amp;tx, const CDiskTxPos &amp;pos, int nHeight)</argsstring>
+        <name>AddTxIndex</name>
+        <param>
+          <type>const <ref refid="class_c_transaction" kindref="compound">CTransaction</ref> &amp;</type>
+          <declname>tx</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_disk_tx_pos" kindref="compound">CDiskTxPos</ref> &amp;</type>
+          <declname>pos</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nHeight</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="197" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="246" bodyend="252"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a5e0f0ed39529758a90953a2a08fc9412" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::EraseTxIndex</definition>
+        <argsstring>(const CTransaction &amp;tx)</argsstring>
+        <name>EraseTxIndex</name>
+        <param>
+          <type>const <ref refid="class_c_transaction" kindref="compound">CTransaction</ref> &amp;</type>
+          <declname>tx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="198" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="254" bodyend="259"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a09b87317101ed16b6ad99794279f4c2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::ContainsTx</definition>
+        <argsstring>(uint256 hash)</argsstring>
+        <name>ContainsTx</name>
+        <param>
+          <type><ref refid="classuint256" kindref="compound">uint256</ref></type>
+          <declname>hash</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="199" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="261" bodyend="264"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a32d0e546eee99724776352dd4bf0ae79" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::ReadDiskTx</definition>
+        <argsstring>(uint256 hash, CTransaction &amp;tx, CTxIndex &amp;txindex)</argsstring>
+        <name>ReadDiskTx</name>
+        <param>
+          <type><ref refid="classuint256" kindref="compound">uint256</ref></type>
+          <declname>hash</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_transaction" kindref="compound">CTransaction</ref> &amp;</type>
+          <declname>tx</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_tx_index" kindref="compound">CTxIndex</ref> &amp;</type>
+          <declname>txindex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="200" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="266" bodyend="273"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1ab32f32729feabef7162d5fa225dd0e22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::ReadDiskTx</definition>
+        <argsstring>(uint256 hash, CTransaction &amp;tx)</argsstring>
+        <name>ReadDiskTx</name>
+        <param>
+          <type><ref refid="classuint256" kindref="compound">uint256</ref></type>
+          <declname>hash</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_transaction" kindref="compound">CTransaction</ref> &amp;</type>
+          <declname>tx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="201" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="275" bodyend="279"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a80ee65f82bb1a769b507dc5c701bfacc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::ReadDiskTx</definition>
+        <argsstring>(COutPoint outpoint, CTransaction &amp;tx, CTxIndex &amp;txindex)</argsstring>
+        <name>ReadDiskTx</name>
+        <param>
+          <type><ref refid="class_c_out_point" kindref="compound">COutPoint</ref></type>
+          <declname>outpoint</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_transaction" kindref="compound">CTransaction</ref> &amp;</type>
+          <declname>tx</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_tx_index" kindref="compound">CTxIndex</ref> &amp;</type>
+          <declname>txindex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="202" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="281" bodyend="284"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a4d7f67f600359473ddd2044030323215" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::ReadDiskTx</definition>
+        <argsstring>(COutPoint outpoint, CTransaction &amp;tx)</argsstring>
+        <name>ReadDiskTx</name>
+        <param>
+          <type><ref refid="class_c_out_point" kindref="compound">COutPoint</ref></type>
+          <declname>outpoint</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_transaction" kindref="compound">CTransaction</ref> &amp;</type>
+          <declname>tx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="203" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="286" bodyend="290"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a56f170187a609bd747c29b3a4adddd8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::WriteBlockIndex</definition>
+        <argsstring>(const CDiskBlockIndex &amp;blockindex)</argsstring>
+        <name>WriteBlockIndex</name>
+        <param>
+          <type>const <ref refid="class_c_disk_block_index" kindref="compound">CDiskBlockIndex</ref> &amp;</type>
+          <declname>blockindex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="204" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="292" bodyend="295"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a9aae38d6e39ce57a1b8eaaeaea81e4de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::ReadHashBestChain</definition>
+        <argsstring>(uint256 &amp;hashBestChain)</argsstring>
+        <name>ReadHashBestChain</name>
+        <param>
+          <type><ref refid="classuint256" kindref="compound">uint256</ref> &amp;</type>
+          <declname>hashBestChain</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="205" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="297" bodyend="300"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a2cf58de69c1c07e500a1f8d0b0709476" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::WriteHashBestChain</definition>
+        <argsstring>(uint256 hashBestChain)</argsstring>
+        <name>WriteHashBestChain</name>
+        <param>
+          <type><ref refid="classuint256" kindref="compound">uint256</ref></type>
+          <declname>hashBestChain</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="206" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="302" bodyend="305"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1ab0e2e8f95c4f891c0a9245d5ba6b0b68" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::ReadBestInvalidTrust</definition>
+        <argsstring>(CBigNum &amp;bnBestInvalidTrust)</argsstring>
+        <name>ReadBestInvalidTrust</name>
+        <param>
+          <type><ref refid="class_c_big_num" kindref="compound">CBigNum</ref> &amp;</type>
+          <declname>bnBestInvalidTrust</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="207" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="307" bodyend="310"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1ad9593efae66f6a73fafba93ad05fd2b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::WriteBestInvalidTrust</definition>
+        <argsstring>(CBigNum bnBestInvalidTrust)</argsstring>
+        <name>WriteBestInvalidTrust</name>
+        <param>
+          <type><ref refid="class_c_big_num" kindref="compound">CBigNum</ref></type>
+          <declname>bnBestInvalidTrust</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="208" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="312" bodyend="315"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1abcb9df0821d996f811f6604b452a26a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::LoadBlockIndex</definition>
+        <argsstring>()</argsstring>
+        <name>LoadBlockIndex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="209" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="337" bodyend="581"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_c_tx_d_b_1a8c718f82f43d567b5bf7487b5d6685e5" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::ScanBatch</definition>
+        <argsstring>(const CDataStream &amp;key, std::string *value, bool *deleted) const </argsstring>
+        <name>ScanBatch</name>
+        <param>
+          <type>const <ref refid="class_c_data_stream" kindref="compound">CDataStream</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>std::string *</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>deleted</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="64" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="194" bodyend="206"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a9e223a10434f8a73002e84cc75c682de" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename K</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool CTxDB::Read</definition>
+        <argsstring>(const K &amp;key, T &amp;value)</argsstring>
+        <name>Read</name>
+        <param>
+          <type>const K &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="67" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.h" bodystart="67" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a58885f67364829a8e0957a5dc810886d" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename K</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool CTxDB::Write</definition>
+        <argsstring>(const K &amp;key, const T &amp;value)</argsstring>
+        <name>Write</name>
+        <param>
+          <type>const K &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="108" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.h" bodystart="108" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a57ccf71e92f654e6db68be530d43a837" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename K</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool CTxDB::Erase</definition>
+        <argsstring>(const K &amp;key)</argsstring>
+        <name>Erase</name>
+        <param>
+          <type>const K &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="133" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.h" bodystart="133" bodyend="149"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a36002f063f6fef483226362a1350e22d" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename K</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool CTxDB::Exists</definition>
+        <argsstring>(const K &amp;key)</argsstring>
+        <name>Exists</name>
+        <param>
+          <type>const K &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="152" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.h" bodystart="152" bodyend="169"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_c_tx_d_b_1ae3e6a1fabe178b5d1aa244609f8e72d1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::LoadBlockIndexGuts</definition>
+        <argsstring>()</argsstring>
+        <name>LoadBlockIndexGuts</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="211" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="38" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.h" bodystart="37" bodyend="212"/>
+    <listofallmembers>
+      <member refid="class_c_tx_d_b_1a9493953c1152c7e53ad8a925e7c11c69" prot="private" virt="non-virtual"><scope>CTxDB</scope><name>activeBatch</name></member>
+      <member refid="class_c_tx_d_b_1a6c0d7c688e8fd7ac28afde78ae6b624e" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>AddTxIndex</name></member>
+      <member refid="class_c_tx_d_b_1ad319e9c15a7a03b9b80d7affb7fb655e" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>Close</name></member>
+      <member refid="class_c_tx_d_b_1a09b87317101ed16b6ad99794279f4c2d" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>ContainsTx</name></member>
+      <member refid="class_c_tx_d_b_1a15efd656b7f86b0abf8d99183cae493a" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>CTxDB</name></member>
+      <member refid="class_c_tx_d_b_1a57ccf71e92f654e6db68be530d43a837" prot="protected" virt="non-virtual"><scope>CTxDB</scope><name>Erase</name></member>
+      <member refid="class_c_tx_d_b_1a5e0f0ed39529758a90953a2a08fc9412" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>EraseTxIndex</name></member>
+      <member refid="class_c_tx_d_b_1a36002f063f6fef483226362a1350e22d" prot="protected" virt="non-virtual"><scope>CTxDB</scope><name>Exists</name></member>
+      <member refid="class_c_tx_d_b_1ae8d505436aa1423068ed0cc566b2da7f" prot="private" virt="non-virtual"><scope>CTxDB</scope><name>fReadOnly</name></member>
+      <member refid="class_c_tx_d_b_1abcb9df0821d996f811f6604b452a26a0" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>LoadBlockIndex</name></member>
+      <member refid="class_c_tx_d_b_1ae3e6a1fabe178b5d1aa244609f8e72d1" prot="private" virt="non-virtual"><scope>CTxDB</scope><name>LoadBlockIndexGuts</name></member>
+      <member refid="class_c_tx_d_b_1a92c74b09e94f8923d48d1bd656e85601" prot="private" virt="non-virtual"><scope>CTxDB</scope><name>nVersion</name></member>
+      <member refid="class_c_tx_d_b_1ad9b13681ef2a79e342e7bbc8e99dbd21" prot="private" virt="non-virtual"><scope>CTxDB</scope><name>options</name></member>
+      <member refid="class_c_tx_d_b_1a7bf556386c6cd3513deb2c6550a78f67" prot="private" virt="non-virtual"><scope>CTxDB</scope><name>pdb</name></member>
+      <member refid="class_c_tx_d_b_1a9e223a10434f8a73002e84cc75c682de" prot="protected" virt="non-virtual"><scope>CTxDB</scope><name>Read</name></member>
+      <member refid="class_c_tx_d_b_1af1a1c0835bf9eb9a59e9d197678b0a4d" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>ReadAddrIndex</name></member>
+      <member refid="class_c_tx_d_b_1ab0e2e8f95c4f891c0a9245d5ba6b0b68" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>ReadBestInvalidTrust</name></member>
+      <member refid="class_c_tx_d_b_1a32d0e546eee99724776352dd4bf0ae79" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>ReadDiskTx</name></member>
+      <member refid="class_c_tx_d_b_1ab32f32729feabef7162d5fa225dd0e22" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>ReadDiskTx</name></member>
+      <member refid="class_c_tx_d_b_1a80ee65f82bb1a769b507dc5c701bfacc" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>ReadDiskTx</name></member>
+      <member refid="class_c_tx_d_b_1a4d7f67f600359473ddd2044030323215" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>ReadDiskTx</name></member>
+      <member refid="class_c_tx_d_b_1a9aae38d6e39ce57a1b8eaaeaea81e4de" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>ReadHashBestChain</name></member>
+      <member refid="class_c_tx_d_b_1a8a138e5dcc3ef98991abaa16eaa8ddeb" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>ReadTxIndex</name></member>
+      <member refid="class_c_tx_d_b_1a24938c7578577c08b2a3eae7617dfa1e" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>ReadVersion</name></member>
+      <member refid="class_c_tx_d_b_1a8c718f82f43d567b5bf7487b5d6685e5" prot="protected" virt="non-virtual"><scope>CTxDB</scope><name>ScanBatch</name></member>
+      <member refid="class_c_tx_d_b_1ac984bce763c97af6fd90f3056367b521" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>TxnAbort</name></member>
+      <member refid="class_c_tx_d_b_1af3c27c5cb8f922b5c03840feda844016" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>TxnBegin</name></member>
+      <member refid="class_c_tx_d_b_1aff04f078df2fc3640d559ce62fc9a6a2" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>TxnCommit</name></member>
+      <member refid="class_c_tx_d_b_1a62fb371022854dc8cb247bed36302df2" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>UpdateTxIndex</name></member>
+      <member refid="class_c_tx_d_b_1a58885f67364829a8e0957a5dc810886d" prot="protected" virt="non-virtual"><scope>CTxDB</scope><name>Write</name></member>
+      <member refid="class_c_tx_d_b_1aa661acc6807641aa0b27c41864c3102c" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>WriteAddrIndex</name></member>
+      <member refid="class_c_tx_d_b_1ad9593efae66f6a73fafba93ad05fd2b8" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>WriteBestInvalidTrust</name></member>
+      <member refid="class_c_tx_d_b_1a56f170187a609bd747c29b3a4adddd8e" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>WriteBlockIndex</name></member>
+      <member refid="class_c_tx_d_b_1a2cf58de69c1c07e500a1f8d0b0709476" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>WriteHashBestChain</name></member>
+      <member refid="class_c_tx_d_b_1aa30dbf235b1c229896097e1eb1ea9520" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>WriteVersion</name></member>
+      <member refid="class_c_tx_d_b_1a279b844a6669e94680c95c2f2bf45580" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>~CTxDB</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

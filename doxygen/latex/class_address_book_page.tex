@@ -1,0 +1,197 @@
+\hypertarget{class_address_book_page}{}\section{Address\+Book\+Page Class Reference}
+\label{class_address_book_page}\index{Address\+Book\+Page@{Address\+Book\+Page}}
+
+
+{\ttfamily \#include $<$addressbookpage.\+h$>$}
+
+Inheritance diagram for Address\+Book\+Page\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_address_book_page}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_address_book_page_a7ef3cf6c3e4613894af313a05335dbe3}{Tabs} \{ \hyperlink{class_address_book_page_a7ef3cf6c3e4613894af313a05335dbe3a0317158231d27f7965037521fea1998d}{Sending\+Tab} = 0, 
+\hyperlink{class_address_book_page_a7ef3cf6c3e4613894af313a05335dbe3ac0029a5d46e35919fb2df9c4f370e8a9}{Receiving\+Tab} = 1
+ \}
+\item 
+enum \hyperlink{class_address_book_page_a0a8f8e590dc6f18e829fde039f984464}{Mode} \{ \hyperlink{class_address_book_page_a0a8f8e590dc6f18e829fde039f984464a3591dbaa5496b5791059d7df5d293a1c}{For\+Sending}, 
+\hyperlink{class_address_book_page_a0a8f8e590dc6f18e829fde039f984464a86b6565fcddce6edf578c0e470471296}{For\+Editing}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_address_book_page_a4f585f3ff33a3c7066b2fcda803f862f}{done} (int retval)
+\item 
+void \hyperlink{class_address_book_page_ae5b20525c7f1cf805eace9aafe308d42}{export\+Clicked} ()
+\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_address_book_page_a5a5258459403cb0e841d50e4c6bb6f3b}{sign\+Message} (Q\+String addr)
+\item 
+void \hyperlink{class_address_book_page_a6050d81accc38fd0e3c469002ea3142f}{verify\+Message} (Q\+String addr)
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_address_book_page_ad53c82a9181ae7627c06b9c49971ec52}{Address\+Book\+Page} (\hyperlink{class_address_book_page_a0a8f8e590dc6f18e829fde039f984464}{Mode} mode, \hyperlink{class_address_book_page_a7ef3cf6c3e4613894af313a05335dbe3}{Tabs} tab, Q\+Widget $\ast$parent=0)
+\item 
+\hyperlink{class_address_book_page_a8f81beda9c99fc10c454fc1505a081d3}{$\sim$\+Address\+Book\+Page} ()
+\item 
+void \hyperlink{class_address_book_page_a1282cda9cb0300ee04c472ec4c9949f3}{set\+Model} (\hyperlink{class_address_table_model}{Address\+Table\+Model} $\ast$model)
+\item 
+void \hyperlink{class_address_book_page_ab9667b2b14e6bf56aeb256402fe6ac7e}{set\+Options\+Model} (\hyperlink{class_options_model}{Options\+Model} $\ast$options\+Model)
+\item 
+const Q\+String \& \hyperlink{class_address_book_page_a204f9ff847c26eb900fac7a3d0a6ab4f}{get\+Return\+Value} () const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Widget that shows a list of sending or receiving addresses. 
+
+Definition at line 22 of file addressbookpage.\+h.
+
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{class_address_book_page_a0a8f8e590dc6f18e829fde039f984464}{}\index{Address\+Book\+Page@{Address\+Book\+Page}!Mode@{Mode}}
+\index{Mode@{Mode}!Address\+Book\+Page@{Address\+Book\+Page}}
+\subsubsection[{Mode}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Address\+Book\+Page\+::\+Mode}}\label{class_address_book_page_a0a8f8e590dc6f18e829fde039f984464}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{For\+Sending@{For\+Sending}!Address\+Book\+Page@{Address\+Book\+Page}}\index{Address\+Book\+Page@{Address\+Book\+Page}!For\+Sending@{For\+Sending}}\item[{\em 
+\hypertarget{class_address_book_page_a0a8f8e590dc6f18e829fde039f984464a3591dbaa5496b5791059d7df5d293a1c}{}For\+Sending\label{class_address_book_page_a0a8f8e590dc6f18e829fde039f984464a3591dbaa5496b5791059d7df5d293a1c}
+}]Open address book to pick address for sending \index{For\+Editing@{For\+Editing}!Address\+Book\+Page@{Address\+Book\+Page}}\index{Address\+Book\+Page@{Address\+Book\+Page}!For\+Editing@{For\+Editing}}\item[{\em 
+\hypertarget{class_address_book_page_a0a8f8e590dc6f18e829fde039f984464a86b6565fcddce6edf578c0e470471296}{}For\+Editing\label{class_address_book_page_a0a8f8e590dc6f18e829fde039f984464a86b6565fcddce6edf578c0e470471296}
+}]Open address book for editing \end{description}
+\end{Desc}
+
+
+Definition at line 32 of file addressbookpage.\+h.
+
+\hypertarget{class_address_book_page_a7ef3cf6c3e4613894af313a05335dbe3}{}\index{Address\+Book\+Page@{Address\+Book\+Page}!Tabs@{Tabs}}
+\index{Tabs@{Tabs}!Address\+Book\+Page@{Address\+Book\+Page}}
+\subsubsection[{Tabs}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Address\+Book\+Page\+::\+Tabs}}\label{class_address_book_page_a7ef3cf6c3e4613894af313a05335dbe3}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{Sending\+Tab@{Sending\+Tab}!Address\+Book\+Page@{Address\+Book\+Page}}\index{Address\+Book\+Page@{Address\+Book\+Page}!Sending\+Tab@{Sending\+Tab}}\item[{\em 
+\hypertarget{class_address_book_page_a7ef3cf6c3e4613894af313a05335dbe3a0317158231d27f7965037521fea1998d}{}Sending\+Tab\label{class_address_book_page_a7ef3cf6c3e4613894af313a05335dbe3a0317158231d27f7965037521fea1998d}
+}]\index{Receiving\+Tab@{Receiving\+Tab}!Address\+Book\+Page@{Address\+Book\+Page}}\index{Address\+Book\+Page@{Address\+Book\+Page}!Receiving\+Tab@{Receiving\+Tab}}\item[{\em 
+\hypertarget{class_address_book_page_a7ef3cf6c3e4613894af313a05335dbe3ac0029a5d46e35919fb2df9c4f370e8a9}{}Receiving\+Tab\label{class_address_book_page_a7ef3cf6c3e4613894af313a05335dbe3ac0029a5d46e35919fb2df9c4f370e8a9}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 27 of file addressbookpage.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_address_book_page_ad53c82a9181ae7627c06b9c49971ec52}{}\index{Address\+Book\+Page@{Address\+Book\+Page}!Address\+Book\+Page@{Address\+Book\+Page}}
+\index{Address\+Book\+Page@{Address\+Book\+Page}!Address\+Book\+Page@{Address\+Book\+Page}}
+\subsubsection[{Address\+Book\+Page}]{\setlength{\rightskip}{0pt plus 5cm}Address\+Book\+Page\+::\+Address\+Book\+Page (
+\begin{DoxyParamCaption}
+\item[{{\bf Mode}}]{mode, }
+\item[{{\bf Tabs}}]{tab, }
+\item[{Q\+Widget $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\label{class_address_book_page_ad53c82a9181ae7627c06b9c49971ec52}
+
+
+Definition at line 20 of file addressbookpage.\+cpp.
+
+\hypertarget{class_address_book_page_a8f81beda9c99fc10c454fc1505a081d3}{}\index{Address\+Book\+Page@{Address\+Book\+Page}!````~Address\+Book\+Page@{$\sim$\+Address\+Book\+Page}}
+\index{````~Address\+Book\+Page@{$\sim$\+Address\+Book\+Page}!Address\+Book\+Page@{Address\+Book\+Page}}
+\subsubsection[{$\sim$\+Address\+Book\+Page}]{\setlength{\rightskip}{0pt plus 5cm}Address\+Book\+Page\+::$\sim$\+Address\+Book\+Page (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_address_book_page_a8f81beda9c99fc10c454fc1505a081d3}
+
+
+Definition at line 104 of file addressbookpage.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_address_book_page_a4f585f3ff33a3c7066b2fcda803f862f}{}\index{Address\+Book\+Page@{Address\+Book\+Page}!done@{done}}
+\index{done@{done}!Address\+Book\+Page@{Address\+Book\+Page}}
+\subsubsection[{done}]{\setlength{\rightskip}{0pt plus 5cm}void Address\+Book\+Page\+::done (
+\begin{DoxyParamCaption}
+\item[{int}]{retval}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_address_book_page_a4f585f3ff33a3c7066b2fcda803f862f}
+
+
+Definition at line 283 of file addressbookpage.\+cpp.
+
+\hypertarget{class_address_book_page_ae5b20525c7f1cf805eace9aafe308d42}{}\index{Address\+Book\+Page@{Address\+Book\+Page}!export\+Clicked@{export\+Clicked}}
+\index{export\+Clicked@{export\+Clicked}!Address\+Book\+Page@{Address\+Book\+Page}}
+\subsubsection[{export\+Clicked}]{\setlength{\rightskip}{0pt plus 5cm}void Address\+Book\+Page\+::export\+Clicked (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_address_book_page_ae5b20525c7f1cf805eace9aafe308d42}
+
+
+Definition at line 310 of file addressbookpage.\+cpp.
+
+\hypertarget{class_address_book_page_a204f9ff847c26eb900fac7a3d0a6ab4f}{}\index{Address\+Book\+Page@{Address\+Book\+Page}!get\+Return\+Value@{get\+Return\+Value}}
+\index{get\+Return\+Value@{get\+Return\+Value}!Address\+Book\+Page@{Address\+Book\+Page}}
+\subsubsection[{get\+Return\+Value}]{\setlength{\rightskip}{0pt plus 5cm}const Q\+String\& Address\+Book\+Page\+::get\+Return\+Value (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_address_book_page_a204f9ff847c26eb900fac7a3d0a6ab4f}
+
+
+Definition at line 42 of file addressbookpage.\+h.
+
+\hypertarget{class_address_book_page_a1282cda9cb0300ee04c472ec4c9949f3}{}\index{Address\+Book\+Page@{Address\+Book\+Page}!set\+Model@{set\+Model}}
+\index{set\+Model@{set\+Model}!Address\+Book\+Page@{Address\+Book\+Page}}
+\subsubsection[{set\+Model}]{\setlength{\rightskip}{0pt plus 5cm}void Address\+Book\+Page\+::set\+Model (
+\begin{DoxyParamCaption}
+\item[{{\bf Address\+Table\+Model} $\ast$}]{model}
+\end{DoxyParamCaption}
+)}\label{class_address_book_page_a1282cda9cb0300ee04c472ec4c9949f3}
+
+
+Definition at line 109 of file addressbookpage.\+cpp.
+
+\hypertarget{class_address_book_page_ab9667b2b14e6bf56aeb256402fe6ac7e}{}\index{Address\+Book\+Page@{Address\+Book\+Page}!set\+Options\+Model@{set\+Options\+Model}}
+\index{set\+Options\+Model@{set\+Options\+Model}!Address\+Book\+Page@{Address\+Book\+Page}}
+\subsubsection[{set\+Options\+Model}]{\setlength{\rightskip}{0pt plus 5cm}void Address\+Book\+Page\+::set\+Options\+Model (
+\begin{DoxyParamCaption}
+\item[{{\bf Options\+Model} $\ast$}]{options\+Model}
+\end{DoxyParamCaption}
+)}\label{class_address_book_page_ab9667b2b14e6bf56aeb256402fe6ac7e}
+
+
+Definition at line 152 of file addressbookpage.\+cpp.
+
+\hypertarget{class_address_book_page_a5a5258459403cb0e841d50e4c6bb6f3b}{}\index{Address\+Book\+Page@{Address\+Book\+Page}!sign\+Message@{sign\+Message}}
+\index{sign\+Message@{sign\+Message}!Address\+Book\+Page@{Address\+Book\+Page}}
+\subsubsection[{sign\+Message}]{\setlength{\rightskip}{0pt plus 5cm}void Address\+Book\+Page\+::sign\+Message (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{addr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\label{class_address_book_page_a5a5258459403cb0e841d50e4c6bb6f3b}
+\hypertarget{class_address_book_page_a6050d81accc38fd0e3c469002ea3142f}{}\index{Address\+Book\+Page@{Address\+Book\+Page}!verify\+Message@{verify\+Message}}
+\index{verify\+Message@{verify\+Message}!Address\+Book\+Page@{Address\+Book\+Page}}
+\subsubsection[{verify\+Message}]{\setlength{\rightskip}{0pt plus 5cm}void Address\+Book\+Page\+::verify\+Message (
+\begin{DoxyParamCaption}
+\item[{Q\+String}]{addr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\label{class_address_book_page_a6050d81accc38fd0e3c469002ea3142f}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/qt/\hyperlink{addressbookpage_8h}{addressbookpage.\+h}\item 
+/home/dev/ds-\/160209/src/qt/\hyperlink{addressbookpage_8cpp}{addressbookpage.\+cpp}\end{DoxyCompactItemize}

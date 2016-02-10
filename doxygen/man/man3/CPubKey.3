@@ -1,0 +1,212 @@
+.TH "CPubKey" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CPubKey \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <pubkey\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCPubKey\fP ()"
+.br
+.ti -1c
+.RI "template<typename T > void \fBSet\fP (const T pbegin, const T pend)"
+.br
+.ti -1c
+.RI "template<typename T > \fBCPubKey\fP (const T pbegin, const T pend)"
+.br
+.ti -1c
+.RI "\fBCPubKey\fP (const std::vector< unsigned char > &vch)"
+.br
+.ti -1c
+.RI "unsigned int \fBsize\fP () const "
+.br
+.ti -1c
+.RI "const unsigned char * \fBbegin\fP () const "
+.br
+.ti -1c
+.RI "const unsigned char * \fBend\fP () const "
+.br
+.ti -1c
+.RI "const unsigned char & \fBoperator[]\fP (unsigned int pos) const "
+.br
+.ti -1c
+.RI "unsigned int \fBGetSerializeSize\fP (int nType, int nVersion) const "
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBSerialize\fP (Stream &s, int nType, int nVersion) const "
+.br
+.ti -1c
+.RI "template<typename Stream > void \fBUnserialize\fP (Stream &s, int nType, int nVersion)"
+.br
+.ti -1c
+.RI "\fBCKeyID\fP \fBGetID\fP () const "
+.br
+.ti -1c
+.RI "\fBuint256\fP \fBGetHash\fP () const "
+.br
+.ti -1c
+.RI "bool \fBIsValid\fP () const "
+.br
+.ti -1c
+.RI "bool \fBIsFullyValid\fP () const "
+.br
+.ti -1c
+.RI "bool \fBIsCompressed\fP () const "
+.br
+.ti -1c
+.RI "bool \fBVerify\fP (const \fBuint256\fP &\fBhash\fP, const std::vector< unsigned char > &vchSig) const "
+.br
+.ti -1c
+.RI "bool \fBRecoverCompact\fP (const \fBuint256\fP &\fBhash\fP, const std::vector< unsigned char > &vchSig)"
+.br
+.ti -1c
+.RI "bool \fBDecompress\fP ()"
+.br
+.ti -1c
+.RI "bool \fBDerive\fP (\fBCPubKey\fP &pubkeyChild, unsigned char ccChild[32], unsigned int nChild, const unsigned char cc[32]) const "
+.br
+.ti -1c
+.RI "std::vector< unsigned char > \fBRaw\fP () const "
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static bool \fBCheckLowS\fP (const std::vector< unsigned char > &vchSig)"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBCPubKey\fP &a, const \fBCPubKey\fP &b)"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBCPubKey\fP &a, const \fBCPubKey\fP &b)"
+.br
+.ti -1c
+.RI "bool \fBoperator<\fP (const \fBCPubKey\fP &a, const \fBCPubKey\fP &b)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+An encapsulated public key\&. 
+.PP
+Definition at line 43 of file pubkey\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CPubKey::CPubKey ()\fC [inline]\fP"
+
+.PP
+Definition at line 65 of file pubkey\&.h\&.
+.SS "template<typename T > CPubKey::CPubKey (const T pbegin, const T pend)\fC [inline]\fP"
+
+.PP
+Definition at line 81 of file pubkey\&.h\&.
+.SS "CPubKey::CPubKey (const std::vector< unsigned char > & vch)\fC [inline]\fP"
+
+.PP
+Definition at line 86 of file pubkey\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "const unsigned char* CPubKey::begin () const\fC [inline]\fP"
+
+.PP
+Definition at line 92 of file pubkey\&.h\&.
+.SS "bool CPubKey::CheckLowS (const std::vector< unsigned char > & vchSig)\fC [static]\fP"
+Check whether a signature is normalized (lower-S)\&. 
+.PP
+Definition at line 275 of file pubkey\&.cpp\&.
+.SS "bool CPubKey::Decompress ()"
+
+.PP
+Definition at line 214 of file pubkey\&.cpp\&.
+.SS "bool CPubKey::Derive (\fBCPubKey\fP & pubkeyChild, unsigned char ccChild[32], unsigned int nChild, const unsigned char cc[32]) const"
+
+.PP
+Definition at line 228 of file pubkey\&.cpp\&.
+.SS "const unsigned char* CPubKey::end () const\fC [inline]\fP"
+
+.PP
+Definition at line 93 of file pubkey\&.h\&.
+.SS "\fBuint256\fP CPubKey::GetHash () const\fC [inline]\fP"
+
+.PP
+Definition at line 137 of file pubkey\&.h\&.
+.SS "\fBCKeyID\fP CPubKey::GetID () const\fC [inline]\fP"
+
+.PP
+Definition at line 132 of file pubkey\&.h\&.
+.SS "unsigned int CPubKey::GetSerializeSize (int nType, int nVersion) const\fC [inline]\fP"
+
+.PP
+Definition at line 110 of file pubkey\&.h\&.
+.SS "bool CPubKey::IsCompressed () const\fC [inline]\fP"
+
+.PP
+Definition at line 152 of file pubkey\&.h\&.
+.SS "bool CPubKey::IsFullyValid () const"
+
+.PP
+Definition at line 207 of file pubkey\&.cpp\&.
+.SS "bool CPubKey::IsValid () const\fC [inline]\fP"
+
+.PP
+Definition at line 144 of file pubkey\&.h\&.
+.SS "const unsigned char& CPubKey::operator[] (unsigned int pos) const\fC [inline]\fP"
+
+.PP
+Definition at line 94 of file pubkey\&.h\&.
+.SS "std::vector<unsigned char> CPubKey::Raw () const\fC [inline]\fP"
+
+.PP
+Definition at line 175 of file pubkey\&.h\&.
+.SS "bool CPubKey::RecoverCompact (const \fBuint256\fP & hash, const std::vector< unsigned char > & vchSig)"
+
+.PP
+Definition at line 187 of file pubkey\&.cpp\&.
+.SS "template<typename Stream > void CPubKey::Serialize (Stream & s, int nType, int nVersion) const\fC [inline]\fP"
+
+.PP
+Definition at line 113 of file pubkey\&.h\&.
+.SS "template<typename T > void CPubKey::Set (const T pbegin, const T pend)\fC [inline]\fP"
+
+.PP
+Definition at line 71 of file pubkey\&.h\&.
+.SS "unsigned int CPubKey::size () const\fC [inline]\fP"
+
+.PP
+Definition at line 91 of file pubkey\&.h\&.
+.SS "template<typename Stream > void CPubKey::Unserialize (Stream & s, int nType, int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 118 of file pubkey\&.h\&.
+.SS "bool CPubKey::Verify (const \fBuint256\fP & hash, const std::vector< unsigned char > & vchSig) const"
+
+.PP
+Definition at line 167 of file pubkey\&.cpp\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "bool operator!= (const \fBCPubKey\fP & a, const \fBCPubKey\fP & b)\fC [friend]\fP"
+
+.PP
+Definition at line 101 of file pubkey\&.h\&.
+.SS "bool operator< (const \fBCPubKey\fP & a, const \fBCPubKey\fP & b)\fC [friend]\fP"
+
+.PP
+Definition at line 104 of file pubkey\&.h\&.
+.SS "bool operator== (const \fBCPubKey\fP & a, const \fBCPubKey\fP & b)\fC [friend]\fP"
+
+.PP
+Definition at line 97 of file pubkey\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

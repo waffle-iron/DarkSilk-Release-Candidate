@@ -1,0 +1,172 @@
+.TH "/home/dev/ds-160209/src/leveldb/util/testharness.h" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/leveldb/util/testharness.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <sstream>\fP
+.br
+\fC#include 'leveldb/env\&.h'\fP
+.br
+\fC#include 'leveldb/slice\&.h'\fP
+.br
+\fC#include 'util/random\&.h'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBleveldb::test::Tester\fP"
+.br
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBleveldb\fP"
+.br
+.ti -1c
+.RI " \fBleveldb::test\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBBINARY_OP\fP(\fBname\fP,  op)"
+.br
+.ti -1c
+.RI "#define \fBASSERT_TRUE\fP(c)   ::\fBleveldb::test::Tester\fP(__FILE__, __LINE__)\&.Is((c), #c)"
+.br
+.ti -1c
+.RI "#define \fBASSERT_OK\fP(s)   ::\fBleveldb::test::Tester\fP(__FILE__, __LINE__)\&.IsOk((s))"
+.br
+.ti -1c
+.RI "#define \fBASSERT_EQ\fP(a,  b)   ::\fBleveldb::test::Tester\fP(__FILE__, __LINE__)\&.IsEq((a),(b))"
+.br
+.ti -1c
+.RI "#define \fBASSERT_NE\fP(a,  b)   ::\fBleveldb::test::Tester\fP(__FILE__, __LINE__)\&.IsNe((a),(b))"
+.br
+.ti -1c
+.RI "#define \fBASSERT_GE\fP(a,  b)   ::\fBleveldb::test::Tester\fP(__FILE__, __LINE__)\&.IsGe((a),(b))"
+.br
+.ti -1c
+.RI "#define \fBASSERT_GT\fP(a,  b)   ::\fBleveldb::test::Tester\fP(__FILE__, __LINE__)\&.IsGt((a),(b))"
+.br
+.ti -1c
+.RI "#define \fBASSERT_LE\fP(a,  b)   ::\fBleveldb::test::Tester\fP(__FILE__, __LINE__)\&.IsLe((a),(b))"
+.br
+.ti -1c
+.RI "#define \fBASSERT_LT\fP(a,  b)   ::\fBleveldb::test::Tester\fP(__FILE__, __LINE__)\&.IsLt((a),(b))"
+.br
+.ti -1c
+.RI "#define \fBTCONCAT\fP(a,  b)   \fBTCONCAT1\fP(a,b)"
+.br
+.ti -1c
+.RI "#define \fBTCONCAT1\fP(a,  b)   a##b"
+.br
+.ti -1c
+.RI "#define \fBTEST\fP(\fBbase\fP,  \fBname\fP)"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBleveldb::test::RunAllTests\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBleveldb::test::TmpDir\fP ()"
+.br
+.ti -1c
+.RI "int \fBleveldb::test::RandomSeed\fP ()"
+.br
+.ti -1c
+.RI "bool \fBleveldb::test::RegisterTest\fP (const char *\fBbase\fP, const char *\fBname\fP, void(*\fBfunc\fP)())"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define ASSERT_EQ(a, b)   ::\fBleveldb::test::Tester\fP(__FILE__, __LINE__)\&.IsEq((a),(b))"
+
+.PP
+Definition at line 107 of file testharness\&.h\&.
+.SS "#define ASSERT_GE(a, b)   ::\fBleveldb::test::Tester\fP(__FILE__, __LINE__)\&.IsGe((a),(b))"
+
+.PP
+Definition at line 109 of file testharness\&.h\&.
+.SS "#define ASSERT_GT(a, b)   ::\fBleveldb::test::Tester\fP(__FILE__, __LINE__)\&.IsGt((a),(b))"
+
+.PP
+Definition at line 110 of file testharness\&.h\&.
+.SS "#define ASSERT_LE(a, b)   ::\fBleveldb::test::Tester\fP(__FILE__, __LINE__)\&.IsLe((a),(b))"
+
+.PP
+Definition at line 111 of file testharness\&.h\&.
+.SS "#define ASSERT_LT(a, b)   ::\fBleveldb::test::Tester\fP(__FILE__, __LINE__)\&.IsLt((a),(b))"
+
+.PP
+Definition at line 112 of file testharness\&.h\&.
+.SS "#define ASSERT_NE(a, b)   ::\fBleveldb::test::Tester\fP(__FILE__, __LINE__)\&.IsNe((a),(b))"
+
+.PP
+Definition at line 108 of file testharness\&.h\&.
+.SS "#define ASSERT_OK(s)   ::\fBleveldb::test::Tester\fP(__FILE__, __LINE__)\&.IsOk((s))"
+
+.PP
+Definition at line 106 of file testharness\&.h\&.
+.SS "#define ASSERT_TRUE(c)   ::\fBleveldb::test::Tester\fP(__FILE__, __LINE__)\&.Is((c), #c)"
+
+.PP
+Definition at line 105 of file testharness\&.h\&.
+.SS "#define BINARY_OP(\fBname\fP, op)"
+\fBValue:\fP
+.PP
+.nf
+template <class X, class Y>                           \
+  Tester& name(const X& x, const Y& y) {                \
+    if (! (x op y)) {                                   \
+      ss_ << " failed: " << x << (" " #op " ") << y;    \
+      ok_ = false;                                      \
+    }                                                   \
+    return *this;                                       \
+  }
+.fi
+.PP
+Definition at line 77 of file testharness\&.h\&.
+.SS "#define TCONCAT(a, b)   \fBTCONCAT1\fP(a,b)"
+
+.PP
+Definition at line 114 of file testharness\&.h\&.
+.SS "#define TCONCAT1(a, b)   a##b"
+
+.PP
+Definition at line 115 of file testharness\&.h\&.
+.SS "#define TEST(\fBbase\fP, \fBname\fP)"
+\fBValue:\fP
+.PP
+.nf
+class TCONCAT(_Test_,name) : public base {                              \
+ public:                                                                \
+  void _Run();                                                          \
+  static void _RunIt() {                                                \\
+    TCONCAT(_Test_,name) t;                                             \
+    t\&._Run();                                                           \
+  }                                                                     \
+};                                                                      \
+bool TCONCAT(_Test_ignored_,name) =                                     \
+  ::leveldb::test::RegisterTest(#base, #name, &TCONCAT(_Test_,name)::_RunIt); \
+void TCONCAT(_Test_,name)::_Run()
+.fi
+.PP
+Definition at line 117 of file testharness\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

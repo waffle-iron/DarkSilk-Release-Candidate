@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="md__home_dev_ds-160209_src_secp256k1__r_e_a_d_m_e" kind="page">
+    <compoundname>md__home_dev_ds-160209_src_secp256k1_README</compoundname>
+    <title>libsecp256k1</title>
+    <detaileddescription>
+<para><ulink url="https://travis-ci.org/bitcoin/secp256k1">![Build Status](https://travis-ci.org/bitcoin/secp256k1.svg?branch=master)</ulink></para><para>Optimized C library for EC operations on curve secp256k1.</para><para>This library is a work in progress and is being used to research best practices. Use at your own risk.</para><para>Features:<itemizedlist>
+<listitem><para>secp256k1 ECDSA signing/verification and key generation.</para></listitem><listitem><para>Adding/multiplying private/public keys.</para></listitem><listitem><para>Serialization/parsing of private keys, public keys, signatures.</para></listitem><listitem><para>Constant time, constant memory access signing and pubkey generation.</para></listitem><listitem><para>Derandomized DSA (via RFC6979 or with a caller provided function.)</para></listitem><listitem><para>Very efficient implementation.</para></listitem></itemizedlist>
+</para><para><heading level="2">Implementation details </heading>
+</para><para><itemizedlist>
+<listitem><para>General<itemizedlist>
+<listitem><para>No runtime heap allocation.</para></listitem><listitem><para>Extensive testing infrastructure.</para></listitem><listitem><para>Structured to facilitate review and analysis.</para></listitem><listitem><para>Intended to be portable to any system with a C89 compiler and uint64_t support.</para></listitem><listitem><para>Expose only higher level interfaces to minimize the API surface and improve application security. (&quot;Be difficult to use insecurely.&quot;)</para></listitem></itemizedlist>
+</para></listitem><listitem><para>Field operations<itemizedlist>
+<listitem><para>Optimized implementation of arithmetic modulo the curve&apos;s field size (2^256 - 0x1000003D1).<itemizedlist>
+<listitem><para>Using 5 52-bit limbs (including hand-optimized assembly for x86_64, by Diederik Huys).</para></listitem><listitem><para>Using 10 26-bit limbs.</para></listitem></itemizedlist>
+</para></listitem><listitem><para>Field inverses and square roots using a sliding window over blocks of 1s (by Peter Dettman).</para></listitem></itemizedlist>
+</para></listitem><listitem><para>Scalar operations<itemizedlist>
+<listitem><para>Optimized implementation without data-dependent branches of arithmetic modulo the curve&apos;s order.<itemizedlist>
+<listitem><para>Using 4 64-bit limbs (relying on __int128 support in the compiler).</para></listitem><listitem><para>Using 8 32-bit limbs.</para></listitem></itemizedlist>
+</para></listitem></itemizedlist>
+</para></listitem><listitem><para>Group operations<itemizedlist>
+<listitem><para>Point addition formula specifically simplified for the curve equation (y^2 = x^3 + 7).</para></listitem><listitem><para>Use addition between points in Jacobian and affine coordinates where possible.</para></listitem><listitem><para>Use a unified addition/doubling formula where necessary to avoid data-dependent branches.</para></listitem><listitem><para>Point/x comparison without a field inversion by comparison in the Jacobian coordinate space.</para></listitem></itemizedlist>
+</para></listitem><listitem><para>Point multiplication for verification (a*P + b*G).<itemizedlist>
+<listitem><para>Use wNAF notation for point multiplicands.</para></listitem><listitem><para>Use a much larger window for multiples of G, using precomputed multiples.</para></listitem><listitem><para>Use Shamir&apos;s trick to do the multiplication with the public key and the generator simultaneously.</para></listitem><listitem><para>Optionally (off by default) use secp256k1&apos;s efficiently-computable endomorphism to split the P multiplicand into 2 half-sized ones.</para></listitem></itemizedlist>
+</para></listitem><listitem><para>Point multiplication for signing<itemizedlist>
+<listitem><para>Use a precomputed table of multiples of powers of 16 multiplied with the generator, so general multiplication becomes a series of additions.</para></listitem><listitem><para>Access the table with branch-free conditional moves so memory access is uniform.</para></listitem><listitem><para>No data-dependent branches</para></listitem><listitem><para>The precomputed tables add and eventually subtract points for which no known scalar (private key) is known, preventing even an attacker with control over the private key used to control the data internally.</para></listitem></itemizedlist>
+</para></listitem></itemizedlist>
+</para><para><heading level="2">Build steps </heading>
+</para><para>libsecp256k1 is built using autotools: <verbatim>$ ./autogen.sh
+$ ./configure
+$ make
+$ ./tests
+$ sudo make install  # optional</verbatim> </para>    </detaileddescription>
+  </compounddef>
+</doxygen>

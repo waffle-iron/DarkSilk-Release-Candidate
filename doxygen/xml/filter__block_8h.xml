@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="filter__block_8h" kind="file" language="C++">
+    <compoundname>filter_block.h</compoundname>
+    <includes local="no">stddef.h</includes>
+    <includes refid="stdint_8h" local="no">stdint.h</includes>
+    <includes local="no">string</includes>
+    <includes local="no">vector</includes>
+    <includes refid="slice_8h" local="yes">leveldb/slice.h</includes>
+    <includes refid="leveldb_2util_2hash_8h" local="yes">util/hash.h</includes>
+    <includedby refid="filter__block_8cc" local="yes">/home/dev/ds-160209/src/leveldb/table/filter_block.cc</includedby>
+    <includedby refid="filter__block__test_8cc" local="yes">/home/dev/ds-160209/src/leveldb/table/filter_block_test.cc</includedby>
+    <includedby refid="table_8cc" local="yes">/home/dev/ds-160209/src/leveldb/table/table.cc</includedby>
+    <includedby refid="table__builder_8cc" local="yes">/home/dev/ds-160209/src/leveldb/table/table_builder.cc</includedby>
+    <incdepgraph>
+      <node id="9816">
+        <label>assert.h</label>
+      </node>
+      <node id="9813">
+        <label>string</label>
+      </node>
+      <node id="9811">
+        <label>stddef.h</label>
+      </node>
+      <node id="9810">
+        <label>/home/dev/ds-160209/src/leveldb/table/filter_block.h</label>
+        <link refid="filter_block.h"/>
+        <childnode refid="9811" relation="include">
+        </childnode>
+        <childnode refid="9812" relation="include">
+        </childnode>
+        <childnode refid="9813" relation="include">
+        </childnode>
+        <childnode refid="9814" relation="include">
+        </childnode>
+        <childnode refid="9815" relation="include">
+        </childnode>
+        <childnode refid="9818" relation="include">
+        </childnode>
+      </node>
+      <node id="9817">
+        <label>string.h</label>
+      </node>
+      <node id="9814">
+        <label>vector</label>
+      </node>
+      <node id="9812">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="9815">
+        <label>leveldb/slice.h</label>
+        <link refid="slice_8h"/>
+        <childnode refid="9816" relation="include">
+        </childnode>
+        <childnode refid="9811" relation="include">
+        </childnode>
+        <childnode refid="9817" relation="include">
+        </childnode>
+        <childnode refid="9813" relation="include">
+        </childnode>
+      </node>
+      <node id="9818">
+        <label>util/hash.h</label>
+        <link refid="leveldb_2util_2hash_8h"/>
+        <childnode refid="9811" relation="include">
+        </childnode>
+        <childnode refid="9812" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="9821">
+        <label>/home/dev/ds-160209/src/leveldb/table/filter_block_test.cc</label>
+        <link refid="filter__block__test_8cc"/>
+      </node>
+      <node id="9823">
+        <label>/home/dev/ds-160209/src/leveldb/table/table_builder.cc</label>
+        <link refid="table__builder_8cc"/>
+      </node>
+      <node id="9820">
+        <label>/home/dev/ds-160209/src/leveldb/table/filter_block.cc</label>
+        <link refid="filter__block_8cc"/>
+      </node>
+      <node id="9819">
+        <label>/home/dev/ds-160209/src/leveldb/table/filter_block.h</label>
+        <link refid="filter_block.h"/>
+        <childnode refid="9820" relation="include">
+        </childnode>
+        <childnode refid="9821" relation="include">
+        </childnode>
+        <childnode refid="9822" relation="include">
+        </childnode>
+        <childnode refid="9823" relation="include">
+        </childnode>
+      </node>
+      <node id="9822">
+        <label>/home/dev/ds-160209/src/leveldb/table/table.cc</label>
+        <link refid="table_8cc"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classleveldb_1_1_filter_block_builder" prot="public">leveldb::FilterBlockBuilder</innerclass>
+    <innerclass refid="classleveldb_1_1_filter_block_reader" prot="public">leveldb::FilterBlockReader</innerclass>
+    <innernamespace refid="namespaceleveldb">leveldb</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2012<sp/>The<sp/>LevelDB<sp/>Authors.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>of<sp/>this<sp/>source<sp/>code<sp/>is<sp/>governed<sp/>by<sp/>a<sp/>BSD-style<sp/>license<sp/>that<sp/>can<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>found<sp/>in<sp/>the<sp/>LICENSE<sp/>file.<sp/>See<sp/>the<sp/>AUTHORS<sp/>file<sp/>for<sp/>names<sp/>of<sp/>contributors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>A<sp/>filter<sp/>block<sp/>is<sp/>stored<sp/>near<sp/>the<sp/>end<sp/>of<sp/>a<sp/>Table<sp/>file.<sp/><sp/>It<sp/>contains</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>filters<sp/>(e.g.,<sp/>bloom<sp/>filters)<sp/>for<sp/>all<sp/>data<sp/>blocks<sp/>in<sp/>the<sp/>table<sp/>combined</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>into<sp/>a<sp/>single<sp/>filter<sp/>block.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>STORAGE_LEVELDB_TABLE_FILTER_BLOCK_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STORAGE_LEVELDB_TABLE_FILTER_BLOCK_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="stdint_8h" kindref="compound">stdint.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="slice_8h" kindref="compound">leveldb/slice.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="leveldb_2util_2hash_8h" kindref="compound">util/hash.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceleveldb" kindref="compound">leveldb</ref><sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">FilterPolicy;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//<sp/>A<sp/>FilterBlockBuilder<sp/>is<sp/>used<sp/>to<sp/>construct<sp/>all<sp/>of<sp/>the<sp/>filters<sp/>for<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>particular<sp/>Table.<sp/><sp/>It<sp/>generates<sp/>a<sp/>single<sp/>string<sp/>which<sp/>is<sp/>stored<sp/>as</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/>a<sp/>special<sp/>block<sp/>in<sp/>the<sp/>Table.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>sequence<sp/>of<sp/>calls<sp/>to<sp/>FilterBlockBuilder<sp/>must<sp/>match<sp/>the<sp/>regexp:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>(StartBlock<sp/>AddKey*)*<sp/>Finish</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classleveldb_1_1_filter_block_builder" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classleveldb_1_1_filter_block_builder" kindref="compound">FilterBlockBuilder</ref><sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_filter_block_builder_1a8e8b5ae95df5a13c035bec85e22549ca" kindref="member">FilterBlockBuilder</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_filter_policy" kindref="compound">FilterPolicy</ref>*);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_filter_block_builder_1a766a753a200f7386196a68897e47c1c3" kindref="member">StartBlock</ref>(<ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>block_offset);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_filter_block_builder_1a4fd9db735c5c72973cec62e4fd98137d" kindref="member">AddKey</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/>key);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref><sp/><ref refid="classleveldb_1_1_filter_block_builder_1a75fa127d8af42e749abdd235eed97cad" kindref="member">Finish</ref>();</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>GenerateFilter();</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_filter_policy" kindref="compound">FilterPolicy</ref>*<sp/>policy_;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/>std::string<sp/>keys_;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Flattened<sp/>key<sp/>contents</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/>std::vector&lt;size_t&gt;<sp/>start_;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Starting<sp/>index<sp/>in<sp/>keys_<sp/>of<sp/>each<sp/>key</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/>std::string<sp/>result_;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Filter<sp/>data<sp/>computed<sp/>so<sp/>far</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/>std::vector&lt;Slice&gt;<sp/>tmp_keys_;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>policy_-&gt;CreateFilter()<sp/>argument</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/>std::vector&lt;uint32_t&gt;<sp/>filter_offsets_;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>copying<sp/>allowed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_filter_block_builder_1a8e8b5ae95df5a13c035bec85e22549ca" kindref="member">FilterBlockBuilder</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_filter_block_builder" kindref="compound">FilterBlockBuilder</ref>&amp;);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>operator=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_filter_block_builder" kindref="compound">FilterBlockBuilder</ref>&amp;);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52" refid="classleveldb_1_1_filter_block_reader" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classleveldb_1_1_filter_block_reader" kindref="compound">FilterBlockReader</ref><sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/></highlight><highlight class="comment">//<sp/>REQUIRES:<sp/>&quot;contents&quot;<sp/>and<sp/>*policy<sp/>must<sp/>stay<sp/>live<sp/>while<sp/>*this<sp/>is<sp/>live.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_filter_block_reader_1a02e9203af5314959ad99057f0020c406" kindref="member">FilterBlockReader</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_filter_policy" kindref="compound">FilterPolicy</ref>*<sp/>policy,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/>contents);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_filter_block_reader_1a2c1c0cd8311b99fd92d3548b7aa240d0" kindref="member">KeyMayMatch</ref>(<ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>block_offset,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/>key);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_filter_policy" kindref="compound">FilterPolicy</ref>*<sp/>policy_;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>data_;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pointer<sp/>to<sp/>filter<sp/>data<sp/>(at<sp/>block-start)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>offset_;<sp/><sp/></highlight><highlight class="comment">//<sp/>Pointer<sp/>to<sp/>beginning<sp/>of<sp/>offset<sp/>array<sp/>(at<sp/>block-end)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>num_;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Number<sp/>of<sp/>entries<sp/>in<sp/>offset<sp/>array</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>base_lg_;<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Encoding<sp/>parameter<sp/>(see<sp/>kFilterBaseLg<sp/>in<sp/>.cc<sp/>file)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/>//<sp/>STORAGE_LEVELDB_TABLE_FILTER_BLOCK_H_</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/leveldb/table/filter_block.h"/>
+  </compounddef>
+</doxygen>

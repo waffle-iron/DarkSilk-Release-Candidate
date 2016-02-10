@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_s_h_a256" kind="class" language="C++" prot="public">
+    <compoundname>CSHA256</compoundname>
+    <includes refid="sha256_8h" local="no">sha256.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_c_s_h_a256_1ad8b4064784044a2ed3ba7bab5c8e3573" prot="private" static="no" mutable="no">
+        <type><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref></type>
+        <definition>uint32_t CSHA256::s[8]</definition>
+        <argsstring>[8]</argsstring>
+        <name>s</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/sha256.h" line="15" column="1" bodyfile="/home/dev/ds-160209/src/crypto/sha256.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_s_h_a256_1a244c8a07f941654bae8cfac6ced13837" prot="private" static="no" mutable="no">
+        <type>unsigned char</type>
+        <definition>unsigned char CSHA256::buf[64]</definition>
+        <argsstring>[64]</argsstring>
+        <name>buf</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/sha256.h" line="16" column="1" bodyfile="/home/dev/ds-160209/src/crypto/sha256.h" bodystart="16" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_s_h_a256_1a4c958f54e968f7c322fb2215d759885c" prot="private" static="no" mutable="no">
+        <type>size_t</type>
+        <definition>size_t CSHA256::bytes</definition>
+        <argsstring></argsstring>
+        <name>bytes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/sha256.h" line="17" column="1" bodyfile="/home/dev/ds-160209/src/crypto/sha256.h" bodystart="17" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_c_s_h_a256_1a3d7ef512c0ceb0008396e62f5c4771fc" prot="public" static="yes" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t CSHA256::OUTPUT_SIZE</definition>
+        <argsstring></argsstring>
+        <name>OUTPUT_SIZE</name>
+        <initializer>= 32</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/sha256.h" line="20" column="1" bodyfile="/home/dev/ds-160209/src/crypto/sha256.h" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_s_h_a256_1af85504e7cde3b2f33614d59f6d3ff561" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CSHA256::CSHA256</definition>
+        <argsstring>()</argsstring>
+        <name>CSHA256</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/sha256.h" line="22" column="1" bodyfile="/home/dev/ds-160209/src/crypto/sha256.cpp" bodystart="136" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_s_h_a256_1a9d7de520a562655da85349372820c883" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_c_s_h_a256" kindref="compound">CSHA256</ref> &amp;</type>
+        <definition>CSHA256 &amp; CSHA256::Write</definition>
+        <argsstring>(const unsigned char *data, size_t len)</argsstring>
+        <name>Write</name>
+        <param>
+          <type>const unsigned char *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/sha256.h" line="23" column="1" bodyfile="/home/dev/ds-160209/src/crypto/sha256.cpp" bodystart="141" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_s_h_a256_1a4259230be0caefa590bc324fc12b9b90" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CSHA256::Finalize</definition>
+        <argsstring>(unsigned char hash[OUTPUT_SIZE])</argsstring>
+        <name>Finalize</name>
+        <param>
+          <type>unsigned char</type>
+          <declname>hash</declname>
+          <array>[OUTPUT_SIZE]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/sha256.h" line="24" column="1" bodyfile="/home/dev/ds-160209/src/crypto/sha256.cpp" bodystart="167" bodyend="182"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_s_h_a256_1a2122395dd5604990eaa0077b43a0e8d4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_c_s_h_a256" kindref="compound">CSHA256</ref> &amp;</type>
+        <definition>CSHA256 &amp; CSHA256::Reset</definition>
+        <argsstring>()</argsstring>
+        <name>Reset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/sha256.h" line="25" column="1" bodyfile="/home/dev/ds-160209/src/crypto/sha256.cpp" bodystart="184" bodyend="189"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A hasher class for SHA-256. </para>    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/crypto/sha256.h" line="13" column="1" bodyfile="/home/dev/ds-160209/src/crypto/sha256.h" bodystart="12" bodyend="26"/>
+    <listofallmembers>
+      <member refid="class_c_s_h_a256_1a244c8a07f941654bae8cfac6ced13837" prot="private" virt="non-virtual"><scope>CSHA256</scope><name>buf</name></member>
+      <member refid="class_c_s_h_a256_1a4c958f54e968f7c322fb2215d759885c" prot="private" virt="non-virtual"><scope>CSHA256</scope><name>bytes</name></member>
+      <member refid="class_c_s_h_a256_1af85504e7cde3b2f33614d59f6d3ff561" prot="public" virt="non-virtual"><scope>CSHA256</scope><name>CSHA256</name></member>
+      <member refid="class_c_s_h_a256_1a4259230be0caefa590bc324fc12b9b90" prot="public" virt="non-virtual"><scope>CSHA256</scope><name>Finalize</name></member>
+      <member refid="class_c_s_h_a256_1a3d7ef512c0ceb0008396e62f5c4771fc" prot="public" virt="non-virtual"><scope>CSHA256</scope><name>OUTPUT_SIZE</name></member>
+      <member refid="class_c_s_h_a256_1a2122395dd5604990eaa0077b43a0e8d4" prot="public" virt="non-virtual"><scope>CSHA256</scope><name>Reset</name></member>
+      <member refid="class_c_s_h_a256_1ad8b4064784044a2ed3ba7bab5c8e3573" prot="private" virt="non-virtual"><scope>CSHA256</scope><name>s</name></member>
+      <member refid="class_c_s_h_a256_1a9d7de520a562655da85349372820c883" prot="public" virt="non-virtual"><scope>CSHA256</scope><name>Write</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

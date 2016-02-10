@@ -1,0 +1,328 @@
+.TH "CChainParams" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CChainParams \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <chainparams\&.h>\fP
+.PP
+Inherited by \fBCMainParams\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBNetwork\fP { \fBMAIN\fP, \fBTESTNET\fP, \fBMAX_NETWORK_TYPES\fP }"
+.br
+.ti -1c
+.RI "enum \fBBase58Type\fP { \fBPUBKEY_ADDRESS\fP, \fBSCRIPT_ADDRESS\fP, \fBSECRET_KEY\fP, \fBEXT_PUBLIC_KEY\fP, \fBEXT_SECRET_KEY\fP, \fBMAX_BASE58_TYPES\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "const \fBuint256\fP & \fBHashGenesisBlock\fP () const "
+.br
+.ti -1c
+.RI "const \fBMessageStartChars\fP & \fBMessageStart\fP () const "
+.br
+.ti -1c
+.RI "const vector< unsigned char > & \fBAlertKey\fP () const "
+.br
+.ti -1c
+.RI "int \fBGetDefaultPort\fP () const "
+.br
+.ti -1c
+.RI "const \fBCBigNum\fP & \fBProofOfWorkLimit\fP () const "
+.br
+.ti -1c
+.RI "int \fBSubsidyHalvingInterval\fP () const "
+.br
+.ti -1c
+.RI "virtual const \fBCBlock\fP & \fBGenesisBlock\fP () const =0"
+.br
+.ti -1c
+.RI "virtual bool \fBRequireRPCPassword\fP () const "
+.br
+.ti -1c
+.RI "const string & \fBDataDir\fP () const "
+.br
+.ti -1c
+.RI "virtual \fBNetwork\fP \fBNetworkID\fP () const =0"
+.br
+.ti -1c
+.RI "const vector< \fBCDNSSeedData\fP > & \fBDNSSeeds\fP () const "
+.br
+.ti -1c
+.RI "const std::vector< unsigned char > & \fBBase58Prefix\fP (\fBBase58Type\fP type) const "
+.br
+.ti -1c
+.RI "virtual const vector< \fBCAddress\fP > & \fBFixedSeeds\fP () const =0"
+.br
+.ti -1c
+.RI "int \fBRPCPort\fP () const "
+.br
+.ti -1c
+.RI "int \fBFirstPOSBlock\fP () const "
+.br
+.ti -1c
+.RI "std::string \fBStormnodePaymentPubKey\fP () const "
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBStartStormnodePayments\fP () const "
+.br
+.ti -1c
+.RI "int \fBPoolMaxTransactions\fP () const "
+.br
+.ti -1c
+.RI "std::string \fBSandstormPoolDummyAddress\fP () const "
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCChainParams\fP ()"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBuint256\fP \fBhashGenesisBlock\fP"
+.br
+.ti -1c
+.RI "\fBMessageStartChars\fP \fBpchMessageStart\fP"
+.br
+.ti -1c
+.RI "vector< unsigned char > \fBvAlertPubKey\fP"
+.br
+.ti -1c
+.RI "int \fBnDefaultPort\fP"
+.br
+.ti -1c
+.RI "int \fBnRPCPort\fP"
+.br
+.ti -1c
+.RI "\fBCBigNum\fP \fBbnProofOfWorkLimit\fP"
+.br
+.ti -1c
+.RI "int \fBnSubsidyHalvingInterval\fP"
+.br
+.ti -1c
+.RI "string \fBstrDataDir\fP"
+.br
+.ti -1c
+.RI "vector< \fBCDNSSeedData\fP > \fBvSeeds\fP"
+.br
+.ti -1c
+.RI "std::vector< unsigned char > \fBbase58Prefixes\fP [\fBMAX_BASE58_TYPES\fP]"
+.br
+.ti -1c
+.RI "std::string \fBstrStormnodePaymentsPubKey\fP"
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBnStartStormnodePayments\fP"
+.br
+.ti -1c
+.RI "int \fBnFirstPOSBlock\fP"
+.br
+.ti -1c
+.RI "int \fBnPoolMaxTransactions\fP"
+.br
+.ti -1c
+.RI "std::string \fBstrSandstormPoolDummyAddress\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBCChainParams\fP defines various tweakable parameters of a given instance of the DarkSilk system\&. There are three: the main network on which people trade goods and services, the public test network which gets reset from time to time and a regression test mode which is intended for private networks only\&. It has minimal difficulty to ensure that blocks can be found instantly\&. 
+.PP
+Definition at line 35 of file chainparams\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBCChainParams::Base58Type\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIPUBKEY_ADDRESS \fP\fP
+.TP
+\fB\fISCRIPT_ADDRESS \fP\fP
+.TP
+\fB\fISECRET_KEY \fP\fP
+.TP
+\fB\fIEXT_PUBLIC_KEY \fP\fP
+.TP
+\fB\fIEXT_SECRET_KEY \fP\fP
+.TP
+\fB\fIMAX_BASE58_TYPES \fP\fP
+.PP
+Definition at line 45 of file chainparams\&.h\&.
+.SS "enum \fBCChainParams::Network\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIMAIN \fP\fP
+.TP
+\fB\fITESTNET \fP\fP
+.TP
+\fB\fIMAX_NETWORK_TYPES \fP\fP
+.PP
+Definition at line 38 of file chainparams\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CChainParams::CChainParams ()\fC [inline]\fP, \fC [protected]\fP"
+
+.PP
+Definition at line 76 of file chainparams\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "const vector<unsigned char>& CChainParams::AlertKey () const\fC [inline]\fP"
+
+.PP
+Definition at line 57 of file chainparams\&.h\&.
+.SS "const std::vector<unsigned char>& CChainParams::Base58Prefix (\fBBase58Type\fP type) const\fC [inline]\fP"
+
+.PP
+Definition at line 66 of file chainparams\&.h\&.
+.SS "const string& CChainParams::DataDir () const\fC [inline]\fP"
+
+.PP
+Definition at line 63 of file chainparams\&.h\&.
+.SS "const vector<\fBCDNSSeedData\fP>& CChainParams::DNSSeeds () const\fC [inline]\fP"
+
+.PP
+Definition at line 65 of file chainparams\&.h\&.
+.SS "int CChainParams::FirstPOSBlock () const\fC [inline]\fP"
+
+.PP
+Definition at line 69 of file chainparams\&.h\&.
+.SS "virtual const vector<\fBCAddress\fP>& CChainParams::FixedSeeds () const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBCMainParams\fP\&.
+.SS "virtual const \fBCBlock\fP& CChainParams::GenesisBlock () const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBCMainParams\fP\&.
+.SS "int CChainParams::GetDefaultPort () const\fC [inline]\fP"
+
+.PP
+Definition at line 58 of file chainparams\&.h\&.
+.SS "const \fBuint256\fP& CChainParams::HashGenesisBlock () const\fC [inline]\fP"
+
+.PP
+Definition at line 55 of file chainparams\&.h\&.
+.SS "const \fBMessageStartChars\fP& CChainParams::MessageStart () const\fC [inline]\fP"
+
+.PP
+Definition at line 56 of file chainparams\&.h\&.
+.SS "virtual \fBNetwork\fP CChainParams::NetworkID () const\fC [pure virtual]\fP"
+
+.PP
+Implemented in \fBCTestNetParams\fP, and \fBCMainParams\fP\&.
+.SS "int CChainParams::PoolMaxTransactions () const\fC [inline]\fP"
+
+.PP
+Definition at line 72 of file chainparams\&.h\&.
+.SS "const \fBCBigNum\fP& CChainParams::ProofOfWorkLimit () const\fC [inline]\fP"
+
+.PP
+Definition at line 59 of file chainparams\&.h\&.
+.SS "virtual bool CChainParams::RequireRPCPassword () const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 62 of file chainparams\&.h\&.
+.SS "int CChainParams::RPCPort () const\fC [inline]\fP"
+
+.PP
+Definition at line 68 of file chainparams\&.h\&.
+.SS "std::string CChainParams::SandstormPoolDummyAddress () const\fC [inline]\fP"
+
+.PP
+Definition at line 73 of file chainparams\&.h\&.
+.SS "\fBint64_t\fP CChainParams::StartStormnodePayments () const\fC [inline]\fP"
+
+.PP
+Definition at line 71 of file chainparams\&.h\&.
+.SS "std::string CChainParams::StormnodePaymentPubKey () const\fC [inline]\fP"
+
+.PP
+Definition at line 70 of file chainparams\&.h\&.
+.SS "int CChainParams::SubsidyHalvingInterval () const\fC [inline]\fP"
+
+.PP
+Definition at line 60 of file chainparams\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "std::vector<unsigned char> CChainParams::base58Prefixes[\fBMAX_BASE58_TYPES\fP]\fC [protected]\fP"
+
+.PP
+Definition at line 88 of file chainparams\&.h\&.
+.SS "\fBCBigNum\fP CChainParams::bnProofOfWorkLimit\fC [protected]\fP"
+
+.PP
+Definition at line 84 of file chainparams\&.h\&.
+.SS "\fBuint256\fP CChainParams::hashGenesisBlock\fC [protected]\fP"
+
+.PP
+Definition at line 76 of file chainparams\&.h\&.
+.SS "int CChainParams::nDefaultPort\fC [protected]\fP"
+
+.PP
+Definition at line 82 of file chainparams\&.h\&.
+.SS "int CChainParams::nFirstPOSBlock\fC [protected]\fP"
+
+.PP
+Definition at line 91 of file chainparams\&.h\&.
+.SS "int CChainParams::nPoolMaxTransactions\fC [protected]\fP"
+
+.PP
+Definition at line 92 of file chainparams\&.h\&.
+.SS "int CChainParams::nRPCPort\fC [protected]\fP"
+
+.PP
+Definition at line 83 of file chainparams\&.h\&.
+.SS "\fBint64_t\fP CChainParams::nStartStormnodePayments\fC [protected]\fP"
+
+.PP
+Definition at line 90 of file chainparams\&.h\&.
+.SS "int CChainParams::nSubsidyHalvingInterval\fC [protected]\fP"
+
+.PP
+Definition at line 85 of file chainparams\&.h\&.
+.SS "\fBMessageStartChars\fP CChainParams::pchMessageStart\fC [protected]\fP"
+
+.PP
+Definition at line 79 of file chainparams\&.h\&.
+.SS "string CChainParams::strDataDir\fC [protected]\fP"
+
+.PP
+Definition at line 86 of file chainparams\&.h\&.
+.SS "std::string CChainParams::strSandstormPoolDummyAddress\fC [protected]\fP"
+
+.PP
+Definition at line 93 of file chainparams\&.h\&.
+.SS "std::string CChainParams::strStormnodePaymentsPubKey\fC [protected]\fP"
+
+.PP
+Definition at line 89 of file chainparams\&.h\&.
+.SS "vector<unsigned char> CChainParams::vAlertPubKey\fC [protected]\fP"
+
+.PP
+Definition at line 81 of file chainparams\&.h\&.
+.SS "vector<\fBCDNSSeedData\fP> CChainParams::vSeeds\fC [protected]\fP"
+
+.PP
+Definition at line 87 of file chainparams\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

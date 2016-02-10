@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['cannot_5fparse_5ferror',['CANNOT_PARSE_ERROR',['../class_s_a_m_1_1_message.html#a5f7e317defb90f107fc1a017a4552ae9ad4c04f6dfbd2bd0c7ff81908407b4892',1,'SAM::Message']]],
+  ['cant_5freach_5fpeer',['CANT_REACH_PEER',['../class_s_a_m_1_1_message.html#a5f7e317defb90f107fc1a017a4552ae9a17187a89ef29a266046502d15c4be0ef',1,'SAM::Message']]],
+  ['changepass',['ChangePass',['../class_ask_passphrase_dialog.html#a96abf4d3c36c1ef9e268fb546ae76538abc3f96ab0f90c0a3b0606407b4f662cc',1,'AskPassphraseDialog']]],
+  ['checksum_5foffset',['CHECKSUM_OFFSET',['../class_c_message_header.html#a00659410ff6010c972826dc3020e18b1ad4e76479ab116367800a146dbb299393',1,'CMessageHeader']]],
+  ['checksum_5fsize',['CHECKSUM_SIZE',['../class_c_message_header.html#a00659410ff6010c972826dc3020e18b1ac92b66287a05d5c96bf494ff5a48e726',1,'CMessageHeader']]],
+  ['closed',['CLOSED',['../class_s_a_m_1_1_message.html#a5f7e317defb90f107fc1a017a4552ae9af38e7a84d2781c4938c84f6c69084070',1,'SAM::Message']]],
+  ['closed_5fsocket',['CLOSED_SOCKET',['../class_s_a_m_1_1_message.html#a5f7e317defb90f107fc1a017a4552ae9a488d4ef18a57b9fa8bcac1c6812ed61b',1,'SAM::Message']]],
+  ['cmd_5ferror',['CMD_ERROR',['../class_d_e_b_u_g_console.html#ab4d5228b2f3681131add4278aca4127fac1e3404266b5c91f0b39be25a1bc714e',1,'DEBUGConsole']]],
+  ['cmd_5freply',['CMD_REPLY',['../class_d_e_b_u_g_console.html#ab4d5228b2f3681131add4278aca4127fa4404df69deee7c2e08611e07dde45bcb',1,'DEBUGConsole']]],
+  ['cmd_5frequest',['CMD_REQUEST',['../class_d_e_b_u_g_console.html#ab4d5228b2f3681131add4278aca4127fa5869851a28d5453b673600a40b42f93c',1,'DEBUGConsole']]],
+  ['coincontrolfeatures',['CoinControlFeatures',['../class_options_model.html#a5c6c9ca8a01aca9f53e91f118e4878d2a1bdca078b28e941f2957413a665aa1b5',1,'OptionsModel']]],
+  ['command_5fsize',['COMMAND_SIZE',['../class_c_message_header.html#a00659410ff6010c972826dc3020e18b1a8c1bfc0fa6a63c8b73abef30555a5e54',1,'CMessageHeader']]],
+  ['confirmed',['Confirmed',['../class_transaction_status.html#aaa6cc19ca3509bbae72d0df1661f85cba354f91f2bd2c4be35b366d02fe186e22',1,'TransactionStatus']]],
+  ['confirmedrole',['ConfirmedRole',['../class_transaction_table_model.html#a4b248508c36df598476affbf9871d1e6ae4fb059af39604caf75e71f9176edb16',1,'TransactionTableModel']]],
+  ['confirming',['Confirming',['../class_transaction_status.html#aaa6cc19ca3509bbae72d0df1661f85cba75c0b79a4c38c5777cdae1a565d6ba5e',1,'TransactionStatus']]],
+  ['conflicted',['Conflicted',['../class_transaction_status.html#aaa6cc19ca3509bbae72d0df1661f85cbae06a462705a0126fda4b82e47915d812',1,'TransactionStatus']]],
+  ['critical',['Critical',['../class_notificator.html#aa2ff8a05d471e32e77584a2b8dd182aba596518f9cfdbd57b0fdc68fc95c69ecd',1,'Notificator']]],
+  ['ct_5fdeleted',['CT_DELETED',['../ui__interface_8h.html#a293ba931937e469a6327b8d6b4872969a6aa8d1cd0da86fe8886e3a5c47f194ef',1,'ui_interface.h']]],
+  ['ct_5fnew',['CT_NEW',['../ui__interface_8h.html#a293ba931937e469a6327b8d6b4872969ae975c67c7f3a5386de0bbde38221b32f',1,'ui_interface.h']]],
+  ['ct_5fupdated',['CT_UPDATED',['../ui__interface_8h.html#a293ba931937e469a6327b8d6b4872969a5ab4035117df6ed11f4f5cd2f2d732e5',1,'ui_interface.h']]]
+];

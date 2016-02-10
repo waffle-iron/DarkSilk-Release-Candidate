@@ -1,0 +1,172 @@
+\hypertarget{rpcmining_8cpp}{}\section{/home/dev/ds-\/160209/src/rpcmining.cpp File Reference}
+\label{rpcmining_8cpp}\index{/home/dev/ds-\/160209/src/rpcmining.\+cpp@{/home/dev/ds-\/160209/src/rpcmining.\+cpp}}
+{\ttfamily \#include \char`\"{}rpcserver.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}base58.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}chainparams.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}db.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}txdb.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}init.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}miner.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}kernel.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}txdb-\/leveldb.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}stormnode-\/sync.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$boost/assign/list\+\_\+of.\+hpp$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{rpcmining_8cpp_ad47789e7e3d3323a832e764f692e4ea8}{Init\+R\+P\+C\+Mining} ()
+\item 
+void \hyperlink{rpcmining_8cpp_ae7370e6af93e26e0c967cda6a63fe3a9}{Shutdown\+R\+P\+C\+Mining} ()
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcmining_8cpp_a70bed6c442862e2a969b623e3b56b952}{getsubsidy} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcmining_8cpp_a389f62bd448bb24933a1ea8920411d7e}{getstakesubsidy} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcmining_8cpp_a89c187faff7322c7d15134d13570ca1e}{getmininginfo} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcmining_8cpp_aedf628177ea04e0077d9d530963d40d6}{getstakinginfo} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcmining_8cpp_a36ee2284a7252841b8a62a9531b6acbc}{checkkernel} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcmining_8cpp_aa40f86dc468a3f2ef4a3bba99e20a069}{getworkex} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcmining_8cpp_a356be62c93d38267a7da9e1cb644d547}{getwork} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcmining_8cpp_a27347eecedd59156c914fcb5ce488f9a}{getblocktemplate} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcmining_8cpp_a6fc1aa077add8cb1c74207056616134d}{submitblock} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{rpcmining_8cpp_a36ee2284a7252841b8a62a9531b6acbc}{}\index{rpcmining.\+cpp@{rpcmining.\+cpp}!checkkernel@{checkkernel}}
+\index{checkkernel@{checkkernel}!rpcmining.\+cpp@{rpcmining.\+cpp}}
+\subsubsection[{checkkernel}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} checkkernel (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcmining_8cpp_a36ee2284a7252841b8a62a9531b6acbc}
+
+
+Definition at line 150 of file rpcmining.\+cpp.
+
+\hypertarget{rpcmining_8cpp_a27347eecedd59156c914fcb5ce488f9a}{}\index{rpcmining.\+cpp@{rpcmining.\+cpp}!getblocktemplate@{getblocktemplate}}
+\index{getblocktemplate@{getblocktemplate}!rpcmining.\+cpp@{rpcmining.\+cpp}}
+\subsubsection[{getblocktemplate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} getblocktemplate (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcmining_8cpp_a27347eecedd59156c914fcb5ce488f9a}
+
+
+Definition at line 476 of file rpcmining.\+cpp.
+
+\hypertarget{rpcmining_8cpp_a89c187faff7322c7d15134d13570ca1e}{}\index{rpcmining.\+cpp@{rpcmining.\+cpp}!getmininginfo@{getmininginfo}}
+\index{getmininginfo@{getmininginfo}!rpcmining.\+cpp@{rpcmining.\+cpp}}
+\subsubsection[{getmininginfo}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} getmininginfo (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcmining_8cpp_a89c187faff7322c7d15134d13570ca1e}
+
+
+Definition at line 78 of file rpcmining.\+cpp.
+
+\hypertarget{rpcmining_8cpp_a389f62bd448bb24933a1ea8920411d7e}{}\index{rpcmining.\+cpp@{rpcmining.\+cpp}!getstakesubsidy@{getstakesubsidy}}
+\index{getstakesubsidy@{getstakesubsidy}!rpcmining.\+cpp@{rpcmining.\+cpp}}
+\subsubsection[{getstakesubsidy}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} getstakesubsidy (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcmining_8cpp_a389f62bd448bb24933a1ea8920411d7e}
+
+
+Definition at line 56 of file rpcmining.\+cpp.
+
+\hypertarget{rpcmining_8cpp_aedf628177ea04e0077d9d530963d40d6}{}\index{rpcmining.\+cpp@{rpcmining.\+cpp}!getstakinginfo@{getstakinginfo}}
+\index{getstakinginfo@{getstakinginfo}!rpcmining.\+cpp@{rpcmining.\+cpp}}
+\subsubsection[{getstakinginfo}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} getstakinginfo (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcmining_8cpp_aedf628177ea04e0077d9d530963d40d6}
+
+
+Definition at line 114 of file rpcmining.\+cpp.
+
+\hypertarget{rpcmining_8cpp_a70bed6c442862e2a969b623e3b56b952}{}\index{rpcmining.\+cpp@{rpcmining.\+cpp}!getsubsidy@{getsubsidy}}
+\index{getsubsidy@{getsubsidy}!rpcmining.\+cpp@{rpcmining.\+cpp}}
+\subsubsection[{getsubsidy}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} getsubsidy (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcmining_8cpp_a70bed6c442862e2a969b623e3b56b952}
+
+
+Definition at line 46 of file rpcmining.\+cpp.
+
+\hypertarget{rpcmining_8cpp_a356be62c93d38267a7da9e1cb644d547}{}\index{rpcmining.\+cpp@{rpcmining.\+cpp}!getwork@{getwork}}
+\index{getwork@{getwork}!rpcmining.\+cpp@{rpcmining.\+cpp}}
+\subsubsection[{getwork}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} getwork (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcmining_8cpp_a356be62c93d38267a7da9e1cb644d547}
+
+
+Definition at line 363 of file rpcmining.\+cpp.
+
+\hypertarget{rpcmining_8cpp_aa40f86dc468a3f2ef4a3bba99e20a069}{}\index{rpcmining.\+cpp@{rpcmining.\+cpp}!getworkex@{getworkex}}
+\index{getworkex@{getworkex}!rpcmining.\+cpp@{rpcmining.\+cpp}}
+\subsubsection[{getworkex}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} getworkex (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcmining_8cpp_aa40f86dc468a3f2ef4a3bba99e20a069}
+
+
+Definition at line 236 of file rpcmining.\+cpp.
+
+\hypertarget{rpcmining_8cpp_ad47789e7e3d3323a832e764f692e4ea8}{}\index{rpcmining.\+cpp@{rpcmining.\+cpp}!Init\+R\+P\+C\+Mining@{Init\+R\+P\+C\+Mining}}
+\index{Init\+R\+P\+C\+Mining@{Init\+R\+P\+C\+Mining}!rpcmining.\+cpp@{rpcmining.\+cpp}}
+\subsubsection[{Init\+R\+P\+C\+Mining}]{\setlength{\rightskip}{0pt plus 5cm}void Init\+R\+P\+C\+Mining (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{rpcmining_8cpp_ad47789e7e3d3323a832e764f692e4ea8}
+
+
+Definition at line 29 of file rpcmining.\+cpp.
+
+\hypertarget{rpcmining_8cpp_ae7370e6af93e26e0c967cda6a63fe3a9}{}\index{rpcmining.\+cpp@{rpcmining.\+cpp}!Shutdown\+R\+P\+C\+Mining@{Shutdown\+R\+P\+C\+Mining}}
+\index{Shutdown\+R\+P\+C\+Mining@{Shutdown\+R\+P\+C\+Mining}!rpcmining.\+cpp@{rpcmining.\+cpp}}
+\subsubsection[{Shutdown\+R\+P\+C\+Mining}]{\setlength{\rightskip}{0pt plus 5cm}void Shutdown\+R\+P\+C\+Mining (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{rpcmining_8cpp_ae7370e6af93e26e0c967cda6a63fe3a9}
+
+
+Definition at line 38 of file rpcmining.\+cpp.
+
+\hypertarget{rpcmining_8cpp_a6fc1aa077add8cb1c74207056616134d}{}\index{rpcmining.\+cpp@{rpcmining.\+cpp}!submitblock@{submitblock}}
+\index{submitblock@{submitblock}!rpcmining.\+cpp@{rpcmining.\+cpp}}
+\subsubsection[{submitblock}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} submitblock (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcmining_8cpp_a6fc1aa077add8cb1c74207056616134d}
+
+
+Definition at line 655 of file rpcmining.\+cpp.
+

@@ -1,0 +1,2033 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="miner_8cpp" kind="file" language="C++">
+    <compoundname>miner.cpp</compoundname>
+    <includes refid="miner_8h" local="yes">miner.h</includes>
+    <includes refid="primitives_2block_8h" local="yes">primitives/block.h</includes>
+    <includes refid="txdb_8h" local="yes">txdb.h</includes>
+    <includes refid="kernel_8h" local="yes">kernel.h</includes>
+    <includes refid="stormnodeman_8h" local="yes">stormnodeman.h</includes>
+    <includes refid="stormnode-payments_8h" local="yes">stormnode-payments.h</includes>
+    <includes refid="spork_8h" local="yes">spork.h</includes>
+    <includes refid="txdb-leveldb_8h" local="yes">txdb-leveldb.h</includes>
+    <incdepgraph>
+      <node id="11292">
+        <label>list</label>
+      </node>
+      <node id="11248">
+        <label>boost/thread/mutex.hpp</label>
+      </node>
+      <node id="11341">
+        <label>leveldb/write_batch.h</label>
+        <link refid="write__batch_8h"/>
+        <childnode refid="11233" relation="include">
+        </childnode>
+        <childnode refid="11339" relation="include">
+        </childnode>
+      </node>
+      <node id="11321">
+        <label>netinet/in.h</label>
+      </node>
+      <node id="11291">
+        <label>amount.h</label>
+        <link refid="amount_8h"/>
+        <childnode refid="11232" relation="include">
+        </childnode>
+        <childnode refid="11246" relation="include">
+        </childnode>
+        <childnode refid="11233" relation="include">
+        </childnode>
+      </node>
+      <node id="11314">
+        <label>arpa/inet.h</label>
+      </node>
+      <node id="11256">
+        <label>boost/thread/condition_variable.hpp</label>
+      </node>
+      <node id="11238">
+        <label>limits</label>
+      </node>
+      <node id="11275">
+        <label>crypto/sha256.h</label>
+        <link refid="sha256_8h"/>
+        <childnode refid="11239" relation="include">
+        </childnode>
+        <childnode refid="11246" relation="include">
+        </childnode>
+      </node>
+      <node id="11307">
+        <label>primitives/transaction.h</label>
+        <link refid="transaction_8h"/>
+        <childnode refid="11291" relation="include">
+        </childnode>
+        <childnode refid="11270" relation="include">
+        </childnode>
+        <childnode refid="11232" relation="include">
+        </childnode>
+        <childnode refid="11308" relation="include">
+        </childnode>
+        <childnode refid="11279" relation="include">
+        </childnode>
+        <childnode refid="11309" relation="include">
+        </childnode>
+        <childnode refid="11303" relation="include">
+        </childnode>
+      </node>
+      <node id="11276">
+        <label>crypto/argon2/blake2/blake2.h</label>
+        <link refid="blake2_8h"/>
+        <childnode refid="11277" relation="include">
+        </childnode>
+        <childnode refid="11239" relation="include">
+        </childnode>
+        <childnode refid="11250" relation="include">
+        </childnode>
+      </node>
+      <node id="11279">
+        <label>script.h</label>
+        <link refid="script_8h"/>
+        <childnode refid="11233" relation="include">
+        </childnode>
+        <childnode refid="11234" relation="include">
+        </childnode>
+        <childnode refid="11239" relation="include">
+        </childnode>
+        <childnode refid="11280" relation="include">
+        </childnode>
+        <childnode refid="11281" relation="include">
+        </childnode>
+        <childnode refid="11268" relation="include">
+        </childnode>
+        <childnode refid="11282" relation="include">
+        </childnode>
+        <childnode refid="11284" relation="include">
+        </childnode>
+        <childnode refid="11302" relation="include">
+        </childnode>
+      </node>
+      <node id="11301">
+        <label>openssl/rand.h</label>
+      </node>
+      <node id="11230">
+        <label>walletdb.h</label>
+        <link refid="walletdb_8h"/>
+        <childnode refid="11231" relation="include">
+        </childnode>
+        <childnode refid="11266" relation="include">
+        </childnode>
+        <childnode refid="11302" relation="include">
+        </childnode>
+        <childnode refid="11291" relation="include">
+        </childnode>
+        <childnode refid="11292" relation="include">
+        </childnode>
+        <childnode refid="11233" relation="include">
+        </childnode>
+        <childnode refid="11263" relation="include">
+        </childnode>
+        <childnode refid="11234" relation="include">
+        </childnode>
+      </node>
+      <node id="11261">
+        <label>assert.h</label>
+      </node>
+      <node id="11243">
+        <label>boost/tuple/tuple.hpp</label>
+      </node>
+      <node id="11320">
+        <label>net/if.h</label>
+      </node>
+      <node id="11354">
+        <label>sandstorm.h</label>
+        <link refid="sandstorm_8h"/>
+        <childnode refid="11254" relation="include">
+        </childnode>
+        <childnode refid="11355" relation="include">
+        </childnode>
+        <childnode refid="11348" relation="include">
+        </childnode>
+      </node>
+      <node id="11330">
+        <label>txmempool.h</label>
+        <link refid="txmempool_8h"/>
+        <childnode refid="11307" relation="include">
+        </childnode>
+        <childnode refid="11254" relation="include">
+        </childnode>
+        <childnode refid="11331" relation="include">
+        </childnode>
+        <childnode refid="11291" relation="include">
+        </childnode>
+        <childnode refid="11343" relation="include">
+        </childnode>
+      </node>
+      <node id="11352">
+        <label>boost/lexical_cast.hpp</label>
+      </node>
+      <node id="11340">
+        <label>leveldb/options.h</label>
+        <link refid="options_8h"/>
+        <childnode refid="11277" relation="include">
+        </childnode>
+      </node>
+      <node id="11258">
+        <label>boost/thread/recursive_mutex.hpp</label>
+      </node>
+      <node id="11349">
+        <label>base58.h</label>
+        <link refid="base58_8h"/>
+        <childnode refid="11326" relation="include">
+        </childnode>
+        <childnode refid="11268" relation="include">
+        </childnode>
+        <childnode refid="11267" relation="include">
+        </childnode>
+        <childnode refid="11279" relation="include">
+        </childnode>
+        <childnode refid="11244" relation="include">
+        </childnode>
+        <childnode refid="11233" relation="include">
+        </childnode>
+        <childnode refid="11234" relation="include">
+        </childnode>
+      </node>
+      <node id="11252">
+        <label>version.h</label>
+        <link refid="version_8h"/>
+        <childnode refid="11253" relation="include">
+        </childnode>
+        <childnode refid="11233" relation="include">
+        </childnode>
+      </node>
+      <node id="11331">
+        <label>coins.h</label>
+        <link refid="coins_8h"/>
+        <childnode refid="11332" relation="include">
+        </childnode>
+        <childnode refid="11330" relation="include">
+        </childnode>
+        <childnode refid="11261" relation="include">
+        </childnode>
+        <childnode refid="11239" relation="include">
+        </childnode>
+        <childnode refid="11280" relation="include">
+        </childnode>
+        <childnode refid="11342" relation="include">
+        </childnode>
+      </node>
+      <node id="11249">
+        <label>sys/mman.h</label>
+      </node>
+      <node id="11246">
+        <label>stdlib.h</label>
+      </node>
+      <node id="11344">
+        <label>chain.h</label>
+        <link refid="chain_8h"/>
+        <childnode refid="11306" relation="include">
+        </childnode>
+        <childnode refid="11284" relation="include">
+        </childnode>
+        <childnode refid="11326" relation="include">
+        </childnode>
+        <childnode refid="11234" relation="include">
+        </childnode>
+        <childnode refid="11280" relation="include">
+        </childnode>
+      </node>
+      <node id="11280">
+        <label>boost/foreach.hpp</label>
+      </node>
+      <node id="11300">
+        <label>openssl/crypto.h</label>
+      </node>
+      <node id="11351">
+        <label>stormnode-payments.h</label>
+        <link refid="stormnode-payments_8h"/>
+        <childnode refid="11267" relation="include">
+        </childnode>
+        <childnode refid="11329" relation="include">
+        </childnode>
+        <childnode refid="11350" relation="include">
+        </childnode>
+        <childnode refid="11352" relation="include">
+        </childnode>
+      </node>
+      <node id="11317">
+        <label>compat.h</label>
+        <link refid="compat_8h"/>
+        <childnode refid="11318" relation="include">
+        </childnode>
+        <childnode refid="11249" relation="include">
+        </childnode>
+        <childnode refid="11319" relation="include">
+        </childnode>
+        <childnode refid="11285" relation="include">
+        </childnode>
+        <childnode refid="11320" relation="include">
+        </childnode>
+        <childnode refid="11321" relation="include">
+        </childnode>
+        <childnode refid="11314" relation="include">
+        </childnode>
+        <childnode refid="11322" relation="include">
+        </childnode>
+        <childnode refid="11250" relation="include">
+        </childnode>
+        <childnode refid="11323" relation="include">
+        </childnode>
+        <childnode refid="11251" relation="include">
+        </childnode>
+        <childnode refid="11324" relation="include">
+        </childnode>
+      </node>
+      <node id="11296">
+        <label>boost/date_time/posix_time/posix_time_types.hpp</label>
+      </node>
+      <node id="11272">
+        <label>openssl/sha.h</label>
+      </node>
+      <node id="11324">
+        <label>errno.h</label>
+      </node>
+      <node id="11237">
+        <label>cassert</label>
+      </node>
+      <node id="11271">
+        <label>stdexcept</label>
+      </node>
+      <node id="11284">
+        <label>util.h</label>
+        <link refid="util_8h"/>
+        <childnode refid="11285" relation="include">
+        </childnode>
+        <childnode refid="11286" relation="include">
+        </childnode>
+        <childnode refid="11287" relation="include">
+        </childnode>
+        <childnode refid="11232" relation="include">
+        </childnode>
+        <childnode refid="11288" relation="include">
+        </childnode>
+        <childnode refid="11291" relation="include">
+        </childnode>
+        <childnode refid="11235" relation="include">
+        </childnode>
+        <childnode refid="11292" relation="include">
+        </childnode>
+        <childnode refid="11263" relation="include">
+        </childnode>
+        <childnode refid="11234" relation="include">
+        </childnode>
+        <childnode refid="11233" relation="include">
+        </childnode>
+        <childnode refid="11293" relation="include">
+        </childnode>
+        <childnode refid="11294" relation="include">
+        </childnode>
+        <childnode refid="11264" relation="include">
+        </childnode>
+        <childnode refid="11295" relation="include">
+        </childnode>
+        <childnode refid="11296" relation="include">
+        </childnode>
+        <childnode refid="11297" relation="include">
+        </childnode>
+        <childnode refid="11298" relation="include">
+        </childnode>
+        <childnode refid="11299" relation="include">
+        </childnode>
+        <childnode refid="11300" relation="include">
+        </childnode>
+        <childnode refid="11301" relation="include">
+        </childnode>
+        <childnode refid="11283" relation="include">
+        </childnode>
+        <childnode refid="11239" relation="include">
+        </childnode>
+      </node>
+      <node id="11325">
+        <label>protocol.h</label>
+        <link refid="protocol_8h"/>
+        <childnode refid="11326" relation="include">
+        </childnode>
+        <childnode refid="11232" relation="include">
+        </childnode>
+        <childnode refid="11316" relation="include">
+        </childnode>
+        <childnode refid="11239" relation="include">
+        </childnode>
+        <childnode refid="11233" relation="include">
+        </childnode>
+      </node>
+      <node id="11295">
+        <label>boost/date_time/gregorian/gregorian_types.hpp</label>
+      </node>
+      <node id="11336">
+        <label>leveldb/db.h</label>
+        <link refid="leveldb_2include_2leveldb_2db_8h"/>
+        <childnode refid="11239" relation="include">
+        </childnode>
+        <childnode refid="11303" relation="include">
+        </childnode>
+        <childnode refid="11337" relation="include">
+        </childnode>
+        <childnode refid="11340" relation="include">
+        </childnode>
+      </node>
+      <node id="11233">
+        <label>string</label>
+      </node>
+      <node id="11229">
+        <label>wallet.h</label>
+        <link refid="wallet_8h"/>
+        <childnode refid="11230" relation="include">
+        </childnode>
+        <childnode refid="11233" relation="include">
+        </childnode>
+        <childnode refid="11234" relation="include">
+        </childnode>
+        <childnode refid="11246" relation="include">
+        </childnode>
+        <childnode refid="11306" relation="include">
+        </childnode>
+        <childnode refid="11307" relation="include">
+        </childnode>
+        <childnode refid="11328" relation="include">
+        </childnode>
+        <childnode refid="11329" relation="include">
+        </childnode>
+        <childnode refid="11267" relation="include">
+        </childnode>
+        <childnode refid="11266" relation="include">
+        </childnode>
+        <childnode refid="11279" relation="include">
+        </childnode>
+        <childnode refid="11345" relation="include">
+        </childnode>
+        <childnode refid="11284" relation="include">
+        </childnode>
+        <childnode refid="11302" relation="include">
+        </childnode>
+      </node>
+      <node id="11310">
+        <label>scrypt.h</label>
+        <link refid="scrypt_8h"/>
+        <childnode refid="11239" relation="include">
+        </childnode>
+        <childnode refid="11246" relation="include">
+        </childnode>
+        <childnode refid="11284" relation="include">
+        </childnode>
+        <childnode refid="11311" relation="include">
+        </childnode>
+      </node>
+      <node id="11235">
+        <label>map</label>
+      </node>
+      <node id="11227">
+        <label>/home/dev/ds-160209/src/miner.cpp</label>
+        <link refid="miner.cpp"/>
+        <childnode refid="11228" relation="include">
+        </childnode>
+        <childnode refid="11306" relation="include">
+        </childnode>
+        <childnode refid="11334" relation="include">
+        </childnode>
+        <childnode refid="11347" relation="include">
+        </childnode>
+        <childnode refid="11348" relation="include">
+        </childnode>
+        <childnode refid="11351" relation="include">
+        </childnode>
+        <childnode refid="11353" relation="include">
+        </childnode>
+        <childnode refid="11356" relation="include">
+        </childnode>
+      </node>
+      <node id="11293">
+        <label>boost/thread.hpp</label>
+      </node>
+      <node id="11327">
+        <label>addrman.h</label>
+        <link refid="addrman_8h"/>
+        <childnode refid="11316" relation="include">
+        </childnode>
+        <childnode refid="11325" relation="include">
+        </childnode>
+        <childnode refid="11254" relation="include">
+        </childnode>
+        <childnode refid="11309" relation="include">
+        </childnode>
+        <childnode refid="11284" relation="include">
+        </childnode>
+        <childnode refid="11235" relation="include">
+        </childnode>
+        <childnode refid="11234" relation="include">
+        </childnode>
+      </node>
+      <node id="11350">
+        <label>stormnode.h</label>
+        <link refid="stormnode_8h"/>
+        <childnode refid="11254" relation="include">
+        </childnode>
+        <childnode refid="11311" relation="include">
+        </childnode>
+        <childnode refid="11267" relation="include">
+        </childnode>
+        <childnode refid="11284" relation="include">
+        </childnode>
+        <childnode refid="11349" relation="include">
+        </childnode>
+        <childnode refid="11329" relation="include">
+        </childnode>
+        <childnode refid="11309" relation="include">
+        </childnode>
+      </node>
+      <node id="11345">
+        <label>ui_interface.h</label>
+        <link refid="ui__interface_8h"/>
+        <childnode refid="11291" relation="include">
+        </childnode>
+        <childnode refid="11346" relation="include">
+        </childnode>
+        <childnode refid="11305" relation="include">
+        </childnode>
+        <childnode refid="11233" relation="include">
+        </childnode>
+        <childnode refid="11239" relation="include">
+        </childnode>
+      </node>
+      <node id="11335">
+        <label>leveldbwrapper.h</label>
+        <link refid="leveldbwrapper_8h"/>
+        <childnode refid="11232" relation="include">
+        </childnode>
+        <childnode refid="11259" relation="include">
+        </childnode>
+        <childnode refid="11284" relation="include">
+        </childnode>
+        <childnode refid="11264" relation="include">
+        </childnode>
+        <childnode refid="11336" relation="include">
+        </childnode>
+        <childnode refid="11341" relation="include">
+        </childnode>
+      </node>
+      <node id="11277">
+        <label>stddef.h</label>
+      </node>
+      <node id="11281">
+        <label>boost/variant.hpp</label>
+      </node>
+      <node id="11323">
+        <label>netdb.h</label>
+      </node>
+      <node id="11318">
+        <label>sys/fcntl.h</label>
+      </node>
+      <node id="11332">
+        <label>undo.h</label>
+        <link refid="undo_8h"/>
+        <childnode refid="11333" relation="include">
+        </childnode>
+      </node>
+      <node id="11339">
+        <label>leveldb/status.h</label>
+        <link refid="status_8h"/>
+        <childnode refid="11233" relation="include">
+        </childnode>
+        <childnode refid="11338" relation="include">
+        </childnode>
+      </node>
+      <node id="11343">
+        <label>boost/circular_buffer.hpp</label>
+      </node>
+      <node id="11232">
+        <label>serialize.h</label>
+        <link refid="serialize_8h"/>
+        <childnode refid="11233" relation="include">
+        </childnode>
+        <childnode refid="11234" relation="include">
+        </childnode>
+        <childnode refid="11235" relation="include">
+        </childnode>
+        <childnode refid="11236" relation="include">
+        </childnode>
+        <childnode refid="11237" relation="include">
+        </childnode>
+        <childnode refid="11238" relation="include">
+        </childnode>
+        <childnode refid="11239" relation="include">
+        </childnode>
+        <childnode refid="11240" relation="include">
+        </childnode>
+        <childnode refid="11241" relation="include">
+        </childnode>
+        <childnode refid="11242" relation="include">
+        </childnode>
+        <childnode refid="11243" relation="include">
+        </childnode>
+        <childnode refid="11244" relation="include">
+        </childnode>
+        <childnode refid="11252" relation="include">
+        </childnode>
+      </node>
+      <node id="11250">
+        <label>limits.h</label>
+      </node>
+      <node id="11255">
+        <label>threadsafety.h</label>
+        <link refid="threadsafety_8h"/>
+      </node>
+      <node id="11315">
+        <label>mruset.h</label>
+        <link refid="mruset_8h"/>
+        <childnode refid="11236" relation="include">
+        </childnode>
+        <childnode refid="11312" relation="include">
+        </childnode>
+      </node>
+      <node id="11287">
+        <label>sys/resource.h</label>
+      </node>
+      <node id="11297">
+        <label>openssl/bio.h</label>
+      </node>
+      <node id="11328">
+        <label>crypter.h</label>
+        <link refid="crypter_8h"/>
+        <childnode refid="11244" relation="include">
+        </childnode>
+        <childnode refid="11232" relation="include">
+        </childnode>
+        <childnode refid="11266" relation="include">
+        </childnode>
+      </node>
+      <node id="11305">
+        <label>boost/signals2/signal.hpp</label>
+      </node>
+      <node id="11316">
+        <label>netbase.h</label>
+        <link refid="netbase_8h"/>
+        <childnode refid="11233" relation="include">
+        </childnode>
+        <childnode refid="11234" relation="include">
+        </childnode>
+        <childnode refid="11232" relation="include">
+        </childnode>
+        <childnode refid="11317" relation="include">
+        </childnode>
+      </node>
+      <node id="11266">
+        <label>keystore.h</label>
+        <link refid="keystore_8h"/>
+        <childnode refid="11267" relation="include">
+        </childnode>
+        <childnode refid="11268" relation="include">
+        </childnode>
+        <childnode refid="11254" relation="include">
+        </childnode>
+        <childnode refid="11279" relation="include">
+        </childnode>
+        <childnode refid="11305" relation="include">
+        </childnode>
+        <childnode refid="11281" relation="include">
+        </childnode>
+      </node>
+      <node id="11269">
+        <label>hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="11270" relation="include">
+        </childnode>
+        <childnode refid="11232" relation="include">
+        </childnode>
+        <childnode refid="11272" relation="include">
+        </childnode>
+        <childnode refid="11273" relation="include">
+        </childnode>
+        <childnode refid="11274" relation="include">
+        </childnode>
+        <childnode refid="11275" relation="include">
+        </childnode>
+        <childnode refid="11276" relation="include">
+        </childnode>
+        <childnode refid="11278" relation="include">
+        </childnode>
+        <childnode refid="11234" relation="include">
+        </childnode>
+      </node>
+      <node id="11322">
+        <label>ifaddrs.h</label>
+      </node>
+      <node id="11302">
+        <label>stealth.h</label>
+        <link refid="stealth_8h"/>
+        <childnode refid="11284" relation="include">
+        </childnode>
+        <childnode refid="11232" relation="include">
+        </childnode>
+        <childnode refid="11246" relation="include">
+        </childnode>
+        <childnode refid="11303" relation="include">
+        </childnode>
+        <childnode refid="11234" relation="include">
+        </childnode>
+        <childnode refid="11304" relation="include">
+        </childnode>
+      </node>
+      <node id="11347">
+        <label>kernel.h</label>
+        <link refid="kernel_8h"/>
+        <childnode refid="11344" relation="include">
+        </childnode>
+      </node>
+      <node id="11285">
+        <label>sys/types.h</label>
+      </node>
+      <node id="11262">
+        <label>ios</label>
+      </node>
+      <node id="11247">
+        <label>string.h</label>
+      </node>
+      <node id="11253">
+        <label>clientversion.h</label>
+        <link refid="clientversion_8h"/>
+      </node>
+      <node id="11241">
+        <label>cstdio</label>
+      </node>
+      <node id="11257">
+        <label>boost/thread/locks.hpp</label>
+      </node>
+      <node id="11299">
+        <label>openssl/buffer.h</label>
+      </node>
+      <node id="11242">
+        <label>boost/type_traits/is_fundamental.hpp</label>
+      </node>
+      <node id="11329">
+        <label>main.h</label>
+        <link refid="main_8h"/>
+        <childnode refid="11330" relation="include">
+        </childnode>
+        <childnode refid="11311" relation="include">
+        </childnode>
+        <childnode refid="11279" relation="include">
+        </childnode>
+        <childnode refid="11259" relation="include">
+        </childnode>
+        <childnode refid="11334" relation="include">
+        </childnode>
+        <childnode refid="11344" relation="include">
+        </childnode>
+        <childnode refid="11292" relation="include">
+        </childnode>
+        <childnode refid="11342" relation="include">
+        </childnode>
+      </node>
+      <node id="11264">
+        <label>boost/filesystem/path.hpp</label>
+      </node>
+      <node id="11348">
+        <label>stormnodeman.h</label>
+        <link refid="stormnodeman_8h"/>
+        <childnode refid="11254" relation="include">
+        </childnode>
+        <childnode refid="11311" relation="include">
+        </childnode>
+        <childnode refid="11267" relation="include">
+        </childnode>
+        <childnode refid="11284" relation="include">
+        </childnode>
+        <childnode refid="11349" relation="include">
+        </childnode>
+        <childnode refid="11329" relation="include">
+        </childnode>
+        <childnode refid="11350" relation="include">
+        </childnode>
+      </node>
+      <node id="11342">
+        <label>boost/unordered_map.hpp</label>
+      </node>
+      <node id="11268">
+        <label>pubkey.h</label>
+        <link refid="pubkey_8h"/>
+        <childnode refid="11269" relation="include">
+        </childnode>
+        <childnode refid="11232" relation="include">
+        </childnode>
+        <childnode refid="11270" relation="include">
+        </childnode>
+        <childnode refid="11271" relation="include">
+        </childnode>
+        <childnode refid="11234" relation="include">
+        </childnode>
+      </node>
+      <node id="11251">
+        <label>unistd.h</label>
+      </node>
+      <node id="11265">
+        <label>db_cxx.h</label>
+      </node>
+      <node id="11234">
+        <label>vector</label>
+      </node>
+      <node id="11282">
+        <label>bignum.h</label>
+        <link refid="bignum_8h"/>
+        <childnode refid="11232" relation="include">
+        </childnode>
+        <childnode refid="11270" relation="include">
+        </childnode>
+        <childnode refid="11283" relation="include">
+        </childnode>
+        <childnode refid="11271" relation="include">
+        </childnode>
+        <childnode refid="11234" relation="include">
+        </childnode>
+        <childnode refid="11239" relation="include">
+        </childnode>
+      </node>
+      <node id="11311">
+        <label>net.h</label>
+        <link refid="net_8h"/>
+        <childnode refid="11312" relation="include">
+        </childnode>
+        <childnode refid="11313" relation="include">
+        </childnode>
+        <childnode refid="11280" relation="include">
+        </childnode>
+        <childnode refid="11305" relation="include">
+        </childnode>
+        <childnode refid="11301" relation="include">
+        </childnode>
+        <childnode refid="11314" relation="include">
+        </childnode>
+        <childnode refid="11315" relation="include">
+        </childnode>
+        <childnode refid="11316" relation="include">
+        </childnode>
+        <childnode refid="11325" relation="include">
+        </childnode>
+        <childnode refid="11327" relation="include">
+        </childnode>
+        <childnode refid="11269" relation="include">
+        </childnode>
+        <childnode refid="11259" relation="include">
+        </childnode>
+      </node>
+      <node id="11273">
+        <label>openssl/ripemd.h</label>
+      </node>
+      <node id="11294">
+        <label>boost/filesystem.hpp</label>
+      </node>
+      <node id="11263">
+        <label>utility</label>
+      </node>
+      <node id="11333">
+        <label>compressor.h</label>
+        <link refid="compressor_8h"/>
+        <childnode refid="11307" relation="include">
+        </childnode>
+        <childnode refid="11334" relation="include">
+        </childnode>
+      </node>
+      <node id="11290">
+        <label>sstream</label>
+      </node>
+      <node id="11346">
+        <label>boost/signals2/last_value.hpp</label>
+      </node>
+      <node id="11356">
+        <label>txdb-leveldb.h</label>
+        <link refid="txdb-leveldb_8h"/>
+        <childnode refid="11329" relation="include">
+        </childnode>
+        <childnode refid="11235" relation="include">
+        </childnode>
+        <childnode refid="11233" relation="include">
+        </childnode>
+        <childnode refid="11234" relation="include">
+        </childnode>
+        <childnode refid="11336" relation="include">
+        </childnode>
+        <childnode refid="11341" relation="include">
+        </childnode>
+        <childnode refid="11259" relation="include">
+        </childnode>
+      </node>
+      <node id="11267">
+        <label>key.h</label>
+        <link refid="key_8h"/>
+        <childnode refid="11244" relation="include">
+        </childnode>
+        <childnode refid="11268" relation="include">
+        </childnode>
+        <childnode refid="11271" relation="include">
+        </childnode>
+        <childnode refid="11234" relation="include">
+        </childnode>
+      </node>
+      <node id="11298">
+        <label>openssl/evp.h</label>
+      </node>
+      <node id="11288">
+        <label>tinyformat.h</label>
+        <link refid="tinyformat_8h"/>
+        <childnode refid="11237" relation="include">
+        </childnode>
+        <childnode refid="11289" relation="include">
+        </childnode>
+        <childnode refid="11290" relation="include">
+        </childnode>
+        <childnode refid="11271" relation="include">
+        </childnode>
+      </node>
+      <node id="11239">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="11231">
+        <label>db.h</label>
+        <link refid="db_8h"/>
+        <childnode refid="11232" relation="include">
+        </childnode>
+        <childnode refid="11254" relation="include">
+        </childnode>
+        <childnode refid="11259" relation="include">
+        </childnode>
+        <childnode refid="11235" relation="include">
+        </childnode>
+        <childnode refid="11233" relation="include">
+        </childnode>
+        <childnode refid="11234" relation="include">
+        </childnode>
+        <childnode refid="11264" relation="include">
+        </childnode>
+        <childnode refid="11265" relation="include">
+        </childnode>
+      </node>
+      <node id="11278">
+        <label>crypto/argon2/argon2.h</label>
+        <link refid="argon2_8h"/>
+        <childnode refid="11239" relation="include">
+        </childnode>
+        <childnode refid="11277" relation="include">
+        </childnode>
+        <childnode refid="11250" relation="include">
+        </childnode>
+      </node>
+      <node id="11259">
+        <label>streams.h</label>
+        <link refid="streams_8h"/>
+        <childnode refid="11244" relation="include">
+        </childnode>
+        <childnode refid="11232" relation="include">
+        </childnode>
+        <childnode refid="11260" relation="include">
+        </childnode>
+        <childnode refid="11261" relation="include">
+        </childnode>
+        <childnode refid="11262" relation="include">
+        </childnode>
+        <childnode refid="11238" relation="include">
+        </childnode>
+        <childnode refid="11235" relation="include">
+        </childnode>
+        <childnode refid="11236" relation="include">
+        </childnode>
+        <childnode refid="11239" relation="include">
+        </childnode>
+        <childnode refid="11233" relation="include">
+        </childnode>
+        <childnode refid="11247" relation="include">
+        </childnode>
+        <childnode refid="11263" relation="include">
+        </childnode>
+        <childnode refid="11234" relation="include">
+        </childnode>
+      </node>
+      <node id="11353">
+        <label>spork.h</label>
+        <link refid="spork_8h"/>
+        <childnode refid="11282" relation="include">
+        </childnode>
+        <childnode refid="11254" relation="include">
+        </childnode>
+        <childnode refid="11311" relation="include">
+        </childnode>
+        <childnode refid="11267" relation="include">
+        </childnode>
+        <childnode refid="11284" relation="include">
+        </childnode>
+        <childnode refid="11279" relation="include">
+        </childnode>
+        <childnode refid="11349" relation="include">
+        </childnode>
+        <childnode refid="11329" relation="include">
+        </childnode>
+        <childnode refid="11325" relation="include">
+        </childnode>
+        <childnode refid="11354" relation="include">
+        </childnode>
+        <childnode refid="11352" relation="include">
+        </childnode>
+      </node>
+      <node id="11286">
+        <label>sys/time.h</label>
+      </node>
+      <node id="11289">
+        <label>iostream</label>
+      </node>
+      <node id="11312">
+        <label>deque</label>
+      </node>
+      <node id="11270">
+        <label>uint256.h</label>
+        <link refid="uint256_8h"/>
+        <childnode refid="11261" relation="include">
+        </childnode>
+        <childnode refid="11240" relation="include">
+        </childnode>
+        <childnode refid="11271" relation="include">
+        </childnode>
+        <childnode refid="11239" relation="include">
+        </childnode>
+        <childnode refid="11233" relation="include">
+        </childnode>
+        <childnode refid="11234" relation="include">
+        </childnode>
+      </node>
+      <node id="11228">
+        <label>miner.h</label>
+        <link refid="miner_8h"/>
+        <childnode refid="11229" relation="include">
+        </childnode>
+      </node>
+      <node id="11319">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="11338">
+        <label>leveldb/slice.h</label>
+        <link refid="slice_8h"/>
+        <childnode refid="11261" relation="include">
+        </childnode>
+        <childnode refid="11277" relation="include">
+        </childnode>
+        <childnode refid="11247" relation="include">
+        </childnode>
+        <childnode refid="11233" relation="include">
+        </childnode>
+      </node>
+      <node id="11313">
+        <label>boost/array.hpp</label>
+      </node>
+      <node id="11283">
+        <label>openssl/bn.h</label>
+      </node>
+      <node id="11334">
+        <label>txdb.h</label>
+        <link refid="txdb_8h"/>
+        <childnode refid="11335" relation="include">
+        </childnode>
+        <childnode refid="11329" relation="include">
+        </childnode>
+        <childnode refid="11235" relation="include">
+        </childnode>
+        <childnode refid="11233" relation="include">
+        </childnode>
+        <childnode refid="11263" relation="include">
+        </childnode>
+        <childnode refid="11234" relation="include">
+        </childnode>
+      </node>
+      <node id="11309">
+        <label>timedata.h</label>
+        <link refid="timedata_8h"/>
+        <childnode refid="11239" relation="include">
+        </childnode>
+      </node>
+      <node id="11244">
+        <label>allocators.h</label>
+        <link refid="allocators_8h"/>
+        <childnode refid="11245" relation="include">
+        </childnode>
+        <childnode refid="11247" relation="include">
+        </childnode>
+        <childnode refid="11233" relation="include">
+        </childnode>
+        <childnode refid="11248" relation="include">
+        </childnode>
+        <childnode refid="11235" relation="include">
+        </childnode>
+        <childnode refid="11249" relation="include">
+        </childnode>
+        <childnode refid="11250" relation="include">
+        </childnode>
+        <childnode refid="11251" relation="include">
+        </childnode>
+      </node>
+      <node id="11326">
+        <label>chainparams.h</label>
+        <link refid="chainparams_8h"/>
+        <childnode refid="11282" relation="include">
+        </childnode>
+        <childnode refid="11270" relation="include">
+        </childnode>
+        <childnode refid="11234" relation="include">
+        </childnode>
+      </node>
+      <node id="11236">
+        <label>set</label>
+      </node>
+      <node id="11260">
+        <label>algorithm</label>
+      </node>
+      <node id="11355">
+        <label>activestormnode.h</label>
+        <link refid="activestormnode_8h"/>
+        <childnode refid="11254" relation="include">
+        </childnode>
+        <childnode refid="11267" relation="include">
+        </childnode>
+        <childnode refid="11229" relation="include">
+        </childnode>
+      </node>
+      <node id="11274">
+        <label>crypto/ripemd160.h</label>
+        <link refid="ripemd160_8h"/>
+        <childnode refid="11239" relation="include">
+        </childnode>
+        <childnode refid="11246" relation="include">
+        </childnode>
+      </node>
+      <node id="11308">
+        <label>util.h</label>
+      </node>
+      <node id="11303">
+        <label>stdio.h</label>
+      </node>
+      <node id="11245">
+        <label>cleanse.h</label>
+        <link refid="cleanse_8h"/>
+        <childnode refid="11246" relation="include">
+        </childnode>
+      </node>
+      <node id="11240">
+        <label>cstring</label>
+      </node>
+      <node id="11254">
+        <label>sync.h</label>
+        <link refid="sync_8h"/>
+        <childnode refid="11255" relation="include">
+        </childnode>
+        <childnode refid="11256" relation="include">
+        </childnode>
+        <childnode refid="11257" relation="include">
+        </childnode>
+        <childnode refid="11248" relation="include">
+        </childnode>
+        <childnode refid="11258" relation="include">
+        </childnode>
+      </node>
+      <node id="11304">
+        <label>inttypes.h</label>
+      </node>
+      <node id="11337">
+        <label>leveldb/iterator.h</label>
+        <link refid="iterator_8h"/>
+        <childnode refid="11338" relation="include">
+        </childnode>
+        <childnode refid="11339" relation="include">
+        </childnode>
+      </node>
+      <node id="11306">
+        <label>primitives/block.h</label>
+        <link refid="primitives_2block_8h"/>
+        <childnode refid="11307" relation="include">
+        </childnode>
+        <childnode refid="11278" relation="include">
+        </childnode>
+        <childnode refid="11310" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="class_c_orphan" prot="public">COrphan</innerclass>
+    <innerclass refid="class_tx_priority_compare" prot="public">TxPriorityCompare</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="miner_8cpp_1a032f10277d84eef76e40517f2bfe576e" prot="public" static="no">
+        <type>boost::tuple&lt; double, double, <ref refid="class_c_transaction" kindref="compound">CTransaction</ref> * &gt;</type>
+        <definition>typedef boost::tuple&lt;double, double, CTransaction*&gt; TxPriority</definition>
+        <argsstring></argsstring>
+        <name>TxPriority</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/miner.cpp" line="83" column="1" bodyfile="/home/dev/ds-160209/src/miner.cpp" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="miner_8cpp_1abb57d52de7c99ac76f7020624a7565fd" prot="public" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int nMinerSleep</definition>
+        <argsstring></argsstring>
+        <name>nMinerSleep</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/miner.cpp" line="23" column="1" bodyfile="/home/dev/ds-160209/src/init.cpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="miner_8cpp_1a0dc753ba258d2fa8a4edddd44976e2dd" prot="public" static="yes" mutable="no">
+        <type>const unsigned int</type>
+        <definition>const unsigned int pSHA256InitState[8]</definition>
+        <argsstring>[8]</argsstring>
+        <name>pSHA256InitState</name>
+        <initializer>=
+{0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/miner.cpp" line="40" column="1" bodyfile="/home/dev/ds-160209/src/miner.cpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="miner_8cpp_1a31f8b0d3c96670151ba997019820e0f4" prot="public" static="no" mutable="no">
+        <type><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref></type>
+        <definition>uint64_t nLastBlockTx</definition>
+        <argsstring></argsstring>
+        <name>nLastBlockTx</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/miner.cpp" line="78" column="1" bodyfile="/home/dev/ds-160209/src/miner.cpp" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="miner_8cpp_1af8945f7f19ea7e938baab1bd4c226c2f" prot="public" static="no" mutable="no">
+        <type><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref></type>
+        <definition>uint64_t nLastBlockSize</definition>
+        <argsstring></argsstring>
+        <name>nLastBlockSize</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/miner.cpp" line="79" column="1" bodyfile="/home/dev/ds-160209/src/miner.cpp" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="miner_8cpp_1a544c4ab48afad09d2f474d0720570e94" prot="public" static="no" mutable="no">
+        <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+        <definition>int64_t nLastCoinStakeSearchInterval</definition>
+        <argsstring></argsstring>
+        <name>nLastCoinStakeSearchInterval</name>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/miner.cpp" line="80" column="1" bodyfile="/home/dev/ds-160209/src/miner.cpp" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="miner_8cpp_1aa55dc4025422710b20e448ba49adda57" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>static int FormatHashBlocks</definition>
+        <argsstring>(void *pbuffer, unsigned int len)</argsstring>
+        <name>FormatHashBlocks</name>
+        <param>
+          <type>void *</type>
+          <declname>pbuffer</declname>
+        </param>
+        <param>
+          <type>unsigned int</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/miner.cpp" line="25" column="1" bodyfile="/home/dev/ds-160209/src/miner.cpp" bodystart="25" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="miner_8cpp_1adcaa5b0c3f29f5856f6393e2b847e7d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void SHA256Transform</definition>
+        <argsstring>(void *pstate, void *pinput, const void *pinit)</argsstring>
+        <name>SHA256Transform</name>
+        <param>
+          <type>void *</type>
+          <declname>pstate</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>pinput</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>pinit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Base <ref refid="namespacesha256" kindref="compound">sha256</ref> mining transform </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/miner.cpp" line="43" column="1" bodyfile="/home/dev/ds-160209/src/miner.cpp" bodystart="43" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="miner_8cpp_1aa2eb52225c2bb423ea961f4844d1c69a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="class_c_block" kindref="compound">CBlock</ref> *</type>
+        <definition>CBlock* CreateNewBlock</definition>
+        <argsstring>(CReserveKey &amp;reservekey, bool fProofOfStake, CAmount *pFees)</argsstring>
+        <name>CreateNewBlock</name>
+        <param>
+          <type><ref refid="class_c_reserve_key" kindref="compound">CReserveKey</ref> &amp;</type>
+          <declname>reservekey</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fProofOfStake</declname>
+        </param>
+        <param>
+          <type><ref refid="amount_8h_1a4eaf3a5239714d8c45b851527f7cb564" kindref="member">CAmount</ref> *</type>
+          <declname>pFees</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/miner.cpp" line="107" column="1" bodyfile="/home/dev/ds-160209/src/miner.cpp" bodystart="107" bodyend="381"/>
+      </memberdef>
+      <memberdef kind="function" id="miner_8cpp_1a6f07c738a8aadffe748358e985b43d3f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void IncrementExtraNonce</definition>
+        <argsstring>(CBlock *pblock, CBlockIndex *pindexPrev, unsigned int &amp;nExtraNonce)</argsstring>
+        <name>IncrementExtraNonce</name>
+        <param>
+          <type><ref refid="class_c_block" kindref="compound">CBlock</ref> *</type>
+          <declname>pblock</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_block_index" kindref="compound">CBlockIndex</ref> *</type>
+          <declname>pindexPrev</declname>
+        </param>
+        <param>
+          <type>unsigned int &amp;</type>
+          <declname>nExtraNonce</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Modify the extranonce in a block </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/miner.cpp" line="383" column="1" bodyfile="/home/dev/ds-160209/src/miner.cpp" bodystart="383" bodyend="399"/>
+      </memberdef>
+      <memberdef kind="function" id="miner_8cpp_1a391a5a462c3f60bbb7dbf6a09fe2e78f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void FormatHashBuffers</definition>
+        <argsstring>(CBlock *pblock, char *pmidstate, char *pdata, char *phash1)</argsstring>
+        <name>FormatHashBuffers</name>
+        <param>
+          <type><ref refid="class_c_block" kindref="compound">CBlock</ref> *</type>
+          <declname>pblock</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>pmidstate</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>pdata</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>phash1</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Do mining precalculation </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/miner.cpp" line="401" column="1" bodyfile="/home/dev/ds-160209/src/miner.cpp" bodystart="401" bodyend="444"/>
+      </memberdef>
+      <memberdef kind="function" id="miner_8cpp_1aadd8a05aa6d8fae1c0f4daa5e971a12a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CheckWork</definition>
+        <argsstring>(CBlock *pblock, CWallet &amp;wallet, CReserveKey &amp;reservekey)</argsstring>
+        <name>CheckWork</name>
+        <param>
+          <type><ref refid="class_c_block" kindref="compound">CBlock</ref> *</type>
+          <declname>pblock</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_wallet" kindref="compound">CWallet</ref> &amp;</type>
+          <declname>wallet</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_reserve_key" kindref="compound">CReserveKey</ref> &amp;</type>
+          <declname>reservekey</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check mined proof-of-work block </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/miner.cpp" line="447" column="1" bodyfile="/home/dev/ds-160209/src/miner.cpp" bodystart="447" bodyend="485"/>
+      </memberdef>
+      <memberdef kind="function" id="miner_8cpp_1a68be4bcfa03b86095641eac5ca996fed" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CheckStake</definition>
+        <argsstring>(CBlock *pblock, CWallet &amp;wallet)</argsstring>
+        <name>CheckStake</name>
+        <param>
+          <type><ref refid="class_c_block" kindref="compound">CBlock</ref> *</type>
+          <declname>pblock</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_wallet" kindref="compound">CWallet</ref> &amp;</type>
+          <declname>wallet</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Check mined proof-of-stake block </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/miner.cpp" line="487" column="1" bodyfile="/home/dev/ds-160209/src/miner.cpp" bodystart="487" bodyend="534"/>
+      </memberdef>
+      <memberdef kind="function" id="miner_8cpp_1a31faece5ef0e403969b3d3debd79b352" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ThreadStakeMiner</definition>
+        <argsstring>(CWallet *pwallet)</argsstring>
+        <name>ThreadStakeMiner</name>
+        <param>
+          <type><ref refid="class_c_wallet" kindref="compound">CWallet</ref> *</type>
+          <declname>pwallet</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/miner.cpp" line="536" column="1" bodyfile="/home/dev/ds-160209/src/miner.cpp" bodystart="536" bodyend="591"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2009-2016<sp/>Satoshi<sp/>Nakamoto</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2009-2016<sp/>The<sp/>Bitcoin<sp/>Developers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2015-2016<sp/>Silk<sp/>Network</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Distributed<sp/>under<sp/>the<sp/>MIT/X11<sp/>software<sp/>license,<sp/>see<sp/>the<sp/>accompanying</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>file<sp/>COPYING<sp/>or<sp/>http://www.opensource.org/licenses/mit-license.php.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="miner_8h" kindref="compound">miner.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="primitives_2block_8h" kindref="compound">primitives/block.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="txdb_8h" kindref="compound">txdb.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="kernel_8h" kindref="compound">kernel.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="stormnodeman_8h" kindref="compound">stormnodeman.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="stormnode-payments_8h" kindref="compound">stormnode-payments.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="spork_8h" kindref="compound">spork.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="txdb-leveldb_8h" kindref="compound">txdb-leveldb.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespacestd" kindref="compound">std</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>DarkSilkMiner</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">extern</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="miner_8cpp_1abb57d52de7c99ac76f7020624a7565fd" kindref="member">nMinerSleep</ref>;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>FormatHashBlocks(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>pbuffer,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>len)</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>pdata<sp/>=<sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*)pbuffer;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>blocks<sp/>=<sp/>1<sp/>+<sp/>((len<sp/>+<sp/>8)<sp/>/<sp/>64);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>pend<sp/>=<sp/>pdata<sp/>+<sp/>64<sp/>*<sp/>blocks;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(pdata<sp/>+<sp/>len,<sp/>0,<sp/>64<sp/>*<sp/>blocks<sp/>-<sp/>len);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>pdata[len]<sp/>=<sp/>0x80;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>bits<sp/>=<sp/>len<sp/>*<sp/>8;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>pend[-1]<sp/>=<sp/>(bits<sp/>&gt;&gt;<sp/>0)<sp/>&amp;<sp/>0xff;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>pend[-2]<sp/>=<sp/>(bits<sp/>&gt;&gt;<sp/>8)<sp/>&amp;<sp/>0xff;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>pend[-3]<sp/>=<sp/>(bits<sp/>&gt;&gt;<sp/>16)<sp/>&amp;<sp/>0xff;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>pend[-4]<sp/>=<sp/>(bits<sp/>&gt;&gt;<sp/>24)<sp/>&amp;<sp/>0xff;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>blocks;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pSHA256InitState[8]<sp/>=</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">{0x6a09e667,<sp/>0xbb67ae85,<sp/>0x3c6ef372,<sp/>0xa54ff53a,<sp/>0x510e527f,<sp/>0x9b05688c,<sp/>0x1f83d9ab,<sp/>0x5be0cd19};</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="miner_8h_1adcaa5b0c3f29f5856f6393e2b847e7d7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="miner_8cpp_1adcaa5b0c3f29f5856f6393e2b847e7d7" kindref="member">SHA256Transform</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>pstate,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>pinput,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>pinit)</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>SHA256_CTX<sp/>ctx;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>data[64];</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>SHA256_Init(&amp;ctx);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>16;<sp/>i++)</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((<ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref>*)data)[i]<sp/>=<sp/><ref refid="util_8h_1a62bb21d0cc35fb9408d09dc385fe484f" kindref="member">ByteReverse</ref>(((<ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref>*)pinput)[i]);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>8;<sp/>i++)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ctx.h[i]<sp/>=<sp/>((<ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref>*)pinit)[i];</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>SHA256_Update(&amp;ctx,<sp/>data,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(data));</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>8;<sp/>i++)</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((<ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref>*)pstate)[i]<sp/>=<sp/>ctx.h[i];</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Some<sp/>explaining<sp/>would<sp/>be<sp/>appreciated</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="class_c_orphan" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_c_orphan" kindref="compound">COrphan</ref></highlight></codeline>
+<codeline lineno="63"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="65" refid="class_c_orphan_1ab00c8b3205357cd0c59545fefde0f1ae" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_transaction" kindref="compound">CTransaction</ref>*<sp/><ref refid="class_c_orphan_1ab00c8b3205357cd0c59545fefde0f1ae" kindref="member">ptx</ref>;</highlight></codeline>
+<codeline lineno="66" refid="class_c_orphan_1a1b19183565d42c20ded09a2cc787fc50" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>set&lt;uint256&gt;<sp/><ref refid="class_c_orphan_1a1b19183565d42c20ded09a2cc787fc50" kindref="member">setDependsOn</ref>;</highlight></codeline>
+<codeline lineno="67" refid="class_c_orphan_1a899f7928b6d4e9206ce04d5b2953da33" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="class_c_orphan_1a899f7928b6d4e9206ce04d5b2953da33" kindref="member">dPriority</ref>;</highlight></codeline>
+<codeline lineno="68" refid="class_c_orphan_1a4a0f70b5609ceee00be532fd2116587e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="class_c_orphan_1a4a0f70b5609ceee00be532fd2116587e" kindref="member">dFeePerKb</ref>;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="class_c_orphan_1ae097249b6ca0a184192058ad89f0ea0d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_orphan_1ae097249b6ca0a184192058ad89f0ea0d" kindref="member">COrphan</ref>(<ref refid="class_c_transaction" kindref="compound">CTransaction</ref>*<sp/>ptxIn)</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ptx<sp/>=<sp/>ptxIn;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dPriority<sp/>=<sp/>dFeePerKb<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="miner_8cpp_1a31f8b0d3c96670151ba997019820e0f4" refkind="member"><highlight class="normal"><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/><ref refid="miner_8cpp_1a31f8b0d3c96670151ba997019820e0f4" kindref="member">nLastBlockTx</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="79" refid="miner_8cpp_1af8945f7f19ea7e938baab1bd4c226c2f" refkind="member"><highlight class="normal"><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/><ref refid="miner_8cpp_1af8945f7f19ea7e938baab1bd4c226c2f" kindref="member">nLastBlockSize</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="80" refid="darksilkgui_8cpp_1a544c4ab48afad09d2f474d0720570e94" refkind="member"><highlight class="normal"><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref><sp/><ref refid="miner_8cpp_1a544c4ab48afad09d2f474d0720570e94" kindref="member">nLastCoinStakeSearchInterval</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="comment">//<sp/>We<sp/>want<sp/>to<sp/>sort<sp/>transactions<sp/>by<sp/>priority<sp/>and<sp/>fee,<sp/>so:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83" refid="miner_8cpp_1a032f10277d84eef76e40517f2bfe576e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>boost::tuple&lt;double,<sp/>double,<sp/>CTransaction*&gt;<sp/><ref refid="miner_8cpp_1a032f10277d84eef76e40517f2bfe576e" kindref="member">TxPriority</ref>;</highlight></codeline>
+<codeline lineno="84" refid="class_tx_priority_compare" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_tx_priority_compare" kindref="compound">TxPriorityCompare</ref></highlight></codeline>
+<codeline lineno="85"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>byFee;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="88" refid="class_tx_priority_compare_1a2ee1aac9d165bbeaaf2a687373f318ad" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_tx_priority_compare_1a2ee1aac9d165bbeaaf2a687373f318ad" kindref="member">TxPriorityCompare</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>_byFee)<sp/>:<sp/>byFee(_byFee)<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="89" refid="class_tx_priority_compare_1ab50fdbeb5862709d13a271c11ade1775" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_tx_priority_compare_1ab50fdbeb5862709d13a271c11ade1775" kindref="member">operator()</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="miner_8cpp_1a032f10277d84eef76e40517f2bfe576e" kindref="member">TxPriority</ref>&amp;<sp/>a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="miner_8cpp_1a032f10277d84eef76e40517f2bfe576e" kindref="member">TxPriority</ref>&amp;<sp/>b)</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(byFee)</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(a.get&lt;1&gt;()<sp/>==<sp/>b.get&lt;1&gt;())</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>a.get&lt;0&gt;()<sp/>&lt;<sp/>b.get&lt;0&gt;();</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>a.get&lt;1&gt;()<sp/>&lt;<sp/>b.get&lt;1&gt;();</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(a.get&lt;0&gt;()<sp/>==<sp/>b.get&lt;0&gt;())</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>a.get&lt;1&gt;()<sp/>&lt;<sp/>b.get&lt;1&gt;();</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>a.get&lt;0&gt;()<sp/>&lt;<sp/>b.get&lt;0&gt;();</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="comment">//<sp/>CreateNewBlock:<sp/>create<sp/>new<sp/>block<sp/>(without<sp/>proof-of-work/proof-of-stake)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107" refid="miner_8h_1a4113fa37961c33784bb63f1d176e4615" refkind="member"><highlight class="normal"><ref refid="class_c_block" kindref="compound">CBlock</ref>*<sp/><ref refid="miner_8cpp_1aa2eb52225c2bb423ea961f4844d1c69a" kindref="member">CreateNewBlock</ref>(<ref refid="class_c_reserve_key" kindref="compound">CReserveKey</ref>&amp;<sp/>reservekey,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fProofOfStake,<sp/><ref refid="amount_8h_1a4eaf3a5239714d8c45b851527f7cb564" kindref="member">CAmount</ref>*<sp/>pFees)</highlight></codeline>
+<codeline lineno="108"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>new<sp/>block</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/>auto_ptr&lt;CBlock&gt;<sp/>pblock(</highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="class_c_block" kindref="compound">CBlock</ref>());</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!pblock.get())</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_block_index" kindref="compound">CBlockIndex</ref>*<sp/>pindexPrev<sp/>=<sp/><ref refid="chain_8h_1a6454ad864029344132a0a0b59b1456ee" kindref="member">pindexBest</ref>;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nHeight<sp/>=<sp/>pindexPrev-&gt;<ref refid="class_c_block_index_1aebfc8d6b95852546760e742553d7bfd5" kindref="member">nHeight</ref><sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>coinbase<sp/>tx</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO<sp/>(AA):<sp/>Use<sp/>CMutableTransaction<sp/>txNew;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_c_mutable_transaction" kindref="compound">CMutableTransaction</ref><sp/>txNew;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>txNew.<ref refid="struct_c_mutable_transaction_1ad6b1a0a773293fd153a1d384923631da" kindref="member">vin</ref>.resize(1);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>txNew.<ref refid="struct_c_mutable_transaction_1ad6b1a0a773293fd153a1d384923631da" kindref="member">vin</ref>[0].prevout.SetNull();</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>txNew.<ref refid="struct_c_mutable_transaction_1aca14a252c78e4af2dfe68d7ea67a77dc" kindref="member">vout</ref>.resize(1);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!fProofOfStake)</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pblock-&gt;nVersion<sp/>=<sp/>1;<sp/></highlight><highlight class="comment">//<sp/>Proof<sp/>of<sp/>Work<sp/>uses<sp/>Scrypt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_pub_key" kindref="compound">CPubKey</ref><sp/>pubkey;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!reservekey.<ref refid="class_c_reserve_key_1ad198d2d7a54d315c60805ba1cb0caf7c" kindref="member">GetReservedKey</ref>(pubkey))</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>NULL;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>txNew.<ref refid="struct_c_mutable_transaction_1aca14a252c78e4af2dfe68d7ea67a77dc" kindref="member">vout</ref>[0].scriptPubKey.SetDestination(pubkey.<ref refid="class_c_pub_key_1a9c1908fef34fd9e1c4b5e0ffd5d3834e" kindref="member">GetID</ref>());</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Height<sp/>first<sp/>in<sp/>coinbase<sp/>required<sp/>for<sp/>block.version=2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>txNew.<ref refid="struct_c_mutable_transaction_1ad6b1a0a773293fd153a1d384923631da" kindref="member">vin</ref>[0].scriptSig<sp/>=<sp/>(<ref refid="class_c_script" kindref="compound">CScript</ref>()<sp/>&lt;&lt;<sp/>nHeight)<sp/>+<sp/><ref refid="main_8cpp_1a5ed86cbbedb72d8fcec0524f2792ada8" kindref="member">COINBASE_FLAGS</ref>;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(txNew.<ref refid="struct_c_mutable_transaction_1ad6b1a0a773293fd153a1d384923631da" kindref="member">vin</ref>[0].scriptSig.size()<sp/>&lt;=<sp/>100);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>txNew.<ref refid="struct_c_mutable_transaction_1aca14a252c78e4af2dfe68d7ea67a77dc" kindref="member">vout</ref>[0].SetEmpty();</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Add<sp/>our<sp/>coinbase<sp/>tx<sp/>as<sp/>first<sp/>transaction</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>pblock-&gt;vtx.push_back(txNew);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Largest<sp/>block<sp/>you&apos;re<sp/>willing<sp/>to<sp/>create:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBlockMaxSize<sp/>=<sp/><ref refid="util_8cpp_1a24f685720bf40370e5bd2a192ad50cd8" kindref="member">GetArg</ref>(</highlight><highlight class="stringliteral">&quot;-blockmaxsize&quot;</highlight><highlight class="normal">,<sp/>MAX_BLOCK_SIZE_GEN/2);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Limit<sp/>to<sp/>betweeen<sp/>1K<sp/>and<sp/>MAX_BLOCK_SIZE-1K<sp/>for<sp/>sanity:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>nBlockMaxSize<sp/>=<sp/>std::max((</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)1000,<sp/>std::min((</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)(MAX_BLOCK_SIZE-1000),<sp/>nBlockMaxSize));</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>How<sp/>much<sp/>of<sp/>the<sp/>block<sp/>should<sp/>be<sp/>dedicated<sp/>to<sp/>high-priority<sp/>transactions,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>included<sp/>regardless<sp/>of<sp/>the<sp/>fees<sp/>they<sp/>pay</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBlockPrioritySize<sp/>=<sp/><ref refid="util_8cpp_1a24f685720bf40370e5bd2a192ad50cd8" kindref="member">GetArg</ref>(</highlight><highlight class="stringliteral">&quot;-blockprioritysize&quot;</highlight><highlight class="normal">,<sp/>DEFAULT_BLOCK_PRIORITY_SIZE);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>nBlockPrioritySize<sp/>=<sp/>std::min(nBlockMaxSize,<sp/>nBlockPrioritySize);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Minimum<sp/>block<sp/>size<sp/>you<sp/>want<sp/>to<sp/>create;<sp/>block<sp/>will<sp/>be<sp/>filled<sp/>with<sp/>free<sp/>transactions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>until<sp/>there<sp/>are<sp/>no<sp/>more<sp/>or<sp/>the<sp/>block<sp/>reaches<sp/>this<sp/>size:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBlockMinSize<sp/>=<sp/><ref refid="util_8cpp_1a24f685720bf40370e5bd2a192ad50cd8" kindref="member">GetArg</ref>(</highlight><highlight class="stringliteral">&quot;-blockminsize&quot;</highlight><highlight class="normal">,<sp/>0);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>nBlockMinSize<sp/>=<sp/>std::min(nBlockMaxSize,<sp/>nBlockMinSize);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Fee-per-kilobyte<sp/>amount<sp/>considered<sp/>the<sp/>same<sp/>as<sp/>&quot;free&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Be<sp/>careful<sp/>setting<sp/>this:<sp/>if<sp/>you<sp/>set<sp/>it<sp/>to<sp/>zero<sp/>then</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>a<sp/>transaction<sp/>spammer<sp/>can<sp/>cheaply<sp/>fill<sp/>blocks<sp/>using</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>1-satoshi-fee<sp/>transactions.<sp/>It<sp/>should<sp/>be<sp/>set<sp/>above<sp/>the<sp/>real</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>cost<sp/>to<sp/>you<sp/>of<sp/>processing<sp/>a<sp/>transaction.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="amount_8h_1a4eaf3a5239714d8c45b851527f7cb564" kindref="member">CAmount</ref><sp/>nMinTxFee<sp/>=<sp/><ref refid="wallet_8h_1add67e95cd66a980b74a7a2f434d9cf1c" kindref="member">MIN_TX_FEE</ref>;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="util_8cpp_1a0502b74b88db99500ee21dcb446311e5" kindref="member">mapArgs</ref>.count(</highlight><highlight class="stringliteral">&quot;-mintxfee&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="util_8cpp_1a9ebffff9292ea77a3801d29ae2f23572" kindref="member">ParseMoney</ref>(<ref refid="util_8cpp_1a0502b74b88db99500ee21dcb446311e5" kindref="member">mapArgs</ref>[</highlight><highlight class="stringliteral">&quot;-mintxfee&quot;</highlight><highlight class="normal">],<sp/>nMinTxFee);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>pblock-&gt;nBits<sp/>=<sp/><ref refid="main_8cpp_1a868a58404bd61b6a82901f428d152bae" kindref="member">GetNextTargetRequired</ref>(pindexPrev,<sp/>fProofOfStake);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Collect<sp/>memory<sp/>pool<sp/>transactions<sp/>into<sp/>the<sp/>block</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="amount_8h_1a4eaf3a5239714d8c45b851527f7cb564" kindref="member">CAmount</ref><sp/>nFees<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="sync_8h_1a35644e2b75a93da0cb0f6c768f34efa8" kindref="member">LOCK2</ref>(<ref refid="main_8cpp_1a1ed8285f0fe3c6799c53265ce72552c8" kindref="member">cs_main</ref>,<sp/><ref refid="main_8cpp_1a52890038ef379d29a1a8f3bd20dbe088" kindref="member">mempool</ref>.<ref refid="class_c_tx_mem_pool_1ac7ee8c06837c7d2688e2d7e3d071bdbb" kindref="member">cs</ref>);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_tx_d_b" kindref="compound">CTxDB</ref><sp/><ref refid="txdb-leveldb_8cpp_1a72eff8ae1d84de13daf97a61b8c02bc6" kindref="member">txdb</ref>(</highlight><highlight class="stringliteral">&quot;r&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Priority<sp/>order<sp/>to<sp/>process<sp/>transactions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>list&lt;COrphan&gt;<sp/>vOrphan;<sp/></highlight><highlight class="comment">//<sp/>list<sp/>memory<sp/>doesn&apos;t<sp/>move</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>map&lt;uint256,<sp/>vector&lt;COrphan*&gt;<sp/>&gt;<sp/>mapDependers;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>vector<sp/>will<sp/>be<sp/>sorted<sp/>into<sp/>a<sp/>priority<sp/>queue:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vector&lt;TxPriority&gt;<sp/>vecPriority;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vecPriority.reserve(<ref refid="main_8cpp_1a52890038ef379d29a1a8f3bd20dbe088" kindref="member">mempool</ref>.<ref refid="class_c_tx_mem_pool_1a340d4a897e521b7021e6b22cce951beb" kindref="member">mapTx</ref>.size());</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(map&lt;uint256,<sp/>CTransaction&gt;::iterator<sp/>mi<sp/>=<sp/><ref refid="main_8cpp_1a52890038ef379d29a1a8f3bd20dbe088" kindref="member">mempool</ref>.<ref refid="class_c_tx_mem_pool_1a340d4a897e521b7021e6b22cce951beb" kindref="member">mapTx</ref>.begin();<sp/>mi<sp/>!=<sp/><ref refid="main_8cpp_1a52890038ef379d29a1a8f3bd20dbe088" kindref="member">mempool</ref>.<ref refid="class_c_tx_mem_pool_1a340d4a897e521b7021e6b22cce951beb" kindref="member">mapTx</ref>.end();<sp/>++mi)</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_transaction" kindref="compound">CTransaction</ref>&amp;<sp/>tx<sp/>=<sp/>(*mi).second;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(tx.<ref refid="class_c_transaction_1a274384ecbb50d71355cd287b7a6bca51" kindref="member">IsCoinBase</ref>()<sp/>||<sp/>tx.<ref refid="class_c_transaction_1a8d924e18ddcf4c31bc7483b3a157113d" kindref="member">IsCoinStake</ref>()<sp/>||<sp/>!<ref refid="main_8cpp_1adc332cd7ac94e639bb4239618341be19" kindref="member">IsFinalTx</ref>(tx,<sp/>nHeight))</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_orphan" kindref="compound">COrphan</ref>*<sp/>porphan<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dPriority<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="amount_8h_1a4eaf3a5239714d8c45b851527f7cb564" kindref="member">CAmount</ref><sp/>nTotalIn<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fMissingInputs<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOST_FOREACH(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_tx_in" kindref="compound">CTxIn</ref>&amp;<sp/>txin,<sp/>tx.<ref refid="class_c_transaction_1a53fa787e4ea57374b4fa2a28e9a957b2" kindref="member">vin</ref>)</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Read<sp/>prev<sp/>transaction</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_transaction" kindref="compound">CTransaction</ref><sp/>txPrev;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_tx_index" kindref="compound">CTxIndex</ref><sp/>txindex;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_transaction_po_s" kindref="compound">CTransactionPoS</ref><sp/>txPoS;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!txPoS.<ref refid="class_c_transaction_po_s_1a7c71229336405cae52bd3e9a547f1266" kindref="member">ReadFromDisk</ref>(txPrev,<sp/>txdb,<sp/>txin.<ref refid="class_c_tx_in_1aed9312051a25380cbd7f123408ab7c20" kindref="member">prevout</ref>,<sp/>txindex))</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>should<sp/>never<sp/>happen;<sp/>all<sp/>transactions<sp/>in<sp/>the<sp/>memory</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>pool<sp/>should<sp/>connect<sp/>to<sp/>either<sp/>transactions<sp/>in<sp/>the<sp/>chain</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>or<sp/>other<sp/>transactions<sp/>in<sp/>the<sp/>memory<sp/>pool.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="main_8cpp_1a52890038ef379d29a1a8f3bd20dbe088" kindref="member">mempool</ref>.<ref refid="class_c_tx_mem_pool_1a340d4a897e521b7021e6b22cce951beb" kindref="member">mapTx</ref>.count(txin.<ref refid="class_c_tx_in_1aed9312051a25380cbd7f123408ab7c20" kindref="member">prevout</ref>.<ref refid="class_c_out_point_1af131c7194a660558b0ff158f4efa7a28" kindref="member">hash</ref>))</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" kindref="member">LogPrintf</ref>(</highlight><highlight class="stringliteral">&quot;ERROR:<sp/>mempool<sp/>transaction<sp/>missing<sp/>input\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="util_8cpp_1a2ba7badc843121dde40a6f109d224a42" kindref="member">fDebug</ref>)<sp/>assert(</highlight><highlight class="stringliteral">&quot;mempool<sp/>transaction<sp/>missing<sp/>input&quot;</highlight><highlight class="normal"><sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fMissingInputs<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(porphan)</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vOrphan.pop_back();</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Has<sp/>to<sp/>wait<sp/>for<sp/>dependencies</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!porphan)</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Use<sp/>list<sp/>for<sp/>automatic<sp/>deletion</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vOrphan.push_back(<ref refid="class_c_orphan" kindref="compound">COrphan</ref>(&amp;tx));</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>porphan<sp/>=<sp/>&amp;vOrphan.back();</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mapDependers[txin.<ref refid="class_c_tx_in_1aed9312051a25380cbd7f123408ab7c20" kindref="member">prevout</ref>.<ref refid="class_c_out_point_1af131c7194a660558b0ff158f4efa7a28" kindref="member">hash</ref>].push_back(porphan);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>porphan-&gt;<ref refid="class_c_orphan_1a1b19183565d42c20ded09a2cc787fc50" kindref="member">setDependsOn</ref>.insert(txin.<ref refid="class_c_tx_in_1aed9312051a25380cbd7f123408ab7c20" kindref="member">prevout</ref>.<ref refid="class_c_out_point_1af131c7194a660558b0ff158f4efa7a28" kindref="member">hash</ref>);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nTotalIn<sp/>+=<sp/><ref refid="main_8cpp_1a52890038ef379d29a1a8f3bd20dbe088" kindref="member">mempool</ref>.<ref refid="class_c_tx_mem_pool_1a340d4a897e521b7021e6b22cce951beb" kindref="member">mapTx</ref>[txin.<ref refid="class_c_tx_in_1aed9312051a25380cbd7f123408ab7c20" kindref="member">prevout</ref>.<ref refid="class_c_out_point_1af131c7194a660558b0ff158f4efa7a28" kindref="member">hash</ref>].vout[txin.<ref refid="class_c_tx_in_1aed9312051a25380cbd7f123408ab7c20" kindref="member">prevout</ref>.<ref refid="class_c_out_point_1a9fbc648ca0d11421ad66e897185a9b58" kindref="member">n</ref>].nValue;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="amount_8h_1a4eaf3a5239714d8c45b851527f7cb564" kindref="member">CAmount</ref><sp/>nValueIn<sp/>=<sp/>txPrev.<ref refid="class_c_transaction_1ae42c0032a464c3054c508017c7d040ef" kindref="member">vout</ref>[txin.<ref refid="class_c_tx_in_1aed9312051a25380cbd7f123408ab7c20" kindref="member">prevout</ref>.<ref refid="class_c_out_point_1a9fbc648ca0d11421ad66e897185a9b58" kindref="member">n</ref>].nValue;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nTotalIn<sp/>+=<sp/>nValueIn;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nConf<sp/>=<sp/>txindex.<ref refid="class_c_tx_index_1ab6119cf086e8e4b2c690f36c15479220" kindref="member">GetDepthInMainChain</ref>();</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dPriority<sp/>+=<sp/>(double)nValueIn<sp/>*<sp/>nConf;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fMissingInputs)<sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Priority<sp/>is<sp/>sum(valuein<sp/>*<sp/>age)<sp/>/<sp/>txsize</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nTxSize<sp/>=<sp/><ref refid="serialize_8h_1a48239e478ae730373d1984fe304ca025" kindref="member">::GetSerializeSize</ref>(tx,<sp/><ref refid="serialize_8h_1a6b7b47dd702d9e331586d485013fd1eaa652754eeaf79fba4fcf4c18597a6961c" kindref="member">SER_NETWORK</ref>,<sp/>PROTOCOL_VERSION);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dPriority<sp/>/=<sp/>nTxSize;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>is<sp/>a<sp/>more<sp/>accurate<sp/>fee-per-kilobyte<sp/>than<sp/>is<sp/>used<sp/>by<sp/>the<sp/>client<sp/>code,<sp/>because<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>client<sp/>code<sp/>rounds<sp/>up<sp/>the<sp/>size<sp/>to<sp/>the<sp/>nearest<sp/>1K.<sp/>That&apos;s<sp/>good,<sp/>because<sp/>it<sp/>gives<sp/>an</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>incentive<sp/>to<sp/>create<sp/>smaller<sp/>transactions.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_transaction_po_s" kindref="compound">CTransactionPoS</ref><sp/>txPoS;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dFeePerKb<sp/>=<sp/><sp/>double(nTotalIn-txPoS.<ref refid="class_c_transaction_po_s_1ad85303c69a61f41eb8874f07c15faa10" kindref="member">GetValueOut</ref>(tx))<sp/>/<sp/>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal">(nTxSize)/1000.0);</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(porphan)</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>porphan-&gt;<ref refid="class_c_orphan_1a899f7928b6d4e9206ce04d5b2953da33" kindref="member">dPriority</ref><sp/>=<sp/>dPriority;</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>porphan-&gt;<ref refid="class_c_orphan_1a4a0f70b5609ceee00be532fd2116587e" kindref="member">dFeePerKb</ref><sp/>=<sp/>dFeePerKb;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vecPriority.push_back(<ref refid="miner_8cpp_1a032f10277d84eef76e40517f2bfe576e" kindref="member">TxPriority</ref>(dPriority,<sp/>dFeePerKb,<sp/>&amp;(*mi).second));</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Collect<sp/>transactions<sp/>into<sp/>block</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>map&lt;uint256,<sp/>CTxIndex&gt;<sp/>mapTestPool;</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>nBlockSize<sp/>=<sp/>1000;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>nBlockTx<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBlockSigOps<sp/>=<sp/>100;</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fSortedByFee<sp/>=<sp/>(nBlockPrioritySize<sp/>&lt;=<sp/>0);</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_tx_priority_compare" kindref="compound">TxPriorityCompare</ref><sp/>comparer(fSortedByFee);</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::make_heap(vecPriority.begin(),<sp/>vecPriority.end(),<sp/>comparer);</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!vecPriority.empty())</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Take<sp/>highest<sp/>priority<sp/>transaction<sp/>off<sp/>the<sp/>priority<sp/>queue:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dPriority<sp/>=<sp/>vecPriority.front().get&lt;0&gt;();</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>dFeePerKb<sp/>=<sp/>vecPriority.front().get&lt;1&gt;();</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_transaction" kindref="compound">CTransaction</ref>&amp;<sp/>tx<sp/>=<sp/>*(vecPriority.front().get&lt;2&gt;());</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::pop_heap(vecPriority.begin(),<sp/>vecPriority.end(),<sp/>comparer);</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vecPriority.pop_back();</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Size<sp/>limits</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nTxSize<sp/>=<sp/><ref refid="serialize_8h_1a48239e478ae730373d1984fe304ca025" kindref="member">::GetSerializeSize</ref>(tx,<sp/><ref refid="serialize_8h_1a6b7b47dd702d9e331586d485013fd1eaa652754eeaf79fba4fcf4c18597a6961c" kindref="member">SER_NETWORK</ref>,<sp/>PROTOCOL_VERSION);</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nBlockSize<sp/>+<sp/>nTxSize<sp/>&gt;=<sp/>nBlockMaxSize)</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Legacy<sp/>limits<sp/>on<sp/>sigOps:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nTxSigOps<sp/>=<sp/><ref refid="main_8cpp_1ad2eaf4f8542c12ea9ee1183609cc6d1a" kindref="member">GetLegacySigOpCount</ref>(tx);</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nBlockSigOps<sp/>+<sp/>nTxSigOps<sp/>&gt;=<sp/>MAX_BLOCK_SIGOPS)</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Timestamp<sp/>limit</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(tx.<ref refid="class_c_transaction_1a8ccb4b6020669bc562095e3417715e41" kindref="member">nTime</ref><sp/>&gt;<sp/><ref refid="timedata_8cpp_1a09f81b9c7650f898cf3cf305b87547e6" kindref="member">GetAdjustedTime</ref>()<sp/>||<sp/>(fProofOfStake<sp/>&amp;&amp;<sp/>tx.<ref refid="class_c_transaction_1a8ccb4b6020669bc562095e3417715e41" kindref="member">nTime</ref><sp/>&gt;<sp/>pblock-&gt;vtx[0].nTime))</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Skip<sp/>free<sp/>transactions<sp/>if<sp/>we&apos;re<sp/>past<sp/>the<sp/>minimum<sp/>block<sp/>size:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fSortedByFee<sp/>&amp;&amp;<sp/>(dFeePerKb<sp/>&lt;<sp/>nMinTxFee)<sp/>&amp;&amp;<sp/>(nBlockSize<sp/>+<sp/>nTxSize<sp/>&gt;=<sp/>nBlockMinSize))</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Prioritize<sp/>by<sp/>fee<sp/>once<sp/>past<sp/>the<sp/>priority<sp/>size<sp/>or<sp/>we<sp/>run<sp/>out<sp/>of<sp/>high-priority</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>transactions:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!fSortedByFee<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((nBlockSize<sp/>+<sp/>nTxSize<sp/>&gt;=<sp/>nBlockPrioritySize)<sp/>||<sp/>(dPriority<sp/>&lt;<sp/>COIN<sp/>*<sp/>144<sp/>/<sp/>250)))</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fSortedByFee<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>comparer<sp/>=<sp/><ref refid="class_tx_priority_compare" kindref="compound">TxPriorityCompare</ref>(fSortedByFee);</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::make_heap(vecPriority.begin(),<sp/>vecPriority.end(),<sp/>comparer);</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Connecting<sp/>shouldn&apos;t<sp/>fail<sp/>due<sp/>to<sp/>dependency<sp/>on<sp/>other<sp/>memory<sp/>pool<sp/>transactions</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>because<sp/>we&apos;re<sp/>already<sp/>processing<sp/>them<sp/>in<sp/>order<sp/>of<sp/>dependency</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>map&lt;uint256,<sp/>CTxIndex&gt;<sp/>mapTestPoolTmp(mapTestPool);</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="main_8h_1a05bae354566c88f7dca5ad13aaf8b30f" kindref="member">MapPrevTx</ref><sp/>mapInputs;</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fInvalid;</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_transaction_po_s" kindref="compound">CTransactionPoS</ref><sp/>txPoS;</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!txPoS.<ref refid="class_c_transaction_po_s_1a20a028e06f505f03a0d30a7f186d9489" kindref="member">FetchInputs</ref>(tx,<sp/>txdb,<sp/>mapTestPoolTmp,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/>mapInputs,<sp/>fInvalid))</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"></highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="amount_8h_1a4eaf3a5239714d8c45b851527f7cb564" kindref="member">CAmount</ref><sp/>nTxFees<sp/>=<sp/>txPoS.<ref refid="class_c_transaction_po_s_1ac2c734d9f302dda6e8681ce6d0f7843e" kindref="member">GetValueIn</ref>(tx,<sp/>mapInputs)<sp/>-<sp/>txPoS.<ref refid="class_c_transaction_po_s_1ad85303c69a61f41eb8874f07c15faa10" kindref="member">GetValueOut</ref>(tx);</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nTxSigOps<sp/>+=<sp/><ref refid="main_8cpp_1a519cfd439598a8bf64fe5503aa74cfcb" kindref="member">GetP2SHSigOpCount</ref>(tx,<sp/>mapInputs);</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nBlockSigOps<sp/>+<sp/>nTxSigOps<sp/>&gt;=<sp/>MAX_BLOCK_SIGOPS)</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Note<sp/>that<sp/>flags:<sp/>we<sp/>don&apos;t<sp/>want<sp/>to<sp/>set<sp/>mempool/IsStandard()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>policy<sp/>here,<sp/>but<sp/>we<sp/>still<sp/>have<sp/>to<sp/>ensure<sp/>that<sp/>the<sp/>block<sp/>we</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>create<sp/>only<sp/>contains<sp/>transactions<sp/>that<sp/>are<sp/>valid<sp/>in<sp/>new<sp/>blocks.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!txPoS.<ref refid="class_c_transaction_po_s_1a19de7fad0cc156ebd4e5a3858db7619f" kindref="member">ConnectInputs</ref>(tx,<sp/>txdb,<sp/>mapInputs,<sp/>mapTestPoolTmp,<sp/><ref refid="class_c_disk_tx_pos" kindref="compound">CDiskTxPos</ref>(1,1,1),<sp/>pindexPrev,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/>MANDATORY_SCRIPT_VERIFY_FLAGS))</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"></highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mapTestPoolTmp[tx.<ref refid="class_c_transaction_1a3f8666d2a275c40da14bd5eaf47dc004" kindref="member">GetHash</ref>()]<sp/>=<sp/><ref refid="class_c_tx_index" kindref="compound">CTxIndex</ref>(<ref refid="class_c_disk_tx_pos" kindref="compound">CDiskTxPos</ref>(1,1,1),<sp/>tx.<ref refid="class_c_transaction_1ae42c0032a464c3054c508017c7d040ef" kindref="member">vout</ref>.size());</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>swap(mapTestPool,<sp/>mapTestPoolTmp);</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Added</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pblock-&gt;vtx.push_back(tx);</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nBlockSize<sp/>+=<sp/>nTxSize;</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++nBlockTx;</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nBlockSigOps<sp/>+=<sp/>nTxSigOps;</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nFees<sp/>+=<sp/>nTxFees;</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"></highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="util_8cpp_1a2ba7badc843121dde40a6f109d224a42" kindref="member">fDebug</ref><sp/>&amp;&amp;<sp/><ref refid="util_8cpp_1a64d956f1dda7f9a80ab5d594532b906d" kindref="member">GetBoolArg</ref>(</highlight><highlight class="stringliteral">&quot;-printpriority&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" kindref="member">LogPrintf</ref>(</highlight><highlight class="stringliteral">&quot;priority<sp/>%.1f<sp/>feeperkb<sp/>%.1f<sp/>txid<sp/>%s\n&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dPriority,<sp/>dFeePerKb,<sp/>tx.<ref refid="class_c_transaction_1a3f8666d2a275c40da14bd5eaf47dc004" kindref="member">GetHash</ref>().<ref refid="classbase__uint_1ac3080a72402cadf28dbc9f9b69cc60be" kindref="member">ToString</ref>());</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"></highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Add<sp/>transactions<sp/>that<sp/>depend<sp/>on<sp/>this<sp/>one<sp/>to<sp/>the<sp/>priority<sp/>queue</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classuint256" kindref="compound">uint256</ref><sp/><ref refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" kindref="member">hash</ref><sp/>=<sp/>tx.<ref refid="class_c_transaction_1a3f8666d2a275c40da14bd5eaf47dc004" kindref="member">GetHash</ref>();</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mapDependers.count(hash))</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOST_FOREACH(<ref refid="class_c_orphan" kindref="compound">COrphan</ref>*<sp/>porphan,<sp/>mapDependers[hash])</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!porphan-&gt;<ref refid="class_c_orphan_1a1b19183565d42c20ded09a2cc787fc50" kindref="member">setDependsOn</ref>.empty())</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>porphan-&gt;<ref refid="class_c_orphan_1a1b19183565d42c20ded09a2cc787fc50" kindref="member">setDependsOn</ref>.erase(hash);</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(porphan-&gt;<ref refid="class_c_orphan_1a1b19183565d42c20ded09a2cc787fc50" kindref="member">setDependsOn</ref>.empty())</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vecPriority.push_back(<ref refid="miner_8cpp_1a032f10277d84eef76e40517f2bfe576e" kindref="member">TxPriority</ref>(porphan-&gt;<ref refid="class_c_orphan_1a899f7928b6d4e9206ce04d5b2953da33" kindref="member">dPriority</ref>,<sp/>porphan-&gt;<ref refid="class_c_orphan_1a4a0f70b5609ceee00be532fd2116587e" kindref="member">dFeePerKb</ref>,<sp/>porphan-&gt;<ref refid="class_c_orphan_1ab00c8b3205357cd0c59545fefde0f1ae" kindref="member">ptx</ref>));</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::push_heap(vecPriority.begin(),<sp/>vecPriority.end(),<sp/>comparer);</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"></highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="amount_8h_1a4eaf3a5239714d8c45b851527f7cb564" kindref="member">CAmount</ref><sp/>blockValue<sp/>=<sp/><ref refid="main_8cpp_1afe042769eafbfbf4e82dffe357798748" kindref="member">GetBlockValue</ref>(pindexPrev-&gt;<ref refid="class_c_block_index_1a3324894e6af612d1bd76f89378435713" kindref="member">nBits</ref>,<sp/>pindexPrev-&gt;<ref refid="class_c_block_index_1aebfc8d6b95852546760e742553d7bfd5" kindref="member">nHeight</ref>,<sp/>nFees);</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="amount_8h_1a4eaf3a5239714d8c45b851527f7cb564" kindref="member">CAmount</ref><sp/>stormnodePayment<sp/>=<sp/><ref refid="main_8cpp_1ab9c19a2d094fea9bd9f285f4b33961a4" kindref="member">GetStormnodePayment</ref>(pindexPrev-&gt;<ref refid="class_c_block_index_1aebfc8d6b95852546760e742553d7bfd5" kindref="member">nHeight</ref>+1,<sp/>blockValue);</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"></highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((<ref refid="util_8cpp_1a2ba7badc843121dde40a6f109d224a42" kindref="member">fDebug</ref><sp/>&amp;&amp;<sp/><ref refid="util_8cpp_1a64d956f1dda7f9a80ab5d594532b906d" kindref="member">GetBoolArg</ref>(</highlight><highlight class="stringliteral">&quot;-printpriority&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">))<sp/>||<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" kindref="member">LogPrintf</ref>(</highlight><highlight class="stringliteral">&quot;CreateNewBlock():<sp/>total<sp/>size<sp/>%u,<sp/>height:<sp/>%u,<sp/>PoS:<sp/>%d,<sp/>block<sp/>value:<sp/>%u,<sp/>stormnode<sp/>payment:<sp/>%u<sp/>\n&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nBlockSize,<sp/>nHeight,<sp/>fProofOfStake,<sp/>blockValue,<sp/>stormnodePayment);</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"></highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!fProofOfStake)</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pblock-&gt;vtx[0].vout[0].nValue<sp/>=<sp/><ref refid="main_8cpp_1a54eeb686375f66683fb139de496c088d" kindref="member">GetProofOfWorkReward</ref>(nFees);</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"></highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pFees)</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*pFees<sp/>=<sp/>nFees;</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"></highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Fill<sp/>in<sp/>header</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pblock-&gt;hashPrevBlock<sp/><sp/>=<sp/>pindexPrev-&gt;<ref refid="class_c_block_index_1ab843ef9b8b0a0193ec3a5c24738e484f" kindref="member">GetBlockHash</ref>();</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pblock-&gt;nTime<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>max(pindexPrev-&gt;<ref refid="class_c_block_index_1a52a53d7e151aba62e32ec4ffd165b5a7" kindref="member">GetPastTimeLimit</ref>()+1,<sp/>pblock-&gt;GetMaxTransactionTime());</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!fProofOfStake)</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pblock-&gt;UpdateTime(pindexPrev);</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pblock-&gt;nNonce<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"></highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pblock.release();</highlight></codeline>
+<codeline lineno="381"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"></highlight></codeline>
+<codeline lineno="383" refid="miner_8h_1a6f07c738a8aadffe748358e985b43d3f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="miner_8cpp_1a6f07c738a8aadffe748358e985b43d3f" kindref="member">IncrementExtraNonce</ref>(<ref refid="class_c_block" kindref="compound">CBlock</ref>*<sp/>pblock,<sp/><ref refid="class_c_block_index" kindref="compound">CBlockIndex</ref>*<sp/>pindexPrev,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">&amp;<sp/>nExtraNonce)</highlight></codeline>
+<codeline lineno="384"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>nExtraNonce</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classuint256" kindref="compound">uint256</ref><sp/>hashPrevBlock;</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hashPrevBlock<sp/>!=<sp/>pblock-&gt;<ref refid="class_c_block_header_1ad9b904df502d648309342e5e5b0949a6" kindref="member">hashPrevBlock</ref>)</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nExtraNonce<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hashPrevBlock<sp/>=<sp/>pblock-&gt;<ref refid="class_c_block_header_1ad9b904df502d648309342e5e5b0949a6" kindref="member">hashPrevBlock</ref>;</highlight></codeline>
+<codeline lineno="391"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="392"><highlight class="normal"><sp/><sp/><sp/><sp/>++nExtraNonce;</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"></highlight></codeline>
+<codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nHeight<sp/>=<sp/>pindexPrev-&gt;<ref refid="class_c_block_index_1aebfc8d6b95852546760e742553d7bfd5" kindref="member">nHeight</ref>+1;<sp/></highlight><highlight class="comment">//<sp/>Height<sp/>first<sp/>in<sp/>coinbase<sp/>required<sp/>for<sp/>block.version=2</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/>pblock-&gt;<ref refid="class_c_block_1a9b6508d662722775f3029b980b382b66" kindref="member">vtx</ref>[0].vin[0].scriptSig<sp/>=<sp/>(<ref refid="class_c_script" kindref="compound">CScript</ref>()<sp/>&lt;&lt;<sp/>nHeight<sp/>&lt;&lt;<sp/><ref refid="class_c_big_num" kindref="compound">CBigNum</ref>(nExtraNonce))<sp/>+<sp/><ref refid="main_8cpp_1a5ed86cbbedb72d8fcec0524f2792ada8" kindref="member">COINBASE_FLAGS</ref>;</highlight></codeline>
+<codeline lineno="396"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(pblock-&gt;<ref refid="class_c_block_1a9b6508d662722775f3029b980b382b66" kindref="member">vtx</ref>[0].vin[0].scriptSig.size()<sp/>&lt;=<sp/>100);</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"></highlight></codeline>
+<codeline lineno="398"><highlight class="normal"><sp/><sp/><sp/><sp/>pblock-&gt;<ref refid="class_c_block_header_1ae9ef013abbcfbd9f8bc23dbcda0fd5af" kindref="member">hashMerkleRoot</ref><sp/>=<sp/>pblock-&gt;<ref refid="class_c_block_1a930d742dbdcd7c78159d3f93431d2d3e" kindref="member">BuildMerkleTree</ref>();</highlight></codeline>
+<codeline lineno="399"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="400"><highlight class="normal"></highlight></codeline>
+<codeline lineno="401" refid="miner_8h_1a391a5a462c3f60bbb7dbf6a09fe2e78f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="miner_8cpp_1a391a5a462c3f60bbb7dbf6a09fe2e78f" kindref="member">FormatHashBuffers</ref>(<ref refid="class_c_block" kindref="compound">CBlock</ref>*<sp/>pblock,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>pmidstate,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>pdata,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>phash1)</highlight></codeline>
+<codeline lineno="402"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="403"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="404"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pre-build<sp/>hash<sp/>buffers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="405"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="406"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="407"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="408"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">unnamed2</highlight></codeline>
+<codeline lineno="409"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="410"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nVersion;</highlight></codeline>
+<codeline lineno="411"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classuint256" kindref="compound">uint256</ref><sp/>hashPrevBlock;</highlight></codeline>
+<codeline lineno="412"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classuint256" kindref="compound">uint256</ref><sp/>hashMerkleRoot;</highlight></codeline>
+<codeline lineno="413"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nTime;</highlight></codeline>
+<codeline lineno="414"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nBits;</highlight></codeline>
+<codeline lineno="415"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nNonce;</highlight></codeline>
+<codeline lineno="416"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="417"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="core_8h_1ace80c27428e237fe24f54ae915a36133" kindref="member">block</ref>;</highlight></codeline>
+<codeline lineno="418"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>pchPadding0[64];</highlight></codeline>
+<codeline lineno="419"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classuint256" kindref="compound">uint256</ref><sp/>hash1;</highlight></codeline>
+<codeline lineno="420"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>pchPadding1[64];</highlight></codeline>
+<codeline lineno="421"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="422"><highlight class="normal"><sp/><sp/><sp/><sp/>tmp;</highlight></codeline>
+<codeline lineno="423"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(&amp;tmp,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(tmp));</highlight></codeline>
+<codeline lineno="424"><highlight class="normal"></highlight></codeline>
+<codeline lineno="425"><highlight class="normal"><sp/><sp/><sp/><sp/>tmp.block.nVersion<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>pblock-&gt;<ref refid="class_c_block_header_1ad64b7a76914741861f55f0f38ed66fb5" kindref="member">nVersion</ref>;</highlight></codeline>
+<codeline lineno="426"><highlight class="normal"><sp/><sp/><sp/><sp/>tmp.block.hashPrevBlock<sp/><sp/>=<sp/>pblock-&gt;<ref refid="class_c_block_header_1ad9b904df502d648309342e5e5b0949a6" kindref="member">hashPrevBlock</ref>;</highlight></codeline>
+<codeline lineno="427"><highlight class="normal"><sp/><sp/><sp/><sp/>tmp.block.hashMerkleRoot<sp/>=<sp/>pblock-&gt;<ref refid="class_c_block_header_1ae9ef013abbcfbd9f8bc23dbcda0fd5af" kindref="member">hashMerkleRoot</ref>;</highlight></codeline>
+<codeline lineno="428"><highlight class="normal"><sp/><sp/><sp/><sp/>tmp.block.nTime<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>pblock-&gt;<ref refid="class_c_block_header_1aa435a58a8f13a304681e797366e0d56d" kindref="member">nTime</ref>;</highlight></codeline>
+<codeline lineno="429"><highlight class="normal"><sp/><sp/><sp/><sp/>tmp.block.nBits<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>pblock-&gt;<ref refid="class_c_block_header_1a88d501b1da4d34d7dc80c65bd4837670" kindref="member">nBits</ref>;</highlight></codeline>
+<codeline lineno="430"><highlight class="normal"><sp/><sp/><sp/><sp/>tmp.block.nNonce<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>pblock-&gt;<ref refid="class_c_block_header_1a3826d43cd36673027e17ecc674450e71" kindref="member">nNonce</ref>;</highlight></codeline>
+<codeline lineno="431"><highlight class="normal"></highlight></codeline>
+<codeline lineno="432"><highlight class="normal"><sp/><sp/><sp/><sp/>FormatHashBlocks(&amp;tmp.block,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(tmp.block));</highlight></codeline>
+<codeline lineno="433"><highlight class="normal"><sp/><sp/><sp/><sp/>FormatHashBlocks(&amp;tmp.hash1,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(tmp.hash1));</highlight></codeline>
+<codeline lineno="434"><highlight class="normal"></highlight></codeline>
+<codeline lineno="435"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Byte<sp/>swap<sp/>all<sp/>the<sp/>input<sp/>buffer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="436"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(tmp)/4;<sp/>i++)</highlight></codeline>
+<codeline lineno="437"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">*)&amp;tmp)[i]<sp/>=<sp/><ref refid="util_8h_1a62bb21d0cc35fb9408d09dc385fe484f" kindref="member">ByteReverse</ref>(((</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">*)&amp;tmp)[i]);</highlight></codeline>
+<codeline lineno="438"><highlight class="normal"></highlight></codeline>
+<codeline lineno="439"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Precalc<sp/>the<sp/>first<sp/>half<sp/>of<sp/>the<sp/>first<sp/>hash,<sp/>which<sp/>stays<sp/>constant</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="440"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="miner_8cpp_1adcaa5b0c3f29f5856f6393e2b847e7d7" kindref="member">SHA256Transform</ref>(pmidstate,<sp/>&amp;tmp.block,<sp/>pSHA256InitState);</highlight></codeline>
+<codeline lineno="441"><highlight class="normal"></highlight></codeline>
+<codeline lineno="442"><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(pdata,<sp/>&amp;tmp.block,<sp/>128);</highlight></codeline>
+<codeline lineno="443"><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(phash1,<sp/>&amp;tmp.hash1,<sp/>64);</highlight></codeline>
+<codeline lineno="444"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="445"><highlight class="normal"></highlight></codeline>
+<codeline lineno="446"><highlight class="normal"></highlight></codeline>
+<codeline lineno="447" refid="miner_8h_1aadd8a05aa6d8fae1c0f4daa5e971a12a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="miner_8cpp_1aadd8a05aa6d8fae1c0f4daa5e971a12a" kindref="member">CheckWork</ref>(<ref refid="class_c_block" kindref="compound">CBlock</ref>*<sp/>pblock,<sp/><ref refid="class_c_wallet" kindref="compound">CWallet</ref>&amp;<sp/>wallet,<sp/><ref refid="class_c_reserve_key" kindref="compound">CReserveKey</ref>&amp;<sp/>reservekey)</highlight></codeline>
+<codeline lineno="448"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="449"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classuint256" kindref="compound">uint256</ref><sp/>hashBlock<sp/>=<sp/>pblock-&gt;<ref refid="class_c_block_header_1ae1165e54882d364b030fb33673d64dbd" kindref="member">GetHash</ref>();</highlight></codeline>
+<codeline lineno="450"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classuint256" kindref="compound">uint256</ref><sp/>hashProof<sp/>=<sp/>pblock-&gt;<ref refid="class_c_block_header_1ace82f72f060caa4fd96759b4ff99a25e" kindref="member">GetPoWHash</ref>();</highlight></codeline>
+<codeline lineno="451"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classuint256" kindref="compound">uint256</ref><sp/>hashTarget<sp/>=<sp/><ref refid="class_c_big_num" kindref="compound">CBigNum</ref>().<ref refid="class_c_big_num_1a27e3ca82a40ae0c34ac4c059e4d0d66c" kindref="member">SetCompact</ref>(pblock-&gt;<ref refid="class_c_block_header_1a88d501b1da4d34d7dc80c65bd4837670" kindref="member">nBits</ref>).<ref refid="class_c_big_num_1ad17ff84ee557ca5ad4b854e14d08099f" kindref="member">getuint256</ref>();</highlight></codeline>
+<codeline lineno="452"><highlight class="normal"></highlight></codeline>
+<codeline lineno="453"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!pblock-&gt;<ref refid="class_c_block_1ac6aa1feb7deecb9fffef3978d2745903" kindref="member">IsProofOfWork</ref>())</highlight></codeline>
+<codeline lineno="454"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>error(</highlight><highlight class="stringliteral">&quot;CheckWork()<sp/>:<sp/>%s<sp/>is<sp/>not<sp/>a<sp/>proof-of-work<sp/>block&quot;</highlight><highlight class="normal">,<sp/>hashBlock.<ref refid="classbase__uint_1ac9929c28600796a9acf75881bb750576" kindref="member">GetHex</ref>());</highlight></codeline>
+<codeline lineno="455"><highlight class="normal"></highlight></codeline>
+<codeline lineno="456"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hashProof<sp/>&gt;<sp/>hashTarget)</highlight></codeline>
+<codeline lineno="457"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>error(</highlight><highlight class="stringliteral">&quot;CheckWork()<sp/>:<sp/>proof-of-work<sp/>not<sp/>meeting<sp/>target&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="458"><highlight class="normal"></highlight></codeline>
+<codeline lineno="460"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" kindref="member">LogPrintf</ref>(</highlight><highlight class="stringliteral">&quot;CheckWork()<sp/>:<sp/>new<sp/>proof-of-work<sp/>block<sp/>found<sp/><sp/>\n<sp/><sp/>proof<sp/>hash:<sp/>%s<sp/><sp/>\ntarget:<sp/>%s\n&quot;</highlight><highlight class="normal">,<sp/>hashProof.<ref refid="classbase__uint_1ac9929c28600796a9acf75881bb750576" kindref="member">GetHex</ref>(),<sp/>hashTarget.<ref refid="classbase__uint_1ac9929c28600796a9acf75881bb750576" kindref="member">GetHex</ref>());</highlight></codeline>
+<codeline lineno="461"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" kindref="member">LogPrintf</ref>(</highlight><highlight class="stringliteral">&quot;%s\n&quot;</highlight><highlight class="normal">,<sp/>pblock-&gt;<ref refid="class_c_block_1a85d1cca7cd03ad1893767ae8305bd3b5" kindref="member">ToString</ref>());</highlight></codeline>
+<codeline lineno="462"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" kindref="member">LogPrintf</ref>(</highlight><highlight class="stringliteral">&quot;generated<sp/>%s\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="util_8cpp_1a72fc7ee9c182de0580a9909c5895fe24" kindref="member">FormatMoney</ref>(pblock-&gt;<ref refid="class_c_block_1a9b6508d662722775f3029b980b382b66" kindref="member">vtx</ref>[0].vout[0].nValue));</highlight></codeline>
+<codeline lineno="463"><highlight class="normal"></highlight></codeline>
+<codeline lineno="464"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Found<sp/>a<sp/>solution</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="465"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="466"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" kindref="member">LOCK</ref>(<ref refid="main_8cpp_1a1ed8285f0fe3c6799c53265ce72552c8" kindref="member">cs_main</ref>);</highlight></codeline>
+<codeline lineno="467"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pblock-&gt;<ref refid="class_c_block_header_1ad9b904df502d648309342e5e5b0949a6" kindref="member">hashPrevBlock</ref><sp/>!=<sp/><ref refid="main_8cpp_1ace9c3343567f488a96598abe61e1d309" kindref="member">hashBestChain</ref>)</highlight></codeline>
+<codeline lineno="468"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>error(</highlight><highlight class="stringliteral">&quot;CheckWork()<sp/>:<sp/>generated<sp/>block<sp/>is<sp/>stale&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="469"><highlight class="normal"></highlight></codeline>
+<codeline lineno="470"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Remove<sp/>key<sp/>from<sp/>key<sp/>pool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="471"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>reservekey.<ref refid="class_c_reserve_key_1a493d06f41ca9571f2a42c8581a3952d8" kindref="member">KeepKey</ref>();</highlight></codeline>
+<codeline lineno="472"><highlight class="normal"></highlight></codeline>
+<codeline lineno="473"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Track<sp/>how<sp/>many<sp/>getdata<sp/>requests<sp/>this<sp/>block<sp/>gets</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="474"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="475"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" kindref="member">LOCK</ref>(wallet.<ref refid="class_c_wallet_1a4e6eb889f7638ed9695fdc0731581428" kindref="member">cs_wallet</ref>);</highlight></codeline>
+<codeline lineno="476"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wallet.<ref refid="class_c_wallet_1ade5f0fc0e722433b421c32f97bd873a8" kindref="member">mapRequestCount</ref>[hashBlock]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="477"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="478"><highlight class="normal"></highlight></codeline>
+<codeline lineno="479"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Process<sp/>this<sp/>block<sp/>the<sp/>same<sp/>as<sp/>if<sp/>we<sp/>had<sp/>received<sp/>it<sp/>from<sp/>another<sp/>node</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="480"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="main_8cpp_1a7c8a7be3439bb5e1e40548a332a3cf29" kindref="member">ProcessBlock</ref>(NULL,<sp/>pblock))</highlight></codeline>
+<codeline lineno="481"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>error(</highlight><highlight class="stringliteral">&quot;CheckWork()<sp/>:<sp/>ProcessBlock,<sp/>block<sp/>not<sp/>accepted&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="482"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="483"><highlight class="normal"></highlight></codeline>
+<codeline lineno="484"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="485"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="486"><highlight class="normal"></highlight></codeline>
+<codeline lineno="487" refid="miner_8h_1a68be4bcfa03b86095641eac5ca996fed" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="miner_8cpp_1a68be4bcfa03b86095641eac5ca996fed" kindref="member">CheckStake</ref>(<ref refid="class_c_block" kindref="compound">CBlock</ref>*<sp/>pblock,<sp/><ref refid="class_c_wallet" kindref="compound">CWallet</ref>&amp;<sp/>wallet)</highlight></codeline>
+<codeline lineno="488"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="489"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classuint256" kindref="compound">uint256</ref><sp/>proofHash<sp/>=<sp/>0,<sp/>hashTarget<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="490"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classuint256" kindref="compound">uint256</ref><sp/>hashBlock<sp/>=<sp/>pblock-&gt;<ref refid="class_c_block_header_1ae1165e54882d364b030fb33673d64dbd" kindref="member">GetHash</ref>();</highlight></codeline>
+<codeline lineno="491"><highlight class="normal"></highlight></codeline>
+<codeline lineno="492"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!pblock-&gt;<ref refid="class_c_block_1a42d001a1eff1d09a76b61a6ff089da35" kindref="member">IsProofOfStake</ref>())</highlight></codeline>
+<codeline lineno="493"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>error(</highlight><highlight class="stringliteral">&quot;CheckStake()<sp/>is<sp/>not<sp/>a<sp/>proof-of-stake<sp/>block<sp/>%s<sp/>\n&quot;</highlight><highlight class="normal">,<sp/>hashBlock.<ref refid="classbase__uint_1ac9929c28600796a9acf75881bb750576" kindref="member">GetHex</ref>());</highlight></codeline>
+<codeline lineno="494"><highlight class="normal"></highlight></codeline>
+<codeline lineno="495"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>verify<sp/>hash<sp/>target<sp/>and<sp/>signature<sp/>of<sp/>coinstake<sp/>tx</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="496"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="kernel_8cpp_1a01e09fbdb926d4581ea48c4cf2f337a1" kindref="member">CheckProofOfStake</ref>(<ref refid="chain_8h_1a9d5aa0c4581116d898ff51357a0df059" kindref="member">mapBlockIndex</ref>[pblock-&gt;<ref refid="class_c_block_header_1ad9b904df502d648309342e5e5b0949a6" kindref="member">hashPrevBlock</ref>],<sp/>pblock-&gt;<ref refid="class_c_block_1a9b6508d662722775f3029b980b382b66" kindref="member">vtx</ref>[1],<sp/>pblock-&gt;<ref refid="class_c_block_header_1a88d501b1da4d34d7dc80c65bd4837670" kindref="member">nBits</ref>,<sp/>proofHash,<sp/>hashTarget))</highlight></codeline>
+<codeline lineno="497"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>error(</highlight><highlight class="stringliteral">&quot;CheckStake()<sp/>:<sp/>proof-of-stake<sp/>checking<sp/>failed&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="498"><highlight class="normal"></highlight></codeline>
+<codeline lineno="499"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_transaction_po_s" kindref="compound">CTransactionPoS</ref><sp/>txPoS;</highlight></codeline>
+<codeline lineno="501"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" kindref="member">LogPrintf</ref>(</highlight><highlight class="stringliteral">&quot;CheckStake()<sp/>:<sp/>new<sp/>proof-of-stake<sp/>block<sp/>found<sp/><sp/>\n<sp/><sp/>hash:<sp/>%s<sp/>\nproofhash:<sp/>%s<sp/><sp/>\ntarget:<sp/>%s\n&quot;</highlight><highlight class="normal">,<sp/>hashBlock.<ref refid="classbase__uint_1ac9929c28600796a9acf75881bb750576" kindref="member">GetHex</ref>(),<sp/>proofHash.<ref refid="classbase__uint_1ac9929c28600796a9acf75881bb750576" kindref="member">GetHex</ref>(),<sp/>hashTarget.GetHex());</highlight></codeline>
+<codeline lineno="502"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" kindref="member">LogPrintf</ref>(</highlight><highlight class="stringliteral">&quot;%s\n&quot;</highlight><highlight class="normal">,<sp/>pblock-&gt;<ref refid="class_c_block_1a85d1cca7cd03ad1893767ae8305bd3b5" kindref="member">ToString</ref>());<sp/><sp/></highlight></codeline>
+<codeline lineno="503"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" kindref="member">LogPrintf</ref>(</highlight><highlight class="stringliteral">&quot;out<sp/>%s\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="util_8cpp_1a72fc7ee9c182de0580a9909c5895fe24" kindref="member">FormatMoney</ref>(txPoS.<ref refid="class_c_transaction_po_s_1ad85303c69a61f41eb8874f07c15faa10" kindref="member">GetValueOut</ref>(pblock-&gt;<ref refid="class_c_block_1a9b6508d662722775f3029b980b382b66" kindref="member">vtx</ref>[1])));</highlight></codeline>
+<codeline lineno="504"><highlight class="normal"></highlight></codeline>
+<codeline lineno="505"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Found<sp/>a<sp/>solution</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="506"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="507"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" kindref="member">LOCK</ref>(<ref refid="main_8cpp_1a1ed8285f0fe3c6799c53265ce72552c8" kindref="member">cs_main</ref>);</highlight></codeline>
+<codeline lineno="508"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pblock-&gt;<ref refid="class_c_block_header_1ad9b904df502d648309342e5e5b0949a6" kindref="member">hashPrevBlock</ref><sp/>!=<sp/><ref refid="main_8cpp_1ace9c3343567f488a96598abe61e1d309" kindref="member">hashBestChain</ref>)</highlight></codeline>
+<codeline lineno="509"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>error(</highlight><highlight class="stringliteral">&quot;CheckStake()<sp/>:<sp/>generated<sp/>block<sp/>is<sp/>stale&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="510"><highlight class="normal"></highlight></codeline>
+<codeline lineno="511"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Track<sp/>how<sp/>many<sp/>getdata<sp/>requests<sp/>this<sp/>block<sp/>gets</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="512"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="513"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" kindref="member">LOCK</ref>(wallet.<ref refid="class_c_wallet_1a4e6eb889f7638ed9695fdc0731581428" kindref="member">cs_wallet</ref>);</highlight></codeline>
+<codeline lineno="514"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wallet.<ref refid="class_c_wallet_1ade5f0fc0e722433b421c32f97bd873a8" kindref="member">mapRequestCount</ref>[hashBlock]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="515"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="516"><highlight class="normal"></highlight></codeline>
+<codeline lineno="517"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Process<sp/>this<sp/>block<sp/>the<sp/>same<sp/>as<sp/>if<sp/>we<sp/>had<sp/>received<sp/>it<sp/>from<sp/>another<sp/>node</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="518"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="main_8cpp_1a7c8a7be3439bb5e1e40548a332a3cf29" kindref="member">ProcessBlock</ref>(NULL,<sp/>pblock))</highlight></codeline>
+<codeline lineno="519"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>error(</highlight><highlight class="stringliteral">&quot;CheckStake()<sp/>:<sp/>ProcessBlock,<sp/>block<sp/>not<sp/>accepted&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="520"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="521"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="522"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//ProcessBlock<sp/>successful<sp/>for<sp/>PoS.<sp/>now<sp/>FixSpentCoins.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="523"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nMismatchSpent;</highlight></codeline>
+<codeline lineno="524"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="amount_8h_1a4eaf3a5239714d8c45b851527f7cb564" kindref="member">CAmount</ref><sp/>nBalanceInQuestion;</highlight></codeline>
+<codeline lineno="525"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wallet.<ref refid="class_c_wallet_1aa1e6f8f54b36ae7ec11f567a59a99aa3" kindref="member">FixSpentCoins</ref>(nMismatchSpent,<sp/>nBalanceInQuestion);</highlight></codeline>
+<codeline lineno="526"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(nMismatchSpent<sp/>!=<sp/>0)</highlight></codeline>
+<codeline lineno="527"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="528"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" kindref="member">LogPrintf</ref>(</highlight><highlight class="stringliteral">&quot;PoS<sp/>mismatched<sp/>spent<sp/>coins<sp/>=<sp/>%d<sp/>and<sp/>balance<sp/>affects<sp/>=<sp/>%d<sp/>\n&quot;</highlight><highlight class="normal">,<sp/>nMismatchSpent,<sp/>nBalanceInQuestion);</highlight></codeline>
+<codeline lineno="529"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="530"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="531"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="532"><highlight class="normal"></highlight></codeline>
+<codeline lineno="533"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="534"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="535"><highlight class="normal"></highlight></codeline>
+<codeline lineno="536" refid="miner_8cpp_1a31faece5ef0e403969b3d3debd79b352" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="miner_8cpp_1a31faece5ef0e403969b3d3debd79b352" kindref="member">ThreadStakeMiner</ref>(<ref refid="class_c_wallet" kindref="compound">CWallet</ref><sp/>*pwallet)</highlight></codeline>
+<codeline lineno="537"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="538"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="util_8h_1a8d620b8c9865456b925cd0eea4b2ffc1" kindref="member">SetThreadPriority</ref>(<ref refid="util_8h_1a59ca83deecce4e6c8b6139e7eb2870b4" kindref="member">THREAD_PRIORITY_LOWEST</ref>);</highlight></codeline>
+<codeline lineno="539"><highlight class="normal"></highlight></codeline>
+<codeline lineno="540"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Make<sp/>this<sp/>thread<sp/>recognisable<sp/>as<sp/>the<sp/>mining<sp/>thread</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="541"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="util_8cpp_1a85fc1244e0bd3c91ee7a1c05ed10ebbb" kindref="member">RenameThread</ref>(</highlight><highlight class="stringliteral">&quot;darksilk-miner&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="542"><highlight class="normal"></highlight></codeline>
+<codeline lineno="543"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_reserve_key" kindref="compound">CReserveKey</ref><sp/>reservekey(pwallet);</highlight></codeline>
+<codeline lineno="544"><highlight class="normal"></highlight></codeline>
+<codeline lineno="545"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fTryToSync<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="546"><highlight class="normal"></highlight></codeline>
+<codeline lineno="547"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="548"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="549"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(pwallet-&gt;<ref refid="class_c_crypto_key_store_1a1c3ebef555fd13676d67509b95820fcf" kindref="member">IsLocked</ref>())</highlight></codeline>
+<codeline lineno="550"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="551"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="miner_8cpp_1a544c4ab48afad09d2f474d0720570e94" kindref="member">nLastCoinStakeSearchInterval</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="552"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="util_8h_1ac635182d3e845eda4af4fa5ab31609da" kindref="member">MilliSleep</ref>(1000);</highlight></codeline>
+<codeline lineno="553"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="554"><highlight class="normal"></highlight></codeline>
+<codeline lineno="555"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<ref refid="net_8cpp_1aa5a11f8873e230cea77bc7e91ee51918" kindref="member">vNodes</ref>.empty()<sp/>||<sp/><ref refid="chain_8cpp_1a5edcd96316574fd4a7f3ae0922a5cfd6" kindref="member">IsInitialBlockDownload</ref>())</highlight></codeline>
+<codeline lineno="556"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="557"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="miner_8cpp_1a544c4ab48afad09d2f474d0720570e94" kindref="member">nLastCoinStakeSearchInterval</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="558"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fTryToSync<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="559"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="util_8h_1ac635182d3e845eda4af4fa5ab31609da" kindref="member">MilliSleep</ref>(1000);</highlight></codeline>
+<codeline lineno="560"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="561"><highlight class="normal"></highlight></codeline>
+<codeline lineno="562"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fTryToSync)</highlight></codeline>
+<codeline lineno="563"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="564"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fTryToSync<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="565"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="net_8cpp_1aa5a11f8873e230cea77bc7e91ee51918" kindref="member">vNodes</ref>.size()<sp/>&lt;<sp/>3<sp/>||<sp/><ref refid="chain_8h_1a6454ad864029344132a0a0b59b1456ee" kindref="member">pindexBest</ref>-&gt;<ref refid="class_c_block_index_1ab63b774ae798f5f9e54b400ac8b5ef4b" kindref="member">GetBlockTime</ref>()<sp/>&lt;<sp/><ref refid="util_8cpp_1a46fac5fba8ba905b5f9acb364f5d8c6f" kindref="member">GetTime</ref>()<sp/>-<sp/>10<sp/>*<sp/>60)</highlight></codeline>
+<codeline lineno="566"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="567"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="util_8h_1ac635182d3e845eda4af4fa5ab31609da" kindref="member">MilliSleep</ref>(60000);</highlight></codeline>
+<codeline lineno="568"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="569"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="570"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="571"><highlight class="normal"></highlight></codeline>
+<codeline lineno="572"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="573"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>new<sp/>block</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="574"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="575"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="amount_8h_1a4eaf3a5239714d8c45b851527f7cb564" kindref="member">CAmount</ref><sp/>nFees;</highlight></codeline>
+<codeline lineno="576"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>auto_ptr&lt;CBlock&gt;<sp/>pblock(<ref refid="miner_8cpp_1aa2eb52225c2bb423ea961f4844d1c69a" kindref="member">CreateNewBlock</ref>(reservekey,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/>&amp;nFees));</highlight></codeline>
+<codeline lineno="577"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!pblock.get())</highlight></codeline>
+<codeline lineno="578"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="579"><highlight class="normal"></highlight></codeline>
+<codeline lineno="580"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Trying<sp/>to<sp/>sign<sp/>a<sp/>block</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="581"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pblock-&gt;SignBlock(*pwallet,<sp/>nFees))</highlight></codeline>
+<codeline lineno="582"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="583"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="util_8h_1a8d620b8c9865456b925cd0eea4b2ffc1" kindref="member">SetThreadPriority</ref>(<ref refid="util_8h_1af05a5c044382ba6895bcaad26325a693" kindref="member">THREAD_PRIORITY_NORMAL</ref>);</highlight></codeline>
+<codeline lineno="584"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="miner_8cpp_1a68be4bcfa03b86095641eac5ca996fed" kindref="member">CheckStake</ref>(pblock.get(),<sp/>*pwallet);</highlight></codeline>
+<codeline lineno="585"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="util_8h_1a8d620b8c9865456b925cd0eea4b2ffc1" kindref="member">SetThreadPriority</ref>(<ref refid="util_8h_1a59ca83deecce4e6c8b6139e7eb2870b4" kindref="member">THREAD_PRIORITY_LOWEST</ref>);</highlight></codeline>
+<codeline lineno="586"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="util_8h_1ac635182d3e845eda4af4fa5ab31609da" kindref="member">MilliSleep</ref>(500);</highlight></codeline>
+<codeline lineno="587"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="588"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="589"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="util_8h_1ac635182d3e845eda4af4fa5ab31609da" kindref="member">MilliSleep</ref>(<ref refid="miner_8cpp_1abb57d52de7c99ac76f7020624a7565fd" kindref="member">nMinerSleep</ref>);</highlight></codeline>
+<codeline lineno="590"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="591"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/miner.cpp"/>
+  </compounddef>
+</doxygen>

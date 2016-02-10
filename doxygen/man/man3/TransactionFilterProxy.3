@@ -1,0 +1,141 @@
+.TH "TransactionFilterProxy" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TransactionFilterProxy \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <transactionfilterproxy\&.h>\fP
+.PP
+Inherits QSortFilterProxyModel\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTransactionFilterProxy\fP (QObject *parent=0)"
+.br
+.ti -1c
+.RI "void \fBsetDateRange\fP (const QDateTime &from, const QDateTime &to)"
+.br
+.ti -1c
+.RI "void \fBsetAddressPrefix\fP (const QString &addrPrefix)"
+.br
+.ti -1c
+.RI "void \fBsetTypeFilter\fP (quint32 modes)"
+.br
+.ti -1c
+.RI "void \fBsetMinAmount\fP (const \fBCAmount\fP &minimum)"
+.br
+.ti -1c
+.RI "void \fBsetLimit\fP (int limit)"
+.br
+.ti -1c
+.RI "void \fBsetShowInactive\fP (bool showInactive)"
+.br
+.ti -1c
+.RI "int \fBrowCount\fP (const QModelIndex &parent=QModelIndex()) const "
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static quint32 \fBTYPE\fP (int type)"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static const QDateTime \fBMIN_DATE\fP = QDateTime::fromTime_t(0)"
+.br
+.ti -1c
+.RI "static const QDateTime \fBMAX_DATE\fP = QDateTime::fromTime_t(0xFFFFFFFF)"
+.br
+.ti -1c
+.RI "static const quint32 \fBALL_TYPES\fP = 0xFFFFFFFF"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBfilterAcceptsRow\fP (int source_row, const QModelIndex &source_parent) const "
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Filter the transaction list according to pre-specified rules\&. 
+.PP
+Definition at line 10 of file transactionfilterproxy\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TransactionFilterProxy::TransactionFilterProxy (QObject * parent = \fC0\fP)\fC [explicit]\fP"
+
+.PP
+Definition at line 13 of file transactionfilterproxy\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool TransactionFilterProxy::filterAcceptsRow (int source_row, const QModelIndex & source_parent) const\fC [protected]\fP"
+
+.PP
+Definition at line 25 of file transactionfilterproxy\&.cpp\&.
+.SS "int TransactionFilterProxy::rowCount (const QModelIndex & parent = \fCQModelIndex()\fP) const"
+
+.PP
+Definition at line 86 of file transactionfilterproxy\&.cpp\&.
+.SS "void TransactionFilterProxy::setAddressPrefix (const QString & addrPrefix)"
+
+.PP
+Definition at line 57 of file transactionfilterproxy\&.cpp\&.
+.SS "void TransactionFilterProxy::setDateRange (const QDateTime & from, const QDateTime & to)"
+
+.PP
+Definition at line 50 of file transactionfilterproxy\&.cpp\&.
+.SS "void TransactionFilterProxy::setLimit (int limit)"
+Set maximum number of rows returned, -1 if unlimited\&. 
+.PP
+Definition at line 75 of file transactionfilterproxy\&.cpp\&.
+.SS "void TransactionFilterProxy::setMinAmount (const \fBCAmount\fP & minimum)"
+
+.PP
+Definition at line 69 of file transactionfilterproxy\&.cpp\&.
+.SS "void TransactionFilterProxy::setShowInactive (bool showInactive)"
+Set whether to show conflicted transactions\&. 
+.PP
+Definition at line 80 of file transactionfilterproxy\&.cpp\&.
+.SS "void TransactionFilterProxy::setTypeFilter (quint32 modes)"
+
+.PP
+\fBNote:\fP
+.RS 4
+Type filter takes a bit field created with \fBTYPE()\fP or ALL_TYPES 
+.RE
+.PP
+
+.PP
+Definition at line 63 of file transactionfilterproxy\&.cpp\&.
+.SS "static quint32 TransactionFilterProxy::TYPE (int type)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Definition at line 24 of file transactionfilterproxy\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "const quint32 TransactionFilterProxy::ALL_TYPES = 0xFFFFFFFF\fC [static]\fP"
+Type filter bit field (all types) 
+.PP
+Definition at line 22 of file transactionfilterproxy\&.h\&.
+.SS "const QDateTime TransactionFilterProxy::MAX_DATE = QDateTime::fromTime_t(0xFFFFFFFF)\fC [static]\fP"
+Last date that can be represented (far in the future) 
+.PP
+Definition at line 20 of file transactionfilterproxy\&.h\&.
+.SS "const QDateTime TransactionFilterProxy::MIN_DATE = QDateTime::fromTime_t(0)\fC [static]\fP"
+Earliest date that can be represented (far in the past) 
+.PP
+Definition at line 18 of file transactionfilterproxy\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

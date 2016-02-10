@@ -1,0 +1,37 @@
+var core_8h =
+[
+    [ "block_", "structblock__.html", "structblock__" ],
+    [ "Argon2_instance_t", "struct_argon2__instance__t.html", "struct_argon2__instance__t" ],
+    [ "Argon2_position_t", "struct_argon2__position__t.html", "struct_argon2__position__t" ],
+    [ "Argon2_thread_data", "struct_argon2__thread__data.html", "struct_argon2__thread__data" ],
+    [ "ALIGN", "core_8h.html#abe7f8cd9a0ce69b71567a3870415be66", null ],
+    [ "CONST_CAST", "core_8h.html#a2f0e75e2f3550734177e96d518a16131", null ],
+    [ "argon2_instance_t", "core_8h.html#ac888abc6f5f9faa538ff23dc92b1e1c2", null ],
+    [ "argon2_position_t", "core_8h.html#a24aa65731593323bf283524ded8b6cdb", null ],
+    [ "argon2_thread_data", "core_8h.html#a27cd8868d8f007ca6ee66a0239336c33", null ],
+    [ "block", "core_8h.html#ace80c27428e237fe24f54ae915a36133", null ],
+    [ "argon2_core_constants", "core_8h.html#a7f5657d0a2dc42b3d802b8200858b93c", [
+      [ "ARGON2_VERSION_NUMBER", "core_8h.html#a7f5657d0a2dc42b3d802b8200858b93ca7df6eafcd1c55e7d3e8a345df7dc1573", null ],
+      [ "ARGON2_BLOCK_SIZE", "core_8h.html#a7f5657d0a2dc42b3d802b8200858b93ca7e67b2b3fa64292ce300e481924d0f00", null ],
+      [ "ARGON2_QWORDS_IN_BLOCK", "core_8h.html#a7f5657d0a2dc42b3d802b8200858b93cae7f95c31492458d44a7c7511a9212e18", null ],
+      [ "ARGON2_OWORDS_IN_BLOCK", "core_8h.html#a7f5657d0a2dc42b3d802b8200858b93cad77d2fc87fee45d7465b0664d47c3789", null ],
+      [ "ARGON2_ADDRESSES_IN_BLOCK", "core_8h.html#a7f5657d0a2dc42b3d802b8200858b93ca3e55548ad9759ef13649dc00ec9043f9", null ],
+      [ "ARGON2_PREHASH_DIGEST_LENGTH", "core_8h.html#a7f5657d0a2dc42b3d802b8200858b93caf287344a0238ddbec64b9ab12c03facd", null ],
+      [ "ARGON2_PREHASH_SEED_LENGTH", "core_8h.html#a7f5657d0a2dc42b3d802b8200858b93ca7e78c4d3c85cf3491030e561ff21133b", null ]
+    ] ],
+    [ "allocate_memory", "core_8h.html#a583432693a831e17af94e1c22997b700", null ],
+    [ "clear_memory", "core_8h.html#a6d372c2918bb6ae9838a25df7167d471", null ],
+    [ "copy_block", "core_8h.html#a7c9154420e1de71f92c54207dbfb9f53", null ],
+    [ "fill_first_blocks", "core_8h.html#a96c3c9f5727d9f0224b923c723f0ed8e", null ],
+    [ "fill_memory_blocks", "core_8h.html#afc8e1540c9738230c2a993c9efcf2620", null ],
+    [ "fill_segment", "core_8h.html#a7ba7d65e159824e7011eb23068e15f72", null ],
+    [ "finalize", "core_8h.html#aafd756bf3475038e2eada05bcaf31b18", null ],
+    [ "free_memory", "core_8h.html#a2374821cf76a4624e6577b00653094e2", null ],
+    [ "index_alpha", "core_8h.html#a67f6f4720426f8e34553e2f1608f70bf", null ],
+    [ "init_block_value", "core_8h.html#a7115f6986a42420746ebdd264404a05c", null ],
+    [ "initial_hash", "core_8h.html#a777bb6205a6ad0da9b85a7c2ae61f7c8", null ],
+    [ "initialize", "core_8h.html#ac4f3546c9e156e161179b7cb1b6565e5", null ],
+    [ "secure_wipe_memory", "core_8h.html#aecea0a34f254c587bcf1b05a35816488", null ],
+    [ "validate_inputs", "core_8h.html#afff47dd1eae5498564ec99545dedece8", null ],
+    [ "xor_block", "core_8h.html#abd86e6d9a6a744ec69ee9cba596a84fb", null ]
+];

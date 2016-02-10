@@ -1,0 +1,836 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_stormnode" kind="class" language="C++" prot="public">
+    <compoundname>CStormnode</compoundname>
+    <derivedcompoundref refid="class_c_stormnode_broadcast" prot="public" virt="non-virtual">CStormnodeBroadcast</derivedcompoundref>
+    <includes refid="stormnode_8h" local="no">stormnode.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_c_stormnode_1a8c9a83b0ce70988102d71ecfabe99aa0" prot="public" static="no">
+        <name>state</name>
+        <enumvalue id="class_c_stormnode_1a8c9a83b0ce70988102d71ecfabe99aa0a4d96c08f8f4c62ae9e43b0d82db5e2f1" prot="public">
+          <name>STORMNODE_PRE_ENABLED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_stormnode_1a8c9a83b0ce70988102d71ecfabe99aa0a4af8128443469b549a0c4d6cf59a3a79" prot="public">
+          <name>STORMNODE_ENABLED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_stormnode_1a8c9a83b0ce70988102d71ecfabe99aa0ab3e35c4e3e07236ee4bdd2fc0cc11f99" prot="public">
+          <name>STORMNODE_EXPIRED</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_stormnode_1a8c9a83b0ce70988102d71ecfabe99aa0abe760cfa737f943c06d449afc2b03f1d" prot="public">
+          <name>STORMNODE_VIN_SPENT</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_stormnode_1a8c9a83b0ce70988102d71ecfabe99aa0a89fa3f4b7441a2d2add5334396a88b06" prot="public">
+          <name>STORMNODE_REMOVE</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_stormnode_1a8c9a83b0ce70988102d71ecfabe99aa0a61dac974c55abf841bb617fa4beba96e" prot="public">
+          <name>STORMNODE_POS_ERROR</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="113" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="113" bodyend="120"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_c_stormnode_1acf90628a4c7cf6ecc804f46e3c20968f" prot="private" static="no" mutable="yes">
+        <type><ref refid="sync_8h_1a37a4692b2d517f2843655ca11af7668a" kindref="member">CCriticalSection</ref></type>
+        <definition>CCriticalSection CStormnode::cs</definition>
+        <argsstring></argsstring>
+        <name>cs</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="110" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_stormnode_1a1303d7ea524e5213f8aa1628661dff2e" prot="private" static="no" mutable="no">
+        <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+        <definition>int64_t CStormnode::lastTimeChecked</definition>
+        <argsstring></argsstring>
+        <name>lastTimeChecked</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="111" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_c_stormnode_1a62f5b0f436ca313afd612b07d687127f" prot="public" static="no" mutable="no">
+        <type><ref refid="class_c_tx_in" kindref="compound">CTxIn</ref></type>
+        <definition>CTxIn CStormnode::vin</definition>
+        <argsstring></argsstring>
+        <name>vin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="122" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_stormnode_1a31e0681a92d1f4d0da756b680c695d66" prot="public" static="no" mutable="no">
+        <type><ref refid="class_c_service" kindref="compound">CService</ref></type>
+        <definition>CService CStormnode::addr</definition>
+        <argsstring></argsstring>
+        <name>addr</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="123" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_stormnode_1af241ab789726de5ba5d2caba082c3d01" prot="public" static="no" mutable="no">
+        <type><ref refid="class_c_pub_key" kindref="compound">CPubKey</ref></type>
+        <definition>CPubKey CStormnode::pubkey</definition>
+        <argsstring></argsstring>
+        <name>pubkey</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="124" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="124" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_stormnode_1a43efb713c0d8e8f01b9ea593e025856b" prot="public" static="no" mutable="no">
+        <type><ref refid="class_c_pub_key" kindref="compound">CPubKey</ref></type>
+        <definition>CPubKey CStormnode::pubkey2</definition>
+        <argsstring></argsstring>
+        <name>pubkey2</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="125" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_stormnode_1a7484d9ff7d908f3610f6946aba19a7b3" prot="public" static="no" mutable="no">
+        <type>std::vector&lt; unsigned char &gt;</type>
+        <definition>std::vector&lt;unsigned char&gt; CStormnode::sig</definition>
+        <argsstring></argsstring>
+        <name>sig</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="126" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_stormnode_1a288aca8c8cbd786c2188ae5bc39c642a" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CStormnode::activeState</definition>
+        <argsstring></argsstring>
+        <name>activeState</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="127" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_stormnode_1ae77544488795272ca9615ed1e23d3b77" prot="public" static="no" mutable="no">
+        <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+        <definition>int64_t CStormnode::sigTime</definition>
+        <argsstring></argsstring>
+        <name>sigTime</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="128" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_stormnode_1a60687ff2b6a277680c6d39eeee997532" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CStormnode::cacheInputAge</definition>
+        <argsstring></argsstring>
+        <name>cacheInputAge</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="129" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_stormnode_1a80c11846fa792eb8466a37881b0c4954" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CStormnode::cacheInputAgeBlock</definition>
+        <argsstring></argsstring>
+        <name>cacheInputAgeBlock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="130" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="130" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_stormnode_1a7e879cd7e4f39560cc846c5127a58afa" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CStormnode::unitTest</definition>
+        <argsstring></argsstring>
+        <name>unitTest</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="131" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="131" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_stormnode_1a1d256b346d4bee1e4d7a68db4c5e659f" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CStormnode::allowFreeTx</definition>
+        <argsstring></argsstring>
+        <name>allowFreeTx</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="132" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_stormnode_1aa2baa2da552179c9812730d4d9709502" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CStormnode::protocolVersion</definition>
+        <argsstring></argsstring>
+        <name>protocolVersion</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="133" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_stormnode_1ac74bbfb73c657430dba45308a6f7a013" prot="public" static="no" mutable="no">
+        <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+        <definition>int64_t CStormnode::nLastSsq</definition>
+        <argsstring></argsstring>
+        <name>nLastSsq</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="134" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_stormnode_1a2f9e003508853f529c9ef70babe35fc0" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CStormnode::nScanningErrorCount</definition>
+        <argsstring></argsstring>
+        <name>nScanningErrorCount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="135" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_stormnode_1a632651553ac07fe57ceea55049eb430f" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CStormnode::nLastScanningErrorBlockHeight</definition>
+        <argsstring></argsstring>
+        <name>nLastScanningErrorBlockHeight</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="136" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_stormnode_1a506923ff67bd06fefba3a897828ce892" prot="public" static="no" mutable="no">
+        <type><ref refid="class_c_stormnode_ping" kindref="compound">CStormnodePing</ref></type>
+        <definition>CStormnodePing CStormnode::lastPing</definition>
+        <argsstring></argsstring>
+        <name>lastPing</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="137" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_stormnode_1a7dabb832beef5f761352a4799c55bbec" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>CStormnode::ADD_SERIALIZE_METHODS</definition>
+        <argsstring></argsstring>
+        <name>ADD_SERIALIZE_METHODS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="185" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="185" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_stormnode_1a7601ef94f912fc9d00406c2349accd9e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CStormnode::CStormnode</definition>
+        <argsstring>()</argsstring>
+        <name>CStormnode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="139" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.cpp" bodystart="59" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_1ac5d7c79ce5e3187bf1703bdf968e4c2e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CStormnode::CStormnode</definition>
+        <argsstring>(const CStormnode &amp;other)</argsstring>
+        <name>CStormnode</name>
+        <param>
+          <type>const <ref refid="class_c_stormnode" kindref="compound">CStormnode</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="140" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.cpp" bodystart="81" bodyend="101"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_1a81bcdb5b9c2b0219667edc3bfd62c1af" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CStormnode::CStormnode</definition>
+        <argsstring>(const CStormnodeBroadcast &amp;snb)</argsstring>
+        <name>CStormnode</name>
+        <param>
+          <type>const <ref refid="class_c_stormnode_broadcast" kindref="compound">CStormnodeBroadcast</ref> &amp;</type>
+          <declname>snb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="141" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.cpp" bodystart="103" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_1aefe9e633b4f4f7ce4af12a64faf100d4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CStormnode::swap</definition>
+        <argsstring>(CStormnode &amp;first, CStormnode &amp;second)</argsstring>
+        <name>swap</name>
+        <param>
+          <type><ref refid="class_c_stormnode" kindref="compound">CStormnode</ref> &amp;</type>
+          <declname>first</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_stormnode" kindref="compound">CStormnode</ref> &amp;</type>
+          <declname>second</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="144" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="144" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_1af951dafbb25b9e659ef86cd52683aa7f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_c_stormnode" kindref="compound">CStormnode</ref> &amp;</type>
+        <definition>CStormnode&amp; CStormnode::operator=</definition>
+        <argsstring>(CStormnode from)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="class_c_stormnode" kindref="compound">CStormnode</ref></type>
+          <declname>from</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="169" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="169" bodyend="173"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_1a6e1fab43d9494177da3f8599c4645516" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classuint256" kindref="compound">uint256</ref></type>
+        <definition>uint256 CStormnode::CalculateScore</definition>
+        <argsstring>(int mod=1, int64_t nBlockHeight=0)</argsstring>
+        <name>CalculateScore</name>
+        <param>
+          <type>int</type>
+          <declname>mod</declname>
+          <defval>1</defval>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+          <declname>nBlockHeight</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="183" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.cpp" bodystart="152" bodyend="176"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_1a7942368f526da3cfd40e77b8dd7cffd1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Stream</type>
+          </param>
+          <param>
+            <type>typename Operation</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void CStormnode::SerializationOp</definition>
+        <argsstring>(Stream &amp;s, Operation ser_action, int nType, int nVersion)</argsstring>
+        <name>SerializationOp</name>
+        <param>
+          <type>Stream &amp;</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>Operation</type>
+          <declname>ser_action</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nType</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nVersion</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="188" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="188" bodyend="207"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_1abce24148c6618317ab287e8e284c12d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+        <definition>int64_t CStormnode::SecondsSincePayment</definition>
+        <argsstring>()</argsstring>
+        <name>SecondsSincePayment</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="209" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.cpp" bodystart="228" bodyend="244"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_1a17bb6549af310bf95190260959a54c73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CStormnode::UpdateFromNewBroadcast</definition>
+        <argsstring>(CStormnodeBroadcast &amp;snb)</argsstring>
+        <name>UpdateFromNewBroadcast</name>
+        <param>
+          <type><ref refid="class_c_stormnode_broadcast" kindref="compound">CStormnodeBroadcast</ref> &amp;</type>
+          <declname>snb</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="211" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.cpp" bodystart="128" bodyend="145"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_1a2231073a0817c566e0d5c3fa08f53b5c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref></type>
+        <definition>uint64_t CStormnode::SliceHash</definition>
+        <argsstring>(uint256 &amp;hash, int slice)</argsstring>
+        <name>SliceHash</name>
+        <param>
+          <type><ref refid="classuint256" kindref="compound">uint256</ref> &amp;</type>
+          <declname>hash</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>slice</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="213" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="213" bodyend="218"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_1af2e9fab8911feaeb300b56702d933a67" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CStormnode::Check</definition>
+        <argsstring>(bool forceCheck=false)</argsstring>
+        <name>Check</name>
+        <param>
+          <type>bool</type>
+          <declname>forceCheck</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="220" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.cpp" bodystart="178" bodyend="226"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_1a01713cf27e8c36c1677a5e3bad2674b5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CStormnode::IsBroadcastedWithin</definition>
+        <argsstring>(int seconds)</argsstring>
+        <name>IsBroadcastedWithin</name>
+        <param>
+          <type>int</type>
+          <declname>seconds</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="222" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="222" bodyend="225"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_1a5f19595c1ccbb539f2d369871671ab70" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CStormnode::IsPingedWithin</definition>
+        <argsstring>(int seconds, int64_t now=-1)</argsstring>
+        <name>IsPingedWithin</name>
+        <param>
+          <type>int</type>
+          <declname>seconds</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+          <declname>now</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="227" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="227" bodyend="234"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_1ab97bb31f794c0cfd4d740c0a3cc1efbe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CStormnode::Disable</definition>
+        <argsstring>()</argsstring>
+        <name>Disable</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="236" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="236" bodyend="240"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_1a065cd7423a76fab999a3afdcc356ca91" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CStormnode::IsEnabled</definition>
+        <argsstring>()</argsstring>
+        <name>IsEnabled</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="242" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="242" bodyend="245"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_1adb7b900b9608f2360b9cf97f7b836679" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CStormnode::IsPreEnabled</definition>
+        <argsstring>()</argsstring>
+        <name>IsPreEnabled</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="247" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="247" bodyend="250"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_1a8a82685a7b1ea42d49e44459b35932fe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int CStormnode::GetStormnodeInputAge</definition>
+        <argsstring>()</argsstring>
+        <name>GetStormnodeInputAge</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="252" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="252" bodyend="262"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_1aa96a9dc4e1c835657fe5d9c8410adf83" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string CStormnode::Status</definition>
+        <argsstring>()</argsstring>
+        <name>Status</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="264" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="264" bodyend="275"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_1a1502f0b0559e139a3100aa5646f95bd7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+        <definition>int64_t CStormnode::GetLastPaid</definition>
+        <argsstring>()</argsstring>
+        <name>GetLastPaid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="277" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.cpp" bodystart="246" bodyend="289"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_c_stormnode_1a121484799f6f30f52d4c867ea52a6bca" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>friend bool</type>
+        <definition>bool operator==</definition>
+        <argsstring>(const CStormnode &amp;a, const CStormnode &amp;b)</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="class_c_stormnode" kindref="compound">CStormnode</ref> &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_stormnode" kindref="compound">CStormnode</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="174" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="174" bodyend="177"/>
+      </memberdef>
+      <memberdef kind="friend" id="class_c_stormnode_1ab037406f267a8477e18d96d04b6080f1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>friend bool</type>
+        <definition>bool operator!=</definition>
+        <argsstring>(const CStormnode &amp;a, const CStormnode &amp;b)</argsstring>
+        <name>operator!=</name>
+        <param>
+          <type>const <ref refid="class_c_stormnode" kindref="compound">CStormnode</ref> &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_stormnode" kindref="compound">CStormnode</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode.h" line="178" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="178" bodyend="181"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="844">
+        <label>CStormnodeBroadcast</label>
+        <link refid="class_c_stormnode_broadcast"/>
+        <childnode refid="843" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="843">
+        <label>CStormnode</label>
+        <link refid="class_c_stormnode"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="852">
+        <label>base_uint&lt; 256 &gt;</label>
+        <link refid="classbase__uint"/>
+      </node>
+      <node id="846">
+        <label>CStormnodePing</label>
+        <link refid="class_c_stormnode_ping"/>
+        <childnode refid="847" relation="usage">
+          <edgelabel>vin</edgelabel>
+        </childnode>
+        <childnode refid="851" relation="usage">
+          <edgelabel>blockHash</edgelabel>
+        </childnode>
+      </node>
+      <node id="853">
+        <label>CPubKey</label>
+        <link refid="class_c_pub_key"/>
+      </node>
+      <node id="847">
+        <label>CTxIn</label>
+        <link refid="class_c_tx_in"/>
+        <childnode refid="848" relation="usage">
+          <edgelabel>scriptSig</edgelabel>
+          <edgelabel>prevPubKey</edgelabel>
+        </childnode>
+        <childnode refid="850" relation="usage">
+          <edgelabel>prevout</edgelabel>
+        </childnode>
+      </node>
+      <node id="851">
+        <label>uint256</label>
+        <link refid="classuint256"/>
+        <childnode refid="852" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="855">
+        <label>CNetAddr</label>
+        <link refid="class_c_net_addr"/>
+      </node>
+      <node id="850">
+        <label>COutPoint</label>
+        <link refid="class_c_out_point"/>
+        <childnode refid="851" relation="usage">
+          <edgelabel>hash</edgelabel>
+        </childnode>
+      </node>
+      <node id="845">
+        <label>CStormnode</label>
+        <link refid="class_c_stormnode"/>
+        <childnode refid="846" relation="usage">
+          <edgelabel>lastPing</edgelabel>
+        </childnode>
+        <childnode refid="847" relation="usage">
+          <edgelabel>vin</edgelabel>
+        </childnode>
+        <childnode refid="853" relation="usage">
+          <edgelabel>pubkey</edgelabel>
+          <edgelabel>pubkey2</edgelabel>
+        </childnode>
+        <childnode refid="854" relation="usage">
+          <edgelabel>addr</edgelabel>
+        </childnode>
+      </node>
+      <node id="848">
+        <label>CScript</label>
+        <link refid="class_c_script"/>
+        <childnode refid="849" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="849">
+        <label>std::vector&lt; unsigned char &gt;</label>
+      </node>
+      <node id="854">
+        <label>CService</label>
+        <link refid="class_c_service"/>
+        <childnode refid="855" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/dev/ds-160209/src/stormnode.h" line="107" column="1" bodyfile="/home/dev/ds-160209/src/stormnode.h" bodystart="106" bodyend="279"/>
+    <listofallmembers>
+      <member refid="class_c_stormnode_1a288aca8c8cbd786c2188ae5bc39c642a" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>activeState</name></member>
+      <member refid="class_c_stormnode_1a7dabb832beef5f761352a4799c55bbec" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>ADD_SERIALIZE_METHODS</name></member>
+      <member refid="class_c_stormnode_1a31e0681a92d1f4d0da756b680c695d66" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>addr</name></member>
+      <member refid="class_c_stormnode_1a1d256b346d4bee1e4d7a68db4c5e659f" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>allowFreeTx</name></member>
+      <member refid="class_c_stormnode_1a60687ff2b6a277680c6d39eeee997532" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>cacheInputAge</name></member>
+      <member refid="class_c_stormnode_1a80c11846fa792eb8466a37881b0c4954" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>cacheInputAgeBlock</name></member>
+      <member refid="class_c_stormnode_1a6e1fab43d9494177da3f8599c4645516" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>CalculateScore</name></member>
+      <member refid="class_c_stormnode_1af2e9fab8911feaeb300b56702d933a67" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>Check</name></member>
+      <member refid="class_c_stormnode_1acf90628a4c7cf6ecc804f46e3c20968f" prot="private" virt="non-virtual"><scope>CStormnode</scope><name>cs</name></member>
+      <member refid="class_c_stormnode_1a7601ef94f912fc9d00406c2349accd9e" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>CStormnode</name></member>
+      <member refid="class_c_stormnode_1ac5d7c79ce5e3187bf1703bdf968e4c2e" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>CStormnode</name></member>
+      <member refid="class_c_stormnode_1a81bcdb5b9c2b0219667edc3bfd62c1af" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>CStormnode</name></member>
+      <member refid="class_c_stormnode_1ab97bb31f794c0cfd4d740c0a3cc1efbe" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>Disable</name></member>
+      <member refid="class_c_stormnode_1a1502f0b0559e139a3100aa5646f95bd7" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>GetLastPaid</name></member>
+      <member refid="class_c_stormnode_1a8a82685a7b1ea42d49e44459b35932fe" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>GetStormnodeInputAge</name></member>
+      <member refid="class_c_stormnode_1a01713cf27e8c36c1677a5e3bad2674b5" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>IsBroadcastedWithin</name></member>
+      <member refid="class_c_stormnode_1a065cd7423a76fab999a3afdcc356ca91" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>IsEnabled</name></member>
+      <member refid="class_c_stormnode_1a5f19595c1ccbb539f2d369871671ab70" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>IsPingedWithin</name></member>
+      <member refid="class_c_stormnode_1adb7b900b9608f2360b9cf97f7b836679" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>IsPreEnabled</name></member>
+      <member refid="class_c_stormnode_1a506923ff67bd06fefba3a897828ce892" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>lastPing</name></member>
+      <member refid="class_c_stormnode_1a1303d7ea524e5213f8aa1628661dff2e" prot="private" virt="non-virtual"><scope>CStormnode</scope><name>lastTimeChecked</name></member>
+      <member refid="class_c_stormnode_1a632651553ac07fe57ceea55049eb430f" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>nLastScanningErrorBlockHeight</name></member>
+      <member refid="class_c_stormnode_1ac74bbfb73c657430dba45308a6f7a013" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>nLastSsq</name></member>
+      <member refid="class_c_stormnode_1a2f9e003508853f529c9ef70babe35fc0" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>nScanningErrorCount</name></member>
+      <member refid="class_c_stormnode_1ab037406f267a8477e18d96d04b6080f1" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>operator!=</name></member>
+      <member refid="class_c_stormnode_1af951dafbb25b9e659ef86cd52683aa7f" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>operator=</name></member>
+      <member refid="class_c_stormnode_1a121484799f6f30f52d4c867ea52a6bca" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>operator==</name></member>
+      <member refid="class_c_stormnode_1aa2baa2da552179c9812730d4d9709502" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>protocolVersion</name></member>
+      <member refid="class_c_stormnode_1af241ab789726de5ba5d2caba082c3d01" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>pubkey</name></member>
+      <member refid="class_c_stormnode_1a43efb713c0d8e8f01b9ea593e025856b" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>pubkey2</name></member>
+      <member refid="class_c_stormnode_1abce24148c6618317ab287e8e284c12d6" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>SecondsSincePayment</name></member>
+      <member refid="class_c_stormnode_1a7942368f526da3cfd40e77b8dd7cffd1" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>SerializationOp</name></member>
+      <member refid="class_c_stormnode_1a7484d9ff7d908f3610f6946aba19a7b3" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>sig</name></member>
+      <member refid="class_c_stormnode_1ae77544488795272ca9615ed1e23d3b77" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>sigTime</name></member>
+      <member refid="class_c_stormnode_1a2231073a0817c566e0d5c3fa08f53b5c" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>SliceHash</name></member>
+      <member refid="class_c_stormnode_1a8c9a83b0ce70988102d71ecfabe99aa0" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>state</name></member>
+      <member refid="class_c_stormnode_1aa96a9dc4e1c835657fe5d9c8410adf83" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>Status</name></member>
+      <member refid="class_c_stormnode_1a8c9a83b0ce70988102d71ecfabe99aa0a4af8128443469b549a0c4d6cf59a3a79" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>STORMNODE_ENABLED</name></member>
+      <member refid="class_c_stormnode_1a8c9a83b0ce70988102d71ecfabe99aa0ab3e35c4e3e07236ee4bdd2fc0cc11f99" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>STORMNODE_EXPIRED</name></member>
+      <member refid="class_c_stormnode_1a8c9a83b0ce70988102d71ecfabe99aa0a61dac974c55abf841bb617fa4beba96e" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>STORMNODE_POS_ERROR</name></member>
+      <member refid="class_c_stormnode_1a8c9a83b0ce70988102d71ecfabe99aa0a4d96c08f8f4c62ae9e43b0d82db5e2f1" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>STORMNODE_PRE_ENABLED</name></member>
+      <member refid="class_c_stormnode_1a8c9a83b0ce70988102d71ecfabe99aa0a89fa3f4b7441a2d2add5334396a88b06" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>STORMNODE_REMOVE</name></member>
+      <member refid="class_c_stormnode_1a8c9a83b0ce70988102d71ecfabe99aa0abe760cfa737f943c06d449afc2b03f1d" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>STORMNODE_VIN_SPENT</name></member>
+      <member refid="class_c_stormnode_1aefe9e633b4f4f7ce4af12a64faf100d4" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>swap</name></member>
+      <member refid="class_c_stormnode_1a7e879cd7e4f39560cc846c5127a58afa" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>unitTest</name></member>
+      <member refid="class_c_stormnode_1a17bb6549af310bf95190260959a54c73" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>UpdateFromNewBroadcast</name></member>
+      <member refid="class_c_stormnode_1a62f5b0f436ca313afd612b07d687127f" prot="public" virt="non-virtual"><scope>CStormnode</scope><name>vin</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

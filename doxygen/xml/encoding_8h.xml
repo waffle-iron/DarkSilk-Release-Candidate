@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="encoding_8h" kind="file" language="C++">
+    <compoundname>encoding.h</compoundname>
+    <includes refid="argon2_8h" local="yes">argon2.h</includes>
+    <includedby refid="argon2_8c" local="yes">/home/dev/ds-160209/src/crypto/argon2/argon2.c</includedby>
+    <includedby refid="encoding_8c" local="yes">/home/dev/ds-160209/src/crypto/argon2/encoding.c</includedby>
+    <incdepgraph>
+      <node id="4016">
+        <label>stddef.h</label>
+      </node>
+      <node id="4017">
+        <label>limits.h</label>
+      </node>
+      <node id="4013">
+        <label>/home/dev/ds-160209/src/crypto/argon2/encoding.h</label>
+        <link refid="encoding.h"/>
+        <childnode refid="4014" relation="include">
+        </childnode>
+      </node>
+      <node id="4015">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="4014">
+        <label>argon2.h</label>
+        <link refid="argon2_8h"/>
+        <childnode refid="4015" relation="include">
+        </childnode>
+        <childnode refid="4016" relation="include">
+        </childnode>
+        <childnode refid="4017" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="4020">
+        <label>/home/dev/ds-160209/src/crypto/argon2/encoding.c</label>
+        <link refid="encoding_8c"/>
+      </node>
+      <node id="4018">
+        <label>/home/dev/ds-160209/src/crypto/argon2/encoding.h</label>
+        <link refid="encoding.h"/>
+        <childnode refid="4019" relation="include">
+        </childnode>
+        <childnode refid="4020" relation="include">
+        </childnode>
+      </node>
+      <node id="4019">
+        <label>/home/dev/ds-160209/src/crypto/argon2/argon2.c</label>
+        <link refid="argon2_8c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="encoding_8h_1ad48815d59634a275959d0cbaf09756b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int encode_string</definition>
+        <argsstring>(char *dst, size_t dst_len, argon2_context *ctx, argon2_type type)</argsstring>
+        <name>encode_string</name>
+        <param>
+          <type>char *</type>
+          <declname>dst</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>dst_len</declname>
+        </param>
+        <param>
+          <type><ref refid="argon2_8h_1a43c74dc5ed515632feee9b2e1ff3e09f" kindref="member">argon2_context</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type><ref refid="argon2_8h_1af51eac9927f7f234943d076166aacf84" kindref="member">argon2_type</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/encoding.h" line="5" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/encoding.c" bodystart="371" bodyend="434"/>
+      </memberdef>
+      <memberdef kind="function" id="encoding_8h_1ada8ceb318c3429ae16f8fe41ee7eb61b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int decode_string</definition>
+        <argsstring>(argon2_context *ctx, const char *str, argon2_type type)</argsstring>
+        <name>decode_string</name>
+        <param>
+          <type><ref refid="argon2_8h_1a43c74dc5ed515632feee9b2e1ff3e09f" kindref="member">argon2_context</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type><ref refid="argon2_8h_1af51eac9927f7f234943d076166aacf84" kindref="member">argon2_type</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/encoding.h" line="8" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/encoding.c" bodystart="249" bodyend="357"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>ENCODING_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ENCODING_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="argon2_8h" kindref="compound">argon2.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="encoding_8h_1ad48815d59634a275959d0cbaf09756b7" kindref="member">encode_string</ref>(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*dst,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>dst_len,<sp/><ref refid="struct_argon2___context" kindref="compound">argon2_context</ref><sp/>*ctx,</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="argon2_8h_1af51eac9927f7f234943d076166aacf84" kindref="member">argon2_type</ref><sp/>type);</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="encoding_8h_1ada8ceb318c3429ae16f8fe41ee7eb61b" kindref="member">decode_string</ref>(<ref refid="struct_argon2___context" kindref="compound">argon2_context</ref><sp/>*ctx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*str,<sp/><ref refid="argon2_8h_1af51eac9927f7f234943d076166aacf84" kindref="member">argon2_type</ref><sp/>type);</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/crypto/argon2/encoding.h"/>
+  </compounddef>
+</doxygen>

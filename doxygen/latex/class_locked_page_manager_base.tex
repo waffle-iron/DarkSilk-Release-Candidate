@@ -1,0 +1,90 @@
+\hypertarget{class_locked_page_manager_base}{}\section{Locked\+Page\+Manager\+Base$<$ Locker $>$ Class Template Reference}
+\label{class_locked_page_manager_base}\index{Locked\+Page\+Manager\+Base$<$ Locker $>$@{Locked\+Page\+Manager\+Base$<$ Locker $>$}}
+
+
+{\ttfamily \#include $<$allocators.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_locked_page_manager_base_ad1974eafb41a3cae3358e34b7896419a}{Locked\+Page\+Manager\+Base} (size\+\_\+t page\+\_\+size)
+\item 
+void \hyperlink{class_locked_page_manager_base_ae24ac08899505b892d451404133fa494}{Lock\+Range} (void $\ast$p, size\+\_\+t size)
+\item 
+void \hyperlink{class_locked_page_manager_base_a34bcf7b9120295ed178fe9545ed229af}{Unlock\+Range} (void $\ast$p, size\+\_\+t size)
+\item 
+int \hyperlink{class_locked_page_manager_base_a8074f7d1b43cc8dd34b3ba9cdb2eca50}{Get\+Locked\+Page\+Count} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$class Locker$>$class Locked\+Page\+Manager\+Base$<$ Locker $>$}
+
+Thread-\/safe class to keep track of locked (ie, non-\/swappable) memory pages.
+
+Memory locks do not stack, that is, pages which have been locked several times by calls to mlock() will be unlocked by a single call to munlock(). This can result in keying material ending up in swap when those functions are used naively. This class simulates stacking memory locks by keeping a counter per page.
+
+\begin{DoxyNote}{Note}
+By using a map from each page base address to lock count, this class is optimized for small objects that span up to a few pages, mostly smaller than a page. To support large allocations, something like an interval tree would be the preferred data structure. 
+\end{DoxyNote}
+
+
+Definition at line 47 of file allocators.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_locked_page_manager_base_ad1974eafb41a3cae3358e34b7896419a}{}\index{Locked\+Page\+Manager\+Base@{Locked\+Page\+Manager\+Base}!Locked\+Page\+Manager\+Base@{Locked\+Page\+Manager\+Base}}
+\index{Locked\+Page\+Manager\+Base@{Locked\+Page\+Manager\+Base}!Locked\+Page\+Manager\+Base@{Locked\+Page\+Manager\+Base}}
+\subsubsection[{Locked\+Page\+Manager\+Base}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Locker$>$ {\bf Locked\+Page\+Manager\+Base}$<$ Locker $>$\+::{\bf Locked\+Page\+Manager\+Base} (
+\begin{DoxyParamCaption}
+\item[{size\+\_\+t}]{page\+\_\+size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_locked_page_manager_base_ad1974eafb41a3cae3358e34b7896419a}
+
+
+Definition at line 50 of file allocators.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_locked_page_manager_base_a8074f7d1b43cc8dd34b3ba9cdb2eca50}{}\index{Locked\+Page\+Manager\+Base@{Locked\+Page\+Manager\+Base}!Get\+Locked\+Page\+Count@{Get\+Locked\+Page\+Count}}
+\index{Get\+Locked\+Page\+Count@{Get\+Locked\+Page\+Count}!Locked\+Page\+Manager\+Base@{Locked\+Page\+Manager\+Base}}
+\subsubsection[{Get\+Locked\+Page\+Count}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Locker$>$ int {\bf Locked\+Page\+Manager\+Base}$<$ Locker $>$\+::Get\+Locked\+Page\+Count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_locked_page_manager_base_a8074f7d1b43cc8dd34b3ba9cdb2eca50}
+
+
+Definition at line 105 of file allocators.\+h.
+
+\hypertarget{class_locked_page_manager_base_ae24ac08899505b892d451404133fa494}{}\index{Locked\+Page\+Manager\+Base@{Locked\+Page\+Manager\+Base}!Lock\+Range@{Lock\+Range}}
+\index{Lock\+Range@{Lock\+Range}!Locked\+Page\+Manager\+Base@{Locked\+Page\+Manager\+Base}}
+\subsubsection[{Lock\+Range}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Locker$>$ void {\bf Locked\+Page\+Manager\+Base}$<$ Locker $>$\+::Lock\+Range (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{p, }
+\item[{size\+\_\+t}]{size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_locked_page_manager_base_ae24ac08899505b892d451404133fa494}
+
+
+Definition at line 59 of file allocators.\+h.
+
+\hypertarget{class_locked_page_manager_base_a34bcf7b9120295ed178fe9545ed229af}{}\index{Locked\+Page\+Manager\+Base@{Locked\+Page\+Manager\+Base}!Unlock\+Range@{Unlock\+Range}}
+\index{Unlock\+Range@{Unlock\+Range}!Locked\+Page\+Manager\+Base@{Locked\+Page\+Manager\+Base}}
+\subsubsection[{Unlock\+Range}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class Locker$>$ void {\bf Locked\+Page\+Manager\+Base}$<$ Locker $>$\+::Unlock\+Range (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{p, }
+\item[{size\+\_\+t}]{size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_locked_page_manager_base_a34bcf7b9120295ed178fe9545ed229af}
+
+
+Definition at line 82 of file allocators.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/\hyperlink{allocators_8h}{allocators.\+h}\end{DoxyCompactItemize}

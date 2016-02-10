@@ -1,0 +1,392 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_tx_mem_pool" kind="class" language="C++" prot="public">
+    <compoundname>CTxMemPool</compoundname>
+    <includes refid="txmempool_8h" local="no">txmempool.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_c_tx_mem_pool_1a230bbfe440e222787d8d94a1aaef73d4" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int CTxMemPool::nTransactionsUpdated</definition>
+        <argsstring></argsstring>
+        <name>nTransactionsUpdated</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="390" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.h" bodystart="390" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_tx_mem_pool_1a8d6a0aa6be28eb4933659ef8f428b06b" prot="private" static="no" mutable="no">
+        <type><ref refid="class_c_fee_rate" kindref="compound">CFeeRate</ref></type>
+        <definition>CFeeRate CTxMemPool::minRelayFee</definition>
+        <argsstring></argsstring>
+        <name>minRelayFee</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="391" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.h" bodystart="391" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_c_tx_mem_pool_1ac7ee8c06837c7d2688e2d7e3d071bdbb" prot="public" static="no" mutable="yes">
+        <type><ref refid="sync_8h_1a37a4692b2d517f2843655ca11af7668a" kindref="member">CCriticalSection</ref></type>
+        <definition>CCriticalSection CTxMemPool::cs</definition>
+        <argsstring></argsstring>
+        <name>cs</name>
+        <briefdescription>
+<para>Passed to constructor to avoid dependency on main. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="394" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.h" bodystart="394" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_tx_mem_pool_1a340d4a897e521b7021e6b22cce951beb" prot="public" static="no" mutable="no">
+        <type>std::map&lt; <ref refid="classuint256" kindref="compound">uint256</ref>, <ref refid="class_c_transaction" kindref="compound">CTransaction</ref> &gt;</type>
+        <definition>std::map&lt;uint256, CTransaction&gt; CTxMemPool::mapTx</definition>
+        <argsstring></argsstring>
+        <name>mapTx</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="395" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.h" bodystart="395" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_tx_mem_pool_1aae6f1162f0b2e42b369971f32a9f71e8" prot="public" static="no" mutable="no">
+        <type>std::map&lt; <ref refid="class_c_out_point" kindref="compound">COutPoint</ref>, <ref refid="class_c_in_point" kindref="compound">CInPoint</ref> &gt;</type>
+        <definition>std::map&lt;COutPoint, CInPoint&gt; CTxMemPool::mapNextTx</definition>
+        <argsstring></argsstring>
+        <name>mapNextTx</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="396" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.h" bodystart="396" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_tx_mem_pool_1a435be1fdb4567cd7dd981a49cf633c99" prot="public" static="no" mutable="no">
+        <type><ref refid="class_c_miner_policy_estimator" kindref="compound">CMinerPolicyEstimator</ref> *</type>
+        <definition>CMinerPolicyEstimator* CTxMemPool::minerPolicyEstimator</definition>
+        <argsstring></argsstring>
+        <name>minerPolicyEstimator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="397" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.h" bodystart="397" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_tx_mem_pool_1a1752e79ce537972fe87e252b9d07d2e0" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CTxMemPool::fSanityCheck</definition>
+        <argsstring></argsstring>
+        <name>fSanityCheck</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="403" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.h" bodystart="403" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_tx_mem_pool_1a82147548cfa962975690d1926b717c1c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CTxMemPool::CTxMemPool</definition>
+        <argsstring>(const CFeeRate &amp;_minRelayFee)</argsstring>
+        <name>CTxMemPool</name>
+        <param>
+          <type>const <ref refid="class_c_fee_rate" kindref="compound">CFeeRate</ref> &amp;</type>
+          <declname>_minRelayFee</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="400" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.cpp" bodystart="11" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_mem_pool_1a038108efea0c4312e5bed2ce064702b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CTxMemPool::~CTxMemPool</definition>
+        <argsstring>()</argsstring>
+        <name>~CTxMemPool</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="401" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.cpp" bodystart="28" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_mem_pool_1a1203ac5cf3bdb88af4922705afad555d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxMemPool::addUnchecked</definition>
+        <argsstring>(const uint256 &amp;hash, CTransaction &amp;tx)</argsstring>
+        <name>addUnchecked</name>
+        <param>
+          <type>const <ref refid="classuint256" kindref="compound">uint256</ref> &amp;</type>
+          <declname>hash</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_transaction" kindref="compound">CTransaction</ref> &amp;</type>
+          <declname>tx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="404" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.cpp" bodystart="45" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_mem_pool_1a258e23e3a434045d522a8cebc5a039ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxMemPool::remove</definition>
+        <argsstring>(const CTransaction &amp;tx, bool fRecursive=false)</argsstring>
+        <name>remove</name>
+        <param>
+          <type>const <ref refid="class_c_transaction" kindref="compound">CTransaction</ref> &amp;</type>
+          <declname>tx</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fRecursive</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="405" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.cpp" bodystart="60" bodyend="82"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_mem_pool_1ab6f7c0b3ddb8383767d97d22103ffd9b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxMemPool::removeConflicts</definition>
+        <argsstring>(const CTransaction &amp;tx)</argsstring>
+        <name>removeConflicts</name>
+        <param>
+          <type>const <ref refid="class_c_transaction" kindref="compound">CTransaction</ref> &amp;</type>
+          <declname>tx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="406" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.cpp" bodystart="84" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_mem_pool_1a6dba6bce4139392751321438a29b6b09" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CTxMemPool::clear</definition>
+        <argsstring>()</argsstring>
+        <name>clear</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="407" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.cpp" bodystart="99" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_mem_pool_1a42fa7d41a45562d02e356f2e7708bb02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CTxMemPool::queryHashes</definition>
+        <argsstring>(std::vector&lt; uint256 &gt; &amp;vtxid)</argsstring>
+        <name>queryHashes</name>
+        <param>
+          <type>std::vector&lt; <ref refid="classuint256" kindref="compound">uint256</ref> &gt; &amp;</type>
+          <declname>vtxid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="408" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.cpp" bodystart="107" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_mem_pool_1a26a5bdb66c9b84f73d1d30fea8e31cc9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned int</type>
+        <definition>unsigned int CTxMemPool::GetTransactionsUpdated</definition>
+        <argsstring>() const </argsstring>
+        <name>GetTransactionsUpdated</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="409" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.cpp" bodystart="33" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_mem_pool_1a3039b67e5eebaa3ff830261c192816f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CTxMemPool::AddTransactionsUpdated</definition>
+        <argsstring>(unsigned int n)</argsstring>
+        <name>AddTransactionsUpdated</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="410" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.cpp" bodystart="39" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_mem_pool_1a0dbbcb6a3b7e1a6c564410668c12cd4f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxMemPool::ReadFeeEstimates</definition>
+        <argsstring>(CAutoFile &amp;filein)</argsstring>
+        <name>ReadFeeEstimates</name>
+        <param>
+          <type><ref refid="class_c_auto_file" kindref="compound">CAutoFile</ref> &amp;</type>
+          <declname>filein</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="411" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.cpp" bodystart="141" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_mem_pool_1a0a05d7b50b9c2a387182402e60475da6" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxMemPool::WriteFeeEstimates</definition>
+        <argsstring>(CAutoFile &amp;fileout) const </argsstring>
+        <name>WriteFeeEstimates</name>
+        <param>
+          <type><ref refid="class_c_auto_file" kindref="compound">CAutoFile</ref> &amp;</type>
+          <declname>fileout</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="412" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.cpp" bodystart="126" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_mem_pool_1a0d3646e13e7fce3b1df3dd30b02e3396" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>unsigned long</type>
+        <definition>unsigned long CTxMemPool::size</definition>
+        <argsstring>() const </argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="414" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.h" bodystart="414" bodyend="418"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_mem_pool_1a93b2aa8c01fa291d183a82a9e0beeb35" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxMemPool::exists</definition>
+        <argsstring>(uint256 hash) const </argsstring>
+        <name>exists</name>
+        <param>
+          <type><ref refid="classuint256" kindref="compound">uint256</ref></type>
+          <declname>hash</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="420" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.h" bodystart="420" bodyend="424"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_mem_pool_1a8c19232d17e668c6690721b0f5088960" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxMemPool::lookup</definition>
+        <argsstring>(uint256 hash, CTransaction &amp;result) const </argsstring>
+        <name>lookup</name>
+        <param>
+          <type><ref refid="classuint256" kindref="compound">uint256</ref></type>
+          <declname>hash</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_transaction" kindref="compound">CTransaction</ref> &amp;</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="426" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.cpp" bodystart="117" bodyend="124"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="969">
+        <label>CMinerPolicyEstimator</label>
+        <link refid="class_c_miner_policy_estimator"/>
+      </node>
+      <node id="971">
+        <label>boost::recursive_mutex</label>
+      </node>
+      <node id="970">
+        <label>AnnotatedMixin&lt; boost::recursive_mutex &gt;</label>
+        <link refid="class_annotated_mixin"/>
+        <childnode refid="971" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="968">
+        <label>CTxMemPool</label>
+        <link refid="class_c_tx_mem_pool"/>
+        <childnode refid="969" relation="usage">
+          <edgelabel>minerPolicyEstimator</edgelabel>
+        </childnode>
+        <childnode refid="970" relation="usage">
+          <edgelabel>cs</edgelabel>
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/dev/ds-160209/src/txmempool.h" line="388" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.h" bodystart="387" bodyend="427"/>
+    <listofallmembers>
+      <member refid="class_c_tx_mem_pool_1a3039b67e5eebaa3ff830261c192816f2" prot="public" virt="non-virtual"><scope>CTxMemPool</scope><name>AddTransactionsUpdated</name></member>
+      <member refid="class_c_tx_mem_pool_1a1203ac5cf3bdb88af4922705afad555d" prot="public" virt="non-virtual"><scope>CTxMemPool</scope><name>addUnchecked</name></member>
+      <member refid="class_c_tx_mem_pool_1a6dba6bce4139392751321438a29b6b09" prot="public" virt="non-virtual"><scope>CTxMemPool</scope><name>clear</name></member>
+      <member refid="class_c_tx_mem_pool_1ac7ee8c06837c7d2688e2d7e3d071bdbb" prot="public" virt="non-virtual"><scope>CTxMemPool</scope><name>cs</name></member>
+      <member refid="class_c_tx_mem_pool_1a82147548cfa962975690d1926b717c1c" prot="public" virt="non-virtual"><scope>CTxMemPool</scope><name>CTxMemPool</name></member>
+      <member refid="class_c_tx_mem_pool_1a93b2aa8c01fa291d183a82a9e0beeb35" prot="public" virt="non-virtual"><scope>CTxMemPool</scope><name>exists</name></member>
+      <member refid="class_c_tx_mem_pool_1a1752e79ce537972fe87e252b9d07d2e0" prot="public" virt="non-virtual"><scope>CTxMemPool</scope><name>fSanityCheck</name></member>
+      <member refid="class_c_tx_mem_pool_1a26a5bdb66c9b84f73d1d30fea8e31cc9" prot="public" virt="non-virtual"><scope>CTxMemPool</scope><name>GetTransactionsUpdated</name></member>
+      <member refid="class_c_tx_mem_pool_1a8c19232d17e668c6690721b0f5088960" prot="public" virt="non-virtual"><scope>CTxMemPool</scope><name>lookup</name></member>
+      <member refid="class_c_tx_mem_pool_1aae6f1162f0b2e42b369971f32a9f71e8" prot="public" virt="non-virtual"><scope>CTxMemPool</scope><name>mapNextTx</name></member>
+      <member refid="class_c_tx_mem_pool_1a340d4a897e521b7021e6b22cce951beb" prot="public" virt="non-virtual"><scope>CTxMemPool</scope><name>mapTx</name></member>
+      <member refid="class_c_tx_mem_pool_1a435be1fdb4567cd7dd981a49cf633c99" prot="public" virt="non-virtual"><scope>CTxMemPool</scope><name>minerPolicyEstimator</name></member>
+      <member refid="class_c_tx_mem_pool_1a8d6a0aa6be28eb4933659ef8f428b06b" prot="private" virt="non-virtual"><scope>CTxMemPool</scope><name>minRelayFee</name></member>
+      <member refid="class_c_tx_mem_pool_1a230bbfe440e222787d8d94a1aaef73d4" prot="private" virt="non-virtual"><scope>CTxMemPool</scope><name>nTransactionsUpdated</name></member>
+      <member refid="class_c_tx_mem_pool_1a42fa7d41a45562d02e356f2e7708bb02" prot="public" virt="non-virtual"><scope>CTxMemPool</scope><name>queryHashes</name></member>
+      <member refid="class_c_tx_mem_pool_1a0dbbcb6a3b7e1a6c564410668c12cd4f" prot="public" virt="non-virtual"><scope>CTxMemPool</scope><name>ReadFeeEstimates</name></member>
+      <member refid="class_c_tx_mem_pool_1a258e23e3a434045d522a8cebc5a039ce" prot="public" virt="non-virtual"><scope>CTxMemPool</scope><name>remove</name></member>
+      <member refid="class_c_tx_mem_pool_1ab6f7c0b3ddb8383767d97d22103ffd9b" prot="public" virt="non-virtual"><scope>CTxMemPool</scope><name>removeConflicts</name></member>
+      <member refid="class_c_tx_mem_pool_1a0d3646e13e7fce3b1df3dd30b02e3396" prot="public" virt="non-virtual"><scope>CTxMemPool</scope><name>size</name></member>
+      <member refid="class_c_tx_mem_pool_1a0a05d7b50b9c2a387182402e60475da6" prot="public" virt="non-virtual"><scope>CTxMemPool</scope><name>WriteFeeEstimates</name></member>
+      <member refid="class_c_tx_mem_pool_1a038108efea0c4312e5bed2ce064702b2" prot="public" virt="non-virtual"><scope>CTxMemPool</scope><name>~CTxMemPool</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

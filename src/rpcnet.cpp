@@ -12,6 +12,7 @@
 #include "sync.h"
 #include "timedata.h"
 #include "util.h"
+#include "key.h"
 
 #include <boost/foreach.hpp>
 #include "json/json_spirit_value.h"

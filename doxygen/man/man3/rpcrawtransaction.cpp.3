@@ -1,0 +1,101 @@
+.TH "/home/dev/ds-160209/src/rpcrawtransaction.cpp" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/rpcrawtransaction.cpp \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <boost/assign/list_of\&.hpp>\fP
+.br
+\fC#include 'primitives/transaction\&.h'\fP
+.br
+\fC#include 'base58\&.h'\fP
+.br
+\fC#include 'rpcserver\&.h'\fP
+.br
+\fC#include 'txdb\&.h'\fP
+.br
+\fC#include 'init\&.h'\fP
+.br
+\fC#include 'main\&.h'\fP
+.br
+\fC#include 'net\&.h'\fP
+.br
+\fC#include 'keystore\&.h'\fP
+.br
+\fC#include 'txdb-leveldb\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBScriptPubKeyToJSON\fP (const \fBCScript\fP &scriptPubKey, \fBObject\fP &out, bool fIncludeHex)"
+.br
+.ti -1c
+.RI "void \fBTxToJSON\fP (const \fBCTransaction\fP &tx, const \fBuint256\fP hashBlock, \fBObject\fP &entry)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBgetrawtransaction\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBcreaterawtransaction\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBdecoderawtransaction\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBdecodescript\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBsignrawtransaction\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBsendrawtransaction\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBsearchrawtransactions\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "\fBValue\fP createrawtransaction (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 236 of file rpcrawtransaction\&.cpp\&.
+.SS "\fBValue\fP decoderawtransaction (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 301 of file rpcrawtransaction\&.cpp\&.
+.SS "\fBValue\fP decodescript (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 326 of file rpcrawtransaction\&.cpp\&.
+.SS "\fBValue\fP getrawtransaction (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 111 of file rpcrawtransaction\&.cpp\&.
+.SS "void ScriptPubKeyToJSON (const \fBCScript\fP & scriptPubKey, \fBObject\fP & out, bool fIncludeHex)"
+
+.PP
+Definition at line 27 of file rpcrawtransaction\&.cpp\&.
+.SS "\fBValue\fP searchrawtransactions (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 605 of file rpcrawtransaction\&.cpp\&.
+.SS "\fBValue\fP sendrawtransaction (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 558 of file rpcrawtransaction\&.cpp\&.
+.SS "\fBValue\fP signrawtransaction (const \fBArray\fP & params, bool fHelp)"
+TODO (AA): put back but need txTo for SignSignature 
+.PP
+Definition at line 349 of file rpcrawtransaction\&.cpp\&.
+.SS "void TxToJSON (const \fBCTransaction\fP & tx, const \fBuint256\fP hashBlock, \fBObject\fP & entry)"
+
+.PP
+Definition at line 53 of file rpcrawtransaction\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

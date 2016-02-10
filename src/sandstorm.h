@@ -5,20 +5,15 @@
 #ifndef SANDSTORM_H
 #define SANDSTORM_H
 
-#include "main.h"
 #include "sync.h"
 #include "activestormnode.h"
 #include "stormnodeman.h"
-#include "sandstorm-relay.h"
 
 class CTxIn;
 class CSandstormPool;
 class CSandStormSigner;
-class CStormNodeVote;
-class CDarkSilkAddress;
 class CSandstormQueue;
 class CSandstormBroadcastTx;
-class CActiveStormnode;
 
 static const int64_t DENOMS_COUNT_MAX = 100;
 

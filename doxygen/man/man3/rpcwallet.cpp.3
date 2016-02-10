@@ -1,0 +1,453 @@
+.TH "/home/dev/ds-160209/src/rpcwallet.cpp" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/rpcwallet.cpp \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'base58\&.h'\fP
+.br
+\fC#include 'rpcserver\&.h'\fP
+.br
+\fC#include 'init\&.h'\fP
+.br
+\fC#include 'net\&.h'\fP
+.br
+\fC#include 'netbase\&.h'\fP
+.br
+\fC#include 'timedata\&.h'\fP
+.br
+\fC#include 'util\&.h'\fP
+.br
+\fC#include 'wallet\&.h'\fP
+.br
+\fC#include 'walletdb\&.h'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBtallyitem\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBTxToJSON\fP (const \fBCTransaction\fP &tx, const \fBuint256\fP hashBlock, \fBjson_spirit::Object\fP &entry)"
+.br
+.ti -1c
+.RI "std::string \fBHelpRequiringPassphrase\fP ()"
+.br
+.ti -1c
+.RI "void \fBEnsureWalletIsUnlocked\fP ()"
+.br
+.ti -1c
+.RI "void \fBWalletTxToJSON\fP (const \fBCWalletTx\fP &wtx, \fBObject\fP &entry)"
+.br
+.ti -1c
+.RI "string \fBAccountFromValue\fP (const \fBValue\fP &\fBvalue\fP)"
+.br
+.ti -1c
+.RI "\fBCScript\fP \fB_createmultisig\fP (const \fBArray\fP &params)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBcreatemultisig\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBgetnewpubkey\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBgetnewaddress\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBCDarkSilkAddress\fP \fBGetAccountAddress\fP (string strAccount, bool bForceNew=false)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBgetaccountaddress\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBsetaccount\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBgetaccount\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBgetaddressesbyaccount\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "void \fBSendMoney\fP (const \fBCTxDestination\fP &address, \fBCAmount\fP nValue, \fBCWalletTx\fP &wtxNew, bool fUseIX=false, bool fUseSS=false)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBsendtoaddress\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBlistaddressgroupings\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBsignmessage\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBgetreceivedbyaddress\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "void \fBGetAccountAddresses\fP (string strAccount, set< \fBCTxDestination\fP > &setAddress)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBgetreceivedbyaccount\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetAccountBalance\fP (\fBCWalletDB\fP &walletdb, const string &strAccount, int nMinDepth, const \fBisminefilter\fP &filter)"
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetAccountBalance\fP (const string &strAccount, int nMinDepth, const \fBisminefilter\fP &filter)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBgetbalance\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBmovecmd\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBsendfrom\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBsendmany\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBCScript\fP \fB_createmultisig_redeemScript\fP (const \fBArray\fP &params)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBaddmultisigaddress\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBaddredeemscript\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBListReceived\fP (const \fBArray\fP &params, bool fByAccounts)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBlistreceivedbyaddress\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBlistreceivedbyaccount\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "void \fBListTransactions\fP (const \fBCWalletTx\fP &wtx, const string &strAccount, int nMinDepth, bool fLong, \fBArray\fP &ret, const \fBisminefilter\fP &filter)"
+.br
+.ti -1c
+.RI "void \fBAcentryToJSON\fP (const \fBCAccountingEntry\fP &acentry, const string &strAccount, \fBArray\fP &ret)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBlisttransactions\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBlistaccounts\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBlistsinceblock\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBgettransaction\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBbackupwallet\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBkeypoolrefill\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBwalletpassphrase\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBwalletpassphrasechange\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBwalletlock\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBencryptwallet\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBreservebalance\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBcheckwallet\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBrepairwallet\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBresendtx\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBmakekeypair\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBsettxfee\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBgetnewstealthaddress\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBliststealthaddresses\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBimportstealthaddress\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBsendtostealthaddress\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBscanforalltxns\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.ti -1c
+.RI "\fBValue\fP \fBscanforstealthtxns\fP (const \fBArray\fP &params, bool fHelp)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "\fBint64_t\fP \fBnWalletUnlockTime\fP"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "\fBCScript\fP _createmultisig (const \fBArray\fP & params)"
+
+.PP
+Definition at line 89 of file rpcwallet\&.cpp\&.
+.SS "\fBCScript\fP _createmultisig_redeemScript (const \fBArray\fP & params)"
+
+.SS "string AccountFromValue (const \fBValue\fP & value)"
+
+.PP
+Definition at line 78 of file rpcwallet\&.cpp\&.
+.SS "void AcentryToJSON (const \fBCAccountingEntry\fP & acentry, const string & strAccount, \fBArray\fP & ret)"
+
+.PP
+Definition at line 1501 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP addmultisigaddress (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 1091 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP addredeemscript (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 1182 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP backupwallet (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 1909 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP checkwallet (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 2203 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP createmultisig (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 144 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP encryptwallet (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 2110 of file rpcwallet\&.cpp\&.
+.SS "void EnsureWalletIsUnlocked ()"
+
+.PP
+Definition at line 44 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP getaccount (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 362 of file rpcwallet\&.cpp\&.
+.SS "\fBCDarkSilkAddress\fP GetAccountAddress (string strAccount, bool bForceNew = \fCfalse\fP)"
+
+.PP
+Definition at line 253 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP getaccountaddress (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 291 of file rpcwallet\&.cpp\&.
+.SS "void GetAccountAddresses (string strAccount, set< \fBCTxDestination\fP > & setAddress)"
+
+.PP
+Definition at line 680 of file rpcwallet\&.cpp\&.
+.SS "\fBCAmount\fP GetAccountBalance (\fBCWalletDB\fP & walletdb, const string & strAccount, int nMinDepth, const \fBisminefilter\fP & filter)"
+
+.PP
+Definition at line 745 of file rpcwallet\&.cpp\&.
+.SS "\fBCAmount\fP GetAccountBalance (const string & strAccount, int nMinDepth, const \fBisminefilter\fP & filter)"
+
+.PP
+Definition at line 770 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP getaddressesbyaccount (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 389 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP getbalance (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 776 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP getnewaddress (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 214 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP getnewpubkey (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 187 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP getnewstealthaddress (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 2306 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP getreceivedbyaccount (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 691 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP getreceivedbyaddress (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 626 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP gettransaction (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 1808 of file rpcwallet\&.cpp\&.
+.SS "std::string HelpRequiringPassphrase ()"
+
+.PP
+Definition at line 37 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP importstealthaddress (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 2383 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP keypoolrefill (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 1930 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP listaccounts (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 1632 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP listaddressgroupings (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 528 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP ListReceived (const \fBArray\fP & params, bool fByAccounts)"
+
+.PP
+Definition at line 1223 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP listreceivedbyaccount (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 1384 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP listreceivedbyaddress (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 1350 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP listsinceblock (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 1709 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP liststealthaddresses (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 2331 of file rpcwallet\&.cpp\&.
+.SS "void ListTransactions (const \fBCWalletTx\fP & wtx, const string & strAccount, int nMinDepth, bool fLong, \fBArray\fP & ret, const \fBisminefilter\fP & filter)"
+
+.PP
+Definition at line 1423 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP listtransactions (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 1518 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP makekeypair (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 2262 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP movecmd (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 854 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP repairwallet (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 2226 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP resendtx (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 2248 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP reservebalance (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 2164 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP scanforalltxns (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 2538 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP scanforstealthtxns (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 2580 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP sendfrom (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 922 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP sendmany (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 992 of file rpcwallet\&.cpp\&.
+.SS "void SendMoney (const \fBCTxDestination\fP & address, \fBCAmount\fP nValue, \fBCWalletTx\fP & wtxNew, bool fUseIX = \fCfalse\fP, bool fUseSS = \fCfalse\fP)"
+
+.PP
+Definition at line 421 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP sendtoaddress (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 456 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP sendtostealthaddress (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 2490 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP setaccount (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 320 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP settxfee (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 2284 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP signmessage (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 575 of file rpcwallet\&.cpp\&.
+.SS "void TxToJSON (const \fBCTransaction\fP & tx, const \fBuint256\fP hashBlock, \fBjson_spirit::Object\fP & entry)"
+
+.PP
+Definition at line 53 of file rpcrawtransaction\&.cpp\&.
+.SS "\fBValue\fP walletlock (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 2076 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP walletpassphrase (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 1969 of file rpcwallet\&.cpp\&.
+.SS "\fBValue\fP walletpassphrasechange (const \fBArray\fP & params, bool fHelp)"
+
+.PP
+Definition at line 2035 of file rpcwallet\&.cpp\&.
+.SS "void WalletTxToJSON (const \fBCWalletTx\fP & wtx, \fBObject\fP & entry)"
+
+.PP
+Definition at line 52 of file rpcwallet\&.cpp\&.
+.SH "Variable Documentation"
+.PP 
+.SS "\fBint64_t\fP nWalletUnlockTime"
+
+.PP
+Definition at line 20 of file rpcwallet\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.
