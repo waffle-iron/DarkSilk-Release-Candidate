@@ -16,7 +16,6 @@
 #include <boost/variant.hpp>
 
 #include "pubkey.h"
-#include "key.h"
 #include "bignum.h"
 #include "util.h"
 #include "stealth.h"
