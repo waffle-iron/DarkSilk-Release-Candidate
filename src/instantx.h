@@ -5,13 +5,7 @@
 #ifndef INSTANTX_H
 #define INSTANTX_H
 
-#include "sync.h"
-#include "net.h"
-#include "key.h"
-#include "util.h"
-#include "base58.h"
-#include "main.h"
-#include "spork.h"
+#include "primitives/transaction.h"
 
 /*
     At 15 signatures, 1/2 of the stormnode network can be owned by
@@ -29,7 +23,6 @@ using namespace std;
 using namespace boost;
 
 class CConsensusVote;
-class CTransaction;
 class CTransactionLock;
 
 extern map<uint256, CTransaction> mapTxLockReq;
@@ -47,6 +40,7 @@ bool IsIXTXValid(const CTransaction& txCollateral);
 // if two conflicting locks are approved by the network, they will cancel out
 bool CheckForConflictingLocks(CTransaction& tx);
 
+class CNode;
 void ProcessMessageInstantX(CNode* pfrom, std::string& strCommand, CDataStream& vRecv);
 
 //check if we need to vote on this transaction

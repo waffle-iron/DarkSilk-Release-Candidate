@@ -14,6 +14,7 @@
 #include "wallet.h"
 #include "init.h"
 #include "rpcserver.h"
+#include "sandstorm.h"
 
 #include <boost/lexical_cast.hpp>
 #include <fstream>

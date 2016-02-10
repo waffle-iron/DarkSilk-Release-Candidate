@@ -6,7 +6,6 @@
 
 #include "chainparams.h"
 #include "main.h"
-#include "util.h"
 #include "chainparamsseeds.h"
 
 #include "assert.h"

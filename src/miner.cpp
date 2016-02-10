@@ -4,14 +4,10 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-
-#include "primitives/block.h"
-#include "primitives/transaction.h"
-#include "txdb.h"
-#include "main.h"
 #include "miner.h"
+#include "primitives/block.h"
+#include "txdb.h"
 #include "kernel.h"
-#include "wallet.h"
 #include "stormnodeman.h"
 #include "stormnode-payments.h"
 #include "spork.h"

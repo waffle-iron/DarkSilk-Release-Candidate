@@ -6,14 +6,9 @@
 #ifndef DARKSILK_MAIN_H
 #define DARKSILK_MAIN_H
 
-#include "bignum.h"
-#include "sync.h"
 #include "txmempool.h"
-#include "primitives/transaction.h"
-#include "primitives/block.h"
 #include "net.h"
 #include "script.h"
-#include "scrypt.h"
 #include "streams.h"
 #include "txdb.h"
 #include "chain.h"
@@ -23,16 +18,8 @@
 #include <boost/unordered_map.hpp>
 
 class CValidationState;
-class CBlock;
-class CBlockIndex;
-class CInv;
-class CKeyItem;
-class CNode;
-class CReserveKey;
 class CWallet;
 class CTxMemPool;
-
-struct CNodeStateStats;
 
 /// Fees smaller than this (in satoshi) are considered zero fee (for transaction creation)
 static const double MIN_FEE = 0.00001; // Minimum Transaction Fee of 0.00001 DRKSLK 
@@ -143,13 +130,16 @@ extern CFeeRate minRelayTxFee;
 // Minimum disk space required - used in CheckDiskSpace()
 static const uint64_t nMinDiskSpace = 52428800;
 
-class CReserveKey;
 class CTxDB;
 class CTxIndex;
 class CWalletInterface;
-struct CMutableTransaction;
 
-
+struct CNodeStateStats {
+    int nMisbehavior;
+    int nSyncHeight;
+    int nCommonHeight;
+    std::vector<int> vHeightInFlight;
+};
 
 /** Get statistics from node state */
 bool GetNodeStateStats(NodeId nodeid, CNodeStateStats &stats);
@@ -221,7 +211,7 @@ int GetIXConfirmations(uint256 nTXHash);
 bool DisconnectBlocksAndReprocess(int blocks);
 //void static FlushBlockFile(bool fFinalize = false);
 void FlushStateToDisk();
-struct CDiskBlockPos;
+
 boost::filesystem::path GetBlockPosFilename(const CDiskBlockPos &pos, const char *prefix);
 FILE* OpenBlockFile(unsigned int nFile, unsigned int nBlockPos, const char* pszMode);
 FILE* OpenBlockFile(const CDiskBlockPos &pos, bool fReadOnly = false); //TODO (Amir): Is is okay to use without nFile?
@@ -229,12 +219,7 @@ FILE* OpenDiskFile(const CDiskBlockPos &pos, const char *prefix, bool fReadOnly 
 FILE* AppendBlockFile(unsigned int& nFileRet);
 FILE* OpenUndoFile(const CDiskBlockPos &pos, bool fReadOnly = false);
 
-struct CNodeStateStats {
-    int nMisbehavior;
-    int nSyncHeight;
-    int nCommonHeight;
-    std::vector<int> vHeightInFlight;
-};
+
 
 /// Position on disk for a particular transaction.
 class CDiskTxPos
@@ -569,8 +554,6 @@ public:
     unsigned char GetRejectCode() const { return chRejectCode; }
     std::string GetRejectReason() const { return strRejectReason; }
 };
-
-class CBlockLocator;
 
 class CWalletInterface {
 protected:

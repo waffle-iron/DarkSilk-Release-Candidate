@@ -1,6 +1,7 @@
 // Copyright (c) 2014-2016 The Dash Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #include "addrman.h"
 #include "protocol.h"
 #include "activestormnode.h"
@@ -8,6 +9,7 @@
 #include "stormnodeconfig.h"
 #include "stormnodeman.h"
 #include "spork.h"
+#include "init.h"
 
 //
 // Bootup the Stormnode, look for a 10,000 DRKSLK input and register on the network

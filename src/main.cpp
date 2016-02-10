@@ -9,15 +9,14 @@
 #include <boost/filesystem/fstream.hpp>
 #include <boost/lexical_cast.hpp>
 
+#include "main.h"
 #include "alert.h"
 #include "chainparams.h"
 #include "checkpoints.h"
 #include "db.h"
 #include "init.h"
 #include "kernel.h"
-#include "net.h"
 #include "txdb.h"
-#include "txmempool.h"
 #include "ui_interface.h"
 #include "instantx.h"
 #include "sandstorm.h"
@@ -869,7 +868,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState &state, CTransaction 
     if (pfMissingInputs)
         *pfMissingInputs = false;
 
-    if (!tx.CheckTransaction(tx, state))
+    if (!tx.CheckTransaction(state))
         return error("AcceptToMemoryPool : CheckTransaction failed");
 
     // Coinbase is only valid in a block, not as a loose transaction
@@ -1233,7 +1232,7 @@ bool AcceptableInputs(CTxMemPool& pool, CValidationState &state, CTransaction &t
 {
     AssertLockHeld(cs_main);
 
-    if (!tx.CheckTransaction(tx, state))
+    if (!tx.CheckTransaction(state))
         return error("AcceptableInputs : CheckTransaction failed");
 
     // Coinbase is only valid in a block, not as a loose transaction

@@ -7,12 +7,8 @@
 #define ACTIVESTORMNODE_H
 
 #include "sync.h"
-#include "net.h"
 #include "key.h"
-#include "init.h"
 #include "wallet.h"
-#include "sandstorm.h"
-#include "stormnode.h"
 
 static const int  ACTIVE_STORMNODE_INITIAL = 0; // initial state
 static const int  ACTIVE_STORMNODE_SYNC_IN_PROCESS = 1;

@@ -10,7 +10,6 @@
 #include "db.h"
 #include "net.h"
 #include "main.h"
-#include "addrman.h"
 #include "ui_interface.h"
 #include "sandstorm.h"
 #include "wallet.h"

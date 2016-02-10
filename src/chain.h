@@ -6,11 +6,8 @@
 #define DARKSILK_CHAIN_H
 
 #include "primitives/block.h"
-#include "tinyformat.h"
 #include "util.h"
 #include "chainparams.h"
-#include "kernel.h"
-#include "txdb-leveldb.h"
 
 #include <vector>
 #include <boost/foreach.hpp>
@@ -27,7 +24,6 @@ bool IsInitialBlockDownload();
 CBlockIndex* FindBlockByHeight(int nHeight);
 bool Reorganize(CTxDB& txdb, CBlockIndex* pindexNew);
 void InvalidChainFound(CBlockIndex* pindexNew);
-
 
 struct CDiskBlockPos
 {

@@ -11,6 +11,7 @@
 #include "sync.h"
 #include "addrman.h"
 #include <boost/lexical_cast.hpp>
+#include "init.h"
 
 // keep track of the scanning errors I've seen
 map<uint256, int> mapSeenStormnodeScanningErrors;

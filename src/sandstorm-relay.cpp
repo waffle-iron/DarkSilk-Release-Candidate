@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "sandstorm-relay.h"
-
+#include "sandstorm.h"
 
 CSandStormRelay::CSandStormRelay()
 {

@@ -6,14 +6,10 @@
 #define DARKSILK_KEY_H
 
 #include "allocators.h"
-#include "serialize.h"
-#include "uint256.h"
+#include "pubkey.h"
 
 #include <stdexcept>
 #include <vector>
-
-class CPubKey;
-class CExtPubKey;
 
 // secp256k1:
 // const unsigned int PRIVATE_KEY_SIZE = 279;

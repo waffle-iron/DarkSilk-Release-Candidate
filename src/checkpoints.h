@@ -6,10 +6,8 @@
 #define  DARKSILK_CHECKPOINT_H
 
 #include <map>
-#include "net.h"
-#include "util.h"
+#include "uint256.h"
 
-class uint256;
 class CBlockIndex;
 
 /** Block-chain checkpoints are compiled-in sanity checks.
