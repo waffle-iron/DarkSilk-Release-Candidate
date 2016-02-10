@@ -17,9 +17,7 @@
 #include "chainparams.h"
 #include "pubkey.h"
 #include "script.h"
-#include "bignum.h"
 #include "allocators.h"
-#include "util.h"
 
 #include <string>
 #include <vector>

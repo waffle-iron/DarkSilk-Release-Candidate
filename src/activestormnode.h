@@ -10,11 +10,6 @@
 #include "key.h"
 #include "wallet.h"
 
-//#include "sandstorm.h"
-//#include "stormnode.h"
-//#include "init.h"
-//#include "net.h"
-
 static const int  ACTIVE_STORMNODE_INITIAL = 0; // initial state
 static const int  ACTIVE_STORMNODE_SYNC_IN_PROCESS = 1;
 static const int  ACTIVE_STORMNODE_INPUT_TOO_NEW = 2;
