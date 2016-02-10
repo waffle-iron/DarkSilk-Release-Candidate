@@ -9,7 +9,6 @@
 
 #include "bignum.h"
 #include "uint256.h"
-#include "util.h"
 
 #include <vector>
 
