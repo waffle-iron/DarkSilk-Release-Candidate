@@ -23,7 +23,6 @@ using namespace std;
 using namespace boost;
 
 class CConsensusVote;
-class CTransaction;
 class CTransactionLock;
 
 extern map<uint256, CTransaction> mapTxLockReq;
