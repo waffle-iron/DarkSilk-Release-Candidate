@@ -632,7 +632,10 @@ void StartRPCThreads()
     for (int i = 0; i < GetArg("-rpcthreads", 4); i++)
     {
         rpc_worker_group->create_thread(boost::bind(&asio::io_service::run, rpc_io_service));
-        //RenameThread("darksilk-rpc");
+        const char* threadName = "darksilk-rpc";
+        stringstream ss;
+        ss << threadName << i + 1;
+        RenameThread(ss.str().c_str());
     }
 }
 
