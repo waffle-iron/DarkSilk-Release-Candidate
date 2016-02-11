@@ -6,6 +6,7 @@
 #define INSTANTX_H
 
 #include "primitives/transaction.h"
+#include "streams.h"
 
 /*
     At 15 signatures, 1/2 of the stormnode network can be owned by
