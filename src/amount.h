@@ -10,14 +10,15 @@
 
 #include <stdlib.h>
 #include <string>
-
+#include <limits>
+ 
 typedef int64_t CAmount;
 
 static const CAmount COIN = 100000000;
 static const CAmount CENT = 1000000;
 
 /// No amount larger than this (in DRKSLK) is valid
-static const CAmount MAX_MONEY = 90000000 * COIN;
+static const CAmount MAX_MONEY = std::numeric_limits<int64_t>::max();
 inline bool MoneyRange(const CAmount& nValue) { return (nValue >= 0 && nValue <= MAX_MONEY); }
 
 /// Type-safe wrapper class to for fee rates
