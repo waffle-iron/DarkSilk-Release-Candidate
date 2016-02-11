@@ -8,8 +8,6 @@
 
 #include "txmempool.h"
 #include "net.h"
-//#include "script.h"
-//#include "streams.h"
 #include "txdb.h"
 #include "chain.h"
 
