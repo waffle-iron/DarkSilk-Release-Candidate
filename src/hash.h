@@ -131,7 +131,7 @@ inline int Argon2d_Hash(void *out, size_t outlen, const void *in, size_t inlen, 
     context.t_cost = t_cost;
     context.m_cost = m_cost;
     context.lanes = 64;
-    context.threads = 1;
+    context.threads = 2;
     context.allocate_cbk = NULL;
     context.free_cbk = NULL;
     context.flags = ARGON2_DEFAULT_FLAGS;
@@ -141,7 +141,7 @@ inline int Argon2d_Hash(void *out, size_t outlen, const void *in, size_t inlen, 
 
 inline uint256 hashArgon2d(const void* input)
 {
-    unsigned int t_costs = 1;
+    unsigned int t_costs = 8;
     unsigned int m_costs = 1024;
     size_t inputlen = 80;
     uint256 result = 0;
