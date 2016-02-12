@@ -94,7 +94,7 @@ public:
         //printf("Gensis nBits: %08x\n", genesis.nBits);
         //printf("Gensis Nonce: %u\n\n", genesis.nNonce);
 
-        assert(hashGenesisBlock == uint256("0xb04b545c72f7ad073f937e761a144acd6a3fa7246388ce8c485c4ee60efa1b0b"));
+        assert(hashGenesisBlock == uint256("0xc22606c50d13f59b98220efa9822ff2b5ae48815dd702b796f21378b70d9c853"));
         assert(genesis.hashMerkleRoot == uint256("0x77a9ada8f10cd4fb7f05dadc582ec1880fcd2af4414ed664a07fb230a4da390d"));
 
         vSeeds.push_back(CDNSSeedData("darksilk.org", "ds1.darksilk.org"));
@@ -156,14 +156,14 @@ public:
         hashGenesisBlock = genesis.GetHash(); 
 
         //// debug print
-        //printf("hashGenesisBlock: %s\n", hashGenesisBlock.ToString().c_str());
-        //printf("Gensis Has: %s\n", genesis.GetHash().ToString().c_str());
-        //printf("Gensis Hash Merkle: %s\n", genesis.hashMerkleRoot.ToString().c_str());
-        //printf("Gensis nTime: %u\n", genesis.nTime);
-        //printf("Gensis nBits: %08x\n", genesis.nBits);
-        //printf("Gensis Nonce: %u\n\n\n", genesis.nNonce);
+        //printf("Test hashGenesisBlock: %s\n", hashGenesisBlock.ToString().c_str());
+        //printf("Test Gensis Has: %s\n", genesis.GetHash().ToString().c_str());
+        //printf("Test Gensis Hash Merkle: %s\n", genesis.hashMerkleRoot.ToString().c_str());
+        //printf("Test Gensis nTime: %u\n", genesis.nTime);
+        //printf("Test Gensis nBits: %08x\n", genesis.nBits);
+        //printf("Test Gensis Nonce: %u\n\n\n", genesis.nNonce);
 
-        assert(genesis.GetHash() == uint256("0x8225229859114bf646b83fb2f07966232c59d9d5785bd173b55362995858c06f"));
+        assert(genesis.GetHash() == uint256("0x236d17365d9336ab02561840c9b2828064c44316b5fdb7d35f2ce376545a8528"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
