@@ -15,6 +15,7 @@
 #include "pubkey.h"
 #include "ui_interface.h"
 #include "activestormnode.h"
+#include "sanity.h"
 #include "stormnode-budget.h"
 #include "stormnode-payments.h"
 #include "stormnodeman.h"
@@ -363,8 +364,8 @@ bool InitSanityCheck(void)
                   "information, visit https://en.darksilk.it/wiki/OpenSSL_and_EC_Libraries");
         return false;
     }
-
-    // TODO: remaining sanity checks, see #4081
+    if (!glibc_sanity_test() || !glibcxx_sanity_test())
+        return false;
 
     return true;
 }
