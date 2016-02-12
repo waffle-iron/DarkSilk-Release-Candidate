@@ -753,7 +753,7 @@ bool CBlock::CheckBlock(CValidationState& state, bool fCheckPOW, bool fCheckMerk
     }
 
     // Check transactions
-    BOOST_FOREACH(const CTransaction& tx, vtx){
+    BOOST_FOREACH(CTransaction& tx, vtx){
         if (!tx.CheckTransaction(state))
             return DoS(tx.nDoS, error("CheckBlock() : CheckTransaction failed"));
 
