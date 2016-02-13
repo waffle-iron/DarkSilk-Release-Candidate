@@ -1,6 +1,8 @@
 # **DarkSilk (DRKSLK) Release Candidate**
 
-(FOR TESTING PURPOSES ONLY)
+(Alpha Level)
+
+[![Code Climate](https://codeclimate.com/github/SCDeveloper/DarkSilk-Release-Candidate/badges/gpa.svg)](https://codeclimate.com/github/SCDeveloper/DarkSilk-Release-Candidate) [![Test Coverage](https://codeclimate.com/github/SCDeveloper/DarkSilk-Release-Candidate/badges/coverage.svg)](https://codeclimate.com/github/SCDeveloper/DarkSilk-Release-Candidate/coverage) [![Issue Count](https://codeclimate.com/github//SCDeveloper/DarkSilk-Release-Candidate/badges/issue_count.svg)](https://codeclimate.com/github/SCDeveloper/DarkSilk-Release-Candidate)
 
 DarkSilk Integration/Staging Tree
 ================================
