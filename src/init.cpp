@@ -1196,7 +1196,7 @@ bool AppInit2(boost::thread_group& threadGroup)
     fSandstormMultiSession = GetBoolArg("-sandstormmultisession", fSandstormMultiSession);
     nSandstormRounds = GetArg("-sandstormrounds", nSandstormRounds);
     nSandstormRounds = std::min(std::max(nSandstormRounds, 1), 99999);
-    nAnonymizeDarkSilkAmount = GetArg("-anonymizedashamount", nAnonymizeDarkSilkAmount);
+    nAnonymizeDarkSilkAmount = GetArg("-anonymizedarksilkamount", nAnonymizeDarkSilkAmount);
     nAnonymizeDarkSilkAmount = std::min(std::max(nAnonymizeDarkSilkAmount, 2), 999999);
 
     fEnableInstantX = GetBoolArg("-enableinstantx", fEnableInstantX);
