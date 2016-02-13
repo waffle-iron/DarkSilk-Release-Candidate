@@ -14,6 +14,7 @@
 #include "main.h"
 #include "net.h"
 #include "keystore.h"
+#include "script.h"
 #ifdef ENABLE_WALLET
 #include "wallet.h"
 #endif
@@ -23,6 +24,9 @@ using namespace std;
 using namespace boost;
 using namespace boost::assign;
 using namespace json_spirit;
+
+class CKeyStore;
+class CTransaction;
 
 void ScriptPubKeyToJSON(const CScript& scriptPubKey, Object& out, bool fIncludeHex)
 {
@@ -428,6 +432,8 @@ Value signrawtransaction(const Array& params, bool fHelp)
             if (!fGood)
                 throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid private key");
             CKey key = vchSecret.GetKey();
+            if (!key.IsValid())
+                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Private key outside allowed range");
             tempKeystore.AddKey(key);
         }
     }
@@ -449,10 +455,12 @@ Value signrawtransaction(const Array& params, bool fHelp)
 
             RPCTypeCheck(prevOut, map_list_of("txid", str_type)("vout", int_type)("scriptPubKey", str_type));
 
+            uint256 txid = ParseHashO(prevOut, "txid");
+
             string txidHex = find_value(prevOut, "txid").get_str();
             if (!IsHex(txidHex))
                 throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "txid must be hexadecimal");
-            uint256 txid;
+            
             txid.SetHex(txidHex);
 
             int nOut = find_value(prevOut, "vout").get_int();
@@ -495,7 +503,13 @@ Value signrawtransaction(const Array& params, bool fHelp)
             }
         }
     }
+#ifdef ENABLE_WALLET
+    const CKeyStore& keystore = ((fGivenKeys || !pwalletMain) ? tempKeystore : *pwalletMain);
+#else
+    const CKeyStore& keystore = tempKeystore;
+#endif
 
+    int nHashType = SIGHASH_ALL;    
     if (params.size() > 3 && params[3].type() != null_type)
     {
         static map<string, int> mapSigHashValues =
@@ -509,13 +523,12 @@ Value signrawtransaction(const Array& params, bool fHelp)
             ;
         string strHashType = params[3].get_str();
         if (mapSigHashValues.count(strHashType))
-        {
-            //int nHashType = SIGHASH_ALL;
-            mapSigHashValues[strHashType];
-        }
+            nHashType = mapSigHashValues[strHashType];
         else
             throw JSONRPCError(RPC_INVALID_PARAMETER, "Invalid sighash param");
     }
+
+    bool fHashSingle = ((nHashType & ~SIGHASH_ANYONECANPAY) == SIGHASH_SINGLE);
 
     // Sign what we can:
     for (unsigned int i = 0; i < mergedTx.vin.size(); i++)
@@ -530,11 +543,9 @@ Value signrawtransaction(const Array& params, bool fHelp)
 
         txin.scriptSig.clear();
         // Only sign SIGHASH_SINGLE if there's a corresponding output:
-
         ///TODO (AA): put back but need txTo for SignSignature
-        //bool fHashSingle = ((nHashType & ~SIGHASH_ANYONECANPAY) == SIGHASH_SINGLE);
-        //if (!fHashSingle || (i < mergedTx.vout.size()))
-        //    SignSignature(keystore, prevPubKey, mergedTx, i, nHashType);
+        if (!fHashSingle || (i < mergedTx.vout.size()))
+            SignSignature(keystore, prevPubKey, mergedTx, i, nHashType);
 
         // ... and merge in other signatures:
         BOOST_FOREACH(const CMutableTransaction& txv, txVariants)
