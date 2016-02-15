@@ -5,6 +5,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "base58.h"
+#include "clientversion.h"
 #include "init.h"
 #include "main.h"
 #include "net.h"
@@ -80,6 +81,48 @@ Value getinfo(const Array& params, bool fHelp)
     return obj;
 }
 
+Value snsync(const Array& params, bool fHelp)
+{
+    if (fHelp || params.size() != 1)
+        throw runtime_error(
+            "snsync [status|reset]\n"
+            "Returns the sync status or resets sync.\n"
+        );
+
+    std::string strMode = params[0].get_str();
+
+    if(strMode == "status") {
+        Object obj;
+
+        obj.push_back(Pair("IsBlockchainSynced", stormnodeSync.IsBlockchainSynced()));
+        obj.push_back(Pair("lastStormnodeList", stormnodeSync.lastStormnodeList));
+        obj.push_back(Pair("lastStormnodeWinner", stormnodeSync.lastStormnodeWinner));
+        obj.push_back(Pair("lastBudgetItem", stormnodeSync.lastBudgetItem));
+        obj.push_back(Pair("lastFailure", stormnodeSync.lastFailure));
+        obj.push_back(Pair("nCountFailures", stormnodeSync.nCountFailures));
+        obj.push_back(Pair("sumStormnodeList", stormnodeSync.sumStormnodeList));
+        obj.push_back(Pair("sumStormnodeWinner", stormnodeSync.sumStormnodeWinner));
+        obj.push_back(Pair("sumBudgetItemProp", stormnodeSync.sumBudgetItemProp));
+        obj.push_back(Pair("sumBudgetItemFin", stormnodeSync.sumBudgetItemFin));
+        obj.push_back(Pair("countStormnodeList", stormnodeSync.countStormnodeList));
+        obj.push_back(Pair("countStormnodeWinner", stormnodeSync.countStormnodeWinner));
+        obj.push_back(Pair("countBudgetItemProp", stormnodeSync.countBudgetItemProp));
+        obj.push_back(Pair("countBudgetItemFin", stormnodeSync.countBudgetItemFin));
+        obj.push_back(Pair("RequestedStormnodeAssets", stormnodeSync.RequestedStormnodeAssets));
+        obj.push_back(Pair("RequestedStormnodeAttempt", stormnodeSync.RequestedStormnodeAttempt));
+
+
+        return obj;
+    }
+
+    if(strMode == "reset")
+    {
+        stormnodeSync.Reset();
+        return "success";
+    }
+    return "failure";
+}
+
 #ifdef ENABLE_WALLET
 class DescribeAddressVisitor : public boost::static_visitor<Object>
 {
@@ -132,12 +175,73 @@ public:
 };
 #endif
 
+/*
+    Used for updating/reading spork settings on the network
+*/
+Value spork(const Array& params, bool fHelp)
+{
+    if(params.size() == 1 && params[0].get_str() == "show"){
+        Object ret;
+        for(int nSporkID = SPORK_START; nSporkID <= SPORK_END; nSporkID++){
+            if(sporkManager.GetSporkNameByID(nSporkID) != "Unknown")
+                ret.push_back(Pair(sporkManager.GetSporkNameByID(nSporkID), GetSporkValue(nSporkID)));
+        }
+        return ret;
+    } else if(params.size() == 1 && params[0].get_str() == "active"){
+        Object ret;
+        for(int nSporkID = SPORK_START; nSporkID <= SPORK_END; nSporkID++){
+            if(sporkManager.GetSporkNameByID(nSporkID) != "Unknown")
+                ret.push_back(Pair(sporkManager.GetSporkNameByID(nSporkID), IsSporkActive(nSporkID)));
+        }
+        return ret;
+    } else if (params.size() == 2){
+        int nSporkID = sporkManager.GetSporkIDByName(params[0].get_str());
+        if(nSporkID == -1){
+            return "Invalid spork name";
+        }
+
+        // SPORK VALUE
+        int64_t nValue = params[1].get_int();
+
+        //broadcast new spork
+        if(sporkManager.UpdateSpork(nSporkID, nValue)){
+            ExecuteSpork(nSporkID, nValue);
+            return "success";
+        } else {
+            return "failure";
+        }
+
+    }
+
+    throw runtime_error(
+        "spork <name> [<value>]\n"
+        "<name> is the corresponding spork name, or 'show' to show all current spork settings, active to show which sporks are active"
+        "<value> is a epoch datetime to enable or disable spork"
+        + HelpRequiringPassphrase());
+}
+
 Value validateaddress(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 1)
         throw runtime_error(
-            "validateaddress <darksilkaddress>\n"
-            "Return information about <darksilkaddress>.");
+            "validateaddress \"darksilkaddress\"\n"
+            "\nReturn information about the given DarkSilk address.\n"
+            "\nArguments:\n"
+            "1. \"darksilkaddress\"     (string, required) The DarkSilk address to validate\n"
+            "\nResult:\n"
+            "{\n"
+            "  \"isvalid\" : true|false,         (boolean) If the address is valid or not. If not, this is the only property returned.\n"
+            "  \"address\" : \"darksilkaddress\", (string) The DarkSilk address validated\n"
+            "  \"ismine\" : true|false,          (boolean) If the address is yours or not\n"
+            "  \"isscript\" : true|false,        (boolean) If the key is a script\n"
+            "  \"pubkey\" : \"publickeyhex\",    (string) The hex value of the raw public key\n"
+            "  \"iscompressed\" : true|false,    (boolean) If the address is compressed\n"
+            "  \"account\" : \"account\"         (string) The account associated with the address, \"\" is the default account\n"
+            "}\n"
+            "\nExamples:\n"
+            + HelpExampleCli("validateaddress", "\"DPSSGeFHDnKNxiEyFrD1wcEaHr9hrQDDWc\"")
+            + HelpExampleRpc("validateaddress", "\"DPSSGeFHDnKNxiEyFrD1wcEaHr9hrQDDWc\"")
+        );
 
     CDarkSilkAddress address(params[0].get_str());
     bool isValid = address.IsValid();
@@ -239,43 +343,3 @@ Value verifymessage(const Array& params, bool fHelp)
 
     return (pubkey.GetID() == keyID);
 }
-
-/*
-    Used for updating/reading spork settings on the network
-*/
-Value spork(const Array& params, bool fHelp)
-{
-    if(params.size() == 1 && params[0].get_str() == "show"){
-        std::map<int, CSporkMessage>::iterator it = mapSporksActive.begin();
-
-        Object ret;
-        while(it != mapSporksActive.end()) {
-            ret.push_back(Pair(sporkManager.GetSporkNameByID(it->second.nSporkID), it->second.nValue));
-            it++;
-        }
-        return ret;
-    } else if (params.size() == 2){
-        int nSporkID = sporkManager.GetSporkIDByName(params[0].get_str());
-        if(nSporkID == -1){
-            return "Invalid spork name";
-        }
-
-        // SPORK VALUE
-        int64_t nValue = params[1].get_int();
-
-        //broadcast new spork
-        if(sporkManager.UpdateSpork(nSporkID, nValue)){
-            return "success";
-        } else {
-            return "failure";
-        }
-
-    }
-
-    throw runtime_error(
-        "spork <name> [<value>]\n"
-        "<name> is the corresponding spork name, or 'show' to show all current spork settings"
-        "<value> is a epoch datetime to enable or disable spork"
-        + HelpRequiringPassphrase());
-}
-
