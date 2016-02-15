@@ -385,6 +385,7 @@ class CCoinsViewCache;
 class CTxMemPool
 {
 private:
+    bool fSanityCheck;
     unsigned int nTransactionsUpdated;
     CFeeRate minRelayFee; //! Passed to constructor to avoid dependency on main
 
@@ -401,8 +402,6 @@ public:
     CTxMemPool(const CFeeRate& _minRelayFee);
     ~CTxMemPool();
 
-    bool fSanityCheck;
-
     ///! If sanity-checking is turned on, check makes sure the pool is
     ///! consistent (does not contain two transactions that spend the same inputs,
     ///! all inputs are in the mapNextTx array). If sanity-checking is turned off,
@@ -410,6 +409,11 @@ public:
     void check(const CCoinsViewCache *pcoins) const;
 
     bool addUnchecked(const uint256& hash, const CTxMemPoolEntry &entry);
+
+    void setSanityCheck(bool _fSanityCheck) { fSanityCheck = _fSanityCheck; }
+
+    bool addUnchecked(const uint256& hash, CTransaction &tx);
+
     bool remove(const CTransaction &tx, bool fRecursive = false);
     bool removeConflicts(const CTransaction &tx);
     void remove(const CTransaction &tx, std::list<CTransaction>& removed, bool fRecursive = false);
