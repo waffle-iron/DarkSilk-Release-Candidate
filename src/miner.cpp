@@ -5,7 +5,6 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "miner.h"
-#include "primitives/block.h"
 #include "txdb.h"
 #include "kernel.h"
 #include "stormnodeman.h"

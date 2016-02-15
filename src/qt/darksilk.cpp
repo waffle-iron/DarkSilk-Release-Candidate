@@ -2,6 +2,13 @@
  * W.J. van der Laan 2011-2016
  */
 
+#include "net.h"
+#include "protocol.h"
+#include "chainparams.h"
+
+#include "init.h"
+#include "util.h"
+
 #include "darksilkgui.h"
 #include "clientmodel.h"
 #include "walletmodel.h"
@@ -9,8 +16,7 @@
 #include "optionsmodel.h"
 #include "guiutil.h"
 #include "guiconstants.h"
-#include "init.h"
-#include "util.h"
+
 #include "wallet.h"
 #include "ui_interface.h"
 #include "paymentserver.h"

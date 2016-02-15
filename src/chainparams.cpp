@@ -4,6 +4,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include "net.h"
+#include "protocol.h"
 #include "chainparams.h"
 #include "main.h"
 #include "chainparamsseeds.h"
@@ -52,6 +54,8 @@ static void convertSeeds(std::vector<CAddress> &vSeedsOut, const unsigned int *d
 class CMainParams : public CChainParams {
 public:
     CMainParams() {
+        networkID = CChainParams::MAIN;
+        strNetworkID = "main";
         // The message start string is designed to be unlikely to occur in normal data.
         // The characters are rarely used upper ASCII, not valid as UTF-8, and produce
         // a large 4-byte int at any alignment.
@@ -125,9 +129,7 @@ public:
     virtual const vector<CAddress>& FixedSeeds() const {
         return vFixedSeeds;
     }
-protected:
-    CBlock genesis;
-    vector<CAddress> vFixedSeeds;
+
 };
 static CMainParams mainParams;
 
@@ -139,6 +141,8 @@ static CMainParams mainParams;
 class CTestNetParams : public CMainParams {
 public:
     CTestNetParams() {
+        networkID = CChainParams::TESTNET;
+        strNetworkID = "testnet";
         // The message start string is designed to be unlikely to occur in normal data.
         // The characters are rarely used upper ASCII, not valid as UTF-8, and produce
         // a large 4-byte int at any alignment.
@@ -186,7 +190,7 @@ public:
         nStartStormnodePayments = 1446335999; //Wed, 31 Oct 2015 23:59:59 GMT
     }
 
-    virtual Network NetworkID() const { return CChainParams::TESTNET; }
+
 };
 static CTestNetParams testNetParams;
 

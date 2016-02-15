@@ -6,10 +6,8 @@
 
 #include "init.h"
 #include "main.h"
-#include "chainparams.h"
 #include "txdb.h"
 #include "rpcserver.h"
-#include "net.h"
 #include "util.h"
 #include "key.h"
 #include "pubkey.h"

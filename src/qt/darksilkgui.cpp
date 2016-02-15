@@ -9,6 +9,9 @@
 #include <QApplication>
 
 #include "darksilkgui.h"
+#include "net.h"
+#include "protocol.h"
+#include "chainparams.h"
 #include "transactiontablemodel.h"
 #include "addressbookpage.h"
 #include "sendcoinsdialog.h"

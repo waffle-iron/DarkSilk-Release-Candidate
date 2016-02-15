@@ -1,5 +1,7 @@
 #include "transactiontablemodel.h"
-
+#include "net.h"
+#include "protocol.h"
+#include "chainparams.h"
 #include "guiutil.h"
 #include "transactionrecord.h"
 #include "guiconstants.h"

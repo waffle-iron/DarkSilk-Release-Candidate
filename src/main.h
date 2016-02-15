@@ -67,8 +67,6 @@ static const unsigned int POW_TARGET_SPACING = 1 * 60; // 60 seconds
 static const unsigned int POS_TARGET_SPACING = 1 * 64; // 64 seconds
 // Time to wait (in seconds) between writing blockchain state to disk.
 static const unsigned int DATABASE_WRITE_INTERVAL = 3600;
-// Maximum length of "REJECT" messages
-static const unsigned int MAX_REJECT_MESSAGE_LENGTH = 111;
 // "REJECT" message codes
 static const unsigned char REJECT_MALFORMED = 0x01;
 static const unsigned char REJECT_INVALID = 0x10;

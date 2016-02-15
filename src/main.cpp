@@ -2108,7 +2108,7 @@ void UnloadBlockIndex()
 {
     mapBlockIndex.clear();
     setBlockIndexCandidates.clear();
-    //chainActive.SetTip(NULL);//TODO (Amir): Implement these after chainActive
+    chainActive.SetTip(NULL);
     pindexBestInvalid = NULL;
 }
 

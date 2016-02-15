@@ -2,11 +2,11 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef _DARKSILK_ADDRMAN
-#define _DARKSILK_ADDRMAN 1
+#define _DARKSILK_ADDRMAN
 
-#include "netbase.h"
-#include "protocol.h"
 #include "sync.h"
+#include "net.h"
+#include "protocol.h"
 #include "timedata.h"
 #include "util.h"
 

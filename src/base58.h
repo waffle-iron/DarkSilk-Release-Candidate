@@ -14,6 +14,8 @@
 #ifndef DARKSILK_BASE58_H
 #define DARKSILK_BASE58_H
 
+#include "net.h"
+#include "protocol.h"
 #include "chainparams.h"
 #include "pubkey.h"
 #include "key.h"
