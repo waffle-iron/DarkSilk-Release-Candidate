@@ -250,6 +250,7 @@ static const CRPCCommand vRPCCommands[] =
     { "searchrawtransactions",  &searchrawtransactions,  false,     false,     false },
 
 /* Dark features */
+    { "snsync",                 &snsync,                 true,      true,      false },
     { "spork",                  &spork,                  true,      true,      false },
     { "stormnode",              &stormnode,              true,      true,      false },
     { "snbudget",               &snbudget,               true,      true,      false },

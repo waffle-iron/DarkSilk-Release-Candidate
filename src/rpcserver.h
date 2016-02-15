@@ -198,6 +198,7 @@ extern json_spirit::Value snbudget(const json_spirit::Array& params, bool fHelp)
 extern json_spirit::Value snbudgetvoteraw(const json_spirit::Array& params, bool fHelp);
 extern json_spirit::Value snfinalbudget(const json_spirit::Array& params, bool fHelp);
 extern json_spirit::Value stormnodelist(const json_spirit::Array& params, bool fHelp);
+extern json_spirit::Value snsync(const json_spirit::Array& params, bool fHelp);
 
 extern json_spirit::Value smsgenable(const json_spirit::Array& params, bool fHelp);
 extern json_spirit::Value smsgdisable(const json_spirit::Array& params, bool fHelp);

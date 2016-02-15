@@ -19,6 +19,9 @@ using namespace std;
 using namespace boost;
 
 // Don't ever reuse these IDs for other sporks
+static const unsigned int SPORK_START = 10001;
+static const unsigned int SPORK_END = 10012;
+
 static const unsigned int SPORK_1_STORMNODE_PAYMENTS_ENFORCEMENT = 10000;
 static const unsigned int SPORK_2_INSTANTX = 10001;
 static const unsigned int SPORK_3_INSTANTX_BLOCK_FILTERING = 10002;

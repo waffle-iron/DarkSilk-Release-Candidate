@@ -387,6 +387,7 @@ public:
 class CTxMemPool
 {
 private:
+    bool fSanityCheck;
     unsigned int nTransactionsUpdated;
     CFeeRate minRelayFee; //! Passed to constructor to avoid dependency on main
 
@@ -400,7 +401,8 @@ public:
     CTxMemPool(const CFeeRate& _minRelayFee);
     ~CTxMemPool();
 
-    bool fSanityCheck;
+    void setSanityCheck(bool _fSanityCheck) { fSanityCheck = _fSanityCheck; }
+
     bool addUnchecked(const uint256& hash, CTransaction &tx);
     bool remove(const CTransaction &tx, bool fRecursive = false);
     bool removeConflicts(const CTransaction &tx);
