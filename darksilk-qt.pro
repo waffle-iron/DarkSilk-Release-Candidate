@@ -126,7 +126,6 @@ INCLUDEPATH += src/leveldb/include src/leveldb/helpers src/leveldb/helpers/memen
 LIBS += $$PWD/src/leveldb/libleveldb.a $$PWD/src/leveldb/libmemenv.a
 SOURCES += src/txdb-leveldb.cpp
 
-
 INCLUDEPATH +=  src/crypto/argon2 \
                 src/crypto/argon2/blake2
 
@@ -463,7 +462,10 @@ SOURCES += src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
     src/crypto/argon2/thread.c \
     src/crypto/argon2/blake2/blake2b.c \
     src/crypto/argon2/opt.c \
-    src/script/sigcache.cpp
+    src/script/sigcache.cpp \
+    src/glibcxx_sanity.cpp \
+    src/glibc_sanity.cpp
+
 
 RESOURCES += \
             src/qt/darksilk.qrc
