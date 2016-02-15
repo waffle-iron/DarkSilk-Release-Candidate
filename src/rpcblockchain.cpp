@@ -164,7 +164,13 @@ Value getbestblockhash(const Array& params, bool fHelp)
     if (fHelp || params.size() != 0)
         throw runtime_error(
             "getbestblockhash\n"
-            "Returns the hash of the best block in the longest block chain.");
+            "\nReturns the hash of the best (tip) block in the longest block chain.\n"
+            "\nResult\n"
+            "\"hex\"      (string) the block hash hex encoded\n"
+            "\nExamples\n"
+            + HelpExampleCli("getbestblockhash", "")
+            + HelpExampleRpc("getbestblockhash", "")
+        );
 
     return hashBestChain.GetHex();
 }
@@ -174,7 +180,13 @@ Value getblockcount(const Array& params, bool fHelp)
     if (fHelp || params.size() != 0)
         throw runtime_error(
             "getblockcount\n"
-            "Returns the number of blocks in the longest block chain.");
+            "\nReturns the number of blocks in the longest block chain.\n"
+            "\nResult:\n"
+            "n    (numeric) The current block count\n"
+            "\nExamples:\n"
+            + HelpExampleCli("getblockcount", "")
+            + HelpExampleRpc("getblockcount", "")
+        );
 
     return nBestHeight;
 }
@@ -198,8 +210,33 @@ Value getrawmempool(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 0)
         throw runtime_error(
-            "getrawmempool\n"
-            "Returns all transaction ids in memory pool.");
+            "getrawmempool ( verbose )\n"
+            "\nReturns all transaction ids in memory pool as a json array of string transaction ids.\n"
+            "\nArguments:\n"
+            "1. verbose           (boolean, optional, default=false) true for a json object, false for array of transaction ids\n"
+            "\nResult: (for verbose = false):\n"
+            "[                     (json array of string)\n"
+            "  \"transactionid\"     (string) The transaction id\n"
+            "  ,...\n"
+            "]\n"
+            "\nResult: (for verbose = true):\n"
+            "{                           (json object)\n"
+            "  \"transactionid\" : {       (json object)\n"
+            "    \"size\" : n,             (numeric) transaction size in bytes\n"
+            "    \"fee\" : n,              (numeric) transaction fee in darksilkss\n"
+            "    \"time\" : n,             (numeric) local time transaction entered pool in seconds since 1 Jan 1970 GMT\n"
+            "    \"height\" : n,           (numeric) block height when transaction entered pool\n"
+            "    \"startingpriority\" : n, (numeric) priority when transaction entered pool\n"
+            "    \"currentpriority\" : n,  (numeric) transaction priority now\n"
+            "    \"depends\" : [           (array) unconfirmed transactions used as inputs for this transaction\n"
+            "        \"transactionid\",    (string) parent transaction id\n"
+            "       ... ]\n"
+            "  }, ...\n"
+            "]\n"
+            "\nExamples\n"
+            + HelpExampleCli("getrawmempool", "true")
+            + HelpExampleRpc("getrawmempool", "true")
+        );
 
     vector<uint256> vtxid;
     mempool.queryHashes(vtxid);
@@ -215,8 +252,16 @@ Value getblockhash(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 1)
         throw runtime_error(
-            "getblockhash <index>\n"
-            "Returns hash of block in best-block-chain at <index>.");
+            "getblockhash index\n"
+            "\nReturns hash of block in best-block-chain at index provided.\n"
+            "\nArguments:\n"
+            "1. index         (numeric, required) The block index\n"
+            "\nResult:\n"
+            "\"hash\"         (string) The block hash\n"
+            "\nExamples:\n"
+            + HelpExampleCli("getblockhash", "1000")
+            + HelpExampleRpc("getblockhash", "1000")
+        );
 
     int nHeight = params[0].get_int();
     if (nHeight < 0 || nHeight > nBestHeight)

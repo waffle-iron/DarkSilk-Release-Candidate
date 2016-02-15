@@ -15,6 +15,7 @@
 #include "pubkey.h"
 #include "ui_interface.h"
 #include "activestormnode.h"
+#include "sanity.h"
 #include "stormnode-budget.h"
 #include "stormnode-payments.h"
 #include "stormnodeman.h"
@@ -363,8 +364,8 @@ bool InitSanityCheck(void)
                   "information, visit https://en.darksilk.it/wiki/OpenSSL_and_EC_Libraries");
         return false;
     }
-
-    // TODO: remaining sanity checks, see #4081
+    if (!glibc_sanity_test() || !glibcxx_sanity_test())
+        return false;
 
     return true;
 }
@@ -1195,7 +1196,7 @@ bool AppInit2(boost::thread_group& threadGroup)
     fSandstormMultiSession = GetBoolArg("-sandstormmultisession", fSandstormMultiSession);
     nSandstormRounds = GetArg("-sandstormrounds", nSandstormRounds);
     nSandstormRounds = std::min(std::max(nSandstormRounds, 1), 99999);
-    nAnonymizeDarkSilkAmount = GetArg("-anonymizedashamount", nAnonymizeDarkSilkAmount);
+    nAnonymizeDarkSilkAmount = GetArg("-anonymizedarksilkamount", nAnonymizeDarkSilkAmount);
     nAnonymizeDarkSilkAmount = std::min(std::max(nAnonymizeDarkSilkAmount, 2), 999999);
 
     fEnableInstantX = GetBoolArg("-enableinstantx", fEnableInstantX);

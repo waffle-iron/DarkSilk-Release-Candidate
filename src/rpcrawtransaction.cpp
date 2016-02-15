@@ -4,25 +4,30 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <boost/assign/list_of.hpp>
-
-#include "primitives/transaction.h"
 #include "base58.h"
+#include "primitives/transaction.h"
 #include "rpcserver.h"
 #include "txdb.h"
 #include "init.h"
 #include "main.h"
 #include "net.h"
 #include "keystore.h"
+#include "script.h"
+#include "txdb-leveldb.h"
+
 #ifdef ENABLE_WALLET
 #include "wallet.h"
 #endif
-#include "txdb-leveldb.h"
+
+#include <boost/assign/list_of.hpp>
 
 using namespace std;
 using namespace boost;
 using namespace boost::assign;
 using namespace json_spirit;
+
+class CKeyStore;
+class CTransaction;
 
 void ScriptPubKeyToJSON(const CScript& scriptPubKey, Object& out, bool fIncludeHex)
 {
@@ -112,11 +117,67 @@ Value getrawtransaction(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() < 1 || params.size() > 2)
         throw runtime_error(
-            "getrawtransaction <txid> [verbose=0]\n"
-            "If verbose=0, returns a string that is\n"
-            "serialized, hex-encoded data for <txid>.\n"
-            "If verbose is non-zero, returns an Object\n"
-            "with information about <txid>.");
+            "getrawtransaction \"txid\" ( verbose )\n"
+            "\nNOTE: By default this function only works sometimes. This is when the tx is in the mempool\n"
+            "or there is an unspent output in the utxo for this transaction. To make it always work,\n"
+            "you need to maintain a transaction index, using the -txindex command line option.\n"
+            "\nReturn the raw transaction data.\n"
+            "\nIf verbose=0, returns a string that is serialized, hex-encoded data for 'txid'.\n"
+            "If verbose is non-zero, returns an Object with information about 'txid'.\n"
+
+            "\nArguments:\n"
+            "1. \"txid\"      (string, required) The transaction id\n"
+            "2. verbose       (numeric, optional, default=0) If 0, return a string, other return a json object\n"
+
+            "\nResult (if verbose is not set or set to 0):\n"
+            "\"data\"      (string) The serialized, hex-encoded data for 'txid'\n"
+
+            "\nResult (if verbose > 0):\n"
+            "{\n"
+            "  \"hex\" : \"data\",       (string) The serialized, hex-encoded data for 'txid'\n"
+            "  \"txid\" : \"id\",        (string) The transaction id (same as provided)\n"
+            "  \"version\" : n,          (numeric) The version\n"
+            "  \"locktime\" : ttt,       (numeric) The lock time\n"
+            "  \"vin\" : [               (array of json objects)\n"
+            "     {\n"
+            "       \"txid\": \"id\",    (string) The transaction id\n"
+            "       \"vout\": n,         (numeric) \n"
+            "       \"scriptSig\": {     (json object) The script\n"
+            "         \"asm\": \"asm\",  (string) asm\n"
+            "         \"hex\": \"hex\"   (string) hex\n"
+            "       },\n"
+            "       \"sequence\": n      (numeric) The script sequence number\n"
+            "     }\n"
+            "     ,...\n"
+            "  ],\n"
+            "  \"vout\" : [              (array of json objects)\n"
+            "     {\n"
+            "       \"value\" : x.xxx,            (numeric) The value in DRKSLK\n"
+            "       \"n\" : n,                    (numeric) index\n"
+            "       \"scriptPubKey\" : {          (json object)\n"
+            "         \"asm\" : \"asm\",          (string) the asm\n"
+            "         \"hex\" : \"hex\",          (string) the hex\n"
+            "         \"reqSigs\" : n,            (numeric) The required sigs\n"
+            "         \"type\" : \"pubkeyhash\",  (string) The type, eg 'pubkeyhash'\n"
+            "         \"addresses\" : [           (json array of string)\n"
+            "           \"darksilkaddress\"        (string) DarkSilk address\n"
+            "           ,...\n"
+            "         ]\n"
+            "       }\n"
+            "     }\n"
+            "     ,...\n"
+            "  ],\n"
+            "  \"blockhash\" : \"hash\",   (string) the block hash\n"
+            "  \"confirmations\" : n,      (numeric) The confirmations\n"
+            "  \"time\" : ttt,             (numeric) The transaction time in seconds since epoch (Jan 1 1970 GMT)\n"
+            "  \"blocktime\" : ttt         (numeric) The block time in seconds since epoch (Jan 1 1970 GMT)\n"
+            "}\n"
+
+            "\nExamples:\n"
+            + HelpExampleCli("getrawtransaction", "\"mytxid\"")
+            + HelpExampleCli("getrawtransaction", "\"mytxid\" 1")
+            + HelpExampleRpc("getrawtransaction", "\"mytxid\", 1")
+        );
 
     uint256 hash;
     hash.SetHex(params[0].get_str());
@@ -148,12 +209,39 @@ Value listunspent(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() > 3)
         throw runtime_error(
-            "listunspent [minconf=1] [maxconf=9999999]  [\"address\",...]\n"
-            "Returns array of unspent transaction outputs\n"
+            "listunspent ( minconf maxconf  [\"address\",...] )\n"
+            "\nReturns array of unspent transaction outputs\n"
             "with between minconf and maxconf (inclusive) confirmations.\n"
-            "Optionally filtered to only include txouts paid to specified addresses.\n"
+            "Optionally filter to only include txouts paid to specified addresses.\n"
             "Results are an array of Objects, each of which has:\n"
-            "{txid, vout, scriptPubKey, amount, confirmations}");
+            "{txid, vout, scriptPubKey, amount, confirmations}\n"
+            "\nArguments:\n"
+            "1. minconf          (numeric, optional, default=1) The minimum confirmations to filter\n"
+            "2. maxconf          (numeric, optional, default=9999999) The maximum confirmations to filter\n"
+            "3. \"addresses\"    (string) A json array of DarkSilk addresses to filter\n"
+            "    [\n"
+            "      \"address\"   (string) DarkSilk address\n"
+            "      ,...\n"
+            "    ]\n"
+            "\nResult\n"
+            "[                   (array of json object)\n"
+            "  {\n"
+            "    \"txid\" : \"txid\",        (string) the transaction id \n"
+            "    \"vout\" : n,               (numeric) the vout value\n"
+            "    \"address\" : \"address\",  (string) the DarkSilk address\n"
+            "    \"account\" : \"account\",  (string) The associated account, or \"\" for the default account\n"
+            "    \"scriptPubKey\" : \"key\", (string) the script key\n"
+            "    \"amount\" : x.xxx,         (numeric) the transaction amount in DRKSLK\n"
+            "    \"confirmations\" : n       (numeric) The number of confirmations\n"
+            "  }\n"
+            "  ,...\n"
+            "]\n"
+
+            "\nExamples\n"
+            + HelpExampleCli("listunspent", "")
+            + HelpExampleCli("listunspent", "6 9999999 \"[\\\"1PGFqEzfmQch1gKD3ra4k18PNj3tTUUSqg\\\",\\\"1LtvqCaApEdUGFkpKMM4MstjcaL4dKg8SP\\\"]\"")
+            + HelpExampleRpc("listunspent", "6, 9999999 \"[\\\"1PGFqEzfmQch1gKD3ra4k18PNj3tTUUSqg\\\",\\\"1LtvqCaApEdUGFkpKMM4MstjcaL4dKg8SP\\\"]\"")
+        );
 
     RPCTypeCheck(params, list_of(int_type)(int_type)(array_type));
 
@@ -237,13 +325,34 @@ Value createrawtransaction(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() != 2)
         throw runtime_error(
-            "createrawtransaction [{\"txid\":txid,\"vout\":n},...] {address:amount,...}\n"
-            "Create a transaction spending given inputs\n"
-            "(array of objects containing transaction id and output number),\n"
-            "sending to given address(es).\n"
+            "createrawtransaction [{\"txid\":\"id\",\"vout\":n},...] {\"address\":amount,...}\n"
+            "\nCreate a transaction spending the given inputs and sending to the given addresses.\n"
             "Returns hex-encoded raw transaction.\n"
             "Note that the transaction's inputs are not signed, and\n"
-            "it is not stored in the wallet or transmitted to the network.");
+            "it is not stored in the wallet or transmitted to the network.\n"
+
+            "\nArguments:\n"
+            "1. \"transactions\"        (string, required) A json array of json objects\n"
+            "     [\n"
+            "       {\n"
+            "         \"txid\":\"id\",  (string, required) The transaction id\n"
+            "         \"vout\":n        (numeric, required) The output number\n"
+            "       }\n"
+            "       ,...\n"
+            "     ]\n"
+            "2. \"addresses\"           (string, required) a json object with addresses as keys and amounts as values\n"
+            "    {\n"
+            "      \"address\": x.xxx   (numeric, required) The key is the DarkSilk address, the value is the DRKSLK amount\n"
+            "      ,...\n"
+            "    }\n"
+
+            "\nResult:\n"
+            "\"transaction\"            (string) hex string of the transaction\n"
+
+            "\nExamples\n"
+            + HelpExampleCli("createrawtransaction", "\"[{\\\"txid\\\":\\\"myid\\\",\\\"vout\\\":0}]\" \"{\\\"address\\\":0.01}\"")
+            + HelpExampleRpc("createrawtransaction", "\"[{\\\"txid\\\":\\\"myid\\\",\\\"vout\\\":0}]\", \"{\\\"address\\\":0.01}\"")
+        );
 
     RPCTypeCheck(params, list_of(array_type)(obj_type));
 
@@ -428,6 +537,8 @@ Value signrawtransaction(const Array& params, bool fHelp)
             if (!fGood)
                 throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid private key");
             CKey key = vchSecret.GetKey();
+            if (!key.IsValid())
+                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Private key outside allowed range");
             tempKeystore.AddKey(key);
         }
     }
@@ -449,10 +560,12 @@ Value signrawtransaction(const Array& params, bool fHelp)
 
             RPCTypeCheck(prevOut, map_list_of("txid", str_type)("vout", int_type)("scriptPubKey", str_type));
 
+            uint256 txid = ParseHashO(prevOut, "txid");
+
             string txidHex = find_value(prevOut, "txid").get_str();
             if (!IsHex(txidHex))
                 throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "txid must be hexadecimal");
-            uint256 txid;
+            
             txid.SetHex(txidHex);
 
             int nOut = find_value(prevOut, "vout").get_int();
@@ -495,7 +608,13 @@ Value signrawtransaction(const Array& params, bool fHelp)
             }
         }
     }
+#ifdef ENABLE_WALLET
+    const CKeyStore& keystore = ((fGivenKeys || !pwalletMain) ? tempKeystore : *pwalletMain);
+#else
+    const CKeyStore& keystore = tempKeystore;
+#endif
 
+    int nHashType = SIGHASH_ALL;    
     if (params.size() > 3 && params[3].type() != null_type)
     {
         static map<string, int> mapSigHashValues =
@@ -509,13 +628,12 @@ Value signrawtransaction(const Array& params, bool fHelp)
             ;
         string strHashType = params[3].get_str();
         if (mapSigHashValues.count(strHashType))
-        {
-            //int nHashType = SIGHASH_ALL;
-            mapSigHashValues[strHashType];
-        }
+            nHashType = mapSigHashValues[strHashType];
         else
             throw JSONRPCError(RPC_INVALID_PARAMETER, "Invalid sighash param");
     }
+
+    bool fHashSingle = ((nHashType & ~SIGHASH_ANYONECANPAY) == SIGHASH_SINGLE);
 
     // Sign what we can:
     for (unsigned int i = 0; i < mergedTx.vin.size(); i++)
@@ -530,11 +648,9 @@ Value signrawtransaction(const Array& params, bool fHelp)
 
         txin.scriptSig.clear();
         // Only sign SIGHASH_SINGLE if there's a corresponding output:
-
         ///TODO (AA): put back but need txTo for SignSignature
-        //bool fHashSingle = ((nHashType & ~SIGHASH_ANYONECANPAY) == SIGHASH_SINGLE);
-        //if (!fHashSingle || (i < mergedTx.vout.size()))
-        //    SignSignature(keystore, prevPubKey, mergedTx, i, nHashType);
+        if (!fHashSingle || (i < mergedTx.vout.size()))
+            SignSignature(keystore, prevPubKey, mergedTx, i, nHashType);
 
         // ... and merge in other signatures:
         BOOST_FOREACH(const CMutableTransaction& txv, txVariants)

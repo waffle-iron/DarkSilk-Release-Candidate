@@ -19,64 +19,53 @@ class CValidationState;
 class CWallet;
 class CTxMemPool;
 
-/// Fees smaller than this (in satoshi) are considered zero fee (for transaction creation)
-static const double MIN_FEE = 0.00001; // Minimum Transaction Fee of 0.00001 DRKSLK 
-
-static const CAmount STORMNODE_COLLATERAL = 10000; //Stormnode Collateral Amount
-
-static const int STORMNODE_PAYMENT_START = 420; // Block 420
-static const int TESTNET_STORMNODE_PAYMENT_START = 100; // Block 100
-
+// Minimum Transaction Fee of 0.00001 DRKSLK, Fees smaller than this are considered zero fee (for transaction creation)
+static const double MIN_FEE = 0.00001;
+// Collateral Amount Locked for Stormnodes
+static const CAmount STORMNODE_COLLATERAL = 10000;
+// Main Stormnode Payments Start Block
+static const int STORMNODE_PAYMENT_START = 420;
+// Testnet Stormnode Payment Start Block
+static const int TESTNET_STORMNODE_PAYMENT_START = 100;
+// Sandstorm Collateral Payment
 static const CAmount SANDSTORM_COLLATERAL = (0.01*COIN);
+// Sandstorm Pool Max Amount
 static const CAmount SANDSTORM_POOL_MAX = (9999.99*COIN);
-
-static const CAmount STATIC_POS_REWARD = COIN * 0.01; // Static Reward of 0.01 DRKSLK
-
-/// Number of blocks that can be requested at any given time from a single peer.
+// Static Proof-of-Stake Reward of 0.01 DRKSLK
+static const CAmount STATIC_POS_REWARD = COIN * 0.01;
+// Number of blocks that can be requested at any given time from a single peer.
 static const int MAX_BLOCKS_IN_TRANSIT_PER_PEER = 128;
-/// Timeout in seconds before considering a block download peer unresponsive.
+// Timeout in seconds before considering a block download peer unresponsive.
 static const unsigned int BLOCK_DOWNLOAD_TIMEOUT = 60;
-
-/// The maximum size for mined blocks
+// The maximum size for mined blocks (50% OF MAX_BLOCK_SIZE)
 static const unsigned int MAX_BLOCK_SIZE_GEN = MAX_BLOCK_SIZE/2;
-/// Default for -blockprioritysize, maximum space for zero/low-fee transactions
+// Default for -blockprioritysize, maximum space for zero/low-fee transactions
 static const unsigned int DEFAULT_BLOCK_PRIORITY_SIZE = 50000;
-/// The maximum size for transactions we're willing to relay/mine
+// The maximum size for transactions we're willing to relay/mine
 static const unsigned int MAX_STANDARD_TX_SIZE = MAX_BLOCK_SIZE_GEN/5;
-/// The maximum allowed number of signature check operations in a block (network rule)
+// The maximum allowed number of signature check operations in a block (network rule)
 static const unsigned int MAX_BLOCK_SIGOPS = MAX_BLOCK_SIZE/50;
-/// Maxiumum number of signature check operations in an IsStandard() P2SH script
+// Maxiumum number of signature check operations in an IsStandard() P2SH script
 static const unsigned int MAX_P2SH_SIGOPS = 15;
-/// The maximum number of sigops we're willing to relay/mine in a single tx
+// The maximum number of sigops we're willing to relay/mine in a single tx
 static const unsigned int MAX_TX_SIGOPS = MAX_BLOCK_SIGOPS/5;
-/// The maximum number of orphan transactions kept in memory
+// The maximum number of orphan transactions kept in memory
 static const unsigned int MAX_ORPHAN_TRANSACTIONS = MAX_BLOCK_SIZE/100;
-/// Default for -maxorphanblocksmib, maximum memory used by orphan blocks
+// Default for -maxorphanblocksmib, maximum memory used by orphan blocks
 static const unsigned int DEFAULT_MAX_ORPHAN_BLOCKS = 512;
 /// The maximum number of entries in an 'inv' protocol message
 static const unsigned int MAX_INV_SZ = 50000;
-
-/// Maximum length of reject messages.
-static const unsigned int MAX_REJECT_MESSAGE_LENGTH = 111;
-
-/// Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp.
+// Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp.
 static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov 5th 00:53:20 1985 UTC
-
+// Target timing between Proof-of-Work blocks
 static const unsigned int POW_TARGET_SPACING = 1 * 60; // 60 seconds
+// Target timing between Proof-of-Stake blocks
 static const unsigned int POS_TARGET_SPACING = 1 * 64; // 64 seconds
-
-
-struct BlockHasher
-{
-    size_t operator()(const uint256& hash) const { return hash.GetLow64(); }
-};
-
-typedef std::map<uint256, CBlockIndex*, BlockHasher> BlockMap; //TODO (Amir): Change to boost::unordered_map.
-
-/// Time to wait (in seconds) between writing blockchain state to disk.
+// Time to wait (in seconds) between writing blockchain state to disk.
 static const unsigned int DATABASE_WRITE_INTERVAL = 3600;
-
-/// "reject" message codes
+// Maximum length of "REJECT" messages
+static const unsigned int MAX_REJECT_MESSAGE_LENGTH = 111;
+// "REJECT" message codes
 static const unsigned char REJECT_MALFORMED = 0x01;
 static const unsigned char REJECT_INVALID = 0x10;
 static const unsigned char REJECT_OBSOLETE = 0x11;
@@ -86,9 +75,15 @@ static const unsigned char REJECT_DUST = 0x41;
 static const unsigned char REJECT_INSUFFICIENTFEE = 0x42;
 static const unsigned char REJECT_CHECKPOINT = 0x43;
 
+struct BlockHasher
+{
+    size_t operator()(const uint256& hash) const { return hash.GetLow64(); }
+};
+
 extern CScript COINBASE_FLAGS;
 extern CCriticalSection cs_main;
 extern CTxMemPool mempool;
+typedef std::map<uint256, CBlockIndex*, BlockHasher> BlockMap; //TODO (Amir): Change to boost::unordered_map.
 extern std::map<uint256, CBlockIndex*> mapBlockIndex;
 extern std::set<std::pair<COutPoint, unsigned int> > setStakeSeen;
 extern CBlockIndex* pindexGenesisBlock;
