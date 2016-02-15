@@ -6,11 +6,12 @@
 
 #include <set>
 #include "rpcclient.h"
-
+#include "net.h"
+#include "protocol.h"
+#include "chainparams.h" // for Params().RPCPort()
 #include "rpcprotocol.h"
 #include "util.h"
 #include "ui_interface.h"
-#include "chainparams.h" // for Params().RPCPort()
 
 #include <stdint.h>
 

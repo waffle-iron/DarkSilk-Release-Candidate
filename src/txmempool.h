@@ -371,7 +371,7 @@ public:
         assert(history.size() > 0);
     }
 };
-
+class CCoinsViewCache;
 /*
  * CTxMemPool stores valid-according-to-the-current-best-chain
  * transactions that may be included in the next block.
@@ -410,6 +410,8 @@ public:
     void check(const CCoinsViewCache *pcoins) const;
 
     bool addUnchecked(const uint256& hash, const CTxMemPoolEntry &entry);
+    bool remove(const CTransaction &tx, bool fRecursive = false);
+    bool removeConflicts(const CTransaction &tx);
     void remove(const CTransaction &tx, std::list<CTransaction>& removed, bool fRecursive = false);
     void removeConflicts(const CTransaction &tx, std::list<CTransaction>& removed);
     void removeCoinbaseSpends(const CCoinsViewCache *pcoins, unsigned int nMemPoolHeight);

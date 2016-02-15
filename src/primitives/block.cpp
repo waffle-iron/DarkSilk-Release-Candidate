@@ -4,8 +4,11 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "primitives/block.h"
+#include "net.h"
+#include "protocol.h"
 #include "chainparams.h"
 #include <boost/foreach.hpp>
+#include <vector>
 
 bool CBlock::CheckBlockSignature() const
 {

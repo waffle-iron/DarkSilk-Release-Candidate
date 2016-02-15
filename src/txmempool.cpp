@@ -59,6 +59,31 @@ bool CTxMemPool::addUnchecked(const uint256& hash, const CTxMemPoolEntry &entry)
     return true;
 }
 
+//TODO (Amir): Remove after chainActive is implemented.  Used by CBlock::SetBestChainInner and Reorganize in chain.cpp
+bool CTxMemPool::remove(const CTransaction &tx, bool fRecursive)
+{
+    // Remove transaction from memory pool
+    {
+        LOCK(cs);
+        uint256 hash = tx.GetHash();
+        if (mapTx.count(hash))
+        {
+            if (fRecursive) {
+                for (unsigned int i = 0; i < tx.vout.size(); i++) {
+                    std::map<COutPoint, CInPoint>::iterator it = mapNextTx.find(COutPoint(hash, i));
+                    if (it != mapNextTx.end())
+                        remove(*it->second.ptx, true);
+                }
+            }
+            BOOST_FOREACH(const CTxIn& txin, tx.vin)
+                mapNextTx.erase(txin.prevout);
+            mapTx.erase(hash);
+            nTransactionsUpdated++;
+        }
+    }
+    return true;
+}
+
 void CTxMemPool::remove(const CTransaction &origTx, std::list<CTransaction>& removed, bool fRecursive)
 {
     // Remove transaction from memory pool
@@ -102,6 +127,22 @@ void CTxMemPool::remove(const CTransaction &origTx, std::list<CTransaction>& rem
             nTransactionsUpdated++;
         }
     }
+}
+
+//TODO (Amir): Remove after chainActive is implemented.  Used by Reorganize in chain.cpp
+bool CTxMemPool::removeConflicts(const CTransaction &tx)
+{
+    // Remove transactions which depend on inputs of tx, recursively
+    LOCK(cs);
+    BOOST_FOREACH(const CTxIn &txin, tx.vin) {
+        std::map<COutPoint, CInPoint>::iterator it = mapNextTx.find(txin.prevout);
+        if (it != mapNextTx.end()) {
+            const CTransaction &txConflict = *it->second.ptx;
+            if (txConflict != tx)
+                remove(txConflict, true);
+        }
+    }
+    return true;
 }
 
 void CTxMemPool::removeConflicts(const CTransaction &tx, std::list<CTransaction>& removed)
@@ -153,7 +194,7 @@ bool CTxMemPool::WriteFeeEstimates(CAutoFile& fileout) const
 {
     try {
         LOCK(cs);
-        fileout << 120000; // version required to read: 0.12.00 or later
+        fileout << 1000000; // version required to read: 1.00.00 or later
         fileout << CLIENT_VERSION; // version that wrote the file
         minerPolicyEstimator->Write(fileout);
     }

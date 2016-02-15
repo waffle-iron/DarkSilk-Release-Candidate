@@ -1,5 +1,7 @@
 #include "transactionview.h"
-
+#include "net.h"
+#include "protocol.h"
+#include "chainparams.h"
 #include "transactionfilterproxy.h"
 #include "transactionrecord.h"
 #include "walletmodel.h"

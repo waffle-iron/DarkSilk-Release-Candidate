@@ -31,6 +31,9 @@
 #include <stdint.h>
 
 #include "scrypt.h"
+#include "net.h"
+#include "protocol.h"
+#include "chainparams.h"
 #include "pbkdf2.h"
 
 #define SCRYPT_BUFFER_SIZE (131072 + 63)

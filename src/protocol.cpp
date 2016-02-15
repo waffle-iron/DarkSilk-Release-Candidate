@@ -4,6 +4,7 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include "net.h"
 #include "protocol.h"
 #include "util.h"
 
@@ -21,13 +22,15 @@ static const char* ppszTypeName[] =
     "tx lock vote",
     "spork",
     "stormnode winner",
-    "stormnode scan",
-    "stormnode vote",
-    "stormnode proposal",
+    "stormnode scan error",
+    "stormnode budget vote",
+    "stormnode budget proposal",
+    "stormnode budget finalized",
+    "stormnode budget finalized vote",
     "stormnode quorum",
     "stormnode announce",
     "stormnode ping",
-    "unknown",
+    "sstx",
     "unknown",
     "unknown",
     "unknown",

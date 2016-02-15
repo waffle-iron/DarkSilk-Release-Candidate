@@ -4,12 +4,13 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include "net.h"
+#include "protocol.h"
 #include "wallet.h"
 #include "base58.h"
 #include "checkpoints.h"
 #include "coincontrol.h"
 #include "kernel.h"
-#include "net.h"
 #include "stormnode-budget.h"
 #include "timedata.h"
 #include "txdb.h"

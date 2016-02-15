@@ -1,6 +1,8 @@
 #include "overviewpage.h"
 #include "ui_overviewpage.h"
-
+#include "net.h"
+#include "protocol.h"
+#include "chainparams.h"
 #include "clientmodel.h"
 #include "sandstorm.h"
 #include "sandstormconfig.h"
