@@ -9,8 +9,8 @@
 #include <leveldb/write_batch.h>
 
 #include "net.h"
-#include "db.h"
-#include "wallet.h"
+#include "wallet/db.h"
+#include "wallet/wallet.h"
 #include "base58.h"
 #include "lz4/lz4.h"
 

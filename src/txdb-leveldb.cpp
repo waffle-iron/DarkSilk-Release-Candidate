@@ -5,7 +5,7 @@
 // file license.txt or http://www.opensource.org/licenses/mit-license.php.
 
 #include "txdb-leveldb.h"
-
+#include "consensus/validation.h"
 #include <map>
 
 #include <boost/version.hpp>

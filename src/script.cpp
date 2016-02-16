@@ -18,6 +18,7 @@ using namespace boost;
 #include "crypto/ripemd160.h"
 #include "crypto/sha1.h"
 #include "crypto/sha256.h"
+#include "consensus/consensus.h"
 
 namespace {
 

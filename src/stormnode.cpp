@@ -396,7 +396,7 @@ bool CStormnodeBroadcast::CheckAndUpdate(int& nDos)
         return false;
     }
 
-    if(Params().NetworkID() == CChainParams::MAIN) {
+    if(BaseParams().NetworkID() == CBaseChainParams::MAIN) {
         if(addr.GetPort() != 31000) return false;
     } else if(addr.GetPort() == 31000) return false;
 

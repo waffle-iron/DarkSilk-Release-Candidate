@@ -74,7 +74,7 @@ bool AppInit(int argc, char* argv[])
 
         if (fCommandLine)
         {
-            if (!SelectParamsFromCommandLine()) {
+            if (!SelectBaseParamsFromCommandLine()) {
                 fprintf(stderr, "Error: invalid use of -testnet.\n");
                 return false;
             }

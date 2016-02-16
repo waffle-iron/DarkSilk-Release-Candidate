@@ -71,7 +71,7 @@ void CActiveStormnode::ManageStatus()
 
         LogPrintf("CActiveStormnode::ManageStatus() - Checking inbound connection to '%s'\n", service.ToString());
 
-        if(Params().NetworkID() == CChainParams::MAIN) {
+        if(BaseParams().NetworkID() == CBaseChainParams::MAIN) {
             if(service.GetPort() != 31000) {
                 notCapableReason = strprintf("Invalid port: %u - only 31000 is supported on mainnet.", service.GetPort());
                 LogPrintf("CActiveStormnode::ManageStatus() - not capable: %s\n", notCapableReason);
@@ -234,7 +234,7 @@ bool CActiveStormnode::Register(std::string strService, std::string strKeyStormn
     }
 
     CService service = CService(strService);
-    if(Params().NetworkID() == CChainParams::MAIN) {
+    if(BaseParams().NetworkID() == CBaseChainParams::MAIN) {
         if(service.GetPort() != 31000) {
             errorMessage = strprintf("Invalid port %u for stormnode %s - only 31000 is supported on mainnet.", service.GetPort(), strService);
             LogPrintf("CActiveStormnode::Register() - %s\n", errorMessage);

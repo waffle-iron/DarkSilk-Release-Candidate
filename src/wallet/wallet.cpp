@@ -8,6 +8,7 @@
 #include "base58.h"
 #include "checkpoints.h"
 #include "coincontrol.h"
+#include "chainparams.h"
 #include "kernel.h"
 #include "net.h"
 #include "stormnode-budget.h"
@@ -26,6 +27,8 @@
 #include "chainparams.h"
 #include "smessage.h"
 #include "txdb-leveldb.h"
+#include "consensus/consensus.h"
+#include "consensus/validation.h"
 
 #include <assert.h>
 
@@ -3878,7 +3881,7 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
     // Calculate coin age reward
     CAmount nReward;
     {
-        nReward = STATIC_POS_REWARD + nFees;
+        nReward = Params().PoSReward() + nFees;
         if (nReward <= 0)
             return false;
 
@@ -3887,18 +3890,9 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
 
     // start stormnode payments
     bool bStormNodePayment = false;
-    if ( Params().NetworkID() == CChainParams::TESTNET ){
-        if (pindexBest->nHeight+1 >= TESTNET_STORMNODE_PAYMENT_START) {
+        if (pindexBest->nHeight+1 >= Params().StormNodePaymentBlock()) {
             bStormNodePayment = true;
         }
-    }
-    else
-    {   if ( Params().NetworkID() == CChainParams::MAIN ){
-            if (pindexBest->nHeight+1 >= STORMNODE_PAYMENT_START){
-                bStormNodePayment = true;
-            }
-        }
-    }
 
     CScript payee;
     CTxIn vin;
@@ -3934,7 +3928,7 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
     }
 
 
-    // GetBlockValue should return STATIC_POS_REWARD + nFees. When you switched to GetBlockValue from nCredit.
+    // GetBlockValue should return Params.PoSReward() + nFees. When you switched to GetBlockValue from nCredit.
     // Ncredit is no longer needed past this point.
 
 

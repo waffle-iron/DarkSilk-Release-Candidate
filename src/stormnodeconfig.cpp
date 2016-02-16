@@ -59,7 +59,7 @@ bool CStormnodeConfig::read(std::string& strErr) {
         }
         
 
-        /*if(Params().NetworkID() == CChainParams::MAIN){
+        /*if(BaseParams().NetworkID() == CBaseChainParams::MAIN){
             if(CService(ip).GetPort() != 31000) {
                 strErr = "Invalid port detected in stormnode.conf: " + line + " (must be 31000 for mainnet)";
                 streamConfig.close();

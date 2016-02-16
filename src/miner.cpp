@@ -6,6 +6,8 @@
 
 #include "miner.h"
 #include "primitives/block.h"
+#include "consensus/consensus.h"
+#include "consensus/validation.h"
 #include "txdb.h"
 #include "kernel.h"
 #include "stormnodeman.h"

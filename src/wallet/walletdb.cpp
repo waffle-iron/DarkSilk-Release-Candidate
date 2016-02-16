@@ -11,6 +11,7 @@
 #include "serialize.h"
 #include "sync.h"
 #include "wallet.h"
+#include "consensus/validation.h"
 
 #include <boost/filesystem.hpp>
 #include <boost/foreach.hpp>

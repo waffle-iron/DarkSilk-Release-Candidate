@@ -4,11 +4,13 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "chainparams.h"
-#include "main.h"
-#include "chainparamsseeds.h"
-
+#include "amount.h"
 #include "assert.h"
+#include "chainparams.h"
+#include "chainparamsbase.h"
+#include "chainparamsseeds.h"
+#include "main.h"
+
 #include <boost/assign/list_of.hpp>
 
 using namespace boost::assign;
@@ -55,13 +57,17 @@ public:
         // The message start string is designed to be unlikely to occur in normal data.
         // The characters are rarely used upper ASCII, not valid as UTF-8, and produce
         // a large 4-byte int at any alignment.
+		networkID = CBaseChainParams::MAIN;
         pchMessageStart[0] = 0x1f;
         pchMessageStart[1] = 0x22;
         pchMessageStart[2] = 0x05;
         pchMessageStart[3] = 0x31;
         vAlertPubKey = ParseHex("0450e0acc669231cfe2d0a8f0d164c341547487adff89f09e1e78a5299d204bd1c9f05897cb916365c56a31377d872abddb551a12d8d8163149abfc851be7f88ba");
         nDefaultPort = 31000;
-        nRPCPort = 31500;
+        nPoWTargetSpacing = 60;
+        nPoSTargetSpacing = 64;
+        nSNPaymentBlock = 420;
+        nStakeReward = 0.01 * COIN;
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 20); // PoW starting difficulty = 0.0002441
 
         // Build the genesis block. Note that the output of the genesis coinbase cannot
@@ -117,7 +123,6 @@ public:
     }
 
     virtual const CBlock& GenesisBlock() const { return genesis; }
-    virtual Network NetworkID() const { return CChainParams::MAIN; }
 
     virtual const vector<CAddress>& FixedSeeds() const {
         return vFixedSeeds;
@@ -139,6 +144,7 @@ public:
         // The message start string is designed to be unlikely to occur in normal data.
         // The characters are rarely used upper ASCII, not valid as UTF-8, and produce
         // a large 4-byte int at any alignment.
+        networkID = CBaseChainParams::TESTNET;
         pchMessageStart[0] = 0x1f;
         pchMessageStart[1] = 0x22;
         pchMessageStart[2] = 0x05;
@@ -146,8 +152,10 @@ public:
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 20); // PoW starting difficulty = 0.0002441
         vAlertPubKey = ParseHex("");
         nDefaultPort = 31750;
-        nRPCPort = 31800;
-        strDataDir = "testnet";
+        nPoWTargetSpacing = 60;
+        nPoSTargetSpacing = 64;
+        nSNPaymentBlock = 100;
+        nStakeReward = 0.01 * COIN;
 
         // Modify the testnet genesis block so the timestamp is valid for a later start.
         genesis.nTime = 1438578972;
@@ -176,23 +184,23 @@ public:
         nFirstPOSBlock = 101;
         nStartStormnodePayments = 1446335999; //Wed, 31 Oct 2015 23:59:59 GMT
     }
-
-    virtual Network NetworkID() const { return CChainParams::TESTNET; }
 };
 static CTestNetParams testNetParams;
 
-static CChainParams *pCurrentParams = &mainParams;
+static CChainParams *pCurrentParams = 0;
 
 const CChainParams &Params() {
+	assert(pCurrentParams);
     return *pCurrentParams;
 }
 
-void SelectParams(CChainParams::Network network) {
-    switch (network) {
-        case CChainParams::MAIN:
+void SelectParams(CBaseChainParams::Network network) {
+    SelectBaseParams(network); 
+     switch (network) {
+        case CBaseChainParams::MAIN:
             pCurrentParams = &mainParams;
             break;
-        case CChainParams::TESTNET:
+        case CBaseChainParams::TESTNET:
             pCurrentParams = &testNetParams;
             break;
         default:
@@ -202,14 +210,9 @@ void SelectParams(CChainParams::Network network) {
 }
 
 bool SelectParamsFromCommandLine() {
-    
-    bool fTestNet = GetBoolArg("-testnet", false);
-    
-    if (fTestNet) {
-        SelectParams(CChainParams::TESTNET);
-    } else {
-        SelectParams(CChainParams::MAIN);
-    }
+    if (!SelectBaseParamsFromCommandLine())
+        return false;
+
+    SelectParams(BaseParams().NetworkID());
     return true;
 }
-

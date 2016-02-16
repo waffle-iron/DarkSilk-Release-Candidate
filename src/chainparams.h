@@ -9,6 +9,8 @@
 
 #include "bignum.h"
 #include "uint256.h"
+#include "chainparamsbase.h"
+#include "amount.h"
 
 #include <vector>
 
@@ -26,7 +28,7 @@ struct CDNSSeedData {
 };
 
 /**
- * CChainParams defines various tweakable parameters of a given instance of the
+ * CBaseChainParams defines various tweakable parameters of a given instance of the
  * DarkSilk system. There are three: the main network on which people trade goods
  * and services, the public test network which gets reset from time to time and
  * a regression test mode which is intended for private networks only. It has
@@ -35,13 +37,6 @@ struct CDNSSeedData {
 class CChainParams
 {
 public:
-    enum Network {
-        MAIN,
-        TESTNET,
-
-        MAX_NETWORK_TYPES
-    };
-
     enum Base58Type {
         PUBKEY_ADDRESS,
         SCRIPT_ADDRESS,
@@ -60,18 +55,19 @@ public:
     int SubsidyHalvingInterval() const { return nSubsidyHalvingInterval; }
     virtual const CBlock& GenesisBlock() const = 0;
     virtual bool RequireRPCPassword() const { return true; }
-    const string& DataDir() const { return strDataDir; }
-    virtual Network NetworkID() const = 0;
+	CBaseChainParams::Network NetworkID() const { return networkID; }
     const vector<CDNSSeedData>& DNSSeeds() const { return vSeeds; }
     const std::vector<unsigned char> &Base58Prefix(Base58Type type) const { return base58Prefixes[type]; }
     virtual const vector<CAddress>& FixedSeeds() const = 0;
-    int RPCPort() const { return nRPCPort; }
     int FirstPOSBlock() const { return nFirstPOSBlock; }
     std::string StormnodePaymentPubKey() const { return strStormnodePaymentsPubKey; }
     int64_t StartStormnodePayments() const { return nStartStormnodePayments; }
     int PoolMaxTransactions() const { return nPoolMaxTransactions; }
     std::string SandstormPoolDummyAddress() const { return strSandstormPoolDummyAddress; }
-
+	int GetPoWTargetSpacing() const { return nPoWTargetSpacing; }
+	int GetPoSTargetSpacing() const { return nPoSTargetSpacing; }
+	int StormNodePaymentBlock() const { return nSNPaymentBlock; }
+	CAmount PoSReward() const {return nStakeReward; }
 protected:
     CChainParams() {};
 
@@ -80,10 +76,12 @@ protected:
     // Raw pub key bytes for the broadcast alert signing key.
     vector<unsigned char> vAlertPubKey;
     int nDefaultPort;
-    int nRPCPort;
+    int nPoWTargetSpacing;
+    int nPoSTargetSpacing;
+    int nSNPaymentBlock;
+    CAmount nStakeReward;
     CBigNum bnProofOfWorkLimit;
     int nSubsidyHalvingInterval;
-    string strDataDir;
     vector<CDNSSeedData> vSeeds;
     std::vector<unsigned char> base58Prefixes[MAX_BASE58_TYPES];
     std::string strStormnodePaymentsPubKey;
@@ -91,6 +89,7 @@ protected:
     int nFirstPOSBlock;
     int nPoolMaxTransactions;
     std::string strSandstormPoolDummyAddress;
+    CBaseChainParams::Network networkID;
 };
 
 /**
@@ -100,17 +99,12 @@ protected:
 const CChainParams &Params();
 
 /** Sets the params returned by Params() to those for the given network. */
-void SelectParams(CChainParams::Network network);
+void SelectParams(CBaseChainParams::Network network);
 
 /**
  * Looks for -testnet and then calls SelectParams as appropriate.
  * Returns false if an invalid combination is given.
  */
-bool SelectParamsFromCommandLine();
-
-inline bool TestNet() {
-    // Note: it's deliberate that this returns "false" for regression test mode.
-    return Params().NetworkID() == CChainParams::TESTNET;
-}
+bool SelectBaseParamsFromCommandLine();
 
 #endif
