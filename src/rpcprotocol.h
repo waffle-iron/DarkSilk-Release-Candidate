@@ -53,6 +53,7 @@ enum RPCErrorCode
     RPC_DATABASE_ERROR              = -20, // Database error
     RPC_DESERIALIZATION_ERROR       = -22, // Error parsing or validating structure in raw format
     RPC_SERVER_NOT_STARTED          = -18, // RPC server was not started (StartRPCThreads() not called)
+    RPC_IN_WARMUP                   = -28, //! Client still warming up
 
     // P2P client errors
     RPC_CLIENT_NOT_CONNECTED        = -9,  // DarkSilk is not connected
@@ -126,7 +127,13 @@ private:
 };
 
 std::string HTTPPost(const std::string& strMsg, const std::map<std::string,std::string>& mapRequestHeaders);
-std::string HTTPReply(int nStatus, const std::string& strMsg, bool keepalive);
+std::string HTTPError(int nStatus, bool keepalive,
+                      bool headerOnly = false);
+std::string HTTPReplyHeader(int nStatus, bool keepalive, size_t contentLength,
+                      const char *contentType = "application/json");
+std::string HTTPReply(int nStatus, const std::string& strMsg, bool keepalive,
+                      bool headerOnly = false,
+                      const char *contentType = "application/json");
 bool ReadHTTPRequestLine(std::basic_istream<char>& stream, int &proto,
                          std::string& http_method, std::string& http_uri);
 int ReadHTTPStatus(std::basic_istream<char>& stream, int &proto);

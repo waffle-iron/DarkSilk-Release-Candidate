@@ -231,8 +231,10 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/cleanse.h \
             src/compat.h \
             src/coincontrol.h \
+            src/core_io.h \ 
             src/sync.h \
             src/util.h \
+            src/utilstrencodings.h \
             src/hash.h \
             src/uint256.h \
             src/kernel.h \
@@ -371,10 +373,12 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/alert.cpp \
             src/chainparams.cpp \
             src/cleanse.cpp \
+            src/core_read.cpp \
             src/version.cpp \
             src/sync.cpp \
             src/txmempool.cpp \
             src/util.cpp \
+            src/utilstrencodings.cpp \
             src/hash.cpp \
             src/netbase.cpp \
             src/key.cpp \
