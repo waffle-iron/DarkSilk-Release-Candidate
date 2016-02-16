@@ -24,6 +24,36 @@ struct SeedSpec6 {
 // Main network
 //
 
+void MineGenesis(CBlock genesis){
+    // This will figure out a valid hash and Nonce if you're creating a different genesis block:
+    uint256 hashTarget = CBigNum().SetCompact(Params().ProofOfWorkLimit().GetCompact()).getuint256();
+    printf("Target: %s\n", hashTarget.GetHex().c_str());
+    uint256 newhash = genesis.GetHash();
+    uint256 besthash;
+    memset(&besthash,0xFF,32);
+    while (newhash > hashTarget) {
+    	++genesis.nNonce;
+        if (genesis.nNonce == 0){
+            printf("NONCE WRAPPED, incrementing time");
+            ++genesis.nTime;
+        }
+	newhash = genesis.GetHash();
+	if(newhash < besthash){
+	    besthash=newhash;
+	    printf("New best: %s\n", newhash.GetHex().c_str());
+	}
+    }
+    
+    LogPrintf("You have invoked the generation of a new genesis hash for DarkSilk: \n\n")
+    LogPrintf("Gensis Hash: %s\n", genesis.GetHash().ToString().c_str());
+    LogPrintf("Gensis Hash Merkle: %s\n", genesis.hashMerkleRoot.ToString().c_str());
+    LogPrintf("Gensis nTime: %u\n", genesis.nTime);
+    LogPrintf("Gensis nBits: %08x\n", genesis.nBits);
+    LogPrintf("Gensis Nonce: %u\n\n\n", genesis.nNonce);
+    
+    exit(0);
+}
+
 // Convert the pnSeeds array into usable address objects.
 static void convertSeeds(std::vector<CAddress> &vSeedsOut, const unsigned int *data, unsigned int count, int port)
 {
@@ -88,18 +118,15 @@ public:
         genesis.nTime    = 1444948732; //Change to current UNIX Time of generated genesis
         genesis.nBits    = 0x1e0ffff0;
         genesis.nNonce   = 763220;
-
+	bool newGenesis = false;
+	
         hashGenesisBlock = genesis.GetHash(); 
 
-        //// debug print
-        /*
-        printf("Gensis Hash: %s\n", genesis.GetHash().ToString().c_str());
-        printf("Gensis Hash Merkle: %s\n", genesis.hashMerkleRoot.ToString().c_str());
-        printf("Gensis nTime: %u\n", genesis.nTime);
-        printf("Gensis nBits: %08x\n", genesis.nBits);
-        printf("Gensis Nonce: %u\n\n\n", genesis.nNonce);
-        */
-
+        // Generates New Genesis Block
+        if(newGenesis = true){
+        	MineGenesis(genesis);
+        }
+        
         assert(hashGenesisBlock == uint256("0xdcc5e22e275eff273799a4c06493f8364316d032813c22845602f05ff13d7ec7"));
         assert(genesis.hashMerkleRoot == uint256("0xfed7550a453e532c460fac58d438740235c380f9908cae2d602b705ca2c2f0a6"));
 
