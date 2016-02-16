@@ -30,13 +30,14 @@
 #include "notificator.h"
 #include "guiutil.h"
 #include "debugconsole.h"
-#include "wallet.h"
+#include "wallet/wallet.h"
 #include "init.h"
 #include "stormnode-sync.h"
 #include "stormnodemanager.h"
 #include "blockbrowser.h"
 #include "statisticspage.h"
 #include "messagepage.h"
+#include "chainparams.h"
 
 #ifdef USE_NATIVE_I2P
 #include "showi2paddresses.h"
@@ -1471,7 +1472,7 @@ void DarkSilkGUI::updateStakingIcon()
         uint64_t nWeight = this->nWeight;
         uint64_t nNetworkWeight = GetPoSKernelPS();
 
-        unsigned nEstimateTime = POS_TARGET_SPACING * nNetworkWeight / nWeight;
+        unsigned nEstimateTime = Params().GetPoSTargetSpacing() * nNetworkWeight / nWeight;
 
         QString text;
 

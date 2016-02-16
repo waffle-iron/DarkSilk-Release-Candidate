@@ -10,7 +10,7 @@
 #include "util.h"
 #include "utilstrencodings.h"
 #include "ui_interface.h"
-#include "chainparams.h" // for Params().RPCPort()
+#include "chainparams.h" // for BaseParams().RPCPort()
 
 #include <set>
 #include <stdint.h>

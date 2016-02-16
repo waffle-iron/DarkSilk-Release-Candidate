@@ -9,13 +9,16 @@
 #include "base58.h"
 #include "chainparams.h"
 #include "main.h"
-#include "db.h"
+#include "wallet/db.h"
 #include "txdb.h"
 #include "init.h"
 #include "miner.h"
 #include "kernel.h"
 #include "txdb-leveldb.h"
 #include "stormnode-sync.h"
+#include "consensus/consensus.h"
+#include "consensus/validation.h"
+#include "chainparams.h"
 
 #include <boost/assign/list_of.hpp>
 
@@ -73,7 +76,7 @@ Value getstakesubsidy(const Array& params, bool fHelp)
         throw JSONRPCError(RPC_DESERIALIZATION_ERROR, "TX decode failed");
     }
 
-    return (uint64_t)STATIC_POS_REWARD;
+    return (uint64_t)Params().PoSReward();
 }
 
 Value getmininginfo(const Array& params, bool fHelp)
@@ -125,7 +128,7 @@ Value getstakinginfo(const Array& params, bool fHelp)
 
     uint64_t nNetworkWeight = GetPoSKernelPS();
     bool staking = nLastCoinStakeSearchInterval && nWeight;
-    uint64_t nExpectedTime = staking ? (POS_TARGET_SPACING * nNetworkWeight / nWeight) : 0;
+    uint64_t nExpectedTime = staking ? (Params().GetPoSTargetSpacing() * nNetworkWeight / nWeight) : 0;
 
     Object obj;
 

@@ -250,7 +250,7 @@ void CStormnodeSync::Process()
     if(RequestedStormnodeAssets == STORMNODE_SYNC_INITIAL) GetNextAsset();
 
     // sporks synced but blockchain is not, wait until we're almost at a recent block to continue
-    if(Params().NetworkID() != CChainParams::TESTNET &&
+    if(BaseParams().NetworkID() != CBaseChainParams::TESTNET &&
             !IsBlockchainSynced() && RequestedStormnodeAssets > STORMNODE_SYNC_SPORKS) return;
 
     TRY_LOCK(cs_vNodes, lockRecv);
@@ -258,7 +258,7 @@ void CStormnodeSync::Process()
 
     BOOST_FOREACH(CNode* pnode, vNodes)
     {
-        if(Params().NetworkID() == CChainParams::TESTNET){
+        if(BaseParams().NetworkID() == CBaseChainParams::TESTNET){
             if(RequestedStormnodeAttempt <= 2) {
                 pnode->PushMessage("getsporks"); //get current network sporks
             } else if(RequestedStormnodeAttempt < 4) {

@@ -9,7 +9,7 @@
 #include "addresstablemodel.h"
 #include "darksilkunits.h"
 
-#include "wallet.h"
+#include "wallet/wallet.h"
 #include "ui_interface.h"
 
 #include <QList>

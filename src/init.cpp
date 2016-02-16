@@ -23,10 +23,12 @@
 #include "stormnodeconfig.h"
 #include "smessage.h"
 #include "txdb-leveldb.h"
+#include "consensus/consensus.h"
+#include "consensus/validation.h"
 
 #ifdef ENABLE_WALLET
-#include "wallet.h"
-#include "walletdb.h"
+#include "wallet/wallet.h"
+#include "wallet/walletdb.h"
 #endif
 #include <boost/algorithm/string/predicate.hpp>
 #include <boost/algorithm/string/replace.hpp>
@@ -460,7 +462,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     nDerivationMethodIndex = 0;
 
-    if (!SelectParamsFromCommandLine()) {
+    if (!SelectBaseParamsFromCommandLine()) {
         return InitError("Invalid use of -testnet");
     }
 

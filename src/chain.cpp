@@ -4,11 +4,13 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "chain.h"
-#include "wallet.h"
+#include "chainparams.h"
+#include "wallet/wallet.h"
 #include "checkpoints.h"
 #include "spork.h"
 #include "kernel.h"
 #include "txdb-leveldb.h"
+#include "consensus/consensus.h"
 
 #include <boost/algorithm/string/replace.hpp>
 
@@ -404,7 +406,7 @@ bool CBlock::ConnectBlock(CTxDB& txdb, CBlockIndex* pindex, bool fJustCheck)
     }
     if (IsProofOfStake())
     {
-        CAmount nCalculatedStakeReward = STATIC_POS_REWARD + nFees;
+        CAmount nCalculatedStakeReward = Params().PoSReward() + nFees;
 
         if (nStakeReward > nCalculatedStakeReward)
             return DoS(100, error("ConnectBlock() : coinstake pays too much(actual=%d vs calculated=%d)", nStakeReward, nCalculatedStakeReward));

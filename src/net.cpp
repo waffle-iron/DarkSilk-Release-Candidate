@@ -7,12 +7,12 @@
 #include "primitives/transaction.h"
 #include "init.h"
 #include "chainparams.h"
-#include "db.h"
+#include "wallet/db.h"
 #include "net.h"
 #include "main.h"
 #include "ui_interface.h"
 #include "sandstorm.h"
-#include "wallet.h"
+#include "wallet/wallet.h"
 
 #ifdef USE_NATIVE_I2P
 #include "i2p.h"

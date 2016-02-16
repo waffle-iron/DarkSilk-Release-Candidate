@@ -13,7 +13,7 @@
 #include "alert.h"
 #include "chainparams.h"
 #include "checkpoints.h"
-#include "db.h"
+#include "wallet/db.h"
 #include "init.h"
 #include "kernel.h"
 #include "txdb.h"
@@ -29,6 +29,9 @@
 #include "coins.h"
 #include "txdb-leveldb.h"
 
+#include "consensus/consensus.h"
+#include "consensus/merkle.h"
+#include "consensus/validation.h"
 
 using namespace std;
 using namespace boost;
@@ -1695,7 +1698,7 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
     if (pindexPrevPrev->pprev == NULL)
         return bnTargetLimit.GetCompact(); // second block
 
-    int64_t nTargetSpacing = fProofOfStake ? POS_TARGET_SPACING : POW_TARGET_SPACING;
+    int64_t nTargetSpacing = fProofOfStake ? Params().GetPoSTargetSpacing() : Params().GetPoWTargetSpacing();
     int64_t nActualSpacing = pindexPrev->GetBlockTime() - pindexPrevPrev->GetBlockTime();
 
     if (nActualSpacing < 0) {
@@ -1723,7 +1726,7 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
 
 CAmount GetBlockValue(int nBits, int nHeight, const CAmount& nFees)
 {
-    CAmount nSubsidy = STATIC_POS_REWARD;
+    CAmount nSubsidy = Params().PoSReward();
 
     return nSubsidy + nFees;
 }
