@@ -5,6 +5,7 @@
 #include <boost/thread/shared_mutex.hpp>
 #include "i2p.h"
 #include "util.h"
+#include "utilstrencodings.h"
 #include "hash.h"
 
 namespace SAM
