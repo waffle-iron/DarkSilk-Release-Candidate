@@ -16,6 +16,7 @@
 #include "spork.h"
 #include "init.h"
 #include <boost/lexical_cast.hpp>
+#include "consensus/validation.h"
 
 using namespace std;
 using namespace boost;

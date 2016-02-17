@@ -39,7 +39,7 @@ static CBaseTestNetParams testNetParams;
 
 static CBaseChainParams *pCurrentBaseParams = 0;
 
-const CBaseChainParams &Params() {
+const CBaseChainParams &BaseParams() {
     assert(pCurrentBaseParams);
     return *pCurrentBaseParams;
 }

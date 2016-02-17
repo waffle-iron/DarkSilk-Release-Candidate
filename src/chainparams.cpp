@@ -221,6 +221,22 @@ const CChainParams &Params() {
     return *pCurrentParams;
 }
 
+CChainParams &Params(CBaseChainParams::Network network) {
+    switch (network) {
+        case CBaseChainParams::MAIN:
+            return mainParams;
+        case CBaseChainParams::TESTNET:
+            return testNetParams;
+        /*case CBaseChainParams::REGTEST:
+            return regTestParams;
+        case CBaseChainParams::UNITTEST:
+            return unitTestParams;*/
+        default:
+            assert(false && "Unimplemented network");
+            return mainParams;
+    }
+}
+
 void SelectParams(CBaseChainParams::Network network) {
     SelectBaseParams(network); 
      switch (network) {
@@ -240,6 +256,6 @@ bool SelectParamsFromCommandLine() {
     if (!SelectBaseParamsFromCommandLine())
         return false;
 
-    SelectParams(BaseParams().NetworkID());
+    SelectParams(Params().NetworkID());
     return true;
 }

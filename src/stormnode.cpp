@@ -12,6 +12,7 @@
 #include "addrman.h"
 #include <boost/lexical_cast.hpp>
 #include "init.h"
+#include "consensus/validation.h"
 
 // keep track of the scanning errors I've seen
 map<uint256, int> mapSeenStormnodeScanningErrors;
@@ -396,7 +397,7 @@ bool CStormnodeBroadcast::CheckAndUpdate(int& nDos)
         return false;
     }
 
-    if(BaseParams().NetworkID() == CBaseChainParams::MAIN) {
+    if(Params().NetworkID() == CBaseChainParams::MAIN) {
         if(addr.GetPort() != 31000) return false;
     } else if(addr.GetPort() == 31000) return false;
 
