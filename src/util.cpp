@@ -608,7 +608,7 @@ const boost::filesystem::path &GetDataDir(bool fNetSpecific)
     LOCK(csPathCached);
 
     int nNet = CBaseChainParams::MAX_NETWORK_TYPES;
-    if (fNetSpecific) nNet = BaseParams().NetworkID();
+    if (fNetSpecific) nNet = Params().NetworkID();
 
     fs::path &path = pathCached[nNet];
 

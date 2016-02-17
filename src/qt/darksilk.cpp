@@ -15,6 +15,7 @@
 #include "ui_interface.h"
 #include "paymentserver.h"
 #include "winshutdownmonitor.h"
+#include "chainparams.h"
 #ifdef Q_OS_MAC
 #include "macdockiconhandler.h"
 #endif
@@ -173,6 +174,8 @@ int main(int argc, char *argv[])
         return 1;
     }
     ReadConfigFile(mapArgs, mapMultiArgs);
+
+
 
     // Application identification (must be set before OptionsModel is initialized,
     // as it is used to locate QSettings)

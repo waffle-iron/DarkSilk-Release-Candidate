@@ -11,6 +11,7 @@
 #include "kernel.h"
 #include "txdb-leveldb.h"
 #include "consensus/consensus.h"
+#include "consensus/validation.h"
 
 #include <boost/algorithm/string/replace.hpp>
 

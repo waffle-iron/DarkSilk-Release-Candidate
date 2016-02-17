@@ -118,12 +118,12 @@ public:
         genesis.nTime    = 1444948732; //Change to current UNIX Time of generated genesis
         genesis.nBits    = 0x1e0ffff0;
         genesis.nNonce   = 763220;
-	bool newGenesis = false;
+        bool newGenesis = false;
 	
         hashGenesisBlock = genesis.GetHash(); 
 
         // Generates New Genesis Block
-        if(newGenesis = true){
+        if(newGenesis == true){
         	MineGenesis(genesis);
         }
         
@@ -217,12 +217,27 @@ static CTestNetParams testNetParams;
 static CChainParams *pCurrentParams = 0;
 
 const CChainParams &Params() {
-	assert(pCurrentParams);
+    if (pCurrentParams == 0)
+       SelectParams(CBaseChainParams::MAIN);
+
+    assert(pCurrentParams);
     return *pCurrentParams;
 }
 
+CChainParams &Params(CBaseChainParams::Network network) {
+    switch (network) {
+        case CBaseChainParams::MAIN:
+            return mainParams;
+        case CBaseChainParams::TESTNET:
+            return testNetParams;
+        default:
+            assert(false && "Unimplemented network");
+            return mainParams;
+    }
+}
+
 void SelectParams(CBaseChainParams::Network network) {
-    SelectBaseParams(network); 
+     SelectBaseParams(network);
      switch (network) {
         case CBaseChainParams::MAIN:
             pCurrentParams = &mainParams;
@@ -240,6 +255,6 @@ bool SelectParamsFromCommandLine() {
     if (!SelectBaseParamsFromCommandLine())
         return false;
 
-    SelectParams(BaseParams().NetworkID());
+    SelectParams(Params().NetworkID());
     return true;
 }

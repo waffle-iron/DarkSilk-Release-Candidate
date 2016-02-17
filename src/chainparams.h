@@ -98,6 +98,9 @@ protected:
  */
 const CChainParams &Params();
 
+/** Return parameters for the given network. */
+CChainParams &Params(CBaseChainParams::Network network);
+
 /** Sets the params returned by Params() to those for the given network. */
 void SelectParams(CBaseChainParams::Network network);
 
@@ -105,7 +108,7 @@ void SelectParams(CBaseChainParams::Network network);
  * Looks for -testnet and then calls SelectParams as appropriate.
  * Returns false if an invalid combination is given.
  */
-bool SelectBaseParamsFromCommandLine();
+bool SelectParamsFromCommandLine();
 
 inline bool TestNet() {
     // Note: it's deliberate that this returns "false" for regression test mode.
