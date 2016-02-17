@@ -39,7 +39,7 @@ void MineGenesis(CBlock genesis){
         }
 	newhash = genesis.GetHash();
 	if(newhash < besthash){
-	    besthash=newhash;
+	    besthash = newhash;
 	    printf("New best: %s\n", newhash.GetHex().c_str());
 	}
     }
@@ -118,14 +118,14 @@ public:
         genesis.nTime    = 1444948732; //Change to current UNIX Time of generated genesis
         genesis.nBits    = 0x1e0ffff0;
         genesis.nNonce   = 763220;
-        bool newGenesis = false;
+        //bool newGenesis = false;
 	
         hashGenesisBlock = genesis.GetHash(); 
 
         // Generates New Genesis Block
-        if(newGenesis == true){
+        /*if(newGenesis == true){
         	MineGenesis(genesis);
-        }
+        }*/
         
         assert(hashGenesisBlock == uint256("0xdcc5e22e275eff273799a4c06493f8364316d032813c22845602f05ff13d7ec7"));
         assert(genesis.hashMerkleRoot == uint256("0xfed7550a453e532c460fac58d438740235c380f9908cae2d602b705ca2c2f0a6"));
