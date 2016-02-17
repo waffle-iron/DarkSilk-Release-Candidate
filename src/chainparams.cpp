@@ -4,12 +4,12 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "amount.h"
 #include "assert.h"
 #include "chainparams.h"
 #include "chainparamsbase.h"
 #include "chainparamsseeds.h"
 #include "main.h"
+#include "util.h"
 
 #include <boost/assign/list_of.hpp>
 
@@ -44,11 +44,11 @@ void MineGenesis(CBlock genesis){
 	}
     }
     
-    LogPrintf("You have invoked the generation of a new genesis hash for DarkSilk: \n\n")
+    LogPrintf("You have invoked the generation of a new genesis hash for DarkSilk: \n\n");
     LogPrintf("Gensis Hash: %s\n", genesis.GetHash().ToString().c_str());
     LogPrintf("Gensis Hash Merkle: %s\n", genesis.hashMerkleRoot.ToString().c_str());
     LogPrintf("Gensis nTime: %u\n", genesis.nTime);
-    LogPrintf("Gensis nBits: %08x\n", genesis.nBits);
+    LogPrintf("Gensis nBits: %u\n", genesis.nBits);
     LogPrintf("Gensis Nonce: %u\n\n\n", genesis.nNonce);
     
     exit(0);

@@ -107,4 +107,9 @@ void SelectParams(CBaseChainParams::Network network);
  */
 bool SelectBaseParamsFromCommandLine();
 
+inline bool TestNet() {
+    // Note: it's deliberate that this returns "false" for regression test mode.
+    return Params().NetworkID() == CBaseChainParams::TESTNET;
+}
+
 #endif
