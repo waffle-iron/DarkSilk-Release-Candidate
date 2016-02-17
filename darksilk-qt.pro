@@ -361,6 +361,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/crypto/argon2/blake2/blamka-round-ref.h \
             src/crypto/argon2/opt.h
 
+
 SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/qt/transactiontablemodel.cpp \
             src/qt/addresstablemodel.cpp \
