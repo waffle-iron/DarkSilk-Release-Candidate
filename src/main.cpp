@@ -11,7 +11,6 @@
 
 #include "main.h"
 #include "alert.h"
-#include "chainparams.h"
 #include "checkpoints.h"
 #include "wallet/db.h"
 #include "init.h"
