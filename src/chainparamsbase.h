@@ -1,12 +1,12 @@
-// Copyright (c) 2014 The Bitcoin developers
+// Copyright (c) 2014-2016 The Bitcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOIN_CHAIN_PARAMS_BASE_H
-#define BITCOIN_CHAIN_PARAMS_BASE_H
+#ifndef DARKSILK_CHAIN_PARAMS_BASE_H
+#define DARKSILK_CHAIN_PARAMS_BASE_H
 
-#include <vector>
 #include <string>
+#include <vector>
 
 /**
  * CBaseChainParams defines the base parameters (shared between bitcoin-cli and bitcoind)
@@ -48,4 +48,4 @@ void SelectBaseParams(CBaseChainParams::Network network);
  */
 bool SelectBaseParamsFromCommandLine();
 
-#endif
+#endif // DARKSILK_CHAIN_PARAMS_BASE_H

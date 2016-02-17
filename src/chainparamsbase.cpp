@@ -4,9 +4,8 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "chainparamsbase.h"
-
-#include "assert.h"
 #include "util.h"
+#include <assert.h>
 
 #include <boost/assign/list_of.hpp>
 
@@ -15,7 +14,6 @@ using namespace boost::assign;
 //
 // Main network
 //
-
 class CBaseMainParams : public CBaseChainParams {
 public:
     CBaseMainParams() {
