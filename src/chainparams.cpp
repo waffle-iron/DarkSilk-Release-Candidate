@@ -230,10 +230,6 @@ CChainParams &Params(CBaseChainParams::Network network) {
             return mainParams;
         case CBaseChainParams::TESTNET:
             return testNetParams;
-        /*case CBaseChainParams::REGTEST:
-            return regTestParams;
-        case CBaseChainParams::UNITTEST:
-            return unitTestParams;*/
         default:
             assert(false && "Unimplemented network");
             return mainParams;
