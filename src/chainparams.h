@@ -108,7 +108,7 @@ void SelectParams(CBaseChainParams::Network network);
  * Looks for -testnet and then calls SelectParams as appropriate.
  * Returns false if an invalid combination is given.
  */
-bool SelectBaseParamsFromCommandLine();
+bool SelectParamsFromCommandLine();
 
 inline bool TestNet() {
     // Note: it's deliberate that this returns "false" for regression test mode.
