@@ -2,11 +2,12 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 //--------------------------------------------------------------------------------------------------
-#include <boost/thread/shared_mutex.hpp>
 #include "i2p.h"
 #include "util.h"
 #include "utilstrencodings.h"
 #include "hash.h"
+
+#include <boost/thread/shared_mutex.hpp>
 
 namespace SAM
 {

@@ -7,14 +7,8 @@
 #define DARKSILK_WALLET_H
 
 #include "walletdb.h"
-
-#include <string>
-#include <vector>
-
-#include <stdlib.h>
-
+#include "net.h"
 #include "primitives/block.h"
-#include "primitives/transaction.h"
 #include "crypter.h"
 #include "main.h"
 #include "key.h"
@@ -23,6 +17,10 @@
 #include "ui_interface.h"
 #include "util.h"
 #include "stealth.h"
+
+#include <string>
+#include <vector>
+#include <stdlib.h>
 
 const CAmount MIN_TX_FEE = 10000; // 0.00001 DRKSLK Minimum Transaction Fee
 /// Fees smaller than this (in satoshi) are considered zero fee (for relaying)

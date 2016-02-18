@@ -5,8 +5,8 @@
 
 #include "chainparamsbase.h"
 #include "util.h"
-#include <assert.h>
 
+#include <assert.h>
 #include <boost/assign/list_of.hpp>
 
 using namespace boost::assign;
@@ -58,17 +58,26 @@ void SelectBaseParams(CBaseChainParams::Network network) {
     }
 }
 
-bool SelectBaseParamsFromCommandLine() {
+CBaseChainParams::Network NetworkIdFromCommandLine()
+{    
     bool fTestNet = GetBoolArg("-testnet", false);
 
-    if (fTestNet) {
-        return false;
-    }
-
-	if (fTestNet) {
-        SelectBaseParams(CBaseChainParams::TESTNET);
-    } else {
-        SelectBaseParams(CBaseChainParams::MAIN);
-    }
-    return true;
+    if (fTestNet)
+        return CBaseChainParams::TESTNET;
+    return CBaseChainParams::MAIN;
 } 
+
+bool SelectBaseParamsFromCommandLine()
+{
+    CBaseChainParams::Network network = NetworkIdFromCommandLine();
+    if (network == CBaseChainParams::MAX_NETWORK_TYPES)
+        return false;
+
+    SelectBaseParams(network);
+    return true;
+}
+
+bool AreBaseParamsConfigured()
+{
+    return pCurrentBaseParams != NULL;
+}

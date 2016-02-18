@@ -1,9 +1,9 @@
+#include "messagemodel.h"
 #include "guiutil.h"
 #include "guiconstants.h"
 #include "darksilkunits.h"
 #include "optionsmodel.h"
 #include "walletmodel.h"
-#include "messagemodel.h"
 #include "addresstablemodel.h"
 
 #include "ui_interface.h"

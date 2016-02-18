@@ -3,6 +3,7 @@
  */
 
 #include "darksilkgui.h"
+#include "net.h"
 #include "clientmodel.h"
 #include "walletmodel.h"
 #include "messagemodel.h"
@@ -15,7 +16,6 @@
 #include "ui_interface.h"
 #include "paymentserver.h"
 #include "winshutdownmonitor.h"
-#include "chainparams.h"
 #ifdef Q_OS_MAC
 #include "macdockiconhandler.h"
 #endif
@@ -132,8 +132,6 @@ void DebugMessageHandler(QtMsgType type, const QMessageLogContext& context, cons
 #ifndef DARKSILK_QT_TEST
 int main(int argc, char *argv[])
 {
-    SetupEnvironment();
-
     /// 1. Parse command-line options. These take precedence over anything else.
     // Command-line options take precedence:
     ParseParameters(argc, argv);

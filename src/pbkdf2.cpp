@@ -1,7 +1,8 @@
 // Copyright (c) 2015-2016 Silk Network
 
-#include <string.h>
 #include "pbkdf2.h"
+
+#include <string.h>
 
 static inline uint32_t
 be32dec(const void *pp)

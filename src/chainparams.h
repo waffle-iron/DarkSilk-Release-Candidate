@@ -7,14 +7,14 @@
 #ifndef DARKSILK_CHAIN_PARAMS_H
 #define DARKSILK_CHAIN_PARAMS_H
 
+#include "chainparamsbase.h"
+#include "primitives/block.h"
+#include "protocol.h"
 #include "bignum.h"
 #include "uint256.h"
-#include "chainparamsbase.h"
 #include "amount.h"
 
 #include <vector>
-
-using namespace std;
 
 #define MESSAGE_START_SIZE 4
 typedef unsigned char MessageStartChars[MESSAGE_START_SIZE];
@@ -23,8 +23,8 @@ class CAddress;
 class CBlock;
 
 struct CDNSSeedData {
-    string name, host;
-    CDNSSeedData(const string &strName, const string &strHost) : name(strName), host(strHost) {}
+    std::string name, host;
+    CDNSSeedData(const std::string &strName, const std::string &strHost) : name(strName), host(strHost) {}
 };
 
 /**
@@ -49,16 +49,16 @@ public:
 
     const uint256& HashGenesisBlock() const { return hashGenesisBlock; }
     const MessageStartChars& MessageStart() const { return pchMessageStart; }
-    const vector<unsigned char>& AlertKey() const { return vAlertPubKey; }
+    const std::vector<unsigned char>& AlertKey() const { return vAlertPubKey; }
     int GetDefaultPort() const { return nDefaultPort; }
     const CBigNum& ProofOfWorkLimit() const { return bnProofOfWorkLimit; }
     int SubsidyHalvingInterval() const { return nSubsidyHalvingInterval; }
-    virtual const CBlock& GenesisBlock() const = 0;
+    const CBlock& GenesisBlock() const { return genesis; }
     virtual bool RequireRPCPassword() const { return true; }
 	CBaseChainParams::Network NetworkID() const { return networkID; }
-    const vector<CDNSSeedData>& DNSSeeds() const { return vSeeds; }
+    const std::vector<CDNSSeedData>& DNSSeeds() const { return vSeeds; }
     const std::vector<unsigned char> &Base58Prefix(Base58Type type) const { return base58Prefixes[type]; }
-    virtual const vector<CAddress>& FixedSeeds() const = 0;
+    const std::vector<CAddress>& FixedSeeds() const { return vFixedSeeds; }
     int FirstPOSBlock() const { return nFirstPOSBlock; }
     std::string StormnodePaymentPubKey() const { return strStormnodePaymentsPubKey; }
     int64_t StartStormnodePayments() const { return nStartStormnodePayments; }
@@ -74,7 +74,7 @@ protected:
     uint256 hashGenesisBlock;
     MessageStartChars pchMessageStart;
     // Raw pub key bytes for the broadcast alert signing key.
-    vector<unsigned char> vAlertPubKey;
+    std::vector<unsigned char> vAlertPubKey;
     int nDefaultPort;
     int nPoWTargetSpacing;
     int nPoSTargetSpacing;
@@ -82,7 +82,7 @@ protected:
     CAmount nStakeReward;
     CBigNum bnProofOfWorkLimit;
     int nSubsidyHalvingInterval;
-    vector<CDNSSeedData> vSeeds;
+    std::vector<CDNSSeedData> vSeeds;
     std::vector<unsigned char> base58Prefixes[MAX_BASE58_TYPES];
     std::string strStormnodePaymentsPubKey;
     int64_t nStartStormnodePayments;
@@ -90,6 +90,9 @@ protected:
     int nPoolMaxTransactions;
     std::string strSandstormPoolDummyAddress;
     CBaseChainParams::Network networkID;
+    std::string strNetworkID;
+    CBlock genesis;
+    std::vector<CAddress> vFixedSeeds;
 };
 
 /**
@@ -105,14 +108,13 @@ CChainParams &Params(CBaseChainParams::Network network);
 void SelectParams(CBaseChainParams::Network network);
 
 /**
- * Looks for -testnet and then calls SelectParams as appropriate.
+ * Looks for -regtest or -testnet and then calls SelectParams as appropriate.
  * Returns false if an invalid combination is given.
  */
 bool SelectParamsFromCommandLine();
 
-inline bool TestNet() {
-    // Note: it's deliberate that this returns "false" for regression test mode.
+inline bool TestNet(){
     return Params().NetworkID() == CBaseChainParams::TESTNET;
 }
 
-#endif
+#endif // DARKSILK_CHAIN_PARAMS_H

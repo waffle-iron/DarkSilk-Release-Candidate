@@ -6,8 +6,6 @@
  * Silk Network 2015-2016
  */
 
-#include <QApplication>
-
 #include "darksilkgui.h"
 #include "transactiontablemodel.h"
 #include "addressbookpage.h"
@@ -16,6 +14,7 @@
 #include "optionsdialog.h"
 #include "aboutdialog.h"
 #include "clientmodel.h"
+#include "net.h"
 #include "walletmodel.h"
 #include "messagemodel.h"
 #include "editaddressdialog.h"
@@ -37,7 +36,6 @@
 #include "blockbrowser.h"
 #include "statisticspage.h"
 #include "messagepage.h"
-#include "chainparams.h"
 
 #ifdef USE_NATIVE_I2P
 #include "showi2paddresses.h"
@@ -47,6 +45,7 @@
 #include "macdockiconhandler.h"
 #endif
 
+#include <QApplication>
 #include <QMenuBar>
 #include <QMenu>
 #include <QFile>

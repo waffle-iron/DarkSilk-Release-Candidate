@@ -1,14 +1,13 @@
 // Copyright (c) 2014-2016 The Dash Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
+#include "instantx.h"
 #include "sync.h"
 #include "net.h"
 #include "key.h"
 #include "util.h"
 #include "base58.h"
 #include "protocol.h"
-#include "instantx.h"
 #include "activestormnode.h"
 #include "stormnode-sync.h"
 #include "stormnodeman.h"

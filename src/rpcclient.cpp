@@ -5,12 +5,12 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "rpcclient.h"
-
 #include "rpcprotocol.h"
+#include "net.h"
+#include "chainparams.h" // for BaseParams().RPCPort()
 #include "util.h"
 #include "utilstrencodings.h"
 #include "ui_interface.h"
-#include "chainparams.h" // for BaseParams().RPCPort()
 
 #include <set>
 #include <stdint.h>

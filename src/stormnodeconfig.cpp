@@ -2,8 +2,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "net.h"
 #include "stormnodeconfig.h"
+#include "net.h"
 #include "util.h"
 
 #include <base58.h>

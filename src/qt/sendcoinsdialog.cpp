@@ -1,6 +1,6 @@
 #include "sendcoinsdialog.h"
 #include "ui_sendcoinsdialog.h"
-
+#include "net.h"
 #include "walletmodel.h"
 #include "addresstablemodel.h"
 #include "addressbookpage.h"

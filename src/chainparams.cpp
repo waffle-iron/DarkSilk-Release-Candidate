@@ -4,15 +4,16 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "assert.h"
+#include "net.h"
 #include "chainparams.h"
-#include "chainparamsbase.h"
-#include "chainparamsseeds.h"
-#include "main.h"
 #include "util.h"
+#include "utilstrencodings.h"
+#include "chainparamsseeds.h"
 
+#include <assert.h>
 #include <boost/assign/list_of.hpp>
 
+using namespace std;
 using namespace boost::assign;
 
 struct SeedSpec6 {
@@ -88,6 +89,7 @@ public:
         // The characters are rarely used upper ASCII, not valid as UTF-8, and produce
         // a large 4-byte int at any alignment.
 		networkID = CBaseChainParams::MAIN;
+        strNetworkID = "main";
         pchMessageStart[0] = 0x1f;
         pchMessageStart[1] = 0x22;
         pchMessageStart[2] = 0x05;
@@ -148,15 +150,6 @@ public:
         nFirstPOSBlock = 101;
         nStartStormnodePayments = 1446335999; //Wed, 31 Oct 2015 23:59:59 GMT
     }
-
-    virtual const CBlock& GenesisBlock() const { return genesis; }
-
-    virtual const vector<CAddress>& FixedSeeds() const {
-        return vFixedSeeds;
-    }
-protected:
-    CBlock genesis;
-    vector<CAddress> vFixedSeeds;
 };
 static CMainParams mainParams;
 
@@ -172,6 +165,7 @@ public:
         // The characters are rarely used upper ASCII, not valid as UTF-8, and produce
         // a large 4-byte int at any alignment.
         networkID = CBaseChainParams::TESTNET;
+        strNetworkID = "test";
         pchMessageStart[0] = 0x1f;
         pchMessageStart[1] = 0x22;
         pchMessageStart[2] = 0x05;
@@ -217,9 +211,6 @@ static CTestNetParams testNetParams;
 static CChainParams *pCurrentParams = 0;
 
 const CChainParams &Params() {
-    if (pCurrentParams == 0)
-       SelectParams(CBaseChainParams::MAIN);
-
     assert(pCurrentParams);
     return *pCurrentParams;
 }
@@ -238,17 +229,7 @@ CChainParams &Params(CBaseChainParams::Network network) {
 
 void SelectParams(CBaseChainParams::Network network) {
      SelectBaseParams(network);
-     switch (network) {
-        case CBaseChainParams::MAIN:
-            pCurrentParams = &mainParams;
-            break;
-        case CBaseChainParams::TESTNET:
-            pCurrentParams = &testNetParams;
-            break;
-        default:
-            assert(false && "Unimplemented network");
-            return;
-    }
+     pCurrentParams = &Params(network);
 }
 
 bool SelectParamsFromCommandLine() {

@@ -1,7 +1,7 @@
 #include <QApplication>
 
 #include "guiutil.h"
-
+#include "net.h"
 #include "primitives/transaction.h"
 #include "darksilkaddressvalidator.h"
 #include "walletmodel.h"

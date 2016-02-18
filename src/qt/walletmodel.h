@@ -1,13 +1,13 @@
 #ifndef WALLETMODEL_H
 #define WALLETMODEL_H
 
-#include <QObject>
-#include <vector>
-#include <map>
-
 #include "allocators.h" /* for SecureString */
 #include "instantx.h"
 #include "wallet/wallet.h"
+
+#include <QObject>
+#include <vector>
+#include <map>
 
 class OptionsModel;
 class AddressTableModel;

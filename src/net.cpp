@@ -3,12 +3,12 @@
 // Copyright (c) 2015-2016 Silk Network
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-
+#include "net.h"
+#include "addrman.h"
 #include "primitives/transaction.h"
 #include "init.h"
 #include "chainparams.h"
 #include "wallet/db.h"
-#include "net.h"
 #include "main.h"
 #include "ui_interface.h"
 #include "sandstorm.h"

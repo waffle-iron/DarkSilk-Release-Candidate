@@ -144,8 +144,6 @@ extern bool fLogIPs;
 extern bool fLogTimestamps;
 extern volatile bool fReopenDebugLog;
 
-void SetupEnvironment();
-
 bool IsLogOpen();
 /* Return true if log accepts specified category */
 bool LogAcceptCategory(const char* category);

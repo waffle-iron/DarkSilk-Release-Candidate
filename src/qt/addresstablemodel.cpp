@@ -1,6 +1,7 @@
 #include "addresstablemodel.h"
 
 #include "guiutil.h"
+#include "net.h"
 #include "walletmodel.h"
 
 #include "wallet/wallet.h"

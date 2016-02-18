@@ -4,6 +4,7 @@
 #include "transactionrecord.h"
 #include "guiconstants.h"
 #include "transactiondesc.h"
+#include "net.h"
 #include "walletmodel.h"
 #include "optionsmodel.h"
 #include "addresstablemodel.h"
