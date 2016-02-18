@@ -11,10 +11,10 @@
 #ifndef __INCLUDED_PROTOCOL_H__
 #define __INCLUDED_PROTOCOL_H__
 
+
+#include "net.h"
 #include "chainparams.h"
 #include "serialize.h"
-#include "netbase.h"
-#include "uint256.h"
 
 #include <stdint.h>
 #include <string>
