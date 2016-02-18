@@ -4,8 +4,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef H_DARKSILK_SCRIPT
-#define H_DARKSILK_SCRIPT
+#ifndef H_DARKSILK_SCRIPTUTILS
+#define H_DARKSILK_SCRIPTUTILS
 
 #include <string>
 #include <vector>

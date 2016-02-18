@@ -6,7 +6,7 @@
 #include "net.h"
 #include "primitives/block.h"
 #include "primitives/transaction.h"
-#include "script.h"
+#include "script/scriptutils.h"
 #include "serialize.h"
 #include "streams.h"
 #include "util.h"

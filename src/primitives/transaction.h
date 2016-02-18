@@ -10,7 +10,7 @@
 #include "uint256.h"
 #include "serialize.h"
 #include "util.h"
-#include "script.h"
+#include "script/scriptutils.h"
 #include "timedata.h"
 
 #include <stdio.h>

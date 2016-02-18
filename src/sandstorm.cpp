@@ -7,7 +7,7 @@
 #include "util.h"
 #include "stormnode-payments.h"
 #include "stormnode-sync.h"
-#include "script.h"
+#include "script/scriptutils.h"
 #include "instantx.h"
 #include "consensus/validation.h"
 #include "ui_interface.h"

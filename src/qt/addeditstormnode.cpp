@@ -9,7 +9,7 @@
 #include "ui_interface.h"
 #include "util.h"
 #include "key.h"
-#include "script.h"
+#include "script/scriptutils.h"
 #include "init.h"
 #include "base58.h"
 #include <QMessageBox>
