@@ -10,7 +10,6 @@
 #include "chainparams.h"
 #include "primitives/block.h"
 #include "util.h"
-#include "chainparams.h"
 
 #include <vector>
 #include <boost/foreach.hpp>

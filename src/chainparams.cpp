@@ -211,6 +211,9 @@ static CTestNetParams testNetParams;
 static CChainParams *pCurrentParams = 0;
 
 const CChainParams &Params() {
+    if (pCurrentParams == 0)
+        SelectParams(CBaseChainParams::MAIN);
+
     assert(pCurrentParams);
     return *pCurrentParams;
 }
