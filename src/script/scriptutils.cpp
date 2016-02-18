@@ -5,6 +5,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "script/scriptutils.h"
+#include "script/sign.h"
 #include "keystore.h"
 #include "main.h"
 #include "sync.h"
@@ -2150,7 +2151,7 @@ uint256 SignatureHash(CScript scriptCode, const CTransaction& txTo, unsigned int
     ss << txTmp << nHashType;
     return ss.GetHash();
 }
-
+/*
 bool SignSignature(const CKeyStore &keystore, const CScript& fromPubKey, CMutableTransaction& txTo, unsigned int nIn, int nHashType)
 {
     assert(nIn < txTo.vin.size());
@@ -2240,7 +2241,7 @@ bool SignSignature(const CKeyStore &keystore, const CMutableTransaction& txFrom,
 
     return SignSignature(keystore, txout.scriptPubKey, txTo, nIn, nHashType);
 }
-
+*/
 // Valid signature cache, to avoid doing expensive ECDSA signature checking
 // twice for every transaction (once when accepted into memory pool, and
 // again when accepted into the block chain)
@@ -2460,7 +2461,7 @@ bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, vector<vector<unsi
     typeRet = TX_NONSTANDARD;
     return false;
 }
-
+/*
 bool Sign1(const CKeyID& address, const CKeyStore& keystore, uint256 hash, int nHashType, CScript& scriptSigRet)
 {
     CKey key;
@@ -2534,7 +2535,7 @@ bool Solver(const CKeyStore& keystore, const CScript& scriptPubKey, uint256 hash
     }
     return false;
 }
-
+*/
 int ScriptSigArgsExpected(txnouttype t, const std::vector<std::vector<unsigned char> >& vSolutions)
 {
     switch (t)
@@ -2969,7 +2970,7 @@ bool VerifySignature(const CTransaction& txFrom, const CTransaction& txTo, unsig
 
     return VerifyScript(txin.scriptSig, txout.scriptPubKey, txTo, nIn, flags, nHashType);
 }
-
+/*
 static CScript PushAll(const vector<valtype>& values)
 {
     CScript result;
@@ -3092,7 +3093,7 @@ CScript CombineSignatures(CScript scriptPubKey, const CTransaction& txTo, unsign
 
     return CombineSignatures(scriptPubKey, txTo, nIn, txType, vSolutions, stack1, stack2);
 }
-
+*/
 unsigned int CScript::GetSigOpCount(bool fAccurate) const
 {
     unsigned int n = 0;
