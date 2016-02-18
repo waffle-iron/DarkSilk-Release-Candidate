@@ -19,6 +19,8 @@
 #include "key.h"
 #include "pubkey.h"
 #include "script/scriptutils.h"
+#include "script/sign.h"
+#include "script/sign.h"
 #include "allocators.h"
 
 #include <string>

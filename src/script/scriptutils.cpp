@@ -5,6 +5,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "script/scriptutils.h"
+#include "script/sign.h"
 #include "keystore.h"
 #include "main.h"
 #include "sync.h"

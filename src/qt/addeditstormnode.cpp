@@ -10,6 +10,7 @@
 #include "util.h"
 #include "key.h"
 #include "script/scriptutils.h"
+#include "script/sign.h"
 #include "init.h"
 #include "base58.h"
 #include <QMessageBox>

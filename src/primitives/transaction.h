@@ -11,6 +11,7 @@
 #include "serialize.h"
 #include "util.h"
 #include "script/scriptutils.h"
+#include "script/sign.h"
 #include "timedata.h"
 
 #include <stdio.h>
