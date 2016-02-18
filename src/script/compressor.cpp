@@ -3,7 +3,7 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "compressor.h"
+#include "script/compressor.h"
 
 #include "hash.h"
 #include "pubkey.h"
