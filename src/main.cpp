@@ -5,6 +5,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "main.h"
+#include "addrman.h"
 #include "alert.h"
 #include "chainparams.h"
 #include "checkpoints.h"
@@ -32,6 +33,7 @@
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
 #include <boost/lexical_cast.hpp>
+#include <boost/thread.hpp>
 
 using namespace std;
 using namespace boost;
@@ -79,6 +81,7 @@ uint256 hashBestChain = 0;
 CBlockIndex* pindexBest = NULL;
 
 int64_t nTimeBestReceived = 0;
+CConditionVariable cvBlockChange;
 bool fImporting = false;
 bool fReindex = false;
 bool fAddrIndex = false;

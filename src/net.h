@@ -6,14 +6,20 @@
 #ifndef DARKSILK_NET_H
 #define DARKSILK_NET_H
 
-#include "sync.h"
+#include "addrman.h"
+#include "compat.h"
+#include "hash.h"
 #include "mruset.h"
 #include "netbase.h"
 #include "protocol.h"
-#include "addrman.h"
-#include "hash.h"
+#include "util.h"
 #include "streams.h"
+#include "sync.h"
+#include "uint256.h"
 #include "utilstrencodings.h"
+
+#include <deque>
+#include <stdint.h>
 
 #ifndef WIN32
 #include <arpa/inet.h>

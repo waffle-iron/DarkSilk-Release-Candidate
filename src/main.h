@@ -80,6 +80,7 @@ extern uint64_t nLastBlockSize;
 extern int64_t nLastCoinStakeSearchInterval;
 extern const std::string strMessageMagic;
 extern int64_t nTimeBestReceived;
+extern CConditionVariable cvBlockChange;
 extern bool fImporting;
 extern bool fReindex;
 struct COrphanBlock;

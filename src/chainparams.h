@@ -7,20 +7,19 @@
 #ifndef DARKSILK_CHAIN_PARAMS_H
 #define DARKSILK_CHAIN_PARAMS_H
 
+#include "chainparamsbase.h"
 #include "primitives/block.h"
 #include "protocol.h"
-#include "chainparamsbase.h"
 #include "bignum.h"
 #include "uint256.h"
 #include "amount.h"
 
 #include <vector>
 
-#define MESSAGE_START_SIZE 4
-typedef unsigned char MessageStartChars[MESSAGE_START_SIZE];
-
 class CAddress;
 //class CBlock;
+
+typedef unsigned char MessageStartChars[MESSAGE_START_SIZE];
 
 struct CDNSSeedData {
     std::string name, host;
@@ -108,7 +107,7 @@ CChainParams &Params(CBaseChainParams::Network network);
 void SelectParams(CBaseChainParams::Network network);
 
 /**
- * Looks for -regtest or -testnet and then calls SelectParams as appropriate.
+ * Looks for -testnet and then calls SelectParams as appropriate.
  * Returns false if an invalid combination is given.
  */
 bool SelectParamsFromCommandLine();
