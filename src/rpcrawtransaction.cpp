@@ -13,7 +13,8 @@
 #include "main.h"
 #include "net.h"
 #include "keystore.h"
-#include "script.h"
+#include "script/scriptutils.h"
+#include "script/sign.h"
 #include "txdb-leveldb.h"
 
 #ifdef ENABLE_WALLET

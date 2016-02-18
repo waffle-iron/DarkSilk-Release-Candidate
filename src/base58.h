@@ -18,7 +18,9 @@
 #include "chainparams.h"
 #include "key.h"
 #include "pubkey.h"
-#include "script.h"
+#include "script/scriptutils.h"
+#include "script/sign.h"
+#include "script/sign.h"
 #include "allocators.h"
 
 #include <string>
