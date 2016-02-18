@@ -7,9 +7,9 @@
 #ifndef DARKSILK_CHAIN_PARAMS_H
 #define DARKSILK_CHAIN_PARAMS_H
 
-#include "chainparamsbase.h"
 #include "primitives/block.h"
 #include "protocol.h"
+#include "chainparamsbase.h"
 #include "bignum.h"
 #include "uint256.h"
 #include "amount.h"
@@ -20,7 +20,7 @@
 typedef unsigned char MessageStartChars[MESSAGE_START_SIZE];
 
 class CAddress;
-class CBlock;
+//class CBlock;
 
 struct CDNSSeedData {
     std::string name, host;

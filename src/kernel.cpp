@@ -6,7 +6,6 @@
 #include "kernel.h"
 #include "txdb.h"
 #include "txdb-leveldb.h"
-#include "chainparams.h"
 
 #include <boost/assign/list_of.hpp>
 

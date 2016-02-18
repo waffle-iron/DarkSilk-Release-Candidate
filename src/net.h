@@ -6,6 +6,7 @@
 #ifndef DARKSILK_NET_H
 #define DARKSILK_NET_H
 
+#include "sync.h"
 #include "mruset.h"
 #include "netbase.h"
 #include "protocol.h"

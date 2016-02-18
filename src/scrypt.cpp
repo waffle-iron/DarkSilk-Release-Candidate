@@ -27,6 +27,8 @@
  * online backup system.
  */
 
+#include "net.h"
+#include "chainparams.h"
 #include "scrypt.h"
 #include "pbkdf2.h"
 

@@ -4,7 +4,7 @@
 #ifndef _DARKSILK_ADDRMAN
 #define _DARKSILK_ADDRMAN
 
-#include "sync.h"
+
 #include "net.h"
 #include "protocol.h"
 #include "timedata.h"
