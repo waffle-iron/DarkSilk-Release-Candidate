@@ -3,13 +3,12 @@
 // Copyright (c) 2015-2016 Silk Network
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
 #include "net.h"
 #include "addrman.h"
-#include "primitives/transaction.h"
-#include "init.h"
 #include "chainparams.h"
-#include "wallet/db.h"
-#include "main.h"
+#include "clientversion.h"
+#include "primitives/transaction.h"
 #include "ui_interface.h"
 #include "sandstorm.h"
 #include "wallet/wallet.h"
@@ -20,6 +19,8 @@
 
 #ifdef WIN32
 #include <string.h>
+#else
+#include <fcntl.h>
 #endif
 
 #ifdef USE_UPNP
@@ -29,10 +30,17 @@
 #include <miniupnpc/upnperrors.h>
 #endif
 
+#include <boost/filesystem.hpp>
+#include <boost/thread.hpp>
+
 #define TOR_NET_STRING "tor"
 
 // Dump addresses to peers.dat every 15 minutes (900s)
 #define DUMP_ADDRESSES_INTERVAL 900
+
+#if !defined(HAVE_MSG_NOSIGNAL) && !defined(MSG_NOSIGNAL)
+#define MSG_NOSIGNAL 0
+#endif
 
 using namespace std;
 using namespace boost;
@@ -1405,8 +1413,7 @@ void ThreadOpenConnections()
         int nTries = 0;
         while (true)
         {
-            // use an nUnkBias between 10 (no outgoing connections) and 90 (8 outgoing connections)
-            CAddress addr = addrman.Select(10 + min(nOutbound,8)*10);
+            CAddress addr = addrman.Select();
 
             // if we selected an invalid address, restart
             if (!addr.IsValid() || setConnected.count(addr.GetGroup()) || IsLocal(addr))

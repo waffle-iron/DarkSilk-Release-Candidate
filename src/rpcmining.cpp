@@ -636,7 +636,7 @@ Value getblocktemplate(const Array& params, bool fHelp)
             checktxtime = boost::get_system_time() + boost::posix_time::minutes(1);
 
             boost::unique_lock<boost::mutex> lock(csBestBlock);
-            while (pindexBest->GetBlockHash() == hashWatchedChain)
+            while (pindexBest->GetBlockHash() == hashWatchedChain && IsRPCRunning())
             {
                 if (!cvBlockChange.timed_wait(lock, checktxtime))
                 {

@@ -4,11 +4,11 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "net.h"
 #include "chainparams.h"
+#include "chainparamsseeds.h"
+#include "net.h"
 #include "util.h"
 #include "utilstrencodings.h"
-#include "chainparamsseeds.h"
 
 #include <assert.h>
 #include <boost/assign/list_of.hpp>
@@ -211,9 +211,6 @@ static CTestNetParams testNetParams;
 static CChainParams *pCurrentParams = 0;
 
 const CChainParams &Params() {
-    if (pCurrentParams == 0)
-        SelectParams(CBaseChainParams::MAIN);
-
     assert(pCurrentParams);
     return *pCurrentParams;
 }
@@ -235,10 +232,12 @@ void SelectParams(CBaseChainParams::Network network) {
      pCurrentParams = &Params(network);
 }
 
-bool SelectParamsFromCommandLine() {
-    if (!SelectBaseParamsFromCommandLine())
+bool SelectParamsFromCommandLine()
+{
+    CBaseChainParams::Network network = NetworkIdFromCommandLine();
+    if (network == CBaseChainParams::MAX_NETWORK_TYPES)
         return false;
 
-    SelectParams(Params().NetworkID());
+    SelectParams(network);
     return true;
 }

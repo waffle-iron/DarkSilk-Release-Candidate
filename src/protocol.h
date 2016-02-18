@@ -8,17 +8,19 @@
 # error This header can only be compiled as C++.
 #endif
 
-#ifndef __INCLUDED_PROTOCOL_H__
-#define __INCLUDED_PROTOCOL_H__
+#ifndef DARKSILK_PROTOCOL_H
+#define DARKSILK_PROTOCOL_H
 
 
-#include "net.h"
-#include "chainparams.h"
+#include "netbase.h"
 #include "serialize.h"
+#include "uint256.h"
+#include "version.h"
 
 #include <stdint.h>
 #include <string>
 
+#define MESSAGE_START_SIZE 4
 
 /** Message header.
  * (4) message start.
@@ -148,6 +150,7 @@ enum {
     MSG_TXLOCK_VOTE,
     MSG_SPORK,
     MSG_STORMNODE_WINNER,
+    MSG_STORMNODE_SCANNING_ERROR,
     MSG_BUDGET_VOTE,
     MSG_BUDGET_PROPOSAL,
     MSG_BUDGET_FINALIZED,
@@ -159,4 +162,4 @@ enum {
 };
 
 
-#endif // __INCLUDED_PROTOCOL_H__
+#endif // DARKSILK_PROTOCOL_H
