@@ -6,8 +6,7 @@
 #ifndef DARKSILK_PRIMITIVES_BLOCK_H
 #define DARKSILK_PRIMITIVES_BLOCK_H
 
-#include "net.h"
-#include "protocol.h"
+
 #include "scrypt.h"
 #include "primitives/transaction.h"
 #include "crypto/argon2/argon2.h"

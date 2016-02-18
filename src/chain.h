@@ -5,6 +5,9 @@
 #ifndef DARKSILK_CHAIN_H
 #define DARKSILK_CHAIN_H
 
+#include "net.h"
+#include "protocol.h"
+#include "chainparams.h"
 #include "primitives/block.h"
 #include "util.h"
 #include "chainparams.h"
