@@ -6,12 +6,12 @@
 #ifndef H_DARKSILK_SCRIPT_SIGN
 #define H_DARKSILK_SCRIPT_SIGN
 
-#include "script/scriptutil.h"
+#include "script/scriptutils.h"
 
 class CKeyStore;
 class CScript;
 class CTransaction;
-truct CMutableTransaction;
+struct CMutableTransaction;
 
 bool SignSignature(const CKeyStore& keystore, const CScript& fromPubKey, CMutableTransaction& txTo, unsigned int nIn, int nHashType=SIGHASH_ALL);
 bool SignSignature(const CKeyStore& keystore, const CScript& fromPubKey, CTransaction& txTo, unsigned int nIn, int nHashType=SIGHASH_ALL);
