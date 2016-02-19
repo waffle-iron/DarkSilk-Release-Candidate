@@ -4,6 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "primitives/transaction.h"
+#include "script/sign.h"
 #include "utilstrencodings.h"
 #include "consensus/consensus.h"
 

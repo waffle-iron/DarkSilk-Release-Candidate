@@ -124,8 +124,7 @@ QMAKE_CLEAN += $$PWD/src/secp256k1/src/libsecp256k1_la-secp256k1.o; cd $$PWD/src
 
 INCLUDEPATH += src/leveldb/include src/leveldb/helpers src/leveldb/helpers/memenv
 LIBS += $$PWD/src/leveldb/libleveldb.a $$PWD/src/leveldb/libmemenv.a
-SOURCES += src/txdb-leveldb.cpp \
-    src/script/sign.cpp
+SOURCES += src/txdb-leveldb.cpp
 
 
 INCLUDEPATH +=  src/crypto/argon2 \
@@ -189,27 +188,7 @@ DEPENDPATH += . \
               src \
               src/compat \
               src/crypto \
-              src/json \
-              src/obj \
-              src/primitives \
-              src/consensus \
-              src/qt \
-              src/leveldb/db \
-              src/leveldb/issues \
-              src/leveldb/port \
-              src/leveldb/table \
-              src/leveldb/util \
-              src/qt/forms \
-              src/qt/locale \
-              src/qt/test \
-              src/secp256k1/include \
-              src/secp256k1/src \
-              src/test/data \
-              src/leveldb/doc/bench \
-              src/leveldb/helpers/memenv \
-              src/leveldb/include/leveldb \
-              src/leveldb/port/win \
-              src/secp256k1/src/java
+              src/json
 
 HEADERS +=  src/qt/darksilkgui.h \
             src/qt/transactiontablemodel.h \
