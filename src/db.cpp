@@ -8,7 +8,7 @@
 
 #include "addrman.h"
 #include "hash.h"
-#include "utilstrencodings.h"
+#include "util.h"
 
 #ifndef WIN32
 #include <sys/stat.h>

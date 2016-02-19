@@ -212,4 +212,3 @@ bool SelectParamsFromCommandLine() {
     }
     return true;
 }
-

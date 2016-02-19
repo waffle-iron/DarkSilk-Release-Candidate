@@ -4821,3 +4821,20 @@ void CWallet::GetKeyBirthTimes(std::map<CKeyID, int64_t> &mapKeyBirth) const {
     for (std::map<CKeyID, CBlockIndex*>::const_iterator it = mapKeyFirstBlock.begin(); it != mapKeyFirstBlock.end(); it++)
         mapKeyBirth[it->first] = it->second->nTime - 7200; // block times can be 2h off
 }
+
+bool DecodeHexBlk(CBlock& block, const std::string& strHexBlk)
+{
+    if (!IsHex(strHexBlk))
+        return false;
+
+    std::vector<unsigned char> blockData(ParseHex(strHexBlk));
+    CDataStream ssBlock(blockData, SER_NETWORK, PROTOCOL_VERSION);
+    try {
+        ssBlock >> block;
+    }
+    catch (const std::exception &) {
+        return false;
+    }
+
+    return true;
+}

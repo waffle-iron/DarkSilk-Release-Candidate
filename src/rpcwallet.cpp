@@ -86,7 +86,7 @@ string AccountFromValue(const Value& value)
 //
 // Used by addmultisigaddress / createmultisig:
 //
-CScript _createmultisig_redeemScript(const Array& params)
+CScript _createmultisig(const Array& params)
 {
     int nRequired = params[0].get_int();
     const Array& keys = params[1].get_array();
@@ -136,12 +136,8 @@ CScript _createmultisig_redeemScript(const Array& params)
             throw runtime_error(" Invalid public key: "+ks);
         }
     }
-    CScript result = GetScriptForMultisig(nRequired, pubkeys);
-
-    if (result.size() > MAX_SCRIPT_ELEMENT_SIZE)
-        throw runtime_error(
-                strprintf("redeemScript exceeds size limit: %d > %d", result.size(), MAX_SCRIPT_ELEMENT_SIZE));
-
+    CScript result;
+    result.SetMultisig(nRequired, pubkeys);
     return result;
 }
 
@@ -177,7 +173,7 @@ Value createmultisig(const Array& params, bool fHelp)
     }
 
     // Construct using pay-to-script-hash:
-    CScript inner = _createmultisig_redeemScript(params);
+    CScript inner = _createmultisig(params);
     CScriptID innerID = inner.GetID();
     CDarkSilkAddress address(innerID);
 

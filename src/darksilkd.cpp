@@ -139,12 +139,18 @@ bool AppInit(int argc, char* argv[])
     return fRet;
 }
 
+extern void noui_connect();
 int main(int argc, char* argv[])
 {
-    SetupEnvironment();
+    bool fRet = false;
 
-    // Connect dashd signal handlers
+    // Connect darksilkd signal handlers
     noui_connect();
 
-    return (AppInit(argc, argv) ? 0 : 1);
+    fRet = AppInit(argc, argv);
+
+    if (fRet && fDaemon)
+        return 0;
+
+    return (fRet ? 0 : 1);
 }

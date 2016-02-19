@@ -29,8 +29,6 @@
 #include <boost/iostreams/stream.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/shared_ptr.hpp>
-#include <boost/thread.hpp>
-#include "json/json_spirit_writer_template.h"
 #include <list>
 
 using namespace std;
@@ -39,11 +37,6 @@ using namespace boost::asio;
 using namespace json_spirit;
 
 static std::string strRPCUserColonPass;
-
-static bool fRPCRunning = false;
-static bool fRPCInWarmup = true;
-static std::string rpcWarmupStatus("RPC server started");
-static CCriticalSection cs_rpcWarmup;
 
 // These are created by StartRPCThreads, destroyed in StopRPCThreads
 static asio::io_service* rpc_io_service = NULL;
@@ -358,6 +351,7 @@ const CRPCCommand *CRPCTable::operator[](string name) const
     return (*it).second;
 }
 
+
 bool HTTPAuthorized(map<string, string>& mapHeaders)
 {
     string strAuth = mapHeaders["authorization"];
@@ -660,27 +654,6 @@ void StopRPCThreads()
     delete rpc_io_service; rpc_io_service = NULL;
 }
 
-void SetRPCWarmupStatus(const std::string& newStatus)
-{
-    LOCK(cs_rpcWarmup);
-    rpcWarmupStatus = newStatus;
-}
-
-void SetRPCWarmupFinished()
-{
-    LOCK(cs_rpcWarmup);
-    assert(fRPCInWarmup);
-    fRPCInWarmup = false;
-}
-
-bool RPCIsInWarmup(std::string *outStatus)
-{
-    LOCK(cs_rpcWarmup);
-    if (outStatus)
-        *outStatus = rpcWarmupStatus;
-    return fRPCInWarmup;
-}
-
 void RPCRunHandler(const boost::system::error_code& err, boost::function<void(void)> func)
 {
     if (!err)
@@ -824,13 +797,6 @@ void ServiceConnection(AcceptedConnection *conn)
             Value valRequest;
             if (!read_string(strRequest, valRequest))
                 throw JSONRPCError(RPC_PARSE_ERROR, "Parse error");
-
-            // Return immediately if in warmup
-            {
-                LOCK(cs_rpcWarmup);
-                if (fRPCInWarmup)
-                    throw JSONRPCError(RPC_IN_WARMUP, rpcWarmupStatus);
-            }
 
             string strReply;
 

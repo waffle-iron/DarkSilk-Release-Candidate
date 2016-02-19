@@ -9,10 +9,21 @@
 #ifndef DARKSILK_UTILSTRENCODINGS_H
 #define DARKSILK_UTILSTRENCODINGS_H
 
-#include "allocators.h"
 #include <stdint.h>
 #include <string>
 #include <vector>
+#include "serialize.h"
+#include "allocators.h"
+
+
+#include <boost/date_time/posix_time/posix_time.hpp>
+#include <openssl/bio.h>
+#include <openssl/evp.h>
+#include <openssl/buffer.h>
+#include <openssl/crypto.h> // for OPENSSL_cleanse()
+#include <openssl/rand.h>
+#include <openssl/bn.h>
+
 
 #define BEGIN(a)            ((char*)&(a))
 #define END(a)              ((char*)&((&(a))[1]))
@@ -23,11 +34,7 @@
 /** This is needed because the foreach macro can't get over the comma in pair<t1, t2> */
 #define PAIRTYPE(t1, t2)    std::pair<t1, t2>
 
-std::string SanitizeString(const std::string& str);
-std::vector<unsigned char> ParseHex(const char* psz);
-std::vector<unsigned char> ParseHex(const std::string& str);
-signed char HexDigit(char c);
-bool IsHex(const std::string& str);
+
 
 std::vector<unsigned char> DecodeBase64(const char* p, bool* pfInvalid = NULL);
 std::string DecodeBase64(const std::string& str);
@@ -53,31 +60,6 @@ int atoi(const std::string& str);
  *   false if not the entire string could be parsed or when overflow or underflow occurred.
  */
 bool ParseInt32(const std::string& str, int32_t *out);
-
-template<typename T>
-std::string HexStr(const T itbegin, const T itend, bool fSpaces=false)
-{
-    std::string rv;
-    static const char hexmap[16] = { '0', '1', '2', '3', '4', '5', '6', '7',
-                                     '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
-    rv.reserve((itend-itbegin)*3);
-    for(T it = itbegin; it < itend; ++it)
-    {
-        unsigned char val = (unsigned char)(*it);
-        if(fSpaces && it != itbegin)
-            rv.push_back(' ');
-        rv.push_back(hexmap[val>>4]);
-        rv.push_back(hexmap[val&15]);
-    }
-
-    return rv;
-}
-
-template<typename T>
-inline std::string HexStr(const T& vch, bool fSpaces=false)
-{
-    return HexStr(vch.begin(), vch.end(), fSpaces);
-}
 
 /** 
  * Format a paragraph of text to a fixed width, adding spaces for

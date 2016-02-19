@@ -10,8 +10,6 @@
 #include <stdio.h>
 #include <string.h>
 
-const signed char p_util_hexdigit[256];
-
 template <unsigned int BITS>
 base_uint<BITS>::base_uint(const std::string& str)
 {

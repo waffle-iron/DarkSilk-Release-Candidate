@@ -127,15 +127,10 @@ void DebugMessageHandler(QtMsgType type, const QMessageLogContext& context, cons
 #ifndef DARKSILK_QT_TEST
 int main(int argc, char *argv[])
 {
-    SetupEnvironment();
 
-    /// 1. Parse command-line options. These take precedence over anything else.
     // Command-line options take precedence:
     ParseParameters(argc, argv);
 
-    // Do not refer to data directory yet, this can be overridden by Intro::pickDataDirectory
-
-    /// 2. Basic Qt initialization (not dependent on parameters or configuration)
 #if QT_VERSION < 0x050000
     // Internal string conversion is all UTF-8
     QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));

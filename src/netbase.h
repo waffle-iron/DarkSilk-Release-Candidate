@@ -5,18 +5,14 @@
 #ifndef DARKSILK_NETBASE_H
 #define DARKSILK_NETBASE_H
 
-#include "compat.h"
-#include "serialize.h"
-
-#include <stdint.h>
 #include <string>
 #include <vector>
 
+#include "serialize.h"
+#include "compat.h"
+
 extern int nConnectTimeout;
 extern bool fNameLookup;
-
-/** -timeout default */
-static const int DEFAULT_CONNECT_TIMEOUT = 5000;
 
 #ifdef WIN32
 // In MSVC, this is defined as a macro, undefine it to prevent a compile and link error
@@ -184,5 +180,4 @@ bool ConnectSocketByName(CService &addr, SOCKET& hSocketRet, const char *pszDest
 #ifdef USE_NATIVE_I2P
 bool SetSocketOptions(SOCKET& hSocket);
 #endif
-
-#endif // DARKSILK_NETBASE_H
+#endif
