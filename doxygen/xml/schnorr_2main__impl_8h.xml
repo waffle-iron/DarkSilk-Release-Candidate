@@ -1,0 +1,546 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="schnorr_2main__impl_8h" kind="file" language="C++">
+    <compoundname>main_impl.h</compoundname>
+    <includes refid="secp256k1__schnorr_8h" local="yes">include/secp256k1_schnorr.h</includes>
+    <includes refid="schnorr__impl_8h" local="yes">modules/schnorr/schnorr_impl.h</includes>
+    <incdepgraph>
+      <node id="51990">
+        <label>include/secp256k1_schnorr.h</label>
+        <link refid="secp256k1__schnorr_8h"/>
+        <childnode refid="51991" relation="include">
+        </childnode>
+      </node>
+      <node id="51996">
+        <label>scalar.h</label>
+        <link refid="scalar_8h"/>
+        <childnode refid="51997" relation="include">
+        </childnode>
+      </node>
+      <node id="51995">
+        <label>schnorr.h</label>
+        <link refid="schnorr_8h"/>
+        <childnode refid="51996" relation="include">
+        </childnode>
+        <childnode refid="51998" relation="include">
+        </childnode>
+      </node>
+      <node id="51997">
+        <label>num.h</label>
+        <link refid="num_8h"/>
+      </node>
+      <node id="51991">
+        <label>secp256k1.h</label>
+        <link refid="secp256k1_8h"/>
+        <childnode refid="51992" relation="include">
+        </childnode>
+      </node>
+      <node id="51998">
+        <label>group.h</label>
+        <link refid="group_8h"/>
+        <childnode refid="51997" relation="include">
+        </childnode>
+        <childnode refid="51999" relation="include">
+        </childnode>
+      </node>
+      <node id="51992">
+        <label>stddef.h</label>
+      </node>
+      <node id="51993">
+        <label>modules/schnorr/schnorr_impl.h</label>
+        <link refid="schnorr__impl_8h"/>
+        <childnode refid="51994" relation="include">
+        </childnode>
+        <childnode refid="51995" relation="include">
+        </childnode>
+        <childnode refid="51997" relation="include">
+        </childnode>
+        <childnode refid="51999" relation="include">
+        </childnode>
+        <childnode refid="51998" relation="include">
+        </childnode>
+        <childnode refid="52000" relation="include">
+        </childnode>
+        <childnode refid="52001" relation="include">
+        </childnode>
+      </node>
+      <node id="51989">
+        <label>/home/dev/ds-160209/src/secp256k1/src/modules/schnorr/main_impl.h</label>
+        <link refid="schnorr/main_impl.h"/>
+        <childnode refid="51990" relation="include">
+        </childnode>
+        <childnode refid="51993" relation="include">
+        </childnode>
+      </node>
+      <node id="52000">
+        <label>ecmult.h</label>
+        <link refid="ecmult_8h"/>
+        <childnode refid="51997" relation="include">
+        </childnode>
+        <childnode refid="51998" relation="include">
+        </childnode>
+      </node>
+      <node id="51994">
+        <label>string.h</label>
+      </node>
+      <node id="52001">
+        <label>ecmult_gen.h</label>
+        <link refid="ecmult__gen_8h"/>
+        <childnode refid="51996" relation="include">
+        </childnode>
+        <childnode refid="51998" relation="include">
+        </childnode>
+      </node>
+      <node id="51999">
+        <label>field.h</label>
+        <link refid="field_8h"/>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="schnorr_2main__impl_8h_1a0071b298840127ff32142118f0761276" prot="public" static="yes" mutable="no">
+        <type>const unsigned char</type>
+        <definition>const unsigned char secp256k1_schnorr_algo16[17]</definition>
+        <argsstring>[17]</argsstring>
+        <name>secp256k1_schnorr_algo16</name>
+        <initializer>= &quot;Schnorr+SHA256  &quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/modules/schnorr/main_impl.h" line="21" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/modules/schnorr/main_impl.h" bodystart="21" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="schnorr_2main__impl_8h_1aceb4e15773d1a0ef0bd3b13e7339a199" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void secp256k1_schnorr_msghash_sha256</definition>
+        <argsstring>(unsigned char *h32, const unsigned char *r32, const unsigned char *msg32)</argsstring>
+        <name>secp256k1_schnorr_msghash_sha256</name>
+        <param>
+          <type>unsigned char *</type>
+          <declname>h32</declname>
+        </param>
+        <param>
+          <type>const unsigned char *</type>
+          <declname>r32</declname>
+        </param>
+        <param>
+          <type>const unsigned char *</type>
+          <declname>msg32</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/modules/schnorr/main_impl.h" line="13" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/modules/schnorr/main_impl.h" bodystart="13" bodyend="19"/>
+      </memberdef>
+      <memberdef kind="function" id="schnorr_2main__impl_8h_1a0d7ae4600f16da7c9464c80fefc72072" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int secp256k1_schnorr_sign</definition>
+        <argsstring>(const secp256k1_context *ctx, unsigned char *sig64, const unsigned char *msg32, const unsigned char *seckey, secp256k1_nonce_function noncefp, const void *noncedata)</argsstring>
+        <name>secp256k1_schnorr_sign</name>
+        <param>
+          <type>const <ref refid="secp256k1_8h_1a282ec9e6dfec8c35955c3eb2f7476e5e" kindref="member">secp256k1_context</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type>unsigned char *</type>
+          <declname>sig64</declname>
+        </param>
+        <param>
+          <type>const unsigned char *</type>
+          <declname>msg32</declname>
+        </param>
+        <param>
+          <type>const unsigned char *</type>
+          <declname>seckey</declname>
+        </param>
+        <param>
+          <type><ref refid="secp256k1_8h_1a539882fd91bff672712fa19a4cfaeb98" kindref="member">secp256k1_nonce_function</ref></type>
+          <declname>noncefp</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>ndata</declname>
+          <defname>noncedata</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a signature using a custom EC-Schnorr-SHA256 construction. It produces non-malleable 64-byte signatures which support public key recovery batch validation, and multiparty signing. Returns: 1: signature created 0: the nonce generation function failed, or the private key was invalid. Args: ctx: pointer to a context object, initialized for signing (cannot be NULL) Out: sig64: pointer to a 64-byte array where the signature will be placed (cannot be NULL) In: msg32: the 32-byte message hash being signed (cannot be NULL) seckey: pointer to a 32-byte secret key (cannot be NULL) noncefp:pointer to a nonce generation function. If NULL, secp256k1_nonce_function_default is used ndata: pointer to arbitrary data used by the nonce generation function (can be NULL) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/modules/schnorr/main_impl.h" line="23" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/modules/schnorr/main_impl.h" bodystart="23" bodyend="59"/>
+        <references refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" compoundref="secp256k1_2src_2util_8h" startline="64">VERIFY_CHECK</references>
+        <references refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" compoundref="secp256k1_8c" startline="23">ARG_CHECK</references>
+        <references refid="structsecp256k1__context__struct_1aacc2071a68f9c5a6c05eb783f523b9eb" compoundref="secp256k1_8c" startline="55">secp256k1_context_struct::ecmult_gen_ctx</references>
+        <references refid="secp256k1_8h_1a22f44df7786a1be5ad93aadfed75b932" compoundref="secp256k1_8c" startline="347">secp256k1_nonce_function_default</references>
+        <referencedby refid="schnorr_2tests__impl_8h_1a0fadfae101d2df588a044f55eafcc0e6" compoundref="schnorr_2tests__impl_8h" startline="12" endline="40">test_schnorr_end_to_end</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="schnorr_2main__impl_8h_1a5d23afb11115cb53171b34da09ff3ad0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int secp256k1_schnorr_verify</definition>
+        <argsstring>(const secp256k1_context *ctx, const unsigned char *sig64, const unsigned char *msg32, const secp256k1_pubkey *pubkey)</argsstring>
+        <name>secp256k1_schnorr_verify</name>
+        <param>
+          <type>const <ref refid="secp256k1_8h_1a282ec9e6dfec8c35955c3eb2f7476e5e" kindref="member">secp256k1_context</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type>const unsigned char *</type>
+          <declname>sig64</declname>
+        </param>
+        <param>
+          <type>const unsigned char *</type>
+          <declname>msg32</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsecp256k1__pubkey" kindref="compound">secp256k1_pubkey</ref> *</type>
+          <declname>pubkey</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Verify a signature created by secp256k1_schnorr_sign. Returns: 1: correct signature 0: incorrect signature Args: ctx: a secp256k1 context object, initialized for verification. In: sig64: the 64-byte signature being verified (cannot be NULL) msg32: the 32-byte message hash being verified (cannot be NULL) pubkey: the public key to verify with (cannot be NULL) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/modules/schnorr/main_impl.h" line="61" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/modules/schnorr/main_impl.h" bodystart="61" bodyend="71"/>
+        <references refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" compoundref="secp256k1_2src_2util_8h" startline="64">VERIFY_CHECK</references>
+        <references refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" compoundref="secp256k1_8c" startline="23">ARG_CHECK</references>
+        <references refid="structsecp256k1__context__struct_1ab6a825dd98cab724df0f0060cf515eab" compoundref="secp256k1_8c" startline="54">secp256k1_context_struct::ecmult_ctx</references>
+        <referencedby refid="schnorr_2tests__impl_8h_1a0fadfae101d2df588a044f55eafcc0e6" compoundref="schnorr_2tests__impl_8h" startline="12" endline="40">test_schnorr_end_to_end</referencedby>
+        <referencedby refid="schnorr_2tests__impl_8h_1a7c79e0204a103b99844bdf1b2ac4cb57" compoundref="schnorr_2tests__impl_8h" startline="85" endline="144">test_schnorr_threshold</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="schnorr_2main__impl_8h_1aa4480a44de97ffc056712ea9fd9631c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int secp256k1_schnorr_recover</definition>
+        <argsstring>(const secp256k1_context *ctx, secp256k1_pubkey *pubkey, const unsigned char *sig64, const unsigned char *msg32)</argsstring>
+        <name>secp256k1_schnorr_recover</name>
+        <param>
+          <type>const <ref refid="secp256k1_8h_1a282ec9e6dfec8c35955c3eb2f7476e5e" kindref="member">secp256k1_context</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type><ref refid="structsecp256k1__pubkey" kindref="compound">secp256k1_pubkey</ref> *</type>
+          <declname>pubkey</declname>
+        </param>
+        <param>
+          <type>const unsigned char *</type>
+          <declname>sig64</declname>
+        </param>
+        <param>
+          <type>const unsigned char *</type>
+          <declname>msg32</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Recover an EC public key from a Schnorr signature created using secp256k1_schnorr_sign. Returns: 1: public key successfully recovered (which guarantees a correct signature). 0: otherwise. Args: ctx: pointer to a context object, initialized for verification (cannot be NULL) Out: pubkey: pointer to a pubkey to set to the recovered public key (cannot be NULL). In: sig64: signature as 64 byte array (cannot be NULL) msg32: the 32-byte message hash assumed to be signed (cannot be NULL) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/modules/schnorr/main_impl.h" line="73" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/modules/schnorr/main_impl.h" bodystart="73" bodyend="89"/>
+        <references refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" compoundref="secp256k1_2src_2util_8h" startline="64">VERIFY_CHECK</references>
+        <references refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" compoundref="secp256k1_8c" startline="23">ARG_CHECK</references>
+        <references refid="structsecp256k1__context__struct_1ab6a825dd98cab724df0f0060cf515eab" compoundref="secp256k1_8c" startline="54">secp256k1_context_struct::ecmult_ctx</references>
+        <referencedby refid="schnorr_2tests__impl_8h_1a0fadfae101d2df588a044f55eafcc0e6" compoundref="schnorr_2tests__impl_8h" startline="12" endline="40">test_schnorr_end_to_end</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="schnorr_2main__impl_8h_1a67c4e4b188db3530c2e8808162f3a3c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int secp256k1_schnorr_generate_nonce_pair</definition>
+        <argsstring>(const secp256k1_context *ctx, secp256k1_pubkey *pubnonce, unsigned char *privnonce32, const unsigned char *sec32, const unsigned char *msg32, secp256k1_nonce_function noncefp, const void *noncedata)</argsstring>
+        <name>secp256k1_schnorr_generate_nonce_pair</name>
+        <param>
+          <type>const <ref refid="secp256k1_8h_1a282ec9e6dfec8c35955c3eb2f7476e5e" kindref="member">secp256k1_context</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type><ref refid="structsecp256k1__pubkey" kindref="compound">secp256k1_pubkey</ref> *</type>
+          <declname>pubnonce</declname>
+        </param>
+        <param>
+          <type>unsigned char *</type>
+          <declname>privnonce32</declname>
+        </param>
+        <param>
+          <type>const unsigned char *</type>
+          <declname>msg32</declname>
+          <defname>sec32</defname>
+        </param>
+        <param>
+          <type>const unsigned char *</type>
+          <declname>sec32</declname>
+          <defname>msg32</defname>
+        </param>
+        <param>
+          <type><ref refid="secp256k1_8h_1a539882fd91bff672712fa19a4cfaeb98" kindref="member">secp256k1_nonce_function</ref></type>
+          <declname>noncefp</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>noncedata</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Generate a nonce pair deterministically for use with secp256k1_schnorr_partial_sign. Returns: 1: valid nonce pair was generated. 0: otherwise (nonce generation function failed) Args: ctx: pointer to a context object, initialized for signing (cannot be NULL) Out: pubnonce: public side of the nonce (cannot be NULL) privnonce32: private side of the nonce (32 byte) (cannot be NULL) In: msg32: the 32-byte message hash assumed to be signed (cannot be NULL) sec32: the 32-byte private key (cannot be NULL) noncefp: pointer to a nonce generation function. If NULL, secp256k1_nonce_function_default is used noncedata: pointer to arbitrary data used by the nonce generation function (can be NULL)</para><para>Do not use the output as a private/public key pair for signing/validation. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/modules/schnorr/main_impl.h" line="91" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/modules/schnorr/main_impl.h" bodystart="91" bodyend="131"/>
+        <references refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" compoundref="secp256k1_2src_2util_8h" startline="64">VERIFY_CHECK</references>
+        <references refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" compoundref="secp256k1_8c" startline="23">ARG_CHECK</references>
+        <references refid="structsecp256k1__context__struct_1aacc2071a68f9c5a6c05eb783f523b9eb" compoundref="secp256k1_8c" startline="55">secp256k1_context_struct::ecmult_gen_ctx</references>
+        <references refid="secp256k1_8h_1a22f44df7786a1be5ad93aadfed75b932" compoundref="secp256k1_8c" startline="347">secp256k1_nonce_function_default</references>
+        <referencedby refid="schnorr_2tests__impl_8h_1a7c79e0204a103b99844bdf1b2ac4cb57" compoundref="schnorr_2tests__impl_8h" startline="85" endline="144">test_schnorr_threshold</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="schnorr_2main__impl_8h_1a6787237abf20a26c8c2fb195102ce810" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int secp256k1_schnorr_partial_sign</definition>
+        <argsstring>(const secp256k1_context *ctx, unsigned char *sig64, const unsigned char *msg32, const unsigned char *sec32, const secp256k1_pubkey *pubnonce_others, const unsigned char *secnonce32)</argsstring>
+        <name>secp256k1_schnorr_partial_sign</name>
+        <param>
+          <type>const <ref refid="secp256k1_8h_1a282ec9e6dfec8c35955c3eb2f7476e5e" kindref="member">secp256k1_context</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type>unsigned char *</type>
+          <declname>sig64</declname>
+        </param>
+        <param>
+          <type>const unsigned char *</type>
+          <declname>msg32</declname>
+        </param>
+        <param>
+          <type>const unsigned char *</type>
+          <declname>sec32</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsecp256k1__pubkey" kindref="compound">secp256k1_pubkey</ref> *</type>
+          <declname>pubnonce_others</declname>
+        </param>
+        <param>
+          <type>const unsigned char *</type>
+          <declname>secnonce32</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Produce a partial Schnorr signature, which can be combined using secp256k1_schnorr_partial_combine, to end up with a full signature that is verifiable using secp256k1_schnorr_verify. Returns: 1: signature created successfully. 0: no valid signature exists with this combination of keys, nonces and message (chance around 1 in 2^128) -1: invalid private key, nonce, or public nonces. Args: ctx: pointer to context object, initialized for signing (cannot be NULL) Out: sig64: pointer to 64-byte array to put partial signature in In: msg32: pointer to 32-byte message to sign sec32: pointer to 32-byte private key pubnonce_others: pointer to pubkey containing the sum of the other&apos;s nonces (see secp256k1_ec_pubkey_combine) secnonce32: pointer to 32-byte array containing our nonce</para><para>The intended procedure for creating a multiparty signature is:<itemizedlist>
+<listitem><para>Each signer S[i] with private key x[i] and public key Q[i] runs secp256k1_schnorr_generate_nonce_pair to produce a pair (k[i],R[i]) of private/public nonces.</para></listitem><listitem><para>All signers communicate their public nonces to each other (revealing your private nonce can lead to discovery of your private key, so it should be considered secret).</para></listitem><listitem><para>All signers combine all the public nonces they received (excluding their own) using secp256k1_ec_pubkey_combine to obtain an Rall[i] = sum(R[0..i-1,i+1..n]).</para></listitem><listitem><para>All signers produce a partial signature using secp256k1_schnorr_partial_sign, passing in their own private key x[i], their own private nonce k[i], and the sum of the others&apos; public nonces Rall[i].</para></listitem><listitem><para>All signers communicate their partial signatures to each other.</para></listitem><listitem><para>Someone combines all partial signatures using secp256k1_schnorr_partial_combine, to obtain a full signature.</para></listitem><listitem><para>The resulting signature is validatable using secp256k1_schnorr_verify, with public key equal to the result of secp256k1_ec_pubkey_combine of the signers&apos; public keys (sum(Q[0..n])).</para><para>Note that secp256k1_schnorr_partial_combine and secp256k1_ec_pubkey_combine function take their arguments in any order, and it is possible to pre-combine several inputs already with one call, and add more inputs later by calling the function again (they are commutative and associative). </para></listitem></itemizedlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/modules/schnorr/main_impl.h" line="133" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/modules/schnorr/main_impl.h" bodystart="133" bodyend="155"/>
+        <references refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" compoundref="secp256k1_2src_2util_8h" startline="64">VERIFY_CHECK</references>
+        <references refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" compoundref="secp256k1_8c" startline="23">ARG_CHECK</references>
+        <references refid="structsecp256k1__context__struct_1aacc2071a68f9c5a6c05eb783f523b9eb" compoundref="secp256k1_8c" startline="55">secp256k1_context_struct::ecmult_gen_ctx</references>
+        <referencedby refid="schnorr_2tests__impl_8h_1a7c79e0204a103b99844bdf1b2ac4cb57" compoundref="schnorr_2tests__impl_8h" startline="85" endline="144">test_schnorr_threshold</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="schnorr_2main__impl_8h_1a7dd43d7414424c68563e14d0bda8e867" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int secp256k1_schnorr_partial_combine</definition>
+        <argsstring>(const secp256k1_context *ctx, unsigned char *sig64, const unsigned char *const *sig64sin, size_t n)</argsstring>
+        <name>secp256k1_schnorr_partial_combine</name>
+        <param>
+          <type>const <ref refid="secp256k1_8h_1a282ec9e6dfec8c35955c3eb2f7476e5e" kindref="member">secp256k1_context</ref> *</type>
+          <declname>ctx</declname>
+        </param>
+        <param>
+          <type>unsigned char *</type>
+          <declname>sig64</declname>
+        </param>
+        <param>
+          <type>const unsigned char *const *</type>
+          <declname>sig64sin</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Combine multiple Schnorr partial signatures. Returns: 1: the passed signatures were successfully combined. 0: the resulting signature is not valid (chance of 1 in 2^256) -1: some inputs were invalid, or the signatures were not created using the same set of nonces Args: ctx: pointer to a context object Out: sig64: pointer to a 64-byte array to place the combined signature (cannot be NULL) In: sig64sin: pointer to an array of n pointers to 64-byte input signatures n: the number of signatures to combine (at least 1) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/modules/schnorr/main_impl.h" line="157" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/modules/schnorr/main_impl.h" bodystart="157" bodyend="162"/>
+        <references refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" compoundref="secp256k1_8c" startline="23">ARG_CHECK</references>
+        <referencedby refid="schnorr_2tests__impl_8h_1a7c79e0204a103b99844bdf1b2ac4cb57" compoundref="schnorr_2tests__impl_8h" startline="85" endline="144">test_schnorr_threshold</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**********************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2014-2015<sp/>Pieter<sp/>Wuille<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Distributed<sp/>under<sp/>the<sp/>MIT<sp/>software<sp/>license,<sp/>see<sp/>the<sp/>accompanying<sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>file<sp/>COPYING<sp/>or<sp/>http://www.opensource.org/licenses/mit-license.php.*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>**********************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>SECP256K1_MODULE_SCHNORR_MAIN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>SECP256K1_MODULE_SCHNORR_MAIN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="secp256k1__schnorr_8h" kindref="compound">include/secp256k1_schnorr.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="schnorr__impl_8h" kindref="compound">modules/schnorr/schnorr_impl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>secp256k1_schnorr_msghash_sha256(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*h32,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*r32,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*msg32)<sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structsecp256k1__sha256__t" kindref="compound">secp256k1_sha256_t</ref><sp/>sha;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>secp256k1_sha256_initialize(&amp;sha);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>secp256k1_sha256_write(&amp;sha,<sp/>r32,<sp/>32);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>secp256k1_sha256_write(&amp;sha,<sp/>msg32,<sp/>32);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>secp256k1_sha256_finalize(&amp;sha,<sp/>h32);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>secp256k1_schnorr_algo16[17]<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Schnorr+SHA256<sp/><sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="schnorr_2main__impl_8h_1a0d7ae4600f16da7c9464c80fefc72072" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="schnorr_2main__impl_8h_1a0d7ae4600f16da7c9464c80fefc72072" kindref="member">secp256k1_schnorr_sign</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__context__struct" kindref="compound">secp256k1_context</ref>*<sp/>ctx,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*sig64,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*msg32,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*seckey,<sp/><ref refid="secp256k1_8h_1a539882fd91bff672712fa19a4cfaeb98" kindref="member">secp256k1_nonce_function</ref><sp/>noncefp,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>noncedata)<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structsecp256k1__scalar" kindref="compound">secp256k1_scalar</ref><sp/>sec,<sp/>non;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>overflow<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>(ctx<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" kindref="member">ARG_CHECK</ref>(secp256k1_ecmult_gen_context_is_built(&amp;ctx-&gt;<ref refid="structsecp256k1__context__struct_1aacc2071a68f9c5a6c05eb783f523b9eb" kindref="member">ecmult_gen_ctx</ref>));</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" kindref="member">ARG_CHECK</ref>(msg32<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" kindref="member">ARG_CHECK</ref>(sig64<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" kindref="member">ARG_CHECK</ref>(seckey<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(noncefp<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>noncefp<sp/>=<sp/><ref refid="secp256k1_8h_1a22f44df7786a1be5ad93aadfed75b932" kindref="member">secp256k1_nonce_function_default</ref>;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>secp256k1_scalar_set_b32(&amp;sec,<sp/>seckey,<sp/>NULL);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(1)<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>nonce32[32];</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>noncefp(nonce32,<sp/>msg32,<sp/>seckey,<sp/>secp256k1_schnorr_algo16,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*)noncedata,<sp/>count);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!ret)<sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_scalar_set_b32(&amp;non,<sp/>nonce32,<sp/>&amp;overflow);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memset(nonce32,<sp/>0,<sp/>32);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!secp256k1_scalar_is_zero(&amp;non)<sp/>&amp;&amp;<sp/>!overflow)<sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(secp256k1_schnorr_sig_sign(&amp;ctx-&gt;<ref refid="structsecp256k1__context__struct_1aacc2071a68f9c5a6c05eb783f523b9eb" kindref="member">ecmult_gen_ctx</ref>,<sp/>sig64,<sp/>&amp;sec,<sp/>&amp;non,<sp/>NULL,<sp/>secp256k1_schnorr_msghash_sha256,<sp/>msg32))<sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>count++;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!ret)<sp/>{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memset(sig64,<sp/>0,<sp/>64);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>secp256k1_scalar_clear(&amp;non);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>secp256k1_scalar_clear(&amp;sec);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="schnorr_2main__impl_8h_1a5d23afb11115cb53171b34da09ff3ad0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="schnorr_2main__impl_8h_1a5d23afb11115cb53171b34da09ff3ad0" kindref="member">secp256k1_schnorr_verify</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__context__struct" kindref="compound">secp256k1_context</ref>*<sp/>ctx,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*sig64,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*msg32,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__pubkey" kindref="compound">secp256k1_pubkey</ref><sp/>*pubkey)<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structsecp256k1__ge" kindref="compound">secp256k1_ge</ref><sp/>q;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>(ctx<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" kindref="member">ARG_CHECK</ref>(secp256k1_ecmult_context_is_built(&amp;ctx-&gt;<ref refid="structsecp256k1__context__struct_1ab6a825dd98cab724df0f0060cf515eab" kindref="member">ecmult_ctx</ref>));</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" kindref="member">ARG_CHECK</ref>(msg32<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" kindref="member">ARG_CHECK</ref>(sig64<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" kindref="member">ARG_CHECK</ref>(pubkey<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>secp256k1_pubkey_load(ctx,<sp/>&amp;q,<sp/>pubkey);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>secp256k1_schnorr_sig_verify(&amp;ctx-&gt;<ref refid="structsecp256k1__context__struct_1ab6a825dd98cab724df0f0060cf515eab" kindref="member">ecmult_ctx</ref>,<sp/>sig64,<sp/>&amp;q,<sp/>secp256k1_schnorr_msghash_sha256,<sp/>msg32);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="schnorr_2main__impl_8h_1aa4480a44de97ffc056712ea9fd9631c5" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="schnorr_2main__impl_8h_1aa4480a44de97ffc056712ea9fd9631c5" kindref="member">secp256k1_schnorr_recover</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__context__struct" kindref="compound">secp256k1_context</ref>*<sp/>ctx,<sp/><ref refid="structsecp256k1__pubkey" kindref="compound">secp256k1_pubkey</ref><sp/>*pubkey,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*sig64,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*msg32)<sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structsecp256k1__ge" kindref="compound">secp256k1_ge</ref><sp/>q;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>(ctx<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" kindref="member">ARG_CHECK</ref>(secp256k1_ecmult_context_is_built(&amp;ctx-&gt;<ref refid="structsecp256k1__context__struct_1ab6a825dd98cab724df0f0060cf515eab" kindref="member">ecmult_ctx</ref>));</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" kindref="member">ARG_CHECK</ref>(msg32<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" kindref="member">ARG_CHECK</ref>(sig64<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" kindref="member">ARG_CHECK</ref>(pubkey<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(secp256k1_schnorr_sig_recover(&amp;ctx-&gt;<ref refid="structsecp256k1__context__struct_1ab6a825dd98cab724df0f0060cf515eab" kindref="member">ecmult_ctx</ref>,<sp/>sig64,<sp/>&amp;q,<sp/>secp256k1_schnorr_msghash_sha256,<sp/>msg32))<sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_pubkey_save(pubkey,<sp/>&amp;q);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>1;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memset(pubkey,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(*pubkey));</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91" refid="schnorr_2main__impl_8h_1a67c4e4b188db3530c2e8808162f3a3c5" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="schnorr_2main__impl_8h_1a67c4e4b188db3530c2e8808162f3a3c5" kindref="member">secp256k1_schnorr_generate_nonce_pair</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__context__struct" kindref="compound">secp256k1_context</ref>*<sp/>ctx,<sp/><ref refid="structsecp256k1__pubkey" kindref="compound">secp256k1_pubkey</ref><sp/>*pubnonce,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*privnonce32,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*sec32,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*msg32,<sp/><ref refid="secp256k1_8h_1a539882fd91bff672712fa19a4cfaeb98" kindref="member">secp256k1_nonce_function</ref><sp/>noncefp,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>noncedata)<sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structsecp256k1__gej" kindref="compound">secp256k1_gej</ref><sp/>Qj;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structsecp256k1__ge" kindref="compound">secp256k1_ge</ref><sp/>Q;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structsecp256k1__scalar" kindref="compound">secp256k1_scalar</ref><sp/>sec;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>(ctx<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" kindref="member">ARG_CHECK</ref>(secp256k1_ecmult_gen_context_is_built(&amp;ctx-&gt;<ref refid="structsecp256k1__context__struct_1aacc2071a68f9c5a6c05eb783f523b9eb" kindref="member">ecmult_gen_ctx</ref>));</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" kindref="member">ARG_CHECK</ref>(msg32<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" kindref="member">ARG_CHECK</ref>(sec32<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" kindref="member">ARG_CHECK</ref>(pubnonce<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" kindref="member">ARG_CHECK</ref>(privnonce32<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(noncefp<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>noncefp<sp/>=<sp/><ref refid="secp256k1_8h_1a22f44df7786a1be5ad93aadfed75b932" kindref="member">secp256k1_nonce_function_default</ref>;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>overflow;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>noncefp(privnonce32,<sp/>sec32,<sp/>msg32,<sp/>secp256k1_schnorr_algo16,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*)noncedata,<sp/>count++);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!ret)<sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_scalar_set_b32(&amp;sec,<sp/>privnonce32,<sp/>&amp;overflow);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(overflow<sp/>||<sp/>secp256k1_scalar_is_zero(&amp;sec))<sp/>{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_ecmult_gen(&amp;ctx-&gt;<ref refid="structsecp256k1__context__struct_1aacc2071a68f9c5a6c05eb783f523b9eb" kindref="member">ecmult_gen_ctx</ref>,<sp/>&amp;Qj,<sp/>&amp;sec);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_ge_set_gej(&amp;Q,<sp/>&amp;Qj);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_pubkey_save(pubnonce,<sp/>&amp;Q);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal">(1);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>secp256k1_scalar_clear(&amp;sec);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!ret)<sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memset(pubnonce,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(*pubnonce));</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133" refid="schnorr_2main__impl_8h_1a6787237abf20a26c8c2fb195102ce810" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="schnorr_2main__impl_8h_1a6787237abf20a26c8c2fb195102ce810" kindref="member">secp256k1_schnorr_partial_sign</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__context__struct" kindref="compound">secp256k1_context</ref>*<sp/>ctx,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*sig64,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*msg32,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*sec32,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__pubkey" kindref="compound">secp256k1_pubkey</ref><sp/>*pubnonce_others,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*secnonce32)<sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>overflow<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structsecp256k1__scalar" kindref="compound">secp256k1_scalar</ref><sp/>sec,<sp/>non;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structsecp256k1__ge" kindref="compound">secp256k1_ge</ref><sp/>pubnon;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>(ctx<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" kindref="member">ARG_CHECK</ref>(secp256k1_ecmult_gen_context_is_built(&amp;ctx-&gt;<ref refid="structsecp256k1__context__struct_1aacc2071a68f9c5a6c05eb783f523b9eb" kindref="member">ecmult_gen_ctx</ref>));</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" kindref="member">ARG_CHECK</ref>(msg32<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" kindref="member">ARG_CHECK</ref>(sig64<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" kindref="member">ARG_CHECK</ref>(sec32<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" kindref="member">ARG_CHECK</ref>(secnonce32<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" kindref="member">ARG_CHECK</ref>(pubnonce_others<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/>secp256k1_scalar_set_b32(&amp;sec,<sp/>sec32,<sp/>&amp;overflow);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(overflow<sp/>||<sp/>secp256k1_scalar_is_zero(&amp;sec))<sp/>{</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>secp256k1_scalar_set_b32(&amp;non,<sp/>secnonce32,<sp/>&amp;overflow);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(overflow<sp/>||<sp/>secp256k1_scalar_is_zero(&amp;non))<sp/>{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>secp256k1_pubkey_load(ctx,<sp/>&amp;pubnon,<sp/>pubnonce_others);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>secp256k1_schnorr_sig_sign(&amp;ctx-&gt;<ref refid="structsecp256k1__context__struct_1aacc2071a68f9c5a6c05eb783f523b9eb" kindref="member">ecmult_gen_ctx</ref>,<sp/>sig64,<sp/>&amp;sec,<sp/>&amp;non,<sp/>&amp;pubnon,<sp/>secp256k1_schnorr_msghash_sha256,<sp/>msg32);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157" refid="schnorr_2main__impl_8h_1a7dd43d7414424c68563e14d0bda8e867" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="schnorr_2main__impl_8h_1a7dd43d7414424c68563e14d0bda8e867" kindref="member">secp256k1_schnorr_partial_combine</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__context__struct" kindref="compound">secp256k1_context</ref>*<sp/>ctx,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*sig64,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>*sig64sin,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n)<sp/>{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" kindref="member">ARG_CHECK</ref>(sig64<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" kindref="member">ARG_CHECK</ref>(n<sp/>&gt;=<sp/>1);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_8c_1a6e1f88c6ce07376501097b42a2b40727" kindref="member">ARG_CHECK</ref>(sig64sin<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>secp256k1_schnorr_sig_combine(sig64,<sp/>n,<sp/>sig64sin);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/secp256k1/src/modules/schnorr/main_impl.h"/>
+  </compounddef>
+</doxygen>

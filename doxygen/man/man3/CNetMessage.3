@@ -1,0 +1,115 @@
+.TH "CNetMessage" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CNetMessage \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <net\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCNetMessage\fP (int nTypeIn, int nVersionIn)"
+.br
+.ti -1c
+.RI "bool \fBcomplete\fP () const "
+.br
+.ti -1c
+.RI "void \fBSetVersion\fP (int nVersionIn)"
+.br
+.ti -1c
+.RI "int \fBreadHeader\fP (const char *pch, unsigned int nBytes)"
+.br
+.ti -1c
+.RI "int \fBreadData\fP (const char *pch, unsigned int nBytes)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBin_data\fP"
+.br
+.ti -1c
+.RI "\fBCDataStream\fP \fBhdrbuf\fP"
+.br
+.ti -1c
+.RI "\fBCMessageHeader\fP \fBhdr\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBnHdrPos\fP"
+.br
+.ti -1c
+.RI "\fBCDataStream\fP \fBvRecv\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBnDataPos\fP"
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBnTime\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 158 of file net\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CNetMessage::CNetMessage (int nTypeIn, int nVersionIn)\fC [inline]\fP"
+
+.PP
+Definition at line 171 of file net\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool CNetMessage::complete () const\fC [inline]\fP"
+
+.PP
+Definition at line 179 of file net\&.h\&.
+.SS "int CNetMessage::readData (const char * pch, unsigned int nBytes)"
+
+.PP
+Definition at line 684 of file net\&.cpp\&.
+.SS "int CNetMessage::readHeader (const char * pch, unsigned int nBytes)"
+
+.PP
+Definition at line 653 of file net\&.cpp\&.
+.SS "void CNetMessage::SetVersion (int nVersionIn)\fC [inline]\fP"
+
+.PP
+Definition at line 186 of file net\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBCMessageHeader\fP CNetMessage::hdr"
+
+.PP
+Definition at line 163 of file net\&.h\&.
+.SS "\fBCDataStream\fP CNetMessage::hdrbuf"
+
+.PP
+Definition at line 162 of file net\&.h\&.
+.SS "bool CNetMessage::in_data"
+
+.PP
+Definition at line 160 of file net\&.h\&.
+.SS "unsigned int CNetMessage::nDataPos"
+
+.PP
+Definition at line 167 of file net\&.h\&.
+.SS "unsigned int CNetMessage::nHdrPos"
+
+.PP
+Definition at line 164 of file net\&.h\&.
+.SS "\fBint64_t\fP CNetMessage::nTime"
+
+.PP
+Definition at line 169 of file net\&.h\&.
+.SS "\fBCDataStream\fP CNetMessage::vRecv"
+
+.PP
+Definition at line 166 of file net\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

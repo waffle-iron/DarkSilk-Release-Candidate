@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="classleveldb_1_1_filter_policy" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>leveldb::FilterPolicy</compoundname>
+    <derivedcompoundref refid="classleveldb_1_1_internal_filter_policy" prot="public" virt="non-virtual">leveldb::InternalFilterPolicy</derivedcompoundref>
+    <derivedcompoundref refid="classleveldb_1_1_test_hash_filter" prot="public" virt="non-virtual">leveldb::TestHashFilter</derivedcompoundref>
+    <derivedcompoundref refid="structleveldb__filterpolicy__t" prot="public" virt="non-virtual">leveldb_filterpolicy_t</derivedcompoundref>
+    <includes refid="filter__policy_8h" local="no">filter_policy.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classleveldb_1_1_filter_policy_1a4134b35d7dd640c7c6f182bf7305f158" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>leveldb::FilterPolicy::~FilterPolicy</definition>
+        <argsstring>()</argsstring>
+        <name>~FilterPolicy</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/filter_policy.h" line="27" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/util/filter_policy.cc" bodystart="9" bodyend="9"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_filter_policy_1afd5e951892a2e740f186c0658913ea1b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>const char *</type>
+        <definition>virtual const char* leveldb::FilterPolicy::Name</definition>
+        <argsstring>() const =0</argsstring>
+        <name>Name</name>
+        <reimplementedby refid="classleveldb_1_1_test_hash_filter_1a07700084322049647b7c788aa53d8269">Name</reimplementedby>
+        <reimplementedby refid="structleveldb__filterpolicy__t_1a2d2e4bed02de91075ce921005c851a3e">Name</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_internal_filter_policy_1ab7f6002d74ba6a2838e1fc826e2095fc">Name</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/filter_policy.h" line="33" column="1"/>
+        <referencedby refid="c_8h_1a1adc82e212c58033ec9b8cd05577525c" compoundref="c_8cc" startline="499" endline="520">leveldb_filterpolicy_create_bloom</referencedby>
+        <referencedby refid="classleveldb_1_1_internal_filter_policy_1ab7f6002d74ba6a2838e1fc826e2095fc" compoundref="dbformat_8cc" startline="101" endline="103">leveldb::InternalFilterPolicy::Name</referencedby>
+        <referencedby refid="classleveldb_1_1_table_builder_1a88f4bae006782e24462362d489dd3f35" compoundref="table__builder_8cc" startline="199" endline="254">leveldb::TableBuilder::Finish</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_filter_policy_1a355e9797e16dd16b93d19056781126b2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void leveldb::FilterPolicy::CreateFilter</definition>
+        <argsstring>(const Slice *keys, int n, std::string *dst) const =0</argsstring>
+        <name>CreateFilter</name>
+        <reimplementedby refid="classleveldb_1_1_test_hash_filter_1ad6d9fc5e8008a1a2bd3d22d21cef6645">CreateFilter</reimplementedby>
+        <reimplementedby refid="structleveldb__filterpolicy__t_1a8b5b77b6a8d1c526905c7eb57d78558b">CreateFilter</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_internal_filter_policy_1a1c7c7b7eecdfb872e35708793d82ab40">CreateFilter</reimplementedby>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref> *</type>
+          <declname>keys</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>std::string *</type>
+          <declname>dst</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/filter_policy.h" line="41" column="1"/>
+        <referencedby refid="c_8h_1a1adc82e212c58033ec9b8cd05577525c" compoundref="c_8cc" startline="499" endline="520">leveldb_filterpolicy_create_bloom</referencedby>
+        <referencedby refid="classleveldb_1_1_internal_filter_policy_1a1c7c7b7eecdfb872e35708793d82ab40" compoundref="dbformat_8cc" startline="105" endline="115">leveldb::InternalFilterPolicy::CreateFilter</referencedby>
+        <referencedby refid="classleveldb_1_1_bloom_test_1ad4fc802152c68599c919d33917523d31" compoundref="bloom__test_8cc" startline="43" endline="52">leveldb::BloomTest::Build</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_filter_policy_1a6f8ba10ea25e0b4b8d0a6607c361c718" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool leveldb::FilterPolicy::KeyMayMatch</definition>
+        <argsstring>(const Slice &amp;key, const Slice &amp;filter) const =0</argsstring>
+        <name>KeyMayMatch</name>
+        <reimplementedby refid="classleveldb_1_1_test_hash_filter_1ace8fcf2f1ac682fb958ddd38c53efe08">KeyMayMatch</reimplementedby>
+        <reimplementedby refid="structleveldb__filterpolicy__t_1aa3006a26cac563bb5115d27d83b6865f">KeyMayMatch</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_internal_filter_policy_1a42dc5124aa139c68bec2efa7417a7373">KeyMayMatch</reimplementedby>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref> &amp;</type>
+          <declname>filter</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/filter_policy.h" line="49" column="1"/>
+        <referencedby refid="c_8h_1a1adc82e212c58033ec9b8cd05577525c" compoundref="c_8cc" startline="499" endline="520">leveldb_filterpolicy_create_bloom</referencedby>
+        <referencedby refid="classleveldb_1_1_internal_filter_policy_1a42dc5124aa139c68bec2efa7417a7373" compoundref="dbformat_8cc" startline="117" endline="119">leveldb::InternalFilterPolicy::KeyMayMatch</referencedby>
+        <referencedby refid="classleveldb_1_1_filter_block_reader_1a2c1c0cd8311b99fd92d3548b7aa240d0" compoundref="filter__block_8cc" startline="95" endline="109">leveldb::FilterBlockReader::KeyMayMatch</referencedby>
+        <referencedby refid="classleveldb_1_1_bloom_test_1a1d2a9794bd26ac0124a18511689ef211" compoundref="bloom__test_8cc" startline="69" endline="74">leveldb::BloomTest::Matches</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3059">
+        <label>leveldb::FilterPolicy</label>
+        <link refid="classleveldb_1_1_filter_policy"/>
+      </node>
+      <node id="3062">
+        <label>leveldb_filterpolicy_t</label>
+        <link refid="structleveldb__filterpolicy__t"/>
+        <childnode refid="3059" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3060">
+        <label>leveldb::InternalFilterPolicy</label>
+        <link refid="classleveldb_1_1_internal_filter_policy"/>
+        <childnode refid="3059" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3061">
+        <label>leveldb::TestHashFilter</label>
+        <link refid="classleveldb_1_1_test_hash_filter"/>
+        <childnode refid="3059" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/filter_policy.h" line="25" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/include/leveldb/filter_policy.h" bodystart="25" bodyend="50"/>
+    <listofallmembers>
+      <member refid="classleveldb_1_1_filter_policy_1a355e9797e16dd16b93d19056781126b2" prot="public" virt="pure-virtual"><scope>leveldb::FilterPolicy</scope><name>CreateFilter</name></member>
+      <member refid="classleveldb_1_1_filter_policy_1a6f8ba10ea25e0b4b8d0a6607c361c718" prot="public" virt="pure-virtual"><scope>leveldb::FilterPolicy</scope><name>KeyMayMatch</name></member>
+      <member refid="classleveldb_1_1_filter_policy_1afd5e951892a2e740f186c0658913ea1b" prot="public" virt="pure-virtual"><scope>leveldb::FilterPolicy</scope><name>Name</name></member>
+      <member refid="classleveldb_1_1_filter_policy_1a4134b35d7dd640c7c6f182bf7305f158" prot="public" virt="virtual"><scope>leveldb::FilterPolicy</scope><name>~FilterPolicy</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

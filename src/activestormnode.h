@@ -8,7 +8,7 @@
 
 #include "sync.h"
 #include "key.h"
-#include "wallet/wallet.h"
+#include "wallet.h"
 
 static const int  ACTIVE_STORMNODE_INITIAL = 0; // initial state
 static const int  ACTIVE_STORMNODE_SYNC_IN_PROCESS = 1;

@@ -10,8 +10,7 @@
 #include "net.h"
 #include "txdb.h"
 #include "chain.h"
-#include "consensus/consensus.h"
- 
+
 #include <list>
 
 #include <boost/unordered_map.hpp>
@@ -20,14 +19,19 @@ class CValidationState;
 class CWallet;
 class CTxMemPool;
 
-static const CAmount STORMNODE_COLLATERAL = 		10000; /* DRKSLK */
-static const CAmount SANDSTORM_COLLATERAL = 		(0.01*COIN);
-static const CAmount SANDSTORM_POOL_MAX = 			(9999.99*COIN);
-
-/** Minimum Transaction Fee of 0.00001 DRKSLK, 
- * Fees smaller than this are considered zero fee (for transaction creation) */
+// Minimum Transaction Fee of 0.00001 DRKSLK, Fees smaller than this are considered zero fee (for transaction creation)
 static const double MIN_FEE = 0.00001;
-/** Static Proof-of-Stake Reward of 0.01 DRKSLK */
+// Collateral Amount Locked for Stormnodes
+static const CAmount STORMNODE_COLLATERAL = 10000;
+// Main Stormnode Payments Start Block
+static const int STORMNODE_PAYMENT_START = 420;
+// Testnet Stormnode Payment Start Block
+static const int TESTNET_STORMNODE_PAYMENT_START = 100;
+// Sandstorm Collateral Payment
+static const CAmount SANDSTORM_COLLATERAL = (0.01*COIN);
+// Sandstorm Pool Max Amount
+static const CAmount SANDSTORM_POOL_MAX = (9999.99*COIN);
+// Static Proof-of-Stake Reward of 0.01 DRKSLK
 static const CAmount STATIC_POS_REWARD = COIN * 0.01;
 // Number of blocks that can be requested at any given time from a single peer.
 static const int MAX_BLOCKS_IN_TRANSIT_PER_PEER = 128;
@@ -39,6 +43,8 @@ static const unsigned int MAX_BLOCK_SIZE_GEN = MAX_BLOCK_SIZE/2;
 static const unsigned int DEFAULT_BLOCK_PRIORITY_SIZE = 50000;
 // The maximum size for transactions we're willing to relay/mine
 static const unsigned int MAX_STANDARD_TX_SIZE = MAX_BLOCK_SIZE_GEN/5;
+// The maximum allowed number of signature check operations in a block (network rule)
+static const unsigned int MAX_BLOCK_SIGOPS = MAX_BLOCK_SIZE/50;
 // Maxiumum number of signature check operations in an IsStandard() P2SH script
 static const unsigned int MAX_P2SH_SIGOPS = 15;
 // The maximum number of sigops we're willing to relay/mine in a single tx
@@ -49,10 +55,25 @@ static const unsigned int MAX_ORPHAN_TRANSACTIONS = MAX_BLOCK_SIZE/100;
 static const unsigned int DEFAULT_MAX_ORPHAN_BLOCKS = 512;
 /// The maximum number of entries in an 'inv' protocol message
 static const unsigned int MAX_INV_SZ = 50000;
+// Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp.
+static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov 5th 00:53:20 1985 UTC
+// Target timing between Proof-of-Work blocks
+static const unsigned int POW_TARGET_SPACING = 1 * 60; // 60 seconds
+// Target timing between Proof-of-Stake blocks
+static const unsigned int POS_TARGET_SPACING = 1 * 64; // 64 seconds
 // Time to wait (in seconds) between writing blockchain state to disk.
 static const unsigned int DATABASE_WRITE_INTERVAL = 3600;
 // Maximum length of "REJECT" messages
 static const unsigned int MAX_REJECT_MESSAGE_LENGTH = 111;
+// "REJECT" message codes
+static const unsigned char REJECT_MALFORMED = 0x01;
+static const unsigned char REJECT_INVALID = 0x10;
+static const unsigned char REJECT_OBSOLETE = 0x11;
+static const unsigned char REJECT_DUPLICATE = 0x12;
+static const unsigned char REJECT_NONSTANDARD = 0x40;
+static const unsigned char REJECT_DUST = 0x41;
+static const unsigned char REJECT_INSUFFICIENTFEE = 0x42;
+static const unsigned char REJECT_CHECKPOINT = 0x43;
 
 struct BlockHasher
 {
@@ -80,7 +101,6 @@ extern uint64_t nLastBlockSize;
 extern int64_t nLastCoinStakeSearchInterval;
 extern const std::string strMessageMagic;
 extern int64_t nTimeBestReceived;
-extern CConditionVariable cvBlockChange;
 extern bool fImporting;
 extern bool fReindex;
 struct COrphanBlock;
@@ -463,6 +483,69 @@ public:
     }
     int GetDepthInMainChain() const;
 
+};
+
+/** Capture information about block/transaction validation */
+class CValidationState {
+private:
+    enum mode_state {
+        MODE_VALID,   //! everything ok
+        MODE_INVALID, //! network rule violation (DoS value may be set)
+        MODE_ERROR,   //! run-time error
+    } mode;
+    int nDoS;
+    std::string strRejectReason;
+    unsigned char chRejectCode;
+    bool corruptionPossible;
+public:
+    CValidationState() : mode(MODE_VALID), nDoS(0), chRejectCode(0), corruptionPossible(false) {}
+    bool DoS(int level, bool ret = false,
+             unsigned char chRejectCodeIn=0, std::string strRejectReasonIn="",
+             bool corruptionIn=false) {
+        chRejectCode = chRejectCodeIn;
+        strRejectReason = strRejectReasonIn;
+        corruptionPossible = corruptionIn;
+        if (mode == MODE_ERROR)
+            return ret;
+        nDoS += level;
+        mode = MODE_INVALID;
+        return ret;
+    }
+    bool Invalid(bool ret = false,
+                 unsigned char _chRejectCode=0, std::string _strRejectReason="") {
+        return DoS(0, ret, _chRejectCode, _strRejectReason);
+    }
+    bool Error(std::string strRejectReasonIn="") {
+        if (mode == MODE_VALID)
+            strRejectReason = strRejectReasonIn;
+        mode = MODE_ERROR;
+        return false;
+    }
+    bool Abort(const std::string &msg) {
+        AbortNode(msg);
+        return Error(msg);
+    }
+    bool IsValid() const {
+        return mode == MODE_VALID;
+    }
+    bool IsInvalid() const {
+        return mode == MODE_INVALID;
+    }
+    bool IsError() const {
+        return mode == MODE_ERROR;
+    }
+    bool IsInvalid(int &nDoSOut) const {
+        if (IsInvalid()) {
+            nDoSOut = nDoS;
+            return true;
+        }
+        return false;
+    }
+    bool CorruptionPossible() const {
+        return corruptionPossible;
+    }
+    unsigned char GetRejectCode() const { return chRejectCode; }
+    std::string GetRejectReason() const { return strRejectReason; }
 };
 
 class CWalletInterface {

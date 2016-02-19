@@ -1,0 +1,259 @@
+.TH "DarkSilkUnits" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+DarkSilkUnits \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <darksilkunits\&.h>\fP
+.PP
+Inherits QAbstractListModel\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBUnit\fP { \fBDRKSLK\fP, \fBmDRKSLK\fP, \fBuDRKSLK\fP }"
+.br
+.ti -1c
+.RI "enum \fBSeparatorStyle\fP { \fBseparatorNever\fP, \fBseparatorStandard\fP, \fBseparatorAlways\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDarkSilkUnits\fP (QObject *parent)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBCAmount\fP \fBmaxMoney\fP ()"
+.br
+.RI "\fIReturn maximum number of base units (Satoshis) \fP"
+.in -1c
+.PP
+.RI "\fBStatic API\fP"
+.br
+Unit conversion and formatting 
+.PP
+.in +1c
+.in +1c
+.ti -1c
+.RI "static QList< \fBUnit\fP > \fBavailableUnits\fP ()"
+.br
+.RI "\fIGet list of units, for drop-down box\&. \fP"
+.ti -1c
+.RI "static bool \fBvalid\fP (int unit)"
+.br
+.RI "\fIIs unit ID valid? \fP"
+.ti -1c
+.RI "static QString \fBname\fP (int unit)"
+.br
+.RI "\fIShort name\&. \fP"
+.ti -1c
+.RI "static QString \fBdescription\fP (int unit)"
+.br
+.RI "\fILonger description\&. \fP"
+.ti -1c
+.RI "static qint64 \fBfactor\fP (int unit)"
+.br
+.RI "\fINumber of Satoshis (1e-8) per unit\&. \fP"
+.ti -1c
+.RI "static int \fBamountDigits\fP (int unit)"
+.br
+.RI "\fINumber of amount digits (to represent max number of coins) \fP"
+.ti -1c
+.RI "static int \fBdecimals\fP (int unit)"
+.br
+.RI "\fINumber of decimals left\&. \fP"
+.ti -1c
+.RI "static QString \fBformat\fP (int unit, const \fBCAmount\fP &nIn, bool plussign=false)"
+.br
+.RI "\fIFormat as string\&. \fP"
+.ti -1c
+.RI "static QString \fBformatWithUnit\fP (int unit, const \fBCAmount\fP &amount, bool plussign=false)"
+.br
+.RI "\fIFormat as string (with unit) \fP"
+.ti -1c
+.RI "static bool \fBparse\fP (int unit, const QString &\fBvalue\fP, \fBCAmount\fP *val_out)"
+.br
+.RI "\fIParse string to coin amount\&. \fP"
+.ti -1c
+.RI "static QString \fBfloorWithUnit\fP (int unit, const \fBCAmount\fP &amount, bool plussign=false, \fBSeparatorStyle\fP separators=\fBseparatorStandard\fP)"
+.br
+.RI "\fIFormat as string (with unit) but floor value up to 'digits' settings\&. \fP"
+.ti -1c
+.RI "static QString \fBfloorHtmlWithUnit\fP (int unit, const \fBCAmount\fP &amount, bool plussign=false, \fBSeparatorStyle\fP separators=\fBseparatorStandard\fP)"
+.br
+.ti -1c
+.RI "static QString \fBformat\fP (int unit, const \fBCAmount\fP &nIn, bool fPlus, \fBSeparatorStyle\fP separators)"
+.br
+.in -1c
+.in -1c
+.SS "AbstractListModel implementation"
+ List model for unit drop-down selection box\&. 
+.in +1c
+.ti -1c
+.RI "enum \fBRoleIndex\fP { \fBUnitRole\fP = Qt::UserRole }"
+.br
+.ti -1c
+.RI "int \fBrowCount\fP (const QModelIndex &parent) const "
+.br
+.ti -1c
+.RI "QVariant \fBdata\fP (const QModelIndex &index, int role) const "
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+DarkSilk unit definitions\&. Encapsulates parsing and formatting and serves as list model for drop-down selection boxes\&. 
+.PP
+Definition at line 33 of file darksilkunits\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBDarkSilkUnits::RoleIndex\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIUnitRole \fP\fP
+Unit identifier 
+.PP
+Definition at line 91 of file darksilkunits\&.h\&.
+.SS "enum \fBDarkSilkUnits::SeparatorStyle\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIseparatorNever \fP\fP
+.TP
+\fB\fIseparatorStandard \fP\fP
+.TP
+\fB\fIseparatorAlways \fP\fP
+.PP
+Definition at line 50 of file darksilkunits\&.h\&.
+.SS "enum \fBDarkSilkUnits::Unit\fP"
+DarkSilk units\&. 
+.PP
+\fBNote:\fP
+.RS 4
+Source: https://en.darksilk.it/wiki/Units \&. Please add only sensible ones 
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIDRKSLK \fP\fP
+.TP
+\fB\fImDRKSLK \fP\fP
+.TP
+\fB\fIuDRKSLK \fP\fP
+.PP
+Definition at line 43 of file darksilkunits\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "DarkSilkUnits::DarkSilkUnits (QObject * parent)\fC [explicit]\fP"
+
+.PP
+Definition at line 12 of file darksilkunits\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int DarkSilkUnits::amountDigits (int unit)\fC [static]\fP"
+
+.PP
+Number of amount digits (to represent max number of coins) 
+.PP
+Definition at line 73 of file darksilkunits\&.cpp\&.
+.SS "QList< \fBDarkSilkUnits::Unit\fP > DarkSilkUnits::availableUnits ()\fC [static]\fP"
+
+.PP
+Get list of units, for drop-down box\&. 
+.PP
+Definition at line 18 of file darksilkunits\&.cpp\&.
+.SS "QVariant DarkSilkUnits::data (const QModelIndex & index, int role) const"
+
+.PP
+Definition at line 217 of file darksilkunits\&.cpp\&.
+.SS "int DarkSilkUnits::decimals (int unit)\fC [static]\fP"
+
+.PP
+Number of decimals left\&. 
+.PP
+Definition at line 84 of file darksilkunits\&.cpp\&.
+.SS "QString DarkSilkUnits::description (int unit)\fC [static]\fP"
+
+.PP
+Longer description\&. 
+.PP
+Definition at line 51 of file darksilkunits\&.cpp\&.
+.SS "qint64 DarkSilkUnits::factor (int unit)\fC [static]\fP"
+
+.PP
+Number of Satoshis (1e-8) per unit\&. 
+.PP
+Definition at line 62 of file darksilkunits\&.cpp\&.
+.SS "QString DarkSilkUnits::floorHtmlWithUnit (int unit, const \fBCAmount\fP & amount, bool plussign = \fCfalse\fP, \fBSeparatorStyle\fP separators = \fC\fBseparatorStandard\fP\fP)\fC [static]\fP"
+
+.PP
+Definition at line 139 of file darksilkunits\&.cpp\&.
+.SS "QString DarkSilkUnits::floorWithUnit (int unit, const \fBCAmount\fP & amount, bool plussign = \fCfalse\fP, \fBSeparatorStyle\fP separators = \fC\fBseparatorStandard\fP\fP)\fC [static]\fP"
+
+.PP
+Format as string (with unit) but floor value up to 'digits' settings\&. 
+.PP
+Definition at line 128 of file darksilkunits\&.cpp\&.
+.SS "QString DarkSilkUnits::format (int unit, const \fBCAmount\fP & nIn, bool plussign = \fCfalse\fP)\fC [static]\fP"
+
+.PP
+Format as string\&. 
+.PP
+Definition at line 95 of file darksilkunits\&.cpp\&.
+.SS "QString DarkSilkUnits::format (int unit, const \fBCAmount\fP & nIn, bool fPlus, \fBSeparatorStyle\fP separators)\fC [static]\fP"
+
+.PP
+Definition at line 146 of file darksilkunits\&.cpp\&.
+.SS "QString DarkSilkUnits::formatWithUnit (int unit, const \fBCAmount\fP & amount, bool plussign = \fCfalse\fP)\fC [static]\fP"
+
+.PP
+Format as string (with unit) 
+.PP
+Definition at line 123 of file darksilkunits\&.cpp\&.
+.SS "\fBCAmount\fP DarkSilkUnits::maxMoney ()\fC [static]\fP"
+
+.PP
+Return maximum number of base units (Satoshis) 
+.PP
+Definition at line 237 of file darksilkunits\&.cpp\&.
+.SS "QString DarkSilkUnits::name (int unit)\fC [static]\fP"
+
+.PP
+Short name\&. 
+.PP
+Definition at line 40 of file darksilkunits\&.cpp\&.
+.SS "bool DarkSilkUnits::parse (int unit, const QString & value, \fBCAmount\fP * val_out)\fC [static]\fP"
+
+.PP
+Parse string to coin amount\&. 
+.PP
+Definition at line 174 of file darksilkunits\&.cpp\&.
+.SS "int DarkSilkUnits::rowCount (const QModelIndex & parent) const"
+
+.PP
+Definition at line 211 of file darksilkunits\&.cpp\&.
+.SS "bool DarkSilkUnits::valid (int unit)\fC [static]\fP"
+
+.PP
+Is unit ID valid? 
+.PP
+Definition at line 27 of file darksilkunits\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

@@ -4,8 +4,7 @@
 
 #include "coincontroldialog.h"
 #include "ui_coincontroldialog.h"
-#include "net.h"
-#include "protocol.h"
+
 #include "addresstablemodel.h"
 #include "base58.h"
 #include "coincontrol.h"
@@ -14,7 +13,7 @@
 #include "init.h"
 #include "optionsmodel.h"
 #include "sandstorm.h"
-#include "wallet/wallet.h"
+#include "wallet.h"
 #include "walletmodel.h"
 
 #include <QApplication>

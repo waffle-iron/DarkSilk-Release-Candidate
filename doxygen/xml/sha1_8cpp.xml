@@ -1,0 +1,247 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="sha1_8cpp" kind="file" language="C++">
+    <compoundname>sha1.cpp</compoundname>
+    <includes refid="sha1_8h" local="yes">crypto/sha1.h</includes>
+    <includes refid="common_8h" local="yes">crypto/common.h</includes>
+    <includes local="no">string.h</includes>
+    <incdepgraph>
+      <node id="33760">
+        <label>crypto/sha1.h</label>
+        <link refid="sha1_8h"/>
+        <childnode refid="33761" relation="include">
+        </childnode>
+        <childnode refid="33762" relation="include">
+        </childnode>
+      </node>
+      <node id="33762">
+        <label>stdlib.h</label>
+      </node>
+      <node id="33763">
+        <label>crypto/common.h</label>
+        <link refid="common_8h"/>
+        <childnode refid="33761" relation="include">
+        </childnode>
+      </node>
+      <node id="33759">
+        <label>/home/dev/ds-160209/src/crypto/sha1.cpp</label>
+        <link refid="sha1.cpp"/>
+        <childnode refid="33760" relation="include">
+        </childnode>
+        <childnode refid="33763" relation="include">
+        </childnode>
+        <childnode refid="33764" relation="include">
+        </childnode>
+      </node>
+      <node id="33764">
+        <label>string.h</label>
+      </node>
+      <node id="33761">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacesha1">sha1</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2014-2016<sp/>The<sp/>Bitcoin<sp/>Developers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Distributed<sp/>under<sp/>the<sp/>MIT<sp/>software<sp/>license,<sp/>see<sp/>the<sp/>accompanying</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>file<sp/>COPYING<sp/>or<sp/>http://www.opensource.org/licenses/mit-license.php.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="sha1_8h" kindref="compound">crypto/sha1.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="common_8h" kindref="compound">crypto/common.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Internal<sp/>implementation<sp/>code.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="15" refid="namespacesha1" refkind="compound"><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacesha1" kindref="compound">sha1</ref></highlight></codeline>
+<codeline lineno="16"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="18"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(<ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>a,<sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref>&amp;<sp/>b,<sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>c,<sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>d,<sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref>&amp;<sp/>e,<sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>f,<sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>k,<sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>w)</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>e<sp/>+=<sp/>((a<sp/>&lt;&lt;<sp/>5)<sp/>|<sp/>(a<sp/>&gt;&gt;<sp/>27))<sp/>+<sp/>f<sp/>+<sp/>k<sp/>+<sp/>w;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>b<sp/>=<sp/>(b<sp/>&lt;&lt;<sp/>30)<sp/>|<sp/>(b<sp/>&gt;&gt;<sp/>2);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>f1(<ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>b,<sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>c,<sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>d)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>d<sp/>^<sp/>(b<sp/>&amp;<sp/>(c<sp/>^<sp/>d));<sp/>}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>f2(<ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>b,<sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>c,<sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>d)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>b<sp/>^<sp/>c<sp/>^<sp/>d;<sp/>}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>f3(<ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>b,<sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>c,<sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>d)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(b<sp/>&amp;<sp/>c)<sp/>|<sp/>(d<sp/>&amp;<sp/>(b<sp/>|<sp/>c));<sp/>}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>left(<ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>x)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(x<sp/>&lt;&lt;<sp/>1)<sp/>|<sp/>(x<sp/>&gt;&gt;<sp/>31);<sp/>}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/>Initialize(<ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref>*<sp/>s)</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>s[0]<sp/>=<sp/>0x67452301ul;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>s[1]<sp/>=<sp/>0xEFCDAB89ul;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>s[2]<sp/>=<sp/>0x98BADCFEul;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>s[3]<sp/>=<sp/>0x10325476ul;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>s[4]<sp/>=<sp/>0xC3D2E1F0ul;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>k1<sp/>=<sp/>0x5A827999ul;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>k2<sp/>=<sp/>0x6ED9EBA1ul;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>k3<sp/>=<sp/>0x8F1BBCDCul;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>k4<sp/>=<sp/>0xCA62C1D6ul;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Transform(<ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref>*<sp/>s,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>chunk)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>a<sp/>=<sp/>s[0],<sp/>b<sp/>=<sp/>s[1],<sp/>c<sp/>=<sp/>s[2],<sp/>d<sp/>=<sp/>s[3],<sp/>e<sp/>=<sp/>s[4];</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>w0,<sp/>w1,<sp/>w2,<sp/>w3,<sp/>w4,<sp/>w5,<sp/>w6,<sp/>w7,<sp/>w8,<sp/>w9,<sp/>w10,<sp/>w11,<sp/>w12,<sp/>w13,<sp/>w14,<sp/>w15;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(a,<sp/>b,<sp/>c,<sp/>d,<sp/>e,<sp/>f1(b,<sp/>c,<sp/>d),<sp/>k1,<sp/>w0<sp/>=<sp/>ReadBE32(chunk<sp/>+<sp/>0));</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(e,<sp/>a,<sp/>b,<sp/>c,<sp/>d,<sp/>f1(a,<sp/>b,<sp/>c),<sp/>k1,<sp/>w1<sp/>=<sp/>ReadBE32(chunk<sp/>+<sp/>4));</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(d,<sp/>e,<sp/>a,<sp/>b,<sp/>c,<sp/>f1(e,<sp/>a,<sp/>b),<sp/>k1,<sp/>w2<sp/>=<sp/>ReadBE32(chunk<sp/>+<sp/>8));</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(c,<sp/>d,<sp/>e,<sp/>a,<sp/>b,<sp/>f1(d,<sp/>e,<sp/>a),<sp/>k1,<sp/>w3<sp/>=<sp/>ReadBE32(chunk<sp/>+<sp/>12));</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(b,<sp/>c,<sp/>d,<sp/>e,<sp/>a,<sp/>f1(c,<sp/>d,<sp/>e),<sp/>k1,<sp/>w4<sp/>=<sp/>ReadBE32(chunk<sp/>+<sp/>16));</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(a,<sp/>b,<sp/>c,<sp/>d,<sp/>e,<sp/>f1(b,<sp/>c,<sp/>d),<sp/>k1,<sp/>w5<sp/>=<sp/>ReadBE32(chunk<sp/>+<sp/>20));</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(e,<sp/>a,<sp/>b,<sp/>c,<sp/>d,<sp/>f1(a,<sp/>b,<sp/>c),<sp/>k1,<sp/>w6<sp/>=<sp/>ReadBE32(chunk<sp/>+<sp/>24));</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(d,<sp/>e,<sp/>a,<sp/>b,<sp/>c,<sp/>f1(e,<sp/>a,<sp/>b),<sp/>k1,<sp/>w7<sp/>=<sp/>ReadBE32(chunk<sp/>+<sp/>28));</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(c,<sp/>d,<sp/>e,<sp/>a,<sp/>b,<sp/>f1(d,<sp/>e,<sp/>a),<sp/>k1,<sp/>w8<sp/>=<sp/>ReadBE32(chunk<sp/>+<sp/>32));</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(b,<sp/>c,<sp/>d,<sp/>e,<sp/>a,<sp/>f1(c,<sp/>d,<sp/>e),<sp/>k1,<sp/>w9<sp/>=<sp/>ReadBE32(chunk<sp/>+<sp/>36));</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(a,<sp/>b,<sp/>c,<sp/>d,<sp/>e,<sp/>f1(b,<sp/>c,<sp/>d),<sp/>k1,<sp/>w10<sp/>=<sp/>ReadBE32(chunk<sp/>+<sp/>40));</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(e,<sp/>a,<sp/>b,<sp/>c,<sp/>d,<sp/>f1(a,<sp/>b,<sp/>c),<sp/>k1,<sp/>w11<sp/>=<sp/>ReadBE32(chunk<sp/>+<sp/>44));</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(d,<sp/>e,<sp/>a,<sp/>b,<sp/>c,<sp/>f1(e,<sp/>a,<sp/>b),<sp/>k1,<sp/>w12<sp/>=<sp/>ReadBE32(chunk<sp/>+<sp/>48));</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(c,<sp/>d,<sp/>e,<sp/>a,<sp/>b,<sp/>f1(d,<sp/>e,<sp/>a),<sp/>k1,<sp/>w13<sp/>=<sp/>ReadBE32(chunk<sp/>+<sp/>52));</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(b,<sp/>c,<sp/>d,<sp/>e,<sp/>a,<sp/>f1(c,<sp/>d,<sp/>e),<sp/>k1,<sp/>w14<sp/>=<sp/>ReadBE32(chunk<sp/>+<sp/>56));</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(a,<sp/>b,<sp/>c,<sp/>d,<sp/>e,<sp/>f1(b,<sp/>c,<sp/>d),<sp/>k1,<sp/>w15<sp/>=<sp/>ReadBE32(chunk<sp/>+<sp/>60));</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(e,<sp/>a,<sp/>b,<sp/>c,<sp/>d,<sp/>f1(a,<sp/>b,<sp/>c),<sp/>k1,<sp/>w0<sp/>=<sp/>left(w0<sp/>^<sp/>w13<sp/>^<sp/>w8<sp/>^<sp/>w2));</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(d,<sp/>e,<sp/>a,<sp/>b,<sp/>c,<sp/>f1(e,<sp/>a,<sp/>b),<sp/>k1,<sp/>w1<sp/>=<sp/>left(w1<sp/>^<sp/>w14<sp/>^<sp/>w9<sp/>^<sp/>w3));</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(c,<sp/>d,<sp/>e,<sp/>a,<sp/>b,<sp/>f1(d,<sp/>e,<sp/>a),<sp/>k1,<sp/>w2<sp/>=<sp/>left(w2<sp/>^<sp/>w15<sp/>^<sp/>w10<sp/>^<sp/>w4));</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(b,<sp/>c,<sp/>d,<sp/>e,<sp/>a,<sp/>f1(c,<sp/>d,<sp/>e),<sp/>k1,<sp/>w3<sp/>=<sp/>left(w3<sp/>^<sp/>w0<sp/>^<sp/>w11<sp/>^<sp/>w5));</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(a,<sp/>b,<sp/>c,<sp/>d,<sp/>e,<sp/>f2(b,<sp/>c,<sp/>d),<sp/>k2,<sp/>w4<sp/>=<sp/>left(w4<sp/>^<sp/>w1<sp/>^<sp/>w12<sp/>^<sp/>w6));</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(e,<sp/>a,<sp/>b,<sp/>c,<sp/>d,<sp/>f2(a,<sp/>b,<sp/>c),<sp/>k2,<sp/>w5<sp/>=<sp/>left(w5<sp/>^<sp/>w2<sp/>^<sp/>w13<sp/>^<sp/>w7));</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(d,<sp/>e,<sp/>a,<sp/>b,<sp/>c,<sp/>f2(e,<sp/>a,<sp/>b),<sp/>k2,<sp/>w6<sp/>=<sp/>left(w6<sp/>^<sp/>w3<sp/>^<sp/>w14<sp/>^<sp/>w8));</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(c,<sp/>d,<sp/>e,<sp/>a,<sp/>b,<sp/>f2(d,<sp/>e,<sp/>a),<sp/>k2,<sp/>w7<sp/>=<sp/>left(w7<sp/>^<sp/>w4<sp/>^<sp/>w15<sp/>^<sp/>w9));</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(b,<sp/>c,<sp/>d,<sp/>e,<sp/>a,<sp/>f2(c,<sp/>d,<sp/>e),<sp/>k2,<sp/>w8<sp/>=<sp/>left(w8<sp/>^<sp/>w5<sp/>^<sp/>w0<sp/>^<sp/>w10));</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(a,<sp/>b,<sp/>c,<sp/>d,<sp/>e,<sp/>f2(b,<sp/>c,<sp/>d),<sp/>k2,<sp/>w9<sp/>=<sp/>left(w9<sp/>^<sp/>w6<sp/>^<sp/>w1<sp/>^<sp/>w11));</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(e,<sp/>a,<sp/>b,<sp/>c,<sp/>d,<sp/>f2(a,<sp/>b,<sp/>c),<sp/>k2,<sp/>w10<sp/>=<sp/>left(w10<sp/>^<sp/>w7<sp/>^<sp/>w2<sp/>^<sp/>w12));</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(d,<sp/>e,<sp/>a,<sp/>b,<sp/>c,<sp/>f2(e,<sp/>a,<sp/>b),<sp/>k2,<sp/>w11<sp/>=<sp/>left(w11<sp/>^<sp/>w8<sp/>^<sp/>w3<sp/>^<sp/>w13));</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(c,<sp/>d,<sp/>e,<sp/>a,<sp/>b,<sp/>f2(d,<sp/>e,<sp/>a),<sp/>k2,<sp/>w12<sp/>=<sp/>left(w12<sp/>^<sp/>w9<sp/>^<sp/>w4<sp/>^<sp/>w14));</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(b,<sp/>c,<sp/>d,<sp/>e,<sp/>a,<sp/>f2(c,<sp/>d,<sp/>e),<sp/>k2,<sp/>w13<sp/>=<sp/>left(w13<sp/>^<sp/>w10<sp/>^<sp/>w5<sp/>^<sp/>w15));</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(a,<sp/>b,<sp/>c,<sp/>d,<sp/>e,<sp/>f2(b,<sp/>c,<sp/>d),<sp/>k2,<sp/>w14<sp/>=<sp/>left(w14<sp/>^<sp/>w11<sp/>^<sp/>w6<sp/>^<sp/>w0));</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(e,<sp/>a,<sp/>b,<sp/>c,<sp/>d,<sp/>f2(a,<sp/>b,<sp/>c),<sp/>k2,<sp/>w15<sp/>=<sp/>left(w15<sp/>^<sp/>w12<sp/>^<sp/>w7<sp/>^<sp/>w1));</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(d,<sp/>e,<sp/>a,<sp/>b,<sp/>c,<sp/>f2(e,<sp/>a,<sp/>b),<sp/>k2,<sp/>w0<sp/>=<sp/>left(w0<sp/>^<sp/>w13<sp/>^<sp/>w8<sp/>^<sp/>w2));</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(c,<sp/>d,<sp/>e,<sp/>a,<sp/>b,<sp/>f2(d,<sp/>e,<sp/>a),<sp/>k2,<sp/>w1<sp/>=<sp/>left(w1<sp/>^<sp/>w14<sp/>^<sp/>w9<sp/>^<sp/>w3));</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(b,<sp/>c,<sp/>d,<sp/>e,<sp/>a,<sp/>f2(c,<sp/>d,<sp/>e),<sp/>k2,<sp/>w2<sp/>=<sp/>left(w2<sp/>^<sp/>w15<sp/>^<sp/>w10<sp/>^<sp/>w4));</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(a,<sp/>b,<sp/>c,<sp/>d,<sp/>e,<sp/>f2(b,<sp/>c,<sp/>d),<sp/>k2,<sp/>w3<sp/>=<sp/>left(w3<sp/>^<sp/>w0<sp/>^<sp/>w11<sp/>^<sp/>w5));</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(e,<sp/>a,<sp/>b,<sp/>c,<sp/>d,<sp/>f2(a,<sp/>b,<sp/>c),<sp/>k2,<sp/>w4<sp/>=<sp/>left(w4<sp/>^<sp/>w1<sp/>^<sp/>w12<sp/>^<sp/>w6));</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(d,<sp/>e,<sp/>a,<sp/>b,<sp/>c,<sp/>f2(e,<sp/>a,<sp/>b),<sp/>k2,<sp/>w5<sp/>=<sp/>left(w5<sp/>^<sp/>w2<sp/>^<sp/>w13<sp/>^<sp/>w7));</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(c,<sp/>d,<sp/>e,<sp/>a,<sp/>b,<sp/>f2(d,<sp/>e,<sp/>a),<sp/>k2,<sp/>w6<sp/>=<sp/>left(w6<sp/>^<sp/>w3<sp/>^<sp/>w14<sp/>^<sp/>w8));</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(b,<sp/>c,<sp/>d,<sp/>e,<sp/>a,<sp/>f2(c,<sp/>d,<sp/>e),<sp/>k2,<sp/>w7<sp/>=<sp/>left(w7<sp/>^<sp/>w4<sp/>^<sp/>w15<sp/>^<sp/>w9));</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(a,<sp/>b,<sp/>c,<sp/>d,<sp/>e,<sp/>f3(b,<sp/>c,<sp/>d),<sp/>k3,<sp/>w8<sp/>=<sp/>left(w8<sp/>^<sp/>w5<sp/>^<sp/>w0<sp/>^<sp/>w10));</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(e,<sp/>a,<sp/>b,<sp/>c,<sp/>d,<sp/>f3(a,<sp/>b,<sp/>c),<sp/>k3,<sp/>w9<sp/>=<sp/>left(w9<sp/>^<sp/>w6<sp/>^<sp/>w1<sp/>^<sp/>w11));</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(d,<sp/>e,<sp/>a,<sp/>b,<sp/>c,<sp/>f3(e,<sp/>a,<sp/>b),<sp/>k3,<sp/>w10<sp/>=<sp/>left(w10<sp/>^<sp/>w7<sp/>^<sp/>w2<sp/>^<sp/>w12));</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(c,<sp/>d,<sp/>e,<sp/>a,<sp/>b,<sp/>f3(d,<sp/>e,<sp/>a),<sp/>k3,<sp/>w11<sp/>=<sp/>left(w11<sp/>^<sp/>w8<sp/>^<sp/>w3<sp/>^<sp/>w13));</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(b,<sp/>c,<sp/>d,<sp/>e,<sp/>a,<sp/>f3(c,<sp/>d,<sp/>e),<sp/>k3,<sp/>w12<sp/>=<sp/>left(w12<sp/>^<sp/>w9<sp/>^<sp/>w4<sp/>^<sp/>w14));</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(a,<sp/>b,<sp/>c,<sp/>d,<sp/>e,<sp/>f3(b,<sp/>c,<sp/>d),<sp/>k3,<sp/>w13<sp/>=<sp/>left(w13<sp/>^<sp/>w10<sp/>^<sp/>w5<sp/>^<sp/>w15));</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(e,<sp/>a,<sp/>b,<sp/>c,<sp/>d,<sp/>f3(a,<sp/>b,<sp/>c),<sp/>k3,<sp/>w14<sp/>=<sp/>left(w14<sp/>^<sp/>w11<sp/>^<sp/>w6<sp/>^<sp/>w0));</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(d,<sp/>e,<sp/>a,<sp/>b,<sp/>c,<sp/>f3(e,<sp/>a,<sp/>b),<sp/>k3,<sp/>w15<sp/>=<sp/>left(w15<sp/>^<sp/>w12<sp/>^<sp/>w7<sp/>^<sp/>w1));</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(c,<sp/>d,<sp/>e,<sp/>a,<sp/>b,<sp/>f3(d,<sp/>e,<sp/>a),<sp/>k3,<sp/>w0<sp/>=<sp/>left(w0<sp/>^<sp/>w13<sp/>^<sp/>w8<sp/>^<sp/>w2));</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(b,<sp/>c,<sp/>d,<sp/>e,<sp/>a,<sp/>f3(c,<sp/>d,<sp/>e),<sp/>k3,<sp/>w1<sp/>=<sp/>left(w1<sp/>^<sp/>w14<sp/>^<sp/>w9<sp/>^<sp/>w3));</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(a,<sp/>b,<sp/>c,<sp/>d,<sp/>e,<sp/>f3(b,<sp/>c,<sp/>d),<sp/>k3,<sp/>w2<sp/>=<sp/>left(w2<sp/>^<sp/>w15<sp/>^<sp/>w10<sp/>^<sp/>w4));</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(e,<sp/>a,<sp/>b,<sp/>c,<sp/>d,<sp/>f3(a,<sp/>b,<sp/>c),<sp/>k3,<sp/>w3<sp/>=<sp/>left(w3<sp/>^<sp/>w0<sp/>^<sp/>w11<sp/>^<sp/>w5));</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(d,<sp/>e,<sp/>a,<sp/>b,<sp/>c,<sp/>f3(e,<sp/>a,<sp/>b),<sp/>k3,<sp/>w4<sp/>=<sp/>left(w4<sp/>^<sp/>w1<sp/>^<sp/>w12<sp/>^<sp/>w6));</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(c,<sp/>d,<sp/>e,<sp/>a,<sp/>b,<sp/>f3(d,<sp/>e,<sp/>a),<sp/>k3,<sp/>w5<sp/>=<sp/>left(w5<sp/>^<sp/>w2<sp/>^<sp/>w13<sp/>^<sp/>w7));</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(b,<sp/>c,<sp/>d,<sp/>e,<sp/>a,<sp/>f3(c,<sp/>d,<sp/>e),<sp/>k3,<sp/>w6<sp/>=<sp/>left(w6<sp/>^<sp/>w3<sp/>^<sp/>w14<sp/>^<sp/>w8));</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(a,<sp/>b,<sp/>c,<sp/>d,<sp/>e,<sp/>f3(b,<sp/>c,<sp/>d),<sp/>k3,<sp/>w7<sp/>=<sp/>left(w7<sp/>^<sp/>w4<sp/>^<sp/>w15<sp/>^<sp/>w9));</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(e,<sp/>a,<sp/>b,<sp/>c,<sp/>d,<sp/>f3(a,<sp/>b,<sp/>c),<sp/>k3,<sp/>w8<sp/>=<sp/>left(w8<sp/>^<sp/>w5<sp/>^<sp/>w0<sp/>^<sp/>w10));</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(d,<sp/>e,<sp/>a,<sp/>b,<sp/>c,<sp/>f3(e,<sp/>a,<sp/>b),<sp/>k3,<sp/>w9<sp/>=<sp/>left(w9<sp/>^<sp/>w6<sp/>^<sp/>w1<sp/>^<sp/>w11));</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(c,<sp/>d,<sp/>e,<sp/>a,<sp/>b,<sp/>f3(d,<sp/>e,<sp/>a),<sp/>k3,<sp/>w10<sp/>=<sp/>left(w10<sp/>^<sp/>w7<sp/>^<sp/>w2<sp/>^<sp/>w12));</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(b,<sp/>c,<sp/>d,<sp/>e,<sp/>a,<sp/>f3(c,<sp/>d,<sp/>e),<sp/>k3,<sp/>w11<sp/>=<sp/>left(w11<sp/>^<sp/>w8<sp/>^<sp/>w3<sp/>^<sp/>w13));</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(a,<sp/>b,<sp/>c,<sp/>d,<sp/>e,<sp/>f2(b,<sp/>c,<sp/>d),<sp/>k4,<sp/>w12<sp/>=<sp/>left(w12<sp/>^<sp/>w9<sp/>^<sp/>w4<sp/>^<sp/>w14));</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(e,<sp/>a,<sp/>b,<sp/>c,<sp/>d,<sp/>f2(a,<sp/>b,<sp/>c),<sp/>k4,<sp/>w13<sp/>=<sp/>left(w13<sp/>^<sp/>w10<sp/>^<sp/>w5<sp/>^<sp/>w15));</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(d,<sp/>e,<sp/>a,<sp/>b,<sp/>c,<sp/>f2(e,<sp/>a,<sp/>b),<sp/>k4,<sp/>w14<sp/>=<sp/>left(w14<sp/>^<sp/>w11<sp/>^<sp/>w6<sp/>^<sp/>w0));</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(c,<sp/>d,<sp/>e,<sp/>a,<sp/>b,<sp/>f2(d,<sp/>e,<sp/>a),<sp/>k4,<sp/>w15<sp/>=<sp/>left(w15<sp/>^<sp/>w12<sp/>^<sp/>w7<sp/>^<sp/>w1));</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(b,<sp/>c,<sp/>d,<sp/>e,<sp/>a,<sp/>f2(c,<sp/>d,<sp/>e),<sp/>k4,<sp/>w0<sp/>=<sp/>left(w0<sp/>^<sp/>w13<sp/>^<sp/>w8<sp/>^<sp/>w2));</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(a,<sp/>b,<sp/>c,<sp/>d,<sp/>e,<sp/>f2(b,<sp/>c,<sp/>d),<sp/>k4,<sp/>w1<sp/>=<sp/>left(w1<sp/>^<sp/>w14<sp/>^<sp/>w9<sp/>^<sp/>w3));</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(e,<sp/>a,<sp/>b,<sp/>c,<sp/>d,<sp/>f2(a,<sp/>b,<sp/>c),<sp/>k4,<sp/>w2<sp/>=<sp/>left(w2<sp/>^<sp/>w15<sp/>^<sp/>w10<sp/>^<sp/>w4));</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(d,<sp/>e,<sp/>a,<sp/>b,<sp/>c,<sp/>f2(e,<sp/>a,<sp/>b),<sp/>k4,<sp/>w3<sp/>=<sp/>left(w3<sp/>^<sp/>w0<sp/>^<sp/>w11<sp/>^<sp/>w5));</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(c,<sp/>d,<sp/>e,<sp/>a,<sp/>b,<sp/>f2(d,<sp/>e,<sp/>a),<sp/>k4,<sp/>w4<sp/>=<sp/>left(w4<sp/>^<sp/>w1<sp/>^<sp/>w12<sp/>^<sp/>w6));</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(b,<sp/>c,<sp/>d,<sp/>e,<sp/>a,<sp/>f2(c,<sp/>d,<sp/>e),<sp/>k4,<sp/>w5<sp/>=<sp/>left(w5<sp/>^<sp/>w2<sp/>^<sp/>w13<sp/>^<sp/>w7));</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(a,<sp/>b,<sp/>c,<sp/>d,<sp/>e,<sp/>f2(b,<sp/>c,<sp/>d),<sp/>k4,<sp/>w6<sp/>=<sp/>left(w6<sp/>^<sp/>w3<sp/>^<sp/>w14<sp/>^<sp/>w8));</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(e,<sp/>a,<sp/>b,<sp/>c,<sp/>d,<sp/>f2(a,<sp/>b,<sp/>c),<sp/>k4,<sp/>w7<sp/>=<sp/>left(w7<sp/>^<sp/>w4<sp/>^<sp/>w15<sp/>^<sp/>w9));</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(d,<sp/>e,<sp/>a,<sp/>b,<sp/>c,<sp/>f2(e,<sp/>a,<sp/>b),<sp/>k4,<sp/>w8<sp/>=<sp/>left(w8<sp/>^<sp/>w5<sp/>^<sp/>w0<sp/>^<sp/>w10));</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(c,<sp/>d,<sp/>e,<sp/>a,<sp/>b,<sp/>f2(d,<sp/>e,<sp/>a),<sp/>k4,<sp/>w9<sp/>=<sp/>left(w9<sp/>^<sp/>w6<sp/>^<sp/>w1<sp/>^<sp/>w11));</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(b,<sp/>c,<sp/>d,<sp/>e,<sp/>a,<sp/>f2(c,<sp/>d,<sp/>e),<sp/>k4,<sp/>w10<sp/>=<sp/>left(w10<sp/>^<sp/>w7<sp/>^<sp/>w2<sp/>^<sp/>w12));</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(a,<sp/>b,<sp/>c,<sp/>d,<sp/>e,<sp/>f2(b,<sp/>c,<sp/>d),<sp/>k4,<sp/>w11<sp/>=<sp/>left(w11<sp/>^<sp/>w8<sp/>^<sp/>w3<sp/>^<sp/>w13));</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(e,<sp/>a,<sp/>b,<sp/>c,<sp/>d,<sp/>f2(a,<sp/>b,<sp/>c),<sp/>k4,<sp/>w12<sp/>=<sp/>left(w12<sp/>^<sp/>w9<sp/>^<sp/>w4<sp/>^<sp/>w14));</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(d,<sp/>e,<sp/>a,<sp/>b,<sp/>c,<sp/>f2(e,<sp/>a,<sp/>b),<sp/>k4,<sp/>left(w13<sp/>^<sp/>w10<sp/>^<sp/>w5<sp/>^<sp/>w15));</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(c,<sp/>d,<sp/>e,<sp/>a,<sp/>b,<sp/>f2(d,<sp/>e,<sp/>a),<sp/>k4,<sp/>left(w14<sp/>^<sp/>w11<sp/>^<sp/>w6<sp/>^<sp/>w0));</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="hash__impl_8h_1a4a6398f77b0cf603722649d4fd67260f" kindref="member">Round</ref>(b,<sp/>c,<sp/>d,<sp/>e,<sp/>a,<sp/>f2(c,<sp/>d,<sp/>e),<sp/>k4,<sp/>left(w15<sp/>^<sp/>w12<sp/>^<sp/>w7<sp/>^<sp/>w1));</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>s[0]<sp/>+=<sp/>a;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>s[1]<sp/>+=<sp/>b;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>s[2]<sp/>+=<sp/>c;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>s[3]<sp/>+=<sp/>d;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>s[4]<sp/>+=<sp/>e;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>sha1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149" refid="class_c_s_h_a1_1abf4b9e3a6ea653ca7aabbb076a7f3645" refkind="member"><highlight class="normal"><ref refid="class_c_s_h_a1_1abf4b9e3a6ea653ca7aabbb076a7f3645" kindref="member">CSHA1::CSHA1</ref>()<sp/>:<sp/>bytes(0)</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>sha1::Initialize(s);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154" refid="class_c_s_h_a1_1a4322be694ccb2d9864e0cd0c30496a8a" refkind="member"><highlight class="normal"><ref refid="class_c_s_h_a1" kindref="compound">CSHA1</ref>&amp;<sp/><ref refid="class_c_s_h_a1_1a4322be694ccb2d9864e0cd0c30496a8a" kindref="member">CSHA1::Write</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len)</highlight></codeline>
+<codeline lineno="155"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>end<sp/>=<sp/>data<sp/>+<sp/>len;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>bufsize<sp/>=<sp/>bytes<sp/>%<sp/>64;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(bufsize<sp/>&amp;&amp;<sp/>bufsize<sp/>+<sp/>len<sp/>&gt;=<sp/>64)<sp/>{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Fill<sp/>the<sp/>buffer,<sp/>and<sp/>process<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(buf<sp/>+<sp/>bufsize,<sp/>data,<sp/>64<sp/>-<sp/>bufsize);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bytes<sp/>+=<sp/>64<sp/>-<sp/>bufsize;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data<sp/>+=<sp/>64<sp/>-<sp/>bufsize;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sha1::Transform(s,<sp/>buf);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bufsize<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(end<sp/>&gt;=<sp/>data<sp/>+<sp/>64)<sp/>{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Process<sp/>full<sp/>chunks<sp/>directly<sp/>from<sp/>the<sp/>source.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sha1::Transform(s,<sp/>data);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bytes<sp/>+=<sp/>64;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>data<sp/>+=<sp/>64;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(end<sp/>&gt;<sp/>data)<sp/>{</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Fill<sp/>the<sp/>buffer<sp/>with<sp/>what<sp/>remains.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(buf<sp/>+<sp/>bufsize,<sp/>data,<sp/>end<sp/>-<sp/>data);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bytes<sp/>+=<sp/>end<sp/>-<sp/>data;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="180" refid="class_c_s_h_a1_1a9a4f829cbe511ca899d27dcab1d0d9e6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_c_s_h_a1_1a9a4f829cbe511ca899d27dcab1d0d9e6" kindref="member">CSHA1::Finalize</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" kindref="member">hash</ref>[OUTPUT_SIZE])</highlight></codeline>
+<codeline lineno="181"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>pad[64]<sp/>=<sp/>{0x80};</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>sizedesc[8];</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>WriteBE64(sizedesc,<sp/>bytes<sp/>&lt;&lt;<sp/>3);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_s_h_a1_1a4322be694ccb2d9864e0cd0c30496a8a" kindref="member">Write</ref>(pad,<sp/>1<sp/>+<sp/>((119<sp/>-<sp/>(bytes<sp/>%<sp/>64))<sp/>%<sp/>64));</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_s_h_a1_1a4322be694ccb2d9864e0cd0c30496a8a" kindref="member">Write</ref>(sizedesc,<sp/>8);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>WriteBE32(<ref refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" kindref="member">hash</ref>,<sp/>s[0]);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>WriteBE32(<ref refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" kindref="member">hash</ref><sp/>+<sp/>4,<sp/>s[1]);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>WriteBE32(<ref refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" kindref="member">hash</ref><sp/>+<sp/>8,<sp/>s[2]);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>WriteBE32(<ref refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" kindref="member">hash</ref><sp/>+<sp/>12,<sp/>s[3]);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>WriteBE32(<ref refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" kindref="member">hash</ref><sp/>+<sp/>16,<sp/>s[4]);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194" refid="class_c_s_h_a1_1ab7f3006a33ddccdc1f2b2f5da9cb90af" refkind="member"><highlight class="normal"><ref refid="class_c_s_h_a1" kindref="compound">CSHA1</ref>&amp;<sp/><ref refid="class_c_s_h_a1_1ab7f3006a33ddccdc1f2b2f5da9cb90af" kindref="member">CSHA1::Reset</ref>()</highlight></codeline>
+<codeline lineno="195"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>bytes<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>sha1::Initialize(s);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/crypto/sha1.cpp"/>
+  </compounddef>
+</doxygen>

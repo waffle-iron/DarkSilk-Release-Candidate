@@ -1,0 +1,138 @@
+\hypertarget{group_8h}{}\section{/home/dev/ds-\/160209/src/secp256k1/src/group.h File Reference}
+\label{group_8h}\index{/home/dev/ds-\/160209/src/secp256k1/src/group.\+h@{/home/dev/ds-\/160209/src/secp256k1/src/group.\+h}}
+{\ttfamily \#include \char`\"{}num.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}field.\+h\char`\"{}}\\*
+Include dependency graph for group.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structsecp256k1__ge}{secp256k1\+\_\+ge}
+\item 
+struct \hyperlink{structsecp256k1__gej}{secp256k1\+\_\+gej}
+\item 
+struct \hyperlink{structsecp256k1__ge__storage}{secp256k1\+\_\+ge\+\_\+storage}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group_8h_adb0cb248ca6d0aabe3a82423233e6ce3}{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+\_\+\+C\+O\+N\+S\+T}(a,  b,  c,  d,  e,  f,  g,  h,  i,  j,  k,  l,  m,  n,  o,  p)~\{\hyperlink{field__5x52_8h_a8c00ba3d97ea0d9b0d461463e890de15}{S\+E\+C\+P256\+K1\+\_\+\+F\+E\+\_\+\+C\+O\+N\+S\+T}((a),(b),(c),(d),(e),(f),(g),(h)), \hyperlink{field__5x52_8h_a8c00ba3d97ea0d9b0d461463e890de15}{S\+E\+C\+P256\+K1\+\_\+\+F\+E\+\_\+\+C\+O\+N\+S\+T}((i),(j),(k),(l),(m),(n),(o),(p)), 0\}
+\item 
+\#define \hyperlink{group_8h_a9b939335f1394bfa95e55b3f4f8d0d58}{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+\_\+\+C\+O\+N\+S\+T\+\_\+\+I\+N\+F\+I\+N\+I\+T\+Y}~\{\hyperlink{field__5x52_8h_a8c00ba3d97ea0d9b0d461463e890de15}{S\+E\+C\+P256\+K1\+\_\+\+F\+E\+\_\+\+C\+O\+N\+S\+T}(0, 0, 0, 0, 0, 0, 0, 0), \hyperlink{field__5x52_8h_a8c00ba3d97ea0d9b0d461463e890de15}{S\+E\+C\+P256\+K1\+\_\+\+F\+E\+\_\+\+C\+O\+N\+S\+T}(0, 0, 0, 0, 0, 0, 0, 0), 1\}
+\item 
+\#define \hyperlink{group_8h_af46c307c9174e2aa45dbf6f32e61ed21}{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+J\+\_\+\+C\+O\+N\+S\+T}(a,  b,  c,  d,  e,  f,  g,  h,  i,  j,  k,  l,  m,  n,  o,  p)~\{\hyperlink{field__5x52_8h_a8c00ba3d97ea0d9b0d461463e890de15}{S\+E\+C\+P256\+K1\+\_\+\+F\+E\+\_\+\+C\+O\+N\+S\+T}((a),(b),(c),(d),(e),(f),(g),(h)), \hyperlink{field__5x52_8h_a8c00ba3d97ea0d9b0d461463e890de15}{S\+E\+C\+P256\+K1\+\_\+\+F\+E\+\_\+\+C\+O\+N\+S\+T}((i),(j),(k),(l),(m),(n),(o),(p)), \hyperlink{field__5x52_8h_a8c00ba3d97ea0d9b0d461463e890de15}{S\+E\+C\+P256\+K1\+\_\+\+F\+E\+\_\+\+C\+O\+N\+S\+T}(0, 0, 0, 0, 0, 0, 0, 1), 0\}
+\item 
+\#define \hyperlink{group_8h_a0143422e1ce1601b00ff71c20c455ceb}{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+J\+\_\+\+C\+O\+N\+S\+T\+\_\+\+I\+N\+F\+I\+N\+I\+T\+Y}~\{\hyperlink{field__5x52_8h_a8c00ba3d97ea0d9b0d461463e890de15}{S\+E\+C\+P256\+K1\+\_\+\+F\+E\+\_\+\+C\+O\+N\+S\+T}(0, 0, 0, 0, 0, 0, 0, 0), \hyperlink{field__5x52_8h_a8c00ba3d97ea0d9b0d461463e890de15}{S\+E\+C\+P256\+K1\+\_\+\+F\+E\+\_\+\+C\+O\+N\+S\+T}(0, 0, 0, 0, 0, 0, 0, 0), \hyperlink{field__5x52_8h_a8c00ba3d97ea0d9b0d461463e890de15}{S\+E\+C\+P256\+K1\+\_\+\+F\+E\+\_\+\+C\+O\+N\+S\+T}(0, 0, 0, 0, 0, 0, 0, 0), 1\}
+\item 
+\#define \hyperlink{group_8h_a01dc428f2a47a18098539b5c620834f1}{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+C\+O\+N\+S\+T}(a,  b,  c,  d,  e,  f,  g,  h,  i,  j,  k,  l,  m,  n,  o,  p)~\{\hyperlink{field__5x52_8h_ae6927483c41044bd04e5f8efb42f53ba}{S\+E\+C\+P256\+K1\+\_\+\+F\+E\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+C\+O\+N\+S\+T}((a),(b),(c),(d),(e),(f),(g),(h)), \hyperlink{field__5x52_8h_ae6927483c41044bd04e5f8efb42f53ba}{S\+E\+C\+P256\+K1\+\_\+\+F\+E\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+C\+O\+N\+S\+T}((i),(j),(k),(l),(m),(n),(o),(p))\}
+\item 
+\#define \hyperlink{group_8h_adefefa4ed4193a466784391616bc2f9f}{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+C\+O\+N\+S\+T\+\_\+\+G\+E\+T}(t)~\hyperlink{field__10x26_8h_a07b67ff641d5db9df0691b14cdc29584}{S\+E\+C\+P256\+K1\+\_\+\+F\+E\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+C\+O\+N\+S\+T\+\_\+\+G\+E\+T}(t.\+x), \hyperlink{field__10x26_8h_a07b67ff641d5db9df0691b14cdc29584}{S\+E\+C\+P256\+K1\+\_\+\+F\+E\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+C\+O\+N\+S\+T\+\_\+\+G\+E\+T}(t.\+y)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{group_8h_adb0cb248ca6d0aabe3a82423233e6ce3}{}\index{group.\+h@{group.\+h}!S\+E\+C\+P256\+K1\+\_\+\+G\+E\+\_\+\+C\+O\+N\+S\+T@{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+\_\+\+C\+O\+N\+S\+T}}
+\index{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+\_\+\+C\+O\+N\+S\+T@{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+\_\+\+C\+O\+N\+S\+T}!group.\+h@{group.\+h}}
+\subsubsection[{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+\_\+\+C\+O\+N\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+C\+P256\+K1\+\_\+\+G\+E\+\_\+\+C\+O\+N\+S\+T(
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{b, }
+\item[{}]{c, }
+\item[{}]{d, }
+\item[{}]{e, }
+\item[{}]{f, }
+\item[{}]{g, }
+\item[{}]{h, }
+\item[{}]{i, }
+\item[{}]{j, }
+\item[{}]{k, }
+\item[{}]{l, }
+\item[{}]{m, }
+\item[{}]{n, }
+\item[{}]{o, }
+\item[{}]{p}
+\end{DoxyParamCaption}
+)~\{{\bf S\+E\+C\+P256\+K1\+\_\+\+F\+E\+\_\+\+C\+O\+N\+S\+T}((a),(b),(c),(d),(e),(f),(g),(h)), {\bf S\+E\+C\+P256\+K1\+\_\+\+F\+E\+\_\+\+C\+O\+N\+S\+T}((i),(j),(k),(l),(m),(n),(o),(p)), 0\}}\label{group_8h_adb0cb248ca6d0aabe3a82423233e6ce3}
+
+
+Definition at line 20 of file group.\+h.
+
+\hypertarget{group_8h_a9b939335f1394bfa95e55b3f4f8d0d58}{}\index{group.\+h@{group.\+h}!S\+E\+C\+P256\+K1\+\_\+\+G\+E\+\_\+\+C\+O\+N\+S\+T\+\_\+\+I\+N\+F\+I\+N\+I\+T\+Y@{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+\_\+\+C\+O\+N\+S\+T\+\_\+\+I\+N\+F\+I\+N\+I\+T\+Y}}
+\index{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+\_\+\+C\+O\+N\+S\+T\+\_\+\+I\+N\+F\+I\+N\+I\+T\+Y@{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+\_\+\+C\+O\+N\+S\+T\+\_\+\+I\+N\+F\+I\+N\+I\+T\+Y}!group.\+h@{group.\+h}}
+\subsubsection[{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+\_\+\+C\+O\+N\+S\+T\+\_\+\+I\+N\+F\+I\+N\+I\+T\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+C\+P256\+K1\+\_\+\+G\+E\+\_\+\+C\+O\+N\+S\+T\+\_\+\+I\+N\+F\+I\+N\+I\+T\+Y~\{{\bf S\+E\+C\+P256\+K1\+\_\+\+F\+E\+\_\+\+C\+O\+N\+S\+T}(0, 0, 0, 0, 0, 0, 0, 0), {\bf S\+E\+C\+P256\+K1\+\_\+\+F\+E\+\_\+\+C\+O\+N\+S\+T}(0, 0, 0, 0, 0, 0, 0, 0), 1\}}\label{group_8h_a9b939335f1394bfa95e55b3f4f8d0d58}
+
+
+Definition at line 21 of file group.\+h.
+
+\hypertarget{group_8h_a01dc428f2a47a18098539b5c620834f1}{}\index{group.\+h@{group.\+h}!S\+E\+C\+P256\+K1\+\_\+\+G\+E\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+C\+O\+N\+S\+T@{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+C\+O\+N\+S\+T}}
+\index{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+C\+O\+N\+S\+T@{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+C\+O\+N\+S\+T}!group.\+h@{group.\+h}}
+\subsubsection[{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+C\+O\+N\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+C\+P256\+K1\+\_\+\+G\+E\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+C\+O\+N\+S\+T(
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{b, }
+\item[{}]{c, }
+\item[{}]{d, }
+\item[{}]{e, }
+\item[{}]{f, }
+\item[{}]{g, }
+\item[{}]{h, }
+\item[{}]{i, }
+\item[{}]{j, }
+\item[{}]{k, }
+\item[{}]{l, }
+\item[{}]{m, }
+\item[{}]{n, }
+\item[{}]{o, }
+\item[{}]{p}
+\end{DoxyParamCaption}
+)~\{{\bf S\+E\+C\+P256\+K1\+\_\+\+F\+E\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+C\+O\+N\+S\+T}((a),(b),(c),(d),(e),(f),(g),(h)), {\bf S\+E\+C\+P256\+K1\+\_\+\+F\+E\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+C\+O\+N\+S\+T}((i),(j),(k),(l),(m),(n),(o),(p))\}}\label{group_8h_a01dc428f2a47a18098539b5c620834f1}
+
+
+Definition at line 39 of file group.\+h.
+
+\hypertarget{group_8h_adefefa4ed4193a466784391616bc2f9f}{}\index{group.\+h@{group.\+h}!S\+E\+C\+P256\+K1\+\_\+\+G\+E\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+C\+O\+N\+S\+T\+\_\+\+G\+E\+T@{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+C\+O\+N\+S\+T\+\_\+\+G\+E\+T}}
+\index{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+C\+O\+N\+S\+T\+\_\+\+G\+E\+T@{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+C\+O\+N\+S\+T\+\_\+\+G\+E\+T}!group.\+h@{group.\+h}}
+\subsubsection[{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+C\+O\+N\+S\+T\+\_\+\+G\+E\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+C\+P256\+K1\+\_\+\+G\+E\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+C\+O\+N\+S\+T\+\_\+\+G\+E\+T(
+\begin{DoxyParamCaption}
+\item[{}]{t}
+\end{DoxyParamCaption}
+)~{\bf S\+E\+C\+P256\+K1\+\_\+\+F\+E\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+C\+O\+N\+S\+T\+\_\+\+G\+E\+T}(t.\+x), {\bf S\+E\+C\+P256\+K1\+\_\+\+F\+E\+\_\+\+S\+T\+O\+R\+A\+G\+E\+\_\+\+C\+O\+N\+S\+T\+\_\+\+G\+E\+T}(t.\+y)}\label{group_8h_adefefa4ed4193a466784391616bc2f9f}
+
+
+Definition at line 41 of file group.\+h.
+
+\hypertarget{group_8h_af46c307c9174e2aa45dbf6f32e61ed21}{}\index{group.\+h@{group.\+h}!S\+E\+C\+P256\+K1\+\_\+\+G\+E\+J\+\_\+\+C\+O\+N\+S\+T@{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+J\+\_\+\+C\+O\+N\+S\+T}}
+\index{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+J\+\_\+\+C\+O\+N\+S\+T@{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+J\+\_\+\+C\+O\+N\+S\+T}!group.\+h@{group.\+h}}
+\subsubsection[{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+J\+\_\+\+C\+O\+N\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+C\+P256\+K1\+\_\+\+G\+E\+J\+\_\+\+C\+O\+N\+S\+T(
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{b, }
+\item[{}]{c, }
+\item[{}]{d, }
+\item[{}]{e, }
+\item[{}]{f, }
+\item[{}]{g, }
+\item[{}]{h, }
+\item[{}]{i, }
+\item[{}]{j, }
+\item[{}]{k, }
+\item[{}]{l, }
+\item[{}]{m, }
+\item[{}]{n, }
+\item[{}]{o, }
+\item[{}]{p}
+\end{DoxyParamCaption}
+)~\{{\bf S\+E\+C\+P256\+K1\+\_\+\+F\+E\+\_\+\+C\+O\+N\+S\+T}((a),(b),(c),(d),(e),(f),(g),(h)), {\bf S\+E\+C\+P256\+K1\+\_\+\+F\+E\+\_\+\+C\+O\+N\+S\+T}((i),(j),(k),(l),(m),(n),(o),(p)), {\bf S\+E\+C\+P256\+K1\+\_\+\+F\+E\+\_\+\+C\+O\+N\+S\+T}(0, 0, 0, 0, 0, 0, 0, 1), 0\}}\label{group_8h_af46c307c9174e2aa45dbf6f32e61ed21}
+
+
+Definition at line 31 of file group.\+h.
+
+\hypertarget{group_8h_a0143422e1ce1601b00ff71c20c455ceb}{}\index{group.\+h@{group.\+h}!S\+E\+C\+P256\+K1\+\_\+\+G\+E\+J\+\_\+\+C\+O\+N\+S\+T\+\_\+\+I\+N\+F\+I\+N\+I\+T\+Y@{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+J\+\_\+\+C\+O\+N\+S\+T\+\_\+\+I\+N\+F\+I\+N\+I\+T\+Y}}
+\index{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+J\+\_\+\+C\+O\+N\+S\+T\+\_\+\+I\+N\+F\+I\+N\+I\+T\+Y@{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+J\+\_\+\+C\+O\+N\+S\+T\+\_\+\+I\+N\+F\+I\+N\+I\+T\+Y}!group.\+h@{group.\+h}}
+\subsubsection[{S\+E\+C\+P256\+K1\+\_\+\+G\+E\+J\+\_\+\+C\+O\+N\+S\+T\+\_\+\+I\+N\+F\+I\+N\+I\+T\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+C\+P256\+K1\+\_\+\+G\+E\+J\+\_\+\+C\+O\+N\+S\+T\+\_\+\+I\+N\+F\+I\+N\+I\+T\+Y~\{{\bf S\+E\+C\+P256\+K1\+\_\+\+F\+E\+\_\+\+C\+O\+N\+S\+T}(0, 0, 0, 0, 0, 0, 0, 0), {\bf S\+E\+C\+P256\+K1\+\_\+\+F\+E\+\_\+\+C\+O\+N\+S\+T}(0, 0, 0, 0, 0, 0, 0, 0), {\bf S\+E\+C\+P256\+K1\+\_\+\+F\+E\+\_\+\+C\+O\+N\+S\+T}(0, 0, 0, 0, 0, 0, 0, 0), 1\}}\label{group_8h_a0143422e1ce1601b00ff71c20c455ceb}
+
+
+Definition at line 32 of file group.\+h.
+

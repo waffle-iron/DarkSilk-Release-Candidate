@@ -1,21 +1,19 @@
 #include "signverifymessagedialog.h"
 #include "ui_signverifymessagedialog.h"
 
+#include "addressbookpage.h"
+#include "base58.h"
+#include "guiutil.h"
+#include "init.h"
 #include "main.h"
 #include "optionsmodel.h"
-
-#include "addressbookpage.h"
-#include "guiutil.h"
 #include "walletmodel.h"
+#include "wallet.h"
 
-#include "base58.h"
-#include "init.h"
-#include "wallet/wallet.h"
+#include <QClipboard>
 
 #include <string>
 #include <vector>
-
-#include <QClipboard>
 
 SignVerifyMessageDialog::SignVerifyMessageDialog(QWidget *parent) :
     QDialog(parent),

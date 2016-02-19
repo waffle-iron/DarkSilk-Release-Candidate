@@ -1,0 +1,136 @@
+.TH "CStealthAddress" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CStealthAddress \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <stealth\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCStealthAddress\fP ()"
+.br
+.ti -1c
+.RI "bool \fBSetEncoded\fP (const std::string &encodedAddress)"
+.br
+.ti -1c
+.RI "std::string \fBEncoded\fP () const "
+.br
+.ti -1c
+.RI "bool \fBoperator<\fP (const \fBCStealthAddress\fP &y) const "
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBCStealthAddress\fP &y) const "
+.br
+.ti -1c
+.RI "template<typename Stream , typename Operation > void \fBSerializationOp\fP (Stream &s, Operation ser_action, int nType, int nVersion)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBuint8_t\fP \fBoptions\fP"
+.br
+.ti -1c
+.RI "\fBec_point\fP \fBscan_pubkey\fP"
+.br
+.ti -1c
+.RI "\fBec_point\fP \fBspend_pubkey\fP"
+.br
+.ti -1c
+.RI "size_t \fBnumber_signatures\fP"
+.br
+.ti -1c
+.RI "\fBstealth_prefix\fP \fBprefix\fP"
+.br
+.ti -1c
+.RI "std::string \fBlabel\fP"
+.br
+.ti -1c
+.RI "\fBdata_chunk\fP \fBscan_secret\fP"
+.br
+.ti -1c
+.RI "\fBdata_chunk\fP \fBspend_secret\fP"
+.br
+.ti -1c
+.RI "\fBADD_SERIALIZE_METHODS\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 56 of file stealth\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CStealthAddress::CStealthAddress ()\fC [inline]\fP"
+
+.PP
+Definition at line 59 of file stealth\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "std::string CStealthAddress::Encoded () const"
+
+.PP
+Definition at line 66 of file stealth\&.cpp\&.
+.SS "bool CStealthAddress::operator< (const \fBCStealthAddress\fP & y) const\fC [inline]\fP"
+
+.PP
+Definition at line 78 of file stealth\&.h\&.
+.SS "bool CStealthAddress::operator== (const \fBCStealthAddress\fP & y) const\fC [inline]\fP"
+
+.PP
+Definition at line 83 of file stealth\&.h\&.
+.SS "template<typename Stream , typename Operation > void CStealthAddress::SerializationOp (Stream & s, Operation ser_action, int nType, int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 91 of file stealth\&.h\&.
+.SS "bool CStealthAddress::SetEncoded (const std::string & encodedAddress)"
+
+.PP
+Definition at line 17 of file stealth\&.cpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "CStealthAddress::ADD_SERIALIZE_METHODS"
+
+.PP
+Definition at line 88 of file stealth\&.h\&.
+.SS "std::string CStealthAddress::label\fC [mutable]\fP"
+
+.PP
+Definition at line 71 of file stealth\&.h\&.
+.SS "size_t CStealthAddress::number_signatures"
+
+.PP
+Definition at line 68 of file stealth\&.h\&.
+.SS "\fBuint8_t\fP CStealthAddress::options"
+
+.PP
+Definition at line 64 of file stealth\&.h\&.
+.SS "\fBstealth_prefix\fP CStealthAddress::prefix"
+
+.PP
+Definition at line 69 of file stealth\&.h\&.
+.SS "\fBec_point\fP CStealthAddress::scan_pubkey"
+
+.PP
+Definition at line 65 of file stealth\&.h\&.
+.SS "\fBdata_chunk\fP CStealthAddress::scan_secret"
+
+.PP
+Definition at line 72 of file stealth\&.h\&.
+.SS "\fBec_point\fP CStealthAddress::spend_pubkey"
+
+.PP
+Definition at line 66 of file stealth\&.h\&.
+.SS "\fBdata_chunk\fP CStealthAddress::spend_secret"
+
+.PP
+Definition at line 73 of file stealth\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

@@ -379,7 +379,7 @@ void CStormnodeMan::SsegUpdate(CNode* pnode)
 {
     LOCK(cs);
 
-    if(BaseParams().NetworkID() == CBaseChainParams::MAIN) {
+    if(Params().NetworkID() == CChainParams::MAIN) {
         if(!(pnode->addr.IsRFC1918() || pnode->addr.IsLocal())){
             std::map<CNetAddr, int64_t>::iterator it = mWeAskedForStormnodeList.find(pnode->addr);
             if (it != mWeAskedForStormnodeList.end())
@@ -756,7 +756,7 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
             //local network
             bool isLocal = (pfrom->addr.IsRFC1918() || pfrom->addr.IsLocal());
 
-            if(!isLocal && BaseParams().NetworkID() == CBaseChainParams::MAIN) {
+            if(!isLocal && Params().NetworkID() == CChainParams::MAIN) {
                 std::map<CNetAddr, int64_t>::iterator i = mAskedUsForStormnodeList.find(pfrom->addr);
                 if (i != mAskedUsForStormnodeList.end()){
                     int64_t t = (*i).second;

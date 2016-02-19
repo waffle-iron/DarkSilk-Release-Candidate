@@ -1,0 +1,86 @@
+.TH "leveldb::port" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+leveldb::port \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBAtomicPointer\fP"
+.br
+.ti -1c
+.RI "class \fBCondVar\fP"
+.br
+.ti -1c
+.RI "class \fBMutex\fP"
+.br
+.ti -1c
+.RI "class \fBOnceType\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef intptr_t \fBOnceType\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBInitOnce\fP (\fBport::OnceType\fP *, void(*initializer)())"
+.br
+.ti -1c
+.RI "bool \fBSnappy_Compress\fP (const char *input, size_t input_length, std::string *output)"
+.br
+.ti -1c
+.RI "bool \fBSnappy_GetUncompressedLength\fP (const char *input, size_t length, size_t *result)"
+.br
+.ti -1c
+.RI "bool \fBSnappy_Uncompress\fP (const char *input_data, size_t input_length, char *output)"
+.br
+.ti -1c
+.RI "bool \fBGetHeapProfile\fP (void(*\fBfunc\fP)(void *, const char *, int), void *\fBarg\fP)"
+.br
+.ti -1c
+.RI "bool \fBSnappy_Compress\fP (const char *input, size_t length,::std::string *output)"
+.br
+.in -1c
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef pthread_once_t \fBleveldb::port::OnceType\fP"
+
+.PP
+Definition at line 69 of file port_example\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "bool leveldb::port::GetHeapProfile (void(*)(void *, const char *, int) func, void * arg)\fC [inline]\fP"
+
+.PP
+Definition at line 147 of file port_posix\&.h\&.
+.SS "void leveldb::port::InitOnce (\fBport::OnceType\fP *, void(*)() initializer)"
+
+.PP
+Definition at line 49 of file port_posix\&.cc\&.
+.SS "bool leveldb::port::Snappy_Compress (const char * input, size_t input_length, std::string * output)"
+
+.SS "bool leveldb::port::Snappy_Compress (const char * input, size_t length, ::std::string * output)\fC [inline]\fP"
+
+.PP
+Definition at line 116 of file port_posix\&.h\&.
+.SS "bool leveldb::port::Snappy_GetUncompressedLength (const char * input, size_t length, size_t * result)\fC [inline]\fP"
+
+.PP
+Definition at line 129 of file port_posix\&.h\&.
+.SS "bool leveldb::port::Snappy_Uncompress (const char * input_data, size_t input_length, char * output)\fC [inline]\fP"
+
+.PP
+Definition at line 138 of file port_posix\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

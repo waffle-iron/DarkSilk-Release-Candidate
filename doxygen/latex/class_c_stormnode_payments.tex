@@ -1,0 +1,444 @@
+\hypertarget{class_c_stormnode_payments}{}\section{C\+Stormnode\+Payments Class Reference}
+\label{class_c_stormnode_payments}\index{C\+Stormnode\+Payments@{C\+Stormnode\+Payments}}
+
+
+{\ttfamily \#include $<$stormnode-\/payments.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_stormnode_payments_aab9f6e5ac034c9573690e627190d3c84}{C\+Stormnode\+Payments} ()
+\item 
+void \hyperlink{class_c_stormnode_payments_a829e8562a7530332d0096038b455e79d}{Clear} ()
+\item 
+bool \hyperlink{class_c_stormnode_payments_a8781a05c217f2b7b34bb2c57e0a6c813}{Add\+Winning\+Stormnode} (\hyperlink{class_c_stormnode_payment_winner}{C\+Stormnode\+Payment\+Winner} \&winner)
+\item 
+bool \hyperlink{class_c_stormnode_payments_a348b88dd03ef4a6684ae22141de841c8}{Process\+Block} (int n\+Block\+Height)
+\item 
+void \hyperlink{class_c_stormnode_payments_a813695c47afcbedba8858c36cb30bcfe}{Sync} (\hyperlink{class_c_node}{C\+Node} $\ast$node, int n\+Count\+Needed)
+\item 
+void \hyperlink{class_c_stormnode_payments_a0113fb8a5dc2e0b0efd0b8180535f9d0}{Clean\+Payment\+List} ()
+\item 
+int \hyperlink{class_c_stormnode_payments_a16c152a68d00c1643c99c911f87503c8}{Last\+Payment} (\hyperlink{class_c_stormnode}{C\+Stormnode} \&sn)
+\item 
+bool \hyperlink{class_c_stormnode_payments_a29c31e98d23f4a7f150bbccd4ef5a5cb}{Get\+Block\+Payee} (int n\+Block\+Height, \hyperlink{class_c_script}{C\+Script} \&payee)
+\item 
+bool \hyperlink{class_c_stormnode_payments_ae14691c97882f093b8c852f03d7f5884}{Is\+Transaction\+Valid} (const \hyperlink{class_c_transaction}{C\+Transaction} \&tx\+New, int n\+Block\+Height)
+\item 
+bool \hyperlink{class_c_stormnode_payments_ac2a8e2a9bef3c4c68c1e464903a1988f}{Is\+Scheduled} (\hyperlink{class_c_stormnode}{C\+Stormnode} \&sn, int n\+Not\+Block\+Height)
+\item 
+bool \hyperlink{class_c_stormnode_payments_ae0765ade69bea1010c3f7482ea9d9beb}{Can\+Vote} (\hyperlink{class_c_out_point}{C\+Out\+Point} out\+Stormnode, int n\+Block\+Height)
+\item 
+int \hyperlink{class_c_stormnode_payments_a98392b86e945308c9c66f1cd4942a220}{Get\+Min\+Stormnode\+Payments\+Proto} ()
+\item 
+void \hyperlink{class_c_stormnode_payments_a8dc55316a297daad51a03d4cf7b37d06}{Process\+Message\+Stormnode\+Payments} (\hyperlink{class_c_node}{C\+Node} $\ast$pfrom, std\+::string \&str\+Command, \hyperlink{class_c_data_stream}{C\+Data\+Stream} \&v\+Recv)
+\item 
+std\+::string \hyperlink{class_c_stormnode_payments_a67088f0606e6b20c9d918a72db4ca2ff}{Get\+Required\+Payments\+String} (int n\+Block\+Height)
+\item 
+void \hyperlink{class_c_stormnode_payments_accaeb923fe36e73d4228fc043771c4ad}{Fill\+Block\+Payee} (\hyperlink{class_c_transaction}{C\+Transaction} \&tx\+New, \hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} n\+Fees)
+\item 
+std\+::string \hyperlink{class_c_stormnode_payments_abfe9298441cc4e90710d1ba8bc24ec57}{To\+String} () const 
+\item 
+int \hyperlink{class_c_stormnode_payments_a28bd6d48455d8825c94056725fb42c08}{Get\+Oldest\+Block} ()
+\item 
+int \hyperlink{class_c_stormnode_payments_a2d5b46ffba64492eaf4182bd3015d663}{Get\+Newest\+Block} ()
+\item 
+{\footnotesize template$<$typename Stream , typename Operation $>$ }\\void \hyperlink{class_c_stormnode_payments_a00b73c24ef476465db57c93a880343d6}{Serialization\+Op} (Stream \&s, Operation ser\+\_\+action, int n\+Type, int n\+Version)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::map$<$ \hyperlink{classuint256}{uint256}, \hyperlink{class_c_stormnode_payment_winner}{C\+Stormnode\+Payment\+Winner} $>$ \hyperlink{class_c_stormnode_payments_a2227618f68b1655073c17d4b2ffe1c56}{map\+Stormnode\+Payee\+Votes}
+\item 
+std\+::map$<$ int, \hyperlink{class_c_stormnode_block_payees}{C\+Stormnode\+Block\+Payees} $>$ \hyperlink{class_c_stormnode_payments_aad1a7055ea55caa06b4eb291e8b3a348}{map\+Stormnode\+Blocks}
+\item 
+std\+::map$<$ \hyperlink{classuint256}{uint256}, int $>$ \hyperlink{class_c_stormnode_payments_a82f9ee8e4388b9640854bd3c70b76782}{map\+Stormnodes\+Last\+Vote}
+\item 
+\hyperlink{class_c_stormnode_payments_aedb0752fb1e1cb758cfc2fd05d131c40}{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 219 of file stormnode-\/payments.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_stormnode_payments_aab9f6e5ac034c9573690e627190d3c84}{}\index{C\+Stormnode\+Payments@{C\+Stormnode\+Payments}!C\+Stormnode\+Payments@{C\+Stormnode\+Payments}}
+\index{C\+Stormnode\+Payments@{C\+Stormnode\+Payments}!C\+Stormnode\+Payments@{C\+Stormnode\+Payments}}
+\subsubsection[{C\+Stormnode\+Payments}]{\setlength{\rightskip}{0pt plus 5cm}C\+Stormnode\+Payments\+::\+C\+Stormnode\+Payments (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_stormnode_payments_aab9f6e5ac034c9573690e627190d3c84}
+
+
+Definition at line 230 of file stormnode-\/payments.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_stormnode_payments_a8781a05c217f2b7b34bb2c57e0a6c813}{}\index{C\+Stormnode\+Payments@{C\+Stormnode\+Payments}!Add\+Winning\+Stormnode@{Add\+Winning\+Stormnode}}
+\index{Add\+Winning\+Stormnode@{Add\+Winning\+Stormnode}!C\+Stormnode\+Payments@{C\+Stormnode\+Payments}}
+\subsubsection[{Add\+Winning\+Stormnode}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Stormnode\+Payments\+::\+Add\+Winning\+Stormnode (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Stormnode\+Payment\+Winner} \&}]{winner}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_payments_a8781a05c217f2b7b34bb2c57e0a6c813}
+
+
+Definition at line 490 of file stormnode-\/payments.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 0
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 1
+
+
+\hypertarget{class_c_stormnode_payments_ae0765ade69bea1010c3f7482ea9d9beb}{}\index{C\+Stormnode\+Payments@{C\+Stormnode\+Payments}!Can\+Vote@{Can\+Vote}}
+\index{Can\+Vote@{Can\+Vote}!C\+Stormnode\+Payments@{C\+Stormnode\+Payments}}
+\subsubsection[{Can\+Vote}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Stormnode\+Payments\+::\+Can\+Vote (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Out\+Point}}]{out\+Stormnode, }
+\item[{int}]{n\+Block\+Height}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_stormnode_payments_ae0765ade69bea1010c3f7482ea9d9beb}
+
+
+Definition at line 252 of file stormnode-\/payments.\+h.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 2
+
+
+\hypertarget{class_c_stormnode_payments_a0113fb8a5dc2e0b0efd0b8180535f9d0}{}\index{C\+Stormnode\+Payments@{C\+Stormnode\+Payments}!Clean\+Payment\+List@{Clean\+Payment\+List}}
+\index{Clean\+Payment\+List@{Clean\+Payment\+List}!C\+Stormnode\+Payments@{C\+Stormnode\+Payments}}
+\subsubsection[{Clean\+Payment\+List}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Stormnode\+Payments\+::\+Clean\+Payment\+List (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_payments_a0113fb8a5dc2e0b0efd0b8180535f9d0}
+
+
+Definition at line 610 of file stormnode-\/payments.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 3
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 4
+
+
+\hypertarget{class_c_stormnode_payments_a829e8562a7530332d0096038b455e79d}{}\index{C\+Stormnode\+Payments@{C\+Stormnode\+Payments}!Clear@{Clear}}
+\index{Clear@{Clear}!C\+Stormnode\+Payments@{C\+Stormnode\+Payments}}
+\subsubsection[{Clear}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Stormnode\+Payments\+::\+Clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_stormnode_payments_a829e8562a7530332d0096038b455e79d}
+
+
+Definition at line 235 of file stormnode-\/payments.\+h.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 5
+
+
+\hypertarget{class_c_stormnode_payments_accaeb923fe36e73d4228fc043771c4ad}{}\index{C\+Stormnode\+Payments@{C\+Stormnode\+Payments}!Fill\+Block\+Payee@{Fill\+Block\+Payee}}
+\index{Fill\+Block\+Payee@{Fill\+Block\+Payee}!C\+Stormnode\+Payments@{C\+Stormnode\+Payments}}
+\subsubsection[{Fill\+Block\+Payee}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Stormnode\+Payments\+::\+Fill\+Block\+Payee (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Transaction} \&}]{tx\+New, }
+\item[{{\bf C\+Amount}}]{n\+Fees}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_payments_accaeb923fe36e73d4228fc043771c4ad}
+
+
+Definition at line 294 of file stormnode-\/payments.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 6
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 7
+
+
+\hypertarget{class_c_stormnode_payments_a29c31e98d23f4a7f150bbccd4ef5a5cb}{}\index{C\+Stormnode\+Payments@{C\+Stormnode\+Payments}!Get\+Block\+Payee@{Get\+Block\+Payee}}
+\index{Get\+Block\+Payee@{Get\+Block\+Payee}!C\+Stormnode\+Payments@{C\+Stormnode\+Payments}}
+\subsubsection[{Get\+Block\+Payee}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Stormnode\+Payments\+::\+Get\+Block\+Payee (
+\begin{DoxyParamCaption}
+\item[{int}]{n\+Block\+Height, }
+\item[{{\bf C\+Script} \&}]{payee}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_payments_a29c31e98d23f4a7f150bbccd4ef5a5cb}
+
+
+Definition at line 454 of file stormnode-\/payments.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 8
+
+
+\hypertarget{class_c_stormnode_payments_a98392b86e945308c9c66f1cd4942a220}{}\index{C\+Stormnode\+Payments@{C\+Stormnode\+Payments}!Get\+Min\+Stormnode\+Payments\+Proto@{Get\+Min\+Stormnode\+Payments\+Proto}}
+\index{Get\+Min\+Stormnode\+Payments\+Proto@{Get\+Min\+Stormnode\+Payments\+Proto}!C\+Stormnode\+Payments@{C\+Stormnode\+Payments}}
+\subsubsection[{Get\+Min\+Stormnode\+Payments\+Proto}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Stormnode\+Payments\+::\+Get\+Min\+Stormnode\+Payments\+Proto (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_payments_a98392b86e945308c9c66f1cd4942a220}
+
+
+Definition at line 348 of file stormnode-\/payments.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 9
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 10
+
+
+\hypertarget{class_c_stormnode_payments_a2d5b46ffba64492eaf4182bd3015d663}{}\index{C\+Stormnode\+Payments@{C\+Stormnode\+Payments}!Get\+Newest\+Block@{Get\+Newest\+Block}}
+\index{Get\+Newest\+Block@{Get\+Newest\+Block}!C\+Stormnode\+Payments@{C\+Stormnode\+Payments}}
+\subsubsection[{Get\+Newest\+Block}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Stormnode\+Payments\+::\+Get\+Newest\+Block (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_payments_a2d5b46ffba64492eaf4182bd3015d663}
+
+
+Definition at line 845 of file stormnode-\/payments.\+cpp.
+
+\hypertarget{class_c_stormnode_payments_a28bd6d48455d8825c94056725fb42c08}{}\index{C\+Stormnode\+Payments@{C\+Stormnode\+Payments}!Get\+Oldest\+Block@{Get\+Oldest\+Block}}
+\index{Get\+Oldest\+Block@{Get\+Oldest\+Block}!C\+Stormnode\+Payments@{C\+Stormnode\+Payments}}
+\subsubsection[{Get\+Oldest\+Block}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Stormnode\+Payments\+::\+Get\+Oldest\+Block (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_payments_a28bd6d48455d8825c94056725fb42c08}
+
+
+Definition at line 826 of file stormnode-\/payments.\+cpp.
+
+\hypertarget{class_c_stormnode_payments_a67088f0606e6b20c9d918a72db4ca2ff}{}\index{C\+Stormnode\+Payments@{C\+Stormnode\+Payments}!Get\+Required\+Payments\+String@{Get\+Required\+Payments\+String}}
+\index{Get\+Required\+Payments\+String@{Get\+Required\+Payments\+String}!C\+Stormnode\+Payments@{C\+Stormnode\+Payments}}
+\subsubsection[{Get\+Required\+Payments\+String}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string C\+Stormnode\+Payments\+::\+Get\+Required\+Payments\+String (
+\begin{DoxyParamCaption}
+\item[{int}]{n\+Block\+Height}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_payments_a67088f0606e6b20c9d918a72db4ca2ff}
+
+
+Definition at line 588 of file stormnode-\/payments.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 11
+
+
+\hypertarget{class_c_stormnode_payments_ac2a8e2a9bef3c4c68c1e464903a1988f}{}\index{C\+Stormnode\+Payments@{C\+Stormnode\+Payments}!Is\+Scheduled@{Is\+Scheduled}}
+\index{Is\+Scheduled@{Is\+Scheduled}!C\+Stormnode\+Payments@{C\+Stormnode\+Payments}}
+\subsubsection[{Is\+Scheduled}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Stormnode\+Payments\+::\+Is\+Scheduled (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Stormnode} \&}]{sn, }
+\item[{int}]{n\+Not\+Block\+Height}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_payments_ac2a8e2a9bef3c4c68c1e464903a1988f}
+
+
+Definition at line 465 of file stormnode-\/payments.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 12
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 13
+
+
+\hypertarget{class_c_stormnode_payments_ae14691c97882f093b8c852f03d7f5884}{}\index{C\+Stormnode\+Payments@{C\+Stormnode\+Payments}!Is\+Transaction\+Valid@{Is\+Transaction\+Valid}}
+\index{Is\+Transaction\+Valid@{Is\+Transaction\+Valid}!C\+Stormnode\+Payments@{C\+Stormnode\+Payments}}
+\subsubsection[{Is\+Transaction\+Valid}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Stormnode\+Payments\+::\+Is\+Transaction\+Valid (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Transaction} \&}]{tx\+New, }
+\item[{int}]{n\+Block\+Height}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_payments_ae14691c97882f093b8c852f03d7f5884}
+
+
+Definition at line 599 of file stormnode-\/payments.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 14
+
+
+\hypertarget{class_c_stormnode_payments_a16c152a68d00c1643c99c911f87503c8}{}\index{C\+Stormnode\+Payments@{C\+Stormnode\+Payments}!Last\+Payment@{Last\+Payment}}
+\index{Last\+Payment@{Last\+Payment}!C\+Stormnode\+Payments@{C\+Stormnode\+Payments}}
+\subsubsection[{Last\+Payment}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Stormnode\+Payments\+::\+Last\+Payment (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Stormnode} \&}]{sn}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_payments_a16c152a68d00c1643c99c911f87503c8}
+\hypertarget{class_c_stormnode_payments_a348b88dd03ef4a6684ae22141de841c8}{}\index{C\+Stormnode\+Payments@{C\+Stormnode\+Payments}!Process\+Block@{Process\+Block}}
+\index{Process\+Block@{Process\+Block}!C\+Stormnode\+Payments@{C\+Stormnode\+Payments}}
+\subsubsection[{Process\+Block}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Stormnode\+Payments\+::\+Process\+Block (
+\begin{DoxyParamCaption}
+\item[{int}]{n\+Block\+Height}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_payments_a348b88dd03ef4a6684ae22141de841c8}
+
+
+Definition at line 683 of file stormnode-\/payments.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 15
+
+
+\hypertarget{class_c_stormnode_payments_a8dc55316a297daad51a03d4cf7b37d06}{}\index{C\+Stormnode\+Payments@{C\+Stormnode\+Payments}!Process\+Message\+Stormnode\+Payments@{Process\+Message\+Stormnode\+Payments}}
+\index{Process\+Message\+Stormnode\+Payments@{Process\+Message\+Stormnode\+Payments}!C\+Stormnode\+Payments@{C\+Stormnode\+Payments}}
+\subsubsection[{Process\+Message\+Stormnode\+Payments}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Stormnode\+Payments\+::\+Process\+Message\+Stormnode\+Payments (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Node} $\ast$}]{pfrom, }
+\item[{std\+::string \&}]{str\+Command, }
+\item[{{\bf C\+Data\+Stream} \&}]{v\+Recv}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_payments_a8dc55316a297daad51a03d4cf7b37d06}
+
+
+Definition at line 354 of file stormnode-\/payments.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 16
+
+
+\hypertarget{class_c_stormnode_payments_a00b73c24ef476465db57c93a880343d6}{}\index{C\+Stormnode\+Payments@{C\+Stormnode\+Payments}!Serialization\+Op@{Serialization\+Op}}
+\index{Serialization\+Op@{Serialization\+Op}!C\+Stormnode\+Payments@{C\+Stormnode\+Payments}}
+\subsubsection[{Serialization\+Op}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename Operation $>$ void C\+Stormnode\+Payments\+::\+Serialization\+Op (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{Operation}]{ser\+\_\+action, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_stormnode_payments_a00b73c24ef476465db57c93a880343d6}
+
+
+Definition at line 277 of file stormnode-\/payments.\+h.
+
+\hypertarget{class_c_stormnode_payments_a813695c47afcbedba8858c36cb30bcfe}{}\index{C\+Stormnode\+Payments@{C\+Stormnode\+Payments}!Sync@{Sync}}
+\index{Sync@{Sync}!C\+Stormnode\+Payments@{C\+Stormnode\+Payments}}
+\subsubsection[{Sync}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Stormnode\+Payments\+::\+Sync (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Node} $\ast$}]{node, }
+\item[{int}]{n\+Count\+Needed}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_payments_a813695c47afcbedba8858c36cb30bcfe}
+
+
+Definition at line 792 of file stormnode-\/payments.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 17
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 18
+
+
+\hypertarget{class_c_stormnode_payments_abfe9298441cc4e90710d1ba8bc24ec57}{}\index{C\+Stormnode\+Payments@{C\+Stormnode\+Payments}!To\+String@{To\+String}}
+\index{To\+String@{To\+String}!C\+Stormnode\+Payments@{C\+Stormnode\+Payments}}
+\subsubsection[{To\+String}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string C\+Stormnode\+Payments\+::\+To\+String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_c_stormnode_payments_abfe9298441cc4e90710d1ba8bc24ec57}
+
+
+Definition at line 814 of file stormnode-\/payments.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 19
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_c_stormnode_payments_aedb0752fb1e1cb758cfc2fd05d131c40}{}\index{C\+Stormnode\+Payments@{C\+Stormnode\+Payments}!A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}}
+\index{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}!C\+Stormnode\+Payments@{C\+Stormnode\+Payments}}
+\subsubsection[{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}]{\setlength{\rightskip}{0pt plus 5cm}C\+Stormnode\+Payments\+::\+A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}\label{class_c_stormnode_payments_aedb0752fb1e1cb758cfc2fd05d131c40}
+
+
+Definition at line 274 of file stormnode-\/payments.\+h.
+
+\hypertarget{class_c_stormnode_payments_aad1a7055ea55caa06b4eb291e8b3a348}{}\index{C\+Stormnode\+Payments@{C\+Stormnode\+Payments}!map\+Stormnode\+Blocks@{map\+Stormnode\+Blocks}}
+\index{map\+Stormnode\+Blocks@{map\+Stormnode\+Blocks}!C\+Stormnode\+Payments@{C\+Stormnode\+Payments}}
+\subsubsection[{map\+Stormnode\+Blocks}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<$int, {\bf C\+Stormnode\+Block\+Payees}$>$ C\+Stormnode\+Payments\+::map\+Stormnode\+Blocks}\label{class_c_stormnode_payments_aad1a7055ea55caa06b4eb291e8b3a348}
+
+
+Definition at line 227 of file stormnode-\/payments.\+h.
+
+\hypertarget{class_c_stormnode_payments_a2227618f68b1655073c17d4b2ffe1c56}{}\index{C\+Stormnode\+Payments@{C\+Stormnode\+Payments}!map\+Stormnode\+Payee\+Votes@{map\+Stormnode\+Payee\+Votes}}
+\index{map\+Stormnode\+Payee\+Votes@{map\+Stormnode\+Payee\+Votes}!C\+Stormnode\+Payments@{C\+Stormnode\+Payments}}
+\subsubsection[{map\+Stormnode\+Payee\+Votes}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<${\bf uint256}, {\bf C\+Stormnode\+Payment\+Winner}$>$ C\+Stormnode\+Payments\+::map\+Stormnode\+Payee\+Votes}\label{class_c_stormnode_payments_a2227618f68b1655073c17d4b2ffe1c56}
+
+
+Definition at line 226 of file stormnode-\/payments.\+h.
+
+\hypertarget{class_c_stormnode_payments_a82f9ee8e4388b9640854bd3c70b76782}{}\index{C\+Stormnode\+Payments@{C\+Stormnode\+Payments}!map\+Stormnodes\+Last\+Vote@{map\+Stormnodes\+Last\+Vote}}
+\index{map\+Stormnodes\+Last\+Vote@{map\+Stormnodes\+Last\+Vote}!C\+Stormnode\+Payments@{C\+Stormnode\+Payments}}
+\subsubsection[{map\+Stormnodes\+Last\+Vote}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<${\bf uint256}, int$>$ C\+Stormnode\+Payments\+::map\+Stormnodes\+Last\+Vote}\label{class_c_stormnode_payments_a82f9ee8e4388b9640854bd3c70b76782}
+
+
+Definition at line 228 of file stormnode-\/payments.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/\hyperlink{stormnode-payments_8h}{stormnode-\/payments.\+h}\item 
+/home/dev/ds-\/160209/src/\hyperlink{stormnode-payments_8cpp}{stormnode-\/payments.\+cpp}\end{DoxyCompactItemize}

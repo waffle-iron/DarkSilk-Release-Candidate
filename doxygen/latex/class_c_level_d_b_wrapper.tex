@@ -1,0 +1,254 @@
+\hypertarget{class_c_level_d_b_wrapper}{}\section{C\+Level\+D\+B\+Wrapper Class Reference}
+\label{class_c_level_d_b_wrapper}\index{C\+Level\+D\+B\+Wrapper@{C\+Level\+D\+B\+Wrapper}}
+
+
+{\ttfamily \#include $<$leveldbwrapper.\+h$>$}
+
+
+
+Inheritance diagram for C\+Level\+D\+B\+Wrapper\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_level_d_b_wrapper_ae796b1190c072df6275e0ada4d187943}{C\+Level\+D\+B\+Wrapper} (const boost\+::filesystem\+::path \&path, size\+\_\+t n\+Cache\+Size, bool f\+Memory=false, bool f\+Wipe=false)
+\item 
+\hyperlink{class_c_level_d_b_wrapper_a7ffe7edeadfcf521d32509216e95403b}{$\sim$\+C\+Level\+D\+B\+Wrapper} ()
+\item 
+{\footnotesize template$<$typename K , typename V $>$ }\\bool \hyperlink{class_c_level_d_b_wrapper_aa3b816ae43c930b4bf1f85461bff4b5b}{Read} (const K \&key, V \&\hyperlink{cache_8cc_a0f61d63b009d0880a89c843bd50d8d76}{value}) const   throw (leveldb\+\_\+error)
+\item 
+{\footnotesize template$<$typename K , typename V $>$ }\\bool \hyperlink{class_c_level_d_b_wrapper_a740caa1aefbafc888838ea7f70dc31f4}{Write} (const K \&key, const V \&\hyperlink{cache_8cc_a0f61d63b009d0880a89c843bd50d8d76}{value}, bool f\+Sync=false)  throw (leveldb\+\_\+error)
+\item 
+{\footnotesize template$<$typename K $>$ }\\bool \hyperlink{class_c_level_d_b_wrapper_a9c9d2e1c06c45c5d6883f33136f6718b}{Exists} (const K \&key) const   throw (leveldb\+\_\+error)
+\item 
+{\footnotesize template$<$typename K $>$ }\\bool \hyperlink{class_c_level_d_b_wrapper_a9f67e2880ba191fdc9439ba34e315d72}{Erase} (const K \&key, bool f\+Sync=false)  throw (leveldb\+\_\+error)
+\item 
+bool \hyperlink{class_c_level_d_b_wrapper_a820484c9e427f9e3400396e750acf4b8}{Write\+Batch} (\hyperlink{class_c_level_d_b_batch}{C\+Level\+D\+B\+Batch} \&batch, bool f\+Sync=false)  throw (leveldb\+\_\+error)
+\item 
+bool \hyperlink{class_c_level_d_b_wrapper_a639fbfd6652941a1ab570c202197a32a}{Flush} ()
+\item 
+bool \hyperlink{class_c_level_d_b_wrapper_abd05e914893cd610e8444871f829d8c9}{Sync} ()  throw (leveldb\+\_\+error)
+\item 
+\hyperlink{classleveldb_1_1_iterator}{leveldb\+::\+Iterator} $\ast$ \hyperlink{class_c_level_d_b_wrapper_a5f43d01a8a6b26464b875d190e002d74}{New\+Iterator} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 62 of file leveldbwrapper.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_level_d_b_wrapper_ae796b1190c072df6275e0ada4d187943}{}\index{C\+Level\+D\+B\+Wrapper@{C\+Level\+D\+B\+Wrapper}!C\+Level\+D\+B\+Wrapper@{C\+Level\+D\+B\+Wrapper}}
+\index{C\+Level\+D\+B\+Wrapper@{C\+Level\+D\+B\+Wrapper}!C\+Level\+D\+B\+Wrapper@{C\+Level\+D\+B\+Wrapper}}
+\subsubsection[{C\+Level\+D\+B\+Wrapper}]{\setlength{\rightskip}{0pt plus 5cm}C\+Level\+D\+B\+Wrapper\+::\+C\+Level\+D\+B\+Wrapper (
+\begin{DoxyParamCaption}
+\item[{const boost\+::filesystem\+::path \&}]{path, }
+\item[{size\+\_\+t}]{n\+Cache\+Size, }
+\item[{bool}]{f\+Memory = {\ttfamily false}, }
+\item[{bool}]{f\+Wipe = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{class_c_level_d_b_wrapper_ae796b1190c072df6275e0ada4d187943}
+
+
+Definition at line 44 of file leveldbwrapper.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 1
+
+
+\hypertarget{class_c_level_d_b_wrapper_a7ffe7edeadfcf521d32509216e95403b}{}\index{C\+Level\+D\+B\+Wrapper@{C\+Level\+D\+B\+Wrapper}!````~C\+Level\+D\+B\+Wrapper@{$\sim$\+C\+Level\+D\+B\+Wrapper}}
+\index{````~C\+Level\+D\+B\+Wrapper@{$\sim$\+C\+Level\+D\+B\+Wrapper}!C\+Level\+D\+B\+Wrapper@{C\+Level\+D\+B\+Wrapper}}
+\subsubsection[{$\sim$\+C\+Level\+D\+B\+Wrapper}]{\setlength{\rightskip}{0pt plus 5cm}C\+Level\+D\+B\+Wrapper\+::$\sim$\+C\+Level\+D\+B\+Wrapper (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_level_d_b_wrapper_a7ffe7edeadfcf521d32509216e95403b}
+
+
+Definition at line 69 of file leveldbwrapper.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_level_d_b_wrapper_a9f67e2880ba191fdc9439ba34e315d72}{}\index{C\+Level\+D\+B\+Wrapper@{C\+Level\+D\+B\+Wrapper}!Erase@{Erase}}
+\index{Erase@{Erase}!C\+Level\+D\+B\+Wrapper@{C\+Level\+D\+B\+Wrapper}}
+\subsubsection[{Erase}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename K $>$ bool C\+Level\+D\+B\+Wrapper\+::\+Erase (
+\begin{DoxyParamCaption}
+\item[{const K \&}]{key, }
+\item[{bool}]{f\+Sync = {\ttfamily false}}
+\end{DoxyParamCaption}
+) throw  {\bf leveldb\+\_\+error}) \hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_level_d_b_wrapper_a9f67e2880ba191fdc9439ba34e315d72}
+
+
+Definition at line 143 of file leveldbwrapper.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+\hypertarget{class_c_level_d_b_wrapper_a9c9d2e1c06c45c5d6883f33136f6718b}{}\index{C\+Level\+D\+B\+Wrapper@{C\+Level\+D\+B\+Wrapper}!Exists@{Exists}}
+\index{Exists@{Exists}!C\+Level\+D\+B\+Wrapper@{C\+Level\+D\+B\+Wrapper}}
+\subsubsection[{Exists}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename K $>$ bool C\+Level\+D\+B\+Wrapper\+::\+Exists (
+\begin{DoxyParamCaption}
+\item[{const K \&}]{key}
+\end{DoxyParamCaption}
+) const throw  {\bf leveldb\+\_\+error}) \hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_level_d_b_wrapper_a9c9d2e1c06c45c5d6883f33136f6718b}
+
+
+Definition at line 124 of file leveldbwrapper.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 4
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 5
+
+
+\hypertarget{class_c_level_d_b_wrapper_a639fbfd6652941a1ab570c202197a32a}{}\index{C\+Level\+D\+B\+Wrapper@{C\+Level\+D\+B\+Wrapper}!Flush@{Flush}}
+\index{Flush@{Flush}!C\+Level\+D\+B\+Wrapper@{C\+Level\+D\+B\+Wrapper}}
+\subsubsection[{Flush}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Level\+D\+B\+Wrapper\+::\+Flush (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_level_d_b_wrapper_a639fbfd6652941a1ab570c202197a32a}
+
+
+Definition at line 153 of file leveldbwrapper.\+h.
+
+\hypertarget{class_c_level_d_b_wrapper_a5f43d01a8a6b26464b875d190e002d74}{}\index{C\+Level\+D\+B\+Wrapper@{C\+Level\+D\+B\+Wrapper}!New\+Iterator@{New\+Iterator}}
+\index{New\+Iterator@{New\+Iterator}!C\+Level\+D\+B\+Wrapper@{C\+Level\+D\+B\+Wrapper}}
+\subsubsection[{New\+Iterator}]{\setlength{\rightskip}{0pt plus 5cm}{\bf leveldb\+::\+Iterator}$\ast$ C\+Level\+D\+B\+Wrapper\+::\+New\+Iterator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_level_d_b_wrapper_a5f43d01a8a6b26464b875d190e002d74}
+
+
+Definition at line 165 of file leveldbwrapper.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 6
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 7
+
+
+\hypertarget{class_c_level_d_b_wrapper_aa3b816ae43c930b4bf1f85461bff4b5b}{}\index{C\+Level\+D\+B\+Wrapper@{C\+Level\+D\+B\+Wrapper}!Read@{Read}}
+\index{Read@{Read}!C\+Level\+D\+B\+Wrapper@{C\+Level\+D\+B\+Wrapper}}
+\subsubsection[{Read}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename K , typename V $>$ bool C\+Level\+D\+B\+Wrapper\+::\+Read (
+\begin{DoxyParamCaption}
+\item[{const K \&}]{key, }
+\item[{V \&}]{value}
+\end{DoxyParamCaption}
+) const throw  {\bf leveldb\+\_\+error}) \hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_level_d_b_wrapper_aa3b816ae43c930b4bf1f85461bff4b5b}
+
+
+Definition at line 91 of file leveldbwrapper.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 8
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 9
+
+
+\hypertarget{class_c_level_d_b_wrapper_abd05e914893cd610e8444871f829d8c9}{}\index{C\+Level\+D\+B\+Wrapper@{C\+Level\+D\+B\+Wrapper}!Sync@{Sync}}
+\index{Sync@{Sync}!C\+Level\+D\+B\+Wrapper@{C\+Level\+D\+B\+Wrapper}}
+\subsubsection[{Sync}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Level\+D\+B\+Wrapper\+::\+Sync (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) throw  {\bf leveldb\+\_\+error}) \hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_level_d_b_wrapper_abd05e914893cd610e8444871f829d8c9}
+
+
+Definition at line 158 of file leveldbwrapper.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 10
+
+
+\hypertarget{class_c_level_d_b_wrapper_a740caa1aefbafc888838ea7f70dc31f4}{}\index{C\+Level\+D\+B\+Wrapper@{C\+Level\+D\+B\+Wrapper}!Write@{Write}}
+\index{Write@{Write}!C\+Level\+D\+B\+Wrapper@{C\+Level\+D\+B\+Wrapper}}
+\subsubsection[{Write}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename K , typename V $>$ bool C\+Level\+D\+B\+Wrapper\+::\+Write (
+\begin{DoxyParamCaption}
+\item[{const K \&}]{key, }
+\item[{const V \&}]{value, }
+\item[{bool}]{f\+Sync = {\ttfamily false}}
+\end{DoxyParamCaption}
+) throw  {\bf leveldb\+\_\+error}) \hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_level_d_b_wrapper_a740caa1aefbafc888838ea7f70dc31f4}
+
+
+Definition at line 116 of file leveldbwrapper.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 11
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 12
+
+
+\hypertarget{class_c_level_d_b_wrapper_a820484c9e427f9e3400396e750acf4b8}{}\index{C\+Level\+D\+B\+Wrapper@{C\+Level\+D\+B\+Wrapper}!Write\+Batch@{Write\+Batch}}
+\index{Write\+Batch@{Write\+Batch}!C\+Level\+D\+B\+Wrapper@{C\+Level\+D\+B\+Wrapper}}
+\subsubsection[{Write\+Batch}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Level\+D\+B\+Wrapper\+::\+Write\+Batch (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Level\+D\+B\+Batch} \&}]{batch, }
+\item[{bool}]{f\+Sync = {\ttfamily false}}
+\end{DoxyParamCaption}
+) throw  {\bf leveldb\+\_\+error}) }\label{class_c_level_d_b_wrapper_a820484c9e427f9e3400396e750acf4b8}
+
+
+Definition at line 81 of file leveldbwrapper.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 13
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 14
+
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/\hyperlink{leveldbwrapper_8h}{leveldbwrapper.\+h}\item 
+/home/dev/ds-\/160209/src/\hyperlink{leveldbwrapper_8cpp}{leveldbwrapper.\+cpp}\end{DoxyCompactItemize}

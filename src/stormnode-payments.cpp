@@ -364,7 +364,7 @@ void CStormnodePayments::ProcessMessageStormnodePayments(CNode* pfrom, std::stri
         int nCountNeeded;
         vRecv >> nCountNeeded;
 
-        if(Params().NetworkID() == CBaseChainParams::MAIN){
+        if(Params().NetworkID() == CChainParams::MAIN){
             if(pfrom->HasFulfilledRequest("snget")) {
                 LogPrintf("snget - peer already asked me for the list\n");
                 Misbehaving(pfrom->GetId(), 20);

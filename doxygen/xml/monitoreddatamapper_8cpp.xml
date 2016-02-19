@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="monitoreddatamapper_8cpp" kind="file" language="C++">
+    <compoundname>monitoreddatamapper.cpp</compoundname>
+    <includes refid="monitoreddatamapper_8h" local="yes">monitoreddatamapper.h</includes>
+    <includes local="no">QWidget</includes>
+    <includes local="no">QMetaObject</includes>
+    <includes local="no">QMetaProperty</includes>
+    <incdepgraph>
+      <node id="45132">
+        <label>QDataWidgetMapper</label>
+      </node>
+      <node id="45135">
+        <label>QMetaProperty</label>
+      </node>
+      <node id="45133">
+        <label>QWidget</label>
+      </node>
+      <node id="45134">
+        <label>QMetaObject</label>
+      </node>
+      <node id="45130">
+        <label>/home/dev/ds-160209/src/qt/monitoreddatamapper.cpp</label>
+        <link refid="monitoreddatamapper.cpp"/>
+        <childnode refid="45131" relation="include">
+        </childnode>
+        <childnode refid="45133" relation="include">
+        </childnode>
+        <childnode refid="45134" relation="include">
+        </childnode>
+        <childnode refid="45135" relation="include">
+        </childnode>
+      </node>
+      <node id="45131">
+        <label>monitoreddatamapper.h</label>
+        <link refid="monitoreddatamapper_8h"/>
+        <childnode refid="45132" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="monitoreddatamapper_8h" kindref="compound">monitoreddatamapper.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QWidget&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QMetaObject&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QMetaProperty&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="class_monitored_data_mapper_1a421f36fe4f05caf4345986a1a31aa258" refkind="member"><highlight class="normal"><ref refid="class_monitored_data_mapper_1a421f36fe4f05caf4345986a1a31aa258" kindref="member">MonitoredDataMapper::MonitoredDataMapper</ref>(QObject<sp/>*parent)<sp/>:</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/>QDataWidgetMapper(parent)</highlight></codeline>
+<codeline lineno="9"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="class_monitored_data_mapper_1a5ddfc6ef4e955211948c7b24994dfd7e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_monitored_data_mapper_1a5ddfc6ef4e955211948c7b24994dfd7e" kindref="member">MonitoredDataMapper::addMapping</ref>(QWidget<sp/>*widget,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>section)</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>QDataWidgetMapper::addMapping(widget,<sp/>section);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>addChangeMonitor(widget);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="class_monitored_data_mapper_1af70ac6e3d3b891cadb8a4c4b8695d4cc" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_monitored_data_mapper_1a5ddfc6ef4e955211948c7b24994dfd7e" kindref="member">MonitoredDataMapper::addMapping</ref>(QWidget<sp/>*widget,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>section,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QByteArray<sp/>&amp;propertyName)</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>QDataWidgetMapper::addMapping(widget,<sp/>section,<sp/>propertyName);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>addChangeMonitor(widget);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>MonitoredDataMapper::addChangeMonitor(QWidget<sp/>*widget)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Watch<sp/>user<sp/>property<sp/>of<sp/>widget<sp/>for<sp/>changes,<sp/>and<sp/>connect</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/>the<sp/>signal<sp/>to<sp/>our<sp/>viewModified<sp/>signal.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>QMetaProperty<sp/>prop<sp/>=<sp/>widget-&gt;metaObject()-&gt;userProperty();</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>signal<sp/>=<sp/>prop.notifySignalIndex();</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>method<sp/>=<sp/>this-&gt;metaObject()-&gt;indexOfMethod(</highlight><highlight class="stringliteral">&quot;viewModified()&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(signal<sp/>!=<sp/>-1<sp/>&amp;&amp;<sp/>method<sp/>!=<sp/>-1)</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QMetaObject::connect(widget,<sp/>signal,<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>method);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/qt/monitoreddatamapper.cpp"/>
+  </compounddef>
+</doxygen>

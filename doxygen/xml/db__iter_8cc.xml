@@ -1,0 +1,764 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="db__iter_8cc" kind="file" language="C++">
+    <compoundname>db_iter.cc</compoundname>
+    <includes refid="db__iter_8h" local="yes">db/db_iter.h</includes>
+    <includes refid="filename_8h" local="yes">db/filename.h</includes>
+    <includes refid="db__impl_8h" local="yes">db/db_impl.h</includes>
+    <includes refid="dbformat_8h" local="yes">db/dbformat.h</includes>
+    <includes refid="env_8h" local="yes">leveldb/env.h</includes>
+    <includes refid="iterator_8h" local="yes">leveldb/iterator.h</includes>
+    <includes refid="port_8h" local="yes">port/port.h</includes>
+    <includes refid="logging_8h" local="yes">util/logging.h</includes>
+    <includes refid="mutexlock_8h" local="yes">util/mutexlock.h</includes>
+    <includes refid="random_8h" local="yes">util/random.h</includes>
+    <incdepgraph>
+      <node id="36404">
+        <label>stdarg.h</label>
+      </node>
+      <node id="36406">
+        <label>util/mutexlock.h</label>
+        <link refid="mutexlock_8h"/>
+        <childnode refid="36393" relation="include">
+        </childnode>
+        <childnode refid="36405" relation="include">
+        </childnode>
+      </node>
+      <node id="36407">
+        <label>util/random.h</label>
+        <link refid="random_8h"/>
+        <childnode refid="36377" relation="include">
+        </childnode>
+      </node>
+      <node id="36394">
+        <label>util/logging.h</label>
+        <link refid="logging_8h"/>
+        <childnode refid="36379" relation="include">
+        </childnode>
+        <childnode refid="36377" relation="include">
+        </childnode>
+        <childnode refid="36385" relation="include">
+        </childnode>
+        <childnode refid="36393" relation="include">
+        </childnode>
+      </node>
+      <node id="36382">
+        <label>assert.h</label>
+      </node>
+      <node id="36387">
+        <label>leveldb/options.h</label>
+        <link refid="options_8h"/>
+        <childnode refid="36383" relation="include">
+        </childnode>
+      </node>
+      <node id="36388">
+        <label>db/dbformat.h</label>
+        <link refid="dbformat_8h"/>
+        <childnode refid="36379" relation="include">
+        </childnode>
+        <childnode refid="36389" relation="include">
+        </childnode>
+        <childnode refid="36378" relation="include">
+        </childnode>
+        <childnode refid="36390" relation="include">
+        </childnode>
+        <childnode refid="36381" relation="include">
+        </childnode>
+        <childnode refid="36391" relation="include">
+        </childnode>
+        <childnode refid="36392" relation="include">
+        </childnode>
+        <childnode refid="36394" relation="include">
+        </childnode>
+      </node>
+      <node id="36378">
+        <label>leveldb/db.h</label>
+        <link refid="leveldb_2include_2leveldb_2db_8h"/>
+        <childnode refid="36377" relation="include">
+        </childnode>
+        <childnode refid="36379" relation="include">
+        </childnode>
+        <childnode refid="36380" relation="include">
+        </childnode>
+        <childnode refid="36387" relation="include">
+        </childnode>
+      </node>
+      <node id="36385">
+        <label>string</label>
+      </node>
+      <node id="36383">
+        <label>stddef.h</label>
+      </node>
+      <node id="36386">
+        <label>leveldb/status.h</label>
+        <link refid="status_8h"/>
+        <childnode refid="36385" relation="include">
+        </childnode>
+        <childnode refid="36381" relation="include">
+        </childnode>
+      </node>
+      <node id="36376">
+        <label>db/db_iter.h</label>
+        <link refid="db__iter_8h"/>
+        <childnode refid="36377" relation="include">
+        </childnode>
+        <childnode refid="36378" relation="include">
+        </childnode>
+        <childnode refid="36388" relation="include">
+        </childnode>
+      </node>
+      <node id="36392">
+        <label>util/coding.h</label>
+        <link refid="coding_8h"/>
+        <childnode refid="36377" relation="include">
+        </childnode>
+        <childnode refid="36384" relation="include">
+        </childnode>
+        <childnode refid="36385" relation="include">
+        </childnode>
+        <childnode refid="36381" relation="include">
+        </childnode>
+        <childnode refid="36393" relation="include">
+        </childnode>
+      </node>
+      <node id="36395">
+        <label>db/filename.h</label>
+        <link refid="filename_8h"/>
+        <childnode refid="36377" relation="include">
+        </childnode>
+        <childnode refid="36385" relation="include">
+        </childnode>
+        <childnode refid="36381" relation="include">
+        </childnode>
+        <childnode refid="36386" relation="include">
+        </childnode>
+        <childnode refid="36393" relation="include">
+        </childnode>
+      </node>
+      <node id="36384">
+        <label>string.h</label>
+      </node>
+      <node id="36399">
+        <label>db/log_writer.h</label>
+        <link refid="log__writer_8h"/>
+        <childnode refid="36377" relation="include">
+        </childnode>
+        <childnode refid="36400" relation="include">
+        </childnode>
+        <childnode refid="36381" relation="include">
+        </childnode>
+        <childnode refid="36386" relation="include">
+        </childnode>
+      </node>
+      <node id="36396">
+        <label>db/db_impl.h</label>
+        <link refid="db__impl_8h"/>
+        <childnode refid="36397" relation="include">
+        </childnode>
+        <childnode refid="36398" relation="include">
+        </childnode>
+        <childnode refid="36388" relation="include">
+        </childnode>
+        <childnode refid="36399" relation="include">
+        </childnode>
+        <childnode refid="36401" relation="include">
+        </childnode>
+        <childnode refid="36378" relation="include">
+        </childnode>
+        <childnode refid="36402" relation="include">
+        </childnode>
+        <childnode refid="36393" relation="include">
+        </childnode>
+        <childnode refid="36405" relation="include">
+        </childnode>
+      </node>
+      <node id="36403">
+        <label>vector</label>
+      </node>
+      <node id="36375">
+        <label>/home/dev/ds-160209/src/leveldb/db/db_iter.cc</label>
+        <link refid="db_iter.cc"/>
+        <childnode refid="36376" relation="include">
+        </childnode>
+        <childnode refid="36395" relation="include">
+        </childnode>
+        <childnode refid="36396" relation="include">
+        </childnode>
+        <childnode refid="36388" relation="include">
+        </childnode>
+        <childnode refid="36402" relation="include">
+        </childnode>
+        <childnode refid="36380" relation="include">
+        </childnode>
+        <childnode refid="36393" relation="include">
+        </childnode>
+        <childnode refid="36394" relation="include">
+        </childnode>
+        <childnode refid="36406" relation="include">
+        </childnode>
+        <childnode refid="36407" relation="include">
+        </childnode>
+      </node>
+      <node id="36400">
+        <label>db/log_format.h</label>
+        <link refid="log__format_8h"/>
+      </node>
+      <node id="36393">
+        <label>port/port.h</label>
+        <link refid="port_8h"/>
+        <childnode refid="36384" relation="include">
+        </childnode>
+      </node>
+      <node id="36377">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="36397">
+        <label>deque</label>
+      </node>
+      <node id="36391">
+        <label>leveldb/table_builder.h</label>
+        <link refid="table__builder_8h"/>
+        <childnode refid="36377" relation="include">
+        </childnode>
+        <childnode refid="36387" relation="include">
+        </childnode>
+        <childnode refid="36386" relation="include">
+        </childnode>
+      </node>
+      <node id="36401">
+        <label>db/snapshot.h</label>
+        <link refid="snapshot_8h"/>
+        <childnode refid="36378" relation="include">
+        </childnode>
+      </node>
+      <node id="36381">
+        <label>leveldb/slice.h</label>
+        <link refid="slice_8h"/>
+        <childnode refid="36382" relation="include">
+        </childnode>
+        <childnode refid="36383" relation="include">
+        </childnode>
+        <childnode refid="36384" relation="include">
+        </childnode>
+        <childnode refid="36385" relation="include">
+        </childnode>
+      </node>
+      <node id="36402">
+        <label>leveldb/env.h</label>
+        <link refid="env_8h"/>
+        <childnode refid="36385" relation="include">
+        </childnode>
+        <childnode refid="36403" relation="include">
+        </childnode>
+        <childnode refid="36404" relation="include">
+        </childnode>
+        <childnode refid="36377" relation="include">
+        </childnode>
+        <childnode refid="36386" relation="include">
+        </childnode>
+      </node>
+      <node id="36398">
+        <label>set</label>
+      </node>
+      <node id="36405">
+        <label>port/thread_annotations.h</label>
+        <link refid="thread__annotations_8h"/>
+      </node>
+      <node id="36379">
+        <label>stdio.h</label>
+      </node>
+      <node id="36390">
+        <label>leveldb/filter_policy.h</label>
+        <link refid="filter__policy_8h"/>
+        <childnode refid="36385" relation="include">
+        </childnode>
+      </node>
+      <node id="36389">
+        <label>leveldb/comparator.h</label>
+        <link refid="comparator_8h"/>
+        <childnode refid="36385" relation="include">
+        </childnode>
+      </node>
+      <node id="36380">
+        <label>leveldb/iterator.h</label>
+        <link refid="iterator_8h"/>
+        <childnode refid="36381" relation="include">
+        </childnode>
+        <childnode refid="36386" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceleveldb">leveldb</innernamespace>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="db__iter_8cc_1a800a4b7944923551d5251c8a5ab7e12d" prot="public" static="no" mutable="no">
+        <type>DBImpl *</type>
+        <definition>DBImpl* db_</definition>
+        <argsstring></argsstring>
+        <name>db_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/db_iter.cc" line="111" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/db_iter.cc" bodystart="111" bodyend="-1"/>
+        <referencedby refid="namespaceleveldb_1a25dbda5a48ec782778d331e4ccb81b6b" compoundref="corruption__test_8cc" startline="219" endline="234">leveldb::TEST</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="db__iter_8cc_1a16f87dfda542ddfe797fe5137c4feb7d" prot="public" static="no" mutable="no">
+        <type>const Comparator *const</type>
+        <definition>const Comparator* const user_comparator_</definition>
+        <argsstring></argsstring>
+        <name>user_comparator_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/db_iter.cc" line="112" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/db_iter.cc" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" prot="public" static="no" mutable="no">
+        <type>Iterator *const</type>
+        <definition>Iterator* const iter_</definition>
+        <argsstring></argsstring>
+        <name>iter_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/db_iter.cc" line="113" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/db_iter.cc" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db__iter_8cc_1ad3dada019e9d76eafa6aeb8a9d8aaa69" prot="public" static="no" mutable="no">
+        <type>SequenceNumber const</type>
+        <definition>SequenceNumber const sequence_</definition>
+        <argsstring></argsstring>
+        <name>sequence_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/db_iter.cc" line="114" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/db_iter.cc" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db__iter_8cc_1abf8c6fcb7d9c9fa39e283d086f0bb345" prot="public" static="no" mutable="no">
+        <type>Status</type>
+        <definition>Status status_</definition>
+        <argsstring></argsstring>
+        <name>status_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/db_iter.cc" line="116" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/db_iter.cc" bodystart="116" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db__iter_8cc_1a3312b47cd5efcc60f693e074b6c71674" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string saved_key_</definition>
+        <argsstring></argsstring>
+        <name>saved_key_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/db_iter.cc" line="117" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/db_iter.cc" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db__iter_8cc_1a605fff7e8df0858fba7242efa0823d18" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string saved_value_</definition>
+        <argsstring></argsstring>
+        <name>saved_value_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/db_iter.cc" line="118" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/db_iter.cc" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db__iter_8cc_1a5810761555d70cb3d0a00e18a953c51d" prot="public" static="no" mutable="no">
+        <type>Direction</type>
+        <definition>Direction direction_</definition>
+        <argsstring></argsstring>
+        <name>direction_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/db_iter.cc" line="119" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/db_iter.cc" bodystart="119" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db__iter_8cc_1a2dd81c85c0b7f68b59750ae4441f7da4" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool valid_</definition>
+        <argsstring></argsstring>
+        <name>valid_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/db_iter.cc" line="120" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/db_iter.cc" bodystart="120" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db__iter_8cc_1a4a7f9c93f6051e1ccfa5882a018edef3" prot="public" static="no" mutable="no">
+        <type>Random</type>
+        <definition>Random rnd_</definition>
+        <argsstring></argsstring>
+        <name>rnd_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/db_iter.cc" line="122" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/db_iter.cc" bodystart="122" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="db__iter_8cc_1ad7b04f495c81548797ac6e571217e641" prot="public" static="no" mutable="no">
+        <type>ssize_t</type>
+        <definition>ssize_t bytes_counter_</definition>
+        <argsstring></argsstring>
+        <name>bytes_counter_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/db_iter.cc" line="123" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/db_iter.cc" bodystart="123" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2011-2016<sp/>The<sp/>LevelDB<sp/>Authors.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>of<sp/>this<sp/>source<sp/>code<sp/>is<sp/>governed<sp/>by<sp/>a<sp/>BSD-style<sp/>license<sp/>that<sp/>can<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>found<sp/>in<sp/>the<sp/>LICENSE<sp/>file.<sp/>See<sp/>the<sp/>AUTHORS<sp/>file<sp/>for<sp/>names<sp/>of<sp/>contributors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="db__iter_8h" kindref="compound">db/db_iter.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="filename_8h" kindref="compound">db/filename.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="db__impl_8h" kindref="compound">db/db_impl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dbformat_8h" kindref="compound">db/dbformat.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="env_8h" kindref="compound">leveldb/env.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="iterator_8h" kindref="compound">leveldb/iterator.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="port_8h" kindref="compound">port/port.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="logging_8h" kindref="compound">util/logging.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mutexlock_8h" kindref="compound">util/mutexlock.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="random_8h" kindref="compound">util/random.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceleveldb" kindref="compound">leveldb</ref><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DumpInternalIter(Iterator*<sp/>iter)<sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(iter-&gt;SeekToFirst();<sp/>iter-&gt;Valid();<sp/>iter-&gt;Next())<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>ParsedInternalKey<sp/>k;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="namespaceleveldb_1a5a173b622e86c7a2f9beae3ac8818ac3" kindref="member">ParseInternalKey</ref>(iter-&gt;key(),<sp/>&amp;k))<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>fprintf(stderr,<sp/></highlight><highlight class="stringliteral">&quot;Corrupt<sp/>&apos;%s&apos;\n&quot;</highlight><highlight class="normal">,<sp/><ref refid="namespaceleveldb_1a6d50705a37d7459f152f8ad839513a73" kindref="member">EscapeString</ref>(iter-&gt;key()).c_str());</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>fprintf(stderr,<sp/></highlight><highlight class="stringliteral">&quot;@<sp/>&apos;%s&apos;\n&quot;</highlight><highlight class="normal">,<sp/>k.DebugString().c_str());</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Memtables<sp/>and<sp/>sstables<sp/>that<sp/>make<sp/>the<sp/>DB<sp/>representation<sp/>contain</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>(userkey,seq,type)<sp/>=&gt;<sp/>uservalue<sp/>entries.<sp/><sp/>DBIter</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="comment">//<sp/>combines<sp/>multiple<sp/>entries<sp/>for<sp/>the<sp/>same<sp/>userkey<sp/>found<sp/>in<sp/>the<sp/>DB</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="comment">//<sp/>representation<sp/>into<sp/>a<sp/>single<sp/>entry<sp/>while<sp/>accounting<sp/>for<sp/>sequence</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight><highlight class="comment">//<sp/>numbers,<sp/>deletion<sp/>markers,<sp/>overwrites,<sp/>etc.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">DBIter:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>Iterator<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Which<sp/>direction<sp/>is<sp/>the<sp/>iterator<sp/>currently<sp/>moving?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>(1)<sp/>When<sp/>moving<sp/>forward,<sp/>the<sp/>internal<sp/>iterator<sp/>is<sp/>positioned<sp/>at</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>the<sp/>exact<sp/>entry<sp/>that<sp/>yields<sp/>this-&gt;key(),<sp/>this-&gt;value()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>(2)<sp/>When<sp/>moving<sp/>backwards,<sp/>the<sp/>internal<sp/>iterator<sp/>is<sp/>positioned</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>just<sp/>before<sp/>all<sp/>entries<sp/>whose<sp/>user<sp/>key<sp/>==<sp/>this-&gt;key().</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>Direction<sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>kForward,</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>kReverse</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/>DBIter(DBImpl*<sp/>db,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Comparator*<sp/><ref refid="table__test_8cc_1a87863e435922f0910ca8db43f02a6c0b" kindref="member">cmp</ref>,<sp/>Iterator*<sp/>iter,<sp/><ref refid="namespaceleveldb_1a5481ededd221c36d652c371249f869fa" kindref="member">SequenceNumber</ref><sp/>s,</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>seed)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="db__iter_8cc_1a800a4b7944923551d5251c8a5ab7e12d" kindref="member">db_</ref>(db),</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1a16f87dfda542ddfe797fe5137c4feb7d" kindref="member">user_comparator_</ref>(cmp),</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>(iter),</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1ad3dada019e9d76eafa6aeb8a9d8aaa69" kindref="member">sequence_</ref>(s),</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1a5810761555d70cb3d0a00e18a953c51d" kindref="member">direction_</ref>(kForward),</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1a2dd81c85c0b7f68b59750ae4441f7da4" kindref="member">valid_</ref>(false),</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1a4a7f9c93f6051e1ccfa5882a018edef3" kindref="member">rnd_</ref>(seed),</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1ad7b04f495c81548797ac6e571217e641" kindref="member">bytes_counter_</ref>(RandomPeriod())<sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>~DBIter()<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/><ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>Valid()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db__iter_8cc_1a2dd81c85c0b7f68b59750ae4441f7da4" kindref="member">valid_</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>Slice<sp/>key()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(<ref refid="db__iter_8cc_1a2dd81c85c0b7f68b59750ae4441f7da4" kindref="member">valid_</ref>);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="db__iter_8cc_1a5810761555d70cb3d0a00e18a953c51d" kindref="member">direction_</ref><sp/>==<sp/>kForward)<sp/>?<sp/><ref refid="namespaceleveldb_1a1c889869840312393b805ad91a41b94f" kindref="member">ExtractUserKey</ref>(<ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>-&gt;key())<sp/>:<sp/><ref refid="db__iter_8cc_1a3312b47cd5efcc60f693e074b6c71674" kindref="member">saved_key_</ref>;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>Slice<sp/><ref refid="version__set_8cc_1a38c8b88c432e666ad10b0c5573e1160a" kindref="member">value</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(<ref refid="db__iter_8cc_1a2dd81c85c0b7f68b59750ae4441f7da4" kindref="member">valid_</ref>);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(<ref refid="db__iter_8cc_1a5810761555d70cb3d0a00e18a953c51d" kindref="member">direction_</ref><sp/>==<sp/>kForward)<sp/>?<sp/><ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>-&gt;value()<sp/>:<sp/><ref refid="db__iter_8cc_1a605fff7e8df0858fba7242efa0823d18" kindref="member">saved_value_</ref>;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>Status<sp/>status()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="db__iter_8cc_1abf8c6fcb7d9c9fa39e283d086f0bb345" kindref="member">status_</ref>.ok())<sp/>{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>-&gt;status();</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db__iter_8cc_1abf8c6fcb7d9c9fa39e283d086f0bb345" kindref="member">status_</ref>;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Next();</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Prev();</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Seek(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Slice&amp;<sp/>target);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>SeekToFirst();</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>SeekToLast();</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>FindNextUserEntry(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>skipping,<sp/>std::string*<sp/>skip);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>FindPrevUserEntry();</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>ParseKey(ParsedInternalKey*<sp/>key);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>SaveKey(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Slice&amp;<sp/>k,<sp/>std::string*<sp/>dst)<sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>dst-&gt;assign(k.data(),<sp/>k.size());</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ClearSavedValue()<sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="db__iter_8cc_1a605fff7e8df0858fba7242efa0823d18" kindref="member">saved_value_</ref>.capacity()<sp/>&gt;<sp/>1048576)<sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>empty;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>swap(empty,<sp/><ref refid="db__iter_8cc_1a605fff7e8df0858fba7242efa0823d18" kindref="member">saved_value_</ref>);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1a605fff7e8df0858fba7242efa0823d18" kindref="member">saved_value_</ref>.clear();</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Pick<sp/>next<sp/>gap<sp/>with<sp/>average<sp/>value<sp/>of<sp/>config::kReadBytesPeriod.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/>ssize_t<sp/>RandomPeriod()<sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db__iter_8cc_1a4a7f9c93f6051e1ccfa5882a018edef3" kindref="member">rnd_</ref>.Uniform(2*config::kReadBytesPeriod);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111" refid="db__iter_8cc_1a800a4b7944923551d5251c8a5ab7e12d" refkind="member"><highlight class="normal"><sp/><sp/>DBImpl*<sp/><ref refid="db__iter_8cc_1a800a4b7944923551d5251c8a5ab7e12d" kindref="member">db_</ref>;</highlight></codeline>
+<codeline lineno="112" refid="db__iter_8cc_1a16f87dfda542ddfe797fe5137c4feb7d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Comparator*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="db__iter_8cc_1a16f87dfda542ddfe797fe5137c4feb7d" kindref="member">user_comparator_</ref>;</highlight></codeline>
+<codeline lineno="113" refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" refkind="member"><highlight class="normal"><sp/><sp/>Iterator*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>;</highlight></codeline>
+<codeline lineno="114" refid="db__iter_8cc_1ad3dada019e9d76eafa6aeb8a9d8aaa69" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="namespaceleveldb_1a5481ededd221c36d652c371249f869fa" kindref="member">SequenceNumber</ref><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="db__iter_8cc_1ad3dada019e9d76eafa6aeb8a9d8aaa69" kindref="member">sequence_</ref>;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116" refid="db__iter_8cc_1abf8c6fcb7d9c9fa39e283d086f0bb345" refkind="member"><highlight class="normal"><sp/><sp/>Status<sp/><ref refid="db__iter_8cc_1abf8c6fcb7d9c9fa39e283d086f0bb345" kindref="member">status_</ref>;</highlight></codeline>
+<codeline lineno="117" refid="db__iter_8cc_1a3312b47cd5efcc60f693e074b6c71674" refkind="member"><highlight class="normal"><sp/><sp/>std::string<sp/><ref refid="db__iter_8cc_1a3312b47cd5efcc60f693e074b6c71674" kindref="member">saved_key_</ref>;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>==<sp/>current<sp/>key<sp/>when<sp/>direction_==kReverse</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118" refid="db__iter_8cc_1a605fff7e8df0858fba7242efa0823d18" refkind="member"><highlight class="normal"><sp/><sp/>std::string<sp/><ref refid="db__iter_8cc_1a605fff7e8df0858fba7242efa0823d18" kindref="member">saved_value_</ref>;<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>==<sp/>current<sp/>raw<sp/>value<sp/>when<sp/>direction_==kReverse</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="db__iter_8cc_1a5810761555d70cb3d0a00e18a953c51d" refkind="member"><highlight class="normal"><sp/><sp/>Direction<sp/><ref refid="db__iter_8cc_1a5810761555d70cb3d0a00e18a953c51d" kindref="member">direction_</ref>;</highlight></codeline>
+<codeline lineno="120" refid="db__iter_8cc_1a2dd81c85c0b7f68b59750ae4441f7da4" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="db__iter_8cc_1a2dd81c85c0b7f68b59750ae4441f7da4" kindref="member">valid_</ref>;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122" refid="db__iter_8cc_1a4a7f9c93f6051e1ccfa5882a018edef3" refkind="member"><highlight class="normal"><sp/><sp/>Random<sp/><ref refid="db__iter_8cc_1a4a7f9c93f6051e1ccfa5882a018edef3" kindref="member">rnd_</ref>;</highlight></codeline>
+<codeline lineno="123" refid="db__iter_8cc_1ad7b04f495c81548797ac6e571217e641" refkind="member"><highlight class="normal"><sp/><sp/>ssize_t<sp/><ref refid="db__iter_8cc_1ad7b04f495c81548797ac6e571217e641" kindref="member">bytes_counter_</ref>;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>copying<sp/>allowed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/>DBIter(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DBIter&amp;);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>operator=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>DBIter&amp;);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>DBIter::ParseKey(ParsedInternalKey*<sp/>ikey)<sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/>Slice<sp/>k<sp/>=<sp/><ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>-&gt;<ref refid="classleveldb_1_1_iterator_1ad17feced6e24a1b21db5ae6940c1f220" kindref="member">key</ref>();</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/>ssize_t<sp/>n<sp/>=<sp/>k.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>()<sp/>+<sp/><ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>-&gt;<ref refid="classleveldb_1_1_iterator_1a613ac2e965518aad7a064c64c72bcf7c" kindref="member">value</ref>().<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>();</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><ref refid="db__iter_8cc_1ad7b04f495c81548797ac6e571217e641" kindref="member">bytes_counter_</ref><sp/>-=<sp/>n;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<ref refid="db__iter_8cc_1ad7b04f495c81548797ac6e571217e641" kindref="member">bytes_counter_</ref><sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1ad7b04f495c81548797ac6e571217e641" kindref="member">bytes_counter_</ref><sp/>+=<sp/>RandomPeriod();</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1a800a4b7944923551d5251c8a5ab7e12d" kindref="member">db_</ref>-&gt;<ref refid="classleveldb_1_1_d_b_impl_1a254ae98e3425046c28ed0aa6d78b37d8" kindref="member">RecordReadSample</ref>(k);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="namespaceleveldb_1a5a173b622e86c7a2f9beae3ac8818ac3" kindref="member">ParseInternalKey</ref>(k,<sp/>ikey))<sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1abf8c6fcb7d9c9fa39e283d086f0bb345" kindref="member">status_</ref><sp/>=<sp/><ref refid="classleveldb_1_1_status_1a755b1ee5b0029cf9ea1128f1cdff5855" kindref="member">Status::Corruption</ref>(</highlight><highlight class="stringliteral">&quot;corrupted<sp/>internal<sp/>key<sp/>in<sp/>DBIter&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DBIter::Next()<sp/>{</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/>assert(<ref refid="db__iter_8cc_1a2dd81c85c0b7f68b59750ae4441f7da4" kindref="member">valid_</ref>);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="db__iter_8cc_1a5810761555d70cb3d0a00e18a953c51d" kindref="member">direction_</ref><sp/>==<sp/>kReverse)<sp/>{<sp/><sp/></highlight><highlight class="comment">//<sp/>Switch<sp/>directions?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1a5810761555d70cb3d0a00e18a953c51d" kindref="member">direction_</ref><sp/>=<sp/>kForward;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>iter_<sp/>is<sp/>pointing<sp/>just<sp/>before<sp/>the<sp/>entries<sp/>for<sp/>this-&gt;key(),</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>so<sp/>advance<sp/>into<sp/>the<sp/>range<sp/>of<sp/>entries<sp/>for<sp/>this-&gt;key()<sp/>and<sp/>then</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>use<sp/>the<sp/>normal<sp/>skipping<sp/>code<sp/>below.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>-&gt;<ref refid="classleveldb_1_1_iterator_1a38614978bfa0586327b8e237bcb46012" kindref="member">Valid</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>-&gt;<ref refid="classleveldb_1_1_iterator_1a3594967cf26ddf1d37c7b886bb48627e" kindref="member">SeekToFirst</ref>();</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>-&gt;<ref refid="classleveldb_1_1_iterator_1aea54a5ca7eb942eb15770820529410e7" kindref="member">Next</ref>();</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>-&gt;<ref refid="classleveldb_1_1_iterator_1a38614978bfa0586327b8e237bcb46012" kindref="member">Valid</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1a2dd81c85c0b7f68b59750ae4441f7da4" kindref="member">valid_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1a3312b47cd5efcc60f693e074b6c71674" kindref="member">saved_key_</ref>.clear();</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>saved_key_<sp/>already<sp/>contains<sp/>the<sp/>key<sp/>to<sp/>skip<sp/>past.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Store<sp/>in<sp/>saved_key_<sp/>the<sp/>current<sp/>key<sp/>so<sp/>we<sp/>skip<sp/>it<sp/>below.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>SaveKey(<ref refid="namespaceleveldb_1a1c889869840312393b805ad91a41b94f" kindref="member">ExtractUserKey</ref>(<ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>-&gt;<ref refid="classleveldb_1_1_iterator_1ad17feced6e24a1b21db5ae6940c1f220" kindref="member">key</ref>()),<sp/>&amp;<ref refid="db__iter_8cc_1a3312b47cd5efcc60f693e074b6c71674" kindref="member">saved_key_</ref>);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/>FindNextUserEntry(</highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/>&amp;<ref refid="db__iter_8cc_1a3312b47cd5efcc60f693e074b6c71674" kindref="member">saved_key_</ref>);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DBIter::FindNextUserEntry(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>skipping,<sp/>std::string*<sp/>skip)<sp/>{</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Loop<sp/>until<sp/>we<sp/>hit<sp/>an<sp/>acceptable<sp/>entry<sp/>to<sp/>yield</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/>assert(<ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>-&gt;<ref refid="classleveldb_1_1_iterator_1a38614978bfa0586327b8e237bcb46012" kindref="member">Valid</ref>());</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/>assert(<ref refid="db__iter_8cc_1a5810761555d70cb3d0a00e18a953c51d" kindref="member">direction_</ref><sp/>==<sp/>kForward);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>ParsedInternalKey<sp/>ikey;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ParseKey(&amp;ikey)<sp/>&amp;&amp;<sp/>ikey.sequence<sp/>&lt;=<sp/><ref refid="db__iter_8cc_1ad3dada019e9d76eafa6aeb8a9d8aaa69" kindref="member">sequence_</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(ikey.type)<sp/>{</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1acc038cb0d608414730cafa459a4ba866aca5f2147a76c932346e15d86668d4ed3" kindref="member">kTypeDeletion</ref>:</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Arrange<sp/>to<sp/>skip<sp/>all<sp/>upcoming<sp/>entries<sp/>for<sp/>this<sp/>key<sp/>since</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>they<sp/>are<sp/>hidden<sp/>by<sp/>this<sp/>deletion.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SaveKey(ikey.user_key,<sp/>skip);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>skipping<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1acc038cb0d608414730cafa459a4ba866a97725c1d8e3317d1bac1f3b14fbfa281" kindref="member">kTypeValue</ref>:</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(skipping<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1a16f87dfda542ddfe797fe5137c4feb7d" kindref="member">user_comparator_</ref>-&gt;<ref refid="structleveldb_1_1_comparator_1a05dae6edcad3c7db23827c0233d74039" kindref="member">Compare</ref>(ikey.user_key,<sp/>*skip)<sp/>&lt;=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Entry<sp/>hidden</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1a2dd81c85c0b7f68b59750ae4441f7da4" kindref="member">valid_</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1a3312b47cd5efcc60f693e074b6c71674" kindref="member">saved_key_</ref>.clear();</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>-&gt;<ref refid="classleveldb_1_1_iterator_1aea54a5ca7eb942eb15770820529410e7" kindref="member">Next</ref>();</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>-&gt;<ref refid="classleveldb_1_1_iterator_1a38614978bfa0586327b8e237bcb46012" kindref="member">Valid</ref>());</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><ref refid="db__iter_8cc_1a3312b47cd5efcc60f693e074b6c71674" kindref="member">saved_key_</ref>.clear();</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><ref refid="db__iter_8cc_1a2dd81c85c0b7f68b59750ae4441f7da4" kindref="member">valid_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DBIter::Prev()<sp/>{</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/>assert(<ref refid="db__iter_8cc_1a2dd81c85c0b7f68b59750ae4441f7da4" kindref="member">valid_</ref>);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="db__iter_8cc_1a5810761555d70cb3d0a00e18a953c51d" kindref="member">direction_</ref><sp/>==<sp/>kForward)<sp/>{<sp/><sp/></highlight><highlight class="comment">//<sp/>Switch<sp/>directions?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>iter_<sp/>is<sp/>pointing<sp/>at<sp/>the<sp/>current<sp/>entry.<sp/><sp/>Scan<sp/>backwards<sp/>until</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>key<sp/>changes<sp/>so<sp/>we<sp/>can<sp/>use<sp/>the<sp/>normal<sp/>reverse<sp/>scanning<sp/>code.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(<ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>-&gt;<ref refid="classleveldb_1_1_iterator_1a38614978bfa0586327b8e237bcb46012" kindref="member">Valid</ref>());<sp/><sp/></highlight><highlight class="comment">//<sp/>Otherwise<sp/>valid_<sp/>would<sp/>have<sp/>been<sp/>false</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>SaveKey(<ref refid="namespaceleveldb_1a1c889869840312393b805ad91a41b94f" kindref="member">ExtractUserKey</ref>(<ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>-&gt;<ref refid="classleveldb_1_1_iterator_1ad17feced6e24a1b21db5ae6940c1f220" kindref="member">key</ref>()),<sp/>&amp;<ref refid="db__iter_8cc_1a3312b47cd5efcc60f693e074b6c71674" kindref="member">saved_key_</ref>);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>-&gt;<ref refid="classleveldb_1_1_iterator_1a28798d802a203788587dc6adc5bc729e" kindref="member">Prev</ref>();</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>-&gt;<ref refid="classleveldb_1_1_iterator_1a38614978bfa0586327b8e237bcb46012" kindref="member">Valid</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1a2dd81c85c0b7f68b59750ae4441f7da4" kindref="member">valid_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1a3312b47cd5efcc60f693e074b6c71674" kindref="member">saved_key_</ref>.clear();</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ClearSavedValue();</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="db__iter_8cc_1a16f87dfda542ddfe797fe5137c4feb7d" kindref="member">user_comparator_</ref>-&gt;<ref refid="structleveldb_1_1_comparator_1a05dae6edcad3c7db23827c0233d74039" kindref="member">Compare</ref>(<ref refid="namespaceleveldb_1a1c889869840312393b805ad91a41b94f" kindref="member">ExtractUserKey</ref>(<ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>-&gt;<ref refid="classleveldb_1_1_iterator_1ad17feced6e24a1b21db5ae6940c1f220" kindref="member">key</ref>()),</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1a3312b47cd5efcc60f693e074b6c71674" kindref="member">saved_key_</ref>)<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1a5810761555d70cb3d0a00e18a953c51d" kindref="member">direction_</ref><sp/>=<sp/>kReverse;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/>FindPrevUserEntry();</highlight></codeline>
+<codeline lineno="230"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DBIter::FindPrevUserEntry()<sp/>{</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/>assert(<ref refid="db__iter_8cc_1a5810761555d70cb3d0a00e18a953c51d" kindref="member">direction_</ref><sp/>==<sp/>kReverse);</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><ref refid="namespaceleveldb_1acc038cb0d608414730cafa459a4ba866" kindref="member">ValueType</ref><sp/>value_type<sp/>=<sp/><ref refid="namespaceleveldb_1acc038cb0d608414730cafa459a4ba866aca5f2147a76c932346e15d86668d4ed3" kindref="member">kTypeDeletion</ref>;</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>-&gt;<ref refid="classleveldb_1_1_iterator_1a38614978bfa0586327b8e237bcb46012" kindref="member">Valid</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">do</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>ParsedInternalKey<sp/>ikey;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ParseKey(&amp;ikey)<sp/>&amp;&amp;<sp/>ikey.sequence<sp/>&lt;=<sp/><ref refid="db__iter_8cc_1ad3dada019e9d76eafa6aeb8a9d8aaa69" kindref="member">sequence_</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((value_type<sp/>!=<sp/><ref refid="namespaceleveldb_1acc038cb0d608414730cafa459a4ba866aca5f2147a76c932346e15d86668d4ed3" kindref="member">kTypeDeletion</ref>)<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1a16f87dfda542ddfe797fe5137c4feb7d" kindref="member">user_comparator_</ref>-&gt;<ref refid="structleveldb_1_1_comparator_1a05dae6edcad3c7db23827c0233d74039" kindref="member">Compare</ref>(ikey.user_key,<sp/><ref refid="db__iter_8cc_1a3312b47cd5efcc60f693e074b6c71674" kindref="member">saved_key_</ref>)<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>encountered<sp/>a<sp/>non-deleted<sp/>value<sp/>in<sp/>entries<sp/>for<sp/>previous<sp/>keys,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>value_type<sp/>=<sp/>ikey.type;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(value_type<sp/>==<sp/><ref refid="namespaceleveldb_1acc038cb0d608414730cafa459a4ba866aca5f2147a76c932346e15d86668d4ed3" kindref="member">kTypeDeletion</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1a3312b47cd5efcc60f693e074b6c71674" kindref="member">saved_key_</ref>.clear();</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ClearSavedValue();</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Slice<sp/>raw_value<sp/>=<sp/><ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>-&gt;<ref refid="classleveldb_1_1_iterator_1a613ac2e965518aad7a064c64c72bcf7c" kindref="member">value</ref>();</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="db__iter_8cc_1a605fff7e8df0858fba7242efa0823d18" kindref="member">saved_value_</ref>.capacity()<sp/>&gt;<sp/>raw_value.size()<sp/>+<sp/>1048576)<sp/>{</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>empty;</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>swap(empty,<sp/><ref refid="db__iter_8cc_1a605fff7e8df0858fba7242efa0823d18" kindref="member">saved_value_</ref>);</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>SaveKey(<ref refid="namespaceleveldb_1a1c889869840312393b805ad91a41b94f" kindref="member">ExtractUserKey</ref>(<ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>-&gt;<ref refid="classleveldb_1_1_iterator_1ad17feced6e24a1b21db5ae6940c1f220" kindref="member">key</ref>()),<sp/>&amp;<ref refid="db__iter_8cc_1a3312b47cd5efcc60f693e074b6c71674" kindref="member">saved_key_</ref>);</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1a605fff7e8df0858fba7242efa0823d18" kindref="member">saved_value_</ref>.assign(raw_value.data(),<sp/>raw_value.size());</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>-&gt;<ref refid="classleveldb_1_1_iterator_1a28798d802a203788587dc6adc5bc729e" kindref="member">Prev</ref>();</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(<ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>-&gt;<ref refid="classleveldb_1_1_iterator_1a38614978bfa0586327b8e237bcb46012" kindref="member">Valid</ref>());</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(value_type<sp/>==<sp/><ref refid="namespaceleveldb_1acc038cb0d608414730cafa459a4ba866aca5f2147a76c932346e15d86668d4ed3" kindref="member">kTypeDeletion</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>End</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1a2dd81c85c0b7f68b59750ae4441f7da4" kindref="member">valid_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1a3312b47cd5efcc60f693e074b6c71674" kindref="member">saved_key_</ref>.clear();</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/>ClearSavedValue();</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1a5810761555d70cb3d0a00e18a953c51d" kindref="member">direction_</ref><sp/>=<sp/>kForward;</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1a2dd81c85c0b7f68b59750ae4441f7da4" kindref="member">valid_</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="272"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DBIter::Seek(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Slice&amp;<sp/>target)<sp/>{</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><ref refid="db__iter_8cc_1a5810761555d70cb3d0a00e18a953c51d" kindref="member">direction_</ref><sp/>=<sp/>kForward;</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/>ClearSavedValue();</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><ref refid="db__iter_8cc_1a3312b47cd5efcc60f693e074b6c71674" kindref="member">saved_key_</ref>.clear();</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><ref refid="namespaceleveldb_1a7192bb79e7fa6ba01490473941386534" kindref="member">AppendInternalKey</ref>(</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>&amp;<ref refid="db__iter_8cc_1a3312b47cd5efcc60f693e074b6c71674" kindref="member">saved_key_</ref>,<sp/>ParsedInternalKey(target,<sp/><ref refid="db__iter_8cc_1ad3dada019e9d76eafa6aeb8a9d8aaa69" kindref="member">sequence_</ref>,<sp/>kValueTypeForSeek));</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>-&gt;<ref refid="classleveldb_1_1_iterator_1a97a556e97ded60c677fbf4de7321ec44" kindref="member">Seek</ref>(<ref refid="db__iter_8cc_1a3312b47cd5efcc60f693e074b6c71674" kindref="member">saved_key_</ref>);</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>-&gt;<ref refid="classleveldb_1_1_iterator_1a38614978bfa0586327b8e237bcb46012" kindref="member">Valid</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/>FindNextUserEntry(</highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/>&amp;<ref refid="db__iter_8cc_1a3312b47cd5efcc60f693e074b6c71674" kindref="member">saved_key_</ref><sp/></highlight><highlight class="comment">/*<sp/>temporary<sp/>storage<sp/>*/</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1a2dd81c85c0b7f68b59750ae4441f7da4" kindref="member">valid_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="286"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DBIter::SeekToFirst()<sp/>{</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><ref refid="db__iter_8cc_1a5810761555d70cb3d0a00e18a953c51d" kindref="member">direction_</ref><sp/>=<sp/>kForward;</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/>ClearSavedValue();</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>-&gt;<ref refid="classleveldb_1_1_iterator_1a3594967cf26ddf1d37c7b886bb48627e" kindref="member">SeekToFirst</ref>();</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>-&gt;<ref refid="classleveldb_1_1_iterator_1a38614978bfa0586327b8e237bcb46012" kindref="member">Valid</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/>FindNextUserEntry(</highlight><highlight class="keyword">false</highlight><highlight class="normal">,<sp/>&amp;<ref refid="db__iter_8cc_1a3312b47cd5efcc60f693e074b6c71674" kindref="member">saved_key_</ref><sp/></highlight><highlight class="comment">/*<sp/>temporary<sp/>storage<sp/>*/</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="db__iter_8cc_1a2dd81c85c0b7f68b59750ae4441f7da4" kindref="member">valid_</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="297"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>DBIter::SeekToLast()<sp/>{</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><ref refid="db__iter_8cc_1a5810761555d70cb3d0a00e18a953c51d" kindref="member">direction_</ref><sp/>=<sp/>kReverse;</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/>ClearSavedValue();</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><ref refid="db__iter_8cc_1adcd6787cae081feb1d6a04d18a1ed50f" kindref="member">iter_</ref>-&gt;<ref refid="classleveldb_1_1_iterator_1a8ad637f0a759e6d94cca6c5b4db440d3" kindref="member">SeekToLast</ref>();</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/>FindPrevUserEntry();</highlight></codeline>
+<codeline lineno="304"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>anonymous<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"></highlight></codeline>
+<codeline lineno="308" refid="namespaceleveldb_1a0d4b256207f27afbf4ad03976fe0fae8" refkind="member"><highlight class="normal"><ref refid="classleveldb_1_1_iterator" kindref="compound">Iterator</ref>*<sp/><ref refid="namespaceleveldb_1a0d4b256207f27afbf4ad03976fe0fae8" kindref="member">NewDBIterator</ref>(</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classleveldb_1_1_d_b_impl" kindref="compound">DBImpl</ref>*<sp/>db,</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structleveldb_1_1_comparator" kindref="compound">Comparator</ref>*<sp/>user_key_comparator,</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classleveldb_1_1_iterator" kindref="compound">Iterator</ref>*<sp/>internal_iter,</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceleveldb_1a5481ededd221c36d652c371249f869fa" kindref="member">SequenceNumber</ref><sp/>sequence,</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>seed)<sp/>{</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>DBIter(db,<sp/>user_key_comparator,<sp/>internal_iter,<sp/>sequence,<sp/>seed);</highlight></codeline>
+<codeline lineno="315"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>leveldb</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/leveldb/db/db_iter.cc"/>
+  </compounddef>
+</doxygen>

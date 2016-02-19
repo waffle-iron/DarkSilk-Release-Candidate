@@ -1,0 +1,1173 @@
+.TH "/home/dev/ds-160209/src/util.h" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/util.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <sys/types\&.h>\fP
+.br
+\fC#include <sys/time\&.h>\fP
+.br
+\fC#include <sys/resource\&.h>\fP
+.br
+\fC#include 'serialize\&.h'\fP
+.br
+\fC#include 'tinyformat\&.h'\fP
+.br
+\fC#include 'amount\&.h'\fP
+.br
+\fC#include <map>\fP
+.br
+\fC#include <list>\fP
+.br
+\fC#include <utility>\fP
+.br
+\fC#include <vector>\fP
+.br
+\fC#include <string>\fP
+.br
+\fC#include <boost/thread\&.hpp>\fP
+.br
+\fC#include <boost/filesystem\&.hpp>\fP
+.br
+\fC#include <boost/filesystem/path\&.hpp>\fP
+.br
+\fC#include <boost/date_time/gregorian/gregorian_types\&.hpp>\fP
+.br
+\fC#include <boost/date_time/posix_time/posix_time_types\&.hpp>\fP
+.br
+\fC#include <openssl/bio\&.h>\fP
+.br
+\fC#include <openssl/evp\&.h>\fP
+.br
+\fC#include <openssl/buffer\&.h>\fP
+.br
+\fC#include <openssl/crypto\&.h>\fP
+.br
+\fC#include <openssl/rand\&.h>\fP
+.br
+\fC#include <openssl/bn\&.h>\fP
+.br
+\fC#include <stdint\&.h>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBCMedianFilter< T >\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBBEGIN\fP(a)   ((char*)&(a))"
+.br
+.ti -1c
+.RI "#define \fBEND\fP(a)   ((char*)&((&(a))[1]))"
+.br
+.ti -1c
+.RI "#define \fBUBEGIN\fP(a)   ((unsigned char*)&(a))"
+.br
+.ti -1c
+.RI "#define \fBUEND\fP(a)   ((unsigned char*)&((&(a))[1]))"
+.br
+.ti -1c
+.RI "#define \fBARRAYLEN\fP(array)   (sizeof(array)/sizeof((array)[0]))"
+.br
+.ti -1c
+.RI "#define \fBUVOIDBEGIN\fP(a)   ((void*)&(a))"
+.br
+.ti -1c
+.RI "#define \fBCVOIDBEGIN\fP(a)   ((const void*)&(a))"
+.br
+.ti -1c
+.RI "#define \fBUINTBEGIN\fP(a)   ((\fBuint32_t\fP*)&(a))"
+.br
+.ti -1c
+.RI "#define \fBCUINTBEGIN\fP(a)   ((const \fBuint32_t\fP*)&(a))"
+.br
+.ti -1c
+.RI "#define \fBPRIszx\fP   'zx'"
+.br
+.ti -1c
+.RI "#define \fBPRIszu\fP   'zu'"
+.br
+.ti -1c
+.RI "#define \fBPRIszd\fP   'zd'"
+.br
+.ti -1c
+.RI "#define \fBPRIpdx\fP   'tx'"
+.br
+.ti -1c
+.RI "#define \fBPRIpdu\fP   'tu'"
+.br
+.ti -1c
+.RI "#define \fBPRIpdd\fP   'td'"
+.br
+.ti -1c
+.RI "#define \fBPAIRTYPE\fP(t1,  t2)   std::pair<t1, t2>"
+.br
+.ti -1c
+.RI "#define \fBMAX_PATH\fP   1024"
+.br
+.ti -1c
+.RI "#define \fBLogPrintf\fP(\&.\&.\&.)   LogPrint(NULL, __VA_ARGS__)"
+.br
+.ti -1c
+.RI "#define \fBMAKE_ERROR_AND_LOG_FUNC\fP(n)"
+.br
+.ti -1c
+.RI "#define \fBTHREAD_PRIORITY_LOWEST\fP   PRIO_MAX"
+.br
+.ti -1c
+.RI "#define \fBTHREAD_PRIORITY_BELOW_NORMAL\fP   2"
+.br
+.ti -1c
+.RI "#define \fBTHREAD_PRIORITY_NORMAL\fP   0"
+.br
+.ti -1c
+.RI "#define \fBTHREAD_PRIORITY_ABOVE_NORMAL\fP   0"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<size_t nBytes, typename T > T * \fBalignup\fP (T *p)"
+.br
+.ti -1c
+.RI "boost::filesystem::path \fBGetStormnodeConfigFile\fP ()"
+.br
+.ti -1c
+.RI "void \fBMilliSleep\fP (\fBint64_t\fP n)"
+.br
+.ti -1c
+.RI "bool \fBIsLogOpen\fP ()"
+.br
+.ti -1c
+.RI "bool \fBLogAcceptCategory\fP (const char *category)"
+.br
+.ti -1c
+.RI "int \fBLogPrintStr\fP (const std::string &str)"
+.br
+.ti -1c
+.RI "std::string \fBGenerateRandomString\fP (unsigned int len=24)"
+.br
+.ti -1c
+.RI "void \fBWriteConfigFile\fP (FILE *configFile)"
+.br
+.ti -1c
+.RI "bool \fBFileExists\fP (const char *fileName)"
+.br
+.ti -1c
+.RI "unsigned int \fBRandomIntegerRange\fP (unsigned int nMin, unsigned int nMax)"
+.br
+.ti -1c
+.RI "void \fBRandAddSeed\fP ()"
+.br
+.ti -1c
+.RI "void \fBRandAddSeedPerfmon\fP ()"
+.br
+.ti -1c
+.RI "void \fBPrintException\fP (std::exception *pex, const char *pszThread)"
+.br
+.ti -1c
+.RI "void \fBPrintExceptionContinue\fP (std::exception *pex, const char *pszThread)"
+.br
+.ti -1c
+.RI "void \fBParseString\fP (const std::string &str, char c, std::vector< std::string > &v)"
+.br
+.ti -1c
+.RI "std::string \fBFormatMoney\fP (\fBCAmount\fP n, bool fPlus=false)"
+.br
+.ti -1c
+.RI "bool \fBParseMoney\fP (const std::string &str, \fBCAmount\fP &nRet)"
+.br
+.ti -1c
+.RI "bool \fBParseMoney\fP (const char *pszIn, \fBCAmount\fP &nRet)"
+.br
+.ti -1c
+.RI "std::string \fBSanitizeString\fP (const std::string &str)"
+.br
+.ti -1c
+.RI "std::vector< unsigned char > \fBParseHex\fP (const char *psz)"
+.br
+.ti -1c
+.RI "std::vector< unsigned char > \fBParseHex\fP (const std::string &str)"
+.br
+.ti -1c
+.RI "bool \fBIsHex\fP (const std::string &str)"
+.br
+.ti -1c
+.RI "std::vector< unsigned char > \fBDecodeBase64\fP (const char *p, bool *pfInvalid=NULL)"
+.br
+.ti -1c
+.RI "std::string \fBDecodeBase64\fP (const std::string &str)"
+.br
+.ti -1c
+.RI "std::string \fBEncodeBase64\fP (const unsigned char *pch, size_t len)"
+.br
+.ti -1c
+.RI "std::string \fBEncodeBase64\fP (const std::string &str)"
+.br
+.ti -1c
+.RI "\fBSecureString\fP \fBDecodeBase64Secure\fP (const \fBSecureString\fP &input)"
+.br
+.ti -1c
+.RI "\fBSecureString\fP \fBEncodeBase64Secure\fP (const \fBSecureString\fP &input)"
+.br
+.ti -1c
+.RI "std::vector< unsigned char > \fBDecodeBase32\fP (const char *p, bool *pfInvalid=NULL)"
+.br
+.ti -1c
+.RI "std::string \fBDecodeBase32\fP (const std::string &str)"
+.br
+.ti -1c
+.RI "std::string \fBEncodeBase32\fP (const unsigned char *pch, size_t len)"
+.br
+.ti -1c
+.RI "std::string \fBEncodeBase32\fP (const std::string &str)"
+.br
+.ti -1c
+.RI "void \fBParseParameters\fP (int argc, const char *const argv[])"
+.br
+.ti -1c
+.RI "bool \fBWildcardMatch\fP (const char *psz, const char *mask)"
+.br
+.ti -1c
+.RI "bool \fBWildcardMatch\fP (const std::string &str, const std::string &mask)"
+.br
+.ti -1c
+.RI "bool \fBTryCreateDirectory\fP (const boost::filesystem::path &p)"
+.br
+.ti -1c
+.RI "void \fBFileCommit\fP (FILE *fileout)"
+.br
+.ti -1c
+.RI "bool \fBRenameOver\fP (boost::filesystem::path src, boost::filesystem::path dest)"
+.br
+.ti -1c
+.RI "boost::filesystem::path \fBGetDefaultDataDir\fP ()"
+.br
+.ti -1c
+.RI "const boost::filesystem::path & \fBGetDataDir\fP (bool fNetSpecific=true)"
+.br
+.ti -1c
+.RI "boost::filesystem::path \fBGetConfigFile\fP ()"
+.br
+.ti -1c
+.RI "boost::filesystem::path \fBGetPidFile\fP ()"
+.br
+.ti -1c
+.RI "void \fBCreatePidFile\fP (const boost::filesystem::path &path, pid_t pid)"
+.br
+.ti -1c
+.RI "void \fBReadConfigFile\fP (std::map< std::string, std::string > &mapSettingsRet, std::map< std::string, std::vector< std::string > > &mapMultiSettingsRet)"
+.br
+.ti -1c
+.RI "std::string \fBgetTimeString\fP (\fBint64_t\fP timestamp, char *buffer, size_t nBuffer)"
+.br
+.ti -1c
+.RI "std::string \fBbytesReadable\fP (\fBuint64_t\fP nBytes)"
+.br
+.ti -1c
+.RI "void \fBShrinkDebugFile\fP ()"
+.br
+.ti -1c
+.RI "bool \fBGetRandBytes\fP (unsigned char *buf, int num)"
+.br
+.ti -1c
+.RI "int \fBGetRandInt\fP (int nMax)"
+.br
+.ti -1c
+.RI "\fBuint64_t\fP \fBGetRand\fP (\fBuint64_t\fP nMax)"
+.br
+.ti -1c
+.RI "\fBuint256\fP \fBGetRandHash\fP ()"
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBGetTime\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetMockTime\fP (\fBint64_t\fP nMockTimeIn)"
+.br
+.ti -1c
+.RI "std::string \fBFormatFullVersion\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBFormatSubVersion\fP (const std::string &\fBname\fP, int nClientVersion, const std::vector< std::string > &comments)"
+.br
+.ti -1c
+.RI "void \fBrunCommand\fP (std::string strCommand)"
+.br
+.ti -1c
+.RI "bool \fBTruncateFile\fP (FILE *file, unsigned int length)"
+.br
+.ti -1c
+.RI "bool \fBParseInt32\fP (const std::string &str, \fBint32_t\fP *out)"
+.br
+.ti -1c
+.RI "std::string \fBFormatParagraph\fP (const std::string in, size_t width=79, size_t indent=0)"
+.br
+.ti -1c
+.RI "std::string \fBi64tostr\fP (\fBint64_t\fP n)"
+.br
+.ti -1c
+.RI "std::string \fBitostr\fP (int n)"
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBatoi64\fP (const char *psz)"
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBatoi64\fP (const std::string &str)"
+.br
+.ti -1c
+.RI "int \fBatoi\fP (const std::string &str)"
+.br
+.ti -1c
+.RI "int \fBroundint\fP (double d)"
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBroundint64\fP (double d)"
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBabs64\fP (\fBint64_t\fP n)"
+.br
+.ti -1c
+.RI "std::string \fBleftTrim\fP (std::string src, char chr)"
+.br
+.ti -1c
+.RI "template<typename T > std::string \fBHexStr\fP (const T itbegin, const T itend, bool fSpaces=false)"
+.br
+.ti -1c
+.RI "template<typename T > std::string \fBHexStr\fP (const T &vch, bool fSpaces=false)"
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBGetPerformanceCounter\fP ()"
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBGetTimeMillis\fP ()"
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBGetTimeMicros\fP ()"
+.br
+.ti -1c
+.RI "std::string \fBDateTimeStrFormat\fP (const char *pszFormat, \fBint64_t\fP nTime)"
+.br
+.ti -1c
+.RI "std::string \fBDateTimeStrFormat\fP (\fBint64_t\fP nTime)"
+.br
+.ti -1c
+.RI "template<typename T > void \fBskipspaces\fP (T &it)"
+.br
+.ti -1c
+.RI "bool \fBIsSwitchChar\fP (char c)"
+.br
+.ti -1c
+.RI "std::string \fBGetArg\fP (const std::string &strArg, const std::string &strDefault)"
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBGetArg\fP (const std::string &strArg, \fBint64_t\fP nDefault)"
+.br
+.ti -1c
+.RI "bool \fBGetBoolArg\fP (const std::string &strArg, bool fDefault)"
+.br
+.ti -1c
+.RI "bool \fBSoftSetArg\fP (const std::string &strArg, const std::string &strValue)"
+.br
+.ti -1c
+.RI "bool \fBSoftSetBoolArg\fP (const std::string &strArg, bool fValue)"
+.br
+.ti -1c
+.RI "void \fBseed_insecure_rand\fP (bool fDeterministic=false)"
+.br
+.ti -1c
+.RI "template<typename T > bool \fBTimingResistantEqual\fP (const T &a, const T &b)"
+.br
+.ti -1c
+.RI "void \fBSetThreadPriority\fP (int nPriority)"
+.br
+.ti -1c
+.RI "void \fBRenameThread\fP (const char *\fBname\fP)"
+.br
+.ti -1c
+.RI "\fBuint32_t\fP \fBByteReverse\fP (\fBuint32_t\fP \fBvalue\fP)"
+.br
+.ti -1c
+.RI "template<typename Callable > void \fBLoopForever\fP (const char *\fBname\fP, Callable \fBfunc\fP, \fBint64_t\fP msecs)"
+.br
+.ti -1c
+.RI "template<typename Callable > void \fBTraceThread\fP (const char *\fBname\fP, Callable \fBfunc\fP)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "bool \fBfStormNode\fP"
+.br
+.ti -1c
+.RI "bool \fBfLiteMode\fP"
+.br
+.ti -1c
+.RI "bool \fBfEnableInstantX\fP"
+.br
+.ti -1c
+.RI "int \fBnInstantXDepth\fP"
+.br
+.ti -1c
+.RI "int \fBnSandstormRounds\fP"
+.br
+.ti -1c
+.RI "int \fBnAnonymizeDarkSilkAmount\fP"
+.br
+.ti -1c
+.RI "int \fBnLiquidityProvider\fP"
+.br
+.ti -1c
+.RI "bool \fBfEnableSandstorm\fP"
+.br
+.ti -1c
+.RI "bool \fBfSandstormMultiSession\fP"
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBenforceStormnodePaymentsTime\fP"
+.br
+.ti -1c
+.RI "std::string \fBstrStormNodeAddr\fP"
+.br
+.ti -1c
+.RI "int \fBnStormnodeMinProtocol\fP"
+.br
+.ti -1c
+.RI "int \fBkeysLoaded\fP"
+.br
+.ti -1c
+.RI "bool \fBfSucessfullyLoaded\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBCAmount\fP > \fBsandStormDenominations\fP"
+.br
+.ti -1c
+.RI "std::string \fBstrBudgetMode\fP"
+.br
+.ti -1c
+.RI "bool \fBfDebug\fP"
+.br
+.ti -1c
+.RI "bool \fBfDebugSmsg\fP"
+.br
+.ti -1c
+.RI "bool \fBfNoSmsg\fP"
+.br
+.ti -1c
+.RI "bool \fBfPrintToConsole\fP"
+.br
+.ti -1c
+.RI "bool \fBfPrintToDebugLog\fP"
+.br
+.ti -1c
+.RI "bool \fBfServer\fP"
+.br
+.ti -1c
+.RI "bool \fBfCommandLine\fP"
+.br
+.ti -1c
+.RI "std::string \fBstrMiscWarning\fP"
+.br
+.ti -1c
+.RI "bool \fBfNoListen\fP"
+.br
+.ti -1c
+.RI "bool \fBfLogTimestamps\fP"
+.br
+.ti -1c
+.RI "volatile bool \fBfReopenDebugLog\fP"
+.br
+.ti -1c
+.RI "std::map< std::string, std::string > \fBmapArgs\fP"
+.br
+.ti -1c
+.RI "std::map< std::string, std::vector< std::string > > \fBmapMultiArgs\fP"
+.br
+.ti -1c
+.RI "\fBuint32_t\fP \fBinsecure_rand_Rz\fP"
+.br
+.ti -1c
+.RI "\fBuint32_t\fP \fBinsecure_rand_Rw\fP"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define ARRAYLEN(array)   (sizeof(array)/sizeof((array)[0]))"
+
+.PP
+Definition at line 49 of file util\&.h\&.
+.SS "#define BEGIN(a)   ((char*)&(a))"
+
+.PP
+Definition at line 45 of file util\&.h\&.
+.SS "#define CUINTBEGIN(a)   ((const \fBuint32_t\fP*)&(a))"
+
+.PP
+Definition at line 54 of file util\&.h\&.
+.SS "#define CVOIDBEGIN(a)   ((const void*)&(a))"
+
+.PP
+Definition at line 52 of file util\&.h\&.
+.SS "#define END(a)   ((char*)&((&(a))[1]))"
+
+.PP
+Definition at line 46 of file util\&.h\&.
+.SS "#define LogPrintf( \&.\&.\&.)   LogPrint(NULL, __VA_ARGS__)"
+
+.PP
+Definition at line 158 of file util\&.h\&.
+.SS "#define MAKE_ERROR_AND_LOG_FUNC(n)"
+\fBValue:\fP
+.PP
+.nf
+/*   Print to debug\&.log if -debug=category switch is given OR category is NULL\&. */ \
+    template<TINYFORMAT_ARGTYPES(n)>                                          \
+    static inline int LogPrint(const char* category, const char* format, TINYFORMAT_VARARGS(n))  \
+    {                                                                                \
+        if(!LogAcceptCategory(category)) return 0;                                   \
+        return LogPrintStr(tfm::format(format, TINYFORMAT_PASSARGS(n)));             \
+    }                                                                                \
+    /*   Log error and return false */                                               \
+    template<TINYFORMAT_ARGTYPES(n)>                                                 \
+    static inline bool error(const char* format, TINYFORMAT_VARARGS(n))              \
+    {                                                                                \\
+        LogPrintStr("ERROR: " + tfm::format(format, TINYFORMAT_PASSARGS(n)) + "\n"); \
+        return false;                                                                \
+    }                                                                                \
+    /*   Log error and return n */                                                   \
+    template<TINYFORMAT_ARGTYPES(n)>                                                 \
+    static inline int errorN(int rv, const char* format, TINYFORMAT_VARARGS(n))      \
+    {                                                                                \\
+        LogPrintStr("ERROR: " + tfm::format(format, TINYFORMAT_PASSARGS(n)) + "\n"); \
+        return rv;                                                                   \
+    }
+.fi
+.PP
+Definition at line 163 of file util\&.h\&.
+.SS "#define MAX_PATH   1024"
+
+.PP
+Definition at line 104 of file util\&.h\&.
+.SS "#define PAIRTYPE(t1, t2)   std::pair<t1, t2>"
+
+.PP
+Definition at line 77 of file util\&.h\&.
+.SS "#define PRIpdd   'td'"
+
+.PP
+Definition at line 73 of file util\&.h\&.
+.SS "#define PRIpdu   'tu'"
+
+.PP
+Definition at line 72 of file util\&.h\&.
+.SS "#define PRIpdx   'tx'"
+
+.PP
+Definition at line 71 of file util\&.h\&.
+.SS "#define PRIszd   'zd'"
+
+.PP
+Definition at line 70 of file util\&.h\&.
+.SS "#define PRIszu   'zu'"
+
+.PP
+Definition at line 69 of file util\&.h\&.
+.SS "#define PRIszx   'zx'"
+
+.PP
+Definition at line 68 of file util\&.h\&.
+.SS "#define THREAD_PRIORITY_ABOVE_NORMAL   0"
+
+.PP
+Definition at line 568 of file util\&.h\&.
+.SS "#define THREAD_PRIORITY_BELOW_NORMAL   2"
+
+.PP
+Definition at line 566 of file util\&.h\&.
+.SS "#define THREAD_PRIORITY_LOWEST   PRIO_MAX"
+
+.PP
+Definition at line 565 of file util\&.h\&.
+.SS "#define THREAD_PRIORITY_NORMAL   0"
+
+.PP
+Definition at line 567 of file util\&.h\&.
+.SS "#define UBEGIN(a)   ((unsigned char*)&(a))"
+
+.PP
+Definition at line 47 of file util\&.h\&.
+.SS "#define UEND(a)   ((unsigned char*)&((&(a))[1]))"
+
+.PP
+Definition at line 48 of file util\&.h\&.
+.SS "#define UINTBEGIN(a)   ((\fBuint32_t\fP*)&(a))"
+
+.PP
+Definition at line 53 of file util\&.h\&.
+.SS "#define UVOIDBEGIN(a)   ((void*)&(a))"
+
+.PP
+Definition at line 51 of file util\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "\fBint64_t\fP abs64 (\fBint64_t\fP n)\fC [inline]\fP"
+
+.PP
+Definition at line 330 of file util\&.h\&.
+.SS "template<size_t nBytes, typename T > T* alignup (T * p)"
+
+.PP
+Definition at line 81 of file util\&.h\&.
+.SS "int atoi (const std::string & str)\fC [inline]\fP"
+
+.PP
+Definition at line 315 of file util\&.h\&.
+.SS "\fBint64_t\fP atoi64 (const char * psz)\fC [inline]\fP"
+
+.PP
+Definition at line 297 of file util\&.h\&.
+.SS "\fBint64_t\fP atoi64 (const std::string & str)\fC [inline]\fP"
+
+.PP
+Definition at line 306 of file util\&.h\&.
+.SS "\fBuint32_t\fP ByteReverse (\fBuint32_t\fP value)\fC [inline]\fP"
+
+.PP
+Definition at line 584 of file util\&.h\&.
+.SS "std::string bytesReadable (\fBuint64_t\fP nBytes)"
+
+.PP
+Definition at line 1314 of file util\&.cpp\&.
+.SS "void CreatePidFile (const boost::filesystem::path & path, pid_t pid)"
+
+.PP
+Definition at line 1253 of file util\&.cpp\&.
+.SS "std::string DateTimeStrFormat (const char * pszFormat, \fBint64_t\fP nTime)"
+
+.PP
+Definition at line 1465 of file util\&.cpp\&.
+.SS "std::string DateTimeStrFormat (\fBint64_t\fP nTime)\fC [inline]\fP"
+
+.PP
+Definition at line 398 of file util\&.h\&.
+.SS "std::vector<unsigned char> DecodeBase32 (const char * p, bool * pfInvalid = \fCNULL\fP)"
+
+.PP
+Definition at line 839 of file util\&.cpp\&.
+.SS "std::string DecodeBase32 (const std::string & str)"
+
+.SS "std::vector<unsigned char> DecodeBase64 (const char * p, bool * pfInvalid = \fCNULL\fP)"
+
+.PP
+Definition at line 629 of file util\&.cpp\&.
+.SS "std::string DecodeBase64 (const std::string & str)"
+
+.SS "\fBSecureString\fP DecodeBase64Secure (const \fBSecureString\fP & input)"
+
+.PP
+Definition at line 746 of file util\&.cpp\&.
+.SS "std::string EncodeBase32 (const unsigned char * pch, size_t len)"
+
+.PP
+Definition at line 775 of file util\&.cpp\&.
+.SS "std::string EncodeBase32 (const std::string & str)"
+
+.SS "std::string EncodeBase64 (const unsigned char * pch, size_t len)"
+
+.PP
+Definition at line 578 of file util\&.cpp\&.
+.SS "std::string EncodeBase64 (const std::string & str)"
+
+.SS "\fBSecureString\fP EncodeBase64Secure (const \fBSecureString\fP & input)"
+
+.PP
+Definition at line 719 of file util\&.cpp\&.
+.SS "void FileCommit (FILE * fileout)"
+
+.PP
+Definition at line 1294 of file util\&.cpp\&.
+.SS "bool FileExists (const char * fileName)"
+
+.PP
+Definition at line 1206 of file util\&.cpp\&.
+.SS "std::string FormatFullVersion ()"
+
+.PP
+Definition at line 1393 of file util\&.cpp\&.
+.SS "std::string FormatMoney (\fBCAmount\fP n, bool fPlus = \fCfalse\fP)"
+
+.PP
+Definition at line 339 of file util\&.cpp\&.
+.SS "std::string FormatParagraph (const std::string in, size_t width = \fC79\fP, size_t indent = \fC0\fP)"
+Format a paragraph of text to a fixed width, adding spaces for indentation to any added line\&. 
+.PP
+Definition at line 1007 of file util\&.cpp\&.
+.SS "std::string FormatSubVersion (const std::string & name, int nClientVersion, const std::vector< std::string > & comments)"
+
+.PP
+Definition at line 1406 of file util\&.cpp\&.
+.SS "std::string GenerateRandomString (unsigned int len = \fC24\fP)"
+
+.PP
+Definition at line 1162 of file util\&.cpp\&.
+.SS "std::string GetArg (const std::string & strArg, const std::string & strDefault)"
+Return string argument or default value
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstrArg\fP Argument to get (e\&.g\&. '-foo') 
+.br
+\fIdefault\fP (e\&.g\&. '1') 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+command-line argument or default value 
+.RE
+.PP
+
+.PP
+Definition at line 536 of file util\&.cpp\&.
+.SS "\fBint64_t\fP GetArg (const std::string & strArg, \fBint64_t\fP nDefault)"
+Return integer argument or default value
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstrArg\fP Argument to get (e\&.g\&. '-foo') 
+.br
+\fIdefault\fP (e\&.g\&. 1) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+command-line argument (0 if invalid number) or default value 
+.RE
+.PP
+
+.PP
+Definition at line 543 of file util\&.cpp\&.
+.SS "bool GetBoolArg (const std::string & strArg, bool fDefault)"
+Return boolean argument or default value
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstrArg\fP Argument to get (e\&.g\&. '-foo') 
+.br
+\fIdefault\fP (true or false) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+command-line argument or default value 
+.RE
+.PP
+
+.PP
+Definition at line 550 of file util\&.cpp\&.
+.SS "boost::filesystem::path GetConfigFile ()"
+
+.PP
+Definition at line 1148 of file util\&.cpp\&.
+.SS "const boost::filesystem::path& GetDataDir (bool fNetSpecific = \fCtrue\fP)"
+
+.PP
+Definition at line 1109 of file util\&.cpp\&.
+.SS "boost::filesystem::path GetDefaultDataDir ()"
+
+.PP
+Definition at line 1077 of file util\&.cpp\&.
+.SS "\fBint64_t\fP GetPerformanceCounter ()\fC [inline]\fP"
+
+.PP
+Definition at line 370 of file util\&.h\&.
+.SS "boost::filesystem::path GetPidFile ()"
+
+.PP
+Definition at line 1245 of file util\&.cpp\&.
+.SS "\fBuint64_t\fP GetRand (\fBuint64_t\fP nMax)"
+
+.PP
+Definition at line 198 of file util\&.cpp\&.
+.SS "bool GetRandBytes (unsigned char * buf, int num)"
+
+.PP
+Definition at line 154 of file util\&.cpp\&.
+.SS "\fBuint256\fP GetRandHash ()"
+
+.PP
+Definition at line 218 of file util\&.cpp\&.
+.SS "int GetRandInt (int nMax)"
+
+.PP
+Definition at line 213 of file util\&.cpp\&.
+.SS "boost::filesystem::path GetStormnodeConfigFile ()"
+
+.PP
+Definition at line 1155 of file util\&.cpp\&.
+.SS "\fBint64_t\fP GetTime ()"
+
+.PP
+Definition at line 1352 of file util\&.cpp\&.
+.SS "\fBint64_t\fP GetTimeMicros ()\fC [inline]\fP"
+
+.PP
+Definition at line 389 of file util\&.h\&.
+.SS "\fBint64_t\fP GetTimeMillis ()\fC [inline]\fP"
+
+.PP
+Definition at line 383 of file util\&.h\&.
+.SS "std::string getTimeString (\fBint64_t\fP timestamp, char * buffer, size_t nBuffer)"
+
+.PP
+Definition at line 1304 of file util\&.cpp\&.
+.SS "template<typename T > std::string HexStr (const T itbegin, const T itend, bool fSpaces = \fCfalse\fP)"
+
+.PP
+Definition at line 346 of file util\&.h\&.
+.SS "template<typename T > std::string HexStr (const T & vch, bool fSpaces = \fCfalse\fP)\fC [inline]\fP"
+
+.PP
+Definition at line 365 of file util\&.h\&.
+.SS "std::string i64tostr (\fBint64_t\fP n)\fC [inline]\fP"
+
+.PP
+Definition at line 287 of file util\&.h\&.
+.SS "bool IsHex (const std::string & str)"
+
+.SS "bool IsLogOpen ()"
+
+.SS "bool IsSwitchChar (char c)\fC [inline]\fP"
+
+.PP
+Definition at line 411 of file util\&.h\&.
+.SS "std::string itostr (int n)\fC [inline]\fP"
+
+.PP
+Definition at line 292 of file util\&.h\&.
+.SS "std::string leftTrim (std::string src, char chr)\fC [inline]\fP"
+
+.PP
+Definition at line 335 of file util\&.h\&.
+.SS "bool LogAcceptCategory (const char * category)"
+
+.PP
+Definition at line 252 of file util\&.cpp\&.
+.SS "int LogPrintStr (const std::string & str)"
+
+.PP
+Definition at line 280 of file util\&.cpp\&.
+.SS "template<typename Callable > void LoopForever (const char * name, Callable func, \fBint64_t\fP msecs)"
+
+.PP
+Definition at line 597 of file util\&.h\&.
+.SS "void MilliSleep (\fBint64_t\fP n)\fC [inline]\fP"
+
+.PP
+Definition at line 107 of file util\&.h\&.
+.SS "std::vector<unsigned char> ParseHex (const char * psz)"
+
+.PP
+Definition at line 450 of file util\&.cpp\&.
+.SS "std::vector<unsigned char> ParseHex (const std::string & str)"
+
+.SS "bool ParseInt32 (const std::string & str, \fBint32_t\fP * out)"
+Convert string to signed 32-bit integer with strict parse error feedback\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+true if the entire string could be parsed as valid integer, false if not the entire string could be parsed or when overflow or underflow occurred\&. 
+.RE
+.PP
+
+.PP
+Definition at line 993 of file util\&.cpp\&.
+.SS "bool ParseMoney (const std::string & str, \fBCAmount\fP & nRet)"
+
+.SS "bool ParseMoney (const char * pszIn, \fBCAmount\fP & nRet)"
+
+.PP
+Definition at line 368 of file util\&.cpp\&.
+.SS "void ParseParameters (int argc, const char *const argv[])"
+
+.PP
+Definition at line 491 of file util\&.cpp\&.
+.SS "void ParseString (const std::string & str, char c, std::vector< std::string > & v)"
+
+.SS "void PrintException (std::exception * pex, const char * pszThread)"
+
+.PP
+Definition at line 1060 of file util\&.cpp\&.
+.SS "void PrintExceptionContinue (std::exception * pex, const char * pszThread)"
+
+.PP
+Definition at line 1069 of file util\&.cpp\&.
+.SS "void RandAddSeed ()"
+
+.PP
+Definition at line 163 of file util\&.cpp\&.
+.SS "void RandAddSeedPerfmon ()"
+
+.PP
+Definition at line 171 of file util\&.cpp\&.
+.SS "unsigned int RandomIntegerRange (unsigned int nMin, unsigned int nMax)"
+
+.PP
+Definition at line 1182 of file util\&.cpp\&.
+.SS "void ReadConfigFile (std::map< std::string, std::string > & mapSettingsRet, std::map< std::string, std::vector< std::string > > & mapMultiSettingsRet)"
+
+.SS "bool RenameOver (boost::filesystem::path src, boost::filesystem::path dest)"
+
+.PP
+Definition at line 1264 of file util\&.cpp\&.
+.SS "void RenameThread (const char * name)"
+
+.PP
+Definition at line 1441 of file util\&.cpp\&.
+.SS "int roundint (double d)\fC [inline]\fP"
+
+.PP
+Definition at line 320 of file util\&.h\&.
+.SS "\fBint64_t\fP roundint64 (double d)\fC [inline]\fP"
+
+.PP
+Definition at line 325 of file util\&.h\&.
+.SS "void runCommand (std::string strCommand)"
+
+.PP
+Definition at line 1434 of file util\&.cpp\&.
+.SS "std::string SanitizeString (const std::string & str)"
+
+.SS "void seed_insecure_rand (bool fDeterministic = \fCfalse\fP)"
+Seed insecure_rand using the random pool\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIDeterministic\fP Use a determinstic seed 
+.RE
+.PP
+
+.PP
+Definition at line 1366 of file util\&.cpp\&.
+.SS "void SetMockTime (\fBint64_t\fP nMockTimeIn)"
+
+.PP
+Definition at line 1359 of file util\&.cpp\&.
+.SS "void SetThreadPriority (int nPriority)\fC [inline]\fP"
+
+.PP
+Definition at line 570 of file util\&.h\&.
+.SS "void ShrinkDebugFile ()"
+
+.PP
+Definition at line 1328 of file util\&.cpp\&.
+.SS "template<typename T > void skipspaces (T & it)"
+
+.PP
+Definition at line 405 of file util\&.h\&.
+.SS "bool SoftSetArg (const std::string & strArg, const std::string & strValue)"
+Set an argument if it doesn't already have a value
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstrArg\fP Argument to set (e\&.g\&. '-foo') 
+.br
+\fIstrValue\fP Value (e\&.g\&. '1') 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if argument gets set, false if it already had a value 
+.RE
+.PP
+
+.PP
+Definition at line 561 of file util\&.cpp\&.
+.SS "bool SoftSetBoolArg (const std::string & strArg, bool fValue)"
+Set a boolean argument if it doesn't already have a value
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstrArg\fP Argument to set (e\&.g\&. '-foo') 
+.br
+\fIfValue\fP Value (e\&.g\&. false) 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true if argument gets set, false if it already had a value 
+.RE
+.PP
+
+.PP
+Definition at line 569 of file util\&.cpp\&.
+.SS "template<typename T > bool TimingResistantEqual (const T & a, const T & b)"
+Timing-attack-resistant comparison\&. Takes time proportional to length of first argument\&. 
+.PP
+Definition at line 493 of file util\&.h\&.
+.SS "template<typename Callable > void TraceThread (const char * name, Callable func)"
+
+.PP
+Definition at line 623 of file util\&.h\&.
+.SS "bool TruncateFile (FILE * file, unsigned int length)"
+
+.PP
+Definition at line 1475 of file util\&.cpp\&.
+.SS "bool TryCreateDirectory (const boost::filesystem::path & p)"
+Ignores exceptions thrown by Boost's create_directory if the requested directory exists\&. Specifically handles case where path p exists, but it wasn't possible for the user to write to the parent directory\&. 
+.PP
+Definition at line 1280 of file util\&.cpp\&.
+.SS "bool WildcardMatch (const char * psz, const char * mask)"
+
+.PP
+Definition at line 963 of file util\&.cpp\&.
+.SS "bool WildcardMatch (const std::string & str, const std::string & mask)"
+
+.SS "void WriteConfigFile (FILE * configFile)"
+
+.PP
+Definition at line 1188 of file util\&.cpp\&.
+.SH "Variable Documentation"
+.PP 
+.SS "\fBint64_t\fP enforceStormnodePaymentsTime"
+Spork enforcement enabled time 
+.PP
+Definition at line 86 of file util\&.cpp\&.
+.SS "bool fCommandLine"
+
+.PP
+Definition at line 103 of file util\&.cpp\&.
+.SS "bool fDebug"
+
+.PP
+Definition at line 96 of file util\&.cpp\&.
+.SS "bool fDebugSmsg"
+
+.PP
+Definition at line 97 of file util\&.cpp\&.
+.SS "bool fEnableInstantX"
+
+.PP
+Definition at line 80 of file util\&.cpp\&.
+.SS "bool fEnableSandstorm"
+
+.PP
+Definition at line 89 of file util\&.cpp\&.
+.SS "bool fLiteMode"
+
+.PP
+Definition at line 79 of file util\&.cpp\&.
+.SS "bool fLogTimestamps"
+
+.PP
+Definition at line 106 of file util\&.cpp\&.
+.SS "bool fNoListen"
+
+.PP
+Definition at line 105 of file util\&.cpp\&.
+.SS "bool fNoSmsg"
+
+.PP
+Definition at line 98 of file util\&.cpp\&.
+.SS "bool fPrintToConsole"
+
+.PP
+Definition at line 99 of file util\&.cpp\&.
+.SS "bool fPrintToDebugLog"
+
+.PP
+Definition at line 100 of file util\&.cpp\&.
+.SS "volatile bool fReopenDebugLog"
+
+.PP
+Definition at line 107 of file util\&.cpp\&.
+.SS "bool fSandstormMultiSession"
+
+.PP
+Definition at line 92 of file util\&.cpp\&.
+.SS "bool fServer"
+
+.PP
+Definition at line 102 of file util\&.cpp\&.
+.SS "bool fStormNode"
+
+.PP
+Definition at line 76 of file util\&.cpp\&.
+.SS "bool fSucessfullyLoaded"
+
+.PP
+Definition at line 88 of file util\&.cpp\&.
+.SS "\fBuint32_t\fP insecure_rand_Rw"
+
+.PP
+Definition at line 1365 of file util\&.cpp\&.
+.SS "\fBuint32_t\fP insecure_rand_Rz"
+MWC RNG of George Marsaglia This is intended to be fast\&. It has a period of 2^59\&.3, though the least significant 16 bits only have a period of about 2^30\&.1\&.
+.PP
+\fBReturns:\fP
+.RS 4
+random value 
+.RE
+.PP
+
+.PP
+Definition at line 1364 of file util\&.cpp\&.
+.SS "int keysLoaded"
+
+.SS "std::map<std::string, std::string> mapArgs"
+
+.PP
+Definition at line 94 of file util\&.cpp\&.
+.SS "std::map<std::string, std::vector<std::string> > mapMultiArgs"
+
+.PP
+Definition at line 95 of file util\&.cpp\&.
+.SS "int nAnonymizeDarkSilkAmount"
+
+.PP
+Definition at line 83 of file util\&.cpp\&.
+.SS "int nInstantXDepth"
+
+.PP
+Definition at line 81 of file util\&.cpp\&.
+.SS "int nLiquidityProvider"
+
+.PP
+Definition at line 84 of file util\&.cpp\&.
+.SS "int nSandstormRounds"
+
+.PP
+Definition at line 82 of file util\&.cpp\&.
+.SS "int nStormnodeMinProtocol"
+
+.PP
+Definition at line 87 of file util\&.cpp\&.
+.SS "std::vector<\fBCAmount\fP> sandStormDenominations"
+All denominations used by sandstorm 
+.PP
+Definition at line 91 of file util\&.cpp\&.
+.SS "std::string strBudgetMode"
+
+.PP
+Definition at line 108 of file util\&.cpp\&.
+.SS "std::string strMiscWarning"
+
+.PP
+Definition at line 104 of file util\&.cpp\&.
+.SS "std::string strStormNodeAddr"
+
+.PP
+Definition at line 78 of file util\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

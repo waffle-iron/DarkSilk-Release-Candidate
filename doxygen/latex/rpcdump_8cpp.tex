@@ -1,0 +1,240 @@
+\hypertarget{rpcdump_8cpp}{}\section{/home/dev/ds-\/160209/src/rpcdump.cpp File Reference}
+\label{rpcdump_8cpp}\index{/home/dev/ds-\/160209/src/rpcdump.\+cpp@{/home/dev/ds-\/160209/src/rpcdump.\+cpp}}
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$fstream$>$}\\*
+{\ttfamily \#include \char`\"{}init.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}rpcserver.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}ui\+\_\+interface.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}base58.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$boost/date\+\_\+time/posix\+\_\+time/posix\+\_\+time.\+hpp$>$}\\*
+{\ttfamily \#include $<$boost/variant/get.\+hpp$>$}\\*
+{\ttfamily \#include $<$boost/algorithm/string.\+hpp$>$}\\*
+Include dependency graph for rpcdump.\+cpp\+:
+% FIG 0
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_c_tx_dump}{C\+Tx\+Dump}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{rpcdump_8cpp_a8f837f6d506b9719cef93188db00fd3c}{Ensure\+Wallet\+Is\+Unlocked} ()
+\item 
+std\+::time\+\_\+t \hyperlink{rpcdump_8cpp_a5aff05ff6a2fa11eddbf183bf7be64c8}{pt\+\_\+to\+\_\+time\+\_\+t} (const bt\+::ptime \&pt)
+\item 
+\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} \hyperlink{rpcdump_8cpp_a8343d580e36c13378fa20f419257dd52}{Decode\+Dump\+Time} (const std\+::string \&s)
+\item 
+std\+::string \hyperlink{rpcdump_8cpp_aac0419ba6427cf5f0873a6a0c815db83}{Decode\+Dump\+String} (const std\+::string \&str)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcdump_8cpp_a3a6fdb974fce01220a895393d444e981}{importprivkey} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcdump_8cpp_a457bc572859c8265c72a0afd1a6db56c}{importaddress} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcdump_8cpp_a2566d5c9dd1938b74e70398cdb3ac5c1}{importwallet} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcdump_8cpp_a4010fb238298e15c540d3e5ecd60f858}{dumpprivkey} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcdump_8cpp_a831ddf746d4f2500ba6f6c07f63445cd}{dumpwallet} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::locale \hyperlink{rpcdump_8cpp_ad6cd1b92ba2841ef90d3011187d12cbe}{formats} \mbox{[}$\,$\mbox{]}
+\item 
+const size\+\_\+t \hyperlink{rpcdump_8cpp_a3ab2ee389c23790b9ac18796a1338942}{formats\+\_\+n} = sizeof(\hyperlink{rpcdump_8cpp_ad6cd1b92ba2841ef90d3011187d12cbe}{formats})/sizeof(\hyperlink{rpcdump_8cpp_ad6cd1b92ba2841ef90d3011187d12cbe}{formats}\mbox{[}0\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{rpcdump_8cpp_aac0419ba6427cf5f0873a6a0c815db83}{}\index{rpcdump.\+cpp@{rpcdump.\+cpp}!Decode\+Dump\+String@{Decode\+Dump\+String}}
+\index{Decode\+Dump\+String@{Decode\+Dump\+String}!rpcdump.\+cpp@{rpcdump.\+cpp}}
+\subsubsection[{Decode\+Dump\+String}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Decode\+Dump\+String (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{str}
+\end{DoxyParamCaption}
+)}\label{rpcdump_8cpp_aac0419ba6427cf5f0873a6a0c815db83}
+
+
+Definition at line 74 of file rpcdump.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 1
+
+
+\hypertarget{rpcdump_8cpp_a8343d580e36c13378fa20f419257dd52}{}\index{rpcdump.\+cpp@{rpcdump.\+cpp}!Decode\+Dump\+Time@{Decode\+Dump\+Time}}
+\index{Decode\+Dump\+Time@{Decode\+Dump\+Time}!rpcdump.\+cpp@{rpcdump.\+cpp}}
+\subsubsection[{Decode\+Dump\+Time}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int64\+\_\+t} Decode\+Dump\+Time (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{s}
+\end{DoxyParamCaption}
+)}\label{rpcdump_8cpp_a8343d580e36c13378fa20f419257dd52}
+
+
+Definition at line 43 of file rpcdump.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+\hypertarget{rpcdump_8cpp_a4010fb238298e15c540d3e5ecd60f858}{}\index{rpcdump.\+cpp@{rpcdump.\+cpp}!dumpprivkey@{dumpprivkey}}
+\index{dumpprivkey@{dumpprivkey}!rpcdump.\+cpp@{rpcdump.\+cpp}}
+\subsubsection[{dumpprivkey}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} dumpprivkey (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcdump_8cpp_a4010fb238298e15c540d3e5ecd60f858}
+
+
+Definition at line 321 of file rpcdump.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 4
+
+
+\hypertarget{rpcdump_8cpp_a831ddf746d4f2500ba6f6c07f63445cd}{}\index{rpcdump.\+cpp@{rpcdump.\+cpp}!dumpwallet@{dumpwallet}}
+\index{dumpwallet@{dumpwallet}!rpcdump.\+cpp@{rpcdump.\+cpp}}
+\subsubsection[{dumpwallet}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} dumpwallet (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcdump_8cpp_a831ddf746d4f2500ba6f6c07f63445cd}
+
+
+Definition at line 345 of file rpcdump.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 5
+
+
+\hypertarget{rpcdump_8cpp_a8f837f6d506b9719cef93188db00fd3c}{}\index{rpcdump.\+cpp@{rpcdump.\+cpp}!Ensure\+Wallet\+Is\+Unlocked@{Ensure\+Wallet\+Is\+Unlocked}}
+\index{Ensure\+Wallet\+Is\+Unlocked@{Ensure\+Wallet\+Is\+Unlocked}!rpcdump.\+cpp@{rpcdump.\+cpp}}
+\subsubsection[{Ensure\+Wallet\+Is\+Unlocked}]{\setlength{\rightskip}{0pt plus 5cm}void Ensure\+Wallet\+Is\+Unlocked (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{rpcdump_8cpp_a8f837f6d506b9719cef93188db00fd3c}
+
+
+Definition at line 44 of file rpcwallet.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 6
+
+
+\hypertarget{rpcdump_8cpp_a457bc572859c8265c72a0afd1a6db56c}{}\index{rpcdump.\+cpp@{rpcdump.\+cpp}!importaddress@{importaddress}}
+\index{importaddress@{importaddress}!rpcdump.\+cpp@{rpcdump.\+cpp}}
+\subsubsection[{importaddress}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} importaddress (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcdump_8cpp_a457bc572859c8265c72a0afd1a6db56c}
+
+
+Definition at line 161 of file rpcdump.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 7
+
+
+\hypertarget{rpcdump_8cpp_a3a6fdb974fce01220a895393d444e981}{}\index{rpcdump.\+cpp@{rpcdump.\+cpp}!importprivkey@{importprivkey}}
+\index{importprivkey@{importprivkey}!rpcdump.\+cpp@{rpcdump.\+cpp}}
+\subsubsection[{importprivkey}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} importprivkey (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcdump_8cpp_a3a6fdb974fce01220a895393d444e981}
+
+
+Definition at line 106 of file rpcdump.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 8
+
+
+\hypertarget{rpcdump_8cpp_a2566d5c9dd1938b74e70398cdb3ac5c1}{}\index{rpcdump.\+cpp@{rpcdump.\+cpp}!importwallet@{importwallet}}
+\index{importwallet@{importwallet}!rpcdump.\+cpp@{rpcdump.\+cpp}}
+\subsubsection[{importwallet}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} importwallet (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcdump_8cpp_a2566d5c9dd1938b74e70398cdb3ac5c1}
+
+
+Definition at line 232 of file rpcdump.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 9
+
+
+\hypertarget{rpcdump_8cpp_a5aff05ff6a2fa11eddbf183bf7be64c8}{}\index{rpcdump.\+cpp@{rpcdump.\+cpp}!pt\+\_\+to\+\_\+time\+\_\+t@{pt\+\_\+to\+\_\+time\+\_\+t}}
+\index{pt\+\_\+to\+\_\+time\+\_\+t@{pt\+\_\+to\+\_\+time\+\_\+t}!rpcdump.\+cpp@{rpcdump.\+cpp}}
+\subsubsection[{pt\+\_\+to\+\_\+time\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}std\+::time\+\_\+t pt\+\_\+to\+\_\+time\+\_\+t (
+\begin{DoxyParamCaption}
+\item[{const bt\+::ptime \&}]{pt}
+\end{DoxyParamCaption}
+)}\label{rpcdump_8cpp_a5aff05ff6a2fa11eddbf183bf7be64c8}
+
+
+Definition at line 36 of file rpcdump.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 10
+
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{rpcdump_8cpp_ad6cd1b92ba2841ef90d3011187d12cbe}{}\index{rpcdump.\+cpp@{rpcdump.\+cpp}!formats@{formats}}
+\index{formats@{formats}!rpcdump.\+cpp@{rpcdump.\+cpp}}
+\subsubsection[{formats}]{\setlength{\rightskip}{0pt plus 5cm}const std\+::locale formats\mbox{[}$\,$\mbox{]}}\label{rpcdump_8cpp_ad6cd1b92ba2841ef90d3011187d12cbe}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+    std::locale(std::locale::classic(),\textcolor{keyword}{new} bt::time\_input\_facet(\textcolor{stringliteral}{"%Y-%m-%dT%H:%M:%SZ"})),
+    std::locale(std::locale::classic(),\textcolor{keyword}{new} bt::time\_input\_facet(\textcolor{stringliteral}{"%Y-%m-%d %H:%M:%S"})),
+    std::locale(std::locale::classic(),\textcolor{keyword}{new} bt::time\_input\_facet(\textcolor{stringliteral}{"%Y/%m/%d %H:%M:%S"})),
+    std::locale(std::locale::classic(),\textcolor{keyword}{new} bt::time\_input\_facet(\textcolor{stringliteral}{"%d.%m.%Y %H:%M:%S"})),
+    std::locale(std::locale::classic(),\textcolor{keyword}{new} bt::time\_input\_facet(\textcolor{stringliteral}{"%Y-%m-%d"}))
+\}
+\end{DoxyCode}
+
+
+Definition at line 26 of file rpcdump.\+cpp.
+
+\hypertarget{rpcdump_8cpp_a3ab2ee389c23790b9ac18796a1338942}{}\index{rpcdump.\+cpp@{rpcdump.\+cpp}!formats\+\_\+n@{formats\+\_\+n}}
+\index{formats\+\_\+n@{formats\+\_\+n}!rpcdump.\+cpp@{rpcdump.\+cpp}}
+\subsubsection[{formats\+\_\+n}]{\setlength{\rightskip}{0pt plus 5cm}const size\+\_\+t formats\+\_\+n = sizeof({\bf formats})/sizeof({\bf formats}\mbox{[}0\mbox{]})}\label{rpcdump_8cpp_a3ab2ee389c23790b9ac18796a1338942}
+
+
+Definition at line 34 of file rpcdump.\+cpp.
+

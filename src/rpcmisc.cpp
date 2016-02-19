@@ -17,8 +17,8 @@
 #include "spork.h"
 #include "stormnode-sync.h"
 #ifdef ENABLE_WALLET
-#include "wallet/wallet.h"
-#include "wallet/walletdb.h"
+#include "wallet.h"
+#include "walletdb.h"
 #endif
 
 #include <stdint.h>

@@ -1,0 +1,1042 @@
+\hypertarget{smessage_8h}{}\section{/home/dev/ds-\/160209/src/smessage.h File Reference}
+\label{smessage_8h}\index{/home/dev/ds-\/160209/src/smessage.\+h@{/home/dev/ds-\/160209/src/smessage.\+h}}
+{\ttfamily \#include $<$leveldb/db.\+h$>$}\\*
+{\ttfamily \#include $<$leveldb/write\+\_\+batch.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}net.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}db.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}wallet.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}base58.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}lz4/lz4.\+h\char`\"{}}\\*
+Include dependency graph for smessage.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_secure_message}{Secure\+Message}
+\item 
+class \hyperlink{class_message_data}{Message\+Data}
+\item 
+class \hyperlink{class_sec_msg_token}{Sec\+Msg\+Token}
+\item 
+class \hyperlink{class_sec_msg_bucket}{Sec\+Msg\+Bucket}
+\item 
+class \hyperlink{class_c_dark_silk_address___b}{C\+Dark\+Silk\+Address\+\_\+\+B}
+\item 
+class \hyperlink{class_c_key_i_d___b}{C\+Key\+I\+D\+\_\+\+B}
+\item 
+class \hyperlink{class_sec_msg_address}{Sec\+Msg\+Address}
+\item 
+class \hyperlink{class_sec_msg_options}{Sec\+Msg\+Options}
+\item 
+class \hyperlink{class_sec_msg_crypter}{Sec\+Msg\+Crypter}
+\item 
+class \hyperlink{class_sec_msg_stored}{Sec\+Msg\+Stored}
+\item 
+class \hyperlink{class_sec_msg_d_b}{Sec\+Msg\+D\+B}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{smessage_8h_a67801d51a4169b62fe9f323c04ad928a}{S\+M\+S\+G\+\_\+\+M\+A\+S\+K\+\_\+\+U\+N\+R\+E\+A\+D}~(1 $<$$<$ 0)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{smessage_8h_a925f4769284eaf73a3beda3c2b15e91d}{Secure\+Msg\+Build\+Bucket\+Set} ()
+\item 
+int \hyperlink{smessage_8h_ab47945fac81152e28647920d324ec630}{Secure\+Msg\+Add\+Wallet\+Addresses} ()
+\item 
+int \hyperlink{smessage_8h_aebaa05e870f58d8a3736c922295e286a}{Secure\+Msg\+Read\+Ini} ()
+\item 
+int \hyperlink{smessage_8h_ad6d4790245bc722b427671aad60f5a07}{Secure\+Msg\+Write\+Ini} ()
+\item 
+bool \hyperlink{smessage_8h_a4c2723040974201407c876e9365ed74c}{Secure\+Msg\+Start} (bool f\+Dont\+Start, bool f\+Scan\+Chain)
+\item 
+bool \hyperlink{smessage_8h_a49c8b6520e51ba498f92accf33eb6c17}{Secure\+Msg\+Shutdown} ()
+\item 
+bool \hyperlink{smessage_8h_a7e096c63f30bea527e14fef0e7cca460}{Secure\+Msg\+Enable} ()
+\item 
+bool \hyperlink{smessage_8h_a37253b307b8569fe0d8c3548c15e8e20}{Secure\+Msg\+Disable} ()
+\item 
+bool \hyperlink{smessage_8h_a10fcf201b1c7066a376692b50988cdbf}{Secure\+Msg\+Receive\+Data} (\hyperlink{class_c_node}{C\+Node} $\ast$pfrom, std\+::string str\+Command, \hyperlink{class_c_data_stream}{C\+Data\+Stream} \&v\+Recv)
+\item 
+bool \hyperlink{smessage_8h_abb934a23a076a4af443e2fb0610d7833}{Secure\+Msg\+Send\+Data} (\hyperlink{class_c_node}{C\+Node} $\ast$pto, bool f\+Send\+Trickle)
+\item 
+bool \hyperlink{smessage_8h_a9bd026d2eb7c6dee89c539e99ecac49f}{Secure\+Msg\+Scan\+Block} (\hyperlink{class_c_block}{C\+Block} \&\hyperlink{core_8h_ace80c27428e237fe24f54ae915a36133}{block})
+\item 
+bool \hyperlink{smessage_8h_a440b38f2f513f80283993a2d81e908b5}{Scan\+Chain\+For\+Public\+Keys} (\hyperlink{class_c_block_index}{C\+Block\+Index} $\ast$pindex\+Start)
+\item 
+bool \hyperlink{smessage_8h_a9cd9dbe9178ad2ffc192762b1f5ef8f4}{Secure\+Msg\+Scan\+Block\+Chain} ()
+\item 
+bool \hyperlink{smessage_8h_ae6a19a8d011fefc72c9cab3d0df014bd}{Secure\+Msg\+Scan\+Buckets} ()
+\item 
+int \hyperlink{smessage_8h_adf0fa2a06615363dc3ea6360be0939ec}{Secure\+Msg\+Wallet\+Unlocked} ()
+\item 
+int \hyperlink{smessage_8h_a2a1e22a7c3bbeb96983dc3f28407657e}{Secure\+Msg\+Wallet\+Key\+Changed} (std\+::string s\+Address, std\+::string s\+Label, \hyperlink{ui__interface_8h_a293ba931937e469a6327b8d6b4872969}{Change\+Type} mode)
+\item 
+int \hyperlink{smessage_8h_a31bf2f77c776bbf1fb39bbe79b6e9f5f}{Secure\+Msg\+Scan\+Message} (\hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$p\+Header, \hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$p\+Payload, \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} n\+Payload, bool report\+To\+Gui)
+\item 
+int \hyperlink{smessage_8h_a1341706507a851babcff6ce436b8ce2d}{Secure\+Msg\+Get\+Stored\+Key} (\hyperlink{class_c_key_i_d}{C\+Key\+I\+D} \&ckid, \hyperlink{class_c_pub_key}{C\+Pub\+Key} \&cpk\+Out)
+\item 
+int \hyperlink{smessage_8h_a430258e823bdead36f823a51fd6a4510}{Secure\+Msg\+Get\+Local\+Key} (\hyperlink{class_c_key_i_d}{C\+Key\+I\+D} \&ckid, \hyperlink{class_c_pub_key}{C\+Pub\+Key} \&cpk\+Out)
+\item 
+int \hyperlink{smessage_8h_a6dadcd107f4196325fd1b0841dbffd2a}{Secure\+Msg\+Get\+Local\+Public\+Key} (std\+::string \&str\+Address, std\+::string \&str\+Public\+Key)
+\item 
+int \hyperlink{smessage_8h_a7d84ccbc16eb3d679638ba37b822a5e2}{Secure\+Msg\+Add\+Address} (std\+::string \&address, std\+::string \&public\+Key)
+\item 
+int \hyperlink{smessage_8h_a9a34bfa72cc027350d71f9daaefb8fef}{Secure\+Msg\+Retrieve} (\hyperlink{class_sec_msg_token}{Sec\+Msg\+Token} \&token, std\+::vector$<$ \hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $>$ \&vch\+Data)
+\item 
+int \hyperlink{smessage_8h_a76ffa50f445c2a6089504aead1239e9f}{Secure\+Msg\+Receive} (\hyperlink{class_c_node}{C\+Node} $\ast$pfrom, std\+::vector$<$ \hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $>$ \&vch\+Data)
+\item 
+int \hyperlink{smessage_8h_abdde7d50a54a2f54a3aea64c47af535a}{Secure\+Msg\+Store\+Unscanned} (\hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$p\+Header, \hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$p\+Payload, \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} n\+Payload)
+\item 
+int \hyperlink{smessage_8h_a1d8fd52e96428c7fe6561d3857363fc9}{Secure\+Msg\+Store} (\hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$p\+Header, \hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$p\+Payload, \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} n\+Payload, bool f\+Update\+Bucket)
+\item 
+int \hyperlink{smessage_8h_ae5f8acf9cccf634cdb27b3f77b451f9d}{Secure\+Msg\+Store} (\hyperlink{class_secure_message}{Secure\+Message} \&smsg, bool f\+Update\+Bucket)
+\item 
+int \hyperlink{smessage_8h_acbe2815144396344354ffa3022300278}{Secure\+Msg\+Send} (std\+::string \&address\+From, std\+::string \&address\+To, std\+::string \&message, std\+::string \&s\+Error)
+\item 
+int \hyperlink{smessage_8h_ae4abbffb060bb486b9e15053f83cbcbf}{Secure\+Msg\+Validate} (\hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$p\+Header, \hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$p\+Payload, \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} n\+Payload)
+\item 
+int \hyperlink{smessage_8h_ac434a0295e161eb2ebdad951f4049dc6}{Secure\+Msg\+Set\+Hash} (\hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$p\+Header, \hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$p\+Payload, \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} n\+Payload)
+\item 
+int \hyperlink{smessage_8h_a1a9885d0f94a7d5322eafb31bcf2f90a}{Secure\+Msg\+Encrypt} (\hyperlink{class_secure_message}{Secure\+Message} \&smsg, const std\+::string \&address\+From, const std\+::string \&address\+To, const std\+::string \&message)
+\item 
+int \hyperlink{smessage_8h_a2edb582fcb7f69b543174479231647be}{Secure\+Msg\+Decrypt} (bool f\+Test\+Only, std\+::string \&address, \hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$p\+Header, \hyperlink{stdint_8h_aba7bc1797add20fe3efdf37ced1182c5}{uint8\+\_\+t} $\ast$p\+Payload, \hyperlink{stdint_8h_a435d1572bf3f880d55459d9805097f62}{uint32\+\_\+t} n\+Payload, \hyperlink{class_message_data}{Message\+Data} \&msg)
+\item 
+int \hyperlink{smessage_8h_a7710a63b846d5a4f35f233cfeae6027b}{Secure\+Msg\+Decrypt} (bool f\+Test\+Only, std\+::string \&address, \hyperlink{class_secure_message}{Secure\+Message} \&smsg, \hyperlink{class_message_data}{Message\+Data} \&msg)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const unsigned int \hyperlink{smessage_8h_afc28e67a41867a64a4a13a73586a2607}{S\+M\+S\+G\+\_\+\+H\+D\+R\+\_\+\+L\+E\+N} = 104
+\item 
+const unsigned int \hyperlink{smessage_8h_a6e268b09db9a3f1b775cfb4d649e174d}{S\+M\+S\+G\+\_\+\+P\+L\+\_\+\+H\+D\+R\+\_\+\+L\+E\+N} = 1+20+65+4
+\item 
+const unsigned int \hyperlink{smessage_8h_a41ca66ff63082a5ead46779327cb5d8c}{S\+M\+S\+G\+\_\+\+B\+U\+C\+K\+E\+T\+\_\+\+L\+E\+N} = 60 $\ast$ 10
+\item 
+const unsigned int \hyperlink{smessage_8h_a54e4521fb24340cfbce3df43f214d23d}{S\+M\+S\+G\+\_\+\+R\+E\+T\+E\+N\+T\+I\+O\+N} = 60 $\ast$ 60 $\ast$ 48
+\item 
+const unsigned int \hyperlink{smessage_8h_a58ba0f46d3e1d728616c6259c3069db9}{S\+M\+S\+G\+\_\+\+S\+E\+N\+D\+\_\+\+D\+E\+L\+A\+Y} = 2
+\item 
+const unsigned int \hyperlink{smessage_8h_a4a4a481ee91964e90efbc0e5a742407e}{S\+M\+S\+G\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+D\+E\+L\+A\+Y} = 30
+\item 
+const unsigned int \hyperlink{smessage_8h_a8efaec21328f5c6b873f6d822b84c6c0}{S\+M\+S\+G\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+L\+O\+G\+\_\+\+G\+A\+P} = 6
+\item 
+const unsigned int \hyperlink{smessage_8h_ab0c23581ef7a79853848bdb51afebf87}{S\+M\+S\+G\+\_\+\+T\+I\+M\+E\+\_\+\+L\+E\+E\+W\+A\+Y} = 60
+\item 
+const unsigned int \hyperlink{smessage_8h_a10bd0be4c103ccf8f76c710ae2a15b83}{S\+M\+S\+G\+\_\+\+T\+I\+M\+E\+\_\+\+I\+G\+N\+O\+R\+E} = 90
+\item 
+const unsigned int \hyperlink{smessage_8h_a6a9a6a4cdb43a82fcc67428cf5ede29c}{S\+M\+S\+G\+\_\+\+M\+A\+X\+\_\+\+M\+S\+G\+\_\+\+B\+Y\+T\+E\+S} = 4096
+\item 
+const unsigned int \hyperlink{smessage_8h_af7fb9dac77a91414591c4ef98f772120}{S\+M\+S\+G\+\_\+\+M\+A\+X\+\_\+\+M\+S\+G\+\_\+\+W\+O\+R\+S\+T} = \hyperlink{lz4_8h_a2453a423fd34640a0afbbf57ed0a5399}{L\+Z4\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+B\+O\+U\+N\+D}(\hyperlink{smessage_8h_a6a9a6a4cdb43a82fcc67428cf5ede29c}{S\+M\+S\+G\+\_\+\+M\+A\+X\+\_\+\+M\+S\+G\+\_\+\+B\+Y\+T\+E\+S}+\hyperlink{smessage_8h_a6e268b09db9a3f1b775cfb4d649e174d}{S\+M\+S\+G\+\_\+\+P\+L\+\_\+\+H\+D\+R\+\_\+\+L\+E\+N})
+\item 
+bool \hyperlink{smessage_8h_a6a38441245ee84417e8fb4a77860dc09}{f\+Sec\+Msg\+Enabled}
+\item 
+boost\+::signals2\+::signal$<$ void(\hyperlink{class_sec_msg_stored}{Sec\+Msg\+Stored} \&inbox\+Hdr)$>$ \hyperlink{smessage_8h_a93126f5e674af8370c3f10f3f8de8a37}{Notify\+Sec\+Msg\+Inbox\+Changed}
+\item 
+boost\+::signals2\+::signal$<$ void(\hyperlink{class_sec_msg_stored}{Sec\+Msg\+Stored} \&outbox\+Hdr)$>$ \hyperlink{smessage_8h_aa848b072a4193ed7af7f01276f819170}{Notify\+Sec\+Msg\+Outbox\+Changed}
+\item 
+boost\+::signals2\+::signal$<$ void()$>$ \hyperlink{smessage_8h_ac81e578e38c2f309e808d36f4c36dc62}{Notify\+Sec\+Msg\+Wallet\+Unlocked}
+\item 
+std\+::map$<$ \hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t}, \hyperlink{class_sec_msg_bucket}{Sec\+Msg\+Bucket} $>$ \hyperlink{smessage_8h_aff7c48d987b8a7eb24801d262a30fb6e}{smsg\+Buckets}
+\item 
+std\+::vector$<$ \hyperlink{class_sec_msg_address}{Sec\+Msg\+Address} $>$ \hyperlink{smessage_8h_a5a56ac0f79a9871c59a6482b1323acf5}{smsg\+Addresses}
+\item 
+\hyperlink{class_sec_msg_options}{Sec\+Msg\+Options} \hyperlink{smessage_8h_ac6ee7d290a6b6af015c10b95d61c704d}{smsg\+Options}
+\item 
+\hyperlink{sync_8h_a37a4692b2d517f2843655ca11af7668a}{C\+Critical\+Section} \hyperlink{smessage_8h_a06b6584a0cc47952cc6b071c17c7cbd7}{cs\+\_\+smsg}
+\item 
+\hyperlink{sync_8h_a37a4692b2d517f2843655ca11af7668a}{C\+Critical\+Section} \hyperlink{smessage_8h_ac42d4f2a114c9e994ebb1379df8ac6d2}{cs\+\_\+smsg\+D\+B}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{smessage_8h_a67801d51a4169b62fe9f323c04ad928a}{}\index{smessage.\+h@{smessage.\+h}!S\+M\+S\+G\+\_\+\+M\+A\+S\+K\+\_\+\+U\+N\+R\+E\+A\+D@{S\+M\+S\+G\+\_\+\+M\+A\+S\+K\+\_\+\+U\+N\+R\+E\+A\+D}}
+\index{S\+M\+S\+G\+\_\+\+M\+A\+S\+K\+\_\+\+U\+N\+R\+E\+A\+D@{S\+M\+S\+G\+\_\+\+M\+A\+S\+K\+\_\+\+U\+N\+R\+E\+A\+D}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{S\+M\+S\+G\+\_\+\+M\+A\+S\+K\+\_\+\+U\+N\+R\+E\+A\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+M\+S\+G\+\_\+\+M\+A\+S\+K\+\_\+\+U\+N\+R\+E\+A\+D~(1 $<$$<$ 0)}\label{smessage_8h_a67801d51a4169b62fe9f323c04ad928a}
+
+
+Definition at line 38 of file smessage.\+h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{smessage_8h_a440b38f2f513f80283993a2d81e908b5}{}\index{smessage.\+h@{smessage.\+h}!Scan\+Chain\+For\+Public\+Keys@{Scan\+Chain\+For\+Public\+Keys}}
+\index{Scan\+Chain\+For\+Public\+Keys@{Scan\+Chain\+For\+Public\+Keys}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Scan\+Chain\+For\+Public\+Keys}]{\setlength{\rightskip}{0pt plus 5cm}bool Scan\+Chain\+For\+Public\+Keys (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Block\+Index} $\ast$}]{pindex\+Start}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_a440b38f2f513f80283993a2d81e908b5}
+
+
+Definition at line 2073 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+\hypertarget{smessage_8h_a7d84ccbc16eb3d679638ba37b822a5e2}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Add\+Address@{Secure\+Msg\+Add\+Address}}
+\index{Secure\+Msg\+Add\+Address@{Secure\+Msg\+Add\+Address}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Add\+Address}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Add\+Address (
+\begin{DoxyParamCaption}
+\item[{std\+::string \&}]{address, }
+\item[{std\+::string \&}]{public\+Key}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_a7d84ccbc16eb3d679638ba37b822a5e2}
+
+
+Definition at line 2676 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 4
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 5
+
+
+\hypertarget{smessage_8h_ab47945fac81152e28647920d324ec630}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Add\+Wallet\+Addresses@{Secure\+Msg\+Add\+Wallet\+Addresses}}
+\index{Secure\+Msg\+Add\+Wallet\+Addresses@{Secure\+Msg\+Add\+Wallet\+Addresses}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Add\+Wallet\+Addresses}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Add\+Wallet\+Addresses (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_ab47945fac81152e28647920d324ec630}
+
+
+Definition at line 911 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 6
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 7
+
+
+\hypertarget{smessage_8h_a925f4769284eaf73a3beda3c2b15e91d}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Build\+Bucket\+Set@{Secure\+Msg\+Build\+Bucket\+Set}}
+\index{Secure\+Msg\+Build\+Bucket\+Set@{Secure\+Msg\+Build\+Bucket\+Set}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Build\+Bucket\+Set}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Build\+Bucket\+Set (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_a925f4769284eaf73a3beda3c2b15e91d}
+
+
+Definition at line 768 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 8
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 9
+
+
+\hypertarget{smessage_8h_a2edb582fcb7f69b543174479231647be}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Decrypt@{Secure\+Msg\+Decrypt}}
+\index{Secure\+Msg\+Decrypt@{Secure\+Msg\+Decrypt}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Decrypt}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Decrypt (
+\begin{DoxyParamCaption}
+\item[{bool}]{f\+Test\+Only, }
+\item[{std\+::string \&}]{address, }
+\item[{{\bf uint8\+\_\+t} $\ast$}]{p\+Header, }
+\item[{{\bf uint8\+\_\+t} $\ast$}]{p\+Payload, }
+\item[{{\bf uint32\+\_\+t}}]{n\+Payload, }
+\item[{{\bf Message\+Data} \&}]{msg}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_a2edb582fcb7f69b543174479231647be}
+
+
+Definition at line 3702 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 10
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 11
+
+
+\hypertarget{smessage_8h_a7710a63b846d5a4f35f233cfeae6027b}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Decrypt@{Secure\+Msg\+Decrypt}}
+\index{Secure\+Msg\+Decrypt@{Secure\+Msg\+Decrypt}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Decrypt}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Decrypt (
+\begin{DoxyParamCaption}
+\item[{bool}]{f\+Test\+Only, }
+\item[{std\+::string \&}]{address, }
+\item[{{\bf Secure\+Message} \&}]{smsg, }
+\item[{{\bf Message\+Data} \&}]{msg}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_a7710a63b846d5a4f35f233cfeae6027b}
+
+
+Definition at line 3948 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 12
+
+
+\hypertarget{smessage_8h_a37253b307b8569fe0d8c3548c15e8e20}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Disable@{Secure\+Msg\+Disable}}
+\index{Secure\+Msg\+Disable@{Secure\+Msg\+Disable}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Disable}]{\setlength{\rightskip}{0pt plus 5cm}bool Secure\+Msg\+Disable (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_a37253b307b8569fe0d8c3548c15e8e20}
+
+
+Definition at line 1231 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 13
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 14
+
+
+\hypertarget{smessage_8h_a7e096c63f30bea527e14fef0e7cca460}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Enable@{Secure\+Msg\+Enable}}
+\index{Secure\+Msg\+Enable@{Secure\+Msg\+Enable}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Enable}]{\setlength{\rightskip}{0pt plus 5cm}bool Secure\+Msg\+Enable (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_a7e096c63f30bea527e14fef0e7cca460}
+
+
+Definition at line 1170 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 15
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 16
+
+
+\hypertarget{smessage_8h_a1a9885d0f94a7d5322eafb31bcf2f90a}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Encrypt@{Secure\+Msg\+Encrypt}}
+\index{Secure\+Msg\+Encrypt@{Secure\+Msg\+Encrypt}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Encrypt}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Encrypt (
+\begin{DoxyParamCaption}
+\item[{{\bf Secure\+Message} \&}]{smsg, }
+\item[{const std\+::string \&}]{address\+From, }
+\item[{const std\+::string \&}]{address\+To, }
+\item[{const std\+::string \&}]{message}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_a1a9885d0f94a7d5322eafb31bcf2f90a}
+
+
+Definition at line 3276 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 17
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 18
+
+
+\hypertarget{smessage_8h_a430258e823bdead36f823a51fd6a4510}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Get\+Local\+Key@{Secure\+Msg\+Get\+Local\+Key}}
+\index{Secure\+Msg\+Get\+Local\+Key@{Secure\+Msg\+Get\+Local\+Key}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Get\+Local\+Key}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Get\+Local\+Key (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Key\+I\+D} \&}]{ckid, }
+\item[{{\bf C\+Pub\+Key} \&}]{cpk\+Out}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_a430258e823bdead36f823a51fd6a4510}
+
+
+Definition at line 2601 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 19
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 20
+
+
+\hypertarget{smessage_8h_a6dadcd107f4196325fd1b0841dbffd2a}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Get\+Local\+Public\+Key@{Secure\+Msg\+Get\+Local\+Public\+Key}}
+\index{Secure\+Msg\+Get\+Local\+Public\+Key@{Secure\+Msg\+Get\+Local\+Public\+Key}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Get\+Local\+Public\+Key}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Get\+Local\+Public\+Key (
+\begin{DoxyParamCaption}
+\item[{std\+::string \&}]{str\+Address, }
+\item[{std\+::string \&}]{str\+Public\+Key}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_a6dadcd107f4196325fd1b0841dbffd2a}
+
+
+Definition at line 2619 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 21
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 22
+
+
+\hypertarget{smessage_8h_a1341706507a851babcff6ce436b8ce2d}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Get\+Stored\+Key@{Secure\+Msg\+Get\+Stored\+Key}}
+\index{Secure\+Msg\+Get\+Stored\+Key@{Secure\+Msg\+Get\+Stored\+Key}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Get\+Stored\+Key}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Get\+Stored\+Key (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Key\+I\+D} \&}]{ckid, }
+\item[{{\bf C\+Pub\+Key} \&}]{cpk\+Out}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_a1341706507a851babcff6ce436b8ce2d}
+
+
+Definition at line 2649 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 23
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 24
+
+
+\hypertarget{smessage_8h_aebaa05e870f58d8a3736c922295e286a}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Read\+Ini@{Secure\+Msg\+Read\+Ini}}
+\index{Secure\+Msg\+Read\+Ini@{Secure\+Msg\+Read\+Ini}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Read\+Ini}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Read\+Ini (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_aebaa05e870f58d8a3736c922295e286a}
+
+
+Definition at line 964 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 25
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 26
+
+
+\hypertarget{smessage_8h_a76ffa50f445c2a6089504aead1239e9f}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Receive@{Secure\+Msg\+Receive}}
+\index{Secure\+Msg\+Receive@{Secure\+Msg\+Receive}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Receive}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Receive (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Node} $\ast$}]{pfrom, }
+\item[{std\+::vector$<$ {\bf uint8\+\_\+t} $>$ \&}]{vch\+Data}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_a76ffa50f445c2a6089504aead1239e9f}
+
+
+Definition at line 2796 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 27
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 28
+
+
+\hypertarget{smessage_8h_a10fcf201b1c7066a376692b50988cdbf}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Receive\+Data@{Secure\+Msg\+Receive\+Data}}
+\index{Secure\+Msg\+Receive\+Data@{Secure\+Msg\+Receive\+Data}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Receive\+Data}]{\setlength{\rightskip}{0pt plus 5cm}bool Secure\+Msg\+Receive\+Data (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Node} $\ast$}]{pfrom, }
+\item[{std\+::string}]{str\+Command, }
+\item[{{\bf C\+Data\+Stream} \&}]{v\+Recv}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_a10fcf201b1c7066a376692b50988cdbf}
+
+
+Definition at line 1292 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 29
+
+
+\hypertarget{smessage_8h_a9a34bfa72cc027350d71f9daaefb8fef}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Retrieve@{Secure\+Msg\+Retrieve}}
+\index{Secure\+Msg\+Retrieve@{Secure\+Msg\+Retrieve}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Retrieve}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Retrieve (
+\begin{DoxyParamCaption}
+\item[{{\bf Sec\+Msg\+Token} \&}]{token, }
+\item[{std\+::vector$<$ {\bf uint8\+\_\+t} $>$ \&}]{vch\+Data}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_a9a34bfa72cc027350d71f9daaefb8fef}
+
+
+Definition at line 2731 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 30
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 31
+
+
+\hypertarget{smessage_8h_a9bd026d2eb7c6dee89c539e99ecac49f}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Scan\+Block@{Secure\+Msg\+Scan\+Block}}
+\index{Secure\+Msg\+Scan\+Block@{Secure\+Msg\+Scan\+Block}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Scan\+Block}]{\setlength{\rightskip}{0pt plus 5cm}bool Secure\+Msg\+Scan\+Block (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Block} \&}]{block}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_a9bd026d2eb7c6dee89c539e99ecac49f}
+
+
+Definition at line 2037 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 32
+
+
+\hypertarget{smessage_8h_a9cd9dbe9178ad2ffc192762b1f5ef8f4}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Scan\+Block\+Chain@{Secure\+Msg\+Scan\+Block\+Chain}}
+\index{Secure\+Msg\+Scan\+Block\+Chain@{Secure\+Msg\+Scan\+Block\+Chain}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Scan\+Block\+Chain}]{\setlength{\rightskip}{0pt plus 5cm}bool Secure\+Msg\+Scan\+Block\+Chain (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_a9cd9dbe9178ad2ffc192762b1f5ef8f4}
+
+
+Definition at line 2123 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 33
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 34
+
+
+\hypertarget{smessage_8h_ae6a19a8d011fefc72c9cab3d0df014bd}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Scan\+Buckets@{Secure\+Msg\+Scan\+Buckets}}
+\index{Secure\+Msg\+Scan\+Buckets@{Secure\+Msg\+Scan\+Buckets}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Scan\+Buckets}]{\setlength{\rightskip}{0pt plus 5cm}bool Secure\+Msg\+Scan\+Buckets (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_ae6a19a8d011fefc72c9cab3d0df014bd}
+
+
+Definition at line 2153 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 35
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 36
+
+
+\hypertarget{smessage_8h_a31bf2f77c776bbf1fb39bbe79b6e9f5f}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Scan\+Message@{Secure\+Msg\+Scan\+Message}}
+\index{Secure\+Msg\+Scan\+Message@{Secure\+Msg\+Scan\+Message}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Scan\+Message}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Scan\+Message (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8\+\_\+t} $\ast$}]{p\+Header, }
+\item[{{\bf uint8\+\_\+t} $\ast$}]{p\+Payload, }
+\item[{{\bf uint32\+\_\+t}}]{n\+Payload, }
+\item[{bool}]{report\+To\+Gui}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_a31bf2f77c776bbf1fb39bbe79b6e9f5f}
+
+
+Definition at line 2482 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 37
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 38
+
+
+\hypertarget{smessage_8h_acbe2815144396344354ffa3022300278}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Send@{Secure\+Msg\+Send}}
+\index{Secure\+Msg\+Send@{Secure\+Msg\+Send}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Send}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Send (
+\begin{DoxyParamCaption}
+\item[{std\+::string \&}]{address\+From, }
+\item[{std\+::string \&}]{address\+To, }
+\item[{std\+::string \&}]{message, }
+\item[{std\+::string \&}]{s\+Error}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_acbe2815144396344354ffa3022300278}
+
+
+Definition at line 3533 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 39
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 40
+
+
+\hypertarget{smessage_8h_abb934a23a076a4af443e2fb0610d7833}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Send\+Data@{Secure\+Msg\+Send\+Data}}
+\index{Secure\+Msg\+Send\+Data@{Secure\+Msg\+Send\+Data}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Send\+Data}]{\setlength{\rightskip}{0pt plus 5cm}bool Secure\+Msg\+Send\+Data (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Node} $\ast$}]{pto, }
+\item[{bool}]{f\+Send\+Trickle}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_abb934a23a076a4af443e2fb0610d7833}
+
+
+Definition at line 1783 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 41
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 42
+
+
+\hypertarget{smessage_8h_ac434a0295e161eb2ebdad951f4049dc6}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Set\+Hash@{Secure\+Msg\+Set\+Hash}}
+\index{Secure\+Msg\+Set\+Hash@{Secure\+Msg\+Set\+Hash}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Set\+Hash}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Set\+Hash (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8\+\_\+t} $\ast$}]{p\+Header, }
+\item[{{\bf uint8\+\_\+t} $\ast$}]{p\+Payload, }
+\item[{{\bf uint32\+\_\+t}}]{n\+Payload}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_ac434a0295e161eb2ebdad951f4049dc6}
+
+
+Definition at line 3168 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 43
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 44
+
+
+\hypertarget{smessage_8h_a49c8b6520e51ba498f92accf33eb6c17}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Shutdown@{Secure\+Msg\+Shutdown}}
+\index{Secure\+Msg\+Shutdown@{Secure\+Msg\+Shutdown}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Shutdown}]{\setlength{\rightskip}{0pt plus 5cm}bool Secure\+Msg\+Shutdown (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_a49c8b6520e51ba498f92accf33eb6c17}
+
+
+Definition at line 1144 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 45
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 46
+
+
+\hypertarget{smessage_8h_a4c2723040974201407c876e9365ed74c}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Start@{Secure\+Msg\+Start}}
+\index{Secure\+Msg\+Start@{Secure\+Msg\+Start}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Start}]{\setlength{\rightskip}{0pt plus 5cm}bool Secure\+Msg\+Start (
+\begin{DoxyParamCaption}
+\item[{bool}]{f\+Dont\+Start, }
+\item[{bool}]{f\+Scan\+Chain}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_a4c2723040974201407c876e9365ed74c}
+called from \hyperlink{init_8cpp_a1a4c1bfbf6ba1db77e988b89b9cadfd3}{App\+Init2()} in \hyperlink{init_8cpp}{init.\+cpp} 
+
+Definition at line 1104 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 47
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 48
+
+
+\hypertarget{smessage_8h_a1d8fd52e96428c7fe6561d3857363fc9}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Store@{Secure\+Msg\+Store}}
+\index{Secure\+Msg\+Store@{Secure\+Msg\+Store}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Store}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Store (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8\+\_\+t} $\ast$}]{p\+Header, }
+\item[{{\bf uint8\+\_\+t} $\ast$}]{p\+Payload, }
+\item[{{\bf uint32\+\_\+t}}]{n\+Payload, }
+\item[{bool}]{f\+Update\+Bucket}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_a1d8fd52e96428c7fe6561d3857363fc9}
+
+
+Definition at line 2978 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 49
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 50
+
+
+\hypertarget{smessage_8h_ae5f8acf9cccf634cdb27b3f77b451f9d}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Store@{Secure\+Msg\+Store}}
+\index{Secure\+Msg\+Store@{Secure\+Msg\+Store}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Store}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Store (
+\begin{DoxyParamCaption}
+\item[{{\bf Secure\+Message} \&}]{smsg, }
+\item[{bool}]{f\+Update\+Bucket}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_ae5f8acf9cccf634cdb27b3f77b451f9d}
+
+
+Definition at line 3094 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 51
+
+
+\hypertarget{smessage_8h_abdde7d50a54a2f54a3aea64c47af535a}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Store\+Unscanned@{Secure\+Msg\+Store\+Unscanned}}
+\index{Secure\+Msg\+Store\+Unscanned@{Secure\+Msg\+Store\+Unscanned}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Store\+Unscanned}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Store\+Unscanned (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8\+\_\+t} $\ast$}]{p\+Header, }
+\item[{{\bf uint8\+\_\+t} $\ast$}]{p\+Payload, }
+\item[{{\bf uint32\+\_\+t}}]{n\+Payload}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_abdde7d50a54a2f54a3aea64c47af535a}
+
+
+Definition at line 2911 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 52
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 53
+
+
+\hypertarget{smessage_8h_ae4abbffb060bb486b9e15053f83cbcbf}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Validate@{Secure\+Msg\+Validate}}
+\index{Secure\+Msg\+Validate@{Secure\+Msg\+Validate}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Validate}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Validate (
+\begin{DoxyParamCaption}
+\item[{{\bf uint8\+\_\+t} $\ast$}]{p\+Header, }
+\item[{{\bf uint8\+\_\+t} $\ast$}]{p\+Payload, }
+\item[{{\bf uint32\+\_\+t}}]{n\+Payload}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_ae4abbffb060bb486b9e15053f83cbcbf}
+
+
+Definition at line 3099 of file smessage.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 54
+
+
+\hypertarget{smessage_8h_a2a1e22a7c3bbeb96983dc3f28407657e}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Wallet\+Key\+Changed@{Secure\+Msg\+Wallet\+Key\+Changed}}
+\index{Secure\+Msg\+Wallet\+Key\+Changed@{Secure\+Msg\+Wallet\+Key\+Changed}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Wallet\+Key\+Changed}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Wallet\+Key\+Changed (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{s\+Address, }
+\item[{std\+::string}]{s\+Label, }
+\item[{{\bf Change\+Type}}]{mode}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_a2a1e22a7c3bbeb96983dc3f28407657e}
+
+
+Definition at line 2446 of file smessage.\+cpp.
+
+\hypertarget{smessage_8h_adf0fa2a06615363dc3ea6360be0939ec}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Wallet\+Unlocked@{Secure\+Msg\+Wallet\+Unlocked}}
+\index{Secure\+Msg\+Wallet\+Unlocked@{Secure\+Msg\+Wallet\+Unlocked}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Wallet\+Unlocked}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Wallet\+Unlocked (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_adf0fa2a06615363dc3ea6360be0939ec}
+
+
+Definition at line 2301 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 55
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 56
+
+
+\hypertarget{smessage_8h_ad6d4790245bc722b427671aad60f5a07}{}\index{smessage.\+h@{smessage.\+h}!Secure\+Msg\+Write\+Ini@{Secure\+Msg\+Write\+Ini}}
+\index{Secure\+Msg\+Write\+Ini@{Secure\+Msg\+Write\+Ini}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Secure\+Msg\+Write\+Ini}]{\setlength{\rightskip}{0pt plus 5cm}int Secure\+Msg\+Write\+Ini (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{smessage_8h_ad6d4790245bc722b427671aad60f5a07}
+
+
+Definition at line 1038 of file smessage.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 57
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 58
+
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{smessage_8h_a06b6584a0cc47952cc6b071c17c7cbd7}{}\index{smessage.\+h@{smessage.\+h}!cs\+\_\+smsg@{cs\+\_\+smsg}}
+\index{cs\+\_\+smsg@{cs\+\_\+smsg}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{cs\+\_\+smsg}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Critical\+Section} cs\+\_\+smsg}\label{smessage_8h_a06b6584a0cc47952cc6b071c17c7cbd7}
+
+
+Definition at line 81 of file smessage.\+cpp.
+
+\hypertarget{smessage_8h_ac42d4f2a114c9e994ebb1379df8ac6d2}{}\index{smessage.\+h@{smessage.\+h}!cs\+\_\+smsg\+D\+B@{cs\+\_\+smsg\+D\+B}}
+\index{cs\+\_\+smsg\+D\+B@{cs\+\_\+smsg\+D\+B}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{cs\+\_\+smsg\+D\+B}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Critical\+Section} cs\+\_\+smsg\+D\+B}\label{smessage_8h_ac42d4f2a114c9e994ebb1379df8ac6d2}
+
+
+Definition at line 82 of file smessage.\+cpp.
+
+\hypertarget{smessage_8h_a6a38441245ee84417e8fb4a77860dc09}{}\index{smessage.\+h@{smessage.\+h}!f\+Sec\+Msg\+Enabled@{f\+Sec\+Msg\+Enabled}}
+\index{f\+Sec\+Msg\+Enabled@{f\+Sec\+Msg\+Enabled}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{f\+Sec\+Msg\+Enabled}]{\setlength{\rightskip}{0pt plus 5cm}bool f\+Sec\+Msg\+Enabled}\label{smessage_8h_a6a38441245ee84417e8fb4a77860dc09}
+
+
+Definition at line 74 of file smessage.\+cpp.
+
+\hypertarget{smessage_8h_a93126f5e674af8370c3f10f3f8de8a37}{}\index{smessage.\+h@{smessage.\+h}!Notify\+Sec\+Msg\+Inbox\+Changed@{Notify\+Sec\+Msg\+Inbox\+Changed}}
+\index{Notify\+Sec\+Msg\+Inbox\+Changed@{Notify\+Sec\+Msg\+Inbox\+Changed}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Notify\+Sec\+Msg\+Inbox\+Changed}]{\setlength{\rightskip}{0pt plus 5cm}boost\+::signals2\+::signal$<$void ({\bf Sec\+Msg\+Stored}\& inbox\+Hdr)$>$ Notify\+Sec\+Msg\+Inbox\+Changed}\label{smessage_8h_a93126f5e674af8370c3f10f3f8de8a37}
+
+
+Definition at line 70 of file smessage.\+cpp.
+
+\hypertarget{smessage_8h_aa848b072a4193ed7af7f01276f819170}{}\index{smessage.\+h@{smessage.\+h}!Notify\+Sec\+Msg\+Outbox\+Changed@{Notify\+Sec\+Msg\+Outbox\+Changed}}
+\index{Notify\+Sec\+Msg\+Outbox\+Changed@{Notify\+Sec\+Msg\+Outbox\+Changed}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Notify\+Sec\+Msg\+Outbox\+Changed}]{\setlength{\rightskip}{0pt plus 5cm}boost\+::signals2\+::signal$<$void ({\bf Sec\+Msg\+Stored}\& outbox\+Hdr)$>$ Notify\+Sec\+Msg\+Outbox\+Changed}\label{smessage_8h_aa848b072a4193ed7af7f01276f819170}
+
+
+Definition at line 71 of file smessage.\+cpp.
+
+\hypertarget{smessage_8h_ac81e578e38c2f309e808d36f4c36dc62}{}\index{smessage.\+h@{smessage.\+h}!Notify\+Sec\+Msg\+Wallet\+Unlocked@{Notify\+Sec\+Msg\+Wallet\+Unlocked}}
+\index{Notify\+Sec\+Msg\+Wallet\+Unlocked@{Notify\+Sec\+Msg\+Wallet\+Unlocked}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{Notify\+Sec\+Msg\+Wallet\+Unlocked}]{\setlength{\rightskip}{0pt plus 5cm}boost\+::signals2\+::signal$<$void ()$>$ Notify\+Sec\+Msg\+Wallet\+Unlocked}\label{smessage_8h_ac81e578e38c2f309e808d36f4c36dc62}
+
+
+Definition at line 72 of file smessage.\+cpp.
+
+\hypertarget{smessage_8h_a41ca66ff63082a5ead46779327cb5d8c}{}\index{smessage.\+h@{smessage.\+h}!S\+M\+S\+G\+\_\+\+B\+U\+C\+K\+E\+T\+\_\+\+L\+E\+N@{S\+M\+S\+G\+\_\+\+B\+U\+C\+K\+E\+T\+\_\+\+L\+E\+N}}
+\index{S\+M\+S\+G\+\_\+\+B\+U\+C\+K\+E\+T\+\_\+\+L\+E\+N@{S\+M\+S\+G\+\_\+\+B\+U\+C\+K\+E\+T\+\_\+\+L\+E\+N}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{S\+M\+S\+G\+\_\+\+B\+U\+C\+K\+E\+T\+\_\+\+L\+E\+N}]{\setlength{\rightskip}{0pt plus 5cm}const unsigned int S\+M\+S\+G\+\_\+\+B\+U\+C\+K\+E\+T\+\_\+\+L\+E\+N = 60 $\ast$ 10}\label{smessage_8h_a41ca66ff63082a5ead46779327cb5d8c}
+
+
+Definition at line 21 of file smessage.\+h.
+
+\hypertarget{smessage_8h_afc28e67a41867a64a4a13a73586a2607}{}\index{smessage.\+h@{smessage.\+h}!S\+M\+S\+G\+\_\+\+H\+D\+R\+\_\+\+L\+E\+N@{S\+M\+S\+G\+\_\+\+H\+D\+R\+\_\+\+L\+E\+N}}
+\index{S\+M\+S\+G\+\_\+\+H\+D\+R\+\_\+\+L\+E\+N@{S\+M\+S\+G\+\_\+\+H\+D\+R\+\_\+\+L\+E\+N}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{S\+M\+S\+G\+\_\+\+H\+D\+R\+\_\+\+L\+E\+N}]{\setlength{\rightskip}{0pt plus 5cm}const unsigned int S\+M\+S\+G\+\_\+\+H\+D\+R\+\_\+\+L\+E\+N = 104}\label{smessage_8h_afc28e67a41867a64a4a13a73586a2607}
+
+
+Definition at line 18 of file smessage.\+h.
+
+\hypertarget{smessage_8h_a6a9a6a4cdb43a82fcc67428cf5ede29c}{}\index{smessage.\+h@{smessage.\+h}!S\+M\+S\+G\+\_\+\+M\+A\+X\+\_\+\+M\+S\+G\+\_\+\+B\+Y\+T\+E\+S@{S\+M\+S\+G\+\_\+\+M\+A\+X\+\_\+\+M\+S\+G\+\_\+\+B\+Y\+T\+E\+S}}
+\index{S\+M\+S\+G\+\_\+\+M\+A\+X\+\_\+\+M\+S\+G\+\_\+\+B\+Y\+T\+E\+S@{S\+M\+S\+G\+\_\+\+M\+A\+X\+\_\+\+M\+S\+G\+\_\+\+B\+Y\+T\+E\+S}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{S\+M\+S\+G\+\_\+\+M\+A\+X\+\_\+\+M\+S\+G\+\_\+\+B\+Y\+T\+E\+S}]{\setlength{\rightskip}{0pt plus 5cm}const unsigned int S\+M\+S\+G\+\_\+\+M\+A\+X\+\_\+\+M\+S\+G\+\_\+\+B\+Y\+T\+E\+S = 4096}\label{smessage_8h_a6a9a6a4cdb43a82fcc67428cf5ede29c}
+
+
+Definition at line 31 of file smessage.\+h.
+
+\hypertarget{smessage_8h_af7fb9dac77a91414591c4ef98f772120}{}\index{smessage.\+h@{smessage.\+h}!S\+M\+S\+G\+\_\+\+M\+A\+X\+\_\+\+M\+S\+G\+\_\+\+W\+O\+R\+S\+T@{S\+M\+S\+G\+\_\+\+M\+A\+X\+\_\+\+M\+S\+G\+\_\+\+W\+O\+R\+S\+T}}
+\index{S\+M\+S\+G\+\_\+\+M\+A\+X\+\_\+\+M\+S\+G\+\_\+\+W\+O\+R\+S\+T@{S\+M\+S\+G\+\_\+\+M\+A\+X\+\_\+\+M\+S\+G\+\_\+\+W\+O\+R\+S\+T}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{S\+M\+S\+G\+\_\+\+M\+A\+X\+\_\+\+M\+S\+G\+\_\+\+W\+O\+R\+S\+T}]{\setlength{\rightskip}{0pt plus 5cm}const unsigned int S\+M\+S\+G\+\_\+\+M\+A\+X\+\_\+\+M\+S\+G\+\_\+\+W\+O\+R\+S\+T = {\bf L\+Z4\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+B\+O\+U\+N\+D}({\bf S\+M\+S\+G\+\_\+\+M\+A\+X\+\_\+\+M\+S\+G\+\_\+\+B\+Y\+T\+E\+S}+{\bf S\+M\+S\+G\+\_\+\+P\+L\+\_\+\+H\+D\+R\+\_\+\+L\+E\+N})}\label{smessage_8h_af7fb9dac77a91414591c4ef98f772120}
+
+
+Definition at line 34 of file smessage.\+h.
+
+\hypertarget{smessage_8h_a6e268b09db9a3f1b775cfb4d649e174d}{}\index{smessage.\+h@{smessage.\+h}!S\+M\+S\+G\+\_\+\+P\+L\+\_\+\+H\+D\+R\+\_\+\+L\+E\+N@{S\+M\+S\+G\+\_\+\+P\+L\+\_\+\+H\+D\+R\+\_\+\+L\+E\+N}}
+\index{S\+M\+S\+G\+\_\+\+P\+L\+\_\+\+H\+D\+R\+\_\+\+L\+E\+N@{S\+M\+S\+G\+\_\+\+P\+L\+\_\+\+H\+D\+R\+\_\+\+L\+E\+N}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{S\+M\+S\+G\+\_\+\+P\+L\+\_\+\+H\+D\+R\+\_\+\+L\+E\+N}]{\setlength{\rightskip}{0pt plus 5cm}const unsigned int S\+M\+S\+G\+\_\+\+P\+L\+\_\+\+H\+D\+R\+\_\+\+L\+E\+N = 1+20+65+4}\label{smessage_8h_a6e268b09db9a3f1b775cfb4d649e174d}
+
+
+Definition at line 19 of file smessage.\+h.
+
+\hypertarget{smessage_8h_a54e4521fb24340cfbce3df43f214d23d}{}\index{smessage.\+h@{smessage.\+h}!S\+M\+S\+G\+\_\+\+R\+E\+T\+E\+N\+T\+I\+O\+N@{S\+M\+S\+G\+\_\+\+R\+E\+T\+E\+N\+T\+I\+O\+N}}
+\index{S\+M\+S\+G\+\_\+\+R\+E\+T\+E\+N\+T\+I\+O\+N@{S\+M\+S\+G\+\_\+\+R\+E\+T\+E\+N\+T\+I\+O\+N}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{S\+M\+S\+G\+\_\+\+R\+E\+T\+E\+N\+T\+I\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}const unsigned int S\+M\+S\+G\+\_\+\+R\+E\+T\+E\+N\+T\+I\+O\+N = 60 $\ast$ 60 $\ast$ 48}\label{smessage_8h_a54e4521fb24340cfbce3df43f214d23d}
+
+
+Definition at line 22 of file smessage.\+h.
+
+\hypertarget{smessage_8h_a58ba0f46d3e1d728616c6259c3069db9}{}\index{smessage.\+h@{smessage.\+h}!S\+M\+S\+G\+\_\+\+S\+E\+N\+D\+\_\+\+D\+E\+L\+A\+Y@{S\+M\+S\+G\+\_\+\+S\+E\+N\+D\+\_\+\+D\+E\+L\+A\+Y}}
+\index{S\+M\+S\+G\+\_\+\+S\+E\+N\+D\+\_\+\+D\+E\+L\+A\+Y@{S\+M\+S\+G\+\_\+\+S\+E\+N\+D\+\_\+\+D\+E\+L\+A\+Y}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{S\+M\+S\+G\+\_\+\+S\+E\+N\+D\+\_\+\+D\+E\+L\+A\+Y}]{\setlength{\rightskip}{0pt plus 5cm}const unsigned int S\+M\+S\+G\+\_\+\+S\+E\+N\+D\+\_\+\+D\+E\+L\+A\+Y = 2}\label{smessage_8h_a58ba0f46d3e1d728616c6259c3069db9}
+
+
+Definition at line 23 of file smessage.\+h.
+
+\hypertarget{smessage_8h_a4a4a481ee91964e90efbc0e5a742407e}{}\index{smessage.\+h@{smessage.\+h}!S\+M\+S\+G\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+D\+E\+L\+A\+Y@{S\+M\+S\+G\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+D\+E\+L\+A\+Y}}
+\index{S\+M\+S\+G\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+D\+E\+L\+A\+Y@{S\+M\+S\+G\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+D\+E\+L\+A\+Y}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{S\+M\+S\+G\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+D\+E\+L\+A\+Y}]{\setlength{\rightskip}{0pt plus 5cm}const unsigned int S\+M\+S\+G\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+D\+E\+L\+A\+Y = 30}\label{smessage_8h_a4a4a481ee91964e90efbc0e5a742407e}
+
+
+Definition at line 24 of file smessage.\+h.
+
+\hypertarget{smessage_8h_a8efaec21328f5c6b873f6d822b84c6c0}{}\index{smessage.\+h@{smessage.\+h}!S\+M\+S\+G\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+L\+O\+G\+\_\+\+G\+A\+P@{S\+M\+S\+G\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+L\+O\+G\+\_\+\+G\+A\+P}}
+\index{S\+M\+S\+G\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+L\+O\+G\+\_\+\+G\+A\+P@{S\+M\+S\+G\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+L\+O\+G\+\_\+\+G\+A\+P}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{S\+M\+S\+G\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+L\+O\+G\+\_\+\+G\+A\+P}]{\setlength{\rightskip}{0pt plus 5cm}const unsigned int S\+M\+S\+G\+\_\+\+T\+H\+R\+E\+A\+D\+\_\+\+L\+O\+G\+\_\+\+G\+A\+P = 6}\label{smessage_8h_a8efaec21328f5c6b873f6d822b84c6c0}
+
+
+Definition at line 25 of file smessage.\+h.
+
+\hypertarget{smessage_8h_a10bd0be4c103ccf8f76c710ae2a15b83}{}\index{smessage.\+h@{smessage.\+h}!S\+M\+S\+G\+\_\+\+T\+I\+M\+E\+\_\+\+I\+G\+N\+O\+R\+E@{S\+M\+S\+G\+\_\+\+T\+I\+M\+E\+\_\+\+I\+G\+N\+O\+R\+E}}
+\index{S\+M\+S\+G\+\_\+\+T\+I\+M\+E\+\_\+\+I\+G\+N\+O\+R\+E@{S\+M\+S\+G\+\_\+\+T\+I\+M\+E\+\_\+\+I\+G\+N\+O\+R\+E}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{S\+M\+S\+G\+\_\+\+T\+I\+M\+E\+\_\+\+I\+G\+N\+O\+R\+E}]{\setlength{\rightskip}{0pt plus 5cm}const unsigned int S\+M\+S\+G\+\_\+\+T\+I\+M\+E\+\_\+\+I\+G\+N\+O\+R\+E = 90}\label{smessage_8h_a10bd0be4c103ccf8f76c710ae2a15b83}
+
+
+Definition at line 28 of file smessage.\+h.
+
+\hypertarget{smessage_8h_ab0c23581ef7a79853848bdb51afebf87}{}\index{smessage.\+h@{smessage.\+h}!S\+M\+S\+G\+\_\+\+T\+I\+M\+E\+\_\+\+L\+E\+E\+W\+A\+Y@{S\+M\+S\+G\+\_\+\+T\+I\+M\+E\+\_\+\+L\+E\+E\+W\+A\+Y}}
+\index{S\+M\+S\+G\+\_\+\+T\+I\+M\+E\+\_\+\+L\+E\+E\+W\+A\+Y@{S\+M\+S\+G\+\_\+\+T\+I\+M\+E\+\_\+\+L\+E\+E\+W\+A\+Y}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{S\+M\+S\+G\+\_\+\+T\+I\+M\+E\+\_\+\+L\+E\+E\+W\+A\+Y}]{\setlength{\rightskip}{0pt plus 5cm}const unsigned int S\+M\+S\+G\+\_\+\+T\+I\+M\+E\+\_\+\+L\+E\+E\+W\+A\+Y = 60}\label{smessage_8h_ab0c23581ef7a79853848bdb51afebf87}
+
+
+Definition at line 27 of file smessage.\+h.
+
+\hypertarget{smessage_8h_a5a56ac0f79a9871c59a6482b1323acf5}{}\index{smessage.\+h@{smessage.\+h}!smsg\+Addresses@{smsg\+Addresses}}
+\index{smsg\+Addresses@{smsg\+Addresses}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{smsg\+Addresses}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Sec\+Msg\+Address}$>$ smsg\+Addresses}\label{smessage_8h_a5a56ac0f79a9871c59a6482b1323acf5}
+
+
+Definition at line 77 of file smessage.\+cpp.
+
+\hypertarget{smessage_8h_aff7c48d987b8a7eb24801d262a30fb6e}{}\index{smessage.\+h@{smessage.\+h}!smsg\+Buckets@{smsg\+Buckets}}
+\index{smsg\+Buckets@{smsg\+Buckets}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{smsg\+Buckets}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<${\bf int64\+\_\+t}, {\bf Sec\+Msg\+Bucket}$>$ smsg\+Buckets}\label{smessage_8h_aff7c48d987b8a7eb24801d262a30fb6e}
+
+
+Definition at line 76 of file smessage.\+cpp.
+
+\hypertarget{smessage_8h_ac6ee7d290a6b6af015c10b95d61c704d}{}\index{smessage.\+h@{smessage.\+h}!smsg\+Options@{smsg\+Options}}
+\index{smsg\+Options@{smsg\+Options}!smessage.\+h@{smessage.\+h}}
+\subsubsection[{smsg\+Options}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Sec\+Msg\+Options} smsg\+Options}\label{smessage_8h_ac6ee7d290a6b6af015c10b95d61c704d}
+
+
+Definition at line 78 of file smessage.\+cpp.
+

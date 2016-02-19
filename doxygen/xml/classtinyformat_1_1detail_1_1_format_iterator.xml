@@ -1,0 +1,475 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="classtinyformat_1_1detail_1_1_format_iterator" kind="class" language="C++" prot="public">
+    <compoundname>tinyformat::detail::FormatIterator</compoundname>
+    <includes refid="tinyformat_8h" local="no">tinyformat.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classtinyformat_1_1detail_1_1_format_iterator_1a219d15b3b08e2e2039043d2e992cc0b4" prot="public" static="no">
+        <name>ExtraFormatFlags</name>
+        <enumvalue id="classtinyformat_1_1detail_1_1_format_iterator_1a219d15b3b08e2e2039043d2e992cc0b4a9ab97a1e3a40d92f84e93fa8358482aa" prot="public">
+          <name>Flag_None</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classtinyformat_1_1detail_1_1_format_iterator_1a219d15b3b08e2e2039043d2e992cc0b4a5b65abd67b2208298644ddc94687e390" prot="public">
+          <name>Flag_TruncateToPrecision</name>
+          <initializer>= 1&lt;&lt;0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classtinyformat_1_1detail_1_1_format_iterator_1a219d15b3b08e2e2039043d2e992cc0b4a9d39e70884631652913a219fc8c631a9" prot="public">
+          <name>Flag_SpacePadPositive</name>
+          <initializer>= 1&lt;&lt;1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classtinyformat_1_1detail_1_1_format_iterator_1a219d15b3b08e2e2039043d2e992cc0b4a5d0e44bf22d5a33b12af70fab06a595d" prot="public">
+          <name>Flag_VariableWidth</name>
+          <initializer>= 1&lt;&lt;2</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classtinyformat_1_1detail_1_1_format_iterator_1a219d15b3b08e2e2039043d2e992cc0b4a19e53a79433733d40dc1349ce52f3284" prot="public">
+          <name>Flag_VariablePrecision</name>
+          <initializer>= 1&lt;&lt;3</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/tinyformat.h" line="445" column="1" bodyfile="/home/dev/ds-160209/src/tinyformat.h" bodystart="444" bodyend="451"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classtinyformat_1_1detail_1_1_format_iterator_1abbd64cfa07885f2310b533d233ea4a4f" prot="private" static="no" mutable="no">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; tinyformat::detail::FormatIterator::m_out</definition>
+        <argsstring></argsstring>
+        <name>m_out</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/tinyformat.h" line="566" column="1" bodyfile="/home/dev/ds-160209/src/tinyformat.h" bodystart="566" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtinyformat_1_1detail_1_1_format_iterator_1ae108fe31903bd1a25e70d2a257f42dfc" prot="private" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* tinyformat::detail::FormatIterator::m_fmt</definition>
+        <argsstring></argsstring>
+        <name>m_fmt</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/tinyformat.h" line="567" column="1" bodyfile="/home/dev/ds-160209/src/tinyformat.h" bodystart="567" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtinyformat_1_1detail_1_1_format_iterator_1a86f3a5d86ac25396cd1ec36bea7122e4" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int tinyformat::detail::FormatIterator::m_extraFlags</definition>
+        <argsstring></argsstring>
+        <name>m_extraFlags</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/tinyformat.h" line="568" column="1" bodyfile="/home/dev/ds-160209/src/tinyformat.h" bodystart="568" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtinyformat_1_1detail_1_1_format_iterator_1ac1e16da97902d27500471ab71bc709a1" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool tinyformat::detail::FormatIterator::m_wantWidth</definition>
+        <argsstring></argsstring>
+        <name>m_wantWidth</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/tinyformat.h" line="570" column="1" bodyfile="/home/dev/ds-160209/src/tinyformat.h" bodystart="570" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtinyformat_1_1detail_1_1_format_iterator_1a0bdab4360fa0e2a5877497bc4b789bed" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool tinyformat::detail::FormatIterator::m_wantPrecision</definition>
+        <argsstring></argsstring>
+        <name>m_wantPrecision</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/tinyformat.h" line="571" column="1" bodyfile="/home/dev/ds-160209/src/tinyformat.h" bodystart="571" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtinyformat_1_1detail_1_1_format_iterator_1ab22b2cc7248efb281d477dffe7b74306" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int tinyformat::detail::FormatIterator::m_variableWidth</definition>
+        <argsstring></argsstring>
+        <name>m_variableWidth</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/tinyformat.h" line="572" column="1" bodyfile="/home/dev/ds-160209/src/tinyformat.h" bodystart="572" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtinyformat_1_1detail_1_1_format_iterator_1ab22fcacd5559bea7e2e6c9ed3e3025b7" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int tinyformat::detail::FormatIterator::m_variablePrecision</definition>
+        <argsstring></argsstring>
+        <name>m_variablePrecision</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/tinyformat.h" line="573" column="1" bodyfile="/home/dev/ds-160209/src/tinyformat.h" bodystart="573" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtinyformat_1_1detail_1_1_format_iterator_1ac8778a5a4a79d0357bb349b3a834675c" prot="private" static="no" mutable="no">
+        <type>std::streamsize</type>
+        <definition>std::streamsize tinyformat::detail::FormatIterator::m_origWidth</definition>
+        <argsstring></argsstring>
+        <name>m_origWidth</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/tinyformat.h" line="575" column="1" bodyfile="/home/dev/ds-160209/src/tinyformat.h" bodystart="575" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtinyformat_1_1detail_1_1_format_iterator_1af533575dd881e88fc8630baa70d1cd52" prot="private" static="no" mutable="no">
+        <type>std::streamsize</type>
+        <definition>std::streamsize tinyformat::detail::FormatIterator::m_origPrecision</definition>
+        <argsstring></argsstring>
+        <name>m_origPrecision</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/tinyformat.h" line="576" column="1" bodyfile="/home/dev/ds-160209/src/tinyformat.h" bodystart="576" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtinyformat_1_1detail_1_1_format_iterator_1abe80c91198f0f5f2649d584cd36f8df8" prot="private" static="no" mutable="no">
+        <type>std::ios::fmtflags</type>
+        <definition>std::ios::fmtflags tinyformat::detail::FormatIterator::m_origFlags</definition>
+        <argsstring></argsstring>
+        <name>m_origFlags</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/tinyformat.h" line="577" column="1" bodyfile="/home/dev/ds-160209/src/tinyformat.h" bodystart="577" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classtinyformat_1_1detail_1_1_format_iterator_1a6a02fa0be4c3027e4687632240ed61b0" prot="private" static="no" mutable="no">
+        <type>char</type>
+        <definition>char tinyformat::detail::FormatIterator::m_origFill</definition>
+        <argsstring></argsstring>
+        <name>m_origFill</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/tinyformat.h" line="578" column="1" bodyfile="/home/dev/ds-160209/src/tinyformat.h" bodystart="578" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classtinyformat_1_1detail_1_1_format_iterator_1a798e0f475996df1b0a4f93540d96791b" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tinyformat::detail::FormatIterator::FormatIterator</definition>
+        <argsstring>(std::ostream &amp;out, const char *fmt)</argsstring>
+        <name>FormatIterator</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>fmt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/tinyformat.h" line="454" column="1" bodyfile="/home/dev/ds-160209/src/tinyformat.h" bodystart="454" bodyend="466"/>
+      </memberdef>
+      <memberdef kind="function" id="classtinyformat_1_1detail_1_1_format_iterator_1a46377a804f72dbad1e508d2fbaa18ce9" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void tinyformat::detail::FormatIterator::finish</definition>
+        <argsstring>()</argsstring>
+        <name>finish</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/tinyformat.h" line="469" column="1" bodyfile="/home/dev/ds-160209/src/tinyformat.h" bodystart="469" bodyend="476"/>
+        <references refid="tinyformat_8h_1aab516d7d4e92fe18eca4a9d40f450a80" compoundref="tinyformat_8h" startline="112">TINYFORMAT_ERROR</references>
+        <referencedby refid="namespacetinyformat_1_1detail_1aa4b0590b3e34562c2d252a2086cec7ba" compoundref="tinyformat_8h" startline="870" endline="873">tinyformat::detail::format</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classtinyformat_1_1detail_1_1_format_iterator_1a700ea30dbed93c28c499ac01c59a78a4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>tinyformat::detail::FormatIterator::~FormatIterator</definition>
+        <argsstring>()</argsstring>
+        <name>~FormatIterator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/tinyformat.h" line="478" column="1" bodyfile="/home/dev/ds-160209/src/tinyformat.h" bodystart="478" bodyend="485"/>
+      </memberdef>
+      <memberdef kind="function" id="classtinyformat_1_1detail_1_1_format_iterator_1a2a2b99ea3a371e1ff8d56d8c8b801bdb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void tinyformat::detail::FormatIterator::accept</definition>
+        <argsstring>(const T &amp;value)</argsstring>
+        <name>accept</name>
+        <param>
+          <type>const T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/tinyformat.h" line="488" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classtinyformat_1_1detail_1_1_format_iterator_1a914be2066071c01cac4c2ea867c9d89a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type><ref refid="tinyformat_8h_1a6aa2353acc671b972658fd73a813b960" kindref="member">TINYFORMAT_NOINLINE</ref> void</type>
+        <definition>TINYFORMAT_NOINLINE void tinyformat::detail::FormatIterator::accept</definition>
+        <argsstring>(const T &amp;value)</argsstring>
+        <name>accept</name>
+        <param>
+          <type>const T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/tinyformat.h" line="585" column="1" bodyfile="/home/dev/ds-160209/src/tinyformat.h" bodystart="585" bodyend="657"/>
+        <references refid="classtinyformat_1_1detail_1_1_format_iterator_1a219d15b3b08e2e2039043d2e992cc0b4a9ab97a1e3a40d92f84e93fa8358482aa" compoundref="tinyformat_8h" startline="446">Flag_None</references>
+        <references refid="classtinyformat_1_1detail_1_1_format_iterator_1a219d15b3b08e2e2039043d2e992cc0b4a5d0e44bf22d5a33b12af70fab06a595d" compoundref="tinyformat_8h" startline="449">Flag_VariableWidth</references>
+        <references refid="classtinyformat_1_1detail_1_1_format_iterator_1a219d15b3b08e2e2039043d2e992cc0b4a19e53a79433733d40dc1349ce52f3284" compoundref="tinyformat_8h" startline="450">Flag_VariablePrecision</references>
+        <references refid="structtinyformat_1_1detail_1_1convert_to_int_1a1e1c0d85c6afc3bb21d2bc9458b3feb1" compoundref="tinyformat_8h" startline="236" endline="241">tinyformat::detail::convertToInt&lt; T, convertible &gt;::invoke</references>
+        <references refid="classtinyformat_1_1detail_1_1_format_iterator_1a219d15b3b08e2e2039043d2e992cc0b4a9d39e70884631652913a219fc8c631a9" compoundref="tinyformat_8h" startline="448">Flag_SpacePadPositive</references>
+        <references refid="classtinyformat_1_1detail_1_1_format_iterator_1a219d15b3b08e2e2039043d2e992cc0b4a5b65abd67b2208298644ddc94687e390" compoundref="tinyformat_8h" startline="447">Flag_TruncateToPrecision</references>
+        <references refid="namespacetinyformat_1adc03c92f312158ae351d38ac867b9296" compoundref="tinyformat_8h" startline="268" endline="293">tinyformat::formatValue</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classtinyformat_1_1detail_1_1_format_iterator_1a4fab0ac9b2555c20c304da12668020ff" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>static int tinyformat::detail::FormatIterator::parseIntAndAdvance</definition>
+        <argsstring>(const char *&amp;c)</argsstring>
+        <name>parseIntAndAdvance</name>
+        <param>
+          <type>const char *&amp;</type>
+          <declname>c</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/tinyformat.h" line="493" column="1" bodyfile="/home/dev/ds-160209/src/tinyformat.h" bodystart="493" bodyend="499"/>
+      </memberdef>
+      <memberdef kind="function" id="classtinyformat_1_1detail_1_1_format_iterator_1a048d56660908fe084fc9930bad352c8e" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>static bool tinyformat::detail::FormatIterator::formatCStringTruncate</definition>
+        <argsstring>(std::ostream &amp;, const T &amp;, std::streamsize)</argsstring>
+        <name>formatCStringTruncate</name>
+        <param>
+          <type>std::ostream &amp;</type>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+        </param>
+        <param>
+          <type>std::streamsize</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/tinyformat.h" line="505" column="1" bodyfile="/home/dev/ds-160209/src/tinyformat.h" bodystart="505" bodyend="509"/>
+      </memberdef>
+      <memberdef kind="function" id="classtinyformat_1_1detail_1_1_format_iterator_1af3bbb8259ac0593ec2268ef5863311d5" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>static const char* tinyformat::detail::FormatIterator::printFormatStringLiteral</definition>
+        <argsstring>(std::ostream &amp;out, const char *fmt)</argsstring>
+        <name>printFormatStringLiteral</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>fmt</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/tinyformat.h" line="533" column="1" bodyfile="/home/dev/ds-160209/src/tinyformat.h" bodystart="533" bodyend="553"/>
+      </memberdef>
+      <memberdef kind="function" id="classtinyformat_1_1detail_1_1_format_iterator_1a42ed39c6771b424bc084b32c5836e83e" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char * tinyformat::detail::FormatIterator::streamStateFromFormat</definition>
+        <argsstring>(std::ostream &amp;out, unsigned int &amp;extraFlags, const char *fmtStart, int variableWidth, int variablePrecision)</argsstring>
+        <name>streamStateFromFormat</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type>unsigned int &amp;</type>
+          <declname>extraFlags</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>fmtStart</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>variableWidth</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>variablePrecision</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/tinyformat.h" line="555" column="1" bodyfile="/home/dev/ds-160209/src/tinyformat.h" bodystart="668" bodyend="841"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classtinyformat_1_1detail_1_1_format_iterator_1a0001a875c2d504f05abde849d3fd74be" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>tinyformat::detail::FormatIterator::FormatIterator</definition>
+        <argsstring>(const FormatIterator &amp;)</argsstring>
+        <name>FormatIterator</name>
+        <param>
+          <type>const <ref refid="classtinyformat_1_1detail_1_1_format_iterator" kindref="compound">FormatIterator</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/tinyformat.h" line="562" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classtinyformat_1_1detail_1_1_format_iterator_1a20a716e45ece517c8ae9556ed36b58bc" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classtinyformat_1_1detail_1_1_format_iterator" kindref="compound">FormatIterator</ref> &amp;</type>
+        <definition>FormatIterator&amp; tinyformat::detail::FormatIterator::operator=</definition>
+        <argsstring>(const FormatIterator &amp;)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classtinyformat_1_1detail_1_1_format_iterator" kindref="compound">FormatIterator</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/tinyformat.h" line="563" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/tinyformat.h" line="441" column="1" bodyfile="/home/dev/ds-160209/src/tinyformat.h" bodystart="440" bodyend="579"/>
+    <listofallmembers>
+      <member refid="classtinyformat_1_1detail_1_1_format_iterator_1a2a2b99ea3a371e1ff8d56d8c8b801bdb" prot="public" virt="non-virtual"><scope>tinyformat::detail::FormatIterator</scope><name>accept</name></member>
+      <member refid="classtinyformat_1_1detail_1_1_format_iterator_1a914be2066071c01cac4c2ea867c9d89a" prot="public" virt="non-virtual"><scope>tinyformat::detail::FormatIterator</scope><name>accept</name></member>
+      <member refid="classtinyformat_1_1detail_1_1_format_iterator_1a219d15b3b08e2e2039043d2e992cc0b4" prot="public" virt="non-virtual"><scope>tinyformat::detail::FormatIterator</scope><name>ExtraFormatFlags</name></member>
+      <member refid="classtinyformat_1_1detail_1_1_format_iterator_1a46377a804f72dbad1e508d2fbaa18ce9" prot="public" virt="non-virtual"><scope>tinyformat::detail::FormatIterator</scope><name>finish</name></member>
+      <member refid="classtinyformat_1_1detail_1_1_format_iterator_1a219d15b3b08e2e2039043d2e992cc0b4a9ab97a1e3a40d92f84e93fa8358482aa" prot="public" virt="non-virtual"><scope>tinyformat::detail::FormatIterator</scope><name>Flag_None</name></member>
+      <member refid="classtinyformat_1_1detail_1_1_format_iterator_1a219d15b3b08e2e2039043d2e992cc0b4a9d39e70884631652913a219fc8c631a9" prot="public" virt="non-virtual"><scope>tinyformat::detail::FormatIterator</scope><name>Flag_SpacePadPositive</name></member>
+      <member refid="classtinyformat_1_1detail_1_1_format_iterator_1a219d15b3b08e2e2039043d2e992cc0b4a5b65abd67b2208298644ddc94687e390" prot="public" virt="non-virtual"><scope>tinyformat::detail::FormatIterator</scope><name>Flag_TruncateToPrecision</name></member>
+      <member refid="classtinyformat_1_1detail_1_1_format_iterator_1a219d15b3b08e2e2039043d2e992cc0b4a19e53a79433733d40dc1349ce52f3284" prot="public" virt="non-virtual"><scope>tinyformat::detail::FormatIterator</scope><name>Flag_VariablePrecision</name></member>
+      <member refid="classtinyformat_1_1detail_1_1_format_iterator_1a219d15b3b08e2e2039043d2e992cc0b4a5d0e44bf22d5a33b12af70fab06a595d" prot="public" virt="non-virtual"><scope>tinyformat::detail::FormatIterator</scope><name>Flag_VariableWidth</name></member>
+      <member refid="classtinyformat_1_1detail_1_1_format_iterator_1a048d56660908fe084fc9930bad352c8e" prot="private" virt="non-virtual"><scope>tinyformat::detail::FormatIterator</scope><name>formatCStringTruncate</name></member>
+      <member refid="classtinyformat_1_1detail_1_1_format_iterator_1a798e0f475996df1b0a4f93540d96791b" prot="public" virt="non-virtual"><scope>tinyformat::detail::FormatIterator</scope><name>FormatIterator</name></member>
+      <member refid="classtinyformat_1_1detail_1_1_format_iterator_1a0001a875c2d504f05abde849d3fd74be" prot="private" virt="non-virtual"><scope>tinyformat::detail::FormatIterator</scope><name>FormatIterator</name></member>
+      <member refid="classtinyformat_1_1detail_1_1_format_iterator_1a86f3a5d86ac25396cd1ec36bea7122e4" prot="private" virt="non-virtual"><scope>tinyformat::detail::FormatIterator</scope><name>m_extraFlags</name></member>
+      <member refid="classtinyformat_1_1detail_1_1_format_iterator_1ae108fe31903bd1a25e70d2a257f42dfc" prot="private" virt="non-virtual"><scope>tinyformat::detail::FormatIterator</scope><name>m_fmt</name></member>
+      <member refid="classtinyformat_1_1detail_1_1_format_iterator_1a6a02fa0be4c3027e4687632240ed61b0" prot="private" virt="non-virtual"><scope>tinyformat::detail::FormatIterator</scope><name>m_origFill</name></member>
+      <member refid="classtinyformat_1_1detail_1_1_format_iterator_1abe80c91198f0f5f2649d584cd36f8df8" prot="private" virt="non-virtual"><scope>tinyformat::detail::FormatIterator</scope><name>m_origFlags</name></member>
+      <member refid="classtinyformat_1_1detail_1_1_format_iterator_1af533575dd881e88fc8630baa70d1cd52" prot="private" virt="non-virtual"><scope>tinyformat::detail::FormatIterator</scope><name>m_origPrecision</name></member>
+      <member refid="classtinyformat_1_1detail_1_1_format_iterator_1ac8778a5a4a79d0357bb349b3a834675c" prot="private" virt="non-virtual"><scope>tinyformat::detail::FormatIterator</scope><name>m_origWidth</name></member>
+      <member refid="classtinyformat_1_1detail_1_1_format_iterator_1abbd64cfa07885f2310b533d233ea4a4f" prot="private" virt="non-virtual"><scope>tinyformat::detail::FormatIterator</scope><name>m_out</name></member>
+      <member refid="classtinyformat_1_1detail_1_1_format_iterator_1ab22fcacd5559bea7e2e6c9ed3e3025b7" prot="private" virt="non-virtual"><scope>tinyformat::detail::FormatIterator</scope><name>m_variablePrecision</name></member>
+      <member refid="classtinyformat_1_1detail_1_1_format_iterator_1ab22b2cc7248efb281d477dffe7b74306" prot="private" virt="non-virtual"><scope>tinyformat::detail::FormatIterator</scope><name>m_variableWidth</name></member>
+      <member refid="classtinyformat_1_1detail_1_1_format_iterator_1a0bdab4360fa0e2a5877497bc4b789bed" prot="private" virt="non-virtual"><scope>tinyformat::detail::FormatIterator</scope><name>m_wantPrecision</name></member>
+      <member refid="classtinyformat_1_1detail_1_1_format_iterator_1ac1e16da97902d27500471ab71bc709a1" prot="private" virt="non-virtual"><scope>tinyformat::detail::FormatIterator</scope><name>m_wantWidth</name></member>
+      <member refid="classtinyformat_1_1detail_1_1_format_iterator_1a20a716e45ece517c8ae9556ed36b58bc" prot="private" virt="non-virtual"><scope>tinyformat::detail::FormatIterator</scope><name>operator=</name></member>
+      <member refid="classtinyformat_1_1detail_1_1_format_iterator_1a4fab0ac9b2555c20c304da12668020ff" prot="private" virt="non-virtual"><scope>tinyformat::detail::FormatIterator</scope><name>parseIntAndAdvance</name></member>
+      <member refid="classtinyformat_1_1detail_1_1_format_iterator_1af3bbb8259ac0593ec2268ef5863311d5" prot="private" virt="non-virtual"><scope>tinyformat::detail::FormatIterator</scope><name>printFormatStringLiteral</name></member>
+      <member refid="classtinyformat_1_1detail_1_1_format_iterator_1a42ed39c6771b424bc084b32c5836e83e" prot="private" virt="non-virtual"><scope>tinyformat::detail::FormatIterator</scope><name>streamStateFromFormat</name></member>
+      <member refid="classtinyformat_1_1detail_1_1_format_iterator_1a700ea30dbed93c28c499ac01c59a78a4" prot="public" virt="non-virtual"><scope>tinyformat::detail::FormatIterator</scope><name>~FormatIterator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

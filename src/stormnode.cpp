@@ -2,8 +2,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "stormnode.h"
 #include "sandstorm.h"
+#include "stormnode.h"
 #include "stormnode-payments.h"
 #include "stormnode-sync.h"
 #include "stormnodeman.h"
@@ -12,7 +12,6 @@
 #include "addrman.h"
 #include <boost/lexical_cast.hpp>
 #include "init.h"
-#include "consensus/validation.h"
 
 // keep track of the scanning errors I've seen
 map<uint256, int> mapSeenStormnodeScanningErrors;
@@ -397,7 +396,7 @@ bool CStormnodeBroadcast::CheckAndUpdate(int& nDos)
         return false;
     }
 
-    if(Params().NetworkID() == CBaseChainParams::MAIN) {
+    if(Params().NetworkID() == CChainParams::MAIN) {
         if(addr.GetPort() != 31000) return false;
     } else if(addr.GetPort() == 31000) return false;
 

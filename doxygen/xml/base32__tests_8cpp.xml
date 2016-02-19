@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="base32__tests_8cpp" kind="file" language="C++">
+    <compoundname>base32_tests.cpp</compoundname>
+    <includes local="no">boost/test/unit_test.hpp</includes>
+    <includes local="yes">util.h</includes>
+    <incdepgraph>
+      <node id="55387">
+        <label>/home/dev/ds-160209/src/test/base32_tests.cpp</label>
+        <link refid="base32_tests.cpp"/>
+        <childnode refid="55388" relation="include">
+        </childnode>
+        <childnode refid="55389" relation="include">
+        </childnode>
+      </node>
+      <node id="55388">
+        <label>boost/test/unit_test.hpp</label>
+      </node>
+      <node id="55389">
+        <label>util.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="base32__tests_8cpp_1aae94806c3fd4446ae6ebfe0f368d0b36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>BOOST_AUTO_TEST_CASE</definition>
+        <argsstring>(base32_testvectors)</argsstring>
+        <name>BOOST_AUTO_TEST_CASE</name>
+        <param>
+          <type>base32_testvectors</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/test/base32_tests.cpp" line="7" column="1" bodyfile="/home/dev/ds-160209/src/test/base32_tests.cpp" bodystart="7" bodyend="18"/>
+        <references refid="util_8cpp_1a71aa75e646de8a10971f887bc71d9a75" compoundref="util_8cpp" startline="775" endline="832">EncodeBase32</references>
+        <references refid="util_8cpp_1a8266fd137bc7f76f4a75024baab5c18f" compoundref="util_8cpp" startline="839" endline="954">DecodeBase32</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&lt;boost/test/unit_test.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;util.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal">BOOST_AUTO_TEST_SUITE(base32_tests)</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7" refid="base32__tests_8cpp_1aae94806c3fd4446ae6ebfe0f368d0b36" refkind="member"><highlight class="normal"><ref refid="base32__tests_8cpp_1aae94806c3fd4446ae6ebfe0f368d0b36" kindref="member">BOOST_AUTO_TEST_CASE</ref>(base32_testvectors)</highlight></codeline>
+<codeline lineno="8"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>vstrIn[]<sp/><sp/>=<sp/>{</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;f&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;fo&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;foob&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;fooba&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;foobar&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>vstrOut[]<sp/>=<sp/>{</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;my======&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;mzxq====&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;mzxw6===&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;mzxw6yq=&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;mzxw6ytb&quot;</highlight><highlight class="normal">,</highlight><highlight class="stringliteral">&quot;mzxw6ytboi======&quot;</highlight><highlight class="normal">};</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i=0;<sp/>i&lt;</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(vstrIn)/</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(vstrIn[0]);<sp/>i++)</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>strEnc<sp/>=<sp/><ref refid="util_8cpp_1a71aa75e646de8a10971f887bc71d9a75" kindref="member">EncodeBase32</ref>(vstrIn[i]);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOST_CHECK(strEnc<sp/>==<sp/>vstrOut[i]);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string<sp/>strDec<sp/>=<sp/><ref refid="util_8cpp_1a8266fd137bc7f76f4a75024baab5c18f" kindref="member">DecodeBase32</ref>(vstrOut[i]);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOST_CHECK(strDec<sp/>==<sp/>vstrIn[i]);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal">BOOST_AUTO_TEST_SUITE_END()</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/test/base32_tests.cpp"/>
+  </compounddef>
+</doxygen>

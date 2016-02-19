@@ -1,0 +1,622 @@
+.TH "CSandstormPool" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CSandstormPool \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <sandstorm\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBmessages\fP { \fBERR_ALREADY_HAVE\fP, \fBERR_DENOM\fP, \fBERR_ENTRIES_FULL\fP, \fBERR_EXISTING_TX\fP, \fBERR_FEES\fP, \fBERR_INVALID_COLLATERAL\fP, \fBERR_INVALID_INPUT\fP, \fBERR_INVALID_SCRIPT\fP, \fBERR_INVALID_TX\fP, \fBERR_MAXIMUM\fP, \fBERR_SN_LIST\fP, \fBERR_MODE\fP, \fBERR_NON_STANDARD_PUBKEY\fP, \fBERR_NOT_A_SN\fP, \fBERR_QUEUE_FULL\fP, \fBERR_RECENT\fP, \fBERR_SESSION\fP, \fBERR_MISSING_TX\fP, \fBERR_VERSION\fP, \fBMSG_NOERR\fP, \fBMSG_SUCCESS\fP, \fBMSG_ENTRIES_ADDED\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCSandstormPool\fP ()"
+.br
+.ti -1c
+.RI "void \fBProcessMessageSandstorm\fP (\fBCNode\fP *pfrom, std::string &strCommand, \fBCDataStream\fP &vRecv)"
+.br
+.ti -1c
+.RI "void \fBInitCollateralAddress\fP ()"
+.br
+.ti -1c
+.RI "void \fBClearSkippedDenominations\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsDenomSkipped\fP (\fBint64_t\fP denom)"
+.br
+.ti -1c
+.RI "void \fBInitDenominations\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetMinBlockSpacing\fP (int minBlockSpacingIn)"
+.br
+.ti -1c
+.RI "bool \fBSetCollateralAddress\fP (std::string strAddress)"
+.br
+.ti -1c
+.RI "void \fBReset\fP ()"
+.br
+.ti -1c
+.RI "void \fBSetNull\fP ()"
+.br
+.ti -1c
+.RI "void \fBUnlockCoins\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsNull\fP () const "
+.br
+.ti -1c
+.RI "int \fBGetState\fP () const "
+.br
+.ti -1c
+.RI "std::string \fBGetStatus\fP ()"
+.br
+.ti -1c
+.RI "int \fBGetEntriesCount\fP () const "
+.br
+.ti -1c
+.RI "int \fBGetLastEntryAccepted\fP () const "
+.br
+.RI "\fIGet the time the last entry was accepted (time in UTC milliseconds) \fP"
+.ti -1c
+.RI "int \fBGetCountEntriesAccepted\fP () const "
+.br
+.RI "\fIGet the count of the accepted entries\&. \fP"
+.ti -1c
+.RI "void \fBUpdateState\fP (unsigned int newState)"
+.br
+.ti -1c
+.RI "int \fBGetMaxPoolTransactions\fP ()"
+.br
+.RI "\fIGet the maximum number of transactions for the pool\&. \fP"
+.ti -1c
+.RI "bool \fBIsSessionReady\fP ()"
+.br
+.RI "\fIDo we have enough users to take entries? \fP"
+.ti -1c
+.RI "bool \fBIsCompatibleWithEntries\fP (std::vector< \fBCTxOut\fP > &vout)"
+.br
+.RI "\fIAre these outputs compatible with other client in the pool? \fP"
+.ti -1c
+.RI "bool \fBIsCompatibleWithSession\fP (\fBCAmount\fP nAmount, \fBCTransaction\fP txCollateral, int &errorID)"
+.br
+.RI "\fIIs this amount compatible with other client in the pool? \fP"
+.ti -1c
+.RI "bool \fBDoAutomaticDenominating\fP (bool fDryRun=false)"
+.br
+.RI "\fIPassively run Sandstorm in the background according to the configuration in settings (only for QT) \fP"
+.ti -1c
+.RI "bool \fBPrepareSandstormDenominate\fP ()"
+.br
+.ti -1c
+.RI "void \fBCheck\fP ()"
+.br
+.RI "\fICheck for process in Sandstorm\&. \fP"
+.ti -1c
+.RI "void \fBCheckFinalTransaction\fP ()"
+.br
+.ti -1c
+.RI "void \fBChargeFees\fP ()"
+.br
+.RI "\fICharge fees to bad actors (Charge clients a fee if they're abusive) \fP"
+.ti -1c
+.RI "void \fBChargeRandomFees\fP ()"
+.br
+.RI "\fIRarely charge fees to pay miners\&. \fP"
+.ti -1c
+.RI "void \fBCheckTimeout\fP ()"
+.br
+.ti -1c
+.RI "void \fBCheckForCompleteQueue\fP ()"
+.br
+.ti -1c
+.RI "bool \fBSignatureValid\fP (const \fBCScript\fP &newSig, const \fBCTxIn\fP &newVin)"
+.br
+.RI "\fICheck to make sure a signature matches an input in the pool\&. \fP"
+.ti -1c
+.RI "bool \fBIsCollateralValid\fP (const \fBCTransaction\fP &txCollateral)"
+.br
+.RI "\fIIf the collateral is valid given by a client\&. \fP"
+.ti -1c
+.RI "bool \fBAddEntry\fP (const std::vector< \fBCTxIn\fP > &newInput, const \fBCAmount\fP &nAmount, const \fBCTransaction\fP &txCollateral, const std::vector< \fBCTxOut\fP > &newOutput, int &errorID)"
+.br
+.RI "\fIAdd a clients entry to the pool\&. \fP"
+.ti -1c
+.RI "bool \fBAddScriptSig\fP (const \fBCTxIn\fP &newVin)"
+.br
+.RI "\fIAdd signature to a vin\&. \fP"
+.ti -1c
+.RI "bool \fBSignaturesComplete\fP ()"
+.br
+.RI "\fICheck that all inputs are signed\&. (Are all inputs signed?) \fP"
+.ti -1c
+.RI "void \fBSendSandstormDenominate\fP (std::vector< \fBCTxIn\fP > &vin, std::vector< \fBCTxOut\fP > &vout, \fBCAmount\fP amount)"
+.br
+.RI "\fIAs a client, send a transaction to a Stormnode to start the denomination process\&. \fP"
+.ti -1c
+.RI "bool \fBStatusUpdate\fP (int newState, int newEntriesCount, int newAccepted, int &errorID, int newSessionID=0)"
+.br
+.RI "\fIGet Stormnode updates about the progress of Sandstorm\&. \fP"
+.ti -1c
+.RI "bool \fBSignFinalTransaction\fP (\fBCTransaction\fP &finalTransactionNew, \fBCNode\fP *node)"
+.br
+.RI "\fIAs a client, check and sign the final transaction\&. \fP"
+.ti -1c
+.RI "bool \fBGetLastValidBlockHash\fP (\fBuint256\fP &\fBhash\fP, int mod=1, int nBlockHeight=0)"
+.br
+.RI "\fIGet the last valid block hash for a given modulus\&. \fP"
+.ti -1c
+.RI "void \fBNewBlock\fP ()"
+.br
+.RI "\fIProcess a new block\&. \fP"
+.ti -1c
+.RI "void \fBCompletedTransaction\fP (bool error, int errorID)"
+.br
+.ti -1c
+.RI "void \fBClearLastMessage\fP ()"
+.br
+.ti -1c
+.RI "bool \fBMakeCollateralAmounts\fP ()"
+.br
+.RI "\fISplit up large inputs or make fee sized inputs\&. \fP"
+.ti -1c
+.RI "bool \fBCreateDenominated\fP (\fBCAmount\fP nTotalValue)"
+.br
+.ti -1c
+.RI "int \fBGetDenominations\fP (const std::vector< \fBCTxOut\fP > &vout, bool fSingleRandomDenom=false)"
+.br
+.RI "\fIGet the denominations for a list of outputs (returns a bitshifted integer) \fP"
+.ti -1c
+.RI "int \fBGetDenominations\fP (const std::vector< \fBCTxSSOut\fP > &vout)"
+.br
+.ti -1c
+.RI "void \fBGetDenominationsToString\fP (int nDenom, std::string &strDenom)"
+.br
+.ti -1c
+.RI "int \fBGetDenominationsByAmount\fP (\fBCAmount\fP nAmount, int nDenomTarget=0)"
+.br
+.RI "\fIGet the denominations for a specific amount of dash\&. \fP"
+.ti -1c
+.RI "int \fBGetDenominationsByAmounts\fP (std::vector< \fBCAmount\fP > &vecAmount)"
+.br
+.ti -1c
+.RI "std::string \fBGetMessageByID\fP (int messageID)"
+.br
+.ti -1c
+.RI "void \fBRelayFinalTransaction\fP (const int sessionID, const \fBCTransaction\fP &txNew)"
+.br
+.ti -1c
+.RI "void \fBRelaySignaturesAnon\fP (std::vector< \fBCTxIn\fP > &vin)"
+.br
+.ti -1c
+.RI "void \fBRelayInAnon\fP (std::vector< \fBCTxIn\fP > &vin, std::vector< \fBCTxOut\fP > &vout)"
+.br
+.ti -1c
+.RI "void \fBRelayIn\fP (const std::vector< \fBCTxSSIn\fP > &vin, const \fBCAmount\fP &nAmount, const \fBCTransaction\fP &txCollateral, const std::vector< \fBCTxSSOut\fP > &vout)"
+.br
+.ti -1c
+.RI "void \fBRelayStatus\fP (const int sessionID, const int newState, const int newEntriesCount, const int newAccepted, const int errorID=\fBMSG_NOERR\fP)"
+.br
+.ti -1c
+.RI "void \fBRelayCompletedTransaction\fP (const int sessionID, const bool error, const int errorID)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::string \fBlastMessage\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBlastEntryAccepted\fP"
+.br
+.ti -1c
+.RI "int \fBcachedLastSuccess\fP"
+.br
+.ti -1c
+.RI "int \fBminBlockSpacing\fP"
+.br
+.ti -1c
+.RI "std::string \fBstrAutoDenomResult\fP"
+.br
+.ti -1c
+.RI "\fBCScript\fP \fBcollateralPubKey\fP"
+.br
+.ti -1c
+.RI "\fBCStormnode\fP * \fBpSubmittedToStormnode\fP"
+.br
+.ti -1c
+.RI "int \fBsessionDenom\fP"
+.br
+.ti -1c
+.RI "int \fBcachedNumBlocks\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Used to keep track of current status of Sandstorm pool 
+.PP
+Definition at line 252 of file sandstorm\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBCSandstormPool::messages\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIERR_ALREADY_HAVE \fP\fP
+.TP
+\fB\fIERR_DENOM \fP\fP
+.TP
+\fB\fIERR_ENTRIES_FULL \fP\fP
+.TP
+\fB\fIERR_EXISTING_TX \fP\fP
+.TP
+\fB\fIERR_FEES \fP\fP
+.TP
+\fB\fIERR_INVALID_COLLATERAL \fP\fP
+.TP
+\fB\fIERR_INVALID_INPUT \fP\fP
+.TP
+\fB\fIERR_INVALID_SCRIPT \fP\fP
+.TP
+\fB\fIERR_INVALID_TX \fP\fP
+.TP
+\fB\fIERR_MAXIMUM \fP\fP
+.TP
+\fB\fIERR_SN_LIST \fP\fP
+.TP
+\fB\fIERR_MODE \fP\fP
+.TP
+\fB\fIERR_NON_STANDARD_PUBKEY \fP\fP
+.TP
+\fB\fIERR_NOT_A_SN \fP\fP
+.TP
+\fB\fIERR_QUEUE_FULL \fP\fP
+.TP
+\fB\fIERR_RECENT \fP\fP
+.TP
+\fB\fIERR_SESSION \fP\fP
+.TP
+\fB\fIERR_MISSING_TX \fP\fP
+.TP
+\fB\fIERR_VERSION \fP\fP
+.TP
+\fB\fIMSG_NOERR \fP\fP
+.TP
+\fB\fIMSG_SUCCESS \fP\fP
+.TP
+\fB\fIMSG_ENTRIES_ADDED \fP\fP
+.PP
+Definition at line 284 of file sandstorm\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CSandstormPool::CSandstormPool ()\fC [inline]\fP"
+
+.PP
+Definition at line 316 of file sandstorm\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool CSandstormPool::AddEntry (const std::vector< \fBCTxIn\fP > & newInput, const \fBCAmount\fP & nAmount, const \fBCTransaction\fP & txCollateral, const std::vector< \fBCTxOut\fP > & newOutput, int & errorID)"
+
+.PP
+Add a clients entry to the pool\&. 
+.PP
+Definition at line 988 of file sandstorm\&.cpp\&.
+.SS "bool CSandstormPool::AddScriptSig (const \fBCTxIn\fP & newVin)"
+
+.PP
+Add signature to a vin\&. 
+.PP
+Definition at line 1038 of file sandstorm\&.cpp\&.
+.SS "void CSandstormPool::ChargeFees ()"
+
+.PP
+Charge fees to bad actors (Charge clients a fee if they're abusive) 
+.PP
+Definition at line 646 of file sandstorm\&.cpp\&.
+.SS "void CSandstormPool::ChargeRandomFees ()"
+
+.PP
+Rarely charge fees to pay miners\&. 
+.PP
+Definition at line 750 of file sandstorm\&.cpp\&.
+.SS "void CSandstormPool::Check ()"
+
+.PP
+Check for process in Sandstorm\&. 
+.PP
+Definition at line 495 of file sandstorm\&.cpp\&.
+.SS "void CSandstormPool::CheckFinalTransaction ()"
+
+.PP
+Definition at line 559 of file sandstorm\&.cpp\&.
+.SS "void CSandstormPool::CheckForCompleteQueue ()"
+
+.PP
+Definition at line 869 of file sandstorm\&.cpp\&.
+.SS "void CSandstormPool::CheckTimeout ()"
+
+.PP
+Definition at line 787 of file sandstorm\&.cpp\&.
+.SS "void CSandstormPool::ClearLastMessage ()"
+
+.PP
+Definition at line 1343 of file sandstorm\&.cpp\&.
+.SS "void CSandstormPool::ClearSkippedDenominations ()\fC [inline]\fP"
+
+.PP
+Definition at line 352 of file sandstorm\&.h\&.
+.SS "void CSandstormPool::CompletedTransaction (bool error, int errorID)"
+
+.PP
+Definition at line 1319 of file sandstorm\&.cpp\&.
+.SS "bool CSandstormPool::CreateDenominated (\fBCAmount\fP nTotalValue)"
+
+.PP
+Definition at line 1707 of file sandstorm\&.cpp\&.
+.SS "bool CSandstormPool::DoAutomaticDenominating (bool fDryRun = \fCfalse\fP)"
+
+.PP
+Passively run Sandstorm in the background according to the configuration in settings (only for QT) 
+.PP
+Definition at line 1353 of file sandstorm\&.cpp\&.
+.SS "int CSandstormPool::GetCountEntriesAccepted () const\fC [inline]\fP"
+
+.PP
+Get the count of the accepted entries\&. 
+.PP
+Definition at line 421 of file sandstorm\&.h\&.
+.SS "int CSandstormPool::GetDenominations (const std::vector< \fBCTxOut\fP > & vout, bool fSingleRandomDenom = \fCfalse\fP)"
+
+.PP
+Get the denominations for a list of outputs (returns a bitshifted integer) 
+.PP
+Definition at line 1913 of file sandstorm\&.cpp\&.
+.SS "int CSandstormPool::GetDenominations (const std::vector< \fBCTxSSOut\fP > & vout)"
+
+.PP
+Definition at line 1903 of file sandstorm\&.cpp\&.
+.SS "int CSandstormPool::GetDenominationsByAmount (\fBCAmount\fP nAmount, int nDenomTarget = \fC0\fP)"
+
+.PP
+Get the denominations for a specific amount of dash\&. 
+.PP
+Definition at line 1966 of file sandstorm\&.cpp\&.
+.SS "int CSandstormPool::GetDenominationsByAmounts (std::vector< \fBCAmount\fP > & vecAmount)"
+
+.PP
+Definition at line 1953 of file sandstorm\&.cpp\&.
+.SS "void CSandstormPool::GetDenominationsToString (int nDenom, std::string & strDenom)"
+
+.PP
+Definition at line 1870 of file sandstorm\&.cpp\&.
+.SS "int CSandstormPool::GetEntriesCount () const\fC [inline]\fP"
+
+.PP
+Definition at line 409 of file sandstorm\&.h\&.
+.SS "int CSandstormPool::GetLastEntryAccepted () const\fC [inline]\fP"
+
+.PP
+Get the time the last entry was accepted (time in UTC milliseconds) 
+.PP
+Definition at line 415 of file sandstorm\&.h\&.
+.SS "bool CSandstormPool::GetLastValidBlockHash (\fBuint256\fP & hash, int mod = \fC1\fP, int nBlockHeight = \fC0\fP)"
+
+.PP
+Get the last valid block hash for a given modulus\&. 
+.SS "int CSandstormPool::GetMaxPoolTransactions ()\fC [inline]\fP"
+
+.PP
+Get the maximum number of transactions for the pool\&. 
+.PP
+Definition at line 445 of file sandstorm\&.h\&.
+.SS "std::string CSandstormPool::GetMessageByID (int messageID)"
+
+.PP
+Definition at line 1998 of file sandstorm\&.cpp\&.
+.SS "int CSandstormPool::GetState () const\fC [inline]\fP"
+
+.PP
+Definition at line 402 of file sandstorm\&.h\&.
+.SS "std::string CSandstormPool::GetStatus ()"
+
+.PP
+Definition at line 438 of file sandstorm\&.cpp\&.
+.SS "void CSandstormPool::InitCollateralAddress ()\fC [inline]\fP"
+
+.PP
+Definition at line 348 of file sandstorm\&.h\&.
+.SS "void CSandstormPool::InitDenominations ()\fC [inline]\fP"
+
+.PP
+Definition at line 365 of file sandstorm\&.h\&.
+.SS "bool CSandstormPool::IsCollateralValid (const \fBCTransaction\fP & txCollateral)"
+
+.PP
+If the collateral is valid given by a client\&. 
+.PP
+Definition at line 930 of file sandstorm\&.cpp\&.
+.SS "bool CSandstormPool::IsCompatibleWithEntries (std::vector< \fBCTxOut\fP > & vout)"
+
+.PP
+Are these outputs compatible with other client in the pool? 
+.PP
+Definition at line 1800 of file sandstorm\&.cpp\&.
+.SS "bool CSandstormPool::IsCompatibleWithSession (\fBCAmount\fP nAmount, \fBCTransaction\fP txCollateral, int & errorID)"
+
+.PP
+Is this amount compatible with other client in the pool? 
+.PP
+Definition at line 1813 of file sandstorm\&.cpp\&.
+.SS "bool CSandstormPool::IsDenomSkipped (\fBint64_t\fP denom)\fC [inline]\fP"
+
+.PP
+Definition at line 356 of file sandstorm\&.h\&.
+.SS "bool CSandstormPool::IsNull () const\fC [inline]\fP"
+
+.PP
+Definition at line 397 of file sandstorm\&.h\&.
+.SS "bool CSandstormPool::IsSessionReady ()\fC [inline]\fP"
+
+.PP
+Do we have enough users to take entries? 
+.PP
+Definition at line 451 of file sandstorm\&.h\&.
+.SS "bool CSandstormPool::MakeCollateralAmounts ()"
+
+.PP
+Split up large inputs or make fee sized inputs\&. 
+.PP
+Definition at line 1651 of file sandstorm\&.cpp\&.
+.SS "void CSandstormPool::NewBlock ()"
+
+.PP
+Process a new block\&. 
+.PP
+Definition at line 1307 of file sandstorm\&.cpp\&.
+.SS "bool CSandstormPool::PrepareSandstormDenominate ()"
+
+.PP
+Definition at line 1628 of file sandstorm\&.cpp\&.
+.SS "void CSandstormPool::ProcessMessageSandstorm (\fBCNode\fP * pfrom, std::string & strCommand, \fBCDataStream\fP & vRecv)"
+Process a Sandstorm message using the Sandstorm protocol 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpfrom\fP 
+.br
+\fIstrCommand\fP lower case command string; valid values are: Command Description  ssa Sandstorm Acceptable ssc Sandstorm Complete ssf Sandstorm Final tx ssi Sandstorm vIn ssq Sandstorm Queue sss Sandstorm Signal Final Tx sssu Sandstorm status update sssub Sandstorm Subscribe To 
+.br
+\fIvRecv\fP 
+.RE
+.PP
+
+.PP
+Definition at line 38 of file sandstorm\&.cpp\&.
+.SS "void CSandstormPool::RelayCompletedTransaction (const int sessionID, const bool error, const int errorID)"
+
+.PP
+Definition at line 2188 of file sandstorm\&.cpp\&.
+.SS "void CSandstormPool::RelayFinalTransaction (const int sessionID, const \fBCTransaction\fP & txNew)"
+
+.PP
+Definition at line 2152 of file sandstorm\&.cpp\&.
+.SS "void CSandstormPool::RelayIn (const std::vector< \fBCTxSSIn\fP > & vin, const \fBCAmount\fP & nAmount, const \fBCTransaction\fP & txCollateral, const std::vector< \fBCTxSSOut\fP > & vout)"
+
+.PP
+Definition at line 2161 of file sandstorm\&.cpp\&.
+.SS "void CSandstormPool::RelayInAnon (std::vector< \fBCTxIn\fP > & vin, std::vector< \fBCTxOut\fP > & vout)"
+
+.SS "void CSandstormPool::RelaySignaturesAnon (std::vector< \fBCTxIn\fP > & vin)"
+
+.SS "void CSandstormPool::RelayStatus (const int sessionID, const int newState, const int newEntriesCount, const int newAccepted, const int errorID = \fC\fBMSG_NOERR\fP\fP)"
+
+.PP
+Definition at line 2181 of file sandstorm\&.cpp\&.
+.SS "void CSandstormPool::Reset ()"
+
+.PP
+Definition at line 376 of file sandstorm\&.cpp\&.
+.SS "void CSandstormPool::SendSandstormDenominate (std::vector< \fBCTxIn\fP > & vin, std::vector< \fBCTxOut\fP > & vout, \fBCAmount\fP amount)"
+
+.PP
+As a client, send a transaction to a Stormnode to start the denomination process\&. 
+.PP
+Definition at line 1090 of file sandstorm\&.cpp\&.
+.SS "bool CSandstormPool::SetCollateralAddress (std::string strAddress)"
+
+.PP
+Definition at line 412 of file sandstorm\&.cpp\&.
+.SS "void CSandstormPool::SetMinBlockSpacing (int minBlockSpacingIn)\fC [inline]\fP"
+
+.PP
+Definition at line 387 of file sandstorm\&.h\&.
+.SS "void CSandstormPool::SetNull ()"
+
+.PP
+Definition at line 385 of file sandstorm\&.cpp\&.
+.SS "bool CSandstormPool::SignaturesComplete ()"
+
+.PP
+Check that all inputs are signed\&. (Are all inputs signed?) 
+.PP
+Definition at line 1077 of file sandstorm\&.cpp\&.
+.SS "bool CSandstormPool::SignatureValid (const \fBCScript\fP & newSig, const \fBCTxIn\fP & newVin)"
+
+.PP
+Check to make sure a signature matches an input in the pool\&. 
+.PP
+Definition at line 891 of file sandstorm\&.cpp\&.
+.SS "bool CSandstormPool::SignFinalTransaction (\fBCTransaction\fP & finalTransactionNew, \fBCNode\fP * node)"
+
+.PP
+As a client, check and sign the final transaction\&. 
+.PP
+Definition at line 1230 of file sandstorm\&.cpp\&.
+.SS "bool CSandstormPool::StatusUpdate (int newState, int newEntriesCount, int newAccepted, int & errorID, int newSessionID = \fC0\fP)"
+
+.PP
+Get Stormnode updates about the progress of Sandstorm\&. 
+.PP
+Definition at line 1183 of file sandstorm\&.cpp\&.
+.SS "void CSandstormPool::UnlockCoins ()"
+
+.PP
+Definition at line 426 of file sandstorm\&.cpp\&.
+.SS "void CSandstormPool::UpdateState (unsigned int newState)\fC [inline]\fP"
+
+.PP
+Definition at line 427 of file sandstorm\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "int CSandstormPool::cachedLastSuccess"
+
+.PP
+Definition at line 280 of file sandstorm\&.h\&.
+.SS "int CSandstormPool::cachedNumBlocks"
+
+.PP
+Definition at line 314 of file sandstorm\&.h\&.
+.SS "\fBCScript\fP CSandstormPool::collateralPubKey"
+
+.PP
+Definition at line 310 of file sandstorm\&.h\&.
+.SS "unsigned int CSandstormPool::lastEntryAccepted"
+
+.PP
+Definition at line 279 of file sandstorm\&.h\&.
+.SS "std::string CSandstormPool::lastMessage"
+
+.PP
+Definition at line 278 of file sandstorm\&.h\&.
+.SS "int CSandstormPool::minBlockSpacing"
+
+.PP
+Definition at line 281 of file sandstorm\&.h\&.
+.SS "\fBCStormnode\fP* CSandstormPool::pSubmittedToStormnode"
+
+.PP
+Definition at line 312 of file sandstorm\&.h\&.
+.SS "int CSandstormPool::sessionDenom"
+
+.PP
+Definition at line 313 of file sandstorm\&.h\&.
+.SS "std::string CSandstormPool::strAutoDenomResult"
+
+.PP
+Definition at line 283 of file sandstorm\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

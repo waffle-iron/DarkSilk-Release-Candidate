@@ -1,0 +1,33 @@
+.TH "/home/dev/ds-160209/src/secp256k1/contrib/lax_der_parsing.h" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/secp256k1/contrib/lax_der_parsing.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <secp256k1\&.h>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBecdsa_signature_parse_der_lax\fP (const \fBsecp256k1_context\fP *ctx, \fBsecp256k1_ecdsa_signature\fP *sig, const unsigned char *input, size_t inputlen) \fBSECP256K1_ARG_NONNULL\fP(1) \fBSECP256K1_ARG_NONNULL\fP(2) \fBSECP256K1_ARG_NONNULL\fP(3)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "int ecdsa_signature_parse_der_lax (const \fBsecp256k1_context\fP * ctx, \fBsecp256k1_ecdsa_signature\fP * sig, const unsigned char * input, size_t inputlen)"
+Parse a signature in 'lax DER' format
+.PP
+Returns: 1 when the signature could be parsed, 0 otherwise\&. Args: ctx: a secp256k1 context object Out: sig: a pointer to a signature object In: input: a pointer to the signature to be parsed inputlen: the length of the array pointed to be input
+.PP
+This function will accept any valid DER encoded signature, even if the encoded numbers are out of range\&. In addition, it will accept signatures which violate the DER spec in various ways\&. Its purpose is to allow validation of the Bitcoin blockchain, which includes non-DER signatures from before the network rules were updated to enforce DER\&. Note that the set of supported violations is a strict subset of what OpenSSL will accept\&.
+.PP
+After the call, sig will always be initialized\&. If parsing failed or the encoded numbers are out of range, signature validation with it is guaranteed to fail for every message and public key\&. 
+.PP
+Definition at line 12 of file lax_der_parsing\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

@@ -1,0 +1,155 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_median_filter" kind="class" language="C++" prot="public">
+    <compoundname>CMedianFilter</compoundname>
+    <includes refid="util_8h" local="no">util.h</includes>
+    <templateparamlist>
+      <param>
+        <type>typename</type>
+        <declname>T</declname>
+        <defname>T</defname>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_c_median_filter_1ae20afe1640996de11db4e97f4c3103fa" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; T &gt;</type>
+        <definition>std::vector&lt;T&gt; CMedianFilter&lt; T &gt;::vValues</definition>
+        <argsstring></argsstring>
+        <name>vValues</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/util.h" line="508" column="1" bodyfile="/home/dev/ds-160209/src/util.h" bodystart="508" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_median_filter_1a8290248907e4c1e89db51abb107b83a9" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; T &gt;</type>
+        <definition>std::vector&lt;T&gt; CMedianFilter&lt; T &gt;::vSorted</definition>
+        <argsstring></argsstring>
+        <name>vSorted</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/util.h" line="509" column="1" bodyfile="/home/dev/ds-160209/src/util.h" bodystart="509" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_median_filter_1a65ac3eedb12b1f782d1237dceefa8a4c" prot="private" static="no" mutable="no">
+        <type>unsigned int</type>
+        <definition>unsigned int CMedianFilter&lt; T &gt;::nSize</definition>
+        <argsstring></argsstring>
+        <name>nSize</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/util.h" line="510" column="1" bodyfile="/home/dev/ds-160209/src/util.h" bodystart="510" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_median_filter_1a181463ed081ece10fd437875243d9cad" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CMedianFilter&lt; T &gt;::CMedianFilter</definition>
+        <argsstring>(unsigned int size, T initial_value)</argsstring>
+        <name>CMedianFilter</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>size</declname>
+        </param>
+        <param>
+          <type>T</type>
+          <declname>initial_value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/util.h" line="512" column="1" bodyfile="/home/dev/ds-160209/src/util.h" bodystart="512" bodyend="518"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_median_filter_1ae10cde98866b034ec73c530be4c60874" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CMedianFilter&lt; T &gt;::input</definition>
+        <argsstring>(T value)</argsstring>
+        <name>input</name>
+        <param>
+          <type>T</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/util.h" line="520" column="1" bodyfile="/home/dev/ds-160209/src/util.h" bodystart="520" bodyend="531"/>
+        <referencedby refid="timedata_8h_1ad8af089fc8835e11c7d77f6b473fccae" compoundref="timedata_8cpp" startline="40" endline="111">AddTimeData</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_median_filter_1aab6b67fbb63024c462bfa30bbe789c31" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>T</type>
+        <definition>T CMedianFilter&lt; T &gt;::median</definition>
+        <argsstring>() const </argsstring>
+        <name>median</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/util.h" line="533" column="1" bodyfile="/home/dev/ds-160209/src/util.h" bodystart="533" bodyend="545"/>
+        <references refid="class_c_median_filter_1a0791303910a3a11adbc127f9fe4e3a9e" compoundref="util_8h" startline="547" endline="550">CMedianFilter&lt; T &gt;::size</references>
+        <referencedby refid="timedata_8h_1ad8af089fc8835e11c7d77f6b473fccae" compoundref="timedata_8cpp" startline="40" endline="111">AddTimeData</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_median_filter_1a0791303910a3a11adbc127f9fe4e3a9e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int CMedianFilter&lt; T &gt;::size</definition>
+        <argsstring>() const </argsstring>
+        <name>size</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/util.h" line="547" column="1" bodyfile="/home/dev/ds-160209/src/util.h" bodystart="547" bodyend="550"/>
+        <referencedby refid="class_c_median_filter_1aab6b67fbb63024c462bfa30bbe789c31" compoundref="util_8h" startline="533" endline="545">CMedianFilter&lt; T &gt;::median</referencedby>
+        <referencedby refid="timedata_8h_1ad8af089fc8835e11c7d77f6b473fccae" compoundref="timedata_8cpp" startline="40" endline="111">AddTimeData</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_median_filter_1afbfe7258f17cec5cc7f2f105d03b0567" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::vector&lt; T &gt;</type>
+        <definition>std::vector&lt;T&gt; CMedianFilter&lt; T &gt;::sorted</definition>
+        <argsstring>() const </argsstring>
+        <name>sorted</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/util.h" line="552" column="1" bodyfile="/home/dev/ds-160209/src/util.h" bodystart="552" bodyend="555"/>
+        <referencedby refid="timedata_8h_1ad8af089fc8835e11c7d77f6b473fccae" compoundref="timedata_8cpp" startline="40" endline="111">AddTimeData</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Median filter over a stream of values. Returns the median of the last N numbers </para>    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/util.h" line="506" column="1" bodyfile="/home/dev/ds-160209/src/util.h" bodystart="505" bodyend="556"/>
+    <listofallmembers>
+      <member refid="class_c_median_filter_1a181463ed081ece10fd437875243d9cad" prot="public" virt="non-virtual"><scope>CMedianFilter</scope><name>CMedianFilter</name></member>
+      <member refid="class_c_median_filter_1ae10cde98866b034ec73c530be4c60874" prot="public" virt="non-virtual"><scope>CMedianFilter</scope><name>input</name></member>
+      <member refid="class_c_median_filter_1aab6b67fbb63024c462bfa30bbe789c31" prot="public" virt="non-virtual"><scope>CMedianFilter</scope><name>median</name></member>
+      <member refid="class_c_median_filter_1a65ac3eedb12b1f782d1237dceefa8a4c" prot="private" virt="non-virtual"><scope>CMedianFilter</scope><name>nSize</name></member>
+      <member refid="class_c_median_filter_1a0791303910a3a11adbc127f9fe4e3a9e" prot="public" virt="non-virtual"><scope>CMedianFilter</scope><name>size</name></member>
+      <member refid="class_c_median_filter_1afbfe7258f17cec5cc7f2f105d03b0567" prot="public" virt="non-virtual"><scope>CMedianFilter</scope><name>sorted</name></member>
+      <member refid="class_c_median_filter_1a8290248907e4c1e89db51abb107b83a9" prot="private" virt="non-virtual"><scope>CMedianFilter</scope><name>vSorted</name></member>
+      <member refid="class_c_median_filter_1ae20afe1640996de11db4e97f4c3103fa" prot="private" virt="non-virtual"><scope>CMedianFilter</scope><name>vValues</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

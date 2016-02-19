@@ -1,0 +1,383 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_block_tree_d_b" kind="class" language="C++" prot="public">
+    <compoundname>CBlockTreeDB</compoundname>
+    <basecompoundref refid="class_c_level_d_b_wrapper" prot="public" virt="non-virtual">CLevelDBWrapper</basecompoundref>
+    <includes refid="txdb_8h" local="no">txdb.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_block_tree_d_b_1a52fd1b1dc02c2a4e977099e2c2c50424" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CBlockTreeDB::CBlockTreeDB</definition>
+        <argsstring>(size_t nCacheSize, bool fMemory=false, bool fWipe=false)</argsstring>
+        <name>CBlockTreeDB</name>
+        <param>
+          <type>size_t</type>
+          <declname>nCacheSize</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fMemory</declname>
+          <defval>false</defval>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fWipe</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb.h" line="41" column="1" bodyfile="/home/dev/ds-160209/src/txdb.cpp" bodystart="27" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_tree_d_b_1a608a04a08445d95e477cb66889c679d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CBlockTreeDB::WriteBlockIndex</definition>
+        <argsstring>(const CDiskBlockIndex &amp;blockindex)</argsstring>
+        <name>WriteBlockIndex</name>
+        <param>
+          <type>const <ref refid="class_c_disk_block_index" kindref="compound">CDiskBlockIndex</ref> &amp;</type>
+          <declname>blockindex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb.h" line="46" column="1" bodyfile="/home/dev/ds-160209/src/txdb.cpp" bodystart="30" bodyend="33"/>
+        <references refid="class_c_level_d_b_wrapper_1a740caa1aefbafc888838ea7f70dc31f4" compoundref="leveldbwrapper_8h" startline="116" endline="121">CLevelDBWrapper::Write</references>
+        <references refid="class_c_disk_block_index_1adbe404c55c68be782360b4594d355fad" compoundref="chain_8h" startline="391" endline="407">CDiskBlockIndex::GetBlockHash</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_tree_d_b_1a6f951198dc53fbe9194626ff82638656" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CBlockTreeDB::ReadBlockFileInfo</definition>
+        <argsstring>(int nFile, CBlockFileInfo &amp;fileinfo)</argsstring>
+        <name>ReadBlockFileInfo</name>
+        <param>
+          <type>int</type>
+          <declname>nFile</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_block_file_info" kindref="compound">CBlockFileInfo</ref> &amp;</type>
+          <declname>fileinfo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb.h" line="47" column="1" bodyfile="/home/dev/ds-160209/src/txdb.cpp" bodystart="39" bodyend="41"/>
+        <references refid="class_c_level_d_b_wrapper_1aa3b816ae43c930b4bf1f85461bff4b5b" compoundref="leveldbwrapper_8h" startline="91" endline="113">CLevelDBWrapper::Read</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_tree_d_b_1ae248032ee1f1303dea54a0b36ad84755" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CBlockTreeDB::WriteBlockFileInfo</definition>
+        <argsstring>(int nFile, const CBlockFileInfo &amp;fileinfo)</argsstring>
+        <name>WriteBlockFileInfo</name>
+        <param>
+          <type>int</type>
+          <declname>nFile</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_block_file_info" kindref="compound">CBlockFileInfo</ref> &amp;</type>
+          <declname>fileinfo</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb.h" line="48" column="1" bodyfile="/home/dev/ds-160209/src/txdb.cpp" bodystart="35" bodyend="37"/>
+        <references refid="class_c_level_d_b_wrapper_1a740caa1aefbafc888838ea7f70dc31f4" compoundref="leveldbwrapper_8h" startline="116" endline="121">CLevelDBWrapper::Write</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_tree_d_b_1adb1276fe2f0e0c4c106660948c581711" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CBlockTreeDB::ReadLastBlockFile</definition>
+        <argsstring>(int &amp;nFile)</argsstring>
+        <name>ReadLastBlockFile</name>
+        <param>
+          <type>int &amp;</type>
+          <declname>nFile</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb.h" line="49" column="1" bodyfile="/home/dev/ds-160209/src/txdb.cpp" bodystart="59" bodyend="61"/>
+        <references refid="class_c_level_d_b_wrapper_1aa3b816ae43c930b4bf1f85461bff4b5b" compoundref="leveldbwrapper_8h" startline="91" endline="113">CLevelDBWrapper::Read</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_tree_d_b_1ae1f4ea54edf05a056d2da00ea90a9394" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CBlockTreeDB::WriteLastBlockFile</definition>
+        <argsstring>(int nFile)</argsstring>
+        <name>WriteLastBlockFile</name>
+        <param>
+          <type>int</type>
+          <declname>nFile</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb.h" line="50" column="1" bodyfile="/home/dev/ds-160209/src/txdb.cpp" bodystart="43" bodyend="45"/>
+        <references refid="class_c_level_d_b_wrapper_1a740caa1aefbafc888838ea7f70dc31f4" compoundref="leveldbwrapper_8h" startline="116" endline="121">CLevelDBWrapper::Write</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_tree_d_b_1a8fa5d150b98f4fd1aa8cf503eddfccef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CBlockTreeDB::WriteReindexing</definition>
+        <argsstring>(bool fReindex)</argsstring>
+        <name>WriteReindexing</name>
+        <param>
+          <type>bool</type>
+          <declname>fReindex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb.h" line="51" column="1" bodyfile="/home/dev/ds-160209/src/txdb.cpp" bodystart="47" bodyend="52"/>
+        <references refid="class_c_level_d_b_wrapper_1a740caa1aefbafc888838ea7f70dc31f4" compoundref="leveldbwrapper_8h" startline="116" endline="121">CLevelDBWrapper::Write</references>
+        <references refid="class_c_level_d_b_wrapper_1a9f67e2880ba191fdc9439ba34e315d72" compoundref="leveldbwrapper_8h" startline="143" endline="148">CLevelDBWrapper::Erase</references>
+        <referencedby refid="init_8h_1a1a4c1bfbf6ba1db77e988b89b9cadfd3" compoundref="init_8cpp" startline="375" endline="1285">AppInit2</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_tree_d_b_1a1abf6fc392048428aa24a12b7942824b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CBlockTreeDB::ReadReindexing</definition>
+        <argsstring>(bool &amp;fReindex)</argsstring>
+        <name>ReadReindexing</name>
+        <param>
+          <type>bool &amp;</type>
+          <declname>fReindex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb.h" line="52" column="1" bodyfile="/home/dev/ds-160209/src/txdb.cpp" bodystart="54" bodyend="57"/>
+        <references refid="class_c_level_d_b_wrapper_1a9c9d2e1c06c45c5d6883f33136f6718b" compoundref="leveldbwrapper_8h" startline="124" endline="140">CLevelDBWrapper::Exists</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_tree_d_b_1a74383427266d627e84c2d0c8e21e03c7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CBlockTreeDB::ReadTxIndex</definition>
+        <argsstring>(const uint256 &amp;txid, CDiskTxPos &amp;pos)</argsstring>
+        <name>ReadTxIndex</name>
+        <param>
+          <type>const <ref refid="classuint256" kindref="compound">uint256</ref> &amp;</type>
+          <declname>txid</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_disk_tx_pos" kindref="compound">CDiskTxPos</ref> &amp;</type>
+          <declname>pos</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb.h" line="53" column="1" bodyfile="/home/dev/ds-160209/src/txdb.cpp" bodystart="63" bodyend="65"/>
+        <references refid="class_c_level_d_b_wrapper_1aa3b816ae43c930b4bf1f85461bff4b5b" compoundref="leveldbwrapper_8h" startline="91" endline="113">CLevelDBWrapper::Read</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_tree_d_b_1a1e03745f9675ad352a1483a0aa7ef308" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CBlockTreeDB::WriteTxIndex</definition>
+        <argsstring>(const std::vector&lt; std::pair&lt; uint256, CDiskTxPos &gt; &gt; &amp;list)</argsstring>
+        <name>WriteTxIndex</name>
+        <param>
+          <type>const std::vector&lt; std::pair&lt; <ref refid="classuint256" kindref="compound">uint256</ref>, <ref refid="class_c_disk_tx_pos" kindref="compound">CDiskTxPos</ref> &gt; &gt; &amp;</type>
+          <declname>list</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb.h" line="54" column="1" bodyfile="/home/dev/ds-160209/src/txdb.cpp" bodystart="67" bodyend="72"/>
+        <references refid="class_c_level_d_b_batch_1ab459da1abafa27e834de9a4cc25b6f2d" compoundref="leveldbwrapper_8h" startline="35" endline="48">CLevelDBBatch::Write</references>
+        <references refid="class_c_level_d_b_wrapper_1a820484c9e427f9e3400396e750acf4b8" compoundref="leveldbwrapper_8cpp" startline="81" endline="86">CLevelDBWrapper::WriteBatch</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_tree_d_b_1af2f65b70ac5d8a198d4f29a7e909c08a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CBlockTreeDB::WriteFlag</definition>
+        <argsstring>(const std::string &amp;name, bool fValue)</argsstring>
+        <name>WriteFlag</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fValue</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb.h" line="55" column="1" bodyfile="/home/dev/ds-160209/src/txdb.cpp" bodystart="74" bodyend="76"/>
+        <references refid="class_c_level_d_b_wrapper_1a740caa1aefbafc888838ea7f70dc31f4" compoundref="leveldbwrapper_8h" startline="116" endline="121">CLevelDBWrapper::Write</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_tree_d_b_1acd779c4653fd9a87fffe95d53ce7c6d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CBlockTreeDB::ReadFlag</definition>
+        <argsstring>(const std::string &amp;name, bool &amp;fValue)</argsstring>
+        <name>ReadFlag</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <param>
+          <type>bool &amp;</type>
+          <declname>fValue</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb.h" line="56" column="1" bodyfile="/home/dev/ds-160209/src/txdb.cpp" bodystart="78" bodyend="84"/>
+        <references refid="class_c_level_d_b_wrapper_1aa3b816ae43c930b4bf1f85461bff4b5b" compoundref="leveldbwrapper_8h" startline="91" endline="113">CLevelDBWrapper::Read</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_tree_d_b_1a12be19bb1d7253eeb40e1aa88b032346" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CBlockTreeDB::LoadBlockIndexGuts</definition>
+        <argsstring>()</argsstring>
+        <name>LoadBlockIndexGuts</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb.h" line="57" column="1" bodyfile="/home/dev/ds-160209/src/txdb.cpp" bodystart="86" bodyend="136"/>
+        <references refid="class_c_level_d_b_wrapper_1a5f43d01a8a6b26464b875d190e002d74" compoundref="leveldbwrapper_8h" startline="165" endline="168">CLevelDBWrapper::NewIterator</references>
+        <references refid="serialize_8h_1a6b7b47dd702d9e331586d485013fd1eaa34949680c53028d35a449bf88b3c329d" compoundref="serialize_8h" startline="90">SER_DISK</references>
+        <references refid="class_c_data_stream_1aa3a9ecf166f36f4ea531d2b23628d2c9" compoundref="streams_8h" startline="103" endline="106">CDataStream::str</references>
+        <references refid="classleveldb_1_1_slice_1aa64861043d9deee6889461bf0593cf73" compoundref="slice_8h" startline="40" endline="40">leveldb::Slice::data</references>
+        <references refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" compoundref="slice_8h" startline="43" endline="43">leveldb::Slice::size</references>
+        <references refid="txdb-leveldb_8cpp_1af3adfd64a90ee443bfa5fe16321aa2d7" compoundref="txdb-leveldb_8cpp" startline="317" endline="335">InsertBlockIndex</references>
+        <references refid="class_c_block_index_1a1ef11137155df1dd5c81491630cece39" compoundref="chain_8h" startline="111">CBlockIndex::pprev</references>
+        <references refid="class_c_block_index_1aebfc8d6b95852546760e742553d7bfd5" compoundref="chain_8h" startline="116">CBlockIndex::nHeight</references>
+        <references refid="class_c_block_index_1a3bf9ecd8938c42be6a4b14d3c7ef5c21" compoundref="chain_8h" startline="113">CBlockIndex::nFile</references>
+        <references refid="class_c_block_index_1af164283dfb2d62ac44be8d10446bce4a" compoundref="chain_8h" startline="146">CBlockIndex::nDataPos</references>
+        <references refid="class_c_block_index_1a865ddd56406c23e98cdc61511a61eb64" compoundref="chain_8h" startline="148">CBlockIndex::nUndoPos</references>
+        <references refid="class_c_block_index_1a45126301a0a6e26010527a7bbfc1ef58" compoundref="chain_8h" startline="139">CBlockIndex::nVersion</references>
+        <references refid="class_c_block_index_1a0601b6b2bd6eaedfbc283c00d045a21c" compoundref="chain_8h" startline="140">CBlockIndex::hashMerkleRoot</references>
+        <references refid="class_c_block_index_1a4b687a226e9e166b0f91c1b616b543a6" compoundref="chain_8h" startline="141">CBlockIndex::nTime</references>
+        <references refid="class_c_block_index_1a3324894e6af612d1bd76f89378435713" compoundref="chain_8h" startline="142">CBlockIndex::nBits</references>
+        <references refid="class_c_block_index_1a5e0a648ed1df8da171eba636d5ebef01" compoundref="chain_8h" startline="143">CBlockIndex::nNonce</references>
+        <references refid="class_c_block_index_1ac5a336b45ca70e3ed2fc090bf2ee3011" compoundref="chain_8h" startline="155">CBlockIndex::nStatus</references>
+        <references refid="class_c_block_index_1ac8e219a377839d2f9133a4387f46e44e" compoundref="chain_8h" startline="159">CBlockIndex::nTx</references>
+        <references refid="main_8h_1a20a76dbc6ac5b8a6e0aaef85522b1069" compoundref="block_8cpp" startline="57" endline="71">CheckProofOfWork</references>
+        <references refid="class_c_block_index_1ab843ef9b8b0a0193ec3a5c24738e484f" compoundref="chain_8h" startline="233" endline="236">CBlockIndex::GetBlockHash</references>
+        <references refid="class_c_block_index_1abed1fcbcd372db6b9efa6bb9da317469" compoundref="chain_8h" startline="316" endline="327">CBlockIndex::ToString</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_c_block_tree_d_b_1a7e3d4632e9374e652bc008163bb9e2b1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CBlockTreeDB::CBlockTreeDB</definition>
+        <argsstring>(const CBlockTreeDB &amp;)</argsstring>
+        <name>CBlockTreeDB</name>
+        <param>
+          <type>const <ref refid="class_c_block_tree_d_b" kindref="compound">CBlockTreeDB</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb.h" line="43" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_tree_d_b_1a93fa0b87d518a1142f3fbfe65ab07cd2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CBlockTreeDB::operator=</definition>
+        <argsstring>(const CBlockTreeDB &amp;)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="class_c_block_tree_d_b" kindref="compound">CBlockTreeDB</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb.h" line="44" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Access to the block database (blocks/index/) </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2211">
+        <label>CBlockTreeDB</label>
+        <link refid="class_c_block_tree_d_b"/>
+        <childnode refid="2212" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2212">
+        <label>CLevelDBWrapper</label>
+        <link refid="class_c_level_d_b_wrapper"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2213">
+        <label>CBlockTreeDB</label>
+        <link refid="class_c_block_tree_d_b"/>
+        <childnode refid="2214" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2214">
+        <label>CLevelDBWrapper</label>
+        <link refid="class_c_level_d_b_wrapper"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/dev/ds-160209/src/txdb.h" line="39" column="1" bodyfile="/home/dev/ds-160209/src/txdb.h" bodystart="38" bodyend="58"/>
+    <listofallmembers>
+      <member refid="class_c_block_tree_d_b_1a52fd1b1dc02c2a4e977099e2c2c50424" prot="public" virt="non-virtual"><scope>CBlockTreeDB</scope><name>CBlockTreeDB</name></member>
+      <member refid="class_c_block_tree_d_b_1a7e3d4632e9374e652bc008163bb9e2b1" prot="private" virt="non-virtual"><scope>CBlockTreeDB</scope><name>CBlockTreeDB</name></member>
+      <member refid="class_c_level_d_b_wrapper_1ae796b1190c072df6275e0ada4d187943" prot="public" virt="non-virtual"><scope>CBlockTreeDB</scope><name>CLevelDBWrapper</name></member>
+      <member refid="class_c_level_d_b_wrapper_1a9f67e2880ba191fdc9439ba34e315d72" prot="public" virt="non-virtual"><scope>CBlockTreeDB</scope><name>Erase</name></member>
+      <member refid="class_c_level_d_b_wrapper_1a9c9d2e1c06c45c5d6883f33136f6718b" prot="public" virt="non-virtual"><scope>CBlockTreeDB</scope><name>Exists</name></member>
+      <member refid="class_c_level_d_b_wrapper_1a639fbfd6652941a1ab570c202197a32a" prot="public" virt="non-virtual"><scope>CBlockTreeDB</scope><name>Flush</name></member>
+      <member refid="class_c_block_tree_d_b_1a12be19bb1d7253eeb40e1aa88b032346" prot="public" virt="non-virtual"><scope>CBlockTreeDB</scope><name>LoadBlockIndexGuts</name></member>
+      <member refid="class_c_level_d_b_wrapper_1a5f43d01a8a6b26464b875d190e002d74" prot="public" virt="non-virtual"><scope>CBlockTreeDB</scope><name>NewIterator</name></member>
+      <member refid="class_c_block_tree_d_b_1a93fa0b87d518a1142f3fbfe65ab07cd2" prot="private" virt="non-virtual"><scope>CBlockTreeDB</scope><name>operator=</name></member>
+      <member refid="class_c_level_d_b_wrapper_1aa3b816ae43c930b4bf1f85461bff4b5b" prot="public" virt="non-virtual"><scope>CBlockTreeDB</scope><name>Read</name></member>
+      <member refid="class_c_block_tree_d_b_1a6f951198dc53fbe9194626ff82638656" prot="public" virt="non-virtual"><scope>CBlockTreeDB</scope><name>ReadBlockFileInfo</name></member>
+      <member refid="class_c_block_tree_d_b_1acd779c4653fd9a87fffe95d53ce7c6d3" prot="public" virt="non-virtual"><scope>CBlockTreeDB</scope><name>ReadFlag</name></member>
+      <member refid="class_c_block_tree_d_b_1adb1276fe2f0e0c4c106660948c581711" prot="public" virt="non-virtual"><scope>CBlockTreeDB</scope><name>ReadLastBlockFile</name></member>
+      <member refid="class_c_block_tree_d_b_1a1abf6fc392048428aa24a12b7942824b" prot="public" virt="non-virtual"><scope>CBlockTreeDB</scope><name>ReadReindexing</name></member>
+      <member refid="class_c_block_tree_d_b_1a74383427266d627e84c2d0c8e21e03c7" prot="public" virt="non-virtual"><scope>CBlockTreeDB</scope><name>ReadTxIndex</name></member>
+      <member refid="class_c_level_d_b_wrapper_1abd05e914893cd610e8444871f829d8c9" prot="public" virt="non-virtual"><scope>CBlockTreeDB</scope><name>Sync</name></member>
+      <member refid="class_c_level_d_b_wrapper_1a740caa1aefbafc888838ea7f70dc31f4" prot="public" virt="non-virtual"><scope>CBlockTreeDB</scope><name>Write</name></member>
+      <member refid="class_c_level_d_b_wrapper_1a820484c9e427f9e3400396e750acf4b8" prot="public" virt="non-virtual"><scope>CBlockTreeDB</scope><name>WriteBatch</name></member>
+      <member refid="class_c_block_tree_d_b_1ae248032ee1f1303dea54a0b36ad84755" prot="public" virt="non-virtual"><scope>CBlockTreeDB</scope><name>WriteBlockFileInfo</name></member>
+      <member refid="class_c_block_tree_d_b_1a608a04a08445d95e477cb66889c679d0" prot="public" virt="non-virtual"><scope>CBlockTreeDB</scope><name>WriteBlockIndex</name></member>
+      <member refid="class_c_block_tree_d_b_1af2f65b70ac5d8a198d4f29a7e909c08a" prot="public" virt="non-virtual"><scope>CBlockTreeDB</scope><name>WriteFlag</name></member>
+      <member refid="class_c_block_tree_d_b_1ae1f4ea54edf05a056d2da00ea90a9394" prot="public" virt="non-virtual"><scope>CBlockTreeDB</scope><name>WriteLastBlockFile</name></member>
+      <member refid="class_c_block_tree_d_b_1a8fa5d150b98f4fd1aa8cf503eddfccef" prot="public" virt="non-virtual"><scope>CBlockTreeDB</scope><name>WriteReindexing</name></member>
+      <member refid="class_c_block_tree_d_b_1a1e03745f9675ad352a1483a0aa7ef308" prot="public" virt="non-virtual"><scope>CBlockTreeDB</scope><name>WriteTxIndex</name></member>
+      <member refid="class_c_level_d_b_wrapper_1a7ffe7edeadfcf521d32509216e95403b" prot="public" virt="non-virtual"><scope>CBlockTreeDB</scope><name>~CLevelDBWrapper</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

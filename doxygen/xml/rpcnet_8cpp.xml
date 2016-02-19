@@ -1,0 +1,1784 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="rpcnet_8cpp" kind="file" language="C++">
+    <compoundname>rpcnet.cpp</compoundname>
+    <includes refid="rpcserver_8h" local="yes">rpcserver.h</includes>
+    <includes refid="alert_8h" local="yes">alert.h</includes>
+    <includes refid="main_8h" local="yes">main.h</includes>
+    <includes refid="net_8h" local="yes">net.h</includes>
+    <includes refid="netbase_8h" local="yes">netbase.h</includes>
+    <includes refid="protocol_8h" local="yes">protocol.h</includes>
+    <includes refid="sync_8h" local="yes">sync.h</includes>
+    <includes refid="timedata_8h" local="yes">timedata.h</includes>
+    <includes refid="util_8h" local="yes">util.h</includes>
+    <includes refid="key_8h" local="yes">key.h</includes>
+    <includes local="no">boost/foreach.hpp</includes>
+    <includes refid="json__spirit__value_8h" local="yes">json/json_spirit_value.h</includes>
+    <incdepgraph>
+      <node id="49235">
+        <label>list</label>
+      </node>
+      <node id="49215">
+        <label>boost/thread/mutex.hpp</label>
+      </node>
+      <node id="49314">
+        <label>leveldb/write_batch.h</label>
+        <link refid="write__batch_8h"/>
+        <childnode refid="49200" relation="include">
+        </childnode>
+        <childnode refid="49312" relation="include">
+        </childnode>
+      </node>
+      <node id="49230">
+        <label>netinet/in.h</label>
+      </node>
+      <node id="49198">
+        <label>amount.h</label>
+        <link refid="amount_8h"/>
+        <childnode refid="49199" relation="include">
+        </childnode>
+        <childnode refid="49213" relation="include">
+        </childnode>
+        <childnode refid="49200" relation="include">
+        </childnode>
+      </node>
+      <node id="49231">
+        <label>arpa/inet.h</label>
+      </node>
+      <node id="49261">
+        <label>boost/thread/condition_variable.hpp</label>
+      </node>
+      <node id="49257">
+        <label>iomanip</label>
+      </node>
+      <node id="49249">
+        <label>boost/version.hpp</label>
+      </node>
+      <node id="49244">
+        <label>boost/shared_ptr.hpp</label>
+      </node>
+      <node id="49205">
+        <label>limits</label>
+      </node>
+      <node id="49275">
+        <label>crypto/sha256.h</label>
+        <link refid="sha256_8h"/>
+        <childnode refid="49206" relation="include">
+        </childnode>
+        <childnode refid="49213" relation="include">
+        </childnode>
+      </node>
+      <node id="49276">
+        <label>crypto/argon2/blake2/blake2.h</label>
+        <link refid="blake2_8h"/>
+        <childnode refid="49277" relation="include">
+        </childnode>
+        <childnode refid="49206" relation="include">
+        </childnode>
+        <childnode refid="49217" relation="include">
+        </childnode>
+      </node>
+      <node id="49266">
+        <label>primitives/transaction.h</label>
+        <link refid="transaction_8h"/>
+        <childnode refid="49198" relation="include">
+        </childnode>
+        <childnode refid="49221" relation="include">
+        </childnode>
+        <childnode refid="49199" relation="include">
+        </childnode>
+        <childnode refid="49267" relation="include">
+        </childnode>
+        <childnode refid="49268" relation="include">
+        </childnode>
+        <childnode refid="49300" relation="include">
+        </childnode>
+        <childnode refid="49298" relation="include">
+        </childnode>
+      </node>
+      <node id="49268">
+        <label>script.h</label>
+        <link refid="script_8h"/>
+        <childnode refid="49200" relation="include">
+        </childnode>
+        <childnode refid="49201" relation="include">
+        </childnode>
+        <childnode refid="49206" relation="include">
+        </childnode>
+        <childnode refid="49269" relation="include">
+        </childnode>
+        <childnode refid="49245" relation="include">
+        </childnode>
+        <childnode refid="49270" relation="include">
+        </childnode>
+        <childnode refid="49279" relation="include">
+        </childnode>
+        <childnode refid="49281" relation="include">
+        </childnode>
+        <childnode refid="49297" relation="include">
+        </childnode>
+      </node>
+      <node id="49296">
+        <label>openssl/rand.h</label>
+      </node>
+      <node id="49250">
+        <label>boost/spirit/core.hpp</label>
+      </node>
+      <node id="49222">
+        <label>assert.h</label>
+      </node>
+      <node id="49210">
+        <label>boost/tuple/tuple.hpp</label>
+      </node>
+      <node id="49229">
+        <label>net/if.h</label>
+      </node>
+      <node id="49265">
+        <label>txmempool.h</label>
+        <link refid="txmempool_8h"/>
+        <childnode refid="49266" relation="include">
+        </childnode>
+        <childnode refid="49259" relation="include">
+        </childnode>
+        <childnode refid="49301" relation="include">
+        </childnode>
+        <childnode refid="49198" relation="include">
+        </childnode>
+        <childnode refid="49316" relation="include">
+        </childnode>
+      </node>
+      <node id="49313">
+        <label>leveldb/options.h</label>
+        <link refid="options_8h"/>
+        <childnode refid="49277" relation="include">
+        </childnode>
+      </node>
+      <node id="49263">
+        <label>boost/thread/recursive_mutex.hpp</label>
+      </node>
+      <node id="49219">
+        <label>version.h</label>
+        <link refid="version_8h"/>
+        <childnode refid="49220" relation="include">
+        </childnode>
+        <childnode refid="49200" relation="include">
+        </childnode>
+      </node>
+      <node id="49301">
+        <label>coins.h</label>
+        <link refid="coins_8h"/>
+        <childnode refid="49302" relation="include">
+        </childnode>
+        <childnode refid="49265" relation="include">
+        </childnode>
+        <childnode refid="49222" relation="include">
+        </childnode>
+        <childnode refid="49206" relation="include">
+        </childnode>
+        <childnode refid="49269" relation="include">
+        </childnode>
+        <childnode refid="49315" relation="include">
+        </childnode>
+      </node>
+      <node id="49216">
+        <label>sys/mman.h</label>
+      </node>
+      <node id="49213">
+        <label>stdlib.h</label>
+      </node>
+      <node id="49326">
+        <label>chain.h</label>
+        <link refid="chain_8h"/>
+        <childnode refid="49327" relation="include">
+        </childnode>
+        <childnode refid="49281" relation="include">
+        </childnode>
+        <childnode refid="49324" relation="include">
+        </childnode>
+        <childnode refid="49201" relation="include">
+        </childnode>
+        <childnode refid="49269" relation="include">
+        </childnode>
+      </node>
+      <node id="49269">
+        <label>boost/foreach.hpp</label>
+      </node>
+      <node id="49295">
+        <label>openssl/crypto.h</label>
+      </node>
+      <node id="49246">
+        <label>json_spirit_error_position.h</label>
+        <link refid="json__spirit__error__position_8h"/>
+        <childnode refid="49200" relation="include">
+        </childnode>
+      </node>
+      <node id="49254">
+        <label>boost/spirit/iterator/position_iterator.hpp</label>
+      </node>
+      <node id="49225">
+        <label>compat.h</label>
+        <link refid="compat_8h"/>
+        <childnode refid="49226" relation="include">
+        </childnode>
+        <childnode refid="49216" relation="include">
+        </childnode>
+        <childnode refid="49227" relation="include">
+        </childnode>
+        <childnode refid="49228" relation="include">
+        </childnode>
+        <childnode refid="49229" relation="include">
+        </childnode>
+        <childnode refid="49230" relation="include">
+        </childnode>
+        <childnode refid="49231" relation="include">
+        </childnode>
+        <childnode refid="49232" relation="include">
+        </childnode>
+        <childnode refid="49217" relation="include">
+        </childnode>
+        <childnode refid="49233" relation="include">
+        </childnode>
+        <childnode refid="49218" relation="include">
+        </childnode>
+        <childnode refid="49234" relation="include">
+        </childnode>
+      </node>
+      <node id="49291">
+        <label>boost/date_time/posix_time/posix_time_types.hpp</label>
+      </node>
+      <node id="49272">
+        <label>openssl/sha.h</label>
+      </node>
+      <node id="49234">
+        <label>errno.h</label>
+      </node>
+      <node id="49204">
+        <label>cassert</label>
+      </node>
+      <node id="49223">
+        <label>stdexcept</label>
+      </node>
+      <node id="49281">
+        <label>util.h</label>
+        <link refid="util_8h"/>
+        <childnode refid="49228" relation="include">
+        </childnode>
+        <childnode refid="49282" relation="include">
+        </childnode>
+        <childnode refid="49283" relation="include">
+        </childnode>
+        <childnode refid="49199" relation="include">
+        </childnode>
+        <childnode refid="49284" relation="include">
+        </childnode>
+        <childnode refid="49198" relation="include">
+        </childnode>
+        <childnode refid="49202" relation="include">
+        </childnode>
+        <childnode refid="49235" relation="include">
+        </childnode>
+        <childnode refid="49286" relation="include">
+        </childnode>
+        <childnode refid="49201" relation="include">
+        </childnode>
+        <childnode refid="49200" relation="include">
+        </childnode>
+        <childnode refid="49287" relation="include">
+        </childnode>
+        <childnode refid="49288" relation="include">
+        </childnode>
+        <childnode refid="49289" relation="include">
+        </childnode>
+        <childnode refid="49290" relation="include">
+        </childnode>
+        <childnode refid="49291" relation="include">
+        </childnode>
+        <childnode refid="49292" relation="include">
+        </childnode>
+        <childnode refid="49293" relation="include">
+        </childnode>
+        <childnode refid="49294" relation="include">
+        </childnode>
+        <childnode refid="49295" relation="include">
+        </childnode>
+        <childnode refid="49296" relation="include">
+        </childnode>
+        <childnode refid="49280" relation="include">
+        </childnode>
+        <childnode refid="49206" relation="include">
+        </childnode>
+      </node>
+      <node id="49323">
+        <label>protocol.h</label>
+        <link refid="protocol_8h"/>
+        <childnode refid="49324" relation="include">
+        </childnode>
+        <childnode refid="49199" relation="include">
+        </childnode>
+        <childnode refid="49322" relation="include">
+        </childnode>
+        <childnode refid="49206" relation="include">
+        </childnode>
+        <childnode refid="49200" relation="include">
+        </childnode>
+      </node>
+      <node id="49255">
+        <label>json/json_spirit_utils.h</label>
+        <link refid="json__spirit__utils_8h"/>
+        <childnode refid="49241" relation="include">
+        </childnode>
+        <childnode refid="49202" relation="include">
+        </childnode>
+      </node>
+      <node id="49290">
+        <label>boost/date_time/gregorian/gregorian_types.hpp</label>
+      </node>
+      <node id="49309">
+        <label>leveldb/db.h</label>
+        <link refid="leveldb_2include_2leveldb_2db_8h"/>
+        <childnode refid="49206" relation="include">
+        </childnode>
+        <childnode refid="49298" relation="include">
+        </childnode>
+        <childnode refid="49310" relation="include">
+        </childnode>
+        <childnode refid="49313" relation="include">
+        </childnode>
+      </node>
+      <node id="49200">
+        <label>string</label>
+      </node>
+      <node id="49328">
+        <label>scrypt.h</label>
+        <link refid="scrypt_8h"/>
+        <childnode refid="49206" relation="include">
+        </childnode>
+        <childnode refid="49213" relation="include">
+        </childnode>
+        <childnode refid="49281" relation="include">
+        </childnode>
+        <childnode refid="49317" relation="include">
+        </childnode>
+      </node>
+      <node id="49196">
+        <label>/home/dev/ds-160209/src/rpcnet.cpp</label>
+        <link refid="rpcnet.cpp"/>
+        <childnode refid="49197" relation="include">
+        </childnode>
+        <childnode refid="49258" relation="include">
+        </childnode>
+        <childnode refid="49264" relation="include">
+        </childnode>
+        <childnode refid="49317" relation="include">
+        </childnode>
+        <childnode refid="49322" relation="include">
+        </childnode>
+        <childnode refid="49323" relation="include">
+        </childnode>
+        <childnode refid="49259" relation="include">
+        </childnode>
+        <childnode refid="49300" relation="include">
+        </childnode>
+        <childnode refid="49281" relation="include">
+        </childnode>
+        <childnode refid="49329" relation="include">
+        </childnode>
+        <childnode refid="49269" relation="include">
+        </childnode>
+        <childnode refid="49241" relation="include">
+        </childnode>
+      </node>
+      <node id="49202">
+        <label>map</label>
+      </node>
+      <node id="49237">
+        <label>boost/iostreams/stream.hpp</label>
+      </node>
+      <node id="49287">
+        <label>boost/thread.hpp</label>
+      </node>
+      <node id="49325">
+        <label>addrman.h</label>
+        <link refid="addrman_8h"/>
+        <childnode refid="49322" relation="include">
+        </childnode>
+        <childnode refid="49323" relation="include">
+        </childnode>
+        <childnode refid="49259" relation="include">
+        </childnode>
+        <childnode refid="49300" relation="include">
+        </childnode>
+        <childnode refid="49281" relation="include">
+        </childnode>
+        <childnode refid="49202" relation="include">
+        </childnode>
+        <childnode refid="49201" relation="include">
+        </childnode>
+      </node>
+      <node id="49240">
+        <label>json/json_spirit_reader_template.h</label>
+        <link refid="json__spirit__reader__template_8h"/>
+        <childnode refid="49241" relation="include">
+        </childnode>
+        <childnode refid="49246" relation="include">
+        </childnode>
+        <childnode refid="49247" relation="include">
+        </childnode>
+        <childnode refid="49248" relation="include">
+        </childnode>
+        <childnode refid="49249" relation="include">
+        </childnode>
+        <childnode refid="49250" relation="include">
+        </childnode>
+        <childnode refid="49251" relation="include">
+        </childnode>
+        <childnode refid="49252" relation="include">
+        </childnode>
+        <childnode refid="49253" relation="include">
+        </childnode>
+        <childnode refid="49254" relation="include">
+        </childnode>
+      </node>
+      <node id="49305">
+        <label>leveldbwrapper.h</label>
+        <link refid="leveldbwrapper_8h"/>
+        <childnode refid="49199" relation="include">
+        </childnode>
+        <childnode refid="49306" relation="include">
+        </childnode>
+        <childnode refid="49281" relation="include">
+        </childnode>
+        <childnode refid="49289" relation="include">
+        </childnode>
+        <childnode refid="49309" relation="include">
+        </childnode>
+        <childnode refid="49314" relation="include">
+        </childnode>
+      </node>
+      <node id="49277">
+        <label>stddef.h</label>
+      </node>
+      <node id="49245">
+        <label>boost/variant.hpp</label>
+      </node>
+      <node id="49236">
+        <label>boost/iostreams/concepts.hpp</label>
+      </node>
+      <node id="49233">
+        <label>netdb.h</label>
+      </node>
+      <node id="49226">
+        <label>sys/fcntl.h</label>
+      </node>
+      <node id="49302">
+        <label>undo.h</label>
+        <link refid="undo_8h"/>
+        <childnode refid="49303" relation="include">
+        </childnode>
+      </node>
+      <node id="49312">
+        <label>leveldb/status.h</label>
+        <link refid="status_8h"/>
+        <childnode refid="49200" relation="include">
+        </childnode>
+        <childnode refid="49311" relation="include">
+        </childnode>
+      </node>
+      <node id="49316">
+        <label>boost/circular_buffer.hpp</label>
+      </node>
+      <node id="49248">
+        <label>boost/function.hpp</label>
+      </node>
+      <node id="49199">
+        <label>serialize.h</label>
+        <link refid="serialize_8h"/>
+        <childnode refid="49200" relation="include">
+        </childnode>
+        <childnode refid="49201" relation="include">
+        </childnode>
+        <childnode refid="49202" relation="include">
+        </childnode>
+        <childnode refid="49203" relation="include">
+        </childnode>
+        <childnode refid="49204" relation="include">
+        </childnode>
+        <childnode refid="49205" relation="include">
+        </childnode>
+        <childnode refid="49206" relation="include">
+        </childnode>
+        <childnode refid="49207" relation="include">
+        </childnode>
+        <childnode refid="49208" relation="include">
+        </childnode>
+        <childnode refid="49209" relation="include">
+        </childnode>
+        <childnode refid="49210" relation="include">
+        </childnode>
+        <childnode refid="49211" relation="include">
+        </childnode>
+        <childnode refid="49219" relation="include">
+        </childnode>
+      </node>
+      <node id="49217">
+        <label>limits.h</label>
+      </node>
+      <node id="49260">
+        <label>threadsafety.h</label>
+        <link refid="threadsafety_8h"/>
+      </node>
+      <node id="49321">
+        <label>mruset.h</label>
+        <link refid="mruset_8h"/>
+        <childnode refid="49203" relation="include">
+        </childnode>
+        <childnode refid="49318" relation="include">
+        </childnode>
+      </node>
+      <node id="49283">
+        <label>sys/resource.h</label>
+      </node>
+      <node id="49292">
+        <label>openssl/bio.h</label>
+      </node>
+      <node id="49320">
+        <label>boost/signals2/signal.hpp</label>
+      </node>
+      <node id="49322">
+        <label>netbase.h</label>
+        <link refid="netbase_8h"/>
+        <childnode refid="49200" relation="include">
+        </childnode>
+        <childnode refid="49201" relation="include">
+        </childnode>
+        <childnode refid="49199" relation="include">
+        </childnode>
+        <childnode refid="49225" relation="include">
+        </childnode>
+      </node>
+      <node id="49258">
+        <label>alert.h</label>
+        <link refid="alert_8h"/>
+        <childnode refid="49199" relation="include">
+        </childnode>
+        <childnode refid="49259" relation="include">
+        </childnode>
+        <childnode refid="49221" relation="include">
+        </childnode>
+        <childnode refid="49202" relation="include">
+        </childnode>
+        <childnode refid="49203" relation="include">
+        </childnode>
+        <childnode refid="49206" relation="include">
+        </childnode>
+        <childnode refid="49200" relation="include">
+        </childnode>
+      </node>
+      <node id="49238">
+        <label>boost/asio.hpp</label>
+      </node>
+      <node id="49271">
+        <label>hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="49221" relation="include">
+        </childnode>
+        <childnode refid="49199" relation="include">
+        </childnode>
+        <childnode refid="49272" relation="include">
+        </childnode>
+        <childnode refid="49273" relation="include">
+        </childnode>
+        <childnode refid="49274" relation="include">
+        </childnode>
+        <childnode refid="49275" relation="include">
+        </childnode>
+        <childnode refid="49276" relation="include">
+        </childnode>
+        <childnode refid="49278" relation="include">
+        </childnode>
+        <childnode refid="49201" relation="include">
+        </childnode>
+      </node>
+      <node id="49239">
+        <label>boost/asio/ssl.hpp</label>
+      </node>
+      <node id="49232">
+        <label>ifaddrs.h</label>
+      </node>
+      <node id="49297">
+        <label>stealth.h</label>
+        <link refid="stealth_8h"/>
+        <childnode refid="49281" relation="include">
+        </childnode>
+        <childnode refid="49199" relation="include">
+        </childnode>
+        <childnode refid="49213" relation="include">
+        </childnode>
+        <childnode refid="49298" relation="include">
+        </childnode>
+        <childnode refid="49201" relation="include">
+        </childnode>
+        <childnode refid="49299" relation="include">
+        </childnode>
+      </node>
+      <node id="49228">
+        <label>sys/types.h</label>
+      </node>
+      <node id="49308">
+        <label>ios</label>
+      </node>
+      <node id="49214">
+        <label>string.h</label>
+      </node>
+      <node id="49220">
+        <label>clientversion.h</label>
+        <link refid="clientversion_8h"/>
+      </node>
+      <node id="49208">
+        <label>cstdio</label>
+      </node>
+      <node id="49262">
+        <label>boost/thread/locks.hpp</label>
+      </node>
+      <node id="49294">
+        <label>openssl/buffer.h</label>
+      </node>
+      <node id="49209">
+        <label>boost/type_traits/is_fundamental.hpp</label>
+      </node>
+      <node id="49264">
+        <label>main.h</label>
+        <link refid="main_8h"/>
+        <childnode refid="49265" relation="include">
+        </childnode>
+        <childnode refid="49317" relation="include">
+        </childnode>
+        <childnode refid="49268" relation="include">
+        </childnode>
+        <childnode refid="49306" relation="include">
+        </childnode>
+        <childnode refid="49304" relation="include">
+        </childnode>
+        <childnode refid="49326" relation="include">
+        </childnode>
+        <childnode refid="49235" relation="include">
+        </childnode>
+        <childnode refid="49315" relation="include">
+        </childnode>
+      </node>
+      <node id="49289">
+        <label>boost/filesystem/path.hpp</label>
+      </node>
+      <node id="49315">
+        <label>boost/unordered_map.hpp</label>
+      </node>
+      <node id="49270">
+        <label>pubkey.h</label>
+        <link refid="pubkey_8h"/>
+        <childnode refid="49271" relation="include">
+        </childnode>
+        <childnode refid="49199" relation="include">
+        </childnode>
+        <childnode refid="49221" relation="include">
+        </childnode>
+        <childnode refid="49223" relation="include">
+        </childnode>
+        <childnode refid="49201" relation="include">
+        </childnode>
+      </node>
+      <node id="49218">
+        <label>unistd.h</label>
+      </node>
+      <node id="49201">
+        <label>vector</label>
+      </node>
+      <node id="49279">
+        <label>bignum.h</label>
+        <link refid="bignum_8h"/>
+        <childnode refid="49199" relation="include">
+        </childnode>
+        <childnode refid="49221" relation="include">
+        </childnode>
+        <childnode refid="49280" relation="include">
+        </childnode>
+        <childnode refid="49223" relation="include">
+        </childnode>
+        <childnode refid="49201" relation="include">
+        </childnode>
+        <childnode refid="49206" relation="include">
+        </childnode>
+      </node>
+      <node id="49317">
+        <label>net.h</label>
+        <link refid="net_8h"/>
+        <childnode refid="49318" relation="include">
+        </childnode>
+        <childnode refid="49319" relation="include">
+        </childnode>
+        <childnode refid="49269" relation="include">
+        </childnode>
+        <childnode refid="49320" relation="include">
+        </childnode>
+        <childnode refid="49296" relation="include">
+        </childnode>
+        <childnode refid="49231" relation="include">
+        </childnode>
+        <childnode refid="49321" relation="include">
+        </childnode>
+        <childnode refid="49322" relation="include">
+        </childnode>
+        <childnode refid="49323" relation="include">
+        </childnode>
+        <childnode refid="49325" relation="include">
+        </childnode>
+        <childnode refid="49271" relation="include">
+        </childnode>
+        <childnode refid="49306" relation="include">
+        </childnode>
+      </node>
+      <node id="49224">
+        <label>rpcprotocol.h</label>
+        <link refid="rpcprotocol_8h"/>
+        <childnode refid="49225" relation="include">
+        </childnode>
+        <childnode refid="49235" relation="include">
+        </childnode>
+        <childnode refid="49202" relation="include">
+        </childnode>
+        <childnode refid="49206" relation="include">
+        </childnode>
+        <childnode refid="49200" relation="include">
+        </childnode>
+        <childnode refid="49236" relation="include">
+        </childnode>
+        <childnode refid="49237" relation="include">
+        </childnode>
+        <childnode refid="49238" relation="include">
+        </childnode>
+        <childnode refid="49239" relation="include">
+        </childnode>
+        <childnode refid="49240" relation="include">
+        </childnode>
+        <childnode refid="49255" relation="include">
+        </childnode>
+        <childnode refid="49256" relation="include">
+        </childnode>
+      </node>
+      <node id="49256">
+        <label>json/json_spirit_writer_template.h</label>
+        <link refid="json__spirit__writer__template_8h"/>
+        <childnode refid="49241" relation="include">
+        </childnode>
+        <childnode refid="49204" relation="include">
+        </childnode>
+        <childnode refid="49242" relation="include">
+        </childnode>
+        <childnode refid="49257" relation="include">
+        </childnode>
+      </node>
+      <node id="49273">
+        <label>openssl/ripemd.h</label>
+      </node>
+      <node id="49288">
+        <label>boost/filesystem.hpp</label>
+      </node>
+      <node id="49252">
+        <label>boost/spirit/utility/escape_char.hpp</label>
+      </node>
+      <node id="49286">
+        <label>utility</label>
+      </node>
+      <node id="49303">
+        <label>compressor.h</label>
+        <link refid="compressor_8h"/>
+        <childnode refid="49266" relation="include">
+        </childnode>
+        <childnode refid="49304" relation="include">
+        </childnode>
+      </node>
+      <node id="49242">
+        <label>sstream</label>
+      </node>
+      <node id="49329">
+        <label>key.h</label>
+        <link refid="key_8h"/>
+        <childnode refid="49211" relation="include">
+        </childnode>
+        <childnode refid="49270" relation="include">
+        </childnode>
+        <childnode refid="49223" relation="include">
+        </childnode>
+        <childnode refid="49201" relation="include">
+        </childnode>
+      </node>
+      <node id="49293">
+        <label>openssl/evp.h</label>
+      </node>
+      <node id="49284">
+        <label>tinyformat.h</label>
+        <link refid="tinyformat_8h"/>
+        <childnode refid="49204" relation="include">
+        </childnode>
+        <childnode refid="49285" relation="include">
+        </childnode>
+        <childnode refid="49242" relation="include">
+        </childnode>
+        <childnode refid="49223" relation="include">
+        </childnode>
+      </node>
+      <node id="49206">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="49306">
+        <label>streams.h</label>
+        <link refid="streams_8h"/>
+        <childnode refid="49211" relation="include">
+        </childnode>
+        <childnode refid="49199" relation="include">
+        </childnode>
+        <childnode refid="49307" relation="include">
+        </childnode>
+        <childnode refid="49222" relation="include">
+        </childnode>
+        <childnode refid="49308" relation="include">
+        </childnode>
+        <childnode refid="49205" relation="include">
+        </childnode>
+        <childnode refid="49202" relation="include">
+        </childnode>
+        <childnode refid="49203" relation="include">
+        </childnode>
+        <childnode refid="49206" relation="include">
+        </childnode>
+        <childnode refid="49200" relation="include">
+        </childnode>
+        <childnode refid="49214" relation="include">
+        </childnode>
+        <childnode refid="49286" relation="include">
+        </childnode>
+        <childnode refid="49201" relation="include">
+        </childnode>
+      </node>
+      <node id="49278">
+        <label>crypto/argon2/argon2.h</label>
+        <link refid="argon2_8h"/>
+        <childnode refid="49206" relation="include">
+        </childnode>
+        <childnode refid="49277" relation="include">
+        </childnode>
+        <childnode refid="49217" relation="include">
+        </childnode>
+      </node>
+      <node id="49282">
+        <label>sys/time.h</label>
+      </node>
+      <node id="49285">
+        <label>iostream</label>
+      </node>
+      <node id="49197">
+        <label>rpcserver.h</label>
+        <link refid="rpcserver_8h"/>
+        <childnode refid="49198" relation="include">
+        </childnode>
+        <childnode refid="49221" relation="include">
+        </childnode>
+        <childnode refid="49224" relation="include">
+        </childnode>
+        <childnode refid="49235" relation="include">
+        </childnode>
+        <childnode refid="49202" relation="include">
+        </childnode>
+      </node>
+      <node id="49318">
+        <label>deque</label>
+      </node>
+      <node id="49221">
+        <label>uint256.h</label>
+        <link refid="uint256_8h"/>
+        <childnode refid="49222" relation="include">
+        </childnode>
+        <childnode refid="49207" relation="include">
+        </childnode>
+        <childnode refid="49223" relation="include">
+        </childnode>
+        <childnode refid="49206" relation="include">
+        </childnode>
+        <childnode refid="49200" relation="include">
+        </childnode>
+        <childnode refid="49201" relation="include">
+        </childnode>
+      </node>
+      <node id="49247">
+        <label>boost/bind.hpp</label>
+      </node>
+      <node id="49243">
+        <label>boost/config.hpp</label>
+      </node>
+      <node id="49227">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="49311">
+        <label>leveldb/slice.h</label>
+        <link refid="slice_8h"/>
+        <childnode refid="49222" relation="include">
+        </childnode>
+        <childnode refid="49277" relation="include">
+        </childnode>
+        <childnode refid="49214" relation="include">
+        </childnode>
+        <childnode refid="49200" relation="include">
+        </childnode>
+      </node>
+      <node id="49241">
+        <label>json_spirit_value.h</label>
+        <link refid="json__spirit__value_8h"/>
+        <childnode refid="49201" relation="include">
+        </childnode>
+        <childnode refid="49202" relation="include">
+        </childnode>
+        <childnode refid="49200" relation="include">
+        </childnode>
+        <childnode refid="49204" relation="include">
+        </childnode>
+        <childnode refid="49242" relation="include">
+        </childnode>
+        <childnode refid="49223" relation="include">
+        </childnode>
+        <childnode refid="49206" relation="include">
+        </childnode>
+        <childnode refid="49243" relation="include">
+        </childnode>
+        <childnode refid="49244" relation="include">
+        </childnode>
+        <childnode refid="49245" relation="include">
+        </childnode>
+      </node>
+      <node id="49319">
+        <label>boost/array.hpp</label>
+      </node>
+      <node id="49280">
+        <label>openssl/bn.h</label>
+      </node>
+      <node id="49304">
+        <label>txdb.h</label>
+        <link refid="txdb_8h"/>
+        <childnode refid="49305" relation="include">
+        </childnode>
+        <childnode refid="49264" relation="include">
+        </childnode>
+        <childnode refid="49202" relation="include">
+        </childnode>
+        <childnode refid="49200" relation="include">
+        </childnode>
+        <childnode refid="49286" relation="include">
+        </childnode>
+        <childnode refid="49201" relation="include">
+        </childnode>
+      </node>
+      <node id="49300">
+        <label>timedata.h</label>
+        <link refid="timedata_8h"/>
+        <childnode refid="49206" relation="include">
+        </childnode>
+      </node>
+      <node id="49211">
+        <label>allocators.h</label>
+        <link refid="allocators_8h"/>
+        <childnode refid="49212" relation="include">
+        </childnode>
+        <childnode refid="49214" relation="include">
+        </childnode>
+        <childnode refid="49200" relation="include">
+        </childnode>
+        <childnode refid="49215" relation="include">
+        </childnode>
+        <childnode refid="49202" relation="include">
+        </childnode>
+        <childnode refid="49216" relation="include">
+        </childnode>
+        <childnode refid="49217" relation="include">
+        </childnode>
+        <childnode refid="49218" relation="include">
+        </childnode>
+      </node>
+      <node id="49253">
+        <label>boost/spirit/iterator/multi_pass.hpp</label>
+      </node>
+      <node id="49324">
+        <label>chainparams.h</label>
+        <link refid="chainparams_8h"/>
+        <childnode refid="49279" relation="include">
+        </childnode>
+        <childnode refid="49221" relation="include">
+        </childnode>
+        <childnode refid="49201" relation="include">
+        </childnode>
+      </node>
+      <node id="49203">
+        <label>set</label>
+      </node>
+      <node id="49307">
+        <label>algorithm</label>
+      </node>
+      <node id="49274">
+        <label>crypto/ripemd160.h</label>
+        <link refid="ripemd160_8h"/>
+        <childnode refid="49206" relation="include">
+        </childnode>
+        <childnode refid="49213" relation="include">
+        </childnode>
+      </node>
+      <node id="49267">
+        <label>util.h</label>
+      </node>
+      <node id="49298">
+        <label>stdio.h</label>
+      </node>
+      <node id="49212">
+        <label>cleanse.h</label>
+        <link refid="cleanse_8h"/>
+        <childnode refid="49213" relation="include">
+        </childnode>
+      </node>
+      <node id="49207">
+        <label>cstring</label>
+      </node>
+      <node id="49259">
+        <label>sync.h</label>
+        <link refid="sync_8h"/>
+        <childnode refid="49260" relation="include">
+        </childnode>
+        <childnode refid="49261" relation="include">
+        </childnode>
+        <childnode refid="49262" relation="include">
+        </childnode>
+        <childnode refid="49215" relation="include">
+        </childnode>
+        <childnode refid="49263" relation="include">
+        </childnode>
+      </node>
+      <node id="49299">
+        <label>inttypes.h</label>
+      </node>
+      <node id="49310">
+        <label>leveldb/iterator.h</label>
+        <link refid="iterator_8h"/>
+        <childnode refid="49311" relation="include">
+        </childnode>
+        <childnode refid="49312" relation="include">
+        </childnode>
+      </node>
+      <node id="49251">
+        <label>boost/spirit/utility/confix.hpp</label>
+      </node>
+      <node id="49327">
+        <label>primitives/block.h</label>
+        <link refid="primitives_2block_8h"/>
+        <childnode refid="49266" relation="include">
+        </childnode>
+        <childnode refid="49278" relation="include">
+        </childnode>
+        <childnode refid="49328" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="rpcnet_8cpp_1a1aec1e08b6e84d6094d2b3a4f78cec87" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacejson__spirit_1a28e6abc99fda7b06c430ca38802527a3" kindref="member">Value</ref></type>
+        <definition>Value getconnectioncount</definition>
+        <argsstring>(const Array &amp;params, bool fHelp)</argsstring>
+        <name>getconnectioncount</name>
+        <param>
+          <type>const <ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref> &amp;</type>
+          <declname>params</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fHelp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcnet.cpp" line="23" column="1" bodyfile="/home/dev/ds-160209/src/rpcnet.cpp" bodystart="23" bodyend="32"/>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="net_8cpp_1a8282e3a7948351ac96516573cd31f9d0" compoundref="net_8cpp" startline="69">cs_vNodes</references>
+        <references refid="net_8cpp_1aa5a11f8873e230cea77bc7e91ee51918" compoundref="net_8cpp" startline="68">vNodes</references>
+      </memberdef>
+      <memberdef kind="function" id="rpcnet_8cpp_1a8755bbfea9d792e60e50ecad82a5504d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacejson__spirit_1a28e6abc99fda7b06c430ca38802527a3" kindref="member">Value</ref></type>
+        <definition>Value ping</definition>
+        <argsstring>(const Array &amp;params, bool fHelp)</argsstring>
+        <name>ping</name>
+        <param>
+          <type>const <ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref> &amp;</type>
+          <declname>params</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fHelp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcnet.cpp" line="34" column="1" bodyfile="/home/dev/ds-160209/src/rpcnet.cpp" bodystart="34" bodyend="50"/>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="net_8cpp_1a8282e3a7948351ac96516573cd31f9d0" compoundref="net_8cpp" startline="69">cs_vNodes</references>
+        <references refid="net_8cpp_1aa5a11f8873e230cea77bc7e91ee51918" compoundref="net_8cpp" startline="68">vNodes</references>
+        <references refid="class_c_node_1aa1e9c1dc1d5cf806b9be0af155c0bf90" compoundref="net_8h" startline="310">CNode::fPingQueued</references>
+        <references refid="classjson__spirit_1_1_value__impl_1abb8ef4f2732e2c842afa716c456cb35d" compoundref="json__spirit__value_8h" startline="78">json_spirit::Value_impl&lt; Config &gt;::null</references>
+      </memberdef>
+      <memberdef kind="function" id="rpcnet_8cpp_1aeb7ed40072125e3bac7332d9e84d0ef4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void CopyNodeStats</definition>
+        <argsstring>(std::vector&lt; CNodeStats &gt; &amp;vstats)</argsstring>
+        <name>CopyNodeStats</name>
+        <param>
+          <type>std::vector&lt; <ref refid="class_c_node_stats" kindref="compound">CNodeStats</ref> &gt; &amp;</type>
+          <declname>vstats</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcnet.cpp" line="52" column="1" bodyfile="/home/dev/ds-160209/src/rpcnet.cpp" bodystart="52" bodyend="63"/>
+      </memberdef>
+      <memberdef kind="function" id="rpcnet_8cpp_1aee93daaf3d283447eae5d8765e0e5ddb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacejson__spirit_1a28e6abc99fda7b06c430ca38802527a3" kindref="member">Value</ref></type>
+        <definition>Value getpeerinfo</definition>
+        <argsstring>(const Array &amp;params, bool fHelp)</argsstring>
+        <name>getpeerinfo</name>
+        <param>
+          <type>const <ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref> &amp;</type>
+          <declname>params</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fHelp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcnet.cpp" line="65" column="1" bodyfile="/home/dev/ds-160209/src/rpcnet.cpp" bodystart="65" bodyend="104"/>
+        <references refid="class_c_node_stats_1a3299ecdae870c367fe657f3f59b27e43" compoundref="net_8h" startline="140">CNodeStats::addrName</references>
+        <references refid="class_c_node_stats_1a027a5445a0c40e6489875e653be9c758" compoundref="net_8h" startline="152">CNodeStats::addrLocal</references>
+        <references refid="tinyformat_8h_1a56c674871a61baaad36ad52238c08857" compoundref="tinyformat_8h" startline="1011">strprintf</references>
+        <references refid="class_c_node_stats_1a3c56fe96daccb9339314953d249dfa15" compoundref="net_8h" startline="135">CNodeStats::nServices</references>
+        <references refid="class_c_node_stats_1adc88b64389f26227db58ed86058d2e1a" compoundref="net_8h" startline="136">CNodeStats::nLastSend</references>
+        <references refid="class_c_node_stats_1a67b3cd5817ad20bfb2d9eb1583f1deb5" compoundref="net_8h" startline="137">CNodeStats::nLastRecv</references>
+        <references refid="class_c_node_stats_1a3c70b0862e9ddd682380114016196137" compoundref="net_8h" startline="147">CNodeStats::nSendBytes</references>
+        <references refid="class_c_node_stats_1a1aaec0f47a95487cbd709caf15889663" compoundref="net_8h" startline="148">CNodeStats::nRecvBytes</references>
+        <references refid="class_c_node_stats_1a3d5133369e51db3c45839c8a68c662d1" compoundref="net_8h" startline="138">CNodeStats::nTimeConnected</references>
+        <references refid="class_c_node_stats_1a905b33fdcf0443f25fa19ea4d10e8e59" compoundref="net_8h" startline="139">CNodeStats::nTimeOffset</references>
+        <references refid="class_c_node_stats_1a535c198cbe3af112d4538f535e6618cd" compoundref="net_8h" startline="150">CNodeStats::dPingTime</references>
+        <references refid="class_c_node_stats_1a03a38f87940d04b321b9fb3102d0368d" compoundref="net_8h" startline="151">CNodeStats::dPingWait</references>
+        <references refid="class_c_node_stats_1ac8892d29d7c246e34e78fbc15ae77276" compoundref="net_8h" startline="141">CNodeStats::nVersion</references>
+        <references refid="class_c_node_stats_1a9029626f81544ffe6727cf63a091974f" compoundref="net_8h" startline="143">CNodeStats::strSubVer</references>
+        <references refid="class_c_node_stats_1a34627c46cac7bc2bfb3406c954522b49" compoundref="net_8h" startline="144">CNodeStats::fInbound</references>
+        <references refid="class_c_node_stats_1a86ff627e31f8ab881a8e11bb3acf4f19" compoundref="net_8h" startline="145">CNodeStats::nStartingHeight</references>
+        <references refid="class_c_node_stats_1ae5c21d0bb707eff8e43174078c1a1a00" compoundref="net_8h" startline="146">CNodeStats::nMisbehavior</references>
+        <references refid="class_c_node_stats_1a82d6fca82ac649d6ba746a18faec6d79" compoundref="net_8h" startline="149">CNodeStats::fSyncNode</references>
+      </memberdef>
+      <memberdef kind="function" id="rpcnet_8cpp_1ab455bfd729ba34d3bb55b716e62405a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacejson__spirit_1a28e6abc99fda7b06c430ca38802527a3" kindref="member">Value</ref></type>
+        <definition>Value addnode</definition>
+        <argsstring>(const Array &amp;params, bool fHelp)</argsstring>
+        <name>addnode</name>
+        <param>
+          <type>const <ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref> &amp;</type>
+          <declname>params</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fHelp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcnet.cpp" line="106" column="1" bodyfile="/home/dev/ds-160209/src/rpcnet.cpp" bodystart="106" bodyend="146"/>
+        <references refid="namespacejson__spirit_1acdef70e45909522ba51a74b68e186b25" compoundref="json__spirit__reader__template_8h" startline="172" endline="175">json_spirit::get_str</references>
+        <references refid="net_8cpp_1ac6e0da5071d4eaa6960dbf889c765834" compoundref="net_8cpp" startline="378" endline="443">ConnectNode</references>
+        <references refid="classjson__spirit_1_1_value__impl_1abb8ef4f2732e2c842afa716c456cb35d" compoundref="json__spirit__value_8h" startline="78">json_spirit::Value_impl&lt; Config &gt;::null</references>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="net_8cpp_1a899fdfda20966914780d1937d7ab47a3" compoundref="net_8cpp" startline="82">cs_vAddedNodes</references>
+        <references refid="net_8cpp_1aea576e413065756784b47d68d5051f72" compoundref="net_8cpp" startline="81">vAddedNodes</references>
+        <references refid="rpcprotocol_8cpp_1a17b1bb111ab339efc951929834766039" compoundref="rpcprotocol_8cpp" startline="260" endline="266">JSONRPCError</references>
+        <references refid="rpcprotocol_8h_1af867221d51315471f28ed8cdac85deada69beae07cb7520bde6d66c32ebde05c4" compoundref="rpcprotocol_8h" startline="60">RPC_CLIENT_NODE_ALREADY_ADDED</references>
+        <references refid="rpcprotocol_8h_1af867221d51315471f28ed8cdac85deadadd603a70e2d6eb11ef5b3aad2f83fd70" compoundref="rpcprotocol_8h" startline="61">RPC_CLIENT_NODE_NOT_ADDED</references>
+      </memberdef>
+      <memberdef kind="function" id="rpcnet_8cpp_1a2a6994d3b180c8e9ce81e0da65a41bb3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacejson__spirit_1a28e6abc99fda7b06c430ca38802527a3" kindref="member">Value</ref></type>
+        <definition>Value getaddednodeinfo</definition>
+        <argsstring>(const Array &amp;params, bool fHelp)</argsstring>
+        <name>getaddednodeinfo</name>
+        <param>
+          <type>const <ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref> &amp;</type>
+          <declname>params</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fHelp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcnet.cpp" line="148" column="1" bodyfile="/home/dev/ds-160209/src/rpcnet.cpp" bodystart="148" bodyend="238"/>
+        <references refid="classjson__spirit_1_1_value__impl_1a2c153630e79788e7983a9c490acde15d" compoundref="json__spirit__value_8h" startline="377" endline="382">json_spirit::Value_impl&lt; Config &gt;::get_bool</references>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="net_8cpp_1a899fdfda20966914780d1937d7ab47a3" compoundref="net_8cpp" startline="82">cs_vAddedNodes</references>
+        <references refid="net_8cpp_1aea576e413065756784b47d68d5051f72" compoundref="net_8cpp" startline="81">vAddedNodes</references>
+        <references refid="rpcprotocol_8cpp_1a17b1bb111ab339efc951929834766039" compoundref="rpcprotocol_8cpp" startline="260" endline="266">JSONRPCError</references>
+        <references refid="rpcprotocol_8h_1af867221d51315471f28ed8cdac85deadadd603a70e2d6eb11ef5b3aad2f83fd70" compoundref="rpcprotocol_8h" startline="61">RPC_CLIENT_NODE_NOT_ADDED</references>
+        <references refid="netbase_8cpp_1a56a2f4bcb9fb77b5efe358f804f642cc" compoundref="netbase_8cpp" startline="144" endline="160">Lookup</references>
+        <references refid="chainparams_8cpp_1ace5c5b706d71a324a417dd2db394fd4a" compoundref="chainparams_8cpp" startline="186" endline="188">Params</references>
+        <references refid="class_c_chain_params_1afdb7793273cdb87cc5fd75450eb2258b" compoundref="chainparams_8h" startline="58" endline="58">CChainParams::GetDefaultPort</references>
+        <references refid="netbase_8cpp_1ab5335ec17aee4d4fdd4c735b85707b56" compoundref="netbase_8cpp" startline="30">fNameLookup</references>
+        <references refid="net_8cpp_1a8282e3a7948351ac96516573cd31f9d0" compoundref="net_8cpp" startline="69">cs_vNodes</references>
+        <references refid="class_c_service_1a336f9848fe9364e260c76499be0351a5" compoundref="netbase_8cpp" startline="1222" endline="1225">CService::ToString</references>
+        <references refid="net_8cpp_1aa5a11f8873e230cea77bc7e91ee51918" compoundref="net_8cpp" startline="68">vNodes</references>
+        <references refid="class_c_node_1a3993ecb1de2a2135a3cf0904346a6f88" compoundref="net_8h" startline="245">CNode::addr</references>
+        <references refid="class_c_node_1a64b2550ec558b6106ebc122d450ad35b" compoundref="net_8h" startline="256">CNode::fInbound</references>
+      </memberdef>
+      <memberdef kind="function" id="rpcnet_8cpp_1a89a8e338923aea165bb7d8d572d76203" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacejson__spirit_1a28e6abc99fda7b06c430ca38802527a3" kindref="member">Value</ref></type>
+        <definition>Value sendalert</definition>
+        <argsstring>(const Array &amp;params, bool fHelp)</argsstring>
+        <name>sendalert</name>
+        <param>
+          <type>const <ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref> &amp;</type>
+          <declname>params</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fHelp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcnet.cpp" line="244" column="1" bodyfile="/home/dev/ds-160209/src/rpcnet.cpp" bodystart="244" bodyend="301"/>
+        <references refid="class_c_unsigned_alert_1a97cfbf9a49b770bb84e49389ac1489c2" compoundref="alert_8h" startline="47">CUnsignedAlert::strStatusBar</references>
+        <references refid="class_c_unsigned_alert_1af7ab540ea7df8e97fbfba7551ec31b1a" compoundref="alert_8h" startline="40">CUnsignedAlert::nMinVer</references>
+        <references refid="class_c_unsigned_alert_1a041bff847e178c132cb4d5234c1f41c8" compoundref="alert_8h" startline="41">CUnsignedAlert::nMaxVer</references>
+        <references refid="class_c_unsigned_alert_1acf7253ae21d58a8633faab0635f5f5f5" compoundref="alert_8h" startline="43">CUnsignedAlert::nPriority</references>
+        <references refid="class_c_unsigned_alert_1a4e11dc713526f6597a20762e707518a0" compoundref="alert_8h" startline="37">CUnsignedAlert::nID</references>
+        <references refid="class_c_unsigned_alert_1a28de8ffcdfea75db2061b2cdc1add04a" compoundref="alert_8h" startline="38">CUnsignedAlert::nCancel</references>
+        <references refid="class_c_unsigned_alert_1ad8fad8e8f62caaf8162fad19170de2cf" compoundref="alert_8h" startline="34">CUnsignedAlert::nVersion</references>
+        <references refid="class_c_unsigned_alert_1a13bb82aef8b496584f6b3ae6424f8e58" compoundref="alert_8h" startline="35">CUnsignedAlert::nRelayUntil</references>
+        <references refid="timedata_8cpp_1a09f81b9c7650f898cf3cf305b87547e6" compoundref="timedata_8cpp" startline="33" endline="36">GetAdjustedTime</references>
+        <references refid="class_c_unsigned_alert_1af77a9d4d3abc0a0b376a7689059620e8" compoundref="alert_8h" startline="36">CUnsignedAlert::nExpiration</references>
+        <references refid="serialize_8h_1a6b7b47dd702d9e331586d485013fd1eaa652754eeaf79fba4fcf4c18597a6961c" compoundref="serialize_8h" startline="89">SER_NETWORK</references>
+        <references refid="class_c_alert_1abfcb3b339d052cd3dd6670b03286758a" compoundref="alert_8h" startline="81">CAlert::vchMsg</references>
+        <references refid="class_c_data_stream_1a5b9e70188c662f4e9496066472af213e" compoundref="streams_8h" startline="112" endline="112">CDataStream::begin</references>
+        <references refid="class_c_data_stream_1a1c22182691412ed9e0a30b719d388f31" compoundref="streams_8h" startline="114" endline="114">CDataStream::end</references>
+        <references refid="util_8cpp_1abea395175fbc4a788ed0f0a41710b8a7" compoundref="util_8cpp" startline="450" endline="469">ParseHex</references>
+        <references refid="namespacejson__spirit_1acdef70e45909522ba51a74b68e186b25" compoundref="json__spirit__reader__template_8h" startline="172" endline="175">json_spirit::get_str</references>
+        <references refid="class_c_key_1aa62c082c9037565fce02b457cc335e7b" compoundref="key_8cpp" startline="148" endline="154">CKey::SetPrivKey</references>
+        <references refid="class_c_key_1a3b161899b4fa79f5a7036d2ccf12ce3a" compoundref="key_8cpp" startline="182" endline="195">CKey::Sign</references>
+        <references refid="hash_8h_1ab3f6c437460137530d86e09c2c102e99" compoundref="hash_8h" startline="77" endline="85">Hash</references>
+        <references refid="class_c_alert_1a541b49670ebf387a5f8b7de59277fed0" compoundref="alert_8h" startline="82">CAlert::vchSig</references>
+        <references refid="class_c_alert_1af3e6b2e5d3584f58c5d7be9dbd72b4cc" compoundref="alert_8cpp" startline="174" endline="263">CAlert::ProcessAlert</references>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="net_8cpp_1a8282e3a7948351ac96516573cd31f9d0" compoundref="net_8cpp" startline="69">cs_vNodes</references>
+        <references refid="net_8cpp_1aa5a11f8873e230cea77bc7e91ee51918" compoundref="net_8cpp" startline="68">vNodes</references>
+        <references refid="class_c_alert_1ae89d673f6f1285eefcc343b3c029dab5" compoundref="alert_8cpp" startline="129" endline="148">CAlert::RelayTo</references>
+      </memberdef>
+      <memberdef kind="function" id="rpcnet_8cpp_1a77252ab3b44e1f219613da333c79f55f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacejson__spirit_1a28e6abc99fda7b06c430ca38802527a3" kindref="member">Value</ref></type>
+        <definition>Value getnettotals</definition>
+        <argsstring>(const Array &amp;params, bool fHelp)</argsstring>
+        <name>getnettotals</name>
+        <param>
+          <type>const <ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref> &amp;</type>
+          <declname>params</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fHelp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcnet.cpp" line="303" column="1" bodyfile="/home/dev/ds-160209/src/rpcnet.cpp" bodystart="303" bodyend="316"/>
+        <references refid="class_c_node_1a1988b63b48fdc9b72014bdf9588b0168" compoundref="net_8cpp" startline="2001" endline="2005">CNode::GetTotalBytesRecv</references>
+        <references refid="class_c_node_1af318a64e7ddad50d1e1b6fc123a5f0b9" compoundref="net_8cpp" startline="2007" endline="2011">CNode::GetTotalBytesSent</references>
+        <references refid="util_8h_1a139d0fe6387b9e230a9b8bb12d9b43b9" compoundref="util_8h" startline="383" endline="387">GetTimeMillis</references>
+      </memberdef>
+      <memberdef kind="function" id="rpcnet_8cpp_1a3c00b43e36b113fc75295a7a67c273d0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref></type>
+        <definition>static Array GetNetworksInfo</definition>
+        <argsstring>()</argsstring>
+        <name>GetNetworksInfo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcnet.cpp" line="318" column="1" bodyfile="/home/dev/ds-160209/src/rpcnet.cpp" bodystart="318" bodyend="336"/>
+      </memberdef>
+      <memberdef kind="function" id="rpcnet_8cpp_1a3a10a507386b9bbcc48ebd3004bfe58a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespacejson__spirit_1a28e6abc99fda7b06c430ca38802527a3" kindref="member">Value</ref></type>
+        <definition>Value getnetworkinfo</definition>
+        <argsstring>(const Array &amp;params, bool fHelp)</argsstring>
+        <name>getnetworkinfo</name>
+        <param>
+          <type>const <ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref> &amp;</type>
+          <declname>params</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fHelp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/rpcnet.cpp" line="338" column="1" bodyfile="/home/dev/ds-160209/src/rpcnet.cpp" bodystart="338" bodyend="398"/>
+        <references refid="rpcserver_8cpp_1ac01ac6eab5467567ed0da106814e04ec" compoundref="rpcserver_8cpp" startline="872" endline="874">HelpExampleCli</references>
+        <references refid="rpcserver_8cpp_1a06ea60e24e5a1053a14a11b1009bf9ef" compoundref="rpcserver_8cpp" startline="876" endline="879">HelpExampleRpc</references>
+        <references refid="util_8cpp_1a7e6809cdbfc7f83b46f83caea740894d" compoundref="util_8cpp" startline="1406" endline="1415">FormatSubVersion</references>
+        <references refid="version_8h_1ad087f1f283f087089d3d86d1a196a5cb">CLIENT_NAME</references>
+        <references refid="tinyformat_8h_1a56c674871a61baaad36ad52238c08857" compoundref="tinyformat_8h" startline="1011">strprintf</references>
+        <references refid="net_8cpp_1aac7a5df09042b8fc16272947ca022c2c" compoundref="net_8cpp" startline="51">nLocalServices</references>
+        <references refid="timedata_8cpp_1a50ca5344c75631267633f15cfe5e983e" compoundref="timedata_8cpp" startline="27" endline="31">GetTimeOffset</references>
+        <references refid="net_8cpp_1aa5a11f8873e230cea77bc7e91ee51918" compoundref="net_8cpp" startline="68">vNodes</references>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="net_8cpp_1a62111271618110807cc534e55c13cb70" compoundref="net_8cpp" startline="53">cs_mapLocalHost</references>
+        <references refid="util_8h_1aa3052ab82a2ba880ea3e30b3357c8820" compoundref="util_8h" startline="77">PAIRTYPE</references>
+        <references refid="net_8cpp_1ac585e737c081ba921335070264a93a79" compoundref="net_8cpp" startline="54">mapLocalHost</references>
+        <references refid="struct_local_service_info_1aa5c39fec8cc69a43e393bb158f69224b" compoundref="net_8h" startline="125">LocalServiceInfo::nPort</references>
+        <references refid="struct_local_service_info_1ad6a9d404fb109ba1506df3f6ca842ed5" compoundref="net_8h" startline="124">LocalServiceInfo::nScore</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2009-2016<sp/>Bitcoin<sp/>Developers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Distributed<sp/>under<sp/>the<sp/>MIT/X11<sp/>software<sp/>license,<sp/>see<sp/>the<sp/>accompanying</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>file<sp/>COPYING<sp/>or<sp/>http://www.opensource.org/licenses/mit-license.php.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="rpcserver_8h" kindref="compound">rpcserver.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="alert_8h" kindref="compound">alert.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="main_8h" kindref="compound">main.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="net_8h" kindref="compound">net.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="netbase_8h" kindref="compound">netbase.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="protocol_8h" kindref="compound">protocol.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="sync_8h" kindref="compound">sync.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="timedata_8h" kindref="compound">timedata.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="util_8h" kindref="compound">util.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="key_8h" kindref="compound">key.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/foreach.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="json__spirit__value_8h" kindref="compound">json/json_spirit_value.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespacejson__spirit" kindref="compound">json_spirit</ref>;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespacestd" kindref="compound">std</ref>;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="rpcnet_8cpp_1a1aec1e08b6e84d6094d2b3a4f78cec87" refkind="member"><highlight class="normal"><ref refid="classjson__spirit_1_1_value__impl" kindref="compound">Value</ref><sp/><ref refid="rpcnet_8cpp_1a1aec1e08b6e84d6094d2b3a4f78cec87" kindref="member">getconnectioncount</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref>&amp;<sp/>params,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fHelp)</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fHelp<sp/>||<sp/>params.size()<sp/>!=<sp/>0)</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>runtime_error(</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;getconnectioncount\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Returns<sp/>the<sp/>number<sp/>of<sp/>connections<sp/>to<sp/>other<sp/>nodes.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" kindref="member">LOCK</ref>(<ref refid="net_8cpp_1a8282e3a7948351ac96516573cd31f9d0" kindref="member">cs_vNodes</ref>);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<ref refid="net_8cpp_1aa5a11f8873e230cea77bc7e91ee51918" kindref="member">vNodes</ref>.size();</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="rpcnet_8cpp_1a8755bbfea9d792e60e50ecad82a5504d" refkind="member"><highlight class="normal"><ref refid="classjson__spirit_1_1_value__impl" kindref="compound">Value</ref><sp/><ref refid="rpcnet_8cpp_1a8755bbfea9d792e60e50ecad82a5504d" kindref="member">ping</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref>&amp;<sp/>params,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fHelp)</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fHelp<sp/>||<sp/>params.size()<sp/>!=<sp/>0)</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>runtime_error(</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;ping\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Requests<sp/>that<sp/>a<sp/>ping<sp/>be<sp/>sent<sp/>to<sp/>all<sp/>other<sp/>nodes,<sp/>to<sp/>measure<sp/>ping<sp/>time.\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Results<sp/>provided<sp/>in<sp/>getpeerinfo,<sp/>pingtime<sp/>and<sp/>pingwait<sp/>fields<sp/>are<sp/>decimal<sp/>seconds.\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Ping<sp/>command<sp/>is<sp/>handled<sp/>in<sp/>queue<sp/>with<sp/>all<sp/>other<sp/>commands,<sp/>so<sp/>it<sp/>measures<sp/>processing<sp/>backlog,<sp/>not<sp/>just<sp/>network<sp/>ping.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Request<sp/>that<sp/>each<sp/>node<sp/>send<sp/>a<sp/>ping<sp/>during<sp/>next<sp/>message<sp/>processing<sp/>pass</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" kindref="member">LOCK</ref>(<ref refid="net_8cpp_1a8282e3a7948351ac96516573cd31f9d0" kindref="member">cs_vNodes</ref>);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>BOOST_FOREACH(<ref refid="class_c_node" kindref="compound">CNode</ref>*<sp/>pNode,<sp/><ref refid="net_8cpp_1aa5a11f8873e230cea77bc7e91ee51918" kindref="member">vNodes</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pNode-&gt;<ref refid="class_c_node_1aa1e9c1dc1d5cf806b9be0af155c0bf90" kindref="member">fPingQueued</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classjson__spirit_1_1_value__impl_1abb8ef4f2732e2c842afa716c456cb35d" kindref="member">Value::null</ref>;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>CopyNodeStats(std::vector&lt;CNodeStats&gt;&amp;<sp/>vstats)</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>vstats.clear();</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" kindref="member">LOCK</ref>(<ref refid="net_8cpp_1a8282e3a7948351ac96516573cd31f9d0" kindref="member">cs_vNodes</ref>);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>vstats.reserve(<ref refid="net_8cpp_1aa5a11f8873e230cea77bc7e91ee51918" kindref="member">vNodes</ref>.size());</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>BOOST_FOREACH(<ref refid="class_c_node" kindref="compound">CNode</ref>*<sp/>pnode,<sp/><ref refid="net_8cpp_1aa5a11f8873e230cea77bc7e91ee51918" kindref="member">vNodes</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_node_stats" kindref="compound">CNodeStats</ref><sp/><ref refid="db__bench_8cc_1a5925d216740c89f43482df806fd14e8c" kindref="member">stats</ref>;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pnode-&gt;<ref refid="class_c_node_1aaa77188d9df85b80e3f8a30292acf6a9" kindref="member">copyStats</ref>(stats);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vstats.push_back(stats);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="rpcnet_8cpp_1aee93daaf3d283447eae5d8765e0e5ddb" refkind="member"><highlight class="normal"><ref refid="classjson__spirit_1_1_value__impl" kindref="compound">Value</ref><sp/><ref refid="rpcnet_8cpp_1aee93daaf3d283447eae5d8765e0e5ddb" kindref="member">getpeerinfo</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref>&amp;<sp/>params,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fHelp)</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fHelp<sp/>||<sp/>params.size()<sp/>!=<sp/>0)</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>runtime_error(</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;getpeerinfo\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Returns<sp/>data<sp/>about<sp/>each<sp/>connected<sp/>network<sp/>node.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>vector&lt;CNodeStats&gt;<sp/>vstats;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>CopyNodeStats(vstats);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref><sp/>ret;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>BOOST_FOREACH(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_node_stats" kindref="compound">CNodeStats</ref>&amp;<sp/>stats,<sp/>vstats)<sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacejson__spirit_1aa1e2c4032be0d25e7b42eb17115dabb2" kindref="member">Object</ref><sp/>obj;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;addr&quot;</highlight><highlight class="normal">,<sp/>stats.<ref refid="class_c_node_stats_1a3299ecdae870c367fe657f3f59b27e43" kindref="member">addrName</ref>));</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!(stats.<ref refid="class_c_node_stats_1a027a5445a0c40e6489875e653be9c758" kindref="member">addrLocal</ref>.empty()))</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;addrlocal&quot;</highlight><highlight class="normal">,<sp/>stats.<ref refid="class_c_node_stats_1a027a5445a0c40e6489875e653be9c758" kindref="member">addrLocal</ref>));</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;services&quot;</highlight><highlight class="normal">,<sp/><ref refid="tinyformat_8h_1a56c674871a61baaad36ad52238c08857" kindref="member">strprintf</ref>(</highlight><highlight class="stringliteral">&quot;%08x&quot;</highlight><highlight class="normal">,<sp/>stats.<ref refid="class_c_node_stats_1a3c56fe96daccb9339314953d249dfa15" kindref="member">nServices</ref>)));</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;lastsend&quot;</highlight><highlight class="normal">,<sp/>(<ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref>)stats.<ref refid="class_c_node_stats_1adc88b64389f26227db58ed86058d2e1a" kindref="member">nLastSend</ref>));</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;lastrecv&quot;</highlight><highlight class="normal">,<sp/>(<ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref>)stats.<ref refid="class_c_node_stats_1a67b3cd5817ad20bfb2d9eb1583f1deb5" kindref="member">nLastRecv</ref>));</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;bytessent&quot;</highlight><highlight class="normal">,<sp/>(<ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref>)stats.<ref refid="class_c_node_stats_1a3c70b0862e9ddd682380114016196137" kindref="member">nSendBytes</ref>));</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;bytesrecv&quot;</highlight><highlight class="normal">,<sp/>(<ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref>)stats.<ref refid="class_c_node_stats_1a1aaec0f47a95487cbd709caf15889663" kindref="member">nRecvBytes</ref>));</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;conntime&quot;</highlight><highlight class="normal">,<sp/>(<ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref>)stats.<ref refid="class_c_node_stats_1a3d5133369e51db3c45839c8a68c662d1" kindref="member">nTimeConnected</ref>));</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;timeoffset&quot;</highlight><highlight class="normal">,<sp/>stats.<ref refid="class_c_node_stats_1a905b33fdcf0443f25fa19ea4d10e8e59" kindref="member">nTimeOffset</ref>));</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;pingtime&quot;</highlight><highlight class="normal">,<sp/>stats.<ref refid="class_c_node_stats_1a535c198cbe3af112d4538f535e6618cd" kindref="member">dPingTime</ref>));</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(stats.<ref refid="class_c_node_stats_1a03a38f87940d04b321b9fb3102d0368d" kindref="member">dPingWait</ref><sp/>&gt;<sp/>0.0)</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;pingwait&quot;</highlight><highlight class="normal">,<sp/>stats.<ref refid="class_c_node_stats_1a03a38f87940d04b321b9fb3102d0368d" kindref="member">dPingWait</ref>));</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;version&quot;</highlight><highlight class="normal">,<sp/>stats.<ref refid="class_c_node_stats_1ac8892d29d7c246e34e78fbc15ae77276" kindref="member">nVersion</ref>));</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;subver&quot;</highlight><highlight class="normal">,<sp/>stats.<ref refid="class_c_node_stats_1a9029626f81544ffe6727cf63a091974f" kindref="member">strSubVer</ref>));</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;inbound&quot;</highlight><highlight class="normal">,<sp/>stats.<ref refid="class_c_node_stats_1a34627c46cac7bc2bfb3406c954522b49" kindref="member">fInbound</ref>));</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;startingheight&quot;</highlight><highlight class="normal">,<sp/>stats.<ref refid="class_c_node_stats_1a86ff627e31f8ab881a8e11bb3acf4f19" kindref="member">nStartingHeight</ref>));</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;banscore&quot;</highlight><highlight class="normal">,<sp/>stats.<ref refid="class_c_node_stats_1ae5c21d0bb707eff8e43174078c1a1a00" kindref="member">nMisbehavior</ref>));</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;syncnode&quot;</highlight><highlight class="normal">,<sp/>stats.<ref refid="class_c_node_stats_1a82d6fca82ac649d6ba746a18faec6d79" kindref="member">fSyncNode</ref>));</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret.push_back(obj);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106" refid="rpcnet_8cpp_1ab455bfd729ba34d3bb55b716e62405a3" refkind="member"><highlight class="normal"><ref refid="classjson__spirit_1_1_value__impl" kindref="compound">Value</ref><sp/><ref refid="rpcnet_8cpp_1ab455bfd729ba34d3bb55b716e62405a3" kindref="member">addnode</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref>&amp;<sp/>params,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fHelp)</highlight></codeline>
+<codeline lineno="107"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>strCommand;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(params.size()<sp/>==<sp/>2)</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>strCommand<sp/>=<sp/>params[1].<ref refid="namespacejson__spirit_1acdef70e45909522ba51a74b68e186b25" kindref="member">get_str</ref>();</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fHelp<sp/>||<sp/>params.size()<sp/>!=<sp/>2<sp/>||</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(strCommand<sp/>!=<sp/></highlight><highlight class="stringliteral">&quot;onetry&quot;</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>strCommand<sp/>!=<sp/></highlight><highlight class="stringliteral">&quot;add&quot;</highlight><highlight class="normal"><sp/>&amp;&amp;<sp/>strCommand<sp/>!=<sp/></highlight><highlight class="stringliteral">&quot;remove&quot;</highlight><highlight class="normal">))</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>runtime_error(</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;addnode<sp/>&lt;node&gt;<sp/>&lt;add|remove|onetry&gt;\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Attempts<sp/>add<sp/>or<sp/>remove<sp/>&lt;node&gt;<sp/>from<sp/>the<sp/>addnode<sp/>list<sp/>or<sp/>try<sp/>a<sp/>connection<sp/>to<sp/>&lt;node&gt;<sp/>once.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>strNode<sp/>=<sp/>params[0].get_str();</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(strCommand<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;onetry&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_address" kindref="compound">CAddress</ref><sp/>addr;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="net_8cpp_1ac6e0da5071d4eaa6960dbf889c765834" kindref="member">ConnectNode</ref>(addr,<sp/>strNode.c_str());</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classjson__spirit_1_1_value__impl_1abb8ef4f2732e2c842afa716c456cb35d" kindref="member">Value::null</ref>;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" kindref="member">LOCK</ref>(<ref refid="net_8cpp_1a899fdfda20966914780d1937d7ab47a3" kindref="member">cs_vAddedNodes</ref>);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>vector&lt;string&gt;::iterator<sp/>it<sp/>=<sp/><ref refid="net_8cpp_1aea576e413065756784b47d68d5051f72" kindref="member">vAddedNodes</ref>.begin();</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(;<sp/>it<sp/>!=<sp/><ref refid="net_8cpp_1aea576e413065756784b47d68d5051f72" kindref="member">vAddedNodes</ref>.end();<sp/>it++)</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(strNode<sp/>==<sp/>*it)</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(strCommand<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;add&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(it<sp/>!=<sp/><ref refid="net_8cpp_1aea576e413065756784b47d68d5051f72" kindref="member">vAddedNodes</ref>.end())</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="rpcprotocol_8cpp_1a17b1bb111ab339efc951929834766039" kindref="member">JSONRPCError</ref>(<ref refid="rpcprotocol_8h_1af867221d51315471f28ed8cdac85deada69beae07cb7520bde6d66c32ebde05c4" kindref="member">RPC_CLIENT_NODE_ALREADY_ADDED</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Error:<sp/>Node<sp/>already<sp/>added&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="net_8cpp_1aea576e413065756784b47d68d5051f72" kindref="member">vAddedNodes</ref>.push_back(strNode);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(strCommand<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;remove&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(it<sp/>==<sp/><ref refid="net_8cpp_1aea576e413065756784b47d68d5051f72" kindref="member">vAddedNodes</ref>.end())</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="rpcprotocol_8cpp_1a17b1bb111ab339efc951929834766039" kindref="member">JSONRPCError</ref>(<ref refid="rpcprotocol_8h_1af867221d51315471f28ed8cdac85deadadd603a70e2d6eb11ef5b3aad2f83fd70" kindref="member">RPC_CLIENT_NODE_NOT_ADDED</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Error:<sp/>Node<sp/>has<sp/>not<sp/>been<sp/>added.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="net_8cpp_1aea576e413065756784b47d68d5051f72" kindref="member">vAddedNodes</ref>.erase(it);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classjson__spirit_1_1_value__impl_1abb8ef4f2732e2c842afa716c456cb35d" kindref="member">Value::null</ref>;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148" refid="rpcnet_8cpp_1a2a6994d3b180c8e9ce81e0da65a41bb3" refkind="member"><highlight class="normal"><ref refid="classjson__spirit_1_1_value__impl" kindref="compound">Value</ref><sp/><ref refid="rpcnet_8cpp_1a2a6994d3b180c8e9ce81e0da65a41bb3" kindref="member">getaddednodeinfo</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref>&amp;<sp/>params,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fHelp)</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fHelp<sp/>||<sp/>params.size()<sp/>&lt;<sp/>1<sp/>||<sp/>params.size()<sp/>&gt;<sp/>2)</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>runtime_error(</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;getaddednodeinfo<sp/>&lt;dns&gt;<sp/>[node]\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Returns<sp/>information<sp/>about<sp/>the<sp/>given<sp/>added<sp/>node,<sp/>or<sp/>all<sp/>added<sp/>nodes\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;(note<sp/>that<sp/>onetry<sp/>addnodes<sp/>are<sp/>not<sp/>listed<sp/>here)\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;If<sp/>dns<sp/>is<sp/>false,<sp/>only<sp/>a<sp/>list<sp/>of<sp/>added<sp/>nodes<sp/>will<sp/>be<sp/>provided,\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;otherwise<sp/>connected<sp/>information<sp/>will<sp/>also<sp/>be<sp/>available.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fDns<sp/>=<sp/>params[0].<ref refid="classjson__spirit_1_1_value__impl_1a2c153630e79788e7983a9c490acde15d" kindref="member">get_bool</ref>();</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>list&lt;string&gt;<sp/>laddedNodes(0);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(params.size()<sp/>==<sp/>1)</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" kindref="member">LOCK</ref>(<ref refid="net_8cpp_1a899fdfda20966914780d1937d7ab47a3" kindref="member">cs_vAddedNodes</ref>);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOST_FOREACH(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">&amp;<sp/>strAddNode,<sp/><ref refid="net_8cpp_1aea576e413065756784b47d68d5051f72" kindref="member">vAddedNodes</ref>)</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>laddedNodes.push_back(strAddNode);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>strNode<sp/>=<sp/>params[1].get_str();</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" kindref="member">LOCK</ref>(<ref refid="net_8cpp_1a899fdfda20966914780d1937d7ab47a3" kindref="member">cs_vAddedNodes</ref>);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOST_FOREACH(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">&amp;<sp/>strAddNode,<sp/><ref refid="net_8cpp_1aea576e413065756784b47d68d5051f72" kindref="member">vAddedNodes</ref>)</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(strAddNode<sp/>==<sp/>strNode)</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>laddedNodes.push_back(strAddNode);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(laddedNodes.size()<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/><ref refid="rpcprotocol_8cpp_1a17b1bb111ab339efc951929834766039" kindref="member">JSONRPCError</ref>(<ref refid="rpcprotocol_8h_1af867221d51315471f28ed8cdac85deadadd603a70e2d6eb11ef5b3aad2f83fd70" kindref="member">RPC_CLIENT_NODE_NOT_ADDED</ref>,<sp/></highlight><highlight class="stringliteral">&quot;Error:<sp/>Node<sp/>has<sp/>not<sp/>been<sp/>added.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!fDns)</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacejson__spirit_1aa1e2c4032be0d25e7b42eb17115dabb2" kindref="member">Object</ref><sp/>ret;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOST_FOREACH(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">&amp;<sp/>strAddNode,<sp/>laddedNodes)</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;addednode&quot;</highlight><highlight class="normal">,<sp/>strAddNode));</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref><sp/>ret;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>list&lt;pair&lt;string,<sp/>vector&lt;CService&gt;<sp/>&gt;<sp/>&gt;<sp/>laddedAddreses(0);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>BOOST_FOREACH(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">&amp;<sp/>strAddNode,<sp/>laddedNodes)</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vector&lt;CService&gt;<sp/>vservNode(0);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="netbase_8cpp_1a56a2f4bcb9fb77b5efe358f804f642cc" kindref="member">Lookup</ref>(strAddNode.c_str(),<sp/>vservNode,<sp/><ref refid="chainparams_8cpp_1ace5c5b706d71a324a417dd2db394fd4a" kindref="member">Params</ref>().<ref refid="class_c_chain_params_1afdb7793273cdb87cc5fd75450eb2258b" kindref="member">GetDefaultPort</ref>(),<sp/><ref refid="netbase_8cpp_1ab5335ec17aee4d4fdd4c735b85707b56" kindref="member">fNameLookup</ref>,<sp/>0))</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>laddedAddreses.push_back(make_pair(strAddNode,<sp/>vservNode));</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacejson__spirit_1aa1e2c4032be0d25e7b42eb17115dabb2" kindref="member">Object</ref><sp/>obj;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;addednode&quot;</highlight><highlight class="normal">,<sp/>strAddNode));</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;connected&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref><sp/>addresses;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;addresses&quot;</highlight><highlight class="normal">,<sp/>addresses));</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" kindref="member">LOCK</ref>(<ref refid="net_8cpp_1a8282e3a7948351ac96516573cd31f9d0" kindref="member">cs_vNodes</ref>);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(list&lt;pair&lt;</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,<sp/>vector&lt;CService&gt;<sp/>&gt;<sp/>&gt;::iterator<sp/>it<sp/>=<sp/>laddedAddreses.begin();<sp/>it<sp/>!=<sp/>laddedAddreses.end();<sp/>it++)</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacejson__spirit_1aa1e2c4032be0d25e7b42eb17115dabb2" kindref="member">Object</ref><sp/>obj;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;addednode&quot;</highlight><highlight class="normal">,<sp/>it-&gt;first));</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref><sp/>addresses;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fConnected<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOST_FOREACH(<ref refid="class_c_service" kindref="compound">CService</ref>&amp;<sp/>addrNode,<sp/>it-&gt;second)</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fFound<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacejson__spirit_1aa1e2c4032be0d25e7b42eb17115dabb2" kindref="member">Object</ref><sp/>node;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>node.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;address&quot;</highlight><highlight class="normal">,<sp/>addrNode.<ref refid="class_c_service_1a336f9848fe9364e260c76499be0351a5" kindref="member">ToString</ref>()));</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOST_FOREACH(<ref refid="class_c_node" kindref="compound">CNode</ref>*<sp/>pnode,<sp/><ref refid="net_8cpp_1aa5a11f8873e230cea77bc7e91ee51918" kindref="member">vNodes</ref>)</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pnode-&gt;<ref refid="class_c_node_1a3993ecb1de2a2135a3cf0904346a6f88" kindref="member">addr</ref><sp/>==<sp/>addrNode)</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fFound<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fConnected<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>node.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;connected&quot;</highlight><highlight class="normal">,<sp/>pnode-&gt;<ref refid="class_c_node_1a64b2550ec558b6106ebc122d450ad35b" kindref="member">fInbound</ref><sp/>?<sp/></highlight><highlight class="stringliteral">&quot;inbound&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;outbound&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!fFound)</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>node.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;connected&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;false&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>addresses.push_back(node);</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;connected&quot;</highlight><highlight class="normal">,<sp/>fConnected));</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;addresses&quot;</highlight><highlight class="normal">,<sp/>addresses));</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret.push_back(obj);</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ppcoin:<sp/>send<sp/>alert.<sp/><sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight><highlight class="comment">//<sp/>There<sp/>is<sp/>a<sp/>known<sp/>deadlock<sp/>situation<sp/>with<sp/>ThreadMessageHandler</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ThreadMessageHandler:<sp/>holds<sp/>cs_vSend<sp/>and<sp/>acquiring<sp/>cs_main<sp/>in<sp/>SendMessages()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight><highlight class="comment">//<sp/>ThreadRPCServer:<sp/>holds<sp/>cs_main<sp/>and<sp/>acquiring<sp/>cs_vSend<sp/>in<sp/>alert.RelayTo()/PushMessage()/BeginMessage()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="244" refid="rpcnet_8cpp_1a89a8e338923aea165bb7d8d572d76203" refkind="member"><highlight class="normal"><ref refid="classjson__spirit_1_1_value__impl" kindref="compound">Value</ref><sp/><ref refid="rpcnet_8cpp_1a89a8e338923aea165bb7d8d572d76203" kindref="member">sendalert</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref>&amp;<sp/>params,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fHelp)</highlight></codeline>
+<codeline lineno="245"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fHelp<sp/>||<sp/>params.size()<sp/>&lt;<sp/>6)</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>runtime_error(</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;sendalert<sp/>&lt;message&gt;<sp/>&lt;privatekey&gt;<sp/>&lt;minver&gt;<sp/>&lt;maxver&gt;<sp/>&lt;priority&gt;<sp/>&lt;id&gt;<sp/>[cancelupto]\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&lt;message&gt;<sp/>is<sp/>the<sp/>alert<sp/>text<sp/>message\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&lt;privatekey&gt;<sp/>is<sp/>hex<sp/>string<sp/>of<sp/>alert<sp/>master<sp/>private<sp/>key\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&lt;minver&gt;<sp/>is<sp/>the<sp/>minimum<sp/>applicable<sp/>internal<sp/>client<sp/>version\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&lt;maxver&gt;<sp/>is<sp/>the<sp/>maximum<sp/>applicable<sp/>internal<sp/>client<sp/>version\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&lt;priority&gt;<sp/>is<sp/>integer<sp/>priority<sp/>number\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&lt;id&gt;<sp/>is<sp/>the<sp/>alert<sp/>id\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;[cancelupto]<sp/>cancels<sp/>all<sp/>alert<sp/>id&apos;s<sp/>up<sp/>to<sp/>this<sp/>number\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Returns<sp/>true<sp/>or<sp/>false.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_alert" kindref="compound">CAlert</ref><sp/>alert;</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_key" kindref="compound">CKey</ref><sp/>key;</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/>alert.<ref refid="class_c_unsigned_alert_1a97cfbf9a49b770bb84e49389ac1489c2" kindref="member">strStatusBar</ref><sp/>=<sp/>params[0].get_str();</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/>alert.<ref refid="class_c_unsigned_alert_1af7ab540ea7df8e97fbfba7551ec31b1a" kindref="member">nMinVer</ref><sp/>=<sp/>params[2].get_int();</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/>alert.<ref refid="class_c_unsigned_alert_1a041bff847e178c132cb4d5234c1f41c8" kindref="member">nMaxVer</ref><sp/>=<sp/>params[3].get_int();</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/>alert.<ref refid="class_c_unsigned_alert_1acf7253ae21d58a8633faab0635f5f5f5" kindref="member">nPriority</ref><sp/>=<sp/>params[4].get_int();</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/>alert.<ref refid="class_c_unsigned_alert_1a4e11dc713526f6597a20762e707518a0" kindref="member">nID</ref><sp/>=<sp/>params[5].get_int();</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(params.size()<sp/>&gt;<sp/>6)</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>alert.<ref refid="class_c_unsigned_alert_1a28de8ffcdfea75db2061b2cdc1add04a" kindref="member">nCancel</ref><sp/>=<sp/>params[6].get_int();</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/>alert.<ref refid="class_c_unsigned_alert_1ad8fad8e8f62caaf8162fad19170de2cf" kindref="member">nVersion</ref><sp/>=<sp/>PROTOCOL_VERSION;</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/>alert.<ref refid="class_c_unsigned_alert_1a13bb82aef8b496584f6b3ae6424f8e58" kindref="member">nRelayUntil</ref><sp/>=<sp/><ref refid="timedata_8cpp_1a09f81b9c7650f898cf3cf305b87547e6" kindref="member">GetAdjustedTime</ref>()<sp/>+<sp/>365*24*60*60;</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/>alert.<ref refid="class_c_unsigned_alert_1af77a9d4d3abc0a0b376a7689059620e8" kindref="member">nExpiration</ref><sp/>=<sp/><ref refid="timedata_8cpp_1a09f81b9c7650f898cf3cf305b87547e6" kindref="member">GetAdjustedTime</ref>()<sp/>+<sp/>365*24*60*60;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_data_stream" kindref="compound">CDataStream</ref><sp/>sMsg(<ref refid="serialize_8h_1a6b7b47dd702d9e331586d485013fd1eaa652754eeaf79fba4fcf4c18597a6961c" kindref="member">SER_NETWORK</ref>,<sp/>PROTOCOL_VERSION);</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/>sMsg<sp/>&lt;&lt;<sp/>(<ref refid="class_c_unsigned_alert" kindref="compound">CUnsignedAlert</ref>)alert;</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/>alert.<ref refid="class_c_alert_1abfcb3b339d052cd3dd6670b03286758a" kindref="member">vchMsg</ref><sp/>=<sp/>vector&lt;unsigned<sp/>char&gt;(sMsg.<ref refid="class_c_data_stream_1a5b9e70188c662f4e9496066472af213e" kindref="member">begin</ref>(),<sp/>sMsg.<ref refid="class_c_data_stream_1a1c22182691412ed9e0a30b719d388f31" kindref="member">end</ref>());</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/>vector&lt;unsigned<sp/>char&gt;<sp/>vchPrivKey<sp/>=<sp/><ref refid="util_8cpp_1abea395175fbc4a788ed0f0a41710b8a7" kindref="member">ParseHex</ref>(params[1].<ref refid="namespacejson__spirit_1acdef70e45909522ba51a74b68e186b25" kindref="member">get_str</ref>());</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/>key.<ref refid="class_c_key_1aa62c082c9037565fce02b457cc335e7b" kindref="member">SetPrivKey</ref>(<ref refid="key_8h_1a1da569b8b6e5b3fa1196cc1b877e7f54" kindref="member">CPrivKey</ref>(vchPrivKey.begin(),<sp/>vchPrivKey.end()),<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);<sp/></highlight><highlight class="comment">//<sp/>if<sp/>key<sp/>is<sp/>not<sp/>correct<sp/>openssl<sp/>may<sp/>crash</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!key.<ref refid="class_c_key_1a3b161899b4fa79f5a7036d2ccf12ce3a" kindref="member">Sign</ref>(<ref refid="hash_8h_1ab3f6c437460137530d86e09c2c102e99" kindref="member">Hash</ref>(alert.<ref refid="class_c_alert_1abfcb3b339d052cd3dd6670b03286758a" kindref="member">vchMsg</ref>.begin(),<sp/>alert.<ref refid="class_c_alert_1abfcb3b339d052cd3dd6670b03286758a" kindref="member">vchMsg</ref>.end()),<sp/>alert.<ref refid="class_c_alert_1a541b49670ebf387a5f8b7de59277fed0" kindref="member">vchSig</ref>))</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>runtime_error(</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Unable<sp/>to<sp/>sign<sp/>alert,<sp/>check<sp/>private<sp/>key?\n&quot;</highlight><highlight class="normal">);<sp/><sp/></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!alert.<ref refid="class_c_alert_1af3e6b2e5d3584f58c5d7be9dbd72b4cc" kindref="member">ProcessAlert</ref>())<sp/></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>runtime_error(</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Failed<sp/>to<sp/>process<sp/>alert.\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Relay<sp/>alert</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" kindref="member">LOCK</ref>(<ref refid="net_8cpp_1a8282e3a7948351ac96516573cd31f9d0" kindref="member">cs_vNodes</ref>);</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOST_FOREACH(<ref refid="class_c_node" kindref="compound">CNode</ref>*<sp/>pnode,<sp/><ref refid="net_8cpp_1aa5a11f8873e230cea77bc7e91ee51918" kindref="member">vNodes</ref>)</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>alert.<ref refid="class_c_alert_1ae89d673f6f1285eefcc343b3c029dab5" kindref="member">RelayTo</ref>(pnode);</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacejson__spirit_1aa1e2c4032be0d25e7b42eb17115dabb2" kindref="member">Object</ref><sp/>result;</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/>result.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;strStatusBar&quot;</highlight><highlight class="normal">,<sp/>alert.<ref refid="class_c_unsigned_alert_1a97cfbf9a49b770bb84e49389ac1489c2" kindref="member">strStatusBar</ref>));</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/>result.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;nVersion&quot;</highlight><highlight class="normal">,<sp/>alert.<ref refid="class_c_unsigned_alert_1ad8fad8e8f62caaf8162fad19170de2cf" kindref="member">nVersion</ref>));</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/>result.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;nMinVer&quot;</highlight><highlight class="normal">,<sp/>alert.<ref refid="class_c_unsigned_alert_1af7ab540ea7df8e97fbfba7551ec31b1a" kindref="member">nMinVer</ref>));</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/>result.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;nMaxVer&quot;</highlight><highlight class="normal">,<sp/>alert.<ref refid="class_c_unsigned_alert_1a041bff847e178c132cb4d5234c1f41c8" kindref="member">nMaxVer</ref>));</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/>result.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;nPriority&quot;</highlight><highlight class="normal">,<sp/>alert.<ref refid="class_c_unsigned_alert_1acf7253ae21d58a8633faab0635f5f5f5" kindref="member">nPriority</ref>));</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/>result.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;nID&quot;</highlight><highlight class="normal">,<sp/>alert.<ref refid="class_c_unsigned_alert_1a4e11dc713526f6597a20762e707518a0" kindref="member">nID</ref>));</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(alert.<ref refid="class_c_unsigned_alert_1a28de8ffcdfea75db2061b2cdc1add04a" kindref="member">nCancel</ref><sp/>&gt;<sp/>0)</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;nCancel&quot;</highlight><highlight class="normal">,<sp/>alert.<ref refid="class_c_unsigned_alert_1a28de8ffcdfea75db2061b2cdc1add04a" kindref="member">nCancel</ref>));</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="301"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight></codeline>
+<codeline lineno="303" refid="rpcnet_8cpp_1a77252ab3b44e1f219613da333c79f55f" refkind="member"><highlight class="normal"><ref refid="classjson__spirit_1_1_value__impl" kindref="compound">Value</ref><sp/><ref refid="rpcnet_8cpp_1a77252ab3b44e1f219613da333c79f55f" kindref="member">getnettotals</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref>&amp;<sp/>params,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fHelp)</highlight></codeline>
+<codeline lineno="304"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fHelp<sp/>||<sp/>params.size()<sp/>&gt;<sp/>0)</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>runtime_error(</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;getnettotals\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Returns<sp/>information<sp/>about<sp/>network<sp/>traffic,<sp/>including<sp/>bytes<sp/>in,<sp/>bytes<sp/>out,\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;and<sp/>current<sp/>time.&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacejson__spirit_1aa1e2c4032be0d25e7b42eb17115dabb2" kindref="member">Object</ref><sp/>obj;</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;totalbytesrecv&quot;</highlight><highlight class="normal">,<sp/><ref refid="class_c_node_1a1988b63b48fdc9b72014bdf9588b0168" kindref="member">CNode::GetTotalBytesRecv</ref>()));</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;totalbytessent&quot;</highlight><highlight class="normal">,<sp/><ref refid="class_c_node_1af318a64e7ddad50d1e1b6fc123a5f0b9" kindref="member">CNode::GetTotalBytesSent</ref>()));</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;timemillis&quot;</highlight><highlight class="normal">,<sp/><ref refid="util_8h_1a139d0fe6387b9e230a9b8bb12d9b43b9" kindref="member">GetTimeMillis</ref>()));</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>obj;</highlight></codeline>
+<codeline lineno="316"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref><sp/>GetNetworksInfo()</highlight></codeline>
+<codeline lineno="319"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref><sp/>networks;</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n=0;<sp/>n&lt;<ref refid="netbase_8h_1acc9a38c714afe79b5035cb36f560dac3a675b0737d6c404a5de25e324c166a4b5" kindref="member">NET_MAX</ref>;<sp/>++n)</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="netbase_8h_1acc9a38c714afe79b5035cb36f560dac3" kindref="member">Network</ref><sp/>network<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal">enum<sp/><ref refid="netbase_8h_1acc9a38c714afe79b5035cb36f560dac3" kindref="member">Network</ref></highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(n);</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(network<sp/>==<sp/><ref refid="netbase_8h_1acc9a38c714afe79b5035cb36f560dac3af66f60a80e2a5d99813c3f322cf8a6e1" kindref="member">NET_UNROUTABLE</ref>)</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_service" kindref="compound">proxyType</ref><sp/>proxy;</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacejson__spirit_1aa1e2c4032be0d25e7b42eb17115dabb2" kindref="member">Object</ref><sp/>obj;</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="netbase_8cpp_1a4e67b39fc1769663260d791d2f4d049d" kindref="member">GetProxy</ref>(network,<sp/>proxy);</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;name&quot;</highlight><highlight class="normal">,<sp/><ref refid="netbase_8cpp_1a3ac9f57de577413ec3a720f0ef520921" kindref="member">GetNetworkName</ref>(network)));</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;limited&quot;</highlight><highlight class="normal">,<sp/><ref refid="net_8cpp_1a96eb2fba6d80870802ac787b6ada4beb" kindref="member">IsLimited</ref>(network)));</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;reachable&quot;</highlight><highlight class="normal">,<sp/><ref refid="net_8cpp_1af6de8e47b01a96206402ddef734114f2" kindref="member">IsReachable</ref>(network)));</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;proxy&quot;</highlight><highlight class="normal">,<sp/>proxy.<ref refid="class_c_net_addr_1a52a1b506f07e5450057e12a8b5a7fbcd" kindref="member">IsValid</ref>()<sp/>?<sp/>proxy.<ref refid="class_c_service_1a39b82301356b0dfc2a92befc727b77be" kindref="member">ToStringIPPort</ref>()<sp/>:<sp/>string()));</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>networks.push_back(obj);</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>networks;</highlight></codeline>
+<codeline lineno="336"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"></highlight></codeline>
+<codeline lineno="338" refid="rpcnet_8cpp_1a3a10a507386b9bbcc48ebd3004bfe58a" refkind="member"><highlight class="normal"><ref refid="classjson__spirit_1_1_value__impl" kindref="compound">Value</ref><sp/><ref refid="rpcnet_8cpp_1a3a10a507386b9bbcc48ebd3004bfe58a" kindref="member">getnetworkinfo</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref>&amp;<sp/>params,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fHelp)</highlight></codeline>
+<codeline lineno="339"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fHelp<sp/>||<sp/>params.size()<sp/>!=<sp/>0)</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">throw</highlight><highlight class="normal"><sp/>runtime_error(</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;getnetworkinfo\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Returns<sp/>an<sp/>object<sp/>containing<sp/>various<sp/>state<sp/>info<sp/>regarding<sp/>P2P<sp/>networking.\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;\nResult:\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;{\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>\&quot;version\&quot;:<sp/>xxxxx,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(numeric)<sp/>the<sp/>server<sp/>version\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>\&quot;subversion\&quot;:<sp/>\&quot;/Satoshi:x.x.x/\&quot;,<sp/><sp/><sp/><sp/><sp/>(string)<sp/>the<sp/>server<sp/>subversion<sp/>string\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>\&quot;protocolversion\&quot;:<sp/>xxxxx,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(numeric)<sp/>the<sp/>protocol<sp/>version\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>\&quot;localservices\&quot;:<sp/>\&quot;xxxxxxxxxxxxxxxx\&quot;,<sp/>(string)<sp/>the<sp/>services<sp/>we<sp/>offer<sp/>to<sp/>the<sp/>network\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>\&quot;timeoffset\&quot;:<sp/>xxxxx,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(numeric)<sp/>the<sp/>time<sp/>offset\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>\&quot;connections\&quot;:<sp/>xxxxx,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(numeric)<sp/>the<sp/>number<sp/>of<sp/>connections\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>\&quot;networks\&quot;:<sp/>[<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array)<sp/>information<sp/>per<sp/>network\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>{\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/>\&quot;name\&quot;:<sp/>\&quot;xxx\&quot;,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(string)<sp/>network<sp/>(ipv4,<sp/>ipv6<sp/>or<sp/>onion)\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/>\&quot;limited\&quot;:<sp/>true|false,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(boolean)<sp/>is<sp/>the<sp/>network<sp/>limited<sp/>using<sp/>-onlynet?\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/>\&quot;reachable\&quot;:<sp/>true|false,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(boolean)<sp/>is<sp/>the<sp/>network<sp/>reachable?\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/>\&quot;proxy\&quot;:<sp/>\&quot;host:port\&quot;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(string)<sp/>the<sp/>proxy<sp/>that<sp/>is<sp/>used<sp/>for<sp/>this<sp/>network,<sp/>or<sp/>empty<sp/>if<sp/>none\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>}\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>,...\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>],\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>\&quot;localaddresses\&quot;:<sp/>[<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(array)<sp/>list<sp/>of<sp/>local<sp/>addresses\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>{\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/>\&quot;address\&quot;:<sp/>\&quot;xxxx\&quot;,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(string)<sp/>network<sp/>address\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/>\&quot;port\&quot;:<sp/>xxx,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(numeric)<sp/>network<sp/>port\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/><sp/><sp/>\&quot;score\&quot;:<sp/>xxx<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(numeric)<sp/>relative<sp/>score\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>}\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>,...\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>]\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;}\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;\nExamples:\n&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="371"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/><ref refid="rpcserver_8cpp_1ac01ac6eab5467567ed0da106814e04ec" kindref="member">HelpExampleCli</ref>(</highlight><highlight class="stringliteral">&quot;getnetworkinfo&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/><ref refid="rpcserver_8cpp_1a06ea60e24e5a1053a14a11b1009bf9ef" kindref="member">HelpExampleRpc</ref>(</highlight><highlight class="stringliteral">&quot;getnetworkinfo&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"></highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacejson__spirit_1aa1e2c4032be0d25e7b42eb17115dabb2" kindref="member">Object</ref><sp/>obj;</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;version&quot;</highlight><highlight class="normal">,<sp/><sp/><sp/><sp/><sp/><sp/><sp/>CLIENT_VERSION));</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;subversion&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="util_8cpp_1a7e6809cdbfc7f83b46f83caea740894d" kindref="member">FormatSubVersion</ref>(<ref refid="version_8h_1ad087f1f283f087089d3d86d1a196a5cb" kindref="member">CLIENT_NAME</ref>,<sp/>CLIENT_VERSION,<sp/>std::vector&lt;string&gt;())));</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;protocolversion&quot;</highlight><highlight class="normal">,PROTOCOL_VERSION));</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;localservices&quot;</highlight><highlight class="normal">,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="tinyformat_8h_1a56c674871a61baaad36ad52238c08857" kindref="member">strprintf</ref>(</highlight><highlight class="stringliteral">&quot;%016x&quot;</highlight><highlight class="normal">,<sp/><ref refid="net_8cpp_1aac7a5df09042b8fc16272947ca022c2c" kindref="member">nLocalServices</ref>)));</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;timeoffset&quot;</highlight><highlight class="normal">,<sp/><sp/><sp/><sp/><ref refid="timedata_8cpp_1a50ca5344c75631267633f15cfe5e983e" kindref="member">GetTimeOffset</ref>()));</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;connections&quot;</highlight><highlight class="normal">,<sp/><sp/><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<ref refid="net_8cpp_1aa5a11f8873e230cea77bc7e91ee51918" kindref="member">vNodes</ref>.size()));</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;networks&quot;</highlight><highlight class="normal">,<sp/><sp/><sp/><sp/><sp/><sp/>GetNetworksInfo()));</highlight></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespacejson__spirit_1aee299e52bda3816039a53210cbbfea1a" kindref="member">Array</ref><sp/>localAddresses;</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" kindref="member">LOCK</ref>(<ref refid="net_8cpp_1a62111271618110807cc534e55c13cb70" kindref="member">cs_mapLocalHost</ref>);</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>BOOST_FOREACH(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="util_8h_1aa3052ab82a2ba880ea3e30b3357c8820" kindref="member">PAIRTYPE</ref>(<ref refid="class_c_net_addr" kindref="compound">CNetAddr</ref>,<sp/><ref refid="struct_local_service_info" kindref="compound">LocalServiceInfo</ref>)<sp/>&amp;item,<sp/><ref refid="net_8cpp_1ac585e737c081ba921335070264a93a79" kindref="member">mapLocalHost</ref>)</highlight></codeline>
+<codeline lineno="388"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacejson__spirit_1aa1e2c4032be0d25e7b42eb17115dabb2" kindref="member">Object</ref><sp/>rec;</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rec.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;address&quot;</highlight><highlight class="normal">,<sp/>item.first.ToString()));</highlight></codeline>
+<codeline lineno="391"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rec.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;port&quot;</highlight><highlight class="normal">,<sp/>item.second.<ref refid="struct_local_service_info_1aa5c39fec8cc69a43e393bb158f69224b" kindref="member">nPort</ref>));</highlight></codeline>
+<codeline lineno="392"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>rec.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;score&quot;</highlight><highlight class="normal">,<sp/>item.second.<ref refid="struct_local_service_info_1ad6a9d404fb109ba1506df3f6ca842ed5" kindref="member">nScore</ref>));</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>localAddresses.push_back(rec);</highlight></codeline>
+<codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="396"><highlight class="normal"><sp/><sp/><sp/><sp/>obj.push_back(<ref refid="namespacejson__spirit_1a7200dfb0c24dea92f37dfd20c1a354c1" kindref="member">Pair</ref>(</highlight><highlight class="stringliteral">&quot;localaddresses&quot;</highlight><highlight class="normal">,<sp/>localAddresses));</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>obj;</highlight></codeline>
+<codeline lineno="398"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/rpcnet.cpp"/>
+  </compounddef>
+</doxygen>

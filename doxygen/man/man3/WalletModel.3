@@ -1,0 +1,418 @@
+.TH "WalletModel" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+WalletModel \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <walletmodel\&.h>\fP
+.PP
+Inherits QObject\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBSendCoinsReturn\fP"
+.br
+.ti -1c
+.RI "class \fBUnlockContext\fP"
+.br
+.in -1c
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBStatusCode\fP { \fBOK\fP, \fBInvalidAmount\fP, \fBInvalidAddress\fP, \fBAmountExceedsBalance\fP, \fBAmountWithFeeExceedsBalance\fP, \fBDuplicateAddress\fP, \fBTransactionCreationFailed\fP, \fBTransactionCommitFailed\fP, \fBNarrationTooLong\fP, \fBAborted\fP, \fBAnonymizeOnlyUnlocked\fP }"
+.br
+.ti -1c
+.RI "enum \fBEncryptionStatus\fP { \fBUnencrypted\fP, \fBLocked\fP, \fBUnlocked\fP, \fBUnlockedForAnonymizationOnly\fP }"
+.br
+.in -1c
+.SS "Public Slots"
+
+.in +1c
+.ti -1c
+.RI "void \fBupdateStatus\fP ()"
+.br
+.RI "\fIWallet status might have changed\&. \fP"
+.ti -1c
+.RI "void \fBupdateTransaction\fP (const QString &\fBhash\fP, int status)"
+.br
+.RI "\fINew transaction, or transaction changed status\&. \fP"
+.ti -1c
+.RI "void \fBupdateAddressBook\fP (const QString &address, const QString &label, bool isMine, int status)"
+.br
+.RI "\fINew, updated or removed address book entry\&. \fP"
+.ti -1c
+.RI "void \fBupdateWatchOnlyFlag\fP (bool fHaveWatchonly)"
+.br
+.RI "\fIWatch-only added\&. \fP"
+.ti -1c
+.RI "void \fBpollBalanceChanged\fP ()"
+.br
+.RI "\fICurrent, immature or unconfirmed balance might have changed - emit 'balanceChanged' if so\&. \fP"
+.in -1c
+.SS "Signals"
+
+.in +1c
+.ti -1c
+.RI "void \fBbalanceChanged\fP (const \fBCAmount\fP &balance, const \fBCAmount\fP &stake, const \fBCAmount\fP &unconfirmedBalance, const \fBCAmount\fP &immatureBalance, const \fBCAmount\fP &anonymizedBalance, const \fBCAmount\fP &watchOnlyBalance, const \fBCAmount\fP &watchOnlyStake, const \fBCAmount\fP &watchUnconfBalance, const \fBCAmount\fP &watchImmatureBalance)"
+.br
+.ti -1c
+.RI "void \fBencryptionStatusChanged\fP (int status)"
+.br
+.ti -1c
+.RI "void \fBrequireUnlock\fP ()"
+.br
+.ti -1c
+.RI "void \fBmessage\fP (const QString &title, const QString &message, bool modal, unsigned int style)"
+.br
+.ti -1c
+.RI "void \fBcoinsSent\fP (\fBCWallet\fP *wallet, \fBSendCoinsRecipient\fP recipient, QByteArray transaction)"
+.br
+.ti -1c
+.RI "void \fBshowProgress\fP (const QString &title, int nProgress)"
+.br
+.ti -1c
+.RI "void \fBnotifyWatchonlyChanged\fP (bool fHaveWatchonly)"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBWalletModel\fP (\fBCWallet\fP *wallet, \fBOptionsModel\fP *optionsModel, QObject *parent=0)"
+.br
+.ti -1c
+.RI "\fB~WalletModel\fP ()"
+.br
+.ti -1c
+.RI "\fBOptionsModel\fP * \fBgetOptionsModel\fP ()"
+.br
+.ti -1c
+.RI "\fBAddressTableModel\fP * \fBgetAddressTableModel\fP ()"
+.br
+.ti -1c
+.RI "\fBTransactionTableModel\fP * \fBgetTransactionTableModel\fP ()"
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBgetBalance\fP (const \fBCCoinControl\fP *coinControl=NULL) const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBgetStake\fP () const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBgetUnconfirmedBalance\fP () const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBgetImmatureBalance\fP () const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBgetAnonymizedBalance\fP () const "
+.br
+.ti -1c
+.RI "bool \fBhaveWatchOnly\fP () const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBgetWatchBalance\fP () const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBgetWatchStake\fP () const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBgetWatchUnconfirmedBalance\fP () const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBgetWatchImmatureBalance\fP () const "
+.br
+.ti -1c
+.RI "\fBEncryptionStatus\fP \fBgetEncryptionStatus\fP () const "
+.br
+.ti -1c
+.RI "bool \fBvalidateAddress\fP (const QString &address)"
+.br
+.ti -1c
+.RI "\fBSendCoinsReturn\fP \fBsendCoins\fP (const QList< \fBSendCoinsRecipient\fP > &recipients, const \fBCCoinControl\fP *coinControl=NULL)"
+.br
+.ti -1c
+.RI "bool \fBsetWalletEncrypted\fP (bool encrypted, const \fBSecureString\fP &passphrase)"
+.br
+.ti -1c
+.RI "bool \fBsetWalletLocked\fP (bool locked, const \fBSecureString\fP &passPhrase=\fBSecureString\fP(), bool anonymizeOnly=false)"
+.br
+.ti -1c
+.RI "bool \fBchangePassphrase\fP (const \fBSecureString\fP &oldPass, const \fBSecureString\fP &newPass)"
+.br
+.ti -1c
+.RI "bool \fBisAnonymizeOnlyUnlocked\fP ()"
+.br
+.ti -1c
+.RI "bool \fBbackupWallet\fP (const QString &filename)"
+.br
+.ti -1c
+.RI "\fBUnlockContext\fP \fBrequestUnlock\fP ()"
+.br
+.ti -1c
+.RI "bool \fBgetPubKey\fP (const \fBCKeyID\fP &address, \fBCPubKey\fP &vchPubKeyOut) const "
+.br
+.ti -1c
+.RI "void \fBgetOutputs\fP (const std::vector< \fBCOutPoint\fP > &vOutpoints, std::vector< \fBCOutput\fP > &vOutputs)"
+.br
+.ti -1c
+.RI "void \fBlistCoins\fP (std::map< QString, std::vector< \fBCOutput\fP > > &mapCoins) const "
+.br
+.ti -1c
+.RI "bool \fBisLockedCoin\fP (\fBuint256\fP \fBhash\fP, unsigned int n) const "
+.br
+.ti -1c
+.RI "void \fBlockCoin\fP (\fBCOutPoint\fP &output)"
+.br
+.ti -1c
+.RI "void \fBunlockCoin\fP (\fBCOutPoint\fP &output)"
+.br
+.ti -1c
+.RI "void \fBlistLockedCoins\fP (std::vector< \fBCOutPoint\fP > &vOutpts)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBfHaveWatchOnly\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Interface to DarkSilk wallet from Qt view code\&. 
+.PP
+Definition at line 40 of file walletmodel\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBWalletModel::EncryptionStatus\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIUnencrypted \fP\fP
+.TP
+\fB\fILocked \fP\fP
+.TP
+\fB\fIUnlocked \fP\fP
+.TP
+\fB\fIUnlockedForAnonymizationOnly \fP\fP
+.PP
+Definition at line 64 of file walletmodel\&.h\&.
+.SS "enum \fBWalletModel::StatusCode\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIOK \fP\fP
+.TP
+\fB\fIInvalidAmount \fP\fP
+.TP
+\fB\fIInvalidAddress \fP\fP
+.TP
+\fB\fIAmountExceedsBalance \fP\fP
+.TP
+\fB\fIAmountWithFeeExceedsBalance \fP\fP
+.TP
+\fB\fIDuplicateAddress \fP\fP
+.TP
+\fB\fITransactionCreationFailed \fP\fP
+.TP
+\fB\fITransactionCommitFailed \fP\fP
+.TP
+\fB\fINarrationTooLong \fP\fP
+.TP
+\fB\fIAborted \fP\fP
+.TP
+\fB\fIAnonymizeOnlyUnlocked \fP\fP
+.PP
+Definition at line 49 of file walletmodel\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "WalletModel::WalletModel (\fBCWallet\fP * wallet, \fBOptionsModel\fP * optionsModel, QObject * parent = \fC0\fP)\fC [explicit]\fP"
+
+.PP
+Definition at line 18 of file walletmodel\&.cpp\&.
+.SS "WalletModel::~WalletModel ()"
+
+.PP
+Definition at line 37 of file walletmodel\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool WalletModel::backupWallet (const QString & filename)"
+
+.PP
+Definition at line 573 of file walletmodel\&.cpp\&.
+.SS "void WalletModel::balanceChanged (const \fBCAmount\fP & balance, const \fBCAmount\fP & stake, const \fBCAmount\fP & unconfirmedBalance, const \fBCAmount\fP & immatureBalance, const \fBCAmount\fP & anonymizedBalance, const \fBCAmount\fP & watchOnlyBalance, const \fBCAmount\fP & watchOnlyStake, const \fBCAmount\fP & watchUnconfBalance, const \fBCAmount\fP & watchImmatureBalance)\fC [signal]\fP"
+
+.SS "bool WalletModel::changePassphrase (const \fBSecureString\fP & oldPass, const \fBSecureString\fP & newPass)"
+
+.PP
+Definition at line 562 of file walletmodel\&.cpp\&.
+.SS "void WalletModel::coinsSent (\fBCWallet\fP * wallet, \fBSendCoinsRecipient\fP recipient, QByteArray transaction)\fC [signal]\fP"
+
+.SS "void WalletModel::encryptionStatusChanged (int status)\fC [signal]\fP"
+
+.SS "\fBAddressTableModel\fP * WalletModel::getAddressTableModel ()"
+
+.PP
+Definition at line 495 of file walletmodel\&.cpp\&.
+.SS "\fBCAmount\fP WalletModel::getAnonymizedBalance () const"
+
+.PP
+Definition at line 74 of file walletmodel\&.cpp\&.
+.SS "\fBCAmount\fP WalletModel::getBalance (const \fBCCoinControl\fP * coinControl = \fCNULL\fP) const"
+
+.PP
+Definition at line 42 of file walletmodel\&.cpp\&.
+.SS "\fBWalletModel::EncryptionStatus\fP WalletModel::getEncryptionStatus () const"
+
+.PP
+Definition at line 505 of file walletmodel\&.cpp\&.
+.SS "\fBCAmount\fP WalletModel::getImmatureBalance () const"
+
+.PP
+Definition at line 69 of file walletmodel\&.cpp\&.
+.SS "\fBOptionsModel\fP * WalletModel::getOptionsModel ()"
+
+.PP
+Definition at line 490 of file walletmodel\&.cpp\&.
+.SS "void WalletModel::getOutputs (const std::vector< \fBCOutPoint\fP > & vOutpoints, std::vector< \fBCOutput\fP > & vOutputs)"
+
+.PP
+Definition at line 684 of file walletmodel\&.cpp\&.
+.SS "bool WalletModel::getPubKey (const \fBCKeyID\fP & address, \fBCPubKey\fP & vchPubKeyOut) const"
+
+.PP
+Definition at line 678 of file walletmodel\&.cpp\&.
+.SS "\fBCAmount\fP WalletModel::getStake () const"
+
+.PP
+Definition at line 64 of file walletmodel\&.cpp\&.
+.SS "\fBTransactionTableModel\fP * WalletModel::getTransactionTableModel ()"
+
+.PP
+Definition at line 500 of file walletmodel\&.cpp\&.
+.SS "\fBCAmount\fP WalletModel::getUnconfirmedBalance () const"
+
+.PP
+Definition at line 59 of file walletmodel\&.cpp\&.
+.SS "\fBCAmount\fP WalletModel::getWatchBalance () const"
+
+.PP
+Definition at line 85 of file walletmodel\&.cpp\&.
+.SS "\fBCAmount\fP WalletModel::getWatchImmatureBalance () const"
+
+.PP
+Definition at line 100 of file walletmodel\&.cpp\&.
+.SS "\fBCAmount\fP WalletModel::getWatchStake () const"
+
+.PP
+Definition at line 90 of file walletmodel\&.cpp\&.
+.SS "\fBCAmount\fP WalletModel::getWatchUnconfirmedBalance () const"
+
+.PP
+Definition at line 95 of file walletmodel\&.cpp\&.
+.SS "bool WalletModel::haveWatchOnly () const"
+
+.PP
+Definition at line 80 of file walletmodel\&.cpp\&.
+.SS "bool WalletModel::isAnonymizeOnlyUnlocked ()"
+
+.PP
+Definition at line 557 of file walletmodel\&.cpp\&.
+.SS "bool WalletModel::isLockedCoin (\fBuint256\fP hash, unsigned int n) const"
+
+.PP
+Definition at line 733 of file walletmodel\&.cpp\&.
+.SS "void WalletModel::listCoins (std::map< QString, std::vector< \fBCOutput\fP > > & mapCoins) const"
+
+.PP
+Definition at line 698 of file walletmodel\&.cpp\&.
+.SS "void WalletModel::listLockedCoins (std::vector< \fBCOutPoint\fP > & vOutpts)"
+
+.PP
+Definition at line 751 of file walletmodel\&.cpp\&.
+.SS "void WalletModel::lockCoin (\fBCOutPoint\fP & output)"
+
+.PP
+Definition at line 739 of file walletmodel\&.cpp\&.
+.SS "void WalletModel::message (const QString & title, const QString & message, bool modal, unsigned int style)\fC [signal]\fP"
+
+.SS "void WalletModel::notifyWatchonlyChanged (bool fHaveWatchonly)\fC [signal]\fP"
+
+.SS "void WalletModel::pollBalanceChanged ()\fC [slot]\fP"
+
+.PP
+Current, immature or unconfirmed balance might have changed - emit 'balanceChanged' if so\&. 
+.PP
+Definition at line 113 of file walletmodel\&.cpp\&.
+.SS "\fBWalletModel::UnlockContext\fP WalletModel::requestUnlock ()"
+
+.PP
+Definition at line 635 of file walletmodel\&.cpp\&.
+.SS "void WalletModel::requireUnlock ()\fC [signal]\fP"
+
+.SS "\fBWalletModel::SendCoinsReturn\fP WalletModel::sendCoins (const QList< \fBSendCoinsRecipient\fP > & recipients, const \fBCCoinControl\fP * coinControl = \fCNULL\fP)"
+
+.PP
+Definition at line 213 of file walletmodel\&.cpp\&.
+.SS "bool WalletModel::setWalletEncrypted (bool encrypted, const \fBSecureString\fP & passphrase)"
+
+.PP
+Definition at line 529 of file walletmodel\&.cpp\&.
+.SS "bool WalletModel::setWalletLocked (bool locked, const \fBSecureString\fP & passPhrase = \fC\fBSecureString\fP()\fP, bool anonymizeOnly = \fCfalse\fP)"
+
+.PP
+Definition at line 543 of file walletmodel\&.cpp\&.
+.SS "void WalletModel::showProgress (const QString & title, int nProgress)\fC [signal]\fP"
+
+.SS "void WalletModel::unlockCoin (\fBCOutPoint\fP & output)"
+
+.PP
+Definition at line 745 of file walletmodel\&.cpp\&.
+.SS "void WalletModel::updateAddressBook (const QString & address, const QString & label, bool isMine, int status)\fC [slot]\fP"
+
+.PP
+New, updated or removed address book entry\&. 
+.PP
+Definition at line 187 of file walletmodel\&.cpp\&.
+.SS "void WalletModel::updateStatus ()\fC [slot]\fP"
+
+.PP
+Wallet status might have changed\&. 
+.PP
+Definition at line 105 of file walletmodel\&.cpp\&.
+.SS "void WalletModel::updateTransaction (const QString & hash, int status)\fC [slot]\fP"
+
+.PP
+New transaction, or transaction changed status\&. 
+.PP
+Definition at line 178 of file walletmodel\&.cpp\&.
+.SS "void WalletModel::updateWatchOnlyFlag (bool fHaveWatchonly)\fC [slot]\fP"
+
+.PP
+Watch-only added\&. 
+.PP
+Definition at line 207 of file walletmodel\&.cpp\&.
+.SS "bool WalletModel::validateAddress (const QString & address)"
+
+.PP
+Definition at line 193 of file walletmodel\&.cpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "bool WalletModel::fHaveWatchOnly"
+
+.PP
+Definition at line 47 of file walletmodel\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

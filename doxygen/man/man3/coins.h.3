@@ -1,0 +1,78 @@
+.TH "/home/dev/ds-160209/src/coins.h" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/coins.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'undo\&.h'\fP
+.br
+\fC#include 'txmempool\&.h'\fP
+.br
+\fC#include <assert\&.h>\fP
+.br
+\fC#include <stdint\&.h>\fP
+.br
+\fC#include <boost/foreach\&.hpp>\fP
+.br
+\fC#include <boost/unordered_map\&.hpp>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBCTxOutCompressorCoin\fP"
+.br
+.RI "\fIwrapper for \fBCTxOut\fP that provides a more compact serialization \fP"
+.ti -1c
+.RI "class \fBCCoins\fP"
+.br
+.ti -1c
+.RI "class \fBCCoinsKeyHasher\fP"
+.br
+.ti -1c
+.RI "struct \fBCCoinsCacheEntry\fP"
+.br
+.ti -1c
+.RI "struct \fBCCoinsStats\fP"
+.br
+.ti -1c
+.RI "class \fBCCoinsView\fP"
+.br
+.RI "\fIAbstract view on the open txout dataset\&. \fP"
+.ti -1c
+.RI "class \fBCCoinsViewDB\fP"
+.br
+.RI "\fI\fBCCoinsView\fP backed by the LevelDB coin database (chainstate/) \fP"
+.ti -1c
+.RI "class \fBCCoinsViewBacked\fP"
+.br
+.RI "\fI\fBCCoinsView\fP backed by another \fBCCoinsView\fP\&. \fP"
+.ti -1c
+.RI "class \fBCCoinsModifier\fP"
+.br
+.ti -1c
+.RI "class \fBCCoinsViewCache\fP"
+.br
+.ti -1c
+.RI "class \fBCCoinsViewMemPool\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef boost::unordered_map< \fBuint256\fP, \fBCCoinsCacheEntry\fP, \fBCCoinsKeyHasher\fP > \fBCCoinsMap\fP"
+.br
+.in -1c
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef boost::unordered_map<\fBuint256\fP, \fBCCoinsCacheEntry\fP, \fBCCoinsKeyHasher\fP> \fBCCoinsMap\fP"
+
+.PP
+Definition at line 325 of file coins\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

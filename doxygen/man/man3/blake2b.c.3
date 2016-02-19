@@ -1,0 +1,133 @@
+.TH "/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdint\&.h>\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include 'blake2\&.h'\fP
+.br
+\fC#include 'blake2-impl\&.h'\fP
+.br
+
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBG\fP(r,  i,  a,  b,  c,  d)"
+.br
+.ti -1c
+.RI "#define \fBROUND\fP(r)"
+.br
+.ti -1c
+.RI "#define \fBTRY\fP(statement)"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBblake2b_init_param\fP (\fBblake2b_state\fP *S, const \fBblake2b_param\fP *P)"
+.br
+.ti -1c
+.RI "int \fBblake2b_init\fP (\fBblake2b_state\fP *S, size_t outlen)"
+.br
+.ti -1c
+.RI "int \fBblake2b_init_key\fP (\fBblake2b_state\fP *S, size_t outlen, const void *key, size_t keylen)"
+.br
+.ti -1c
+.RI "int \fBblake2b_update\fP (\fBblake2b_state\fP *S, const void *in, size_t inlen)"
+.br
+.ti -1c
+.RI "int \fBblake2b_final\fP (\fBblake2b_state\fP *S, void *out, size_t outlen)"
+.br
+.ti -1c
+.RI "int \fBblake2b\fP (void *out, size_t outlen, const void *in, size_t inlen, const void *key, size_t keylen)"
+.br
+.ti -1c
+.RI "int \fBblake2b_long\fP (void *pout, size_t outlen, const void *in, size_t inlen)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define G(r, i, a, b, c, d)"
+\fBValue:\fP
+.PP
+.nf
+do {                                                                       \
+        a = a + b + m[blake2b_sigma[r][2 * i + 0]];                            \
+        d = rotr64(d ^ a, 32);                                                 \
+        c = c + d;                                                             \
+        b = rotr64(b ^ c, 24);                                                 \
+        a = a + b + m[blake2b_sigma[r][2 * i + 1]];                            \
+        d = rotr64(d ^ a, 16);                                                 \
+        c = c + d;                                                             \
+        b = rotr64(b ^ c, 63);                                                 \
+    } while ((void)0, 0)
+.fi
+.SS "#define ROUND(r)"
+\fBValue:\fP
+.PP
+.nf
+do {                                                                       \\
+        G(r, 0, v[0], v[4], v[8], v[12]);                                      \\
+        G(r, 1, v[1], v[5], v[9], v[13]);                                      \\
+        G(r, 2, v[2], v[6], v[10], v[14]);                                     \\
+        G(r, 3, v[3], v[7], v[11], v[15]);                                     \\
+        G(r, 4, v[0], v[5], v[10], v[15]);                                     \\
+        G(r, 5, v[1], v[6], v[11], v[12]);                                     \\
+        G(r, 6, v[2], v[7], v[8], v[13]);                                      \\
+        G(r, 7, v[3], v[4], v[9], v[14]);                                      \
+    } while ((void)0, 0)
+.fi
+.SS "#define TRY(statement)"
+\fBValue:\fP
+.PP
+.nf
+do {                                                                       \
+        ret = statement;                                                       \
+        if (ret < 0) {                                                         \
+            goto fail;                                                         \
+        }                                                                      \
+    } while ((void)0, 0)
+.fi
+.SH "Function Documentation"
+.PP 
+.SS "int blake2b (void * out, size_t outlen, const void * in, size_t inlen, const void * key, size_t keylen)"
+
+.PP
+Definition at line 276 of file blake2b\&.c\&.
+.SS "int blake2b_final (\fBblake2b_state\fP * S, void * out, size_t outlen)"
+
+.PP
+Definition at line 246 of file blake2b\&.c\&.
+.SS "int blake2b_init (\fBblake2b_state\fP * S, size_t outlen)"
+
+.PP
+Definition at line 74 of file blake2b\&.c\&.
+.SS "int blake2b_init_key (\fBblake2b_state\fP * S, size_t outlen, const void * key, size_t keylen)"
+
+.PP
+Definition at line 102 of file blake2b\&.c\&.
+.SS "int blake2b_init_param (\fBblake2b_state\fP * S, const \fBblake2b_param\fP * P)"
+
+.PP
+Definition at line 56 of file blake2b\&.c\&.
+.SS "int blake2b_long (void * pout, size_t outlen, const void * in, size_t inlen)"
+
+.PP
+Definition at line 315 of file blake2b\&.c\&.
+.SS "int blake2b_update (\fBblake2b_state\fP * S, const void * in, size_t inlen)"
+
+.PP
+Definition at line 206 of file blake2b\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

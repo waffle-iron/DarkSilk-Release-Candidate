@@ -1,0 +1,1129 @@
+\hypertarget{class_c_wallet_tx}{}\section{C\+Wallet\+Tx Class Reference}
+\label{class_c_wallet_tx}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+
+
+{\ttfamily \#include $<$wallet.\+h$>$}
+
+
+
+Inheritance diagram for C\+Wallet\+Tx\+:
+% FIG 0
+
+
+Collaboration diagram for C\+Wallet\+Tx\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_wallet_tx_a2124bd17388493a5d883a7ab2cc825b0}{C\+Wallet\+Tx} ()
+\item 
+\hyperlink{class_c_wallet_tx_a0b1a0f58fbe4c65d47136e1a650cee84}{C\+Wallet\+Tx} (const \hyperlink{class_c_wallet}{C\+Wallet} $\ast$pwallet\+In)
+\item 
+\hyperlink{class_c_wallet_tx_a8e58ffb8a69ea68fc366b8a53ef345ef}{C\+Wallet\+Tx} (const \hyperlink{class_c_wallet}{C\+Wallet} $\ast$pwallet\+In, const \hyperlink{class_c_merkle_tx}{C\+Merkle\+Tx} \&tx\+In)
+\item 
+\hyperlink{class_c_wallet_tx_a626a5d41502247ea13b0c90694455468}{C\+Wallet\+Tx} (const \hyperlink{class_c_wallet}{C\+Wallet} $\ast$pwallet\+In, const \hyperlink{class_c_transaction}{C\+Transaction} \&tx\+In)
+\item 
+void \hyperlink{class_c_wallet_tx_ad207b1e6b355946842a126bc14c7e793}{Init} (const \hyperlink{class_c_wallet}{C\+Wallet} $\ast$pwallet\+In)
+\item 
+{\footnotesize template$<$typename Stream , typename Operation $>$ }\\void \hyperlink{class_c_wallet_tx_a94e65d0105f2a75a627e374b0bbefe06}{Serialization\+Op} (Stream \&s, Operation ser\+\_\+action, int n\+Type, int \hyperlink{class_c_transaction_a6c29bdd822859c7b21b7b6c22dca6825}{n\+Version})
+\item 
+bool \hyperlink{class_c_wallet_tx_a49a5151af721410bfb3cf84d241e3228}{Update\+Spent} (const std\+::vector$<$ char $>$ \&vf\+New\+Spent)
+\item 
+void \hyperlink{class_c_wallet_tx_ac8a376bcb955e437489504dc596b43cf}{Mark\+Dirty} ()
+\item 
+void \hyperlink{class_c_wallet_tx_ab0ee7347584bff886dc24b9f63ff023c}{Bind\+Wallet} (\hyperlink{class_c_wallet}{C\+Wallet} $\ast$pwallet\+In)
+\item 
+void \hyperlink{class_c_wallet_tx_af2fc13459e324ad2b3f7c9914d86e7c8}{Mark\+Spent} (unsigned int n\+Out)
+\item 
+void \hyperlink{class_c_wallet_tx_a15588d9e12497ec4c10a53ab629fa244}{Mark\+Unspent} (unsigned int n\+Out)
+\item 
+bool \hyperlink{class_c_wallet_tx_a8873e2d46e0b130dea759af55b83a06c}{Is\+Spent} (unsigned int n\+Out) const 
+\item 
+\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} \hyperlink{class_c_wallet_tx_a1ba00949ac5e02d8fa2cacaa5b5b1ade}{Is\+Denominated} () const 
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{class_c_wallet_tx_a6712fa5cd5831f4a8828b807852d32d0}{Get\+Credit} (const \hyperlink{script_8h_aaa5e1639d76aef50f70532acc3302c4b}{isminefilter} \&filter) const 
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{class_c_wallet_tx_a49633327f5b57c3f253c45b5458501d1}{Get\+Debit} (const \hyperlink{script_8h_aaa5e1639d76aef50f70532acc3302c4b}{isminefilter} \&filter) const 
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{class_c_wallet_tx_a7c192ae2f84392150c1157e04913bd76}{Get\+Immature\+Credit} (bool f\+Use\+Cache=true) const 
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{class_c_wallet_tx_afc5a3b08c3e48e176e389cf172ae79b7}{Get\+Available\+Credit} (bool f\+Use\+Cache=true) const 
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{class_c_wallet_tx_a8bb9ffa6758ee861cd65100242c90882}{Get\+Anonymizable\+Credit} (bool f\+Use\+Cache=false) const 
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{class_c_wallet_tx_a766d81241f3fb2d6f5a4d6dbbab0ed41}{Get\+Denominated\+Credit} (bool unconfirmed, bool f\+Use\+Cache=false) const 
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{class_c_wallet_tx_af6f81048bbda5a788376e9d965da3030}{Get\+Immature\+Watch\+Only\+Credit} (const bool \&f\+Use\+Cache=true) const 
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{class_c_wallet_tx_abfe5cf87f8a2704e526506d9680659c9}{Get\+Available\+Watch\+Only\+Credit} (const bool \&f\+Use\+Cache=true) const 
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{class_c_wallet_tx_afbc869129f88b9a5bd33b67ab90b0061}{Get\+Change} () const 
+\item 
+void \hyperlink{class_c_wallet_tx_af46d43266d668fe7152a086f5446d529}{Get\+Amounts} (std\+::list$<$ std\+::pair$<$ \hyperlink{keystore_8h_a8f46ecba0ddeb036be6b58d6ed1909cd}{C\+Tx\+Destination}, \hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} $>$ $>$ \&list\+Received, std\+::list$<$ std\+::pair$<$ \hyperlink{keystore_8h_a8f46ecba0ddeb036be6b58d6ed1909cd}{C\+Tx\+Destination}, \hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} $>$ $>$ \&list\+Sent, \hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \&n\+Fee, std\+::string \&str\+Sent\+Account, const \hyperlink{script_8h_aaa5e1639d76aef50f70532acc3302c4b}{isminefilter} \&filter) const 
+\item 
+void \hyperlink{class_c_wallet_tx_ae8179fbe6db1204884f0bb7bac4e8fc1}{Get\+Account\+Amounts} (const std\+::string \&str\+Account, \hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \&n\+Received, \hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \&n\+Sent, \hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \&n\+Fee, const \hyperlink{script_8h_aaa5e1639d76aef50f70532acc3302c4b}{isminefilter} \&filter) const 
+\item 
+bool \hyperlink{class_c_wallet_tx_a5eab277896d1b553676316b862e2014b}{Is\+From\+Me} (const \hyperlink{script_8h_aaa5e1639d76aef50f70532acc3302c4b}{isminefilter} \&filter) const 
+\item 
+bool \hyperlink{class_c_wallet_tx_af2eff3b849af124cdf869fc03f587972}{Is\+Trusted} () const 
+\item 
+bool \hyperlink{class_c_wallet_tx_ada0e71d717dd360faf047de54eef4942}{Write\+To\+Disk} ()
+\item 
+\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} \hyperlink{class_c_wallet_tx_a25fdd940fcdd2ea9d05547c5c789fc0d}{Get\+Tx\+Time} () const 
+\item 
+int \hyperlink{class_c_wallet_tx_a78d48485ea1680bdc3e2ffc03a500164}{Get\+Request\+Count} () const 
+\item 
+void \hyperlink{class_c_wallet_tx_a3594f3eabada273c1eb9ab25da38d204}{Add\+Supporting\+Transactions} (\hyperlink{class_c_tx_d_b}{C\+Tx\+D\+B} \&\hyperlink{txdb-leveldb_8cpp_a72eff8ae1d84de13daf97a61b8c02bc6}{txdb})
+\item 
+bool \hyperlink{class_c_wallet_tx_af6d1a5a731bb69e1d94de84eb6fd15a5}{Accept\+Wallet\+Transaction} (\hyperlink{class_c_tx_d_b}{C\+Tx\+D\+B} \&\hyperlink{txdb-leveldb_8cpp_a72eff8ae1d84de13daf97a61b8c02bc6}{txdb})
+\item 
+bool \hyperlink{class_c_wallet_tx_aae2016163fb0bd7f0e1464d381ab8293}{Accept\+Wallet\+Transaction} ()
+\item 
+void \hyperlink{class_c_wallet_tx_aec8c50f3fcde27525485b6cd4a4e19b5}{Relay\+Wallet\+Transaction} (\hyperlink{class_c_tx_d_b}{C\+Tx\+D\+B} \&\hyperlink{txdb-leveldb_8cpp_a72eff8ae1d84de13daf97a61b8c02bc6}{txdb}, std\+::string str\+Command=\char`\"{}tx\char`\"{})
+\item 
+void \hyperlink{class_c_wallet_tx_a1eac2a5eea87ed88b73777bea5c733b6}{Relay\+Wallet\+Transaction} (std\+::string str\+Command=\char`\"{}tx\char`\"{})
+\item 
+std\+::set$<$ \hyperlink{classuint256}{uint256} $>$ \hyperlink{class_c_wallet_tx_ab1820e97b0ed6b80763d61e232d0afaa}{Get\+Conflicts} () const 
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \hyperlink{class_c_merkle_tx}{C\+Merkle\+Tx} $>$ \hyperlink{class_c_wallet_tx_ae122d2e0ce296bd9dfc63eb3ede5ce98}{vtx\+Prev}
+\item 
+\hyperlink{wallet_8h_ab1e69952accb0e7c635e4d7f2b19802b}{map\+Value\+\_\+t} \hyperlink{class_c_wallet_tx_a17229eca0c81245312115a9c333203d8}{map\+Value}
+\item 
+std\+::vector$<$ std\+::pair$<$ std\+::string, std\+::string $>$ $>$ \hyperlink{class_c_wallet_tx_a923dbbba343b8f4d1c3d89ae73bdcea0}{v\+Order\+Form}
+\item 
+unsigned int \hyperlink{class_c_wallet_tx_ac058c61be3a1c680a3ad384ff04d27eb}{f\+Time\+Received\+Is\+Tx\+Time}
+\item 
+unsigned int \hyperlink{class_c_wallet_tx_af4f4b58875061467026da7b259532b69}{n\+Time\+Received}
+\item 
+unsigned int \hyperlink{class_c_wallet_tx_a3c9ba52ce7203b9f16235785a09c383c}{n\+Time\+Smart}
+\item 
+char \hyperlink{class_c_wallet_tx_a1598bf4a18fd05ce5eaaa0c3eb58ff28}{f\+From\+Me}
+\item 
+std\+::string \hyperlink{class_c_wallet_tx_a099b5ca562f8a8378124b345b9123f25}{str\+From\+Account}
+\item 
+std\+::vector$<$ char $>$ \hyperlink{class_c_wallet_tx_a32c09e049302518c81f80c4f1f85583b}{vf\+Spent}
+\item 
+\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} \hyperlink{class_c_wallet_tx_af51e160ff1d9d78986e9f239c7ac7a35}{n\+Order\+Pos}
+\item 
+bool \hyperlink{class_c_wallet_tx_ad2dca68c99f2e677e5999c9872a269da}{f\+Debit\+Cached}
+\item 
+bool \hyperlink{class_c_wallet_tx_ad896ca73e00251f900185a1114c3c506}{f\+Credit\+Cached}
+\item 
+bool \hyperlink{class_c_wallet_tx_a9f52bb55d93a7ffe20e93a4f12487815}{f\+Immature\+Credit\+Cached}
+\item 
+bool \hyperlink{class_c_wallet_tx_a11197a5edda9bbfa66fe94eab1329a51}{f\+Denom\+Unconf\+Credit\+Cached}
+\item 
+bool \hyperlink{class_c_wallet_tx_a73a6308df83f13853a1891ef67c2d199}{f\+Denom\+Conf\+Credit\+Cached}
+\item 
+bool \hyperlink{class_c_wallet_tx_acec9ac9932baf1ca07e5b270f50d8f7e}{f\+Anonymized\+Credit\+Cached}
+\item 
+bool \hyperlink{class_c_wallet_tx_a5906462dc235739a410253a889c7c250}{f\+Anonymizable\+Credit\+Cached}
+\item 
+bool \hyperlink{class_c_wallet_tx_a5f15653f1307c561520a4fa26a12db33}{f\+Available\+Watch\+Credit\+Cached}
+\item 
+bool \hyperlink{class_c_wallet_tx_a15c52b4c9a7ee5e87f86324c7e08fe96}{f\+Immature\+Watch\+Credit\+Cached}
+\item 
+bool \hyperlink{class_c_wallet_tx_ac059d14ddf84de69430c57a12573b412}{f\+Available\+Credit\+Cached}
+\item 
+bool \hyperlink{class_c_wallet_tx_ab436a962e5e32d392928bc68af968bf1}{f\+Change\+Cached}
+\item 
+bool \hyperlink{class_c_wallet_tx_a803d33ac2e13c964a2778bd575f5c69c}{f\+Watch\+Debit\+Cached}
+\item 
+bool \hyperlink{class_c_wallet_tx_abbe2fa89b594fd1c931572bdf7b7a4cd}{f\+Watch\+Credit\+Cached}
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{class_c_wallet_tx_aae59608618174f5c2dc4fa6036ffb76b}{n\+Watch\+Debit\+Cached}
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{class_c_wallet_tx_ad5585350b3917d52e0f0c54fbd8f48ba}{n\+Watch\+Credit\+Cached}
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{class_c_wallet_tx_a6b9278766d4c82554b8b4976bff3ef2c}{n\+Immature\+Credit\+Cached}
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{class_c_wallet_tx_aafed9b6aeecef4f9159ee73a8d69262d}{n\+Debit\+Cached}
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{class_c_wallet_tx_a6f6b791fc148e3ce053e229f8fe83496}{n\+Credit\+Cached}
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{class_c_wallet_tx_a095729d9d744bb1a47d07952f8aa159e}{n\+Available\+Credit\+Cached}
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{class_c_wallet_tx_af324c0c303c44aea9c790e782187343e}{n\+Change\+Cached}
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{class_c_wallet_tx_afe7b93d5672df90c6b1d3065dc047fe0}{n\+Immature\+Watch\+Credit\+Cached}
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{class_c_wallet_tx_ab3113c0543c6f68ccbb2449dde29aec7}{n\+Available\+Watch\+Credit\+Cached}
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{class_c_wallet_tx_ad68a73e3dde08f0f397147f825a09263}{n\+Anonymizable\+Credit\+Cached}
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{class_c_wallet_tx_af181c96d03d064524fec21c2f8d6f1c1}{n\+Anonymized\+Credit\+Cached}
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{class_c_wallet_tx_a1ecccbf8322abc397686907c0cbcefba}{n\+Denom\+Unconf\+Credit\+Cached}
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{class_c_wallet_tx_a2fcf31679a29b43c3a01dd44bf844aee}{n\+Denom\+Conf\+Credit\+Cached}
+\item 
+\hyperlink{class_c_wallet_tx_aad8df774858ddd54f06a76eb075f2823}{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A transaction with a bunch of additional info that only the owner cares about. It includes any unrecorded transactions needed to link it back to the block chain. 
+
+Definition at line 527 of file wallet.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_wallet_tx_a2124bd17388493a5d883a7ab2cc825b0}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{C\+Wallet\+Tx}]{\setlength{\rightskip}{0pt plus 5cm}C\+Wallet\+Tx\+::\+C\+Wallet\+Tx (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_wallet_tx_a2124bd17388493a5d883a7ab2cc825b0}
+
+
+Definition at line 573 of file wallet.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+\hypertarget{class_c_wallet_tx_a0b1a0f58fbe4c65d47136e1a650cee84}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{C\+Wallet\+Tx}]{\setlength{\rightskip}{0pt plus 5cm}C\+Wallet\+Tx\+::\+C\+Wallet\+Tx (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Wallet} $\ast$}]{pwallet\+In}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_wallet_tx_a0b1a0f58fbe4c65d47136e1a650cee84}
+
+
+Definition at line 578 of file wallet.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 3
+
+
+\hypertarget{class_c_wallet_tx_a8e58ffb8a69ea68fc366b8a53ef345ef}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{C\+Wallet\+Tx}]{\setlength{\rightskip}{0pt plus 5cm}C\+Wallet\+Tx\+::\+C\+Wallet\+Tx (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Wallet} $\ast$}]{pwallet\+In, }
+\item[{const {\bf C\+Merkle\+Tx} \&}]{tx\+In}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_wallet_tx_a8e58ffb8a69ea68fc366b8a53ef345ef}
+
+
+Definition at line 583 of file wallet.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 4
+
+
+\hypertarget{class_c_wallet_tx_a626a5d41502247ea13b0c90694455468}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{C\+Wallet\+Tx}]{\setlength{\rightskip}{0pt plus 5cm}C\+Wallet\+Tx\+::\+C\+Wallet\+Tx (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Wallet} $\ast$}]{pwallet\+In, }
+\item[{const {\bf C\+Transaction} \&}]{tx\+In}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_wallet_tx_a626a5d41502247ea13b0c90694455468}
+
+
+Definition at line 588 of file wallet.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 5
+
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_wallet_tx_af6d1a5a731bb69e1d94de84eb6fd15a5}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Accept\+Wallet\+Transaction@{Accept\+Wallet\+Transaction}}
+\index{Accept\+Wallet\+Transaction@{Accept\+Wallet\+Transaction}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Accept\+Wallet\+Transaction}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+Tx\+::\+Accept\+Wallet\+Transaction (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Tx\+D\+B} \&}]{txdb}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_tx_af6d1a5a731bb69e1d94de84eb6fd15a5}
+
+
+Definition at line 1462 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 6
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 7
+
+
+\hypertarget{class_c_wallet_tx_aae2016163fb0bd7f0e1464d381ab8293}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Accept\+Wallet\+Transaction@{Accept\+Wallet\+Transaction}}
+\index{Accept\+Wallet\+Transaction@{Accept\+Wallet\+Transaction}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Accept\+Wallet\+Transaction}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+Tx\+::\+Accept\+Wallet\+Transaction (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_tx_aae2016163fb0bd7f0e1464d381ab8293}
+
+
+Definition at line 1481 of file main.\+cpp.
+
+\hypertarget{class_c_wallet_tx_a3594f3eabada273c1eb9ab25da38d204}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Add\+Supporting\+Transactions@{Add\+Supporting\+Transactions}}
+\index{Add\+Supporting\+Transactions@{Add\+Supporting\+Transactions}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Add\+Supporting\+Transactions}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Wallet\+Tx\+::\+Add\+Supporting\+Transactions (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Tx\+D\+B} \&}]{txdb}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_tx_a3594f3eabada273c1eb9ab25da38d204}
+
+
+Definition at line 1056 of file wallet.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 8
+
+
+\hypertarget{class_c_wallet_tx_ab0ee7347584bff886dc24b9f63ff023c}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Bind\+Wallet@{Bind\+Wallet}}
+\index{Bind\+Wallet@{Bind\+Wallet}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Bind\+Wallet}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Wallet\+Tx\+::\+Bind\+Wallet (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Wallet} $\ast$}]{pwallet\+In}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_wallet_tx_ab0ee7347584bff886dc24b9f63ff023c}
+
+
+Definition at line 723 of file wallet.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 9
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 10
+
+
+\hypertarget{class_c_wallet_tx_ae8179fbe6db1204884f0bb7bac4e8fc1}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Get\+Account\+Amounts@{Get\+Account\+Amounts}}
+\index{Get\+Account\+Amounts@{Get\+Account\+Amounts}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Get\+Account\+Amounts}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Wallet\+Tx\+::\+Get\+Account\+Amounts (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{str\+Account, }
+\item[{{\bf C\+Amount} \&}]{n\+Received, }
+\item[{{\bf C\+Amount} \&}]{n\+Sent, }
+\item[{{\bf C\+Amount} \&}]{n\+Fee, }
+\item[{const {\bf isminefilter} \&}]{filter}
+\end{DoxyParamCaption}
+) const}\label{class_c_wallet_tx_ae8179fbe6db1204884f0bb7bac4e8fc1}
+
+
+Definition at line 1020 of file wallet.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 11
+
+
+\hypertarget{class_c_wallet_tx_af46d43266d668fe7152a086f5446d529}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Get\+Amounts@{Get\+Amounts}}
+\index{Get\+Amounts@{Get\+Amounts}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Get\+Amounts}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Wallet\+Tx\+::\+Get\+Amounts (
+\begin{DoxyParamCaption}
+\item[{std\+::list$<$ std\+::pair$<$ {\bf C\+Tx\+Destination}, {\bf C\+Amount} $>$ $>$ \&}]{list\+Received, }
+\item[{std\+::list$<$ std\+::pair$<$ {\bf C\+Tx\+Destination}, {\bf C\+Amount} $>$ $>$ \&}]{list\+Sent, }
+\item[{{\bf C\+Amount} \&}]{n\+Fee, }
+\item[{std\+::string \&}]{str\+Sent\+Account, }
+\item[{const {\bf isminefilter} \&}]{filter}
+\end{DoxyParamCaption}
+) const}\label{class_c_wallet_tx_af46d43266d668fe7152a086f5446d529}
+
+
+Definition at line 967 of file wallet.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 12
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 13
+
+
+\hypertarget{class_c_wallet_tx_a8bb9ffa6758ee861cd65100242c90882}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Get\+Anonymizable\+Credit@{Get\+Anonymizable\+Credit}}
+\index{Get\+Anonymizable\+Credit@{Get\+Anonymizable\+Credit}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Get\+Anonymizable\+Credit}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} C\+Wallet\+Tx\+::\+Get\+Anonymizable\+Credit (
+\begin{DoxyParamCaption}
+\item[{bool}]{f\+Use\+Cache = {\ttfamily false}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_wallet_tx_a8bb9ffa6758ee861cd65100242c90882}
+
+
+Definition at line 876 of file wallet.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 14
+
+
+\hypertarget{class_c_wallet_tx_afc5a3b08c3e48e176e389cf172ae79b7}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Get\+Available\+Credit@{Get\+Available\+Credit}}
+\index{Get\+Available\+Credit@{Get\+Available\+Credit}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Get\+Available\+Credit}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} C\+Wallet\+Tx\+::\+Get\+Available\+Credit (
+\begin{DoxyParamCaption}
+\item[{bool}]{f\+Use\+Cache = {\ttfamily true}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_wallet_tx_afc5a3b08c3e48e176e389cf172ae79b7}
+
+
+Definition at line 847 of file wallet.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 15
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 16
+
+
+\hypertarget{class_c_wallet_tx_abfe5cf87f8a2704e526506d9680659c9}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Get\+Available\+Watch\+Only\+Credit@{Get\+Available\+Watch\+Only\+Credit}}
+\index{Get\+Available\+Watch\+Only\+Credit@{Get\+Available\+Watch\+Only\+Credit}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Get\+Available\+Watch\+Only\+Credit}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} C\+Wallet\+Tx\+::\+Get\+Available\+Watch\+Only\+Credit (
+\begin{DoxyParamCaption}
+\item[{const bool \&}]{f\+Use\+Cache = {\ttfamily true}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_wallet_tx_abfe5cf87f8a2704e526506d9680659c9}
+
+
+Definition at line 973 of file wallet.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 17
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 18
+
+
+\hypertarget{class_c_wallet_tx_afbc869129f88b9a5bd33b67ab90b0061}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Get\+Change@{Get\+Change}}
+\index{Get\+Change@{Get\+Change}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Get\+Change}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} C\+Wallet\+Tx\+::\+Get\+Change (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_wallet_tx_afbc869129f88b9a5bd33b67ab90b0061}
+
+
+Definition at line 1002 of file wallet.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 19
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 20
+
+
+\hypertarget{class_c_wallet_tx_ab1820e97b0ed6b80763d61e232d0afaa}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Get\+Conflicts@{Get\+Conflicts}}
+\index{Get\+Conflicts@{Get\+Conflicts}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Get\+Conflicts}]{\setlength{\rightskip}{0pt plus 5cm}set$<$ {\bf uint256} $>$ C\+Wallet\+Tx\+::\+Get\+Conflicts (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_c_wallet_tx_ab1820e97b0ed6b80763d61e232d0afaa}
+
+
+Definition at line 1250 of file wallet.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 21
+
+
+\hypertarget{class_c_wallet_tx_a6712fa5cd5831f4a8828b807852d32d0}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Get\+Credit@{Get\+Credit}}
+\index{Get\+Credit@{Get\+Credit}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Get\+Credit}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} C\+Wallet\+Tx\+::\+Get\+Credit (
+\begin{DoxyParamCaption}
+\item[{const {\bf isminefilter} \&}]{filter}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_wallet_tx_a6712fa5cd5831f4a8828b807852d32d0}
+
+
+Definition at line 769 of file wallet.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 22
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 23
+
+
+\hypertarget{class_c_wallet_tx_a49633327f5b57c3f253c45b5458501d1}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Get\+Debit@{Get\+Debit}}
+\index{Get\+Debit@{Get\+Debit}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Get\+Debit}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} C\+Wallet\+Tx\+::\+Get\+Debit (
+\begin{DoxyParamCaption}
+\item[{const {\bf isminefilter} \&}]{filter}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_wallet_tx_a49633327f5b57c3f253c45b5458501d1}
+
+
+Definition at line 802 of file wallet.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 24
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 25
+
+
+\hypertarget{class_c_wallet_tx_a766d81241f3fb2d6f5a4d6dbbab0ed41}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Get\+Denominated\+Credit@{Get\+Denominated\+Credit}}
+\index{Get\+Denominated\+Credit@{Get\+Denominated\+Credit}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Get\+Denominated\+Credit}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} C\+Wallet\+Tx\+::\+Get\+Denominated\+Credit (
+\begin{DoxyParamCaption}
+\item[{bool}]{unconfirmed, }
+\item[{bool}]{f\+Use\+Cache = {\ttfamily false}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_wallet_tx_a766d81241f3fb2d6f5a4d6dbbab0ed41}
+
+
+Definition at line 915 of file wallet.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 26
+
+
+\hypertarget{class_c_wallet_tx_a7c192ae2f84392150c1157e04913bd76}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Get\+Immature\+Credit@{Get\+Immature\+Credit}}
+\index{Get\+Immature\+Credit@{Get\+Immature\+Credit}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Get\+Immature\+Credit}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} C\+Wallet\+Tx\+::\+Get\+Immature\+Credit (
+\begin{DoxyParamCaption}
+\item[{bool}]{f\+Use\+Cache = {\ttfamily true}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_wallet_tx_a7c192ae2f84392150c1157e04913bd76}
+
+
+Definition at line 833 of file wallet.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 27
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 28
+
+
+\hypertarget{class_c_wallet_tx_af6f81048bbda5a788376e9d965da3030}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Get\+Immature\+Watch\+Only\+Credit@{Get\+Immature\+Watch\+Only\+Credit}}
+\index{Get\+Immature\+Watch\+Only\+Credit@{Get\+Immature\+Watch\+Only\+Credit}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Get\+Immature\+Watch\+Only\+Credit}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} C\+Wallet\+Tx\+::\+Get\+Immature\+Watch\+Only\+Credit (
+\begin{DoxyParamCaption}
+\item[{const bool \&}]{f\+Use\+Cache = {\ttfamily true}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_wallet_tx_af6f81048bbda5a788376e9d965da3030}
+
+
+Definition at line 959 of file wallet.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 29
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 30
+
+
+\hypertarget{class_c_wallet_tx_a78d48485ea1680bdc3e2ffc03a500164}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Get\+Request\+Count@{Get\+Request\+Count}}
+\index{Get\+Request\+Count@{Get\+Request\+Count}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Get\+Request\+Count}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Wallet\+Tx\+::\+Get\+Request\+Count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_c_wallet_tx_a78d48485ea1680bdc3e2ffc03a500164}
+
+
+Definition at line 928 of file wallet.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 31
+
+
+\hypertarget{class_c_wallet_tx_a25fdd940fcdd2ea9d05547c5c789fc0d}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Get\+Tx\+Time@{Get\+Tx\+Time}}
+\index{Get\+Tx\+Time@{Get\+Tx\+Time}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Get\+Tx\+Time}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int64\+\_\+t} C\+Wallet\+Tx\+::\+Get\+Tx\+Time (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_c_wallet_tx_a25fdd940fcdd2ea9d05547c5c789fc0d}
+
+
+Definition at line 922 of file wallet.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 32
+
+
+\hypertarget{class_c_wallet_tx_ad207b1e6b355946842a126bc14c7e793}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Init@{Init}}
+\index{Init@{Init}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Init}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Wallet\+Tx\+::\+Init (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Wallet} $\ast$}]{pwallet\+In}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_wallet_tx_ad207b1e6b355946842a126bc14c7e793}
+
+
+Definition at line 593 of file wallet.\+h.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 33
+
+
+\hypertarget{class_c_wallet_tx_a1ba00949ac5e02d8fa2cacaa5b5b1ade}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Is\+Denominated@{Is\+Denominated}}
+\index{Is\+Denominated@{Is\+Denominated}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Is\+Denominated}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int64\+\_\+t} C\+Wallet\+Tx\+::\+Is\+Denominated (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_wallet_tx_a1ba00949ac5e02d8fa2cacaa5b5b1ade}
+
+
+Definition at line 762 of file wallet.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 34
+
+
+\hypertarget{class_c_wallet_tx_a5eab277896d1b553676316b862e2014b}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Is\+From\+Me@{Is\+From\+Me}}
+\index{Is\+From\+Me@{Is\+From\+Me}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Is\+From\+Me}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+Tx\+::\+Is\+From\+Me (
+\begin{DoxyParamCaption}
+\item[{const {\bf isminefilter} \&}]{filter}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_wallet_tx_a5eab277896d1b553676316b862e2014b}
+
+
+Definition at line 1017 of file wallet.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 35
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 36
+
+
+\hypertarget{class_c_wallet_tx_a8873e2d46e0b130dea759af55b83a06c}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Is\+Spent@{Is\+Spent}}
+\index{Is\+Spent@{Is\+Spent}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Is\+Spent}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+Tx\+::\+Is\+Spent (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{n\+Out}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_wallet_tx_a8873e2d46e0b130dea759af55b83a06c}
+
+
+Definition at line 753 of file wallet.\+h.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 37
+
+
+\hypertarget{class_c_wallet_tx_af2eff3b849af124cdf869fc03f587972}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Is\+Trusted@{Is\+Trusted}}
+\index{Is\+Trusted@{Is\+Trusted}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Is\+Trusted}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+Tx\+::\+Is\+Trusted (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_wallet_tx_af2eff3b849af124cdf869fc03f587972}
+
+
+Definition at line 1022 of file wallet.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 38
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 39
+
+
+\hypertarget{class_c_wallet_tx_ac8a376bcb955e437489504dc596b43cf}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Mark\+Dirty@{Mark\+Dirty}}
+\index{Mark\+Dirty@{Mark\+Dirty}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Mark\+Dirty}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Wallet\+Tx\+::\+Mark\+Dirty (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_wallet_tx_ac8a376bcb955e437489504dc596b43cf}
+
+
+Definition at line 715 of file wallet.\+h.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 40
+
+
+\hypertarget{class_c_wallet_tx_af2fc13459e324ad2b3f7c9914d86e7c8}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Mark\+Spent@{Mark\+Spent}}
+\index{Mark\+Spent@{Mark\+Spent}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Mark\+Spent}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Wallet\+Tx\+::\+Mark\+Spent (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{n\+Out}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_wallet_tx_af2fc13459e324ad2b3f7c9914d86e7c8}
+
+
+Definition at line 729 of file wallet.\+h.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 41
+
+
+\hypertarget{class_c_wallet_tx_a15588d9e12497ec4c10a53ab629fa244}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Mark\+Unspent@{Mark\+Unspent}}
+\index{Mark\+Unspent@{Mark\+Unspent}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Mark\+Unspent}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Wallet\+Tx\+::\+Mark\+Unspent (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{n\+Out}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_wallet_tx_a15588d9e12497ec4c10a53ab629fa244}
+
+
+Definition at line 741 of file wallet.\+h.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 42
+
+
+\hypertarget{class_c_wallet_tx_aec8c50f3fcde27525485b6cd4a4e19b5}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Relay\+Wallet\+Transaction@{Relay\+Wallet\+Transaction}}
+\index{Relay\+Wallet\+Transaction@{Relay\+Wallet\+Transaction}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Relay\+Wallet\+Transaction}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Wallet\+Tx\+::\+Relay\+Wallet\+Transaction (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Tx\+D\+B} \&}]{txdb, }
+\item[{std\+::string}]{str\+Command = {\ttfamily \char`\"{}tx\char`\"{}}}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_tx_aec8c50f3fcde27525485b6cd4a4e19b5}
+
+
+Definition at line 1225 of file wallet.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 43
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 44
+
+
+\hypertarget{class_c_wallet_tx_a1eac2a5eea87ed88b73777bea5c733b6}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Relay\+Wallet\+Transaction@{Relay\+Wallet\+Transaction}}
+\index{Relay\+Wallet\+Transaction@{Relay\+Wallet\+Transaction}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Relay\+Wallet\+Transaction}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Wallet\+Tx\+::\+Relay\+Wallet\+Transaction (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{str\+Command = {\ttfamily \char`\"{}tx\char`\"{}}}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_tx_a1eac2a5eea87ed88b73777bea5c733b6}
+
+
+Definition at line 1244 of file wallet.\+cpp.
+
+\hypertarget{class_c_wallet_tx_a94e65d0105f2a75a627e374b0bbefe06}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Serialization\+Op@{Serialization\+Op}}
+\index{Serialization\+Op@{Serialization\+Op}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Serialization\+Op}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename Operation $>$ void C\+Wallet\+Tx\+::\+Serialization\+Op (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{Operation}]{ser\+\_\+action, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_wallet_tx_a94e65d0105f2a75a627e374b0bbefe06}
+
+
+Definition at line 636 of file wallet.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 45
+
+
+\hypertarget{class_c_wallet_tx_a49a5151af721410bfb3cf84d241e3228}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Update\+Spent@{Update\+Spent}}
+\index{Update\+Spent@{Update\+Spent}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Update\+Spent}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+Tx\+::\+Update\+Spent (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ char $>$ \&}]{vf\+New\+Spent}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_wallet_tx_a49a5151af721410bfb3cf84d241e3228}
+
+
+Definition at line 696 of file wallet.\+h.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 46
+
+
+\hypertarget{class_c_wallet_tx_ada0e71d717dd360faf047de54eef4942}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!Write\+To\+Disk@{Write\+To\+Disk}}
+\index{Write\+To\+Disk@{Write\+To\+Disk}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{Write\+To\+Disk}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+Tx\+::\+Write\+To\+Disk (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_tx_ada0e71d717dd360faf047de54eef4942}
+
+
+Definition at line 1116 of file wallet.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 47
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 48
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_c_wallet_tx_aad8df774858ddd54f06a76eb075f2823}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}}
+\index{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}]{\setlength{\rightskip}{0pt plus 5cm}C\+Wallet\+Tx\+::\+A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}\label{class_c_wallet_tx_aad8df774858ddd54f06a76eb075f2823}
+
+
+Definition at line 633 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_a5906462dc235739a410253a889c7c250}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!f\+Anonymizable\+Credit\+Cached@{f\+Anonymizable\+Credit\+Cached}}
+\index{f\+Anonymizable\+Credit\+Cached@{f\+Anonymizable\+Credit\+Cached}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{f\+Anonymizable\+Credit\+Cached}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+Tx\+::f\+Anonymizable\+Credit\+Cached\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_wallet_tx_a5906462dc235739a410253a889c7c250}
+
+
+Definition at line 551 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_acec9ac9932baf1ca07e5b270f50d8f7e}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!f\+Anonymized\+Credit\+Cached@{f\+Anonymized\+Credit\+Cached}}
+\index{f\+Anonymized\+Credit\+Cached@{f\+Anonymized\+Credit\+Cached}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{f\+Anonymized\+Credit\+Cached}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+Tx\+::f\+Anonymized\+Credit\+Cached\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_wallet_tx_acec9ac9932baf1ca07e5b270f50d8f7e}
+
+
+Definition at line 550 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_ac059d14ddf84de69430c57a12573b412}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!f\+Available\+Credit\+Cached@{f\+Available\+Credit\+Cached}}
+\index{f\+Available\+Credit\+Cached@{f\+Available\+Credit\+Cached}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{f\+Available\+Credit\+Cached}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+Tx\+::f\+Available\+Credit\+Cached\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_wallet_tx_ac059d14ddf84de69430c57a12573b412}
+
+
+Definition at line 554 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_a5f15653f1307c561520a4fa26a12db33}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!f\+Available\+Watch\+Credit\+Cached@{f\+Available\+Watch\+Credit\+Cached}}
+\index{f\+Available\+Watch\+Credit\+Cached@{f\+Available\+Watch\+Credit\+Cached}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{f\+Available\+Watch\+Credit\+Cached}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+Tx\+::f\+Available\+Watch\+Credit\+Cached\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_wallet_tx_a5f15653f1307c561520a4fa26a12db33}
+
+
+Definition at line 552 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_ab436a962e5e32d392928bc68af968bf1}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!f\+Change\+Cached@{f\+Change\+Cached}}
+\index{f\+Change\+Cached@{f\+Change\+Cached}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{f\+Change\+Cached}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+Tx\+::f\+Change\+Cached\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_wallet_tx_ab436a962e5e32d392928bc68af968bf1}
+
+
+Definition at line 555 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_ad896ca73e00251f900185a1114c3c506}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!f\+Credit\+Cached@{f\+Credit\+Cached}}
+\index{f\+Credit\+Cached@{f\+Credit\+Cached}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{f\+Credit\+Cached}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+Tx\+::f\+Credit\+Cached\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_wallet_tx_ad896ca73e00251f900185a1114c3c506}
+
+
+Definition at line 546 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_ad2dca68c99f2e677e5999c9872a269da}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!f\+Debit\+Cached@{f\+Debit\+Cached}}
+\index{f\+Debit\+Cached@{f\+Debit\+Cached}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{f\+Debit\+Cached}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+Tx\+::f\+Debit\+Cached\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_wallet_tx_ad2dca68c99f2e677e5999c9872a269da}
+
+
+Definition at line 545 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_a73a6308df83f13853a1891ef67c2d199}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!f\+Denom\+Conf\+Credit\+Cached@{f\+Denom\+Conf\+Credit\+Cached}}
+\index{f\+Denom\+Conf\+Credit\+Cached@{f\+Denom\+Conf\+Credit\+Cached}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{f\+Denom\+Conf\+Credit\+Cached}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+Tx\+::f\+Denom\+Conf\+Credit\+Cached\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_wallet_tx_a73a6308df83f13853a1891ef67c2d199}
+
+
+Definition at line 549 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_a11197a5edda9bbfa66fe94eab1329a51}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!f\+Denom\+Unconf\+Credit\+Cached@{f\+Denom\+Unconf\+Credit\+Cached}}
+\index{f\+Denom\+Unconf\+Credit\+Cached@{f\+Denom\+Unconf\+Credit\+Cached}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{f\+Denom\+Unconf\+Credit\+Cached}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+Tx\+::f\+Denom\+Unconf\+Credit\+Cached\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_wallet_tx_a11197a5edda9bbfa66fe94eab1329a51}
+
+
+Definition at line 548 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_a1598bf4a18fd05ce5eaaa0c3eb58ff28}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!f\+From\+Me@{f\+From\+Me}}
+\index{f\+From\+Me@{f\+From\+Me}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{f\+From\+Me}]{\setlength{\rightskip}{0pt plus 5cm}char C\+Wallet\+Tx\+::f\+From\+Me}\label{class_c_wallet_tx_a1598bf4a18fd05ce5eaaa0c3eb58ff28}
+
+
+Definition at line 539 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_a9f52bb55d93a7ffe20e93a4f12487815}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!f\+Immature\+Credit\+Cached@{f\+Immature\+Credit\+Cached}}
+\index{f\+Immature\+Credit\+Cached@{f\+Immature\+Credit\+Cached}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{f\+Immature\+Credit\+Cached}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+Tx\+::f\+Immature\+Credit\+Cached\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_wallet_tx_a9f52bb55d93a7ffe20e93a4f12487815}
+
+
+Definition at line 547 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_a15c52b4c9a7ee5e87f86324c7e08fe96}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!f\+Immature\+Watch\+Credit\+Cached@{f\+Immature\+Watch\+Credit\+Cached}}
+\index{f\+Immature\+Watch\+Credit\+Cached@{f\+Immature\+Watch\+Credit\+Cached}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{f\+Immature\+Watch\+Credit\+Cached}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+Tx\+::f\+Immature\+Watch\+Credit\+Cached\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_wallet_tx_a15c52b4c9a7ee5e87f86324c7e08fe96}
+
+
+Definition at line 553 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_ac058c61be3a1c680a3ad384ff04d27eb}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!f\+Time\+Received\+Is\+Tx\+Time@{f\+Time\+Received\+Is\+Tx\+Time}}
+\index{f\+Time\+Received\+Is\+Tx\+Time@{f\+Time\+Received\+Is\+Tx\+Time}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{f\+Time\+Received\+Is\+Tx\+Time}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int C\+Wallet\+Tx\+::f\+Time\+Received\+Is\+Tx\+Time}\label{class_c_wallet_tx_ac058c61be3a1c680a3ad384ff04d27eb}
+
+
+Definition at line 536 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_abbe2fa89b594fd1c931572bdf7b7a4cd}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!f\+Watch\+Credit\+Cached@{f\+Watch\+Credit\+Cached}}
+\index{f\+Watch\+Credit\+Cached@{f\+Watch\+Credit\+Cached}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{f\+Watch\+Credit\+Cached}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+Tx\+::f\+Watch\+Credit\+Cached\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_wallet_tx_abbe2fa89b594fd1c931572bdf7b7a4cd}
+
+
+Definition at line 557 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_a803d33ac2e13c964a2778bd575f5c69c}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!f\+Watch\+Debit\+Cached@{f\+Watch\+Debit\+Cached}}
+\index{f\+Watch\+Debit\+Cached@{f\+Watch\+Debit\+Cached}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{f\+Watch\+Debit\+Cached}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+Tx\+::f\+Watch\+Debit\+Cached\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_wallet_tx_a803d33ac2e13c964a2778bd575f5c69c}
+
+
+Definition at line 556 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_a17229eca0c81245312115a9c333203d8}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!map\+Value@{map\+Value}}
+\index{map\+Value@{map\+Value}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{map\+Value}]{\setlength{\rightskip}{0pt plus 5cm}{\bf map\+Value\+\_\+t} C\+Wallet\+Tx\+::map\+Value}\label{class_c_wallet_tx_a17229eca0c81245312115a9c333203d8}
+
+
+Definition at line 534 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_ad68a73e3dde08f0f397147f825a09263}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!n\+Anonymizable\+Credit\+Cached@{n\+Anonymizable\+Credit\+Cached}}
+\index{n\+Anonymizable\+Credit\+Cached@{n\+Anonymizable\+Credit\+Cached}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{n\+Anonymizable\+Credit\+Cached}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} C\+Wallet\+Tx\+::n\+Anonymizable\+Credit\+Cached\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_wallet_tx_ad68a73e3dde08f0f397147f825a09263}
+
+
+Definition at line 568 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_af181c96d03d064524fec21c2f8d6f1c1}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!n\+Anonymized\+Credit\+Cached@{n\+Anonymized\+Credit\+Cached}}
+\index{n\+Anonymized\+Credit\+Cached@{n\+Anonymized\+Credit\+Cached}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{n\+Anonymized\+Credit\+Cached}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} C\+Wallet\+Tx\+::n\+Anonymized\+Credit\+Cached\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_wallet_tx_af181c96d03d064524fec21c2f8d6f1c1}
+
+
+Definition at line 569 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_a095729d9d744bb1a47d07952f8aa159e}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!n\+Available\+Credit\+Cached@{n\+Available\+Credit\+Cached}}
+\index{n\+Available\+Credit\+Cached@{n\+Available\+Credit\+Cached}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{n\+Available\+Credit\+Cached}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} C\+Wallet\+Tx\+::n\+Available\+Credit\+Cached\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_wallet_tx_a095729d9d744bb1a47d07952f8aa159e}
+
+
+Definition at line 564 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_ab3113c0543c6f68ccbb2449dde29aec7}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!n\+Available\+Watch\+Credit\+Cached@{n\+Available\+Watch\+Credit\+Cached}}
+\index{n\+Available\+Watch\+Credit\+Cached@{n\+Available\+Watch\+Credit\+Cached}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{n\+Available\+Watch\+Credit\+Cached}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} C\+Wallet\+Tx\+::n\+Available\+Watch\+Credit\+Cached\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_wallet_tx_ab3113c0543c6f68ccbb2449dde29aec7}
+
+
+Definition at line 567 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_af324c0c303c44aea9c790e782187343e}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!n\+Change\+Cached@{n\+Change\+Cached}}
+\index{n\+Change\+Cached@{n\+Change\+Cached}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{n\+Change\+Cached}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} C\+Wallet\+Tx\+::n\+Change\+Cached\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_wallet_tx_af324c0c303c44aea9c790e782187343e}
+
+
+Definition at line 565 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_a6f6b791fc148e3ce053e229f8fe83496}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!n\+Credit\+Cached@{n\+Credit\+Cached}}
+\index{n\+Credit\+Cached@{n\+Credit\+Cached}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{n\+Credit\+Cached}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} C\+Wallet\+Tx\+::n\+Credit\+Cached\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_wallet_tx_a6f6b791fc148e3ce053e229f8fe83496}
+
+
+Definition at line 563 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_aafed9b6aeecef4f9159ee73a8d69262d}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!n\+Debit\+Cached@{n\+Debit\+Cached}}
+\index{n\+Debit\+Cached@{n\+Debit\+Cached}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{n\+Debit\+Cached}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} C\+Wallet\+Tx\+::n\+Debit\+Cached\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_wallet_tx_aafed9b6aeecef4f9159ee73a8d69262d}
+
+
+Definition at line 562 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_a2fcf31679a29b43c3a01dd44bf844aee}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!n\+Denom\+Conf\+Credit\+Cached@{n\+Denom\+Conf\+Credit\+Cached}}
+\index{n\+Denom\+Conf\+Credit\+Cached@{n\+Denom\+Conf\+Credit\+Cached}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{n\+Denom\+Conf\+Credit\+Cached}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} C\+Wallet\+Tx\+::n\+Denom\+Conf\+Credit\+Cached\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_wallet_tx_a2fcf31679a29b43c3a01dd44bf844aee}
+
+
+Definition at line 571 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_a1ecccbf8322abc397686907c0cbcefba}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!n\+Denom\+Unconf\+Credit\+Cached@{n\+Denom\+Unconf\+Credit\+Cached}}
+\index{n\+Denom\+Unconf\+Credit\+Cached@{n\+Denom\+Unconf\+Credit\+Cached}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{n\+Denom\+Unconf\+Credit\+Cached}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} C\+Wallet\+Tx\+::n\+Denom\+Unconf\+Credit\+Cached\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_wallet_tx_a1ecccbf8322abc397686907c0cbcefba}
+
+
+Definition at line 570 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_a6b9278766d4c82554b8b4976bff3ef2c}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!n\+Immature\+Credit\+Cached@{n\+Immature\+Credit\+Cached}}
+\index{n\+Immature\+Credit\+Cached@{n\+Immature\+Credit\+Cached}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{n\+Immature\+Credit\+Cached}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} C\+Wallet\+Tx\+::n\+Immature\+Credit\+Cached\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_wallet_tx_a6b9278766d4c82554b8b4976bff3ef2c}
+
+
+Definition at line 561 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_afe7b93d5672df90c6b1d3065dc047fe0}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!n\+Immature\+Watch\+Credit\+Cached@{n\+Immature\+Watch\+Credit\+Cached}}
+\index{n\+Immature\+Watch\+Credit\+Cached@{n\+Immature\+Watch\+Credit\+Cached}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{n\+Immature\+Watch\+Credit\+Cached}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} C\+Wallet\+Tx\+::n\+Immature\+Watch\+Credit\+Cached\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_wallet_tx_afe7b93d5672df90c6b1d3065dc047fe0}
+
+
+Definition at line 566 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_af51e160ff1d9d78986e9f239c7ac7a35}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!n\+Order\+Pos@{n\+Order\+Pos}}
+\index{n\+Order\+Pos@{n\+Order\+Pos}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{n\+Order\+Pos}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int64\+\_\+t} C\+Wallet\+Tx\+::n\+Order\+Pos}\label{class_c_wallet_tx_af51e160ff1d9d78986e9f239c7ac7a35}
+
+
+Definition at line 542 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_af4f4b58875061467026da7b259532b69}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!n\+Time\+Received@{n\+Time\+Received}}
+\index{n\+Time\+Received@{n\+Time\+Received}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{n\+Time\+Received}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int C\+Wallet\+Tx\+::n\+Time\+Received}\label{class_c_wallet_tx_af4f4b58875061467026da7b259532b69}
+
+
+Definition at line 537 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_a3c9ba52ce7203b9f16235785a09c383c}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!n\+Time\+Smart@{n\+Time\+Smart}}
+\index{n\+Time\+Smart@{n\+Time\+Smart}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{n\+Time\+Smart}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int C\+Wallet\+Tx\+::n\+Time\+Smart}\label{class_c_wallet_tx_a3c9ba52ce7203b9f16235785a09c383c}
+
+
+Definition at line 538 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_ad5585350b3917d52e0f0c54fbd8f48ba}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!n\+Watch\+Credit\+Cached@{n\+Watch\+Credit\+Cached}}
+\index{n\+Watch\+Credit\+Cached@{n\+Watch\+Credit\+Cached}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{n\+Watch\+Credit\+Cached}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} C\+Wallet\+Tx\+::n\+Watch\+Credit\+Cached\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_wallet_tx_ad5585350b3917d52e0f0c54fbd8f48ba}
+
+
+Definition at line 560 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_aae59608618174f5c2dc4fa6036ffb76b}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!n\+Watch\+Debit\+Cached@{n\+Watch\+Debit\+Cached}}
+\index{n\+Watch\+Debit\+Cached@{n\+Watch\+Debit\+Cached}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{n\+Watch\+Debit\+Cached}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} C\+Wallet\+Tx\+::n\+Watch\+Debit\+Cached\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_wallet_tx_aae59608618174f5c2dc4fa6036ffb76b}
+
+
+Definition at line 559 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_a099b5ca562f8a8378124b345b9123f25}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!str\+From\+Account@{str\+From\+Account}}
+\index{str\+From\+Account@{str\+From\+Account}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{str\+From\+Account}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string C\+Wallet\+Tx\+::str\+From\+Account}\label{class_c_wallet_tx_a099b5ca562f8a8378124b345b9123f25}
+
+
+Definition at line 540 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_a32c09e049302518c81f80c4f1f85583b}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!vf\+Spent@{vf\+Spent}}
+\index{vf\+Spent@{vf\+Spent}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{vf\+Spent}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$char$>$ C\+Wallet\+Tx\+::vf\+Spent}\label{class_c_wallet_tx_a32c09e049302518c81f80c4f1f85583b}
+
+
+Definition at line 541 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_a923dbbba343b8f4d1c3d89ae73bdcea0}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!v\+Order\+Form@{v\+Order\+Form}}
+\index{v\+Order\+Form@{v\+Order\+Form}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{v\+Order\+Form}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$std\+::pair$<$std\+::string, std\+::string$>$ $>$ C\+Wallet\+Tx\+::v\+Order\+Form}\label{class_c_wallet_tx_a923dbbba343b8f4d1c3d89ae73bdcea0}
+
+
+Definition at line 535 of file wallet.\+h.
+
+\hypertarget{class_c_wallet_tx_ae122d2e0ce296bd9dfc63eb3ede5ce98}{}\index{C\+Wallet\+Tx@{C\+Wallet\+Tx}!vtx\+Prev@{vtx\+Prev}}
+\index{vtx\+Prev@{vtx\+Prev}!C\+Wallet\+Tx@{C\+Wallet\+Tx}}
+\subsubsection[{vtx\+Prev}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf C\+Merkle\+Tx}$>$ C\+Wallet\+Tx\+::vtx\+Prev}\label{class_c_wallet_tx_ae122d2e0ce296bd9dfc63eb3ede5ce98}
+
+
+Definition at line 533 of file wallet.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/\hyperlink{wallet_8h}{wallet.\+h}\item 
+/home/dev/ds-\/160209/src/\hyperlink{main_8cpp}{main.\+cpp}\item 
+/home/dev/ds-\/160209/src/\hyperlink{wallet_8cpp}{wallet.\+cpp}\end{DoxyCompactItemize}

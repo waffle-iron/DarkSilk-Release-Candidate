@@ -1,0 +1,340 @@
+\hypertarget{class_c_merkle_tx}{}\section{C\+Merkle\+Tx Class Reference}
+\label{class_c_merkle_tx}\index{C\+Merkle\+Tx@{C\+Merkle\+Tx}}
+
+
+{\ttfamily \#include $<$main.\+h$>$}
+
+
+
+Inheritance diagram for C\+Merkle\+Tx\+:
+% FIG 0
+
+
+Collaboration diagram for C\+Merkle\+Tx\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_merkle_tx_a381bb26e9a8924b8a1311d45dfd18809}{C\+Merkle\+Tx} ()
+\item 
+\hyperlink{class_c_merkle_tx_aaf4aeddb032c6bb34559fa443bfc3476}{C\+Merkle\+Tx} (const \hyperlink{class_c_transaction}{C\+Transaction} \&tx\+In)
+\item 
+void \hyperlink{class_c_merkle_tx_ac57628e321f98642976d06b6cc231162}{Init} ()
+\item 
+{\footnotesize template$<$typename Stream , typename Operation $>$ }\\void \hyperlink{class_c_merkle_tx_afefd3a26c9505f1fa81587c19c22f09c}{Serialization\+Op} (Stream \&s, Operation ser\+\_\+action, int n\+Type, int \hyperlink{class_c_transaction_a6c29bdd822859c7b21b7b6c22dca6825}{n\+Version})
+\item 
+int \hyperlink{class_c_merkle_tx_a7286c83e09ddaebc6bba39ee38a5a012}{Set\+Merkle\+Branch} (const \hyperlink{class_c_block}{C\+Block} $\ast$pblock=N\+U\+L\+L)
+\item 
+int \hyperlink{class_c_merkle_tx_a4208943ef656d3787c02ef9973d63f4a}{Get\+Depth\+In\+Main\+Chain} (\hyperlink{class_c_block_index}{C\+Block\+Index} $\ast$\&pindex\+Ret, bool enable\+I\+X=true) const 
+\item 
+int \hyperlink{class_c_merkle_tx_aa26936095eff1cc6d01b7e2d44cbf8f6}{Get\+Depth\+In\+Main\+Chain} (bool enable\+I\+X=true) const 
+\item 
+bool \hyperlink{class_c_merkle_tx_adf24748ee829f589ac8d6e99ec6121de}{Is\+In\+Main\+Chain} () const 
+\item 
+int \hyperlink{class_c_merkle_tx_a8bd25cf06de6a443d0925ec8ba66c949}{Get\+Blocks\+To\+Maturity} () const 
+\item 
+bool \hyperlink{class_c_merkle_tx_a61126e811a53b941b3efdf5a4e83db90}{Accept\+To\+Memory\+Pool} (bool f\+Limit\+Free=true, bool f\+Reject\+Insane\+Fee=true, bool ignore\+Fees=false)
+\item 
+int \hyperlink{class_c_merkle_tx_a6782c78aec9fd63e637dbf0668c8506e}{Get\+Transaction\+Lock\+Signatures} () const 
+\item 
+bool \hyperlink{class_c_merkle_tx_a31b0765b267cab5f76b308d1fe5d9375}{Is\+Transaction\+Lock\+Timed\+Out} () const 
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classuint256}{uint256} \hyperlink{class_c_merkle_tx_a788ee54c14b6d9706eb3737404663238}{hash\+Block}
+\item 
+std\+::vector$<$ \hyperlink{classuint256}{uint256} $>$ \hyperlink{class_c_merkle_tx_a9ae6a408be914f486ebbb4161879ee69}{v\+Merkle\+Branch}
+\item 
+int \hyperlink{class_c_merkle_tx_a829655e70702fdf97b6e534dd3227b0b}{n\+Index}
+\item 
+bool \hyperlink{class_c_merkle_tx_a3626572f7dbb86eb1c36a6570d740c7f}{f\+Merkle\+Verified}
+\item 
+\hyperlink{class_c_merkle_tx_a86d607a3e47700ed5ebcdd4d4fcda4d7}{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+A transaction with a merkle branch linking it to the block chain. 
+
+Definition at line 380 of file main.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_merkle_tx_a381bb26e9a8924b8a1311d45dfd18809}{}\index{C\+Merkle\+Tx@{C\+Merkle\+Tx}!C\+Merkle\+Tx@{C\+Merkle\+Tx}}
+\index{C\+Merkle\+Tx@{C\+Merkle\+Tx}!C\+Merkle\+Tx@{C\+Merkle\+Tx}}
+\subsubsection[{C\+Merkle\+Tx}]{\setlength{\rightskip}{0pt plus 5cm}C\+Merkle\+Tx\+::\+C\+Merkle\+Tx (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_merkle_tx_a381bb26e9a8924b8a1311d45dfd18809}
+
+
+Definition at line 393 of file main.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+\hypertarget{class_c_merkle_tx_aaf4aeddb032c6bb34559fa443bfc3476}{}\index{C\+Merkle\+Tx@{C\+Merkle\+Tx}!C\+Merkle\+Tx@{C\+Merkle\+Tx}}
+\index{C\+Merkle\+Tx@{C\+Merkle\+Tx}!C\+Merkle\+Tx@{C\+Merkle\+Tx}}
+\subsubsection[{C\+Merkle\+Tx}]{\setlength{\rightskip}{0pt plus 5cm}C\+Merkle\+Tx\+::\+C\+Merkle\+Tx (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Transaction} \&}]{tx\+In}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_merkle_tx_aaf4aeddb032c6bb34559fa443bfc3476}
+
+
+Definition at line 398 of file main.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 3
+
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_merkle_tx_a61126e811a53b941b3efdf5a4e83db90}{}\index{C\+Merkle\+Tx@{C\+Merkle\+Tx}!Accept\+To\+Memory\+Pool@{Accept\+To\+Memory\+Pool}}
+\index{Accept\+To\+Memory\+Pool@{Accept\+To\+Memory\+Pool}!C\+Merkle\+Tx@{C\+Merkle\+Tx}}
+\subsubsection[{Accept\+To\+Memory\+Pool}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Merkle\+Tx\+::\+Accept\+To\+Memory\+Pool (
+\begin{DoxyParamCaption}
+\item[{bool}]{f\+Limit\+Free = {\ttfamily true}, }
+\item[{bool}]{f\+Reject\+Insane\+Fee = {\ttfamily true}, }
+\item[{bool}]{ignore\+Fees = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{class_c_merkle_tx_a61126e811a53b941b3efdf5a4e83db90}
+
+
+Definition at line 1456 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 4
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 5
+
+
+\hypertarget{class_c_merkle_tx_a8bd25cf06de6a443d0925ec8ba66c949}{}\index{C\+Merkle\+Tx@{C\+Merkle\+Tx}!Get\+Blocks\+To\+Maturity@{Get\+Blocks\+To\+Maturity}}
+\index{Get\+Blocks\+To\+Maturity@{Get\+Blocks\+To\+Maturity}!C\+Merkle\+Tx@{C\+Merkle\+Tx}}
+\subsubsection[{Get\+Blocks\+To\+Maturity}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Merkle\+Tx\+::\+Get\+Blocks\+To\+Maturity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_c_merkle_tx_a8bd25cf06de6a443d0925ec8ba66c949}
+
+
+Definition at line 1449 of file main.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 6
+
+
+\hypertarget{class_c_merkle_tx_a4208943ef656d3787c02ef9973d63f4a}{}\index{C\+Merkle\+Tx@{C\+Merkle\+Tx}!Get\+Depth\+In\+Main\+Chain@{Get\+Depth\+In\+Main\+Chain}}
+\index{Get\+Depth\+In\+Main\+Chain@{Get\+Depth\+In\+Main\+Chain}!C\+Merkle\+Tx@{C\+Merkle\+Tx}}
+\subsubsection[{Get\+Depth\+In\+Main\+Chain}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Merkle\+Tx\+::\+Get\+Depth\+In\+Main\+Chain (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Block\+Index} $\ast$\&}]{pindex\+Ret, }
+\item[{bool}]{enable\+I\+X = {\ttfamily true}}
+\end{DoxyParamCaption}
+) const}\label{class_c_merkle_tx_a4208943ef656d3787c02ef9973d63f4a}
+
+
+Definition at line 1430 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 7
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 8
+
+
+\hypertarget{class_c_merkle_tx_aa26936095eff1cc6d01b7e2d44cbf8f6}{}\index{C\+Merkle\+Tx@{C\+Merkle\+Tx}!Get\+Depth\+In\+Main\+Chain@{Get\+Depth\+In\+Main\+Chain}}
+\index{Get\+Depth\+In\+Main\+Chain@{Get\+Depth\+In\+Main\+Chain}!C\+Merkle\+Tx@{C\+Merkle\+Tx}}
+\subsubsection[{Get\+Depth\+In\+Main\+Chain}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Merkle\+Tx\+::\+Get\+Depth\+In\+Main\+Chain (
+\begin{DoxyParamCaption}
+\item[{bool}]{enable\+I\+X = {\ttfamily true}}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_merkle_tx_aa26936095eff1cc6d01b7e2d44cbf8f6}
+
+
+Definition at line 430 of file main.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 9
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 10
+
+
+\hypertarget{class_c_merkle_tx_a6782c78aec9fd63e637dbf0668c8506e}{}\index{C\+Merkle\+Tx@{C\+Merkle\+Tx}!Get\+Transaction\+Lock\+Signatures@{Get\+Transaction\+Lock\+Signatures}}
+\index{Get\+Transaction\+Lock\+Signatures@{Get\+Transaction\+Lock\+Signatures}!C\+Merkle\+Tx@{C\+Merkle\+Tx}}
+\subsubsection[{Get\+Transaction\+Lock\+Signatures}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Merkle\+Tx\+::\+Get\+Transaction\+Lock\+Signatures (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_c_merkle_tx_a6782c78aec9fd63e637dbf0668c8506e}
+
+
+Definition at line 1403 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 11
+
+
+\hypertarget{class_c_merkle_tx_ac57628e321f98642976d06b6cc231162}{}\index{C\+Merkle\+Tx@{C\+Merkle\+Tx}!Init@{Init}}
+\index{Init@{Init}!C\+Merkle\+Tx@{C\+Merkle\+Tx}}
+\subsubsection[{Init}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Merkle\+Tx\+::\+Init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_merkle_tx_ac57628e321f98642976d06b6cc231162}
+
+
+Definition at line 403 of file main.\+h.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 12
+
+
+\hypertarget{class_c_merkle_tx_adf24748ee829f589ac8d6e99ec6121de}{}\index{C\+Merkle\+Tx@{C\+Merkle\+Tx}!Is\+In\+Main\+Chain@{Is\+In\+Main\+Chain}}
+\index{Is\+In\+Main\+Chain@{Is\+In\+Main\+Chain}!C\+Merkle\+Tx@{C\+Merkle\+Tx}}
+\subsubsection[{Is\+In\+Main\+Chain}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Merkle\+Tx\+::\+Is\+In\+Main\+Chain (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_merkle_tx_adf24748ee829f589ac8d6e99ec6121de}
+
+
+Definition at line 431 of file main.\+h.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 13
+
+
+\hypertarget{class_c_merkle_tx_a31b0765b267cab5f76b308d1fe5d9375}{}\index{C\+Merkle\+Tx@{C\+Merkle\+Tx}!Is\+Transaction\+Lock\+Timed\+Out@{Is\+Transaction\+Lock\+Timed\+Out}}
+\index{Is\+Transaction\+Lock\+Timed\+Out@{Is\+Transaction\+Lock\+Timed\+Out}!C\+Merkle\+Tx@{C\+Merkle\+Tx}}
+\subsubsection[{Is\+Transaction\+Lock\+Timed\+Out}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Merkle\+Tx\+::\+Is\+Transaction\+Lock\+Timed\+Out (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_c_merkle_tx_a31b0765b267cab5f76b308d1fe5d9375}
+
+
+Definition at line 1417 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 14
+
+
+\hypertarget{class_c_merkle_tx_afefd3a26c9505f1fa81587c19c22f09c}{}\index{C\+Merkle\+Tx@{C\+Merkle\+Tx}!Serialization\+Op@{Serialization\+Op}}
+\index{Serialization\+Op@{Serialization\+Op}!C\+Merkle\+Tx@{C\+Merkle\+Tx}}
+\subsubsection[{Serialization\+Op}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename Operation $>$ void C\+Merkle\+Tx\+::\+Serialization\+Op (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{Operation}]{ser\+\_\+action, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_merkle_tx_afefd3a26c9505f1fa81587c19c22f09c}
+
+
+Definition at line 413 of file main.\+h.
+
+\hypertarget{class_c_merkle_tx_a7286c83e09ddaebc6bba39ee38a5a012}{}\index{C\+Merkle\+Tx@{C\+Merkle\+Tx}!Set\+Merkle\+Branch@{Set\+Merkle\+Branch}}
+\index{Set\+Merkle\+Branch@{Set\+Merkle\+Branch}!C\+Merkle\+Tx@{C\+Merkle\+Tx}}
+\subsubsection[{Set\+Merkle\+Branch}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Merkle\+Tx\+::\+Set\+Merkle\+Branch (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Block} $\ast$}]{pblock = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}\label{class_c_merkle_tx_a7286c83e09ddaebc6bba39ee38a5a012}
+
+
+Definition at line 786 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 15
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 16
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_c_merkle_tx_a86d607a3e47700ed5ebcdd4d4fcda4d7}{}\index{C\+Merkle\+Tx@{C\+Merkle\+Tx}!A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}}
+\index{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}!C\+Merkle\+Tx@{C\+Merkle\+Tx}}
+\subsubsection[{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}]{\setlength{\rightskip}{0pt plus 5cm}C\+Merkle\+Tx\+::\+A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}\label{class_c_merkle_tx_a86d607a3e47700ed5ebcdd4d4fcda4d7}
+
+
+Definition at line 410 of file main.\+h.
+
+\hypertarget{class_c_merkle_tx_a3626572f7dbb86eb1c36a6570d740c7f}{}\index{C\+Merkle\+Tx@{C\+Merkle\+Tx}!f\+Merkle\+Verified@{f\+Merkle\+Verified}}
+\index{f\+Merkle\+Verified@{f\+Merkle\+Verified}!C\+Merkle\+Tx@{C\+Merkle\+Tx}}
+\subsubsection[{f\+Merkle\+Verified}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Merkle\+Tx\+::f\+Merkle\+Verified\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_merkle_tx_a3626572f7dbb86eb1c36a6570d740c7f}
+
+
+Definition at line 390 of file main.\+h.
+
+\hypertarget{class_c_merkle_tx_a788ee54c14b6d9706eb3737404663238}{}\index{C\+Merkle\+Tx@{C\+Merkle\+Tx}!hash\+Block@{hash\+Block}}
+\index{hash\+Block@{hash\+Block}!C\+Merkle\+Tx@{C\+Merkle\+Tx}}
+\subsubsection[{hash\+Block}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint256} C\+Merkle\+Tx\+::hash\+Block}\label{class_c_merkle_tx_a788ee54c14b6d9706eb3737404663238}
+
+
+Definition at line 385 of file main.\+h.
+
+\hypertarget{class_c_merkle_tx_a829655e70702fdf97b6e534dd3227b0b}{}\index{C\+Merkle\+Tx@{C\+Merkle\+Tx}!n\+Index@{n\+Index}}
+\index{n\+Index@{n\+Index}!C\+Merkle\+Tx@{C\+Merkle\+Tx}}
+\subsubsection[{n\+Index}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Merkle\+Tx\+::n\+Index}\label{class_c_merkle_tx_a829655e70702fdf97b6e534dd3227b0b}
+
+
+Definition at line 387 of file main.\+h.
+
+\hypertarget{class_c_merkle_tx_a9ae6a408be914f486ebbb4161879ee69}{}\index{C\+Merkle\+Tx@{C\+Merkle\+Tx}!v\+Merkle\+Branch@{v\+Merkle\+Branch}}
+\index{v\+Merkle\+Branch@{v\+Merkle\+Branch}!C\+Merkle\+Tx@{C\+Merkle\+Tx}}
+\subsubsection[{v\+Merkle\+Branch}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf uint256}$>$ C\+Merkle\+Tx\+::v\+Merkle\+Branch}\label{class_c_merkle_tx_a9ae6a408be914f486ebbb4161879ee69}
+
+
+Definition at line 386 of file main.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/\hyperlink{main_8h}{main.\+h}\item 
+/home/dev/ds-\/160209/src/\hyperlink{main_8cpp}{main.\+cpp}\end{DoxyCompactItemize}

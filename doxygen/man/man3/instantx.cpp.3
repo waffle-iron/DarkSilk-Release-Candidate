@@ -1,0 +1,157 @@
+.TH "/home/dev/ds-160209/src/instantx.cpp" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/instantx.cpp \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'sync\&.h'\fP
+.br
+\fC#include 'net\&.h'\fP
+.br
+\fC#include 'key\&.h'\fP
+.br
+\fC#include 'util\&.h'\fP
+.br
+\fC#include 'base58\&.h'\fP
+.br
+\fC#include 'protocol\&.h'\fP
+.br
+\fC#include 'instantx\&.h'\fP
+.br
+\fC#include 'activestormnode\&.h'\fP
+.br
+\fC#include 'stormnode-sync\&.h'\fP
+.br
+\fC#include 'stormnodeman\&.h'\fP
+.br
+\fC#include 'sandstorm\&.h'\fP
+.br
+\fC#include 'spork\&.h'\fP
+.br
+\fC#include 'init\&.h'\fP
+.br
+\fC#include <boost/lexical_cast\&.hpp>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBProcessMessageInstantX\fP (\fBCNode\fP *pfrom, std::string &strCommand, \fBCDataStream\fP &vRecv)"
+.br
+.ti -1c
+.RI "bool \fBIsIXTXValid\fP (const \fBCTransaction\fP &txCollateral)"
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBCreateNewLock\fP (\fBCTransaction\fP tx)"
+.br
+.ti -1c
+.RI "void \fBDoConsensusVote\fP (\fBCTransaction\fP &tx, \fBint64_t\fP nBlockHeight)"
+.br
+.ti -1c
+.RI "bool \fBProcessConsensusVote\fP (\fBCNode\fP *pnode, \fBCConsensusVote\fP &ctx)"
+.br
+.ti -1c
+.RI "bool \fBCheckForConflictingLocks\fP (\fBCTransaction\fP &tx)"
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBGetAverageVoteTime\fP ()"
+.br
+.ti -1c
+.RI "void \fBCleanTransactionLocksList\fP ()"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "std::map< \fBuint256\fP, \fBCTransaction\fP > \fBmapTxLockReq\fP"
+.br
+.ti -1c
+.RI "std::map< \fBuint256\fP, \fBCTransaction\fP > \fBmapTxLockReqRejected\fP"
+.br
+.ti -1c
+.RI "std::map< \fBuint256\fP, \fBCConsensusVote\fP > \fBmapTxLockVote\fP"
+.br
+.ti -1c
+.RI "std::map< \fBuint256\fP, \fBCTransactionLock\fP > \fBmapTxLocks\fP"
+.br
+.ti -1c
+.RI "std::map< \fBCOutPoint\fP, \fBuint256\fP > \fBmapLockedInputs\fP"
+.br
+.ti -1c
+.RI "std::map< \fBuint256\fP, \fBint64_t\fP > \fBmapUnknownVotes\fP"
+.br
+.ti -1c
+.RI "int \fBnCompleteTXLocks\fP"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "bool CheckForConflictingLocks (\fBCTransaction\fP & tx)"
+
+.PP
+Definition at line 396 of file instantx\&.cpp\&.
+.SS "void CleanTransactionLocksList ()"
+
+.PP
+Definition at line 434 of file instantx\&.cpp\&.
+.SS "\fBint64_t\fP CreateNewLock (\fBCTransaction\fP tx)"
+
+.PP
+Definition at line 221 of file instantx\&.cpp\&.
+.SS "void DoConsensusVote (\fBCTransaction\fP & tx, \fBint64_t\fP nBlockHeight)"
+
+.PP
+Definition at line 259 of file instantx\&.cpp\&.
+.SS "\fBint64_t\fP GetAverageVoteTime ()"
+
+.PP
+Definition at line 419 of file instantx\&.cpp\&.
+.SS "bool IsIXTXValid (const \fBCTransaction\fP & txCollateral)"
+
+.PP
+Definition at line 175 of file instantx\&.cpp\&.
+.SS "bool ProcessConsensusVote (\fBCNode\fP * pnode, \fBCConsensusVote\fP & ctx)"
+
+.PP
+Definition at line 302 of file instantx\&.cpp\&.
+.SS "void ProcessMessageInstantX (\fBCNode\fP * pfrom, std::string & strCommand, \fBCDataStream\fP & vRecv)"
+
+.PP
+Definition at line 38 of file instantx\&.cpp\&.
+.SH "Variable Documentation"
+.PP 
+.SS "std::map<\fBCOutPoint\fP, \fBuint256\fP> mapLockedInputs"
+
+.PP
+Definition at line 27 of file instantx\&.cpp\&.
+.SS "std::map<\fBuint256\fP, \fBCTransaction\fP> mapTxLockReq"
+
+.PP
+Definition at line 23 of file instantx\&.cpp\&.
+.SS "std::map<\fBuint256\fP, \fBCTransaction\fP> mapTxLockReqRejected"
+
+.PP
+Definition at line 24 of file instantx\&.cpp\&.
+.SS "std::map<\fBuint256\fP, \fBCTransactionLock\fP> mapTxLocks"
+
+.PP
+Definition at line 26 of file instantx\&.cpp\&.
+.SS "std::map<\fBuint256\fP, \fBCConsensusVote\fP> mapTxLockVote"
+
+.PP
+Definition at line 25 of file instantx\&.cpp\&.
+.SS "std::map<\fBuint256\fP, \fBint64_t\fP> mapUnknownVotes"
+
+.PP
+Definition at line 28 of file instantx\&.cpp\&.
+.SS "int nCompleteTXLocks"
+
+.PP
+Definition at line 29 of file instantx\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

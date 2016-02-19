@@ -1,0 +1,127 @@
+\hypertarget{wallet_8cpp}{}\section{/home/dev/ds-\/160209/src/wallet.cpp File Reference}
+\label{wallet_8cpp}\index{/home/dev/ds-\/160209/src/wallet.\+cpp@{/home/dev/ds-\/160209/src/wallet.\+cpp}}
+{\ttfamily \#include \char`\"{}wallet.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}base58.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}checkpoints.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}coincontrol.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}kernel.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}net.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}stormnode-\/budget.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}timedata.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}txdb.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}ui\+\_\+interface.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}walletdb.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}crypter.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}key.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}spork.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}sandstorm.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}instantx.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}stormnode.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}stormnode-\/payments.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}chainparams.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}smessage.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}txdb-\/leveldb.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$assert.\+h$>$}\\*
+{\ttfamily \#include $<$boost/algorithm/string/replace.\+hpp$>$}\\*
+{\ttfamily \#include $<$boost/range/algorithm.\+hpp$>$}\\*
+{\ttfamily \#include $<$boost/numeric/ublas/matrix.\+hpp$>$}\\*
+{\ttfamily \#include $<$boost/thread.\+hpp$>$}\\*
+Include dependency graph for wallet.\+cpp\+:
+% FIG 0
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_compare_value_only}{Compare\+Value\+Only}
+\item 
+struct \hyperlink{struct_larger_or_equal_than_threshold}{Larger\+Or\+Equal\+Than\+Threshold}
+\item 
+struct \hyperlink{struct_compare_by_priority}{Compare\+By\+Priority}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{wallet_8cpp_a4250c8c7805aa2bd34a227abe70288f7}{gcd} (\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} n, \hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} m)
+\item 
+bool \hyperlink{wallet_8cpp_a502a73c6cf145be4a420a8bc75c6a69e}{less\+\_\+then\+\_\+denom} (const \hyperlink{class_c_output}{C\+Output} \&out1, const \hyperlink{class_c_output}{C\+Output} \&out2)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{wallet_8cpp_ab2e46203b8d90f87b0a32524045bef60}{n\+Transaction\+Fee} = \hyperlink{wallet_8h_add67e95cd66a980b74a7a2f434d9cf1c}{M\+I\+N\+\_\+\+T\+X\+\_\+\+F\+E\+E}
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{wallet_8cpp_a1927c8af76b81444b99a9185af6adae2}{n\+Reserve\+Balance} = 0
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{wallet_8cpp_a6161012435f37404c65527606c4e0c3d}{n\+Minimum\+Input\+Value} = 0
+\item 
+bool \hyperlink{wallet_8cpp_a0bc784e958b92854437f2238d4249da0}{f\+Wallet\+Unlock\+Staking\+Only} = false
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{wallet_8cpp_a4250c8c7805aa2bd34a227abe70288f7}{}\index{wallet.\+cpp@{wallet.\+cpp}!gcd@{gcd}}
+\index{gcd@{gcd}!wallet.\+cpp@{wallet.\+cpp}}
+\subsubsection[{gcd}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} gcd (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Amount}}]{n, }
+\item[{{\bf C\+Amount}}]{m}
+\end{DoxyParamCaption}
+)}\label{wallet_8cpp_a4250c8c7805aa2bd34a227abe70288f7}
+
+
+Definition at line 44 of file wallet.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 1
+
+
+\hypertarget{wallet_8cpp_a502a73c6cf145be4a420a8bc75c6a69e}{}\index{wallet.\+cpp@{wallet.\+cpp}!less\+\_\+then\+\_\+denom@{less\+\_\+then\+\_\+denom}}
+\index{less\+\_\+then\+\_\+denom@{less\+\_\+then\+\_\+denom}!wallet.\+cpp@{wallet.\+cpp}}
+\subsubsection[{less\+\_\+then\+\_\+denom}]{\setlength{\rightskip}{0pt plus 5cm}bool less\+\_\+then\+\_\+denom (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Output} \&}]{out1, }
+\item[{const {\bf C\+Output} \&}]{out2}
+\end{DoxyParamCaption}
+)}\label{wallet_8cpp_a502a73c6cf145be4a420a8bc75c6a69e}
+
+
+Definition at line 2143 of file wallet.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 2
+
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{wallet_8cpp_a0bc784e958b92854437f2238d4249da0}{}\index{wallet.\+cpp@{wallet.\+cpp}!f\+Wallet\+Unlock\+Staking\+Only@{f\+Wallet\+Unlock\+Staking\+Only}}
+\index{f\+Wallet\+Unlock\+Staking\+Only@{f\+Wallet\+Unlock\+Staking\+Only}!wallet.\+cpp@{wallet.\+cpp}}
+\subsubsection[{f\+Wallet\+Unlock\+Staking\+Only}]{\setlength{\rightskip}{0pt plus 5cm}bool f\+Wallet\+Unlock\+Staking\+Only = false}\label{wallet_8cpp_a0bc784e958b92854437f2238d4249da0}
+
+
+Definition at line 166 of file wallet.\+cpp.
+
+\hypertarget{wallet_8cpp_a6161012435f37404c65527606c4e0c3d}{}\index{wallet.\+cpp@{wallet.\+cpp}!n\+Minimum\+Input\+Value@{n\+Minimum\+Input\+Value}}
+\index{n\+Minimum\+Input\+Value@{n\+Minimum\+Input\+Value}!wallet.\+cpp@{wallet.\+cpp}}
+\subsubsection[{n\+Minimum\+Input\+Value}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} n\+Minimum\+Input\+Value = 0}\label{wallet_8cpp_a6161012435f37404c65527606c4e0c3d}
+
+
+Definition at line 42 of file wallet.\+cpp.
+
+\hypertarget{wallet_8cpp_a1927c8af76b81444b99a9185af6adae2}{}\index{wallet.\+cpp@{wallet.\+cpp}!n\+Reserve\+Balance@{n\+Reserve\+Balance}}
+\index{n\+Reserve\+Balance@{n\+Reserve\+Balance}!wallet.\+cpp@{wallet.\+cpp}}
+\subsubsection[{n\+Reserve\+Balance}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} n\+Reserve\+Balance = 0}\label{wallet_8cpp_a1927c8af76b81444b99a9185af6adae2}
+
+
+Definition at line 41 of file wallet.\+cpp.
+
+\hypertarget{wallet_8cpp_ab2e46203b8d90f87b0a32524045bef60}{}\index{wallet.\+cpp@{wallet.\+cpp}!n\+Transaction\+Fee@{n\+Transaction\+Fee}}
+\index{n\+Transaction\+Fee@{n\+Transaction\+Fee}!wallet.\+cpp@{wallet.\+cpp}}
+\subsubsection[{n\+Transaction\+Fee}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} n\+Transaction\+Fee = {\bf M\+I\+N\+\_\+\+T\+X\+\_\+\+F\+E\+E}}\label{wallet_8cpp_ab2e46203b8d90f87b0a32524045bef60}
+
+
+Definition at line 40 of file wallet.\+cpp.
+

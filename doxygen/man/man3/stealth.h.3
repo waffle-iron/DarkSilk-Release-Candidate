@@ -1,0 +1,172 @@
+.TH "/home/dev/ds-160209/src/stealth.h" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/stealth.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'util\&.h'\fP
+.br
+\fC#include 'serialize\&.h'\fP
+.br
+\fC#include <stdlib\&.h>\fP
+.br
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include <vector>\fP
+.br
+\fC#include <inttypes\&.h>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBec_secret\fP"
+.br
+.ti -1c
+.RI "struct \fBstealth_prefix\fP"
+.br
+.ti -1c
+.RI "class \fBCStealthAddress\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef std::vector< \fBuint8_t\fP > \fBdata_chunk\fP"
+.br
+.ti -1c
+.RI "typedef struct \fBec_secret\fP \fBec_secret\fP"
+.br
+.ti -1c
+.RI "typedef \fBdata_chunk\fP \fBec_point\fP"
+.br
+.ti -1c
+.RI "typedef \fBuint32_t\fP \fBstealth_bitfield\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "template<typename T , typename Iterator > T \fBfrom_big_endian\fP (Iterator in)"
+.br
+.ti -1c
+.RI "template<typename T , typename Iterator > T \fBfrom_little_endian\fP (Iterator in)"
+.br
+.ti -1c
+.RI "void \fBAppendChecksum\fP (\fBdata_chunk\fP &data)"
+.br
+.ti -1c
+.RI "bool \fBVerifyChecksum\fP (const \fBdata_chunk\fP &data)"
+.br
+.ti -1c
+.RI "int \fBGenerateRandomSecret\fP (\fBec_secret\fP &out)"
+.br
+.ti -1c
+.RI "int \fBSecretToPublicKey\fP (const \fBec_secret\fP &secret, \fBec_point\fP &out)"
+.br
+.ti -1c
+.RI "int \fBStealthSecret\fP (\fBec_secret\fP &secret, \fBec_point\fP &pubkey, const \fBec_point\fP &pkSpend, \fBec_secret\fP &sharedSOut, \fBec_point\fP &pkOut)"
+.br
+.ti -1c
+.RI "int \fBStealthSecretSpend\fP (\fBec_secret\fP &scanSecret, \fBec_point\fP &ephemPubkey, \fBec_secret\fP &spendSecret, \fBec_secret\fP &secretOut)"
+.br
+.ti -1c
+.RI "int \fBStealthSharedToSecretSpend\fP (\fBec_secret\fP &sharedS, \fBec_secret\fP &spendSecret, \fBec_secret\fP &secretOut)"
+.br
+.ti -1c
+.RI "bool \fBIsStealthAddress\fP (const std::string &encodedAddress)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "const size_t \fBec_secret_size\fP = 32"
+.br
+.ti -1c
+.RI "const size_t \fBec_compressed_size\fP = 33"
+.br
+.ti -1c
+.RI "const size_t \fBec_uncompressed_size\fP = 65"
+.br
+.in -1c
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef std::vector<\fBuint8_t\fP> \fBdata_chunk\fP"
+
+.PP
+Definition at line 17 of file stealth\&.h\&.
+.SS "typedef \fBdata_chunk\fP \fBec_point\fP"
+
+.PP
+Definition at line 24 of file stealth\&.h\&.
+.SS "typedef struct \fBec_secret\fP  \fBec_secret\fP"
+
+.SS "typedef \fBuint32_t\fP \fBstealth_bitfield\fP"
+
+.PP
+Definition at line 26 of file stealth\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "void AppendChecksum (\fBdata_chunk\fP & data)"
+
+.PP
+Definition at line 104 of file stealth\&.cpp\&.
+.SS "template<typename T , typename Iterator > T from_big_endian (Iterator in)"
+
+.PP
+Definition at line 35 of file stealth\&.h\&.
+.SS "template<typename T , typename Iterator > T from_little_endian (Iterator in)"
+
+.PP
+Definition at line 46 of file stealth\&.h\&.
+.SS "int GenerateRandomSecret (\fBec_secret\fP & out)"
+
+.PP
+Definition at line 132 of file stealth\&.cpp\&.
+.SS "bool IsStealthAddress (const std::string & encodedAddress)"
+
+.PP
+Definition at line 649 of file stealth\&.cpp\&.
+.SS "int SecretToPublicKey (const \fBec_secret\fP & secret, \fBec_point\fP & out)"
+
+.PP
+Definition at line 162 of file stealth\&.cpp\&.
+.SS "int StealthSecret (\fBec_secret\fP & secret, \fBec_point\fP & pubkey, const \fBec_point\fP & pkSpend, \fBec_secret\fP & sharedSOut, \fBec_point\fP & pkOut)"
+
+.PP
+Definition at line 214 of file stealth\&.cpp\&.
+.SS "int StealthSecretSpend (\fBec_secret\fP & scanSecret, \fBec_point\fP & ephemPubkey, \fBec_secret\fP & spendSecret, \fBec_secret\fP & secretOut)"
+
+.PP
+Definition at line 419 of file stealth\&.cpp\&.
+.SS "int StealthSharedToSecretSpend (\fBec_secret\fP & sharedS, \fBec_secret\fP & spendSecret, \fBec_secret\fP & secretOut)"
+
+.PP
+Definition at line 567 of file stealth\&.cpp\&.
+.SS "bool VerifyChecksum (const \fBdata_chunk\fP & data)"
+
+.PP
+Definition at line 121 of file stealth\&.cpp\&.
+.SH "Variable Documentation"
+.PP 
+.SS "const size_t ec_compressed_size = 33"
+
+.PP
+Definition at line 20 of file stealth\&.h\&.
+.SS "const size_t ec_secret_size = 32"
+
+.PP
+Definition at line 19 of file stealth\&.h\&.
+.SS "const size_t ec_uncompressed_size = 65"
+
+.PP
+Definition at line 21 of file stealth\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

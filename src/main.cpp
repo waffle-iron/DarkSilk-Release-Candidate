@@ -4,12 +4,16 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include <boost/algorithm/string/replace.hpp>
+#include <boost/filesystem.hpp>
+#include <boost/filesystem/fstream.hpp>
+#include <boost/lexical_cast.hpp>
+
 #include "main.h"
-#include "addrman.h"
 #include "alert.h"
 #include "chainparams.h"
 #include "checkpoints.h"
-#include "wallet/db.h"
+#include "db.h"
 #include "init.h"
 #include "kernel.h"
 #include "txdb.h"
@@ -25,15 +29,6 @@
 #include "coins.h"
 #include "txdb-leveldb.h"
 
-#include "consensus/consensus.h"
-#include "consensus/merkle.h"
-#include "consensus/validation.h"
-
-#include <boost/algorithm/string/replace.hpp>
-#include <boost/filesystem.hpp>
-#include <boost/filesystem/fstream.hpp>
-#include <boost/lexical_cast.hpp>
-#include <boost/thread.hpp>
 
 using namespace std;
 using namespace boost;
@@ -81,7 +76,6 @@ uint256 hashBestChain = 0;
 CBlockIndex* pindexBest = NULL;
 
 int64_t nTimeBestReceived = 0;
-CConditionVariable cvBlockChange;
 bool fImporting = false;
 bool fReindex = false;
 bool fAddrIndex = false;
@@ -1701,7 +1695,7 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
     if (pindexPrevPrev->pprev == NULL)
         return bnTargetLimit.GetCompact(); // second block
 
-    int64_t nTargetSpacing = fProofOfStake ? Params().GetPoSTargetSpacing() : Params().GetPoWTargetSpacing();
+    int64_t nTargetSpacing = fProofOfStake ? POS_TARGET_SPACING : POW_TARGET_SPACING;
     int64_t nActualSpacing = pindexPrev->GetBlockTime() - pindexPrevPrev->GetBlockTime();
 
     if (nActualSpacing < 0) {
@@ -1729,7 +1723,7 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
 
 CAmount GetBlockValue(int nBits, int nHeight, const CAmount& nFees)
 {
-    CAmount nSubsidy = Params().PoSReward();
+    CAmount nSubsidy = STATIC_POS_REWARD;
 
     return nSubsidy + nFees;
 }
@@ -4092,17 +4086,17 @@ bool static FlushStateToDisk(CValidationState &state, FlushStateMode mode) {
         bool fileschanged = false;
         for (set<int>::iterator it = setDirtyFileInfo.begin(); it != setDirtyFileInfo.end(); ) {
             if (!pblocktree->WriteBlockFileInfo(*it, vinfoBlockFile[*it])) {
-                return AbortNode("Failed to write to block index");
+                return state.Abort("Failed to write to block index");
             }
             fileschanged = true;
             setDirtyFileInfo.erase(it++);
         }
         if (fileschanged && !pblocktree->WriteLastBlockFile(nLastBlockFile)) {
-            return AbortNode("Failed to write to block index");
+            return state.Abort("Failed to write to block index");
         }
         for (set<CBlockIndex*>::iterator it = setDirtyBlockIndex.begin(); it != setDirtyBlockIndex.end(); ) {
              if (!pblocktree->WriteBlockIndex(CDiskBlockIndex(*it))) {
-                 return AbortNode("Failed to write to block index");
+                 return state.Abort("Failed to write to block index");
              }
              setDirtyBlockIndex.erase(it++);
         }
@@ -4111,7 +4105,7 @@ bool static FlushStateToDisk(CValidationState &state, FlushStateMode mode) {
 
         // Finally flush the chainstate (which may refer to block index entries).
         if (!pcoinsTip->Flush())
-            return AbortNode("Failed to write to coin database");
+            return state.Abort("Failed to write to coin database");
         // Update best block in wallet (so we can detect restored wallets).
         //TODO (Amir): put back when chainActive is implemented.
         //if (mode != FLUSH_STATE_IF_NEEDED) {
@@ -4120,7 +4114,7 @@ bool static FlushStateToDisk(CValidationState &state, FlushStateMode mode) {
         nLastWrite = GetTimeMicros();
     }
     } catch (const std::runtime_error& e) {
-        return AbortNode(std::string("System error while flushing: ") + e.what());
+        return state.Abort(std::string("System error while flushing: ") + e.what());
     }
     return true;
 }

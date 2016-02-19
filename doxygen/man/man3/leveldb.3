@@ -1,0 +1,1846 @@
+.TH "leveldb" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+leveldb \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBconfig\fP"
+.br
+.ti -1c
+.RI " \fBcrc32c\fP"
+.br
+.ti -1c
+.RI " \fBlog\fP"
+.br
+.ti -1c
+.RI " \fBport\fP"
+.br
+.ti -1c
+.RI " \fBtest\fP"
+.br
+.in -1c
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBArena\fP"
+.br
+.ti -1c
+.RI "class \fBArenaTest\fP"
+.br
+.ti -1c
+.RI "class \fBAutoCompactTest\fP"
+.br
+.ti -1c
+.RI "class \fBBenchmark\fP"
+.br
+.ti -1c
+.RI "class \fBBlock\fP"
+.br
+.ti -1c
+.RI "class \fBBlockBuilder\fP"
+.br
+.ti -1c
+.RI "class \fBBlockConstructor\fP"
+.br
+.ti -1c
+.RI "struct \fBBlockContents\fP"
+.br
+.ti -1c
+.RI "class \fBBlockHandle\fP"
+.br
+.ti -1c
+.RI "class \fBBloomTest\fP"
+.br
+.ti -1c
+.RI "class \fBCache\fP"
+.br
+.ti -1c
+.RI "class \fBCacheTest\fP"
+.br
+.ti -1c
+.RI "class \fBCoding\fP"
+.br
+.ti -1c
+.RI "class \fBCompaction\fP"
+.br
+.ti -1c
+.RI "class \fBComparator\fP"
+.br
+.ti -1c
+.RI "class \fBConcurrentTest\fP"
+.br
+.ti -1c
+.RI "class \fBConstructor\fP"
+.br
+.ti -1c
+.RI "class \fBCorruptionTest\fP"
+.br
+.ti -1c
+.RI "class \fBDB\fP"
+.br
+.ti -1c
+.RI "class \fBDBConstructor\fP"
+.br
+.ti -1c
+.RI "class \fBDBImpl\fP"
+.br
+.ti -1c
+.RI "class \fBDBTest\fP"
+.br
+.ti -1c
+.RI "class \fBEnv\fP"
+.br
+.ti -1c
+.RI "class \fBEnvPosixTest\fP"
+.br
+.ti -1c
+.RI "class \fBEnvWrapper\fP"
+.br
+.ti -1c
+.RI "class \fBFileLock\fP"
+.br
+.ti -1c
+.RI "struct \fBFileMetaData\fP"
+.br
+.ti -1c
+.RI "class \fBFileNameTest\fP"
+.br
+.ti -1c
+.RI "class \fBFilterBlockBuilder\fP"
+.br
+.ti -1c
+.RI "class \fBFilterBlockReader\fP"
+.br
+.ti -1c
+.RI "class \fBFilterBlockTest\fP"
+.br
+.ti -1c
+.RI "class \fBFilterPolicy\fP"
+.br
+.ti -1c
+.RI "class \fBFindFileTest\fP"
+.br
+.ti -1c
+.RI "class \fBFooter\fP"
+.br
+.ti -1c
+.RI "class \fBFormatTest\fP"
+.br
+.ti -1c
+.RI "class \fBHarness\fP"
+.br
+.ti -1c
+.RI "class \fBHASH\fP"
+.br
+.ti -1c
+.RI "class \fBHistogram\fP"
+.br
+.ti -1c
+.RI "class \fBInternalFilterPolicy\fP"
+.br
+.ti -1c
+.RI "class \fBInternalKey\fP"
+.br
+.ti -1c
+.RI "class \fBInternalKeyComparator\fP"
+.br
+.ti -1c
+.RI "class \fBIssue200\fP"
+.br
+.ti -1c
+.RI "class \fBIterator\fP"
+.br
+.ti -1c
+.RI "class \fBIteratorWrapper\fP"
+.br
+.ti -1c
+.RI "class \fBKeyConvertingIterator\fP"
+.br
+.ti -1c
+.RI "class \fBLogger\fP"
+.br
+.ti -1c
+.RI "class \fBLookupKey\fP"
+.br
+.ti -1c
+.RI "class \fBMemEnvTest\fP"
+.br
+.ti -1c
+.RI "class \fBMemTable\fP"
+.br
+.ti -1c
+.RI "class \fBMemTableConstructor\fP"
+.br
+.ti -1c
+.RI "class \fBMemTableIterator\fP"
+.br
+.ti -1c
+.RI "class \fBMemTableTest\fP"
+.br
+.ti -1c
+.RI "class \fBModelDB\fP"
+.br
+.ti -1c
+.RI "class \fBMutexLock\fP"
+.br
+.ti -1c
+.RI "struct \fBOptions\fP"
+.br
+.ti -1c
+.RI "struct \fBParsedInternalKey\fP"
+.br
+.ti -1c
+.RI "class \fBPosixLogger\fP"
+.br
+.ti -1c
+.RI "class \fBRandom\fP"
+.br
+.ti -1c
+.RI "class \fBRandomAccessFile\fP"
+.br
+.ti -1c
+.RI "struct \fBRange\fP"
+.br
+.ti -1c
+.RI "struct \fBReadOptions\fP"
+.br
+.ti -1c
+.RI "class \fBSequentialFile\fP"
+.br
+.ti -1c
+.RI "class \fBSkipList\fP"
+.br
+.ti -1c
+.RI "class \fBSkipTest\fP"
+.br
+.ti -1c
+.RI "class \fBSlice\fP"
+.br
+.ti -1c
+.RI "class \fBSnapshot\fP"
+.br
+.ti -1c
+.RI "class \fBSnapshotImpl\fP"
+.br
+.ti -1c
+.RI "class \fBSnapshotList\fP"
+.br
+.ti -1c
+.RI "class \fBSpecialEnv\fP"
+.br
+.ti -1c
+.RI "struct \fBState\fP"
+.br
+.ti -1c
+.RI "class \fBStatus\fP"
+.br
+.ti -1c
+.RI "class \fBStringSink\fP"
+.br
+.ti -1c
+.RI "class \fBStringSource\fP"
+.br
+.ti -1c
+.RI "class \fBTable\fP"
+.br
+.ti -1c
+.RI "struct \fBTableAndFile\fP"
+.br
+.ti -1c
+.RI "class \fBTableBuilder\fP"
+.br
+.ti -1c
+.RI "class \fBTableCache\fP"
+.br
+.ti -1c
+.RI "class \fBTableConstructor\fP"
+.br
+.ti -1c
+.RI "class \fBTableTest\fP"
+.br
+.ti -1c
+.RI "struct \fBTestArgs\fP"
+.br
+.ti -1c
+.RI "class \fBTestHashFilter\fP"
+.br
+.ti -1c
+.RI "class \fBTestState\fP"
+.br
+.ti -1c
+.RI "class \fBVersion\fP"
+.br
+.ti -1c
+.RI "class \fBVersionEdit\fP"
+.br
+.ti -1c
+.RI "class \fBVersionEditTest\fP"
+.br
+.ti -1c
+.RI "class \fBVersionSet\fP"
+.br
+.ti -1c
+.RI "class \fBWritableFile\fP"
+.br
+.ti -1c
+.RI "class \fBWriteBatch\fP"
+.br
+.ti -1c
+.RI "class \fBWriteBatchInternal\fP"
+.br
+.ti -1c
+.RI "class \fBWriteBatchTest\fP"
+.br
+.ti -1c
+.RI "struct \fBWriteOptions\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef \fBuint64_t\fP \fBSequenceNumber\fP"
+.br
+.ti -1c
+.RI "typedef \fBuint64_t\fP \fBKey\fP"
+.br
+.ti -1c
+.RI "typedef std::map< std::string, std::string, STLLessThan > \fBKVMap\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBValueType\fP { \fBkTypeDeletion\fP = 0x0, \fBkTypeValue\fP = 0x1 }"
+.br
+.ti -1c
+.RI "enum \fBFileType\fP { \fBkLogFile\fP, \fBkDBLockFile\fP, \fBkTableFile\fP, \fBkDescriptorFile\fP, \fBkCurrentFile\fP, \fBkTempFile\fP, \fBkInfoLogFile\fP }"
+.br
+.ti -1c
+.RI "enum \fBTag\fP { \fBkComparator\fP = 1, \fBkLogNumber\fP = 2, \fBkNextFileNumber\fP = 3, \fBkLastSequence\fP = 4, \fBkCompactPointer\fP = 5, \fBkDeletedFile\fP = 6, \fBkNewFile\fP = 7, \fBkPrevLogNumber\fP = 9 }"
+.br
+.ti -1c
+.RI "enum \fBCompressionType\fP { \fBkNoCompression\fP = 0x0, \fBkSnappyCompression\fP = 0x1 }"
+.br
+.ti -1c
+.RI "enum \fBTestType\fP { \fBTABLE_TEST\fP, \fBBLOCK_TEST\fP, \fBMEMTABLE_TEST\fP, \fBDB_TEST\fP }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTEST\fP (\fBAutoCompactTest\fP, ReadAll)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBAutoCompactTest\fP, ReadHalf)"
+.br
+.ti -1c
+.RI "\fBStatus\fP \fBBuildTable\fP (const std::string &dbname, \fBEnv\fP *env, const \fBOptions\fP &options, \fBTableCache\fP *table_cache, \fBIterator\fP *iter, \fBFileMetaData\fP *\fBmeta\fP)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBCorruptionTest\fP, Recovery)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBCorruptionTest\fP, RecoverWriteError)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBCorruptionTest\fP, NewFileErrorDuringWrite)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBCorruptionTest\fP, TableFile)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBCorruptionTest\fP, TableFileRepair)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBCorruptionTest\fP, TableFileIndexData)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBCorruptionTest\fP, MissingDescriptor)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBCorruptionTest\fP, SequenceNumberRecovery)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBCorruptionTest\fP, CorruptedDescriptor)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBCorruptionTest\fP, CompactionInputError)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBCorruptionTest\fP, CompactionInputErrorParanoid)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBCorruptionTest\fP, UnrelatedKeys)"
+.br
+.ti -1c
+.RI "\fBOptions\fP \fBSanitizeOptions\fP (const std::string &dbname, const \fBInternalKeyComparator\fP *icmp, const \fBInternalFilterPolicy\fP *ipolicy, const \fBOptions\fP &src)"
+.br
+.ti -1c
+.RI "\fBStatus\fP \fBDestroyDB\fP (const std::string &dbname, const \fBOptions\fP &options)"
+.br
+.ti -1c
+.RI "\fBIterator\fP * \fBNewDBIterator\fP (\fBDBImpl\fP *db, const \fBComparator\fP *user_key_comparator, \fBIterator\fP *internal_iter, \fBSequenceNumber\fP sequence, \fBuint32_t\fP seed)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, Empty)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, ReadWrite)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, PutDeleteGet)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, GetFromImmutableLayer)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, GetFromVersions)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, GetSnapshot)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, GetLevel0Ordering)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, GetOrderedByLevels)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, GetPicksCorrectFile)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, GetEncountersEmptyLevel)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, IterEmpty)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, IterSingle)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, IterMulti)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, IterSmallAndLargeMix)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, IterMultiWithDelete)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, Recover)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, RecoveryWithEmptyLog)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, RecoverDuringMemtableCompaction)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, MinorCompactionsHappen)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, RecoverWithLargeLog)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, CompactionsGenerateMultipleFiles)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, RepeatedWritesToSameKey)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, SparseMerge)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, ApproximateSizes)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, ApproximateSizes_MixOfSmallAndLarge)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, IteratorPinsRef)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, \fBSnapshot\fP)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, HiddenValuesAreRemoved)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, DeletionMarkers1)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, DeletionMarkers2)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, OverlapInLevel0)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, L0_CompactionBug_Issue44_a)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, L0_CompactionBug_Issue44_b)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, ComparatorCheck)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, CustomComparator)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, ManualCompaction)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, DBOpen_Options)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, Locking)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, NoSpace)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, NonWritableFileSystem)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, WriteSyncError)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, ManifestWriteError)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, MissingSSTFile)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, StillReadSST)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, FilesDeletedAfterCompaction)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, BloomFilter)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, MultiThreaded)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBDBTest\fP, Randomized)"
+.br
+.ti -1c
+.RI "std::string \fBMakeKey\fP (unsigned int num)"
+.br
+.ti -1c
+.RI "void \fBBM_LogAndApply\fP (int iters, int num_base_files)"
+.br
+.ti -1c
+.RI "void \fBAppendInternalKey\fP (std::string *result, const \fBParsedInternalKey\fP &key)"
+.br
+.ti -1c
+.RI "size_t \fBInternalKeyEncodingLength\fP (const \fBParsedInternalKey\fP &key)"
+.br
+.ti -1c
+.RI "bool \fBParseInternalKey\fP (const \fBSlice\fP &internal_key, \fBParsedInternalKey\fP *result)"
+.br
+.ti -1c
+.RI "\fBSlice\fP \fBExtractUserKey\fP (const \fBSlice\fP &internal_key)"
+.br
+.ti -1c
+.RI "\fBValueType\fP \fBExtractValueType\fP (const \fBSlice\fP &internal_key)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBFormatTest\fP, InternalKey_EncodeDecode)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBFormatTest\fP, InternalKeyShortSeparator)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBFormatTest\fP, InternalKeyShortestSuccessor)"
+.br
+.ti -1c
+.RI "\fBStatus\fP \fBDumpFile\fP (\fBEnv\fP *env, const std::string &fname, \fBWritableFile\fP *dst)"
+.br
+.ti -1c
+.RI "\fBStatus\fP \fBWriteStringToFileSync\fP (\fBEnv\fP *env, const \fBSlice\fP &data, const std::string &fname)"
+.br
+.ti -1c
+.RI "std::string \fBLogFileName\fP (const std::string &\fBname\fP, \fBuint64_t\fP number)"
+.br
+.ti -1c
+.RI "std::string \fBTableFileName\fP (const std::string &\fBname\fP, \fBuint64_t\fP number)"
+.br
+.ti -1c
+.RI "std::string \fBSSTTableFileName\fP (const std::string &\fBname\fP, \fBuint64_t\fP number)"
+.br
+.ti -1c
+.RI "std::string \fBDescriptorFileName\fP (const std::string &dbname, \fBuint64_t\fP number)"
+.br
+.ti -1c
+.RI "std::string \fBCurrentFileName\fP (const std::string &dbname)"
+.br
+.ti -1c
+.RI "std::string \fBLockFileName\fP (const std::string &dbname)"
+.br
+.ti -1c
+.RI "std::string \fBTempFileName\fP (const std::string &dbname, \fBuint64_t\fP number)"
+.br
+.ti -1c
+.RI "std::string \fBInfoLogFileName\fP (const std::string &dbname)"
+.br
+.ti -1c
+.RI "std::string \fBOldInfoLogFileName\fP (const std::string &dbname)"
+.br
+.ti -1c
+.RI "bool \fBParseFileName\fP (const std::string &fname, \fBuint64_t\fP *number, \fBFileType\fP *type)"
+.br
+.ti -1c
+.RI "\fBStatus\fP \fBSetCurrentFile\fP (\fBEnv\fP *env, const std::string &dbname, \fBuint64_t\fP descriptor_number)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBFileNameTest\fP, Parse)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBFileNameTest\fP, Construction)"
+.br
+.ti -1c
+.RI "\fBStatus\fP \fBRepairDB\fP (const std::string &dbname, const \fBOptions\fP &options)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBSkipTest\fP, Empty)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBSkipTest\fP, InsertAndLookup)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBSkipTest\fP, ConcurrentWithoutThreads)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBSkipTest\fP, Concurrent1)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBSkipTest\fP, Concurrent2)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBSkipTest\fP, Concurrent3)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBSkipTest\fP, Concurrent4)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBSkipTest\fP, Concurrent5)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBVersionEditTest\fP, EncodeDecode)"
+.br
+.ti -1c
+.RI "int \fBFindFile\fP (const \fBInternalKeyComparator\fP &icmp, const std::vector< \fBFileMetaData\fP * > &files, const \fBSlice\fP &key)"
+.br
+.ti -1c
+.RI "bool \fBSomeFileOverlapsRange\fP (const \fBInternalKeyComparator\fP &icmp, bool disjoint_sorted_files, const std::vector< \fBFileMetaData\fP * > &files, const \fBSlice\fP *smallest_user_key, const \fBSlice\fP *largest_user_key)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBFindFileTest\fP, Empty)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBFindFileTest\fP, Single)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBFindFileTest\fP, Multiple)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBFindFileTest\fP, MultipleNullBoundaries)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBFindFileTest\fP, OverlapSequenceChecks)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBFindFileTest\fP, OverlappingFiles)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBWriteBatchTest\fP, Empty)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBWriteBatchTest\fP, Multiple)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBWriteBatchTest\fP, Corruption)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBWriteBatchTest\fP, Append)"
+.br
+.ti -1c
+.RI "\fBEnv\fP * \fBNewMemEnv\fP (\fBEnv\fP *base_env)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBMemEnvTest\fP, Basics)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBMemEnvTest\fP, ReadWrite)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBMemEnvTest\fP, Locks)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBMemEnvTest\fP, Misc)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBMemEnvTest\fP, LargeWrite)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBMemEnvTest\fP, \fBDBTest\fP)"
+.br
+.ti -1c
+.RI "\fBCache\fP * \fBNewLRUCache\fP (size_t capacity)"
+.br
+.ti -1c
+.RI "const \fBComparator\fP * \fBBytewiseComparator\fP ()"
+.br
+.ti -1c
+.RI "void \fBLog\fP (\fBLogger\fP *info_log, const char *format,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "\fBStatus\fP \fBWriteStringToFile\fP (\fBEnv\fP *env, const \fBSlice\fP &data, const std::string &fname)"
+.br
+.ti -1c
+.RI "\fBStatus\fP \fBReadFileToString\fP (\fBEnv\fP *env, const std::string &fname, std::string *data)"
+.br
+.ti -1c
+.RI "const \fBFilterPolicy\fP * \fBNewBloomFilterPolicy\fP (int bits_per_key)"
+.br
+.ti -1c
+.RI "\fBIterator\fP * \fBNewEmptyIterator\fP ()"
+.br
+.ti -1c
+.RI "\fBIterator\fP * \fBNewErrorIterator\fP (const \fBStatus\fP &status)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBSlice\fP &x, const \fBSlice\fP &y)"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBSlice\fP &x, const \fBSlice\fP &y)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBIssue200\fP, Test)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBFilterBlockTest\fP, EmptyBuilder)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBFilterBlockTest\fP, SingleChunk)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBFilterBlockTest\fP, MultiChunk)"
+.br
+.ti -1c
+.RI "\fBStatus\fP \fBReadBlock\fP (\fBRandomAccessFile\fP *file, const \fBReadOptions\fP &options, const \fBBlockHandle\fP &handle, \fBBlockContents\fP *result)"
+.br
+.ti -1c
+.RI "\fBIterator\fP * \fBNewMergingIterator\fP (const \fBComparator\fP *\fBcmp\fP, \fBIterator\fP **list, int n)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBHarness\fP, Empty)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBHarness\fP, ZeroRestartPointsInBlock)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBHarness\fP, SimpleEmptyKey)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBHarness\fP, SimpleSingle)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBHarness\fP, SimpleMulti)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBHarness\fP, SimpleSpecialKey)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBHarness\fP, Randomized)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBHarness\fP, RandomizedLongDB)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBMemTableTest\fP, Simple)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBTableTest\fP, ApproximateOffsetOfPlain)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBTableTest\fP, ApproximateOffsetOfCompressed)"
+.br
+.ti -1c
+.RI "\fBIterator\fP * \fBNewTwoLevelIterator\fP (\fBIterator\fP *index_iter, BlockFunction block_function, void *\fBarg\fP, const \fBReadOptions\fP &options)"
+.br
+.ti -1c
+.RI "\fBIterator\fP * \fBNewTwoLevelIterator\fP (\fBIterator\fP *index_iter, \fBIterator\fP *(*block_function)(void *\fBarg\fP, const \fBReadOptions\fP &options, const \fBSlice\fP &index_value), void *\fBarg\fP, const \fBReadOptions\fP &options)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBArenaTest\fP, Empty)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBArenaTest\fP, Simple)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBBloomTest\fP, EmptyFilter)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBBloomTest\fP, Small)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBBloomTest\fP, VaryingLengths)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBCacheTest\fP, HitAndMiss)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBCacheTest\fP, Erase)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBCacheTest\fP, EntriesArePinned)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBCacheTest\fP, EvictionPolicy)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBCacheTest\fP, HeavyEntries)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBCacheTest\fP, NewId)"
+.br
+.ti -1c
+.RI "void \fBEncodeFixed32\fP (char *buf, \fBuint32_t\fP \fBvalue\fP)"
+.br
+.ti -1c
+.RI "void \fBEncodeFixed64\fP (char *buf, \fBuint64_t\fP \fBvalue\fP)"
+.br
+.ti -1c
+.RI "void \fBPutFixed32\fP (std::string *dst, \fBuint32_t\fP \fBvalue\fP)"
+.br
+.ti -1c
+.RI "void \fBPutFixed64\fP (std::string *dst, \fBuint64_t\fP \fBvalue\fP)"
+.br
+.ti -1c
+.RI "char * \fBEncodeVarint32\fP (char *dst, \fBuint32_t\fP v)"
+.br
+.ti -1c
+.RI "void \fBPutVarint32\fP (std::string *dst, \fBuint32_t\fP v)"
+.br
+.ti -1c
+.RI "char * \fBEncodeVarint64\fP (char *dst, \fBuint64_t\fP v)"
+.br
+.ti -1c
+.RI "void \fBPutVarint64\fP (std::string *dst, \fBuint64_t\fP v)"
+.br
+.ti -1c
+.RI "void \fBPutLengthPrefixedSlice\fP (std::string *dst, const \fBSlice\fP &\fBvalue\fP)"
+.br
+.ti -1c
+.RI "int \fBVarintLength\fP (\fBuint64_t\fP v)"
+.br
+.ti -1c
+.RI "const char * \fBGetVarint32PtrFallback\fP (const char *p, const char *limit, \fBuint32_t\fP *\fBvalue\fP)"
+.br
+.ti -1c
+.RI "bool \fBGetVarint32\fP (\fBSlice\fP *input, \fBuint32_t\fP *\fBvalue\fP)"
+.br
+.ti -1c
+.RI "const char * \fBGetVarint64Ptr\fP (const char *p, const char *limit, \fBuint64_t\fP *\fBvalue\fP)"
+.br
+.ti -1c
+.RI "bool \fBGetVarint64\fP (\fBSlice\fP *input, \fBuint64_t\fP *\fBvalue\fP)"
+.br
+.ti -1c
+.RI "const char * \fBGetLengthPrefixedSlice\fP (const char *p, const char *limit, \fBSlice\fP *result)"
+.br
+.ti -1c
+.RI "bool \fBGetLengthPrefixedSlice\fP (\fBSlice\fP *input, \fBSlice\fP *result)"
+.br
+.ti -1c
+.RI "const char * \fBGetVarint32Ptr\fP (const char *p, const char *limit, \fBuint32_t\fP *v)"
+.br
+.ti -1c
+.RI "\fBuint32_t\fP \fBDecodeFixed32\fP (const char *ptr)"
+.br
+.ti -1c
+.RI "\fBuint64_t\fP \fBDecodeFixed64\fP (const char *ptr)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBCoding\fP, Fixed32)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBCoding\fP, Fixed64)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBCoding\fP, EncodingOutput)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBCoding\fP, Varint32)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBCoding\fP, Varint64)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBCoding\fP, Varint32Overflow)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBCoding\fP, Varint32Truncation)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBCoding\fP, Varint64Overflow)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBCoding\fP, Varint64Truncation)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBCoding\fP, Strings)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBEnvPosixTest\fP, RunImmediately)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBEnvPosixTest\fP, RunMany)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBEnvPosixTest\fP, StartThread)"
+.br
+.ti -1c
+.RI "\fBuint32_t\fP \fBHash\fP (const char *data, size_t n, \fBuint32_t\fP seed)"
+.br
+.ti -1c
+.RI "\fBTEST\fP (\fBHASH\fP, SignedUnsignedIssue)"
+.br
+.ti -1c
+.RI "void \fBAppendNumberTo\fP (std::string *str, \fBuint64_t\fP num)"
+.br
+.ti -1c
+.RI "void \fBAppendEscapedStringTo\fP (std::string *str, const \fBSlice\fP &\fBvalue\fP)"
+.br
+.ti -1c
+.RI "std::string \fBNumberToString\fP (\fBuint64_t\fP num)"
+.br
+.ti -1c
+.RI "std::string \fBEscapeString\fP (const \fBSlice\fP &\fBvalue\fP)"
+.br
+.ti -1c
+.RI "bool \fBConsumeDecimalNumber\fP (\fBSlice\fP *in, \fBuint64_t\fP *val)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "const int \fBkNumNonTableCacheFiles\fP = 10"
+.br
+.in -1c
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef \fBuint64_t\fP \fBleveldb::Key\fP"
+
+.PP
+Definition at line 15 of file skiplist_test\&.cc\&.
+.SS "typedef std::map<std::string, std::string, STLLessThan> \fBleveldb::KVMap\fP"
+
+.PP
+Definition at line 137 of file table_test\&.cc\&.
+.SS "typedef \fBuint64_t\fP \fBleveldb::SequenceNumber\fP"
+
+.PP
+Definition at line 63 of file dbformat\&.h\&.
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBleveldb::CompressionType\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIkNoCompression \fP\fP
+.TP
+\fB\fIkSnappyCompression \fP\fP
+.PP
+Definition at line 23 of file options\&.h\&.
+.SS "enum \fBleveldb::FileType\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIkLogFile \fP\fP
+.TP
+\fB\fIkDBLockFile \fP\fP
+.TP
+\fB\fIkTableFile \fP\fP
+.TP
+\fB\fIkDescriptorFile \fP\fP
+.TP
+\fB\fIkCurrentFile \fP\fP
+.TP
+\fB\fIkTempFile \fP\fP
+.TP
+\fB\fIkInfoLogFile \fP\fP
+.PP
+Definition at line 20 of file filename\&.h\&.
+.SS "enum \fBleveldb::Tag\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIkComparator \fP\fP
+.TP
+\fB\fIkLogNumber \fP\fP
+.TP
+\fB\fIkNextFileNumber \fP\fP
+.TP
+\fB\fIkLastSequence \fP\fP
+.TP
+\fB\fIkCompactPointer \fP\fP
+.TP
+\fB\fIkDeletedFile \fP\fP
+.TP
+\fB\fIkNewFile \fP\fP
+.TP
+\fB\fIkPrevLogNumber \fP\fP
+.PP
+Definition at line 14 of file version_edit\&.cc\&.
+.SS "enum \fBleveldb::TestType\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fITABLE_TEST \fP\fP
+.TP
+\fB\fIBLOCK_TEST \fP\fP
+.TP
+\fB\fIMEMTABLE_TEST \fP\fP
+.TP
+\fB\fIDB_TEST \fP\fP
+.PP
+Definition at line 399 of file table_test\&.cc\&.
+.SS "enum \fBleveldb::ValueType\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIkTypeDeletion \fP\fP
+.TP
+\fB\fIkTypeValue \fP\fP
+.PP
+Definition at line 51 of file dbformat\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "void leveldb::AppendEscapedStringTo (std::string * str, const \fBSlice\fP & value)"
+
+.PP
+Definition at line 22 of file logging\&.cc\&.
+.SS "void leveldb::AppendInternalKey (std::string * result, const \fBParsedInternalKey\fP & key)"
+
+.PP
+Definition at line 18 of file dbformat\&.cc\&.
+.SS "void leveldb::AppendNumberTo (std::string * str, \fBuint64_t\fP num)"
+
+.PP
+Definition at line 16 of file logging\&.cc\&.
+.SS "void leveldb::BM_LogAndApply (int iters, int num_base_files)"
+
+.PP
+Definition at line 2065 of file db_test\&.cc\&.
+.SS "\fBStatus\fP leveldb::BuildTable (const std::string & dbname, \fBEnv\fP * env, const \fBOptions\fP & options, \fBTableCache\fP * table_cache, \fBIterator\fP * iter, \fBFileMetaData\fP * meta)"
+
+.PP
+Definition at line 17 of file builder\&.cc\&.
+.SS "const \fBComparator\fP * leveldb::BytewiseComparator ()"
+
+.PP
+Definition at line 76 of file comparator\&.cc\&.
+.SS "bool leveldb::ConsumeDecimalNumber (\fBSlice\fP * in, \fBuint64_t\fP * val)"
+
+.PP
+Definition at line 48 of file logging\&.cc\&.
+.SS "std::string leveldb::CurrentFileName (const std::string & dbname)"
+
+.PP
+Definition at line 50 of file filename\&.cc\&.
+.SS "\fBuint32_t\fP leveldb::DecodeFixed32 (const char * ptr)\fC [inline]\fP"
+
+.PP
+Definition at line 58 of file coding\&.h\&.
+.SS "\fBuint64_t\fP leveldb::DecodeFixed64 (const char * ptr)\fC [inline]\fP"
+
+.PP
+Definition at line 72 of file coding\&.h\&.
+.SS "std::string leveldb::DescriptorFileName (const std::string & dbname, \fBuint64_t\fP number)"
+
+.PP
+Definition at line 42 of file filename\&.cc\&.
+.SS "\fBStatus\fP leveldb::DestroyDB (const std::string & dbname, const \fBOptions\fP & options)"
+
+.PP
+Definition at line 1482 of file db_impl\&.cc\&.
+.SS "\fBStatus\fP leveldb::DumpFile (\fBEnv\fP * env, const std::string & fname, \fBWritableFile\fP * dst)"
+
+.PP
+Definition at line 210 of file dumpfile\&.cc\&.
+.SS "void leveldb::EncodeFixed32 (char * buf, \fBuint32_t\fP value)"
+
+.PP
+Definition at line 9 of file coding\&.cc\&.
+.SS "void leveldb::EncodeFixed64 (char * buf, \fBuint64_t\fP value)"
+
+.PP
+Definition at line 20 of file coding\&.cc\&.
+.SS "char * leveldb::EncodeVarint32 (char * dst, \fBuint32_t\fP v)"
+
+.PP
+Definition at line 47 of file coding\&.cc\&.
+.SS "char * leveldb::EncodeVarint64 (char * dst, \fBuint64_t\fP v)"
+
+.PP
+Definition at line 81 of file coding\&.cc\&.
+.SS "std::string leveldb::EscapeString (const \fBSlice\fP & value)"
+
+.PP
+Definition at line 42 of file logging\&.cc\&.
+.SS "\fBSlice\fP leveldb::ExtractUserKey (const \fBSlice\fP & internal_key)\fC [inline]\fP"
+
+.PP
+Definition at line 98 of file dbformat\&.h\&.
+.SS "\fBValueType\fP leveldb::ExtractValueType (const \fBSlice\fP & internal_key)\fC [inline]\fP"
+
+.PP
+Definition at line 103 of file dbformat\&.h\&.
+.SS "int leveldb::FindFile (const \fBInternalKeyComparator\fP & icmp, const std::vector< \fBFileMetaData\fP * > & files, const \fBSlice\fP & key)"
+
+.PP
+Definition at line 77 of file version_set\&.cc\&.
+.SS "const char* leveldb::GetLengthPrefixedSlice (const char * p, const char * limit, \fBSlice\fP * result)"
+
+.PP
+Definition at line 172 of file coding\&.cc\&.
+.SS "bool leveldb::GetLengthPrefixedSlice (\fBSlice\fP * input, \fBSlice\fP * result)"
+
+.PP
+Definition at line 182 of file coding\&.cc\&.
+.SS "bool leveldb::GetVarint32 (\fBSlice\fP * input, \fBuint32_t\fP * value)"
+
+.PP
+Definition at line 131 of file coding\&.cc\&.
+.SS "const char * leveldb::GetVarint32Ptr (const char * p, const char * limit, \fBuint32_t\fP * v)\fC [inline]\fP"
+
+.PP
+Definition at line 89 of file coding\&.h\&.
+.SS "const char * leveldb::GetVarint32PtrFallback (const char * p, const char * limit, \fBuint32_t\fP * value)"
+
+.PP
+Definition at line 112 of file coding\&.cc\&.
+.SS "bool leveldb::GetVarint64 (\fBSlice\fP * input, \fBuint64_t\fP * value)"
+
+.PP
+Definition at line 160 of file coding\&.cc\&.
+.SS "const char * leveldb::GetVarint64Ptr (const char * p, const char * limit, \fBuint64_t\fP * value)"
+
+.PP
+Definition at line 143 of file coding\&.cc\&.
+.SS "\fBuint32_t\fP leveldb::Hash (const char * data, size_t n, \fBuint32_t\fP seed)"
+
+.PP
+Definition at line 18 of file hash\&.cc\&.
+.SS "std::string leveldb::InfoLogFileName (const std::string & dbname)"
+
+.PP
+Definition at line 63 of file filename\&.cc\&.
+.SS "size_t leveldb::InternalKeyEncodingLength (const \fBParsedInternalKey\fP & key)\fC [inline]\fP"
+
+.PP
+Definition at line 82 of file dbformat\&.h\&.
+.SS "std::string leveldb::LockFileName (const std::string & dbname)"
+
+.PP
+Definition at line 54 of file filename\&.cc\&.
+.SS "void leveldb::Log (\fBLogger\fP * info_log, const char * format,  \&.\&.\&.)"
+
+.PP
+Definition at line 27 of file env\&.cc\&.
+.SS "std::string leveldb::LogFileName (const std::string & name, \fBuint64_t\fP number)"
+
+.PP
+Definition at line 27 of file filename\&.cc\&.
+.SS "std::string leveldb::MakeKey (unsigned int num)"
+
+.PP
+Definition at line 2059 of file db_test\&.cc\&.
+.SS "const \fBFilterPolicy\fP * leveldb::NewBloomFilterPolicy (int bits_per_key)"
+
+.PP
+Definition at line 91 of file bloom\&.cc\&.
+.SS "\fBIterator\fP * leveldb::NewDBIterator (\fBDBImpl\fP * db, const \fBComparator\fP * user_key_comparator, \fBIterator\fP * internal_iter, \fBSequenceNumber\fP sequence, \fBuint32_t\fP seed)"
+
+.PP
+Definition at line 308 of file db_iter\&.cc\&.
+.SS "\fBIterator\fP * leveldb::NewEmptyIterator ()"
+
+.PP
+Definition at line 59 of file iterator\&.cc\&.
+.SS "\fBIterator\fP * leveldb::NewErrorIterator (const \fBStatus\fP & status)"
+
+.PP
+Definition at line 63 of file iterator\&.cc\&.
+.SS "\fBCache\fP * leveldb::NewLRUCache (size_t capacity)"
+
+.PP
+Definition at line 321 of file cache\&.cc\&.
+.SS "\fBEnv\fP * leveldb::NewMemEnv (\fBEnv\fP * base_env)"
+
+.PP
+Definition at line 381 of file memenv\&.cc\&.
+.SS "\fBIterator\fP * leveldb::NewMergingIterator (const \fBComparator\fP * cmp, \fBIterator\fP ** list, int n)"
+
+.PP
+Definition at line 186 of file merger\&.cc\&.
+.SS "\fBIterator\fP* leveldb::NewTwoLevelIterator (\fBIterator\fP * index_iter, \fBIterator\fP *(*)(void *\fBarg\fP, const \fBReadOptions\fP &options, const \fBSlice\fP &index_value) block_function, void * arg, const \fBReadOptions\fP & options)"
+
+.SS "\fBIterator\fP* leveldb::NewTwoLevelIterator (\fBIterator\fP * index_iter, BlockFunction block_function, void * arg, const \fBReadOptions\fP & options)"
+
+.PP
+Definition at line 174 of file two_level_iterator\&.cc\&.
+.SS "std::string leveldb::NumberToString (\fBuint64_t\fP num)"
+
+.PP
+Definition at line 36 of file logging\&.cc\&.
+.SS "std::string leveldb::OldInfoLogFileName (const std::string & dbname)"
+
+.PP
+Definition at line 68 of file filename\&.cc\&.
+.SS "bool leveldb::operator!= (const \fBSlice\fP & x, const \fBSlice\fP & y)\fC [inline]\fP"
+
+.PP
+Definition at line 92 of file slice\&.h\&.
+.SS "bool leveldb::operator== (const \fBSlice\fP & x, const \fBSlice\fP & y)\fC [inline]\fP"
+
+.PP
+Definition at line 87 of file slice\&.h\&.
+.SS "bool leveldb::ParseFileName (const std::string & fname, \fBuint64_t\fP * number, \fBFileType\fP * type)"
+
+.PP
+Definition at line 80 of file filename\&.cc\&.
+.SS "bool leveldb::ParseInternalKey (const \fBSlice\fP & internal_key, \fBParsedInternalKey\fP * result)\fC [inline]\fP"
+
+.PP
+Definition at line 176 of file dbformat\&.h\&.
+.SS "void leveldb::PutFixed32 (std::string * dst, \fBuint32_t\fP value)"
+
+.PP
+Definition at line 35 of file coding\&.cc\&.
+.SS "void leveldb::PutFixed64 (std::string * dst, \fBuint64_t\fP value)"
+
+.PP
+Definition at line 41 of file coding\&.cc\&.
+.SS "void leveldb::PutLengthPrefixedSlice (std::string * dst, const \fBSlice\fP & value)"
+
+.PP
+Definition at line 98 of file coding\&.cc\&.
+.SS "void leveldb::PutVarint32 (std::string * dst, \fBuint32_t\fP v)"
+
+.PP
+Definition at line 75 of file coding\&.cc\&.
+.SS "void leveldb::PutVarint64 (std::string * dst, \fBuint64_t\fP v)"
+
+.PP
+Definition at line 92 of file coding\&.cc\&.
+.SS "\fBStatus\fP leveldb::ReadBlock (\fBRandomAccessFile\fP * file, const \fBReadOptions\fP & options, const \fBBlockHandle\fP & handle, \fBBlockContents\fP * result)"
+
+.PP
+Definition at line 66 of file format\&.cc\&.
+.SS "\fBStatus\fP leveldb::ReadFileToString (\fBEnv\fP * env, const std::string & fname, std::string * data)"
+
+.PP
+Definition at line 68 of file env\&.cc\&.
+.SS "\fBStatus\fP leveldb::RepairDB (const std::string & dbname, const \fBOptions\fP & options)"
+
+.PP
+Definition at line 456 of file repair\&.cc\&.
+.SS "\fBOptions\fP leveldb::SanitizeOptions (const std::string & dbname, const \fBInternalKeyComparator\fP * icmp, const \fBInternalFilterPolicy\fP * ipolicy, const \fBOptions\fP & src)"
+
+.PP
+Definition at line 90 of file db_impl\&.cc\&.
+.SS "\fBStatus\fP leveldb::SetCurrentFile (\fBEnv\fP * env, const std::string & dbname, \fBuint64_t\fP descriptor_number)"
+
+.PP
+Definition at line 126 of file filename\&.cc\&.
+.SS "bool leveldb::SomeFileOverlapsRange (const \fBInternalKeyComparator\fP & icmp, bool disjoint_sorted_files, const std::vector< \fBFileMetaData\fP * > & files, const \fBSlice\fP * smallest_user_key, const \fBSlice\fP * largest_user_key)"
+
+.PP
+Definition at line 112 of file version_set\&.cc\&.
+.SS "std::string leveldb::SSTTableFileName (const std::string & name, \fBuint64_t\fP number)"
+
+.PP
+Definition at line 37 of file filename\&.cc\&.
+.SS "std::string leveldb::TableFileName (const std::string & name, \fBuint64_t\fP number)"
+
+.PP
+Definition at line 32 of file filename\&.cc\&.
+.SS "std::string leveldb::TempFileName (const std::string & dbname, \fBuint64_t\fP number)"
+
+.PP
+Definition at line 58 of file filename\&.cc\&.
+.SS "leveldb::TEST (\fBHASH\fP, SignedUnsignedIssue)"
+
+.PP
+Definition at line 12 of file hash_test\&.cc\&.
+.SS "leveldb::TEST (\fBCoding\fP, Fixed32)"
+
+.PP
+Definition at line 13 of file coding_test\&.cc\&.
+.SS "leveldb::TEST (\fBArenaTest\fP, Empty)"
+
+.PP
+Definition at line 14 of file arena_test\&.cc\&.
+.SS "leveldb::TEST (\fBIssue200\fP, Test)"
+
+.PP
+Definition at line 16 of file issue200_test\&.cc\&.
+.SS "leveldb::TEST (\fBFileNameTest\fP, Parse)"
+
+.PP
+Definition at line 16 of file filename_test\&.cc\&.
+.SS "leveldb::TEST (\fBArenaTest\fP, Simple)"
+
+.PP
+Definition at line 18 of file arena_test\&.cc\&.
+.SS "leveldb::TEST (\fBVersionEditTest\fP, EncodeDecode)"
+
+.PP
+Definition at line 22 of file version_edit_test\&.cc\&.
+.SS "leveldb::TEST (\fBCoding\fP, Fixed64)"
+
+.PP
+Definition at line 27 of file coding_test\&.cc\&.
+.SS "leveldb::TEST (\fBMemEnvTest\fP, Basics)"
+
+.PP
+Definition at line 28 of file memenv_test\&.cc\&.
+.SS "leveldb::TEST (\fBEnvPosixTest\fP, RunImmediately)"
+
+.PP
+Definition at line 28 of file env_test\&.cc\&.
+.SS "leveldb::TEST (\fBSkipTest\fP, Empty)"
+
+.PP
+Definition at line 31 of file skiplist_test\&.cc\&.
+.SS "leveldb::TEST (\fBEnvPosixTest\fP, RunMany)"
+
+.PP
+Definition at line 35 of file env_test\&.cc\&.
+.SS "leveldb::TEST (\fBFilterBlockTest\fP, EmptyBuilder)"
+
+.PP
+Definition at line 46 of file filter_block_test\&.cc\&.
+.SS "leveldb::TEST (\fBSkipTest\fP, InsertAndLookup)"
+
+.PP
+Definition at line 47 of file skiplist_test\&.cc\&.
+.SS "leveldb::TEST (\fBFormatTest\fP, InternalKey_EncodeDecode)"
+
+.PP
+Definition at line 49 of file dbformat_test\&.cc\&.
+.SS "leveldb::TEST (\fBFindFileTest\fP, Empty)"
+
+.PP
+Definition at line 51 of file version_set_test\&.cc\&.
+.SS "leveldb::TEST (\fBFilterBlockTest\fP, SingleChunk)"
+
+.PP
+Definition at line 55 of file filter_block_test\&.cc\&.
+.SS "leveldb::TEST (\fBCoding\fP, EncodingOutput)"
+
+.PP
+Definition at line 55 of file coding_test\&.cc\&.
+.SS "leveldb::TEST (\fBWriteBatchTest\fP, Empty)"
+
+.PP
+Definition at line 57 of file write_batch_test\&.cc\&.
+.SS "leveldb::TEST (\fBFindFileTest\fP, Single)"
+
+.PP
+Definition at line 59 of file version_set_test\&.cc\&.
+.SS "leveldb::TEST (\fBWriteBatchTest\fP, Multiple)"
+
+.PP
+Definition at line 63 of file write_batch_test\&.cc\&.
+.SS "leveldb::TEST (\fBFormatTest\fP, InternalKeyShortSeparator)"
+
+.PP
+Definition at line 65 of file dbformat_test\&.cc\&.
+.SS "leveldb::TEST (\fBCacheTest\fP, HitAndMiss)"
+
+.PP
+Definition at line 68 of file cache_test\&.cc\&.
+.SS "leveldb::TEST (\fBFilterBlockTest\fP, MultiChunk)"
+
+.PP
+Definition at line 76 of file filter_block_test\&.cc\&.
+.SS "leveldb::TEST (\fBWriteBatchTest\fP, Corruption)"
+
+.PP
+Definition at line 77 of file write_batch_test\&.cc\&.
+.SS "leveldb::TEST (\fBFileNameTest\fP, Construction)"
+
+.PP
+Definition at line 77 of file filename_test\&.cc\&.
+.SS "leveldb::TEST (\fBCoding\fP, Varint32)"
+
+.PP
+Definition at line 77 of file coding_test\&.cc\&.
+.SS "leveldb::TEST (\fBEnvPosixTest\fP, StartThread)"
+
+.PP
+Definition at line 81 of file env_test\&.cc\&.
+.SS "leveldb::TEST (\fBMemEnvTest\fP, ReadWrite)"
+
+.PP
+Definition at line 87 of file memenv_test\&.cc\&.
+.SS "leveldb::TEST (\fBBloomTest\fP, EmptyFilter)"
+
+.PP
+Definition at line 88 of file bloom_test\&.cc\&.
+.SS "leveldb::TEST (\fBFindFileTest\fP, Multiple)"
+
+.PP
+Definition at line 90 of file version_set_test\&.cc\&.
+.SS "leveldb::TEST (\fBWriteBatchTest\fP, Append)"
+
+.PP
+Definition at line 90 of file write_batch_test\&.cc\&.
+.SS "leveldb::TEST (\fBCacheTest\fP, Erase)"
+
+.PP
+Definition at line 91 of file cache_test\&.cc\&.
+.SS "leveldb::TEST (\fBBloomTest\fP, Small)"
+
+.PP
+Definition at line 93 of file bloom_test\&.cc\&.
+.SS "leveldb::TEST (\fBCoding\fP, Varint64)"
+
+.PP
+Definition at line 98 of file coding_test\&.cc\&.
+.SS "leveldb::TEST (\fBFormatTest\fP, InternalKeyShortestSuccessor)"
+
+.PP
+Definition at line 101 of file dbformat_test\&.cc\&.
+.SS "leveldb::TEST (\fBAutoCompactTest\fP, ReadAll)"
+
+.PP
+Definition at line 106 of file autocompact_test\&.cc\&.
+.SS "leveldb::TEST (\fBAutoCompactTest\fP, ReadHalf)"
+
+.PP
+Definition at line 110 of file autocompact_test\&.cc\&.
+.SS "leveldb::TEST (\fBCacheTest\fP, EntriesArePinned)"
+
+.PP
+Definition at line 110 of file cache_test\&.cc\&.
+.SS "leveldb::TEST (\fBBloomTest\fP, VaryingLengths)"
+
+.PP
+Definition at line 115 of file bloom_test\&.cc\&.
+.SS "leveldb::TEST (\fBFindFileTest\fP, MultipleNullBoundaries)"
+
+.PP
+Definition at line 128 of file version_set_test\&.cc\&.
+.SS "leveldb::TEST (\fBMemEnvTest\fP, Locks)"
+
+.PP
+Definition at line 129 of file memenv_test\&.cc\&.
+.SS "leveldb::TEST (\fBCoding\fP, Varint32Overflow)"
+
+.PP
+Definition at line 134 of file coding_test\&.cc\&.
+.SS "leveldb::TEST (\fBCacheTest\fP, EvictionPolicy)"
+
+.PP
+Definition at line 135 of file cache_test\&.cc\&.
+.SS "leveldb::TEST (\fBMemEnvTest\fP, Misc)"
+
+.PP
+Definition at line 137 of file memenv_test\&.cc\&.
+.SS "leveldb::TEST (\fBCoding\fP, Varint32Truncation)"
+
+.PP
+Definition at line 141 of file coding_test\&.cc\&.
+.SS "leveldb::TEST (\fBFindFileTest\fP, OverlapSequenceChecks)"
+
+.PP
+Definition at line 148 of file version_set_test\&.cc\&.
+.SS "leveldb::TEST (\fBCacheTest\fP, HeavyEntries)"
+
+.PP
+Definition at line 149 of file cache_test\&.cc\&.
+.SS "leveldb::TEST (\fBMemEnvTest\fP, LargeWrite)"
+
+.PP
+Definition at line 152 of file memenv_test\&.cc\&.
+.SS "leveldb::TEST (\fBCoding\fP, Varint64Overflow)"
+
+.PP
+Definition at line 153 of file coding_test\&.cc\&.
+.SS "leveldb::TEST (\fBFindFileTest\fP, OverlappingFiles)"
+
+.PP
+Definition at line 157 of file version_set_test\&.cc\&.
+.SS "leveldb::TEST (\fBCoding\fP, Varint64Truncation)"
+
+.PP
+Definition at line 160 of file coding_test\&.cc\&.
+.SS "leveldb::TEST (\fBCoding\fP, Strings)"
+
+.PP
+Definition at line 172 of file coding_test\&.cc\&.
+.SS "leveldb::TEST (\fBCacheTest\fP, NewId)"
+
+.PP
+Definition at line 176 of file cache_test\&.cc\&.
+.SS "leveldb::TEST (\fBMemEnvTest\fP, \fBDBTest\fP)"
+
+.PP
+Definition at line 185 of file memenv_test\&.cc\&.
+.SS "leveldb::TEST (\fBCorruptionTest\fP, Recovery)"
+
+.PP
+Definition at line 202 of file corruption_test\&.cc\&.
+.SS "leveldb::TEST (\fBCorruptionTest\fP, RecoverWriteError)"
+
+.PP
+Definition at line 213 of file corruption_test\&.cc\&.
+.SS "leveldb::TEST (\fBCorruptionTest\fP, NewFileErrorDuringWrite)"
+
+.PP
+Definition at line 219 of file corruption_test\&.cc\&.
+.SS "leveldb::TEST (\fBCorruptionTest\fP, TableFile)"
+
+.PP
+Definition at line 236 of file corruption_test\&.cc\&.
+.SS "leveldb::TEST (\fBCorruptionTest\fP, TableFileRepair)"
+
+.PP
+Definition at line 247 of file corruption_test\&.cc\&.
+.SS "leveldb::TEST (\fBCorruptionTest\fP, TableFileIndexData)"
+
+.PP
+Definition at line 263 of file corruption_test\&.cc\&.
+.SS "leveldb::TEST (\fBCorruptionTest\fP, MissingDescriptor)"
+
+.PP
+Definition at line 273 of file corruption_test\&.cc\&.
+.SS "leveldb::TEST (\fBCorruptionTest\fP, SequenceNumberRecovery)"
+
+.PP
+Definition at line 280 of file corruption_test\&.cc\&.
+.SS "leveldb::TEST (\fBSkipTest\fP, ConcurrentWithoutThreads)"
+
+.PP
+Definition at line 288 of file skiplist_test\&.cc\&.
+.SS "leveldb::TEST (\fBCorruptionTest\fP, CorruptedDescriptor)"
+
+.PP
+Definition at line 301 of file corruption_test\&.cc\&.
+.SS "leveldb::TEST (\fBCorruptionTest\fP, CompactionInputError)"
+
+.PP
+Definition at line 318 of file corruption_test\&.cc\&.
+.SS "leveldb::TEST (\fBCorruptionTest\fP, CompactionInputErrorParanoid)"
+
+.PP
+Definition at line 333 of file corruption_test\&.cc\&.
+.SS "leveldb::TEST (\fBCorruptionTest\fP, UnrelatedKeys)"
+
+.PP
+Definition at line 354 of file corruption_test\&.cc\&.
+.SS "leveldb::TEST (\fBSkipTest\fP, Concurrent1)"
+
+.PP
+Definition at line 368 of file skiplist_test\&.cc\&.
+.SS "leveldb::TEST (\fBSkipTest\fP, Concurrent2)"
+
+.PP
+Definition at line 369 of file skiplist_test\&.cc\&.
+.SS "leveldb::TEST (\fBSkipTest\fP, Concurrent3)"
+
+.PP
+Definition at line 370 of file skiplist_test\&.cc\&.
+.SS "leveldb::TEST (\fBSkipTest\fP, Concurrent4)"
+
+.PP
+Definition at line 371 of file skiplist_test\&.cc\&.
+.SS "leveldb::TEST (\fBSkipTest\fP, Concurrent5)"
+
+.PP
+Definition at line 372 of file skiplist_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, Empty)"
+
+.PP
+Definition at line 506 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, ReadWrite)"
+
+.PP
+Definition at line 513 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, PutDeleteGet)"
+
+.PP
+Definition at line 524 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, GetFromImmutableLayer)"
+
+.PP
+Definition at line 535 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, GetFromVersions)"
+
+.PP
+Definition at line 553 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, GetSnapshot)"
+
+.PP
+Definition at line 561 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, GetLevel0Ordering)"
+
+.PP
+Definition at line 579 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, GetOrderedByLevels)"
+
+.PP
+Definition at line 594 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, GetPicksCorrectFile)"
+
+.PP
+Definition at line 606 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, GetEncountersEmptyLevel)"
+
+.PP
+Definition at line 621 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBHarness\fP, Empty)"
+
+.PP
+Definition at line 648 of file table_test\&.cc\&.
+.SS "leveldb::TEST (\fBHarness\fP, ZeroRestartPointsInBlock)"
+
+.PP
+Definition at line 659 of file table_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, IterEmpty)"
+
+.PP
+Definition at line 660 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, IterSingle)"
+
+.PP
+Definition at line 675 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBHarness\fP, SimpleEmptyKey)"
+
+.PP
+Definition at line 678 of file table_test\&.cc\&.
+.SS "leveldb::TEST (\fBHarness\fP, SimpleSingle)"
+
+.PP
+Definition at line 687 of file table_test\&.cc\&.
+.SS "leveldb::TEST (\fBHarness\fP, SimpleMulti)"
+
+.PP
+Definition at line 696 of file table_test\&.cc\&.
+.SS "leveldb::TEST (\fBHarness\fP, SimpleSpecialKey)"
+
+.PP
+Definition at line 707 of file table_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, IterMulti)"
+
+.PP
+Definition at line 713 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBHarness\fP, Randomized)"
+
+.PP
+Definition at line 716 of file table_test\&.cc\&.
+.SS "leveldb::TEST (\fBHarness\fP, RandomizedLongDB)"
+
+.PP
+Definition at line 736 of file table_test\&.cc\&.
+.SS "leveldb::TEST (\fBMemTableTest\fP, Simple)"
+
+.PP
+Definition at line 762 of file table_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, IterSmallAndLargeMix)"
+
+.PP
+Definition at line 796 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBTableTest\fP, ApproximateOffsetOfPlain)"
+
+.PP
+Definition at line 800 of file table_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, IterMultiWithDelete)"
+
+.PP
+Definition at line 834 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBTableTest\fP, ApproximateOffsetOfCompressed)"
+
+.PP
+Definition at line 836 of file table_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, Recover)"
+
+.PP
+Definition at line 851 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, RecoveryWithEmptyLog)"
+
+.PP
+Definition at line 873 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, RecoverDuringMemtableCompaction)"
+
+.PP
+Definition at line 887 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, MinorCompactionsHappen)"
+
+.PP
+Definition at line 914 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, RecoverWithLargeLog)"
+
+.PP
+Definition at line 939 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, CompactionsGenerateMultipleFiles)"
+
+.PP
+Definition at line 963 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, RepeatedWritesToSameKey)"
+
+.PP
+Definition at line 989 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, SparseMerge)"
+
+.PP
+Definition at line 1008 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, ApproximateSizes)"
+
+.PP
+Definition at line 1059 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, ApproximateSizes_MixOfSmallAndLarge)"
+
+.PP
+Definition at line 1109 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, IteratorPinsRef)"
+
+.PP
+Definition at line 1147 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, \fBSnapshot\fP)"
+
+.PP
+Definition at line 1169 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, HiddenValuesAreRemoved)"
+
+.PP
+Definition at line 1198 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, DeletionMarkers1)"
+
+.PP
+Definition at line 1229 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, DeletionMarkers2)"
+
+.PP
+Definition at line 1258 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, OverlapInLevel0)"
+
+.PP
+Definition at line 1284 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, L0_CompactionBug_Issue44_a)"
+
+.PP
+Definition at line 1325 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, L0_CompactionBug_Issue44_b)"
+
+.PP
+Definition at line 1342 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, ComparatorCheck)"
+
+.PP
+Definition at line 1368 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, CustomComparator)"
+
+.PP
+Definition at line 1391 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, ManualCompaction)"
+
+.PP
+Definition at line 1446 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, DBOpen_Options)"
+
+.PP
+Definition at line 1480 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, Locking)"
+
+.PP
+Definition at line 1519 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, NoSpace)"
+
+.PP
+Definition at line 1526 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, NonWritableFileSystem)"
+
+.PP
+Definition at line 1545 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, WriteSyncError)"
+
+.PP
+Definition at line 1565 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, ManifestWriteError)"
+
+.PP
+Definition at line 1596 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, MissingSSTFile)"
+
+.PP
+Definition at line 1637 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, StillReadSST)"
+
+.PP
+Definition at line 1655 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, FilesDeletedAfterCompaction)"
+
+.PP
+Definition at line 1671 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, BloomFilter)"
+
+.PP
+Definition at line 1682 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, MultiThreaded)"
+
+.PP
+Definition at line 1795 of file db_test\&.cc\&.
+.SS "leveldb::TEST (\fBDBTest\fP, Randomized)"
+
+.PP
+Definition at line 1988 of file db_test\&.cc\&.
+.SS "int leveldb::VarintLength (\fBuint64_t\fP v)"
+
+.PP
+Definition at line 103 of file coding\&.cc\&.
+.SS "\fBStatus\fP leveldb::WriteStringToFile (\fBEnv\fP * env, const \fBSlice\fP & data, const std::string & fname)"
+
+.PP
+Definition at line 58 of file env\&.cc\&.
+.SS "\fBStatus\fP leveldb::WriteStringToFileSync (\fBEnv\fP * env, const \fBSlice\fP & data, const std::string & fname)"
+
+.PP
+Definition at line 63 of file env\&.cc\&.
+.SH "Variable Documentation"
+.PP 
+.SS "const int leveldb::kNumNonTableCacheFiles = 10"
+
+.PP
+Definition at line 38 of file db_impl\&.cc\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

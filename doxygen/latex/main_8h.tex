@@ -1,0 +1,1648 @@
+\hypertarget{main_8h}{}\section{/home/dev/ds-\/160209/src/main.h File Reference}
+\label{main_8h}\index{/home/dev/ds-\/160209/src/main.\+h@{/home/dev/ds-\/160209/src/main.\+h}}
+{\ttfamily \#include \char`\"{}txmempool.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}net.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}script.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}streams.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}txdb.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}chain.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$list$>$}\\*
+{\ttfamily \#include $<$boost/unordered\+\_\+map.\+hpp$>$}\\*
+Include dependency graph for main.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_block_hasher}{Block\+Hasher}
+\item 
+struct \hyperlink{struct_c_node_state_stats}{C\+Node\+State\+Stats}
+\item 
+class \hyperlink{class_c_disk_tx_pos}{C\+Disk\+Tx\+Pos}
+\begin{DoxyCompactList}\small\item\em Position on disk for a particular transaction. \end{DoxyCompactList}\item 
+class \hyperlink{class_c_transaction_po_s}{C\+Transaction\+Po\+S}
+\item 
+class \hyperlink{class_c_merkle_tx}{C\+Merkle\+Tx}
+\item 
+class \hyperlink{class_c_tx_index}{C\+Tx\+Index}
+\item 
+class \hyperlink{class_c_validation_state}{C\+Validation\+State}
+\item 
+class \hyperlink{class_c_wallet_interface}{C\+Wallet\+Interface}
+\item 
+class \hyperlink{class_c_block_file_info}{C\+Block\+File\+Info}
+\item 
+class \hyperlink{class_c_verify_d_b}{C\+Verify\+D\+B}
+\begin{DoxyCompactList}\small\item\em R\+A\+I\+I wrapper for Verify\+D\+B\+: Verify consistency of the block and coin databases. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::map$<$ \hyperlink{classuint256}{uint256}, \hyperlink{class_c_block_index}{C\+Block\+Index} $\ast$, \hyperlink{struct_block_hasher}{Block\+Hasher} $>$ \hyperlink{main_8h_a177351119104ee119066e4838c679f35}{Block\+Map}
+\item 
+typedef std\+::map$<$ \hyperlink{classuint256}{uint256}, std\+::pair$<$ \hyperlink{class_c_tx_index}{C\+Tx\+Index}, \hyperlink{class_c_transaction}{C\+Transaction} $>$ $>$ \hyperlink{main_8h_a05bae354566c88f7dca5ad13aaf8b30f}{Map\+Prev\+Tx}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{main_8h_a8c24d39fc07a60d3c019618a73cc15a7}{Get\+Min\+Fee\+\_\+mode} \{ \hyperlink{main_8h_a8c24d39fc07a60d3c019618a73cc15a7a5a34bbfddb9219ca72f89780fcaafb3d}{G\+M\+F\+\_\+\+B\+L\+O\+C\+K}, 
+\hyperlink{main_8h_a8c24d39fc07a60d3c019618a73cc15a7a79d7494c7b44dac59ff3143ac440e2f5}{G\+M\+F\+\_\+\+R\+E\+L\+A\+Y}, 
+\hyperlink{main_8h_a8c24d39fc07a60d3c019618a73cc15a7a146093898dd622fd76ca7ded2b6933ef}{G\+M\+F\+\_\+\+S\+E\+N\+D}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{main_8h_af0793c7c14e94d2d642f4ac89067a429}{Get\+Node\+State\+Stats} (\hyperlink{net_8h_a954d746a58632565552615fd0a4ee660}{Node\+Id} nodeid, \hyperlink{struct_c_node_state_stats}{C\+Node\+State\+Stats} \&\hyperlink{db__bench_8cc_a5925d216740c89f43482df806fd14e8c}{stats})
+\item 
+void \hyperlink{main_8h_aa6b7f220759fb53f10c65654bbf61317}{Register\+Wallet} (\hyperlink{class_c_wallet_interface}{C\+Wallet\+Interface} $\ast$pwallet\+In)
+\item 
+void \hyperlink{main_8h_aa60561b6923955deeaad6fdab74a3aee}{Unregister\+Wallet} (\hyperlink{class_c_wallet_interface}{C\+Wallet\+Interface} $\ast$pwallet\+In)
+\item 
+void \hyperlink{main_8h_ad0b02f9e3ff8997319581ce5021d4244}{Unregister\+All\+Wallets} ()
+\item 
+void \hyperlink{main_8h_a0829b07a2144791d1d6cb18c279fb3a4}{Sync\+With\+Wallets} (const \hyperlink{class_c_transaction}{C\+Transaction} \&tx, const \hyperlink{class_c_block}{C\+Block} $\ast$pblock=N\+U\+L\+L, bool f\+Connect=true)
+\item 
+void \hyperlink{main_8h_aa8d5c228e24266e3dca5858adae31800}{Resend\+Wallet\+Transactions} (bool f\+Force=false)
+\item 
+void \hyperlink{main_8h_ab02615ff65f91d69f8d786ec900baa8a}{Register\+Node\+Signals} (\hyperlink{struct_c_node_signals}{C\+Node\+Signals} \&node\+Signals)
+\item 
+void \hyperlink{main_8h_a3ef0cc6e9d9d6435ee2a5569244d6ebd}{Unregister\+Node\+Signals} (\hyperlink{struct_c_node_signals}{C\+Node\+Signals} \&node\+Signals)
+\item 
+void \hyperlink{main_8h_a28098619373dbab927d25bca3cea8a4a}{Push\+Get\+Blocks} (\hyperlink{class_c_node}{C\+Node} $\ast$pnode, \hyperlink{class_c_block_index}{C\+Block\+Index} $\ast$pindex\+Begin, \hyperlink{classuint256}{uint256} hash\+End)
+\item 
+bool \hyperlink{main_8h_a7c8a7be3439bb5e1e40548a332a3cf29}{Process\+Block} (\hyperlink{class_c_node}{C\+Node} $\ast$pfrom, \hyperlink{class_c_block}{C\+Block} $\ast$pblock)
+\item 
+bool \hyperlink{main_8h_a6df609da0bad1550cbb2cdc781ad2904}{Check\+Disk\+Space} (\hyperlink{stdint_8h_aaa5d1cd013383c889537491c3cfd9aad}{uint64\+\_\+t} n\+Additional\+Bytes=0)
+\item 
+void \hyperlink{main_8h_ac98b87e479f71b7be2b990a10c4ebc2d}{Unload\+Block\+Index} ()
+\begin{DoxyCompactList}\small\item\em Unload database information. \end{DoxyCompactList}\item 
+bool \hyperlink{main_8h_a367f303d34b8a5501ac4d77bebab578c}{Load\+Block\+Index} (bool f\+Allow\+New=true)
+\begin{DoxyCompactList}\small\item\em Load the block tree and coins database from disk $\ast$/. \end{DoxyCompactList}\item 
+bool \hyperlink{main_8h_a92e5e1fcbd56cc44c27d39b64da8a79a}{Init\+Block\+Index} ()
+\begin{DoxyCompactList}\small\item\em Initialize a new block tree database + block data on disk. \end{DoxyCompactList}\item 
+void \hyperlink{main_8h_aac88c75e65aa0dee60e4332dbcc16120}{Print\+Block\+Tree} ()
+\item 
+bool \hyperlink{main_8h_a196f9318f02448b85b28d612698934fd}{Process\+Messages} (\hyperlink{class_c_node}{C\+Node} $\ast$pfrom)
+\item 
+bool \hyperlink{main_8h_a711a5bdb30c9c9bbdc83011b1cbbe2f3}{Send\+Messages} (\hyperlink{class_c_node}{C\+Node} $\ast$pto, bool f\+Send\+Trickle)
+\item 
+void \hyperlink{main_8h_a0189c34248cd89bbbe20d4d6045bd7c9}{Thread\+Import} (std\+::vector$<$ boost\+::filesystem\+::path $>$ v\+Import\+Files)
+\item 
+bool \hyperlink{main_8h_a20a76dbc6ac5b8a6e0aaef85522b1069}{Check\+Proof\+Of\+Work} (\hyperlink{classuint256}{uint256} \hyperlink{cache_8cc_a11ecb029164e055f28f4123ce3748862}{hash}, unsigned int n\+Bits)
+\item 
+unsigned int \hyperlink{main_8h_a868a58404bd61b6a82901f428d152bae}{Get\+Next\+Target\+Required} (const \hyperlink{class_c_block_index}{C\+Block\+Index} $\ast$pindex\+Last, bool f\+Proof\+Of\+Stake)
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{main_8h_a54eeb686375f66683fb139de496c088d}{Get\+Proof\+Of\+Work\+Reward} (\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} n\+Fees)
+\item 
+bool \hyperlink{main_8h_a22e712bbf635a69ba8dd7ae004d2697b}{Is\+Confirmed\+In\+N\+Prev\+Blocks} (const \hyperlink{class_c_tx_index}{C\+Tx\+Index} \&txindex, const \hyperlink{class_c_block_index}{C\+Block\+Index} $\ast$pindex\+From, int n\+Max\+Depth, int \&n\+Actual\+Depth)
+\item 
+std\+::string \hyperlink{main_8h_a30cf1d6270f9040fc151d03b98027ab5}{Get\+Warnings} (std\+::string str\+For)
+\item 
+bool \hyperlink{main_8h_a7d2a4633e4e0e8e4cb9c881d45a496b5}{Get\+Transaction} (const \hyperlink{classuint256}{uint256} \&\hyperlink{cache_8cc_a11ecb029164e055f28f4123ce3748862}{hash}, \hyperlink{class_c_transaction}{C\+Transaction} \&tx, \hyperlink{classuint256}{uint256} \&hash\+Block)
+\begin{DoxyCompactList}\small\item\em Return transaction in tx, and if it was found inside a block, its hash is placed in hash\+Block. \end{DoxyCompactList}\item 
+\hyperlink{classuint256}{uint256} \hyperlink{main_8h_abdef12ddcc1e6b127c59fab552a9b81b}{Wanted\+By\+Orphan} (const \hyperlink{struct_c_orphan_block}{C\+Orphan\+Block} $\ast$pblock\+Orphan)
+\item 
+const \hyperlink{class_c_block_index}{C\+Block\+Index} $\ast$ \hyperlink{main_8h_a67a2382a391340c12c45961f3b8c66e8}{Get\+Last\+Block\+Index} (const \hyperlink{class_c_block_index}{C\+Block\+Index} $\ast$pindex, bool f\+Proof\+Of\+Stake)
+\item 
+void \hyperlink{main_8h_a31faece5ef0e403969b3d3debd79b352}{Thread\+Stake\+Miner} (\hyperlink{class_c_wallet}{C\+Wallet} $\ast$pwallet)
+\item 
+bool \hyperlink{main_8h_a8189e51a581977f4de34ed4e0159bf63}{Accept\+To\+Memory\+Pool} (\hyperlink{class_c_tx_mem_pool}{C\+Tx\+Mem\+Pool} \&pool, \hyperlink{class_c_validation_state}{C\+Validation\+State} \&\hyperlink{version__set_8cc_a6aad002d0db5e5e85dc31927a5a6f503}{state}, \hyperlink{class_c_transaction}{C\+Transaction} \&tx, bool f\+Limit\+Free, bool $\ast$pf\+Missing\+Inputs, bool ignore\+Fees=false)
+\begin{DoxyCompactList}\small\item\em (try to) add transaction to memory pool \end{DoxyCompactList}\item 
+bool \hyperlink{main_8h_a4d2373d0ce79227c95358116aae667f3}{Acceptable\+Inputs} (\hyperlink{class_c_tx_mem_pool}{C\+Tx\+Mem\+Pool} \&pool, \hyperlink{class_c_validation_state}{C\+Validation\+State} \&\hyperlink{version__set_8cc_a6aad002d0db5e5e85dc31927a5a6f503}{state}, \hyperlink{class_c_transaction}{C\+Transaction} \&tx, bool f\+Limit\+Free, bool $\ast$pf\+Missing\+Inputs, bool f\+Reject\+Insane\+Fee=false, bool is\+S\+S\+T\+X=false)
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{main_8h_afe042769eafbfbf4e82dffe357798748}{Get\+Block\+Value} (int n\+Bits, int n\+Height, const \hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \&n\+Fees)
+\item 
+bool \hyperlink{main_8h_aca9eb09c80679cf7c85926f83c353075}{Find\+Transactions\+By\+Destination} (const \hyperlink{keystore_8h_a8f46ecba0ddeb036be6b58d6ed1909cd}{C\+Tx\+Destination} \&dest, std\+::vector$<$ \hyperlink{classuint256}{uint256} $>$ \&vtxhash)
+\item 
+int \hyperlink{main_8h_ae137d76bbcaf8d65fab905889b504e26}{Get\+Input\+Age} (\hyperlink{class_c_tx_in}{C\+Tx\+In} \&vin)
+\item 
+bool \hyperlink{main_8h_af573b79d097a9ffe6503869f838ccf42}{Abort\+Node} (const std\+::string \&msg, const std\+::string \&user\+Message=\char`\"{}\char`\"{})
+\begin{DoxyCompactList}\small\item\em Abort with a message. \end{DoxyCompactList}\item 
+void \hyperlink{main_8h_a4b04650c6aa3e5b02921ba992658d647}{Misbehaving} (\hyperlink{net_8h_a954d746a58632565552615fd0a4ee660}{Node\+Id} nodeid, int howmuch)
+\begin{DoxyCompactList}\small\item\em Increase a node\textquotesingle{}s misbehavior score. \end{DoxyCompactList}\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{main_8h_ab9c19a2d094fea9bd9f285f4b33961a4}{Get\+Stormnode\+Payment} (int n\+Height, \hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} block\+Value)
+\item 
+int \hyperlink{main_8h_a5c7b9ac7929375148311307df7e446d0}{Get\+Input\+Age\+I\+X} (\hyperlink{classuint256}{uint256} n\+T\+X\+Hash, \hyperlink{class_c_tx_in}{C\+Tx\+In} \&vin)
+\item 
+int \hyperlink{main_8h_afb9aef5806c13c7a81fda9854f852155}{Get\+I\+X\+Confirmations} (\hyperlink{classuint256}{uint256} n\+T\+X\+Hash)
+\item 
+bool \hyperlink{main_8h_af2b1f603b58c5364716253a0711f0e91}{Disconnect\+Blocks\+And\+Reprocess} (int blocks)
+\item 
+void \hyperlink{main_8h_a0d01c135cc5a05475e3dc3910c9888da}{Flush\+State\+To\+Disk} ()
+\item 
+boost\+::filesystem\+::path \hyperlink{main_8h_a2f26f074aac584c3398de1dcdac59de9}{Get\+Block\+Pos\+Filename} (const \hyperlink{struct_c_disk_block_pos}{C\+Disk\+Block\+Pos} \&pos, const char $\ast$prefix)
+\item 
+F\+I\+L\+E $\ast$ \hyperlink{main_8h_a4728972adc7d389a00a7f7333b74b71d}{Open\+Block\+File} (unsigned int n\+File, unsigned int n\+Block\+Pos, const char $\ast$psz\+Mode)
+\item 
+F\+I\+L\+E $\ast$ \hyperlink{main_8h_a531eb79ff695289ac9a4f8daf292273c}{Open\+Block\+File} (const \hyperlink{struct_c_disk_block_pos}{C\+Disk\+Block\+Pos} \&pos, bool f\+Read\+Only=false)
+\item 
+F\+I\+L\+E $\ast$ \hyperlink{main_8h_aadc60201fa05120c42011c2ca853ad15}{Open\+Disk\+File} (const \hyperlink{struct_c_disk_block_pos}{C\+Disk\+Block\+Pos} \&pos, const char $\ast$prefix, bool f\+Read\+Only=false)
+\item 
+F\+I\+L\+E $\ast$ \hyperlink{main_8h_a62302a7b63a33b410581fccd0152df1e}{Append\+Block\+File} (unsigned int \&n\+File\+Ret)
+\item 
+F\+I\+L\+E $\ast$ \hyperlink{main_8h_addac9f89d64c9e26d36d1481da35877e}{Open\+Undo\+File} (const \hyperlink{struct_c_disk_block_pos}{C\+Disk\+Block\+Pos} \&pos, bool f\+Read\+Only=false)
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{main_8h_a67d4c24facb2a0d89f92065581c486df}{Get\+Min\+Fee} (const \hyperlink{class_c_transaction}{C\+Transaction} \&tx, unsigned int n\+Bytes, bool f\+Allow\+Free, enum \hyperlink{main_8h_a8c24d39fc07a60d3c019618a73cc15a7}{Get\+Min\+Fee\+\_\+mode} mode)
+\item 
+bool \hyperlink{main_8h_a29901e539b487e09c90ff90c7560bd9d}{Are\+Inputs\+Standard} (const \hyperlink{class_c_transaction}{C\+Transaction} \&tx, const \hyperlink{main_8h_a05bae354566c88f7dca5ad13aaf8b30f}{Map\+Prev\+Tx} \&map\+Inputs)
+\item 
+unsigned int \hyperlink{main_8h_ad2eaf4f8542c12ea9ee1183609cc6d1a}{Get\+Legacy\+Sig\+Op\+Count} (const \hyperlink{class_c_transaction}{C\+Transaction} \&tx)
+\item 
+unsigned int \hyperlink{main_8h_acc0a05d60127f0cfcf778348670067e0}{Get\+P2\+S\+H\+Sig\+Op\+Count} (const \hyperlink{class_c_transaction}{C\+Transaction} \&tx, const \hyperlink{main_8h_a05bae354566c88f7dca5ad13aaf8b30f}{Map\+Prev\+Tx} \&map\+Inputs)
+\item 
+bool \hyperlink{main_8h_a74832d5d658916e73adb139fd60e2354}{Is\+Standard\+Tx} (const \hyperlink{class_c_transaction}{C\+Transaction} \&tx, std\+::string \&reason)
+\item 
+bool \hyperlink{main_8h_aa7ca31ac11bff224c6b0ac27fccce7b5}{Is\+Final\+Tx} (const \hyperlink{class_c_transaction}{C\+Transaction} \&tx, int n\+Block\+Height=0, \hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} n\+Block\+Time=0)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_script}{C\+Script} \hyperlink{main_8h_a5ed86cbbedb72d8fcec0524f2792ada8}{C\+O\+I\+N\+B\+A\+S\+E\+\_\+\+F\+L\+A\+G\+S}
+\item 
+\hyperlink{sync_8h_a37a4692b2d517f2843655ca11af7668a}{C\+Critical\+Section} \hyperlink{main_8h_a1ed8285f0fe3c6799c53265ce72552c8}{cs\+\_\+main}
+\item 
+\hyperlink{class_c_tx_mem_pool}{C\+Tx\+Mem\+Pool} \hyperlink{main_8h_abc71256f703e47c9254093e32ed2994c}{mempool}
+\item 
+std\+::map$<$ \hyperlink{classuint256}{uint256}, \hyperlink{class_c_block_index}{C\+Block\+Index} $\ast$ $>$ \hyperlink{main_8h_a9d5aa0c4581116d898ff51357a0df059}{map\+Block\+Index}
+\item 
+std\+::set$<$ std\+::pair$<$ \hyperlink{class_c_out_point}{C\+Out\+Point}, unsigned int $>$ $>$ \hyperlink{main_8h_a261df4d886c6149afe291ecfbed2ae89}{set\+Stake\+Seen}
+\item 
+\hyperlink{class_c_block_index}{C\+Block\+Index} $\ast$ \hyperlink{main_8h_a1e7c54b8b26730f52b5527163fc33d8f}{pindex\+Genesis\+Block}
+\item 
+int \hyperlink{main_8h_a6d3cd49df21f4264ed1489ea304dbcb8}{n\+Stake\+Min\+Confirmations}
+\item 
+unsigned int \hyperlink{main_8h_a621f4f63be83358641eb78f48d2f49c2}{n\+Stake\+Min\+Age}
+\item 
+unsigned int \hyperlink{main_8h_afdd10e8c0a44aad0b719c365fa3bb458}{n\+Node\+Lifespan}
+\item 
+int \hyperlink{main_8h_adfd36b02172030cdbf7ac69c2ccb7711}{n\+Coinbase\+Maturity}
+\item 
+int \hyperlink{main_8h_a843f1984796a7e44a9e23fccd6a8af34}{n\+Best\+Height}
+\item 
+\hyperlink{classuint256}{uint256} \hyperlink{main_8h_a63af124faf22e03fd629e8aa21c40eae}{n\+Best\+Chain\+Trust}
+\item 
+\hyperlink{classuint256}{uint256} \hyperlink{main_8h_a27c4c119ca2e7250221de8c17bee0999}{n\+Best\+Invalid\+Trust}
+\item 
+\hyperlink{classuint256}{uint256} \hyperlink{main_8h_ace9c3343567f488a96598abe61e1d309}{hash\+Best\+Chain}
+\item 
+\hyperlink{class_c_block_index}{C\+Block\+Index} $\ast$ \hyperlink{main_8h_a6454ad864029344132a0a0b59b1456ee}{pindex\+Best}
+\item 
+\hyperlink{stdint_8h_aaa5d1cd013383c889537491c3cfd9aad}{uint64\+\_\+t} \hyperlink{main_8h_a31f8b0d3c96670151ba997019820e0f4}{n\+Last\+Block\+Tx}
+\item 
+\hyperlink{stdint_8h_aaa5d1cd013383c889537491c3cfd9aad}{uint64\+\_\+t} \hyperlink{main_8h_af8945f7f19ea7e938baab1bd4c226c2f}{n\+Last\+Block\+Size}
+\item 
+\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} \hyperlink{main_8h_a544c4ab48afad09d2f474d0720570e94}{n\+Last\+Coin\+Stake\+Search\+Interval}
+\item 
+const std\+::string \hyperlink{main_8h_a2874c632b3b462164de12be5abcd9d43}{str\+Message\+Magic}
+\item 
+\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} \hyperlink{main_8h_ab319f7e88eb0d2d3b9f9f98bea0f9896}{n\+Time\+Best\+Received}
+\item 
+bool \hyperlink{main_8h_aaf87d0dd26c4a7c9bcc5bdd1127e8637}{f\+Importing}
+\item 
+bool \hyperlink{main_8h_a8e0eca589b2d4254a65f04c5d91888b2}{f\+Reindex}
+\item 
+std\+::map$<$ \hyperlink{classuint256}{uint256}, \hyperlink{struct_c_orphan_block}{C\+Orphan\+Block} $\ast$ $>$ \hyperlink{main_8h_a724dfa85b047474da511687460625e48}{map\+Orphan\+Blocks}
+\item 
+bool \hyperlink{main_8h_a6b569217f0bbb0a69a42c8769df06a06}{f\+Tx\+Index}
+\item 
+unsigned int \hyperlink{main_8h_a08b980f03b2fb15445e0ddc8bb4b3d73}{n\+Coin\+Cache\+Size}
+\item 
+bool \hyperlink{main_8h_ad316d89326f17948a58ad3cdf23850a5}{f\+Use\+Fast\+Index}
+\item 
+unsigned int \hyperlink{main_8h_a3e3a4daba510b75f09387695c6c8a11f}{n\+Derivation\+Method\+Index}
+\item 
+bool \hyperlink{main_8h_ad32c5d94e1b12cb49fc73deca3f3068f}{f\+Minimize\+Coin\+Age}
+\item 
+bool \hyperlink{main_8h_ae3377c351f05649e07963776ba3a0499}{f\+Large\+Work\+Fork\+Found}
+\item 
+bool \hyperlink{main_8h_aa8ed8d08421c7cdfb3acb22e585468fd}{f\+Large\+Work\+Invalid\+Chain\+Found}
+\item 
+std\+::map$<$ \hyperlink{classuint256}{uint256}, \hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} $>$ \hyperlink{main_8h_a8373143ee9b34c558cad14139d331ecc}{map\+Rejected\+Blocks}
+\item 
+\hyperlink{class_c_fee_rate}{C\+Fee\+Rate} \hyperlink{main_8h_a5925a10baeee7d4bdce1982bdcbd3bd0}{min\+Relay\+Tx\+Fee}
+\item 
+\hyperlink{class_c_coins_view_cache}{C\+Coins\+View\+Cache} $\ast$ \hyperlink{main_8h_a1821834b8f7837b469f7f91a14c20042}{pcoins\+Tip}
+\begin{DoxyCompactList}\small\item\em Global variable that points to the active \hyperlink{class_c_coins_view}{C\+Coins\+View} (protected by cs\+\_\+main) \end{DoxyCompactList}\item 
+\hyperlink{class_c_block_tree_d_b}{C\+Block\+Tree\+D\+B} $\ast$ \hyperlink{main_8h_a0023503503c358eda0c97a576ef53fde}{pblocktree}
+\begin{DoxyCompactList}\small\item\em Global variable that points to the active block tree (protected by cs\+\_\+main) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{main_8h_a177351119104ee119066e4838c679f35}{}\index{main.\+h@{main.\+h}!Block\+Map@{Block\+Map}}
+\index{Block\+Map@{Block\+Map}!main.\+h@{main.\+h}}
+\subsubsection[{Block\+Map}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\+::map$<${\bf uint256}, {\bf C\+Block\+Index}$\ast$, {\bf Block\+Hasher}$>$ {\bf Block\+Map}}\label{main_8h_a177351119104ee119066e4838c679f35}
+
+
+Definition at line 76 of file main.\+h.
+
+\hypertarget{main_8h_a05bae354566c88f7dca5ad13aaf8b30f}{}\index{main.\+h@{main.\+h}!Map\+Prev\+Tx@{Map\+Prev\+Tx}}
+\index{Map\+Prev\+Tx@{Map\+Prev\+Tx}!main.\+h@{main.\+h}}
+\subsubsection[{Map\+Prev\+Tx}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\+::map$<${\bf uint256}, std\+::pair$<${\bf C\+Tx\+Index}, {\bf C\+Transaction}$>$ $>$ {\bf Map\+Prev\+Tx}}\label{main_8h_a05bae354566c88f7dca5ad13aaf8b30f}
+
+
+Definition at line 283 of file main.\+h.
+
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{main_8h_a8c24d39fc07a60d3c019618a73cc15a7}{}\index{main.\+h@{main.\+h}!Get\+Min\+Fee\+\_\+mode@{Get\+Min\+Fee\+\_\+mode}}
+\index{Get\+Min\+Fee\+\_\+mode@{Get\+Min\+Fee\+\_\+mode}!main.\+h@{main.\+h}}
+\subsubsection[{Get\+Min\+Fee\+\_\+mode}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Get\+Min\+Fee\+\_\+mode}}\label{main_8h_a8c24d39fc07a60d3c019618a73cc15a7}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{G\+M\+F\+\_\+\+B\+L\+O\+C\+K@{G\+M\+F\+\_\+\+B\+L\+O\+C\+K}!main.\+h@{main.\+h}}\index{main.\+h@{main.\+h}!G\+M\+F\+\_\+\+B\+L\+O\+C\+K@{G\+M\+F\+\_\+\+B\+L\+O\+C\+K}}\item[{\em 
+\hypertarget{main_8h_a8c24d39fc07a60d3c019618a73cc15a7a5a34bbfddb9219ca72f89780fcaafb3d}{}G\+M\+F\+\_\+\+B\+L\+O\+C\+K\label{main_8h_a8c24d39fc07a60d3c019618a73cc15a7a5a34bbfddb9219ca72f89780fcaafb3d}
+}]\index{G\+M\+F\+\_\+\+R\+E\+L\+A\+Y@{G\+M\+F\+\_\+\+R\+E\+L\+A\+Y}!main.\+h@{main.\+h}}\index{main.\+h@{main.\+h}!G\+M\+F\+\_\+\+R\+E\+L\+A\+Y@{G\+M\+F\+\_\+\+R\+E\+L\+A\+Y}}\item[{\em 
+\hypertarget{main_8h_a8c24d39fc07a60d3c019618a73cc15a7a79d7494c7b44dac59ff3143ac440e2f5}{}G\+M\+F\+\_\+\+R\+E\+L\+A\+Y\label{main_8h_a8c24d39fc07a60d3c019618a73cc15a7a79d7494c7b44dac59ff3143ac440e2f5}
+}]\index{G\+M\+F\+\_\+\+S\+E\+N\+D@{G\+M\+F\+\_\+\+S\+E\+N\+D}!main.\+h@{main.\+h}}\index{main.\+h@{main.\+h}!G\+M\+F\+\_\+\+S\+E\+N\+D@{G\+M\+F\+\_\+\+S\+E\+N\+D}}\item[{\em 
+\hypertarget{main_8h_a8c24d39fc07a60d3c019618a73cc15a7a146093898dd622fd76ca7ded2b6933ef}{}G\+M\+F\+\_\+\+S\+E\+N\+D\label{main_8h_a8c24d39fc07a60d3c019618a73cc15a7a146093898dd622fd76ca7ded2b6933ef}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 276 of file main.\+h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{main_8h_af573b79d097a9ffe6503869f838ccf42}{}\index{main.\+h@{main.\+h}!Abort\+Node@{Abort\+Node}}
+\index{Abort\+Node@{Abort\+Node}!main.\+h@{main.\+h}}
+\subsubsection[{Abort\+Node}]{\setlength{\rightskip}{0pt plus 5cm}bool Abort\+Node (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{msg, }
+\item[{const std\+::string \&}]{user\+Message = {\ttfamily \char`\"{}\char`\"{}}}
+\end{DoxyParamCaption}
+)}\label{main_8h_af573b79d097a9ffe6503869f838ccf42}
+
+
+Abort with a message. 
+
+
+
+Definition at line 478 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+\hypertarget{main_8h_a4d2373d0ce79227c95358116aae667f3}{}\index{main.\+h@{main.\+h}!Acceptable\+Inputs@{Acceptable\+Inputs}}
+\index{Acceptable\+Inputs@{Acceptable\+Inputs}!main.\+h@{main.\+h}}
+\subsubsection[{Acceptable\+Inputs}]{\setlength{\rightskip}{0pt plus 5cm}bool Acceptable\+Inputs (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Tx\+Mem\+Pool} \&}]{pool, }
+\item[{{\bf C\+Validation\+State} \&}]{state, }
+\item[{{\bf C\+Transaction} \&}]{tx, }
+\item[{bool}]{f\+Limit\+Free, }
+\item[{bool $\ast$}]{pf\+Missing\+Inputs, }
+\item[{bool}]{f\+Reject\+Insane\+Fee = {\ttfamily false}, }
+\item[{bool}]{is\+S\+S\+T\+X = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{main_8h_a4d2373d0ce79227c95358116aae667f3}
+
+
+Definition at line 1230 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 4
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 5
+
+
+\hypertarget{main_8h_a8189e51a581977f4de34ed4e0159bf63}{}\index{main.\+h@{main.\+h}!Accept\+To\+Memory\+Pool@{Accept\+To\+Memory\+Pool}}
+\index{Accept\+To\+Memory\+Pool@{Accept\+To\+Memory\+Pool}!main.\+h@{main.\+h}}
+\subsubsection[{Accept\+To\+Memory\+Pool}]{\setlength{\rightskip}{0pt plus 5cm}bool Accept\+To\+Memory\+Pool (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Tx\+Mem\+Pool} \&}]{pool, }
+\item[{{\bf C\+Validation\+State} \&}]{state, }
+\item[{{\bf C\+Transaction} \&}]{tx, }
+\item[{bool}]{f\+Limit\+Free, }
+\item[{bool $\ast$}]{pf\+Missing\+Inputs, }
+\item[{bool}]{ignore\+Fees = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{main_8h_a8189e51a581977f4de34ed4e0159bf63}
+
+
+(try to) add transaction to memory pool 
+
+
+
+Definition at line 865 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 6
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 7
+
+
+\hypertarget{main_8h_a62302a7b63a33b410581fccd0152df1e}{}\index{main.\+h@{main.\+h}!Append\+Block\+File@{Append\+Block\+File}}
+\index{Append\+Block\+File@{Append\+Block\+File}!main.\+h@{main.\+h}}
+\subsubsection[{Append\+Block\+File}]{\setlength{\rightskip}{0pt plus 5cm}F\+I\+L\+E$\ast$ Append\+Block\+File (
+\begin{DoxyParamCaption}
+\item[{unsigned int \&}]{n\+File\+Ret}
+\end{DoxyParamCaption}
+)}\label{main_8h_a62302a7b63a33b410581fccd0152df1e}
+
+
+Definition at line 639 of file chain.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 8
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 9
+
+
+\hypertarget{main_8h_a29901e539b487e09c90ff90c7560bd9d}{}\index{main.\+h@{main.\+h}!Are\+Inputs\+Standard@{Are\+Inputs\+Standard}}
+\index{Are\+Inputs\+Standard@{Are\+Inputs\+Standard}!main.\+h@{main.\+h}}
+\subsubsection[{Are\+Inputs\+Standard}]{\setlength{\rightskip}{0pt plus 5cm}bool Are\+Inputs\+Standard (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Transaction} \&}]{tx, }
+\item[{const {\bf Map\+Prev\+Tx} \&}]{map\+Inputs}
+\end{DoxyParamCaption}
+)}\label{main_8h_a29901e539b487e09c90ff90c7560bd9d}
+Check for standard transaction types 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em map\+Inputs} & Map of previous transactions that have outputs we\textquotesingle{}re spending \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if all inputs (script\+Sigs) use only standard transaction forms 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+C\+Transaction\+::\+Fetch\+Inputs 
+\end{DoxySeeAlso}
+
+
+Definition at line 692 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 10
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 11
+
+
+\hypertarget{main_8h_a6df609da0bad1550cbb2cdc781ad2904}{}\index{main.\+h@{main.\+h}!Check\+Disk\+Space@{Check\+Disk\+Space}}
+\index{Check\+Disk\+Space@{Check\+Disk\+Space}!main.\+h@{main.\+h}}
+\subsubsection[{Check\+Disk\+Space}]{\setlength{\rightskip}{0pt plus 5cm}bool Check\+Disk\+Space (
+\begin{DoxyParamCaption}
+\item[{{\bf uint64\+\_\+t}}]{n\+Additional\+Bytes = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{main_8h_a6df609da0bad1550cbb2cdc781ad2904}
+
+
+Definition at line 2024 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 12
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 13
+
+
+\hypertarget{main_8h_a20a76dbc6ac5b8a6e0aaef85522b1069}{}\index{main.\+h@{main.\+h}!Check\+Proof\+Of\+Work@{Check\+Proof\+Of\+Work}}
+\index{Check\+Proof\+Of\+Work@{Check\+Proof\+Of\+Work}!main.\+h@{main.\+h}}
+\subsubsection[{Check\+Proof\+Of\+Work}]{\setlength{\rightskip}{0pt plus 5cm}bool Check\+Proof\+Of\+Work (
+\begin{DoxyParamCaption}
+\item[{{\bf uint256}}]{hash, }
+\item[{unsigned int}]{n\+Bits}
+\end{DoxyParamCaption}
+)}\label{main_8h_a20a76dbc6ac5b8a6e0aaef85522b1069}
+
+
+Definition at line 57 of file block.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 14
+
+
+\hypertarget{main_8h_af2b1f603b58c5364716253a0711f0e91}{}\index{main.\+h@{main.\+h}!Disconnect\+Blocks\+And\+Reprocess@{Disconnect\+Blocks\+And\+Reprocess}}
+\index{Disconnect\+Blocks\+And\+Reprocess@{Disconnect\+Blocks\+And\+Reprocess}!main.\+h@{main.\+h}}
+\subsubsection[{Disconnect\+Blocks\+And\+Reprocess}]{\setlength{\rightskip}{0pt plus 5cm}bool Disconnect\+Blocks\+And\+Reprocess (
+\begin{DoxyParamCaption}
+\item[{int}]{blocks}
+\end{DoxyParamCaption}
+)}\label{main_8h_af2b1f603b58c5364716253a0711f0e91}
+
+
+Definition at line 1779 of file main.\+cpp.
+
+\hypertarget{main_8h_aca9eb09c80679cf7c85926f83c353075}{}\index{main.\+h@{main.\+h}!Find\+Transactions\+By\+Destination@{Find\+Transactions\+By\+Destination}}
+\index{Find\+Transactions\+By\+Destination@{Find\+Transactions\+By\+Destination}!main.\+h@{main.\+h}}
+\subsubsection[{Find\+Transactions\+By\+Destination}]{\setlength{\rightskip}{0pt plus 5cm}bool Find\+Transactions\+By\+Destination (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Tx\+Destination} \&}]{dest, }
+\item[{std\+::vector$<$ {\bf uint256} $>$ \&}]{vtxhash}
+\end{DoxyParamCaption}
+)}\label{main_8h_aca9eb09c80679cf7c85926f83c353075}
+
+
+Definition at line 1792 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 15
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 16
+
+
+\hypertarget{main_8h_a0d01c135cc5a05475e3dc3910c9888da}{}\index{main.\+h@{main.\+h}!Flush\+State\+To\+Disk@{Flush\+State\+To\+Disk}}
+\index{Flush\+State\+To\+Disk@{Flush\+State\+To\+Disk}!main.\+h@{main.\+h}}
+\subsubsection[{Flush\+State\+To\+Disk}]{\setlength{\rightskip}{0pt plus 5cm}void Flush\+State\+To\+Disk (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{main_8h_a0d01c135cc5a05475e3dc3910c9888da}
+
+
+Definition at line 4120 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 17
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 18
+
+
+\hypertarget{main_8h_a2f26f074aac584c3398de1dcdac59de9}{}\index{main.\+h@{main.\+h}!Get\+Block\+Pos\+Filename@{Get\+Block\+Pos\+Filename}}
+\index{Get\+Block\+Pos\+Filename@{Get\+Block\+Pos\+Filename}!main.\+h@{main.\+h}}
+\subsubsection[{Get\+Block\+Pos\+Filename}]{\setlength{\rightskip}{0pt plus 5cm}boost\+::filesystem\+::path Get\+Block\+Pos\+Filename (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Disk\+Block\+Pos} \&}]{pos, }
+\item[{const char $\ast$}]{prefix}
+\end{DoxyParamCaption}
+)}\label{main_8h_a2f26f074aac584c3398de1dcdac59de9}
+
+
+Definition at line 4008 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 19
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 20
+
+
+\hypertarget{main_8h_afe042769eafbfbf4e82dffe357798748}{}\index{main.\+h@{main.\+h}!Get\+Block\+Value@{Get\+Block\+Value}}
+\index{Get\+Block\+Value@{Get\+Block\+Value}!main.\+h@{main.\+h}}
+\subsubsection[{Get\+Block\+Value}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} Get\+Block\+Value (
+\begin{DoxyParamCaption}
+\item[{int}]{n\+Bits, }
+\item[{int}]{n\+Height, }
+\item[{const {\bf C\+Amount} \&}]{n\+Fees}
+\end{DoxyParamCaption}
+)}\label{main_8h_afe042769eafbfbf4e82dffe357798748}
+
+
+Definition at line 1725 of file main.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 21
+
+
+\hypertarget{main_8h_ae137d76bbcaf8d65fab905889b504e26}{}\index{main.\+h@{main.\+h}!Get\+Input\+Age@{Get\+Input\+Age}}
+\index{Get\+Input\+Age@{Get\+Input\+Age}!main.\+h@{main.\+h}}
+\subsubsection[{Get\+Input\+Age}]{\setlength{\rightskip}{0pt plus 5cm}int Get\+Input\+Age (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Tx\+In} \&}]{vin}
+\end{DoxyParamCaption}
+)}\label{main_8h_ae137d76bbcaf8d65fab905889b504e26}
+
+
+Definition at line 1487 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 22
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 23
+
+
+\hypertarget{main_8h_a5c7b9ac7929375148311307df7e446d0}{}\index{main.\+h@{main.\+h}!Get\+Input\+Age\+I\+X@{Get\+Input\+Age\+I\+X}}
+\index{Get\+Input\+Age\+I\+X@{Get\+Input\+Age\+I\+X}!main.\+h@{main.\+h}}
+\subsubsection[{Get\+Input\+Age\+I\+X}]{\setlength{\rightskip}{0pt plus 5cm}int Get\+Input\+Age\+I\+X (
+\begin{DoxyParamCaption}
+\item[{{\bf uint256}}]{n\+T\+X\+Hash, }
+\item[{{\bf C\+Tx\+In} \&}]{vin}
+\end{DoxyParamCaption}
+)}\label{main_8h_a5c7b9ac7929375148311307df7e446d0}
+
+
+Definition at line 1506 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 24
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 25
+
+
+\hypertarget{main_8h_afb9aef5806c13c7a81fda9854f852155}{}\index{main.\+h@{main.\+h}!Get\+I\+X\+Confirmations@{Get\+I\+X\+Confirmations}}
+\index{Get\+I\+X\+Confirmations@{Get\+I\+X\+Confirmations}!main.\+h@{main.\+h}}
+\subsubsection[{Get\+I\+X\+Confirmations}]{\setlength{\rightskip}{0pt plus 5cm}int Get\+I\+X\+Confirmations (
+\begin{DoxyParamCaption}
+\item[{{\bf uint256}}]{n\+T\+X\+Hash}
+\end{DoxyParamCaption}
+)}\label{main_8h_afb9aef5806c13c7a81fda9854f852155}
+
+
+Definition at line 1525 of file main.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 26
+
+
+\hypertarget{main_8h_a67a2382a391340c12c45961f3b8c66e8}{}\index{main.\+h@{main.\+h}!Get\+Last\+Block\+Index@{Get\+Last\+Block\+Index}}
+\index{Get\+Last\+Block\+Index@{Get\+Last\+Block\+Index}!main.\+h@{main.\+h}}
+\subsubsection[{Get\+Last\+Block\+Index}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf C\+Block\+Index}$\ast$ Get\+Last\+Block\+Index (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Block\+Index} $\ast$}]{pindex, }
+\item[{bool}]{f\+Proof\+Of\+Stake}
+\end{DoxyParamCaption}
+)}\label{main_8h_a67a2382a391340c12c45961f3b8c66e8}
+
+
+Definition at line 1678 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 27
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 28
+
+
+\hypertarget{main_8h_ad2eaf4f8542c12ea9ee1183609cc6d1a}{}\index{main.\+h@{main.\+h}!Get\+Legacy\+Sig\+Op\+Count@{Get\+Legacy\+Sig\+Op\+Count}}
+\index{Get\+Legacy\+Sig\+Op\+Count@{Get\+Legacy\+Sig\+Op\+Count}!main.\+h@{main.\+h}}
+\subsubsection[{Get\+Legacy\+Sig\+Op\+Count}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Get\+Legacy\+Sig\+Op\+Count (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Transaction} \&}]{tx}
+\end{DoxyParamCaption}
+)}\label{main_8h_ad2eaf4f8542c12ea9ee1183609cc6d1a}
+Count E\+C\+D\+S\+A signature operations the old-\/fashioned (pre-\/0.\+6) way \begin{DoxyReturn}{Returns}
+number of sigops this transaction\textquotesingle{}s outputs will produce when spent 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+C\+Transaction\+::\+Fetch\+Inputs 
+\end{DoxySeeAlso}
+
+
+Definition at line 756 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 29
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 30
+
+
+\hypertarget{main_8h_a67d4c24facb2a0d89f92065581c486df}{}\index{main.\+h@{main.\+h}!Get\+Min\+Fee@{Get\+Min\+Fee}}
+\index{Get\+Min\+Fee@{Get\+Min\+Fee}!main.\+h@{main.\+h}}
+\subsubsection[{Get\+Min\+Fee}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} Get\+Min\+Fee (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Transaction} \&}]{tx, }
+\item[{unsigned int}]{n\+Bytes, }
+\item[{bool}]{f\+Allow\+Free, }
+\item[{enum {\bf Get\+Min\+Fee\+\_\+mode}}]{mode}
+\end{DoxyParamCaption}
+)}\label{main_8h_a67d4c24facb2a0d89f92065581c486df}
+
+
+Definition at line 831 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 31
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 32
+
+
+\hypertarget{main_8h_a868a58404bd61b6a82901f428d152bae}{}\index{main.\+h@{main.\+h}!Get\+Next\+Target\+Required@{Get\+Next\+Target\+Required}}
+\index{Get\+Next\+Target\+Required@{Get\+Next\+Target\+Required}!main.\+h@{main.\+h}}
+\subsubsection[{Get\+Next\+Target\+Required}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Get\+Next\+Target\+Required (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Block\+Index} $\ast$}]{pindex\+Last, }
+\item[{bool}]{f\+Proof\+Of\+Stake}
+\end{DoxyParamCaption}
+)}\label{main_8h_a868a58404bd61b6a82901f428d152bae}
+
+
+Definition at line 1685 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 33
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 34
+
+
+\hypertarget{main_8h_af0793c7c14e94d2d642f4ac89067a429}{}\index{main.\+h@{main.\+h}!Get\+Node\+State\+Stats@{Get\+Node\+State\+Stats}}
+\index{Get\+Node\+State\+Stats@{Get\+Node\+State\+Stats}!main.\+h@{main.\+h}}
+\subsubsection[{Get\+Node\+State\+Stats}]{\setlength{\rightskip}{0pt plus 5cm}bool Get\+Node\+State\+Stats (
+\begin{DoxyParamCaption}
+\item[{{\bf Node\+Id}}]{nodeid, }
+\item[{{\bf C\+Node\+State\+Stats} \&}]{stats}
+\end{DoxyParamCaption}
+)}\label{main_8h_af0793c7c14e94d2d642f4ac89067a429}
+Get statistics from node state 
+
+Definition at line 445 of file main.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 35
+
+
+\hypertarget{main_8h_acc0a05d60127f0cfcf778348670067e0}{}\index{main.\+h@{main.\+h}!Get\+P2\+S\+H\+Sig\+Op\+Count@{Get\+P2\+S\+H\+Sig\+Op\+Count}}
+\index{Get\+P2\+S\+H\+Sig\+Op\+Count@{Get\+P2\+S\+H\+Sig\+Op\+Count}!main.\+h@{main.\+h}}
+\subsubsection[{Get\+P2\+S\+H\+Sig\+Op\+Count}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Get\+P2\+S\+H\+Sig\+Op\+Count (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Transaction} \&}]{tx, }
+\item[{const {\bf Map\+Prev\+Tx} \&}]{map\+Inputs}
+\end{DoxyParamCaption}
+)}\label{main_8h_acc0a05d60127f0cfcf778348670067e0}
+Count E\+C\+D\+S\+A signature operations in pay-\/to-\/script-\/hash inputs.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em map\+Inputs} & Map of previous transactions that have outputs we\textquotesingle{}re spending \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+maximum number of sigops required to validate this transaction\textquotesingle{}s inputs 
+\end{DoxyReturn}
+\begin{DoxySeeAlso}{See also}
+C\+Transaction\+::\+Fetch\+Inputs 
+\end{DoxySeeAlso}
+
+
+Definition at line 770 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 36
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 37
+
+
+\hypertarget{main_8h_a54eeb686375f66683fb139de496c088d}{}\index{main.\+h@{main.\+h}!Get\+Proof\+Of\+Work\+Reward@{Get\+Proof\+Of\+Work\+Reward}}
+\index{Get\+Proof\+Of\+Work\+Reward@{Get\+Proof\+Of\+Work\+Reward}!main.\+h@{main.\+h}}
+\subsubsection[{Get\+Proof\+Of\+Work\+Reward}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} Get\+Proof\+Of\+Work\+Reward (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Amount}}]{n\+Fees}
+\end{DoxyParamCaption}
+)}\label{main_8h_a54eeb686375f66683fb139de496c088d}
+
+
+Definition at line 1662 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 38
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 39
+
+
+\hypertarget{main_8h_ab9c19a2d094fea9bd9f285f4b33961a4}{}\index{main.\+h@{main.\+h}!Get\+Stormnode\+Payment@{Get\+Stormnode\+Payment}}
+\index{Get\+Stormnode\+Payment@{Get\+Stormnode\+Payment}!main.\+h@{main.\+h}}
+\subsubsection[{Get\+Stormnode\+Payment}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} Get\+Stormnode\+Payment (
+\begin{DoxyParamCaption}
+\item[{int}]{n\+Height, }
+\item[{{\bf C\+Amount}}]{block\+Value}
+\end{DoxyParamCaption}
+)}\label{main_8h_ab9c19a2d094fea9bd9f285f4b33961a4}
+
+
+Definition at line 1733 of file main.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 40
+
+
+\hypertarget{main_8h_a7d2a4633e4e0e8e4cb9c881d45a496b5}{}\index{main.\+h@{main.\+h}!Get\+Transaction@{Get\+Transaction}}
+\index{Get\+Transaction@{Get\+Transaction}!main.\+h@{main.\+h}}
+\subsubsection[{Get\+Transaction}]{\setlength{\rightskip}{0pt plus 5cm}bool Get\+Transaction (
+\begin{DoxyParamCaption}
+\item[{const {\bf uint256} \&}]{hash, }
+\item[{{\bf C\+Transaction} \&}]{tx, }
+\item[{{\bf uint256} \&}]{hash\+Block}
+\end{DoxyParamCaption}
+)}\label{main_8h_a7d2a4633e4e0e8e4cb9c881d45a496b5}
+
+
+Return transaction in tx, and if it was found inside a block, its hash is placed in hash\+Block. 
+
+
+
+Definition at line 1557 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 41
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 42
+
+
+\hypertarget{main_8h_a30cf1d6270f9040fc151d03b98027ab5}{}\index{main.\+h@{main.\+h}!Get\+Warnings@{Get\+Warnings}}
+\index{Get\+Warnings@{Get\+Warnings}!main.\+h@{main.\+h}}
+\subsubsection[{Get\+Warnings}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Get\+Warnings (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{str\+For}
+\end{DoxyParamCaption}
+)}\label{main_8h_a30cf1d6270f9040fc151d03b98027ab5}
+\hypertarget{main_8h_a92e5e1fcbd56cc44c27d39b64da8a79a}{}\index{main.\+h@{main.\+h}!Init\+Block\+Index@{Init\+Block\+Index}}
+\index{Init\+Block\+Index@{Init\+Block\+Index}!main.\+h@{main.\+h}}
+\subsubsection[{Init\+Block\+Index}]{\setlength{\rightskip}{0pt plus 5cm}bool Init\+Block\+Index (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{main_8h_a92e5e1fcbd56cc44c27d39b64da8a79a}
+
+
+Initialize a new block tree database + block data on disk. 
+
+
+
+Definition at line 2106 of file main.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 43
+
+
+\hypertarget{main_8h_a22e712bbf635a69ba8dd7ae004d2697b}{}\index{main.\+h@{main.\+h}!Is\+Confirmed\+In\+N\+Prev\+Blocks@{Is\+Confirmed\+In\+N\+Prev\+Blocks}}
+\index{Is\+Confirmed\+In\+N\+Prev\+Blocks@{Is\+Confirmed\+In\+N\+Prev\+Blocks}!main.\+h@{main.\+h}}
+\subsubsection[{Is\+Confirmed\+In\+N\+Prev\+Blocks}]{\setlength{\rightskip}{0pt plus 5cm}bool Is\+Confirmed\+In\+N\+Prev\+Blocks (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Tx\+Index} \&}]{txindex, }
+\item[{const {\bf C\+Block\+Index} $\ast$}]{pindex\+From, }
+\item[{int}]{n\+Max\+Depth, }
+\item[{int \&}]{n\+Actual\+Depth}
+\end{DoxyParamCaption}
+)}\label{main_8h_a22e712bbf635a69ba8dd7ae004d2697b}
+
+
+Definition at line 1766 of file main.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 44
+
+
+\hypertarget{main_8h_aa7ca31ac11bff224c6b0ac27fccce7b5}{}\index{main.\+h@{main.\+h}!Is\+Final\+Tx@{Is\+Final\+Tx}}
+\index{Is\+Final\+Tx@{Is\+Final\+Tx}!main.\+h@{main.\+h}}
+\subsubsection[{Is\+Final\+Tx}]{\setlength{\rightskip}{0pt plus 5cm}bool Is\+Final\+Tx (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Transaction} \&}]{tx, }
+\item[{int}]{n\+Block\+Height = {\ttfamily 0}, }
+\item[{{\bf int64\+\_\+t}}]{n\+Block\+Time = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{main_8h_aa7ca31ac11bff224c6b0ac27fccce7b5}
+
+
+Definition at line 665 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 45
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 46
+
+
+\hypertarget{main_8h_a74832d5d658916e73adb139fd60e2354}{}\index{main.\+h@{main.\+h}!Is\+Standard\+Tx@{Is\+Standard\+Tx}}
+\index{Is\+Standard\+Tx@{Is\+Standard\+Tx}!main.\+h@{main.\+h}}
+\subsubsection[{Is\+Standard\+Tx}]{\setlength{\rightskip}{0pt plus 5cm}bool Is\+Standard\+Tx (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Transaction} \&}]{tx, }
+\item[{std\+::string \&}]{reason}
+\end{DoxyParamCaption}
+)}\label{main_8h_a74832d5d658916e73adb139fd60e2354}
+Check for standard transaction types \begin{DoxyReturn}{Returns}
+True if all outputs (script\+Pub\+Keys) use only standard transaction forms 
+\end{DoxyReturn}
+\hypertarget{main_8h_a367f303d34b8a5501ac4d77bebab578c}{}\index{main.\+h@{main.\+h}!Load\+Block\+Index@{Load\+Block\+Index}}
+\index{Load\+Block\+Index@{Load\+Block\+Index}!main.\+h@{main.\+h}}
+\subsubsection[{Load\+Block\+Index}]{\setlength{\rightskip}{0pt plus 5cm}bool Load\+Block\+Index (
+\begin{DoxyParamCaption}
+\item[{bool}]{f\+Allow\+New = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{main_8h_a367f303d34b8a5501ac4d77bebab578c}
+
+
+Load the block tree and coins database from disk $\ast$/. 
+
+
+
+Definition at line 2068 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 47
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 48
+
+
+\hypertarget{main_8h_a4b04650c6aa3e5b02921ba992658d647}{}\index{main.\+h@{main.\+h}!Misbehaving@{Misbehaving}}
+\index{Misbehaving@{Misbehaving}!main.\+h@{main.\+h}}
+\subsubsection[{Misbehaving}]{\setlength{\rightskip}{0pt plus 5cm}void Misbehaving (
+\begin{DoxyParamCaption}
+\item[{{\bf Node\+Id}}]{nodeid, }
+\item[{int}]{howmuch}
+\end{DoxyParamCaption}
+)}\label{main_8h_a4b04650c6aa3e5b02921ba992658d647}
+
+
+Increase a node\textquotesingle{}s misbehavior score. 
+
+
+
+Definition at line 1741 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 49
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 50
+
+
+\hypertarget{main_8h_a4728972adc7d389a00a7f7333b74b71d}{}\index{main.\+h@{main.\+h}!Open\+Block\+File@{Open\+Block\+File}}
+\index{Open\+Block\+File@{Open\+Block\+File}!main.\+h@{main.\+h}}
+\subsubsection[{Open\+Block\+File}]{\setlength{\rightskip}{0pt plus 5cm}F\+I\+L\+E$\ast$ Open\+Block\+File (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{n\+File, }
+\item[{unsigned int}]{n\+Block\+Pos, }
+\item[{const char $\ast$}]{psz\+Mode}
+\end{DoxyParamCaption}
+)}\label{main_8h_a4728972adc7d389a00a7f7333b74b71d}
+
+
+Definition at line 4036 of file main.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 51
+
+
+\hypertarget{main_8h_a531eb79ff695289ac9a4f8daf292273c}{}\index{main.\+h@{main.\+h}!Open\+Block\+File@{Open\+Block\+File}}
+\index{Open\+Block\+File@{Open\+Block\+File}!main.\+h@{main.\+h}}
+\subsubsection[{Open\+Block\+File}]{\setlength{\rightskip}{0pt plus 5cm}F\+I\+L\+E$\ast$ Open\+Block\+File (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Disk\+Block\+Pos} \&}]{pos, }
+\item[{bool}]{f\+Read\+Only = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{main_8h_a531eb79ff695289ac9a4f8daf292273c}
+
+
+Definition at line 4054 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 52
+
+
+\hypertarget{main_8h_aadc60201fa05120c42011c2ca853ad15}{}\index{main.\+h@{main.\+h}!Open\+Disk\+File@{Open\+Disk\+File}}
+\index{Open\+Disk\+File@{Open\+Disk\+File}!main.\+h@{main.\+h}}
+\subsubsection[{Open\+Disk\+File}]{\setlength{\rightskip}{0pt plus 5cm}F\+I\+L\+E$\ast$ Open\+Disk\+File (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Disk\+Block\+Pos} \&}]{pos, }
+\item[{const char $\ast$}]{prefix, }
+\item[{bool}]{f\+Read\+Only = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{main_8h_aadc60201fa05120c42011c2ca853ad15}
+
+
+Definition at line 4013 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 53
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 54
+
+
+\hypertarget{main_8h_addac9f89d64c9e26d36d1481da35877e}{}\index{main.\+h@{main.\+h}!Open\+Undo\+File@{Open\+Undo\+File}}
+\index{Open\+Undo\+File@{Open\+Undo\+File}!main.\+h@{main.\+h}}
+\subsubsection[{Open\+Undo\+File}]{\setlength{\rightskip}{0pt plus 5cm}F\+I\+L\+E$\ast$ Open\+Undo\+File (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Disk\+Block\+Pos} \&}]{pos, }
+\item[{bool}]{f\+Read\+Only = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{main_8h_addac9f89d64c9e26d36d1481da35877e}
+
+
+Definition at line 4058 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 55
+
+
+\hypertarget{main_8h_aac88c75e65aa0dee60e4332dbcc16120}{}\index{main.\+h@{main.\+h}!Print\+Block\+Tree@{Print\+Block\+Tree}}
+\index{Print\+Block\+Tree@{Print\+Block\+Tree}!main.\+h@{main.\+h}}
+\subsubsection[{Print\+Block\+Tree}]{\setlength{\rightskip}{0pt plus 5cm}void Print\+Block\+Tree (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{main_8h_aac88c75e65aa0dee60e4332dbcc16120}
+
+
+Definition at line 2146 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 56
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 57
+
+
+\hypertarget{main_8h_a7c8a7be3439bb5e1e40548a332a3cf29}{}\index{main.\+h@{main.\+h}!Process\+Block@{Process\+Block}}
+\index{Process\+Block@{Process\+Block}!main.\+h@{main.\+h}}
+\subsubsection[{Process\+Block}]{\setlength{\rightskip}{0pt plus 5cm}bool Process\+Block (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Node} $\ast$}]{pfrom, }
+\item[{{\bf C\+Block} $\ast$}]{pblock}
+\end{DoxyParamCaption}
+)}\label{main_8h_a7c8a7be3439bb5e1e40548a332a3cf29}
+
+
+Definition at line 1885 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 58
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 59
+
+
+\hypertarget{main_8h_a196f9318f02448b85b28d612698934fd}{}\index{main.\+h@{main.\+h}!Process\+Messages@{Process\+Messages}}
+\index{Process\+Messages@{Process\+Messages}!main.\+h@{main.\+h}}
+\subsubsection[{Process\+Messages}]{\setlength{\rightskip}{0pt plus 5cm}bool Process\+Messages (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Node} $\ast$}]{pfrom}
+\end{DoxyParamCaption}
+)}\label{main_8h_a196f9318f02448b85b28d612698934fd}
+
+
+Definition at line 3306 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 60
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 61
+
+
+\hypertarget{main_8h_a28098619373dbab927d25bca3cea8a4a}{}\index{main.\+h@{main.\+h}!Push\+Get\+Blocks@{Push\+Get\+Blocks}}
+\index{Push\+Get\+Blocks@{Push\+Get\+Blocks}!main.\+h@{main.\+h}}
+\subsubsection[{Push\+Get\+Blocks}]{\setlength{\rightskip}{0pt plus 5cm}void Push\+Get\+Blocks (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Node} $\ast$}]{pnode, }
+\item[{{\bf C\+Block\+Index} $\ast$}]{pindex\+Begin, }
+\item[{{\bf uint256}}]{hash\+End}
+\end{DoxyParamCaption}
+)}\label{main_8h_a28098619373dbab927d25bca3cea8a4a}
+
+
+Definition at line 1865 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 62
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 63
+
+
+\hypertarget{main_8h_ab02615ff65f91d69f8d786ec900baa8a}{}\index{main.\+h@{main.\+h}!Register\+Node\+Signals@{Register\+Node\+Signals}}
+\index{Register\+Node\+Signals@{Register\+Node\+Signals}!main.\+h@{main.\+h}}
+\subsubsection[{Register\+Node\+Signals}]{\setlength{\rightskip}{0pt plus 5cm}void Register\+Node\+Signals (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Node\+Signals} \&}]{node\+Signals}
+\end{DoxyParamCaption}
+)}\label{main_8h_ab02615ff65f91d69f8d786ec900baa8a}
+Register with a network node to receive its signals 
+
+Definition at line 460 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 64
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 65
+
+
+\hypertarget{main_8h_aa6b7f220759fb53f10c65654bbf61317}{}\index{main.\+h@{main.\+h}!Register\+Wallet@{Register\+Wallet}}
+\index{Register\+Wallet@{Register\+Wallet}!main.\+h@{main.\+h}}
+\subsubsection[{Register\+Wallet}]{\setlength{\rightskip}{0pt plus 5cm}void Register\+Wallet (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Wallet\+Interface} $\ast$}]{pwallet\+In}
+\end{DoxyParamCaption}
+)}\label{main_8h_aa6b7f220759fb53f10c65654bbf61317}
+Register a wallet to receive updates from core 
+
+Definition at line 223 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 66
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 67
+
+
+\hypertarget{main_8h_aa8d5c228e24266e3dca5858adae31800}{}\index{main.\+h@{main.\+h}!Resend\+Wallet\+Transactions@{Resend\+Wallet\+Transactions}}
+\index{Resend\+Wallet\+Transactions@{Resend\+Wallet\+Transactions}!main.\+h@{main.\+h}}
+\subsubsection[{Resend\+Wallet\+Transactions}]{\setlength{\rightskip}{0pt plus 5cm}void Resend\+Wallet\+Transactions (
+\begin{DoxyParamCaption}
+\item[{bool}]{f\+Force = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{main_8h_aa8d5c228e24266e3dca5858adae31800}
+Ask wallets to resend their transactions 
+
+Definition at line 254 of file main.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 68
+
+
+\hypertarget{main_8h_a711a5bdb30c9c9bbdc83011b1cbbe2f3}{}\index{main.\+h@{main.\+h}!Send\+Messages@{Send\+Messages}}
+\index{Send\+Messages@{Send\+Messages}!main.\+h@{main.\+h}}
+\subsubsection[{Send\+Messages}]{\setlength{\rightskip}{0pt plus 5cm}bool Send\+Messages (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Node} $\ast$}]{pto, }
+\item[{bool}]{f\+Send\+Trickle}
+\end{DoxyParamCaption}
+)}\label{main_8h_a711a5bdb30c9c9bbdc83011b1cbbe2f3}
+
+
+Definition at line 3426 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 69
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 70
+
+
+\hypertarget{main_8h_a0829b07a2144791d1d6cb18c279fb3a4}{}\index{main.\+h@{main.\+h}!Sync\+With\+Wallets@{Sync\+With\+Wallets}}
+\index{Sync\+With\+Wallets@{Sync\+With\+Wallets}!main.\+h@{main.\+h}}
+\subsubsection[{Sync\+With\+Wallets}]{\setlength{\rightskip}{0pt plus 5cm}void Sync\+With\+Wallets (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Transaction} \&}]{tx, }
+\item[{const {\bf C\+Block} $\ast$}]{pblock = {\ttfamily NULL}, }
+\item[{bool}]{f\+Connect = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{main_8h_a0829b07a2144791d1d6cb18c279fb3a4}
+Push an updated transaction to all registered wallets 
+
+Definition at line 250 of file main.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 71
+
+
+\hypertarget{main_8h_a0189c34248cd89bbbe20d4d6045bd7c9}{}\index{main.\+h@{main.\+h}!Thread\+Import@{Thread\+Import}}
+\index{Thread\+Import@{Thread\+Import}!main.\+h@{main.\+h}}
+\subsubsection[{Thread\+Import}]{\setlength{\rightskip}{0pt plus 5cm}void Thread\+Import (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ boost\+::filesystem\+::path $>$}]{v\+Import\+Files}
+\end{DoxyParamCaption}
+)}\label{main_8h_a0189c34248cd89bbbe20d4d6045bd7c9}
+
+
+Definition at line 2294 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 72
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 73
+
+
+\hypertarget{main_8h_a31faece5ef0e403969b3d3debd79b352}{}\index{main.\+h@{main.\+h}!Thread\+Stake\+Miner@{Thread\+Stake\+Miner}}
+\index{Thread\+Stake\+Miner@{Thread\+Stake\+Miner}!main.\+h@{main.\+h}}
+\subsubsection[{Thread\+Stake\+Miner}]{\setlength{\rightskip}{0pt plus 5cm}void Thread\+Stake\+Miner (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Wallet} $\ast$}]{pwallet}
+\end{DoxyParamCaption}
+)}\label{main_8h_a31faece5ef0e403969b3d3debd79b352}
+
+
+Definition at line 536 of file miner.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 74
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 75
+
+
+\hypertarget{main_8h_ac98b87e479f71b7be2b990a10c4ebc2d}{}\index{main.\+h@{main.\+h}!Unload\+Block\+Index@{Unload\+Block\+Index}}
+\index{Unload\+Block\+Index@{Unload\+Block\+Index}!main.\+h@{main.\+h}}
+\subsubsection[{Unload\+Block\+Index}]{\setlength{\rightskip}{0pt plus 5cm}void Unload\+Block\+Index (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{main_8h_ac98b87e479f71b7be2b990a10c4ebc2d}
+
+
+Unload database information. 
+
+
+
+Definition at line 2060 of file main.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 76
+
+
+\hypertarget{main_8h_ad0b02f9e3ff8997319581ce5021d4244}{}\index{main.\+h@{main.\+h}!Unregister\+All\+Wallets@{Unregister\+All\+Wallets}}
+\index{Unregister\+All\+Wallets@{Unregister\+All\+Wallets}!main.\+h@{main.\+h}}
+\subsubsection[{Unregister\+All\+Wallets}]{\setlength{\rightskip}{0pt plus 5cm}void Unregister\+All\+Wallets (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{main_8h_ad0b02f9e3ff8997319581ce5021d4244}
+Unregister all wallets from core 
+
+Definition at line 241 of file main.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 77
+
+
+\hypertarget{main_8h_a3ef0cc6e9d9d6435ee2a5569244d6ebd}{}\index{main.\+h@{main.\+h}!Unregister\+Node\+Signals@{Unregister\+Node\+Signals}}
+\index{Unregister\+Node\+Signals@{Unregister\+Node\+Signals}!main.\+h@{main.\+h}}
+\subsubsection[{Unregister\+Node\+Signals}]{\setlength{\rightskip}{0pt plus 5cm}void Unregister\+Node\+Signals (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Node\+Signals} \&}]{node\+Signals}
+\end{DoxyParamCaption}
+)}\label{main_8h_a3ef0cc6e9d9d6435ee2a5569244d6ebd}
+Unregister a network node 
+
+Definition at line 469 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 78
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 79
+
+
+\hypertarget{main_8h_aa60561b6923955deeaad6fdab74a3aee}{}\index{main.\+h@{main.\+h}!Unregister\+Wallet@{Unregister\+Wallet}}
+\index{Unregister\+Wallet@{Unregister\+Wallet}!main.\+h@{main.\+h}}
+\subsubsection[{Unregister\+Wallet}]{\setlength{\rightskip}{0pt plus 5cm}void Unregister\+Wallet (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Wallet\+Interface} $\ast$}]{pwallet\+In}
+\end{DoxyParamCaption}
+)}\label{main_8h_aa60561b6923955deeaad6fdab74a3aee}
+Unregister a wallet from core 
+
+Definition at line 232 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 80
+
+
+\hypertarget{main_8h_abdef12ddcc1e6b127c59fab552a9b81b}{}\index{main.\+h@{main.\+h}!Wanted\+By\+Orphan@{Wanted\+By\+Orphan}}
+\index{Wanted\+By\+Orphan@{Wanted\+By\+Orphan}!main.\+h@{main.\+h}}
+\subsubsection[{Wanted\+By\+Orphan}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint256} Wanted\+By\+Orphan (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Orphan\+Block} $\ast$}]{pblock\+Orphan}
+\end{DoxyParamCaption}
+)}\label{main_8h_abdef12ddcc1e6b127c59fab552a9b81b}
+
+
+Definition at line 1620 of file main.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 81
+
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{main_8h_a5ed86cbbedb72d8fcec0524f2792ada8}{}\index{main.\+h@{main.\+h}!C\+O\+I\+N\+B\+A\+S\+E\+\_\+\+F\+L\+A\+G\+S@{C\+O\+I\+N\+B\+A\+S\+E\+\_\+\+F\+L\+A\+G\+S}}
+\index{C\+O\+I\+N\+B\+A\+S\+E\+\_\+\+F\+L\+A\+G\+S@{C\+O\+I\+N\+B\+A\+S\+E\+\_\+\+F\+L\+A\+G\+S}!main.\+h@{main.\+h}}
+\subsubsection[{C\+O\+I\+N\+B\+A\+S\+E\+\_\+\+F\+L\+A\+G\+S}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Script} C\+O\+I\+N\+B\+A\+S\+E\+\_\+\+F\+L\+A\+G\+S}\label{main_8h_a5ed86cbbedb72d8fcec0524f2792ada8}
+
+
+Definition at line 104 of file main.\+cpp.
+
+\hypertarget{main_8h_a1ed8285f0fe3c6799c53265ce72552c8}{}\index{main.\+h@{main.\+h}!cs\+\_\+main@{cs\+\_\+main}}
+\index{cs\+\_\+main@{cs\+\_\+main}!main.\+h@{main.\+h}}
+\subsubsection[{cs\+\_\+main}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Critical\+Section} cs\+\_\+main}\label{main_8h_a1ed8285f0fe3c6799c53265ce72552c8}
+
+
+Definition at line 44 of file main.\+cpp.
+
+\hypertarget{main_8h_aaf87d0dd26c4a7c9bcc5bdd1127e8637}{}\index{main.\+h@{main.\+h}!f\+Importing@{f\+Importing}}
+\index{f\+Importing@{f\+Importing}!main.\+h@{main.\+h}}
+\subsubsection[{f\+Importing}]{\setlength{\rightskip}{0pt plus 5cm}bool f\+Importing}\label{main_8h_aaf87d0dd26c4a7c9bcc5bdd1127e8637}
+
+
+Definition at line 79 of file main.\+cpp.
+
+\hypertarget{main_8h_ae3377c351f05649e07963776ba3a0499}{}\index{main.\+h@{main.\+h}!f\+Large\+Work\+Fork\+Found@{f\+Large\+Work\+Fork\+Found}}
+\index{f\+Large\+Work\+Fork\+Found@{f\+Large\+Work\+Fork\+Found}!main.\+h@{main.\+h}}
+\subsubsection[{f\+Large\+Work\+Fork\+Found}]{\setlength{\rightskip}{0pt plus 5cm}bool f\+Large\+Work\+Fork\+Found}\label{main_8h_ae3377c351f05649e07963776ba3a0499}
+\hypertarget{main_8h_aa8ed8d08421c7cdfb3acb22e585468fd}{}\index{main.\+h@{main.\+h}!f\+Large\+Work\+Invalid\+Chain\+Found@{f\+Large\+Work\+Invalid\+Chain\+Found}}
+\index{f\+Large\+Work\+Invalid\+Chain\+Found@{f\+Large\+Work\+Invalid\+Chain\+Found}!main.\+h@{main.\+h}}
+\subsubsection[{f\+Large\+Work\+Invalid\+Chain\+Found}]{\setlength{\rightskip}{0pt plus 5cm}bool f\+Large\+Work\+Invalid\+Chain\+Found}\label{main_8h_aa8ed8d08421c7cdfb3acb22e585468fd}
+\hypertarget{main_8h_ad32c5d94e1b12cb49fc73deca3f3068f}{}\index{main.\+h@{main.\+h}!f\+Minimize\+Coin\+Age@{f\+Minimize\+Coin\+Age}}
+\index{f\+Minimize\+Coin\+Age@{f\+Minimize\+Coin\+Age}!main.\+h@{main.\+h}}
+\subsubsection[{f\+Minimize\+Coin\+Age}]{\setlength{\rightskip}{0pt plus 5cm}bool f\+Minimize\+Coin\+Age}\label{main_8h_ad32c5d94e1b12cb49fc73deca3f3068f}
+
+
+Definition at line 59 of file init.\+cpp.
+
+\hypertarget{main_8h_a8e0eca589b2d4254a65f04c5d91888b2}{}\index{main.\+h@{main.\+h}!f\+Reindex@{f\+Reindex}}
+\index{f\+Reindex@{f\+Reindex}!main.\+h@{main.\+h}}
+\subsubsection[{f\+Reindex}]{\setlength{\rightskip}{0pt plus 5cm}bool f\+Reindex}\label{main_8h_a8e0eca589b2d4254a65f04c5d91888b2}
+
+
+Definition at line 80 of file main.\+cpp.
+
+\hypertarget{main_8h_a6b569217f0bbb0a69a42c8769df06a06}{}\index{main.\+h@{main.\+h}!f\+Tx\+Index@{f\+Tx\+Index}}
+\index{f\+Tx\+Index@{f\+Tx\+Index}!main.\+h@{main.\+h}}
+\subsubsection[{f\+Tx\+Index}]{\setlength{\rightskip}{0pt plus 5cm}bool f\+Tx\+Index}\label{main_8h_a6b569217f0bbb0a69a42c8769df06a06}
+
+
+Definition at line 67 of file main.\+cpp.
+
+\hypertarget{main_8h_ad316d89326f17948a58ad3cdf23850a5}{}\index{main.\+h@{main.\+h}!f\+Use\+Fast\+Index@{f\+Use\+Fast\+Index}}
+\index{f\+Use\+Fast\+Index@{f\+Use\+Fast\+Index}!main.\+h@{main.\+h}}
+\subsubsection[{f\+Use\+Fast\+Index}]{\setlength{\rightskip}{0pt plus 5cm}bool f\+Use\+Fast\+Index}\label{main_8h_ad316d89326f17948a58ad3cdf23850a5}
+
+
+Definition at line 57 of file init.\+cpp.
+
+\hypertarget{main_8h_ace9c3343567f488a96598abe61e1d309}{}\index{main.\+h@{main.\+h}!hash\+Best\+Chain@{hash\+Best\+Chain}}
+\index{hash\+Best\+Chain@{hash\+Best\+Chain}!main.\+h@{main.\+h}}
+\subsubsection[{hash\+Best\+Chain}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint256} hash\+Best\+Chain}\label{main_8h_ace9c3343567f488a96598abe61e1d309}
+
+
+Definition at line 74 of file main.\+cpp.
+
+\hypertarget{main_8h_a9d5aa0c4581116d898ff51357a0df059}{}\index{main.\+h@{main.\+h}!map\+Block\+Index@{map\+Block\+Index}}
+\index{map\+Block\+Index@{map\+Block\+Index}!main.\+h@{main.\+h}}
+\subsubsection[{map\+Block\+Index}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<${\bf uint256}, {\bf C\+Block\+Index}$\ast$$>$ map\+Block\+Index}\label{main_8h_a9d5aa0c4581116d898ff51357a0df059}
+
+
+Definition at line 59 of file main.\+cpp.
+
+\hypertarget{main_8h_a724dfa85b047474da511687460625e48}{}\index{main.\+h@{main.\+h}!map\+Orphan\+Blocks@{map\+Orphan\+Blocks}}
+\index{map\+Orphan\+Blocks@{map\+Orphan\+Blocks}!main.\+h@{main.\+h}}
+\subsubsection[{map\+Orphan\+Blocks}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<${\bf uint256}, {\bf C\+Orphan\+Block}$\ast$$>$ map\+Orphan\+Blocks}\label{main_8h_a724dfa85b047474da511687460625e48}
+
+
+Definition at line 89 of file main.\+cpp.
+
+\hypertarget{main_8h_a8373143ee9b34c558cad14139d331ecc}{}\index{main.\+h@{main.\+h}!map\+Rejected\+Blocks@{map\+Rejected\+Blocks}}
+\index{map\+Rejected\+Blocks@{map\+Rejected\+Blocks}!main.\+h@{main.\+h}}
+\subsubsection[{map\+Rejected\+Blocks}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<${\bf uint256}, {\bf int64\+\_\+t}$>$ map\+Rejected\+Blocks}\label{main_8h_a8373143ee9b34c558cad14139d331ecc}
+
+
+Definition at line 93 of file main.\+cpp.
+
+\hypertarget{main_8h_abc71256f703e47c9254093e32ed2994c}{}\index{main.\+h@{main.\+h}!mempool@{mempool}}
+\index{mempool@{mempool}!main.\+h@{main.\+h}}
+\subsubsection[{mempool}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Tx\+Mem\+Pool} mempool}\label{main_8h_abc71256f703e47c9254093e32ed2994c}
+\hypertarget{main_8h_a5925a10baeee7d4bdce1982bdcbd3bd0}{}\index{main.\+h@{main.\+h}!min\+Relay\+Tx\+Fee@{min\+Relay\+Tx\+Fee}}
+\index{min\+Relay\+Tx\+Fee@{min\+Relay\+Tx\+Fee}!main.\+h@{main.\+h}}
+\subsubsection[{min\+Relay\+Tx\+Fee}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Fee\+Rate} min\+Relay\+Tx\+Fee}\label{main_8h_a5925a10baeee7d4bdce1982bdcbd3bd0}
+Fees smaller than this (in satoshis) are considered zero fee (for relaying and mining) We are $\sim$xxx times smaller then bitcoin now (2016-\/01-\/11), set min\+Relay\+Tx\+Fee only 10 times higher so it\textquotesingle{}s still 10 times lower comparing to bitcoin. 
+
+Definition at line 50 of file main.\+cpp.
+
+\hypertarget{main_8h_a63af124faf22e03fd629e8aa21c40eae}{}\index{main.\+h@{main.\+h}!n\+Best\+Chain\+Trust@{n\+Best\+Chain\+Trust}}
+\index{n\+Best\+Chain\+Trust@{n\+Best\+Chain\+Trust}!main.\+h@{main.\+h}}
+\subsubsection[{n\+Best\+Chain\+Trust}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint256} n\+Best\+Chain\+Trust}\label{main_8h_a63af124faf22e03fd629e8aa21c40eae}
+
+
+Definition at line 72 of file main.\+cpp.
+
+\hypertarget{main_8h_a843f1984796a7e44a9e23fccd6a8af34}{}\index{main.\+h@{main.\+h}!n\+Best\+Height@{n\+Best\+Height}}
+\index{n\+Best\+Height@{n\+Best\+Height}!main.\+h@{main.\+h}}
+\subsubsection[{n\+Best\+Height}]{\setlength{\rightskip}{0pt plus 5cm}int n\+Best\+Height}\label{main_8h_a843f1984796a7e44a9e23fccd6a8af34}
+
+
+Definition at line 70 of file main.\+cpp.
+
+\hypertarget{main_8h_a27c4c119ca2e7250221de8c17bee0999}{}\index{main.\+h@{main.\+h}!n\+Best\+Invalid\+Trust@{n\+Best\+Invalid\+Trust}}
+\index{n\+Best\+Invalid\+Trust@{n\+Best\+Invalid\+Trust}!main.\+h@{main.\+h}}
+\subsubsection[{n\+Best\+Invalid\+Trust}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint256} n\+Best\+Invalid\+Trust}\label{main_8h_a27c4c119ca2e7250221de8c17bee0999}
+
+
+Definition at line 73 of file main.\+cpp.
+
+\hypertarget{main_8h_adfd36b02172030cdbf7ac69c2ccb7711}{}\index{main.\+h@{main.\+h}!n\+Coinbase\+Maturity@{n\+Coinbase\+Maturity}}
+\index{n\+Coinbase\+Maturity@{n\+Coinbase\+Maturity}!main.\+h@{main.\+h}}
+\subsubsection[{n\+Coinbase\+Maturity}]{\setlength{\rightskip}{0pt plus 5cm}int n\+Coinbase\+Maturity}\label{main_8h_adfd36b02172030cdbf7ac69c2ccb7711}
+
+
+Definition at line 66 of file main.\+cpp.
+
+\hypertarget{main_8h_a08b980f03b2fb15445e0ddc8bb4b3d73}{}\index{main.\+h@{main.\+h}!n\+Coin\+Cache\+Size@{n\+Coin\+Cache\+Size}}
+\index{n\+Coin\+Cache\+Size@{n\+Coin\+Cache\+Size}!main.\+h@{main.\+h}}
+\subsubsection[{n\+Coin\+Cache\+Size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int n\+Coin\+Cache\+Size}\label{main_8h_a08b980f03b2fb15445e0ddc8bb4b3d73}
+
+
+Definition at line 113 of file main.\+cpp.
+
+\hypertarget{main_8h_a3e3a4daba510b75f09387695c6c8a11f}{}\index{main.\+h@{main.\+h}!n\+Derivation\+Method\+Index@{n\+Derivation\+Method\+Index}}
+\index{n\+Derivation\+Method\+Index@{n\+Derivation\+Method\+Index}!main.\+h@{main.\+h}}
+\subsubsection[{n\+Derivation\+Method\+Index}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int n\+Derivation\+Method\+Index}\label{main_8h_a3e3a4daba510b75f09387695c6c8a11f}
+
+
+Definition at line 55 of file init.\+cpp.
+
+\hypertarget{main_8h_af8945f7f19ea7e938baab1bd4c226c2f}{}\index{main.\+h@{main.\+h}!n\+Last\+Block\+Size@{n\+Last\+Block\+Size}}
+\index{n\+Last\+Block\+Size@{n\+Last\+Block\+Size}!main.\+h@{main.\+h}}
+\subsubsection[{n\+Last\+Block\+Size}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint64\+\_\+t} n\+Last\+Block\+Size}\label{main_8h_af8945f7f19ea7e938baab1bd4c226c2f}
+
+
+Definition at line 79 of file miner.\+cpp.
+
+\hypertarget{main_8h_a31f8b0d3c96670151ba997019820e0f4}{}\index{main.\+h@{main.\+h}!n\+Last\+Block\+Tx@{n\+Last\+Block\+Tx}}
+\index{n\+Last\+Block\+Tx@{n\+Last\+Block\+Tx}!main.\+h@{main.\+h}}
+\subsubsection[{n\+Last\+Block\+Tx}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint64\+\_\+t} n\+Last\+Block\+Tx}\label{main_8h_a31f8b0d3c96670151ba997019820e0f4}
+
+
+Definition at line 78 of file miner.\+cpp.
+
+\hypertarget{main_8h_a544c4ab48afad09d2f474d0720570e94}{}\index{main.\+h@{main.\+h}!n\+Last\+Coin\+Stake\+Search\+Interval@{n\+Last\+Coin\+Stake\+Search\+Interval}}
+\index{n\+Last\+Coin\+Stake\+Search\+Interval@{n\+Last\+Coin\+Stake\+Search\+Interval}!main.\+h@{main.\+h}}
+\subsubsection[{n\+Last\+Coin\+Stake\+Search\+Interval}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int64\+\_\+t} n\+Last\+Coin\+Stake\+Search\+Interval}\label{main_8h_a544c4ab48afad09d2f474d0720570e94}
+
+
+Definition at line 80 of file miner.\+cpp.
+
+\hypertarget{main_8h_afdd10e8c0a44aad0b719c365fa3bb458}{}\index{main.\+h@{main.\+h}!n\+Node\+Lifespan@{n\+Node\+Lifespan}}
+\index{n\+Node\+Lifespan@{n\+Node\+Lifespan}!main.\+h@{main.\+h}}
+\subsubsection[{n\+Node\+Lifespan}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int n\+Node\+Lifespan}\label{main_8h_afdd10e8c0a44aad0b719c365fa3bb458}
+
+
+Definition at line 54 of file init.\+cpp.
+
+\hypertarget{main_8h_a621f4f63be83358641eb78f48d2f49c2}{}\index{main.\+h@{main.\+h}!n\+Stake\+Min\+Age@{n\+Stake\+Min\+Age}}
+\index{n\+Stake\+Min\+Age@{n\+Stake\+Min\+Age}!main.\+h@{main.\+h}}
+\subsubsection[{n\+Stake\+Min\+Age}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int n\+Stake\+Min\+Age}\label{main_8h_a621f4f63be83358641eb78f48d2f49c2}
+
+
+Definition at line 63 of file main.\+cpp.
+
+\hypertarget{main_8h_a6d3cd49df21f4264ed1489ea304dbcb8}{}\index{main.\+h@{main.\+h}!n\+Stake\+Min\+Confirmations@{n\+Stake\+Min\+Confirmations}}
+\index{n\+Stake\+Min\+Confirmations@{n\+Stake\+Min\+Confirmations}!main.\+h@{main.\+h}}
+\subsubsection[{n\+Stake\+Min\+Confirmations}]{\setlength{\rightskip}{0pt plus 5cm}int n\+Stake\+Min\+Confirmations}\label{main_8h_a6d3cd49df21f4264ed1489ea304dbcb8}
+
+
+Definition at line 65 of file main.\+cpp.
+
+\hypertarget{main_8h_ab319f7e88eb0d2d3b9f9f98bea0f9896}{}\index{main.\+h@{main.\+h}!n\+Time\+Best\+Received@{n\+Time\+Best\+Received}}
+\index{n\+Time\+Best\+Received@{n\+Time\+Best\+Received}!main.\+h@{main.\+h}}
+\subsubsection[{n\+Time\+Best\+Received}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int64\+\_\+t} n\+Time\+Best\+Received}\label{main_8h_ab319f7e88eb0d2d3b9f9f98bea0f9896}
+
+
+Definition at line 78 of file main.\+cpp.
+
+\hypertarget{main_8h_a0023503503c358eda0c97a576ef53fde}{}\index{main.\+h@{main.\+h}!pblocktree@{pblocktree}}
+\index{pblocktree@{pblocktree}!main.\+h@{main.\+h}}
+\subsubsection[{pblocktree}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Block\+Tree\+D\+B}$\ast$ pblocktree}\label{main_8h_a0023503503c358eda0c97a576ef53fde}
+
+
+Global variable that points to the active block tree (protected by cs\+\_\+main) 
+
+
+
+Definition at line 111 of file main.\+cpp.
+
+\hypertarget{main_8h_a1821834b8f7837b469f7f91a14c20042}{}\index{main.\+h@{main.\+h}!pcoins\+Tip@{pcoins\+Tip}}
+\index{pcoins\+Tip@{pcoins\+Tip}!main.\+h@{main.\+h}}
+\subsubsection[{pcoins\+Tip}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Coins\+View\+Cache}$\ast$ pcoins\+Tip}\label{main_8h_a1821834b8f7837b469f7f91a14c20042}
+
+
+Global variable that points to the active \hyperlink{class_c_coins_view}{C\+Coins\+View} (protected by cs\+\_\+main) 
+
+
+
+Definition at line 110 of file main.\+cpp.
+
+\hypertarget{main_8h_a6454ad864029344132a0a0b59b1456ee}{}\index{main.\+h@{main.\+h}!pindex\+Best@{pindex\+Best}}
+\index{pindex\+Best@{pindex\+Best}!main.\+h@{main.\+h}}
+\subsubsection[{pindex\+Best}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Block\+Index}$\ast$ pindex\+Best}\label{main_8h_a6454ad864029344132a0a0b59b1456ee}
+
+
+Definition at line 76 of file main.\+cpp.
+
+\hypertarget{main_8h_a1e7c54b8b26730f52b5527163fc33d8f}{}\index{main.\+h@{main.\+h}!pindex\+Genesis\+Block@{pindex\+Genesis\+Block}}
+\index{pindex\+Genesis\+Block@{pindex\+Genesis\+Block}!main.\+h@{main.\+h}}
+\subsubsection[{pindex\+Genesis\+Block}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Block\+Index}$\ast$ pindex\+Genesis\+Block}\label{main_8h_a1e7c54b8b26730f52b5527163fc33d8f}
+
+
+Definition at line 69 of file main.\+cpp.
+
+\hypertarget{main_8h_a261df4d886c6149afe291ecfbed2ae89}{}\index{main.\+h@{main.\+h}!set\+Stake\+Seen@{set\+Stake\+Seen}}
+\index{set\+Stake\+Seen@{set\+Stake\+Seen}!main.\+h@{main.\+h}}
+\subsubsection[{set\+Stake\+Seen}]{\setlength{\rightskip}{0pt plus 5cm}std\+::set$<$std\+::pair$<${\bf C\+Out\+Point}, unsigned int$>$ $>$ set\+Stake\+Seen}\label{main_8h_a261df4d886c6149afe291ecfbed2ae89}
+
+
+Definition at line 60 of file main.\+cpp.
+
+\hypertarget{main_8h_a2874c632b3b462164de12be5abcd9d43}{}\index{main.\+h@{main.\+h}!str\+Message\+Magic@{str\+Message\+Magic}}
+\index{str\+Message\+Magic@{str\+Message\+Magic}!main.\+h@{main.\+h}}
+\subsubsection[{str\+Message\+Magic}]{\setlength{\rightskip}{0pt plus 5cm}const std\+::string str\+Message\+Magic}\label{main_8h_a2874c632b3b462164de12be5abcd9d43}
+
+
+Definition at line 106 of file main.\+cpp.
+

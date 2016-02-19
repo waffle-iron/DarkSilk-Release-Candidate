@@ -1,0 +1,100 @@
+.TH "leveldb_filterpolicy_t" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+leveldb_filterpolicy_t \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Inherits \fBleveldb::FilterPolicy\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~leveldb_filterpolicy_t\fP ()"
+.br
+.ti -1c
+.RI "virtual const char * \fBName\fP () const "
+.br
+.ti -1c
+.RI "virtual void \fBCreateFilter\fP (const \fBSlice\fP *keys, int n, std::string *dst) const "
+.br
+.ti -1c
+.RI "virtual bool \fBKeyMayMatch\fP (const \fBSlice\fP &key, const \fBSlice\fP &filter) const "
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "void * \fBstate_\fP"
+.br
+.ti -1c
+.RI "void(* \fBdestructor_\fP )(void *)"
+.br
+.ti -1c
+.RI "const char *(* \fBname_\fP )(void *)"
+.br
+.ti -1c
+.RI "char *(* \fBcreate_\fP )(void *, const char *const *key_array, const size_t *key_length_array, int num_keys, size_t *filter_length)"
+.br
+.ti -1c
+.RI "unsigned char(* \fBkey_match_\fP )(void *, const char *key, size_t length, const char *filter, size_t filter_length)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 86 of file c\&.cc\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "virtual leveldb_filterpolicy_t::~leveldb_filterpolicy_t ()\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Definition at line 100 of file c\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void leveldb_filterpolicy_t::CreateFilter (const \fBSlice\fP * keys, int n, std::string * dst) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBleveldb::FilterPolicy\fP\&.
+.PP
+Definition at line 108 of file c\&.cc\&.
+.SS "virtual bool leveldb_filterpolicy_t::KeyMayMatch (const \fBSlice\fP & key, const \fBSlice\fP & filter) const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBleveldb::FilterPolicy\fP\&.
+.PP
+Definition at line 121 of file c\&.cc\&.
+.SS "virtual const char* leveldb_filterpolicy_t::Name () const\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBleveldb::FilterPolicy\fP\&.
+.PP
+Definition at line 104 of file c\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "char*(* leveldb_filterpolicy_t::create_) (void *, const char *const *key_array, const size_t *key_length_array, int num_keys, size_t *filter_length)"
+
+.PP
+Definition at line 90 of file c\&.cc\&.
+.SS "void(* leveldb_filterpolicy_t::destructor_) (void *)"
+
+.PP
+Definition at line 88 of file c\&.cc\&.
+.SS "unsigned char(* leveldb_filterpolicy_t::key_match_) (void *, const char *key, size_t length, const char *filter, size_t filter_length)"
+
+.PP
+Definition at line 95 of file c\&.cc\&.
+.SS "const char*(* leveldb_filterpolicy_t::name_) (void *)"
+
+.PP
+Definition at line 89 of file c\&.cc\&.
+.SS "void* leveldb_filterpolicy_t::state_"
+
+.PP
+Definition at line 87 of file c\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

@@ -1,0 +1,872 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_wallet_d_b" kind="class" language="C++" prot="public">
+    <compoundname>CWalletDB</compoundname>
+    <basecompoundref refid="class_c_d_b" prot="public" virt="non-virtual">CDB</basecompoundref>
+    <includes refid="walletdb_8h" local="no">walletdb.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_wallet_d_b_1abb8766ee5b03e8115438726c625f88a7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CWalletDB::CWalletDB</definition>
+        <argsstring>(const std::string &amp;strFilename, const char *pszMode=&quot;r+&quot;)</argsstring>
+        <name>CWalletDB</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>strFilename</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>pszMode</declname>
+          <defval>&quot;r+&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="102" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.h" bodystart="102" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1ad1b3bce77e9dd6ddd8c668a469c38f0a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CWalletDB::WriteName</definition>
+        <argsstring>(const std::string &amp;strAddress, const std::string &amp;strName)</argsstring>
+        <name>WriteName</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>strAddress</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>strName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="109" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="29" bodyend="33"/>
+        <references refid="db_8cpp_1aad0b4d8ce794391063e82239d0a20b09" compoundref="db_8cpp" startline="24">nWalletDBUpdated</references>
+        <referencedby refid="class_c_wallet_1a95d2dd3693db562aa11afbecf33e1276" compoundref="wallet_8cpp" startline="4246" endline="4260">CWallet::SetAddressBookName</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1a319209fcf90ea860b668b92c44a3fa7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CWalletDB::EraseName</definition>
+        <argsstring>(const std::string &amp;strAddress)</argsstring>
+        <name>EraseName</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>strAddress</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="111" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="35" bodyend="41"/>
+        <references refid="db_8cpp_1aad0b4d8ce794391063e82239d0a20b09" compoundref="db_8cpp" startline="24">nWalletDBUpdated</references>
+        <referencedby refid="class_c_wallet_1ac21ad6cf1271b08f0392259643ef5804" compoundref="wallet_8cpp" startline="4262" endline="4276">CWallet::DelAddressBookName</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1a76d2ca02898221ab66df5d5f7491164e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CWalletDB::WriteTx</definition>
+        <argsstring>(uint256 hash, const CWalletTx &amp;wtx)</argsstring>
+        <name>WriteTx</name>
+        <param>
+          <type><ref refid="classuint256" kindref="compound">uint256</ref></type>
+          <declname>hash</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_wallet_tx" kindref="compound">CWalletTx</ref> &amp;</type>
+          <declname>wtx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="113" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="43" bodyend="47"/>
+        <references refid="db_8cpp_1aad0b4d8ce794391063e82239d0a20b09" compoundref="db_8cpp" startline="24">nWalletDBUpdated</references>
+        <referencedby refid="class_c_wallet_tx_1ada0e71d717dd360faf047de54eef4942" compoundref="wallet_8cpp" startline="1116" endline="1119">CWalletTx::WriteToDisk</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1a498e00c693cacc4b558e6f5295ea32f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CWalletDB::EraseTx</definition>
+        <argsstring>(uint256 hash)</argsstring>
+        <name>EraseTx</name>
+        <param>
+          <type><ref refid="classuint256" kindref="compound">uint256</ref></type>
+          <declname>hash</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="114" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="49" bodyend="53"/>
+        <references refid="db_8cpp_1aad0b4d8ce794391063e82239d0a20b09" compoundref="db_8cpp" startline="24">nWalletDBUpdated</references>
+        <referencedby refid="class_c_wallet_1a43dc1cf73c622cca29e530130e648470" compoundref="wallet_8cpp" startline="818" endline="828">CWallet::EraseFromWallet</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1a68428260802d8acd1a6f87f92b991841" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CWalletDB::WriteStealthKeyMeta</definition>
+        <argsstring>(const CKeyID &amp;keyId, const CStealthKeyMetadata &amp;sxKeyMeta)</argsstring>
+        <name>WriteStealthKeyMeta</name>
+        <param>
+          <type>const <ref refid="class_c_key_i_d" kindref="compound">CKeyID</ref> &amp;</type>
+          <declname>keyId</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_stealth_key_metadata" kindref="compound">CStealthKeyMetadata</ref> &amp;</type>
+          <declname>sxKeyMeta</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="116" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="55" bodyend="59"/>
+        <references refid="db_8cpp_1aad0b4d8ce794391063e82239d0a20b09" compoundref="db_8cpp" startline="24">nWalletDBUpdated</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1a401ec8ec6c7e38cf87be9b92f95052a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CWalletDB::EraseStealthKeyMeta</definition>
+        <argsstring>(const CKeyID &amp;keyId)</argsstring>
+        <name>EraseStealthKeyMeta</name>
+        <param>
+          <type>const <ref refid="class_c_key_i_d" kindref="compound">CKeyID</ref> &amp;</type>
+          <declname>keyId</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="117" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="61" bodyend="65"/>
+        <references refid="db_8cpp_1aad0b4d8ce794391063e82239d0a20b09" compoundref="db_8cpp" startline="24">nWalletDBUpdated</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1a2bce6f7f050d6d14e2c025a7beba2cfc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CWalletDB::WriteStealthAddress</definition>
+        <argsstring>(const CStealthAddress &amp;sxAddr)</argsstring>
+        <name>WriteStealthAddress</name>
+        <param>
+          <type>const <ref refid="class_c_stealth_address" kindref="compound">CStealthAddress</ref> &amp;</type>
+          <declname>sxAddr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="118" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="67" bodyend="72"/>
+        <references refid="db_8cpp_1aad0b4d8ce794391063e82239d0a20b09" compoundref="db_8cpp" startline="24">nWalletDBUpdated</references>
+        <references refid="class_c_stealth_address_1ae695d1d4c649d3f78b253de7d273b1d9" compoundref="stealth_8h" startline="65">CStealthAddress::scan_pubkey</references>
+        <referencedby refid="class_c_wallet_1a19d6a23e37ff619c741b7dfa9279b973" compoundref="wallet_8cpp" startline="3042" endline="3088">CWallet::AddStealthAddress</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1aebcc02069f91916c652d4e3e13be0f0b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CWalletDB::ReadStealthAddress</definition>
+        <argsstring>(CStealthAddress &amp;sxAddr)</argsstring>
+        <name>ReadStealthAddress</name>
+        <param>
+          <type><ref refid="class_c_stealth_address" kindref="compound">CStealthAddress</ref> &amp;</type>
+          <declname>sxAddr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="119" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="74" bodyend="78"/>
+        <references refid="class_c_stealth_address_1ae695d1d4c649d3f78b253de7d273b1d9" compoundref="stealth_8h" startline="65">CStealthAddress::scan_pubkey</references>
+        <referencedby refid="class_c_wallet_1a0404b6bc1cb804aadc69b9902b52282a" compoundref="wallet_8cpp" startline="214" endline="248">CWallet::Lock</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1a7ebef5e0c7f604aa2159ba96d527e3a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CWalletDB::WriteKey</definition>
+        <argsstring>(const CPubKey &amp;vchPubKey, const CPrivKey &amp;vchPrivKey, const CKeyMetadata &amp;keyMeta)</argsstring>
+        <name>WriteKey</name>
+        <param>
+          <type>const <ref refid="class_c_pub_key" kindref="compound">CPubKey</ref> &amp;</type>
+          <declname>vchPubKey</declname>
+        </param>
+        <param>
+          <type>const <ref refid="key_8h_1a1da569b8b6e5b3fa1196cc1b877e7f54" kindref="member">CPrivKey</ref> &amp;</type>
+          <declname>vchPrivKey</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_key_metadata" kindref="compound">CKeyMetadata</ref> &amp;</type>
+          <declname>keyMeta</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="121" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="80" bodyend="95"/>
+        <references refid="db_8cpp_1aad0b4d8ce794391063e82239d0a20b09" compoundref="db_8cpp" startline="24">nWalletDBUpdated</references>
+        <references refid="class_c_pub_key_1a9d7129b65b6dee792b4f3923cd64ed59" compoundref="pubkey_8h" startline="91" endline="91">CPubKey::size</references>
+        <references refid="class_c_pub_key_1add9987e0d25aff11181f5ad70413994b" compoundref="pubkey_8h" startline="92" endline="92">CPubKey::begin</references>
+        <references refid="class_c_pub_key_1aa559d2a4f2cbdec84c02a4adc18fa657" compoundref="pubkey_8h" startline="93" endline="93">CPubKey::end</references>
+        <references refid="hash_8h_1ab3f6c437460137530d86e09c2c102e99" compoundref="hash_8h" startline="77" endline="85">Hash</references>
+        <referencedby refid="class_c_wallet_1a3240da36cd717146296969227a3e0bd5" compoundref="wallet_8cpp" startline="103" endline="121">CWallet::AddKeyPubKey</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1a914fb53d1731daf9b486f164dd325210" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CWalletDB::WriteCryptedKey</definition>
+        <argsstring>(const CPubKey &amp;vchPubKey, const std::vector&lt; unsigned char &gt; &amp;vchCryptedSecret, const CKeyMetadata &amp;keyMeta)</argsstring>
+        <name>WriteCryptedKey</name>
+        <param>
+          <type>const <ref refid="class_c_pub_key" kindref="compound">CPubKey</ref> &amp;</type>
+          <declname>vchPubKey</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>vchCryptedSecret</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_key_metadata" kindref="compound">CKeyMetadata</ref> &amp;</type>
+          <declname>keyMeta</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="122" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="97" bodyend="116"/>
+        <references refid="db_8cpp_1aad0b4d8ce794391063e82239d0a20b09" compoundref="db_8cpp" startline="24">nWalletDBUpdated</references>
+        <referencedby refid="class_c_wallet_1a3e90096a903d49cd751f05fcdb7692ce" compoundref="wallet_8cpp" startline="123" endline="137">CWallet::AddCryptedKey</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1a507690da431ef61244941ad39c308aeb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CWalletDB::WriteMasterKey</definition>
+        <argsstring>(unsigned int nID, const CMasterKey &amp;kMasterKey)</argsstring>
+        <name>WriteMasterKey</name>
+        <param>
+          <type>unsigned int</type>
+          <declname>nID</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_master_key" kindref="compound">CMasterKey</ref> &amp;</type>
+          <declname>kMasterKey</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="123" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="118" bodyend="122"/>
+        <references refid="db_8cpp_1aad0b4d8ce794391063e82239d0a20b09" compoundref="db_8cpp" startline="24">nWalletDBUpdated</references>
+        <referencedby refid="class_c_wallet_1a4abcec3066e7c462f4564c159fc15031" compoundref="wallet_8cpp" startline="285" endline="333">CWallet::ChangeWalletPassphrase</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1a8c69e48e2305775898658e0a4f4616c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CWalletDB::WriteCScript</definition>
+        <argsstring>(const uint160 &amp;hash, const CScript &amp;redeemScript)</argsstring>
+        <name>WriteCScript</name>
+        <param>
+          <type>const <ref refid="classuint160" kindref="compound">uint160</ref> &amp;</type>
+          <declname>hash</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_script" kindref="compound">CScript</ref> &amp;</type>
+          <declname>redeemScript</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="125" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="124" bodyend="128"/>
+        <references refid="db_8cpp_1aad0b4d8ce794391063e82239d0a20b09" compoundref="db_8cpp" startline="24">nWalletDBUpdated</references>
+        <referencedby refid="class_c_wallet_1ad7edacad1c926bc4b7fe0dc1be95ce31" compoundref="wallet_8cpp" startline="154" endline="161">CWallet::AddCScript</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1a05e5a277f66010d12071a5d72cb4dfb0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CWalletDB::WriteWatchOnly</definition>
+        <argsstring>(const CScript &amp;script)</argsstring>
+        <name>WriteWatchOnly</name>
+        <param>
+          <type>const <ref refid="class_c_script" kindref="compound">CScript</ref> &amp;</type>
+          <declname>script</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="127" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="130" bodyend="134"/>
+        <references refid="db_8cpp_1aad0b4d8ce794391063e82239d0a20b09" compoundref="db_8cpp" startline="24">nWalletDBUpdated</references>
+        <referencedby refid="class_c_wallet_1a022f12d5f56bbe831136388e2ac19969" compoundref="wallet_8cpp" startline="184" endline="193">CWallet::AddWatchOnly</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1ad6e63f550853905fcd67ec9e7c3bef8b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CWalletDB::EraseWatchOnly</definition>
+        <argsstring>(const CScript &amp;script)</argsstring>
+        <name>EraseWatchOnly</name>
+        <param>
+          <type>const <ref refid="class_c_script" kindref="compound">CScript</ref> &amp;</type>
+          <declname>script</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="128" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="136" bodyend="140"/>
+        <references refid="db_8cpp_1aad0b4d8ce794391063e82239d0a20b09" compoundref="db_8cpp" startline="24">nWalletDBUpdated</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1a5660d366fee16ab81f3e7d3a97892486" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CWalletDB::WriteBestBlock</definition>
+        <argsstring>(const CBlockLocator &amp;locator)</argsstring>
+        <name>WriteBestBlock</name>
+        <param>
+          <type>const <ref refid="class_c_block_locator" kindref="compound">CBlockLocator</ref> &amp;</type>
+          <declname>locator</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="130" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="142" bodyend="146"/>
+        <references refid="db_8cpp_1aad0b4d8ce794391063e82239d0a20b09" compoundref="db_8cpp" startline="24">nWalletDBUpdated</references>
+        <referencedby refid="class_c_wallet_1a1697a92171b4359f49b38aed643cf92b" compoundref="wallet_8cpp" startline="335" endline="339">CWallet::SetBestChain</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1a20eecdac6605607ff7cba2f55ec86f73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CWalletDB::ReadBestBlock</definition>
+        <argsstring>(CBlockLocator &amp;locator)</argsstring>
+        <name>ReadBestBlock</name>
+        <param>
+          <type><ref refid="class_c_block_locator" kindref="compound">CBlockLocator</ref> &amp;</type>
+          <declname>locator</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="131" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="148" bodyend="151"/>
+        <referencedby refid="init_8h_1a1a4c1bfbf6ba1db77e988b89b9cadfd3" compoundref="init_8cpp" startline="375" endline="1285">AppInit2</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1a6a1f671e6376b38a1f73c8a023abdd38" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CWalletDB::WriteOrderPosNext</definition>
+        <argsstring>(int64_t nOrderPosNext)</argsstring>
+        <name>WriteOrderPosNext</name>
+        <param>
+          <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+          <declname>nOrderPosNext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="133" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="153" bodyend="157"/>
+        <references refid="db_8cpp_1aad0b4d8ce794391063e82239d0a20b09" compoundref="db_8cpp" startline="24">nWalletDBUpdated</references>
+        <referencedby refid="class_c_wallet_1a7a76d68661e6879651ac0b11f2893e58" compoundref="wallet_8cpp" startline="598" endline="608">CWallet::IncOrderPosNext</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1a1d925af18104900bddd19c968a0402b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CWalletDB::WriteDefaultKey</definition>
+        <argsstring>(const CPubKey &amp;vchPubKey)</argsstring>
+        <name>WriteDefaultKey</name>
+        <param>
+          <type>const <ref refid="class_c_pub_key" kindref="compound">CPubKey</ref> &amp;</type>
+          <declname>vchPubKey</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="135" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="159" bodyend="163"/>
+        <references refid="db_8cpp_1aad0b4d8ce794391063e82239d0a20b09" compoundref="db_8cpp" startline="24">nWalletDBUpdated</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1a6a03927cf247314ccd9b285139de0bd1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CWalletDB::ReadPool</definition>
+        <argsstring>(int64_t nPool, CKeyPool &amp;keypool)</argsstring>
+        <name>ReadPool</name>
+        <param>
+          <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+          <declname>nPool</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_key_pool" kindref="compound">CKeyPool</ref> &amp;</type>
+          <declname>keypool</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="137" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="165" bodyend="168"/>
+        <referencedby refid="class_c_wallet_1a9921854840668a1856998f041177dd2b" compoundref="wallet_8cpp" startline="4366" endline="4391">CWallet::ReserveKeyFromKeyPool</referencedby>
+        <referencedby refid="class_c_wallet_1afb9667058b54ae153b0897684ddb9f20" compoundref="wallet_8cpp" startline="4703" endline="4721">CWallet::GetAllReserveKeys</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1ad43630ad28a68c3e8b1a633f09aa0964" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CWalletDB::WritePool</definition>
+        <argsstring>(int64_t nPool, const CKeyPool &amp;keypool)</argsstring>
+        <name>WritePool</name>
+        <param>
+          <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+          <declname>nPool</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_key_pool" kindref="compound">CKeyPool</ref> &amp;</type>
+          <declname>keypool</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="138" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="170" bodyend="174"/>
+        <references refid="db_8cpp_1aad0b4d8ce794391063e82239d0a20b09" compoundref="db_8cpp" startline="24">nWalletDBUpdated</references>
+        <referencedby refid="class_c_wallet_1a7353ba1e79fc4167fbfbe79b41698fa7" compoundref="wallet_8cpp" startline="4307" endline="4329">CWallet::NewKeyPool</referencedby>
+        <referencedby refid="class_c_wallet_1aeeeca131336b2ec20cede9a2fccc203a" compoundref="wallet_8cpp" startline="4331" endline="4363">CWallet::TopUpKeyPool</referencedby>
+        <referencedby refid="class_c_wallet_1afecefdad197b3b021139cef1fd0e7a9b" compoundref="wallet_8cpp" startline="4393" endline="4406">CWallet::AddReserveKey</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1ac78d839fbda5164c4134ab67911139ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CWalletDB::ErasePool</definition>
+        <argsstring>(int64_t nPool)</argsstring>
+        <name>ErasePool</name>
+        <param>
+          <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+          <declname>nPool</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="139" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="176" bodyend="180"/>
+        <references refid="db_8cpp_1aad0b4d8ce794391063e82239d0a20b09" compoundref="db_8cpp" startline="24">nWalletDBUpdated</references>
+        <referencedby refid="class_c_wallet_1a7353ba1e79fc4167fbfbe79b41698fa7" compoundref="wallet_8cpp" startline="4307" endline="4329">CWallet::NewKeyPool</referencedby>
+        <referencedby refid="class_c_wallet_1ae460b8c824a1a6633615f95373e533f2" compoundref="wallet_8cpp" startline="4408" endline="4417">CWallet::KeepKey</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1ab008b6c6e09a60a988cac6e1a9e11886" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CWalletDB::WriteMinVersion</definition>
+        <argsstring>(int nVersion)</argsstring>
+        <name>WriteMinVersion</name>
+        <param>
+          <type>int</type>
+          <declname>nVersion</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="141" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="182" bodyend="185"/>
+        <referencedby refid="class_c_wallet_1afa48a3ee3096681650c8b9589579e9cb" compoundref="wallet_8cpp" startline="341" endline="366">CWallet::SetMinVersion</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1afa8d9d374072629b360adb49b9bdd584" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CWalletDB::ReadAccount</definition>
+        <argsstring>(const std::string &amp;strAccount, CAccount &amp;account)</argsstring>
+        <name>ReadAccount</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>strAccount</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_account" kindref="compound">CAccount</ref> &amp;</type>
+          <declname>account</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="143" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="187" bodyend="191"/>
+        <references refid="class_c_account_1ac63a4127fd899a21a5916a86588e809a" compoundref="wallet_8h" startline="1158" endline="1161">CAccount::SetNull</references>
+        <referencedby refid="rpcwallet_8cpp_1a19f70769435acea67b97050309dde6eb" compoundref="rpcwallet_8cpp" startline="253" endline="289">GetAccountAddress</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1afef640a4990f74fd5af7178c99415cf3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CWalletDB::WriteAccount</definition>
+        <argsstring>(const std::string &amp;strAccount, const CAccount &amp;account)</argsstring>
+        <name>WriteAccount</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>strAccount</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_account" kindref="compound">CAccount</ref> &amp;</type>
+          <declname>account</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="144" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="193" bodyend="196"/>
+        <referencedby refid="rpcwallet_8cpp_1a19f70769435acea67b97050309dde6eb" compoundref="rpcwallet_8cpp" startline="253" endline="289">GetAccountAddress</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1a958a0138b171e213be35f48933adcb89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CWalletDB::WriteAccountingEntry</definition>
+        <argsstring>(const CAccountingEntry &amp;acentry)</argsstring>
+        <name>WriteAccountingEntry</name>
+        <param>
+          <type>const <ref refid="class_c_accounting_entry" kindref="compound">CAccountingEntry</ref> &amp;</type>
+          <declname>acentry</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="148" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="203" bodyend="206"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1af924f6275a873e048699e6ef0bf66346" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="amount_8h_1a4eaf3a5239714d8c45b851527f7cb564" kindref="member">CAmount</ref></type>
+        <definition>CAmount CWalletDB::GetAccountCreditDebit</definition>
+        <argsstring>(const std::string &amp;strAccount)</argsstring>
+        <name>GetAccountCreditDebit</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>strAccount</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="149" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="208" bodyend="218"/>
+        <references refid="class_c_accounting_entry_1a3a0377685a688c97af2e40581e919b0f" compoundref="wallet_8h" startline="1182">CAccountingEntry::nCreditDebit</references>
+        <referencedby refid="rpcwallet_8cpp_1a5dd4970f17f0d3a59169b7fe82390d75" compoundref="rpcwallet_8cpp" startline="745" endline="768">GetAccountBalance</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1a51555c82291fe16081880110541e207f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CWalletDB::ListAccountCreditDebit</definition>
+        <argsstring>(const std::string &amp;strAccount, std::list&lt; CAccountingEntry &gt; &amp;acentries)</argsstring>
+        <name>ListAccountCreditDebit</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>strAccount</declname>
+        </param>
+        <param>
+          <type>std::list&lt; <ref refid="class_c_accounting_entry" kindref="compound">CAccountingEntry</ref> &gt; &amp;</type>
+          <declname>acentries</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="150" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="220" bodyend="261"/>
+        <references refid="serialize_8h_1a6b7b47dd702d9e331586d485013fd1eaa34949680c53028d35a449bf88b3c329d" compoundref="serialize_8h" startline="90">SER_DISK</references>
+        <references refid="class_c_accounting_entry_1a01434c1b0edad576bc1584c9b667ce1d" compoundref="wallet_8h" startline="1181">CAccountingEntry::strAccount</references>
+        <referencedby refid="rpcwallet_8cpp_1a0cd5dc1112a6c6d5a29a381cd7967fc5" compoundref="rpcwallet_8cpp" startline="1632" endline="1707">listaccounts</referencedby>
+        <referencedby refid="class_c_wallet_1a740572131004d77fbdb4617ec1aafb4a" compoundref="wallet_8cpp" startline="610" endline="633">CWallet::OrderedTxItems</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1afc27d9c9eef8b31851e6b02dc3191425" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="walletdb_8h_1a7558d92e9ea1d446075da1b514c4a944" kindref="member">DBErrors</ref></type>
+        <definition>DBErrors CWalletDB::ReorderTransactions</definition>
+        <argsstring>(CWallet *)</argsstring>
+        <name>ReorderTransactions</name>
+        <param>
+          <type><ref refid="class_c_wallet" kindref="compound">CWallet</ref> *</type>
+          <defname>pwallet</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="152" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="263" bodyend="337"/>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="class_c_wallet_1a4e6eb889f7638ed9695fdc0731581428" compoundref="wallet_8h" startline="131">CWallet::cs_wallet</references>
+        <references refid="class_c_wallet_1a0b17f72f2170090f2de43a6c48af3214" compoundref="wallet_8h" startline="192">CWallet::mapWallet</references>
+        <references refid="class_c_wallet_tx_1af4f4b58875061467026da7b259532b69" compoundref="wallet_8h" startline="537">CWalletTx::nTimeReceived</references>
+        <references refid="class_c_accounting_entry_1a416a4eb8d47e4c4cfdfc366d9d777ae6" compoundref="wallet_8h" startline="1183">CAccountingEntry::nTime</references>
+        <references refid="class_c_wallet_1af56cb17b19742506fc8d9449fc60884e" compoundref="wallet_8h" startline="193">CWallet::nOrderPosNext</references>
+        <references refid="class_c_wallet_tx_1af51e160ff1d9d78986e9f239c7ac7a35" compoundref="wallet_8h" startline="542">CWalletTx::nOrderPos</references>
+        <references refid="class_c_accounting_entry_1a9c5f78f13a657c1f1fc860a70ef072d5" compoundref="wallet_8h" startline="1187">CAccountingEntry::nOrderPos</references>
+        <references refid="class_c_transaction_1a3f8666d2a275c40da14bd5eaf47dc004" compoundref="transaction_8h" startline="309" endline="312">CTransaction::GetHash</references>
+        <references refid="walletdb_8h_1a7558d92e9ea1d446075da1b514c4a944ab5a338e1c914e0d9107fab0dbcd3c64c" compoundref="walletdb_8h" startline="37">DB_LOAD_FAIL</references>
+        <references refid="class_c_accounting_entry_1a0c35da8adbbc529238af70964e0d2b29" compoundref="wallet_8h" startline="1188">CAccountingEntry::nEntryNo</references>
+        <references refid="walletdb_8h_1a7558d92e9ea1d446075da1b514c4a944aa2367ec374804930406cea446fbb3fd2" compoundref="walletdb_8h" startline="33">DB_LOAD_OK</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1a14f26e53502d1a60dd2b034f830acf03" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="walletdb_8h_1a7558d92e9ea1d446075da1b514c4a944" kindref="member">DBErrors</ref></type>
+        <definition>DBErrors CWalletDB::LoadWallet</definition>
+        <argsstring>(CWallet *pwallet)</argsstring>
+        <name>LoadWallet</name>
+        <param>
+          <type><ref refid="class_c_wallet" kindref="compound">CWallet</ref> *</type>
+          <declname>pwallet</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="153" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="630" bodyend="730"/>
+        <references refid="class_c_wallet_1a6d415899e530a91e6e28dd0fa4ecef8d" compoundref="wallet_8h" startline="198">CWallet::vchDefaultKey</references>
+        <references refid="walletdb_8h_1a7558d92e9ea1d446075da1b514c4a944aa2367ec374804930406cea446fbb3fd2" compoundref="walletdb_8h" startline="33">DB_LOAD_OK</references>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="class_c_wallet_1a4e6eb889f7638ed9695fdc0731581428" compoundref="wallet_8h" startline="131">CWallet::cs_wallet</references>
+        <references refid="walletdb_8h_1a7558d92e9ea1d446075da1b514c4a944a0e0f7a1f3a38544a975bd97fba1eed58" compoundref="walletdb_8h" startline="36">DB_TOO_NEW</references>
+        <references refid="class_c_wallet_1a88317da8dab80135b8db73e945e15b60" compoundref="wallet_8h" startline="231" endline="231">CWallet::LoadMinVersion</references>
+        <references refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" compoundref="util_8h" startline="158">LogPrintf</references>
+        <references refid="walletdb_8h_1a7558d92e9ea1d446075da1b514c4a944a5eb73e7d323c832e22611f0ff94b1655" compoundref="walletdb_8h" startline="34">DB_CORRUPT</references>
+        <references refid="serialize_8h_1a6b7b47dd702d9e331586d485013fd1eaa34949680c53028d35a449bf88b3c329d" compoundref="serialize_8h" startline="90">SER_DISK</references>
+        <references refid="walletdb_8cpp_1ad1f171cf096f5479805a06fc20480343" compoundref="walletdb_8cpp" startline="357" endline="622">ReadKeyValue</references>
+        <references refid="util_8cpp_1acb3060cad083d342898b6055e43692ae" compoundref="util_8cpp" startline="569" endline="575">SoftSetBoolArg</references>
+        <references refid="walletdb_8h_1a7558d92e9ea1d446075da1b514c4a944ac83155a59a0d2ca8fc325075f58060c5" compoundref="walletdb_8h" startline="35">DB_NONCRITICAL_ERROR</references>
+        <references refid="class_c_wallet_scan_state_1ad68ce61566ee2baf3d7b04b1390942d1" compoundref="walletdb_8cpp" startline="346">CWalletScanState::nFileVersion</references>
+        <references refid="class_c_wallet_scan_state_1a8a6e0071320cbfffc6d7d49ded5d506e" compoundref="walletdb_8cpp" startline="341">CWalletScanState::nKeys</references>
+        <references refid="class_c_wallet_scan_state_1ae1316ee4cfdf8fbff91ca32a5d0f2b6a" compoundref="walletdb_8cpp" startline="342">CWalletScanState::nCKeys</references>
+        <references refid="class_c_wallet_scan_state_1a2cfbc8894839188b57be22e72f2d6de4" compoundref="walletdb_8cpp" startline="343">CWalletScanState::nKeyMeta</references>
+        <references refid="class_c_wallet_1a817c0d1034377a7bd70a714140a5a8ca" compoundref="wallet_8h" startline="202">CWallet::nTimeFirstKey</references>
+        <references refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" compoundref="cache_8cc" startline="34">hash</references>
+        <references refid="class_c_wallet_scan_state_1a6cbf626ca5a0275f0469684f22dff12f" compoundref="walletdb_8cpp" startline="347">CWalletScanState::vWalletUpgrade</references>
+        <references refid="class_c_wallet_1a0b17f72f2170090f2de43a6c48af3214" compoundref="wallet_8h" startline="192">CWallet::mapWallet</references>
+        <references refid="class_c_wallet_scan_state_1a13c5139c5966079d1be4c739666c5243" compoundref="walletdb_8cpp" startline="344">CWalletScanState::fIsEncrypted</references>
+        <references refid="walletdb_8h_1a7558d92e9ea1d446075da1b514c4a944aef89bee2c244fcd980d6cf7edc5bf2d6" compoundref="walletdb_8h" startline="38">DB_NEED_REWRITE</references>
+        <references refid="class_c_wallet_scan_state_1acafa7b6a27ec1a4714e9a7b331067e9d" compoundref="walletdb_8cpp" startline="345">CWalletScanState::fAnyUnordered</references>
+        <referencedby refid="class_c_wallet_1a5d7b244b8ed0cbe24233ee0b6ca3cae0" compoundref="wallet_8cpp" startline="4222" endline="4243">CWallet::LoadWallet</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_c_wallet_d_b_1a6e55d6f2f1d12f9f8eab4074d174b05c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CWalletDB::CWalletDB</definition>
+        <argsstring>(const CWalletDB &amp;)</argsstring>
+        <name>CWalletDB</name>
+        <param>
+          <type>const <ref refid="class_c_wallet_d_b" kindref="compound">CWalletDB</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="106" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1af6eefbb4ba6228dddd140429b2f9c829" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CWalletDB::operator=</definition>
+        <argsstring>(const CWalletDB &amp;)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="class_c_wallet_d_b" kindref="compound">CWalletDB</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="107" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1ad96920c48370b68b08f9530516edecf2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CWalletDB::WriteAccountingEntry</definition>
+        <argsstring>(const uint64_t nAccEntryNum, const CAccountingEntry &amp;acentry)</argsstring>
+        <name>WriteAccountingEntry</name>
+        <param>
+          <type>const <ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref></type>
+          <declname>nAccEntryNum</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_accounting_entry" kindref="compound">CAccountingEntry</ref> &amp;</type>
+          <declname>acentry</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="146" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="198" bodyend="201"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_c_wallet_d_b_1a3ebeb12f37d9c66512e2bc2903a6854a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CWalletDB::Recover</definition>
+        <argsstring>(CDBEnv &amp;dbenv, std::string filename, bool fOnlyKeys)</argsstring>
+        <name>Recover</name>
+        <param>
+          <type><ref refid="class_c_d_b_env" kindref="compound">CDBEnv</ref> &amp;</type>
+          <declname>dbenv</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>fOnlyKeys</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="154" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="837" bodyend="913"/>
+        <references refid="util_8cpp_1a46fac5fba8ba905b5f9acb364f5d8c6f" compoundref="util_8cpp" startline="1352" endline="1357">GetTime</references>
+        <references refid="tinyformat_8h_1a56c674871a61baaad36ad52238c08857" compoundref="tinyformat_8h" startline="1011">strprintf</references>
+        <references refid="class_c_d_b_env_1a50a70690e7f688f5e92a972e7fa18668" compoundref="db_8h" startline="46">CDBEnv::dbenv</references>
+        <references refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" compoundref="util_8h" startline="158">LogPrintf</references>
+        <references refid="class_c_d_b_env_1a08726637bff0809ab9c7c493383a3914" compoundref="db_8cpp" startline="167" endline="219">CDBEnv::Salvage</references>
+        <references refid="class_c_d_b_env_1a5f1daab338b2098ea693efad6edefb9b" compoundref="db_8h" startline="81" endline="88">CDBEnv::TxnBegin</references>
+        <references refid="serialize_8h_1a6b7b47dd702d9e331586d485013fd1eaa34949680c53028d35a449bf88b3c329d" compoundref="serialize_8h" startline="90">SER_DISK</references>
+        <references refid="walletdb_8cpp_1ad1f171cf096f5479805a06fc20480343" compoundref="walletdb_8cpp" startline="357" endline="622">ReadKeyValue</references>
+        <referencedby refid="init_8h_1a1a4c1bfbf6ba1db77e988b89b9cadfd3" compoundref="init_8cpp" startline="375" endline="1285">AppInit2</referencedby>
+        <referencedby refid="class_c_wallet_d_b_1a44388f1c3ee63191dcb78b1001e9390c" compoundref="walletdb_8cpp" startline="915" endline="918">Recover</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_wallet_d_b_1a44388f1c3ee63191dcb78b1001e9390c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CWalletDB::Recover</definition>
+        <argsstring>(CDBEnv &amp;dbenv, std::string filename)</argsstring>
+        <name>Recover</name>
+        <param>
+          <type><ref refid="class_c_d_b_env" kindref="compound">CDBEnv</ref> &amp;</type>
+          <declname>dbenv</declname>
+        </param>
+        <param>
+          <type>std::string</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/walletdb.h" line="155" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.cpp" bodystart="915" bodyend="918"/>
+        <references refid="class_c_wallet_d_b_1a3ebeb12f37d9c66512e2bc2903a6854a" compoundref="walletdb_8cpp" startline="837" endline="913">Recover</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Access to the wallet database (wallet.dat) </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="2938">
+        <label>CDB</label>
+        <link refid="class_c_d_b"/>
+      </node>
+      <node id="2937">
+        <label>CWalletDB</label>
+        <link refid="class_c_wallet_d_b"/>
+        <childnode refid="2938" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2940">
+        <label>CDB</label>
+        <link refid="class_c_d_b"/>
+      </node>
+      <node id="2939">
+        <label>CWalletDB</label>
+        <link refid="class_c_wallet_d_b"/>
+        <childnode refid="2940" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/dev/ds-160209/src/walletdb.h" line="100" column="1" bodyfile="/home/dev/ds-160209/src/walletdb.h" bodystart="99" bodyend="156"/>
+    <listofallmembers>
+      <member refid="class_c_d_b_1ac06d74a2d113f593869d2f93188a0adc" prot="protected" virt="non-virtual"><scope>CWalletDB</scope><name>activeTxn</name></member>
+      <member refid="class_c_d_b_1aa5f2317ab28c6424bfebdaa969aa2b2c" prot="protected" virt="non-virtual"><scope>CWalletDB</scope><name>CDB</name></member>
+      <member refid="class_c_d_b_1af8bbf106662d67cdfdd6d58c429bc54b" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>Close</name></member>
+      <member refid="class_c_wallet_d_b_1abb8766ee5b03e8115438726c625f88a7" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>CWalletDB</name></member>
+      <member refid="class_c_wallet_d_b_1a6e55d6f2f1d12f9f8eab4074d174b05c" prot="private" virt="non-virtual"><scope>CWalletDB</scope><name>CWalletDB</name></member>
+      <member refid="class_c_d_b_1a3f7e1ba9dd41de3fb1525d789405a6c3" prot="protected" virt="non-virtual"><scope>CWalletDB</scope><name>Erase</name></member>
+      <member refid="class_c_wallet_d_b_1a319209fcf90ea860b668b92c44a3fa7a" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>EraseName</name></member>
+      <member refid="class_c_wallet_d_b_1ac78d839fbda5164c4134ab67911139ca" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>ErasePool</name></member>
+      <member refid="class_c_wallet_d_b_1a401ec8ec6c7e38cf87be9b92f95052a4" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>EraseStealthKeyMeta</name></member>
+      <member refid="class_c_wallet_d_b_1a498e00c693cacc4b558e6f5295ea32f2" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>EraseTx</name></member>
+      <member refid="class_c_wallet_d_b_1ad6e63f550853905fcd67ec9e7c3bef8b" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>EraseWatchOnly</name></member>
+      <member refid="class_c_d_b_1a5f7d7854dcbcec1b1f85bc6a0008563e" prot="protected" virt="non-virtual"><scope>CWalletDB</scope><name>Exists</name></member>
+      <member refid="class_c_d_b_1ab4a0447a8d19b4871b9fcc40edee9480" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>Flush</name></member>
+      <member refid="class_c_d_b_1a92ca6c13982a03afdb846588a61608fc" prot="protected" virt="non-virtual"><scope>CWalletDB</scope><name>fReadOnly</name></member>
+      <member refid="class_c_wallet_d_b_1af924f6275a873e048699e6ef0bf66346" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>GetAccountCreditDebit</name></member>
+      <member refid="class_c_d_b_1a5ea1cb8e2f2e9ad357d5e37619eabed2" prot="protected" virt="non-virtual"><scope>CWalletDB</scope><name>GetCursor</name></member>
+      <member refid="class_c_wallet_d_b_1a51555c82291fe16081880110541e207f" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>ListAccountCreditDebit</name></member>
+      <member refid="class_c_wallet_d_b_1a14f26e53502d1a60dd2b034f830acf03" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>LoadWallet</name></member>
+      <member refid="class_c_wallet_d_b_1af6eefbb4ba6228dddd140429b2f9c829" prot="private" virt="non-virtual"><scope>CWalletDB</scope><name>operator=</name></member>
+      <member refid="class_c_d_b_1a4520f55d31246fc06d80f72b5dd62253" prot="protected" virt="non-virtual"><scope>CWalletDB</scope><name>pdb</name></member>
+      <member refid="class_c_d_b_1adfd2c079df629d5f7cac0ca923ffd698" prot="protected" virt="non-virtual"><scope>CWalletDB</scope><name>Read</name></member>
+      <member refid="class_c_wallet_d_b_1afa8d9d374072629b360adb49b9bdd584" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>ReadAccount</name></member>
+      <member refid="class_c_d_b_1aa3f7c529fd233c106dca32845b593232" prot="protected" virt="non-virtual"><scope>CWalletDB</scope><name>ReadAtCursor</name></member>
+      <member refid="class_c_wallet_d_b_1a20eecdac6605607ff7cba2f55ec86f73" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>ReadBestBlock</name></member>
+      <member refid="class_c_wallet_d_b_1a6a03927cf247314ccd9b285139de0bd1" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>ReadPool</name></member>
+      <member refid="class_c_wallet_d_b_1aebcc02069f91916c652d4e3e13be0f0b" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>ReadStealthAddress</name></member>
+      <member refid="class_c_d_b_1a16f591e27f41397570018c1fae084025" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>ReadVersion</name></member>
+      <member refid="class_c_wallet_d_b_1a3ebeb12f37d9c66512e2bc2903a6854a" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>Recover</name></member>
+      <member refid="class_c_wallet_d_b_1a44388f1c3ee63191dcb78b1001e9390c" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>Recover</name></member>
+      <member refid="class_c_wallet_d_b_1afc27d9c9eef8b31851e6b02dc3191425" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>ReorderTransactions</name></member>
+      <member refid="class_c_d_b_1acfb8a373edb9c4cfab780fb7578b277e" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>Rewrite</name></member>
+      <member refid="class_c_d_b_1a15c6112d9db9dcc5f11a2c05d9aa74a5" prot="protected" virt="non-virtual"><scope>CWalletDB</scope><name>strFile</name></member>
+      <member refid="class_c_d_b_1af9b0924f1ca98e0544e78e9bb58b4f03" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>TxnAbort</name></member>
+      <member refid="class_c_d_b_1a6f817da7947e1498e44034b7a1c8ac10" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>TxnBegin</name></member>
+      <member refid="class_c_d_b_1a45061b3e71251dc74ddd868afb760590" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>TxnCommit</name></member>
+      <member refid="class_c_d_b_1a7fb5b4fa36e57e17287f2c1c762bd708" prot="protected" virt="non-virtual"><scope>CWalletDB</scope><name>Write</name></member>
+      <member refid="class_c_wallet_d_b_1afef640a4990f74fd5af7178c99415cf3" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>WriteAccount</name></member>
+      <member refid="class_c_wallet_d_b_1ad96920c48370b68b08f9530516edecf2" prot="private" virt="non-virtual"><scope>CWalletDB</scope><name>WriteAccountingEntry</name></member>
+      <member refid="class_c_wallet_d_b_1a958a0138b171e213be35f48933adcb89" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>WriteAccountingEntry</name></member>
+      <member refid="class_c_wallet_d_b_1a5660d366fee16ab81f3e7d3a97892486" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>WriteBestBlock</name></member>
+      <member refid="class_c_wallet_d_b_1a914fb53d1731daf9b486f164dd325210" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>WriteCryptedKey</name></member>
+      <member refid="class_c_wallet_d_b_1a8c69e48e2305775898658e0a4f4616c9" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>WriteCScript</name></member>
+      <member refid="class_c_wallet_d_b_1a1d925af18104900bddd19c968a0402b5" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>WriteDefaultKey</name></member>
+      <member refid="class_c_wallet_d_b_1a7ebef5e0c7f604aa2159ba96d527e3a2" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>WriteKey</name></member>
+      <member refid="class_c_wallet_d_b_1a507690da431ef61244941ad39c308aeb" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>WriteMasterKey</name></member>
+      <member refid="class_c_wallet_d_b_1ab008b6c6e09a60a988cac6e1a9e11886" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>WriteMinVersion</name></member>
+      <member refid="class_c_wallet_d_b_1ad1b3bce77e9dd6ddd8c668a469c38f0a" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>WriteName</name></member>
+      <member refid="class_c_wallet_d_b_1a6a1f671e6376b38a1f73c8a023abdd38" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>WriteOrderPosNext</name></member>
+      <member refid="class_c_wallet_d_b_1ad43630ad28a68c3e8b1a633f09aa0964" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>WritePool</name></member>
+      <member refid="class_c_wallet_d_b_1a2bce6f7f050d6d14e2c025a7beba2cfc" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>WriteStealthAddress</name></member>
+      <member refid="class_c_wallet_d_b_1a68428260802d8acd1a6f87f92b991841" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>WriteStealthKeyMeta</name></member>
+      <member refid="class_c_wallet_d_b_1a76d2ca02898221ab66df5d5f7491164e" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>WriteTx</name></member>
+      <member refid="class_c_d_b_1aa3e63c0921af4c6fc92def1ba14500f1" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>WriteVersion</name></member>
+      <member refid="class_c_wallet_d_b_1a05e5a277f66010d12071a5d72cb4dfb0" prot="public" virt="non-virtual"><scope>CWalletDB</scope><name>WriteWatchOnly</name></member>
+      <member refid="class_c_d_b_1af4f5b02f07e4c381c17c926bc6853bf7" prot="protected" virt="non-virtual"><scope>CWalletDB</scope><name>~CDB</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

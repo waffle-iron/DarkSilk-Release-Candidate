@@ -1,0 +1,106 @@
+.TH "/home/dev/ds-160209/src/stealth.cpp" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/stealth.cpp \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'stealth\&.h'\fP
+.br
+\fC#include 'base58\&.h'\fP
+.br
+\fC#include <openssl/rand\&.h>\fP
+.br
+\fC#include <openssl/ec\&.h>\fP
+.br
+\fC#include <openssl/ecdsa\&.h>\fP
+.br
+\fC#include <openssl/obj_mac\&.h>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBuint32_t\fP \fBDarkSilkChecksum\fP (\fBuint8_t\fP *p, \fBuint32_t\fP nBytes)"
+.br
+.ti -1c
+.RI "void \fBAppendChecksum\fP (\fBdata_chunk\fP &data)"
+.br
+.ti -1c
+.RI "bool \fBVerifyChecksum\fP (const \fBdata_chunk\fP &data)"
+.br
+.ti -1c
+.RI "int \fBGenerateRandomSecret\fP (\fBec_secret\fP &out)"
+.br
+.ti -1c
+.RI "int \fBSecretToPublicKey\fP (const \fBec_secret\fP &secret, \fBec_point\fP &out)"
+.br
+.ti -1c
+.RI "int \fBStealthSecret\fP (\fBec_secret\fP &secret, \fBec_point\fP &pubkey, const \fBec_point\fP &pkSpend, \fBec_secret\fP &sharedSOut, \fBec_point\fP &pkOut)"
+.br
+.ti -1c
+.RI "int \fBStealthSecretSpend\fP (\fBec_secret\fP &scanSecret, \fBec_point\fP &ephemPubkey, \fBec_secret\fP &spendSecret, \fBec_secret\fP &secretOut)"
+.br
+.ti -1c
+.RI "int \fBStealthSharedToSecretSpend\fP (\fBec_secret\fP &sharedS, \fBec_secret\fP &spendSecret, \fBec_secret\fP &secretOut)"
+.br
+.ti -1c
+.RI "bool \fBIsStealthAddress\fP (const std::string &encodedAddress)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "const \fBuint8_t\fP \fBstealth_version_byte\fP = 0x4b"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void AppendChecksum (\fBdata_chunk\fP & data)"
+
+.PP
+Definition at line 104 of file stealth\&.cpp\&.
+.SS "\fBuint32_t\fP DarkSilkChecksum (\fBuint8_t\fP * p, \fBuint32_t\fP nBytes)"
+
+.PP
+Definition at line 88 of file stealth\&.cpp\&.
+.SS "int GenerateRandomSecret (\fBec_secret\fP & out)"
+
+.PP
+Definition at line 132 of file stealth\&.cpp\&.
+.SS "bool IsStealthAddress (const std::string & encodedAddress)"
+
+.PP
+Definition at line 649 of file stealth\&.cpp\&.
+.SS "int SecretToPublicKey (const \fBec_secret\fP & secret, \fBec_point\fP & out)"
+
+.PP
+Definition at line 162 of file stealth\&.cpp\&.
+.SS "int StealthSecret (\fBec_secret\fP & secret, \fBec_point\fP & pubkey, const \fBec_point\fP & pkSpend, \fBec_secret\fP & sharedSOut, \fBec_point\fP & pkOut)"
+
+.PP
+Definition at line 214 of file stealth\&.cpp\&.
+.SS "int StealthSecretSpend (\fBec_secret\fP & scanSecret, \fBec_point\fP & ephemPubkey, \fBec_secret\fP & spendSecret, \fBec_secret\fP & secretOut)"
+
+.PP
+Definition at line 419 of file stealth\&.cpp\&.
+.SS "int StealthSharedToSecretSpend (\fBec_secret\fP & sharedS, \fBec_secret\fP & spendSecret, \fBec_secret\fP & secretOut)"
+
+.PP
+Definition at line 567 of file stealth\&.cpp\&.
+.SS "bool VerifyChecksum (const \fBdata_chunk\fP & data)"
+
+.PP
+Definition at line 121 of file stealth\&.cpp\&.
+.SH "Variable Documentation"
+.PP 
+.SS "const \fBuint8_t\fP stealth_version_byte = 0x4b"
+
+.PP
+Definition at line 14 of file stealth\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

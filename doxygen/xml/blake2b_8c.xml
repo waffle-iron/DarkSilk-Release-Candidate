@@ -1,0 +1,927 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="blake2b_8c" kind="file" language="C++">
+    <compoundname>blake2b.c</compoundname>
+    <includes refid="stdint_8h" local="no">stdint.h</includes>
+    <includes local="no">string.h</includes>
+    <includes local="no">stdio.h</includes>
+    <includes refid="blake2_8h" local="yes">blake2.h</includes>
+    <includes refid="blake2-impl_8h" local="yes">blake2-impl.h</includes>
+    <incdepgraph>
+      <node id="33415">
+        <label>blake2.h</label>
+        <link refid="blake2_8h"/>
+        <childnode refid="33416" relation="include">
+        </childnode>
+        <childnode refid="33412" relation="include">
+        </childnode>
+        <childnode refid="33417" relation="include">
+        </childnode>
+      </node>
+      <node id="33416">
+        <label>stddef.h</label>
+      </node>
+      <node id="33411">
+        <label>/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c</label>
+        <link refid="blake2b.c"/>
+        <childnode refid="33412" relation="include">
+        </childnode>
+        <childnode refid="33413" relation="include">
+        </childnode>
+        <childnode refid="33414" relation="include">
+        </childnode>
+        <childnode refid="33415" relation="include">
+        </childnode>
+        <childnode refid="33418" relation="include">
+        </childnode>
+      </node>
+      <node id="33418">
+        <label>blake2-impl.h</label>
+        <link refid="blake2-impl_8h"/>
+        <childnode refid="33412" relation="include">
+        </childnode>
+        <childnode refid="33413" relation="include">
+        </childnode>
+      </node>
+      <node id="33417">
+        <label>limits.h</label>
+      </node>
+      <node id="33413">
+        <label>string.h</label>
+      </node>
+      <node id="33412">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="33414">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="blake2b_8c_1a4fbc796e307d9128c5de14d17c3de42a" prot="public" static="no">
+        <name>G</name>
+        <param><defname>r</defname></param>
+        <param><defname>i</defname></param>
+        <param><defname>a</defname></param>
+        <param><defname>b</defname></param>
+        <param><defname>c</defname></param>
+        <param><defname>d</defname></param>
+        <initializer>do {                                                                       \
+        a = a + b + m[blake2b_sigma[r][2 * i + 0]];                            \
+        d = rotr64(d ^ a, 32);                                                 \
+        c = c + d;                                                             \
+        b = rotr64(b ^ c, 24);                                                 \
+        a = a + b + m[blake2b_sigma[r][2 * i + 1]];                            \
+        d = rotr64(d ^ a, 16);                                                 \
+        c = c + d;                                                             \
+        b = rotr64(b ^ c, 63);                                                 \
+    } while ((void)0, 0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" line="170" column="9"/>
+      </memberdef>
+      <memberdef kind="define" id="blake2b_8c_1ab35e822e8226ebfbc2122810b5ac5827" prot="public" static="no">
+        <name>ROUND</name>
+        <param><defname>r</defname></param>
+        <initializer>do {                                                                       \
+        <ref refid="blamka-round-ref_8h_1a4770411521cb86ce3f7758c3d73d018b" kindref="member">G</ref>(r, 0, v[0], v[4], v[8], v[12]);                                      \
+        <ref refid="blamka-round-ref_8h_1a4770411521cb86ce3f7758c3d73d018b" kindref="member">G</ref>(r, 1, v[1], v[5], v[9], v[13]);                                      \
+        <ref refid="blamka-round-ref_8h_1a4770411521cb86ce3f7758c3d73d018b" kindref="member">G</ref>(r, 2, v[2], v[6], v[10], v[14]);                                     \
+        <ref refid="blamka-round-ref_8h_1a4770411521cb86ce3f7758c3d73d018b" kindref="member">G</ref>(r, 3, v[3], v[7], v[11], v[15]);                                     \
+        <ref refid="blamka-round-ref_8h_1a4770411521cb86ce3f7758c3d73d018b" kindref="member">G</ref>(r, 4, v[0], v[5], v[10], v[15]);                                     \
+        <ref refid="blamka-round-ref_8h_1a4770411521cb86ce3f7758c3d73d018b" kindref="member">G</ref>(r, 5, v[1], v[6], v[11], v[12]);                                     \
+        <ref refid="blamka-round-ref_8h_1a4770411521cb86ce3f7758c3d73d018b" kindref="member">G</ref>(r, 6, v[2], v[7], v[8], v[13]);                                      \
+        <ref refid="blamka-round-ref_8h_1a4770411521cb86ce3f7758c3d73d018b" kindref="member">G</ref>(r, 7, v[3], v[4], v[9], v[14]);                                      \
+    } while ((void)0, 0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" line="182" column="9"/>
+      </memberdef>
+      <memberdef kind="define" id="blake2b_8c_1a9631a68bc0c927f3d068b07ee8d052ff" prot="public" static="no">
+        <name>TRY</name>
+        <param><defname>statement</defname></param>
+        <initializer>do {                                                                       \
+        ret = statement;                                                       \
+        if (ret &lt; 0) {                                                         \
+            goto fail;                                                         \
+        }                                                                      \
+    } while ((void)0, 0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" line="328" column="9"/>
+        <referencedby refid="blake2b_8c_1a9b077c7edb6f72a00f66c3db94ae6398" compoundref="blake2b_8c" startline="315" endline="371">blake2b_long</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="blake2b_8c_1a6943aa3c6f07a582e3f9acb68de5afa8" prot="public" static="yes" mutable="no">
+        <type>const <ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref></type>
+        <definition>const uint64_t blake2b_IV[8]</definition>
+        <argsstring>[8]</argsstring>
+        <name>blake2b_IV</name>
+        <initializer>= {
+    UINT64_C(0x6a09e667f3bcc908), UINT64_C(0xbb67ae8584caa73b),
+    UINT64_C(0x3c6ef372fe94f82b), UINT64_C(0xa54ff53a5f1d36f1),
+    UINT64_C(0x510e527fade682d1), UINT64_C(0x9b05688c2b3e6c1f),
+    UINT64_C(0x1f83d9abfb41bd6b), UINT64_C(0x5be0cd19137e2179)}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" line="8" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" bodystart="8" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="blake2b_8c_1a301808184819bbaef0a5f4ccbe2832a5" prot="public" static="yes" mutable="no">
+        <type>const unsigned int</type>
+        <definition>const unsigned int blake2b_sigma[12][16]</definition>
+        <argsstring>[12][16]</argsstring>
+        <name>blake2b_sigma</name>
+        <initializer>= {
+    {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
+    {14, 10, 4, 8, 9, 15, 13, 6, 1, 12, 0, 2, 11, 7, 5, 3},
+    {11, 8, 12, 0, 5, 2, 15, 13, 10, 14, 3, 6, 7, 1, 9, 4},
+    {7, 9, 3, 1, 13, 12, 11, 14, 2, 6, 5, 10, 4, 0, 15, 8},
+    {9, 0, 5, 7, 2, 4, 10, 15, 14, 1, 11, 12, 6, 8, 3, 13},
+    {2, 12, 6, 10, 0, 11, 8, 3, 4, 13, 7, 5, 15, 14, 1, 9},
+    {12, 5, 1, 15, 14, 13, 4, 10, 0, 7, 6, 3, 9, 2, 8, 11},
+    {13, 11, 7, 14, 12, 1, 3, 9, 5, 0, 15, 4, 8, 6, 2, 10},
+    {6, 15, 14, 9, 11, 3, 0, 8, 12, 2, 13, 7, 1, 4, 10, 5},
+    {10, 2, 8, 4, 7, 6, 1, 5, 15, 11, 9, 14, 3, 12, 13, 0},
+    {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15},
+    {14, 10, 4, 8, 9, 15, 13, 6, 1, 12, 0, 2, 11, 7, 5, 3},
+}</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" line="14" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" bodystart="14" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="blake2b_8c_1aa5bea407efdfdc64409e0103bc5eb58a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="blake2-impl_8h_1aa47358e2e39f403db8cddffec65337f7" kindref="member">BLAKE2_INLINE</ref> void</type>
+        <definition>static BLAKE2_INLINE void blake2b_set_lastnode</definition>
+        <argsstring>(blake2b_state *S)</argsstring>
+        <name>blake2b_set_lastnode</name>
+        <param>
+          <type><ref refid="blake2_8h_1ab1b4d29c36c4f253d26934adc80bf5c6" kindref="member">blake2b_state</ref> *</type>
+          <declname>S</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" line="29" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" bodystart="29" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="blake2b_8c_1a641709303396ab83013766dfa1cb1b47" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="blake2-impl_8h_1aa47358e2e39f403db8cddffec65337f7" kindref="member">BLAKE2_INLINE</ref> void</type>
+        <definition>static BLAKE2_INLINE void blake2b_set_lastblock</definition>
+        <argsstring>(blake2b_state *S)</argsstring>
+        <name>blake2b_set_lastblock</name>
+        <param>
+          <type><ref refid="blake2_8h_1ab1b4d29c36c4f253d26934adc80bf5c6" kindref="member">blake2b_state</ref> *</type>
+          <declname>S</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" line="33" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" bodystart="33" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="blake2b_8c_1ab4c0a597af8aa0571b14465514a07289" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="blake2-impl_8h_1aa47358e2e39f403db8cddffec65337f7" kindref="member">BLAKE2_INLINE</ref> void</type>
+        <definition>static BLAKE2_INLINE void blake2b_increment_counter</definition>
+        <argsstring>(blake2b_state *S, uint64_t inc)</argsstring>
+        <name>blake2b_increment_counter</name>
+        <param>
+          <type><ref refid="blake2_8h_1ab1b4d29c36c4f253d26934adc80bf5c6" kindref="member">blake2b_state</ref> *</type>
+          <declname>S</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref></type>
+          <declname>inc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" line="40" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" bodystart="40" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="blake2b_8c_1ab14737bcc0bf83c327739199144f371a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="blake2-impl_8h_1aa47358e2e39f403db8cddffec65337f7" kindref="member">BLAKE2_INLINE</ref> void</type>
+        <definition>static BLAKE2_INLINE void blake2b_invalidate_state</definition>
+        <argsstring>(blake2b_state *S)</argsstring>
+        <name>blake2b_invalidate_state</name>
+        <param>
+          <type><ref refid="blake2_8h_1ab1b4d29c36c4f253d26934adc80bf5c6" kindref="member">blake2b_state</ref> *</type>
+          <declname>S</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" line="46" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" bodystart="46" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="blake2b_8c_1a0c9ff1bb067f01a16780d1e71d614717" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="blake2-impl_8h_1aa47358e2e39f403db8cddffec65337f7" kindref="member">BLAKE2_INLINE</ref> void</type>
+        <definition>static BLAKE2_INLINE void blake2b_init0</definition>
+        <argsstring>(blake2b_state *S)</argsstring>
+        <name>blake2b_init0</name>
+        <param>
+          <type><ref refid="blake2_8h_1ab1b4d29c36c4f253d26934adc80bf5c6" kindref="member">blake2b_state</ref> *</type>
+          <declname>S</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" line="51" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" bodystart="51" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="blake2b_8c_1ae453d8f2798df27cd1f4ea9b00b3a520" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int blake2b_init_param</definition>
+        <argsstring>(blake2b_state *S, const blake2b_param *P)</argsstring>
+        <name>blake2b_init_param</name>
+        <param>
+          <type><ref refid="blake2_8h_1ab1b4d29c36c4f253d26934adc80bf5c6" kindref="member">blake2b_state</ref> *</type>
+          <declname>S</declname>
+        </param>
+        <param>
+          <type>const <ref refid="blake2_8h_1a4a3606372fda93b1b333db57b6ddb354" kindref="member">blake2b_param</ref> *</type>
+          <declname>P</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" line="56" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" bodystart="56" bodyend="71"/>
+        <references refid="struct____blake2b__state_1a98f8e01951c0944e82dff97c9a5ae700" compoundref="blake2_8h" startline="37">__blake2b_state::h</references>
+        <references refid="struct____blake2b__state_1aa5803608622e985dd48d6b36f8761a57" compoundref="blake2_8h" startline="42">__blake2b_state::outlen</references>
+        <references refid="struct____blake2b__param_1acf01a39fc0926ef22177a9bda686163f" compoundref="blake2_8h" startline="22">__blake2b_param::digest_length</references>
+        <referencedby refid="blake2b_8c_1a7cefd211bfec58d37d8b67741955ce8a" compoundref="blake2b_8c" startline="74" endline="100">blake2b_init</referencedby>
+        <referencedby refid="blake2b_8c_1a039b52f87e2ba0ca16ebbc62bfd3f02a" compoundref="blake2b_8c" startline="102" endline="146">blake2b_init_key</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="blake2b_8c_1a7cefd211bfec58d37d8b67741955ce8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int blake2b_init</definition>
+        <argsstring>(blake2b_state *S, size_t outlen)</argsstring>
+        <name>blake2b_init</name>
+        <param>
+          <type><ref refid="blake2_8h_1ab1b4d29c36c4f253d26934adc80bf5c6" kindref="member">blake2b_state</ref> *</type>
+          <declname>S</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>outlen</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" line="74" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" bodystart="74" bodyend="100"/>
+        <references refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" compoundref="blake2_8h" startline="14">BLAKE2B_OUTBYTES</references>
+        <references refid="struct____blake2b__param_1acf01a39fc0926ef22177a9bda686163f" compoundref="blake2_8h" startline="22">__blake2b_param::digest_length</references>
+        <references refid="struct____blake2b__param_1af01234225a1b6d0dce3e6c6709af01fa" compoundref="blake2_8h" startline="23">__blake2b_param::key_length</references>
+        <references refid="struct____blake2b__param_1acb6bd7b19ce82dbfc6968bfaef5ddb31" compoundref="blake2_8h" startline="24">__blake2b_param::fanout</references>
+        <references refid="struct____blake2b__param_1ad7bf5379885d9b50022af74eae90a525" compoundref="blake2_8h" startline="25">__blake2b_param::depth</references>
+        <references refid="struct____blake2b__param_1a960e7c6fed53742f78acd3b6bcb93c71" compoundref="blake2_8h" startline="26">__blake2b_param::leaf_length</references>
+        <references refid="struct____blake2b__param_1ada6a88bf4b6f3e08132df538e6c63285" compoundref="blake2_8h" startline="27">__blake2b_param::node_offset</references>
+        <references refid="struct____blake2b__param_1aa1b2a90e439a538f609032d3bf852751" compoundref="blake2_8h" startline="28">__blake2b_param::node_depth</references>
+        <references refid="struct____blake2b__param_1a8a299b985fc0aee524628a9863d1839e" compoundref="blake2_8h" startline="29">__blake2b_param::inner_length</references>
+        <references refid="struct____blake2b__param_1a03f80ec4887f254dabe4baa9626fd5ab" compoundref="blake2_8h" startline="30">__blake2b_param::reserved</references>
+        <references refid="struct____blake2b__param_1ad53420f1ce170abad76166fe101a46b5" compoundref="blake2_8h" startline="31">__blake2b_param::salt</references>
+        <references refid="struct____blake2b__param_1af8ec1991e3458f8c8cddb70fd0ee7ce5" compoundref="blake2_8h" startline="32">__blake2b_param::personal</references>
+        <references refid="blake2b_8c_1ae453d8f2798df27cd1f4ea9b00b3a520" compoundref="blake2b_8c" startline="56" endline="71">blake2b_init_param</references>
+        <referencedby refid="blake2b_8c_1a5cf706554b84e6b4d763084ecefd6391" compoundref="blake2b_8c" startline="276" endline="312">blake2b</referencedby>
+        <referencedby refid="blake2b_8c_1a9b077c7edb6f72a00f66c3db94ae6398" compoundref="blake2b_8c" startline="315" endline="371">blake2b_long</referencedby>
+        <referencedby refid="core_8h_1a777bb6205a6ad0da9b85a7c2ae61f7c8" compoundref="core_8c" startline="485" endline="557">initial_hash</referencedby>
+        <referencedby refid="hash_8h_1a52050dfad4b22ccef10e459e5ffc284b" compoundref="hash_8h" startline="88" endline="97">HashBlake2b</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="blake2b_8c_1a039b52f87e2ba0ca16ebbc62bfd3f02a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int blake2b_init_key</definition>
+        <argsstring>(blake2b_state *S, size_t outlen, const void *key, size_t keylen)</argsstring>
+        <name>blake2b_init_key</name>
+        <param>
+          <type><ref refid="blake2_8h_1ab1b4d29c36c4f253d26934adc80bf5c6" kindref="member">blake2b_state</ref> *</type>
+          <declname>S</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>outlen</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>keylen</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" line="102" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" bodystart="102" bodyend="146"/>
+        <references refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" compoundref="blake2_8h" startline="14">BLAKE2B_OUTBYTES</references>
+        <references refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5a8dfea1685718cfdbbfc48b85cec868e4" compoundref="blake2_8h" startline="15">BLAKE2B_KEYBYTES</references>
+        <references refid="struct____blake2b__param_1acf01a39fc0926ef22177a9bda686163f" compoundref="blake2_8h" startline="22">__blake2b_param::digest_length</references>
+        <references refid="struct____blake2b__param_1af01234225a1b6d0dce3e6c6709af01fa" compoundref="blake2_8h" startline="23">__blake2b_param::key_length</references>
+        <references refid="struct____blake2b__param_1acb6bd7b19ce82dbfc6968bfaef5ddb31" compoundref="blake2_8h" startline="24">__blake2b_param::fanout</references>
+        <references refid="struct____blake2b__param_1ad7bf5379885d9b50022af74eae90a525" compoundref="blake2_8h" startline="25">__blake2b_param::depth</references>
+        <references refid="struct____blake2b__param_1a960e7c6fed53742f78acd3b6bcb93c71" compoundref="blake2_8h" startline="26">__blake2b_param::leaf_length</references>
+        <references refid="struct____blake2b__param_1ada6a88bf4b6f3e08132df538e6c63285" compoundref="blake2_8h" startline="27">__blake2b_param::node_offset</references>
+        <references refid="struct____blake2b__param_1aa1b2a90e439a538f609032d3bf852751" compoundref="blake2_8h" startline="28">__blake2b_param::node_depth</references>
+        <references refid="struct____blake2b__param_1a8a299b985fc0aee524628a9863d1839e" compoundref="blake2_8h" startline="29">__blake2b_param::inner_length</references>
+        <references refid="struct____blake2b__param_1a03f80ec4887f254dabe4baa9626fd5ab" compoundref="blake2_8h" startline="30">__blake2b_param::reserved</references>
+        <references refid="struct____blake2b__param_1ad53420f1ce170abad76166fe101a46b5" compoundref="blake2_8h" startline="31">__blake2b_param::salt</references>
+        <references refid="struct____blake2b__param_1af8ec1991e3458f8c8cddb70fd0ee7ce5" compoundref="blake2_8h" startline="32">__blake2b_param::personal</references>
+        <references refid="blake2b_8c_1ae453d8f2798df27cd1f4ea9b00b3a520" compoundref="blake2b_8c" startline="56" endline="71">blake2b_init_param</references>
+        <references refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5aea9f79a4ec90a788ea0590ae5dfda693" compoundref="blake2_8h" startline="13">BLAKE2B_BLOCKBYTES</references>
+        <references refid="blake2b_8c_1a1ee160fb796e342c9ee8a99ea0ffab0a" compoundref="blake2b_8c" startline="206" endline="244">blake2b_update</references>
+        <referencedby refid="blake2b_8c_1a5cf706554b84e6b4d763084ecefd6391" compoundref="blake2b_8c" startline="276" endline="312">blake2b</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="blake2b_8c_1a004655394b4249e59d4469070e94f7e9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void blake2b_compress</definition>
+        <argsstring>(blake2b_state *S, const uint8_t *block)</argsstring>
+        <name>blake2b_compress</name>
+        <param>
+          <type><ref refid="blake2_8h_1ab1b4d29c36c4f253d26934adc80bf5c6" kindref="member">blake2b_state</ref> *</type>
+          <declname>S</declname>
+        </param>
+        <param>
+          <type>const <ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref> *</type>
+          <declname>block</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" line="148" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" bodystart="148" bodyend="204"/>
+      </memberdef>
+      <memberdef kind="function" id="blake2b_8c_1a1ee160fb796e342c9ee8a99ea0ffab0a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int blake2b_update</definition>
+        <argsstring>(blake2b_state *S, const void *in, size_t inlen)</argsstring>
+        <name>blake2b_update</name>
+        <param>
+          <type><ref refid="blake2_8h_1ab1b4d29c36c4f253d26934adc80bf5c6" kindref="member">blake2b_state</ref> *</type>
+          <declname>S</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>inlen</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" line="206" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" bodystart="206" bodyend="244"/>
+        <references refid="struct____blake2b__state_1a611101aaef0e6a2916d83266696ddf45" compoundref="blake2_8h" startline="39">__blake2b_state::f</references>
+        <references refid="struct____blake2b__state_1a613f0decce59102cabda809ef7ff7f3b" compoundref="blake2_8h" startline="41">__blake2b_state::buflen</references>
+        <references refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5aea9f79a4ec90a788ea0590ae5dfda693" compoundref="blake2_8h" startline="13">BLAKE2B_BLOCKBYTES</references>
+        <references refid="struct____blake2b__state_1ab56d8559f6de9a905c64df6214113e94" compoundref="blake2_8h" startline="40">__blake2b_state::buf</references>
+        <referencedby refid="blake2b_8c_1a039b52f87e2ba0ca16ebbc62bfd3f02a" compoundref="blake2b_8c" startline="102" endline="146">blake2b_init_key</referencedby>
+        <referencedby refid="blake2b_8c_1a5cf706554b84e6b4d763084ecefd6391" compoundref="blake2b_8c" startline="276" endline="312">blake2b</referencedby>
+        <referencedby refid="blake2b_8c_1a9b077c7edb6f72a00f66c3db94ae6398" compoundref="blake2b_8c" startline="315" endline="371">blake2b_long</referencedby>
+        <referencedby refid="core_8h_1a777bb6205a6ad0da9b85a7c2ae61f7c8" compoundref="core_8c" startline="485" endline="557">initial_hash</referencedby>
+        <referencedby refid="hash_8h_1a52050dfad4b22ccef10e459e5ffc284b" compoundref="hash_8h" startline="88" endline="97">HashBlake2b</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="blake2b_8c_1ae3265f4a4ba468da48c850ad815bed2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int blake2b_final</definition>
+        <argsstring>(blake2b_state *S, void *out, size_t outlen)</argsstring>
+        <name>blake2b_final</name>
+        <param>
+          <type><ref refid="blake2_8h_1ab1b4d29c36c4f253d26934adc80bf5c6" kindref="member">blake2b_state</ref> *</type>
+          <declname>S</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>outlen</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" line="246" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" bodystart="246" bodyend="274"/>
+        <references refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" compoundref="blake2_8h" startline="14">BLAKE2B_OUTBYTES</references>
+        <references refid="struct____blake2b__state_1a611101aaef0e6a2916d83266696ddf45" compoundref="blake2_8h" startline="39">__blake2b_state::f</references>
+        <references refid="struct____blake2b__state_1a613f0decce59102cabda809ef7ff7f3b" compoundref="blake2_8h" startline="41">__blake2b_state::buflen</references>
+        <references refid="struct____blake2b__state_1ab56d8559f6de9a905c64df6214113e94" compoundref="blake2_8h" startline="40">__blake2b_state::buf</references>
+        <references refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5aea9f79a4ec90a788ea0590ae5dfda693" compoundref="blake2_8h" startline="13">BLAKE2B_BLOCKBYTES</references>
+        <references refid="struct____blake2b__state_1a98f8e01951c0944e82dff97c9a5ae700" compoundref="blake2_8h" startline="37">__blake2b_state::h</references>
+        <references refid="struct____blake2b__state_1aa5803608622e985dd48d6b36f8761a57" compoundref="blake2_8h" startline="42">__blake2b_state::outlen</references>
+        <referencedby refid="blake2b_8c_1a5cf706554b84e6b4d763084ecefd6391" compoundref="blake2b_8c" startline="276" endline="312">blake2b</referencedby>
+        <referencedby refid="blake2b_8c_1a9b077c7edb6f72a00f66c3db94ae6398" compoundref="blake2b_8c" startline="315" endline="371">blake2b_long</referencedby>
+        <referencedby refid="core_8h_1a777bb6205a6ad0da9b85a7c2ae61f7c8" compoundref="core_8c" startline="485" endline="557">initial_hash</referencedby>
+        <referencedby refid="hash_8h_1a52050dfad4b22ccef10e459e5ffc284b" compoundref="hash_8h" startline="88" endline="97">HashBlake2b</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="blake2b_8c_1a5cf706554b84e6b4d763084ecefd6391" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int blake2b</definition>
+        <argsstring>(void *out, size_t outlen, const void *in, size_t inlen, const void *key, size_t keylen)</argsstring>
+        <name>blake2b</name>
+        <param>
+          <type>void *</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>outlen</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>inlen</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>keylen</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" line="276" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" bodystart="276" bodyend="312"/>
+        <references refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" compoundref="blake2_8h" startline="14">BLAKE2B_OUTBYTES</references>
+        <references refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5a8dfea1685718cfdbbfc48b85cec868e4" compoundref="blake2_8h" startline="15">BLAKE2B_KEYBYTES</references>
+        <references refid="blake2b_8c_1a039b52f87e2ba0ca16ebbc62bfd3f02a" compoundref="blake2b_8c" startline="102" endline="146">blake2b_init_key</references>
+        <references refid="blake2b_8c_1a7cefd211bfec58d37d8b67741955ce8a" compoundref="blake2b_8c" startline="74" endline="100">blake2b_init</references>
+        <references refid="blake2b_8c_1a1ee160fb796e342c9ee8a99ea0ffab0a" compoundref="blake2b_8c" startline="206" endline="244">blake2b_update</references>
+        <references refid="blake2b_8c_1ae3265f4a4ba468da48c850ad815bed2d" compoundref="blake2b_8c" startline="246" endline="274">blake2b_final</references>
+        <referencedby refid="blake2b_8c_1a9b077c7edb6f72a00f66c3db94ae6398" compoundref="blake2b_8c" startline="315" endline="371">blake2b_long</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="blake2b_8c_1a9b077c7edb6f72a00f66c3db94ae6398" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int blake2b_long</definition>
+        <argsstring>(void *pout, size_t outlen, const void *in, size_t inlen)</argsstring>
+        <name>blake2b_long</name>
+        <param>
+          <type>void *</type>
+          <declname>pout</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>outlen</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>inlen</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" line="315" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c" bodystart="315" bodyend="371"/>
+        <references refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" compoundref="blake2_8h" startline="14">BLAKE2B_OUTBYTES</references>
+        <references refid="blake2b_8c_1a9631a68bc0c927f3d068b07ee8d052ff">TRY</references>
+        <references refid="blake2b_8c_1a7cefd211bfec58d37d8b67741955ce8a" compoundref="blake2b_8c" startline="74" endline="100">blake2b_init</references>
+        <references refid="blake2b_8c_1a1ee160fb796e342c9ee8a99ea0ffab0a" compoundref="blake2b_8c" startline="206" endline="244">blake2b_update</references>
+        <references refid="blake2b_8c_1ae3265f4a4ba468da48c850ad815bed2d" compoundref="blake2b_8c" startline="246" endline="274">blake2b_final</references>
+        <references refid="blake2b_8c_1a5cf706554b84e6b4d763084ecefd6391" compoundref="blake2b_8c" startline="276" endline="312">blake2b</references>
+        <referencedby refid="core_8h_1aafd756bf3475038e2eada05bcaf31b18" compoundref="core_8c" startline="127" endline="168">finalize</referencedby>
+        <referencedby refid="core_8h_1a96c3c9f5727d9f0224b923c723f0ed8e" compoundref="core_8c" startline="462" endline="483">fill_first_blocks</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&lt;<ref refid="stdint_8h" kindref="compound">stdint.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="blake2_8h" kindref="compound">blake2.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="blake2-impl_8h" kindref="compound">blake2-impl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>blake2b_IV[8]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT64_C(0x6a09e667f3bcc908),<sp/>UINT64_C(0xbb67ae8584caa73b),</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT64_C(0x3c6ef372fe94f82b),<sp/>UINT64_C(0xa54ff53a5f1d36f1),</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT64_C(0x510e527fade682d1),<sp/>UINT64_C(0x9b05688c2b3e6c1f),</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>UINT64_C(0x1f83d9abfb41bd6b),<sp/>UINT64_C(0x5be0cd19137e2179)};</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>blake2b_sigma[12][16]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>{0,<sp/>1,<sp/>2,<sp/>3,<sp/>4,<sp/>5,<sp/>6,<sp/>7,<sp/>8,<sp/>9,<sp/>10,<sp/>11,<sp/>12,<sp/>13,<sp/>14,<sp/>15},</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>{14,<sp/>10,<sp/>4,<sp/>8,<sp/>9,<sp/>15,<sp/>13,<sp/>6,<sp/>1,<sp/>12,<sp/>0,<sp/>2,<sp/>11,<sp/>7,<sp/>5,<sp/>3},</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>{11,<sp/>8,<sp/>12,<sp/>0,<sp/>5,<sp/>2,<sp/>15,<sp/>13,<sp/>10,<sp/>14,<sp/>3,<sp/>6,<sp/>7,<sp/>1,<sp/>9,<sp/>4},</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>{7,<sp/>9,<sp/>3,<sp/>1,<sp/>13,<sp/>12,<sp/>11,<sp/>14,<sp/>2,<sp/>6,<sp/>5,<sp/>10,<sp/>4,<sp/>0,<sp/>15,<sp/>8},</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>{9,<sp/>0,<sp/>5,<sp/>7,<sp/>2,<sp/>4,<sp/>10,<sp/>15,<sp/>14,<sp/>1,<sp/>11,<sp/>12,<sp/>6,<sp/>8,<sp/>3,<sp/>13},</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>{2,<sp/>12,<sp/>6,<sp/>10,<sp/>0,<sp/>11,<sp/>8,<sp/>3,<sp/>4,<sp/>13,<sp/>7,<sp/>5,<sp/>15,<sp/>14,<sp/>1,<sp/>9},</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>{12,<sp/>5,<sp/>1,<sp/>15,<sp/>14,<sp/>13,<sp/>4,<sp/>10,<sp/>0,<sp/>7,<sp/>6,<sp/>3,<sp/>9,<sp/>2,<sp/>8,<sp/>11},</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>{13,<sp/>11,<sp/>7,<sp/>14,<sp/>12,<sp/>1,<sp/>3,<sp/>9,<sp/>5,<sp/>0,<sp/>15,<sp/>4,<sp/>8,<sp/>6,<sp/>2,<sp/>10},</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>{6,<sp/>15,<sp/>14,<sp/>9,<sp/>11,<sp/>3,<sp/>0,<sp/>8,<sp/>12,<sp/>2,<sp/>13,<sp/>7,<sp/>1,<sp/>4,<sp/>10,<sp/>5},</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>{10,<sp/>2,<sp/>8,<sp/>4,<sp/>7,<sp/>6,<sp/>1,<sp/>5,<sp/>15,<sp/>11,<sp/>9,<sp/>14,<sp/>3,<sp/>12,<sp/>13,<sp/>0},</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>{0,<sp/>1,<sp/>2,<sp/>3,<sp/>4,<sp/>5,<sp/>6,<sp/>7,<sp/>8,<sp/>9,<sp/>10,<sp/>11,<sp/>12,<sp/>13,<sp/>14,<sp/>15},</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>{14,<sp/>10,<sp/>4,<sp/>8,<sp/>9,<sp/>15,<sp/>13,<sp/>6,<sp/>1,<sp/>12,<sp/>0,<sp/>2,<sp/>11,<sp/>7,<sp/>5,<sp/>3},</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="blake2-impl_8h_1aa47358e2e39f403db8cddffec65337f7" kindref="member">BLAKE2_INLINE</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>blake2b_set_lastnode(<ref refid="struct____blake2b__state" kindref="compound">blake2b_state</ref><sp/>*S)<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>S-&gt;<ref refid="struct____blake2b__state_1a611101aaef0e6a2916d83266696ddf45" kindref="member">f</ref>[1]<sp/>=<sp/>(<ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref>)-1;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="blake2-impl_8h_1aa47358e2e39f403db8cddffec65337f7" kindref="member">BLAKE2_INLINE</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>blake2b_set_lastblock(<ref refid="struct____blake2b__state" kindref="compound">blake2b_state</ref><sp/>*S)<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(S-&gt;<ref refid="struct____blake2b__state_1a0b50544072b2bf05c743bdb65c1015cd" kindref="member">last_node</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>blake2b_set_lastnode(S);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>S-&gt;<ref refid="struct____blake2b__state_1a611101aaef0e6a2916d83266696ddf45" kindref="member">f</ref>[0]<sp/>=<sp/>(<ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref>)-1;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="blake2-impl_8h_1aa47358e2e39f403db8cddffec65337f7" kindref="member">BLAKE2_INLINE</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>blake2b_increment_counter(<ref refid="struct____blake2b__state" kindref="compound">blake2b_state</ref><sp/>*S,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>inc)<sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>S-&gt;<ref refid="struct____blake2b__state_1a5a249e17d3c4ffc78b512430a8f053b2" kindref="member">t</ref>[0]<sp/>+=<sp/>inc;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>S-&gt;<ref refid="struct____blake2b__state_1a5a249e17d3c4ffc78b512430a8f053b2" kindref="member">t</ref>[1]<sp/>+=<sp/>(S-&gt;<ref refid="struct____blake2b__state_1a5a249e17d3c4ffc78b512430a8f053b2" kindref="member">t</ref>[0]<sp/>&lt;<sp/>inc);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="blake2-impl_8h_1aa47358e2e39f403db8cddffec65337f7" kindref="member">BLAKE2_INLINE</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>blake2b_invalidate_state(<ref refid="struct____blake2b__state" kindref="compound">blake2b_state</ref><sp/>*S)<sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>burn(S,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(*S));<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>wipe<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>blake2b_set_lastblock(S);<sp/></highlight><highlight class="comment">/*<sp/>invalidate<sp/>for<sp/>further<sp/>use<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="blake2-impl_8h_1aa47358e2e39f403db8cddffec65337f7" kindref="member">BLAKE2_INLINE</ref><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>blake2b_init0(<ref refid="struct____blake2b__state" kindref="compound">blake2b_state</ref><sp/>*S)<sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(S,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(*S));</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(S-&gt;<ref refid="struct____blake2b__state_1a98f8e01951c0944e82dff97c9a5ae700" kindref="member">h</ref>,<sp/>blake2b_IV,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(S-&gt;<ref refid="struct____blake2b__state_1a98f8e01951c0944e82dff97c9a5ae700" kindref="member">h</ref>));</highlight></codeline>
+<codeline lineno="54"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="blake2b_8c_1ae453d8f2798df27cd1f4ea9b00b3a520" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="blake2b_8c_1ae453d8f2798df27cd1f4ea9b00b3a520" kindref="member">blake2b_init_param</ref>(<ref refid="struct____blake2b__state" kindref="compound">blake2b_state</ref><sp/>*S,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct____blake2b__param" kindref="compound">blake2b_param</ref><sp/>*P)<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*p<sp/>=<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*)P;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(NULL<sp/>==<sp/>P<sp/>||<sp/>NULL<sp/>==<sp/>S)<sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>blake2b_init0(S);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>IV<sp/>XOR<sp/>Parameter<sp/>Block<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>8;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>S-&gt;<ref refid="struct____blake2b__state_1a98f8e01951c0944e82dff97c9a5ae700" kindref="member">h</ref>[i]<sp/>^=<sp/>load64(&amp;p[i<sp/>*<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(S-&gt;<ref refid="struct____blake2b__state_1a98f8e01951c0944e82dff97c9a5ae700" kindref="member">h</ref>[i])]);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>S-&gt;<ref refid="struct____blake2b__state_1aa5803608622e985dd48d6b36f8761a57" kindref="member">outlen</ref><sp/>=<sp/>P-&gt;<ref refid="struct____blake2b__param_1acf01a39fc0926ef22177a9bda686163f" kindref="member">digest_length</ref>;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Sequential<sp/>blake2b<sp/>initialization<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="blake2b_8c_1a7cefd211bfec58d37d8b67741955ce8a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="blake2b_8c_1a7cefd211bfec58d37d8b67741955ce8a" kindref="member">blake2b_init</ref>(<ref refid="struct____blake2b__state" kindref="compound">blake2b_state</ref><sp/>*S,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>outlen)<sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct____blake2b__param" kindref="compound">blake2b_param</ref><sp/>P;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(S<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((outlen<sp/>==<sp/>0)<sp/>||<sp/>(outlen<sp/>&gt;<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" kindref="member">BLAKE2B_OUTBYTES</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>blake2b_invalidate_state(S);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Setup<sp/>Parameter<sp/>Block<sp/>for<sp/>unkeyed<sp/>BLAKE2<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>P.<ref refid="struct____blake2b__param_1acf01a39fc0926ef22177a9bda686163f" kindref="member">digest_length</ref><sp/>=<sp/>(<ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref>)outlen;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>P.<ref refid="struct____blake2b__param_1af01234225a1b6d0dce3e6c6709af01fa" kindref="member">key_length</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>P.<ref refid="struct____blake2b__param_1acb6bd7b19ce82dbfc6968bfaef5ddb31" kindref="member">fanout</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>P.<ref refid="struct____blake2b__param_1ad7bf5379885d9b50022af74eae90a525" kindref="member">depth</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>P.<ref refid="struct____blake2b__param_1a960e7c6fed53742f78acd3b6bcb93c71" kindref="member">leaf_length</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>P.<ref refid="struct____blake2b__param_1ada6a88bf4b6f3e08132df538e6c63285" kindref="member">node_offset</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>P.<ref refid="struct____blake2b__param_1aa1b2a90e439a538f609032d3bf852751" kindref="member">node_depth</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>P.<ref refid="struct____blake2b__param_1a8a299b985fc0aee524628a9863d1839e" kindref="member">inner_length</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(P.<ref refid="struct____blake2b__param_1a03f80ec4887f254dabe4baa9626fd5ab" kindref="member">reserved</ref>,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(P.<ref refid="struct____blake2b__param_1a03f80ec4887f254dabe4baa9626fd5ab" kindref="member">reserved</ref>));</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(P.<ref refid="struct____blake2b__param_1ad53420f1ce170abad76166fe101a46b5" kindref="member">salt</ref>,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(P.<ref refid="struct____blake2b__param_1ad53420f1ce170abad76166fe101a46b5" kindref="member">salt</ref>));</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(P.<ref refid="struct____blake2b__param_1af8ec1991e3458f8c8cddb70fd0ee7ce5" kindref="member">personal</ref>,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(P.<ref refid="struct____blake2b__param_1af8ec1991e3458f8c8cddb70fd0ee7ce5" kindref="member">personal</ref>));</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="blake2b_8c_1ae453d8f2798df27cd1f4ea9b00b3a520" kindref="member">blake2b_init_param</ref>(S,<sp/>&amp;P);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102" refid="blake2b_8c_1a039b52f87e2ba0ca16ebbc62bfd3f02a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="blake2b_8c_1a039b52f87e2ba0ca16ebbc62bfd3f02a" kindref="member">blake2b_init_key</ref>(<ref refid="struct____blake2b__state" kindref="compound">blake2b_state</ref><sp/>*S,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>outlen,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*key,</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>keylen)<sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct____blake2b__param" kindref="compound">blake2b_param</ref><sp/>P;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(S<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((outlen<sp/>==<sp/>0)<sp/>||<sp/>(outlen<sp/>&gt;<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" kindref="member">BLAKE2B_OUTBYTES</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>blake2b_invalidate_state(S);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((key<sp/>==<sp/>0)<sp/>||<sp/>(keylen<sp/>==<sp/>0)<sp/>||<sp/>(keylen<sp/>&gt;<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5a8dfea1685718cfdbbfc48b85cec868e4" kindref="member">BLAKE2B_KEYBYTES</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>blake2b_invalidate_state(S);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Setup<sp/>Parameter<sp/>Block<sp/>for<sp/>keyed<sp/>BLAKE2<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>P.<ref refid="struct____blake2b__param_1acf01a39fc0926ef22177a9bda686163f" kindref="member">digest_length</ref><sp/>=<sp/>(<ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref>)outlen;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>P.<ref refid="struct____blake2b__param_1af01234225a1b6d0dce3e6c6709af01fa" kindref="member">key_length</ref><sp/>=<sp/>(<ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref>)keylen;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>P.<ref refid="struct____blake2b__param_1acb6bd7b19ce82dbfc6968bfaef5ddb31" kindref="member">fanout</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>P.<ref refid="struct____blake2b__param_1ad7bf5379885d9b50022af74eae90a525" kindref="member">depth</ref><sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>P.<ref refid="struct____blake2b__param_1a960e7c6fed53742f78acd3b6bcb93c71" kindref="member">leaf_length</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>P.<ref refid="struct____blake2b__param_1ada6a88bf4b6f3e08132df538e6c63285" kindref="member">node_offset</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>P.<ref refid="struct____blake2b__param_1aa1b2a90e439a538f609032d3bf852751" kindref="member">node_depth</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>P.<ref refid="struct____blake2b__param_1a8a299b985fc0aee524628a9863d1839e" kindref="member">inner_length</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(P.<ref refid="struct____blake2b__param_1a03f80ec4887f254dabe4baa9626fd5ab" kindref="member">reserved</ref>,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(P.<ref refid="struct____blake2b__param_1a03f80ec4887f254dabe4baa9626fd5ab" kindref="member">reserved</ref>));</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(P.<ref refid="struct____blake2b__param_1ad53420f1ce170abad76166fe101a46b5" kindref="member">salt</ref>,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(P.<ref refid="struct____blake2b__param_1ad53420f1ce170abad76166fe101a46b5" kindref="member">salt</ref>));</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(P.<ref refid="struct____blake2b__param_1af8ec1991e3458f8c8cddb70fd0ee7ce5" kindref="member">personal</ref>,<sp/>0,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(P.<ref refid="struct____blake2b__param_1af8ec1991e3458f8c8cddb70fd0ee7ce5" kindref="member">personal</ref>));</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="blake2b_8c_1ae453d8f2798df27cd1f4ea9b00b3a520" kindref="member">blake2b_init_param</ref>(S,<sp/>&amp;P)<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>blake2b_invalidate_state(S);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref><sp/><ref refid="structblock__" kindref="compound">block</ref>[<ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5aea9f79a4ec90a788ea0590ae5dfda693" kindref="member">BLAKE2B_BLOCKBYTES</ref>];</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memset(block,<sp/>0,<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5aea9f79a4ec90a788ea0590ae5dfda693" kindref="member">BLAKE2B_BLOCKBYTES</ref>);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(block,<sp/>key,<sp/>keylen);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="blake2b_8c_1a1ee160fb796e342c9ee8a99ea0ffab0a" kindref="member">blake2b_update</ref>(S,<sp/>block,<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5aea9f79a4ec90a788ea0590ae5dfda693" kindref="member">BLAKE2B_BLOCKBYTES</ref>);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>burn(block,<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5aea9f79a4ec90a788ea0590ae5dfda693" kindref="member">BLAKE2B_BLOCKBYTES</ref>);<sp/></highlight><highlight class="comment">/*<sp/>Burn<sp/>the<sp/>key<sp/>from<sp/>stack<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>blake2b_compress(<ref refid="struct____blake2b__state" kindref="compound">blake2b_state</ref><sp/>*S,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref><sp/>*<ref refid="structblock__" kindref="compound">block</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>m[16];</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>v[16];</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i,<sp/>r;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>16;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m[i]<sp/>=<sp/>load64(block<sp/>+<sp/>i<sp/>*<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(m[i]));</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>8;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>v[i]<sp/>=<sp/>S-&gt;<ref refid="struct____blake2b__state_1a98f8e01951c0944e82dff97c9a5ae700" kindref="member">h</ref>[i];</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>v[8]<sp/>=<sp/>blake2b_IV[0];</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>v[9]<sp/>=<sp/>blake2b_IV[1];</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>v[10]<sp/>=<sp/>blake2b_IV[2];</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>v[11]<sp/>=<sp/>blake2b_IV[3];</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>v[12]<sp/>=<sp/>blake2b_IV[4]<sp/>^<sp/>S-&gt;<ref refid="struct____blake2b__state_1a5a249e17d3c4ffc78b512430a8f053b2" kindref="member">t</ref>[0];</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>v[13]<sp/>=<sp/>blake2b_IV[5]<sp/>^<sp/>S-&gt;<ref refid="struct____blake2b__state_1a5a249e17d3c4ffc78b512430a8f053b2" kindref="member">t</ref>[1];</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>v[14]<sp/>=<sp/>blake2b_IV[6]<sp/>^<sp/>S-&gt;<ref refid="struct____blake2b__state_1a611101aaef0e6a2916d83266696ddf45" kindref="member">f</ref>[0];</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>v[15]<sp/>=<sp/>blake2b_IV[7]<sp/>^<sp/>S-&gt;<ref refid="struct____blake2b__state_1a611101aaef0e6a2916d83266696ddf45" kindref="member">f</ref>[1];</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>G(r,<sp/>i,<sp/>a,<sp/>b,<sp/>c,<sp/>d)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="171"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="172"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>a<sp/>=<sp/>a<sp/>+<sp/>b<sp/>+<sp/>m[blake2b_sigma[r][2<sp/>*<sp/>i<sp/>+<sp/>0]];<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="173"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>d<sp/>=<sp/>rotr64(d<sp/>^<sp/>a,<sp/>32);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="174"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c<sp/>=<sp/>c<sp/>+<sp/>d;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="175"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b<sp/>=<sp/>rotr64(b<sp/>^<sp/>c,<sp/>24);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="176"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>a<sp/>=<sp/>a<sp/>+<sp/>b<sp/>+<sp/>m[blake2b_sigma[r][2<sp/>*<sp/>i<sp/>+<sp/>1]];<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="177"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>d<sp/>=<sp/>rotr64(d<sp/>^<sp/>a,<sp/>16);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="178"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>c<sp/>=<sp/>c<sp/>+<sp/>d;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="179"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>b<sp/>=<sp/>rotr64(b<sp/>^<sp/>c,<sp/>63);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="180"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while<sp/>((void)0,<sp/>0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ROUND(r)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="183"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="184"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>G(r,<sp/>0,<sp/>v[0],<sp/>v[4],<sp/>v[8],<sp/>v[12]);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="185"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>G(r,<sp/>1,<sp/>v[1],<sp/>v[5],<sp/>v[9],<sp/>v[13]);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="186"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>G(r,<sp/>2,<sp/>v[2],<sp/>v[6],<sp/>v[10],<sp/>v[14]);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="187"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>G(r,<sp/>3,<sp/>v[3],<sp/>v[7],<sp/>v[11],<sp/>v[15]);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="188"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>G(r,<sp/>4,<sp/>v[0],<sp/>v[5],<sp/>v[10],<sp/>v[15]);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="189"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>G(r,<sp/>5,<sp/>v[1],<sp/>v[6],<sp/>v[11],<sp/>v[12]);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="190"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>G(r,<sp/>6,<sp/>v[2],<sp/>v[7],<sp/>v[8],<sp/>v[13]);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="191"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>G(r,<sp/>7,<sp/>v[3],<sp/>v[4],<sp/>v[9],<sp/>v[14]);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="192"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while<sp/>((void)0,<sp/>0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(r<sp/>=<sp/>0;<sp/>r<sp/>&lt;<sp/>12;<sp/>++r)<sp/>{</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="blake2b_8c_1ab35e822e8226ebfbc2122810b5ac5827" kindref="member">ROUND</ref>(r);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>8;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>S-&gt;<ref refid="struct____blake2b__state_1a98f8e01951c0944e82dff97c9a5ae700" kindref="member">h</ref>[i]<sp/>=<sp/>S-&gt;<ref refid="struct____blake2b__state_1a98f8e01951c0944e82dff97c9a5ae700" kindref="member">h</ref>[i]<sp/>^<sp/>v[i]<sp/>^<sp/>v[i<sp/>+<sp/>8];</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>G</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>ROUND</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206" refid="blake2b_8c_1a1ee160fb796e342c9ee8a99ea0ffab0a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="blake2b_8c_1a1ee160fb796e342c9ee8a99ea0ffab0a" kindref="member">blake2b_update</ref>(<ref refid="struct____blake2b__state" kindref="compound">blake2b_state</ref><sp/>*S,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*in,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>inlen)<sp/>{</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref><sp/>*pin<sp/>=<sp/>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref><sp/>*)in;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(inlen<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Sanity<sp/>check<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(S<sp/>==<sp/>NULL<sp/>||<sp/>in<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Is<sp/>this<sp/>a<sp/>reused<sp/>state?<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(S-&gt;<ref refid="struct____blake2b__state_1a611101aaef0e6a2916d83266696ddf45" kindref="member">f</ref>[0]<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(S-&gt;<ref refid="struct____blake2b__state_1a613f0decce59102cabda809ef7ff7f3b" kindref="member">buflen</ref><sp/>+<sp/>inlen<sp/>&gt;<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5aea9f79a4ec90a788ea0590ae5dfda693" kindref="member">BLAKE2B_BLOCKBYTES</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Complete<sp/>current<sp/>block<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>left<sp/>=<sp/>S-&gt;<ref refid="struct____blake2b__state_1a613f0decce59102cabda809ef7ff7f3b" kindref="member">buflen</ref>;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>fill<sp/>=<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5aea9f79a4ec90a788ea0590ae5dfda693" kindref="member">BLAKE2B_BLOCKBYTES</ref><sp/>-<sp/>left;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(&amp;S-&gt;<ref refid="struct____blake2b__state_1ab56d8559f6de9a905c64df6214113e94" kindref="member">buf</ref>[left],<sp/>pin,<sp/>fill);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>blake2b_increment_counter(S,<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5aea9f79a4ec90a788ea0590ae5dfda693" kindref="member">BLAKE2B_BLOCKBYTES</ref>);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>blake2b_compress(S,<sp/>S-&gt;<ref refid="struct____blake2b__state_1ab56d8559f6de9a905c64df6214113e94" kindref="member">buf</ref>);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>S-&gt;<ref refid="struct____blake2b__state_1a613f0decce59102cabda809ef7ff7f3b" kindref="member">buflen</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>inlen<sp/>-=<sp/>fill;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pin<sp/>+=<sp/>fill;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Avoid<sp/>buffer<sp/>copies<sp/>when<sp/>possible<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(inlen<sp/>&gt;<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5aea9f79a4ec90a788ea0590ae5dfda693" kindref="member">BLAKE2B_BLOCKBYTES</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>blake2b_increment_counter(S,<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5aea9f79a4ec90a788ea0590ae5dfda693" kindref="member">BLAKE2B_BLOCKBYTES</ref>);</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>blake2b_compress(S,<sp/>pin);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>inlen<sp/>-=<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5aea9f79a4ec90a788ea0590ae5dfda693" kindref="member">BLAKE2B_BLOCKBYTES</ref>;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pin<sp/>+=<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5aea9f79a4ec90a788ea0590ae5dfda693" kindref="member">BLAKE2B_BLOCKBYTES</ref>;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(&amp;S-&gt;<ref refid="struct____blake2b__state_1ab56d8559f6de9a905c64df6214113e94" kindref="member">buf</ref>[S-&gt;<ref refid="struct____blake2b__state_1a613f0decce59102cabda809ef7ff7f3b" kindref="member">buflen</ref>],<sp/>pin,<sp/>inlen);</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/>S-&gt;<ref refid="struct____blake2b__state_1a613f0decce59102cabda809ef7ff7f3b" kindref="member">buflen</ref><sp/>+=<sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>int)inlen;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="244"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight></codeline>
+<codeline lineno="246" refid="blake2b_8c_1ae3265f4a4ba468da48c850ad815bed2d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="blake2b_8c_1ae3265f4a4ba468da48c850ad815bed2d" kindref="member">blake2b_final</ref>(<ref refid="struct____blake2b__state" kindref="compound">blake2b_state</ref><sp/>*S,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*out,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>outlen)<sp/>{</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref><sp/>buffer[<ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" kindref="member">BLAKE2B_OUTBYTES</ref>]<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Sanity<sp/>checks<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(S<sp/>==<sp/>NULL<sp/>||<sp/>out<sp/>==<sp/>NULL<sp/>||<sp/>outlen<sp/>&lt;<sp/>S-&gt;outlen)<sp/>{</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Is<sp/>this<sp/>a<sp/>reused<sp/>state?<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(S-&gt;<ref refid="struct____blake2b__state_1a611101aaef0e6a2916d83266696ddf45" kindref="member">f</ref>[0]<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/>blake2b_increment_counter(S,<sp/>S-&gt;<ref refid="struct____blake2b__state_1a613f0decce59102cabda809ef7ff7f3b" kindref="member">buflen</ref>);</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/>blake2b_set_lastblock(S);</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(&amp;S-&gt;<ref refid="struct____blake2b__state_1ab56d8559f6de9a905c64df6214113e94" kindref="member">buf</ref>[S-&gt;<ref refid="struct____blake2b__state_1a613f0decce59102cabda809ef7ff7f3b" kindref="member">buflen</ref>],<sp/>0,<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5aea9f79a4ec90a788ea0590ae5dfda693" kindref="member">BLAKE2B_BLOCKBYTES</ref><sp/>-<sp/>S-&gt;<ref refid="struct____blake2b__state_1a613f0decce59102cabda809ef7ff7f3b" kindref="member">buflen</ref>);<sp/></highlight><highlight class="comment">/*<sp/>Padding<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/>blake2b_compress(S,<sp/>S-&gt;<ref refid="struct____blake2b__state_1ab56d8559f6de9a905c64df6214113e94" kindref="member">buf</ref>);</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>8;<sp/>++i)<sp/>{<sp/></highlight><highlight class="comment">/*<sp/>Output<sp/>full<sp/>hash<sp/>to<sp/>temp<sp/>buffer<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>store64(buffer<sp/>+<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(S-&gt;<ref refid="struct____blake2b__state_1a98f8e01951c0944e82dff97c9a5ae700" kindref="member">h</ref>[i])<sp/>*<sp/>i,<sp/>S-&gt;<ref refid="struct____blake2b__state_1a98f8e01951c0944e82dff97c9a5ae700" kindref="member">h</ref>[i]);</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(out,<sp/>buffer,<sp/>S-&gt;<ref refid="struct____blake2b__state_1aa5803608622e985dd48d6b36f8761a57" kindref="member">outlen</ref>);</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/>burn(buffer,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(buffer));</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/>burn(S-&gt;<ref refid="struct____blake2b__state_1ab56d8559f6de9a905c64df6214113e94" kindref="member">buf</ref>,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(S-&gt;<ref refid="struct____blake2b__state_1ab56d8559f6de9a905c64df6214113e94" kindref="member">buf</ref>));</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/>burn(S-&gt;<ref refid="struct____blake2b__state_1a98f8e01951c0944e82dff97c9a5ae700" kindref="member">h</ref>,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(S-&gt;<ref refid="struct____blake2b__state_1a98f8e01951c0944e82dff97c9a5ae700" kindref="member">h</ref>));</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="274"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276" refid="blake2b_8c_1a5cf706554b84e6b4d763084ecefd6391" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="blake2b_8c_1a5cf706554b84e6b4d763084ecefd6391" kindref="member">blake2b</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*out,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>outlen,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*in,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>inlen,</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*key,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>keylen)<sp/>{</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct____blake2b__state" kindref="compound">blake2b_state</ref><sp/>S;</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Verify<sp/>parameters<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(NULL<sp/>==<sp/>in<sp/>&amp;&amp;<sp/>inlen<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">goto</highlight><highlight class="normal"><sp/>fail;</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(NULL<sp/>==<sp/>out<sp/>||<sp/>outlen<sp/>==<sp/>0<sp/>||<sp/>outlen<sp/>&gt;<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" kindref="member">BLAKE2B_OUTBYTES</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">goto</highlight><highlight class="normal"><sp/>fail;</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((NULL<sp/>==<sp/>key<sp/>&amp;&amp;<sp/>keylen<sp/>&gt;<sp/>0)<sp/>||<sp/>keylen<sp/>&gt;<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5a8dfea1685718cfdbbfc48b85cec868e4" kindref="member">BLAKE2B_KEYBYTES</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">goto</highlight><highlight class="normal"><sp/>fail;</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(keylen<sp/>&gt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="blake2b_8c_1a039b52f87e2ba0ca16ebbc62bfd3f02a" kindref="member">blake2b_init_key</ref>(&amp;S,<sp/>outlen,<sp/>key,<sp/>keylen)<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">goto</highlight><highlight class="normal"><sp/>fail;</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="blake2b_8c_1a7cefd211bfec58d37d8b67741955ce8a" kindref="member">blake2b_init</ref>(&amp;S,<sp/>outlen)<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">goto</highlight><highlight class="normal"><sp/>fail;</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"></highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="blake2b_8c_1a1ee160fb796e342c9ee8a99ea0ffab0a" kindref="member">blake2b_update</ref>(&amp;S,<sp/>in,<sp/>inlen)<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">goto</highlight><highlight class="normal"><sp/>fail;</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/><ref refid="blake2b_8c_1ae3265f4a4ba468da48c850ad815bed2d" kindref="member">blake2b_final</ref>(&amp;S,<sp/>out,<sp/>outlen);</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal">fail:</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/>burn(&amp;S,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(S));</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="312"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Argon2<sp/>Team<sp/>-<sp/>Begin<sp/>Code<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="315" refid="blake2b_8c_1a9b077c7edb6f72a00f66c3db94ae6398" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="blake2b_8c_1a9b077c7edb6f72a00f66c3db94ae6398" kindref="member">blake2b_long</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*pout,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>outlen,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*in,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>inlen)<sp/>{</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref><sp/>*out<sp/>=<sp/>(<ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref><sp/>*)pout;</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct____blake2b__state" kindref="compound">blake2b_state</ref><sp/>blake_state;</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref><sp/>outlen_bytes[</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref>)]<sp/>=<sp/>{0};</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret<sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"></highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(outlen<sp/>&gt;<sp/>UINT32_MAX)<sp/>{</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">goto</highlight><highlight class="normal"><sp/>fail;</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"></highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Ensure<sp/>little-endian<sp/>byte<sp/>order!<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/>store32(outlen_bytes,<sp/>(<ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref>)outlen);</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"></highlight></codeline>
+<codeline lineno="328"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TRY(statement)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="329"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="330"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>=<sp/>statement;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="331"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>if<sp/>(ret<sp/>&lt;<sp/>0)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="332"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>goto<sp/>fail;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="333"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="334"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>while<sp/>((void)0,<sp/>0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="335"><highlight class="normal"></highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(outlen<sp/>&lt;=<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" kindref="member">BLAKE2B_OUTBYTES</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="blake2b_8c_1a9631a68bc0c927f3d068b07ee8d052ff" kindref="member">TRY</ref>(<ref refid="blake2b_8c_1a7cefd211bfec58d37d8b67741955ce8a" kindref="member">blake2b_init</ref>(&amp;blake_state,<sp/>outlen));</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="blake2b_8c_1a9631a68bc0c927f3d068b07ee8d052ff" kindref="member">TRY</ref>(<ref refid="blake2b_8c_1a1ee160fb796e342c9ee8a99ea0ffab0a" kindref="member">blake2b_update</ref>(&amp;blake_state,<sp/>outlen_bytes,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(outlen_bytes)));</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="blake2b_8c_1a9631a68bc0c927f3d068b07ee8d052ff" kindref="member">TRY</ref>(<ref refid="blake2b_8c_1a1ee160fb796e342c9ee8a99ea0ffab0a" kindref="member">blake2b_update</ref>(&amp;blake_state,<sp/>in,<sp/>inlen));</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="blake2b_8c_1a9631a68bc0c927f3d068b07ee8d052ff" kindref="member">TRY</ref>(<ref refid="blake2b_8c_1ae3265f4a4ba468da48c850ad815bed2d" kindref="member">blake2b_final</ref>(&amp;blake_state,<sp/>out,<sp/>outlen));</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>toproduce;</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref><sp/>out_buffer[<ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" kindref="member">BLAKE2B_OUTBYTES</ref>];</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref><sp/>in_buffer[<ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" kindref="member">BLAKE2B_OUTBYTES</ref>];</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="blake2b_8c_1a9631a68bc0c927f3d068b07ee8d052ff" kindref="member">TRY</ref>(<ref refid="blake2b_8c_1a7cefd211bfec58d37d8b67741955ce8a" kindref="member">blake2b_init</ref>(&amp;blake_state,<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" kindref="member">BLAKE2B_OUTBYTES</ref>));</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="blake2b_8c_1a9631a68bc0c927f3d068b07ee8d052ff" kindref="member">TRY</ref>(<ref refid="blake2b_8c_1a1ee160fb796e342c9ee8a99ea0ffab0a" kindref="member">blake2b_update</ref>(&amp;blake_state,<sp/>outlen_bytes,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(outlen_bytes)));</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="blake2b_8c_1a9631a68bc0c927f3d068b07ee8d052ff" kindref="member">TRY</ref>(<ref refid="blake2b_8c_1a1ee160fb796e342c9ee8a99ea0ffab0a" kindref="member">blake2b_update</ref>(&amp;blake_state,<sp/>in,<sp/>inlen));</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="blake2b_8c_1a9631a68bc0c927f3d068b07ee8d052ff" kindref="member">TRY</ref>(<ref refid="blake2b_8c_1ae3265f4a4ba468da48c850ad815bed2d" kindref="member">blake2b_final</ref>(&amp;blake_state,<sp/>out_buffer,<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" kindref="member">BLAKE2B_OUTBYTES</ref>));</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(out,<sp/>out_buffer,<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" kindref="member">BLAKE2B_OUTBYTES</ref><sp/>/<sp/>2);</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>out<sp/>+=<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" kindref="member">BLAKE2B_OUTBYTES</ref><sp/>/<sp/>2;</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>toproduce<sp/>=<sp/>(<ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref>)outlen<sp/>-<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" kindref="member">BLAKE2B_OUTBYTES</ref><sp/>/<sp/>2;</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"></highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(toproduce<sp/>&gt;<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" kindref="member">BLAKE2B_OUTBYTES</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(in_buffer,<sp/>out_buffer,<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" kindref="member">BLAKE2B_OUTBYTES</ref>);</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="blake2b_8c_1a9631a68bc0c927f3d068b07ee8d052ff" kindref="member">TRY</ref>(<ref refid="blake2b_8c_1a5cf706554b84e6b4d763084ecefd6391" kindref="member">blake2b</ref>(out_buffer,<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" kindref="member">BLAKE2B_OUTBYTES</ref>,<sp/>in_buffer,</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" kindref="member">BLAKE2B_OUTBYTES</ref>,<sp/>NULL,<sp/>0));</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(out,<sp/>out_buffer,<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" kindref="member">BLAKE2B_OUTBYTES</ref><sp/>/<sp/>2);</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>out<sp/>+=<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" kindref="member">BLAKE2B_OUTBYTES</ref><sp/>/<sp/>2;</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>toproduce<sp/>-=<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" kindref="member">BLAKE2B_OUTBYTES</ref><sp/>/<sp/>2;</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"></highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(in_buffer,<sp/>out_buffer,<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" kindref="member">BLAKE2B_OUTBYTES</ref>);</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="blake2b_8c_1a9631a68bc0c927f3d068b07ee8d052ff" kindref="member">TRY</ref>(<ref refid="blake2b_8c_1a5cf706554b84e6b4d763084ecefd6391" kindref="member">blake2b</ref>(out_buffer,<sp/>toproduce,<sp/>in_buffer,<sp/><ref refid="blake2_8h_1a55df020abc59e40eb12965cf08eca1b5ac4536ddb2539173d703b1bc458cce33b" kindref="member">BLAKE2B_OUTBYTES</ref>,<sp/>NULL,</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0));</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(out,<sp/>out_buffer,<sp/>toproduce);</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="367"><highlight class="normal">fail:</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/>burn(&amp;blake_state,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(blake_state));</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>TRY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="371"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="372"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Argon2<sp/>Team<sp/>-<sp/>End<sp/>Code<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/crypto/argon2/blake2/blake2b.c"/>
+  </compounddef>
+</doxygen>

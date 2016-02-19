@@ -1,0 +1,256 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_transaction_status" kind="class" language="C++" prot="public">
+    <compoundname>TransactionStatus</compoundname>
+    <includes refid="transactionrecord_8h" local="no">transactionrecord.h</includes>
+      <sectiondef kind="user-defined">
+      <header>Generated (mined) transactions</header>
+      <memberdef kind="variable" id="class_transaction_status_1a6714606658df9486e4a3f8f2be5d28b4" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int TransactionStatus::matures_in</definition>
+        <argsstring></argsstring>
+        <name>matures_in</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionrecord.h" line="45" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionrecord.h" bodystart="45" bodyend="-1"/>
+        <referencedby refid="class_transaction_record_1a9b643dd885a790ae511705a1446556be" compoundref="transactionrecord_8cpp" startline="165" endline="249">TransactionRecord::updateStatus</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="user-defined">
+      <header>Reported status</header>
+      <memberdef kind="variable" id="class_transaction_status_1aa7d0dbec0880ccd8539d7e332f847451" prot="public" static="no" mutable="no">
+        <type><ref refid="class_transaction_status_1aaa6cc19ca3509bbae72d0df1661f85cb" kindref="member">Status</ref></type>
+        <definition>Status TransactionStatus::status</definition>
+        <argsstring></argsstring>
+        <name>status</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionrecord.h" line="50" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionrecord.h" bodystart="50" bodyend="-1"/>
+        <referencedby refid="class_transaction_record_1a9b643dd885a790ae511705a1446556be" compoundref="transactionrecord_8cpp" startline="165" endline="249">TransactionRecord::updateStatus</referencedby>
+        <referencedby refid="class_transaction_table_model_1a416d0751ab9a95ecd87d3f7bed4f0b06" compoundref="transactiontablemodel_8cpp" startline="481" endline="572">TransactionTableModel::data</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_transaction_status_1ac8a3bd9c1ad3969c6f969418fcffa0ca" prot="public" static="no" mutable="no">
+        <type>qint64</type>
+        <definition>qint64 TransactionStatus::depth</definition>
+        <argsstring></argsstring>
+        <name>depth</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionrecord.h" line="51" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionrecord.h" bodystart="51" bodyend="-1"/>
+        <referencedby refid="class_transaction_record_1a9b643dd885a790ae511705a1446556be" compoundref="transactionrecord_8cpp" startline="165" endline="249">TransactionRecord::updateStatus</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_transaction_status_1a861ed66c0fd49440bc1aacab5315a938" prot="public" static="no" mutable="no">
+        <type>qint64</type>
+        <definition>qint64 TransactionStatus::open_for</definition>
+        <argsstring></argsstring>
+        <name>open_for</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Timestamp if status==OpenUntilDate, otherwise number of additional blocks that need to be mined before finalization </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionrecord.h" line="52" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionrecord.h" bodystart="52" bodyend="-1"/>
+        <referencedby refid="class_transaction_record_1a9b643dd885a790ae511705a1446556be" compoundref="transactionrecord_8cpp" startline="165" endline="249">TransactionRecord::updateStatus</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_transaction_status_1aaa6cc19ca3509bbae72d0df1661f85cb" prot="public" static="no">
+        <name>Status</name>
+        <enumvalue id="class_transaction_status_1aaa6cc19ca3509bbae72d0df1661f85cba354f91f2bd2c4be35b366d02fe186e22" prot="public">
+          <name>Confirmed</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Have 6 or more confirmations (normal tx) or fully mature (mined tx) </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_transaction_status_1aaa6cc19ca3509bbae72d0df1661f85cba4a0e6eac1d0db61fb9b1c96c6cbe592a" prot="public">
+          <name>OpenUntilDate</name>
+          <briefdescription>
+<para>Normal (sent/received) transactions. </para>          </briefdescription>
+          <detaileddescription>
+<para>Transaction not yet final, waiting for date </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_transaction_status_1aaa6cc19ca3509bbae72d0df1661f85cbab91223e8b704793715b0e54637417a1c" prot="public">
+          <name>OpenUntilBlock</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Transaction not yet final, waiting for block </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_transaction_status_1aaa6cc19ca3509bbae72d0df1661f85cbaf8b9ab6fc1d08781bb94301e358171b6" prot="public">
+          <name>Offline</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Not sent to any other nodes </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_transaction_status_1aaa6cc19ca3509bbae72d0df1661f85cba6aa37fcd802ffec2cc13db46dcc41c03" prot="public">
+          <name>Unconfirmed</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Not yet mined into a block </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_transaction_status_1aaa6cc19ca3509bbae72d0df1661f85cba75c0b79a4c38c5777cdae1a565d6ba5e" prot="public">
+          <name>Confirming</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Confirmed, but waiting for the recommended number of confirmations </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_transaction_status_1aaa6cc19ca3509bbae72d0df1661f85cbae06a462705a0126fda4b82e47915d812" prot="public">
+          <name>Conflicted</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Conflicts with other transaction or mempool </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_transaction_status_1aaa6cc19ca3509bbae72d0df1661f85cba6b7a65301bf5a9eb371b34f2dcbd0e30" prot="public">
+          <name>Immature</name>
+          <briefdescription>
+<para>Generated (mined) transactions. </para>          </briefdescription>
+          <detaileddescription>
+<para>Mined but waiting for maturity </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_transaction_status_1aaa6cc19ca3509bbae72d0df1661f85cba25cc8866b321de53d71467d11bba19b7" prot="public">
+          <name>MaturesWarning</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Transaction will likely not mature because no nodes have confirmed </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_transaction_status_1aaa6cc19ca3509bbae72d0df1661f85cbaa00ed76c9186371bd649ffeec45d37e9" prot="public">
+          <name>NotAccepted</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Mined but not accepted </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionrecord.h" line="23" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionrecord.h" bodystart="23" bodyend="36"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_transaction_status_1a052ab3e47ca113a3e921f069723b8601" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool TransactionStatus::countsForBalance</definition>
+        <argsstring></argsstring>
+        <name>countsForBalance</name>
+        <briefdescription>
+<para>Transaction counts towards available balance. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionrecord.h" line="39" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionrecord.h" bodystart="39" bodyend="-1"/>
+        <referencedby refid="class_transaction_record_1a9b643dd885a790ae511705a1446556be" compoundref="transactionrecord_8cpp" startline="165" endline="249">TransactionRecord::updateStatus</referencedby>
+        <referencedby refid="class_transaction_table_model_1a416d0751ab9a95ecd87d3f7bed4f0b06" compoundref="transactiontablemodel_8cpp" startline="481" endline="572">TransactionTableModel::data</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_transaction_status_1afb31544f313d0630a41e376417233d68" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string TransactionStatus::sortKey</definition>
+        <argsstring></argsstring>
+        <name>sortKey</name>
+        <briefdescription>
+<para>Sorting key based on status. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionrecord.h" line="41" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionrecord.h" bodystart="41" bodyend="-1"/>
+        <referencedby refid="class_transaction_record_1a9b643dd885a790ae511705a1446556be" compoundref="transactionrecord_8cpp" startline="165" endline="249">TransactionRecord::updateStatus</referencedby>
+        <referencedby refid="class_transaction_table_model_1a416d0751ab9a95ecd87d3f7bed4f0b06" compoundref="transactiontablemodel_8cpp" startline="481" endline="572">TransactionTableModel::data</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_transaction_status_1a22839cc23993e849a6c9fed8bffd5f50" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int TransactionStatus::cur_num_blocks</definition>
+        <argsstring></argsstring>
+        <name>cur_num_blocks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Current number of blocks (to know whether cached status is still valid) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionrecord.h" line="58" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionrecord.h" bodystart="58" bodyend="-1"/>
+        <referencedby refid="class_transaction_record_1a9b643dd885a790ae511705a1446556be" compoundref="transactionrecord_8cpp" startline="165" endline="249">TransactionRecord::updateStatus</referencedby>
+        <referencedby refid="class_transaction_record_1aaca6757b7b300151694021be6af18d11" compoundref="transactionrecord_8cpp" startline="251" endline="255">TransactionRecord::statusUpdateNeeded</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_transaction_status_1a5dd91f2741963d7e68990fdf5f33c2da" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int TransactionStatus::cur_num_ix_locks</definition>
+        <argsstring></argsstring>
+        <name>cur_num_ix_locks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionrecord.h" line="61" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionrecord.h" bodystart="61" bodyend="-1"/>
+        <referencedby refid="class_transaction_record_1a9b643dd885a790ae511705a1446556be" compoundref="transactionrecord_8cpp" startline="165" endline="249">TransactionRecord::updateStatus</referencedby>
+        <referencedby refid="class_transaction_record_1aaca6757b7b300151694021be6af18d11" compoundref="transactionrecord_8cpp" startline="251" endline="255">TransactionRecord::statusUpdateNeeded</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_transaction_status_1a92ca92106ef195594ae2b38e64ede8ce" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>TransactionStatus::TransactionStatus</definition>
+        <argsstring>()</argsstring>
+        <name>TransactionStatus</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionrecord.h" line="18" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionrecord.h" bodystart="18" bodyend="21"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>UI model for transaction status. The transaction status is the part of a transaction that will change over time. </para>    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/qt/transactionrecord.h" line="16" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionrecord.h" bodystart="15" bodyend="62"/>
+    <listofallmembers>
+      <member refid="class_transaction_status_1aaa6cc19ca3509bbae72d0df1661f85cba354f91f2bd2c4be35b366d02fe186e22" prot="public" virt="non-virtual"><scope>TransactionStatus</scope><name>Confirmed</name></member>
+      <member refid="class_transaction_status_1aaa6cc19ca3509bbae72d0df1661f85cba75c0b79a4c38c5777cdae1a565d6ba5e" prot="public" virt="non-virtual"><scope>TransactionStatus</scope><name>Confirming</name></member>
+      <member refid="class_transaction_status_1aaa6cc19ca3509bbae72d0df1661f85cbae06a462705a0126fda4b82e47915d812" prot="public" virt="non-virtual"><scope>TransactionStatus</scope><name>Conflicted</name></member>
+      <member refid="class_transaction_status_1a052ab3e47ca113a3e921f069723b8601" prot="public" virt="non-virtual"><scope>TransactionStatus</scope><name>countsForBalance</name></member>
+      <member refid="class_transaction_status_1a22839cc23993e849a6c9fed8bffd5f50" prot="public" virt="non-virtual"><scope>TransactionStatus</scope><name>cur_num_blocks</name></member>
+      <member refid="class_transaction_status_1a5dd91f2741963d7e68990fdf5f33c2da" prot="public" virt="non-virtual"><scope>TransactionStatus</scope><name>cur_num_ix_locks</name></member>
+      <member refid="class_transaction_status_1ac8a3bd9c1ad3969c6f969418fcffa0ca" prot="public" virt="non-virtual"><scope>TransactionStatus</scope><name>depth</name></member>
+      <member refid="class_transaction_status_1aaa6cc19ca3509bbae72d0df1661f85cba6b7a65301bf5a9eb371b34f2dcbd0e30" prot="public" virt="non-virtual"><scope>TransactionStatus</scope><name>Immature</name></member>
+      <member refid="class_transaction_status_1a6714606658df9486e4a3f8f2be5d28b4" prot="public" virt="non-virtual"><scope>TransactionStatus</scope><name>matures_in</name></member>
+      <member refid="class_transaction_status_1aaa6cc19ca3509bbae72d0df1661f85cba25cc8866b321de53d71467d11bba19b7" prot="public" virt="non-virtual"><scope>TransactionStatus</scope><name>MaturesWarning</name></member>
+      <member refid="class_transaction_status_1aaa6cc19ca3509bbae72d0df1661f85cbaa00ed76c9186371bd649ffeec45d37e9" prot="public" virt="non-virtual"><scope>TransactionStatus</scope><name>NotAccepted</name></member>
+      <member refid="class_transaction_status_1aaa6cc19ca3509bbae72d0df1661f85cbaf8b9ab6fc1d08781bb94301e358171b6" prot="public" virt="non-virtual"><scope>TransactionStatus</scope><name>Offline</name></member>
+      <member refid="class_transaction_status_1a861ed66c0fd49440bc1aacab5315a938" prot="public" virt="non-virtual"><scope>TransactionStatus</scope><name>open_for</name></member>
+      <member refid="class_transaction_status_1aaa6cc19ca3509bbae72d0df1661f85cbab91223e8b704793715b0e54637417a1c" prot="public" virt="non-virtual"><scope>TransactionStatus</scope><name>OpenUntilBlock</name></member>
+      <member refid="class_transaction_status_1aaa6cc19ca3509bbae72d0df1661f85cba4a0e6eac1d0db61fb9b1c96c6cbe592a" prot="public" virt="non-virtual"><scope>TransactionStatus</scope><name>OpenUntilDate</name></member>
+      <member refid="class_transaction_status_1afb31544f313d0630a41e376417233d68" prot="public" virt="non-virtual"><scope>TransactionStatus</scope><name>sortKey</name></member>
+      <member refid="class_transaction_status_1aa7d0dbec0880ccd8539d7e332f847451" prot="public" virt="non-virtual"><scope>TransactionStatus</scope><name>status</name></member>
+      <member refid="class_transaction_status_1aaa6cc19ca3509bbae72d0df1661f85cb" prot="public" virt="non-virtual"><scope>TransactionStatus</scope><name>Status</name></member>
+      <member refid="class_transaction_status_1a92ca92106ef195594ae2b38e64ede8ce" prot="public" virt="non-virtual"><scope>TransactionStatus</scope><name>TransactionStatus</name></member>
+      <member refid="class_transaction_status_1aaa6cc19ca3509bbae72d0df1661f85cba6aa37fcd802ffec2cc13db46dcc41c03" prot="public" virt="non-virtual"><scope>TransactionStatus</scope><name>Unconfirmed</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

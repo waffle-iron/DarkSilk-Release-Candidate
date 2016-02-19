@@ -1,0 +1,628 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_stormnode_payments" kind="class" language="C++" prot="public">
+    <compoundname>CStormnodePayments</compoundname>
+    <includes refid="stormnode-payments_8h" local="no">stormnode-payments.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_c_stormnode_payments_1a805f7c8fccfa492a86aa86f38bb0c257" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CStormnodePayments::nSyncedFromPeer</definition>
+        <argsstring></argsstring>
+        <name>nSyncedFromPeer</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-payments.h" line="222" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-payments.h" bodystart="222" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_stormnode_payments_1a472520967e51c04dbbecbe90629f81b2" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CStormnodePayments::nLastBlockHeight</definition>
+        <argsstring></argsstring>
+        <name>nLastBlockHeight</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-payments.h" line="223" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-payments.h" bodystart="223" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_c_stormnode_payments_1a2227618f68b1655073c17d4b2ffe1c56" prot="public" static="no" mutable="no">
+        <type>std::map&lt; <ref refid="classuint256" kindref="compound">uint256</ref>, <ref refid="class_c_stormnode_payment_winner" kindref="compound">CStormnodePaymentWinner</ref> &gt;</type>
+        <definition>std::map&lt;uint256, CStormnodePaymentWinner&gt; CStormnodePayments::mapStormnodePayeeVotes</definition>
+        <argsstring></argsstring>
+        <name>mapStormnodePayeeVotes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-payments.h" line="226" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-payments.h" bodystart="226" bodyend="-1"/>
+        <referencedby refid="class_c_stormnode_payments_1a8dc55316a297daad51a03d4cf7b37d06" compoundref="stormnode-payments_8cpp" startline="354" endline="430">ProcessMessageStormnodePayments</referencedby>
+        <referencedby refid="class_c_stormnode_payments_1a8781a05c217f2b7b34bb2c57e0a6c813" compoundref="stormnode-payments_8cpp" startline="490" endline="517">AddWinningStormnode</referencedby>
+        <referencedby refid="class_c_stormnode_payments_1a0113fb8a5dc2e0b0efd0b8180535f9d0" compoundref="stormnode-payments_8cpp" startline="610" endline="632">CleanPaymentList</referencedby>
+        <referencedby refid="class_c_stormnode_payments_1a813695c47afcbedba8858c36cb30bcfe" compoundref="stormnode-payments_8cpp" startline="792" endline="812">Sync</referencedby>
+        <referencedby refid="class_c_stormnode_payments_1abfe9298441cc4e90710d1ba8bc24ec57" compoundref="stormnode-payments_8cpp" startline="814" endline="822">ToString</referencedby>
+        <referencedby refid="class_c_stormnode_sync_1a686a36163137e9079365e7fd0ede826c" compoundref="stormnode-sync_8cpp" startline="95" endline="106">CStormnodeSync::AddedStormnodeWinner</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_stormnode_payments_1aad1a7055ea55caa06b4eb291e8b3a348" prot="public" static="no" mutable="no">
+        <type>std::map&lt; int, <ref refid="class_c_stormnode_block_payees" kindref="compound">CStormnodeBlockPayees</ref> &gt;</type>
+        <definition>std::map&lt;int, CStormnodeBlockPayees&gt; CStormnodePayments::mapStormnodeBlocks</definition>
+        <argsstring></argsstring>
+        <name>mapStormnodeBlocks</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-payments.h" line="227" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-payments.h" bodystart="227" bodyend="-1"/>
+        <referencedby refid="class_c_stormnode_payments_1a29c31e98d23f4a7f150bbccd4ef5a5cb" compoundref="stormnode-payments_8cpp" startline="454" endline="461">GetBlockPayee</referencedby>
+        <referencedby refid="class_c_stormnode_payments_1ac2a8e2a9bef3c4c68c1e464903a1988f" compoundref="stormnode-payments_8cpp" startline="465" endline="488">IsScheduled</referencedby>
+        <referencedby refid="class_c_stormnode_payments_1a8781a05c217f2b7b34bb2c57e0a6c813" compoundref="stormnode-payments_8cpp" startline="490" endline="517">AddWinningStormnode</referencedby>
+        <referencedby refid="class_c_stormnode_payments_1a67088f0606e6b20c9d918a72db4ca2ff" compoundref="stormnode-payments_8cpp" startline="588" endline="597">GetRequiredPaymentsString</referencedby>
+        <referencedby refid="class_c_stormnode_payments_1ae14691c97882f093b8c852f03d7f5884" compoundref="stormnode-payments_8cpp" startline="599" endline="608">IsTransactionValid</referencedby>
+        <referencedby refid="class_c_stormnode_payments_1a0113fb8a5dc2e0b0efd0b8180535f9d0" compoundref="stormnode-payments_8cpp" startline="610" endline="632">CleanPaymentList</referencedby>
+        <referencedby refid="class_c_stormnode_payments_1abfe9298441cc4e90710d1ba8bc24ec57" compoundref="stormnode-payments_8cpp" startline="814" endline="822">ToString</referencedby>
+        <referencedby refid="class_c_stormnode_payments_1a28bd6d48455d8825c94056725fb42c08" compoundref="stormnode-payments_8cpp" startline="826" endline="841">GetOldestBlock</referencedby>
+        <referencedby refid="class_c_stormnode_payments_1a2d5b46ffba64492eaf4182bd3015d663" compoundref="stormnode-payments_8cpp" startline="845" endline="860">GetNewestBlock</referencedby>
+        <referencedby refid="class_c_stormnode_1a1502f0b0559e139a3100aa5646f95bd7" compoundref="stormnode_8cpp" startline="246" endline="289">CStormnode::GetLastPaid</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_stormnode_payments_1a82f9ee8e4388b9640854bd3c70b76782" prot="public" static="no" mutable="no">
+        <type>std::map&lt; <ref refid="classuint256" kindref="compound">uint256</ref>, int &gt;</type>
+        <definition>std::map&lt;uint256, int&gt; CStormnodePayments::mapStormnodesLastVote</definition>
+        <argsstring></argsstring>
+        <name>mapStormnodesLastVote</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-payments.h" line="228" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-payments.h" bodystart="228" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_stormnode_payments_1aedb0752fb1e1cb758cfc2fd05d131c40" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>CStormnodePayments::ADD_SERIALIZE_METHODS</definition>
+        <argsstring></argsstring>
+        <name>ADD_SERIALIZE_METHODS</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-payments.h" line="274" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-payments.h" bodystart="274" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_stormnode_payments_1aab9f6e5ac034c9573690e627190d3c84" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CStormnodePayments::CStormnodePayments</definition>
+        <argsstring>()</argsstring>
+        <name>CStormnodePayments</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-payments.h" line="230" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-payments.h" bodystart="230" bodyend="233"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_payments_1a829e8562a7530332d0096038b455e79d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CStormnodePayments::Clear</definition>
+        <argsstring>()</argsstring>
+        <name>Clear</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-payments.h" line="235" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-payments.h" bodystart="235" bodyend="239"/>
+        <references refid="sync_8h_1a35644e2b75a93da0cb0f6c768f34efa8" compoundref="sync_8h" startline="160">LOCK2</references>
+        <referencedby refid="class_c_stormnode_payment_d_b_1abc463c60002bbf00b542952bb3b5cff9" compoundref="stormnode-payments_8cpp" startline="66" endline="154">CStormnodePaymentDB::Read</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_payments_1a8781a05c217f2b7b34bb2c57e0a6c813" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CStormnodePayments::AddWinningStormnode</definition>
+        <argsstring>(CStormnodePaymentWinner &amp;winner)</argsstring>
+        <name>AddWinningStormnode</name>
+        <param>
+          <type><ref refid="class_c_stormnode_payment_winner" kindref="compound">CStormnodePaymentWinner</ref> &amp;</type>
+          <declname>winner</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-payments.h" line="241" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-payments.cpp" bodystart="490" bodyend="517"/>
+        <references refid="stormnode_8cpp_1a32f5cbabfc2bd53c2f2daedf122a83cb" compoundref="stormnode_8cpp" startline="22" endline="57">GetBlockHash</references>
+        <references refid="class_c_stormnode_payment_winner_1a22c766c132714906e267465def62cbcd" compoundref="stormnode-payments_8h" startline="159">CStormnodePaymentWinner::nBlockHeight</references>
+        <references refid="sync_8h_1a35644e2b75a93da0cb0f6c768f34efa8" compoundref="sync_8h" startline="160">LOCK2</references>
+        <references refid="class_c_stormnode_payments_1a2227618f68b1655073c17d4b2ffe1c56" compoundref="stormnode-payments_8h" startline="226">mapStormnodePayeeVotes</references>
+        <references refid="class_c_stormnode_payment_winner_1a7ef2cef7bb1dfcd12d7fe7abb15c5802" compoundref="stormnode-payments_8h" startline="175" endline="182">CStormnodePaymentWinner::GetHash</references>
+        <references refid="class_c_stormnode_payments_1aad1a7055ea55caa06b4eb291e8b3a348" compoundref="stormnode-payments_8h" startline="227">mapStormnodeBlocks</references>
+        <references refid="stormnode-payments_8cpp_1a0bca99aa555725c39171cc06fb3e94de" compoundref="stormnode-payments_8cpp" startline="634" endline="642">IsReferenceNode</references>
+        <references refid="class_c_stormnode_payment_winner_1a6514e77cb8997131c47e39b3118606fa" compoundref="stormnode-payments_8h" startline="157">CStormnodePaymentWinner::vinStormnode</references>
+        <references refid="class_c_stormnode_payment_winner_1abbba3ee9d4620fcec320826f03ffc7e4" compoundref="stormnode-payments_8h" startline="160">CStormnodePaymentWinner::payee</references>
+        <referencedby refid="class_c_stormnode_payments_1a8dc55316a297daad51a03d4cf7b37d06" compoundref="stormnode-payments_8cpp" startline="354" endline="430">ProcessMessageStormnodePayments</referencedby>
+        <referencedby refid="class_c_stormnode_payments_1a348b88dd03ef4a6684ae22141de841c8" compoundref="stormnode-payments_8cpp" startline="683" endline="762">ProcessBlock</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_payments_1a348b88dd03ef4a6684ae22141de841c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CStormnodePayments::ProcessBlock</definition>
+        <argsstring>(int nBlockHeight)</argsstring>
+        <name>ProcessBlock</name>
+        <param>
+          <type>int</type>
+          <declname>nBlockHeight</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-payments.h" line="242" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-payments.cpp" bodystart="683" bodyend="762"/>
+        <references refid="util_8cpp_1a9a7204234b904bf6a0374facf8477796" compoundref="util_8cpp" startline="76">fStormNode</references>
+        <references refid="stormnode-payments_8cpp_1a0bca99aa555725c39171cc06fb3e94de" compoundref="stormnode-payments_8cpp" startline="634" endline="642">IsReferenceNode</references>
+        <references refid="sandstorm_8cpp_1ac75d1761e37a1f1cbf71007bcbadf5b0" compoundref="sandstorm_8cpp" startline="36">activeStormnode</references>
+        <references refid="class_c_active_stormnode_1aef2103b9e7fdc173e56dbb8f903e1f38" compoundref="activestormnode_8h" startline="42">CActiveStormnode::vin</references>
+        <references refid="stormnodeman_8cpp_1a1e28814877e5fb4ed8113e3621ca13ff" compoundref="stormnodeman_8cpp" startline="18">snodeman</references>
+        <references refid="class_c_stormnode_man_1ad1fb56e4ee364e2b18bab57210f3f3cd" compoundref="stormnodeman_8cpp" startline="560" endline="592">CStormnodeMan::GetStormnodeRank</references>
+        <references refid="stormnode-payments_8h_1af87771f9ac5a9aaa0ca06f3b164cc1ba" compoundref="stormnode-payments_8h" startline="26">SNPAYMENTS_SIGNATURES_TOTAL</references>
+        <references refid="stormnode-budget_8cpp_1ad9842d355854ad5602728a96cf684706" compoundref="stormnode-budget_8cpp" startline="18">budget</references>
+        <references refid="class_c_budget_manager_1a1011c9399df614e09f77d87ebe4f7bca" compoundref="stormnode-budget_8cpp" startline="532" endline="555">CBudgetManager::IsBudgetPaymentBlock</references>
+        <references refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" compoundref="util_8h" startline="158">LogPrintf</references>
+        <references refid="class_c_tx_in_1aeac9b3abd4b2d81e9ec4401d1383778d" compoundref="transaction_8h" startline="147" endline="160">CTxIn::ToString</references>
+        <references refid="class_c_stormnode_man_1aeaaefff98af62a3d79d72e23f5539a72" compoundref="stormnodeman_8cpp" startline="442" endline="502">CStormnodeMan::GetNextStormnodeInQueueForPayment</references>
+        <references refid="class_c_stormnode_payment_winner_1a22c766c132714906e267465def62cbcd" compoundref="stormnode-payments_8h" startline="159">CStormnodePaymentWinner::nBlockHeight</references>
+        <references refid="script_8cpp_1ae40f28d3b46c21033f6ee1f1200d0321" compoundref="script_8cpp" startline="3226" endline="3232">GetScriptForDestination</references>
+        <references refid="class_c_stormnode_1af241ab789726de5ba5d2caba082c3d01" compoundref="stormnode_8h" startline="124">CStormnode::pubkey</references>
+        <references refid="class_c_pub_key_1a9c1908fef34fd9e1c4b5e0ffd5d3834e" compoundref="pubkey_8h" startline="132" endline="134">CPubKey::GetID</references>
+        <references refid="class_c_stormnode_payment_winner_1ac1b332eb97519047fa170e53af4287e3" compoundref="stormnode-payments_8h" startline="189" endline="191">CStormnodePaymentWinner::AddPayee</references>
+        <references refid="script_8cpp_1a951f7e601746ae076afdf3169ecca2fc" compoundref="script_8cpp" startline="2670" endline="2694">ExtractDestination</references>
+        <references refid="class_c_base58_data_1a9a47b10dadff15b8d6a6d0e63ce3ae32" compoundref="base58_8cpp" startline="175" endline="179">CBase58Data::ToString</references>
+        <references refid="sandstorm_8cpp_1af6ac9f9a52a47b030c3d4a38d13af2b1" compoundref="sandstorm_8cpp" startline="28">sandStormSigner</references>
+        <references refid="class_c_sand_storm_signer_1ac9823b3f497f6e9f1e3d426f662af92b" compoundref="sandstorm_8cpp" startline="2044" endline="2057">CSandStormSigner::SetKey</references>
+        <references refid="sandstorm_8h_1a87851f2f7e50eb7ee21387115e61f325" compoundref="util_8cpp" startline="77">strStormNodePrivKey</references>
+        <references refid="class_c_stormnode_payment_winner_1a2ee621a52030230a8e3307886f5f45be" compoundref="stormnode-payments_8cpp" startline="432" endline="452">CStormnodePaymentWinner::Sign</references>
+        <references refid="class_c_stormnode_payments_1a8781a05c217f2b7b34bb2c57e0a6c813" compoundref="stormnode-payments_8cpp" startline="490" endline="517">AddWinningStormnode</references>
+        <references refid="class_c_stormnode_payment_winner_1a39a19ceedef26c1b54d44853450a71eb" compoundref="stormnode-payments_8cpp" startline="764" endline="768">CStormnodePaymentWinner::Relay</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_payments_1a813695c47afcbedba8858c36cb30bcfe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CStormnodePayments::Sync</definition>
+        <argsstring>(CNode *node, int nCountNeeded)</argsstring>
+        <name>Sync</name>
+        <param>
+          <type><ref refid="class_c_node" kindref="compound">CNode</ref> *</type>
+          <declname>node</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nCountNeeded</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-payments.h" line="244" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-payments.cpp" bodystart="792" bodyend="812"/>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="chain_8h_1a6454ad864029344132a0a0b59b1456ee" compoundref="main_8cpp" startline="76">pindexBest</references>
+        <references refid="stormnodeman_8cpp_1a1e28814877e5fb4ed8113e3621ca13ff" compoundref="stormnodeman_8cpp" startline="18">snodeman</references>
+        <references refid="class_c_stormnode_man_1a02b9b11565e19f2c9dafbe132341fabd" compoundref="stormnodeman_8cpp" startline="364" endline="376">CStormnodeMan::CountEnabled</references>
+        <references refid="class_c_stormnode_payments_1a2227618f68b1655073c17d4b2ffe1c56" compoundref="stormnode-payments_8h" startline="226">mapStormnodePayeeVotes</references>
+        <references refid="class_c_stormnode_payment_winner_1a22c766c132714906e267465def62cbcd" compoundref="stormnode-payments_8h" startline="159">CStormnodePaymentWinner::nBlockHeight</references>
+        <references refid="class_c_block_index_1aebfc8d6b95852546760e742553d7bfd5" compoundref="chain_8h" startline="116">CBlockIndex::nHeight</references>
+        <references refid="class_c_node_1a7cef2333aa8776127a7e7fcab659eb6a" compoundref="net_8h" startline="494" endline="501">CNode::PushInventory</references>
+        <references refid="protocol_8h_1ac36f475ca5b446f4fde4c9b90bec77c8ad6098a517061632608c4e08e6f2b98a3" compoundref="protocol_8h" startline="150">MSG_STORMNODE_WINNER</references>
+        <references refid="class_c_stormnode_payment_winner_1a7ef2cef7bb1dfcd12d7fe7abb15c5802" compoundref="stormnode-payments_8h" startline="175" endline="182">CStormnodePaymentWinner::GetHash</references>
+        <references refid="class_c_node_1a204fda3d33404cb37698c085b1583ab2" compoundref="net_8h" startline="583" endline="595">CNode::PushMessage</references>
+        <referencedby refid="class_c_stormnode_payments_1a8dc55316a297daad51a03d4cf7b37d06" compoundref="stormnode-payments_8cpp" startline="354" endline="430">ProcessMessageStormnodePayments</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_payments_1a0113fb8a5dc2e0b0efd0b8180535f9d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CStormnodePayments::CleanPaymentList</definition>
+        <argsstring>()</argsstring>
+        <name>CleanPaymentList</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-payments.h" line="245" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-payments.cpp" bodystart="610" bodyend="632"/>
+        <references refid="sync_8h_1a35644e2b75a93da0cb0f6c768f34efa8" compoundref="sync_8h" startline="160">LOCK2</references>
+        <references refid="chain_8h_1a6454ad864029344132a0a0b59b1456ee" compoundref="main_8cpp" startline="76">pindexBest</references>
+        <references refid="stormnodeman_8cpp_1a1e28814877e5fb4ed8113e3621ca13ff" compoundref="stormnodeman_8cpp" startline="18">snodeman</references>
+        <references refid="class_c_stormnode_man_1ad15cbc672903cce82c757118b74c267c" compoundref="stormnodeman_8h" startline="138" endline="138">CStormnodeMan::size</references>
+        <references refid="class_c_stormnode_payments_1a2227618f68b1655073c17d4b2ffe1c56" compoundref="stormnode-payments_8h" startline="226">mapStormnodePayeeVotes</references>
+        <references refid="class_c_block_index_1aebfc8d6b95852546760e742553d7bfd5" compoundref="chain_8h" startline="116">CBlockIndex::nHeight</references>
+        <references refid="class_c_stormnode_payment_winner_1a22c766c132714906e267465def62cbcd" compoundref="stormnode-payments_8h" startline="159">CStormnodePaymentWinner::nBlockHeight</references>
+        <references refid="stormnode-sync_8cpp_1a4233fda53cfb60fd6ba208d981ac3fe7" compoundref="stormnode-sync_8cpp" startline="15">stormnodeSync</references>
+        <references refid="class_c_stormnode_sync_1aa691249c2bfd876d49d24b82b3df7048" compoundref="stormnode-sync_8h" startline="35">CStormnodeSync::mapSeenSyncSNW</references>
+        <references refid="class_c_stormnode_payments_1aad1a7055ea55caa06b4eb291e8b3a348" compoundref="stormnode-payments_8h" startline="227">mapStormnodeBlocks</references>
+        <referencedby refid="sandstorm_8h_1ac661e702905cd5093cb237555ba5c1c0" compoundref="sandstorm_8cpp" startline="2196" endline="2239">ThreadCheckSandStormPool</referencedby>
+        <referencedby refid="class_c_stormnode_payment_d_b_1abc463c60002bbf00b542952bb3b5cff9" compoundref="stormnode-payments_8cpp" startline="66" endline="154">CStormnodePaymentDB::Read</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_payments_1a16c152a68d00c1643c99c911f87503c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int CStormnodePayments::LastPayment</definition>
+        <argsstring>(CStormnode &amp;sn)</argsstring>
+        <name>LastPayment</name>
+        <param>
+          <type><ref refid="class_c_stormnode" kindref="compound">CStormnode</ref> &amp;</type>
+          <declname>sn</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-payments.h" line="246" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_payments_1a29c31e98d23f4a7f150bbccd4ef5a5cb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CStormnodePayments::GetBlockPayee</definition>
+        <argsstring>(int nBlockHeight, CScript &amp;payee)</argsstring>
+        <name>GetBlockPayee</name>
+        <param>
+          <type>int</type>
+          <declname>nBlockHeight</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_script" kindref="compound">CScript</ref> &amp;</type>
+          <declname>payee</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-payments.h" line="248" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-payments.cpp" bodystart="454" bodyend="461"/>
+        <references refid="class_c_stormnode_payments_1aad1a7055ea55caa06b4eb291e8b3a348" compoundref="stormnode-payments_8h" startline="227">mapStormnodeBlocks</references>
+        <referencedby refid="class_c_stormnode_payments_1accaeb923fe36e73d4228fc043771c4ad" compoundref="stormnode-payments_8cpp" startline="294" endline="346">FillBlockPayee</referencedby>
+        <referencedby refid="class_c_wallet_1a644df129468440aa36f49ca3716a3c19" compoundref="wallet_8cpp" startline="3733" endline="3956">CWallet::CreateCoinStake</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_payments_1ae14691c97882f093b8c852f03d7f5884" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CStormnodePayments::IsTransactionValid</definition>
+        <argsstring>(const CTransaction &amp;txNew, int nBlockHeight)</argsstring>
+        <name>IsTransactionValid</name>
+        <param>
+          <type>const <ref refid="class_c_transaction" kindref="compound">CTransaction</ref> &amp;</type>
+          <declname>txNew</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nBlockHeight</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-payments.h" line="249" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-payments.cpp" bodystart="599" bodyend="608"/>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="class_c_stormnode_payments_1aad1a7055ea55caa06b4eb291e8b3a348" compoundref="stormnode-payments_8h" startline="227">mapStormnodeBlocks</references>
+        <referencedby refid="stormnode-payments_8h_1af9e474d79a12729ed3e96b0d1c0351b4" compoundref="stormnode-payments_8cpp" startline="230" endline="269">IsBlockPayeeValid</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_payments_1ac2a8e2a9bef3c4c68c1e464903a1988f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CStormnodePayments::IsScheduled</definition>
+        <argsstring>(CStormnode &amp;sn, int nNotBlockHeight)</argsstring>
+        <name>IsScheduled</name>
+        <param>
+          <type><ref refid="class_c_stormnode" kindref="compound">CStormnode</ref> &amp;</type>
+          <declname>sn</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nNotBlockHeight</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-payments.h" line="250" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-payments.cpp" bodystart="465" bodyend="488"/>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="chain_8h_1a6454ad864029344132a0a0b59b1456ee" compoundref="main_8cpp" startline="76">pindexBest</references>
+        <references refid="script_8cpp_1ae40f28d3b46c21033f6ee1f1200d0321" compoundref="script_8cpp" startline="3226" endline="3232">GetScriptForDestination</references>
+        <references refid="class_c_stormnode_1af241ab789726de5ba5d2caba082c3d01" compoundref="stormnode_8h" startline="124">CStormnode::pubkey</references>
+        <references refid="class_c_pub_key_1a9c1908fef34fd9e1c4b5e0ffd5d3834e" compoundref="pubkey_8h" startline="132" endline="134">CPubKey::GetID</references>
+        <references refid="class_c_block_index_1aebfc8d6b95852546760e742553d7bfd5" compoundref="chain_8h" startline="116">CBlockIndex::nHeight</references>
+        <references refid="class_c_stormnode_payments_1aad1a7055ea55caa06b4eb291e8b3a348" compoundref="stormnode-payments_8h" startline="227">mapStormnodeBlocks</references>
+        <referencedby refid="class_c_stormnode_man_1aeaaefff98af62a3d79d72e23f5539a72" compoundref="stormnodeman_8cpp" startline="442" endline="502">CStormnodeMan::GetNextStormnodeInQueueForPayment</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_payments_1ae0765ade69bea1010c3f7482ea9d9beb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CStormnodePayments::CanVote</definition>
+        <argsstring>(COutPoint outStormnode, int nBlockHeight)</argsstring>
+        <name>CanVote</name>
+        <param>
+          <type><ref refid="class_c_out_point" kindref="compound">COutPoint</ref></type>
+          <declname>outStormnode</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nBlockHeight</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-payments.h" line="252" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-payments.h" bodystart="252" bodyend="264"/>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="class_c_out_point_1af131c7194a660558b0ff158f4efa7a28" compoundref="transaction_8h" startline="30">COutPoint::hash</references>
+        <references refid="class_c_out_point_1a9fbc648ca0d11421ad66e897185a9b58" compoundref="transaction_8h" startline="31">COutPoint::n</references>
+        <referencedby refid="class_c_stormnode_payments_1a8dc55316a297daad51a03d4cf7b37d06" compoundref="stormnode-payments_8cpp" startline="354" endline="430">ProcessMessageStormnodePayments</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_payments_1a98392b86e945308c9c66f1cd4942a220" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int CStormnodePayments::GetMinStormnodePaymentsProto</definition>
+        <argsstring>()</argsstring>
+        <name>GetMinStormnodePaymentsProto</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-payments.h" line="266" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-payments.cpp" bodystart="348" bodyend="352"/>
+        <references refid="spork_8cpp_1a3305663176e21e81c80dc951a7f8ea5e" compoundref="spork_8cpp" startline="82" endline="102">IsSporkActive</references>
+        <referencedby refid="class_c_stormnode_sync_1adaaeb592c3432c8a459560523c7be207" compoundref="stormnode-sync_8cpp" startline="225" endline="405">CStormnodeSync::Process</referencedby>
+        <referencedby refid="class_c_stormnode_broadcast_1a1492e5bc8fc2587de913ec8ffc9d18a8" compoundref="stormnode_8cpp" startline="351" endline="422">CStormnodeBroadcast::CheckAndUpdate</referencedby>
+        <referencedby refid="class_c_stormnode_ping_1af77ba52e9ff7531d09b61fefa372efa4" compoundref="stormnode_8cpp" startline="578" endline="664">CStormnodePing::CheckAndUpdate</referencedby>
+        <referencedby refid="class_c_stormnode_man_1a6d8c3a832ea7d6f4780a59e2ae0441b8" compoundref="stormnodeman_8cpp" startline="255" endline="350">CStormnodeMan::CheckAndRemove</referencedby>
+        <referencedby refid="class_c_stormnode_man_1a02b9b11565e19f2c9dafbe132341fabd" compoundref="stormnodeman_8cpp" startline="364" endline="376">CStormnodeMan::CountEnabled</referencedby>
+        <referencedby refid="class_c_stormnode_man_1aeaaefff98af62a3d79d72e23f5539a72" compoundref="stormnodeman_8cpp" startline="442" endline="502">CStormnodeMan::GetNextStormnodeInQueueForPayment</referencedby>
+        <referencedby refid="class_c_stormnode_man_1a24417dae3da8762e9be495f25b0a6d30" compoundref="stormnodeman_8cpp" startline="504" endline="534">CStormnodeMan::FindRandomNotInVec</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_payments_1a8dc55316a297daad51a03d4cf7b37d06" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CStormnodePayments::ProcessMessageStormnodePayments</definition>
+        <argsstring>(CNode *pfrom, std::string &amp;strCommand, CDataStream &amp;vRecv)</argsstring>
+        <name>ProcessMessageStormnodePayments</name>
+        <param>
+          <type><ref refid="class_c_node" kindref="compound">CNode</ref> *</type>
+          <declname>pfrom</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>strCommand</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_data_stream" kindref="compound">CDataStream</ref> &amp;</type>
+          <declname>vRecv</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-payments.h" line="267" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-payments.cpp" bodystart="354" bodyend="430"/>
+        <references refid="stormnode-sync_8cpp_1a4233fda53cfb60fd6ba208d981ac3fe7" compoundref="stormnode-sync_8cpp" startline="15">stormnodeSync</references>
+        <references refid="class_c_stormnode_sync_1adfb3343f29476ca833084be0320a7d50" compoundref="stormnode-sync_8cpp" startline="28" endline="57">CStormnodeSync::IsBlockchainSynced</references>
+        <references refid="util_8cpp_1aa2216c761101b28e38757c5cffea3dc5" compoundref="util_8cpp" startline="79">fLiteMode</references>
+        <references refid="chainparams_8cpp_1ace5c5b706d71a324a417dd2db394fd4a" compoundref="chainparams_8cpp" startline="186" endline="188">Params</references>
+        <references refid="class_c_chain_params_1a90dc493ec0c0325c98c3ac06eb99862b">CChainParams::NetworkID</references>
+        <references refid="class_c_chain_params_1a5c4bb1d7c0205399ff06ee58fab7f176ab64dab5901e9dc8c7bf79daf9f7a2e1f" compoundref="chainparams_8h" startline="39">CChainParams::MAIN</references>
+        <references refid="class_c_node_1ae94af0e82ca84242e420fc53debe6f25" compoundref="net_8h" startline="801" endline="808">CNode::HasFulfilledRequest</references>
+        <references refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" compoundref="util_8h" startline="158">LogPrintf</references>
+        <references refid="main_8cpp_1a387fdffa0ff52dde6b7d1c2991a9bdac" compoundref="main_8cpp" startline="1741" endline="1764">Misbehaving</references>
+        <references refid="class_c_node_1ac0f1a22fa938e84138536308e2001340" compoundref="net_8h" startline="424" endline="426">CNode::GetId</references>
+        <references refid="class_c_node_1a5b378bdd447e2f1e63ced2ae5b36ed76" compoundref="net_8h" startline="810" endline="814">CNode::FulfilledRequest</references>
+        <references refid="class_c_stormnode_payments_1a813695c47afcbedba8858c36cb30bcfe" compoundref="stormnode-payments_8cpp" startline="792" endline="812">Sync</references>
+        <references refid="class_c_node_1a3993ecb1de2a2135a3cf0904346a6f88" compoundref="net_8h" startline="245">CNode::addr</references>
+        <references refid="class_c_service_1a336f9848fe9364e260c76499be0351a5" compoundref="netbase_8cpp" startline="1222" endline="1225">CService::ToString</references>
+        <references refid="class_c_node_1a99173eb3cef17e699ba21a5249ac33d2" compoundref="net_8h" startline="248">CNode::nVersion</references>
+        <references refid="chain_8h_1a6454ad864029344132a0a0b59b1456ee" compoundref="main_8cpp" startline="76">pindexBest</references>
+        <references refid="class_c_stormnode_payments_1a2227618f68b1655073c17d4b2ffe1c56" compoundref="stormnode-payments_8h" startline="226">mapStormnodePayeeVotes</references>
+        <references refid="class_c_block_index_1aebfc8d6b95852546760e742553d7bfd5" compoundref="chain_8h" startline="116">CBlockIndex::nHeight</references>
+        <references refid="class_c_stormnode_sync_1a686a36163137e9079365e7fd0ede826c" compoundref="stormnode-sync_8cpp" startline="95" endline="106">CStormnodeSync::AddedStormnodeWinner</references>
+        <references refid="stormnodeman_8cpp_1a1e28814877e5fb4ed8113e3621ca13ff" compoundref="stormnodeman_8cpp" startline="18">snodeman</references>
+        <references refid="class_c_stormnode_man_1a02b9b11565e19f2c9dafbe132341fabd" compoundref="stormnodeman_8cpp" startline="364" endline="376">CStormnodeMan::CountEnabled</references>
+        <references refid="class_c_stormnode_payments_1ae0765ade69bea1010c3f7482ea9d9beb" compoundref="stormnode-payments_8h" startline="252" endline="264">CanVote</references>
+        <references refid="class_c_stormnode_sync_1a0f196a2ca46b0cc4de3a488a4cbc2374" compoundref="stormnode-sync_8cpp" startline="23" endline="26">CStormnodeSync::IsSynced</references>
+        <references refid="class_c_stormnode_man_1a918a4ccb668808449809a77adc036301" compoundref="stormnodeman_8cpp" startline="229" endline="244">CStormnodeMan::AskForSN</references>
+        <references refid="script_8cpp_1a951f7e601746ae076afdf3169ecca2fc" compoundref="script_8cpp" startline="2670" endline="2694">ExtractDestination</references>
+        <references refid="class_c_base58_data_1a9a47b10dadff15b8d6a6d0e63ce3ae32" compoundref="base58_8cpp" startline="175" endline="179">CBase58Data::ToString</references>
+        <references refid="class_c_stormnode_payments_1a8781a05c217f2b7b34bb2c57e0a6c813" compoundref="stormnode-payments_8cpp" startline="490" endline="517">AddWinningStormnode</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_payments_1a67088f0606e6b20c9d918a72db4ca2ff" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string CStormnodePayments::GetRequiredPaymentsString</definition>
+        <argsstring>(int nBlockHeight)</argsstring>
+        <name>GetRequiredPaymentsString</name>
+        <param>
+          <type>int</type>
+          <declname>nBlockHeight</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-payments.h" line="268" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-payments.cpp" bodystart="588" bodyend="597"/>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="class_c_stormnode_payments_1aad1a7055ea55caa06b4eb291e8b3a348" compoundref="stormnode-payments_8h" startline="227">mapStormnodeBlocks</references>
+        <referencedby refid="stormnode-payments_8h_1a7828ab0b9a1302db35b658f727b260e1" compoundref="stormnode-payments_8cpp" startline="284" endline="291">GetRequiredPaymentsString</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_payments_1accaeb923fe36e73d4228fc043771c4ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CStormnodePayments::FillBlockPayee</definition>
+        <argsstring>(CTransaction &amp;txNew, CAmount nFees)</argsstring>
+        <name>FillBlockPayee</name>
+        <param>
+          <type><ref refid="class_c_transaction" kindref="compound">CTransaction</ref> &amp;</type>
+          <declname>txNew</declname>
+        </param>
+        <param>
+          <type><ref refid="amount_8h_1a4eaf3a5239714d8c45b851527f7cb564" kindref="member">CAmount</ref></type>
+          <declname>nFees</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-payments.h" line="269" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-payments.cpp" bodystart="294" bodyend="346"/>
+        <references refid="chain_8h_1a6454ad864029344132a0a0b59b1456ee" compoundref="main_8cpp" startline="76">pindexBest</references>
+        <references refid="class_c_stormnode_payments_1a29c31e98d23f4a7f150bbccd4ef5a5cb" compoundref="stormnode-payments_8cpp" startline="454" endline="461">GetBlockPayee</references>
+        <references refid="class_c_block_index_1aebfc8d6b95852546760e742553d7bfd5" compoundref="chain_8h" startline="116">CBlockIndex::nHeight</references>
+        <references refid="stormnodeman_8cpp_1a1e28814877e5fb4ed8113e3621ca13ff" compoundref="stormnodeman_8cpp" startline="18">snodeman</references>
+        <references refid="class_c_stormnode_man_1aad6c3131e73e2b686f3847148b536448" compoundref="stormnodeman_8cpp" startline="536" endline="558">CStormnodeMan::GetCurrentStormNode</references>
+        <references refid="script_8cpp_1ae40f28d3b46c21033f6ee1f1200d0321" compoundref="script_8cpp" startline="3226" endline="3232">GetScriptForDestination</references>
+        <references refid="class_c_stormnode_1af241ab789726de5ba5d2caba082c3d01" compoundref="stormnode_8h" startline="124">CStormnode::pubkey</references>
+        <references refid="class_c_pub_key_1a9c1908fef34fd9e1c4b5e0ffd5d3834e" compoundref="pubkey_8h" startline="132" endline="134">CPubKey::GetID</references>
+        <references refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" compoundref="util_8h" startline="158">LogPrintf</references>
+        <references refid="class_c_transaction_1ae42c0032a464c3054c508017c7d040ef" compoundref="transaction_8h" startline="262">CTransaction::vout</references>
+        <references refid="main_8cpp_1afe042769eafbfbf4e82dffe357798748" compoundref="main_8cpp" startline="1725" endline="1730">GetBlockValue</references>
+        <references refid="class_c_block_index_1a3324894e6af612d1bd76f89378435713" compoundref="chain_8h" startline="142">CBlockIndex::nBits</references>
+        <references refid="main_8cpp_1ab9c19a2d094fea9bd9f285f4b33961a4" compoundref="main_8cpp" startline="1733" endline="1738">GetStormnodePayment</references>
+        <references refid="script_8cpp_1a951f7e601746ae076afdf3169ecca2fc" compoundref="script_8cpp" startline="2670" endline="2694">ExtractDestination</references>
+        <references refid="class_c_base58_data_1a9a47b10dadff15b8d6a6d0e63ce3ae32" compoundref="base58_8cpp" startline="175" endline="179">CBase58Data::ToString</references>
+        <referencedby refid="stormnode-payments_8h_1a1c78c12ef9ef9becb2701ac56c3996ec" compoundref="stormnode-payments_8cpp" startline="272" endline="282">FillBlockPayee</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_payments_1abfe9298441cc4e90710d1ba8bc24ec57" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string CStormnodePayments::ToString</definition>
+        <argsstring>() const </argsstring>
+        <name>ToString</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-payments.h" line="270" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-payments.cpp" bodystart="814" bodyend="822"/>
+        <references refid="class_c_stormnode_payments_1a2227618f68b1655073c17d4b2ffe1c56" compoundref="stormnode-payments_8h" startline="226">mapStormnodePayeeVotes</references>
+        <references refid="class_c_stormnode_payments_1aad1a7055ea55caa06b4eb291e8b3a348" compoundref="stormnode-payments_8h" startline="227">mapStormnodeBlocks</references>
+        <referencedby refid="class_c_stormnode_payment_d_b_1abc463c60002bbf00b542952bb3b5cff9" compoundref="stormnode-payments_8cpp" startline="66" endline="154">CStormnodePaymentDB::Read</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_payments_1a28bd6d48455d8825c94056725fb42c08" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int CStormnodePayments::GetOldestBlock</definition>
+        <argsstring>()</argsstring>
+        <name>GetOldestBlock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-payments.h" line="271" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-payments.cpp" bodystart="826" bodyend="841"/>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="class_c_stormnode_payments_1aad1a7055ea55caa06b4eb291e8b3a348" compoundref="stormnode-payments_8h" startline="227">mapStormnodeBlocks</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_payments_1a2d5b46ffba64492eaf4182bd3015d663" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int CStormnodePayments::GetNewestBlock</definition>
+        <argsstring>()</argsstring>
+        <name>GetNewestBlock</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-payments.h" line="272" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-payments.cpp" bodystart="845" bodyend="860"/>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="class_c_stormnode_payments_1aad1a7055ea55caa06b4eb291e8b3a348" compoundref="stormnode-payments_8h" startline="227">mapStormnodeBlocks</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_stormnode_payments_1a00b73c24ef476465db57c93a880343d6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename Stream</type>
+          </param>
+          <param>
+            <type>typename Operation</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void CStormnodePayments::SerializationOp</definition>
+        <argsstring>(Stream &amp;s, Operation ser_action, int nType, int nVersion)</argsstring>
+        <name>SerializationOp</name>
+        <param>
+          <type>Stream &amp;</type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>Operation</type>
+          <declname>ser_action</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nType</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nVersion</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/stormnode-payments.h" line="277" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-payments.h" bodystart="277" bodyend="280"/>
+        <references refid="serialize_8h_1a4d7fc7040e01003a01f367b8d90324f1" compoundref="serialize_8h" startline="101">READWRITE</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/stormnode-payments.h" line="220" column="1" bodyfile="/home/dev/ds-160209/src/stormnode-payments.h" bodystart="219" bodyend="281"/>
+    <listofallmembers>
+      <member refid="class_c_stormnode_payments_1aedb0752fb1e1cb758cfc2fd05d131c40" prot="public" virt="non-virtual"><scope>CStormnodePayments</scope><name>ADD_SERIALIZE_METHODS</name></member>
+      <member refid="class_c_stormnode_payments_1a8781a05c217f2b7b34bb2c57e0a6c813" prot="public" virt="non-virtual"><scope>CStormnodePayments</scope><name>AddWinningStormnode</name></member>
+      <member refid="class_c_stormnode_payments_1ae0765ade69bea1010c3f7482ea9d9beb" prot="public" virt="non-virtual"><scope>CStormnodePayments</scope><name>CanVote</name></member>
+      <member refid="class_c_stormnode_payments_1a0113fb8a5dc2e0b0efd0b8180535f9d0" prot="public" virt="non-virtual"><scope>CStormnodePayments</scope><name>CleanPaymentList</name></member>
+      <member refid="class_c_stormnode_payments_1a829e8562a7530332d0096038b455e79d" prot="public" virt="non-virtual"><scope>CStormnodePayments</scope><name>Clear</name></member>
+      <member refid="class_c_stormnode_payments_1aab9f6e5ac034c9573690e627190d3c84" prot="public" virt="non-virtual"><scope>CStormnodePayments</scope><name>CStormnodePayments</name></member>
+      <member refid="class_c_stormnode_payments_1accaeb923fe36e73d4228fc043771c4ad" prot="public" virt="non-virtual"><scope>CStormnodePayments</scope><name>FillBlockPayee</name></member>
+      <member refid="class_c_stormnode_payments_1a29c31e98d23f4a7f150bbccd4ef5a5cb" prot="public" virt="non-virtual"><scope>CStormnodePayments</scope><name>GetBlockPayee</name></member>
+      <member refid="class_c_stormnode_payments_1a98392b86e945308c9c66f1cd4942a220" prot="public" virt="non-virtual"><scope>CStormnodePayments</scope><name>GetMinStormnodePaymentsProto</name></member>
+      <member refid="class_c_stormnode_payments_1a2d5b46ffba64492eaf4182bd3015d663" prot="public" virt="non-virtual"><scope>CStormnodePayments</scope><name>GetNewestBlock</name></member>
+      <member refid="class_c_stormnode_payments_1a28bd6d48455d8825c94056725fb42c08" prot="public" virt="non-virtual"><scope>CStormnodePayments</scope><name>GetOldestBlock</name></member>
+      <member refid="class_c_stormnode_payments_1a67088f0606e6b20c9d918a72db4ca2ff" prot="public" virt="non-virtual"><scope>CStormnodePayments</scope><name>GetRequiredPaymentsString</name></member>
+      <member refid="class_c_stormnode_payments_1ac2a8e2a9bef3c4c68c1e464903a1988f" prot="public" virt="non-virtual"><scope>CStormnodePayments</scope><name>IsScheduled</name></member>
+      <member refid="class_c_stormnode_payments_1ae14691c97882f093b8c852f03d7f5884" prot="public" virt="non-virtual"><scope>CStormnodePayments</scope><name>IsTransactionValid</name></member>
+      <member refid="class_c_stormnode_payments_1a16c152a68d00c1643c99c911f87503c8" prot="public" virt="non-virtual"><scope>CStormnodePayments</scope><name>LastPayment</name></member>
+      <member refid="class_c_stormnode_payments_1aad1a7055ea55caa06b4eb291e8b3a348" prot="public" virt="non-virtual"><scope>CStormnodePayments</scope><name>mapStormnodeBlocks</name></member>
+      <member refid="class_c_stormnode_payments_1a2227618f68b1655073c17d4b2ffe1c56" prot="public" virt="non-virtual"><scope>CStormnodePayments</scope><name>mapStormnodePayeeVotes</name></member>
+      <member refid="class_c_stormnode_payments_1a82f9ee8e4388b9640854bd3c70b76782" prot="public" virt="non-virtual"><scope>CStormnodePayments</scope><name>mapStormnodesLastVote</name></member>
+      <member refid="class_c_stormnode_payments_1a472520967e51c04dbbecbe90629f81b2" prot="private" virt="non-virtual"><scope>CStormnodePayments</scope><name>nLastBlockHeight</name></member>
+      <member refid="class_c_stormnode_payments_1a805f7c8fccfa492a86aa86f38bb0c257" prot="private" virt="non-virtual"><scope>CStormnodePayments</scope><name>nSyncedFromPeer</name></member>
+      <member refid="class_c_stormnode_payments_1a348b88dd03ef4a6684ae22141de841c8" prot="public" virt="non-virtual"><scope>CStormnodePayments</scope><name>ProcessBlock</name></member>
+      <member refid="class_c_stormnode_payments_1a8dc55316a297daad51a03d4cf7b37d06" prot="public" virt="non-virtual"><scope>CStormnodePayments</scope><name>ProcessMessageStormnodePayments</name></member>
+      <member refid="class_c_stormnode_payments_1a00b73c24ef476465db57c93a880343d6" prot="public" virt="non-virtual"><scope>CStormnodePayments</scope><name>SerializationOp</name></member>
+      <member refid="class_c_stormnode_payments_1a813695c47afcbedba8858c36cb30bcfe" prot="public" virt="non-virtual"><scope>CStormnodePayments</scope><name>Sync</name></member>
+      <member refid="class_c_stormnode_payments_1abfe9298441cc4e90710d1ba8bc24ec57" prot="public" virt="non-virtual"><scope>CStormnodePayments</scope><name>ToString</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

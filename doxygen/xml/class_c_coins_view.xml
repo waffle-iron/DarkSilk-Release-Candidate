@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_coins_view" kind="class" language="C++" prot="public">
+    <compoundname>CCoinsView</compoundname>
+    <derivedcompoundref refid="class_c_coins_view_backed" prot="public" virt="non-virtual">CCoinsViewBacked</derivedcompoundref>
+    <derivedcompoundref refid="class_c_coins_view_d_b" prot="public" virt="non-virtual">CCoinsViewDB</derivedcompoundref>
+    <includes refid="coins_8h" local="no">coins.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_coins_view_1aaf5668eb2f9033583d7072dc2a3f96ef" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool CCoinsView::GetCoins</definition>
+        <argsstring>(const uint256 &amp;txid, CCoins &amp;coins) const </argsstring>
+        <name>GetCoins</name>
+        <reimplementedby refid="class_c_coins_view_error_catcher_1a762969de31b62e55d01f1cdf0b178eb9">GetCoins</reimplementedby>
+        <reimplementedby refid="class_c_coins_view_d_b_1a20655c9c13a6124cdcf210206d518d92">GetCoins</reimplementedby>
+        <reimplementedby refid="class_c_coins_view_backed_1a21b95a9910f94e9b7ebed62a6f329ea0">GetCoins</reimplementedby>
+        <reimplementedby refid="class_c_coins_view_cache_1a27ec8311ae409ea1e3c3484c1d4a9035">GetCoins</reimplementedby>
+        <reimplementedby refid="class_c_coins_view_mem_pool_1a01564f29ff2673ddd0d27414e576f1bc">GetCoins</reimplementedby>
+        <param>
+          <type>const <ref refid="classuint256" kindref="compound">uint256</ref> &amp;</type>
+          <declname>txid</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_coins" kindref="compound">CCoins</ref> &amp;</type>
+          <declname>coins</declname>
+        </param>
+        <briefdescription>
+<para>Retrieve the <ref refid="class_c_coins" kindref="compound">CCoins</ref> (unspent transaction outputs) for a given txid. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/coins.h" line="346" column="1" bodyfile="/home/dev/ds-160209/src/coins.cpp" bodystart="57" bodyend="57"/>
+        <referencedby refid="class_c_coins_view_backed_1a21b95a9910f94e9b7ebed62a6f329ea0" compoundref="coins_8cpp" startline="65" endline="65">CCoinsViewBacked::GetCoins</referencedby>
+        <referencedby refid="class_c_coins_view_cache_1ab67c0d489873ed735c4fc52aa66f0830" compoundref="coins_8cpp" startline="107" endline="123">CCoinsViewCache::ModifyCoins</referencedby>
+        <referencedby refid="class_c_coins_view_mem_pool_1a01564f29ff2673ddd0d27414e576f1bc" compoundref="coins_8cpp" startline="357" endline="367">CCoinsViewMemPool::GetCoins</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_coins_view_1a14c8db07cb11223426bb660861389f3a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool CCoinsView::HaveCoins</definition>
+        <argsstring>(const uint256 &amp;txid) const </argsstring>
+        <name>HaveCoins</name>
+        <reimplementedby refid="class_c_coins_view_d_b_1a4d08cf2d3440c1de4e48cfddd67962d7">HaveCoins</reimplementedby>
+        <reimplementedby refid="class_c_coins_view_backed_1a6a769cf9cc55128dea8e1a2798056e71">HaveCoins</reimplementedby>
+        <reimplementedby refid="class_c_coins_view_cache_1a25dddabe8734fc9823112763494da72b">HaveCoins</reimplementedby>
+        <reimplementedby refid="class_c_coins_view_mem_pool_1a965e6c8e378fe937620ba2c180d1ed74">HaveCoins</reimplementedby>
+        <param>
+          <type>const <ref refid="classuint256" kindref="compound">uint256</ref> &amp;</type>
+          <declname>txid</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Just check whether we have data for a given txid. This may (but cannot always) return true for fully spent transactions </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/coins.h" line="350" column="1" bodyfile="/home/dev/ds-160209/src/coins.cpp" bodystart="58" bodyend="58"/>
+        <referencedby refid="class_c_coins_view_backed_1a6a769cf9cc55128dea8e1a2798056e71" compoundref="coins_8cpp" startline="66" endline="66">CCoinsViewBacked::HaveCoins</referencedby>
+        <referencedby refid="class_c_coins_view_mem_pool_1a965e6c8e378fe937620ba2c180d1ed74" compoundref="coins_8cpp" startline="369" endline="371">CCoinsViewMemPool::HaveCoins</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_coins_view_1a556cf7661ff49df1ada5cd0ad552f8db" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classuint256" kindref="compound">uint256</ref></type>
+        <definition>uint256 CCoinsView::GetBestBlock</definition>
+        <argsstring>() const </argsstring>
+        <name>GetBestBlock</name>
+        <reimplementedby refid="class_c_coins_view_d_b_1a01777676c2eafd2970a9d53e5fb4a49a">GetBestBlock</reimplementedby>
+        <reimplementedby refid="class_c_coins_view_backed_1a8465dc4764fd5b01591b824551cbbfab">GetBestBlock</reimplementedby>
+        <reimplementedby refid="class_c_coins_view_cache_1aabcd1da9f28445e09c9af5f68ce7f100">GetBestBlock</reimplementedby>
+        <briefdescription>
+<para>Retrieve the block hash whose state this <ref refid="class_c_coins_view" kindref="compound">CCoinsView</ref> currently represents. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/coins.h" line="353" column="1" bodyfile="/home/dev/ds-160209/src/coins.cpp" bodystart="59" bodyend="59"/>
+        <referencedby refid="class_c_coins_view_backed_1a8465dc4764fd5b01591b824551cbbfab" compoundref="coins_8cpp" startline="67" endline="67">CCoinsViewBacked::GetBestBlock</referencedby>
+        <referencedby refid="class_c_coins_view_cache_1aabcd1da9f28445e09c9af5f68ce7f100" compoundref="coins_8cpp" startline="143" endline="147">CCoinsViewCache::GetBestBlock</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_coins_view_1ad7dc37396ca4fac7014cea06fec7178e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool CCoinsView::BatchWrite</definition>
+        <argsstring>(CCoinsMap &amp;mapCoins, const uint256 &amp;hashBlock)</argsstring>
+        <name>BatchWrite</name>
+        <reimplementedby refid="class_c_coins_view_d_b_1a33f98ec9323ce48e1704327bc8a2a002">BatchWrite</reimplementedby>
+        <reimplementedby refid="class_c_coins_view_backed_1ace15da3934c9d7a9cb9c7a787f92f764">BatchWrite</reimplementedby>
+        <reimplementedby refid="class_c_coins_view_cache_1a561bb7c6c97701b12c48fbbb563d0a91">BatchWrite</reimplementedby>
+        <param>
+          <type><ref refid="coins_8h_1a2886ba2fd0428bae777e1cbcabc02834" kindref="member">CCoinsMap</ref> &amp;</type>
+          <declname>mapCoins</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuint256" kindref="compound">uint256</ref> &amp;</type>
+          <declname>hashBlock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Do a bulk modification (multiple <ref refid="class_c_coins" kindref="compound">CCoins</ref> changes + BestBlock change). The passed mapCoins can be modified. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/coins.h" line="357" column="1" bodyfile="/home/dev/ds-160209/src/coins.cpp" bodystart="60" bodyend="60"/>
+        <referencedby refid="class_c_coins_view_backed_1ace15da3934c9d7a9cb9c7a787f92f764" compoundref="coins_8cpp" startline="69" endline="69">CCoinsViewBacked::BatchWrite</referencedby>
+        <referencedby refid="class_c_coins_view_cache_1ac9888d4feaa46666d03871cd7cd1c01d" compoundref="coins_8cpp" startline="189" endline="193">CCoinsViewCache::Flush</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_coins_view_1afd645b903fba9c6b84bdb898d764f5fc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool CCoinsView::GetStats</definition>
+        <argsstring>(CCoinsStats &amp;stats) const </argsstring>
+        <name>GetStats</name>
+        <reimplementedby refid="class_c_coins_view_d_b_1a6bbe15962b0efd519e30dada872f01c5">GetStats</reimplementedby>
+        <reimplementedby refid="class_c_coins_view_backed_1a368f277ac68652a91ac171f46f02edca">GetStats</reimplementedby>
+        <param>
+          <type><ref refid="struct_c_coins_stats" kindref="compound">CCoinsStats</ref> &amp;</type>
+          <declname>stats</declname>
+        </param>
+        <briefdescription>
+<para>Calculate statistics about the unspent transaction output set. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/coins.h" line="360" column="1" bodyfile="/home/dev/ds-160209/src/coins.cpp" bodystart="61" bodyend="61"/>
+        <referencedby refid="class_c_coins_view_backed_1a368f277ac68652a91ac171f46f02edca" compoundref="coins_8cpp" startline="70" endline="70">CCoinsViewBacked::GetStats</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_coins_view_1a7ffb4218bf991ddff47339e44c8710da" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual CCoinsView::~CCoinsView</definition>
+        <argsstring>()</argsstring>
+        <name>~CCoinsView</name>
+        <briefdescription>
+<para>As we use CCoinsViews polymorphically, have a virtual destructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/coins.h" line="363" column="1" bodyfile="/home/dev/ds-160209/src/coins.h" bodystart="363" bodyend="363"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Abstract view on the open txout dataset. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2277">
+        <label>CCoinsViewMemPool</label>
+        <link refid="class_c_coins_view_mem_pool"/>
+        <childnode refid="2274" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2278">
+        <label>CCoinsViewDB</label>
+        <link refid="class_c_coins_view_d_b"/>
+        <childnode refid="2273" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2273">
+        <label>CCoinsView</label>
+        <link refid="class_c_coins_view"/>
+      </node>
+      <node id="2276">
+        <label>CCoinsViewErrorCatcher</label>
+        <link refid="class_c_coins_view_error_catcher"/>
+        <childnode refid="2274" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2274">
+        <label>CCoinsViewBacked</label>
+        <link refid="class_c_coins_view_backed"/>
+        <childnode refid="2273" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2275">
+        <label>CCoinsViewCache</label>
+        <link refid="class_c_coins_view_cache"/>
+        <childnode refid="2274" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/dev/ds-160209/src/coins.h" line="343" column="1" bodyfile="/home/dev/ds-160209/src/coins.h" bodystart="342" bodyend="364"/>
+    <listofallmembers>
+      <member refid="class_c_coins_view_1ad7dc37396ca4fac7014cea06fec7178e" prot="public" virt="virtual"><scope>CCoinsView</scope><name>BatchWrite</name></member>
+      <member refid="class_c_coins_view_1a556cf7661ff49df1ada5cd0ad552f8db" prot="public" virt="virtual"><scope>CCoinsView</scope><name>GetBestBlock</name></member>
+      <member refid="class_c_coins_view_1aaf5668eb2f9033583d7072dc2a3f96ef" prot="public" virt="virtual"><scope>CCoinsView</scope><name>GetCoins</name></member>
+      <member refid="class_c_coins_view_1afd645b903fba9c6b84bdb898d764f5fc" prot="public" virt="virtual"><scope>CCoinsView</scope><name>GetStats</name></member>
+      <member refid="class_c_coins_view_1a14c8db07cb11223426bb660861389f3a" prot="public" virt="virtual"><scope>CCoinsView</scope><name>HaveCoins</name></member>
+      <member refid="class_c_coins_view_1a7ffb4218bf991ddff47339e44c8710da" prot="public" virt="virtual"><scope>CCoinsView</scope><name>~CCoinsView</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

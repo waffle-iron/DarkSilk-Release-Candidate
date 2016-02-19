@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="write__batch__internal_8h" kind="file" language="C++">
+    <compoundname>write_batch_internal.h</compoundname>
+    <includes refid="write__batch_8h" local="yes">leveldb/write_batch.h</includes>
+    <includedby refid="db__impl_8cc" local="yes">/home/dev/ds-160209/src/leveldb/db/db_impl.cc</includedby>
+    <includedby refid="db__test_8cc" local="yes">/home/dev/ds-160209/src/leveldb/db/db_test.cc</includedby>
+    <includedby refid="dumpfile_8cc" local="yes">/home/dev/ds-160209/src/leveldb/db/dumpfile.cc</includedby>
+    <includedby refid="repair_8cc" local="yes">/home/dev/ds-160209/src/leveldb/db/repair.cc</includedby>
+    <includedby refid="write__batch_8cc" local="yes">/home/dev/ds-160209/src/leveldb/db/write_batch.cc</includedby>
+    <includedby refid="write__batch__test_8cc" local="yes">/home/dev/ds-160209/src/leveldb/db/write_batch_test.cc</includedby>
+    <includedby refid="table__test_8cc" local="yes">/home/dev/ds-160209/src/leveldb/table/table_test.cc</includedby>
+    <incdepgraph>
+      <node id="37261">
+        <label>leveldb/write_batch.h</label>
+        <link refid="write__batch_8h"/>
+        <childnode refid="37262" relation="include">
+        </childnode>
+        <childnode refid="37263" relation="include">
+        </childnode>
+      </node>
+      <node id="37265">
+        <label>assert.h</label>
+      </node>
+      <node id="37262">
+        <label>string</label>
+      </node>
+      <node id="37266">
+        <label>stddef.h</label>
+      </node>
+      <node id="37263">
+        <label>leveldb/status.h</label>
+        <link refid="status_8h"/>
+        <childnode refid="37262" relation="include">
+        </childnode>
+        <childnode refid="37264" relation="include">
+        </childnode>
+      </node>
+      <node id="37267">
+        <label>string.h</label>
+      </node>
+      <node id="37260">
+        <label>/home/dev/ds-160209/src/leveldb/db/write_batch_internal.h</label>
+        <link refid="write_batch_internal.h"/>
+        <childnode refid="37261" relation="include">
+        </childnode>
+      </node>
+      <node id="37264">
+        <label>leveldb/slice.h</label>
+        <link refid="slice_8h"/>
+        <childnode refid="37265" relation="include">
+        </childnode>
+        <childnode refid="37266" relation="include">
+        </childnode>
+        <childnode refid="37267" relation="include">
+        </childnode>
+        <childnode refid="37262" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="37269">
+        <label>/home/dev/ds-160209/src/leveldb/db/db_impl.cc</label>
+        <link refid="db__impl_8cc"/>
+      </node>
+      <node id="37274">
+        <label>/home/dev/ds-160209/src/leveldb/db/write_batch_test.cc</label>
+        <link refid="write__batch__test_8cc"/>
+      </node>
+      <node id="37272">
+        <label>/home/dev/ds-160209/src/leveldb/db/repair.cc</label>
+        <link refid="repair_8cc"/>
+      </node>
+      <node id="37273">
+        <label>/home/dev/ds-160209/src/leveldb/db/write_batch.cc</label>
+        <link refid="write__batch_8cc"/>
+      </node>
+      <node id="37268">
+        <label>/home/dev/ds-160209/src/leveldb/db/write_batch_internal.h</label>
+        <link refid="write_batch_internal.h"/>
+        <childnode refid="37269" relation="include">
+        </childnode>
+        <childnode refid="37270" relation="include">
+        </childnode>
+        <childnode refid="37271" relation="include">
+        </childnode>
+        <childnode refid="37272" relation="include">
+        </childnode>
+        <childnode refid="37273" relation="include">
+        </childnode>
+        <childnode refid="37274" relation="include">
+        </childnode>
+        <childnode refid="37275" relation="include">
+        </childnode>
+      </node>
+      <node id="37275">
+        <label>/home/dev/ds-160209/src/leveldb/table/table_test.cc</label>
+        <link refid="table__test_8cc"/>
+      </node>
+      <node id="37270">
+        <label>/home/dev/ds-160209/src/leveldb/db/db_test.cc</label>
+        <link refid="db__test_8cc"/>
+      </node>
+      <node id="37271">
+        <label>/home/dev/ds-160209/src/leveldb/db/dumpfile.cc</label>
+        <link refid="dumpfile_8cc"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classleveldb_1_1_write_batch_internal" prot="public">leveldb::WriteBatchInternal</innerclass>
+    <innernamespace refid="namespaceleveldb">leveldb</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2011-2016<sp/>The<sp/>LevelDB<sp/>Authors.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>of<sp/>this<sp/>source<sp/>code<sp/>is<sp/>governed<sp/>by<sp/>a<sp/>BSD-style<sp/>license<sp/>that<sp/>can<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>found<sp/>in<sp/>the<sp/>LICENSE<sp/>file.<sp/>See<sp/>the<sp/>AUTHORS<sp/>file<sp/>for<sp/>names<sp/>of<sp/>contributors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>STORAGE_LEVELDB_DB_WRITE_BATCH_INTERNAL_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STORAGE_LEVELDB_DB_WRITE_BATCH_INTERNAL_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="write__batch_8h" kindref="compound">leveldb/write_batch.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceleveldb" kindref="compound">leveldb</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">MemTable;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/>WriteBatchInternal<sp/>provides<sp/>static<sp/>methods<sp/>for<sp/>manipulating<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/>WriteBatch<sp/>that<sp/>we<sp/>don&apos;t<sp/>want<sp/>in<sp/>the<sp/>public<sp/>WriteBatch<sp/>interface.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="classleveldb_1_1_write_batch_internal" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classleveldb_1_1_write_batch_internal" kindref="compound">WriteBatchInternal</ref><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>number<sp/>of<sp/>entries<sp/>in<sp/>the<sp/>batch.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_write_batch_internal_1a5270ca4567dbae1524005ad14e0698e3" kindref="member">Count</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_write_batch" kindref="compound">WriteBatch</ref>*<sp/>batch);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Set<sp/>the<sp/>count<sp/>for<sp/>the<sp/>number<sp/>of<sp/>entries<sp/>in<sp/>the<sp/>batch.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_write_batch_internal_1ae03d20619da53aae175dd28d61c90bd9" kindref="member">SetCount</ref>(<ref refid="classleveldb_1_1_write_batch" kindref="compound">WriteBatch</ref>*<sp/>batch,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n);</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Return<sp/>the<sp/>sequence<sp/>number<sp/>for<sp/>the<sp/>start<sp/>of<sp/>this<sp/>batch.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1a5481ededd221c36d652c371249f869fa" kindref="member">SequenceNumber</ref><sp/><ref refid="classleveldb_1_1_write_batch_internal_1af657c82bd9378b78c35a3a7429f945d4" kindref="member">Sequence</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_write_batch" kindref="compound">WriteBatch</ref>*<sp/>batch);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Store<sp/>the<sp/>specified<sp/>number<sp/>as<sp/>the<sp/>sequence<sp/>number<sp/>for<sp/>the<sp/>start<sp/>of</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>this<sp/>batch.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_write_batch_internal_1a0ca3483de37433fb0ce37b1e91f01bd1" kindref="member">SetSequence</ref>(<ref refid="classleveldb_1_1_write_batch" kindref="compound">WriteBatch</ref>*<sp/>batch,<sp/><ref refid="namespaceleveldb_1a5481ededd221c36d652c371249f869fa" kindref="member">SequenceNumber</ref><sp/>seq);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="classleveldb_1_1_write_batch_internal_1a348947b16653c8a17590b13115b5274d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref><sp/><ref refid="classleveldb_1_1_write_batch_internal_1a348947b16653c8a17590b13115b5274d" kindref="member">Contents</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_write_batch" kindref="compound">WriteBatch</ref>*<sp/>batch)<sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>(batch-&gt;rep_);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classleveldb_1_1_write_batch_internal_1adad424f13cc3e3ed4a2eacb88eaa39df" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_write_batch_internal_1adad424f13cc3e3ed4a2eacb88eaa39df" kindref="member">ByteSize</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_write_batch" kindref="compound">WriteBatch</ref>*<sp/>batch)<sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>batch-&gt;rep_.size();</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_write_batch_internal_1aa07e75250aed00d06f2e4df85ee926b9" kindref="member">SetContents</ref>(<ref refid="classleveldb_1_1_write_batch" kindref="compound">WriteBatch</ref>*<sp/>batch,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/>contents);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref><sp/><ref refid="classleveldb_1_1_write_batch_internal_1a102aae14259fd277e2576338ce3e5551" kindref="member">InsertInto</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_write_batch" kindref="compound">WriteBatch</ref>*<sp/>batch,<sp/><ref refid="classleveldb_1_1_mem_table" kindref="compound">MemTable</ref>*<sp/>memtable);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_write_batch_internal_1ac83c9a45a815c16ad8602b99b752b4bc" kindref="member">Append</ref>(<ref refid="classleveldb_1_1_write_batch" kindref="compound">WriteBatch</ref>*<sp/>dst,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_write_batch" kindref="compound">WriteBatch</ref>*<sp/>src);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>leveldb</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/>//<sp/>STORAGE_LEVELDB_DB_WRITE_BATCH_INTERNAL_H_</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/leveldb/db/write_batch_internal.h"/>
+  </compounddef>
+</doxygen>

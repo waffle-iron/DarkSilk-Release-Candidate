@@ -1,0 +1,584 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="classleveldb_1_1_version" kind="class" language="C++" prot="public">
+    <compoundname>leveldb::Version</compoundname>
+    <includes refid="version__set_8h" local="no">version_set.h</includes>
+    <innerclass refid="structleveldb_1_1_version_1_1_get_stats" prot="public">leveldb::Version::GetStats</innerclass>
+    <innerclass refid="classleveldb_1_1_version_1_1_level_file_num_iterator" prot="public">leveldb::Version::LevelFileNumIterator</innerclass>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classleveldb_1_1_version_1a9372e882b35d27c78356228e4b758917" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class Compaction</definition>
+        <argsstring></argsstring>
+        <name>Compaction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_set.h" line="117" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_set.h" bodystart="117" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="friend" id="classleveldb_1_1_version_1a1827cd1b4d6e9e3c378ce37ca3cce635" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class VersionSet</definition>
+        <argsstring></argsstring>
+        <name>VersionSet</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_set.h" line="118" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_set.h" bodystart="118" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classleveldb_1_1_version_1ab27cb3e1215e4b948fbee011203098b4" prot="private" static="no" mutable="no">
+        <type><ref refid="classleveldb_1_1_version_set" kindref="compound">VersionSet</ref> *</type>
+        <definition>VersionSet* leveldb::Version::vset_</definition>
+        <argsstring></argsstring>
+        <name>vset_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_set.h" line="132" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_set.h" bodystart="132" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classleveldb_1_1_version_1acd5135c980959de4ebb23e73269848f4" prot="private" static="no" mutable="no">
+        <type><ref refid="classleveldb_1_1_version" kindref="compound">Version</ref> *</type>
+        <definition>Version* leveldb::Version::next_</definition>
+        <argsstring></argsstring>
+        <name>next_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_set.h" line="133" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_set.h" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classleveldb_1_1_version_1a78f5343161662289e86f9d53c5995833" prot="private" static="no" mutable="no">
+        <type><ref refid="classleveldb_1_1_version" kindref="compound">Version</ref> *</type>
+        <definition>Version* leveldb::Version::prev_</definition>
+        <argsstring></argsstring>
+        <name>prev_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_set.h" line="134" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_set.h" bodystart="134" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classleveldb_1_1_version_1aa59ecbf976d0d28966892c93c8d8c634" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int leveldb::Version::refs_</definition>
+        <argsstring></argsstring>
+        <name>refs_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_set.h" line="135" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_set.h" bodystart="135" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classleveldb_1_1_version_1a5ca95bbe4ddd4770c70405e4fa39616f" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="structleveldb_1_1_file_meta_data" kindref="compound">FileMetaData</ref> * &gt;</type>
+        <definition>std::vector&lt;FileMetaData*&gt; leveldb::Version::files_[config::kNumLevels]</definition>
+        <argsstring>[config::kNumLevels]</argsstring>
+        <name>files_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_set.h" line="138" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_set.h" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classleveldb_1_1_version_1a2a5c6635d4043415889d2bff1251eabd" prot="private" static="no" mutable="no">
+        <type><ref refid="structleveldb_1_1_file_meta_data" kindref="compound">FileMetaData</ref> *</type>
+        <definition>FileMetaData* leveldb::Version::file_to_compact_</definition>
+        <argsstring></argsstring>
+        <name>file_to_compact_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_set.h" line="141" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_set.h" bodystart="141" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classleveldb_1_1_version_1ad141df0d8723b154c4dc7fe283529636" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int leveldb::Version::file_to_compact_level_</definition>
+        <argsstring></argsstring>
+        <name>file_to_compact_level_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_set.h" line="142" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_set.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classleveldb_1_1_version_1ab7194e4f85adf9ca5e933db556bbd572" prot="private" static="no" mutable="no">
+        <type>double</type>
+        <definition>double leveldb::Version::compaction_score_</definition>
+        <argsstring></argsstring>
+        <name>compaction_score_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_set.h" line="147" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_set.h" bodystart="147" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classleveldb_1_1_version_1ac2edc27f49f9da2c35890e8ec7ada2c1" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int leveldb::Version::compaction_level_</definition>
+        <argsstring></argsstring>
+        <name>compaction_level_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_set.h" line="148" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_set.h" bodystart="148" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classleveldb_1_1_version_1a035a0fa5bfe7ab84a711b1138b0b9a3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::Version::AddIterators</definition>
+        <argsstring>(const ReadOptions &amp;, std::vector&lt; Iterator * &gt; *iters)</argsstring>
+        <name>AddIterators</name>
+        <param>
+          <type>const <ref refid="structleveldb_1_1_read_options" kindref="compound">ReadOptions</ref> &amp;</type>
+          <defname>options</defname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="classleveldb_1_1_iterator" kindref="compound">Iterator</ref> * &gt; *</type>
+          <declname>iters</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_set.h" line="64" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_set.cc" bodystart="225" bodyend="242"/>
+        <references refid="classleveldb_1_1_table_cache_1afe8c83b1cbbf3bfc06c66a69611aa250" compoundref="table__cache_8cc" startline="82" endline="103">leveldb::TableCache::NewIterator</references>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_version_1a42c439d4a2a767fe281c7a75d4255038" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref></type>
+        <definition>Status leveldb::Version::Get</definition>
+        <argsstring>(const ReadOptions &amp;, const LookupKey &amp;key, std::string *val, GetStats *stats)</argsstring>
+        <name>Get</name>
+        <param>
+          <type>const <ref refid="structleveldb_1_1_read_options" kindref="compound">ReadOptions</ref> &amp;</type>
+          <defname>options</defname>
+        </param>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_lookup_key" kindref="compound">LookupKey</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>std::string *</type>
+          <declname>val</declname>
+        </param>
+        <param>
+          <type><ref refid="structleveldb_1_1_version_1_1_get_stats" kindref="compound">GetStats</ref> *</type>
+          <declname>stats</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_set.h" line="73" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_set.cc" bodystart="323" bodyend="420"/>
+        <references refid="classleveldb_1_1_lookup_key_1a3578de91f795e450b05a870795339b40" compoundref="dbformat_8h" startline="201" endline="201">leveldb::LookupKey::internal_key</references>
+        <references refid="classleveldb_1_1_lookup_key_1adf91e9804383dd1b2bfd8545df45342f" compoundref="dbformat_8h" startline="204" endline="204">leveldb::LookupKey::user_key</references>
+        <references refid="classleveldb_1_1_internal_key_comparator_1a86ca575a4560bb76e2bcebc0618abd31" compoundref="dbformat_8h" startline="125" endline="125">leveldb::InternalKeyComparator::user_comparator</references>
+        <references refid="structleveldb_1_1_version_1_1_get_stats_1a8c677e9a2d5bc48a5bcc40e07dd2cca7" compoundref="version__set_8h" startline="70">leveldb::Version::GetStats::seek_file</references>
+        <references refid="structleveldb_1_1_version_1_1_get_stats_1a6cd952d5850faf00c7d45f79973a76d4" compoundref="version__set_8h" startline="71">leveldb::Version::GetStats::seek_file_level</references>
+        <references refid="structleveldb_1_1_comparator_1a05dae6edcad3c7db23827c0233d74039">leveldb::Comparator::Compare</references>
+        <references refid="structleveldb_1_1_file_meta_data_1a9e5e5c149495aede836ac637cd89269f" compoundref="version__edit_8h" startline="22">leveldb::FileMetaData::smallest</references>
+        <references refid="classleveldb_1_1_internal_key_1a8eeee76862e806006549784fe21fff61" compoundref="dbformat_8h" startline="159" endline="159">leveldb::InternalKey::user_key</references>
+        <references refid="structleveldb_1_1_file_meta_data_1a410718ba1868392b298d05a774dd07d1" compoundref="version__edit_8h" startline="23">leveldb::FileMetaData::largest</references>
+        <references refid="namespaceleveldb_1a812c4c6cf8299e767535a59f2205df0c" compoundref="version__set_8cc" startline="77" endline="96">leveldb::FindFile</references>
+        <references refid="version__set_8cc_1a598e50ba29b234ea6ee753e383e79452" compoundref="version__set_8cc" startline="254">ucmp</references>
+        <references refid="version__set_8cc_1afced2118ae0bf03db7c7e75a21cfd004" compoundref="version__set_8cc" startline="255">user_key</references>
+        <references refid="version__set_8cc_1a38c8b88c432e666ad10b0c5573e1160a" compoundref="version__set_8cc" startline="256">value</references>
+        <references refid="classleveldb_1_1_table_cache_1af43ba38b52742e9f5589321747535444" compoundref="table__cache_8cc" startline="105" endline="119">leveldb::TableCache::Get</references>
+        <references refid="structleveldb_1_1_file_meta_data_1adc63bac3e06fd4387ebb9f085fc88fe7" compoundref="version__edit_8h" startline="20">leveldb::FileMetaData::number</references>
+        <references refid="structleveldb_1_1_file_meta_data_1a778ea9c773ad4fdfe4408eecaae754f7" compoundref="version__edit_8h" startline="21">leveldb::FileMetaData::file_size</references>
+        <references refid="classleveldb_1_1_status_1ab31e89a858c766716e3dc952be857c65" compoundref="status_8h" startline="52" endline="52">leveldb::Status::ok</references>
+        <references refid="classleveldb_1_1_status_1a9e5beb5b2e758f041e0c012426e7b1b8" compoundref="status_8h" startline="35" endline="37">leveldb::Status::NotFound</references>
+        <references refid="classleveldb_1_1_status_1a755b1ee5b0029cf9ea1128f1cdff5855" compoundref="status_8h" startline="38" endline="40">leveldb::Status::Corruption</references>
+        <referencedby refid="classleveldb_1_1_d_b_impl_1a089964ddcd1f5dc85e73499ae57be508" compoundref="db__impl_8cc" startline="1077" endline="1122">leveldb::DBImpl::Get</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_version_1a7e5b8451deb7c4b9006fd9d5ccfc2cef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool leveldb::Version::UpdateStats</definition>
+        <argsstring>(const GetStats &amp;stats)</argsstring>
+        <name>UpdateStats</name>
+        <param>
+          <type>const <ref refid="structleveldb_1_1_version_1_1_get_stats" kindref="compound">GetStats</ref> &amp;</type>
+          <declname>stats</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_set.h" line="79" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_set.cc" bodystart="422" bodyend="433"/>
+        <references refid="structleveldb_1_1_version_1_1_get_stats_1a8c677e9a2d5bc48a5bcc40e07dd2cca7" compoundref="version__set_8h" startline="70">leveldb::Version::GetStats::seek_file</references>
+        <references refid="structleveldb_1_1_file_meta_data_1a63f9a0149290c7b22bbc871da6b4f619" compoundref="version__edit_8h" startline="19">leveldb::FileMetaData::allowed_seeks</references>
+        <references refid="structleveldb_1_1_version_1_1_get_stats_1a6cd952d5850faf00c7d45f79973a76d4" compoundref="version__set_8h" startline="71">leveldb::Version::GetStats::seek_file_level</references>
+        <referencedby refid="classleveldb_1_1_d_b_impl_1a089964ddcd1f5dc85e73499ae57be508" compoundref="db__impl_8cc" startline="1077" endline="1122">leveldb::DBImpl::Get</referencedby>
+        <referencedby refid="classleveldb_1_1_version_1a8b9e51b3d0503fe5868f656356557ded" compoundref="version__set_8cc" startline="435" endline="471">RecordReadSample</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_version_1a8b9e51b3d0503fe5868f656356557ded" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool leveldb::Version::RecordReadSample</definition>
+        <argsstring>(Slice key)</argsstring>
+        <name>RecordReadSample</name>
+        <param>
+          <type><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref></type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_set.h" line="85" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_set.cc" bodystart="435" bodyend="471"/>
+        <references refid="namespaceleveldb_1a5a173b622e86c7a2f9beae3ac8818ac3" compoundref="dbformat_8h" startline="176" endline="186">leveldb::ParseInternalKey</references>
+        <references refid="db__bench_8cc_1a5925d216740c89f43482df806fd14e8c" compoundref="db__bench_8cc" startline="291">stats</references>
+        <references refid="version__set_8cc_1a6aad002d0db5e5e85dc31927a5a6f503" compoundref="version__set_8cc" startline="253">state</references>
+        <references refid="env__posix_8cc_1a9ce2ec4812a92cb6ab39f6e81e9173a9" compoundref="env__posix_8cc" startline="521">arg</references>
+        <references refid="structleveldb_1_1_parsed_internal_key_1aa6e30fcf3c95fc1485d60fa08efe2b9d" compoundref="dbformat_8h" startline="71">leveldb::ParsedInternalKey::user_key</references>
+        <references refid="classleveldb_1_1_version_1a7e5b8451deb7c4b9006fd9d5ccfc2cef" compoundref="version__set_8cc" startline="422" endline="433">UpdateStats</references>
+        <referencedby refid="classleveldb_1_1_d_b_impl_1a254ae98e3425046c28ed0aa6d78b37d8" compoundref="db__impl_8cc" startline="1136" endline="1141">leveldb::DBImpl::RecordReadSample</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_version_1ad237b446c7f7d9e63c4b7c162d6f0064" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::Version::Ref</definition>
+        <argsstring>()</argsstring>
+        <name>Ref</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_set.h" line="89" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_set.cc" bodystart="473" bodyend="475"/>
+        <referencedby refid="classleveldb_1_1_d_b_impl_1a089964ddcd1f5dc85e73499ae57be508" compoundref="db__impl_8cc" startline="1077" endline="1122">leveldb::DBImpl::Get</referencedby>
+        <referencedby refid="classleveldb_1_1_d_b_impl_1af08e218d92064699942c195ce0f06010" compoundref="db__impl_8cc" startline="1403" endline="1427">leveldb::DBImpl::GetApproximateSizes</referencedby>
+        <referencedby refid="classleveldb_1_1_version_set_1_1_builder_1a19d0dd9aec1b825e7d938e9ac24dc4f7" compoundref="version__set_8cc" startline="623" endline="632">leveldb::VersionSet::Builder::Builder</referencedby>
+        <referencedby refid="classleveldb_1_1_version_set_1a1cdc6a05e0a7df9f29b5bccd485a0219" compoundref="version__set_8cc" startline="1243" endline="1295">leveldb::VersionSet::PickCompaction</referencedby>
+        <referencedby refid="classleveldb_1_1_version_set_1a3a03f9a6c86e861be314cf8e01f33142" compoundref="version__set_8cc" startline="1364" endline="1397">leveldb::VersionSet::CompactRange</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_version_1a3f623697f625d4740d5b273c0bf6223a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::Version::Unref</definition>
+        <argsstring>()</argsstring>
+        <name>Unref</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_set.h" line="90" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_set.cc" bodystart="477" bodyend="484"/>
+        <referencedby refid="classleveldb_1_1_d_b_impl_1a089964ddcd1f5dc85e73499ae57be508" compoundref="db__impl_8cc" startline="1077" endline="1122">leveldb::DBImpl::Get</referencedby>
+        <referencedby refid="classleveldb_1_1_d_b_impl_1af08e218d92064699942c195ce0f06010" compoundref="db__impl_8cc" startline="1403" endline="1427">leveldb::DBImpl::GetApproximateSizes</referencedby>
+        <referencedby refid="classleveldb_1_1_version_set_1_1_builder_1acd7047ca78d8c654967101f53d10792c" compoundref="version__set_8cc" startline="634" endline="653">leveldb::VersionSet::Builder::~Builder</referencedby>
+        <referencedby refid="classleveldb_1_1_version_set_1a53a424c5bb7699808193f150e3432e92" compoundref="version__set_8cc" startline="787" endline="792">leveldb::VersionSet::~VersionSet</referencedby>
+        <referencedby refid="classleveldb_1_1_compaction_1ad29d60feea9dd53f54a2bd9301dbd9c4" compoundref="version__set_8cc" startline="1411" endline="1415">leveldb::Compaction::~Compaction</referencedby>
+        <referencedby refid="classleveldb_1_1_compaction_1a87ec90747d22dce0d103149db1ecf709" compoundref="version__set_8cc" startline="1477" endline="1482">leveldb::Compaction::ReleaseInputs</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_version_1afd86dffba7ce5229778bddd546517392" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::Version::GetOverlappingInputs</definition>
+        <argsstring>(int level, const InternalKey *begin, const InternalKey *end, std::vector&lt; FileMetaData * &gt; *inputs)</argsstring>
+        <name>GetOverlappingInputs</name>
+        <param>
+          <type>int</type>
+          <declname>level</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_internal_key" kindref="compound">InternalKey</ref> *</type>
+          <declname>begin</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_internal_key" kindref="compound">InternalKey</ref> *</type>
+          <declname>end</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="structleveldb_1_1_file_meta_data" kindref="compound">FileMetaData</ref> * &gt; *</type>
+          <declname>inputs</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_set.h" line="92" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_set.cc" bodystart="522" bodyend="563"/>
+        <references refid="classleveldb_1_1_internal_key_1a8eeee76862e806006549784fe21fff61" compoundref="dbformat_8h" startline="159" endline="159">leveldb::InternalKey::user_key</references>
+        <references refid="classleveldb_1_1_internal_key_comparator_1a86ca575a4560bb76e2bcebc0618abd31" compoundref="dbformat_8h" startline="125" endline="125">leveldb::InternalKeyComparator::user_comparator</references>
+        <references refid="structleveldb_1_1_file_meta_data_1a9e5e5c149495aede836ac637cd89269f" compoundref="version__edit_8h" startline="22">leveldb::FileMetaData::smallest</references>
+        <references refid="structleveldb_1_1_file_meta_data_1a410718ba1868392b298d05a774dd07d1" compoundref="version__edit_8h" startline="23">leveldb::FileMetaData::largest</references>
+        <references refid="structleveldb_1_1_comparator_1a05dae6edcad3c7db23827c0233d74039">leveldb::Comparator::Compare</references>
+        <references refid="classleveldb_1_1_slice_1ab9b6e340e8a483a5cf713f6be17709e3" compoundref="slice_8h" startline="56" endline="56">leveldb::Slice::clear</references>
+        <referencedby refid="classleveldb_1_1_version_1ac3b623319110ed2a9491723dd4675431" compoundref="version__set_8cc" startline="493" endline="519">PickLevelForMemTableOutput</referencedby>
+        <referencedby refid="classleveldb_1_1_version_set_1a32dc1a7e1eaeeeac89286be3483ad612" compoundref="version__set_8cc" startline="1156" endline="1171">leveldb::VersionSet::MaxNextLevelOverlappingBytes</referencedby>
+        <referencedby refid="classleveldb_1_1_version_set_1a1cdc6a05e0a7df9f29b5bccd485a0219" compoundref="version__set_8cc" startline="1243" endline="1295">leveldb::VersionSet::PickCompaction</referencedby>
+        <referencedby refid="classleveldb_1_1_version_set_1a3a03f9a6c86e861be314cf8e01f33142" compoundref="version__set_8cc" startline="1364" endline="1397">leveldb::VersionSet::CompactRange</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_version_1a7945e88b8a4f2f7b6f3201cb3d791f1e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool leveldb::Version::OverlapInLevel</definition>
+        <argsstring>(int level, const Slice *smallest_user_key, const Slice *largest_user_key)</argsstring>
+        <name>OverlapInLevel</name>
+        <param>
+          <type>int</type>
+          <declname>level</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref> *</type>
+          <declname>smallest_user_key</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref> *</type>
+          <declname>largest_user_key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_set.h" line="102" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_set.cc" bodystart="486" bodyend="491"/>
+        <references refid="namespaceleveldb_1a1a6a370f17b20667b885b5b91159c5a9" compoundref="version__set_8cc" startline="112" endline="147">leveldb::SomeFileOverlapsRange</references>
+        <referencedby refid="classleveldb_1_1_d_b_impl_1aa6df0739fc0b49380c284347e411b8ed" compoundref="db__impl_8cc" startline="536" endline="551">leveldb::DBImpl::CompactRange</referencedby>
+        <referencedby refid="classleveldb_1_1_version_1ac3b623319110ed2a9491723dd4675431" compoundref="version__set_8cc" startline="493" endline="519">PickLevelForMemTableOutput</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_version_1ac3b623319110ed2a9491723dd4675431" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int leveldb::Version::PickLevelForMemTableOutput</definition>
+        <argsstring>(const Slice &amp;smallest_user_key, const Slice &amp;largest_user_key)</argsstring>
+        <name>PickLevelForMemTableOutput</name>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref> &amp;</type>
+          <declname>smallest_user_key</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref> &amp;</type>
+          <declname>largest_user_key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_set.h" line="108" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_set.cc" bodystart="493" bodyend="519"/>
+        <references refid="classleveldb_1_1_version_1a7945e88b8a4f2f7b6f3201cb3d791f1e" compoundref="version__set_8cc" startline="486" endline="491">OverlapInLevel</references>
+        <references refid="db__bench_8cc_1ab376b87f96a574a793c03c53e75afec8" compoundref="db__bench_8cc" startline="282">start</references>
+        <references refid="classleveldb_1_1_version_1afd86dffba7ce5229778bddd546517392" compoundref="version__set_8cc" startline="522" endline="563">GetOverlappingInputs</references>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_version_1a0995beaa980f4d338cd9aa75c1e9795c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int leveldb::Version::NumFiles</definition>
+        <argsstring>(int level) const </argsstring>
+        <name>NumFiles</name>
+        <param>
+          <type>int</type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_set.h" line="111" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_set.h" bodystart="111" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_version_1a83d35444c8e7c617a3a70e4c9050ce08" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string leveldb::Version::DebugString</definition>
+        <argsstring>() const </argsstring>
+        <name>DebugString</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_set.h" line="114" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_set.cc" bodystart="565" bodyend="589"/>
+        <references refid="namespaceleveldb_1a089617d12900e6fe5b712c31f651b5ff" compoundref="logging_8cc" startline="16" endline="20">leveldb::AppendNumberTo</references>
+        <referencedby refid="classleveldb_1_1_d_b_impl_1ad1a2023ce171c8f8476664f5b1cbab4d" compoundref="db__impl_8cc" startline="1349" endline="1401">leveldb::DBImpl::GetProperty</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classleveldb_1_1_version_1a3dbfd700f06c4e31d28a6c494d6345c9" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classleveldb_1_1_iterator" kindref="compound">Iterator</ref> *</type>
+        <definition>Iterator * leveldb::Version::NewConcatenatingIterator</definition>
+        <argsstring>(const ReadOptions &amp;, int level) const </argsstring>
+        <name>NewConcatenatingIterator</name>
+        <param>
+          <type>const <ref refid="structleveldb_1_1_read_options" kindref="compound">ReadOptions</ref> &amp;</type>
+          <defname>options</defname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>level</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_set.h" line="121" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_set.cc" bodystart="218" bodyend="223"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_version_1af41eeda28ad10412b2f380e920798b2c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::Version::ForEachOverlapping</definition>
+        <argsstring>(Slice user_key, Slice internal_key, void *arg, bool(*func)(void *, int, FileMetaData *))</argsstring>
+        <name>ForEachOverlapping</name>
+        <param>
+          <type><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref></type>
+          <declname>user_key</declname>
+        </param>
+        <param>
+          <type><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref></type>
+          <declname>internal_key</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>arg</declname>
+        </param>
+        <param>
+          <type>bool(*)(void *, int, <ref refid="structleveldb_1_1_file_meta_data" kindref="compound">FileMetaData</ref> *)</type>
+          <declname>func</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_set.h" line="128" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_set.cc" bodystart="278" bodyend="321"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_version_1a8b08a6273383b1d02f8e3e5023e015ee" prot="private" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::Version::Version</definition>
+        <argsstring>(VersionSet *vset)</argsstring>
+        <name>Version</name>
+        <param>
+          <type><ref refid="classleveldb_1_1_version_set" kindref="compound">VersionSet</ref> *</type>
+          <declname>vset</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_set.h" line="150" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_set.h" bodystart="150" bodyend="156"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_version_1ade39983be24e04a74882f810fd5b61c9" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::Version::~Version</definition>
+        <argsstring>()</argsstring>
+        <name>~Version</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_set.h" line="158" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_set.cc" bodystart="57" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_version_1a5a1a40f16c843b73c46c8a6f7710d742" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::Version::Version</definition>
+        <argsstring>(const Version &amp;)</argsstring>
+        <name>Version</name>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_version" kindref="compound">Version</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_set.h" line="161" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_version_1af0d9bd79b1cdcadcf2511601de1c92a9" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::Version::operator=</definition>
+        <argsstring>(const Version &amp;)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_version" kindref="compound">Version</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_set.h" line="162" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/leveldb/db/version_set.h" line="59" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_set.h" bodystart="59" bodyend="163"/>
+    <listofallmembers>
+      <member refid="classleveldb_1_1_version_1a035a0fa5bfe7ab84a711b1138b0b9a3d" prot="public" virt="non-virtual"><scope>leveldb::Version</scope><name>AddIterators</name></member>
+      <member refid="classleveldb_1_1_version_1a9372e882b35d27c78356228e4b758917" prot="private" virt="non-virtual"><scope>leveldb::Version</scope><name>Compaction</name></member>
+      <member refid="classleveldb_1_1_version_1ac2edc27f49f9da2c35890e8ec7ada2c1" prot="private" virt="non-virtual"><scope>leveldb::Version</scope><name>compaction_level_</name></member>
+      <member refid="classleveldb_1_1_version_1ab7194e4f85adf9ca5e933db556bbd572" prot="private" virt="non-virtual"><scope>leveldb::Version</scope><name>compaction_score_</name></member>
+      <member refid="classleveldb_1_1_version_1a83d35444c8e7c617a3a70e4c9050ce08" prot="public" virt="non-virtual"><scope>leveldb::Version</scope><name>DebugString</name></member>
+      <member refid="classleveldb_1_1_version_1a2a5c6635d4043415889d2bff1251eabd" prot="private" virt="non-virtual"><scope>leveldb::Version</scope><name>file_to_compact_</name></member>
+      <member refid="classleveldb_1_1_version_1ad141df0d8723b154c4dc7fe283529636" prot="private" virt="non-virtual"><scope>leveldb::Version</scope><name>file_to_compact_level_</name></member>
+      <member refid="classleveldb_1_1_version_1a5ca95bbe4ddd4770c70405e4fa39616f" prot="private" virt="non-virtual"><scope>leveldb::Version</scope><name>files_</name></member>
+      <member refid="classleveldb_1_1_version_1af41eeda28ad10412b2f380e920798b2c" prot="private" virt="non-virtual"><scope>leveldb::Version</scope><name>ForEachOverlapping</name></member>
+      <member refid="classleveldb_1_1_version_1a42c439d4a2a767fe281c7a75d4255038" prot="public" virt="non-virtual"><scope>leveldb::Version</scope><name>Get</name></member>
+      <member refid="classleveldb_1_1_version_1afd86dffba7ce5229778bddd546517392" prot="public" virt="non-virtual"><scope>leveldb::Version</scope><name>GetOverlappingInputs</name></member>
+      <member refid="classleveldb_1_1_version_1a3dbfd700f06c4e31d28a6c494d6345c9" prot="private" virt="non-virtual"><scope>leveldb::Version</scope><name>NewConcatenatingIterator</name></member>
+      <member refid="classleveldb_1_1_version_1acd5135c980959de4ebb23e73269848f4" prot="private" virt="non-virtual"><scope>leveldb::Version</scope><name>next_</name></member>
+      <member refid="classleveldb_1_1_version_1a0995beaa980f4d338cd9aa75c1e9795c" prot="public" virt="non-virtual"><scope>leveldb::Version</scope><name>NumFiles</name></member>
+      <member refid="classleveldb_1_1_version_1af0d9bd79b1cdcadcf2511601de1c92a9" prot="private" virt="non-virtual"><scope>leveldb::Version</scope><name>operator=</name></member>
+      <member refid="classleveldb_1_1_version_1a7945e88b8a4f2f7b6f3201cb3d791f1e" prot="public" virt="non-virtual"><scope>leveldb::Version</scope><name>OverlapInLevel</name></member>
+      <member refid="classleveldb_1_1_version_1ac3b623319110ed2a9491723dd4675431" prot="public" virt="non-virtual"><scope>leveldb::Version</scope><name>PickLevelForMemTableOutput</name></member>
+      <member refid="classleveldb_1_1_version_1a78f5343161662289e86f9d53c5995833" prot="private" virt="non-virtual"><scope>leveldb::Version</scope><name>prev_</name></member>
+      <member refid="classleveldb_1_1_version_1a8b9e51b3d0503fe5868f656356557ded" prot="public" virt="non-virtual"><scope>leveldb::Version</scope><name>RecordReadSample</name></member>
+      <member refid="classleveldb_1_1_version_1ad237b446c7f7d9e63c4b7c162d6f0064" prot="public" virt="non-virtual"><scope>leveldb::Version</scope><name>Ref</name></member>
+      <member refid="classleveldb_1_1_version_1aa59ecbf976d0d28966892c93c8d8c634" prot="private" virt="non-virtual"><scope>leveldb::Version</scope><name>refs_</name></member>
+      <member refid="classleveldb_1_1_version_1a3f623697f625d4740d5b273c0bf6223a" prot="public" virt="non-virtual"><scope>leveldb::Version</scope><name>Unref</name></member>
+      <member refid="classleveldb_1_1_version_1a7e5b8451deb7c4b9006fd9d5ccfc2cef" prot="public" virt="non-virtual"><scope>leveldb::Version</scope><name>UpdateStats</name></member>
+      <member refid="classleveldb_1_1_version_1a8b08a6273383b1d02f8e3e5023e015ee" prot="private" virt="non-virtual"><scope>leveldb::Version</scope><name>Version</name></member>
+      <member refid="classleveldb_1_1_version_1a5a1a40f16c843b73c46c8a6f7710d742" prot="private" virt="non-virtual"><scope>leveldb::Version</scope><name>Version</name></member>
+      <member refid="classleveldb_1_1_version_1a1827cd1b4d6e9e3c378ce37ca3cce635" prot="private" virt="non-virtual"><scope>leveldb::Version</scope><name>VersionSet</name></member>
+      <member refid="classleveldb_1_1_version_1ab27cb3e1215e4b948fbee011203098b4" prot="private" virt="non-virtual"><scope>leveldb::Version</scope><name>vset_</name></member>
+      <member refid="classleveldb_1_1_version_1ade39983be24e04a74882f810fd5b61c9" prot="private" virt="non-virtual"><scope>leveldb::Version</scope><name>~Version</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

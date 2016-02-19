@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="sha512_8h" kind="file" language="C++">
+    <compoundname>sha512.h</compoundname>
+    <includes refid="stdint_8h" local="no">stdint.h</includes>
+    <includes local="no">stdlib.h</includes>
+    <includedby refid="hmac__sha512_8h" local="yes">/home/dev/ds-160209/src/crypto/hmac_sha512.h</includedby>
+    <includedby refid="sha512_8cpp" local="yes">/home/dev/ds-160209/src/crypto/sha512.cpp</includedby>
+    <incdepgraph>
+      <node id="33930">
+        <label>stdlib.h</label>
+      </node>
+      <node id="33928">
+        <label>/home/dev/ds-160209/src/crypto/sha512.h</label>
+        <link refid="sha512.h"/>
+        <childnode refid="33929" relation="include">
+        </childnode>
+        <childnode refid="33930" relation="include">
+        </childnode>
+      </node>
+      <node id="33929">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="33932">
+        <label>/home/dev/ds-160209/src/crypto/hmac_sha512.h</label>
+        <link refid="hmac__sha512_8h"/>
+        <childnode refid="33933" relation="include">
+        </childnode>
+        <childnode refid="33934" relation="include">
+        </childnode>
+      </node>
+      <node id="33931">
+        <label>/home/dev/ds-160209/src/crypto/sha512.h</label>
+        <link refid="sha512.h"/>
+        <childnode refid="33932" relation="include">
+        </childnode>
+        <childnode refid="33935" relation="include">
+        </childnode>
+      </node>
+      <node id="33935">
+        <label>/home/dev/ds-160209/src/crypto/sha512.cpp</label>
+        <link refid="sha512_8cpp"/>
+      </node>
+      <node id="33933">
+        <label>/home/dev/ds-160209/src/crypto/hmac_sha512.cpp</label>
+        <link refid="hmac__sha512_8cpp"/>
+      </node>
+      <node id="33934">
+        <label>/home/dev/ds-160209/src/key.cpp</label>
+        <link refid="key_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_c_s_h_a512" prot="public">CSHA512</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2014-2016<sp/>The<sp/>Bitcoin<sp/>Developers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Distributed<sp/>under<sp/>the<sp/>MIT<sp/>software<sp/>license,<sp/>see<sp/>the<sp/>accompanying</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>file<sp/>COPYING<sp/>or<sp/>http://www.opensource.org/licenses/mit-license.php.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>DARKSILK_CRYPTO_SHA512_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DARKSILK_CRYPTO_SHA512_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="stdint_8h" kindref="compound">stdint.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="class_c_s_h_a512" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_c_s_h_a512" kindref="compound">CSHA512</ref></highlight></codeline>
+<codeline lineno="13"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>s[8];</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>buf[128];</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>bytes;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="20" refid="class_c_s_h_a512_1a2de748ad386b21314f9990029d41dd53" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="class_c_s_h_a512_1a2de748ad386b21314f9990029d41dd53" kindref="member">OUTPUT_SIZE</ref><sp/>=<sp/>64;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_s_h_a512_1ad9e6d4dbaa01a2e35461a7a58d9008f4" kindref="member">CSHA512</ref>();</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_s_h_a512" kindref="compound">CSHA512</ref>&amp;<sp/><ref refid="class_c_s_h_a512_1aefd8260a2c205f11d44670ae68f1aff0" kindref="member">Write</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>data,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_c_s_h_a512_1aef4627aae19eeeb54bf02ea7b222b688" kindref="member">Finalize</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" kindref="member">hash</ref>[OUTPUT_SIZE]);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_s_h_a512" kindref="compound">CSHA512</ref>&amp;<sp/><ref refid="class_c_s_h_a512_1a6c469e0a6d1988cb255acf15afc66c2e" kindref="member">Reset</ref>();</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>DARKSILK_CRYPTO_SHA512_H</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/crypto/sha512.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,401 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_transaction_filter_proxy" kind="class" language="C++" prot="public">
+    <compoundname>TransactionFilterProxy</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QSortFilterProxyModel</basecompoundref>
+    <includes refid="transactionfilterproxy_8h" local="no">transactionfilterproxy.h</includes>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_transaction_filter_proxy_1aac7bf4c1105641b19eb6f7c8741b502e" prot="public" static="yes" mutable="no">
+        <type>const QDateTime</type>
+        <definition>const QDateTime TransactionFilterProxy::MIN_DATE</definition>
+        <argsstring></argsstring>
+        <name>MIN_DATE</name>
+        <initializer>= QDateTime::fromTime_t(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Earliest date that can be represented (far in the past) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" line="18" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" bodystart="18" bodyend="-1"/>
+        <referencedby refid="class_transaction_view_1abd49a0777b14f7bf5a72a4d5901d033d" compoundref="transactionview_8cpp" startline="189" endline="242">TransactionView::chooseDate</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_transaction_filter_proxy_1a5ac7f4d41a56e44f4cc74ebeffb5a254" prot="public" static="yes" mutable="no">
+        <type>const QDateTime</type>
+        <definition>const QDateTime TransactionFilterProxy::MAX_DATE</definition>
+        <argsstring></argsstring>
+        <name>MAX_DATE</name>
+        <initializer>= QDateTime::fromTime_t(0xFFFFFFFF)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Last date that can be represented (far in the future) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" line="20" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" bodystart="20" bodyend="-1"/>
+        <referencedby refid="class_transaction_view_1abd49a0777b14f7bf5a72a4d5901d033d" compoundref="transactionview_8cpp" startline="189" endline="242">TransactionView::chooseDate</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_transaction_filter_proxy_1a845c1358f6cc8e60b6fae4725d2fc03f" prot="public" static="yes" mutable="no">
+        <type>const quint32</type>
+        <definition>const quint32 TransactionFilterProxy::ALL_TYPES</definition>
+        <argsstring></argsstring>
+        <name>ALL_TYPES</name>
+        <initializer>= 0xFFFFFFFF</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Type filter bit field (all types) </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" line="22" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" bodystart="22" bodyend="-1"/>
+        <referencedby refid="class_transaction_view_1a0c5e8b90206b4e8b8bf68dd7e319798f" compoundref="transactionview_8cpp" startline="30" endline="156">TransactionView::TransactionView</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_transaction_filter_proxy_1a8b654fdfe778bb7ca48678a3886f03db" prot="private" static="no" mutable="no">
+        <type>QDateTime</type>
+        <definition>QDateTime TransactionFilterProxy::dateFrom</definition>
+        <argsstring></argsstring>
+        <name>dateFrom</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" line="46" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" bodystart="46" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_transaction_filter_proxy_1aa171f63701209485979fa055acf51ec6" prot="private" static="no" mutable="no">
+        <type>QDateTime</type>
+        <definition>QDateTime TransactionFilterProxy::dateTo</definition>
+        <argsstring></argsstring>
+        <name>dateTo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" line="47" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_transaction_filter_proxy_1ab4df2b269b23aa7a7d02795bff5cfe5f" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString TransactionFilterProxy::addrPrefix</definition>
+        <argsstring></argsstring>
+        <name>addrPrefix</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" line="48" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_transaction_filter_proxy_1a25253144995d9ab5e5c163a0e79846b3" prot="private" static="no" mutable="no">
+        <type>quint32</type>
+        <definition>quint32 TransactionFilterProxy::typeFilter</definition>
+        <argsstring></argsstring>
+        <name>typeFilter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" line="49" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_transaction_filter_proxy_1afccd51dd6a7244319cdc4f5753c2e872" prot="private" static="no" mutable="no">
+        <type><ref refid="amount_8h_1a4eaf3a5239714d8c45b851527f7cb564" kindref="member">CAmount</ref></type>
+        <definition>CAmount TransactionFilterProxy::minAmount</definition>
+        <argsstring></argsstring>
+        <name>minAmount</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" line="50" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_transaction_filter_proxy_1ae38738ddbb7f1f0cfd3dd5369ecaef5e" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int TransactionFilterProxy::limitRows</definition>
+        <argsstring></argsstring>
+        <name>limitRows</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" line="51" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_transaction_filter_proxy_1acb2b782f0ae654a303f592236ab54227" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool TransactionFilterProxy::showInactive</definition>
+        <argsstring></argsstring>
+        <name>showInactive</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" line="52" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_transaction_filter_proxy_1a9981e03a2b60931e3e5adbe7e3fb6b7d" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TransactionFilterProxy::TransactionFilterProxy</definition>
+        <argsstring>(QObject *parent=0)</argsstring>
+        <name>TransactionFilterProxy</name>
+        <param>
+          <type>QObject *</type>
+          <declname>parent</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" line="15" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionfilterproxy.cpp" bodystart="13" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="class_transaction_filter_proxy_1ad57cc552db9ce70bb4e8e1c12909992d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TransactionFilterProxy::setDateRange</definition>
+        <argsstring>(const QDateTime &amp;from, const QDateTime &amp;to)</argsstring>
+        <name>setDateRange</name>
+        <param>
+          <type>const QDateTime &amp;</type>
+          <declname>from</declname>
+        </param>
+        <param>
+          <type>const QDateTime &amp;</type>
+          <declname>to</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" line="26" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionfilterproxy.cpp" bodystart="50" bodyend="55"/>
+        <referencedby refid="class_transaction_view_1abd49a0777b14f7bf5a72a4d5901d033d" compoundref="transactionview_8cpp" startline="189" endline="242">TransactionView::chooseDate</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_transaction_filter_proxy_1ad0b4258695ed1fbbf70d29f4e264361a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TransactionFilterProxy::setAddressPrefix</definition>
+        <argsstring>(const QString &amp;addrPrefix)</argsstring>
+        <name>setAddressPrefix</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>addrPrefix</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" line="27" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionfilterproxy.cpp" bodystart="57" bodyend="61"/>
+        <referencedby refid="class_transaction_view_1ac2ed41556913e588c667490860717efa" compoundref="transactionview_8cpp" startline="252" endline="257">TransactionView::changedPrefix</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_transaction_filter_proxy_1af28eee58aee7585b71f057d044408106" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TransactionFilterProxy::setTypeFilter</definition>
+        <argsstring>(quint32 modes)</argsstring>
+        <name>setTypeFilter</name>
+        <param>
+          <type>quint32</type>
+          <declname>modes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="note"><para>Type filter takes a bit field created with <ref refid="class_transaction_filter_proxy_1aaacec79a6362b13ee4cfab7f770e33b5" kindref="member">TYPE()</ref> or ALL_TYPES </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" line="31" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionfilterproxy.cpp" bodystart="63" bodyend="67"/>
+        <referencedby refid="class_transaction_view_1a590f0edc4ab4d59f88d7fc494e852f80" compoundref="transactionview_8cpp" startline="244" endline="250">TransactionView::chooseType</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_transaction_filter_proxy_1a14688071f18551bf7d78225feb8ca8df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TransactionFilterProxy::setMinAmount</definition>
+        <argsstring>(const CAmount &amp;minimum)</argsstring>
+        <name>setMinAmount</name>
+        <param>
+          <type>const <ref refid="amount_8h_1a4eaf3a5239714d8c45b851527f7cb564" kindref="member">CAmount</ref> &amp;</type>
+          <declname>minimum</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" line="32" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionfilterproxy.cpp" bodystart="69" bodyend="73"/>
+        <referencedby refid="class_transaction_view_1a0075048c06bb54da5c5e5d2691198984" compoundref="transactionview_8cpp" startline="259" endline="272">TransactionView::changedAmount</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_transaction_filter_proxy_1a3ec04a38573eb59b8f246f54658d2702" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TransactionFilterProxy::setLimit</definition>
+        <argsstring>(int limit)</argsstring>
+        <name>setLimit</name>
+        <param>
+          <type>int</type>
+          <declname>limit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set maximum number of rows returned, -1 if unlimited. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" line="35" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionfilterproxy.cpp" bodystart="75" bodyend="78"/>
+        <referencedby refid="class_overview_page_1a2ed52a3a87e9c74fee38fa873c9bc71f" compoundref="overviewpage_8cpp" startline="234" endline="267">OverviewPage::setWalletModel</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_transaction_filter_proxy_1aad1598cc4308eb08d8f617f08f62ece6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TransactionFilterProxy::setShowInactive</definition>
+        <argsstring>(bool showInactive)</argsstring>
+        <name>setShowInactive</name>
+        <param>
+          <type>bool</type>
+          <declname>showInactive</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set whether to show conflicted transactions. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" line="38" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionfilterproxy.cpp" bodystart="80" bodyend="84"/>
+        <referencedby refid="class_overview_page_1a2ed52a3a87e9c74fee38fa873c9bc71f" compoundref="overviewpage_8cpp" startline="234" endline="267">OverviewPage::setWalletModel</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_transaction_filter_proxy_1a606a2604ae4d991af677e6093701c8dc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int TransactionFilterProxy::rowCount</definition>
+        <argsstring>(const QModelIndex &amp;parent=QModelIndex()) const </argsstring>
+        <name>rowCount</name>
+        <param>
+          <type>const QModelIndex &amp;</type>
+          <declname>parent</declname>
+          <defval>QModelIndex()</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" line="40" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionfilterproxy.cpp" bodystart="86" bodyend="96"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_transaction_filter_proxy_1aaacec79a6362b13ee4cfab7f770e33b5" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>quint32</type>
+        <definition>static quint32 TransactionFilterProxy::TYPE</definition>
+        <argsstring>(int type)</argsstring>
+        <name>TYPE</name>
+        <param>
+          <type>int</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" line="24" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" bodystart="24" bodyend="24"/>
+        <referencedby refid="class_transaction_filter_proxy_1afbe3427b446cb54b4e2e85cb43500308" compoundref="transactionfilterproxy_8cpp" startline="25" endline="48">filterAcceptsRow</referencedby>
+        <referencedby refid="class_transaction_view_1a0c5e8b90206b4e8b8bf68dd7e319798f" compoundref="transactionview_8cpp" startline="30" endline="156">TransactionView::TransactionView</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_transaction_filter_proxy_1afbe3427b446cb54b4e2e85cb43500308" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool TransactionFilterProxy::filterAcceptsRow</definition>
+        <argsstring>(int source_row, const QModelIndex &amp;source_parent) const </argsstring>
+        <name>filterAcceptsRow</name>
+        <param>
+          <type>int</type>
+          <declname>source_row</declname>
+        </param>
+        <param>
+          <type>const QModelIndex &amp;</type>
+          <declname>source_parent</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" line="43" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionfilterproxy.cpp" bodystart="25" bodyend="48"/>
+        <references refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6a35c49f8c0732954b2812c67e4c745840" compoundref="transactiontablemodel_8h" startline="35">TransactionTableModel::TypeRole</references>
+        <references refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6a46e879bd509162d980df3692c65eb66e" compoundref="transactiontablemodel_8h" startline="37">TransactionTableModel::DateRole</references>
+        <references refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6ab82599f86b9cf8d0907e42bc8158ef16" compoundref="transactiontablemodel_8h" startline="41">TransactionTableModel::AddressRole</references>
+        <references refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6a286d79e8b1e0bfc8cb6bb72bbec78de2" compoundref="transactiontablemodel_8h" startline="43">TransactionTableModel::LabelRole</references>
+        <references refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6ace07f7f11257526cef9d6613c23cfff4" compoundref="transactiontablemodel_8h" startline="45">TransactionTableModel::AmountRole</references>
+        <references refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6a3f8e62622565f361805b2d050da5b2b6" compoundref="transactiontablemodel_8h" startline="53">TransactionTableModel::StatusRole</references>
+        <references refid="class_transaction_status_1aaa6cc19ca3509bbae72d0df1661f85cbae06a462705a0126fda4b82e47915d812" compoundref="transactionrecord_8h" startline="31">TransactionStatus::Conflicted</references>
+        <references refid="class_transaction_status_1aaa6cc19ca3509bbae72d0df1661f85cbaa00ed76c9186371bd649ffeec45d37e9" compoundref="transactionrecord_8h" startline="35">TransactionStatus::NotAccepted</references>
+        <references refid="class_transaction_filter_proxy_1aaacec79a6362b13ee4cfab7f770e33b5" compoundref="transactionfilterproxy_8h" startline="24" endline="24">TYPE</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Filter the transaction list according to pre-specified rules. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="3766">
+        <label>TransactionFilterProxy</label>
+        <link refid="class_transaction_filter_proxy"/>
+        <childnode refid="3767" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3767">
+        <label>QSortFilterProxyModel</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3768">
+        <label>TransactionFilterProxy</label>
+        <link refid="class_transaction_filter_proxy"/>
+        <childnode refid="3769" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3769">
+        <label>QSortFilterProxyModel</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" line="11" column="1" bodyfile="/home/dev/ds-160209/src/qt/transactionfilterproxy.h" bodystart="10" bodyend="53"/>
+    <listofallmembers>
+      <member refid="class_transaction_filter_proxy_1ab4df2b269b23aa7a7d02795bff5cfe5f" prot="private" virt="non-virtual"><scope>TransactionFilterProxy</scope><name>addrPrefix</name></member>
+      <member refid="class_transaction_filter_proxy_1a845c1358f6cc8e60b6fae4725d2fc03f" prot="public" virt="non-virtual"><scope>TransactionFilterProxy</scope><name>ALL_TYPES</name></member>
+      <member refid="class_transaction_filter_proxy_1a8b654fdfe778bb7ca48678a3886f03db" prot="private" virt="non-virtual"><scope>TransactionFilterProxy</scope><name>dateFrom</name></member>
+      <member refid="class_transaction_filter_proxy_1aa171f63701209485979fa055acf51ec6" prot="private" virt="non-virtual"><scope>TransactionFilterProxy</scope><name>dateTo</name></member>
+      <member refid="class_transaction_filter_proxy_1afbe3427b446cb54b4e2e85cb43500308" prot="protected" virt="non-virtual"><scope>TransactionFilterProxy</scope><name>filterAcceptsRow</name></member>
+      <member refid="class_transaction_filter_proxy_1ae38738ddbb7f1f0cfd3dd5369ecaef5e" prot="private" virt="non-virtual"><scope>TransactionFilterProxy</scope><name>limitRows</name></member>
+      <member refid="class_transaction_filter_proxy_1a5ac7f4d41a56e44f4cc74ebeffb5a254" prot="public" virt="non-virtual"><scope>TransactionFilterProxy</scope><name>MAX_DATE</name></member>
+      <member refid="class_transaction_filter_proxy_1aac7bf4c1105641b19eb6f7c8741b502e" prot="public" virt="non-virtual"><scope>TransactionFilterProxy</scope><name>MIN_DATE</name></member>
+      <member refid="class_transaction_filter_proxy_1afccd51dd6a7244319cdc4f5753c2e872" prot="private" virt="non-virtual"><scope>TransactionFilterProxy</scope><name>minAmount</name></member>
+      <member refid="class_transaction_filter_proxy_1a606a2604ae4d991af677e6093701c8dc" prot="public" virt="non-virtual"><scope>TransactionFilterProxy</scope><name>rowCount</name></member>
+      <member refid="class_transaction_filter_proxy_1ad0b4258695ed1fbbf70d29f4e264361a" prot="public" virt="non-virtual"><scope>TransactionFilterProxy</scope><name>setAddressPrefix</name></member>
+      <member refid="class_transaction_filter_proxy_1ad57cc552db9ce70bb4e8e1c12909992d" prot="public" virt="non-virtual"><scope>TransactionFilterProxy</scope><name>setDateRange</name></member>
+      <member refid="class_transaction_filter_proxy_1a3ec04a38573eb59b8f246f54658d2702" prot="public" virt="non-virtual"><scope>TransactionFilterProxy</scope><name>setLimit</name></member>
+      <member refid="class_transaction_filter_proxy_1a14688071f18551bf7d78225feb8ca8df" prot="public" virt="non-virtual"><scope>TransactionFilterProxy</scope><name>setMinAmount</name></member>
+      <member refid="class_transaction_filter_proxy_1aad1598cc4308eb08d8f617f08f62ece6" prot="public" virt="non-virtual"><scope>TransactionFilterProxy</scope><name>setShowInactive</name></member>
+      <member refid="class_transaction_filter_proxy_1af28eee58aee7585b71f057d044408106" prot="public" virt="non-virtual"><scope>TransactionFilterProxy</scope><name>setTypeFilter</name></member>
+      <member refid="class_transaction_filter_proxy_1acb2b782f0ae654a303f592236ab54227" prot="private" virt="non-virtual"><scope>TransactionFilterProxy</scope><name>showInactive</name></member>
+      <member refid="class_transaction_filter_proxy_1a9981e03a2b60931e3e5adbe7e3fb6b7d" prot="public" virt="non-virtual"><scope>TransactionFilterProxy</scope><name>TransactionFilterProxy</name></member>
+      <member refid="class_transaction_filter_proxy_1aaacec79a6362b13ee4cfab7f770e33b5" prot="public" virt="non-virtual"><scope>TransactionFilterProxy</scope><name>TYPE</name></member>
+      <member refid="class_transaction_filter_proxy_1a25253144995d9ab5e5c163a0e79846b3" prot="private" virt="non-virtual"><scope>TransactionFilterProxy</scope><name>typeFilter</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

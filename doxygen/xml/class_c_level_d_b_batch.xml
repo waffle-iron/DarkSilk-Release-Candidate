@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_level_d_b_batch" kind="class" language="C++" prot="public">
+    <compoundname>CLevelDBBatch</compoundname>
+    <includes refid="leveldbwrapper_8h" local="no">leveldbwrapper.h</includes>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="class_c_level_d_b_batch_1acbe5e6be88c5bccb0ec229ebc91dde82" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class CLevelDBWrapper</definition>
+        <argsstring></argsstring>
+        <name>CLevelDBWrapper</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldbwrapper.h" line="28" column="1" bodyfile="/home/dev/ds-160209/src/leveldbwrapper.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_c_level_d_b_batch_1af404cb1abfb4d62781eb6d22d408cd5d" prot="private" static="no" mutable="no">
+        <type><ref refid="classleveldb_1_1_write_batch" kindref="compound">leveldb::WriteBatch</ref></type>
+        <definition>leveldb::WriteBatch CLevelDBBatch::batch</definition>
+        <argsstring></argsstring>
+        <name>batch</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldbwrapper.h" line="31" column="1" bodyfile="/home/dev/ds-160209/src/leveldbwrapper.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_level_d_b_batch_1ab459da1abafa27e834de9a4cc25b6f2d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename K</type>
+          </param>
+          <param>
+            <type>typename V</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void CLevelDBBatch::Write</definition>
+        <argsstring>(const K &amp;key, const V &amp;value)</argsstring>
+        <name>Write</name>
+        <param>
+          <type>const K &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const V &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldbwrapper.h" line="35" column="1" bodyfile="/home/dev/ds-160209/src/leveldbwrapper.h" bodystart="35" bodyend="48"/>
+        <references refid="serialize_8h_1a6b7b47dd702d9e331586d485013fd1eaa34949680c53028d35a449bf88b3c329d" compoundref="serialize_8h" startline="90">SER_DISK</references>
+        <references refid="class_c_data_stream_1a5542e71bd7af2ab7cd7be0f381d39cb5" compoundref="streams_8h" startline="119" endline="119">CDataStream::reserve</references>
+        <references refid="class_c_data_stream_1aaf2b9e953793ce5a4fc438a7ecb00dc2" compoundref="streams_8h" startline="288" endline="292">CDataStream::GetSerializeSize</references>
+        <references refid="class_c_data_stream_1ac6567f6d600d644d9855b52bb59049cd" compoundref="streams_8h" startline="116" endline="116">CDataStream::size</references>
+        <references refid="version__set_8cc_1a38c8b88c432e666ad10b0c5573e1160a" compoundref="version__set_8cc" startline="256">value</references>
+        <references refid="classleveldb_1_1_write_batch_1a30770379143a7ccb4ede18ddf0e45bf3" compoundref="write__batch_8cc" startline="98" endline="103">leveldb::WriteBatch::Put</references>
+        <referencedby refid="class_c_level_d_b_wrapper_1a740caa1aefbafc888838ea7f70dc31f4" compoundref="leveldbwrapper_8h" startline="116" endline="121">CLevelDBWrapper::Write</referencedby>
+        <referencedby refid="txdb_8h_1ac78624a7ae785f74ad74dd33341b6cd4" compoundref="txdb_8cpp" startline="16" endline="21">BatchWriteCoins</referencedby>
+        <referencedby refid="txdb_8h_1a51ba67d9783e3a8bbc639f48fc43f48e" compoundref="txdb_8cpp" startline="23" endline="25">BatchWriteHashBestChain</referencedby>
+        <referencedby refid="class_c_block_tree_d_b_1a1e03745f9675ad352a1483a0aa7ef308" compoundref="txdb_8cpp" startline="67" endline="72">CBlockTreeDB::WriteTxIndex</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_level_d_b_batch_1a22bf093d560b4ce3333e8f4a947faa7f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename K</type>
+          </param>
+        </templateparamlist>
+        <type>void</type>
+        <definition>void CLevelDBBatch::Erase</definition>
+        <argsstring>(const K &amp;key)</argsstring>
+        <name>Erase</name>
+        <param>
+          <type>const K &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldbwrapper.h" line="51" column="1" bodyfile="/home/dev/ds-160209/src/leveldbwrapper.h" bodystart="51" bodyend="59"/>
+        <references refid="serialize_8h_1a6b7b47dd702d9e331586d485013fd1eaa34949680c53028d35a449bf88b3c329d" compoundref="serialize_8h" startline="90">SER_DISK</references>
+        <references refid="class_c_data_stream_1a5542e71bd7af2ab7cd7be0f381d39cb5" compoundref="streams_8h" startline="119" endline="119">CDataStream::reserve</references>
+        <references refid="class_c_data_stream_1aaf2b9e953793ce5a4fc438a7ecb00dc2" compoundref="streams_8h" startline="288" endline="292">CDataStream::GetSerializeSize</references>
+        <references refid="class_c_data_stream_1ac6567f6d600d644d9855b52bb59049cd" compoundref="streams_8h" startline="116" endline="116">CDataStream::size</references>
+        <references refid="classleveldb_1_1_write_batch_1a473da7f94483dab253cc36b7b231ce53" compoundref="write__batch_8cc" startline="105" endline="109">leveldb::WriteBatch::Delete</references>
+        <referencedby refid="class_c_level_d_b_wrapper_1a9f67e2880ba191fdc9439ba34e315d72" compoundref="leveldbwrapper_8h" startline="143" endline="148">CLevelDBWrapper::Erase</referencedby>
+        <referencedby refid="txdb_8h_1ac78624a7ae785f74ad74dd33341b6cd4" compoundref="txdb_8cpp" startline="16" endline="21">BatchWriteCoins</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Batch of changes queued to be written to a <ref refid="class_c_level_d_b_wrapper" kindref="compound">CLevelDBWrapper</ref> </para>    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/leveldbwrapper.h" line="27" column="1" bodyfile="/home/dev/ds-160209/src/leveldbwrapper.h" bodystart="26" bodyend="60"/>
+    <listofallmembers>
+      <member refid="class_c_level_d_b_batch_1af404cb1abfb4d62781eb6d22d408cd5d" prot="private" virt="non-virtual"><scope>CLevelDBBatch</scope><name>batch</name></member>
+      <member refid="class_c_level_d_b_batch_1acbe5e6be88c5bccb0ec229ebc91dde82" prot="private" virt="non-virtual"><scope>CLevelDBBatch</scope><name>CLevelDBWrapper</name></member>
+      <member refid="class_c_level_d_b_batch_1a22bf093d560b4ce3333e8f4a947faa7f" prot="public" virt="non-virtual"><scope>CLevelDBBatch</scope><name>Erase</name></member>
+      <member refid="class_c_level_d_b_batch_1ab459da1abafa27e834de9a4cc25b6f2d" prot="public" virt="non-virtual"><scope>CLevelDBBatch</scope><name>Write</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

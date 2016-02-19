@@ -1,0 +1,371 @@
+\hypertarget{class_send_messages_dialog}{}\section{Send\+Messages\+Dialog Class Reference}
+\label{class_send_messages_dialog}\index{Send\+Messages\+Dialog@{Send\+Messages\+Dialog}}
+
+
+{\ttfamily \#include $<$sendmessagesdialog.\+h$>$}
+
+
+
+Inheritance diagram for Send\+Messages\+Dialog\+:
+% FIG 0
+
+
+Collaboration diagram for Send\+Messages\+Dialog\+:
+% FIG 1
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_send_messages_dialog_aa123d2b61a8bd27c054469a331d69c43}{Mode} \{ \hyperlink{class_send_messages_dialog_aa123d2b61a8bd27c054469a331d69c43a083da80ff3b2e7b71b2c26a8b4a8982e}{Encrypted}, 
+\hyperlink{class_send_messages_dialog_aa123d2b61a8bd27c054469a331d69c43a9694f2bb3a95d29f2c20c27effcb292c}{Anonymous}
+ \}
+\item 
+enum \hyperlink{class_send_messages_dialog_ae5855bcf6efac64a72d85546f1cabc35}{Type} \{ \hyperlink{class_send_messages_dialog_ae5855bcf6efac64a72d85546f1cabc35a6589a50ad77af9037b71f641e044e5da}{Page}, 
+\hyperlink{class_send_messages_dialog_ae5855bcf6efac64a72d85546f1cabc35a5f0ef29c027d54a2e0309ad07e01efcd}{Dialog}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_send_messages_dialog_a39929b11f0516f1360a36dcfaa9ae38e}{done} (int retval)
+\item 
+void \hyperlink{class_send_messages_dialog_abd621460aeabc209648050bab5bf16f9}{clear} ()
+\item 
+void \hyperlink{class_send_messages_dialog_a9a676cf7ce3b8d0c0996366d651cf77d}{reject} ()
+\item 
+void \hyperlink{class_send_messages_dialog_a0fbe14e62f3ef38beec76dae64f0fd25}{accept} ()
+\item 
+\hyperlink{class_send_messages_entry}{Send\+Messages\+Entry} $\ast$ \hyperlink{class_send_messages_dialog_a82e310529e39f9e62a25f0df233c6be7}{add\+Entry} ()
+\item 
+void \hyperlink{class_send_messages_dialog_a33a21b7d103330c784e6dc5590d7a2c4}{update\+Remove\+Enabled} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_send_messages_dialog_a81ada34f0c63a07146b71d85a5512982}{Send\+Messages\+Dialog} (\hyperlink{class_send_messages_dialog_aa123d2b61a8bd27c054469a331d69c43}{Mode} mode, \hyperlink{class_send_messages_dialog_ae5855bcf6efac64a72d85546f1cabc35}{Type} type, Q\+Widget $\ast$parent=0)
+\item 
+\hyperlink{class_send_messages_dialog_a59c98762d1250c6c1a98490fd33ba2d8}{$\sim$\+Send\+Messages\+Dialog} ()
+\item 
+void \hyperlink{class_send_messages_dialog_ab25d3875c24cac123811ac5d79804bc2}{set\+Model} (\hyperlink{class_message_model}{Message\+Model} $\ast$model)
+\item 
+void \hyperlink{class_send_messages_dialog_a8c3c08ba52d32a7f76eedc7596704adf}{load\+Row} (int row)
+\item 
+bool \hyperlink{class_send_messages_dialog_afa1bc0a7c0fb4cb9859cc5fd9cd0fb31}{check\+Mode} (\hyperlink{class_send_messages_dialog_aa123d2b61a8bd27c054469a331d69c43}{Mode} mode)
+\item 
+bool \hyperlink{class_send_messages_dialog_aab11689b1f6424487e2c36bae2e4a618}{validate} ()
+\item 
+Q\+Widget $\ast$ \hyperlink{class_send_messages_dialog_aa0c54ef61cb934fd4f687981bc449e30}{setup\+Tab\+Chain} (Q\+Widget $\ast$\hyperlink{cache_8cc_aabbd2f01bb8ec4a7a0128bce5f8cdb1b}{prev})
+\item 
+void \hyperlink{class_send_messages_dialog_a8282ce8ff57624617dd53366f23e2c17}{paste\+Entry} (const \hyperlink{class_send_messages_recipient}{Send\+Messages\+Recipient} \&rv)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Dialog for sending messages 
+
+Definition at line 20 of file sendmessagesdialog.\+h.
+
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{class_send_messages_dialog_aa123d2b61a8bd27c054469a331d69c43}{}\index{Send\+Messages\+Dialog@{Send\+Messages\+Dialog}!Mode@{Mode}}
+\index{Mode@{Mode}!Send\+Messages\+Dialog@{Send\+Messages\+Dialog}}
+\subsubsection[{Mode}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Send\+Messages\+Dialog\+::\+Mode}}\label{class_send_messages_dialog_aa123d2b61a8bd27c054469a331d69c43}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{Encrypted@{Encrypted}!Send\+Messages\+Dialog@{Send\+Messages\+Dialog}}\index{Send\+Messages\+Dialog@{Send\+Messages\+Dialog}!Encrypted@{Encrypted}}\item[{\em 
+\hypertarget{class_send_messages_dialog_aa123d2b61a8bd27c054469a331d69c43a083da80ff3b2e7b71b2c26a8b4a8982e}{}Encrypted\label{class_send_messages_dialog_aa123d2b61a8bd27c054469a331d69c43a083da80ff3b2e7b71b2c26a8b4a8982e}
+}]\index{Anonymous@{Anonymous}!Send\+Messages\+Dialog@{Send\+Messages\+Dialog}}\index{Send\+Messages\+Dialog@{Send\+Messages\+Dialog}!Anonymous@{Anonymous}}\item[{\em 
+\hypertarget{class_send_messages_dialog_aa123d2b61a8bd27c054469a331d69c43a9694f2bb3a95d29f2c20c27effcb292c}{}Anonymous\label{class_send_messages_dialog_aa123d2b61a8bd27c054469a331d69c43a9694f2bb3a95d29f2c20c27effcb292c}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 26 of file sendmessagesdialog.\+h.
+
+\hypertarget{class_send_messages_dialog_ae5855bcf6efac64a72d85546f1cabc35}{}\index{Send\+Messages\+Dialog@{Send\+Messages\+Dialog}!Type@{Type}}
+\index{Type@{Type}!Send\+Messages\+Dialog@{Send\+Messages\+Dialog}}
+\subsubsection[{Type}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Send\+Messages\+Dialog\+::\+Type}}\label{class_send_messages_dialog_ae5855bcf6efac64a72d85546f1cabc35}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{Page@{Page}!Send\+Messages\+Dialog@{Send\+Messages\+Dialog}}\index{Send\+Messages\+Dialog@{Send\+Messages\+Dialog}!Page@{Page}}\item[{\em 
+\hypertarget{class_send_messages_dialog_ae5855bcf6efac64a72d85546f1cabc35a6589a50ad77af9037b71f641e044e5da}{}Page\label{class_send_messages_dialog_ae5855bcf6efac64a72d85546f1cabc35a6589a50ad77af9037b71f641e044e5da}
+}]\index{Dialog@{Dialog}!Send\+Messages\+Dialog@{Send\+Messages\+Dialog}}\index{Send\+Messages\+Dialog@{Send\+Messages\+Dialog}!Dialog@{Dialog}}\item[{\em 
+\hypertarget{class_send_messages_dialog_ae5855bcf6efac64a72d85546f1cabc35a5f0ef29c027d54a2e0309ad07e01efcd}{}Dialog\label{class_send_messages_dialog_ae5855bcf6efac64a72d85546f1cabc35a5f0ef29c027d54a2e0309ad07e01efcd}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 31 of file sendmessagesdialog.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_send_messages_dialog_a81ada34f0c63a07146b71d85a5512982}{}\index{Send\+Messages\+Dialog@{Send\+Messages\+Dialog}!Send\+Messages\+Dialog@{Send\+Messages\+Dialog}}
+\index{Send\+Messages\+Dialog@{Send\+Messages\+Dialog}!Send\+Messages\+Dialog@{Send\+Messages\+Dialog}}
+\subsubsection[{Send\+Messages\+Dialog}]{\setlength{\rightskip}{0pt plus 5cm}Send\+Messages\+Dialog\+::\+Send\+Messages\+Dialog (
+\begin{DoxyParamCaption}
+\item[{{\bf Mode}}]{mode, }
+\item[{{\bf Type}}]{type, }
+\item[{Q\+Widget $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\label{class_send_messages_dialog_a81ada34f0c63a07146b71d85a5512982}
+
+
+Definition at line 18 of file sendmessagesdialog.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+\hypertarget{class_send_messages_dialog_a59c98762d1250c6c1a98490fd33ba2d8}{}\index{Send\+Messages\+Dialog@{Send\+Messages\+Dialog}!````~Send\+Messages\+Dialog@{$\sim$\+Send\+Messages\+Dialog}}
+\index{````~Send\+Messages\+Dialog@{$\sim$\+Send\+Messages\+Dialog}!Send\+Messages\+Dialog@{Send\+Messages\+Dialog}}
+\subsubsection[{$\sim$\+Send\+Messages\+Dialog}]{\setlength{\rightskip}{0pt plus 5cm}Send\+Messages\+Dialog\+::$\sim$\+Send\+Messages\+Dialog (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_send_messages_dialog_a59c98762d1250c6c1a98490fd33ba2d8}
+
+
+Definition at line 100 of file sendmessagesdialog.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_send_messages_dialog_a0fbe14e62f3ef38beec76dae64f0fd25}{}\index{Send\+Messages\+Dialog@{Send\+Messages\+Dialog}!accept@{accept}}
+\index{accept@{accept}!Send\+Messages\+Dialog@{Send\+Messages\+Dialog}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Send\+Messages\+Dialog\+::accept (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_send_messages_dialog_a0fbe14e62f3ef38beec76dae64f0fd25}
+
+
+Definition at line 241 of file sendmessagesdialog.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 3
+
+
+\hypertarget{class_send_messages_dialog_a82e310529e39f9e62a25f0df233c6be7}{}\index{Send\+Messages\+Dialog@{Send\+Messages\+Dialog}!add\+Entry@{add\+Entry}}
+\index{add\+Entry@{add\+Entry}!Send\+Messages\+Dialog@{Send\+Messages\+Dialog}}
+\subsubsection[{add\+Entry}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Send\+Messages\+Entry} $\ast$ Send\+Messages\+Dialog\+::add\+Entry (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_send_messages_dialog_a82e310529e39f9e62a25f0df233c6be7}
+
+
+Definition at line 258 of file sendmessagesdialog.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 4
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 5
+
+
+\hypertarget{class_send_messages_dialog_afa1bc0a7c0fb4cb9859cc5fd9cd0fb31}{}\index{Send\+Messages\+Dialog@{Send\+Messages\+Dialog}!check\+Mode@{check\+Mode}}
+\index{check\+Mode@{check\+Mode}!Send\+Messages\+Dialog@{Send\+Messages\+Dialog}}
+\subsubsection[{check\+Mode}]{\setlength{\rightskip}{0pt plus 5cm}bool Send\+Messages\+Dialog\+::check\+Mode (
+\begin{DoxyParamCaption}
+\item[{{\bf Mode}}]{mode}
+\end{DoxyParamCaption}
+)}\label{class_send_messages_dialog_afa1bc0a7c0fb4cb9859cc5fd9cd0fb31}
+
+
+Definition at line 83 of file sendmessagesdialog.\+cpp.
+
+\hypertarget{class_send_messages_dialog_abd621460aeabc209648050bab5bf16f9}{}\index{Send\+Messages\+Dialog@{Send\+Messages\+Dialog}!clear@{clear}}
+\index{clear@{clear}!Send\+Messages\+Dialog@{Send\+Messages\+Dialog}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}void Send\+Messages\+Dialog\+::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_send_messages_dialog_abd621460aeabc209648050bab5bf16f9}
+
+
+Definition at line 220 of file sendmessagesdialog.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 6
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 7
+
+
+\hypertarget{class_send_messages_dialog_a39929b11f0516f1360a36dcfaa9ae38e}{}\index{Send\+Messages\+Dialog@{Send\+Messages\+Dialog}!done@{done}}
+\index{done@{done}!Send\+Messages\+Dialog@{Send\+Messages\+Dialog}}
+\subsubsection[{done}]{\setlength{\rightskip}{0pt plus 5cm}void Send\+Messages\+Dialog\+::done (
+\begin{DoxyParamCaption}
+\item[{int}]{retval}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_send_messages_dialog_a39929b11f0516f1360a36dcfaa9ae38e}
+
+
+Definition at line 250 of file sendmessagesdialog.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 8
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 9
+
+
+\hypertarget{class_send_messages_dialog_a8c3c08ba52d32a7f76eedc7596704adf}{}\index{Send\+Messages\+Dialog@{Send\+Messages\+Dialog}!load\+Row@{load\+Row}}
+\index{load\+Row@{load\+Row}!Send\+Messages\+Dialog@{Send\+Messages\+Dialog}}
+\subsubsection[{load\+Row}]{\setlength{\rightskip}{0pt plus 5cm}void Send\+Messages\+Dialog\+::load\+Row (
+\begin{DoxyParamCaption}
+\item[{int}]{row}
+\end{DoxyParamCaption}
+)}\label{class_send_messages_dialog_a8c3c08ba52d32a7f76eedc7596704adf}
+
+
+Definition at line 67 of file sendmessagesdialog.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 10
+
+
+\hypertarget{class_send_messages_dialog_a8282ce8ff57624617dd53366f23e2c17}{}\index{Send\+Messages\+Dialog@{Send\+Messages\+Dialog}!paste\+Entry@{paste\+Entry}}
+\index{paste\+Entry@{paste\+Entry}!Send\+Messages\+Dialog@{Send\+Messages\+Dialog}}
+\subsubsection[{paste\+Entry}]{\setlength{\rightskip}{0pt plus 5cm}void Send\+Messages\+Dialog\+::paste\+Entry (
+\begin{DoxyParamCaption}
+\item[{const {\bf Send\+Messages\+Recipient} \&}]{rv}
+\end{DoxyParamCaption}
+)}\label{class_send_messages_dialog_a8282ce8ff57624617dd53366f23e2c17}
+
+
+Definition at line 320 of file sendmessagesdialog.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 11
+
+
+\hypertarget{class_send_messages_dialog_a9a676cf7ce3b8d0c0996366d651cf77d}{}\index{Send\+Messages\+Dialog@{Send\+Messages\+Dialog}!reject@{reject}}
+\index{reject@{reject}!Send\+Messages\+Dialog@{Send\+Messages\+Dialog}}
+\subsubsection[{reject}]{\setlength{\rightskip}{0pt plus 5cm}void Send\+Messages\+Dialog\+::reject (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_send_messages_dialog_a9a676cf7ce3b8d0c0996366d651cf77d}
+
+
+Definition at line 233 of file sendmessagesdialog.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 12
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 13
+
+
+\hypertarget{class_send_messages_dialog_ab25d3875c24cac123811ac5d79804bc2}{}\index{Send\+Messages\+Dialog@{Send\+Messages\+Dialog}!set\+Model@{set\+Model}}
+\index{set\+Model@{set\+Model}!Send\+Messages\+Dialog@{Send\+Messages\+Dialog}}
+\subsubsection[{set\+Model}]{\setlength{\rightskip}{0pt plus 5cm}void Send\+Messages\+Dialog\+::set\+Model (
+\begin{DoxyParamCaption}
+\item[{{\bf Message\+Model} $\ast$}]{model}
+\end{DoxyParamCaption}
+)}\label{class_send_messages_dialog_ab25d3875c24cac123811ac5d79804bc2}
+
+
+Definition at line 54 of file sendmessagesdialog.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 14
+
+
+\hypertarget{class_send_messages_dialog_aa0c54ef61cb934fd4f687981bc449e30}{}\index{Send\+Messages\+Dialog@{Send\+Messages\+Dialog}!setup\+Tab\+Chain@{setup\+Tab\+Chain}}
+\index{setup\+Tab\+Chain@{setup\+Tab\+Chain}!Send\+Messages\+Dialog@{Send\+Messages\+Dialog}}
+\subsubsection[{setup\+Tab\+Chain}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Widget $\ast$ Send\+Messages\+Dialog\+::setup\+Tab\+Chain (
+\begin{DoxyParamCaption}
+\item[{Q\+Widget $\ast$}]{prev}
+\end{DoxyParamCaption}
+)}\label{class_send_messages_dialog_aa0c54ef61cb934fd4f687981bc449e30}
+Set up the tab chain manually, as Qt messes up the tab chain by default in some cases (issue \href{https://bugreports.qt-project.org/browse/QTBUG-10907}{\tt https\+://bugreports.\+qt-\/project.\+org/browse/\+Q\+T\+B\+U\+G-\/10907}). 
+
+Definition at line 303 of file sendmessagesdialog.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 15
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 16
+
+
+\hypertarget{class_send_messages_dialog_a33a21b7d103330c784e6dc5590d7a2c4}{}\index{Send\+Messages\+Dialog@{Send\+Messages\+Dialog}!update\+Remove\+Enabled@{update\+Remove\+Enabled}}
+\index{update\+Remove\+Enabled@{update\+Remove\+Enabled}!Send\+Messages\+Dialog@{Send\+Messages\+Dialog}}
+\subsubsection[{update\+Remove\+Enabled}]{\setlength{\rightskip}{0pt plus 5cm}void Send\+Messages\+Dialog\+::update\+Remove\+Enabled (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_send_messages_dialog_a33a21b7d103330c784e6dc5590d7a2c4}
+
+
+Definition at line 281 of file sendmessagesdialog.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 17
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 18
+
+
+\hypertarget{class_send_messages_dialog_aab11689b1f6424487e2c36bae2e4a618}{}\index{Send\+Messages\+Dialog@{Send\+Messages\+Dialog}!validate@{validate}}
+\index{validate@{validate}!Send\+Messages\+Dialog@{Send\+Messages\+Dialog}}
+\subsubsection[{validate}]{\setlength{\rightskip}{0pt plus 5cm}bool Send\+Messages\+Dialog\+::validate (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_send_messages_dialog_aab11689b1f6424487e2c36bae2e4a618}
+
+
+Definition at line 88 of file sendmessagesdialog.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/qt/\hyperlink{sendmessagesdialog_8h}{sendmessagesdialog.\+h}\item 
+/home/dev/ds-\/160209/src/qt/\hyperlink{sendmessagesdialog_8cpp}{sendmessagesdialog.\+cpp}\end{DoxyCompactItemize}

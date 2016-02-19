@@ -1,0 +1,157 @@
+.TH "CMerkleTx" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CMerkleTx \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <main\&.h>\fP
+.PP
+Inherits \fBCTransaction\fP\&.
+.PP
+Inherited by \fBCWalletTx\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCMerkleTx\fP ()"
+.br
+.ti -1c
+.RI "\fBCMerkleTx\fP (const \fBCTransaction\fP &txIn)"
+.br
+.ti -1c
+.RI "void \fBInit\fP ()"
+.br
+.ti -1c
+.RI "template<typename Stream , typename Operation > void \fBSerializationOp\fP (Stream &s, Operation ser_action, int nType, int \fBnVersion\fP)"
+.br
+.ti -1c
+.RI "int \fBSetMerkleBranch\fP (const \fBCBlock\fP *pblock=NULL)"
+.br
+.ti -1c
+.RI "int \fBGetDepthInMainChain\fP (\fBCBlockIndex\fP *&pindexRet, bool enableIX=true) const "
+.br
+.ti -1c
+.RI "int \fBGetDepthInMainChain\fP (bool enableIX=true) const "
+.br
+.ti -1c
+.RI "bool \fBIsInMainChain\fP () const "
+.br
+.ti -1c
+.RI "int \fBGetBlocksToMaturity\fP () const "
+.br
+.ti -1c
+.RI "bool \fBAcceptToMemoryPool\fP (bool fLimitFree=true, bool fRejectInsaneFee=true, bool ignoreFees=false)"
+.br
+.ti -1c
+.RI "int \fBGetTransactionLockSignatures\fP () const "
+.br
+.ti -1c
+.RI "bool \fBIsTransactionLockTimedOut\fP () const "
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBuint256\fP \fBhashBlock\fP"
+.br
+.ti -1c
+.RI "std::vector< \fBuint256\fP > \fBvMerkleBranch\fP"
+.br
+.ti -1c
+.RI "int \fBnIndex\fP"
+.br
+.ti -1c
+.RI "bool \fBfMerkleVerified\fP"
+.br
+.ti -1c
+.RI "\fBADD_SERIALIZE_METHODS\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A transaction with a merkle branch linking it to the block chain\&. 
+.PP
+Definition at line 380 of file main\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CMerkleTx::CMerkleTx ()\fC [inline]\fP"
+
+.PP
+Definition at line 393 of file main\&.h\&.
+.SS "CMerkleTx::CMerkleTx (const \fBCTransaction\fP & txIn)\fC [inline]\fP"
+
+.PP
+Definition at line 398 of file main\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool CMerkleTx::AcceptToMemoryPool (bool fLimitFree = \fCtrue\fP, bool fRejectInsaneFee = \fCtrue\fP, bool ignoreFees = \fCfalse\fP)"
+
+.PP
+Definition at line 1456 of file main\&.cpp\&.
+.SS "int CMerkleTx::GetBlocksToMaturity () const"
+
+.PP
+Definition at line 1449 of file main\&.cpp\&.
+.SS "int CMerkleTx::GetDepthInMainChain (\fBCBlockIndex\fP *& pindexRet, bool enableIX = \fCtrue\fP) const"
+
+.PP
+Definition at line 1430 of file main\&.cpp\&.
+.SS "int CMerkleTx::GetDepthInMainChain (bool enableIX = \fCtrue\fP) const\fC [inline]\fP"
+
+.PP
+Definition at line 430 of file main\&.h\&.
+.SS "int CMerkleTx::GetTransactionLockSignatures () const"
+
+.PP
+Definition at line 1403 of file main\&.cpp\&.
+.SS "void CMerkleTx::Init ()\fC [inline]\fP"
+
+.PP
+Definition at line 403 of file main\&.h\&.
+.SS "bool CMerkleTx::IsInMainChain () const\fC [inline]\fP"
+
+.PP
+Definition at line 431 of file main\&.h\&.
+.SS "bool CMerkleTx::IsTransactionLockTimedOut () const"
+
+.PP
+Definition at line 1417 of file main\&.cpp\&.
+.SS "template<typename Stream , typename Operation > void CMerkleTx::SerializationOp (Stream & s, Operation ser_action, int nType, int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 413 of file main\&.h\&.
+.SS "int CMerkleTx::SetMerkleBranch (const \fBCBlock\fP * pblock = \fCNULL\fP)"
+
+.PP
+Definition at line 786 of file main\&.cpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "CMerkleTx::ADD_SERIALIZE_METHODS"
+
+.PP
+Definition at line 410 of file main\&.h\&.
+.SS "bool CMerkleTx::fMerkleVerified\fC [mutable]\fP"
+
+.PP
+Definition at line 390 of file main\&.h\&.
+.SS "\fBuint256\fP CMerkleTx::hashBlock"
+
+.PP
+Definition at line 385 of file main\&.h\&.
+.SS "int CMerkleTx::nIndex"
+
+.PP
+Definition at line 387 of file main\&.h\&.
+.SS "std::vector<\fBuint256\fP> CMerkleTx::vMerkleBranch"
+
+.PP
+Definition at line 386 of file main\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

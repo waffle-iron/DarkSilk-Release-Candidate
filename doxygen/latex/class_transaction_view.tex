@@ -1,0 +1,276 @@
+\hypertarget{class_transaction_view}{}\section{Transaction\+View Class Reference}
+\label{class_transaction_view}\index{Transaction\+View@{Transaction\+View}}
+
+
+{\ttfamily \#include $<$transactionview.\+h$>$}
+
+
+
+Inheritance diagram for Transaction\+View\+:
+% FIG 0
+
+
+Collaboration diagram for Transaction\+View\+:
+% FIG 1
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_transaction_view_a73d1bbedc72fa131591aadb3aba150f8}{Date\+Enum} \{ \\*
+\hyperlink{class_transaction_view_a73d1bbedc72fa131591aadb3aba150f8a4c8bf710ad7b3be71d6da978c62e49fe}{All}, 
+\hyperlink{class_transaction_view_a73d1bbedc72fa131591aadb3aba150f8af944f2a9373333fc348d517aad15fd93}{Today}, 
+\hyperlink{class_transaction_view_a73d1bbedc72fa131591aadb3aba150f8ad690fc9e22dbb55e86f2198553d26bec}{This\+Week}, 
+\hyperlink{class_transaction_view_a73d1bbedc72fa131591aadb3aba150f8a34f3d05ba9262c629e7d6a4e809ab927}{This\+Month}, 
+\\*
+\hyperlink{class_transaction_view_a73d1bbedc72fa131591aadb3aba150f8ab119e2fd1a4a132c780c82cfe982f218}{Last\+Month}, 
+\hyperlink{class_transaction_view_a73d1bbedc72fa131591aadb3aba150f8a783e0105c0ec8447b33a84ce44951eb5}{This\+Year}, 
+\hyperlink{class_transaction_view_a73d1bbedc72fa131591aadb3aba150f8a5282c94849c51ee19eaa9cf929428b10}{Range}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_transaction_view_abd49a0777b14f7bf5a72a4d5901d033d}{choose\+Date} (int idx)
+\item 
+void \hyperlink{class_transaction_view_a590f0edc4ab4d59f88d7fc494e852f80}{choose\+Type} (int idx)
+\item 
+void \hyperlink{class_transaction_view_ac2ed41556913e588c667490860717efa}{changed\+Prefix} (const Q\+String \&prefix)
+\item 
+void \hyperlink{class_transaction_view_a0075048c06bb54da5c5e5d2691198984}{changed\+Amount} (const Q\+String \&amount)
+\item 
+void \hyperlink{class_transaction_view_a5983022ff1e5395f87de3c5728eff8da}{export\+Clicked} ()
+\item 
+void \hyperlink{class_transaction_view_ab6d126806467ae9dc273cbe19a7477cc}{focus\+Transaction} (const Q\+Model\+Index \&)
+\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_transaction_view_ad7f18fdb4db9a4a307eeba8bf1fec4e3}{double\+Clicked} (const Q\+Model\+Index \&)
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_transaction_view_a0c5e8b90206b4e8b8bf68dd7e319798f}{Transaction\+View} (Q\+Widget $\ast$parent=0)
+\item 
+void \hyperlink{class_transaction_view_a4920c2cd57d72eb50248948fa160c83c}{set\+Model} (\hyperlink{class_wallet_model}{Wallet\+Model} $\ast$model)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Widget showing the transaction list for a wallet, including a filter row. Using the filter row, the user can view or export a subset of the transactions. 
+
+Definition at line 22 of file transactionview.\+h.
+
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{class_transaction_view_a73d1bbedc72fa131591aadb3aba150f8}{}\index{Transaction\+View@{Transaction\+View}!Date\+Enum@{Date\+Enum}}
+\index{Date\+Enum@{Date\+Enum}!Transaction\+View@{Transaction\+View}}
+\subsubsection[{Date\+Enum}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Transaction\+View\+::\+Date\+Enum}}\label{class_transaction_view_a73d1bbedc72fa131591aadb3aba150f8}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{All@{All}!Transaction\+View@{Transaction\+View}}\index{Transaction\+View@{Transaction\+View}!All@{All}}\item[{\em 
+\hypertarget{class_transaction_view_a73d1bbedc72fa131591aadb3aba150f8a4c8bf710ad7b3be71d6da978c62e49fe}{}All\label{class_transaction_view_a73d1bbedc72fa131591aadb3aba150f8a4c8bf710ad7b3be71d6da978c62e49fe}
+}]\index{Today@{Today}!Transaction\+View@{Transaction\+View}}\index{Transaction\+View@{Transaction\+View}!Today@{Today}}\item[{\em 
+\hypertarget{class_transaction_view_a73d1bbedc72fa131591aadb3aba150f8af944f2a9373333fc348d517aad15fd93}{}Today\label{class_transaction_view_a73d1bbedc72fa131591aadb3aba150f8af944f2a9373333fc348d517aad15fd93}
+}]\index{This\+Week@{This\+Week}!Transaction\+View@{Transaction\+View}}\index{Transaction\+View@{Transaction\+View}!This\+Week@{This\+Week}}\item[{\em 
+\hypertarget{class_transaction_view_a73d1bbedc72fa131591aadb3aba150f8ad690fc9e22dbb55e86f2198553d26bec}{}This\+Week\label{class_transaction_view_a73d1bbedc72fa131591aadb3aba150f8ad690fc9e22dbb55e86f2198553d26bec}
+}]\index{This\+Month@{This\+Month}!Transaction\+View@{Transaction\+View}}\index{Transaction\+View@{Transaction\+View}!This\+Month@{This\+Month}}\item[{\em 
+\hypertarget{class_transaction_view_a73d1bbedc72fa131591aadb3aba150f8a34f3d05ba9262c629e7d6a4e809ab927}{}This\+Month\label{class_transaction_view_a73d1bbedc72fa131591aadb3aba150f8a34f3d05ba9262c629e7d6a4e809ab927}
+}]\index{Last\+Month@{Last\+Month}!Transaction\+View@{Transaction\+View}}\index{Transaction\+View@{Transaction\+View}!Last\+Month@{Last\+Month}}\item[{\em 
+\hypertarget{class_transaction_view_a73d1bbedc72fa131591aadb3aba150f8ab119e2fd1a4a132c780c82cfe982f218}{}Last\+Month\label{class_transaction_view_a73d1bbedc72fa131591aadb3aba150f8ab119e2fd1a4a132c780c82cfe982f218}
+}]\index{This\+Year@{This\+Year}!Transaction\+View@{Transaction\+View}}\index{Transaction\+View@{Transaction\+View}!This\+Year@{This\+Year}}\item[{\em 
+\hypertarget{class_transaction_view_a73d1bbedc72fa131591aadb3aba150f8a783e0105c0ec8447b33a84ce44951eb5}{}This\+Year\label{class_transaction_view_a73d1bbedc72fa131591aadb3aba150f8a783e0105c0ec8447b33a84ce44951eb5}
+}]\index{Range@{Range}!Transaction\+View@{Transaction\+View}}\index{Transaction\+View@{Transaction\+View}!Range@{Range}}\item[{\em 
+\hypertarget{class_transaction_view_a73d1bbedc72fa131591aadb3aba150f8a5282c94849c51ee19eaa9cf929428b10}{}Range\label{class_transaction_view_a73d1bbedc72fa131591aadb3aba150f8a5282c94849c51ee19eaa9cf929428b10}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 32 of file transactionview.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_transaction_view_a0c5e8b90206b4e8b8bf68dd7e319798f}{}\index{Transaction\+View@{Transaction\+View}!Transaction\+View@{Transaction\+View}}
+\index{Transaction\+View@{Transaction\+View}!Transaction\+View@{Transaction\+View}}
+\subsubsection[{Transaction\+View}]{\setlength{\rightskip}{0pt plus 5cm}Transaction\+View\+::\+Transaction\+View (
+\begin{DoxyParamCaption}
+\item[{Q\+Widget $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\label{class_transaction_view_a0c5e8b90206b4e8b8bf68dd7e319798f}
+
+
+Definition at line 30 of file transactionview.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_transaction_view_a0075048c06bb54da5c5e5d2691198984}{}\index{Transaction\+View@{Transaction\+View}!changed\+Amount@{changed\+Amount}}
+\index{changed\+Amount@{changed\+Amount}!Transaction\+View@{Transaction\+View}}
+\subsubsection[{changed\+Amount}]{\setlength{\rightskip}{0pt plus 5cm}void Transaction\+View\+::changed\+Amount (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{amount}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_transaction_view_a0075048c06bb54da5c5e5d2691198984}
+
+
+Definition at line 259 of file transactionview.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 3
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 4
+
+
+\hypertarget{class_transaction_view_ac2ed41556913e588c667490860717efa}{}\index{Transaction\+View@{Transaction\+View}!changed\+Prefix@{changed\+Prefix}}
+\index{changed\+Prefix@{changed\+Prefix}!Transaction\+View@{Transaction\+View}}
+\subsubsection[{changed\+Prefix}]{\setlength{\rightskip}{0pt plus 5cm}void Transaction\+View\+::changed\+Prefix (
+\begin{DoxyParamCaption}
+\item[{const Q\+String \&}]{prefix}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_transaction_view_ac2ed41556913e588c667490860717efa}
+
+
+Definition at line 252 of file transactionview.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 5
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 6
+
+
+\hypertarget{class_transaction_view_abd49a0777b14f7bf5a72a4d5901d033d}{}\index{Transaction\+View@{Transaction\+View}!choose\+Date@{choose\+Date}}
+\index{choose\+Date@{choose\+Date}!Transaction\+View@{Transaction\+View}}
+\subsubsection[{choose\+Date}]{\setlength{\rightskip}{0pt plus 5cm}void Transaction\+View\+::choose\+Date (
+\begin{DoxyParamCaption}
+\item[{int}]{idx}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_transaction_view_abd49a0777b14f7bf5a72a4d5901d033d}
+
+
+Definition at line 189 of file transactionview.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 7
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 8
+
+
+\hypertarget{class_transaction_view_a590f0edc4ab4d59f88d7fc494e852f80}{}\index{Transaction\+View@{Transaction\+View}!choose\+Type@{choose\+Type}}
+\index{choose\+Type@{choose\+Type}!Transaction\+View@{Transaction\+View}}
+\subsubsection[{choose\+Type}]{\setlength{\rightskip}{0pt plus 5cm}void Transaction\+View\+::choose\+Type (
+\begin{DoxyParamCaption}
+\item[{int}]{idx}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_transaction_view_a590f0edc4ab4d59f88d7fc494e852f80}
+
+
+Definition at line 244 of file transactionview.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 9
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 10
+
+
+\hypertarget{class_transaction_view_ad7f18fdb4db9a4a307eeba8bf1fec4e3}{}\index{Transaction\+View@{Transaction\+View}!double\+Clicked@{double\+Clicked}}
+\index{double\+Clicked@{double\+Clicked}!Transaction\+View@{Transaction\+View}}
+\subsubsection[{double\+Clicked}]{\setlength{\rightskip}{0pt plus 5cm}void Transaction\+View\+::double\+Clicked (
+\begin{DoxyParamCaption}
+\item[{const Q\+Model\+Index \&}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [signal]}}\label{class_transaction_view_ad7f18fdb4db9a4a307eeba8bf1fec4e3}
+
+
+Here is the caller graph for this function\+:
+% FIG 11
+
+
+\hypertarget{class_transaction_view_a5983022ff1e5395f87de3c5728eff8da}{}\index{Transaction\+View@{Transaction\+View}!export\+Clicked@{export\+Clicked}}
+\index{export\+Clicked@{export\+Clicked}!Transaction\+View@{Transaction\+View}}
+\subsubsection[{export\+Clicked}]{\setlength{\rightskip}{0pt plus 5cm}void Transaction\+View\+::export\+Clicked (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_transaction_view_a5983022ff1e5395f87de3c5728eff8da}
+
+
+Definition at line 274 of file transactionview.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 12
+
+
+\hypertarget{class_transaction_view_ab6d126806467ae9dc273cbe19a7477cc}{}\index{Transaction\+View@{Transaction\+View}!focus\+Transaction@{focus\+Transaction}}
+\index{focus\+Transaction@{focus\+Transaction}!Transaction\+View@{Transaction\+View}}
+\subsubsection[{focus\+Transaction}]{\setlength{\rightskip}{0pt plus 5cm}void Transaction\+View\+::focus\+Transaction (
+\begin{DoxyParamCaption}
+\item[{const Q\+Model\+Index \&}]{idx}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_transaction_view_ab6d126806467ae9dc273cbe19a7477cc}
+
+
+Definition at line 435 of file transactionview.\+cpp.
+
+\hypertarget{class_transaction_view_a4920c2cd57d72eb50248948fa160c83c}{}\index{Transaction\+View@{Transaction\+View}!set\+Model@{set\+Model}}
+\index{set\+Model@{set\+Model}!Transaction\+View@{Transaction\+View}}
+\subsubsection[{set\+Model}]{\setlength{\rightskip}{0pt plus 5cm}void Transaction\+View\+::set\+Model (
+\begin{DoxyParamCaption}
+\item[{{\bf Wallet\+Model} $\ast$}]{model}
+\end{DoxyParamCaption}
+)}\label{class_transaction_view_a4920c2cd57d72eb50248948fa160c83c}
+
+
+Definition at line 158 of file transactionview.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 13
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 14
+
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/qt/\hyperlink{transactionview_8h}{transactionview.\+h}\item 
+/home/dev/ds-\/160209/src/qt/\hyperlink{transactionview_8cpp}{transactionview.\+cpp}\end{DoxyCompactItemize}

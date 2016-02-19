@@ -1,0 +1,371 @@
+\hypertarget{class_c_transaction_po_s}{}\section{C\+Transaction\+Po\+S Class Reference}
+\label{class_c_transaction_po_s}\index{C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}}
+
+
+{\ttfamily \#include $<$main.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_transaction_po_s_a62c7444fc534ca35869017157ed508f0}{C\+Transaction\+Po\+S} ()
+\item 
+{\footnotesize template$<$typename Stream , typename Operation $>$ }\\void \hyperlink{class_c_transaction_po_s_a869ab87a63c21805ddff3cdec279817f}{Serialization\+Op} (Stream \&s, Operation ser\+\_\+action, int n\+Type, int \hyperlink{class_c_transaction_po_s_ae7bcf394bd58ec57e762934da2f13d52}{n\+Version})
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{class_c_transaction_po_s_ad85303c69a61f41eb8874f07c15faa10}{Get\+Value\+Out} (\hyperlink{class_c_transaction}{C\+Transaction} \&tx) const 
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{class_c_transaction_po_s_ac2c734d9f302dda6e8681ce6d0f7843e}{Get\+Value\+In} (\hyperlink{class_c_transaction}{C\+Transaction} \&tx, const \hyperlink{main_8h_a05bae354566c88f7dca5ad13aaf8b30f}{Map\+Prev\+Tx} \&map\+Inputs) const 
+\item 
+bool \hyperlink{class_c_transaction_po_s_a7c71229336405cae52bd3e9a547f1266}{Read\+From\+Disk} (\hyperlink{class_c_transaction}{C\+Transaction} \&tx, \hyperlink{class_c_disk_tx_pos}{C\+Disk\+Tx\+Pos} pos, F\+I\+L\+E $\ast$$\ast$pfile\+Ret=N\+U\+L\+L)
+\item 
+bool \hyperlink{class_c_transaction_po_s_a12c8edc9dfa71e3ac64647624731a8bb}{Read\+From\+Disk} (\hyperlink{class_c_transaction}{C\+Transaction} \&tx, \hyperlink{class_c_tx_d_b}{C\+Tx\+D\+B} \&\hyperlink{txdb-leveldb_8cpp_a72eff8ae1d84de13daf97a61b8c02bc6}{txdb}, const \hyperlink{classuint256}{uint256} \&\hyperlink{cache_8cc_a11ecb029164e055f28f4123ce3748862}{hash}, \hyperlink{class_c_tx_index}{C\+Tx\+Index} \&txindex\+Ret)
+\item 
+bool \hyperlink{class_c_transaction_po_s_a6a215e1797da3d0a2876a6a01613c495}{Read\+From\+Disk} (\hyperlink{class_c_transaction}{C\+Transaction} \&tx, \hyperlink{class_c_tx_d_b}{C\+Tx\+D\+B} \&\hyperlink{txdb-leveldb_8cpp_a72eff8ae1d84de13daf97a61b8c02bc6}{txdb}, \hyperlink{class_c_out_point}{C\+Out\+Point} prevout, \hyperlink{class_c_tx_index}{C\+Tx\+Index} \&txindex\+Ret)
+\item 
+bool \hyperlink{class_c_transaction_po_s_acf6f4a4a0a30ff2e61c764bd08711dc1}{Read\+From\+Disk} (\hyperlink{class_c_transaction}{C\+Transaction} \&tx, \hyperlink{class_c_tx_d_b}{C\+Tx\+D\+B} \&\hyperlink{txdb-leveldb_8cpp_a72eff8ae1d84de13daf97a61b8c02bc6}{txdb}, \hyperlink{class_c_out_point}{C\+Out\+Point} prevout)
+\item 
+bool \hyperlink{class_c_transaction_po_s_ab4e33a10a11c3f46b25687a63b6d5f27}{Read\+From\+Disk} (\hyperlink{class_c_transaction}{C\+Transaction} \&tx, \hyperlink{class_c_out_point}{C\+Out\+Point} prevout)
+\item 
+bool \hyperlink{class_c_transaction_po_s_a7bdd6909103ec8da895172cf7dfe6a0a}{Disconnect\+Inputs} (\hyperlink{class_c_transaction}{C\+Transaction} \&tx, \hyperlink{class_c_tx_d_b}{C\+Tx\+D\+B} \&\hyperlink{txdb-leveldb_8cpp_a72eff8ae1d84de13daf97a61b8c02bc6}{txdb})
+\item 
+bool \hyperlink{class_c_transaction_po_s_a20a028e06f505f03a0d30a7f186d9489}{Fetch\+Inputs} (\hyperlink{class_c_transaction}{C\+Transaction} \&tx, \hyperlink{class_c_tx_d_b}{C\+Tx\+D\+B} \&\hyperlink{txdb-leveldb_8cpp_a72eff8ae1d84de13daf97a61b8c02bc6}{txdb}, const std\+::map$<$ \hyperlink{classuint256}{uint256}, \hyperlink{class_c_tx_index}{C\+Tx\+Index} $>$ \&map\+Test\+Pool, bool f\+Block, bool f\+Miner, \hyperlink{main_8h_a05bae354566c88f7dca5ad13aaf8b30f}{Map\+Prev\+Tx} \&inputs\+Ret, bool \&f\+Invalid)
+\begin{DoxyCompactList}\small\item\em Fetch from memory and/or disk. inputs\+Ret keys are transaction hashes. \end{DoxyCompactList}\item 
+bool \hyperlink{class_c_transaction_po_s_a19de7fad0cc156ebd4e5a3858db7619f}{Connect\+Inputs} (\hyperlink{class_c_transaction}{C\+Transaction} \&tx, \hyperlink{class_c_tx_d_b}{C\+Tx\+D\+B} \&\hyperlink{txdb-leveldb_8cpp_a72eff8ae1d84de13daf97a61b8c02bc6}{txdb}, \hyperlink{main_8h_a05bae354566c88f7dca5ad13aaf8b30f}{Map\+Prev\+Tx} inputs, std\+::map$<$ \hyperlink{classuint256}{uint256}, \hyperlink{class_c_tx_index}{C\+Tx\+Index} $>$ \&map\+Test\+Pool, const \hyperlink{class_c_disk_tx_pos}{C\+Disk\+Tx\+Pos} \&pos\+This\+Tx, const \hyperlink{class_c_block_index}{C\+Block\+Index} $\ast$pindex\+Block, bool f\+Block, bool f\+Miner, unsigned int flags=S\+T\+A\+N\+D\+A\+R\+D\+\_\+\+S\+C\+R\+I\+P\+T\+\_\+\+V\+E\+R\+I\+F\+Y\+\_\+\+F\+L\+A\+G\+S, bool f\+Validate\+Sig=true)
+\item 
+bool \hyperlink{class_c_transaction_po_s_a01394e5903281916f1cb683f8442fcac}{Get\+Coin\+Age} (\hyperlink{class_c_transaction}{C\+Transaction} \&tx, \hyperlink{class_c_tx_d_b}{C\+Tx\+D\+B} \&\hyperlink{txdb-leveldb_8cpp_a72eff8ae1d84de13daf97a61b8c02bc6}{txdb}, const \hyperlink{class_c_block_index}{C\+Block\+Index} $\ast$pindex\+Prev, \hyperlink{stdint_8h_aaa5d1cd013383c889537491c3cfd9aad}{uint64\+\_\+t} \&n\+Coin\+Age) const 
+\item 
+const \hyperlink{class_c_tx_out}{C\+Tx\+Out} \& \hyperlink{class_c_transaction_po_s_aa49ca4acc89b51cbef362200175051b4}{Get\+Output\+For} (const \hyperlink{class_c_tx_in}{C\+Tx\+In} \&input, const \hyperlink{main_8h_a05bae354566c88f7dca5ad13aaf8b30f}{Map\+Prev\+Tx} \&inputs) const 
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_c_transaction_po_s_ae7bcf394bd58ec57e762934da2f13d52}{n\+Version}
+\item 
+\hyperlink{class_c_transaction_po_s_af4a5ad634f661478e69ac1fbbde4c739}{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int \hyperlink{class_c_transaction_po_s_ae34ce39804c212f9db35316f1792a0c2}{C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+E\+R\+S\+I\+O\+N} = 1
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 287 of file main.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_transaction_po_s_a62c7444fc534ca35869017157ed508f0}{}\index{C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}!C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}}
+\index{C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}!C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}}
+\subsubsection[{C\+Transaction\+Po\+S}]{\setlength{\rightskip}{0pt plus 5cm}C\+Transaction\+Po\+S\+::\+C\+Transaction\+Po\+S (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_transaction_po_s_a62c7444fc534ca35869017157ed508f0}
+
+
+Definition at line 293 of file main.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_transaction_po_s_a19de7fad0cc156ebd4e5a3858db7619f}{}\index{C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}!Connect\+Inputs@{Connect\+Inputs}}
+\index{Connect\+Inputs@{Connect\+Inputs}!C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}}
+\subsubsection[{Connect\+Inputs}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Transaction\+Po\+S\+::\+Connect\+Inputs (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Transaction} \&}]{tx, }
+\item[{{\bf C\+Tx\+D\+B} \&}]{txdb, }
+\item[{{\bf Map\+Prev\+Tx}}]{inputs, }
+\item[{std\+::map$<$ {\bf uint256}, {\bf C\+Tx\+Index} $>$ \&}]{map\+Test\+Pool, }
+\item[{const {\bf C\+Disk\+Tx\+Pos} \&}]{pos\+This\+Tx, }
+\item[{const {\bf C\+Block\+Index} $\ast$}]{pindex\+Block, }
+\item[{bool}]{f\+Block, }
+\item[{bool}]{f\+Miner, }
+\item[{unsigned int}]{flags = {\ttfamily STANDARD\+\_\+SCRIPT\+\_\+VERIFY\+\_\+FLAGS}, }
+\item[{bool}]{f\+Validate\+Sig = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{class_c_transaction_po_s_a19de7fad0cc156ebd4e5a3858db7619f}
+Sanity check previous transactions, then, if all checks succeed, mark them as spent by this transaction. 
+
+Definition at line 3846 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 0
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 1
+
+
+\hypertarget{class_c_transaction_po_s_a7bdd6909103ec8da895172cf7dfe6a0a}{}\index{C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}!Disconnect\+Inputs@{Disconnect\+Inputs}}
+\index{Disconnect\+Inputs@{Disconnect\+Inputs}!C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}}
+\subsubsection[{Disconnect\+Inputs}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Transaction\+Po\+S\+::\+Disconnect\+Inputs (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Transaction} \&}]{tx, }
+\item[{{\bf C\+Tx\+D\+B} \&}]{txdb}
+\end{DoxyParamCaption}
+)}\label{class_c_transaction_po_s_a7bdd6909103ec8da895172cf7dfe6a0a}
+
+
+Definition at line 3712 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+\hypertarget{class_c_transaction_po_s_a20a028e06f505f03a0d30a7f186d9489}{}\index{C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}!Fetch\+Inputs@{Fetch\+Inputs}}
+\index{Fetch\+Inputs@{Fetch\+Inputs}!C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}}
+\subsubsection[{Fetch\+Inputs}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Transaction\+Po\+S\+::\+Fetch\+Inputs (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Transaction} \&}]{tx, }
+\item[{{\bf C\+Tx\+D\+B} \&}]{txdb, }
+\item[{const std\+::map$<$ {\bf uint256}, {\bf C\+Tx\+Index} $>$ \&}]{map\+Test\+Pool, }
+\item[{bool}]{f\+Block, }
+\item[{bool}]{f\+Miner, }
+\item[{{\bf Map\+Prev\+Tx} \&}]{inputs\+Ret, }
+\item[{bool \&}]{f\+Invalid}
+\end{DoxyParamCaption}
+)}\label{class_c_transaction_po_s_a20a028e06f505f03a0d30a7f186d9489}
+
+
+Fetch from memory and/or disk. inputs\+Ret keys are transaction hashes. 
+
+
+
+Definition at line 3747 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 4
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 5
+
+
+\hypertarget{class_c_transaction_po_s_a01394e5903281916f1cb683f8442fcac}{}\index{C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}!Get\+Coin\+Age@{Get\+Coin\+Age}}
+\index{Get\+Coin\+Age@{Get\+Coin\+Age}!C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}}
+\subsubsection[{Get\+Coin\+Age}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Transaction\+Po\+S\+::\+Get\+Coin\+Age (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Transaction} \&}]{tx, }
+\item[{{\bf C\+Tx\+D\+B} \&}]{txdb, }
+\item[{const {\bf C\+Block\+Index} $\ast$}]{pindex\+Prev, }
+\item[{{\bf uint64\+\_\+t} \&}]{n\+Coin\+Age}
+\end{DoxyParamCaption}
+) const}\label{class_c_transaction_po_s_a01394e5903281916f1cb683f8442fcac}
+\hypertarget{class_c_transaction_po_s_aa49ca4acc89b51cbef362200175051b4}{}\index{C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}!Get\+Output\+For@{Get\+Output\+For}}
+\index{Get\+Output\+For@{Get\+Output\+For}!C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}}
+\subsubsection[{Get\+Output\+For}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf C\+Tx\+Out} \& C\+Transaction\+Po\+S\+::\+Get\+Output\+For (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Tx\+In} \&}]{input, }
+\item[{const {\bf Map\+Prev\+Tx} \&}]{inputs}
+\end{DoxyParamCaption}
+) const}\label{class_c_transaction_po_s_aa49ca4acc89b51cbef362200175051b4}
+
+
+Definition at line 3819 of file main.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 6
+
+
+\hypertarget{class_c_transaction_po_s_ac2c734d9f302dda6e8681ce6d0f7843e}{}\index{C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}!Get\+Value\+In@{Get\+Value\+In}}
+\index{Get\+Value\+In@{Get\+Value\+In}!C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}}
+\subsubsection[{Get\+Value\+In}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} C\+Transaction\+Po\+S\+::\+Get\+Value\+In (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Transaction} \&}]{tx, }
+\item[{const {\bf Map\+Prev\+Tx} \&}]{map\+Inputs}
+\end{DoxyParamCaption}
+) const}\label{class_c_transaction_po_s_ac2c734d9f302dda6e8681ce6d0f7843e}
+Amount of darksilks coming in to this transaction Note that lightweight clients may not know anything besides the hash of previous transactions, so may not be able to calculate this. 
+
+Definition at line 3832 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 7
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 8
+
+
+\hypertarget{class_c_transaction_po_s_ad85303c69a61f41eb8874f07c15faa10}{}\index{C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}!Get\+Value\+Out@{Get\+Value\+Out}}
+\index{Get\+Value\+Out@{Get\+Value\+Out}!C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}}
+\subsubsection[{Get\+Value\+Out}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} C\+Transaction\+Po\+S\+::\+Get\+Value\+Out (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Transaction} \&}]{tx}
+\end{DoxyParamCaption}
+) const}\label{class_c_transaction_po_s_ad85303c69a61f41eb8874f07c15faa10}
+
+
+Definition at line 3635 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 9
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 10
+
+
+\hypertarget{class_c_transaction_po_s_a7c71229336405cae52bd3e9a547f1266}{}\index{C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}!Read\+From\+Disk@{Read\+From\+Disk}}
+\index{Read\+From\+Disk@{Read\+From\+Disk}!C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}}
+\subsubsection[{Read\+From\+Disk}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Transaction\+Po\+S\+::\+Read\+From\+Disk (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Transaction} \&}]{tx, }
+\item[{{\bf C\+Disk\+Tx\+Pos}}]{pos, }
+\item[{F\+I\+L\+E $\ast$$\ast$}]{pfile\+Ret = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}\label{class_c_transaction_po_s_a7c71229336405cae52bd3e9a547f1266}
+
+
+Definition at line 3649 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 11
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 12
+
+
+\hypertarget{class_c_transaction_po_s_a12c8edc9dfa71e3ac64647624731a8bb}{}\index{C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}!Read\+From\+Disk@{Read\+From\+Disk}}
+\index{Read\+From\+Disk@{Read\+From\+Disk}!C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}}
+\subsubsection[{Read\+From\+Disk}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Transaction\+Po\+S\+::\+Read\+From\+Disk (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Transaction} \&}]{tx, }
+\item[{{\bf C\+Tx\+D\+B} \&}]{txdb, }
+\item[{const {\bf uint256} \&}]{hash, }
+\item[{{\bf C\+Tx\+Index} \&}]{txindex\+Ret}
+\end{DoxyParamCaption}
+)}\label{class_c_transaction_po_s_a12c8edc9dfa71e3ac64647624731a8bb}
+
+
+Definition at line 3676 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 13
+
+
+\hypertarget{class_c_transaction_po_s_a6a215e1797da3d0a2876a6a01613c495}{}\index{C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}!Read\+From\+Disk@{Read\+From\+Disk}}
+\index{Read\+From\+Disk@{Read\+From\+Disk}!C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}}
+\subsubsection[{Read\+From\+Disk}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Transaction\+Po\+S\+::\+Read\+From\+Disk (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Transaction} \&}]{tx, }
+\item[{{\bf C\+Tx\+D\+B} \&}]{txdb, }
+\item[{{\bf C\+Out\+Point}}]{prevout, }
+\item[{{\bf C\+Tx\+Index} \&}]{txindex\+Ret}
+\end{DoxyParamCaption}
+)}\label{class_c_transaction_po_s_a6a215e1797da3d0a2876a6a01613c495}
+
+
+Definition at line 3687 of file main.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 14
+
+
+\hypertarget{class_c_transaction_po_s_acf6f4a4a0a30ff2e61c764bd08711dc1}{}\index{C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}!Read\+From\+Disk@{Read\+From\+Disk}}
+\index{Read\+From\+Disk@{Read\+From\+Disk}!C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}}
+\subsubsection[{Read\+From\+Disk}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Transaction\+Po\+S\+::\+Read\+From\+Disk (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Transaction} \&}]{tx, }
+\item[{{\bf C\+Tx\+D\+B} \&}]{txdb, }
+\item[{{\bf C\+Out\+Point}}]{prevout}
+\end{DoxyParamCaption}
+)}\label{class_c_transaction_po_s_acf6f4a4a0a30ff2e61c764bd08711dc1}
+
+
+Definition at line 3699 of file main.\+cpp.
+
+\hypertarget{class_c_transaction_po_s_ab4e33a10a11c3f46b25687a63b6d5f27}{}\index{C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}!Read\+From\+Disk@{Read\+From\+Disk}}
+\index{Read\+From\+Disk@{Read\+From\+Disk}!C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}}
+\subsubsection[{Read\+From\+Disk}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Transaction\+Po\+S\+::\+Read\+From\+Disk (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Transaction} \&}]{tx, }
+\item[{{\bf C\+Out\+Point}}]{prevout}
+\end{DoxyParamCaption}
+)}\label{class_c_transaction_po_s_ab4e33a10a11c3f46b25687a63b6d5f27}
+
+
+Definition at line 3705 of file main.\+cpp.
+
+\hypertarget{class_c_transaction_po_s_a869ab87a63c21805ddff3cdec279817f}{}\index{C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}!Serialization\+Op@{Serialization\+Op}}
+\index{Serialization\+Op@{Serialization\+Op}!C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}}
+\subsubsection[{Serialization\+Op}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename Operation $>$ void C\+Transaction\+Po\+S\+::\+Serialization\+Op (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{Operation}]{ser\+\_\+action, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_transaction_po_s_a869ab87a63c21805ddff3cdec279817f}
+
+
+Definition at line 298 of file main.\+h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_c_transaction_po_s_af4a5ad634f661478e69ac1fbbde4c739}{}\index{C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}!A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}}
+\index{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}!C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}}
+\subsubsection[{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}]{\setlength{\rightskip}{0pt plus 5cm}C\+Transaction\+Po\+S\+::\+A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}\label{class_c_transaction_po_s_af4a5ad634f661478e69ac1fbbde4c739}
+
+
+Definition at line 295 of file main.\+h.
+
+\hypertarget{class_c_transaction_po_s_ae34ce39804c212f9db35316f1792a0c2}{}\index{C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}!C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+E\+R\+S\+I\+O\+N@{C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+E\+R\+S\+I\+O\+N}}
+\index{C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+E\+R\+S\+I\+O\+N@{C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+E\+R\+S\+I\+O\+N}!C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}}
+\subsubsection[{C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+E\+R\+S\+I\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}const int C\+Transaction\+Po\+S\+::\+C\+U\+R\+R\+E\+N\+T\+\_\+\+V\+E\+R\+S\+I\+O\+N = 1\hspace{0.3cm}{\ttfamily [static]}}\label{class_c_transaction_po_s_ae34ce39804c212f9db35316f1792a0c2}
+
+
+Definition at line 290 of file main.\+h.
+
+\hypertarget{class_c_transaction_po_s_ae7bcf394bd58ec57e762934da2f13d52}{}\index{C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}!n\+Version@{n\+Version}}
+\index{n\+Version@{n\+Version}!C\+Transaction\+Po\+S@{C\+Transaction\+Po\+S}}
+\subsubsection[{n\+Version}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Transaction\+Po\+S\+::n\+Version}\label{class_c_transaction_po_s_ae7bcf394bd58ec57e762934da2f13d52}
+
+
+Definition at line 291 of file main.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/\hyperlink{main_8h}{main.\+h}\item 
+/home/dev/ds-\/160209/src/\hyperlink{main_8cpp}{main.\+cpp}\end{DoxyCompactItemize}

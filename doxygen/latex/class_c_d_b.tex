@@ -1,0 +1,428 @@
+\hypertarget{class_c_d_b}{}\section{C\+D\+B Class Reference}
+\label{class_c_d_b}\index{C\+D\+B@{C\+D\+B}}
+
+
+{\ttfamily \#include $<$db.\+h$>$}
+
+
+
+Inheritance diagram for C\+D\+B\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_c_d_b_ab4a0447a8d19b4871b9fcc40edee9480}{Flush} ()
+\item 
+void \hyperlink{class_c_d_b_af8bbf106662d67cdfdd6d58c429bc54b}{Close} ()
+\item 
+bool \hyperlink{class_c_d_b_a6f817da7947e1498e44034b7a1c8ac10}{Txn\+Begin} ()
+\item 
+bool \hyperlink{class_c_d_b_a45061b3e71251dc74ddd868afb760590}{Txn\+Commit} ()
+\item 
+bool \hyperlink{class_c_d_b_af9b0924f1ca98e0544e78e9bb58b4f03}{Txn\+Abort} ()
+\item 
+bool \hyperlink{class_c_d_b_a16f591e27f41397570018c1fae084025}{Read\+Version} (int \&n\+Version)
+\item 
+bool \hyperlink{class_c_d_b_aa3e63c0921af4c6fc92def1ba14500f1}{Write\+Version} (int n\+Version)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{class_c_d_b_acfb8a373edb9c4cfab780fb7578b277e}{Rewrite} (const std\+::string \&\hyperlink{class_c_d_b_a15c6112d9db9dcc5f11a2c05d9aa74a5}{str\+File}, const char $\ast$psz\+Skip=N\+U\+L\+L)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_d_b_aa5f2317ab28c6424bfebdaa969aa2b2c}{C\+D\+B} (const std\+::string \&str\+Filename, const char $\ast$psz\+Mode=\char`\"{}r+\char`\"{})
+\item 
+\hyperlink{class_c_d_b_af4f5b02f07e4c381c17c926bc6853bf7}{$\sim$\+C\+D\+B} ()
+\item 
+{\footnotesize template$<$typename K , typename T $>$ }\\bool \hyperlink{class_c_d_b_adfd2c079df629d5f7cac0ca923ffd698}{Read} (const K \&key, T \&\hyperlink{cache_8cc_a0f61d63b009d0880a89c843bd50d8d76}{value})
+\item 
+{\footnotesize template$<$typename K , typename T $>$ }\\bool \hyperlink{class_c_d_b_a7fb5b4fa36e57e17287f2c1c762bd708}{Write} (const K \&key, const T \&\hyperlink{cache_8cc_a0f61d63b009d0880a89c843bd50d8d76}{value}, bool f\+Overwrite=true)
+\item 
+{\footnotesize template$<$typename K $>$ }\\bool \hyperlink{class_c_d_b_a3f7e1ba9dd41de3fb1525d789405a6c3}{Erase} (const K \&key)
+\item 
+{\footnotesize template$<$typename K $>$ }\\bool \hyperlink{class_c_d_b_a5f7d7854dcbcec1b1f85bc6a0008563e}{Exists} (const K \&key)
+\item 
+Dbc $\ast$ \hyperlink{class_c_d_b_a5ea1cb8e2f2e9ad357d5e37619eabed2}{Get\+Cursor} ()
+\item 
+int \hyperlink{class_c_d_b_aa3f7c529fd233c106dca32845b593232}{Read\+At\+Cursor} (Dbc $\ast$pcursor, \hyperlink{class_c_data_stream}{C\+Data\+Stream} \&ss\+Key, \hyperlink{class_c_data_stream}{C\+Data\+Stream} \&ss\+Value, unsigned int f\+Flags=D\+B\+\_\+\+N\+E\+X\+T)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Db $\ast$ \hyperlink{class_c_d_b_a4520f55d31246fc06d80f72b5dd62253}{pdb}
+\item 
+std\+::string \hyperlink{class_c_d_b_a15c6112d9db9dcc5f11a2c05d9aa74a5}{str\+File}
+\item 
+Db\+Txn $\ast$ \hyperlink{class_c_d_b_ac06d74a2d113f593869d2f93188a0adc}{active\+Txn}
+\item 
+bool \hyperlink{class_c_d_b_a92ca6c13982a03afdb846588a61608fc}{f\+Read\+Only}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+R\+A\+I\+I class that provides access to a Berkeley database 
+
+Definition at line 95 of file db.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_d_b_aa5f2317ab28c6424bfebdaa969aa2b2c}{}\index{C\+D\+B@{C\+D\+B}!C\+D\+B@{C\+D\+B}}
+\index{C\+D\+B@{C\+D\+B}!C\+D\+B@{C\+D\+B}}
+\subsubsection[{C\+D\+B}]{\setlength{\rightskip}{0pt plus 5cm}C\+D\+B\+::\+C\+D\+B (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{str\+Filename, }
+\item[{const char $\ast$}]{psz\+Mode = {\ttfamily \char`\"{}r+\char`\"{}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}, {\ttfamily [protected]}}\label{class_c_d_b_aa5f2317ab28c6424bfebdaa969aa2b2c}
+
+
+Definition at line 230 of file db.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 1
+
+
+\hypertarget{class_c_d_b_af4f5b02f07e4c381c17c926bc6853bf7}{}\index{C\+D\+B@{C\+D\+B}!````~C\+D\+B@{$\sim$\+C\+D\+B}}
+\index{````~C\+D\+B@{$\sim$\+C\+D\+B}!C\+D\+B@{C\+D\+B}}
+\subsubsection[{$\sim$\+C\+D\+B}]{\setlength{\rightskip}{0pt plus 5cm}C\+D\+B\+::$\sim$\+C\+D\+B (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}\label{class_c_d_b_af4f5b02f07e4c381c17c926bc6853bf7}
+
+
+Definition at line 104 of file db.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_d_b_af8bbf106662d67cdfdd6d58c429bc54b}{}\index{C\+D\+B@{C\+D\+B}!Close@{Close}}
+\index{Close@{Close}!C\+D\+B@{C\+D\+B}}
+\subsubsection[{Close}]{\setlength{\rightskip}{0pt plus 5cm}void C\+D\+B\+::\+Close (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_d_b_af8bbf106662d67cdfdd6d58c429bc54b}
+
+
+Definition at line 301 of file db.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 3
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 4
+
+
+\hypertarget{class_c_d_b_a3f7e1ba9dd41de3fb1525d789405a6c3}{}\index{C\+D\+B@{C\+D\+B}!Erase@{Erase}}
+\index{Erase@{Erase}!C\+D\+B@{C\+D\+B}}
+\subsubsection[{Erase}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename K $>$ bool C\+D\+B\+::\+Erase (
+\begin{DoxyParamCaption}
+\item[{const K \&}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}\label{class_c_d_b_a3f7e1ba9dd41de3fb1525d789405a6c3}
+
+
+Definition at line 179 of file db.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 5
+
+
+\hypertarget{class_c_d_b_a5f7d7854dcbcec1b1f85bc6a0008563e}{}\index{C\+D\+B@{C\+D\+B}!Exists@{Exists}}
+\index{Exists@{Exists}!C\+D\+B@{C\+D\+B}}
+\subsubsection[{Exists}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename K $>$ bool C\+D\+B\+::\+Exists (
+\begin{DoxyParamCaption}
+\item[{const K \&}]{key}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}\label{class_c_d_b_a5f7d7854dcbcec1b1f85bc6a0008563e}
+
+
+Definition at line 201 of file db.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 6
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 7
+
+
+\hypertarget{class_c_d_b_ab4a0447a8d19b4871b9fcc40edee9480}{}\index{C\+D\+B@{C\+D\+B}!Flush@{Flush}}
+\index{Flush@{Flush}!C\+D\+B@{C\+D\+B}}
+\subsubsection[{Flush}]{\setlength{\rightskip}{0pt plus 5cm}void C\+D\+B\+::\+Flush (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_d_b_ab4a0447a8d19b4871b9fcc40edee9480}
+
+
+Definition at line 288 of file db.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 8
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 9
+
+
+\hypertarget{class_c_d_b_a5ea1cb8e2f2e9ad357d5e37619eabed2}{}\index{C\+D\+B@{C\+D\+B}!Get\+Cursor@{Get\+Cursor}}
+\index{Get\+Cursor@{Get\+Cursor}!C\+D\+B@{C\+D\+B}}
+\subsubsection[{Get\+Cursor}]{\setlength{\rightskip}{0pt plus 5cm}Dbc$\ast$ C\+D\+B\+::\+Get\+Cursor (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}\label{class_c_d_b_a5ea1cb8e2f2e9ad357d5e37619eabed2}
+
+
+Definition at line 220 of file db.\+h.
+
+\hypertarget{class_c_d_b_adfd2c079df629d5f7cac0ca923ffd698}{}\index{C\+D\+B@{C\+D\+B}!Read@{Read}}
+\index{Read@{Read}!C\+D\+B@{C\+D\+B}}
+\subsubsection[{Read}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename K , typename T $>$ bool C\+D\+B\+::\+Read (
+\begin{DoxyParamCaption}
+\item[{const K \&}]{key, }
+\item[{T \&}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}\label{class_c_d_b_adfd2c079df629d5f7cac0ca923ffd698}
+
+
+Definition at line 116 of file db.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 10
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 11
+
+
+\hypertarget{class_c_d_b_aa3f7c529fd233c106dca32845b593232}{}\index{C\+D\+B@{C\+D\+B}!Read\+At\+Cursor@{Read\+At\+Cursor}}
+\index{Read\+At\+Cursor@{Read\+At\+Cursor}!C\+D\+B@{C\+D\+B}}
+\subsubsection[{Read\+At\+Cursor}]{\setlength{\rightskip}{0pt plus 5cm}int C\+D\+B\+::\+Read\+At\+Cursor (
+\begin{DoxyParamCaption}
+\item[{Dbc $\ast$}]{pcursor, }
+\item[{{\bf C\+Data\+Stream} \&}]{ss\+Key, }
+\item[{{\bf C\+Data\+Stream} \&}]{ss\+Value, }
+\item[{unsigned int}]{f\+Flags = {\ttfamily DB\+\_\+NEXT}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}\label{class_c_d_b_aa3f7c529fd233c106dca32845b593232}
+
+
+Definition at line 231 of file db.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 12
+
+
+\hypertarget{class_c_d_b_a16f591e27f41397570018c1fae084025}{}\index{C\+D\+B@{C\+D\+B}!Read\+Version@{Read\+Version}}
+\index{Read\+Version@{Read\+Version}!C\+D\+B@{C\+D\+B}}
+\subsubsection[{Read\+Version}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+D\+B\+::\+Read\+Version (
+\begin{DoxyParamCaption}
+\item[{int \&}]{n\+Version}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_d_b_a16f591e27f41397570018c1fae084025}
+
+
+Definition at line 298 of file db.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 13
+
+
+\hypertarget{class_c_d_b_acfb8a373edb9c4cfab780fb7578b277e}{}\index{C\+D\+B@{C\+D\+B}!Rewrite@{Rewrite}}
+\index{Rewrite@{Rewrite}!C\+D\+B@{C\+D\+B}}
+\subsubsection[{Rewrite}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+D\+B\+::\+Rewrite (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{str\+File, }
+\item[{const char $\ast$}]{psz\+Skip = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_c_d_b_acfb8a373edb9c4cfab780fb7578b277e}
+
+
+Definition at line 343 of file db.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 14
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 15
+
+
+\hypertarget{class_c_d_b_af9b0924f1ca98e0544e78e9bb58b4f03}{}\index{C\+D\+B@{C\+D\+B}!Txn\+Abort@{Txn\+Abort}}
+\index{Txn\+Abort@{Txn\+Abort}!C\+D\+B@{C\+D\+B}}
+\subsubsection[{Txn\+Abort}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+D\+B\+::\+Txn\+Abort (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_d_b_af9b0924f1ca98e0544e78e9bb58b4f03}
+
+
+Definition at line 289 of file db.\+h.
+
+\hypertarget{class_c_d_b_a6f817da7947e1498e44034b7a1c8ac10}{}\index{C\+D\+B@{C\+D\+B}!Txn\+Begin@{Txn\+Begin}}
+\index{Txn\+Begin@{Txn\+Begin}!C\+D\+B@{C\+D\+B}}
+\subsubsection[{Txn\+Begin}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+D\+B\+::\+Txn\+Begin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_d_b_a6f817da7947e1498e44034b7a1c8ac10}
+
+
+Definition at line 269 of file db.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 16
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 17
+
+
+\hypertarget{class_c_d_b_a45061b3e71251dc74ddd868afb760590}{}\index{C\+D\+B@{C\+D\+B}!Txn\+Commit@{Txn\+Commit}}
+\index{Txn\+Commit@{Txn\+Commit}!C\+D\+B@{C\+D\+B}}
+\subsubsection[{Txn\+Commit}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+D\+B\+::\+Txn\+Commit (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_d_b_a45061b3e71251dc74ddd868afb760590}
+
+
+Definition at line 280 of file db.\+h.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 18
+
+
+\hypertarget{class_c_d_b_a7fb5b4fa36e57e17287f2c1c762bd708}{}\index{C\+D\+B@{C\+D\+B}!Write@{Write}}
+\index{Write@{Write}!C\+D\+B@{C\+D\+B}}
+\subsubsection[{Write}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename K , typename T $>$ bool C\+D\+B\+::\+Write (
+\begin{DoxyParamCaption}
+\item[{const K \&}]{key, }
+\item[{const T \&}]{value, }
+\item[{bool}]{f\+Overwrite = {\ttfamily true}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}\label{class_c_d_b_a7fb5b4fa36e57e17287f2c1c762bd708}
+
+
+Definition at line 150 of file db.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 19
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 20
+
+
+\hypertarget{class_c_d_b_aa3e63c0921af4c6fc92def1ba14500f1}{}\index{C\+D\+B@{C\+D\+B}!Write\+Version@{Write\+Version}}
+\index{Write\+Version@{Write\+Version}!C\+D\+B@{C\+D\+B}}
+\subsubsection[{Write\+Version}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+D\+B\+::\+Write\+Version (
+\begin{DoxyParamCaption}
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_d_b_aa3e63c0921af4c6fc92def1ba14500f1}
+
+
+Definition at line 304 of file db.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 21
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 22
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_c_d_b_ac06d74a2d113f593869d2f93188a0adc}{}\index{C\+D\+B@{C\+D\+B}!active\+Txn@{active\+Txn}}
+\index{active\+Txn@{active\+Txn}!C\+D\+B@{C\+D\+B}}
+\subsubsection[{active\+Txn}]{\setlength{\rightskip}{0pt plus 5cm}Db\+Txn$\ast$ C\+D\+B\+::active\+Txn\hspace{0.3cm}{\ttfamily [protected]}}\label{class_c_d_b_ac06d74a2d113f593869d2f93188a0adc}
+
+
+Definition at line 100 of file db.\+h.
+
+\hypertarget{class_c_d_b_a92ca6c13982a03afdb846588a61608fc}{}\index{C\+D\+B@{C\+D\+B}!f\+Read\+Only@{f\+Read\+Only}}
+\index{f\+Read\+Only@{f\+Read\+Only}!C\+D\+B@{C\+D\+B}}
+\subsubsection[{f\+Read\+Only}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+D\+B\+::f\+Read\+Only\hspace{0.3cm}{\ttfamily [protected]}}\label{class_c_d_b_a92ca6c13982a03afdb846588a61608fc}
+
+
+Definition at line 101 of file db.\+h.
+
+\hypertarget{class_c_d_b_a4520f55d31246fc06d80f72b5dd62253}{}\index{C\+D\+B@{C\+D\+B}!pdb@{pdb}}
+\index{pdb@{pdb}!C\+D\+B@{C\+D\+B}}
+\subsubsection[{pdb}]{\setlength{\rightskip}{0pt plus 5cm}Db$\ast$ C\+D\+B\+::pdb\hspace{0.3cm}{\ttfamily [protected]}}\label{class_c_d_b_a4520f55d31246fc06d80f72b5dd62253}
+
+
+Definition at line 98 of file db.\+h.
+
+\hypertarget{class_c_d_b_a15c6112d9db9dcc5f11a2c05d9aa74a5}{}\index{C\+D\+B@{C\+D\+B}!str\+File@{str\+File}}
+\index{str\+File@{str\+File}!C\+D\+B@{C\+D\+B}}
+\subsubsection[{str\+File}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string C\+D\+B\+::str\+File\hspace{0.3cm}{\ttfamily [protected]}}\label{class_c_d_b_a15c6112d9db9dcc5f11a2c05d9aa74a5}
+
+
+Definition at line 99 of file db.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/\hyperlink{db_8h}{db.\+h}\item 
+/home/dev/ds-\/160209/src/\hyperlink{db_8cpp}{db.\+cpp}\end{DoxyCompactItemize}

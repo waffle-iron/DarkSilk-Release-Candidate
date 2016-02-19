@@ -1,0 +1,39 @@
+.TH "MemoryPageLocker" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MemoryPageLocker \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <allocators\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBLock\fP (const void *addr, size_t len)"
+.br
+.ti -1c
+.RI "bool \fBUnlock\fP (const void *addr, size_t len)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+OS-dependent memory page locking/unlocking\&. Defined as policy class to make stubbing for test possible\&. 
+.PP
+Definition at line 140 of file allocators\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool MemoryPageLocker::Lock (const void * addr, size_t len)\fC [inline]\fP"
+Lock memory pages\&. addr and len must be a multiple of the system page size 
+.PP
+Definition at line 146 of file allocators\&.h\&.
+.SS "bool MemoryPageLocker::Unlock (const void * addr, size_t len)\fC [inline]\fP"
+Unlock memory pages\&. addr and len must be a multiple of the system page size 
+.PP
+Definition at line 157 of file allocators\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

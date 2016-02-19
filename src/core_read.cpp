@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "core_io.h"
-#include "net.h"
+
 #include "primitives/block.h"
 #include "primitives/transaction.h"
 #include "script.h"

@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="structleveldb_1_1_comparator" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>leveldb::Comparator</compoundname>
+    <derivedcompoundref refid="classleveldb_1_1_internal_key_comparator" prot="public" virt="non-virtual">leveldb::InternalKeyComparator</derivedcompoundref>
+    <derivedcompoundref refid="structleveldb__comparator__t" prot="public" virt="non-virtual">leveldb_comparator_t</derivedcompoundref>
+    <includes refid="comparator_8h" local="no">comparator.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structleveldb_1_1_comparator_1a2c2009828869475d8375c84d65cf1c24" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>int</type>
+        <definition>int leveldb::Comparator::operator()</definition>
+        <argsstring>(const Key &amp;a, const Key &amp;b) const </argsstring>
+        <name>operator()</name>
+        <param>
+          <type>const <ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref> &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/skiplist_test.cc" line="18" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/skiplist_test.cc" bodystart="18" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="structleveldb_1_1_comparator_1a88fe2a99620c746932a8ef3ee46e8960" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>leveldb::Comparator::~Comparator</definition>
+        <argsstring>()</argsstring>
+        <name>~Comparator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/comparator.h" line="20" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/util/comparator.cc" bodystart="14" bodyend="14"/>
+      </memberdef>
+      <memberdef kind="function" id="structleveldb_1_1_comparator_1a05dae6edcad3c7db23827c0233d74039" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int leveldb::Comparator::Compare</definition>
+        <argsstring>(const Slice &amp;a, const Slice &amp;b) const =0</argsstring>
+        <name>Compare</name>
+        <reimplementedby refid="structleveldb__comparator__t_1af340b22c2639696019e13c7bd153d189">Compare</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_internal_key_comparator_1a6469a0d67a9025173d31ec6e1cd5f80e">Compare</reimplementedby>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref> &amp;</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref> &amp;</type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/comparator.h" line="26" column="1"/>
+        <referencedby refid="classleveldb_1_1_d_b_test_1adaf171601eaaf2cd24edaa394752f733" compoundref="db__test_8cc" startline="336" endline="376">leveldb::DBTest::AllEntriesFor</referencedby>
+        <referencedby refid="namespaceleveldb_1a5cd6c2754610c66f4dd998874482c80b" compoundref="db__test_8cc" startline="1368" endline="1389">leveldb::TEST</referencedby>
+        <referencedby refid="classleveldb_1_1_internal_key_comparator_1a6469a0d67a9025173d31ec6e1cd5f80e" compoundref="dbformat_8cc" startline="50" endline="66">leveldb::InternalKeyComparator::Compare</referencedby>
+        <referencedby refid="classleveldb_1_1_internal_key_comparator_1afe98c9042e34927e60e078fc103991bf" compoundref="dbformat_8cc" startline="68" endline="85">leveldb::InternalKeyComparator::FindShortestSeparator</referencedby>
+        <referencedby refid="classleveldb_1_1_internal_key_comparator_1a5dc88f433ef3a0d9508ec17cb40d3e27" compoundref="dbformat_8cc" startline="87" endline="99">leveldb::InternalKeyComparator::FindShortSuccessor</referencedby>
+        <referencedby refid="classleveldb_1_1_version_1a42c439d4a2a767fe281c7a75d4255038" compoundref="version__set_8cc" startline="323" endline="420">leveldb::Version::Get</referencedby>
+        <referencedby refid="classleveldb_1_1_version_1afd86dffba7ce5229778bddd546517392" compoundref="version__set_8cc" startline="522" endline="563">leveldb::Version::GetOverlappingInputs</referencedby>
+        <referencedby refid="classleveldb_1_1_compaction_1ae982beb6ee52d92de76a363ef0eefc29" compoundref="version__set_8cc" startline="1434" endline="1453">leveldb::Compaction::IsBaseLevelForKey</referencedby>
+        <referencedby refid="classleveldb_1_1_block_builder_1a17d0e23f1e7afcb874b22a0cb0b6cf17" compoundref="block__builder_8cc" startline="73" endline="107">leveldb::BlockBuilder::Add</referencedby>
+        <referencedby refid="classleveldb_1_1_table_builder_1a37bd347cb6340215475ac9b42dc19d10" compoundref="table__builder_8cc" startline="92" endline="121">leveldb::TableBuilder::Add</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="structleveldb_1_1_comparator_1a888b039bdd6d59517dca75fb40721f5e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>const char *</type>
+        <definition>virtual const char* leveldb::Comparator::Name</definition>
+        <argsstring>() const =0</argsstring>
+        <name>Name</name>
+        <reimplementedby refid="structleveldb__comparator__t_1a3b408bc62e1033237b0ef68cfeac7741">Name</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_internal_key_comparator_1a762ec9028955d3a5fc61fb5c718ff4f1">Name</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/comparator.h" line="38" column="1"/>
+        <referencedby refid="classleveldb_1_1_version_set_1a955ff8620ec56742cdc48da0e74ab40b" compoundref="version__set_8cc" startline="896" endline="1009">leveldb::VersionSet::Recover</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="structleveldb_1_1_comparator_1abdfe6076225e95b91ffd94f646063115" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void leveldb::Comparator::FindShortestSeparator</definition>
+        <argsstring>(std::string *start, const Slice &amp;limit) const =0</argsstring>
+        <name>FindShortestSeparator</name>
+        <reimplementedby refid="structleveldb__comparator__t_1abbcfac3b28ea84a6ea347be48e1af2f8">FindShortestSeparator</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_internal_key_comparator_1afe98c9042e34927e60e078fc103991bf">FindShortestSeparator</reimplementedby>
+        <param>
+          <type>std::string *</type>
+          <declname>start</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref> &amp;</type>
+          <declname>limit</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/comparator.h" line="46" column="1"/>
+        <referencedby refid="namespaceleveldb_1a5cd6c2754610c66f4dd998874482c80b" compoundref="db__test_8cc" startline="1368" endline="1389">leveldb::TEST</referencedby>
+        <referencedby refid="classleveldb_1_1_internal_key_comparator_1afe98c9042e34927e60e078fc103991bf" compoundref="dbformat_8cc" startline="68" endline="85">leveldb::InternalKeyComparator::FindShortestSeparator</referencedby>
+        <referencedby refid="classleveldb_1_1_table_builder_1a37bd347cb6340215475ac9b42dc19d10" compoundref="table__builder_8cc" startline="92" endline="121">leveldb::TableBuilder::Add</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="structleveldb_1_1_comparator_1a49751dd906595633161dfad943d24b3b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void leveldb::Comparator::FindShortSuccessor</definition>
+        <argsstring>(std::string *key) const =0</argsstring>
+        <name>FindShortSuccessor</name>
+        <reimplementedby refid="structleveldb__comparator__t_1ad84aa86465a71203cdfd7cac02d85054">FindShortSuccessor</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_internal_key_comparator_1a5dc88f433ef3a0d9508ec17cb40d3e27">FindShortSuccessor</reimplementedby>
+        <param>
+          <type>std::string *</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/comparator.h" line="53" column="1"/>
+        <referencedby refid="namespaceleveldb_1a5cd6c2754610c66f4dd998874482c80b" compoundref="db__test_8cc" startline="1368" endline="1389">leveldb::TEST</referencedby>
+        <referencedby refid="classleveldb_1_1_internal_key_comparator_1a5dc88f433ef3a0d9508ec17cb40d3e27" compoundref="dbformat_8cc" startline="87" endline="99">leveldb::InternalKeyComparator::FindShortSuccessor</referencedby>
+        <referencedby refid="classleveldb_1_1_table_builder_1a88f4bae006782e24462362d489dd3f35" compoundref="table__builder_8cc" startline="199" endline="254">leveldb::TableBuilder::Finish</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2571">
+        <label>leveldb_comparator_t</label>
+        <link refid="structleveldb__comparator__t"/>
+        <childnode refid="2569" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2570">
+        <label>leveldb::InternalKeyComparator</label>
+        <link refid="classleveldb_1_1_internal_key_comparator"/>
+        <childnode refid="2569" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2569">
+        <label>leveldb::Comparator</label>
+        <link refid="structleveldb_1_1_comparator"/>
+      </node>
+    </inheritancegraph>
+    <location file="/home/dev/ds-160209/src/leveldb/db/skiplist_test.cc" line="17" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/skiplist_test.cc" bodystart="17" bodyend="27"/>
+    <listofallmembers>
+      <member refid="structleveldb_1_1_comparator_1a05dae6edcad3c7db23827c0233d74039" prot="public" virt="pure-virtual"><scope>leveldb::Comparator</scope><name>Compare</name></member>
+      <member refid="structleveldb_1_1_comparator_1abdfe6076225e95b91ffd94f646063115" prot="public" virt="pure-virtual"><scope>leveldb::Comparator</scope><name>FindShortestSeparator</name></member>
+      <member refid="structleveldb_1_1_comparator_1a49751dd906595633161dfad943d24b3b" prot="public" virt="pure-virtual"><scope>leveldb::Comparator</scope><name>FindShortSuccessor</name></member>
+      <member refid="structleveldb_1_1_comparator_1a888b039bdd6d59517dca75fb40721f5e" prot="public" virt="pure-virtual"><scope>leveldb::Comparator</scope><name>Name</name></member>
+      <member refid="structleveldb_1_1_comparator_1a2c2009828869475d8375c84d65cf1c24" prot="public" virt="non-virtual"><scope>leveldb::Comparator</scope><name>operator()</name></member>
+      <member refid="structleveldb_1_1_comparator_1a88fe2a99620c746932a8ef3ee46e8960" prot="public" virt="virtual"><scope>leveldb::Comparator</scope><name>~Comparator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

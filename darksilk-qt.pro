@@ -191,7 +191,6 @@ DEPENDPATH += . \
               src/json \
               src/obj \
               src/primitives \
-              src/consensus \
               src/qt \
               src/leveldb/db \
               src/leveldb/issues \
@@ -222,9 +221,6 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/qt/aboutdialog.h \
             src/qt/editaddressdialog.h \
             src/qt/darksilkaddressvalidator.h \
-            src/consensus/consensus.h \
-            src/consensus/merkle.h \
-            src/consensus/validation.h \
             src/alert.h \
             src/addrman.h \
             src/base58.h \
@@ -251,10 +247,10 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/key.h \
             src/ecwrapper.h \
             src/pubkey.h \
-            src/wallet/db.h \
+            src/db.h \
             src/txdb.h \
             src/txmempool.h \
-            src/wallet/walletdb.h \
+            src/walletdb.h \
             src/script.h \
             src/init.h \
             src/mruset.h \
@@ -277,7 +273,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/qt/transactiondesc.h \
             src/qt/transactiondescdialog.h \
             src/qt/darksilkamountfield.h \
-            src/wallet/wallet.h \
+            src/wallet.h \
             src/keystore.h \
             src/qt/transactionfilterproxy.h \
             src/qt/transactionview.h \
@@ -341,7 +337,6 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/primitives/block.h \
             src/primitives/transaction.h \
             src/stormnode-sync.h \
-            src/chainparamsbase.h \
             src/chain.h \
             src/coins.h \
             src/compressor.h \
@@ -360,7 +355,6 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/crypto/argon2/blake2/blamka-round-opt.h \
             src/crypto/argon2/blake2/blamka-round-ref.h \
             src/crypto/argon2/opt.h
-
 
 SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/qt/transactiontablemodel.cpp \
@@ -398,9 +392,8 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/checkpoints.cpp \
             src/addrman.cpp \
             src/base58.cpp \
-            src/wallet/db.cpp \
-            src/wallet/walletdb.cpp \
-            src/consensus/merkle.cpp \
+            src/db.cpp \
+            src/walletdb.cpp \
             src/qt/clientmodel.cpp \
             src/qt/guiutil.cpp \
             src/qt/transactionrecord.cpp \
@@ -411,7 +404,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/qt/transactiondescdialog.cpp \
             src/qt/darksilkstrings.cpp \
             src/qt/darksilkamountfield.cpp \
-            src/wallet/wallet.cpp \
+            src/wallet.cpp \
             src/keystore.cpp \
             src/qt/transactionfilterproxy.cpp \
             src/qt/transactionview.cpp \
@@ -419,11 +412,11 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/rpcclient.cpp \
             src/rpcprotocol.cpp \
             src/rpcserver.cpp \
-            src/wallet/rpcdump.cpp \
+            src/rpcdump.cpp \
             src/rpcmisc.cpp \
             src/rpcnet.cpp \
             src/rpcmining.cpp \
-            src/wallet/rpcwallet.cpp \
+            src/rpcwallet.cpp \
             src/rpcblockchain.cpp \
             src/rpcrawtransaction.cpp \
             src/timedata.cpp \
@@ -440,7 +433,6 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/qt/notificator.cpp \
             src/qt/paymentserver.cpp \
             src/qt/debugconsole.cpp \
-            src/chainparamsbase.cpp \
             src/noui.cpp \
             src/kernel.cpp \
             src/scrypt-arm.S \

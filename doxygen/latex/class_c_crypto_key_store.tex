@@ -1,0 +1,390 @@
+\hypertarget{class_c_crypto_key_store}{}\section{C\+Crypto\+Key\+Store Class Reference}
+\label{class_c_crypto_key_store}\index{C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}}
+
+
+{\ttfamily \#include $<$crypter.\+h$>$}
+
+
+
+Inheritance diagram for C\+Crypto\+Key\+Store\+:
+% FIG 0
+
+
+Collaboration diagram for C\+Crypto\+Key\+Store\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_crypto_key_store_a7c7f1075182d42fcb0781d1dc7a876c3}{C\+Crypto\+Key\+Store} ()
+\item 
+bool \hyperlink{class_c_crypto_key_store_a1cb434078a9ea686c0acf168d2c81252}{Is\+Crypted} () const 
+\item 
+bool \hyperlink{class_c_crypto_key_store_a1c3ebef555fd13676d67509b95820fcf}{Is\+Locked} () const 
+\item 
+bool \hyperlink{class_c_crypto_key_store_ad967b2232dc6a2a8aef7a723296b44dc}{Lock\+Key\+Store} ()
+\item 
+virtual bool \hyperlink{class_c_crypto_key_store_a9f4d2df95008205b2b9784c5f0e8e12b}{Add\+Crypted\+Key} (const \hyperlink{class_c_pub_key}{C\+Pub\+Key} \&vch\+Pub\+Key, const std\+::vector$<$ unsigned char $>$ \&vch\+Crypted\+Secret)
+\item 
+bool \hyperlink{class_c_crypto_key_store_a340109b8673267676a34664a76ed3274}{Add\+Key\+Pub\+Key} (const \hyperlink{class_c_key}{C\+Key} \&key, const \hyperlink{class_c_pub_key}{C\+Pub\+Key} \&pubkey)
+\item 
+bool \hyperlink{class_c_crypto_key_store_a0cefe933dd3a6ac7744432493696bffc}{Have\+Key} (const \hyperlink{class_c_key_i_d}{C\+Key\+I\+D} \&address) const 
+\item 
+bool \hyperlink{class_c_crypto_key_store_a58cfb3c490318ef82de8fc9be6637269}{Get\+Key} (const \hyperlink{class_c_key_i_d}{C\+Key\+I\+D} \&address, \hyperlink{class_c_key}{C\+Key} \&key\+Out) const 
+\item 
+bool \hyperlink{class_c_crypto_key_store_abd897aff07ec5679235b14cb4485dc37}{Get\+Pub\+Key} (const \hyperlink{class_c_key_i_d}{C\+Key\+I\+D} \&address, \hyperlink{class_c_pub_key}{C\+Pub\+Key} \&vch\+Pub\+Key\+Out) const 
+\item 
+void \hyperlink{class_c_crypto_key_store_a4f13246f58b7edbaf125d603f7d0d4b4}{Get\+Keys} (std\+::set$<$ \hyperlink{class_c_key_i_d}{C\+Key\+I\+D} $>$ \&set\+Address) const 
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+boost\+::signals2\+::signal$<$ void(\hyperlink{class_c_crypto_key_store}{C\+Crypto\+Key\+Store} $\ast$wallet)$>$ \hyperlink{class_c_crypto_key_store_a251b9ed228a19ab39d542985b425fc85}{Notify\+Status\+Changed}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_c_crypto_key_store_af202f587051735be5a39344d9e333720}{Set\+Crypted} ()
+\item 
+bool \hyperlink{class_c_crypto_key_store_a8c0f6b63fb04193df16243c4459b7c61}{Encrypt\+Keys} (\hyperlink{crypter_8h_a64709c9a3acc8f5694515789a183ad7b}{C\+Keying\+Material} \&v\+Master\+Key\+In)
+\item 
+bool \hyperlink{class_c_crypto_key_store_a81bd70e18aa75f566526620a74f9cd88}{Unlock} (const \hyperlink{crypter_8h_a64709c9a3acc8f5694515789a183ad7b}{C\+Keying\+Material} \&v\+Master\+Key\+In)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{keystore_8h_a6c476ecc6771e6bf6bf022a735216a27}{Crypted\+Key\+Map} \hyperlink{class_c_crypto_key_store_ad1fb9b23eee7a352617209ee2e4f3498}{map\+Crypted\+Keys}
+\item 
+\hyperlink{crypter_8h_a64709c9a3acc8f5694515789a183ad7b}{C\+Keying\+Material} \hyperlink{class_c_crypto_key_store_ac74e458a90ce17a95e238bad724df3fd}{v\+Master\+Key}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Keystore which keeps the private keys encrypted. It derives from the basic key store, which is used if no encryption is active. 
+
+Definition at line 137 of file crypter.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_crypto_key_store_a7c7f1075182d42fcb0781d1dc7a876c3}{}\index{C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}!C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}}
+\index{C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}!C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}}
+\subsubsection[{C\+Crypto\+Key\+Store}]{\setlength{\rightskip}{0pt plus 5cm}C\+Crypto\+Key\+Store\+::\+C\+Crypto\+Key\+Store (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_crypto_key_store_a7c7f1075182d42fcb0781d1dc7a876c3}
+
+
+Definition at line 156 of file crypter.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_crypto_key_store_a9f4d2df95008205b2b9784c5f0e8e12b}{}\index{C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}!Add\+Crypted\+Key@{Add\+Crypted\+Key}}
+\index{Add\+Crypted\+Key@{Add\+Crypted\+Key}!C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}}
+\subsubsection[{Add\+Crypted\+Key}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Crypto\+Key\+Store\+::\+Add\+Crypted\+Key (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Pub\+Key} \&}]{vch\+Pub\+Key, }
+\item[{const std\+::vector$<$ unsigned char $>$ \&}]{vch\+Crypted\+Secret}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_c_crypto_key_store_a9f4d2df95008205b2b9784c5f0e8e12b}
+
+
+Reimplemented in \hyperlink{class_c_wallet_a3e90096a903d49cd751f05fcdb7692ce}{C\+Wallet}.
+
+
+
+Definition at line 289 of file crypter.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+\hypertarget{class_c_crypto_key_store_a340109b8673267676a34664a76ed3274}{}\index{C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}!Add\+Key\+Pub\+Key@{Add\+Key\+Pub\+Key}}
+\index{Add\+Key\+Pub\+Key@{Add\+Key\+Pub\+Key}!C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}}
+\subsubsection[{Add\+Key\+Pub\+Key}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Crypto\+Key\+Store\+::\+Add\+Key\+Pub\+Key (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Key} \&}]{key, }
+\item[{const {\bf C\+Pub\+Key} \&}]{pubkey}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_c_crypto_key_store_a340109b8673267676a34664a76ed3274}
+
+
+Implements \hyperlink{class_c_key_store_a1956e4f5860ded321d6f697047d8236a}{C\+Key\+Store}.
+
+
+
+Reimplemented in \hyperlink{class_c_wallet_a3240da36cd717146296969227a3e0bd5}{C\+Wallet}.
+
+
+
+Definition at line 267 of file crypter.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 4
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 5
+
+
+\hypertarget{class_c_crypto_key_store_a8c0f6b63fb04193df16243c4459b7c61}{}\index{C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}!Encrypt\+Keys@{Encrypt\+Keys}}
+\index{Encrypt\+Keys@{Encrypt\+Keys}!C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}}
+\subsubsection[{Encrypt\+Keys}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Crypto\+Key\+Store\+::\+Encrypt\+Keys (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Keying\+Material} \&}]{v\+Master\+Key\+In}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{class_c_crypto_key_store_a8c0f6b63fb04193df16243c4459b7c61}
+
+
+Definition at line 342 of file crypter.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 6
+
+
+\hypertarget{class_c_crypto_key_store_a58cfb3c490318ef82de8fc9be6637269}{}\index{C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}!Get\+Key@{Get\+Key}}
+\index{Get\+Key@{Get\+Key}!C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}}
+\subsubsection[{Get\+Key}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Crypto\+Key\+Store\+::\+Get\+Key (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Key\+I\+D} \&}]{address, }
+\item[{{\bf C\+Key} \&}]{key\+Out}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_c_crypto_key_store_a58cfb3c490318ef82de8fc9be6637269}
+
+
+Implements \hyperlink{class_c_key_store_a2dffca468fef2e5da2e42a7c983d968a}{C\+Key\+Store}.
+
+
+
+Definition at line 301 of file crypter.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 7
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 8
+
+
+\hypertarget{class_c_crypto_key_store_a4f13246f58b7edbaf125d603f7d0d4b4}{}\index{C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}!Get\+Keys@{Get\+Keys}}
+\index{Get\+Keys@{Get\+Keys}!C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}}
+\subsubsection[{Get\+Keys}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Crypto\+Key\+Store\+::\+Get\+Keys (
+\begin{DoxyParamCaption}
+\item[{std\+::set$<$ {\bf C\+Key\+I\+D} $>$ \&}]{set\+Address}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\label{class_c_crypto_key_store_a4f13246f58b7edbaf125d603f7d0d4b4}
+
+
+Implements \hyperlink{class_c_key_store_aca5044014720308f191113e7ba297d13}{C\+Key\+Store}.
+
+
+
+Definition at line 193 of file crypter.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 9
+
+
+\hypertarget{class_c_crypto_key_store_abd897aff07ec5679235b14cb4485dc37}{}\index{C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}!Get\+Pub\+Key@{Get\+Pub\+Key}}
+\index{Get\+Pub\+Key@{Get\+Pub\+Key}!C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}}
+\subsubsection[{Get\+Pub\+Key}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Crypto\+Key\+Store\+::\+Get\+Pub\+Key (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Key\+I\+D} \&}]{address, }
+\item[{{\bf C\+Pub\+Key} \&}]{vch\+Pub\+Key\+Out}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_c_crypto_key_store_abd897aff07ec5679235b14cb4485dc37}
+
+
+Reimplemented from \hyperlink{class_c_key_store_aba866c1e71c129e7ac2d5d1e5223c8a5}{C\+Key\+Store}.
+
+
+
+Definition at line 325 of file crypter.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 10
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 11
+
+
+\hypertarget{class_c_crypto_key_store_a0cefe933dd3a6ac7744432493696bffc}{}\index{C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}!Have\+Key@{Have\+Key}}
+\index{Have\+Key@{Have\+Key}!C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}}
+\subsubsection[{Have\+Key}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Crypto\+Key\+Store\+::\+Have\+Key (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Key\+I\+D} \&}]{address}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\label{class_c_crypto_key_store_a0cefe933dd3a6ac7744432493696bffc}
+
+
+Implements \hyperlink{class_c_key_store_a9398451d4270fae27b29f686a9d43a65}{C\+Key\+Store}.
+
+
+
+Definition at line 181 of file crypter.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 12
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 13
+
+
+\hypertarget{class_c_crypto_key_store_a1cb434078a9ea686c0acf168d2c81252}{}\index{C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}!Is\+Crypted@{Is\+Crypted}}
+\index{Is\+Crypted@{Is\+Crypted}!C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}}
+\subsubsection[{Is\+Crypted}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Crypto\+Key\+Store\+::\+Is\+Crypted (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_crypto_key_store_a1cb434078a9ea686c0acf168d2c81252}
+
+
+Definition at line 160 of file crypter.\+h.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 14
+
+
+\hypertarget{class_c_crypto_key_store_a1c3ebef555fd13676d67509b95820fcf}{}\index{C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}!Is\+Locked@{Is\+Locked}}
+\index{Is\+Locked@{Is\+Locked}!C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}}
+\subsubsection[{Is\+Locked}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Crypto\+Key\+Store\+::\+Is\+Locked (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_crypto_key_store_a1c3ebef555fd13676d67509b95820fcf}
+
+
+Definition at line 165 of file crypter.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 15
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 16
+
+
+\hypertarget{class_c_crypto_key_store_ad967b2232dc6a2a8aef7a723296b44dc}{}\index{C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}!Lock\+Key\+Store@{Lock\+Key\+Store}}
+\index{Lock\+Key\+Store@{Lock\+Key\+Store}!C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}}
+\subsubsection[{Lock\+Key\+Store}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Crypto\+Key\+Store\+::\+Lock\+Key\+Store (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_crypto_key_store_ad967b2232dc6a2a8aef7a723296b44dc}
+
+
+Definition at line 224 of file crypter.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 17
+
+
+\hypertarget{class_c_crypto_key_store_af202f587051735be5a39344d9e333720}{}\index{C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}!Set\+Crypted@{Set\+Crypted}}
+\index{Set\+Crypted@{Set\+Crypted}!C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}}
+\subsubsection[{Set\+Crypted}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Crypto\+Key\+Store\+::\+Set\+Crypted (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{class_c_crypto_key_store_af202f587051735be5a39344d9e333720}
+
+
+Definition at line 213 of file crypter.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 18
+
+
+\hypertarget{class_c_crypto_key_store_a81bd70e18aa75f566526620a74f9cd88}{}\index{C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}!Unlock@{Unlock}}
+\index{Unlock@{Unlock}!C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}}
+\subsubsection[{Unlock}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Crypto\+Key\+Store\+::\+Unlock (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Keying\+Material} \&}]{v\+Master\+Key\+In}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{class_c_crypto_key_store_a81bd70e18aa75f566526620a74f9cd88}
+
+
+Definition at line 238 of file crypter.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 19
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 20
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_c_crypto_key_store_ad1fb9b23eee7a352617209ee2e4f3498}{}\index{C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}!map\+Crypted\+Keys@{map\+Crypted\+Keys}}
+\index{map\+Crypted\+Keys@{map\+Crypted\+Keys}!C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}}
+\subsubsection[{map\+Crypted\+Keys}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Crypted\+Key\+Map} C\+Crypto\+Key\+Store\+::map\+Crypted\+Keys\hspace{0.3cm}{\ttfamily [protected]}}\label{class_c_crypto_key_store_ad1fb9b23eee7a352617209ee2e4f3498}
+
+
+Definition at line 145 of file crypter.\+h.
+
+\hypertarget{class_c_crypto_key_store_a251b9ed228a19ab39d542985b425fc85}{}\index{C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}!Notify\+Status\+Changed@{Notify\+Status\+Changed}}
+\index{Notify\+Status\+Changed@{Notify\+Status\+Changed}!C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}}
+\subsubsection[{Notify\+Status\+Changed}]{\setlength{\rightskip}{0pt plus 5cm}boost\+::signals2\+::signal$<$void ({\bf C\+Crypto\+Key\+Store}$\ast$ wallet)$>$ C\+Crypto\+Key\+Store\+::\+Notify\+Status\+Changed}\label{class_c_crypto_key_store_a251b9ed228a19ab39d542985b425fc85}
+
+
+Definition at line 212 of file crypter.\+h.
+
+\hypertarget{class_c_crypto_key_store_ac74e458a90ce17a95e238bad724df3fd}{}\index{C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}!v\+Master\+Key@{v\+Master\+Key}}
+\index{v\+Master\+Key@{v\+Master\+Key}!C\+Crypto\+Key\+Store@{C\+Crypto\+Key\+Store}}
+\subsubsection[{v\+Master\+Key}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Keying\+Material} C\+Crypto\+Key\+Store\+::v\+Master\+Key\hspace{0.3cm}{\ttfamily [protected]}}\label{class_c_crypto_key_store_ac74e458a90ce17a95e238bad724df3fd}
+
+
+Definition at line 146 of file crypter.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/\hyperlink{crypter_8h}{crypter.\+h}\item 
+/home/dev/ds-\/160209/src/\hyperlink{crypter_8cpp}{crypter.\+cpp}\end{DoxyCompactItemize}

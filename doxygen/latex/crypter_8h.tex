@@ -1,0 +1,155 @@
+\hypertarget{crypter_8h}{}\section{/home/dev/ds-\/160209/src/crypter.h File Reference}
+\label{crypter_8h}\index{/home/dev/ds-\/160209/src/crypter.\+h@{/home/dev/ds-\/160209/src/crypter.\+h}}
+{\ttfamily \#include \char`\"{}allocators.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}serialize.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}keystore.\+h\char`\"{}}\\*
+Include dependency graph for crypter.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_c_master_key}{C\+Master\+Key}
+\item 
+class \hyperlink{class_c_crypter}{C\+Crypter}
+\item 
+class \hyperlink{class_c_crypto_key_store}{C\+Crypto\+Key\+Store}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::vector$<$ unsigned char, \hyperlink{structsecure__allocator}{secure\+\_\+allocator}$<$ unsigned char $>$ $>$ \hyperlink{crypter_8h_a64709c9a3acc8f5694515789a183ad7b}{C\+Keying\+Material}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{crypter_8h_a4fa4e3134d2b6e4913b9ce6369820697}{Encrypt\+Secret} (const \hyperlink{crypter_8h_a64709c9a3acc8f5694515789a183ad7b}{C\+Keying\+Material} \&v\+Master\+Key, const \hyperlink{crypter_8h_a64709c9a3acc8f5694515789a183ad7b}{C\+Keying\+Material} \&vch\+Plaintext, const \hyperlink{classuint256}{uint256} \&n\+I\+V, std\+::vector$<$ unsigned char $>$ \&vch\+Ciphertext)
+\item 
+bool \hyperlink{crypter_8h_aded00aa7498a7485a00e77a20856b3e4}{Decrypt\+Secret} (const \hyperlink{crypter_8h_a64709c9a3acc8f5694515789a183ad7b}{C\+Keying\+Material} \&v\+Master\+Key, const std\+::vector$<$ unsigned char $>$ \&vch\+Ciphertext, const \hyperlink{classuint256}{uint256} \&n\+I\+V, \hyperlink{crypter_8h_a64709c9a3acc8f5694515789a183ad7b}{C\+Keying\+Material} \&vch\+Plaintext)
+\item 
+bool \hyperlink{crypter_8h_a226a32c844661568e96a8e4facdb4804}{Encrypt\+A\+E\+S256} (const \hyperlink{allocators_8h_a396ed773a5ac24aec28c8f7dc413c7ac}{Secure\+String} \&s\+Key, const \hyperlink{allocators_8h_a396ed773a5ac24aec28c8f7dc413c7ac}{Secure\+String} \&s\+Plaintext, const std\+::string \&s\+I\+V, std\+::string \&s\+Ciphertext)
+\item 
+bool \hyperlink{crypter_8h_ae8eca4e4f0534b828d8a2a549536c762}{Decrypt\+A\+E\+S256} (const \hyperlink{allocators_8h_a396ed773a5ac24aec28c8f7dc413c7ac}{Secure\+String} \&s\+Key, const std\+::string \&s\+Ciphertext, const std\+::string \&s\+I\+V, \hyperlink{allocators_8h_a396ed773a5ac24aec28c8f7dc413c7ac}{Secure\+String} \&s\+Plaintext)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const unsigned int \hyperlink{crypter_8h_abf8d5f4eb0b3c828d9fbedb9b2e10b2a}{W\+A\+L\+L\+E\+T\+\_\+\+C\+R\+Y\+P\+T\+O\+\_\+\+K\+E\+Y\+\_\+\+S\+I\+Z\+E} = 32
+\begin{DoxyCompactList}\small\item\em ! for Secure\+String \end{DoxyCompactList}\item 
+const unsigned int \hyperlink{crypter_8h_aa42a9547c4738b8f92fd88016c5184a0}{W\+A\+L\+L\+E\+T\+\_\+\+C\+R\+Y\+P\+T\+O\+\_\+\+S\+A\+L\+T\+\_\+\+S\+I\+Z\+E} = 8
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{crypter_8h_a64709c9a3acc8f5694515789a183ad7b}{}\index{crypter.\+h@{crypter.\+h}!C\+Keying\+Material@{C\+Keying\+Material}}
+\index{C\+Keying\+Material@{C\+Keying\+Material}!crypter.\+h@{crypter.\+h}}
+\subsubsection[{C\+Keying\+Material}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\+::vector$<$unsigned char, {\bf secure\+\_\+allocator}$<$unsigned char$>$ $>$ {\bf C\+Keying\+Material}}\label{crypter_8h_a64709c9a3acc8f5694515789a183ad7b}
+
+
+Definition at line 85 of file crypter.\+h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{crypter_8h_ae8eca4e4f0534b828d8a2a549536c762}{}\index{crypter.\+h@{crypter.\+h}!Decrypt\+A\+E\+S256@{Decrypt\+A\+E\+S256}}
+\index{Decrypt\+A\+E\+S256@{Decrypt\+A\+E\+S256}!crypter.\+h@{crypter.\+h}}
+\subsubsection[{Decrypt\+A\+E\+S256}]{\setlength{\rightskip}{0pt plus 5cm}bool Decrypt\+A\+E\+S256 (
+\begin{DoxyParamCaption}
+\item[{const {\bf Secure\+String} \&}]{s\+Key, }
+\item[{const std\+::string \&}]{s\+Ciphertext, }
+\item[{const std\+::string \&}]{s\+I\+V, }
+\item[{{\bf Secure\+String} \&}]{s\+Plaintext}
+\end{DoxyParamCaption}
+)}\label{crypter_8h_ae8eca4e4f0534b828d8a2a549536c762}
+
+
+Definition at line 181 of file crypter.\+cpp.
+
+\hypertarget{crypter_8h_aded00aa7498a7485a00e77a20856b3e4}{}\index{crypter.\+h@{crypter.\+h}!Decrypt\+Secret@{Decrypt\+Secret}}
+\index{Decrypt\+Secret@{Decrypt\+Secret}!crypter.\+h@{crypter.\+h}}
+\subsubsection[{Decrypt\+Secret}]{\setlength{\rightskip}{0pt plus 5cm}bool Decrypt\+Secret (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Keying\+Material} \&}]{v\+Master\+Key, }
+\item[{const std\+::vector$<$ unsigned char $>$ \&}]{vch\+Ciphertext, }
+\item[{const {\bf uint256} \&}]{n\+I\+V, }
+\item[{{\bf C\+Keying\+Material} \&}]{vch\+Plaintext}
+\end{DoxyParamCaption}
+)}\label{crypter_8h_aded00aa7498a7485a00e77a20856b3e4}
+
+
+Definition at line 136 of file crypter.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+\hypertarget{crypter_8h_a226a32c844661568e96a8e4facdb4804}{}\index{crypter.\+h@{crypter.\+h}!Encrypt\+A\+E\+S256@{Encrypt\+A\+E\+S256}}
+\index{Encrypt\+A\+E\+S256@{Encrypt\+A\+E\+S256}!crypter.\+h@{crypter.\+h}}
+\subsubsection[{Encrypt\+A\+E\+S256}]{\setlength{\rightskip}{0pt plus 5cm}bool Encrypt\+A\+E\+S256 (
+\begin{DoxyParamCaption}
+\item[{const {\bf Secure\+String} \&}]{s\+Key, }
+\item[{const {\bf Secure\+String} \&}]{s\+Plaintext, }
+\item[{const std\+::string \&}]{s\+I\+V, }
+\item[{std\+::string \&}]{s\+Ciphertext}
+\end{DoxyParamCaption}
+)}\label{crypter_8h_a226a32c844661568e96a8e4facdb4804}
+
+
+Definition at line 147 of file crypter.\+cpp.
+
+\hypertarget{crypter_8h_a4fa4e3134d2b6e4913b9ce6369820697}{}\index{crypter.\+h@{crypter.\+h}!Encrypt\+Secret@{Encrypt\+Secret}}
+\index{Encrypt\+Secret@{Encrypt\+Secret}!crypter.\+h@{crypter.\+h}}
+\subsubsection[{Encrypt\+Secret}]{\setlength{\rightskip}{0pt plus 5cm}bool Encrypt\+Secret (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Keying\+Material} \&}]{v\+Master\+Key, }
+\item[{const {\bf C\+Keying\+Material} \&}]{vch\+Plaintext, }
+\item[{const {\bf uint256} \&}]{n\+I\+V, }
+\item[{std\+::vector$<$ unsigned char $>$ \&}]{vch\+Ciphertext}
+\end{DoxyParamCaption}
+)}\label{crypter_8h_a4fa4e3134d2b6e4913b9ce6369820697}
+
+
+Definition at line 126 of file crypter.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 4
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 5
+
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{crypter_8h_abf8d5f4eb0b3c828d9fbedb9b2e10b2a}{}\index{crypter.\+h@{crypter.\+h}!W\+A\+L\+L\+E\+T\+\_\+\+C\+R\+Y\+P\+T\+O\+\_\+\+K\+E\+Y\+\_\+\+S\+I\+Z\+E@{W\+A\+L\+L\+E\+T\+\_\+\+C\+R\+Y\+P\+T\+O\+\_\+\+K\+E\+Y\+\_\+\+S\+I\+Z\+E}}
+\index{W\+A\+L\+L\+E\+T\+\_\+\+C\+R\+Y\+P\+T\+O\+\_\+\+K\+E\+Y\+\_\+\+S\+I\+Z\+E@{W\+A\+L\+L\+E\+T\+\_\+\+C\+R\+Y\+P\+T\+O\+\_\+\+K\+E\+Y\+\_\+\+S\+I\+Z\+E}!crypter.\+h@{crypter.\+h}}
+\subsubsection[{W\+A\+L\+L\+E\+T\+\_\+\+C\+R\+Y\+P\+T\+O\+\_\+\+K\+E\+Y\+\_\+\+S\+I\+Z\+E}]{\setlength{\rightskip}{0pt plus 5cm}const unsigned int W\+A\+L\+L\+E\+T\+\_\+\+C\+R\+Y\+P\+T\+O\+\_\+\+K\+E\+Y\+\_\+\+S\+I\+Z\+E = 32}\label{crypter_8h_abf8d5f4eb0b3c828d9fbedb9b2e10b2a}
+
+
+! for Secure\+String 
+
+
+
+Definition at line 12 of file crypter.\+h.
+
+\hypertarget{crypter_8h_aa42a9547c4738b8f92fd88016c5184a0}{}\index{crypter.\+h@{crypter.\+h}!W\+A\+L\+L\+E\+T\+\_\+\+C\+R\+Y\+P\+T\+O\+\_\+\+S\+A\+L\+T\+\_\+\+S\+I\+Z\+E@{W\+A\+L\+L\+E\+T\+\_\+\+C\+R\+Y\+P\+T\+O\+\_\+\+S\+A\+L\+T\+\_\+\+S\+I\+Z\+E}}
+\index{W\+A\+L\+L\+E\+T\+\_\+\+C\+R\+Y\+P\+T\+O\+\_\+\+S\+A\+L\+T\+\_\+\+S\+I\+Z\+E@{W\+A\+L\+L\+E\+T\+\_\+\+C\+R\+Y\+P\+T\+O\+\_\+\+S\+A\+L\+T\+\_\+\+S\+I\+Z\+E}!crypter.\+h@{crypter.\+h}}
+\subsubsection[{W\+A\+L\+L\+E\+T\+\_\+\+C\+R\+Y\+P\+T\+O\+\_\+\+S\+A\+L\+T\+\_\+\+S\+I\+Z\+E}]{\setlength{\rightskip}{0pt plus 5cm}const unsigned int W\+A\+L\+L\+E\+T\+\_\+\+C\+R\+Y\+P\+T\+O\+\_\+\+S\+A\+L\+T\+\_\+\+S\+I\+Z\+E = 8}\label{crypter_8h_aa42a9547c4738b8f92fd88016c5184a0}
+
+
+Definition at line 13 of file crypter.\+h.
+

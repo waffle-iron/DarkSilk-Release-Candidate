@@ -1,0 +1,654 @@
+\hypertarget{class_c_wallet_d_b}{}\section{C\+Wallet\+D\+B Class Reference}
+\label{class_c_wallet_d_b}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+
+
+{\ttfamily \#include $<$walletdb.\+h$>$}
+
+
+
+Inheritance diagram for C\+Wallet\+D\+B\+:
+% FIG 0
+
+
+Collaboration diagram for C\+Wallet\+D\+B\+:
+% FIG 1
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_wallet_d_b_abb8766ee5b03e8115438726c625f88a7}{C\+Wallet\+D\+B} (const std\+::string \&str\+Filename, const char $\ast$psz\+Mode=\char`\"{}r+\char`\"{})
+\item 
+bool \hyperlink{class_c_wallet_d_b_ad1b3bce77e9dd6ddd8c668a469c38f0a}{Write\+Name} (const std\+::string \&str\+Address, const std\+::string \&str\+Name)
+\item 
+bool \hyperlink{class_c_wallet_d_b_a319209fcf90ea860b668b92c44a3fa7a}{Erase\+Name} (const std\+::string \&str\+Address)
+\item 
+bool \hyperlink{class_c_wallet_d_b_a76d2ca02898221ab66df5d5f7491164e}{Write\+Tx} (\hyperlink{classuint256}{uint256} \hyperlink{cache_8cc_a11ecb029164e055f28f4123ce3748862}{hash}, const \hyperlink{class_c_wallet_tx}{C\+Wallet\+Tx} \&wtx)
+\item 
+bool \hyperlink{class_c_wallet_d_b_a498e00c693cacc4b558e6f5295ea32f2}{Erase\+Tx} (\hyperlink{classuint256}{uint256} \hyperlink{cache_8cc_a11ecb029164e055f28f4123ce3748862}{hash})
+\item 
+bool \hyperlink{class_c_wallet_d_b_a68428260802d8acd1a6f87f92b991841}{Write\+Stealth\+Key\+Meta} (const \hyperlink{class_c_key_i_d}{C\+Key\+I\+D} \&key\+Id, const \hyperlink{class_c_stealth_key_metadata}{C\+Stealth\+Key\+Metadata} \&sx\+Key\+Meta)
+\item 
+bool \hyperlink{class_c_wallet_d_b_a401ec8ec6c7e38cf87be9b92f95052a4}{Erase\+Stealth\+Key\+Meta} (const \hyperlink{class_c_key_i_d}{C\+Key\+I\+D} \&key\+Id)
+\item 
+bool \hyperlink{class_c_wallet_d_b_a2bce6f7f050d6d14e2c025a7beba2cfc}{Write\+Stealth\+Address} (const \hyperlink{class_c_stealth_address}{C\+Stealth\+Address} \&sx\+Addr)
+\item 
+bool \hyperlink{class_c_wallet_d_b_aebcc02069f91916c652d4e3e13be0f0b}{Read\+Stealth\+Address} (\hyperlink{class_c_stealth_address}{C\+Stealth\+Address} \&sx\+Addr)
+\item 
+bool \hyperlink{class_c_wallet_d_b_a7ebef5e0c7f604aa2159ba96d527e3a2}{Write\+Key} (const \hyperlink{class_c_pub_key}{C\+Pub\+Key} \&vch\+Pub\+Key, const \hyperlink{key_8h_a1da569b8b6e5b3fa1196cc1b877e7f54}{C\+Priv\+Key} \&vch\+Priv\+Key, const \hyperlink{class_c_key_metadata}{C\+Key\+Metadata} \&key\+Meta)
+\item 
+bool \hyperlink{class_c_wallet_d_b_a914fb53d1731daf9b486f164dd325210}{Write\+Crypted\+Key} (const \hyperlink{class_c_pub_key}{C\+Pub\+Key} \&vch\+Pub\+Key, const std\+::vector$<$ unsigned char $>$ \&vch\+Crypted\+Secret, const \hyperlink{class_c_key_metadata}{C\+Key\+Metadata} \&key\+Meta)
+\item 
+bool \hyperlink{class_c_wallet_d_b_a507690da431ef61244941ad39c308aeb}{Write\+Master\+Key} (unsigned int n\+I\+D, const \hyperlink{class_c_master_key}{C\+Master\+Key} \&k\+Master\+Key)
+\item 
+bool \hyperlink{class_c_wallet_d_b_a8c69e48e2305775898658e0a4f4616c9}{Write\+C\+Script} (const \hyperlink{classuint160}{uint160} \&\hyperlink{cache_8cc_a11ecb029164e055f28f4123ce3748862}{hash}, const \hyperlink{class_c_script}{C\+Script} \&redeem\+Script)
+\item 
+bool \hyperlink{class_c_wallet_d_b_a05e5a277f66010d12071a5d72cb4dfb0}{Write\+Watch\+Only} (const \hyperlink{class_c_script}{C\+Script} \&script)
+\item 
+bool \hyperlink{class_c_wallet_d_b_ad6e63f550853905fcd67ec9e7c3bef8b}{Erase\+Watch\+Only} (const \hyperlink{class_c_script}{C\+Script} \&script)
+\item 
+bool \hyperlink{class_c_wallet_d_b_a5660d366fee16ab81f3e7d3a97892486}{Write\+Best\+Block} (const \hyperlink{class_c_block_locator}{C\+Block\+Locator} \&locator)
+\item 
+bool \hyperlink{class_c_wallet_d_b_a20eecdac6605607ff7cba2f55ec86f73}{Read\+Best\+Block} (\hyperlink{class_c_block_locator}{C\+Block\+Locator} \&locator)
+\item 
+bool \hyperlink{class_c_wallet_d_b_a6a1f671e6376b38a1f73c8a023abdd38}{Write\+Order\+Pos\+Next} (\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} n\+Order\+Pos\+Next)
+\item 
+bool \hyperlink{class_c_wallet_d_b_a1d925af18104900bddd19c968a0402b5}{Write\+Default\+Key} (const \hyperlink{class_c_pub_key}{C\+Pub\+Key} \&vch\+Pub\+Key)
+\item 
+bool \hyperlink{class_c_wallet_d_b_a6a03927cf247314ccd9b285139de0bd1}{Read\+Pool} (\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} n\+Pool, \hyperlink{class_c_key_pool}{C\+Key\+Pool} \&keypool)
+\item 
+bool \hyperlink{class_c_wallet_d_b_ad43630ad28a68c3e8b1a633f09aa0964}{Write\+Pool} (\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} n\+Pool, const \hyperlink{class_c_key_pool}{C\+Key\+Pool} \&keypool)
+\item 
+bool \hyperlink{class_c_wallet_d_b_ac78d839fbda5164c4134ab67911139ca}{Erase\+Pool} (\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} n\+Pool)
+\item 
+bool \hyperlink{class_c_wallet_d_b_ab008b6c6e09a60a988cac6e1a9e11886}{Write\+Min\+Version} (int n\+Version)
+\item 
+bool \hyperlink{class_c_wallet_d_b_afa8d9d374072629b360adb49b9bdd584}{Read\+Account} (const std\+::string \&str\+Account, \hyperlink{class_c_account}{C\+Account} \&account)
+\item 
+bool \hyperlink{class_c_wallet_d_b_afef640a4990f74fd5af7178c99415cf3}{Write\+Account} (const std\+::string \&str\+Account, const \hyperlink{class_c_account}{C\+Account} \&account)
+\item 
+bool \hyperlink{class_c_wallet_d_b_a958a0138b171e213be35f48933adcb89}{Write\+Accounting\+Entry} (const \hyperlink{class_c_accounting_entry}{C\+Accounting\+Entry} \&acentry)
+\item 
+\hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{class_c_wallet_d_b_af924f6275a873e048699e6ef0bf66346}{Get\+Account\+Credit\+Debit} (const std\+::string \&str\+Account)
+\item 
+void \hyperlink{class_c_wallet_d_b_a51555c82291fe16081880110541e207f}{List\+Account\+Credit\+Debit} (const std\+::string \&str\+Account, std\+::list$<$ \hyperlink{class_c_accounting_entry}{C\+Accounting\+Entry} $>$ \&acentries)
+\item 
+\hyperlink{walletdb_8h_a7558d92e9ea1d446075da1b514c4a944}{D\+B\+Errors} \hyperlink{class_c_wallet_d_b_afc27d9c9eef8b31851e6b02dc3191425}{Reorder\+Transactions} (\hyperlink{class_c_wallet}{C\+Wallet} $\ast$)
+\item 
+\hyperlink{walletdb_8h_a7558d92e9ea1d446075da1b514c4a944}{D\+B\+Errors} \hyperlink{class_c_wallet_d_b_a14f26e53502d1a60dd2b034f830acf03}{Load\+Wallet} (\hyperlink{class_c_wallet}{C\+Wallet} $\ast$pwallet)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{class_c_wallet_d_b_a3ebeb12f37d9c66512e2bc2903a6854a}{Recover} (\hyperlink{class_c_d_b_env}{C\+D\+B\+Env} \&dbenv, std\+::string filename, bool f\+Only\+Keys)
+\item 
+static bool \hyperlink{class_c_wallet_d_b_a44388f1c3ee63191dcb78b1001e9390c}{Recover} (\hyperlink{class_c_d_b_env}{C\+D\+B\+Env} \&dbenv, std\+::string filename)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+Access to the wallet database (wallet.\+dat) 
+
+Definition at line 99 of file walletdb.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_wallet_d_b_abb8766ee5b03e8115438726c625f88a7}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{C\+Wallet\+D\+B}]{\setlength{\rightskip}{0pt plus 5cm}C\+Wallet\+D\+B\+::\+C\+Wallet\+D\+B (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{str\+Filename, }
+\item[{const char $\ast$}]{psz\+Mode = {\ttfamily \char`\"{}r+\char`\"{}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_wallet_d_b_abb8766ee5b03e8115438726c625f88a7}
+
+
+Definition at line 102 of file walletdb.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_wallet_d_b_a319209fcf90ea860b668b92c44a3fa7a}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Erase\+Name@{Erase\+Name}}
+\index{Erase\+Name@{Erase\+Name}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Erase\+Name}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+D\+B\+::\+Erase\+Name (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{str\+Address}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_d_b_a319209fcf90ea860b668b92c44a3fa7a}
+
+
+Definition at line 35 of file walletdb.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 2
+
+
+\hypertarget{class_c_wallet_d_b_ac78d839fbda5164c4134ab67911139ca}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Erase\+Pool@{Erase\+Pool}}
+\index{Erase\+Pool@{Erase\+Pool}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Erase\+Pool}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+D\+B\+::\+Erase\+Pool (
+\begin{DoxyParamCaption}
+\item[{{\bf int64\+\_\+t}}]{n\+Pool}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_d_b_ac78d839fbda5164c4134ab67911139ca}
+
+
+Definition at line 176 of file walletdb.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+\hypertarget{class_c_wallet_d_b_a401ec8ec6c7e38cf87be9b92f95052a4}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Erase\+Stealth\+Key\+Meta@{Erase\+Stealth\+Key\+Meta}}
+\index{Erase\+Stealth\+Key\+Meta@{Erase\+Stealth\+Key\+Meta}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Erase\+Stealth\+Key\+Meta}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+D\+B\+::\+Erase\+Stealth\+Key\+Meta (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Key\+I\+D} \&}]{key\+Id}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_d_b_a401ec8ec6c7e38cf87be9b92f95052a4}
+
+
+Definition at line 61 of file walletdb.\+cpp.
+
+\hypertarget{class_c_wallet_d_b_a498e00c693cacc4b558e6f5295ea32f2}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Erase\+Tx@{Erase\+Tx}}
+\index{Erase\+Tx@{Erase\+Tx}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Erase\+Tx}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+D\+B\+::\+Erase\+Tx (
+\begin{DoxyParamCaption}
+\item[{{\bf uint256}}]{hash}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_d_b_a498e00c693cacc4b558e6f5295ea32f2}
+
+
+Definition at line 49 of file walletdb.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 4
+
+
+\hypertarget{class_c_wallet_d_b_ad6e63f550853905fcd67ec9e7c3bef8b}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Erase\+Watch\+Only@{Erase\+Watch\+Only}}
+\index{Erase\+Watch\+Only@{Erase\+Watch\+Only}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Erase\+Watch\+Only}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+D\+B\+::\+Erase\+Watch\+Only (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Script} \&}]{script}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_d_b_ad6e63f550853905fcd67ec9e7c3bef8b}
+
+
+Definition at line 136 of file walletdb.\+cpp.
+
+\hypertarget{class_c_wallet_d_b_af924f6275a873e048699e6ef0bf66346}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Get\+Account\+Credit\+Debit@{Get\+Account\+Credit\+Debit}}
+\index{Get\+Account\+Credit\+Debit@{Get\+Account\+Credit\+Debit}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Get\+Account\+Credit\+Debit}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} C\+Wallet\+D\+B\+::\+Get\+Account\+Credit\+Debit (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{str\+Account}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_d_b_af924f6275a873e048699e6ef0bf66346}
+
+
+Definition at line 208 of file walletdb.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 5
+
+
+\hypertarget{class_c_wallet_d_b_a51555c82291fe16081880110541e207f}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!List\+Account\+Credit\+Debit@{List\+Account\+Credit\+Debit}}
+\index{List\+Account\+Credit\+Debit@{List\+Account\+Credit\+Debit}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{List\+Account\+Credit\+Debit}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Wallet\+D\+B\+::\+List\+Account\+Credit\+Debit (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{str\+Account, }
+\item[{std\+::list$<$ {\bf C\+Accounting\+Entry} $>$ \&}]{acentries}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_d_b_a51555c82291fe16081880110541e207f}
+
+
+Definition at line 220 of file walletdb.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 6
+
+
+\hypertarget{class_c_wallet_d_b_a14f26e53502d1a60dd2b034f830acf03}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Load\+Wallet@{Load\+Wallet}}
+\index{Load\+Wallet@{Load\+Wallet}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Load\+Wallet}]{\setlength{\rightskip}{0pt plus 5cm}{\bf D\+B\+Errors} C\+Wallet\+D\+B\+::\+Load\+Wallet (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Wallet} $\ast$}]{pwallet}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_d_b_a14f26e53502d1a60dd2b034f830acf03}
+
+
+Definition at line 630 of file walletdb.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 7
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 8
+
+
+\hypertarget{class_c_wallet_d_b_afa8d9d374072629b360adb49b9bdd584}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Read\+Account@{Read\+Account}}
+\index{Read\+Account@{Read\+Account}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Read\+Account}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+D\+B\+::\+Read\+Account (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{str\+Account, }
+\item[{{\bf C\+Account} \&}]{account}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_d_b_afa8d9d374072629b360adb49b9bdd584}
+
+
+Definition at line 187 of file walletdb.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 9
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 10
+
+
+\hypertarget{class_c_wallet_d_b_a20eecdac6605607ff7cba2f55ec86f73}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Read\+Best\+Block@{Read\+Best\+Block}}
+\index{Read\+Best\+Block@{Read\+Best\+Block}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Read\+Best\+Block}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+D\+B\+::\+Read\+Best\+Block (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Block\+Locator} \&}]{locator}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_d_b_a20eecdac6605607ff7cba2f55ec86f73}
+
+
+Definition at line 148 of file walletdb.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 11
+
+
+\hypertarget{class_c_wallet_d_b_a6a03927cf247314ccd9b285139de0bd1}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Read\+Pool@{Read\+Pool}}
+\index{Read\+Pool@{Read\+Pool}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Read\+Pool}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+D\+B\+::\+Read\+Pool (
+\begin{DoxyParamCaption}
+\item[{{\bf int64\+\_\+t}}]{n\+Pool, }
+\item[{{\bf C\+Key\+Pool} \&}]{keypool}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_d_b_a6a03927cf247314ccd9b285139de0bd1}
+
+
+Definition at line 165 of file walletdb.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 12
+
+
+\hypertarget{class_c_wallet_d_b_aebcc02069f91916c652d4e3e13be0f0b}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Read\+Stealth\+Address@{Read\+Stealth\+Address}}
+\index{Read\+Stealth\+Address@{Read\+Stealth\+Address}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Read\+Stealth\+Address}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+D\+B\+::\+Read\+Stealth\+Address (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Stealth\+Address} \&}]{sx\+Addr}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_d_b_aebcc02069f91916c652d4e3e13be0f0b}
+
+
+Definition at line 74 of file walletdb.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 13
+
+
+\hypertarget{class_c_wallet_d_b_a3ebeb12f37d9c66512e2bc2903a6854a}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Recover@{Recover}}
+\index{Recover@{Recover}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Recover}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+D\+B\+::\+Recover (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+D\+B\+Env} \&}]{dbenv, }
+\item[{std\+::string}]{filename, }
+\item[{bool}]{f\+Only\+Keys}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_c_wallet_d_b_a3ebeb12f37d9c66512e2bc2903a6854a}
+
+
+Definition at line 837 of file walletdb.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 14
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 15
+
+
+\hypertarget{class_c_wallet_d_b_a44388f1c3ee63191dcb78b1001e9390c}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Recover@{Recover}}
+\index{Recover@{Recover}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Recover}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+D\+B\+::\+Recover (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+D\+B\+Env} \&}]{dbenv, }
+\item[{std\+::string}]{filename}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_c_wallet_d_b_a44388f1c3ee63191dcb78b1001e9390c}
+
+
+Definition at line 915 of file walletdb.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 16
+
+
+\hypertarget{class_c_wallet_d_b_afc27d9c9eef8b31851e6b02dc3191425}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Reorder\+Transactions@{Reorder\+Transactions}}
+\index{Reorder\+Transactions@{Reorder\+Transactions}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Reorder\+Transactions}]{\setlength{\rightskip}{0pt plus 5cm}{\bf D\+B\+Errors} C\+Wallet\+D\+B\+::\+Reorder\+Transactions (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Wallet} $\ast$}]{pwallet}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_d_b_afc27d9c9eef8b31851e6b02dc3191425}
+
+
+Definition at line 263 of file walletdb.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 17
+
+
+\hypertarget{class_c_wallet_d_b_afef640a4990f74fd5af7178c99415cf3}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Write\+Account@{Write\+Account}}
+\index{Write\+Account@{Write\+Account}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Write\+Account}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+D\+B\+::\+Write\+Account (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{str\+Account, }
+\item[{const {\bf C\+Account} \&}]{account}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_d_b_afef640a4990f74fd5af7178c99415cf3}
+
+
+Definition at line 193 of file walletdb.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 18
+
+
+\hypertarget{class_c_wallet_d_b_a958a0138b171e213be35f48933adcb89}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Write\+Accounting\+Entry@{Write\+Accounting\+Entry}}
+\index{Write\+Accounting\+Entry@{Write\+Accounting\+Entry}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Write\+Accounting\+Entry}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+D\+B\+::\+Write\+Accounting\+Entry (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Accounting\+Entry} \&}]{acentry}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_d_b_a958a0138b171e213be35f48933adcb89}
+
+
+Definition at line 203 of file walletdb.\+cpp.
+
+\hypertarget{class_c_wallet_d_b_a5660d366fee16ab81f3e7d3a97892486}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Write\+Best\+Block@{Write\+Best\+Block}}
+\index{Write\+Best\+Block@{Write\+Best\+Block}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Write\+Best\+Block}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+D\+B\+::\+Write\+Best\+Block (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Block\+Locator} \&}]{locator}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_d_b_a5660d366fee16ab81f3e7d3a97892486}
+
+
+Definition at line 142 of file walletdb.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 19
+
+
+\hypertarget{class_c_wallet_d_b_a914fb53d1731daf9b486f164dd325210}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Write\+Crypted\+Key@{Write\+Crypted\+Key}}
+\index{Write\+Crypted\+Key@{Write\+Crypted\+Key}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Write\+Crypted\+Key}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+D\+B\+::\+Write\+Crypted\+Key (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Pub\+Key} \&}]{vch\+Pub\+Key, }
+\item[{const std\+::vector$<$ unsigned char $>$ \&}]{vch\+Crypted\+Secret, }
+\item[{const {\bf C\+Key\+Metadata} \&}]{key\+Meta}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_d_b_a914fb53d1731daf9b486f164dd325210}
+
+
+Definition at line 97 of file walletdb.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 20
+
+
+\hypertarget{class_c_wallet_d_b_a8c69e48e2305775898658e0a4f4616c9}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Write\+C\+Script@{Write\+C\+Script}}
+\index{Write\+C\+Script@{Write\+C\+Script}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Write\+C\+Script}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+D\+B\+::\+Write\+C\+Script (
+\begin{DoxyParamCaption}
+\item[{const {\bf uint160} \&}]{hash, }
+\item[{const {\bf C\+Script} \&}]{redeem\+Script}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_d_b_a8c69e48e2305775898658e0a4f4616c9}
+
+
+Definition at line 124 of file walletdb.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 21
+
+
+\hypertarget{class_c_wallet_d_b_a1d925af18104900bddd19c968a0402b5}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Write\+Default\+Key@{Write\+Default\+Key}}
+\index{Write\+Default\+Key@{Write\+Default\+Key}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Write\+Default\+Key}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+D\+B\+::\+Write\+Default\+Key (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Pub\+Key} \&}]{vch\+Pub\+Key}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_d_b_a1d925af18104900bddd19c968a0402b5}
+
+
+Definition at line 159 of file walletdb.\+cpp.
+
+\hypertarget{class_c_wallet_d_b_a7ebef5e0c7f604aa2159ba96d527e3a2}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Write\+Key@{Write\+Key}}
+\index{Write\+Key@{Write\+Key}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Write\+Key}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+D\+B\+::\+Write\+Key (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Pub\+Key} \&}]{vch\+Pub\+Key, }
+\item[{const {\bf C\+Priv\+Key} \&}]{vch\+Priv\+Key, }
+\item[{const {\bf C\+Key\+Metadata} \&}]{key\+Meta}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_d_b_a7ebef5e0c7f604aa2159ba96d527e3a2}
+
+
+Definition at line 80 of file walletdb.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 22
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 23
+
+
+\hypertarget{class_c_wallet_d_b_a507690da431ef61244941ad39c308aeb}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Write\+Master\+Key@{Write\+Master\+Key}}
+\index{Write\+Master\+Key@{Write\+Master\+Key}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Write\+Master\+Key}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+D\+B\+::\+Write\+Master\+Key (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{n\+I\+D, }
+\item[{const {\bf C\+Master\+Key} \&}]{k\+Master\+Key}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_d_b_a507690da431ef61244941ad39c308aeb}
+
+
+Definition at line 118 of file walletdb.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 24
+
+
+\hypertarget{class_c_wallet_d_b_ab008b6c6e09a60a988cac6e1a9e11886}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Write\+Min\+Version@{Write\+Min\+Version}}
+\index{Write\+Min\+Version@{Write\+Min\+Version}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Write\+Min\+Version}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+D\+B\+::\+Write\+Min\+Version (
+\begin{DoxyParamCaption}
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_d_b_ab008b6c6e09a60a988cac6e1a9e11886}
+
+
+Definition at line 182 of file walletdb.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 25
+
+
+\hypertarget{class_c_wallet_d_b_ad1b3bce77e9dd6ddd8c668a469c38f0a}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Write\+Name@{Write\+Name}}
+\index{Write\+Name@{Write\+Name}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Write\+Name}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+D\+B\+::\+Write\+Name (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{str\+Address, }
+\item[{const std\+::string \&}]{str\+Name}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_d_b_ad1b3bce77e9dd6ddd8c668a469c38f0a}
+
+
+Definition at line 29 of file walletdb.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 26
+
+
+\hypertarget{class_c_wallet_d_b_a6a1f671e6376b38a1f73c8a023abdd38}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Write\+Order\+Pos\+Next@{Write\+Order\+Pos\+Next}}
+\index{Write\+Order\+Pos\+Next@{Write\+Order\+Pos\+Next}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Write\+Order\+Pos\+Next}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+D\+B\+::\+Write\+Order\+Pos\+Next (
+\begin{DoxyParamCaption}
+\item[{{\bf int64\+\_\+t}}]{n\+Order\+Pos\+Next}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_d_b_a6a1f671e6376b38a1f73c8a023abdd38}
+
+
+Definition at line 153 of file walletdb.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 27
+
+
+\hypertarget{class_c_wallet_d_b_ad43630ad28a68c3e8b1a633f09aa0964}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Write\+Pool@{Write\+Pool}}
+\index{Write\+Pool@{Write\+Pool}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Write\+Pool}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+D\+B\+::\+Write\+Pool (
+\begin{DoxyParamCaption}
+\item[{{\bf int64\+\_\+t}}]{n\+Pool, }
+\item[{const {\bf C\+Key\+Pool} \&}]{keypool}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_d_b_ad43630ad28a68c3e8b1a633f09aa0964}
+
+
+Definition at line 170 of file walletdb.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 28
+
+
+\hypertarget{class_c_wallet_d_b_a2bce6f7f050d6d14e2c025a7beba2cfc}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Write\+Stealth\+Address@{Write\+Stealth\+Address}}
+\index{Write\+Stealth\+Address@{Write\+Stealth\+Address}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Write\+Stealth\+Address}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+D\+B\+::\+Write\+Stealth\+Address (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Stealth\+Address} \&}]{sx\+Addr}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_d_b_a2bce6f7f050d6d14e2c025a7beba2cfc}
+
+
+Definition at line 67 of file walletdb.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 29
+
+
+\hypertarget{class_c_wallet_d_b_a68428260802d8acd1a6f87f92b991841}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Write\+Stealth\+Key\+Meta@{Write\+Stealth\+Key\+Meta}}
+\index{Write\+Stealth\+Key\+Meta@{Write\+Stealth\+Key\+Meta}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Write\+Stealth\+Key\+Meta}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+D\+B\+::\+Write\+Stealth\+Key\+Meta (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Key\+I\+D} \&}]{key\+Id, }
+\item[{const {\bf C\+Stealth\+Key\+Metadata} \&}]{sx\+Key\+Meta}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_d_b_a68428260802d8acd1a6f87f92b991841}
+
+
+Definition at line 55 of file walletdb.\+cpp.
+
+\hypertarget{class_c_wallet_d_b_a76d2ca02898221ab66df5d5f7491164e}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Write\+Tx@{Write\+Tx}}
+\index{Write\+Tx@{Write\+Tx}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Write\+Tx}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+D\+B\+::\+Write\+Tx (
+\begin{DoxyParamCaption}
+\item[{{\bf uint256}}]{hash, }
+\item[{const {\bf C\+Wallet\+Tx} \&}]{wtx}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_d_b_a76d2ca02898221ab66df5d5f7491164e}
+
+
+Definition at line 43 of file walletdb.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 30
+
+
+\hypertarget{class_c_wallet_d_b_a05e5a277f66010d12071a5d72cb4dfb0}{}\index{C\+Wallet\+D\+B@{C\+Wallet\+D\+B}!Write\+Watch\+Only@{Write\+Watch\+Only}}
+\index{Write\+Watch\+Only@{Write\+Watch\+Only}!C\+Wallet\+D\+B@{C\+Wallet\+D\+B}}
+\subsubsection[{Write\+Watch\+Only}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Wallet\+D\+B\+::\+Write\+Watch\+Only (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Script} \&}]{script}
+\end{DoxyParamCaption}
+)}\label{class_c_wallet_d_b_a05e5a277f66010d12071a5d72cb4dfb0}
+
+
+Definition at line 130 of file walletdb.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 31
+
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/\hyperlink{walletdb_8h}{walletdb.\+h}\item 
+/home/dev/ds-\/160209/src/\hyperlink{walletdb_8cpp}{walletdb.\+cpp}\end{DoxyCompactItemize}

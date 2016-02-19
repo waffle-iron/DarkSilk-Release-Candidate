@@ -1,0 +1,147 @@
+.TH "CSandstormQueue" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CSandstormQueue \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <sandstorm\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCSandstormQueue\fP ()"
+.br
+.ti -1c
+.RI "template<typename Stream , typename Operation > void \fBSerializationOp\fP (Stream &s, Operation ser_action, int nType, int nVersion)"
+.br
+.ti -1c
+.RI "bool \fBGetAddress\fP (\fBCService\fP &addr)"
+.br
+.ti -1c
+.RI "bool \fBGetProtocolVersion\fP (int &protocolVersion)"
+.br
+.RI "\fIGet the protocol version\&. \fP"
+.ti -1c
+.RI "bool \fBSign\fP ()"
+.br
+.ti -1c
+.RI "bool \fBRelay\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsExpired\fP ()"
+.br
+.RI "\fIIs this Sandstorm expired? \fP"
+.ti -1c
+.RI "bool \fBCheckSignature\fP ()"
+.br
+.RI "\fICheck if we have a valid Stormnode address\&. \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBCTxIn\fP \fBvin\fP"
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBtime\fP"
+.br
+.ti -1c
+.RI "int \fBnDenom\fP"
+.br
+.ti -1c
+.RI "bool \fBready\fP"
+.br
+.ti -1c
+.RI "std::vector< unsigned char > \fBvchSig\fP"
+.br
+.ti -1c
+.RI "\fBADD_SERIALIZE_METHODS\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A currently inprogress Sandstorm merge and denomination information 
+.PP
+Definition at line 150 of file sandstorm\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CSandstormQueue::CSandstormQueue ()\fC [inline]\fP"
+
+.PP
+Definition at line 159 of file sandstorm\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool CSandstormQueue::CheckSignature ()"
+
+.PP
+Check if we have a valid Stormnode address\&. 
+.PP
+Definition at line 2132 of file sandstorm\&.cpp\&.
+.SS "bool CSandstormQueue::GetAddress (\fBCService\fP & addr)\fC [inline]\fP"
+
+.PP
+Definition at line 179 of file sandstorm\&.h\&.
+.SS "bool CSandstormQueue::GetProtocolVersion (int & protocolVersion)\fC [inline]\fP"
+
+.PP
+Get the protocol version\&. 
+.PP
+Definition at line 191 of file sandstorm\&.h\&.
+.SS "bool CSandstormQueue::IsExpired ()\fC [inline]\fP"
+
+.PP
+Is this Sandstorm expired? 
+.PP
+Definition at line 214 of file sandstorm\&.h\&.
+.SS "bool CSandstormQueue::Relay ()"
+
+.PP
+Definition at line 2120 of file sandstorm\&.cpp\&.
+.SS "template<typename Stream , typename Operation > void CSandstormQueue::SerializationOp (Stream & s, Operation ser_action, int nType, int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 171 of file sandstorm\&.h\&.
+.SS "bool CSandstormQueue::Sign ()"
+Sign this Sandstorm transaction 
+.PP
+\fBReturns:\fP
+.RS 4
+true if all conditions are met: 1) we have an active Stormnode, 2) we have a valid Stormnode private key, 3) we signed the message successfully, and 4) we verified the message successfully 
+.RE
+.PP
+
+.PP
+Definition at line 2091 of file sandstorm\&.cpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "CSandstormQueue::ADD_SERIALIZE_METHODS"
+
+.PP
+Definition at line 168 of file sandstorm\&.h\&.
+.SS "int CSandstormQueue::nDenom"
+
+.PP
+Definition at line 155 of file sandstorm\&.h\&.
+.SS "bool CSandstormQueue::ready"
+
+.PP
+Definition at line 156 of file sandstorm\&.h\&.
+.SS "\fBint64_t\fP CSandstormQueue::time"
+
+.PP
+Definition at line 154 of file sandstorm\&.h\&.
+.SS "std::vector<unsigned char> CSandstormQueue::vchSig"
+
+.PP
+Definition at line 157 of file sandstorm\&.h\&.
+.SS "\fBCTxIn\fP CSandstormQueue::vin"
+
+.PP
+Definition at line 153 of file sandstorm\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

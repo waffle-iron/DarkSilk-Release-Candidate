@@ -88,7 +88,7 @@ bool AppInit(int argc, char* argv[])
 
         if (fCommandLine)
         {
-            if (!SelectBaseParamsFromCommandLine()) {
+            if (!SelectParamsFromCommandLine()) {
                 fprintf(stderr, "Error: invalid use of -testnet.\n");
                 return false;
             }
@@ -225,7 +225,7 @@ static bool AppInitRPC(int argc, char* argv[])
         return false;
     }
     // Check for -testnet or -regtest parameter (BaseParams() calls are only valid after this clause)
-    if (!SelectBaseParamsFromCommandLine()) {
+    if (!SelectParamsFromCommandLine()) {
         fprintf(stderr, "Error: Invalid combination of -regtest and -testnet.\n");
         return false;
     }
@@ -251,7 +251,7 @@ Object CallRPC(const string& strMethod, const Array& params)
 
     bool fWait = GetBoolArg("-rpcwait", false); // -rpcwait means try until server has started
     do {
-        bool fConnected = d.connect(GetArg("-rpcconnect", "127.0.0.1"), GetArg("-rpcport", itostr(BaseParams().RPCPort())));
+        bool fConnected = d.connect(GetArg("-rpcconnect", "127.0.0.1"), GetArg("-rpcport", itostr(Params().RPCPort())));
         if (fConnected) break;
         if (fWait)
             MilliSleep(1000);

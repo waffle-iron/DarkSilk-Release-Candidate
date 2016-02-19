@@ -1,0 +1,1091 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="txdb_8cpp" kind="file" language="C++">
+    <compoundname>txdb.cpp</compoundname>
+    <includes refid="txdb_8h" local="yes">txdb.h</includes>
+    <includes refid="uint256_8h" local="yes">uint256.h</includes>
+    <includes refid="txdb-leveldb_8h" local="yes">txdb-leveldb.h</includes>
+    <includes refid="stdint_8h" local="no">stdint.h</includes>
+    <includes local="no">boost/thread.hpp</includes>
+    <incdepgraph>
+      <node id="56780">
+        <label>list</label>
+      </node>
+      <node id="56760">
+        <label>boost/thread/mutex.hpp</label>
+      </node>
+      <node id="56799">
+        <label>leveldb/write_batch.h</label>
+        <link refid="write__batch_8h"/>
+        <childnode refid="56745" relation="include">
+        </childnode>
+        <childnode refid="56797" relation="include">
+        </childnode>
+      </node>
+      <node id="56841">
+        <label>netinet/in.h</label>
+      </node>
+      <node id="56779">
+        <label>amount.h</label>
+        <link refid="amount_8h"/>
+        <childnode refid="56744" relation="include">
+        </childnode>
+        <childnode refid="56758" relation="include">
+        </childnode>
+        <childnode refid="56745" relation="include">
+        </childnode>
+      </node>
+      <node id="56834">
+        <label>arpa/inet.h</label>
+      </node>
+      <node id="56822">
+        <label>boost/thread/condition_variable.hpp</label>
+      </node>
+      <node id="56750">
+        <label>limits</label>
+      </node>
+      <node id="56813">
+        <label>crypto/sha256.h</label>
+        <link refid="sha256_8h"/>
+        <childnode refid="56751" relation="include">
+        </childnode>
+        <childnode refid="56758" relation="include">
+        </childnode>
+      </node>
+      <node id="56814">
+        <label>crypto/argon2/blake2/blake2.h</label>
+        <link refid="blake2_8h"/>
+        <childnode refid="56796" relation="include">
+        </childnode>
+        <childnode refid="56751" relation="include">
+        </childnode>
+        <childnode refid="56762" relation="include">
+        </childnode>
+      </node>
+      <node id="56802">
+        <label>primitives/transaction.h</label>
+        <link refid="transaction_8h"/>
+        <childnode refid="56779" relation="include">
+        </childnode>
+        <childnode refid="56803" relation="include">
+        </childnode>
+        <childnode refid="56744" relation="include">
+        </childnode>
+        <childnode refid="56804" relation="include">
+        </childnode>
+        <childnode refid="56805" relation="include">
+        </childnode>
+        <childnode refid="56819" relation="include">
+        </childnode>
+        <childnode refid="56793" relation="include">
+        </childnode>
+      </node>
+      <node id="56805">
+        <label>script.h</label>
+        <link refid="script_8h"/>
+        <childnode refid="56745" relation="include">
+        </childnode>
+        <childnode refid="56746" relation="include">
+        </childnode>
+        <childnode refid="56751" relation="include">
+        </childnode>
+        <childnode refid="56806" relation="include">
+        </childnode>
+        <childnode refid="56807" relation="include">
+        </childnode>
+        <childnode refid="56808" relation="include">
+        </childnode>
+        <childnode refid="56816" relation="include">
+        </childnode>
+        <childnode refid="56771" relation="include">
+        </childnode>
+        <childnode refid="56817" relation="include">
+        </childnode>
+      </node>
+      <node id="56790">
+        <label>openssl/rand.h</label>
+      </node>
+      <node id="56768">
+        <label>assert.h</label>
+      </node>
+      <node id="56755">
+        <label>boost/tuple/tuple.hpp</label>
+      </node>
+      <node id="56840">
+        <label>net/if.h</label>
+      </node>
+      <node id="56801">
+        <label>txmempool.h</label>
+        <link refid="txmempool_8h"/>
+        <childnode refid="56802" relation="include">
+        </childnode>
+        <childnode refid="56820" relation="include">
+        </childnode>
+        <childnode refid="56825" relation="include">
+        </childnode>
+        <childnode refid="56779" relation="include">
+        </childnode>
+        <childnode refid="56829" relation="include">
+        </childnode>
+      </node>
+      <node id="56798">
+        <label>leveldb/options.h</label>
+        <link refid="options_8h"/>
+        <childnode refid="56796" relation="include">
+        </childnode>
+      </node>
+      <node id="56824">
+        <label>boost/thread/recursive_mutex.hpp</label>
+      </node>
+      <node id="56764">
+        <label>version.h</label>
+        <link refid="version_8h"/>
+        <childnode refid="56765" relation="include">
+        </childnode>
+        <childnode refid="56745" relation="include">
+        </childnode>
+      </node>
+      <node id="56825">
+        <label>coins.h</label>
+        <link refid="coins_8h"/>
+        <childnode refid="56826" relation="include">
+        </childnode>
+        <childnode refid="56801" relation="include">
+        </childnode>
+        <childnode refid="56768" relation="include">
+        </childnode>
+        <childnode refid="56751" relation="include">
+        </childnode>
+        <childnode refid="56806" relation="include">
+        </childnode>
+        <childnode refid="56828" relation="include">
+        </childnode>
+      </node>
+      <node id="56761">
+        <label>sys/mman.h</label>
+      </node>
+      <node id="56758">
+        <label>stdlib.h</label>
+      </node>
+      <node id="56848">
+        <label>chain.h</label>
+        <link refid="chain_8h"/>
+        <childnode refid="56849" relation="include">
+        </childnode>
+        <childnode refid="56771" relation="include">
+        </childnode>
+        <childnode refid="56846" relation="include">
+        </childnode>
+        <childnode refid="56746" relation="include">
+        </childnode>
+        <childnode refid="56806" relation="include">
+        </childnode>
+      </node>
+      <node id="56806">
+        <label>boost/foreach.hpp</label>
+      </node>
+      <node id="56789">
+        <label>openssl/crypto.h</label>
+      </node>
+      <node id="56837">
+        <label>compat.h</label>
+        <link refid="compat_8h"/>
+        <childnode refid="56838" relation="include">
+        </childnode>
+        <childnode refid="56761" relation="include">
+        </childnode>
+        <childnode refid="56839" relation="include">
+        </childnode>
+        <childnode refid="56772" relation="include">
+        </childnode>
+        <childnode refid="56840" relation="include">
+        </childnode>
+        <childnode refid="56841" relation="include">
+        </childnode>
+        <childnode refid="56834" relation="include">
+        </childnode>
+        <childnode refid="56842" relation="include">
+        </childnode>
+        <childnode refid="56762" relation="include">
+        </childnode>
+        <childnode refid="56843" relation="include">
+        </childnode>
+        <childnode refid="56763" relation="include">
+        </childnode>
+        <childnode refid="56844" relation="include">
+        </childnode>
+      </node>
+      <node id="56785">
+        <label>boost/date_time/posix_time/posix_time_types.hpp</label>
+      </node>
+      <node id="56810">
+        <label>openssl/sha.h</label>
+      </node>
+      <node id="56844">
+        <label>errno.h</label>
+      </node>
+      <node id="56749">
+        <label>cassert</label>
+      </node>
+      <node id="56778">
+        <label>stdexcept</label>
+      </node>
+      <node id="56771">
+        <label>util.h</label>
+        <link refid="util_8h"/>
+        <childnode refid="56772" relation="include">
+        </childnode>
+        <childnode refid="56773" relation="include">
+        </childnode>
+        <childnode refid="56774" relation="include">
+        </childnode>
+        <childnode refid="56744" relation="include">
+        </childnode>
+        <childnode refid="56775" relation="include">
+        </childnode>
+        <childnode refid="56779" relation="include">
+        </childnode>
+        <childnode refid="56747" relation="include">
+        </childnode>
+        <childnode refid="56780" relation="include">
+        </childnode>
+        <childnode refid="56770" relation="include">
+        </childnode>
+        <childnode refid="56746" relation="include">
+        </childnode>
+        <childnode refid="56745" relation="include">
+        </childnode>
+        <childnode refid="56781" relation="include">
+        </childnode>
+        <childnode refid="56782" relation="include">
+        </childnode>
+        <childnode refid="56783" relation="include">
+        </childnode>
+        <childnode refid="56784" relation="include">
+        </childnode>
+        <childnode refid="56785" relation="include">
+        </childnode>
+        <childnode refid="56786" relation="include">
+        </childnode>
+        <childnode refid="56787" relation="include">
+        </childnode>
+        <childnode refid="56788" relation="include">
+        </childnode>
+        <childnode refid="56789" relation="include">
+        </childnode>
+        <childnode refid="56790" relation="include">
+        </childnode>
+        <childnode refid="56791" relation="include">
+        </childnode>
+        <childnode refid="56751" relation="include">
+        </childnode>
+      </node>
+      <node id="56845">
+        <label>protocol.h</label>
+        <link refid="protocol_8h"/>
+        <childnode refid="56846" relation="include">
+        </childnode>
+        <childnode refid="56744" relation="include">
+        </childnode>
+        <childnode refid="56836" relation="include">
+        </childnode>
+        <childnode refid="56751" relation="include">
+        </childnode>
+        <childnode refid="56745" relation="include">
+        </childnode>
+      </node>
+      <node id="56784">
+        <label>boost/date_time/gregorian/gregorian_types.hpp</label>
+      </node>
+      <node id="56792">
+        <label>leveldb/db.h</label>
+        <link refid="leveldb_2include_2leveldb_2db_8h"/>
+        <childnode refid="56751" relation="include">
+        </childnode>
+        <childnode refid="56793" relation="include">
+        </childnode>
+        <childnode refid="56794" relation="include">
+        </childnode>
+        <childnode refid="56798" relation="include">
+        </childnode>
+      </node>
+      <node id="56745">
+        <label>string</label>
+      </node>
+      <node id="56850">
+        <label>scrypt.h</label>
+        <link refid="scrypt_8h"/>
+        <childnode refid="56751" relation="include">
+        </childnode>
+        <childnode refid="56758" relation="include">
+        </childnode>
+        <childnode refid="56771" relation="include">
+        </childnode>
+        <childnode refid="56830" relation="include">
+        </childnode>
+      </node>
+      <node id="56747">
+        <label>map</label>
+      </node>
+      <node id="56741">
+        <label>/home/dev/ds-160209/src/txdb.cpp</label>
+        <link refid="txdb.cpp"/>
+        <childnode refid="56742" relation="include">
+        </childnode>
+        <childnode refid="56803" relation="include">
+        </childnode>
+        <childnode refid="56851" relation="include">
+        </childnode>
+        <childnode refid="56751" relation="include">
+        </childnode>
+        <childnode refid="56781" relation="include">
+        </childnode>
+      </node>
+      <node id="56781">
+        <label>boost/thread.hpp</label>
+      </node>
+      <node id="56847">
+        <label>addrman.h</label>
+        <link refid="addrman_8h"/>
+        <childnode refid="56836" relation="include">
+        </childnode>
+        <childnode refid="56845" relation="include">
+        </childnode>
+        <childnode refid="56820" relation="include">
+        </childnode>
+        <childnode refid="56819" relation="include">
+        </childnode>
+        <childnode refid="56771" relation="include">
+        </childnode>
+        <childnode refid="56747" relation="include">
+        </childnode>
+        <childnode refid="56746" relation="include">
+        </childnode>
+      </node>
+      <node id="56743">
+        <label>leveldbwrapper.h</label>
+        <link refid="leveldbwrapper_8h"/>
+        <childnode refid="56744" relation="include">
+        </childnode>
+        <childnode refid="56766" relation="include">
+        </childnode>
+        <childnode refid="56771" relation="include">
+        </childnode>
+        <childnode refid="56783" relation="include">
+        </childnode>
+        <childnode refid="56792" relation="include">
+        </childnode>
+        <childnode refid="56799" relation="include">
+        </childnode>
+      </node>
+      <node id="56796">
+        <label>stddef.h</label>
+      </node>
+      <node id="56807">
+        <label>boost/variant.hpp</label>
+      </node>
+      <node id="56843">
+        <label>netdb.h</label>
+      </node>
+      <node id="56838">
+        <label>sys/fcntl.h</label>
+      </node>
+      <node id="56826">
+        <label>undo.h</label>
+        <link refid="undo_8h"/>
+        <childnode refid="56827" relation="include">
+        </childnode>
+      </node>
+      <node id="56797">
+        <label>leveldb/status.h</label>
+        <link refid="status_8h"/>
+        <childnode refid="56745" relation="include">
+        </childnode>
+        <childnode refid="56795" relation="include">
+        </childnode>
+      </node>
+      <node id="56829">
+        <label>boost/circular_buffer.hpp</label>
+      </node>
+      <node id="56744">
+        <label>serialize.h</label>
+        <link refid="serialize_8h"/>
+        <childnode refid="56745" relation="include">
+        </childnode>
+        <childnode refid="56746" relation="include">
+        </childnode>
+        <childnode refid="56747" relation="include">
+        </childnode>
+        <childnode refid="56748" relation="include">
+        </childnode>
+        <childnode refid="56749" relation="include">
+        </childnode>
+        <childnode refid="56750" relation="include">
+        </childnode>
+        <childnode refid="56751" relation="include">
+        </childnode>
+        <childnode refid="56752" relation="include">
+        </childnode>
+        <childnode refid="56753" relation="include">
+        </childnode>
+        <childnode refid="56754" relation="include">
+        </childnode>
+        <childnode refid="56755" relation="include">
+        </childnode>
+        <childnode refid="56756" relation="include">
+        </childnode>
+        <childnode refid="56764" relation="include">
+        </childnode>
+      </node>
+      <node id="56762">
+        <label>limits.h</label>
+      </node>
+      <node id="56821">
+        <label>threadsafety.h</label>
+        <link refid="threadsafety_8h"/>
+      </node>
+      <node id="56835">
+        <label>mruset.h</label>
+        <link refid="mruset_8h"/>
+        <childnode refid="56748" relation="include">
+        </childnode>
+        <childnode refid="56831" relation="include">
+        </childnode>
+      </node>
+      <node id="56774">
+        <label>sys/resource.h</label>
+      </node>
+      <node id="56786">
+        <label>openssl/bio.h</label>
+      </node>
+      <node id="56833">
+        <label>boost/signals2/signal.hpp</label>
+      </node>
+      <node id="56836">
+        <label>netbase.h</label>
+        <link refid="netbase_8h"/>
+        <childnode refid="56745" relation="include">
+        </childnode>
+        <childnode refid="56746" relation="include">
+        </childnode>
+        <childnode refid="56744" relation="include">
+        </childnode>
+        <childnode refid="56837" relation="include">
+        </childnode>
+      </node>
+      <node id="56809">
+        <label>hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="56803" relation="include">
+        </childnode>
+        <childnode refid="56744" relation="include">
+        </childnode>
+        <childnode refid="56810" relation="include">
+        </childnode>
+        <childnode refid="56811" relation="include">
+        </childnode>
+        <childnode refid="56812" relation="include">
+        </childnode>
+        <childnode refid="56813" relation="include">
+        </childnode>
+        <childnode refid="56814" relation="include">
+        </childnode>
+        <childnode refid="56815" relation="include">
+        </childnode>
+        <childnode refid="56746" relation="include">
+        </childnode>
+      </node>
+      <node id="56842">
+        <label>ifaddrs.h</label>
+      </node>
+      <node id="56817">
+        <label>stealth.h</label>
+        <link refid="stealth_8h"/>
+        <childnode refid="56771" relation="include">
+        </childnode>
+        <childnode refid="56744" relation="include">
+        </childnode>
+        <childnode refid="56758" relation="include">
+        </childnode>
+        <childnode refid="56793" relation="include">
+        </childnode>
+        <childnode refid="56746" relation="include">
+        </childnode>
+        <childnode refid="56818" relation="include">
+        </childnode>
+      </node>
+      <node id="56772">
+        <label>sys/types.h</label>
+      </node>
+      <node id="56769">
+        <label>ios</label>
+      </node>
+      <node id="56759">
+        <label>string.h</label>
+      </node>
+      <node id="56765">
+        <label>clientversion.h</label>
+        <link refid="clientversion_8h"/>
+      </node>
+      <node id="56753">
+        <label>cstdio</label>
+      </node>
+      <node id="56823">
+        <label>boost/thread/locks.hpp</label>
+      </node>
+      <node id="56788">
+        <label>openssl/buffer.h</label>
+      </node>
+      <node id="56754">
+        <label>boost/type_traits/is_fundamental.hpp</label>
+      </node>
+      <node id="56800">
+        <label>main.h</label>
+        <link refid="main_8h"/>
+        <childnode refid="56801" relation="include">
+        </childnode>
+        <childnode refid="56830" relation="include">
+        </childnode>
+        <childnode refid="56805" relation="include">
+        </childnode>
+        <childnode refid="56766" relation="include">
+        </childnode>
+        <childnode refid="56742" relation="include">
+        </childnode>
+        <childnode refid="56848" relation="include">
+        </childnode>
+        <childnode refid="56780" relation="include">
+        </childnode>
+        <childnode refid="56828" relation="include">
+        </childnode>
+      </node>
+      <node id="56783">
+        <label>boost/filesystem/path.hpp</label>
+      </node>
+      <node id="56828">
+        <label>boost/unordered_map.hpp</label>
+      </node>
+      <node id="56808">
+        <label>pubkey.h</label>
+        <link refid="pubkey_8h"/>
+        <childnode refid="56809" relation="include">
+        </childnode>
+        <childnode refid="56744" relation="include">
+        </childnode>
+        <childnode refid="56803" relation="include">
+        </childnode>
+        <childnode refid="56778" relation="include">
+        </childnode>
+        <childnode refid="56746" relation="include">
+        </childnode>
+      </node>
+      <node id="56763">
+        <label>unistd.h</label>
+      </node>
+      <node id="56746">
+        <label>vector</label>
+      </node>
+      <node id="56816">
+        <label>bignum.h</label>
+        <link refid="bignum_8h"/>
+        <childnode refid="56744" relation="include">
+        </childnode>
+        <childnode refid="56803" relation="include">
+        </childnode>
+        <childnode refid="56791" relation="include">
+        </childnode>
+        <childnode refid="56778" relation="include">
+        </childnode>
+        <childnode refid="56746" relation="include">
+        </childnode>
+        <childnode refid="56751" relation="include">
+        </childnode>
+      </node>
+      <node id="56830">
+        <label>net.h</label>
+        <link refid="net_8h"/>
+        <childnode refid="56831" relation="include">
+        </childnode>
+        <childnode refid="56832" relation="include">
+        </childnode>
+        <childnode refid="56806" relation="include">
+        </childnode>
+        <childnode refid="56833" relation="include">
+        </childnode>
+        <childnode refid="56790" relation="include">
+        </childnode>
+        <childnode refid="56834" relation="include">
+        </childnode>
+        <childnode refid="56835" relation="include">
+        </childnode>
+        <childnode refid="56836" relation="include">
+        </childnode>
+        <childnode refid="56845" relation="include">
+        </childnode>
+        <childnode refid="56847" relation="include">
+        </childnode>
+        <childnode refid="56809" relation="include">
+        </childnode>
+        <childnode refid="56766" relation="include">
+        </childnode>
+      </node>
+      <node id="56811">
+        <label>openssl/ripemd.h</label>
+      </node>
+      <node id="56782">
+        <label>boost/filesystem.hpp</label>
+      </node>
+      <node id="56770">
+        <label>utility</label>
+      </node>
+      <node id="56827">
+        <label>compressor.h</label>
+        <link refid="compressor_8h"/>
+        <childnode refid="56802" relation="include">
+        </childnode>
+        <childnode refid="56742" relation="include">
+        </childnode>
+      </node>
+      <node id="56777">
+        <label>sstream</label>
+      </node>
+      <node id="56851">
+        <label>txdb-leveldb.h</label>
+        <link refid="txdb-leveldb_8h"/>
+        <childnode refid="56800" relation="include">
+        </childnode>
+        <childnode refid="56747" relation="include">
+        </childnode>
+        <childnode refid="56745" relation="include">
+        </childnode>
+        <childnode refid="56746" relation="include">
+        </childnode>
+        <childnode refid="56792" relation="include">
+        </childnode>
+        <childnode refid="56799" relation="include">
+        </childnode>
+        <childnode refid="56766" relation="include">
+        </childnode>
+      </node>
+      <node id="56787">
+        <label>openssl/evp.h</label>
+      </node>
+      <node id="56775">
+        <label>tinyformat.h</label>
+        <link refid="tinyformat_8h"/>
+        <childnode refid="56749" relation="include">
+        </childnode>
+        <childnode refid="56776" relation="include">
+        </childnode>
+        <childnode refid="56777" relation="include">
+        </childnode>
+        <childnode refid="56778" relation="include">
+        </childnode>
+      </node>
+      <node id="56751">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="56815">
+        <label>crypto/argon2/argon2.h</label>
+        <link refid="argon2_8h"/>
+        <childnode refid="56751" relation="include">
+        </childnode>
+        <childnode refid="56796" relation="include">
+        </childnode>
+        <childnode refid="56762" relation="include">
+        </childnode>
+      </node>
+      <node id="56766">
+        <label>streams.h</label>
+        <link refid="streams_8h"/>
+        <childnode refid="56756" relation="include">
+        </childnode>
+        <childnode refid="56744" relation="include">
+        </childnode>
+        <childnode refid="56767" relation="include">
+        </childnode>
+        <childnode refid="56768" relation="include">
+        </childnode>
+        <childnode refid="56769" relation="include">
+        </childnode>
+        <childnode refid="56750" relation="include">
+        </childnode>
+        <childnode refid="56747" relation="include">
+        </childnode>
+        <childnode refid="56748" relation="include">
+        </childnode>
+        <childnode refid="56751" relation="include">
+        </childnode>
+        <childnode refid="56745" relation="include">
+        </childnode>
+        <childnode refid="56759" relation="include">
+        </childnode>
+        <childnode refid="56770" relation="include">
+        </childnode>
+        <childnode refid="56746" relation="include">
+        </childnode>
+      </node>
+      <node id="56773">
+        <label>sys/time.h</label>
+      </node>
+      <node id="56776">
+        <label>iostream</label>
+      </node>
+      <node id="56831">
+        <label>deque</label>
+      </node>
+      <node id="56803">
+        <label>uint256.h</label>
+        <link refid="uint256_8h"/>
+        <childnode refid="56768" relation="include">
+        </childnode>
+        <childnode refid="56752" relation="include">
+        </childnode>
+        <childnode refid="56778" relation="include">
+        </childnode>
+        <childnode refid="56751" relation="include">
+        </childnode>
+        <childnode refid="56745" relation="include">
+        </childnode>
+        <childnode refid="56746" relation="include">
+        </childnode>
+      </node>
+      <node id="56839">
+        <label>sys/socket.h</label>
+      </node>
+      <node id="56795">
+        <label>leveldb/slice.h</label>
+        <link refid="slice_8h"/>
+        <childnode refid="56768" relation="include">
+        </childnode>
+        <childnode refid="56796" relation="include">
+        </childnode>
+        <childnode refid="56759" relation="include">
+        </childnode>
+        <childnode refid="56745" relation="include">
+        </childnode>
+      </node>
+      <node id="56832">
+        <label>boost/array.hpp</label>
+      </node>
+      <node id="56791">
+        <label>openssl/bn.h</label>
+      </node>
+      <node id="56742">
+        <label>txdb.h</label>
+        <link refid="txdb_8h"/>
+        <childnode refid="56743" relation="include">
+        </childnode>
+        <childnode refid="56800" relation="include">
+        </childnode>
+        <childnode refid="56747" relation="include">
+        </childnode>
+        <childnode refid="56745" relation="include">
+        </childnode>
+        <childnode refid="56770" relation="include">
+        </childnode>
+        <childnode refid="56746" relation="include">
+        </childnode>
+      </node>
+      <node id="56819">
+        <label>timedata.h</label>
+        <link refid="timedata_8h"/>
+        <childnode refid="56751" relation="include">
+        </childnode>
+      </node>
+      <node id="56756">
+        <label>allocators.h</label>
+        <link refid="allocators_8h"/>
+        <childnode refid="56757" relation="include">
+        </childnode>
+        <childnode refid="56759" relation="include">
+        </childnode>
+        <childnode refid="56745" relation="include">
+        </childnode>
+        <childnode refid="56760" relation="include">
+        </childnode>
+        <childnode refid="56747" relation="include">
+        </childnode>
+        <childnode refid="56761" relation="include">
+        </childnode>
+        <childnode refid="56762" relation="include">
+        </childnode>
+        <childnode refid="56763" relation="include">
+        </childnode>
+      </node>
+      <node id="56846">
+        <label>chainparams.h</label>
+        <link refid="chainparams_8h"/>
+        <childnode refid="56816" relation="include">
+        </childnode>
+        <childnode refid="56803" relation="include">
+        </childnode>
+        <childnode refid="56746" relation="include">
+        </childnode>
+      </node>
+      <node id="56748">
+        <label>set</label>
+      </node>
+      <node id="56767">
+        <label>algorithm</label>
+      </node>
+      <node id="56812">
+        <label>crypto/ripemd160.h</label>
+        <link refid="ripemd160_8h"/>
+        <childnode refid="56751" relation="include">
+        </childnode>
+        <childnode refid="56758" relation="include">
+        </childnode>
+      </node>
+      <node id="56804">
+        <label>util.h</label>
+      </node>
+      <node id="56793">
+        <label>stdio.h</label>
+      </node>
+      <node id="56757">
+        <label>cleanse.h</label>
+        <link refid="cleanse_8h"/>
+        <childnode refid="56758" relation="include">
+        </childnode>
+      </node>
+      <node id="56752">
+        <label>cstring</label>
+      </node>
+      <node id="56820">
+        <label>sync.h</label>
+        <link refid="sync_8h"/>
+        <childnode refid="56821" relation="include">
+        </childnode>
+        <childnode refid="56822" relation="include">
+        </childnode>
+        <childnode refid="56823" relation="include">
+        </childnode>
+        <childnode refid="56760" relation="include">
+        </childnode>
+        <childnode refid="56824" relation="include">
+        </childnode>
+      </node>
+      <node id="56818">
+        <label>inttypes.h</label>
+      </node>
+      <node id="56794">
+        <label>leveldb/iterator.h</label>
+        <link refid="iterator_8h"/>
+        <childnode refid="56795" relation="include">
+        </childnode>
+        <childnode refid="56797" relation="include">
+        </childnode>
+      </node>
+      <node id="56849">
+        <label>primitives/block.h</label>
+        <link refid="primitives_2block_8h"/>
+        <childnode refid="56802" relation="include">
+        </childnode>
+        <childnode refid="56815" relation="include">
+        </childnode>
+        <childnode refid="56850" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="txdb_8cpp_1ac78624a7ae785f74ad74dd33341b6cd4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BatchWriteCoins</definition>
+        <argsstring>(CLevelDBBatch &amp;batch, const uint256 &amp;hash, const CCoins &amp;coins)</argsstring>
+        <name>BatchWriteCoins</name>
+        <param>
+          <type><ref refid="class_c_level_d_b_batch" kindref="compound">CLevelDBBatch</ref> &amp;</type>
+          <declname>batch</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuint256" kindref="compound">uint256</ref> &amp;</type>
+          <declname>hash</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_coins" kindref="compound">CCoins</ref> &amp;</type>
+          <declname>coins</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb.cpp" line="16" column="1" bodyfile="/home/dev/ds-160209/src/txdb.cpp" bodystart="16" bodyend="21"/>
+        <references refid="class_c_coins_1af28a2e44f0b41c3a4a6366607b4b8f81" compoundref="coins_8h" startline="286" endline="291">CCoins::IsPruned</references>
+        <references refid="class_c_level_d_b_batch_1a22bf093d560b4ce3333e8f4a947faa7f" compoundref="leveldbwrapper_8h" startline="51" endline="59">CLevelDBBatch::Erase</references>
+        <references refid="class_c_level_d_b_batch_1ab459da1abafa27e834de9a4cc25b6f2d" compoundref="leveldbwrapper_8h" startline="35" endline="48">CLevelDBBatch::Write</references>
+        <referencedby refid="class_c_coins_view_d_b_1a33f98ec9323ce48e1704327bc8a2a002" compoundref="coins_8cpp" startline="282" endline="300">CCoinsViewDB::BatchWrite</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="txdb_8cpp_1a51ba67d9783e3a8bbc639f48fc43f48e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void BatchWriteHashBestChain</definition>
+        <argsstring>(CLevelDBBatch &amp;batch, const uint256 &amp;hash)</argsstring>
+        <name>BatchWriteHashBestChain</name>
+        <param>
+          <type><ref refid="class_c_level_d_b_batch" kindref="compound">CLevelDBBatch</ref> &amp;</type>
+          <declname>batch</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuint256" kindref="compound">uint256</ref> &amp;</type>
+          <declname>hash</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb.cpp" line="23" column="1" bodyfile="/home/dev/ds-160209/src/txdb.cpp" bodystart="23" bodyend="25"/>
+        <references refid="class_c_level_d_b_batch_1ab459da1abafa27e834de9a4cc25b6f2d" compoundref="leveldbwrapper_8h" startline="35" endline="48">CLevelDBBatch::Write</references>
+        <referencedby refid="class_c_coins_view_d_b_1a33f98ec9323ce48e1704327bc8a2a002" compoundref="coins_8cpp" startline="282" endline="300">CCoinsViewDB::BatchWrite</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2009-2016<sp/>Satoshi<sp/>Nakamoto</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2009-2016<sp/>The<sp/>Bitcoin<sp/>developers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Distributed<sp/>under<sp/>the<sp/>MIT/X11<sp/>software<sp/>license,<sp/>see<sp/>the<sp/>accompanying</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>file<sp/>COPYING<sp/>or<sp/>http://www.opensource.org/licenses/mit-license.php.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="txdb_8h" kindref="compound">txdb.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="uint256_8h" kindref="compound">uint256.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="txdb-leveldb_8h" kindref="compound">txdb-leveldb.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="stdint_8h" kindref="compound">stdint.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/thread.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">using<sp/>namespace<sp/></highlight><highlight class="normal"><ref refid="namespacestd" kindref="compound">std</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="txdb_8h_1ac78624a7ae785f74ad74dd33341b6cd4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="txdb_8cpp_1ac78624a7ae785f74ad74dd33341b6cd4" kindref="member">BatchWriteCoins</ref>(<ref refid="class_c_level_d_b_batch" kindref="compound">CLevelDBBatch</ref><sp/>&amp;batch,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classuint256" kindref="compound">uint256</ref><sp/>&amp;<ref refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" kindref="member">hash</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_coins" kindref="compound">CCoins</ref><sp/>&amp;coins)<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(coins.<ref refid="class_c_coins_1af28a2e44f0b41c3a4a6366607b4b8f81" kindref="member">IsPruned</ref>())</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>batch.<ref refid="class_c_level_d_b_batch_1a22bf093d560b4ce3333e8f4a947faa7f" kindref="member">Erase</ref>(make_pair(</highlight><highlight class="charliteral">&apos;c&apos;</highlight><highlight class="normal">,<sp/>hash));</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>batch.<ref refid="class_c_level_d_b_batch_1ab459da1abafa27e834de9a4cc25b6f2d" kindref="member">Write</ref>(make_pair(</highlight><highlight class="charliteral">&apos;c&apos;</highlight><highlight class="normal">,<sp/>hash),<sp/>coins);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="txdb_8h_1a51ba67d9783e3a8bbc639f48fc43f48e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="txdb_8cpp_1a51ba67d9783e3a8bbc639f48fc43f48e" kindref="member">BatchWriteHashBestChain</ref>(<ref refid="class_c_level_d_b_batch" kindref="compound">CLevelDBBatch</ref><sp/>&amp;batch,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classuint256" kindref="compound">uint256</ref><sp/>&amp;<ref refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" kindref="member">hash</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>batch.<ref refid="class_c_level_d_b_batch_1ab459da1abafa27e834de9a4cc25b6f2d" kindref="member">Write</ref>(</highlight><highlight class="charliteral">&apos;B&apos;</highlight><highlight class="normal">,<sp/>hash);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="class_c_block_tree_d_b_1a52fd1b1dc02c2a4e977099e2c2c50424" refkind="member"><highlight class="normal"><ref refid="class_c_block_tree_d_b_1a52fd1b1dc02c2a4e977099e2c2c50424" kindref="member">CBlockTreeDB::CBlockTreeDB</ref>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>nCacheSize,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fMemory,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fWipe)<sp/>:<sp/><ref refid="class_c_level_d_b_wrapper" kindref="compound">CLevelDBWrapper</ref>(<ref refid="util_8cpp_1ab83866a054745d4b30a3948a1b44beba" kindref="member">GetDataDir</ref>()<sp/>/<sp/></highlight><highlight class="stringliteral">&quot;blocks&quot;</highlight><highlight class="normal"><sp/>/<sp/></highlight><highlight class="stringliteral">&quot;index&quot;</highlight><highlight class="normal">,<sp/>nCacheSize,<sp/>fMemory,<sp/>fWipe)<sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="class_c_block_tree_d_b_1a608a04a08445d95e477cb66889c679d0" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_block_tree_d_b_1a608a04a08445d95e477cb66889c679d0" kindref="member">CBlockTreeDB::WriteBlockIndex</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_disk_block_index" kindref="compound">CDiskBlockIndex</ref>&amp;<sp/>blockindex)</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_c_level_d_b_wrapper_1a740caa1aefbafc888838ea7f70dc31f4" kindref="member">Write</ref>(make_pair(</highlight><highlight class="charliteral">&apos;b&apos;</highlight><highlight class="normal">,<sp/>blockindex.<ref refid="class_c_disk_block_index_1adbe404c55c68be782360b4594d355fad" kindref="member">GetBlockHash</ref>()),<sp/>blockindex);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="class_c_block_tree_d_b_1ae248032ee1f1303dea54a0b36ad84755" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_block_tree_d_b_1ae248032ee1f1303dea54a0b36ad84755" kindref="member">CBlockTreeDB::WriteBlockFileInfo</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nFile,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_block_file_info" kindref="compound">CBlockFileInfo</ref><sp/>&amp;info)<sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_c_level_d_b_wrapper_1a740caa1aefbafc888838ea7f70dc31f4" kindref="member">Write</ref>(make_pair(</highlight><highlight class="charliteral">&apos;f&apos;</highlight><highlight class="normal">,<sp/>nFile),<sp/>info);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="class_c_block_tree_d_b_1a6f951198dc53fbe9194626ff82638656" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_block_tree_d_b_1a6f951198dc53fbe9194626ff82638656" kindref="member">CBlockTreeDB::ReadBlockFileInfo</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nFile,<sp/><ref refid="class_c_block_file_info" kindref="compound">CBlockFileInfo</ref><sp/>&amp;info)<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_c_level_d_b_wrapper_1aa3b816ae43c930b4bf1f85461bff4b5b" kindref="member">Read</ref>(make_pair(</highlight><highlight class="charliteral">&apos;f&apos;</highlight><highlight class="normal">,<sp/>nFile),<sp/>info);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="class_c_block_tree_d_b_1ae1f4ea54edf05a056d2da00ea90a9394" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_block_tree_d_b_1ae1f4ea54edf05a056d2da00ea90a9394" kindref="member">CBlockTreeDB::WriteLastBlockFile</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nFile)<sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_c_level_d_b_wrapper_1a740caa1aefbafc888838ea7f70dc31f4" kindref="member">Write</ref>(</highlight><highlight class="charliteral">&apos;l&apos;</highlight><highlight class="normal">,<sp/>nFile);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="class_c_block_tree_d_b_1a8fa5d150b98f4fd1aa8cf503eddfccef" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_block_tree_d_b_1a8fa5d150b98f4fd1aa8cf503eddfccef" kindref="member">CBlockTreeDB::WriteReindexing</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fReindexing)<sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fReindexing)</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_c_level_d_b_wrapper_1a740caa1aefbafc888838ea7f70dc31f4" kindref="member">Write</ref>(</highlight><highlight class="charliteral">&apos;R&apos;</highlight><highlight class="normal">,<sp/></highlight><highlight class="charliteral">&apos;1&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_c_level_d_b_wrapper_1a9f67e2880ba191fdc9439ba34e315d72" kindref="member">Erase</ref>(</highlight><highlight class="charliteral">&apos;R&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="class_c_block_tree_d_b_1a1abf6fc392048428aa24a12b7942824b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_block_tree_d_b_1a1abf6fc392048428aa24a12b7942824b" kindref="member">CBlockTreeDB::ReadReindexing</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>&amp;fReindexing)<sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>fReindexing<sp/>=<sp/><ref refid="class_c_level_d_b_wrapper_1a9c9d2e1c06c45c5d6883f33136f6718b" kindref="member">Exists</ref>(</highlight><highlight class="charliteral">&apos;R&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="class_c_block_tree_d_b_1adb1276fe2f0e0c4c106660948c581711" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_block_tree_d_b_1adb1276fe2f0e0c4c106660948c581711" kindref="member">CBlockTreeDB::ReadLastBlockFile</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;nFile)<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_c_level_d_b_wrapper_1aa3b816ae43c930b4bf1f85461bff4b5b" kindref="member">Read</ref>(</highlight><highlight class="charliteral">&apos;l&apos;</highlight><highlight class="normal">,<sp/>nFile);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="class_c_block_tree_d_b_1a74383427266d627e84c2d0c8e21e03c7" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_block_tree_d_b_1a74383427266d627e84c2d0c8e21e03c7" kindref="member">CBlockTreeDB::ReadTxIndex</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classuint256" kindref="compound">uint256</ref><sp/>&amp;txid,<sp/><ref refid="class_c_disk_tx_pos" kindref="compound">CDiskTxPos</ref><sp/>&amp;pos)<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_c_level_d_b_wrapper_1aa3b816ae43c930b4bf1f85461bff4b5b" kindref="member">Read</ref>(make_pair(</highlight><highlight class="charliteral">&apos;t&apos;</highlight><highlight class="normal">,<sp/>txid),<sp/>pos);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="class_c_block_tree_d_b_1a1e03745f9675ad352a1483a0aa7ef308" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_block_tree_d_b_1a1e03745f9675ad352a1483a0aa7ef308" kindref="member">CBlockTreeDB::WriteTxIndex</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::pair&lt;uint256,<sp/>CDiskTxPos&gt;<sp/>&gt;&amp;vect)<sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_level_d_b_batch" kindref="compound">CLevelDBBatch</ref><sp/>batch;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(std::vector&lt;std::pair&lt;uint256,CDiskTxPos&gt;<sp/>&gt;::const_iterator<sp/>it=vect.begin();<sp/>it!=vect.end();<sp/>it++)</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>batch.<ref refid="class_c_level_d_b_batch_1ab459da1abafa27e834de9a4cc25b6f2d" kindref="member">Write</ref>(make_pair(</highlight><highlight class="charliteral">&apos;t&apos;</highlight><highlight class="normal">,<sp/>it-&gt;first),<sp/>it-&gt;second);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_c_level_d_b_wrapper_1a820484c9e427f9e3400396e750acf4b8" kindref="member">WriteBatch</ref>(batch);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="class_c_block_tree_d_b_1af2f65b70ac5d8a198d4f29a7e909c08a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_block_tree_d_b_1af2f65b70ac5d8a198d4f29a7e909c08a" kindref="member">CBlockTreeDB::WriteFlag</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<ref refid="testharness_8cc_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fValue)<sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_c_level_d_b_wrapper_1a740caa1aefbafc888838ea7f70dc31f4" kindref="member">Write</ref>(std::make_pair(</highlight><highlight class="charliteral">&apos;F&apos;</highlight><highlight class="normal">,<sp/>name),<sp/>fValue<sp/>?<sp/></highlight><highlight class="charliteral">&apos;1&apos;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="charliteral">&apos;0&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78" refid="class_c_block_tree_d_b_1acd779c4653fd9a87fffe95d53ce7c6d3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_block_tree_d_b_1acd779c4653fd9a87fffe95d53ce7c6d3" kindref="member">CBlockTreeDB::ReadFlag</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<ref refid="testharness_8cc_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>&amp;fValue)<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>ch;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="class_c_level_d_b_wrapper_1aa3b816ae43c930b4bf1f85461bff4b5b" kindref="member">Read</ref>(std::make_pair(</highlight><highlight class="charliteral">&apos;F&apos;</highlight><highlight class="normal">,<sp/>name),<sp/>ch))</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>fValue<sp/>=<sp/>ch<sp/>==<sp/></highlight><highlight class="charliteral">&apos;1&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="class_c_block_tree_d_b_1a12be19bb1d7253eeb40e1aa88b032346" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_block_tree_d_b_1a12be19bb1d7253eeb40e1aa88b032346" kindref="member">CBlockTreeDB::LoadBlockIndexGuts</ref>()</highlight></codeline>
+<codeline lineno="87"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>boost::scoped_ptr&lt;leveldb::Iterator&gt;<sp/>pcursor(<ref refid="class_c_level_d_b_wrapper_1a5f43d01a8a6b26464b875d190e002d74" kindref="member">NewIterator</ref>());</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_data_stream" kindref="compound">CDataStream</ref><sp/>ssKeySet(<ref refid="serialize_8h_1a6b7b47dd702d9e331586d485013fd1eaa34949680c53028d35a449bf88b3c329d" kindref="member">SER_DISK</ref>,<sp/>CLIENT_VERSION);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>ssKeySet<sp/>&lt;&lt;<sp/>make_pair(</highlight><highlight class="charliteral">&apos;b&apos;</highlight><highlight class="normal">,<sp/><ref refid="classuint256" kindref="compound">uint256</ref>(0));</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>pcursor-&gt;Seek(ssKeySet.<ref refid="class_c_data_stream_1aa3a9ecf166f36f4ea531d2b23628d2c9" kindref="member">str</ref>());</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Load<sp/>mapBlockIndex</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(pcursor-&gt;Valid())<sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>boost::this_thread::interruption_point();</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">leveldb::Slice</ref><sp/>slKey<sp/>=<sp/>pcursor-&gt;key();</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_data_stream" kindref="compound">CDataStream</ref><sp/>ssKey(slKey.<ref refid="classleveldb_1_1_slice_1aa64861043d9deee6889461bf0593cf73" kindref="member">data</ref>(),<sp/>slKey.<ref refid="classleveldb_1_1_slice_1aa64861043d9deee6889461bf0593cf73" kindref="member">data</ref>()+slKey.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>(),<sp/><ref refid="serialize_8h_1a6b7b47dd702d9e331586d485013fd1eaa34949680c53028d35a449bf88b3c329d" kindref="member">SER_DISK</ref>,<sp/>CLIENT_VERSION);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>chType;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ssKey<sp/>&gt;&gt;<sp/>chType;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(chType<sp/>==<sp/></highlight><highlight class="charliteral">&apos;b&apos;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">leveldb::Slice</ref><sp/>slValue<sp/>=<sp/>pcursor-&gt;value();</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_data_stream" kindref="compound">CDataStream</ref><sp/>ssValue(slValue.<ref refid="classleveldb_1_1_slice_1aa64861043d9deee6889461bf0593cf73" kindref="member">data</ref>(),<sp/>slValue.<ref refid="classleveldb_1_1_slice_1aa64861043d9deee6889461bf0593cf73" kindref="member">data</ref>()+slValue.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>(),<sp/><ref refid="serialize_8h_1a6b7b47dd702d9e331586d485013fd1eaa34949680c53028d35a449bf88b3c329d" kindref="member">SER_DISK</ref>,<sp/>CLIENT_VERSION);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_disk_block_index" kindref="compound">CDiskBlockIndex</ref><sp/>diskindex;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ssValue<sp/>&gt;&gt;<sp/>diskindex;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Construct<sp/>block<sp/>index<sp/>object</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_block_index" kindref="compound">CBlockIndex</ref>*<sp/>pindexNew<sp/>=<sp/><ref refid="txdb-leveldb_8cpp_1af3adfd64a90ee443bfa5fe16321aa2d7" kindref="member">InsertBlockIndex</ref>(diskindex.GetBlockHash());</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pindexNew-&gt;<ref refid="class_c_block_index_1a1ef11137155df1dd5c81491630cece39" kindref="member">pprev</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/><ref refid="txdb-leveldb_8cpp_1af3adfd64a90ee443bfa5fe16321aa2d7" kindref="member">InsertBlockIndex</ref>(diskindex.hashPrev);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pindexNew-&gt;<ref refid="class_c_block_index_1aebfc8d6b95852546760e742553d7bfd5" kindref="member">nHeight</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>diskindex.nHeight;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pindexNew-&gt;<ref refid="class_c_block_index_1a3bf9ecd8938c42be6a4b14d3c7ef5c21" kindref="member">nFile</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>diskindex.nFile;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pindexNew-&gt;<ref refid="class_c_block_index_1af164283dfb2d62ac44be8d10446bce4a" kindref="member">nDataPos</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>diskindex.nDataPos;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pindexNew-&gt;<ref refid="class_c_block_index_1a865ddd56406c23e98cdc61511a61eb64" kindref="member">nUndoPos</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>diskindex.nUndoPos;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pindexNew-&gt;<ref refid="class_c_block_index_1a45126301a0a6e26010527a7bbfc1ef58" kindref="member">nVersion</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>diskindex.nVersion;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pindexNew-&gt;<ref refid="class_c_block_index_1a0601b6b2bd6eaedfbc283c00d045a21c" kindref="member">hashMerkleRoot</ref><sp/>=<sp/>diskindex.hashMerkleRoot;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pindexNew-&gt;<ref refid="class_c_block_index_1a4b687a226e9e166b0f91c1b616b543a6" kindref="member">nTime</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>diskindex.nTime;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pindexNew-&gt;<ref refid="class_c_block_index_1a3324894e6af612d1bd76f89378435713" kindref="member">nBits</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>diskindex.nBits;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pindexNew-&gt;<ref refid="class_c_block_index_1a5e0a648ed1df8da171eba636d5ebef01" kindref="member">nNonce</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>diskindex.nNonce;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pindexNew-&gt;<ref refid="class_c_block_index_1ac5a336b45ca70e3ed2fc090bf2ee3011" kindref="member">nStatus</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>diskindex.nStatus;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pindexNew-&gt;<ref refid="class_c_block_index_1ac8e219a377839d2f9133a4387f46e44e" kindref="member">nTx</ref><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>diskindex.nTx;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="main_8h_1a20a76dbc6ac5b8a6e0aaef85522b1069" kindref="member">CheckProofOfWork</ref>(pindexNew-&gt;<ref refid="class_c_block_index_1ab843ef9b8b0a0193ec3a5c24738e484f" kindref="member">GetBlockHash</ref>(),<sp/>pindexNew-&gt;<ref refid="class_c_block_index_1a3324894e6af612d1bd76f89378435713" kindref="member">nBits</ref>))</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>error(</highlight><highlight class="stringliteral">&quot;LoadBlockIndex()<sp/>:<sp/>CheckProofOfWork<sp/>failed:<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>pindexNew-&gt;<ref refid="class_c_block_index_1abed1fcbcd372db6b9efa6bb9da317469" kindref="member">ToString</ref>());</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pcursor-&gt;Next();</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>if<sp/>shutdown<sp/>requested<sp/>or<sp/>finished<sp/>loading<sp/>block<sp/>index</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(std::exception<sp/>&amp;e)<sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>error(</highlight><highlight class="stringliteral">&quot;%s<sp/>:<sp/>Deserialize<sp/>or<sp/>I/O<sp/>error<sp/>-<sp/>%s&quot;</highlight><highlight class="normal">,<sp/>__func__,<sp/>e.what());</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/txdb.cpp"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,80 @@
+\hypertarget{lax__der__privatekey__parsing_8c}{}\section{/home/dev/ds-\/160209/src/secp256k1/contrib/lax\+\_\+der\+\_\+privatekey\+\_\+parsing.c File Reference}
+\label{lax__der__privatekey__parsing_8c}\index{/home/dev/ds-\/160209/src/secp256k1/contrib/lax\+\_\+der\+\_\+privatekey\+\_\+parsing.\+c@{/home/dev/ds-\/160209/src/secp256k1/contrib/lax\+\_\+der\+\_\+privatekey\+\_\+parsing.\+c}}
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$secp256k1.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}lax\+\_\+der\+\_\+privatekey\+\_\+parsing.\+h\char`\"{}}\\*
+Include dependency graph for lax\+\_\+der\+\_\+privatekey\+\_\+parsing.\+c\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{lax__der__privatekey__parsing_8c_ab807c294559193bc65b53f14ca677db6}{ec\+\_\+privkey\+\_\+import\+\_\+der} (const \hyperlink{secp256k1_8h_a282ec9e6dfec8c35955c3eb2f7476e5e}{secp256k1\+\_\+context} $\ast$ctx, unsigned char $\ast$out32, const unsigned char $\ast$privkey, size\+\_\+t privkeylen)
+\item 
+int \hyperlink{lax__der__privatekey__parsing_8c_a9ff2773bdc052e3af4def4afb183c95c}{ec\+\_\+privkey\+\_\+export\+\_\+der} (const \hyperlink{secp256k1_8h_a282ec9e6dfec8c35955c3eb2f7476e5e}{secp256k1\+\_\+context} $\ast$ctx, unsigned char $\ast$privkey, size\+\_\+t $\ast$privkeylen, const unsigned char $\ast$key32, int compressed)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{lax__der__privatekey__parsing_8c_a9ff2773bdc052e3af4def4afb183c95c}{}\index{lax\+\_\+der\+\_\+privatekey\+\_\+parsing.\+c@{lax\+\_\+der\+\_\+privatekey\+\_\+parsing.\+c}!ec\+\_\+privkey\+\_\+export\+\_\+der@{ec\+\_\+privkey\+\_\+export\+\_\+der}}
+\index{ec\+\_\+privkey\+\_\+export\+\_\+der@{ec\+\_\+privkey\+\_\+export\+\_\+der}!lax\+\_\+der\+\_\+privatekey\+\_\+parsing.\+c@{lax\+\_\+der\+\_\+privatekey\+\_\+parsing.\+c}}
+\subsubsection[{ec\+\_\+privkey\+\_\+export\+\_\+der}]{\setlength{\rightskip}{0pt plus 5cm}int ec\+\_\+privkey\+\_\+export\+\_\+der (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+context} $\ast$}]{ctx, }
+\item[{unsigned char $\ast$}]{privkey, }
+\item[{size\+\_\+t $\ast$}]{privkeylen, }
+\item[{const unsigned char $\ast$}]{seckey, }
+\item[{int}]{compressed}
+\end{DoxyParamCaption}
+)}\label{lax__der__privatekey__parsing_8c_a9ff2773bdc052e3af4def4afb183c95c}
+Export a private key in D\+E\+R format.
+
+Returns\+: 1 if the private key was valid. Args\+: ctx\+: pointer to a context object, initialized for signing (cannot be N\+U\+L\+L) Out\+: privkey\+: pointer to an array for storing the private key in B\+E\+R. Should have space for 279 bytes, and cannot be N\+U\+L\+L. privkeylen\+: Pointer to an int where the length of the private key in privkey will be stored. In\+: seckey\+: pointer to a 32-\/byte secret key to export. compressed\+: 1 if the key should be exported in compressed format, 0 otherwise
+
+This function is purely meant for compatibility with applications that require B\+E\+R encoded keys. When working with secp256k1-\/specific code, the simple 32-\/byte private keys are sufficient.
+
+Note that this function does not guarantee correct D\+E\+R output. It is guaranteed to be parsable by secp256k1\+\_\+ec\+\_\+privkey\+\_\+import\+\_\+der 
+
+Definition at line 56 of file lax\+\_\+der\+\_\+privatekey\+\_\+parsing.\+c.
+
+
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+\hypertarget{lax__der__privatekey__parsing_8c_ab807c294559193bc65b53f14ca677db6}{}\index{lax\+\_\+der\+\_\+privatekey\+\_\+parsing.\+c@{lax\+\_\+der\+\_\+privatekey\+\_\+parsing.\+c}!ec\+\_\+privkey\+\_\+import\+\_\+der@{ec\+\_\+privkey\+\_\+import\+\_\+der}}
+\index{ec\+\_\+privkey\+\_\+import\+\_\+der@{ec\+\_\+privkey\+\_\+import\+\_\+der}!lax\+\_\+der\+\_\+privatekey\+\_\+parsing.\+c@{lax\+\_\+der\+\_\+privatekey\+\_\+parsing.\+c}}
+\subsubsection[{ec\+\_\+privkey\+\_\+import\+\_\+der}]{\setlength{\rightskip}{0pt plus 5cm}int ec\+\_\+privkey\+\_\+import\+\_\+der (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+context} $\ast$}]{ctx, }
+\item[{unsigned char $\ast$}]{seckey, }
+\item[{const unsigned char $\ast$}]{privkey, }
+\item[{size\+\_\+t}]{privkeylen}
+\end{DoxyParamCaption}
+)}\label{lax__der__privatekey__parsing_8c_ab807c294559193bc65b53f14ca677db6}
+Import a private key in D\+E\+R format. Returns\+: 1 if a private key was extracted. Args\+: ctx\+: pointer to a context object (cannot be N\+U\+L\+L). Out\+: seckey\+: pointer to a 32-\/byte array for storing the private key. (cannot be N\+U\+L\+L). In\+: privkey\+: pointer to a private key in D\+E\+R format (cannot be N\+U\+L\+L). privkeylen\+: length of the D\+E\+R private key pointed to be privkey.
+
+This function will accept more than just strict D\+E\+R, and even allow some B\+E\+R violations. The public key stored inside the D\+E\+R-\/encoded private key is not verified for correctness, nor are the curve parameters. Use this function only if you know in advance it is supposed to contain a secp256k1 private key. 
+
+Definition at line 12 of file lax\+\_\+der\+\_\+privatekey\+\_\+parsing.\+c.
+
+
+
+Here is the call graph for this function\+:
+% FIG 4
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 5
+
+

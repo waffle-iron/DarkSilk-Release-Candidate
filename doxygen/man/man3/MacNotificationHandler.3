@@ -1,0 +1,57 @@
+.TH "MacNotificationHandler" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MacNotificationHandler \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <macnotificationhandler\&.h>\fP
+.PP
+Inherits QObject\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBshowNotification\fP (const QString &title, const QString &text)"
+.br
+.ti -1c
+.RI "void \fBsendAppleScript\fP (const QString &script)"
+.br
+.ti -1c
+.RI "bool \fBhasUserNotificationCenterSupport\fP (void)"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBMacNotificationHandler\fP * \fBinstance\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Macintosh-specific notification handler (supports UserNotificationCenter)\&. 
+.PP
+Definition at line 7 of file macnotificationhandler\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool MacNotificationHandler::hasUserNotificationCenterSupport (void)"
+check if OS can handle UserNotifications 
+.SS "\fBMacNotificationHandler\fP * MacNotificationHandler::instance ()\fC [static]\fP"
+
+.PP
+Definition at line 59 of file macnotificationhandler\&.mm\&.
+.SS "void MacNotificationHandler::sendAppleScript (const QString & script)"
+executes AppleScript 
+.PP
+Definition at line 34 of file macnotificationhandler\&.mm\&.
+.SS "void MacNotificationHandler::showNotification (const QString & title, const QString & text)"
+shows a 10\&.8+ UserNotification in the UserNotificationCenter 
+.PP
+Definition at line 6 of file macnotificationhandler\&.mm\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

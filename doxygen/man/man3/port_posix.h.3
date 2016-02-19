@@ -1,0 +1,81 @@
+.TH "/home/dev/ds-160209/src/leveldb/port/port_posix.h" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/leveldb/port/port_posix.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <endian\&.h>\fP
+.br
+\fC#include <pthread\&.h>\fP
+.br
+\fC#include <stdint\&.h>\fP
+.br
+\fC#include <string>\fP
+.br
+\fC#include 'port/atomic_pointer\&.h'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBleveldb::port::Mutex\fP"
+.br
+.ti -1c
+.RI "class \fBleveldb::port::CondVar\fP"
+.br
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBleveldb\fP"
+.br
+.ti -1c
+.RI " \fBleveldb::port\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBPLATFORM_IS_LITTLE_ENDIAN\fP   (__BYTE_ORDER == __LITTLE_ENDIAN)"
+.br
+.ti -1c
+.RI "#define \fBLEVELDB_ONCE_INIT\fP   PTHREAD_ONCE_INIT"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBleveldb::port::InitOnce\fP (port::OnceType *, void(*initializer)())"
+.br
+.ti -1c
+.RI "bool \fBleveldb::port::Snappy_Compress\fP (const char *input, size_t length,::std::string *output)"
+.br
+.ti -1c
+.RI "bool \fBleveldb::port::Snappy_GetUncompressedLength\fP (const char *input, size_t length, size_t *result)"
+.br
+.ti -1c
+.RI "bool \fBleveldb::port::Snappy_Uncompress\fP (const char *input_data, size_t input_length, char *output)"
+.br
+.ti -1c
+.RI "bool \fBleveldb::port::GetHeapProfile\fP (void(*\fBfunc\fP)(void *, const char *, int), void *\fBarg\fP)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define LEVELDB_ONCE_INIT   PTHREAD_ONCE_INIT"
+
+.PP
+Definition at line 113 of file port_posix\&.h\&.
+.SS "#define PLATFORM_IS_LITTLE_ENDIAN   (__BYTE_ORDER == __LITTLE_ENDIAN)"
+
+.PP
+Definition at line 50 of file port_posix\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

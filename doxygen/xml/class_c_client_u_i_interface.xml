@@ -1,0 +1,360 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_client_u_i_interface" kind="class" language="C++" prot="public">
+    <compoundname>CClientUIInterface</compoundname>
+    <includes refid="ui__interface_8h" local="no">ui_interface.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1" prot="public" static="no">
+        <name>MessageBoxFlags</name>
+        <enumvalue id="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a9c1da08e2b3366c89ecf434061c2bf92" prot="public">
+          <name>ICON_INFORMATION</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a399d1f571bc91d1eb1abb78c7e9a8426" prot="public">
+          <name>ICON_WARNING</name>
+          <initializer>= (1U &lt;&lt; 0)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a54415d26bda61103f9a08367ff6a2675" prot="public">
+          <name>ICON_ERROR</name>
+          <initializer>= (1U &lt;&lt; 1)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a74ba4315826bb22d61da9aa413894052" prot="public">
+          <name>ICON_MASK</name>
+          <initializer>= (ICON_INFORMATION | ICON_WARNING | ICON_ERROR)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Mask of all available icons in <ref refid="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1" kindref="member">CClientUIInterface::MessageBoxFlags</ref> This needs to be updated, when icons are changed there! </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a9874dd49edc70d5c347196ad8a631141" prot="public">
+          <name>BTN_OK</name>
+          <initializer>= 0x00000400U</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>These values are taken from qmessagebox.h &quot;enum StandardButton&quot; to be directly usable </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a65395b59b20c2bec28beff89cf1ea7b3" prot="public">
+          <name>BTN_YES</name>
+          <initializer>= 0x00004000U</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1abc6f3d18af663a338d9a3a89dd65acaa" prot="public">
+          <name>BTN_NO</name>
+          <initializer>= 0x00010000U</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a111f038c73aecac1e6772fe84ab102f3" prot="public">
+          <name>BTN_ABORT</name>
+          <initializer>= 0x00040000U</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1af45dfc06c4320e666df48862af00ce8e" prot="public">
+          <name>BTN_RETRY</name>
+          <initializer>= 0x00080000U</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a759627c22b14d82cab2c4c66b208865a" prot="public">
+          <name>BTN_IGNORE</name>
+          <initializer>= 0x00100000U</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a957491d8ef1742163159e3a0e7a47997" prot="public">
+          <name>BTN_CLOSE</name>
+          <initializer>= 0x00200000U</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1adb2eb0543a2517b2d01c56d95b5b62db" prot="public">
+          <name>BTN_CANCEL</name>
+          <initializer>= 0x00400000U</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a234b444123b0501c459cb488d6ddd7aa" prot="public">
+          <name>BTN_DISCARD</name>
+          <initializer>= 0x00800000U</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a7577f9affa9c9da8c8c09fa765c7c8a6" prot="public">
+          <name>BTN_HELP</name>
+          <initializer>= 0x01000000U</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a937d50453abf11c9d2467b349dddfe3a" prot="public">
+          <name>BTN_APPLY</name>
+          <initializer>= 0x02000000U</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a85a5b49edf0d32d5748d36cda8bec712" prot="public">
+          <name>BTN_RESET</name>
+          <initializer>= 0x04000000U</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a76de9bd8c805f928e7085bf925617076" prot="public">
+          <name>BTN_MASK</name>
+          <initializer>= (BTN_OK | BTN_YES | BTN_NO | BTN_ABORT | BTN_RETRY | BTN_IGNORE |
+                    BTN_CLOSE | BTN_CANCEL | BTN_DISCARD | BTN_HELP | BTN_APPLY | BTN_RESET)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Mask of all available buttons in <ref refid="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1" kindref="member">CClientUIInterface::MessageBoxFlags</ref> This needs to be updated, when buttons are changed there! </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1ab03a110663fb005d666b74954a741304" prot="public">
+          <name>MODAL</name>
+          <initializer>= 0x10000000U</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Force blocking, modal message box dialog (not just OS notification) </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1af82009148c4cbf1ccb930f2895a8c8d6" prot="public">
+          <name>NOSHOWGUI</name>
+          <initializer>= 0x20000000U</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Don&apos;t bring GUI to foreground. Use for messages during initialization </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1aa19b607c0480fe7c25879f1f8fc54727" prot="public">
+          <name>MSG_INFORMATION</name>
+          <initializer>= (ICON_INFORMATION | BTN_OK)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Predefined combinations for certain default usage cases </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a72b206c5d6304b4e2257281a5ca551eb" prot="public">
+          <name>MSG_WARNING</name>
+          <initializer>= (ICON_WARNING | BTN_OK | MODAL)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a0551e67c07eb6a81edf6e43fed89759f" prot="public">
+          <name>MSG_ERROR</name>
+          <initializer>= (ICON_ERROR | BTN_OK | MODAL)</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Flags for <ref refid="class_c_client_u_i_interface_1ab3f23c730300df11cf9ff369fbae0635" kindref="member">CClientUIInterface::ThreadSafeMessageBox</ref> </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/ui_interface.h" line="36" column="1" bodyfile="/home/dev/ds-160209/src/ui_interface.h" bodystart="35" bodyend="75"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_c_client_u_i_interface_1ab3f23c730300df11cf9ff369fbae0635" prot="public" static="no" mutable="no">
+        <type>boost::signals2::signal&lt; void(const std::string &amp;message, const std::string &amp;caption, unsigned int style)&gt;</type>
+        <definition>boost::signals2::signal&lt;void (const std::string&amp; message, const std::string&amp; caption, unsigned int style)&gt; CClientUIInterface::ThreadSafeMessageBox</definition>
+        <argsstring></argsstring>
+        <name>ThreadSafeMessageBox</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Show message box. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/ui_interface.h" line="78" column="1" bodyfile="/home/dev/ds-160209/src/ui_interface.h" bodystart="78" bodyend="-1"/>
+        <referencedby refid="class_c_coins_view_error_catcher_1a762969de31b62e55d01f1cdf0b178eb9" compoundref="init_8cpp" startline="102" endline="114">CCoinsViewErrorCatcher::GetCoins</referencedby>
+        <referencedby refid="main_8h_1af573b79d097a9ffe6503869f838ccf42" compoundref="main_8cpp" startline="478" endline="486">AbortNode</referencedby>
+        <referencedby refid="main_8h_1a6df609da0bad1550cbb2cdc781ad2904" compoundref="main_8cpp" startline="2024" endline="2039">CheckDiskSpace</referencedby>
+        <referencedby refid="noui_8cpp_1ad4eab1820a36fab7debaa999ca082f9d" compoundref="noui_8cpp" startline="45" endline="51">noui_connect</referencedby>
+        <referencedby refid="darksilk_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="darksilk_8cpp" startline="128" endline="350">main</referencedby>
+        <referencedby refid="rpcserver_8h_1af4d692a884c24c4abe2fc3f2b165542d" compoundref="rpcserver_8cpp" startline="517" endline="634">StartRPCThreads</referencedby>
+        <referencedby refid="timedata_8h_1ad8af089fc8835e11c7d77f6b473fccae" compoundref="timedata_8cpp" startline="40" endline="111">AddTimeData</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_client_u_i_interface_1a11db1bca5727c45f52714bc63108ce6a" prot="public" static="no" mutable="no">
+        <type>boost::signals2::signal&lt; bool(<ref refid="amount_8h_1a4eaf3a5239714d8c45b851527f7cb564" kindref="member">CAmount</ref> nFeeRequired, const std::string &amp;strCaption), boost::signals2::last_value&lt; bool &gt; &gt;</type>
+        <definition>boost::signals2::signal&lt;bool (CAmount nFeeRequired, const std::string&amp; strCaption), boost::signals2::last_value&lt;bool&gt; &gt; CClientUIInterface::ThreadSafeAskFee</definition>
+        <argsstring></argsstring>
+        <name>ThreadSafeAskFee</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Ask the user whether they want to pay a fee or not. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/ui_interface.h" line="81" column="1" bodyfile="/home/dev/ds-160209/src/ui_interface.h" bodystart="81" bodyend="-1"/>
+        <referencedby refid="noui_8cpp_1ad4eab1820a36fab7debaa999ca082f9d" compoundref="noui_8cpp" startline="45" endline="51">noui_connect</referencedby>
+        <referencedby refid="darksilk_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="darksilk_8cpp" startline="128" endline="350">main</referencedby>
+        <referencedby refid="class_wallet_model_1a497418d4a8566b881bab45dec7ad8fd8" compoundref="walletmodel_8cpp" startline="213" endline="488">WalletModel::sendCoins</referencedby>
+        <referencedby refid="class_c_wallet_1a509492fe45395af29a4a16045686c239" compoundref="wallet_8cpp" startline="3347" endline="3383">CWallet::SendStealthMoney</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_client_u_i_interface_1a307f12eb3aadb694a82eb16714441d75" prot="public" static="no" mutable="no">
+        <type>boost::signals2::signal&lt; void(const std::string &amp;strURI)&gt;</type>
+        <definition>boost::signals2::signal&lt;void (const std::string&amp; strURI)&gt; CClientUIInterface::ThreadSafeHandleURI</definition>
+        <argsstring></argsstring>
+        <name>ThreadSafeHandleURI</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Handle a URL passed at the command line. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/ui_interface.h" line="84" column="1" bodyfile="/home/dev/ds-160209/src/ui_interface.h" bodystart="84" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_client_u_i_interface_1abc63cc3f3e5e15632f713d859dbc6bc2" prot="public" static="no" mutable="no">
+        <type>boost::signals2::signal&lt; void(const std::string &amp;message)&gt;</type>
+        <definition>boost::signals2::signal&lt;void (const std::string &amp;message)&gt; CClientUIInterface::InitMessage</definition>
+        <argsstring></argsstring>
+        <name>InitMessage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Progress message during initialization. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/ui_interface.h" line="93" column="1" bodyfile="/home/dev/ds-160209/src/ui_interface.h" bodystart="93" bodyend="-1"/>
+        <referencedby refid="init_8h_1a1a4c1bfbf6ba1db77e988b89b9cadfd3" compoundref="init_8cpp" startline="375" endline="1285">AppInit2</referencedby>
+        <referencedby refid="noui_8cpp_1ad4eab1820a36fab7debaa999ca082f9d" compoundref="noui_8cpp" startline="45" endline="51">noui_connect</referencedby>
+        <referencedby refid="darksilk_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="darksilk_8cpp" startline="128" endline="350">main</referencedby>
+        <referencedby refid="class_c_wallet_1aeeeca131336b2ec20cede9a2fccc203a" compoundref="wallet_8cpp" startline="4331" endline="4363">CWallet::TopUpKeyPool</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_client_u_i_interface_1a996160f65965769cf7fc50e6fd17dc9a" prot="public" static="no" mutable="no">
+        <type>boost::signals2::signal&lt; std::string(const char *psz)&gt;</type>
+        <definition>boost::signals2::signal&lt;std::string (const char* psz)&gt; CClientUIInterface::Translate</definition>
+        <argsstring></argsstring>
+        <name>Translate</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Translate a message to the native language of the user. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/ui_interface.h" line="96" column="1" bodyfile="/home/dev/ds-160209/src/ui_interface.h" bodystart="96" bodyend="-1"/>
+        <referencedby refid="darksilk_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" compoundref="darksilk_8cpp" startline="128" endline="350">main</referencedby>
+        <referencedby refid="ui__interface_8h_1aad133bb6103b53cebf03fd01e2f11ba1" compoundref="ui__interface_8h" startline="117" endline="121">_</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_client_u_i_interface_1a496995d44db8dc3e3ef84d345e25967d" prot="public" static="no" mutable="no">
+        <type>boost::signals2::signal&lt; void(int newNumConnections)&gt;</type>
+        <definition>boost::signals2::signal&lt;void (int newNumConnections)&gt; CClientUIInterface::NotifyNumConnectionsChanged</definition>
+        <argsstring></argsstring>
+        <name>NotifyNumConnectionsChanged</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Number of network connections changed. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/ui_interface.h" line="99" column="1" bodyfile="/home/dev/ds-160209/src/ui_interface.h" bodystart="99" bodyend="-1"/>
+        <referencedby refid="net_8cpp_1aa1111c12121e039bbd8eedb556e4514a" compoundref="net_8cpp" startline="754" endline="1131">ThreadSocketHandler</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_client_u_i_interface_1a2c42ebdda06512513445cd86881b157a" prot="public" static="no" mutable="no">
+        <type>boost::signals2::signal&lt; void(const <ref refid="classuint256" kindref="compound">uint256</ref> &amp;<ref refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" kindref="member">hash</ref>, <ref refid="ui__interface_8h_1a293ba931937e469a6327b8d6b4872969" kindref="member">ChangeType</ref> status)&gt;</type>
+        <definition>boost::signals2::signal&lt;void (const uint256 &amp;hash, ChangeType status)&gt; CClientUIInterface::NotifyAlertChanged</definition>
+        <argsstring></argsstring>
+        <name>NotifyAlertChanged</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>New, updated or cancelled alert. <simplesect kind="note"><para>called with lock cs_mapAlerts held. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/ui_interface.h" line="105" column="1" bodyfile="/home/dev/ds-160209/src/ui_interface.h" bodystart="105" bodyend="-1"/>
+        <referencedby refid="class_c_alert_1af3e6b2e5d3584f58c5d7be9dbd72b4cc" compoundref="alert_8cpp" startline="174" endline="263">CAlert::ProcessAlert</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_client_u_i_interface_1a64e516e507dd74f3639c51dffa645af2" prot="public" static="no" mutable="no">
+        <type>boost::signals2::signal&lt; void(const std::string &amp;title, int nProgress)&gt;</type>
+        <definition>boost::signals2::signal&lt;void (const std::string &amp;title, int nProgress)&gt; CClientUIInterface::ShowProgress</definition>
+        <argsstring></argsstring>
+        <name>ShowProgress</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Show progress e.g. for verifychain </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/ui_interface.h" line="108" column="1" bodyfile="/home/dev/ds-160209/src/ui_interface.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Signals for UI communication. </para>    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/ui_interface.h" line="32" column="1" bodyfile="/home/dev/ds-160209/src/ui_interface.h" bodystart="31" bodyend="109"/>
+    <listofallmembers>
+      <member refid="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a111f038c73aecac1e6772fe84ab102f3" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>BTN_ABORT</name></member>
+      <member refid="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a937d50453abf11c9d2467b349dddfe3a" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>BTN_APPLY</name></member>
+      <member refid="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1adb2eb0543a2517b2d01c56d95b5b62db" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>BTN_CANCEL</name></member>
+      <member refid="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a957491d8ef1742163159e3a0e7a47997" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>BTN_CLOSE</name></member>
+      <member refid="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a234b444123b0501c459cb488d6ddd7aa" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>BTN_DISCARD</name></member>
+      <member refid="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a7577f9affa9c9da8c8c09fa765c7c8a6" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>BTN_HELP</name></member>
+      <member refid="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a759627c22b14d82cab2c4c66b208865a" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>BTN_IGNORE</name></member>
+      <member refid="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a76de9bd8c805f928e7085bf925617076" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>BTN_MASK</name></member>
+      <member refid="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1abc6f3d18af663a338d9a3a89dd65acaa" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>BTN_NO</name></member>
+      <member refid="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a9874dd49edc70d5c347196ad8a631141" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>BTN_OK</name></member>
+      <member refid="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a85a5b49edf0d32d5748d36cda8bec712" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>BTN_RESET</name></member>
+      <member refid="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1af45dfc06c4320e666df48862af00ce8e" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>BTN_RETRY</name></member>
+      <member refid="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a65395b59b20c2bec28beff89cf1ea7b3" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>BTN_YES</name></member>
+      <member refid="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a54415d26bda61103f9a08367ff6a2675" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>ICON_ERROR</name></member>
+      <member refid="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a9c1da08e2b3366c89ecf434061c2bf92" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>ICON_INFORMATION</name></member>
+      <member refid="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a74ba4315826bb22d61da9aa413894052" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>ICON_MASK</name></member>
+      <member refid="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a399d1f571bc91d1eb1abb78c7e9a8426" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>ICON_WARNING</name></member>
+      <member refid="class_c_client_u_i_interface_1abc63cc3f3e5e15632f713d859dbc6bc2" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>InitMessage</name></member>
+      <member refid="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>MessageBoxFlags</name></member>
+      <member refid="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1ab03a110663fb005d666b74954a741304" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>MODAL</name></member>
+      <member refid="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a0551e67c07eb6a81edf6e43fed89759f" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>MSG_ERROR</name></member>
+      <member refid="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1aa19b607c0480fe7c25879f1f8fc54727" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>MSG_INFORMATION</name></member>
+      <member refid="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1a72b206c5d6304b4e2257281a5ca551eb" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>MSG_WARNING</name></member>
+      <member refid="class_c_client_u_i_interface_1a568cf07ecac3fac224d63b42a32e8bc1af82009148c4cbf1ccb930f2895a8c8d6" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>NOSHOWGUI</name></member>
+      <member refid="class_c_client_u_i_interface_1a2c42ebdda06512513445cd86881b157a" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>NotifyAlertChanged</name></member>
+      <member refid="class_c_client_u_i_interface_1a496995d44db8dc3e3ef84d345e25967d" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>NotifyNumConnectionsChanged</name></member>
+      <member refid="class_c_client_u_i_interface_1a64e516e507dd74f3639c51dffa645af2" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>ShowProgress</name></member>
+      <member refid="class_c_client_u_i_interface_1a11db1bca5727c45f52714bc63108ce6a" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>ThreadSafeAskFee</name></member>
+      <member refid="class_c_client_u_i_interface_1a307f12eb3aadb694a82eb16714441d75" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>ThreadSafeHandleURI</name></member>
+      <member refid="class_c_client_u_i_interface_1ab3f23c730300df11cf9ff369fbae0635" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>ThreadSafeMessageBox</name></member>
+      <member refid="class_c_client_u_i_interface_1a996160f65965769cf7fc50e6fd17dc9a" prot="public" virt="non-virtual"><scope>CClientUIInterface</scope><name>Translate</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

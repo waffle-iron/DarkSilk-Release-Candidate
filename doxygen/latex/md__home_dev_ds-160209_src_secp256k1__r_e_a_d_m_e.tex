@@ -1,0 +1,76 @@
+\href{https://travis-ci.org/bitcoin/secp256k1}{\tt !\mbox{[}Build Status\mbox{]}(https\+://travis-\/ci.\+org/bitcoin/secp256k1.\+svg?branch=master)}
+
+Optimized C library for E\+C operations on curve secp256k1.
+
+This library is a work in progress and is being used to research best practices. Use at your own risk.
+
+Features\+:
+\begin{DoxyItemize}
+\item secp256k1 E\+C\+D\+S\+A signing/verification and key generation.
+\item Adding/multiplying private/public keys.
+\item Serialization/parsing of private keys, public keys, signatures.
+\item Constant time, constant memory access signing and pubkey generation.
+\item Derandomized D\+S\+A (via R\+F\+C6979 or with a caller provided function.)
+\item Very efficient implementation.
+\end{DoxyItemize}
+
+\subsection*{Implementation details }
+
+
+\begin{DoxyItemize}
+\item General
+\begin{DoxyItemize}
+\item No runtime heap allocation.
+\item Extensive testing infrastructure.
+\item Structured to facilitate review and analysis.
+\item Intended to be portable to any system with a C89 compiler and uint64\+\_\+t support.
+\item Expose only higher level interfaces to minimize the A\+P\+I surface and improve application security. (\char`\"{}\+Be difficult to use insecurely.\char`\"{})
+\end{DoxyItemize}
+\item Field operations
+\begin{DoxyItemize}
+\item Optimized implementation of arithmetic modulo the curve\textquotesingle{}s field size (2$^\wedge$256 -\/ 0x1000003\+D1).
+\begin{DoxyItemize}
+\item Using 5 52-\/bit limbs (including hand-\/optimized assembly for x86\+\_\+64, by Diederik Huys).
+\item Using 10 26-\/bit limbs.
+\end{DoxyItemize}
+\item Field inverses and square roots using a sliding window over blocks of 1s (by Peter Dettman).
+\end{DoxyItemize}
+\item Scalar operations
+\begin{DoxyItemize}
+\item Optimized implementation without data-\/dependent branches of arithmetic modulo the curve\textquotesingle{}s order.
+\begin{DoxyItemize}
+\item Using 4 64-\/bit limbs (relying on \+\_\+\+\_\+int128 support in the compiler).
+\item Using 8 32-\/bit limbs.
+\end{DoxyItemize}
+\end{DoxyItemize}
+\item Group operations
+\begin{DoxyItemize}
+\item Point addition formula specifically simplified for the curve equation (y$^\wedge$2 = x$^\wedge$3 + 7).
+\item Use addition between points in Jacobian and affine coordinates where possible.
+\item Use a unified addition/doubling formula where necessary to avoid data-\/dependent branches.
+\item Point/x comparison without a field inversion by comparison in the Jacobian coordinate space.
+\end{DoxyItemize}
+\item Point multiplication for verification (a$\ast$\+P + b$\ast$\+G).
+\begin{DoxyItemize}
+\item Use w\+N\+A\+F notation for point multiplicands.
+\item Use a much larger window for multiples of G, using precomputed multiples.
+\item Use Shamir\textquotesingle{}s trick to do the multiplication with the public key and the generator simultaneously.
+\item Optionally (off by default) use secp256k1\textquotesingle{}s efficiently-\/computable endomorphism to split the P multiplicand into 2 half-\/sized ones.
+\end{DoxyItemize}
+\item Point multiplication for signing
+\begin{DoxyItemize}
+\item Use a precomputed table of multiples of powers of 16 multiplied with the generator, so general multiplication becomes a series of additions.
+\item Access the table with branch-\/free conditional moves so memory access is uniform.
+\item No data-\/dependent branches
+\item The precomputed tables add and eventually subtract points for which no known scalar (private key) is known, preventing even an attacker with control over the private key used to control the data internally.
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+\subsection*{Build steps }
+
+libsecp256k1 is built using autotools\+: \begin{DoxyVerb}$ ./autogen.sh
+$ ./configure
+$ make
+$ ./tests
+$ sudo make install  # optional\end{DoxyVerb}
+ 

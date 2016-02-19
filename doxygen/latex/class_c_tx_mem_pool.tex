@@ -1,0 +1,356 @@
+\hypertarget{class_c_tx_mem_pool}{}\section{C\+Tx\+Mem\+Pool Class Reference}
+\label{class_c_tx_mem_pool}\index{C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}}
+
+
+{\ttfamily \#include $<$txmempool.\+h$>$}
+
+
+
+Collaboration diagram for C\+Tx\+Mem\+Pool\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_tx_mem_pool_a82147548cfa962975690d1926b717c1c}{C\+Tx\+Mem\+Pool} (const \hyperlink{class_c_fee_rate}{C\+Fee\+Rate} \&\+\_\+min\+Relay\+Fee)
+\item 
+\hyperlink{class_c_tx_mem_pool_a038108efea0c4312e5bed2ce064702b2}{$\sim$\+C\+Tx\+Mem\+Pool} ()
+\item 
+bool \hyperlink{class_c_tx_mem_pool_a1203ac5cf3bdb88af4922705afad555d}{add\+Unchecked} (const \hyperlink{classuint256}{uint256} \&\hyperlink{cache_8cc_a11ecb029164e055f28f4123ce3748862}{hash}, \hyperlink{class_c_transaction}{C\+Transaction} \&tx)
+\item 
+bool \hyperlink{class_c_tx_mem_pool_a258e23e3a434045d522a8cebc5a039ce}{remove} (const \hyperlink{class_c_transaction}{C\+Transaction} \&tx, bool f\+Recursive=false)
+\item 
+bool \hyperlink{class_c_tx_mem_pool_ab6f7c0b3ddb8383767d97d22103ffd9b}{remove\+Conflicts} (const \hyperlink{class_c_transaction}{C\+Transaction} \&tx)
+\item 
+void \hyperlink{class_c_tx_mem_pool_a6dba6bce4139392751321438a29b6b09}{clear} ()
+\item 
+void \hyperlink{class_c_tx_mem_pool_a42fa7d41a45562d02e356f2e7708bb02}{query\+Hashes} (std\+::vector$<$ \hyperlink{classuint256}{uint256} $>$ \&vtxid)
+\item 
+unsigned int \hyperlink{class_c_tx_mem_pool_a26a5bdb66c9b84f73d1d30fea8e31cc9}{Get\+Transactions\+Updated} () const 
+\item 
+void \hyperlink{class_c_tx_mem_pool_a3039b67e5eebaa3ff830261c192816f2}{Add\+Transactions\+Updated} (unsigned int n)
+\item 
+bool \hyperlink{class_c_tx_mem_pool_a0dbbcb6a3b7e1a6c564410668c12cd4f}{Read\+Fee\+Estimates} (\hyperlink{class_c_auto_file}{C\+Auto\+File} \&filein)
+\item 
+bool \hyperlink{class_c_tx_mem_pool_a0a05d7b50b9c2a387182402e60475da6}{Write\+Fee\+Estimates} (\hyperlink{class_c_auto_file}{C\+Auto\+File} \&fileout) const 
+\item 
+unsigned long \hyperlink{class_c_tx_mem_pool_a0d3646e13e7fce3b1df3dd30b02e3396}{size} () const 
+\item 
+bool \hyperlink{class_c_tx_mem_pool_a93b2aa8c01fa291d183a82a9e0beeb35}{exists} (\hyperlink{classuint256}{uint256} \hyperlink{cache_8cc_a11ecb029164e055f28f4123ce3748862}{hash}) const 
+\item 
+bool \hyperlink{class_c_tx_mem_pool_a8c19232d17e668c6690721b0f5088960}{lookup} (\hyperlink{classuint256}{uint256} \hyperlink{cache_8cc_a11ecb029164e055f28f4123ce3748862}{hash}, \hyperlink{class_c_transaction}{C\+Transaction} \&result) const 
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{sync_8h_a37a4692b2d517f2843655ca11af7668a}{C\+Critical\+Section} \hyperlink{class_c_tx_mem_pool_ac7ee8c06837c7d2688e2d7e3d071bdbb}{cs}
+\begin{DoxyCompactList}\small\item\em Passed to constructor to avoid dependency on main. \end{DoxyCompactList}\item 
+std\+::map$<$ \hyperlink{classuint256}{uint256}, \hyperlink{class_c_transaction}{C\+Transaction} $>$ \hyperlink{class_c_tx_mem_pool_a340d4a897e521b7021e6b22cce951beb}{map\+Tx}
+\item 
+std\+::map$<$ \hyperlink{class_c_out_point}{C\+Out\+Point}, \hyperlink{class_c_in_point}{C\+In\+Point} $>$ \hyperlink{class_c_tx_mem_pool_aae6f1162f0b2e42b369971f32a9f71e8}{map\+Next\+Tx}
+\item 
+\hyperlink{class_c_miner_policy_estimator}{C\+Miner\+Policy\+Estimator} $\ast$ \hyperlink{class_c_tx_mem_pool_a435be1fdb4567cd7dd981a49cf633c99}{miner\+Policy\+Estimator}
+\item 
+bool \hyperlink{class_c_tx_mem_pool_a1752e79ce537972fe87e252b9d07d2e0}{f\+Sanity\+Check}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 387 of file txmempool.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_tx_mem_pool_a82147548cfa962975690d1926b717c1c}{}\index{C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}!C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}}
+\index{C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}!C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}}
+\subsubsection[{C\+Tx\+Mem\+Pool}]{\setlength{\rightskip}{0pt plus 5cm}C\+Tx\+Mem\+Pool\+::\+C\+Tx\+Mem\+Pool (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Fee\+Rate} \&}]{\+\_\+min\+Relay\+Fee}
+\end{DoxyParamCaption}
+)}\label{class_c_tx_mem_pool_a82147548cfa962975690d1926b717c1c}
+
+
+Definition at line 11 of file txmempool.\+cpp.
+
+\hypertarget{class_c_tx_mem_pool_a038108efea0c4312e5bed2ce064702b2}{}\index{C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}!````~C\+Tx\+Mem\+Pool@{$\sim$\+C\+Tx\+Mem\+Pool}}
+\index{````~C\+Tx\+Mem\+Pool@{$\sim$\+C\+Tx\+Mem\+Pool}!C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}}
+\subsubsection[{$\sim$\+C\+Tx\+Mem\+Pool}]{\setlength{\rightskip}{0pt plus 5cm}C\+Tx\+Mem\+Pool\+::$\sim$\+C\+Tx\+Mem\+Pool (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_tx_mem_pool_a038108efea0c4312e5bed2ce064702b2}
+
+
+Definition at line 28 of file txmempool.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_tx_mem_pool_a3039b67e5eebaa3ff830261c192816f2}{}\index{C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}!Add\+Transactions\+Updated@{Add\+Transactions\+Updated}}
+\index{Add\+Transactions\+Updated@{Add\+Transactions\+Updated}!C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}}
+\subsubsection[{Add\+Transactions\+Updated}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Tx\+Mem\+Pool\+::\+Add\+Transactions\+Updated (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{n}
+\end{DoxyParamCaption}
+)}\label{class_c_tx_mem_pool_a3039b67e5eebaa3ff830261c192816f2}
+
+
+Definition at line 39 of file txmempool.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 1
+
+
+\hypertarget{class_c_tx_mem_pool_a1203ac5cf3bdb88af4922705afad555d}{}\index{C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}!add\+Unchecked@{add\+Unchecked}}
+\index{add\+Unchecked@{add\+Unchecked}!C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}}
+\subsubsection[{add\+Unchecked}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Tx\+Mem\+Pool\+::add\+Unchecked (
+\begin{DoxyParamCaption}
+\item[{const {\bf uint256} \&}]{hash, }
+\item[{{\bf C\+Transaction} \&}]{tx}
+\end{DoxyParamCaption}
+)}\label{class_c_tx_mem_pool_a1203ac5cf3bdb88af4922705afad555d}
+
+
+Definition at line 45 of file txmempool.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 2
+
+
+\hypertarget{class_c_tx_mem_pool_a6dba6bce4139392751321438a29b6b09}{}\index{C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}!clear@{clear}}
+\index{clear@{clear}!C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Tx\+Mem\+Pool\+::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_tx_mem_pool_a6dba6bce4139392751321438a29b6b09}
+
+
+Definition at line 99 of file txmempool.\+cpp.
+
+\hypertarget{class_c_tx_mem_pool_a93b2aa8c01fa291d183a82a9e0beeb35}{}\index{C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}!exists@{exists}}
+\index{exists@{exists}!C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}}
+\subsubsection[{exists}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Tx\+Mem\+Pool\+::exists (
+\begin{DoxyParamCaption}
+\item[{{\bf uint256}}]{hash}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_tx_mem_pool_a93b2aa8c01fa291d183a82a9e0beeb35}
+
+
+Definition at line 420 of file txmempool.\+h.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+\hypertarget{class_c_tx_mem_pool_a26a5bdb66c9b84f73d1d30fea8e31cc9}{}\index{C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}!Get\+Transactions\+Updated@{Get\+Transactions\+Updated}}
+\index{Get\+Transactions\+Updated@{Get\+Transactions\+Updated}!C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}}
+\subsubsection[{Get\+Transactions\+Updated}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int C\+Tx\+Mem\+Pool\+::\+Get\+Transactions\+Updated (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_c_tx_mem_pool_a26a5bdb66c9b84f73d1d30fea8e31cc9}
+
+
+Definition at line 33 of file txmempool.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 4
+
+
+\hypertarget{class_c_tx_mem_pool_a8c19232d17e668c6690721b0f5088960}{}\index{C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}!lookup@{lookup}}
+\index{lookup@{lookup}!C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}}
+\subsubsection[{lookup}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Tx\+Mem\+Pool\+::lookup (
+\begin{DoxyParamCaption}
+\item[{{\bf uint256}}]{hash, }
+\item[{{\bf C\+Transaction} \&}]{result}
+\end{DoxyParamCaption}
+) const}\label{class_c_tx_mem_pool_a8c19232d17e668c6690721b0f5088960}
+
+
+Definition at line 117 of file txmempool.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 5
+
+
+\hypertarget{class_c_tx_mem_pool_a42fa7d41a45562d02e356f2e7708bb02}{}\index{C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}!query\+Hashes@{query\+Hashes}}
+\index{query\+Hashes@{query\+Hashes}!C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}}
+\subsubsection[{query\+Hashes}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Tx\+Mem\+Pool\+::query\+Hashes (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ {\bf uint256} $>$ \&}]{vtxid}
+\end{DoxyParamCaption}
+)}\label{class_c_tx_mem_pool_a42fa7d41a45562d02e356f2e7708bb02}
+
+
+Definition at line 107 of file txmempool.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 6
+
+
+\hypertarget{class_c_tx_mem_pool_a0dbbcb6a3b7e1a6c564410668c12cd4f}{}\index{C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}!Read\+Fee\+Estimates@{Read\+Fee\+Estimates}}
+\index{Read\+Fee\+Estimates@{Read\+Fee\+Estimates}!C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}}
+\subsubsection[{Read\+Fee\+Estimates}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Tx\+Mem\+Pool\+::\+Read\+Fee\+Estimates (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Auto\+File} \&}]{filein}
+\end{DoxyParamCaption}
+)}\label{class_c_tx_mem_pool_a0dbbcb6a3b7e1a6c564410668c12cd4f}
+
+
+Definition at line 141 of file txmempool.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 7
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 8
+
+
+\hypertarget{class_c_tx_mem_pool_a258e23e3a434045d522a8cebc5a039ce}{}\index{C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}!remove@{remove}}
+\index{remove@{remove}!C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}}
+\subsubsection[{remove}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Tx\+Mem\+Pool\+::remove (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Transaction} \&}]{tx, }
+\item[{bool}]{f\+Recursive = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{class_c_tx_mem_pool_a258e23e3a434045d522a8cebc5a039ce}
+
+
+Definition at line 60 of file txmempool.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 9
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 10
+
+
+\hypertarget{class_c_tx_mem_pool_ab6f7c0b3ddb8383767d97d22103ffd9b}{}\index{C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}!remove\+Conflicts@{remove\+Conflicts}}
+\index{remove\+Conflicts@{remove\+Conflicts}!C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}}
+\subsubsection[{remove\+Conflicts}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Tx\+Mem\+Pool\+::remove\+Conflicts (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Transaction} \&}]{tx}
+\end{DoxyParamCaption}
+)}\label{class_c_tx_mem_pool_ab6f7c0b3ddb8383767d97d22103ffd9b}
+
+
+Definition at line 84 of file txmempool.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 11
+
+
+\hypertarget{class_c_tx_mem_pool_a0d3646e13e7fce3b1df3dd30b02e3396}{}\index{C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}!size@{size}}
+\index{size@{size}!C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned long C\+Tx\+Mem\+Pool\+::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_tx_mem_pool_a0d3646e13e7fce3b1df3dd30b02e3396}
+
+
+Definition at line 414 of file txmempool.\+h.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 12
+
+
+\hypertarget{class_c_tx_mem_pool_a0a05d7b50b9c2a387182402e60475da6}{}\index{C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}!Write\+Fee\+Estimates@{Write\+Fee\+Estimates}}
+\index{Write\+Fee\+Estimates@{Write\+Fee\+Estimates}!C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}}
+\subsubsection[{Write\+Fee\+Estimates}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Tx\+Mem\+Pool\+::\+Write\+Fee\+Estimates (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Auto\+File} \&}]{fileout}
+\end{DoxyParamCaption}
+) const}\label{class_c_tx_mem_pool_a0a05d7b50b9c2a387182402e60475da6}
+
+
+Definition at line 126 of file txmempool.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 13
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 14
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_c_tx_mem_pool_ac7ee8c06837c7d2688e2d7e3d071bdbb}{}\index{C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}!cs@{cs}}
+\index{cs@{cs}!C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}}
+\subsubsection[{cs}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Critical\+Section} C\+Tx\+Mem\+Pool\+::cs\hspace{0.3cm}{\ttfamily [mutable]}}\label{class_c_tx_mem_pool_ac7ee8c06837c7d2688e2d7e3d071bdbb}
+
+
+Passed to constructor to avoid dependency on main. 
+
+
+
+Definition at line 394 of file txmempool.\+h.
+
+\hypertarget{class_c_tx_mem_pool_a1752e79ce537972fe87e252b9d07d2e0}{}\index{C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}!f\+Sanity\+Check@{f\+Sanity\+Check}}
+\index{f\+Sanity\+Check@{f\+Sanity\+Check}!C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}}
+\subsubsection[{f\+Sanity\+Check}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Tx\+Mem\+Pool\+::f\+Sanity\+Check}\label{class_c_tx_mem_pool_a1752e79ce537972fe87e252b9d07d2e0}
+
+
+Definition at line 403 of file txmempool.\+h.
+
+\hypertarget{class_c_tx_mem_pool_aae6f1162f0b2e42b369971f32a9f71e8}{}\index{C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}!map\+Next\+Tx@{map\+Next\+Tx}}
+\index{map\+Next\+Tx@{map\+Next\+Tx}!C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}}
+\subsubsection[{map\+Next\+Tx}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<${\bf C\+Out\+Point}, {\bf C\+In\+Point}$>$ C\+Tx\+Mem\+Pool\+::map\+Next\+Tx}\label{class_c_tx_mem_pool_aae6f1162f0b2e42b369971f32a9f71e8}
+
+
+Definition at line 396 of file txmempool.\+h.
+
+\hypertarget{class_c_tx_mem_pool_a340d4a897e521b7021e6b22cce951beb}{}\index{C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}!map\+Tx@{map\+Tx}}
+\index{map\+Tx@{map\+Tx}!C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}}
+\subsubsection[{map\+Tx}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<${\bf uint256}, {\bf C\+Transaction}$>$ C\+Tx\+Mem\+Pool\+::map\+Tx}\label{class_c_tx_mem_pool_a340d4a897e521b7021e6b22cce951beb}
+
+
+Definition at line 395 of file txmempool.\+h.
+
+\hypertarget{class_c_tx_mem_pool_a435be1fdb4567cd7dd981a49cf633c99}{}\index{C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}!miner\+Policy\+Estimator@{miner\+Policy\+Estimator}}
+\index{miner\+Policy\+Estimator@{miner\+Policy\+Estimator}!C\+Tx\+Mem\+Pool@{C\+Tx\+Mem\+Pool}}
+\subsubsection[{miner\+Policy\+Estimator}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Miner\+Policy\+Estimator}$\ast$ C\+Tx\+Mem\+Pool\+::miner\+Policy\+Estimator}\label{class_c_tx_mem_pool_a435be1fdb4567cd7dd981a49cf633c99}
+
+
+Definition at line 397 of file txmempool.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/\hyperlink{txmempool_8h}{txmempool.\+h}\item 
+/home/dev/ds-\/160209/src/\hyperlink{txmempool_8cpp}{txmempool.\+cpp}\end{DoxyCompactItemize}

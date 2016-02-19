@@ -1,0 +1,424 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="write__batch__test_8cc" kind="file" language="C++">
+    <compoundname>write_batch_test.cc</compoundname>
+    <includes refid="leveldb_2include_2leveldb_2db_8h" local="yes">leveldb/db.h</includes>
+    <includes refid="memtable_8h" local="yes">db/memtable.h</includes>
+    <includes refid="write__batch__internal_8h" local="yes">db/write_batch_internal.h</includes>
+    <includes refid="env_8h" local="yes">leveldb/env.h</includes>
+    <includes refid="logging_8h" local="yes">util/logging.h</includes>
+    <includes refid="testharness_8h" local="yes">util/testharness.h</includes>
+    <incdepgraph>
+      <node id="37302">
+        <label>leveldb/write_batch.h</label>
+        <link refid="write__batch_8h"/>
+        <childnode refid="37285" relation="include">
+        </childnode>
+        <childnode refid="37286" relation="include">
+        </childnode>
+      </node>
+      <node id="37304">
+        <label>stdarg.h</label>
+      </node>
+      <node id="37296">
+        <label>db/skiplist.h</label>
+        <link refid="skiplist_8h"/>
+        <childnode refid="37282" relation="include">
+        </childnode>
+        <childnode refid="37297" relation="include">
+        </childnode>
+        <childnode refid="37294" relation="include">
+        </childnode>
+        <childnode refid="37298" relation="include">
+        </childnode>
+        <childnode refid="37300" relation="include">
+        </childnode>
+      </node>
+      <node id="37300">
+        <label>util/random.h</label>
+        <link refid="random_8h"/>
+        <childnode refid="37278" relation="include">
+        </childnode>
+      </node>
+      <node id="37295">
+        <label>util/logging.h</label>
+        <link refid="logging_8h"/>
+        <childnode refid="37279" relation="include">
+        </childnode>
+        <childnode refid="37278" relation="include">
+        </childnode>
+        <childnode refid="37285" relation="include">
+        </childnode>
+        <childnode refid="37294" relation="include">
+        </childnode>
+      </node>
+      <node id="37282">
+        <label>assert.h</label>
+      </node>
+      <node id="37287">
+        <label>leveldb/options.h</label>
+        <link refid="options_8h"/>
+        <childnode refid="37283" relation="include">
+        </childnode>
+      </node>
+      <node id="37298">
+        <label>util/arena.h</label>
+        <link refid="arena_8h"/>
+        <childnode refid="37299" relation="include">
+        </childnode>
+        <childnode refid="37282" relation="include">
+        </childnode>
+        <childnode refid="37283" relation="include">
+        </childnode>
+        <childnode refid="37278" relation="include">
+        </childnode>
+      </node>
+      <node id="37297">
+        <label>stdlib.h</label>
+      </node>
+      <node id="37289">
+        <label>db/dbformat.h</label>
+        <link refid="dbformat_8h"/>
+        <childnode refid="37279" relation="include">
+        </childnode>
+        <childnode refid="37290" relation="include">
+        </childnode>
+        <childnode refid="37277" relation="include">
+        </childnode>
+        <childnode refid="37291" relation="include">
+        </childnode>
+        <childnode refid="37281" relation="include">
+        </childnode>
+        <childnode refid="37292" relation="include">
+        </childnode>
+        <childnode refid="37293" relation="include">
+        </childnode>
+        <childnode refid="37295" relation="include">
+        </childnode>
+      </node>
+      <node id="37277">
+        <label>leveldb/db.h</label>
+        <link refid="leveldb_2include_2leveldb_2db_8h"/>
+        <childnode refid="37278" relation="include">
+        </childnode>
+        <childnode refid="37279" relation="include">
+        </childnode>
+        <childnode refid="37280" relation="include">
+        </childnode>
+        <childnode refid="37287" relation="include">
+        </childnode>
+      </node>
+      <node id="37285">
+        <label>string</label>
+      </node>
+      <node id="37276">
+        <label>/home/dev/ds-160209/src/leveldb/db/write_batch_test.cc</label>
+        <link refid="write_batch_test.cc"/>
+        <childnode refid="37277" relation="include">
+        </childnode>
+        <childnode refid="37288" relation="include">
+        </childnode>
+        <childnode refid="37301" relation="include">
+        </childnode>
+        <childnode refid="37303" relation="include">
+        </childnode>
+        <childnode refid="37295" relation="include">
+        </childnode>
+        <childnode refid="37305" relation="include">
+        </childnode>
+      </node>
+      <node id="37283">
+        <label>stddef.h</label>
+      </node>
+      <node id="37286">
+        <label>leveldb/status.h</label>
+        <link refid="status_8h"/>
+        <childnode refid="37285" relation="include">
+        </childnode>
+        <childnode refid="37281" relation="include">
+        </childnode>
+      </node>
+      <node id="37293">
+        <label>util/coding.h</label>
+        <link refid="coding_8h"/>
+        <childnode refid="37278" relation="include">
+        </childnode>
+        <childnode refid="37284" relation="include">
+        </childnode>
+        <childnode refid="37285" relation="include">
+        </childnode>
+        <childnode refid="37281" relation="include">
+        </childnode>
+        <childnode refid="37294" relation="include">
+        </childnode>
+      </node>
+      <node id="37284">
+        <label>string.h</label>
+      </node>
+      <node id="37299">
+        <label>vector</label>
+      </node>
+      <node id="37306">
+        <label>sstream</label>
+      </node>
+      <node id="37301">
+        <label>db/write_batch_internal.h</label>
+        <link refid="write__batch__internal_8h"/>
+        <childnode refid="37302" relation="include">
+        </childnode>
+      </node>
+      <node id="37294">
+        <label>port/port.h</label>
+        <link refid="port_8h"/>
+        <childnode refid="37284" relation="include">
+        </childnode>
+      </node>
+      <node id="37278">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="37288">
+        <label>db/memtable.h</label>
+        <link refid="memtable_8h"/>
+        <childnode refid="37285" relation="include">
+        </childnode>
+        <childnode refid="37277" relation="include">
+        </childnode>
+        <childnode refid="37289" relation="include">
+        </childnode>
+        <childnode refid="37296" relation="include">
+        </childnode>
+        <childnode refid="37298" relation="include">
+        </childnode>
+      </node>
+      <node id="37292">
+        <label>leveldb/table_builder.h</label>
+        <link refid="table__builder_8h"/>
+        <childnode refid="37278" relation="include">
+        </childnode>
+        <childnode refid="37287" relation="include">
+        </childnode>
+        <childnode refid="37286" relation="include">
+        </childnode>
+      </node>
+      <node id="37305">
+        <label>util/testharness.h</label>
+        <link refid="testharness_8h"/>
+        <childnode refid="37279" relation="include">
+        </childnode>
+        <childnode refid="37297" relation="include">
+        </childnode>
+        <childnode refid="37306" relation="include">
+        </childnode>
+        <childnode refid="37303" relation="include">
+        </childnode>
+        <childnode refid="37281" relation="include">
+        </childnode>
+        <childnode refid="37300" relation="include">
+        </childnode>
+      </node>
+      <node id="37281">
+        <label>leveldb/slice.h</label>
+        <link refid="slice_8h"/>
+        <childnode refid="37282" relation="include">
+        </childnode>
+        <childnode refid="37283" relation="include">
+        </childnode>
+        <childnode refid="37284" relation="include">
+        </childnode>
+        <childnode refid="37285" relation="include">
+        </childnode>
+      </node>
+      <node id="37303">
+        <label>leveldb/env.h</label>
+        <link refid="env_8h"/>
+        <childnode refid="37285" relation="include">
+        </childnode>
+        <childnode refid="37299" relation="include">
+        </childnode>
+        <childnode refid="37304" relation="include">
+        </childnode>
+        <childnode refid="37278" relation="include">
+        </childnode>
+        <childnode refid="37286" relation="include">
+        </childnode>
+      </node>
+      <node id="37279">
+        <label>stdio.h</label>
+      </node>
+      <node id="37291">
+        <label>leveldb/filter_policy.h</label>
+        <link refid="filter__policy_8h"/>
+        <childnode refid="37285" relation="include">
+        </childnode>
+      </node>
+      <node id="37290">
+        <label>leveldb/comparator.h</label>
+        <link refid="comparator_8h"/>
+        <childnode refid="37285" relation="include">
+        </childnode>
+      </node>
+      <node id="37280">
+        <label>leveldb/iterator.h</label>
+        <link refid="iterator_8h"/>
+        <childnode refid="37281" relation="include">
+        </childnode>
+        <childnode refid="37286" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="classleveldb_1_1_write_batch_test" prot="public">leveldb::WriteBatchTest</innerclass>
+    <innernamespace refid="namespaceleveldb">leveldb</innernamespace>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="write__batch__test_8cc_1a3c04138a5bfe5d72780bb7e82a18e627" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>(int argc, char **argv)</argsstring>
+        <name>main</name>
+        <param>
+          <type>int</type>
+          <declname>argc</declname>
+        </param>
+        <param>
+          <type>char **</type>
+          <declname>argv</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/write_batch_test.cc" line="118" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/write_batch_test.cc" bodystart="118" bodyend="120"/>
+        <references refid="namespaceleveldb_1_1test_1a3329162c54a0bff42d41c2ac86b2580a" compoundref="testharness_8cc" startline="36" endline="58">leveldb::test::RunAllTests</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2011-2016<sp/>The<sp/>LevelDB<sp/>Authors.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>of<sp/>this<sp/>source<sp/>code<sp/>is<sp/>governed<sp/>by<sp/>a<sp/>BSD-style<sp/>license<sp/>that<sp/>can<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>found<sp/>in<sp/>the<sp/>LICENSE<sp/>file.<sp/>See<sp/>the<sp/>AUTHORS<sp/>file<sp/>for<sp/>names<sp/>of<sp/>contributors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="leveldb_2include_2leveldb_2db_8h" kindref="compound">leveldb/db.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="memtable_8h" kindref="compound">db/memtable.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="write__batch__internal_8h" kindref="compound">db/write_batch_internal.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="env_8h" kindref="compound">leveldb/env.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="logging_8h" kindref="compound">util/logging.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="testharness_8h" kindref="compound">util/testharness.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceleveldb" kindref="compound">leveldb</ref><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>std::string<sp/>PrintContents(WriteBatch*<sp/>b)<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/>InternalKeyComparator<sp/><ref refid="table__test_8cc_1a87863e435922f0910ca8db43f02a6c0b" kindref="member">cmp</ref>(<ref refid="namespaceleveldb_1acd67740962c806afe8f4098cb153d25c" kindref="member">BytewiseComparator</ref>());</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/>MemTable*<sp/><ref refid="db__impl_8cc_1a1a1fa02d49bbc4c0896ff1cb12618dc3" kindref="member">mem</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>MemTable(<ref refid="table__test_8cc_1a87863e435922f0910ca8db43f02a6c0b" kindref="member">cmp</ref>);</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/>mem-&gt;Ref();</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/>std::string<sp/><ref refid="db__test_8cc_1a42432b4356adce5579ccf597f6e83e54" kindref="member">state</ref>;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/>Status<sp/>s<sp/>=<sp/><ref refid="classleveldb_1_1_write_batch_internal_1a102aae14259fd277e2576338ce3e5551" kindref="member">WriteBatchInternal::InsertInto</ref>(b,<sp/>mem);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>count<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/>Iterator*<sp/>iter<sp/>=<sp/>mem-&gt;NewIterator();</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(iter-&gt;SeekToFirst();<sp/>iter-&gt;Valid();<sp/>iter-&gt;Next())<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>ParsedInternalKey<sp/>ikey;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testharness_8h_1ac2101fb1ffd0c81c17520b82f0fcfe21" kindref="member">ASSERT_TRUE</ref>(<ref refid="namespaceleveldb_1a5a173b622e86c7a2f9beae3ac8818ac3" kindref="member">ParseInternalKey</ref>(iter-&gt;key(),<sp/>&amp;ikey));</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(ikey.type)<sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1acc038cb0d608414730cafa459a4ba866a97725c1d8e3317d1bac1f3b14fbfa281" kindref="member">kTypeValue</ref>:</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state.append(</highlight><highlight class="stringliteral">&quot;Put(&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state.append(ikey.user_key.ToString());</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state.append(</highlight><highlight class="stringliteral">&quot;,<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state.append(iter-&gt;value().ToString());</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state.append(</highlight><highlight class="stringliteral">&quot;)&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>count++;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1acc038cb0d608414730cafa459a4ba866aca5f2147a76c932346e15d86668d4ed3" kindref="member">kTypeDeletion</ref>:</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state.append(</highlight><highlight class="stringliteral">&quot;Delete(&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state.append(ikey.user_key.ToString());</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state.append(</highlight><highlight class="stringliteral">&quot;)&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>count++;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>state.append(</highlight><highlight class="stringliteral">&quot;@&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>state.append(<ref refid="namespaceleveldb_1a0a19109e7a2c8855c7565bd331d955b4" kindref="member">NumberToString</ref>(ikey.sequence));</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>iter;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!s.ok())<sp/>{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>state.append(</highlight><highlight class="stringliteral">&quot;ParseError()&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(count<sp/>!=<sp/><ref refid="classleveldb_1_1_write_batch_internal_1a5270ca4567dbae1524005ad14e0698e3" kindref="member">WriteBatchInternal::Count</ref>(b))<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>state.append(</highlight><highlight class="stringliteral">&quot;CountMismatch()&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/>mem-&gt;Unref();</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="db__test_8cc_1a42432b4356adce5579ccf597f6e83e54" kindref="member">state</ref>;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="classleveldb_1_1_write_batch_test" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classleveldb_1_1_write_batch_test" kindref="compound">WriteBatchTest</ref><sp/>{<sp/>};</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="namespaceleveldb_1a77a1389346b24fa9b5f9698400c865f6" refkind="member"><highlight class="normal"><ref refid="namespaceleveldb_1a9c4f7d5038dfc2985100b60ae2549fde" kindref="member">TEST</ref>(<ref refid="classleveldb_1_1_write_batch_test" kindref="compound">WriteBatchTest</ref>,<sp/>Empty)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_write_batch" kindref="compound">WriteBatch</ref><sp/>batch;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><ref refid="testharness_8h_1a9cc34fd87cb865c77439a5d39b3b111b" kindref="member">ASSERT_EQ</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,<sp/>PrintContents(&amp;batch));</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><ref refid="testharness_8h_1a9cc34fd87cb865c77439a5d39b3b111b" kindref="member">ASSERT_EQ</ref>(0,<sp/><ref refid="classleveldb_1_1_write_batch_internal_1a5270ca4567dbae1524005ad14e0698e3" kindref="member">WriteBatchInternal::Count</ref>(&amp;batch));</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="namespaceleveldb_1af2029a94a0a17d6eb1bfec4d38b7e3a0" refkind="member"><highlight class="normal"><ref refid="namespaceleveldb_1a9c4f7d5038dfc2985100b60ae2549fde" kindref="member">TEST</ref>(<ref refid="classleveldb_1_1_write_batch_test" kindref="compound">WriteBatchTest</ref>,<sp/>Multiple)<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_write_batch" kindref="compound">WriteBatch</ref><sp/>batch;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/>batch.<ref refid="classleveldb_1_1_write_batch_1a30770379143a7ccb4ede18ddf0e45bf3" kindref="member">Put</ref>(<ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>(</highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">),<sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>(</highlight><highlight class="stringliteral">&quot;bar&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>batch.<ref refid="classleveldb_1_1_write_batch_1a473da7f94483dab253cc36b7b231ce53" kindref="member">Delete</ref>(<ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>(</highlight><highlight class="stringliteral">&quot;box&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>batch.<ref refid="classleveldb_1_1_write_batch_1a30770379143a7ccb4ede18ddf0e45bf3" kindref="member">Put</ref>(<ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>(</highlight><highlight class="stringliteral">&quot;baz&quot;</highlight><highlight class="normal">),<sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>(</highlight><highlight class="stringliteral">&quot;boo&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_write_batch_internal_1a0ca3483de37433fb0ce37b1e91f01bd1" kindref="member">WriteBatchInternal::SetSequence</ref>(&amp;batch,<sp/>100);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><ref refid="testharness_8h_1a9cc34fd87cb865c77439a5d39b3b111b" kindref="member">ASSERT_EQ</ref>(100,<sp/><ref refid="classleveldb_1_1_write_batch_internal_1af657c82bd9378b78c35a3a7429f945d4" kindref="member">WriteBatchInternal::Sequence</ref>(&amp;batch));</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><ref refid="testharness_8h_1a9cc34fd87cb865c77439a5d39b3b111b" kindref="member">ASSERT_EQ</ref>(3,<sp/><ref refid="classleveldb_1_1_write_batch_internal_1a5270ca4567dbae1524005ad14e0698e3" kindref="member">WriteBatchInternal::Count</ref>(&amp;batch));</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><ref refid="testharness_8h_1a9cc34fd87cb865c77439a5d39b3b111b" kindref="member">ASSERT_EQ</ref>(</highlight><highlight class="stringliteral">&quot;Put(baz,<sp/>boo)@102&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Delete(box)@101&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Put(foo,<sp/>bar)@100&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PrintContents(&amp;batch));</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="namespaceleveldb_1a8021231dcd7fd48d082ecf965a2b8230" refkind="member"><highlight class="normal"><ref refid="namespaceleveldb_1a9c4f7d5038dfc2985100b60ae2549fde" kindref="member">TEST</ref>(<ref refid="classleveldb_1_1_write_batch_test" kindref="compound">WriteBatchTest</ref>,<sp/>Corruption)<sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_write_batch" kindref="compound">WriteBatch</ref><sp/>batch;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/>batch.<ref refid="classleveldb_1_1_write_batch_1a30770379143a7ccb4ede18ddf0e45bf3" kindref="member">Put</ref>(<ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>(</highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">),<sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>(</highlight><highlight class="stringliteral">&quot;bar&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/>batch.<ref refid="classleveldb_1_1_write_batch_1a473da7f94483dab253cc36b7b231ce53" kindref="member">Delete</ref>(<ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>(</highlight><highlight class="stringliteral">&quot;box&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_write_batch_internal_1a0ca3483de37433fb0ce37b1e91f01bd1" kindref="member">WriteBatchInternal::SetSequence</ref>(&amp;batch,<sp/>200);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref><sp/>contents<sp/>=<sp/><ref refid="classleveldb_1_1_write_batch_internal_1a348947b16653c8a17590b13115b5274d" kindref="member">WriteBatchInternal::Contents</ref>(&amp;batch);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_write_batch_internal_1aa07e75250aed00d06f2e4df85ee926b9" kindref="member">WriteBatchInternal::SetContents</ref>(&amp;batch,</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>(contents.<ref refid="classleveldb_1_1_slice_1aa64861043d9deee6889461bf0593cf73" kindref="member">data</ref>(),contents.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>()-1));</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><ref refid="testharness_8h_1a9cc34fd87cb865c77439a5d39b3b111b" kindref="member">ASSERT_EQ</ref>(</highlight><highlight class="stringliteral">&quot;Put(foo,<sp/>bar)@200&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;ParseError()&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PrintContents(&amp;batch));</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="namespaceleveldb_1a6b1521832d07ed987bc4ea6c3867bd00" refkind="member"><highlight class="normal"><ref refid="namespaceleveldb_1a9c4f7d5038dfc2985100b60ae2549fde" kindref="member">TEST</ref>(<ref refid="classleveldb_1_1_write_batch_test" kindref="compound">WriteBatchTest</ref>,<sp/>Append)<sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_write_batch" kindref="compound">WriteBatch</ref><sp/>b1,<sp/>b2;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_write_batch_internal_1a0ca3483de37433fb0ce37b1e91f01bd1" kindref="member">WriteBatchInternal::SetSequence</ref>(&amp;b1,<sp/>200);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_write_batch_internal_1a0ca3483de37433fb0ce37b1e91f01bd1" kindref="member">WriteBatchInternal::SetSequence</ref>(&amp;b2,<sp/>300);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_write_batch_internal_1ac83c9a45a815c16ad8602b99b752b4bc" kindref="member">WriteBatchInternal::Append</ref>(&amp;b1,<sp/>&amp;b2);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><ref refid="testharness_8h_1a9cc34fd87cb865c77439a5d39b3b111b" kindref="member">ASSERT_EQ</ref>(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PrintContents(&amp;b1));</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/>b2.<ref refid="classleveldb_1_1_write_batch_1a30770379143a7ccb4ede18ddf0e45bf3" kindref="member">Put</ref>(</highlight><highlight class="stringliteral">&quot;a&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;va&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_write_batch_internal_1ac83c9a45a815c16ad8602b99b752b4bc" kindref="member">WriteBatchInternal::Append</ref>(&amp;b1,<sp/>&amp;b2);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><ref refid="testharness_8h_1a9cc34fd87cb865c77439a5d39b3b111b" kindref="member">ASSERT_EQ</ref>(</highlight><highlight class="stringliteral">&quot;Put(a,<sp/>va)@200&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PrintContents(&amp;b1));</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/>b2.<ref refid="classleveldb_1_1_write_batch_1afd5058344dc9be113919a5110129006f" kindref="member">Clear</ref>();</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/>b2.<ref refid="classleveldb_1_1_write_batch_1a30770379143a7ccb4ede18ddf0e45bf3" kindref="member">Put</ref>(</highlight><highlight class="stringliteral">&quot;b&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;vb&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_write_batch_internal_1ac83c9a45a815c16ad8602b99b752b4bc" kindref="member">WriteBatchInternal::Append</ref>(&amp;b1,<sp/>&amp;b2);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><ref refid="testharness_8h_1a9cc34fd87cb865c77439a5d39b3b111b" kindref="member">ASSERT_EQ</ref>(</highlight><highlight class="stringliteral">&quot;Put(a,<sp/>va)@200&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Put(b,<sp/>vb)@201&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PrintContents(&amp;b1));</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/>b2.<ref refid="classleveldb_1_1_write_batch_1a473da7f94483dab253cc36b7b231ce53" kindref="member">Delete</ref>(</highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_write_batch_internal_1ac83c9a45a815c16ad8602b99b752b4bc" kindref="member">WriteBatchInternal::Append</ref>(&amp;b1,<sp/>&amp;b2);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><ref refid="testharness_8h_1a9cc34fd87cb865c77439a5d39b3b111b" kindref="member">ASSERT_EQ</ref>(</highlight><highlight class="stringliteral">&quot;Put(a,<sp/>va)@200&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Put(b,<sp/>vb)@202&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Put(b,<sp/>vb)@201&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Delete(foo)@203&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PrintContents(&amp;b1));</highlight></codeline>
+<codeline lineno="114"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>leveldb</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118" refid="write__batch__test_8cc_1a3c04138a5bfe5d72780bb7e82a18e627" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="write__batch__test_8cc_1a3c04138a5bfe5d72780bb7e82a18e627" kindref="member">main</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">**<sp/>argv)<sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1_1test_1a3329162c54a0bff42d41c2ac86b2580a" kindref="member">leveldb::test::RunAllTests</ref>();</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/leveldb/db/write_batch_test.cc"/>
+  </compounddef>
+</doxygen>

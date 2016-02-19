@@ -9,7 +9,6 @@
 #include "stormnode-sync.h"
 #include "script.h"
 #include "instantx.h"
-#include "consensus/validation.h"
 #include "ui_interface.h"
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/filesystem.hpp>

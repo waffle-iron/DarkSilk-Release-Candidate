@@ -1,0 +1,192 @@
+.TH "leveldb::Benchmark" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+leveldb::Benchmark \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBOrder\fP { \fBSEQUENTIAL\fP, \fBRANDOM\fP, \fBSEQUENTIAL\fP, \fBRANDOM\fP }"
+.br
+.ti -1c
+.RI "enum \fBDBState\fP { \fBFRESH\fP, \fBEXISTING\fP, \fBFRESH\fP, \fBEXISTING\fP }"
+.br
+.ti -1c
+.RI "enum \fBOrder\fP { \fBSEQUENTIAL\fP, \fBRANDOM\fP, \fBSEQUENTIAL\fP, \fBRANDOM\fP }"
+.br
+.ti -1c
+.RI "enum \fBDBState\fP { \fBFRESH\fP, \fBEXISTING\fP, \fBFRESH\fP, \fBEXISTING\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBBenchmark\fP ()"
+.br
+.ti -1c
+.RI "\fB~Benchmark\fP ()"
+.br
+.ti -1c
+.RI "void \fBRun\fP ()"
+.br
+.ti -1c
+.RI "\fBBenchmark\fP ()"
+.br
+.ti -1c
+.RI "\fB~Benchmark\fP ()"
+.br
+.ti -1c
+.RI "void \fBRun\fP ()"
+.br
+.ti -1c
+.RI "void \fBOpen\fP ()"
+.br
+.ti -1c
+.RI "void \fBWrite\fP (bool write_sync, \fBOrder\fP order, \fBDBState\fP \fBstate\fP, int num_entries, int value_size, int entries_per_batch)"
+.br
+.ti -1c
+.RI "void \fBRead\fP (\fBOrder\fP order, int entries_per_batch)"
+.br
+.ti -1c
+.RI "void \fBReadSequential\fP ()"
+.br
+.ti -1c
+.RI "\fBBenchmark\fP ()"
+.br
+.ti -1c
+.RI "\fB~Benchmark\fP ()"
+.br
+.ti -1c
+.RI "void \fBRun\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 302 of file db_bench\&.cc\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBleveldb::Benchmark::DBState\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIFRESH \fP\fP
+.TP
+\fB\fIEXISTING \fP\fP
+.TP
+\fB\fIFRESH \fP\fP
+.TP
+\fB\fIEXISTING \fP\fP
+.PP
+Definition at line 286 of file db_bench_tree_db\&.cc\&.
+.SS "enum \fBleveldb::Benchmark::DBState\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIFRESH \fP\fP
+.TP
+\fB\fIEXISTING \fP\fP
+.TP
+\fB\fIFRESH \fP\fP
+.TP
+\fB\fIEXISTING \fP\fP
+.PP
+Definition at line 310 of file db_bench_sqlite3\&.cc\&.
+.SS "enum \fBleveldb::Benchmark::Order\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fISEQUENTIAL \fP\fP
+.TP
+\fB\fIRANDOM \fP\fP
+.TP
+\fB\fISEQUENTIAL \fP\fP
+.TP
+\fB\fIRANDOM \fP\fP
+.PP
+Definition at line 282 of file db_bench_tree_db\&.cc\&.
+.SS "enum \fBleveldb::Benchmark::Order\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fISEQUENTIAL \fP\fP
+.TP
+\fB\fIRANDOM \fP\fP
+.TP
+\fB\fISEQUENTIAL \fP\fP
+.TP
+\fB\fIRANDOM \fP\fP
+.PP
+Definition at line 306 of file db_bench_sqlite3\&.cc\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "leveldb::Benchmark::Benchmark ()\fC [inline]\fP"
+
+.PP
+Definition at line 389 of file db_bench\&.cc\&.
+.SS "leveldb::Benchmark::~Benchmark ()\fC [inline]\fP"
+
+.PP
+Definition at line 412 of file db_bench\&.cc\&.
+.SS "leveldb::Benchmark::Benchmark ()\fC [inline]\fP"
+
+.PP
+Definition at line 315 of file db_bench_sqlite3\&.cc\&.
+.SS "leveldb::Benchmark::~Benchmark ()\fC [inline]\fP"
+
+.PP
+Definition at line 338 of file db_bench_sqlite3\&.cc\&.
+.SS "leveldb::Benchmark::Benchmark ()\fC [inline]\fP"
+
+.PP
+Definition at line 291 of file db_bench_tree_db\&.cc\&.
+.SS "leveldb::Benchmark::~Benchmark ()\fC [inline]\fP"
+
+.PP
+Definition at line 313 of file db_bench_tree_db\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void leveldb::Benchmark::Open ()\fC [inline]\fP"
+
+.PP
+Definition at line 417 of file db_bench_sqlite3\&.cc\&.
+.SS "void leveldb::Benchmark::Read (\fBOrder\fP order, int entries_per_batch)\fC [inline]\fP"
+
+.PP
+Definition at line 581 of file db_bench_sqlite3\&.cc\&.
+.SS "void leveldb::Benchmark::ReadSequential ()\fC [inline]\fP"
+
+.PP
+Definition at line 649 of file db_bench_sqlite3\&.cc\&.
+.SS "void leveldb::Benchmark::Run ()\fC [inline]\fP"
+
+.PP
+Definition at line 319 of file db_bench_tree_db\&.cc\&.
+.SS "void leveldb::Benchmark::Run ()\fC [inline]\fP"
+
+.PP
+Definition at line 343 of file db_bench_sqlite3\&.cc\&.
+.SS "void leveldb::Benchmark::Run ()\fC [inline]\fP"
+
+.PP
+Definition at line 418 of file db_bench\&.cc\&.
+.SS "void leveldb::Benchmark::Write (bool write_sync, \fBOrder\fP order, \fBDBState\fP state, int num_entries, int value_size, int entries_per_batch)\fC [inline]\fP"
+
+.PP
+Definition at line 478 of file db_bench_sqlite3\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

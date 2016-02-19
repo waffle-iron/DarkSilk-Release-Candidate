@@ -1,0 +1,209 @@
+.TH "CCoinsViewCache" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CCoinsViewCache \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <coins\&.h>\fP
+.PP
+Inherits \fBCCoinsViewBacked\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCCoinsViewCache\fP (\fBCCoinsView\fP *baseIn)"
+.br
+.ti -1c
+.RI "\fB~CCoinsViewCache\fP ()"
+.br
+.ti -1c
+.RI "bool \fBGetCoins\fP (const \fBuint256\fP &txid, \fBCCoins\fP &coins) const "
+.br
+.RI "\fIRetrieve the \fBCCoins\fP (unspent transaction outputs) for a given txid\&. \fP"
+.ti -1c
+.RI "bool \fBHaveCoins\fP (const \fBuint256\fP &txid) const "
+.br
+.ti -1c
+.RI "\fBuint256\fP \fBGetBestBlock\fP () const "
+.br
+.RI "\fIRetrieve the block hash whose state this \fBCCoinsView\fP currently represents\&. \fP"
+.ti -1c
+.RI "void \fBSetBestBlock\fP (const \fBuint256\fP &\fBhashBlock\fP)"
+.br
+.ti -1c
+.RI "bool \fBBatchWrite\fP (\fBCCoinsMap\fP &mapCoins, const \fBuint256\fP &\fBhashBlock\fP)"
+.br
+.ti -1c
+.RI "const \fBCCoins\fP * \fBAccessCoins\fP (const \fBuint256\fP &txid) const "
+.br
+.ti -1c
+.RI "\fBCCoinsModifier\fP \fBModifyCoins\fP (const \fBuint256\fP &txid)"
+.br
+.ti -1c
+.RI "bool \fBFlush\fP ()"
+.br
+.ti -1c
+.RI "unsigned int \fBGetCacheSize\fP () const "
+.br
+.RI "\fICalculate the size of the cache (in number of transactions) \fP"
+.ti -1c
+.RI "\fBCAmount\fP \fBGetValueIn\fP (const \fBCTransaction\fP &tx) const "
+.br
+.ti -1c
+.RI "bool \fBHaveInputs\fP (const \fBCTransaction\fP &tx) const "
+.br
+.RI "\fICheck whether all prevouts of the transaction are present in the UTXO set represented by this view\&. \fP"
+.ti -1c
+.RI "double \fBGetPriority\fP (const \fBCTransaction\fP &tx, int nHeight) const "
+.br
+.RI "\fIReturn priority of tx at height nHeight\&. \fP"
+.ti -1c
+.RI "const \fBCTxOut\fP & \fBGetOutputFor\fP (const \fBCTxIn\fP &input) const "
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "bool \fBhasModifier\fP"
+.br
+.ti -1c
+.RI "\fBuint256\fP \fBhashBlock\fP"
+.br
+.ti -1c
+.RI "\fBCCoinsMap\fP \fBcacheCoins\fP"
+.br
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "class \fBCCoinsModifier\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBCCoinsView\fP that adds a memory cache for transactions to another \fBCCoinsView\fP 
+.PP
+Definition at line 418 of file coins\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CCoinsViewCache::CCoinsViewCache (\fBCCoinsView\fP * baseIn)"
+
+.PP
+Definition at line 74 of file coins\&.cpp\&.
+.SS "CCoinsViewCache::~CCoinsViewCache ()"
+
+.PP
+Definition at line 76 of file coins\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "const \fBCCoins\fP * CCoinsViewCache::AccessCoins (const \fBuint256\fP & txid) const"
+Return a pointer to \fBCCoins\fP in the cache, or NULL if not found\&. This is more efficient than GetCoins\&. Modifications to other cache entries are allowed while accessing the returned pointer\&. 
+.PP
+Definition at line 125 of file coins\&.cpp\&.
+.SS "bool CCoinsViewCache::BatchWrite (\fBCCoinsMap\fP & mapCoins, const \fBuint256\fP & hashBlock)\fC [virtual]\fP"
+Do a bulk modification (multiple \fBCCoins\fP changes + BestBlock change)\&. The passed mapCoins can be modified\&. 
+.PP
+Reimplemented from \fBCCoinsViewBacked\fP\&.
+.PP
+Definition at line 153 of file coins\&.cpp\&.
+.SS "bool CCoinsViewCache::Flush ()"
+Push the modifications applied to this cache to its base\&. Failure to call this method before destruction will cause the changes to be forgotten\&. If false is returned, the state of this cache (and its backing view) will be undefined\&. 
+.PP
+Definition at line 189 of file coins\&.cpp\&.
+.SS "\fBuint256\fP CCoinsViewCache::GetBestBlock () const\fC [virtual]\fP"
+
+.PP
+Retrieve the block hash whose state this \fBCCoinsView\fP currently represents\&. 
+.PP
+Reimplemented from \fBCCoinsViewBacked\fP\&.
+.PP
+Definition at line 143 of file coins\&.cpp\&.
+.SS "unsigned int CCoinsViewCache::GetCacheSize () const"
+
+.PP
+Calculate the size of the cache (in number of transactions) 
+.PP
+Definition at line 195 of file coins\&.cpp\&.
+.SS "bool CCoinsViewCache::GetCoins (const \fBuint256\fP & txid, \fBCCoins\fP & coins) const\fC [virtual]\fP"
+
+.PP
+Retrieve the \fBCCoins\fP (unspent transaction outputs) for a given txid\&. 
+.PP
+Reimplemented from \fBCCoinsViewBacked\fP\&.
+.PP
+Definition at line 98 of file coins\&.cpp\&.
+.SS "const \fBCTxOut\fP & CCoinsViewCache::GetOutputFor (const \fBCTxIn\fP & input) const"
+
+.PP
+Definition at line 199 of file coins\&.cpp\&.
+.SS "double CCoinsViewCache::GetPriority (const \fBCTransaction\fP & tx, int nHeight) const"
+
+.PP
+Return priority of tx at height nHeight\&. 
+.PP
+Definition at line 232 of file coins\&.cpp\&.
+.SS "\fBCAmount\fP CCoinsViewCache::GetValueIn (const \fBCTransaction\fP & tx) const"
+Amount of dash coming in to a transaction Note that lightweight clients may not know anything besides the hash of previous transactions, so may not be able to calculate this\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fItx\fP transaction for which we are checking input total 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Sum of value of all inputs (scriptSigs) 
+.RE
+.PP
+
+.PP
+Definition at line 206 of file coins\&.cpp\&.
+.SS "bool CCoinsViewCache::HaveCoins (const \fBuint256\fP & txid) const\fC [virtual]\fP"
+Just check whether we have data for a given txid\&. This may (but cannot always) return true for fully spent transactions 
+.PP
+Reimplemented from \fBCCoinsViewBacked\fP\&.
+.PP
+Definition at line 134 of file coins\&.cpp\&.
+.SS "bool CCoinsViewCache::HaveInputs (const \fBCTransaction\fP & tx) const"
+
+.PP
+Check whether all prevouts of the transaction are present in the UTXO set represented by this view\&. 
+.PP
+Definition at line 218 of file coins\&.cpp\&.
+.SS "\fBCCoinsModifier\fP CCoinsViewCache::ModifyCoins (const \fBuint256\fP & txid)"
+Return a modifiable reference to a \fBCCoins\fP\&. If no entry with the given txid exists, a new one is created\&. Simultaneous modifications are not allowed\&. 
+.PP
+Definition at line 107 of file coins\&.cpp\&.
+.SS "void CCoinsViewCache::SetBestBlock (const \fBuint256\fP & hashBlock)"
+
+.PP
+Definition at line 149 of file coins\&.cpp\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "friend class \fBCCoinsModifier\fP\fC [friend]\fP"
+
+.PP
+Definition at line 484 of file coins\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBCCoinsMap\fP CCoinsViewCache::cacheCoins\fC [mutable]\fP, \fC [protected]\fP"
+
+.PP
+Definition at line 429 of file coins\&.h\&.
+.SS "\fBuint256\fP CCoinsViewCache::hashBlock\fC [mutable]\fP, \fC [protected]\fP"
+\fBCCoinsView\fP Make mutable so that we can 'fill the cache' even from Get-methods declared as 'const'\&. 
+.PP
+Definition at line 428 of file coins\&.h\&.
+.SS "bool CCoinsViewCache::hasModifier\fC [protected]\fP"
+
+.PP
+Definition at line 422 of file coins\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

@@ -6,37 +6,28 @@
 #ifndef DARKSILK_NET_H
 #define DARKSILK_NET_H
 
-#include "addrman.h"
-#include "compat.h"
-#include "hash.h"
-#include "mruset.h"
-#include "netbase.h"
-#include "protocol.h"
-#include "util.h"
-#include "streams.h"
-#include "sync.h"
-#include "uint256.h"
-#include "utilstrencodings.h"
-
 #include <deque>
-#include <stdint.h>
-
-#ifndef WIN32
-#include <arpa/inet.h>
-#endif
-
-#include <deque>
-#include <stdint.h>
 #include <boost/array.hpp>
 #include <boost/foreach.hpp>
 #include <boost/signals2/signal.hpp>
 #include <openssl/rand.h>
 
-class CAddrMan;
-class CBlockIndex;
-class CNode;
 
+#ifndef WIN32
+#include <arpa/inet.h>
+#endif
+
+#include "mruset.h"
+#include "netbase.h"
+#include "protocol.h"
+#include "addrman.h"
+#include "hash.h"
+#include "streams.h"
+
+class CNode;
+class CBlockIndex;
 extern int nBestHeight;
+
 
 /** Time between pings automatically sent out for latency probing and keepalive (in seconds). */
 static const int PING_INTERVAL = 2 * 60;

@@ -6,6 +6,8 @@
  * Silk Network 2015-2016
  */
 
+#include <QApplication>
+
 #include "darksilkgui.h"
 #include "transactiontablemodel.h"
 #include "addressbookpage.h"
@@ -14,7 +16,6 @@
 #include "optionsdialog.h"
 #include "aboutdialog.h"
 #include "clientmodel.h"
-#include "net.h"
 #include "walletmodel.h"
 #include "messagemodel.h"
 #include "editaddressdialog.h"
@@ -29,7 +30,7 @@
 #include "notificator.h"
 #include "guiutil.h"
 #include "debugconsole.h"
-#include "wallet/wallet.h"
+#include "wallet.h"
 #include "init.h"
 #include "stormnode-sync.h"
 #include "stormnodemanager.h"
@@ -45,7 +46,6 @@
 #include "macdockiconhandler.h"
 #endif
 
-#include <QApplication>
 #include <QMenuBar>
 #include <QMenu>
 #include <QFile>
@@ -1471,7 +1471,7 @@ void DarkSilkGUI::updateStakingIcon()
         uint64_t nWeight = this->nWeight;
         uint64_t nNetworkWeight = GetPoSKernelPS();
 
-        unsigned nEstimateTime = Params().GetPoSTargetSpacing() * nNetworkWeight / nWeight;
+        unsigned nEstimateTime = POS_TARGET_SPACING * nNetworkWeight / nWeight;
 
         QString text;
 

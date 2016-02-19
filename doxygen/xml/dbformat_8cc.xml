@@ -1,0 +1,311 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="dbformat_8cc" kind="file" language="C++">
+    <compoundname>dbformat.cc</compoundname>
+    <includes local="no">stdio.h</includes>
+    <includes refid="dbformat_8h" local="yes">db/dbformat.h</includes>
+    <includes refid="port_8h" local="yes">port/port.h</includes>
+    <includes refid="coding_8h" local="yes">util/coding.h</includes>
+    <incdepgraph>
+      <node id="36495">
+        <label>util/logging.h</label>
+        <link refid="logging_8h"/>
+        <childnode refid="36478" relation="include">
+        </childnode>
+        <childnode refid="36483" relation="include">
+        </childnode>
+        <childnode refid="36481" relation="include">
+        </childnode>
+        <childnode refid="36494" relation="include">
+        </childnode>
+      </node>
+      <node id="36486">
+        <label>assert.h</label>
+      </node>
+      <node id="36490">
+        <label>leveldb/options.h</label>
+        <link refid="options_8h"/>
+        <childnode refid="36487" relation="include">
+        </childnode>
+      </node>
+      <node id="36479">
+        <label>db/dbformat.h</label>
+        <link refid="dbformat_8h"/>
+        <childnode refid="36478" relation="include">
+        </childnode>
+        <childnode refid="36480" relation="include">
+        </childnode>
+        <childnode refid="36482" relation="include">
+        </childnode>
+        <childnode refid="36491" relation="include">
+        </childnode>
+        <childnode refid="36485" relation="include">
+        </childnode>
+        <childnode refid="36492" relation="include">
+        </childnode>
+        <childnode refid="36493" relation="include">
+        </childnode>
+        <childnode refid="36495" relation="include">
+        </childnode>
+      </node>
+      <node id="36482">
+        <label>leveldb/db.h</label>
+        <link refid="leveldb_2include_2leveldb_2db_8h"/>
+        <childnode refid="36483" relation="include">
+        </childnode>
+        <childnode refid="36478" relation="include">
+        </childnode>
+        <childnode refid="36484" relation="include">
+        </childnode>
+        <childnode refid="36490" relation="include">
+        </childnode>
+      </node>
+      <node id="36481">
+        <label>string</label>
+      </node>
+      <node id="36487">
+        <label>stddef.h</label>
+      </node>
+      <node id="36489">
+        <label>leveldb/status.h</label>
+        <link refid="status_8h"/>
+        <childnode refid="36481" relation="include">
+        </childnode>
+        <childnode refid="36485" relation="include">
+        </childnode>
+      </node>
+      <node id="36493">
+        <label>util/coding.h</label>
+        <link refid="coding_8h"/>
+        <childnode refid="36483" relation="include">
+        </childnode>
+        <childnode refid="36488" relation="include">
+        </childnode>
+        <childnode refid="36481" relation="include">
+        </childnode>
+        <childnode refid="36485" relation="include">
+        </childnode>
+        <childnode refid="36494" relation="include">
+        </childnode>
+      </node>
+      <node id="36488">
+        <label>string.h</label>
+      </node>
+      <node id="36494">
+        <label>port/port.h</label>
+        <link refid="port_8h"/>
+        <childnode refid="36488" relation="include">
+        </childnode>
+      </node>
+      <node id="36483">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="36492">
+        <label>leveldb/table_builder.h</label>
+        <link refid="table__builder_8h"/>
+        <childnode refid="36483" relation="include">
+        </childnode>
+        <childnode refid="36490" relation="include">
+        </childnode>
+        <childnode refid="36489" relation="include">
+        </childnode>
+      </node>
+      <node id="36477">
+        <label>/home/dev/ds-160209/src/leveldb/db/dbformat.cc</label>
+        <link refid="dbformat.cc"/>
+        <childnode refid="36478" relation="include">
+        </childnode>
+        <childnode refid="36479" relation="include">
+        </childnode>
+        <childnode refid="36494" relation="include">
+        </childnode>
+        <childnode refid="36493" relation="include">
+        </childnode>
+      </node>
+      <node id="36485">
+        <label>leveldb/slice.h</label>
+        <link refid="slice_8h"/>
+        <childnode refid="36486" relation="include">
+        </childnode>
+        <childnode refid="36487" relation="include">
+        </childnode>
+        <childnode refid="36488" relation="include">
+        </childnode>
+        <childnode refid="36481" relation="include">
+        </childnode>
+      </node>
+      <node id="36478">
+        <label>stdio.h</label>
+      </node>
+      <node id="36491">
+        <label>leveldb/filter_policy.h</label>
+        <link refid="filter__policy_8h"/>
+        <childnode refid="36481" relation="include">
+        </childnode>
+      </node>
+      <node id="36480">
+        <label>leveldb/comparator.h</label>
+        <link refid="comparator_8h"/>
+        <childnode refid="36481" relation="include">
+        </childnode>
+      </node>
+      <node id="36484">
+        <label>leveldb/iterator.h</label>
+        <link refid="iterator_8h"/>
+        <childnode refid="36485" relation="include">
+        </childnode>
+        <childnode refid="36489" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceleveldb">leveldb</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2011-2016<sp/>The<sp/>LevelDB<sp/>Authors.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>of<sp/>this<sp/>source<sp/>code<sp/>is<sp/>governed<sp/>by<sp/>a<sp/>BSD-style<sp/>license<sp/>that<sp/>can<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>found<sp/>in<sp/>the<sp/>LICENSE<sp/>file.<sp/>See<sp/>the<sp/>AUTHORS<sp/>file<sp/>for<sp/>names<sp/>of<sp/>contributors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dbformat_8h" kindref="compound">db/dbformat.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="port_8h" kindref="compound">port/port.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="coding_8h" kindref="compound">util/coding.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceleveldb" kindref="compound">leveldb</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>PackSequenceAndType(<ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>seq,<sp/><ref refid="namespaceleveldb_1acc038cb0d608414730cafa459a4ba866" kindref="member">ValueType</ref><sp/>t)<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/>assert(seq<sp/>&lt;=<sp/>kMaxSequenceNumber);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/>assert(t<sp/>&lt;=<sp/>kValueTypeForSeek);</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(seq<sp/>&lt;&lt;<sp/>8)<sp/>|<sp/>t;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="namespaceleveldb_1a7192bb79e7fa6ba01490473941386534" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1a7192bb79e7fa6ba01490473941386534" kindref="member">AppendInternalKey</ref>(std::string*<sp/>result,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structleveldb_1_1_parsed_internal_key" kindref="compound">ParsedInternalKey</ref>&amp;<sp/>key)<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/>result-&gt;append(key.<ref refid="structleveldb_1_1_parsed_internal_key_1aa6e30fcf3c95fc1485d60fa08efe2b9d" kindref="member">user_key</ref>.<ref refid="classleveldb_1_1_slice_1aa64861043d9deee6889461bf0593cf73" kindref="member">data</ref>(),<sp/>key.<ref refid="structleveldb_1_1_parsed_internal_key_1aa6e30fcf3c95fc1485d60fa08efe2b9d" kindref="member">user_key</ref>.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>());</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><ref refid="namespaceleveldb_1a720cd9030ba5f867ded835b57caa1d06" kindref="member">PutFixed64</ref>(result,<sp/>PackSequenceAndType(key.<ref refid="structleveldb_1_1_parsed_internal_key_1a3ab7f4382bc026081875fde4dea95e61" kindref="member">sequence</ref>,<sp/>key.<ref refid="structleveldb_1_1_parsed_internal_key_1ac7c10a6f60f93982b886ad1fbbafd6c2" kindref="member">type</ref>));</highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="structleveldb_1_1_parsed_internal_key_1abda4655ea6857f75dcb8f409873207d5" refkind="member"><highlight class="normal">std::string<sp/><ref refid="structleveldb_1_1_parsed_internal_key_1abda4655ea6857f75dcb8f409873207d5" kindref="member">ParsedInternalKey::DebugString</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>buf[50];</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/>snprintf(buf,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(buf),<sp/></highlight><highlight class="stringliteral">&quot;&apos;<sp/>@<sp/>%llu<sp/>:<sp/>%d&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal">)<sp/><ref refid="structleveldb_1_1_parsed_internal_key_1a3ab7f4382bc026081875fde4dea95e61" kindref="member">sequence</ref>,</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">(<ref refid="structleveldb_1_1_parsed_internal_key_1ac7c10a6f60f93982b886ad1fbbafd6c2" kindref="member">type</ref>));</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/>std::string<sp/>result<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&apos;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/>result<sp/>+=<sp/><ref refid="namespaceleveldb_1a6d50705a37d7459f152f8ad839513a73" kindref="member">EscapeString</ref>(<ref refid="structleveldb_1_1_parsed_internal_key_1aa6e30fcf3c95fc1485d60fa08efe2b9d" kindref="member">user_key</ref>.<ref refid="classleveldb_1_1_slice_1a2cdd9fb649105033fde510afc9416732" kindref="member">ToString</ref>());</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/>result<sp/>+=<sp/>buf;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classleveldb_1_1_internal_key_1a737053e1b02c3eb8361e960f7fe5befb" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classleveldb_1_1_internal_key_1a737053e1b02c3eb8361e960f7fe5befb" kindref="member">InternalKey::DebugString</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/>std::string<sp/>result;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><ref refid="structleveldb_1_1_parsed_internal_key" kindref="compound">ParsedInternalKey</ref><sp/>parsed;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="namespaceleveldb_1a5a173b622e86c7a2f9beae3ac8818ac3" kindref="member">ParseInternalKey</ref>(rep_,<sp/>&amp;parsed))<sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>result<sp/>=<sp/>parsed.<ref refid="structleveldb_1_1_parsed_internal_key_1abda4655ea6857f75dcb8f409873207d5" kindref="member">DebugString</ref>();</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>result<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;(bad)&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>result.append(<ref refid="namespaceleveldb_1a6d50705a37d7459f152f8ad839513a73" kindref="member">EscapeString</ref>(rep_));</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classleveldb_1_1_internal_key_comparator_1a762ec9028955d3a5fc61fb5c718ff4f1" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classleveldb_1_1_internal_key_comparator_1a762ec9028955d3a5fc61fb5c718ff4f1" kindref="member">InternalKeyComparator::Name</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;leveldb.InternalKeyComparator&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50" refid="classleveldb_1_1_internal_key_comparator_1a6469a0d67a9025173d31ec6e1cd5f80e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_internal_key_comparator_1a6469a0d67a9025173d31ec6e1cd5f80e" kindref="member">InternalKeyComparator::Compare</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/>akey,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/>bkey)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Order<sp/>by:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>increasing<sp/>user<sp/>key<sp/>(according<sp/>to<sp/>user-supplied<sp/>comparator)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>decreasing<sp/>sequence<sp/>number</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/>decreasing<sp/>type<sp/>(though<sp/>sequence#<sp/>should<sp/>be<sp/>enough<sp/>to<sp/>disambiguate)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>r<sp/>=<sp/>user_comparator_-&gt;<ref refid="structleveldb_1_1_comparator_1a05dae6edcad3c7db23827c0233d74039" kindref="member">Compare</ref>(<ref refid="namespaceleveldb_1a1c889869840312393b805ad91a41b94f" kindref="member">ExtractUserKey</ref>(akey),<sp/><ref refid="namespaceleveldb_1a1c889869840312393b805ad91a41b94f" kindref="member">ExtractUserKey</ref>(bkey));</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(r<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>anum<sp/>=<sp/><ref refid="namespaceleveldb_1a239098b0291873752d0be16633652825" kindref="member">DecodeFixed64</ref>(akey.<ref refid="classleveldb_1_1_slice_1aa64861043d9deee6889461bf0593cf73" kindref="member">data</ref>()<sp/>+<sp/>akey.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>()<sp/>-<sp/>8);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>bnum<sp/>=<sp/><ref refid="namespaceleveldb_1a239098b0291873752d0be16633652825" kindref="member">DecodeFixed64</ref>(bkey.<ref refid="classleveldb_1_1_slice_1aa64861043d9deee6889461bf0593cf73" kindref="member">data</ref>()<sp/>+<sp/>bkey.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>()<sp/>-<sp/>8);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(anum<sp/>&gt;<sp/>bnum)<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>r<sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(anum<sp/>&lt;<sp/>bnum)<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>r<sp/>=<sp/>+1;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>r;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68" refid="classleveldb_1_1_internal_key_comparator_1afe98c9042e34927e60e078fc103991bf" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_internal_key_comparator_1afe98c9042e34927e60e078fc103991bf" kindref="member">InternalKeyComparator::FindShortestSeparator</ref>(</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::string*<sp/><ref refid="db__bench_8cc_1ab376b87f96a574a793c03c53e75afec8" kindref="member">start</ref>,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/>limit)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Attempt<sp/>to<sp/>shorten<sp/>the<sp/>user<sp/>portion<sp/>of<sp/>the<sp/>key</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref><sp/>user_start<sp/>=<sp/><ref refid="namespaceleveldb_1a1c889869840312393b805ad91a41b94f" kindref="member">ExtractUserKey</ref>(*start);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref><sp/>user_limit<sp/>=<sp/><ref refid="namespaceleveldb_1a1c889869840312393b805ad91a41b94f" kindref="member">ExtractUserKey</ref>(limit);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/>std::string<sp/>tmp(user_start.<ref refid="classleveldb_1_1_slice_1aa64861043d9deee6889461bf0593cf73" kindref="member">data</ref>(),<sp/>user_start.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>());</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/>user_comparator_-&gt;<ref refid="structleveldb_1_1_comparator_1abdfe6076225e95b91ffd94f646063115" kindref="member">FindShortestSeparator</ref>(&amp;tmp,<sp/>user_limit);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(tmp.size()<sp/>&lt;<sp/>user_start.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>()<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>user_comparator_-&gt;<ref refid="structleveldb_1_1_comparator_1a05dae6edcad3c7db23827c0233d74039" kindref="member">Compare</ref>(user_start,<sp/>tmp)<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>User<sp/>key<sp/>has<sp/>become<sp/>shorter<sp/>physically,<sp/>but<sp/>larger<sp/>logically.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Tack<sp/>on<sp/>the<sp/>earliest<sp/>possible<sp/>number<sp/>to<sp/>the<sp/>shortened<sp/>user<sp/>key.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceleveldb_1a720cd9030ba5f867ded835b57caa1d06" kindref="member">PutFixed64</ref>(&amp;tmp,<sp/>PackSequenceAndType(kMaxSequenceNumber,kValueTypeForSeek));</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(this-&gt;<ref refid="classleveldb_1_1_internal_key_comparator_1a6469a0d67a9025173d31ec6e1cd5f80e" kindref="member">Compare</ref>(*start,<sp/>tmp)<sp/>&lt;<sp/>0);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(this-&gt;<ref refid="classleveldb_1_1_internal_key_comparator_1a6469a0d67a9025173d31ec6e1cd5f80e" kindref="member">Compare</ref>(tmp,<sp/>limit)<sp/>&lt;<sp/>0);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>start-&gt;swap(tmp);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87" refid="classleveldb_1_1_internal_key_comparator_1a5dc88f433ef3a0d9508ec17cb40d3e27" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_internal_key_comparator_1a5dc88f433ef3a0d9508ec17cb40d3e27" kindref="member">InternalKeyComparator::FindShortSuccessor</ref>(std::string*<sp/>key)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref><sp/><ref refid="version__set_8cc_1afced2118ae0bf03db7c7e75a21cfd004" kindref="member">user_key</ref><sp/>=<sp/><ref refid="namespaceleveldb_1a1c889869840312393b805ad91a41b94f" kindref="member">ExtractUserKey</ref>(*key);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/>std::string<sp/>tmp(user_key.<ref refid="classleveldb_1_1_slice_1aa64861043d9deee6889461bf0593cf73" kindref="member">data</ref>(),<sp/>user_key.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>());</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/>user_comparator_-&gt;<ref refid="structleveldb_1_1_comparator_1a49751dd906595633161dfad943d24b3b" kindref="member">FindShortSuccessor</ref>(&amp;tmp);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(tmp.size()<sp/>&lt;<sp/>user_key.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>()<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>user_comparator_-&gt;<ref refid="structleveldb_1_1_comparator_1a05dae6edcad3c7db23827c0233d74039" kindref="member">Compare</ref>(user_key,<sp/>tmp)<sp/>&lt;<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>User<sp/>key<sp/>has<sp/>become<sp/>shorter<sp/>physically,<sp/>but<sp/>larger<sp/>logically.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Tack<sp/>on<sp/>the<sp/>earliest<sp/>possible<sp/>number<sp/>to<sp/>the<sp/>shortened<sp/>user<sp/>key.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceleveldb_1a720cd9030ba5f867ded835b57caa1d06" kindref="member">PutFixed64</ref>(&amp;tmp,<sp/>PackSequenceAndType(kMaxSequenceNumber,kValueTypeForSeek));</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(this-&gt;<ref refid="classleveldb_1_1_internal_key_comparator_1a6469a0d67a9025173d31ec6e1cd5f80e" kindref="member">Compare</ref>(*key,<sp/>tmp)<sp/>&lt;<sp/>0);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>key-&gt;swap(tmp);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="classleveldb_1_1_internal_filter_policy_1ab7f6002d74ba6a2838e1fc826e2095fc" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classleveldb_1_1_internal_filter_policy_1ab7f6002d74ba6a2838e1fc826e2095fc" kindref="member">InternalFilterPolicy::Name</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>user_policy_-&gt;<ref refid="classleveldb_1_1_filter_policy_1afd5e951892a2e740f186c0658913ea1b" kindref="member">Name</ref>();</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="classleveldb_1_1_internal_filter_policy_1a1c7c7b7eecdfb872e35708793d82ab40" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_internal_filter_policy_1a1c7c7b7eecdfb872e35708793d82ab40" kindref="member">InternalFilterPolicy::CreateFilter</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>*<sp/>keys,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n,</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>std::string*<sp/>dst)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>rely<sp/>on<sp/>the<sp/>fact<sp/>that<sp/>the<sp/>code<sp/>in<sp/>table.cc<sp/>does<sp/>not<sp/>mind<sp/>us</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>adjusting<sp/>keys[].</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>*<sp/>mkey<sp/>=<sp/></highlight><highlight class="keyword">const_cast&lt;</highlight><highlight class="normal"><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(keys);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>n;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>mkey[i]<sp/>=<sp/><ref refid="namespaceleveldb_1a1c889869840312393b805ad91a41b94f" kindref="member">ExtractUserKey</ref>(keys[i]);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>TODO(sanjay):<sp/>Suppress<sp/>dups?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/>user_policy_-&gt;<ref refid="classleveldb_1_1_filter_policy_1a355e9797e16dd16b93d19056781126b2" kindref="member">CreateFilter</ref>(keys,<sp/>n,<sp/>dst);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="classleveldb_1_1_internal_filter_policy_1a42dc5124aa139c68bec2efa7417a7373" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_internal_filter_policy_1a42dc5124aa139c68bec2efa7417a7373" kindref="member">InternalFilterPolicy::KeyMayMatch</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/>key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/>f)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>user_policy_-&gt;<ref refid="classleveldb_1_1_filter_policy_1a6f8ba10ea25e0b4b8d0a6607c361c718" kindref="member">KeyMayMatch</ref>(<ref refid="namespaceleveldb_1a1c889869840312393b805ad91a41b94f" kindref="member">ExtractUserKey</ref>(key),<sp/>f);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121" refid="classleveldb_1_1_lookup_key_1acd09aa56607ced962e1b458d05d53472" refkind="member"><highlight class="normal"><ref refid="classleveldb_1_1_lookup_key_1acd09aa56607ced962e1b458d05d53472" kindref="member">LookupKey::LookupKey</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/><ref refid="version__set_8cc_1afced2118ae0bf03db7c7e75a21cfd004" kindref="member">user_key</ref>,<sp/><ref refid="namespaceleveldb_1a5481ededd221c36d652c371249f869fa" kindref="member">SequenceNumber</ref><sp/>s)<sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>usize<sp/>=<sp/>user_key.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>();</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>needed<sp/>=<sp/>usize<sp/>+<sp/>13;<sp/><sp/></highlight><highlight class="comment">//<sp/>A<sp/>conservative<sp/>estimate</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>dst;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(needed<sp/>&lt;=<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(space_))<sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>dst<sp/>=<sp/>space_;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>dst<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">[needed];</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/>start_<sp/>=<sp/>dst;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/>dst<sp/>=<sp/><ref refid="namespaceleveldb_1ac5e7a0e0356b856317349a870e3bfb41" kindref="member">EncodeVarint32</ref>(dst,<sp/>usize<sp/>+<sp/>8);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/>kstart_<sp/>=<sp/>dst;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/>memcpy(dst,<sp/>user_key.<ref refid="classleveldb_1_1_slice_1aa64861043d9deee6889461bf0593cf73" kindref="member">data</ref>(),<sp/>usize);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/>dst<sp/>+=<sp/>usize;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><ref refid="namespaceleveldb_1a725a2c0ebf763116b4ca3fb78564ff70" kindref="member">EncodeFixed64</ref>(dst,<sp/>PackSequenceAndType(s,<sp/>kValueTypeForSeek));</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/>dst<sp/>+=<sp/>8;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/>end_<sp/>=<sp/>dst;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>leveldb</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/leveldb/db/dbformat.cc"/>
+  </compounddef>
+</doxygen>

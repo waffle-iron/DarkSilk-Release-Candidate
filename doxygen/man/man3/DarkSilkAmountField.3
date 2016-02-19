@@ -1,0 +1,118 @@
+.TH "DarkSilkAmountField" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+DarkSilkAmountField \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <darksilkamountfield\&.h>\fP
+.PP
+Inherits QWidget\&.
+.SS "Signals"
+
+.in +1c
+.ti -1c
+.RI "void \fBtextChanged\fP ()"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDarkSilkAmountField\fP (QWidget *parent=0)"
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBvalue\fP (bool *valid=0) const "
+.br
+.ti -1c
+.RI "void \fBsetValue\fP (const \fBCAmount\fP &\fBvalue\fP)"
+.br
+.ti -1c
+.RI "void \fBsetValid\fP (bool valid)"
+.br
+.ti -1c
+.RI "bool \fBvalidate\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetDisplayUnit\fP (int unit)"
+.br
+.ti -1c
+.RI "void \fBclear\fP ()"
+.br
+.ti -1c
+.RI "QWidget * \fBsetupTabChain\fP (QWidget *\fBprev\fP)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBeventFilter\fP (QObject *object, QEvent *event)"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "qint64 \fBvalue\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Widget for entering darksilk amounts\&. 
+.PP
+Definition at line 15 of file darksilkamountfield\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "DarkSilkAmountField::DarkSilkAmountField (QWidget * parent = \fC0\fP)\fC [explicit]\fP"
+
+.PP
+Definition at line 13 of file darksilkamountfield\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void DarkSilkAmountField::clear ()"
+Make field empty and ready for new input\&. 
+.PP
+Definition at line 52 of file darksilkamountfield\&.cpp\&.
+.SS "bool DarkSilkAmountField::eventFilter (QObject * object, QEvent * event)\fC [protected]\fP"
+Intercept focus-in event and ',' key presses 
+.PP
+Definition at line 87 of file darksilkamountfield\&.cpp\&.
+.SS "void DarkSilkAmountField::setDisplayUnit (int unit)"
+Change unit used to display amount\&. 
+.PP
+Definition at line 161 of file darksilkamountfield\&.cpp\&.
+.SS "QWidget * DarkSilkAmountField::setupTabChain (QWidget * prev)"
+Qt messes up the tab chain by default in some cases (issue https://bugreports.qt-project.org/browse/QTBUG-10907), in these cases we have to set it up manually\&. 
+.PP
+Definition at line 108 of file darksilkamountfield\&.cpp\&.
+.SS "void DarkSilkAmountField::setValid (bool valid)"
+Mark current value as invalid in UI\&. 
+.PP
+Definition at line 71 of file darksilkamountfield\&.cpp\&.
+.SS "void DarkSilkAmountField::setValue (const \fBCAmount\fP & value)"
+
+.PP
+Definition at line 125 of file darksilkamountfield\&.cpp\&.
+.SS "void DarkSilkAmountField::textChanged ()\fC [signal]\fP"
+
+.SS "bool DarkSilkAmountField::validate ()"
+Perform input validation, mark field as invalid if entered value is not valid\&. 
+.PP
+Definition at line 58 of file darksilkamountfield\&.cpp\&.
+.SS "\fBCAmount\fP DarkSilkAmountField::value (bool * valid = \fC0\fP) const"
+
+.PP
+Definition at line 114 of file darksilkamountfield\&.cpp\&.
+.SH "Property Documentation"
+.PP 
+.SS "qint64 DarkSilkAmountField::value\fC [read]\fP, \fC [write]\fP"
+
+.PP
+Definition at line 20 of file darksilkamountfield\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

@@ -2,9 +2,10 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "stormnode-budget.h"
 #include "main.h"
 #include "init.h"
+
+#include "stormnode-budget.h"
 #include "stormnode.h"
 #include "sandstorm.h"
 #include "stormnodeman.h"
@@ -25,7 +26,7 @@ int nSubmittedFinalBudget;
 
 int GetBudgetPaymentCycleBlocks(){
     // Amount of blocks in a months period of time 60*60*24*(365.25/12))/64
-    if(Params().NetworkID() == CBaseChainParams::MAIN) return FIXED_STORMNODE_BUDGET_FREQUENCY;
+    if(Params().NetworkID() == CChainParams::MAIN) return FIXED_STORMNODE_BUDGET_FREQUENCY;
     //for testing purposes
 
     return 50; //ten times per day
@@ -912,7 +913,7 @@ void CBudgetManager::ProcessMessage(CNode* pfrom, std::string& strCommand, CData
         uint256 nProp;
         vRecv >> nProp;
 
-        if(Params().NetworkID() == CBaseChainParams::MAIN){
+        if(Params().NetworkID() == CChainParams::MAIN){
             if(nProp == 0) {
                 if(pfrom->HasFulfilledRequest("snvs")) {
                     LogPrintf("snvs - peer already asked me for the list\n");
@@ -1708,7 +1709,7 @@ void CFinalizedBudget::AutoCheck()
 
     //do this 1 in 4 blocks -- spread out the voting activity on mainnet
     // -- this function is only called every sixth block, so this is really 1 in 24 blocks
-    if(Params().NetworkID() == CBaseChainParams::MAIN && rand() % 4 != 0) {
+    if(Params().NetworkID() == CChainParams::MAIN && rand() % 4 != 0) {
         LogPrintf("CFinalizedBudget::AutoCheck - waiting\n");
         return;
     }

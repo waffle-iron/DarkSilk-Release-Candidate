@@ -8,13 +8,13 @@
 
 #include "base58.h"
 #include "init.h"
-#include "main.h"
-#include "ui_interface.h"
 #include "util.h"
 #include "sync.h"
-#include "wallet/db.h"
+#include "base58.h"
+#include "db.h"
+#include "ui_interface.h"
 #ifdef ENABLE_WALLET
-#include "wallet/wallet.h"
+#include "wallet.h"
 #endif
 
 #include <boost/algorithm/string.hpp>
@@ -50,8 +50,6 @@ static asio::io_service* rpc_io_service = NULL;
 static map<string, boost::shared_ptr<deadline_timer> > deadlineTimers;
 static ssl::context* rpc_ssl_context = NULL;
 static boost::thread_group* rpc_worker_group = NULL;
-static boost::asio::io_service::work *rpc_dummy_work = NULL;
-static std::vector< boost::shared_ptr<ip::tcp::acceptor> > rpc_acceptors;
 
 void RPCTypeCheck(const Array& params,
                   const list<Value_type>& typesExpected,
@@ -583,7 +581,7 @@ void StartRPCThreads()
     // Try a dual IPv6/IPv4 socket, falling back to separate IPv4 and IPv6 sockets
     const bool loopback = !mapArgs.count("-rpcallowip");
     asio::ip::address bindAddress = loopback ? asio::ip::address_v6::loopback() : asio::ip::address_v6::any();
-    ip::tcp::endpoint endpoint(bindAddress, GetArg("-rpcport",  BaseParams().RPCPort()));
+    ip::tcp::endpoint endpoint(bindAddress, GetArg("-rpcport", Params().RPCPort()));
     boost::system::error_code v6_only_error;
     boost::shared_ptr<ip::tcp::acceptor> acceptor(new ip::tcp::acceptor(*rpc_io_service));
 
@@ -646,62 +644,20 @@ void StartRPCThreads()
         stringstream ssthreadName;
         ssthreadName << threadName << (i + 1);
         RenameThread(ssthreadName.str().c_str());
-        fRPCRunning = true;
-    }
-}
-
-void StartDummyRPCThread()
-{
-    if(rpc_io_service == NULL)
-    {
-        rpc_io_service = new asio::io_service();
-        /* Create dummy "work" to keep the thread from exiting when no timeouts active,
-         * see http://www.boost.org/doc/libs/1_51_0/doc/html/boost_asio/reference/io_service.html#boost_asio.reference.io_service.stopping_the_io_service_from_running_out_of_work */
-        rpc_dummy_work = new asio::io_service::work(*rpc_io_service);
-        rpc_worker_group = new boost::thread_group();
-        rpc_worker_group->create_thread(boost::bind(&asio::io_service::run, rpc_io_service));
-        fRPCRunning = true;
     }
 }
 
 void StopRPCThreads()
 {
     if (rpc_io_service == NULL) return;
-    // Set this to false first, so that longpolling loops will exit when woken up
-    fRPCRunning = false;
 
-    // First, cancel all timers and acceptors
-    // This is not done automatically by ->stop(), and in some cases the destructor of
-    // asio::io_service can hang if this is skipped.
-    boost::system::error_code ec;
-    BOOST_FOREACH(const boost::shared_ptr<ip::tcp::acceptor> &acceptor, rpc_acceptors)
-    {
-        acceptor->cancel(ec);
-        if (ec)
-            LogPrintf("%s: Warning: %s when cancelling acceptor", __func__, ec.message());
-    }
-    rpc_acceptors.clear();
-    BOOST_FOREACH(const PAIRTYPE(std::string, boost::shared_ptr<deadline_timer>) &timer, deadlineTimers)
-    {
-        timer.second->cancel(ec);
-        if (ec)
-            LogPrintf("%s: Warning: %s when cancelling timer", __func__, ec.message());
-    }
     deadlineTimers.clear();
-
     rpc_io_service->stop();
-    cvBlockChange.notify_all();
     if (rpc_worker_group != NULL)
         rpc_worker_group->join_all();
-    delete rpc_dummy_work; rpc_dummy_work = NULL;
     delete rpc_worker_group; rpc_worker_group = NULL;
     delete rpc_ssl_context; rpc_ssl_context = NULL;
     delete rpc_io_service; rpc_io_service = NULL;
-}
-
-bool IsRPCRunning()
-{
-    return fRPCRunning;
 }
 
 void SetRPCWarmupStatus(const std::string& newStatus)

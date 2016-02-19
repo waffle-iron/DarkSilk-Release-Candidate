@@ -1,0 +1,269 @@
+\hypertarget{blake2b_8c}{}\section{/home/dev/ds-\/160209/src/crypto/argon2/blake2/blake2b.c File Reference}
+\label{blake2b_8c}\index{/home/dev/ds-\/160209/src/crypto/argon2/blake2/blake2b.\+c@{/home/dev/ds-\/160209/src/crypto/argon2/blake2/blake2b.\+c}}
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}blake2.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}blake2-\/impl.\+h\char`\"{}}\\*
+Include dependency graph for blake2b.\+c\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{blake2b_8c_a4fbc796e307d9128c5de14d17c3de42a}{G}(r,  i,  a,  b,  c,  d)
+\item 
+\#define \hyperlink{blake2b_8c_ab35e822e8226ebfbc2122810b5ac5827}{R\+O\+U\+N\+D}(r)
+\item 
+\#define \hyperlink{blake2b_8c_a9631a68bc0c927f3d068b07ee8d052ff}{T\+R\+Y}(statement)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{blake2b_8c_ae453d8f2798df27cd1f4ea9b00b3a520}{blake2b\+\_\+init\+\_\+param} (\hyperlink{blake2_8h_ab1b4d29c36c4f253d26934adc80bf5c6}{blake2b\+\_\+state} $\ast$S, const \hyperlink{blake2_8h_a4a3606372fda93b1b333db57b6ddb354}{blake2b\+\_\+param} $\ast$P)
+\item 
+int \hyperlink{blake2b_8c_a7cefd211bfec58d37d8b67741955ce8a}{blake2b\+\_\+init} (\hyperlink{blake2_8h_ab1b4d29c36c4f253d26934adc80bf5c6}{blake2b\+\_\+state} $\ast$S, size\+\_\+t outlen)
+\item 
+int \hyperlink{blake2b_8c_a039b52f87e2ba0ca16ebbc62bfd3f02a}{blake2b\+\_\+init\+\_\+key} (\hyperlink{blake2_8h_ab1b4d29c36c4f253d26934adc80bf5c6}{blake2b\+\_\+state} $\ast$S, size\+\_\+t outlen, const void $\ast$key, size\+\_\+t keylen)
+\item 
+int \hyperlink{blake2b_8c_a1ee160fb796e342c9ee8a99ea0ffab0a}{blake2b\+\_\+update} (\hyperlink{blake2_8h_ab1b4d29c36c4f253d26934adc80bf5c6}{blake2b\+\_\+state} $\ast$S, const void $\ast$in, size\+\_\+t inlen)
+\item 
+int \hyperlink{blake2b_8c_ae3265f4a4ba468da48c850ad815bed2d}{blake2b\+\_\+final} (\hyperlink{blake2_8h_ab1b4d29c36c4f253d26934adc80bf5c6}{blake2b\+\_\+state} $\ast$S, void $\ast$out, size\+\_\+t outlen)
+\item 
+int \hyperlink{blake2b_8c_a5cf706554b84e6b4d763084ecefd6391}{blake2b} (void $\ast$out, size\+\_\+t outlen, const void $\ast$in, size\+\_\+t inlen, const void $\ast$key, size\+\_\+t keylen)
+\item 
+int \hyperlink{blake2b_8c_a9b077c7edb6f72a00f66c3db94ae6398}{blake2b\+\_\+long} (void $\ast$pout, size\+\_\+t outlen, const void $\ast$in, size\+\_\+t inlen)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{blake2b_8c_a4fbc796e307d9128c5de14d17c3de42a}{}\index{blake2b.\+c@{blake2b.\+c}!G@{G}}
+\index{G@{G}!blake2b.\+c@{blake2b.\+c}}
+\subsubsection[{G}]{\setlength{\rightskip}{0pt plus 5cm}\#define G(
+\begin{DoxyParamCaption}
+\item[{}]{r, }
+\item[{}]{i, }
+\item[{}]{a, }
+\item[{}]{b, }
+\item[{}]{c, }
+\item[{}]{d}
+\end{DoxyParamCaption}
+)}\label{blake2b_8c_a4fbc796e307d9128c5de14d17c3de42a}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                                                                       \(\backslash\)
+        a = a + b + m[blake2b\_sigma[r][2 * i + 0]];                            \(\backslash\)
+        d = rotr64(d ^ a, 32);                                                 \(\backslash\)
+        c = c + d;                                                             \(\backslash\)
+        b = rotr64(b ^ c, 24);                                                 \(\backslash\)
+        a = a + b + m[blake2b\_sigma[r][2 * i + 1]];                            \(\backslash\)
+        d = rotr64(d ^ a, 16);                                                 \(\backslash\)
+        c = c + d;                                                             \(\backslash\)
+        b = rotr64(b ^ c, 63);                                                 \(\backslash\)
+    \} \textcolor{keywordflow}{while} ((\textcolor{keywordtype}{void})0, 0)
+\end{DoxyCode}
+\hypertarget{blake2b_8c_ab35e822e8226ebfbc2122810b5ac5827}{}\index{blake2b.\+c@{blake2b.\+c}!R\+O\+U\+N\+D@{R\+O\+U\+N\+D}}
+\index{R\+O\+U\+N\+D@{R\+O\+U\+N\+D}!blake2b.\+c@{blake2b.\+c}}
+\subsubsection[{R\+O\+U\+N\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+O\+U\+N\+D(
+\begin{DoxyParamCaption}
+\item[{}]{r}
+\end{DoxyParamCaption}
+)}\label{blake2b_8c_ab35e822e8226ebfbc2122810b5ac5827}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                                                                       \hyperlink{blake2b_8c_a4fbc796e307d9128c5de14d17c3de42a}{\(\backslash\)}
+\hyperlink{blake2b_8c_a4fbc796e307d9128c5de14d17c3de42a}{        G}(r, 0, v[0], v[4], v[8], v[12]);                                      
+      \hyperlink{blake2b_8c_a4fbc796e307d9128c5de14d17c3de42a}{\(\backslash\)}
+\hyperlink{blake2b_8c_a4fbc796e307d9128c5de14d17c3de42a}{        G}(r, 1, v[1], v[5], v[9], v[13]);                                      
+      \hyperlink{blake2b_8c_a4fbc796e307d9128c5de14d17c3de42a}{\(\backslash\)}
+\hyperlink{blake2b_8c_a4fbc796e307d9128c5de14d17c3de42a}{        G}(r, 2, v[2], v[6], v[10], v[14]);                                     
+      \hyperlink{blake2b_8c_a4fbc796e307d9128c5de14d17c3de42a}{\(\backslash\)}
+\hyperlink{blake2b_8c_a4fbc796e307d9128c5de14d17c3de42a}{        G}(r, 3, v[3], v[7], v[11], v[15]);                                     
+      \hyperlink{blake2b_8c_a4fbc796e307d9128c5de14d17c3de42a}{\(\backslash\)}
+\hyperlink{blake2b_8c_a4fbc796e307d9128c5de14d17c3de42a}{        G}(r, 4, v[0], v[5], v[10], v[15]);                                     
+      \hyperlink{blake2b_8c_a4fbc796e307d9128c5de14d17c3de42a}{\(\backslash\)}
+\hyperlink{blake2b_8c_a4fbc796e307d9128c5de14d17c3de42a}{        G}(r, 5, v[1], v[6], v[11], v[12]);                                     
+      \hyperlink{blake2b_8c_a4fbc796e307d9128c5de14d17c3de42a}{\(\backslash\)}
+\hyperlink{blake2b_8c_a4fbc796e307d9128c5de14d17c3de42a}{        G}(r, 6, v[2], v[7], v[8], v[13]);                                      
+      \hyperlink{blake2b_8c_a4fbc796e307d9128c5de14d17c3de42a}{\(\backslash\)}
+\hyperlink{blake2b_8c_a4fbc796e307d9128c5de14d17c3de42a}{        G}(r, 7, v[3], v[4], v[9], v[14]);                                      \(\backslash\)
+    \} \textcolor{keywordflow}{while} ((\textcolor{keywordtype}{void})0, 0)
+\end{DoxyCode}
+\hypertarget{blake2b_8c_a9631a68bc0c927f3d068b07ee8d052ff}{}\index{blake2b.\+c@{blake2b.\+c}!T\+R\+Y@{T\+R\+Y}}
+\index{T\+R\+Y@{T\+R\+Y}!blake2b.\+c@{blake2b.\+c}}
+\subsubsection[{T\+R\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+R\+Y(
+\begin{DoxyParamCaption}
+\item[{}]{statement}
+\end{DoxyParamCaption}
+)}\label{blake2b_8c_a9631a68bc0c927f3d068b07ee8d052ff}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+\textcolor{keywordflow}{do} \{                                                                       \(\backslash\)
+        ret = statement;                                                       \(\backslash\)
+        if (ret < 0) \{                                                         \(\backslash\)
+            goto fail;                                                         \(\backslash\)
+        \}                                                                      \(\backslash\)
+    \} \textcolor{keywordflow}{while} ((\textcolor{keywordtype}{void})0, 0)
+\end{DoxyCode}
+
+
+\subsection{Function Documentation}
+\hypertarget{blake2b_8c_a5cf706554b84e6b4d763084ecefd6391}{}\index{blake2b.\+c@{blake2b.\+c}!blake2b@{blake2b}}
+\index{blake2b@{blake2b}!blake2b.\+c@{blake2b.\+c}}
+\subsubsection[{blake2b}]{\setlength{\rightskip}{0pt plus 5cm}int blake2b (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{out, }
+\item[{size\+\_\+t}]{outlen, }
+\item[{const void $\ast$}]{in, }
+\item[{size\+\_\+t}]{inlen, }
+\item[{const void $\ast$}]{key, }
+\item[{size\+\_\+t}]{keylen}
+\end{DoxyParamCaption}
+)}\label{blake2b_8c_a5cf706554b84e6b4d763084ecefd6391}
+
+
+Definition at line 276 of file blake2b.\+c.
+
+
+
+Here is the call graph for this function\+:
+% FIG 1
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 2
+
+
+\hypertarget{blake2b_8c_ae3265f4a4ba468da48c850ad815bed2d}{}\index{blake2b.\+c@{blake2b.\+c}!blake2b\+\_\+final@{blake2b\+\_\+final}}
+\index{blake2b\+\_\+final@{blake2b\+\_\+final}!blake2b.\+c@{blake2b.\+c}}
+\subsubsection[{blake2b\+\_\+final}]{\setlength{\rightskip}{0pt plus 5cm}int blake2b\+\_\+final (
+\begin{DoxyParamCaption}
+\item[{{\bf blake2b\+\_\+state} $\ast$}]{S, }
+\item[{void $\ast$}]{out, }
+\item[{size\+\_\+t}]{outlen}
+\end{DoxyParamCaption}
+)}\label{blake2b_8c_ae3265f4a4ba468da48c850ad815bed2d}
+
+
+Definition at line 246 of file blake2b.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+\hypertarget{blake2b_8c_a7cefd211bfec58d37d8b67741955ce8a}{}\index{blake2b.\+c@{blake2b.\+c}!blake2b\+\_\+init@{blake2b\+\_\+init}}
+\index{blake2b\+\_\+init@{blake2b\+\_\+init}!blake2b.\+c@{blake2b.\+c}}
+\subsubsection[{blake2b\+\_\+init}]{\setlength{\rightskip}{0pt plus 5cm}int blake2b\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{{\bf blake2b\+\_\+state} $\ast$}]{S, }
+\item[{size\+\_\+t}]{outlen}
+\end{DoxyParamCaption}
+)}\label{blake2b_8c_a7cefd211bfec58d37d8b67741955ce8a}
+
+
+Definition at line 74 of file blake2b.\+c.
+
+
+
+Here is the call graph for this function\+:
+% FIG 4
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 5
+
+
+\hypertarget{blake2b_8c_a039b52f87e2ba0ca16ebbc62bfd3f02a}{}\index{blake2b.\+c@{blake2b.\+c}!blake2b\+\_\+init\+\_\+key@{blake2b\+\_\+init\+\_\+key}}
+\index{blake2b\+\_\+init\+\_\+key@{blake2b\+\_\+init\+\_\+key}!blake2b.\+c@{blake2b.\+c}}
+\subsubsection[{blake2b\+\_\+init\+\_\+key}]{\setlength{\rightskip}{0pt plus 5cm}int blake2b\+\_\+init\+\_\+key (
+\begin{DoxyParamCaption}
+\item[{{\bf blake2b\+\_\+state} $\ast$}]{S, }
+\item[{size\+\_\+t}]{outlen, }
+\item[{const void $\ast$}]{key, }
+\item[{size\+\_\+t}]{keylen}
+\end{DoxyParamCaption}
+)}\label{blake2b_8c_a039b52f87e2ba0ca16ebbc62bfd3f02a}
+
+
+Definition at line 102 of file blake2b.\+c.
+
+
+
+Here is the call graph for this function\+:
+% FIG 6
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 7
+
+
+\hypertarget{blake2b_8c_ae453d8f2798df27cd1f4ea9b00b3a520}{}\index{blake2b.\+c@{blake2b.\+c}!blake2b\+\_\+init\+\_\+param@{blake2b\+\_\+init\+\_\+param}}
+\index{blake2b\+\_\+init\+\_\+param@{blake2b\+\_\+init\+\_\+param}!blake2b.\+c@{blake2b.\+c}}
+\subsubsection[{blake2b\+\_\+init\+\_\+param}]{\setlength{\rightskip}{0pt plus 5cm}int blake2b\+\_\+init\+\_\+param (
+\begin{DoxyParamCaption}
+\item[{{\bf blake2b\+\_\+state} $\ast$}]{S, }
+\item[{const {\bf blake2b\+\_\+param} $\ast$}]{P}
+\end{DoxyParamCaption}
+)}\label{blake2b_8c_ae453d8f2798df27cd1f4ea9b00b3a520}
+
+
+Definition at line 56 of file blake2b.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 8
+
+
+\hypertarget{blake2b_8c_a9b077c7edb6f72a00f66c3db94ae6398}{}\index{blake2b.\+c@{blake2b.\+c}!blake2b\+\_\+long@{blake2b\+\_\+long}}
+\index{blake2b\+\_\+long@{blake2b\+\_\+long}!blake2b.\+c@{blake2b.\+c}}
+\subsubsection[{blake2b\+\_\+long}]{\setlength{\rightskip}{0pt plus 5cm}int blake2b\+\_\+long (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{pout, }
+\item[{size\+\_\+t}]{outlen, }
+\item[{const void $\ast$}]{in, }
+\item[{size\+\_\+t}]{inlen}
+\end{DoxyParamCaption}
+)}\label{blake2b_8c_a9b077c7edb6f72a00f66c3db94ae6398}
+
+
+Definition at line 315 of file blake2b.\+c.
+
+
+
+Here is the call graph for this function\+:
+% FIG 9
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 10
+
+
+\hypertarget{blake2b_8c_a1ee160fb796e342c9ee8a99ea0ffab0a}{}\index{blake2b.\+c@{blake2b.\+c}!blake2b\+\_\+update@{blake2b\+\_\+update}}
+\index{blake2b\+\_\+update@{blake2b\+\_\+update}!blake2b.\+c@{blake2b.\+c}}
+\subsubsection[{blake2b\+\_\+update}]{\setlength{\rightskip}{0pt plus 5cm}int blake2b\+\_\+update (
+\begin{DoxyParamCaption}
+\item[{{\bf blake2b\+\_\+state} $\ast$}]{S, }
+\item[{const void $\ast$}]{in, }
+\item[{size\+\_\+t}]{inlen}
+\end{DoxyParamCaption}
+)}\label{blake2b_8c_a1ee160fb796e342c9ee8a99ea0ffab0a}
+
+
+Definition at line 206 of file blake2b.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 11
+
+

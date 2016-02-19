@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="iterator_8cc" kind="file" language="C++">
+    <compoundname>iterator.cc</compoundname>
+    <includes refid="iterator_8h" local="yes">leveldb/iterator.h</includes>
+    <incdepgraph>
+      <node id="39350">
+        <label>assert.h</label>
+      </node>
+      <node id="39353">
+        <label>string</label>
+      </node>
+      <node id="39351">
+        <label>stddef.h</label>
+      </node>
+      <node id="39354">
+        <label>leveldb/status.h</label>
+        <link refid="status_8h"/>
+        <childnode refid="39353" relation="include">
+        </childnode>
+        <childnode refid="39349" relation="include">
+        </childnode>
+      </node>
+      <node id="39347">
+        <label>/home/dev/ds-160209/src/leveldb/table/iterator.cc</label>
+        <link refid="iterator.cc"/>
+        <childnode refid="39348" relation="include">
+        </childnode>
+      </node>
+      <node id="39352">
+        <label>string.h</label>
+      </node>
+      <node id="39349">
+        <label>leveldb/slice.h</label>
+        <link refid="slice_8h"/>
+        <childnode refid="39350" relation="include">
+        </childnode>
+        <childnode refid="39351" relation="include">
+        </childnode>
+        <childnode refid="39352" relation="include">
+        </childnode>
+        <childnode refid="39353" relation="include">
+        </childnode>
+      </node>
+      <node id="39348">
+        <label>leveldb/iterator.h</label>
+        <link refid="iterator_8h"/>
+        <childnode refid="39349" relation="include">
+        </childnode>
+        <childnode refid="39354" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceleveldb">leveldb</innernamespace>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="iterator_8cc_1abf8c6fcb7d9c9fa39e283d086f0bb345" prot="public" static="no" mutable="no">
+        <type>Status</type>
+        <definition>Status status_</definition>
+        <argsstring></argsstring>
+        <name>status_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/table/iterator.cc" line="55" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/table/iterator.cc" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2011-2016<sp/>The<sp/>LevelDB<sp/>Authors.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>of<sp/>this<sp/>source<sp/>code<sp/>is<sp/>governed<sp/>by<sp/>a<sp/>BSD-style<sp/>license<sp/>that<sp/>can<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>found<sp/>in<sp/>the<sp/>LICENSE<sp/>file.<sp/>See<sp/>the<sp/>AUTHORS<sp/>file<sp/>for<sp/>names<sp/>of<sp/>contributors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="iterator_8h" kindref="compound">leveldb/iterator.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceleveldb" kindref="compound">leveldb</ref><sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="classleveldb_1_1_iterator_1a1dc1cbc893e55a3fc990f08cf191480a" refkind="member"><highlight class="normal"><ref refid="classleveldb_1_1_iterator_1a1dc1cbc893e55a3fc990f08cf191480a" kindref="member">Iterator::Iterator</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/>cleanup_.function<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/>cleanup_.next<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classleveldb_1_1_iterator_1a2c9ce32aa57b2202d1e0d4a38c2676a1" refkind="member"><highlight class="normal"><ref refid="classleveldb_1_1_iterator_1a2c9ce32aa57b2202d1e0d4a38c2676a1" kindref="member">Iterator::~Iterator</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cleanup_.function<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>(*cleanup_.function)(cleanup_.arg1,<sp/>cleanup_.arg2);</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(Cleanup*<sp/>c<sp/>=<sp/>cleanup_.next;<sp/>c<sp/>!=<sp/>NULL;<sp/>)<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>(*c-&gt;function)(c-&gt;arg1,<sp/>c-&gt;arg2);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Cleanup*<sp/><ref refid="cache_8cc_1a5211876d3837bbfa503cb931cb9cecbe" kindref="member">next</ref><sp/>=<sp/>c-&gt;next;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>c;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>c<sp/>=<sp/><ref refid="cache_8cc_1a5211876d3837bbfa503cb931cb9cecbe" kindref="member">next</ref>;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classleveldb_1_1_iterator_1a8c0281f9e4a2c9dceb37aad8128b636f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_iterator_1a8c0281f9e4a2c9dceb37aad8128b636f" kindref="member">Iterator::RegisterCleanup</ref>(CleanupFunction<sp/><ref refid="testharness_8cc_1ac98d5d20f5aab3ef51e0ff5e30d16925" kindref="member">func</ref>,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>arg1,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>arg2)<sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/>assert(func<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/>Cleanup*<sp/>c;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(cleanup_.function<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>c<sp/>=<sp/>&amp;cleanup_;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>c<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>Cleanup;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>c-&gt;next<sp/>=<sp/>cleanup_.next;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>cleanup_.next<sp/>=<sp/>c;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>c-&gt;function<sp/>=<sp/><ref refid="testharness_8cc_1ac98d5d20f5aab3ef51e0ff5e30d16925" kindref="member">func</ref>;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/>c-&gt;arg1<sp/>=<sp/>arg1;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/>c-&gt;arg2<sp/>=<sp/>arg2;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">EmptyIterator<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_iterator" kindref="compound">Iterator</ref><sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/>EmptyIterator(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref>&amp;<sp/>s)<sp/>:<sp/><ref refid="iterator_8cc_1abf8c6fcb7d9c9fa39e283d086f0bb345" kindref="member">status_</ref>(s)<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>Valid()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Seek(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Slice&amp;<sp/>target)<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>SeekToFirst()<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>SeekToLast()<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Next()<sp/>{<sp/>assert(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);<sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Prev()<sp/>{<sp/>assert(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);<sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/>Slice<sp/>key()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/>assert(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Slice();<sp/>}</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/>Slice<sp/><ref refid="version__set_8cc_1a38c8b88c432e666ad10b0c5573e1160a" kindref="member">value</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/>assert(</highlight><highlight class="keyword">false</highlight><highlight class="normal">);<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Slice();<sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>Status<sp/>status()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="iterator_8cc_1abf8c6fcb7d9c9fa39e283d086f0bb345" kindref="member">status_</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="55" refid="iterator_8cc_1abf8c6fcb7d9c9fa39e283d086f0bb345" refkind="member"><highlight class="normal"><sp/><sp/>Status<sp/><ref refid="iterator_8cc_1abf8c6fcb7d9c9fa39e283d086f0bb345" kindref="member">status_</ref>;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="namespaceleveldb_1a3293c30e4a309a7293598b1db0f3e687" refkind="member"><highlight class="normal"><ref refid="classleveldb_1_1_iterator" kindref="compound">Iterator</ref>*<sp/><ref refid="namespaceleveldb_1a3293c30e4a309a7293598b1db0f3e687" kindref="member">NewEmptyIterator</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>EmptyIterator(<ref refid="classleveldb_1_1_status_1a8e3720d233281c874a53c17e081f51b3" kindref="member">Status::OK</ref>());</highlight></codeline>
+<codeline lineno="61"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="namespaceleveldb_1ab2c425a5fcb13b97e50e32c7b93186f5" refkind="member"><highlight class="normal"><ref refid="classleveldb_1_1_iterator" kindref="compound">Iterator</ref>*<sp/><ref refid="namespaceleveldb_1ab2c425a5fcb13b97e50e32c7b93186f5" kindref="member">NewErrorIterator</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref>&amp;<sp/>status)<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>EmptyIterator(status);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>leveldb</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/leveldb/table/iterator.cc"/>
+  </compounddef>
+</doxygen>

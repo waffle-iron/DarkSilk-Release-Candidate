@@ -4,13 +4,12 @@
 #include "transactionrecord.h"
 #include "guiconstants.h"
 #include "transactiondesc.h"
-#include "net.h"
 #include "walletmodel.h"
 #include "optionsmodel.h"
 #include "addresstablemodel.h"
 #include "darksilkunits.h"
 
-#include "wallet/wallet.h"
+#include "wallet.h"
 #include "ui_interface.h"
 
 #include <QList>

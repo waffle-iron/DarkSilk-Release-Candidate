@@ -1,0 +1,49 @@
+\hypertarget{lax__der__parsing_8c}{}\section{/home/dev/ds-\/160209/src/secp256k1/contrib/lax\+\_\+der\+\_\+parsing.c File Reference}
+\label{lax__der__parsing_8c}\index{/home/dev/ds-\/160209/src/secp256k1/contrib/lax\+\_\+der\+\_\+parsing.\+c@{/home/dev/ds-\/160209/src/secp256k1/contrib/lax\+\_\+der\+\_\+parsing.\+c}}
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$secp256k1.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}lax\+\_\+der\+\_\+parsing.\+h\char`\"{}}\\*
+Include dependency graph for lax\+\_\+der\+\_\+parsing.\+c\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{lax__der__parsing_8c_aebc754e4d7457c16a922ea14977974a4}{ecdsa\+\_\+signature\+\_\+parse\+\_\+der\+\_\+lax} (const \hyperlink{secp256k1_8h_a282ec9e6dfec8c35955c3eb2f7476e5e}{secp256k1\+\_\+context} $\ast$ctx, \hyperlink{structsecp256k1__ecdsa__signature}{secp256k1\+\_\+ecdsa\+\_\+signature} $\ast$sig, const unsigned char $\ast$input, size\+\_\+t inputlen)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{lax__der__parsing_8c_aebc754e4d7457c16a922ea14977974a4}{}\index{lax\+\_\+der\+\_\+parsing.\+c@{lax\+\_\+der\+\_\+parsing.\+c}!ecdsa\+\_\+signature\+\_\+parse\+\_\+der\+\_\+lax@{ecdsa\+\_\+signature\+\_\+parse\+\_\+der\+\_\+lax}}
+\index{ecdsa\+\_\+signature\+\_\+parse\+\_\+der\+\_\+lax@{ecdsa\+\_\+signature\+\_\+parse\+\_\+der\+\_\+lax}!lax\+\_\+der\+\_\+parsing.\+c@{lax\+\_\+der\+\_\+parsing.\+c}}
+\subsubsection[{ecdsa\+\_\+signature\+\_\+parse\+\_\+der\+\_\+lax}]{\setlength{\rightskip}{0pt plus 5cm}int ecdsa\+\_\+signature\+\_\+parse\+\_\+der\+\_\+lax (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+context} $\ast$}]{ctx, }
+\item[{{\bf secp256k1\+\_\+ecdsa\+\_\+signature} $\ast$}]{sig, }
+\item[{const unsigned char $\ast$}]{input, }
+\item[{size\+\_\+t}]{inputlen}
+\end{DoxyParamCaption}
+)}\label{lax__der__parsing_8c_aebc754e4d7457c16a922ea14977974a4}
+Parse a signature in \char`\"{}lax D\+E\+R\char`\"{} format
+
+Returns\+: 1 when the signature could be parsed, 0 otherwise. Args\+: ctx\+: a secp256k1 context object Out\+: sig\+: a pointer to a signature object In\+: input\+: a pointer to the signature to be parsed inputlen\+: the length of the array pointed to be input
+
+This function will accept any valid D\+E\+R encoded signature, even if the encoded numbers are out of range. In addition, it will accept signatures which violate the D\+E\+R spec in various ways. Its purpose is to allow validation of the Bitcoin blockchain, which includes non-\/\+D\+E\+R signatures from before the network rules were updated to enforce D\+E\+R. Note that the set of supported violations is a strict subset of what Open\+S\+S\+L will accept.
+
+After the call, sig will always be initialized. If parsing failed or the encoded numbers are out of range, signature validation with it is guaranteed to fail for every message and public key. 
+
+Definition at line 12 of file lax\+\_\+der\+\_\+parsing.\+c.
+
+
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
+

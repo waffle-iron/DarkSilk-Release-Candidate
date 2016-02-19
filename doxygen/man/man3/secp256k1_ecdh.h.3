@@ -1,0 +1,27 @@
+.TH "/home/dev/ds-160209/src/secp256k1/include/secp256k1_ecdh.h" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/secp256k1/include/secp256k1_ecdh.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'secp256k1\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSECP256K1_API\fP \fBSECP256K1_WARN_UNUSED_RESULT\fP int \fBsecp256k1_ecdh\fP (const \fBsecp256k1_context\fP *ctx, unsigned char *result, const \fBsecp256k1_pubkey\fP *pubkey, const unsigned char *privkey) \fBSECP256K1_ARG_NONNULL\fP(1) \fBSECP256K1_ARG_NONNULL\fP(2) \fBSECP256K1_ARG_NONNULL\fP(3) \fBSECP256K1_ARG_NONNULL\fP(4)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "\fBSECP256K1_API\fP \fBSECP256K1_WARN_UNUSED_RESULT\fP int secp256k1_ecdh (const \fBsecp256k1_context\fP * ctx, unsigned char * result, const \fBsecp256k1_pubkey\fP * pubkey, const unsigned char * privkey)"
+Compute an EC Diffie-Hellman secret in constant time Returns: 1: exponentiation was successful 0: scalar was invalid (zero or overflow) Args: ctx: pointer to a context object (cannot be NULL) Out: result: a 32-byte array which will be populated by an ECDH secret computed from the point and scalar In: pubkey: a pointer to a \fBsecp256k1_pubkey\fP containing an initialized public key privkey: a 32-byte scalar with which to multiply the point 
+.PP
+Definition at line 13 of file main_impl\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

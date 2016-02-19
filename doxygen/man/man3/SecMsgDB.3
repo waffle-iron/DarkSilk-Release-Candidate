@@ -1,0 +1,157 @@
+.TH "SecMsgDB" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SecMsgDB \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <smessage\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSecMsgDB\fP ()"
+.br
+.ti -1c
+.RI "\fB~SecMsgDB\fP ()"
+.br
+.ti -1c
+.RI "bool \fBOpen\fP (const char *pszMode='r+')"
+.br
+.ti -1c
+.RI "bool \fBScanBatch\fP (const \fBCDataStream\fP &key, std::string *\fBvalue\fP, bool *deleted) const "
+.br
+.ti -1c
+.RI "bool \fBTxnBegin\fP ()"
+.br
+.ti -1c
+.RI "bool \fBTxnCommit\fP ()"
+.br
+.ti -1c
+.RI "bool \fBTxnAbort\fP ()"
+.br
+.ti -1c
+.RI "bool \fBReadPK\fP (\fBCKeyID\fP &addr, \fBCPubKey\fP &pubkey)"
+.br
+.ti -1c
+.RI "bool \fBWritePK\fP (\fBCKeyID\fP &addr, \fBCPubKey\fP &pubkey)"
+.br
+.ti -1c
+.RI "bool \fBExistsPK\fP (\fBCKeyID\fP &addr)"
+.br
+.ti -1c
+.RI "bool \fBNextSmesg\fP (\fBleveldb::Iterator\fP *it, std::string &prefix, \fBuint8_t\fP *vchKey, \fBSecMsgStored\fP &smsgStored)"
+.br
+.ti -1c
+.RI "bool \fBNextSmesgKey\fP (\fBleveldb::Iterator\fP *it, std::string &prefix, \fBuint8_t\fP *vchKey)"
+.br
+.ti -1c
+.RI "bool \fBReadSmesg\fP (\fBuint8_t\fP *chKey, \fBSecMsgStored\fP &smsgStored)"
+.br
+.ti -1c
+.RI "bool \fBWriteSmesg\fP (\fBuint8_t\fP *chKey, \fBSecMsgStored\fP &smsgStored)"
+.br
+.ti -1c
+.RI "bool \fBExistsSmesg\fP (\fBuint8_t\fP *chKey)"
+.br
+.ti -1c
+.RI "bool \fBEraseSmesg\fP (\fBuint8_t\fP *chKey)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBleveldb::DB\fP * \fBpdb\fP"
+.br
+.ti -1c
+.RI "\fBleveldb::WriteBatch\fP * \fBactiveBatch\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 291 of file smessage\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SecMsgDB::SecMsgDB ()\fC [inline]\fP"
+
+.PP
+Definition at line 294 of file smessage\&.h\&.
+.SS "SecMsgDB::~SecMsgDB ()\fC [inline]\fP"
+
+.PP
+Definition at line 299 of file smessage\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool SecMsgDB::EraseSmesg (\fBuint8_t\fP * chKey)"
+
+.PP
+Definition at line 558 of file smessage\&.cpp\&.
+.SS "bool SecMsgDB::ExistsPK (\fBCKeyID\fP & addr)"
+
+.PP
+Definition at line 391 of file smessage\&.cpp\&.
+.SS "bool SecMsgDB::ExistsSmesg (\fBuint8_t\fP * chKey)"
+
+.PP
+Definition at line 535 of file smessage\&.cpp\&.
+.SS "bool SecMsgDB::NextSmesg (\fBleveldb::Iterator\fP * it, std::string & prefix, \fBuint8_t\fP * vchKey, \fBSecMsgStored\fP & smsgStored)"
+
+.PP
+Definition at line 417 of file smessage\&.cpp\&.
+.SS "bool SecMsgDB::NextSmesgKey (\fBleveldb::Iterator\fP * it, std::string & prefix, \fBuint8_t\fP * vchKey)"
+
+.PP
+Definition at line 445 of file smessage\&.cpp\&.
+.SS "bool SecMsgDB::Open (const char * pszMode = \fC'r+'\fP)"
+
+.PP
+Definition at line 188 of file smessage\&.cpp\&.
+.SS "bool SecMsgDB::ReadPK (\fBCKeyID\fP & addr, \fBCPubKey\fP & pubkey)"
+
+.PP
+Definition at line 314 of file smessage\&.cpp\&.
+.SS "bool SecMsgDB::ReadSmesg (\fBuint8_t\fP * chKey, \fBSecMsgStored\fP & smsgStored)"
+
+.PP
+Definition at line 465 of file smessage\&.cpp\&.
+.SS "bool SecMsgDB::ScanBatch (const \fBCDataStream\fP & key, std::string * value, bool * deleted) const"
+
+.PP
+Definition at line 259 of file smessage\&.cpp\&.
+.SS "bool SecMsgDB::TxnAbort ()"
+
+.PP
+Definition at line 307 of file smessage\&.cpp\&.
+.SS "bool SecMsgDB::TxnBegin ()"
+
+.PP
+Definition at line 279 of file smessage\&.cpp\&.
+.SS "bool SecMsgDB::TxnCommit ()"
+
+.PP
+Definition at line 287 of file smessage\&.cpp\&.
+.SS "bool SecMsgDB::WritePK (\fBCKeyID\fP & addr, \fBCPubKey\fP & pubkey)"
+
+.PP
+Definition at line 359 of file smessage\&.cpp\&.
+.SS "bool SecMsgDB::WriteSmesg (\fBuint8_t\fP * chKey, \fBSecMsgStored\fP & smsgStored)"
+
+.PP
+Definition at line 507 of file smessage\&.cpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBleveldb::WriteBatch\fP* SecMsgDB::activeBatch"
+
+.PP
+Definition at line 327 of file smessage\&.h\&.
+.SS "\fBleveldb::DB\fP* SecMsgDB::pdb"
+
+.PP
+Definition at line 326 of file smessage\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

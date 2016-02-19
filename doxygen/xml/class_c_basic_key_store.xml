@@ -1,0 +1,387 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_basic_key_store" kind="class" language="C++" prot="public">
+    <compoundname>CBasicKeyStore</compoundname>
+    <basecompoundref refid="class_c_key_store" prot="public" virt="non-virtual">CKeyStore</basecompoundref>
+    <derivedcompoundref refid="class_c_crypto_key_store" prot="public" virt="non-virtual">CCryptoKeyStore</derivedcompoundref>
+    <includes refid="keystore_8h" local="no">keystore.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_c_basic_key_store_1ac520003e5c3d863bf71fde247c6e0672" prot="protected" static="no" mutable="no">
+        <type><ref refid="keystore_8h_1a4dc9f57afc8615aef701e40cf20d024f" kindref="member">KeyMap</ref></type>
+        <definition>KeyMap CBasicKeyStore::mapKeys</definition>
+        <argsstring></argsstring>
+        <name>mapKeys</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/keystore.h" line="63" column="1" bodyfile="/home/dev/ds-160209/src/keystore.h" bodystart="63" bodyend="-1"/>
+        <referencedby refid="class_c_crypto_key_store_1af202f587051735be5a39344d9e333720" compoundref="crypter_8cpp" startline="213" endline="222">CCryptoKeyStore::SetCrypted</referencedby>
+        <referencedby refid="class_c_crypto_key_store_1a8c0f6b63fb04193df16243c4459b7c61" compoundref="crypter_8cpp" startline="342" endline="364">CCryptoKeyStore::EncryptKeys</referencedby>
+        <referencedby refid="class_c_basic_key_store_1acc2e33f319de88e88f86b0dc79bdcb65" compoundref="keystore_8cpp" startline="22" endline="27">AddKeyPubKey</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_basic_key_store_1a8e9fa81382129c1535a0ee7b0d9c8f3b" prot="protected" static="no" mutable="no">
+        <type><ref refid="keystore_8h_1afb22a3e7e10e8048d2fb3fb72fe38345" kindref="member">ScriptMap</ref></type>
+        <definition>ScriptMap CBasicKeyStore::mapScripts</definition>
+        <argsstring></argsstring>
+        <name>mapScripts</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/keystore.h" line="64" column="1" bodyfile="/home/dev/ds-160209/src/keystore.h" bodystart="64" bodyend="-1"/>
+        <referencedby refid="class_c_basic_key_store_1a56249ce3540398999cd397eeb662e836" compoundref="keystore_8cpp" startline="29" endline="37">AddCScript</referencedby>
+        <referencedby refid="class_c_basic_key_store_1a2e21398364927d920b15d3e10171cd97" compoundref="keystore_8cpp" startline="39" endline="43">HaveCScript</referencedby>
+        <referencedby refid="class_c_basic_key_store_1aa7b10f974cfdc078f55fdb6adf8774a5" compoundref="keystore_8cpp" startline="45" endline="55">GetCScript</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_basic_key_store_1ac3391cb491e315403ad9af6afd1313da" prot="protected" static="no" mutable="no">
+        <type><ref refid="keystore_8h_1a501c3a7b9932bbc7168dc7b3fc5d149e" kindref="member">WatchOnlySet</ref></type>
+        <definition>WatchOnlySet CBasicKeyStore::setWatchOnly</definition>
+        <argsstring></argsstring>
+        <name>setWatchOnly</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/keystore.h" line="65" column="1" bodyfile="/home/dev/ds-160209/src/keystore.h" bodystart="65" bodyend="-1"/>
+        <referencedby refid="class_c_basic_key_store_1a2417d0ae4e654c88cf47a1ba5f71b5a3" compoundref="keystore_8cpp" startline="57" endline="62">AddWatchOnly</referencedby>
+        <referencedby refid="class_c_basic_key_store_1a20c0eccf943d6d16e24c6e2fb63fb527" compoundref="keystore_8cpp" startline="64" endline="69">RemoveWatchOnly</referencedby>
+        <referencedby refid="class_c_basic_key_store_1a51d4c7e95cb782d749939d01612926f7" compoundref="keystore_8cpp" startline="71" endline="75">HaveWatchOnly</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_basic_key_store_1acc2e33f319de88e88f86b0dc79bdcb65" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool CBasicKeyStore::AddKeyPubKey</definition>
+        <argsstring>(const CKey &amp;key, const CPubKey &amp;pubkey)</argsstring>
+        <name>AddKeyPubKey</name>
+        <reimplements refid="class_c_key_store_1a1956e4f5860ded321d6f697047d8236a">AddKeyPubKey</reimplements>
+        <reimplementedby refid="class_c_wallet_1a3240da36cd717146296969227a3e0bd5">AddKeyPubKey</reimplementedby>
+        <param>
+          <type>const <ref refid="class_c_key" kindref="compound">CKey</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_pub_key" kindref="compound">CPubKey</ref> &amp;</type>
+          <declname>pubkey</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/keystore.h" line="68" column="1" bodyfile="/home/dev/ds-160209/src/keystore.cpp" bodystart="22" bodyend="27"/>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="class_c_key_store_1a386524ff4a00959b81c195cb39fe307d" compoundref="keystore_8h" startline="28">CKeyStore::cs_KeyStore</references>
+        <references refid="class_c_basic_key_store_1ac520003e5c3d863bf71fde247c6e0672" compoundref="keystore_8h" startline="63">mapKeys</references>
+        <references refid="class_c_pub_key_1a9c1908fef34fd9e1c4b5e0ffd5d3834e" compoundref="pubkey_8h" startline="132" endline="134">CPubKey::GetID</references>
+        <referencedby refid="class_c_crypto_key_store_1a340109b8673267676a34664a76ed3274" compoundref="crypter_8cpp" startline="267" endline="286">CCryptoKeyStore::AddKeyPubKey</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_basic_key_store_1a29a60832d549913b1fa8be77b95205a5" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool CBasicKeyStore::HaveKey</definition>
+        <argsstring>(const CKeyID &amp;address) const </argsstring>
+        <name>HaveKey</name>
+        <reimplements refid="class_c_key_store_1a9398451d4270fae27b29f686a9d43a65">HaveKey</reimplements>
+        <param>
+          <type>const <ref refid="class_c_key_i_d" kindref="compound">CKeyID</ref> &amp;</type>
+          <declname>address</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/keystore.h" line="69" column="1" bodyfile="/home/dev/ds-160209/src/keystore.h" bodystart="69" bodyend="77"/>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="class_c_key_store_1a386524ff4a00959b81c195cb39fe307d" compoundref="keystore_8h" startline="28">CKeyStore::cs_KeyStore</references>
+        <referencedby refid="class_c_crypto_key_store_1a0cefe933dd3a6ac7744432493696bffc" compoundref="crypter_8h" startline="181" endline="190">CCryptoKeyStore::HaveKey</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_basic_key_store_1a60f46db5eec334d41e5ad6e342ae2957" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void CBasicKeyStore::GetKeys</definition>
+        <argsstring>(std::set&lt; CKeyID &gt; &amp;setAddress) const </argsstring>
+        <name>GetKeys</name>
+        <reimplements refid="class_c_key_store_1aca5044014720308f191113e7ba297d13">GetKeys</reimplements>
+        <param>
+          <type>std::set&lt; <ref refid="class_c_key_i_d" kindref="compound">CKeyID</ref> &gt; &amp;</type>
+          <declname>setAddress</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/keystore.h" line="78" column="1" bodyfile="/home/dev/ds-160209/src/keystore.h" bodystart="78" bodyend="90"/>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="class_c_key_store_1a386524ff4a00959b81c195cb39fe307d" compoundref="keystore_8h" startline="28">CKeyStore::cs_KeyStore</references>
+        <referencedby refid="class_c_crypto_key_store_1a4f13246f58b7edbaf125d603f7d0d4b4" compoundref="crypter_8h" startline="193" endline="207">CCryptoKeyStore::GetKeys</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_basic_key_store_1a3cf9b5d002a8af75e7f90ae7654a234f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool CBasicKeyStore::GetKey</definition>
+        <argsstring>(const CKeyID &amp;address, CKey &amp;keyOut) const </argsstring>
+        <name>GetKey</name>
+        <reimplements refid="class_c_key_store_1a2dffca468fef2e5da2e42a7c983d968a">GetKey</reimplements>
+        <param>
+          <type>const <ref refid="class_c_key_i_d" kindref="compound">CKeyID</ref> &amp;</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_key" kindref="compound">CKey</ref> &amp;</type>
+          <declname>keyOut</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/keystore.h" line="91" column="1" bodyfile="/home/dev/ds-160209/src/keystore.h" bodystart="91" bodyend="103"/>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="class_c_key_store_1a386524ff4a00959b81c195cb39fe307d" compoundref="keystore_8h" startline="28">CKeyStore::cs_KeyStore</references>
+        <referencedby refid="class_c_crypto_key_store_1a58cfb3c490318ef82de8fc9be6637269" compoundref="crypter_8cpp" startline="301" endline="323">CCryptoKeyStore::GetKey</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_basic_key_store_1a56249ce3540398999cd397eeb662e836" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool CBasicKeyStore::AddCScript</definition>
+        <argsstring>(const CScript &amp;redeemScript)</argsstring>
+        <name>AddCScript</name>
+        <reimplements refid="class_c_key_store_1a2fb2e02e8cdc364607efd5ebb14b8064">AddCScript</reimplements>
+        <reimplementedby refid="class_c_wallet_1ad7edacad1c926bc4b7fe0dc1be95ce31">AddCScript</reimplementedby>
+        <param>
+          <type>const <ref refid="class_c_script" kindref="compound">CScript</ref> &amp;</type>
+          <declname>redeemScript</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/keystore.h" line="104" column="1" bodyfile="/home/dev/ds-160209/src/keystore.cpp" bodystart="29" bodyend="37"/>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="class_c_key_store_1a386524ff4a00959b81c195cb39fe307d" compoundref="keystore_8h" startline="28">CKeyStore::cs_KeyStore</references>
+        <references refid="class_c_basic_key_store_1a8e9fa81382129c1535a0ee7b0d9c8f3b" compoundref="keystore_8h" startline="64">mapScripts</references>
+        <references refid="class_c_script_1a59fd961e1b74202a0951a077b576c0ba" compoundref="script_8h" startline="893" endline="896">CScript::GetID</references>
+        <referencedby refid="rpcrawtransaction_8cpp_1aa0d151e35c0ad5ec82df451a833aeadb" compoundref="rpcrawtransaction_8cpp" startline="349" endline="555">signrawtransaction</referencedby>
+        <referencedby refid="class_c_wallet_1ad7edacad1c926bc4b7fe0dc1be95ce31" compoundref="wallet_8cpp" startline="154" endline="161">CWallet::AddCScript</referencedby>
+        <referencedby refid="class_c_wallet_1adbf0abef9da8102f000d4afd5cec5bbc" compoundref="wallet_8cpp" startline="168" endline="182">CWallet::LoadCScript</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_basic_key_store_1a2e21398364927d920b15d3e10171cd97" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool CBasicKeyStore::HaveCScript</definition>
+        <argsstring>(const CScriptID &amp;hash) const </argsstring>
+        <name>HaveCScript</name>
+        <reimplements refid="class_c_key_store_1a51c9fc86b2c3fece10d86146231fa58d">HaveCScript</reimplements>
+        <param>
+          <type>const <ref refid="class_c_script_i_d" kindref="compound">CScriptID</ref> &amp;</type>
+          <declname>hash</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/keystore.h" line="105" column="1" bodyfile="/home/dev/ds-160209/src/keystore.cpp" bodystart="39" bodyend="43"/>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="class_c_key_store_1a386524ff4a00959b81c195cb39fe307d" compoundref="keystore_8h" startline="28">CKeyStore::cs_KeyStore</references>
+        <references refid="class_c_basic_key_store_1a8e9fa81382129c1535a0ee7b0d9c8f3b" compoundref="keystore_8h" startline="64">mapScripts</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_basic_key_store_1aa7b10f974cfdc078f55fdb6adf8774a5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool CBasicKeyStore::GetCScript</definition>
+        <argsstring>(const CScriptID &amp;hash, CScript &amp;redeemScriptOut) const </argsstring>
+        <name>GetCScript</name>
+        <reimplements refid="class_c_key_store_1ae6bf4dbeb0705e199250e48aa5d34264">GetCScript</reimplements>
+        <param>
+          <type>const <ref refid="class_c_script_i_d" kindref="compound">CScriptID</ref> &amp;</type>
+          <declname>hash</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_script" kindref="compound">CScript</ref> &amp;</type>
+          <declname>redeemScriptOut</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/keystore.h" line="106" column="1" bodyfile="/home/dev/ds-160209/src/keystore.cpp" bodystart="45" bodyend="55"/>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="class_c_key_store_1a386524ff4a00959b81c195cb39fe307d" compoundref="keystore_8h" startline="28">CKeyStore::cs_KeyStore</references>
+        <references refid="class_c_basic_key_store_1a8e9fa81382129c1535a0ee7b0d9c8f3b" compoundref="keystore_8h" startline="64">mapScripts</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_basic_key_store_1a2417d0ae4e654c88cf47a1ba5f71b5a3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool CBasicKeyStore::AddWatchOnly</definition>
+        <argsstring>(const CScript &amp;dest)</argsstring>
+        <name>AddWatchOnly</name>
+        <reimplements refid="class_c_key_store_1a12cd4eaa01bd4f4231c0bf68425a44af">AddWatchOnly</reimplements>
+        <reimplementedby refid="class_c_wallet_1a022f12d5f56bbe831136388e2ac19969">AddWatchOnly</reimplementedby>
+        <param>
+          <type>const <ref refid="class_c_script" kindref="compound">CScript</ref> &amp;</type>
+          <declname>dest</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/keystore.h" line="108" column="1" bodyfile="/home/dev/ds-160209/src/keystore.cpp" bodystart="57" bodyend="62"/>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="class_c_key_store_1a386524ff4a00959b81c195cb39fe307d" compoundref="keystore_8h" startline="28">CKeyStore::cs_KeyStore</references>
+        <references refid="class_c_basic_key_store_1ac3391cb491e315403ad9af6afd1313da" compoundref="keystore_8h" startline="65">setWatchOnly</references>
+        <referencedby refid="class_c_wallet_1a022f12d5f56bbe831136388e2ac19969" compoundref="wallet_8cpp" startline="184" endline="193">CWallet::AddWatchOnly</referencedby>
+        <referencedby refid="class_c_wallet_1ad6580f1844fc639389e1c6a1e2787ee6" compoundref="wallet_8cpp" startline="209" endline="212">CWallet::LoadWatchOnly</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_basic_key_store_1a20c0eccf943d6d16e24c6e2fb63fb527" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool CBasicKeyStore::RemoveWatchOnly</definition>
+        <argsstring>(const CScript &amp;dest)</argsstring>
+        <name>RemoveWatchOnly</name>
+        <reimplements refid="class_c_key_store_1ad510747f28d129123a5200e4df8f7f61">RemoveWatchOnly</reimplements>
+        <reimplementedby refid="class_c_wallet_1a5be12b9afcf63079b8c009038843b5a2">RemoveWatchOnly</reimplementedby>
+        <param>
+          <type>const <ref refid="class_c_script" kindref="compound">CScript</ref> &amp;</type>
+          <declname>dest</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/keystore.h" line="109" column="1" bodyfile="/home/dev/ds-160209/src/keystore.cpp" bodystart="64" bodyend="69"/>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="class_c_key_store_1a386524ff4a00959b81c195cb39fe307d" compoundref="keystore_8h" startline="28">CKeyStore::cs_KeyStore</references>
+        <references refid="class_c_basic_key_store_1ac3391cb491e315403ad9af6afd1313da" compoundref="keystore_8h" startline="65">setWatchOnly</references>
+        <referencedby refid="class_c_wallet_1a5be12b9afcf63079b8c009038843b5a2" compoundref="wallet_8cpp" startline="195" endline="207">CWallet::RemoveWatchOnly</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_basic_key_store_1a51d4c7e95cb782d749939d01612926f7" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool CBasicKeyStore::HaveWatchOnly</definition>
+        <argsstring>(const CScript &amp;dest) const </argsstring>
+        <name>HaveWatchOnly</name>
+        <reimplements refid="class_c_key_store_1a15066cfd57feaffe0b9f4103c9311109">HaveWatchOnly</reimplements>
+        <param>
+          <type>const <ref refid="class_c_script" kindref="compound">CScript</ref> &amp;</type>
+          <declname>dest</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/keystore.h" line="110" column="1" bodyfile="/home/dev/ds-160209/src/keystore.cpp" bodystart="71" bodyend="75"/>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="class_c_key_store_1a386524ff4a00959b81c195cb39fe307d" compoundref="keystore_8h" startline="28">CKeyStore::cs_KeyStore</references>
+        <references refid="class_c_basic_key_store_1ac3391cb491e315403ad9af6afd1313da" compoundref="keystore_8h" startline="65">setWatchOnly</references>
+        <referencedby refid="rpcdump_8cpp_1a457bc572859c8265c72a0afd1a6db56c" compoundref="rpcdump_8cpp" startline="161" endline="230">importaddress</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_basic_key_store_1a3d89af8d9e9e0bb4eb90f331a638ff6d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool CBasicKeyStore::HaveWatchOnly</definition>
+        <argsstring>() const </argsstring>
+        <name>HaveWatchOnly</name>
+        <reimplements refid="class_c_key_store_1a9169351f4acf62d299afb824174cbfa8">HaveWatchOnly</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/keystore.h" line="111" column="1" bodyfile="/home/dev/ds-160209/src/keystore.cpp" bodystart="77" bodyend="81"/>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="class_c_key_store_1a386524ff4a00959b81c195cb39fe307d" compoundref="keystore_8h" startline="28">CKeyStore::cs_KeyStore</references>
+        <references refid="class_c_basic_key_store_1ac3391cb491e315403ad9af6afd1313da" compoundref="keystore_8h" startline="65">setWatchOnly</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Basic key store, that keeps keys in an address-&gt;secret map </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="2163">
+        <label>CKeyStore</label>
+        <link refid="class_c_key_store"/>
+      </node>
+      <node id="2164">
+        <label>CCryptoKeyStore</label>
+        <link refid="class_c_crypto_key_store"/>
+        <childnode refid="2162" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2162">
+        <label>CBasicKeyStore</label>
+        <link refid="class_c_basic_key_store"/>
+        <childnode refid="2163" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2165">
+        <label>CWallet</label>
+        <link refid="class_c_wallet"/>
+        <childnode refid="2164" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2167">
+        <label>CKeyStore</label>
+        <link refid="class_c_key_store"/>
+        <childnode refid="2168" relation="usage">
+          <edgelabel>cs_KeyStore</edgelabel>
+        </childnode>
+      </node>
+      <node id="2166">
+        <label>CBasicKeyStore</label>
+        <link refid="class_c_basic_key_store"/>
+        <childnode refid="2167" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2169">
+        <label>boost::recursive_mutex</label>
+      </node>
+      <node id="2168">
+        <label>AnnotatedMixin&lt; boost::recursive_mutex &gt;</label>
+        <link refid="class_annotated_mixin"/>
+        <childnode refid="2169" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/dev/ds-160209/src/keystore.h" line="61" column="1" bodyfile="/home/dev/ds-160209/src/keystore.h" bodystart="60" bodyend="112"/>
+    <listofallmembers>
+      <member refid="class_c_basic_key_store_1a56249ce3540398999cd397eeb662e836" prot="public" virt="virtual"><scope>CBasicKeyStore</scope><name>AddCScript</name></member>
+      <member refid="class_c_key_store_1a0b4ca43724cfcc6e2ea70c0baa192750" prot="public" virt="virtual"><scope>CBasicKeyStore</scope><name>AddKey</name></member>
+      <member refid="class_c_basic_key_store_1acc2e33f319de88e88f86b0dc79bdcb65" prot="public" virt="virtual"><scope>CBasicKeyStore</scope><name>AddKeyPubKey</name></member>
+      <member refid="class_c_basic_key_store_1a2417d0ae4e654c88cf47a1ba5f71b5a3" prot="public" virt="virtual"><scope>CBasicKeyStore</scope><name>AddWatchOnly</name></member>
+      <member refid="class_c_key_store_1a386524ff4a00959b81c195cb39fe307d" prot="protected" virt="non-virtual"><scope>CBasicKeyStore</scope><name>cs_KeyStore</name></member>
+      <member refid="class_c_basic_key_store_1aa7b10f974cfdc078f55fdb6adf8774a5" prot="public" virt="virtual"><scope>CBasicKeyStore</scope><name>GetCScript</name></member>
+      <member refid="class_c_basic_key_store_1a3cf9b5d002a8af75e7f90ae7654a234f" prot="public" virt="virtual"><scope>CBasicKeyStore</scope><name>GetKey</name></member>
+      <member refid="class_c_basic_key_store_1a60f46db5eec334d41e5ad6e342ae2957" prot="public" virt="virtual"><scope>CBasicKeyStore</scope><name>GetKeys</name></member>
+      <member refid="class_c_key_store_1aba866c1e71c129e7ac2d5d1e5223c8a5" prot="public" virt="virtual"><scope>CBasicKeyStore</scope><name>GetPubKey</name></member>
+      <member refid="class_c_basic_key_store_1a2e21398364927d920b15d3e10171cd97" prot="public" virt="virtual"><scope>CBasicKeyStore</scope><name>HaveCScript</name></member>
+      <member refid="class_c_basic_key_store_1a29a60832d549913b1fa8be77b95205a5" prot="public" virt="virtual"><scope>CBasicKeyStore</scope><name>HaveKey</name></member>
+      <member refid="class_c_basic_key_store_1a51d4c7e95cb782d749939d01612926f7" prot="public" virt="virtual"><scope>CBasicKeyStore</scope><name>HaveWatchOnly</name></member>
+      <member refid="class_c_basic_key_store_1a3d89af8d9e9e0bb4eb90f331a638ff6d" prot="public" virt="virtual"><scope>CBasicKeyStore</scope><name>HaveWatchOnly</name></member>
+      <member refid="class_c_basic_key_store_1ac520003e5c3d863bf71fde247c6e0672" prot="protected" virt="non-virtual"><scope>CBasicKeyStore</scope><name>mapKeys</name></member>
+      <member refid="class_c_basic_key_store_1a8e9fa81382129c1535a0ee7b0d9c8f3b" prot="protected" virt="non-virtual"><scope>CBasicKeyStore</scope><name>mapScripts</name></member>
+      <member refid="class_c_basic_key_store_1a20c0eccf943d6d16e24c6e2fb63fb527" prot="public" virt="virtual"><scope>CBasicKeyStore</scope><name>RemoveWatchOnly</name></member>
+      <member refid="class_c_basic_key_store_1ac3391cb491e315403ad9af6afd1313da" prot="protected" virt="non-virtual"><scope>CBasicKeyStore</scope><name>setWatchOnly</name></member>
+      <member refid="class_c_key_store_1a9bfaef2bcd6effc467a96043f44044a0" prot="public" virt="virtual"><scope>CBasicKeyStore</scope><name>~CKeyStore</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

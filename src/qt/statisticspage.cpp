@@ -1,7 +1,7 @@
 #include "statisticspage.h"
 #include "ui_statisticspage.h"
 #include "main.h"
-#include "wallet/wallet.h"
+#include "wallet.h"
 #include "init.h"
 #include "base58.h"
 #include "clientmodel.h"

@@ -1,0 +1,199 @@
+\hypertarget{scrypt_8cpp}{}\section{/home/dev/ds-\/160209/src/scrypt.cpp File Reference}
+\label{scrypt_8cpp}\index{/home/dev/ds-\/160209/src/scrypt.\+cpp@{/home/dev/ds-\/160209/src/scrypt.\+cpp}}
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}scrypt.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}pbkdf2.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}util.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}net.\+h\char`\"{}}\\*
+Include dependency graph for scrypt.\+cpp\+:
+% FIG 0
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{scrypt_8cpp_ac62c7210d8703c77228a6900dbe58bfe}{S\+C\+R\+Y\+P\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E}~(131072 + 63)
+\item 
+\#define \hyperlink{scrypt_8cpp_a8011d6dab73e8808981c948e35610884}{R}(a,  b)~(((a) $<$$<$ (b)) $\vert$ ((a) $>$$>$ (32 -\/ (b))))
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classuint256}{uint256} \hyperlink{scrypt_8cpp_a84d48cffe34f5203893f03d56dfc24d5}{scrypt\+\_\+nosalt} (const void $\ast$input, size\+\_\+t inputlen, void $\ast$scratchpad)
+\item 
+\hyperlink{classuint256}{uint256} \hyperlink{scrypt_8cpp_af51489d460b3e77446a7db8fa068e19d}{scrypt} (const void $\ast$data, size\+\_\+t datalen, const void $\ast$salt, size\+\_\+t saltlen, void $\ast$scratchpad)
+\item 
+\hyperlink{classuint256}{uint256} \hyperlink{scrypt_8cpp_acff318c1964d18cf77a9841ad0990fa1}{scrypt\+\_\+hash} (const void $\ast$input, size\+\_\+t inputlen)
+\item 
+\hyperlink{classuint256}{uint256} \hyperlink{scrypt_8cpp_a958e72eeb122162c560096e6295fdd5b}{scrypt\+\_\+salted\+\_\+hash} (const void $\ast$input, size\+\_\+t inputlen, const void $\ast$salt, size\+\_\+t saltlen)
+\item 
+\hyperlink{classuint256}{uint256} \hyperlink{scrypt_8cpp_a6adfc1349327d008e38ee6749c0eb986}{scrypt\+\_\+salted\+\_\+multiround\+\_\+hash} (const void $\ast$input, size\+\_\+t inputlen, const void $\ast$salt, size\+\_\+t saltlen, const unsigned int n\+Rounds)
+\item 
+\hyperlink{classuint256}{uint256} \hyperlink{scrypt_8cpp_a9c2a05477bf96657b45817f16ce02084}{scrypt\+\_\+blockhash} (const void $\ast$input)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{scrypt_8cpp_a8011d6dab73e8808981c948e35610884}{}\index{scrypt.\+cpp@{scrypt.\+cpp}!R@{R}}
+\index{R@{R}!scrypt.\+cpp@{scrypt.\+cpp}}
+\subsubsection[{R}]{\setlength{\rightskip}{0pt plus 5cm}\#define R(
+\begin{DoxyParamCaption}
+\item[{}]{a, }
+\item[{}]{b}
+\end{DoxyParamCaption}
+)~(((a) $<$$<$ (b)) $\vert$ ((a) $>$$>$ (32 -\/ (b))))}\label{scrypt_8cpp_a8011d6dab73e8808981c948e35610884}
+\hypertarget{scrypt_8cpp_ac62c7210d8703c77228a6900dbe58bfe}{}\index{scrypt.\+cpp@{scrypt.\+cpp}!S\+C\+R\+Y\+P\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E@{S\+C\+R\+Y\+P\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E}}
+\index{S\+C\+R\+Y\+P\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E@{S\+C\+R\+Y\+P\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E}!scrypt.\+cpp@{scrypt.\+cpp}}
+\subsubsection[{S\+C\+R\+Y\+P\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+C\+R\+Y\+P\+T\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+I\+Z\+E~(131072 + 63)}\label{scrypt_8cpp_ac62c7210d8703c77228a6900dbe58bfe}
+
+
+Definition at line 39 of file scrypt.\+cpp.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{scrypt_8cpp_af51489d460b3e77446a7db8fa068e19d}{}\index{scrypt.\+cpp@{scrypt.\+cpp}!scrypt@{scrypt}}
+\index{scrypt@{scrypt}!scrypt.\+cpp@{scrypt.\+cpp}}
+\subsubsection[{scrypt}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint256} scrypt (
+\begin{DoxyParamCaption}
+\item[{const void $\ast$}]{data, }
+\item[{size\+\_\+t}]{datalen, }
+\item[{const void $\ast$}]{salt, }
+\item[{size\+\_\+t}]{saltlen, }
+\item[{void $\ast$}]{scratchpad}
+\end{DoxyParamCaption}
+)}\label{scrypt_8cpp_af51489d460b3e77446a7db8fa068e19d}
+
+
+Definition at line 153 of file scrypt.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 1
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 2
+
+
+\hypertarget{scrypt_8cpp_a9c2a05477bf96657b45817f16ce02084}{}\index{scrypt.\+cpp@{scrypt.\+cpp}!scrypt\+\_\+blockhash@{scrypt\+\_\+blockhash}}
+\index{scrypt\+\_\+blockhash@{scrypt\+\_\+blockhash}!scrypt.\+cpp@{scrypt.\+cpp}}
+\subsubsection[{scrypt\+\_\+blockhash}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint256} scrypt\+\_\+blockhash (
+\begin{DoxyParamCaption}
+\item[{const void $\ast$}]{input}
+\end{DoxyParamCaption}
+)}\label{scrypt_8cpp_a9c2a05477bf96657b45817f16ce02084}
+
+
+Definition at line 193 of file scrypt.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 3
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 4
+
+
+\hypertarget{scrypt_8cpp_acff318c1964d18cf77a9841ad0990fa1}{}\index{scrypt.\+cpp@{scrypt.\+cpp}!scrypt\+\_\+hash@{scrypt\+\_\+hash}}
+\index{scrypt\+\_\+hash@{scrypt\+\_\+hash}!scrypt.\+cpp@{scrypt.\+cpp}}
+\subsubsection[{scrypt\+\_\+hash}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint256} scrypt\+\_\+hash (
+\begin{DoxyParamCaption}
+\item[{const void $\ast$}]{input, }
+\item[{size\+\_\+t}]{inputlen}
+\end{DoxyParamCaption}
+)}\label{scrypt_8cpp_acff318c1964d18cf77a9841ad0990fa1}
+
+
+Definition at line 167 of file scrypt.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 5
+
+
+\hypertarget{scrypt_8cpp_a84d48cffe34f5203893f03d56dfc24d5}{}\index{scrypt.\+cpp@{scrypt.\+cpp}!scrypt\+\_\+nosalt@{scrypt\+\_\+nosalt}}
+\index{scrypt\+\_\+nosalt@{scrypt\+\_\+nosalt}!scrypt.\+cpp@{scrypt.\+cpp}}
+\subsubsection[{scrypt\+\_\+nosalt}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint256} scrypt\+\_\+nosalt (
+\begin{DoxyParamCaption}
+\item[{const void $\ast$}]{input, }
+\item[{size\+\_\+t}]{inputlen, }
+\item[{void $\ast$}]{scratchpad}
+\end{DoxyParamCaption}
+)}\label{scrypt_8cpp_a84d48cffe34f5203893f03d56dfc24d5}
+
+
+Definition at line 139 of file scrypt.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 6
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 7
+
+
+\hypertarget{scrypt_8cpp_a958e72eeb122162c560096e6295fdd5b}{}\index{scrypt.\+cpp@{scrypt.\+cpp}!scrypt\+\_\+salted\+\_\+hash@{scrypt\+\_\+salted\+\_\+hash}}
+\index{scrypt\+\_\+salted\+\_\+hash@{scrypt\+\_\+salted\+\_\+hash}!scrypt.\+cpp@{scrypt.\+cpp}}
+\subsubsection[{scrypt\+\_\+salted\+\_\+hash}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint256} scrypt\+\_\+salted\+\_\+hash (
+\begin{DoxyParamCaption}
+\item[{const void $\ast$}]{input, }
+\item[{size\+\_\+t}]{inputlen, }
+\item[{const void $\ast$}]{salt, }
+\item[{size\+\_\+t}]{saltlen}
+\end{DoxyParamCaption}
+)}\label{scrypt_8cpp_a958e72eeb122162c560096e6295fdd5b}
+
+
+Definition at line 173 of file scrypt.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 8
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 9
+
+
+\hypertarget{scrypt_8cpp_a6adfc1349327d008e38ee6749c0eb986}{}\index{scrypt.\+cpp@{scrypt.\+cpp}!scrypt\+\_\+salted\+\_\+multiround\+\_\+hash@{scrypt\+\_\+salted\+\_\+multiround\+\_\+hash}}
+\index{scrypt\+\_\+salted\+\_\+multiround\+\_\+hash@{scrypt\+\_\+salted\+\_\+multiround\+\_\+hash}!scrypt.\+cpp@{scrypt.\+cpp}}
+\subsubsection[{scrypt\+\_\+salted\+\_\+multiround\+\_\+hash}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint256} scrypt\+\_\+salted\+\_\+multiround\+\_\+hash (
+\begin{DoxyParamCaption}
+\item[{const void $\ast$}]{input, }
+\item[{size\+\_\+t}]{inputlen, }
+\item[{const void $\ast$}]{salt, }
+\item[{size\+\_\+t}]{saltlen, }
+\item[{const unsigned int}]{n\+Rounds}
+\end{DoxyParamCaption}
+)}\label{scrypt_8cpp_a6adfc1349327d008e38ee6749c0eb986}
+
+
+Definition at line 179 of file scrypt.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 10
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 11
+
+

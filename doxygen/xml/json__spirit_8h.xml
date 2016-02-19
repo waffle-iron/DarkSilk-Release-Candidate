@@ -1,0 +1,152 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="json__spirit_8h" kind="file" language="C++">
+    <compoundname>json_spirit.h</compoundname>
+    <includes refid="json__spirit__value_8h" local="yes">json_spirit_value.h</includes>
+    <includes refid="json__spirit__reader_8h" local="yes">json_spirit_reader.h</includes>
+    <includes refid="json__spirit__writer_8h" local="yes">json_spirit_writer.h</includes>
+    <includes refid="json__spirit__utils_8h" local="yes">json_spirit_utils.h</includes>
+    <includedby refid="messagemodel_8cpp" local="yes">/home/dev/ds-160209/src/qt/messagemodel.cpp</includedby>
+    <incdepgraph>
+      <node id="35140">
+        <label>boost/shared_ptr.hpp</label>
+      </node>
+      <node id="35145">
+        <label>json_spirit_writer.h</label>
+        <link refid="json__spirit__writer_8h"/>
+        <childnode refid="35131" relation="include">
+        </childnode>
+        <childnode refid="35144" relation="include">
+        </childnode>
+      </node>
+      <node id="35143">
+        <label>json_spirit_error_position.h</label>
+        <link refid="json__spirit__error__position_8h"/>
+        <childnode refid="35134" relation="include">
+        </childnode>
+      </node>
+      <node id="35135">
+        <label>cassert</label>
+      </node>
+      <node id="35137">
+        <label>stdexcept</label>
+      </node>
+      <node id="35146">
+        <label>json_spirit_utils.h</label>
+        <link refid="json__spirit__utils_8h"/>
+        <childnode refid="35131" relation="include">
+        </childnode>
+        <childnode refid="35133" relation="include">
+        </childnode>
+      </node>
+      <node id="35130">
+        <label>/home/dev/ds-160209/src/json/json_spirit.h</label>
+        <link refid="json_spirit.h"/>
+        <childnode refid="35131" relation="include">
+        </childnode>
+        <childnode refid="35142" relation="include">
+        </childnode>
+        <childnode refid="35145" relation="include">
+        </childnode>
+        <childnode refid="35146" relation="include">
+        </childnode>
+      </node>
+      <node id="35134">
+        <label>string</label>
+      </node>
+      <node id="35133">
+        <label>map</label>
+      </node>
+      <node id="35141">
+        <label>boost/variant.hpp</label>
+      </node>
+      <node id="35132">
+        <label>vector</label>
+      </node>
+      <node id="35136">
+        <label>sstream</label>
+      </node>
+      <node id="35138">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="35144">
+        <label>iostream</label>
+      </node>
+      <node id="35139">
+        <label>boost/config.hpp</label>
+      </node>
+      <node id="35142">
+        <label>json_spirit_reader.h</label>
+        <link refid="json__spirit__reader_8h"/>
+        <childnode refid="35131" relation="include">
+        </childnode>
+        <childnode refid="35143" relation="include">
+        </childnode>
+        <childnode refid="35144" relation="include">
+        </childnode>
+      </node>
+      <node id="35131">
+        <label>json_spirit_value.h</label>
+        <link refid="json__spirit__value_8h"/>
+        <childnode refid="35132" relation="include">
+        </childnode>
+        <childnode refid="35133" relation="include">
+        </childnode>
+        <childnode refid="35134" relation="include">
+        </childnode>
+        <childnode refid="35135" relation="include">
+        </childnode>
+        <childnode refid="35136" relation="include">
+        </childnode>
+        <childnode refid="35137" relation="include">
+        </childnode>
+        <childnode refid="35138" relation="include">
+        </childnode>
+        <childnode refid="35139" relation="include">
+        </childnode>
+        <childnode refid="35140" relation="include">
+        </childnode>
+        <childnode refid="35141" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="35148">
+        <label>/home/dev/ds-160209/src/qt/messagemodel.cpp</label>
+        <link refid="messagemodel_8cpp"/>
+      </node>
+      <node id="35147">
+        <label>/home/dev/ds-160209/src/json/json_spirit.h</label>
+        <link refid="json_spirit.h"/>
+        <childnode refid="35148" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>JSON_SPIRIT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>JSON_SPIRIT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Copyright<sp/>John<sp/>W.<sp/>Wilkinson<sp/>2007<sp/>-<sp/>2016.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Distributed<sp/>under<sp/>the<sp/>MIT<sp/>License,<sp/>see<sp/>accompanying<sp/>file<sp/>LICENSE.txt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>json<sp/>spirit<sp/>version<sp/>4.03</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(_MSC_VER)<sp/>&amp;&amp;<sp/>(_MSC_VER<sp/>&gt;=<sp/>1020)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="json__spirit__value_8h" kindref="compound">json_spirit_value.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="json__spirit__reader_8h" kindref="compound">json_spirit_reader.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="json__spirit__writer_8h" kindref="compound">json_spirit_writer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="json__spirit__utils_8h" kindref="compound">json_spirit_utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/json/json_spirit.h"/>
+  </compounddef>
+</doxygen>

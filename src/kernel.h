@@ -4,9 +4,6 @@
 #ifndef PPCOIN_KERNEL_H
 #define PPCOIN_KERNEL_H
 
-#include "net.h"
-#include "protocol.h"
-#include "chainparams.h"
 #include "chain.h"
 
 // To decrease granularity of timestamp

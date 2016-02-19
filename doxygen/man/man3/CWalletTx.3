@@ -1,0 +1,540 @@
+.TH "CWalletTx" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CWalletTx \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <wallet\&.h>\fP
+.PP
+Inherits \fBCMerkleTx\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCWalletTx\fP ()"
+.br
+.ti -1c
+.RI "\fBCWalletTx\fP (const \fBCWallet\fP *pwalletIn)"
+.br
+.ti -1c
+.RI "\fBCWalletTx\fP (const \fBCWallet\fP *pwalletIn, const \fBCMerkleTx\fP &txIn)"
+.br
+.ti -1c
+.RI "\fBCWalletTx\fP (const \fBCWallet\fP *pwalletIn, const \fBCTransaction\fP &txIn)"
+.br
+.ti -1c
+.RI "void \fBInit\fP (const \fBCWallet\fP *pwalletIn)"
+.br
+.ti -1c
+.RI "template<typename Stream , typename Operation > void \fBSerializationOp\fP (Stream &s, Operation ser_action, int nType, int \fBnVersion\fP)"
+.br
+.ti -1c
+.RI "bool \fBUpdateSpent\fP (const std::vector< char > &vfNewSpent)"
+.br
+.ti -1c
+.RI "void \fBMarkDirty\fP ()"
+.br
+.ti -1c
+.RI "void \fBBindWallet\fP (\fBCWallet\fP *pwalletIn)"
+.br
+.ti -1c
+.RI "void \fBMarkSpent\fP (unsigned int nOut)"
+.br
+.ti -1c
+.RI "void \fBMarkUnspent\fP (unsigned int nOut)"
+.br
+.ti -1c
+.RI "bool \fBIsSpent\fP (unsigned int nOut) const "
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBIsDenominated\fP () const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetCredit\fP (const \fBisminefilter\fP &filter) const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetDebit\fP (const \fBisminefilter\fP &filter) const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetImmatureCredit\fP (bool fUseCache=true) const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetAvailableCredit\fP (bool fUseCache=true) const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetAnonymizableCredit\fP (bool fUseCache=false) const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetDenominatedCredit\fP (bool unconfirmed, bool fUseCache=false) const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetImmatureWatchOnlyCredit\fP (const bool &fUseCache=true) const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetAvailableWatchOnlyCredit\fP (const bool &fUseCache=true) const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetChange\fP () const "
+.br
+.ti -1c
+.RI "void \fBGetAmounts\fP (std::list< std::pair< \fBCTxDestination\fP, \fBCAmount\fP > > &listReceived, std::list< std::pair< \fBCTxDestination\fP, \fBCAmount\fP > > &listSent, \fBCAmount\fP &nFee, std::string &strSentAccount, const \fBisminefilter\fP &filter) const "
+.br
+.ti -1c
+.RI "void \fBGetAccountAmounts\fP (const std::string &strAccount, \fBCAmount\fP &nReceived, \fBCAmount\fP &nSent, \fBCAmount\fP &nFee, const \fBisminefilter\fP &filter) const "
+.br
+.ti -1c
+.RI "bool \fBIsFromMe\fP (const \fBisminefilter\fP &filter) const "
+.br
+.ti -1c
+.RI "bool \fBIsTrusted\fP () const "
+.br
+.ti -1c
+.RI "bool \fBWriteToDisk\fP ()"
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBGetTxTime\fP () const "
+.br
+.ti -1c
+.RI "int \fBGetRequestCount\fP () const "
+.br
+.ti -1c
+.RI "void \fBAddSupportingTransactions\fP (\fBCTxDB\fP &\fBtxdb\fP)"
+.br
+.ti -1c
+.RI "bool \fBAcceptWalletTransaction\fP (\fBCTxDB\fP &\fBtxdb\fP)"
+.br
+.ti -1c
+.RI "bool \fBAcceptWalletTransaction\fP ()"
+.br
+.ti -1c
+.RI "void \fBRelayWalletTransaction\fP (\fBCTxDB\fP &\fBtxdb\fP, std::string strCommand='tx')"
+.br
+.ti -1c
+.RI "void \fBRelayWalletTransaction\fP (std::string strCommand='tx')"
+.br
+.ti -1c
+.RI "std::set< \fBuint256\fP > \fBGetConflicts\fP () const "
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::vector< \fBCMerkleTx\fP > \fBvtxPrev\fP"
+.br
+.ti -1c
+.RI "\fBmapValue_t\fP \fBmapValue\fP"
+.br
+.ti -1c
+.RI "std::vector< std::pair< std::string, std::string > > \fBvOrderForm\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBfTimeReceivedIsTxTime\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBnTimeReceived\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBnTimeSmart\fP"
+.br
+.ti -1c
+.RI "char \fBfFromMe\fP"
+.br
+.ti -1c
+.RI "std::string \fBstrFromAccount\fP"
+.br
+.ti -1c
+.RI "std::vector< char > \fBvfSpent\fP"
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBnOrderPos\fP"
+.br
+.ti -1c
+.RI "bool \fBfDebitCached\fP"
+.br
+.ti -1c
+.RI "bool \fBfCreditCached\fP"
+.br
+.ti -1c
+.RI "bool \fBfImmatureCreditCached\fP"
+.br
+.ti -1c
+.RI "bool \fBfDenomUnconfCreditCached\fP"
+.br
+.ti -1c
+.RI "bool \fBfDenomConfCreditCached\fP"
+.br
+.ti -1c
+.RI "bool \fBfAnonymizedCreditCached\fP"
+.br
+.ti -1c
+.RI "bool \fBfAnonymizableCreditCached\fP"
+.br
+.ti -1c
+.RI "bool \fBfAvailableWatchCreditCached\fP"
+.br
+.ti -1c
+.RI "bool \fBfImmatureWatchCreditCached\fP"
+.br
+.ti -1c
+.RI "bool \fBfAvailableCreditCached\fP"
+.br
+.ti -1c
+.RI "bool \fBfChangeCached\fP"
+.br
+.ti -1c
+.RI "bool \fBfWatchDebitCached\fP"
+.br
+.ti -1c
+.RI "bool \fBfWatchCreditCached\fP"
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBnWatchDebitCached\fP"
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBnWatchCreditCached\fP"
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBnImmatureCreditCached\fP"
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBnDebitCached\fP"
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBnCreditCached\fP"
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBnAvailableCreditCached\fP"
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBnChangeCached\fP"
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBnImmatureWatchCreditCached\fP"
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBnAvailableWatchCreditCached\fP"
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBnAnonymizableCreditCached\fP"
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBnAnonymizedCreditCached\fP"
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBnDenomUnconfCreditCached\fP"
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBnDenomConfCreditCached\fP"
+.br
+.ti -1c
+.RI "\fBADD_SERIALIZE_METHODS\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A transaction with a bunch of additional info that only the owner cares about\&. It includes any unrecorded transactions needed to link it back to the block chain\&. 
+.PP
+Definition at line 527 of file wallet\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CWalletTx::CWalletTx ()\fC [inline]\fP"
+
+.PP
+Definition at line 573 of file wallet\&.h\&.
+.SS "CWalletTx::CWalletTx (const \fBCWallet\fP * pwalletIn)\fC [inline]\fP"
+
+.PP
+Definition at line 578 of file wallet\&.h\&.
+.SS "CWalletTx::CWalletTx (const \fBCWallet\fP * pwalletIn, const \fBCMerkleTx\fP & txIn)\fC [inline]\fP"
+
+.PP
+Definition at line 583 of file wallet\&.h\&.
+.SS "CWalletTx::CWalletTx (const \fBCWallet\fP * pwalletIn, const \fBCTransaction\fP & txIn)\fC [inline]\fP"
+
+.PP
+Definition at line 588 of file wallet\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool CWalletTx::AcceptWalletTransaction (\fBCTxDB\fP & txdb)"
+
+.PP
+Definition at line 1462 of file main\&.cpp\&.
+.SS "bool CWalletTx::AcceptWalletTransaction ()"
+
+.PP
+Definition at line 1481 of file main\&.cpp\&.
+.SS "void CWalletTx::AddSupportingTransactions (\fBCTxDB\fP & txdb)"
+
+.PP
+Definition at line 1056 of file wallet\&.cpp\&.
+.SS "void CWalletTx::BindWallet (\fBCWallet\fP * pwalletIn)\fC [inline]\fP"
+
+.PP
+Definition at line 723 of file wallet\&.h\&.
+.SS "void CWalletTx::GetAccountAmounts (const std::string & strAccount, \fBCAmount\fP & nReceived, \fBCAmount\fP & nSent, \fBCAmount\fP & nFee, const \fBisminefilter\fP & filter) const"
+
+.PP
+Definition at line 1020 of file wallet\&.cpp\&.
+.SS "void CWalletTx::GetAmounts (std::list< std::pair< \fBCTxDestination\fP, \fBCAmount\fP > > & listReceived, std::list< std::pair< \fBCTxDestination\fP, \fBCAmount\fP > > & listSent, \fBCAmount\fP & nFee, std::string & strSentAccount, const \fBisminefilter\fP & filter) const"
+
+.PP
+Definition at line 967 of file wallet\&.cpp\&.
+.SS "\fBCAmount\fP CWalletTx::GetAnonymizableCredit (bool fUseCache = \fCfalse\fP) const\fC [inline]\fP"
+
+.PP
+Definition at line 876 of file wallet\&.h\&.
+.SS "\fBCAmount\fP CWalletTx::GetAvailableCredit (bool fUseCache = \fCtrue\fP) const\fC [inline]\fP"
+
+.PP
+Definition at line 847 of file wallet\&.h\&.
+.SS "\fBCAmount\fP CWalletTx::GetAvailableWatchOnlyCredit (const bool & fUseCache = \fCtrue\fP) const\fC [inline]\fP"
+
+.PP
+Definition at line 973 of file wallet\&.h\&.
+.SS "\fBCAmount\fP CWalletTx::GetChange () const\fC [inline]\fP"
+
+.PP
+Definition at line 1002 of file wallet\&.h\&.
+.SS "set< \fBuint256\fP > CWalletTx::GetConflicts () const"
+
+.PP
+Definition at line 1250 of file wallet\&.cpp\&.
+.SS "\fBCAmount\fP CWalletTx::GetCredit (const \fBisminefilter\fP & filter) const\fC [inline]\fP"
+
+.PP
+Definition at line 769 of file wallet\&.h\&.
+.SS "\fBCAmount\fP CWalletTx::GetDebit (const \fBisminefilter\fP & filter) const\fC [inline]\fP"
+
+.PP
+Definition at line 802 of file wallet\&.h\&.
+.SS "\fBCAmount\fP CWalletTx::GetDenominatedCredit (bool unconfirmed, bool fUseCache = \fCfalse\fP) const\fC [inline]\fP"
+
+.PP
+Definition at line 915 of file wallet\&.h\&.
+.SS "\fBCAmount\fP CWalletTx::GetImmatureCredit (bool fUseCache = \fCtrue\fP) const\fC [inline]\fP"
+
+.PP
+Definition at line 833 of file wallet\&.h\&.
+.SS "\fBCAmount\fP CWalletTx::GetImmatureWatchOnlyCredit (const bool & fUseCache = \fCtrue\fP) const\fC [inline]\fP"
+
+.PP
+Definition at line 959 of file wallet\&.h\&.
+.SS "int CWalletTx::GetRequestCount () const"
+
+.PP
+Definition at line 928 of file wallet\&.cpp\&.
+.SS "\fBint64_t\fP CWalletTx::GetTxTime () const"
+
+.PP
+Definition at line 922 of file wallet\&.cpp\&.
+.SS "void CWalletTx::Init (const \fBCWallet\fP * pwalletIn)\fC [inline]\fP"
+
+.PP
+Definition at line 593 of file wallet\&.h\&.
+.SS "\fBint64_t\fP CWalletTx::IsDenominated () const\fC [inline]\fP"
+
+.PP
+Definition at line 762 of file wallet\&.h\&.
+.SS "bool CWalletTx::IsFromMe (const \fBisminefilter\fP & filter) const\fC [inline]\fP"
+
+.PP
+Definition at line 1017 of file wallet\&.h\&.
+.SS "bool CWalletTx::IsSpent (unsigned int nOut) const\fC [inline]\fP"
+
+.PP
+Definition at line 753 of file wallet\&.h\&.
+.SS "bool CWalletTx::IsTrusted () const\fC [inline]\fP"
+
+.PP
+Definition at line 1022 of file wallet\&.h\&.
+.SS "void CWalletTx::MarkDirty ()\fC [inline]\fP"
+
+.PP
+Definition at line 715 of file wallet\&.h\&.
+.SS "void CWalletTx::MarkSpent (unsigned int nOut)\fC [inline]\fP"
+
+.PP
+Definition at line 729 of file wallet\&.h\&.
+.SS "void CWalletTx::MarkUnspent (unsigned int nOut)\fC [inline]\fP"
+
+.PP
+Definition at line 741 of file wallet\&.h\&.
+.SS "void CWalletTx::RelayWalletTransaction (\fBCTxDB\fP & txdb, std::string strCommand = \fC'tx'\fP)"
+
+.PP
+Definition at line 1225 of file wallet\&.cpp\&.
+.SS "void CWalletTx::RelayWalletTransaction (std::string strCommand = \fC'tx'\fP)"
+
+.PP
+Definition at line 1244 of file wallet\&.cpp\&.
+.SS "template<typename Stream , typename Operation > void CWalletTx::SerializationOp (Stream & s, Operation ser_action, int nType, int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 636 of file wallet\&.h\&.
+.SS "bool CWalletTx::UpdateSpent (const std::vector< char > & vfNewSpent)\fC [inline]\fP"
+
+.PP
+Definition at line 696 of file wallet\&.h\&.
+.SS "bool CWalletTx::WriteToDisk ()"
+
+.PP
+Definition at line 1116 of file wallet\&.cpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "CWalletTx::ADD_SERIALIZE_METHODS"
+
+.PP
+Definition at line 633 of file wallet\&.h\&.
+.SS "bool CWalletTx::fAnonymizableCreditCached\fC [mutable]\fP"
+
+.PP
+Definition at line 551 of file wallet\&.h\&.
+.SS "bool CWalletTx::fAnonymizedCreditCached\fC [mutable]\fP"
+
+.PP
+Definition at line 550 of file wallet\&.h\&.
+.SS "bool CWalletTx::fAvailableCreditCached\fC [mutable]\fP"
+
+.PP
+Definition at line 554 of file wallet\&.h\&.
+.SS "bool CWalletTx::fAvailableWatchCreditCached\fC [mutable]\fP"
+
+.PP
+Definition at line 552 of file wallet\&.h\&.
+.SS "bool CWalletTx::fChangeCached\fC [mutable]\fP"
+
+.PP
+Definition at line 555 of file wallet\&.h\&.
+.SS "bool CWalletTx::fCreditCached\fC [mutable]\fP"
+
+.PP
+Definition at line 546 of file wallet\&.h\&.
+.SS "bool CWalletTx::fDebitCached\fC [mutable]\fP"
+
+.PP
+Definition at line 545 of file wallet\&.h\&.
+.SS "bool CWalletTx::fDenomConfCreditCached\fC [mutable]\fP"
+
+.PP
+Definition at line 549 of file wallet\&.h\&.
+.SS "bool CWalletTx::fDenomUnconfCreditCached\fC [mutable]\fP"
+
+.PP
+Definition at line 548 of file wallet\&.h\&.
+.SS "char CWalletTx::fFromMe"
+
+.PP
+Definition at line 539 of file wallet\&.h\&.
+.SS "bool CWalletTx::fImmatureCreditCached\fC [mutable]\fP"
+
+.PP
+Definition at line 547 of file wallet\&.h\&.
+.SS "bool CWalletTx::fImmatureWatchCreditCached\fC [mutable]\fP"
+
+.PP
+Definition at line 553 of file wallet\&.h\&.
+.SS "unsigned int CWalletTx::fTimeReceivedIsTxTime"
+
+.PP
+Definition at line 536 of file wallet\&.h\&.
+.SS "bool CWalletTx::fWatchCreditCached\fC [mutable]\fP"
+
+.PP
+Definition at line 557 of file wallet\&.h\&.
+.SS "bool CWalletTx::fWatchDebitCached\fC [mutable]\fP"
+
+.PP
+Definition at line 556 of file wallet\&.h\&.
+.SS "\fBmapValue_t\fP CWalletTx::mapValue"
+
+.PP
+Definition at line 534 of file wallet\&.h\&.
+.SS "\fBCAmount\fP CWalletTx::nAnonymizableCreditCached\fC [mutable]\fP"
+
+.PP
+Definition at line 568 of file wallet\&.h\&.
+.SS "\fBCAmount\fP CWalletTx::nAnonymizedCreditCached\fC [mutable]\fP"
+
+.PP
+Definition at line 569 of file wallet\&.h\&.
+.SS "\fBCAmount\fP CWalletTx::nAvailableCreditCached\fC [mutable]\fP"
+
+.PP
+Definition at line 564 of file wallet\&.h\&.
+.SS "\fBCAmount\fP CWalletTx::nAvailableWatchCreditCached\fC [mutable]\fP"
+
+.PP
+Definition at line 567 of file wallet\&.h\&.
+.SS "\fBCAmount\fP CWalletTx::nChangeCached\fC [mutable]\fP"
+
+.PP
+Definition at line 565 of file wallet\&.h\&.
+.SS "\fBCAmount\fP CWalletTx::nCreditCached\fC [mutable]\fP"
+
+.PP
+Definition at line 563 of file wallet\&.h\&.
+.SS "\fBCAmount\fP CWalletTx::nDebitCached\fC [mutable]\fP"
+
+.PP
+Definition at line 562 of file wallet\&.h\&.
+.SS "\fBCAmount\fP CWalletTx::nDenomConfCreditCached\fC [mutable]\fP"
+
+.PP
+Definition at line 571 of file wallet\&.h\&.
+.SS "\fBCAmount\fP CWalletTx::nDenomUnconfCreditCached\fC [mutable]\fP"
+
+.PP
+Definition at line 570 of file wallet\&.h\&.
+.SS "\fBCAmount\fP CWalletTx::nImmatureCreditCached\fC [mutable]\fP"
+
+.PP
+Definition at line 561 of file wallet\&.h\&.
+.SS "\fBCAmount\fP CWalletTx::nImmatureWatchCreditCached\fC [mutable]\fP"
+
+.PP
+Definition at line 566 of file wallet\&.h\&.
+.SS "\fBint64_t\fP CWalletTx::nOrderPos"
+
+.PP
+Definition at line 542 of file wallet\&.h\&.
+.SS "unsigned int CWalletTx::nTimeReceived"
+
+.PP
+Definition at line 537 of file wallet\&.h\&.
+.SS "unsigned int CWalletTx::nTimeSmart"
+
+.PP
+Definition at line 538 of file wallet\&.h\&.
+.SS "\fBCAmount\fP CWalletTx::nWatchCreditCached\fC [mutable]\fP"
+
+.PP
+Definition at line 560 of file wallet\&.h\&.
+.SS "\fBCAmount\fP CWalletTx::nWatchDebitCached\fC [mutable]\fP"
+
+.PP
+Definition at line 559 of file wallet\&.h\&.
+.SS "std::string CWalletTx::strFromAccount"
+
+.PP
+Definition at line 540 of file wallet\&.h\&.
+.SS "std::vector<char> CWalletTx::vfSpent"
+
+.PP
+Definition at line 541 of file wallet\&.h\&.
+.SS "std::vector<std::pair<std::string, std::string> > CWalletTx::vOrderForm"
+
+.PP
+Definition at line 535 of file wallet\&.h\&.
+.SS "std::vector<\fBCMerkleTx\fP> CWalletTx::vtxPrev"
+
+.PP
+Definition at line 533 of file wallet\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

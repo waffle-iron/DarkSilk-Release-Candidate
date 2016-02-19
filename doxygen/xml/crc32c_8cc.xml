@@ -1,0 +1,454 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="crc32c_8cc" kind="file" language="C++">
+    <compoundname>crc32c.cc</compoundname>
+    <includes refid="crc32c_8h" local="yes">util/crc32c.h</includes>
+    <includes refid="stdint_8h" local="no">stdint.h</includes>
+    <includes refid="coding_8h" local="yes">util/coding.h</includes>
+    <incdepgraph>
+      <node id="39709">
+        <label>assert.h</label>
+      </node>
+      <node id="39707">
+        <label>string</label>
+      </node>
+      <node id="39702">
+        <label>util/crc32c.h</label>
+        <link refid="crc32c_8h"/>
+        <childnode refid="39703" relation="include">
+        </childnode>
+        <childnode refid="39704" relation="include">
+        </childnode>
+      </node>
+      <node id="39703">
+        <label>stddef.h</label>
+      </node>
+      <node id="39701">
+        <label>/home/dev/ds-160209/src/leveldb/util/crc32c.cc</label>
+        <link refid="crc32c.cc"/>
+        <childnode refid="39702" relation="include">
+        </childnode>
+        <childnode refid="39704" relation="include">
+        </childnode>
+        <childnode refid="39705" relation="include">
+        </childnode>
+      </node>
+      <node id="39705">
+        <label>util/coding.h</label>
+        <link refid="coding_8h"/>
+        <childnode refid="39704" relation="include">
+        </childnode>
+        <childnode refid="39706" relation="include">
+        </childnode>
+        <childnode refid="39707" relation="include">
+        </childnode>
+        <childnode refid="39708" relation="include">
+        </childnode>
+        <childnode refid="39710" relation="include">
+        </childnode>
+      </node>
+      <node id="39706">
+        <label>string.h</label>
+      </node>
+      <node id="39710">
+        <label>port/port.h</label>
+        <link refid="port_8h"/>
+        <childnode refid="39706" relation="include">
+        </childnode>
+      </node>
+      <node id="39704">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="39708">
+        <label>leveldb/slice.h</label>
+        <link refid="slice_8h"/>
+        <childnode refid="39709" relation="include">
+        </childnode>
+        <childnode refid="39703" relation="include">
+        </childnode>
+        <childnode refid="39706" relation="include">
+        </childnode>
+        <childnode refid="39707" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceleveldb">leveldb</innernamespace>
+    <innernamespace refid="namespaceleveldb_1_1crc32c">leveldb::crc32c</innernamespace>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="crc32c_8cc_1aa0e8b80aa29135a83d096ec150fb9a2d" prot="public" static="no">
+        <name>STEP1</name>
+        <initializer>do {                              \
+    int c = (l &amp; 0xff) ^ *p++;                  \
+    l = table0_[c] ^ (l &gt;&gt; 8);                  \
+} while (0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/util/crc32c.cc" line="291" column="9"/>
+        <referencedby refid="namespaceleveldb_1_1crc32c_1ac42fd0618afe635356d722fd29f5ff10" compoundref="crc32c_8cc" startline="286" endline="329">leveldb::crc32c::Extend</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="crc32c_8cc_1a43fdcab6f1ea325d70bc60eb117f394c" prot="public" static="no">
+        <name>STEP4</name>
+        <initializer>do {                              \
+    <ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref> c = l ^ LE_LOAD32(p);              \
+    p += 4;                                     \
+    l = table3_[c &amp; 0xff] ^                     \
+        table2_[(c &gt;&gt; 8) &amp; 0xff] ^              \
+        table1_[(c &gt;&gt; 16) &amp; 0xff] ^             \
+        table0_[c &gt;&gt; 24];                       \
+} while (0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/util/crc32c.cc" line="295" column="9"/>
+        <referencedby refid="namespaceleveldb_1_1crc32c_1ac42fd0618afe635356d722fd29f5ff10" compoundref="crc32c_8cc" startline="286" endline="329">leveldb::crc32c::Extend</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2011-2016<sp/>The<sp/>LevelDB<sp/>Authors.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>of<sp/>this<sp/>source<sp/>code<sp/>is<sp/>governed<sp/>by<sp/>a<sp/>BSD-style<sp/>license<sp/>that<sp/>can<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>found<sp/>in<sp/>the<sp/>LICENSE<sp/>file.<sp/>See<sp/>the<sp/>AUTHORS<sp/>file<sp/>for<sp/>names<sp/>of<sp/>contributors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>A<sp/>portable<sp/>implementation<sp/>of<sp/>crc32c,<sp/>optimized<sp/>to<sp/>handle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//<sp/>four<sp/>bytes<sp/>at<sp/>a<sp/>time.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="crc32c_8h" kindref="compound">util/crc32c.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="stdint_8h" kindref="compound">stdint.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="coding_8h" kindref="compound">util/coding.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceleveldb" kindref="compound">leveldb</ref><sp/>{</highlight></codeline>
+<codeline lineno="14" refid="namespaceleveldb_1_1crc32c" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">crc32c<sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>table0_[256]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/>0x00000000,<sp/>0xf26b8303,<sp/>0xe13b70f7,<sp/>0x1350f3f4,</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/>0xc79a971f,<sp/>0x35f1141c,<sp/>0x26a1e7e8,<sp/>0xd4ca64eb,</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/>0x8ad958cf,<sp/>0x78b2dbcc,<sp/>0x6be22838,<sp/>0x9989ab3b,</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/>0x4d43cfd0,<sp/>0xbf284cd3,<sp/>0xac78bf27,<sp/>0x5e133c24,</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/>0x105ec76f,<sp/>0xe235446c,<sp/>0xf165b798,<sp/>0x030e349b,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/>0xd7c45070,<sp/>0x25afd373,<sp/>0x36ff2087,<sp/>0xc494a384,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/>0x9a879fa0,<sp/>0x68ec1ca3,<sp/>0x7bbcef57,<sp/>0x89d76c54,</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/>0x5d1d08bf,<sp/>0xaf768bbc,<sp/>0xbc267848,<sp/>0x4e4dfb4b,</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/>0x20bd8ede,<sp/>0xd2d60ddd,<sp/>0xc186fe29,<sp/>0x33ed7d2a,</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/>0xe72719c1,<sp/>0x154c9ac2,<sp/>0x061c6936,<sp/>0xf477ea35,</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/>0xaa64d611,<sp/>0x580f5512,<sp/>0x4b5fa6e6,<sp/>0xb93425e5,</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/>0x6dfe410e,<sp/>0x9f95c20d,<sp/>0x8cc531f9,<sp/>0x7eaeb2fa,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/>0x30e349b1,<sp/>0xc288cab2,<sp/>0xd1d83946,<sp/>0x23b3ba45,</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/>0xf779deae,<sp/>0x05125dad,<sp/>0x1642ae59,<sp/>0xe4292d5a,</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/>0xba3a117e,<sp/>0x4851927d,<sp/>0x5b016189,<sp/>0xa96ae28a,</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/>0x7da08661,<sp/>0x8fcb0562,<sp/>0x9c9bf696,<sp/>0x6ef07595,</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/>0x417b1dbc,<sp/>0xb3109ebf,<sp/>0xa0406d4b,<sp/>0x522bee48,</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/>0x86e18aa3,<sp/>0x748a09a0,<sp/>0x67dafa54,<sp/>0x95b17957,</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/>0xcba24573,<sp/>0x39c9c670,<sp/>0x2a993584,<sp/>0xd8f2b687,</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>0x0c38d26c,<sp/>0xfe53516f,<sp/>0xed03a29b,<sp/>0x1f682198,</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/>0x5125dad3,<sp/>0xa34e59d0,<sp/>0xb01eaa24,<sp/>0x42752927,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/>0x96bf4dcc,<sp/>0x64d4cecf,<sp/>0x77843d3b,<sp/>0x85efbe38,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/>0xdbfc821c,<sp/>0x2997011f,<sp/>0x3ac7f2eb,<sp/>0xc8ac71e8,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/>0x1c661503,<sp/>0xee0d9600,<sp/>0xfd5d65f4,<sp/>0x0f36e6f7,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/>0x61c69362,<sp/>0x93ad1061,<sp/>0x80fde395,<sp/>0x72966096,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/>0xa65c047d,<sp/>0x5437877e,<sp/>0x4767748a,<sp/>0xb50cf789,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/>0xeb1fcbad,<sp/>0x197448ae,<sp/>0x0a24bb5a,<sp/>0xf84f3859,</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/>0x2c855cb2,<sp/>0xdeeedfb1,<sp/>0xcdbe2c45,<sp/>0x3fd5af46,</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/>0x7198540d,<sp/>0x83f3d70e,<sp/>0x90a324fa,<sp/>0x62c8a7f9,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/>0xb602c312,<sp/>0x44694011,<sp/>0x5739b3e5,<sp/>0xa55230e6,</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/>0xfb410cc2,<sp/>0x092a8fc1,<sp/>0x1a7a7c35,<sp/>0xe811ff36,</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>0x3cdb9bdd,<sp/>0xceb018de,<sp/>0xdde0eb2a,<sp/>0x2f8b6829,</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>0x82f63b78,<sp/>0x709db87b,<sp/>0x63cd4b8f,<sp/>0x91a6c88c,</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/>0x456cac67,<sp/>0xb7072f64,<sp/>0xa457dc90,<sp/>0x563c5f93,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/>0x082f63b7,<sp/>0xfa44e0b4,<sp/>0xe9141340,<sp/>0x1b7f9043,</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/>0xcfb5f4a8,<sp/>0x3dde77ab,<sp/>0x2e8e845f,<sp/>0xdce5075c,</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/>0x92a8fc17,<sp/>0x60c37f14,<sp/>0x73938ce0,<sp/>0x81f80fe3,</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/>0x55326b08,<sp/>0xa759e80b,<sp/>0xb4091bff,<sp/>0x466298fc,</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/>0x1871a4d8,<sp/>0xea1a27db,<sp/>0xf94ad42f,<sp/>0x0b21572c,</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/>0xdfeb33c7,<sp/>0x2d80b0c4,<sp/>0x3ed04330,<sp/>0xccbbc033,</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/>0xa24bb5a6,<sp/>0x502036a5,<sp/>0x4370c551,<sp/>0xb11b4652,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/>0x65d122b9,<sp/>0x97baa1ba,<sp/>0x84ea524e,<sp/>0x7681d14d,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/>0x2892ed69,<sp/>0xdaf96e6a,<sp/>0xc9a99d9e,<sp/>0x3bc21e9d,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/>0xef087a76,<sp/>0x1d63f975,<sp/>0x0e330a81,<sp/>0xfc588982,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/>0xb21572c9,<sp/>0x407ef1ca,<sp/>0x532e023e,<sp/>0xa145813d,</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/>0x758fe5d6,<sp/>0x87e466d5,<sp/>0x94b49521,<sp/>0x66df1622,</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/>0x38cc2a06,<sp/>0xcaa7a905,<sp/>0xd9f75af1,<sp/>0x2b9cd9f2,</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/>0xff56bd19,<sp/>0x0d3d3e1a,<sp/>0x1e6dcdee,<sp/>0xec064eed,</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/>0xc38d26c4,<sp/>0x31e6a5c7,<sp/>0x22b65633,<sp/>0xd0ddd530,</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>0x0417b1db,<sp/>0xf67c32d8,<sp/>0xe52cc12c,<sp/>0x1747422f,</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>0x49547e0b,<sp/>0xbb3ffd08,<sp/>0xa86f0efc,<sp/>0x5a048dff,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/>0x8ecee914,<sp/>0x7ca56a17,<sp/>0x6ff599e3,<sp/>0x9d9e1ae0,</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/>0xd3d3e1ab,<sp/>0x21b862a8,<sp/>0x32e8915c,<sp/>0xc083125f,</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/>0x144976b4,<sp/>0xe622f5b7,<sp/>0xf5720643,<sp/>0x07198540,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/>0x590ab964,<sp/>0xab613a67,<sp/>0xb831c993,<sp/>0x4a5a4a90,</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>0x9e902e7b,<sp/>0x6cfbad78,<sp/>0x7fab5e8c,<sp/>0x8dc0dd8f,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>0xe330a81a,<sp/>0x115b2b19,<sp/>0x020bd8ed,<sp/>0xf0605bee,</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/>0x24aa3f05,<sp/>0xd6c1bc06,<sp/>0xc5914ff2,<sp/>0x37faccf1,</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/>0x69e9f0d5,<sp/>0x9b8273d6,<sp/>0x88d28022,<sp/>0x7ab90321,</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/>0xae7367ca,<sp/>0x5c18e4c9,<sp/>0x4f48173d,<sp/>0xbd23943e,</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/>0xf36e6f75,<sp/>0x0105ec76,<sp/>0x12551f82,<sp/>0xe03e9c81,</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/>0x34f4f86a,<sp/>0xc69f7b69,<sp/>0xd5cf889d,<sp/>0x27a40b9e,</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/>0x79b737ba,<sp/>0x8bdcb4b9,<sp/>0x988c474d,<sp/>0x6ae7c44e,</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/>0xbe2da0a5,<sp/>0x4c4623a6,<sp/>0x5f16d052,<sp/>0xad7d5351</highlight></codeline>
+<codeline lineno="81"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>table1_[256]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/>0x00000000,<sp/>0x13a29877,<sp/>0x274530ee,<sp/>0x34e7a899,</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/>0x4e8a61dc,<sp/>0x5d28f9ab,<sp/>0x69cf5132,<sp/>0x7a6dc945,</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/>0x9d14c3b8,<sp/>0x8eb65bcf,<sp/>0xba51f356,<sp/>0xa9f36b21,</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>0xd39ea264,<sp/>0xc03c3a13,<sp/>0xf4db928a,<sp/>0xe7790afd,</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/>0x3fc5f181,<sp/>0x2c6769f6,<sp/>0x1880c16f,<sp/>0x0b225918,</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/>0x714f905d,<sp/>0x62ed082a,<sp/>0x560aa0b3,<sp/>0x45a838c4,</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/>0xa2d13239,<sp/>0xb173aa4e,<sp/>0x859402d7,<sp/>0x96369aa0,</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/>0xec5b53e5,<sp/>0xfff9cb92,<sp/>0xcb1e630b,<sp/>0xd8bcfb7c,</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/>0x7f8be302,<sp/>0x6c297b75,<sp/>0x58ced3ec,<sp/>0x4b6c4b9b,</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/>0x310182de,<sp/>0x22a31aa9,<sp/>0x1644b230,<sp/>0x05e62a47,</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/>0xe29f20ba,<sp/>0xf13db8cd,<sp/>0xc5da1054,<sp/>0xd6788823,</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/>0xac154166,<sp/>0xbfb7d911,<sp/>0x8b507188,<sp/>0x98f2e9ff,</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/>0x404e1283,<sp/>0x53ec8af4,<sp/>0x670b226d,<sp/>0x74a9ba1a,</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/>0x0ec4735f,<sp/>0x1d66eb28,<sp/>0x298143b1,<sp/>0x3a23dbc6,</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/>0xdd5ad13b,<sp/>0xcef8494c,<sp/>0xfa1fe1d5,<sp/>0xe9bd79a2,</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/>0x93d0b0e7,<sp/>0x80722890,<sp/>0xb4958009,<sp/>0xa737187e,</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/>0xff17c604,<sp/>0xecb55e73,<sp/>0xd852f6ea,<sp/>0xcbf06e9d,</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/>0xb19da7d8,<sp/>0xa23f3faf,<sp/>0x96d89736,<sp/>0x857a0f41,</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/>0x620305bc,<sp/>0x71a19dcb,<sp/>0x45463552,<sp/>0x56e4ad25,</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/>0x2c896460,<sp/>0x3f2bfc17,<sp/>0x0bcc548e,<sp/>0x186eccf9,</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/>0xc0d23785,<sp/>0xd370aff2,<sp/>0xe797076b,<sp/>0xf4359f1c,</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/>0x8e585659,<sp/>0x9dface2e,<sp/>0xa91d66b7,<sp/>0xbabffec0,</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/>0x5dc6f43d,<sp/>0x4e646c4a,<sp/>0x7a83c4d3,<sp/>0x69215ca4,</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/>0x134c95e1,<sp/>0x00ee0d96,<sp/>0x3409a50f,<sp/>0x27ab3d78,</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/>0x809c2506,<sp/>0x933ebd71,<sp/>0xa7d915e8,<sp/>0xb47b8d9f,</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/>0xce1644da,<sp/>0xddb4dcad,<sp/>0xe9537434,<sp/>0xfaf1ec43,</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/>0x1d88e6be,<sp/>0x0e2a7ec9,<sp/>0x3acdd650,<sp/>0x296f4e27,</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/>0x53028762,<sp/>0x40a01f15,<sp/>0x7447b78c,<sp/>0x67e52ffb,</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/>0xbf59d487,<sp/>0xacfb4cf0,<sp/>0x981ce469,<sp/>0x8bbe7c1e,</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/>0xf1d3b55b,<sp/>0xe2712d2c,<sp/>0xd69685b5,<sp/>0xc5341dc2,</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/>0x224d173f,<sp/>0x31ef8f48,<sp/>0x050827d1,<sp/>0x16aabfa6,</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/>0x6cc776e3,<sp/>0x7f65ee94,<sp/>0x4b82460d,<sp/>0x5820de7a,</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/>0xfbc3faf9,<sp/>0xe861628e,<sp/>0xdc86ca17,<sp/>0xcf245260,</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/>0xb5499b25,<sp/>0xa6eb0352,<sp/>0x920cabcb,<sp/>0x81ae33bc,</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/>0x66d73941,<sp/>0x7575a136,<sp/>0x419209af,<sp/>0x523091d8,</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/>0x285d589d,<sp/>0x3bffc0ea,<sp/>0x0f186873,<sp/>0x1cbaf004,</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/>0xc4060b78,<sp/>0xd7a4930f,<sp/>0xe3433b96,<sp/>0xf0e1a3e1,</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/>0x8a8c6aa4,<sp/>0x992ef2d3,<sp/>0xadc95a4a,<sp/>0xbe6bc23d,</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/>0x5912c8c0,<sp/>0x4ab050b7,<sp/>0x7e57f82e,<sp/>0x6df56059,</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/>0x1798a91c,<sp/>0x043a316b,<sp/>0x30dd99f2,<sp/>0x237f0185,</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/>0x844819fb,<sp/>0x97ea818c,<sp/>0xa30d2915,<sp/>0xb0afb162,</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/>0xcac27827,<sp/>0xd960e050,<sp/>0xed8748c9,<sp/>0xfe25d0be,</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/>0x195cda43,<sp/>0x0afe4234,<sp/>0x3e19eaad,<sp/>0x2dbb72da,</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/>0x57d6bb9f,<sp/>0x447423e8,<sp/>0x70938b71,<sp/>0x63311306,</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/>0xbb8de87a,<sp/>0xa82f700d,<sp/>0x9cc8d894,<sp/>0x8f6a40e3,</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/>0xf50789a6,<sp/>0xe6a511d1,<sp/>0xd242b948,<sp/>0xc1e0213f,</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/>0x26992bc2,<sp/>0x353bb3b5,<sp/>0x01dc1b2c,<sp/>0x127e835b,</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/>0x68134a1e,<sp/>0x7bb1d269,<sp/>0x4f567af0,<sp/>0x5cf4e287,</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/>0x04d43cfd,<sp/>0x1776a48a,<sp/>0x23910c13,<sp/>0x30339464,</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/>0x4a5e5d21,<sp/>0x59fcc556,<sp/>0x6d1b6dcf,<sp/>0x7eb9f5b8,</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/>0x99c0ff45,<sp/>0x8a626732,<sp/>0xbe85cfab,<sp/>0xad2757dc,</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/>0xd74a9e99,<sp/>0xc4e806ee,<sp/>0xf00fae77,<sp/>0xe3ad3600,</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/>0x3b11cd7c,<sp/>0x28b3550b,<sp/>0x1c54fd92,<sp/>0x0ff665e5,</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/>0x759baca0,<sp/>0x663934d7,<sp/>0x52de9c4e,<sp/>0x417c0439,</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/>0xa6050ec4,<sp/>0xb5a796b3,<sp/>0x81403e2a,<sp/>0x92e2a65d,</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/>0xe88f6f18,<sp/>0xfb2df76f,<sp/>0xcfca5ff6,<sp/>0xdc68c781,</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/>0x7b5fdfff,<sp/>0x68fd4788,<sp/>0x5c1aef11,<sp/>0x4fb87766,</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/>0x35d5be23,<sp/>0x26772654,<sp/>0x12908ecd,<sp/>0x013216ba,</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/>0xe64b1c47,<sp/>0xf5e98430,<sp/>0xc10e2ca9,<sp/>0xd2acb4de,</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/>0xa8c17d9b,<sp/>0xbb63e5ec,<sp/>0x8f844d75,<sp/>0x9c26d502,</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/>0x449a2e7e,<sp/>0x5738b609,<sp/>0x63df1e90,<sp/>0x707d86e7,</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/>0x0a104fa2,<sp/>0x19b2d7d5,<sp/>0x2d557f4c,<sp/>0x3ef7e73b,</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/>0xd98eedc6,<sp/>0xca2c75b1,<sp/>0xfecbdd28,<sp/>0xed69455f,</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/>0x97048c1a,<sp/>0x84a6146d,<sp/>0xb041bcf4,<sp/>0xa3e32483</highlight></codeline>
+<codeline lineno="147"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>table2_[256]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/>0x00000000,<sp/>0xa541927e,<sp/>0x4f6f520d,<sp/>0xea2ec073,</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/>0x9edea41a,<sp/>0x3b9f3664,<sp/>0xd1b1f617,<sp/>0x74f06469,</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/>0x38513ec5,<sp/>0x9d10acbb,<sp/>0x773e6cc8,<sp/>0xd27ffeb6,</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/>0xa68f9adf,<sp/>0x03ce08a1,<sp/>0xe9e0c8d2,<sp/>0x4ca15aac,</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/>0x70a27d8a,<sp/>0xd5e3eff4,<sp/>0x3fcd2f87,<sp/>0x9a8cbdf9,</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/>0xee7cd990,<sp/>0x4b3d4bee,<sp/>0xa1138b9d,<sp/>0x045219e3,</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/>0x48f3434f,<sp/>0xedb2d131,<sp/>0x079c1142,<sp/>0xa2dd833c,</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/>0xd62de755,<sp/>0x736c752b,<sp/>0x9942b558,<sp/>0x3c032726,</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/>0xe144fb14,<sp/>0x4405696a,<sp/>0xae2ba919,<sp/>0x0b6a3b67,</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/>0x7f9a5f0e,<sp/>0xdadbcd70,<sp/>0x30f50d03,<sp/>0x95b49f7d,</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/>0xd915c5d1,<sp/>0x7c5457af,<sp/>0x967a97dc,<sp/>0x333b05a2,</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/>0x47cb61cb,<sp/>0xe28af3b5,<sp/>0x08a433c6,<sp/>0xade5a1b8,</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/>0x91e6869e,<sp/>0x34a714e0,<sp/>0xde89d493,<sp/>0x7bc846ed,</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/>0x0f382284,<sp/>0xaa79b0fa,<sp/>0x40577089,<sp/>0xe516e2f7,</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/>0xa9b7b85b,<sp/>0x0cf62a25,<sp/>0xe6d8ea56,<sp/>0x43997828,</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/>0x37691c41,<sp/>0x92288e3f,<sp/>0x78064e4c,<sp/>0xdd47dc32,</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/>0xc76580d9,<sp/>0x622412a7,<sp/>0x880ad2d4,<sp/>0x2d4b40aa,</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/>0x59bb24c3,<sp/>0xfcfab6bd,<sp/>0x16d476ce,<sp/>0xb395e4b0,</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/>0xff34be1c,<sp/>0x5a752c62,<sp/>0xb05bec11,<sp/>0x151a7e6f,</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/>0x61ea1a06,<sp/>0xc4ab8878,<sp/>0x2e85480b,<sp/>0x8bc4da75,</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/>0xb7c7fd53,<sp/>0x12866f2d,<sp/>0xf8a8af5e,<sp/>0x5de93d20,</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/>0x29195949,<sp/>0x8c58cb37,<sp/>0x66760b44,<sp/>0xc337993a,</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/>0x8f96c396,<sp/>0x2ad751e8,<sp/>0xc0f9919b,<sp/>0x65b803e5,</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/>0x1148678c,<sp/>0xb409f5f2,<sp/>0x5e273581,<sp/>0xfb66a7ff,</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/>0x26217bcd,<sp/>0x8360e9b3,<sp/>0x694e29c0,<sp/>0xcc0fbbbe,</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/>0xb8ffdfd7,<sp/>0x1dbe4da9,<sp/>0xf7908dda,<sp/>0x52d11fa4,</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/>0x1e704508,<sp/>0xbb31d776,<sp/>0x511f1705,<sp/>0xf45e857b,</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/>0x80aee112,<sp/>0x25ef736c,<sp/>0xcfc1b31f,<sp/>0x6a802161,</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/>0x56830647,<sp/>0xf3c29439,<sp/>0x19ec544a,<sp/>0xbcadc634,</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/>0xc85da25d,<sp/>0x6d1c3023,<sp/>0x8732f050,<sp/>0x2273622e,</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/>0x6ed23882,<sp/>0xcb93aafc,<sp/>0x21bd6a8f,<sp/>0x84fcf8f1,</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/>0xf00c9c98,<sp/>0x554d0ee6,<sp/>0xbf63ce95,<sp/>0x1a225ceb,</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/>0x8b277743,<sp/>0x2e66e53d,<sp/>0xc448254e,<sp/>0x6109b730,</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/>0x15f9d359,<sp/>0xb0b84127,<sp/>0x5a968154,<sp/>0xffd7132a,</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/>0xb3764986,<sp/>0x1637dbf8,<sp/>0xfc191b8b,<sp/>0x595889f5,</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/>0x2da8ed9c,<sp/>0x88e97fe2,<sp/>0x62c7bf91,<sp/>0xc7862def,</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/>0xfb850ac9,<sp/>0x5ec498b7,<sp/>0xb4ea58c4,<sp/>0x11abcaba,</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/>0x655baed3,<sp/>0xc01a3cad,<sp/>0x2a34fcde,<sp/>0x8f756ea0,</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/>0xc3d4340c,<sp/>0x6695a672,<sp/>0x8cbb6601,<sp/>0x29faf47f,</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/>0x5d0a9016,<sp/>0xf84b0268,<sp/>0x1265c21b,<sp/>0xb7245065,</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/>0x6a638c57,<sp/>0xcf221e29,<sp/>0x250cde5a,<sp/>0x804d4c24,</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/>0xf4bd284d,<sp/>0x51fcba33,<sp/>0xbbd27a40,<sp/>0x1e93e83e,</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/>0x5232b292,<sp/>0xf77320ec,<sp/>0x1d5de09f,<sp/>0xb81c72e1,</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/>0xccec1688,<sp/>0x69ad84f6,<sp/>0x83834485,<sp/>0x26c2d6fb,</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/>0x1ac1f1dd,<sp/>0xbf8063a3,<sp/>0x55aea3d0,<sp/>0xf0ef31ae,</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/>0x841f55c7,<sp/>0x215ec7b9,<sp/>0xcb7007ca,<sp/>0x6e3195b4,</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/>0x2290cf18,<sp/>0x87d15d66,<sp/>0x6dff9d15,<sp/>0xc8be0f6b,</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/>0xbc4e6b02,<sp/>0x190ff97c,<sp/>0xf321390f,<sp/>0x5660ab71,</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/>0x4c42f79a,<sp/>0xe90365e4,<sp/>0x032da597,<sp/>0xa66c37e9,</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/>0xd29c5380,<sp/>0x77ddc1fe,<sp/>0x9df3018d,<sp/>0x38b293f3,</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/>0x7413c95f,<sp/>0xd1525b21,<sp/>0x3b7c9b52,<sp/>0x9e3d092c,</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/>0xeacd6d45,<sp/>0x4f8cff3b,<sp/>0xa5a23f48,<sp/>0x00e3ad36,</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/>0x3ce08a10,<sp/>0x99a1186e,<sp/>0x738fd81d,<sp/>0xd6ce4a63,</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/>0xa23e2e0a,<sp/>0x077fbc74,<sp/>0xed517c07,<sp/>0x4810ee79,</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/>0x04b1b4d5,<sp/>0xa1f026ab,<sp/>0x4bdee6d8,<sp/>0xee9f74a6,</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/>0x9a6f10cf,<sp/>0x3f2e82b1,<sp/>0xd50042c2,<sp/>0x7041d0bc,</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/>0xad060c8e,<sp/>0x08479ef0,<sp/>0xe2695e83,<sp/>0x4728ccfd,</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/>0x33d8a894,<sp/>0x96993aea,<sp/>0x7cb7fa99,<sp/>0xd9f668e7,</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/>0x9557324b,<sp/>0x3016a035,<sp/>0xda386046,<sp/>0x7f79f238,</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/>0x0b899651,<sp/>0xaec8042f,<sp/>0x44e6c45c,<sp/>0xe1a75622,</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/>0xdda47104,<sp/>0x78e5e37a,<sp/>0x92cb2309,<sp/>0x378ab177,</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/>0x437ad51e,<sp/>0xe63b4760,<sp/>0x0c158713,<sp/>0xa954156d,</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/>0xe5f54fc1,<sp/>0x40b4ddbf,<sp/>0xaa9a1dcc,<sp/>0x0fdb8fb2,</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/>0x7b2bebdb,<sp/>0xde6a79a5,<sp/>0x3444b9d6,<sp/>0x91052ba8</highlight></codeline>
+<codeline lineno="213"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>table3_[256]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/>0x00000000,<sp/>0xdd45aab8,<sp/>0xbf672381,<sp/>0x62228939,</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/>0x7b2231f3,<sp/>0xa6679b4b,<sp/>0xc4451272,<sp/>0x1900b8ca,</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/>0xf64463e6,<sp/>0x2b01c95e,<sp/>0x49234067,<sp/>0x9466eadf,</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/>0x8d665215,<sp/>0x5023f8ad,<sp/>0x32017194,<sp/>0xef44db2c,</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/>0xe964b13d,<sp/>0x34211b85,<sp/>0x560392bc,<sp/>0x8b463804,</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/>0x924680ce,<sp/>0x4f032a76,<sp/>0x2d21a34f,<sp/>0xf06409f7,</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/>0x1f20d2db,<sp/>0xc2657863,<sp/>0xa047f15a,<sp/>0x7d025be2,</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/>0x6402e328,<sp/>0xb9474990,<sp/>0xdb65c0a9,<sp/>0x06206a11,</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/>0xd725148b,<sp/>0x0a60be33,<sp/>0x6842370a,<sp/>0xb5079db2,</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/>0xac072578,<sp/>0x71428fc0,<sp/>0x136006f9,<sp/>0xce25ac41,</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/>0x2161776d,<sp/>0xfc24ddd5,<sp/>0x9e0654ec,<sp/>0x4343fe54,</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/>0x5a43469e,<sp/>0x8706ec26,<sp/>0xe524651f,<sp/>0x3861cfa7,</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/>0x3e41a5b6,<sp/>0xe3040f0e,<sp/>0x81268637,<sp/>0x5c632c8f,</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/>0x45639445,<sp/>0x98263efd,<sp/>0xfa04b7c4,<sp/>0x27411d7c,</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/>0xc805c650,<sp/>0x15406ce8,<sp/>0x7762e5d1,<sp/>0xaa274f69,</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/>0xb327f7a3,<sp/>0x6e625d1b,<sp/>0x0c40d422,<sp/>0xd1057e9a,</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/>0xaba65fe7,<sp/>0x76e3f55f,<sp/>0x14c17c66,<sp/>0xc984d6de,</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/>0xd0846e14,<sp/>0x0dc1c4ac,<sp/>0x6fe34d95,<sp/>0xb2a6e72d,</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/>0x5de23c01,<sp/>0x80a796b9,<sp/>0xe2851f80,<sp/>0x3fc0b538,</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/>0x26c00df2,<sp/>0xfb85a74a,<sp/>0x99a72e73,<sp/>0x44e284cb,</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/>0x42c2eeda,<sp/>0x9f874462,<sp/>0xfda5cd5b,<sp/>0x20e067e3,</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/>0x39e0df29,<sp/>0xe4a57591,<sp/>0x8687fca8,<sp/>0x5bc25610,</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/>0xb4868d3c,<sp/>0x69c32784,<sp/>0x0be1aebd,<sp/>0xd6a40405,</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/>0xcfa4bccf,<sp/>0x12e11677,<sp/>0x70c39f4e,<sp/>0xad8635f6,</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/>0x7c834b6c,<sp/>0xa1c6e1d4,<sp/>0xc3e468ed,<sp/>0x1ea1c255,</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/>0x07a17a9f,<sp/>0xdae4d027,<sp/>0xb8c6591e,<sp/>0x6583f3a6,</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/>0x8ac7288a,<sp/>0x57828232,<sp/>0x35a00b0b,<sp/>0xe8e5a1b3,</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/>0xf1e51979,<sp/>0x2ca0b3c1,<sp/>0x4e823af8,<sp/>0x93c79040,</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/>0x95e7fa51,<sp/>0x48a250e9,<sp/>0x2a80d9d0,<sp/>0xf7c57368,</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/>0xeec5cba2,<sp/>0x3380611a,<sp/>0x51a2e823,<sp/>0x8ce7429b,</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/>0x63a399b7,<sp/>0xbee6330f,<sp/>0xdcc4ba36,<sp/>0x0181108e,</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/>0x1881a844,<sp/>0xc5c402fc,<sp/>0xa7e68bc5,<sp/>0x7aa3217d,</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/>0x52a0c93f,<sp/>0x8fe56387,<sp/>0xedc7eabe,<sp/>0x30824006,</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/>0x2982f8cc,<sp/>0xf4c75274,<sp/>0x96e5db4d,<sp/>0x4ba071f5,</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/>0xa4e4aad9,<sp/>0x79a10061,<sp/>0x1b838958,<sp/>0xc6c623e0,</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/>0xdfc69b2a,<sp/>0x02833192,<sp/>0x60a1b8ab,<sp/>0xbde41213,</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/>0xbbc47802,<sp/>0x6681d2ba,<sp/>0x04a35b83,<sp/>0xd9e6f13b,</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/>0xc0e649f1,<sp/>0x1da3e349,<sp/>0x7f816a70,<sp/>0xa2c4c0c8,</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/>0x4d801be4,<sp/>0x90c5b15c,<sp/>0xf2e73865,<sp/>0x2fa292dd,</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/>0x36a22a17,<sp/>0xebe780af,<sp/>0x89c50996,<sp/>0x5480a32e,</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/>0x8585ddb4,<sp/>0x58c0770c,<sp/>0x3ae2fe35,<sp/>0xe7a7548d,</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/>0xfea7ec47,<sp/>0x23e246ff,<sp/>0x41c0cfc6,<sp/>0x9c85657e,</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/>0x73c1be52,<sp/>0xae8414ea,<sp/>0xcca69dd3,<sp/>0x11e3376b,</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/>0x08e38fa1,<sp/>0xd5a62519,<sp/>0xb784ac20,<sp/>0x6ac10698,</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/>0x6ce16c89,<sp/>0xb1a4c631,<sp/>0xd3864f08,<sp/>0x0ec3e5b0,</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/>0x17c35d7a,<sp/>0xca86f7c2,<sp/>0xa8a47efb,<sp/>0x75e1d443,</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/>0x9aa50f6f,<sp/>0x47e0a5d7,<sp/>0x25c22cee,<sp/>0xf8878656,</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/>0xe1873e9c,<sp/>0x3cc29424,<sp/>0x5ee01d1d,<sp/>0x83a5b7a5,</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/>0xf90696d8,<sp/>0x24433c60,<sp/>0x4661b559,<sp/>0x9b241fe1,</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/>0x8224a72b,<sp/>0x5f610d93,<sp/>0x3d4384aa,<sp/>0xe0062e12,</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/>0x0f42f53e,<sp/>0xd2075f86,<sp/>0xb025d6bf,<sp/>0x6d607c07,</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/>0x7460c4cd,<sp/>0xa9256e75,<sp/>0xcb07e74c,<sp/>0x16424df4,</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/>0x106227e5,<sp/>0xcd278d5d,<sp/>0xaf050464,<sp/>0x7240aedc,</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/>0x6b401616,<sp/>0xb605bcae,<sp/>0xd4273597,<sp/>0x09629f2f,</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/>0xe6264403,<sp/>0x3b63eebb,<sp/>0x59416782,<sp/>0x8404cd3a,</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/>0x9d0475f0,<sp/>0x4041df48,<sp/>0x22635671,<sp/>0xff26fcc9,</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/>0x2e238253,<sp/>0xf36628eb,<sp/>0x9144a1d2,<sp/>0x4c010b6a,</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/>0x5501b3a0,<sp/>0x88441918,<sp/>0xea669021,<sp/>0x37233a99,</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/>0xd867e1b5,<sp/>0x05224b0d,<sp/>0x6700c234,<sp/>0xba45688c,</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/>0xa345d046,<sp/>0x7e007afe,<sp/>0x1c22f3c7,<sp/>0xc167597f,</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/>0xc747336e,<sp/>0x1a0299d6,<sp/>0x782010ef,<sp/>0xa565ba57,</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/>0xbc65029d,<sp/>0x6120a825,<sp/>0x0302211c,<sp/>0xde478ba4,</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/>0x31035088,<sp/>0xec46fa30,<sp/>0x8e647309,<sp/>0x5321d9b1,</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/>0x4a21617b,<sp/>0x9764cbc3,<sp/>0xf54642fa,<sp/>0x2803e842</highlight></codeline>
+<codeline lineno="279"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Used<sp/>to<sp/>fetch<sp/>a<sp/>naturally-aligned<sp/>32-bit<sp/>word<sp/>in<sp/>little<sp/>endian<sp/>byte-order</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>LE_LOAD32(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref><sp/>*p)<sp/>{</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1adae574304f9d1ed3e95742167cd449a9" kindref="member">DecodeFixed32</ref>(reinterpret_cast&lt;const<sp/>char*&gt;(p));</highlight></codeline>
+<codeline lineno="284"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"></highlight></codeline>
+<codeline lineno="286" refid="namespaceleveldb_1_1crc32c_1ac42fd0618afe635356d722fd29f5ff10" refkind="member"><highlight class="normal"><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/><ref refid="namespaceleveldb_1_1crc32c_1ac42fd0618afe635356d722fd29f5ff10" kindref="member">Extend</ref>(<ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>crc,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>buf,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size)<sp/>{</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref><sp/>*p<sp/>=<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal"><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(buf);</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref><sp/>*e<sp/>=<sp/>p<sp/>+<sp/>size;</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>l<sp/>=<sp/>crc<sp/>^<sp/>0xffffffffu;</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STEP1<sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="292"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>int<sp/>c<sp/>=<sp/>(l<sp/>&amp;<sp/>0xff)<sp/>^<sp/>*p++;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="293"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>l<sp/>=<sp/>table0_[c]<sp/>^<sp/>(l<sp/>&gt;&gt;<sp/>8);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="294"><highlight class="preprocessor">}<sp/>while<sp/>(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STEP4<sp/>do<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="296"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>uint32_t<sp/>c<sp/>=<sp/>l<sp/>^<sp/>LE_LOAD32(p);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="297"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>p<sp/>+=<sp/>4;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="298"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>l<sp/>=<sp/>table3_[c<sp/>&amp;<sp/>0xff]<sp/>^<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="299"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>table2_[(c<sp/>&gt;&gt;<sp/>8)<sp/>&amp;<sp/>0xff]<sp/>^<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="300"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>table1_[(c<sp/>&gt;&gt;<sp/>16)<sp/>&amp;<sp/>0xff]<sp/>^<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="301"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>table0_[c<sp/>&gt;&gt;<sp/>24];<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="302"><highlight class="preprocessor">}<sp/>while<sp/>(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"></highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Point<sp/>x<sp/>at<sp/>first<sp/>4-byte<sp/>aligned<sp/>byte<sp/>in<sp/>string.<sp/><sp/>This<sp/>might<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>just<sp/>past<sp/>the<sp/>end<sp/>of<sp/>the<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>uintptr_t<sp/>pval<sp/>=<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal">uintptr_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(p);</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref>*<sp/>x<sp/>=<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="keyword">const<sp/></highlight><highlight class="normal"><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(((pval<sp/>+<sp/>3)<sp/>&gt;&gt;<sp/>2)<sp/>&lt;&lt;<sp/>2);</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(x<sp/>&lt;=<sp/>e)<sp/>{</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Process<sp/>bytes<sp/>until<sp/>finished<sp/>or<sp/>p<sp/>is<sp/>4-byte<sp/>aligned</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(p<sp/>!=<sp/>x)<sp/>{</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="crc32c_8cc_1aa0e8b80aa29135a83d096ec150fb9a2d" kindref="member">STEP1</ref>;</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Process<sp/>bytes<sp/>16<sp/>at<sp/>a<sp/>time</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>((e-p)<sp/>&gt;=<sp/>16)<sp/>{</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="crc32c_8cc_1a43fdcab6f1ea325d70bc60eb117f394c" kindref="member">STEP4</ref>;<sp/><ref refid="crc32c_8cc_1a43fdcab6f1ea325d70bc60eb117f394c" kindref="member">STEP4</ref>;<sp/><ref refid="crc32c_8cc_1a43fdcab6f1ea325d70bc60eb117f394c" kindref="member">STEP4</ref>;<sp/><ref refid="crc32c_8cc_1a43fdcab6f1ea325d70bc60eb117f394c" kindref="member">STEP4</ref>;</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Process<sp/>bytes<sp/>4<sp/>at<sp/>a<sp/>time</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>((e-p)<sp/>&gt;=<sp/>4)<sp/>{</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="crc32c_8cc_1a43fdcab6f1ea325d70bc60eb117f394c" kindref="member">STEP4</ref>;</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Process<sp/>the<sp/>last<sp/>few<sp/>bytes</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(p<sp/>!=<sp/>e)<sp/>{</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="crc32c_8cc_1aa0e8b80aa29135a83d096ec150fb9a2d" kindref="member">STEP1</ref>;</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>STEP4</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="327"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>STEP1</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>l<sp/>^<sp/>0xffffffffu;</highlight></codeline>
+<codeline lineno="329"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"></highlight></codeline>
+<codeline lineno="331"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>crc32c</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="332"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>leveldb</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/leveldb/util/crc32c.cc"/>
+  </compounddef>
+</doxygen>

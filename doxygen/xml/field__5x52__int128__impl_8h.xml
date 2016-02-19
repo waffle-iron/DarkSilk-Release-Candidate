@@ -1,0 +1,374 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="field__5x52__int128__impl_8h" kind="file" language="C++">
+    <compoundname>field_5x52_int128_impl.h</compoundname>
+    <includes refid="stdint_8h" local="no">stdint.h</includes>
+    <includedby refid="field__5x52__impl_8h" local="yes">/home/dev/ds-160209/src/secp256k1/src/field_5x52_impl.h</includedby>
+    <incdepgraph>
+      <node id="51876">
+        <label>/home/dev/ds-160209/src/secp256k1/src/field_5x52_int128_impl.h</label>
+        <link refid="field_5x52_int128_impl.h"/>
+        <childnode refid="51877" relation="include">
+        </childnode>
+      </node>
+      <node id="51877">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="51879">
+        <label>/home/dev/ds-160209/src/secp256k1/src/field_5x52_impl.h</label>
+        <link refid="field__5x52__impl_8h"/>
+      </node>
+      <node id="51878">
+        <label>/home/dev/ds-160209/src/secp256k1/src/field_5x52_int128_impl.h</label>
+        <link refid="field_5x52_int128_impl.h"/>
+        <childnode refid="51879" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" prot="public" static="no">
+        <name>VERIFY_BITS</name>
+        <param><defname>x</defname></param>
+        <param><defname>n</defname></param>
+        <initializer>do { } while(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/field_5x52_int128_impl.h" line="15" column="10" bodyfile="/home/dev/ds-160209/src/secp256k1/src/field_5x52_int128_impl.h" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="field__5x52__int128__impl_8h_1a49ac62083c71877ecdb707bdcd565ad1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="secp256k1_8h_1a7ddc487fd46aee88f21cabedb7268b1e" kindref="member">SECP256K1_INLINE</ref> void</type>
+        <definition>static SECP256K1_INLINE void secp256k1_fe_mul_inner</definition>
+        <argsstring>(uint64_t *r, const uint64_t *a, const uint64_t *SECP256K1_RESTRICT b)</argsstring>
+        <name>secp256k1_fe_mul_inner</name>
+        <param>
+          <type><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref> *</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>const <ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref> *</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref> *<ref refid="secp256k1_2src_2util_8h_1ad3e284f8cb00286e85a753265f6b17b8" kindref="member">SECP256K1_RESTRICT</ref></type>
+          <declname>b</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/field_5x52_int128_impl.h" line="18" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/field_5x52_int128_impl.h" bodystart="18" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="field__5x52__int128__impl_8h_1acf55327413c522c0b3793dfda7d84be1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="secp256k1_8h_1a7ddc487fd46aee88f21cabedb7268b1e" kindref="member">SECP256K1_INLINE</ref> void</type>
+        <definition>static SECP256K1_INLINE void secp256k1_fe_sqr_inner</definition>
+        <argsstring>(uint64_t *r, const uint64_t *a)</argsstring>
+        <name>secp256k1_fe_sqr_inner</name>
+        <param>
+          <type><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref> *</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>const <ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref> *</type>
+          <declname>a</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>[... a b c] is a shorthand for ... + a&lt;&lt;104 + b&lt;&lt;52 + c&lt;&lt;0 mod n. px is a shorthand for sum(a[i]*a[x-i], i=0..x). Note that [x 0 0 0 0 0] = [x*R].</para>        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/field_5x52_int128_impl.h" line="155" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/field_5x52_int128_impl.h" bodystart="155" bodyend="275"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**********************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2013,<sp/>2014<sp/>Pieter<sp/>Wuille<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Distributed<sp/>under<sp/>the<sp/>MIT<sp/>software<sp/>license,<sp/>see<sp/>the<sp/>accompanying<sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>file<sp/>COPYING<sp/>or<sp/>http://www.opensource.org/licenses/mit-license.php.*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>**********************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>_SECP256K1_FIELD_INNER5X52_IMPL_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_SECP256K1_FIELD_INNER5X52_IMPL_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="stdint_8h" kindref="compound">stdint.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>VERIFY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VERIFY_BITS(x,<sp/>n)<sp/>VERIFY_CHECK(((x)<sp/>&gt;&gt;<sp/>(n))<sp/>==<sp/>0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>VERIFY_BITS(x,<sp/>n)<sp/>do<sp/>{<sp/>}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><ref refid="secp256k1_8h_1a7ddc487fd46aee88f21cabedb7268b1e" kindref="member">SECP256K1_INLINE</ref><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>secp256k1_fe_mul_inner(<ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>*r,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>*a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>*<sp/><ref refid="secp256k1_2src_2util_8h_1ad3e284f8cb00286e85a753265f6b17b8" kindref="member">SECP256K1_RESTRICT</ref><sp/>b)<sp/>{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>uint128_t<sp/>c,<sp/>d;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>t3,<sp/>t4,<sp/>tx,<sp/>u0;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>a0<sp/>=<sp/>a[0],<sp/>a1<sp/>=<sp/>a[1],<sp/>a2<sp/>=<sp/>a[2],<sp/>a3<sp/>=<sp/>a[3],<sp/>a4<sp/>=<sp/>a[4];</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>M<sp/>=<sp/>0xFFFFFFFFFFFFFULL,<sp/><ref refid="scrypt_8cpp_1a8011d6dab73e8808981c948e35610884" kindref="member">R</ref><sp/>=<sp/>0x1000003D10ULL;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(a[0],<sp/>56);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(a[1],<sp/>56);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(a[2],<sp/>56);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(a[3],<sp/>56);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(a[4],<sp/>52);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(b[0],<sp/>56);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(b[1],<sp/>56);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(b[2],<sp/>56);</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(b[3],<sp/>56);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(b[4],<sp/>52);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>(r<sp/>!=<sp/>b);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/><sp/>[...<sp/>a<sp/>b<sp/>c]<sp/>is<sp/>a<sp/>shorthand<sp/>for<sp/>...<sp/>+<sp/>a&lt;&lt;104<sp/>+<sp/>b&lt;&lt;52<sp/>+<sp/>c&lt;&lt;0<sp/>mod<sp/>n.</highlight></codeline>
+<codeline lineno="37"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/>px<sp/>is<sp/>a<sp/>shorthand<sp/>for<sp/>sum(a[i]*b[x-i],<sp/>i=0..x).</highlight></codeline>
+<codeline lineno="38"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/><sp/>Note<sp/>that<sp/>[x<sp/>0<sp/>0<sp/>0<sp/>0<sp/>0]<sp/>=<sp/>[x*R].</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>d<sp/><sp/>=<sp/>(uint128_t)a0<sp/>*<sp/>b[3]</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>(uint128_t)a1<sp/>*<sp/>b[2]</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>(uint128_t)a2<sp/>*<sp/>b[1]</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>(uint128_t)a3<sp/>*<sp/>b[0];</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(d,<sp/>114);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>0<sp/>0<sp/>0]<sp/>=<sp/>[p3<sp/>0<sp/>0<sp/>0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>c<sp/><sp/>=<sp/>(uint128_t)a4<sp/>*<sp/>b[4];</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(c,<sp/>112);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[c<sp/>0<sp/>0<sp/>0<sp/>0<sp/>d<sp/>0<sp/>0<sp/>0]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>0<sp/>0<sp/>p3<sp/>0<sp/>0<sp/>0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>d<sp/>+=<sp/>(c<sp/>&amp;<sp/>M)<sp/>*<sp/>R;<sp/>c<sp/>&gt;&gt;=<sp/>52;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(d,<sp/>115);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(c,<sp/>60);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[c<sp/>0<sp/>0<sp/>0<sp/>0<sp/>0<sp/>d<sp/>0<sp/>0<sp/>0]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>0<sp/>0<sp/>p3<sp/>0<sp/>0<sp/>0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>t3<sp/>=<sp/>d<sp/>&amp;<sp/>M;<sp/>d<sp/>&gt;&gt;=<sp/>52;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(t3,<sp/>52);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(d,<sp/>63);</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[c<sp/>0<sp/>0<sp/>0<sp/>0<sp/>d<sp/>t3<sp/>0<sp/>0<sp/>0]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>0<sp/>0<sp/>p3<sp/>0<sp/>0<sp/>0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>d<sp/>+=<sp/>(uint128_t)a0<sp/>*<sp/>b[4]</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>(uint128_t)a1<sp/>*<sp/>b[3]</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>(uint128_t)a2<sp/>*<sp/>b[2]</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>(uint128_t)a3<sp/>*<sp/>b[1]</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>(uint128_t)a4<sp/>*<sp/>b[0];</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(d,<sp/>115);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[c<sp/>0<sp/>0<sp/>0<sp/>0<sp/>d<sp/>t3<sp/>0<sp/>0<sp/>0]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>0<sp/>p4<sp/>p3<sp/>0<sp/>0<sp/>0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>d<sp/>+=<sp/>c<sp/>*<sp/><ref refid="scrypt_8cpp_1a8011d6dab73e8808981c948e35610884" kindref="member">R</ref>;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(d,<sp/>116);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>t3<sp/>0<sp/>0<sp/>0]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>0<sp/>p4<sp/>p3<sp/>0<sp/>0<sp/>0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>t4<sp/>=<sp/>d<sp/>&amp;<sp/>M;<sp/>d<sp/>&gt;&gt;=<sp/>52;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(t4,<sp/>52);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(d,<sp/>64);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>t4<sp/>t3<sp/>0<sp/>0<sp/>0]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>0<sp/>p4<sp/>p3<sp/>0<sp/>0<sp/>0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>tx<sp/>=<sp/>(t4<sp/>&gt;&gt;<sp/>48);<sp/>t4<sp/>&amp;=<sp/>(M<sp/>&gt;&gt;<sp/>4);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(tx,<sp/>4);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(t4,<sp/>48);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>t4+(tx&lt;&lt;48)<sp/>t3<sp/>0<sp/>0<sp/>0]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>0<sp/>p4<sp/>p3<sp/>0<sp/>0<sp/>0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>c<sp/><sp/>=<sp/>(uint128_t)a0<sp/>*<sp/>b[0];</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(c,<sp/>112);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>t4+(tx&lt;&lt;48)<sp/>t3<sp/>0<sp/>0<sp/>c]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>0<sp/>p4<sp/>p3<sp/>0<sp/>0<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>d<sp/>+=<sp/>(uint128_t)a1<sp/>*<sp/>b[4]</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>(uint128_t)a2<sp/>*<sp/>b[3]</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>(uint128_t)a3<sp/>*<sp/>b[2]</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>(uint128_t)a4<sp/>*<sp/>b[1];</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(d,<sp/>115);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>t4+(tx&lt;&lt;48)<sp/>t3<sp/>0<sp/>0<sp/>c]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>p5<sp/>p4<sp/>p3<sp/>0<sp/>0<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>u0<sp/>=<sp/>d<sp/>&amp;<sp/>M;<sp/>d<sp/>&gt;&gt;=<sp/>52;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(u0,<sp/>52);</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(d,<sp/>63);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>u0<sp/>t4+(tx&lt;&lt;48)<sp/>t3<sp/>0<sp/>0<sp/>c]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>p5<sp/>p4<sp/>p3<sp/>0<sp/>0<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>0<sp/>t4+(tx&lt;&lt;48)+(u0&lt;&lt;52)<sp/>t3<sp/>0<sp/>0<sp/>c]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>p5<sp/>p4<sp/>p3<sp/>0<sp/>0<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/>u0<sp/>=<sp/>(u0<sp/>&lt;&lt;<sp/>4)<sp/>|<sp/>tx;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(u0,<sp/>56);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>0<sp/>t4+(u0&lt;&lt;48)<sp/>t3<sp/>0<sp/>0<sp/>c]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>p5<sp/>p4<sp/>p3<sp/>0<sp/>0<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>c<sp/>+=<sp/>(uint128_t)u0<sp/>*<sp/>(R<sp/>&gt;&gt;<sp/>4);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(c,<sp/>115);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>0<sp/>t4<sp/>t3<sp/>0<sp/>0<sp/>c]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>p5<sp/>p4<sp/>p3<sp/>0<sp/>0<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>r[0]<sp/>=<sp/>c<sp/>&amp;<sp/>M;<sp/>c<sp/>&gt;&gt;=<sp/>52;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(r[0],<sp/>52);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(c,<sp/>61);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>0<sp/>t4<sp/>t3<sp/>0<sp/>c<sp/>r0]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>p5<sp/>p4<sp/>p3<sp/>0<sp/>0<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>c<sp/>+=<sp/>(uint128_t)a0<sp/>*<sp/>b[1]</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>(uint128_t)a1<sp/>*<sp/>b[0];</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(c,<sp/>114);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>0<sp/>t4<sp/>t3<sp/>0<sp/>c<sp/>r0]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>p5<sp/>p4<sp/>p3<sp/>0<sp/>p1<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>d<sp/>+=<sp/>(uint128_t)a2<sp/>*<sp/>b[4]</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>(uint128_t)a3<sp/>*<sp/>b[3]</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>(uint128_t)a4<sp/>*<sp/>b[2];</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(d,<sp/>114);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>0<sp/>t4<sp/>t3<sp/>0<sp/>c<sp/>r0]<sp/>=<sp/>[p8<sp/>0<sp/>p6<sp/>p5<sp/>p4<sp/>p3<sp/>0<sp/>p1<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>c<sp/>+=<sp/>(d<sp/>&amp;<sp/>M)<sp/>*<sp/>R;<sp/>d<sp/>&gt;&gt;=<sp/>52;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(c,<sp/>115);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(d,<sp/>62);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>0<sp/>0<sp/>t4<sp/>t3<sp/>0<sp/>c<sp/>r0]<sp/>=<sp/>[p8<sp/>0<sp/>p6<sp/>p5<sp/>p4<sp/>p3<sp/>0<sp/>p1<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>r[1]<sp/>=<sp/>c<sp/>&amp;<sp/>M;<sp/>c<sp/>&gt;&gt;=<sp/>52;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(r[1],<sp/>52);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(c,<sp/>63);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>0<sp/>0<sp/>t4<sp/>t3<sp/>c<sp/>r1<sp/>r0]<sp/>=<sp/>[p8<sp/>0<sp/>p6<sp/>p5<sp/>p4<sp/>p3<sp/>0<sp/>p1<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>c<sp/>+=<sp/>(uint128_t)a0<sp/>*<sp/>b[2]</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>(uint128_t)a1<sp/>*<sp/>b[1]</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>(uint128_t)a2<sp/>*<sp/>b[0];</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(c,<sp/>114);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>0<sp/>0<sp/>t4<sp/>t3<sp/>c<sp/>r1<sp/>r0]<sp/>=<sp/>[p8<sp/>0<sp/>p6<sp/>p5<sp/>p4<sp/>p3<sp/>p2<sp/>p1<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>d<sp/>+=<sp/>(uint128_t)a3<sp/>*<sp/>b[4]</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>(uint128_t)a4<sp/>*<sp/>b[3];</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(d,<sp/>114);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>0<sp/>0<sp/>t4<sp/>t3<sp/>c<sp/>t1<sp/>r0]<sp/>=<sp/>[p8<sp/>p7<sp/>p6<sp/>p5<sp/>p4<sp/>p3<sp/>p2<sp/>p1<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>c<sp/>+=<sp/>(d<sp/>&amp;<sp/>M)<sp/>*<sp/>R;<sp/>d<sp/>&gt;&gt;=<sp/>52;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(c,<sp/>115);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(d,<sp/>62);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>0<sp/>0<sp/>0<sp/>t4<sp/>t3<sp/>c<sp/>r1<sp/>r0]<sp/>=<sp/>[p8<sp/>p7<sp/>p6<sp/>p5<sp/>p4<sp/>p3<sp/>p2<sp/>p1<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>0<sp/>0<sp/>0<sp/>t4<sp/>t3<sp/>c<sp/>r1<sp/>r0]<sp/>=<sp/>[p8<sp/>p7<sp/>p6<sp/>p5<sp/>p4<sp/>p3<sp/>p2<sp/>p1<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>r[2]<sp/>=<sp/>c<sp/>&amp;<sp/>M;<sp/>c<sp/>&gt;&gt;=<sp/>52;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(r[2],<sp/>52);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(c,<sp/>63);</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>0<sp/>0<sp/>0<sp/>t4<sp/>t3+c<sp/>r2<sp/>r1<sp/>r0]<sp/>=<sp/>[p8<sp/>p7<sp/>p6<sp/>p5<sp/>p4<sp/>p3<sp/>p2<sp/>p1<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>c<sp/><sp/><sp/>+=<sp/>d<sp/>*<sp/>R<sp/>+<sp/>t3;;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(c,<sp/>100);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[t4<sp/>c<sp/>r2<sp/>r1<sp/>r0]<sp/>=<sp/>[p8<sp/>p7<sp/>p6<sp/>p5<sp/>p4<sp/>p3<sp/>p2<sp/>p1<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/>r[3]<sp/>=<sp/>c<sp/>&amp;<sp/>M;<sp/>c<sp/>&gt;&gt;=<sp/>52;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(r[3],<sp/>52);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(c,<sp/>48);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[t4+c<sp/>r3<sp/>r2<sp/>r1<sp/>r0]<sp/>=<sp/>[p8<sp/>p7<sp/>p6<sp/>p5<sp/>p4<sp/>p3<sp/>p2<sp/>p1<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>c<sp/><sp/><sp/>+=<sp/>t4;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(c,<sp/>49);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[c<sp/>r3<sp/>r2<sp/>r1<sp/>r0]<sp/>=<sp/>[p8<sp/>p7<sp/>p6<sp/>p5<sp/>p4<sp/>p3<sp/>p2<sp/>p1<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>r[4]<sp/>=<sp/>c;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(r[4],<sp/>49);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[r4<sp/>r3<sp/>r2<sp/>r1<sp/>r0]<sp/>=<sp/>[p8<sp/>p7<sp/>p6<sp/>p5<sp/>p4<sp/>p3<sp/>p2<sp/>p1<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><ref refid="secp256k1_8h_1a7ddc487fd46aee88f21cabedb7268b1e" kindref="member">SECP256K1_INLINE</ref><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>secp256k1_fe_sqr_inner(<ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>*r,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>*a)<sp/>{</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>uint128_t<sp/>c,<sp/>d;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>a0<sp/>=<sp/>a[0],<sp/>a1<sp/>=<sp/>a[1],<sp/>a2<sp/>=<sp/>a[2],<sp/>a3<sp/>=<sp/>a[3],<sp/>a4<sp/>=<sp/>a[4];</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref><sp/>t3,<sp/>t4,<sp/>tx,<sp/>u0;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>M<sp/>=<sp/>0xFFFFFFFFFFFFFULL,<sp/><ref refid="scrypt_8cpp_1a8011d6dab73e8808981c948e35610884" kindref="member">R</ref><sp/>=<sp/>0x1000003D10ULL;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(a[0],<sp/>56);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(a[1],<sp/>56);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(a[2],<sp/>56);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(a[3],<sp/>56);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(a[4],<sp/>52);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>d<sp/><sp/>=<sp/>(uint128_t)(a0*2)<sp/>*<sp/>a3</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>(uint128_t)(a1*2)<sp/>*<sp/>a2;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(d,<sp/>114);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>0<sp/>0<sp/>0]<sp/>=<sp/>[p3<sp/>0<sp/>0<sp/>0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>c<sp/><sp/>=<sp/>(uint128_t)a4<sp/>*<sp/>a4;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(c,<sp/>112);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[c<sp/>0<sp/>0<sp/>0<sp/>0<sp/>d<sp/>0<sp/>0<sp/>0]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>0<sp/>0<sp/>p3<sp/>0<sp/>0<sp/>0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>d<sp/>+=<sp/>(c<sp/>&amp;<sp/>M)<sp/>*<sp/>R;<sp/>c<sp/>&gt;&gt;=<sp/>52;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(d,<sp/>115);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(c,<sp/>60);</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[c<sp/>0<sp/>0<sp/>0<sp/>0<sp/>0<sp/>d<sp/>0<sp/>0<sp/>0]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>0<sp/>0<sp/>p3<sp/>0<sp/>0<sp/>0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>t3<sp/>=<sp/>d<sp/>&amp;<sp/>M;<sp/>d<sp/>&gt;&gt;=<sp/>52;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(t3,<sp/>52);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(d,<sp/>63);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[c<sp/>0<sp/>0<sp/>0<sp/>0<sp/>d<sp/>t3<sp/>0<sp/>0<sp/>0]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>0<sp/>0<sp/>p3<sp/>0<sp/>0<sp/>0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>a4<sp/>*=<sp/>2;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/>d<sp/>+=<sp/>(uint128_t)a0<sp/>*<sp/>a4</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>(uint128_t)(a1*2)<sp/>*<sp/>a3</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>(uint128_t)a2<sp/>*<sp/>a2;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(d,<sp/>115);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[c<sp/>0<sp/>0<sp/>0<sp/>0<sp/>d<sp/>t3<sp/>0<sp/>0<sp/>0]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>0<sp/>p4<sp/>p3<sp/>0<sp/>0<sp/>0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>d<sp/>+=<sp/>c<sp/>*<sp/><ref refid="scrypt_8cpp_1a8011d6dab73e8808981c948e35610884" kindref="member">R</ref>;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(d,<sp/>116);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>t3<sp/>0<sp/>0<sp/>0]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>0<sp/>p4<sp/>p3<sp/>0<sp/>0<sp/>0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>t4<sp/>=<sp/>d<sp/>&amp;<sp/>M;<sp/>d<sp/>&gt;&gt;=<sp/>52;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(t4,<sp/>52);</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(d,<sp/>64);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>t4<sp/>t3<sp/>0<sp/>0<sp/>0]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>0<sp/>p4<sp/>p3<sp/>0<sp/>0<sp/>0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>tx<sp/>=<sp/>(t4<sp/>&gt;&gt;<sp/>48);<sp/>t4<sp/>&amp;=<sp/>(M<sp/>&gt;&gt;<sp/>4);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(tx,<sp/>4);</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(t4,<sp/>48);</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>t4+(tx&lt;&lt;48)<sp/>t3<sp/>0<sp/>0<sp/>0]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>0<sp/>p4<sp/>p3<sp/>0<sp/>0<sp/>0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>c<sp/><sp/>=<sp/>(uint128_t)a0<sp/>*<sp/>a0;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(c,<sp/>112);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>t4+(tx&lt;&lt;48)<sp/>t3<sp/>0<sp/>0<sp/>c]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>0<sp/>p4<sp/>p3<sp/>0<sp/>0<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>d<sp/>+=<sp/>(uint128_t)a1<sp/>*<sp/>a4</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>(uint128_t)(a2*2)<sp/>*<sp/>a3;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(d,<sp/>114);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>t4+(tx&lt;&lt;48)<sp/>t3<sp/>0<sp/>0<sp/>c]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>p5<sp/>p4<sp/>p3<sp/>0<sp/>0<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>u0<sp/>=<sp/>d<sp/>&amp;<sp/>M;<sp/>d<sp/>&gt;&gt;=<sp/>52;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(u0,<sp/>52);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(d,<sp/>62);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>u0<sp/>t4+(tx&lt;&lt;48)<sp/>t3<sp/>0<sp/>0<sp/>c]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>p5<sp/>p4<sp/>p3<sp/>0<sp/>0<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>0<sp/>t4+(tx&lt;&lt;48)+(u0&lt;&lt;52)<sp/>t3<sp/>0<sp/>0<sp/>c]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>p5<sp/>p4<sp/>p3<sp/>0<sp/>0<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>u0<sp/>=<sp/>(u0<sp/>&lt;&lt;<sp/>4)<sp/>|<sp/>tx;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(u0,<sp/>56);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>0<sp/>t4+(u0&lt;&lt;48)<sp/>t3<sp/>0<sp/>0<sp/>c]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>p5<sp/>p4<sp/>p3<sp/>0<sp/>0<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>c<sp/>+=<sp/>(uint128_t)u0<sp/>*<sp/>(R<sp/>&gt;&gt;<sp/>4);</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(c,<sp/>113);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>0<sp/>t4<sp/>t3<sp/>0<sp/>0<sp/>c]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>p5<sp/>p4<sp/>p3<sp/>0<sp/>0<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/>r[0]<sp/>=<sp/>c<sp/>&amp;<sp/>M;<sp/>c<sp/>&gt;&gt;=<sp/>52;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(r[0],<sp/>52);</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(c,<sp/>61);</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>0<sp/>t4<sp/>t3<sp/>0<sp/>c<sp/>r0]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>p5<sp/>p4<sp/>p3<sp/>0<sp/>0<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>a0<sp/>*=<sp/>2;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/>c<sp/>+=<sp/>(uint128_t)a0<sp/>*<sp/>a1;</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(c,<sp/>114);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>0<sp/>t4<sp/>t3<sp/>0<sp/>c<sp/>r0]<sp/>=<sp/>[p8<sp/>0<sp/>0<sp/>p5<sp/>p4<sp/>p3<sp/>0<sp/>p1<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/>d<sp/>+=<sp/>(uint128_t)a2<sp/>*<sp/>a4</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>(uint128_t)a3<sp/>*<sp/>a3;</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(d,<sp/>114);</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>0<sp/>t4<sp/>t3<sp/>0<sp/>c<sp/>r0]<sp/>=<sp/>[p8<sp/>0<sp/>p6<sp/>p5<sp/>p4<sp/>p3<sp/>0<sp/>p1<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/>c<sp/>+=<sp/>(d<sp/>&amp;<sp/>M)<sp/>*<sp/>R;<sp/>d<sp/>&gt;&gt;=<sp/>52;</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(c,<sp/>115);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(d,<sp/>62);</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>0<sp/>0<sp/>t4<sp/>t3<sp/>0<sp/>c<sp/>r0]<sp/>=<sp/>[p8<sp/>0<sp/>p6<sp/>p5<sp/>p4<sp/>p3<sp/>0<sp/>p1<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/>r[1]<sp/>=<sp/>c<sp/>&amp;<sp/>M;<sp/>c<sp/>&gt;&gt;=<sp/>52;</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(r[1],<sp/>52);</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(c,<sp/>63);</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>0<sp/>0<sp/>t4<sp/>t3<sp/>c<sp/>r1<sp/>r0]<sp/>=<sp/>[p8<sp/>0<sp/>p6<sp/>p5<sp/>p4<sp/>p3<sp/>0<sp/>p1<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/>c<sp/>+=<sp/>(uint128_t)a0<sp/>*<sp/>a2</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/>+<sp/>(uint128_t)a1<sp/>*<sp/>a1;</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(c,<sp/>114);</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>0<sp/>0<sp/>t4<sp/>t3<sp/>c<sp/>r1<sp/>r0]<sp/>=<sp/>[p8<sp/>0<sp/>p6<sp/>p5<sp/>p4<sp/>p3<sp/>p2<sp/>p1<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/>d<sp/>+=<sp/>(uint128_t)a3<sp/>*<sp/>a4;</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(d,<sp/>114);</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>0<sp/>0<sp/>t4<sp/>t3<sp/>c<sp/>r1<sp/>r0]<sp/>=<sp/>[p8<sp/>p7<sp/>p6<sp/>p5<sp/>p4<sp/>p3<sp/>p2<sp/>p1<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/>c<sp/>+=<sp/>(d<sp/>&amp;<sp/>M)<sp/>*<sp/>R;<sp/>d<sp/>&gt;&gt;=<sp/>52;</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(c,<sp/>115);</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(d,<sp/>62);</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>0<sp/>0<sp/>0<sp/>t4<sp/>t3<sp/>c<sp/>r1<sp/>r0]<sp/>=<sp/>[p8<sp/>p7<sp/>p6<sp/>p5<sp/>p4<sp/>p3<sp/>p2<sp/>p1<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/>r[2]<sp/>=<sp/>c<sp/>&amp;<sp/>M;<sp/>c<sp/>&gt;&gt;=<sp/>52;</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(r[2],<sp/>52);</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(c,<sp/>63);</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[d<sp/>0<sp/>0<sp/>0<sp/>t4<sp/>t3+c<sp/>r2<sp/>r1<sp/>r0]<sp/>=<sp/>[p8<sp/>p7<sp/>p6<sp/>p5<sp/>p4<sp/>p3<sp/>p2<sp/>p1<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/>c<sp/><sp/><sp/>+=<sp/>d<sp/>*<sp/>R<sp/>+<sp/>t3;;</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(c,<sp/>100);</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[t4<sp/>c<sp/>r2<sp/>r1<sp/>r0]<sp/>=<sp/>[p8<sp/>p7<sp/>p6<sp/>p5<sp/>p4<sp/>p3<sp/>p2<sp/>p1<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/>r[3]<sp/>=<sp/>c<sp/>&amp;<sp/>M;<sp/>c<sp/>&gt;&gt;=<sp/>52;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(r[3],<sp/>52);</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(c,<sp/>48);</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[t4+c<sp/>r3<sp/>r2<sp/>r1<sp/>r0]<sp/>=<sp/>[p8<sp/>p7<sp/>p6<sp/>p5<sp/>p4<sp/>p3<sp/>p2<sp/>p1<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/>c<sp/><sp/><sp/>+=<sp/>t4;</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(c,<sp/>49);</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[c<sp/>r3<sp/>r2<sp/>r1<sp/>r0]<sp/>=<sp/>[p8<sp/>p7<sp/>p6<sp/>p5<sp/>p4<sp/>p3<sp/>p2<sp/>p1<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/>r[4]<sp/>=<sp/>c;</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="field__5x52__int128__impl_8h_1a914e09387f8e1b9775deec092d463632" kindref="member">VERIFY_BITS</ref>(r[4],<sp/>49);</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>[r4<sp/>r3<sp/>r2<sp/>r1<sp/>r0]<sp/>=<sp/>[p8<sp/>p7<sp/>p6<sp/>p5<sp/>p4<sp/>p3<sp/>p2<sp/>p1<sp/>p0]<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/secp256k1/src/field_5x52_int128_impl.h"/>
+  </compounddef>
+</doxygen>

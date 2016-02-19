@@ -1,0 +1,54 @@
+.TH "org.bitcoin.NativeSecp256k1" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+org.bitcoin.NativeSecp256k1 \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static boolean \fBverify\fP (byte[] data, byte[] signature, byte[] pub)"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static final boolean \fBenabled\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class holds native methods to handle ECDSA verification\&. You can find an example library that can be used for this at https://github.com/sipa/secp256k1 
+.PP
+Definition at line 14 of file NativeSecp256k1\&.java\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "static boolean org\&.bitcoin\&.NativeSecp256k1\&.verify (byte[] data, byte[] signature, byte[] pub)\fC [inline]\fP, \fC [static]\fP"
+Verifies the given secp256k1 signature in native code\&. Calling when enabled == false is undefined (probably library not loaded)
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdata\fP The data which was signed, must be exactly 32 bytes 
+.br
+\fIsignature\fP The signature 
+.br
+\fIpub\fP The public key which did the signing 
+.RE
+.PP
+
+.PP
+Definition at line 35 of file NativeSecp256k1\&.java\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "final boolean org\&.bitcoin\&.NativeSecp256k1\&.enabled\fC [static]\fP"
+
+.PP
+Definition at line 15 of file NativeSecp256k1\&.java\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

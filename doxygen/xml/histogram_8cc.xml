@@ -1,0 +1,195 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="histogram_8cc" kind="file" language="C++">
+    <compoundname>histogram.cc</compoundname>
+    <includes local="no">math.h</includes>
+    <includes local="no">stdio.h</includes>
+    <includes refid="port_8h" local="yes">port/port.h</includes>
+    <includes refid="histogram_8h" local="yes">util/histogram.h</includes>
+    <incdepgraph>
+      <node id="39845">
+        <label>string</label>
+      </node>
+      <node id="39843">
+        <label>string.h</label>
+      </node>
+      <node id="39839">
+        <label>/home/dev/ds-160209/src/leveldb/util/histogram.cc</label>
+        <link refid="histogram.cc"/>
+        <childnode refid="39840" relation="include">
+        </childnode>
+        <childnode refid="39841" relation="include">
+        </childnode>
+        <childnode refid="39842" relation="include">
+        </childnode>
+        <childnode refid="39844" relation="include">
+        </childnode>
+      </node>
+      <node id="39842">
+        <label>port/port.h</label>
+        <link refid="port_8h"/>
+        <childnode refid="39843" relation="include">
+        </childnode>
+      </node>
+      <node id="39840">
+        <label>math.h</label>
+      </node>
+      <node id="39841">
+        <label>stdio.h</label>
+      </node>
+      <node id="39844">
+        <label>util/histogram.h</label>
+        <link refid="histogram_8h"/>
+        <childnode refid="39845" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceleveldb">leveldb</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2011-2016<sp/>The<sp/>LevelDB<sp/>Authors.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>of<sp/>this<sp/>source<sp/>code<sp/>is<sp/>governed<sp/>by<sp/>a<sp/>BSD-style<sp/>license<sp/>that<sp/>can<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>found<sp/>in<sp/>the<sp/>LICENSE<sp/>file.<sp/>See<sp/>the<sp/>AUTHORS<sp/>file<sp/>for<sp/>names<sp/>of<sp/>contributors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;math.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="port_8h" kindref="compound">port/port.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="histogram_8h" kindref="compound">util/histogram.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceleveldb" kindref="compound">leveldb</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Histogram::kBucketLimit[kNumBuckets]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/>1,<sp/>2,<sp/>3,<sp/>4,<sp/>5,<sp/>6,<sp/>7,<sp/>8,<sp/>9,<sp/>10,<sp/>12,<sp/>14,<sp/>16,<sp/>18,<sp/>20,<sp/>25,<sp/>30,<sp/>35,<sp/>40,<sp/>45,</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/>50,<sp/>60,<sp/>70,<sp/>80,<sp/>90,<sp/>100,<sp/>120,<sp/>140,<sp/>160,<sp/>180,<sp/>200,<sp/>250,<sp/>300,<sp/>350,<sp/>400,<sp/>450,</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/>500,<sp/>600,<sp/>700,<sp/>800,<sp/>900,<sp/>1000,<sp/>1200,<sp/>1400,<sp/>1600,<sp/>1800,<sp/>2000,<sp/>2500,<sp/>3000,</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/>3500,<sp/>4000,<sp/>4500,<sp/>5000,<sp/>6000,<sp/>7000,<sp/>8000,<sp/>9000,<sp/>10000,<sp/>12000,<sp/>14000,</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/>16000,<sp/>18000,<sp/>20000,<sp/>25000,<sp/>30000,<sp/>35000,<sp/>40000,<sp/>45000,<sp/>50000,<sp/>60000,</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/>70000,<sp/>80000,<sp/>90000,<sp/>100000,<sp/>120000,<sp/>140000,<sp/>160000,<sp/>180000,<sp/>200000,</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/>250000,<sp/>300000,<sp/>350000,<sp/>400000,<sp/>450000,<sp/>500000,<sp/>600000,<sp/>700000,<sp/>800000,</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/>900000,<sp/>1000000,<sp/>1200000,<sp/>1400000,<sp/>1600000,<sp/>1800000,<sp/>2000000,<sp/>2500000,</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/>3000000,<sp/>3500000,<sp/>4000000,<sp/>4500000,<sp/>5000000,<sp/>6000000,<sp/>7000000,<sp/>8000000,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/>9000000,<sp/>10000000,<sp/>12000000,<sp/>14000000,<sp/>16000000,<sp/>18000000,<sp/>20000000,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/>25000000,<sp/>30000000,<sp/>35000000,<sp/>40000000,<sp/>45000000,<sp/>50000000,<sp/>60000000,</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/>70000000,<sp/>80000000,<sp/>90000000,<sp/>100000000,<sp/>120000000,<sp/>140000000,<sp/>160000000,</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/>180000000,<sp/>200000000,<sp/>250000000,<sp/>300000000,<sp/>350000000,<sp/>400000000,</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/>450000000,<sp/>500000000,<sp/>600000000,<sp/>700000000,<sp/>800000000,<sp/>900000000,</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/>1000000000,<sp/>1200000000,<sp/>1400000000,<sp/>1600000000,<sp/>1800000000,<sp/>2000000000,</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/>2500000000.0,<sp/>3000000000.0,<sp/>3500000000.0,<sp/>4000000000.0,<sp/>4500000000.0,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/>5000000000.0,<sp/>6000000000.0,<sp/>7000000000.0,<sp/>8000000000.0,<sp/>9000000000.0,</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/>1e200,</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classleveldb_1_1_histogram_1ab30a7e767693010656d90bfd361ecb91" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_histogram_1ab30a7e767693010656d90bfd361ecb91" kindref="member">Histogram::Clear</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/>min_<sp/>=<sp/>kBucketLimit[kNumBuckets-1];</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/>max_<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/>num_<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/>sum_<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/>sum_squares_<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>kNumBuckets;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>buckets_[i]<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="classleveldb_1_1_histogram_1a7dd7147b7f6548f0bebde25ca40e4457" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_histogram_1a7dd7147b7f6548f0bebde25ca40e4457" kindref="member">Histogram::Add</ref>(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/><ref refid="version__set_8cc_1a38c8b88c432e666ad10b0c5573e1160a" kindref="member">value</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Linear<sp/>search<sp/>is<sp/>fast<sp/>enough<sp/>for<sp/>our<sp/>usage<sp/>in<sp/>db_bench</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>b<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(b<sp/>&lt;<sp/>kNumBuckets<sp/>-<sp/>1<sp/>&amp;&amp;<sp/>kBucketLimit[b]<sp/>&lt;=<sp/>value)<sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/>b++;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/>buckets_[b]<sp/>+=<sp/>1.0;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(min_<sp/>&gt;<sp/>value)<sp/>min_<sp/>=<sp/><ref refid="version__set_8cc_1a38c8b88c432e666ad10b0c5573e1160a" kindref="member">value</ref>;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(max_<sp/>&lt;<sp/>value)<sp/>max_<sp/>=<sp/><ref refid="version__set_8cc_1a38c8b88c432e666ad10b0c5573e1160a" kindref="member">value</ref>;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/>num_++;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/>sum_<sp/>+=<sp/><ref refid="version__set_8cc_1a38c8b88c432e666ad10b0c5573e1160a" kindref="member">value</ref>;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/>sum_squares_<sp/>+=<sp/>(value<sp/>*<sp/><ref refid="version__set_8cc_1a38c8b88c432e666ad10b0c5573e1160a" kindref="member">value</ref>);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="classleveldb_1_1_histogram_1a22befd197208f0142b236917bcadf196" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_histogram_1a22befd197208f0142b236917bcadf196" kindref="member">Histogram::Merge</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_histogram" kindref="compound">Histogram</ref>&amp;<sp/>other)<sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(other.min_<sp/>&lt;<sp/>min_)<sp/>min_<sp/>=<sp/>other.min_;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(other.max_<sp/>&gt;<sp/>max_)<sp/>max_<sp/>=<sp/>other.max_;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/>num_<sp/>+=<sp/>other.num_;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/>sum_<sp/>+=<sp/>other.sum_;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/>sum_squares_<sp/>+=<sp/>other.sum_squares_;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>b<sp/>=<sp/>0;<sp/>b<sp/>&lt;<sp/>kNumBuckets;<sp/>b++)<sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>buckets_[b]<sp/>+=<sp/>other.buckets_[b];</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Histogram::Median()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Percentile(50.0);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Histogram::Percentile(</highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>p)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>threshold<sp/>=<sp/>num_<sp/>*<sp/>(p<sp/>/<sp/>100.0);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>sum<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>b<sp/>=<sp/>0;<sp/>b<sp/>&lt;<sp/>kNumBuckets;<sp/>b++)<sp/>{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>sum<sp/>+=<sp/>buckets_[b];</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(sum<sp/>&gt;=<sp/>threshold)<sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Scale<sp/>linearly<sp/>within<sp/>this<sp/>bucket</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>left_point<sp/>=<sp/>(b<sp/>==<sp/>0)<sp/>?<sp/>0<sp/>:<sp/>kBucketLimit[b-1];</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>right_point<sp/>=<sp/>kBucketLimit[b];</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>left_sum<sp/>=<sp/>sum<sp/>-<sp/>buckets_[b];</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>right_sum<sp/>=<sp/>sum;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>pos<sp/>=<sp/>(threshold<sp/>-<sp/>left_sum)<sp/>/<sp/>(right_sum<sp/>-<sp/>left_sum);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>r<sp/>=<sp/>left_point<sp/>+<sp/>(right_point<sp/>-<sp/>left_point)<sp/>*<sp/>pos;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(r<sp/>&lt;<sp/>min_)<sp/>r<sp/>=<sp/>min_;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(r<sp/>&gt;<sp/>max_)<sp/>r<sp/>=<sp/>max_;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>r;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>max_;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Histogram::Average()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(num_<sp/>==<sp/>0.0)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sum_<sp/>/<sp/>num_;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>Histogram::StandardDeviation()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(num_<sp/>==<sp/>0.0)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>variance<sp/>=<sp/>(sum_squares_<sp/>*<sp/>num_<sp/>-<sp/>sum_<sp/>*<sp/>sum_)<sp/>/<sp/>(num_<sp/>*<sp/>num_);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>sqrt(variance);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="classleveldb_1_1_histogram_1a78fde129eef6d9072ff986afd18d1163" refkind="member"><highlight class="normal">std::string<sp/><ref refid="classleveldb_1_1_histogram_1a78fde129eef6d9072ff986afd18d1163" kindref="member">Histogram::ToString</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/>std::string<sp/>r;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>buf[200];</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/>snprintf(buf,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(buf),</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Count:<sp/>%.0f<sp/><sp/>Average:<sp/>%.4f<sp/><sp/>StdDev:<sp/>%.2f\n&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>num_,<sp/>Average(),<sp/>StandardDeviation());</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/>r.append(buf);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/>snprintf(buf,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(buf),</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;Min:<sp/>%.4f<sp/><sp/>Median:<sp/>%.4f<sp/><sp/>Max:<sp/>%.4f\n&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(num_<sp/>==<sp/>0.0<sp/>?<sp/>0.0<sp/>:<sp/>min_),<sp/>Median(),<sp/>max_);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/>r.append(buf);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/>r.append(</highlight><highlight class="stringliteral">&quot;------------------------------------------------------\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>mult<sp/>=<sp/>100.0<sp/>/<sp/>num_;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">double</highlight><highlight class="normal"><sp/>sum<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>b<sp/>=<sp/>0;<sp/>b<sp/>&lt;<sp/>kNumBuckets;<sp/>b++)<sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(buckets_[b]<sp/>&lt;=<sp/>0.0)<sp/></highlight><highlight class="keywordflow">continue</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>sum<sp/>+=<sp/>buckets_[b];</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>snprintf(buf,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(buf),</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;[<sp/>%7.0f,<sp/>%7.0f<sp/>)<sp/>%7.0f<sp/>%7.3f%%<sp/>%7.3f%%<sp/>&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((b<sp/>==<sp/>0)<sp/>?<sp/>0.0<sp/>:<sp/>kBucketLimit[b-1]),<sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>left</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>kBucketLimit[b],<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>right</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>buckets_[b],<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>count</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mult<sp/>*<sp/>buckets_[b],<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>percentage</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mult<sp/>*<sp/>sum);<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>cumulative<sp/>percentage</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>r.append(buf);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Add<sp/>hash<sp/>marks<sp/>based<sp/>on<sp/>percentage;<sp/>20<sp/>marks<sp/>for<sp/>100%.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>marks<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(20*(buckets_[b]<sp/>/<sp/>num_)<sp/>+<sp/>0.5);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>r.append(marks,<sp/></highlight><highlight class="charliteral">&apos;#&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>r.push_back(</highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>r;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>leveldb</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/leveldb/util/histogram.cc"/>
+  </compounddef>
+</doxygen>

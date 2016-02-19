@@ -1,0 +1,124 @@
+.TH "SendCoinsEntry" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+SendCoinsEntry \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <sendcoinsentry\&.h>\fP
+.PP
+Inherits QFrame\&.
+.SS "Public Slots"
+
+.in +1c
+.ti -1c
+.RI "void \fBsetRemoveEnabled\fP (bool enabled)"
+.br
+.ti -1c
+.RI "void \fBclear\fP ()"
+.br
+.in -1c
+.SS "Signals"
+
+.in +1c
+.ti -1c
+.RI "void \fBremoveEntry\fP (\fBSendCoinsEntry\fP *entry)"
+.br
+.ti -1c
+.RI "void \fBpayAmountChanged\fP ()"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBSendCoinsEntry\fP (QWidget *parent=0)"
+.br
+.ti -1c
+.RI "\fB~SendCoinsEntry\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetModel\fP (\fBWalletModel\fP *model)"
+.br
+.ti -1c
+.RI "bool \fBvalidate\fP ()"
+.br
+.ti -1c
+.RI "\fBSendCoinsRecipient\fP \fBgetValue\fP ()"
+.br
+.ti -1c
+.RI "bool \fBisClear\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetValue\fP (const \fBSendCoinsRecipient\fP &\fBvalue\fP)"
+.br
+.ti -1c
+.RI "QWidget * \fBsetupTabChain\fP (QWidget *\fBprev\fP)"
+.br
+.ti -1c
+.RI "void \fBsetFocus\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A single entry in the dialog for sending darksilks\&. 
+.PP
+Definition at line 13 of file sendcoinsentry\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "SendCoinsEntry::SendCoinsEntry (QWidget * parent = \fC0\fP)\fC [explicit]\fP"
+
+.PP
+Definition at line 15 of file sendcoinsentry\&.cpp\&.
+.SS "SendCoinsEntry::~SendCoinsEntry ()"
+
+.PP
+Definition at line 36 of file sendcoinsentry\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void SendCoinsEntry::clear ()\fC [slot]\fP"
+
+.PP
+Definition at line 87 of file sendcoinsentry\&.cpp\&.
+.SS "\fBSendCoinsRecipient\fP SendCoinsEntry::getValue ()"
+
+.PP
+Definition at line 131 of file sendcoinsentry\&.cpp\&.
+.SS "bool SendCoinsEntry::isClear ()"
+Return whether the entry is still empty and unedited 
+.PP
+Definition at line 165 of file sendcoinsentry\&.cpp\&.
+.SS "void SendCoinsEntry::payAmountChanged ()\fC [signal]\fP"
+
+.SS "void SendCoinsEntry::removeEntry (\fBSendCoinsEntry\fP * entry)\fC [signal]\fP"
+
+.SS "void SendCoinsEntry::setFocus ()"
+
+.PP
+Definition at line 170 of file sendcoinsentry\&.cpp\&.
+.SS "void SendCoinsEntry::setModel (\fBWalletModel\fP * model)"
+
+.PP
+Definition at line 70 of file sendcoinsentry\&.cpp\&.
+.SS "void SendCoinsEntry::setRemoveEnabled (bool enabled)\fC [slot]\fP"
+
+.PP
+Definition at line 82 of file sendcoinsentry\&.cpp\&.
+.SS "QWidget * SendCoinsEntry::setupTabChain (QWidget * prev)"
+Set up the tab chain manually, as Qt messes up the tab chain by default in some cases (issue https://bugreports.qt-project.org/browse/QTBUG-10907)\&. 
+.PP
+Definition at line 148 of file sendcoinsentry\&.cpp\&.
+.SS "void SendCoinsEntry::setValue (const \fBSendCoinsRecipient\fP & value)"
+
+.PP
+Definition at line 158 of file sendcoinsentry\&.cpp\&.
+.SS "bool SendCoinsEntry::validate ()"
+
+.PP
+Definition at line 102 of file sendcoinsentry\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

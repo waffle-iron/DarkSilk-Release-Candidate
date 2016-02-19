@@ -1,0 +1,183 @@
+\hypertarget{class_c_coins_view}{}\section{C\+Coins\+View Class Reference}
+\label{class_c_coins_view}\index{C\+Coins\+View@{C\+Coins\+View}}
+
+
+Abstract view on the open txout dataset.  
+
+
+
+
+{\ttfamily \#include $<$coins.\+h$>$}
+
+
+
+Inheritance diagram for C\+Coins\+View\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \hyperlink{class_c_coins_view_aaf5668eb2f9033583d7072dc2a3f96ef}{Get\+Coins} (const \hyperlink{classuint256}{uint256} \&txid, \hyperlink{class_c_coins}{C\+Coins} \&coins) const 
+\begin{DoxyCompactList}\small\item\em Retrieve the \hyperlink{class_c_coins}{C\+Coins} (unspent transaction outputs) for a given txid. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_c_coins_view_a14c8db07cb11223426bb660861389f3a}{Have\+Coins} (const \hyperlink{classuint256}{uint256} \&txid) const 
+\item 
+virtual \hyperlink{classuint256}{uint256} \hyperlink{class_c_coins_view_a556cf7661ff49df1ada5cd0ad552f8db}{Get\+Best\+Block} () const 
+\begin{DoxyCompactList}\small\item\em Retrieve the block hash whose state this \hyperlink{class_c_coins_view}{C\+Coins\+View} currently represents. \end{DoxyCompactList}\item 
+virtual bool \hyperlink{class_c_coins_view_ad7dc37396ca4fac7014cea06fec7178e}{Batch\+Write} (\hyperlink{coins_8h_a2886ba2fd0428bae777e1cbcabc02834}{C\+Coins\+Map} \&map\+Coins, const \hyperlink{classuint256}{uint256} \&hash\+Block)
+\item 
+virtual bool \hyperlink{class_c_coins_view_afd645b903fba9c6b84bdb898d764f5fc}{Get\+Stats} (\hyperlink{struct_c_coins_stats}{C\+Coins\+Stats} \&\hyperlink{db__bench_8cc_a5925d216740c89f43482df806fd14e8c}{stats}) const 
+\begin{DoxyCompactList}\small\item\em Calculate statistics about the unspent transaction output set. \end{DoxyCompactList}\item 
+virtual \hyperlink{class_c_coins_view_a7ffb4218bf991ddff47339e44c8710da}{$\sim$\+C\+Coins\+View} ()
+\begin{DoxyCompactList}\small\item\em As we use C\+Coins\+Views polymorphically, have a virtual destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Abstract view on the open txout dataset. 
+
+Definition at line 342 of file coins.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_coins_view_a7ffb4218bf991ddff47339e44c8710da}{}\index{C\+Coins\+View@{C\+Coins\+View}!````~C\+Coins\+View@{$\sim$\+C\+Coins\+View}}
+\index{````~C\+Coins\+View@{$\sim$\+C\+Coins\+View}!C\+Coins\+View@{C\+Coins\+View}}
+\subsubsection[{$\sim$\+C\+Coins\+View}]{\setlength{\rightskip}{0pt plus 5cm}virtual C\+Coins\+View\+::$\sim$\+C\+Coins\+View (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}\label{class_c_coins_view_a7ffb4218bf991ddff47339e44c8710da}
+
+
+As we use C\+Coins\+Views polymorphically, have a virtual destructor. 
+
+
+
+Definition at line 363 of file coins.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_coins_view_ad7dc37396ca4fac7014cea06fec7178e}{}\index{C\+Coins\+View@{C\+Coins\+View}!Batch\+Write@{Batch\+Write}}
+\index{Batch\+Write@{Batch\+Write}!C\+Coins\+View@{C\+Coins\+View}}
+\subsubsection[{Batch\+Write}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Coins\+View\+::\+Batch\+Write (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Coins\+Map} \&}]{map\+Coins, }
+\item[{const {\bf uint256} \&}]{hash\+Block}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_c_coins_view_ad7dc37396ca4fac7014cea06fec7178e}
+Do a bulk modification (multiple \hyperlink{class_c_coins}{C\+Coins} changes + Best\+Block change). The passed map\+Coins can be modified. 
+
+Reimplemented in \hyperlink{class_c_coins_view_cache_a561bb7c6c97701b12c48fbbb563d0a91}{C\+Coins\+View\+Cache}, \hyperlink{class_c_coins_view_backed_ace15da3934c9d7a9cb9c7a787f92f764}{C\+Coins\+View\+Backed}, and \hyperlink{class_c_coins_view_d_b_a33f98ec9323ce48e1704327bc8a2a002}{C\+Coins\+View\+D\+B}.
+
+
+
+Definition at line 60 of file coins.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 1
+
+
+\hypertarget{class_c_coins_view_a556cf7661ff49df1ada5cd0ad552f8db}{}\index{C\+Coins\+View@{C\+Coins\+View}!Get\+Best\+Block@{Get\+Best\+Block}}
+\index{Get\+Best\+Block@{Get\+Best\+Block}!C\+Coins\+View@{C\+Coins\+View}}
+\subsubsection[{Get\+Best\+Block}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint256} C\+Coins\+View\+::\+Get\+Best\+Block (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_c_coins_view_a556cf7661ff49df1ada5cd0ad552f8db}
+
+
+Retrieve the block hash whose state this \hyperlink{class_c_coins_view}{C\+Coins\+View} currently represents. 
+
+
+
+Reimplemented in \hyperlink{class_c_coins_view_cache_aabcd1da9f28445e09c9af5f68ce7f100}{C\+Coins\+View\+Cache}, \hyperlink{class_c_coins_view_backed_a8465dc4764fd5b01591b824551cbbfab}{C\+Coins\+View\+Backed}, and \hyperlink{class_c_coins_view_d_b_a01777676c2eafd2970a9d53e5fb4a49a}{C\+Coins\+View\+D\+B}.
+
+
+
+Definition at line 59 of file coins.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 2
+
+
+\hypertarget{class_c_coins_view_aaf5668eb2f9033583d7072dc2a3f96ef}{}\index{C\+Coins\+View@{C\+Coins\+View}!Get\+Coins@{Get\+Coins}}
+\index{Get\+Coins@{Get\+Coins}!C\+Coins\+View@{C\+Coins\+View}}
+\subsubsection[{Get\+Coins}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Coins\+View\+::\+Get\+Coins (
+\begin{DoxyParamCaption}
+\item[{const {\bf uint256} \&}]{txid, }
+\item[{{\bf C\+Coins} \&}]{coins}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_c_coins_view_aaf5668eb2f9033583d7072dc2a3f96ef}
+
+
+Retrieve the \hyperlink{class_c_coins}{C\+Coins} (unspent transaction outputs) for a given txid. 
+
+
+
+Reimplemented in \hyperlink{class_c_coins_view_mem_pool_a01564f29ff2673ddd0d27414e576f1bc}{C\+Coins\+View\+Mem\+Pool}, \hyperlink{class_c_coins_view_cache_a27ec8311ae409ea1e3c3484c1d4a9035}{C\+Coins\+View\+Cache}, \hyperlink{class_c_coins_view_backed_a21b95a9910f94e9b7ebed62a6f329ea0}{C\+Coins\+View\+Backed}, \hyperlink{class_c_coins_view_d_b_a20655c9c13a6124cdcf210206d518d92}{C\+Coins\+View\+D\+B}, and \hyperlink{class_c_coins_view_error_catcher_a762969de31b62e55d01f1cdf0b178eb9}{C\+Coins\+View\+Error\+Catcher}.
+
+
+
+Definition at line 57 of file coins.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+\hypertarget{class_c_coins_view_afd645b903fba9c6b84bdb898d764f5fc}{}\index{C\+Coins\+View@{C\+Coins\+View}!Get\+Stats@{Get\+Stats}}
+\index{Get\+Stats@{Get\+Stats}!C\+Coins\+View@{C\+Coins\+View}}
+\subsubsection[{Get\+Stats}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Coins\+View\+::\+Get\+Stats (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Coins\+Stats} \&}]{stats}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_c_coins_view_afd645b903fba9c6b84bdb898d764f5fc}
+
+
+Calculate statistics about the unspent transaction output set. 
+
+
+
+Reimplemented in \hyperlink{class_c_coins_view_backed_a368f277ac68652a91ac171f46f02edca}{C\+Coins\+View\+Backed}, and \hyperlink{class_c_coins_view_d_b_a6bbe15962b0efd519e30dada872f01c5}{C\+Coins\+View\+D\+B}.
+
+
+
+Definition at line 61 of file coins.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 4
+
+
+\hypertarget{class_c_coins_view_a14c8db07cb11223426bb660861389f3a}{}\index{C\+Coins\+View@{C\+Coins\+View}!Have\+Coins@{Have\+Coins}}
+\index{Have\+Coins@{Have\+Coins}!C\+Coins\+View@{C\+Coins\+View}}
+\subsubsection[{Have\+Coins}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Coins\+View\+::\+Have\+Coins (
+\begin{DoxyParamCaption}
+\item[{const {\bf uint256} \&}]{txid}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}\label{class_c_coins_view_a14c8db07cb11223426bb660861389f3a}
+Just check whether we have data for a given txid. This may (but cannot always) return true for fully spent transactions 
+
+Reimplemented in \hyperlink{class_c_coins_view_mem_pool_a965e6c8e378fe937620ba2c180d1ed74}{C\+Coins\+View\+Mem\+Pool}, \hyperlink{class_c_coins_view_cache_a25dddabe8734fc9823112763494da72b}{C\+Coins\+View\+Cache}, \hyperlink{class_c_coins_view_backed_a6a769cf9cc55128dea8e1a2798056e71}{C\+Coins\+View\+Backed}, and \hyperlink{class_c_coins_view_d_b_a4d08cf2d3440c1de4e48cfddd67962d7}{C\+Coins\+View\+D\+B}.
+
+
+
+Definition at line 58 of file coins.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 5
+
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/\hyperlink{coins_8h}{coins.\+h}\item 
+/home/dev/ds-\/160209/src/\hyperlink{coins_8cpp}{coins.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,578 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="skiplist__test_8cc" kind="file" language="C++">
+    <compoundname>skiplist_test.cc</compoundname>
+    <includes refid="skiplist_8h" local="yes">db/skiplist.h</includes>
+    <includes local="no">set</includes>
+    <includes refid="env_8h" local="yes">leveldb/env.h</includes>
+    <includes refid="arena_8h" local="yes">util/arena.h</includes>
+    <includes refid="leveldb_2util_2hash_8h" local="yes">util/hash.h</includes>
+    <includes refid="random_8h" local="yes">util/random.h</includes>
+    <includes refid="testharness_8h" local="yes">util/testharness.h</includes>
+    <incdepgraph>
+      <node id="36945">
+        <label>stdarg.h</label>
+      </node>
+      <node id="36932">
+        <label>db/skiplist.h</label>
+        <link refid="skiplist_8h"/>
+        <childnode refid="36933" relation="include">
+        </childnode>
+        <childnode refid="36934" relation="include">
+        </childnode>
+        <childnode refid="36935" relation="include">
+        </childnode>
+        <childnode refid="36937" relation="include">
+        </childnode>
+        <childnode refid="36941" relation="include">
+        </childnode>
+      </node>
+      <node id="36941">
+        <label>util/random.h</label>
+        <link refid="random_8h"/>
+        <childnode refid="36940" relation="include">
+        </childnode>
+      </node>
+      <node id="36933">
+        <label>assert.h</label>
+      </node>
+      <node id="36937">
+        <label>util/arena.h</label>
+        <link refid="arena_8h"/>
+        <childnode refid="36938" relation="include">
+        </childnode>
+        <childnode refid="36933" relation="include">
+        </childnode>
+        <childnode refid="36939" relation="include">
+        </childnode>
+        <childnode refid="36940" relation="include">
+        </childnode>
+      </node>
+      <node id="36934">
+        <label>stdlib.h</label>
+      </node>
+      <node id="36944">
+        <label>string</label>
+      </node>
+      <node id="36939">
+        <label>stddef.h</label>
+      </node>
+      <node id="36946">
+        <label>leveldb/status.h</label>
+        <link refid="status_8h"/>
+        <childnode refid="36944" relation="include">
+        </childnode>
+        <childnode refid="36947" relation="include">
+        </childnode>
+      </node>
+      <node id="36936">
+        <label>string.h</label>
+      </node>
+      <node id="36938">
+        <label>vector</label>
+      </node>
+      <node id="36951">
+        <label>sstream</label>
+      </node>
+      <node id="36935">
+        <label>port/port.h</label>
+        <link refid="port_8h"/>
+        <childnode refid="36936" relation="include">
+        </childnode>
+      </node>
+      <node id="36940">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="36931">
+        <label>/home/dev/ds-160209/src/leveldb/db/skiplist_test.cc</label>
+        <link refid="skiplist_test.cc"/>
+        <childnode refid="36932" relation="include">
+        </childnode>
+        <childnode refid="36942" relation="include">
+        </childnode>
+        <childnode refid="36943" relation="include">
+        </childnode>
+        <childnode refid="36937" relation="include">
+        </childnode>
+        <childnode refid="36948" relation="include">
+        </childnode>
+        <childnode refid="36941" relation="include">
+        </childnode>
+        <childnode refid="36949" relation="include">
+        </childnode>
+      </node>
+      <node id="36949">
+        <label>util/testharness.h</label>
+        <link refid="testharness_8h"/>
+        <childnode refid="36950" relation="include">
+        </childnode>
+        <childnode refid="36934" relation="include">
+        </childnode>
+        <childnode refid="36951" relation="include">
+        </childnode>
+        <childnode refid="36943" relation="include">
+        </childnode>
+        <childnode refid="36947" relation="include">
+        </childnode>
+        <childnode refid="36941" relation="include">
+        </childnode>
+      </node>
+      <node id="36947">
+        <label>leveldb/slice.h</label>
+        <link refid="slice_8h"/>
+        <childnode refid="36933" relation="include">
+        </childnode>
+        <childnode refid="36939" relation="include">
+        </childnode>
+        <childnode refid="36936" relation="include">
+        </childnode>
+        <childnode refid="36944" relation="include">
+        </childnode>
+      </node>
+      <node id="36943">
+        <label>leveldb/env.h</label>
+        <link refid="env_8h"/>
+        <childnode refid="36944" relation="include">
+        </childnode>
+        <childnode refid="36938" relation="include">
+        </childnode>
+        <childnode refid="36945" relation="include">
+        </childnode>
+        <childnode refid="36940" relation="include">
+        </childnode>
+        <childnode refid="36946" relation="include">
+        </childnode>
+      </node>
+      <node id="36942">
+        <label>set</label>
+      </node>
+      <node id="36950">
+        <label>stdio.h</label>
+      </node>
+      <node id="36948">
+        <label>util/hash.h</label>
+        <link refid="leveldb_2util_2hash_8h"/>
+        <childnode refid="36939" relation="include">
+        </childnode>
+        <childnode refid="36940" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innerclass refid="structleveldb_1_1_comparator" prot="public">leveldb::Comparator</innerclass>
+    <innerclass refid="classleveldb_1_1_skip_test" prot="public">leveldb::SkipTest</innerclass>
+    <innerclass refid="classleveldb_1_1_concurrent_test" prot="public">leveldb::ConcurrentTest</innerclass>
+    <innerclass refid="structleveldb_1_1_concurrent_test_1_1_state" prot="private">leveldb::ConcurrentTest::State</innerclass>
+    <innerclass refid="classleveldb_1_1_test_state" prot="public">leveldb::TestState</innerclass>
+    <innernamespace refid="namespaceleveldb">leveldb</innernamespace>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="skiplist__test_8cc_1a3c04138a5bfe5d72780bb7e82a18e627" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>(int argc, char **argv)</argsstring>
+        <name>main</name>
+        <param>
+          <type>int</type>
+          <declname>argc</declname>
+        </param>
+        <param>
+          <type>char **</type>
+          <declname>argv</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/skiplist_test.cc" line="376" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/skiplist_test.cc" bodystart="376" bodyend="378"/>
+        <references refid="namespaceleveldb_1_1test_1a3329162c54a0bff42d41c2ac86b2580a" compoundref="testharness_8cc" startline="36" endline="58">leveldb::test::RunAllTests</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2011-2016<sp/>The<sp/>LevelDB<sp/>Authors.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>of<sp/>this<sp/>source<sp/>code<sp/>is<sp/>governed<sp/>by<sp/>a<sp/>BSD-style<sp/>license<sp/>that<sp/>can<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>found<sp/>in<sp/>the<sp/>LICENSE<sp/>file.<sp/>See<sp/>the<sp/>AUTHORS<sp/>file<sp/>for<sp/>names<sp/>of<sp/>contributors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="skiplist_8h" kindref="compound">db/skiplist.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;set&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="env_8h" kindref="compound">leveldb/env.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="arena_8h" kindref="compound">util/arena.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="leveldb_2util_2hash_8h" kindref="compound">util/hash.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="random_8h" kindref="compound">util/random.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="testharness_8h" kindref="compound">util/testharness.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceleveldb" kindref="compound">leveldb</ref><sp/>{</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/><ref refid="namespaceleveldb_1a7e9a9725b13fa0bd922d885280dfab95" kindref="member">Key</ref>;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="structleveldb_1_1_comparator" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structleveldb_1_1_comparator" kindref="compound">Comparator</ref><sp/>{</highlight></codeline>
+<codeline lineno="18" refid="structleveldb_1_1_comparator_1a2c2009828869475d8375c84d65cf1c24" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structleveldb_1_1_comparator_1a2c2009828869475d8375c84d65cf1c24" kindref="member">operator()</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Key&amp;<sp/>a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Key&amp;<sp/>b)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(a<sp/>&lt;<sp/>b)<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(a<sp/>&gt;<sp/>b)<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>+1;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classleveldb_1_1_skip_test" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classleveldb_1_1_skip_test" kindref="compound">SkipTest</ref><sp/>{<sp/>};</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="namespaceleveldb_1a94b31a20798f6d72a6cd11c328fcaba7" refkind="member"><highlight class="normal"><ref refid="namespaceleveldb_1a9c4f7d5038dfc2985100b60ae2549fde" kindref="member">TEST</ref>(<ref refid="classleveldb_1_1_skip_test" kindref="compound">SkipTest</ref>,<sp/>Empty)<sp/>{</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_arena" kindref="compound">Arena</ref><sp/>arena;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><ref refid="structleveldb_1_1_comparator" kindref="compound">Comparator</ref><sp/><ref refid="table__test_8cc_1a87863e435922f0910ca8db43f02a6c0b" kindref="member">cmp</ref>;</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_skip_list" kindref="compound">SkipList&lt;Key, Comparator&gt;</ref><sp/>list(cmp,<sp/>&amp;arena);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><ref refid="testharness_8h_1ac2101fb1ffd0c81c17520b82f0fcfe21" kindref="member">ASSERT_TRUE</ref>(!list.<ref refid="classleveldb_1_1_skip_list_1a134b36bafbfecf325bb7b57bc2490f87" kindref="member">Contains</ref>(10));</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_skip_list_1_1_iterator" kindref="compound">SkipList&lt;Key, Comparator&gt;::Iterator</ref><sp/>iter(&amp;list);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><ref refid="testharness_8h_1ac2101fb1ffd0c81c17520b82f0fcfe21" kindref="member">ASSERT_TRUE</ref>(!iter.Valid());</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/>iter.SeekToFirst();</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><ref refid="testharness_8h_1ac2101fb1ffd0c81c17520b82f0fcfe21" kindref="member">ASSERT_TRUE</ref>(!iter.Valid());</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/>iter.Seek(100);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><ref refid="testharness_8h_1ac2101fb1ffd0c81c17520b82f0fcfe21" kindref="member">ASSERT_TRUE</ref>(!iter.Valid());</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/>iter.SeekToLast();</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><ref refid="testharness_8h_1ac2101fb1ffd0c81c17520b82f0fcfe21" kindref="member">ASSERT_TRUE</ref>(!iter.Valid());</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47" refid="namespaceleveldb_1a21e74b2de9a6f3db48c8d3ff277a1e0d" refkind="member"><highlight class="normal"><ref refid="namespaceleveldb_1a9c4f7d5038dfc2985100b60ae2549fde" kindref="member">TEST</ref>(<ref refid="classleveldb_1_1_skip_test" kindref="compound">SkipTest</ref>,<sp/>InsertAndLookup)<sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>N<sp/>=<sp/>2000;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="scrypt_8cpp_1a8011d6dab73e8808981c948e35610884" kindref="member">R</ref><sp/>=<sp/>5000;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_random" kindref="compound">Random</ref><sp/>rnd(1000);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/>std::set&lt;Key&gt;<sp/>keys;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_arena" kindref="compound">Arena</ref><sp/>arena;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><ref refid="structleveldb_1_1_comparator" kindref="compound">Comparator</ref><sp/><ref refid="table__test_8cc_1a87863e435922f0910ca8db43f02a6c0b" kindref="member">cmp</ref>;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_skip_list" kindref="compound">SkipList&lt;Key, Comparator&gt;</ref><sp/>list(cmp,<sp/>&amp;arena);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>N;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>Key<sp/>key<sp/>=<sp/>rnd.<ref refid="classleveldb_1_1_random_1a9e00ef1fcc82ed0ad16ba91b30ae8038" kindref="member">Next</ref>()<sp/>%<sp/><ref refid="scrypt_8cpp_1a8011d6dab73e8808981c948e35610884" kindref="member">R</ref>;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(keys.insert(key).second)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>list.<ref refid="classleveldb_1_1_skip_list_1af1ed755f0825f38272aafe3cae4da644" kindref="member">Insert</ref>(key);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="scrypt_8cpp_1a8011d6dab73e8808981c948e35610884" kindref="member">R</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(list.<ref refid="classleveldb_1_1_skip_list_1a134b36bafbfecf325bb7b57bc2490f87" kindref="member">Contains</ref>(i))<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testharness_8h_1a9cc34fd87cb865c77439a5d39b3b111b" kindref="member">ASSERT_EQ</ref>(keys.count(i),<sp/>1);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testharness_8h_1a9cc34fd87cb865c77439a5d39b3b111b" kindref="member">ASSERT_EQ</ref>(keys.count(i),<sp/>0);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Simple<sp/>iterator<sp/>tests</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classleveldb_1_1_skip_list_1_1_iterator" kindref="compound">SkipList&lt;Key, Comparator&gt;::Iterator</ref><sp/>iter(&amp;list);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testharness_8h_1ac2101fb1ffd0c81c17520b82f0fcfe21" kindref="member">ASSERT_TRUE</ref>(!iter.<ref refid="classleveldb_1_1_skip_list_1_1_iterator_1ac074827b7e9ded32283385e6228ef8cd" kindref="member">Valid</ref>());</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>iter.<ref refid="classleveldb_1_1_skip_list_1_1_iterator_1a6c641d5cd37386abdb0aa8d73454611a" kindref="member">Seek</ref>(0);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testharness_8h_1ac2101fb1ffd0c81c17520b82f0fcfe21" kindref="member">ASSERT_TRUE</ref>(iter.<ref refid="classleveldb_1_1_skip_list_1_1_iterator_1ac074827b7e9ded32283385e6228ef8cd" kindref="member">Valid</ref>());</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testharness_8h_1a9cc34fd87cb865c77439a5d39b3b111b" kindref="member">ASSERT_EQ</ref>(*(keys.begin()),<sp/>iter.<ref refid="classleveldb_1_1_skip_list_1_1_iterator_1a5d2a82038f440d557b32afb398c7eb57" kindref="member">key</ref>());</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>iter.<ref refid="classleveldb_1_1_skip_list_1_1_iterator_1adf69c04f0480a66f10a125c49e19caa7" kindref="member">SeekToFirst</ref>();</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testharness_8h_1ac2101fb1ffd0c81c17520b82f0fcfe21" kindref="member">ASSERT_TRUE</ref>(iter.<ref refid="classleveldb_1_1_skip_list_1_1_iterator_1ac074827b7e9ded32283385e6228ef8cd" kindref="member">Valid</ref>());</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testharness_8h_1a9cc34fd87cb865c77439a5d39b3b111b" kindref="member">ASSERT_EQ</ref>(*(keys.begin()),<sp/>iter.<ref refid="classleveldb_1_1_skip_list_1_1_iterator_1a5d2a82038f440d557b32afb398c7eb57" kindref="member">key</ref>());</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>iter.<ref refid="classleveldb_1_1_skip_list_1_1_iterator_1afe892ff436137b85216c2ed124f3c6dd" kindref="member">SeekToLast</ref>();</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testharness_8h_1ac2101fb1ffd0c81c17520b82f0fcfe21" kindref="member">ASSERT_TRUE</ref>(iter.<ref refid="classleveldb_1_1_skip_list_1_1_iterator_1ac074827b7e9ded32283385e6228ef8cd" kindref="member">Valid</ref>());</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testharness_8h_1a9cc34fd87cb865c77439a5d39b3b111b" kindref="member">ASSERT_EQ</ref>(*(keys.rbegin()),<sp/>iter.<ref refid="classleveldb_1_1_skip_list_1_1_iterator_1a5d2a82038f440d557b32afb398c7eb57" kindref="member">key</ref>());</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Forward<sp/>iteration<sp/>test</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="scrypt_8cpp_1a8011d6dab73e8808981c948e35610884" kindref="member">R</ref>;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classleveldb_1_1_skip_list_1_1_iterator" kindref="compound">SkipList&lt;Key, Comparator&gt;::Iterator</ref><sp/>iter(&amp;list);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>iter.<ref refid="classleveldb_1_1_skip_list_1_1_iterator_1a6c641d5cd37386abdb0aa8d73454611a" kindref="member">Seek</ref>(i);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Compare<sp/>against<sp/>model<sp/>iterator</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>std::set&lt;Key&gt;::iterator<sp/>model_iter<sp/>=<sp/>keys.lower_bound(i);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>3;<sp/>j++)<sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(model_iter<sp/>==<sp/>keys.end())<sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testharness_8h_1ac2101fb1ffd0c81c17520b82f0fcfe21" kindref="member">ASSERT_TRUE</ref>(!iter.<ref refid="classleveldb_1_1_skip_list_1_1_iterator_1ac074827b7e9ded32283385e6228ef8cd" kindref="member">Valid</ref>());</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testharness_8h_1ac2101fb1ffd0c81c17520b82f0fcfe21" kindref="member">ASSERT_TRUE</ref>(iter.<ref refid="classleveldb_1_1_skip_list_1_1_iterator_1ac074827b7e9ded32283385e6228ef8cd" kindref="member">Valid</ref>());</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testharness_8h_1a9cc34fd87cb865c77439a5d39b3b111b" kindref="member">ASSERT_EQ</ref>(*model_iter,<sp/>iter.<ref refid="classleveldb_1_1_skip_list_1_1_iterator_1a5d2a82038f440d557b32afb398c7eb57" kindref="member">key</ref>());</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++model_iter;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>iter.<ref refid="classleveldb_1_1_skip_list_1_1_iterator_1ade5a684c74056f578f85237735da0cef" kindref="member">Next</ref>();</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Backward<sp/>iteration<sp/>test</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classleveldb_1_1_skip_list_1_1_iterator" kindref="compound">SkipList&lt;Key, Comparator&gt;::Iterator</ref><sp/>iter(&amp;list);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>iter.<ref refid="classleveldb_1_1_skip_list_1_1_iterator_1afe892ff436137b85216c2ed124f3c6dd" kindref="member">SeekToLast</ref>();</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Compare<sp/>against<sp/>model<sp/>iterator</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(std::set&lt;Key&gt;::reverse_iterator<sp/>model_iter<sp/>=<sp/>keys.rbegin();</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>model_iter<sp/>!=<sp/>keys.rend();</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>++model_iter)<sp/>{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testharness_8h_1ac2101fb1ffd0c81c17520b82f0fcfe21" kindref="member">ASSERT_TRUE</ref>(iter.<ref refid="classleveldb_1_1_skip_list_1_1_iterator_1ac074827b7e9ded32283385e6228ef8cd" kindref="member">Valid</ref>());</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testharness_8h_1a9cc34fd87cb865c77439a5d39b3b111b" kindref="member">ASSERT_EQ</ref>(*model_iter,<sp/>iter.<ref refid="classleveldb_1_1_skip_list_1_1_iterator_1a5d2a82038f440d557b32afb398c7eb57" kindref="member">key</ref>());</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>iter.<ref refid="classleveldb_1_1_skip_list_1_1_iterator_1a10dbaf45640ab2b9f61a96c82e7227e5" kindref="member">Prev</ref>();</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="testharness_8h_1ac2101fb1ffd0c81c17520b82f0fcfe21" kindref="member">ASSERT_TRUE</ref>(!iter.<ref refid="classleveldb_1_1_skip_list_1_1_iterator_1ac074827b7e9ded32283385e6228ef8cd" kindref="member">Valid</ref>());</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="comment">//<sp/>We<sp/>want<sp/>to<sp/>make<sp/>sure<sp/>that<sp/>with<sp/>a<sp/>single<sp/>writer<sp/>and<sp/>multiple</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="comment">//<sp/>concurrent<sp/>readers<sp/>(with<sp/>no<sp/>synchronization<sp/>other<sp/>than<sp/>when<sp/>a</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight><highlight class="comment">//<sp/>reader&apos;s<sp/>iterator<sp/>is<sp/>created),<sp/>the<sp/>reader<sp/>always<sp/>observes<sp/>all<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="comment">//<sp/>data<sp/>that<sp/>was<sp/>present<sp/>in<sp/>the<sp/>skip<sp/>list<sp/>when<sp/>the<sp/>iterator<sp/>was</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="comment">//<sp/>constructor.<sp/><sp/>Because<sp/>insertions<sp/>are<sp/>happening<sp/>concurrently,<sp/>we<sp/>may</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="comment">//<sp/>also<sp/>observe<sp/>new<sp/>values<sp/>that<sp/>were<sp/>inserted<sp/>since<sp/>the<sp/>iterator<sp/>was</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="comment">//<sp/>constructed,<sp/>but<sp/>we<sp/>should<sp/>never<sp/>miss<sp/>any<sp/>values<sp/>that<sp/>were<sp/>present</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="comment">//<sp/>at<sp/>iterator<sp/>construction<sp/>time.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="comment">//<sp/>We<sp/>generate<sp/>multi-part<sp/>keys:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>&lt;key,gen,hash&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="comment">//<sp/>where:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>key<sp/>is<sp/>in<sp/>range<sp/>[0..K-1]</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>gen<sp/>is<sp/>a<sp/>generation<sp/>number<sp/>for<sp/>key</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>hash<sp/>is<sp/>hash(key,gen)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>insertion<sp/>code<sp/>picks<sp/>a<sp/>random<sp/>key,<sp/>sets<sp/>gen<sp/>to<sp/>be<sp/>1<sp/>+<sp/>the<sp/>last</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="comment">//<sp/>generation<sp/>number<sp/>inserted<sp/>for<sp/>that<sp/>key,<sp/>and<sp/>sets<sp/>hash<sp/>to<sp/>Hash(key,gen).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="comment">//<sp/>At<sp/>the<sp/>beginning<sp/>of<sp/>a<sp/>read,<sp/>we<sp/>snapshot<sp/>the<sp/>last<sp/>inserted</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight><highlight class="comment">//<sp/>generation<sp/>number<sp/>for<sp/>each<sp/>key.<sp/><sp/>We<sp/>then<sp/>iterate,<sp/>including<sp/>random</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight><highlight class="comment">//<sp/>calls<sp/>to<sp/>Next()<sp/>and<sp/>Seek().<sp/><sp/>For<sp/>every<sp/>key<sp/>we<sp/>encounter,<sp/>we</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight><highlight class="comment">//<sp/>check<sp/>that<sp/>it<sp/>is<sp/>either<sp/>expected<sp/>given<sp/>the<sp/>initial<sp/>snapshot<sp/>or<sp/>has</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="comment">//<sp/>been<sp/>concurrently<sp/>added<sp/>since<sp/>the<sp/>iterator<sp/>started.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="149" refid="classleveldb_1_1_concurrent_test" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classleveldb_1_1_concurrent_test" kindref="compound">ConcurrentTest</ref><sp/>{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>K<sp/>=<sp/>4;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>key(Key<sp/>key)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(key<sp/>&gt;&gt;<sp/>40);<sp/>}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>gen(Key<sp/>key)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(key<sp/>&gt;&gt;<sp/>8)<sp/>&amp;<sp/>0xffffffffu;<sp/>}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>hash(Key<sp/>key)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>key<sp/>&amp;<sp/>0xff;<sp/>}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>HashNumbers(<ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>k,<sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>g)<sp/>{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>data[2]<sp/>=<sp/>{<sp/>k,<sp/>g<sp/>};</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1aa566d580ef23924d3ef2a369333c1787" kindref="member">Hash</ref>(reinterpret_cast&lt;char*&gt;(data),<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(data),<sp/>0);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Key<sp/>MakeKey(<ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>k,<sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>g)<sp/>{</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(Key)<sp/>==<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref>));</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(k<sp/>&lt;=<sp/>K);<sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>sometimes<sp/>pass<sp/>K<sp/>to<sp/>seek<sp/>to<sp/>the<sp/>end<sp/>of<sp/>the<sp/>skiplist</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(g<sp/>&lt;=<sp/>0xffffffffu);</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>((k<sp/>&lt;&lt;<sp/>40)<sp/>|<sp/>(g<sp/>&lt;&lt;<sp/>8)<sp/>|<sp/>(HashNumbers(k,<sp/>g)<sp/>&amp;<sp/>0xff));</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>IsValidKey(Key<sp/>k)<sp/>{</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>hash(k)<sp/>==<sp/>(HashNumbers(key(k),<sp/>gen(k))<sp/>&amp;<sp/>0xff);</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>Key<sp/>RandomTarget(<ref refid="classleveldb_1_1_random" kindref="compound">Random</ref>*<sp/>rnd)<sp/>{</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(rnd-&gt;<ref refid="classleveldb_1_1_random_1a9e00ef1fcc82ed0ad16ba91b30ae8038" kindref="member">Next</ref>()<sp/>%<sp/>10)<sp/>{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0:</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Seek<sp/>to<sp/>beginning</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>MakeKey(0,<sp/>0);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1:</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Seek<sp/>to<sp/>end</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>MakeKey(K,<sp/>0);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Seek<sp/>to<sp/>middle</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>MakeKey(rnd-&gt;<ref refid="classleveldb_1_1_random_1a9e00ef1fcc82ed0ad16ba91b30ae8038" kindref="member">Next</ref>()<sp/>%<sp/>K,<sp/>0);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Per-key<sp/>generation</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">State<sp/>{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classleveldb_1_1port_1_1_atomic_pointer" kindref="compound">port::AtomicPointer</ref><sp/>generation[K];</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Set(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k,<sp/>intptr_t<sp/>v)<sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>generation[k].<ref refid="classleveldb_1_1port_1_1_atomic_pointer_1a8dfe51c125f71c09a363dae042be63a7" kindref="member">Release_Store</ref>(reinterpret_cast&lt;void*&gt;(v));</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>intptr_t<sp/>Get(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k)<sp/>{</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal">intptr_t</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(generation[k].<ref refid="classleveldb_1_1port_1_1_atomic_pointer_1a92aa118983e28711a150b3907af59a54" kindref="member">Acquire_Load</ref>());</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>State()<sp/>{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>0;<sp/>k<sp/>&lt;<sp/>K;<sp/>k++)<sp/>{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Set(k,<sp/>0);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Current<sp/>state<sp/>of<sp/>the<sp/>test</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/>State<sp/>current_;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_arena" kindref="compound">Arena</ref><sp/>arena_;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>SkipList<sp/>is<sp/>not<sp/>protected<sp/>by<sp/>mu_.<sp/><sp/>We<sp/>just<sp/>use<sp/>a<sp/>single<sp/>writer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>thread<sp/>to<sp/>modify<sp/>it.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_skip_list" kindref="compound">SkipList&lt;Key, Comparator&gt;</ref><sp/>list_;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="214" refid="classleveldb_1_1_concurrent_test_1acd93a8fa57d9a10871ec24c419f5ea88" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_concurrent_test_1acd93a8fa57d9a10871ec24c419f5ea88" kindref="member">ConcurrentTest</ref>()<sp/>:<sp/>list_(<ref refid="structleveldb_1_1_comparator" kindref="compound">Comparator</ref>(),<sp/>&amp;arena_)<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>REQUIRES:<sp/>External<sp/>synchronization</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="217" refid="classleveldb_1_1_concurrent_test_1a43dc8afb9124c364d6e97dc3d421131f" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_concurrent_test_1a43dc8afb9124c364d6e97dc3d421131f" kindref="member">WriteStep</ref>(<ref refid="classleveldb_1_1_random" kindref="compound">Random</ref>*<sp/>rnd)<sp/>{</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>k<sp/>=<sp/>rnd-&gt;<ref refid="classleveldb_1_1_random_1a9e00ef1fcc82ed0ad16ba91b30ae8038" kindref="member">Next</ref>()<sp/>%<sp/>K;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>intptr_t<sp/>g<sp/>=<sp/>current_.Get(k)<sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Key<sp/>key<sp/>=<sp/>MakeKey(k,<sp/>g);</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>list_.<ref refid="classleveldb_1_1_skip_list_1af1ed755f0825f38272aafe3cae4da644" kindref="member">Insert</ref>(key);</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/>current_.Set(k,<sp/>g);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225" refid="classleveldb_1_1_concurrent_test_1a9dcaf11ec747ad37150526f891627c50" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_concurrent_test_1a9dcaf11ec747ad37150526f891627c50" kindref="member">ReadStep</ref>(<ref refid="classleveldb_1_1_random" kindref="compound">Random</ref>*<sp/>rnd)<sp/>{</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Remember<sp/>the<sp/>initial<sp/>committed<sp/>state<sp/>of<sp/>the<sp/>skiplist.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/>State<sp/>initial_state;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>k<sp/>=<sp/>0;<sp/>k<sp/>&lt;<sp/>K;<sp/>k++)<sp/>{</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>initial_state.Set(k,<sp/>current_.Get(k));</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>Key<sp/>pos<sp/>=<sp/>RandomTarget(rnd);</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classleveldb_1_1_skip_list_1_1_iterator" kindref="compound">SkipList&lt;Key, Comparator&gt;::Iterator</ref><sp/>iter(&amp;list_);</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/>iter.<ref refid="classleveldb_1_1_skip_list_1_1_iterator_1a6c641d5cd37386abdb0aa8d73454611a" kindref="member">Seek</ref>(pos);</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Key<sp/>current;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!iter.<ref refid="classleveldb_1_1_skip_list_1_1_iterator_1ac074827b7e9ded32283385e6228ef8cd" kindref="member">Valid</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>current<sp/>=<sp/>MakeKey(K,<sp/>0);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>current<sp/>=<sp/>iter.<ref refid="classleveldb_1_1_skip_list_1_1_iterator_1a5d2a82038f440d557b32afb398c7eb57" kindref="member">key</ref>();</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testharness_8h_1ac2101fb1ffd0c81c17520b82f0fcfe21" kindref="member">ASSERT_TRUE</ref>(IsValidKey(current))<sp/>&lt;&lt;<sp/>current;</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testharness_8h_1ad71f56861528c854666f15f4bad921c2" kindref="member">ASSERT_LE</ref>(pos,<sp/>current)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;should<sp/>not<sp/>go<sp/>backwards&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Verify<sp/>that<sp/>everything<sp/>in<sp/>[pos,current)<sp/>was<sp/>not<sp/>present<sp/>in</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>initial_state.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(pos<sp/>&lt;<sp/>current)<sp/>{</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testharness_8h_1a6058af464aa1533b961936d5f6c5aea0" kindref="member">ASSERT_LT</ref>(key(pos),<sp/>K)<sp/>&lt;&lt;<sp/>pos;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Note<sp/>that<sp/>generation<sp/>0<sp/>is<sp/>never<sp/>inserted,<sp/>so<sp/>it<sp/>is<sp/>ok<sp/>if</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>&lt;*,0,*&gt;<sp/>is<sp/>missing.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="testharness_8h_1ac2101fb1ffd0c81c17520b82f0fcfe21" kindref="member">ASSERT_TRUE</ref>((gen(pos)<sp/>==<sp/>0)<sp/>||</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(gen(pos)<sp/>&gt;<sp/>initial_state.Get(key(pos)))</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>)<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;key:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>key(pos)</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;;<sp/>gen:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>gen(pos)</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;;<sp/>initgen:<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&lt;&lt;<sp/>initial_state.Get(key(pos));</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Advance<sp/>to<sp/>next<sp/>key<sp/>in<sp/>the<sp/>valid<sp/>key<sp/>space</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(key(pos)<sp/>&lt;<sp/>key(current))<sp/>{</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pos<sp/>=<sp/>MakeKey(key(pos)<sp/>+<sp/>1,<sp/>0);</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pos<sp/>=<sp/>MakeKey(key(pos),<sp/>gen(pos)<sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!iter.<ref refid="classleveldb_1_1_skip_list_1_1_iterator_1ac074827b7e9ded32283385e6228ef8cd" kindref="member">Valid</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(rnd-&gt;<ref refid="classleveldb_1_1_random_1a9e00ef1fcc82ed0ad16ba91b30ae8038" kindref="member">Next</ref>()<sp/>%<sp/>2)<sp/>{</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>iter.<ref refid="classleveldb_1_1_skip_list_1_1_iterator_1ade5a684c74056f578f85237735da0cef" kindref="member">Next</ref>();</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pos<sp/>=<sp/>MakeKey(key(pos),<sp/>gen(pos)<sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Key<sp/>new_target<sp/>=<sp/>RandomTarget(rnd);</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(new_target<sp/>&gt;<sp/>pos)<sp/>{</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pos<sp/>=<sp/>new_target;</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>iter.<ref refid="classleveldb_1_1_skip_list_1_1_iterator_1a6c641d5cd37386abdb0aa8d73454611a" kindref="member">Seek</ref>(new_target);</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="283"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>ConcurrentTest::K;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Simple<sp/>test<sp/>that<sp/>does<sp/>single-threaded<sp/>testing<sp/>of<sp/>the<sp/>ConcurrentTest</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="287"><highlight class="normal"></highlight><highlight class="comment">//<sp/>scaffolding.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="288" refid="namespaceleveldb_1a7a43c7e5a10488ca82072e3cc871fcb2" refkind="member"><highlight class="normal"><ref refid="namespaceleveldb_1a9c4f7d5038dfc2985100b60ae2549fde" kindref="member">TEST</ref>(<ref refid="classleveldb_1_1_skip_test" kindref="compound">SkipTest</ref>,<sp/>ConcurrentWithoutThreads)<sp/>{</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_concurrent_test" kindref="compound">ConcurrentTest</ref><sp/><ref refid="db__test_8cc_1a9cc668c18debdbcad21b45fdd8158648" kindref="member">test</ref>;</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_random" kindref="compound">Random</ref><sp/>rnd(<ref refid="namespaceleveldb_1_1test_1a0d48ce23bccd2763df90789cb3aac03c" kindref="member">test::RandomSeed</ref>());</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>10000;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/>test.<ref refid="classleveldb_1_1_concurrent_test_1a9dcaf11ec747ad37150526f891627c50" kindref="member">ReadStep</ref>(&amp;rnd);</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/>test.<ref refid="classleveldb_1_1_concurrent_test_1a43dc8afb9124c364d6e97dc3d421131f" kindref="member">WriteStep</ref>(&amp;rnd);</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="295"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"></highlight></codeline>
+<codeline lineno="297" refid="classleveldb_1_1_test_state" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classleveldb_1_1_test_state" kindref="compound">TestState</ref><sp/>{</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="299" refid="classleveldb_1_1_test_state_1a090fd0c59fb141c4843511b4020f05e9" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_concurrent_test" kindref="compound">ConcurrentTest</ref><sp/><ref refid="classleveldb_1_1_test_state_1a090fd0c59fb141c4843511b4020f05e9" kindref="member">t_</ref>;</highlight></codeline>
+<codeline lineno="300" refid="classleveldb_1_1_test_state_1aa44f519b574945b0061c88df42fd4725" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_test_state_1aa44f519b574945b0061c88df42fd4725" kindref="member">seed_</ref>;</highlight></codeline>
+<codeline lineno="301" refid="classleveldb_1_1_test_state_1a04e07cf69866e925db3fafd5cf9fa23f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1port_1_1_atomic_pointer" kindref="compound">port::AtomicPointer</ref><sp/><ref refid="classleveldb_1_1_test_state_1a04e07cf69866e925db3fafd5cf9fa23f" kindref="member">quit_flag_</ref>;</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight></codeline>
+<codeline lineno="303" refid="classleveldb_1_1_test_state_1a1bf1f0a16815237ff1f29d2925d9a4ad" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_test_state_1a1bf1f0a16815237ff1f29d2925d9a4ad" kindref="member">ReaderState</ref><sp/>{</highlight></codeline>
+<codeline lineno="304" refid="classleveldb_1_1_test_state_1a1bf1f0a16815237ff1f29d2925d9a4ada93ff507fceeb18ff487d343ce24e49fb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classleveldb_1_1_test_state_1a1bf1f0a16815237ff1f29d2925d9a4ada93ff507fceeb18ff487d343ce24e49fb" kindref="member">STARTING</ref>,</highlight></codeline>
+<codeline lineno="305" refid="classleveldb_1_1_test_state_1a1bf1f0a16815237ff1f29d2925d9a4adab21481f14b9bab70778076d33ea574da" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classleveldb_1_1_test_state_1a1bf1f0a16815237ff1f29d2925d9a4adab21481f14b9bab70778076d33ea574da" kindref="member">RUNNING</ref>,</highlight></codeline>
+<codeline lineno="306" refid="classleveldb_1_1_test_state_1a1bf1f0a16815237ff1f29d2925d9a4ada5d7f032453f326a46f7ebd8b3f0c7d83" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classleveldb_1_1_test_state_1a1bf1f0a16815237ff1f29d2925d9a4ada5d7f032453f326a46f7ebd8b3f0c7d83" kindref="member">DONE</ref></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309" refid="classleveldb_1_1_test_state_1a777f2182bef5c524d580dc26ec589c2d" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_test_state_1a777f2182bef5c524d580dc26ec589c2d" kindref="member">TestState</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>s)</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>seed_(s),</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>quit_flag_(NULL),</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state_(<ref refid="classleveldb_1_1_test_state_1a1bf1f0a16815237ff1f29d2925d9a4ada93ff507fceeb18ff487d343ce24e49fb" kindref="member">STARTING</ref>),</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state_cv_(&amp;mu_)<sp/>{}</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight></codeline>
+<codeline lineno="315" refid="classleveldb_1_1_test_state_1ab11f5574ad50202e18e8274e16953f0a" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_test_state_1ab11f5574ad50202e18e8274e16953f0a" kindref="member">Wait</ref>(<ref refid="classleveldb_1_1_test_state_1a1bf1f0a16815237ff1f29d2925d9a4ad" kindref="member">ReaderState</ref><sp/>s)<sp/>{</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/>mu_.<ref refid="classleveldb_1_1port_1_1_mutex_1a9a4da7195ce1802c077bc4d0035d4dd1" kindref="member">Lock</ref>();</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(state_<sp/>!=<sp/>s)<sp/>{</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>state_cv_.<ref refid="classleveldb_1_1port_1_1_cond_var_1a9e9855595a3f3a3ccf47949696065597" kindref="member">Wait</ref>();</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/>mu_.<ref refid="classleveldb_1_1port_1_1_mutex_1a9d69a21c53dad7732b2006acf87f006b" kindref="member">Unlock</ref>();</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"></highlight></codeline>
+<codeline lineno="323" refid="classleveldb_1_1_test_state_1ae63a695f700220714efa0e622511740c" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_test_state_1ae63a695f700220714efa0e622511740c" kindref="member">Change</ref>(<ref refid="classleveldb_1_1_test_state_1a1bf1f0a16815237ff1f29d2925d9a4ad" kindref="member">ReaderState</ref><sp/>s)<sp/>{</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/>mu_.<ref refid="classleveldb_1_1port_1_1_mutex_1a9a4da7195ce1802c077bc4d0035d4dd1" kindref="member">Lock</ref>();</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/>state_<sp/>=<sp/>s;</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/>state_cv_.<ref refid="classleveldb_1_1port_1_1_cond_var_1ac36a2038b058b24886741c99e4a7d7d4" kindref="member">Signal</ref>();</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/>mu_.<ref refid="classleveldb_1_1port_1_1_mutex_1a9d69a21c53dad7732b2006acf87f006b" kindref="member">Unlock</ref>();</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"></highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1port_1_1_mutex" kindref="compound">port::Mutex</ref><sp/>mu_;</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_test_state_1a1bf1f0a16815237ff1f29d2925d9a4ad" kindref="member">ReaderState</ref><sp/>state_;</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1port_1_1_cond_var" kindref="compound">port::CondVar</ref><sp/>state_cv_;</highlight></codeline>
+<codeline lineno="334"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"></highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ConcurrentReader(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="env__posix_8cc_1a9ce2ec4812a92cb6ab39f6e81e9173a9" kindref="member">arg</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/>TestState*<sp/><ref refid="db__test_8cc_1a42432b4356adce5579ccf597f6e83e54" kindref="member">state</ref><sp/>=<sp/></highlight><highlight class="keyword">reinterpret_cast&lt;</highlight><highlight class="normal">TestState*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="env__posix_8cc_1a9ce2ec4812a92cb6ab39f6e81e9173a9" kindref="member">arg</ref>);</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/>Random<sp/>rnd(state-&gt;seed_);</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref><sp/>reads<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/>state-&gt;Change(<ref refid="classleveldb_1_1_test_state_1a1bf1f0a16815237ff1f29d2925d9a4adab21481f14b9bab70778076d33ea574da" kindref="member">TestState::RUNNING</ref>);</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(!state-&gt;quit_flag_.Acquire_Load())<sp/>{</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/>state-&gt;t_.ReadStep(&amp;rnd);</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/>++reads;</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/>state-&gt;Change(<ref refid="classleveldb_1_1_test_state_1a1bf1f0a16815237ff1f29d2925d9a4ada5d7f032453f326a46f7ebd8b3f0c7d83" kindref="member">TestState::DONE</ref>);</highlight></codeline>
+<codeline lineno="346"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"></highlight></codeline>
+<codeline lineno="348"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>RunConcurrent(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>run)<sp/>{</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>seed<sp/>=<sp/><ref refid="namespaceleveldb_1_1test_1a0d48ce23bccd2763df90789cb3aac03c" kindref="member">test::RandomSeed</ref>()<sp/>+<sp/>(run<sp/>*<sp/>100);</highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/>Random<sp/>rnd(seed);</highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>N<sp/>=<sp/>1000;</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>kSize<sp/>=<sp/>1000;</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>N;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((i<sp/>%<sp/>100)<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>fprintf(stderr,<sp/></highlight><highlight class="stringliteral">&quot;Run<sp/>%d<sp/>of<sp/>%d\n&quot;</highlight><highlight class="normal">,<sp/>i,<sp/>N);</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/>TestState<sp/><ref refid="db__test_8cc_1a42432b4356adce5579ccf597f6e83e54" kindref="member">state</ref>(seed<sp/>+<sp/>1);</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classleveldb_1_1_env_1ae15b67e650ff6790059745fd1b3bf3e7" kindref="member">Env::Default</ref>()-&gt;<ref refid="classleveldb_1_1_env_1a6b5fc50322d8404f5b13fad0e03d8724" kindref="member">Schedule</ref>(ConcurrentReader,<sp/>&amp;state);</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/>state.Wait(<ref refid="classleveldb_1_1_test_state_1a1bf1f0a16815237ff1f29d2925d9a4adab21481f14b9bab70778076d33ea574da" kindref="member">TestState::RUNNING</ref>);</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>kSize;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>state.t_.WriteStep(&amp;rnd);</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/>state.quit_flag_.Release_Store(&amp;state);<sp/><sp/></highlight><highlight class="comment">//<sp/>Any<sp/>non-NULL<sp/>arg<sp/>will<sp/>do</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/>state.Wait(<ref refid="classleveldb_1_1_test_state_1a1bf1f0a16815237ff1f29d2925d9a4ada5d7f032453f326a46f7ebd8b3f0c7d83" kindref="member">TestState::DONE</ref>);</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="366"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"></highlight></codeline>
+<codeline lineno="368" refid="namespaceleveldb_1a1997f90d2777db110a06646c9a3c7ba2" refkind="member"><highlight class="normal"><ref refid="namespaceleveldb_1a9c4f7d5038dfc2985100b60ae2549fde" kindref="member">TEST</ref>(<ref refid="classleveldb_1_1_skip_test" kindref="compound">SkipTest</ref>,<sp/>Concurrent1)<sp/>{<sp/>RunConcurrent(1);<sp/>}</highlight></codeline>
+<codeline lineno="369" refid="namespaceleveldb_1a0ac3fd3bf30e8efdbdead6e963ffbe3d" refkind="member"><highlight class="normal"><ref refid="namespaceleveldb_1a9c4f7d5038dfc2985100b60ae2549fde" kindref="member">TEST</ref>(<ref refid="classleveldb_1_1_skip_test" kindref="compound">SkipTest</ref>,<sp/>Concurrent2)<sp/>{<sp/>RunConcurrent(2);<sp/>}</highlight></codeline>
+<codeline lineno="370" refid="namespaceleveldb_1a95f25d807cc1b1a16a34f9a3a24fb7bc" refkind="member"><highlight class="normal"><ref refid="namespaceleveldb_1a9c4f7d5038dfc2985100b60ae2549fde" kindref="member">TEST</ref>(<ref refid="classleveldb_1_1_skip_test" kindref="compound">SkipTest</ref>,<sp/>Concurrent3)<sp/>{<sp/>RunConcurrent(3);<sp/>}</highlight></codeline>
+<codeline lineno="371" refid="namespaceleveldb_1a491925bfd0a0eb00edbbbbc0f1d3c0c9" refkind="member"><highlight class="normal"><ref refid="namespaceleveldb_1a9c4f7d5038dfc2985100b60ae2549fde" kindref="member">TEST</ref>(<ref refid="classleveldb_1_1_skip_test" kindref="compound">SkipTest</ref>,<sp/>Concurrent4)<sp/>{<sp/>RunConcurrent(4);<sp/>}</highlight></codeline>
+<codeline lineno="372" refid="namespaceleveldb_1ae94270b577d135677ad028bef3170a16" refkind="member"><highlight class="normal"><ref refid="namespaceleveldb_1a9c4f7d5038dfc2985100b60ae2549fde" kindref="member">TEST</ref>(<ref refid="classleveldb_1_1_skip_test" kindref="compound">SkipTest</ref>,<sp/>Concurrent5)<sp/>{<sp/>RunConcurrent(5);<sp/>}</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"></highlight></codeline>
+<codeline lineno="374"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>leveldb</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="375"><highlight class="normal"></highlight></codeline>
+<codeline lineno="376" refid="skiplist__test_8cc_1a3c04138a5bfe5d72780bb7e82a18e627" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="skiplist__test_8cc_1a3c04138a5bfe5d72780bb7e82a18e627" kindref="member">main</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">**<sp/>argv)<sp/>{</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1_1test_1a3329162c54a0bff42d41c2ac86b2580a" kindref="member">leveldb::test::RunAllTests</ref>();</highlight></codeline>
+<codeline lineno="378"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/leveldb/db/skiplist_test.cc"/>
+  </compounddef>
+</doxygen>

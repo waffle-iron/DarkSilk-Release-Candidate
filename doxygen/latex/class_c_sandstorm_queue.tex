@@ -1,0 +1,280 @@
+\hypertarget{class_c_sandstorm_queue}{}\section{C\+Sandstorm\+Queue Class Reference}
+\label{class_c_sandstorm_queue}\index{C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}}
+
+
+{\ttfamily \#include $<$sandstorm.\+h$>$}
+
+
+
+Collaboration diagram for C\+Sandstorm\+Queue\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_sandstorm_queue_ab5252e860c7a8050dbd44d32b892f131}{C\+Sandstorm\+Queue} ()
+\item 
+{\footnotesize template$<$typename Stream , typename Operation $>$ }\\void \hyperlink{class_c_sandstorm_queue_a9179d7339eb373473bc79c2ac1eb5e9e}{Serialization\+Op} (Stream \&s, Operation ser\+\_\+action, int n\+Type, int n\+Version)
+\item 
+bool \hyperlink{class_c_sandstorm_queue_a0e1739e9a0c517f0de35807c92db1256}{Get\+Address} (\hyperlink{class_c_service}{C\+Service} \&addr)
+\item 
+bool \hyperlink{class_c_sandstorm_queue_acaa6374baeb707ed1726ec60c67c1624}{Get\+Protocol\+Version} (int \&protocol\+Version)
+\begin{DoxyCompactList}\small\item\em Get the protocol version. \end{DoxyCompactList}\item 
+bool \hyperlink{class_c_sandstorm_queue_a7a9c9b05136c8dfe75d9c1d4c81df83b}{Sign} ()
+\item 
+bool \hyperlink{class_c_sandstorm_queue_af5d648df81c6159c92f20d88af3974d3}{Relay} ()
+\item 
+bool \hyperlink{class_c_sandstorm_queue_a2b509d89f0a6c0d858a5e28bab2e2017}{Is\+Expired} ()
+\begin{DoxyCompactList}\small\item\em Is this Sandstorm expired? \end{DoxyCompactList}\item 
+bool \hyperlink{class_c_sandstorm_queue_a8ef2f37969599d3b30bbe479eff56460}{Check\+Signature} ()
+\begin{DoxyCompactList}\small\item\em Check if we have a valid Stormnode address. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_tx_in}{C\+Tx\+In} \hyperlink{class_c_sandstorm_queue_a4c2e9dc92126c22f8c095577d0f8782e}{vin}
+\item 
+\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} \hyperlink{class_c_sandstorm_queue_a46297b8931f426f3069822fb952c6566}{time}
+\item 
+int \hyperlink{class_c_sandstorm_queue_ab309d93e75dc503f0d9c8f44bc7e490a}{n\+Denom}
+\item 
+bool \hyperlink{class_c_sandstorm_queue_a3a372c1d7da3e28a15c8c9e459fed163}{ready}
+\item 
+std\+::vector$<$ unsigned char $>$ \hyperlink{class_c_sandstorm_queue_a3c1c68afe6fe851da5f14d3fa557e249}{vch\+Sig}
+\item 
+\hyperlink{class_c_sandstorm_queue_a6d484de91ef721e9ad136d58fba94a41}{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A currently inprogress Sandstorm merge and denomination information 
+
+Definition at line 150 of file sandstorm.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_sandstorm_queue_ab5252e860c7a8050dbd44d32b892f131}{}\index{C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}!C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}}
+\index{C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}!C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}}
+\subsubsection[{C\+Sandstorm\+Queue}]{\setlength{\rightskip}{0pt plus 5cm}C\+Sandstorm\+Queue\+::\+C\+Sandstorm\+Queue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_sandstorm_queue_ab5252e860c7a8050dbd44d32b892f131}
+
+
+Definition at line 159 of file sandstorm.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_sandstorm_queue_a8ef2f37969599d3b30bbe479eff56460}{}\index{C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}!Check\+Signature@{Check\+Signature}}
+\index{Check\+Signature@{Check\+Signature}!C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}}
+\subsubsection[{Check\+Signature}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Sandstorm\+Queue\+::\+Check\+Signature (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_sandstorm_queue_a8ef2f37969599d3b30bbe479eff56460}
+
+
+Check if we have a valid Stormnode address. 
+
+
+
+Definition at line 2132 of file sandstorm.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 1
+
+
+\hypertarget{class_c_sandstorm_queue_a0e1739e9a0c517f0de35807c92db1256}{}\index{C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}!Get\+Address@{Get\+Address}}
+\index{Get\+Address@{Get\+Address}!C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}}
+\subsubsection[{Get\+Address}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Sandstorm\+Queue\+::\+Get\+Address (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Service} \&}]{addr}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_sandstorm_queue_a0e1739e9a0c517f0de35807c92db1256}
+
+
+Definition at line 179 of file sandstorm.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+\hypertarget{class_c_sandstorm_queue_acaa6374baeb707ed1726ec60c67c1624}{}\index{C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}!Get\+Protocol\+Version@{Get\+Protocol\+Version}}
+\index{Get\+Protocol\+Version@{Get\+Protocol\+Version}!C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}}
+\subsubsection[{Get\+Protocol\+Version}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Sandstorm\+Queue\+::\+Get\+Protocol\+Version (
+\begin{DoxyParamCaption}
+\item[{int \&}]{protocol\+Version}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_sandstorm_queue_acaa6374baeb707ed1726ec60c67c1624}
+
+
+Get the protocol version. 
+
+
+
+Definition at line 191 of file sandstorm.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 4
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 5
+
+
+\hypertarget{class_c_sandstorm_queue_a2b509d89f0a6c0d858a5e28bab2e2017}{}\index{C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}!Is\+Expired@{Is\+Expired}}
+\index{Is\+Expired@{Is\+Expired}!C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}}
+\subsubsection[{Is\+Expired}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Sandstorm\+Queue\+::\+Is\+Expired (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_sandstorm_queue_a2b509d89f0a6c0d858a5e28bab2e2017}
+
+
+Is this Sandstorm expired? 
+
+
+
+Definition at line 214 of file sandstorm.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 6
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 7
+
+
+\hypertarget{class_c_sandstorm_queue_af5d648df81c6159c92f20d88af3974d3}{}\index{C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}!Relay@{Relay}}
+\index{Relay@{Relay}!C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}}
+\subsubsection[{Relay}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Sandstorm\+Queue\+::\+Relay (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_sandstorm_queue_af5d648df81c6159c92f20d88af3974d3}
+
+
+Definition at line 2120 of file sandstorm.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 8
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 9
+
+
+\hypertarget{class_c_sandstorm_queue_a9179d7339eb373473bc79c2ac1eb5e9e}{}\index{C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}!Serialization\+Op@{Serialization\+Op}}
+\index{Serialization\+Op@{Serialization\+Op}!C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}}
+\subsubsection[{Serialization\+Op}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename Operation $>$ void C\+Sandstorm\+Queue\+::\+Serialization\+Op (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{Operation}]{ser\+\_\+action, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_sandstorm_queue_a9179d7339eb373473bc79c2ac1eb5e9e}
+
+
+Definition at line 171 of file sandstorm.\+h.
+
+\hypertarget{class_c_sandstorm_queue_a7a9c9b05136c8dfe75d9c1d4c81df83b}{}\index{C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}!Sign@{Sign}}
+\index{Sign@{Sign}!C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}}
+\subsubsection[{Sign}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Sandstorm\+Queue\+::\+Sign (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_sandstorm_queue_a7a9c9b05136c8dfe75d9c1d4c81df83b}
+Sign this Sandstorm transaction \begin{DoxyReturn}{Returns}
+true if all conditions are met\+: 1) we have an active Stormnode, 2) we have a valid Stormnode private key, 3) we signed the message successfully, and 4) we verified the message successfully 
+\end{DoxyReturn}
+
+
+Definition at line 2091 of file sandstorm.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 10
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 11
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_c_sandstorm_queue_a6d484de91ef721e9ad136d58fba94a41}{}\index{C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}!A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}}
+\index{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}!C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}}
+\subsubsection[{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}]{\setlength{\rightskip}{0pt plus 5cm}C\+Sandstorm\+Queue\+::\+A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}\label{class_c_sandstorm_queue_a6d484de91ef721e9ad136d58fba94a41}
+
+
+Definition at line 168 of file sandstorm.\+h.
+
+\hypertarget{class_c_sandstorm_queue_ab309d93e75dc503f0d9c8f44bc7e490a}{}\index{C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}!n\+Denom@{n\+Denom}}
+\index{n\+Denom@{n\+Denom}!C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}}
+\subsubsection[{n\+Denom}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Sandstorm\+Queue\+::n\+Denom}\label{class_c_sandstorm_queue_ab309d93e75dc503f0d9c8f44bc7e490a}
+
+
+Definition at line 155 of file sandstorm.\+h.
+
+\hypertarget{class_c_sandstorm_queue_a3a372c1d7da3e28a15c8c9e459fed163}{}\index{C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}!ready@{ready}}
+\index{ready@{ready}!C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}}
+\subsubsection[{ready}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Sandstorm\+Queue\+::ready}\label{class_c_sandstorm_queue_a3a372c1d7da3e28a15c8c9e459fed163}
+
+
+Definition at line 156 of file sandstorm.\+h.
+
+\hypertarget{class_c_sandstorm_queue_a46297b8931f426f3069822fb952c6566}{}\index{C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}!time@{time}}
+\index{time@{time}!C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}}
+\subsubsection[{time}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int64\+\_\+t} C\+Sandstorm\+Queue\+::time}\label{class_c_sandstorm_queue_a46297b8931f426f3069822fb952c6566}
+
+
+Definition at line 154 of file sandstorm.\+h.
+
+\hypertarget{class_c_sandstorm_queue_a3c1c68afe6fe851da5f14d3fa557e249}{}\index{C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}!vch\+Sig@{vch\+Sig}}
+\index{vch\+Sig@{vch\+Sig}!C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}}
+\subsubsection[{vch\+Sig}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$unsigned char$>$ C\+Sandstorm\+Queue\+::vch\+Sig}\label{class_c_sandstorm_queue_a3c1c68afe6fe851da5f14d3fa557e249}
+
+
+Definition at line 157 of file sandstorm.\+h.
+
+\hypertarget{class_c_sandstorm_queue_a4c2e9dc92126c22f8c095577d0f8782e}{}\index{C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}!vin@{vin}}
+\index{vin@{vin}!C\+Sandstorm\+Queue@{C\+Sandstorm\+Queue}}
+\subsubsection[{vin}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Tx\+In} C\+Sandstorm\+Queue\+::vin}\label{class_c_sandstorm_queue_a4c2e9dc92126c22f8c095577d0f8782e}
+
+
+Definition at line 153 of file sandstorm.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/\hyperlink{sandstorm_8h}{sandstorm.\+h}\item 
+/home/dev/ds-\/160209/src/\hyperlink{sandstorm_8cpp}{sandstorm.\+cpp}\end{DoxyCompactItemize}

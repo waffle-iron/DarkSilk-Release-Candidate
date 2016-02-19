@@ -1,0 +1,340 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_notificator" kind="class" language="C++" prot="public">
+    <compoundname>Notificator</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QObject</basecompoundref>
+    <includes refid="notificator_8h" local="no">notificator.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_notificator_1aa2ff8a05d471e32e77584a2b8dd182ab" prot="public" static="no">
+        <name>Class</name>
+        <enumvalue id="class_notificator_1aa2ff8a05d471e32e77584a2b8dd182aba195b01e918cc724c6ad65f5037e85f83" prot="public">
+          <name>Information</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Informational message </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_notificator_1aa2ff8a05d471e32e77584a2b8dd182abac33ad19811d3b1d6b57305dd75d63a5e" prot="public">
+          <name>Warning</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Notify user of potential problem </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_notificator_1aa2ff8a05d471e32e77584a2b8dd182aba596518f9cfdbd57b0fdc68fc95c69ecd" prot="public">
+          <name>Critical</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>An error occurred </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/notificator.h" line="28" column="1" bodyfile="/home/dev/ds-160209/src/qt/notificator.h" bodystart="27" bodyend="32"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-type">
+      <memberdef kind="enum" id="class_notificator_1aaa6bef35e7e183f0ac23e046dc3ea73e" prot="private" static="no">
+        <name>Mode</name>
+        <enumvalue id="class_notificator_1aaa6bef35e7e183f0ac23e046dc3ea73eac466ee93cc83821e436ebc5488cd66e0" prot="private">
+          <name>None</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Ignore informational notifications, and show a modal pop-up dialog for Critical notifications. </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_notificator_1aaa6bef35e7e183f0ac23e046dc3ea73ea27e0c348c2fdc206db2e50aee788d782" prot="private">
+          <name>Freedesktop</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Use DBus org.freedesktop.Notifications </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_notificator_1aaa6bef35e7e183f0ac23e046dc3ea73ea2793742e55df091325c5d26e9e3db5fc" prot="private">
+          <name>QSystemTray</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Use QSystemTray::showMessage </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_notificator_1aaa6bef35e7e183f0ac23e046dc3ea73ea1691fdf2248407f7b714712f0c986d5e" prot="private">
+          <name>UserNotificationCenter</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Use the 10.8+ User Notification Center (Mac only) </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/notificator.h" line="48" column="1" bodyfile="/home/dev/ds-160209/src/qt/notificator.h" bodystart="48" bodyend="53"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_notificator_1a3670b12cec8a24e2cb013d243e2315d8" prot="private" static="no" mutable="no">
+        <type>QWidget *</type>
+        <definition>QWidget* Notificator::parent</definition>
+        <argsstring></argsstring>
+        <name>parent</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/notificator.h" line="47" column="1" bodyfile="/home/dev/ds-160209/src/qt/notificator.h" bodystart="47" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_notificator_1a248cc3a5e6cae919632852cdf2b246b6" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString Notificator::programName</definition>
+        <argsstring></argsstring>
+        <name>programName</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/notificator.h" line="54" column="1" bodyfile="/home/dev/ds-160209/src/qt/notificator.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_notificator_1a8557df337c4dcb3bde2ca2019a834837" prot="private" static="no" mutable="no">
+        <type>Mode</type>
+        <definition>Mode Notificator::mode</definition>
+        <argsstring></argsstring>
+        <name>mode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/notificator.h" line="55" column="1" bodyfile="/home/dev/ds-160209/src/qt/notificator.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_notificator_1ad94b0bdc812c536b2c64b9085e2790a3" prot="private" static="no" mutable="no">
+        <type>QSystemTrayIcon *</type>
+        <definition>QSystemTrayIcon* Notificator::trayIcon</definition>
+        <argsstring></argsstring>
+        <name>trayIcon</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/notificator.h" line="56" column="1" bodyfile="/home/dev/ds-160209/src/qt/notificator.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_notificator_1a160ee34ea7ce46bd20d5684504f53509" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Notificator::Notificator</definition>
+        <argsstring>(const QString &amp;programName=QString(), QSystemTrayIcon *trayIcon=0, QWidget *parent=0)</argsstring>
+        <name>Notificator</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>programName</declname>
+          <defval>QString()</defval>
+        </param>
+        <param>
+          <type>QSystemTrayIcon *</type>
+          <declname>trayIcon</declname>
+          <defval>0</defval>
+        </param>
+        <param>
+          <type>QWidget *</type>
+          <declname>parent</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a new notificator. <simplesect kind="note"><para>Ownership of trayIcon is not transferred to this object. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/notificator.h" line="23" column="1" bodyfile="/home/dev/ds-160209/src/qt/notificator.cpp" bodystart="27" bodyend="55"/>
+        <references refid="class_mac_notification_handler_1a8ba83adcb63db47e3f7a76a0afc02b9d" compoundref="macnotificationhandler_8mm" startline="59" endline="65">MacNotificationHandler::instance</references>
+        <references refid="class_mac_notification_handler_1a132cba3b7df82afd3b07ca08599b94a5">MacNotificationHandler::hasUserNotificationCenterSupport</references>
+      </memberdef>
+      <memberdef kind="function" id="class_notificator_1a38d79072ff215da9214047c9a8d27e58" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Notificator::~Notificator</definition>
+        <argsstring>()</argsstring>
+        <name>~Notificator</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/notificator.h" line="24" column="1" bodyfile="/home/dev/ds-160209/src/qt/notificator.cpp" bodystart="57" bodyend="62"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-slot">
+      <memberdef kind="slot" id="class_notificator_1ae08e1e7e85ddc4690f307649021f7fdc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Notificator::notify</definition>
+        <argsstring>(Class cls, const QString &amp;title, const QString &amp;text, const QIcon &amp;icon=QIcon(), int millisTimeout=10000)</argsstring>
+        <name>notify</name>
+        <param>
+          <type><ref refid="class_notificator_1aa2ff8a05d471e32e77584a2b8dd182ab" kindref="member">Class</ref></type>
+          <declname>cls</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>title</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>text</declname>
+        </param>
+        <param>
+          <type>const QIcon &amp;</type>
+          <declname>icon</declname>
+          <defval>QIcon()</defval>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>millisTimeout</declname>
+          <defval>10000</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Show notification message. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">cls</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>general message class </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">title</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>title shown with message </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>message content </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">icon</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>optional icon to show with message </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">millisTimeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>notification timeout in milliseconds (defaults to 10 seconds) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="note"><para>Platform implementations are free to ignore any of the provided fields except for <emphasis>text</emphasis>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/notificator.h" line="43" column="1" bodyfile="/home/dev/ds-160209/src/qt/notificator.cpp" bodystart="227" bodyend="252"/>
+        <references refid="class_notificator_1aa2ff8a05d471e32e77584a2b8dd182aba596518f9cfdbd57b0fdc68fc95c69ecd" compoundref="notificator_8h" startline="31">Critical</references>
+        <referencedby refid="class_dark_silk_g_u_i_1aa5509e7f1502f9b9bc3dd916a31c8d15" compoundref="darksilkgui_8cpp" startline="946" endline="1006">DarkSilkGUI::message</referencedby>
+        <referencedby refid="class_dark_silk_g_u_i_1afa1b67b5cb1a0631b7f49a9146d37a1c" compoundref="darksilkgui_8cpp" startline="1255" endline="1275">DarkSilkGUI::dropEvent</referencedby>
+        <referencedby refid="class_dark_silk_g_u_i_1abd255bcdc761c0ed6ea5e3eb285be1d0" compoundref="darksilkgui_8cpp" startline="1277" endline="1286">DarkSilkGUI::handleURI</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_notificator_1ac48ec94cd02fc4ea80db6c50e24086c1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Notificator::notifySystray</definition>
+        <argsstring>(Class cls, const QString &amp;title, const QString &amp;text, const QIcon &amp;icon, int millisTimeout)</argsstring>
+        <name>notifySystray</name>
+        <param>
+          <type><ref refid="class_notificator_1aa2ff8a05d471e32e77584a2b8dd182ab" kindref="member">Class</ref></type>
+          <declname>cls</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>title</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>text</declname>
+        </param>
+        <param>
+          <type>const QIcon &amp;</type>
+          <declname>icon</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>millisTimeout</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/notificator.h" line="62" column="1" bodyfile="/home/dev/ds-160209/src/qt/notificator.cpp" bodystart="204" bodyend="215"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Cross-platform desktop notification client. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="3358">
+        <label>QObject</label>
+      </node>
+      <node id="3357">
+        <label>Notificator</label>
+        <link refid="class_notificator"/>
+        <childnode refid="3358" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3360">
+        <label>QObject</label>
+      </node>
+      <node id="3359">
+        <label>Notificator</label>
+        <link refid="class_notificator"/>
+        <childnode refid="3360" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/dev/ds-160209/src/qt/notificator.h" line="16" column="1" bodyfile="/home/dev/ds-160209/src/qt/notificator.h" bodystart="15" bodyend="66"/>
+    <listofallmembers>
+      <member refid="class_notificator_1aa2ff8a05d471e32e77584a2b8dd182ab" prot="public" virt="non-virtual"><scope>Notificator</scope><name>Class</name></member>
+      <member refid="class_notificator_1aa2ff8a05d471e32e77584a2b8dd182aba596518f9cfdbd57b0fdc68fc95c69ecd" prot="public" virt="non-virtual"><scope>Notificator</scope><name>Critical</name></member>
+      <member refid="class_notificator_1aaa6bef35e7e183f0ac23e046dc3ea73ea27e0c348c2fdc206db2e50aee788d782" prot="private" virt="non-virtual"><scope>Notificator</scope><name>Freedesktop</name></member>
+      <member refid="class_notificator_1aa2ff8a05d471e32e77584a2b8dd182aba195b01e918cc724c6ad65f5037e85f83" prot="public" virt="non-virtual"><scope>Notificator</scope><name>Information</name></member>
+      <member refid="class_notificator_1aaa6bef35e7e183f0ac23e046dc3ea73e" prot="private" virt="non-virtual"><scope>Notificator</scope><name>Mode</name></member>
+      <member refid="class_notificator_1a8557df337c4dcb3bde2ca2019a834837" prot="private" virt="non-virtual"><scope>Notificator</scope><name>mode</name></member>
+      <member refid="class_notificator_1aaa6bef35e7e183f0ac23e046dc3ea73eac466ee93cc83821e436ebc5488cd66e0" prot="private" virt="non-virtual"><scope>Notificator</scope><name>None</name></member>
+      <member refid="class_notificator_1a160ee34ea7ce46bd20d5684504f53509" prot="public" virt="non-virtual"><scope>Notificator</scope><name>Notificator</name></member>
+      <member refid="class_notificator_1ae08e1e7e85ddc4690f307649021f7fdc" prot="public" virt="non-virtual"><scope>Notificator</scope><name>notify</name></member>
+      <member refid="class_notificator_1ac48ec94cd02fc4ea80db6c50e24086c1" prot="private" virt="non-virtual"><scope>Notificator</scope><name>notifySystray</name></member>
+      <member refid="class_notificator_1a3670b12cec8a24e2cb013d243e2315d8" prot="private" virt="non-virtual"><scope>Notificator</scope><name>parent</name></member>
+      <member refid="class_notificator_1a248cc3a5e6cae919632852cdf2b246b6" prot="private" virt="non-virtual"><scope>Notificator</scope><name>programName</name></member>
+      <member refid="class_notificator_1aaa6bef35e7e183f0ac23e046dc3ea73ea2793742e55df091325c5d26e9e3db5fc" prot="private" virt="non-virtual"><scope>Notificator</scope><name>QSystemTray</name></member>
+      <member refid="class_notificator_1ad94b0bdc812c536b2c64b9085e2790a3" prot="private" virt="non-virtual"><scope>Notificator</scope><name>trayIcon</name></member>
+      <member refid="class_notificator_1aaa6bef35e7e183f0ac23e046dc3ea73ea1691fdf2248407f7b714712f0c986d5e" prot="private" virt="non-virtual"><scope>Notificator</scope><name>UserNotificationCenter</name></member>
+      <member refid="class_notificator_1aa2ff8a05d471e32e77584a2b8dd182abac33ad19811d3b1d6b57305dd75d63a5e" prot="public" virt="non-virtual"><scope>Notificator</scope><name>Warning</name></member>
+      <member refid="class_notificator_1a38d79072ff215da9214047c9a8d27e58" prot="public" virt="non-virtual"><scope>Notificator</scope><name>~Notificator</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,773 @@
+\hypertarget{secp256k1_8h}{}\section{/home/dev/ds-\/160209/src/secp256k1/include/secp256k1.h File Reference}
+\label{secp256k1_8h}\index{/home/dev/ds-\/160209/src/secp256k1/include/secp256k1.\+h@{/home/dev/ds-\/160209/src/secp256k1/include/secp256k1.\+h}}
+{\ttfamily \#include $<$stddef.\+h$>$}\\*
+Include dependency graph for secp256k1.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structsecp256k1__pubkey}{secp256k1\+\_\+pubkey}
+\item 
+struct \hyperlink{structsecp256k1__ecdsa__signature}{secp256k1\+\_\+ecdsa\+\_\+signature}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{secp256k1_8h_a12c8b5d59a2f2a3f232cf48a13c10a6c}{S\+E\+C\+P256\+K1\+\_\+\+G\+N\+U\+C\+\_\+\+P\+R\+E\+R\+E\+Q}(\+\_\+maj,  \+\_\+min)~0
+\item 
+\#define \hyperlink{secp256k1_8h_a7ddc487fd46aee88f21cabedb7268b1e}{S\+E\+C\+P256\+K1\+\_\+\+I\+N\+L\+I\+N\+E}
+\item 
+\#define \hyperlink{secp256k1_8h_a3f1967acd0fe26283877c61b3f2694a5}{S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I}
+\item 
+\#define \hyperlink{secp256k1_8h_aebd5ca8fbfcbb0ba0754a46115143c2c}{S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T}
+\item 
+\#define \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(\+\_\+x)
+\item 
+\#define \hyperlink{secp256k1_8h_ab2572c9f38f9a644f2933f7b74a5072f}{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+M\+A\+S\+K}~((1 $<$$<$ 8) -\/ 1)
+\item 
+\#define \hyperlink{secp256k1_8h_ad96f13de52c4c94f5d11d53fd04c529f}{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+O\+N\+T\+E\+X\+T}~(1 $<$$<$ 0)
+\item 
+\#define \hyperlink{secp256k1_8h_af8d4e9ca93634062735b7f998ef9f68a}{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+I\+O\+N}~(1 $<$$<$ 1)
+\item 
+\#define \hyperlink{secp256k1_8h_aabde1ec66215bb0474821343583e1fb2}{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+B\+I\+T\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+V\+E\+R\+I\+F\+Y}~(1 $<$$<$ 8)
+\item 
+\#define \hyperlink{secp256k1_8h_ab516743de74b08ccbeea17fb5f783bc9}{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+B\+I\+T\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+S\+I\+G\+N}~(1 $<$$<$ 9)
+\item 
+\#define \hyperlink{secp256k1_8h_ac26f7c3f665e6422a651d2eb910f1a03}{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+B\+I\+T\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+I\+O\+N}~(1 $<$$<$ 8)
+\item 
+\#define \hyperlink{secp256k1_8h_add20a6c320e247ca7bd524cbc4259d64}{S\+E\+C\+P256\+K1\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+V\+E\+R\+I\+F\+Y}~(\hyperlink{secp256k1_8h_ad96f13de52c4c94f5d11d53fd04c529f}{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+O\+N\+T\+E\+X\+T} $\vert$ \hyperlink{secp256k1_8h_aabde1ec66215bb0474821343583e1fb2}{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+B\+I\+T\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+V\+E\+R\+I\+F\+Y})
+\item 
+\#define \hyperlink{secp256k1_8h_a0d34fe6baa73d3145f2e376e43de0b15}{S\+E\+C\+P256\+K1\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+S\+I\+G\+N}~(\hyperlink{secp256k1_8h_ad96f13de52c4c94f5d11d53fd04c529f}{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+O\+N\+T\+E\+X\+T} $\vert$ \hyperlink{secp256k1_8h_ab516743de74b08ccbeea17fb5f783bc9}{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+B\+I\+T\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+S\+I\+G\+N})
+\item 
+\#define \hyperlink{secp256k1_8h_a4f7b286aa714c2e0fb279c180f67e9b3}{S\+E\+C\+P256\+K1\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+N\+O\+N\+E}~(\hyperlink{secp256k1_8h_ad96f13de52c4c94f5d11d53fd04c529f}{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+O\+N\+T\+E\+X\+T})
+\item 
+\#define \hyperlink{secp256k1_8h_a7b8f642c65e8b5c81fa4421b7c42ab57}{S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+E\+D}~(\hyperlink{secp256k1_8h_af8d4e9ca93634062735b7f998ef9f68a}{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+I\+O\+N} $\vert$ \hyperlink{secp256k1_8h_ac26f7c3f665e6422a651d2eb910f1a03}{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+B\+I\+T\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+I\+O\+N})
+\item 
+\#define \hyperlink{secp256k1_8h_ab8e25dc58843e83926f95795f9e8a6e2}{S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+U\+N\+C\+O\+M\+P\+R\+E\+S\+S\+E\+D}~(\hyperlink{secp256k1_8h_af8d4e9ca93634062735b7f998ef9f68a}{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+I\+O\+N})
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structsecp256k1__context__struct}{secp256k1\+\_\+context\+\_\+struct} \hyperlink{secp256k1_8h_a282ec9e6dfec8c35955c3eb2f7476e5e}{secp256k1\+\_\+context}
+\item 
+typedef int($\ast$ \hyperlink{secp256k1_8h_a539882fd91bff672712fa19a4cfaeb98}{secp256k1\+\_\+nonce\+\_\+function}) (unsigned char $\ast$nonce32, const unsigned char $\ast$msg32, const unsigned char $\ast$key32, const unsigned char $\ast$algo16, void $\ast$data, unsigned int attempt)
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{secp256k1_8h_a3f1967acd0fe26283877c61b3f2694a5}{S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} \hyperlink{secp256k1_8h_a282ec9e6dfec8c35955c3eb2f7476e5e}{secp256k1\+\_\+context} $\ast$ \hyperlink{secp256k1_8h_a769d478f352afbb55200e33970533a3c}{secp256k1\+\_\+context\+\_\+create} (unsigned int flags) \hyperlink{secp256k1_8h_aebd5ca8fbfcbb0ba0754a46115143c2c}{S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T}
+\item 
+\hyperlink{secp256k1_8h_a3f1967acd0fe26283877c61b3f2694a5}{S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} \hyperlink{secp256k1_8h_a282ec9e6dfec8c35955c3eb2f7476e5e}{secp256k1\+\_\+context} $\ast$ \hyperlink{secp256k1_8h_a74bdea41233e26f6348ebab5c660db90}{secp256k1\+\_\+context\+\_\+clone} (const \hyperlink{secp256k1_8h_a282ec9e6dfec8c35955c3eb2f7476e5e}{secp256k1\+\_\+context} $\ast$ctx) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(1) \hyperlink{secp256k1_8h_aebd5ca8fbfcbb0ba0754a46115143c2c}{S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T}
+\item 
+\hyperlink{secp256k1_8h_a3f1967acd0fe26283877c61b3f2694a5}{S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} void \hyperlink{secp256k1_8h_af8569fb9aa73c0acf46afce4df662950}{secp256k1\+\_\+context\+\_\+destroy} (\hyperlink{secp256k1_8h_a282ec9e6dfec8c35955c3eb2f7476e5e}{secp256k1\+\_\+context} $\ast$ctx)
+\item 
+\hyperlink{secp256k1_8h_a3f1967acd0fe26283877c61b3f2694a5}{S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} void \hyperlink{secp256k1_8h_a3ec29bece9974f9535337eb7d91b351c}{secp256k1\+\_\+context\+\_\+set\+\_\+illegal\+\_\+callback} (\hyperlink{secp256k1_8h_a282ec9e6dfec8c35955c3eb2f7476e5e}{secp256k1\+\_\+context} $\ast$ctx, void($\ast$fun)(const char $\ast$message, void $\ast$data), const void $\ast$data) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(1)
+\item 
+\hyperlink{secp256k1_8h_a3f1967acd0fe26283877c61b3f2694a5}{S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} void \hyperlink{secp256k1_8h_a35106efb325f03468bcf5faa524c1cc4}{secp256k1\+\_\+context\+\_\+set\+\_\+error\+\_\+callback} (\hyperlink{secp256k1_8h_a282ec9e6dfec8c35955c3eb2f7476e5e}{secp256k1\+\_\+context} $\ast$ctx, void($\ast$fun)(const char $\ast$message, void $\ast$data), const void $\ast$data) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(1)
+\item 
+\hyperlink{secp256k1_8h_a3f1967acd0fe26283877c61b3f2694a5}{S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} \hyperlink{secp256k1_8h_aebd5ca8fbfcbb0ba0754a46115143c2c}{S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T} int \hyperlink{secp256k1_8h_a4e5dc8952c9a7e791376505ef2023ca1}{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+parse} (const \hyperlink{secp256k1_8h_a282ec9e6dfec8c35955c3eb2f7476e5e}{secp256k1\+\_\+context} $\ast$ctx, \hyperlink{structsecp256k1__pubkey}{secp256k1\+\_\+pubkey} $\ast$pubkey, const unsigned char $\ast$input, size\+\_\+t inputlen) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(1) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(2) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(3)
+\item 
+\hyperlink{secp256k1_8h_a3f1967acd0fe26283877c61b3f2694a5}{S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} int \hyperlink{secp256k1_8h_a34977bf00322e510e881160c421836d7}{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+serialize} (const \hyperlink{secp256k1_8h_a282ec9e6dfec8c35955c3eb2f7476e5e}{secp256k1\+\_\+context} $\ast$ctx, unsigned char $\ast$output, size\+\_\+t $\ast$outputlen, const \hyperlink{structsecp256k1__pubkey}{secp256k1\+\_\+pubkey} $\ast$pubkey, unsigned int flags) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(1) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(2) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(3) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(4)
+\item 
+\hyperlink{secp256k1_8h_a3f1967acd0fe26283877c61b3f2694a5}{S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} int \hyperlink{secp256k1_8h_a2aff2802eca3d15ec54298e879579897}{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+parse\+\_\+compact} (const \hyperlink{secp256k1_8h_a282ec9e6dfec8c35955c3eb2f7476e5e}{secp256k1\+\_\+context} $\ast$ctx, \hyperlink{structsecp256k1__ecdsa__signature}{secp256k1\+\_\+ecdsa\+\_\+signature} $\ast$sig, const unsigned char $\ast$input64) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(1) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(2) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(3)
+\item 
+\hyperlink{secp256k1_8h_a3f1967acd0fe26283877c61b3f2694a5}{S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} int \hyperlink{secp256k1_8h_a57d390dd5baa54855b0cb20628034b90}{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+parse\+\_\+der} (const \hyperlink{secp256k1_8h_a282ec9e6dfec8c35955c3eb2f7476e5e}{secp256k1\+\_\+context} $\ast$ctx, \hyperlink{structsecp256k1__ecdsa__signature}{secp256k1\+\_\+ecdsa\+\_\+signature} $\ast$sig, const unsigned char $\ast$input, size\+\_\+t inputlen) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(1) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(2) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(3)
+\item 
+\hyperlink{secp256k1_8h_a3f1967acd0fe26283877c61b3f2694a5}{S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} int \hyperlink{secp256k1_8h_ac07809ca872ec967ab4d3b1a95eafe0b}{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+serialize\+\_\+der} (const \hyperlink{secp256k1_8h_a282ec9e6dfec8c35955c3eb2f7476e5e}{secp256k1\+\_\+context} $\ast$ctx, unsigned char $\ast$output, size\+\_\+t $\ast$outputlen, const \hyperlink{structsecp256k1__ecdsa__signature}{secp256k1\+\_\+ecdsa\+\_\+signature} $\ast$sig) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(1) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(2) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(3) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(4)
+\item 
+\hyperlink{secp256k1_8h_a3f1967acd0fe26283877c61b3f2694a5}{S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} int \hyperlink{secp256k1_8h_af8571ca8dcfb7f892519b337504dc700}{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+serialize\+\_\+compact} (const \hyperlink{secp256k1_8h_a282ec9e6dfec8c35955c3eb2f7476e5e}{secp256k1\+\_\+context} $\ast$ctx, unsigned char $\ast$output64, const \hyperlink{structsecp256k1__ecdsa__signature}{secp256k1\+\_\+ecdsa\+\_\+signature} $\ast$sig) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(1) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(2) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(3)
+\item 
+\hyperlink{secp256k1_8h_a3f1967acd0fe26283877c61b3f2694a5}{S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} \hyperlink{secp256k1_8h_aebd5ca8fbfcbb0ba0754a46115143c2c}{S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T} int \hyperlink{secp256k1_8h_a41065390f9039c4140ec04999724987d}{secp256k1\+\_\+ecdsa\+\_\+verify} (const \hyperlink{secp256k1_8h_a282ec9e6dfec8c35955c3eb2f7476e5e}{secp256k1\+\_\+context} $\ast$ctx, const \hyperlink{structsecp256k1__ecdsa__signature}{secp256k1\+\_\+ecdsa\+\_\+signature} $\ast$sig, const unsigned char $\ast$msg32, const \hyperlink{structsecp256k1__pubkey}{secp256k1\+\_\+pubkey} $\ast$pubkey) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(1) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(2) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(3) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(4)
+\item 
+\hyperlink{secp256k1_8h_a3f1967acd0fe26283877c61b3f2694a5}{S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} int \hyperlink{secp256k1_8h_a93ec36a19229f08acc5ff1ca613ab3a1}{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+normalize} (const \hyperlink{secp256k1_8h_a282ec9e6dfec8c35955c3eb2f7476e5e}{secp256k1\+\_\+context} $\ast$ctx, \hyperlink{structsecp256k1__ecdsa__signature}{secp256k1\+\_\+ecdsa\+\_\+signature} $\ast$sigout, const \hyperlink{structsecp256k1__ecdsa__signature}{secp256k1\+\_\+ecdsa\+\_\+signature} $\ast$sigin) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(1) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(3)
+\item 
+\hyperlink{secp256k1_8h_a3f1967acd0fe26283877c61b3f2694a5}{S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} int \hyperlink{secp256k1_8h_a691c048f3a3b4e7f51417c57ec058be7}{secp256k1\+\_\+ecdsa\+\_\+sign} (const \hyperlink{secp256k1_8h_a282ec9e6dfec8c35955c3eb2f7476e5e}{secp256k1\+\_\+context} $\ast$ctx, \hyperlink{structsecp256k1__ecdsa__signature}{secp256k1\+\_\+ecdsa\+\_\+signature} $\ast$sig, const unsigned char $\ast$msg32, const unsigned char $\ast$seckey, \hyperlink{secp256k1_8h_a539882fd91bff672712fa19a4cfaeb98}{secp256k1\+\_\+nonce\+\_\+function} noncefp, const void $\ast$ndata) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(1) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(2) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(3) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(4)
+\item 
+\hyperlink{secp256k1_8h_a3f1967acd0fe26283877c61b3f2694a5}{S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} \hyperlink{secp256k1_8h_aebd5ca8fbfcbb0ba0754a46115143c2c}{S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T} int \hyperlink{secp256k1_8h_a366f922fc0c787351e82ff8e3a95f652}{secp256k1\+\_\+ec\+\_\+seckey\+\_\+verify} (const \hyperlink{secp256k1_8h_a282ec9e6dfec8c35955c3eb2f7476e5e}{secp256k1\+\_\+context} $\ast$ctx, const unsigned char $\ast$seckey) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(1) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(2)
+\item 
+\hyperlink{secp256k1_8h_a3f1967acd0fe26283877c61b3f2694a5}{S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} \hyperlink{secp256k1_8h_aebd5ca8fbfcbb0ba0754a46115143c2c}{S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T} int \hyperlink{secp256k1_8h_a7438071aa8a6dc4697abe4f4659f2161}{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+create} (const \hyperlink{secp256k1_8h_a282ec9e6dfec8c35955c3eb2f7476e5e}{secp256k1\+\_\+context} $\ast$ctx, \hyperlink{structsecp256k1__pubkey}{secp256k1\+\_\+pubkey} $\ast$pubkey, const unsigned char $\ast$seckey) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(1) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(2) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(3)
+\item 
+\hyperlink{secp256k1_8h_a3f1967acd0fe26283877c61b3f2694a5}{S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} \hyperlink{secp256k1_8h_aebd5ca8fbfcbb0ba0754a46115143c2c}{S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T} int \hyperlink{secp256k1_8h_a0f9125cd8c970342ec5118f7bfacc0c5}{secp256k1\+\_\+ec\+\_\+privkey\+\_\+tweak\+\_\+add} (const \hyperlink{secp256k1_8h_a282ec9e6dfec8c35955c3eb2f7476e5e}{secp256k1\+\_\+context} $\ast$ctx, unsigned char $\ast$seckey, const unsigned char $\ast$tweak) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(1) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(2) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(3)
+\item 
+\hyperlink{secp256k1_8h_a3f1967acd0fe26283877c61b3f2694a5}{S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} \hyperlink{secp256k1_8h_aebd5ca8fbfcbb0ba0754a46115143c2c}{S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T} int \hyperlink{secp256k1_8h_a2381cde2a0ee44d90dcfa77e28b5eb79}{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+tweak\+\_\+add} (const \hyperlink{secp256k1_8h_a282ec9e6dfec8c35955c3eb2f7476e5e}{secp256k1\+\_\+context} $\ast$ctx, \hyperlink{structsecp256k1__pubkey}{secp256k1\+\_\+pubkey} $\ast$pubkey, const unsigned char $\ast$tweak) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(1) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(2) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(3)
+\item 
+\hyperlink{secp256k1_8h_a3f1967acd0fe26283877c61b3f2694a5}{S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} \hyperlink{secp256k1_8h_aebd5ca8fbfcbb0ba0754a46115143c2c}{S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T} int \hyperlink{secp256k1_8h_abe078cbb6b642d792f123ea67494f7e3}{secp256k1\+\_\+ec\+\_\+privkey\+\_\+tweak\+\_\+mul} (const \hyperlink{secp256k1_8h_a282ec9e6dfec8c35955c3eb2f7476e5e}{secp256k1\+\_\+context} $\ast$ctx, unsigned char $\ast$seckey, const unsigned char $\ast$tweak) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(1) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(2) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(3)
+\item 
+\hyperlink{secp256k1_8h_a3f1967acd0fe26283877c61b3f2694a5}{S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} \hyperlink{secp256k1_8h_aebd5ca8fbfcbb0ba0754a46115143c2c}{S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T} int \hyperlink{secp256k1_8h_a0351b25239f1146573d62477c3b2119a}{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+tweak\+\_\+mul} (const \hyperlink{secp256k1_8h_a282ec9e6dfec8c35955c3eb2f7476e5e}{secp256k1\+\_\+context} $\ast$ctx, \hyperlink{structsecp256k1__pubkey}{secp256k1\+\_\+pubkey} $\ast$pubkey, const unsigned char $\ast$tweak) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(1) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(2) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(3)
+\item 
+\hyperlink{secp256k1_8h_a3f1967acd0fe26283877c61b3f2694a5}{S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} \hyperlink{secp256k1_8h_aebd5ca8fbfcbb0ba0754a46115143c2c}{S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T} int \hyperlink{secp256k1_8h_a1b81d70feb6ed24dc902cbbd5ba569e7}{secp256k1\+\_\+context\+\_\+randomize} (\hyperlink{secp256k1_8h_a282ec9e6dfec8c35955c3eb2f7476e5e}{secp256k1\+\_\+context} $\ast$ctx, const unsigned char $\ast$seed32) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(1)
+\item 
+\hyperlink{secp256k1_8h_a3f1967acd0fe26283877c61b3f2694a5}{S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} \hyperlink{secp256k1_8h_aebd5ca8fbfcbb0ba0754a46115143c2c}{S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T} int \hyperlink{secp256k1_8h_a4d9b18720afc67f3685a9f171bac6737}{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+combine} (const \hyperlink{secp256k1_8h_a282ec9e6dfec8c35955c3eb2f7476e5e}{secp256k1\+\_\+context} $\ast$ctx, \hyperlink{structsecp256k1__pubkey}{secp256k1\+\_\+pubkey} $\ast$out, const \hyperlink{structsecp256k1__pubkey}{secp256k1\+\_\+pubkey} $\ast$const $\ast$ins, size\+\_\+t n) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(2) \hyperlink{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}(3)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{secp256k1_8h_a3f1967acd0fe26283877c61b3f2694a5}{S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} const \hyperlink{secp256k1_8h_a539882fd91bff672712fa19a4cfaeb98}{secp256k1\+\_\+nonce\+\_\+function} \hyperlink{secp256k1_8h_ac03ab067f194eb561175a6b522def2d8}{secp256k1\+\_\+nonce\+\_\+function\+\_\+rfc6979}
+\item 
+\hyperlink{secp256k1_8h_a3f1967acd0fe26283877c61b3f2694a5}{S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} const \hyperlink{secp256k1_8h_a539882fd91bff672712fa19a4cfaeb98}{secp256k1\+\_\+nonce\+\_\+function} \hyperlink{secp256k1_8h_a22f44df7786a1be5ad93aadfed75b932}{secp256k1\+\_\+nonce\+\_\+function\+\_\+default}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{secp256k1_8h_a3f1967acd0fe26283877c61b3f2694a5}{}\index{secp256k1.\+h@{secp256k1.\+h}!S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I@{S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I}}
+\index{S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I@{S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I}\label{secp256k1_8h_a3f1967acd0fe26283877c61b3f2694a5}
+
+
+Definition at line 132 of file secp256k1.\+h.
+
+\hypertarget{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}{}\index{secp256k1.\+h@{secp256k1.\+h}!S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L@{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}}
+\index{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L@{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+C\+P256\+K1\+\_\+\+A\+R\+G\+\_\+\+N\+O\+N\+N\+U\+L\+L(
+\begin{DoxyParamCaption}
+\item[{}]{\+\_\+x}
+\end{DoxyParamCaption}
+)}\label{secp256k1_8h_a03c194d8fa91b9b66758b36c91e0b5cb}
+
+
+Definition at line 147 of file secp256k1.\+h.
+
+\hypertarget{secp256k1_8h_a4f7b286aa714c2e0fb279c180f67e9b3}{}\index{secp256k1.\+h@{secp256k1.\+h}!S\+E\+C\+P256\+K1\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+N\+O\+N\+E@{S\+E\+C\+P256\+K1\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+N\+O\+N\+E}}
+\index{S\+E\+C\+P256\+K1\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+N\+O\+N\+E@{S\+E\+C\+P256\+K1\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+N\+O\+N\+E}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{S\+E\+C\+P256\+K1\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+N\+O\+N\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+C\+P256\+K1\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+N\+O\+N\+E~({\bf S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+O\+N\+T\+E\+X\+T})}\label{secp256k1_8h_a4f7b286aa714c2e0fb279c180f67e9b3}
+
+
+Definition at line 162 of file secp256k1.\+h.
+
+\hypertarget{secp256k1_8h_a0d34fe6baa73d3145f2e376e43de0b15}{}\index{secp256k1.\+h@{secp256k1.\+h}!S\+E\+C\+P256\+K1\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+S\+I\+G\+N@{S\+E\+C\+P256\+K1\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+S\+I\+G\+N}}
+\index{S\+E\+C\+P256\+K1\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+S\+I\+G\+N@{S\+E\+C\+P256\+K1\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+S\+I\+G\+N}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{S\+E\+C\+P256\+K1\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+S\+I\+G\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+C\+P256\+K1\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+S\+I\+G\+N~({\bf S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+O\+N\+T\+E\+X\+T} $\vert$ {\bf S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+B\+I\+T\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+S\+I\+G\+N})}\label{secp256k1_8h_a0d34fe6baa73d3145f2e376e43de0b15}
+
+
+Definition at line 161 of file secp256k1.\+h.
+
+\hypertarget{secp256k1_8h_add20a6c320e247ca7bd524cbc4259d64}{}\index{secp256k1.\+h@{secp256k1.\+h}!S\+E\+C\+P256\+K1\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+V\+E\+R\+I\+F\+Y@{S\+E\+C\+P256\+K1\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+V\+E\+R\+I\+F\+Y}}
+\index{S\+E\+C\+P256\+K1\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+V\+E\+R\+I\+F\+Y@{S\+E\+C\+P256\+K1\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+V\+E\+R\+I\+F\+Y}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{S\+E\+C\+P256\+K1\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+V\+E\+R\+I\+F\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+C\+P256\+K1\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+V\+E\+R\+I\+F\+Y~({\bf S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+O\+N\+T\+E\+X\+T} $\vert$ {\bf S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+B\+I\+T\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+V\+E\+R\+I\+F\+Y})}\label{secp256k1_8h_add20a6c320e247ca7bd524cbc4259d64}
+Flags to pass to secp256k1\+\_\+context\+\_\+create. 
+
+Definition at line 160 of file secp256k1.\+h.
+
+\hypertarget{secp256k1_8h_a7b8f642c65e8b5c81fa4421b7c42ab57}{}\index{secp256k1.\+h@{secp256k1.\+h}!S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+E\+D@{S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+E\+D}}
+\index{S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+E\+D@{S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+E\+D}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+E\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+E\+D~({\bf S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+I\+O\+N} $\vert$ {\bf S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+B\+I\+T\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+I\+O\+N})}\label{secp256k1_8h_a7b8f642c65e8b5c81fa4421b7c42ab57}
+Flag to pass to secp256k1\+\_\+ec\+\_\+pubkey\+\_\+serialize and secp256k1\+\_\+ec\+\_\+privkey\+\_\+export. 
+
+Definition at line 165 of file secp256k1.\+h.
+
+\hypertarget{secp256k1_8h_ab8e25dc58843e83926f95795f9e8a6e2}{}\index{secp256k1.\+h@{secp256k1.\+h}!S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+U\+N\+C\+O\+M\+P\+R\+E\+S\+S\+E\+D@{S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+U\+N\+C\+O\+M\+P\+R\+E\+S\+S\+E\+D}}
+\index{S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+U\+N\+C\+O\+M\+P\+R\+E\+S\+S\+E\+D@{S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+U\+N\+C\+O\+M\+P\+R\+E\+S\+S\+E\+D}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+U\+N\+C\+O\+M\+P\+R\+E\+S\+S\+E\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+U\+N\+C\+O\+M\+P\+R\+E\+S\+S\+E\+D~({\bf S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+I\+O\+N})}\label{secp256k1_8h_ab8e25dc58843e83926f95795f9e8a6e2}
+
+
+Definition at line 166 of file secp256k1.\+h.
+
+\hypertarget{secp256k1_8h_ac26f7c3f665e6422a651d2eb910f1a03}{}\index{secp256k1.\+h@{secp256k1.\+h}!S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+B\+I\+T\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+I\+O\+N@{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+B\+I\+T\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+I\+O\+N}}
+\index{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+B\+I\+T\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+I\+O\+N@{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+B\+I\+T\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+I\+O\+N}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+B\+I\+T\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+I\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+B\+I\+T\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+I\+O\+N~(1 $<$$<$ 8)}\label{secp256k1_8h_ac26f7c3f665e6422a651d2eb910f1a03}
+
+
+Definition at line 157 of file secp256k1.\+h.
+
+\hypertarget{secp256k1_8h_ab516743de74b08ccbeea17fb5f783bc9}{}\index{secp256k1.\+h@{secp256k1.\+h}!S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+B\+I\+T\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+S\+I\+G\+N@{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+B\+I\+T\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+S\+I\+G\+N}}
+\index{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+B\+I\+T\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+S\+I\+G\+N@{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+B\+I\+T\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+S\+I\+G\+N}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+B\+I\+T\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+S\+I\+G\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+B\+I\+T\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+S\+I\+G\+N~(1 $<$$<$ 9)}\label{secp256k1_8h_ab516743de74b08ccbeea17fb5f783bc9}
+
+
+Definition at line 156 of file secp256k1.\+h.
+
+\hypertarget{secp256k1_8h_aabde1ec66215bb0474821343583e1fb2}{}\index{secp256k1.\+h@{secp256k1.\+h}!S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+B\+I\+T\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+V\+E\+R\+I\+F\+Y@{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+B\+I\+T\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+V\+E\+R\+I\+F\+Y}}
+\index{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+B\+I\+T\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+V\+E\+R\+I\+F\+Y@{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+B\+I\+T\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+V\+E\+R\+I\+F\+Y}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+B\+I\+T\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+V\+E\+R\+I\+F\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+B\+I\+T\+\_\+\+C\+O\+N\+T\+E\+X\+T\+\_\+\+V\+E\+R\+I\+F\+Y~(1 $<$$<$ 8)}\label{secp256k1_8h_aabde1ec66215bb0474821343583e1fb2}
+The higher bits contain the actual data. Do not use directly. 
+
+Definition at line 155 of file secp256k1.\+h.
+
+\hypertarget{secp256k1_8h_af8d4e9ca93634062735b7f998ef9f68a}{}\index{secp256k1.\+h@{secp256k1.\+h}!S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+I\+O\+N@{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+I\+O\+N}}
+\index{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+I\+O\+N@{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+I\+O\+N}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+I\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+I\+O\+N~(1 $<$$<$ 1)}\label{secp256k1_8h_af8d4e9ca93634062735b7f998ef9f68a}
+
+
+Definition at line 153 of file secp256k1.\+h.
+
+\hypertarget{secp256k1_8h_ad96f13de52c4c94f5d11d53fd04c529f}{}\index{secp256k1.\+h@{secp256k1.\+h}!S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+O\+N\+T\+E\+X\+T@{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+O\+N\+T\+E\+X\+T}}
+\index{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+O\+N\+T\+E\+X\+T@{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+O\+N\+T\+E\+X\+T}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+O\+N\+T\+E\+X\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+C\+O\+N\+T\+E\+X\+T~(1 $<$$<$ 0)}\label{secp256k1_8h_ad96f13de52c4c94f5d11d53fd04c529f}
+
+
+Definition at line 152 of file secp256k1.\+h.
+
+\hypertarget{secp256k1_8h_ab2572c9f38f9a644f2933f7b74a5072f}{}\index{secp256k1.\+h@{secp256k1.\+h}!S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+M\+A\+S\+K@{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+M\+A\+S\+K}}
+\index{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+M\+A\+S\+K@{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+M\+A\+S\+K}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+M\+A\+S\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+C\+P256\+K1\+\_\+\+F\+L\+A\+G\+S\+\_\+\+T\+Y\+P\+E\+\_\+\+M\+A\+S\+K~((1 $<$$<$ 8) -\/ 1)}\label{secp256k1_8h_ab2572c9f38f9a644f2933f7b74a5072f}
+All flags\textquotesingle{} lower 8 bits indicate what they\textquotesingle{}re for. Do not use directly. 
+
+Definition at line 151 of file secp256k1.\+h.
+
+\hypertarget{secp256k1_8h_a12c8b5d59a2f2a3f232cf48a13c10a6c}{}\index{secp256k1.\+h@{secp256k1.\+h}!S\+E\+C\+P256\+K1\+\_\+\+G\+N\+U\+C\+\_\+\+P\+R\+E\+R\+E\+Q@{S\+E\+C\+P256\+K1\+\_\+\+G\+N\+U\+C\+\_\+\+P\+R\+E\+R\+E\+Q}}
+\index{S\+E\+C\+P256\+K1\+\_\+\+G\+N\+U\+C\+\_\+\+P\+R\+E\+R\+E\+Q@{S\+E\+C\+P256\+K1\+\_\+\+G\+N\+U\+C\+\_\+\+P\+R\+E\+R\+E\+Q}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{S\+E\+C\+P256\+K1\+\_\+\+G\+N\+U\+C\+\_\+\+P\+R\+E\+R\+E\+Q}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+C\+P256\+K1\+\_\+\+G\+N\+U\+C\+\_\+\+P\+R\+E\+R\+E\+Q(
+\begin{DoxyParamCaption}
+\item[{}]{\+\_\+maj, }
+\item[{}]{\+\_\+min}
+\end{DoxyParamCaption}
+)~0}\label{secp256k1_8h_a12c8b5d59a2f2a3f232cf48a13c10a6c}
+
+
+Definition at line 106 of file secp256k1.\+h.
+
+\hypertarget{secp256k1_8h_a7ddc487fd46aee88f21cabedb7268b1e}{}\index{secp256k1.\+h@{secp256k1.\+h}!S\+E\+C\+P256\+K1\+\_\+\+I\+N\+L\+I\+N\+E@{S\+E\+C\+P256\+K1\+\_\+\+I\+N\+L\+I\+N\+E}}
+\index{S\+E\+C\+P256\+K1\+\_\+\+I\+N\+L\+I\+N\+E@{S\+E\+C\+P256\+K1\+\_\+\+I\+N\+L\+I\+N\+E}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{S\+E\+C\+P256\+K1\+\_\+\+I\+N\+L\+I\+N\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+C\+P256\+K1\+\_\+\+I\+N\+L\+I\+N\+E}\label{secp256k1_8h_a7ddc487fd46aee88f21cabedb7268b1e}
+
+
+Definition at line 116 of file secp256k1.\+h.
+
+\hypertarget{secp256k1_8h_aebd5ca8fbfcbb0ba0754a46115143c2c}{}\index{secp256k1.\+h@{secp256k1.\+h}!S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T@{S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T}}
+\index{S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T@{S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T}\label{secp256k1_8h_aebd5ca8fbfcbb0ba0754a46115143c2c}
+Warning attributes N\+O\+N\+N\+U\+L\+L is not used if S\+E\+C\+P256\+K1\+\_\+\+B\+U\+I\+L\+D is set to avoid the compiler optimizing out some paranoid null checks. 
+
+Definition at line 142 of file secp256k1.\+h.
+
+
+
+\subsection{Typedef Documentation}
+\hypertarget{secp256k1_8h_a282ec9e6dfec8c35955c3eb2f7476e5e}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+context@{secp256k1\+\_\+context}}
+\index{secp256k1\+\_\+context@{secp256k1\+\_\+context}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{secp256k1\+\_\+context}]{\setlength{\rightskip}{0pt plus 5cm}typedef struct {\bf secp256k1\+\_\+context\+\_\+struct} {\bf secp256k1\+\_\+context}}\label{secp256k1_8h_a282ec9e6dfec8c35955c3eb2f7476e5e}
+Opaque data structure that holds context information (precomputed tables etc.).
+
+The purpose of context structures is to cache large precomputed data tables that are expensive to construct, and also to maintain the randomization data for blinding.
+
+Do not create a new context object for each operation, as construction is far slower than all other A\+P\+I calls ($\sim$100 times slower than an E\+C\+D\+S\+A verification).
+
+A constructed context can safely be used from multiple threads simultaneously, but A\+P\+I call that take a non-\/const pointer to a context need exclusive access to it. In particular this is the case for secp256k1\+\_\+context\+\_\+destroy and secp256k1\+\_\+context\+\_\+randomize.
+
+Regarding randomization, either do it once at creation time (in which case you do not need any locking for the other calls), or use a read-\/write lock. 
+
+Definition at line 43 of file secp256k1.\+h.
+
+\hypertarget{secp256k1_8h_a539882fd91bff672712fa19a4cfaeb98}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+nonce\+\_\+function@{secp256k1\+\_\+nonce\+\_\+function}}
+\index{secp256k1\+\_\+nonce\+\_\+function@{secp256k1\+\_\+nonce\+\_\+function}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{secp256k1\+\_\+nonce\+\_\+function}]{\setlength{\rightskip}{0pt plus 5cm}typedef int($\ast$ secp256k1\+\_\+nonce\+\_\+function) (unsigned char $\ast$nonce32, const unsigned char $\ast$msg32, const unsigned char $\ast$key32, const unsigned char $\ast$algo16, void $\ast$data, unsigned int attempt)}\label{secp256k1_8h_a539882fd91bff672712fa19a4cfaeb98}
+A pointer to a function to deterministically generate a nonce.
+
+Returns\+: 1 if a nonce was successfully generated. 0 will cause signing to fail. Out\+: nonce32\+: pointer to a 32-\/byte array to be filled by the function. In\+: msg32\+: the 32-\/byte message hash being verified (will not be N\+U\+L\+L) key32\+: pointer to a 32-\/byte secret key (will not be N\+U\+L\+L) algo16\+: pointer to a 16-\/byte array describing the signature algorithm (will be N\+U\+L\+L for E\+C\+D\+S\+A for compatibility). data\+: Arbitrary data pointer that is passed through. attempt\+: how many iterations we have tried to find a nonce. This will almost always be 0, but different attempt values are required to result in a different nonce.
+
+Except for test cases, this function should compute some cryptographic hash of the message, the algorithm, the key and the attempt. 
+
+Definition at line 92 of file secp256k1.\+h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{secp256k1_8h_a74bdea41233e26f6348ebab5c660db90}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+context\+\_\+clone@{secp256k1\+\_\+context\+\_\+clone}}
+\index{secp256k1\+\_\+context\+\_\+clone@{secp256k1\+\_\+context\+\_\+clone}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{secp256k1\+\_\+context\+\_\+clone}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} {\bf secp256k1\+\_\+context}$\ast$ secp256k1\+\_\+context\+\_\+clone (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+context} $\ast$}]{ctx}
+\end{DoxyParamCaption}
+)}\label{secp256k1_8h_a74bdea41233e26f6348ebab5c660db90}
+Copies a secp256k1 context object.
+
+Returns\+: a newly created context object. Args\+: ctx\+: an existing context to copy (cannot be N\+U\+L\+L) 
+
+Definition at line 85 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 2
+
+
+\hypertarget{secp256k1_8h_a769d478f352afbb55200e33970533a3c}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+context\+\_\+create@{secp256k1\+\_\+context\+\_\+create}}
+\index{secp256k1\+\_\+context\+\_\+create@{secp256k1\+\_\+context\+\_\+create}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{secp256k1\+\_\+context\+\_\+create}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} {\bf secp256k1\+\_\+context}$\ast$ secp256k1\+\_\+context\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{flags}
+\end{DoxyParamCaption}
+)}\label{secp256k1_8h_a769d478f352afbb55200e33970533a3c}
+Create a secp256k1 context object.
+
+Returns\+: a newly created context object. In\+: flags\+: which parts of the context to initialize. 
+
+Definition at line 60 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+\hypertarget{secp256k1_8h_af8569fb9aa73c0acf46afce4df662950}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+context\+\_\+destroy@{secp256k1\+\_\+context\+\_\+destroy}}
+\index{secp256k1\+\_\+context\+\_\+destroy@{secp256k1\+\_\+context\+\_\+destroy}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{secp256k1\+\_\+context\+\_\+destroy}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} void secp256k1\+\_\+context\+\_\+destroy (
+\begin{DoxyParamCaption}
+\item[{{\bf secp256k1\+\_\+context} $\ast$}]{ctx}
+\end{DoxyParamCaption}
+)}\label{secp256k1_8h_af8569fb9aa73c0acf46afce4df662950}
+Destroy a secp256k1 context object.
+
+The context pointer may not be used afterwards. Args\+: ctx\+: an existing context to destroy (cannot be N\+U\+L\+L) 
+
+Definition at line 94 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 4
+
+
+\hypertarget{secp256k1_8h_a1b81d70feb6ed24dc902cbbd5ba569e7}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+context\+\_\+randomize@{secp256k1\+\_\+context\+\_\+randomize}}
+\index{secp256k1\+\_\+context\+\_\+randomize@{secp256k1\+\_\+context\+\_\+randomize}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{secp256k1\+\_\+context\+\_\+randomize}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} {\bf S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T} int secp256k1\+\_\+context\+\_\+randomize (
+\begin{DoxyParamCaption}
+\item[{{\bf secp256k1\+\_\+context} $\ast$}]{ctx, }
+\item[{const unsigned char $\ast$}]{seed32}
+\end{DoxyParamCaption}
+)}\label{secp256k1_8h_a1b81d70feb6ed24dc902cbbd5ba569e7}
+Updates the context randomization. Returns\+: 1\+: randomization successfully updated 0\+: error Args\+: ctx\+: pointer to a context object (cannot be N\+U\+L\+L) In\+: seed32\+: pointer to a 32-\/byte random seed (N\+U\+L\+L resets to initial state) 
+
+Definition at line 527 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 5
+
+
+\hypertarget{secp256k1_8h_a35106efb325f03468bcf5faa524c1cc4}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+context\+\_\+set\+\_\+error\+\_\+callback@{secp256k1\+\_\+context\+\_\+set\+\_\+error\+\_\+callback}}
+\index{secp256k1\+\_\+context\+\_\+set\+\_\+error\+\_\+callback@{secp256k1\+\_\+context\+\_\+set\+\_\+error\+\_\+callback}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{secp256k1\+\_\+context\+\_\+set\+\_\+error\+\_\+callback}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} void secp256k1\+\_\+context\+\_\+set\+\_\+error\+\_\+callback (
+\begin{DoxyParamCaption}
+\item[{{\bf secp256k1\+\_\+context} $\ast$}]{ctx, }
+\item[{void($\ast$)(const char $\ast$message, void $\ast$data)}]{fun, }
+\item[{const void $\ast$}]{data}
+\end{DoxyParamCaption}
+)}\label{secp256k1_8h_a35106efb325f03468bcf5faa524c1cc4}
+Set a callback function to be called when an internal consistency check fails. The default is crashing.
+
+This can only trigger in case of a hardware failure, miscompilation, memory corruption, serious bug in the library, or other error would can otherwise result in undefined behaviour. It will not trigger due to mere incorrect usage of the A\+P\+I (see secp256k1\+\_\+context\+\_\+set\+\_\+illegal\+\_\+callback for that). After this callback returns, anything may happen, including crashing.
+
+Args\+: ctx\+: an existing context object (cannot be N\+U\+L\+L) In\+: fun\+: a pointer to a function to call when an internal error occurs, taking a message and an opaque pointer (N\+U\+L\+L restores a default handler that calls abort). data\+: the opaque pointer to pass to fun above. 
+
+Definition at line 111 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 6
+
+
+\hypertarget{secp256k1_8h_a3ec29bece9974f9535337eb7d91b351c}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+context\+\_\+set\+\_\+illegal\+\_\+callback@{secp256k1\+\_\+context\+\_\+set\+\_\+illegal\+\_\+callback}}
+\index{secp256k1\+\_\+context\+\_\+set\+\_\+illegal\+\_\+callback@{secp256k1\+\_\+context\+\_\+set\+\_\+illegal\+\_\+callback}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{secp256k1\+\_\+context\+\_\+set\+\_\+illegal\+\_\+callback}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} void secp256k1\+\_\+context\+\_\+set\+\_\+illegal\+\_\+callback (
+\begin{DoxyParamCaption}
+\item[{{\bf secp256k1\+\_\+context} $\ast$}]{ctx, }
+\item[{void($\ast$)(const char $\ast$message, void $\ast$data)}]{fun, }
+\item[{const void $\ast$}]{data}
+\end{DoxyParamCaption}
+)}\label{secp256k1_8h_a3ec29bece9974f9535337eb7d91b351c}
+Set a callback function to be called when an illegal argument is passed to an A\+P\+I call. It will only trigger for violations that are mentioned explicitly in the header.
+
+The philosophy is that these shouldn\textquotesingle{}t be dealt with through a specific return value, as calling code should not have branches to deal with the case that this code itself is broken.
+
+On the other hand, during debug stage, one would want to be informed about such mistakes, and the default (crashing) may be inadvisable. When this callback is triggered, the A\+P\+I function called is guaranteed not to cause a crash, though its return value and output arguments are undefined.
+
+Args\+: ctx\+: an existing context object (cannot be N\+U\+L\+L) In\+: fun\+: a pointer to a function to call when an illegal argument is passed to the A\+P\+I, taking a message and an opaque pointer (N\+U\+L\+L restores a default handler that calls abort). data\+: the opaque pointer to pass to fun above. 
+
+Definition at line 103 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 7
+
+
+\hypertarget{secp256k1_8h_a0f9125cd8c970342ec5118f7bfacc0c5}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ec\+\_\+privkey\+\_\+tweak\+\_\+add@{secp256k1\+\_\+ec\+\_\+privkey\+\_\+tweak\+\_\+add}}
+\index{secp256k1\+\_\+ec\+\_\+privkey\+\_\+tweak\+\_\+add@{secp256k1\+\_\+ec\+\_\+privkey\+\_\+tweak\+\_\+add}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{secp256k1\+\_\+ec\+\_\+privkey\+\_\+tweak\+\_\+add}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} {\bf S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T} int secp256k1\+\_\+ec\+\_\+privkey\+\_\+tweak\+\_\+add (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+context} $\ast$}]{ctx, }
+\item[{unsigned char $\ast$}]{seckey, }
+\item[{const unsigned char $\ast$}]{tweak}
+\end{DoxyParamCaption}
+)}\label{secp256k1_8h_a0f9125cd8c970342ec5118f7bfacc0c5}
+Tweak a private key by adding tweak to it. Returns\+: 0 if the tweak was out of range (chance of around 1 in 2$^\wedge$128 for uniformly random 32-\/byte arrays, or if the resulting private key would be invalid (only when the tweak is the complement of the private key). 1 otherwise. Args\+: ctx\+: pointer to a context object (cannot be N\+U\+L\+L). In/\+Out\+: seckey\+: pointer to a 32-\/byte private key. In\+: tweak\+: pointer to a 32-\/byte tweak. 
+
+Definition at line 432 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 8
+
+
+\hypertarget{secp256k1_8h_abe078cbb6b642d792f123ea67494f7e3}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ec\+\_\+privkey\+\_\+tweak\+\_\+mul@{secp256k1\+\_\+ec\+\_\+privkey\+\_\+tweak\+\_\+mul}}
+\index{secp256k1\+\_\+ec\+\_\+privkey\+\_\+tweak\+\_\+mul@{secp256k1\+\_\+ec\+\_\+privkey\+\_\+tweak\+\_\+mul}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{secp256k1\+\_\+ec\+\_\+privkey\+\_\+tweak\+\_\+mul}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} {\bf S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T} int secp256k1\+\_\+ec\+\_\+privkey\+\_\+tweak\+\_\+mul (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+context} $\ast$}]{ctx, }
+\item[{unsigned char $\ast$}]{seckey, }
+\item[{const unsigned char $\ast$}]{tweak}
+\end{DoxyParamCaption}
+)}\label{secp256k1_8h_abe078cbb6b642d792f123ea67494f7e3}
+Tweak a private key by multiplying it by a tweak. Returns\+: 0 if the tweak was out of range (chance of around 1 in 2$^\wedge$128 for uniformly random 32-\/byte arrays, or equal to zero. 1 otherwise. Args\+: ctx\+: pointer to a context object (cannot be N\+U\+L\+L). In/\+Out\+: seckey\+: pointer to a 32-\/byte private key. In\+: tweak\+: pointer to a 32-\/byte tweak. 
+
+Definition at line 480 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 9
+
+
+\hypertarget{secp256k1_8h_a4d9b18720afc67f3685a9f171bac6737}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ec\+\_\+pubkey\+\_\+combine@{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+combine}}
+\index{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+combine@{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+combine}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+combine}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} {\bf S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T} int secp256k1\+\_\+ec\+\_\+pubkey\+\_\+combine (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+context} $\ast$}]{ctx, }
+\item[{{\bf secp256k1\+\_\+pubkey} $\ast$}]{out, }
+\item[{const {\bf secp256k1\+\_\+pubkey} $\ast$const $\ast$}]{ins, }
+\item[{size\+\_\+t}]{n}
+\end{DoxyParamCaption}
+)}\label{secp256k1_8h_a4d9b18720afc67f3685a9f171bac6737}
+Add a number of public keys together. Returns\+: 1\+: the sum of the public keys is valid. 0\+: the sum of the public keys is not valid. Args\+: ctx\+: pointer to a context object Out\+: out\+: pointer to a public key object for placing the resulting public key (cannot be N\+U\+L\+L) In\+: ins\+: pointer to array of pointers to public keys (cannot be N\+U\+L\+L) n\+: the number of public keys to add together (must be at least 1) 
+
+Definition at line 534 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 10
+
+
+\hypertarget{secp256k1_8h_a7438071aa8a6dc4697abe4f4659f2161}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ec\+\_\+pubkey\+\_\+create@{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+create}}
+\index{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+create@{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+create}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+create}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} {\bf S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T} int secp256k1\+\_\+ec\+\_\+pubkey\+\_\+create (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+context} $\ast$}]{ctx, }
+\item[{{\bf secp256k1\+\_\+pubkey} $\ast$}]{pubkey, }
+\item[{const unsigned char $\ast$}]{seckey}
+\end{DoxyParamCaption}
+)}\label{secp256k1_8h_a7438071aa8a6dc4697abe4f4659f2161}
+Compute the public key for a secret key.
+
+Returns\+: 1\+: secret was valid, public key stores 0\+: secret was invalid, try again Args\+: ctx\+: pointer to a context object, initialized for signing (cannot be N\+U\+L\+L) Out\+: pubkey\+: pointer to the created public key (cannot be N\+U\+L\+L) In\+: seckey\+: pointer to a 32-\/byte private key (cannot be N\+U\+L\+L) 
+
+Definition at line 409 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 11
+
+
+\hypertarget{secp256k1_8h_a4e5dc8952c9a7e791376505ef2023ca1}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ec\+\_\+pubkey\+\_\+parse@{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+parse}}
+\index{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+parse@{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+parse}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+parse}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} {\bf S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T} int secp256k1\+\_\+ec\+\_\+pubkey\+\_\+parse (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+context} $\ast$}]{ctx, }
+\item[{{\bf secp256k1\+\_\+pubkey} $\ast$}]{pubkey, }
+\item[{const unsigned char $\ast$}]{input, }
+\item[{size\+\_\+t}]{inputlen}
+\end{DoxyParamCaption}
+)}\label{secp256k1_8h_a4e5dc8952c9a7e791376505ef2023ca1}
+Parse a variable-\/length public key into the pubkey object.
+
+Returns\+: 1 if the public key was fully valid. 0 if the public key could not be parsed or is invalid. Args\+: ctx\+: a secp256k1 context object. Out\+: pubkey\+: pointer to a pubkey object. If 1 is returned, it is set to a parsed version of input. If not, its value is undefined. In\+: input\+: pointer to a serialized public key inputlen\+: length of the array pointed to by input
+
+This function supports parsing compressed (33 bytes, header byte 0x02 or 0x03), uncompressed (65 bytes, header byte 0x04), or hybrid (65 bytes, header byte 0x06 or 0x07) format public keys. 
+
+Definition at line 152 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 12
+
+
+\hypertarget{secp256k1_8h_a34977bf00322e510e881160c421836d7}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ec\+\_\+pubkey\+\_\+serialize@{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+serialize}}
+\index{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+serialize@{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+serialize}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+serialize}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} int secp256k1\+\_\+ec\+\_\+pubkey\+\_\+serialize (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+context} $\ast$}]{ctx, }
+\item[{unsigned char $\ast$}]{output, }
+\item[{size\+\_\+t $\ast$}]{outputlen, }
+\item[{const {\bf secp256k1\+\_\+pubkey} $\ast$}]{pubkey, }
+\item[{unsigned int}]{flags}
+\end{DoxyParamCaption}
+)}\label{secp256k1_8h_a34977bf00322e510e881160c421836d7}
+Serialize a pubkey object into a serialized byte sequence.
+
+Returns\+: 1 always. Args\+: ctx\+: a secp256k1 context object. Out\+: output\+: a pointer to a 65-\/byte (if compressed==0) or 33-\/byte (if compressed==1) byte array to place the serialized key in. In/\+Out\+: outputlen\+: a pointer to an integer which is initially set to the size of output, and is overwritten with the written size. In\+: pubkey\+: a pointer to a \hyperlink{structsecp256k1__pubkey}{secp256k1\+\_\+pubkey} containing an initialized public key. flags\+: S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+C\+O\+M\+P\+R\+E\+S\+S\+E\+D if serialization should be in compressed format, otherwise S\+E\+C\+P256\+K1\+\_\+\+E\+C\+\_\+\+U\+N\+C\+O\+M\+P\+R\+E\+S\+S\+E\+D. 
+
+Definition at line 168 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 13
+
+
+\hypertarget{secp256k1_8h_a2381cde2a0ee44d90dcfa77e28b5eb79}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ec\+\_\+pubkey\+\_\+tweak\+\_\+add@{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+tweak\+\_\+add}}
+\index{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+tweak\+\_\+add@{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+tweak\+\_\+add}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+tweak\+\_\+add}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} {\bf S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T} int secp256k1\+\_\+ec\+\_\+pubkey\+\_\+tweak\+\_\+add (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+context} $\ast$}]{ctx, }
+\item[{{\bf secp256k1\+\_\+pubkey} $\ast$}]{pubkey, }
+\item[{const unsigned char $\ast$}]{tweak}
+\end{DoxyParamCaption}
+)}\label{secp256k1_8h_a2381cde2a0ee44d90dcfa77e28b5eb79}
+Tweak a public key by adding tweak times the generator to it. Returns\+: 0 if the tweak was out of range (chance of around 1 in 2$^\wedge$128 for uniformly random 32-\/byte arrays, or if the resulting public key would be invalid (only when the tweak is the complement of the corresponding private key). 1 otherwise. Args\+: ctx\+: pointer to a context object initialized for validation (cannot be N\+U\+L\+L). In/\+Out\+: pubkey\+: pointer to a public key object. In\+: tweak\+: pointer to a 32-\/byte tweak. 
+
+Definition at line 456 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 14
+
+
+\hypertarget{secp256k1_8h_a0351b25239f1146573d62477c3b2119a}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ec\+\_\+pubkey\+\_\+tweak\+\_\+mul@{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+tweak\+\_\+mul}}
+\index{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+tweak\+\_\+mul@{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+tweak\+\_\+mul}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{secp256k1\+\_\+ec\+\_\+pubkey\+\_\+tweak\+\_\+mul}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} {\bf S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T} int secp256k1\+\_\+ec\+\_\+pubkey\+\_\+tweak\+\_\+mul (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+context} $\ast$}]{ctx, }
+\item[{{\bf secp256k1\+\_\+pubkey} $\ast$}]{pubkey, }
+\item[{const unsigned char $\ast$}]{tweak}
+\end{DoxyParamCaption}
+)}\label{secp256k1_8h_a0351b25239f1146573d62477c3b2119a}
+Tweak a public key by multiplying it by a tweak value. Returns\+: 0 if the tweak was out of range (chance of around 1 in 2$^\wedge$128 for uniformly random 32-\/byte arrays, or equal to zero. 1 otherwise. Args\+: ctx\+: pointer to a context object initialized for validation (cannot be N\+U\+L\+L). In/\+Out\+: pubkey\+: pointer to a public key obkect. In\+: tweak\+: pointer to a 32-\/byte tweak. 
+
+Definition at line 503 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 15
+
+
+\hypertarget{secp256k1_8h_a366f922fc0c787351e82ff8e3a95f652}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ec\+\_\+seckey\+\_\+verify@{secp256k1\+\_\+ec\+\_\+seckey\+\_\+verify}}
+\index{secp256k1\+\_\+ec\+\_\+seckey\+\_\+verify@{secp256k1\+\_\+ec\+\_\+seckey\+\_\+verify}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{secp256k1\+\_\+ec\+\_\+seckey\+\_\+verify}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} {\bf S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T} int secp256k1\+\_\+ec\+\_\+seckey\+\_\+verify (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+context} $\ast$}]{ctx, }
+\item[{const unsigned char $\ast$}]{seckey}
+\end{DoxyParamCaption}
+)}\label{secp256k1_8h_a366f922fc0c787351e82ff8e3a95f652}
+Verify an E\+C\+D\+S\+A secret key.
+
+Returns\+: 1\+: secret key is valid 0\+: secret key is invalid Args\+: ctx\+: pointer to a context object (cannot be N\+U\+L\+L) In\+: seckey\+: pointer to a 32-\/byte secret key (cannot be N\+U\+L\+L) 
+
+Definition at line 395 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 16
+
+
+\hypertarget{secp256k1_8h_a691c048f3a3b4e7f51417c57ec058be7}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ecdsa\+\_\+sign@{secp256k1\+\_\+ecdsa\+\_\+sign}}
+\index{secp256k1\+\_\+ecdsa\+\_\+sign@{secp256k1\+\_\+ecdsa\+\_\+sign}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{secp256k1\+\_\+ecdsa\+\_\+sign}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} int secp256k1\+\_\+ecdsa\+\_\+sign (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+context} $\ast$}]{ctx, }
+\item[{{\bf secp256k1\+\_\+ecdsa\+\_\+signature} $\ast$}]{sig, }
+\item[{const unsigned char $\ast$}]{msg32, }
+\item[{const unsigned char $\ast$}]{seckey, }
+\item[{{\bf secp256k1\+\_\+nonce\+\_\+function}}]{noncefp, }
+\item[{const void $\ast$}]{ndata}
+\end{DoxyParamCaption}
+)}\label{secp256k1_8h_a691c048f3a3b4e7f51417c57ec058be7}
+Create an E\+C\+D\+S\+A signature.
+
+Returns\+: 1\+: signature created 0\+: the nonce generation function failed, or the private key was invalid. Args\+: ctx\+: pointer to a context object, initialized for signing (cannot be N\+U\+L\+L) Out\+: sig\+: pointer to an array where the signature will be placed (cannot be N\+U\+L\+L) In\+: msg32\+: the 32-\/byte message hash being signed (cannot be N\+U\+L\+L) seckey\+: pointer to a 32-\/byte secret key (cannot be N\+U\+L\+L) noncefp\+:pointer to a nonce generation function. If N\+U\+L\+L, secp256k1\+\_\+nonce\+\_\+function\+\_\+default is used ndata\+: pointer to arbitrary data used by the nonce generation function (can be N\+U\+L\+L)
+
+The created signature is always in lower-\/\+S form. See secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+normalize for more details. 
+
+Definition at line 349 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 17
+
+
+\hypertarget{secp256k1_8h_a93ec36a19229f08acc5ff1ca613ab3a1}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+normalize@{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+normalize}}
+\index{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+normalize@{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+normalize}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+normalize}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} int secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+normalize (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+context} $\ast$}]{ctx, }
+\item[{{\bf secp256k1\+\_\+ecdsa\+\_\+signature} $\ast$}]{sigout, }
+\item[{const {\bf secp256k1\+\_\+ecdsa\+\_\+signature} $\ast$}]{sigin}
+\end{DoxyParamCaption}
+)}\label{secp256k1_8h_a93ec36a19229f08acc5ff1ca613ab3a1}
+Convert a signature to a normalized lower-\/\+S form.
+
+Returns\+: 1 if sigin was not normalized, 0 if it already was. Args\+: ctx\+: a secp256k1 context object Out\+: sigout\+: a pointer to a signature to fill with the normalized form, or copy if the input was already normalized. (can be N\+U\+L\+L if you\textquotesingle{}re only interested in whether the input was already normalized). In\+: sigin\+: a pointer to a signature to check/normalize (cannot be N\+U\+L\+L, can be identical to sigout)
+
+With E\+C\+D\+S\+A a third-\/party can forge a second distinct signature of the same message, given a single initial signature, but without knowing the key. This is done by negating the S value modulo the order of the curve, \textquotesingle{}flipping\textquotesingle{} the sign of the random point R which is not included in the signature.
+
+Forgery of the same message isn\textquotesingle{}t universally problematic, but in systems where message malleability or uniqueness of signatures is important this can cause issues. This forgery can be blocked by all verifiers forcing signers to use a normalized form.
+
+The lower-\/\+S form reduces the size of signatures slightly on average when variable length encodings (such as D\+E\+R) are used and is cheap to verify, making it a good choice. Security of always using lower-\/\+S is assured because anyone can trivially modify a signature after the fact to enforce this property anyway.
+
+The lower S value is always between 0x1 and 0x7\+F\+F\+F\+F\+F\+F\+F\+F\+F\+F\+F\+F\+F\+F\+F\+F\+F\+F\+F\+F\+F\+F\+F\+F\+F\+F\+F\+F\+F\+F\+F5\+D576\+E7357\+A4501\+D\+D\+F\+E92\+F46681\+B20\+A0, inclusive.
+
+No other forms of E\+C\+D\+S\+A malleability are known and none seem likely, but there is no formal proof that E\+C\+D\+S\+A, even with this additional restriction, is free of other malleability. Commonly used serialization schemes will also accept various non-\/unique encodings, so care should be taken when this property is required for an application.
+
+The secp256k1\+\_\+ecdsa\+\_\+sign function will by default create signatures in the lower-\/\+S form, and secp256k1\+\_\+ecdsa\+\_\+verify will not accept others. In case signatures come from a system that cannot enforce this property, secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+normalize must be called before verification. 
+
+Definition at line 278 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 18
+
+
+\hypertarget{secp256k1_8h_a2aff2802eca3d15ec54298e879579897}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+parse\+\_\+compact@{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+parse\+\_\+compact}}
+\index{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+parse\+\_\+compact@{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+parse\+\_\+compact}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+parse\+\_\+compact}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} int secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+parse\+\_\+compact (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+context} $\ast$}]{ctx, }
+\item[{{\bf secp256k1\+\_\+ecdsa\+\_\+signature} $\ast$}]{sig, }
+\item[{const unsigned char $\ast$}]{input64}
+\end{DoxyParamCaption}
+)}\label{secp256k1_8h_a2aff2802eca3d15ec54298e879579897}
+Parse an E\+C\+D\+S\+A signature in compact (64 bytes) format.
+
+Returns\+: 1 when the signature could be parsed, 0 otherwise. Args\+: ctx\+: a secp256k1 context object Out\+: sig\+: a pointer to a signature object In\+: input64\+: a pointer to the 64-\/byte array to parse
+
+The signature must consist of a 32-\/byte big endian R value, followed by a 32-\/byte big endian S value. If R or S fall outside of \mbox{[}0..order-\/1\mbox{]}, the encoding is invalid. R and S with value 0 are allowed in the encoding.
+
+After the call, sig will always be initialized. If parsing failed or R or S are zero, the resulting sig value is guaranteed to fail validation for any message and public key. 
+
+Definition at line 232 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 19
+
+
+\hypertarget{secp256k1_8h_a57d390dd5baa54855b0cb20628034b90}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+parse\+\_\+der@{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+parse\+\_\+der}}
+\index{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+parse\+\_\+der@{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+parse\+\_\+der}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+parse\+\_\+der}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} int secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+parse\+\_\+der (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+context} $\ast$}]{ctx, }
+\item[{{\bf secp256k1\+\_\+ecdsa\+\_\+signature} $\ast$}]{sig, }
+\item[{const unsigned char $\ast$}]{input, }
+\item[{size\+\_\+t}]{inputlen}
+\end{DoxyParamCaption}
+)}\label{secp256k1_8h_a57d390dd5baa54855b0cb20628034b90}
+Parse a D\+E\+R E\+C\+D\+S\+A signature.
+
+Returns\+: 1 when the signature could be parsed, 0 otherwise. Args\+: ctx\+: a secp256k1 context object Out\+: sig\+: a pointer to a signature object In\+: input\+: a pointer to the signature to be parsed inputlen\+: the length of the array pointed to be input
+
+This function will accept any valid D\+E\+R encoded signature, even if the encoded numbers are out of range.
+
+After the call, sig will always be initialized. If parsing failed or the encoded numbers are out of range, signature validation with it is guaranteed to fail for every message and public key. 
+
+Definition at line 216 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 20
+
+
+\hypertarget{secp256k1_8h_af8571ca8dcfb7f892519b337504dc700}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+serialize\+\_\+compact@{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+serialize\+\_\+compact}}
+\index{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+serialize\+\_\+compact@{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+serialize\+\_\+compact}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+serialize\+\_\+compact}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} int secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+serialize\+\_\+compact (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+context} $\ast$}]{ctx, }
+\item[{unsigned char $\ast$}]{output64, }
+\item[{const {\bf secp256k1\+\_\+ecdsa\+\_\+signature} $\ast$}]{sig}
+\end{DoxyParamCaption}
+)}\label{secp256k1_8h_af8571ca8dcfb7f892519b337504dc700}
+Serialize an E\+C\+D\+S\+A signature in compact (64 byte) format.
+
+Returns\+: 1 Args\+: ctx\+: a secp256k1 context object Out\+: output64\+: a pointer to a 64-\/byte array to store the compact serialization In\+: sig\+: a pointer to an initialized signature object
+
+See secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+parse\+\_\+compact for details about the encoding. 
+
+Definition at line 265 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 21
+
+
+\hypertarget{secp256k1_8h_ac07809ca872ec967ab4d3b1a95eafe0b}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+serialize\+\_\+der@{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+serialize\+\_\+der}}
+\index{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+serialize\+\_\+der@{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+serialize\+\_\+der}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+serialize\+\_\+der}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} int secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+serialize\+\_\+der (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+context} $\ast$}]{ctx, }
+\item[{unsigned char $\ast$}]{output, }
+\item[{size\+\_\+t $\ast$}]{outputlen, }
+\item[{const {\bf secp256k1\+\_\+ecdsa\+\_\+signature} $\ast$}]{sig}
+\end{DoxyParamCaption}
+)}\label{secp256k1_8h_ac07809ca872ec967ab4d3b1a95eafe0b}
+Serialize an E\+C\+D\+S\+A signature in D\+E\+R format.
+
+Returns\+: 1 if enough space was available to serialize, 0 otherwise Args\+: ctx\+: a secp256k1 context object Out\+: output\+: a pointer to an array to store the D\+E\+R serialization In/\+Out\+: outputlen\+: a pointer to a length integer. Initially, this integer should be set to the length of output. After the call it will be set to the length of the serialization (even if 0 was returned). In\+: sig\+: a pointer to an initialized signature object 
+
+Definition at line 253 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 22
+
+
+\hypertarget{secp256k1_8h_a41065390f9039c4140ec04999724987d}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+ecdsa\+\_\+verify@{secp256k1\+\_\+ecdsa\+\_\+verify}}
+\index{secp256k1\+\_\+ecdsa\+\_\+verify@{secp256k1\+\_\+ecdsa\+\_\+verify}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{secp256k1\+\_\+ecdsa\+\_\+verify}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} {\bf S\+E\+C\+P256\+K1\+\_\+\+W\+A\+R\+N\+\_\+\+U\+N\+U\+S\+E\+D\+\_\+\+R\+E\+S\+U\+L\+T} int secp256k1\+\_\+ecdsa\+\_\+verify (
+\begin{DoxyParamCaption}
+\item[{const {\bf secp256k1\+\_\+context} $\ast$}]{ctx, }
+\item[{const {\bf secp256k1\+\_\+ecdsa\+\_\+signature} $\ast$}]{sig, }
+\item[{const unsigned char $\ast$}]{msg32, }
+\item[{const {\bf secp256k1\+\_\+pubkey} $\ast$}]{pubkey}
+\end{DoxyParamCaption}
+)}\label{secp256k1_8h_a41065390f9039c4140ec04999724987d}
+Verify an E\+C\+D\+S\+A signature.
+
+Returns\+: 1\+: correct signature 0\+: incorrect or unparseable signature Args\+: ctx\+: a secp256k1 context object, initialized for verification. In\+: sig\+: the signature being verified (cannot be N\+U\+L\+L) msg32\+: the 32-\/byte message hash being verified (cannot be N\+U\+L\+L) pubkey\+: pointer to an initialized public key to verify with (cannot be N\+U\+L\+L)
+
+To avoid accepting malleable signatures, only E\+C\+D\+S\+A signatures in lower-\/\+S form are accepted.
+
+If you need to accept E\+C\+D\+S\+A signatures from sources that do not obey this rule, apply secp256k1\+\_\+ecdsa\+\_\+signature\+\_\+normalize to the signature prior to validation, but be aware that doing so results in malleable signatures.
+
+For details, see the comments for that function. 
+
+Definition at line 297 of file secp256k1.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 23
+
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{secp256k1_8h_a22f44df7786a1be5ad93aadfed75b932}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+nonce\+\_\+function\+\_\+default@{secp256k1\+\_\+nonce\+\_\+function\+\_\+default}}
+\index{secp256k1\+\_\+nonce\+\_\+function\+\_\+default@{secp256k1\+\_\+nonce\+\_\+function\+\_\+default}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{secp256k1\+\_\+nonce\+\_\+function\+\_\+default}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} const {\bf secp256k1\+\_\+nonce\+\_\+function} secp256k1\+\_\+nonce\+\_\+function\+\_\+default}\label{secp256k1_8h_a22f44df7786a1be5ad93aadfed75b932}
+A default safe nonce generation function (currently equal to secp256k1\+\_\+nonce\+\_\+function\+\_\+rfc6979). 
+
+Definition at line 347 of file secp256k1.\+c.
+
+\hypertarget{secp256k1_8h_ac03ab067f194eb561175a6b522def2d8}{}\index{secp256k1.\+h@{secp256k1.\+h}!secp256k1\+\_\+nonce\+\_\+function\+\_\+rfc6979@{secp256k1\+\_\+nonce\+\_\+function\+\_\+rfc6979}}
+\index{secp256k1\+\_\+nonce\+\_\+function\+\_\+rfc6979@{secp256k1\+\_\+nonce\+\_\+function\+\_\+rfc6979}!secp256k1.\+h@{secp256k1.\+h}}
+\subsubsection[{secp256k1\+\_\+nonce\+\_\+function\+\_\+rfc6979}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+E\+C\+P256\+K1\+\_\+\+A\+P\+I} const {\bf secp256k1\+\_\+nonce\+\_\+function} secp256k1\+\_\+nonce\+\_\+function\+\_\+rfc6979}\label{secp256k1_8h_ac03ab067f194eb561175a6b522def2d8}
+An implementation of R\+F\+C6979 (using H\+M\+A\+C-\/\+S\+H\+A256) as nonce generation function. If a data pointer is passed, it is assumed to be a pointer to 32 bytes of extra entropy. 
+
+Definition at line 346 of file secp256k1.\+c.
+

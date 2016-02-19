@@ -1,0 +1,115 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_hash256" kind="class" language="C++" prot="public">
+    <compoundname>CHash256</compoundname>
+    <includes refid="hash_8h" local="no">hash.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_c_hash256_1af06b992e00e1bd7290388aed522a535f" prot="private" static="no" mutable="no">
+        <type><ref refid="class_c_s_h_a256" kindref="compound">CSHA256</ref></type>
+        <definition>CSHA256 CHash256::sha</definition>
+        <argsstring></argsstring>
+        <name>sha</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/hash.h" line="31" column="1" bodyfile="/home/dev/ds-160209/src/hash.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_c_hash256_1a6812a40441acb1c3b7f10c7e38c7d467" prot="public" static="yes" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t CHash256::OUTPUT_SIZE</definition>
+        <argsstring></argsstring>
+        <name>OUTPUT_SIZE</name>
+        <initializer>= CSHA256::OUTPUT_SIZE</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/hash.h" line="33" column="1" bodyfile="/home/dev/ds-160209/src/hash.h" bodystart="33" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_hash256_1aa8a70c1b7cf24ce7d00240a1131cf4e7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CHash256::Finalize</definition>
+        <argsstring>(unsigned char hash[OUTPUT_SIZE])</argsstring>
+        <name>Finalize</name>
+        <param>
+          <type>unsigned char</type>
+          <declname>hash</declname>
+          <array>[OUTPUT_SIZE]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/hash.h" line="35" column="1" bodyfile="/home/dev/ds-160209/src/hash.h" bodystart="35" bodyend="39"/>
+        <references refid="class_c_s_h_a256_1a3d7ef512c0ceb0008396e62f5c4771fc" compoundref="sha256_8h" startline="20">CSHA256::OUTPUT_SIZE</references>
+        <references refid="class_c_s_h_a256_1a4259230be0caefa590bc324fc12b9b90" compoundref="sha256_8cpp" startline="167" endline="182">CSHA256::Finalize</references>
+        <references refid="class_c_s_h_a256_1a2122395dd5604990eaa0077b43a0e8d4" compoundref="sha256_8cpp" startline="184" endline="189">CSHA256::Reset</references>
+        <references refid="class_c_s_h_a256_1a9d7de520a562655da85349372820c883" compoundref="sha256_8cpp" startline="141" endline="165">CSHA256::Write</references>
+        <references refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" compoundref="cache_8cc" startline="34">hash</references>
+        <referencedby refid="hash_8h_1a73c05dfb31fbc5ea4875887ac6692f5a" compoundref="hash_8h" startline="275" endline="287">Hash</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_hash256_1a9cc25033c6435cb28e2e8e377c949a7a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_c_hash256" kindref="compound">CHash256</ref> &amp;</type>
+        <definition>CHash256&amp; CHash256::Write</definition>
+        <argsstring>(const unsigned char *data, size_t len)</argsstring>
+        <name>Write</name>
+        <param>
+          <type>const unsigned char *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/hash.h" line="41" column="1" bodyfile="/home/dev/ds-160209/src/hash.h" bodystart="41" bodyend="44"/>
+        <references refid="class_c_s_h_a256_1a9d7de520a562655da85349372820c883" compoundref="sha256_8cpp" startline="141" endline="165">CSHA256::Write</references>
+        <referencedby refid="hash_8h_1a73c05dfb31fbc5ea4875887ac6692f5a" compoundref="hash_8h" startline="275" endline="287">Hash</referencedby>
+        <referencedby refid="class_c_key_1a3890764f7a2e5d9cdeffb3e102e4545d" compoundref="key_8cpp" startline="197" endline="209">CKey::VerifyPubKey</referencedby>
+        <referencedby refid="script_8h_1a95e4207f5f6abd316a0678f3ed8ee2f2" compoundref="script_8cpp" startline="1393" endline="2090">EvalScript</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_hash256_1ab25b00e4cda7e209173f2ce90475953d" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_c_hash256" kindref="compound">CHash256</ref> &amp;</type>
+        <definition>CHash256&amp; CHash256::Reset</definition>
+        <argsstring>()</argsstring>
+        <name>Reset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/hash.h" line="46" column="1" bodyfile="/home/dev/ds-160209/src/hash.h" bodystart="46" bodyend="49"/>
+        <references refid="class_c_s_h_a256_1a2122395dd5604990eaa0077b43a0e8d4" compoundref="sha256_8cpp" startline="184" endline="189">CSHA256::Reset</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A hasher class for DarkSilk&apos;s 256-bit hash (double SHA-256). </para>    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/hash.h" line="29" column="1" bodyfile="/home/dev/ds-160209/src/hash.h" bodystart="29" bodyend="50"/>
+    <listofallmembers>
+      <member refid="class_c_hash256_1aa8a70c1b7cf24ce7d00240a1131cf4e7" prot="public" virt="non-virtual"><scope>CHash256</scope><name>Finalize</name></member>
+      <member refid="class_c_hash256_1a6812a40441acb1c3b7f10c7e38c7d467" prot="public" virt="non-virtual"><scope>CHash256</scope><name>OUTPUT_SIZE</name></member>
+      <member refid="class_c_hash256_1ab25b00e4cda7e209173f2ce90475953d" prot="public" virt="non-virtual"><scope>CHash256</scope><name>Reset</name></member>
+      <member refid="class_c_hash256_1af06b992e00e1bd7290388aed522a535f" prot="private" virt="non-virtual"><scope>CHash256</scope><name>sha</name></member>
+      <member refid="class_c_hash256_1a9cc25033c6435cb28e2e8e377c949a7a" prot="public" virt="non-virtual"><scope>CHash256</scope><name>Write</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

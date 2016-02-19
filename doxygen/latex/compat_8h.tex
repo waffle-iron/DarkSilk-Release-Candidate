@@ -1,0 +1,174 @@
+\hypertarget{compat_8h}{}\section{/home/dev/ds-\/160209/src/compat.h File Reference}
+\label{compat_8h}\index{/home/dev/ds-\/160209/src/compat.\+h@{/home/dev/ds-\/160209/src/compat.\+h}}
+{\ttfamily \#include $<$sys/fcntl.\+h$>$}\\*
+{\ttfamily \#include $<$sys/mman.\+h$>$}\\*
+{\ttfamily \#include $<$sys/socket.\+h$>$}\\*
+{\ttfamily \#include $<$sys/types.\+h$>$}\\*
+{\ttfamily \#include $<$net/if.\+h$>$}\\*
+{\ttfamily \#include $<$netinet/in.\+h$>$}\\*
+{\ttfamily \#include $<$arpa/inet.\+h$>$}\\*
+{\ttfamily \#include $<$ifaddrs.\+h$>$}\\*
+{\ttfamily \#include $<$limits.\+h$>$}\\*
+{\ttfamily \#include $<$netdb.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}errno.\+h\char`\"{}}\\*
+Include dependency graph for compat.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{compat_8h_a6d24fe3ab2906c21c373505ca244f90b}{W\+S\+A\+Get\+Last\+Error}()~errno
+\item 
+\#define \hyperlink{compat_8h_a4e535522ca96ce5a8c0934b424f5ee85}{W\+S\+A\+E\+I\+N\+V\+A\+L}~E\+I\+N\+V\+A\+L
+\item 
+\#define \hyperlink{compat_8h_a10fefe81d89fa6e5e5d9a2aca151fe70}{W\+S\+A\+E\+A\+L\+R\+E\+A\+D\+Y}~E\+A\+L\+R\+E\+A\+D\+Y
+\item 
+\#define \hyperlink{compat_8h_a4ba23242bee4784b72a0a170e2f975a0}{W\+S\+A\+E\+W\+O\+U\+L\+D\+B\+L\+O\+C\+K}~E\+W\+O\+U\+L\+D\+B\+L\+O\+C\+K
+\item 
+\#define \hyperlink{compat_8h_a7ce1c171e08d68442124bf6189f8aec5}{W\+S\+A\+E\+M\+S\+G\+S\+I\+Z\+E}~E\+M\+S\+G\+S\+I\+Z\+E
+\item 
+\#define \hyperlink{compat_8h_aef81890a7d46cb9dda85df9b96cba6b1}{W\+S\+A\+E\+I\+N\+T\+R}~E\+I\+N\+T\+R
+\item 
+\#define \hyperlink{compat_8h_ada8711ffab59910a2732cfa4b7c24e29}{W\+S\+A\+E\+I\+N\+P\+R\+O\+G\+R\+E\+S\+S}~E\+I\+N\+P\+R\+O\+G\+R\+E\+S\+S
+\item 
+\#define \hyperlink{compat_8h_ae57d56be40e06a6148c41bb9c1f66eb6}{W\+S\+A\+E\+A\+D\+D\+R\+I\+N\+U\+S\+E}~E\+A\+D\+D\+R\+I\+N\+U\+S\+E
+\item 
+\#define \hyperlink{compat_8h_a56af87338d51ad86415f2e23cae43376}{W\+S\+A\+E\+N\+O\+T\+S\+O\+C\+K}~E\+B\+A\+D\+F
+\item 
+\#define \hyperlink{compat_8h_a26769957ec1a2beaf223f33b66ee64ab}{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+O\+C\+K\+E\+T}~(\hyperlink{compat_8h_a26ef1173e2f2c0d3db27eca28397d723}{S\+O\+C\+K\+E\+T})($\sim$0)
+\item 
+\#define \hyperlink{compat_8h_a633b0396ff93d336a088412a190a5072}{S\+O\+C\+K\+E\+T\+\_\+\+E\+R\+R\+O\+R}~-\/1
+\item 
+\#define \hyperlink{compat_8h_a5a3eb971b466278ada4f7f87399a537c}{closesocket}(s)~\hyperlink{compat_8h_a72d0b02fb5846d26be0def856a1fdfa1}{myclosesocket}(s)
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef u\+\_\+int \hyperlink{compat_8h_a26ef1173e2f2c0d3db27eca28397d723}{S\+O\+C\+K\+E\+T}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{compat_8h_a72d0b02fb5846d26be0def856a1fdfa1}{myclosesocket} (\hyperlink{compat_8h_a26ef1173e2f2c0d3db27eca28397d723}{S\+O\+C\+K\+E\+T} \&h\+Socket)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{compat_8h_a5a3eb971b466278ada4f7f87399a537c}{}\index{compat.\+h@{compat.\+h}!closesocket@{closesocket}}
+\index{closesocket@{closesocket}!compat.\+h@{compat.\+h}}
+\subsubsection[{closesocket}]{\setlength{\rightskip}{0pt plus 5cm}\#define closesocket(
+\begin{DoxyParamCaption}
+\item[{}]{s}
+\end{DoxyParamCaption}
+)~{\bf myclosesocket}(s)}\label{compat_8h_a5a3eb971b466278ada4f7f87399a537c}
+
+
+Definition at line 75 of file compat.\+h.
+
+\hypertarget{compat_8h_a26769957ec1a2beaf223f33b66ee64ab}{}\index{compat.\+h@{compat.\+h}!I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+O\+C\+K\+E\+T@{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+O\+C\+K\+E\+T}}
+\index{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+O\+C\+K\+E\+T@{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+O\+C\+K\+E\+T}!compat.\+h@{compat.\+h}}
+\subsubsection[{I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+O\+C\+K\+E\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+N\+V\+A\+L\+I\+D\+\_\+\+S\+O\+C\+K\+E\+T~({\bf S\+O\+C\+K\+E\+T})($\sim$0)}\label{compat_8h_a26769957ec1a2beaf223f33b66ee64ab}
+
+
+Definition at line 59 of file compat.\+h.
+
+\hypertarget{compat_8h_a633b0396ff93d336a088412a190a5072}{}\index{compat.\+h@{compat.\+h}!S\+O\+C\+K\+E\+T\+\_\+\+E\+R\+R\+O\+R@{S\+O\+C\+K\+E\+T\+\_\+\+E\+R\+R\+O\+R}}
+\index{S\+O\+C\+K\+E\+T\+\_\+\+E\+R\+R\+O\+R@{S\+O\+C\+K\+E\+T\+\_\+\+E\+R\+R\+O\+R}!compat.\+h@{compat.\+h}}
+\subsubsection[{S\+O\+C\+K\+E\+T\+\_\+\+E\+R\+R\+O\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+O\+C\+K\+E\+T\+\_\+\+E\+R\+R\+O\+R~-\/1}\label{compat_8h_a633b0396ff93d336a088412a190a5072}
+
+
+Definition at line 60 of file compat.\+h.
+
+\hypertarget{compat_8h_ae57d56be40e06a6148c41bb9c1f66eb6}{}\index{compat.\+h@{compat.\+h}!W\+S\+A\+E\+A\+D\+D\+R\+I\+N\+U\+S\+E@{W\+S\+A\+E\+A\+D\+D\+R\+I\+N\+U\+S\+E}}
+\index{W\+S\+A\+E\+A\+D\+D\+R\+I\+N\+U\+S\+E@{W\+S\+A\+E\+A\+D\+D\+R\+I\+N\+U\+S\+E}!compat.\+h@{compat.\+h}}
+\subsubsection[{W\+S\+A\+E\+A\+D\+D\+R\+I\+N\+U\+S\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+S\+A\+E\+A\+D\+D\+R\+I\+N\+U\+S\+E~E\+A\+D\+D\+R\+I\+N\+U\+S\+E}\label{compat_8h_ae57d56be40e06a6148c41bb9c1f66eb6}
+
+
+Definition at line 57 of file compat.\+h.
+
+\hypertarget{compat_8h_a10fefe81d89fa6e5e5d9a2aca151fe70}{}\index{compat.\+h@{compat.\+h}!W\+S\+A\+E\+A\+L\+R\+E\+A\+D\+Y@{W\+S\+A\+E\+A\+L\+R\+E\+A\+D\+Y}}
+\index{W\+S\+A\+E\+A\+L\+R\+E\+A\+D\+Y@{W\+S\+A\+E\+A\+L\+R\+E\+A\+D\+Y}!compat.\+h@{compat.\+h}}
+\subsubsection[{W\+S\+A\+E\+A\+L\+R\+E\+A\+D\+Y}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+S\+A\+E\+A\+L\+R\+E\+A\+D\+Y~E\+A\+L\+R\+E\+A\+D\+Y}\label{compat_8h_a10fefe81d89fa6e5e5d9a2aca151fe70}
+
+
+Definition at line 52 of file compat.\+h.
+
+\hypertarget{compat_8h_ada8711ffab59910a2732cfa4b7c24e29}{}\index{compat.\+h@{compat.\+h}!W\+S\+A\+E\+I\+N\+P\+R\+O\+G\+R\+E\+S\+S@{W\+S\+A\+E\+I\+N\+P\+R\+O\+G\+R\+E\+S\+S}}
+\index{W\+S\+A\+E\+I\+N\+P\+R\+O\+G\+R\+E\+S\+S@{W\+S\+A\+E\+I\+N\+P\+R\+O\+G\+R\+E\+S\+S}!compat.\+h@{compat.\+h}}
+\subsubsection[{W\+S\+A\+E\+I\+N\+P\+R\+O\+G\+R\+E\+S\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+S\+A\+E\+I\+N\+P\+R\+O\+G\+R\+E\+S\+S~E\+I\+N\+P\+R\+O\+G\+R\+E\+S\+S}\label{compat_8h_ada8711ffab59910a2732cfa4b7c24e29}
+
+
+Definition at line 56 of file compat.\+h.
+
+\hypertarget{compat_8h_aef81890a7d46cb9dda85df9b96cba6b1}{}\index{compat.\+h@{compat.\+h}!W\+S\+A\+E\+I\+N\+T\+R@{W\+S\+A\+E\+I\+N\+T\+R}}
+\index{W\+S\+A\+E\+I\+N\+T\+R@{W\+S\+A\+E\+I\+N\+T\+R}!compat.\+h@{compat.\+h}}
+\subsubsection[{W\+S\+A\+E\+I\+N\+T\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+S\+A\+E\+I\+N\+T\+R~E\+I\+N\+T\+R}\label{compat_8h_aef81890a7d46cb9dda85df9b96cba6b1}
+
+
+Definition at line 55 of file compat.\+h.
+
+\hypertarget{compat_8h_a4e535522ca96ce5a8c0934b424f5ee85}{}\index{compat.\+h@{compat.\+h}!W\+S\+A\+E\+I\+N\+V\+A\+L@{W\+S\+A\+E\+I\+N\+V\+A\+L}}
+\index{W\+S\+A\+E\+I\+N\+V\+A\+L@{W\+S\+A\+E\+I\+N\+V\+A\+L}!compat.\+h@{compat.\+h}}
+\subsubsection[{W\+S\+A\+E\+I\+N\+V\+A\+L}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+S\+A\+E\+I\+N\+V\+A\+L~E\+I\+N\+V\+A\+L}\label{compat_8h_a4e535522ca96ce5a8c0934b424f5ee85}
+
+
+Definition at line 51 of file compat.\+h.
+
+\hypertarget{compat_8h_a7ce1c171e08d68442124bf6189f8aec5}{}\index{compat.\+h@{compat.\+h}!W\+S\+A\+E\+M\+S\+G\+S\+I\+Z\+E@{W\+S\+A\+E\+M\+S\+G\+S\+I\+Z\+E}}
+\index{W\+S\+A\+E\+M\+S\+G\+S\+I\+Z\+E@{W\+S\+A\+E\+M\+S\+G\+S\+I\+Z\+E}!compat.\+h@{compat.\+h}}
+\subsubsection[{W\+S\+A\+E\+M\+S\+G\+S\+I\+Z\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+S\+A\+E\+M\+S\+G\+S\+I\+Z\+E~E\+M\+S\+G\+S\+I\+Z\+E}\label{compat_8h_a7ce1c171e08d68442124bf6189f8aec5}
+
+
+Definition at line 54 of file compat.\+h.
+
+\hypertarget{compat_8h_a56af87338d51ad86415f2e23cae43376}{}\index{compat.\+h@{compat.\+h}!W\+S\+A\+E\+N\+O\+T\+S\+O\+C\+K@{W\+S\+A\+E\+N\+O\+T\+S\+O\+C\+K}}
+\index{W\+S\+A\+E\+N\+O\+T\+S\+O\+C\+K@{W\+S\+A\+E\+N\+O\+T\+S\+O\+C\+K}!compat.\+h@{compat.\+h}}
+\subsubsection[{W\+S\+A\+E\+N\+O\+T\+S\+O\+C\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+S\+A\+E\+N\+O\+T\+S\+O\+C\+K~E\+B\+A\+D\+F}\label{compat_8h_a56af87338d51ad86415f2e23cae43376}
+
+
+Definition at line 58 of file compat.\+h.
+
+\hypertarget{compat_8h_a4ba23242bee4784b72a0a170e2f975a0}{}\index{compat.\+h@{compat.\+h}!W\+S\+A\+E\+W\+O\+U\+L\+D\+B\+L\+O\+C\+K@{W\+S\+A\+E\+W\+O\+U\+L\+D\+B\+L\+O\+C\+K}}
+\index{W\+S\+A\+E\+W\+O\+U\+L\+D\+B\+L\+O\+C\+K@{W\+S\+A\+E\+W\+O\+U\+L\+D\+B\+L\+O\+C\+K}!compat.\+h@{compat.\+h}}
+\subsubsection[{W\+S\+A\+E\+W\+O\+U\+L\+D\+B\+L\+O\+C\+K}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+S\+A\+E\+W\+O\+U\+L\+D\+B\+L\+O\+C\+K~E\+W\+O\+U\+L\+D\+B\+L\+O\+C\+K}\label{compat_8h_a4ba23242bee4784b72a0a170e2f975a0}
+
+
+Definition at line 53 of file compat.\+h.
+
+\hypertarget{compat_8h_a6d24fe3ab2906c21c373505ca244f90b}{}\index{compat.\+h@{compat.\+h}!W\+S\+A\+Get\+Last\+Error@{W\+S\+A\+Get\+Last\+Error}}
+\index{W\+S\+A\+Get\+Last\+Error@{W\+S\+A\+Get\+Last\+Error}!compat.\+h@{compat.\+h}}
+\subsubsection[{W\+S\+A\+Get\+Last\+Error}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+S\+A\+Get\+Last\+Error(
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)~errno}\label{compat_8h_a6d24fe3ab2906c21c373505ca244f90b}
+
+
+Definition at line 50 of file compat.\+h.
+
+
+
+\subsection{Typedef Documentation}
+\hypertarget{compat_8h_a26ef1173e2f2c0d3db27eca28397d723}{}\index{compat.\+h@{compat.\+h}!S\+O\+C\+K\+E\+T@{S\+O\+C\+K\+E\+T}}
+\index{S\+O\+C\+K\+E\+T@{S\+O\+C\+K\+E\+T}!compat.\+h@{compat.\+h}}
+\subsubsection[{S\+O\+C\+K\+E\+T}]{\setlength{\rightskip}{0pt plus 5cm}typedef u\+\_\+int {\bf S\+O\+C\+K\+E\+T}}\label{compat_8h_a26ef1173e2f2c0d3db27eca28397d723}
+
+
+Definition at line 48 of file compat.\+h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{compat_8h_a72d0b02fb5846d26be0def856a1fdfa1}{}\index{compat.\+h@{compat.\+h}!myclosesocket@{myclosesocket}}
+\index{myclosesocket@{myclosesocket}!compat.\+h@{compat.\+h}}
+\subsubsection[{myclosesocket}]{\setlength{\rightskip}{0pt plus 5cm}int myclosesocket (
+\begin{DoxyParamCaption}
+\item[{{\bf S\+O\+C\+K\+E\+T} \&}]{h\+Socket}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{compat_8h_a72d0b02fb5846d26be0def856a1fdfa1}
+
+
+Definition at line 63 of file compat.\+h.
+

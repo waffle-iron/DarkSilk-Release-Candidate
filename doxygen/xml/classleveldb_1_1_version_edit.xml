@@ -1,0 +1,558 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="classleveldb_1_1_version_edit" kind="class" language="C++" prot="public">
+    <compoundname>leveldb::VersionEdit</compoundname>
+    <includes refid="version__edit_8h" local="no">version_edit.h</includes>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="classleveldb_1_1_version_edit_1af4a08c41c6232dbca0dd31c2e3fa7a9b" prot="private" static="no">
+        <type>std::set&lt; std::pair&lt; int, <ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref> &gt; &gt;</type>
+        <definition>typedef std::set&lt; std::pair&lt;int, uint64_t&gt; &gt; leveldb::VersionEdit::DeletedFileSet</definition>
+        <argsstring></argsstring>
+        <name>DeletedFileSet</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="87" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.h" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classleveldb_1_1_version_edit_1a1827cd1b4d6e9e3c378ce37ca3cce635" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend class</type>
+        <definition>friend class VersionSet</definition>
+        <argsstring></argsstring>
+        <name>VersionSet</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="85" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classleveldb_1_1_version_edit_1abc12f1138eab74643342b6a5de10521c" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string leveldb::VersionEdit::comparator_</definition>
+        <argsstring></argsstring>
+        <name>comparator_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="89" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classleveldb_1_1_version_edit_1a526b91059db8175f1f4f56d00a5bf4d4" prot="private" static="no" mutable="no">
+        <type><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref></type>
+        <definition>uint64_t leveldb::VersionEdit::log_number_</definition>
+        <argsstring></argsstring>
+        <name>log_number_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="90" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classleveldb_1_1_version_edit_1ac8762934b27315cb0ba897c306412562" prot="private" static="no" mutable="no">
+        <type><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref></type>
+        <definition>uint64_t leveldb::VersionEdit::prev_log_number_</definition>
+        <argsstring></argsstring>
+        <name>prev_log_number_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="91" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classleveldb_1_1_version_edit_1a8da3ef0a05e96034b2cc5d32fd06bccb" prot="private" static="no" mutable="no">
+        <type><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref></type>
+        <definition>uint64_t leveldb::VersionEdit::next_file_number_</definition>
+        <argsstring></argsstring>
+        <name>next_file_number_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="92" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classleveldb_1_1_version_edit_1af7718924a84a2a655a27104070580d09" prot="private" static="no" mutable="no">
+        <type><ref refid="namespaceleveldb_1a5481ededd221c36d652c371249f869fa" kindref="member">SequenceNumber</ref></type>
+        <definition>SequenceNumber leveldb::VersionEdit::last_sequence_</definition>
+        <argsstring></argsstring>
+        <name>last_sequence_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="93" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classleveldb_1_1_version_edit_1a2363546c6ba6b79162058c9d8d9980af" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool leveldb::VersionEdit::has_comparator_</definition>
+        <argsstring></argsstring>
+        <name>has_comparator_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="94" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classleveldb_1_1_version_edit_1a72cf0203239ea5cfcb231c99ad430df1" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool leveldb::VersionEdit::has_log_number_</definition>
+        <argsstring></argsstring>
+        <name>has_log_number_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="95" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classleveldb_1_1_version_edit_1aede87f4a703e74d16890ef4fa96df7fc" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool leveldb::VersionEdit::has_prev_log_number_</definition>
+        <argsstring></argsstring>
+        <name>has_prev_log_number_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="96" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.h" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classleveldb_1_1_version_edit_1a71f032cd98934d100d84363c08f033d8" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool leveldb::VersionEdit::has_next_file_number_</definition>
+        <argsstring></argsstring>
+        <name>has_next_file_number_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="97" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.h" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classleveldb_1_1_version_edit_1aa7e36bdcdd10c4e17b9bc86281cd7cb8" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool leveldb::VersionEdit::has_last_sequence_</definition>
+        <argsstring></argsstring>
+        <name>has_last_sequence_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="98" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classleveldb_1_1_version_edit_1a26d90b4b4924dc53222177be1770062e" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::pair&lt; int, <ref refid="classleveldb_1_1_internal_key" kindref="compound">InternalKey</ref> &gt; &gt;</type>
+        <definition>std::vector&lt; std::pair&lt;int, InternalKey&gt; &gt; leveldb::VersionEdit::compact_pointers_</definition>
+        <argsstring></argsstring>
+        <name>compact_pointers_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="100" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classleveldb_1_1_version_edit_1a8d824f3b31d232c58aface3621730c94" prot="private" static="no" mutable="no">
+        <type>DeletedFileSet</type>
+        <definition>DeletedFileSet leveldb::VersionEdit::deleted_files_</definition>
+        <argsstring></argsstring>
+        <name>deleted_files_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="101" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classleveldb_1_1_version_edit_1ae53f738806bc6e1e17a8c128129832a6" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; std::pair&lt; int, <ref refid="structleveldb_1_1_file_meta_data" kindref="compound">FileMetaData</ref> &gt; &gt;</type>
+        <definition>std::vector&lt; std::pair&lt;int, FileMetaData&gt; &gt; leveldb::VersionEdit::new_files_</definition>
+        <argsstring></argsstring>
+        <name>new_files_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="102" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classleveldb_1_1_version_edit_1a60dd9c72d256ed1bda68597a9263333e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::VersionEdit::VersionEdit</definition>
+        <argsstring>()</argsstring>
+        <name>VersionEdit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="30" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.h" bodystart="30" bodyend="30"/>
+        <references refid="classleveldb_1_1_version_edit_1a259c9de14d58e231178904c1559e4b5e" compoundref="version__edit_8cc" startline="26" endline="39">Clear</references>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_version_edit_1a8863bc7fa645c4bc2518910429447fbe" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::VersionEdit::~VersionEdit</definition>
+        <argsstring>()</argsstring>
+        <name>~VersionEdit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="31" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.h" bodystart="31" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_version_edit_1a259c9de14d58e231178904c1559e4b5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::VersionEdit::Clear</definition>
+        <argsstring>()</argsstring>
+        <name>Clear</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="33" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.cc" bodystart="26" bodyend="39"/>
+        <referencedby refid="classleveldb_1_1_version_edit_1ac0f431c5e8f08c74c697d8480f7c005f" compoundref="version__edit_8cc" startline="109" endline="210">DecodeFrom</referencedby>
+        <referencedby refid="classleveldb_1_1_version_edit_1a60dd9c72d256ed1bda68597a9263333e" compoundref="version__edit_8h" startline="30" endline="30">VersionEdit</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_version_edit_1ab562147cdd82b184e86e88bd375a718c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::VersionEdit::SetComparatorName</definition>
+        <argsstring>(const Slice &amp;name)</argsstring>
+        <name>SetComparatorName</name>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref> &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="35" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.h" bodystart="35" bodyend="38"/>
+        <references refid="classleveldb_1_1_slice_1a2cdd9fb649105033fde510afc9416732" compoundref="slice_8h" startline="66" endline="66">leveldb::Slice::ToString</references>
+        <referencedby refid="namespaceleveldb_1aa3106d7d6e907fc13c8c7ceed76740ad" compoundref="version__edit__test_8cc" startline="22" endline="40">leveldb::TEST</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_version_edit_1a47e5c58d34b0e27dc8990687e0c5477a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::VersionEdit::SetLogNumber</definition>
+        <argsstring>(uint64_t num)</argsstring>
+        <name>SetLogNumber</name>
+        <param>
+          <type><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref></type>
+          <declname>num</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="39" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.h" bodystart="39" bodyend="42"/>
+        <referencedby refid="classleveldb_1_1_d_b_1ac1da2b48e911287d86f3a3bfa0f851fe" compoundref="db__impl_8cc" startline="1445" endline="1477">leveldb::DB::Open</referencedby>
+        <referencedby refid="namespaceleveldb_1aa3106d7d6e907fc13c8c7ceed76740ad" compoundref="version__edit__test_8cc" startline="22" endline="40">leveldb::TEST</referencedby>
+        <referencedby refid="classleveldb_1_1_version_set_1ac1d014901be7095ace1aaec0cf391fb6" compoundref="version__set_8cc" startline="811" endline="894">leveldb::VersionSet::LogAndApply</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_version_edit_1ac1b5689f62e7a8f63c4eefa437a4f2f3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::VersionEdit::SetPrevLogNumber</definition>
+        <argsstring>(uint64_t num)</argsstring>
+        <name>SetPrevLogNumber</name>
+        <param>
+          <type><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref></type>
+          <declname>num</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="43" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.h" bodystart="43" bodyend="46"/>
+        <referencedby refid="classleveldb_1_1_version_set_1ac1d014901be7095ace1aaec0cf391fb6" compoundref="version__set_8cc" startline="811" endline="894">leveldb::VersionSet::LogAndApply</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_version_edit_1a4c104515adf573be0ead29e6835f14fb" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::VersionEdit::SetNextFile</definition>
+        <argsstring>(uint64_t num)</argsstring>
+        <name>SetNextFile</name>
+        <param>
+          <type><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref></type>
+          <declname>num</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="47" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.h" bodystart="47" bodyend="50"/>
+        <referencedby refid="namespaceleveldb_1aa3106d7d6e907fc13c8c7ceed76740ad" compoundref="version__edit__test_8cc" startline="22" endline="40">leveldb::TEST</referencedby>
+        <referencedby refid="classleveldb_1_1_version_set_1ac1d014901be7095ace1aaec0cf391fb6" compoundref="version__set_8cc" startline="811" endline="894">leveldb::VersionSet::LogAndApply</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_version_edit_1abd6e841ed400672d33d26f4b187a66bf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::VersionEdit::SetLastSequence</definition>
+        <argsstring>(SequenceNumber seq)</argsstring>
+        <name>SetLastSequence</name>
+        <param>
+          <type><ref refid="namespaceleveldb_1a5481ededd221c36d652c371249f869fa" kindref="member">SequenceNumber</ref></type>
+          <declname>seq</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="51" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.h" bodystart="51" bodyend="54"/>
+        <referencedby refid="namespaceleveldb_1aa3106d7d6e907fc13c8c7ceed76740ad" compoundref="version__edit__test_8cc" startline="22" endline="40">leveldb::TEST</referencedby>
+        <referencedby refid="classleveldb_1_1_version_set_1ac1d014901be7095ace1aaec0cf391fb6" compoundref="version__set_8cc" startline="811" endline="894">leveldb::VersionSet::LogAndApply</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_version_edit_1ac9b26dfba1188705d7fc4deaf047271c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::VersionEdit::SetCompactPointer</definition>
+        <argsstring>(int level, const InternalKey &amp;key)</argsstring>
+        <name>SetCompactPointer</name>
+        <param>
+          <type>int</type>
+          <declname>level</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_internal_key" kindref="compound">InternalKey</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="55" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.h" bodystart="55" bodyend="57"/>
+        <referencedby refid="namespaceleveldb_1aa3106d7d6e907fc13c8c7ceed76740ad" compoundref="version__edit__test_8cc" startline="22" endline="40">leveldb::TEST</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_version_edit_1a4cd5cc92761b7ae5b5f9cff46cb88263" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::VersionEdit::AddFile</definition>
+        <argsstring>(int level, uint64_t file, uint64_t file_size, const InternalKey &amp;smallest, const InternalKey &amp;largest)</argsstring>
+        <name>AddFile</name>
+        <param>
+          <type>int</type>
+          <declname>level</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref></type>
+          <declname>file</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref></type>
+          <declname>file_size</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_internal_key" kindref="compound">InternalKey</ref> &amp;</type>
+          <declname>smallest</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_internal_key" kindref="compound">InternalKey</ref> &amp;</type>
+          <declname>largest</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="62" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.h" bodystart="62" bodyend="72"/>
+        <references refid="structleveldb_1_1_file_meta_data_1adc63bac3e06fd4387ebb9f085fc88fe7" compoundref="version__edit_8h" startline="20">leveldb::FileMetaData::number</references>
+        <references refid="structleveldb_1_1_file_meta_data_1a778ea9c773ad4fdfe4408eecaae754f7" compoundref="version__edit_8h" startline="21">leveldb::FileMetaData::file_size</references>
+        <references refid="structleveldb_1_1_file_meta_data_1a9e5e5c149495aede836ac637cd89269f" compoundref="version__edit_8h" startline="22">leveldb::FileMetaData::smallest</references>
+        <references refid="structleveldb_1_1_file_meta_data_1a410718ba1868392b298d05a774dd07d1" compoundref="version__edit_8h" startline="23">leveldb::FileMetaData::largest</references>
+        <referencedby refid="namespaceleveldb_1af9cf6ec167c9b6f25fd050ab6fb67a90" compoundref="db__test_8cc" startline="2065" endline="2114">leveldb::BM_LogAndApply</referencedby>
+        <referencedby refid="namespaceleveldb_1aa3106d7d6e907fc13c8c7ceed76740ad" compoundref="version__edit__test_8cc" startline="22" endline="40">leveldb::TEST</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_version_edit_1ac222bfd1055114d57aadbd124f24ad0c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::VersionEdit::DeleteFile</definition>
+        <argsstring>(int level, uint64_t file)</argsstring>
+        <name>DeleteFile</name>
+        <param>
+          <type>int</type>
+          <declname>level</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref></type>
+          <declname>file</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="75" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.h" bodystart="75" bodyend="77"/>
+        <referencedby refid="namespaceleveldb_1af9cf6ec167c9b6f25fd050ab6fb67a90" compoundref="db__test_8cc" startline="2065" endline="2114">leveldb::BM_LogAndApply</referencedby>
+        <referencedby refid="namespaceleveldb_1aa3106d7d6e907fc13c8c7ceed76740ad" compoundref="version__edit__test_8cc" startline="22" endline="40">leveldb::TEST</referencedby>
+        <referencedby refid="classleveldb_1_1_compaction_1abb1acdc9b882a7497603b13386e7e1a7" compoundref="version__set_8cc" startline="1426" endline="1432">leveldb::Compaction::AddInputDeletions</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_version_edit_1aa3161c67223f6c5e843be579a8456086" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::VersionEdit::EncodeTo</definition>
+        <argsstring>(std::string *dst) const </argsstring>
+        <name>EncodeTo</name>
+        <param>
+          <type>std::string *</type>
+          <declname>dst</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="79" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.cc" bodystart="41" bodyend="86"/>
+        <references refid="namespaceleveldb_1ab00e282f3fd7058b8a41afcf4b56e685" compoundref="coding_8cc" startline="75" endline="79">leveldb::PutVarint32</references>
+        <references refid="namespaceleveldb_1afa685d3afc34bc4ec96f33792276bc3fac541e987bd5d939b35bc39df1796e681" compoundref="version__edit_8cc" startline="15">leveldb::kComparator</references>
+        <references refid="namespaceleveldb_1a98eaeea7300aa4f9b56303ffa27581af" compoundref="coding_8cc" startline="98" endline="101">leveldb::PutLengthPrefixedSlice</references>
+        <references refid="namespaceleveldb_1afa685d3afc34bc4ec96f33792276bc3fa04978e732995d33663db37d802a7e72c" compoundref="version__edit_8cc" startline="16">leveldb::kLogNumber</references>
+        <references refid="namespaceleveldb_1a17889b1733282d6e80cf03fc0dd207d4" compoundref="coding_8cc" startline="92" endline="96">leveldb::PutVarint64</references>
+        <references refid="namespaceleveldb_1afa685d3afc34bc4ec96f33792276bc3fa3918f2a3f22eb62352c8e31f1ec161f3" compoundref="version__edit_8cc" startline="23">leveldb::kPrevLogNumber</references>
+        <references refid="namespaceleveldb_1afa685d3afc34bc4ec96f33792276bc3fab6c83de82972300808bc8fcf6d42fa9b" compoundref="version__edit_8cc" startline="17">leveldb::kNextFileNumber</references>
+        <references refid="namespaceleveldb_1afa685d3afc34bc4ec96f33792276bc3fab010832d8064a41609fd4812d486d1e8" compoundref="version__edit_8cc" startline="18">leveldb::kLastSequence</references>
+        <references refid="namespaceleveldb_1afa685d3afc34bc4ec96f33792276bc3fa417aba67b6cb00757eff9c2d95230557" compoundref="version__edit_8cc" startline="19">leveldb::kCompactPointer</references>
+        <references refid="namespaceleveldb_1afa685d3afc34bc4ec96f33792276bc3fa6e96d3006bc411c9c461cb3b4dc67a96" compoundref="version__edit_8cc" startline="20">leveldb::kDeletedFile</references>
+        <references refid="namespaceleveldb_1afa685d3afc34bc4ec96f33792276bc3fae265c5eb525120ef5fd3284cd8b35220" compoundref="version__edit_8cc" startline="21">leveldb::kNewFile</references>
+        <references refid="structleveldb_1_1_file_meta_data_1adc63bac3e06fd4387ebb9f085fc88fe7" compoundref="version__edit_8h" startline="20">leveldb::FileMetaData::number</references>
+        <references refid="structleveldb_1_1_file_meta_data_1a778ea9c773ad4fdfe4408eecaae754f7" compoundref="version__edit_8h" startline="21">leveldb::FileMetaData::file_size</references>
+        <references refid="structleveldb_1_1_file_meta_data_1a9e5e5c149495aede836ac637cd89269f" compoundref="version__edit_8h" startline="22">leveldb::FileMetaData::smallest</references>
+        <references refid="classleveldb_1_1_internal_key_1aed986eb7cb360bd6955097235ad267b6" compoundref="dbformat_8h" startline="154" endline="157">leveldb::InternalKey::Encode</references>
+        <references refid="structleveldb_1_1_file_meta_data_1a410718ba1868392b298d05a774dd07d1" compoundref="version__edit_8h" startline="23">leveldb::FileMetaData::largest</references>
+        <referencedby refid="classleveldb_1_1_version_set_1ac1d014901be7095ace1aaec0cf391fb6" compoundref="version__set_8cc" startline="811" endline="894">leveldb::VersionSet::LogAndApply</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_version_edit_1ac0f431c5e8f08c74c697d8480f7c005f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref></type>
+        <definition>Status leveldb::VersionEdit::DecodeFrom</definition>
+        <argsstring>(const Slice &amp;src)</argsstring>
+        <name>DecodeFrom</name>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref> &amp;</type>
+          <declname>src</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="80" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.cc" bodystart="109" bodyend="210"/>
+        <references refid="classleveldb_1_1_version_edit_1a259c9de14d58e231178904c1559e4b5e" compoundref="version__edit_8cc" startline="26" endline="39">Clear</references>
+        <references refid="namespaceleveldb_1a0ea18f49771b5d7eea6b35ec07294598" compoundref="coding_8cc" startline="131" endline="141">leveldb::GetVarint32</references>
+        <references refid="namespaceleveldb_1afa685d3afc34bc4ec96f33792276bc3fac541e987bd5d939b35bc39df1796e681" compoundref="version__edit_8cc" startline="15">leveldb::kComparator</references>
+        <references refid="namespaceleveldb_1aa06a54af59e83922885a7eb8f0359a94" compoundref="coding_8cc" startline="172" endline="180">leveldb::GetLengthPrefixedSlice</references>
+        <references refid="classleveldb_1_1_slice_1a2cdd9fb649105033fde510afc9416732" compoundref="slice_8h" startline="66" endline="66">leveldb::Slice::ToString</references>
+        <references refid="namespaceleveldb_1afa685d3afc34bc4ec96f33792276bc3fa04978e732995d33663db37d802a7e72c" compoundref="version__edit_8cc" startline="16">leveldb::kLogNumber</references>
+        <references refid="namespaceleveldb_1aeb35486038249293e9b823f97dd9df0c" compoundref="coding_8cc" startline="160" endline="170">leveldb::GetVarint64</references>
+        <references refid="namespaceleveldb_1afa685d3afc34bc4ec96f33792276bc3fa3918f2a3f22eb62352c8e31f1ec161f3" compoundref="version__edit_8cc" startline="23">leveldb::kPrevLogNumber</references>
+        <references refid="namespaceleveldb_1afa685d3afc34bc4ec96f33792276bc3fab6c83de82972300808bc8fcf6d42fa9b" compoundref="version__edit_8cc" startline="17">leveldb::kNextFileNumber</references>
+        <references refid="namespaceleveldb_1afa685d3afc34bc4ec96f33792276bc3fab010832d8064a41609fd4812d486d1e8" compoundref="version__edit_8cc" startline="18">leveldb::kLastSequence</references>
+        <references refid="namespaceleveldb_1afa685d3afc34bc4ec96f33792276bc3fa417aba67b6cb00757eff9c2d95230557" compoundref="version__edit_8cc" startline="19">leveldb::kCompactPointer</references>
+        <references refid="namespaceleveldb_1afa685d3afc34bc4ec96f33792276bc3fa6e96d3006bc411c9c461cb3b4dc67a96" compoundref="version__edit_8cc" startline="20">leveldb::kDeletedFile</references>
+        <references refid="namespaceleveldb_1afa685d3afc34bc4ec96f33792276bc3fae265c5eb525120ef5fd3284cd8b35220" compoundref="version__edit_8cc" startline="21">leveldb::kNewFile</references>
+        <references refid="structleveldb_1_1_file_meta_data_1adc63bac3e06fd4387ebb9f085fc88fe7" compoundref="version__edit_8h" startline="20">leveldb::FileMetaData::number</references>
+        <references refid="structleveldb_1_1_file_meta_data_1a778ea9c773ad4fdfe4408eecaae754f7" compoundref="version__edit_8h" startline="21">leveldb::FileMetaData::file_size</references>
+        <references refid="structleveldb_1_1_file_meta_data_1a9e5e5c149495aede836ac637cd89269f" compoundref="version__edit_8h" startline="22">leveldb::FileMetaData::smallest</references>
+        <references refid="structleveldb_1_1_file_meta_data_1a410718ba1868392b298d05a774dd07d1" compoundref="version__edit_8h" startline="23">leveldb::FileMetaData::largest</references>
+        <references refid="classleveldb_1_1_slice_1a7d0b93d5801bff5656068647759dcb8f" compoundref="slice_8h" startline="46" endline="46">leveldb::Slice::empty</references>
+        <references refid="classleveldb_1_1_status_1a755b1ee5b0029cf9ea1128f1cdff5855" compoundref="status_8h" startline="38" endline="40">leveldb::Status::Corruption</references>
+        <referencedby refid="classleveldb_1_1_version_set_1a955ff8620ec56742cdc48da0e74ab40b" compoundref="version__set_8cc" startline="896" endline="1009">leveldb::VersionSet::Recover</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_version_edit_1aa186529f0124867251964b2346b58b1f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string leveldb::VersionEdit::DebugString</definition>
+        <argsstring>() const </argsstring>
+        <name>DebugString</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="82" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.cc" bodystart="212" bodyend="264"/>
+        <references refid="namespaceleveldb_1a089617d12900e6fe5b712c31f651b5ff" compoundref="logging_8cc" startline="16" endline="20">leveldb::AppendNumberTo</references>
+        <references refid="structleveldb_1_1_file_meta_data_1adc63bac3e06fd4387ebb9f085fc88fe7" compoundref="version__edit_8h" startline="20">leveldb::FileMetaData::number</references>
+        <references refid="structleveldb_1_1_file_meta_data_1a778ea9c773ad4fdfe4408eecaae754f7" compoundref="version__edit_8h" startline="21">leveldb::FileMetaData::file_size</references>
+        <references refid="structleveldb_1_1_file_meta_data_1a9e5e5c149495aede836ac637cd89269f" compoundref="version__edit_8h" startline="22">leveldb::FileMetaData::smallest</references>
+        <references refid="classleveldb_1_1_internal_key_1a737053e1b02c3eb8361e960f7fe5befb" compoundref="dbformat_8cc" startline="34" endline="44">leveldb::InternalKey::DebugString</references>
+        <references refid="structleveldb_1_1_file_meta_data_1a410718ba1868392b298d05a774dd07d1" compoundref="version__edit_8h" startline="23">leveldb::FileMetaData::largest</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/leveldb/db/version_edit.h" line="28" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/version_edit.h" bodystart="28" bodyend="103"/>
+    <listofallmembers>
+      <member refid="classleveldb_1_1_version_edit_1a4cd5cc92761b7ae5b5f9cff46cb88263" prot="public" virt="non-virtual"><scope>leveldb::VersionEdit</scope><name>AddFile</name></member>
+      <member refid="classleveldb_1_1_version_edit_1a259c9de14d58e231178904c1559e4b5e" prot="public" virt="non-virtual"><scope>leveldb::VersionEdit</scope><name>Clear</name></member>
+      <member refid="classleveldb_1_1_version_edit_1a26d90b4b4924dc53222177be1770062e" prot="private" virt="non-virtual"><scope>leveldb::VersionEdit</scope><name>compact_pointers_</name></member>
+      <member refid="classleveldb_1_1_version_edit_1abc12f1138eab74643342b6a5de10521c" prot="private" virt="non-virtual"><scope>leveldb::VersionEdit</scope><name>comparator_</name></member>
+      <member refid="classleveldb_1_1_version_edit_1aa186529f0124867251964b2346b58b1f" prot="public" virt="non-virtual"><scope>leveldb::VersionEdit</scope><name>DebugString</name></member>
+      <member refid="classleveldb_1_1_version_edit_1ac0f431c5e8f08c74c697d8480f7c005f" prot="public" virt="non-virtual"><scope>leveldb::VersionEdit</scope><name>DecodeFrom</name></member>
+      <member refid="classleveldb_1_1_version_edit_1a8d824f3b31d232c58aface3621730c94" prot="private" virt="non-virtual"><scope>leveldb::VersionEdit</scope><name>deleted_files_</name></member>
+      <member refid="classleveldb_1_1_version_edit_1af4a08c41c6232dbca0dd31c2e3fa7a9b" prot="private" virt="non-virtual"><scope>leveldb::VersionEdit</scope><name>DeletedFileSet</name></member>
+      <member refid="classleveldb_1_1_version_edit_1ac222bfd1055114d57aadbd124f24ad0c" prot="public" virt="non-virtual"><scope>leveldb::VersionEdit</scope><name>DeleteFile</name></member>
+      <member refid="classleveldb_1_1_version_edit_1aa3161c67223f6c5e843be579a8456086" prot="public" virt="non-virtual"><scope>leveldb::VersionEdit</scope><name>EncodeTo</name></member>
+      <member refid="classleveldb_1_1_version_edit_1a2363546c6ba6b79162058c9d8d9980af" prot="private" virt="non-virtual"><scope>leveldb::VersionEdit</scope><name>has_comparator_</name></member>
+      <member refid="classleveldb_1_1_version_edit_1aa7e36bdcdd10c4e17b9bc86281cd7cb8" prot="private" virt="non-virtual"><scope>leveldb::VersionEdit</scope><name>has_last_sequence_</name></member>
+      <member refid="classleveldb_1_1_version_edit_1a72cf0203239ea5cfcb231c99ad430df1" prot="private" virt="non-virtual"><scope>leveldb::VersionEdit</scope><name>has_log_number_</name></member>
+      <member refid="classleveldb_1_1_version_edit_1a71f032cd98934d100d84363c08f033d8" prot="private" virt="non-virtual"><scope>leveldb::VersionEdit</scope><name>has_next_file_number_</name></member>
+      <member refid="classleveldb_1_1_version_edit_1aede87f4a703e74d16890ef4fa96df7fc" prot="private" virt="non-virtual"><scope>leveldb::VersionEdit</scope><name>has_prev_log_number_</name></member>
+      <member refid="classleveldb_1_1_version_edit_1af7718924a84a2a655a27104070580d09" prot="private" virt="non-virtual"><scope>leveldb::VersionEdit</scope><name>last_sequence_</name></member>
+      <member refid="classleveldb_1_1_version_edit_1a526b91059db8175f1f4f56d00a5bf4d4" prot="private" virt="non-virtual"><scope>leveldb::VersionEdit</scope><name>log_number_</name></member>
+      <member refid="classleveldb_1_1_version_edit_1ae53f738806bc6e1e17a8c128129832a6" prot="private" virt="non-virtual"><scope>leveldb::VersionEdit</scope><name>new_files_</name></member>
+      <member refid="classleveldb_1_1_version_edit_1a8da3ef0a05e96034b2cc5d32fd06bccb" prot="private" virt="non-virtual"><scope>leveldb::VersionEdit</scope><name>next_file_number_</name></member>
+      <member refid="classleveldb_1_1_version_edit_1ac8762934b27315cb0ba897c306412562" prot="private" virt="non-virtual"><scope>leveldb::VersionEdit</scope><name>prev_log_number_</name></member>
+      <member refid="classleveldb_1_1_version_edit_1ac9b26dfba1188705d7fc4deaf047271c" prot="public" virt="non-virtual"><scope>leveldb::VersionEdit</scope><name>SetCompactPointer</name></member>
+      <member refid="classleveldb_1_1_version_edit_1ab562147cdd82b184e86e88bd375a718c" prot="public" virt="non-virtual"><scope>leveldb::VersionEdit</scope><name>SetComparatorName</name></member>
+      <member refid="classleveldb_1_1_version_edit_1abd6e841ed400672d33d26f4b187a66bf" prot="public" virt="non-virtual"><scope>leveldb::VersionEdit</scope><name>SetLastSequence</name></member>
+      <member refid="classleveldb_1_1_version_edit_1a47e5c58d34b0e27dc8990687e0c5477a" prot="public" virt="non-virtual"><scope>leveldb::VersionEdit</scope><name>SetLogNumber</name></member>
+      <member refid="classleveldb_1_1_version_edit_1a4c104515adf573be0ead29e6835f14fb" prot="public" virt="non-virtual"><scope>leveldb::VersionEdit</scope><name>SetNextFile</name></member>
+      <member refid="classleveldb_1_1_version_edit_1ac1b5689f62e7a8f63c4eefa437a4f2f3" prot="public" virt="non-virtual"><scope>leveldb::VersionEdit</scope><name>SetPrevLogNumber</name></member>
+      <member refid="classleveldb_1_1_version_edit_1a60dd9c72d256ed1bda68597a9263333e" prot="public" virt="non-virtual"><scope>leveldb::VersionEdit</scope><name>VersionEdit</name></member>
+      <member refid="classleveldb_1_1_version_edit_1a1827cd1b4d6e9e3c378ce37ca3cce635" prot="private" virt="non-virtual"><scope>leveldb::VersionEdit</scope><name>VersionSet</name></member>
+      <member refid="classleveldb_1_1_version_edit_1a8863bc7fa645c4bc2518910429447fbe" prot="public" virt="non-virtual"><scope>leveldb::VersionEdit</scope><name>~VersionEdit</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

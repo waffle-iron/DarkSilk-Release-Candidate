@@ -1,0 +1,476 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="ecmult__const__impl_8h" kind="file" language="C++">
+    <compoundname>ecmult_const_impl.h</compoundname>
+    <includes refid="scalar_8h" local="yes">scalar.h</includes>
+    <includes refid="group_8h" local="yes">group.h</includes>
+    <includes refid="ecmult__const_8h" local="yes">ecmult_const.h</includes>
+    <includes refid="ecmult__impl_8h" local="yes">ecmult_impl.h</includes>
+    <includedby refid="bench__internal_8c" local="yes">/home/dev/ds-160209/src/secp256k1/src/bench_internal.c</includedby>
+    <includedby refid="secp256k1_8c" local="yes">/home/dev/ds-160209/src/secp256k1/src/secp256k1.c</includedby>
+    <includedby refid="ecdh_2main__impl_8h" local="yes">/home/dev/ds-160209/src/secp256k1/src/modules/ecdh/main_impl.h</includedby>
+    <incdepgraph>
+      <node id="51762">
+        <label>scalar.h</label>
+        <link refid="scalar_8h"/>
+        <childnode refid="51763" relation="include">
+        </childnode>
+      </node>
+      <node id="51767">
+        <label>ecmult_impl.h</label>
+        <link refid="ecmult__impl_8h"/>
+        <childnode refid="51764" relation="include">
+        </childnode>
+        <childnode refid="51762" relation="include">
+        </childnode>
+        <childnode refid="51768" relation="include">
+        </childnode>
+      </node>
+      <node id="51763">
+        <label>num.h</label>
+        <link refid="num_8h"/>
+      </node>
+      <node id="51764">
+        <label>group.h</label>
+        <link refid="group_8h"/>
+        <childnode refid="51763" relation="include">
+        </childnode>
+        <childnode refid="51765" relation="include">
+        </childnode>
+      </node>
+      <node id="51768">
+        <label>ecmult.h</label>
+        <link refid="ecmult_8h"/>
+        <childnode refid="51763" relation="include">
+        </childnode>
+        <childnode refid="51764" relation="include">
+        </childnode>
+      </node>
+      <node id="51761">
+        <label>/home/dev/ds-160209/src/secp256k1/src/ecmult_const_impl.h</label>
+        <link refid="ecmult_const_impl.h"/>
+        <childnode refid="51762" relation="include">
+        </childnode>
+        <childnode refid="51764" relation="include">
+        </childnode>
+        <childnode refid="51766" relation="include">
+        </childnode>
+        <childnode refid="51767" relation="include">
+        </childnode>
+      </node>
+      <node id="51765">
+        <label>field.h</label>
+        <link refid="field_8h"/>
+      </node>
+      <node id="51766">
+        <label>ecmult_const.h</label>
+        <link refid="ecmult__const_8h"/>
+        <childnode refid="51762" relation="include">
+        </childnode>
+        <childnode refid="51764" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="51772">
+        <label>/home/dev/ds-160209/src/secp256k1/src/tests.c</label>
+        <link refid="tests_8c"/>
+      </node>
+      <node id="51773">
+        <label>/home/dev/ds-160209/src/secp256k1/src/modules/ecdh/main_impl.h</label>
+        <link refid="ecdh_2main__impl_8h"/>
+      </node>
+      <node id="51771">
+        <label>/home/dev/ds-160209/src/secp256k1/src/secp256k1.c</label>
+        <link refid="secp256k1_8c"/>
+        <childnode refid="51770" relation="include">
+        </childnode>
+        <childnode refid="51772" relation="include">
+        </childnode>
+      </node>
+      <node id="51769">
+        <label>/home/dev/ds-160209/src/secp256k1/src/ecmult_const_impl.h</label>
+        <link refid="ecmult_const_impl.h"/>
+        <childnode refid="51770" relation="include">
+        </childnode>
+        <childnode refid="51771" relation="include">
+        </childnode>
+        <childnode refid="51773" relation="include">
+        </childnode>
+      </node>
+      <node id="51770">
+        <label>/home/dev/ds-160209/src/secp256k1/src/bench_internal.c</label>
+        <link refid="bench__internal_8c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="ecmult__const__impl_8h_1a7ca5efdae3396a6261bcc836e4a32739" prot="public" static="no">
+        <name>WNAF_BITS</name>
+        <initializer>256</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/ecmult_const_impl.h" line="18" column="14" bodyfile="/home/dev/ds-160209/src/secp256k1/src/ecmult_const_impl.h" bodystart="18" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="ecmult__const__impl_8h_1a23d9fb349265ae338b9977f7f7aab065" prot="public" static="no">
+        <name>WNAF_SIZE</name>
+        <param><defname>w</defname></param>
+        <initializer>((<ref refid="ecmult__const__impl_8h_1a7ca5efdae3396a6261bcc836e4a32739" kindref="member">WNAF_BITS</ref> + (w) - 1) / (w))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/ecmult_const_impl.h" line="20" column="10" bodyfile="/home/dev/ds-160209/src/secp256k1/src/ecmult_const_impl.h" bodystart="20" bodyend="-1"/>
+        <referencedby refid="tests_8c_1ab1b83b06f2b16b37ec472a91775d1a94" compoundref="tests_8c" startline="2382" endline="2425">test_constant_wnaf</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="ecmult__const__impl_8h_1a541e7c0e2d2f68e2b1b03729d93b4ca7" prot="public" static="no">
+        <name>ECMULT_CONST_TABLE_GET_GE</name>
+        <param><defname>r</defname></param>
+        <param><defname>pre</defname></param>
+        <param><defname>n</defname></param>
+        <param><defname>w</defname></param>
+        <initializer>do { \
+    int m; \
+    int abs_n = (n) * (((n) &gt; 0) * 2 - 1); \
+    int idx_n = abs_n / 2; \
+    <ref refid="structsecp256k1__fe" kindref="compound">secp256k1_fe</ref> neg_y; \
+    <ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>(((n) &amp; 1) == 1); \
+    <ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>((n) &gt;= -((1 &lt;&lt; ((w)-1)) - 1)); \
+    <ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>((n) &lt;=  ((1 &lt;&lt; ((w)-1)) - 1)); \
+    <ref refid="secp256k1_2src_2util_8h_1aa116d8999575e97182121de504f7a130" kindref="member">VERIFY_SETUP</ref>(secp256k1_fe_clear(&amp;(r)-&gt;x)); \
+    <ref refid="secp256k1_2src_2util_8h_1aa116d8999575e97182121de504f7a130" kindref="member">VERIFY_SETUP</ref>(secp256k1_fe_clear(&amp;(r)-&gt;y)); \
+    for (m = 0; m &lt; <ref refid="ecmult__impl_8h_1a97c6c6e5aa98f202eec77c4c931e02f1" kindref="member">ECMULT_TABLE_SIZE</ref>(w); m++) { \
+        /* This loop is used to avoid secret data in array indices. See
+         * the comment in ecmult_gen_impl.h for rationale. */ \
+        secp256k1_fe_cmov(&amp;(r)-&gt;x, &amp;(pre)[m].x, m == idx_n); \
+        secp256k1_fe_cmov(&amp;(r)-&gt;y, &amp;(pre)[m].y, m == idx_n); \
+    } \
+    (r)-&gt;infinity = 0; \
+    secp256k1_fe_negate(&amp;neg_y, &amp;(r)-&gt;y, 1); \
+    secp256k1_fe_cmov(&amp;(r)-&gt;y, &amp;neg_y, (n) != abs_n); \
+} while(0)</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/ecmult_const_impl.h" line="24" column="9" bodyfile="/home/dev/ds-160209/src/secp256k1/src/ecmult_const_impl.h" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="ecmult__const__impl_8h_1ac252ac4f8c905ddc178ce056bd45b8ec" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>static int secp256k1_wnaf_const</definition>
+        <argsstring>(int *wnaf, secp256k1_scalar s, int w)</argsstring>
+        <name>secp256k1_wnaf_const</name>
+        <param>
+          <type>int *</type>
+          <declname>wnaf</declname>
+        </param>
+        <param>
+          <type><ref refid="structsecp256k1__scalar" kindref="compound">secp256k1_scalar</ref></type>
+          <declname>s</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>w</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Convert a number to WNAF notation. The number becomes represented by sum(2^{wi} * wnaf[i], i=0..return_val) with the following guarantees:<itemizedlist>
+<listitem><para>each wnaf[i] an odd integer between -(1 &lt;&lt; w) and (1 &lt;&lt; w)</para></listitem><listitem><para>each wnaf[i] is nonzero</para></listitem><listitem><para>the number of words set is returned; this is always (WNAF_BITS + w - 1) / w</para></listitem></itemizedlist>
+</para><para>Adapted from <computeroutput>The Width-w NAF Method Provides Small Memory and Fast Elliptic Scalar Multiplications Secure against Side Channel Attacks</computeroutput>, Okeya and Tagaki. M. Joye (Ed.) CT-RSA 2003, LNCS 2612, pp. 328-443, 2003. Springer-Verlagy Berlin Heidelberg 2003</para><para>Numbers reference steps of <computeroutput>Algorithm SPA-resistant Width-w NAF with Odd Scalar</computeroutput> on pp. 335 </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/ecmult_const_impl.h" line="57" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/ecmult_const_impl.h" bodystart="57" bodyend="122"/>
+      </memberdef>
+      <memberdef kind="function" id="ecmult__const__impl_8h_1a89f4e02fa2a4630ae0c5e302457f7931" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void secp256k1_ecmult_const</definition>
+        <argsstring>(secp256k1_gej *r, const secp256k1_ge *a, const secp256k1_scalar *scalar)</argsstring>
+        <name>secp256k1_ecmult_const</name>
+        <param>
+          <type><ref refid="structsecp256k1__gej" kindref="compound">secp256k1_gej</ref> *</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsecp256k1__ge" kindref="compound">secp256k1_ge</ref> *</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsecp256k1__scalar" kindref="compound">secp256k1_scalar</ref> *</type>
+          <declname>scalar</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/ecmult_const_impl.h" line="125" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/ecmult_const_impl.h" bodystart="125" bodyend="258"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**********************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2015-2016<sp/>Pieter<sp/>Wuille,<sp/>Andrew<sp/>Poelstra<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Distributed<sp/>under<sp/>the<sp/>MIT<sp/>software<sp/>license,<sp/>see<sp/>the<sp/>accompanying<sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>file<sp/>COPYING<sp/>or<sp/>http://www.opensource.org/licenses/mit-license.php.*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>**********************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>_SECP256K1_ECMULT_CONST_IMPL_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_SECP256K1_ECMULT_CONST_IMPL_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="scalar_8h" kindref="compound">scalar.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="group_8h" kindref="compound">group.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="ecmult__const_8h" kindref="compound">ecmult_const.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="ecmult__impl_8h" kindref="compound">ecmult_impl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>USE_ENDOMORPHISM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>WNAF_BITS<sp/>128</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="ecmult__const__impl_8h_1a7ca5efdae3396a6261bcc836e4a32739" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/>#define<sp/>WNAF_BITS<sp/>256</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="ecmult__const__impl_8h_1a23d9fb349265ae338b9977f7f7aab065" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>WNAF_SIZE(w)<sp/>((WNAF_BITS<sp/>+<sp/>(w)<sp/>-<sp/>1)<sp/>/<sp/>(w))</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>This<sp/>is<sp/>like<sp/>`ECMULT_TABLE_GET_GE`<sp/>but<sp/>is<sp/>constant<sp/>time<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="ecmult__const__impl_8h_1a541e7c0e2d2f68e2b1b03729d93b4ca7" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>ECMULT_CONST_TABLE_GET_GE(r,pre,n,w)<sp/>do<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="24"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>int<sp/>m;<sp/>\</highlight></codeline>
+<codeline lineno="25"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>int<sp/>abs_n<sp/>=<sp/>(n)<sp/>*<sp/>(((n)<sp/>&gt;<sp/>0)<sp/>*<sp/>2<sp/>-<sp/>1);<sp/>\</highlight></codeline>
+<codeline lineno="26"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>int<sp/>idx_n<sp/>=<sp/>abs_n<sp/>/<sp/>2;<sp/>\</highlight></codeline>
+<codeline lineno="27"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>secp256k1_fe<sp/>neg_y;<sp/>\</highlight></codeline>
+<codeline lineno="28"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>VERIFY_CHECK(((n)<sp/>&amp;<sp/>1)<sp/>==<sp/>1);<sp/>\</highlight></codeline>
+<codeline lineno="29"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>VERIFY_CHECK((n)<sp/>&gt;=<sp/>-((1<sp/>&lt;&lt;<sp/>((w)-1))<sp/>-<sp/>1));<sp/>\</highlight></codeline>
+<codeline lineno="30"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>VERIFY_CHECK((n)<sp/>&lt;=<sp/><sp/>((1<sp/>&lt;&lt;<sp/>((w)-1))<sp/>-<sp/>1));<sp/>\</highlight></codeline>
+<codeline lineno="31"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>VERIFY_SETUP(secp256k1_fe_clear(&amp;(r)-&gt;x));<sp/>\</highlight></codeline>
+<codeline lineno="32"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>VERIFY_SETUP(secp256k1_fe_clear(&amp;(r)-&gt;y));<sp/>\</highlight></codeline>
+<codeline lineno="33"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>for<sp/>(m<sp/>=<sp/>0;<sp/>m<sp/>&lt;<sp/>ECMULT_TABLE_SIZE(w);<sp/>m++)<sp/>{<sp/>\</highlight></codeline>
+<codeline lineno="34"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>This<sp/>loop<sp/>is<sp/>used<sp/>to<sp/>avoid<sp/>secret<sp/>data<sp/>in<sp/>array<sp/>indices.<sp/>See</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*<sp/>the<sp/>comment<sp/>in<sp/>ecmult_gen_impl.h<sp/>for<sp/>rationale.<sp/>*/</highlight><highlight class="preprocessor"><sp/>\</highlight></codeline>
+<codeline lineno="36"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_fe_cmov(&amp;(r)-&gt;x,<sp/>&amp;(pre)[m].x,<sp/>m<sp/>==<sp/>idx_n);<sp/>\</highlight></codeline>
+<codeline lineno="37"><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_fe_cmov(&amp;(r)-&gt;y,<sp/>&amp;(pre)[m].y,<sp/>m<sp/>==<sp/>idx_n);<sp/>\</highlight></codeline>
+<codeline lineno="38"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>}<sp/>\</highlight></codeline>
+<codeline lineno="39"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>(r)-&gt;infinity<sp/>=<sp/>0;<sp/>\</highlight></codeline>
+<codeline lineno="40"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>secp256k1_fe_negate(&amp;neg_y,<sp/>&amp;(r)-&gt;y,<sp/>1);<sp/>\</highlight></codeline>
+<codeline lineno="41"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>secp256k1_fe_cmov(&amp;(r)-&gt;y,<sp/>&amp;neg_y,<sp/>(n)<sp/>!=<sp/>abs_n);<sp/>\</highlight></codeline>
+<codeline lineno="42"><highlight class="preprocessor">}<sp/>while(0)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>secp256k1_wnaf_const(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>*wnaf,<sp/><ref refid="structsecp256k1__scalar" kindref="compound">secp256k1_scalar</ref><sp/>s,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>w)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>global_sign;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>skew<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>word<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>1<sp/>2<sp/>3<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>u_last;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>u;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>USE_ENDOMORPHISM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>flip;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>bit;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structsecp256k1__scalar" kindref="compound">secp256k1_scalar</ref><sp/>neg_s;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>not_neg_one;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>If<sp/>we<sp/>are<sp/>using<sp/>the<sp/>endomorphism,<sp/>we<sp/>cannot<sp/>handle<sp/>even<sp/>numbers<sp/>by<sp/>negating</highlight></codeline>
+<codeline lineno="71"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>them,<sp/>since<sp/>we<sp/>are<sp/>working<sp/>with<sp/>128-bit<sp/>numbers<sp/>whose<sp/>negations<sp/>would<sp/>be<sp/>256</highlight></codeline>
+<codeline lineno="72"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>bits,<sp/>eliminating<sp/>the<sp/>performance<sp/>advantage.<sp/>Instead<sp/>we<sp/>use<sp/>a<sp/>technique<sp/>from</highlight></codeline>
+<codeline lineno="73"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Section<sp/>4.2<sp/>of<sp/>the<sp/>Okeya/Tagaki<sp/>paper,<sp/>which<sp/>is<sp/>to<sp/>add<sp/>either<sp/>1<sp/>(for<sp/>even)</highlight></codeline>
+<codeline lineno="74"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>or<sp/>2<sp/>(for<sp/>odd)<sp/>to<sp/>the<sp/>number<sp/>we<sp/>are<sp/>encoding,<sp/>then<sp/>compensating<sp/>after<sp/>the</highlight></codeline>
+<codeline lineno="75"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>multiplication.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Negative<sp/>128-bit<sp/>numbers<sp/>will<sp/>be<sp/>negated,<sp/>since<sp/>otherwise<sp/>they<sp/>are<sp/>256-bit<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>flip<sp/>=<sp/>secp256k1_scalar_is_high(&amp;s);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>We<sp/>add<sp/>1<sp/>to<sp/>even<sp/>numbers,<sp/>2<sp/>to<sp/>odd<sp/>ones,<sp/>noting<sp/>that<sp/>negation<sp/>flips<sp/>parity<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>bit<sp/>=<sp/>flip<sp/>^<sp/>(s.<ref refid="structsecp256k1__scalar_1a4aba1d263d205acdd537ed9a995393cd" kindref="member">d</ref>[0]<sp/>&amp;<sp/>1);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>We<sp/>check<sp/>for<sp/>negative<sp/>one,<sp/>since<sp/>adding<sp/>2<sp/>to<sp/>it<sp/>will<sp/>cause<sp/>an<sp/>overflow<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>secp256k1_scalar_negate(&amp;neg_s,<sp/>&amp;s);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/>not_neg_one<sp/>=<sp/>!secp256k1_scalar_is_one(&amp;neg_s);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>secp256k1_scalar_cadd_bit(&amp;s,<sp/>bit,<sp/>not_neg_one);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>If<sp/>we<sp/>had<sp/>negative<sp/>one,<sp/>flip<sp/>==<sp/>1,<sp/>s.d[0]<sp/>==<sp/>0,<sp/>bit<sp/>==<sp/>1,<sp/>so<sp/>caller<sp/>expects</highlight></codeline>
+<codeline lineno="85"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>that<sp/>we<sp/>added<sp/>two<sp/>to<sp/>it<sp/>and<sp/>flipped<sp/>it.<sp/>In<sp/>fact<sp/>for<sp/>-1<sp/>these<sp/>operations<sp/>are</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>identical.<sp/>We<sp/>only<sp/>flipped,<sp/>but<sp/>since<sp/>skewing<sp/>is<sp/>required<sp/>(in<sp/>the<sp/>sense<sp/>that</highlight></codeline>
+<codeline lineno="87"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>the<sp/>skew<sp/>must<sp/>be<sp/>1<sp/>or<sp/>2,<sp/>never<sp/>zero)<sp/>and<sp/>flipping<sp/>is<sp/>not,<sp/>we<sp/>need<sp/>to<sp/>change</highlight></codeline>
+<codeline lineno="88"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>our<sp/>flags<sp/>to<sp/>claim<sp/>that<sp/>we<sp/>only<sp/>skewed.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>global_sign<sp/>=<sp/>secp256k1_scalar_cond_negate(&amp;s,<sp/>flip);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>global_sign<sp/>*=<sp/>not_neg_one<sp/>*<sp/>2<sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>skew<sp/>=<sp/>1<sp/>&lt;&lt;<sp/>bit;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Otherwise,<sp/>we<sp/>just<sp/>negate<sp/>to<sp/>force<sp/>oddness<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>is_even<sp/>=<sp/>secp256k1_scalar_is_even(&amp;s);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>global_sign<sp/>=<sp/>secp256k1_scalar_cond_negate(&amp;s,<sp/>is_even);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>4<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>u_last<sp/>=<sp/>secp256k1_scalar_shr_int(&amp;s,<sp/>w);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(word<sp/>*<sp/>w<sp/>&lt;<sp/><ref refid="ecmult__const__impl_8h_1a7ca5efdae3396a6261bcc836e4a32739" kindref="member">WNAF_BITS</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>sign;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>even;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>4.1<sp/>4.4<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>u<sp/>=<sp/>secp256k1_scalar_shr_int(&amp;s,<sp/>w);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>4.2<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>even<sp/>=<sp/>((u<sp/>&amp;<sp/>1)<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>sign<sp/>=<sp/>2<sp/>*<sp/>(u_last<sp/>&gt;<sp/>0)<sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>u<sp/>+=<sp/>sign<sp/>*<sp/>even;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>u_last<sp/>-=<sp/>sign<sp/>*<sp/>even<sp/>*<sp/>(1<sp/>&lt;&lt;<sp/>w);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>4.3,<sp/>adapted<sp/>for<sp/>global<sp/>sign<sp/>change<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>wnaf[word++]<sp/>=<sp/>u_last<sp/>*<sp/>global_sign;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>u_last<sp/>=<sp/>u;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>wnaf[word]<sp/>=<sp/>u<sp/>*<sp/>global_sign;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>(secp256k1_scalar_is_zero(&amp;s));</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>(word<sp/>==<sp/><ref refid="ecmult__const__impl_8h_1a23d9fb349265ae338b9977f7f7aab065" kindref="member">WNAF_SIZE</ref>(w));</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>skew;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>secp256k1_ecmult_const(<ref refid="structsecp256k1__gej" kindref="compound">secp256k1_gej</ref><sp/>*r,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__ge" kindref="compound">secp256k1_ge</ref><sp/>*a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__scalar" kindref="compound">secp256k1_scalar</ref><sp/>*scalar)<sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structsecp256k1__ge" kindref="compound">secp256k1_ge</ref><sp/>pre_a[<ref refid="ecmult__impl_8h_1a97c6c6e5aa98f202eec77c4c931e02f1" kindref="member">ECMULT_TABLE_SIZE</ref>(<ref refid="ecmult__impl_8h_1a6216c81c6adbb8796c55fe0c8d3b6718" kindref="member">WINDOW_A</ref>)];</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structsecp256k1__ge" kindref="compound">secp256k1_ge</ref><sp/>tmpa;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structsecp256k1__fe" kindref="compound">secp256k1_fe</ref><sp/>Z;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>USE_ENDOMORPHISM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structsecp256k1__ge" kindref="compound">secp256k1_ge</ref><sp/>pre_a_lam[<ref refid="ecmult__impl_8h_1a97c6c6e5aa98f202eec77c4c931e02f1" kindref="member">ECMULT_TABLE_SIZE</ref>(<ref refid="ecmult__impl_8h_1a6216c81c6adbb8796c55fe0c8d3b6718" kindref="member">WINDOW_A</ref>)];</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>wnaf_1[1<sp/>+<sp/><ref refid="ecmult__const__impl_8h_1a23d9fb349265ae338b9977f7f7aab065" kindref="member">WNAF_SIZE</ref>(<ref refid="ecmult__impl_8h_1a6216c81c6adbb8796c55fe0c8d3b6718" kindref="member">WINDOW_A</ref><sp/>-<sp/>1)];</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>wnaf_lam[1<sp/>+<sp/><ref refid="ecmult__const__impl_8h_1a23d9fb349265ae338b9977f7f7aab065" kindref="member">WNAF_SIZE</ref>(<ref refid="ecmult__impl_8h_1a6216c81c6adbb8796c55fe0c8d3b6718" kindref="member">WINDOW_A</ref><sp/>-<sp/>1)];</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>skew_1;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>skew_lam;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structsecp256k1__scalar" kindref="compound">secp256k1_scalar</ref><sp/>q_1,<sp/>q_lam;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>wnaf[1<sp/>+<sp/><ref refid="ecmult__const__impl_8h_1a23d9fb349265ae338b9977f7f7aab065" kindref="member">WNAF_SIZE</ref>(<ref refid="ecmult__impl_8h_1a6216c81c6adbb8796c55fe0c8d3b6718" kindref="member">WINDOW_A</ref><sp/>-<sp/>1)];</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structsecp256k1__scalar" kindref="compound">secp256k1_scalar</ref><sp/>sc<sp/>=<sp/>*scalar;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>build<sp/>wnaf<sp/>representation<sp/>for<sp/>q.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>USE_ENDOMORPHISM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>split<sp/>q<sp/>into<sp/>q_1<sp/>and<sp/>q_lam<sp/>(where<sp/>q<sp/>=<sp/>q_1<sp/>+<sp/>q_lam*lambda,<sp/>and<sp/>q_1<sp/>and<sp/>q_lam<sp/>are<sp/>~128<sp/>bit)<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>secp256k1_scalar_split_lambda(&amp;q_1,<sp/>&amp;q_lam,<sp/>&amp;sc);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>no<sp/>need<sp/>for<sp/>zero<sp/>correction<sp/>when<sp/>using<sp/>endomorphism<sp/>since<sp/>even</highlight></codeline>
+<codeline lineno="149"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>numbers<sp/>have<sp/>one<sp/>added<sp/>to<sp/>them<sp/>anyway<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>skew_1<sp/><sp/><sp/>=<sp/>secp256k1_wnaf_const(wnaf_1,<sp/><sp/><sp/>q_1,<sp/><sp/><sp/><ref refid="ecmult__impl_8h_1a6216c81c6adbb8796c55fe0c8d3b6718" kindref="member">WINDOW_A</ref><sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>skew_lam<sp/>=<sp/>secp256k1_wnaf_const(wnaf_lam,<sp/>q_lam,<sp/><ref refid="ecmult__impl_8h_1a6216c81c6adbb8796c55fe0c8d3b6718" kindref="member">WINDOW_A</ref><sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>is_zero<sp/>=<sp/>secp256k1_scalar_is_zero(scalar);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>the<sp/>wNAF<sp/>ladder<sp/>cannot<sp/>handle<sp/>zero,<sp/>so<sp/>bump<sp/>this<sp/>to<sp/>one<sp/>..<sp/>we<sp/>will</highlight></codeline>
+<codeline lineno="155"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>correct<sp/>the<sp/>result<sp/>after<sp/>the<sp/>fact<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>sc.<ref refid="structsecp256k1__scalar_1a4aba1d263d205acdd537ed9a995393cd" kindref="member">d</ref>[0]<sp/>+=<sp/>is_zero;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>(!secp256k1_scalar_is_zero(&amp;sc));</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>secp256k1_wnaf_const(wnaf,<sp/>sc,<sp/><ref refid="ecmult__impl_8h_1a6216c81c6adbb8796c55fe0c8d3b6718" kindref="member">WINDOW_A</ref><sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Calculate<sp/>odd<sp/>multiples<sp/>of<sp/>a.</highlight></codeline>
+<codeline lineno="163"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>All<sp/>multiples<sp/>are<sp/>brought<sp/>to<sp/>the<sp/>same<sp/>Z<sp/>&apos;denominator&apos;,<sp/>which<sp/>is<sp/>stored</highlight></codeline>
+<codeline lineno="164"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>in<sp/>Z.<sp/>Due<sp/>to<sp/>secp256k1&apos;<sp/>isomorphism<sp/>we<sp/>can<sp/>do<sp/>all<sp/>operations<sp/>pretending</highlight></codeline>
+<codeline lineno="165"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>that<sp/>the<sp/>Z<sp/>coordinate<sp/>was<sp/>1,<sp/>use<sp/>affine<sp/>addition<sp/>formulae,<sp/>and<sp/>correct</highlight></codeline>
+<codeline lineno="166"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>the<sp/>Z<sp/>coordinate<sp/>of<sp/>the<sp/>result<sp/>once<sp/>at<sp/>the<sp/>end.</highlight></codeline>
+<codeline lineno="167"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>secp256k1_gej_set_ge(r,<sp/>a);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>secp256k1_ecmult_odd_multiples_table_globalz_windowa(pre_a,<sp/>&amp;Z,<sp/>r);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="ecmult__impl_8h_1a97c6c6e5aa98f202eec77c4c931e02f1" kindref="member">ECMULT_TABLE_SIZE</ref>(<ref refid="ecmult__impl_8h_1a6216c81c6adbb8796c55fe0c8d3b6718" kindref="member">WINDOW_A</ref>);<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_fe_normalize_weak(&amp;pre_a[i].y);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>USE_ENDOMORPHISM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="ecmult__impl_8h_1a97c6c6e5aa98f202eec77c4c931e02f1" kindref="member">ECMULT_TABLE_SIZE</ref>(<ref refid="ecmult__impl_8h_1a6216c81c6adbb8796c55fe0c8d3b6718" kindref="member">WINDOW_A</ref>);<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_ge_mul_lambda(&amp;pre_a_lam[i],<sp/>&amp;pre_a[i]);</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>first<sp/>loop<sp/>iteration<sp/>(separated<sp/>out<sp/>so<sp/>we<sp/>can<sp/>directly<sp/>set<sp/>r,<sp/>rather</highlight></codeline>
+<codeline lineno="180"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>than<sp/>having<sp/>it<sp/>start<sp/>at<sp/>infinity,<sp/>get<sp/>doubled<sp/>several<sp/>times,<sp/>then<sp/>have</highlight></codeline>
+<codeline lineno="181"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>its<sp/>new<sp/>value<sp/>added<sp/>to<sp/>it)<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>USE_ENDOMORPHISM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>i<sp/>=<sp/>wnaf_1[<ref refid="ecmult__const__impl_8h_1a23d9fb349265ae338b9977f7f7aab065" kindref="member">WNAF_SIZE</ref>(<ref refid="ecmult__impl_8h_1a6216c81c6adbb8796c55fe0c8d3b6718" kindref="member">WINDOW_A</ref><sp/>-<sp/>1)];</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>(i<sp/>!=<sp/>0);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="ecmult__const__impl_8h_1a541e7c0e2d2f68e2b1b03729d93b4ca7" kindref="member">ECMULT_CONST_TABLE_GET_GE</ref>(&amp;tmpa,<sp/>pre_a,<sp/>i,<sp/><ref refid="ecmult__impl_8h_1a6216c81c6adbb8796c55fe0c8d3b6718" kindref="member">WINDOW_A</ref>);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>secp256k1_gej_set_ge(r,<sp/>&amp;tmpa);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>i<sp/>=<sp/>wnaf_lam[<ref refid="ecmult__const__impl_8h_1a23d9fb349265ae338b9977f7f7aab065" kindref="member">WNAF_SIZE</ref>(<ref refid="ecmult__impl_8h_1a6216c81c6adbb8796c55fe0c8d3b6718" kindref="member">WINDOW_A</ref><sp/>-<sp/>1)];</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>(i<sp/>!=<sp/>0);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="ecmult__const__impl_8h_1a541e7c0e2d2f68e2b1b03729d93b4ca7" kindref="member">ECMULT_CONST_TABLE_GET_GE</ref>(&amp;tmpa,<sp/>pre_a_lam,<sp/>i,<sp/><ref refid="ecmult__impl_8h_1a6216c81c6adbb8796c55fe0c8d3b6718" kindref="member">WINDOW_A</ref>);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>secp256k1_gej_add_ge(r,<sp/>r,<sp/>&amp;tmpa);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>i<sp/>=<sp/>wnaf[<ref refid="ecmult__const__impl_8h_1a23d9fb349265ae338b9977f7f7aab065" kindref="member">WNAF_SIZE</ref>(<ref refid="ecmult__impl_8h_1a6216c81c6adbb8796c55fe0c8d3b6718" kindref="member">WINDOW_A</ref><sp/>-<sp/>1)];</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>(i<sp/>!=<sp/>0);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="ecmult__const__impl_8h_1a541e7c0e2d2f68e2b1b03729d93b4ca7" kindref="member">ECMULT_CONST_TABLE_GET_GE</ref>(&amp;tmpa,<sp/>pre_a,<sp/>i,<sp/><ref refid="ecmult__impl_8h_1a6216c81c6adbb8796c55fe0c8d3b6718" kindref="member">WINDOW_A</ref>);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>secp256k1_gej_set_ge(r,<sp/>&amp;tmpa);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>remaining<sp/>loop<sp/>iterations<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/><ref refid="ecmult__const__impl_8h_1a23d9fb349265ae338b9977f7f7aab065" kindref="member">WNAF_SIZE</ref>(<ref refid="ecmult__impl_8h_1a6216c81c6adbb8796c55fe0c8d3b6718" kindref="member">WINDOW_A</ref><sp/>-<sp/>1)<sp/>-<sp/>1;<sp/>i<sp/>&gt;=<sp/>0;<sp/>i--)<sp/>{</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>j;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/><ref refid="ecmult__impl_8h_1a6216c81c6adbb8796c55fe0c8d3b6718" kindref="member">WINDOW_A</ref><sp/>-<sp/>1;<sp/>++j)<sp/>{</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_gej_double_nonzero(r,<sp/>r,<sp/>NULL);</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>USE_ENDOMORPHISM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>n<sp/>=<sp/>wnaf_1[i];</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="ecmult__const__impl_8h_1a541e7c0e2d2f68e2b1b03729d93b4ca7" kindref="member">ECMULT_CONST_TABLE_GET_GE</ref>(&amp;tmpa,<sp/>pre_a,<sp/>n,<sp/>WINDOW_A);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>(n<sp/>!=<sp/>0);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_gej_add_ge(r,<sp/>r,<sp/>&amp;tmpa);</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>n<sp/>=<sp/>wnaf_lam[i];</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="ecmult__const__impl_8h_1a541e7c0e2d2f68e2b1b03729d93b4ca7" kindref="member">ECMULT_CONST_TABLE_GET_GE</ref>(&amp;tmpa,<sp/>pre_a_lam,<sp/>n,<sp/>WINDOW_A);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>(n<sp/>!=<sp/>0);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_gej_add_ge(r,<sp/>r,<sp/>&amp;tmpa);</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>n<sp/>=<sp/>wnaf[i];</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="secp256k1_2src_2util_8h_1aca8ac5ae73fd966db106de59160a178b" kindref="member">VERIFY_CHECK</ref>(n<sp/>!=<sp/>0);</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="ecmult__const__impl_8h_1a541e7c0e2d2f68e2b1b03729d93b4ca7" kindref="member">ECMULT_CONST_TABLE_GET_GE</ref>(&amp;tmpa,<sp/>pre_a,<sp/>n,<sp/>WINDOW_A);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_gej_add_ge(r,<sp/>r,<sp/>&amp;tmpa);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/>secp256k1_fe_mul(&amp;r-&gt;<ref refid="structsecp256k1__gej_1ae41776408dba32cbe28b5e345b5f2286" kindref="member">z</ref>,<sp/>&amp;r-&gt;<ref refid="structsecp256k1__gej_1ae41776408dba32cbe28b5e345b5f2286" kindref="member">z</ref>,<sp/>&amp;Z);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>USE_ENDOMORPHISM</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Correct<sp/>for<sp/>wNAF<sp/>skew<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structsecp256k1__ge" kindref="compound">secp256k1_ge</ref><sp/>correction<sp/>=<sp/>*a;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structsecp256k1__ge__storage" kindref="compound">secp256k1_ge_storage</ref><sp/>correction_1_stor;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structsecp256k1__ge__storage" kindref="compound">secp256k1_ge_storage</ref><sp/>correction_lam_stor;</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structsecp256k1__ge__storage" kindref="compound">secp256k1_ge_storage</ref><sp/>a2_stor;</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="structsecp256k1__gej" kindref="compound">secp256k1_gej</ref><sp/>tmpj;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_gej_set_ge(&amp;tmpj,<sp/>&amp;correction);</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_gej_double_var(&amp;tmpj,<sp/>&amp;tmpj,<sp/>NULL);</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_ge_set_gej(&amp;correction,<sp/>&amp;tmpj);</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_ge_to_storage(&amp;correction_1_stor,<sp/>a);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_ge_to_storage(&amp;correction_lam_stor,<sp/>a);</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_ge_to_storage(&amp;a2_stor,<sp/>&amp;correction);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>For<sp/>odd<sp/>numbers<sp/>this<sp/>is<sp/>2a<sp/>(so<sp/>replace<sp/>it),<sp/>for<sp/>even<sp/>ones<sp/>a<sp/>(so<sp/>no-op)<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_ge_storage_cmov(&amp;correction_1_stor,<sp/>&amp;a2_stor,<sp/>skew_1<sp/>==<sp/>2);</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_ge_storage_cmov(&amp;correction_lam_stor,<sp/>&amp;a2_stor,<sp/>skew_lam<sp/>==<sp/>2);</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Apply<sp/>the<sp/>correction<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_ge_from_storage(&amp;correction,<sp/>&amp;correction_1_stor);</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_ge_neg(&amp;correction,<sp/>&amp;correction);</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_gej_add_ge(r,<sp/>r,<sp/>&amp;correction);</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_ge_from_storage(&amp;correction,<sp/>&amp;correction_lam_stor);</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_ge_neg(&amp;correction,<sp/>&amp;correction);</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_ge_mul_lambda(&amp;correction,<sp/>&amp;correction);</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>secp256k1_gej_add_ge(r,<sp/>r,<sp/>&amp;correction);</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>correct<sp/>for<sp/>zero<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/>r-&gt;<ref refid="structsecp256k1__gej_1ab3ec8168caf27aa3a092d512eaadaad9" kindref="member">infinity</ref><sp/>|=<sp/>is_zero;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/secp256k1/src/ecmult_const_impl.h"/>
+  </compounddef>
+</doxygen>

@@ -6,7 +6,6 @@
 
 #include "base58.h"
 #include "primitives/transaction.h"
-#include "consensus/validation.h"
 #include "rpcserver.h"
 #include "txdb.h"
 #include "init.h"
@@ -17,7 +16,7 @@
 #include "txdb-leveldb.h"
 
 #ifdef ENABLE_WALLET
-#include "wallet/wallet.h"
+#include "wallet.h"
 #endif
 
 #include <boost/assign/list_of.hpp>

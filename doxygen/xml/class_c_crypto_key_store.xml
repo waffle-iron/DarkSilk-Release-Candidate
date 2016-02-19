@@ -1,0 +1,526 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_crypto_key_store" kind="class" language="C++" prot="public">
+    <compoundname>CCryptoKeyStore</compoundname>
+    <basecompoundref refid="class_c_basic_key_store" prot="public" virt="non-virtual">CBasicKeyStore</basecompoundref>
+    <derivedcompoundref refid="class_c_wallet" prot="public" virt="non-virtual">CWallet</derivedcompoundref>
+    <includes refid="crypter_8h" local="no">crypter.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_c_crypto_key_store_1a78f20a092d0f6e862b15216221d7f38e" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CCryptoKeyStore::fUseCrypto</definition>
+        <argsstring></argsstring>
+        <name>fUseCrypto</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="142" column="1" bodyfile="/home/dev/ds-160209/src/crypter.h" bodystart="142" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="class_c_crypto_key_store_1ad1fb9b23eee7a352617209ee2e4f3498" prot="protected" static="no" mutable="no">
+        <type><ref refid="keystore_8h_1a6c476ecc6771e6bf6bf022a735216a27" kindref="member">CryptedKeyMap</ref></type>
+        <definition>CryptedKeyMap CCryptoKeyStore::mapCryptedKeys</definition>
+        <argsstring></argsstring>
+        <name>mapCryptedKeys</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="145" column="1" bodyfile="/home/dev/ds-160209/src/crypter.h" bodystart="145" bodyend="-1"/>
+        <referencedby refid="class_c_crypto_key_store_1a81bd70e18aa75f566526620a74f9cd88" compoundref="crypter_8cpp" startline="238" endline="265">Unlock</referencedby>
+        <referencedby refid="class_c_crypto_key_store_1a9f4d2df95008205b2b9784c5f0e8e12b" compoundref="crypter_8cpp" startline="289" endline="299">AddCryptedKey</referencedby>
+        <referencedby refid="class_c_crypto_key_store_1a58cfb3c490318ef82de8fc9be6637269" compoundref="crypter_8cpp" startline="301" endline="323">GetKey</referencedby>
+        <referencedby refid="class_c_crypto_key_store_1abd897aff07ec5679235b14cb4485dc37" compoundref="crypter_8cpp" startline="325" endline="340">GetPubKey</referencedby>
+        <referencedby refid="class_c_crypto_key_store_1a8c0f6b63fb04193df16243c4459b7c61" compoundref="crypter_8cpp" startline="342" endline="364">EncryptKeys</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_crypto_key_store_1ac74e458a90ce17a95e238bad724df3fd" prot="protected" static="no" mutable="no">
+        <type><ref refid="crypter_8h_1a64709c9a3acc8f5694515789a183ad7b" kindref="member">CKeyingMaterial</ref></type>
+        <definition>CKeyingMaterial CCryptoKeyStore::vMasterKey</definition>
+        <argsstring></argsstring>
+        <name>vMasterKey</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="146" column="1" bodyfile="/home/dev/ds-160209/src/crypter.h" bodystart="146" bodyend="-1"/>
+        <referencedby refid="class_c_crypto_key_store_1ad967b2232dc6a2a8aef7a723296b44dc" compoundref="crypter_8cpp" startline="224" endline="236">LockKeyStore</referencedby>
+        <referencedby refid="class_c_crypto_key_store_1a81bd70e18aa75f566526620a74f9cd88" compoundref="crypter_8cpp" startline="238" endline="265">Unlock</referencedby>
+        <referencedby refid="class_c_crypto_key_store_1a340109b8673267676a34664a76ed3274" compoundref="crypter_8cpp" startline="267" endline="286">AddKeyPubKey</referencedby>
+        <referencedby refid="class_c_crypto_key_store_1a58cfb3c490318ef82de8fc9be6637269" compoundref="crypter_8cpp" startline="301" endline="323">GetKey</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_c_crypto_key_store_1a251b9ed228a19ab39d542985b425fc85" prot="public" static="no" mutable="no">
+        <type>boost::signals2::signal&lt; void(<ref refid="class_c_crypto_key_store" kindref="compound">CCryptoKeyStore</ref> *wallet)&gt;</type>
+        <definition>boost::signals2::signal&lt;void (CCryptoKeyStore* wallet)&gt; CCryptoKeyStore::NotifyStatusChanged</definition>
+        <argsstring></argsstring>
+        <name>NotifyStatusChanged</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="212" column="1" bodyfile="/home/dev/ds-160209/src/crypter.h" bodystart="212" bodyend="-1"/>
+        <referencedby refid="class_c_crypto_key_store_1ad967b2232dc6a2a8aef7a723296b44dc" compoundref="crypter_8cpp" startline="224" endline="236">LockKeyStore</referencedby>
+        <referencedby refid="class_c_crypto_key_store_1a81bd70e18aa75f566526620a74f9cd88" compoundref="crypter_8cpp" startline="238" endline="265">Unlock</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_c_crypto_key_store_1af202f587051735be5a39344d9e333720" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CCryptoKeyStore::SetCrypted</definition>
+        <argsstring>()</argsstring>
+        <name>SetCrypted</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="148" column="1" bodyfile="/home/dev/ds-160209/src/crypter.cpp" bodystart="213" bodyend="222"/>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="class_c_key_store_1a386524ff4a00959b81c195cb39fe307d" compoundref="keystore_8h" startline="28">CKeyStore::cs_KeyStore</references>
+        <references refid="class_c_basic_key_store_1ac520003e5c3d863bf71fde247c6e0672" compoundref="keystore_8h" startline="63">CBasicKeyStore::mapKeys</references>
+        <referencedby refid="class_c_crypto_key_store_1ad967b2232dc6a2a8aef7a723296b44dc" compoundref="crypter_8cpp" startline="224" endline="236">LockKeyStore</referencedby>
+        <referencedby refid="class_c_crypto_key_store_1a81bd70e18aa75f566526620a74f9cd88" compoundref="crypter_8cpp" startline="238" endline="265">Unlock</referencedby>
+        <referencedby refid="class_c_crypto_key_store_1a9f4d2df95008205b2b9784c5f0e8e12b" compoundref="crypter_8cpp" startline="289" endline="299">AddCryptedKey</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_crypto_key_store_1a8c0f6b63fb04193df16243c4459b7c61" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CCryptoKeyStore::EncryptKeys</definition>
+        <argsstring>(CKeyingMaterial &amp;vMasterKeyIn)</argsstring>
+        <name>EncryptKeys</name>
+        <param>
+          <type><ref refid="crypter_8h_1a64709c9a3acc8f5694515789a183ad7b" kindref="member">CKeyingMaterial</ref> &amp;</type>
+          <declname>vMasterKeyIn</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="151" column="1" bodyfile="/home/dev/ds-160209/src/crypter.cpp" bodystart="342" bodyend="364"/>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="class_c_key_store_1a386524ff4a00959b81c195cb39fe307d" compoundref="keystore_8h" startline="28">CKeyStore::cs_KeyStore</references>
+        <references refid="class_c_crypto_key_store_1ad1fb9b23eee7a352617209ee2e4f3498" compoundref="crypter_8h" startline="145">mapCryptedKeys</references>
+        <references refid="class_c_crypto_key_store_1a1cb434078a9ea686c0acf168d2c81252" compoundref="crypter_8h" startline="160" endline="163">IsCrypted</references>
+        <references refid="class_c_basic_key_store_1ac520003e5c3d863bf71fde247c6e0672" compoundref="keystore_8h" startline="63">CBasicKeyStore::mapKeys</references>
+        <references refid="class_c_key_1ae4b61da6ec62f676fe6362ac5fc26aca" compoundref="key_8cpp" startline="169" endline="180">CKey::GetPubKey</references>
+        <references refid="class_c_key_1aabd29e0d5faf30032cc8519a1ce62a5a" compoundref="key_8h" startline="84" endline="84">CKey::begin</references>
+        <references refid="class_c_key_1a651d1e10b4085da5e4c4a764f3a384df" compoundref="key_8h" startline="85" endline="85">CKey::end</references>
+        <references refid="crypter_8cpp_1a4fa4e3134d2b6e4913b9ce6369820697" compoundref="crypter_8cpp" startline="126" endline="134">EncryptSecret</references>
+        <references refid="class_c_pub_key_1a85b5eaf92b26cb4a230586050285c3f4" compoundref="pubkey_8h" startline="137" endline="139">CPubKey::GetHash</references>
+        <references refid="class_c_crypto_key_store_1a9f4d2df95008205b2b9784c5f0e8e12b" compoundref="crypter_8cpp" startline="289" endline="299">AddCryptedKey</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_crypto_key_store_1a81bd70e18aa75f566526620a74f9cd88" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CCryptoKeyStore::Unlock</definition>
+        <argsstring>(const CKeyingMaterial &amp;vMasterKeyIn)</argsstring>
+        <name>Unlock</name>
+        <param>
+          <type>const <ref refid="crypter_8h_1a64709c9a3acc8f5694515789a183ad7b" kindref="member">CKeyingMaterial</ref> &amp;</type>
+          <declname>vMasterKeyIn</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="153" column="1" bodyfile="/home/dev/ds-160209/src/crypter.cpp" bodystart="238" bodyend="265"/>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="class_c_key_store_1a386524ff4a00959b81c195cb39fe307d" compoundref="keystore_8h" startline="28">CKeyStore::cs_KeyStore</references>
+        <references refid="class_c_crypto_key_store_1af202f587051735be5a39344d9e333720" compoundref="crypter_8cpp" startline="213" endline="222">SetCrypted</references>
+        <references refid="class_c_crypto_key_store_1ad1fb9b23eee7a352617209ee2e4f3498" compoundref="crypter_8h" startline="145">mapCryptedKeys</references>
+        <references refid="crypter_8cpp_1aded00aa7498a7485a00e77a20856b3e4" compoundref="crypter_8cpp" startline="136" endline="144">DecryptSecret</references>
+        <references refid="class_c_pub_key_1a85b5eaf92b26cb4a230586050285c3f4" compoundref="pubkey_8h" startline="137" endline="139">CPubKey::GetHash</references>
+        <references refid="class_c_key_1aaa13d5f08456bba094210c5eeabf64c8" compoundref="key_8h" startline="68" endline="80">CKey::Set</references>
+        <references refid="class_c_pub_key_1a397e437d9d0a008e2641892147b0931a" compoundref="pubkey_8h" startline="152" endline="154">CPubKey::IsCompressed</references>
+        <references refid="class_c_key_1ae4b61da6ec62f676fe6362ac5fc26aca" compoundref="key_8cpp" startline="169" endline="180">CKey::GetPubKey</references>
+        <references refid="class_c_crypto_key_store_1ac74e458a90ce17a95e238bad724df3fd" compoundref="crypter_8h" startline="146">vMasterKey</references>
+        <references refid="class_c_crypto_key_store_1a251b9ed228a19ab39d542985b425fc85" compoundref="crypter_8h" startline="212">NotifyStatusChanged</references>
+        <referencedby refid="class_c_wallet_1a654ae5a3a7c4c7c7bfd271f108781b40" compoundref="wallet_8cpp" startline="250" endline="283">CWallet::Unlock</referencedby>
+        <referencedby refid="class_c_wallet_1a4abcec3066e7c462f4564c159fc15031" compoundref="wallet_8cpp" startline="285" endline="333">CWallet::ChangeWalletPassphrase</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_crypto_key_store_1a7c7f1075182d42fcb0781d1dc7a876c3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CCryptoKeyStore::CCryptoKeyStore</definition>
+        <argsstring>()</argsstring>
+        <name>CCryptoKeyStore</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="156" column="1" bodyfile="/home/dev/ds-160209/src/crypter.h" bodystart="156" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_crypto_key_store_1a1cb434078a9ea686c0acf168d2c81252" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CCryptoKeyStore::IsCrypted</definition>
+        <argsstring>() const </argsstring>
+        <name>IsCrypted</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="160" column="1" bodyfile="/home/dev/ds-160209/src/crypter.h" bodystart="160" bodyend="163"/>
+        <referencedby refid="class_c_crypto_key_store_1a340109b8673267676a34664a76ed3274" compoundref="crypter_8cpp" startline="267" endline="286">AddKeyPubKey</referencedby>
+        <referencedby refid="class_c_crypto_key_store_1a58cfb3c490318ef82de8fc9be6637269" compoundref="crypter_8cpp" startline="301" endline="323">GetKey</referencedby>
+        <referencedby refid="class_c_crypto_key_store_1abd897aff07ec5679235b14cb4485dc37" compoundref="crypter_8cpp" startline="325" endline="340">GetPubKey</referencedby>
+        <referencedby refid="class_c_crypto_key_store_1a8c0f6b63fb04193df16243c4459b7c61" compoundref="crypter_8cpp" startline="342" endline="364">EncryptKeys</referencedby>
+        <referencedby refid="class_c_crypto_key_store_1a1c3ebef555fd13676d67509b95820fcf" compoundref="crypter_8h" startline="165" endline="175">IsLocked</referencedby>
+        <referencedby refid="class_c_crypto_key_store_1a0cefe933dd3a6ac7744432493696bffc" compoundref="crypter_8h" startline="181" endline="190">HaveKey</referencedby>
+        <referencedby refid="class_c_crypto_key_store_1a4f13246f58b7edbaf125d603f7d0d4b4" compoundref="crypter_8h" startline="193" endline="207">GetKeys</referencedby>
+        <referencedby refid="class_wallet_model_1acfb62be638267bbf1bf498fb6501c31d" compoundref="walletmodel_8cpp" startline="505" endline="527">WalletModel::getEncryptionStatus</referencedby>
+        <referencedby refid="rpcmisc_8cpp_1a70335b93783d51e48d276a1e08bd721a" compoundref="rpcmisc_8cpp" startline="34" endline="81">getinfo</referencedby>
+        <referencedby refid="rpcwallet_8cpp_1abcfbb0ad9335791f2832c01209b8f12d" compoundref="rpcwallet_8cpp" startline="37" endline="42">HelpRequiringPassphrase</referencedby>
+        <referencedby refid="rpcwallet_8cpp_1a733f7c70e7c18783935e6de9643c0086" compoundref="rpcwallet_8cpp" startline="1969" endline="2032">walletpassphrase</referencedby>
+        <referencedby refid="rpcwallet_8cpp_1a84ad884957e24688433be32a9ca70933" compoundref="rpcwallet_8cpp" startline="2035" endline="2073">walletpassphrasechange</referencedby>
+        <referencedby refid="rpcwallet_8cpp_1a387555bfc9c8d51759001ec4e3be3e83" compoundref="rpcwallet_8cpp" startline="2076" endline="2107">walletlock</referencedby>
+        <referencedby refid="rpcwallet_8cpp_1a5fb49bac2748015a256c63e9f8ccc539" compoundref="rpcwallet_8cpp" startline="2110" endline="2160">encryptwallet</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_crypto_key_store_1a1c3ebef555fd13676d67509b95820fcf" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CCryptoKeyStore::IsLocked</definition>
+        <argsstring>() const </argsstring>
+        <name>IsLocked</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="165" column="1" bodyfile="/home/dev/ds-160209/src/crypter.h" bodystart="165" bodyend="175"/>
+        <references refid="class_c_crypto_key_store_1a1cb434078a9ea686c0acf168d2c81252" compoundref="crypter_8h" startline="160" endline="163">IsCrypted</references>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="class_c_key_store_1a386524ff4a00959b81c195cb39fe307d" compoundref="keystore_8h" startline="28">CKeyStore::cs_KeyStore</references>
+        <referencedby refid="class_c_active_stormnode_1a9532e0804ea4c96ad7d58ab3e9da6891" compoundref="activestormnode_8cpp" startline="17" endline="140">CActiveStormnode::ManageStatus</referencedby>
+        <referencedby refid="class_c_crypto_key_store_1a340109b8673267676a34664a76ed3274" compoundref="crypter_8cpp" startline="267" endline="286">AddKeyPubKey</referencedby>
+        <referencedby refid="miner_8cpp_1a31faece5ef0e403969b3d3debd79b352" compoundref="miner_8cpp" startline="536" endline="591">ThreadStakeMiner</referencedby>
+        <referencedby refid="class_wallet_model_1acfb62be638267bbf1bf498fb6501c31d" compoundref="walletmodel_8cpp" startline="505" endline="527">WalletModel::getEncryptionStatus</referencedby>
+        <referencedby refid="rpcsmessage_8cpp_1a5b2bd8a2dd98a14b6342c7b08787bb21" compoundref="rpcsmessage_8cpp" startline="369" endline="391">smsgscanbuckets</referencedby>
+        <referencedby refid="rpcsmessage_8cpp_1aeaef3f326a95b9510ad4ff2af7f80efe" compoundref="rpcsmessage_8cpp" startline="566" endline="677">smsginbox</referencedby>
+        <referencedby refid="rpcsmessage_8cpp_1a09f153f6fb0e6094919452744ef58ded" compoundref="rpcsmessage_8cpp" startline="679" endline="770">smsgoutbox</referencedby>
+        <referencedby refid="rpcstormnode_8cpp_1ad7a328af61b85ec0efc0226abc483cf9" compoundref="rpcstormnode_8cpp" startline="20" endline="62">sandstorm</referencedby>
+        <referencedby refid="rpcstormnode_8cpp_1a1b562b4a6a627758a7c1080f23a82aa0" compoundref="rpcstormnode_8cpp" startline="81" endline="471">stormnode</referencedby>
+        <referencedby refid="rpcwallet_8cpp_1a8f837f6d506b9719cef93188db00fd3c" compoundref="rpcwallet_8cpp" startline="44" endline="50">EnsureWalletIsUnlocked</referencedby>
+        <referencedby refid="rpcwallet_8cpp_1a3f3bb4d519074126a20dd609a6886a72" compoundref="rpcwallet_8cpp" startline="187" endline="211">getnewpubkey</referencedby>
+        <referencedby refid="rpcwallet_8cpp_1aead824d845d670fbd8f187ebd4f9a535" compoundref="rpcwallet_8cpp" startline="214" endline="250">getnewaddress</referencedby>
+        <referencedby refid="rpcwallet_8cpp_1a33a914aa20f1ded289040800898a0e79" compoundref="rpcwallet_8cpp" startline="421" endline="454">SendMoney</referencedby>
+        <referencedby refid="rpcwallet_8cpp_1a134064858f9cfa4775a6ae34cac2b133" compoundref="rpcwallet_8cpp" startline="456" endline="526">sendtoaddress</referencedby>
+        <referencedby refid="rpcwallet_8cpp_1a59139de50de79af3d3960ddbb5ee5340" compoundref="rpcwallet_8cpp" startline="2306" endline="2329">getnewstealthaddress</referencedby>
+        <referencedby refid="rpcwallet_8cpp_1a122c17b0d58ddd7ba5a7471d0089c1b9" compoundref="rpcwallet_8cpp" startline="2331" endline="2381">liststealthaddresses</referencedby>
+        <referencedby refid="rpcwallet_8cpp_1ad901105908c7eea072067a49643a906e" compoundref="rpcwallet_8cpp" startline="2490" endline="2536">sendtostealthaddress</referencedby>
+        <referencedby refid="class_c_sandstorm_pool_1a459d1986058ad736773fa9857390ba96" compoundref="sandstorm_8cpp" startline="1353" endline="1625">CSandstormPool::DoAutomaticDenominating</referencedby>
+        <referencedby refid="smessage_8h_1ae6a19a8d011fefc72c9cab3d0df014bd" compoundref="smessage_8cpp" startline="2153" endline="2298">SecureMsgScanBuckets</referencedby>
+        <referencedby refid="smessage_8h_1adf0fa2a06615363dc3ea6360be0939ec" compoundref="smessage_8cpp" startline="2301" endline="2444">SecureMsgWalletUnlocked</referencedby>
+        <referencedby refid="smessage_8h_1a31bf2f77c776bbf1fb39bbe79b6e9f5f" compoundref="smessage_8cpp" startline="2482" endline="2599">SecureMsgScanMessage</referencedby>
+        <referencedby refid="smessage_8h_1acbe2815144396344354ffa3022300278" compoundref="smessage_8cpp" startline="3533" endline="3699">SecureMsgSend</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_crypto_key_store_1ad967b2232dc6a2a8aef7a723296b44dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CCryptoKeyStore::LockKeyStore</definition>
+        <argsstring>()</argsstring>
+        <name>LockKeyStore</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="177" column="1" bodyfile="/home/dev/ds-160209/src/crypter.cpp" bodystart="224" bodyend="236"/>
+        <references refid="class_c_crypto_key_store_1af202f587051735be5a39344d9e333720" compoundref="crypter_8cpp" startline="213" endline="222">SetCrypted</references>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="class_c_key_store_1a386524ff4a00959b81c195cb39fe307d" compoundref="keystore_8h" startline="28">CKeyStore::cs_KeyStore</references>
+        <references refid="class_c_crypto_key_store_1ac74e458a90ce17a95e238bad724df3fd" compoundref="crypter_8h" startline="146">vMasterKey</references>
+        <references refid="class_c_crypto_key_store_1a251b9ed228a19ab39d542985b425fc85" compoundref="crypter_8h" startline="212">NotifyStatusChanged</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_crypto_key_store_1a9f4d2df95008205b2b9784c5f0e8e12b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool CCryptoKeyStore::AddCryptedKey</definition>
+        <argsstring>(const CPubKey &amp;vchPubKey, const std::vector&lt; unsigned char &gt; &amp;vchCryptedSecret)</argsstring>
+        <name>AddCryptedKey</name>
+        <reimplementedby refid="class_c_wallet_1a3e90096a903d49cd751f05fcdb7692ce">AddCryptedKey</reimplementedby>
+        <param>
+          <type>const <ref refid="class_c_pub_key" kindref="compound">CPubKey</ref> &amp;</type>
+          <declname>vchPubKey</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>vchCryptedSecret</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="179" column="1" bodyfile="/home/dev/ds-160209/src/crypter.cpp" bodystart="289" bodyend="299"/>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="class_c_key_store_1a386524ff4a00959b81c195cb39fe307d" compoundref="keystore_8h" startline="28">CKeyStore::cs_KeyStore</references>
+        <references refid="class_c_crypto_key_store_1af202f587051735be5a39344d9e333720" compoundref="crypter_8cpp" startline="213" endline="222">SetCrypted</references>
+        <references refid="class_c_crypto_key_store_1ad1fb9b23eee7a352617209ee2e4f3498" compoundref="crypter_8h" startline="145">mapCryptedKeys</references>
+        <references refid="class_c_pub_key_1a9c1908fef34fd9e1c4b5e0ffd5d3834e" compoundref="pubkey_8h" startline="132" endline="134">CPubKey::GetID</references>
+        <referencedby refid="class_c_crypto_key_store_1a340109b8673267676a34664a76ed3274" compoundref="crypter_8cpp" startline="267" endline="286">AddKeyPubKey</referencedby>
+        <referencedby refid="class_c_crypto_key_store_1a8c0f6b63fb04193df16243c4459b7c61" compoundref="crypter_8cpp" startline="342" endline="364">EncryptKeys</referencedby>
+        <referencedby refid="class_c_wallet_1a3e90096a903d49cd751f05fcdb7692ce" compoundref="wallet_8cpp" startline="123" endline="137">CWallet::AddCryptedKey</referencedby>
+        <referencedby refid="class_c_wallet_1a01fbd78238d4ef833d059f12a7e8ac9f" compoundref="wallet_8cpp" startline="149" endline="152">CWallet::LoadCryptedKey</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_crypto_key_store_1a340109b8673267676a34664a76ed3274" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool CCryptoKeyStore::AddKeyPubKey</definition>
+        <argsstring>(const CKey &amp;key, const CPubKey &amp;pubkey)</argsstring>
+        <name>AddKeyPubKey</name>
+        <reimplements refid="class_c_key_store_1a1956e4f5860ded321d6f697047d8236a">AddKeyPubKey</reimplements>
+        <reimplementedby refid="class_c_wallet_1a3240da36cd717146296969227a3e0bd5">AddKeyPubKey</reimplementedby>
+        <param>
+          <type>const <ref refid="class_c_key" kindref="compound">CKey</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_pub_key" kindref="compound">CPubKey</ref> &amp;</type>
+          <declname>pubkey</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="180" column="1" bodyfile="/home/dev/ds-160209/src/crypter.cpp" bodystart="267" bodyend="286"/>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="class_c_key_store_1a386524ff4a00959b81c195cb39fe307d" compoundref="keystore_8h" startline="28">CKeyStore::cs_KeyStore</references>
+        <references refid="class_c_crypto_key_store_1a1cb434078a9ea686c0acf168d2c81252" compoundref="crypter_8h" startline="160" endline="163">IsCrypted</references>
+        <references refid="class_c_basic_key_store_1acc2e33f319de88e88f86b0dc79bdcb65" compoundref="keystore_8cpp" startline="22" endline="27">CBasicKeyStore::AddKeyPubKey</references>
+        <references refid="class_c_crypto_key_store_1a1c3ebef555fd13676d67509b95820fcf" compoundref="crypter_8h" startline="165" endline="175">IsLocked</references>
+        <references refid="class_c_key_1aabd29e0d5faf30032cc8519a1ce62a5a" compoundref="key_8h" startline="84" endline="84">CKey::begin</references>
+        <references refid="class_c_key_1a651d1e10b4085da5e4c4a764f3a384df" compoundref="key_8h" startline="85" endline="85">CKey::end</references>
+        <references refid="crypter_8cpp_1a4fa4e3134d2b6e4913b9ce6369820697" compoundref="crypter_8cpp" startline="126" endline="134">EncryptSecret</references>
+        <references refid="class_c_crypto_key_store_1ac74e458a90ce17a95e238bad724df3fd" compoundref="crypter_8h" startline="146">vMasterKey</references>
+        <references refid="class_c_pub_key_1a85b5eaf92b26cb4a230586050285c3f4" compoundref="pubkey_8h" startline="137" endline="139">CPubKey::GetHash</references>
+        <references refid="class_c_crypto_key_store_1a9f4d2df95008205b2b9784c5f0e8e12b" compoundref="crypter_8cpp" startline="289" endline="299">AddCryptedKey</references>
+        <referencedby refid="class_c_wallet_1a3240da36cd717146296969227a3e0bd5" compoundref="wallet_8cpp" startline="103" endline="121">CWallet::AddKeyPubKey</referencedby>
+        <referencedby refid="class_c_wallet_1a439bab81d7989f91a4f0909960516eea" compoundref="wallet_8h" startline="227" endline="227">CWallet::LoadKey</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_crypto_key_store_1a0cefe933dd3a6ac7744432493696bffc" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool CCryptoKeyStore::HaveKey</definition>
+        <argsstring>(const CKeyID &amp;address) const </argsstring>
+        <name>HaveKey</name>
+        <reimplements refid="class_c_key_store_1a9398451d4270fae27b29f686a9d43a65">HaveKey</reimplements>
+        <param>
+          <type>const <ref refid="class_c_key_i_d" kindref="compound">CKeyID</ref> &amp;</type>
+          <declname>address</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="181" column="1" bodyfile="/home/dev/ds-160209/src/crypter.h" bodystart="181" bodyend="190"/>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="class_c_key_store_1a386524ff4a00959b81c195cb39fe307d" compoundref="keystore_8h" startline="28">CKeyStore::cs_KeyStore</references>
+        <references refid="class_c_crypto_key_store_1a1cb434078a9ea686c0acf168d2c81252" compoundref="crypter_8h" startline="160" endline="163">IsCrypted</references>
+        <references refid="class_c_basic_key_store_1a29a60832d549913b1fa8be77b95205a5" compoundref="keystore_8h" startline="69" endline="77">CBasicKeyStore::HaveKey</references>
+        <referencedby refid="rpcdump_8cpp_1a3a6fdb974fce01220a895393d444e981" compoundref="rpcdump_8cpp" startline="106" endline="159">importprivkey</referencedby>
+        <referencedby refid="rpcdump_8cpp_1a2566d5c9dd1938b74e70398cdb3ac5c1" compoundref="rpcdump_8cpp" startline="232" endline="318">importwallet</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_crypto_key_store_1a58cfb3c490318ef82de8fc9be6637269" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool CCryptoKeyStore::GetKey</definition>
+        <argsstring>(const CKeyID &amp;address, CKey &amp;keyOut) const </argsstring>
+        <name>GetKey</name>
+        <reimplements refid="class_c_key_store_1a2dffca468fef2e5da2e42a7c983d968a">GetKey</reimplements>
+        <param>
+          <type>const <ref refid="class_c_key_i_d" kindref="compound">CKeyID</ref> &amp;</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_key" kindref="compound">CKey</ref> &amp;</type>
+          <declname>keyOut</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="191" column="1" bodyfile="/home/dev/ds-160209/src/crypter.cpp" bodystart="301" bodyend="323"/>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="class_c_key_store_1a386524ff4a00959b81c195cb39fe307d" compoundref="keystore_8h" startline="28">CKeyStore::cs_KeyStore</references>
+        <references refid="class_c_crypto_key_store_1a1cb434078a9ea686c0acf168d2c81252" compoundref="crypter_8h" startline="160" endline="163">IsCrypted</references>
+        <references refid="class_c_basic_key_store_1a3cf9b5d002a8af75e7f90ae7654a234f" compoundref="keystore_8h" startline="91" endline="103">CBasicKeyStore::GetKey</references>
+        <references refid="class_c_crypto_key_store_1ad1fb9b23eee7a352617209ee2e4f3498" compoundref="crypter_8h" startline="145">mapCryptedKeys</references>
+        <references refid="crypter_8cpp_1aded00aa7498a7485a00e77a20856b3e4" compoundref="crypter_8cpp" startline="136" endline="144">DecryptSecret</references>
+        <references refid="class_c_crypto_key_store_1ac74e458a90ce17a95e238bad724df3fd" compoundref="crypter_8h" startline="146">vMasterKey</references>
+        <references refid="class_c_pub_key_1a85b5eaf92b26cb4a230586050285c3f4" compoundref="pubkey_8h" startline="137" endline="139">CPubKey::GetHash</references>
+        <references refid="class_c_key_1aaa13d5f08456bba094210c5eeabf64c8" compoundref="key_8h" startline="68" endline="80">CKey::Set</references>
+        <references refid="class_c_pub_key_1a397e437d9d0a008e2641892147b0931a" compoundref="pubkey_8h" startline="152" endline="154">CPubKey::IsCompressed</references>
+        <referencedby refid="rpcdump_8cpp_1a4010fb238298e15c540d3e5ecd60f858" compoundref="rpcdump_8cpp" startline="321" endline="343">dumpprivkey</referencedby>
+        <referencedby refid="rpcdump_8cpp_1a831ddf746d4f2500ba6f6c07f63445cd" compoundref="rpcdump_8cpp" startline="345" endline="401">dumpwallet</referencedby>
+        <referencedby refid="rpcwallet_8cpp_1a315b42a2c859c4b50a54c1b05984928c" compoundref="rpcwallet_8cpp" startline="575" endline="624">signmessage</referencedby>
+        <referencedby refid="smessage_8h_1a1a9885d0f94a7d5322eafb31bcf2f90a" compoundref="smessage_8cpp" startline="3276" endline="3531">SecureMsgEncrypt</referencedby>
+        <referencedby refid="smessage_8h_1a2edb582fcb7f69b543174479231647be" compoundref="smessage_8cpp" startline="3702" endline="3946">SecureMsgDecrypt</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_crypto_key_store_1abd897aff07ec5679235b14cb4485dc37" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool CCryptoKeyStore::GetPubKey</definition>
+        <argsstring>(const CKeyID &amp;address, CPubKey &amp;vchPubKeyOut) const </argsstring>
+        <name>GetPubKey</name>
+        <reimplements refid="class_c_key_store_1aba866c1e71c129e7ac2d5d1e5223c8a5">GetPubKey</reimplements>
+        <param>
+          <type>const <ref refid="class_c_key_i_d" kindref="compound">CKeyID</ref> &amp;</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_pub_key" kindref="compound">CPubKey</ref> &amp;</type>
+          <declname>vchPubKeyOut</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="192" column="1" bodyfile="/home/dev/ds-160209/src/crypter.cpp" bodystart="325" bodyend="340"/>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="class_c_key_store_1a386524ff4a00959b81c195cb39fe307d" compoundref="keystore_8h" startline="28">CKeyStore::cs_KeyStore</references>
+        <references refid="class_c_crypto_key_store_1a1cb434078a9ea686c0acf168d2c81252" compoundref="crypter_8h" startline="160" endline="163">IsCrypted</references>
+        <references refid="class_c_key_store_1aba866c1e71c129e7ac2d5d1e5223c8a5" compoundref="keystore_8cpp" startline="9" endline="16">CKeyStore::GetPubKey</references>
+        <references refid="class_c_crypto_key_store_1ad1fb9b23eee7a352617209ee2e4f3498" compoundref="crypter_8h" startline="145">mapCryptedKeys</references>
+        <referencedby refid="class_wallet_model_1a25601217a489e196e947e47c2189c311" compoundref="walletmodel_8cpp" startline="678" endline="681">WalletModel::getPubKey</referencedby>
+        <referencedby refid="rpcsmessage_8cpp_1af9835f898bc619ef6f9a39a5a8a9f2f1" compoundref="rpcsmessage_8cpp" startline="140" endline="346">smsglocalkeys</referencedby>
+        <referencedby refid="rpcwallet_8cpp_1aca53a9372c92e81fc665cbdeb8fcdbc5" compoundref="rpcwallet_8cpp" startline="89" endline="142">_createmultisig</referencedby>
+        <referencedby refid="rpcwallet_8cpp_1a01e8a83cbd4209f10c71719383d7ca2d" compoundref="rpcwallet_8cpp" startline="1091" endline="1180">addmultisigaddress</referencedby>
+        <referencedby refid="smessage_8h_1a430258e823bdead36f823a51fd6a4510" compoundref="smessage_8cpp" startline="2601" endline="2617">SecureMsgGetLocalKey</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_crypto_key_store_1a4f13246f58b7edbaf125d603f7d0d4b4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>void CCryptoKeyStore::GetKeys</definition>
+        <argsstring>(std::set&lt; CKeyID &gt; &amp;setAddress) const </argsstring>
+        <name>GetKeys</name>
+        <reimplements refid="class_c_key_store_1aca5044014720308f191113e7ba297d13">GetKeys</reimplements>
+        <param>
+          <type>std::set&lt; <ref refid="class_c_key_i_d" kindref="compound">CKeyID</ref> &gt; &amp;</type>
+          <declname>setAddress</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="193" column="1" bodyfile="/home/dev/ds-160209/src/crypter.h" bodystart="193" bodyend="207"/>
+        <references refid="class_c_crypto_key_store_1a1cb434078a9ea686c0acf168d2c81252" compoundref="crypter_8h" startline="160" endline="163">IsCrypted</references>
+        <references refid="class_c_basic_key_store_1a60f46db5eec334d41e5ad6e342ae2957" compoundref="keystore_8h" startline="78" endline="90">CBasicKeyStore::GetKeys</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Keystore which keeps the private keys encrypted. It derives from the basic key store, which is used if no encryption is active. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="2328">
+        <label>CKeyStore</label>
+        <link refid="class_c_key_store"/>
+      </node>
+      <node id="2326">
+        <label>CCryptoKeyStore</label>
+        <link refid="class_c_crypto_key_store"/>
+        <childnode refid="2327" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2327">
+        <label>CBasicKeyStore</label>
+        <link refid="class_c_basic_key_store"/>
+        <childnode refid="2328" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2329">
+        <label>CWallet</label>
+        <link refid="class_c_wallet"/>
+        <childnode refid="2326" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2332">
+        <label>CKeyStore</label>
+        <link refid="class_c_key_store"/>
+        <childnode refid="2333" relation="usage">
+          <edgelabel>cs_KeyStore</edgelabel>
+        </childnode>
+      </node>
+      <node id="2330">
+        <label>CCryptoKeyStore</label>
+        <link refid="class_c_crypto_key_store"/>
+        <childnode refid="2331" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2331">
+        <label>CBasicKeyStore</label>
+        <link refid="class_c_basic_key_store"/>
+        <childnode refid="2332" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2334">
+        <label>boost::recursive_mutex</label>
+      </node>
+      <node id="2333">
+        <label>AnnotatedMixin&lt; boost::recursive_mutex &gt;</label>
+        <link refid="class_annotated_mixin"/>
+        <childnode refid="2334" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/dev/ds-160209/src/crypter.h" line="138" column="1" bodyfile="/home/dev/ds-160209/src/crypter.h" bodystart="137" bodyend="213"/>
+    <listofallmembers>
+      <member refid="class_c_crypto_key_store_1a9f4d2df95008205b2b9784c5f0e8e12b" prot="public" virt="virtual"><scope>CCryptoKeyStore</scope><name>AddCryptedKey</name></member>
+      <member refid="class_c_basic_key_store_1a56249ce3540398999cd397eeb662e836" prot="public" virt="virtual"><scope>CCryptoKeyStore</scope><name>AddCScript</name></member>
+      <member refid="class_c_key_store_1a0b4ca43724cfcc6e2ea70c0baa192750" prot="public" virt="virtual"><scope>CCryptoKeyStore</scope><name>AddKey</name></member>
+      <member refid="class_c_crypto_key_store_1a340109b8673267676a34664a76ed3274" prot="public" virt="virtual"><scope>CCryptoKeyStore</scope><name>AddKeyPubKey</name></member>
+      <member refid="class_c_basic_key_store_1a2417d0ae4e654c88cf47a1ba5f71b5a3" prot="public" virt="virtual"><scope>CCryptoKeyStore</scope><name>AddWatchOnly</name></member>
+      <member refid="class_c_crypto_key_store_1a7c7f1075182d42fcb0781d1dc7a876c3" prot="public" virt="non-virtual"><scope>CCryptoKeyStore</scope><name>CCryptoKeyStore</name></member>
+      <member refid="class_c_key_store_1a386524ff4a00959b81c195cb39fe307d" prot="protected" virt="non-virtual"><scope>CCryptoKeyStore</scope><name>cs_KeyStore</name></member>
+      <member refid="class_c_crypto_key_store_1a8c0f6b63fb04193df16243c4459b7c61" prot="protected" virt="non-virtual"><scope>CCryptoKeyStore</scope><name>EncryptKeys</name></member>
+      <member refid="class_c_crypto_key_store_1a78f20a092d0f6e862b15216221d7f38e" prot="private" virt="non-virtual"><scope>CCryptoKeyStore</scope><name>fUseCrypto</name></member>
+      <member refid="class_c_basic_key_store_1aa7b10f974cfdc078f55fdb6adf8774a5" prot="public" virt="virtual"><scope>CCryptoKeyStore</scope><name>GetCScript</name></member>
+      <member refid="class_c_crypto_key_store_1a58cfb3c490318ef82de8fc9be6637269" prot="public" virt="virtual"><scope>CCryptoKeyStore</scope><name>GetKey</name></member>
+      <member refid="class_c_crypto_key_store_1a4f13246f58b7edbaf125d603f7d0d4b4" prot="public" virt="virtual"><scope>CCryptoKeyStore</scope><name>GetKeys</name></member>
+      <member refid="class_c_crypto_key_store_1abd897aff07ec5679235b14cb4485dc37" prot="public" virt="virtual"><scope>CCryptoKeyStore</scope><name>GetPubKey</name></member>
+      <member refid="class_c_basic_key_store_1a2e21398364927d920b15d3e10171cd97" prot="public" virt="virtual"><scope>CCryptoKeyStore</scope><name>HaveCScript</name></member>
+      <member refid="class_c_crypto_key_store_1a0cefe933dd3a6ac7744432493696bffc" prot="public" virt="virtual"><scope>CCryptoKeyStore</scope><name>HaveKey</name></member>
+      <member refid="class_c_basic_key_store_1a51d4c7e95cb782d749939d01612926f7" prot="public" virt="virtual"><scope>CCryptoKeyStore</scope><name>HaveWatchOnly</name></member>
+      <member refid="class_c_basic_key_store_1a3d89af8d9e9e0bb4eb90f331a638ff6d" prot="public" virt="virtual"><scope>CCryptoKeyStore</scope><name>HaveWatchOnly</name></member>
+      <member refid="class_c_crypto_key_store_1a1cb434078a9ea686c0acf168d2c81252" prot="public" virt="non-virtual"><scope>CCryptoKeyStore</scope><name>IsCrypted</name></member>
+      <member refid="class_c_crypto_key_store_1a1c3ebef555fd13676d67509b95820fcf" prot="public" virt="non-virtual"><scope>CCryptoKeyStore</scope><name>IsLocked</name></member>
+      <member refid="class_c_crypto_key_store_1ad967b2232dc6a2a8aef7a723296b44dc" prot="public" virt="non-virtual"><scope>CCryptoKeyStore</scope><name>LockKeyStore</name></member>
+      <member refid="class_c_crypto_key_store_1ad1fb9b23eee7a352617209ee2e4f3498" prot="protected" virt="non-virtual"><scope>CCryptoKeyStore</scope><name>mapCryptedKeys</name></member>
+      <member refid="class_c_basic_key_store_1ac520003e5c3d863bf71fde247c6e0672" prot="protected" virt="non-virtual"><scope>CCryptoKeyStore</scope><name>mapKeys</name></member>
+      <member refid="class_c_basic_key_store_1a8e9fa81382129c1535a0ee7b0d9c8f3b" prot="protected" virt="non-virtual"><scope>CCryptoKeyStore</scope><name>mapScripts</name></member>
+      <member refid="class_c_crypto_key_store_1a251b9ed228a19ab39d542985b425fc85" prot="public" virt="non-virtual"><scope>CCryptoKeyStore</scope><name>NotifyStatusChanged</name></member>
+      <member refid="class_c_basic_key_store_1a20c0eccf943d6d16e24c6e2fb63fb527" prot="public" virt="virtual"><scope>CCryptoKeyStore</scope><name>RemoveWatchOnly</name></member>
+      <member refid="class_c_crypto_key_store_1af202f587051735be5a39344d9e333720" prot="protected" virt="non-virtual"><scope>CCryptoKeyStore</scope><name>SetCrypted</name></member>
+      <member refid="class_c_basic_key_store_1ac3391cb491e315403ad9af6afd1313da" prot="protected" virt="non-virtual"><scope>CCryptoKeyStore</scope><name>setWatchOnly</name></member>
+      <member refid="class_c_crypto_key_store_1a81bd70e18aa75f566526620a74f9cd88" prot="protected" virt="non-virtual"><scope>CCryptoKeyStore</scope><name>Unlock</name></member>
+      <member refid="class_c_crypto_key_store_1ac74e458a90ce17a95e238bad724df3fd" prot="protected" virt="non-virtual"><scope>CCryptoKeyStore</scope><name>vMasterKey</name></member>
+      <member refid="class_c_key_store_1a9bfaef2bcd6effc467a96043f44044a0" prot="public" virt="virtual"><scope>CCryptoKeyStore</scope><name>~CKeyStore</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,288 @@
+\hypertarget{class_c_stormnode_ping}{}\section{C\+Stormnode\+Ping Class Reference}
+\label{class_c_stormnode_ping}\index{C\+Stormnode\+Ping@{C\+Stormnode\+Ping}}
+
+
+{\ttfamily \#include $<$stormnode.\+h$>$}
+
+
+
+Collaboration diagram for C\+Stormnode\+Ping\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_stormnode_ping_a68d6a920cf9edf6abdd95daf7001c309}{C\+Stormnode\+Ping} ()
+\item 
+\hyperlink{class_c_stormnode_ping_a6c1ab32c3bb00188b9328e3b923198df}{C\+Stormnode\+Ping} (\hyperlink{class_c_tx_in}{C\+Tx\+In} \&new\+Vin)
+\item 
+{\footnotesize template$<$typename Stream , typename Operation $>$ }\\void \hyperlink{class_c_stormnode_ping_ab41f768e659b72da337e2f28d226c286}{Serialization\+Op} (Stream \&s, Operation ser\+\_\+action, int n\+Type, int n\+Version)
+\item 
+bool \hyperlink{class_c_stormnode_ping_af77ba52e9ff7531d09b61fefa372efa4}{Check\+And\+Update} (int \&n\+Dos, bool f\+Require\+Enabled=true)
+\item 
+bool \hyperlink{class_c_stormnode_ping_a7552ace33ea9f797431ada062ab0e2e8}{Sign} (\hyperlink{class_c_key}{C\+Key} \&key\+Stormnode, \hyperlink{class_c_pub_key}{C\+Pub\+Key} \&pub\+Key\+Stormnode)
+\item 
+void \hyperlink{class_c_stormnode_ping_a1f9010915780b43dffae9965531a951a}{Relay} ()
+\item 
+\hyperlink{classuint256}{uint256} \hyperlink{class_c_stormnode_ping_a3e2dbb87bd2fd09f87d6306606a48acb}{Get\+Hash} ()
+\item 
+void \hyperlink{class_c_stormnode_ping_a6d5cdf09bf1f0fef6d02e1efc3557ce1}{swap} (\hyperlink{class_c_stormnode_ping}{C\+Stormnode\+Ping} \&first, \hyperlink{class_c_stormnode_ping}{C\+Stormnode\+Ping} \&second)
+\item 
+\hyperlink{class_c_stormnode_ping}{C\+Stormnode\+Ping} \& \hyperlink{class_c_stormnode_ping_ac6dbda886713de4642d10872595f19c7}{operator=} (\hyperlink{class_c_stormnode_ping}{C\+Stormnode\+Ping} from)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_tx_in}{C\+Tx\+In} \hyperlink{class_c_stormnode_ping_a83adfd5f2331b88deb60e44df9c878d9}{vin}
+\item 
+\hyperlink{classuint256}{uint256} \hyperlink{class_c_stormnode_ping_a8a77ddaf2c49e48d306c05022e4e6b28}{block\+Hash}
+\item 
+\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} \hyperlink{class_c_stormnode_ping_a9444c0ea28227eac0f3b3a0266ce0e9e}{sig\+Time}
+\item 
+std\+::vector$<$ unsigned char $>$ \hyperlink{class_c_stormnode_ping_af0e27eadd1e12a8c75540c012d835ce1}{vch\+Sig}
+\item 
+\hyperlink{class_c_stormnode_ping_af7de3b992f923d3fef5d2796264c1698}{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_c_stormnode_ping_ab11e655925feefb19b90952072ae8371}{operator==} (const \hyperlink{class_c_stormnode_ping}{C\+Stormnode\+Ping} \&a, const \hyperlink{class_c_stormnode_ping}{C\+Stormnode\+Ping} \&b)
+\item 
+bool \hyperlink{class_c_stormnode_ping_adeed36dead5e3d3b539466408bee7915}{operator!=} (const \hyperlink{class_c_stormnode_ping}{C\+Stormnode\+Ping} \&a, const \hyperlink{class_c_stormnode_ping}{C\+Stormnode\+Ping} \&b)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 38 of file stormnode.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_stormnode_ping_a68d6a920cf9edf6abdd95daf7001c309}{}\index{C\+Stormnode\+Ping@{C\+Stormnode\+Ping}!C\+Stormnode\+Ping@{C\+Stormnode\+Ping}}
+\index{C\+Stormnode\+Ping@{C\+Stormnode\+Ping}!C\+Stormnode\+Ping@{C\+Stormnode\+Ping}}
+\subsubsection[{C\+Stormnode\+Ping}]{\setlength{\rightskip}{0pt plus 5cm}C\+Stormnode\+Ping\+::\+C\+Stormnode\+Ping (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_ping_a68d6a920cf9edf6abdd95daf7001c309}
+
+
+Definition at line 539 of file stormnode.\+cpp.
+
+\hypertarget{class_c_stormnode_ping_a6c1ab32c3bb00188b9328e3b923198df}{}\index{C\+Stormnode\+Ping@{C\+Stormnode\+Ping}!C\+Stormnode\+Ping@{C\+Stormnode\+Ping}}
+\index{C\+Stormnode\+Ping@{C\+Stormnode\+Ping}!C\+Stormnode\+Ping@{C\+Stormnode\+Ping}}
+\subsubsection[{C\+Stormnode\+Ping}]{\setlength{\rightskip}{0pt plus 5cm}C\+Stormnode\+Ping\+::\+C\+Stormnode\+Ping (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Tx\+In} \&}]{new\+Vin}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_ping_a6c1ab32c3bb00188b9328e3b923198df}
+
+
+Definition at line 547 of file stormnode.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 1
+
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_stormnode_ping_af77ba52e9ff7531d09b61fefa372efa4}{}\index{C\+Stormnode\+Ping@{C\+Stormnode\+Ping}!Check\+And\+Update@{Check\+And\+Update}}
+\index{Check\+And\+Update@{Check\+And\+Update}!C\+Stormnode\+Ping@{C\+Stormnode\+Ping}}
+\subsubsection[{Check\+And\+Update}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Stormnode\+Ping\+::\+Check\+And\+Update (
+\begin{DoxyParamCaption}
+\item[{int \&}]{n\+Dos, }
+\item[{bool}]{f\+Require\+Enabled = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_ping_af77ba52e9ff7531d09b61fefa372efa4}
+
+
+Definition at line 578 of file stormnode.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+\hypertarget{class_c_stormnode_ping_a3e2dbb87bd2fd09f87d6306606a48acb}{}\index{C\+Stormnode\+Ping@{C\+Stormnode\+Ping}!Get\+Hash@{Get\+Hash}}
+\index{Get\+Hash@{Get\+Hash}!C\+Stormnode\+Ping@{C\+Stormnode\+Ping}}
+\subsubsection[{Get\+Hash}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint256} C\+Stormnode\+Ping\+::\+Get\+Hash (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_stormnode_ping_a3e2dbb87bd2fd09f87d6306606a48acb}
+
+
+Definition at line 65 of file stormnode.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 4
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 5
+
+
+\hypertarget{class_c_stormnode_ping_ac6dbda886713de4642d10872595f19c7}{}\index{C\+Stormnode\+Ping@{C\+Stormnode\+Ping}!operator=@{operator=}}
+\index{operator=@{operator=}!C\+Stormnode\+Ping@{C\+Stormnode\+Ping}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Stormnode\+Ping}\& C\+Stormnode\+Ping\+::operator= (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Stormnode\+Ping}}]{from}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_stormnode_ping_ac6dbda886713de4642d10872595f19c7}
+
+
+Definition at line 85 of file stormnode.\+h.
+
+\hypertarget{class_c_stormnode_ping_a1f9010915780b43dffae9965531a951a}{}\index{C\+Stormnode\+Ping@{C\+Stormnode\+Ping}!Relay@{Relay}}
+\index{Relay@{Relay}!C\+Stormnode\+Ping@{C\+Stormnode\+Ping}}
+\subsubsection[{Relay}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Stormnode\+Ping\+::\+Relay (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_ping_a1f9010915780b43dffae9965531a951a}
+
+
+Definition at line 666 of file stormnode.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 6
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 7
+
+
+\hypertarget{class_c_stormnode_ping_ab41f768e659b72da337e2f28d226c286}{}\index{C\+Stormnode\+Ping@{C\+Stormnode\+Ping}!Serialization\+Op@{Serialization\+Op}}
+\index{Serialization\+Op@{Serialization\+Op}!C\+Stormnode\+Ping@{C\+Stormnode\+Ping}}
+\subsubsection[{Serialization\+Op}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename Operation $>$ void C\+Stormnode\+Ping\+::\+Serialization\+Op (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{Operation}]{ser\+\_\+action, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_stormnode_ping_ab41f768e659b72da337e2f28d226c286}
+
+
+Definition at line 54 of file stormnode.\+h.
+
+\hypertarget{class_c_stormnode_ping_a7552ace33ea9f797431ada062ab0e2e8}{}\index{C\+Stormnode\+Ping@{C\+Stormnode\+Ping}!Sign@{Sign}}
+\index{Sign@{Sign}!C\+Stormnode\+Ping@{C\+Stormnode\+Ping}}
+\subsubsection[{Sign}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Stormnode\+Ping\+::\+Sign (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Key} \&}]{key\+Stormnode, }
+\item[{{\bf C\+Pub\+Key} \&}]{pub\+Key\+Stormnode}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_ping_a7552ace33ea9f797431ada062ab0e2e8}
+
+
+Definition at line 557 of file stormnode.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 8
+
+
+\hypertarget{class_c_stormnode_ping_a6d5cdf09bf1f0fef6d02e1efc3557ce1}{}\index{C\+Stormnode\+Ping@{C\+Stormnode\+Ping}!swap@{swap}}
+\index{swap@{swap}!C\+Stormnode\+Ping@{C\+Stormnode\+Ping}}
+\subsubsection[{swap}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Stormnode\+Ping\+::swap (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Stormnode\+Ping} \&}]{first, }
+\item[{{\bf C\+Stormnode\+Ping} \&}]{second}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_stormnode_ping_a6d5cdf09bf1f0fef6d02e1efc3557ce1}
+
+
+Definition at line 72 of file stormnode.\+h.
+
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{class_c_stormnode_ping_adeed36dead5e3d3b539466408bee7915}{}\index{C\+Stormnode\+Ping@{C\+Stormnode\+Ping}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!C\+Stormnode\+Ping@{C\+Stormnode\+Ping}}
+\subsubsection[{operator"!=}]{\setlength{\rightskip}{0pt plus 5cm}bool operator!= (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Stormnode\+Ping} \&}]{a, }
+\item[{const {\bf C\+Stormnode\+Ping} \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\label{class_c_stormnode_ping_adeed36dead5e3d3b539466408bee7915}
+
+
+Definition at line 94 of file stormnode.\+h.
+
+\hypertarget{class_c_stormnode_ping_ab11e655925feefb19b90952072ae8371}{}\index{C\+Stormnode\+Ping@{C\+Stormnode\+Ping}!operator==@{operator==}}
+\index{operator==@{operator==}!C\+Stormnode\+Ping@{C\+Stormnode\+Ping}}
+\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}bool operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Stormnode\+Ping} \&}]{a, }
+\item[{const {\bf C\+Stormnode\+Ping} \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}\label{class_c_stormnode_ping_ab11e655925feefb19b90952072ae8371}
+
+
+Definition at line 90 of file stormnode.\+h.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_c_stormnode_ping_af7de3b992f923d3fef5d2796264c1698}{}\index{C\+Stormnode\+Ping@{C\+Stormnode\+Ping}!A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}}
+\index{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}!C\+Stormnode\+Ping@{C\+Stormnode\+Ping}}
+\subsubsection[{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}]{\setlength{\rightskip}{0pt plus 5cm}C\+Stormnode\+Ping\+::\+A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}\label{class_c_stormnode_ping_af7de3b992f923d3fef5d2796264c1698}
+
+
+Definition at line 51 of file stormnode.\+h.
+
+\hypertarget{class_c_stormnode_ping_a8a77ddaf2c49e48d306c05022e4e6b28}{}\index{C\+Stormnode\+Ping@{C\+Stormnode\+Ping}!block\+Hash@{block\+Hash}}
+\index{block\+Hash@{block\+Hash}!C\+Stormnode\+Ping@{C\+Stormnode\+Ping}}
+\subsubsection[{block\+Hash}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint256} C\+Stormnode\+Ping\+::block\+Hash}\label{class_c_stormnode_ping_a8a77ddaf2c49e48d306c05022e4e6b28}
+
+
+Definition at line 43 of file stormnode.\+h.
+
+\hypertarget{class_c_stormnode_ping_a9444c0ea28227eac0f3b3a0266ce0e9e}{}\index{C\+Stormnode\+Ping@{C\+Stormnode\+Ping}!sig\+Time@{sig\+Time}}
+\index{sig\+Time@{sig\+Time}!C\+Stormnode\+Ping@{C\+Stormnode\+Ping}}
+\subsubsection[{sig\+Time}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int64\+\_\+t} C\+Stormnode\+Ping\+::sig\+Time}\label{class_c_stormnode_ping_a9444c0ea28227eac0f3b3a0266ce0e9e}
+
+
+Definition at line 44 of file stormnode.\+h.
+
+\hypertarget{class_c_stormnode_ping_af0e27eadd1e12a8c75540c012d835ce1}{}\index{C\+Stormnode\+Ping@{C\+Stormnode\+Ping}!vch\+Sig@{vch\+Sig}}
+\index{vch\+Sig@{vch\+Sig}!C\+Stormnode\+Ping@{C\+Stormnode\+Ping}}
+\subsubsection[{vch\+Sig}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$unsigned char$>$ C\+Stormnode\+Ping\+::vch\+Sig}\label{class_c_stormnode_ping_af0e27eadd1e12a8c75540c012d835ce1}
+
+
+Definition at line 45 of file stormnode.\+h.
+
+\hypertarget{class_c_stormnode_ping_a83adfd5f2331b88deb60e44df9c878d9}{}\index{C\+Stormnode\+Ping@{C\+Stormnode\+Ping}!vin@{vin}}
+\index{vin@{vin}!C\+Stormnode\+Ping@{C\+Stormnode\+Ping}}
+\subsubsection[{vin}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Tx\+In} C\+Stormnode\+Ping\+::vin}\label{class_c_stormnode_ping_a83adfd5f2331b88deb60e44df9c878d9}
+
+
+Definition at line 42 of file stormnode.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/\hyperlink{stormnode_8h}{stormnode.\+h}\item 
+/home/dev/ds-\/160209/src/\hyperlink{stormnode_8cpp}{stormnode.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,128 @@
+.TH "TransactionView" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TransactionView \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <transactionview\&.h>\fP
+.PP
+Inherits QWidget\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBDateEnum\fP { \fBAll\fP, \fBToday\fP, \fBThisWeek\fP, \fBThisMonth\fP, \fBLastMonth\fP, \fBThisYear\fP, \fBRange\fP }"
+.br
+.in -1c
+.SS "Public Slots"
+
+.in +1c
+.ti -1c
+.RI "void \fBchooseDate\fP (int idx)"
+.br
+.ti -1c
+.RI "void \fBchooseType\fP (int idx)"
+.br
+.ti -1c
+.RI "void \fBchangedPrefix\fP (const QString &prefix)"
+.br
+.ti -1c
+.RI "void \fBchangedAmount\fP (const QString &amount)"
+.br
+.ti -1c
+.RI "void \fBexportClicked\fP ()"
+.br
+.ti -1c
+.RI "void \fBfocusTransaction\fP (const QModelIndex &)"
+.br
+.in -1c
+.SS "Signals"
+
+.in +1c
+.ti -1c
+.RI "void \fBdoubleClicked\fP (const QModelIndex &)"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTransactionView\fP (QWidget *parent=0)"
+.br
+.ti -1c
+.RI "void \fBsetModel\fP (\fBWalletModel\fP *model)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Widget showing the transaction list for a wallet, including a filter row\&. Using the filter row, the user can view or export a subset of the transactions\&. 
+.PP
+Definition at line 22 of file transactionview\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBTransactionView::DateEnum\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIAll \fP\fP
+.TP
+\fB\fIToday \fP\fP
+.TP
+\fB\fIThisWeek \fP\fP
+.TP
+\fB\fIThisMonth \fP\fP
+.TP
+\fB\fILastMonth \fP\fP
+.TP
+\fB\fIThisYear \fP\fP
+.TP
+\fB\fIRange \fP\fP
+.PP
+Definition at line 32 of file transactionview\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TransactionView::TransactionView (QWidget * parent = \fC0\fP)\fC [explicit]\fP"
+
+.PP
+Definition at line 30 of file transactionview\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void TransactionView::changedAmount (const QString & amount)\fC [slot]\fP"
+
+.PP
+Definition at line 259 of file transactionview\&.cpp\&.
+.SS "void TransactionView::changedPrefix (const QString & prefix)\fC [slot]\fP"
+
+.PP
+Definition at line 252 of file transactionview\&.cpp\&.
+.SS "void TransactionView::chooseDate (int idx)\fC [slot]\fP"
+
+.PP
+Definition at line 189 of file transactionview\&.cpp\&.
+.SS "void TransactionView::chooseType (int idx)\fC [slot]\fP"
+
+.PP
+Definition at line 244 of file transactionview\&.cpp\&.
+.SS "void TransactionView::doubleClicked (const QModelIndex &)\fC [signal]\fP"
+
+.SS "void TransactionView::exportClicked ()\fC [slot]\fP"
+
+.PP
+Definition at line 274 of file transactionview\&.cpp\&.
+.SS "void TransactionView::focusTransaction (const QModelIndex & idx)\fC [slot]\fP"
+
+.PP
+Definition at line 435 of file transactionview\&.cpp\&.
+.SS "void TransactionView::setModel (\fBWalletModel\fP * model)"
+
+.PP
+Definition at line 158 of file transactionview\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

@@ -1,0 +1,315 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_block_average" kind="class" language="C++" prot="public">
+    <compoundname>CBlockAverage</compoundname>
+    <includes refid="txmempool_8h" local="no">txmempool.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_c_block_average_1a1081285bac1ee777eac3d4919463f6fb" prot="private" static="no" mutable="no">
+        <type>boost::circular_buffer&lt; <ref refid="class_c_fee_rate" kindref="compound">CFeeRate</ref> &gt;</type>
+        <definition>boost::circular_buffer&lt;CFeeRate&gt; CBlockAverage::feeSamples</definition>
+        <argsstring></argsstring>
+        <name>feeSamples</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="59" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.h" bodystart="59" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_block_average_1ade7273ae47dc45963d7daf870942cdb0" prot="private" static="no" mutable="no">
+        <type>boost::circular_buffer&lt; double &gt;</type>
+        <definition>boost::circular_buffer&lt;double&gt; CBlockAverage::prioritySamples</definition>
+        <argsstring></argsstring>
+        <name>prioritySamples</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="60" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.h" bodystart="60" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_c_block_average_1ac3c8ad7e2394ba451965f775707ef087" prot="private" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>std::vector&lt; T &gt;</type>
+        <definition>std::vector&lt;T&gt; CBlockAverage::buf2vec</definition>
+        <argsstring>(boost::circular_buffer&lt; T &gt; buf) const </argsstring>
+        <name>buf2vec</name>
+        <param>
+          <type>boost::circular_buffer&lt; T &gt;</type>
+          <declname>buf</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="62" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.h" bodystart="62" bodyend="66"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_block_average_1adec219b95a2e1c67471f188dee48fb3a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CBlockAverage::CBlockAverage</definition>
+        <argsstring>()</argsstring>
+        <name>CBlockAverage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="69" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.h" bodystart="69" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_average_1a50af3241dc8fb3e49e1e980ed2a7fc95" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CBlockAverage::RecordFee</definition>
+        <argsstring>(const CFeeRate &amp;feeRate)</argsstring>
+        <name>RecordFee</name>
+        <param>
+          <type>const <ref refid="class_c_fee_rate" kindref="compound">CFeeRate</ref> &amp;</type>
+          <declname>feeRate</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="71" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.h" bodystart="71" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_average_1ae4d71208ccf3ecd85751ce3644d12853" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CBlockAverage::RecordPriority</definition>
+        <argsstring>(double priority)</argsstring>
+        <name>RecordPriority</name>
+        <param>
+          <type>double</type>
+          <declname>priority</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="75" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.h" bodystart="75" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_average_1a9e63c1415286edf12ac82145723e564f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t CBlockAverage::FeeSamples</definition>
+        <argsstring>() const </argsstring>
+        <name>FeeSamples</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="79" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.h" bodystart="79" bodyend="79"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_average_1a43152caddf026ec3f430d55435735ee4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t CBlockAverage::GetFeeSamples</definition>
+        <argsstring>(std::vector&lt; CFeeRate &gt; &amp;insertInto) const </argsstring>
+        <name>GetFeeSamples</name>
+        <param>
+          <type>std::vector&lt; <ref refid="class_c_fee_rate" kindref="compound">CFeeRate</ref> &gt; &amp;</type>
+          <declname>insertInto</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="80" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.h" bodystart="80" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_average_1a5b6ca2bd5fe9093ba81af14d7882145d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t CBlockAverage::PrioritySamples</definition>
+        <argsstring>() const </argsstring>
+        <name>PrioritySamples</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="86" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.h" bodystart="86" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_average_1a5f56bd04cccb15d891f7dfb41af8b382" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>size_t</type>
+        <definition>size_t CBlockAverage::GetPrioritySamples</definition>
+        <argsstring>(std::vector&lt; double &gt; &amp;insertInto) const </argsstring>
+        <name>GetPrioritySamples</name>
+        <param>
+          <type>std::vector&lt; double &gt; &amp;</type>
+          <declname>insertInto</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="87" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.h" bodystart="87" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_average_1a2c549117b02d3366cbc840dbdf5ebd6b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CBlockAverage::Write</definition>
+        <argsstring>(CAutoFile &amp;fileout) const </argsstring>
+        <name>Write</name>
+        <param>
+          <type><ref refid="class_c_auto_file" kindref="compound">CAutoFile</ref> &amp;</type>
+          <declname>fileout</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="129" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.h" bodystart="129" bodyend="135"/>
+        <referencedby refid="class_c_miner_policy_estimator_1aeb98d716f91294503bd5738589ffe6c3" compoundref="txmempool_8h" startline="341" endline="349">CMinerPolicyEstimator::Write</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_average_1aac4081eec4bf68d7d3a07521ea953489" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CBlockAverage::Read</definition>
+        <argsstring>(CAutoFile &amp;filein, const CFeeRate &amp;minRelayFee)</argsstring>
+        <name>Read</name>
+        <param>
+          <type><ref refid="class_c_auto_file" kindref="compound">CAutoFile</ref> &amp;</type>
+          <declname>filein</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_fee_rate" kindref="compound">CFeeRate</ref> &amp;</type>
+          <declname>minRelayFee</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="137" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.h" bodystart="137" bodyend="153"/>
+        <references refid="class_c_block_average_1a31ed22222a49a95787f9791f212ec521" compoundref="txmempool_8h" startline="98" endline="105">AreSane</references>
+        <referencedby refid="class_c_miner_policy_estimator_1a86e709bc44e9f6f597519173f15595ff" compoundref="txmempool_8h" startline="351" endline="374">CMinerPolicyEstimator::Read</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="class_c_block_average_1a31ed22222a49a95787f9791f212ec521" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool CBlockAverage::AreSane</definition>
+        <argsstring>(const CFeeRate fee, const CFeeRate &amp;minRelayFee)</argsstring>
+        <name>AreSane</name>
+        <param>
+          <type>const <ref refid="class_c_fee_rate" kindref="compound">CFeeRate</ref></type>
+          <declname>fee</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_fee_rate" kindref="compound">CFeeRate</ref> &amp;</type>
+          <declname>minRelayFee</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Used as belt-and-suspenders check when reading to detect file corruption </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="98" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.h" bodystart="98" bodyend="105"/>
+        <references refid="class_c_fee_rate_1a5cf990404e896b332cf6fb836244b4a6" compoundref="amount_8h" startline="36" endline="36">CFeeRate::GetFeePerK</references>
+        <referencedby refid="class_c_block_average_1a92abf5615a926971eba5f6fbaadac880" compoundref="txmempool_8h" startline="106" endline="114">AreSane</referencedby>
+        <referencedby refid="class_c_block_average_1aac4081eec4bf68d7d3a07521ea953489" compoundref="txmempool_8h" startline="137" endline="153">Read</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_average_1a92abf5615a926971eba5f6fbaadac880" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool CBlockAverage::AreSane</definition>
+        <argsstring>(const std::vector&lt; CFeeRate &gt; &amp;vecFee, const CFeeRate &amp;minRelayFee)</argsstring>
+        <name>AreSane</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="class_c_fee_rate" kindref="compound">CFeeRate</ref> &gt; &amp;</type>
+          <declname>vecFee</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_fee_rate" kindref="compound">CFeeRate</ref> &amp;</type>
+          <declname>minRelayFee</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="106" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.h" bodystart="106" bodyend="114"/>
+        <references refid="class_c_block_average_1a31ed22222a49a95787f9791f212ec521" compoundref="txmempool_8h" startline="98" endline="105">AreSane</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_average_1af5b855fc318c24c1eda1998ae07a8ed2" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool CBlockAverage::AreSane</definition>
+        <argsstring>(const double priority)</argsstring>
+        <name>AreSane</name>
+        <param>
+          <type>const double</type>
+          <declname>priority</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="115" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.h" bodystart="115" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_block_average_1a2bdd0f3aa2eb5edddde259551965fcaf" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool CBlockAverage::AreSane</definition>
+        <argsstring>(const std::vector&lt; double &gt; vecPriority)</argsstring>
+        <name>AreSane</name>
+        <param>
+          <type>const std::vector&lt; double &gt;</type>
+          <declname>vecPriority</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txmempool.h" line="119" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.h" bodystart="119" bodyend="127"/>
+        <references refid="class_c_block_average_1a31ed22222a49a95787f9791f212ec521" compoundref="txmempool_8h" startline="98" endline="105">AreSane</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Keep track of fee/priority for transactions confirmed within N blocks </para>    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/txmempool.h" line="57" column="1" bodyfile="/home/dev/ds-160209/src/txmempool.h" bodystart="56" bodyend="154"/>
+    <listofallmembers>
+      <member refid="class_c_block_average_1a31ed22222a49a95787f9791f212ec521" prot="public" virt="non-virtual"><scope>CBlockAverage</scope><name>AreSane</name></member>
+      <member refid="class_c_block_average_1a92abf5615a926971eba5f6fbaadac880" prot="public" virt="non-virtual"><scope>CBlockAverage</scope><name>AreSane</name></member>
+      <member refid="class_c_block_average_1af5b855fc318c24c1eda1998ae07a8ed2" prot="public" virt="non-virtual"><scope>CBlockAverage</scope><name>AreSane</name></member>
+      <member refid="class_c_block_average_1a2bdd0f3aa2eb5edddde259551965fcaf" prot="public" virt="non-virtual"><scope>CBlockAverage</scope><name>AreSane</name></member>
+      <member refid="class_c_block_average_1ac3c8ad7e2394ba451965f775707ef087" prot="private" virt="non-virtual"><scope>CBlockAverage</scope><name>buf2vec</name></member>
+      <member refid="class_c_block_average_1adec219b95a2e1c67471f188dee48fb3a" prot="public" virt="non-virtual"><scope>CBlockAverage</scope><name>CBlockAverage</name></member>
+      <member refid="class_c_block_average_1a1081285bac1ee777eac3d4919463f6fb" prot="private" virt="non-virtual"><scope>CBlockAverage</scope><name>feeSamples</name></member>
+      <member refid="class_c_block_average_1a9e63c1415286edf12ac82145723e564f" prot="public" virt="non-virtual"><scope>CBlockAverage</scope><name>FeeSamples</name></member>
+      <member refid="class_c_block_average_1a43152caddf026ec3f430d55435735ee4" prot="public" virt="non-virtual"><scope>CBlockAverage</scope><name>GetFeeSamples</name></member>
+      <member refid="class_c_block_average_1a5f56bd04cccb15d891f7dfb41af8b382" prot="public" virt="non-virtual"><scope>CBlockAverage</scope><name>GetPrioritySamples</name></member>
+      <member refid="class_c_block_average_1ade7273ae47dc45963d7daf870942cdb0" prot="private" virt="non-virtual"><scope>CBlockAverage</scope><name>prioritySamples</name></member>
+      <member refid="class_c_block_average_1a5b6ca2bd5fe9093ba81af14d7882145d" prot="public" virt="non-virtual"><scope>CBlockAverage</scope><name>PrioritySamples</name></member>
+      <member refid="class_c_block_average_1aac4081eec4bf68d7d3a07521ea953489" prot="public" virt="non-virtual"><scope>CBlockAverage</scope><name>Read</name></member>
+      <member refid="class_c_block_average_1a50af3241dc8fb3e49e1e980ed2a7fc95" prot="public" virt="non-virtual"><scope>CBlockAverage</scope><name>RecordFee</name></member>
+      <member refid="class_c_block_average_1ae4d71208ccf3ecd85751ce3644d12853" prot="public" virt="non-virtual"><scope>CBlockAverage</scope><name>RecordPriority</name></member>
+      <member refid="class_c_block_average_1a2c549117b02d3366cbc840dbdf5ebd6b" prot="public" virt="non-virtual"><scope>CBlockAverage</scope><name>Write</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

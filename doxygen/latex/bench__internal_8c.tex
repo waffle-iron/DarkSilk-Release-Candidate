@@ -1,0 +1,555 @@
+\hypertarget{bench__internal_8c}{}\section{/home/dev/ds-\/160209/src/secp256k1/src/bench\+\_\+internal.c File Reference}
+\label{bench__internal_8c}\index{/home/dev/ds-\/160209/src/secp256k1/src/bench\+\_\+internal.\+c@{/home/dev/ds-\/160209/src/secp256k1/src/bench\+\_\+internal.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}include/secp256k1.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}util.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}hash\+\_\+impl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}num\+\_\+impl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}field\+\_\+impl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}group\+\_\+impl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}scalar\+\_\+impl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}ecmult\+\_\+const\+\_\+impl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}ecmult\+\_\+impl.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}bench.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}secp256k1.\+c\char`\"{}}\\*
+Include dependency graph for bench\+\_\+internal.\+c\+:
+% FIG 0
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structbench__inv__t}{bench\+\_\+inv\+\_\+t}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{bench__internal_8c_af48be8297385d0d32de62ae12a07d55c}{bench\+\_\+setup} (void $\ast$\hyperlink{env__posix_8cc_a9ce2ec4812a92cb6ab39f6e81e9173a9}{arg})
+\item 
+void \hyperlink{bench__internal_8c_a0b539623bdc89b13ef2b6c7652eb49ff}{bench\+\_\+scalar\+\_\+add} (void $\ast$\hyperlink{env__posix_8cc_a9ce2ec4812a92cb6ab39f6e81e9173a9}{arg})
+\item 
+void \hyperlink{bench__internal_8c_ae3fb5f28fb450096dcd04f36abfdb462}{bench\+\_\+scalar\+\_\+negate} (void $\ast$\hyperlink{env__posix_8cc_a9ce2ec4812a92cb6ab39f6e81e9173a9}{arg})
+\item 
+void \hyperlink{bench__internal_8c_abe9892c7c25aa6262dfd2d3c8eb6cc68}{bench\+\_\+scalar\+\_\+sqr} (void $\ast$\hyperlink{env__posix_8cc_a9ce2ec4812a92cb6ab39f6e81e9173a9}{arg})
+\item 
+void \hyperlink{bench__internal_8c_a01cf2d68b95f3289092b392a96afb45f}{bench\+\_\+scalar\+\_\+mul} (void $\ast$\hyperlink{env__posix_8cc_a9ce2ec4812a92cb6ab39f6e81e9173a9}{arg})
+\item 
+void \hyperlink{bench__internal_8c_a3514e9903b441b8d32d09a56ea1ab203}{bench\+\_\+scalar\+\_\+inverse} (void $\ast$\hyperlink{env__posix_8cc_a9ce2ec4812a92cb6ab39f6e81e9173a9}{arg})
+\item 
+void \hyperlink{bench__internal_8c_a9587e1fb40ba7e4d0c50b1d67419dd0d}{bench\+\_\+scalar\+\_\+inverse\+\_\+var} (void $\ast$\hyperlink{env__posix_8cc_a9ce2ec4812a92cb6ab39f6e81e9173a9}{arg})
+\item 
+void \hyperlink{bench__internal_8c_ac3485538e4fa9af40a4cef001232ddd3}{bench\+\_\+field\+\_\+normalize} (void $\ast$\hyperlink{env__posix_8cc_a9ce2ec4812a92cb6ab39f6e81e9173a9}{arg})
+\item 
+void \hyperlink{bench__internal_8c_a2c64e320d361391c4173beb301ffedd5}{bench\+\_\+field\+\_\+normalize\+\_\+weak} (void $\ast$\hyperlink{env__posix_8cc_a9ce2ec4812a92cb6ab39f6e81e9173a9}{arg})
+\item 
+void \hyperlink{bench__internal_8c_af8408941f23caa6b2f966d5ad5a3bcf5}{bench\+\_\+field\+\_\+mul} (void $\ast$\hyperlink{env__posix_8cc_a9ce2ec4812a92cb6ab39f6e81e9173a9}{arg})
+\item 
+void \hyperlink{bench__internal_8c_a8254149a8227aa2a8a608a2ad33bfeb0}{bench\+\_\+field\+\_\+sqr} (void $\ast$\hyperlink{env__posix_8cc_a9ce2ec4812a92cb6ab39f6e81e9173a9}{arg})
+\item 
+void \hyperlink{bench__internal_8c_aadfd2513d7e62f1bea711ca496f8a3c2}{bench\+\_\+field\+\_\+inverse} (void $\ast$\hyperlink{env__posix_8cc_a9ce2ec4812a92cb6ab39f6e81e9173a9}{arg})
+\item 
+void \hyperlink{bench__internal_8c_afe3b788c31c7bb78714db48b2d43fd60}{bench\+\_\+field\+\_\+inverse\+\_\+var} (void $\ast$\hyperlink{env__posix_8cc_a9ce2ec4812a92cb6ab39f6e81e9173a9}{arg})
+\item 
+void \hyperlink{bench__internal_8c_a886402d0f9385791697bf5de08bdccd3}{bench\+\_\+field\+\_\+sqrt\+\_\+var} (void $\ast$\hyperlink{env__posix_8cc_a9ce2ec4812a92cb6ab39f6e81e9173a9}{arg})
+\item 
+void \hyperlink{bench__internal_8c_a2e04291c03d8680c2c4d55933e8fbe49}{bench\+\_\+group\+\_\+double\+\_\+var} (void $\ast$\hyperlink{env__posix_8cc_a9ce2ec4812a92cb6ab39f6e81e9173a9}{arg})
+\item 
+void \hyperlink{bench__internal_8c_a6bedf8eeeb6567d891a777f3828b42e6}{bench\+\_\+group\+\_\+add\+\_\+var} (void $\ast$\hyperlink{env__posix_8cc_a9ce2ec4812a92cb6ab39f6e81e9173a9}{arg})
+\item 
+void \hyperlink{bench__internal_8c_a035c2e84ac8291dcfc8e3cc11c9af781}{bench\+\_\+group\+\_\+add\+\_\+affine} (void $\ast$\hyperlink{env__posix_8cc_a9ce2ec4812a92cb6ab39f6e81e9173a9}{arg})
+\item 
+void \hyperlink{bench__internal_8c_a4964d22380325912e3235e21b5525be3}{bench\+\_\+group\+\_\+add\+\_\+affine\+\_\+var} (void $\ast$\hyperlink{env__posix_8cc_a9ce2ec4812a92cb6ab39f6e81e9173a9}{arg})
+\item 
+void \hyperlink{bench__internal_8c_ac942d1b5df119c9d41304dfa566ddea5}{bench\+\_\+ecmult\+\_\+wnaf} (void $\ast$\hyperlink{env__posix_8cc_a9ce2ec4812a92cb6ab39f6e81e9173a9}{arg})
+\item 
+void \hyperlink{bench__internal_8c_a3326bba18d9522d84a82ea50974b3811}{bench\+\_\+wnaf\+\_\+const} (void $\ast$\hyperlink{env__posix_8cc_a9ce2ec4812a92cb6ab39f6e81e9173a9}{arg})
+\item 
+void \hyperlink{bench__internal_8c_ac8924b9ed09efcfbc1fd3c0039188d46}{bench\+\_\+sha256} (void $\ast$\hyperlink{env__posix_8cc_a9ce2ec4812a92cb6ab39f6e81e9173a9}{arg})
+\item 
+void \hyperlink{bench__internal_8c_a85fea17693c6843a3b0c33b693736d15}{bench\+\_\+hmac\+\_\+sha256} (void $\ast$\hyperlink{env__posix_8cc_a9ce2ec4812a92cb6ab39f6e81e9173a9}{arg})
+\item 
+void \hyperlink{bench__internal_8c_a6dca5af2be4140aa38f95f36baab0014}{bench\+\_\+rfc6979\+\_\+hmac\+\_\+sha256} (void $\ast$\hyperlink{env__posix_8cc_a9ce2ec4812a92cb6ab39f6e81e9173a9}{arg})
+\item 
+void \hyperlink{bench__internal_8c_a0267a6fcf26df5e2625c0f93eed876a9}{bench\+\_\+context\+\_\+verify} (void $\ast$\hyperlink{env__posix_8cc_a9ce2ec4812a92cb6ab39f6e81e9173a9}{arg})
+\item 
+void \hyperlink{bench__internal_8c_a0d6ae07fc12e8c74ebdcb49871cbfc0e}{bench\+\_\+context\+\_\+sign} (void $\ast$\hyperlink{env__posix_8cc_a9ce2ec4812a92cb6ab39f6e81e9173a9}{arg})
+\item 
+int \hyperlink{bench__internal_8c_a11ad6602b2858a905ba935d8002639db}{have\+\_\+flag} (int argc, char $\ast$$\ast$argv, char $\ast$flag)
+\item 
+int \hyperlink{bench__internal_8c_a3c04138a5bfe5d72780bb7e82a18e627}{main} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{bench__internal_8c_a0d6ae07fc12e8c74ebdcb49871cbfc0e}{}\index{bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}!bench\+\_\+context\+\_\+sign@{bench\+\_\+context\+\_\+sign}}
+\index{bench\+\_\+context\+\_\+sign@{bench\+\_\+context\+\_\+sign}!bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}}
+\subsubsection[{bench\+\_\+context\+\_\+sign}]{\setlength{\rightskip}{0pt plus 5cm}void bench\+\_\+context\+\_\+sign (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\label{bench__internal_8c_a0d6ae07fc12e8c74ebdcb49871cbfc0e}
+
+
+Definition at line 294 of file bench\+\_\+internal.\+c.
+
+
+
+Here is the call graph for this function\+:
+% FIG 1
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 2
+
+
+\hypertarget{bench__internal_8c_a0267a6fcf26df5e2625c0f93eed876a9}{}\index{bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}!bench\+\_\+context\+\_\+verify@{bench\+\_\+context\+\_\+verify}}
+\index{bench\+\_\+context\+\_\+verify@{bench\+\_\+context\+\_\+verify}!bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}}
+\subsubsection[{bench\+\_\+context\+\_\+verify}]{\setlength{\rightskip}{0pt plus 5cm}void bench\+\_\+context\+\_\+verify (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\label{bench__internal_8c_a0267a6fcf26df5e2625c0f93eed876a9}
+
+
+Definition at line 286 of file bench\+\_\+internal.\+c.
+
+
+
+Here is the call graph for this function\+:
+% FIG 3
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 4
+
+
+\hypertarget{bench__internal_8c_ac942d1b5df119c9d41304dfa566ddea5}{}\index{bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}!bench\+\_\+ecmult\+\_\+wnaf@{bench\+\_\+ecmult\+\_\+wnaf}}
+\index{bench\+\_\+ecmult\+\_\+wnaf@{bench\+\_\+ecmult\+\_\+wnaf}!bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}}
+\subsubsection[{bench\+\_\+ecmult\+\_\+wnaf}]{\setlength{\rightskip}{0pt plus 5cm}void bench\+\_\+ecmult\+\_\+wnaf (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\label{bench__internal_8c_ac942d1b5df119c9d41304dfa566ddea5}
+
+
+Definition at line 230 of file bench\+\_\+internal.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 5
+
+
+\hypertarget{bench__internal_8c_aadfd2513d7e62f1bea711ca496f8a3c2}{}\index{bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}!bench\+\_\+field\+\_\+inverse@{bench\+\_\+field\+\_\+inverse}}
+\index{bench\+\_\+field\+\_\+inverse@{bench\+\_\+field\+\_\+inverse}!bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}}
+\subsubsection[{bench\+\_\+field\+\_\+inverse}]{\setlength{\rightskip}{0pt plus 5cm}void bench\+\_\+field\+\_\+inverse (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\label{bench__internal_8c_aadfd2513d7e62f1bea711ca496f8a3c2}
+
+
+Definition at line 164 of file bench\+\_\+internal.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 6
+
+
+\hypertarget{bench__internal_8c_afe3b788c31c7bb78714db48b2d43fd60}{}\index{bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}!bench\+\_\+field\+\_\+inverse\+\_\+var@{bench\+\_\+field\+\_\+inverse\+\_\+var}}
+\index{bench\+\_\+field\+\_\+inverse\+\_\+var@{bench\+\_\+field\+\_\+inverse\+\_\+var}!bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}}
+\subsubsection[{bench\+\_\+field\+\_\+inverse\+\_\+var}]{\setlength{\rightskip}{0pt plus 5cm}void bench\+\_\+field\+\_\+inverse\+\_\+var (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\label{bench__internal_8c_afe3b788c31c7bb78714db48b2d43fd60}
+
+
+Definition at line 174 of file bench\+\_\+internal.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 7
+
+
+\hypertarget{bench__internal_8c_af8408941f23caa6b2f966d5ad5a3bcf5}{}\index{bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}!bench\+\_\+field\+\_\+mul@{bench\+\_\+field\+\_\+mul}}
+\index{bench\+\_\+field\+\_\+mul@{bench\+\_\+field\+\_\+mul}!bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}}
+\subsubsection[{bench\+\_\+field\+\_\+mul}]{\setlength{\rightskip}{0pt plus 5cm}void bench\+\_\+field\+\_\+mul (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\label{bench__internal_8c_af8408941f23caa6b2f966d5ad5a3bcf5}
+
+
+Definition at line 146 of file bench\+\_\+internal.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 8
+
+
+\hypertarget{bench__internal_8c_ac3485538e4fa9af40a4cef001232ddd3}{}\index{bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}!bench\+\_\+field\+\_\+normalize@{bench\+\_\+field\+\_\+normalize}}
+\index{bench\+\_\+field\+\_\+normalize@{bench\+\_\+field\+\_\+normalize}!bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}}
+\subsubsection[{bench\+\_\+field\+\_\+normalize}]{\setlength{\rightskip}{0pt plus 5cm}void bench\+\_\+field\+\_\+normalize (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\label{bench__internal_8c_ac3485538e4fa9af40a4cef001232ddd3}
+
+
+Definition at line 128 of file bench\+\_\+internal.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 9
+
+
+\hypertarget{bench__internal_8c_a2c64e320d361391c4173beb301ffedd5}{}\index{bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}!bench\+\_\+field\+\_\+normalize\+\_\+weak@{bench\+\_\+field\+\_\+normalize\+\_\+weak}}
+\index{bench\+\_\+field\+\_\+normalize\+\_\+weak@{bench\+\_\+field\+\_\+normalize\+\_\+weak}!bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}}
+\subsubsection[{bench\+\_\+field\+\_\+normalize\+\_\+weak}]{\setlength{\rightskip}{0pt plus 5cm}void bench\+\_\+field\+\_\+normalize\+\_\+weak (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\label{bench__internal_8c_a2c64e320d361391c4173beb301ffedd5}
+
+
+Definition at line 137 of file bench\+\_\+internal.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 10
+
+
+\hypertarget{bench__internal_8c_a8254149a8227aa2a8a608a2ad33bfeb0}{}\index{bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}!bench\+\_\+field\+\_\+sqr@{bench\+\_\+field\+\_\+sqr}}
+\index{bench\+\_\+field\+\_\+sqr@{bench\+\_\+field\+\_\+sqr}!bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}}
+\subsubsection[{bench\+\_\+field\+\_\+sqr}]{\setlength{\rightskip}{0pt plus 5cm}void bench\+\_\+field\+\_\+sqr (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\label{bench__internal_8c_a8254149a8227aa2a8a608a2ad33bfeb0}
+
+
+Definition at line 155 of file bench\+\_\+internal.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 11
+
+
+\hypertarget{bench__internal_8c_a886402d0f9385791697bf5de08bdccd3}{}\index{bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}!bench\+\_\+field\+\_\+sqrt\+\_\+var@{bench\+\_\+field\+\_\+sqrt\+\_\+var}}
+\index{bench\+\_\+field\+\_\+sqrt\+\_\+var@{bench\+\_\+field\+\_\+sqrt\+\_\+var}!bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}}
+\subsubsection[{bench\+\_\+field\+\_\+sqrt\+\_\+var}]{\setlength{\rightskip}{0pt plus 5cm}void bench\+\_\+field\+\_\+sqrt\+\_\+var (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\label{bench__internal_8c_a886402d0f9385791697bf5de08bdccd3}
+
+
+Definition at line 184 of file bench\+\_\+internal.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 12
+
+
+\hypertarget{bench__internal_8c_a035c2e84ac8291dcfc8e3cc11c9af781}{}\index{bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}!bench\+\_\+group\+\_\+add\+\_\+affine@{bench\+\_\+group\+\_\+add\+\_\+affine}}
+\index{bench\+\_\+group\+\_\+add\+\_\+affine@{bench\+\_\+group\+\_\+add\+\_\+affine}!bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}}
+\subsubsection[{bench\+\_\+group\+\_\+add\+\_\+affine}]{\setlength{\rightskip}{0pt plus 5cm}void bench\+\_\+group\+\_\+add\+\_\+affine (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\label{bench__internal_8c_a035c2e84ac8291dcfc8e3cc11c9af781}
+
+
+Definition at line 212 of file bench\+\_\+internal.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 13
+
+
+\hypertarget{bench__internal_8c_a4964d22380325912e3235e21b5525be3}{}\index{bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}!bench\+\_\+group\+\_\+add\+\_\+affine\+\_\+var@{bench\+\_\+group\+\_\+add\+\_\+affine\+\_\+var}}
+\index{bench\+\_\+group\+\_\+add\+\_\+affine\+\_\+var@{bench\+\_\+group\+\_\+add\+\_\+affine\+\_\+var}!bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}}
+\subsubsection[{bench\+\_\+group\+\_\+add\+\_\+affine\+\_\+var}]{\setlength{\rightskip}{0pt plus 5cm}void bench\+\_\+group\+\_\+add\+\_\+affine\+\_\+var (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\label{bench__internal_8c_a4964d22380325912e3235e21b5525be3}
+
+
+Definition at line 221 of file bench\+\_\+internal.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 14
+
+
+\hypertarget{bench__internal_8c_a6bedf8eeeb6567d891a777f3828b42e6}{}\index{bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}!bench\+\_\+group\+\_\+add\+\_\+var@{bench\+\_\+group\+\_\+add\+\_\+var}}
+\index{bench\+\_\+group\+\_\+add\+\_\+var@{bench\+\_\+group\+\_\+add\+\_\+var}!bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}}
+\subsubsection[{bench\+\_\+group\+\_\+add\+\_\+var}]{\setlength{\rightskip}{0pt plus 5cm}void bench\+\_\+group\+\_\+add\+\_\+var (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\label{bench__internal_8c_a6bedf8eeeb6567d891a777f3828b42e6}
+
+
+Definition at line 203 of file bench\+\_\+internal.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 15
+
+
+\hypertarget{bench__internal_8c_a2e04291c03d8680c2c4d55933e8fbe49}{}\index{bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}!bench\+\_\+group\+\_\+double\+\_\+var@{bench\+\_\+group\+\_\+double\+\_\+var}}
+\index{bench\+\_\+group\+\_\+double\+\_\+var@{bench\+\_\+group\+\_\+double\+\_\+var}!bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}}
+\subsubsection[{bench\+\_\+group\+\_\+double\+\_\+var}]{\setlength{\rightskip}{0pt plus 5cm}void bench\+\_\+group\+\_\+double\+\_\+var (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\label{bench__internal_8c_a2e04291c03d8680c2c4d55933e8fbe49}
+
+
+Definition at line 194 of file bench\+\_\+internal.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 16
+
+
+\hypertarget{bench__internal_8c_a85fea17693c6843a3b0c33b693736d15}{}\index{bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}!bench\+\_\+hmac\+\_\+sha256@{bench\+\_\+hmac\+\_\+sha256}}
+\index{bench\+\_\+hmac\+\_\+sha256@{bench\+\_\+hmac\+\_\+sha256}!bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}}
+\subsubsection[{bench\+\_\+hmac\+\_\+sha256}]{\setlength{\rightskip}{0pt plus 5cm}void bench\+\_\+hmac\+\_\+sha256 (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\label{bench__internal_8c_a85fea17693c6843a3b0c33b693736d15}
+
+
+Definition at line 263 of file bench\+\_\+internal.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 17
+
+
+\hypertarget{bench__internal_8c_a6dca5af2be4140aa38f95f36baab0014}{}\index{bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}!bench\+\_\+rfc6979\+\_\+hmac\+\_\+sha256@{bench\+\_\+rfc6979\+\_\+hmac\+\_\+sha256}}
+\index{bench\+\_\+rfc6979\+\_\+hmac\+\_\+sha256@{bench\+\_\+rfc6979\+\_\+hmac\+\_\+sha256}!bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}}
+\subsubsection[{bench\+\_\+rfc6979\+\_\+hmac\+\_\+sha256}]{\setlength{\rightskip}{0pt plus 5cm}void bench\+\_\+rfc6979\+\_\+hmac\+\_\+sha256 (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\label{bench__internal_8c_a6dca5af2be4140aa38f95f36baab0014}
+
+
+Definition at line 275 of file bench\+\_\+internal.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 18
+
+
+\hypertarget{bench__internal_8c_a0b539623bdc89b13ef2b6c7652eb49ff}{}\index{bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}!bench\+\_\+scalar\+\_\+add@{bench\+\_\+scalar\+\_\+add}}
+\index{bench\+\_\+scalar\+\_\+add@{bench\+\_\+scalar\+\_\+add}!bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}}
+\subsubsection[{bench\+\_\+scalar\+\_\+add}]{\setlength{\rightskip}{0pt plus 5cm}void bench\+\_\+scalar\+\_\+add (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\label{bench__internal_8c_a0b539623bdc89b13ef2b6c7652eb49ff}
+
+
+Definition at line 59 of file bench\+\_\+internal.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 19
+
+
+\hypertarget{bench__internal_8c_a3514e9903b441b8d32d09a56ea1ab203}{}\index{bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}!bench\+\_\+scalar\+\_\+inverse@{bench\+\_\+scalar\+\_\+inverse}}
+\index{bench\+\_\+scalar\+\_\+inverse@{bench\+\_\+scalar\+\_\+inverse}!bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}}
+\subsubsection[{bench\+\_\+scalar\+\_\+inverse}]{\setlength{\rightskip}{0pt plus 5cm}void bench\+\_\+scalar\+\_\+inverse (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\label{bench__internal_8c_a3514e9903b441b8d32d09a56ea1ab203}
+
+
+Definition at line 108 of file bench\+\_\+internal.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 20
+
+
+\hypertarget{bench__internal_8c_a9587e1fb40ba7e4d0c50b1d67419dd0d}{}\index{bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}!bench\+\_\+scalar\+\_\+inverse\+\_\+var@{bench\+\_\+scalar\+\_\+inverse\+\_\+var}}
+\index{bench\+\_\+scalar\+\_\+inverse\+\_\+var@{bench\+\_\+scalar\+\_\+inverse\+\_\+var}!bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}}
+\subsubsection[{bench\+\_\+scalar\+\_\+inverse\+\_\+var}]{\setlength{\rightskip}{0pt plus 5cm}void bench\+\_\+scalar\+\_\+inverse\+\_\+var (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\label{bench__internal_8c_a9587e1fb40ba7e4d0c50b1d67419dd0d}
+
+
+Definition at line 118 of file bench\+\_\+internal.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 21
+
+
+\hypertarget{bench__internal_8c_a01cf2d68b95f3289092b392a96afb45f}{}\index{bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}!bench\+\_\+scalar\+\_\+mul@{bench\+\_\+scalar\+\_\+mul}}
+\index{bench\+\_\+scalar\+\_\+mul@{bench\+\_\+scalar\+\_\+mul}!bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}}
+\subsubsection[{bench\+\_\+scalar\+\_\+mul}]{\setlength{\rightskip}{0pt plus 5cm}void bench\+\_\+scalar\+\_\+mul (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\label{bench__internal_8c_a01cf2d68b95f3289092b392a96afb45f}
+
+
+Definition at line 86 of file bench\+\_\+internal.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 22
+
+
+\hypertarget{bench__internal_8c_ae3fb5f28fb450096dcd04f36abfdb462}{}\index{bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}!bench\+\_\+scalar\+\_\+negate@{bench\+\_\+scalar\+\_\+negate}}
+\index{bench\+\_\+scalar\+\_\+negate@{bench\+\_\+scalar\+\_\+negate}!bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}}
+\subsubsection[{bench\+\_\+scalar\+\_\+negate}]{\setlength{\rightskip}{0pt plus 5cm}void bench\+\_\+scalar\+\_\+negate (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\label{bench__internal_8c_ae3fb5f28fb450096dcd04f36abfdb462}
+
+
+Definition at line 68 of file bench\+\_\+internal.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 23
+
+
+\hypertarget{bench__internal_8c_abe9892c7c25aa6262dfd2d3c8eb6cc68}{}\index{bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}!bench\+\_\+scalar\+\_\+sqr@{bench\+\_\+scalar\+\_\+sqr}}
+\index{bench\+\_\+scalar\+\_\+sqr@{bench\+\_\+scalar\+\_\+sqr}!bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}}
+\subsubsection[{bench\+\_\+scalar\+\_\+sqr}]{\setlength{\rightskip}{0pt plus 5cm}void bench\+\_\+scalar\+\_\+sqr (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\label{bench__internal_8c_abe9892c7c25aa6262dfd2d3c8eb6cc68}
+
+
+Definition at line 77 of file bench\+\_\+internal.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 24
+
+
+\hypertarget{bench__internal_8c_af48be8297385d0d32de62ae12a07d55c}{}\index{bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}!bench\+\_\+setup@{bench\+\_\+setup}}
+\index{bench\+\_\+setup@{bench\+\_\+setup}!bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}}
+\subsubsection[{bench\+\_\+setup}]{\setlength{\rightskip}{0pt plus 5cm}void bench\+\_\+setup (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\label{bench__internal_8c_af48be8297385d0d32de62ae12a07d55c}
+
+
+Definition at line 30 of file bench\+\_\+internal.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 25
+
+
+\hypertarget{bench__internal_8c_ac8924b9ed09efcfbc1fd3c0039188d46}{}\index{bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}!bench\+\_\+sha256@{bench\+\_\+sha256}}
+\index{bench\+\_\+sha256@{bench\+\_\+sha256}!bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}}
+\subsubsection[{bench\+\_\+sha256}]{\setlength{\rightskip}{0pt plus 5cm}void bench\+\_\+sha256 (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\label{bench__internal_8c_ac8924b9ed09efcfbc1fd3c0039188d46}
+
+
+Definition at line 251 of file bench\+\_\+internal.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 26
+
+
+\hypertarget{bench__internal_8c_a3326bba18d9522d84a82ea50974b3811}{}\index{bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}!bench\+\_\+wnaf\+\_\+const@{bench\+\_\+wnaf\+\_\+const}}
+\index{bench\+\_\+wnaf\+\_\+const@{bench\+\_\+wnaf\+\_\+const}!bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}}
+\subsubsection[{bench\+\_\+wnaf\+\_\+const}]{\setlength{\rightskip}{0pt plus 5cm}void bench\+\_\+wnaf\+\_\+const (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{arg}
+\end{DoxyParamCaption}
+)}\label{bench__internal_8c_a3326bba18d9522d84a82ea50974b3811}
+
+
+Definition at line 240 of file bench\+\_\+internal.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 27
+
+
+\hypertarget{bench__internal_8c_a11ad6602b2858a905ba935d8002639db}{}\index{bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}!have\+\_\+flag@{have\+\_\+flag}}
+\index{have\+\_\+flag@{have\+\_\+flag}!bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}}
+\subsubsection[{have\+\_\+flag}]{\setlength{\rightskip}{0pt plus 5cm}int have\+\_\+flag (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv, }
+\item[{char $\ast$}]{flag}
+\end{DoxyParamCaption}
+)}\label{bench__internal_8c_a11ad6602b2858a905ba935d8002639db}
+
+
+Definition at line 303 of file bench\+\_\+internal.\+c.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 28
+
+
+\hypertarget{bench__internal_8c_a3c04138a5bfe5d72780bb7e82a18e627}{}\index{bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}!main@{main}}
+\index{main@{main}!bench\+\_\+internal.\+c@{bench\+\_\+internal.\+c}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}\label{bench__internal_8c_a3c04138a5bfe5d72780bb7e82a18e627}
+
+
+Definition at line 318 of file bench\+\_\+internal.\+c.
+
+
+
+Here is the call graph for this function\+:
+% FIG 29
+
+

@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "main.h"
-#include "wallet/db.h"
+#include "db.h"
 #include "init.h"
 #include "activestormnode.h"
 #include "stormnode-budget.h"

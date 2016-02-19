@@ -5,10 +5,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "protocol.h"
-
-#include "chainparams.h"
 #include "util.h"
-#include "utilstrencodings.h"
 
 #ifndef WIN32
 # include <arpa/inet.h>
@@ -23,16 +20,19 @@ static const char* ppszTypeName[] =
     "tx lock request",
     "tx lock vote",
     "spork",
-    "sn winner",
-    "sn scan error",
-    "sn budget vote",
-    "sn budget proposal",
-    "sn budget finalized",
-    "sn budget finalized vote",
-    "sn quorum",
-    "sn announce",
-    "sn ping",
-    "sstx"
+    "stormnode winner",
+    "stormnode scan",
+    "stormnode vote",
+    "stormnode proposal",
+    "stormnode quorum",
+    "stormnode announce",
+    "stormnode ping",
+    "unknown",
+    "unknown",
+    "unknown",
+    "unknown",
+    "unknown",
+    "unknown"
 };
 
 CMessageHeader::CMessageHeader()
@@ -47,7 +47,6 @@ CMessageHeader::CMessageHeader()
 CMessageHeader::CMessageHeader(const char* pszCommand, unsigned int nMessageSizeIn)
 {
     memcpy(pchMessageStart, Params().MessageStart(), MESSAGE_START_SIZE);
-    memset(pchCommand, 0, sizeof(pchCommand));
     strncpy(pchCommand, pszCommand, COMMAND_SIZE);
     nMessageSize = nMessageSizeIn;
     nChecksum = 0;
@@ -55,6 +54,9 @@ CMessageHeader::CMessageHeader(const char* pszCommand, unsigned int nMessageSize
 
 std::string CMessageHeader::GetCommand() const
 {
+    if (pchCommand[COMMAND_SIZE-1] == 0)
+        return std::string(pchCommand, pchCommand + strlen(pchCommand));
+    else
         return std::string(pchCommand, pchCommand + COMMAND_SIZE);
 }
 
@@ -132,7 +134,7 @@ CInv::CInv(const std::string& strType, const uint256& hashIn)
         }
     }
     if (i == ARRAYLEN(ppszTypeName))
-        LogPrint("net", "CInv::CInv(string, uint256) : unknown type '%s'", strType);
+        throw std::out_of_range(strprintf("CInv::CInv(string, uint256) : unknown type '%s'", strType));
     hash = hashIn;
 }
 
@@ -149,8 +151,7 @@ bool CInv::IsKnownType() const
 const char* CInv::GetCommand() const
 {
     if (!IsKnownType())
-        LogPrint("net", "CInv::GetCommand() : type=%d unknown type", type);
-
+        throw std::out_of_range(strprintf("CInv::GetCommand() : type=%d unknown type", type));
     return ppszTypeName[type];
 }
 

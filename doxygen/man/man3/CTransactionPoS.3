@@ -1,0 +1,155 @@
+.TH "CTransactionPoS" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CTransactionPoS \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <main\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCTransactionPoS\fP ()"
+.br
+.ti -1c
+.RI "template<typename Stream , typename Operation > void \fBSerializationOp\fP (Stream &s, Operation ser_action, int nType, int \fBnVersion\fP)"
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetValueOut\fP (\fBCTransaction\fP &tx) const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetValueIn\fP (\fBCTransaction\fP &tx, const \fBMapPrevTx\fP &mapInputs) const "
+.br
+.ti -1c
+.RI "bool \fBReadFromDisk\fP (\fBCTransaction\fP &tx, \fBCDiskTxPos\fP pos, FILE **pfileRet=NULL)"
+.br
+.ti -1c
+.RI "bool \fBReadFromDisk\fP (\fBCTransaction\fP &tx, \fBCTxDB\fP &\fBtxdb\fP, const \fBuint256\fP &\fBhash\fP, \fBCTxIndex\fP &txindexRet)"
+.br
+.ti -1c
+.RI "bool \fBReadFromDisk\fP (\fBCTransaction\fP &tx, \fBCTxDB\fP &\fBtxdb\fP, \fBCOutPoint\fP prevout, \fBCTxIndex\fP &txindexRet)"
+.br
+.ti -1c
+.RI "bool \fBReadFromDisk\fP (\fBCTransaction\fP &tx, \fBCTxDB\fP &\fBtxdb\fP, \fBCOutPoint\fP prevout)"
+.br
+.ti -1c
+.RI "bool \fBReadFromDisk\fP (\fBCTransaction\fP &tx, \fBCOutPoint\fP prevout)"
+.br
+.ti -1c
+.RI "bool \fBDisconnectInputs\fP (\fBCTransaction\fP &tx, \fBCTxDB\fP &\fBtxdb\fP)"
+.br
+.ti -1c
+.RI "bool \fBFetchInputs\fP (\fBCTransaction\fP &tx, \fBCTxDB\fP &\fBtxdb\fP, const std::map< \fBuint256\fP, \fBCTxIndex\fP > &mapTestPool, bool fBlock, bool fMiner, \fBMapPrevTx\fP &inputsRet, bool &fInvalid)"
+.br
+.RI "\fIFetch from memory and/or disk\&. inputsRet keys are transaction hashes\&. \fP"
+.ti -1c
+.RI "bool \fBConnectInputs\fP (\fBCTransaction\fP &tx, \fBCTxDB\fP &\fBtxdb\fP, \fBMapPrevTx\fP inputs, std::map< \fBuint256\fP, \fBCTxIndex\fP > &mapTestPool, const \fBCDiskTxPos\fP &posThisTx, const \fBCBlockIndex\fP *pindexBlock, bool fBlock, bool fMiner, unsigned int flags=STANDARD_SCRIPT_VERIFY_FLAGS, bool fValidateSig=true)"
+.br
+.ti -1c
+.RI "bool \fBGetCoinAge\fP (\fBCTransaction\fP &tx, \fBCTxDB\fP &\fBtxdb\fP, const \fBCBlockIndex\fP *pindexPrev, \fBuint64_t\fP &nCoinAge) const "
+.br
+.ti -1c
+.RI "const \fBCTxOut\fP & \fBGetOutputFor\fP (const \fBCTxIn\fP &input, const \fBMapPrevTx\fP &inputs) const "
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBnVersion\fP"
+.br
+.ti -1c
+.RI "\fBADD_SERIALIZE_METHODS\fP"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static const int \fBCURRENT_VERSION\fP = 1"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 287 of file main\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CTransactionPoS::CTransactionPoS ()\fC [inline]\fP"
+
+.PP
+Definition at line 293 of file main\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool CTransactionPoS::ConnectInputs (\fBCTransaction\fP & tx, \fBCTxDB\fP & txdb, \fBMapPrevTx\fP inputs, std::map< \fBuint256\fP, \fBCTxIndex\fP > & mapTestPool, const \fBCDiskTxPos\fP & posThisTx, const \fBCBlockIndex\fP * pindexBlock, bool fBlock, bool fMiner, unsigned int flags = \fCSTANDARD_SCRIPT_VERIFY_FLAGS\fP, bool fValidateSig = \fCtrue\fP)"
+Sanity check previous transactions, then, if all checks succeed, mark them as spent by this transaction\&. 
+.PP
+Definition at line 3846 of file main\&.cpp\&.
+.SS "bool CTransactionPoS::DisconnectInputs (\fBCTransaction\fP & tx, \fBCTxDB\fP & txdb)"
+
+.PP
+Definition at line 3712 of file main\&.cpp\&.
+.SS "bool CTransactionPoS::FetchInputs (\fBCTransaction\fP & tx, \fBCTxDB\fP & txdb, const std::map< \fBuint256\fP, \fBCTxIndex\fP > & mapTestPool, bool fBlock, bool fMiner, \fBMapPrevTx\fP & inputsRet, bool & fInvalid)"
+
+.PP
+Fetch from memory and/or disk\&. inputsRet keys are transaction hashes\&. 
+.PP
+Definition at line 3747 of file main\&.cpp\&.
+.SS "bool CTransactionPoS::GetCoinAge (\fBCTransaction\fP & tx, \fBCTxDB\fP & txdb, const \fBCBlockIndex\fP * pindexPrev, \fBuint64_t\fP & nCoinAge) const"
+
+.SS "const \fBCTxOut\fP & CTransactionPoS::GetOutputFor (const \fBCTxIn\fP & input, const \fBMapPrevTx\fP & inputs) const"
+
+.PP
+Definition at line 3819 of file main\&.cpp\&.
+.SS "\fBCAmount\fP CTransactionPoS::GetValueIn (\fBCTransaction\fP & tx, const \fBMapPrevTx\fP & mapInputs) const"
+Amount of darksilks coming in to this transaction Note that lightweight clients may not know anything besides the hash of previous transactions, so may not be able to calculate this\&. 
+.PP
+Definition at line 3832 of file main\&.cpp\&.
+.SS "\fBCAmount\fP CTransactionPoS::GetValueOut (\fBCTransaction\fP & tx) const"
+
+.PP
+Definition at line 3635 of file main\&.cpp\&.
+.SS "bool CTransactionPoS::ReadFromDisk (\fBCTransaction\fP & tx, \fBCDiskTxPos\fP pos, FILE ** pfileRet = \fCNULL\fP)"
+
+.PP
+Definition at line 3649 of file main\&.cpp\&.
+.SS "bool CTransactionPoS::ReadFromDisk (\fBCTransaction\fP & tx, \fBCTxDB\fP & txdb, const \fBuint256\fP & hash, \fBCTxIndex\fP & txindexRet)"
+
+.PP
+Definition at line 3676 of file main\&.cpp\&.
+.SS "bool CTransactionPoS::ReadFromDisk (\fBCTransaction\fP & tx, \fBCTxDB\fP & txdb, \fBCOutPoint\fP prevout, \fBCTxIndex\fP & txindexRet)"
+
+.PP
+Definition at line 3687 of file main\&.cpp\&.
+.SS "bool CTransactionPoS::ReadFromDisk (\fBCTransaction\fP & tx, \fBCTxDB\fP & txdb, \fBCOutPoint\fP prevout)"
+
+.PP
+Definition at line 3699 of file main\&.cpp\&.
+.SS "bool CTransactionPoS::ReadFromDisk (\fBCTransaction\fP & tx, \fBCOutPoint\fP prevout)"
+
+.PP
+Definition at line 3705 of file main\&.cpp\&.
+.SS "template<typename Stream , typename Operation > void CTransactionPoS::SerializationOp (Stream & s, Operation ser_action, int nType, int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 298 of file main\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "CTransactionPoS::ADD_SERIALIZE_METHODS"
+
+.PP
+Definition at line 295 of file main\&.h\&.
+.SS "const int CTransactionPoS::CURRENT_VERSION = 1\fC [static]\fP"
+
+.PP
+Definition at line 290 of file main\&.h\&.
+.SS "int CTransactionPoS::nVersion"
+
+.PP
+Definition at line 291 of file main\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

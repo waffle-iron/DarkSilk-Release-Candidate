@@ -1,0 +1,659 @@
+\hypertarget{class_c_stormnode_man}{}\section{C\+Stormnode\+Man Class Reference}
+\label{class_c_stormnode_man}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+
+
+{\ttfamily \#include $<$stormnodeman.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Stream , typename Operation $>$ }\\void \hyperlink{class_c_stormnode_man_a2eb7be1ad46598e33b6c60248bc7b7e1}{Serialization\+Op} (Stream \&s, Operation ser\+\_\+action, int n\+Type, int n\+Version)
+\item 
+\hyperlink{class_c_stormnode_man_a72855bd5da6330e45c0964f6e1f9ade1}{C\+Stormnode\+Man} ()
+\item 
+\hyperlink{class_c_stormnode_man_a0870cfe9ca46157c0e6ad9cf9f9cc1d7}{C\+Stormnode\+Man} (\hyperlink{class_c_stormnode_man}{C\+Stormnode\+Man} \&other)
+\item 
+bool \hyperlink{class_c_stormnode_man_aa4a3ed2fe6508a7922e7b7bd1cbf89c3}{Add} (\hyperlink{class_c_stormnode}{C\+Stormnode} \&sn)
+\begin{DoxyCompactList}\small\item\em Add an entry. \end{DoxyCompactList}\item 
+void \hyperlink{class_c_stormnode_man_a918a4ccb668808449809a77adc036301}{Ask\+For\+S\+N} (\hyperlink{class_c_node}{C\+Node} $\ast$pnode, \hyperlink{class_c_tx_in}{C\+Tx\+In} \&vin)
+\begin{DoxyCompactList}\small\item\em Ask (source) node for snb. \end{DoxyCompactList}\item 
+void \hyperlink{class_c_stormnode_man_a2e0f73af79892b3f86b7d1b07eaa85ce}{Check} ()
+\begin{DoxyCompactList}\small\item\em Check all Stormnodes. \end{DoxyCompactList}\item 
+void \hyperlink{class_c_stormnode_man_a6d8c3a832ea7d6f4780a59e2ae0441b8}{Check\+And\+Remove} (bool force\+Expired\+Removal=false)
+\begin{DoxyCompactList}\small\item\em Check all Stormnodes and remove inactive. \end{DoxyCompactList}\item 
+void \hyperlink{class_c_stormnode_man_aef04ea77a6774bf594f205362ba8f91d}{Clear} ()
+\begin{DoxyCompactList}\small\item\em Clear Stormnode vector. \end{DoxyCompactList}\item 
+int \hyperlink{class_c_stormnode_man_a02b9b11565e19f2c9dafbe132341fabd}{Count\+Enabled} (int protocol\+Version=-\/1)
+\item 
+void \hyperlink{class_c_stormnode_man_a3f8f9f86f01df701533b544903b55113}{Sseg\+Update} (\hyperlink{class_c_node}{C\+Node} $\ast$pnode)
+\item 
+\hyperlink{class_c_stormnode}{C\+Stormnode} $\ast$ \hyperlink{class_c_stormnode_man_a346025e5a78a04ddfa80252ea1433c72}{Find} (const \hyperlink{class_c_script}{C\+Script} \&payee)
+\begin{DoxyCompactList}\small\item\em Find an entry. \end{DoxyCompactList}\item 
+\hyperlink{class_c_stormnode}{C\+Stormnode} $\ast$ \hyperlink{class_c_stormnode_man_a64b6022d93220e65e739c5cf8ba74918}{Find} (const \hyperlink{class_c_tx_in}{C\+Tx\+In} \&vin)
+\item 
+\hyperlink{class_c_stormnode}{C\+Stormnode} $\ast$ \hyperlink{class_c_stormnode_man_a8daba6b955faaf839f9441b754bd7eef}{Find} (const \hyperlink{class_c_pub_key}{C\+Pub\+Key} \&pub\+Key\+Stormnode)
+\item 
+\hyperlink{class_c_stormnode}{C\+Stormnode} $\ast$ \hyperlink{class_c_stormnode_man_aeaaefff98af62a3d79d72e23f5539a72}{Get\+Next\+Stormnode\+In\+Queue\+For\+Payment} (int n\+Block\+Height, bool f\+Filter\+Sig\+Time, int \&n\+Count)
+\begin{DoxyCompactList}\small\item\em Find an entry in the stormnode list that is next to be paid. \end{DoxyCompactList}\item 
+\hyperlink{class_c_stormnode}{C\+Stormnode} $\ast$ \hyperlink{class_c_stormnode_man_a24417dae3da8762e9be495f25b0a6d30}{Find\+Random\+Not\+In\+Vec} (std\+::vector$<$ \hyperlink{class_c_tx_in}{C\+Tx\+In} $>$ \&vec\+To\+Exclude, int protocol\+Version=-\/1)
+\begin{DoxyCompactList}\small\item\em Find a random entry. \end{DoxyCompactList}\item 
+\hyperlink{class_c_stormnode}{C\+Stormnode} $\ast$ \hyperlink{class_c_stormnode_man_aad6c3131e73e2b686f3847148b536448}{Get\+Current\+Storm\+Node} (int mod=1, \hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} n\+Block\+Height=0, int min\+Protocol=0)
+\begin{DoxyCompactList}\small\item\em Get the current winner for this block. \end{DoxyCompactList}\item 
+std\+::vector$<$ \hyperlink{class_c_stormnode}{C\+Stormnode} $>$ \hyperlink{class_c_stormnode_man_a7002dd29b10a0db885c361f1d9981de8}{Get\+Full\+Stormnode\+Vector} ()
+\item 
+std\+::vector$<$ pair$<$ int, \hyperlink{class_c_stormnode}{C\+Stormnode} $>$ $>$ \hyperlink{class_c_stormnode_man_a5337440744bbc51b2e7a9752c3613a26}{Get\+Stormnode\+Ranks} (\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} n\+Block\+Height, int min\+Protocol=0)
+\item 
+int \hyperlink{class_c_stormnode_man_ad1fb56e4ee364e2b18bab57210f3f3cd}{Get\+Stormnode\+Rank} (const \hyperlink{class_c_tx_in}{C\+Tx\+In} \&vin, \hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} n\+Block\+Height, int min\+Protocol=0, bool f\+Only\+Active=true)
+\item 
+\hyperlink{class_c_stormnode}{C\+Stormnode} $\ast$ \hyperlink{class_c_stormnode_man_af631f4c124f3022e4c388d759ca69605}{Get\+Stormnode\+By\+Rank} (int n\+Rank, \hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} n\+Block\+Height, int min\+Protocol=0, bool f\+Only\+Active=true)
+\item 
+void \hyperlink{class_c_stormnode_man_a52708159ad91808d18a0b6082ed6daca}{Process\+Stormnode\+Connections} ()
+\item 
+void \hyperlink{class_c_stormnode_man_ae30d0b9b493e23c3d14ec48c77be7b6f}{Process\+Message} (\hyperlink{class_c_node}{C\+Node} $\ast$pfrom, std\+::string \&str\+Command, \hyperlink{class_c_data_stream}{C\+Data\+Stream} \&v\+Recv)
+\item 
+int \hyperlink{class_c_stormnode_man_ad15cbc672903cce82c757118b74c267c}{size} ()
+\begin{DoxyCompactList}\small\item\em Return the number of (unique) Stormnodes. \end{DoxyCompactList}\item 
+std\+::string \hyperlink{class_c_stormnode_man_a5c49bb4788cad79574d90fdca8ea7464}{To\+String} () const 
+\item 
+void \hyperlink{class_c_stormnode_man_ad1732f409f53dc6186c6bb40894f1ed5}{Remove} (\hyperlink{class_c_tx_in}{C\+Tx\+In} vin)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+map$<$ \hyperlink{classuint256}{uint256}, \hyperlink{class_c_stormnode_broadcast}{C\+Stormnode\+Broadcast} $>$ \hyperlink{class_c_stormnode_man_a320b85dcbbc8f01a412c96b23bca5424}{map\+Seen\+Stormnode\+Broadcast}
+\item 
+map$<$ \hyperlink{classuint256}{uint256}, \hyperlink{class_c_stormnode_ping}{C\+Stormnode\+Ping} $>$ \hyperlink{class_c_stormnode_man_a9d4e8bbd492630f16b61eec58b722a86}{map\+Seen\+Stormnode\+Ping}
+\item 
+\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} \hyperlink{class_c_stormnode_man_a28c2a3dcb6098e416de7b1758b8d48da}{n\+Ssq\+Count}
+\item 
+\hyperlink{class_c_stormnode_man_a3a52c5c9b8e3d7da4cb5c649cb9a6ca3}{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 49 of file stormnodeman.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_stormnode_man_a72855bd5da6330e45c0964f6e1f9ade1}{}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\subsubsection[{C\+Stormnode\+Man}]{\setlength{\rightskip}{0pt plus 5cm}C\+Stormnode\+Man\+::\+C\+Stormnode\+Man (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_man_a72855bd5da6330e45c0964f6e1f9ade1}
+
+
+Definition at line 207 of file stormnodeman.\+cpp.
+
+\hypertarget{class_c_stormnode_man_a0870cfe9ca46157c0e6ad9cf9f9cc1d7}{}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\subsubsection[{C\+Stormnode\+Man}]{\setlength{\rightskip}{0pt plus 5cm}C\+Stormnode\+Man\+::\+C\+Stormnode\+Man (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Stormnode\+Man} \&}]{other}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_man_a0870cfe9ca46157c0e6ad9cf9f9cc1d7}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_stormnode_man_aa4a3ed2fe6508a7922e7b7bd1cbf89c3}{}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!Add@{Add}}
+\index{Add@{Add}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\subsubsection[{Add}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Stormnode\+Man\+::\+Add (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Stormnode} \&}]{sn}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_man_aa4a3ed2fe6508a7922e7b7bd1cbf89c3}
+
+
+Add an entry. 
+
+
+
+Definition at line 211 of file stormnodeman.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 0
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 1
+
+
+\hypertarget{class_c_stormnode_man_a918a4ccb668808449809a77adc036301}{}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!Ask\+For\+S\+N@{Ask\+For\+S\+N}}
+\index{Ask\+For\+S\+N@{Ask\+For\+S\+N}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\subsubsection[{Ask\+For\+S\+N}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Stormnode\+Man\+::\+Ask\+For\+S\+N (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Node} $\ast$}]{pnode, }
+\item[{{\bf C\+Tx\+In} \&}]{vin}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_man_a918a4ccb668808449809a77adc036301}
+
+
+Ask (source) node for snb. 
+
+
+
+Definition at line 229 of file stormnodeman.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+\hypertarget{class_c_stormnode_man_a2e0f73af79892b3f86b7d1b07eaa85ce}{}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!Check@{Check}}
+\index{Check@{Check}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\subsubsection[{Check}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Stormnode\+Man\+::\+Check (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_man_a2e0f73af79892b3f86b7d1b07eaa85ce}
+
+
+Check all Stormnodes. 
+
+
+
+Definition at line 246 of file stormnodeman.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 4
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 5
+
+
+\hypertarget{class_c_stormnode_man_a6d8c3a832ea7d6f4780a59e2ae0441b8}{}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!Check\+And\+Remove@{Check\+And\+Remove}}
+\index{Check\+And\+Remove@{Check\+And\+Remove}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\subsubsection[{Check\+And\+Remove}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Stormnode\+Man\+::\+Check\+And\+Remove (
+\begin{DoxyParamCaption}
+\item[{bool}]{force\+Expired\+Removal = {\ttfamily false}}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_man_a6d8c3a832ea7d6f4780a59e2ae0441b8}
+
+
+Check all Stormnodes and remove inactive. 
+
+
+
+Definition at line 255 of file stormnodeman.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 6
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 7
+
+
+\hypertarget{class_c_stormnode_man_aef04ea77a6774bf594f205362ba8f91d}{}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!Clear@{Clear}}
+\index{Clear@{Clear}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\subsubsection[{Clear}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Stormnode\+Man\+::\+Clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_man_aef04ea77a6774bf594f205362ba8f91d}
+
+
+Clear Stormnode vector. 
+
+
+
+Definition at line 352 of file stormnodeman.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 8
+
+
+\hypertarget{class_c_stormnode_man_a02b9b11565e19f2c9dafbe132341fabd}{}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!Count\+Enabled@{Count\+Enabled}}
+\index{Count\+Enabled@{Count\+Enabled}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\subsubsection[{Count\+Enabled}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Stormnode\+Man\+::\+Count\+Enabled (
+\begin{DoxyParamCaption}
+\item[{int}]{protocol\+Version = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_man_a02b9b11565e19f2c9dafbe132341fabd}
+
+
+Definition at line 364 of file stormnodeman.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 9
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 10
+
+
+\hypertarget{class_c_stormnode_man_a346025e5a78a04ddfa80252ea1433c72}{}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!Find@{Find}}
+\index{Find@{Find}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\subsubsection[{Find}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Stormnode} $\ast$ C\+Stormnode\+Man\+::\+Find (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Script} \&}]{payee}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_man_a346025e5a78a04ddfa80252ea1433c72}
+
+
+Find an entry. 
+
+
+
+Definition at line 400 of file stormnodeman.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 11
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 12
+
+
+\hypertarget{class_c_stormnode_man_a64b6022d93220e65e739c5cf8ba74918}{}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!Find@{Find}}
+\index{Find@{Find}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\subsubsection[{Find}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Stormnode} $\ast$ C\+Stormnode\+Man\+::\+Find (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Tx\+In} \&}]{vin}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_man_a64b6022d93220e65e739c5cf8ba74918}
+
+
+Definition at line 414 of file stormnodeman.\+cpp.
+
+\hypertarget{class_c_stormnode_man_a8daba6b955faaf839f9441b754bd7eef}{}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!Find@{Find}}
+\index{Find@{Find}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\subsubsection[{Find}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Stormnode} $\ast$ C\+Stormnode\+Man\+::\+Find (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Pub\+Key} \&}]{pub\+Key\+Stormnode}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_man_a8daba6b955faaf839f9441b754bd7eef}
+
+
+Definition at line 427 of file stormnodeman.\+cpp.
+
+\hypertarget{class_c_stormnode_man_a24417dae3da8762e9be495f25b0a6d30}{}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!Find\+Random\+Not\+In\+Vec@{Find\+Random\+Not\+In\+Vec}}
+\index{Find\+Random\+Not\+In\+Vec@{Find\+Random\+Not\+In\+Vec}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\subsubsection[{Find\+Random\+Not\+In\+Vec}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Stormnode} $\ast$ C\+Stormnode\+Man\+::\+Find\+Random\+Not\+In\+Vec (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ {\bf C\+Tx\+In} $>$ \&}]{vec\+To\+Exclude, }
+\item[{int}]{protocol\+Version = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_man_a24417dae3da8762e9be495f25b0a6d30}
+
+
+Find a random entry. 
+
+
+
+Definition at line 504 of file stormnodeman.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 13
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 14
+
+
+\hypertarget{class_c_stormnode_man_aad6c3131e73e2b686f3847148b536448}{}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!Get\+Current\+Storm\+Node@{Get\+Current\+Storm\+Node}}
+\index{Get\+Current\+Storm\+Node@{Get\+Current\+Storm\+Node}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\subsubsection[{Get\+Current\+Storm\+Node}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Stormnode} $\ast$ C\+Stormnode\+Man\+::\+Get\+Current\+Storm\+Node (
+\begin{DoxyParamCaption}
+\item[{int}]{mod = {\ttfamily 1}, }
+\item[{{\bf int64\+\_\+t}}]{n\+Block\+Height = {\ttfamily 0}, }
+\item[{int}]{min\+Protocol = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_man_aad6c3131e73e2b686f3847148b536448}
+
+
+Get the current winner for this block. 
+
+
+
+Definition at line 536 of file stormnodeman.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 15
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 16
+
+
+\hypertarget{class_c_stormnode_man_a7002dd29b10a0db885c361f1d9981de8}{}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!Get\+Full\+Stormnode\+Vector@{Get\+Full\+Stormnode\+Vector}}
+\index{Get\+Full\+Stormnode\+Vector@{Get\+Full\+Stormnode\+Vector}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\subsubsection[{Get\+Full\+Stormnode\+Vector}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf C\+Stormnode}$>$ C\+Stormnode\+Man\+::\+Get\+Full\+Stormnode\+Vector (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_stormnode_man_a7002dd29b10a0db885c361f1d9981de8}
+
+
+Definition at line 127 of file stormnodeman.\+h.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 17
+
+
+\hypertarget{class_c_stormnode_man_aeaaefff98af62a3d79d72e23f5539a72}{}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!Get\+Next\+Stormnode\+In\+Queue\+For\+Payment@{Get\+Next\+Stormnode\+In\+Queue\+For\+Payment}}
+\index{Get\+Next\+Stormnode\+In\+Queue\+For\+Payment@{Get\+Next\+Stormnode\+In\+Queue\+For\+Payment}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\subsubsection[{Get\+Next\+Stormnode\+In\+Queue\+For\+Payment}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Stormnode} $\ast$ C\+Stormnode\+Man\+::\+Get\+Next\+Stormnode\+In\+Queue\+For\+Payment (
+\begin{DoxyParamCaption}
+\item[{int}]{n\+Block\+Height, }
+\item[{bool}]{f\+Filter\+Sig\+Time, }
+\item[{int \&}]{n\+Count}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_man_aeaaefff98af62a3d79d72e23f5539a72}
+
+
+Find an entry in the stormnode list that is next to be paid. 
+
+
+
+Definition at line 442 of file stormnodeman.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 18
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 19
+
+
+\hypertarget{class_c_stormnode_man_af631f4c124f3022e4c388d759ca69605}{}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!Get\+Stormnode\+By\+Rank@{Get\+Stormnode\+By\+Rank}}
+\index{Get\+Stormnode\+By\+Rank@{Get\+Stormnode\+By\+Rank}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\subsubsection[{Get\+Stormnode\+By\+Rank}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Stormnode} $\ast$ C\+Stormnode\+Man\+::\+Get\+Stormnode\+By\+Rank (
+\begin{DoxyParamCaption}
+\item[{int}]{n\+Rank, }
+\item[{{\bf int64\+\_\+t}}]{n\+Block\+Height, }
+\item[{int}]{min\+Protocol = {\ttfamily 0}, }
+\item[{bool}]{f\+Only\+Active = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_man_af631f4c124f3022e4c388d759ca69605}
+
+
+Definition at line 630 of file stormnodeman.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 20
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 21
+
+
+\hypertarget{class_c_stormnode_man_ad1fb56e4ee364e2b18bab57210f3f3cd}{}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!Get\+Stormnode\+Rank@{Get\+Stormnode\+Rank}}
+\index{Get\+Stormnode\+Rank@{Get\+Stormnode\+Rank}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\subsubsection[{Get\+Stormnode\+Rank}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Stormnode\+Man\+::\+Get\+Stormnode\+Rank (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Tx\+In} \&}]{vin, }
+\item[{{\bf int64\+\_\+t}}]{n\+Block\+Height, }
+\item[{int}]{min\+Protocol = {\ttfamily 0}, }
+\item[{bool}]{f\+Only\+Active = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_man_ad1fb56e4ee364e2b18bab57210f3f3cd}
+
+
+Definition at line 560 of file stormnodeman.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 22
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 23
+
+
+\hypertarget{class_c_stormnode_man_a5337440744bbc51b2e7a9752c3613a26}{}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!Get\+Stormnode\+Ranks@{Get\+Stormnode\+Ranks}}
+\index{Get\+Stormnode\+Ranks@{Get\+Stormnode\+Ranks}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\subsubsection[{Get\+Stormnode\+Ranks}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ pair$<$ int, {\bf C\+Stormnode} $>$ $>$ C\+Stormnode\+Man\+::\+Get\+Stormnode\+Ranks (
+\begin{DoxyParamCaption}
+\item[{{\bf int64\+\_\+t}}]{n\+Block\+Height, }
+\item[{int}]{min\+Protocol = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_man_a5337440744bbc51b2e7a9752c3613a26}
+
+
+Definition at line 594 of file stormnodeman.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 24
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 25
+
+
+\hypertarget{class_c_stormnode_man_ae30d0b9b493e23c3d14ec48c77be7b6f}{}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!Process\+Message@{Process\+Message}}
+\index{Process\+Message@{Process\+Message}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\subsubsection[{Process\+Message}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Stormnode\+Man\+::\+Process\+Message (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Node} $\ast$}]{pfrom, }
+\item[{std\+::string \&}]{str\+Command, }
+\item[{{\bf C\+Data\+Stream} \&}]{v\+Recv}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_man_ae30d0b9b493e23c3d14ec48c77be7b6f}
+
+
+Definition at line 674 of file stormnodeman.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 26
+
+
+\hypertarget{class_c_stormnode_man_a52708159ad91808d18a0b6082ed6daca}{}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!Process\+Stormnode\+Connections@{Process\+Stormnode\+Connections}}
+\index{Process\+Stormnode\+Connections@{Process\+Stormnode\+Connections}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\subsubsection[{Process\+Stormnode\+Connections}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Stormnode\+Man\+::\+Process\+Stormnode\+Connections (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_man_a52708159ad91808d18a0b6082ed6daca}
+
+
+Definition at line 662 of file stormnodeman.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 27
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 28
+
+
+\hypertarget{class_c_stormnode_man_ad1732f409f53dc6186c6bb40894f1ed5}{}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!Remove@{Remove}}
+\index{Remove@{Remove}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\subsubsection[{Remove}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Stormnode\+Man\+::\+Remove (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Tx\+In}}]{vin}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_man_ad1732f409f53dc6186c6bb40894f1ed5}
+
+
+Definition at line 805 of file stormnodeman.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 29
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 30
+
+
+\hypertarget{class_c_stormnode_man_a2eb7be1ad46598e33b6c60248bc7b7e1}{}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!Serialization\+Op@{Serialization\+Op}}
+\index{Serialization\+Op@{Serialization\+Op}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\subsubsection[{Serialization\+Op}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename Operation $>$ void C\+Stormnode\+Man\+::\+Serialization\+Op (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{Operation}]{ser\+\_\+action, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_stormnode_man_a2eb7be1ad46598e33b6c60248bc7b7e1}
+
+
+Definition at line 79 of file stormnodeman.\+h.
+
+\hypertarget{class_c_stormnode_man_ad15cbc672903cce82c757118b74c267c}{}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!size@{size}}
+\index{size@{size}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Stormnode\+Man\+::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_stormnode_man_ad15cbc672903cce82c757118b74c267c}
+
+
+Return the number of (unique) Stormnodes. 
+
+
+
+Definition at line 138 of file stormnodeman.\+h.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 31
+
+
+\hypertarget{class_c_stormnode_man_a3f8f9f86f01df701533b544903b55113}{}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!Sseg\+Update@{Sseg\+Update}}
+\index{Sseg\+Update@{Sseg\+Update}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\subsubsection[{Sseg\+Update}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Stormnode\+Man\+::\+Sseg\+Update (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Node} $\ast$}]{pnode}
+\end{DoxyParamCaption}
+)}\label{class_c_stormnode_man_a3f8f9f86f01df701533b544903b55113}
+
+
+Definition at line 378 of file stormnodeman.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 32
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 33
+
+
+\hypertarget{class_c_stormnode_man_a5c49bb4788cad79574d90fdca8ea7464}{}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!To\+String@{To\+String}}
+\index{To\+String@{To\+String}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\subsubsection[{To\+String}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string C\+Stormnode\+Man\+::\+To\+String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\label{class_c_stormnode_man_a5c49bb4788cad79574d90fdca8ea7464}
+
+
+Definition at line 820 of file stormnodeman.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 34
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_c_stormnode_man_a3a52c5c9b8e3d7da4cb5c649cb9a6ca3}{}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}}
+\index{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\subsubsection[{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}]{\setlength{\rightskip}{0pt plus 5cm}C\+Stormnode\+Man\+::\+A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}\label{class_c_stormnode_man_a3a52c5c9b8e3d7da4cb5c649cb9a6ca3}
+
+
+Definition at line 76 of file stormnodeman.\+h.
+
+\hypertarget{class_c_stormnode_man_a320b85dcbbc8f01a412c96b23bca5424}{}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!map\+Seen\+Stormnode\+Broadcast@{map\+Seen\+Stormnode\+Broadcast}}
+\index{map\+Seen\+Stormnode\+Broadcast@{map\+Seen\+Stormnode\+Broadcast}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\subsubsection[{map\+Seen\+Stormnode\+Broadcast}]{\setlength{\rightskip}{0pt plus 5cm}map$<${\bf uint256}, {\bf C\+Stormnode\+Broadcast}$>$ C\+Stormnode\+Man\+::map\+Seen\+Stormnode\+Broadcast}\label{class_c_stormnode_man_a320b85dcbbc8f01a412c96b23bca5424}
+
+
+Definition at line 69 of file stormnodeman.\+h.
+
+\hypertarget{class_c_stormnode_man_a9d4e8bbd492630f16b61eec58b722a86}{}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!map\+Seen\+Stormnode\+Ping@{map\+Seen\+Stormnode\+Ping}}
+\index{map\+Seen\+Stormnode\+Ping@{map\+Seen\+Stormnode\+Ping}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\subsubsection[{map\+Seen\+Stormnode\+Ping}]{\setlength{\rightskip}{0pt plus 5cm}map$<${\bf uint256}, {\bf C\+Stormnode\+Ping}$>$ C\+Stormnode\+Man\+::map\+Seen\+Stormnode\+Ping}\label{class_c_stormnode_man_a9d4e8bbd492630f16b61eec58b722a86}
+
+
+Definition at line 71 of file stormnodeman.\+h.
+
+\hypertarget{class_c_stormnode_man_a28c2a3dcb6098e416de7b1758b8d48da}{}\index{C\+Stormnode\+Man@{C\+Stormnode\+Man}!n\+Ssq\+Count@{n\+Ssq\+Count}}
+\index{n\+Ssq\+Count@{n\+Ssq\+Count}!C\+Stormnode\+Man@{C\+Stormnode\+Man}}
+\subsubsection[{n\+Ssq\+Count}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int64\+\_\+t} C\+Stormnode\+Man\+::n\+Ssq\+Count}\label{class_c_stormnode_man_a28c2a3dcb6098e416de7b1758b8d48da}
+
+
+Definition at line 74 of file stormnodeman.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/\hyperlink{stormnodeman_8h}{stormnodeman.\+h}\item 
+/home/dev/ds-\/160209/src/\hyperlink{stormnodeman_8cpp}{stormnodeman.\+cpp}\end{DoxyCompactItemize}

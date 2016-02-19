@@ -1,0 +1,500 @@
+\hypertarget{class_dark_silk_units}{}\section{Dark\+Silk\+Units Class Reference}
+\label{class_dark_silk_units}\index{Dark\+Silk\+Units@{Dark\+Silk\+Units}}
+
+
+{\ttfamily \#include $<$darksilkunits.\+h$>$}
+
+
+
+Inheritance diagram for Dark\+Silk\+Units\+:
+% FIG 0
+
+
+Collaboration diagram for Dark\+Silk\+Units\+:
+% FIG 1
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_dark_silk_units_a588cf5f654ad4aa646647ffde0031482}{Unit} \{ \hyperlink{class_dark_silk_units_a588cf5f654ad4aa646647ffde0031482a0edba4fddfbef1b8abc52ce9b516971d}{D\+R\+K\+S\+L\+K}, 
+\hyperlink{class_dark_silk_units_a588cf5f654ad4aa646647ffde0031482a347ccbe3f707cc1e89bde2f248721a33}{m\+D\+R\+K\+S\+L\+K}, 
+\hyperlink{class_dark_silk_units_a588cf5f654ad4aa646647ffde0031482a7bb3975d2da154400a8062a9bf620305}{u\+D\+R\+K\+S\+L\+K}
+ \}
+\item 
+enum \hyperlink{class_dark_silk_units_a492e7b4a5708e04f3a97609c07b733b9}{Separator\+Style} \{ \hyperlink{class_dark_silk_units_a492e7b4a5708e04f3a97609c07b733b9a6f5caa3bdcef60e9ffccd7dd67a44697}{separator\+Never}, 
+\hyperlink{class_dark_silk_units_a492e7b4a5708e04f3a97609c07b733b9a9cb3f6f5405413dc7960959c15cb5d6c}{separator\+Standard}, 
+\hyperlink{class_dark_silk_units_a492e7b4a5708e04f3a97609c07b733b9acfe64621e0f82773983fa4d7b98496f2}{separator\+Always}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_dark_silk_units_a33ab49b1dfa2e509d005615832ec8eb0}{Dark\+Silk\+Units} (Q\+Object $\ast$parent)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \hyperlink{class_dark_silk_units_a03b1019d3dd549bc9a0f6d9cf5040723}{max\+Money} ()
+\begin{DoxyCompactList}\small\item\em Return maximum number of base units (Satoshis) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{Indent}{\bf Static A\+P\+I}\par
+{\em Unit conversion and formatting }\begin{DoxyCompactItemize}
+\item 
+static Q\+List$<$ \hyperlink{class_dark_silk_units_a588cf5f654ad4aa646647ffde0031482}{Unit} $>$ \hyperlink{class_dark_silk_units_acf4eea1e4c6f892f1299a2cb06094e62}{available\+Units} ()
+\begin{DoxyCompactList}\small\item\em Get list of units, for drop-\/down box. \end{DoxyCompactList}\item 
+static bool \hyperlink{class_dark_silk_units_a2ed8a06dc0be53d55c5207bf03987472}{valid} (int unit)
+\begin{DoxyCompactList}\small\item\em Is unit I\+D valid? \end{DoxyCompactList}\item 
+static Q\+String \hyperlink{class_dark_silk_units_aa63c8fe61b199e769730bc6ec9db8ba6}{name} (int unit)
+\begin{DoxyCompactList}\small\item\em Short name. \end{DoxyCompactList}\item 
+static Q\+String \hyperlink{class_dark_silk_units_a564c452e880f63b37bbebc0e21dc2179}{description} (int unit)
+\begin{DoxyCompactList}\small\item\em Longer description. \end{DoxyCompactList}\item 
+static qint64 \hyperlink{class_dark_silk_units_a3cc1f09aeee8437c40650ce9d460ec4d}{factor} (int unit)
+\begin{DoxyCompactList}\small\item\em Number of Satoshis (1e-\/8) per unit. \end{DoxyCompactList}\item 
+static int \hyperlink{class_dark_silk_units_a4baa85df1203cf74de5bafd77eb04ebe}{amount\+Digits} (int unit)
+\begin{DoxyCompactList}\small\item\em Number of amount digits (to represent max number of coins) \end{DoxyCompactList}\item 
+static int \hyperlink{class_dark_silk_units_a5cf347a021d0239b0a955073e6dd9290}{decimals} (int unit)
+\begin{DoxyCompactList}\small\item\em Number of decimals left. \end{DoxyCompactList}\item 
+static Q\+String \hyperlink{class_dark_silk_units_a87f64ca983a23ac8c836954d6b7ef080}{format} (int unit, const \hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \&n\+In, bool plussign=false)
+\begin{DoxyCompactList}\small\item\em Format as string. \end{DoxyCompactList}\item 
+static Q\+String \hyperlink{class_dark_silk_units_a8bd68e4e42a5652886e1c73c6c1bc19d}{format\+With\+Unit} (int unit, const \hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \&amount, bool plussign=false)
+\begin{DoxyCompactList}\small\item\em Format as string (with unit) \end{DoxyCompactList}\item 
+static bool \hyperlink{class_dark_silk_units_a11d6661d65f2fe22fb17716b509cb135}{parse} (int unit, const Q\+String \&\hyperlink{cache_8cc_a0f61d63b009d0880a89c843bd50d8d76}{value}, \hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} $\ast$val\+\_\+out)
+\begin{DoxyCompactList}\small\item\em Parse string to coin amount. \end{DoxyCompactList}\item 
+static Q\+String \hyperlink{class_dark_silk_units_ad03892765fad5d073a894f8cd4f1a2ef}{floor\+With\+Unit} (int unit, const \hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \&amount, bool plussign=false, \hyperlink{class_dark_silk_units_a492e7b4a5708e04f3a97609c07b733b9}{Separator\+Style} separators=\hyperlink{class_dark_silk_units_a492e7b4a5708e04f3a97609c07b733b9a9cb3f6f5405413dc7960959c15cb5d6c}{separator\+Standard})
+\begin{DoxyCompactList}\small\item\em Format as string (with unit) but floor value up to \char`\"{}digits\char`\"{} settings. \end{DoxyCompactList}\item 
+static Q\+String \hyperlink{class_dark_silk_units_abe3d1ba8e88272a462f9d69943d01a85}{floor\+Html\+With\+Unit} (int unit, const \hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \&amount, bool plussign=false, \hyperlink{class_dark_silk_units_a492e7b4a5708e04f3a97609c07b733b9}{Separator\+Style} separators=\hyperlink{class_dark_silk_units_a492e7b4a5708e04f3a97609c07b733b9a9cb3f6f5405413dc7960959c15cb5d6c}{separator\+Standard})
+\item 
+static Q\+String \hyperlink{class_dark_silk_units_acd1231dbc79f196fcb65fc4469b07a4a}{format} (int unit, const \hyperlink{amount_8h_a4eaf3a5239714d8c45b851527f7cb564}{C\+Amount} \&n\+In, bool f\+Plus, \hyperlink{class_dark_silk_units_a492e7b4a5708e04f3a97609c07b733b9}{Separator\+Style} separators)
+\end{DoxyCompactItemize}
+\end{Indent}
+\subsection*{Abstract\+List\+Model implementation}
+\label{_amgrp2e845e8604997c2ca3724f5375e55564}%
+ List model for unit drop-\/down selection box. \begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_dark_silk_units_a39329690c784008fa8abd01e8bdde9b3}{Role\+Index} \{ \hyperlink{class_dark_silk_units_a39329690c784008fa8abd01e8bdde9b3ac0da3c9b33518a08612bb0ca9f57a396}{Unit\+Role} = Qt\+:\+:User\+Role
+ \}
+\item 
+int \hyperlink{class_dark_silk_units_a7bd7e537a9b0411b5a02c9c5a8bcbe22}{row\+Count} (const Q\+Model\+Index \&parent) const 
+\item 
+Q\+Variant \hyperlink{class_dark_silk_units_aa6730b7a4179a579c1ac00f25766343f}{data} (const Q\+Model\+Index \&index, int role) const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Dark\+Silk unit definitions. Encapsulates parsing and formatting and serves as list model for drop-\/down selection boxes. 
+
+Definition at line 33 of file darksilkunits.\+h.
+
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{class_dark_silk_units_a39329690c784008fa8abd01e8bdde9b3}{}\index{Dark\+Silk\+Units@{Dark\+Silk\+Units}!Role\+Index@{Role\+Index}}
+\index{Role\+Index@{Role\+Index}!Dark\+Silk\+Units@{Dark\+Silk\+Units}}
+\subsubsection[{Role\+Index}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Dark\+Silk\+Units\+::\+Role\+Index}}\label{class_dark_silk_units_a39329690c784008fa8abd01e8bdde9b3}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{Unit\+Role@{Unit\+Role}!Dark\+Silk\+Units@{Dark\+Silk\+Units}}\index{Dark\+Silk\+Units@{Dark\+Silk\+Units}!Unit\+Role@{Unit\+Role}}\item[{\em 
+\hypertarget{class_dark_silk_units_a39329690c784008fa8abd01e8bdde9b3ac0da3c9b33518a08612bb0ca9f57a396}{}Unit\+Role\label{class_dark_silk_units_a39329690c784008fa8abd01e8bdde9b3ac0da3c9b33518a08612bb0ca9f57a396}
+}]Unit identifier \end{description}
+\end{Desc}
+
+
+Definition at line 91 of file darksilkunits.\+h.
+
+\hypertarget{class_dark_silk_units_a492e7b4a5708e04f3a97609c07b733b9}{}\index{Dark\+Silk\+Units@{Dark\+Silk\+Units}!Separator\+Style@{Separator\+Style}}
+\index{Separator\+Style@{Separator\+Style}!Dark\+Silk\+Units@{Dark\+Silk\+Units}}
+\subsubsection[{Separator\+Style}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Dark\+Silk\+Units\+::\+Separator\+Style}}\label{class_dark_silk_units_a492e7b4a5708e04f3a97609c07b733b9}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{separator\+Never@{separator\+Never}!Dark\+Silk\+Units@{Dark\+Silk\+Units}}\index{Dark\+Silk\+Units@{Dark\+Silk\+Units}!separator\+Never@{separator\+Never}}\item[{\em 
+\hypertarget{class_dark_silk_units_a492e7b4a5708e04f3a97609c07b733b9a6f5caa3bdcef60e9ffccd7dd67a44697}{}separator\+Never\label{class_dark_silk_units_a492e7b4a5708e04f3a97609c07b733b9a6f5caa3bdcef60e9ffccd7dd67a44697}
+}]\index{separator\+Standard@{separator\+Standard}!Dark\+Silk\+Units@{Dark\+Silk\+Units}}\index{Dark\+Silk\+Units@{Dark\+Silk\+Units}!separator\+Standard@{separator\+Standard}}\item[{\em 
+\hypertarget{class_dark_silk_units_a492e7b4a5708e04f3a97609c07b733b9a9cb3f6f5405413dc7960959c15cb5d6c}{}separator\+Standard\label{class_dark_silk_units_a492e7b4a5708e04f3a97609c07b733b9a9cb3f6f5405413dc7960959c15cb5d6c}
+}]\index{separator\+Always@{separator\+Always}!Dark\+Silk\+Units@{Dark\+Silk\+Units}}\index{Dark\+Silk\+Units@{Dark\+Silk\+Units}!separator\+Always@{separator\+Always}}\item[{\em 
+\hypertarget{class_dark_silk_units_a492e7b4a5708e04f3a97609c07b733b9acfe64621e0f82773983fa4d7b98496f2}{}separator\+Always\label{class_dark_silk_units_a492e7b4a5708e04f3a97609c07b733b9acfe64621e0f82773983fa4d7b98496f2}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 50 of file darksilkunits.\+h.
+
+\hypertarget{class_dark_silk_units_a588cf5f654ad4aa646647ffde0031482}{}\index{Dark\+Silk\+Units@{Dark\+Silk\+Units}!Unit@{Unit}}
+\index{Unit@{Unit}!Dark\+Silk\+Units@{Dark\+Silk\+Units}}
+\subsubsection[{Unit}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Dark\+Silk\+Units\+::\+Unit}}\label{class_dark_silk_units_a588cf5f654ad4aa646647ffde0031482}
+Dark\+Silk units. \begin{DoxyNote}{Note}
+Source\+: \href{https://en.darksilk.it/wiki/Units}{\tt https\+://en.\+darksilk.\+it/wiki/\+Units} . Please add only sensible ones 
+\end{DoxyNote}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{D\+R\+K\+S\+L\+K@{D\+R\+K\+S\+L\+K}!Dark\+Silk\+Units@{Dark\+Silk\+Units}}\index{Dark\+Silk\+Units@{Dark\+Silk\+Units}!D\+R\+K\+S\+L\+K@{D\+R\+K\+S\+L\+K}}\item[{\em 
+\hypertarget{class_dark_silk_units_a588cf5f654ad4aa646647ffde0031482a0edba4fddfbef1b8abc52ce9b516971d}{}D\+R\+K\+S\+L\+K\label{class_dark_silk_units_a588cf5f654ad4aa646647ffde0031482a0edba4fddfbef1b8abc52ce9b516971d}
+}]\index{m\+D\+R\+K\+S\+L\+K@{m\+D\+R\+K\+S\+L\+K}!Dark\+Silk\+Units@{Dark\+Silk\+Units}}\index{Dark\+Silk\+Units@{Dark\+Silk\+Units}!m\+D\+R\+K\+S\+L\+K@{m\+D\+R\+K\+S\+L\+K}}\item[{\em 
+\hypertarget{class_dark_silk_units_a588cf5f654ad4aa646647ffde0031482a347ccbe3f707cc1e89bde2f248721a33}{}m\+D\+R\+K\+S\+L\+K\label{class_dark_silk_units_a588cf5f654ad4aa646647ffde0031482a347ccbe3f707cc1e89bde2f248721a33}
+}]\index{u\+D\+R\+K\+S\+L\+K@{u\+D\+R\+K\+S\+L\+K}!Dark\+Silk\+Units@{Dark\+Silk\+Units}}\index{Dark\+Silk\+Units@{Dark\+Silk\+Units}!u\+D\+R\+K\+S\+L\+K@{u\+D\+R\+K\+S\+L\+K}}\item[{\em 
+\hypertarget{class_dark_silk_units_a588cf5f654ad4aa646647ffde0031482a7bb3975d2da154400a8062a9bf620305}{}u\+D\+R\+K\+S\+L\+K\label{class_dark_silk_units_a588cf5f654ad4aa646647ffde0031482a7bb3975d2da154400a8062a9bf620305}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 43 of file darksilkunits.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_dark_silk_units_a33ab49b1dfa2e509d005615832ec8eb0}{}\index{Dark\+Silk\+Units@{Dark\+Silk\+Units}!Dark\+Silk\+Units@{Dark\+Silk\+Units}}
+\index{Dark\+Silk\+Units@{Dark\+Silk\+Units}!Dark\+Silk\+Units@{Dark\+Silk\+Units}}
+\subsubsection[{Dark\+Silk\+Units}]{\setlength{\rightskip}{0pt plus 5cm}Dark\+Silk\+Units\+::\+Dark\+Silk\+Units (
+\begin{DoxyParamCaption}
+\item[{Q\+Object $\ast$}]{parent}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\label{class_dark_silk_units_a33ab49b1dfa2e509d005615832ec8eb0}
+
+
+Definition at line 12 of file darksilkunits.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_dark_silk_units_a4baa85df1203cf74de5bafd77eb04ebe}{}\index{Dark\+Silk\+Units@{Dark\+Silk\+Units}!amount\+Digits@{amount\+Digits}}
+\index{amount\+Digits@{amount\+Digits}!Dark\+Silk\+Units@{Dark\+Silk\+Units}}
+\subsubsection[{amount\+Digits}]{\setlength{\rightskip}{0pt plus 5cm}int Dark\+Silk\+Units\+::amount\+Digits (
+\begin{DoxyParamCaption}
+\item[{int}]{unit}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_dark_silk_units_a4baa85df1203cf74de5bafd77eb04ebe}
+
+
+Number of amount digits (to represent max number of coins) 
+
+
+
+Definition at line 73 of file darksilkunits.\+cpp.
+
+\hypertarget{class_dark_silk_units_acf4eea1e4c6f892f1299a2cb06094e62}{}\index{Dark\+Silk\+Units@{Dark\+Silk\+Units}!available\+Units@{available\+Units}}
+\index{available\+Units@{available\+Units}!Dark\+Silk\+Units@{Dark\+Silk\+Units}}
+\subsubsection[{available\+Units}]{\setlength{\rightskip}{0pt plus 5cm}Q\+List$<$ {\bf Dark\+Silk\+Units\+::\+Unit} $>$ Dark\+Silk\+Units\+::available\+Units (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_dark_silk_units_acf4eea1e4c6f892f1299a2cb06094e62}
+
+
+Get list of units, for drop-\/down box. 
+
+
+
+Definition at line 18 of file darksilkunits.\+cpp.
+
+\hypertarget{class_dark_silk_units_aa6730b7a4179a579c1ac00f25766343f}{}\index{Dark\+Silk\+Units@{Dark\+Silk\+Units}!data@{data}}
+\index{data@{data}!Dark\+Silk\+Units@{Dark\+Silk\+Units}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Variant Dark\+Silk\+Units\+::data (
+\begin{DoxyParamCaption}
+\item[{const Q\+Model\+Index \&}]{index, }
+\item[{int}]{role}
+\end{DoxyParamCaption}
+) const}\label{class_dark_silk_units_aa6730b7a4179a579c1ac00f25766343f}
+
+
+Definition at line 217 of file darksilkunits.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+\hypertarget{class_dark_silk_units_a5cf347a021d0239b0a955073e6dd9290}{}\index{Dark\+Silk\+Units@{Dark\+Silk\+Units}!decimals@{decimals}}
+\index{decimals@{decimals}!Dark\+Silk\+Units@{Dark\+Silk\+Units}}
+\subsubsection[{decimals}]{\setlength{\rightskip}{0pt plus 5cm}int Dark\+Silk\+Units\+::decimals (
+\begin{DoxyParamCaption}
+\item[{int}]{unit}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_dark_silk_units_a5cf347a021d0239b0a955073e6dd9290}
+
+
+Number of decimals left. 
+
+
+
+Definition at line 84 of file darksilkunits.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+\hypertarget{class_dark_silk_units_a564c452e880f63b37bbebc0e21dc2179}{}\index{Dark\+Silk\+Units@{Dark\+Silk\+Units}!description@{description}}
+\index{description@{description}!Dark\+Silk\+Units@{Dark\+Silk\+Units}}
+\subsubsection[{description}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Dark\+Silk\+Units\+::description (
+\begin{DoxyParamCaption}
+\item[{int}]{unit}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_dark_silk_units_a564c452e880f63b37bbebc0e21dc2179}
+
+
+Longer description. 
+
+
+
+Definition at line 51 of file darksilkunits.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 4
+
+
+\hypertarget{class_dark_silk_units_a3cc1f09aeee8437c40650ce9d460ec4d}{}\index{Dark\+Silk\+Units@{Dark\+Silk\+Units}!factor@{factor}}
+\index{factor@{factor}!Dark\+Silk\+Units@{Dark\+Silk\+Units}}
+\subsubsection[{factor}]{\setlength{\rightskip}{0pt plus 5cm}qint64 Dark\+Silk\+Units\+::factor (
+\begin{DoxyParamCaption}
+\item[{int}]{unit}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_dark_silk_units_a3cc1f09aeee8437c40650ce9d460ec4d}
+
+
+Number of Satoshis (1e-\/8) per unit. 
+
+
+
+Definition at line 62 of file darksilkunits.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 5
+
+
+\hypertarget{class_dark_silk_units_abe3d1ba8e88272a462f9d69943d01a85}{}\index{Dark\+Silk\+Units@{Dark\+Silk\+Units}!floor\+Html\+With\+Unit@{floor\+Html\+With\+Unit}}
+\index{floor\+Html\+With\+Unit@{floor\+Html\+With\+Unit}!Dark\+Silk\+Units@{Dark\+Silk\+Units}}
+\subsubsection[{floor\+Html\+With\+Unit}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Dark\+Silk\+Units\+::floor\+Html\+With\+Unit (
+\begin{DoxyParamCaption}
+\item[{int}]{unit, }
+\item[{const {\bf C\+Amount} \&}]{amount, }
+\item[{bool}]{plussign = {\ttfamily false}, }
+\item[{{\bf Separator\+Style}}]{separators = {\ttfamily {\bf separator\+Standard}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_dark_silk_units_abe3d1ba8e88272a462f9d69943d01a85}
+
+
+Definition at line 139 of file darksilkunits.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 6
+
+
+\hypertarget{class_dark_silk_units_ad03892765fad5d073a894f8cd4f1a2ef}{}\index{Dark\+Silk\+Units@{Dark\+Silk\+Units}!floor\+With\+Unit@{floor\+With\+Unit}}
+\index{floor\+With\+Unit@{floor\+With\+Unit}!Dark\+Silk\+Units@{Dark\+Silk\+Units}}
+\subsubsection[{floor\+With\+Unit}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Dark\+Silk\+Units\+::floor\+With\+Unit (
+\begin{DoxyParamCaption}
+\item[{int}]{unit, }
+\item[{const {\bf C\+Amount} \&}]{amount, }
+\item[{bool}]{plussign = {\ttfamily false}, }
+\item[{{\bf Separator\+Style}}]{separators = {\ttfamily {\bf separator\+Standard}}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_dark_silk_units_ad03892765fad5d073a894f8cd4f1a2ef}
+
+
+Format as string (with unit) but floor value up to \char`\"{}digits\char`\"{} settings. 
+
+
+
+Definition at line 128 of file darksilkunits.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 7
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 8
+
+
+\hypertarget{class_dark_silk_units_a87f64ca983a23ac8c836954d6b7ef080}{}\index{Dark\+Silk\+Units@{Dark\+Silk\+Units}!format@{format}}
+\index{format@{format}!Dark\+Silk\+Units@{Dark\+Silk\+Units}}
+\subsubsection[{format}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Dark\+Silk\+Units\+::format (
+\begin{DoxyParamCaption}
+\item[{int}]{unit, }
+\item[{const {\bf C\+Amount} \&}]{n\+In, }
+\item[{bool}]{plussign = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_dark_silk_units_a87f64ca983a23ac8c836954d6b7ef080}
+
+
+Format as string. 
+
+
+
+Definition at line 95 of file darksilkunits.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 9
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 10
+
+
+\hypertarget{class_dark_silk_units_acd1231dbc79f196fcb65fc4469b07a4a}{}\index{Dark\+Silk\+Units@{Dark\+Silk\+Units}!format@{format}}
+\index{format@{format}!Dark\+Silk\+Units@{Dark\+Silk\+Units}}
+\subsubsection[{format}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Dark\+Silk\+Units\+::format (
+\begin{DoxyParamCaption}
+\item[{int}]{unit, }
+\item[{const {\bf C\+Amount} \&}]{n\+In, }
+\item[{bool}]{f\+Plus, }
+\item[{{\bf Separator\+Style}}]{separators}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_dark_silk_units_acd1231dbc79f196fcb65fc4469b07a4a}
+
+
+Definition at line 146 of file darksilkunits.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 11
+
+
+\hypertarget{class_dark_silk_units_a8bd68e4e42a5652886e1c73c6c1bc19d}{}\index{Dark\+Silk\+Units@{Dark\+Silk\+Units}!format\+With\+Unit@{format\+With\+Unit}}
+\index{format\+With\+Unit@{format\+With\+Unit}!Dark\+Silk\+Units@{Dark\+Silk\+Units}}
+\subsubsection[{format\+With\+Unit}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Dark\+Silk\+Units\+::format\+With\+Unit (
+\begin{DoxyParamCaption}
+\item[{int}]{unit, }
+\item[{const {\bf C\+Amount} \&}]{amount, }
+\item[{bool}]{plussign = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_dark_silk_units_a8bd68e4e42a5652886e1c73c6c1bc19d}
+
+
+Format as string (with unit) 
+
+
+
+Definition at line 123 of file darksilkunits.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 12
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 13
+
+
+\hypertarget{class_dark_silk_units_a03b1019d3dd549bc9a0f6d9cf5040723}{}\index{Dark\+Silk\+Units@{Dark\+Silk\+Units}!max\+Money@{max\+Money}}
+\index{max\+Money@{max\+Money}!Dark\+Silk\+Units@{Dark\+Silk\+Units}}
+\subsubsection[{max\+Money}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Amount} Dark\+Silk\+Units\+::max\+Money (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_dark_silk_units_a03b1019d3dd549bc9a0f6d9cf5040723}
+
+
+Return maximum number of base units (Satoshis) 
+
+
+
+Definition at line 237 of file darksilkunits.\+cpp.
+
+\hypertarget{class_dark_silk_units_aa63c8fe61b199e769730bc6ec9db8ba6}{}\index{Dark\+Silk\+Units@{Dark\+Silk\+Units}!name@{name}}
+\index{name@{name}!Dark\+Silk\+Units@{Dark\+Silk\+Units}}
+\subsubsection[{name}]{\setlength{\rightskip}{0pt plus 5cm}Q\+String Dark\+Silk\+Units\+::name (
+\begin{DoxyParamCaption}
+\item[{int}]{unit}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_dark_silk_units_aa63c8fe61b199e769730bc6ec9db8ba6}
+
+
+Short name. 
+
+
+
+Definition at line 40 of file darksilkunits.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 14
+
+
+\hypertarget{class_dark_silk_units_a11d6661d65f2fe22fb17716b509cb135}{}\index{Dark\+Silk\+Units@{Dark\+Silk\+Units}!parse@{parse}}
+\index{parse@{parse}!Dark\+Silk\+Units@{Dark\+Silk\+Units}}
+\subsubsection[{parse}]{\setlength{\rightskip}{0pt plus 5cm}bool Dark\+Silk\+Units\+::parse (
+\begin{DoxyParamCaption}
+\item[{int}]{unit, }
+\item[{const Q\+String \&}]{value, }
+\item[{{\bf C\+Amount} $\ast$}]{val\+\_\+out}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_dark_silk_units_a11d6661d65f2fe22fb17716b509cb135}
+
+
+Parse string to coin amount. 
+
+
+
+Definition at line 174 of file darksilkunits.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 15
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 16
+
+
+\hypertarget{class_dark_silk_units_a7bd7e537a9b0411b5a02c9c5a8bcbe22}{}\index{Dark\+Silk\+Units@{Dark\+Silk\+Units}!row\+Count@{row\+Count}}
+\index{row\+Count@{row\+Count}!Dark\+Silk\+Units@{Dark\+Silk\+Units}}
+\subsubsection[{row\+Count}]{\setlength{\rightskip}{0pt plus 5cm}int Dark\+Silk\+Units\+::row\+Count (
+\begin{DoxyParamCaption}
+\item[{const Q\+Model\+Index \&}]{parent}
+\end{DoxyParamCaption}
+) const}\label{class_dark_silk_units_a7bd7e537a9b0411b5a02c9c5a8bcbe22}
+
+
+Definition at line 211 of file darksilkunits.\+cpp.
+
+\hypertarget{class_dark_silk_units_a2ed8a06dc0be53d55c5207bf03987472}{}\index{Dark\+Silk\+Units@{Dark\+Silk\+Units}!valid@{valid}}
+\index{valid@{valid}!Dark\+Silk\+Units@{Dark\+Silk\+Units}}
+\subsubsection[{valid}]{\setlength{\rightskip}{0pt plus 5cm}bool Dark\+Silk\+Units\+::valid (
+\begin{DoxyParamCaption}
+\item[{int}]{unit}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_dark_silk_units_a2ed8a06dc0be53d55c5207bf03987472}
+
+
+Is unit I\+D valid? 
+
+
+
+Definition at line 27 of file darksilkunits.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 17
+
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/qt/\hyperlink{darksilkunits_8h}{darksilkunits.\+h}\item 
+/home/dev/ds-\/160209/src/qt/\hyperlink{darksilkunits_8cpp}{darksilkunits.\+cpp}\end{DoxyCompactItemize}

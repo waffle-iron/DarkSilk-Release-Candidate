@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_hash160" kind="class" language="C++" prot="public">
+    <compoundname>CHash160</compoundname>
+    <includes refid="hash_8h" local="no">hash.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_c_hash160_1a5b104e31076a06ece47c1134bbed0a81" prot="private" static="no" mutable="no">
+        <type><ref refid="class_c_s_h_a256" kindref="compound">CSHA256</ref></type>
+        <definition>CSHA256 CHash160::sha</definition>
+        <argsstring></argsstring>
+        <name>sha</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/hash.h" line="55" column="1" bodyfile="/home/dev/ds-160209/src/hash.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="class_c_hash160_1a1a5618e17d91ea96e86d779f575211eb" prot="public" static="yes" mutable="no">
+        <type>const size_t</type>
+        <definition>const size_t CHash160::OUTPUT_SIZE</definition>
+        <argsstring></argsstring>
+        <name>OUTPUT_SIZE</name>
+        <initializer>= CRIPEMD160::OUTPUT_SIZE</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/hash.h" line="57" column="1" bodyfile="/home/dev/ds-160209/src/hash.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_hash160_1a9bb08e1772002ae1a5d85017ba7952ee" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CHash160::Finalize</definition>
+        <argsstring>(unsigned char hash[OUTPUT_SIZE])</argsstring>
+        <name>Finalize</name>
+        <param>
+          <type>unsigned char</type>
+          <declname>hash</declname>
+          <array>[OUTPUT_SIZE]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/hash.h" line="59" column="1" bodyfile="/home/dev/ds-160209/src/hash.h" bodystart="59" bodyend="63"/>
+        <references refid="class_c_s_h_a256_1a3d7ef512c0ceb0008396e62f5c4771fc" compoundref="sha256_8h" startline="20">CSHA256::OUTPUT_SIZE</references>
+        <references refid="class_c_s_h_a256_1a4259230be0caefa590bc324fc12b9b90" compoundref="sha256_8cpp" startline="167" endline="182">CSHA256::Finalize</references>
+        <references refid="class_c_r_i_p_e_m_d160_1a221143b9d94af623d07c4f4ba1bf6007" compoundref="ripemd160_8cpp" startline="247" endline="271">CRIPEMD160::Write</references>
+        <references refid="class_c_r_i_p_e_m_d160_1a2a11566fbf9d1339b819833313fc4e51" compoundref="ripemd160_8cpp" startline="273" endline="285">CRIPEMD160::Finalize</references>
+        <references refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" compoundref="cache_8cc" startline="34">hash</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_hash160_1af56cdd9443013eb68b246aa8450217f2" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_c_hash160" kindref="compound">CHash160</ref> &amp;</type>
+        <definition>CHash160&amp; CHash160::Write</definition>
+        <argsstring>(const unsigned char *data, size_t len)</argsstring>
+        <name>Write</name>
+        <param>
+          <type>const unsigned char *</type>
+          <declname>data</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/hash.h" line="65" column="1" bodyfile="/home/dev/ds-160209/src/hash.h" bodystart="65" bodyend="68"/>
+        <references refid="class_c_s_h_a256_1a9d7de520a562655da85349372820c883" compoundref="sha256_8cpp" startline="141" endline="165">CSHA256::Write</references>
+        <referencedby refid="script_8h_1a95e4207f5f6abd316a0678f3ed8ee2f2" compoundref="script_8cpp" startline="1393" endline="2090">EvalScript</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_hash160_1a971a8d59073455b1ef0ac0f65e964772" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="class_c_hash160" kindref="compound">CHash160</ref> &amp;</type>
+        <definition>CHash160&amp; CHash160::Reset</definition>
+        <argsstring>()</argsstring>
+        <name>Reset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/hash.h" line="70" column="1" bodyfile="/home/dev/ds-160209/src/hash.h" bodystart="70" bodyend="73"/>
+        <references refid="class_c_s_h_a256_1a2122395dd5604990eaa0077b43a0e8d4" compoundref="sha256_8cpp" startline="184" endline="189">CSHA256::Reset</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>A hasher class for DarkSilk&apos;s 160-bit hash (SHA-256 + RIPEMD-160). </para>    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/hash.h" line="53" column="1" bodyfile="/home/dev/ds-160209/src/hash.h" bodystart="53" bodyend="74"/>
+    <listofallmembers>
+      <member refid="class_c_hash160_1a9bb08e1772002ae1a5d85017ba7952ee" prot="public" virt="non-virtual"><scope>CHash160</scope><name>Finalize</name></member>
+      <member refid="class_c_hash160_1a1a5618e17d91ea96e86d779f575211eb" prot="public" virt="non-virtual"><scope>CHash160</scope><name>OUTPUT_SIZE</name></member>
+      <member refid="class_c_hash160_1a971a8d59073455b1ef0ac0f65e964772" prot="public" virt="non-virtual"><scope>CHash160</scope><name>Reset</name></member>
+      <member refid="class_c_hash160_1a5b104e31076a06ece47c1134bbed0a81" prot="private" virt="non-virtual"><scope>CHash160</scope><name>sha</name></member>
+      <member refid="class_c_hash160_1af56cdd9443013eb68b246aa8450217f2" prot="public" virt="non-virtual"><scope>CHash160</scope><name>Write</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

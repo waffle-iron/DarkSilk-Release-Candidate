@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="dumpfile_8h" kind="file" language="C++">
+    <compoundname>dumpfile.h</compoundname>
+    <includes local="no">string</includes>
+    <includes refid="env_8h" local="yes">leveldb/env.h</includes>
+    <includes refid="status_8h" local="yes">leveldb/status.h</includes>
+    <includedby refid="leveldb__main_8cc" local="yes">/home/dev/ds-160209/src/leveldb/db/leveldb_main.cc</includedby>
+    <incdepgraph>
+      <node id="37478">
+        <label>stdarg.h</label>
+      </node>
+      <node id="37482">
+        <label>assert.h</label>
+      </node>
+      <node id="37475">
+        <label>string</label>
+      </node>
+      <node id="37483">
+        <label>stddef.h</label>
+      </node>
+      <node id="37480">
+        <label>leveldb/status.h</label>
+        <link refid="status_8h"/>
+        <childnode refid="37475" relation="include">
+        </childnode>
+        <childnode refid="37481" relation="include">
+        </childnode>
+      </node>
+      <node id="37484">
+        <label>string.h</label>
+      </node>
+      <node id="37477">
+        <label>vector</label>
+      </node>
+      <node id="37479">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="37474">
+        <label>/home/dev/ds-160209/src/leveldb/include/leveldb/dumpfile.h</label>
+        <link refid="dumpfile.h"/>
+        <childnode refid="37475" relation="include">
+        </childnode>
+        <childnode refid="37476" relation="include">
+        </childnode>
+        <childnode refid="37480" relation="include">
+        </childnode>
+      </node>
+      <node id="37481">
+        <label>leveldb/slice.h</label>
+        <link refid="slice_8h"/>
+        <childnode refid="37482" relation="include">
+        </childnode>
+        <childnode refid="37483" relation="include">
+        </childnode>
+        <childnode refid="37484" relation="include">
+        </childnode>
+        <childnode refid="37475" relation="include">
+        </childnode>
+      </node>
+      <node id="37476">
+        <label>leveldb/env.h</label>
+        <link refid="env_8h"/>
+        <childnode refid="37475" relation="include">
+        </childnode>
+        <childnode refid="37477" relation="include">
+        </childnode>
+        <childnode refid="37478" relation="include">
+        </childnode>
+        <childnode refid="37479" relation="include">
+        </childnode>
+        <childnode refid="37480" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="37485">
+        <label>/home/dev/ds-160209/src/leveldb/include/leveldb/dumpfile.h</label>
+        <link refid="dumpfile.h"/>
+        <childnode refid="37486" relation="include">
+        </childnode>
+      </node>
+      <node id="37486">
+        <label>/home/dev/ds-160209/src/leveldb/db/leveldb_main.cc</label>
+        <link refid="leveldb__main_8cc"/>
+      </node>
+    </invincdepgraph>
+    <innernamespace refid="namespaceleveldb">leveldb</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2014<sp/>The<sp/>LevelDB<sp/>Authors.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>of<sp/>this<sp/>source<sp/>code<sp/>is<sp/>governed<sp/>by<sp/>a<sp/>BSD-style<sp/>license<sp/>that<sp/>can<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>found<sp/>in<sp/>the<sp/>LICENSE<sp/>file.<sp/>See<sp/>the<sp/>AUTHORS<sp/>file<sp/>for<sp/>names<sp/>of<sp/>contributors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>STORAGE_LEVELDB_INCLUDE_DUMPFILE_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STORAGE_LEVELDB_INCLUDE_DUMPFILE_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="env_8h" kindref="compound">leveldb/env.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="status_8h" kindref="compound">leveldb/status.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceleveldb" kindref="compound">leveldb</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Dump<sp/>the<sp/>contents<sp/>of<sp/>the<sp/>file<sp/>named<sp/>by<sp/>fname<sp/>in<sp/>text<sp/>format<sp/>to</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//<sp/>*dst.<sp/><sp/>Makes<sp/>a<sp/>sequence<sp/>of<sp/>dst-&gt;Append()<sp/>calls;<sp/>each<sp/>call<sp/>is<sp/>passed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/>the<sp/>newline-terminated<sp/>text<sp/>corresponding<sp/>to<sp/>a<sp/>single<sp/>item<sp/>found</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/>in<sp/>the<sp/>file.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Returns<sp/>a<sp/>non-OK<sp/>result<sp/>if<sp/>fname<sp/>does<sp/>not<sp/>name<sp/>a<sp/>leveldb<sp/>storage</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/>file,<sp/>or<sp/>if<sp/>the<sp/>file<sp/>cannot<sp/>be<sp/>read.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal">Status<sp/><ref refid="namespaceleveldb_1a119202f6323172b2ac45eae5baf7202f" kindref="member">DumpFile</ref>(Env*<sp/>env,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>fname,<sp/>WritableFile*<sp/>dst);</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>leveldb</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/>//<sp/>STORAGE_LEVELDB_INCLUDE_DUMPFILE_H_</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/dumpfile.h"/>
+  </compounddef>
+</doxygen>

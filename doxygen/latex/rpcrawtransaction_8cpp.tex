@@ -1,0 +1,214 @@
+\hypertarget{rpcrawtransaction_8cpp}{}\section{/home/dev/ds-\/160209/src/rpcrawtransaction.cpp File Reference}
+\label{rpcrawtransaction_8cpp}\index{/home/dev/ds-\/160209/src/rpcrawtransaction.\+cpp@{/home/dev/ds-\/160209/src/rpcrawtransaction.\+cpp}}
+{\ttfamily \#include $<$boost/assign/list\+\_\+of.\+hpp$>$}\\*
+{\ttfamily \#include \char`\"{}primitives/transaction.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}base58.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}rpcserver.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}txdb.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}init.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}net.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}keystore.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}txdb-\/leveldb.\+h\char`\"{}}\\*
+Include dependency graph for rpcrawtransaction.\+cpp\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{rpcrawtransaction_8cpp_acb6efc0d76394e3858fe7451148069c2}{Script\+Pub\+Key\+To\+J\+S\+O\+N} (const \hyperlink{class_c_script}{C\+Script} \&script\+Pub\+Key, \hyperlink{namespacejson__spirit_aa1e2c4032be0d25e7b42eb17115dabb2}{Object} \&out, bool f\+Include\+Hex)
+\item 
+void \hyperlink{rpcrawtransaction_8cpp_a366b04dae2aae86eee356cc85d759268}{Tx\+To\+J\+S\+O\+N} (const \hyperlink{class_c_transaction}{C\+Transaction} \&tx, const \hyperlink{classuint256}{uint256} hash\+Block, \hyperlink{namespacejson__spirit_aa1e2c4032be0d25e7b42eb17115dabb2}{Object} \&entry)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcrawtransaction_8cpp_a12e1b8a05d99d1544e5343c2282cc55a}{getrawtransaction} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcrawtransaction_8cpp_a7924d2aa3d68d890b82773445e0d949e}{createrawtransaction} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcrawtransaction_8cpp_a6775c600b1bfdbb22f38e5f1cd27cfea}{decoderawtransaction} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcrawtransaction_8cpp_a342172992e2fa92490e8d83c2e95e87e}{decodescript} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcrawtransaction_8cpp_aa0d151e35c0ad5ec82df451a833aeadb}{signrawtransaction} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcrawtransaction_8cpp_ad5aad44f890060f42efb49acf349511e}{sendrawtransaction} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\item 
+\hyperlink{namespacejson__spirit_a28e6abc99fda7b06c430ca38802527a3}{Value} \hyperlink{rpcrawtransaction_8cpp_ae119520f4c7a75fcaf31fbfaf8dff482}{searchrawtransactions} (const \hyperlink{namespacejson__spirit_aee299e52bda3816039a53210cbbfea1a}{Array} \&params, bool f\+Help)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{rpcrawtransaction_8cpp_a7924d2aa3d68d890b82773445e0d949e}{}\index{rpcrawtransaction.\+cpp@{rpcrawtransaction.\+cpp}!createrawtransaction@{createrawtransaction}}
+\index{createrawtransaction@{createrawtransaction}!rpcrawtransaction.\+cpp@{rpcrawtransaction.\+cpp}}
+\subsubsection[{createrawtransaction}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} createrawtransaction (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcrawtransaction_8cpp_a7924d2aa3d68d890b82773445e0d949e}
+
+
+Definition at line 236 of file rpcrawtransaction.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 1
+
+
+\hypertarget{rpcrawtransaction_8cpp_a6775c600b1bfdbb22f38e5f1cd27cfea}{}\index{rpcrawtransaction.\+cpp@{rpcrawtransaction.\+cpp}!decoderawtransaction@{decoderawtransaction}}
+\index{decoderawtransaction@{decoderawtransaction}!rpcrawtransaction.\+cpp@{rpcrawtransaction.\+cpp}}
+\subsubsection[{decoderawtransaction}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} decoderawtransaction (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcrawtransaction_8cpp_a6775c600b1bfdbb22f38e5f1cd27cfea}
+
+
+Definition at line 301 of file rpcrawtransaction.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+\hypertarget{rpcrawtransaction_8cpp_a342172992e2fa92490e8d83c2e95e87e}{}\index{rpcrawtransaction.\+cpp@{rpcrawtransaction.\+cpp}!decodescript@{decodescript}}
+\index{decodescript@{decodescript}!rpcrawtransaction.\+cpp@{rpcrawtransaction.\+cpp}}
+\subsubsection[{decodescript}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} decodescript (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcrawtransaction_8cpp_a342172992e2fa92490e8d83c2e95e87e}
+
+
+Definition at line 326 of file rpcrawtransaction.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 3
+
+
+\hypertarget{rpcrawtransaction_8cpp_a12e1b8a05d99d1544e5343c2282cc55a}{}\index{rpcrawtransaction.\+cpp@{rpcrawtransaction.\+cpp}!getrawtransaction@{getrawtransaction}}
+\index{getrawtransaction@{getrawtransaction}!rpcrawtransaction.\+cpp@{rpcrawtransaction.\+cpp}}
+\subsubsection[{getrawtransaction}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} getrawtransaction (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcrawtransaction_8cpp_a12e1b8a05d99d1544e5343c2282cc55a}
+
+
+Definition at line 111 of file rpcrawtransaction.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 4
+
+
+\hypertarget{rpcrawtransaction_8cpp_acb6efc0d76394e3858fe7451148069c2}{}\index{rpcrawtransaction.\+cpp@{rpcrawtransaction.\+cpp}!Script\+Pub\+Key\+To\+J\+S\+O\+N@{Script\+Pub\+Key\+To\+J\+S\+O\+N}}
+\index{Script\+Pub\+Key\+To\+J\+S\+O\+N@{Script\+Pub\+Key\+To\+J\+S\+O\+N}!rpcrawtransaction.\+cpp@{rpcrawtransaction.\+cpp}}
+\subsubsection[{Script\+Pub\+Key\+To\+J\+S\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}void Script\+Pub\+Key\+To\+J\+S\+O\+N (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Script} \&}]{script\+Pub\+Key, }
+\item[{{\bf Object} \&}]{out, }
+\item[{bool}]{f\+Include\+Hex}
+\end{DoxyParamCaption}
+)}\label{rpcrawtransaction_8cpp_acb6efc0d76394e3858fe7451148069c2}
+
+
+Definition at line 27 of file rpcrawtransaction.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 5
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 6
+
+
+\hypertarget{rpcrawtransaction_8cpp_ae119520f4c7a75fcaf31fbfaf8dff482}{}\index{rpcrawtransaction.\+cpp@{rpcrawtransaction.\+cpp}!searchrawtransactions@{searchrawtransactions}}
+\index{searchrawtransactions@{searchrawtransactions}!rpcrawtransaction.\+cpp@{rpcrawtransaction.\+cpp}}
+\subsubsection[{searchrawtransactions}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} searchrawtransactions (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcrawtransaction_8cpp_ae119520f4c7a75fcaf31fbfaf8dff482}
+
+
+Definition at line 605 of file rpcrawtransaction.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 7
+
+
+\hypertarget{rpcrawtransaction_8cpp_ad5aad44f890060f42efb49acf349511e}{}\index{rpcrawtransaction.\+cpp@{rpcrawtransaction.\+cpp}!sendrawtransaction@{sendrawtransaction}}
+\index{sendrawtransaction@{sendrawtransaction}!rpcrawtransaction.\+cpp@{rpcrawtransaction.\+cpp}}
+\subsubsection[{sendrawtransaction}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} sendrawtransaction (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcrawtransaction_8cpp_ad5aad44f890060f42efb49acf349511e}
+
+
+Definition at line 558 of file rpcrawtransaction.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 8
+
+
+\hypertarget{rpcrawtransaction_8cpp_aa0d151e35c0ad5ec82df451a833aeadb}{}\index{rpcrawtransaction.\+cpp@{rpcrawtransaction.\+cpp}!signrawtransaction@{signrawtransaction}}
+\index{signrawtransaction@{signrawtransaction}!rpcrawtransaction.\+cpp@{rpcrawtransaction.\+cpp}}
+\subsubsection[{signrawtransaction}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Value} signrawtransaction (
+\begin{DoxyParamCaption}
+\item[{const {\bf Array} \&}]{params, }
+\item[{bool}]{f\+Help}
+\end{DoxyParamCaption}
+)}\label{rpcrawtransaction_8cpp_aa0d151e35c0ad5ec82df451a833aeadb}
+T\+O\+D\+O (A\+A)\+: put back but need tx\+To for Sign\+Signature 
+
+Definition at line 349 of file rpcrawtransaction.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 9
+
+
+\hypertarget{rpcrawtransaction_8cpp_a366b04dae2aae86eee356cc85d759268}{}\index{rpcrawtransaction.\+cpp@{rpcrawtransaction.\+cpp}!Tx\+To\+J\+S\+O\+N@{Tx\+To\+J\+S\+O\+N}}
+\index{Tx\+To\+J\+S\+O\+N@{Tx\+To\+J\+S\+O\+N}!rpcrawtransaction.\+cpp@{rpcrawtransaction.\+cpp}}
+\subsubsection[{Tx\+To\+J\+S\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}void Tx\+To\+J\+S\+O\+N (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Transaction} \&}]{tx, }
+\item[{const {\bf uint256}}]{hash\+Block, }
+\item[{{\bf Object} \&}]{entry}
+\end{DoxyParamCaption}
+)}\label{rpcrawtransaction_8cpp_a366b04dae2aae86eee356cc85d759268}
+
+
+Definition at line 53 of file rpcrawtransaction.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 10
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 11
+
+

@@ -1,0 +1,71 @@
+.TH "/home/dev/ds-160209/src/leveldb/db/filename.cc" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/leveldb/db/filename.cc \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <ctype\&.h>\fP
+.br
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include 'db/filename\&.h'\fP
+.br
+\fC#include 'db/dbformat\&.h'\fP
+.br
+\fC#include 'leveldb/env\&.h'\fP
+.br
+\fC#include 'util/logging\&.h'\fP
+.br
+
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBleveldb\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "Status \fBleveldb::WriteStringToFileSync\fP (Env *env, const Slice &data, const std::string &fname)"
+.br
+.ti -1c
+.RI "std::string \fBleveldb::LogFileName\fP (const std::string &\fBname\fP, \fBuint64_t\fP number)"
+.br
+.ti -1c
+.RI "std::string \fBleveldb::TableFileName\fP (const std::string &\fBname\fP, \fBuint64_t\fP number)"
+.br
+.ti -1c
+.RI "std::string \fBleveldb::SSTTableFileName\fP (const std::string &\fBname\fP, \fBuint64_t\fP number)"
+.br
+.ti -1c
+.RI "std::string \fBleveldb::DescriptorFileName\fP (const std::string &dbname, \fBuint64_t\fP number)"
+.br
+.ti -1c
+.RI "std::string \fBleveldb::CurrentFileName\fP (const std::string &dbname)"
+.br
+.ti -1c
+.RI "std::string \fBleveldb::LockFileName\fP (const std::string &dbname)"
+.br
+.ti -1c
+.RI "std::string \fBleveldb::TempFileName\fP (const std::string &dbname, \fBuint64_t\fP number)"
+.br
+.ti -1c
+.RI "std::string \fBleveldb::InfoLogFileName\fP (const std::string &dbname)"
+.br
+.ti -1c
+.RI "std::string \fBleveldb::OldInfoLogFileName\fP (const std::string &dbname)"
+.br
+.ti -1c
+.RI "bool \fBleveldb::ParseFileName\fP (const std::string &fname, \fBuint64_t\fP *number, FileType *type)"
+.br
+.ti -1c
+.RI "Status \fBleveldb::SetCurrentFile\fP (Env *env, const std::string &dbname, \fBuint64_t\fP descriptor_number)"
+.br
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

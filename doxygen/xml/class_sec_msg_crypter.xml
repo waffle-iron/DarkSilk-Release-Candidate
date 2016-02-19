@@ -1,0 +1,198 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_sec_msg_crypter" kind="class" language="C++" prot="public">
+    <compoundname>SecMsgCrypter</compoundname>
+    <includes refid="smessage_8h" local="no">smessage.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_sec_msg_crypter_1aabac05ced624badfaf09a8aec65530cd" prot="private" static="no" mutable="no">
+        <type><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref></type>
+        <definition>uint8_t SecMsgCrypter::chKey[32]</definition>
+        <argsstring>[32]</argsstring>
+        <name>chKey</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/smessage.h" line="235" column="1" bodyfile="/home/dev/ds-160209/src/smessage.h" bodystart="235" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_sec_msg_crypter_1a4fdd60aed7e124ad143e7b187c912ded" prot="private" static="no" mutable="no">
+        <type><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref></type>
+        <definition>uint8_t SecMsgCrypter::chIV[16]</definition>
+        <argsstring>[16]</argsstring>
+        <name>chIV</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/smessage.h" line="236" column="1" bodyfile="/home/dev/ds-160209/src/smessage.h" bodystart="236" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_sec_msg_crypter_1a28460620b066f647922aa5bae72afad0" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool SecMsgCrypter::fKeySet</definition>
+        <argsstring></argsstring>
+        <name>fKeySet</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/smessage.h" line="237" column="1" bodyfile="/home/dev/ds-160209/src/smessage.h" bodystart="237" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_sec_msg_crypter_1a9ad7ff90747e0ed5e3670206aabcbaf6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>SecMsgCrypter::SecMsgCrypter</definition>
+        <argsstring>()</argsstring>
+        <name>SecMsgCrypter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/smessage.h" line="240" column="1" bodyfile="/home/dev/ds-160209/src/smessage.h" bodystart="240" bodyend="248"/>
+        <references refid="class_locked_page_manager_1aedd82df65c12c1d83d43ac8500c57fcf" compoundref="allocators_8h" startline="174">LockedPageManager::instance</references>
+        <references refid="class_locked_page_manager_base_1ae24ac08899505b892d451404133fa494" compoundref="allocators_8h" startline="59" endline="79">LockedPageManagerBase&lt; Locker &gt;::LockRange</references>
+      </memberdef>
+      <memberdef kind="function" id="class_sec_msg_crypter_1a366a49eed14dce915015fd467e3f4169" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>SecMsgCrypter::~SecMsgCrypter</definition>
+        <argsstring>()</argsstring>
+        <name>~SecMsgCrypter</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/smessage.h" line="250" column="1" bodyfile="/home/dev/ds-160209/src/smessage.h" bodystart="250" bodyend="259"/>
+        <references refid="class_locked_page_manager_1aedd82df65c12c1d83d43ac8500c57fcf" compoundref="allocators_8h" startline="174">LockedPageManager::instance</references>
+        <references refid="class_locked_page_manager_base_1ae24ac08899505b892d451404133fa494" compoundref="allocators_8h" startline="59" endline="79">LockedPageManagerBase&lt; Locker &gt;::LockRange</references>
+      </memberdef>
+      <memberdef kind="function" id="class_sec_msg_crypter_1a16056670b845c1e9fc28232feee9efd5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SecMsgCrypter::SetKey</definition>
+        <argsstring>(const std::vector&lt; uint8_t &gt; &amp;vchNewKey, uint8_t *chNewIV)</argsstring>
+        <name>SetKey</name>
+        <param>
+          <type>const std::vector&lt; <ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref> &gt; &amp;</type>
+          <declname>vchNewKey</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref> *</type>
+          <declname>chNewIV</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/smessage.h" line="261" column="1" bodyfile="/home/dev/ds-160209/src/smessage.cpp" bodystart="90" bodyend="96"/>
+        <referencedby refid="class_wallet_model_1a497418d4a8566b881bab45dec7ad8fd8" compoundref="walletmodel_8cpp" startline="213" endline="488">WalletModel::sendCoins</referencedby>
+        <referencedby refid="smessage_8h_1a1a9885d0f94a7d5322eafb31bcf2f90a" compoundref="smessage_8cpp" startline="3276" endline="3531">SecureMsgEncrypt</referencedby>
+        <referencedby refid="smessage_8h_1a2edb582fcb7f69b543174479231647be" compoundref="smessage_8cpp" startline="3702" endline="3946">SecureMsgDecrypt</referencedby>
+        <referencedby refid="class_c_wallet_1afce932bf3aa678046ab75eccff004858" compoundref="wallet_8cpp" startline="3385" endline="3468">CWallet::SendStealthMoneyToDestination</referencedby>
+        <referencedby refid="class_c_wallet_1a5d0e2025dc7a87a0406be272b80509ee" compoundref="wallet_8cpp" startline="3470" endline="3697">CWallet::FindStealthTransactions</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_sec_msg_crypter_1a5ed79b6b7217c58cbea219a93c32c4de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SecMsgCrypter::SetKey</definition>
+        <argsstring>(const uint8_t *chNewKey, uint8_t *chNewIV)</argsstring>
+        <name>SetKey</name>
+        <param>
+          <type>const <ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref> *</type>
+          <declname>chNewKey</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref> *</type>
+          <declname>chNewIV</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/smessage.h" line="262" column="1" bodyfile="/home/dev/ds-160209/src/smessage.cpp" bodystart="98" bodyend="106"/>
+      </memberdef>
+      <memberdef kind="function" id="class_sec_msg_crypter_1abcd38cca1e7e04486ea959d71465da09" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SecMsgCrypter::Encrypt</definition>
+        <argsstring>(uint8_t *chPlaintext, uint32_t nPlain, std::vector&lt; uint8_t &gt; &amp;vchCiphertext)</argsstring>
+        <name>Encrypt</name>
+        <param>
+          <type><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref> *</type>
+          <declname>chPlaintext</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref></type>
+          <declname>nPlain</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref> &gt; &amp;</type>
+          <declname>vchCiphertext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/smessage.h" line="263" column="1" bodyfile="/home/dev/ds-160209/src/smessage.cpp" bodystart="108" bodyend="135"/>
+        <referencedby refid="class_wallet_model_1a497418d4a8566b881bab45dec7ad8fd8" compoundref="walletmodel_8cpp" startline="213" endline="488">WalletModel::sendCoins</referencedby>
+        <referencedby refid="smessage_8h_1a1a9885d0f94a7d5322eafb31bcf2f90a" compoundref="smessage_8cpp" startline="3276" endline="3531">SecureMsgEncrypt</referencedby>
+        <referencedby refid="class_c_wallet_1afce932bf3aa678046ab75eccff004858" compoundref="wallet_8cpp" startline="3385" endline="3468">CWallet::SendStealthMoneyToDestination</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_sec_msg_crypter_1a7ede11e62c67b4c1b205f2ddc9402ddb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool SecMsgCrypter::Decrypt</definition>
+        <argsstring>(uint8_t *chCiphertext, uint32_t nCipher, std::vector&lt; uint8_t &gt; &amp;vchPlaintext)</argsstring>
+        <name>Decrypt</name>
+        <param>
+          <type><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref> *</type>
+          <declname>chCiphertext</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref></type>
+          <declname>nCipher</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref> &gt; &amp;</type>
+          <declname>vchPlaintext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/smessage.h" line="264" column="1" bodyfile="/home/dev/ds-160209/src/smessage.cpp" bodystart="137" bodyend="163"/>
+        <referencedby refid="smessage_8h_1a2edb582fcb7f69b543174479231647be" compoundref="smessage_8cpp" startline="3702" endline="3946">SecureMsgDecrypt</referencedby>
+        <referencedby refid="class_c_wallet_1a5d0e2025dc7a87a0406be272b80509ee" compoundref="wallet_8cpp" startline="3470" endline="3697">CWallet::FindStealthTransactions</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/smessage.h" line="233" column="1" bodyfile="/home/dev/ds-160209/src/smessage.h" bodystart="232" bodyend="265"/>
+    <listofallmembers>
+      <member refid="class_sec_msg_crypter_1a4fdd60aed7e124ad143e7b187c912ded" prot="private" virt="non-virtual"><scope>SecMsgCrypter</scope><name>chIV</name></member>
+      <member refid="class_sec_msg_crypter_1aabac05ced624badfaf09a8aec65530cd" prot="private" virt="non-virtual"><scope>SecMsgCrypter</scope><name>chKey</name></member>
+      <member refid="class_sec_msg_crypter_1a7ede11e62c67b4c1b205f2ddc9402ddb" prot="public" virt="non-virtual"><scope>SecMsgCrypter</scope><name>Decrypt</name></member>
+      <member refid="class_sec_msg_crypter_1abcd38cca1e7e04486ea959d71465da09" prot="public" virt="non-virtual"><scope>SecMsgCrypter</scope><name>Encrypt</name></member>
+      <member refid="class_sec_msg_crypter_1a28460620b066f647922aa5bae72afad0" prot="private" virt="non-virtual"><scope>SecMsgCrypter</scope><name>fKeySet</name></member>
+      <member refid="class_sec_msg_crypter_1a9ad7ff90747e0ed5e3670206aabcbaf6" prot="public" virt="non-virtual"><scope>SecMsgCrypter</scope><name>SecMsgCrypter</name></member>
+      <member refid="class_sec_msg_crypter_1a16056670b845c1e9fc28232feee9efd5" prot="public" virt="non-virtual"><scope>SecMsgCrypter</scope><name>SetKey</name></member>
+      <member refid="class_sec_msg_crypter_1a5ed79b6b7217c58cbea219a93c32c4de" prot="public" virt="non-virtual"><scope>SecMsgCrypter</scope><name>SetKey</name></member>
+      <member refid="class_sec_msg_crypter_1a366a49eed14dce915015fd467e3f4169" prot="public" virt="non-virtual"><scope>SecMsgCrypter</scope><name>~SecMsgCrypter</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

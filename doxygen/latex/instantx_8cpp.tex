@@ -1,0 +1,285 @@
+\hypertarget{instantx_8cpp}{}\section{/home/dev/ds-\/160209/src/instantx.cpp File Reference}
+\label{instantx_8cpp}\index{/home/dev/ds-\/160209/src/instantx.\+cpp@{/home/dev/ds-\/160209/src/instantx.\+cpp}}
+{\ttfamily \#include \char`\"{}sync.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}net.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}key.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}util.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}base58.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}protocol.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}instantx.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}activestormnode.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}stormnode-\/sync.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}stormnodeman.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}sandstorm.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}spork.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}init.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$boost/lexical\+\_\+cast.\+hpp$>$}\\*
+Include dependency graph for instantx.\+cpp\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{instantx_8cpp_aa516cb499ead2691d8ab216a499db5d0}{Process\+Message\+Instant\+X} (\hyperlink{class_c_node}{C\+Node} $\ast$pfrom, std\+::string \&str\+Command, \hyperlink{class_c_data_stream}{C\+Data\+Stream} \&v\+Recv)
+\item 
+bool \hyperlink{instantx_8cpp_a091b5dc50769595bb701d5f85ca475e5}{Is\+I\+X\+T\+X\+Valid} (const \hyperlink{class_c_transaction}{C\+Transaction} \&tx\+Collateral)
+\item 
+\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} \hyperlink{instantx_8cpp_a3774b6dae3dfa0a6c85e3604e742150c}{Create\+New\+Lock} (\hyperlink{class_c_transaction}{C\+Transaction} tx)
+\item 
+void \hyperlink{instantx_8cpp_a0753801d6e6eb2cb230a85a6ba6fd371}{Do\+Consensus\+Vote} (\hyperlink{class_c_transaction}{C\+Transaction} \&tx, \hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} n\+Block\+Height)
+\item 
+bool \hyperlink{instantx_8cpp_a5d4434bfb70f64f95aa4de9286cbae94}{Process\+Consensus\+Vote} (\hyperlink{class_c_node}{C\+Node} $\ast$pnode, \hyperlink{class_c_consensus_vote}{C\+Consensus\+Vote} \&ctx)
+\item 
+bool \hyperlink{instantx_8cpp_aef32a1712071881d322fdb3740c07227}{Check\+For\+Conflicting\+Locks} (\hyperlink{class_c_transaction}{C\+Transaction} \&tx)
+\item 
+\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} \hyperlink{instantx_8cpp_a304e9387476f386ea574efe9c4d7935e}{Get\+Average\+Vote\+Time} ()
+\item 
+void \hyperlink{instantx_8cpp_afede7ddd9c324103f27d52a2a3b75b1c}{Clean\+Transaction\+Locks\+List} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+std\+::map$<$ \hyperlink{classuint256}{uint256}, \hyperlink{class_c_transaction}{C\+Transaction} $>$ \hyperlink{instantx_8cpp_acc1c1f8ae02ec2b4c621b64291033927}{map\+Tx\+Lock\+Req}
+\item 
+std\+::map$<$ \hyperlink{classuint256}{uint256}, \hyperlink{class_c_transaction}{C\+Transaction} $>$ \hyperlink{instantx_8cpp_a264a77cc84daf11ad7745da7e4b63266}{map\+Tx\+Lock\+Req\+Rejected}
+\item 
+std\+::map$<$ \hyperlink{classuint256}{uint256}, \hyperlink{class_c_consensus_vote}{C\+Consensus\+Vote} $>$ \hyperlink{instantx_8cpp_ae3472b834d4943b93811c2051c2d6d19}{map\+Tx\+Lock\+Vote}
+\item 
+std\+::map$<$ \hyperlink{classuint256}{uint256}, \hyperlink{class_c_transaction_lock}{C\+Transaction\+Lock} $>$ \hyperlink{instantx_8cpp_a1ba3263228b7c76bab6188bf659ea249}{map\+Tx\+Locks}
+\item 
+std\+::map$<$ \hyperlink{class_c_out_point}{C\+Out\+Point}, \hyperlink{classuint256}{uint256} $>$ \hyperlink{instantx_8cpp_add05f27cf823b63d3c4ac615cae0f85c}{map\+Locked\+Inputs}
+\item 
+std\+::map$<$ \hyperlink{classuint256}{uint256}, \hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} $>$ \hyperlink{instantx_8cpp_a8fee246db559496c8c3640f7cffff4e1}{map\+Unknown\+Votes}
+\item 
+int \hyperlink{instantx_8cpp_a03408fcf1ecf5379a429491d3cd0e36b}{n\+Complete\+T\+X\+Locks}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{instantx_8cpp_aef32a1712071881d322fdb3740c07227}{}\index{instantx.\+cpp@{instantx.\+cpp}!Check\+For\+Conflicting\+Locks@{Check\+For\+Conflicting\+Locks}}
+\index{Check\+For\+Conflicting\+Locks@{Check\+For\+Conflicting\+Locks}!instantx.\+cpp@{instantx.\+cpp}}
+\subsubsection[{Check\+For\+Conflicting\+Locks}]{\setlength{\rightskip}{0pt plus 5cm}bool Check\+For\+Conflicting\+Locks (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Transaction} \&}]{tx}
+\end{DoxyParamCaption}
+)}\label{instantx_8cpp_aef32a1712071881d322fdb3740c07227}
+
+
+Definition at line 396 of file instantx.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 1
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 2
+
+
+\hypertarget{instantx_8cpp_afede7ddd9c324103f27d52a2a3b75b1c}{}\index{instantx.\+cpp@{instantx.\+cpp}!Clean\+Transaction\+Locks\+List@{Clean\+Transaction\+Locks\+List}}
+\index{Clean\+Transaction\+Locks\+List@{Clean\+Transaction\+Locks\+List}!instantx.\+cpp@{instantx.\+cpp}}
+\subsubsection[{Clean\+Transaction\+Locks\+List}]{\setlength{\rightskip}{0pt plus 5cm}void Clean\+Transaction\+Locks\+List (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{instantx_8cpp_afede7ddd9c324103f27d52a2a3b75b1c}
+
+
+Definition at line 434 of file instantx.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 3
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 4
+
+
+\hypertarget{instantx_8cpp_a3774b6dae3dfa0a6c85e3604e742150c}{}\index{instantx.\+cpp@{instantx.\+cpp}!Create\+New\+Lock@{Create\+New\+Lock}}
+\index{Create\+New\+Lock@{Create\+New\+Lock}!instantx.\+cpp@{instantx.\+cpp}}
+\subsubsection[{Create\+New\+Lock}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int64\+\_\+t} Create\+New\+Lock (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Transaction}}]{tx}
+\end{DoxyParamCaption}
+)}\label{instantx_8cpp_a3774b6dae3dfa0a6c85e3604e742150c}
+
+
+Definition at line 221 of file instantx.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 5
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 6
+
+
+\hypertarget{instantx_8cpp_a0753801d6e6eb2cb230a85a6ba6fd371}{}\index{instantx.\+cpp@{instantx.\+cpp}!Do\+Consensus\+Vote@{Do\+Consensus\+Vote}}
+\index{Do\+Consensus\+Vote@{Do\+Consensus\+Vote}!instantx.\+cpp@{instantx.\+cpp}}
+\subsubsection[{Do\+Consensus\+Vote}]{\setlength{\rightskip}{0pt plus 5cm}void Do\+Consensus\+Vote (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Transaction} \&}]{tx, }
+\item[{{\bf int64\+\_\+t}}]{n\+Block\+Height}
+\end{DoxyParamCaption}
+)}\label{instantx_8cpp_a0753801d6e6eb2cb230a85a6ba6fd371}
+
+
+Definition at line 259 of file instantx.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 7
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 8
+
+
+\hypertarget{instantx_8cpp_a304e9387476f386ea574efe9c4d7935e}{}\index{instantx.\+cpp@{instantx.\+cpp}!Get\+Average\+Vote\+Time@{Get\+Average\+Vote\+Time}}
+\index{Get\+Average\+Vote\+Time@{Get\+Average\+Vote\+Time}!instantx.\+cpp@{instantx.\+cpp}}
+\subsubsection[{Get\+Average\+Vote\+Time}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int64\+\_\+t} Get\+Average\+Vote\+Time (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{instantx_8cpp_a304e9387476f386ea574efe9c4d7935e}
+
+
+Definition at line 419 of file instantx.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 9
+
+
+\hypertarget{instantx_8cpp_a091b5dc50769595bb701d5f85ca475e5}{}\index{instantx.\+cpp@{instantx.\+cpp}!Is\+I\+X\+T\+X\+Valid@{Is\+I\+X\+T\+X\+Valid}}
+\index{Is\+I\+X\+T\+X\+Valid@{Is\+I\+X\+T\+X\+Valid}!instantx.\+cpp@{instantx.\+cpp}}
+\subsubsection[{Is\+I\+X\+T\+X\+Valid}]{\setlength{\rightskip}{0pt plus 5cm}bool Is\+I\+X\+T\+X\+Valid (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Transaction} \&}]{tx\+Collateral}
+\end{DoxyParamCaption}
+)}\label{instantx_8cpp_a091b5dc50769595bb701d5f85ca475e5}
+
+
+Definition at line 175 of file instantx.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 10
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 11
+
+
+\hypertarget{instantx_8cpp_a5d4434bfb70f64f95aa4de9286cbae94}{}\index{instantx.\+cpp@{instantx.\+cpp}!Process\+Consensus\+Vote@{Process\+Consensus\+Vote}}
+\index{Process\+Consensus\+Vote@{Process\+Consensus\+Vote}!instantx.\+cpp@{instantx.\+cpp}}
+\subsubsection[{Process\+Consensus\+Vote}]{\setlength{\rightskip}{0pt plus 5cm}bool Process\+Consensus\+Vote (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Node} $\ast$}]{pnode, }
+\item[{{\bf C\+Consensus\+Vote} \&}]{ctx}
+\end{DoxyParamCaption}
+)}\label{instantx_8cpp_a5d4434bfb70f64f95aa4de9286cbae94}
+
+
+Definition at line 302 of file instantx.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 12
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 13
+
+
+\hypertarget{instantx_8cpp_aa516cb499ead2691d8ab216a499db5d0}{}\index{instantx.\+cpp@{instantx.\+cpp}!Process\+Message\+Instant\+X@{Process\+Message\+Instant\+X}}
+\index{Process\+Message\+Instant\+X@{Process\+Message\+Instant\+X}!instantx.\+cpp@{instantx.\+cpp}}
+\subsubsection[{Process\+Message\+Instant\+X}]{\setlength{\rightskip}{0pt plus 5cm}void Process\+Message\+Instant\+X (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Node} $\ast$}]{pfrom, }
+\item[{std\+::string \&}]{str\+Command, }
+\item[{{\bf C\+Data\+Stream} \&}]{v\+Recv}
+\end{DoxyParamCaption}
+)}\label{instantx_8cpp_aa516cb499ead2691d8ab216a499db5d0}
+
+
+Definition at line 38 of file instantx.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 14
+
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{instantx_8cpp_add05f27cf823b63d3c4ac615cae0f85c}{}\index{instantx.\+cpp@{instantx.\+cpp}!map\+Locked\+Inputs@{map\+Locked\+Inputs}}
+\index{map\+Locked\+Inputs@{map\+Locked\+Inputs}!instantx.\+cpp@{instantx.\+cpp}}
+\subsubsection[{map\+Locked\+Inputs}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<${\bf C\+Out\+Point}, {\bf uint256}$>$ map\+Locked\+Inputs}\label{instantx_8cpp_add05f27cf823b63d3c4ac615cae0f85c}
+
+
+Definition at line 27 of file instantx.\+cpp.
+
+\hypertarget{instantx_8cpp_acc1c1f8ae02ec2b4c621b64291033927}{}\index{instantx.\+cpp@{instantx.\+cpp}!map\+Tx\+Lock\+Req@{map\+Tx\+Lock\+Req}}
+\index{map\+Tx\+Lock\+Req@{map\+Tx\+Lock\+Req}!instantx.\+cpp@{instantx.\+cpp}}
+\subsubsection[{map\+Tx\+Lock\+Req}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<${\bf uint256}, {\bf C\+Transaction}$>$ map\+Tx\+Lock\+Req}\label{instantx_8cpp_acc1c1f8ae02ec2b4c621b64291033927}
+
+
+Definition at line 23 of file instantx.\+cpp.
+
+\hypertarget{instantx_8cpp_a264a77cc84daf11ad7745da7e4b63266}{}\index{instantx.\+cpp@{instantx.\+cpp}!map\+Tx\+Lock\+Req\+Rejected@{map\+Tx\+Lock\+Req\+Rejected}}
+\index{map\+Tx\+Lock\+Req\+Rejected@{map\+Tx\+Lock\+Req\+Rejected}!instantx.\+cpp@{instantx.\+cpp}}
+\subsubsection[{map\+Tx\+Lock\+Req\+Rejected}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<${\bf uint256}, {\bf C\+Transaction}$>$ map\+Tx\+Lock\+Req\+Rejected}\label{instantx_8cpp_a264a77cc84daf11ad7745da7e4b63266}
+
+
+Definition at line 24 of file instantx.\+cpp.
+
+\hypertarget{instantx_8cpp_a1ba3263228b7c76bab6188bf659ea249}{}\index{instantx.\+cpp@{instantx.\+cpp}!map\+Tx\+Locks@{map\+Tx\+Locks}}
+\index{map\+Tx\+Locks@{map\+Tx\+Locks}!instantx.\+cpp@{instantx.\+cpp}}
+\subsubsection[{map\+Tx\+Locks}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<${\bf uint256}, {\bf C\+Transaction\+Lock}$>$ map\+Tx\+Locks}\label{instantx_8cpp_a1ba3263228b7c76bab6188bf659ea249}
+
+
+Definition at line 26 of file instantx.\+cpp.
+
+\hypertarget{instantx_8cpp_ae3472b834d4943b93811c2051c2d6d19}{}\index{instantx.\+cpp@{instantx.\+cpp}!map\+Tx\+Lock\+Vote@{map\+Tx\+Lock\+Vote}}
+\index{map\+Tx\+Lock\+Vote@{map\+Tx\+Lock\+Vote}!instantx.\+cpp@{instantx.\+cpp}}
+\subsubsection[{map\+Tx\+Lock\+Vote}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<${\bf uint256}, {\bf C\+Consensus\+Vote}$>$ map\+Tx\+Lock\+Vote}\label{instantx_8cpp_ae3472b834d4943b93811c2051c2d6d19}
+
+
+Definition at line 25 of file instantx.\+cpp.
+
+\hypertarget{instantx_8cpp_a8fee246db559496c8c3640f7cffff4e1}{}\index{instantx.\+cpp@{instantx.\+cpp}!map\+Unknown\+Votes@{map\+Unknown\+Votes}}
+\index{map\+Unknown\+Votes@{map\+Unknown\+Votes}!instantx.\+cpp@{instantx.\+cpp}}
+\subsubsection[{map\+Unknown\+Votes}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<${\bf uint256}, {\bf int64\+\_\+t}$>$ map\+Unknown\+Votes}\label{instantx_8cpp_a8fee246db559496c8c3640f7cffff4e1}
+
+
+Definition at line 28 of file instantx.\+cpp.
+
+\hypertarget{instantx_8cpp_a03408fcf1ecf5379a429491d3cd0e36b}{}\index{instantx.\+cpp@{instantx.\+cpp}!n\+Complete\+T\+X\+Locks@{n\+Complete\+T\+X\+Locks}}
+\index{n\+Complete\+T\+X\+Locks@{n\+Complete\+T\+X\+Locks}!instantx.\+cpp@{instantx.\+cpp}}
+\subsubsection[{n\+Complete\+T\+X\+Locks}]{\setlength{\rightskip}{0pt plus 5cm}int n\+Complete\+T\+X\+Locks}\label{instantx_8cpp_a03408fcf1ecf5379a429491d3cd0e36b}
+
+
+Definition at line 29 of file instantx.\+cpp.
+

@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="thread_8c" kind="file" language="C++">
+    <compoundname>thread.c</compoundname>
+    <includes refid="thread_8h" local="yes">thread.h</includes>
+    <incdepgraph>
+      <node id="33552">
+        <label>/home/dev/ds-160209/src/crypto/argon2/thread.c</label>
+        <link refid="thread.c"/>
+        <childnode refid="33553" relation="include">
+        </childnode>
+      </node>
+      <node id="33553">
+        <label>thread.h</label>
+        <link refid="thread_8h"/>
+        <childnode refid="33554" relation="include">
+        </childnode>
+      </node>
+      <node id="33554">
+        <label>pthread.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="thread_8c_1a17ddfe963b3747e06a8c134f38f58bc1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int argon2_thread_create</definition>
+        <argsstring>(argon2_thread_handle_t *handle, argon2_thread_func_t func, void *args)</argsstring>
+        <name>argon2_thread_create</name>
+        <param>
+          <type><ref refid="thread_8h_1a503637a7a6e8c40a06470b8838aa750c" kindref="member">argon2_thread_handle_t</ref> *</type>
+          <declname>handle</declname>
+        </param>
+        <param>
+          <type><ref refid="thread_8h_1a6184874ede09a6cc34b9e20ca74b75a2" kindref="member">argon2_thread_func_t</ref></type>
+          <declname>func</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/thread.c" line="6" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/thread.c" bodystart="6" bodyend="17"/>
+        <referencedby refid="core_8h_1afc8e1540c9738230c2a993c9efcf2620" compoundref="core_8c" startline="252" endline="331">fill_memory_blocks</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="thread_8c_1a2e67f9a3df17200908ee0801c7e5f1f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int argon2_thread_join</definition>
+        <argsstring>(argon2_thread_handle_t handle)</argsstring>
+        <name>argon2_thread_join</name>
+        <param>
+          <type><ref refid="thread_8h_1a503637a7a6e8c40a06470b8838aa750c" kindref="member">argon2_thread_handle_t</ref></type>
+          <declname>handle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/thread.c" line="19" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/thread.c" bodystart="19" bodyend="28"/>
+        <referencedby refid="core_8h_1afc8e1540c9738230c2a993c9efcf2620" compoundref="core_8c" startline="252" endline="331">fill_memory_blocks</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="thread_8c_1ae143ea0ec6edcaf604f3973cbf37f577" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void argon2_thread_exit</definition>
+        <argsstring>(void)</argsstring>
+        <name>argon2_thread_exit</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/thread.c" line="30" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/thread.c" bodystart="30" bodyend="36"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="thread_8h" kindref="compound">thread.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(_WIN32)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Windows.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6" refid="thread_8h_1a17ddfe963b3747e06a8c134f38f58bc1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="thread_8c_1a17ddfe963b3747e06a8c134f38f58bc1" kindref="member">argon2_thread_create</ref>(<ref refid="thread_8h_1a503637a7a6e8c40a06470b8838aa750c" kindref="member">argon2_thread_handle_t</ref><sp/>*handle,</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="thread_8h_1a6184874ede09a6cc34b9e20ca74b75a2" kindref="member">argon2_thread_func_t</ref><sp/><ref refid="testharness_8cc_1ac98d5d20f5aab3ef51e0ff5e30d16925" kindref="member">func</ref>,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*args)<sp/>{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(NULL<sp/>==<sp/>handle<sp/>||<sp/>func<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(_WIN32)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>*handle<sp/>=<sp/>_beginthreadex(NULL,<sp/>0,<sp/>func,<sp/>args,<sp/>0,<sp/>NULL);</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*handle<sp/>!=<sp/>0<sp/>?<sp/>0<sp/>:<sp/>-1;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pthread_create(handle,<sp/>NULL,<sp/>func,<sp/>args);</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="thread_8h_1a2e67f9a3df17200908ee0801c7e5f1f1" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="thread_8c_1a2e67f9a3df17200908ee0801c7e5f1f1" kindref="member">argon2_thread_join</ref>(<ref refid="thread_8h_1a503637a7a6e8c40a06470b8838aa750c" kindref="member">argon2_thread_handle_t</ref><sp/>handle)<sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(_WIN32)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(WaitForSingleObject((HANDLE)handle,<sp/>INFINITE)<sp/>==<sp/>WAIT_OBJECT_0)<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>CloseHandle((HANDLE)handle)<sp/>!=<sp/>0<sp/>?<sp/>0<sp/>:<sp/>-1;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>pthread_join(handle,<sp/>NULL);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="thread_8h_1ae143ea0ec6edcaf604f3973cbf37f577" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="thread_8c_1ae143ea0ec6edcaf604f3973cbf37f577" kindref="member">argon2_thread_exit</ref>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#if<sp/>defined(_WIN32)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>_endthreadex(0);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>pthread_exit(NULL);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/crypto/argon2/thread.c"/>
+  </compounddef>
+</doxygen>

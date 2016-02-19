@@ -1,0 +1,477 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="genkat_8c" kind="file" language="C++">
+    <compoundname>genkat.c</compoundname>
+    <includes local="no">inttypes.h</includes>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">string.h</includes>
+    <includes refid="argon2_8h" local="yes">argon2.h</includes>
+    <includes refid="core_8h" local="yes">core.h</includes>
+    <incdepgraph>
+      <node id="33483">
+        <label>/home/dev/ds-160209/src/crypto/argon2/genkat.c</label>
+        <link refid="genkat.c"/>
+        <childnode refid="33484" relation="include">
+        </childnode>
+        <childnode refid="33485" relation="include">
+        </childnode>
+        <childnode refid="33486" relation="include">
+        </childnode>
+        <childnode refid="33487" relation="include">
+        </childnode>
+        <childnode refid="33488" relation="include">
+        </childnode>
+        <childnode refid="33492" relation="include">
+        </childnode>
+      </node>
+      <node id="33486">
+        <label>stdlib.h</label>
+      </node>
+      <node id="33490">
+        <label>stddef.h</label>
+      </node>
+      <node id="33491">
+        <label>limits.h</label>
+      </node>
+      <node id="33487">
+        <label>string.h</label>
+      </node>
+      <node id="33489">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="33488">
+        <label>argon2.h</label>
+        <link refid="argon2_8h"/>
+        <childnode refid="33489" relation="include">
+        </childnode>
+        <childnode refid="33490" relation="include">
+        </childnode>
+        <childnode refid="33491" relation="include">
+        </childnode>
+      </node>
+      <node id="33492">
+        <label>core.h</label>
+        <link refid="core_8h"/>
+        <childnode refid="33488" relation="include">
+        </childnode>
+      </node>
+      <node id="33485">
+        <label>stdio.h</label>
+      </node>
+      <node id="33484">
+        <label>inttypes.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="genkat_8c_1aca1269fc07835b8ab1f1a39311ccd0cc" prot="public" static="no">
+        <name>TEST_OUTLEN</name>
+        <initializer>32</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/genkat.c" line="134" column="9"/>
+      </memberdef>
+      <memberdef kind="define" id="genkat_8c_1ab55e23326f95fab2e4e3cf7ffbec3f35" prot="public" static="no">
+        <name>TEST_PWDLEN</name>
+        <initializer>32</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/genkat.c" line="135" column="9"/>
+      </memberdef>
+      <memberdef kind="define" id="genkat_8c_1aa46a92f00bc9cb8f164c563669b2a57a" prot="public" static="no">
+        <name>TEST_SALTLEN</name>
+        <initializer>16</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/genkat.c" line="136" column="9"/>
+      </memberdef>
+      <memberdef kind="define" id="genkat_8c_1aba878eb295a763e5262da22410a49abd" prot="public" static="no">
+        <name>TEST_SECRETLEN</name>
+        <initializer>8</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/genkat.c" line="137" column="9"/>
+      </memberdef>
+      <memberdef kind="define" id="genkat_8c_1a1d77e1afb6e2003f9855f86340cb7369" prot="public" static="no">
+        <name>TEST_ADLEN</name>
+        <initializer>12</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/genkat.c" line="138" column="9"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="genkat_8c_1a28a5cfda428fc2ab9dd743f5d44d66a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void initial_kat</definition>
+        <argsstring>(const uint8_t *blockhash, const argon2_context *context, argon2_type type)</argsstring>
+        <name>initial_kat</name>
+        <param>
+          <type>const <ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref> *</type>
+          <declname>blockhash</declname>
+        </param>
+        <param>
+          <type>const <ref refid="argon2_8h_1a43c74dc5ed515632feee9b2e1ff3e09f" kindref="member">argon2_context</ref> *</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type><ref refid="argon2_8h_1af51eac9927f7f234943d076166aacf84" kindref="member">argon2_type</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/genkat.c" line="21" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/genkat.c" bodystart="21" bodyend="94"/>
+        <references refid="argon2_8h_1a5d5d088fc49f3e133161c81e15fe1695a48ce300350099ad17bb3d5fe7da1c1cc" compoundref="argon2_8h" startline="197">Argon2_d</references>
+        <references refid="argon2_8h_1a5d5d088fc49f3e133161c81e15fe1695ad879f03535165a16f3040eeae7eedefa" compoundref="argon2_8h" startline="197">Argon2_i</references>
+        <references refid="struct_argon2___context_1a78b6d500cdb208f3b09a10c07716d6ab" compoundref="argon2_8h" startline="186">Argon2_Context::m_cost</references>
+        <references refid="struct_argon2___context_1adffe97f0527779835c511385dfc5d63d" compoundref="argon2_8h" startline="185">Argon2_Context::t_cost</references>
+        <references refid="struct_argon2___context_1a8ab1ecf163c039d8db1d9eeb119b6112" compoundref="argon2_8h" startline="187">Argon2_Context::lanes</references>
+        <references refid="struct_argon2___context_1a11cb0932b2a6fd6fa0e6f5f5148f3ba9" compoundref="argon2_8h" startline="171">Argon2_Context::outlen</references>
+        <references refid="struct_argon2___context_1a734b6a24aa48806715a5b81d7dfa98c3" compoundref="argon2_8h" startline="174">Argon2_Context::pwdlen</references>
+        <references refid="struct_argon2___context_1a17f2c93463a2d9c0f6017b2d843c6d0c" compoundref="argon2_8h" startline="193">Argon2_Context::flags</references>
+        <references refid="argon2_8h_1a682bd9a3712a2d49f022e0936b3ea7e8" compoundref="argon2_8h" startline="73">ARGON2_FLAG_CLEAR_PASSWORD</references>
+        <references refid="struct_argon2___context_1a0ddb2c07c361a668e1f925f9a2eb6523" compoundref="argon2_8h" startline="173">Argon2_Context::pwd</references>
+        <references refid="struct_argon2___context_1a1f151741022a0b25c66c704408522cca" compoundref="argon2_8h" startline="177">Argon2_Context::saltlen</references>
+        <references refid="struct_argon2___context_1a36bfd9d93195daafa0d7e4afdbbee1dc" compoundref="argon2_8h" startline="176">Argon2_Context::salt</references>
+        <references refid="struct_argon2___context_1a9530abd766c77aba4e841445e5c70a08" compoundref="argon2_8h" startline="180">Argon2_Context::secretlen</references>
+        <references refid="argon2_8h_1ad1a7a07ada3a442790847d4e56dacf6d" compoundref="argon2_8h" startline="74">ARGON2_FLAG_CLEAR_SECRET</references>
+        <references refid="struct_argon2___context_1a7c35fd8bd296f776a9db6278c9bdacb6" compoundref="argon2_8h" startline="179">Argon2_Context::secret</references>
+        <references refid="struct_argon2___context_1a27f944c49530b5a43d754c1a5ec30918" compoundref="argon2_8h" startline="183">Argon2_Context::adlen</references>
+        <references refid="struct_argon2___context_1a20329e319449d710c4f5bf591690b4c4" compoundref="argon2_8h" startline="182">Argon2_Context::ad</references>
+        <references refid="core_8h_1a7f5657d0a2dc42b3d802b8200858b93caf287344a0238ddbec64b9ab12c03facd" compoundref="core_8h" startline="47">ARGON2_PREHASH_DIGEST_LENGTH</references>
+        <referencedby refid="core_8h_1ac4f3546c9e156e161179b7cb1b6565e5" compoundref="core_8c" startline="559" endline="604">initialize</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="genkat_8c_1ae9f51a4f9ebe1b42c724153dae1e181e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void print_tag</definition>
+        <argsstring>(const void *out, uint32_t outlen)</argsstring>
+        <name>print_tag</name>
+        <param>
+          <type>const void *</type>
+          <declname>out</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref></type>
+          <declname>outlen</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/genkat.c" line="96" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/genkat.c" bodystart="96" bodyend="107"/>
+        <referencedby refid="core_8h_1aafd756bf3475038e2eada05bcaf31b18" compoundref="core_8c" startline="127" endline="168">finalize</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="genkat_8c_1a612941d3015f44d978fbd01598212929" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void internal_kat</definition>
+        <argsstring>(const argon2_instance_t *instance, uint32_t pass)</argsstring>
+        <name>internal_kat</name>
+        <param>
+          <type>const <ref refid="core_8h_1ac888abc6f5f9faa538ff23dc92b1e1c2" kindref="member">argon2_instance_t</ref> *</type>
+          <declname>instance</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref></type>
+          <declname>pass</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/genkat.c" line="109" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/genkat.c" bodystart="109" bodyend="126"/>
+        <references refid="struct_argon2__instance__t_1a40e32466250c3eaa25458b89050f1d0d" compoundref="core_8h" startline="81">Argon2_instance_t::memory_blocks</references>
+        <references refid="core_8h_1a7f5657d0a2dc42b3d802b8200858b93cae7f95c31492458d44a7c7511a9212e18" compoundref="core_8h" startline="38">ARGON2_QWORDS_IN_BLOCK</references>
+        <references refid="struct_argon2__instance__t_1a7feaf5341041e1c7aca88eb093ad67a3" compoundref="core_8h" startline="79">Argon2_instance_t::memory</references>
+        <references refid="structblock___1a2dda5556500153c8ad1323b6310bb549" compoundref="core_8h" startline="59">block_::v</references>
+        <referencedby refid="core_8h_1afc8e1540c9738230c2a993c9efcf2620" compoundref="core_8c" startline="252" endline="331">fill_memory_blocks</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="genkat_8c_1ad77b3c4d9f3c4fe569601b293dc2feb9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void fatal</definition>
+        <argsstring>(const char *error)</argsstring>
+        <name>fatal</name>
+        <param>
+          <type>const char *</type>
+          <declname>error</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/genkat.c" line="128" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/genkat.c" bodystart="128" bodyend="131"/>
+      </memberdef>
+      <memberdef kind="function" id="genkat_8c_1ad4e2e6086812a4730a8c80b572400494" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void generate_testvectors</definition>
+        <argsstring>(const char *type)</argsstring>
+        <name>generate_testvectors</name>
+        <param>
+          <type>const char *</type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/genkat.c" line="133" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/genkat.c" bodystart="133" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="function" id="genkat_8c_1a0ddf1224851353fc92bfbff6f499fa97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>(int argc, char *argv[])</argsstring>
+        <name>main</name>
+        <param>
+          <type>int</type>
+          <declname>argc</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>argv</declname>
+          <array>[]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/genkat.c" line="190" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/genkat.c" bodystart="190" bodyend="194"/>
+        <references refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a19b53dfdd59a4e04632b2de23530b3e8" compoundref="argon2_8h" startline="80">ARGON2_OK</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Argon2<sp/>source<sp/>code<sp/>package</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Written<sp/>by<sp/>Daniel<sp/>Dinu<sp/>and<sp/>Dmitry<sp/>Khovratovich,<sp/>2015</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>This<sp/>work<sp/>is<sp/>licensed<sp/>under<sp/>a<sp/>Creative<sp/>Commons<sp/>CC0<sp/>1.0<sp/>License/Waiver.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>CC0<sp/>Public<sp/>Domain<sp/>Dedication<sp/>along</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>with</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>this<sp/>software.<sp/>If<sp/>not,<sp/>see</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>&lt;http://creativecommons.org/publicdomain/zero/1.0/&gt;.</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;inttypes.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="argon2_8h" kindref="compound">argon2.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="core_8h" kindref="compound">core.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="genkat_8h_1a28a5cfda428fc2ab9dd743f5d44d66a6" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="genkat_8c_1a28a5cfda428fc2ab9dd743f5d44d66a6" kindref="member">initial_kat</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref><sp/>*blockhash,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_argon2___context" kindref="compound">argon2_context</ref><sp/>*context,</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="argon2_8h_1af51eac9927f7f234943d076166aacf84" kindref="member">argon2_type</ref><sp/>type)<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i;</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(blockhash<sp/>!=<sp/>NULL<sp/>&amp;&amp;<sp/>context<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;=======================================&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(type)<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="argon2_8h_1a5d5d088fc49f3e133161c81e15fe1695a48ce300350099ad17bb3d5fe7da1c1cc" kindref="member">Argon2_d</ref>:</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Argon2d\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="argon2_8h_1a5d5d088fc49f3e133161c81e15fe1695ad879f03535165a16f3040eeae7eedefa" kindref="member">Argon2_i</ref>:</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Argon2i\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Memory:<sp/>%u<sp/>KiB,<sp/>Iterations:<sp/>%u,<sp/>Parallelism:<sp/>%u<sp/>lanes,<sp/>Tag<sp/>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;length:<sp/>%u<sp/>bytes\n&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context-&gt;<ref refid="struct_argon2___context_1a78b6d500cdb208f3b09a10c07716d6ab" kindref="member">m_cost</ref>,<sp/>context-&gt;<ref refid="struct_argon2___context_1adffe97f0527779835c511385dfc5d63d" kindref="member">t_cost</ref>,<sp/>context-&gt;<ref refid="struct_argon2___context_1a8ab1ecf163c039d8db1d9eeb119b6112" kindref="member">lanes</ref>,</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>context-&gt;<ref refid="struct_argon2___context_1a11cb0932b2a6fd6fa0e6f5f5148f3ba9" kindref="member">outlen</ref>);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Password[%u]:<sp/>&quot;</highlight><highlight class="normal">,<sp/>context-&gt;<ref refid="struct_argon2___context_1a734b6a24aa48806715a5b81d7dfa98c3" kindref="member">pwdlen</ref>);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(context-&gt;<ref refid="struct_argon2___context_1a17f2c93463a2d9c0f6017b2d843c6d0c" kindref="member">flags</ref><sp/>&amp;<sp/><ref refid="argon2_8h_1a682bd9a3712a2d49f022e0936b3ea7e8" kindref="member">ARGON2_FLAG_CLEAR_PASSWORD</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;CLEARED\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>context-&gt;<ref refid="struct_argon2___context_1a734b6a24aa48806715a5b81d7dfa98c3" kindref="member">pwdlen</ref>;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;%2.2x<sp/>&quot;</highlight><highlight class="normal">,<sp/>((</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*)context-&gt;<ref refid="struct_argon2___context_1a0ddb2c07c361a668e1f925f9a2eb6523" kindref="member">pwd</ref>)[i]);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Salt[%u]:<sp/>&quot;</highlight><highlight class="normal">,<sp/>context-&gt;<ref refid="struct_argon2___context_1a1f151741022a0b25c66c704408522cca" kindref="member">saltlen</ref>);</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>context-&gt;<ref refid="struct_argon2___context_1a1f151741022a0b25c66c704408522cca" kindref="member">saltlen</ref>;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;%2.2x<sp/>&quot;</highlight><highlight class="normal">,<sp/>((</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*)context-&gt;<ref refid="struct_argon2___context_1a36bfd9d93195daafa0d7e4afdbbee1dc" kindref="member">salt</ref>)[i]);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Secret[%u]:<sp/>&quot;</highlight><highlight class="normal">,<sp/>context-&gt;<ref refid="struct_argon2___context_1a9530abd766c77aba4e841445e5c70a08" kindref="member">secretlen</ref>);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(context-&gt;<ref refid="struct_argon2___context_1a17f2c93463a2d9c0f6017b2d843c6d0c" kindref="member">flags</ref><sp/>&amp;<sp/><ref refid="argon2_8h_1ad1a7a07ada3a442790847d4e56dacf6d" kindref="member">ARGON2_FLAG_CLEAR_SECRET</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;CLEARED\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>context-&gt;<ref refid="struct_argon2___context_1a9530abd766c77aba4e841445e5c70a08" kindref="member">secretlen</ref>;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;%2.2x<sp/>&quot;</highlight><highlight class="normal">,<sp/>((</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*)context-&gt;<ref refid="struct_argon2___context_1a7c35fd8bd296f776a9db6278c9bdacb6" kindref="member">secret</ref>)[i]);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Associated<sp/>data[%u]:<sp/>&quot;</highlight><highlight class="normal">,<sp/>context-&gt;<ref refid="struct_argon2___context_1a27f944c49530b5a43d754c1a5ec30918" kindref="member">adlen</ref>);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>context-&gt;<ref refid="struct_argon2___context_1a27f944c49530b5a43d754c1a5ec30918" kindref="member">adlen</ref>;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;%2.2x<sp/>&quot;</highlight><highlight class="normal">,<sp/>((</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*)context-&gt;<ref refid="struct_argon2___context_1a20329e319449d710c4f5bf591690b4c4" kindref="member">ad</ref>)[i]);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Pre-hashing<sp/>digest:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/><ref refid="core_8h_1a7f5657d0a2dc42b3d802b8200858b93caf287344a0238ddbec64b9ab12c03facd" kindref="member">ARGON2_PREHASH_DIGEST_LENGTH</ref>;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;%2.2x<sp/>&quot;</highlight><highlight class="normal">,<sp/>((</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*)blockhash)[i]);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="genkat_8h_1ae9f51a4f9ebe1b42c724153dae1e181e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="genkat_8c_1ae9f51a4f9ebe1b42c724153dae1e181e" kindref="member">print_tag</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*out,<sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>outlen)<sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>i;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(out<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Tag:<sp/>&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>outlen;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;%2.2x<sp/>&quot;</highlight><highlight class="normal">,<sp/>((<ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref><sp/>*)out)[i]);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="genkat_8h_1a612941d3015f44d978fbd01598212929" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="genkat_8c_1a612941d3015f44d978fbd01598212929" kindref="member">internal_kat</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="struct_argon2__instance__t" kindref="compound">argon2_instance_t</ref><sp/>*instance,<sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>pass)<sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(instance<sp/>!=<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>i,<sp/>j;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;\n<sp/>After<sp/>pass<sp/>%u:\n&quot;</highlight><highlight class="normal">,<sp/>pass);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>instance-&gt;<ref refid="struct_argon2__instance__t_1a40e32466250c3eaa25458b89050f1d0d" kindref="member">memory_blocks</ref>;<sp/>++i)<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>how_many_words<sp/>=</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(instance-&gt;<ref refid="struct_argon2__instance__t_1a40e32466250c3eaa25458b89050f1d0d" kindref="member">memory_blocks</ref><sp/>&gt;<sp/><ref refid="core_8h_1a7f5657d0a2dc42b3d802b8200858b93cae7f95c31492458d44a7c7511a9212e18" kindref="member">ARGON2_QWORDS_IN_BLOCK</ref>)</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>?<sp/>1</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/><ref refid="core_8h_1a7f5657d0a2dc42b3d802b8200858b93cae7f95c31492458d44a7c7511a9212e18" kindref="member">ARGON2_QWORDS_IN_BLOCK</ref>;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(j<sp/>=<sp/>0;<sp/>j<sp/>&lt;<sp/>how_many_words;<sp/>++j)</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>printf(</highlight><highlight class="stringliteral">&quot;Block<sp/>%.4u<sp/>[%3u]:<sp/>%016&quot;</highlight><highlight class="normal"><sp/>PRIx64<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">,<sp/>i,<sp/>j,</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>instance-&gt;<ref refid="struct_argon2__instance__t_1a7feaf5341041e1c7aca88eb093ad67a3" kindref="member">memory</ref>[i].<ref refid="structblock___1a2dda5556500153c8ad1323b6310bb549" kindref="member">v</ref>[j]);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>fatal(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*error)<sp/>{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>fprintf(stderr,<sp/></highlight><highlight class="stringliteral">&quot;Error:<sp/>%s\n&quot;</highlight><highlight class="normal">,<sp/>error);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>exit(1);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>generate_testvectors(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*type)<sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TEST_OUTLEN<sp/>32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TEST_PWDLEN<sp/>32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TEST_SALTLEN<sp/>16</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TEST_SECRETLEN<sp/>8</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TEST_ADLEN<sp/>12</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_argon2___context" kindref="compound">argon2_context</ref><sp/>context;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>out[<ref refid="genkat_8c_1aca1269fc07835b8ab1f1a39311ccd0cc" kindref="member">TEST_OUTLEN</ref>];</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>pwd[<ref refid="genkat_8c_1ab55e23326f95fab2e4e3cf7ffbec3f35" kindref="member">TEST_PWDLEN</ref>];</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>salt[<ref refid="genkat_8c_1aa46a92f00bc9cb8f164c563669b2a57a" kindref="member">TEST_SALTLEN</ref>];</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>secret[<ref refid="genkat_8c_1aba878eb295a763e5262da22410a49abd" kindref="member">TEST_SECRETLEN</ref>];</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>ad[<ref refid="genkat_8c_1a1d77e1afb6e2003f9855f86340cb7369" kindref="member">TEST_ADLEN</ref>];</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="argon2_8h_1a5508e39cdab4199bc5b983d0f4e23b2a" kindref="member">allocate_fptr</ref><sp/>myown_allocator<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="argon2_8h_1acd642781ec68bbc18647b67f19c15128" kindref="member">deallocate_fptr</ref><sp/>myown_deallocator<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>t_cost<sp/>=<sp/>3;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>m_cost<sp/>=<sp/>32;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>lanes<sp/>=<sp/>4;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(pwd,<sp/>1,<sp/><ref refid="genkat_8c_1aca1269fc07835b8ab1f1a39311ccd0cc" kindref="member">TEST_OUTLEN</ref>);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(salt,<sp/>2,<sp/><ref refid="genkat_8c_1aa46a92f00bc9cb8f164c563669b2a57a" kindref="member">TEST_SALTLEN</ref>);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(secret,<sp/>3,<sp/><ref refid="genkat_8c_1aba878eb295a763e5262da22410a49abd" kindref="member">TEST_SECRETLEN</ref>);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>memset(ad,<sp/>4,<sp/><ref refid="genkat_8c_1a1d77e1afb6e2003f9855f86340cb7369" kindref="member">TEST_ADLEN</ref>);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a53bc334f5ca86d2ff639abddb9b08177" kindref="member">out</ref><sp/>=<sp/>out;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a11cb0932b2a6fd6fa0e6f5f5148f3ba9" kindref="member">outlen</ref><sp/>=<sp/><ref refid="genkat_8c_1aca1269fc07835b8ab1f1a39311ccd0cc" kindref="member">TEST_OUTLEN</ref>;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a0ddb2c07c361a668e1f925f9a2eb6523" kindref="member">pwd</ref><sp/>=<sp/>pwd;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a734b6a24aa48806715a5b81d7dfa98c3" kindref="member">pwdlen</ref><sp/>=<sp/><ref refid="genkat_8c_1ab55e23326f95fab2e4e3cf7ffbec3f35" kindref="member">TEST_PWDLEN</ref>;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a36bfd9d93195daafa0d7e4afdbbee1dc" kindref="member">salt</ref><sp/>=<sp/>salt;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a1f151741022a0b25c66c704408522cca" kindref="member">saltlen</ref><sp/>=<sp/><ref refid="genkat_8c_1aa46a92f00bc9cb8f164c563669b2a57a" kindref="member">TEST_SALTLEN</ref>;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a7c35fd8bd296f776a9db6278c9bdacb6" kindref="member">secret</ref><sp/>=<sp/>secret;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a9530abd766c77aba4e841445e5c70a08" kindref="member">secretlen</ref><sp/>=<sp/><ref refid="genkat_8c_1aba878eb295a763e5262da22410a49abd" kindref="member">TEST_SECRETLEN</ref>;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a20329e319449d710c4f5bf591690b4c4" kindref="member">ad</ref><sp/>=<sp/>ad;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a27f944c49530b5a43d754c1a5ec30918" kindref="member">adlen</ref><sp/>=<sp/><ref refid="genkat_8c_1a1d77e1afb6e2003f9855f86340cb7369" kindref="member">TEST_ADLEN</ref>;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1adffe97f0527779835c511385dfc5d63d" kindref="member">t_cost</ref><sp/>=<sp/>t_cost;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a78b6d500cdb208f3b09a10c07716d6ab" kindref="member">m_cost</ref><sp/>=<sp/>m_cost;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a8ab1ecf163c039d8db1d9eeb119b6112" kindref="member">lanes</ref><sp/>=<sp/>lanes;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a1efec02e4fd164068c7e77ec5f8b5b01" kindref="member">threads</ref><sp/>=<sp/>lanes;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1aee437e28f004ff3e4a0ea15a7526bf63" kindref="member">allocate_cbk</ref><sp/>=<sp/>myown_allocator;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a496ae30b7ad3db25e1a1ef1fbf98ce0b" kindref="member">free_cbk</ref><sp/>=<sp/>myown_deallocator;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a17f2c93463a2d9c0f6017b2d843c6d0c" kindref="member">flags</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>TEST_OUTLEN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>TEST_PWDLEN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>TEST_SALTLEN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>TEST_SECRETLEN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight><highlight class="preprocessor">#undef<sp/>TEST_ADLEN</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!strcmp(type,<sp/></highlight><highlight class="stringliteral">&quot;d&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="argon2_8c_1ac9984f1d62fb3cda555e8555dbfe3129" kindref="member">argon2d</ref>(&amp;context);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!strcmp(type,<sp/></highlight><highlight class="stringliteral">&quot;i&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="argon2_8c_1ac709795078c9fb5384fb20d54c5b957d" kindref="member">argon2i</ref>(&amp;context);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fatal(</highlight><highlight class="stringliteral">&quot;wrong<sp/>Argon2<sp/>type&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190" refid="genkat_8c_1a0ddf1224851353fc92bfbff6f499fa97" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="genkat_8c_1a0ddf1224851353fc92bfbff6f499fa97" kindref="member">main</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*argv[])<sp/>{</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*type<sp/>=<sp/>(argc<sp/>&gt;<sp/>1)<sp/>?<sp/>argv[1]<sp/>:<sp/></highlight><highlight class="stringliteral">&quot;i&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>generate_testvectors(type);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a19b53dfdd59a4e04632b2de23530b3e8" kindref="member">ARGON2_OK</ref>;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/crypto/argon2/genkat.c"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="structsecp256k1__ecmult__gen__context" kind="struct" language="C++" prot="public">
+    <compoundname>secp256k1_ecmult_gen_context</compoundname>
+    <includes refid="ecmult__gen_8h" local="no">ecmult_gen.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structsecp256k1__ecmult__gen__context_1ad1ebc8daeace10a8d646f89bbdf32882" prot="public" static="no" mutable="no">
+        <type><ref refid="structsecp256k1__ge__storage" kindref="compound">secp256k1_ge_storage</ref>(*</type>
+        <definition>secp256k1_ge_storage(* secp256k1_ecmult_gen_context::prec)[64][16]</definition>
+        <argsstring>)[64][16]</argsstring>
+        <name>prec</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/ecmult_gen.h" line="26" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/ecmult_gen.h" bodystart="26" bodyend="-1"/>
+        <referencedby refid="gen__context_8c_1a3c04138a5bfe5d72780bb7e82a18e627" compoundref="gen__context_8c" startline="27" endline="74">main</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structsecp256k1__ecmult__gen__context_1af2f3064a367e86f936ab1c8b93d6f27e" prot="public" static="no" mutable="no">
+        <type><ref refid="structsecp256k1__scalar" kindref="compound">secp256k1_scalar</ref></type>
+        <definition>secp256k1_scalar secp256k1_ecmult_gen_context::blind</definition>
+        <argsstring></argsstring>
+        <name>blind</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/ecmult_gen.h" line="27" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/ecmult_gen.h" bodystart="27" bodyend="-1"/>
+        <referencedby refid="tests_8c_1ab353fbc77d15cd48e25d995ea3f33795" compoundref="tests_8c" startline="2488" endline="2509">test_ecmult_gen_blind</referencedby>
+        <referencedby refid="tests_8c_1a375b2994cf6e867644abdf5ae3f93abe" compoundref="tests_8c" startline="2511" endline="2521">test_ecmult_gen_blind_reset</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="structsecp256k1__ecmult__gen__context_1a1ebfe4de83e25248ea9d989d06c9b069" prot="public" static="no" mutable="no">
+        <type><ref refid="structsecp256k1__gej" kindref="compound">secp256k1_gej</ref></type>
+        <definition>secp256k1_gej secp256k1_ecmult_gen_context::initial</definition>
+        <argsstring></argsstring>
+        <name>initial</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/ecmult_gen.h" line="28" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/ecmult_gen.h" bodystart="28" bodyend="-1"/>
+        <referencedby refid="tests_8c_1ab353fbc77d15cd48e25d995ea3f33795" compoundref="tests_8c" startline="2488" endline="2509">test_ecmult_gen_blind</referencedby>
+        <referencedby refid="tests_8c_1a375b2994cf6e867644abdf5ae3f93abe" compoundref="tests_8c" startline="2511" endline="2521">test_ecmult_gen_blind_reset</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="3538">
+        <label>secp256k1_scalar</label>
+        <link refid="structsecp256k1__scalar"/>
+      </node>
+      <node id="3537">
+        <label>secp256k1_ecmult_gen_context</label>
+        <link refid="structsecp256k1__ecmult__gen__context"/>
+        <childnode refid="3538" relation="usage">
+          <edgelabel>blind</edgelabel>
+        </childnode>
+        <childnode refid="3539" relation="usage">
+          <edgelabel>initial</edgelabel>
+        </childnode>
+        <childnode refid="3541" relation="usage">
+          <edgelabel>prec</edgelabel>
+        </childnode>
+      </node>
+      <node id="3541">
+        <label>secp256k1_ge_storage</label>
+        <link refid="structsecp256k1__ge__storage"/>
+        <childnode refid="3542" relation="usage">
+          <edgelabel>x</edgelabel>
+          <edgelabel>y</edgelabel>
+        </childnode>
+      </node>
+      <node id="3539">
+        <label>secp256k1_gej</label>
+        <link refid="structsecp256k1__gej"/>
+        <childnode refid="3540" relation="usage">
+          <edgelabel>x</edgelabel>
+          <edgelabel>y</edgelabel>
+          <edgelabel>z</edgelabel>
+        </childnode>
+      </node>
+      <node id="3540">
+        <label>secp256k1_fe</label>
+        <link refid="structsecp256k1__fe"/>
+      </node>
+      <node id="3542">
+        <label>secp256k1_fe_storage</label>
+        <link refid="structsecp256k1__fe__storage"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/dev/ds-160209/src/secp256k1/src/ecmult_gen.h" line="13" column="1" bodyfile="/home/dev/ds-160209/src/secp256k1/src/ecmult_gen.h" bodystart="13" bodyend="29"/>
+    <listofallmembers>
+      <member refid="structsecp256k1__ecmult__gen__context_1af2f3064a367e86f936ab1c8b93d6f27e" prot="public" virt="non-virtual"><scope>secp256k1_ecmult_gen_context</scope><name>blind</name></member>
+      <member refid="structsecp256k1__ecmult__gen__context_1a1ebfe4de83e25248ea9d989d06c9b069" prot="public" virt="non-virtual"><scope>secp256k1_ecmult_gen_context</scope><name>initial</name></member>
+      <member refid="structsecp256k1__ecmult__gen__context_1ad1ebc8daeace10a8d646f89bbdf32882" prot="public" virt="non-virtual"><scope>secp256k1_ecmult_gen_context</scope><name>prec</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

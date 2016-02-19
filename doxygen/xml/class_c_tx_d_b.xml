@@ -1,0 +1,879 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_tx_d_b" kind="class" language="C++" prot="public">
+    <compoundname>CTxDB</compoundname>
+    <includes refid="txdb-leveldb_8h" local="no">txdb-leveldb.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_c_tx_d_b_1a7bf556386c6cd3513deb2c6550a78f67" prot="private" static="no" mutable="no">
+        <type><ref refid="classleveldb_1_1_d_b" kindref="compound">leveldb::DB</ref> *</type>
+        <definition>leveldb::DB* CTxDB::pdb</definition>
+        <argsstring></argsstring>
+        <name>pdb</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="51" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_tx_d_b_1a9493953c1152c7e53ad8a925e7c11c69" prot="private" static="no" mutable="no">
+        <type><ref refid="classleveldb_1_1_write_batch" kindref="compound">leveldb::WriteBatch</ref> *</type>
+        <definition>leveldb::WriteBatch* CTxDB::activeBatch</definition>
+        <argsstring></argsstring>
+        <name>activeBatch</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="55" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_tx_d_b_1ad9b13681ef2a79e342e7bbc8e99dbd21" prot="private" static="no" mutable="no">
+        <type><ref refid="structleveldb_1_1_options" kindref="compound">leveldb::Options</ref></type>
+        <definition>leveldb::Options CTxDB::options</definition>
+        <argsstring></argsstring>
+        <name>options</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="56" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_tx_d_b_1ae8d505436aa1423068ed0cc566b2da7f" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CTxDB::fReadOnly</definition>
+        <argsstring></argsstring>
+        <name>fReadOnly</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="57" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_tx_d_b_1a92c74b09e94f8923d48d1bd656e85601" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CTxDB::nVersion</definition>
+        <argsstring></argsstring>
+        <name>nVersion</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="58" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_tx_d_b_1a15efd656b7f86b0abf8d99183cae493a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CTxDB::CTxDB</definition>
+        <argsstring>(const char *pszMode=&quot;r+&quot;)</argsstring>
+        <name>CTxDB</name>
+        <param>
+          <type>const char *</type>
+          <declname>pszMode</declname>
+          <defval>&quot;r+&quot;</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="40" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="77" bodyend="130"/>
+        <references refid="txdb-leveldb_8cpp_1a72eff8ae1d84de13daf97a61b8c02bc6" compoundref="txdb-leveldb_8cpp" startline="30">txdb</references>
+        <references refid="structleveldb_1_1_options_1afe1b4e94164ff8f081b1c25bf1bcb62e" compoundref="options_8h" startline="45">leveldb::Options::create_if_missing</references>
+        <references refid="structleveldb_1_1_options_1a24c88997a866d535e68de15b5c3cd02b" compoundref="options_8h" startline="136">leveldb::Options::filter_policy</references>
+        <references refid="namespaceleveldb_1ae6b34bf2331983721554f284b1eaa1a1" compoundref="bloom_8cc" startline="91" endline="93">leveldb::NewBloomFilterPolicy</references>
+        <references refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" compoundref="util_8h" startline="158">LogPrintf</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a279b844a6669e94680c95c2f2bf45580" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CTxDB::~CTxDB</definition>
+        <argsstring>()</argsstring>
+        <name>~CTxDB</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="41" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.h" bodystart="41" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1ad319e9c15a7a03b9b80d7affb7fb655e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CTxDB::Close</definition>
+        <argsstring>()</argsstring>
+        <name>Close</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="48" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="132" bodyend="142"/>
+        <references refid="txdb-leveldb_8cpp_1a72eff8ae1d84de13daf97a61b8c02bc6" compoundref="txdb-leveldb_8cpp" startline="30">txdb</references>
+        <references refid="structleveldb_1_1_options_1a24c88997a866d535e68de15b5c3cd02b" compoundref="options_8h" startline="136">leveldb::Options::filter_policy</references>
+        <references refid="structleveldb_1_1_options_1a4e87749ebac1ba28dff6bb63eb2059e5" compoundref="options_8h" startline="98">leveldb::Options::block_cache</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1af3c27c5cb8f922b5c03840feda844016" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::TxnBegin</definition>
+        <argsstring>()</argsstring>
+        <name>TxnBegin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="173" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="144" bodyend="149"/>
+        <referencedby refid="class_c_block_1a6e308b2d75d1cfc4a75eda36feb60ca1" compoundref="main_8cpp" startline="4125" endline="4242">CBlock::SetBestChain</referencedby>
+        <referencedby refid="class_c_block_1afab527f890c5575db3b1a2b17f47bf5a" compoundref="main_8cpp" startline="4244" endline="4311">CBlock::AddToBlockIndex</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1aff04f078df2fc3640d559ce62fc9a6a2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::TxnCommit</definition>
+        <argsstring>()</argsstring>
+        <name>TxnCommit</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="174" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="151" bodyend="162"/>
+        <references refid="classleveldb_1_1_status_1ab31e89a858c766716e3dc952be857c65" compoundref="status_8h" startline="52" endline="52">leveldb::Status::ok</references>
+        <references refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" compoundref="util_8h" startline="158">LogPrintf</references>
+        <references refid="classleveldb_1_1_status_1aa8b56d8fe2cd1873778de5d1e5407866" compoundref="status_8cc" startline="36" endline="73">leveldb::Status::ToString</references>
+        <referencedby refid="chain_8h_1a674b674771a7750436800c08fc75437b" compoundref="chain_8cpp" startline="514" endline="613">Reorganize</referencedby>
+        <referencedby refid="class_c_block_1a6e308b2d75d1cfc4a75eda36feb60ca1" compoundref="main_8cpp" startline="4125" endline="4242">CBlock::SetBestChain</referencedby>
+        <referencedby refid="class_c_block_1afab527f890c5575db3b1a2b17f47bf5a" compoundref="main_8cpp" startline="4244" endline="4311">CBlock::AddToBlockIndex</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1ac984bce763c97af6fd90f3056367b521" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::TxnAbort</definition>
+        <argsstring>()</argsstring>
+        <name>TxnAbort</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="175" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.h" bodystart="175" bodyend="180"/>
+        <referencedby refid="class_c_block_1a6e308b2d75d1cfc4a75eda36feb60ca1" compoundref="main_8cpp" startline="4125" endline="4242">CBlock::SetBestChain</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a24938c7578577c08b2a3eae7617dfa1e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::ReadVersion</definition>
+        <argsstring>(int &amp;nVersion)</argsstring>
+        <name>ReadVersion</name>
+        <param>
+          <type>int &amp;</type>
+          <declname>nVersion</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="182" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.h" bodystart="182" bodyend="186"/>
+        <references refid="class_c_tx_d_b_1a9e223a10434f8a73002e84cc75c682de" compoundref="txdb-leveldb_8h" startline="67" endline="105">Read</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1aa30dbf235b1c229896097e1eb1ea9520" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::WriteVersion</definition>
+        <argsstring>(int nVersion)</argsstring>
+        <name>WriteVersion</name>
+        <param>
+          <type>int</type>
+          <declname>nVersion</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="188" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.h" bodystart="188" bodyend="191"/>
+        <references refid="class_c_tx_d_b_1a58885f67364829a8e0957a5dc810886d" compoundref="txdb-leveldb_8h" startline="108" endline="130">Write</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1af1a1c0835bf9eb9a59e9d197678b0a4d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::ReadAddrIndex</definition>
+        <argsstring>(uint160 addrHash, std::vector&lt; uint256 &gt; &amp;txHashes)</argsstring>
+        <name>ReadAddrIndex</name>
+        <param>
+          <type><ref refid="classuint160" kindref="compound">uint160</ref></type>
+          <declname>addrHash</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; <ref refid="classuint256" kindref="compound">uint256</ref> &gt; &amp;</type>
+          <declname>txHashes</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="193" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="230" bodyend="233"/>
+        <referencedby refid="main_8h_1aca9eb09c80679cf7c85926f83c353075" compoundref="main_8cpp" startline="1792" endline="1816">FindTransactionsByDestination</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1aa661acc6807641aa0b27c41864c3102c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::WriteAddrIndex</definition>
+        <argsstring>(uint160 addrHash, uint256 txHash)</argsstring>
+        <name>WriteAddrIndex</name>
+        <param>
+          <type><ref refid="classuint160" kindref="compound">uint160</ref></type>
+          <declname>addrHash</declname>
+        </param>
+        <param>
+          <type><ref refid="classuint256" kindref="compound">uint256</ref></type>
+          <declname>txHash</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="194" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="208" bodyend="228"/>
+        <referencedby refid="class_c_block_1aea2c77ad84cd7909720f75a0c3f7ddc2" compoundref="chain_8cpp" startline="250" endline="295">CBlock::RebuildAddressIndex</referencedby>
+        <referencedby refid="class_c_block_1a1ae149d97c7b7eadf48f5cea934b6217" compoundref="chain_8cpp" startline="299" endline="490">CBlock::ConnectBlock</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a8a138e5dcc3ef98991abaa16eaa8ddeb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::ReadTxIndex</definition>
+        <argsstring>(uint256 hash, CTxIndex &amp;txindex)</argsstring>
+        <name>ReadTxIndex</name>
+        <param>
+          <type><ref refid="classuint256" kindref="compound">uint256</ref></type>
+          <declname>hash</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_tx_index" kindref="compound">CTxIndex</ref> &amp;</type>
+          <declname>txindex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="195" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="235" bodyend="239"/>
+        <references refid="class_c_tx_index_1a379327d4654c726dea38486f1c1f800d" compoundref="main_8h" startline="470" endline="474">CTxIndex::SetNull</references>
+        <referencedby refid="class_c_transaction_po_s_1a12c8edc9dfa71e3ac64647624731a8bb" compoundref="main_8cpp" startline="3676" endline="3685">CTransactionPoS::ReadFromDisk</referencedby>
+        <referencedby refid="class_c_transaction_po_s_1a7bdd6909103ec8da895172cf7dfe6a0a" compoundref="main_8cpp" startline="3712" endline="3744">CTransactionPoS::DisconnectInputs</referencedby>
+        <referencedby refid="class_c_transaction_po_s_1a20a028e06f505f03a0d30a7f186d9489" compoundref="main_8cpp" startline="3747" endline="3817">CTransactionPoS::FetchInputs</referencedby>
+        <referencedby refid="class_c_wallet_1a796c23450c8482e10e0c75ae5c1fa8ed" compoundref="wallet_8cpp" startline="1153" endline="1223">CWallet::ReacceptWalletTransactions</referencedby>
+        <referencedby refid="class_c_wallet_1aa1e6f8f54b36ae7ec11f567a59a99aa3" compoundref="wallet_8cpp" startline="4596" endline="4642">CWallet::FixSpentCoins</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a62fb371022854dc8cb247bed36302df2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::UpdateTxIndex</definition>
+        <argsstring>(uint256 hash, const CTxIndex &amp;txindex)</argsstring>
+        <name>UpdateTxIndex</name>
+        <param>
+          <type><ref refid="classuint256" kindref="compound">uint256</ref></type>
+          <declname>hash</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_tx_index" kindref="compound">CTxIndex</ref> &amp;</type>
+          <declname>txindex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="196" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="241" bodyend="244"/>
+        <referencedby refid="class_c_block_1a1ae149d97c7b7eadf48f5cea934b6217" compoundref="chain_8cpp" startline="299" endline="490">CBlock::ConnectBlock</referencedby>
+        <referencedby refid="class_c_transaction_po_s_1a7bdd6909103ec8da895172cf7dfe6a0a" compoundref="main_8cpp" startline="3712" endline="3744">CTransactionPoS::DisconnectInputs</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a6c0d7c688e8fd7ac28afde78ae6b624e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::AddTxIndex</definition>
+        <argsstring>(const CTransaction &amp;tx, const CDiskTxPos &amp;pos, int nHeight)</argsstring>
+        <name>AddTxIndex</name>
+        <param>
+          <type>const <ref refid="class_c_transaction" kindref="compound">CTransaction</ref> &amp;</type>
+          <declname>tx</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_disk_tx_pos" kindref="compound">CDiskTxPos</ref> &amp;</type>
+          <declname>pos</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nHeight</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="197" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="246" bodyend="252"/>
+        <references refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" compoundref="cache_8cc" startline="34">hash</references>
+        <references refid="class_c_transaction_1a3f8666d2a275c40da14bd5eaf47dc004" compoundref="transaction_8h" startline="309" endline="312">CTransaction::GetHash</references>
+        <references refid="class_c_transaction_1ae42c0032a464c3054c508017c7d040ef" compoundref="transaction_8h" startline="262">CTransaction::vout</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a5e0f0ed39529758a90953a2a08fc9412" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::EraseTxIndex</definition>
+        <argsstring>(const CTransaction &amp;tx)</argsstring>
+        <name>EraseTxIndex</name>
+        <param>
+          <type>const <ref refid="class_c_transaction" kindref="compound">CTransaction</ref> &amp;</type>
+          <declname>tx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="198" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="254" bodyend="259"/>
+        <references refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" compoundref="cache_8cc" startline="34">hash</references>
+        <references refid="class_c_transaction_1a3f8666d2a275c40da14bd5eaf47dc004" compoundref="transaction_8h" startline="309" endline="312">CTransaction::GetHash</references>
+        <referencedby refid="class_c_transaction_po_s_1a7bdd6909103ec8da895172cf7dfe6a0a" compoundref="main_8cpp" startline="3712" endline="3744">CTransactionPoS::DisconnectInputs</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a09b87317101ed16b6ad99794279f4c2d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::ContainsTx</definition>
+        <argsstring>(uint256 hash)</argsstring>
+        <name>ContainsTx</name>
+        <param>
+          <type><ref refid="classuint256" kindref="compound">uint256</ref></type>
+          <declname>hash</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="199" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="261" bodyend="264"/>
+        <referencedby refid="main_8h_1a8189e51a581977f4de34ed4e0159bf63" compoundref="main_8cpp" startline="865" endline="1023">AcceptToMemoryPool</referencedby>
+        <referencedby refid="main_8h_1a4d2373d0ce79227c95358116aae667f3" compoundref="main_8cpp" startline="1230" endline="1375">AcceptableInputs</referencedby>
+        <referencedby refid="class_c_wallet_tx_1af6d1a5a731bb69e1d94de84eb6fd15a5" compoundref="main_8cpp" startline="1462" endline="1479">CWalletTx::AcceptWalletTransaction</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a32d0e546eee99724776352dd4bf0ae79" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::ReadDiskTx</definition>
+        <argsstring>(uint256 hash, CTransaction &amp;tx, CTxIndex &amp;txindex)</argsstring>
+        <name>ReadDiskTx</name>
+        <param>
+          <type><ref refid="classuint256" kindref="compound">uint256</ref></type>
+          <declname>hash</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_transaction" kindref="compound">CTransaction</ref> &amp;</type>
+          <declname>tx</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_tx_index" kindref="compound">CTxIndex</ref> &amp;</type>
+          <declname>txindex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="200" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="266" bodyend="273"/>
+        <references refid="class_c_transaction_1a1aa7a38971e9c045b12a3efab67647e9" compoundref="transaction_8h" startline="294" endline="302">CTransaction::SetNull</references>
+        <references refid="class_c_transaction_po_s_1a7c71229336405cae52bd3e9a547f1266" compoundref="main_8cpp" startline="3649" endline="3674">CTransactionPoS::ReadFromDisk</references>
+        <references refid="class_c_tx_index_1ac68a69ed4335b3f50b954c71ec0a9c32" compoundref="main_8h" startline="446">CTxIndex::pos</references>
+        <referencedby refid="class_c_wallet_tx_1a3594f3eabada273c1eb9ab25da38d204" compoundref="wallet_8cpp" startline="1056" endline="1114">CWalletTx::AddSupportingTransactions</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1ab32f32729feabef7162d5fa225dd0e22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::ReadDiskTx</definition>
+        <argsstring>(uint256 hash, CTransaction &amp;tx)</argsstring>
+        <name>ReadDiskTx</name>
+        <param>
+          <type><ref refid="classuint256" kindref="compound">uint256</ref></type>
+          <declname>hash</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_transaction" kindref="compound">CTransaction</ref> &amp;</type>
+          <declname>tx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="201" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="275" bodyend="279"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a80ee65f82bb1a769b507dc5c701bfacc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::ReadDiskTx</definition>
+        <argsstring>(COutPoint outpoint, CTransaction &amp;tx, CTxIndex &amp;txindex)</argsstring>
+        <name>ReadDiskTx</name>
+        <param>
+          <type><ref refid="class_c_out_point" kindref="compound">COutPoint</ref></type>
+          <declname>outpoint</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_transaction" kindref="compound">CTransaction</ref> &amp;</type>
+          <declname>tx</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_tx_index" kindref="compound">CTxIndex</ref> &amp;</type>
+          <declname>txindex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="202" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="281" bodyend="284"/>
+        <references refid="class_c_out_point_1af131c7194a660558b0ff158f4efa7a28" compoundref="transaction_8h" startline="30">COutPoint::hash</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a4d7f67f600359473ddd2044030323215" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::ReadDiskTx</definition>
+        <argsstring>(COutPoint outpoint, CTransaction &amp;tx)</argsstring>
+        <name>ReadDiskTx</name>
+        <param>
+          <type><ref refid="class_c_out_point" kindref="compound">COutPoint</ref></type>
+          <declname>outpoint</declname>
+        </param>
+        <param>
+          <type><ref refid="class_c_transaction" kindref="compound">CTransaction</ref> &amp;</type>
+          <declname>tx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="203" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="286" bodyend="290"/>
+        <references refid="class_c_out_point_1af131c7194a660558b0ff158f4efa7a28" compoundref="transaction_8h" startline="30">COutPoint::hash</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a56f170187a609bd747c29b3a4adddd8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::WriteBlockIndex</definition>
+        <argsstring>(const CDiskBlockIndex &amp;blockindex)</argsstring>
+        <name>WriteBlockIndex</name>
+        <param>
+          <type>const <ref refid="class_c_disk_block_index" kindref="compound">CDiskBlockIndex</ref> &amp;</type>
+          <declname>blockindex</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="204" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="292" bodyend="295"/>
+        <references refid="class_c_disk_block_index_1adbe404c55c68be782360b4594d355fad" compoundref="chain_8h" startline="391" endline="407">CDiskBlockIndex::GetBlockHash</references>
+        <referencedby refid="class_c_block_1a9532c041d24701a338ea5c91008b72aa" compoundref="chain_8cpp" startline="191" endline="214">CBlock::DisconnectBlock</referencedby>
+        <referencedby refid="class_c_block_1a1ae149d97c7b7eadf48f5cea934b6217" compoundref="chain_8cpp" startline="299" endline="490">CBlock::ConnectBlock</referencedby>
+        <referencedby refid="class_c_block_1afab527f890c5575db3b1a2b17f47bf5a" compoundref="main_8cpp" startline="4244" endline="4311">CBlock::AddToBlockIndex</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a9aae38d6e39ce57a1b8eaaeaea81e4de" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::ReadHashBestChain</definition>
+        <argsstring>(uint256 &amp;hashBestChain)</argsstring>
+        <name>ReadHashBestChain</name>
+        <param>
+          <type><ref refid="classuint256" kindref="compound">uint256</ref> &amp;</type>
+          <declname>hashBestChain</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="205" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="297" bodyend="300"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a2cf58de69c1c07e500a1f8d0b0709476" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::WriteHashBestChain</definition>
+        <argsstring>(uint256 hashBestChain)</argsstring>
+        <name>WriteHashBestChain</name>
+        <param>
+          <type><ref refid="classuint256" kindref="compound">uint256</ref></type>
+          <declname>hashBestChain</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="206" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="302" bodyend="305"/>
+        <referencedby refid="chain_8h_1a674b674771a7750436800c08fc75437b" compoundref="chain_8cpp" startline="514" endline="613">Reorganize</referencedby>
+        <referencedby refid="class_c_block_1a6e308b2d75d1cfc4a75eda36feb60ca1" compoundref="main_8cpp" startline="4125" endline="4242">CBlock::SetBestChain</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1ab0e2e8f95c4f891c0a9245d5ba6b0b68" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::ReadBestInvalidTrust</definition>
+        <argsstring>(CBigNum &amp;bnBestInvalidTrust)</argsstring>
+        <name>ReadBestInvalidTrust</name>
+        <param>
+          <type><ref refid="class_c_big_num" kindref="compound">CBigNum</ref> &amp;</type>
+          <declname>bnBestInvalidTrust</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="207" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="307" bodyend="310"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1ad9593efae66f6a73fafba93ad05fd2b8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::WriteBestInvalidTrust</definition>
+        <argsstring>(CBigNum bnBestInvalidTrust)</argsstring>
+        <name>WriteBestInvalidTrust</name>
+        <param>
+          <type><ref refid="class_c_big_num" kindref="compound">CBigNum</ref></type>
+          <declname>bnBestInvalidTrust</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="208" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="312" bodyend="315"/>
+        <referencedby refid="chain_8h_1ae282007adebd031cdbfecdd0ad1feeb8" compoundref="chain_8cpp" startline="492" endline="512">InvalidChainFound</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1abcb9df0821d996f811f6604b452a26a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::LoadBlockIndex</definition>
+        <argsstring>()</argsstring>
+        <name>LoadBlockIndex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="209" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="337" bodyend="581"/>
+        <references refid="chain_8h_1a9d5aa0c4581116d898ff51357a0df059" compoundref="main_8cpp" startline="59">mapBlockIndex</references>
+        <references refid="serialize_8h_1a6b7b47dd702d9e331586d485013fd1eaa34949680c53028d35a449bf88b3c329d" compoundref="serialize_8h" startline="90">SER_DISK</references>
+        <references refid="classleveldb_1_1_iterator_1a97a556e97ded60c677fbf4de7321ec44">leveldb::Iterator::Seek</references>
+        <references refid="class_c_data_stream_1aa3a9ecf166f36f4ea531d2b23628d2c9" compoundref="streams_8h" startline="103" endline="106">CDataStream::str</references>
+        <references refid="classleveldb_1_1_iterator_1a38614978bfa0586327b8e237bcb46012">leveldb::Iterator::Valid</references>
+        <references refid="class_c_data_stream_1abcab3fa1be7676ffdb34908ec7c84b78" compoundref="streams_8h" startline="272" endline="277">CDataStream::write</references>
+        <references refid="classleveldb_1_1_iterator_1ad17feced6e24a1b21db5ae6940c1f220">leveldb::Iterator::key</references>
+        <references refid="classleveldb_1_1_slice_1aa64861043d9deee6889461bf0593cf73" compoundref="slice_8h" startline="40" endline="40">leveldb::Slice::data</references>
+        <references refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" compoundref="slice_8h" startline="43" endline="43">leveldb::Slice::size</references>
+        <references refid="classleveldb_1_1_iterator_1a613ac2e965518aad7a064c64c72bcf7c">leveldb::Iterator::value</references>
+        <references refid="txdb-leveldb_8cpp_1af3adfd64a90ee443bfa5fe16321aa2d7" compoundref="txdb-leveldb_8cpp" startline="317" endline="335">InsertBlockIndex</references>
+        <references refid="class_c_block_index_1a1ef11137155df1dd5c81491630cece39" compoundref="chain_8h" startline="111">CBlockIndex::pprev</references>
+        <references refid="class_c_block_index_1a2f0acd342accaab731d887584b444590" compoundref="chain_8h" startline="112">CBlockIndex::pnext</references>
+        <references refid="class_c_block_index_1a3bf9ecd8938c42be6a4b14d3c7ef5c21" compoundref="chain_8h" startline="113">CBlockIndex::nFile</references>
+        <references refid="class_c_block_index_1af8de5426e2da2c78e1e7729a89a7670a" compoundref="chain_8h" startline="114">CBlockIndex::nBlockPos</references>
+        <references refid="class_c_block_index_1aebfc8d6b95852546760e742553d7bfd5" compoundref="chain_8h" startline="116">CBlockIndex::nHeight</references>
+        <references refid="class_c_block_index_1a6559fddea3401548ae144e870d150359" compoundref="chain_8h" startline="118">CBlockIndex::nMint</references>
+        <references refid="class_c_block_index_1a309fdc44d871b336abe64eadf250cafd" compoundref="chain_8h" startline="119">CBlockIndex::nMoneySupply</references>
+        <references refid="class_c_block_index_1a02aaba7d27ec615e6f9f740353d839de" compoundref="chain_8h" startline="121">CBlockIndex::nFlags</references>
+        <references refid="class_c_block_index_1a2aa226c04d79a4d932ed6eb0abd02cbe" compoundref="chain_8h" startline="129">CBlockIndex::nStakeModifier</references>
+        <references refid="class_c_block_index_1aa8c9b5c3316413a332d5dea243c2c2c9" compoundref="chain_8h" startline="130">CBlockIndex::bnStakeModifierV2</references>
+        <references refid="class_c_block_index_1ac2c040d5e3db73a5ceb87ee4095a405f" compoundref="chain_8h" startline="133">CBlockIndex::prevoutStake</references>
+        <references refid="class_c_block_index_1ae6870336a5bf237680502fa067262af8" compoundref="chain_8h" startline="134">CBlockIndex::nStakeTime</references>
+        <references refid="class_c_block_index_1a553e6fc301e8130118d7ec68dce91ee9" compoundref="chain_8h" startline="136">CBlockIndex::hashProof</references>
+        <references refid="class_c_block_index_1a45126301a0a6e26010527a7bbfc1ef58" compoundref="chain_8h" startline="139">CBlockIndex::nVersion</references>
+        <references refid="class_c_block_index_1a0601b6b2bd6eaedfbc283c00d045a21c" compoundref="chain_8h" startline="140">CBlockIndex::hashMerkleRoot</references>
+        <references refid="class_c_block_index_1a4b687a226e9e166b0f91c1b616b543a6" compoundref="chain_8h" startline="141">CBlockIndex::nTime</references>
+        <references refid="class_c_block_index_1a3324894e6af612d1bd76f89378435713" compoundref="chain_8h" startline="142">CBlockIndex::nBits</references>
+        <references refid="class_c_block_index_1a5e0a648ed1df8da171eba636d5ebef01" compoundref="chain_8h" startline="143">CBlockIndex::nNonce</references>
+        <references refid="chain_8h_1a1e7c54b8b26730f52b5527163fc33d8f" compoundref="main_8cpp" startline="69">pindexGenesisBlock</references>
+        <references refid="chainparams_8cpp_1ace5c5b706d71a324a417dd2db394fd4a" compoundref="chainparams_8cpp" startline="186" endline="188">Params</references>
+        <references refid="class_c_block_index_1a32c6c256b6e30b4a20dc6faa9cac7ea5" compoundref="chain_8h" startline="250" endline="253">CBlockIndex::CheckIndex</references>
+        <references refid="class_c_block_index_1ace1a0acbedc0403489e4d9168876fb23" compoundref="chain_8h" startline="281" endline="284">CBlockIndex::IsProofOfStake</references>
+        <references refid="main_8cpp_1a76784ec097b3e97b81272c0858d623e4" compoundref="main_8cpp" startline="60">setStakeSeen</references>
+        <references refid="classleveldb_1_1_iterator_1aea54a5ca7eb942eb15770820529410e7">leveldb::Iterator::Next</references>
+        <references refid="util_8h_1aa3052ab82a2ba880ea3e30b3357c8820" compoundref="util_8h" startline="77">PAIRTYPE</references>
+        <references refid="class_c_block_index_1aa11268e5a01c5a7d33fb313fb0494015" compoundref="chain_8h" startline="115">CBlockIndex::nChainTrust</references>
+        <references refid="class_c_block_index_1ab8cb2abace4e5b6dd405e85f66f17f9a" compoundref="chain_8cpp" startline="615" endline="624">CBlockIndex::GetBlockTrust</references>
+        <references refid="main_8cpp_1ace9c3343567f488a96598abe61e1d309" compoundref="main_8cpp" startline="74">hashBestChain</references>
+        <references refid="chain_8h_1a6454ad864029344132a0a0b59b1456ee" compoundref="main_8cpp" startline="76">pindexBest</references>
+        <references refid="main_8cpp_1a843f1984796a7e44a9e23fccd6a8af34" compoundref="main_8cpp" startline="70">nBestHeight</references>
+        <references refid="main_8cpp_1a63af124faf22e03fd629e8aa21c40eae" compoundref="main_8cpp" startline="72">nBestChainTrust</references>
+        <references refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" compoundref="util_8h" startline="158">LogPrintf</references>
+        <references refid="classbase__uint_1ac3080a72402cadf28dbc9f9b69cc60be" compoundref="uint256_8cpp" startline="198" endline="201">base_uint&lt; BITS &gt;::ToString</references>
+        <references refid="class_c_big_num_1adca0fa61568497152375328deef6c895" compoundref="bignum_8h" startline="376" endline="400">CBigNum::ToString</references>
+        <references refid="util_8cpp_1a749bc6776c8ec72d7c5e4dea56aee415" compoundref="util_8cpp" startline="1465" endline="1473">DateTimeStrFormat</references>
+        <references refid="class_c_block_index_1ab63b774ae798f5f9e54b400ac8b5ef4b" compoundref="chain_8h" startline="238" endline="241">CBlockIndex::GetBlockTime</references>
+        <references refid="main_8cpp_1a27c4c119ca2e7250221de8c17bee0999" compoundref="main_8cpp" startline="73">nBestInvalidTrust</references>
+        <references refid="class_c_big_num_1ad17ff84ee557ca5ad4b854e14d08099f" compoundref="bignum_8h" startline="278" endline="291">CBigNum::getuint256</references>
+        <references refid="util_8cpp_1a24f685720bf40370e5bd2a192ad50cd8" compoundref="util_8cpp" startline="536" endline="541">GetArg</references>
+        <references refid="db__test_8cc_1a42432b4356adce5579ccf597f6e83e54" compoundref="db__test_8cc" startline="1744">state</references>
+        <references refid="class_c_block_1a77a1b1e9902e1e557d762f5a5f325cd8" compoundref="chain_8cpp" startline="856" endline="880">CBlock::ReadFromDisk</references>
+        <references refid="class_c_block_1aa735790178f95defd59f984dd51bc0f2" compoundref="chain_8cpp" startline="678" endline="789">CBlock::CheckBlock</references>
+        <references refid="class_c_block_1a9b6508d662722775f3029b980b382b66" compoundref="primitives_2block_8h" startline="107">CBlock::vtx</references>
+        <references refid="class_c_transaction_1a3f8666d2a275c40da14bd5eaf47dc004" compoundref="transaction_8h" startline="309" endline="312">CTransaction::GetHash</references>
+        <references refid="class_c_tx_index_1ac68a69ed4335b3f50b954c71ec0a9c32" compoundref="main_8h" startline="446">CTxIndex::pos</references>
+        <references refid="class_c_disk_tx_pos_1a07198e7b96d4c60ece4d895abbd46104" compoundref="main_8h" startline="228">CDiskTxPos::nFile</references>
+        <references refid="class_c_disk_tx_pos_1ae9b3c262149c035be43010cbf7d1423b" compoundref="main_8h" startline="229">CDiskTxPos::nBlockPos</references>
+        <references refid="class_c_transaction_po_s_1a7c71229336405cae52bd3e9a547f1266" compoundref="main_8cpp" startline="3649" endline="3674">CTransactionPoS::ReadFromDisk</references>
+        <references refid="class_c_tx_index_1a88317d56c02acd1faec4863bcb293d2c" compoundref="main_8h" startline="447">CTxIndex::vSpent</references>
+        <references refid="class_c_disk_tx_pos_1ae4bdd4eba8a9712dba1b4216559f11df" compoundref="main_8h" startline="252" endline="252">CDiskTxPos::IsNull</references>
+        <references refid="class_c_transaction_1afa2875bea30d31900a30baf7fd56b96b" compoundref="transaction_8cpp" startline="49" endline="98">CTransaction::CheckTransaction</references>
+        <references refid="class_c_transaction_1a53fa787e4ea57374b4fa2a28e9a957b2" compoundref="transaction_8h" startline="261">CTransaction::vin</references>
+        <references refid="class_c_tx_in_1aed9312051a25380cbd7f123408ab7c20" compoundref="transaction_8h" startline="97">CTxIn::prevout</references>
+        <references refid="class_c_out_point_1af131c7194a660558b0ff158f4efa7a28" compoundref="transaction_8h" startline="30">COutPoint::hash</references>
+        <references refid="class_c_out_point_1a9fbc648ca0d11421ad66e897185a9b58" compoundref="transaction_8h" startline="31">COutPoint::n</references>
+        <references refid="txdb-leveldb_8cpp_1a72eff8ae1d84de13daf97a61b8c02bc6" compoundref="txdb-leveldb_8cpp" startline="30">txdb</references>
+        <references refid="class_c_block_1a6e308b2d75d1cfc4a75eda36feb60ca1" compoundref="main_8cpp" startline="4125" endline="4242">CBlock::SetBestChain</references>
+        <referencedby refid="init_8h_1a1a4c1bfbf6ba1db77e988b89b9cadfd3" compoundref="init_8cpp" startline="375" endline="1285">AppInit2</referencedby>
+        <referencedby refid="main_8h_1a367f303d34b8a5501ac4d77bebab578c" compoundref="main_8cpp" startline="2068" endline="2104">LoadBlockIndex</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="class_c_tx_d_b_1a8c718f82f43d567b5bf7487b5d6685e5" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::ScanBatch</definition>
+        <argsstring>(const CDataStream &amp;key, std::string *value, bool *deleted) const </argsstring>
+        <name>ScanBatch</name>
+        <param>
+          <type>const <ref refid="class_c_data_stream" kindref="compound">CDataStream</ref> &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>std::string *</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>deleted</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="64" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.cpp" bodystart="194" bodyend="206"/>
+        <references refid="class_c_batch_scanner_1ae04f7151c91676f9f6209737cdc3d086" compoundref="txdb-leveldb_8cpp" startline="166">CBatchScanner::needle</references>
+        <references refid="class_c_data_stream_1aa3a9ecf166f36f4ea531d2b23628d2c9" compoundref="streams_8h" startline="103" endline="106">CDataStream::str</references>
+        <references refid="class_c_batch_scanner_1afdb6e59a53fed441090c43750c3c2617" compoundref="txdb-leveldb_8cpp" startline="167">CBatchScanner::deleted</references>
+        <references refid="class_c_batch_scanner_1a3a82f2f7068f469eb535435a0b9ae640" compoundref="txdb-leveldb_8cpp" startline="168">CBatchScanner::foundValue</references>
+        <references refid="version__set_8cc_1a38c8b88c432e666ad10b0c5573e1160a" compoundref="version__set_8cc" startline="256">value</references>
+        <references refid="classleveldb_1_1_status_1ab31e89a858c766716e3dc952be857c65" compoundref="status_8h" startline="52" endline="52">leveldb::Status::ok</references>
+        <references refid="classleveldb_1_1_status_1aa8b56d8fe2cd1873778de5d1e5407866" compoundref="status_8cc" startline="36" endline="73">leveldb::Status::ToString</references>
+        <references refid="class_c_batch_scanner_1ad2669c1d3fbd8c206b1f42348dde8cf0" compoundref="txdb-leveldb_8cpp" startline="169">CBatchScanner::foundEntry</references>
+        <referencedby refid="class_c_tx_d_b_1a9e223a10434f8a73002e84cc75c682de" compoundref="txdb-leveldb_8h" startline="67" endline="105">Read</referencedby>
+        <referencedby refid="class_c_tx_d_b_1a36002f063f6fef483226362a1350e22d" compoundref="txdb-leveldb_8h" startline="152" endline="169">Exists</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a9e223a10434f8a73002e84cc75c682de" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename K</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool CTxDB::Read</definition>
+        <argsstring>(const K &amp;key, T &amp;value)</argsstring>
+        <name>Read</name>
+        <param>
+          <type>const K &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="67" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.h" bodystart="67" bodyend="105"/>
+        <references refid="serialize_8h_1a6b7b47dd702d9e331586d485013fd1eaa34949680c53028d35a449bf88b3c329d" compoundref="serialize_8h" startline="90">SER_DISK</references>
+        <references refid="class_c_data_stream_1a5542e71bd7af2ab7cd7be0f381d39cb5" compoundref="streams_8h" startline="119" endline="119">CDataStream::reserve</references>
+        <references refid="class_c_tx_d_b_1a8c718f82f43d567b5bf7487b5d6685e5" compoundref="txdb-leveldb_8cpp" startline="194" endline="206">ScanBatch</references>
+        <references refid="classleveldb_1_1_d_b_1ad43bd7937b9af88ff856eb8158890911">leveldb::DB::Get</references>
+        <references refid="class_c_data_stream_1aa3a9ecf166f36f4ea531d2b23628d2c9" compoundref="streams_8h" startline="103" endline="106">CDataStream::str</references>
+        <references refid="classleveldb_1_1_status_1ab31e89a858c766716e3dc952be857c65" compoundref="status_8h" startline="52" endline="52">leveldb::Status::ok</references>
+        <references refid="classleveldb_1_1_status_1ad5462f26196fc04d72221d2fdf1872ca" compoundref="status_8h" startline="55" endline="55">leveldb::Status::IsNotFound</references>
+        <references refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" compoundref="util_8h" startline="158">LogPrintf</references>
+        <references refid="classleveldb_1_1_status_1aa8b56d8fe2cd1873778de5d1e5407866" compoundref="status_8cc" startline="36" endline="73">leveldb::Status::ToString</references>
+        <references refid="version__set_8cc_1a38c8b88c432e666ad10b0c5573e1160a" compoundref="version__set_8cc" startline="256">value</references>
+        <referencedby refid="class_c_tx_d_b_1a24938c7578577c08b2a3eae7617dfa1e" compoundref="txdb-leveldb_8h" startline="182" endline="186">ReadVersion</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a58885f67364829a8e0957a5dc810886d" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename K</type>
+          </param>
+          <param>
+            <type>typename T</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool CTxDB::Write</definition>
+        <argsstring>(const K &amp;key, const T &amp;value)</argsstring>
+        <name>Write</name>
+        <param>
+          <type>const K &amp;</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const T &amp;</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="108" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.h" bodystart="108" bodyend="130"/>
+        <references refid="serialize_8h_1a6b7b47dd702d9e331586d485013fd1eaa34949680c53028d35a449bf88b3c329d" compoundref="serialize_8h" startline="90">SER_DISK</references>
+        <references refid="class_c_data_stream_1a5542e71bd7af2ab7cd7be0f381d39cb5" compoundref="streams_8h" startline="119" endline="119">CDataStream::reserve</references>
+        <references refid="version__set_8cc_1a38c8b88c432e666ad10b0c5573e1160a" compoundref="version__set_8cc" startline="256">value</references>
+        <references refid="classleveldb_1_1_write_batch_1a30770379143a7ccb4ede18ddf0e45bf3" compoundref="write__batch_8cc" startline="98" endline="103">leveldb::WriteBatch::Put</references>
+        <references refid="class_c_data_stream_1aa3a9ecf166f36f4ea531d2b23628d2c9" compoundref="streams_8h" startline="103" endline="106">CDataStream::str</references>
+        <references refid="classleveldb_1_1_d_b_1ac2e472812630ed74298df7b03b08c1ae" compoundref="db__impl_8cc" startline="1431" endline="1435">leveldb::DB::Put</references>
+        <references refid="classleveldb_1_1_status_1ab31e89a858c766716e3dc952be857c65" compoundref="status_8h" startline="52" endline="52">leveldb::Status::ok</references>
+        <references refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" compoundref="util_8h" startline="158">LogPrintf</references>
+        <references refid="classleveldb_1_1_status_1aa8b56d8fe2cd1873778de5d1e5407866" compoundref="status_8cc" startline="36" endline="73">leveldb::Status::ToString</references>
+        <referencedby refid="class_c_tx_d_b_1aa30dbf235b1c229896097e1eb1ea9520" compoundref="txdb-leveldb_8h" startline="188" endline="191">WriteVersion</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a57ccf71e92f654e6db68be530d43a837" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename K</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool CTxDB::Erase</definition>
+        <argsstring>(const K &amp;key)</argsstring>
+        <name>Erase</name>
+        <param>
+          <type>const K &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="133" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.h" bodystart="133" bodyend="149"/>
+        <references refid="serialize_8h_1a6b7b47dd702d9e331586d485013fd1eaa34949680c53028d35a449bf88b3c329d" compoundref="serialize_8h" startline="90">SER_DISK</references>
+        <references refid="class_c_data_stream_1a5542e71bd7af2ab7cd7be0f381d39cb5" compoundref="streams_8h" startline="119" endline="119">CDataStream::reserve</references>
+        <references refid="classleveldb_1_1_write_batch_1a473da7f94483dab253cc36b7b231ce53" compoundref="write__batch_8cc" startline="105" endline="109">leveldb::WriteBatch::Delete</references>
+        <references refid="class_c_data_stream_1aa3a9ecf166f36f4ea531d2b23628d2c9" compoundref="streams_8h" startline="103" endline="106">CDataStream::str</references>
+        <references refid="classleveldb_1_1_d_b_1aff7577239799cd059464701c548090b9" compoundref="db__impl_8cc" startline="1437" endline="1441">leveldb::DB::Delete</references>
+        <references refid="classleveldb_1_1_status_1ab31e89a858c766716e3dc952be857c65" compoundref="status_8h" startline="52" endline="52">leveldb::Status::ok</references>
+        <references refid="classleveldb_1_1_status_1ad5462f26196fc04d72221d2fdf1872ca" compoundref="status_8h" startline="55" endline="55">leveldb::Status::IsNotFound</references>
+      </memberdef>
+      <memberdef kind="function" id="class_c_tx_d_b_1a36002f063f6fef483226362a1350e22d" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename K</type>
+          </param>
+        </templateparamlist>
+        <type>bool</type>
+        <definition>bool CTxDB::Exists</definition>
+        <argsstring>(const K &amp;key)</argsstring>
+        <name>Exists</name>
+        <param>
+          <type>const K &amp;</type>
+          <declname>key</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="152" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.h" bodystart="152" bodyend="169"/>
+        <references refid="serialize_8h_1a6b7b47dd702d9e331586d485013fd1eaa34949680c53028d35a449bf88b3c329d" compoundref="serialize_8h" startline="90">SER_DISK</references>
+        <references refid="class_c_data_stream_1a5542e71bd7af2ab7cd7be0f381d39cb5" compoundref="streams_8h" startline="119" endline="119">CDataStream::reserve</references>
+        <references refid="class_c_tx_d_b_1a8c718f82f43d567b5bf7487b5d6685e5" compoundref="txdb-leveldb_8cpp" startline="194" endline="206">ScanBatch</references>
+        <references refid="classleveldb_1_1_d_b_1ad43bd7937b9af88ff856eb8158890911">leveldb::DB::Get</references>
+        <references refid="class_c_data_stream_1aa3a9ecf166f36f4ea531d2b23628d2c9" compoundref="streams_8h" startline="103" endline="106">CDataStream::str</references>
+        <references refid="classleveldb_1_1_status_1ad5462f26196fc04d72221d2fdf1872ca" compoundref="status_8h" startline="55" endline="55">leveldb::Status::IsNotFound</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="class_c_tx_d_b_1ae3e6a1fabe178b5d1aa244609f8e72d1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CTxDB::LoadBlockIndexGuts</definition>
+        <argsstring>()</argsstring>
+        <name>LoadBlockIndexGuts</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="211" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/txdb-leveldb.h" line="38" column="1" bodyfile="/home/dev/ds-160209/src/txdb-leveldb.h" bodystart="37" bodyend="212"/>
+    <listofallmembers>
+      <member refid="class_c_tx_d_b_1a9493953c1152c7e53ad8a925e7c11c69" prot="private" virt="non-virtual"><scope>CTxDB</scope><name>activeBatch</name></member>
+      <member refid="class_c_tx_d_b_1a6c0d7c688e8fd7ac28afde78ae6b624e" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>AddTxIndex</name></member>
+      <member refid="class_c_tx_d_b_1ad319e9c15a7a03b9b80d7affb7fb655e" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>Close</name></member>
+      <member refid="class_c_tx_d_b_1a09b87317101ed16b6ad99794279f4c2d" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>ContainsTx</name></member>
+      <member refid="class_c_tx_d_b_1a15efd656b7f86b0abf8d99183cae493a" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>CTxDB</name></member>
+      <member refid="class_c_tx_d_b_1a57ccf71e92f654e6db68be530d43a837" prot="protected" virt="non-virtual"><scope>CTxDB</scope><name>Erase</name></member>
+      <member refid="class_c_tx_d_b_1a5e0f0ed39529758a90953a2a08fc9412" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>EraseTxIndex</name></member>
+      <member refid="class_c_tx_d_b_1a36002f063f6fef483226362a1350e22d" prot="protected" virt="non-virtual"><scope>CTxDB</scope><name>Exists</name></member>
+      <member refid="class_c_tx_d_b_1ae8d505436aa1423068ed0cc566b2da7f" prot="private" virt="non-virtual"><scope>CTxDB</scope><name>fReadOnly</name></member>
+      <member refid="class_c_tx_d_b_1abcb9df0821d996f811f6604b452a26a0" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>LoadBlockIndex</name></member>
+      <member refid="class_c_tx_d_b_1ae3e6a1fabe178b5d1aa244609f8e72d1" prot="private" virt="non-virtual"><scope>CTxDB</scope><name>LoadBlockIndexGuts</name></member>
+      <member refid="class_c_tx_d_b_1a92c74b09e94f8923d48d1bd656e85601" prot="private" virt="non-virtual"><scope>CTxDB</scope><name>nVersion</name></member>
+      <member refid="class_c_tx_d_b_1ad9b13681ef2a79e342e7bbc8e99dbd21" prot="private" virt="non-virtual"><scope>CTxDB</scope><name>options</name></member>
+      <member refid="class_c_tx_d_b_1a7bf556386c6cd3513deb2c6550a78f67" prot="private" virt="non-virtual"><scope>CTxDB</scope><name>pdb</name></member>
+      <member refid="class_c_tx_d_b_1a9e223a10434f8a73002e84cc75c682de" prot="protected" virt="non-virtual"><scope>CTxDB</scope><name>Read</name></member>
+      <member refid="class_c_tx_d_b_1af1a1c0835bf9eb9a59e9d197678b0a4d" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>ReadAddrIndex</name></member>
+      <member refid="class_c_tx_d_b_1ab0e2e8f95c4f891c0a9245d5ba6b0b68" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>ReadBestInvalidTrust</name></member>
+      <member refid="class_c_tx_d_b_1a32d0e546eee99724776352dd4bf0ae79" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>ReadDiskTx</name></member>
+      <member refid="class_c_tx_d_b_1ab32f32729feabef7162d5fa225dd0e22" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>ReadDiskTx</name></member>
+      <member refid="class_c_tx_d_b_1a80ee65f82bb1a769b507dc5c701bfacc" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>ReadDiskTx</name></member>
+      <member refid="class_c_tx_d_b_1a4d7f67f600359473ddd2044030323215" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>ReadDiskTx</name></member>
+      <member refid="class_c_tx_d_b_1a9aae38d6e39ce57a1b8eaaeaea81e4de" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>ReadHashBestChain</name></member>
+      <member refid="class_c_tx_d_b_1a8a138e5dcc3ef98991abaa16eaa8ddeb" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>ReadTxIndex</name></member>
+      <member refid="class_c_tx_d_b_1a24938c7578577c08b2a3eae7617dfa1e" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>ReadVersion</name></member>
+      <member refid="class_c_tx_d_b_1a8c718f82f43d567b5bf7487b5d6685e5" prot="protected" virt="non-virtual"><scope>CTxDB</scope><name>ScanBatch</name></member>
+      <member refid="class_c_tx_d_b_1ac984bce763c97af6fd90f3056367b521" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>TxnAbort</name></member>
+      <member refid="class_c_tx_d_b_1af3c27c5cb8f922b5c03840feda844016" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>TxnBegin</name></member>
+      <member refid="class_c_tx_d_b_1aff04f078df2fc3640d559ce62fc9a6a2" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>TxnCommit</name></member>
+      <member refid="class_c_tx_d_b_1a62fb371022854dc8cb247bed36302df2" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>UpdateTxIndex</name></member>
+      <member refid="class_c_tx_d_b_1a58885f67364829a8e0957a5dc810886d" prot="protected" virt="non-virtual"><scope>CTxDB</scope><name>Write</name></member>
+      <member refid="class_c_tx_d_b_1aa661acc6807641aa0b27c41864c3102c" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>WriteAddrIndex</name></member>
+      <member refid="class_c_tx_d_b_1ad9593efae66f6a73fafba93ad05fd2b8" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>WriteBestInvalidTrust</name></member>
+      <member refid="class_c_tx_d_b_1a56f170187a609bd747c29b3a4adddd8e" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>WriteBlockIndex</name></member>
+      <member refid="class_c_tx_d_b_1a2cf58de69c1c07e500a1f8d0b0709476" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>WriteHashBestChain</name></member>
+      <member refid="class_c_tx_d_b_1aa30dbf235b1c229896097e1eb1ea9520" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>WriteVersion</name></member>
+      <member refid="class_c_tx_d_b_1a279b844a6669e94680c95c2f2bf45580" prot="public" virt="non-virtual"><scope>CTxDB</scope><name>~CTxDB</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

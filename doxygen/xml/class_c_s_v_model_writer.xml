@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_s_v_model_writer" kind="class" language="C++" prot="public">
+    <compoundname>CSVModelWriter</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QObject</basecompoundref>
+    <includes refid="csvmodelwriter_8h" local="no">csvmodelwriter.h</includes>
+    <innerclass refid="struct_c_s_v_model_writer_1_1_column" prot="private">CSVModelWriter::Column</innerclass>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_c_s_v_model_writer_1a7fd0cce01764401f741146a30d542a05" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString CSVModelWriter::filename</definition>
+        <argsstring></argsstring>
+        <name>filename</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/csvmodelwriter.h" line="30" column="1" bodyfile="/home/dev/ds-160209/src/qt/csvmodelwriter.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_s_v_model_writer_1ad088bbeeb9eee4ebad303b0055598f6e" prot="private" static="no" mutable="no">
+        <type>const QAbstractItemModel *</type>
+        <definition>const QAbstractItemModel* CSVModelWriter::model</definition>
+        <argsstring></argsstring>
+        <name>model</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/csvmodelwriter.h" line="31" column="1" bodyfile="/home/dev/ds-160209/src/qt/csvmodelwriter.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_s_v_model_writer_1a0c44d0b205eb9d4496139b1bff479609" prot="private" static="no" mutable="no">
+        <type>QList&lt; Column &gt;</type>
+        <definition>QList&lt;Column&gt; CSVModelWriter::columns</definition>
+        <argsstring></argsstring>
+        <name>columns</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/csvmodelwriter.h" line="39" column="1" bodyfile="/home/dev/ds-160209/src/qt/csvmodelwriter.h" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_s_v_model_writer_1a343d5ebba512dea41a62e11e45a6d175" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>CSVModelWriter::CSVModelWriter</definition>
+        <argsstring>(const QString &amp;filename, QObject *parent=0)</argsstring>
+        <name>CSVModelWriter</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <param>
+          <type>QObject *</type>
+          <declname>parent</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/csvmodelwriter.h" line="19" column="1" bodyfile="/home/dev/ds-160209/src/qt/csvmodelwriter.cpp" bodystart="7" bodyend="11"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_s_v_model_writer_1a7b8be6f49a66b965a94a89c78fb96e40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CSVModelWriter::setModel</definition>
+        <argsstring>(const QAbstractItemModel *model)</argsstring>
+        <name>setModel</name>
+        <param>
+          <type>const QAbstractItemModel *</type>
+          <declname>model</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/csvmodelwriter.h" line="21" column="1" bodyfile="/home/dev/ds-160209/src/qt/csvmodelwriter.cpp" bodystart="13" bodyend="16"/>
+        <referencedby refid="class_address_book_page_1ae5b20525c7f1cf805eace9aafe308d42" compoundref="addressbookpage_8cpp" startline="310" endline="332">AddressBookPage::exportClicked</referencedby>
+        <referencedby refid="class_message_page_1a07a42c8f15c071a62de6a6fa2e96f267" compoundref="messagepage_8cpp" startline="391" endline="418">MessagePage::exportClicked</referencedby>
+        <referencedby refid="class_transaction_view_1a5983022ff1e5395f87de3c5728eff8da" compoundref="transactionview_8cpp" startline="274" endline="301">TransactionView::exportClicked</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_s_v_model_writer_1a9e5f0d60f2c873747582ce21ddeb53b5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CSVModelWriter::addColumn</definition>
+        <argsstring>(const QString &amp;title, int column, int role=Qt::EditRole)</argsstring>
+        <name>addColumn</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>title</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>column</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>role</declname>
+          <defval>Qt::EditRole</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/csvmodelwriter.h" line="22" column="1" bodyfile="/home/dev/ds-160209/src/qt/csvmodelwriter.cpp" bodystart="18" bodyend="26"/>
+        <referencedby refid="class_address_book_page_1ae5b20525c7f1cf805eace9aafe308d42" compoundref="addressbookpage_8cpp" startline="310" endline="332">AddressBookPage::exportClicked</referencedby>
+        <referencedby refid="class_message_page_1a07a42c8f15c071a62de6a6fa2e96f267" compoundref="messagepage_8cpp" startline="391" endline="418">MessagePage::exportClicked</referencedby>
+        <referencedby refid="class_transaction_view_1a5983022ff1e5395f87de3c5728eff8da" compoundref="transactionview_8cpp" startline="274" endline="301">TransactionView::exportClicked</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_s_v_model_writer_1a71fe52fdd6f41c506f9631175cb04615" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CSVModelWriter::write</definition>
+        <argsstring>()</argsstring>
+        <name>write</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Perform export of the model to CSV. <simplesect kind="return"><para>true on success, false otherwise </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/csvmodelwriter.h" line="27" column="1" bodyfile="/home/dev/ds-160209/src/qt/csvmodelwriter.cpp" bodystart="45" bodyend="87"/>
+        <referencedby refid="class_address_book_page_1ae5b20525c7f1cf805eace9aafe308d42" compoundref="addressbookpage_8cpp" startline="310" endline="332">AddressBookPage::exportClicked</referencedby>
+        <referencedby refid="class_message_page_1a07a42c8f15c071a62de6a6fa2e96f267" compoundref="messagepage_8cpp" startline="391" endline="418">MessagePage::exportClicked</referencedby>
+        <referencedby refid="class_transaction_view_1a5983022ff1e5395f87de3c5728eff8da" compoundref="transactionview_8cpp" startline="274" endline="301">TransactionView::exportClicked</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Export a Qt table model to a CSV file. This is useful for analyzing or post-processing the data in a spreadsheet. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="2819">
+        <label>CSVModelWriter</label>
+        <link refid="class_c_s_v_model_writer"/>
+        <childnode refid="2820" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2820">
+        <label>QObject</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2821">
+        <label>CSVModelWriter</label>
+        <link refid="class_c_s_v_model_writer"/>
+        <childnode refid="2822" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2822">
+        <label>QObject</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/dev/ds-160209/src/qt/csvmodelwriter.h" line="15" column="1" bodyfile="/home/dev/ds-160209/src/qt/csvmodelwriter.h" bodystart="14" bodyend="40"/>
+    <listofallmembers>
+      <member refid="class_c_s_v_model_writer_1a9e5f0d60f2c873747582ce21ddeb53b5" prot="public" virt="non-virtual"><scope>CSVModelWriter</scope><name>addColumn</name></member>
+      <member refid="class_c_s_v_model_writer_1a0c44d0b205eb9d4496139b1bff479609" prot="private" virt="non-virtual"><scope>CSVModelWriter</scope><name>columns</name></member>
+      <member refid="class_c_s_v_model_writer_1a343d5ebba512dea41a62e11e45a6d175" prot="public" virt="non-virtual"><scope>CSVModelWriter</scope><name>CSVModelWriter</name></member>
+      <member refid="class_c_s_v_model_writer_1a7fd0cce01764401f741146a30d542a05" prot="private" virt="non-virtual"><scope>CSVModelWriter</scope><name>filename</name></member>
+      <member refid="class_c_s_v_model_writer_1ad088bbeeb9eee4ebad303b0055598f6e" prot="private" virt="non-virtual"><scope>CSVModelWriter</scope><name>model</name></member>
+      <member refid="class_c_s_v_model_writer_1a7b8be6f49a66b965a94a89c78fb96e40" prot="public" virt="non-virtual"><scope>CSVModelWriter</scope><name>setModel</name></member>
+      <member refid="class_c_s_v_model_writer_1a71fe52fdd6f41c506f9631175cb04615" prot="public" virt="non-virtual"><scope>CSVModelWriter</scope><name>write</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

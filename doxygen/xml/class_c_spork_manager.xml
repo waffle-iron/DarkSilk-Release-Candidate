@@ -1,0 +1,248 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_spork_manager" kind="class" language="C++" prot="public">
+    <compoundname>CSporkManager</compoundname>
+    <includes refid="spork_8h" local="no">spork.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_c_spork_manager_1a5ae0ef66c2d2c1db5554494f91317c0b" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; unsigned char &gt;</type>
+        <definition>std::vector&lt;unsigned char&gt; CSporkManager::vchSig</definition>
+        <argsstring></argsstring>
+        <name>vchSig</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/spork.h" line="100" column="1" bodyfile="/home/dev/ds-160209/src/spork.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_spork_manager_1a19c054c477f3131a2d52c907a71bf234" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string CSporkManager::strMasterPrivKey</definition>
+        <argsstring></argsstring>
+        <name>strMasterPrivKey</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/spork.h" line="102" column="1" bodyfile="/home/dev/ds-160209/src/spork.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_spork_manager_1a4ef24845bf75a2d496711098310ff223" prot="private" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string CSporkManager::strMainPubKey</definition>
+        <argsstring></argsstring>
+        <name>strMainPubKey</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/spork.h" line="103" column="1" bodyfile="/home/dev/ds-160209/src/spork.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_spork_manager_1af25ba284196ede7288bc9855e7f8a8a5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CSporkManager::CSporkManager</definition>
+        <argsstring>()</argsstring>
+        <name>CSporkManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/spork.h" line="107" column="1" bodyfile="/home/dev/ds-160209/src/spork.h" bodystart="107" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="class_c_spork_manager_1a1a2960fa69bc49f5e4d36db583d4a840" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string CSporkManager::GetSporkNameByID</definition>
+        <argsstring>(int id)</argsstring>
+        <name>GetSporkNameByID</name>
+        <param>
+          <type>int</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/spork.h" line="111" column="1" bodyfile="/home/dev/ds-160209/src/spork.cpp" bodystart="277" bodyend="289"/>
+        <referencedby refid="rpcmisc_8cpp_1a8dcc7f3e5749bbd1dad163b85d0abdcb" compoundref="rpcmisc_8cpp" startline="246" endline="280">spork</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_spork_manager_1ae72689cf7a2e87ef57f8f7e875a5c21d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int CSporkManager::GetSporkIDByName</definition>
+        <argsstring>(std::string strName)</argsstring>
+        <name>GetSporkIDByName</name>
+        <param>
+          <type>std::string</type>
+          <declname>strName</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/spork.h" line="112" column="1" bodyfile="/home/dev/ds-160209/src/spork.cpp" bodystart="264" bodyend="275"/>
+        <referencedby refid="rpcmisc_8cpp_1a8dcc7f3e5749bbd1dad163b85d0abdcb" compoundref="rpcmisc_8cpp" startline="246" endline="280">spork</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_spork_manager_1afb7e15fe29bd548939657a20ca5feafb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CSporkManager::UpdateSpork</definition>
+        <argsstring>(int nSporkID, int64_t nValue)</argsstring>
+        <name>UpdateSpork</name>
+        <param>
+          <type>int</type>
+          <declname>nSporkID</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1adec1df1b8b51cb32b77e5b86fff46471" kindref="member">int64_t</ref></type>
+          <declname>nValue</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/spork.h" line="113" column="1" bodyfile="/home/dev/ds-160209/src/spork.cpp" bodystart="217" bodyend="233"/>
+        <references refid="class_c_spork_message_1a081216533339aed53adbb0dad2a78f73" compoundref="spork_8h" startline="75">CSporkMessage::nSporkID</references>
+        <references refid="class_c_spork_message_1ae15a1fa999993177b2549c4316c89643" compoundref="spork_8h" startline="76">CSporkMessage::nValue</references>
+        <references refid="class_c_spork_message_1a66a80692ffda8526efa272bb2847030b" compoundref="spork_8h" startline="77">CSporkMessage::nTimeSigned</references>
+        <references refid="util_8cpp_1a46fac5fba8ba905b5f9acb364f5d8c6f" compoundref="util_8cpp" startline="1352" endline="1357">GetTime</references>
+        <references refid="class_c_spork_manager_1adf1b5d40f378c4bd3a5ea31905b11f30" compoundref="spork_8cpp" startline="190" endline="215">Sign</references>
+        <references refid="class_c_spork_manager_1ae8651894670c02ecb5f99806376d5af2" compoundref="spork_8cpp" startline="235" endline="245">Relay</references>
+        <references refid="spork_8cpp_1af58b736428e7bc0e4a7fc590f2da8d2e" compoundref="spork_8cpp" startline="24">mapSporks</references>
+        <references refid="class_c_spork_message_1aa71d5976465a8edb3f11901b14b9df65" compoundref="spork_8h" startline="79" endline="82">CSporkMessage::GetHash</references>
+        <references refid="spork_8cpp_1a2a71a101417469de26e8505fb929462d" compoundref="spork_8cpp" startline="27">mapSporksActive</references>
+        <referencedby refid="rpcmisc_8cpp_1a8dcc7f3e5749bbd1dad163b85d0abdcb" compoundref="rpcmisc_8cpp" startline="246" endline="280">spork</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_spork_manager_1a599d088218de9d242e4dc5cb17dd310b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CSporkManager::SetPrivKey</definition>
+        <argsstring>(std::string strPrivKey)</argsstring>
+        <name>SetPrivKey</name>
+        <param>
+          <type>std::string</type>
+          <declname>strPrivKey</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/spork.h" line="114" column="1" bodyfile="/home/dev/ds-160209/src/spork.cpp" bodystart="247" bodyend="262"/>
+        <references refid="class_c_spork_manager_1adf1b5d40f378c4bd3a5ea31905b11f30" compoundref="spork_8cpp" startline="190" endline="215">Sign</references>
+        <references refid="class_c_spork_manager_1a697d8c0ce5c422ea125eee96687aa7b3" compoundref="spork_8cpp" startline="175" endline="188">CheckSignature</references>
+        <references refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" compoundref="util_8h" startline="158">LogPrintf</references>
+        <referencedby refid="init_8h_1a1a4c1bfbf6ba1db77e988b89b9cadfd3" compoundref="init_8cpp" startline="375" endline="1285">AppInit2</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_spork_manager_1a697d8c0ce5c422ea125eee96687aa7b3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CSporkManager::CheckSignature</definition>
+        <argsstring>(CSporkMessage &amp;spork)</argsstring>
+        <name>CheckSignature</name>
+        <param>
+          <type><ref refid="class_c_spork_message" kindref="compound">CSporkMessage</ref> &amp;</type>
+          <declname>spork</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/spork.h" line="115" column="1" bodyfile="/home/dev/ds-160209/src/spork.cpp" bodystart="175" bodyend="188"/>
+        <references refid="class_c_spork_message_1a081216533339aed53adbb0dad2a78f73" compoundref="spork_8h" startline="75">CSporkMessage::nSporkID</references>
+        <references refid="class_c_spork_message_1ae15a1fa999993177b2549c4316c89643" compoundref="spork_8h" startline="76">CSporkMessage::nValue</references>
+        <references refid="class_c_spork_message_1a66a80692ffda8526efa272bb2847030b" compoundref="spork_8h" startline="77">CSporkMessage::nTimeSigned</references>
+        <references refid="util_8cpp_1abea395175fbc4a788ed0f0a41710b8a7" compoundref="util_8cpp" startline="450" endline="469">ParseHex</references>
+        <references refid="sandstorm_8cpp_1af6ac9f9a52a47b030c3d4a38d13af2b1" compoundref="sandstorm_8cpp" startline="28">sandStormSigner</references>
+        <references refid="class_c_sand_storm_signer_1a8d2fb7c16fcfb1be633101dd5436d3ae" compoundref="sandstorm_8cpp" startline="2073" endline="2089">CSandStormSigner::VerifyMessage</references>
+        <references refid="class_c_spork_message_1a23740331f22a1ed4a8af5a299a618cc1" compoundref="spork_8h" startline="74">CSporkMessage::vchSig</references>
+        <referencedby refid="spork_8h_1a3f9c24c1f4c012152fb4422ca981610a" compoundref="spork_8cpp" startline="30" endline="78">ProcessSpork</referencedby>
+        <referencedby refid="class_c_spork_manager_1a599d088218de9d242e4dc5cb17dd310b" compoundref="spork_8cpp" startline="247" endline="262">SetPrivKey</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_spork_manager_1adf1b5d40f378c4bd3a5ea31905b11f30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CSporkManager::Sign</definition>
+        <argsstring>(CSporkMessage &amp;spork)</argsstring>
+        <name>Sign</name>
+        <param>
+          <type><ref refid="class_c_spork_message" kindref="compound">CSporkMessage</ref> &amp;</type>
+          <declname>spork</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/spork.h" line="116" column="1" bodyfile="/home/dev/ds-160209/src/spork.cpp" bodystart="190" bodyend="215"/>
+        <references refid="class_c_spork_message_1a081216533339aed53adbb0dad2a78f73" compoundref="spork_8h" startline="75">CSporkMessage::nSporkID</references>
+        <references refid="class_c_spork_message_1ae15a1fa999993177b2549c4316c89643" compoundref="spork_8h" startline="76">CSporkMessage::nValue</references>
+        <references refid="class_c_spork_message_1a66a80692ffda8526efa272bb2847030b" compoundref="spork_8h" startline="77">CSporkMessage::nTimeSigned</references>
+        <references refid="sandstorm_8cpp_1af6ac9f9a52a47b030c3d4a38d13af2b1" compoundref="sandstorm_8cpp" startline="28">sandStormSigner</references>
+        <references refid="class_c_sand_storm_signer_1ac9823b3f497f6e9f1e3d426f662af92b" compoundref="sandstorm_8cpp" startline="2044" endline="2057">CSandStormSigner::SetKey</references>
+        <references refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" compoundref="util_8h" startline="158">LogPrintf</references>
+        <references refid="class_c_sand_storm_signer_1a5c9a3f21a823f17e2831247573931698" compoundref="sandstorm_8cpp" startline="2059" endline="2071">CSandStormSigner::SignMessage</references>
+        <references refid="class_c_spork_message_1a23740331f22a1ed4a8af5a299a618cc1" compoundref="spork_8h" startline="74">CSporkMessage::vchSig</references>
+        <references refid="class_c_sand_storm_signer_1a8d2fb7c16fcfb1be633101dd5436d3ae" compoundref="sandstorm_8cpp" startline="2073" endline="2089">CSandStormSigner::VerifyMessage</references>
+        <referencedby refid="class_c_spork_manager_1afb7e15fe29bd548939657a20ca5feafb" compoundref="spork_8cpp" startline="217" endline="233">UpdateSpork</referencedby>
+        <referencedby refid="class_c_spork_manager_1a599d088218de9d242e4dc5cb17dd310b" compoundref="spork_8cpp" startline="247" endline="262">SetPrivKey</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_spork_manager_1ae8651894670c02ecb5f99806376d5af2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void CSporkManager::Relay</definition>
+        <argsstring>(CSporkMessage &amp;msg)</argsstring>
+        <name>Relay</name>
+        <param>
+          <type><ref refid="class_c_spork_message" kindref="compound">CSporkMessage</ref> &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/spork.h" line="117" column="1" bodyfile="/home/dev/ds-160209/src/spork.cpp" bodystart="235" bodyend="245"/>
+        <references refid="protocol_8h_1ac36f475ca5b446f4fde4c9b90bec77c8abacdb1618207a44c1301ae59acf7f5d8" compoundref="protocol_8h" startline="149">MSG_SPORK</references>
+        <references refid="class_c_spork_message_1aa71d5976465a8edb3f11901b14b9df65" compoundref="spork_8h" startline="79" endline="82">CSporkMessage::GetHash</references>
+        <references refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" compoundref="sync_8h" startline="159">LOCK</references>
+        <references refid="net_8cpp_1a8282e3a7948351ac96516573cd31f9d0" compoundref="net_8cpp" startline="69">cs_vNodes</references>
+        <references refid="net_8cpp_1aa5a11f8873e230cea77bc7e91ee51918" compoundref="net_8cpp" startline="68">vNodes</references>
+        <references refid="class_c_node_1a204fda3d33404cb37698c085b1583ab2" compoundref="net_8h" startline="583" endline="595">CNode::PushMessage</references>
+        <referencedby refid="spork_8h_1a3f9c24c1f4c012152fb4422ca981610a" compoundref="spork_8cpp" startline="30" endline="78">ProcessSpork</referencedby>
+        <referencedby refid="class_c_spork_manager_1afb7e15fe29bd548939657a20ca5feafb" compoundref="spork_8cpp" startline="217" endline="233">UpdateSpork</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/spork.h" line="98" column="1" bodyfile="/home/dev/ds-160209/src/spork.h" bodystart="97" bodyend="119"/>
+    <listofallmembers>
+      <member refid="class_c_spork_manager_1a697d8c0ce5c422ea125eee96687aa7b3" prot="public" virt="non-virtual"><scope>CSporkManager</scope><name>CheckSignature</name></member>
+      <member refid="class_c_spork_manager_1af25ba284196ede7288bc9855e7f8a8a5" prot="public" virt="non-virtual"><scope>CSporkManager</scope><name>CSporkManager</name></member>
+      <member refid="class_c_spork_manager_1ae72689cf7a2e87ef57f8f7e875a5c21d" prot="public" virt="non-virtual"><scope>CSporkManager</scope><name>GetSporkIDByName</name></member>
+      <member refid="class_c_spork_manager_1a1a2960fa69bc49f5e4d36db583d4a840" prot="public" virt="non-virtual"><scope>CSporkManager</scope><name>GetSporkNameByID</name></member>
+      <member refid="class_c_spork_manager_1ae8651894670c02ecb5f99806376d5af2" prot="public" virt="non-virtual"><scope>CSporkManager</scope><name>Relay</name></member>
+      <member refid="class_c_spork_manager_1a599d088218de9d242e4dc5cb17dd310b" prot="public" virt="non-virtual"><scope>CSporkManager</scope><name>SetPrivKey</name></member>
+      <member refid="class_c_spork_manager_1adf1b5d40f378c4bd3a5ea31905b11f30" prot="public" virt="non-virtual"><scope>CSporkManager</scope><name>Sign</name></member>
+      <member refid="class_c_spork_manager_1a4ef24845bf75a2d496711098310ff223" prot="private" virt="non-virtual"><scope>CSporkManager</scope><name>strMainPubKey</name></member>
+      <member refid="class_c_spork_manager_1a19c054c477f3131a2d52c907a71bf234" prot="private" virt="non-virtual"><scope>CSporkManager</scope><name>strMasterPrivKey</name></member>
+      <member refid="class_c_spork_manager_1afb7e15fe29bd548939657a20ca5feafb" prot="public" virt="non-virtual"><scope>CSporkManager</scope><name>UpdateSpork</name></member>
+      <member refid="class_c_spork_manager_1a5ae0ef66c2d2c1db5554494f91317c0b" prot="private" virt="non-virtual"><scope>CSporkManager</scope><name>vchSig</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

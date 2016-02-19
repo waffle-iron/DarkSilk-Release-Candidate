@@ -1,0 +1,528 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="dumpfile_8cc" kind="file" language="C++">
+    <compoundname>dumpfile.cc</compoundname>
+    <includes local="no">stdio.h</includes>
+    <includes refid="dbformat_8h" local="yes">db/dbformat.h</includes>
+    <includes refid="filename_8h" local="yes">db/filename.h</includes>
+    <includes refid="log__reader_8h" local="yes">db/log_reader.h</includes>
+    <includes refid="version__edit_8h" local="yes">db/version_edit.h</includes>
+    <includes refid="write__batch__internal_8h" local="yes">db/write_batch_internal.h</includes>
+    <includes refid="env_8h" local="yes">leveldb/env.h</includes>
+    <includes refid="iterator_8h" local="yes">leveldb/iterator.h</includes>
+    <includes refid="options_8h" local="yes">leveldb/options.h</includes>
+    <includes refid="status_8h" local="yes">leveldb/status.h</includes>
+    <includes refid="table_8h" local="yes">leveldb/table.h</includes>
+    <includes refid="write__batch_8h" local="yes">leveldb/write_batch.h</includes>
+    <includes refid="logging_8h" local="yes">util/logging.h</includes>
+    <incdepgraph>
+      <node id="36602">
+        <label>leveldb/table.h</label>
+        <link refid="table_8h"/>
+        <childnode refid="36578" relation="include">
+        </childnode>
+        <childnode refid="36579" relation="include">
+        </childnode>
+      </node>
+      <node id="36599">
+        <label>leveldb/write_batch.h</label>
+        <link refid="write__batch_8h"/>
+        <childnode refid="36576" relation="include">
+        </childnode>
+        <childnode refid="36584" relation="include">
+        </childnode>
+      </node>
+      <node id="36601">
+        <label>stdarg.h</label>
+      </node>
+      <node id="36590">
+        <label>util/logging.h</label>
+        <link refid="logging_8h"/>
+        <childnode refid="36573" relation="include">
+        </childnode>
+        <childnode refid="36578" relation="include">
+        </childnode>
+        <childnode refid="36576" relation="include">
+        </childnode>
+        <childnode refid="36589" relation="include">
+        </childnode>
+      </node>
+      <node id="36581">
+        <label>assert.h</label>
+      </node>
+      <node id="36585">
+        <label>leveldb/options.h</label>
+        <link refid="options_8h"/>
+        <childnode refid="36582" relation="include">
+        </childnode>
+      </node>
+      <node id="36594">
+        <label>db/version_edit.h</label>
+        <link refid="version__edit_8h"/>
+        <childnode refid="36595" relation="include">
+        </childnode>
+        <childnode refid="36596" relation="include">
+        </childnode>
+        <childnode refid="36597" relation="include">
+        </childnode>
+        <childnode refid="36574" relation="include">
+        </childnode>
+      </node>
+      <node id="36574">
+        <label>db/dbformat.h</label>
+        <link refid="dbformat_8h"/>
+        <childnode refid="36573" relation="include">
+        </childnode>
+        <childnode refid="36575" relation="include">
+        </childnode>
+        <childnode refid="36577" relation="include">
+        </childnode>
+        <childnode refid="36586" relation="include">
+        </childnode>
+        <childnode refid="36580" relation="include">
+        </childnode>
+        <childnode refid="36587" relation="include">
+        </childnode>
+        <childnode refid="36588" relation="include">
+        </childnode>
+        <childnode refid="36590" relation="include">
+        </childnode>
+      </node>
+      <node id="36577">
+        <label>leveldb/db.h</label>
+        <link refid="leveldb_2include_2leveldb_2db_8h"/>
+        <childnode refid="36578" relation="include">
+        </childnode>
+        <childnode refid="36573" relation="include">
+        </childnode>
+        <childnode refid="36579" relation="include">
+        </childnode>
+        <childnode refid="36585" relation="include">
+        </childnode>
+      </node>
+      <node id="36576">
+        <label>string</label>
+      </node>
+      <node id="36582">
+        <label>stddef.h</label>
+      </node>
+      <node id="36592">
+        <label>db/log_reader.h</label>
+        <link refid="log__reader_8h"/>
+        <childnode refid="36578" relation="include">
+        </childnode>
+        <childnode refid="36593" relation="include">
+        </childnode>
+        <childnode refid="36580" relation="include">
+        </childnode>
+        <childnode refid="36584" relation="include">
+        </childnode>
+      </node>
+      <node id="36584">
+        <label>leveldb/status.h</label>
+        <link refid="status_8h"/>
+        <childnode refid="36576" relation="include">
+        </childnode>
+        <childnode refid="36580" relation="include">
+        </childnode>
+      </node>
+      <node id="36588">
+        <label>util/coding.h</label>
+        <link refid="coding_8h"/>
+        <childnode refid="36578" relation="include">
+        </childnode>
+        <childnode refid="36583" relation="include">
+        </childnode>
+        <childnode refid="36576" relation="include">
+        </childnode>
+        <childnode refid="36580" relation="include">
+        </childnode>
+        <childnode refid="36589" relation="include">
+        </childnode>
+      </node>
+      <node id="36591">
+        <label>db/filename.h</label>
+        <link refid="filename_8h"/>
+        <childnode refid="36578" relation="include">
+        </childnode>
+        <childnode refid="36576" relation="include">
+        </childnode>
+        <childnode refid="36580" relation="include">
+        </childnode>
+        <childnode refid="36584" relation="include">
+        </childnode>
+        <childnode refid="36589" relation="include">
+        </childnode>
+      </node>
+      <node id="36583">
+        <label>string.h</label>
+      </node>
+      <node id="36597">
+        <label>vector</label>
+      </node>
+      <node id="36596">
+        <label>utility</label>
+      </node>
+      <node id="36593">
+        <label>db/log_format.h</label>
+        <link refid="log__format_8h"/>
+      </node>
+      <node id="36598">
+        <label>db/write_batch_internal.h</label>
+        <link refid="write__batch__internal_8h"/>
+        <childnode refid="36599" relation="include">
+        </childnode>
+      </node>
+      <node id="36589">
+        <label>port/port.h</label>
+        <link refid="port_8h"/>
+        <childnode refid="36583" relation="include">
+        </childnode>
+      </node>
+      <node id="36578">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="36587">
+        <label>leveldb/table_builder.h</label>
+        <link refid="table__builder_8h"/>
+        <childnode refid="36578" relation="include">
+        </childnode>
+        <childnode refid="36585" relation="include">
+        </childnode>
+        <childnode refid="36584" relation="include">
+        </childnode>
+      </node>
+      <node id="36580">
+        <label>leveldb/slice.h</label>
+        <link refid="slice_8h"/>
+        <childnode refid="36581" relation="include">
+        </childnode>
+        <childnode refid="36582" relation="include">
+        </childnode>
+        <childnode refid="36583" relation="include">
+        </childnode>
+        <childnode refid="36576" relation="include">
+        </childnode>
+      </node>
+      <node id="36600">
+        <label>leveldb/env.h</label>
+        <link refid="env_8h"/>
+        <childnode refid="36576" relation="include">
+        </childnode>
+        <childnode refid="36597" relation="include">
+        </childnode>
+        <childnode refid="36601" relation="include">
+        </childnode>
+        <childnode refid="36578" relation="include">
+        </childnode>
+        <childnode refid="36584" relation="include">
+        </childnode>
+      </node>
+      <node id="36595">
+        <label>set</label>
+      </node>
+      <node id="36573">
+        <label>stdio.h</label>
+      </node>
+      <node id="36586">
+        <label>leveldb/filter_policy.h</label>
+        <link refid="filter__policy_8h"/>
+        <childnode refid="36576" relation="include">
+        </childnode>
+      </node>
+      <node id="36575">
+        <label>leveldb/comparator.h</label>
+        <link refid="comparator_8h"/>
+        <childnode refid="36576" relation="include">
+        </childnode>
+      </node>
+      <node id="36572">
+        <label>/home/dev/ds-160209/src/leveldb/db/dumpfile.cc</label>
+        <link refid="dumpfile.cc"/>
+        <childnode refid="36573" relation="include">
+        </childnode>
+        <childnode refid="36574" relation="include">
+        </childnode>
+        <childnode refid="36591" relation="include">
+        </childnode>
+        <childnode refid="36592" relation="include">
+        </childnode>
+        <childnode refid="36594" relation="include">
+        </childnode>
+        <childnode refid="36598" relation="include">
+        </childnode>
+        <childnode refid="36600" relation="include">
+        </childnode>
+        <childnode refid="36579" relation="include">
+        </childnode>
+        <childnode refid="36585" relation="include">
+        </childnode>
+        <childnode refid="36584" relation="include">
+        </childnode>
+        <childnode refid="36602" relation="include">
+        </childnode>
+        <childnode refid="36599" relation="include">
+        </childnode>
+        <childnode refid="36590" relation="include">
+        </childnode>
+      </node>
+      <node id="36579">
+        <label>leveldb/iterator.h</label>
+        <link refid="iterator_8h"/>
+        <childnode refid="36580" relation="include">
+        </childnode>
+        <childnode refid="36584" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceleveldb">leveldb</innernamespace>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="dumpfile_8cc_1a55fe35769fb5fe6e7b5a053ebd14d347" prot="public" static="no" mutable="no">
+        <type>WritableFile *</type>
+        <definition>WritableFile* dst_</definition>
+        <argsstring></argsstring>
+        <name>dst_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/dumpfile.cc" line="38" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/dumpfile.cc" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2012<sp/>The<sp/>LevelDB<sp/>Authors.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>of<sp/>this<sp/>source<sp/>code<sp/>is<sp/>governed<sp/>by<sp/>a<sp/>BSD-style<sp/>license<sp/>that<sp/>can<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>found<sp/>in<sp/>the<sp/>LICENSE<sp/>file.<sp/>See<sp/>the<sp/>AUTHORS<sp/>file<sp/>for<sp/>names<sp/>of<sp/>contributors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="dbformat_8h" kindref="compound">db/dbformat.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="filename_8h" kindref="compound">db/filename.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="log__reader_8h" kindref="compound">db/log_reader.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="version__edit_8h" kindref="compound">db/version_edit.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="write__batch__internal_8h" kindref="compound">db/write_batch_internal.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="env_8h" kindref="compound">leveldb/env.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="iterator_8h" kindref="compound">leveldb/iterator.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="options_8h" kindref="compound">leveldb/options.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="status_8h" kindref="compound">leveldb/status.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="table_8h" kindref="compound">leveldb/table.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="write__batch_8h" kindref="compound">leveldb/write_batch.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="logging_8h" kindref="compound">util/logging.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceleveldb" kindref="compound">leveldb</ref><sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>GuessType(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>fname,<sp/><ref refid="namespaceleveldb_1ab8e559ac5cadcb2b5dd531c60df944f1" kindref="member">FileType</ref>*<sp/>type)<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>pos<sp/>=<sp/>fname.rfind(</highlight><highlight class="charliteral">&apos;/&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/>std::string<sp/>basename;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pos<sp/>==<sp/>std::string::npos)<sp/>{</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>basename<sp/>=<sp/>fname;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>basename<sp/>=<sp/>std::string(fname.data()<sp/>+<sp/>pos<sp/>+<sp/>1,<sp/>fname.size()<sp/>-<sp/>pos<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>ignored;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1af18fdbbcb483d40c35b4aaa4f00d3f6c" kindref="member">ParseFileName</ref>(basename,<sp/>&amp;ignored,<sp/>type);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Notified<sp/>when<sp/>log<sp/>reader<sp/>encounters<sp/>corruption.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">CorruptionReporter<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>log::Reader::Reporter<sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="38" refid="dumpfile_8cc_1a55fe35769fb5fe6e7b5a053ebd14d347" refkind="member"><highlight class="normal"><sp/><sp/>WritableFile*<sp/><ref refid="dumpfile_8cc_1a55fe35769fb5fe6e7b5a053ebd14d347" kindref="member">dst_</ref>;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Corruption(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>bytes,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Status&amp;<sp/>status)<sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>r<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;corruption:<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceleveldb_1a089617d12900e6fe5b712c31f651b5ff" kindref="member">AppendNumberTo</ref>(&amp;r,<sp/>bytes);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>r<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>bytes;<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>r<sp/>+=<sp/>status.ToString();</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>r.push_back(</highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/>dst_-&gt;Append(r);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Print<sp/>contents<sp/>of<sp/>a<sp/>log<sp/>file.<sp/>(*func)()<sp/>is<sp/>called<sp/>on<sp/>every<sp/>record.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal">Status<sp/>PrintLogContents(Env*<sp/>env,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>fname,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>(*<ref refid="testharness_8cc_1ac98d5d20f5aab3ef51e0ff5e30d16925" kindref="member">func</ref>)(<ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref>,<sp/>Slice,<sp/>WritableFile*),</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>WritableFile*<sp/>dst)<sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/>SequentialFile*<sp/>file;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/>Status<sp/>s<sp/>=<sp/>env-&gt;NewSequentialFile(fname,<sp/>&amp;file);</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!s.ok())<sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/>CorruptionReporter<sp/>reporter;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/>reporter.dst_<sp/>=<sp/>dst;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/>log::Reader<sp/>reader(file,<sp/>&amp;reporter,<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">,<sp/>0);</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/>Slice<sp/>record;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/>std::string<sp/>scratch;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(reader.ReadRecord(&amp;record,<sp/>&amp;scratch))<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>(*func)(reader.LastRecordOffset(),<sp/>record,<sp/>dst);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>file;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_status_1a8e3720d233281c874a53c17e081f51b3" kindref="member">Status::OK</ref>();</highlight></codeline>
+<codeline lineno="68"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Called<sp/>on<sp/>every<sp/>item<sp/>found<sp/>in<sp/>a<sp/>WriteBatch.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">WriteBatchItemPrinter<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>WriteBatch::Handler<sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>WritableFile*<sp/><ref refid="dumpfile_8cc_1a55fe35769fb5fe6e7b5a053ebd14d347" kindref="member">dst_</ref>;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Put(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Slice&amp;<sp/>key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Slice&amp;<sp/><ref refid="version__set_8cc_1a38c8b88c432e666ad10b0c5573e1160a" kindref="member">value</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>r<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>put<sp/>&apos;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceleveldb_1aa4dfa82a4c1a31fcb076f2ba59f13b19" kindref="member">AppendEscapedStringTo</ref>(&amp;r,<sp/>key);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>r<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;&apos;<sp/>&apos;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceleveldb_1aa4dfa82a4c1a31fcb076f2ba59f13b19" kindref="member">AppendEscapedStringTo</ref>(&amp;r,<sp/>value);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/>r<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;&apos;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/>dst_-&gt;Append(r);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Delete(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Slice&amp;<sp/>key)<sp/>{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>r<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;<sp/><sp/>del<sp/>&apos;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceleveldb_1aa4dfa82a4c1a31fcb076f2ba59f13b19" kindref="member">AppendEscapedStringTo</ref>(&amp;r,<sp/>key);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>r<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;&apos;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>dst_-&gt;Append(r);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Called<sp/>on<sp/>every<sp/>log<sp/>record<sp/>(each<sp/>one<sp/>of<sp/>which<sp/>is<sp/>a<sp/>WriteBatch)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight><highlight class="comment">//<sp/>found<sp/>in<sp/>a<sp/>kLogFile.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>WriteBatchPrinter(<ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>pos,<sp/>Slice<sp/>record,<sp/>WritableFile*<sp/>dst)<sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/>std::string<sp/>r<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;---<sp/>offset<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><ref refid="namespaceleveldb_1a089617d12900e6fe5b712c31f651b5ff" kindref="member">AppendNumberTo</ref>(&amp;r,<sp/>pos);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/>r<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;;<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(record.size()<sp/>&lt;<sp/>12)<sp/>{</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>r<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;log<sp/>record<sp/>length<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceleveldb_1a089617d12900e6fe5b712c31f651b5ff" kindref="member">AppendNumberTo</ref>(&amp;r,<sp/>record.size());</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>r<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>is<sp/>too<sp/>small\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>dst-&gt;Append(r);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/>WriteBatch<sp/>batch;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_write_batch_internal_1aa07e75250aed00d06f2e4df85ee926b9" kindref="member">WriteBatchInternal::SetContents</ref>(&amp;batch,<sp/>record);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/>r<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;sequence<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><ref refid="namespaceleveldb_1a089617d12900e6fe5b712c31f651b5ff" kindref="member">AppendNumberTo</ref>(&amp;r,<sp/><ref refid="classleveldb_1_1_write_batch_internal_1af657c82bd9378b78c35a3a7429f945d4" kindref="member">WriteBatchInternal::Sequence</ref>(&amp;batch));</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/>r.push_back(</highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/>dst-&gt;Append(r);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/>WriteBatchItemPrinter<sp/>batch_item_printer;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/>batch_item_printer.dst_<sp/>=<sp/>dst;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/>Status<sp/>s<sp/>=<sp/>batch.Iterate(&amp;batch_item_printer);</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!s.ok())<sp/>{</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>dst-&gt;Append(</highlight><highlight class="stringliteral">&quot;<sp/><sp/>error:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>s.ToString()<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal">Status<sp/>DumpLog(Env*<sp/>env,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>fname,<sp/>WritableFile*<sp/>dst)<sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>PrintLogContents(env,<sp/>fname,<sp/>WriteBatchPrinter,<sp/>dst);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Called<sp/>on<sp/>every<sp/>log<sp/>record<sp/>(each<sp/>one<sp/>of<sp/>which<sp/>is<sp/>a<sp/>WriteBatch)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="comment">//<sp/>found<sp/>in<sp/>a<sp/>kDescriptorFile.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>VersionEditPrinter(<ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>pos,<sp/>Slice<sp/>record,<sp/>WritableFile*<sp/>dst)<sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/>std::string<sp/>r<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;---<sp/>offset<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><ref refid="namespaceleveldb_1a089617d12900e6fe5b712c31f651b5ff" kindref="member">AppendNumberTo</ref>(&amp;r,<sp/>pos);</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/>r<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;;<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/>VersionEdit<sp/>edit;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/>Status<sp/>s<sp/>=<sp/>edit.DecodeFrom(record);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!s.ok())<sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>r<sp/>+=<sp/>s.ToString();</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/>r.push_back(</highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/>r<sp/>+=<sp/>edit.DebugString();</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/>dst-&gt;Append(r);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal">Status<sp/>DumpDescriptor(Env*<sp/>env,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>fname,<sp/>WritableFile*<sp/>dst)<sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>PrintLogContents(env,<sp/>fname,<sp/>VersionEditPrinter,<sp/>dst);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal">Status<sp/>DumpTable(Env*<sp/>env,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>fname,<sp/>WritableFile*<sp/>dst)<sp/>{</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>file_size;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/>RandomAccessFile*<sp/>file<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/>Table*<sp/>table<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/>Status<sp/>s<sp/>=<sp/>env-&gt;GetFileSize(fname,<sp/>&amp;file_size);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(s.ok())<sp/>{</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>s<sp/>=<sp/>env-&gt;NewRandomAccessFile(fname,<sp/>&amp;file);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(s.ok())<sp/>{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>use<sp/>the<sp/>default<sp/>comparator,<sp/>which<sp/>may<sp/>or<sp/>may<sp/>not<sp/>match<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>comparator<sp/>used<sp/>in<sp/>this<sp/>database.<sp/>However<sp/>this<sp/>should<sp/>not<sp/>cause</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>problems<sp/>since<sp/>we<sp/>only<sp/>use<sp/>Table<sp/>operations<sp/>that<sp/>do<sp/>not<sp/>require</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>any<sp/>comparisons.<sp/><sp/>In<sp/>particular,<sp/>we<sp/>do<sp/>not<sp/>call<sp/>Seek<sp/>or<sp/>Prev.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>s<sp/>=<sp/><ref refid="classleveldb_1_1_table_1aa25d0e074ab4de46e583522a8c0e9582" kindref="member">Table::Open</ref>(Options(),<sp/>file,<sp/>file_size,<sp/>&amp;table);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!s.ok())<sp/>{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>table;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>file;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>s;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/>ReadOptions<sp/>ro;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/>ro.fill_cache<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/>Iterator*<sp/>iter<sp/>=<sp/>table-&gt;NewIterator(ro);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/>std::string<sp/>r;</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(iter-&gt;SeekToFirst();<sp/>iter-&gt;Valid();<sp/>iter-&gt;Next())<sp/>{</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/>r.clear();</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/>ParsedInternalKey<sp/>key;</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="namespaceleveldb_1a5a173b622e86c7a2f9beae3ac8818ac3" kindref="member">ParseInternalKey</ref>(iter-&gt;key(),<sp/>&amp;key))<sp/>{</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>r<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;badkey<sp/>&apos;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceleveldb_1aa4dfa82a4c1a31fcb076f2ba59f13b19" kindref="member">AppendEscapedStringTo</ref>(&amp;r,<sp/>iter-&gt;key());</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>r<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;&apos;<sp/>=&gt;<sp/>&apos;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceleveldb_1aa4dfa82a4c1a31fcb076f2ba59f13b19" kindref="member">AppendEscapedStringTo</ref>(&amp;r,<sp/>iter-&gt;value());</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>r<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;&apos;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dst-&gt;Append(r);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>r<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&apos;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceleveldb_1aa4dfa82a4c1a31fcb076f2ba59f13b19" kindref="member">AppendEscapedStringTo</ref>(&amp;r,<sp/>key.user_key);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>r<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;&apos;<sp/>@<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceleveldb_1a089617d12900e6fe5b712c31f651b5ff" kindref="member">AppendNumberTo</ref>(&amp;r,<sp/>key.sequence);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>r<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>:<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(key.type<sp/>==<sp/><ref refid="namespaceleveldb_1acc038cb0d608414730cafa459a4ba866aca5f2147a76c932346e15d86668d4ed3" kindref="member">kTypeDeletion</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;del&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(key.type<sp/>==<sp/><ref refid="namespaceleveldb_1acc038cb0d608414730cafa459a4ba866a97725c1d8e3317d1bac1f3b14fbfa281" kindref="member">kTypeValue</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>r<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;val&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceleveldb_1a089617d12900e6fe5b712c31f651b5ff" kindref="member">AppendNumberTo</ref>(&amp;r,<sp/>key.type);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>r<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;<sp/>=&gt;<sp/>&apos;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespaceleveldb_1aa4dfa82a4c1a31fcb076f2ba59f13b19" kindref="member">AppendEscapedStringTo</ref>(&amp;r,<sp/>iter-&gt;value());</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>r<sp/>+=<sp/></highlight><highlight class="stringliteral">&quot;&apos;\n&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>dst-&gt;Append(r);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/>s<sp/>=<sp/>iter-&gt;status();</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!s.ok())<sp/>{</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>dst-&gt;Append(</highlight><highlight class="stringliteral">&quot;iterator<sp/>error:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>s.ToString()<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>iter;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>table;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>file;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_status_1a8e3720d233281c874a53c17e081f51b3" kindref="member">Status::OK</ref>();</highlight></codeline>
+<codeline lineno="206"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="208"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210" refid="namespaceleveldb_1a119202f6323172b2ac45eae5baf7202f" refkind="member"><highlight class="normal"><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref><sp/><ref refid="namespaceleveldb_1a119202f6323172b2ac45eae5baf7202f" kindref="member">DumpFile</ref>(<ref refid="classleveldb_1_1_env" kindref="compound">Env</ref>*<sp/>env,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>fname,<sp/><ref refid="classleveldb_1_1_writable_file" kindref="compound">WritableFile</ref>*<sp/>dst)<sp/>{</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><ref refid="namespaceleveldb_1ab8e559ac5cadcb2b5dd531c60df944f1" kindref="member">FileType</ref><sp/>ftype;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!GuessType(fname,<sp/>&amp;ftype))<sp/>{</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_status_1aefef9f88d0a6ca6d34bd9dec1670309e" kindref="member">Status::InvalidArgument</ref>(fname<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;:<sp/>unknown<sp/>file<sp/>type&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(ftype)<sp/>{</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1ab8e559ac5cadcb2b5dd531c60df944f1a9aa7599d651d74892a611835cb90f1a8" kindref="member">kLogFile</ref>:<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>DumpLog(env,<sp/>fname,<sp/>dst);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1ab8e559ac5cadcb2b5dd531c60df944f1af941d0365407ca03ed62ad30696c78da" kindref="member">kDescriptorFile</ref>:<sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>DumpDescriptor(env,<sp/>fname,<sp/>dst);</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="namespaceleveldb_1ab8e559ac5cadcb2b5dd531c60df944f1aa5055e5d888b92fd695bbb24c22ca8be" kindref="member">kTableFile</ref>:<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>DumpTable(env,<sp/>fname,<sp/>dst);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_status_1aefef9f88d0a6ca6d34bd9dec1670309e" kindref="member">Status::InvalidArgument</ref>(fname<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;:<sp/>not<sp/>a<sp/>dump-able<sp/>file<sp/>type&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>leveldb</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/leveldb/db/dumpfile.cc"/>
+  </compounddef>
+</doxygen>

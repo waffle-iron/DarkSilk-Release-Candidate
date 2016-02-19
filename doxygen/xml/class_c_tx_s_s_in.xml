@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_tx_s_s_in" kind="class" language="C++" prot="public">
+    <compoundname>CTxSSIn</compoundname>
+    <basecompoundref refid="class_c_tx_in" prot="public" virt="non-virtual">CTxIn</basecompoundref>
+    <includes refid="sandstorm_8h" local="no">sandstorm.h</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="class_c_tx_s_s_in_1a0e09e06a90cee14abdbd390f3ecbfe08" prot="public" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool CTxSSIn::fHasSig</definition>
+        <argsstring></argsstring>
+        <name>fHasSig</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/sandstorm.h" line="56" column="1" bodyfile="/home/dev/ds-160209/src/sandstorm.h" bodystart="56" bodyend="-1"/>
+        <referencedby refid="class_c_sandstorm_pool_1a76f820f131dbb15d80f826f0c788249a" compoundref="sandstorm_8cpp" startline="646" endline="746">CSandstormPool::ChargeFees</referencedby>
+        <referencedby refid="class_c_sandstorm_pool_1a4b6bc55b02bfbce6a467507541a137bd" compoundref="sandstorm_8cpp" startline="1077" endline="1084">CSandstormPool::SignaturesComplete</referencedby>
+        <referencedby refid="class_c_sand_storm_entry_1afa10b9e19a0a0916b9d3153e2adce11b" compoundref="sandstorm_8h" startline="124" endline="138">CSandStormEntry::AddSig</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_tx_s_s_in_1a1e4cb4930ca28196efe956ddc3310b28" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int CTxSSIn::nSentTimes</definition>
+        <argsstring></argsstring>
+        <name>nSentTimes</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/sandstorm.h" line="57" column="1" bodyfile="/home/dev/ds-160209/src/sandstorm.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_tx_s_s_in_1a084ac187363e1511b526621300a352b5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>CTxSSIn::CTxSSIn</definition>
+        <argsstring>(const CTxIn &amp;in)</argsstring>
+        <name>CTxSSIn</name>
+        <param>
+          <type>const <ref refid="class_c_tx_in" kindref="compound">CTxIn</ref> &amp;</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/sandstorm.h" line="59" column="1" bodyfile="/home/dev/ds-160209/src/sandstorm.h" bodystart="59" bodyend="67"/>
+        <references refid="class_c_tx_in_1aed9312051a25380cbd7f123408ab7c20" compoundref="transaction_8h" startline="97">CTxIn::prevout</references>
+        <references refid="class_c_tx_in_1aba540fd902366210a6ad6cd9a18fe763" compoundref="transaction_8h" startline="98">CTxIn::scriptSig</references>
+        <references refid="class_c_tx_in_1a91732c5ffb13520a6989b162ff6683fc" compoundref="transaction_8h" startline="99">CTxIn::prevPubKey</references>
+        <references refid="class_c_tx_in_1aa0dd08a6ecd0a595d9ef4dad020c1ea5" compoundref="transaction_8h" startline="100">CTxIn::nSequence</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Holds an Sandstorm input </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="2899">
+        <label>CTxIn</label>
+        <link refid="class_c_tx_in"/>
+      </node>
+      <node id="2898">
+        <label>CTxSSIn</label>
+        <link refid="class_c_tx_s_s_in"/>
+        <childnode refid="2899" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2906">
+        <label>base_uint&lt; 256 &gt;</label>
+        <link refid="classbase__uint"/>
+      </node>
+      <node id="2901">
+        <label>CTxIn</label>
+        <link refid="class_c_tx_in"/>
+        <childnode refid="2902" relation="usage">
+          <edgelabel>scriptSig</edgelabel>
+          <edgelabel>prevPubKey</edgelabel>
+        </childnode>
+        <childnode refid="2904" relation="usage">
+          <edgelabel>prevout</edgelabel>
+        </childnode>
+      </node>
+      <node id="2905">
+        <label>uint256</label>
+        <link refid="classuint256"/>
+        <childnode refid="2906" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2904">
+        <label>COutPoint</label>
+        <link refid="class_c_out_point"/>
+        <childnode refid="2905" relation="usage">
+          <edgelabel>hash</edgelabel>
+        </childnode>
+      </node>
+      <node id="2902">
+        <label>CScript</label>
+        <link refid="class_c_script"/>
+        <childnode refid="2903" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2903">
+        <label>std::vector&lt; unsigned char &gt;</label>
+      </node>
+      <node id="2900">
+        <label>CTxSSIn</label>
+        <link refid="class_c_tx_s_s_in"/>
+        <childnode refid="2901" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="/home/dev/ds-160209/src/sandstorm.h" line="54" column="1" bodyfile="/home/dev/ds-160209/src/sandstorm.h" bodystart="53" bodyend="68"/>
+    <listofallmembers>
+      <member refid="class_c_tx_in_1aad2fd3fef5ad4ebe7e54c0db0cc34be4" prot="public" virt="non-virtual"><scope>CTxSSIn</scope><name>ADD_SERIALIZE_METHODS</name></member>
+      <member refid="class_c_tx_in_1abcf9f5a65b0a016b31912f4cd1f32c73" prot="public" virt="non-virtual"><scope>CTxSSIn</scope><name>CTxIn</name></member>
+      <member refid="class_c_tx_in_1a243c4c394d5534ed10999b31d025be13" prot="public" virt="non-virtual"><scope>CTxSSIn</scope><name>CTxIn</name></member>
+      <member refid="class_c_tx_in_1a168382e68612df987e0241740771ab4e" prot="public" virt="non-virtual"><scope>CTxSSIn</scope><name>CTxIn</name></member>
+      <member refid="class_c_tx_s_s_in_1a084ac187363e1511b526621300a352b5" prot="public" virt="non-virtual"><scope>CTxSSIn</scope><name>CTxSSIn</name></member>
+      <member refid="class_c_tx_s_s_in_1a0e09e06a90cee14abdbd390f3ecbfe08" prot="public" virt="non-virtual"><scope>CTxSSIn</scope><name>fHasSig</name></member>
+      <member refid="class_c_tx_in_1aa8110f711e2cdecff45c294ba2ee0a26" prot="public" virt="non-virtual"><scope>CTxSSIn</scope><name>IsFinal</name></member>
+      <member refid="class_c_tx_s_s_in_1a1e4cb4930ca28196efe956ddc3310b28" prot="public" virt="non-virtual"><scope>CTxSSIn</scope><name>nSentTimes</name></member>
+      <member refid="class_c_tx_in_1aa0dd08a6ecd0a595d9ef4dad020c1ea5" prot="public" virt="non-virtual"><scope>CTxSSIn</scope><name>nSequence</name></member>
+      <member refid="class_c_tx_in_1aed9312051a25380cbd7f123408ab7c20" prot="public" virt="non-virtual"><scope>CTxSSIn</scope><name>prevout</name></member>
+      <member refid="class_c_tx_in_1a91732c5ffb13520a6989b162ff6683fc" prot="public" virt="non-virtual"><scope>CTxSSIn</scope><name>prevPubKey</name></member>
+      <member refid="class_c_tx_in_1aba540fd902366210a6ad6cd9a18fe763" prot="public" virt="non-virtual"><scope>CTxSSIn</scope><name>scriptSig</name></member>
+      <member refid="class_c_tx_in_1a3d23c5264c6d93ecf3cf65dd13c55db3" prot="public" virt="non-virtual"><scope>CTxSSIn</scope><name>SerializationOp</name></member>
+      <member refid="class_c_tx_in_1aeac9b3abd4b2d81e9ec4401d1383778d" prot="public" virt="non-virtual"><scope>CTxSSIn</scope><name>ToString</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

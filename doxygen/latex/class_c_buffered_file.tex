@@ -1,0 +1,239 @@
+\hypertarget{class_c_buffered_file}{}\section{C\+Buffered\+File Class Reference}
+\label{class_c_buffered_file}\index{C\+Buffered\+File@{C\+Buffered\+File}}
+
+
+{\ttfamily \#include $<$streams.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_buffered_file_a30ad96a8d09bed60355d1fadda7dabdc}{C\+Buffered\+File} (F\+I\+L\+E $\ast$file\+In, \hyperlink{stdint_8h_aaa5d1cd013383c889537491c3cfd9aad}{uint64\+\_\+t} n\+Buf\+Size, \hyperlink{stdint_8h_aaa5d1cd013383c889537491c3cfd9aad}{uint64\+\_\+t} n\+Rewind\+In, int n\+Type\+In, int n\+Version\+In)
+\item 
+\hyperlink{class_c_buffered_file_a8804f689b27d3298cd5d63fbcddb97d1}{$\sim$\+C\+Buffered\+File} ()
+\item 
+void \hyperlink{class_c_buffered_file_aef8c993fe3eb0fa423d09d095f40dcf6}{fclose} ()
+\item 
+bool \hyperlink{class_c_buffered_file_abc0a2462d47ae5ba23c258291509dd6d}{eof} () const 
+\item 
+\hyperlink{class_c_buffered_file}{C\+Buffered\+File} \& \hyperlink{class_c_buffered_file_a20c6d2a4dbc69a8e5c7ba766d04b3d85}{read} (char $\ast$pch, size\+\_\+t n\+Size)
+\item 
+\hyperlink{stdint_8h_aaa5d1cd013383c889537491c3cfd9aad}{uint64\+\_\+t} \hyperlink{class_c_buffered_file_af9e7226e682ede9c1c141fb2972afd7b}{Get\+Pos} ()
+\item 
+bool \hyperlink{class_c_buffered_file_aac4029a9aade127cc8a1fbbcc1549599}{Set\+Pos} (\hyperlink{stdint_8h_aaa5d1cd013383c889537491c3cfd9aad}{uint64\+\_\+t} n\+Pos)
+\item 
+bool \hyperlink{class_c_buffered_file_afbf9abcc70f24824661aec96a4310a63}{Seek} (\hyperlink{stdint_8h_aaa5d1cd013383c889537491c3cfd9aad}{uint64\+\_\+t} n\+Pos)
+\item 
+bool \hyperlink{class_c_buffered_file_adfcf370a41be0454e0f6b3dc358e415c}{Set\+Limit} (\hyperlink{stdint_8h_aaa5d1cd013383c889537491c3cfd9aad}{uint64\+\_\+t} n\+Pos=(\hyperlink{stdint_8h_aaa5d1cd013383c889537491c3cfd9aad}{uint64\+\_\+t})(-\/1))
+\item 
+{\footnotesize template$<$typename T $>$ }\\\hyperlink{class_c_buffered_file}{C\+Buffered\+File} \& \hyperlink{class_c_buffered_file_ab570d5f1a173a41100e7b42b4aacbbc5}{operator$>$$>$} (T \&obj)
+\item 
+void \hyperlink{class_c_buffered_file_a15ce0683ba5925939d33f098a948236b}{Find\+Byte} (char ch)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_c_buffered_file_a2c93fc60c4460bd1ccf90922646b19b8}{Fill} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 431 of file streams.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_buffered_file_a30ad96a8d09bed60355d1fadda7dabdc}{}\index{C\+Buffered\+File@{C\+Buffered\+File}!C\+Buffered\+File@{C\+Buffered\+File}}
+\index{C\+Buffered\+File@{C\+Buffered\+File}!C\+Buffered\+File@{C\+Buffered\+File}}
+\subsubsection[{C\+Buffered\+File}]{\setlength{\rightskip}{0pt plus 5cm}C\+Buffered\+File\+::\+C\+Buffered\+File (
+\begin{DoxyParamCaption}
+\item[{F\+I\+L\+E $\ast$}]{file\+In, }
+\item[{{\bf uint64\+\_\+t}}]{n\+Buf\+Size, }
+\item[{{\bf uint64\+\_\+t}}]{n\+Rewind\+In, }
+\item[{int}]{n\+Type\+In, }
+\item[{int}]{n\+Version\+In}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_buffered_file_a30ad96a8d09bed60355d1fadda7dabdc}
+
+
+Definition at line 468 of file streams.\+h.
+
+\hypertarget{class_c_buffered_file_a8804f689b27d3298cd5d63fbcddb97d1}{}\index{C\+Buffered\+File@{C\+Buffered\+File}!````~C\+Buffered\+File@{$\sim$\+C\+Buffered\+File}}
+\index{````~C\+Buffered\+File@{$\sim$\+C\+Buffered\+File}!C\+Buffered\+File@{C\+Buffered\+File}}
+\subsubsection[{$\sim$\+C\+Buffered\+File}]{\setlength{\rightskip}{0pt plus 5cm}C\+Buffered\+File\+::$\sim$\+C\+Buffered\+File (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_buffered_file_a8804f689b27d3298cd5d63fbcddb97d1}
+
+
+Definition at line 476 of file streams.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 0
+
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_buffered_file_abc0a2462d47ae5ba23c258291509dd6d}{}\index{C\+Buffered\+File@{C\+Buffered\+File}!eof@{eof}}
+\index{eof@{eof}!C\+Buffered\+File@{C\+Buffered\+File}}
+\subsubsection[{eof}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Buffered\+File\+::eof (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_buffered_file_abc0a2462d47ae5ba23c258291509dd6d}
+
+
+Definition at line 490 of file streams.\+h.
+
+\hypertarget{class_c_buffered_file_aef8c993fe3eb0fa423d09d095f40dcf6}{}\index{C\+Buffered\+File@{C\+Buffered\+File}!fclose@{fclose}}
+\index{fclose@{fclose}!C\+Buffered\+File@{C\+Buffered\+File}}
+\subsubsection[{fclose}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Buffered\+File\+::fclose (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_buffered_file_aef8c993fe3eb0fa423d09d095f40dcf6}
+
+
+Definition at line 481 of file streams.\+h.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 1
+
+
+\hypertarget{class_c_buffered_file_a2c93fc60c4460bd1ccf90922646b19b8}{}\index{C\+Buffered\+File@{C\+Buffered\+File}!Fill@{Fill}}
+\index{Fill@{Fill}!C\+Buffered\+File@{C\+Buffered\+File}}
+\subsubsection[{Fill}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Buffered\+File\+::\+Fill (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}\label{class_c_buffered_file_a2c93fc60c4460bd1ccf90922646b19b8}
+
+
+Definition at line 450 of file streams.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+\hypertarget{class_c_buffered_file_a15ce0683ba5925939d33f098a948236b}{}\index{C\+Buffered\+File@{C\+Buffered\+File}!Find\+Byte@{Find\+Byte}}
+\index{Find\+Byte@{Find\+Byte}!C\+Buffered\+File@{C\+Buffered\+File}}
+\subsubsection[{Find\+Byte}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Buffered\+File\+::\+Find\+Byte (
+\begin{DoxyParamCaption}
+\item[{char}]{ch}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_buffered_file_a15ce0683ba5925939d33f098a948236b}
+
+
+Definition at line 565 of file streams.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 4
+
+
+\hypertarget{class_c_buffered_file_af9e7226e682ede9c1c141fb2972afd7b}{}\index{C\+Buffered\+File@{C\+Buffered\+File}!Get\+Pos@{Get\+Pos}}
+\index{Get\+Pos@{Get\+Pos}!C\+Buffered\+File@{C\+Buffered\+File}}
+\subsubsection[{Get\+Pos}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uint64\+\_\+t} C\+Buffered\+File\+::\+Get\+Pos (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_buffered_file_af9e7226e682ede9c1c141fb2972afd7b}
+
+
+Definition at line 518 of file streams.\+h.
+
+\hypertarget{class_c_buffered_file_ab570d5f1a173a41100e7b42b4aacbbc5}{}\index{C\+Buffered\+File@{C\+Buffered\+File}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!C\+Buffered\+File@{C\+Buffered\+File}}
+\subsubsection[{operator$>$$>$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ {\bf C\+Buffered\+File}\& C\+Buffered\+File\+::operator$>$$>$ (
+\begin{DoxyParamCaption}
+\item[{T \&}]{obj}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_buffered_file_ab570d5f1a173a41100e7b42b4aacbbc5}
+
+
+Definition at line 558 of file streams.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 5
+
+
+\hypertarget{class_c_buffered_file_a20c6d2a4dbc69a8e5c7ba766d04b3d85}{}\index{C\+Buffered\+File@{C\+Buffered\+File}!read@{read}}
+\index{read@{read}!C\+Buffered\+File@{C\+Buffered\+File}}
+\subsubsection[{read}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Buffered\+File}\& C\+Buffered\+File\+::read (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{pch, }
+\item[{size\+\_\+t}]{n\+Size}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_buffered_file_a20c6d2a4dbc69a8e5c7ba766d04b3d85}
+
+
+Definition at line 495 of file streams.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 6
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 7
+
+
+\hypertarget{class_c_buffered_file_afbf9abcc70f24824661aec96a4310a63}{}\index{C\+Buffered\+File@{C\+Buffered\+File}!Seek@{Seek}}
+\index{Seek@{Seek}!C\+Buffered\+File@{C\+Buffered\+File}}
+\subsubsection[{Seek}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Buffered\+File\+::\+Seek (
+\begin{DoxyParamCaption}
+\item[{{\bf uint64\+\_\+t}}]{n\+Pos}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_buffered_file_afbf9abcc70f24824661aec96a4310a63}
+
+
+Definition at line 536 of file streams.\+h.
+
+\hypertarget{class_c_buffered_file_adfcf370a41be0454e0f6b3dc358e415c}{}\index{C\+Buffered\+File@{C\+Buffered\+File}!Set\+Limit@{Set\+Limit}}
+\index{Set\+Limit@{Set\+Limit}!C\+Buffered\+File@{C\+Buffered\+File}}
+\subsubsection[{Set\+Limit}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Buffered\+File\+::\+Set\+Limit (
+\begin{DoxyParamCaption}
+\item[{{\bf uint64\+\_\+t}}]{n\+Pos = {\ttfamily ({\bf uint64\+\_\+t})(-\/1)}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_buffered_file_adfcf370a41be0454e0f6b3dc358e415c}
+
+
+Definition at line 550 of file streams.\+h.
+
+\hypertarget{class_c_buffered_file_aac4029a9aade127cc8a1fbbcc1549599}{}\index{C\+Buffered\+File@{C\+Buffered\+File}!Set\+Pos@{Set\+Pos}}
+\index{Set\+Pos@{Set\+Pos}!C\+Buffered\+File@{C\+Buffered\+File}}
+\subsubsection[{Set\+Pos}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Buffered\+File\+::\+Set\+Pos (
+\begin{DoxyParamCaption}
+\item[{{\bf uint64\+\_\+t}}]{n\+Pos}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_buffered_file_aac4029a9aade127cc8a1fbbcc1549599}
+
+
+Definition at line 523 of file streams.\+h.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/\hyperlink{streams_8h}{streams.\+h}\end{DoxyCompactItemize}

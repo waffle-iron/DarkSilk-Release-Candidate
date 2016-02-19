@@ -7,7 +7,6 @@
 #define DARKSILK_LEVELDB_H
 
 #include "main.h"
-#include "streams.h"
 
 #include <map>
 #include <string>
@@ -15,6 +14,7 @@
 
 #include <leveldb/db.h>
 #include <leveldb/write_batch.h>
+#include "streams.h"
 
 /// Create a new block index entry for a given block hash
 CBlockIndex * InsertBlockIndex(uint256 hash);

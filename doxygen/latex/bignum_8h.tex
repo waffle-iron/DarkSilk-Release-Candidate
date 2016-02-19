@@ -1,0 +1,257 @@
+\hypertarget{bignum_8h}{}\section{/home/dev/ds-\/160209/src/bignum.h File Reference}
+\label{bignum_8h}\index{/home/dev/ds-\/160209/src/bignum.\+h@{/home/dev/ds-\/160209/src/bignum.\+h}}
+{\ttfamily \#include \char`\"{}serialize.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}uint256.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$openssl/bn.\+h$>$}\\*
+{\ttfamily \#include $<$stdexcept$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+Include dependency graph for bignum.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classbignum__error}{bignum\+\_\+error}
+\item 
+class \hyperlink{class_c_auto_b_n___c_t_x}{C\+Auto\+B\+N\+\_\+\+C\+T\+X}
+\item 
+class \hyperlink{class_c_big_num}{C\+Big\+Num}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef \hyperlink{class_c_big_num}{C\+Big\+Num} \hyperlink{bignum_8h_aea7bec8d7067f26a5699d15d51ab7344}{Bignum}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+const \hyperlink{class_c_big_num}{C\+Big\+Num} \hyperlink{bignum_8h_a819bba1b2b78b483f97b382d10428aec}{operator+} (const \hyperlink{class_c_big_num}{C\+Big\+Num} \&a, const \hyperlink{class_c_big_num}{C\+Big\+Num} \&b)
+\item 
+const \hyperlink{class_c_big_num}{C\+Big\+Num} \hyperlink{bignum_8h_aeb0210adda76affb66975146b1168f71}{operator-\/} (const \hyperlink{class_c_big_num}{C\+Big\+Num} \&a, const \hyperlink{class_c_big_num}{C\+Big\+Num} \&b)
+\item 
+const \hyperlink{class_c_big_num}{C\+Big\+Num} \hyperlink{bignum_8h_aa232c7b9c490c7d5631f83d395e4cb4d}{operator-\/} (const \hyperlink{class_c_big_num}{C\+Big\+Num} \&a)
+\item 
+const \hyperlink{class_c_big_num}{C\+Big\+Num} \hyperlink{bignum_8h_a62e78c276de3957d599fd4974713fed2}{operator$\ast$} (const \hyperlink{class_c_big_num}{C\+Big\+Num} \&a, const \hyperlink{class_c_big_num}{C\+Big\+Num} \&b)
+\item 
+const \hyperlink{class_c_big_num}{C\+Big\+Num} \hyperlink{bignum_8h_ac5a9fb08b1522f0cbcc30f87bac72f4b}{operator/} (const \hyperlink{class_c_big_num}{C\+Big\+Num} \&a, const \hyperlink{class_c_big_num}{C\+Big\+Num} \&b)
+\item 
+const \hyperlink{class_c_big_num}{C\+Big\+Num} \hyperlink{bignum_8h_a8abffdb8b9ce531fef9fc3067d7329ef}{operator\%} (const \hyperlink{class_c_big_num}{C\+Big\+Num} \&a, const \hyperlink{class_c_big_num}{C\+Big\+Num} \&b)
+\item 
+const \hyperlink{class_c_big_num}{C\+Big\+Num} \hyperlink{bignum_8h_a86b058302c849275feacf293a83ee8be}{operator$<$$<$} (const \hyperlink{class_c_big_num}{C\+Big\+Num} \&a, unsigned int shift)
+\item 
+const \hyperlink{class_c_big_num}{C\+Big\+Num} \hyperlink{bignum_8h_a04d04f2aaa8deba2ea08938e22b565a6}{operator$>$$>$} (const \hyperlink{class_c_big_num}{C\+Big\+Num} \&a, unsigned int shift)
+\item 
+bool \hyperlink{bignum_8h_af5a5df78a886ba34c3ce242b02a62bad}{operator==} (const \hyperlink{class_c_big_num}{C\+Big\+Num} \&a, const \hyperlink{class_c_big_num}{C\+Big\+Num} \&b)
+\item 
+bool \hyperlink{bignum_8h_a136920a941d817d467017f36d63e48a8}{operator!=} (const \hyperlink{class_c_big_num}{C\+Big\+Num} \&a, const \hyperlink{class_c_big_num}{C\+Big\+Num} \&b)
+\item 
+bool \hyperlink{bignum_8h_a9ecd8e4eda0fd40c50bf1dc79278b8da}{operator$<$=} (const \hyperlink{class_c_big_num}{C\+Big\+Num} \&a, const \hyperlink{class_c_big_num}{C\+Big\+Num} \&b)
+\item 
+bool \hyperlink{bignum_8h_ad413d94390cfa29840c6887cdc07959e}{operator$>$=} (const \hyperlink{class_c_big_num}{C\+Big\+Num} \&a, const \hyperlink{class_c_big_num}{C\+Big\+Num} \&b)
+\item 
+bool \hyperlink{bignum_8h_a6db3085f36d565f1dd8589c8386d3a2f}{operator$<$} (const \hyperlink{class_c_big_num}{C\+Big\+Num} \&a, const \hyperlink{class_c_big_num}{C\+Big\+Num} \&b)
+\item 
+bool \hyperlink{bignum_8h_ae09a7d6e173c46e14f62c1d0790bce20}{operator$>$} (const \hyperlink{class_c_big_num}{C\+Big\+Num} \&a, const \hyperlink{class_c_big_num}{C\+Big\+Num} \&b)
+\item 
+std\+::ostream \& \hyperlink{bignum_8h_a6d11a190e788b0bb0c55df4699066edc}{operator$<$$<$} (std\+::ostream \&strm, const \hyperlink{class_c_big_num}{C\+Big\+Num} \&b)
+\end{DoxyCompactItemize}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{bignum_8h_aea7bec8d7067f26a5699d15d51ab7344}{}\index{bignum.\+h@{bignum.\+h}!Bignum@{Bignum}}
+\index{Bignum@{Bignum}!bignum.\+h@{bignum.\+h}}
+\subsubsection[{Bignum}]{\setlength{\rightskip}{0pt plus 5cm}typedef {\bf C\+Big\+Num} {\bf Bignum}}\label{bignum_8h_aea7bec8d7067f26a5699d15d51ab7344}
+
+
+Definition at line 724 of file bignum.\+h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{bignum_8h_a136920a941d817d467017f36d63e48a8}{}\index{bignum.\+h@{bignum.\+h}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!bignum.\+h@{bignum.\+h}}
+\subsubsection[{operator"!=}]{\setlength{\rightskip}{0pt plus 5cm}bool operator!= (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Big\+Num} \&}]{a, }
+\item[{const {\bf C\+Big\+Num} \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{bignum_8h_a136920a941d817d467017f36d63e48a8}
+
+
+Definition at line 716 of file bignum.\+h.
+
+\hypertarget{bignum_8h_a8abffdb8b9ce531fef9fc3067d7329ef}{}\index{bignum.\+h@{bignum.\+h}!operator\%@{operator\%}}
+\index{operator\%@{operator\%}!bignum.\+h@{bignum.\+h}}
+\subsubsection[{operator\%}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf C\+Big\+Num} operator\% (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Big\+Num} \&}]{a, }
+\item[{const {\bf C\+Big\+Num} \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{bignum_8h_a8abffdb8b9ce531fef9fc3067d7329ef}
+
+
+Definition at line 691 of file bignum.\+h.
+
+\hypertarget{bignum_8h_a62e78c276de3957d599fd4974713fed2}{}\index{bignum.\+h@{bignum.\+h}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!bignum.\+h@{bignum.\+h}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf C\+Big\+Num} operator$\ast$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Big\+Num} \&}]{a, }
+\item[{const {\bf C\+Big\+Num} \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{bignum_8h_a62e78c276de3957d599fd4974713fed2}
+
+
+Definition at line 673 of file bignum.\+h.
+
+\hypertarget{bignum_8h_a819bba1b2b78b483f97b382d10428aec}{}\index{bignum.\+h@{bignum.\+h}!operator+@{operator+}}
+\index{operator+@{operator+}!bignum.\+h@{bignum.\+h}}
+\subsubsection[{operator+}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf C\+Big\+Num} operator+ (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Big\+Num} \&}]{a, }
+\item[{const {\bf C\+Big\+Num} \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{bignum_8h_a819bba1b2b78b483f97b382d10428aec}
+
+
+Definition at line 650 of file bignum.\+h.
+
+\hypertarget{bignum_8h_aeb0210adda76affb66975146b1168f71}{}\index{bignum.\+h@{bignum.\+h}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!bignum.\+h@{bignum.\+h}}
+\subsubsection[{operator-\/}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf C\+Big\+Num} operator-\/ (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Big\+Num} \&}]{a, }
+\item[{const {\bf C\+Big\+Num} \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{bignum_8h_aeb0210adda76affb66975146b1168f71}
+
+
+Definition at line 658 of file bignum.\+h.
+
+\hypertarget{bignum_8h_aa232c7b9c490c7d5631f83d395e4cb4d}{}\index{bignum.\+h@{bignum.\+h}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!bignum.\+h@{bignum.\+h}}
+\subsubsection[{operator-\/}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf C\+Big\+Num} operator-\/ (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Big\+Num} \&}]{a}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{bignum_8h_aa232c7b9c490c7d5631f83d395e4cb4d}
+
+
+Definition at line 666 of file bignum.\+h.
+
+\hypertarget{bignum_8h_ac5a9fb08b1522f0cbcc30f87bac72f4b}{}\index{bignum.\+h@{bignum.\+h}!operator/@{operator/}}
+\index{operator/@{operator/}!bignum.\+h@{bignum.\+h}}
+\subsubsection[{operator/}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf C\+Big\+Num} operator/ (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Big\+Num} \&}]{a, }
+\item[{const {\bf C\+Big\+Num} \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{bignum_8h_ac5a9fb08b1522f0cbcc30f87bac72f4b}
+
+
+Definition at line 682 of file bignum.\+h.
+
+\hypertarget{bignum_8h_a6db3085f36d565f1dd8589c8386d3a2f}{}\index{bignum.\+h@{bignum.\+h}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!bignum.\+h@{bignum.\+h}}
+\subsubsection[{operator$<$}]{\setlength{\rightskip}{0pt plus 5cm}bool operator$<$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Big\+Num} \&}]{a, }
+\item[{const {\bf C\+Big\+Num} \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{bignum_8h_a6db3085f36d565f1dd8589c8386d3a2f}
+
+
+Definition at line 719 of file bignum.\+h.
+
+\hypertarget{bignum_8h_a86b058302c849275feacf293a83ee8be}{}\index{bignum.\+h@{bignum.\+h}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!bignum.\+h@{bignum.\+h}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf C\+Big\+Num} operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Big\+Num} \&}]{a, }
+\item[{unsigned int}]{shift}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{bignum_8h_a86b058302c849275feacf293a83ee8be}
+
+
+Definition at line 700 of file bignum.\+h.
+
+\hypertarget{bignum_8h_a6d11a190e788b0bb0c55df4699066edc}{}\index{bignum.\+h@{bignum.\+h}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!bignum.\+h@{bignum.\+h}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}std\+::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\+::ostream \&}]{strm, }
+\item[{const {\bf C\+Big\+Num} \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{bignum_8h_a6d11a190e788b0bb0c55df4699066edc}
+
+
+Definition at line 722 of file bignum.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+\hypertarget{bignum_8h_a9ecd8e4eda0fd40c50bf1dc79278b8da}{}\index{bignum.\+h@{bignum.\+h}!operator$<$=@{operator$<$=}}
+\index{operator$<$=@{operator$<$=}!bignum.\+h@{bignum.\+h}}
+\subsubsection[{operator$<$=}]{\setlength{\rightskip}{0pt plus 5cm}bool operator$<$= (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Big\+Num} \&}]{a, }
+\item[{const {\bf C\+Big\+Num} \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{bignum_8h_a9ecd8e4eda0fd40c50bf1dc79278b8da}
+
+
+Definition at line 717 of file bignum.\+h.
+
+\hypertarget{bignum_8h_af5a5df78a886ba34c3ce242b02a62bad}{}\index{bignum.\+h@{bignum.\+h}!operator==@{operator==}}
+\index{operator==@{operator==}!bignum.\+h@{bignum.\+h}}
+\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}bool operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Big\+Num} \&}]{a, }
+\item[{const {\bf C\+Big\+Num} \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{bignum_8h_af5a5df78a886ba34c3ce242b02a62bad}
+
+
+Definition at line 715 of file bignum.\+h.
+
+\hypertarget{bignum_8h_ae09a7d6e173c46e14f62c1d0790bce20}{}\index{bignum.\+h@{bignum.\+h}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!bignum.\+h@{bignum.\+h}}
+\subsubsection[{operator$>$}]{\setlength{\rightskip}{0pt plus 5cm}bool operator$>$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Big\+Num} \&}]{a, }
+\item[{const {\bf C\+Big\+Num} \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{bignum_8h_ae09a7d6e173c46e14f62c1d0790bce20}
+
+
+Definition at line 720 of file bignum.\+h.
+
+\hypertarget{bignum_8h_ad413d94390cfa29840c6887cdc07959e}{}\index{bignum.\+h@{bignum.\+h}!operator$>$=@{operator$>$=}}
+\index{operator$>$=@{operator$>$=}!bignum.\+h@{bignum.\+h}}
+\subsubsection[{operator$>$=}]{\setlength{\rightskip}{0pt plus 5cm}bool operator$>$= (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Big\+Num} \&}]{a, }
+\item[{const {\bf C\+Big\+Num} \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{bignum_8h_ad413d94390cfa29840c6887cdc07959e}
+
+
+Definition at line 718 of file bignum.\+h.
+
+\hypertarget{bignum_8h_a04d04f2aaa8deba2ea08938e22b565a6}{}\index{bignum.\+h@{bignum.\+h}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!bignum.\+h@{bignum.\+h}}
+\subsubsection[{operator$>$$>$}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf C\+Big\+Num} operator$>$$>$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf C\+Big\+Num} \&}]{a, }
+\item[{unsigned int}]{shift}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{bignum_8h_a04d04f2aaa8deba2ea08938e22b565a6}
+
+
+Definition at line 708 of file bignum.\+h.
+

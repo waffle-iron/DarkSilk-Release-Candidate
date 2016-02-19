@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="qvalidatedlineedit_8cpp" kind="file" language="C++">
+    <compoundname>qvalidatedlineedit.cpp</compoundname>
+    <includes refid="qvalidatedlineedit_8h" local="yes">qvalidatedlineedit.h</includes>
+    <includes refid="guiconstants_8h" local="yes">guiconstants.h</includes>
+    <incdepgraph>
+      <node id="45920">
+        <label>guiconstants.h</label>
+        <link refid="guiconstants_8h"/>
+      </node>
+      <node id="45918">
+        <label>qvalidatedlineedit.h</label>
+        <link refid="qvalidatedlineedit_8h"/>
+        <childnode refid="45919" relation="include">
+        </childnode>
+      </node>
+      <node id="45919">
+        <label>QLineEdit</label>
+      </node>
+      <node id="45917">
+        <label>/home/dev/ds-160209/src/qt/qvalidatedlineedit.cpp</label>
+        <link refid="qvalidatedlineedit.cpp"/>
+        <childnode refid="45918" relation="include">
+        </childnode>
+        <childnode refid="45920" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="qvalidatedlineedit_8h" kindref="compound">qvalidatedlineedit.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="guiconstants_8h" kindref="compound">guiconstants.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="class_q_validated_line_edit_1a1d739b7cf9a4ed066bb73decf374293f" refkind="member"><highlight class="normal"><ref refid="class_q_validated_line_edit_1a1d739b7cf9a4ed066bb73decf374293f" kindref="member">QValidatedLineEdit::QValidatedLineEdit</ref>(QWidget<sp/>*parent)<sp/>:</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"><sp/><sp/><sp/><sp/>QLineEdit(parent),<sp/>valid(true)</highlight></codeline>
+<codeline lineno="7"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/>connect(</highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>SIGNAL(textChanged(QString)),<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal">,<sp/>SLOT(markValid()));</highlight></codeline>
+<codeline lineno="9"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="class_q_validated_line_edit_1ad9984e2e463cc7fbf28fe334498a1df5" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_q_validated_line_edit_1ad9984e2e463cc7fbf28fe334498a1df5" kindref="member">QValidatedLineEdit::setValid</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>valid)</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(valid<sp/>==<sp/>this-&gt;valid)</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(valid)</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>setStyleSheet(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>setStyleSheet(<ref refid="guiconstants_8h_1ad849ae29747ea177b712592519be2350" kindref="member">STYLE_INVALID</ref>);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>this-&gt;valid<sp/>=<sp/>valid;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="class_q_validated_line_edit_1a914d4efae9ac7c74faa3a4a82d26fec3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_q_validated_line_edit_1a914d4efae9ac7c74faa3a4a82d26fec3" kindref="member">QValidatedLineEdit::focusInEvent</ref>(QFocusEvent<sp/>*evt)</highlight></codeline>
+<codeline lineno="30"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Clear<sp/>invalid<sp/>flag<sp/>on<sp/>focus</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_q_validated_line_edit_1ad9984e2e463cc7fbf28fe334498a1df5" kindref="member">setValid</ref>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>QLineEdit::focusInEvent(evt);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>QValidatedLineEdit::markValid()</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_q_validated_line_edit_1ad9984e2e463cc7fbf28fe334498a1df5" kindref="member">setValid</ref>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="class_q_validated_line_edit_1aee2a648f6f4904f21e55871afbddefa9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_q_validated_line_edit_1aee2a648f6f4904f21e55871afbddefa9" kindref="member">QValidatedLineEdit::clear</ref>()</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_q_validated_line_edit_1ad9984e2e463cc7fbf28fe334498a1df5" kindref="member">setValid</ref>(</highlight><highlight class="keyword">true</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>QLineEdit::clear();</highlight></codeline>
+<codeline lineno="45"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/qt/qvalidatedlineedit.cpp"/>
+  </compounddef>
+</doxygen>

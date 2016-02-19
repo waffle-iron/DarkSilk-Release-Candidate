@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="leveldb_2table_2block_8h" kind="file" language="C++">
+    <compoundname>block.h</compoundname>
+    <includes local="no">stddef.h</includes>
+    <includes refid="stdint_8h" local="no">stdint.h</includes>
+    <includes refid="iterator_8h" local="yes">leveldb/iterator.h</includes>
+    <includedby refid="db__impl_8cc" local="yes">/home/dev/ds-160209/src/leveldb/db/db_impl.cc</includedby>
+    <includedby refid="block_8cc" local="yes">/home/dev/ds-160209/src/leveldb/table/block.cc</includedby>
+    <includedby refid="format_8cc" local="yes">/home/dev/ds-160209/src/leveldb/table/format.cc</includedby>
+    <includedby refid="table_8cc" local="yes">/home/dev/ds-160209/src/leveldb/table/table.cc</includedby>
+    <includedby refid="table__test_8cc" local="yes">/home/dev/ds-160209/src/leveldb/table/table_test.cc</includedby>
+    <includedby refid="two__level__iterator_8cc" local="yes">/home/dev/ds-160209/src/leveldb/table/two_level_iterator.cc</includedby>
+    <incdepgraph>
+      <node id="39026">
+        <label>assert.h</label>
+      </node>
+      <node id="39028">
+        <label>string</label>
+      </node>
+      <node id="39022">
+        <label>stddef.h</label>
+      </node>
+      <node id="39029">
+        <label>leveldb/status.h</label>
+        <link refid="status_8h"/>
+        <childnode refid="39028" relation="include">
+        </childnode>
+        <childnode refid="39025" relation="include">
+        </childnode>
+      </node>
+      <node id="39027">
+        <label>string.h</label>
+      </node>
+      <node id="39021">
+        <label>/home/dev/ds-160209/src/leveldb/table/block.h</label>
+        <link refid="leveldb/table/block.h"/>
+        <childnode refid="39022" relation="include">
+        </childnode>
+        <childnode refid="39023" relation="include">
+        </childnode>
+        <childnode refid="39024" relation="include">
+        </childnode>
+      </node>
+      <node id="39023">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="39025">
+        <label>leveldb/slice.h</label>
+        <link refid="slice_8h"/>
+        <childnode refid="39026" relation="include">
+        </childnode>
+        <childnode refid="39022" relation="include">
+        </childnode>
+        <childnode refid="39027" relation="include">
+        </childnode>
+        <childnode refid="39028" relation="include">
+        </childnode>
+      </node>
+      <node id="39024">
+        <label>leveldb/iterator.h</label>
+        <link refid="iterator_8h"/>
+        <childnode refid="39025" relation="include">
+        </childnode>
+        <childnode refid="39029" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="39031">
+        <label>/home/dev/ds-160209/src/leveldb/db/db_impl.cc</label>
+        <link refid="db__impl_8cc"/>
+      </node>
+      <node id="39032">
+        <label>/home/dev/ds-160209/src/leveldb/table/block.cc</label>
+        <link refid="block_8cc"/>
+      </node>
+      <node id="39036">
+        <label>/home/dev/ds-160209/src/leveldb/table/two_level_iterator.cc</label>
+        <link refid="two__level__iterator_8cc"/>
+      </node>
+      <node id="39033">
+        <label>/home/dev/ds-160209/src/leveldb/table/format.cc</label>
+        <link refid="format_8cc"/>
+      </node>
+      <node id="39030">
+        <label>/home/dev/ds-160209/src/leveldb/table/block.h</label>
+        <link refid="leveldb/table/block.h"/>
+        <childnode refid="39031" relation="include">
+        </childnode>
+        <childnode refid="39032" relation="include">
+        </childnode>
+        <childnode refid="39033" relation="include">
+        </childnode>
+        <childnode refid="39034" relation="include">
+        </childnode>
+        <childnode refid="39035" relation="include">
+        </childnode>
+        <childnode refid="39036" relation="include">
+        </childnode>
+      </node>
+      <node id="39035">
+        <label>/home/dev/ds-160209/src/leveldb/table/table_test.cc</label>
+        <link refid="table__test_8cc"/>
+      </node>
+      <node id="39034">
+        <label>/home/dev/ds-160209/src/leveldb/table/table.cc</label>
+        <link refid="table_8cc"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classleveldb_1_1_block" prot="public">leveldb::Block</innerclass>
+    <innernamespace refid="namespaceleveldb">leveldb</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2011-2016<sp/>The<sp/>LevelDB<sp/>Authors.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>of<sp/>this<sp/>source<sp/>code<sp/>is<sp/>governed<sp/>by<sp/>a<sp/>BSD-style<sp/>license<sp/>that<sp/>can<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>found<sp/>in<sp/>the<sp/>LICENSE<sp/>file.<sp/>See<sp/>the<sp/>AUTHORS<sp/>file<sp/>for<sp/>names<sp/>of<sp/>contributors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>STORAGE_LEVELDB_TABLE_BLOCK_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STORAGE_LEVELDB_TABLE_BLOCK_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="stdint_8h" kindref="compound">stdint.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="iterator_8h" kindref="compound">leveldb/iterator.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceleveldb" kindref="compound">leveldb</ref><sp/>{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">BlockContents;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Comparator;</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17" refid="classleveldb_1_1_block" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classleveldb_1_1_block" kindref="compound">Block</ref><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Initialize<sp/>the<sp/>block<sp/>with<sp/>the<sp/>specified<sp/>contents.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_block_1a242f2101a3c906b6f75f5c008e3ecdd9" kindref="member">Block</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structleveldb_1_1_block_contents" kindref="compound">BlockContents</ref>&amp;<sp/>contents);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_block_1a949c8f02dd434861cc1c352bd258ea47" kindref="member">~Block</ref>();</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="classleveldb_1_1_block_1aa3834a89827b5363c11fbdca6d0b1c92" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_block_1aa3834a89827b5363c11fbdca6d0b1c92" kindref="member">size</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>size_;<sp/>}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_iterator" kindref="compound">Iterator</ref>*<sp/><ref refid="classleveldb_1_1_block_1a336289029f37d18d31a1a3c178afc7b3" kindref="member">NewIterator</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structleveldb_1_1_comparator" kindref="compound">Comparator</ref>*<sp/>comparator);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>NumRestarts()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>data_;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size_;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>restart_offset_;<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Offset<sp/>in<sp/>data_<sp/>of<sp/>restart<sp/>array</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>owned_;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Block<sp/>owns<sp/>data_[]</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>No<sp/>copying<sp/>allowed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_block_1a242f2101a3c906b6f75f5c008e3ecdd9" kindref="member">Block</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_block" kindref="compound">Block</ref>&amp;);</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>operator=(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_block" kindref="compound">Block</ref>&amp;);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">Iter;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>leveldb</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/>//<sp/>STORAGE_LEVELDB_TABLE_BLOCK_H_</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/leveldb/table/block.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="transactiontablemodel_8h" kind="file" language="C++">
+    <compoundname>transactiontablemodel.h</compoundname>
+    <includes local="no">QAbstractTableModel</includes>
+    <includes local="no">QStringList</includes>
+    <includedby refid="clientmodel_8cpp" local="yes">/home/dev/ds-160209/src/qt/clientmodel.cpp</includedby>
+    <includedby refid="darksilkgui_8cpp" local="yes">/home/dev/ds-160209/src/qt/darksilkgui.cpp</includedby>
+    <includedby refid="overviewpage_8cpp" local="yes">/home/dev/ds-160209/src/qt/overviewpage.cpp</includedby>
+    <includedby refid="transactiondescdialog_8cpp" local="yes">/home/dev/ds-160209/src/qt/transactiondescdialog.cpp</includedby>
+    <includedby refid="transactionfilterproxy_8cpp" local="yes">/home/dev/ds-160209/src/qt/transactionfilterproxy.cpp</includedby>
+    <includedby refid="transactiontablemodel_8cpp" local="yes">/home/dev/ds-160209/src/qt/transactiontablemodel.cpp</includedby>
+    <includedby refid="transactionview_8cpp" local="yes">/home/dev/ds-160209/src/qt/transactionview.cpp</includedby>
+    <includedby refid="walletmodel_8cpp" local="yes">/home/dev/ds-160209/src/qt/walletmodel.cpp</includedby>
+    <incdepgraph>
+      <node id="48067">
+        <label>/home/dev/ds-160209/src/qt/transactiontablemodel.h</label>
+        <link refid="transactiontablemodel.h"/>
+        <childnode refid="48068" relation="include">
+        </childnode>
+        <childnode refid="48069" relation="include">
+        </childnode>
+      </node>
+      <node id="48069">
+        <label>QStringList</label>
+      </node>
+      <node id="48068">
+        <label>QAbstractTableModel</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="48072">
+        <label>/home/dev/ds-160209/src/qt/darksilkgui.cpp</label>
+        <link refid="darksilkgui_8cpp"/>
+      </node>
+      <node id="48071">
+        <label>/home/dev/ds-160209/src/qt/clientmodel.cpp</label>
+        <link refid="clientmodel_8cpp"/>
+      </node>
+      <node id="48077">
+        <label>/home/dev/ds-160209/src/qt/transactionview.cpp</label>
+        <link refid="transactionview_8cpp"/>
+      </node>
+      <node id="48078">
+        <label>/home/dev/ds-160209/src/qt/walletmodel.cpp</label>
+        <link refid="walletmodel_8cpp"/>
+      </node>
+      <node id="48074">
+        <label>/home/dev/ds-160209/src/qt/transactiondescdialog.cpp</label>
+        <link refid="transactiondescdialog_8cpp"/>
+      </node>
+      <node id="48075">
+        <label>/home/dev/ds-160209/src/qt/transactionfilterproxy.cpp</label>
+        <link refid="transactionfilterproxy_8cpp"/>
+      </node>
+      <node id="48070">
+        <label>/home/dev/ds-160209/src/qt/transactiontablemodel.h</label>
+        <link refid="transactiontablemodel.h"/>
+        <childnode refid="48071" relation="include">
+        </childnode>
+        <childnode refid="48072" relation="include">
+        </childnode>
+        <childnode refid="48073" relation="include">
+        </childnode>
+        <childnode refid="48074" relation="include">
+        </childnode>
+        <childnode refid="48075" relation="include">
+        </childnode>
+        <childnode refid="48076" relation="include">
+        </childnode>
+        <childnode refid="48077" relation="include">
+        </childnode>
+        <childnode refid="48078" relation="include">
+        </childnode>
+      </node>
+      <node id="48076">
+        <label>/home/dev/ds-160209/src/qt/transactiontablemodel.cpp</label>
+        <link refid="transactiontablemodel_8cpp"/>
+      </node>
+      <node id="48073">
+        <label>/home/dev/ds-160209/src/qt/overviewpage.cpp</label>
+        <link refid="overviewpage_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_transaction_table_model" prot="public">TransactionTableModel</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="preprocessor">#ifndef<sp/>TRANSACTIONTABLEMODEL_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TRANSACTIONTABLEMODEL_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QAbstractTableModel&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QStringList&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_c_wallet" kindref="compound">CWallet</ref>;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_transaction_table_priv" kindref="compound">TransactionTablePriv</ref>;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_transaction_record" kindref="compound">TransactionRecord</ref>;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_wallet_model" kindref="compound">WalletModel</ref>;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="class_transaction_table_model" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_transaction_table_model" kindref="compound">TransactionTableModel</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>QAbstractTableModel</highlight></codeline>
+<codeline lineno="15"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_OBJECT</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="class_transaction_table_model_1a6c10b7cab9804eee6df9e049a978dc62" kindref="member">TransactionTableModel</ref>(<ref refid="class_c_wallet" kindref="compound">CWallet</ref>*<sp/>wallet,<sp/><ref refid="class_wallet_model" kindref="compound">WalletModel</ref><sp/>*parent<sp/>=<sp/>0);</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_transaction_table_model_1a02b12458092e9584bc19ec7b65d8bd58" kindref="member">~TransactionTableModel</ref>();</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="class_transaction_table_model_1aca9d1efb507b6e471b31dc8c73c5bb43" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="class_transaction_table_model_1aca9d1efb507b6e471b31dc8c73c5bb43" kindref="member">ColumnIndex</ref><sp/>{</highlight></codeline>
+<codeline lineno="23" refid="class_transaction_table_model_1aca9d1efb507b6e471b31dc8c73c5bb43a33e6cfb6b9321da77974a1989dd35ca8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_transaction_table_model_1aca9d1efb507b6e471b31dc8c73c5bb43a33e6cfb6b9321da77974a1989dd35ca8" kindref="member">Status</ref><sp/>=<sp/>0,</highlight></codeline>
+<codeline lineno="24" refid="class_transaction_table_model_1aca9d1efb507b6e471b31dc8c73c5bb43a6916d94be4921d53694134b7cdaaf1b5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_transaction_table_model_1aca9d1efb507b6e471b31dc8c73c5bb43a6916d94be4921d53694134b7cdaaf1b5" kindref="member">Date</ref><sp/>=<sp/>1,</highlight></codeline>
+<codeline lineno="25" refid="class_transaction_table_model_1aca9d1efb507b6e471b31dc8c73c5bb43a3ef3e4550a1dd3d68e1fc8ac5fbf2aed" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_transaction_table_model_1aca9d1efb507b6e471b31dc8c73c5bb43a3ef3e4550a1dd3d68e1fc8ac5fbf2aed" kindref="member">Type</ref><sp/>=<sp/>2,</highlight></codeline>
+<codeline lineno="26" refid="class_transaction_table_model_1aca9d1efb507b6e471b31dc8c73c5bb43a48e207f3b69d4439c58f90671d91bd48" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_transaction_table_model_1aca9d1efb507b6e471b31dc8c73c5bb43a48e207f3b69d4439c58f90671d91bd48" kindref="member">ToAddress</ref><sp/>=<sp/>3,</highlight></codeline>
+<codeline lineno="27" refid="class_transaction_table_model_1aca9d1efb507b6e471b31dc8c73c5bb43a89e945eea985253e45d0643f53c52e24" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_transaction_table_model_1aca9d1efb507b6e471b31dc8c73c5bb43a89e945eea985253e45d0643f53c52e24" kindref="member">Amount</ref><sp/>=<sp/>4</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6" kindref="member">RoleIndex</ref><sp/>{</highlight></codeline>
+<codeline lineno="35" refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6a35c49f8c0732954b2812c67e4c745840" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6a35c49f8c0732954b2812c67e4c745840" kindref="member">TypeRole</ref><sp/>=<sp/>Qt::UserRole,</highlight></codeline>
+<codeline lineno="37" refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6a46e879bd509162d980df3692c65eb66e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6a46e879bd509162d980df3692c65eb66e" kindref="member">DateRole</ref>,</highlight></codeline>
+<codeline lineno="39" refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6a2957b8435634d7602e74b513d392d82c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6a2957b8435634d7602e74b513d392d82c" kindref="member">LongDescriptionRole</ref>,</highlight></codeline>
+<codeline lineno="41" refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6ab82599f86b9cf8d0907e42bc8158ef16" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6ab82599f86b9cf8d0907e42bc8158ef16" kindref="member">AddressRole</ref>,</highlight></codeline>
+<codeline lineno="43" refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6a286d79e8b1e0bfc8cb6bb72bbec78de2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6a286d79e8b1e0bfc8cb6bb72bbec78de2" kindref="member">LabelRole</ref>,</highlight></codeline>
+<codeline lineno="45" refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6ace07f7f11257526cef9d6613c23cfff4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6ace07f7f11257526cef9d6613c23cfff4" kindref="member">AmountRole</ref>,</highlight></codeline>
+<codeline lineno="47" refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6aaf979aec852c99afac10243f78a8a1e0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6aaf979aec852c99afac10243f78a8a1e0" kindref="member">TxIDRole</ref>,</highlight></codeline>
+<codeline lineno="49" refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6ae4fb059af39604caf75e71f9176edb16" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6ae4fb059af39604caf75e71f9176edb16" kindref="member">ConfirmedRole</ref>,</highlight></codeline>
+<codeline lineno="51" refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6affd966c654a96ad65574e30986f80563" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6affd966c654a96ad65574e30986f80563" kindref="member">FormattedAmountRole</ref>,</highlight></codeline>
+<codeline lineno="53" refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6a3f8e62622565f361805b2d050da5b2b6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_transaction_table_model_1a4b248508c36df598476affbf9871d1e6a3f8e62622565f361805b2d050da5b2b6" kindref="member">StatusRole</ref></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_transaction_table_model_1ae50798bd2339dca750223b2e9eb8721b" kindref="member">rowCount</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QModelIndex<sp/>&amp;parent)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_transaction_table_model_1a6608bf57c7424b84714b2810d9cf51e1" kindref="member">columnCount</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QModelIndex<sp/>&amp;parent)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>QVariant<sp/><ref refid="class_transaction_table_model_1a416d0751ab9a95ecd87d3f7bed4f0b06" kindref="member">data</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QModelIndex<sp/>&amp;<ref refid="class_transaction_table_model_1aaaf3cea9a5373fff771ce81d2f26de6e" kindref="member">index</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>role)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>QVariant<sp/><ref refid="class_transaction_table_model_1a0e114cae04d5a5ec03d82a80ea1d2594" kindref="member">headerData</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>section,<sp/>Qt::Orientation<sp/>orientation,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>role)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>QModelIndex<sp/><ref refid="class_transaction_table_model_1aaaf3cea9a5373fff771ce81d2f26de6e" kindref="member">index</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>row,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>column,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QModelIndex<sp/>&amp;<sp/>parent<sp/>=<sp/>QModelIndex())<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_wallet" kindref="compound">CWallet</ref>*<sp/>wallet;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_wallet_model" kindref="compound">WalletModel</ref><sp/>*walletModel;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>QStringList<sp/>columns;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_transaction_table_priv" kindref="compound">TransactionTablePriv</ref><sp/>*priv;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/>lookupAddress(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;address,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>tooltip)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>QVariant<sp/>addressColor(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_transaction_record" kindref="compound">TransactionRecord</ref><sp/>*wtx)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/>formatTxStatus(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_transaction_record" kindref="compound">TransactionRecord</ref><sp/>*wtx)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/>formatTxDate(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_transaction_record" kindref="compound">TransactionRecord</ref><sp/>*wtx)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/>formatTxType(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_transaction_record" kindref="compound">TransactionRecord</ref><sp/>*wtx)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/>formatTxToAddress(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_transaction_record" kindref="compound">TransactionRecord</ref><sp/>*wtx,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>tooltip)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/>formatTxAmount(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_transaction_record" kindref="compound">TransactionRecord</ref><sp/>*wtx,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>showUnconfirmed=</highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/>formatTooltip(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_transaction_record" kindref="compound">TransactionRecord</ref><sp/>*rec)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>QVariant<sp/>txStatusDecoration(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_transaction_record" kindref="compound">TransactionRecord</ref><sp/>*wtx)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/>QVariant<sp/>txAddressDecoration(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_transaction_record" kindref="compound">TransactionRecord</ref><sp/>*wtx)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>slots:</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_transaction_table_model_1abb93b1812f27622f67aed0302bc90ee6" kindref="member">updateTransaction</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;<ref refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" kindref="member">hash</ref>,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>status);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_transaction_table_model_1a5899d9eda6465bfb16d2846b6459567e" kindref="member">updateConfirmations</ref>();</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_transaction_table_model_1a8b73ff7d72ec2dd69790bc61bbe8575e" kindref="member">updateDisplayUnit</ref>();</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="class_transaction_table_model_1a39d3ddddb3af12905ad5538a91753736" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_transaction_table_priv" kindref="compound">TransactionTablePriv</ref>;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>TRANSACTIONTABLEMODEL_H</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/qt/transactiontablemodel.h"/>
+  </compounddef>
+</doxygen>

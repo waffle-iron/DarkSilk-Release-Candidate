@@ -1,0 +1,994 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="c__test_8c" kind="file" language="C++">
+    <compoundname>c_test.c</compoundname>
+    <includes refid="c_8h" local="yes">leveldb/c.h</includes>
+    <includes local="no">stddef.h</includes>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">string.h</includes>
+    <includes local="no">sys/types.h</includes>
+    <includes local="no">unistd.h</includes>
+    <incdepgraph>
+      <node id="36186">
+        <label>stdarg.h</label>
+      </node>
+      <node id="36190">
+        <label>stdlib.h</label>
+      </node>
+      <node id="36185">
+        <label>leveldb/c.h</label>
+        <link refid="c_8h"/>
+        <childnode refid="36186" relation="include">
+        </childnode>
+        <childnode refid="36187" relation="include">
+        </childnode>
+        <childnode refid="36188" relation="include">
+        </childnode>
+      </node>
+      <node id="36187">
+        <label>stddef.h</label>
+      </node>
+      <node id="36192">
+        <label>sys/types.h</label>
+      </node>
+      <node id="36191">
+        <label>string.h</label>
+      </node>
+      <node id="36193">
+        <label>unistd.h</label>
+      </node>
+      <node id="36188">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="36184">
+        <label>/home/dev/ds-160209/src/leveldb/db/c_test.c</label>
+        <link refid="c_test.c"/>
+        <childnode refid="36185" relation="include">
+        </childnode>
+        <childnode refid="36187" relation="include">
+        </childnode>
+        <childnode refid="36189" relation="include">
+        </childnode>
+        <childnode refid="36190" relation="include">
+        </childnode>
+        <childnode refid="36191" relation="include">
+        </childnode>
+        <childnode refid="36192" relation="include">
+        </childnode>
+        <childnode refid="36193" relation="include">
+        </childnode>
+      </node>
+      <node id="36189">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="c__test_8c_1af3270e97d4196e9f0d1fba6d99720822" prot="public" static="no">
+        <name>CheckNoError</name>
+        <param><defname>err</defname></param>
+        <initializer>if ((err) != NULL) {                                                  \
+    fprintf(stderr, &quot;%s:%d: %s: %s\n&quot;, __FILE__, __LINE__, <ref refid="c__test_8c_1aa66920db8e335b57326a73d5592f1273" kindref="member">phase</ref>, (err)); \
+    abort();                                                            \
+  }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/c_test.c" line="29" column="9" bodyfile="/home/dev/ds-160209/src/leveldb/db/c_test.c" bodystart="29" bodyend="-1"/>
+        <referencedby refid="c__test_8c_1a3c04138a5bfe5d72780bb7e82a18e627" compoundref="c__test_8c" startline="157" endline="390">main</referencedby>
+      </memberdef>
+      <memberdef kind="define" id="c__test_8c_1a7a32a221eb96896ffcfcdfcd0f691252" prot="public" static="no">
+        <name>CheckCondition</name>
+        <param><defname>cond</defname></param>
+        <initializer>if (!(cond)) {                                                        \
+    fprintf(stderr, &quot;%s:%d: %s: %s\n&quot;, __FILE__, __LINE__, <ref refid="c__test_8c_1aa66920db8e335b57326a73d5592f1273" kindref="member">phase</ref>, #cond); \
+    abort();                                                            \
+  }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/c_test.c" line="35" column="9" bodyfile="/home/dev/ds-160209/src/leveldb/db/c_test.c" bodystart="35" bodyend="-1"/>
+        <referencedby refid="c__test_8c_1a117a386d47165a2d2c5ef9beda9bde94" compoundref="c__test_8c" startline="148" endline="155">FilterKeyMatch</referencedby>
+        <referencedby refid="c__test_8c_1a3c04138a5bfe5d72780bb7e82a18e627" compoundref="c__test_8c" startline="157" endline="390">main</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="c__test_8c_1aa66920db8e335b57326a73d5592f1273" prot="public" static="no" mutable="no">
+        <type>const char *</type>
+        <definition>const char* phase</definition>
+        <argsstring></argsstring>
+        <name>phase</name>
+        <initializer>= &quot;&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/c_test.c" line="14" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/c_test.c" bodystart="14" bodyend="-1"/>
+        <referencedby refid="c__test_8c_1a3c04138a5bfe5d72780bb7e82a18e627" compoundref="c__test_8c" startline="157" endline="390">main</referencedby>
+        <referencedby refid="class_statistics_page_1ae2defb5914f76600d9247b4d9c27258a" compoundref="statisticspage_8cpp" startline="34" endline="109">StatisticsPage::updateStatistics</referencedby>
+        <referencedby refid="class_statistics_page_1acdf111845b66dded9b0357aca90c845e" compoundref="statisticspage_8cpp" startline="111" endline="121">StatisticsPage::updatePrevious</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="c__test_8c_1a75d845559336df6843f3b599960f89d2" prot="public" static="yes" mutable="no">
+        <type>char</type>
+        <definition>char dbname[200]</definition>
+        <argsstring>[200]</argsstring>
+        <name>dbname</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/c_test.c" line="15" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/c_test.c" bodystart="15" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="c__test_8c_1abe13938271040f30eae981dc3d93583c" prot="public" static="yes" mutable="no">
+        <type>unsigned char</type>
+        <definition>unsigned char fake_filter_result</definition>
+        <argsstring></argsstring>
+        <name>fake_filter_result</name>
+        <initializer>= 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/c_test.c" line="133" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/c_test.c" bodystart="133" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="c__test_8c_1ae709feabd7cd9086d09fa9645947495b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void StartPhase</definition>
+        <argsstring>(const char *name)</argsstring>
+        <name>StartPhase</name>
+        <param>
+          <type>const char *</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/c_test.c" line="17" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/c_test.c" bodystart="17" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="c__test_8c_1a474185666870022f6b947a83d846e5b0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const char *</type>
+        <definition>static const char* GetTempDir</definition>
+        <argsstring>(void)</argsstring>
+        <name>GetTempDir</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/c_test.c" line="22" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/c_test.c" bodystart="22" bodyend="27"/>
+      </memberdef>
+      <memberdef kind="function" id="c__test_8c_1adaf7d5a4701c924ec7af85cc6313c316" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void CheckEqual</definition>
+        <argsstring>(const char *expected, const char *v, size_t n)</argsstring>
+        <name>CheckEqual</name>
+        <param>
+          <type>const char *</type>
+          <declname>expected</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/c_test.c" line="41" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/c_test.c" bodystart="41" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="c__test_8c_1a4128c2d5aea1a3a2ce7ccfaece74059f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Free</definition>
+        <argsstring>(char **ptr)</argsstring>
+        <name>Free</name>
+        <param>
+          <type>char **</type>
+          <declname>ptr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/c_test.c" line="57" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/c_test.c" bodystart="57" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="c__test_8c_1aa1d56b02039c62385ea46a3a6f4d57da" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void CheckGet</definition>
+        <argsstring>(leveldb_t *db, const leveldb_readoptions_t *options, const char *key, const char *expected)</argsstring>
+        <name>CheckGet</name>
+        <param>
+          <type><ref refid="structleveldb__t" kindref="compound">leveldb_t</ref> *</type>
+          <declname>db</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structleveldb__readoptions__t" kindref="compound">leveldb_readoptions_t</ref> *</type>
+          <declname>options</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>expected</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/c_test.c" line="64" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/c_test.c" bodystart="64" bodyend="76"/>
+      </memberdef>
+      <memberdef kind="function" id="c__test_8c_1ac08fa58eb494b6cebe91b615b0fb32f4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void CheckIter</definition>
+        <argsstring>(leveldb_iterator_t *iter, const char *key, const char *val)</argsstring>
+        <name>CheckIter</name>
+        <param>
+          <type><ref refid="structleveldb__iterator__t" kindref="compound">leveldb_iterator_t</ref> *</type>
+          <declname>iter</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/c_test.c" line="78" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/c_test.c" bodystart="78" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="c__test_8c_1a7d9af759bc1d7704529040aef3098eac" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void CheckPut</definition>
+        <argsstring>(void *ptr, const char *k, size_t klen, const char *v, size_t vlen)</argsstring>
+        <name>CheckPut</name>
+        <param>
+          <type>void *</type>
+          <declname>ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>klen</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>v</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>vlen</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/c_test.c" line="89" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/c_test.c" bodystart="89" bodyend="105"/>
+      </memberdef>
+      <memberdef kind="function" id="c__test_8c_1a1cbef0020c54952ed8e0960c05c7bead" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void CheckDel</definition>
+        <argsstring>(void *ptr, const char *k, size_t klen)</argsstring>
+        <name>CheckDel</name>
+        <param>
+          <type>void *</type>
+          <declname>ptr</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>klen</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/c_test.c" line="108" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/c_test.c" bodystart="108" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="c__test_8c_1acca8773dfe3d375dadad2ca2d498000a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void CmpDestroy</definition>
+        <argsstring>(void *arg)</argsstring>
+        <name>CmpDestroy</name>
+        <param>
+          <type>void *</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/c_test.c" line="115" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/c_test.c" bodystart="115" bodyend="115"/>
+      </memberdef>
+      <memberdef kind="function" id="c__test_8c_1affb6b6b32c4620c069aa90051356d5f0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>static int CmpCompare</definition>
+        <argsstring>(void *arg, const char *a, size_t alen, const char *b, size_t blen)</argsstring>
+        <name>CmpCompare</name>
+        <param>
+          <type>void *</type>
+          <declname>arg</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>alen</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>blen</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/c_test.c" line="117" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/c_test.c" bodystart="117" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="c__test_8c_1a575f08f306298321b1310e168a1e9886" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const char *</type>
+        <definition>static const char* CmpName</definition>
+        <argsstring>(void *arg)</argsstring>
+        <name>CmpName</name>
+        <param>
+          <type>void *</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/c_test.c" line="128" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/c_test.c" bodystart="128" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="function" id="c__test_8c_1ad8129a456644cb194583e4ad7209977a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void FilterDestroy</definition>
+        <argsstring>(void *arg)</argsstring>
+        <name>FilterDestroy</name>
+        <param>
+          <type>void *</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/c_test.c" line="134" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/c_test.c" bodystart="134" bodyend="134"/>
+      </memberdef>
+      <memberdef kind="function" id="c__test_8c_1a320a4fba647222e9d3d0cadefbaaeebf" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const char *</type>
+        <definition>static const char* FilterName</definition>
+        <argsstring>(void *arg)</argsstring>
+        <name>FilterName</name>
+        <param>
+          <type>void *</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/c_test.c" line="135" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/c_test.c" bodystart="135" bodyend="137"/>
+      </memberdef>
+      <memberdef kind="function" id="c__test_8c_1aa931e52670b2335a6dc9145ccef9c0e1" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>char *</type>
+        <definition>static char* FilterCreate</definition>
+        <argsstring>(void *arg, const char *const *key_array, const size_t *key_length_array, int num_keys, size_t *filter_length)</argsstring>
+        <name>FilterCreate</name>
+        <param>
+          <type>void *</type>
+          <declname>arg</declname>
+        </param>
+        <param>
+          <type>const char *const *</type>
+          <declname>key_array</declname>
+        </param>
+        <param>
+          <type>const size_t *</type>
+          <declname>key_length_array</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>num_keys</declname>
+        </param>
+        <param>
+          <type>size_t *</type>
+          <declname>filter_length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/c_test.c" line="138" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/c_test.c" bodystart="138" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="c__test_8c_1a117a386d47165a2d2c5ef9beda9bde94" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>unsigned char</type>
+        <definition>unsigned char FilterKeyMatch</definition>
+        <argsstring>(void *arg, const char *key, size_t length, const char *filter, size_t filter_length)</argsstring>
+        <name>FilterKeyMatch</name>
+        <param>
+          <type>void *</type>
+          <declname>arg</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>key</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>length</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>filter</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>filter_length</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/c_test.c" line="148" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/c_test.c" bodystart="148" bodyend="155"/>
+        <references refid="c__test_8c_1a7a32a221eb96896ffcfcdfcd0f691252" compoundref="c__test_8c" startline="35">CheckCondition</references>
+        <referencedby refid="c__test_8c_1a3c04138a5bfe5d72780bb7e82a18e627" compoundref="c__test_8c" startline="157" endline="390">main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="c__test_8c_1a3c04138a5bfe5d72780bb7e82a18e627" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>(int argc, char **argv)</argsstring>
+        <name>main</name>
+        <param>
+          <type>int</type>
+          <declname>argc</declname>
+        </param>
+        <param>
+          <type>char **</type>
+          <declname>argv</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/db/c_test.c" line="157" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/db/c_test.c" bodystart="157" bodyend="390"/>
+        <references refid="table__test_8cc_1a87863e435922f0910ca8db43f02a6c0b" compoundref="table__test_8cc" startline="80">cmp</references>
+        <references refid="c__test_8c_1a7a32a221eb96896ffcfcdfcd0f691252" compoundref="c__test_8c" startline="35">CheckCondition</references>
+        <references refid="c_8cc_1a0e15a66133909795ca9230276956dafc" compoundref="c_8cc" startline="587" endline="589">leveldb_major_version</references>
+        <references refid="c_8cc_1abc5ffc402fe86052ddad236dc3250f3d" compoundref="c_8cc" startline="591" endline="593">leveldb_minor_version</references>
+        <references refid="c_8cc_1ab6bf1f1e1ea55ecbbefc50231a17067c" compoundref="c_8cc" startline="453" endline="467">leveldb_comparator_create</references>
+        <references refid="c_8cc_1ab62c16daa002d481d9408a3350da6f5d" compoundref="c_8cc" startline="571" endline="576">leveldb_create_default_env</references>
+        <references refid="c_8cc_1a309c755dd37602eeb743070b74c8ddbc" compoundref="c_8cc" startline="560" endline="564">leveldb_cache_create_lru</references>
+        <references refid="c_8cc_1a68f63f58125bf60a609ea8fcb6d2aa3d" compoundref="c_8cc" startline="386" endline="388">leveldb_options_create</references>
+        <references refid="c_8cc_1a2990d505b908924d1d0bc6a239dc181f" compoundref="c_8cc" startline="394" endline="398">leveldb_options_set_comparator</references>
+        <references refid="c_8cc_1ae068a68aa7b9bbef0b564f8fdb145f98" compoundref="c_8cc" startline="411" endline="414">leveldb_options_set_error_if_exists</references>
+        <references refid="c_8cc_1aa19ccd6725e28c01a29f3d51fbada3ed" compoundref="c_8cc" startline="437" endline="439">leveldb_options_set_cache</references>
+        <references refid="c_8cc_1a419d1f9f47f0571f1e14e0d80b390502" compoundref="c_8cc" startline="421" endline="423">leveldb_options_set_env</references>
+        <references refid="c_8cc_1ac337c9fd824b30a58148790d7a839478" compoundref="c_8cc" startline="425" endline="427">leveldb_options_set_info_log</references>
+        <references refid="c_8cc_1aeefe298c2f57ffc159e7f73154be82ef" compoundref="c_8cc" startline="429" endline="431">leveldb_options_set_write_buffer_size</references>
+        <references refid="c_8cc_1a5087ff06b71e8f99967142d6c1c59271" compoundref="c_8cc" startline="416" endline="419">leveldb_options_set_paranoid_checks</references>
+        <references refid="c_8cc_1a3dd2a1c558917bf462fcb92cc2f04744" compoundref="c_8cc" startline="433" endline="435">leveldb_options_set_max_open_files</references>
+        <references refid="c_8cc_1ad12a2fb447d8f5b345e8d962b38e92ef" compoundref="c_8cc" startline="441" endline="443">leveldb_options_set_block_size</references>
+        <references refid="c_8cc_1acbbcbc8fab5481d2008a25917d433dda" compoundref="c_8cc" startline="445" endline="447">leveldb_options_set_block_restart_interval</references>
+        <references refid="c_8cc_1a167fa0923a1b1784e7a005f168a51345" compoundref="c_8cc" startline="449" endline="451">leveldb_options_set_compression</references>
+        <references refid="c_8h_1a726ca809ffd3d67ab4b8476646f26635acfeb0c8224005d87b097de4b65f376b9" compoundref="c_8h" startline="204">leveldb_no_compression</references>
+        <references refid="c_8cc_1af8f89fab57f571512d42c04ac5fd9cba" compoundref="c_8cc" startline="522" endline="524">leveldb_readoptions_create</references>
+        <references refid="c_8cc_1a7a9f4f13e09767775fb63cb432a4a88e" compoundref="c_8cc" startline="530" endline="534">leveldb_readoptions_set_verify_checksums</references>
+        <references refid="c_8cc_1a47f5e85e7e454f083200e97ce7b8d043" compoundref="c_8cc" startline="536" endline="539">leveldb_readoptions_set_fill_cache</references>
+        <references refid="c_8cc_1a899f2c70e9f6bb3144c64bd753a92ea7" compoundref="c_8cc" startline="547" endline="549">leveldb_writeoptions_create</references>
+        <references refid="c_8cc_1a67c0bbd076fa1b1dd36da592f61878d9" compoundref="c_8cc" startline="555" endline="558">leveldb_writeoptions_set_sync</references>
+        <references refid="c_8cc_1a265873c54a9e6080278da4f957a6a183" compoundref="c_8cc" startline="278" endline="283">leveldb_destroy_db</references>
+        <references refid="c_8cc_1a2d912fff4d5decae6da014298b227a18" compoundref="c_8cc" startline="152" endline="163">leveldb_open</references>
+        <references refid="c_8cc_1a7bded8095662c329e4589468e434f353" compoundref="c_8cc" startline="583" endline="585">leveldb_free</references>
+        <references refid="c_8cc_1aa849366113d053a02905b55180da627a" compoundref="c_8cc" startline="406" endline="409">leveldb_options_set_create_if_missing</references>
+        <references refid="c__test_8c_1af3270e97d4196e9f0d1fba6d99720822" compoundref="c__test_8c" startline="29">CheckNoError</references>
+        <references refid="c_8cc_1aacd7bf338f41054f34825b3669ace2f8" compoundref="c_8cc" startline="170" endline="178">leveldb_put</references>
+        <references refid="c_8cc_1a2e579ef1579016b83b3fcb4038939517" compoundref="c_8cc" startline="267" endline="276">leveldb_compact_range</references>
+        <references refid="c_8cc_1a3b3468685c046cccacd077d9d3b8c6ce" compoundref="c_8cc" startline="337" endline="339">leveldb_writebatch_create</references>
+        <references refid="c_8cc_1ae8b65f09c7154f785fd0da63539b64ff" compoundref="c_8cc" startline="349" endline="354">leveldb_writebatch_put</references>
+        <references refid="c_8cc_1af64258ad24b35c5b5c0e8a20f4f9e58c" compoundref="c_8cc" startline="345" endline="347">leveldb_writebatch_clear</references>
+        <references refid="c_8cc_1ada199e3e0370abf995ef8920c90905cb" compoundref="c_8cc" startline="356" endline="360">leveldb_writebatch_delete</references>
+        <references refid="c_8cc_1a7315a488fc8ddcfd9a58295f7d0bb636" compoundref="c_8cc" startline="189" endline="195">leveldb_write</references>
+        <references refid="c_8cc_1a3f2d91cc981349fc4050b595981515b8" compoundref="c_8cc" startline="362" endline="384">leveldb_writebatch_iterate</references>
+        <references refid="c_8cc_1a7ea1bdb9a051941bbd465061896faa13" compoundref="c_8cc" startline="341" endline="343">leveldb_writebatch_destroy</references>
+        <references refid="c_8cc_1a8b9d419b6e0753a1d6158605c821354a" compoundref="c_8cc" startline="218" endline="224">leveldb_create_iterator</references>
+        <references refid="c_8cc_1a9c9786b18b548855cea3f932e3cb6a4f" compoundref="c_8cc" startline="297" endline="299">leveldb_iter_valid</references>
+        <references refid="c_8cc_1a426f2a0a9fde95852357417abb21da99" compoundref="c_8cc" startline="301" endline="303">leveldb_iter_seek_to_first</references>
+        <references refid="c_8cc_1a215c3dbbc2646ff017efa30373fdbb54" compoundref="c_8cc" startline="313" endline="315">leveldb_iter_next</references>
+        <references refid="c_8cc_1ac8b4786160f739b4a0d6f48a6efcfdd3" compoundref="c_8cc" startline="317" endline="319">leveldb_iter_prev</references>
+        <references refid="c_8cc_1a33c92fa551b86c862b11b57768fdbbe9" compoundref="c_8cc" startline="305" endline="307">leveldb_iter_seek_to_last</references>
+        <references refid="c_8cc_1a4eecb2de49538317da5359a171ce5609" compoundref="c_8cc" startline="309" endline="311">leveldb_iter_seek</references>
+        <references refid="c_8cc_1adeb66a6587023e9e45328fa52fd42db4" compoundref="c_8cc" startline="333" endline="335">leveldb_iter_get_error</references>
+        <references refid="c_8cc_1a02fcd7857735a170e57a0e797c27fe1f" compoundref="c_8cc" startline="292" endline="295">leveldb_iter_destroy</references>
+        <references refid="db__bench_8cc_1ab376b87f96a574a793c03c53e75afec8" compoundref="db__bench_8cc" startline="282">start</references>
+        <references refid="c_8cc_1a876ad4220f0dbd55fbbe91714e271e98" compoundref="c_8cc" startline="252" endline="265">leveldb_approximate_sizes</references>
+        <references refid="c_8cc_1ad4ce08534d9ce95b4a7ddb0cf1796209" compoundref="c_8cc" startline="240" endline="250">leveldb_property_value</references>
+        <references refid="c_8cc_1af999ba27285e482f34df3821f9a04214" compoundref="c_8cc" startline="226" endline="231">leveldb_create_snapshot</references>
+        <references refid="c_8cc_1a3878ffaf68a4addb31266ac81ce8c36f" compoundref="c_8cc" startline="180" endline="186">leveldb_delete</references>
+        <references refid="c_8cc_1a68ddc161e0fc476d3d7fae895bea7e2b" compoundref="c_8cc" startline="541" endline="545">leveldb_readoptions_set_snapshot</references>
+        <references refid="c_8cc_1ab1e5d825506969f12fcaff2bf824b6e5" compoundref="c_8cc" startline="233" endline="238">leveldb_release_snapshot</references>
+        <references refid="c_8cc_1a4f2ee24f30c834d2f54e48acaffb3412" compoundref="c_8cc" startline="165" endline="168">leveldb_close</references>
+        <references refid="c_8cc_1a255557af7bd3a589a75d38bbb674c21b" compoundref="c_8cc" startline="285" endline="290">leveldb_repair_db</references>
+        <references refid="c_8cc_1a9225a13a94b45cfe2f00395dfcc1cb18" compoundref="c_8cc" startline="473" endline="493">leveldb_filterpolicy_create</references>
+        <references refid="c__test_8c_1a117a386d47165a2d2c5ef9beda9bde94" compoundref="c__test_8c" startline="148" endline="155">FilterKeyMatch</references>
+        <references refid="c_8cc_1a1adc82e212c58033ec9b8cd05577525c" compoundref="c_8cc" startline="499" endline="520">leveldb_filterpolicy_create_bloom</references>
+        <references refid="c_8cc_1ab3980c9e885db8286854f3db31ea560a" compoundref="c_8cc" startline="400" endline="404">leveldb_options_set_filter_policy</references>
+        <references refid="c__test_8c_1aa66920db8e335b57326a73d5592f1273" compoundref="c__test_8c" startline="14">phase</references>
+        <references refid="c_8cc_1a7352c6120b0f5918441d90976c9f7018" compoundref="c_8cc" startline="495" endline="497">leveldb_filterpolicy_destroy</references>
+        <references refid="c_8cc_1a9752b8ae34a9dd124ec30d4663812e4c" compoundref="c_8cc" startline="390" endline="392">leveldb_options_destroy</references>
+        <references refid="c_8cc_1ac77970c3bf23e2d8ab5aa3da52be2cd5" compoundref="c_8cc" startline="526" endline="528">leveldb_readoptions_destroy</references>
+        <references refid="c_8cc_1ae99c3fcce6ccaf4d173493b9390db343" compoundref="c_8cc" startline="551" endline="553">leveldb_writeoptions_destroy</references>
+        <references refid="c_8cc_1a53bc8f41c8acffd1bad8482b0772cd59" compoundref="c_8cc" startline="566" endline="569">leveldb_cache_destroy</references>
+        <references refid="c_8cc_1a4a9be9d42c7dce5cd194f65d0c81d9d0" compoundref="c_8cc" startline="469" endline="471">leveldb_comparator_destroy</references>
+        <references refid="c_8cc_1a839b815344b53383bbed2fd760df4f49" compoundref="c_8cc" startline="578" endline="581">leveldb_env_destroy</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*<sp/>Copyright<sp/>(c)<sp/>2011-2016<sp/>The<sp/>LevelDB<sp/>Authors.<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/><sp/><sp/>Use<sp/>of<sp/>this<sp/>source<sp/>code<sp/>is<sp/>governed<sp/>by<sp/>a<sp/>BSD-style<sp/>license<sp/>that<sp/>can<sp/>be</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/><sp/><sp/>found<sp/>in<sp/>the<sp/>LICENSE<sp/>file.<sp/>See<sp/>the<sp/>AUTHORS<sp/>file<sp/>for<sp/>names<sp/>of<sp/>contributors.<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="c_8h" kindref="compound">leveldb/c.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stddef.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;sys/types.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;unistd.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="c__test_8c_1aa66920db8e335b57326a73d5592f1273" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="c__test_8c_1aa66920db8e335b57326a73d5592f1273" kindref="member">phase</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>dbname[200];</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>StartPhase(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="testharness_8cc_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/>fprintf(stderr,<sp/></highlight><highlight class="stringliteral">&quot;===<sp/>Test<sp/>%s\n&quot;</highlight><highlight class="normal">,<sp/>name);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><ref refid="c__test_8c_1aa66920db8e335b57326a73d5592f1273" kindref="member">phase</ref><sp/>=<sp/><ref refid="testharness_8cc_1a8f8f80d37794cde9472343e4487ba3eb" kindref="member">name</ref>;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>GetTempDir(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>ret<sp/>=<sp/>getenv(</highlight><highlight class="stringliteral">&quot;TEST_TMPDIR&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ret<sp/>==<sp/>NULL<sp/>||<sp/>ret[0]<sp/>==<sp/></highlight><highlight class="charliteral">&apos;\0&apos;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;/tmp&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="c__test_8c_1af3270e97d4196e9f0d1fba6d99720822" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CheckNoError(err)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="30"><highlight class="preprocessor"><sp/><sp/>if<sp/>((err)<sp/>!=<sp/>NULL)<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="31"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>fprintf(stderr,<sp/>&quot;%s:%d:<sp/>%s:<sp/>%s\n&quot;,<sp/>__FILE__,<sp/>__LINE__,<sp/>phase,<sp/>(err));<sp/>\</highlight></codeline>
+<codeline lineno="32"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>abort();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="33"><highlight class="preprocessor"><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="c__test_8c_1a7a32a221eb96896ffcfcdfcd0f691252" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CheckCondition(cond)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="36"><highlight class="preprocessor"><sp/><sp/>if<sp/>(!(cond))<sp/>{<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="37"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>fprintf(stderr,<sp/>&quot;%s:%d:<sp/>%s:<sp/>%s\n&quot;,<sp/>__FILE__,<sp/>__LINE__,<sp/>phase,<sp/>#cond);<sp/>\</highlight></codeline>
+<codeline lineno="38"><highlight class="preprocessor"><sp/><sp/><sp/><sp/>abort();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="39"><highlight class="preprocessor"><sp/><sp/>}</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>CheckEqual(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>expected,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>v,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n)<sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(expected<sp/>==<sp/>NULL<sp/>&amp;&amp;<sp/>v<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ok</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(expected<sp/>!=<sp/>NULL<sp/>&amp;&amp;<sp/>v<sp/>!=<sp/>NULL<sp/>&amp;&amp;<sp/>n<sp/>==<sp/>strlen(expected)<sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcmp(expected,<sp/>v,<sp/>n)<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ok</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>fprintf(stderr,<sp/></highlight><highlight class="stringliteral">&quot;%s:<sp/>expected<sp/>&apos;%s&apos;,<sp/>got<sp/>&apos;%s&apos;\n&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="c__test_8c_1aa66920db8e335b57326a73d5592f1273" kindref="member">phase</ref>,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(expected<sp/>?<sp/>expected<sp/>:<sp/></highlight><highlight class="stringliteral">&quot;(null)&quot;</highlight><highlight class="normal">),</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(v<sp/>?<sp/>v<sp/>:<sp/></highlight><highlight class="stringliteral">&quot;(null&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>abort();</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Free(</highlight><highlight class="keywordtype">char</highlight><highlight class="normal">**<sp/>ptr)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*ptr)<sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>free(*ptr);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>*ptr<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>CheckGet(</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structleveldb__t" kindref="compound">leveldb_t</ref>*<sp/>db,</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structleveldb__readoptions__t" kindref="compound">leveldb_readoptions_t</ref>*<sp/>options,</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>expected)<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>err<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>val_len;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>val;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/>val<sp/>=<sp/><ref refid="c_8cc_1af9b485534674367c01521a8192a74091" kindref="member">leveldb_get</ref>(db,<sp/>options,<sp/>key,<sp/>strlen(key),<sp/>&amp;val_len,<sp/>&amp;err);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><ref refid="c__test_8c_1af3270e97d4196e9f0d1fba6d99720822" kindref="member">CheckNoError</ref>(err);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/>CheckEqual(expected,<sp/>val,<sp/>val_len);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/>Free(&amp;val);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>CheckIter(<ref refid="structleveldb__iterator__t" kindref="compound">leveldb_iterator_t</ref>*<sp/>iter,</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>val)<sp/>{</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>str;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/>str<sp/>=<sp/><ref refid="c_8cc_1acb3c5d44ecc2348f3953310e8f819768" kindref="member">leveldb_iter_key</ref>(iter,<sp/>&amp;len);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/>CheckEqual(key,<sp/>str,<sp/>len);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/>str<sp/>=<sp/><ref refid="c_8cc_1a6c9894e6fcc2fde6f8f634818f0849ce" kindref="member">leveldb_iter_value</ref>(iter,<sp/>&amp;len);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/>CheckEqual(val,<sp/>str,<sp/>len);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Callback<sp/>from<sp/>leveldb_writebatch_iterate()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>CheckPut(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>ptr,</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>k,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>klen,</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>v,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>vlen)<sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">*<sp/><ref refid="db__test_8cc_1a42432b4356adce5579ccf597f6e83e54" kindref="member">state</ref><sp/>=<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">*)<sp/>ptr;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><ref refid="c__test_8c_1a7a32a221eb96896ffcfcdfcd0f691252" kindref="member">CheckCondition</ref>(*state<sp/>&lt;<sp/>2);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(*state)<sp/>{</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0:</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>CheckEqual(</highlight><highlight class="stringliteral">&quot;bar&quot;</highlight><highlight class="normal">,<sp/>k,<sp/>klen);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>CheckEqual(</highlight><highlight class="stringliteral">&quot;b&quot;</highlight><highlight class="normal">,<sp/>v,<sp/>vlen);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1:</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>CheckEqual(</highlight><highlight class="stringliteral">&quot;box&quot;</highlight><highlight class="normal">,<sp/>k,<sp/>klen);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>CheckEqual(</highlight><highlight class="stringliteral">&quot;c&quot;</highlight><highlight class="normal">,<sp/>v,<sp/>vlen);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/>(*state)++;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Callback<sp/>from<sp/>leveldb_writebatch_iterate()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>CheckDel(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>ptr,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>k,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>klen)<sp/>{</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal">*<sp/>state<sp/>=<sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">*)<sp/>ptr;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><ref refid="c__test_8c_1a7a32a221eb96896ffcfcdfcd0f691252" kindref="member">CheckCondition</ref>(*state<sp/>==<sp/>2);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/>CheckEqual(</highlight><highlight class="stringliteral">&quot;bar&quot;</highlight><highlight class="normal">,<sp/>k,<sp/>klen);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/>(*state)++;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>CmpDestroy(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="env__posix_8cc_1a9ce2ec4812a92cb6ab39f6e81e9173a9" kindref="member">arg</ref>)<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>CmpCompare(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/><ref refid="env__posix_8cc_1a9ce2ec4812a92cb6ab39f6e81e9173a9" kindref="member">arg</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>a,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>alen,</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>b,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>blen)<sp/>{</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>(alen<sp/>&lt;<sp/>blen)<sp/>?<sp/>alen<sp/>:<sp/>blen;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>r<sp/>=<sp/>memcmp(a,<sp/>b,<sp/>n);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(r<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(alen<sp/>&lt;<sp/>blen)<sp/>r<sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(alen<sp/>&gt;<sp/>blen)<sp/>r<sp/>=<sp/>+1;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>r;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>CmpName(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>arg)<sp/>{</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Custom<sp/>filter<sp/>policy</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>fake_filter_result<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>FilterDestroy(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>arg)<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>FilterName(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>arg)<sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;TestFilter&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>FilterCreate(</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>arg,</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">*<sp/>key_array,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">*<sp/>key_length_array,</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_keys,</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal">*<sp/>filter_length)<sp/>{</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/>*filter_length<sp/>=<sp/>4;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>result<sp/>=<sp/>malloc(4);</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/>memcpy(result,<sp/></highlight><highlight class="stringliteral">&quot;fake&quot;</highlight><highlight class="normal">,<sp/>4);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="148" refid="c__test_8c_1a117a386d47165a2d2c5ef9beda9bde94" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/><ref refid="c__test_8c_1a117a386d47165a2d2c5ef9beda9bde94" kindref="member">FilterKeyMatch</ref>(</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>arg,</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>key,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>length,</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>filter,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>filter_length)<sp/>{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><ref refid="c__test_8c_1a7a32a221eb96896ffcfcdfcd0f691252" kindref="member">CheckCondition</ref>(filter_length<sp/>==<sp/>4);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><ref refid="c__test_8c_1a7a32a221eb96896ffcfcdfcd0f691252" kindref="member">CheckCondition</ref>(memcmp(filter,<sp/></highlight><highlight class="stringliteral">&quot;fake&quot;</highlight><highlight class="normal">,<sp/>4)<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fake_filter_result;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157" refid="c__test_8c_1a3c04138a5bfe5d72780bb7e82a18e627" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="c__test_8c_1a3c04138a5bfe5d72780bb7e82a18e627" kindref="member">main</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">**<sp/>argv)<sp/>{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><ref refid="structleveldb__t" kindref="compound">leveldb_t</ref>*<sp/>db;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><ref refid="structleveldb__comparator__t" kindref="compound">leveldb_comparator_t</ref>*<sp/><ref refid="table__test_8cc_1a87863e435922f0910ca8db43f02a6c0b" kindref="member">cmp</ref>;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><ref refid="structleveldb__cache__t" kindref="compound">leveldb_cache_t</ref>*<sp/>cache;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><ref refid="structleveldb__env__t" kindref="compound">leveldb_env_t</ref>*<sp/>env;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><ref refid="structleveldb__options__t" kindref="compound">leveldb_options_t</ref>*<sp/>options;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><ref refid="structleveldb__readoptions__t" kindref="compound">leveldb_readoptions_t</ref>*<sp/>roptions;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><ref refid="structleveldb__writeoptions__t" kindref="compound">leveldb_writeoptions_t</ref>*<sp/>woptions;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>err<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>run<sp/>=<sp/>-1;</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><ref refid="c__test_8c_1a7a32a221eb96896ffcfcdfcd0f691252" kindref="member">CheckCondition</ref>(<ref refid="c_8cc_1a0e15a66133909795ca9230276956dafc" kindref="member">leveldb_major_version</ref>()<sp/>&gt;=<sp/>1);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><ref refid="c__test_8c_1a7a32a221eb96896ffcfcdfcd0f691252" kindref="member">CheckCondition</ref>(<ref refid="c_8cc_1abc5ffc402fe86052ddad236dc3250f3d" kindref="member">leveldb_minor_version</ref>()<sp/>&gt;=<sp/>1);</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/>snprintf(dbname,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(dbname),</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;%s/leveldb_c_test-%d&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>GetTempDir(),</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>((</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)<sp/>geteuid()));</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/>StartPhase(</highlight><highlight class="stringliteral">&quot;create_objects&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/>cmp<sp/>=<sp/><ref refid="c_8cc_1ab6bf1f1e1ea55ecbbefc50231a17067c" kindref="member">leveldb_comparator_create</ref>(NULL,<sp/>CmpDestroy,<sp/>CmpCompare,<sp/>CmpName);</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/>env<sp/>=<sp/><ref refid="c_8cc_1ab62c16daa002d481d9408a3350da6f5d" kindref="member">leveldb_create_default_env</ref>();</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/>cache<sp/>=<sp/><ref refid="c_8cc_1a309c755dd37602eeb743070b74c8ddbc" kindref="member">leveldb_cache_create_lru</ref>(100000);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/>options<sp/>=<sp/><ref refid="c_8cc_1a68f63f58125bf60a609ea8fcb6d2aa3d" kindref="member">leveldb_options_create</ref>();</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><ref refid="c_8cc_1a2990d505b908924d1d0bc6a239dc181f" kindref="member">leveldb_options_set_comparator</ref>(options,<sp/>cmp);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><ref refid="c_8cc_1ae068a68aa7b9bbef0b564f8fdb145f98" kindref="member">leveldb_options_set_error_if_exists</ref>(options,<sp/>1);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><ref refid="c_8cc_1aa19ccd6725e28c01a29f3d51fbada3ed" kindref="member">leveldb_options_set_cache</ref>(options,<sp/>cache);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><ref refid="c_8cc_1a419d1f9f47f0571f1e14e0d80b390502" kindref="member">leveldb_options_set_env</ref>(options,<sp/>env);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><ref refid="c_8cc_1ac337c9fd824b30a58148790d7a839478" kindref="member">leveldb_options_set_info_log</ref>(options,<sp/>NULL);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><ref refid="c_8cc_1aeefe298c2f57ffc159e7f73154be82ef" kindref="member">leveldb_options_set_write_buffer_size</ref>(options,<sp/>100000);</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><ref refid="c_8cc_1a5087ff06b71e8f99967142d6c1c59271" kindref="member">leveldb_options_set_paranoid_checks</ref>(options,<sp/>1);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><ref refid="c_8cc_1a3dd2a1c558917bf462fcb92cc2f04744" kindref="member">leveldb_options_set_max_open_files</ref>(options,<sp/>10);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><ref refid="c_8cc_1ad12a2fb447d8f5b345e8d962b38e92ef" kindref="member">leveldb_options_set_block_size</ref>(options,<sp/>1024);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><ref refid="c_8cc_1acbbcbc8fab5481d2008a25917d433dda" kindref="member">leveldb_options_set_block_restart_interval</ref>(options,<sp/>8);</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><ref refid="c_8cc_1a167fa0923a1b1784e7a005f168a51345" kindref="member">leveldb_options_set_compression</ref>(options,<sp/><ref refid="c_8h_1a726ca809ffd3d67ab4b8476646f26635acfeb0c8224005d87b097de4b65f376b9" kindref="member">leveldb_no_compression</ref>);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/>roptions<sp/>=<sp/><ref refid="c_8cc_1af8f89fab57f571512d42c04ac5fd9cba" kindref="member">leveldb_readoptions_create</ref>();</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><ref refid="c_8cc_1a7a9f4f13e09767775fb63cb432a4a88e" kindref="member">leveldb_readoptions_set_verify_checksums</ref>(roptions,<sp/>1);</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><ref refid="c_8cc_1a47f5e85e7e454f083200e97ce7b8d043" kindref="member">leveldb_readoptions_set_fill_cache</ref>(roptions,<sp/>0);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"></highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/>woptions<sp/>=<sp/><ref refid="c_8cc_1a899f2c70e9f6bb3144c64bd753a92ea7" kindref="member">leveldb_writeoptions_create</ref>();</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><ref refid="c_8cc_1a67c0bbd076fa1b1dd36da592f61878d9" kindref="member">leveldb_writeoptions_set_sync</ref>(woptions,<sp/>1);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/>StartPhase(</highlight><highlight class="stringliteral">&quot;destroy&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><ref refid="c_8cc_1a265873c54a9e6080278da4f957a6a183" kindref="member">leveldb_destroy_db</ref>(options,<sp/>dbname,<sp/>&amp;err);</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/>Free(&amp;err);</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/>StartPhase(</highlight><highlight class="stringliteral">&quot;open_error&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/>db<sp/>=<sp/><ref refid="c_8cc_1a2d912fff4d5decae6da014298b227a18" kindref="member">leveldb_open</ref>(options,<sp/>dbname,<sp/>&amp;err);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><ref refid="c__test_8c_1a7a32a221eb96896ffcfcdfcd0f691252" kindref="member">CheckCondition</ref>(err<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/>Free(&amp;err);</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"></highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/>StartPhase(</highlight><highlight class="stringliteral">&quot;leveldb_free&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/>db<sp/>=<sp/><ref refid="c_8cc_1a2d912fff4d5decae6da014298b227a18" kindref="member">leveldb_open</ref>(options,<sp/>dbname,<sp/>&amp;err);</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><ref refid="c__test_8c_1a7a32a221eb96896ffcfcdfcd0f691252" kindref="member">CheckCondition</ref>(err<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><ref refid="c_8cc_1a7bded8095662c329e4589468e434f353" kindref="member">leveldb_free</ref>(err);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/>err<sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/>StartPhase(</highlight><highlight class="stringliteral">&quot;open&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><ref refid="c_8cc_1aa849366113d053a02905b55180da627a" kindref="member">leveldb_options_set_create_if_missing</ref>(options,<sp/>1);</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/>db<sp/>=<sp/><ref refid="c_8cc_1a2d912fff4d5decae6da014298b227a18" kindref="member">leveldb_open</ref>(options,<sp/>dbname,<sp/>&amp;err);</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><ref refid="c__test_8c_1af3270e97d4196e9f0d1fba6d99720822" kindref="member">CheckNoError</ref>(err);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/>CheckGet(db,<sp/>roptions,<sp/></highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">,<sp/>NULL);</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/>StartPhase(</highlight><highlight class="stringliteral">&quot;put&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><ref refid="c_8cc_1aacd7bf338f41054f34825b3669ace2f8" kindref="member">leveldb_put</ref>(db,<sp/>woptions,<sp/></highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">,<sp/>3,<sp/></highlight><highlight class="stringliteral">&quot;hello&quot;</highlight><highlight class="normal">,<sp/>5,<sp/>&amp;err);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><ref refid="c__test_8c_1af3270e97d4196e9f0d1fba6d99720822" kindref="member">CheckNoError</ref>(err);</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/>CheckGet(db,<sp/>roptions,<sp/></highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;hello&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/>StartPhase(</highlight><highlight class="stringliteral">&quot;compactall&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><ref refid="c_8cc_1a2e579ef1579016b83b3fcb4038939517" kindref="member">leveldb_compact_range</ref>(db,<sp/>NULL,<sp/>0,<sp/>NULL,<sp/>0);</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/>CheckGet(db,<sp/>roptions,<sp/></highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;hello&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/>StartPhase(</highlight><highlight class="stringliteral">&quot;compactrange&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><ref refid="c_8cc_1a2e579ef1579016b83b3fcb4038939517" kindref="member">leveldb_compact_range</ref>(db,<sp/></highlight><highlight class="stringliteral">&quot;a&quot;</highlight><highlight class="normal">,<sp/>1,<sp/></highlight><highlight class="stringliteral">&quot;z&quot;</highlight><highlight class="normal">,<sp/>1);</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/>CheckGet(db,<sp/>roptions,<sp/></highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;hello&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/>StartPhase(</highlight><highlight class="stringliteral">&quot;writebatch&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structleveldb__writebatch__t" kindref="compound">leveldb_writebatch_t</ref>*<sp/>wb<sp/>=<sp/><ref refid="c_8cc_1a3b3468685c046cccacd077d9d3b8c6ce" kindref="member">leveldb_writebatch_create</ref>();</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1ae8b65f09c7154f785fd0da63539b64ff" kindref="member">leveldb_writebatch_put</ref>(wb,<sp/></highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">,<sp/>3,<sp/></highlight><highlight class="stringliteral">&quot;a&quot;</highlight><highlight class="normal">,<sp/>1);</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1af64258ad24b35c5b5c0e8a20f4f9e58c" kindref="member">leveldb_writebatch_clear</ref>(wb);</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1ae8b65f09c7154f785fd0da63539b64ff" kindref="member">leveldb_writebatch_put</ref>(wb,<sp/></highlight><highlight class="stringliteral">&quot;bar&quot;</highlight><highlight class="normal">,<sp/>3,<sp/></highlight><highlight class="stringliteral">&quot;b&quot;</highlight><highlight class="normal">,<sp/>1);</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1ae8b65f09c7154f785fd0da63539b64ff" kindref="member">leveldb_writebatch_put</ref>(wb,<sp/></highlight><highlight class="stringliteral">&quot;box&quot;</highlight><highlight class="normal">,<sp/>3,<sp/></highlight><highlight class="stringliteral">&quot;c&quot;</highlight><highlight class="normal">,<sp/>1);</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1ada199e3e0370abf995ef8920c90905cb" kindref="member">leveldb_writebatch_delete</ref>(wb,<sp/></highlight><highlight class="stringliteral">&quot;bar&quot;</highlight><highlight class="normal">,<sp/>3);</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1a7315a488fc8ddcfd9a58295f7d0bb636" kindref="member">leveldb_write</ref>(db,<sp/>woptions,<sp/>wb,<sp/>&amp;err);</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c__test_8c_1af3270e97d4196e9f0d1fba6d99720822" kindref="member">CheckNoError</ref>(err);</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/>CheckGet(db,<sp/>roptions,<sp/></highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;hello&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/>CheckGet(db,<sp/>roptions,<sp/></highlight><highlight class="stringliteral">&quot;bar&quot;</highlight><highlight class="normal">,<sp/>NULL);</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/>CheckGet(db,<sp/>roptions,<sp/></highlight><highlight class="stringliteral">&quot;box&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;c&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pos<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1a3f2d91cc981349fc4050b595981515b8" kindref="member">leveldb_writebatch_iterate</ref>(wb,<sp/>&amp;pos,<sp/>CheckPut,<sp/>CheckDel);</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c__test_8c_1a7a32a221eb96896ffcfcdfcd0f691252" kindref="member">CheckCondition</ref>(pos<sp/>==<sp/>3);</highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1a7ea1bdb9a051941bbd465061896faa13" kindref="member">leveldb_writebatch_destroy</ref>(wb);</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"></highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/>StartPhase(</highlight><highlight class="stringliteral">&quot;iter&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structleveldb__iterator__t" kindref="compound">leveldb_iterator_t</ref>*<sp/>iter<sp/>=<sp/><ref refid="c_8cc_1a8b9d419b6e0753a1d6158605c821354a" kindref="member">leveldb_create_iterator</ref>(db,<sp/>roptions);</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c__test_8c_1a7a32a221eb96896ffcfcdfcd0f691252" kindref="member">CheckCondition</ref>(!<ref refid="c_8cc_1a9c9786b18b548855cea3f932e3cb6a4f" kindref="member">leveldb_iter_valid</ref>(iter));</highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1a426f2a0a9fde95852357417abb21da99" kindref="member">leveldb_iter_seek_to_first</ref>(iter);</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c__test_8c_1a7a32a221eb96896ffcfcdfcd0f691252" kindref="member">CheckCondition</ref>(<ref refid="c_8cc_1a9c9786b18b548855cea3f932e3cb6a4f" kindref="member">leveldb_iter_valid</ref>(iter));</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/>CheckIter(iter,<sp/></highlight><highlight class="stringliteral">&quot;box&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;c&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1a215c3dbbc2646ff017efa30373fdbb54" kindref="member">leveldb_iter_next</ref>(iter);</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/>CheckIter(iter,<sp/></highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;hello&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1ac8b4786160f739b4a0d6f48a6efcfdd3" kindref="member">leveldb_iter_prev</ref>(iter);</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/>CheckIter(iter,<sp/></highlight><highlight class="stringliteral">&quot;box&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;c&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1ac8b4786160f739b4a0d6f48a6efcfdd3" kindref="member">leveldb_iter_prev</ref>(iter);</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c__test_8c_1a7a32a221eb96896ffcfcdfcd0f691252" kindref="member">CheckCondition</ref>(!<ref refid="c_8cc_1a9c9786b18b548855cea3f932e3cb6a4f" kindref="member">leveldb_iter_valid</ref>(iter));</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1a33c92fa551b86c862b11b57768fdbbe9" kindref="member">leveldb_iter_seek_to_last</ref>(iter);</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/>CheckIter(iter,<sp/></highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;hello&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1a4eecb2de49538317da5359a171ce5609" kindref="member">leveldb_iter_seek</ref>(iter,<sp/></highlight><highlight class="stringliteral">&quot;b&quot;</highlight><highlight class="normal">,<sp/>1);</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/>CheckIter(iter,<sp/></highlight><highlight class="stringliteral">&quot;box&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;c&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1adeb66a6587023e9e45328fa52fd42db4" kindref="member">leveldb_iter_get_error</ref>(iter,<sp/>&amp;err);</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c__test_8c_1af3270e97d4196e9f0d1fba6d99720822" kindref="member">CheckNoError</ref>(err);</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1a02fcd7857735a170e57a0e797c27fe1f" kindref="member">leveldb_iter_destroy</ref>(iter);</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/>StartPhase(</highlight><highlight class="stringliteral">&quot;approximate_sizes&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>i;</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>n<sp/>=<sp/>20000;</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>keybuf[100];</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>valbuf[100];</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref><sp/>sizes[2];</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="db__bench_8cc_1ab376b87f96a574a793c03c53e75afec8" kindref="member">start</ref>[2]<sp/>=<sp/>{<sp/></highlight><highlight class="stringliteral">&quot;a&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;k00000000000000010000&quot;</highlight><highlight class="normal"><sp/>};</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>start_len[2]<sp/>=<sp/>{<sp/>1,<sp/>21<sp/>};</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>limit[2]<sp/>=<sp/>{<sp/></highlight><highlight class="stringliteral">&quot;k00000000000000010000&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;z&quot;</highlight><highlight class="normal"><sp/>};</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>limit_len[2]<sp/>=<sp/>{<sp/>21,<sp/>1<sp/>};</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1a67c0bbd076fa1b1dd36da592f61878d9" kindref="member">leveldb_writeoptions_set_sync</ref>(woptions,<sp/>0);</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>n;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>snprintf(keybuf,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(keybuf),<sp/></highlight><highlight class="stringliteral">&quot;k%020d&quot;</highlight><highlight class="normal">,<sp/>i);</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>snprintf(valbuf,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(valbuf),<sp/></highlight><highlight class="stringliteral">&quot;v%020d&quot;</highlight><highlight class="normal">,<sp/>i);</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="c_8cc_1aacd7bf338f41054f34825b3669ace2f8" kindref="member">leveldb_put</ref>(db,<sp/>woptions,<sp/>keybuf,<sp/>strlen(keybuf),<sp/>valbuf,<sp/>strlen(valbuf),</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>&amp;err);</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="c__test_8c_1af3270e97d4196e9f0d1fba6d99720822" kindref="member">CheckNoError</ref>(err);</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1a876ad4220f0dbd55fbbe91714e271e98" kindref="member">leveldb_approximate_sizes</ref>(db,<sp/>2,<sp/>start,<sp/>start_len,<sp/>limit,<sp/>limit_len,<sp/>sizes);</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c__test_8c_1a7a32a221eb96896ffcfcdfcd0f691252" kindref="member">CheckCondition</ref>(sizes[0]<sp/>&gt;<sp/>0);</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c__test_8c_1a7a32a221eb96896ffcfcdfcd0f691252" kindref="member">CheckCondition</ref>(sizes[1]<sp/>&gt;<sp/>0);</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/>StartPhase(</highlight><highlight class="stringliteral">&quot;property&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>prop<sp/>=<sp/><ref refid="c_8cc_1ad4ce08534d9ce95b4a7ddb0cf1796209" kindref="member">leveldb_property_value</ref>(db,<sp/></highlight><highlight class="stringliteral">&quot;nosuchprop&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c__test_8c_1a7a32a221eb96896ffcfcdfcd0f691252" kindref="member">CheckCondition</ref>(prop<sp/>==<sp/>NULL);</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/>prop<sp/>=<sp/><ref refid="c_8cc_1ad4ce08534d9ce95b4a7ddb0cf1796209" kindref="member">leveldb_property_value</ref>(db,<sp/></highlight><highlight class="stringliteral">&quot;leveldb.stats&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c__test_8c_1a7a32a221eb96896ffcfcdfcd0f691252" kindref="member">CheckCondition</ref>(prop<sp/>!=<sp/>NULL);</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/>Free(&amp;prop);</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/>StartPhase(</highlight><highlight class="stringliteral">&quot;snapshot&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structleveldb__snapshot__t" kindref="compound">leveldb_snapshot_t</ref>*<sp/>snap;</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/>snap<sp/>=<sp/><ref refid="c_8cc_1af999ba27285e482f34df3821f9a04214" kindref="member">leveldb_create_snapshot</ref>(db);</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1a3878ffaf68a4addb31266ac81ce8c36f" kindref="member">leveldb_delete</ref>(db,<sp/>woptions,<sp/></highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">,<sp/>3,<sp/>&amp;err);</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c__test_8c_1af3270e97d4196e9f0d1fba6d99720822" kindref="member">CheckNoError</ref>(err);</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1a68ddc161e0fc476d3d7fae895bea7e2b" kindref="member">leveldb_readoptions_set_snapshot</ref>(roptions,<sp/>snap);</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/>CheckGet(db,<sp/>roptions,<sp/></highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;hello&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1a68ddc161e0fc476d3d7fae895bea7e2b" kindref="member">leveldb_readoptions_set_snapshot</ref>(roptions,<sp/>NULL);</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/>CheckGet(db,<sp/>roptions,<sp/></highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">,<sp/>NULL);</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1ab1e5d825506969f12fcaff2bf824b6e5" kindref="member">leveldb_release_snapshot</ref>(db,<sp/>snap);</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"></highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/>StartPhase(</highlight><highlight class="stringliteral">&quot;repair&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1a4f2ee24f30c834d2f54e48acaffb3412" kindref="member">leveldb_close</ref>(db);</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1aa849366113d053a02905b55180da627a" kindref="member">leveldb_options_set_create_if_missing</ref>(options,<sp/>0);</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1ae068a68aa7b9bbef0b564f8fdb145f98" kindref="member">leveldb_options_set_error_if_exists</ref>(options,<sp/>0);</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1a255557af7bd3a589a75d38bbb674c21b" kindref="member">leveldb_repair_db</ref>(options,<sp/>dbname,<sp/>&amp;err);</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c__test_8c_1af3270e97d4196e9f0d1fba6d99720822" kindref="member">CheckNoError</ref>(err);</highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/>db<sp/>=<sp/><ref refid="c_8cc_1a2d912fff4d5decae6da014298b227a18" kindref="member">leveldb_open</ref>(options,<sp/>dbname,<sp/>&amp;err);</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c__test_8c_1af3270e97d4196e9f0d1fba6d99720822" kindref="member">CheckNoError</ref>(err);</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"><sp/><sp/><sp/><sp/>CheckGet(db,<sp/>roptions,<sp/></highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">,<sp/>NULL);</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/>CheckGet(db,<sp/>roptions,<sp/></highlight><highlight class="stringliteral">&quot;bar&quot;</highlight><highlight class="normal">,<sp/>NULL);</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/>CheckGet(db,<sp/>roptions,<sp/></highlight><highlight class="stringliteral">&quot;box&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;c&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1aa849366113d053a02905b55180da627a" kindref="member">leveldb_options_set_create_if_missing</ref>(options,<sp/>1);</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1ae068a68aa7b9bbef0b564f8fdb145f98" kindref="member">leveldb_options_set_error_if_exists</ref>(options,<sp/>1);</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"></highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/>StartPhase(</highlight><highlight class="stringliteral">&quot;filter&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(run<sp/>=<sp/>0;<sp/>run<sp/>&lt;<sp/>2;<sp/>run++)<sp/>{</highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>First<sp/>run<sp/>uses<sp/>custom<sp/>filter,<sp/>second<sp/>run<sp/>uses<sp/>bloom<sp/>filter</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="341"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c__test_8c_1af3270e97d4196e9f0d1fba6d99720822" kindref="member">CheckNoError</ref>(err);</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structleveldb__filterpolicy__t" kindref="compound">leveldb_filterpolicy_t</ref>*<sp/>policy;</highlight></codeline>
+<codeline lineno="343"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(run<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>policy<sp/>=<sp/><ref refid="c_8cc_1a9225a13a94b45cfe2f00395dfcc1cb18" kindref="member">leveldb_filterpolicy_create</ref>(</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NULL,<sp/>FilterDestroy,<sp/>FilterCreate,<sp/><ref refid="c__test_8c_1a117a386d47165a2d2c5ef9beda9bde94" kindref="member">FilterKeyMatch</ref>,<sp/>FilterName);</highlight></codeline>
+<codeline lineno="346"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>policy<sp/>=<sp/><ref refid="c_8cc_1a1adc82e212c58033ec9b8cd05577525c" kindref="member">leveldb_filterpolicy_create_bloom</ref>(10);</highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"></highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Create<sp/>new<sp/>database</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="351"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1a4f2ee24f30c834d2f54e48acaffb3412" kindref="member">leveldb_close</ref>(db);</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1a265873c54a9e6080278da4f957a6a183" kindref="member">leveldb_destroy_db</ref>(options,<sp/>dbname,<sp/>&amp;err);</highlight></codeline>
+<codeline lineno="353"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1ab3980c9e885db8286854f3db31ea560a" kindref="member">leveldb_options_set_filter_policy</ref>(options,<sp/>policy);</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"><sp/><sp/><sp/><sp/>db<sp/>=<sp/><ref refid="c_8cc_1a2d912fff4d5decae6da014298b227a18" kindref="member">leveldb_open</ref>(options,<sp/>dbname,<sp/>&amp;err);</highlight></codeline>
+<codeline lineno="355"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c__test_8c_1af3270e97d4196e9f0d1fba6d99720822" kindref="member">CheckNoError</ref>(err);</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1aacd7bf338f41054f34825b3669ace2f8" kindref="member">leveldb_put</ref>(db,<sp/>woptions,<sp/></highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">,<sp/>3,<sp/></highlight><highlight class="stringliteral">&quot;foovalue&quot;</highlight><highlight class="normal">,<sp/>8,<sp/>&amp;err);</highlight></codeline>
+<codeline lineno="357"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c__test_8c_1af3270e97d4196e9f0d1fba6d99720822" kindref="member">CheckNoError</ref>(err);</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1aacd7bf338f41054f34825b3669ace2f8" kindref="member">leveldb_put</ref>(db,<sp/>woptions,<sp/></highlight><highlight class="stringliteral">&quot;bar&quot;</highlight><highlight class="normal">,<sp/>3,<sp/></highlight><highlight class="stringliteral">&quot;barvalue&quot;</highlight><highlight class="normal">,<sp/>8,<sp/>&amp;err);</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c__test_8c_1af3270e97d4196e9f0d1fba6d99720822" kindref="member">CheckNoError</ref>(err);</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1a2e579ef1579016b83b3fcb4038939517" kindref="member">leveldb_compact_range</ref>(db,<sp/>NULL,<sp/>0,<sp/>NULL,<sp/>0);</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"></highlight></codeline>
+<codeline lineno="362"><highlight class="normal"><sp/><sp/><sp/><sp/>fake_filter_result<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/>CheckGet(db,<sp/>roptions,<sp/></highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;foovalue&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"><sp/><sp/><sp/><sp/>CheckGet(db,<sp/>roptions,<sp/></highlight><highlight class="stringliteral">&quot;bar&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;barvalue&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="c__test_8c_1aa66920db8e335b57326a73d5592f1273" kindref="member">phase</ref><sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Must<sp/>not<sp/>find<sp/>value<sp/>when<sp/>custom<sp/>filter<sp/>returns<sp/>false</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>fake_filter_result<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>CheckGet(db,<sp/>roptions,<sp/></highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">,<sp/>NULL);</highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>CheckGet(db,<sp/>roptions,<sp/></highlight><highlight class="stringliteral">&quot;bar&quot;</highlight><highlight class="normal">,<sp/>NULL);</highlight></codeline>
+<codeline lineno="370"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>fake_filter_result<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"></highlight></codeline>
+<codeline lineno="372"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>CheckGet(db,<sp/>roptions,<sp/></highlight><highlight class="stringliteral">&quot;foo&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;foovalue&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>CheckGet(db,<sp/>roptions,<sp/></highlight><highlight class="stringliteral">&quot;bar&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;barvalue&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1ab3980c9e885db8286854f3db31ea560a" kindref="member">leveldb_options_set_filter_policy</ref>(options,<sp/>NULL);</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="c_8cc_1a7352c6120b0f5918441d90976c9f7018" kindref="member">leveldb_filterpolicy_destroy</ref>(policy);</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="378"><highlight class="normal"></highlight></codeline>
+<codeline lineno="379"><highlight class="normal"><sp/><sp/>StartPhase(</highlight><highlight class="stringliteral">&quot;cleanup&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/><ref refid="c_8cc_1a4f2ee24f30c834d2f54e48acaffb3412" kindref="member">leveldb_close</ref>(db);</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><ref refid="c_8cc_1a9752b8ae34a9dd124ec30d4663812e4c" kindref="member">leveldb_options_destroy</ref>(options);</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/><ref refid="c_8cc_1ac77970c3bf23e2d8ab5aa3da52be2cd5" kindref="member">leveldb_readoptions_destroy</ref>(roptions);</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/><ref refid="c_8cc_1ae99c3fcce6ccaf4d173493b9390db343" kindref="member">leveldb_writeoptions_destroy</ref>(woptions);</highlight></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/><ref refid="c_8cc_1a53bc8f41c8acffd1bad8482b0772cd59" kindref="member">leveldb_cache_destroy</ref>(cache);</highlight></codeline>
+<codeline lineno="385"><highlight class="normal"><sp/><sp/><ref refid="c_8cc_1a4a9be9d42c7dce5cd194f65d0c81d9d0" kindref="member">leveldb_comparator_destroy</ref>(cmp);</highlight></codeline>
+<codeline lineno="386"><highlight class="normal"><sp/><sp/><ref refid="c_8cc_1a839b815344b53383bbed2fd760df4f49" kindref="member">leveldb_env_destroy</ref>(env);</highlight></codeline>
+<codeline lineno="387"><highlight class="normal"></highlight></codeline>
+<codeline lineno="388"><highlight class="normal"><sp/><sp/>fprintf(stderr,<sp/></highlight><highlight class="stringliteral">&quot;PASS\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="390"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/leveldb/db/c_test.c"/>
+  </compounddef>
+</doxygen>

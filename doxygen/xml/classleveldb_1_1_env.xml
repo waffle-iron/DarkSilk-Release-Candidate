@@ -1,0 +1,572 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="classleveldb_1_1_env" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>leveldb::Env</compoundname>
+    <derivedcompoundref refid="classleveldb_1_1_env_wrapper" prot="public" virt="non-virtual">leveldb::EnvWrapper</derivedcompoundref>
+    <includes refid="env_8h" local="no">env.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classleveldb_1_1_env_1a90f3648c740e3f5901f5843cd0dd07c4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::Env::Env</definition>
+        <argsstring>()</argsstring>
+        <name>Env</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/env.h" line="33" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/include/leveldb/env.h" bodystart="33" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_env_1a2b9321c6176f8824b3ba65f0a36453fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>leveldb::Env::~Env</definition>
+        <argsstring>()</argsstring>
+        <name>~Env</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/env.h" line="34" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/util/env.cc" bodystart="9" bodyend="10"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_env_1ad73810059f48c1d7b91125d357e7d351" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref></type>
+        <definition>virtual Status leveldb::Env::NewSequentialFile</definition>
+        <argsstring>(const std::string &amp;fname, SequentialFile **result)=0</argsstring>
+        <name>NewSequentialFile</name>
+        <reimplementedby refid="classleveldb_1_1_env_wrapper_1acd23f5803f7841cfcee9a29ffc1c5b04">NewSequentialFile</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>fname</declname>
+        </param>
+        <param>
+          <type><ref refid="classleveldb_1_1_sequential_file" kindref="compound">SequentialFile</ref> **</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/env.h" line="49" column="1"/>
+        <referencedby refid="classleveldb_1_1_version_set_1a955ff8620ec56742cdc48da0e74ab40b" compoundref="version__set_8cc" startline="896" endline="1009">leveldb::VersionSet::Recover</referencedby>
+        <referencedby refid="namespaceleveldb_1a0bec4396e504d47207110edc4a11f302" compoundref="memenv__test_8cc" startline="28" endline="85">leveldb::TEST</referencedby>
+        <referencedby refid="classleveldb_1_1_env_wrapper_1acd23f5803f7841cfcee9a29ffc1c5b04" compoundref="env_8h" startline="283" endline="285">leveldb::EnvWrapper::NewSequentialFile</referencedby>
+        <referencedby refid="namespaceleveldb_1aa47a20ae782e9ad537692c3202cd652d" compoundref="env_8cc" startline="68" endline="91">leveldb::ReadFileToString</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_env_1a1df3e0bb2d47ee914448df9bb9ca0734" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref></type>
+        <definition>virtual Status leveldb::Env::NewRandomAccessFile</definition>
+        <argsstring>(const std::string &amp;fname, RandomAccessFile **result)=0</argsstring>
+        <name>NewRandomAccessFile</name>
+        <reimplementedby refid="classleveldb_1_1_special_env_1ae04ba2b7b94753d805e316dbda74ec00">NewRandomAccessFile</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_env_wrapper_1ab8c78959e0d52f3c1beeeffc11ca0a34">NewRandomAccessFile</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>fname</declname>
+        </param>
+        <param>
+          <type><ref refid="classleveldb_1_1_random_access_file" kindref="compound">RandomAccessFile</ref> **</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/env.h" line="59" column="1"/>
+        <referencedby refid="classleveldb_1_1_special_env_1ae04ba2b7b94753d805e316dbda74ec00" compoundref="db__test_8cc" startline="164" endline="186">leveldb::SpecialEnv::NewRandomAccessFile</referencedby>
+        <referencedby refid="namespaceleveldb_1a0bec4396e504d47207110edc4a11f302" compoundref="memenv__test_8cc" startline="28" endline="85">leveldb::TEST</referencedby>
+        <referencedby refid="classleveldb_1_1_env_wrapper_1ab8c78959e0d52f3c1beeeffc11ca0a34" compoundref="env_8h" startline="286" endline="288">leveldb::EnvWrapper::NewRandomAccessFile</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_env_1a4566194f3e82fede425fdb5bb355f7de" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref></type>
+        <definition>virtual Status leveldb::Env::NewWritableFile</definition>
+        <argsstring>(const std::string &amp;fname, WritableFile **result)=0</argsstring>
+        <name>NewWritableFile</name>
+        <reimplementedby refid="classleveldb_1_1test_1_1_error_env_1a2990be71c7fb9473bd1fa0f8da8fd078">NewWritableFile</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_special_env_1a2a8b88051ccc5f957321d47af0dae5ed">NewWritableFile</reimplementedby>
+        <reimplementedby refid="classleveldb_1_1_env_wrapper_1a2d2b29a658e80c326ddaeb9c4d74c483">NewWritableFile</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>fname</declname>
+        </param>
+        <param>
+          <type><ref refid="classleveldb_1_1_writable_file" kindref="compound">WritableFile</ref> **</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/env.h" line="69" column="1"/>
+        <referencedby refid="namespaceleveldb_1a10e102da98819e1a1f9b254241482e65" compoundref="builder_8cc" startline="17" endline="86">leveldb::BuildTable</referencedby>
+        <referencedby refid="classleveldb_1_1_d_b_1ac1da2b48e911287d86f3a3bfa0f851fe" compoundref="db__impl_8cc" startline="1445" endline="1477">leveldb::DB::Open</referencedby>
+        <referencedby refid="classleveldb_1_1_special_env_1a2a8b88051ccc5f957321d47af0dae5ed" compoundref="db__test_8cc" startline="91" endline="162">leveldb::SpecialEnv::NewWritableFile</referencedby>
+        <referencedby refid="classleveldb_1_1_version_set_1ac1d014901be7095ace1aaec0cf391fb6" compoundref="version__set_8cc" startline="811" endline="894">leveldb::VersionSet::LogAndApply</referencedby>
+        <referencedby refid="namespaceleveldb_1a0bec4396e504d47207110edc4a11f302" compoundref="memenv__test_8cc" startline="28" endline="85">leveldb::TEST</referencedby>
+        <referencedby refid="classleveldb_1_1_env_wrapper_1a2d2b29a658e80c326ddaeb9c4d74c483" compoundref="env_8h" startline="289" endline="291">leveldb::EnvWrapper::NewWritableFile</referencedby>
+        <referencedby refid="classleveldb_1_1test_1_1_error_env_1a2990be71c7fb9473bd1fa0f8da8fd078" compoundref="testutil_8h" startline="39" endline="47">leveldb::test::ErrorEnv::NewWritableFile</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_env_1acbb85047fdf7bf441bd365cfb09f9ecb" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool leveldb::Env::FileExists</definition>
+        <argsstring>(const std::string &amp;fname)=0</argsstring>
+        <name>FileExists</name>
+        <reimplementedby refid="classleveldb_1_1_env_wrapper_1ac72ceac6f4e2a6140e2835b2fa15f4df">FileExists</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>fname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/env.h" line="73" column="1"/>
+        <referencedby refid="namespaceleveldb_1a0bec4396e504d47207110edc4a11f302" compoundref="memenv__test_8cc" startline="28" endline="85">leveldb::TEST</referencedby>
+        <referencedby refid="classleveldb_1_1_env_wrapper_1ac72ceac6f4e2a6140e2835b2fa15f4df" compoundref="env_8h" startline="292" endline="292">leveldb::EnvWrapper::FileExists</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_env_1a53028e3112d7bb3bf6574ddaab18d6f6" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref></type>
+        <definition>virtual Status leveldb::Env::GetChildren</definition>
+        <argsstring>(const std::string &amp;dir, std::vector&lt; std::string &gt; *result)=0</argsstring>
+        <name>GetChildren</name>
+        <reimplementedby refid="classleveldb_1_1_env_wrapper_1abb7c1fd7d91c80b6efcf9967154a18f3">GetChildren</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>dir</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; std::string &gt; *</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/env.h" line="78" column="1"/>
+        <referencedby refid="classleveldb_1_1_benchmark_1a05d001d05283f6d1d589d417b42aa736" compoundref="db__bench_8cc" startline="389" endline="410">leveldb::Benchmark::Benchmark</referencedby>
+        <referencedby refid="namespaceleveldb_1a5b0819d4d4adc2147b5e91a5553fd7dc" compoundref="db__impl_8cc" startline="1482" endline="1511">leveldb::DestroyDB</referencedby>
+        <referencedby refid="namespaceleveldb_1a0bec4396e504d47207110edc4a11f302" compoundref="memenv__test_8cc" startline="28" endline="85">leveldb::TEST</referencedby>
+        <referencedby refid="classleveldb_1_1_env_wrapper_1abb7c1fd7d91c80b6efcf9967154a18f3" compoundref="env_8h" startline="293" endline="295">leveldb::EnvWrapper::GetChildren</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_env_1ac956b984466d5f09309664177687f9af" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref></type>
+        <definition>virtual Status leveldb::Env::DeleteFile</definition>
+        <argsstring>(const std::string &amp;fname)=0</argsstring>
+        <name>DeleteFile</name>
+        <reimplementedby refid="classleveldb_1_1_env_wrapper_1af99d37829c3806a0e05979f5a7eb35af">DeleteFile</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>fname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/env.h" line="82" column="1"/>
+        <referencedby refid="namespaceleveldb_1a10e102da98819e1a1f9b254241482e65" compoundref="builder_8cc" startline="17" endline="86">leveldb::BuildTable</referencedby>
+        <referencedby refid="classleveldb_1_1_benchmark_1a05d001d05283f6d1d589d417b42aa736" compoundref="db__bench_8cc" startline="389" endline="410">leveldb::Benchmark::Benchmark</referencedby>
+        <referencedby refid="namespaceleveldb_1a5b0819d4d4adc2147b5e91a5553fd7dc" compoundref="db__impl_8cc" startline="1482" endline="1511">leveldb::DestroyDB</referencedby>
+        <referencedby refid="namespaceleveldb_1a73133aa2e18928553d14913491b094e7" compoundref="filename_8cc" startline="126" endline="142">leveldb::SetCurrentFile</referencedby>
+        <referencedby refid="classleveldb_1_1_version_set_1ac1d014901be7095ace1aaec0cf391fb6" compoundref="version__set_8cc" startline="811" endline="894">leveldb::VersionSet::LogAndApply</referencedby>
+        <referencedby refid="namespaceleveldb_1a0bec4396e504d47207110edc4a11f302" compoundref="memenv__test_8cc" startline="28" endline="85">leveldb::TEST</referencedby>
+        <referencedby refid="classleveldb_1_1_env_wrapper_1af99d37829c3806a0e05979f5a7eb35af" compoundref="env_8h" startline="296" endline="296">leveldb::EnvWrapper::DeleteFile</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_env_1ae6b7c8122df5a8020b2a3439ac39646e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref></type>
+        <definition>virtual Status leveldb::Env::CreateDir</definition>
+        <argsstring>(const std::string &amp;dirname)=0</argsstring>
+        <name>CreateDir</name>
+        <reimplementedby refid="classleveldb_1_1_env_wrapper_1af8c26728d198a44627e08bb557ab4730">CreateDir</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>dirname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/env.h" line="85" column="1"/>
+        <referencedby refid="namespaceleveldb_1aa4783e598841dca4393a97d360d10f56" compoundref="db__impl_8cc" startline="90" endline="114">leveldb::SanitizeOptions</referencedby>
+        <referencedby refid="namespaceleveldb_1a0bec4396e504d47207110edc4a11f302" compoundref="memenv__test_8cc" startline="28" endline="85">leveldb::TEST</referencedby>
+        <referencedby refid="classleveldb_1_1_env_wrapper_1af8c26728d198a44627e08bb557ab4730" compoundref="env_8h" startline="297" endline="297">leveldb::EnvWrapper::CreateDir</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_env_1a4e1a1c4495541e426b146cba56c59627" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref></type>
+        <definition>virtual Status leveldb::Env::DeleteDir</definition>
+        <argsstring>(const std::string &amp;dirname)=0</argsstring>
+        <name>DeleteDir</name>
+        <reimplementedby refid="classleveldb_1_1_env_wrapper_1adedc51823cd8e4bdd55e4f10068f5d22">DeleteDir</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>dirname</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/env.h" line="88" column="1"/>
+        <referencedby refid="namespaceleveldb_1a5b0819d4d4adc2147b5e91a5553fd7dc" compoundref="db__impl_8cc" startline="1482" endline="1511">leveldb::DestroyDB</referencedby>
+        <referencedby refid="namespaceleveldb_1a0bec4396e504d47207110edc4a11f302" compoundref="memenv__test_8cc" startline="28" endline="85">leveldb::TEST</referencedby>
+        <referencedby refid="classleveldb_1_1_env_wrapper_1adedc51823cd8e4bdd55e4f10068f5d22" compoundref="env_8h" startline="298" endline="298">leveldb::EnvWrapper::DeleteDir</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_env_1aacb66541dcb3bd586e6cc5a87489690c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref></type>
+        <definition>virtual Status leveldb::Env::GetFileSize</definition>
+        <argsstring>(const std::string &amp;fname, uint64_t *file_size)=0</argsstring>
+        <name>GetFileSize</name>
+        <reimplementedby refid="classleveldb_1_1_env_wrapper_1af6caee1ccef32332c9f26f97944f2afe">GetFileSize</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>fname</declname>
+        </param>
+        <param>
+          <type><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref> *</type>
+          <declname>file_size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/env.h" line="91" column="1"/>
+        <referencedby refid="namespaceleveldb_1a0bec4396e504d47207110edc4a11f302" compoundref="memenv__test_8cc" startline="28" endline="85">leveldb::TEST</referencedby>
+        <referencedby refid="classleveldb_1_1_env_wrapper_1af6caee1ccef32332c9f26f97944f2afe" compoundref="env_8h" startline="299" endline="301">leveldb::EnvWrapper::GetFileSize</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_env_1abd743b3d4751ada1ab307427827ed5b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref></type>
+        <definition>virtual Status leveldb::Env::RenameFile</definition>
+        <argsstring>(const std::string &amp;src, const std::string &amp;target)=0</argsstring>
+        <name>RenameFile</name>
+        <reimplementedby refid="classleveldb_1_1_env_wrapper_1afbd271f58ef0f0db8f2973f0c947fdec">RenameFile</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>src</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>target</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/env.h" line="94" column="1"/>
+        <referencedby refid="namespaceleveldb_1aa4783e598841dca4393a97d360d10f56" compoundref="db__impl_8cc" startline="90" endline="114">leveldb::SanitizeOptions</referencedby>
+        <referencedby refid="namespaceleveldb_1a73133aa2e18928553d14913491b094e7" compoundref="filename_8cc" startline="126" endline="142">leveldb::SetCurrentFile</referencedby>
+        <referencedby refid="namespaceleveldb_1a0bec4396e504d47207110edc4a11f302" compoundref="memenv__test_8cc" startline="28" endline="85">leveldb::TEST</referencedby>
+        <referencedby refid="classleveldb_1_1_env_wrapper_1afbd271f58ef0f0db8f2973f0c947fdec" compoundref="env_8h" startline="302" endline="304">leveldb::EnvWrapper::RenameFile</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_env_1a9b7266f0444f832e428328ff19b7b54c" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref></type>
+        <definition>virtual Status leveldb::Env::LockFile</definition>
+        <argsstring>(const std::string &amp;fname, FileLock **lock)=0</argsstring>
+        <name>LockFile</name>
+        <reimplementedby refid="classleveldb_1_1_env_wrapper_1a5cfd04849bbfc67ad60259dcbb2e0ec0">LockFile</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>fname</declname>
+        </param>
+        <param>
+          <type><ref refid="classleveldb_1_1_file_lock" kindref="compound">FileLock</ref> **</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/env.h" line="111" column="1"/>
+        <referencedby refid="namespaceleveldb_1a5b0819d4d4adc2147b5e91a5553fd7dc" compoundref="db__impl_8cc" startline="1482" endline="1511">leveldb::DestroyDB</referencedby>
+        <referencedby refid="namespaceleveldb_1ab388329216765ab6e37e34b4ac778991" compoundref="memenv__test_8cc" startline="129" endline="135">leveldb::TEST</referencedby>
+        <referencedby refid="classleveldb_1_1_env_wrapper_1a5cfd04849bbfc67ad60259dcbb2e0ec0" compoundref="env_8h" startline="305" endline="307">leveldb::EnvWrapper::LockFile</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_env_1a194a2ee3c21bc0b204ad0e5bc3b81d4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref></type>
+        <definition>virtual Status leveldb::Env::UnlockFile</definition>
+        <argsstring>(FileLock *lock)=0</argsstring>
+        <name>UnlockFile</name>
+        <reimplementedby refid="classleveldb_1_1_env_wrapper_1ab1779dda39167eaa38e660bcc69988c4">UnlockFile</reimplementedby>
+        <param>
+          <type><ref refid="classleveldb_1_1_file_lock" kindref="compound">FileLock</ref> *</type>
+          <declname>lock</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/env.h" line="116" column="1"/>
+        <referencedby refid="classleveldb_1_1_d_b_impl_1a07a233a94a2531aed9d3718c9b9ed40d" compoundref="db__impl_8cc" startline="148" endline="175">leveldb::DBImpl::~DBImpl</referencedby>
+        <referencedby refid="namespaceleveldb_1a5b0819d4d4adc2147b5e91a5553fd7dc" compoundref="db__impl_8cc" startline="1482" endline="1511">leveldb::DestroyDB</referencedby>
+        <referencedby refid="namespaceleveldb_1ab388329216765ab6e37e34b4ac778991" compoundref="memenv__test_8cc" startline="129" endline="135">leveldb::TEST</referencedby>
+        <referencedby refid="classleveldb_1_1_env_wrapper_1ab1779dda39167eaa38e660bcc69988c4" compoundref="env_8h" startline="308" endline="308">leveldb::EnvWrapper::UnlockFile</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_env_1a6b5fc50322d8404f5b13fad0e03d8724" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void leveldb::Env::Schedule</definition>
+        <argsstring>(void(*function)(void *arg), void *arg)=0</argsstring>
+        <name>Schedule</name>
+        <param>
+          <type>void(*)(void *<ref refid="env__posix_8cc_1a9ce2ec4812a92cb6ab39f6e81e9173a9" kindref="member">arg</ref>)</type>
+          <declname>function</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/env.h" line="124" column="1"/>
+        <referencedby refid="classleveldb_1_1_env_wrapper_1a58677bfd9b3b32a50184b51852b11755" compoundref="env_8h" startline="309" endline="311">leveldb::EnvWrapper::Schedule</referencedby>
+        <referencedby refid="namespaceleveldb_1a2e08263909f19a912b1a1ee9cb0a5e45" compoundref="env__test_8cc" startline="28" endline="33">leveldb::TEST</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_env_1a25eafd1622a2cf2a415ee8b2325bc808" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void leveldb::Env::StartThread</definition>
+        <argsstring>(void(*function)(void *arg), void *arg)=0</argsstring>
+        <name>StartThread</name>
+        <param>
+          <type>void(*)(void *<ref refid="env__posix_8cc_1a9ce2ec4812a92cb6ab39f6e81e9173a9" kindref="member">arg</ref>)</type>
+          <declname>function</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/env.h" line="130" column="1"/>
+        <referencedby refid="namespaceleveldb_1a9bee47c386abe6004d884f2552bd8184" compoundref="db__test_8cc" startline="1795" endline="1825">leveldb::TEST</referencedby>
+        <referencedby refid="classleveldb_1_1_env_wrapper_1a8c910a8ab40a7f4a6eb7bc41bc39f78b" compoundref="env_8h" startline="312" endline="314">leveldb::EnvWrapper::StartThread</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_env_1ab57a55be37d4d57bf3c0ff83ee689f95" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref></type>
+        <definition>virtual Status leveldb::Env::GetTestDirectory</definition>
+        <argsstring>(std::string *path)=0</argsstring>
+        <name>GetTestDirectory</name>
+        <reimplementedby refid="classleveldb_1_1_env_wrapper_1a62fdf74a9991e4226091bfdc58e97f16">GetTestDirectory</reimplementedby>
+        <param>
+          <type>std::string *</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/env.h" line="136" column="1"/>
+        <referencedby refid="db__bench_8cc_1a3c04138a5bfe5d72780bb7e82a18e627" compoundref="db__bench_8cc" startline="925" endline="978">main</referencedby>
+        <referencedby refid="classleveldb_1_1_benchmark_1a05d001d05283f6d1d589d417b42aa736" compoundref="db__bench__sqlite3_8cc" startline="315" endline="336">leveldb::Benchmark::Benchmark</referencedby>
+        <referencedby refid="classleveldb_1_1_benchmark_1a89a3b0da75e6cd2ffb879358e5dd82a6" compoundref="db__bench__sqlite3_8cc" startline="417" endline="476">leveldb::Benchmark::Open</referencedby>
+        <referencedby refid="namespaceleveldb_1a57beb72845ed55c4cc316709f14670da" compoundref="memenv__test_8cc" startline="137" endline="150">leveldb::TEST</referencedby>
+        <referencedby refid="classleveldb_1_1_env_wrapper_1a62fdf74a9991e4226091bfdc58e97f16" compoundref="env_8h" startline="315" endline="317">leveldb::EnvWrapper::GetTestDirectory</referencedby>
+        <referencedby refid="namespaceleveldb_1_1test_1ac259aab85eedba03d163bb3a86ae4645" compoundref="testharness_8cc" startline="60" endline="65">leveldb::test::TmpDir</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_env_1a53a4c41d294fe619f13ec5b697ffc933" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref></type>
+        <definition>virtual Status leveldb::Env::NewLogger</definition>
+        <argsstring>(const std::string &amp;fname, Logger **result)=0</argsstring>
+        <name>NewLogger</name>
+        <reimplementedby refid="classleveldb_1_1_env_wrapper_1af065b31ff6876780896be1c8f197e556">NewLogger</reimplementedby>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>fname</declname>
+        </param>
+        <param>
+          <type><ref refid="classleveldb_1_1_logger" kindref="compound">Logger</ref> **</type>
+          <declname>result</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/env.h" line="139" column="1"/>
+        <referencedby refid="namespaceleveldb_1aa4783e598841dca4393a97d360d10f56" compoundref="db__impl_8cc" startline="90" endline="114">leveldb::SanitizeOptions</referencedby>
+        <referencedby refid="classleveldb_1_1_env_wrapper_1af065b31ff6876780896be1c8f197e556" compoundref="env_8h" startline="318" endline="320">leveldb::EnvWrapper::NewLogger</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_env_1a988062bcd558ac02c62522ac2c8aa39f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="stdint_8h_1aaa5d1cd013383c889537491c3cfd9aad" kindref="member">uint64_t</ref></type>
+        <definition>virtual uint64_t leveldb::Env::NowMicros</definition>
+        <argsstring>()=0</argsstring>
+        <name>NowMicros</name>
+        <reimplementedby refid="classleveldb_1_1_env_wrapper_1ad3a36da82ba4ca10a34b45f3b9edfeaf">NowMicros</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/env.h" line="143" column="1"/>
+        <referencedby refid="namespaceleveldb_1af9cf6ec167c9b6f25fd050ab6fb67a90" compoundref="db__test_8cc" startline="2065" endline="2114">leveldb::BM_LogAndApply</referencedby>
+        <referencedby refid="classleveldb_1_1_env_wrapper_1ad3a36da82ba4ca10a34b45f3b9edfeaf" compoundref="env_8h" startline="321" endline="323">leveldb::EnvWrapper::NowMicros</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_env_1a43ad838cfb08db3d9e2197800cd33312" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void leveldb::Env::SleepForMicroseconds</definition>
+        <argsstring>(int micros)=0</argsstring>
+        <name>SleepForMicroseconds</name>
+        <reimplementedby refid="classleveldb_1_1_env_wrapper_1a6e05455e32edd8cd4657fc22f4e422e9">SleepForMicroseconds</reimplementedby>
+        <param>
+          <type>int</type>
+          <declname>micros</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/env.h" line="146" column="1"/>
+        <referencedby refid="classleveldb_1_1_auto_compact_test_1a1d1feea1aef1257e461c35eb5b51fa52" compoundref="autocompact__test_8cc" startline="58" endline="104">leveldb::AutoCompactTest::DoReads</referencedby>
+        <referencedby refid="namespaceleveldb_1a2bb2a098a32d42044e6be132020b29b0" compoundref="corruption__test_8cc" startline="333" endline="352">leveldb::TEST</referencedby>
+        <referencedby refid="classleveldb_1_1_env_wrapper_1a6e05455e32edd8cd4657fc22f4e422e9" compoundref="env_8h" startline="324" endline="326">leveldb::EnvWrapper::SleepForMicroseconds</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classleveldb_1_1_env_1ae15b67e650ff6790059745fd1b3bf3e7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classleveldb_1_1_env" kindref="compound">Env</ref> *</type>
+        <definition>Env * leveldb::Env::Default</definition>
+        <argsstring>()</argsstring>
+        <name>Default</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/env.h" line="41" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/util/env_posix.cc" bodystart="604" bodyend="607"/>
+        <referencedby refid="classleveldb_1_1_auto_compact_test_1a1d1feea1aef1257e461c35eb5b51fa52" compoundref="autocompact__test_8cc" startline="58" endline="104">leveldb::AutoCompactTest::DoReads</referencedby>
+        <referencedby refid="classleveldb_1_1_corruption_test_1a22060ac0a3697640cdcf36973339b646" compoundref="corruption__test_8cc" startline="126" endline="174">leveldb::CorruptionTest::Corrupt</referencedby>
+        <referencedby refid="classleveldb_1_1_benchmark_1a05d001d05283f6d1d589d417b42aa736" compoundref="db__bench_8cc" startline="389" endline="410">leveldb::Benchmark::Benchmark</referencedby>
+        <referencedby refid="db__bench_8cc_1a3c04138a5bfe5d72780bb7e82a18e627" compoundref="db__bench_8cc" startline="925" endline="978">main</referencedby>
+        <referencedby refid="namespaceleveldb_1af9cf6ec167c9b6f25fd050ab6fb67a90" compoundref="db__test_8cc" startline="2065" endline="2114">leveldb::BM_LogAndApply</referencedby>
+        <referencedby refid="classleveldb_1_1_benchmark_1a89a3b0da75e6cd2ffb879358e5dd82a6" compoundref="db__bench__sqlite3_8cc" startline="417" endline="476">leveldb::Benchmark::Open</referencedby>
+        <referencedby refid="namespaceleveldb_1a2e08263909f19a912b1a1ee9cb0a5e45" compoundref="env__test_8cc" startline="28" endline="33">leveldb::TEST</referencedby>
+        <referencedby refid="namespaceleveldb_1_1test_1ac259aab85eedba03d163bb3a86ae4645" compoundref="testharness_8cc" startline="60" endline="65">leveldb::test::TmpDir</referencedby>
+        <referencedby refid="class_c_level_d_b_wrapper_1ae796b1190c072df6275e0ada4d187943" compoundref="leveldbwrapper_8cpp" startline="44" endline="67">CLevelDBWrapper::CLevelDBWrapper</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classleveldb_1_1_env_1a1a9edfb174a3553c8144612f5da6353e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>leveldb::Env::Env</definition>
+        <argsstring>(const Env &amp;)</argsstring>
+        <name>Env</name>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_env" kindref="compound">Env</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/env.h" line="150" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classleveldb_1_1_env_1a0b99df952aed4c5630945b68ce0e011e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void leveldb::Env::operator=</definition>
+        <argsstring>(const Env &amp;)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classleveldb_1_1_env" kindref="compound">Env</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/env.h" line="151" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3020">
+        <label>leveldb::Env</label>
+        <link refid="classleveldb_1_1_env"/>
+      </node>
+      <node id="3022">
+        <label>leveldb::SpecialEnv</label>
+        <link refid="classleveldb_1_1_special_env"/>
+        <childnode refid="3021" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3023">
+        <label>leveldb::test::ErrorEnv</label>
+        <link refid="classleveldb_1_1test_1_1_error_env"/>
+        <childnode refid="3021" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3021">
+        <label>leveldb::EnvWrapper</label>
+        <link refid="classleveldb_1_1_env_wrapper"/>
+        <childnode refid="3020" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="/home/dev/ds-160209/src/leveldb/include/leveldb/env.h" line="31" column="1" bodyfile="/home/dev/ds-160209/src/leveldb/include/leveldb/env.h" bodystart="31" bodyend="152"/>
+    <listofallmembers>
+      <member refid="classleveldb_1_1_env_1ae6b7c8122df5a8020b2a3439ac39646e" prot="public" virt="pure-virtual"><scope>leveldb::Env</scope><name>CreateDir</name></member>
+      <member refid="classleveldb_1_1_env_1ae15b67e650ff6790059745fd1b3bf3e7" prot="public" virt="non-virtual"><scope>leveldb::Env</scope><name>Default</name></member>
+      <member refid="classleveldb_1_1_env_1a4e1a1c4495541e426b146cba56c59627" prot="public" virt="pure-virtual"><scope>leveldb::Env</scope><name>DeleteDir</name></member>
+      <member refid="classleveldb_1_1_env_1ac956b984466d5f09309664177687f9af" prot="public" virt="pure-virtual"><scope>leveldb::Env</scope><name>DeleteFile</name></member>
+      <member refid="classleveldb_1_1_env_1a90f3648c740e3f5901f5843cd0dd07c4" prot="public" virt="non-virtual"><scope>leveldb::Env</scope><name>Env</name></member>
+      <member refid="classleveldb_1_1_env_1a1a9edfb174a3553c8144612f5da6353e" prot="private" virt="non-virtual"><scope>leveldb::Env</scope><name>Env</name></member>
+      <member refid="classleveldb_1_1_env_1acbb85047fdf7bf441bd365cfb09f9ecb" prot="public" virt="pure-virtual"><scope>leveldb::Env</scope><name>FileExists</name></member>
+      <member refid="classleveldb_1_1_env_1a53028e3112d7bb3bf6574ddaab18d6f6" prot="public" virt="pure-virtual"><scope>leveldb::Env</scope><name>GetChildren</name></member>
+      <member refid="classleveldb_1_1_env_1aacb66541dcb3bd586e6cc5a87489690c" prot="public" virt="pure-virtual"><scope>leveldb::Env</scope><name>GetFileSize</name></member>
+      <member refid="classleveldb_1_1_env_1ab57a55be37d4d57bf3c0ff83ee689f95" prot="public" virt="pure-virtual"><scope>leveldb::Env</scope><name>GetTestDirectory</name></member>
+      <member refid="classleveldb_1_1_env_1a9b7266f0444f832e428328ff19b7b54c" prot="public" virt="pure-virtual"><scope>leveldb::Env</scope><name>LockFile</name></member>
+      <member refid="classleveldb_1_1_env_1a53a4c41d294fe619f13ec5b697ffc933" prot="public" virt="pure-virtual"><scope>leveldb::Env</scope><name>NewLogger</name></member>
+      <member refid="classleveldb_1_1_env_1a1df3e0bb2d47ee914448df9bb9ca0734" prot="public" virt="pure-virtual"><scope>leveldb::Env</scope><name>NewRandomAccessFile</name></member>
+      <member refid="classleveldb_1_1_env_1ad73810059f48c1d7b91125d357e7d351" prot="public" virt="pure-virtual"><scope>leveldb::Env</scope><name>NewSequentialFile</name></member>
+      <member refid="classleveldb_1_1_env_1a4566194f3e82fede425fdb5bb355f7de" prot="public" virt="pure-virtual"><scope>leveldb::Env</scope><name>NewWritableFile</name></member>
+      <member refid="classleveldb_1_1_env_1a988062bcd558ac02c62522ac2c8aa39f" prot="public" virt="pure-virtual"><scope>leveldb::Env</scope><name>NowMicros</name></member>
+      <member refid="classleveldb_1_1_env_1a0b99df952aed4c5630945b68ce0e011e" prot="private" virt="non-virtual"><scope>leveldb::Env</scope><name>operator=</name></member>
+      <member refid="classleveldb_1_1_env_1abd743b3d4751ada1ab307427827ed5b0" prot="public" virt="pure-virtual"><scope>leveldb::Env</scope><name>RenameFile</name></member>
+      <member refid="classleveldb_1_1_env_1a6b5fc50322d8404f5b13fad0e03d8724" prot="public" virt="pure-virtual"><scope>leveldb::Env</scope><name>Schedule</name></member>
+      <member refid="classleveldb_1_1_env_1a43ad838cfb08db3d9e2197800cd33312" prot="public" virt="pure-virtual"><scope>leveldb::Env</scope><name>SleepForMicroseconds</name></member>
+      <member refid="classleveldb_1_1_env_1a25eafd1622a2cf2a415ee8b2325bc808" prot="public" virt="pure-virtual"><scope>leveldb::Env</scope><name>StartThread</name></member>
+      <member refid="classleveldb_1_1_env_1a194a2ee3c21bc0b204ad0e5bc3b81d4b" prot="public" virt="pure-virtual"><scope>leveldb::Env</scope><name>UnlockFile</name></member>
+      <member refid="classleveldb_1_1_env_1a2b9321c6176f8824b3ba65f0a36453fe" prot="public" virt="virtual"><scope>leveldb::Env</scope><name>~Env</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

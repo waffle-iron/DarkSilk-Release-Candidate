@@ -1,0 +1,258 @@
+\hypertarget{class_c_sand_storm_relay}{}\section{C\+Sand\+Storm\+Relay Class Reference}
+\label{class_c_sand_storm_relay}\index{C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}}
+
+
+{\ttfamily \#include $<$sandstorm-\/relay.\+h$>$}
+
+
+
+Collaboration diagram for C\+Sand\+Storm\+Relay\+:
+% FIG 0
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_sand_storm_relay_a160bb012209e966517008f4ac568d6e6}{C\+Sand\+Storm\+Relay} ()
+\item 
+\hyperlink{class_c_sand_storm_relay_a4d0da1c322375def1ed4da99aa8289a3}{C\+Sand\+Storm\+Relay} (\hyperlink{class_c_tx_in}{C\+Tx\+In} \&vin\+Stormnode\+In, vector$<$ unsigned char $>$ \&vch\+Sig\+In, int n\+Block\+Height\+In, int n\+Relay\+Type\+In, \hyperlink{class_c_tx_in}{C\+Tx\+In} \&in2, \hyperlink{class_c_tx_out}{C\+Tx\+Out} \&out2)
+\item 
+{\footnotesize template$<$typename Stream , typename Operation $>$ }\\void \hyperlink{class_c_sand_storm_relay_a8fba7af50034e76090056c3bed8b7378}{Serialization\+Op} (Stream \&s, Operation ser\+\_\+action, int n\+Type, int n\+Version)
+\item 
+std\+::string \hyperlink{class_c_sand_storm_relay_aca18b7e41e812d174624d15730451333}{To\+String} ()
+\item 
+bool \hyperlink{class_c_sand_storm_relay_a7263335082b2638b8eafc59e21e79baa}{Sign} (std\+::string str\+Shared\+Key)
+\item 
+bool \hyperlink{class_c_sand_storm_relay_add9d29eac76800e8d07ced2e0b3eec4b}{Verify\+Message} (std\+::string str\+Shared\+Key)
+\item 
+void \hyperlink{class_c_sand_storm_relay_a267e6fecd0b7381cfe31c75fba023129}{Relay} ()
+\item 
+void \hyperlink{class_c_sand_storm_relay_aae4c929f8831a4c678812b1da8f82a55}{Relay\+Through\+Node} (int n\+Rank)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_tx_in}{C\+Tx\+In} \hyperlink{class_c_sand_storm_relay_ae9a99cafdc4ed5a56cfac7b141d0c98d}{vin\+Stormnode}
+\item 
+vector$<$ unsigned char $>$ \hyperlink{class_c_sand_storm_relay_a1e00147c64eddf291075d9a895894a98}{vch\+Sig}
+\item 
+vector$<$ unsigned char $>$ \hyperlink{class_c_sand_storm_relay_a5a9a84a315c1e649746bcbe1e5b85cb7}{vch\+Sig2}
+\item 
+int \hyperlink{class_c_sand_storm_relay_a38fd3f66b75775160f98c85b1c3b81d0}{n\+Block\+Height}
+\item 
+int \hyperlink{class_c_sand_storm_relay_a97f1e8d95b7a6770ce54c9c5835e535f}{n\+Relay\+Type}
+\item 
+\hyperlink{class_c_tx_in}{C\+Tx\+In} \hyperlink{class_c_sand_storm_relay_af8dcec2c973e41cf6f42cfe4443e3925}{in}
+\item 
+\hyperlink{class_c_tx_out}{C\+Tx\+Out} \hyperlink{class_c_sand_storm_relay_a3f7d41fd5d3c55dab9e081fe10988f35}{out}
+\item 
+\hyperlink{class_c_sand_storm_relay_a92f4ec8c13a51b958a620729460c205f}{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+Definition at line 10 of file sandstorm-\/relay.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_c_sand_storm_relay_a160bb012209e966517008f4ac568d6e6}{}\index{C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}!C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}}
+\index{C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}!C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}}
+\subsubsection[{C\+Sand\+Storm\+Relay}]{\setlength{\rightskip}{0pt plus 5cm}C\+Sand\+Storm\+Relay\+::\+C\+Sand\+Storm\+Relay (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_sand_storm_relay_a160bb012209e966517008f4ac568d6e6}
+
+
+Definition at line 8 of file sandstorm-\/relay.\+cpp.
+
+\hypertarget{class_c_sand_storm_relay_a4d0da1c322375def1ed4da99aa8289a3}{}\index{C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}!C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}}
+\index{C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}!C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}}
+\subsubsection[{C\+Sand\+Storm\+Relay}]{\setlength{\rightskip}{0pt plus 5cm}C\+Sand\+Storm\+Relay\+::\+C\+Sand\+Storm\+Relay (
+\begin{DoxyParamCaption}
+\item[{{\bf C\+Tx\+In} \&}]{vin\+Stormnode\+In, }
+\item[{vector$<$ unsigned char $>$ \&}]{vch\+Sig\+In, }
+\item[{int}]{n\+Block\+Height\+In, }
+\item[{int}]{n\+Relay\+Type\+In, }
+\item[{{\bf C\+Tx\+In} \&}]{in2, }
+\item[{{\bf C\+Tx\+Out} \&}]{out2}
+\end{DoxyParamCaption}
+)}\label{class_c_sand_storm_relay_a4d0da1c322375def1ed4da99aa8289a3}
+
+
+Definition at line 17 of file sandstorm-\/relay.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_c_sand_storm_relay_a267e6fecd0b7381cfe31c75fba023129}{}\index{C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}!Relay@{Relay}}
+\index{Relay@{Relay}!C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}}
+\subsubsection[{Relay}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Sand\+Storm\+Relay\+::\+Relay (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_sand_storm_relay_a267e6fecd0b7381cfe31c75fba023129}
+
+
+Definition at line 89 of file sandstorm-\/relay.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 1
+
+
+\hypertarget{class_c_sand_storm_relay_aae4c929f8831a4c678812b1da8f82a55}{}\index{C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}!Relay\+Through\+Node@{Relay\+Through\+Node}}
+\index{Relay\+Through\+Node@{Relay\+Through\+Node}!C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}}
+\subsubsection[{Relay\+Through\+Node}]{\setlength{\rightskip}{0pt plus 5cm}void C\+Sand\+Storm\+Relay\+::\+Relay\+Through\+Node (
+\begin{DoxyParamCaption}
+\item[{int}]{n\+Rank}
+\end{DoxyParamCaption}
+)}\label{class_c_sand_storm_relay_aae4c929f8831a4c678812b1da8f82a55}
+
+
+Definition at line 105 of file sandstorm-\/relay.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+\hypertarget{class_c_sand_storm_relay_a8fba7af50034e76090056c3bed8b7378}{}\index{C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}!Serialization\+Op@{Serialization\+Op}}
+\index{Serialization\+Op@{Serialization\+Op}!C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}}
+\subsubsection[{Serialization\+Op}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Stream , typename Operation $>$ void C\+Sand\+Storm\+Relay\+::\+Serialization\+Op (
+\begin{DoxyParamCaption}
+\item[{Stream \&}]{s, }
+\item[{Operation}]{ser\+\_\+action, }
+\item[{int}]{n\+Type, }
+\item[{int}]{n\+Version}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_c_sand_storm_relay_a8fba7af50034e76090056c3bed8b7378}
+
+
+Definition at line 27 of file sandstorm-\/relay.\+h.
+
+\hypertarget{class_c_sand_storm_relay_a7263335082b2638b8eafc59e21e79baa}{}\index{C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}!Sign@{Sign}}
+\index{Sign@{Sign}!C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}}
+\subsubsection[{Sign}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Sand\+Storm\+Relay\+::\+Sign (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{str\+Shared\+Key}
+\end{DoxyParamCaption}
+)}\label{class_c_sand_storm_relay_a7263335082b2638b8eafc59e21e79baa}
+
+
+Definition at line 40 of file sandstorm-\/relay.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 4
+
+
+\hypertarget{class_c_sand_storm_relay_aca18b7e41e812d174624d15730451333}{}\index{C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}!To\+String@{To\+String}}
+\index{To\+String@{To\+String}!C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}}
+\subsubsection[{To\+String}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string C\+Sand\+Storm\+Relay\+::\+To\+String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_c_sand_storm_relay_aca18b7e41e812d174624d15730451333}
+
+
+Definition at line 27 of file sandstorm-\/relay.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 5
+
+
+\hypertarget{class_c_sand_storm_relay_add9d29eac76800e8d07ced2e0b3eec4b}{}\index{C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}!Verify\+Message@{Verify\+Message}}
+\index{Verify\+Message@{Verify\+Message}!C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}}
+\subsubsection[{Verify\+Message}]{\setlength{\rightskip}{0pt plus 5cm}bool C\+Sand\+Storm\+Relay\+::\+Verify\+Message (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{str\+Shared\+Key}
+\end{DoxyParamCaption}
+)}\label{class_c_sand_storm_relay_add9d29eac76800e8d07ced2e0b3eec4b}
+
+
+Definition at line 67 of file sandstorm-\/relay.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 6
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_c_sand_storm_relay_a92f4ec8c13a51b958a620729460c205f}{}\index{C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}!A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}}
+\index{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S@{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}!C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}}
+\subsubsection[{A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}]{\setlength{\rightskip}{0pt plus 5cm}C\+Sand\+Storm\+Relay\+::\+A\+D\+D\+\_\+\+S\+E\+R\+I\+A\+L\+I\+Z\+E\+\_\+\+M\+E\+T\+H\+O\+D\+S}\label{class_c_sand_storm_relay_a92f4ec8c13a51b958a620729460c205f}
+
+
+Definition at line 24 of file sandstorm-\/relay.\+h.
+
+\hypertarget{class_c_sand_storm_relay_af8dcec2c973e41cf6f42cfe4443e3925}{}\index{C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}!in@{in}}
+\index{in@{in}!C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}}
+\subsubsection[{in}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Tx\+In} C\+Sand\+Storm\+Relay\+::in}\label{class_c_sand_storm_relay_af8dcec2c973e41cf6f42cfe4443e3925}
+
+
+Definition at line 18 of file sandstorm-\/relay.\+h.
+
+\hypertarget{class_c_sand_storm_relay_a38fd3f66b75775160f98c85b1c3b81d0}{}\index{C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}!n\+Block\+Height@{n\+Block\+Height}}
+\index{n\+Block\+Height@{n\+Block\+Height}!C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}}
+\subsubsection[{n\+Block\+Height}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Sand\+Storm\+Relay\+::n\+Block\+Height}\label{class_c_sand_storm_relay_a38fd3f66b75775160f98c85b1c3b81d0}
+
+
+Definition at line 16 of file sandstorm-\/relay.\+h.
+
+\hypertarget{class_c_sand_storm_relay_a97f1e8d95b7a6770ce54c9c5835e535f}{}\index{C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}!n\+Relay\+Type@{n\+Relay\+Type}}
+\index{n\+Relay\+Type@{n\+Relay\+Type}!C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}}
+\subsubsection[{n\+Relay\+Type}]{\setlength{\rightskip}{0pt plus 5cm}int C\+Sand\+Storm\+Relay\+::n\+Relay\+Type}\label{class_c_sand_storm_relay_a97f1e8d95b7a6770ce54c9c5835e535f}
+
+
+Definition at line 17 of file sandstorm-\/relay.\+h.
+
+\hypertarget{class_c_sand_storm_relay_a3f7d41fd5d3c55dab9e081fe10988f35}{}\index{C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}!out@{out}}
+\index{out@{out}!C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}}
+\subsubsection[{out}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Tx\+Out} C\+Sand\+Storm\+Relay\+::out}\label{class_c_sand_storm_relay_a3f7d41fd5d3c55dab9e081fe10988f35}
+
+
+Definition at line 19 of file sandstorm-\/relay.\+h.
+
+\hypertarget{class_c_sand_storm_relay_a1e00147c64eddf291075d9a895894a98}{}\index{C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}!vch\+Sig@{vch\+Sig}}
+\index{vch\+Sig@{vch\+Sig}!C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}}
+\subsubsection[{vch\+Sig}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$unsigned char$>$ C\+Sand\+Storm\+Relay\+::vch\+Sig}\label{class_c_sand_storm_relay_a1e00147c64eddf291075d9a895894a98}
+
+
+Definition at line 14 of file sandstorm-\/relay.\+h.
+
+\hypertarget{class_c_sand_storm_relay_a5a9a84a315c1e649746bcbe1e5b85cb7}{}\index{C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}!vch\+Sig2@{vch\+Sig2}}
+\index{vch\+Sig2@{vch\+Sig2}!C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}}
+\subsubsection[{vch\+Sig2}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$unsigned char$>$ C\+Sand\+Storm\+Relay\+::vch\+Sig2}\label{class_c_sand_storm_relay_a5a9a84a315c1e649746bcbe1e5b85cb7}
+
+
+Definition at line 15 of file sandstorm-\/relay.\+h.
+
+\hypertarget{class_c_sand_storm_relay_ae9a99cafdc4ed5a56cfac7b141d0c98d}{}\index{C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}!vin\+Stormnode@{vin\+Stormnode}}
+\index{vin\+Stormnode@{vin\+Stormnode}!C\+Sand\+Storm\+Relay@{C\+Sand\+Storm\+Relay}}
+\subsubsection[{vin\+Stormnode}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Tx\+In} C\+Sand\+Storm\+Relay\+::vin\+Stormnode}\label{class_c_sand_storm_relay_ae9a99cafdc4ed5a56cfac7b141d0c98d}
+
+
+Definition at line 13 of file sandstorm-\/relay.\+h.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/\hyperlink{sandstorm-relay_8h}{sandstorm-\/relay.\+h}\item 
+/home/dev/ds-\/160209/src/\hyperlink{sandstorm-relay_8cpp}{sandstorm-\/relay.\+cpp}\end{DoxyCompactItemize}

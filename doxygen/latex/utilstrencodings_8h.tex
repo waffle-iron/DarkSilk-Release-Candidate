@@ -1,0 +1,372 @@
+\hypertarget{utilstrencodings_8h}{}\section{/home/dev/ds-\/160209/src/utilstrencodings.h File Reference}
+\label{utilstrencodings_8h}\index{/home/dev/ds-\/160209/src/utilstrencodings.\+h@{/home/dev/ds-\/160209/src/utilstrencodings.\+h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include \char`\"{}serialize.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}allocators.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$boost/date\+\_\+time/posix\+\_\+time/posix\+\_\+time.\+hpp$>$}\\*
+{\ttfamily \#include $<$openssl/bio.\+h$>$}\\*
+{\ttfamily \#include $<$openssl/evp.\+h$>$}\\*
+{\ttfamily \#include $<$openssl/buffer.\+h$>$}\\*
+{\ttfamily \#include $<$openssl/crypto.\+h$>$}\\*
+{\ttfamily \#include $<$openssl/rand.\+h$>$}\\*
+{\ttfamily \#include $<$openssl/bn.\+h$>$}\\*
+Include dependency graph for utilstrencodings.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{utilstrencodings_8h_a5f5e63e2c340bc52049e38c09b37e6e1}{B\+E\+G\+I\+N}(a)~((char$\ast$)\&(a))
+\item 
+\#define \hyperlink{utilstrencodings_8h_ac32457d3f041434e57a2924847796fda}{E\+N\+D}(a)~((char$\ast$)\&((\&(a))\mbox{[}1\mbox{]}))
+\item 
+\#define \hyperlink{utilstrencodings_8h_a4a903229f3d520fdb700f1c82586368b}{U\+B\+E\+G\+I\+N}(a)~((unsigned char$\ast$)\&(a))
+\item 
+\#define \hyperlink{utilstrencodings_8h_af0f53b3b9bd67803cd1efe42c7894aa3}{U\+E\+N\+D}(a)~((unsigned char$\ast$)\&((\&(a))\mbox{[}1\mbox{]}))
+\item 
+\#define \hyperlink{utilstrencodings_8h_a35bf72ac971bd331fba0b3e8117bcbf9}{A\+R\+R\+A\+Y\+L\+E\+N}(array)~(sizeof(array)/sizeof((array)\mbox{[}0\mbox{]}))
+\item 
+\#define \hyperlink{utilstrencodings_8h_aa3052ab82a2ba880ea3e30b3357c8820}{P\+A\+I\+R\+T\+Y\+P\+E}(t1,  t2)~std\+::pair$<$t1, t2$>$
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ unsigned char $>$ \hyperlink{utilstrencodings_8h_ad7d5462ec6ec6e23493c839d01da7424}{Decode\+Base64} (const char $\ast$p, bool $\ast$pf\+Invalid=N\+U\+L\+L)
+\item 
+std\+::string \hyperlink{utilstrencodings_8h_abe1060fd27543de8bf9806678f4e91eb}{Decode\+Base64} (const std\+::string \&str)
+\item 
+std\+::string \hyperlink{utilstrencodings_8h_ab088e17c477707c187113686457eabb8}{Encode\+Base64} (const unsigned char $\ast$pch, size\+\_\+t len)
+\item 
+std\+::string \hyperlink{utilstrencodings_8h_ad00e71aa1ead536a941d6f7d7c0292ae}{Encode\+Base64} (const std\+::string \&str)
+\item 
+\hyperlink{allocators_8h_a396ed773a5ac24aec28c8f7dc413c7ac}{Secure\+String} \hyperlink{utilstrencodings_8h_a0071c0bf91d611895e43999e62666c96}{Decode\+Base64\+Secure} (const \hyperlink{allocators_8h_a396ed773a5ac24aec28c8f7dc413c7ac}{Secure\+String} \&input)
+\item 
+\hyperlink{allocators_8h_a396ed773a5ac24aec28c8f7dc413c7ac}{Secure\+String} \hyperlink{utilstrencodings_8h_a49f6f1cd42cb886762be52c72466dc7e}{Encode\+Base64\+Secure} (const \hyperlink{allocators_8h_a396ed773a5ac24aec28c8f7dc413c7ac}{Secure\+String} \&input)
+\item 
+std\+::vector$<$ unsigned char $>$ \hyperlink{utilstrencodings_8h_a58e69b413820ff62a4f203eb5c1a827a}{Decode\+Base32} (const char $\ast$p, bool $\ast$pf\+Invalid=N\+U\+L\+L)
+\item 
+std\+::string \hyperlink{utilstrencodings_8h_a31f169e89be696c17678f84b74c1666c}{Decode\+Base32} (const std\+::string \&str)
+\item 
+std\+::string \hyperlink{utilstrencodings_8h_aed1944a78afffe9d5f3129e656dc8aa6}{Encode\+Base32} (const unsigned char $\ast$pch, size\+\_\+t len)
+\item 
+std\+::string \hyperlink{utilstrencodings_8h_a352475038cfcd87d2d7d9a098d96a9d5}{Encode\+Base32} (const std\+::string \&str)
+\item 
+std\+::string \hyperlink{utilstrencodings_8h_ab7a07cad3bcdf95935f4f6b5c039c546}{i64tostr} (\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} n)
+\item 
+std\+::string \hyperlink{utilstrencodings_8h_a565b3ea015b133d01dc52b4ec6e45f07}{itostr} (int n)
+\item 
+\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} \hyperlink{utilstrencodings_8h_a22916d155600c742c4efad727462588e}{atoi64} (const char $\ast$psz)
+\item 
+\hyperlink{stdint_8h_adec1df1b8b51cb32b77e5b86fff46471}{int64\+\_\+t} \hyperlink{utilstrencodings_8h_aba1c6f08c135078a7af3385ed3e91ef3}{atoi64} (const std\+::string \&str)
+\item 
+int \hyperlink{utilstrencodings_8h_aa5ce96ec36f4413f820cec9c1831c070}{atoi} (const std\+::string \&str)
+\item 
+bool \hyperlink{utilstrencodings_8h_a880a215d9e931432b095084c756a49bb}{Parse\+Int32} (const std\+::string \&str, \hyperlink{stdint_8h_ab1967d8591af1a4e48c37fd2b0f184d0}{int32\+\_\+t} $\ast$out)
+\item 
+std\+::string \hyperlink{utilstrencodings_8h_ab754c84a5a52f6853642e86447ce460e}{Format\+Paragraph} (const std\+::string in, size\+\_\+t width=79, size\+\_\+t indent=0)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{utilstrencodings_8h_a35bf72ac971bd331fba0b3e8117bcbf9}{}\index{utilstrencodings.\+h@{utilstrencodings.\+h}!A\+R\+R\+A\+Y\+L\+E\+N@{A\+R\+R\+A\+Y\+L\+E\+N}}
+\index{A\+R\+R\+A\+Y\+L\+E\+N@{A\+R\+R\+A\+Y\+L\+E\+N}!utilstrencodings.\+h@{utilstrencodings.\+h}}
+\subsubsection[{A\+R\+R\+A\+Y\+L\+E\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define A\+R\+R\+A\+Y\+L\+E\+N(
+\begin{DoxyParamCaption}
+\item[{}]{array}
+\end{DoxyParamCaption}
+)~(sizeof(array)/sizeof((array)\mbox{[}0\mbox{]}))}\label{utilstrencodings_8h_a35bf72ac971bd331fba0b3e8117bcbf9}
+
+
+Definition at line 32 of file utilstrencodings.\+h.
+
+\hypertarget{utilstrencodings_8h_a5f5e63e2c340bc52049e38c09b37e6e1}{}\index{utilstrencodings.\+h@{utilstrencodings.\+h}!B\+E\+G\+I\+N@{B\+E\+G\+I\+N}}
+\index{B\+E\+G\+I\+N@{B\+E\+G\+I\+N}!utilstrencodings.\+h@{utilstrencodings.\+h}}
+\subsubsection[{B\+E\+G\+I\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define B\+E\+G\+I\+N(
+\begin{DoxyParamCaption}
+\item[{}]{a}
+\end{DoxyParamCaption}
+)~((char$\ast$)\&(a))}\label{utilstrencodings_8h_a5f5e63e2c340bc52049e38c09b37e6e1}
+Utilities for converting data from/to strings. 
+
+Definition at line 28 of file utilstrencodings.\+h.
+
+\hypertarget{utilstrencodings_8h_ac32457d3f041434e57a2924847796fda}{}\index{utilstrencodings.\+h@{utilstrencodings.\+h}!E\+N\+D@{E\+N\+D}}
+\index{E\+N\+D@{E\+N\+D}!utilstrencodings.\+h@{utilstrencodings.\+h}}
+\subsubsection[{E\+N\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define E\+N\+D(
+\begin{DoxyParamCaption}
+\item[{}]{a}
+\end{DoxyParamCaption}
+)~((char$\ast$)\&((\&(a))\mbox{[}1\mbox{]}))}\label{utilstrencodings_8h_ac32457d3f041434e57a2924847796fda}
+
+
+Definition at line 29 of file utilstrencodings.\+h.
+
+\hypertarget{utilstrencodings_8h_aa3052ab82a2ba880ea3e30b3357c8820}{}\index{utilstrencodings.\+h@{utilstrencodings.\+h}!P\+A\+I\+R\+T\+Y\+P\+E@{P\+A\+I\+R\+T\+Y\+P\+E}}
+\index{P\+A\+I\+R\+T\+Y\+P\+E@{P\+A\+I\+R\+T\+Y\+P\+E}!utilstrencodings.\+h@{utilstrencodings.\+h}}
+\subsubsection[{P\+A\+I\+R\+T\+Y\+P\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+A\+I\+R\+T\+Y\+P\+E(
+\begin{DoxyParamCaption}
+\item[{}]{t1, }
+\item[{}]{t2}
+\end{DoxyParamCaption}
+)~std\+::pair$<$t1, t2$>$}\label{utilstrencodings_8h_aa3052ab82a2ba880ea3e30b3357c8820}
+This is needed because the foreach macro can\textquotesingle{}t get over the comma in pair$<$t1, t2$>$ 
+
+Definition at line 35 of file utilstrencodings.\+h.
+
+\hypertarget{utilstrencodings_8h_a4a903229f3d520fdb700f1c82586368b}{}\index{utilstrencodings.\+h@{utilstrencodings.\+h}!U\+B\+E\+G\+I\+N@{U\+B\+E\+G\+I\+N}}
+\index{U\+B\+E\+G\+I\+N@{U\+B\+E\+G\+I\+N}!utilstrencodings.\+h@{utilstrencodings.\+h}}
+\subsubsection[{U\+B\+E\+G\+I\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\+B\+E\+G\+I\+N(
+\begin{DoxyParamCaption}
+\item[{}]{a}
+\end{DoxyParamCaption}
+)~((unsigned char$\ast$)\&(a))}\label{utilstrencodings_8h_a4a903229f3d520fdb700f1c82586368b}
+
+
+Definition at line 30 of file utilstrencodings.\+h.
+
+\hypertarget{utilstrencodings_8h_af0f53b3b9bd67803cd1efe42c7894aa3}{}\index{utilstrencodings.\+h@{utilstrencodings.\+h}!U\+E\+N\+D@{U\+E\+N\+D}}
+\index{U\+E\+N\+D@{U\+E\+N\+D}!utilstrencodings.\+h@{utilstrencodings.\+h}}
+\subsubsection[{U\+E\+N\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\+E\+N\+D(
+\begin{DoxyParamCaption}
+\item[{}]{a}
+\end{DoxyParamCaption}
+)~((unsigned char$\ast$)\&((\&(a))\mbox{[}1\mbox{]}))}\label{utilstrencodings_8h_af0f53b3b9bd67803cd1efe42c7894aa3}
+
+
+Definition at line 31 of file utilstrencodings.\+h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{utilstrencodings_8h_aa5ce96ec36f4413f820cec9c1831c070}{}\index{utilstrencodings.\+h@{utilstrencodings.\+h}!atoi@{atoi}}
+\index{atoi@{atoi}!utilstrencodings.\+h@{utilstrencodings.\+h}}
+\subsubsection[{atoi}]{\setlength{\rightskip}{0pt plus 5cm}int atoi (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{str}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{utilstrencodings_8h_aa5ce96ec36f4413f820cec9c1831c070}
+
+
+Definition at line 315 of file util.\+h.
+
+
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+\hypertarget{utilstrencodings_8h_a22916d155600c742c4efad727462588e}{}\index{utilstrencodings.\+h@{utilstrencodings.\+h}!atoi64@{atoi64}}
+\index{atoi64@{atoi64}!utilstrencodings.\+h@{utilstrencodings.\+h}}
+\subsubsection[{atoi64}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int64\+\_\+t} atoi64 (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{psz}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{utilstrencodings_8h_a22916d155600c742c4efad727462588e}
+
+
+Definition at line 297 of file util.\+h.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 4
+
+
+\hypertarget{utilstrencodings_8h_aba1c6f08c135078a7af3385ed3e91ef3}{}\index{utilstrencodings.\+h@{utilstrencodings.\+h}!atoi64@{atoi64}}
+\index{atoi64@{atoi64}!utilstrencodings.\+h@{utilstrencodings.\+h}}
+\subsubsection[{atoi64}]{\setlength{\rightskip}{0pt plus 5cm}{\bf int64\+\_\+t} atoi64 (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{str}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{utilstrencodings_8h_aba1c6f08c135078a7af3385ed3e91ef3}
+
+
+Definition at line 306 of file util.\+h.
+
+\hypertarget{utilstrencodings_8h_a58e69b413820ff62a4f203eb5c1a827a}{}\index{utilstrencodings.\+h@{utilstrencodings.\+h}!Decode\+Base32@{Decode\+Base32}}
+\index{Decode\+Base32@{Decode\+Base32}!utilstrencodings.\+h@{utilstrencodings.\+h}}
+\subsubsection[{Decode\+Base32}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$unsigned char$>$ Decode\+Base32 (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{p, }
+\item[{bool $\ast$}]{pf\+Invalid = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}\label{utilstrencodings_8h_a58e69b413820ff62a4f203eb5c1a827a}
+
+
+Definition at line 839 of file util.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 5
+
+
+\hypertarget{utilstrencodings_8h_a31f169e89be696c17678f84b74c1666c}{}\index{utilstrencodings.\+h@{utilstrencodings.\+h}!Decode\+Base32@{Decode\+Base32}}
+\index{Decode\+Base32@{Decode\+Base32}!utilstrencodings.\+h@{utilstrencodings.\+h}}
+\subsubsection[{Decode\+Base32}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Decode\+Base32 (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{str}
+\end{DoxyParamCaption}
+)}\label{utilstrencodings_8h_a31f169e89be696c17678f84b74c1666c}
+\hypertarget{utilstrencodings_8h_ad7d5462ec6ec6e23493c839d01da7424}{}\index{utilstrencodings.\+h@{utilstrencodings.\+h}!Decode\+Base64@{Decode\+Base64}}
+\index{Decode\+Base64@{Decode\+Base64}!utilstrencodings.\+h@{utilstrencodings.\+h}}
+\subsubsection[{Decode\+Base64}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$unsigned char$>$ Decode\+Base64 (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{p, }
+\item[{bool $\ast$}]{pf\+Invalid = {\ttfamily NULL}}
+\end{DoxyParamCaption}
+)}\label{utilstrencodings_8h_ad7d5462ec6ec6e23493c839d01da7424}
+
+
+Definition at line 629 of file util.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 6
+
+
+\hypertarget{utilstrencodings_8h_abe1060fd27543de8bf9806678f4e91eb}{}\index{utilstrencodings.\+h@{utilstrencodings.\+h}!Decode\+Base64@{Decode\+Base64}}
+\index{Decode\+Base64@{Decode\+Base64}!utilstrencodings.\+h@{utilstrencodings.\+h}}
+\subsubsection[{Decode\+Base64}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Decode\+Base64 (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{str}
+\end{DoxyParamCaption}
+)}\label{utilstrencodings_8h_abe1060fd27543de8bf9806678f4e91eb}
+\hypertarget{utilstrencodings_8h_a0071c0bf91d611895e43999e62666c96}{}\index{utilstrencodings.\+h@{utilstrencodings.\+h}!Decode\+Base64\+Secure@{Decode\+Base64\+Secure}}
+\index{Decode\+Base64\+Secure@{Decode\+Base64\+Secure}!utilstrencodings.\+h@{utilstrencodings.\+h}}
+\subsubsection[{Decode\+Base64\+Secure}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Secure\+String} Decode\+Base64\+Secure (
+\begin{DoxyParamCaption}
+\item[{const {\bf Secure\+String} \&}]{input}
+\end{DoxyParamCaption}
+)}\label{utilstrencodings_8h_a0071c0bf91d611895e43999e62666c96}
+
+
+Definition at line 746 of file util.\+cpp.
+
+\hypertarget{utilstrencodings_8h_aed1944a78afffe9d5f3129e656dc8aa6}{}\index{utilstrencodings.\+h@{utilstrencodings.\+h}!Encode\+Base32@{Encode\+Base32}}
+\index{Encode\+Base32@{Encode\+Base32}!utilstrencodings.\+h@{utilstrencodings.\+h}}
+\subsubsection[{Encode\+Base32}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Encode\+Base32 (
+\begin{DoxyParamCaption}
+\item[{const unsigned char $\ast$}]{pch, }
+\item[{size\+\_\+t}]{len}
+\end{DoxyParamCaption}
+)}\label{utilstrencodings_8h_aed1944a78afffe9d5f3129e656dc8aa6}
+
+
+Definition at line 775 of file util.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 7
+
+
+\hypertarget{utilstrencodings_8h_a352475038cfcd87d2d7d9a098d96a9d5}{}\index{utilstrencodings.\+h@{utilstrencodings.\+h}!Encode\+Base32@{Encode\+Base32}}
+\index{Encode\+Base32@{Encode\+Base32}!utilstrencodings.\+h@{utilstrencodings.\+h}}
+\subsubsection[{Encode\+Base32}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Encode\+Base32 (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{str}
+\end{DoxyParamCaption}
+)}\label{utilstrencodings_8h_a352475038cfcd87d2d7d9a098d96a9d5}
+\hypertarget{utilstrencodings_8h_ab088e17c477707c187113686457eabb8}{}\index{utilstrencodings.\+h@{utilstrencodings.\+h}!Encode\+Base64@{Encode\+Base64}}
+\index{Encode\+Base64@{Encode\+Base64}!utilstrencodings.\+h@{utilstrencodings.\+h}}
+\subsubsection[{Encode\+Base64}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Encode\+Base64 (
+\begin{DoxyParamCaption}
+\item[{const unsigned char $\ast$}]{pch, }
+\item[{size\+\_\+t}]{len}
+\end{DoxyParamCaption}
+)}\label{utilstrencodings_8h_ab088e17c477707c187113686457eabb8}
+
+
+Definition at line 578 of file util.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 8
+
+
+\hypertarget{utilstrencodings_8h_ad00e71aa1ead536a941d6f7d7c0292ae}{}\index{utilstrencodings.\+h@{utilstrencodings.\+h}!Encode\+Base64@{Encode\+Base64}}
+\index{Encode\+Base64@{Encode\+Base64}!utilstrencodings.\+h@{utilstrencodings.\+h}}
+\subsubsection[{Encode\+Base64}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Encode\+Base64 (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{str}
+\end{DoxyParamCaption}
+)}\label{utilstrencodings_8h_ad00e71aa1ead536a941d6f7d7c0292ae}
+\hypertarget{utilstrencodings_8h_a49f6f1cd42cb886762be52c72466dc7e}{}\index{utilstrencodings.\+h@{utilstrencodings.\+h}!Encode\+Base64\+Secure@{Encode\+Base64\+Secure}}
+\index{Encode\+Base64\+Secure@{Encode\+Base64\+Secure}!utilstrencodings.\+h@{utilstrencodings.\+h}}
+\subsubsection[{Encode\+Base64\+Secure}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Secure\+String} Encode\+Base64\+Secure (
+\begin{DoxyParamCaption}
+\item[{const {\bf Secure\+String} \&}]{input}
+\end{DoxyParamCaption}
+)}\label{utilstrencodings_8h_a49f6f1cd42cb886762be52c72466dc7e}
+
+
+Definition at line 719 of file util.\+cpp.
+
+\hypertarget{utilstrencodings_8h_ab754c84a5a52f6853642e86447ce460e}{}\index{utilstrencodings.\+h@{utilstrencodings.\+h}!Format\+Paragraph@{Format\+Paragraph}}
+\index{Format\+Paragraph@{Format\+Paragraph}!utilstrencodings.\+h@{utilstrencodings.\+h}}
+\subsubsection[{Format\+Paragraph}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Format\+Paragraph (
+\begin{DoxyParamCaption}
+\item[{const std\+::string}]{in, }
+\item[{size\+\_\+t}]{width = {\ttfamily 79}, }
+\item[{size\+\_\+t}]{indent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}\label{utilstrencodings_8h_ab754c84a5a52f6853642e86447ce460e}
+Format a paragraph of text to a fixed width, adding spaces for indentation to any added line. 
+
+Definition at line 1007 of file util.\+cpp.
+
+\hypertarget{utilstrencodings_8h_ab7a07cad3bcdf95935f4f6b5c039c546}{}\index{utilstrencodings.\+h@{utilstrencodings.\+h}!i64tostr@{i64tostr}}
+\index{i64tostr@{i64tostr}!utilstrencodings.\+h@{utilstrencodings.\+h}}
+\subsubsection[{i64tostr}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string i64tostr (
+\begin{DoxyParamCaption}
+\item[{{\bf int64\+\_\+t}}]{n}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{utilstrencodings_8h_ab7a07cad3bcdf95935f4f6b5c039c546}
+
+
+Definition at line 287 of file util.\+h.
+
+\hypertarget{utilstrencodings_8h_a565b3ea015b133d01dc52b4ec6e45f07}{}\index{utilstrencodings.\+h@{utilstrencodings.\+h}!itostr@{itostr}}
+\index{itostr@{itostr}!utilstrencodings.\+h@{utilstrencodings.\+h}}
+\subsubsection[{itostr}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string itostr (
+\begin{DoxyParamCaption}
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{utilstrencodings_8h_a565b3ea015b133d01dc52b4ec6e45f07}
+
+
+Definition at line 292 of file util.\+h.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 9
+
+
+\hypertarget{utilstrencodings_8h_a880a215d9e931432b095084c756a49bb}{}\index{utilstrencodings.\+h@{utilstrencodings.\+h}!Parse\+Int32@{Parse\+Int32}}
+\index{Parse\+Int32@{Parse\+Int32}!utilstrencodings.\+h@{utilstrencodings.\+h}}
+\subsubsection[{Parse\+Int32}]{\setlength{\rightskip}{0pt plus 5cm}bool Parse\+Int32 (
+\begin{DoxyParamCaption}
+\item[{const std\+::string \&}]{str, }
+\item[{{\bf int32\+\_\+t} $\ast$}]{out}
+\end{DoxyParamCaption}
+)}\label{utilstrencodings_8h_a880a215d9e931432b095084c756a49bb}
+Convert string to signed 32-\/bit integer with strict parse error feedback. \begin{DoxyReturn}{Returns}
+true if the entire string could be parsed as valid integer, false if not the entire string could be parsed or when overflow or underflow occurred. 
+\end{DoxyReturn}
+
+
+Definition at line 993 of file util.\+cpp.
+

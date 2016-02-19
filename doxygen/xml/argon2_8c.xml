@@ -1,0 +1,1238 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="argon2_8c" kind="file" language="C++">
+    <compoundname>argon2.c</compoundname>
+    <includes local="no">string.h</includes>
+    <includes local="no">stdlib.h</includes>
+    <includes local="no">stdio.h</includes>
+    <includes refid="argon2_8h" local="yes">argon2.h</includes>
+    <includes refid="encoding_8h" local="yes">encoding.h</includes>
+    <includes refid="core_8h" local="yes">core.h</includes>
+    <incdepgraph>
+      <node id="33089">
+        <label>stdlib.h</label>
+      </node>
+      <node id="33093">
+        <label>stddef.h</label>
+      </node>
+      <node id="33094">
+        <label>limits.h</label>
+      </node>
+      <node id="33095">
+        <label>encoding.h</label>
+        <link refid="encoding_8h"/>
+        <childnode refid="33091" relation="include">
+        </childnode>
+      </node>
+      <node id="33088">
+        <label>string.h</label>
+      </node>
+      <node id="33092">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="33087">
+        <label>/home/dev/ds-160209/src/crypto/argon2/argon2.c</label>
+        <link refid="argon2.c"/>
+        <childnode refid="33088" relation="include">
+        </childnode>
+        <childnode refid="33089" relation="include">
+        </childnode>
+        <childnode refid="33090" relation="include">
+        </childnode>
+        <childnode refid="33091" relation="include">
+        </childnode>
+        <childnode refid="33095" relation="include">
+        </childnode>
+        <childnode refid="33096" relation="include">
+        </childnode>
+      </node>
+      <node id="33091">
+        <label>argon2.h</label>
+        <link refid="argon2_8h"/>
+        <childnode refid="33092" relation="include">
+        </childnode>
+        <childnode refid="33093" relation="include">
+        </childnode>
+        <childnode refid="33094" relation="include">
+        </childnode>
+      </node>
+      <node id="33096">
+        <label>core.h</label>
+        <link refid="core_8h"/>
+        <childnode refid="33091" relation="include">
+        </childnode>
+      </node>
+      <node id="33090">
+        <label>stdio.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="argon2_8c_1a93da45458f9bfd937cebf2f1d5206539" prot="public" static="yes" mutable="no">
+        <type>const char *</type>
+        <definition>const char* Argon2_ErrorMessage[]</definition>
+        <argsstring>[]</argsstring>
+        <name>Argon2_ErrorMessage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/argon2.c" line="23" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/argon2.c" bodystart="23" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="argon2_8c_1a46052a12b5448759fa3b5de616cb783a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int argon2_core</definition>
+        <argsstring>(argon2_context *context, argon2_type type)</argsstring>
+        <name>argon2_core</name>
+        <param>
+          <type><ref refid="argon2_8h_1a43c74dc5ed515632feee9b2e1ff3e09f" kindref="member">argon2_context</ref> *</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type><ref refid="argon2_8h_1af51eac9927f7f234943d076166aacf84" kindref="member">argon2_type</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/argon2.c" line="109" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/argon2.c" bodystart="109" bodyend="163"/>
+        <references refid="core_8c_1afff47dd1eae5498564ec99545dedece8" compoundref="core_8c" startline="333" endline="460">validate_inputs</references>
+        <references refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a19b53dfdd59a4e04632b2de23530b3e8" compoundref="argon2_8h" startline="80">ARGON2_OK</references>
+        <references refid="argon2_8h_1a5d5d088fc49f3e133161c81e15fe1695a48ce300350099ad17bb3d5fe7da1c1cc" compoundref="argon2_8h" startline="197">Argon2_d</references>
+        <references refid="argon2_8h_1a5d5d088fc49f3e133161c81e15fe1695ad879f03535165a16f3040eeae7eedefa" compoundref="argon2_8h" startline="197">Argon2_i</references>
+        <references refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a14a344862e5b0186043f05f835622c45" compoundref="argon2_8h" startline="119">ARGON2_INCORRECT_TYPE</references>
+        <references refid="struct_argon2___context_1a78b6d500cdb208f3b09a10c07716d6ab" compoundref="argon2_8h" startline="186">Argon2_Context::m_cost</references>
+        <references refid="argon2_8h_1a0a0791457b23d7c7440b030deef959ba" compoundref="argon2_8h" startline="36">ARGON2_SYNC_POINTS</references>
+        <references refid="struct_argon2___context_1a8ab1ecf163c039d8db1d9eeb119b6112" compoundref="argon2_8h" startline="187">Argon2_Context::lanes</references>
+        <references refid="struct_argon2__instance__t_1a7feaf5341041e1c7aca88eb093ad67a3" compoundref="core_8h" startline="79">Argon2_instance_t::memory</references>
+        <references refid="struct_argon2__instance__t_1a2783db68ff7f7801616f7c78e319ffd5" compoundref="core_8h" startline="80">Argon2_instance_t::passes</references>
+        <references refid="struct_argon2___context_1adffe97f0527779835c511385dfc5d63d" compoundref="argon2_8h" startline="185">Argon2_Context::t_cost</references>
+        <references refid="struct_argon2__instance__t_1a40e32466250c3eaa25458b89050f1d0d" compoundref="core_8h" startline="81">Argon2_instance_t::memory_blocks</references>
+        <references refid="struct_argon2__instance__t_1a027cbd7a67c433446811f3c0f00099be" compoundref="core_8h" startline="82">Argon2_instance_t::segment_length</references>
+        <references refid="struct_argon2__instance__t_1a91274f0e1d85a39d29d7ab90a44e4c79" compoundref="core_8h" startline="83">Argon2_instance_t::lane_length</references>
+        <references refid="struct_argon2__instance__t_1ad2f436030b823c86269c589d6a923120" compoundref="core_8h" startline="84">Argon2_instance_t::lanes</references>
+        <references refid="struct_argon2__instance__t_1ae44c8933040075bc8b4fc3d15b170a2f" compoundref="core_8h" startline="85">Argon2_instance_t::threads</references>
+        <references refid="struct_argon2___context_1a1efec02e4fd164068c7e77ec5f8b5b01" compoundref="argon2_8h" startline="188">Argon2_Context::threads</references>
+        <references refid="struct_argon2__instance__t_1a5632fb070b91ef79ed3a7f915b032d90" compoundref="core_8h" startline="86">Argon2_instance_t::type</references>
+        <references refid="core_8c_1ac4f3546c9e156e161179b7cb1b6565e5" compoundref="core_8c" startline="559" endline="604">initialize</references>
+        <references refid="core_8c_1afc8e1540c9738230c2a993c9efcf2620" compoundref="core_8c" startline="252" endline="331">fill_memory_blocks</references>
+        <references refid="core_8c_1aafd756bf3475038e2eada05bcaf31b18" compoundref="core_8c" startline="127" endline="168">finalize</references>
+        <referencedby refid="argon2_8h_1a49e50c1bc7f51a1230d1ce7bbcf18f9f" compoundref="argon2_8c" startline="166" endline="239">argon2_hash</referencedby>
+        <referencedby refid="argon2_8h_1ac9984f1d62fb3cda555e8555dbfe3129" compoundref="argon2_8c" startline="353" endline="353">argon2d</referencedby>
+        <referencedby refid="argon2_8h_1ac709795078c9fb5384fb20d54c5b957d" compoundref="argon2_8c" startline="355" endline="355">argon2i</referencedby>
+        <referencedby refid="argon2_8h_1a8692a5e365ca1757f8234c0cf9fd87b4" compoundref="argon2_8c" startline="357" endline="370">verify_d</referencedby>
+        <referencedby refid="argon2_8h_1ad418420c81b8a399a23fa2cdf39a926b" compoundref="argon2_8c" startline="372" endline="385">verify_i</referencedby>
+        <referencedby refid="hash_8h_1af436e83e55018b521de4f912cf4b91ef" compoundref="hash_8h" startline="112" endline="148">Argon2d_Hash</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="argon2_8c_1a49e50c1bc7f51a1230d1ce7bbcf18f9f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int argon2_hash</definition>
+        <argsstring>(const uint32_t t_cost, const uint32_t m_cost, const uint32_t parallelism, const void *pwd, const size_t pwdlen, const void *salt, const size_t saltlen, void *hash, const size_t hashlen, char *encoded, const size_t encodedlen, argon2_type type)</argsstring>
+        <name>argon2_hash</name>
+        <param>
+          <type>const <ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref></type>
+          <declname>t_cost</declname>
+        </param>
+        <param>
+          <type>const <ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref></type>
+          <declname>m_cost</declname>
+        </param>
+        <param>
+          <type>const <ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref></type>
+          <declname>parallelism</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>pwd</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>pwdlen</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>salt</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>saltlen</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>hash</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>hashlen</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>encoded</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>encodedlen</declname>
+        </param>
+        <param>
+          <type><ref refid="argon2_8h_1af51eac9927f7f234943d076166aacf84" kindref="member">argon2_type</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/argon2.c" line="166" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/argon2.c" bodystart="166" bodyend="239"/>
+        <references refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a5a7ef47de184c148345256b7a5234c7f" compoundref="argon2_8h" startline="88">ARGON2_PWD_TOO_LONG</references>
+        <references refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a8517282911ba40c46e4e7718be3b841c" compoundref="argon2_8h" startline="85">ARGON2_OUTPUT_TOO_LONG</references>
+        <references refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a90732265191dbd3ff3fd743cd6cca138" compoundref="argon2_8h" startline="91">ARGON2_SALT_TOO_LONG</references>
+        <references refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a61587718eb9f4006cd9e4d71380fdd85" compoundref="argon2_8h" startline="113">ARGON2_MEMORY_ALLOCATION_ERROR</references>
+        <references refid="struct_argon2___context_1a53bc334f5ca86d2ff639abddb9b08177" compoundref="argon2_8h" startline="170">Argon2_Context::out</references>
+        <references refid="struct_argon2___context_1a11cb0932b2a6fd6fa0e6f5f5148f3ba9" compoundref="argon2_8h" startline="171">Argon2_Context::outlen</references>
+        <references refid="struct_argon2___context_1a0ddb2c07c361a668e1f925f9a2eb6523" compoundref="argon2_8h" startline="173">Argon2_Context::pwd</references>
+        <references refid="core_8h_1a2f0e75e2f3550734177e96d518a16131" compoundref="core_8h" startline="27">CONST_CAST</references>
+        <references refid="struct_argon2___context_1a734b6a24aa48806715a5b81d7dfa98c3" compoundref="argon2_8h" startline="174">Argon2_Context::pwdlen</references>
+        <references refid="struct_argon2___context_1a36bfd9d93195daafa0d7e4afdbbee1dc" compoundref="argon2_8h" startline="176">Argon2_Context::salt</references>
+        <references refid="struct_argon2___context_1a1f151741022a0b25c66c704408522cca" compoundref="argon2_8h" startline="177">Argon2_Context::saltlen</references>
+        <references refid="struct_argon2___context_1a7c35fd8bd296f776a9db6278c9bdacb6" compoundref="argon2_8h" startline="179">Argon2_Context::secret</references>
+        <references refid="struct_argon2___context_1a9530abd766c77aba4e841445e5c70a08" compoundref="argon2_8h" startline="180">Argon2_Context::secretlen</references>
+        <references refid="struct_argon2___context_1a20329e319449d710c4f5bf591690b4c4" compoundref="argon2_8h" startline="182">Argon2_Context::ad</references>
+        <references refid="struct_argon2___context_1a27f944c49530b5a43d754c1a5ec30918" compoundref="argon2_8h" startline="183">Argon2_Context::adlen</references>
+        <references refid="struct_argon2___context_1adffe97f0527779835c511385dfc5d63d" compoundref="argon2_8h" startline="185">Argon2_Context::t_cost</references>
+        <references refid="struct_argon2___context_1a78b6d500cdb208f3b09a10c07716d6ab" compoundref="argon2_8h" startline="186">Argon2_Context::m_cost</references>
+        <references refid="struct_argon2___context_1a8ab1ecf163c039d8db1d9eeb119b6112" compoundref="argon2_8h" startline="187">Argon2_Context::lanes</references>
+        <references refid="struct_argon2___context_1a1efec02e4fd164068c7e77ec5f8b5b01" compoundref="argon2_8h" startline="188">Argon2_Context::threads</references>
+        <references refid="struct_argon2___context_1aee437e28f004ff3e4a0ea15a7526bf63" compoundref="argon2_8h" startline="190">Argon2_Context::allocate_cbk</references>
+        <references refid="struct_argon2___context_1a496ae30b7ad3db25e1a1ef1fbf98ce0b" compoundref="argon2_8h" startline="191">Argon2_Context::free_cbk</references>
+        <references refid="struct_argon2___context_1a17f2c93463a2d9c0f6017b2d843c6d0c" compoundref="argon2_8h" startline="193">Argon2_Context::flags</references>
+        <references refid="argon2_8h_1a9b76119494a1a329506f420f6d47905d" compoundref="argon2_8h" startline="76">ARGON2_DEFAULT_FLAGS</references>
+        <references refid="argon2_8c_1a46052a12b5448759fa3b5de616cb783a" compoundref="argon2_8c" startline="109" endline="163">argon2_core</references>
+        <references refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a19b53dfdd59a4e04632b2de23530b3e8" compoundref="argon2_8h" startline="80">ARGON2_OK</references>
+        <references refid="encoding_8c_1ad48815d59634a275959d0cbaf09756b7" compoundref="encoding_8c" startline="371" endline="434">encode_string</references>
+        <references refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9ac10853a44b1ef7c50935069e674de1eb" compoundref="argon2_8h" startline="128">ARGON2_ENCODING_FAIL</references>
+        <referencedby refid="argon2_8h_1a19ec5f1953d16f093d108038f9775152" compoundref="argon2_8c" startline="241" endline="249">argon2i_hash_encoded</referencedby>
+        <referencedby refid="argon2_8h_1ae8ae3f9f9cc2ddc28864204b3de63ffb" compoundref="argon2_8c" startline="251" endline="258">argon2i_hash_raw</referencedby>
+        <referencedby refid="argon2_8h_1a031b576645a1a8feed09dc68be6cce26" compoundref="argon2_8c" startline="260" endline="268">argon2d_hash_encoded</referencedby>
+        <referencedby refid="argon2_8h_1a61eff8ab40b266a9c54af31014935ebd" compoundref="argon2_8c" startline="270" endline="277">argon2d_hash_raw</referencedby>
+        <referencedby refid="argon2_8h_1a6dbd567c6037a5c55987312158d5bb0a" compoundref="argon2_8c" startline="289" endline="341">argon2_verify</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="argon2_8c_1a19ec5f1953d16f093d108038f9775152" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int argon2i_hash_encoded</definition>
+        <argsstring>(const uint32_t t_cost, const uint32_t m_cost, const uint32_t parallelism, const void *pwd, const size_t pwdlen, const void *salt, const size_t saltlen, const size_t hashlen, char *encoded, const size_t encodedlen)</argsstring>
+        <name>argon2i_hash_encoded</name>
+        <param>
+          <type>const <ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref></type>
+          <declname>t_cost</declname>
+        </param>
+        <param>
+          <type>const <ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref></type>
+          <declname>m_cost</declname>
+        </param>
+        <param>
+          <type>const <ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref></type>
+          <declname>parallelism</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>pwd</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>pwdlen</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>salt</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>saltlen</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>hashlen</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>encoded</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>encodedlen</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Hashes a password with Argon2i, producing an encoded hash <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>t_cost</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of iterations </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>m_cost</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sets memory usage to m_cost kibibytes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>parallelism</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of threads and compute lanes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pwd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to password </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pwdlen</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Password size in bytes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>salt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to salt </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>saltlen</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Salt size in bytes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>hashlen</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Desired length of the hash in bytes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>encoded</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer where to write the encoded hash </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>encodedlen</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Size of the buffer (thus max size of the encoded hash) </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="pre"><para>Different parallelism levels will give different results </para></simplesect>
+<simplesect kind="pre"><para>Returns ARGON2_OK if successful </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/argon2.c" line="241" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/argon2.c" bodystart="241" bodyend="249"/>
+        <references refid="argon2_8c_1a49e50c1bc7f51a1230d1ce7bbcf18f9f" compoundref="argon2_8c" startline="166" endline="239">argon2_hash</references>
+        <references refid="argon2_8h_1a5d5d088fc49f3e133161c81e15fe1695ad879f03535165a16f3040eeae7eedefa" compoundref="argon2_8h" startline="197">Argon2_i</references>
+      </memberdef>
+      <memberdef kind="function" id="argon2_8c_1ae8ae3f9f9cc2ddc28864204b3de63ffb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int argon2i_hash_raw</definition>
+        <argsstring>(const uint32_t t_cost, const uint32_t m_cost, const uint32_t parallelism, const void *pwd, const size_t pwdlen, const void *salt, const size_t saltlen, void *hash, const size_t hashlen)</argsstring>
+        <name>argon2i_hash_raw</name>
+        <param>
+          <type>const <ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref></type>
+          <declname>t_cost</declname>
+        </param>
+        <param>
+          <type>const <ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref></type>
+          <declname>m_cost</declname>
+        </param>
+        <param>
+          <type>const <ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref></type>
+          <declname>parallelism</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>pwd</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>pwdlen</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>salt</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>saltlen</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>hash</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>hashlen</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Hashes a password with Argon2i, producing a raw hash <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>t_cost</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of iterations </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>m_cost</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Sets memory usage to m_cost kibibytes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>parallelism</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of threads and compute lanes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pwd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to password </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pwdlen</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Password size in bytes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>salt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to salt </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>saltlen</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Salt size in bytes </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>hash</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Buffer where to write the raw hash </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>hashlen</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Desired length of the hash in bytes </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="pre"><para>Different parallelism levels will give different results </para></simplesect>
+<simplesect kind="pre"><para>Returns ARGON2_OK if successful </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/argon2.c" line="251" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/argon2.c" bodystart="251" bodyend="258"/>
+        <references refid="argon2_8c_1a49e50c1bc7f51a1230d1ce7bbcf18f9f" compoundref="argon2_8c" startline="166" endline="239">argon2_hash</references>
+        <references refid="argon2_8h_1a5d5d088fc49f3e133161c81e15fe1695ad879f03535165a16f3040eeae7eedefa" compoundref="argon2_8h" startline="197">Argon2_i</references>
+      </memberdef>
+      <memberdef kind="function" id="argon2_8c_1a031b576645a1a8feed09dc68be6cce26" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int argon2d_hash_encoded</definition>
+        <argsstring>(const uint32_t t_cost, const uint32_t m_cost, const uint32_t parallelism, const void *pwd, const size_t pwdlen, const void *salt, const size_t saltlen, const size_t hashlen, char *encoded, const size_t encodedlen)</argsstring>
+        <name>argon2d_hash_encoded</name>
+        <param>
+          <type>const <ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref></type>
+          <declname>t_cost</declname>
+        </param>
+        <param>
+          <type>const <ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref></type>
+          <declname>m_cost</declname>
+        </param>
+        <param>
+          <type>const <ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref></type>
+          <declname>parallelism</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>pwd</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>pwdlen</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>salt</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>saltlen</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>hashlen</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>encoded</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>encodedlen</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/argon2.c" line="260" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/argon2.c" bodystart="260" bodyend="268"/>
+        <references refid="argon2_8c_1a49e50c1bc7f51a1230d1ce7bbcf18f9f" compoundref="argon2_8c" startline="166" endline="239">argon2_hash</references>
+        <references refid="argon2_8h_1a5d5d088fc49f3e133161c81e15fe1695a48ce300350099ad17bb3d5fe7da1c1cc" compoundref="argon2_8h" startline="197">Argon2_d</references>
+      </memberdef>
+      <memberdef kind="function" id="argon2_8c_1a61eff8ab40b266a9c54af31014935ebd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int argon2d_hash_raw</definition>
+        <argsstring>(const uint32_t t_cost, const uint32_t m_cost, const uint32_t parallelism, const void *pwd, const size_t pwdlen, const void *salt, const size_t saltlen, void *hash, const size_t hashlen)</argsstring>
+        <name>argon2d_hash_raw</name>
+        <param>
+          <type>const <ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref></type>
+          <declname>t_cost</declname>
+        </param>
+        <param>
+          <type>const <ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref></type>
+          <declname>m_cost</declname>
+        </param>
+        <param>
+          <type>const <ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref></type>
+          <declname>parallelism</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>pwd</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>pwdlen</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>salt</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>saltlen</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>hash</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>hashlen</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/argon2.c" line="270" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/argon2.c" bodystart="270" bodyend="277"/>
+        <references refid="argon2_8c_1a49e50c1bc7f51a1230d1ce7bbcf18f9f" compoundref="argon2_8c" startline="166" endline="239">argon2_hash</references>
+        <references refid="argon2_8h_1a5d5d088fc49f3e133161c81e15fe1695a48ce300350099ad17bb3d5fe7da1c1cc" compoundref="argon2_8h" startline="197">Argon2_d</references>
+      </memberdef>
+      <memberdef kind="function" id="argon2_8c_1a4338e77b38cce124bd3a94d49d995b65" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>static int argon2_compare</definition>
+        <argsstring>(const uint8_t *b1, const uint8_t *b2, size_t len)</argsstring>
+        <name>argon2_compare</name>
+        <param>
+          <type>const <ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref> *</type>
+          <declname>b1</declname>
+        </param>
+        <param>
+          <type>const <ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref> *</type>
+          <declname>b2</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>len</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/argon2.c" line="279" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/argon2.c" bodystart="279" bodyend="287"/>
+      </memberdef>
+      <memberdef kind="function" id="argon2_8c_1a6dbd567c6037a5c55987312158d5bb0a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int argon2_verify</definition>
+        <argsstring>(const char *encoded, const void *pwd, const size_t pwdlen, argon2_type type)</argsstring>
+        <name>argon2_verify</name>
+        <param>
+          <type>const char *</type>
+          <declname>encoded</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>pwd</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>pwdlen</declname>
+        </param>
+        <param>
+          <type><ref refid="argon2_8h_1af51eac9927f7f234943d076166aacf84" kindref="member">argon2_type</ref></type>
+          <declname>type</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/argon2.c" line="289" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/argon2.c" bodystart="289" bodyend="341"/>
+        <references refid="struct_argon2___context_1a27f944c49530b5a43d754c1a5ec30918" compoundref="argon2_8h" startline="183">Argon2_Context::adlen</references>
+        <references refid="struct_argon2___context_1a1f151741022a0b25c66c704408522cca" compoundref="argon2_8h" startline="177">Argon2_Context::saltlen</references>
+        <references refid="struct_argon2___context_1a11cb0932b2a6fd6fa0e6f5f5148f3ba9" compoundref="argon2_8h" startline="171">Argon2_Context::outlen</references>
+        <references refid="struct_argon2___context_1a20329e319449d710c4f5bf591690b4c4" compoundref="argon2_8h" startline="182">Argon2_Context::ad</references>
+        <references refid="struct_argon2___context_1a36bfd9d93195daafa0d7e4afdbbee1dc" compoundref="argon2_8h" startline="176">Argon2_Context::salt</references>
+        <references refid="struct_argon2___context_1a53bc334f5ca86d2ff639abddb9b08177" compoundref="argon2_8h" startline="170">Argon2_Context::out</references>
+        <references refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a61587718eb9f4006cd9e4d71380fdd85" compoundref="argon2_8h" startline="113">ARGON2_MEMORY_ALLOCATION_ERROR</references>
+        <references refid="encoding_8c_1ada8ceb318c3429ae16f8fe41ee7eb61b" compoundref="encoding_8c" startline="249" endline="357">decode_string</references>
+        <references refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9ae0db55bad61772230d71f3605e896094" compoundref="argon2_8h" startline="130">ARGON2_DECODING_FAIL</references>
+        <references refid="argon2_8c_1a49e50c1bc7f51a1230d1ce7bbcf18f9f" compoundref="argon2_8c" startline="166" endline="239">argon2_hash</references>
+        <references refid="struct_argon2___context_1adffe97f0527779835c511385dfc5d63d" compoundref="argon2_8h" startline="185">Argon2_Context::t_cost</references>
+        <references refid="struct_argon2___context_1a78b6d500cdb208f3b09a10c07716d6ab" compoundref="argon2_8h" startline="186">Argon2_Context::m_cost</references>
+        <references refid="struct_argon2___context_1a1efec02e4fd164068c7e77ec5f8b5b01" compoundref="argon2_8h" startline="188">Argon2_Context::threads</references>
+        <references refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a19b53dfdd59a4e04632b2de23530b3e8" compoundref="argon2_8h" startline="80">ARGON2_OK</references>
+        <referencedby refid="argon2_8h_1aaea586048f3c25a2f03449b5ead4b561" compoundref="argon2_8c" startline="343" endline="346">argon2i_verify</referencedby>
+        <referencedby refid="argon2_8h_1ae735d68dccc28d839cbd7043283c065a" compoundref="argon2_8c" startline="348" endline="351">argon2d_verify</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="argon2_8c_1aaea586048f3c25a2f03449b5ead4b561" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int argon2i_verify</definition>
+        <argsstring>(const char *encoded, const void *pwd, const size_t pwdlen)</argsstring>
+        <name>argon2i_verify</name>
+        <param>
+          <type>const char *</type>
+          <declname>encoded</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>pwd</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>pwdlen</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Verifies a password against an encoded string <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>encoded</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>String encoding parameters, salt, hash </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pwd</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to password </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="pre"><para>Returns ARGON2_OK if successful </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/argon2.c" line="343" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/argon2.c" bodystart="343" bodyend="346"/>
+        <references refid="argon2_8c_1a6dbd567c6037a5c55987312158d5bb0a" compoundref="argon2_8c" startline="289" endline="341">argon2_verify</references>
+        <references refid="argon2_8h_1a5d5d088fc49f3e133161c81e15fe1695ad879f03535165a16f3040eeae7eedefa" compoundref="argon2_8h" startline="197">Argon2_i</references>
+      </memberdef>
+      <memberdef kind="function" id="argon2_8c_1ae735d68dccc28d839cbd7043283c065a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int argon2d_verify</definition>
+        <argsstring>(const char *encoded, const void *pwd, const size_t pwdlen)</argsstring>
+        <name>argon2d_verify</name>
+        <param>
+          <type>const char *</type>
+          <declname>encoded</declname>
+        </param>
+        <param>
+          <type>const void *</type>
+          <declname>pwd</declname>
+        </param>
+        <param>
+          <type>const size_t</type>
+          <declname>pwdlen</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/argon2.c" line="348" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/argon2.c" bodystart="348" bodyend="351"/>
+        <references refid="argon2_8c_1a6dbd567c6037a5c55987312158d5bb0a" compoundref="argon2_8c" startline="289" endline="341">argon2_verify</references>
+        <references refid="argon2_8h_1a5d5d088fc49f3e133161c81e15fe1695a48ce300350099ad17bb3d5fe7da1c1cc" compoundref="argon2_8h" startline="197">Argon2_d</references>
+      </memberdef>
+      <memberdef kind="function" id="argon2_8c_1ac9984f1d62fb3cda555e8555dbfe3129" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int argon2d</definition>
+        <argsstring>(argon2_context *context)</argsstring>
+        <name>argon2d</name>
+        <param>
+          <type><ref refid="argon2_8h_1a43c74dc5ed515632feee9b2e1ff3e09f" kindref="member">argon2_context</ref> *</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/argon2.c" line="353" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/argon2.c" bodystart="353" bodyend="353"/>
+        <references refid="argon2_8c_1a46052a12b5448759fa3b5de616cb783a" compoundref="argon2_8c" startline="109" endline="163">argon2_core</references>
+        <references refid="argon2_8h_1a5d5d088fc49f3e133161c81e15fe1695a48ce300350099ad17bb3d5fe7da1c1cc" compoundref="argon2_8h" startline="197">Argon2_d</references>
+      </memberdef>
+      <memberdef kind="function" id="argon2_8c_1ac709795078c9fb5384fb20d54c5b957d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int argon2i</definition>
+        <argsstring>(argon2_context *context)</argsstring>
+        <name>argon2i</name>
+        <param>
+          <type><ref refid="argon2_8h_1a43c74dc5ed515632feee9b2e1ff3e09f" kindref="member">argon2_context</ref> *</type>
+          <declname>context</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/argon2.c" line="355" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/argon2.c" bodystart="355" bodyend="355"/>
+        <references refid="argon2_8c_1a46052a12b5448759fa3b5de616cb783a" compoundref="argon2_8c" startline="109" endline="163">argon2_core</references>
+        <references refid="argon2_8h_1a5d5d088fc49f3e133161c81e15fe1695ad879f03535165a16f3040eeae7eedefa" compoundref="argon2_8h" startline="197">Argon2_i</references>
+      </memberdef>
+      <memberdef kind="function" id="argon2_8c_1a8692a5e365ca1757f8234c0cf9fd87b4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int verify_d</definition>
+        <argsstring>(argon2_context *context, const char *hash)</argsstring>
+        <name>verify_d</name>
+        <param>
+          <type><ref refid="argon2_8h_1a43c74dc5ed515632feee9b2e1ff3e09f" kindref="member">argon2_context</ref> *</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>hash</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/argon2.c" line="357" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/argon2.c" bodystart="357" bodyend="370"/>
+        <references refid="struct_argon2___context_1a11cb0932b2a6fd6fa0e6f5f5148f3ba9" compoundref="argon2_8h" startline="171">Argon2_Context::outlen</references>
+        <references refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a71a75872127e4454d65d975f54b0350e" compoundref="argon2_8h" startline="121">ARGON2_OUT_PTR_MISMATCH</references>
+        <references refid="argon2_8c_1a46052a12b5448759fa3b5de616cb783a" compoundref="argon2_8c" startline="109" endline="163">argon2_core</references>
+        <references refid="argon2_8h_1a5d5d088fc49f3e133161c81e15fe1695a48ce300350099ad17bb3d5fe7da1c1cc" compoundref="argon2_8h" startline="197">Argon2_d</references>
+        <references refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a19b53dfdd59a4e04632b2de23530b3e8" compoundref="argon2_8h" startline="80">ARGON2_OK</references>
+        <references refid="struct_argon2___context_1a53bc334f5ca86d2ff639abddb9b08177" compoundref="argon2_8h" startline="170">Argon2_Context::out</references>
+      </memberdef>
+      <memberdef kind="function" id="argon2_8c_1ad418420c81b8a399a23fa2cdf39a926b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int verify_i</definition>
+        <argsstring>(argon2_context *context, const char *hash)</argsstring>
+        <name>verify_i</name>
+        <param>
+          <type><ref refid="argon2_8h_1a43c74dc5ed515632feee9b2e1ff3e09f" kindref="member">argon2_context</ref> *</type>
+          <declname>context</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>hash</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/argon2.c" line="372" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/argon2.c" bodystart="372" bodyend="385"/>
+        <references refid="struct_argon2___context_1a11cb0932b2a6fd6fa0e6f5f5148f3ba9" compoundref="argon2_8h" startline="171">Argon2_Context::outlen</references>
+        <references refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a71a75872127e4454d65d975f54b0350e" compoundref="argon2_8h" startline="121">ARGON2_OUT_PTR_MISMATCH</references>
+        <references refid="argon2_8c_1a46052a12b5448759fa3b5de616cb783a" compoundref="argon2_8c" startline="109" endline="163">argon2_core</references>
+        <references refid="argon2_8h_1a5d5d088fc49f3e133161c81e15fe1695ad879f03535165a16f3040eeae7eedefa" compoundref="argon2_8h" startline="197">Argon2_i</references>
+        <references refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a19b53dfdd59a4e04632b2de23530b3e8" compoundref="argon2_8h" startline="80">ARGON2_OK</references>
+        <references refid="struct_argon2___context_1a53bc334f5ca86d2ff639abddb9b08177" compoundref="argon2_8h" startline="170">Argon2_Context::out</references>
+      </memberdef>
+      <memberdef kind="function" id="argon2_8c_1aecedea424e516e50709e8a7b08ece644" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const char *</type>
+        <definition>const char* error_message</definition>
+        <argsstring>(int error_code)</argsstring>
+        <name>error_message</name>
+        <param>
+          <type>int</type>
+          <declname>error_code</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypto/argon2/argon2.c" line="388" column="1" bodyfile="/home/dev/ds-160209/src/crypto/argon2/argon2.c" bodystart="388" bodyend="401"/>
+        <references refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a7503ab1859fde45d0df2915060a40ea0" compoundref="argon2_8h" startline="134">ARGON2_ERROR_CODES_LENGTH</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Argon2<sp/>source<sp/>code<sp/>package</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>Written<sp/>by<sp/>Daniel<sp/>Dinu<sp/>and<sp/>Dmitry<sp/>Khovratovich,<sp/>2015</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="6"><highlight class="comment"><sp/>*<sp/>This<sp/>work<sp/>is<sp/>licensed<sp/>under<sp/>a<sp/>Creative<sp/>Commons<sp/>CC0<sp/>1.0<sp/>License/Waiver.</highlight></codeline>
+<codeline lineno="7"><highlight class="comment"><sp/>*</highlight></codeline>
+<codeline lineno="8"><highlight class="comment"><sp/>*<sp/>You<sp/>should<sp/>have<sp/>received<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>CC0<sp/>Public<sp/>Domain<sp/>Dedication<sp/>along</highlight></codeline>
+<codeline lineno="9"><highlight class="comment"><sp/>*<sp/>with</highlight></codeline>
+<codeline lineno="10"><highlight class="comment"><sp/>*<sp/>this<sp/>software.<sp/>If<sp/>not,<sp/>see</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"><sp/>*<sp/>&lt;http://creativecommons.org/publicdomain/zero/1.0/&gt;.</highlight></codeline>
+<codeline lineno="12"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdlib.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="argon2_8h" kindref="compound">argon2.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="encoding_8h" kindref="compound">encoding.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="core_8h" kindref="compound">core.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>Error<sp/>messages<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*Argon2_ErrorMessage[]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*{ARGON2_OK,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;OK&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="26"><highlight class="comment"></highlight></codeline>
+<codeline lineno="27"><highlight class="comment"><sp/><sp/><sp/><sp/>{ARGON2_OUTPUT_PTR_NULL,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Output<sp/>pointer<sp/>is<sp/>NULL&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="29"><highlight class="comment"></highlight></codeline>
+<codeline lineno="30"><highlight class="comment">{ARGON2_OUTPUT_TOO_SHORT,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Output<sp/>is<sp/>too<sp/>short&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="32"><highlight class="comment">{ARGON2_OUTPUT_TOO_LONG,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Output<sp/>is<sp/>too<sp/>long&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="34"><highlight class="comment"></highlight></codeline>
+<codeline lineno="35"><highlight class="comment">{ARGON2_PWD_TOO_SHORT,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Password<sp/>is<sp/>too<sp/>short&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="37"><highlight class="comment">{ARGON2_PWD_TOO_LONG,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Password<sp/>is<sp/>too<sp/>long&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"></highlight></codeline>
+<codeline lineno="40"><highlight class="comment">{ARGON2_SALT_TOO_SHORT,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Salt<sp/>is<sp/>too<sp/>short&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="42"><highlight class="comment">{ARGON2_SALT_TOO_LONG,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Salt<sp/>is<sp/>too<sp/>long&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="44"><highlight class="comment"></highlight></codeline>
+<codeline lineno="45"><highlight class="comment">{ARGON2_AD_TOO_SHORT,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Associated<sp/>data<sp/>is<sp/>too<sp/>short&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="47"><highlight class="comment">{ARGON2_AD_TOO_LONG,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Associated<sp/>date<sp/>is<sp/>too<sp/>long&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="49"><highlight class="comment"></highlight></codeline>
+<codeline lineno="50"><highlight class="comment">{ARGON2_SECRET_TOO_SHORT,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Secret<sp/>is<sp/>too<sp/>short&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="52"><highlight class="comment">{ARGON2_SECRET_TOO_LONG,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Secret<sp/>is<sp/>too<sp/>long&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="54"><highlight class="comment"></highlight></codeline>
+<codeline lineno="55"><highlight class="comment">{ARGON2_TIME_TOO_SMALL,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Time<sp/>cost<sp/>is<sp/>too<sp/>small&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="57"><highlight class="comment">{ARGON2_TIME_TOO_LARGE,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Time<sp/>cost<sp/>is<sp/>too<sp/>large&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"></highlight></codeline>
+<codeline lineno="60"><highlight class="comment">{ARGON2_MEMORY_TOO_LITTLE,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Memory<sp/>cost<sp/>is<sp/>too<sp/>small&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="62"><highlight class="comment">{ARGON2_MEMORY_TOO_MUCH,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Memory<sp/>cost<sp/>is<sp/>too<sp/>large&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="64"><highlight class="comment"></highlight></codeline>
+<codeline lineno="65"><highlight class="comment">{ARGON2_LANES_TOO_FEW,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Too<sp/>few<sp/>lanes&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="67"><highlight class="comment">{ARGON2_LANES_TOO_MANY,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Too<sp/>many<sp/>lanes&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"></highlight></codeline>
+<codeline lineno="70"><highlight class="comment">{ARGON2_PWD_PTR_MISMATCH,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Password<sp/>pointer<sp/>is<sp/>NULL,<sp/>but<sp/>password<sp/>length<sp/>is<sp/>not<sp/>0&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="72"><highlight class="comment">{ARGON2_SALT_PTR_MISMATCH,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Salt<sp/>pointer<sp/>is<sp/>NULL,<sp/>but<sp/>salt<sp/>length<sp/>is<sp/>not<sp/>0&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="74"><highlight class="comment">{ARGON2_SECRET_PTR_MISMATCH,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Secret<sp/>pointer<sp/>is<sp/>NULL,<sp/>but<sp/>secret<sp/>length<sp/>is<sp/>not<sp/>0&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="76"><highlight class="comment">{ARGON2_AD_PTR_MISMATCH,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Associated<sp/>data<sp/>pointer<sp/>is<sp/>NULL,<sp/>but<sp/>ad<sp/>length<sp/>is<sp/>not<sp/>0&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="78"><highlight class="comment"></highlight></codeline>
+<codeline lineno="79"><highlight class="comment">{ARGON2_MEMORY_ALLOCATION_ERROR,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Memory<sp/>allocation<sp/>error&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="81"><highlight class="comment"></highlight></codeline>
+<codeline lineno="82"><highlight class="comment">{ARGON2_FREE_MEMORY_CBK_NULL,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;The<sp/>free<sp/>memory<sp/>callback<sp/>is<sp/>NULL&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="84"><highlight class="comment">{ARGON2_ALLOCATE_MEMORY_CBK_NULL,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;The<sp/>allocate<sp/>memory<sp/>callback<sp/>is<sp/>NULL&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="86"><highlight class="comment"></highlight></codeline>
+<codeline lineno="87"><highlight class="comment">{ARGON2_INCORRECT_PARAMETER,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Argon2_Context<sp/>context<sp/>is<sp/>NULL&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="89"><highlight class="comment">{ARGON2_INCORRECT_TYPE,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;There<sp/>is<sp/>no<sp/>such<sp/>version<sp/>of<sp/>Argon2&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="91"><highlight class="comment"></highlight></codeline>
+<codeline lineno="92"><highlight class="comment">{ARGON2_OUT_PTR_MISMATCH,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Output<sp/>pointer<sp/>mismatch&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="94"><highlight class="comment"></highlight></codeline>
+<codeline lineno="95"><highlight class="comment">{ARGON2_THREADS_TOO_FEW,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Not<sp/>enough<sp/>threads&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="97"><highlight class="comment">{ARGON2_THREADS_TOO_MANY,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Too<sp/>many<sp/>threads&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="99"><highlight class="comment">{ARGON2_MISSING_ARGS,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Missing<sp/>arguments&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="101"><highlight class="comment">{ARGON2_ENCODING_FAIL,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Encoding<sp/>failed&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="103"><highlight class="comment">{ARGON2_DECODING_FAIL,<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Decoding<sp/>failed&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*},</highlight></codeline>
+<codeline lineno="105"><highlight class="comment">{ARGON2_THREAD_FAIL<sp/>*/</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Threading<sp/>failure&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="comment">/*},*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="argon2_8h_1a46052a12b5448759fa3b5de616cb783a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="argon2_8c_1a46052a12b5448759fa3b5de616cb783a" kindref="member">argon2_core</ref>(<ref refid="struct_argon2___context" kindref="compound">argon2_context</ref><sp/>*context,<sp/><ref refid="argon2_8h_1af51eac9927f7f234943d076166aacf84" kindref="member">argon2_type</ref><sp/>type)<sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>1.<sp/>Validate<sp/>all<sp/>inputs<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>result<sp/>=<sp/><ref refid="core_8c_1afff47dd1eae5498564ec99545dedece8" kindref="member">validate_inputs</ref>(context);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>memory_blocks,<sp/>segment_length;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_argon2__instance__t" kindref="compound">argon2_instance_t</ref><sp/>instance;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a19b53dfdd59a4e04632b2de23530b3e8" kindref="member">ARGON2_OK</ref><sp/>!=<sp/>result)<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="argon2_8h_1a5d5d088fc49f3e133161c81e15fe1695a48ce300350099ad17bb3d5fe7da1c1cc" kindref="member">Argon2_d</ref><sp/>!=<sp/>type<sp/>&amp;&amp;<sp/><ref refid="argon2_8h_1a5d5d088fc49f3e133161c81e15fe1695ad879f03535165a16f3040eeae7eedefa" kindref="member">Argon2_i</ref><sp/>!=<sp/>type)<sp/>{</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a14a344862e5b0186043f05f835622c45" kindref="member">ARGON2_INCORRECT_TYPE</ref>;</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>2.<sp/>Align<sp/>memory<sp/>size<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Minimum<sp/>memory_blocks<sp/>=<sp/>8L<sp/>blocks,<sp/>where<sp/>L<sp/>is<sp/>the<sp/>number<sp/>of<sp/>lanes<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>memory_blocks<sp/>=<sp/>context-&gt;<ref refid="struct_argon2___context_1a78b6d500cdb208f3b09a10c07716d6ab" kindref="member">m_cost</ref>;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(memory_blocks<sp/>&lt;<sp/>2<sp/>*<sp/>ARGON2_SYNC_POINTS<sp/>*<sp/>context-&gt;lanes)<sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memory_blocks<sp/>=<sp/>2<sp/>*<sp/><ref refid="argon2_8h_1a0a0791457b23d7c7440b030deef959ba" kindref="member">ARGON2_SYNC_POINTS</ref><sp/>*<sp/>context-&gt;<ref refid="struct_argon2___context_1a8ab1ecf163c039d8db1d9eeb119b6112" kindref="member">lanes</ref>;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>segment_length<sp/>=<sp/>memory_blocks<sp/>/<sp/>(context-&gt;<ref refid="struct_argon2___context_1a8ab1ecf163c039d8db1d9eeb119b6112" kindref="member">lanes</ref><sp/>*<sp/><ref refid="argon2_8h_1a0a0791457b23d7c7440b030deef959ba" kindref="member">ARGON2_SYNC_POINTS</ref>);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Ensure<sp/>that<sp/>all<sp/>segments<sp/>have<sp/>equal<sp/>length<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>memory_blocks<sp/>=<sp/>segment_length<sp/>*<sp/>(context-&gt;<ref refid="struct_argon2___context_1a8ab1ecf163c039d8db1d9eeb119b6112" kindref="member">lanes</ref><sp/>*<sp/><ref refid="argon2_8h_1a0a0791457b23d7c7440b030deef959ba" kindref="member">ARGON2_SYNC_POINTS</ref>);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>instance.<ref refid="struct_argon2__instance__t_1a7feaf5341041e1c7aca88eb093ad67a3" kindref="member">memory</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>instance.<ref refid="struct_argon2__instance__t_1a2783db68ff7f7801616f7c78e319ffd5" kindref="member">passes</ref><sp/>=<sp/>context-&gt;<ref refid="struct_argon2___context_1adffe97f0527779835c511385dfc5d63d" kindref="member">t_cost</ref>;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>instance.<ref refid="struct_argon2__instance__t_1a40e32466250c3eaa25458b89050f1d0d" kindref="member">memory_blocks</ref><sp/>=<sp/>memory_blocks;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>instance.<ref refid="struct_argon2__instance__t_1a027cbd7a67c433446811f3c0f00099be" kindref="member">segment_length</ref><sp/>=<sp/>segment_length;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>instance.<ref refid="struct_argon2__instance__t_1a91274f0e1d85a39d29d7ab90a44e4c79" kindref="member">lane_length</ref><sp/>=<sp/>segment_length<sp/>*<sp/><ref refid="argon2_8h_1a0a0791457b23d7c7440b030deef959ba" kindref="member">ARGON2_SYNC_POINTS</ref>;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/>instance.<ref refid="struct_argon2__instance__t_1ad2f436030b823c86269c589d6a923120" kindref="member">lanes</ref><sp/>=<sp/>context-&gt;<ref refid="struct_argon2___context_1a8ab1ecf163c039d8db1d9eeb119b6112" kindref="member">lanes</ref>;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/>instance.<ref refid="struct_argon2__instance__t_1ae44c8933040075bc8b4fc3d15b170a2f" kindref="member">threads</ref><sp/>=<sp/>context-&gt;<ref refid="struct_argon2___context_1a1efec02e4fd164068c7e77ec5f8b5b01" kindref="member">threads</ref>;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>instance.<ref refid="struct_argon2__instance__t_1a5632fb070b91ef79ed3a7f915b032d90" kindref="member">type</ref><sp/>=<sp/>type;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>3.<sp/>Initialization:<sp/>Hashing<sp/>inputs,<sp/>allocating<sp/>memory,<sp/>filling<sp/>first</highlight></codeline>
+<codeline lineno="145"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>blocks</highlight></codeline>
+<codeline lineno="146"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>result<sp/>=<sp/><ref refid="core_8c_1ac4f3546c9e156e161179b7cb1b6565e5" kindref="member">initialize</ref>(&amp;instance,<sp/>context);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a19b53dfdd59a4e04632b2de23530b3e8" kindref="member">ARGON2_OK</ref><sp/>!=<sp/>result)<sp/>{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>4.<sp/>Filling<sp/>memory<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>result<sp/>=<sp/><ref refid="core_8c_1afc8e1540c9738230c2a993c9efcf2620" kindref="member">fill_memory_blocks</ref>(&amp;instance);</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a19b53dfdd59a4e04632b2de23530b3e8" kindref="member">ARGON2_OK</ref><sp/>!=<sp/>result)<sp/>{</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>5.<sp/>Finalization<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="core_8c_1aafd756bf3475038e2eada05bcaf31b18" kindref="member">finalize</ref>(context,<sp/>&amp;instance);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a19b53dfdd59a4e04632b2de23530b3e8" kindref="member">ARGON2_OK</ref>;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166" refid="argon2_8h_1a49e50c1bc7f51a1230d1ce7bbcf18f9f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="argon2_8c_1a49e50c1bc7f51a1230d1ce7bbcf18f9f" kindref="member">argon2_hash</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>t_cost,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>m_cost,</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>parallelism,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*pwd,</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>pwdlen,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*salt,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>saltlen,</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<ref refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" kindref="member">hash</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>hashlen,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*encoded,</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>encodedlen,<sp/><ref refid="argon2_8h_1af51eac9927f7f234943d076166aacf84" kindref="member">argon2_type</ref><sp/>type)<sp/>{</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_argon2___context" kindref="compound">argon2_context</ref><sp/>context;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref><sp/>*out;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Detect<sp/>and<sp/>reject<sp/>overflowing<sp/>sizes<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>TODO:<sp/>This<sp/>should<sp/>probably<sp/>be<sp/>fixed<sp/>in<sp/>the<sp/>function<sp/>signature<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(pwdlen<sp/>&gt;<sp/>UINT32_MAX)<sp/>{</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a5a7ef47de184c148345256b7a5234c7f" kindref="member">ARGON2_PWD_TOO_LONG</ref>;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hashlen<sp/>&gt;<sp/>UINT32_MAX)<sp/>{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a8517282911ba40c46e4e7718be3b841c" kindref="member">ARGON2_OUTPUT_TOO_LONG</ref>;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(saltlen<sp/>&gt;<sp/>UINT32_MAX)<sp/>{</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a90732265191dbd3ff3fd743cd6cca138" kindref="member">ARGON2_SALT_TOO_LONG</ref>;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>out<sp/>=<sp/>malloc(hashlen);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!out)<sp/>{</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a61587718eb9f4006cd9e4d71380fdd85" kindref="member">ARGON2_MEMORY_ALLOCATION_ERROR</ref>;</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a53bc334f5ca86d2ff639abddb9b08177" kindref="member">out</ref><sp/>=<sp/>(<ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref><sp/>*)out;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a11cb0932b2a6fd6fa0e6f5f5148f3ba9" kindref="member">outlen</ref><sp/>=<sp/>(<ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref>)hashlen;</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a0ddb2c07c361a668e1f925f9a2eb6523" kindref="member">pwd</ref><sp/>=<sp/><ref refid="core_8h_1a2f0e75e2f3550734177e96d518a16131" kindref="member">CONST_CAST</ref>(<ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref><sp/>*)pwd;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a734b6a24aa48806715a5b81d7dfa98c3" kindref="member">pwdlen</ref><sp/>=<sp/>(<ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref>)pwdlen;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a36bfd9d93195daafa0d7e4afdbbee1dc" kindref="member">salt</ref><sp/>=<sp/><ref refid="core_8h_1a2f0e75e2f3550734177e96d518a16131" kindref="member">CONST_CAST</ref>(<ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref><sp/>*)salt;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a1f151741022a0b25c66c704408522cca" kindref="member">saltlen</ref><sp/>=<sp/>(<ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref>)saltlen;</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a7c35fd8bd296f776a9db6278c9bdacb6" kindref="member">secret</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a9530abd766c77aba4e841445e5c70a08" kindref="member">secretlen</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a20329e319449d710c4f5bf591690b4c4" kindref="member">ad</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a27f944c49530b5a43d754c1a5ec30918" kindref="member">adlen</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1adffe97f0527779835c511385dfc5d63d" kindref="member">t_cost</ref><sp/>=<sp/>t_cost;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a78b6d500cdb208f3b09a10c07716d6ab" kindref="member">m_cost</ref><sp/>=<sp/>m_cost;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a8ab1ecf163c039d8db1d9eeb119b6112" kindref="member">lanes</ref><sp/>=<sp/>parallelism;</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a1efec02e4fd164068c7e77ec5f8b5b01" kindref="member">threads</ref><sp/>=<sp/>parallelism;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1aee437e28f004ff3e4a0ea15a7526bf63" kindref="member">allocate_cbk</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a496ae30b7ad3db25e1a1ef1fbf98ce0b" kindref="member">free_cbk</ref><sp/>=<sp/>NULL;</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/>context.<ref refid="struct_argon2___context_1a17f2c93463a2d9c0f6017b2d843c6d0c" kindref="member">flags</ref><sp/>=<sp/><ref refid="argon2_8h_1a9b76119494a1a329506f420f6d47905d" kindref="member">ARGON2_DEFAULT_FLAGS</ref>;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/>result<sp/>=<sp/><ref refid="argon2_8c_1a46052a12b5448759fa3b5de616cb783a" kindref="member">argon2_core</ref>(&amp;context,<sp/>type);</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(result<sp/>!=<sp/><ref refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a19b53dfdd59a4e04632b2de23530b3e8" kindref="member">ARGON2_OK</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memset(out,<sp/>0x00,<sp/>hashlen);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(out);</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>if<sp/>raw<sp/>hash<sp/>requested,<sp/>write<sp/>it<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hash)<sp/>{</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(hash,<sp/>out,<sp/>hashlen);</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>if<sp/>encoding<sp/>requested,<sp/>write<sp/>it<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(encoded<sp/>&amp;&amp;<sp/>encodedlen)<sp/>{</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="encoding_8c_1ad48815d59634a275959d0cbaf09756b7" kindref="member">encode_string</ref>(encoded,<sp/>encodedlen,<sp/>&amp;context,<sp/>type))<sp/>{</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memset(out,<sp/>0x00,<sp/>hashlen);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memset(encoded,<sp/>0x00,<sp/>encodedlen);</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(out);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9ac10853a44b1ef7c50935069e674de1eb" kindref="member">ARGON2_ENCODING_FAIL</ref>;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="235"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/>free(out);</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a19b53dfdd59a4e04632b2de23530b3e8" kindref="member">ARGON2_OK</ref>;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"></highlight></codeline>
+<codeline lineno="241" refid="argon2_8h_1a19ec5f1953d16f093d108038f9775152" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="argon2_8c_1a19ec5f1953d16f093d108038f9775152" kindref="member">argon2i_hash_encoded</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>t_cost,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>m_cost,</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>parallelism,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*pwd,</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>pwdlen,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*salt,</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>saltlen,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>hashlen,</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*encoded,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>encodedlen)<sp/>{</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="argon2_8c_1a49e50c1bc7f51a1230d1ce7bbcf18f9f" kindref="member">argon2_hash</ref>(t_cost,<sp/>m_cost,<sp/>parallelism,<sp/>pwd,<sp/>pwdlen,<sp/>salt,<sp/>saltlen,</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NULL,<sp/>hashlen,<sp/>encoded,<sp/>encodedlen,<sp/><ref refid="argon2_8h_1a5d5d088fc49f3e133161c81e15fe1695ad879f03535165a16f3040eeae7eedefa" kindref="member">Argon2_i</ref>);</highlight></codeline>
+<codeline lineno="249"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="251" refid="argon2_8h_1ae8ae3f9f9cc2ddc28864204b3de63ffb" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="argon2_8c_1ae8ae3f9f9cc2ddc28864204b3de63ffb" kindref="member">argon2i_hash_raw</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>t_cost,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>m_cost,</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>parallelism,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*pwd,</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>pwdlen,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*salt,</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>saltlen,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<ref refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" kindref="member">hash</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>hashlen)<sp/>{</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="argon2_8c_1a49e50c1bc7f51a1230d1ce7bbcf18f9f" kindref="member">argon2_hash</ref>(t_cost,<sp/>m_cost,<sp/>parallelism,<sp/>pwd,<sp/>pwdlen,<sp/>salt,<sp/>saltlen,</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hash,<sp/>hashlen,<sp/>NULL,<sp/>0,<sp/><ref refid="argon2_8h_1a5d5d088fc49f3e133161c81e15fe1695ad879f03535165a16f3040eeae7eedefa" kindref="member">Argon2_i</ref>);</highlight></codeline>
+<codeline lineno="258"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260" refid="argon2_8h_1a031b576645a1a8feed09dc68be6cce26" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="argon2_8c_1a031b576645a1a8feed09dc68be6cce26" kindref="member">argon2d_hash_encoded</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>t_cost,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>m_cost,</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>parallelism,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*pwd,</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>pwdlen,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*salt,</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>saltlen,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>hashlen,</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*encoded,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>encodedlen)<sp/>{</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="argon2_8c_1a49e50c1bc7f51a1230d1ce7bbcf18f9f" kindref="member">argon2_hash</ref>(t_cost,<sp/>m_cost,<sp/>parallelism,<sp/>pwd,<sp/>pwdlen,<sp/>salt,<sp/>saltlen,</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>NULL,<sp/>hashlen,<sp/>encoded,<sp/>encodedlen,<sp/><ref refid="argon2_8h_1a5d5d088fc49f3e133161c81e15fe1695a48ce300350099ad17bb3d5fe7da1c1cc" kindref="member">Argon2_d</ref>);</highlight></codeline>
+<codeline lineno="268"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270" refid="argon2_8h_1a61eff8ab40b266a9c54af31014935ebd" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="argon2_8c_1a61eff8ab40b266a9c54af31014935ebd" kindref="member">argon2d_hash_raw</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>t_cost,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>m_cost,</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref><sp/>parallelism,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*pwd,</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>pwdlen,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*salt,</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>saltlen,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*<ref refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" kindref="member">hash</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>hashlen)<sp/>{</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="argon2_8c_1a49e50c1bc7f51a1230d1ce7bbcf18f9f" kindref="member">argon2_hash</ref>(t_cost,<sp/>m_cost,<sp/>parallelism,<sp/>pwd,<sp/>pwdlen,<sp/>salt,<sp/>saltlen,</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hash,<sp/>hashlen,<sp/>NULL,<sp/>0,<sp/><ref refid="argon2_8h_1a5d5d088fc49f3e133161c81e15fe1695a48ce300350099ad17bb3d5fe7da1c1cc" kindref="member">Argon2_d</ref>);</highlight></codeline>
+<codeline lineno="277"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argon2_compare(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref><sp/>*b1,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref><sp/>*b2,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>len)<sp/>{</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i;</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref><sp/>d<sp/>=<sp/>0U;</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(i<sp/>=<sp/>0U;<sp/>i<sp/>&lt;<sp/>len;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>d<sp/>|=<sp/>b1[i]<sp/>^<sp/>b2[i];</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal">)((1<sp/>&amp;<sp/>((d<sp/>-<sp/>1)<sp/>&gt;&gt;<sp/>8))<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="287"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight></codeline>
+<codeline lineno="289" refid="argon2_8h_1a6dbd567c6037a5c55987312158d5bb0a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="argon2_8c_1a6dbd567c6037a5c55987312158d5bb0a" kindref="member">argon2_verify</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*encoded,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*pwd,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>pwdlen,</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="argon2_8h_1af51eac9927f7f234943d076166aacf84" kindref="member">argon2_type</ref><sp/>type)<sp/>{</highlight></codeline>
+<codeline lineno="291"><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="struct_argon2___context" kindref="compound">argon2_context</ref><sp/>ctx;</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="stdint_8h_1aba7bc1797add20fe3efdf37ced1182c5" kindref="member">uint8_t</ref><sp/>*out;</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>max<sp/>values,<sp/>to<sp/>be<sp/>updated<sp/>in<sp/>decode_string<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/>ctx.<ref refid="struct_argon2___context_1a27f944c49530b5a43d754c1a5ec30918" kindref="member">adlen</ref><sp/>=<sp/>512;</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/>ctx.<ref refid="struct_argon2___context_1a1f151741022a0b25c66c704408522cca" kindref="member">saltlen</ref><sp/>=<sp/>512;</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/>ctx.<ref refid="struct_argon2___context_1a11cb0932b2a6fd6fa0e6f5f5148f3ba9" kindref="member">outlen</ref><sp/>=<sp/>512;</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/>ctx.<ref refid="struct_argon2___context_1a20329e319449d710c4f5bf591690b4c4" kindref="member">ad</ref><sp/>=<sp/>malloc(ctx.<ref refid="struct_argon2___context_1a27f944c49530b5a43d754c1a5ec30918" kindref="member">adlen</ref>);</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/>ctx.<ref refid="struct_argon2___context_1a36bfd9d93195daafa0d7e4afdbbee1dc" kindref="member">salt</ref><sp/>=<sp/>malloc(ctx.<ref refid="struct_argon2___context_1a1f151741022a0b25c66c704408522cca" kindref="member">saltlen</ref>);</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/><sp/><sp/>ctx.<ref refid="struct_argon2___context_1a53bc334f5ca86d2ff639abddb9b08177" kindref="member">out</ref><sp/>=<sp/>malloc(ctx.<ref refid="struct_argon2___context_1a11cb0932b2a6fd6fa0e6f5f5148f3ba9" kindref="member">outlen</ref>);</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!ctx.<ref refid="struct_argon2___context_1a53bc334f5ca86d2ff639abddb9b08177" kindref="member">out</ref><sp/>||<sp/>!ctx.<ref refid="struct_argon2___context_1a36bfd9d93195daafa0d7e4afdbbee1dc" kindref="member">salt</ref><sp/>||<sp/>!ctx.<ref refid="struct_argon2___context_1a20329e319449d710c4f5bf591690b4c4" kindref="member">ad</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(ctx.<ref refid="struct_argon2___context_1a20329e319449d710c4f5bf591690b4c4" kindref="member">ad</ref>);</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(ctx.<ref refid="struct_argon2___context_1a36bfd9d93195daafa0d7e4afdbbee1dc" kindref="member">salt</ref>);</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(ctx.<ref refid="struct_argon2___context_1a53bc334f5ca86d2ff639abddb9b08177" kindref="member">out</ref>);</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a61587718eb9f4006cd9e4d71380fdd85" kindref="member">ARGON2_MEMORY_ALLOCATION_ERROR</ref>;</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/><sp/><sp/>out<sp/>=<sp/>malloc(ctx.<ref refid="struct_argon2___context_1a11cb0932b2a6fd6fa0e6f5f5148f3ba9" kindref="member">outlen</ref>);</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!out)<sp/>{</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(ctx.<ref refid="struct_argon2___context_1a20329e319449d710c4f5bf591690b4c4" kindref="member">ad</ref>);</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(ctx.<ref refid="struct_argon2___context_1a36bfd9d93195daafa0d7e4afdbbee1dc" kindref="member">salt</ref>);</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(ctx.<ref refid="struct_argon2___context_1a53bc334f5ca86d2ff639abddb9b08177" kindref="member">out</ref>);</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a61587718eb9f4006cd9e4d71380fdd85" kindref="member">ARGON2_MEMORY_ALLOCATION_ERROR</ref>;</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="encoding_8c_1ada8ceb318c3429ae16f8fe41ee7eb61b" kindref="member">decode_string</ref>(&amp;ctx,<sp/>encoded,<sp/>type)<sp/>!=<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(ctx.<ref refid="struct_argon2___context_1a20329e319449d710c4f5bf591690b4c4" kindref="member">ad</ref>);</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(ctx.<ref refid="struct_argon2___context_1a36bfd9d93195daafa0d7e4afdbbee1dc" kindref="member">salt</ref>);</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(ctx.<ref refid="struct_argon2___context_1a53bc334f5ca86d2ff639abddb9b08177" kindref="member">out</ref>);</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(out);</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9ae0db55bad61772230d71f3605e896094" kindref="member">ARGON2_DECODING_FAIL</ref>;</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"></highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/>ret<sp/>=<sp/><ref refid="argon2_8c_1a49e50c1bc7f51a1230d1ce7bbcf18f9f" kindref="member">argon2_hash</ref>(ctx.<ref refid="struct_argon2___context_1adffe97f0527779835c511385dfc5d63d" kindref="member">t_cost</ref>,<sp/>ctx.<ref refid="struct_argon2___context_1a78b6d500cdb208f3b09a10c07716d6ab" kindref="member">m_cost</ref>,<sp/>ctx.<ref refid="struct_argon2___context_1a1efec02e4fd164068c7e77ec5f8b5b01" kindref="member">threads</ref>,<sp/>pwd,<sp/>pwdlen,<sp/>ctx.<ref refid="struct_argon2___context_1a36bfd9d93195daafa0d7e4afdbbee1dc" kindref="member">salt</ref>,</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ctx.<ref refid="struct_argon2___context_1a1f151741022a0b25c66c704408522cca" kindref="member">saltlen</ref>,<sp/>out,<sp/>ctx.<ref refid="struct_argon2___context_1a11cb0932b2a6fd6fa0e6f5f5148f3ba9" kindref="member">outlen</ref>,<sp/>NULL,<sp/>0,<sp/>type);</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"></highlight></codeline>
+<codeline lineno="329"><highlight class="normal"><sp/><sp/><sp/><sp/>free(ctx.<ref refid="struct_argon2___context_1a20329e319449d710c4f5bf591690b4c4" kindref="member">ad</ref>);</highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/>free(ctx.<ref refid="struct_argon2___context_1a36bfd9d93195daafa0d7e4afdbbee1dc" kindref="member">salt</ref>);</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"></highlight></codeline>
+<codeline lineno="332"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ret<sp/>!=<sp/><ref refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a19b53dfdd59a4e04632b2de23530b3e8" kindref="member">ARGON2_OK</ref><sp/>||<sp/>argon2_compare(out,<sp/>ctx.<ref refid="struct_argon2___context_1a53bc334f5ca86d2ff639abddb9b08177" kindref="member">out</ref>,<sp/>ctx.<ref refid="struct_argon2___context_1a11cb0932b2a6fd6fa0e6f5f5148f3ba9" kindref="member">outlen</ref>))<sp/>{</highlight></codeline>
+<codeline lineno="333"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(out);</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>free(ctx.<ref refid="struct_argon2___context_1a53bc334f5ca86d2ff639abddb9b08177" kindref="member">out</ref>);</highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9ae0db55bad61772230d71f3605e896094" kindref="member">ARGON2_DECODING_FAIL</ref>;</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/><sp/><sp/>free(out);</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"><sp/><sp/><sp/><sp/>free(ctx.<ref refid="struct_argon2___context_1a53bc334f5ca86d2ff639abddb9b08177" kindref="member">out</ref>);</highlight></codeline>
+<codeline lineno="339"><highlight class="normal"></highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a19b53dfdd59a4e04632b2de23530b3e8" kindref="member">ARGON2_OK</ref>;</highlight></codeline>
+<codeline lineno="341"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="342"><highlight class="normal"></highlight></codeline>
+<codeline lineno="343" refid="argon2_8h_1aaea586048f3c25a2f03449b5ead4b561" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="argon2_8c_1aaea586048f3c25a2f03449b5ead4b561" kindref="member">argon2i_verify</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*encoded,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*pwd,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>pwdlen)<sp/>{</highlight></codeline>
+<codeline lineno="344"><highlight class="normal"></highlight></codeline>
+<codeline lineno="345"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="argon2_8c_1a6dbd567c6037a5c55987312158d5bb0a" kindref="member">argon2_verify</ref>(encoded,<sp/>pwd,<sp/>pwdlen,<sp/><ref refid="argon2_8h_1a5d5d088fc49f3e133161c81e15fe1695ad879f03535165a16f3040eeae7eedefa" kindref="member">Argon2_i</ref>);</highlight></codeline>
+<codeline lineno="346"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="347"><highlight class="normal"></highlight></codeline>
+<codeline lineno="348" refid="argon2_8h_1ae735d68dccc28d839cbd7043283c065a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="argon2_8c_1ae735d68dccc28d839cbd7043283c065a" kindref="member">argon2d_verify</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*encoded,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>*pwd,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>pwdlen)<sp/>{</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"></highlight></codeline>
+<codeline lineno="350"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="argon2_8c_1a6dbd567c6037a5c55987312158d5bb0a" kindref="member">argon2_verify</ref>(encoded,<sp/>pwd,<sp/>pwdlen,<sp/><ref refid="argon2_8h_1a5d5d088fc49f3e133161c81e15fe1695a48ce300350099ad17bb3d5fe7da1c1cc" kindref="member">Argon2_d</ref>);</highlight></codeline>
+<codeline lineno="351"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="352"><highlight class="normal"></highlight></codeline>
+<codeline lineno="353" refid="argon2_8h_1ac9984f1d62fb3cda555e8555dbfe3129" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="argon2_8c_1ac9984f1d62fb3cda555e8555dbfe3129" kindref="member">argon2d</ref>(<ref refid="struct_argon2___context" kindref="compound">argon2_context</ref><sp/>*context)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="argon2_8c_1a46052a12b5448759fa3b5de616cb783a" kindref="member">argon2_core</ref>(context,<sp/><ref refid="argon2_8h_1a5d5d088fc49f3e133161c81e15fe1695a48ce300350099ad17bb3d5fe7da1c1cc" kindref="member">Argon2_d</ref>);<sp/>}</highlight></codeline>
+<codeline lineno="354"><highlight class="normal"></highlight></codeline>
+<codeline lineno="355" refid="argon2_8h_1ac709795078c9fb5384fb20d54c5b957d" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="argon2_8c_1ac709795078c9fb5384fb20d54c5b957d" kindref="member">argon2i</ref>(<ref refid="struct_argon2___context" kindref="compound">argon2_context</ref><sp/>*context)<sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="argon2_8c_1a46052a12b5448759fa3b5de616cb783a" kindref="member">argon2_core</ref>(context,<sp/><ref refid="argon2_8h_1a5d5d088fc49f3e133161c81e15fe1695ad879f03535165a16f3040eeae7eedefa" kindref="member">Argon2_i</ref>);<sp/>}</highlight></codeline>
+<codeline lineno="356"><highlight class="normal"></highlight></codeline>
+<codeline lineno="357" refid="argon2_8h_1a8692a5e365ca1757f8234c0cf9fd87b4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="argon2_8c_1a8692a5e365ca1757f8234c0cf9fd87b4" kindref="member">verify_d</ref>(<ref refid="struct_argon2___context" kindref="compound">argon2_context</ref><sp/>*context,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" kindref="member">hash</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="358"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(0<sp/>==<sp/>context-&gt;<ref refid="struct_argon2___context_1a11cb0932b2a6fd6fa0e6f5f5148f3ba9" kindref="member">outlen</ref><sp/>||<sp/>NULL<sp/>==<sp/>hash)<sp/>{</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a71a75872127e4454d65d975f54b0350e" kindref="member">ARGON2_OUT_PTR_MISMATCH</ref>;</highlight></codeline>
+<codeline lineno="361"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="362"><highlight class="normal"></highlight></codeline>
+<codeline lineno="363"><highlight class="normal"><sp/><sp/><sp/><sp/>result<sp/>=<sp/><ref refid="argon2_8c_1a46052a12b5448759fa3b5de616cb783a" kindref="member">argon2_core</ref>(context,<sp/><ref refid="argon2_8h_1a5d5d088fc49f3e133161c81e15fe1695a48ce300350099ad17bb3d5fe7da1c1cc" kindref="member">Argon2_d</ref>);</highlight></codeline>
+<codeline lineno="364"><highlight class="normal"></highlight></codeline>
+<codeline lineno="365"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a19b53dfdd59a4e04632b2de23530b3e8" kindref="member">ARGON2_OK</ref><sp/>!=<sp/>result)<sp/>{</highlight></codeline>
+<codeline lineno="366"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="367"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="368"><highlight class="normal"></highlight></codeline>
+<codeline lineno="369"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0<sp/>==<sp/>memcmp(hash,<sp/>context-&gt;<ref refid="struct_argon2___context_1a53bc334f5ca86d2ff639abddb9b08177" kindref="member">out</ref>,<sp/>context-&gt;<ref refid="struct_argon2___context_1a11cb0932b2a6fd6fa0e6f5f5148f3ba9" kindref="member">outlen</ref>);</highlight></codeline>
+<codeline lineno="370"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="371"><highlight class="normal"></highlight></codeline>
+<codeline lineno="372" refid="argon2_8h_1ad418420c81b8a399a23fa2cdf39a926b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="argon2_8c_1ad418420c81b8a399a23fa2cdf39a926b" kindref="member">verify_i</ref>(<ref refid="struct_argon2___context" kindref="compound">argon2_context</ref><sp/>*context,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" kindref="member">hash</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="373"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="374"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(0<sp/>==<sp/>context-&gt;<ref refid="struct_argon2___context_1a11cb0932b2a6fd6fa0e6f5f5148f3ba9" kindref="member">outlen</ref><sp/>||<sp/>NULL<sp/>==<sp/>hash)<sp/>{</highlight></codeline>
+<codeline lineno="375"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a71a75872127e4454d65d975f54b0350e" kindref="member">ARGON2_OUT_PTR_MISMATCH</ref>;</highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"></highlight></codeline>
+<codeline lineno="378"><highlight class="normal"><sp/><sp/><sp/><sp/>result<sp/>=<sp/><ref refid="argon2_8c_1a46052a12b5448759fa3b5de616cb783a" kindref="member">argon2_core</ref>(context,<sp/><ref refid="argon2_8h_1a5d5d088fc49f3e133161c81e15fe1695ad879f03535165a16f3040eeae7eedefa" kindref="member">Argon2_i</ref>);</highlight></codeline>
+<codeline lineno="379"><highlight class="normal"></highlight></codeline>
+<codeline lineno="380"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a19b53dfdd59a4e04632b2de23530b3e8" kindref="member">ARGON2_OK</ref><sp/>!=<sp/>result)<sp/>{</highlight></codeline>
+<codeline lineno="381"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="382"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="383"><highlight class="normal"></highlight></codeline>
+<codeline lineno="384"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0<sp/>==<sp/>memcmp(hash,<sp/>context-&gt;<ref refid="struct_argon2___context_1a53bc334f5ca86d2ff639abddb9b08177" kindref="member">out</ref>,<sp/>context-&gt;<ref refid="struct_argon2___context_1a11cb0932b2a6fd6fa0e6f5f5148f3ba9" kindref="member">outlen</ref>);</highlight></codeline>
+<codeline lineno="385"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="386"><highlight class="normal"></highlight></codeline>
+<codeline lineno="387"><highlight class="normal"></highlight></codeline>
+<codeline lineno="388" refid="argon2_8h_1aecedea424e516e50709e8a7b08ece644" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*<ref refid="argon2_8c_1aecedea424e516e50709e8a7b08ece644" kindref="member">error_message</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>error_code)<sp/>{</highlight></codeline>
+<codeline lineno="389"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="390"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Make<sp/>sure---at<sp/>compile<sp/>time---that<sp/>the<sp/>enum<sp/>size<sp/>matches<sp/>the<sp/>array</highlight></codeline>
+<codeline lineno="391"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>size<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="392"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ERROR_STRING_CHECK<sp/>=</highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>1<sp/>/</highlight></codeline>
+<codeline lineno="394"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>!!((</highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(Argon2_ErrorMessage)<sp/>/<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(Argon2_ErrorMessage[0]))<sp/>==</highlight></codeline>
+<codeline lineno="395"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a7503ab1859fde45d0df2915060a40ea0" kindref="member">ARGON2_ERROR_CODES_LENGTH</ref>)</highlight></codeline>
+<codeline lineno="396"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="397"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(error_code<sp/>&gt;=<sp/>0<sp/>&amp;&amp;<sp/>error_code<sp/>&lt;<sp/><ref refid="argon2_8h_1a08c31200596bf26c39b07c1734f654b9a7503ab1859fde45d0df2915060a40ea0" kindref="member">ARGON2_ERROR_CODES_LENGTH</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="398"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Argon2_ErrorMessage[(<ref refid="argon2_8h_1a488383bb9c3eb998f5eaa78999788d11" kindref="member">argon2_error_codes</ref>)error_code];</highlight></codeline>
+<codeline lineno="399"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="400"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;Unknown<sp/>error<sp/>code.&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="401"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/crypto/argon2/argon2.c"/>
+  </compounddef>
+</doxygen>

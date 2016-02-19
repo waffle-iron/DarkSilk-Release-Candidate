@@ -1,0 +1,199 @@
+.TH "/home/dev/ds-160209/src/netbase.cpp" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/netbase.cpp \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'netbase\&.h'\fP
+.br
+\fC#include 'util\&.h'\fP
+.br
+\fC#include 'sync\&.h'\fP
+.br
+\fC#include 'hash\&.h'\fP
+.br
+\fC#include <sys/fcntl\&.h>\fP
+.br
+\fC#include <boost/algorithm/string/case_conv\&.hpp>\fP
+.br
+\fC#include <boost/algorithm/string/predicate\&.hpp>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "enum \fBNetwork\fP \fBParseNetwork\fP (std::string net)"
+.br
+.ti -1c
+.RI "std::string \fBGetNetworkName\fP (enum \fBNetwork\fP net)"
+.br
+.ti -1c
+.RI "void \fBSplitHostPort\fP (std::string in, int &portOut, std::string &hostOut)"
+.br
+.ti -1c
+.RI "bool \fBLookupHost\fP (const char *pszName, std::vector< \fBCNetAddr\fP > &vIP, unsigned int nMaxSolutions, bool fAllowLookup)"
+.br
+.ti -1c
+.RI "bool \fBLookup\fP (const char *pszName, std::vector< \fBCService\fP > &vAddr, int portDefault, bool fAllowLookup, unsigned int nMaxSolutions)"
+.br
+.ti -1c
+.RI "bool \fBLookup\fP (const char *pszName, \fBCService\fP &addr, int portDefault, bool fAllowLookup)"
+.br
+.ti -1c
+.RI "bool \fBLookupNumeric\fP (const char *pszName, \fBCService\fP &addr, int portDefault)"
+.br
+.ti -1c
+.RI "bool \fBSetProxy\fP (enum \fBNetwork\fP net, \fBCService\fP addrProxy)"
+.br
+.ti -1c
+.RI "bool \fBGetProxy\fP (enum \fBNetwork\fP net, \fBproxyType\fP &proxyInfoOut)"
+.br
+.ti -1c
+.RI "bool \fBSetNameProxy\fP (\fBCService\fP addrProxy)"
+.br
+.ti -1c
+.RI "bool \fBGetNameProxy\fP (\fBCService\fP &nameProxyOut)"
+.br
+.ti -1c
+.RI "bool \fBHaveNameProxy\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsProxy\fP (const \fBCNetAddr\fP &addr)"
+.br
+.ti -1c
+.RI "bool \fBConnectSocket\fP (const \fBCService\fP &addrDest, \fBSOCKET\fP &hSocketRet, int nTimeout, bool *outProxyConnectionFailed)"
+.br
+.ti -1c
+.RI "bool \fBConnectSocketByName\fP (\fBCService\fP &addr, \fBSOCKET\fP &hSocketRet, const char *pszDest, int portDefault, int nTimeout, bool *outProxyConnectionFailed)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBCNetAddr\fP &a, const \fBCNetAddr\fP &b)"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBCNetAddr\fP &a, const \fBCNetAddr\fP &b)"
+.br
+.ti -1c
+.RI "bool \fBoperator<\fP (const \fBCNetAddr\fP &a, const \fBCNetAddr\fP &b)"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBCService\fP &a, const \fBCService\fP &b)"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBCService\fP &a, const \fBCService\fP &b)"
+.br
+.ti -1c
+.RI "bool \fBoperator<\fP (const \fBCService\fP &a, const \fBCService\fP &b)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "int \fBnConnectTimeout\fP = 5000"
+.br
+.ti -1c
+.RI "bool \fBfNameLookup\fP = false"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "bool ConnectSocket (const \fBCService\fP & addrDest, \fBSOCKET\fP & hSocketRet, int nTimeout, bool * outProxyConnectionFailed)"
+
+.PP
+Definition at line 463 of file netbase\&.cpp\&.
+.SS "bool ConnectSocketByName (\fBCService\fP & addr, \fBSOCKET\fP & hSocketRet, const char * pszDest, int portDefault, int nTimeout, bool * outProxyConnectionFailed)"
+
+.PP
+Definition at line 502 of file netbase\&.cpp\&.
+.SS "bool GetNameProxy (\fBCService\fP & nameProxyOut)"
+
+.PP
+Definition at line 414 of file netbase\&.cpp\&.
+.SS "std::string GetNetworkName (enum \fBNetwork\fP net)"
+
+.PP
+Definition at line 46 of file netbase\&.cpp\&.
+.SS "bool GetProxy (enum \fBNetwork\fP net, \fBproxyType\fP & proxyInfoOut)"
+
+.PP
+Definition at line 397 of file netbase\&.cpp\&.
+.SS "bool HaveNameProxy ()"
+
+.PP
+Definition at line 422 of file netbase\&.cpp\&.
+.SS "bool IsProxy (const \fBCNetAddr\fP & addr)"
+
+.PP
+Definition at line 427 of file netbase\&.cpp\&.
+.SS "bool Lookup (const char * pszName, std::vector< \fBCService\fP > & vAddr, int portDefault, bool fAllowLookup, unsigned int nMaxSolutions)"
+
+.PP
+Definition at line 144 of file netbase\&.cpp\&.
+.SS "bool Lookup (const char * pszName, \fBCService\fP & addr, int portDefault, bool fAllowLookup)"
+
+.PP
+Definition at line 162 of file netbase\&.cpp\&.
+.SS "bool LookupHost (const char * pszName, std::vector< \fBCNetAddr\fP > & vIP, unsigned int nMaxSolutions, bool fAllowLookup)"
+
+.PP
+Definition at line 130 of file netbase\&.cpp\&.
+.SS "bool LookupNumeric (const char * pszName, \fBCService\fP & addr, int portDefault)"
+
+.PP
+Definition at line 172 of file netbase\&.cpp\&.
+.SS "bool operator!= (const \fBCNetAddr\fP & a, const \fBCNetAddr\fP & b)"
+
+.PP
+Definition at line 864 of file netbase\&.cpp\&.
+.SS "bool operator!= (const \fBCService\fP & a, const \fBCService\fP & b)"
+
+.PP
+Definition at line 1159 of file netbase\&.cpp\&.
+.SS "bool operator< (const \fBCNetAddr\fP & a, const \fBCNetAddr\fP & b)"
+
+.PP
+Definition at line 873 of file netbase\&.cpp\&.
+.SS "bool operator< (const \fBCService\fP & a, const \fBCService\fP & b)"
+
+.PP
+Definition at line 1164 of file netbase\&.cpp\&.
+.SS "bool operator== (const \fBCNetAddr\fP & a, const \fBCNetAddr\fP & b)"
+
+.PP
+Definition at line 855 of file netbase\&.cpp\&.
+.SS "bool operator== (const \fBCService\fP & a, const \fBCService\fP & b)"
+
+.PP
+Definition at line 1154 of file netbase\&.cpp\&.
+.SS "enum \fBNetwork\fP ParseNetwork (std::string net)"
+
+.PP
+Definition at line 34 of file netbase\&.cpp\&.
+.SS "bool SetNameProxy (\fBCService\fP addrProxy)"
+
+.PP
+Definition at line 406 of file netbase\&.cpp\&.
+.SS "bool SetProxy (enum \fBNetwork\fP net, \fBCService\fP addrProxy)"
+
+.PP
+Definition at line 388 of file netbase\&.cpp\&.
+.SS "void SplitHostPort (std::string in, int & portOut, std::string & hostOut)"
+
+.PP
+Definition at line 57 of file netbase\&.cpp\&.
+.SH "Variable Documentation"
+.PP 
+.SS "bool fNameLookup = false"
+
+.PP
+Definition at line 30 of file netbase\&.cpp\&.
+.SS "int nConnectTimeout = 5000"
+
+.PP
+Definition at line 29 of file netbase\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

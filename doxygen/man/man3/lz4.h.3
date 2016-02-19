@@ -1,0 +1,198 @@
+.TH "/home/dev/ds-160209/src/lz4/lz4.h" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/lz4/lz4.h \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBLZ4_VERSION_MAJOR\fP   1    /* for major interface/format changes  */"
+.br
+.ti -1c
+.RI "#define \fBLZ4_VERSION_MINOR\fP   1    /* for minor interface/format changes  */"
+.br
+.ti -1c
+.RI "#define \fBLZ4_VERSION_RELEASE\fP   3    /* for tweaks, bug-fixes, or development */"
+.br
+.ti -1c
+.RI "#define \fBLZ4_MAX_INPUT_SIZE\fP   0x7E000000   /* 2 113 929 216 bytes */"
+.br
+.ti -1c
+.RI "#define \fBLZ4_COMPRESSBOUND\fP(isize)   ((unsigned int)(isize) > (unsigned int)\fBLZ4_MAX_INPUT_SIZE\fP ? 0 : (isize) + ((isize)/255) + 16)"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBLZ4_compress\fP (const char *\fBsource\fP, char *dest, int inputSize)"
+.br
+.ti -1c
+.RI "int \fBLZ4_decompress_safe\fP (const char *\fBsource\fP, char *dest, int inputSize, int maxOutputSize)"
+.br
+.ti -1c
+.RI "int \fBLZ4_compressBound\fP (int isize)"
+.br
+.ti -1c
+.RI "int \fBLZ4_compress_limitedOutput\fP (const char *\fBsource\fP, char *dest, int inputSize, int maxOutputSize)"
+.br
+.ti -1c
+.RI "int \fBLZ4_decompress_fast\fP (const char *\fBsource\fP, char *dest, int originalSize)"
+.br
+.ti -1c
+.RI "int \fBLZ4_decompress_safe_partial\fP (const char *\fBsource\fP, char *dest, int inputSize, int targetOutputSize, int maxOutputSize)"
+.br
+.ti -1c
+.RI "int \fBLZ4_sizeofState\fP (void)"
+.br
+.ti -1c
+.RI "int \fBLZ4_compress_withState\fP (void *\fBstate\fP, const char *\fBsource\fP, char *dest, int inputSize)"
+.br
+.ti -1c
+.RI "int \fBLZ4_compress_limitedOutput_withState\fP (void *\fBstate\fP, const char *\fBsource\fP, char *dest, int inputSize, int maxOutputSize)"
+.br
+.ti -1c
+.RI "void * \fBLZ4_create\fP (const char *inputBuffer)"
+.br
+.ti -1c
+.RI "int \fBLZ4_compress_continue\fP (void *LZ4_Data, const char *\fBsource\fP, char *dest, int inputSize)"
+.br
+.ti -1c
+.RI "int \fBLZ4_compress_limitedOutput_continue\fP (void *LZ4_Data, const char *\fBsource\fP, char *dest, int inputSize, int maxOutputSize)"
+.br
+.ti -1c
+.RI "char * \fBLZ4_slideInputBuffer\fP (void *LZ4_Data)"
+.br
+.ti -1c
+.RI "int \fBLZ4_free\fP (void *LZ4_Data)"
+.br
+.ti -1c
+.RI "int \fBLZ4_sizeofStreamState\fP (void)"
+.br
+.ti -1c
+.RI "int \fBLZ4_resetStreamState\fP (void *\fBstate\fP, const char *inputBuffer)"
+.br
+.ti -1c
+.RI "int \fBLZ4_decompress_safe_withPrefix64k\fP (const char *\fBsource\fP, char *dest, int inputSize, int maxOutputSize)"
+.br
+.ti -1c
+.RI "int \fBLZ4_decompress_fast_withPrefix64k\fP (const char *\fBsource\fP, char *dest, int outputSize)"
+.br
+.ti -1c
+.RI "int \fBLZ4_uncompress\fP (const char *\fBsource\fP, char *dest, int outputSize)"
+.br
+.ti -1c
+.RI "int \fBLZ4_uncompress_unknownOutputSize\fP (const char *\fBsource\fP, char *dest, int isize, int maxOutputSize)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define LZ4_COMPRESSBOUND(isize)   ((unsigned int)(isize) > (unsigned int)\fBLZ4_MAX_INPUT_SIZE\fP ? 0 : (isize) + ((isize)/255) + 16)"
+
+.PP
+Definition at line 86 of file lz4\&.h\&.
+.SS "#define LZ4_MAX_INPUT_SIZE   0x7E000000   /* 2 113 929 216 bytes */"
+
+.PP
+Definition at line 85 of file lz4\&.h\&.
+.SS "#define LZ4_VERSION_MAJOR   1    /* for major interface/format changes  */"
+
+.PP
+Definition at line 44 of file lz4\&.h\&.
+.SS "#define LZ4_VERSION_MINOR   1    /* for minor interface/format changes  */"
+
+.PP
+Definition at line 45 of file lz4\&.h\&.
+.SS "#define LZ4_VERSION_RELEASE   3    /* for tweaks, bug-fixes, or development */"
+
+.PP
+Definition at line 46 of file lz4\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "int LZ4_compress (const char * source, char * dest, int inputSize)"
+
+.PP
+Definition at line 557 of file lz4\&.c\&.
+.SS "int LZ4_compress_continue (void * LZ4_Data, const char * source, char * dest, int inputSize)"
+
+.PP
+Definition at line 699 of file lz4\&.c\&.
+.SS "int LZ4_compress_limitedOutput (const char * source, char * dest, int inputSize, int maxOutputSize)"
+
+.PP
+Definition at line 577 of file lz4\&.c\&.
+.SS "int LZ4_compress_limitedOutput_continue (void * LZ4_Data, const char * source, char * dest, int inputSize, int maxOutputSize)"
+
+.PP
+Definition at line 705 of file lz4\&.c\&.
+.SS "int LZ4_compress_limitedOutput_withState (void * state, const char * source, char * dest, int inputSize, int maxOutputSize)"
+
+.PP
+Definition at line 617 of file lz4\&.c\&.
+.SS "int LZ4_compress_withState (void * state, const char * source, char * dest, int inputSize)"
+
+.PP
+Definition at line 605 of file lz4\&.c\&.
+.SS "int LZ4_compressBound (int isize)"
+
+.PP
+Definition at line 372 of file lz4\&.c\&.
+.SS "void* LZ4_create (const char * inputBuffer)"
+
+.PP
+Definition at line 653 of file lz4\&.c\&.
+.SS "int LZ4_decompress_fast (const char * source, char * dest, int originalSize)"
+
+.PP
+Definition at line 870 of file lz4\&.c\&.
+.SS "int LZ4_decompress_fast_withPrefix64k (const char * source, char * dest, int outputSize)"
+
+.PP
+Definition at line 865 of file lz4\&.c\&.
+.SS "int LZ4_decompress_safe (const char * source, char * dest, int inputSize, int maxOutputSize)"
+
+.PP
+Definition at line 850 of file lz4\&.c\&.
+.SS "int LZ4_decompress_safe_partial (const char * source, char * dest, int inputSize, int targetOutputSize, int maxOutputSize)"
+
+.PP
+Definition at line 860 of file lz4\&.c\&.
+.SS "int LZ4_decompress_safe_withPrefix64k (const char * source, char * dest, int inputSize, int maxOutputSize)"
+
+.PP
+Definition at line 855 of file lz4\&.c\&.
+.SS "int LZ4_free (void * LZ4_Data)"
+
+.PP
+Definition at line 661 of file lz4\&.c\&.
+.SS "int LZ4_resetStreamState (void * state, const char * inputBuffer)"
+
+.PP
+Definition at line 646 of file lz4\&.c\&.
+.SS "int LZ4_sizeofState (void)"
+
+.PP
+Definition at line 602 of file lz4\&.c\&.
+.SS "int LZ4_sizeofStreamState (void)"
+
+.PP
+Definition at line 633 of file lz4\&.c\&.
+.SS "char* LZ4_slideInputBuffer (void * LZ4_Data)"
+
+.PP
+Definition at line 668 of file lz4\&.c\&.
+.SS "int LZ4_uncompress (const char * source, char * dest, int outputSize)"
+
+.PP
+Definition at line 879 of file lz4\&.c\&.
+.SS "int LZ4_uncompress_unknownOutputSize (const char * source, char * dest, int isize, int maxOutputSize)"
+
+.PP
+Definition at line 880 of file lz4\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

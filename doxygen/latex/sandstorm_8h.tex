@@ -1,0 +1,276 @@
+\hypertarget{sandstorm_8h}{}\section{/home/dev/ds-\/160209/src/sandstorm.h File Reference}
+\label{sandstorm_8h}\index{/home/dev/ds-\/160209/src/sandstorm.\+h@{/home/dev/ds-\/160209/src/sandstorm.\+h}}
+{\ttfamily \#include \char`\"{}sync.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}activestormnode.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}stormnodeman.\+h\char`\"{}}\\*
+Include dependency graph for sandstorm.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_c_tx_s_s_in}{C\+Tx\+S\+S\+In}
+\item 
+class \hyperlink{class_c_tx_s_s_out}{C\+Tx\+S\+S\+Out}
+\item 
+class \hyperlink{class_c_sand_storm_entry}{C\+Sand\+Storm\+Entry}
+\item 
+class \hyperlink{class_c_sandstorm_queue}{C\+Sandstorm\+Queue}
+\item 
+class \hyperlink{class_c_sandstorm_broadcast_tx}{C\+Sandstorm\+Broadcast\+Tx}
+\item 
+class \hyperlink{class_c_sand_storm_signer}{C\+Sand\+Storm\+Signer}
+\item 
+class \hyperlink{class_c_sandstorm_pool}{C\+Sandstorm\+Pool}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{sandstorm_8h_a8fd443736c232c825a88c5716ed67c02}{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+K\+N\+O\+W\+N}~0
+\item 
+\#define \hyperlink{sandstorm_8h_a2c403b5fdc8a3fe7d868cfb93fc19e34}{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+I\+D\+L\+E}~1
+\item 
+\#define \hyperlink{sandstorm_8h_abaaef77ee773e358bcb3296554f84c7c}{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+Q\+U\+E\+U\+E}~2
+\item 
+\#define \hyperlink{sandstorm_8h_ac3a16edb4f6035996969b0b2bc3ded08}{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+A\+C\+C\+E\+P\+T\+I\+N\+G\+\_\+\+E\+N\+T\+R\+I\+E\+S}~3
+\item 
+\#define \hyperlink{sandstorm_8h_aefa76c8279011a041fa348027e1d8150}{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+F\+I\+N\+A\+L\+I\+Z\+E\+\_\+\+T\+R\+A\+N\+S\+A\+C\+T\+I\+O\+N}~4
+\item 
+\#define \hyperlink{sandstorm_8h_a5f897de8a1b1f90a18a9950229cb86ab}{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+S\+I\+G\+N\+I\+N\+G}~5
+\item 
+\#define \hyperlink{sandstorm_8h_ae08f7334c97bdc015a738ea8b8605b66}{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+O\+N}~6
+\item 
+\#define \hyperlink{sandstorm_8h_a962d9d23845f31ba35334e71ae98d7ee}{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+E\+R\+R\+O\+R}~7
+\item 
+\#define \hyperlink{sandstorm_8h_ad4544a5ac57567db513f342ee8757790}{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+S\+U\+C\+C\+E\+S\+S}~8
+\item 
+\#define \hyperlink{sandstorm_8h_a092f562edd615bfa50d999605a4989ab}{S\+T\+O\+R\+M\+N\+O\+D\+E\+\_\+\+A\+C\+C\+E\+P\+T\+E\+D}~1
+\item 
+\#define \hyperlink{sandstorm_8h_a7a01dca27a2a785c3b7b29435e02cf1f}{S\+T\+O\+R\+M\+N\+O\+D\+E\+\_\+\+R\+E\+J\+E\+C\+T\+E\+D}~0
+\item 
+\#define \hyperlink{sandstorm_8h_aa449a255205ebdc6dba287bdecce6fcc}{S\+T\+O\+R\+M\+N\+O\+D\+E\+\_\+\+R\+E\+S\+E\+T}~-\/1
+\item 
+\#define \hyperlink{sandstorm_8h_ac049101269dbc10f69a6cbd59d50c18f}{S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+T\+I\+M\+E\+O\+U\+T}~30
+\item 
+\#define \hyperlink{sandstorm_8h_a55c615934e5fa33861673622cd2ae328}{S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+S\+I\+G\+N\+I\+N\+G\+\_\+\+T\+I\+M\+E\+O\+U\+T}~15
+\item 
+\#define \hyperlink{sandstorm_8h_a3367f36516d4d18786cda3441a1bd330}{S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+R\+E\+L\+A\+Y\+\_\+\+I\+N}~1
+\item 
+\#define \hyperlink{sandstorm_8h_a0fd46bf6f7da74a3ace28155d6b0509e}{S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+R\+E\+L\+A\+Y\+\_\+\+O\+U\+T}~2
+\item 
+\#define \hyperlink{sandstorm_8h_a793388d423bdeaced4454823014b6670}{S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+R\+E\+L\+A\+Y\+\_\+\+S\+I\+G}~3
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{sandstorm_8h_ac661e702905cd5093cb237555ba5c1c0}{Thread\+Check\+Sand\+Storm\+Pool} ()
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_c_sandstorm_pool}{C\+Sandstorm\+Pool} \hyperlink{sandstorm_8h_addaca1e09682bd47278ce6208b48fd75}{sand\+Storm\+Pool}
+\item 
+\hyperlink{class_c_sand_storm_signer}{C\+Sand\+Storm\+Signer} \hyperlink{sandstorm_8h_af6ac9f9a52a47b030c3d4a38d13af2b1}{sand\+Storm\+Signer}
+\item 
+std\+::vector$<$ \hyperlink{class_c_sandstorm_queue}{C\+Sandstorm\+Queue} $>$ \hyperlink{sandstorm_8h_ae4370a1e41b31b2b6690d62314d0b971}{vec\+Sandstorm\+Queue}
+\item 
+std\+::string \hyperlink{sandstorm_8h_a87851f2f7e50eb7ee21387115e61f325}{str\+Storm\+Node\+Priv\+Key}
+\item 
+map$<$ \hyperlink{classuint256}{uint256}, \hyperlink{class_c_sandstorm_broadcast_tx}{C\+Sandstorm\+Broadcast\+Tx} $>$ \hyperlink{sandstorm_8h_ad2c083d07766489aaa2a282af5545eb5}{map\+Sandstorm\+Broadcast\+Txes}
+\item 
+\hyperlink{class_c_active_stormnode}{C\+Active\+Stormnode} \hyperlink{sandstorm_8h_ac75d1761e37a1f1cbf71007bcbadf5b0}{active\+Stormnode}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{sandstorm_8h_ac3a16edb4f6035996969b0b2bc3ded08}{}\index{sandstorm.\+h@{sandstorm.\+h}!P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+A\+C\+C\+E\+P\+T\+I\+N\+G\+\_\+\+E\+N\+T\+R\+I\+E\+S@{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+A\+C\+C\+E\+P\+T\+I\+N\+G\+\_\+\+E\+N\+T\+R\+I\+E\+S}}
+\index{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+A\+C\+C\+E\+P\+T\+I\+N\+G\+\_\+\+E\+N\+T\+R\+I\+E\+S@{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+A\+C\+C\+E\+P\+T\+I\+N\+G\+\_\+\+E\+N\+T\+R\+I\+E\+S}!sandstorm.\+h@{sandstorm.\+h}}
+\subsubsection[{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+A\+C\+C\+E\+P\+T\+I\+N\+G\+\_\+\+E\+N\+T\+R\+I\+E\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+A\+C\+C\+E\+P\+T\+I\+N\+G\+\_\+\+E\+N\+T\+R\+I\+E\+S~3}\label{sandstorm_8h_ac3a16edb4f6035996969b0b2bc3ded08}
+
+
+Definition at line 24 of file sandstorm.\+h.
+
+\hypertarget{sandstorm_8h_a962d9d23845f31ba35334e71ae98d7ee}{}\index{sandstorm.\+h@{sandstorm.\+h}!P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+E\+R\+R\+O\+R@{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+E\+R\+R\+O\+R}}
+\index{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+E\+R\+R\+O\+R@{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+E\+R\+R\+O\+R}!sandstorm.\+h@{sandstorm.\+h}}
+\subsubsection[{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+E\+R\+R\+O\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+E\+R\+R\+O\+R~7}\label{sandstorm_8h_a962d9d23845f31ba35334e71ae98d7ee}
+
+
+Definition at line 28 of file sandstorm.\+h.
+
+\hypertarget{sandstorm_8h_aefa76c8279011a041fa348027e1d8150}{}\index{sandstorm.\+h@{sandstorm.\+h}!P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+F\+I\+N\+A\+L\+I\+Z\+E\+\_\+\+T\+R\+A\+N\+S\+A\+C\+T\+I\+O\+N@{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+F\+I\+N\+A\+L\+I\+Z\+E\+\_\+\+T\+R\+A\+N\+S\+A\+C\+T\+I\+O\+N}}
+\index{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+F\+I\+N\+A\+L\+I\+Z\+E\+\_\+\+T\+R\+A\+N\+S\+A\+C\+T\+I\+O\+N@{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+F\+I\+N\+A\+L\+I\+Z\+E\+\_\+\+T\+R\+A\+N\+S\+A\+C\+T\+I\+O\+N}!sandstorm.\+h@{sandstorm.\+h}}
+\subsubsection[{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+F\+I\+N\+A\+L\+I\+Z\+E\+\_\+\+T\+R\+A\+N\+S\+A\+C\+T\+I\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+F\+I\+N\+A\+L\+I\+Z\+E\+\_\+\+T\+R\+A\+N\+S\+A\+C\+T\+I\+O\+N~4}\label{sandstorm_8h_aefa76c8279011a041fa348027e1d8150}
+
+
+Definition at line 25 of file sandstorm.\+h.
+
+\hypertarget{sandstorm_8h_a2c403b5fdc8a3fe7d868cfb93fc19e34}{}\index{sandstorm.\+h@{sandstorm.\+h}!P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+I\+D\+L\+E@{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+I\+D\+L\+E}}
+\index{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+I\+D\+L\+E@{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+I\+D\+L\+E}!sandstorm.\+h@{sandstorm.\+h}}
+\subsubsection[{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+I\+D\+L\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+I\+D\+L\+E~1}\label{sandstorm_8h_a2c403b5fdc8a3fe7d868cfb93fc19e34}
+
+
+Definition at line 22 of file sandstorm.\+h.
+
+\hypertarget{sandstorm_8h_abaaef77ee773e358bcb3296554f84c7c}{}\index{sandstorm.\+h@{sandstorm.\+h}!P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+Q\+U\+E\+U\+E@{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+Q\+U\+E\+U\+E}}
+\index{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+Q\+U\+E\+U\+E@{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+Q\+U\+E\+U\+E}!sandstorm.\+h@{sandstorm.\+h}}
+\subsubsection[{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+Q\+U\+E\+U\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+Q\+U\+E\+U\+E~2}\label{sandstorm_8h_abaaef77ee773e358bcb3296554f84c7c}
+
+
+Definition at line 23 of file sandstorm.\+h.
+
+\hypertarget{sandstorm_8h_a5f897de8a1b1f90a18a9950229cb86ab}{}\index{sandstorm.\+h@{sandstorm.\+h}!P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+S\+I\+G\+N\+I\+N\+G@{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+S\+I\+G\+N\+I\+N\+G}}
+\index{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+S\+I\+G\+N\+I\+N\+G@{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+S\+I\+G\+N\+I\+N\+G}!sandstorm.\+h@{sandstorm.\+h}}
+\subsubsection[{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+S\+I\+G\+N\+I\+N\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+S\+I\+G\+N\+I\+N\+G~5}\label{sandstorm_8h_a5f897de8a1b1f90a18a9950229cb86ab}
+
+
+Definition at line 26 of file sandstorm.\+h.
+
+\hypertarget{sandstorm_8h_ad4544a5ac57567db513f342ee8757790}{}\index{sandstorm.\+h@{sandstorm.\+h}!P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+S\+U\+C\+C\+E\+S\+S@{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+S\+U\+C\+C\+E\+S\+S}}
+\index{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+S\+U\+C\+C\+E\+S\+S@{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+S\+U\+C\+C\+E\+S\+S}!sandstorm.\+h@{sandstorm.\+h}}
+\subsubsection[{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+S\+U\+C\+C\+E\+S\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+S\+U\+C\+C\+E\+S\+S~8}\label{sandstorm_8h_ad4544a5ac57567db513f342ee8757790}
+
+
+Definition at line 29 of file sandstorm.\+h.
+
+\hypertarget{sandstorm_8h_ae08f7334c97bdc015a738ea8b8605b66}{}\index{sandstorm.\+h@{sandstorm.\+h}!P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+O\+N@{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+O\+N}}
+\index{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+O\+N@{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+O\+N}!sandstorm.\+h@{sandstorm.\+h}}
+\subsubsection[{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+O\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+T\+R\+A\+N\+S\+M\+I\+S\+S\+I\+O\+N~6}\label{sandstorm_8h_ae08f7334c97bdc015a738ea8b8605b66}
+
+
+Definition at line 27 of file sandstorm.\+h.
+
+\hypertarget{sandstorm_8h_a8fd443736c232c825a88c5716ed67c02}{}\index{sandstorm.\+h@{sandstorm.\+h}!P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+K\+N\+O\+W\+N@{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+K\+N\+O\+W\+N}}
+\index{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+K\+N\+O\+W\+N@{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+K\+N\+O\+W\+N}!sandstorm.\+h@{sandstorm.\+h}}
+\subsubsection[{P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+K\+N\+O\+W\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+O\+O\+L\+\_\+\+S\+T\+A\+T\+U\+S\+\_\+\+U\+N\+K\+N\+O\+W\+N~0}\label{sandstorm_8h_a8fd443736c232c825a88c5716ed67c02}
+
+
+Definition at line 21 of file sandstorm.\+h.
+
+\hypertarget{sandstorm_8h_ac049101269dbc10f69a6cbd59d50c18f}{}\index{sandstorm.\+h@{sandstorm.\+h}!S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+T\+I\+M\+E\+O\+U\+T@{S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+T\+I\+M\+E\+O\+U\+T}}
+\index{S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+T\+I\+M\+E\+O\+U\+T@{S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+T\+I\+M\+E\+O\+U\+T}!sandstorm.\+h@{sandstorm.\+h}}
+\subsubsection[{S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+T\+I\+M\+E\+O\+U\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+T\+I\+M\+E\+O\+U\+T~30}\label{sandstorm_8h_ac049101269dbc10f69a6cbd59d50c18f}
+
+
+Definition at line 36 of file sandstorm.\+h.
+
+\hypertarget{sandstorm_8h_a3367f36516d4d18786cda3441a1bd330}{}\index{sandstorm.\+h@{sandstorm.\+h}!S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+R\+E\+L\+A\+Y\+\_\+\+I\+N@{S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+R\+E\+L\+A\+Y\+\_\+\+I\+N}}
+\index{S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+R\+E\+L\+A\+Y\+\_\+\+I\+N@{S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+R\+E\+L\+A\+Y\+\_\+\+I\+N}!sandstorm.\+h@{sandstorm.\+h}}
+\subsubsection[{S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+R\+E\+L\+A\+Y\+\_\+\+I\+N}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+R\+E\+L\+A\+Y\+\_\+\+I\+N~1}\label{sandstorm_8h_a3367f36516d4d18786cda3441a1bd330}
+
+
+Definition at line 40 of file sandstorm.\+h.
+
+\hypertarget{sandstorm_8h_a0fd46bf6f7da74a3ace28155d6b0509e}{}\index{sandstorm.\+h@{sandstorm.\+h}!S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+R\+E\+L\+A\+Y\+\_\+\+O\+U\+T@{S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+R\+E\+L\+A\+Y\+\_\+\+O\+U\+T}}
+\index{S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+R\+E\+L\+A\+Y\+\_\+\+O\+U\+T@{S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+R\+E\+L\+A\+Y\+\_\+\+O\+U\+T}!sandstorm.\+h@{sandstorm.\+h}}
+\subsubsection[{S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+R\+E\+L\+A\+Y\+\_\+\+O\+U\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+R\+E\+L\+A\+Y\+\_\+\+O\+U\+T~2}\label{sandstorm_8h_a0fd46bf6f7da74a3ace28155d6b0509e}
+
+
+Definition at line 41 of file sandstorm.\+h.
+
+\hypertarget{sandstorm_8h_a793388d423bdeaced4454823014b6670}{}\index{sandstorm.\+h@{sandstorm.\+h}!S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+R\+E\+L\+A\+Y\+\_\+\+S\+I\+G@{S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+R\+E\+L\+A\+Y\+\_\+\+S\+I\+G}}
+\index{S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+R\+E\+L\+A\+Y\+\_\+\+S\+I\+G@{S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+R\+E\+L\+A\+Y\+\_\+\+S\+I\+G}!sandstorm.\+h@{sandstorm.\+h}}
+\subsubsection[{S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+R\+E\+L\+A\+Y\+\_\+\+S\+I\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+R\+E\+L\+A\+Y\+\_\+\+S\+I\+G~3}\label{sandstorm_8h_a793388d423bdeaced4454823014b6670}
+
+
+Definition at line 42 of file sandstorm.\+h.
+
+\hypertarget{sandstorm_8h_a55c615934e5fa33861673622cd2ae328}{}\index{sandstorm.\+h@{sandstorm.\+h}!S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+S\+I\+G\+N\+I\+N\+G\+\_\+\+T\+I\+M\+E\+O\+U\+T@{S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+S\+I\+G\+N\+I\+N\+G\+\_\+\+T\+I\+M\+E\+O\+U\+T}}
+\index{S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+S\+I\+G\+N\+I\+N\+G\+\_\+\+T\+I\+M\+E\+O\+U\+T@{S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+S\+I\+G\+N\+I\+N\+G\+\_\+\+T\+I\+M\+E\+O\+U\+T}!sandstorm.\+h@{sandstorm.\+h}}
+\subsubsection[{S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+S\+I\+G\+N\+I\+N\+G\+\_\+\+T\+I\+M\+E\+O\+U\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+A\+N\+D\+S\+T\+O\+R\+M\+\_\+\+S\+I\+G\+N\+I\+N\+G\+\_\+\+T\+I\+M\+E\+O\+U\+T~15}\label{sandstorm_8h_a55c615934e5fa33861673622cd2ae328}
+
+
+Definition at line 37 of file sandstorm.\+h.
+
+\hypertarget{sandstorm_8h_a092f562edd615bfa50d999605a4989ab}{}\index{sandstorm.\+h@{sandstorm.\+h}!S\+T\+O\+R\+M\+N\+O\+D\+E\+\_\+\+A\+C\+C\+E\+P\+T\+E\+D@{S\+T\+O\+R\+M\+N\+O\+D\+E\+\_\+\+A\+C\+C\+E\+P\+T\+E\+D}}
+\index{S\+T\+O\+R\+M\+N\+O\+D\+E\+\_\+\+A\+C\+C\+E\+P\+T\+E\+D@{S\+T\+O\+R\+M\+N\+O\+D\+E\+\_\+\+A\+C\+C\+E\+P\+T\+E\+D}!sandstorm.\+h@{sandstorm.\+h}}
+\subsubsection[{S\+T\+O\+R\+M\+N\+O\+D\+E\+\_\+\+A\+C\+C\+E\+P\+T\+E\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+T\+O\+R\+M\+N\+O\+D\+E\+\_\+\+A\+C\+C\+E\+P\+T\+E\+D~1}\label{sandstorm_8h_a092f562edd615bfa50d999605a4989ab}
+
+
+Definition at line 32 of file sandstorm.\+h.
+
+\hypertarget{sandstorm_8h_a7a01dca27a2a785c3b7b29435e02cf1f}{}\index{sandstorm.\+h@{sandstorm.\+h}!S\+T\+O\+R\+M\+N\+O\+D\+E\+\_\+\+R\+E\+J\+E\+C\+T\+E\+D@{S\+T\+O\+R\+M\+N\+O\+D\+E\+\_\+\+R\+E\+J\+E\+C\+T\+E\+D}}
+\index{S\+T\+O\+R\+M\+N\+O\+D\+E\+\_\+\+R\+E\+J\+E\+C\+T\+E\+D@{S\+T\+O\+R\+M\+N\+O\+D\+E\+\_\+\+R\+E\+J\+E\+C\+T\+E\+D}!sandstorm.\+h@{sandstorm.\+h}}
+\subsubsection[{S\+T\+O\+R\+M\+N\+O\+D\+E\+\_\+\+R\+E\+J\+E\+C\+T\+E\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+T\+O\+R\+M\+N\+O\+D\+E\+\_\+\+R\+E\+J\+E\+C\+T\+E\+D~0}\label{sandstorm_8h_a7a01dca27a2a785c3b7b29435e02cf1f}
+
+
+Definition at line 33 of file sandstorm.\+h.
+
+\hypertarget{sandstorm_8h_aa449a255205ebdc6dba287bdecce6fcc}{}\index{sandstorm.\+h@{sandstorm.\+h}!S\+T\+O\+R\+M\+N\+O\+D\+E\+\_\+\+R\+E\+S\+E\+T@{S\+T\+O\+R\+M\+N\+O\+D\+E\+\_\+\+R\+E\+S\+E\+T}}
+\index{S\+T\+O\+R\+M\+N\+O\+D\+E\+\_\+\+R\+E\+S\+E\+T@{S\+T\+O\+R\+M\+N\+O\+D\+E\+\_\+\+R\+E\+S\+E\+T}!sandstorm.\+h@{sandstorm.\+h}}
+\subsubsection[{S\+T\+O\+R\+M\+N\+O\+D\+E\+\_\+\+R\+E\+S\+E\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+T\+O\+R\+M\+N\+O\+D\+E\+\_\+\+R\+E\+S\+E\+T~-\/1}\label{sandstorm_8h_aa449a255205ebdc6dba287bdecce6fcc}
+
+
+Definition at line 34 of file sandstorm.\+h.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{sandstorm_8h_ac661e702905cd5093cb237555ba5c1c0}{}\index{sandstorm.\+h@{sandstorm.\+h}!Thread\+Check\+Sand\+Storm\+Pool@{Thread\+Check\+Sand\+Storm\+Pool}}
+\index{Thread\+Check\+Sand\+Storm\+Pool@{Thread\+Check\+Sand\+Storm\+Pool}!sandstorm.\+h@{sandstorm.\+h}}
+\subsubsection[{Thread\+Check\+Sand\+Storm\+Pool}]{\setlength{\rightskip}{0pt plus 5cm}void Thread\+Check\+Sand\+Storm\+Pool (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{sandstorm_8h_ac661e702905cd5093cb237555ba5c1c0}
+
+
+Definition at line 2196 of file sandstorm.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 3
+
+
+
+
+\subsection{Variable Documentation}
+\hypertarget{sandstorm_8h_ac75d1761e37a1f1cbf71007bcbadf5b0}{}\index{sandstorm.\+h@{sandstorm.\+h}!active\+Stormnode@{active\+Stormnode}}
+\index{active\+Stormnode@{active\+Stormnode}!sandstorm.\+h@{sandstorm.\+h}}
+\subsubsection[{active\+Stormnode}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Active\+Stormnode} active\+Stormnode}\label{sandstorm_8h_ac75d1761e37a1f1cbf71007bcbadf5b0}
+
+
+Definition at line 36 of file sandstorm.\+cpp.
+
+\hypertarget{sandstorm_8h_ad2c083d07766489aaa2a282af5545eb5}{}\index{sandstorm.\+h@{sandstorm.\+h}!map\+Sandstorm\+Broadcast\+Txes@{map\+Sandstorm\+Broadcast\+Txes}}
+\index{map\+Sandstorm\+Broadcast\+Txes@{map\+Sandstorm\+Broadcast\+Txes}!sandstorm.\+h@{sandstorm.\+h}}
+\subsubsection[{map\+Sandstorm\+Broadcast\+Txes}]{\setlength{\rightskip}{0pt plus 5cm}map$<${\bf uint256}, {\bf C\+Sandstorm\+Broadcast\+Tx}$>$ map\+Sandstorm\+Broadcast\+Txes}\label{sandstorm_8h_ad2c083d07766489aaa2a282af5545eb5}
+
+
+Definition at line 34 of file sandstorm.\+cpp.
+
+\hypertarget{sandstorm_8h_addaca1e09682bd47278ce6208b48fd75}{}\index{sandstorm.\+h@{sandstorm.\+h}!sand\+Storm\+Pool@{sand\+Storm\+Pool}}
+\index{sand\+Storm\+Pool@{sand\+Storm\+Pool}!sandstorm.\+h@{sandstorm.\+h}}
+\subsubsection[{sand\+Storm\+Pool}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Sandstorm\+Pool} sand\+Storm\+Pool}\label{sandstorm_8h_addaca1e09682bd47278ce6208b48fd75}
+
+
+Definition at line 26 of file sandstorm.\+cpp.
+
+\hypertarget{sandstorm_8h_af6ac9f9a52a47b030c3d4a38d13af2b1}{}\index{sandstorm.\+h@{sandstorm.\+h}!sand\+Storm\+Signer@{sand\+Storm\+Signer}}
+\index{sand\+Storm\+Signer@{sand\+Storm\+Signer}!sandstorm.\+h@{sandstorm.\+h}}
+\subsubsection[{sand\+Storm\+Signer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf C\+Sand\+Storm\+Signer} sand\+Storm\+Signer}\label{sandstorm_8h_af6ac9f9a52a47b030c3d4a38d13af2b1}
+
+
+Definition at line 28 of file sandstorm.\+cpp.
+
+\hypertarget{sandstorm_8h_a87851f2f7e50eb7ee21387115e61f325}{}\index{sandstorm.\+h@{sandstorm.\+h}!str\+Storm\+Node\+Priv\+Key@{str\+Storm\+Node\+Priv\+Key}}
+\index{str\+Storm\+Node\+Priv\+Key@{str\+Storm\+Node\+Priv\+Key}!sandstorm.\+h@{sandstorm.\+h}}
+\subsubsection[{str\+Storm\+Node\+Priv\+Key}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string str\+Storm\+Node\+Priv\+Key}\label{sandstorm_8h_a87851f2f7e50eb7ee21387115e61f325}
+
+
+Definition at line 77 of file util.\+cpp.
+
+\hypertarget{sandstorm_8h_ae4370a1e41b31b2b6690d62314d0b971}{}\index{sandstorm.\+h@{sandstorm.\+h}!vec\+Sandstorm\+Queue@{vec\+Sandstorm\+Queue}}
+\index{vec\+Sandstorm\+Queue@{vec\+Sandstorm\+Queue}!sandstorm.\+h@{sandstorm.\+h}}
+\subsubsection[{vec\+Sandstorm\+Queue}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf C\+Sandstorm\+Queue}$>$ vec\+Sandstorm\+Queue}\label{sandstorm_8h_ae4370a1e41b31b2b6690d62314d0b971}
+
+
+Definition at line 30 of file sandstorm.\+cpp.
+

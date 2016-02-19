@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="iterator__wrapper_8h" kind="file" language="C++">
+    <compoundname>iterator_wrapper.h</compoundname>
+    <includedby refid="merger_8cc" local="yes">/home/dev/ds-160209/src/leveldb/table/merger.cc</includedby>
+    <includedby refid="two__level__iterator_8cc" local="yes">/home/dev/ds-160209/src/leveldb/table/two_level_iterator.cc</includedby>
+    <invincdepgraph>
+      <node id="39358">
+        <label>/home/dev/ds-160209/src/leveldb/table/merger.cc</label>
+        <link refid="merger_8cc"/>
+      </node>
+      <node id="39357">
+        <label>/home/dev/ds-160209/src/leveldb/table/iterator_wrapper.h</label>
+        <link refid="iterator_wrapper.h"/>
+        <childnode refid="39358" relation="include">
+        </childnode>
+        <childnode refid="39359" relation="include">
+        </childnode>
+      </node>
+      <node id="39359">
+        <label>/home/dev/ds-160209/src/leveldb/table/two_level_iterator.cc</label>
+        <link refid="two__level__iterator_8cc"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classleveldb_1_1_iterator_wrapper" prot="public">leveldb::IteratorWrapper</innerclass>
+    <innernamespace refid="namespaceleveldb">leveldb</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2011-2016<sp/>The<sp/>LevelDB<sp/>Authors.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>of<sp/>this<sp/>source<sp/>code<sp/>is<sp/>governed<sp/>by<sp/>a<sp/>BSD-style<sp/>license<sp/>that<sp/>can<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>found<sp/>in<sp/>the<sp/>LICENSE<sp/>file.<sp/>See<sp/>the<sp/>AUTHORS<sp/>file<sp/>for<sp/>names<sp/>of<sp/>contributors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>STORAGE_LEVELDB_TABLE_ITERATOR_WRAPPER_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>STORAGE_LEVELDB_TABLE_ITERATOR_WRAPPER_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceleveldb" kindref="compound">leveldb</ref><sp/>{</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>A<sp/>internal<sp/>wrapper<sp/>class<sp/>with<sp/>an<sp/>interface<sp/>similar<sp/>to<sp/>Iterator<sp/>that</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>caches<sp/>the<sp/>valid()<sp/>and<sp/>key()<sp/>results<sp/>for<sp/>an<sp/>underlying<sp/>iterator.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>This<sp/>can<sp/>help<sp/>avoid<sp/>virtual<sp/>function<sp/>calls<sp/>and<sp/>also<sp/>gives<sp/>better</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/>cache<sp/>locality.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14" refid="classleveldb_1_1_iterator_wrapper" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classleveldb_1_1_iterator_wrapper" kindref="compound">IteratorWrapper</ref><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="16" refid="classleveldb_1_1_iterator_wrapper_1a8fba8a05ace9ed7a4f0a32f2c8eab73d" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_iterator_wrapper_1a8fba8a05ace9ed7a4f0a32f2c8eab73d" kindref="member">IteratorWrapper</ref>():<sp/>iter_(NULL),<sp/>valid_(false)<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="17" refid="classleveldb_1_1_iterator_wrapper_1ab4714f21809e357b4d5b6bdbec4fe98f" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_iterator_wrapper_1ab4714f21809e357b4d5b6bdbec4fe98f" kindref="member">IteratorWrapper</ref>(<ref refid="classleveldb_1_1_iterator" kindref="compound">Iterator</ref>*<sp/><ref refid="classleveldb_1_1_iterator_wrapper_1a692d580f1e3deb50cd3dc52e68c6d83e" kindref="member">iter</ref>):<sp/>iter_(NULL)<sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classleveldb_1_1_iterator_wrapper_1ae14dd8ac682dd596ba2a3d2407e1a4fd" kindref="member">Set</ref>(iter);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="20" refid="classleveldb_1_1_iterator_wrapper_1acbee07d5d34bbd2e2b5590d77a4e105c" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_iterator_wrapper_1acbee07d5d34bbd2e2b5590d77a4e105c" kindref="member">~IteratorWrapper</ref>()<sp/>{<sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>iter_;<sp/>}</highlight></codeline>
+<codeline lineno="21" refid="classleveldb_1_1_iterator_wrapper_1a692d580f1e3deb50cd3dc52e68c6d83e" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_iterator" kindref="compound">Iterator</ref>*<sp/><ref refid="classleveldb_1_1_iterator_wrapper_1a692d580f1e3deb50cd3dc52e68c6d83e" kindref="member">iter</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>iter_;<sp/>}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Takes<sp/>ownership<sp/>of<sp/>&quot;iter&quot;<sp/>and<sp/>will<sp/>delete<sp/>it<sp/>when<sp/>destroyed,<sp/>or</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>when<sp/>Set()<sp/>is<sp/>invoked<sp/>again.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25" refid="classleveldb_1_1_iterator_wrapper_1ae14dd8ac682dd596ba2a3d2407e1a4fd" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_iterator_wrapper_1ae14dd8ac682dd596ba2a3d2407e1a4fd" kindref="member">Set</ref>(<ref refid="classleveldb_1_1_iterator" kindref="compound">Iterator</ref>*<sp/><ref refid="classleveldb_1_1_iterator_wrapper_1a692d580f1e3deb50cd3dc52e68c6d83e" kindref="member">iter</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>iter_;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>iter_<sp/>=<sp/><ref refid="classleveldb_1_1_iterator_wrapper_1a692d580f1e3deb50cd3dc52e68c6d83e" kindref="member">iter</ref>;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(iter_<sp/>==<sp/>NULL)<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>valid_<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>Update();</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Iterator<sp/>interface<sp/>methods</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="classleveldb_1_1_iterator_wrapper_1a42a21e1d067c50de69f1385ea65e0fc1" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_iterator_wrapper_1a42a21e1d067c50de69f1385ea65e0fc1" kindref="member">Valid</ref>()</highlight><highlight class="keyword"><sp/>const<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>valid_;<sp/>}</highlight></codeline>
+<codeline lineno="38" refid="classleveldb_1_1_iterator_wrapper_1a1c37e4c009e2d3b58f2085022c966470" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref><sp/><ref refid="classleveldb_1_1_iterator_wrapper_1a1c37e4c009e2d3b58f2085022c966470" kindref="member">key</ref>()</highlight><highlight class="keyword"><sp/>const<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/>assert(<ref refid="classleveldb_1_1_iterator_wrapper_1a42a21e1d067c50de69f1385ea65e0fc1" kindref="member">Valid</ref>());<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>key_;<sp/>}</highlight></codeline>
+<codeline lineno="39" refid="classleveldb_1_1_iterator_wrapper_1ae9a12c8e016afc20b493de0bfcdaac21" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref><sp/><ref refid="classleveldb_1_1_iterator_wrapper_1ae9a12c8e016afc20b493de0bfcdaac21" kindref="member">value</ref>()</highlight><highlight class="keyword"><sp/>const<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/>assert(<ref refid="classleveldb_1_1_iterator_wrapper_1a42a21e1d067c50de69f1385ea65e0fc1" kindref="member">Valid</ref>());<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>iter_-&gt;<ref refid="classleveldb_1_1_iterator_1a613ac2e965518aad7a064c64c72bcf7c" kindref="member">value</ref>();<sp/>}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Methods<sp/>below<sp/>require<sp/>iter()<sp/>!=<sp/>NULL</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classleveldb_1_1_iterator_wrapper_1a1aaa880e200db3226cbf1e7373ffb6a8" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_status" kindref="compound">Status</ref><sp/><ref refid="classleveldb_1_1_iterator_wrapper_1a1aaa880e200db3226cbf1e7373ffb6a8" kindref="member">status</ref>()</highlight><highlight class="keyword"><sp/>const<sp/><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{<sp/>assert(iter_);<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>iter_-&gt;<ref refid="classleveldb_1_1_iterator_1ac84f34623a031b7eeb23409320f76376" kindref="member">status</ref>();<sp/>}</highlight></codeline>
+<codeline lineno="42" refid="classleveldb_1_1_iterator_wrapper_1abcd48a4cbd0466c8566f2c12ad8a1038" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_iterator_wrapper_1abcd48a4cbd0466c8566f2c12ad8a1038" kindref="member">Next</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>assert(iter_);<sp/>iter_-&gt;<ref refid="classleveldb_1_1_iterator_1aea54a5ca7eb942eb15770820529410e7" kindref="member">Next</ref>();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Update();<sp/>}</highlight></codeline>
+<codeline lineno="43" refid="classleveldb_1_1_iterator_wrapper_1abfd17dc9aef7f4d59603b2edab2ffb77" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_iterator_wrapper_1abfd17dc9aef7f4d59603b2edab2ffb77" kindref="member">Prev</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>assert(iter_);<sp/>iter_-&gt;<ref refid="classleveldb_1_1_iterator_1a28798d802a203788587dc6adc5bc729e" kindref="member">Prev</ref>();<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Update();<sp/>}</highlight></codeline>
+<codeline lineno="44" refid="classleveldb_1_1_iterator_wrapper_1a5dc3cd4e168e8ec0ab3a094cf36ae5d0" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_iterator_wrapper_1a5dc3cd4e168e8ec0ab3a094cf36ae5d0" kindref="member">Seek</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/>k)<sp/>{<sp/>assert(iter_);<sp/>iter_-&gt;<ref refid="classleveldb_1_1_iterator_1a97a556e97ded60c677fbf4de7321ec44" kindref="member">Seek</ref>(k);<sp/><sp/><sp/><sp/><sp/><sp/><sp/>Update();<sp/>}</highlight></codeline>
+<codeline lineno="45" refid="classleveldb_1_1_iterator_wrapper_1a06923cd8c121cf7491cc2b043a479445" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_iterator_wrapper_1a06923cd8c121cf7491cc2b043a479445" kindref="member">SeekToFirst</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>assert(iter_);<sp/>iter_-&gt;<ref refid="classleveldb_1_1_iterator_1a3594967cf26ddf1d37c7b886bb48627e" kindref="member">SeekToFirst</ref>();<sp/>Update();<sp/>}</highlight></codeline>
+<codeline lineno="46" refid="classleveldb_1_1_iterator_wrapper_1ae09179113b28aa3ea1da70b3a7a5f04b" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_iterator_wrapper_1ae09179113b28aa3ea1da70b3a7a5f04b" kindref="member">SeekToLast</ref>()<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{<sp/>assert(iter_);<sp/>iter_-&gt;<ref refid="classleveldb_1_1_iterator_1a8ad637f0a759e6d94cca6c5b4db440d3" kindref="member">SeekToLast</ref>();<sp/><sp/>Update();<sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>Update()<sp/>{</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>valid_<sp/>=<sp/>iter_-&gt;<ref refid="classleveldb_1_1_iterator_1a38614978bfa0586327b8e237bcb46012" kindref="member">Valid</ref>();</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(valid_)<sp/>{</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>key_<sp/>=<sp/>iter_-&gt;<ref refid="classleveldb_1_1_iterator_1ad17feced6e24a1b21db5ae6940c1f220" kindref="member">key</ref>();</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/>Iterator*<sp/>iter_;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>valid_;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/>Slice<sp/>key_;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>leveldb</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/>//<sp/>STORAGE_LEVELDB_TABLE_ITERATOR_WRAPPER_H_</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/leveldb/table/iterator_wrapper.h"/>
+  </compounddef>
+</doxygen>

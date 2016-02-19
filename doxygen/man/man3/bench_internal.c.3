@@ -1,0 +1,238 @@
+.TH "/home/dev/ds-160209/src/secp256k1/src/bench_internal.c" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+/home/dev/ds-160209/src/secp256k1/src/bench_internal.c \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include 'include/secp256k1\&.h'\fP
+.br
+\fC#include 'util\&.h'\fP
+.br
+\fC#include 'hash_impl\&.h'\fP
+.br
+\fC#include 'num_impl\&.h'\fP
+.br
+\fC#include 'field_impl\&.h'\fP
+.br
+\fC#include 'group_impl\&.h'\fP
+.br
+\fC#include 'scalar_impl\&.h'\fP
+.br
+\fC#include 'ecmult_const_impl\&.h'\fP
+.br
+\fC#include 'ecmult_impl\&.h'\fP
+.br
+\fC#include 'bench\&.h'\fP
+.br
+\fC#include 'secp256k1\&.c'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBbench_inv_t\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBbench_setup\fP (void *\fBarg\fP)"
+.br
+.ti -1c
+.RI "void \fBbench_scalar_add\fP (void *\fBarg\fP)"
+.br
+.ti -1c
+.RI "void \fBbench_scalar_negate\fP (void *\fBarg\fP)"
+.br
+.ti -1c
+.RI "void \fBbench_scalar_sqr\fP (void *\fBarg\fP)"
+.br
+.ti -1c
+.RI "void \fBbench_scalar_mul\fP (void *\fBarg\fP)"
+.br
+.ti -1c
+.RI "void \fBbench_scalar_inverse\fP (void *\fBarg\fP)"
+.br
+.ti -1c
+.RI "void \fBbench_scalar_inverse_var\fP (void *\fBarg\fP)"
+.br
+.ti -1c
+.RI "void \fBbench_field_normalize\fP (void *\fBarg\fP)"
+.br
+.ti -1c
+.RI "void \fBbench_field_normalize_weak\fP (void *\fBarg\fP)"
+.br
+.ti -1c
+.RI "void \fBbench_field_mul\fP (void *\fBarg\fP)"
+.br
+.ti -1c
+.RI "void \fBbench_field_sqr\fP (void *\fBarg\fP)"
+.br
+.ti -1c
+.RI "void \fBbench_field_inverse\fP (void *\fBarg\fP)"
+.br
+.ti -1c
+.RI "void \fBbench_field_inverse_var\fP (void *\fBarg\fP)"
+.br
+.ti -1c
+.RI "void \fBbench_field_sqrt_var\fP (void *\fBarg\fP)"
+.br
+.ti -1c
+.RI "void \fBbench_group_double_var\fP (void *\fBarg\fP)"
+.br
+.ti -1c
+.RI "void \fBbench_group_add_var\fP (void *\fBarg\fP)"
+.br
+.ti -1c
+.RI "void \fBbench_group_add_affine\fP (void *\fBarg\fP)"
+.br
+.ti -1c
+.RI "void \fBbench_group_add_affine_var\fP (void *\fBarg\fP)"
+.br
+.ti -1c
+.RI "void \fBbench_ecmult_wnaf\fP (void *\fBarg\fP)"
+.br
+.ti -1c
+.RI "void \fBbench_wnaf_const\fP (void *\fBarg\fP)"
+.br
+.ti -1c
+.RI "void \fBbench_sha256\fP (void *\fBarg\fP)"
+.br
+.ti -1c
+.RI "void \fBbench_hmac_sha256\fP (void *\fBarg\fP)"
+.br
+.ti -1c
+.RI "void \fBbench_rfc6979_hmac_sha256\fP (void *\fBarg\fP)"
+.br
+.ti -1c
+.RI "void \fBbench_context_verify\fP (void *\fBarg\fP)"
+.br
+.ti -1c
+.RI "void \fBbench_context_sign\fP (void *\fBarg\fP)"
+.br
+.ti -1c
+.RI "int \fBhave_flag\fP (int argc, char **argv, char *flag)"
+.br
+.ti -1c
+.RI "int \fBmain\fP (int argc, char **argv)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "void bench_context_sign (void * arg)"
+
+.PP
+Definition at line 294 of file bench_internal\&.c\&.
+.SS "void bench_context_verify (void * arg)"
+
+.PP
+Definition at line 286 of file bench_internal\&.c\&.
+.SS "void bench_ecmult_wnaf (void * arg)"
+
+.PP
+Definition at line 230 of file bench_internal\&.c\&.
+.SS "void bench_field_inverse (void * arg)"
+
+.PP
+Definition at line 164 of file bench_internal\&.c\&.
+.SS "void bench_field_inverse_var (void * arg)"
+
+.PP
+Definition at line 174 of file bench_internal\&.c\&.
+.SS "void bench_field_mul (void * arg)"
+
+.PP
+Definition at line 146 of file bench_internal\&.c\&.
+.SS "void bench_field_normalize (void * arg)"
+
+.PP
+Definition at line 128 of file bench_internal\&.c\&.
+.SS "void bench_field_normalize_weak (void * arg)"
+
+.PP
+Definition at line 137 of file bench_internal\&.c\&.
+.SS "void bench_field_sqr (void * arg)"
+
+.PP
+Definition at line 155 of file bench_internal\&.c\&.
+.SS "void bench_field_sqrt_var (void * arg)"
+
+.PP
+Definition at line 184 of file bench_internal\&.c\&.
+.SS "void bench_group_add_affine (void * arg)"
+
+.PP
+Definition at line 212 of file bench_internal\&.c\&.
+.SS "void bench_group_add_affine_var (void * arg)"
+
+.PP
+Definition at line 221 of file bench_internal\&.c\&.
+.SS "void bench_group_add_var (void * arg)"
+
+.PP
+Definition at line 203 of file bench_internal\&.c\&.
+.SS "void bench_group_double_var (void * arg)"
+
+.PP
+Definition at line 194 of file bench_internal\&.c\&.
+.SS "void bench_hmac_sha256 (void * arg)"
+
+.PP
+Definition at line 263 of file bench_internal\&.c\&.
+.SS "void bench_rfc6979_hmac_sha256 (void * arg)"
+
+.PP
+Definition at line 275 of file bench_internal\&.c\&.
+.SS "void bench_scalar_add (void * arg)"
+
+.PP
+Definition at line 59 of file bench_internal\&.c\&.
+.SS "void bench_scalar_inverse (void * arg)"
+
+.PP
+Definition at line 108 of file bench_internal\&.c\&.
+.SS "void bench_scalar_inverse_var (void * arg)"
+
+.PP
+Definition at line 118 of file bench_internal\&.c\&.
+.SS "void bench_scalar_mul (void * arg)"
+
+.PP
+Definition at line 86 of file bench_internal\&.c\&.
+.SS "void bench_scalar_negate (void * arg)"
+
+.PP
+Definition at line 68 of file bench_internal\&.c\&.
+.SS "void bench_scalar_sqr (void * arg)"
+
+.PP
+Definition at line 77 of file bench_internal\&.c\&.
+.SS "void bench_setup (void * arg)"
+
+.PP
+Definition at line 30 of file bench_internal\&.c\&.
+.SS "void bench_sha256 (void * arg)"
+
+.PP
+Definition at line 251 of file bench_internal\&.c\&.
+.SS "void bench_wnaf_const (void * arg)"
+
+.PP
+Definition at line 240 of file bench_internal\&.c\&.
+.SS "int have_flag (int argc, char ** argv, char * flag)"
+
+.PP
+Definition at line 303 of file bench_internal\&.c\&.
+.SS "int main (int argc, char ** argv)"
+
+.PP
+Definition at line 318 of file bench_internal\&.c\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

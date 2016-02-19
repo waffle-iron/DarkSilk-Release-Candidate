@@ -1,0 +1,973 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="base58_8cpp" kind="file" language="C++">
+    <compoundname>base58.cpp</compoundname>
+    <includes refid="base58_8h" local="yes">base58.h</includes>
+    <includes refid="hash_8h" local="yes">hash.h</includes>
+    <includes refid="uint256_8h" local="yes">uint256.h</includes>
+    <includes local="no">assert.h</includes>
+    <includes refid="stdint_8h" local="no">stdint.h</includes>
+    <includes local="no">string.h</includes>
+    <includes local="no">vector</includes>
+    <includes local="no">string</includes>
+    <includes local="no">boost/variant/apply_visitor.hpp</includes>
+    <includes local="no">boost/variant/static_visitor.hpp</includes>
+    <incdepgraph>
+      <node id="30601">
+        <label>list</label>
+      </node>
+      <node id="30570">
+        <label>boost/thread/mutex.hpp</label>
+      </node>
+      <node id="30600">
+        <label>amount.h</label>
+        <link refid="amount_8h"/>
+        <childnode refid="30554" relation="include">
+        </childnode>
+        <childnode refid="30568" relation="include">
+        </childnode>
+        <childnode refid="30555" relation="include">
+        </childnode>
+      </node>
+      <node id="30560">
+        <label>limits</label>
+      </node>
+      <node id="30585">
+        <label>crypto/sha256.h</label>
+        <link refid="sha256_8h"/>
+        <childnode refid="30561" relation="include">
+        </childnode>
+        <childnode refid="30568" relation="include">
+        </childnode>
+      </node>
+      <node id="30586">
+        <label>crypto/argon2/blake2/blake2.h</label>
+        <link refid="blake2_8h"/>
+        <childnode refid="30587" relation="include">
+        </childnode>
+        <childnode refid="30561" relation="include">
+        </childnode>
+        <childnode refid="30572" relation="include">
+        </childnode>
+      </node>
+      <node id="30590">
+        <label>script.h</label>
+        <link refid="script_8h"/>
+        <childnode refid="30555" relation="include">
+        </childnode>
+        <childnode refid="30556" relation="include">
+        </childnode>
+        <childnode refid="30561" relation="include">
+        </childnode>
+        <childnode refid="30591" relation="include">
+        </childnode>
+        <childnode refid="30592" relation="include">
+        </childnode>
+        <childnode refid="30580" relation="include">
+        </childnode>
+        <childnode refid="30553" relation="include">
+        </childnode>
+        <childnode refid="30593" relation="include">
+        </childnode>
+        <childnode refid="30613" relation="include">
+        </childnode>
+      </node>
+      <node id="30612">
+        <label>openssl/rand.h</label>
+      </node>
+      <node id="30577">
+        <label>assert.h</label>
+      </node>
+      <node id="30565">
+        <label>boost/tuple/tuple.hpp</label>
+      </node>
+      <node id="30551">
+        <label>base58.h</label>
+        <link refid="base58_8h"/>
+        <childnode refid="30552" relation="include">
+        </childnode>
+        <childnode refid="30580" relation="include">
+        </childnode>
+        <childnode refid="30589" relation="include">
+        </childnode>
+        <childnode refid="30590" relation="include">
+        </childnode>
+        <childnode refid="30566" relation="include">
+        </childnode>
+        <childnode refid="30555" relation="include">
+        </childnode>
+        <childnode refid="30556" relation="include">
+        </childnode>
+      </node>
+      <node id="30574">
+        <label>version.h</label>
+        <link refid="version_8h"/>
+        <childnode refid="30575" relation="include">
+        </childnode>
+        <childnode refid="30555" relation="include">
+        </childnode>
+      </node>
+      <node id="30571">
+        <label>sys/mman.h</label>
+      </node>
+      <node id="30568">
+        <label>stdlib.h</label>
+      </node>
+      <node id="30591">
+        <label>boost/foreach.hpp</label>
+      </node>
+      <node id="30611">
+        <label>openssl/crypto.h</label>
+      </node>
+      <node id="30607">
+        <label>boost/date_time/posix_time/posix_time_types.hpp</label>
+      </node>
+      <node id="30582">
+        <label>openssl/sha.h</label>
+      </node>
+      <node id="30559">
+        <label>cassert</label>
+      </node>
+      <node id="30578">
+        <label>stdexcept</label>
+      </node>
+      <node id="30593">
+        <label>util.h</label>
+        <link refid="util_8h"/>
+        <childnode refid="30594" relation="include">
+        </childnode>
+        <childnode refid="30595" relation="include">
+        </childnode>
+        <childnode refid="30596" relation="include">
+        </childnode>
+        <childnode refid="30554" relation="include">
+        </childnode>
+        <childnode refid="30597" relation="include">
+        </childnode>
+        <childnode refid="30600" relation="include">
+        </childnode>
+        <childnode refid="30557" relation="include">
+        </childnode>
+        <childnode refid="30601" relation="include">
+        </childnode>
+        <childnode refid="30602" relation="include">
+        </childnode>
+        <childnode refid="30556" relation="include">
+        </childnode>
+        <childnode refid="30555" relation="include">
+        </childnode>
+        <childnode refid="30603" relation="include">
+        </childnode>
+        <childnode refid="30604" relation="include">
+        </childnode>
+        <childnode refid="30605" relation="include">
+        </childnode>
+        <childnode refid="30606" relation="include">
+        </childnode>
+        <childnode refid="30607" relation="include">
+        </childnode>
+        <childnode refid="30608" relation="include">
+        </childnode>
+        <childnode refid="30609" relation="include">
+        </childnode>
+        <childnode refid="30610" relation="include">
+        </childnode>
+        <childnode refid="30611" relation="include">
+        </childnode>
+        <childnode refid="30612" relation="include">
+        </childnode>
+        <childnode refid="30579" relation="include">
+        </childnode>
+        <childnode refid="30561" relation="include">
+        </childnode>
+      </node>
+      <node id="30606">
+        <label>boost/date_time/gregorian/gregorian_types.hpp</label>
+      </node>
+      <node id="30555">
+        <label>string</label>
+      </node>
+      <node id="30557">
+        <label>map</label>
+      </node>
+      <node id="30603">
+        <label>boost/thread.hpp</label>
+      </node>
+      <node id="30587">
+        <label>stddef.h</label>
+      </node>
+      <node id="30592">
+        <label>boost/variant.hpp</label>
+      </node>
+      <node id="30550">
+        <label>/home/dev/ds-160209/src/base58.cpp</label>
+        <link refid="base58.cpp"/>
+        <childnode refid="30551" relation="include">
+        </childnode>
+        <childnode refid="30581" relation="include">
+        </childnode>
+        <childnode refid="30576" relation="include">
+        </childnode>
+        <childnode refid="30577" relation="include">
+        </childnode>
+        <childnode refid="30561" relation="include">
+        </childnode>
+        <childnode refid="30569" relation="include">
+        </childnode>
+        <childnode refid="30556" relation="include">
+        </childnode>
+        <childnode refid="30555" relation="include">
+        </childnode>
+        <childnode refid="30616" relation="include">
+        </childnode>
+        <childnode refid="30617" relation="include">
+        </childnode>
+      </node>
+      <node id="30554">
+        <label>serialize.h</label>
+        <link refid="serialize_8h"/>
+        <childnode refid="30555" relation="include">
+        </childnode>
+        <childnode refid="30556" relation="include">
+        </childnode>
+        <childnode refid="30557" relation="include">
+        </childnode>
+        <childnode refid="30558" relation="include">
+        </childnode>
+        <childnode refid="30559" relation="include">
+        </childnode>
+        <childnode refid="30560" relation="include">
+        </childnode>
+        <childnode refid="30561" relation="include">
+        </childnode>
+        <childnode refid="30562" relation="include">
+        </childnode>
+        <childnode refid="30563" relation="include">
+        </childnode>
+        <childnode refid="30564" relation="include">
+        </childnode>
+        <childnode refid="30565" relation="include">
+        </childnode>
+        <childnode refid="30566" relation="include">
+        </childnode>
+        <childnode refid="30574" relation="include">
+        </childnode>
+      </node>
+      <node id="30572">
+        <label>limits.h</label>
+      </node>
+      <node id="30596">
+        <label>sys/resource.h</label>
+      </node>
+      <node id="30608">
+        <label>openssl/bio.h</label>
+      </node>
+      <node id="30616">
+        <label>boost/variant/apply_visitor.hpp</label>
+      </node>
+      <node id="30581">
+        <label>hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="30576" relation="include">
+        </childnode>
+        <childnode refid="30554" relation="include">
+        </childnode>
+        <childnode refid="30582" relation="include">
+        </childnode>
+        <childnode refid="30583" relation="include">
+        </childnode>
+        <childnode refid="30584" relation="include">
+        </childnode>
+        <childnode refid="30585" relation="include">
+        </childnode>
+        <childnode refid="30586" relation="include">
+        </childnode>
+        <childnode refid="30588" relation="include">
+        </childnode>
+        <childnode refid="30556" relation="include">
+        </childnode>
+      </node>
+      <node id="30613">
+        <label>stealth.h</label>
+        <link refid="stealth_8h"/>
+        <childnode refid="30593" relation="include">
+        </childnode>
+        <childnode refid="30554" relation="include">
+        </childnode>
+        <childnode refid="30568" relation="include">
+        </childnode>
+        <childnode refid="30614" relation="include">
+        </childnode>
+        <childnode refid="30556" relation="include">
+        </childnode>
+        <childnode refid="30615" relation="include">
+        </childnode>
+      </node>
+      <node id="30594">
+        <label>sys/types.h</label>
+      </node>
+      <node id="30569">
+        <label>string.h</label>
+      </node>
+      <node id="30575">
+        <label>clientversion.h</label>
+        <link refid="clientversion_8h"/>
+      </node>
+      <node id="30563">
+        <label>cstdio</label>
+      </node>
+      <node id="30610">
+        <label>openssl/buffer.h</label>
+      </node>
+      <node id="30564">
+        <label>boost/type_traits/is_fundamental.hpp</label>
+      </node>
+      <node id="30605">
+        <label>boost/filesystem/path.hpp</label>
+      </node>
+      <node id="30580">
+        <label>pubkey.h</label>
+        <link refid="pubkey_8h"/>
+        <childnode refid="30581" relation="include">
+        </childnode>
+        <childnode refid="30554" relation="include">
+        </childnode>
+        <childnode refid="30576" relation="include">
+        </childnode>
+        <childnode refid="30578" relation="include">
+        </childnode>
+        <childnode refid="30556" relation="include">
+        </childnode>
+      </node>
+      <node id="30573">
+        <label>unistd.h</label>
+      </node>
+      <node id="30556">
+        <label>vector</label>
+      </node>
+      <node id="30553">
+        <label>bignum.h</label>
+        <link refid="bignum_8h"/>
+        <childnode refid="30554" relation="include">
+        </childnode>
+        <childnode refid="30576" relation="include">
+        </childnode>
+        <childnode refid="30579" relation="include">
+        </childnode>
+        <childnode refid="30578" relation="include">
+        </childnode>
+        <childnode refid="30556" relation="include">
+        </childnode>
+        <childnode refid="30561" relation="include">
+        </childnode>
+      </node>
+      <node id="30583">
+        <label>openssl/ripemd.h</label>
+      </node>
+      <node id="30604">
+        <label>boost/filesystem.hpp</label>
+      </node>
+      <node id="30602">
+        <label>utility</label>
+      </node>
+      <node id="30617">
+        <label>boost/variant/static_visitor.hpp</label>
+      </node>
+      <node id="30599">
+        <label>sstream</label>
+      </node>
+      <node id="30589">
+        <label>key.h</label>
+        <link refid="key_8h"/>
+        <childnode refid="30566" relation="include">
+        </childnode>
+        <childnode refid="30580" relation="include">
+        </childnode>
+        <childnode refid="30578" relation="include">
+        </childnode>
+        <childnode refid="30556" relation="include">
+        </childnode>
+      </node>
+      <node id="30609">
+        <label>openssl/evp.h</label>
+      </node>
+      <node id="30597">
+        <label>tinyformat.h</label>
+        <link refid="tinyformat_8h"/>
+        <childnode refid="30559" relation="include">
+        </childnode>
+        <childnode refid="30598" relation="include">
+        </childnode>
+        <childnode refid="30599" relation="include">
+        </childnode>
+        <childnode refid="30578" relation="include">
+        </childnode>
+      </node>
+      <node id="30561">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="30588">
+        <label>crypto/argon2/argon2.h</label>
+        <link refid="argon2_8h"/>
+        <childnode refid="30561" relation="include">
+        </childnode>
+        <childnode refid="30587" relation="include">
+        </childnode>
+        <childnode refid="30572" relation="include">
+        </childnode>
+      </node>
+      <node id="30595">
+        <label>sys/time.h</label>
+      </node>
+      <node id="30598">
+        <label>iostream</label>
+      </node>
+      <node id="30576">
+        <label>uint256.h</label>
+        <link refid="uint256_8h"/>
+        <childnode refid="30577" relation="include">
+        </childnode>
+        <childnode refid="30562" relation="include">
+        </childnode>
+        <childnode refid="30578" relation="include">
+        </childnode>
+        <childnode refid="30561" relation="include">
+        </childnode>
+        <childnode refid="30555" relation="include">
+        </childnode>
+        <childnode refid="30556" relation="include">
+        </childnode>
+      </node>
+      <node id="30579">
+        <label>openssl/bn.h</label>
+      </node>
+      <node id="30566">
+        <label>allocators.h</label>
+        <link refid="allocators_8h"/>
+        <childnode refid="30567" relation="include">
+        </childnode>
+        <childnode refid="30569" relation="include">
+        </childnode>
+        <childnode refid="30555" relation="include">
+        </childnode>
+        <childnode refid="30570" relation="include">
+        </childnode>
+        <childnode refid="30557" relation="include">
+        </childnode>
+        <childnode refid="30571" relation="include">
+        </childnode>
+        <childnode refid="30572" relation="include">
+        </childnode>
+        <childnode refid="30573" relation="include">
+        </childnode>
+      </node>
+      <node id="30558">
+        <label>set</label>
+      </node>
+      <node id="30552">
+        <label>chainparams.h</label>
+        <link refid="chainparams_8h"/>
+        <childnode refid="30553" relation="include">
+        </childnode>
+        <childnode refid="30576" relation="include">
+        </childnode>
+        <childnode refid="30556" relation="include">
+        </childnode>
+      </node>
+      <node id="30584">
+        <label>crypto/ripemd160.h</label>
+        <link refid="ripemd160_8h"/>
+        <childnode refid="30561" relation="include">
+        </childnode>
+        <childnode refid="30568" relation="include">
+        </childnode>
+      </node>
+      <node id="30614">
+        <label>stdio.h</label>
+      </node>
+      <node id="30567">
+        <label>cleanse.h</label>
+        <link refid="cleanse_8h"/>
+        <childnode refid="30568" relation="include">
+        </childnode>
+      </node>
+      <node id="30562">
+        <label>cstring</label>
+      </node>
+      <node id="30615">
+        <label>inttypes.h</label>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="base58_8cpp_1ab647a562dea2d764299dc9a7d3bb1175" prot="public" static="yes" mutable="no">
+        <type>const char *</type>
+        <definition>const char* pszBase58</definition>
+        <argsstring></argsstring>
+        <name>pszBase58</name>
+        <initializer>= &quot;123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz&quot;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/base58.cpp" line="20" column="1" bodyfile="/home/dev/ds-160209/src/base58.cpp" bodystart="20" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="base58_8cpp_1a0f74d1d6e7e982cad4b0e538acea4538" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool DecodeBase58</definition>
+        <argsstring>(const char *psz, std::vector&lt; unsigned char &gt; &amp;vch)</argsstring>
+        <name>DecodeBase58</name>
+        <param>
+          <type>const char *</type>
+          <declname>psz</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>vch</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Decode a base58-encoded string (psz) into a byte vector (vchRet). return true if decoding is successful. psz cannot be NULL. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/base58.cpp" line="22" column="1" bodyfile="/home/dev/ds-160209/src/base58.cpp" bodystart="22" bodyend="65"/>
+        <referencedby refid="base58_8h_1a83e290bb1b09e9c26a86863c5641111f" compoundref="base58_8cpp" startline="105" endline="107">DecodeBase58</referencedby>
+        <referencedby refid="base58_8h_1ae2dc7ad63e243509e0871ec4a5890678" compoundref="base58_8cpp" startline="117" endline="133">DecodeBase58Check</referencedby>
+        <referencedby refid="rpcwallet_8cpp_1a4bde25c1b4a97ec6068d2808594c9820" compoundref="rpcwallet_8cpp" startline="2383" endline="2487">importstealthaddress</referencedby>
+        <referencedby refid="smessage_8h_1a7d84ccbc16eb3d679638ba37b822a5e2" compoundref="smessage_8cpp" startline="2676" endline="2729">SecureMsgAddAddress</referencedby>
+        <referencedby refid="class_c_stealth_address_1aa3f4655dced125bf698c208b6e7ac4b8" compoundref="stealth_8cpp" startline="17" endline="64">CStealthAddress::SetEncoded</referencedby>
+        <referencedby refid="stealth_8h_1a26c89afcb720e8b1a9c9dadaee26757b" compoundref="stealth_8cpp" startline="649" endline="682">IsStealthAddress</referencedby>
+        <referencedby refid="base58__tests_8cpp_1a03911a4d6ae8736f7a28fe4fe0e0ece2" compoundref="base58__tests_8cpp" startline="37" endline="58">BOOST_AUTO_TEST_CASE</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="base58_8cpp_1a8d6f0e9d5df175b4966dcede31dc90ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string EncodeBase58</definition>
+        <argsstring>(const unsigned char *pbegin, const unsigned char *pend)</argsstring>
+        <name>EncodeBase58</name>
+        <param>
+          <type>const unsigned char *</type>
+          <declname>pbegin</declname>
+        </param>
+        <param>
+          <type>const unsigned char *</type>
+          <declname>pend</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Encode a byte sequence as a base58-encoded string. pbegin and pend cannot be NULL, unless both are. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/base58.cpp" line="67" column="1" bodyfile="/home/dev/ds-160209/src/base58.cpp" bodystart="67" bodyend="99"/>
+        <referencedby refid="base58_8h_1ab95cf95fa4e2631017335c2ea73090bc" compoundref="base58_8cpp" startline="101" endline="103">EncodeBase58</referencedby>
+        <referencedby refid="base58_8h_1ace9a5807ee51604f33044339f073ec76" compoundref="base58_8cpp" startline="109" endline="115">EncodeBase58Check</referencedby>
+        <referencedby refid="class_message_model_1a272e7ceeba4664046472e6f7c4d49d23" compoundref="messagemodel_8cpp" startline="331" endline="352">MessageModel::getAddressOrPubkey</referencedby>
+        <referencedby refid="rpcserver_8h_1af4d692a884c24c4abe2fc3f2b165542d" compoundref="rpcserver_8cpp" startline="517" endline="634">StartRPCThreads</referencedby>
+        <referencedby refid="rpcsmessage_8cpp_1af9835f898bc619ef6f9a39a5a8a9f2f1" compoundref="rpcsmessage_8cpp" startline="140" endline="346">smsglocalkeys</referencedby>
+        <referencedby refid="rpcsmessage_8cpp_1a7cf2eaa93f14ecaa9d8ac72fd3dc02a2" compoundref="rpcsmessage_8cpp" startline="427" endline="509">smsggetpubkey</referencedby>
+        <referencedby refid="smessage_8h_1a6dadcd107f4196325fd1b0841dbffd2a" compoundref="smessage_8cpp" startline="2619" endline="2647">SecureMsgGetLocalPublicKey</referencedby>
+        <referencedby refid="class_c_stealth_address_1a7d331c1fb6e9479b31d35a50c4bb0f0c" compoundref="stealth_8cpp" startline="66" endline="85">CStealthAddress::Encoded</referencedby>
+        <referencedby refid="base58__tests_8cpp_1ad270e557a9bafea8a9047386547b6615" compoundref="base58__tests_8cpp" startline="15" endline="34">BOOST_AUTO_TEST_CASE</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="base58_8cpp_1ab95cf95fa4e2631017335c2ea73090bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string EncodeBase58</definition>
+        <argsstring>(const std::vector&lt; unsigned char &gt; &amp;vch)</argsstring>
+        <name>EncodeBase58</name>
+        <param>
+          <type>const std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>vch</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Encode a byte vector as a base58-encoded string </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/base58.cpp" line="101" column="1" bodyfile="/home/dev/ds-160209/src/base58.cpp" bodystart="101" bodyend="103"/>
+        <references refid="base58_8cpp_1a8d6f0e9d5df175b4966dcede31dc90ad" compoundref="base58_8cpp" startline="67" endline="99">EncodeBase58</references>
+      </memberdef>
+      <memberdef kind="function" id="base58_8cpp_1a83e290bb1b09e9c26a86863c5641111f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool DecodeBase58</definition>
+        <argsstring>(const std::string &amp;str, std::vector&lt; unsigned char &gt; &amp;vchRet)</argsstring>
+        <name>DecodeBase58</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>vchRet</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Decode a base58-encoded string (str) into a byte vector (vchRet). return true if decoding is successful. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/base58.cpp" line="105" column="1" bodyfile="/home/dev/ds-160209/src/base58.cpp" bodystart="105" bodyend="107"/>
+        <references refid="base58_8cpp_1a0f74d1d6e7e982cad4b0e538acea4538" compoundref="base58_8cpp" startline="22" endline="65">DecodeBase58</references>
+      </memberdef>
+      <memberdef kind="function" id="base58_8cpp_1ace9a5807ee51604f33044339f073ec76" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string EncodeBase58Check</definition>
+        <argsstring>(const std::vector&lt; unsigned char &gt; &amp;vchIn)</argsstring>
+        <name>EncodeBase58Check</name>
+        <param>
+          <type>const std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>vchIn</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Encode a byte vector into a base58-encoded string, including checksum </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/base58.cpp" line="109" column="1" bodyfile="/home/dev/ds-160209/src/base58.cpp" bodystart="109" bodyend="115"/>
+        <references refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" compoundref="cache_8cc" startline="34">hash</references>
+        <references refid="hash_8h_1ab3f6c437460137530d86e09c2c102e99" compoundref="hash_8h" startline="77" endline="85">Hash</references>
+        <references refid="base58_8cpp_1a8d6f0e9d5df175b4966dcede31dc90ad" compoundref="base58_8cpp" startline="67" endline="99">EncodeBase58</references>
+        <referencedby refid="class_c_base58_data_1a9a47b10dadff15b8d6a6d0e63ce3ae32" compoundref="base58_8cpp" startline="175" endline="179">CBase58Data::ToString</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="base58_8cpp_1ae2dc7ad63e243509e0871ec4a5890678" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool DecodeBase58Check</definition>
+        <argsstring>(const char *psz, std::vector&lt; unsigned char &gt; &amp;vchRet)</argsstring>
+        <name>DecodeBase58Check</name>
+        <param>
+          <type>const char *</type>
+          <declname>psz</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>vchRet</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Decode a base58-encoded string (psz) that includes a checksum into a byte vector (vchRet), return true if decoding is successful </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/base58.cpp" line="117" column="1" bodyfile="/home/dev/ds-160209/src/base58.cpp" bodystart="117" bodyend="133"/>
+        <references refid="base58_8cpp_1a0f74d1d6e7e982cad4b0e538acea4538" compoundref="base58_8cpp" startline="22" endline="65">DecodeBase58</references>
+        <references refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" compoundref="cache_8cc" startline="34">hash</references>
+        <references refid="hash_8h_1ab3f6c437460137530d86e09c2c102e99" compoundref="hash_8h" startline="77" endline="85">Hash</references>
+        <references refid="classbase__uint_1a76539ef6be800bc02e4038f457a4f74a" compoundref="uint256_8h" startline="246" endline="249">base_uint&lt; BITS &gt;::end</references>
+        <referencedby refid="base58_8h_1a96597527b13547236b99430e6ac195b3" compoundref="base58_8cpp" startline="135" endline="137">DecodeBase58Check</referencedby>
+        <referencedby refid="class_c_base58_data_1a250fa3bc97d03c7d87de5485c8b49b57" compoundref="base58_8cpp" startline="155" endline="169">CBase58Data::SetString</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="base58_8cpp_1a96597527b13547236b99430e6ac195b3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool DecodeBase58Check</definition>
+        <argsstring>(const std::string &amp;str, std::vector&lt; unsigned char &gt; &amp;vchRet)</argsstring>
+        <name>DecodeBase58Check</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>vchRet</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Decode a base58-encoded string (str) that includes a checksum into a byte vector (vchRet), return true if decoding is successful </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/base58.cpp" line="135" column="1" bodyfile="/home/dev/ds-160209/src/base58.cpp" bodystart="135" bodyend="137"/>
+        <references refid="base58_8cpp_1ae2dc7ad63e243509e0871ec4a5890678" compoundref="base58_8cpp" startline="117" endline="133">DecodeBase58Check</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2009-2016<sp/>The<sp/>Bitcoin<sp/>Developers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2015-2016<sp/>Silk<sp/>Network</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Distributed<sp/>under<sp/>the<sp/>MIT/X11<sp/>software<sp/>license,<sp/>see<sp/>the<sp/>accompanying</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>file<sp/>COPYING<sp/>or<sp/>http://www.opensource.org/licenses/mit-license.php.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="base58_8h" kindref="compound">base58.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hash_8h" kindref="compound">hash.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="uint256_8h" kindref="compound">uint256.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;assert.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="stdint_8h" kindref="compound">stdint.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/variant/apply_visitor.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;boost/variant/static_visitor.hpp&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">/*<sp/>All<sp/>alphanumeric<sp/>characters<sp/>except<sp/>for<sp/>&quot;0&quot;,<sp/>&quot;I&quot;,<sp/>&quot;O&quot;,<sp/>and<sp/>&quot;l&quot;<sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>pszBase58<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="base58_8h_1a0f74d1d6e7e982cad4b0e538acea4538" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="base58_8cpp_1a0f74d1d6e7e982cad4b0e538acea4538" kindref="member">DecodeBase58</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*psz,<sp/>std::vector&lt;unsigned<sp/>char&gt;&amp;<sp/>vch)<sp/>{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Skip<sp/>leading<sp/>spaces.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(*psz<sp/>&amp;&amp;<sp/>isspace(*psz))</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>psz++;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Skip<sp/>and<sp/>count<sp/>leading<sp/>&apos;1&apos;s.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>zeroes<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(*psz<sp/>==<sp/></highlight><highlight class="charliteral">&apos;1&apos;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>zeroes++;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>psz++;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Allocate<sp/>enough<sp/>space<sp/>in<sp/>big-endian<sp/>base256<sp/>representation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;unsigned<sp/>char&gt;<sp/>b256(strlen(psz)<sp/>*<sp/>733<sp/>/<sp/>1000<sp/>+<sp/>1);<sp/></highlight><highlight class="comment">//<sp/>log(58)<sp/>/<sp/>log(256),<sp/>rounded<sp/>up.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Process<sp/>the<sp/>characters.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(*psz<sp/>&amp;&amp;<sp/>!isspace(*psz))<sp/>{</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Decode<sp/>base58<sp/>character</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*ch<sp/>=<sp/>strchr(pszBase58,<sp/>*psz);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(ch<sp/>==<sp/>NULL)</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Apply<sp/>&quot;b256<sp/>=<sp/>b256<sp/>*<sp/>58<sp/>+<sp/>ch&quot;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>carry<sp/>=<sp/>ch<sp/>-<sp/>pszBase58;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(std::vector&lt;unsigned<sp/>char&gt;::reverse_iterator<sp/>it<sp/>=<sp/>b256.rbegin();<sp/>it<sp/>!=<sp/>b256.rend();<sp/>it++)<sp/>{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>carry<sp/>+=<sp/>58<sp/>*<sp/>(*it);</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*it<sp/>=<sp/>carry<sp/>%<sp/>256;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>carry<sp/>/=<sp/>256;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(carry<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>psz++;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Skip<sp/>trailing<sp/>spaces.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(isspace(*psz))</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>psz++;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(*psz<sp/>!=<sp/>0)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Skip<sp/>leading<sp/>zeroes<sp/>in<sp/>b256.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;unsigned<sp/>char&gt;::iterator<sp/>it<sp/>=<sp/>b256.begin();</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(it<sp/>!=<sp/>b256.end()<sp/>&amp;&amp;<sp/>*it<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it++;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Copy<sp/>result<sp/>into<sp/>output<sp/>vector.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>vch.reserve(zeroes<sp/>+<sp/>(b256.end()<sp/>-<sp/>it));</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/>vch.assign(zeroes,<sp/>0x00);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(it<sp/>!=<sp/>b256.end())</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>vch.push_back(*(it++));</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="base58_8h_1a8d6f0e9d5df175b4966dcede31dc90ad" refkind="member"><highlight class="normal">std::string<sp/><ref refid="base58_8cpp_1a8d6f0e9d5df175b4966dcede31dc90ad" kindref="member">EncodeBase58</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>pbegin,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>pend)<sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Skip<sp/>&amp;<sp/>count<sp/>leading<sp/>zeroes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>zeroes<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(pbegin<sp/>!=<sp/>pend<sp/>&amp;&amp;<sp/>*pbegin<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pbegin++;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>zeroes++;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Allocate<sp/>enough<sp/>space<sp/>in<sp/>big-endian<sp/>base58<sp/>representation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;unsigned<sp/>char&gt;<sp/>b58((pend<sp/>-<sp/>pbegin)<sp/>*<sp/>138<sp/>/<sp/>100<sp/>+<sp/>1);<sp/></highlight><highlight class="comment">//<sp/>log(256)<sp/>/<sp/>log(58),<sp/>rounded<sp/>up.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Process<sp/>the<sp/>bytes.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(pbegin<sp/>!=<sp/>pend)<sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>carry<sp/>=<sp/>*pbegin;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Apply<sp/>&quot;b58<sp/>=<sp/>b58<sp/>*<sp/>256<sp/>+<sp/>ch&quot;.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(std::vector&lt;unsigned<sp/>char&gt;::reverse_iterator<sp/>it<sp/>=<sp/>b58.rbegin();<sp/>it<sp/>!=<sp/>b58.rend();<sp/>it++)<sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>carry<sp/>+=<sp/>256<sp/>*<sp/>(*it);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*it<sp/>=<sp/>carry<sp/>%<sp/>58;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>carry<sp/>/=<sp/>58;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>assert(carry<sp/>==<sp/>0);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>pbegin++;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Skip<sp/>leading<sp/>zeroes<sp/>in<sp/>base58<sp/>result.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;unsigned<sp/>char&gt;::iterator<sp/>it<sp/>=<sp/>b58.begin();</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(it<sp/>!=<sp/>b58.end()<sp/>&amp;&amp;<sp/>*it<sp/>==<sp/>0)</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>it++;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Translate<sp/>the<sp/>result<sp/>into<sp/>a<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/>str;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>str.reserve(zeroes<sp/>+<sp/>(b58.end()<sp/>-<sp/>it));</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/>str.assign(zeroes,<sp/></highlight><highlight class="charliteral">&apos;1&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(it<sp/>!=<sp/>b58.end())</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>str<sp/>+=<sp/>pszBase58[*(it++)];</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>str;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="base58_8h_1ab95cf95fa4e2631017335c2ea73090bc" refkind="member"><highlight class="normal">std::string<sp/><ref refid="base58_8cpp_1a8d6f0e9d5df175b4966dcede31dc90ad" kindref="member">EncodeBase58</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;unsigned<sp/>char&gt;&amp;<sp/>vch)<sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="base58_8cpp_1a8d6f0e9d5df175b4966dcede31dc90ad" kindref="member">EncodeBase58</ref>(&amp;vch[0],<sp/>&amp;vch[0]<sp/>+<sp/>vch.size());</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="base58_8h_1a83e290bb1b09e9c26a86863c5641111f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="base58_8cpp_1a0f74d1d6e7e982cad4b0e538acea4538" kindref="member">DecodeBase58</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>str,<sp/>std::vector&lt;unsigned<sp/>char&gt;&amp;<sp/>vchRet)<sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="base58_8cpp_1a0f74d1d6e7e982cad4b0e538acea4538" kindref="member">DecodeBase58</ref>(str.c_str(),<sp/>vchRet);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109" refid="base58_8h_1ace9a5807ee51604f33044339f073ec76" refkind="member"><highlight class="normal">std::string<sp/><ref refid="base58_8cpp_1ace9a5807ee51604f33044339f073ec76" kindref="member">EncodeBase58Check</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;unsigned<sp/>char&gt;&amp;<sp/>vchIn)<sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>add<sp/>4-byte<sp/>hash<sp/>check<sp/>to<sp/>the<sp/>end</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;unsigned<sp/>char&gt;<sp/>vch(vchIn);</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classuint256" kindref="compound">uint256</ref><sp/><ref refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" kindref="member">hash</ref><sp/>=<sp/><ref refid="hash_8h_1ab3f6c437460137530d86e09c2c102e99" kindref="member">Hash</ref>(vch.begin(),<sp/>vch.end());</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>vch.insert(vch.end(),<sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*)&amp;hash,<sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*)&amp;hash<sp/>+<sp/>4);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="base58_8cpp_1a8d6f0e9d5df175b4966dcede31dc90ad" kindref="member">EncodeBase58</ref>(vch);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117" refid="base58_8h_1ae2dc7ad63e243509e0871ec4a5890678" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="base58_8cpp_1ae2dc7ad63e243509e0871ec4a5890678" kindref="member">DecodeBase58Check</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>psz,<sp/>std::vector&lt;unsigned<sp/>char&gt;&amp;<sp/>vchRet)<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="base58_8cpp_1a0f74d1d6e7e982cad4b0e538acea4538" kindref="member">DecodeBase58</ref>(psz,<sp/>vchRet)<sp/>||</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>(vchRet.size()<sp/>&lt;<sp/>4))</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vchRet.clear();</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>re-calculate<sp/>the<sp/>checksum,<sp/>insure<sp/>it<sp/>matches<sp/>the<sp/>included<sp/>4-byte<sp/>checksum</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classuint256" kindref="compound">uint256</ref><sp/><ref refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" kindref="member">hash</ref><sp/>=<sp/><ref refid="hash_8h_1ab3f6c437460137530d86e09c2c102e99" kindref="member">Hash</ref>(vchRet.begin(),<sp/>vchRet.end()-4);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(memcmp(&amp;hash,<sp/>&amp;vchRet.<ref refid="classbase__uint_1a76539ef6be800bc02e4038f457a4f74a" kindref="member">end</ref>()[-4],<sp/>4)<sp/>!=<sp/>0)</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vchRet.clear();</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>vchRet.resize(vchRet.size()-4);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135" refid="base58_8h_1a96597527b13547236b99430e6ac195b3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="base58_8cpp_1ae2dc7ad63e243509e0871ec4a5890678" kindref="member">DecodeBase58Check</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>str,<sp/>std::vector&lt;unsigned<sp/>char&gt;&amp;<sp/>vchRet)<sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="base58_8cpp_1ae2dc7ad63e243509e0871ec4a5890678" kindref="member">DecodeBase58Check</ref>(str.c_str(),<sp/>vchRet);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139" refid="class_c_base58_data_1ae4f4ff42010299bc6fb228e21d6b2a15" refkind="member"><highlight class="normal"><ref refid="class_c_base58_data_1ae4f4ff42010299bc6fb228e21d6b2a15" kindref="member">CBase58Data::CBase58Data</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_base58_data_1a110c1008f399053098a1bdf63408e923" kindref="member">vchVersion</ref>.clear();</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref>.clear();</highlight></codeline>
+<codeline lineno="142"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144" refid="class_c_base58_data_1afab1c06a0a4f631fd889434a2bc48c27" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data_1afab1c06a0a4f631fd889434a2bc48c27" kindref="member">CBase58Data::SetData</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;unsigned<sp/>char&gt;<sp/>&amp;vchVersionIn,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>pdata,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>nSize)<sp/>{</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_base58_data_1a110c1008f399053098a1bdf63408e923" kindref="member">vchVersion</ref><sp/>=<sp/>vchVersionIn;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref>.resize(nSize);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref>.empty())</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(&amp;<ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref>[0],<sp/>pdata,<sp/>nSize);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151" refid="class_c_base58_data_1a8314b00685e590b4005be5cdfd36aeb9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data_1afab1c06a0a4f631fd889434a2bc48c27" kindref="member">CBase58Data::SetData</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;unsigned<sp/>char&gt;<sp/>&amp;vchVersionIn,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*pbegin,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*pend)<sp/>{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_base58_data_1afab1c06a0a4f631fd889434a2bc48c27" kindref="member">SetData</ref>(vchVersionIn,<sp/>(</highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*)pbegin,<sp/>pend<sp/>-<sp/>pbegin);</highlight></codeline>
+<codeline lineno="153"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155" refid="class_c_base58_data_1a250fa3bc97d03c7d87de5485c8b49b57" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data_1a250fa3bc97d03c7d87de5485c8b49b57" kindref="member">CBase58Data::SetString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>psz,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nVersionBytes)<sp/>{</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;unsigned<sp/>char&gt;<sp/>vchTemp;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>rc58<sp/>=<sp/><ref refid="base58_8cpp_1ae2dc7ad63e243509e0871ec4a5890678" kindref="member">DecodeBase58Check</ref>(psz,<sp/>vchTemp);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>((!rc58)<sp/>||<sp/>(vchTemp.size()<sp/>&lt;<sp/>nVersionBytes))<sp/>{</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref>.clear();</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_base58_data_1a110c1008f399053098a1bdf63408e923" kindref="member">vchVersion</ref>.clear();</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_base58_data_1a110c1008f399053098a1bdf63408e923" kindref="member">vchVersion</ref>.assign(vchTemp.begin(),<sp/>vchTemp.begin()<sp/>+<sp/>nVersionBytes);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref>.resize(vchTemp.size()<sp/>-<sp/>nVersionBytes);</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref>.empty())</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>memcpy(&amp;<ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref>[0],<sp/>&amp;vchTemp[nVersionBytes],<sp/><ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref>.size());</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="cleanse_8cpp_1a5a4afb85dd16ecc1f6019c782db78663" kindref="member">memory_cleanse</ref>(&amp;vchTemp[0],<sp/><ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref>.size());</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171" refid="class_c_base58_data_1a8e0cba75a3e0a5b21defaf1471d8659c" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data_1a250fa3bc97d03c7d87de5485c8b49b57" kindref="member">CBase58Data::SetString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>str)<sp/>{</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data_1a250fa3bc97d03c7d87de5485c8b49b57" kindref="member">SetString</ref>(str.c_str());</highlight></codeline>
+<codeline lineno="173"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175" refid="class_c_base58_data_1a9a47b10dadff15b8d6a6d0e63ce3ae32" refkind="member"><highlight class="normal">std::string<sp/><ref refid="class_c_base58_data_1a9a47b10dadff15b8d6a6d0e63ce3ae32" kindref="member">CBase58Data::ToString</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;unsigned<sp/>char&gt;<sp/>vch<sp/>=<sp/><ref refid="class_c_base58_data_1a110c1008f399053098a1bdf63408e923" kindref="member">vchVersion</ref>;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/>vch.insert(vch.end(),<sp/><ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref>.begin(),<sp/><ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref>.end());</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="base58_8cpp_1ace9a5807ee51604f33044339f073ec76" kindref="member">EncodeBase58Check</ref>(vch);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181" refid="class_c_base58_data_1ab3d18fd9671a383937af7dd4ac2e890a" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data_1ab3d18fd9671a383937af7dd4ac2e890a" kindref="member">CBase58Data::CompareTo</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data" kindref="compound">CBase58Data</ref>&amp;<sp/>b58)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_c_base58_data_1a110c1008f399053098a1bdf63408e923" kindref="member">vchVersion</ref><sp/>&lt;<sp/>b58.<ref refid="class_c_base58_data_1a110c1008f399053098a1bdf63408e923" kindref="member">vchVersion</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_c_base58_data_1a110c1008f399053098a1bdf63408e923" kindref="member">vchVersion</ref><sp/>&gt;<sp/>b58.<ref refid="class_c_base58_data_1a110c1008f399053098a1bdf63408e923" kindref="member">vchVersion</ref>)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><sp/>1;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref><sp/>&lt;<sp/>b58.<ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref>)<sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref><sp/>&gt;<sp/>b58.<ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref>)<sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><sp/>1;</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="187"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">CDarkSilkAddressVisitor<sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>boost::static_visitor&lt;bool&gt;<sp/>{</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_dark_silk_address" kindref="compound">CDarkSilkAddress</ref><sp/>*addr;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CDarkSilkAddressVisitor(<ref refid="class_c_dark_silk_address" kindref="compound">CDarkSilkAddress</ref><sp/>*addrIn)<sp/>:<sp/>addr(addrIn)<sp/>{<sp/>}</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator()(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_key_i_d" kindref="compound">CKeyID</ref><sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>addr-&gt;<ref refid="class_c_dark_silk_address_1adafb09872a993f450999c4e4ea0e795b" kindref="member">Set</ref>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);<sp/>}</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator()(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_script_i_d" kindref="compound">CScriptID</ref><sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>addr-&gt;<ref refid="class_c_dark_silk_address_1adafb09872a993f450999c4e4ea0e795b" kindref="member">Set</ref>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);<sp/>}</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator()(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_no_destination" kindref="compound">CNoDestination</ref><sp/>&amp;no)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>operator()(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_stealth_address" kindref="compound">CStealthAddress</ref><sp/>&amp;stxAddr)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>anon<sp/>namespace</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204" refid="class_c_dark_silk_address_1adafb09872a993f450999c4e4ea0e795b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_dark_silk_address_1adafb09872a993f450999c4e4ea0e795b" kindref="member">CDarkSilkAddress::Set</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_key_i_d" kindref="compound">CKeyID</ref><sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_base58_data_1afab1c06a0a4f631fd889434a2bc48c27" kindref="member">SetData</ref>(<ref refid="chainparams_8cpp_1ace5c5b706d71a324a417dd2db394fd4a" kindref="member">Params</ref>().Base58Prefix(<ref refid="class_c_chain_params_1aa294058ec2e3586bd8d03d6c39667058af088724f20c49c73e548f94d8f1808dd" kindref="member">CChainParams::PUBKEY_ADDRESS</ref>),<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>20);</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209" refid="class_c_dark_silk_address_1a8c9a41628a14007896053a4369450fb3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_dark_silk_address_1adafb09872a993f450999c4e4ea0e795b" kindref="member">CDarkSilkAddress::Set</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_script_i_d" kindref="compound">CScriptID</ref><sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_base58_data_1afab1c06a0a4f631fd889434a2bc48c27" kindref="member">SetData</ref>(<ref refid="chainparams_8cpp_1ace5c5b706d71a324a417dd2db394fd4a" kindref="member">Params</ref>().Base58Prefix(<ref refid="class_c_chain_params_1aa294058ec2e3586bd8d03d6c39667058adf0172df56140eb2f6fb7a59df0bb76a" kindref="member">CChainParams::SCRIPT_ADDRESS</ref>),<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>20);</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="212"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214" refid="class_c_dark_silk_address_1af9df1160053b931a3a64d2d96e24506e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_dark_silk_address_1adafb09872a993f450999c4e4ea0e795b" kindref="member">CDarkSilkAddress::Set</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="keystore_8h_1a8f46ecba0ddeb036be6b58d6ed1909cd" kindref="member">CTxDestination</ref><sp/>&amp;dest)<sp/>{</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>boost::apply_visitor(CDarkSilkAddressVisitor(</highlight><highlight class="keyword">this</highlight><highlight class="normal">),<sp/>dest);</highlight></codeline>
+<codeline lineno="216"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218" refid="class_c_dark_silk_address_1ab98113189d0746ea660447efe3700103" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_dark_silk_address_1ab98113189d0746ea660447efe3700103" kindref="member">CDarkSilkAddress::IsValid</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fCorrectSize<sp/>=<sp/><ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref>.size()<sp/>==<sp/>20;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fKnownVersion<sp/>=<sp/><ref refid="class_c_base58_data_1a110c1008f399053098a1bdf63408e923" kindref="member">vchVersion</ref><sp/>==<sp/><ref refid="chainparams_8cpp_1ace5c5b706d71a324a417dd2db394fd4a" kindref="member">Params</ref>().<ref refid="class_c_chain_params_1a6088d3a4f45d89c90e7e6117c3c5720d" kindref="member">Base58Prefix</ref>(<ref refid="class_c_chain_params_1aa294058ec2e3586bd8d03d6c39667058af088724f20c49c73e548f94d8f1808dd" kindref="member">CChainParams::PUBKEY_ADDRESS</ref>)<sp/>||</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_base58_data_1a110c1008f399053098a1bdf63408e923" kindref="member">vchVersion</ref><sp/>==<sp/><ref refid="chainparams_8cpp_1ace5c5b706d71a324a417dd2db394fd4a" kindref="member">Params</ref>().<ref refid="class_c_chain_params_1a6088d3a4f45d89c90e7e6117c3c5720d" kindref="member">Base58Prefix</ref>(<ref refid="class_c_chain_params_1aa294058ec2e3586bd8d03d6c39667058adf0172df56140eb2f6fb7a59df0bb76a" kindref="member">CChainParams::SCRIPT_ADDRESS</ref>);</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fCorrectSize<sp/>&amp;&amp;<sp/>fKnownVersion;</highlight></codeline>
+<codeline lineno="223"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225" refid="class_c_dark_silk_address_1a907e63758c7914a246b5807f6babf97d" refkind="member"><highlight class="normal"><ref refid="keystore_8h_1a8f46ecba0ddeb036be6b58d6ed1909cd" kindref="member">CTxDestination</ref><sp/><ref refid="class_c_dark_silk_address_1a907e63758c7914a246b5807f6babf97d" kindref="member">CDarkSilkAddress::Get</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="class_c_dark_silk_address_1ab98113189d0746ea660447efe3700103" kindref="member">IsValid</ref>())</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_c_no_destination" kindref="compound">CNoDestination</ref>();</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classuint160" kindref="compound">uint160</ref><sp/><ref refid="db__test_8cc_1a7441ef0865bcb3db9b8064dd7375c1ea" kindref="member">id</ref>;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>&amp;<ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref>[0],<sp/>20);</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_c_base58_data_1a110c1008f399053098a1bdf63408e923" kindref="member">vchVersion</ref><sp/>==<sp/><ref refid="chainparams_8cpp_1ace5c5b706d71a324a417dd2db394fd4a" kindref="member">Params</ref>().Base58Prefix(<ref refid="class_c_chain_params_1aa294058ec2e3586bd8d03d6c39667058af088724f20c49c73e548f94d8f1808dd" kindref="member">CChainParams::PUBKEY_ADDRESS</ref>))</highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_c_key_i_d" kindref="compound">CKeyID</ref>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_c_base58_data_1a110c1008f399053098a1bdf63408e923" kindref="member">vchVersion</ref><sp/>==<sp/><ref refid="chainparams_8cpp_1ace5c5b706d71a324a417dd2db394fd4a" kindref="member">Params</ref>().Base58Prefix(<ref refid="class_c_chain_params_1aa294058ec2e3586bd8d03d6c39667058adf0172df56140eb2f6fb7a59df0bb76a" kindref="member">CChainParams::SCRIPT_ADDRESS</ref>))</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_c_script_i_d" kindref="compound">CScriptID</ref>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_c_no_destination" kindref="compound">CNoDestination</ref>();</highlight></codeline>
+<codeline lineno="236"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238" refid="class_c_dark_silk_address_1ab305645f49be30fdeac6290debf029ec" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_dark_silk_address_1ab305645f49be30fdeac6290debf029ec" kindref="member">CDarkSilkAddress::GetKeyID</ref>(<ref refid="class_c_key_i_d" kindref="compound">CKeyID</ref><sp/>&amp;keyID)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="class_c_dark_silk_address_1ab98113189d0746ea660447efe3700103" kindref="member">IsValid</ref>()<sp/>||<sp/><ref refid="class_c_base58_data_1a110c1008f399053098a1bdf63408e923" kindref="member">vchVersion</ref><sp/>!=<sp/><ref refid="chainparams_8cpp_1ace5c5b706d71a324a417dd2db394fd4a" kindref="member">Params</ref>().Base58Prefix(<ref refid="class_c_chain_params_1aa294058ec2e3586bd8d03d6c39667058af088724f20c49c73e548f94d8f1808dd" kindref="member">CChainParams::PUBKEY_ADDRESS</ref>))</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classuint160" kindref="compound">uint160</ref><sp/><ref refid="db__test_8cc_1a7441ef0865bcb3db9b8064dd7375c1ea" kindref="member">id</ref>;</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/>memcpy(&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>&amp;<ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref>[0],<sp/>20);</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/>keyID<sp/>=<sp/><ref refid="class_c_key_i_d" kindref="compound">CKeyID</ref>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="245"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247" refid="class_c_dark_silk_address_1aae1f7d243d122e41b4cddf481c6b0543" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_dark_silk_address_1aae1f7d243d122e41b4cddf481c6b0543" kindref="member">CDarkSilkAddress::IsScript</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_c_dark_silk_address_1ab98113189d0746ea660447efe3700103" kindref="member">IsValid</ref>()<sp/>&amp;&amp;<sp/><ref refid="class_c_base58_data_1a110c1008f399053098a1bdf63408e923" kindref="member">vchVersion</ref><sp/>==<sp/><ref refid="chainparams_8cpp_1ace5c5b706d71a324a417dd2db394fd4a" kindref="member">Params</ref>().<ref refid="class_c_chain_params_1a6088d3a4f45d89c90e7e6117c3c5720d" kindref="member">Base58Prefix</ref>(<ref refid="class_c_chain_params_1aa294058ec2e3586bd8d03d6c39667058adf0172df56140eb2f6fb7a59df0bb76a" kindref="member">CChainParams::SCRIPT_ADDRESS</ref>);</highlight></codeline>
+<codeline lineno="249"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="251" refid="class_c_dark_silk_secret_1a74deecf3a37ff76ff64ca8b935045bbd" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_c_dark_silk_secret_1a74deecf3a37ff76ff64ca8b935045bbd" kindref="member">CDarkSilkSecret::SetKey</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_key" kindref="compound">CKey</ref>&amp;<sp/>vchSecret)<sp/>{</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(vchSecret.<ref refid="class_c_key_1a62094263b7422a45b45ac508396f19eb" kindref="member">IsValid</ref>());</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_base58_data_1afab1c06a0a4f631fd889434a2bc48c27" kindref="member">SetData</ref>(<ref refid="chainparams_8cpp_1ace5c5b706d71a324a417dd2db394fd4a" kindref="member">Params</ref>().Base58Prefix(<ref refid="class_c_chain_params_1aa294058ec2e3586bd8d03d6c39667058aacf95cbb9b5f51445295c704540adb18" kindref="member">CChainParams::SECRET_KEY</ref>),<sp/>vchSecret.<ref refid="class_c_key_1aabd29e0d5faf30032cc8519a1ce62a5a" kindref="member">begin</ref>(),<sp/>vchSecret.<ref refid="class_c_key_1a6329a38926a8af8112d06da96afbfe39" kindref="member">size</ref>());</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(vchSecret.<ref refid="class_c_key_1abdc7d807f7a1b27ff3ad9dd5164a2273" kindref="member">IsCompressed</ref>())</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref>.push_back(1);</highlight></codeline>
+<codeline lineno="256"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"></highlight></codeline>
+<codeline lineno="258" refid="class_c_dark_silk_secret_1af7b026d90efb897f6e592ce424c8d2c9" refkind="member"><highlight class="normal"><ref refid="class_c_key" kindref="compound">CKey</ref><sp/><ref refid="class_c_dark_silk_secret_1af7b026d90efb897f6e592ce424c8d2c9" kindref="member">CDarkSilkSecret::GetKey</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_key" kindref="compound">CKey</ref><sp/>ret;</highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/>assert(<ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref>.size()<sp/>&gt;=<sp/>32);</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"><sp/><sp/><sp/><sp/>ret.<ref refid="class_c_key_1aaa13d5f08456bba094210c5eeabf64c8" kindref="member">Set</ref>(<ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref>.begin(),<sp/><ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref>.begin()<sp/>+<sp/>32,<sp/><ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref>.size()<sp/>&gt;<sp/>32<sp/>&amp;&amp;<sp/><ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref>[32]<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="263"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"></highlight></codeline>
+<codeline lineno="265" refid="class_c_dark_silk_secret_1a30db2efc9987de8a743a2aa000c84617" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_dark_silk_secret_1a30db2efc9987de8a743a2aa000c84617" kindref="member">CDarkSilkSecret::IsValid</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fExpectedFormat<sp/>=<sp/><ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref>.size()<sp/>==<sp/>32<sp/>||<sp/>(<ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref>.size()<sp/>==<sp/>33<sp/>&amp;&amp;<sp/><ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref>[32]<sp/>==<sp/>1);</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fCorrectVersion<sp/>=<sp/><ref refid="class_c_base58_data_1a110c1008f399053098a1bdf63408e923" kindref="member">vchVersion</ref><sp/>==<sp/><ref refid="chainparams_8cpp_1ace5c5b706d71a324a417dd2db394fd4a" kindref="member">Params</ref>().<ref refid="class_c_chain_params_1a6088d3a4f45d89c90e7e6117c3c5720d" kindref="member">Base58Prefix</ref>(<ref refid="class_c_chain_params_1aa294058ec2e3586bd8d03d6c39667058aacf95cbb9b5f51445295c704540adb18" kindref="member">CChainParams::SECRET_KEY</ref>);</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fExpectedFormat<sp/>&amp;&amp;<sp/>fCorrectVersion;</highlight></codeline>
+<codeline lineno="269"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight></codeline>
+<codeline lineno="271" refid="class_c_dark_silk_secret_1a06075192fb631c3b406a6ca231d2f926" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_dark_silk_secret_1a06075192fb631c3b406a6ca231d2f926" kindref="member">CDarkSilkSecret::SetString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>pszSecret)<sp/>{</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data_1a250fa3bc97d03c7d87de5485c8b49b57" kindref="member">CBase58Data::SetString</ref>(pszSecret)<sp/>&amp;&amp;<sp/><ref refid="class_c_dark_silk_secret_1a30db2efc9987de8a743a2aa000c84617" kindref="member">IsValid</ref>();</highlight></codeline>
+<codeline lineno="273"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275" refid="class_c_dark_silk_secret_1aa6c0a6081ce24721d919c7d606b880e3" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_dark_silk_secret_1a06075192fb631c3b406a6ca231d2f926" kindref="member">CDarkSilkSecret::SetString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>strSecret)<sp/>{</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_c_dark_silk_secret_1a06075192fb631c3b406a6ca231d2f926" kindref="member">SetString</ref>(strSecret.c_str());</highlight></codeline>
+<codeline lineno="277"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/base58.cpp"/>
+  </compounddef>
+</doxygen>

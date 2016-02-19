@@ -1,0 +1,241 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="block__builder_8cc" kind="file" language="C++">
+    <compoundname>block_builder.cc</compoundname>
+    <includes refid="block__builder_8h" local="yes">table/block_builder.h</includes>
+    <includes local="no">algorithm</includes>
+    <includes local="no">assert.h</includes>
+    <includes refid="comparator_8h" local="yes">leveldb/comparator.h</includes>
+    <includes refid="table__builder_8h" local="yes">leveldb/table_builder.h</includes>
+    <includes refid="coding_8h" local="yes">util/coding.h</includes>
+    <incdepgraph>
+      <node id="39234">
+        <label>assert.h</label>
+      </node>
+      <node id="39241">
+        <label>leveldb/options.h</label>
+        <link refid="options_8h"/>
+        <childnode refid="39235" relation="include">
+        </childnode>
+      </node>
+      <node id="39237">
+        <label>string</label>
+      </node>
+      <node id="39230">
+        <label>table/block_builder.h</label>
+        <link refid="block__builder_8h"/>
+        <childnode refid="39231" relation="include">
+        </childnode>
+        <childnode refid="39232" relation="include">
+        </childnode>
+        <childnode refid="39233" relation="include">
+        </childnode>
+      </node>
+      <node id="39235">
+        <label>stddef.h</label>
+      </node>
+      <node id="39242">
+        <label>leveldb/status.h</label>
+        <link refid="status_8h"/>
+        <childnode refid="39237" relation="include">
+        </childnode>
+        <childnode refid="39233" relation="include">
+        </childnode>
+      </node>
+      <node id="39243">
+        <label>util/coding.h</label>
+        <link refid="coding_8h"/>
+        <childnode refid="39232" relation="include">
+        </childnode>
+        <childnode refid="39236" relation="include">
+        </childnode>
+        <childnode refid="39237" relation="include">
+        </childnode>
+        <childnode refid="39233" relation="include">
+        </childnode>
+        <childnode refid="39244" relation="include">
+        </childnode>
+      </node>
+      <node id="39236">
+        <label>string.h</label>
+      </node>
+      <node id="39231">
+        <label>vector</label>
+      </node>
+      <node id="39244">
+        <label>port/port.h</label>
+        <link refid="port_8h"/>
+        <childnode refid="39236" relation="include">
+        </childnode>
+      </node>
+      <node id="39232">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="39229">
+        <label>/home/dev/ds-160209/src/leveldb/table/block_builder.cc</label>
+        <link refid="block_builder.cc"/>
+        <childnode refid="39230" relation="include">
+        </childnode>
+        <childnode refid="39238" relation="include">
+        </childnode>
+        <childnode refid="39234" relation="include">
+        </childnode>
+        <childnode refid="39239" relation="include">
+        </childnode>
+        <childnode refid="39240" relation="include">
+        </childnode>
+        <childnode refid="39243" relation="include">
+        </childnode>
+      </node>
+      <node id="39240">
+        <label>leveldb/table_builder.h</label>
+        <link refid="table__builder_8h"/>
+        <childnode refid="39232" relation="include">
+        </childnode>
+        <childnode refid="39241" relation="include">
+        </childnode>
+        <childnode refid="39242" relation="include">
+        </childnode>
+      </node>
+      <node id="39233">
+        <label>leveldb/slice.h</label>
+        <link refid="slice_8h"/>
+        <childnode refid="39234" relation="include">
+        </childnode>
+        <childnode refid="39235" relation="include">
+        </childnode>
+        <childnode refid="39236" relation="include">
+        </childnode>
+        <childnode refid="39237" relation="include">
+        </childnode>
+      </node>
+      <node id="39238">
+        <label>algorithm</label>
+      </node>
+      <node id="39239">
+        <label>leveldb/comparator.h</label>
+        <link refid="comparator_8h"/>
+        <childnode refid="39237" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespaceleveldb">leveldb</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2011-2016<sp/>The<sp/>LevelDB<sp/>Authors.<sp/>All<sp/>rights<sp/>reserved.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Use<sp/>of<sp/>this<sp/>source<sp/>code<sp/>is<sp/>governed<sp/>by<sp/>a<sp/>BSD-style<sp/>license<sp/>that<sp/>can<sp/>be</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>found<sp/>in<sp/>the<sp/>LICENSE<sp/>file.<sp/>See<sp/>the<sp/>AUTHORS<sp/>file<sp/>for<sp/>names<sp/>of<sp/>contributors.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="comment">//<sp/>BlockBuilder<sp/>generates<sp/>blocks<sp/>where<sp/>keys<sp/>are<sp/>prefix-compressed:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>When<sp/>we<sp/>store<sp/>a<sp/>key,<sp/>we<sp/>drop<sp/>the<sp/>prefix<sp/>shared<sp/>with<sp/>the<sp/>previous</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/>string.<sp/><sp/>This<sp/>helps<sp/>reduce<sp/>the<sp/>space<sp/>requirement<sp/>significantly.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Furthermore,<sp/>once<sp/>every<sp/>K<sp/>keys,<sp/>we<sp/>do<sp/>not<sp/>apply<sp/>the<sp/>prefix</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>compression<sp/>and<sp/>store<sp/>the<sp/>entire<sp/>key.<sp/><sp/>We<sp/>call<sp/>this<sp/>a<sp/>&quot;restart</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>point&quot;.<sp/><sp/>The<sp/>tail<sp/>end<sp/>of<sp/>the<sp/>block<sp/>stores<sp/>the<sp/>offsets<sp/>of<sp/>all<sp/>of<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>restart<sp/>points,<sp/>and<sp/>can<sp/>be<sp/>used<sp/>to<sp/>do<sp/>a<sp/>binary<sp/>search<sp/>when<sp/>looking</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//<sp/>for<sp/>a<sp/>particular<sp/>key.<sp/><sp/>Values<sp/>are<sp/>stored<sp/>as-is<sp/>(without<sp/>compression)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/>immediately<sp/>following<sp/>the<sp/>corresponding<sp/>key.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//<sp/>An<sp/>entry<sp/>for<sp/>a<sp/>particular<sp/>key-value<sp/>pair<sp/>has<sp/>the<sp/>form:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>shared_bytes:<sp/>varint32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>unshared_bytes:<sp/>varint32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>value_length:<sp/>varint32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>key_delta:<sp/>char[unshared_bytes]</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>value:<sp/>char[value_length]</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">//<sp/>shared_bytes<sp/>==<sp/>0<sp/>for<sp/>restart<sp/>points.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="comment">//<sp/>The<sp/>trailer<sp/>of<sp/>the<sp/>block<sp/>has<sp/>the<sp/>form:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>restarts:<sp/>uint32[num_restarts]</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/>num_restarts:<sp/>uint32</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="comment">//<sp/>restarts[i]<sp/>contains<sp/>the<sp/>offset<sp/>within<sp/>the<sp/>block<sp/>of<sp/>the<sp/>ith<sp/>restart<sp/>point.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="block__builder_8h" kindref="compound">table/block_builder.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;algorithm&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;assert.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="comparator_8h" kindref="compound">leveldb/comparator.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="table__builder_8h" kindref="compound">leveldb/table_builder.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="coding_8h" kindref="compound">util/coding.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceleveldb" kindref="compound">leveldb</ref><sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classleveldb_1_1_block_builder_1a697ffa03ff6e8f5dec0558c05136f89c" refkind="member"><highlight class="normal"><ref refid="classleveldb_1_1_block_builder_1a697ffa03ff6e8f5dec0558c05136f89c" kindref="member">BlockBuilder::BlockBuilder</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structleveldb_1_1_options" kindref="compound">Options</ref>*<sp/>options)</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>:<sp/><ref refid="repair_8cc_1a277741aecbdc3655b3bde5df34d80513" kindref="member">options_</ref>(options),</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>restarts_(),</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>counter_(0),</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>finished_(false)<sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/>assert(options-&gt;<ref refid="structleveldb_1_1_options_1ac71d66ae44e481edc3922d3a139c30b4" kindref="member">block_restart_interval</ref><sp/>&gt;=<sp/>1);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/>restarts_.push_back(0);<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>First<sp/>restart<sp/>point<sp/>is<sp/>at<sp/>offset<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="classleveldb_1_1_block_builder_1a812168608c24de2dfa1651fcdd88e49b" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_block_builder_1a812168608c24de2dfa1651fcdd88e49b" kindref="member">BlockBuilder::Reset</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/>buffer_.clear();</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/>restarts_.clear();</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/>restarts_.push_back(0);<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>First<sp/>restart<sp/>point<sp/>is<sp/>at<sp/>offset<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/>counter_<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/>finished_<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/>last_key_.clear();</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="classleveldb_1_1_block_builder_1a836fd5dfd46b72d2438a7d59a984a72f" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_block_builder_1a836fd5dfd46b72d2438a7d59a984a72f" kindref="member">BlockBuilder::CurrentSizeEstimate</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(buffer_.size()<sp/>+<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Raw<sp/>data<sp/>buffer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>restarts_.size()<sp/>*<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref>)<sp/>+<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Restart<sp/>array</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(<ref refid="stdint_8h_1a435d1572bf3f880d55459d9805097f62" kindref="member">uint32_t</ref>));<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Restart<sp/>array<sp/>length</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classleveldb_1_1_block_builder_1ab345ab44def13fb180502e9637b28bcd" refkind="member"><highlight class="normal"><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref><sp/><ref refid="classleveldb_1_1_block_builder_1ab345ab44def13fb180502e9637b28bcd" kindref="member">BlockBuilder::Finish</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Append<sp/>restart<sp/>array</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>0;<sp/>i<sp/>&lt;<sp/>restarts_.size();<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="namespaceleveldb_1ac95f82421989b07d9d4993bdc2e2c555" kindref="member">PutFixed32</ref>(&amp;buffer_,<sp/>restarts_[i]);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><ref refid="namespaceleveldb_1ac95f82421989b07d9d4993bdc2e2c555" kindref="member">PutFixed32</ref>(&amp;buffer_,<sp/>restarts_.size());</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/>finished_<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>(buffer_);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73" refid="classleveldb_1_1_block_builder_1a17d0e23f1e7afcb874b22a0cb0b6cf17" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_block_builder_1a17d0e23f1e7afcb874b22a0cb0b6cf17" kindref="member">BlockBuilder::Add</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/>key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>&amp;<sp/><ref refid="version__set_8cc_1a38c8b88c432e666ad10b0c5573e1160a" kindref="member">value</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref><sp/>last_key_piece(last_key_);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/>assert(!finished_);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/>assert(counter_<sp/>&lt;=<sp/>options_-&gt;block_restart_interval);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/>assert(buffer_.empty()<sp/></highlight><highlight class="comment">//<sp/>No<sp/>values<sp/>yet?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>||<sp/>options_-&gt;<ref refid="structleveldb_1_1_options_1a7522fbf79de73c4f73ef8d9392e8c80b" kindref="member">comparator</ref>-&gt;<ref refid="structleveldb_1_1_comparator_1a05dae6edcad3c7db23827c0233d74039" kindref="member">Compare</ref>(key,<sp/>last_key_piece)<sp/>&gt;<sp/>0);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/><ref refid="db__bench_8cc_1af670cad03774a4316fb28a8634d33a56" kindref="member">shared</ref><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(counter_<sp/>&lt;<sp/>options_-&gt;block_restart_interval)<sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>See<sp/>how<sp/>much<sp/>sharing<sp/>to<sp/>do<sp/>with<sp/>previous<sp/>string</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>min_length<sp/>=<sp/>std::min(last_key_piece.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>(),<sp/>key.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>());</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>((shared<sp/>&lt;<sp/>min_length)<sp/>&amp;&amp;<sp/>(last_key_piece[<ref refid="db__bench_8cc_1af670cad03774a4316fb28a8634d33a56" kindref="member">shared</ref>]<sp/>==<sp/>key[<ref refid="db__bench_8cc_1af670cad03774a4316fb28a8634d33a56" kindref="member">shared</ref>]))<sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>shared++;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Restart<sp/>compression</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>restarts_.push_back(buffer_.size());</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/>counter_<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>non_shared<sp/>=<sp/>key.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>()<sp/>-<sp/><ref refid="db__bench_8cc_1af670cad03774a4316fb28a8634d33a56" kindref="member">shared</ref>;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Add<sp/>&quot;&lt;shared&gt;&lt;non_shared&gt;&lt;value_size&gt;&quot;<sp/>to<sp/>buffer_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><ref refid="namespaceleveldb_1ab00e282f3fd7058b8a41afcf4b56e685" kindref="member">PutVarint32</ref>(&amp;buffer_,<sp/>shared);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><ref refid="namespaceleveldb_1ab00e282f3fd7058b8a41afcf4b56e685" kindref="member">PutVarint32</ref>(&amp;buffer_,<sp/>non_shared);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><ref refid="namespaceleveldb_1ab00e282f3fd7058b8a41afcf4b56e685" kindref="member">PutVarint32</ref>(&amp;buffer_,<sp/>value.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>());</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Add<sp/>string<sp/>delta<sp/>to<sp/>buffer_<sp/>followed<sp/>by<sp/>value</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/>buffer_.append(key.<ref refid="classleveldb_1_1_slice_1aa64861043d9deee6889461bf0593cf73" kindref="member">data</ref>()<sp/>+<sp/><ref refid="db__bench_8cc_1af670cad03774a4316fb28a8634d33a56" kindref="member">shared</ref>,<sp/>non_shared);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/>buffer_.append(value.<ref refid="classleveldb_1_1_slice_1aa64861043d9deee6889461bf0593cf73" kindref="member">data</ref>(),<sp/>value.<ref refid="classleveldb_1_1_slice_1a947d3173f04f8a30553e89046daf91d5" kindref="member">size</ref>());</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>state</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/>last_key_.resize(shared);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/>last_key_.append(key.<ref refid="classleveldb_1_1_slice_1aa64861043d9deee6889461bf0593cf73" kindref="member">data</ref>()<sp/>+<sp/><ref refid="db__bench_8cc_1af670cad03774a4316fb28a8634d33a56" kindref="member">shared</ref>,<sp/>non_shared);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/>assert(<ref refid="classleveldb_1_1_slice" kindref="compound">Slice</ref>(last_key_)<sp/>==<sp/>key);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/>counter_++;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>leveldb</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/leveldb/table/block_builder.cc"/>
+  </compounddef>
+</doxygen>

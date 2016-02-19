@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_c_signature_cache" kind="class" language="C++" prot="public">
+    <compoundname>CSignatureCache</compoundname>
+      <sectiondef kind="private-type">
+      <memberdef kind="typedef" id="class_c_signature_cache_1a5152471ea900fe4da7404bd9ff6796ca" prot="private" static="no">
+        <type>boost::tuple&lt; <ref refid="classuint256" kindref="compound">uint256</ref>, std::vector&lt; unsigned char &gt;, <ref refid="class_c_pub_key" kindref="compound">CPubKey</ref> &gt;</type>
+        <definition>typedef boost::tuple&lt;uint256, std::vector&lt;unsigned char&gt;, CPubKey&gt; CSignatureCache::sigdata_type</definition>
+        <argsstring></argsstring>
+        <name>sigdata_type</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/script.cpp" line="2251" column="1" bodyfile="/home/dev/ds-160209/src/script.cpp" bodystart="2251" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_c_signature_cache_1a7002d1b7ae787f0c188b54f36ca9037f" prot="private" static="no" mutable="no">
+        <type>std::set&lt; sigdata_type &gt;</type>
+        <definition>std::set&lt; sigdata_type&gt; CSignatureCache::setValid</definition>
+        <argsstring></argsstring>
+        <name>setValid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/script.cpp" line="2252" column="1" bodyfile="/home/dev/ds-160209/src/script.cpp" bodystart="2252" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_c_signature_cache_1a8858896942cfddbc5a642c8b9dbb9d22" prot="private" static="no" mutable="no">
+        <type>boost::shared_mutex</type>
+        <definition>boost::shared_mutex CSignatureCache::cs_sigcache</definition>
+        <argsstring></argsstring>
+        <name>cs_sigcache</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/script.cpp" line="2253" column="1" bodyfile="/home/dev/ds-160209/src/script.cpp" bodystart="2253" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_c_signature_cache_1a9c1dbf6b015d35145f058ace43eac107" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool CSignatureCache::Get</definition>
+        <argsstring>(const uint256 &amp;hash, const std::vector&lt; unsigned char &gt; &amp;vchSig, const CPubKey &amp;pubKey)</argsstring>
+        <name>Get</name>
+        <param>
+          <type>const <ref refid="classuint256" kindref="compound">uint256</ref> &amp;</type>
+          <declname>hash</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>vchSig</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_pub_key" kindref="compound">CPubKey</ref> &amp;</type>
+          <declname>pubKey</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/script.cpp" line="2257" column="1" bodyfile="/home/dev/ds-160209/src/script.cpp" bodystart="2257" bodyend="2266"/>
+        <referencedby refid="script_8cpp_1af1a7eb0123f11ad1154249f4a4c1a9d1" compoundref="script_8cpp" startline="2299" endline="2329">CheckSig</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_c_signature_cache_1ac2e63052c7b13f73fa0f6f4624e29c07" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void CSignatureCache::Set</definition>
+        <argsstring>(const uint256 &amp;hash, const std::vector&lt; unsigned char &gt; &amp;vchSig, const CPubKey &amp;pubKey)</argsstring>
+        <name>Set</name>
+        <param>
+          <type>const <ref refid="classuint256" kindref="compound">uint256</ref> &amp;</type>
+          <declname>hash</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>vchSig</declname>
+        </param>
+        <param>
+          <type>const <ref refid="class_c_pub_key" kindref="compound">CPubKey</ref> &amp;</type>
+          <declname>pubKey</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/script.cpp" line="2268" column="1" bodyfile="/home/dev/ds-160209/src/script.cpp" bodystart="2268" bodyend="2296"/>
+        <references refid="util_8cpp_1a24f685720bf40370e5bd2a192ad50cd8" compoundref="util_8cpp" startline="536" endline="541">GetArg</references>
+        <references refid="util_8cpp_1af3aedae75efabb170337a497457f7ecf" compoundref="util_8cpp" startline="218" endline="223">GetRandHash</references>
+        <referencedby refid="script_8cpp_1af1a7eb0123f11ad1154249f4a4c1a9d1" compoundref="script_8cpp" startline="2299" endline="2329">CheckSig</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/dev/ds-160209/src/script.cpp" line="2248" column="1" bodyfile="/home/dev/ds-160209/src/script.cpp" bodystart="2247" bodyend="2297"/>
+    <listofallmembers>
+      <member refid="class_c_signature_cache_1a8858896942cfddbc5a642c8b9dbb9d22" prot="private" virt="non-virtual"><scope>CSignatureCache</scope><name>cs_sigcache</name></member>
+      <member refid="class_c_signature_cache_1a9c1dbf6b015d35145f058ace43eac107" prot="public" virt="non-virtual"><scope>CSignatureCache</scope><name>Get</name></member>
+      <member refid="class_c_signature_cache_1ac2e63052c7b13f73fa0f6f4624e29c07" prot="public" virt="non-virtual"><scope>CSignatureCache</scope><name>Set</name></member>
+      <member refid="class_c_signature_cache_1a7002d1b7ae787f0c188b54f36ca9037f" prot="private" virt="non-virtual"><scope>CSignatureCache</scope><name>setValid</name></member>
+      <member refid="class_c_signature_cache_1a5152471ea900fe4da7404bd9ff6796ca" prot="private" virt="non-virtual"><scope>CSignatureCache</scope><name>sigdata_type</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

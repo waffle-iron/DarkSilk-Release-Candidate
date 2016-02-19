@@ -1,0 +1,1383 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="crypter_8h" kind="file" language="C++">
+    <compoundname>crypter.h</compoundname>
+    <includes refid="allocators_8h" local="yes">allocators.h</includes>
+    <includes refid="serialize_8h" local="yes">serialize.h</includes>
+    <includes refid="keystore_8h" local="yes">keystore.h</includes>
+    <includedby refid="wallet_8h" local="yes">/home/dev/ds-160209/src/wallet.h</includedby>
+    <includedby refid="crypter_8cpp" local="yes">/home/dev/ds-160209/src/crypter.cpp</includedby>
+    <includedby refid="wallet_8cpp" local="yes">/home/dev/ds-160209/src/wallet.cpp</includedby>
+    <incdepgraph>
+      <node id="33006">
+        <label>list</label>
+      </node>
+      <node id="32957">
+        <label>boost/thread/mutex.hpp</label>
+      </node>
+      <node id="33005">
+        <label>amount.h</label>
+        <link refid="amount_8h"/>
+        <childnode refid="32962" relation="include">
+        </childnode>
+        <childnode refid="32954" relation="include">
+        </childnode>
+        <childnode refid="32956" relation="include">
+        </childnode>
+      </node>
+      <node id="32990">
+        <label>boost/thread/condition_variable.hpp</label>
+      </node>
+      <node id="32966">
+        <label>limits</label>
+      </node>
+      <node id="32984">
+        <label>crypto/sha256.h</label>
+        <link refid="sha256_8h"/>
+        <childnode refid="32967" relation="include">
+        </childnode>
+        <childnode refid="32954" relation="include">
+        </childnode>
+      </node>
+      <node id="32985">
+        <label>crypto/argon2/blake2/blake2.h</label>
+        <link refid="blake2_8h"/>
+        <childnode refid="32986" relation="include">
+        </childnode>
+        <childnode refid="32967" relation="include">
+        </childnode>
+        <childnode refid="32960" relation="include">
+        </childnode>
+      </node>
+      <node id="32993">
+        <label>script.h</label>
+        <link refid="script_8h"/>
+        <childnode refid="32956" relation="include">
+        </childnode>
+        <childnode refid="32963" relation="include">
+        </childnode>
+        <childnode refid="32967" relation="include">
+        </childnode>
+        <childnode refid="32994" relation="include">
+        </childnode>
+        <childnode refid="32995" relation="include">
+        </childnode>
+        <childnode refid="32976" relation="include">
+        </childnode>
+        <childnode refid="32996" relation="include">
+        </childnode>
+        <childnode refid="32998" relation="include">
+        </childnode>
+        <childnode refid="33018" relation="include">
+        </childnode>
+      </node>
+      <node id="33017">
+        <label>openssl/rand.h</label>
+      </node>
+      <node id="32979">
+        <label>assert.h</label>
+      </node>
+      <node id="32971">
+        <label>boost/tuple/tuple.hpp</label>
+      </node>
+      <node id="32992">
+        <label>boost/thread/recursive_mutex.hpp</label>
+      </node>
+      <node id="32972">
+        <label>version.h</label>
+        <link refid="version_8h"/>
+        <childnode refid="32973" relation="include">
+        </childnode>
+        <childnode refid="32956" relation="include">
+        </childnode>
+      </node>
+      <node id="32959">
+        <label>sys/mman.h</label>
+      </node>
+      <node id="32954">
+        <label>stdlib.h</label>
+      </node>
+      <node id="32994">
+        <label>boost/foreach.hpp</label>
+      </node>
+      <node id="33016">
+        <label>openssl/crypto.h</label>
+      </node>
+      <node id="33012">
+        <label>boost/date_time/posix_time/posix_time_types.hpp</label>
+      </node>
+      <node id="32981">
+        <label>openssl/sha.h</label>
+      </node>
+      <node id="32965">
+        <label>cassert</label>
+      </node>
+      <node id="32980">
+        <label>stdexcept</label>
+      </node>
+      <node id="32998">
+        <label>util.h</label>
+        <link refid="util_8h"/>
+        <childnode refid="32999" relation="include">
+        </childnode>
+        <childnode refid="33000" relation="include">
+        </childnode>
+        <childnode refid="33001" relation="include">
+        </childnode>
+        <childnode refid="32962" relation="include">
+        </childnode>
+        <childnode refid="33002" relation="include">
+        </childnode>
+        <childnode refid="33005" relation="include">
+        </childnode>
+        <childnode refid="32958" relation="include">
+        </childnode>
+        <childnode refid="33006" relation="include">
+        </childnode>
+        <childnode refid="33007" relation="include">
+        </childnode>
+        <childnode refid="32963" relation="include">
+        </childnode>
+        <childnode refid="32956" relation="include">
+        </childnode>
+        <childnode refid="33008" relation="include">
+        </childnode>
+        <childnode refid="33009" relation="include">
+        </childnode>
+        <childnode refid="33010" relation="include">
+        </childnode>
+        <childnode refid="33011" relation="include">
+        </childnode>
+        <childnode refid="33012" relation="include">
+        </childnode>
+        <childnode refid="33013" relation="include">
+        </childnode>
+        <childnode refid="33014" relation="include">
+        </childnode>
+        <childnode refid="33015" relation="include">
+        </childnode>
+        <childnode refid="33016" relation="include">
+        </childnode>
+        <childnode refid="33017" relation="include">
+        </childnode>
+        <childnode refid="32997" relation="include">
+        </childnode>
+        <childnode refid="32967" relation="include">
+        </childnode>
+      </node>
+      <node id="33011">
+        <label>boost/date_time/gregorian/gregorian_types.hpp</label>
+      </node>
+      <node id="32956">
+        <label>string</label>
+      </node>
+      <node id="32958">
+        <label>map</label>
+      </node>
+      <node id="33008">
+        <label>boost/thread.hpp</label>
+      </node>
+      <node id="32986">
+        <label>stddef.h</label>
+      </node>
+      <node id="32995">
+        <label>boost/variant.hpp</label>
+      </node>
+      <node id="32962">
+        <label>serialize.h</label>
+        <link refid="serialize_8h"/>
+        <childnode refid="32956" relation="include">
+        </childnode>
+        <childnode refid="32963" relation="include">
+        </childnode>
+        <childnode refid="32958" relation="include">
+        </childnode>
+        <childnode refid="32964" relation="include">
+        </childnode>
+        <childnode refid="32965" relation="include">
+        </childnode>
+        <childnode refid="32966" relation="include">
+        </childnode>
+        <childnode refid="32967" relation="include">
+        </childnode>
+        <childnode refid="32968" relation="include">
+        </childnode>
+        <childnode refid="32969" relation="include">
+        </childnode>
+        <childnode refid="32970" relation="include">
+        </childnode>
+        <childnode refid="32971" relation="include">
+        </childnode>
+        <childnode refid="32952" relation="include">
+        </childnode>
+        <childnode refid="32972" relation="include">
+        </childnode>
+      </node>
+      <node id="32960">
+        <label>limits.h</label>
+      </node>
+      <node id="32989">
+        <label>threadsafety.h</label>
+        <link refid="threadsafety_8h"/>
+      </node>
+      <node id="33001">
+        <label>sys/resource.h</label>
+      </node>
+      <node id="33013">
+        <label>openssl/bio.h</label>
+      </node>
+      <node id="32951">
+        <label>/home/dev/ds-160209/src/crypter.h</label>
+        <link refid="crypter.h"/>
+        <childnode refid="32952" relation="include">
+        </childnode>
+        <childnode refid="32962" relation="include">
+        </childnode>
+        <childnode refid="32974" relation="include">
+        </childnode>
+      </node>
+      <node id="33021">
+        <label>boost/signals2/signal.hpp</label>
+      </node>
+      <node id="32974">
+        <label>keystore.h</label>
+        <link refid="keystore_8h"/>
+        <childnode refid="32975" relation="include">
+        </childnode>
+        <childnode refid="32976" relation="include">
+        </childnode>
+        <childnode refid="32988" relation="include">
+        </childnode>
+        <childnode refid="32993" relation="include">
+        </childnode>
+        <childnode refid="33021" relation="include">
+        </childnode>
+        <childnode refid="32995" relation="include">
+        </childnode>
+      </node>
+      <node id="32977">
+        <label>hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="32978" relation="include">
+        </childnode>
+        <childnode refid="32962" relation="include">
+        </childnode>
+        <childnode refid="32981" relation="include">
+        </childnode>
+        <childnode refid="32982" relation="include">
+        </childnode>
+        <childnode refid="32983" relation="include">
+        </childnode>
+        <childnode refid="32984" relation="include">
+        </childnode>
+        <childnode refid="32985" relation="include">
+        </childnode>
+        <childnode refid="32987" relation="include">
+        </childnode>
+        <childnode refid="32963" relation="include">
+        </childnode>
+      </node>
+      <node id="33018">
+        <label>stealth.h</label>
+        <link refid="stealth_8h"/>
+        <childnode refid="32998" relation="include">
+        </childnode>
+        <childnode refid="32962" relation="include">
+        </childnode>
+        <childnode refid="32954" relation="include">
+        </childnode>
+        <childnode refid="33019" relation="include">
+        </childnode>
+        <childnode refid="32963" relation="include">
+        </childnode>
+        <childnode refid="33020" relation="include">
+        </childnode>
+      </node>
+      <node id="32999">
+        <label>sys/types.h</label>
+      </node>
+      <node id="32955">
+        <label>string.h</label>
+      </node>
+      <node id="32973">
+        <label>clientversion.h</label>
+        <link refid="clientversion_8h"/>
+      </node>
+      <node id="32969">
+        <label>cstdio</label>
+      </node>
+      <node id="32991">
+        <label>boost/thread/locks.hpp</label>
+      </node>
+      <node id="33015">
+        <label>openssl/buffer.h</label>
+      </node>
+      <node id="32970">
+        <label>boost/type_traits/is_fundamental.hpp</label>
+      </node>
+      <node id="33010">
+        <label>boost/filesystem/path.hpp</label>
+      </node>
+      <node id="32976">
+        <label>pubkey.h</label>
+        <link refid="pubkey_8h"/>
+        <childnode refid="32977" relation="include">
+        </childnode>
+        <childnode refid="32962" relation="include">
+        </childnode>
+        <childnode refid="32978" relation="include">
+        </childnode>
+        <childnode refid="32980" relation="include">
+        </childnode>
+        <childnode refid="32963" relation="include">
+        </childnode>
+      </node>
+      <node id="32961">
+        <label>unistd.h</label>
+      </node>
+      <node id="32963">
+        <label>vector</label>
+      </node>
+      <node id="32996">
+        <label>bignum.h</label>
+        <link refid="bignum_8h"/>
+        <childnode refid="32962" relation="include">
+        </childnode>
+        <childnode refid="32978" relation="include">
+        </childnode>
+        <childnode refid="32997" relation="include">
+        </childnode>
+        <childnode refid="32980" relation="include">
+        </childnode>
+        <childnode refid="32963" relation="include">
+        </childnode>
+        <childnode refid="32967" relation="include">
+        </childnode>
+      </node>
+      <node id="32982">
+        <label>openssl/ripemd.h</label>
+      </node>
+      <node id="33009">
+        <label>boost/filesystem.hpp</label>
+      </node>
+      <node id="33007">
+        <label>utility</label>
+      </node>
+      <node id="33004">
+        <label>sstream</label>
+      </node>
+      <node id="32975">
+        <label>key.h</label>
+        <link refid="key_8h"/>
+        <childnode refid="32952" relation="include">
+        </childnode>
+        <childnode refid="32976" relation="include">
+        </childnode>
+        <childnode refid="32980" relation="include">
+        </childnode>
+        <childnode refid="32963" relation="include">
+        </childnode>
+      </node>
+      <node id="33014">
+        <label>openssl/evp.h</label>
+      </node>
+      <node id="33002">
+        <label>tinyformat.h</label>
+        <link refid="tinyformat_8h"/>
+        <childnode refid="32965" relation="include">
+        </childnode>
+        <childnode refid="33003" relation="include">
+        </childnode>
+        <childnode refid="33004" relation="include">
+        </childnode>
+        <childnode refid="32980" relation="include">
+        </childnode>
+      </node>
+      <node id="32967">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="32987">
+        <label>crypto/argon2/argon2.h</label>
+        <link refid="argon2_8h"/>
+        <childnode refid="32967" relation="include">
+        </childnode>
+        <childnode refid="32986" relation="include">
+        </childnode>
+        <childnode refid="32960" relation="include">
+        </childnode>
+      </node>
+      <node id="33000">
+        <label>sys/time.h</label>
+      </node>
+      <node id="33003">
+        <label>iostream</label>
+      </node>
+      <node id="32978">
+        <label>uint256.h</label>
+        <link refid="uint256_8h"/>
+        <childnode refid="32979" relation="include">
+        </childnode>
+        <childnode refid="32968" relation="include">
+        </childnode>
+        <childnode refid="32980" relation="include">
+        </childnode>
+        <childnode refid="32967" relation="include">
+        </childnode>
+        <childnode refid="32956" relation="include">
+        </childnode>
+        <childnode refid="32963" relation="include">
+        </childnode>
+      </node>
+      <node id="32997">
+        <label>openssl/bn.h</label>
+      </node>
+      <node id="32952">
+        <label>allocators.h</label>
+        <link refid="allocators_8h"/>
+        <childnode refid="32953" relation="include">
+        </childnode>
+        <childnode refid="32955" relation="include">
+        </childnode>
+        <childnode refid="32956" relation="include">
+        </childnode>
+        <childnode refid="32957" relation="include">
+        </childnode>
+        <childnode refid="32958" relation="include">
+        </childnode>
+        <childnode refid="32959" relation="include">
+        </childnode>
+        <childnode refid="32960" relation="include">
+        </childnode>
+        <childnode refid="32961" relation="include">
+        </childnode>
+      </node>
+      <node id="32964">
+        <label>set</label>
+      </node>
+      <node id="32983">
+        <label>crypto/ripemd160.h</label>
+        <link refid="ripemd160_8h"/>
+        <childnode refid="32967" relation="include">
+        </childnode>
+        <childnode refid="32954" relation="include">
+        </childnode>
+      </node>
+      <node id="33019">
+        <label>stdio.h</label>
+      </node>
+      <node id="32953">
+        <label>cleanse.h</label>
+        <link refid="cleanse_8h"/>
+        <childnode refid="32954" relation="include">
+        </childnode>
+      </node>
+      <node id="32968">
+        <label>cstring</label>
+      </node>
+      <node id="32988">
+        <label>sync.h</label>
+        <link refid="sync_8h"/>
+        <childnode refid="32989" relation="include">
+        </childnode>
+        <childnode refid="32990" relation="include">
+        </childnode>
+        <childnode refid="32991" relation="include">
+        </childnode>
+        <childnode refid="32957" relation="include">
+        </childnode>
+        <childnode refid="32992" relation="include">
+        </childnode>
+      </node>
+      <node id="33020">
+        <label>inttypes.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="33054">
+        <label>/home/dev/ds-160209/src/qt/darksilkgui.cpp</label>
+        <link refid="darksilkgui_8cpp"/>
+      </node>
+      <node id="33038">
+        <label>/home/dev/ds-160209/src/stormnodeman.cpp</label>
+        <link refid="stormnodeman_8cpp"/>
+      </node>
+      <node id="33059">
+        <label>/home/dev/ds-160209/src/rpcsmessage.cpp</label>
+        <link refid="rpcsmessage_8cpp"/>
+      </node>
+      <node id="33039">
+        <label>/home/dev/ds-160209/src/wallet.cpp</label>
+        <link refid="wallet_8cpp"/>
+      </node>
+      <node id="33067">
+        <label>/home/dev/ds-160209/src/qt/guiutil.cpp</label>
+        <link refid="guiutil_8cpp"/>
+      </node>
+      <node id="33052">
+        <label>/home/dev/ds-160209/src/qt/messagemodel.h</label>
+        <link refid="messagemodel_8h"/>
+        <childnode refid="33053" relation="include">
+        </childnode>
+        <childnode refid="33054" relation="include">
+        </childnode>
+        <childnode refid="33055" relation="include">
+        </childnode>
+        <childnode refid="33056" relation="include">
+        </childnode>
+        <childnode refid="33057" relation="include">
+        </childnode>
+        <childnode refid="33058" relation="include">
+        </childnode>
+      </node>
+      <node id="33065">
+        <label>/home/dev/ds-160209/src/qt/addresstablemodel.cpp</label>
+        <link refid="addresstablemodel_8cpp"/>
+      </node>
+      <node id="33040">
+        <label>/home/dev/ds-160209/src/net.cpp</label>
+        <link refid="net_8cpp"/>
+      </node>
+      <node id="33026">
+        <label>/home/dev/ds-160209/src/sandstorm.h</label>
+        <link refid="sandstorm_8h"/>
+        <childnode refid="33027" relation="include">
+        </childnode>
+        <childnode refid="33030" relation="include">
+        </childnode>
+        <childnode refid="33031" relation="include">
+        </childnode>
+        <childnode refid="33040" relation="include">
+        </childnode>
+        <childnode refid="33041" relation="include">
+        </childnode>
+        <childnode refid="33042" relation="include">
+        </childnode>
+        <childnode refid="33043" relation="include">
+        </childnode>
+        <childnode refid="33044" relation="include">
+        </childnode>
+        <childnode refid="33045" relation="include">
+        </childnode>
+        <childnode refid="33046" relation="include">
+        </childnode>
+        <childnode refid="33047" relation="include">
+        </childnode>
+        <childnode refid="33048" relation="include">
+        </childnode>
+        <childnode refid="33049" relation="include">
+        </childnode>
+        <childnode refid="33036" relation="include">
+        </childnode>
+        <childnode refid="33050" relation="include">
+        </childnode>
+        <childnode refid="33038" relation="include">
+        </childnode>
+        <childnode refid="33039" relation="include">
+        </childnode>
+      </node>
+      <node id="33035">
+        <label>/home/dev/ds-160209/src/spork.cpp</label>
+        <link refid="spork_8cpp"/>
+      </node>
+      <node id="33080">
+        <label>/home/dev/ds-160209/src/qt/transactiondesc.cpp</label>
+        <link refid="transactiondesc_8cpp"/>
+      </node>
+      <node id="33074">
+        <label>/home/dev/ds-160209/src/qt/transactionview.cpp</label>
+        <link refid="transactionview_8cpp"/>
+      </node>
+      <node id="33046">
+        <label>/home/dev/ds-160209/src/rpcstormnode.cpp</label>
+        <link refid="rpcstormnode_8cpp"/>
+      </node>
+      <node id="33041">
+        <label>/home/dev/ds-160209/src/qt/coincontroldialog.cpp</label>
+        <link refid="coincontroldialog_8cpp"/>
+      </node>
+      <node id="33055">
+        <label>/home/dev/ds-160209/src/qt/messagemodel.cpp</label>
+        <link refid="messagemodel_8cpp"/>
+      </node>
+      <node id="33051">
+        <label>/home/dev/ds-160209/src/smessage.h</label>
+        <link refid="smessage_8h"/>
+        <childnode refid="33029" relation="include">
+        </childnode>
+        <childnode refid="33031" relation="include">
+        </childnode>
+        <childnode refid="33052" relation="include">
+        </childnode>
+        <childnode refid="33058" relation="include">
+        </childnode>
+        <childnode refid="33033" relation="include">
+        </childnode>
+        <childnode refid="33059" relation="include">
+        </childnode>
+        <childnode refid="33060" relation="include">
+        </childnode>
+        <childnode refid="33039" relation="include">
+        </childnode>
+      </node>
+      <node id="33053">
+        <label>/home/dev/ds-160209/src/qt/darksilk.cpp</label>
+        <link refid="darksilk_8cpp"/>
+      </node>
+      <node id="33081">
+        <label>/home/dev/ds-160209/src/rpcwallet.cpp</label>
+        <link refid="rpcwallet_8cpp"/>
+      </node>
+      <node id="33078">
+        <label>/home/dev/ds-160209/src/qt/statisticspage.cpp</label>
+        <link refid="statisticspage_8cpp"/>
+      </node>
+      <node id="33070">
+        <label>/home/dev/ds-160209/src/qt/sendcoinsentry.cpp</label>
+        <link refid="sendcoinsentry_8cpp"/>
+      </node>
+      <node id="33033">
+        <label>/home/dev/ds-160209/src/qt/walletmodel.cpp</label>
+        <link refid="walletmodel_8cpp"/>
+      </node>
+      <node id="33072">
+        <label>/home/dev/ds-160209/src/qt/test/uritests.cpp</label>
+        <link refid="uritests_8cpp"/>
+      </node>
+      <node id="33023">
+        <label>/home/dev/ds-160209/src/wallet.h</label>
+        <link refid="wallet_8h"/>
+        <childnode refid="33024" relation="include">
+        </childnode>
+        <childnode refid="33028" relation="include">
+        </childnode>
+        <childnode refid="33051" relation="include">
+        </childnode>
+        <childnode refid="33061" relation="include">
+        </childnode>
+        <childnode refid="33040" relation="include">
+        </childnode>
+        <childnode refid="33063" relation="include">
+        </childnode>
+        <childnode refid="33064" relation="include">
+        </childnode>
+        <childnode refid="33065" relation="include">
+        </childnode>
+        <childnode refid="33075" relation="include">
+        </childnode>
+        <childnode refid="33076" relation="include">
+        </childnode>
+        <childnode refid="33041" relation="include">
+        </childnode>
+        <childnode refid="33053" relation="include">
+        </childnode>
+        <childnode refid="33054" relation="include">
+        </childnode>
+        <childnode refid="33077" relation="include">
+        </childnode>
+        <childnode refid="33079" relation="include">
+        </childnode>
+        <childnode refid="33071" relation="include">
+        </childnode>
+        <childnode refid="33078" relation="include">
+        </childnode>
+        <childnode refid="33043" relation="include">
+        </childnode>
+        <childnode refid="33080" relation="include">
+        </childnode>
+        <childnode refid="33044" relation="include">
+        </childnode>
+        <childnode refid="33073" relation="include">
+        </childnode>
+        <childnode refid="33033" relation="include">
+        </childnode>
+        <childnode refid="33081" relation="include">
+        </childnode>
+        <childnode refid="33082" relation="include">
+        </childnode>
+        <childnode refid="33083" relation="include">
+        </childnode>
+        <childnode refid="33084" relation="include">
+        </childnode>
+        <childnode refid="33039" relation="include">
+        </childnode>
+        <childnode refid="33085" relation="include">
+        </childnode>
+      </node>
+      <node id="33071">
+        <label>/home/dev/ds-160209/src/qt/signverifymessagedialog.cpp</label>
+        <link refid="signverifymessagedialog_8cpp"/>
+      </node>
+      <node id="33032">
+        <label>/home/dev/ds-160209/src/miner.cpp</label>
+        <link refid="miner_8cpp"/>
+      </node>
+      <node id="33037">
+        <label>/home/dev/ds-160209/src/stormnode-sync.cpp</label>
+        <link refid="stormnode-sync_8cpp"/>
+      </node>
+      <node id="33062">
+        <label>/home/dev/ds-160209/src/rpcmining.cpp</label>
+        <link refid="rpcmining_8cpp"/>
+      </node>
+      <node id="33076">
+        <label>/home/dev/ds-160209/src/qt/blockbrowser.cpp</label>
+        <link refid="blockbrowser_8cpp"/>
+      </node>
+      <node id="33044">
+        <label>/home/dev/ds-160209/src/qt/transactionrecord.cpp</label>
+        <link refid="transactionrecord_8cpp"/>
+      </node>
+      <node id="33083">
+        <label>/home/dev/ds-160209/src/test/base64_tests.cpp</label>
+        <link refid="base64__tests_8cpp"/>
+      </node>
+      <node id="33043">
+        <label>/home/dev/ds-160209/src/qt/stormnodemanager.cpp</label>
+        <link refid="stormnodemanager_8cpp"/>
+      </node>
+      <node id="33068">
+        <label>/home/dev/ds-160209/src/qt/sandstormconfig.cpp</label>
+        <link refid="sandstormconfig_8cpp"/>
+      </node>
+      <node id="33036">
+        <label>/home/dev/ds-160209/src/stormnode-payments.cpp</label>
+        <link refid="stormnode-payments_8cpp"/>
+      </node>
+      <node id="33022">
+        <label>/home/dev/ds-160209/src/crypter.h</label>
+        <link refid="crypter.h"/>
+        <childnode refid="33023" relation="include">
+        </childnode>
+        <childnode refid="33086" relation="include">
+        </childnode>
+        <childnode refid="33039" relation="include">
+        </childnode>
+      </node>
+      <node id="33084">
+        <label>/home/dev/ds-160209/src/test/wallet_tests.cpp</label>
+        <link refid="wallet__tests_8cpp"/>
+      </node>
+      <node id="33079">
+        <label>/home/dev/ds-160209/src/qt/optionsmodel.cpp</label>
+        <link refid="optionsmodel_8cpp"/>
+      </node>
+      <node id="33082">
+        <label>/home/dev/ds-160209/src/test/accounting_tests.cpp</label>
+        <link refid="accounting__tests_8cpp"/>
+      </node>
+      <node id="33047">
+        <label>/home/dev/ds-160209/src/sandstorm-relay.cpp</label>
+        <link refid="sandstorm-relay_8cpp"/>
+      </node>
+      <node id="33066">
+        <label>/home/dev/ds-160209/src/qt/askpassphrasedialog.cpp</label>
+        <link refid="askpassphrasedialog_8cpp"/>
+      </node>
+      <node id="33045">
+        <label>/home/dev/ds-160209/src/rpcstormnode-budget.cpp</label>
+        <link refid="rpcstormnode-budget_8cpp"/>
+      </node>
+      <node id="33025">
+        <label>/home/dev/ds-160209/src/activestormnode.cpp</label>
+        <link refid="activestormnode_8cpp"/>
+      </node>
+      <node id="33085">
+        <label>/home/dev/ds-160209/src/walletdb.cpp</label>
+        <link refid="walletdb_8cpp"/>
+      </node>
+      <node id="33028">
+        <label>/home/dev/ds-160209/src/chain.cpp</label>
+        <link refid="chain_8cpp"/>
+      </node>
+      <node id="33049">
+        <label>/home/dev/ds-160209/src/stormnode-budget.cpp</label>
+        <link refid="stormnode-budget_8cpp"/>
+      </node>
+      <node id="33063">
+        <label>/home/dev/ds-160209/src/qt/addeditstormnode.cpp</label>
+        <link refid="addeditstormnode_8cpp"/>
+      </node>
+      <node id="33030">
+        <label>/home/dev/ds-160209/src/instantx.cpp</label>
+        <link refid="instantx_8cpp"/>
+      </node>
+      <node id="33029">
+        <label>/home/dev/ds-160209/src/init.cpp</label>
+        <link refid="init_8cpp"/>
+      </node>
+      <node id="33056">
+        <label>/home/dev/ds-160209/src/qt/messagepage.cpp</label>
+        <link refid="messagepage_8cpp"/>
+      </node>
+      <node id="33027">
+        <label>/home/dev/ds-160209/src/spork.h</label>
+        <link refid="spork_8h"/>
+        <childnode refid="33025" relation="include">
+        </childnode>
+        <childnode refid="33028" relation="include">
+        </childnode>
+        <childnode refid="33029" relation="include">
+        </childnode>
+        <childnode refid="33030" relation="include">
+        </childnode>
+        <childnode refid="33031" relation="include">
+        </childnode>
+        <childnode refid="33032" relation="include">
+        </childnode>
+        <childnode refid="33033" relation="include">
+        </childnode>
+        <childnode refid="33034" relation="include">
+        </childnode>
+        <childnode refid="33035" relation="include">
+        </childnode>
+        <childnode refid="33036" relation="include">
+        </childnode>
+        <childnode refid="33037" relation="include">
+        </childnode>
+        <childnode refid="33038" relation="include">
+        </childnode>
+        <childnode refid="33039" relation="include">
+        </childnode>
+      </node>
+      <node id="33057">
+        <label>/home/dev/ds-160209/src/qt/sendmessagesdialog.cpp</label>
+        <link refid="sendmessagesdialog_8cpp"/>
+      </node>
+      <node id="33058">
+        <label>/home/dev/ds-160209/src/qt/sendmessagesentry.cpp</label>
+        <link refid="sendmessagesentry_8cpp"/>
+      </node>
+      <node id="33061">
+        <label>/home/dev/ds-160209/src/miner.h</label>
+        <link refid="miner_8h"/>
+        <childnode refid="33032" relation="include">
+        </childnode>
+        <childnode refid="33062" relation="include">
+        </childnode>
+      </node>
+      <node id="33060">
+        <label>/home/dev/ds-160209/src/smessage.cpp</label>
+        <link refid="smessage_8cpp"/>
+      </node>
+      <node id="33077">
+        <label>/home/dev/ds-160209/src/qt/statisticspage.h</label>
+        <link refid="statisticspage_8h"/>
+        <childnode refid="33054" relation="include">
+        </childnode>
+        <childnode refid="33078" relation="include">
+        </childnode>
+      </node>
+      <node id="33073">
+        <label>/home/dev/ds-160209/src/qt/transactiontablemodel.cpp</label>
+        <link refid="transactiontablemodel_8cpp"/>
+      </node>
+      <node id="33031">
+        <label>/home/dev/ds-160209/src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="33034">
+        <label>/home/dev/ds-160209/src/rpcmisc.cpp</label>
+        <link refid="rpcmisc_8cpp"/>
+      </node>
+      <node id="33069">
+        <label>/home/dev/ds-160209/src/qt/sendcoinsdialog.cpp</label>
+        <link refid="sendcoinsdialog_8cpp"/>
+      </node>
+      <node id="33024">
+        <label>/home/dev/ds-160209/src/activestormnode.h</label>
+        <link refid="activestormnode_8h"/>
+        <childnode refid="33025" relation="include">
+        </childnode>
+        <childnode refid="33026" relation="include">
+        </childnode>
+        <childnode refid="33029" relation="include">
+        </childnode>
+        <childnode refid="33030" relation="include">
+        </childnode>
+        <childnode refid="33043" relation="include">
+        </childnode>
+        <childnode refid="33045" relation="include">
+        </childnode>
+        <childnode refid="33046" relation="include">
+        </childnode>
+        <childnode refid="33037" relation="include">
+        </childnode>
+        <childnode refid="33038" relation="include">
+        </childnode>
+      </node>
+      <node id="33064">
+        <label>/home/dev/ds-160209/src/qt/walletmodel.h</label>
+        <link refid="walletmodel_8h"/>
+        <childnode refid="33065" relation="include">
+        </childnode>
+        <childnode refid="33066" relation="include">
+        </childnode>
+        <childnode refid="33041" relation="include">
+        </childnode>
+        <childnode refid="33053" relation="include">
+        </childnode>
+        <childnode refid="33054" relation="include">
+        </childnode>
+        <childnode refid="33067" relation="include">
+        </childnode>
+        <childnode refid="33055" relation="include">
+        </childnode>
+        <childnode refid="33042" relation="include">
+        </childnode>
+        <childnode refid="33068" relation="include">
+        </childnode>
+        <childnode refid="33069" relation="include">
+        </childnode>
+        <childnode refid="33070" relation="include">
+        </childnode>
+        <childnode refid="33057" relation="include">
+        </childnode>
+        <childnode refid="33058" relation="include">
+        </childnode>
+        <childnode refid="33071" relation="include">
+        </childnode>
+        <childnode refid="33043" relation="include">
+        </childnode>
+        <childnode refid="33072" relation="include">
+        </childnode>
+        <childnode refid="33073" relation="include">
+        </childnode>
+        <childnode refid="33074" relation="include">
+        </childnode>
+        <childnode refid="33033" relation="include">
+        </childnode>
+      </node>
+      <node id="33048">
+        <label>/home/dev/ds-160209/src/sandstorm.cpp</label>
+        <link refid="sandstorm_8cpp"/>
+      </node>
+      <node id="33075">
+        <label>/home/dev/ds-160209/src/qt/blockbrowser.h</label>
+        <link refid="blockbrowser_8h"/>
+        <childnode refid="33076" relation="include">
+        </childnode>
+        <childnode refid="33054" relation="include">
+        </childnode>
+      </node>
+      <node id="33042">
+        <label>/home/dev/ds-160209/src/qt/overviewpage.cpp</label>
+        <link refid="overviewpage_8cpp"/>
+      </node>
+      <node id="33050">
+        <label>/home/dev/ds-160209/src/stormnode.cpp</label>
+        <link refid="stormnode_8cpp"/>
+      </node>
+      <node id="33086">
+        <label>/home/dev/ds-160209/src/crypter.cpp</label>
+        <link refid="crypter_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_c_master_key" prot="public">CMasterKey</innerclass>
+    <innerclass refid="class_c_crypter" prot="public">CCrypter</innerclass>
+    <innerclass refid="class_c_crypto_key_store" prot="public">CCryptoKeyStore</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="crypter_8h_1a64709c9a3acc8f5694515789a183ad7b" prot="public" static="no">
+        <type>std::vector&lt; unsigned char, <ref refid="structsecure__allocator" kindref="compound">secure_allocator</ref>&lt; unsigned char &gt; &gt;</type>
+        <definition>typedef std::vector&lt;unsigned char, secure_allocator&lt;unsigned char&gt; &gt; CKeyingMaterial</definition>
+        <argsstring></argsstring>
+        <name>CKeyingMaterial</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="85" column="1" bodyfile="/home/dev/ds-160209/src/crypter.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="crypter_8h_1abf8d5f4eb0b3c828d9fbedb9b2e10b2a" prot="public" static="no" mutable="no">
+        <type>const unsigned int</type>
+        <definition>const unsigned int WALLET_CRYPTO_KEY_SIZE</definition>
+        <argsstring></argsstring>
+        <name>WALLET_CRYPTO_KEY_SIZE</name>
+        <initializer>= 32</initializer>
+        <briefdescription>
+<para>! for SecureString </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="12" column="1" bodyfile="/home/dev/ds-160209/src/crypter.h" bodystart="12" bodyend="-1"/>
+        <referencedby refid="class_c_crypter_1a5368279e4a1549d3c1d15d8aa2179708" compoundref="crypter_8cpp" startline="25" endline="57">CCrypter::SetKeyFromPassphrase</referencedby>
+        <referencedby refid="class_c_crypter_1a0d948dd4796e2420e1dd9c1ddbf7974e" compoundref="crypter_8cpp" startline="59" endline="69">CCrypter::SetKey</referencedby>
+        <referencedby refid="crypter_8h_1a4fa4e3134d2b6e4913b9ce6369820697" compoundref="crypter_8cpp" startline="126" endline="134">EncryptSecret</referencedby>
+        <referencedby refid="crypter_8h_1aded00aa7498a7485a00e77a20856b3e4" compoundref="crypter_8cpp" startline="136" endline="144">DecryptSecret</referencedby>
+        <referencedby refid="class_c_wallet_1ab34fe5bf771619dcbe22a65f013e5469" compoundref="wallet_8cpp" startline="479" endline="596">CWallet::EncryptWallet</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="crypter_8h_1aa42a9547c4738b8f92fd88016c5184a0" prot="public" static="no" mutable="no">
+        <type>const unsigned int</type>
+        <definition>const unsigned int WALLET_CRYPTO_SALT_SIZE</definition>
+        <argsstring></argsstring>
+        <name>WALLET_CRYPTO_SALT_SIZE</name>
+        <initializer>= 8</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="13" column="1" bodyfile="/home/dev/ds-160209/src/crypter.h" bodystart="13" bodyend="-1"/>
+        <referencedby refid="class_c_crypter_1a5368279e4a1549d3c1d15d8aa2179708" compoundref="crypter_8cpp" startline="25" endline="57">CCrypter::SetKeyFromPassphrase</referencedby>
+        <referencedby refid="class_c_wallet_1ab34fe5bf771619dcbe22a65f013e5469" compoundref="wallet_8cpp" startline="479" endline="596">CWallet::EncryptWallet</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="crypter_8h_1a4fa4e3134d2b6e4913b9ce6369820697" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EncryptSecret</definition>
+        <argsstring>(const CKeyingMaterial &amp;vMasterKey, const CKeyingMaterial &amp;vchPlaintext, const uint256 &amp;nIV, std::vector&lt; unsigned char &gt; &amp;vchCiphertext)</argsstring>
+        <name>EncryptSecret</name>
+        <param>
+          <type>const <ref refid="crypter_8h_1a64709c9a3acc8f5694515789a183ad7b" kindref="member">CKeyingMaterial</ref> &amp;</type>
+          <declname>vMasterKey</declname>
+        </param>
+        <param>
+          <type>const <ref refid="crypter_8h_1a64709c9a3acc8f5694515789a183ad7b" kindref="member">CKeyingMaterial</ref> &amp;</type>
+          <declname>vchPlaintext</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuint256" kindref="compound">uint256</ref> &amp;</type>
+          <declname>nIV</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>vchCiphertext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="128" column="1" bodyfile="/home/dev/ds-160209/src/crypter.cpp" bodystart="126" bodyend="134"/>
+        <references refid="crypter_8h_1abf8d5f4eb0b3c828d9fbedb9b2e10b2a" compoundref="crypter_8h" startline="12">WALLET_CRYPTO_KEY_SIZE</references>
+        <references refid="class_c_crypter_1a0d948dd4796e2420e1dd9c1ddbf7974e" compoundref="crypter_8cpp" startline="59" endline="69">CCrypter::SetKey</references>
+        <references refid="class_c_crypter_1a124fcd3021569a660ce2daa3391c8ea4" compoundref="crypter_8cpp" startline="71" endline="96">CCrypter::Encrypt</references>
+        <referencedby refid="class_c_crypto_key_store_1a340109b8673267676a34664a76ed3274" compoundref="crypter_8cpp" startline="267" endline="286">CCryptoKeyStore::AddKeyPubKey</referencedby>
+        <referencedby refid="class_c_crypto_key_store_1a8c0f6b63fb04193df16243c4459b7c61" compoundref="crypter_8cpp" startline="342" endline="364">CCryptoKeyStore::EncryptKeys</referencedby>
+        <referencedby refid="class_c_wallet_1ab34fe5bf771619dcbe22a65f013e5469" compoundref="wallet_8cpp" startline="479" endline="596">CWallet::EncryptWallet</referencedby>
+        <referencedby refid="class_c_wallet_1a19d6a23e37ff619c741b7dfa9279b973" compoundref="wallet_8cpp" startline="3042" endline="3088">CWallet::AddStealthAddress</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="crypter_8h_1aded00aa7498a7485a00e77a20856b3e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool DecryptSecret</definition>
+        <argsstring>(const CKeyingMaterial &amp;vMasterKey, const std::vector&lt; unsigned char &gt; &amp;vchCiphertext, const uint256 &amp;nIV, CKeyingMaterial &amp;vchPlaintext)</argsstring>
+        <name>DecryptSecret</name>
+        <param>
+          <type>const <ref refid="crypter_8h_1a64709c9a3acc8f5694515789a183ad7b" kindref="member">CKeyingMaterial</ref> &amp;</type>
+          <declname>vMasterKey</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>vchCiphertext</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classuint256" kindref="compound">uint256</ref> &amp;</type>
+          <declname>nIV</declname>
+        </param>
+        <param>
+          <type><ref refid="crypter_8h_1a64709c9a3acc8f5694515789a183ad7b" kindref="member">CKeyingMaterial</ref> &amp;</type>
+          <declname>vchPlaintext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="129" column="1" bodyfile="/home/dev/ds-160209/src/crypter.cpp" bodystart="136" bodyend="144"/>
+        <references refid="crypter_8h_1abf8d5f4eb0b3c828d9fbedb9b2e10b2a" compoundref="crypter_8h" startline="12">WALLET_CRYPTO_KEY_SIZE</references>
+        <references refid="class_c_crypter_1a0d948dd4796e2420e1dd9c1ddbf7974e" compoundref="crypter_8cpp" startline="59" endline="69">CCrypter::SetKey</references>
+        <references refid="class_c_crypter_1a4dbabed4975d4435d22c76deac43df7f" compoundref="crypter_8cpp" startline="98" endline="123">CCrypter::Decrypt</references>
+        <referencedby refid="class_c_crypto_key_store_1a81bd70e18aa75f566526620a74f9cd88" compoundref="crypter_8cpp" startline="238" endline="265">CCryptoKeyStore::Unlock</referencedby>
+        <referencedby refid="class_c_crypto_key_store_1a58cfb3c490318ef82de8fc9be6637269" compoundref="crypter_8cpp" startline="301" endline="323">CCryptoKeyStore::GetKey</referencedby>
+        <referencedby refid="class_c_wallet_1ac45af0632ea59c56295d3158b7387f33" compoundref="wallet_8cpp" startline="3090" endline="3240">CWallet::UnlockStealthAddresses</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="crypter_8h_1a226a32c844661568e96a8e4facdb4804" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool EncryptAES256</definition>
+        <argsstring>(const SecureString &amp;sKey, const SecureString &amp;sPlaintext, const std::string &amp;sIV, std::string &amp;sCiphertext)</argsstring>
+        <name>EncryptAES256</name>
+        <param>
+          <type>const <ref refid="allocators_8h_1a396ed773a5ac24aec28c8f7dc413c7ac" kindref="member">SecureString</ref> &amp;</type>
+          <declname>sKey</declname>
+        </param>
+        <param>
+          <type>const <ref refid="allocators_8h_1a396ed773a5ac24aec28c8f7dc413c7ac" kindref="member">SecureString</ref> &amp;</type>
+          <declname>sPlaintext</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>sIV</declname>
+        </param>
+        <param>
+          <type>std::string &amp;</type>
+          <declname>sCiphertext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="131" column="1" bodyfile="/home/dev/ds-160209/src/crypter.cpp" bodystart="147" bodyend="179"/>
+        <references refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" compoundref="util_8h" startline="158">LogPrintf</references>
+      </memberdef>
+      <memberdef kind="function" id="crypter_8h_1ae8eca4e4f0534b828d8a2a549536c762" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool DecryptAES256</definition>
+        <argsstring>(const SecureString &amp;sKey, const std::string &amp;sCiphertext, const std::string &amp;sIV, SecureString &amp;sPlaintext)</argsstring>
+        <name>DecryptAES256</name>
+        <param>
+          <type>const <ref refid="allocators_8h_1a396ed773a5ac24aec28c8f7dc413c7ac" kindref="member">SecureString</ref> &amp;</type>
+          <declname>sKey</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>sCiphertext</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>sIV</declname>
+        </param>
+        <param>
+          <type><ref refid="allocators_8h_1a396ed773a5ac24aec28c8f7dc413c7ac" kindref="member">SecureString</ref> &amp;</type>
+          <declname>sPlaintext</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/crypter.h" line="132" column="1" bodyfile="/home/dev/ds-160209/src/crypter.cpp" bodystart="181" bodyend="209"/>
+        <references refid="util_8h_1afc02c0a4258fedfb316be612bb659ba8" compoundref="util_8h" startline="158">LogPrintf</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2009-2016<sp/>The<sp/>Bitcoin<sp/>Developers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2015-2016<sp/>Silk<sp/>Network</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Distributed<sp/>under<sp/>the<sp/>MIT/X11<sp/>software<sp/>license,<sp/>see<sp/>the<sp/>accompanying</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>file<sp/>COPYING<sp/>or<sp/>http://www.opensource.org/licenses/mit-license.php.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>__CRYPTER_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>__CRYPTER_H__</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="allocators_8h" kindref="compound">allocators.h</ref>&quot;</highlight><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="serialize_8h" kindref="compound">serialize.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="keystore_8h" kindref="compound">keystore.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12" refid="crypter_8h_1abf8d5f4eb0b3c828d9fbedb9b2e10b2a" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="crypter_8h_1abf8d5f4eb0b3c828d9fbedb9b2e10b2a" kindref="member">WALLET_CRYPTO_KEY_SIZE</ref><sp/>=<sp/>32;</highlight></codeline>
+<codeline lineno="13" refid="crypter_8h_1aa42a9547c4738b8f92fd88016c5184a0" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="crypter_8h_1aa42a9547c4738b8f92fd88016c5184a0" kindref="member">WALLET_CRYPTO_SALT_SIZE</ref><sp/>=<sp/>8;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="16"><highlight class="comment">Private<sp/>key<sp/>encryption<sp/>is<sp/>done<sp/>based<sp/>on<sp/>a<sp/>CMasterKey,</highlight></codeline>
+<codeline lineno="17"><highlight class="comment">which<sp/>holds<sp/>a<sp/>salt<sp/>and<sp/>random<sp/>encryption<sp/>key.</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"></highlight></codeline>
+<codeline lineno="19"><highlight class="comment">CMasterKeys<sp/>are<sp/>encrypted<sp/>using<sp/>AES-256-CBC<sp/>using<sp/>a<sp/>key</highlight></codeline>
+<codeline lineno="20"><highlight class="comment">derived<sp/>using<sp/>derivation<sp/>method<sp/>nDerivationMethod</highlight></codeline>
+<codeline lineno="21"><highlight class="comment">(0<sp/>==<sp/>EVP_sha512())<sp/>and<sp/>derivation<sp/>iterations<sp/>nDeriveIterations.</highlight></codeline>
+<codeline lineno="22"><highlight class="comment">vchOtherDerivationParameters<sp/>is<sp/>provided<sp/>for<sp/>alternative<sp/>algorithms</highlight></codeline>
+<codeline lineno="23"><highlight class="comment">which<sp/>may<sp/>require<sp/>more<sp/>parameters<sp/>(such<sp/>as<sp/>scrypt).</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"></highlight></codeline>
+<codeline lineno="25"><highlight class="comment">Wallet<sp/>Private<sp/>Keys<sp/>are<sp/>then<sp/>encrypted<sp/>using<sp/>AES-256-CBC</highlight></codeline>
+<codeline lineno="26"><highlight class="comment">with<sp/>the<sp/>double-sha256<sp/>of<sp/>the<sp/>public<sp/>key<sp/>as<sp/>the<sp/>IV,<sp/>and<sp/>the</highlight></codeline>
+<codeline lineno="27"><highlight class="comment">master<sp/>key&apos;s<sp/>key<sp/>as<sp/>the<sp/>encryption<sp/>key<sp/>(see<sp/>keystore.[ch]).</highlight></codeline>
+<codeline lineno="28"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31" refid="class_c_master_key" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_c_master_key" kindref="compound">CMasterKey</ref></highlight></codeline>
+<codeline lineno="32"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="34" refid="class_c_master_key_1ab52e0eaabb0eb3af78fc4879c192e163" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;unsigned<sp/>char&gt;<sp/><ref refid="class_c_master_key_1ab52e0eaabb0eb3af78fc4879c192e163" kindref="member">vchCryptedKey</ref>;</highlight></codeline>
+<codeline lineno="35" refid="class_c_master_key_1a00009f4b4feaa2ebe630a0d7cc854d3a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;unsigned<sp/>char&gt;<sp/><ref refid="class_c_master_key_1a00009f4b4feaa2ebe630a0d7cc854d3a" kindref="member">vchSalt</ref>;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>0<sp/>=<sp/>EVP_sha512()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>1<sp/>=<sp/>scrypt()</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="class_c_master_key_1a7a4b1e432a30011297f496441769957f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_c_master_key_1a7a4b1e432a30011297f496441769957f" kindref="member">nDerivationMethod</ref>;</highlight></codeline>
+<codeline lineno="39" refid="class_c_master_key_1aec53e0be82d1053cf5a70a67fd4cc25d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_c_master_key_1aec53e0be82d1053cf5a70a67fd4cc25d" kindref="member">nDeriveIterations</ref>;</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Use<sp/>this<sp/>for<sp/>more<sp/>parameters<sp/>to<sp/>key<sp/>derivation,</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>such<sp/>as<sp/>the<sp/>various<sp/>parameters<sp/>to<sp/>scrypt</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42" refid="class_c_master_key_1abfd00b311d5e5cf9ae1a6f3877ed35f7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;unsigned<sp/>char&gt;<sp/><ref refid="class_c_master_key_1abfd00b311d5e5cf9ae1a6f3877ed35f7" kindref="member">vchOtherDerivationParameters</ref>;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="class_c_master_key_1a0e49e2a9206051c91388b2077eacb8c8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_master_key_1a0e49e2a9206051c91388b2077eacb8c8" kindref="member">ADD_SERIALIZE_METHODS</ref>;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Stream,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>Operation&gt;</highlight></codeline>
+<codeline lineno="47" refid="class_c_master_key_1a32456e3080cf3a9818850f3c458594ea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_c_master_key_1a32456e3080cf3a9818850f3c458594ea" kindref="member">SerializationOp</ref>(Stream&amp;<sp/>s,<sp/>Operation<sp/>ser_action,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nType,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nVersion)<sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="serialize_8h_1a4d7fc7040e01003a01f367b8d90324f1" kindref="member">READWRITE</ref>(vchCryptedKey);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="serialize_8h_1a4d7fc7040e01003a01f367b8d90324f1" kindref="member">READWRITE</ref>(vchSalt);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="serialize_8h_1a4d7fc7040e01003a01f367b8d90324f1" kindref="member">READWRITE</ref>(nDerivationMethod);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="serialize_8h_1a4d7fc7040e01003a01f367b8d90324f1" kindref="member">READWRITE</ref>(nDeriveIterations);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="serialize_8h_1a4d7fc7040e01003a01f367b8d90324f1" kindref="member">READWRITE</ref>(vchOtherDerivationParameters);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="class_c_master_key_1a267244f9eaaf6ef5a71cb2faa393cdea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_master_key_1a267244f9eaaf6ef5a71cb2faa393cdea" kindref="member">CMasterKey</ref>()</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>25000<sp/>rounds<sp/>is<sp/>just<sp/>under<sp/>0.1<sp/>seconds<sp/>on<sp/>a<sp/>1.86<sp/>GHz<sp/>Pentium<sp/>M</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>ie<sp/>slightly<sp/>lower<sp/>than<sp/>the<sp/>lowest<sp/>hardware<sp/>we<sp/>need<sp/>bother<sp/>supporting</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nDeriveIterations<sp/>=<sp/>25000;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nDerivationMethod<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vchOtherDerivationParameters<sp/>=<sp/>std::vector&lt;unsigned<sp/>char&gt;(0);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="class_c_master_key_1a61d5165940d981ef97f0120160737a05" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_master_key_1a61d5165940d981ef97f0120160737a05" kindref="member">CMasterKey</ref>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="init_8cpp_1a3e3a4daba510b75f09387695c6c8a11f" kindref="member">nDerivationMethodIndex</ref>)</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(nDerivationMethodIndex)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>0:<sp/></highlight><highlight class="comment">//<sp/>sha512</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nDeriveIterations<sp/>=<sp/>25000;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nDerivationMethod<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vchOtherDerivationParameters<sp/>=<sp/>std::vector&lt;unsigned<sp/>char&gt;(0);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/>1:<sp/></highlight><highlight class="comment">//<sp/>scrypt+sha512</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nDeriveIterations<sp/>=<sp/>10000;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>nDerivationMethod<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>vchOtherDerivationParameters<sp/>=<sp/>std::vector&lt;unsigned<sp/>char&gt;(0);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">break</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="crypter_8h_1a64709c9a3acc8f5694515789a183ad7b" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>std::vector&lt;unsigned<sp/>char,<sp/>secure_allocator&lt;unsigned<sp/>char&gt;<sp/>&gt;<sp/><ref refid="crypter_8h_1a64709c9a3acc8f5694515789a183ad7b" kindref="member">CKeyingMaterial</ref>;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="class_c_crypter" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_c_crypter" kindref="compound">CCrypter</ref></highlight></codeline>
+<codeline lineno="89"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>chKey[<ref refid="crypter_8h_1abf8d5f4eb0b3c828d9fbedb9b2e10b2a" kindref="member">WALLET_CRYPTO_KEY_SIZE</ref>];</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>chIV[<ref refid="crypter_8h_1abf8d5f4eb0b3c828d9fbedb9b2e10b2a" kindref="member">WALLET_CRYPTO_KEY_SIZE</ref>];</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fKeySet;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_crypter_1a5368279e4a1549d3c1d15d8aa2179708" kindref="member">SetKeyFromPassphrase</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="allocators_8h_1a396ed773a5ac24aec28c8f7dc413c7ac" kindref="member">SecureString</ref><sp/>&amp;strKeyData,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;unsigned<sp/>char&gt;&amp;<sp/>chSalt,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nRounds,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nDerivationMethod);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_crypter_1a124fcd3021569a660ce2daa3391c8ea4" kindref="member">Encrypt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="crypter_8h_1a64709c9a3acc8f5694515789a183ad7b" kindref="member">CKeyingMaterial</ref>&amp;<sp/>vchPlaintext,<sp/>std::vector&lt;unsigned<sp/>char&gt;<sp/>&amp;vchCiphertext);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_crypter_1a4dbabed4975d4435d22c76deac43df7f" kindref="member">Decrypt</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;unsigned<sp/>char&gt;&amp;<sp/>vchCiphertext,<sp/><ref refid="crypter_8h_1a64709c9a3acc8f5694515789a183ad7b" kindref="member">CKeyingMaterial</ref>&amp;<sp/>vchPlaintext);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_crypter_1a0d948dd4796e2420e1dd9c1ddbf7974e" kindref="member">SetKey</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="crypter_8h_1a64709c9a3acc8f5694515789a183ad7b" kindref="member">CKeyingMaterial</ref>&amp;<sp/>chNewKey,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;unsigned<sp/>char&gt;&amp;<sp/>chNewIV);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101" refid="class_c_crypter_1a6910b4cff4ee40e33fbb3789dc12c139" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_c_crypter_1a6910b4cff4ee40e33fbb3789dc12c139" kindref="member">CleanKey</ref>()</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OPENSSL_cleanse(chKey,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(chKey));</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>OPENSSL_cleanse(chIV,<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(chIV));</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fKeySet<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108" refid="class_c_crypter_1a4bbf5c23b0350f04e0c8e3b4ef28615e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_crypter_1a4bbf5c23b0350f04e0c8e3b4ef28615e" kindref="member">CCrypter</ref>()</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>fKeySet<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Try<sp/>to<sp/>keep<sp/>the<sp/>key<sp/>data<sp/>out<sp/>of<sp/>swap<sp/>(and<sp/>be<sp/>a<sp/>bit<sp/>over-careful<sp/>to<sp/>keep<sp/>the<sp/>IV<sp/>that<sp/>we<sp/>don&apos;t<sp/>even<sp/>use<sp/>out<sp/>of<sp/>swap)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Note<sp/>that<sp/>this<sp/>does<sp/>nothing<sp/>about<sp/>suspend-to-disk<sp/>(which<sp/>will<sp/>put<sp/>all<sp/>our<sp/>key<sp/>data<sp/>on<sp/>disk)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Note<sp/>as<sp/>well<sp/>that<sp/>at<sp/>no<sp/>point<sp/>in<sp/>this<sp/>program<sp/>is<sp/>any<sp/>attempt<sp/>made<sp/>to<sp/>prevent<sp/>stealing<sp/>of<sp/>keys<sp/>by<sp/>reading<sp/>the<sp/>memory<sp/>of<sp/>the<sp/>running<sp/>process.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_locked_page_manager_1aedd82df65c12c1d83d43ac8500c57fcf" kindref="member">LockedPageManager::instance</ref>.<ref refid="class_locked_page_manager_base_1ae24ac08899505b892d451404133fa494" kindref="member">LockRange</ref>(&amp;chKey[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal"><sp/>chKey);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_locked_page_manager_1aedd82df65c12c1d83d43ac8500c57fcf" kindref="member">LockedPageManager::instance</ref>.<ref refid="class_locked_page_manager_base_1ae24ac08899505b892d451404133fa494" kindref="member">LockRange</ref>(&amp;chIV[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal"><sp/>chIV);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="class_c_crypter_1ac0dccc762fb60fe9605409232ebfaa0f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_crypter_1ac0dccc762fb60fe9605409232ebfaa0f" kindref="member">~CCrypter</ref>()</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_crypter_1a6910b4cff4ee40e33fbb3789dc12c139" kindref="member">CleanKey</ref>();</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_locked_page_manager_1aedd82df65c12c1d83d43ac8500c57fcf" kindref="member">LockedPageManager::instance</ref>.<ref refid="class_locked_page_manager_base_1a34bcf7b9120295ed178fe9545ed229af" kindref="member">UnlockRange</ref>(&amp;chKey[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal"><sp/>chKey);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_locked_page_manager_1aedd82df65c12c1d83d43ac8500c57fcf" kindref="member">LockedPageManager::instance</ref>.<ref refid="class_locked_page_manager_base_1a34bcf7b9120295ed178fe9545ed229af" kindref="member">UnlockRange</ref>(&amp;chIV[0],<sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal"><sp/>chIV);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="crypter_8h_1a4fa4e3134d2b6e4913b9ce6369820697" kindref="member">EncryptSecret</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="crypter_8h_1a64709c9a3acc8f5694515789a183ad7b" kindref="member">CKeyingMaterial</ref>&amp;<sp/>vMasterKey,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="crypter_8h_1a64709c9a3acc8f5694515789a183ad7b" kindref="member">CKeyingMaterial</ref><sp/>&amp;vchPlaintext,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classuint256" kindref="compound">uint256</ref>&amp;<sp/>nIV,<sp/>std::vector&lt;unsigned<sp/>char&gt;<sp/>&amp;vchCiphertext);</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="crypter_8h_1aded00aa7498a7485a00e77a20856b3e4" kindref="member">DecryptSecret</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="crypter_8h_1a64709c9a3acc8f5694515789a183ad7b" kindref="member">CKeyingMaterial</ref>&amp;<sp/>vMasterKey,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;unsigned<sp/>char&gt;&amp;<sp/>vchCiphertext,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classuint256" kindref="compound">uint256</ref>&amp;<sp/>nIV,<sp/><ref refid="crypter_8h_1a64709c9a3acc8f5694515789a183ad7b" kindref="member">CKeyingMaterial</ref>&amp;<sp/>vchPlaintext);</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="crypter_8h_1a226a32c844661568e96a8e4facdb4804" kindref="member">EncryptAES256</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="allocators_8h_1a396ed773a5ac24aec28c8f7dc413c7ac" kindref="member">SecureString</ref>&amp;<sp/>sKey,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="allocators_8h_1a396ed773a5ac24aec28c8f7dc413c7ac" kindref="member">SecureString</ref>&amp;<sp/>sPlaintext,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>sIV,<sp/>std::string&amp;<sp/>sCiphertext);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="crypter_8h_1ae8eca4e4f0534b828d8a2a549536c762" kindref="member">DecryptAES256</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="allocators_8h_1a396ed773a5ac24aec28c8f7dc413c7ac" kindref="member">SecureString</ref>&amp;<sp/>sKey,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>sCiphertext,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>sIV,<sp/><ref refid="allocators_8h_1a396ed773a5ac24aec28c8f7dc413c7ac" kindref="member">SecureString</ref>&amp;<sp/>sPlaintext);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137" refid="class_c_crypto_key_store" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_c_crypto_key_store" kindref="compound">CCryptoKeyStore</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_c_basic_key_store" kindref="compound">CBasicKeyStore</ref></highlight></codeline>
+<codeline lineno="138"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>fUseCrypto<sp/>is<sp/>true,<sp/>mapKeys<sp/>must<sp/>be<sp/>empty</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>if<sp/>fUseCrypto<sp/>is<sp/>false,<sp/>vMasterKey<sp/>must<sp/>be<sp/>empty</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>fUseCrypto;</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="145" refid="class_c_crypto_key_store_1ad1fb9b23eee7a352617209ee2e4f3498" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="keystore_8h_1a6c476ecc6771e6bf6bf022a735216a27" kindref="member">CryptedKeyMap</ref><sp/><ref refid="class_c_crypto_key_store_1ad1fb9b23eee7a352617209ee2e4f3498" kindref="member">mapCryptedKeys</ref>;</highlight></codeline>
+<codeline lineno="146" refid="class_c_crypto_key_store_1ac74e458a90ce17a95e238bad724df3fd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="crypter_8h_1a64709c9a3acc8f5694515789a183ad7b" kindref="member">CKeyingMaterial</ref><sp/><ref refid="class_c_crypto_key_store_1ac74e458a90ce17a95e238bad724df3fd" kindref="member">vMasterKey</ref>;</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_crypto_key_store_1af202f587051735be5a39344d9e333720" kindref="member">SetCrypted</ref>();</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>will<sp/>encrypt<sp/>previously<sp/>unencrypted<sp/>keys</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_crypto_key_store_1a8c0f6b63fb04193df16243c4459b7c61" kindref="member">EncryptKeys</ref>(<ref refid="crypter_8h_1a64709c9a3acc8f5694515789a183ad7b" kindref="member">CKeyingMaterial</ref>&amp;<sp/>vMasterKeyIn);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_crypto_key_store_1a81bd70e18aa75f566526620a74f9cd88" kindref="member">Unlock</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="crypter_8h_1a64709c9a3acc8f5694515789a183ad7b" kindref="member">CKeyingMaterial</ref>&amp;<sp/>vMasterKeyIn);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="156" refid="class_c_crypto_key_store_1a7c7f1075182d42fcb0781d1dc7a876c3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_crypto_key_store_1a7c7f1075182d42fcb0781d1dc7a876c3" kindref="member">CCryptoKeyStore</ref>()<sp/>:<sp/>fUseCrypto(false)</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160" refid="class_c_crypto_key_store_1a1cb434078a9ea686c0acf168d2c81252" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_crypto_key_store_1a1cb434078a9ea686c0acf168d2c81252" kindref="member">IsCrypted</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="161"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>fUseCrypto;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165" refid="class_c_crypto_key_store_1a1c3ebef555fd13676d67509b95820fcf" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_crypto_key_store_1a1c3ebef555fd13676d67509b95820fcf" kindref="member">IsLocked</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="166"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="class_c_crypto_key_store_1a1cb434078a9ea686c0acf168d2c81252" kindref="member">IsCrypted</ref>())</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" kindref="member">LOCK</ref>(<ref refid="class_c_key_store_1a386524ff4a00959b81c195cb39fe307d" kindref="member">cs_KeyStore</ref>);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>result<sp/>=<sp/>vMasterKey.empty();</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"></highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_crypto_key_store_1ad967b2232dc6a2a8aef7a723296b44dc" kindref="member">LockKeyStore</ref>();</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_crypto_key_store_1a9f4d2df95008205b2b9784c5f0e8e12b" kindref="member">AddCryptedKey</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_pub_key" kindref="compound">CPubKey</ref><sp/>&amp;vchPubKey,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;unsigned<sp/>char&gt;<sp/>&amp;vchCryptedSecret);</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_crypto_key_store_1a340109b8673267676a34664a76ed3274" kindref="member">AddKeyPubKey</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_key" kindref="compound">CKey</ref>&amp;<sp/>key,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_pub_key" kindref="compound">CPubKey</ref><sp/>&amp;pubkey);</highlight></codeline>
+<codeline lineno="181" refid="class_c_crypto_key_store_1a0cefe933dd3a6ac7744432493696bffc" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_crypto_key_store_1a0cefe933dd3a6ac7744432493696bffc" kindref="member">HaveKey</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_key_i_d" kindref="compound">CKeyID</ref><sp/>&amp;address)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="182"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="sync_8h_1a911fe23f057c2fe5aad629162d6c99d0" kindref="member">LOCK</ref>(<ref refid="class_c_key_store_1a386524ff4a00959b81c195cb39fe307d" kindref="member">cs_KeyStore</ref>);</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="class_c_crypto_key_store_1a1cb434078a9ea686c0acf168d2c81252" kindref="member">IsCrypted</ref>())</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_c_basic_key_store_1a29a60832d549913b1fa8be77b95205a5" kindref="member">CBasicKeyStore::HaveKey</ref>(address);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>mapCryptedKeys.count(address)<sp/>&gt;<sp/>0;</highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_crypto_key_store_1a58cfb3c490318ef82de8fc9be6637269" kindref="member">GetKey</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_key_i_d" kindref="compound">CKeyID</ref><sp/>&amp;address,<sp/><ref refid="class_c_key" kindref="compound">CKey</ref>&amp;<sp/>keyOut)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_crypto_key_store_1abd897aff07ec5679235b14cb4485dc37" kindref="member">GetPubKey</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_key_i_d" kindref="compound">CKeyID</ref><sp/>&amp;address,<sp/><ref refid="class_c_pub_key" kindref="compound">CPubKey</ref>&amp;<sp/>vchPubKeyOut)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="193" refid="class_c_crypto_key_store_1a4f13246f58b7edbaf125d603f7d0d4b4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_c_crypto_key_store_1a4f13246f58b7edbaf125d603f7d0d4b4" kindref="member">GetKeys</ref>(std::set&lt;CKeyID&gt;<sp/>&amp;setAddress)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="194"><highlight class="keyword"><sp/><sp/><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="class_c_crypto_key_store_1a1cb434078a9ea686c0acf168d2c81252" kindref="member">IsCrypted</ref>())</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_basic_key_store_1a60f46db5eec334d41e5ad6e342ae2957" kindref="member">CBasicKeyStore::GetKeys</ref>(setAddress);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>setAddress.clear();</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>CryptedKeyMap::const_iterator<sp/>mi<sp/>=<sp/>mapCryptedKeys.begin();</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">while</highlight><highlight class="normal"><sp/>(mi<sp/>!=<sp/>mapCryptedKeys.end())</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>setAddress.insert((*mi).first);</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>mi++;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">/*<sp/>Wallet<sp/>status<sp/>(encrypted,<sp/>locked)<sp/>changed.</highlight></codeline>
+<codeline lineno="210"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*<sp/>Note:<sp/>Called<sp/>without<sp/>locks<sp/>held.</highlight></codeline>
+<codeline lineno="211"><highlight class="comment"><sp/><sp/><sp/><sp/><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="212" refid="class_c_crypto_key_store_1a251b9ed228a19ab39d542985b425fc85" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>boost::signals2::signal&lt;void<sp/>(CCryptoKeyStore*<sp/>wallet)&gt;<sp/><ref refid="class_c_crypto_key_store_1a251b9ed228a19ab39d542985b425fc85" kindref="member">NotifyStatusChanged</ref>;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/crypter.h"/>
+  </compounddef>
+</doxygen>

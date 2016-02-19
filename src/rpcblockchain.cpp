@@ -8,9 +8,7 @@
 #include "main.h"
 #include "kernel.h"
 #include "checkpoints.h"
-#include "consensus/validation.h"
-#include "primitives/transaction.h" 
- 
+
 using namespace json_spirit;
 using namespace std;
 

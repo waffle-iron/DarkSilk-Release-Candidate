@@ -1,0 +1,255 @@
+.TH "ClientModel" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ClientModel \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <clientmodel\&.h>\fP
+.PP
+Inherits QObject\&.
+.SS "Public Slots"
+
+.in +1c
+.ti -1c
+.RI "void \fBupdateTimer\fP ()"
+.br
+.ti -1c
+.RI "void \fBupdateSnTimer\fP ()"
+.br
+.ti -1c
+.RI "void \fBupdateNumConnections\fP (int numConnections)"
+.br
+.ti -1c
+.RI "void \fBupdateAlert\fP (const QString &\fBhash\fP, int status)"
+.br
+.in -1c
+.SS "Signals"
+
+.in +1c
+.ti -1c
+.RI "void \fBnumConnectionsChanged\fP (int count)"
+.br
+.ti -1c
+.RI "void \fBnumBlocksChanged\fP (int count)"
+.br
+.ti -1c
+.RI "void \fBstrStormnodesChanged\fP (const QString &strStormnodes)"
+.br
+.ti -1c
+.RI "void \fBalertsChanged\fP (const QString &warnings)"
+.br
+.ti -1c
+.RI "void \fBbytesChanged\fP (quint64 totalBytesIn, quint64 totalBytesOut)"
+.br
+.ti -1c
+.RI "void \fBmessage\fP (const QString &title, const QString &message, bool modal, unsigned int style)"
+.br
+.RI "\fIAsynchronous message notification\&. \fP"
+.ti -1c
+.RI "void \fBshowProgress\fP (const QString &title, int nProgress)"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBClientModel\fP (\fBOptionsModel\fP *optionsModel, QObject *parent=0)"
+.br
+.ti -1c
+.RI "\fB~ClientModel\fP ()"
+.br
+.ti -1c
+.RI "\fBOptionsModel\fP * \fBgetOptionsModel\fP ()"
+.br
+.ti -1c
+.RI "\fBPeerTableModel\fP * \fBgetPeerTableModel\fP ()"
+.br
+.ti -1c
+.RI "int \fBgetNumConnections\fP () const "
+.br
+.ti -1c
+.RI "QString \fBgetStormnodeCountString\fP () const "
+.br
+.ti -1c
+.RI "int \fBgetNumBlocks\fP () const "
+.br
+.ti -1c
+.RI "int \fBgetNumBlocksAtStartup\fP ()"
+.br
+.ti -1c
+.RI "quint64 \fBgetTotalBytesRecv\fP () const "
+.br
+.ti -1c
+.RI "quint64 \fBgetTotalBytesSent\fP () const "
+.br
+.ti -1c
+.RI "QDateTime \fBgetLastBlockDate\fP () const "
+.br
+.ti -1c
+.RI "bool \fBisTestNet\fP () const "
+.br
+.RI "\fIReturn true if client connected to testnet\&. \fP"
+.ti -1c
+.RI "bool \fBinInitialBlockDownload\fP () const "
+.br
+.RI "\fIReturn true if core is doing initial block download\&. \fP"
+.ti -1c
+.RI "bool \fBisImporting\fP () const "
+.br
+.RI "\fIReturn true if core is importing blocks\&. \fP"
+.ti -1c
+.RI "QString \fBgetStatusBarWarnings\fP () const "
+.br
+.RI "\fIReturn warnings to be displayed in status bar\&. \fP"
+.ti -1c
+.RI "QString \fBformatFullVersion\fP () const "
+.br
+.ti -1c
+.RI "QString \fBformatBuildDate\fP () const "
+.br
+.ti -1c
+.RI "bool \fBisReleaseVersion\fP () const "
+.br
+.ti -1c
+.RI "QString \fBclientName\fP () const "
+.br
+.ti -1c
+.RI "QString \fBformatClientStartupTime\fP () const "
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Model for DarkSilk network client\&. 
+.PP
+Definition at line 18 of file clientmodel\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ClientModel::ClientModel (\fBOptionsModel\fP * optionsModel, QObject * parent = \fC0\fP)\fC [explicit]\fP"
+
+.PP
+Definition at line 27 of file clientmodel\&.cpp\&.
+.SS "ClientModel::~ClientModel ()"
+
+.PP
+Definition at line 49 of file clientmodel\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ClientModel::alertsChanged (const QString & warnings)\fC [signal]\fP"
+
+.SS "void ClientModel::bytesChanged (quint64 totalBytesIn, quint64 totalBytesOut)\fC [signal]\fP"
+
+.SS "QString ClientModel::clientName () const"
+
+.PP
+Definition at line 253 of file clientmodel\&.cpp\&.
+.SS "QString ClientModel::formatBuildDate () const"
+
+.PP
+Definition at line 243 of file clientmodel\&.cpp\&.
+.SS "QString ClientModel::formatClientStartupTime () const"
+
+.PP
+Definition at line 258 of file clientmodel\&.cpp\&.
+.SS "QString ClientModel::formatFullVersion () const"
+
+.PP
+Definition at line 238 of file clientmodel\&.cpp\&.
+.SS "QDateTime ClientModel::getLastBlockDate () const"
+
+.PP
+Definition at line 86 of file clientmodel\&.cpp\&.
+.SS "int ClientModel::getNumBlocks () const"
+
+.PP
+Definition at line 64 of file clientmodel\&.cpp\&.
+.SS "int ClientModel::getNumBlocksAtStartup ()"
+
+.PP
+Definition at line 70 of file clientmodel\&.cpp\&.
+.SS "int ClientModel::getNumConnections () const"
+
+.PP
+Definition at line 54 of file clientmodel\&.cpp\&.
+.SS "\fBOptionsModel\fP * ClientModel::getOptionsModel ()"
+
+.PP
+Definition at line 178 of file clientmodel\&.cpp\&.
+.SS "\fBPeerTableModel\fP * ClientModel::getPeerTableModel ()"
+
+.PP
+Definition at line 183 of file clientmodel\&.cpp\&.
+.SS "QString ClientModel::getStatusBarWarnings () const"
+
+.PP
+Return warnings to be displayed in status bar\&. 
+.PP
+Definition at line 173 of file clientmodel\&.cpp\&.
+.SS "QString ClientModel::getStormnodeCountString () const"
+
+.PP
+Definition at line 59 of file clientmodel\&.cpp\&.
+.SS "quint64 ClientModel::getTotalBytesRecv () const"
+
+.PP
+Definition at line 76 of file clientmodel\&.cpp\&.
+.SS "quint64 ClientModel::getTotalBytesSent () const"
+
+.PP
+Definition at line 81 of file clientmodel\&.cpp\&.
+.SS "bool ClientModel::inInitialBlockDownload () const"
+
+.PP
+Return true if core is doing initial block download\&. 
+.PP
+Definition at line 163 of file clientmodel\&.cpp\&.
+.SS "bool ClientModel::isImporting () const"
+
+.PP
+Return true if core is importing blocks\&. 
+.PP
+Definition at line 168 of file clientmodel\&.cpp\&.
+.SS "bool ClientModel::isReleaseVersion () const"
+
+.PP
+Definition at line 248 of file clientmodel\&.cpp\&.
+.SS "bool ClientModel::isTestNet () const"
+
+.PP
+Return true if client connected to testnet\&. 
+.PP
+Definition at line 158 of file clientmodel\&.cpp\&.
+.SS "void ClientModel::message (const QString & title, const QString & message, bool modal, unsigned int style)\fC [signal]\fP"
+
+.PP
+Asynchronous message notification\&. 
+.SS "void ClientModel::numBlocksChanged (int count)\fC [signal]\fP"
+
+.SS "void ClientModel::numConnectionsChanged (int count)\fC [signal]\fP"
+
+.SS "void ClientModel::showProgress (const QString & title, int nProgress)\fC [signal]\fP"
+
+.SS "void ClientModel::strStormnodesChanged (const QString & strStormnodes)\fC [signal]\fP"
+
+.SS "void ClientModel::updateAlert (const QString & hash, int status)\fC [slot]\fP"
+
+.PP
+Definition at line 141 of file clientmodel\&.cpp\&.
+.SS "void ClientModel::updateNumConnections (int numConnections)\fC [slot]\fP"
+
+.PP
+Definition at line 136 of file clientmodel\&.cpp\&.
+.SS "void ClientModel::updateSnTimer ()\fC [slot]\fP"
+
+.PP
+Definition at line 118 of file clientmodel\&.cpp\&.
+.SS "void ClientModel::updateTimer ()\fC [slot]\fP"
+
+.PP
+Definition at line 96 of file clientmodel\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

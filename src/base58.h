@@ -14,10 +14,9 @@
 #ifndef DARKSILK_BASE58_H
 #define DARKSILK_BASE58_H
 
-#include "net.h"
 #include "chainparams.h"
-#include "key.h"
 #include "pubkey.h"
+#include "key.h"
 #include "script.h"
 #include "allocators.h"
 

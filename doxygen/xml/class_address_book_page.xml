@@ -1,0 +1,595 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="class_address_book_page" kind="class" language="C++" prot="public">
+    <compoundname>AddressBookPage</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QDialog</basecompoundref>
+    <includes refid="addressbookpage_8h" local="no">addressbookpage.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="class_address_book_page_1a7ef3cf6c3e4613894af313a05335dbe3" prot="public" static="no">
+        <name>Tabs</name>
+        <enumvalue id="class_address_book_page_1a7ef3cf6c3e4613894af313a05335dbe3a0317158231d27f7965037521fea1998d" prot="public">
+          <name>SendingTab</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_address_book_page_1a7ef3cf6c3e4613894af313a05335dbe3ac0029a5d46e35919fb2df9c4f370e8a9" prot="public">
+          <name>ReceivingTab</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="27" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.h" bodystart="27" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="enum" id="class_address_book_page_1a0a8f8e590dc6f18e829fde039f984464" prot="public" static="no">
+        <name>Mode</name>
+        <enumvalue id="class_address_book_page_1a0a8f8e590dc6f18e829fde039f984464a3591dbaa5496b5791059d7df5d293a1c" prot="public">
+          <name>ForSending</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Open address book to pick address for sending </para>          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="class_address_book_page_1a0a8f8e590dc6f18e829fde039f984464a86b6565fcddce6edf578c0e470471296" prot="public">
+          <name>ForEditing</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+<para>Open address book for editing </para>          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="32" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.h" bodystart="32" bodyend="35"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="class_address_book_page_1a004f71676739278ab7ccc4c58cb36a9d" prot="private" static="no" mutable="no">
+        <type>Ui::AddressBookPage *</type>
+        <definition>Ui::AddressBookPage* AddressBookPage::ui</definition>
+        <argsstring></argsstring>
+        <name>ui</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="49" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.h" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_address_book_page_1a76004239a2c6a225709f2a067eaed3a9" prot="private" static="no" mutable="no">
+        <type><ref refid="class_address_table_model" kindref="compound">AddressTableModel</ref> *</type>
+        <definition>AddressTableModel* AddressBookPage::model</definition>
+        <argsstring></argsstring>
+        <name>model</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="50" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.h" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_address_book_page_1a64a7628f98b48562906ba07ed7f69365" prot="private" static="no" mutable="no">
+        <type><ref refid="class_options_model" kindref="compound">OptionsModel</ref> *</type>
+        <definition>OptionsModel* AddressBookPage::optionsModel</definition>
+        <argsstring></argsstring>
+        <name>optionsModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="51" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.h" bodystart="51" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_address_book_page_1ae0cc2ca898609bd2aaa6794758663149" prot="private" static="no" mutable="no">
+        <type><ref refid="class_address_book_page_1a0a8f8e590dc6f18e829fde039f984464" kindref="member">Mode</ref></type>
+        <definition>Mode AddressBookPage::mode</definition>
+        <argsstring></argsstring>
+        <name>mode</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="52" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.h" bodystart="52" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_address_book_page_1af8bbbbac8034525155bbd8c7ba89d12d" prot="private" static="no" mutable="no">
+        <type><ref refid="class_address_book_page_1a7ef3cf6c3e4613894af313a05335dbe3" kindref="member">Tabs</ref></type>
+        <definition>Tabs AddressBookPage::tab</definition>
+        <argsstring></argsstring>
+        <name>tab</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="53" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.h" bodystart="53" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_address_book_page_1a3bf2a881ed4abc15daec94ab550d1d87" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString AddressBookPage::returnValue</definition>
+        <argsstring></argsstring>
+        <name>returnValue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="54" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.h" bodystart="54" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_address_book_page_1acd1c481a1b195866bed317781bc5b765" prot="private" static="no" mutable="no">
+        <type>QSortFilterProxyModel *</type>
+        <definition>QSortFilterProxyModel* AddressBookPage::proxyModel</definition>
+        <argsstring></argsstring>
+        <name>proxyModel</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="55" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_address_book_page_1a0137757ad5d605f58a935b0c17b12ac7" prot="private" static="no" mutable="no">
+        <type>QMenu *</type>
+        <definition>QMenu* AddressBookPage::contextMenu</definition>
+        <argsstring></argsstring>
+        <name>contextMenu</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="56" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_address_book_page_1af9260b4f2515a7ac449b6a3c8d028b20" prot="private" static="no" mutable="no">
+        <type>QAction *</type>
+        <definition>QAction* AddressBookPage::deleteAction</definition>
+        <argsstring></argsstring>
+        <name>deleteAction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="57" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="class_address_book_page_1a293e2d01a4e60de367b4b4491e4138df" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString AddressBookPage::newAddressToSelect</definition>
+        <argsstring></argsstring>
+        <name>newAddressToSelect</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="58" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.h" bodystart="58" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="class_address_book_page_1ad53c82a9181ae7627c06b9c49971ec52" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>AddressBookPage::AddressBookPage</definition>
+        <argsstring>(Mode mode, Tabs tab, QWidget *parent=0)</argsstring>
+        <name>AddressBookPage</name>
+        <param>
+          <type><ref refid="class_address_book_page_1a0a8f8e590dc6f18e829fde039f984464" kindref="member">Mode</ref></type>
+          <declname>mode</declname>
+        </param>
+        <param>
+          <type><ref refid="class_address_book_page_1a7ef3cf6c3e4613894af313a05335dbe3" kindref="member">Tabs</ref></type>
+          <declname>tab</declname>
+        </param>
+        <param>
+          <type>QWidget *</type>
+          <declname>parent</declname>
+          <defval>0</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="37" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.cpp" bodystart="20" bodyend="102"/>
+        <references refid="class_address_book_page_1a0a8f8e590dc6f18e829fde039f984464a3591dbaa5496b5791059d7df5d293a1c" compoundref="addressbookpage_8h" startline="33">ForSending</references>
+        <references refid="class_address_book_page_1a0a8f8e590dc6f18e829fde039f984464a86b6565fcddce6edf578c0e470471296" compoundref="addressbookpage_8h" startline="34">ForEditing</references>
+        <references refid="class_address_book_page_1a7ef3cf6c3e4613894af313a05335dbe3a0317158231d27f7965037521fea1998d" compoundref="addressbookpage_8h" startline="28">SendingTab</references>
+        <references refid="class_address_book_page_1a7ef3cf6c3e4613894af313a05335dbe3ac0029a5d46e35919fb2df9c4f370e8a9" compoundref="addressbookpage_8h" startline="29">ReceivingTab</references>
+      </memberdef>
+      <memberdef kind="function" id="class_address_book_page_1a8f81beda9c99fc10c454fc1505a081d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>AddressBookPage::~AddressBookPage</definition>
+        <argsstring>()</argsstring>
+        <name>~AddressBookPage</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="38" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.cpp" bodystart="104" bodyend="107"/>
+      </memberdef>
+      <memberdef kind="function" id="class_address_book_page_1a1282cda9cb0300ee04c472ec4c9949f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AddressBookPage::setModel</definition>
+        <argsstring>(AddressTableModel *model)</argsstring>
+        <name>setModel</name>
+        <param>
+          <type><ref refid="class_address_table_model" kindref="compound">AddressTableModel</ref> *</type>
+          <declname>model</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="40" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.cpp" bodystart="109" bodyend="150"/>
+        <references refid="class_address_book_page_1a7ef3cf6c3e4613894af313a05335dbe3ac0029a5d46e35919fb2df9c4f370e8a9" compoundref="addressbookpage_8h" startline="29">ReceivingTab</references>
+        <references refid="class_address_table_model_1a083a01bdd3351555760f203c78c992d7ab65a2b297bf0f2b7e3786e2e1d2b84af" compoundref="addresstablemodel_8h" startline="35">AddressTableModel::TypeRole</references>
+        <references refid="class_address_table_model_1acaed83193545456eab47dd7be1d2ceba" compoundref="addresstablemodel_8h" startline="49">AddressTableModel::Receive</references>
+        <references refid="class_address_book_page_1a7ef3cf6c3e4613894af313a05335dbe3a0317158231d27f7965037521fea1998d" compoundref="addressbookpage_8h" startline="28">SendingTab</references>
+        <references refid="class_address_table_model_1a7c74e158d014a757c2edcc5bcb1e9a62" compoundref="addresstablemodel_8h" startline="48">AddressTableModel::Send</references>
+        <references refid="class_address_table_model_1a432276ac4504e926466072561c5ddb33a8e0abf98768fd0897965974d51a825da" compoundref="addresstablemodel_8h" startline="30">AddressTableModel::Address</references>
+        <references refid="class_address_table_model_1a432276ac4504e926466072561c5ddb33aaf8f25cebb70b8a394d6c0f23c941a32" compoundref="addresstablemodel_8h" startline="29">AddressTableModel::Label</references>
+        <referencedby refid="class_dark_silk_g_u_i_1af1268788bf230b2d09f4213936ee8b9a" compoundref="darksilkgui_8cpp" startline="649" endline="675">DarkSilkGUI::setWalletModel</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="class_address_book_page_1ab9667b2b14e6bf56aeb256402fe6ac7e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AddressBookPage::setOptionsModel</definition>
+        <argsstring>(OptionsModel *optionsModel)</argsstring>
+        <name>setOptionsModel</name>
+        <param>
+          <type><ref refid="class_options_model" kindref="compound">OptionsModel</ref> *</type>
+          <declname>optionsModel</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="41" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.cpp" bodystart="152" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="class_address_book_page_1a204f9ff847c26eb900fac7a3d0a6ab4f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const QString &amp;</type>
+        <definition>const QString&amp; AddressBookPage::getReturnValue</definition>
+        <argsstring>() const </argsstring>
+        <name>getReturnValue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="42" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.h" bodystart="42" bodyend="42"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-slot">
+      <memberdef kind="slot" id="class_address_book_page_1a4f585f3ff33a3c7066b2fcda803f862f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AddressBookPage::done</definition>
+        <argsstring>(int retval)</argsstring>
+        <name>done</name>
+        <param>
+          <type>int</type>
+          <declname>retval</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="45" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.cpp" bodystart="283" bodyend="308"/>
+        <references refid="class_address_book_page_1a0a8f8e590dc6f18e829fde039f984464a86b6565fcddce6edf578c0e470471296" compoundref="addressbookpage_8h" startline="34">ForEditing</references>
+        <references refid="class_address_table_model_1a432276ac4504e926466072561c5ddb33a8e0abf98768fd0897965974d51a825da" compoundref="addresstablemodel_8h" startline="30">AddressTableModel::Address</references>
+      </memberdef>
+      <memberdef kind="slot" id="class_address_book_page_1ae5b20525c7f1cf805eace9aafe308d42" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AddressBookPage::exportClicked</definition>
+        <argsstring>()</argsstring>
+        <name>exportClicked</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="46" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.cpp" bodystart="310" bodyend="332"/>
+        <references refid="namespace_g_u_i_util_1a788c51092a2255b1f8976d4794fc3ee6" compoundref="guiutil_8cpp" startline="174" endline="218">GUIUtil::getSaveFileName</references>
+        <references refid="class_c_s_v_model_writer_1a7b8be6f49a66b965a94a89c78fb96e40" compoundref="csvmodelwriter_8cpp" startline="13" endline="16">CSVModelWriter::setModel</references>
+        <references refid="class_c_s_v_model_writer_1a9e5f0d60f2c873747582ce21ddeb53b5" compoundref="csvmodelwriter_8cpp" startline="18" endline="26">CSVModelWriter::addColumn</references>
+        <references refid="class_address_table_model_1a432276ac4504e926466072561c5ddb33aaf8f25cebb70b8a394d6c0f23c941a32" compoundref="addresstablemodel_8h" startline="29">AddressTableModel::Label</references>
+        <references refid="class_address_table_model_1a432276ac4504e926466072561c5ddb33a8e0abf98768fd0897965974d51a825da" compoundref="addresstablemodel_8h" startline="30">AddressTableModel::Address</references>
+        <references refid="class_c_s_v_model_writer_1a71fe52fdd6f41c506f9631175cb04615" compoundref="csvmodelwriter_8cpp" startline="45" endline="87">CSVModelWriter::write</references>
+        <references refid="env__posix_8cc_1a9ce2ec4812a92cb6ab39f6e81e9173a9" compoundref="env__posix_8cc" startline="521">arg</references>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-slot">
+      <memberdef kind="slot" id="class_address_book_page_1a057c48c226985d1bfb346d60fa483569" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AddressBookPage::on_deleteButton_clicked</definition>
+        <argsstring>()</argsstring>
+        <name>on_deleteButton_clicked</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Delete currently selected address entry </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="62" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.cpp" bodystart="225" bodyend="236"/>
+      </memberdef>
+      <memberdef kind="slot" id="class_address_book_page_1a475ff4ad2ea6027032c95595914dc50a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AddressBookPage::on_newAddressButton_clicked</definition>
+        <argsstring>()</argsstring>
+        <name>on_newAddressButton_clicked</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Create a new address for receiving coins and / or add a new address book entry </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="64" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.cpp" bodystart="209" bodyend="223"/>
+      </memberdef>
+      <memberdef kind="slot" id="class_address_book_page_1add39559a7cd04d625df2d6d51d963069" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AddressBookPage::on_copyToClipboard_clicked</definition>
+        <argsstring>()</argsstring>
+        <name>on_copyToClipboard_clicked</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy address of currently selected address entry to clipboard </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="66" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.cpp" bodystart="157" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="slot" id="class_address_book_page_1a22938e352fa72bd932baf2d8e18bc1e1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AddressBookPage::on_signMessage_clicked</definition>
+        <argsstring>()</argsstring>
+        <name>on_signMessage_clicked</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Open the sign message tab in the Sign/Verify Message dialog with currently selected address </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="68" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.cpp" bodystart="185" bodyend="195"/>
+      </memberdef>
+      <memberdef kind="slot" id="class_address_book_page_1a66ca9d67cfacf790f5ac7e4745efb1bc" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AddressBookPage::on_verifyMessage_clicked</definition>
+        <argsstring>()</argsstring>
+        <name>on_verifyMessage_clicked</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Open the verify message tab in the Sign/Verify Message dialog with currently selected address </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="70" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.cpp" bodystart="197" bodyend="207"/>
+      </memberdef>
+      <memberdef kind="slot" id="class_address_book_page_1a597d261d7ba450b3bf1166ccc045f0a7" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AddressBookPage::on_showQRCode_clicked</definition>
+        <argsstring>()</argsstring>
+        <name>on_showQRCode_clicked</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Generate a QR Code from the currently selected address </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="72" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.cpp" bodystart="334" bodyend="350"/>
+      </memberdef>
+      <memberdef kind="slot" id="class_address_book_page_1a13592aacb4316283b51c1b03a10ef190" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AddressBookPage::onCopyLabelAction</definition>
+        <argsstring>()</argsstring>
+        <name>onCopyLabelAction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Copy label of currently selected address entry to clipboard </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="74" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.cpp" bodystart="162" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="slot" id="class_address_book_page_1a00b9dc5da59d39ae90af3ff41f8d9b76" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AddressBookPage::onEditAction</definition>
+        <argsstring>()</argsstring>
+        <name>onEditAction</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Edit currently selected address entry </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="76" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.cpp" bodystart="167" bodyend="183"/>
+      </memberdef>
+      <memberdef kind="slot" id="class_address_book_page_1a9df2b5984c8b4ab2c4b5eade1aab8f3e" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AddressBookPage::selectionChanged</definition>
+        <argsstring>()</argsstring>
+        <name>selectionChanged</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Set button states based on selected tab and selection </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="78" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.cpp" bodystart="238" bodyend="281"/>
+      </memberdef>
+      <memberdef kind="slot" id="class_address_book_page_1a720ae688d56255e6d38ee5af28533639" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AddressBookPage::contextualMenu</definition>
+        <argsstring>(const QPoint &amp;point)</argsstring>
+        <name>contextualMenu</name>
+        <param>
+          <type>const QPoint &amp;</type>
+          <declname>point</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Spawn contextual menu (right mouse menu) for address book entry </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="80" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.cpp" bodystart="352" bodyend="359"/>
+      </memberdef>
+      <memberdef kind="slot" id="class_address_book_page_1a94958ad9ed9564af6480eb905fa91393" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AddressBookPage::selectNewAddress</definition>
+        <argsstring>(const QModelIndex &amp;parent, int begin, int end)</argsstring>
+        <name>selectNewAddress</name>
+        <param>
+          <type>const QModelIndex &amp;</type>
+          <declname>parent</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>begin</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>end</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>New entry/entries were added to address table </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="82" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.cpp" bodystart="361" bodyend="371"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="signal">
+      <memberdef kind="signal" id="class_address_book_page_1a5a5258459403cb0e841d50e4c6bb6f3b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AddressBookPage::signMessage</definition>
+        <argsstring>(QString addr)</argsstring>
+        <name>signMessage</name>
+        <param>
+          <type>QString</type>
+          <declname>addr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="85" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="class_address_book_page_1a6050d81accc38fd0e3c469002ea3142f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void AddressBookPage::verifyMessage</definition>
+        <argsstring>(QString addr)</argsstring>
+        <name>verifyMessage</name>
+        <param>
+          <type>QString</type>
+          <declname>addr</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="86" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para>Widget that shows a list of sending or receiving addresses. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="1936">
+        <label>AddressBookPage</label>
+        <link refid="class_address_book_page"/>
+        <childnode refid="1937" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1937">
+        <label>QDialog</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1938">
+        <label>AddressBookPage</label>
+        <link refid="class_address_book_page"/>
+        <childnode refid="1939" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1939">
+        <label>QDialog</label>
+      </node>
+    </collaborationgraph>
+    <location file="/home/dev/ds-160209/src/qt/addressbookpage.h" line="23" column="1" bodyfile="/home/dev/ds-160209/src/qt/addressbookpage.h" bodystart="22" bodyend="87"/>
+    <listofallmembers>
+      <member refid="class_address_book_page_1ad53c82a9181ae7627c06b9c49971ec52" prot="public" virt="non-virtual"><scope>AddressBookPage</scope><name>AddressBookPage</name></member>
+      <member refid="class_address_book_page_1a0137757ad5d605f58a935b0c17b12ac7" prot="private" virt="non-virtual"><scope>AddressBookPage</scope><name>contextMenu</name></member>
+      <member refid="class_address_book_page_1a720ae688d56255e6d38ee5af28533639" prot="private" virt="non-virtual"><scope>AddressBookPage</scope><name>contextualMenu</name></member>
+      <member refid="class_address_book_page_1af9260b4f2515a7ac449b6a3c8d028b20" prot="private" virt="non-virtual"><scope>AddressBookPage</scope><name>deleteAction</name></member>
+      <member refid="class_address_book_page_1a4f585f3ff33a3c7066b2fcda803f862f" prot="public" virt="non-virtual"><scope>AddressBookPage</scope><name>done</name></member>
+      <member refid="class_address_book_page_1ae5b20525c7f1cf805eace9aafe308d42" prot="public" virt="non-virtual"><scope>AddressBookPage</scope><name>exportClicked</name></member>
+      <member refid="class_address_book_page_1a0a8f8e590dc6f18e829fde039f984464a86b6565fcddce6edf578c0e470471296" prot="public" virt="non-virtual"><scope>AddressBookPage</scope><name>ForEditing</name></member>
+      <member refid="class_address_book_page_1a0a8f8e590dc6f18e829fde039f984464a3591dbaa5496b5791059d7df5d293a1c" prot="public" virt="non-virtual"><scope>AddressBookPage</scope><name>ForSending</name></member>
+      <member refid="class_address_book_page_1a204f9ff847c26eb900fac7a3d0a6ab4f" prot="public" virt="non-virtual"><scope>AddressBookPage</scope><name>getReturnValue</name></member>
+      <member refid="class_address_book_page_1a0a8f8e590dc6f18e829fde039f984464" prot="public" virt="non-virtual"><scope>AddressBookPage</scope><name>Mode</name></member>
+      <member refid="class_address_book_page_1ae0cc2ca898609bd2aaa6794758663149" prot="private" virt="non-virtual"><scope>AddressBookPage</scope><name>mode</name></member>
+      <member refid="class_address_book_page_1a76004239a2c6a225709f2a067eaed3a9" prot="private" virt="non-virtual"><scope>AddressBookPage</scope><name>model</name></member>
+      <member refid="class_address_book_page_1a293e2d01a4e60de367b4b4491e4138df" prot="private" virt="non-virtual"><scope>AddressBookPage</scope><name>newAddressToSelect</name></member>
+      <member refid="class_address_book_page_1add39559a7cd04d625df2d6d51d963069" prot="private" virt="non-virtual"><scope>AddressBookPage</scope><name>on_copyToClipboard_clicked</name></member>
+      <member refid="class_address_book_page_1a057c48c226985d1bfb346d60fa483569" prot="private" virt="non-virtual"><scope>AddressBookPage</scope><name>on_deleteButton_clicked</name></member>
+      <member refid="class_address_book_page_1a475ff4ad2ea6027032c95595914dc50a" prot="private" virt="non-virtual"><scope>AddressBookPage</scope><name>on_newAddressButton_clicked</name></member>
+      <member refid="class_address_book_page_1a597d261d7ba450b3bf1166ccc045f0a7" prot="private" virt="non-virtual"><scope>AddressBookPage</scope><name>on_showQRCode_clicked</name></member>
+      <member refid="class_address_book_page_1a22938e352fa72bd932baf2d8e18bc1e1" prot="private" virt="non-virtual"><scope>AddressBookPage</scope><name>on_signMessage_clicked</name></member>
+      <member refid="class_address_book_page_1a66ca9d67cfacf790f5ac7e4745efb1bc" prot="private" virt="non-virtual"><scope>AddressBookPage</scope><name>on_verifyMessage_clicked</name></member>
+      <member refid="class_address_book_page_1a13592aacb4316283b51c1b03a10ef190" prot="private" virt="non-virtual"><scope>AddressBookPage</scope><name>onCopyLabelAction</name></member>
+      <member refid="class_address_book_page_1a00b9dc5da59d39ae90af3ff41f8d9b76" prot="private" virt="non-virtual"><scope>AddressBookPage</scope><name>onEditAction</name></member>
+      <member refid="class_address_book_page_1a64a7628f98b48562906ba07ed7f69365" prot="private" virt="non-virtual"><scope>AddressBookPage</scope><name>optionsModel</name></member>
+      <member refid="class_address_book_page_1acd1c481a1b195866bed317781bc5b765" prot="private" virt="non-virtual"><scope>AddressBookPage</scope><name>proxyModel</name></member>
+      <member refid="class_address_book_page_1a7ef3cf6c3e4613894af313a05335dbe3ac0029a5d46e35919fb2df9c4f370e8a9" prot="public" virt="non-virtual"><scope>AddressBookPage</scope><name>ReceivingTab</name></member>
+      <member refid="class_address_book_page_1a3bf2a881ed4abc15daec94ab550d1d87" prot="private" virt="non-virtual"><scope>AddressBookPage</scope><name>returnValue</name></member>
+      <member refid="class_address_book_page_1a9df2b5984c8b4ab2c4b5eade1aab8f3e" prot="private" virt="non-virtual"><scope>AddressBookPage</scope><name>selectionChanged</name></member>
+      <member refid="class_address_book_page_1a94958ad9ed9564af6480eb905fa91393" prot="private" virt="non-virtual"><scope>AddressBookPage</scope><name>selectNewAddress</name></member>
+      <member refid="class_address_book_page_1a7ef3cf6c3e4613894af313a05335dbe3a0317158231d27f7965037521fea1998d" prot="public" virt="non-virtual"><scope>AddressBookPage</scope><name>SendingTab</name></member>
+      <member refid="class_address_book_page_1a1282cda9cb0300ee04c472ec4c9949f3" prot="public" virt="non-virtual"><scope>AddressBookPage</scope><name>setModel</name></member>
+      <member refid="class_address_book_page_1ab9667b2b14e6bf56aeb256402fe6ac7e" prot="public" virt="non-virtual"><scope>AddressBookPage</scope><name>setOptionsModel</name></member>
+      <member refid="class_address_book_page_1a5a5258459403cb0e841d50e4c6bb6f3b" prot="public" virt="non-virtual"><scope>AddressBookPage</scope><name>signMessage</name></member>
+      <member refid="class_address_book_page_1af8bbbbac8034525155bbd8c7ba89d12d" prot="private" virt="non-virtual"><scope>AddressBookPage</scope><name>tab</name></member>
+      <member refid="class_address_book_page_1a7ef3cf6c3e4613894af313a05335dbe3" prot="public" virt="non-virtual"><scope>AddressBookPage</scope><name>Tabs</name></member>
+      <member refid="class_address_book_page_1a004f71676739278ab7ccc4c58cb36a9d" prot="private" virt="non-virtual"><scope>AddressBookPage</scope><name>ui</name></member>
+      <member refid="class_address_book_page_1a6050d81accc38fd0e3c469002ea3142f" prot="public" virt="non-virtual"><scope>AddressBookPage</scope><name>verifyMessage</name></member>
+      <member refid="class_address_book_page_1a8f81beda9c99fc10c454fc1505a081d3" prot="public" virt="non-virtual"><scope>AddressBookPage</scope><name>~AddressBookPage</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

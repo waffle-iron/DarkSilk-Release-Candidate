@@ -1,0 +1,190 @@
+.TH "CStormnodePayments" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CStormnodePayments \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <stormnode-payments\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCStormnodePayments\fP ()"
+.br
+.ti -1c
+.RI "void \fBClear\fP ()"
+.br
+.ti -1c
+.RI "bool \fBAddWinningStormnode\fP (\fBCStormnodePaymentWinner\fP &winner)"
+.br
+.ti -1c
+.RI "bool \fBProcessBlock\fP (int nBlockHeight)"
+.br
+.ti -1c
+.RI "void \fBSync\fP (\fBCNode\fP *node, int nCountNeeded)"
+.br
+.ti -1c
+.RI "void \fBCleanPaymentList\fP ()"
+.br
+.ti -1c
+.RI "int \fBLastPayment\fP (\fBCStormnode\fP &sn)"
+.br
+.ti -1c
+.RI "bool \fBGetBlockPayee\fP (int nBlockHeight, \fBCScript\fP &payee)"
+.br
+.ti -1c
+.RI "bool \fBIsTransactionValid\fP (const \fBCTransaction\fP &txNew, int nBlockHeight)"
+.br
+.ti -1c
+.RI "bool \fBIsScheduled\fP (\fBCStormnode\fP &sn, int nNotBlockHeight)"
+.br
+.ti -1c
+.RI "bool \fBCanVote\fP (\fBCOutPoint\fP outStormnode, int nBlockHeight)"
+.br
+.ti -1c
+.RI "int \fBGetMinStormnodePaymentsProto\fP ()"
+.br
+.ti -1c
+.RI "void \fBProcessMessageStormnodePayments\fP (\fBCNode\fP *pfrom, std::string &strCommand, \fBCDataStream\fP &vRecv)"
+.br
+.ti -1c
+.RI "std::string \fBGetRequiredPaymentsString\fP (int nBlockHeight)"
+.br
+.ti -1c
+.RI "void \fBFillBlockPayee\fP (\fBCTransaction\fP &txNew, \fBCAmount\fP nFees)"
+.br
+.ti -1c
+.RI "std::string \fBToString\fP () const "
+.br
+.ti -1c
+.RI "int \fBGetOldestBlock\fP ()"
+.br
+.ti -1c
+.RI "int \fBGetNewestBlock\fP ()"
+.br
+.ti -1c
+.RI "template<typename Stream , typename Operation > void \fBSerializationOp\fP (Stream &s, Operation ser_action, int nType, int nVersion)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "std::map< \fBuint256\fP, \fBCStormnodePaymentWinner\fP > \fBmapStormnodePayeeVotes\fP"
+.br
+.ti -1c
+.RI "std::map< int, \fBCStormnodeBlockPayees\fP > \fBmapStormnodeBlocks\fP"
+.br
+.ti -1c
+.RI "std::map< \fBuint256\fP, int > \fBmapStormnodesLastVote\fP"
+.br
+.ti -1c
+.RI "\fBADD_SERIALIZE_METHODS\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 219 of file stormnode-payments\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CStormnodePayments::CStormnodePayments ()\fC [inline]\fP"
+
+.PP
+Definition at line 230 of file stormnode-payments\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool CStormnodePayments::AddWinningStormnode (\fBCStormnodePaymentWinner\fP & winner)"
+
+.PP
+Definition at line 490 of file stormnode-payments\&.cpp\&.
+.SS "bool CStormnodePayments::CanVote (\fBCOutPoint\fP outStormnode, int nBlockHeight)\fC [inline]\fP"
+
+.PP
+Definition at line 252 of file stormnode-payments\&.h\&.
+.SS "void CStormnodePayments::CleanPaymentList ()"
+
+.PP
+Definition at line 610 of file stormnode-payments\&.cpp\&.
+.SS "void CStormnodePayments::Clear ()\fC [inline]\fP"
+
+.PP
+Definition at line 235 of file stormnode-payments\&.h\&.
+.SS "void CStormnodePayments::FillBlockPayee (\fBCTransaction\fP & txNew, \fBCAmount\fP nFees)"
+
+.PP
+Definition at line 294 of file stormnode-payments\&.cpp\&.
+.SS "bool CStormnodePayments::GetBlockPayee (int nBlockHeight, \fBCScript\fP & payee)"
+
+.PP
+Definition at line 454 of file stormnode-payments\&.cpp\&.
+.SS "int CStormnodePayments::GetMinStormnodePaymentsProto ()"
+
+.PP
+Definition at line 348 of file stormnode-payments\&.cpp\&.
+.SS "int CStormnodePayments::GetNewestBlock ()"
+
+.PP
+Definition at line 845 of file stormnode-payments\&.cpp\&.
+.SS "int CStormnodePayments::GetOldestBlock ()"
+
+.PP
+Definition at line 826 of file stormnode-payments\&.cpp\&.
+.SS "std::string CStormnodePayments::GetRequiredPaymentsString (int nBlockHeight)"
+
+.PP
+Definition at line 588 of file stormnode-payments\&.cpp\&.
+.SS "bool CStormnodePayments::IsScheduled (\fBCStormnode\fP & sn, int nNotBlockHeight)"
+
+.PP
+Definition at line 465 of file stormnode-payments\&.cpp\&.
+.SS "bool CStormnodePayments::IsTransactionValid (const \fBCTransaction\fP & txNew, int nBlockHeight)"
+
+.PP
+Definition at line 599 of file stormnode-payments\&.cpp\&.
+.SS "int CStormnodePayments::LastPayment (\fBCStormnode\fP & sn)"
+
+.SS "bool CStormnodePayments::ProcessBlock (int nBlockHeight)"
+
+.PP
+Definition at line 683 of file stormnode-payments\&.cpp\&.
+.SS "void CStormnodePayments::ProcessMessageStormnodePayments (\fBCNode\fP * pfrom, std::string & strCommand, \fBCDataStream\fP & vRecv)"
+
+.PP
+Definition at line 354 of file stormnode-payments\&.cpp\&.
+.SS "template<typename Stream , typename Operation > void CStormnodePayments::SerializationOp (Stream & s, Operation ser_action, int nType, int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 277 of file stormnode-payments\&.h\&.
+.SS "void CStormnodePayments::Sync (\fBCNode\fP * node, int nCountNeeded)"
+
+.PP
+Definition at line 792 of file stormnode-payments\&.cpp\&.
+.SS "std::string CStormnodePayments::ToString () const"
+
+.PP
+Definition at line 814 of file stormnode-payments\&.cpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "CStormnodePayments::ADD_SERIALIZE_METHODS"
+
+.PP
+Definition at line 274 of file stormnode-payments\&.h\&.
+.SS "std::map<int, \fBCStormnodeBlockPayees\fP> CStormnodePayments::mapStormnodeBlocks"
+
+.PP
+Definition at line 227 of file stormnode-payments\&.h\&.
+.SS "std::map<\fBuint256\fP, \fBCStormnodePaymentWinner\fP> CStormnodePayments::mapStormnodePayeeVotes"
+
+.PP
+Definition at line 226 of file stormnode-payments\&.h\&.
+.SS "std::map<\fBuint256\fP, int> CStormnodePayments::mapStormnodesLastVote"
+
+.PP
+Definition at line 228 of file stormnode-payments\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

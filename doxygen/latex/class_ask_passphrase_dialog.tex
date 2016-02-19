@@ -1,0 +1,199 @@
+\hypertarget{class_ask_passphrase_dialog}{}\section{Ask\+Passphrase\+Dialog Class Reference}
+\label{class_ask_passphrase_dialog}\index{Ask\+Passphrase\+Dialog@{Ask\+Passphrase\+Dialog}}
+
+
+{\ttfamily \#include $<$askpassphrasedialog.\+h$>$}
+
+
+
+Inheritance diagram for Ask\+Passphrase\+Dialog\+:
+% FIG 0
+
+
+Collaboration diagram for Ask\+Passphrase\+Dialog\+:
+% FIG 1
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_ask_passphrase_dialog_a96abf4d3c36c1ef9e268fb546ae76538}{Mode} \{ \\*
+\hyperlink{class_ask_passphrase_dialog_a96abf4d3c36c1ef9e268fb546ae76538a5894886141cada548b21488927acc467}{Encrypt}, 
+\hyperlink{class_ask_passphrase_dialog_a96abf4d3c36c1ef9e268fb546ae76538a913cd3fda90d33b397ebf191365ecc91}{Unlock\+Staking}, 
+\hyperlink{class_ask_passphrase_dialog_a96abf4d3c36c1ef9e268fb546ae76538a2af79cac6134924405d6c620fb0f4c7e}{Unlock}, 
+\hyperlink{class_ask_passphrase_dialog_a96abf4d3c36c1ef9e268fb546ae76538abc3f96ab0f90c0a3b0606407b4f662cc}{Change\+Pass}, 
+\\*
+\hyperlink{class_ask_passphrase_dialog_a96abf4d3c36c1ef9e268fb546ae76538aac5e2489527af224fc5e1316a77ba478}{Decrypt}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_ask_passphrase_dialog_a5bf3d4d81d7dbe15bee48f7ca2ee42b2}{Ask\+Passphrase\+Dialog} (\hyperlink{class_ask_passphrase_dialog_a96abf4d3c36c1ef9e268fb546ae76538}{Mode} mode, Q\+Widget $\ast$parent=0)
+\item 
+\hyperlink{class_ask_passphrase_dialog_ab5f923af5131db88c6a44a15559b461c}{$\sim$\+Ask\+Passphrase\+Dialog} ()
+\item 
+void \hyperlink{class_ask_passphrase_dialog_ac2f176af3693b73870d26ef0bfc6cbb9}{accept} ()
+\item 
+void \hyperlink{class_ask_passphrase_dialog_a35b83e1ef98813b6b88155aab0803ed3}{set\+Model} (\hyperlink{class_wallet_model}{Wallet\+Model} $\ast$model)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_ask_passphrase_dialog_ad309d9188638afd3288d0ab40ac3e817}{event} (Q\+Event $\ast$event)
+\item 
+bool \hyperlink{class_ask_passphrase_dialog_a97120d6400e135383876a358b35199c6}{event\+Filter} (Q\+Object $\ast$, Q\+Event $\ast$\hyperlink{class_ask_passphrase_dialog_ad309d9188638afd3288d0ab40ac3e817}{event})
+\item 
+void \hyperlink{class_ask_passphrase_dialog_a04d8cc5f111c5817875ea8720943e51b}{secure\+Clear\+Pass\+Fields} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Multifunctional dialog to ask for passphrases. Used for encryption, unlocking, and changing the passphrase. 
+
+Definition at line 13 of file askpassphrasedialog.\+h.
+
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{class_ask_passphrase_dialog_a96abf4d3c36c1ef9e268fb546ae76538}{}\index{Ask\+Passphrase\+Dialog@{Ask\+Passphrase\+Dialog}!Mode@{Mode}}
+\index{Mode@{Mode}!Ask\+Passphrase\+Dialog@{Ask\+Passphrase\+Dialog}}
+\subsubsection[{Mode}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Ask\+Passphrase\+Dialog\+::\+Mode}}\label{class_ask_passphrase_dialog_a96abf4d3c36c1ef9e268fb546ae76538}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{Encrypt@{Encrypt}!Ask\+Passphrase\+Dialog@{Ask\+Passphrase\+Dialog}}\index{Ask\+Passphrase\+Dialog@{Ask\+Passphrase\+Dialog}!Encrypt@{Encrypt}}\item[{\em 
+\hypertarget{class_ask_passphrase_dialog_a96abf4d3c36c1ef9e268fb546ae76538a5894886141cada548b21488927acc467}{}Encrypt\label{class_ask_passphrase_dialog_a96abf4d3c36c1ef9e268fb546ae76538a5894886141cada548b21488927acc467}
+}]Ask passphrase twice and encrypt \index{Unlock\+Staking@{Unlock\+Staking}!Ask\+Passphrase\+Dialog@{Ask\+Passphrase\+Dialog}}\index{Ask\+Passphrase\+Dialog@{Ask\+Passphrase\+Dialog}!Unlock\+Staking@{Unlock\+Staking}}\item[{\em 
+\hypertarget{class_ask_passphrase_dialog_a96abf4d3c36c1ef9e268fb546ae76538a913cd3fda90d33b397ebf191365ecc91}{}Unlock\+Staking\label{class_ask_passphrase_dialog_a96abf4d3c36c1ef9e268fb546ae76538a913cd3fda90d33b397ebf191365ecc91}
+}]Ask passphrase and unlock \index{Unlock@{Unlock}!Ask\+Passphrase\+Dialog@{Ask\+Passphrase\+Dialog}}\index{Ask\+Passphrase\+Dialog@{Ask\+Passphrase\+Dialog}!Unlock@{Unlock}}\item[{\em 
+\hypertarget{class_ask_passphrase_dialog_a96abf4d3c36c1ef9e268fb546ae76538a2af79cac6134924405d6c620fb0f4c7e}{}Unlock\label{class_ask_passphrase_dialog_a96abf4d3c36c1ef9e268fb546ae76538a2af79cac6134924405d6c620fb0f4c7e}
+}]Ask passphrase and unlock \index{Change\+Pass@{Change\+Pass}!Ask\+Passphrase\+Dialog@{Ask\+Passphrase\+Dialog}}\index{Ask\+Passphrase\+Dialog@{Ask\+Passphrase\+Dialog}!Change\+Pass@{Change\+Pass}}\item[{\em 
+\hypertarget{class_ask_passphrase_dialog_a96abf4d3c36c1ef9e268fb546ae76538abc3f96ab0f90c0a3b0606407b4f662cc}{}Change\+Pass\label{class_ask_passphrase_dialog_a96abf4d3c36c1ef9e268fb546ae76538abc3f96ab0f90c0a3b0606407b4f662cc}
+}]Ask old passphrase + new passphrase twice \index{Decrypt@{Decrypt}!Ask\+Passphrase\+Dialog@{Ask\+Passphrase\+Dialog}}\index{Ask\+Passphrase\+Dialog@{Ask\+Passphrase\+Dialog}!Decrypt@{Decrypt}}\item[{\em 
+\hypertarget{class_ask_passphrase_dialog_a96abf4d3c36c1ef9e268fb546ae76538aac5e2489527af224fc5e1316a77ba478}{}Decrypt\label{class_ask_passphrase_dialog_a96abf4d3c36c1ef9e268fb546ae76538aac5e2489527af224fc5e1316a77ba478}
+}]Ask passphrase and decrypt wallet \end{description}
+\end{Desc}
+
+
+Definition at line 18 of file askpassphrasedialog.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_ask_passphrase_dialog_a5bf3d4d81d7dbe15bee48f7ca2ee42b2}{}\index{Ask\+Passphrase\+Dialog@{Ask\+Passphrase\+Dialog}!Ask\+Passphrase\+Dialog@{Ask\+Passphrase\+Dialog}}
+\index{Ask\+Passphrase\+Dialog@{Ask\+Passphrase\+Dialog}!Ask\+Passphrase\+Dialog@{Ask\+Passphrase\+Dialog}}
+\subsubsection[{Ask\+Passphrase\+Dialog}]{\setlength{\rightskip}{0pt plus 5cm}Ask\+Passphrase\+Dialog\+::\+Ask\+Passphrase\+Dialog (
+\begin{DoxyParamCaption}
+\item[{{\bf Mode}}]{mode, }
+\item[{Q\+Widget $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\label{class_ask_passphrase_dialog_a5bf3d4d81d7dbe15bee48f7ca2ee42b2}
+
+
+Definition at line 13 of file askpassphrasedialog.\+cpp.
+
+\hypertarget{class_ask_passphrase_dialog_ab5f923af5131db88c6a44a15559b461c}{}\index{Ask\+Passphrase\+Dialog@{Ask\+Passphrase\+Dialog}!````~Ask\+Passphrase\+Dialog@{$\sim$\+Ask\+Passphrase\+Dialog}}
+\index{````~Ask\+Passphrase\+Dialog@{$\sim$\+Ask\+Passphrase\+Dialog}!Ask\+Passphrase\+Dialog@{Ask\+Passphrase\+Dialog}}
+\subsubsection[{$\sim$\+Ask\+Passphrase\+Dialog}]{\setlength{\rightskip}{0pt plus 5cm}Ask\+Passphrase\+Dialog\+::$\sim$\+Ask\+Passphrase\+Dialog (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_ask_passphrase_dialog_ab5f923af5131db88c6a44a15559b461c}
+
+
+Definition at line 72 of file askpassphrasedialog.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_ask_passphrase_dialog_ac2f176af3693b73870d26ef0bfc6cbb9}{}\index{Ask\+Passphrase\+Dialog@{Ask\+Passphrase\+Dialog}!accept@{accept}}
+\index{accept@{accept}!Ask\+Passphrase\+Dialog@{Ask\+Passphrase\+Dialog}}
+\subsubsection[{accept}]{\setlength{\rightskip}{0pt plus 5cm}void Ask\+Passphrase\+Dialog\+::accept (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_ask_passphrase_dialog_ac2f176af3693b73870d26ef0bfc6cbb9}
+
+
+Definition at line 83 of file askpassphrasedialog.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 3
+
+
+\hypertarget{class_ask_passphrase_dialog_ad309d9188638afd3288d0ab40ac3e817}{}\index{Ask\+Passphrase\+Dialog@{Ask\+Passphrase\+Dialog}!event@{event}}
+\index{event@{event}!Ask\+Passphrase\+Dialog@{Ask\+Passphrase\+Dialog}}
+\subsubsection[{event}]{\setlength{\rightskip}{0pt plus 5cm}bool Ask\+Passphrase\+Dialog\+::event (
+\begin{DoxyParamCaption}
+\item[{Q\+Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{class_ask_passphrase_dialog_ad309d9188638afd3288d0ab40ac3e817}
+
+
+Definition at line 217 of file askpassphrasedialog.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 4
+
+
+\hypertarget{class_ask_passphrase_dialog_a97120d6400e135383876a358b35199c6}{}\index{Ask\+Passphrase\+Dialog@{Ask\+Passphrase\+Dialog}!event\+Filter@{event\+Filter}}
+\index{event\+Filter@{event\+Filter}!Ask\+Passphrase\+Dialog@{Ask\+Passphrase\+Dialog}}
+\subsubsection[{event\+Filter}]{\setlength{\rightskip}{0pt plus 5cm}bool Ask\+Passphrase\+Dialog\+::event\+Filter (
+\begin{DoxyParamCaption}
+\item[{Q\+Object $\ast$}]{object, }
+\item[{Q\+Event $\ast$}]{event}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{class_ask_passphrase_dialog_a97120d6400e135383876a358b35199c6}
+
+
+Definition at line 234 of file askpassphrasedialog.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 5
+
+
+\hypertarget{class_ask_passphrase_dialog_a04d8cc5f111c5817875ea8720943e51b}{}\index{Ask\+Passphrase\+Dialog@{Ask\+Passphrase\+Dialog}!secure\+Clear\+Pass\+Fields@{secure\+Clear\+Pass\+Fields}}
+\index{secure\+Clear\+Pass\+Fields@{secure\+Clear\+Pass\+Fields}!Ask\+Passphrase\+Dialog@{Ask\+Passphrase\+Dialog}}
+\subsubsection[{secure\+Clear\+Pass\+Fields}]{\setlength{\rightskip}{0pt plus 5cm}void Ask\+Passphrase\+Dialog\+::secure\+Clear\+Pass\+Fields (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}\label{class_ask_passphrase_dialog_a04d8cc5f111c5817875ea8720943e51b}
+
+
+Definition at line 260 of file askpassphrasedialog.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 6
+
+
+\hypertarget{class_ask_passphrase_dialog_a35b83e1ef98813b6b88155aab0803ed3}{}\index{Ask\+Passphrase\+Dialog@{Ask\+Passphrase\+Dialog}!set\+Model@{set\+Model}}
+\index{set\+Model@{set\+Model}!Ask\+Passphrase\+Dialog@{Ask\+Passphrase\+Dialog}}
+\subsubsection[{set\+Model}]{\setlength{\rightskip}{0pt plus 5cm}void Ask\+Passphrase\+Dialog\+::set\+Model (
+\begin{DoxyParamCaption}
+\item[{{\bf Wallet\+Model} $\ast$}]{model}
+\end{DoxyParamCaption}
+)}\label{class_ask_passphrase_dialog_a35b83e1ef98813b6b88155aab0803ed3}
+
+
+Definition at line 78 of file askpassphrasedialog.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/qt/\hyperlink{askpassphrasedialog_8h}{askpassphrasedialog.\+h}\item 
+/home/dev/ds-\/160209/src/qt/\hyperlink{askpassphrasedialog_8cpp}{askpassphrasedialog.\+cpp}\end{DoxyCompactItemize}

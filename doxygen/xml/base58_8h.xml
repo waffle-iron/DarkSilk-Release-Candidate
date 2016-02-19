@@ -1,0 +1,1382 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="base58_8h" kind="file" language="C++">
+    <compoundname>base58.h</compoundname>
+    <includes refid="chainparams_8h" local="yes">chainparams.h</includes>
+    <includes refid="pubkey_8h" local="yes">pubkey.h</includes>
+    <includes refid="key_8h" local="yes">key.h</includes>
+    <includes refid="script_8h" local="yes">script.h</includes>
+    <includes refid="allocators_8h" local="yes">allocators.h</includes>
+    <includes local="no">string</includes>
+    <includes local="no">vector</includes>
+    <includedby refid="stormnode_8h" local="yes">/home/dev/ds-160209/src/stormnode.h</includedby>
+    <includedby refid="stormnodeman_8h" local="yes">/home/dev/ds-160209/src/stormnodeman.h</includedby>
+    <includedby refid="spork_8h" local="yes">/home/dev/ds-160209/src/spork.h</includedby>
+    <includedby refid="base58_8cpp" local="yes">/home/dev/ds-160209/src/base58.cpp</includedby>
+    <includedby refid="stormnode-budget_8h" local="yes">/home/dev/ds-160209/src/stormnode-budget.h</includedby>
+    <includedby refid="smessage_8h" local="yes">/home/dev/ds-160209/src/smessage.h</includedby>
+    <includedby refid="instantx_8cpp" local="yes">/home/dev/ds-160209/src/instantx.cpp</includedby>
+    <includedby refid="addeditstormnode_8cpp" local="yes">/home/dev/ds-160209/src/qt/addeditstormnode.cpp</includedby>
+    <includedby refid="addresstablemodel_8cpp" local="yes">/home/dev/ds-160209/src/qt/addresstablemodel.cpp</includedby>
+    <includedby refid="blockbrowser_8h" local="yes">/home/dev/ds-160209/src/qt/blockbrowser.h</includedby>
+    <includedby refid="blockbrowser_8cpp" local="yes">/home/dev/ds-160209/src/qt/blockbrowser.cpp</includedby>
+    <includedby refid="coincontroldialog_8cpp" local="yes">/home/dev/ds-160209/src/qt/coincontroldialog.cpp</includedby>
+    <includedby refid="statisticspage_8h" local="yes">/home/dev/ds-160209/src/qt/statisticspage.h</includedby>
+    <includedby refid="messagemodel_8cpp" local="yes">/home/dev/ds-160209/src/qt/messagemodel.cpp</includedby>
+    <includedby refid="sendcoinsdialog_8cpp" local="yes">/home/dev/ds-160209/src/qt/sendcoinsdialog.cpp</includedby>
+    <includedby refid="signverifymessagedialog_8cpp" local="yes">/home/dev/ds-160209/src/qt/signverifymessagedialog.cpp</includedby>
+    <includedby refid="statisticspage_8cpp" local="yes">/home/dev/ds-160209/src/qt/statisticspage.cpp</includedby>
+    <includedby refid="transactiondesc_8cpp" local="yes">/home/dev/ds-160209/src/qt/transactiondesc.cpp</includedby>
+    <includedby refid="transactionrecord_8cpp" local="yes">/home/dev/ds-160209/src/qt/transactionrecord.cpp</includedby>
+    <includedby refid="walletmodel_8cpp" local="yes">/home/dev/ds-160209/src/qt/walletmodel.cpp</includedby>
+    <includedby refid="rpcdump_8cpp" local="yes">/home/dev/ds-160209/src/rpcdump.cpp</includedby>
+    <includedby refid="rpcmining_8cpp" local="yes">/home/dev/ds-160209/src/rpcmining.cpp</includedby>
+    <includedby refid="rpcmisc_8cpp" local="yes">/home/dev/ds-160209/src/rpcmisc.cpp</includedby>
+    <includedby refid="rpcrawtransaction_8cpp" local="yes">/home/dev/ds-160209/src/rpcrawtransaction.cpp</includedby>
+    <includedby refid="rpcserver_8cpp" local="yes">/home/dev/ds-160209/src/rpcserver.cpp</includedby>
+    <includedby refid="rpcwallet_8cpp" local="yes">/home/dev/ds-160209/src/rpcwallet.cpp</includedby>
+    <includedby refid="smessage_8cpp" local="yes">/home/dev/ds-160209/src/smessage.cpp</includedby>
+    <includedby refid="spork_8cpp" local="yes">/home/dev/ds-160209/src/spork.cpp</includedby>
+    <includedby refid="stealth_8cpp" local="yes">/home/dev/ds-160209/src/stealth.cpp</includedby>
+    <includedby refid="stormnodeconfig_8cpp" local="no">/home/dev/ds-160209/src/stormnodeconfig.cpp</includedby>
+    <includedby refid="base58__tests_8cpp" local="yes">/home/dev/ds-160209/src/test/base58_tests.cpp</includedby>
+    <includedby refid="key__tests_8cpp" local="yes">/home/dev/ds-160209/src/test/key_tests.cpp</includedby>
+    <includedby refid="wallet_8cpp" local="yes">/home/dev/ds-160209/src/wallet.cpp</includedby>
+    <includedby refid="walletdb_8cpp" local="yes">/home/dev/ds-160209/src/walletdb.cpp</includedby>
+    <incdepgraph>
+      <node id="30669">
+        <label>list</label>
+      </node>
+      <node id="30638">
+        <label>boost/thread/mutex.hpp</label>
+      </node>
+      <node id="30668">
+        <label>amount.h</label>
+        <link refid="amount_8h"/>
+        <childnode refid="30622" relation="include">
+        </childnode>
+        <childnode refid="30636" relation="include">
+        </childnode>
+        <childnode refid="30623" relation="include">
+        </childnode>
+      </node>
+      <node id="30628">
+        <label>limits</label>
+      </node>
+      <node id="30653">
+        <label>crypto/sha256.h</label>
+        <link refid="sha256_8h"/>
+        <childnode refid="30629" relation="include">
+        </childnode>
+        <childnode refid="30636" relation="include">
+        </childnode>
+      </node>
+      <node id="30654">
+        <label>crypto/argon2/blake2/blake2.h</label>
+        <link refid="blake2_8h"/>
+        <childnode refid="30655" relation="include">
+        </childnode>
+        <childnode refid="30629" relation="include">
+        </childnode>
+        <childnode refid="30640" relation="include">
+        </childnode>
+      </node>
+      <node id="30658">
+        <label>script.h</label>
+        <link refid="script_8h"/>
+        <childnode refid="30623" relation="include">
+        </childnode>
+        <childnode refid="30624" relation="include">
+        </childnode>
+        <childnode refid="30629" relation="include">
+        </childnode>
+        <childnode refid="30659" relation="include">
+        </childnode>
+        <childnode refid="30660" relation="include">
+        </childnode>
+        <childnode refid="30648" relation="include">
+        </childnode>
+        <childnode refid="30621" relation="include">
+        </childnode>
+        <childnode refid="30661" relation="include">
+        </childnode>
+        <childnode refid="30681" relation="include">
+        </childnode>
+      </node>
+      <node id="30680">
+        <label>openssl/rand.h</label>
+      </node>
+      <node id="30645">
+        <label>assert.h</label>
+      </node>
+      <node id="30633">
+        <label>boost/tuple/tuple.hpp</label>
+      </node>
+      <node id="30619">
+        <label>/home/dev/ds-160209/src/base58.h</label>
+        <link refid="base58.h"/>
+        <childnode refid="30620" relation="include">
+        </childnode>
+        <childnode refid="30648" relation="include">
+        </childnode>
+        <childnode refid="30657" relation="include">
+        </childnode>
+        <childnode refid="30658" relation="include">
+        </childnode>
+        <childnode refid="30634" relation="include">
+        </childnode>
+        <childnode refid="30623" relation="include">
+        </childnode>
+        <childnode refid="30624" relation="include">
+        </childnode>
+      </node>
+      <node id="30642">
+        <label>version.h</label>
+        <link refid="version_8h"/>
+        <childnode refid="30643" relation="include">
+        </childnode>
+        <childnode refid="30623" relation="include">
+        </childnode>
+      </node>
+      <node id="30639">
+        <label>sys/mman.h</label>
+      </node>
+      <node id="30636">
+        <label>stdlib.h</label>
+      </node>
+      <node id="30659">
+        <label>boost/foreach.hpp</label>
+      </node>
+      <node id="30679">
+        <label>openssl/crypto.h</label>
+      </node>
+      <node id="30675">
+        <label>boost/date_time/posix_time/posix_time_types.hpp</label>
+      </node>
+      <node id="30650">
+        <label>openssl/sha.h</label>
+      </node>
+      <node id="30627">
+        <label>cassert</label>
+      </node>
+      <node id="30646">
+        <label>stdexcept</label>
+      </node>
+      <node id="30661">
+        <label>util.h</label>
+        <link refid="util_8h"/>
+        <childnode refid="30662" relation="include">
+        </childnode>
+        <childnode refid="30663" relation="include">
+        </childnode>
+        <childnode refid="30664" relation="include">
+        </childnode>
+        <childnode refid="30622" relation="include">
+        </childnode>
+        <childnode refid="30665" relation="include">
+        </childnode>
+        <childnode refid="30668" relation="include">
+        </childnode>
+        <childnode refid="30625" relation="include">
+        </childnode>
+        <childnode refid="30669" relation="include">
+        </childnode>
+        <childnode refid="30670" relation="include">
+        </childnode>
+        <childnode refid="30624" relation="include">
+        </childnode>
+        <childnode refid="30623" relation="include">
+        </childnode>
+        <childnode refid="30671" relation="include">
+        </childnode>
+        <childnode refid="30672" relation="include">
+        </childnode>
+        <childnode refid="30673" relation="include">
+        </childnode>
+        <childnode refid="30674" relation="include">
+        </childnode>
+        <childnode refid="30675" relation="include">
+        </childnode>
+        <childnode refid="30676" relation="include">
+        </childnode>
+        <childnode refid="30677" relation="include">
+        </childnode>
+        <childnode refid="30678" relation="include">
+        </childnode>
+        <childnode refid="30679" relation="include">
+        </childnode>
+        <childnode refid="30680" relation="include">
+        </childnode>
+        <childnode refid="30647" relation="include">
+        </childnode>
+        <childnode refid="30629" relation="include">
+        </childnode>
+      </node>
+      <node id="30674">
+        <label>boost/date_time/gregorian/gregorian_types.hpp</label>
+      </node>
+      <node id="30623">
+        <label>string</label>
+      </node>
+      <node id="30625">
+        <label>map</label>
+      </node>
+      <node id="30671">
+        <label>boost/thread.hpp</label>
+      </node>
+      <node id="30655">
+        <label>stddef.h</label>
+      </node>
+      <node id="30660">
+        <label>boost/variant.hpp</label>
+      </node>
+      <node id="30622">
+        <label>serialize.h</label>
+        <link refid="serialize_8h"/>
+        <childnode refid="30623" relation="include">
+        </childnode>
+        <childnode refid="30624" relation="include">
+        </childnode>
+        <childnode refid="30625" relation="include">
+        </childnode>
+        <childnode refid="30626" relation="include">
+        </childnode>
+        <childnode refid="30627" relation="include">
+        </childnode>
+        <childnode refid="30628" relation="include">
+        </childnode>
+        <childnode refid="30629" relation="include">
+        </childnode>
+        <childnode refid="30630" relation="include">
+        </childnode>
+        <childnode refid="30631" relation="include">
+        </childnode>
+        <childnode refid="30632" relation="include">
+        </childnode>
+        <childnode refid="30633" relation="include">
+        </childnode>
+        <childnode refid="30634" relation="include">
+        </childnode>
+        <childnode refid="30642" relation="include">
+        </childnode>
+      </node>
+      <node id="30640">
+        <label>limits.h</label>
+      </node>
+      <node id="30664">
+        <label>sys/resource.h</label>
+      </node>
+      <node id="30676">
+        <label>openssl/bio.h</label>
+      </node>
+      <node id="30649">
+        <label>hash.h</label>
+        <link refid="hash_8h"/>
+        <childnode refid="30644" relation="include">
+        </childnode>
+        <childnode refid="30622" relation="include">
+        </childnode>
+        <childnode refid="30650" relation="include">
+        </childnode>
+        <childnode refid="30651" relation="include">
+        </childnode>
+        <childnode refid="30652" relation="include">
+        </childnode>
+        <childnode refid="30653" relation="include">
+        </childnode>
+        <childnode refid="30654" relation="include">
+        </childnode>
+        <childnode refid="30656" relation="include">
+        </childnode>
+        <childnode refid="30624" relation="include">
+        </childnode>
+      </node>
+      <node id="30681">
+        <label>stealth.h</label>
+        <link refid="stealth_8h"/>
+        <childnode refid="30661" relation="include">
+        </childnode>
+        <childnode refid="30622" relation="include">
+        </childnode>
+        <childnode refid="30636" relation="include">
+        </childnode>
+        <childnode refid="30682" relation="include">
+        </childnode>
+        <childnode refid="30624" relation="include">
+        </childnode>
+        <childnode refid="30683" relation="include">
+        </childnode>
+      </node>
+      <node id="30662">
+        <label>sys/types.h</label>
+      </node>
+      <node id="30637">
+        <label>string.h</label>
+      </node>
+      <node id="30643">
+        <label>clientversion.h</label>
+        <link refid="clientversion_8h"/>
+      </node>
+      <node id="30631">
+        <label>cstdio</label>
+      </node>
+      <node id="30678">
+        <label>openssl/buffer.h</label>
+      </node>
+      <node id="30632">
+        <label>boost/type_traits/is_fundamental.hpp</label>
+      </node>
+      <node id="30673">
+        <label>boost/filesystem/path.hpp</label>
+      </node>
+      <node id="30648">
+        <label>pubkey.h</label>
+        <link refid="pubkey_8h"/>
+        <childnode refid="30649" relation="include">
+        </childnode>
+        <childnode refid="30622" relation="include">
+        </childnode>
+        <childnode refid="30644" relation="include">
+        </childnode>
+        <childnode refid="30646" relation="include">
+        </childnode>
+        <childnode refid="30624" relation="include">
+        </childnode>
+      </node>
+      <node id="30641">
+        <label>unistd.h</label>
+      </node>
+      <node id="30624">
+        <label>vector</label>
+      </node>
+      <node id="30621">
+        <label>bignum.h</label>
+        <link refid="bignum_8h"/>
+        <childnode refid="30622" relation="include">
+        </childnode>
+        <childnode refid="30644" relation="include">
+        </childnode>
+        <childnode refid="30647" relation="include">
+        </childnode>
+        <childnode refid="30646" relation="include">
+        </childnode>
+        <childnode refid="30624" relation="include">
+        </childnode>
+        <childnode refid="30629" relation="include">
+        </childnode>
+      </node>
+      <node id="30651">
+        <label>openssl/ripemd.h</label>
+      </node>
+      <node id="30672">
+        <label>boost/filesystem.hpp</label>
+      </node>
+      <node id="30670">
+        <label>utility</label>
+      </node>
+      <node id="30667">
+        <label>sstream</label>
+      </node>
+      <node id="30657">
+        <label>key.h</label>
+        <link refid="key_8h"/>
+        <childnode refid="30634" relation="include">
+        </childnode>
+        <childnode refid="30648" relation="include">
+        </childnode>
+        <childnode refid="30646" relation="include">
+        </childnode>
+        <childnode refid="30624" relation="include">
+        </childnode>
+      </node>
+      <node id="30677">
+        <label>openssl/evp.h</label>
+      </node>
+      <node id="30665">
+        <label>tinyformat.h</label>
+        <link refid="tinyformat_8h"/>
+        <childnode refid="30627" relation="include">
+        </childnode>
+        <childnode refid="30666" relation="include">
+        </childnode>
+        <childnode refid="30667" relation="include">
+        </childnode>
+        <childnode refid="30646" relation="include">
+        </childnode>
+      </node>
+      <node id="30629">
+        <label>stdint.h</label>
+        <link refid="stdint_8h"/>
+      </node>
+      <node id="30656">
+        <label>crypto/argon2/argon2.h</label>
+        <link refid="argon2_8h"/>
+        <childnode refid="30629" relation="include">
+        </childnode>
+        <childnode refid="30655" relation="include">
+        </childnode>
+        <childnode refid="30640" relation="include">
+        </childnode>
+      </node>
+      <node id="30663">
+        <label>sys/time.h</label>
+      </node>
+      <node id="30666">
+        <label>iostream</label>
+      </node>
+      <node id="30644">
+        <label>uint256.h</label>
+        <link refid="uint256_8h"/>
+        <childnode refid="30645" relation="include">
+        </childnode>
+        <childnode refid="30630" relation="include">
+        </childnode>
+        <childnode refid="30646" relation="include">
+        </childnode>
+        <childnode refid="30629" relation="include">
+        </childnode>
+        <childnode refid="30623" relation="include">
+        </childnode>
+        <childnode refid="30624" relation="include">
+        </childnode>
+      </node>
+      <node id="30647">
+        <label>openssl/bn.h</label>
+      </node>
+      <node id="30634">
+        <label>allocators.h</label>
+        <link refid="allocators_8h"/>
+        <childnode refid="30635" relation="include">
+        </childnode>
+        <childnode refid="30637" relation="include">
+        </childnode>
+        <childnode refid="30623" relation="include">
+        </childnode>
+        <childnode refid="30638" relation="include">
+        </childnode>
+        <childnode refid="30625" relation="include">
+        </childnode>
+        <childnode refid="30639" relation="include">
+        </childnode>
+        <childnode refid="30640" relation="include">
+        </childnode>
+        <childnode refid="30641" relation="include">
+        </childnode>
+      </node>
+      <node id="30626">
+        <label>set</label>
+      </node>
+      <node id="30620">
+        <label>chainparams.h</label>
+        <link refid="chainparams_8h"/>
+        <childnode refid="30621" relation="include">
+        </childnode>
+        <childnode refid="30644" relation="include">
+        </childnode>
+        <childnode refid="30624" relation="include">
+        </childnode>
+      </node>
+      <node id="30652">
+        <label>crypto/ripemd160.h</label>
+        <link refid="ripemd160_8h"/>
+        <childnode refid="30629" relation="include">
+        </childnode>
+        <childnode refid="30636" relation="include">
+        </childnode>
+      </node>
+      <node id="30682">
+        <label>stdio.h</label>
+      </node>
+      <node id="30635">
+        <label>cleanse.h</label>
+        <link refid="cleanse_8h"/>
+        <childnode refid="30636" relation="include">
+        </childnode>
+      </node>
+      <node id="30630">
+        <label>cstring</label>
+      </node>
+      <node id="30683">
+        <label>inttypes.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="30692">
+        <label>/home/dev/ds-160209/src/qt/darksilkgui.cpp</label>
+        <link refid="darksilkgui_8cpp"/>
+      </node>
+      <node id="30702">
+        <label>/home/dev/ds-160209/src/stormnodeman.cpp</label>
+        <link refid="stormnodeman_8cpp"/>
+      </node>
+      <node id="30728">
+        <label>/home/dev/ds-160209/src/rpcsmessage.cpp</label>
+        <link refid="rpcsmessage_8cpp"/>
+      </node>
+      <node id="30741">
+        <label>/home/dev/ds-160209/src/rpcserver.cpp</label>
+        <link refid="rpcserver_8cpp"/>
+      </node>
+      <node id="30705">
+        <label>/home/dev/ds-160209/src/wallet.cpp</label>
+        <link refid="wallet_8cpp"/>
+      </node>
+      <node id="30719">
+        <label>/home/dev/ds-160209/src/stormnode-budget.h</label>
+        <link refid="stormnode-budget_8h"/>
+        <childnode refid="30703" relation="include">
+        </childnode>
+        <childnode refid="30690" relation="include">
+        </childnode>
+        <childnode refid="30695" relation="include">
+        </childnode>
+        <childnode refid="30696" relation="include">
+        </childnode>
+        <childnode refid="30711" relation="include">
+        </childnode>
+        <childnode refid="30698" relation="include">
+        </childnode>
+        <childnode refid="30699" relation="include">
+        </childnode>
+        <childnode refid="30700" relation="include">
+        </childnode>
+        <childnode refid="30705" relation="include">
+        </childnode>
+      </node>
+      <node id="30722">
+        <label>/home/dev/ds-160209/src/qt/messagemodel.h</label>
+        <link refid="messagemodel_8h"/>
+        <childnode refid="30723" relation="include">
+        </childnode>
+        <childnode refid="30692" relation="include">
+        </childnode>
+        <childnode refid="30724" relation="include">
+        </childnode>
+        <childnode refid="30725" relation="include">
+        </childnode>
+        <childnode refid="30726" relation="include">
+        </childnode>
+        <childnode refid="30727" relation="include">
+        </childnode>
+      </node>
+      <node id="30731">
+        <label>/home/dev/ds-160209/src/qt/addresstablemodel.cpp</label>
+        <link refid="addresstablemodel_8cpp"/>
+      </node>
+      <node id="30712">
+        <label>/home/dev/ds-160209/src/net.cpp</label>
+        <link refid="net_8cpp"/>
+      </node>
+      <node id="30707">
+        <label>/home/dev/ds-160209/src/sandstorm.h</label>
+        <link refid="sandstorm_8h"/>
+        <childnode refid="30708" relation="include">
+        </childnode>
+        <childnode refid="30689" relation="include">
+        </childnode>
+        <childnode refid="30690" relation="include">
+        </childnode>
+        <childnode refid="30712" relation="include">
+        </childnode>
+        <childnode refid="30713" relation="include">
+        </childnode>
+        <childnode refid="30714" relation="include">
+        </childnode>
+        <childnode refid="30715" relation="include">
+        </childnode>
+        <childnode refid="30716" relation="include">
+        </childnode>
+        <childnode refid="30695" relation="include">
+        </childnode>
+        <childnode refid="30696" relation="include">
+        </childnode>
+        <childnode refid="30717" relation="include">
+        </childnode>
+        <childnode refid="30697" relation="include">
+        </childnode>
+        <childnode refid="30698" relation="include">
+        </childnode>
+        <childnode refid="30699" relation="include">
+        </childnode>
+        <childnode refid="30701" relation="include">
+        </childnode>
+        <childnode refid="30702" relation="include">
+        </childnode>
+        <childnode refid="30705" relation="include">
+        </childnode>
+      </node>
+      <node id="30687">
+        <label>/home/dev/ds-160209/src/stormnode-sync.h</label>
+        <link refid="stormnode-sync_8h"/>
+        <childnode refid="30688" relation="include">
+        </childnode>
+        <childnode refid="30689" relation="include">
+        </childnode>
+        <childnode refid="30690" relation="include">
+        </childnode>
+        <childnode refid="30691" relation="include">
+        </childnode>
+        <childnode refid="30692" relation="include">
+        </childnode>
+        <childnode refid="30693" relation="include">
+        </childnode>
+        <childnode refid="30694" relation="include">
+        </childnode>
+        <childnode refid="30695" relation="include">
+        </childnode>
+        <childnode refid="30696" relation="include">
+        </childnode>
+        <childnode refid="30697" relation="include">
+        </childnode>
+        <childnode refid="30698" relation="include">
+        </childnode>
+        <childnode refid="30699" relation="include">
+        </childnode>
+        <childnode refid="30700" relation="include">
+        </childnode>
+        <childnode refid="30701" relation="include">
+        </childnode>
+        <childnode refid="30702" relation="include">
+        </childnode>
+      </node>
+      <node id="30711">
+        <label>/home/dev/ds-160209/src/spork.cpp</label>
+        <link refid="spork_8cpp"/>
+      </node>
+      <node id="30738">
+        <label>/home/dev/ds-160209/src/qt/transactiondesc.cpp</label>
+        <link refid="transactiondesc_8cpp"/>
+      </node>
+      <node id="30691">
+        <label>/home/dev/ds-160209/src/qt/clientmodel.cpp</label>
+        <link refid="clientmodel_8cpp"/>
+      </node>
+      <node id="30696">
+        <label>/home/dev/ds-160209/src/rpcstormnode.cpp</label>
+        <link refid="rpcstormnode_8cpp"/>
+      </node>
+      <node id="30684">
+        <label>/home/dev/ds-160209/src/base58.h</label>
+        <link refid="base58.h"/>
+        <childnode refid="30685" relation="include">
+        </childnode>
+        <childnode refid="30706" relation="include">
+        </childnode>
+        <childnode refid="30708" relation="include">
+        </childnode>
+        <childnode refid="30720" relation="include">
+        </childnode>
+        <childnode refid="30719" relation="include">
+        </childnode>
+        <childnode refid="30721" relation="include">
+        </childnode>
+        <childnode refid="30689" relation="include">
+        </childnode>
+        <childnode refid="30730" relation="include">
+        </childnode>
+        <childnode refid="30731" relation="include">
+        </childnode>
+        <childnode refid="30732" relation="include">
+        </childnode>
+        <childnode refid="30733" relation="include">
+        </childnode>
+        <childnode refid="30713" relation="include">
+        </childnode>
+        <childnode refid="30734" relation="include">
+        </childnode>
+        <childnode refid="30724" relation="include">
+        </childnode>
+        <childnode refid="30736" relation="include">
+        </childnode>
+        <childnode refid="30737" relation="include">
+        </childnode>
+        <childnode refid="30735" relation="include">
+        </childnode>
+        <childnode refid="30738" relation="include">
+        </childnode>
+        <childnode refid="30716" relation="include">
+        </childnode>
+        <childnode refid="30710" relation="include">
+        </childnode>
+        <childnode refid="30739" relation="include">
+        </childnode>
+        <childnode refid="30693" relation="include">
+        </childnode>
+        <childnode refid="30694" relation="include">
+        </childnode>
+        <childnode refid="30740" relation="include">
+        </childnode>
+        <childnode refid="30741" relation="include">
+        </childnode>
+        <childnode refid="30742" relation="include">
+        </childnode>
+        <childnode refid="30729" relation="include">
+        </childnode>
+        <childnode refid="30711" relation="include">
+        </childnode>
+        <childnode refid="30743" relation="include">
+        </childnode>
+        <childnode refid="30744" relation="include">
+        </childnode>
+        <childnode refid="30745" relation="include">
+        </childnode>
+        <childnode refid="30746" relation="include">
+        </childnode>
+        <childnode refid="30705" relation="include">
+        </childnode>
+        <childnode refid="30747" relation="include">
+        </childnode>
+      </node>
+      <node id="30713">
+        <label>/home/dev/ds-160209/src/qt/coincontroldialog.cpp</label>
+        <link refid="coincontroldialog_8cpp"/>
+      </node>
+      <node id="30724">
+        <label>/home/dev/ds-160209/src/qt/messagemodel.cpp</label>
+        <link refid="messagemodel_8cpp"/>
+      </node>
+      <node id="30744">
+        <label>/home/dev/ds-160209/src/stormnodeconfig.cpp</label>
+        <link refid="stormnodeconfig_8cpp"/>
+      </node>
+      <node id="30721">
+        <label>/home/dev/ds-160209/src/smessage.h</label>
+        <link refid="smessage_8h"/>
+        <childnode refid="30703" relation="include">
+        </childnode>
+        <childnode refid="30690" relation="include">
+        </childnode>
+        <childnode refid="30722" relation="include">
+        </childnode>
+        <childnode refid="30727" relation="include">
+        </childnode>
+        <childnode refid="30710" relation="include">
+        </childnode>
+        <childnode refid="30728" relation="include">
+        </childnode>
+        <childnode refid="30729" relation="include">
+        </childnode>
+        <childnode refid="30705" relation="include">
+        </childnode>
+      </node>
+      <node id="30723">
+        <label>/home/dev/ds-160209/src/qt/darksilk.cpp</label>
+        <link refid="darksilk_8cpp"/>
+      </node>
+      <node id="30742">
+        <label>/home/dev/ds-160209/src/rpcwallet.cpp</label>
+        <link refid="rpcwallet_8cpp"/>
+      </node>
+      <node id="30686">
+        <label>/home/dev/ds-160209/src/stormnode-payments.h</label>
+        <link refid="stormnode-payments_8h"/>
+        <childnode refid="30687" relation="include">
+        </childnode>
+        <childnode refid="30703" relation="include">
+        </childnode>
+        <childnode refid="30690" relation="include">
+        </childnode>
+        <childnode refid="30704" relation="include">
+        </childnode>
+        <childnode refid="30695" relation="include">
+        </childnode>
+        <childnode refid="30696" relation="include">
+        </childnode>
+        <childnode refid="30697" relation="include">
+        </childnode>
+        <childnode refid="30699" relation="include">
+        </childnode>
+        <childnode refid="30700" relation="include">
+        </childnode>
+        <childnode refid="30701" relation="include">
+        </childnode>
+        <childnode refid="30702" relation="include">
+        </childnode>
+        <childnode refid="30705" relation="include">
+        </childnode>
+      </node>
+      <node id="30735">
+        <label>/home/dev/ds-160209/src/qt/statisticspage.cpp</label>
+        <link refid="statisticspage_8cpp"/>
+      </node>
+      <node id="30710">
+        <label>/home/dev/ds-160209/src/qt/walletmodel.cpp</label>
+        <link refid="walletmodel_8cpp"/>
+      </node>
+      <node id="30737">
+        <label>/home/dev/ds-160209/src/qt/signverifymessagedialog.cpp</label>
+        <link refid="signverifymessagedialog_8cpp"/>
+      </node>
+      <node id="30704">
+        <label>/home/dev/ds-160209/src/miner.cpp</label>
+        <link refid="miner_8cpp"/>
+      </node>
+      <node id="30700">
+        <label>/home/dev/ds-160209/src/stormnode-sync.cpp</label>
+        <link refid="stormnode-sync_8cpp"/>
+      </node>
+      <node id="30693">
+        <label>/home/dev/ds-160209/src/rpcmining.cpp</label>
+        <link refid="rpcmining_8cpp"/>
+      </node>
+      <node id="30718">
+        <label>/home/dev/ds-160209/src/sandstorm-relay.h</label>
+        <link refid="sandstorm-relay_8h"/>
+        <childnode refid="30717" relation="include">
+        </childnode>
+      </node>
+      <node id="30733">
+        <label>/home/dev/ds-160209/src/qt/blockbrowser.cpp</label>
+        <link refid="blockbrowser_8cpp"/>
+      </node>
+      <node id="30685">
+        <label>/home/dev/ds-160209/src/stormnode.h</label>
+        <link refid="stormnode_8h"/>
+        <childnode refid="30686" relation="include">
+        </childnode>
+        <childnode refid="30706" relation="include">
+        </childnode>
+        <childnode refid="30719" relation="include">
+        </childnode>
+        <childnode refid="30715" relation="include">
+        </childnode>
+        <childnode refid="30698" relation="include">
+        </childnode>
+        <childnode refid="30700" relation="include">
+        </childnode>
+        <childnode refid="30701" relation="include">
+        </childnode>
+        <childnode refid="30702" relation="include">
+        </childnode>
+        <childnode refid="30705" relation="include">
+        </childnode>
+      </node>
+      <node id="30739">
+        <label>/home/dev/ds-160209/src/rpcdump.cpp</label>
+        <link refid="rpcdump_8cpp"/>
+      </node>
+      <node id="30716">
+        <label>/home/dev/ds-160209/src/qt/transactionrecord.cpp</label>
+        <link refid="transactionrecord_8cpp"/>
+      </node>
+      <node id="30720">
+        <label>/home/dev/ds-160209/src/base58.cpp</label>
+        <link refid="base58_8cpp"/>
+      </node>
+      <node id="30715">
+        <label>/home/dev/ds-160209/src/qt/stormnodemanager.cpp</label>
+        <link refid="stormnodemanager_8cpp"/>
+      </node>
+      <node id="30699">
+        <label>/home/dev/ds-160209/src/stormnode-payments.cpp</label>
+        <link refid="stormnode-payments_8cpp"/>
+      </node>
+      <node id="30743">
+        <label>/home/dev/ds-160209/src/stealth.cpp</label>
+        <link refid="stealth_8cpp"/>
+      </node>
+      <node id="30740">
+        <label>/home/dev/ds-160209/src/rpcrawtransaction.cpp</label>
+        <link refid="rpcrawtransaction_8cpp"/>
+      </node>
+      <node id="30717">
+        <label>/home/dev/ds-160209/src/sandstorm-relay.cpp</label>
+        <link refid="sandstorm-relay_8cpp"/>
+      </node>
+      <node id="30706">
+        <label>/home/dev/ds-160209/src/stormnodeman.h</label>
+        <link refid="stormnodeman_8h"/>
+        <childnode refid="30688" relation="include">
+        </childnode>
+        <childnode refid="30707" relation="include">
+        </childnode>
+        <childnode refid="30703" relation="include">
+        </childnode>
+        <childnode refid="30689" relation="include">
+        </childnode>
+        <childnode refid="30690" relation="include">
+        </childnode>
+        <childnode refid="30704" relation="include">
+        </childnode>
+        <childnode refid="30691" relation="include">
+        </childnode>
+        <childnode refid="30715" relation="include">
+        </childnode>
+        <childnode refid="30695" relation="include">
+        </childnode>
+        <childnode refid="30696" relation="include">
+        </childnode>
+        <childnode refid="30718" relation="include">
+        </childnode>
+        <childnode refid="30698" relation="include">
+        </childnode>
+        <childnode refid="30699" relation="include">
+        </childnode>
+        <childnode refid="30700" relation="include">
+        </childnode>
+        <childnode refid="30701" relation="include">
+        </childnode>
+        <childnode refid="30702" relation="include">
+        </childnode>
+      </node>
+      <node id="30695">
+        <label>/home/dev/ds-160209/src/rpcstormnode-budget.cpp</label>
+        <link refid="rpcstormnode-budget_8cpp"/>
+      </node>
+      <node id="30688">
+        <label>/home/dev/ds-160209/src/activestormnode.cpp</label>
+        <link refid="activestormnode_8cpp"/>
+      </node>
+      <node id="30747">
+        <label>/home/dev/ds-160209/src/walletdb.cpp</label>
+        <link refid="walletdb_8cpp"/>
+      </node>
+      <node id="30709">
+        <label>/home/dev/ds-160209/src/chain.cpp</label>
+        <link refid="chain_8cpp"/>
+      </node>
+      <node id="30698">
+        <label>/home/dev/ds-160209/src/stormnode-budget.cpp</label>
+        <link refid="stormnode-budget_8cpp"/>
+      </node>
+      <node id="30730">
+        <label>/home/dev/ds-160209/src/qt/addeditstormnode.cpp</label>
+        <link refid="addeditstormnode_8cpp"/>
+      </node>
+      <node id="30689">
+        <label>/home/dev/ds-160209/src/instantx.cpp</label>
+        <link refid="instantx_8cpp"/>
+      </node>
+      <node id="30703">
+        <label>/home/dev/ds-160209/src/init.cpp</label>
+        <link refid="init_8cpp"/>
+      </node>
+      <node id="30725">
+        <label>/home/dev/ds-160209/src/qt/messagepage.cpp</label>
+        <link refid="messagepage_8cpp"/>
+      </node>
+      <node id="30708">
+        <label>/home/dev/ds-160209/src/spork.h</label>
+        <link refid="spork_8h"/>
+        <childnode refid="30688" relation="include">
+        </childnode>
+        <childnode refid="30709" relation="include">
+        </childnode>
+        <childnode refid="30703" relation="include">
+        </childnode>
+        <childnode refid="30689" relation="include">
+        </childnode>
+        <childnode refid="30690" relation="include">
+        </childnode>
+        <childnode refid="30704" relation="include">
+        </childnode>
+        <childnode refid="30710" relation="include">
+        </childnode>
+        <childnode refid="30694" relation="include">
+        </childnode>
+        <childnode refid="30711" relation="include">
+        </childnode>
+        <childnode refid="30699" relation="include">
+        </childnode>
+        <childnode refid="30700" relation="include">
+        </childnode>
+        <childnode refid="30702" relation="include">
+        </childnode>
+        <childnode refid="30705" relation="include">
+        </childnode>
+      </node>
+      <node id="30726">
+        <label>/home/dev/ds-160209/src/qt/sendmessagesdialog.cpp</label>
+        <link refid="sendmessagesdialog_8cpp"/>
+      </node>
+      <node id="30727">
+        <label>/home/dev/ds-160209/src/qt/sendmessagesentry.cpp</label>
+        <link refid="sendmessagesentry_8cpp"/>
+      </node>
+      <node id="30746">
+        <label>/home/dev/ds-160209/src/test/key_tests.cpp</label>
+        <link refid="key__tests_8cpp"/>
+      </node>
+      <node id="30729">
+        <label>/home/dev/ds-160209/src/smessage.cpp</label>
+        <link refid="smessage_8cpp"/>
+      </node>
+      <node id="30734">
+        <label>/home/dev/ds-160209/src/qt/statisticspage.h</label>
+        <link refid="statisticspage_8h"/>
+        <childnode refid="30692" relation="include">
+        </childnode>
+        <childnode refid="30735" relation="include">
+        </childnode>
+      </node>
+      <node id="30745">
+        <label>/home/dev/ds-160209/src/test/base58_tests.cpp</label>
+        <link refid="base58__tests_8cpp"/>
+      </node>
+      <node id="30690">
+        <label>/home/dev/ds-160209/src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="30694">
+        <label>/home/dev/ds-160209/src/rpcmisc.cpp</label>
+        <link refid="rpcmisc_8cpp"/>
+      </node>
+      <node id="30736">
+        <label>/home/dev/ds-160209/src/qt/sendcoinsdialog.cpp</label>
+        <link refid="sendcoinsdialog_8cpp"/>
+      </node>
+      <node id="30697">
+        <label>/home/dev/ds-160209/src/sandstorm.cpp</label>
+        <link refid="sandstorm_8cpp"/>
+      </node>
+      <node id="30732">
+        <label>/home/dev/ds-160209/src/qt/blockbrowser.h</label>
+        <link refid="blockbrowser_8h"/>
+        <childnode refid="30733" relation="include">
+        </childnode>
+        <childnode refid="30692" relation="include">
+        </childnode>
+      </node>
+      <node id="30714">
+        <label>/home/dev/ds-160209/src/qt/overviewpage.cpp</label>
+        <link refid="overviewpage_8cpp"/>
+      </node>
+      <node id="30701">
+        <label>/home/dev/ds-160209/src/stormnode.cpp</label>
+        <link refid="stormnode_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="class_c_base58_data" prot="public">CBase58Data</innerclass>
+    <innerclass refid="class_c_dark_silk_address" prot="public">CDarkSilkAddress</innerclass>
+    <innerclass refid="class_c_dark_silk_secret" prot="public">CDarkSilkSecret</innerclass>
+    <innerclass refid="class_c_dark_silk_ext_key_base" prot="public">CDarkSilkExtKeyBase</innerclass>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="base58_8h_1a3ec7dc297b8d46aee9bf11ca453eb50e" prot="public" static="no">
+        <type><ref refid="class_c_dark_silk_ext_key_base" kindref="compound">CDarkSilkExtKeyBase</ref>&lt; <ref refid="struct_c_ext_key" kindref="compound">CExtKey</ref>, 74, <ref refid="class_c_chain_params_1aa294058ec2e3586bd8d03d6c39667058ab5636e60152f35f6595fe413eae430b0" kindref="member">CChainParams::EXT_SECRET_KEY</ref> &gt;</type>
+        <definition>typedef CDarkSilkExtKeyBase&lt;CExtKey, 74, CChainParams::EXT_SECRET_KEY&gt; CDarkSilkExtKey</definition>
+        <argsstring></argsstring>
+        <name>CDarkSilkExtKey</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/base58.h" line="159" column="1" bodyfile="/home/dev/ds-160209/src/base58.h" bodystart="159" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="base58_8h_1ab71b41e8ae4240c0f274480a62a4a7c7" prot="public" static="no">
+        <type><ref refid="class_c_dark_silk_ext_key_base" kindref="compound">CDarkSilkExtKeyBase</ref>&lt; <ref refid="struct_c_ext_pub_key" kindref="compound">CExtPubKey</ref>, 74, <ref refid="class_c_chain_params_1aa294058ec2e3586bd8d03d6c39667058a1259eb07831c689e393e5008d7bd0085" kindref="member">CChainParams::EXT_PUBLIC_KEY</ref> &gt;</type>
+        <definition>typedef CDarkSilkExtKeyBase&lt;CExtPubKey, 74, CChainParams::EXT_PUBLIC_KEY&gt; CDarkSilkExtPubKey</definition>
+        <argsstring></argsstring>
+        <name>CDarkSilkExtPubKey</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/base58.h" line="160" column="1" bodyfile="/home/dev/ds-160209/src/base58.h" bodystart="160" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="base58_8h_1a8d6f0e9d5df175b4966dcede31dc90ad" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string EncodeBase58</definition>
+        <argsstring>(const unsigned char *pbegin, const unsigned char *pend)</argsstring>
+        <name>EncodeBase58</name>
+        <param>
+          <type>const unsigned char *</type>
+          <declname>pbegin</declname>
+        </param>
+        <param>
+          <type>const unsigned char *</type>
+          <declname>pend</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Encode a byte sequence as a base58-encoded string. pbegin and pend cannot be NULL, unless both are. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/base58.h" line="30" column="1" bodyfile="/home/dev/ds-160209/src/base58.cpp" bodystart="67" bodyend="99"/>
+        <referencedby refid="base58_8h_1ab95cf95fa4e2631017335c2ea73090bc" compoundref="base58_8cpp" startline="101" endline="103">EncodeBase58</referencedby>
+        <referencedby refid="base58_8h_1ace9a5807ee51604f33044339f073ec76" compoundref="base58_8cpp" startline="109" endline="115">EncodeBase58Check</referencedby>
+        <referencedby refid="class_message_model_1a272e7ceeba4664046472e6f7c4d49d23" compoundref="messagemodel_8cpp" startline="331" endline="352">MessageModel::getAddressOrPubkey</referencedby>
+        <referencedby refid="rpcserver_8h_1af4d692a884c24c4abe2fc3f2b165542d" compoundref="rpcserver_8cpp" startline="517" endline="634">StartRPCThreads</referencedby>
+        <referencedby refid="rpcsmessage_8cpp_1af9835f898bc619ef6f9a39a5a8a9f2f1" compoundref="rpcsmessage_8cpp" startline="140" endline="346">smsglocalkeys</referencedby>
+        <referencedby refid="rpcsmessage_8cpp_1a7cf2eaa93f14ecaa9d8ac72fd3dc02a2" compoundref="rpcsmessage_8cpp" startline="427" endline="509">smsggetpubkey</referencedby>
+        <referencedby refid="smessage_8h_1a6dadcd107f4196325fd1b0841dbffd2a" compoundref="smessage_8cpp" startline="2619" endline="2647">SecureMsgGetLocalPublicKey</referencedby>
+        <referencedby refid="class_c_stealth_address_1a7d331c1fb6e9479b31d35a50c4bb0f0c" compoundref="stealth_8cpp" startline="66" endline="85">CStealthAddress::Encoded</referencedby>
+        <referencedby refid="base58__tests_8cpp_1ad270e557a9bafea8a9047386547b6615" compoundref="base58__tests_8cpp" startline="15" endline="34">BOOST_AUTO_TEST_CASE</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="base58_8h_1ab95cf95fa4e2631017335c2ea73090bc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string EncodeBase58</definition>
+        <argsstring>(const std::vector&lt; unsigned char &gt; &amp;vch)</argsstring>
+        <name>EncodeBase58</name>
+        <param>
+          <type>const std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>vch</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Encode a byte vector as a base58-encoded string </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/base58.h" line="35" column="1" bodyfile="/home/dev/ds-160209/src/base58.cpp" bodystart="101" bodyend="103"/>
+        <references refid="base58_8cpp_1a8d6f0e9d5df175b4966dcede31dc90ad" compoundref="base58_8cpp" startline="67" endline="99">EncodeBase58</references>
+      </memberdef>
+      <memberdef kind="function" id="base58_8h_1a0f74d1d6e7e982cad4b0e538acea4538" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool DecodeBase58</definition>
+        <argsstring>(const char *psz, std::vector&lt; unsigned char &gt; &amp;vch)</argsstring>
+        <name>DecodeBase58</name>
+        <param>
+          <type>const char *</type>
+          <declname>psz</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>vch</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Decode a base58-encoded string (psz) into a byte vector (vchRet). return true if decoding is successful. psz cannot be NULL. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/base58.h" line="42" column="1" bodyfile="/home/dev/ds-160209/src/base58.cpp" bodystart="22" bodyend="65"/>
+        <referencedby refid="base58_8h_1a83e290bb1b09e9c26a86863c5641111f" compoundref="base58_8cpp" startline="105" endline="107">DecodeBase58</referencedby>
+        <referencedby refid="base58_8h_1ae2dc7ad63e243509e0871ec4a5890678" compoundref="base58_8cpp" startline="117" endline="133">DecodeBase58Check</referencedby>
+        <referencedby refid="rpcwallet_8cpp_1a4bde25c1b4a97ec6068d2808594c9820" compoundref="rpcwallet_8cpp" startline="2383" endline="2487">importstealthaddress</referencedby>
+        <referencedby refid="smessage_8h_1a7d84ccbc16eb3d679638ba37b822a5e2" compoundref="smessage_8cpp" startline="2676" endline="2729">SecureMsgAddAddress</referencedby>
+        <referencedby refid="class_c_stealth_address_1aa3f4655dced125bf698c208b6e7ac4b8" compoundref="stealth_8cpp" startline="17" endline="64">CStealthAddress::SetEncoded</referencedby>
+        <referencedby refid="stealth_8h_1a26c89afcb720e8b1a9c9dadaee26757b" compoundref="stealth_8cpp" startline="649" endline="682">IsStealthAddress</referencedby>
+        <referencedby refid="base58__tests_8cpp_1a03911a4d6ae8736f7a28fe4fe0e0ece2" compoundref="base58__tests_8cpp" startline="37" endline="58">BOOST_AUTO_TEST_CASE</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="base58_8h_1a83e290bb1b09e9c26a86863c5641111f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool DecodeBase58</definition>
+        <argsstring>(const std::string &amp;str, std::vector&lt; unsigned char &gt; &amp;vchRet)</argsstring>
+        <name>DecodeBase58</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>vchRet</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Decode a base58-encoded string (str) into a byte vector (vchRet). return true if decoding is successful. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/base58.h" line="48" column="1" bodyfile="/home/dev/ds-160209/src/base58.cpp" bodystart="105" bodyend="107"/>
+        <references refid="base58_8cpp_1a0f74d1d6e7e982cad4b0e538acea4538" compoundref="base58_8cpp" startline="22" endline="65">DecodeBase58</references>
+      </memberdef>
+      <memberdef kind="function" id="base58_8h_1ace9a5807ee51604f33044339f073ec76" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string EncodeBase58Check</definition>
+        <argsstring>(const std::vector&lt; unsigned char &gt; &amp;vchIn)</argsstring>
+        <name>EncodeBase58Check</name>
+        <param>
+          <type>const std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>vchIn</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Encode a byte vector into a base58-encoded string, including checksum </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/base58.h" line="53" column="1" bodyfile="/home/dev/ds-160209/src/base58.cpp" bodystart="109" bodyend="115"/>
+        <references refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" compoundref="cache_8cc" startline="34">hash</references>
+        <references refid="hash_8h_1ab3f6c437460137530d86e09c2c102e99" compoundref="hash_8h" startline="77" endline="85">Hash</references>
+        <references refid="base58_8cpp_1a8d6f0e9d5df175b4966dcede31dc90ad" compoundref="base58_8cpp" startline="67" endline="99">EncodeBase58</references>
+        <referencedby refid="class_c_base58_data_1a9a47b10dadff15b8d6a6d0e63ce3ae32" compoundref="base58_8cpp" startline="175" endline="179">CBase58Data::ToString</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="base58_8h_1ae2dc7ad63e243509e0871ec4a5890678" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool DecodeBase58Check</definition>
+        <argsstring>(const char *psz, std::vector&lt; unsigned char &gt; &amp;vchRet)</argsstring>
+        <name>DecodeBase58Check</name>
+        <param>
+          <type>const char *</type>
+          <declname>psz</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>vchRet</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Decode a base58-encoded string (psz) that includes a checksum into a byte vector (vchRet), return true if decoding is successful </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/base58.h" line="59" column="1" bodyfile="/home/dev/ds-160209/src/base58.cpp" bodystart="117" bodyend="133"/>
+        <references refid="base58_8cpp_1a0f74d1d6e7e982cad4b0e538acea4538" compoundref="base58_8cpp" startline="22" endline="65">DecodeBase58</references>
+        <references refid="cache_8cc_1a11ecb029164e055f28f4123ce3748862" compoundref="cache_8cc" startline="34">hash</references>
+        <references refid="hash_8h_1ab3f6c437460137530d86e09c2c102e99" compoundref="hash_8h" startline="77" endline="85">Hash</references>
+        <references refid="classbase__uint_1a76539ef6be800bc02e4038f457a4f74a" compoundref="uint256_8h" startline="246" endline="249">base_uint&lt; BITS &gt;::end</references>
+        <referencedby refid="base58_8h_1a96597527b13547236b99430e6ac195b3" compoundref="base58_8cpp" startline="135" endline="137">DecodeBase58Check</referencedby>
+        <referencedby refid="class_c_base58_data_1a250fa3bc97d03c7d87de5485c8b49b57" compoundref="base58_8cpp" startline="155" endline="169">CBase58Data::SetString</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="base58_8h_1a96597527b13547236b99430e6ac195b3" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool DecodeBase58Check</definition>
+        <argsstring>(const std::string &amp;str, std::vector&lt; unsigned char &gt; &amp;vchRet)</argsstring>
+        <name>DecodeBase58Check</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <param>
+          <type>std::vector&lt; unsigned char &gt; &amp;</type>
+          <declname>vchRet</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Decode a base58-encoded string (str) that includes a checksum into a byte vector (vchRet), return true if decoding is successful </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/base58.h" line="65" column="1" bodyfile="/home/dev/ds-160209/src/base58.cpp" bodystart="135" bodyend="137"/>
+        <references refid="base58_8cpp_1ae2dc7ad63e243509e0871ec4a5890678" compoundref="base58_8cpp" startline="117" endline="133">DecodeBase58Check</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2009-2016<sp/>The<sp/>Bitcoin<sp/>Developers</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Copyright<sp/>(c)<sp/>2015-2016<sp/>Silk<sp/>Network</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Distributed<sp/>under<sp/>the<sp/>MIT/X11<sp/>software<sp/>license,<sp/>see<sp/>the<sp/>accompanying</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="comment">//<sp/>file<sp/>COPYING<sp/>or<sp/>http://www.opensource.org/licenses/mit-license.php.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Why<sp/>base-58<sp/>instead<sp/>of<sp/>standard<sp/>base-64<sp/>encoding?</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="comment">//<sp/>-<sp/>Don&apos;t<sp/>want<sp/>0OIl<sp/>characters<sp/>that<sp/>look<sp/>the<sp/>same<sp/>in<sp/>some<sp/>fonts<sp/>and</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="comment">//<sp/><sp/><sp/><sp/><sp/><sp/>could<sp/>be<sp/>used<sp/>to<sp/>create<sp/>visually<sp/>identical<sp/>looking<sp/>account<sp/>numbers.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="comment">//<sp/>-<sp/>A<sp/>string<sp/>with<sp/>non-alphanumeric<sp/>characters<sp/>is<sp/>not<sp/>as<sp/>easily<sp/>accepted<sp/>as<sp/>an<sp/>account<sp/>number.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="comment">//<sp/>-<sp/>E-mail<sp/>usually<sp/>won&apos;t<sp/>line-break<sp/>if<sp/>there&apos;s<sp/>no<sp/>punctuation<sp/>to<sp/>break<sp/>at.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="comment">//<sp/>-<sp/>Double-clicking<sp/>selects<sp/>the<sp/>whole<sp/>number<sp/>as<sp/>one<sp/>word<sp/>if<sp/>it&apos;s<sp/>all<sp/>alphanumeric.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="comment">//</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>DARKSILK_BASE58_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DARKSILK_BASE58_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="chainparams_8h" kindref="compound">chainparams.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="pubkey_8h" kindref="compound">pubkey.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="key_8h" kindref="compound">key.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="script_8h" kindref="compound">script.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="allocators_8h" kindref="compound">allocators.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal">std::string<sp/><ref refid="base58_8h_1a8d6f0e9d5df175b4966dcede31dc90ad" kindref="member">EncodeBase58</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>pbegin,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>pend);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal">std::string<sp/><ref refid="base58_8h_1a8d6f0e9d5df175b4966dcede31dc90ad" kindref="member">EncodeBase58</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;unsigned<sp/>char&gt;&amp;<sp/>vch);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="base58_8h_1a0f74d1d6e7e982cad4b0e538acea4538" kindref="member">DecodeBase58</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>psz,<sp/>std::vector&lt;unsigned<sp/>char&gt;&amp;<sp/>vch);</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="base58_8h_1a0f74d1d6e7e982cad4b0e538acea4538" kindref="member">DecodeBase58</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>str,<sp/>std::vector&lt;unsigned<sp/>char&gt;&amp;<sp/>vchRet);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal">std::string<sp/><ref refid="base58_8h_1ace9a5807ee51604f33044339f073ec76" kindref="member">EncodeBase58Check</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;unsigned<sp/>char&gt;&amp;<sp/>vchIn);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="base58_8h_1ae2dc7ad63e243509e0871ec4a5890678" kindref="member">DecodeBase58Check</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>psz,<sp/>std::vector&lt;unsigned<sp/>char&gt;&amp;<sp/>vchRet);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="base58_8h_1ae2dc7ad63e243509e0871ec4a5890678" kindref="member">DecodeBase58Check</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>str,<sp/>std::vector&lt;unsigned<sp/>char&gt;&amp;<sp/>vchRet);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="class_c_base58_data" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_c_base58_data" kindref="compound">CBase58Data</ref></highlight></codeline>
+<codeline lineno="71"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>version<sp/>byte(s)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="class_c_base58_data_1a110c1008f399053098a1bdf63408e923" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>std::vector&lt;unsigned<sp/>char&gt;<sp/><ref refid="class_c_base58_data_1a110c1008f399053098a1bdf63408e923" kindref="member">vchVersion</ref>;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>actually<sp/>encoded<sp/>data</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="class_c_base58_data_1a193d64487a0b4f6df24f8bd380956ec1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/>std::vector&lt;unsigned<sp/>char,<sp/>zero_after_free_allocator&lt;unsigned<sp/>char&gt;<sp/>&gt;<sp/><ref refid="class_c_base58_data_1a193d64487a0b4f6df24f8bd380956ec1" kindref="member">vector_uchar</ref>;</highlight></codeline>
+<codeline lineno="78" refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>vector_uchar<sp/><ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref>;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_base58_data_1ae4f4ff42010299bc6fb228e21d6b2a15" kindref="member">CBase58Data</ref>();</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data_1afab1c06a0a4f631fd889434a2bc48c27" kindref="member">SetData</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;unsigned<sp/>char&gt;<sp/>&amp;vchVersionIn,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>pdata,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>nSize);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data_1afab1c06a0a4f631fd889434a2bc48c27" kindref="member">SetData</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;unsigned<sp/>char&gt;<sp/>&amp;vchVersionIn,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*pbegin,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*pend);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data_1a250fa3bc97d03c7d87de5485c8b49b57" kindref="member">SetString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>psz,<sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nVersionBytes<sp/>=<sp/>1);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data_1a250fa3bc97d03c7d87de5485c8b49b57" kindref="member">SetString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>str);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>std::string<sp/><ref refid="class_c_base58_data_1a9a47b10dadff15b8d6a6d0e63ce3ae32" kindref="member">ToString</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data_1ab3d18fd9671a383937af7dd4ac2e890a" kindref="member">CompareTo</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data" kindref="compound">CBase58Data</ref>&amp;<sp/>b58)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="class_c_base58_data_1af6448549abaf34142668540a338d180d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data_1af6448549abaf34142668540a338d180d" kindref="member">operator==</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data" kindref="compound">CBase58Data</ref>&amp;<sp/>b58)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data_1ab3d18fd9671a383937af7dd4ac2e890a" kindref="member">CompareTo</ref>(b58)<sp/>==<sp/>0;<sp/>}</highlight></codeline>
+<codeline lineno="91" refid="class_c_base58_data_1a126cabad3af6b7d3aec0d6498be1a028" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data_1a126cabad3af6b7d3aec0d6498be1a028" kindref="member">operator&lt;=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data" kindref="compound">CBase58Data</ref>&amp;<sp/>b58)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data_1ab3d18fd9671a383937af7dd4ac2e890a" kindref="member">CompareTo</ref>(b58)<sp/>&lt;=<sp/>0;<sp/>}</highlight></codeline>
+<codeline lineno="92" refid="class_c_base58_data_1a4a96e8ea3716509b307cacfc814e5622" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data_1a4a96e8ea3716509b307cacfc814e5622" kindref="member">operator&gt;=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data" kindref="compound">CBase58Data</ref>&amp;<sp/>b58)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data_1ab3d18fd9671a383937af7dd4ac2e890a" kindref="member">CompareTo</ref>(b58)<sp/>&gt;=<sp/>0;<sp/>}</highlight></codeline>
+<codeline lineno="93" refid="class_c_base58_data_1a39bac58c4bc4f8abc74a24b769eb1f1d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data_1a39bac58c4bc4f8abc74a24b769eb1f1d" kindref="member">operator&lt; </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data" kindref="compound">CBase58Data</ref>&amp;<sp/>b58)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data_1ab3d18fd9671a383937af7dd4ac2e890a" kindref="member">CompareTo</ref>(b58)<sp/>&lt;<sp/><sp/>0;<sp/>}</highlight></codeline>
+<codeline lineno="94" refid="class_c_base58_data_1a427e472d2fef51aaa89c1a09229ac51a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data_1a427e472d2fef51aaa89c1a09229ac51a" kindref="member">operator&gt; </ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data" kindref="compound">CBase58Data</ref>&amp;<sp/>b58)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data_1ab3d18fd9671a383937af7dd4ac2e890a" kindref="member">CompareTo</ref>(b58)<sp/>&gt;<sp/><sp/>0;<sp/>}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103" refid="class_c_dark_silk_address" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_c_dark_silk_address" kindref="compound">CDarkSilkAddress</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data" kindref="compound">CBase58Data</ref><sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_dark_silk_address_1adafb09872a993f450999c4e4ea0e795b" kindref="member">Set</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_key_i_d" kindref="compound">CKeyID</ref><sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_dark_silk_address_1adafb09872a993f450999c4e4ea0e795b" kindref="member">Set</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_script_i_d" kindref="compound">CScriptID</ref><sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_dark_silk_address_1adafb09872a993f450999c4e4ea0e795b" kindref="member">Set</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="keystore_8h_1a8f46ecba0ddeb036be6b58d6ed1909cd" kindref="member">CTxDestination</ref><sp/>&amp;dest);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_dark_silk_address_1ab98113189d0746ea660447efe3700103" kindref="member">IsValid</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110" refid="class_c_dark_silk_address_1a4bbd665731f12aa75a20630ac3698794" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_dark_silk_address_1a4bbd665731f12aa75a20630ac3698794" kindref="member">CDarkSilkAddress</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="111" refid="class_c_dark_silk_address_1ac1364842bceba92a0d811637d6dd360a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_dark_silk_address_1ac1364842bceba92a0d811637d6dd360a" kindref="member">CDarkSilkAddress</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="keystore_8h_1a8f46ecba0ddeb036be6b58d6ed1909cd" kindref="member">CTxDestination</ref><sp/>&amp;dest)<sp/>{<sp/><ref refid="class_c_dark_silk_address_1adafb09872a993f450999c4e4ea0e795b" kindref="member">Set</ref>(dest);<sp/>}</highlight></codeline>
+<codeline lineno="112" refid="class_c_dark_silk_address_1a3d493985b3ca92d72d9ffe9251082f46" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_dark_silk_address_1a3d493985b3ca92d72d9ffe9251082f46" kindref="member">CDarkSilkAddress</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>strAddress)<sp/>{<sp/><ref refid="class_c_base58_data_1a250fa3bc97d03c7d87de5485c8b49b57" kindref="member">SetString</ref>(strAddress);<sp/>}</highlight></codeline>
+<codeline lineno="113" refid="class_c_dark_silk_address_1a42fe9fc2e904a2bed7b140d16a0d7b9b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_dark_silk_address_1a42fe9fc2e904a2bed7b140d16a0d7b9b" kindref="member">CDarkSilkAddress</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>pszAddress)<sp/>{<sp/><ref refid="class_c_base58_data_1a250fa3bc97d03c7d87de5485c8b49b57" kindref="member">SetString</ref>(pszAddress);<sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="keystore_8h_1a8f46ecba0ddeb036be6b58d6ed1909cd" kindref="member">CTxDestination</ref><sp/><ref refid="class_c_dark_silk_address_1a907e63758c7914a246b5807f6babf97d" kindref="member">Get</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_dark_silk_address_1ab305645f49be30fdeac6290debf029ec" kindref="member">GetKeyID</ref>(<ref refid="class_c_key_i_d" kindref="compound">CKeyID</ref><sp/>&amp;keyID)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_dark_silk_address_1aae1f7d243d122e41b4cddf481c6b0543" kindref="member">IsScript</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124" refid="class_c_dark_silk_secret" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_c_dark_silk_secret" kindref="compound">CDarkSilkSecret</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data" kindref="compound">CBase58Data</ref></highlight></codeline>
+<codeline lineno="125"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_c_dark_silk_secret_1a74deecf3a37ff76ff64ca8b935045bbd" kindref="member">SetKey</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_key" kindref="compound">CKey</ref>&amp;<sp/>vchSecret);</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_key" kindref="compound">CKey</ref><sp/><ref refid="class_c_dark_silk_secret_1af7b026d90efb897f6e592ce424c8d2c9" kindref="member">GetKey</ref>();</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_dark_silk_secret_1a30db2efc9987de8a743a2aa000c84617" kindref="member">IsValid</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_dark_silk_secret_1a06075192fb631c3b406a6ca231d2f926" kindref="member">SetString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/>pszSecret);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_c_dark_silk_secret_1a06075192fb631c3b406a6ca231d2f926" kindref="member">SetString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string&amp;<sp/>strSecret);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133" refid="class_c_dark_silk_secret_1af2fbf0da9f230b9c00fbf5d8770af795" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_dark_silk_secret_1af2fbf0da9f230b9c00fbf5d8770af795" kindref="member">CDarkSilkSecret</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="class_c_key" kindref="compound">CKey</ref>&amp;<sp/>vchSecret)<sp/>{<sp/><ref refid="class_c_dark_silk_secret_1a74deecf3a37ff76ff64ca8b935045bbd" kindref="member">SetKey</ref>(vchSecret);<sp/>}</highlight></codeline>
+<codeline lineno="134" refid="class_c_dark_silk_secret_1abbc53998331cd66391782e00743eb88c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_dark_silk_secret_1abbc53998331cd66391782e00743eb88c" kindref="member">CDarkSilkSecret</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137" refid="class_c_dark_silk_ext_key_base" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>K,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>Size,<sp/>CChainParams::Base58Type<sp/>Type&gt;<sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_c_dark_silk_ext_key_base" kindref="compound">CDarkSilkExtKeyBase</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_c_base58_data" kindref="compound">CBase58Data</ref></highlight></codeline>
+<codeline lineno="138"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="140" refid="class_c_dark_silk_ext_key_base_1a4a9dbbdfb5a48f1c2763b26e70a6b59a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_c_dark_silk_ext_key_base_1a4a9dbbdfb5a48f1c2763b26e70a6b59a" kindref="member">SetKey</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>K<sp/>&amp;key)<sp/>{</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>vch[Size];</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>key.Encode(vch);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_base58_data_1afab1c06a0a4f631fd889434a2bc48c27" kindref="member">SetData</ref>(<ref refid="chainparams_8cpp_1ace5c5b706d71a324a417dd2db394fd4a" kindref="member">Params</ref>().Base58Prefix(Type),<sp/>vch,<sp/>vch+Size);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146" refid="class_c_dark_silk_ext_key_base_1a4215d28b3fd2a44739e9e16ac334a4be" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>K<sp/><ref refid="class_c_dark_silk_ext_key_base_1a4215d28b3fd2a44739e9e16ac334a4be" kindref="member">GetKey</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>K<sp/>ret;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ret.Decode(&amp;<ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref>[0],<sp/>&amp;<ref refid="class_c_base58_data_1ae7ef7dfb93683aa4aaee8b74da5abb9c" kindref="member">vchData</ref>[Size]);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ret;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152" refid="class_c_dark_silk_ext_key_base_1a699cf62373fd74956072b26036a84521" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_dark_silk_ext_key_base_1a699cf62373fd74956072b26036a84521" kindref="member">CDarkSilkExtKeyBase</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>K<sp/>&amp;key)<sp/>{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_c_dark_silk_ext_key_base_1a4a9dbbdfb5a48f1c2763b26e70a6b59a" kindref="member">SetKey</ref>(key);</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156" refid="class_c_dark_silk_ext_key_base_1a07005d66bada4496d6f77d5f446decfa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="class_c_dark_silk_ext_key_base_1a07005d66bada4496d6f77d5f446decfa" kindref="member">CDarkSilkExtKeyBase</ref>()<sp/>{}</highlight></codeline>
+<codeline lineno="157"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159" refid="base58_8h_1a3ec7dc297b8d46aee9bf11ca453eb50e" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="class_c_dark_silk_ext_key_base" kindref="compound">CDarkSilkExtKeyBase&lt;CExtKey, 74, CChainParams::EXT_SECRET_KEY&gt;</ref><sp/><ref refid="base58_8h_1a3ec7dc297b8d46aee9bf11ca453eb50e" kindref="member">CDarkSilkExtKey</ref>;</highlight></codeline>
+<codeline lineno="160" refid="base58_8h_1ab71b41e8ae4240c0f274480a62a4a7c7" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="class_c_dark_silk_ext_key_base" kindref="compound">CDarkSilkExtKeyBase&lt;CExtPubKey, 74, CChainParams::EXT_PUBLIC_KEY&gt;</ref><sp/><ref refid="base58_8h_1ab71b41e8ae4240c0f274480a62a4a7c7" kindref="member">CDarkSilkExtPubKey</ref>;</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>DARKSILK_BASE58_H</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/base58.h"/>
+  </compounddef>
+</doxygen>

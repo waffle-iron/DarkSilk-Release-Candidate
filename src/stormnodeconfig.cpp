@@ -2,8 +2,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "stormnodeconfig.h"
 #include "net.h"
+#include "stormnodeconfig.h"
 #include "util.h"
 
 #include <base58.h>
@@ -59,7 +59,7 @@ bool CStormnodeConfig::read(std::string& strErr) {
         }
         
 
-        /*if(BaseParams().NetworkID() == CBaseChainParams::MAIN){
+        /*if(Params().NetworkID() == CChainParams::MAIN){
             if(CService(ip).GetPort() != 31000) {
                 strErr = "Invalid port detected in stormnode.conf: " + line + " (must be 31000 for mainnet)";
                 streamConfig.close();

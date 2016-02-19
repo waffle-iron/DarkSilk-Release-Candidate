@@ -1,0 +1,167 @@
+.TH "CTxMemPool" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CTxMemPool \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <txmempool\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCTxMemPool\fP (const \fBCFeeRate\fP &_minRelayFee)"
+.br
+.ti -1c
+.RI "\fB~CTxMemPool\fP ()"
+.br
+.ti -1c
+.RI "bool \fBaddUnchecked\fP (const \fBuint256\fP &\fBhash\fP, \fBCTransaction\fP &tx)"
+.br
+.ti -1c
+.RI "bool \fBremove\fP (const \fBCTransaction\fP &tx, bool fRecursive=false)"
+.br
+.ti -1c
+.RI "bool \fBremoveConflicts\fP (const \fBCTransaction\fP &tx)"
+.br
+.ti -1c
+.RI "void \fBclear\fP ()"
+.br
+.ti -1c
+.RI "void \fBqueryHashes\fP (std::vector< \fBuint256\fP > &vtxid)"
+.br
+.ti -1c
+.RI "unsigned int \fBGetTransactionsUpdated\fP () const "
+.br
+.ti -1c
+.RI "void \fBAddTransactionsUpdated\fP (unsigned int n)"
+.br
+.ti -1c
+.RI "bool \fBReadFeeEstimates\fP (\fBCAutoFile\fP &filein)"
+.br
+.ti -1c
+.RI "bool \fBWriteFeeEstimates\fP (\fBCAutoFile\fP &fileout) const "
+.br
+.ti -1c
+.RI "unsigned long \fBsize\fP () const "
+.br
+.ti -1c
+.RI "bool \fBexists\fP (\fBuint256\fP \fBhash\fP) const "
+.br
+.ti -1c
+.RI "bool \fBlookup\fP (\fBuint256\fP \fBhash\fP, \fBCTransaction\fP &result) const "
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBCCriticalSection\fP \fBcs\fP"
+.br
+.RI "\fIPassed to constructor to avoid dependency on main\&. \fP"
+.ti -1c
+.RI "std::map< \fBuint256\fP, \fBCTransaction\fP > \fBmapTx\fP"
+.br
+.ti -1c
+.RI "std::map< \fBCOutPoint\fP, \fBCInPoint\fP > \fBmapNextTx\fP"
+.br
+.ti -1c
+.RI "\fBCMinerPolicyEstimator\fP * \fBminerPolicyEstimator\fP"
+.br
+.ti -1c
+.RI "bool \fBfSanityCheck\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 387 of file txmempool\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CTxMemPool::CTxMemPool (const \fBCFeeRate\fP & _minRelayFee)"
+
+.PP
+Definition at line 11 of file txmempool\&.cpp\&.
+.SS "CTxMemPool::~CTxMemPool ()"
+
+.PP
+Definition at line 28 of file txmempool\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void CTxMemPool::AddTransactionsUpdated (unsigned int n)"
+
+.PP
+Definition at line 39 of file txmempool\&.cpp\&.
+.SS "bool CTxMemPool::addUnchecked (const \fBuint256\fP & hash, \fBCTransaction\fP & tx)"
+
+.PP
+Definition at line 45 of file txmempool\&.cpp\&.
+.SS "void CTxMemPool::clear ()"
+
+.PP
+Definition at line 99 of file txmempool\&.cpp\&.
+.SS "bool CTxMemPool::exists (\fBuint256\fP hash) const\fC [inline]\fP"
+
+.PP
+Definition at line 420 of file txmempool\&.h\&.
+.SS "unsigned int CTxMemPool::GetTransactionsUpdated () const"
+
+.PP
+Definition at line 33 of file txmempool\&.cpp\&.
+.SS "bool CTxMemPool::lookup (\fBuint256\fP hash, \fBCTransaction\fP & result) const"
+
+.PP
+Definition at line 117 of file txmempool\&.cpp\&.
+.SS "void CTxMemPool::queryHashes (std::vector< \fBuint256\fP > & vtxid)"
+
+.PP
+Definition at line 107 of file txmempool\&.cpp\&.
+.SS "bool CTxMemPool::ReadFeeEstimates (\fBCAutoFile\fP & filein)"
+
+.PP
+Definition at line 141 of file txmempool\&.cpp\&.
+.SS "bool CTxMemPool::remove (const \fBCTransaction\fP & tx, bool fRecursive = \fCfalse\fP)"
+
+.PP
+Definition at line 60 of file txmempool\&.cpp\&.
+.SS "bool CTxMemPool::removeConflicts (const \fBCTransaction\fP & tx)"
+
+.PP
+Definition at line 84 of file txmempool\&.cpp\&.
+.SS "unsigned long CTxMemPool::size () const\fC [inline]\fP"
+
+.PP
+Definition at line 414 of file txmempool\&.h\&.
+.SS "bool CTxMemPool::WriteFeeEstimates (\fBCAutoFile\fP & fileout) const"
+
+.PP
+Definition at line 126 of file txmempool\&.cpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBCCriticalSection\fP CTxMemPool::cs\fC [mutable]\fP"
+
+.PP
+Passed to constructor to avoid dependency on main\&. 
+.PP
+Definition at line 394 of file txmempool\&.h\&.
+.SS "bool CTxMemPool::fSanityCheck"
+
+.PP
+Definition at line 403 of file txmempool\&.h\&.
+.SS "std::map<\fBCOutPoint\fP, \fBCInPoint\fP> CTxMemPool::mapNextTx"
+
+.PP
+Definition at line 396 of file txmempool\&.h\&.
+.SS "std::map<\fBuint256\fP, \fBCTransaction\fP> CTxMemPool::mapTx"
+
+.PP
+Definition at line 395 of file txmempool\&.h\&.
+.SS "\fBCMinerPolicyEstimator\fP* CTxMemPool::minerPolicyEstimator"
+
+.PP
+Definition at line 397 of file txmempool\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

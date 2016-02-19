@@ -1,0 +1,313 @@
+\hypertarget{class_peer_table_model}{}\section{Peer\+Table\+Model Class Reference}
+\label{class_peer_table_model}\index{Peer\+Table\+Model@{Peer\+Table\+Model}}
+
+
+{\ttfamily \#include $<$peertablemodel.\+h$>$}
+
+
+
+Inheritance diagram for Peer\+Table\+Model\+:
+% FIG 0
+
+
+Collaboration diagram for Peer\+Table\+Model\+:
+% FIG 1
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_peer_table_model_a10a32ec5f31c9765c80b611760f7e590}{Column\+Index} \{ \hyperlink{class_peer_table_model_a10a32ec5f31c9765c80b611760f7e590a101063cc6b840d0857aa79929703d16a}{Address} = 0, 
+\hyperlink{class_peer_table_model_a10a32ec5f31c9765c80b611760f7e590aa4408c536a178490700310f01cf0d455}{Subversion} = 1, 
+\hyperlink{class_peer_table_model_a10a32ec5f31c9765c80b611760f7e590a7e5e92f542ecbb90307e99c213274957}{Ping} = 2
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_peer_table_model_abae14b3fd8a38a60f752f67a57b5b0b3}{refresh} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_peer_table_model_a94e40794eeb946475a4a747c1fe1a2c2}{Peer\+Table\+Model} (\hyperlink{class_client_model}{Client\+Model} $\ast$parent=0)
+\item 
+const \hyperlink{struct_c_node_combined_stats}{C\+Node\+Combined\+Stats} $\ast$ \hyperlink{class_peer_table_model_a98084d3299642316c71c5de3d36b9859}{get\+Node\+Stats} (int idx)
+\item 
+int \hyperlink{class_peer_table_model_aa735d366015dafba4c5d79dfb76abe49}{get\+Row\+By\+Node\+Id} (\hyperlink{net_8h_a954d746a58632565552615fd0a4ee660}{Node\+Id} nodeid)
+\item 
+void \hyperlink{class_peer_table_model_aba0f9c1535e2d718950edea1c166cc9d}{start\+Auto\+Refresh} ()
+\item 
+void \hyperlink{class_peer_table_model_a2a738ac95fc16e0e1db9693eadc4f8b4}{stop\+Auto\+Refresh} ()
+\end{DoxyCompactItemize}
+\begin{Indent}{\bf Methods overridden from Q\+Abstract\+Table\+Model}\par
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_peer_table_model_ab25fdcf93bf84c7aaa4c1e16135db35f}{row\+Count} (const Q\+Model\+Index \&parent) const 
+\item 
+int \hyperlink{class_peer_table_model_a57b217f2d29273d85501d3d14074fe7e}{column\+Count} (const Q\+Model\+Index \&parent) const 
+\item 
+Q\+Variant \hyperlink{class_peer_table_model_a02a6cba12854415bc67def00300252d7}{data} (const Q\+Model\+Index \&\hyperlink{class_peer_table_model_addd566b4bd58315a6db0fbd7e8c6b70a}{index}, int role) const 
+\item 
+Q\+Variant \hyperlink{class_peer_table_model_a9591c18e40358b0b9f97835e60b56904}{header\+Data} (int section, Qt\+::\+Orientation orientation, int role) const 
+\item 
+Q\+Model\+Index \hyperlink{class_peer_table_model_addd566b4bd58315a6db0fbd7e8c6b70a}{index} (int row, int column, const Q\+Model\+Index \&parent) const 
+\item 
+Qt\+::\+Item\+Flags \hyperlink{class_peer_table_model_a0f5cc73fce970b6bcc0f23f7d56f1e79}{flags} (const Q\+Model\+Index \&\hyperlink{class_peer_table_model_addd566b4bd58315a6db0fbd7e8c6b70a}{index}) const 
+\item 
+void \hyperlink{class_peer_table_model_ac2211cda0ce659ac4c324c6ff24e1e5f}{sort} (int column, Qt\+::\+Sort\+Order order)
+\end{DoxyCompactItemize}
+\end{Indent}
+
+
+\subsection{Detailed Description}
+Qt model providing information about connected peers, similar to the \char`\"{}getpeerinfo\char`\"{} R\+P\+C call. Used by the rpc console U\+I. 
+
+Definition at line 43 of file peertablemodel.\+h.
+
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{class_peer_table_model_a10a32ec5f31c9765c80b611760f7e590}{}\index{Peer\+Table\+Model@{Peer\+Table\+Model}!Column\+Index@{Column\+Index}}
+\index{Column\+Index@{Column\+Index}!Peer\+Table\+Model@{Peer\+Table\+Model}}
+\subsubsection[{Column\+Index}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Peer\+Table\+Model\+::\+Column\+Index}}\label{class_peer_table_model_a10a32ec5f31c9765c80b611760f7e590}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{Address@{Address}!Peer\+Table\+Model@{Peer\+Table\+Model}}\index{Peer\+Table\+Model@{Peer\+Table\+Model}!Address@{Address}}\item[{\em 
+\hypertarget{class_peer_table_model_a10a32ec5f31c9765c80b611760f7e590a101063cc6b840d0857aa79929703d16a}{}Address\label{class_peer_table_model_a10a32ec5f31c9765c80b611760f7e590a101063cc6b840d0857aa79929703d16a}
+}]\index{Subversion@{Subversion}!Peer\+Table\+Model@{Peer\+Table\+Model}}\index{Peer\+Table\+Model@{Peer\+Table\+Model}!Subversion@{Subversion}}\item[{\em 
+\hypertarget{class_peer_table_model_a10a32ec5f31c9765c80b611760f7e590aa4408c536a178490700310f01cf0d455}{}Subversion\label{class_peer_table_model_a10a32ec5f31c9765c80b611760f7e590aa4408c536a178490700310f01cf0d455}
+}]\index{Ping@{Ping}!Peer\+Table\+Model@{Peer\+Table\+Model}}\index{Peer\+Table\+Model@{Peer\+Table\+Model}!Ping@{Ping}}\item[{\em 
+\hypertarget{class_peer_table_model_a10a32ec5f31c9765c80b611760f7e590a7e5e92f542ecbb90307e99c213274957}{}Ping\label{class_peer_table_model_a10a32ec5f31c9765c80b611760f7e590a7e5e92f542ecbb90307e99c213274957}
+}]\end{description}
+\end{Desc}
+
+
+Definition at line 54 of file peertablemodel.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_peer_table_model_a94e40794eeb946475a4a747c1fe1a2c2}{}\index{Peer\+Table\+Model@{Peer\+Table\+Model}!Peer\+Table\+Model@{Peer\+Table\+Model}}
+\index{Peer\+Table\+Model@{Peer\+Table\+Model}!Peer\+Table\+Model@{Peer\+Table\+Model}}
+\subsubsection[{Peer\+Table\+Model}]{\setlength{\rightskip}{0pt plus 5cm}Peer\+Table\+Model\+::\+Peer\+Table\+Model (
+\begin{DoxyParamCaption}
+\item[{{\bf Client\+Model} $\ast$}]{parent = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}\label{class_peer_table_model_a94e40794eeb946475a4a747c1fe1a2c2}
+
+
+Definition at line 114 of file peertablemodel.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 2
+
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_peer_table_model_a57b217f2d29273d85501d3d14074fe7e}{}\index{Peer\+Table\+Model@{Peer\+Table\+Model}!column\+Count@{column\+Count}}
+\index{column\+Count@{column\+Count}!Peer\+Table\+Model@{Peer\+Table\+Model}}
+\subsubsection[{column\+Count}]{\setlength{\rightskip}{0pt plus 5cm}int Peer\+Table\+Model\+::column\+Count (
+\begin{DoxyParamCaption}
+\item[{const Q\+Model\+Index \&}]{parent}
+\end{DoxyParamCaption}
+) const}\label{class_peer_table_model_a57b217f2d29273d85501d3d14074fe7e}
+
+
+Definition at line 149 of file peertablemodel.\+cpp.
+
+\hypertarget{class_peer_table_model_a02a6cba12854415bc67def00300252d7}{}\index{Peer\+Table\+Model@{Peer\+Table\+Model}!data@{data}}
+\index{data@{data}!Peer\+Table\+Model@{Peer\+Table\+Model}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Variant Peer\+Table\+Model\+::data (
+\begin{DoxyParamCaption}
+\item[{const Q\+Model\+Index \&}]{index, }
+\item[{int}]{role}
+\end{DoxyParamCaption}
+) const}\label{class_peer_table_model_a02a6cba12854415bc67def00300252d7}
+
+
+Definition at line 155 of file peertablemodel.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 3
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 4
+
+
+\hypertarget{class_peer_table_model_a0f5cc73fce970b6bcc0f23f7d56f1e79}{}\index{Peer\+Table\+Model@{Peer\+Table\+Model}!flags@{flags}}
+\index{flags@{flags}!Peer\+Table\+Model@{Peer\+Table\+Model}}
+\subsubsection[{flags}]{\setlength{\rightskip}{0pt plus 5cm}Qt\+::\+Item\+Flags Peer\+Table\+Model\+::flags (
+\begin{DoxyParamCaption}
+\item[{const Q\+Model\+Index \&}]{index}
+\end{DoxyParamCaption}
+) const}\label{class_peer_table_model_a0f5cc73fce970b6bcc0f23f7d56f1e79}
+
+
+Definition at line 192 of file peertablemodel.\+cpp.
+
+\hypertarget{class_peer_table_model_a98084d3299642316c71c5de3d36b9859}{}\index{Peer\+Table\+Model@{Peer\+Table\+Model}!get\+Node\+Stats@{get\+Node\+Stats}}
+\index{get\+Node\+Stats@{get\+Node\+Stats}!Peer\+Table\+Model@{Peer\+Table\+Model}}
+\subsubsection[{get\+Node\+Stats}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf C\+Node\+Combined\+Stats} $\ast$ Peer\+Table\+Model\+::get\+Node\+Stats (
+\begin{DoxyParamCaption}
+\item[{int}]{idx}
+\end{DoxyParamCaption}
+)}\label{class_peer_table_model_a98084d3299642316c71c5de3d36b9859}
+
+
+Definition at line 216 of file peertablemodel.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 5
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 6
+
+
+\hypertarget{class_peer_table_model_aa735d366015dafba4c5d79dfb76abe49}{}\index{Peer\+Table\+Model@{Peer\+Table\+Model}!get\+Row\+By\+Node\+Id@{get\+Row\+By\+Node\+Id}}
+\index{get\+Row\+By\+Node\+Id@{get\+Row\+By\+Node\+Id}!Peer\+Table\+Model@{Peer\+Table\+Model}}
+\subsubsection[{get\+Row\+By\+Node\+Id}]{\setlength{\rightskip}{0pt plus 5cm}int Peer\+Table\+Model\+::get\+Row\+By\+Node\+Id (
+\begin{DoxyParamCaption}
+\item[{{\bf Node\+Id}}]{nodeid}
+\end{DoxyParamCaption}
+)}\label{class_peer_table_model_aa735d366015dafba4c5d79dfb76abe49}
+
+
+Definition at line 228 of file peertablemodel.\+cpp.
+
+
+
+Here is the caller graph for this function\+:
+% FIG 7
+
+
+\hypertarget{class_peer_table_model_a9591c18e40358b0b9f97835e60b56904}{}\index{Peer\+Table\+Model@{Peer\+Table\+Model}!header\+Data@{header\+Data}}
+\index{header\+Data@{header\+Data}!Peer\+Table\+Model@{Peer\+Table\+Model}}
+\subsubsection[{header\+Data}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Variant Peer\+Table\+Model\+::header\+Data (
+\begin{DoxyParamCaption}
+\item[{int}]{section, }
+\item[{Qt\+::\+Orientation}]{orientation, }
+\item[{int}]{role}
+\end{DoxyParamCaption}
+) const}\label{class_peer_table_model_a9591c18e40358b0b9f97835e60b56904}
+
+
+Definition at line 180 of file peertablemodel.\+cpp.
+
+\hypertarget{class_peer_table_model_addd566b4bd58315a6db0fbd7e8c6b70a}{}\index{Peer\+Table\+Model@{Peer\+Table\+Model}!index@{index}}
+\index{index@{index}!Peer\+Table\+Model@{Peer\+Table\+Model}}
+\subsubsection[{index}]{\setlength{\rightskip}{0pt plus 5cm}Q\+Model\+Index Peer\+Table\+Model\+::index (
+\begin{DoxyParamCaption}
+\item[{int}]{row, }
+\item[{int}]{column, }
+\item[{const Q\+Model\+Index \&}]{parent}
+\end{DoxyParamCaption}
+) const}\label{class_peer_table_model_addd566b4bd58315a6db0fbd7e8c6b70a}
+
+
+Definition at line 201 of file peertablemodel.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 8
+
+
+\hypertarget{class_peer_table_model_abae14b3fd8a38a60f752f67a57b5b0b3}{}\index{Peer\+Table\+Model@{Peer\+Table\+Model}!refresh@{refresh}}
+\index{refresh@{refresh}!Peer\+Table\+Model@{Peer\+Table\+Model}}
+\subsubsection[{refresh}]{\setlength{\rightskip}{0pt plus 5cm}void Peer\+Table\+Model\+::refresh (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [slot]}}\label{class_peer_table_model_abae14b3fd8a38a60f752f67a57b5b0b3}
+
+
+Definition at line 221 of file peertablemodel.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 9
+
+
+
+
+Here is the caller graph for this function\+:
+% FIG 10
+
+
+\hypertarget{class_peer_table_model_ab25fdcf93bf84c7aaa4c1e16135db35f}{}\index{Peer\+Table\+Model@{Peer\+Table\+Model}!row\+Count@{row\+Count}}
+\index{row\+Count@{row\+Count}!Peer\+Table\+Model@{Peer\+Table\+Model}}
+\subsubsection[{row\+Count}]{\setlength{\rightskip}{0pt plus 5cm}int Peer\+Table\+Model\+::row\+Count (
+\begin{DoxyParamCaption}
+\item[{const Q\+Model\+Index \&}]{parent}
+\end{DoxyParamCaption}
+) const}\label{class_peer_table_model_ab25fdcf93bf84c7aaa4c1e16135db35f}
+
+
+Definition at line 143 of file peertablemodel.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 11
+
+
+\hypertarget{class_peer_table_model_ac2211cda0ce659ac4c324c6ff24e1e5f}{}\index{Peer\+Table\+Model@{Peer\+Table\+Model}!sort@{sort}}
+\index{sort@{sort}!Peer\+Table\+Model@{Peer\+Table\+Model}}
+\subsubsection[{sort}]{\setlength{\rightskip}{0pt plus 5cm}void Peer\+Table\+Model\+::sort (
+\begin{DoxyParamCaption}
+\item[{int}]{column, }
+\item[{Qt\+::\+Sort\+Order}]{order}
+\end{DoxyParamCaption}
+)}\label{class_peer_table_model_ac2211cda0ce659ac4c324c6ff24e1e5f}
+
+
+Definition at line 237 of file peertablemodel.\+cpp.
+
+
+
+Here is the call graph for this function\+:
+% FIG 12
+
+
+\hypertarget{class_peer_table_model_aba0f9c1535e2d718950edea1c166cc9d}{}\index{Peer\+Table\+Model@{Peer\+Table\+Model}!start\+Auto\+Refresh@{start\+Auto\+Refresh}}
+\index{start\+Auto\+Refresh@{start\+Auto\+Refresh}!Peer\+Table\+Model@{Peer\+Table\+Model}}
+\subsubsection[{start\+Auto\+Refresh}]{\setlength{\rightskip}{0pt plus 5cm}void Peer\+Table\+Model\+::start\+Auto\+Refresh (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_peer_table_model_aba0f9c1535e2d718950edea1c166cc9d}
+
+
+Definition at line 133 of file peertablemodel.\+cpp.
+
+\hypertarget{class_peer_table_model_a2a738ac95fc16e0e1db9693eadc4f8b4}{}\index{Peer\+Table\+Model@{Peer\+Table\+Model}!stop\+Auto\+Refresh@{stop\+Auto\+Refresh}}
+\index{stop\+Auto\+Refresh@{stop\+Auto\+Refresh}!Peer\+Table\+Model@{Peer\+Table\+Model}}
+\subsubsection[{stop\+Auto\+Refresh}]{\setlength{\rightskip}{0pt plus 5cm}void Peer\+Table\+Model\+::stop\+Auto\+Refresh (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\label{class_peer_table_model_a2a738ac95fc16e0e1db9693eadc4f8b4}
+
+
+Definition at line 138 of file peertablemodel.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/dev/ds-\/160209/src/qt/\hyperlink{peertablemodel_8h}{peertablemodel.\+h}\item 
+/home/dev/ds-\/160209/src/qt/\hyperlink{peertablemodel_8cpp}{peertablemodel.\+cpp}\end{DoxyCompactItemize}

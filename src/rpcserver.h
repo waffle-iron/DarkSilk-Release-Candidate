@@ -4,8 +4,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DARKSILKRPC_SERVER_H
-#define DARKSILKRPC_SERVER_H
+#ifndef _DARKSILKRPC_SERVER_H_
+#define _DARKSILKRPC_SERVER_H_ 1
 
 #include "amount.h"
 #include "uint256.h"
@@ -13,27 +13,11 @@
 
 #include <list>
 #include <map>
-#include <stdint.h>
-#include <string>
-
-#include "json/json_spirit_reader_template.h"
-#include "json/json_spirit_utils.h"
-#include "json/json_spirit_writer_template.h"
 
 class CBlockIndex;
-class CNetAddr;
-/** Start RPC threads */
+
 void StartRPCThreads();
-/**
- * Alternative to StartRPCThreads for the GUI, when no server is
- * used. The RPC thread in this case is only used to handle timeouts.
- * If real RPC threads have already been started this is a no-op.
- */
-void StartDummyRPCThread();
-/** Stop RPC threads */
 void StopRPCThreads();
-/** Query whether RPC is running */
-bool IsRPCRunning();
 
 /** 
  * Set the RPC warmup status.  When this is done, all RPC calls will error out
@@ -64,9 +48,6 @@ void RPCTypeCheck(const json_spirit::Object& o,
   Overrides previous timer <name> (if any).
  */
 void RPCRunLater(const std::string& name, boost::function<void(void)> func, int64_t nSeconds);
-
-//! Convert boost::asio address to CNetAddr
-extern CNetAddr BoostAsioToCNetAddr(boost::asio::ip::address address);
 
 typedef json_spirit::Value(*rpcfn_type)(const json_spirit::Array& params, bool fHelp);
 
@@ -243,4 +224,4 @@ extern json_spirit::Value smsginbox(const json_spirit::Array& params, bool fHelp
 extern json_spirit::Value smsgoutbox(const json_spirit::Array& params, bool fHelp);
 extern json_spirit::Value smsgbuckets(const json_spirit::Array& params, bool fHelp);
 
-#endif // DARKSILKRPC_SERVER_H
+#endif

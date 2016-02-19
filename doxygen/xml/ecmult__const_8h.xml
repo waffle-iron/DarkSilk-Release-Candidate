@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.9.1">
+  <compounddef id="ecmult__const_8h" kind="file" language="C++">
+    <compoundname>ecmult_const.h</compoundname>
+    <includes refid="scalar_8h" local="yes">scalar.h</includes>
+    <includes refid="group_8h" local="yes">group.h</includes>
+    <includedby refid="ecmult__const__impl_8h" local="yes">/home/dev/ds-160209/src/secp256k1/src/ecmult_const_impl.h</includedby>
+    <incdepgraph>
+      <node id="51751">
+        <label>scalar.h</label>
+        <link refid="scalar_8h"/>
+        <childnode refid="51752" relation="include">
+        </childnode>
+      </node>
+      <node id="51752">
+        <label>num.h</label>
+        <link refid="num_8h"/>
+      </node>
+      <node id="51753">
+        <label>group.h</label>
+        <link refid="group_8h"/>
+        <childnode refid="51752" relation="include">
+        </childnode>
+        <childnode refid="51754" relation="include">
+        </childnode>
+      </node>
+      <node id="51754">
+        <label>field.h</label>
+        <link refid="field_8h"/>
+      </node>
+      <node id="51750">
+        <label>/home/dev/ds-160209/src/secp256k1/src/ecmult_const.h</label>
+        <link refid="ecmult_const.h"/>
+        <childnode refid="51751" relation="include">
+        </childnode>
+        <childnode refid="51753" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="51759">
+        <label>/home/dev/ds-160209/src/secp256k1/src/tests.c</label>
+        <link refid="tests_8c"/>
+      </node>
+      <node id="51760">
+        <label>/home/dev/ds-160209/src/secp256k1/src/modules/ecdh/main_impl.h</label>
+        <link refid="ecdh_2main__impl_8h"/>
+      </node>
+      <node id="51758">
+        <label>/home/dev/ds-160209/src/secp256k1/src/secp256k1.c</label>
+        <link refid="secp256k1_8c"/>
+        <childnode refid="51757" relation="include">
+        </childnode>
+        <childnode refid="51759" relation="include">
+        </childnode>
+      </node>
+      <node id="51756">
+        <label>/home/dev/ds-160209/src/secp256k1/src/ecmult_const_impl.h</label>
+        <link refid="ecmult__const__impl_8h"/>
+        <childnode refid="51757" relation="include">
+        </childnode>
+        <childnode refid="51758" relation="include">
+        </childnode>
+        <childnode refid="51760" relation="include">
+        </childnode>
+      </node>
+      <node id="51755">
+        <label>/home/dev/ds-160209/src/secp256k1/src/ecmult_const.h</label>
+        <link refid="ecmult_const.h"/>
+        <childnode refid="51756" relation="include">
+        </childnode>
+      </node>
+      <node id="51757">
+        <label>/home/dev/ds-160209/src/secp256k1/src/bench_internal.c</label>
+        <link refid="bench__internal_8c"/>
+      </node>
+    </invincdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="ecmult__const_8h_1a91d964b6d73b3bc6dbb913b4b2307288" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void secp256k1_ecmult_const</definition>
+        <argsstring>(secp256k1_gej *r, const secp256k1_ge *a, const secp256k1_scalar *q)</argsstring>
+        <name>secp256k1_ecmult_const</name>
+        <param>
+          <type><ref refid="structsecp256k1__gej" kindref="compound">secp256k1_gej</ref> *</type>
+          <declname>r</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsecp256k1__ge" kindref="compound">secp256k1_ge</ref> *</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>const <ref refid="structsecp256k1__scalar" kindref="compound">secp256k1_scalar</ref> *</type>
+          <declname>q</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/dev/ds-160209/src/secp256k1/src/ecmult_const.h" line="13" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">/**********************************************************************</highlight></codeline>
+<codeline lineno="2"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(c)<sp/>2015-2016<sp/>Andrew<sp/>Poelstra<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Distributed<sp/>under<sp/>the<sp/>MIT<sp/>software<sp/>license,<sp/>see<sp/>the<sp/>accompanying<sp/><sp/><sp/>*</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*<sp/>file<sp/>COPYING<sp/>or<sp/>http://www.opensource.org/licenses/mit-license.php.*</highlight></codeline>
+<codeline lineno="5"><highlight class="comment"><sp/>**********************************************************************/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>_SECP256K1_ECMULT_CONST_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>_SECP256K1_ECMULT_CONST_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="scalar_8h" kindref="compound">scalar.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="group_8h" kindref="compound">group.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>secp256k1_ecmult_const(<ref refid="structsecp256k1__gej" kindref="compound">secp256k1_gej</ref><sp/>*r,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__ge" kindref="compound">secp256k1_ge</ref><sp/>*a,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structsecp256k1__scalar" kindref="compound">secp256k1_scalar</ref><sp/>*q);</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+    </programlisting>
+    <location file="/home/dev/ds-160209/src/secp256k1/src/ecmult_const.h"/>
+  </compounddef>
+</doxygen>

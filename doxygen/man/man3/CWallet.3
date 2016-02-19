@@ -1,0 +1,1182 @@
+.TH "CWallet" 3 "Wed Feb 10 2016" "Version 1.0.0.0" "darksilk" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+CWallet \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <wallet\&.h>\fP
+.PP
+Inherits \fBCCryptoKeyStore\fP, and \fBCWalletInterface\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "typedef std::map< unsigned int, \fBCMasterKey\fP > \fBMasterKeyMap\fP"
+.br
+.ti -1c
+.RI "typedef std::pair< \fBCWalletTx\fP *, \fBCAccountingEntry\fP * > \fBTxPair\fP"
+.br
+.ti -1c
+.RI "typedef std::multimap< \fBint64_t\fP, \fBTxPair\fP > \fBTxItems\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBSelectCoinsDark\fP (\fBCAmount\fP nValueMin, \fBCAmount\fP nValueMax, std::vector< \fBCTxIn\fP > &setCoinsRet, \fBCAmount\fP &nValueRet, int nSandstormRoundsMin, int nSandstormRoundsMax) const "
+.br
+.ti -1c
+.RI "bool \fBSelectCoinsByDenominations\fP (int nDenom, \fBCAmount\fP nValueMin, \fBCAmount\fP nValueMax, std::vector< \fBCTxIn\fP > &vCoinsRet, std::vector< \fBCOutput\fP > &vCoinsRet2, \fBCAmount\fP &nValueRet, int nSandstormRoundsMin, int nSandstormRoundsMax)"
+.br
+.ti -1c
+.RI "bool \fBSelectCoinsDarkDenominated\fP (\fBCAmount\fP nTargetValue, std::vector< \fBCTxIn\fP > &setCoinsRet, \fBCAmount\fP &nValueRet) const "
+.br
+.ti -1c
+.RI "bool \fBSelectCoinsStormnode\fP (\fBCTxIn\fP &vin, \fBCAmount\fP &nValueRet, \fBCScript\fP &pubScript) const "
+.br
+.ti -1c
+.RI "bool \fBHasCollateralInputs\fP () const "
+.br
+.ti -1c
+.RI "bool \fBIsCollateralAmount\fP (\fBCAmount\fP nInputAmount) const "
+.br
+.ti -1c
+.RI "int \fBCountInputsWithAmount\fP (\fBCAmount\fP nInputAmount)"
+.br
+.ti -1c
+.RI "const \fBCWalletTx\fP * \fBGetWalletTx\fP (const \fBuint256\fP &\fBhash\fP) const "
+.br
+.ti -1c
+.RI "bool \fBSelectCoinsCollateral\fP (std::vector< \fBCTxIn\fP > &setCoinsRet, \fBCAmount\fP &nValueRet) const "
+.br
+.ti -1c
+.RI "bool \fBSelectCoinsWithoutDenomination\fP (const \fBCAmount\fP &nTargetValue, std::set< std::pair< const \fBCWalletTx\fP *, unsigned int > > &setCoinsRet, \fBCAmount\fP &nValueRet) const "
+.br
+.ti -1c
+.RI "bool \fBGetTransaction\fP (const \fBuint256\fP &hashTx, \fBCWalletTx\fP &wtx)"
+.br
+.ti -1c
+.RI "int \fBGetInputSandstormRounds\fP (\fBCTxIn\fP in) const "
+.br
+.ti -1c
+.RI "\fBCWallet\fP ()"
+.br
+.ti -1c
+.RI "\fBCWallet\fP (std::string strWalletFileIn)"
+.br
+.ti -1c
+.RI "void \fBSetNull\fP ()"
+.br
+.ti -1c
+.RI "bool \fBCanSupportFeature\fP (enum \fBWalletFeature\fP wf)"
+.br
+.ti -1c
+.RI "void \fBAvailableCoinsForStaking\fP (std::vector< \fBCOutput\fP > &vCoins, unsigned int nSpendTime) const "
+.br
+.ti -1c
+.RI "void \fBAvailableCoins\fP (std::vector< \fBCOutput\fP > &vCoins, bool fOnlyConfirmed=true, const \fBCCoinControl\fP *coinControl=NULL, \fBAvailableCoinsType\fP coin_type=\fBALL_COINS\fP, bool useIX=false) const "
+.br
+.ti -1c
+.RI "bool \fBSelectCoinsMinConf\fP (const \fBCAmount\fP &nTargetValue, unsigned int nSpendTime, int nConfMine, int nConfTheirs, vector< \fBCOutput\fP > vCoins, set< pair< const \fBCWalletTx\fP *, unsigned int > > &setCoinsRet, \fBCAmount\fP &nValueRet) const "
+.br
+.ti -1c
+.RI "bool \fBSelectCoinsMinConfByCoinAge\fP (const \fBCAmount\fP &nTargetValue, unsigned int nSpendTime, int nConfMine, int nConfTheirs, vector< \fBCOutput\fP > vCoins, set< pair< const \fBCWalletTx\fP *, unsigned int > > &setCoinsRet, \fBCAmount\fP &nValueRet) const "
+.br
+.ti -1c
+.RI "bool \fBIsSpent\fP (const \fBuint256\fP &\fBhash\fP, unsigned int n) const "
+.br
+.ti -1c
+.RI "bool \fBIsLockedCoin\fP (\fBuint256\fP \fBhash\fP, unsigned int n) const "
+.br
+.ti -1c
+.RI "void \fBLockCoin\fP (\fBCOutPoint\fP &output)"
+.br
+.ti -1c
+.RI "void \fBUnlockCoin\fP (\fBCOutPoint\fP &output)"
+.br
+.ti -1c
+.RI "void \fBUnlockAllCoins\fP ()"
+.br
+.ti -1c
+.RI "void \fBListLockedCoins\fP (std::vector< \fBCOutPoint\fP > &vOutpts)"
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetTotalValue\fP (std::vector< \fBCTxIn\fP > vCoins)"
+.br
+.ti -1c
+.RI "\fBCPubKey\fP \fBGenerateNewKey\fP ()"
+.br
+.ti -1c
+.RI "bool \fBAddKeyPubKey\fP (const \fBCKey\fP &key, const \fBCPubKey\fP &pubkey)"
+.br
+.ti -1c
+.RI "bool \fBLoadKey\fP (const \fBCKey\fP &key, const \fBCPubKey\fP &pubkey)"
+.br
+.ti -1c
+.RI "bool \fBLoadKeyMetadata\fP (const \fBCPubKey\fP &pubkey, const \fBCKeyMetadata\fP &metadata)"
+.br
+.ti -1c
+.RI "bool \fBLoadMinVersion\fP (int nVersion)"
+.br
+.ti -1c
+.RI "bool \fBAddCryptedKey\fP (const \fBCPubKey\fP &vchPubKey, const std::vector< unsigned char > &vchCryptedSecret)"
+.br
+.ti -1c
+.RI "bool \fBLoadCryptedKey\fP (const \fBCPubKey\fP &vchPubKey, const std::vector< unsigned char > &vchCryptedSecret)"
+.br
+.ti -1c
+.RI "bool \fBAddCScript\fP (const \fBCScript\fP &redeemScript)"
+.br
+.ti -1c
+.RI "bool \fBLoadCScript\fP (const \fBCScript\fP &redeemScript)"
+.br
+.ti -1c
+.RI "bool \fBAddWatchOnly\fP (const \fBCScript\fP &dest)"
+.br
+.ti -1c
+.RI "bool \fBRemoveWatchOnly\fP (const \fBCScript\fP &dest)"
+.br
+.ti -1c
+.RI "bool \fBLoadWatchOnly\fP (const \fBCScript\fP &dest)"
+.br
+.ti -1c
+.RI "bool \fBLock\fP ()"
+.br
+.ti -1c
+.RI "bool \fBUnlock\fP (const \fBSecureString\fP &strWalletPassphrase, bool anonimizeOnly=false)"
+.br
+.ti -1c
+.RI "bool \fBChangeWalletPassphrase\fP (const \fBSecureString\fP &strOldWalletPassphrase, const \fBSecureString\fP &strNewWalletPassphrase)"
+.br
+.ti -1c
+.RI "bool \fBEncryptWallet\fP (const \fBSecureString\fP &strWalletPassphrase)"
+.br
+.ti -1c
+.RI "void \fBGetKeyBirthTimes\fP (std::map< \fBCKeyID\fP, \fBint64_t\fP > &mapKeyBirth) const "
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBIncOrderPosNext\fP (\fBCWalletDB\fP *pwalletdb=NULL)"
+.br
+.ti -1c
+.RI "\fBTxItems\fP \fBOrderedTxItems\fP (std::list< \fBCAccountingEntry\fP > &acentries, std::string strAccount='')"
+.br
+.ti -1c
+.RI "void \fBMarkDirty\fP ()"
+.br
+.ti -1c
+.RI "bool \fBAddToWallet\fP (const \fBCWalletTx\fP &wtxIn, bool fFromLoadWallet=false)"
+.br
+.ti -1c
+.RI "void \fBSyncTransaction\fP (const \fBCTransaction\fP &tx, const \fBCBlock\fP *pblock, bool fConnect=true)"
+.br
+.ti -1c
+.RI "bool \fBAddToWalletIfInvolvingMe\fP (const \fBCTransaction\fP &tx, const \fBCBlock\fP *pblock, bool fUpdate)"
+.br
+.ti -1c
+.RI "void \fBEraseFromWallet\fP (const \fBuint256\fP &\fBhash\fP)"
+.br
+.ti -1c
+.RI "int \fBScanForWalletTransactions\fP (\fBCBlockIndex\fP *pindexStart, bool fUpdate=false)"
+.br
+.ti -1c
+.RI "void \fBReacceptWalletTransactions\fP ()"
+.br
+.ti -1c
+.RI "void \fBResendWalletTransactions\fP (bool fForce=false)"
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetBalance\fP () const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetUnconfirmedBalance\fP () const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetImmatureBalance\fP () const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetStake\fP () const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetNewMint\fP () const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetAnonymizableBalance\fP (bool includeAlreadyAnonymized=false) const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetAnonymizedBalance\fP () const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetWatchOnlyBalance\fP () const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetWatchOnlyStake\fP () const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetUnconfirmedWatchOnlyBalance\fP () const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetImmatureWatchOnlyBalance\fP () const "
+.br
+.ti -1c
+.RI "double \fBGetAverageAnonymizedRounds\fP () const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetNormalizedAnonymizedBalance\fP () const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetDenominatedBalance\fP (bool onlyDenom=true, bool onlyUnconfirmed=false, bool includeAlreadyAnonymized=true) const "
+.br
+.ti -1c
+.RI "bool \fBCreateTransaction\fP (const std::vector< std::pair< \fBCScript\fP, \fBCAmount\fP > > &vecSend, \fBCWalletTx\fP &wtxNew, \fBCReserveKey\fP &reservekey, \fBCAmount\fP &nFeeRet, \fBint32_t\fP &nChangePos, std::string &strFailReason, const \fBCCoinControl\fP *coinControl=NULL, \fBAvailableCoinsType\fP coin_type=\fBALL_COINS\fP, bool useIX=false, \fBCAmount\fP nFeePay=0)"
+.br
+.ti -1c
+.RI "bool \fBCreateTransaction\fP (\fBCScript\fP scriptPubKey, const \fBCAmount\fP &nValue, std::string &sNarr, \fBCWalletTx\fP &wtxNew, \fBCReserveKey\fP &reservekey, \fBCAmount\fP &nFeeRet, const \fBCCoinControl\fP *coinControl=NULL, \fBAvailableCoinsType\fP coin_type=\fBALL_COINS\fP, bool useIX=false, \fBCAmount\fP nFeePay=0)"
+.br
+.ti -1c
+.RI "bool \fBCommitTransaction\fP (\fBCWalletTx\fP &wtxNew, \fBCReserveKey\fP &reservekey, std::string strCommand='tx')"
+.br
+.ti -1c
+.RI "\fBuint64_t\fP \fBGetStakeWeight\fP () const "
+.br
+.ti -1c
+.RI "\fBuint64_t\fP \fBGetStakeWeight2\fP () const "
+.br
+.ti -1c
+.RI "bool \fBCreateCoinStake\fP (const \fBCKeyStore\fP &keystore, unsigned int nBits, \fBint64_t\fP nSearchInterval, \fBCAmount\fP nFees, \fBCTransaction\fP &txNew, \fBCKey\fP &key)"
+.br
+.ti -1c
+.RI "std::string \fBSendMoney\fP (\fBCScript\fP scriptPubKey, \fBCAmount\fP nValue, std::string &sNarr, \fBCWalletTx\fP &wtxNew, bool fAskFee=false)"
+.br
+.ti -1c
+.RI "std::string \fBSendMoneyToDestination\fP (const \fBCTxDestination\fP &address, \fBCAmount\fP nValue, std::string &sNarr, \fBCWalletTx\fP &wtxNew, bool fAskFee=false)"
+.br
+.ti -1c
+.RI "bool \fBNewStealthAddress\fP (std::string &sError, std::string &sLabel, \fBCStealthAddress\fP &sxAddr)"
+.br
+.ti -1c
+.RI "bool \fBAddStealthAddress\fP (\fBCStealthAddress\fP &sxAddr)"
+.br
+.ti -1c
+.RI "bool \fBUnlockStealthAddresses\fP (const \fBCKeyingMaterial\fP &vMasterKeyIn)"
+.br
+.ti -1c
+.RI "bool \fBUpdateStealthAddress\fP (std::string &addr, std::string &label, bool addIfNotExist)"
+.br
+.ti -1c
+.RI "bool \fBCreateStealthTransaction\fP (\fBCScript\fP scriptPubKey, \fBCAmount\fP nValue, std::vector< \fBuint8_t\fP > &P, std::vector< \fBuint8_t\fP > &narr, std::string &sNarr, \fBCWalletTx\fP &wtxNew, \fBCReserveKey\fP &reservekey, \fBCAmount\fP &nFeeRet, const \fBCCoinControl\fP *coinControl=NULL)"
+.br
+.ti -1c
+.RI "std::string \fBSendStealthMoney\fP (\fBCScript\fP scriptPubKey, \fBCAmount\fP nValue, std::vector< \fBuint8_t\fP > &P, std::vector< \fBuint8_t\fP > &narr, std::string &sNarr, \fBCWalletTx\fP &wtxNew, bool fAskFee=false)"
+.br
+.ti -1c
+.RI "bool \fBSendStealthMoneyToDestination\fP (\fBCStealthAddress\fP &sxAddress, \fBCAmount\fP nValue, std::string &sNarr, \fBCWalletTx\fP &wtxNew, std::string &sError, bool fAskFee=false)"
+.br
+.ti -1c
+.RI "bool \fBFindStealthTransactions\fP (const \fBCTransaction\fP &tx, \fBmapValue_t\fP &mapNarr)"
+.br
+.ti -1c
+.RI "std::string \fBPrepareSandstormDenominate\fP (int minRounds, int maxRounds)"
+.br
+.ti -1c
+.RI "int \fBGenerateSandstormOutputs\fP (int nTotalValue, std::vector< \fBCTxOut\fP > &vout)"
+.br
+.ti -1c
+.RI "bool \fBCreateCollateralTransaction\fP (\fBCMutableTransaction\fP &txCollateral, std::string strReason)"
+.br
+.ti -1c
+.RI "bool \fBGetBudgetSystemCollateralTX\fP (\fBCTransaction\fP &tx, \fBuint256\fP \fBhash\fP, bool useIX)"
+.br
+.ti -1c
+.RI "bool \fBGetBudgetSystemCollateralTX\fP (\fBCWalletTx\fP &tx, \fBuint256\fP \fBhash\fP, bool useIX)"
+.br
+.ti -1c
+.RI "bool \fBConvertList\fP (std::vector< \fBCTxIn\fP > vCoins, std::vector< \fBCAmount\fP > &vecAmounts)"
+.br
+.ti -1c
+.RI "bool \fBNewKeyPool\fP ()"
+.br
+.ti -1c
+.RI "bool \fBTopUpKeyPool\fP (unsigned int nSize=0)"
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBAddReserveKey\fP (const \fBCKeyPool\fP &keypool)"
+.br
+.ti -1c
+.RI "void \fBReserveKeyFromKeyPool\fP (\fBint64_t\fP &nIndex, \fBCKeyPool\fP &keypool)"
+.br
+.ti -1c
+.RI "void \fBKeepKey\fP (\fBint64_t\fP nIndex)"
+.br
+.ti -1c
+.RI "void \fBReturnKey\fP (\fBint64_t\fP nIndex)"
+.br
+.ti -1c
+.RI "bool \fBGetKeyFromPool\fP (\fBCPubKey\fP &key)"
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBGetOldestKeyPoolTime\fP ()"
+.br
+.ti -1c
+.RI "void \fBGetAllReserveKeys\fP (std::set< \fBCKeyID\fP > &setAddress) const "
+.br
+.ti -1c
+.RI "std::set< std::set< \fBCTxDestination\fP > > \fBGetAddressGroupings\fP ()"
+.br
+.ti -1c
+.RI "std::map< \fBCTxDestination\fP, \fBCAmount\fP > \fBGetAddressBalances\fP ()"
+.br
+.ti -1c
+.RI "bool \fBIsDenominated\fP (const \fBCTxIn\fP &txin) const "
+.br
+.ti -1c
+.RI "bool \fBIsDenominated\fP (const \fBCTransaction\fP &tx) const "
+.br
+.ti -1c
+.RI "bool \fBIsDenominatedAmount\fP (\fBCAmount\fP nInputAmount) const "
+.br
+.ti -1c
+.RI "\fBisminetype\fP \fBIsMine\fP (const \fBCTxIn\fP &txin) const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetDebit\fP (const \fBCTxIn\fP &txin, const \fBisminefilter\fP &filter) const "
+.br
+.ti -1c
+.RI "\fBisminetype\fP \fBIsMine\fP (const \fBCTxOut\fP &txout) const "
+.br
+.ti -1c
+.RI "bool \fBIsChange\fP (const \fBCTxOut\fP &txout) const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetChange\fP (const \fBCTxOut\fP &txout) const "
+.br
+.ti -1c
+.RI "bool \fBIsMine\fP (const \fBCTransaction\fP &tx) const "
+.br
+.ti -1c
+.RI "bool \fBIsFromMe\fP (const \fBCTransaction\fP &tx) const "
+.br
+.RI "\fIshould probably be renamed to IsRelevantToMe \fP"
+.ti -1c
+.RI "\fBCAmount\fP \fBGetDebit\fP (const \fBCTransaction\fP &tx, const \fBisminefilter\fP &filter) const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetCredit\fP (const \fBCTxOut\fP &txout, const \fBisminefilter\fP &filter) const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetCredit\fP (const \fBCTransaction\fP &tx, const \fBisminefilter\fP &filter) const "
+.br
+.ti -1c
+.RI "\fBCAmount\fP \fBGetChange\fP (const \fBCTransaction\fP &tx) const "
+.br
+.ti -1c
+.RI "void \fBSetBestChain\fP (const \fBCBlockLocator\fP &loc)"
+.br
+.ti -1c
+.RI "\fBDBErrors\fP \fBLoadWallet\fP (bool &fFirstRunRet)"
+.br
+.ti -1c
+.RI "bool \fBSetAddressBookName\fP (const \fBCTxDestination\fP &address, const std::string &strName)"
+.br
+.ti -1c
+.RI "bool \fBDelAddressBookName\fP (const \fBCTxDestination\fP &address)"
+.br
+.ti -1c
+.RI "bool \fBUpdatedTransaction\fP (const \fBuint256\fP &hashTx)"
+.br
+.ti -1c
+.RI "void \fBInventory\fP (const \fBuint256\fP &\fBhash\fP)"
+.br
+.ti -1c
+.RI "unsigned int \fBGetKeyPoolSize\fP ()"
+.br
+.ti -1c
+.RI "bool \fBSetDefaultKey\fP (const \fBCPubKey\fP &vchPubKey)"
+.br
+.ti -1c
+.RI "bool \fBSetMinVersion\fP (enum \fBWalletFeature\fP, \fBCWalletDB\fP *pwalletdbIn=NULL, bool fExplicit=false)"
+.br
+.ti -1c
+.RI "bool \fBSetMaxVersion\fP (int nVersion)"
+.br
+.ti -1c
+.RI "int \fBGetVersion\fP ()"
+.br
+.ti -1c
+.RI "std::set< \fBuint256\fP > \fBGetConflicts\fP (const \fBuint256\fP &txid) const "
+.br
+.ti -1c
+.RI "void \fBFixSpentCoins\fP (int &nMismatchSpent, \fBCAmount\fP &nBalanceInQuestion, bool fCheckOnly=false)"
+.br
+.ti -1c
+.RI "void \fBDisableTransaction\fP (const \fBCTransaction\fP &tx)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBCCriticalSection\fP \fBcs_wallet\fP"
+.br
+.ti -1c
+.RI "bool \fBfFileBacked\fP"
+.br
+.ti -1c
+.RI "bool \fBfWalletUnlockAnonymizeOnly\fP"
+.br
+.ti -1c
+.RI "std::string \fBstrWalletFile\fP"
+.br
+.ti -1c
+.RI "std::set< \fBint64_t\fP > \fBsetKeyPool\fP"
+.br
+.ti -1c
+.RI "std::map< \fBCKeyID\fP, \fBCKeyMetadata\fP > \fBmapKeyMetadata\fP"
+.br
+.ti -1c
+.RI "std::set< \fBCStealthAddress\fP > \fBstealthAddresses\fP"
+.br
+.ti -1c
+.RI "\fBStealthKeyMetaMap\fP \fBmapStealthKeyMeta\fP"
+.br
+.ti -1c
+.RI "int \fBnLastFilteredHeight\fP"
+.br
+.ti -1c
+.RI "\fBuint32_t\fP \fBnStealth\fP"
+.br
+.ti -1c
+.RI "\fBuint32_t\fP \fBnFoundStealth\fP"
+.br
+.ti -1c
+.RI "\fBMasterKeyMap\fP \fBmapMasterKeys\fP"
+.br
+.ti -1c
+.RI "unsigned int \fBnMasterKeyMaxID\fP"
+.br
+.ti -1c
+.RI "std::map< \fBuint256\fP, \fBCWalletTx\fP > \fBmapWallet\fP"
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBnOrderPosNext\fP"
+.br
+.ti -1c
+.RI "std::map< \fBuint256\fP, int > \fBmapRequestCount\fP"
+.br
+.ti -1c
+.RI "std::map< \fBCTxDestination\fP, std::string > \fBmapAddressBook\fP"
+.br
+.ti -1c
+.RI "\fBCPubKey\fP \fBvchDefaultKey\fP"
+.br
+.ti -1c
+.RI "std::set< \fBCOutPoint\fP > \fBsetLockedCoins\fP"
+.br
+.ti -1c
+.RI "\fBint64_t\fP \fBnTimeFirstKey\fP"
+.br
+.ti -1c
+.RI "boost::signals2::signal< void(\fBCWallet\fP *wallet, const \fBCTxDestination\fP &address, const std::string &label, bool isMine, \fBChangeType\fP status)> \fBNotifyAddressBookChanged\fP"
+.br
+.ti -1c
+.RI "boost::signals2::signal< void(\fBCWallet\fP *wallet, const \fBuint256\fP &hashTx, \fBChangeType\fP status)> \fBNotifyTransactionChanged\fP"
+.br
+.ti -1c
+.RI "boost::signals2::signal< void(const std::string &title, int nProgress)> \fBShowProgress\fP"
+.br
+.ti -1c
+.RI "boost::signals2::signal< void(bool fHaveWatchOnly)> \fBNotifyWatchonlyChanged\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A \fBCWallet\fP is an extension of a keystore, which also maintains a set of transactions and balances, and provides the ability to create new transactions\&. 
+.PP
+Definition at line 100 of file wallet\&.h\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "typedef std::map<unsigned int, \fBCMasterKey\fP> \fBCWallet::MasterKeyMap\fP"
+
+.PP
+Definition at line 161 of file wallet\&.h\&.
+.SS "typedef std::multimap<\fBint64_t\fP, \fBTxPair\fP > \fBCWallet::TxItems\fP"
+
+.PP
+Definition at line 261 of file wallet\&.h\&.
+.SS "typedef std::pair<\fBCWalletTx\fP*, \fBCAccountingEntry\fP*> \fBCWallet::TxPair\fP"
+
+.PP
+Definition at line 260 of file wallet\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "CWallet::CWallet ()\fC [inline]\fP"
+
+.PP
+Definition at line 167 of file wallet\&.h\&.
+.SS "CWallet::CWallet (std::string strWalletFileIn)\fC [inline]\fP"
+
+.PP
+Definition at line 171 of file wallet\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool CWallet::AddCryptedKey (const \fBCPubKey\fP & vchPubKey, const std::vector< unsigned char > & vchCryptedSecret)\fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBCCryptoKeyStore\fP\&.
+.PP
+Definition at line 123 of file wallet\&.cpp\&.
+.SS "bool CWallet::AddCScript (const \fBCScript\fP & redeemScript)\fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBCBasicKeyStore\fP\&.
+.PP
+Definition at line 154 of file wallet\&.cpp\&.
+.SS "bool CWallet::AddKeyPubKey (const \fBCKey\fP & key, const \fBCPubKey\fP & pubkey)\fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBCCryptoKeyStore\fP\&.
+.PP
+Definition at line 103 of file wallet\&.cpp\&.
+.SS "\fBint64_t\fP CWallet::AddReserveKey (const \fBCKeyPool\fP & keypool)"
+
+.PP
+Definition at line 4393 of file wallet\&.cpp\&.
+.SS "bool CWallet::AddStealthAddress (\fBCStealthAddress\fP & sxAddr)"
+
+.PP
+Definition at line 3042 of file wallet\&.cpp\&.
+.SS "bool CWallet::AddToWallet (const \fBCWalletTx\fP & wtxIn, bool fFromLoadWallet = \fCfalse\fP)"
+
+.PP
+Definition at line 644 of file wallet\&.cpp\&.
+.SS "bool CWallet::AddToWalletIfInvolvingMe (const \fBCTransaction\fP & tx, const \fBCBlock\fP * pblock, bool fUpdate)"
+
+.PP
+Definition at line 766 of file wallet\&.cpp\&.
+.SS "bool CWallet::AddWatchOnly (const \fBCScript\fP & dest)\fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBCBasicKeyStore\fP\&.
+.PP
+Definition at line 184 of file wallet\&.cpp\&.
+.SS "void CWallet::AvailableCoins (std::vector< \fBCOutput\fP > & vCoins, bool fOnlyConfirmed = \fCtrue\fP, const \fBCCoinControl\fP * coinControl = \fCNULL\fP, \fBAvailableCoinsType\fP coin_type = \fC\fBALL_COINS\fP\fP, bool useIX = \fCfalse\fP) const"
+
+.PP
+Definition at line 1711 of file wallet\&.cpp\&.
+.SS "void CWallet::AvailableCoinsForStaking (std::vector< \fBCOutput\fP > & vCoins, unsigned int nSpendTime) const"
+
+.PP
+Definition at line 1770 of file wallet\&.cpp\&.
+.SS "bool CWallet::CanSupportFeature (enum \fBWalletFeature\fP wf)\fC [inline]\fP"
+
+.PP
+Definition at line 205 of file wallet\&.h\&.
+.SS "bool CWallet::ChangeWalletPassphrase (const \fBSecureString\fP & strOldWalletPassphrase, const \fBSecureString\fP & strNewWalletPassphrase)"
+
+.PP
+Definition at line 285 of file wallet\&.cpp\&.
+.SS "bool CWallet::CommitTransaction (\fBCWalletTx\fP & wtxNew, \fBCReserveKey\fP & reservekey, std::string strCommand = \fC'tx'\fP)"
+
+.PP
+Definition at line 3959 of file wallet\&.cpp\&.
+.SS "bool CWallet::ConvertList (std::vector< \fBCTxIn\fP > vCoins, std::vector< \fBCAmount\fP > & vecAmounts)"
+
+.PP
+Definition at line 2712 of file wallet\&.cpp\&.
+.SS "int CWallet::CountInputsWithAmount (\fBCAmount\fP nInputAmount)"
+
+.PP
+Definition at line 2561 of file wallet\&.cpp\&.
+.SS "bool CWallet::CreateCoinStake (const \fBCKeyStore\fP & keystore, unsigned int nBits, \fBint64_t\fP nSearchInterval, \fBCAmount\fP nFees, \fBCTransaction\fP & txNew, \fBCKey\fP & key)"
+
+.PP
+Definition at line 3733 of file wallet\&.cpp\&.
+.SS "bool CWallet::CreateCollateralTransaction (\fBCMutableTransaction\fP & txCollateral, std::string strReason)"
+TODO (AA): Fix this\&.\&.\&. need txTo in SignSignature 
+.PP
+Definition at line 2624 of file wallet\&.cpp\&.
+.SS "bool CWallet::CreateStealthTransaction (\fBCScript\fP scriptPubKey, \fBCAmount\fP nValue, std::vector< \fBuint8_t\fP > & P, std::vector< \fBuint8_t\fP > & narr, std::string & sNarr, \fBCWalletTx\fP & wtxNew, \fBCReserveKey\fP & reservekey, \fBCAmount\fP & nFeeRet, const \fBCCoinControl\fP * coinControl = \fCNULL\fP)"
+
+.PP
+Definition at line 3304 of file wallet\&.cpp\&.
+.SS "bool CWallet::CreateTransaction (const std::vector< std::pair< \fBCScript\fP, \fBCAmount\fP > > & vecSend, \fBCWalletTx\fP & wtxNew, \fBCReserveKey\fP & reservekey, \fBCAmount\fP & nFeeRet, \fBint32_t\fP & nChangePos, std::string & strFailReason, const \fBCCoinControl\fP * coinControl = \fCNULL\fP, \fBAvailableCoinsType\fP coin_type = \fC\fBALL_COINS\fP\fP, bool useIX = \fCfalse\fP, \fBCAmount\fP nFeePay = \fC0\fP)"
+
+.SS "bool CWallet::CreateTransaction (\fBCScript\fP scriptPubKey, const \fBCAmount\fP & nValue, std::string & sNarr, \fBCWalletTx\fP & wtxNew, \fBCReserveKey\fP & reservekey, \fBCAmount\fP & nFeeRet, const \fBCCoinControl\fP * coinControl = \fCNULL\fP, \fBAvailableCoinsType\fP coin_type = \fC\fBALL_COINS\fP\fP, bool useIX = \fCfalse\fP, \fBCAmount\fP nFeePay = \fC0\fP)"
+
+.PP
+Definition at line 2952 of file wallet\&.cpp\&.
+.SS "bool CWallet::DelAddressBookName (const \fBCTxDestination\fP & address)"
+
+.PP
+Definition at line 4262 of file wallet\&.cpp\&.
+.SS "void CWallet::DisableTransaction (const \fBCTransaction\fP & tx)"
+
+.PP
+Definition at line 4645 of file wallet\&.cpp\&.
+.SS "bool CWallet::EncryptWallet (const \fBSecureString\fP & strWalletPassphrase)"
+
+.PP
+Definition at line 479 of file wallet\&.cpp\&.
+.SS "void CWallet::EraseFromWallet (const \fBuint256\fP & hash)\fC [virtual]\fP"
+
+.PP
+Implements \fBCWalletInterface\fP\&.
+.PP
+Definition at line 818 of file wallet\&.cpp\&.
+.SS "bool CWallet::FindStealthTransactions (const \fBCTransaction\fP & tx, \fBmapValue_t\fP & mapNarr)"
+
+.PP
+Definition at line 3470 of file wallet\&.cpp\&.
+.SS "void CWallet::FixSpentCoins (int & nMismatchSpent, \fBCAmount\fP & nBalanceInQuestion, bool fCheckOnly = \fCfalse\fP)"
+
+.PP
+Definition at line 4596 of file wallet\&.cpp\&.
+.SS "\fBCPubKey\fP CWallet::GenerateNewKey ()"
+
+.PP
+Definition at line 77 of file wallet\&.cpp\&.
+.SS "int CWallet::GenerateSandstormOutputs (int nTotalValue, std::vector< \fBCTxOut\fP > & vout)"
+
+.SS "std::map< \fBCTxDestination\fP, \fBCAmount\fP > CWallet::GetAddressBalances ()"
+
+.PP
+Definition at line 4459 of file wallet\&.cpp\&.
+.SS "set< set< \fBCTxDestination\fP > > CWallet::GetAddressGroupings ()"
+
+.PP
+Definition at line 4499 of file wallet\&.cpp\&.
+.SS "void CWallet::GetAllReserveKeys (std::set< \fBCKeyID\fP > & setAddress) const"
+
+.PP
+Definition at line 4703 of file wallet\&.cpp\&.
+.SS "\fBCAmount\fP CWallet::GetAnonymizableBalance (bool includeAlreadyAnonymized = \fCfalse\fP) const"
+
+.PP
+Definition at line 1334 of file wallet\&.cpp\&.
+.SS "\fBCAmount\fP CWallet::GetAnonymizedBalance () const"
+
+.PP
+Definition at line 1368 of file wallet\&.cpp\&.
+.SS "double CWallet::GetAverageAnonymizedRounds () const"
+
+.PP
+Definition at line 1508 of file wallet\&.cpp\&.
+.SS "\fBCAmount\fP CWallet::GetBalance () const"
+
+.PP
+Definition at line 1318 of file wallet\&.cpp\&.
+.SS "bool CWallet::GetBudgetSystemCollateralTX (\fBCTransaction\fP & tx, \fBuint256\fP hash, bool useIX)"
+
+.PP
+Definition at line 2677 of file wallet\&.cpp\&.
+.SS "bool CWallet::GetBudgetSystemCollateralTX (\fBCWalletTx\fP & tx, \fBuint256\fP hash, bool useIX)"
+
+.PP
+Definition at line 2687 of file wallet\&.cpp\&.
+.SS "\fBCAmount\fP CWallet::GetChange (const \fBCTxOut\fP & txout) const\fC [inline]\fP"
+
+.PP
+Definition at line 352 of file wallet\&.h\&.
+.SS "\fBCAmount\fP CWallet::GetChange (const \fBCTransaction\fP & tx) const\fC [inline]\fP"
+
+.PP
+Definition at line 403 of file wallet\&.h\&.
+.SS "set< \fBuint256\fP > CWallet::GetConflicts (const \fBuint256\fP & txid) const"
+
+.PP
+Definition at line 380 of file wallet\&.cpp\&.
+.SS "\fBCAmount\fP CWallet::GetCredit (const \fBCTxOut\fP & txout, const \fBisminefilter\fP & filter) const\fC [inline]\fP"
+
+.PP
+Definition at line 384 of file wallet\&.h\&.
+.SS "\fBCAmount\fP CWallet::GetCredit (const \fBCTransaction\fP & tx, const \fBisminefilter\fP & filter) const\fC [inline]\fP"
+
+.PP
+Definition at line 391 of file wallet\&.h\&.
+.SS "\fBCAmount\fP CWallet::GetDebit (const \fBCTxIn\fP & txin, const \fBisminefilter\fP & filter) const"
+
+.PP
+Definition at line 845 of file wallet\&.cpp\&.
+.SS "\fBCAmount\fP CWallet::GetDebit (const \fBCTransaction\fP & tx, const \fBisminefilter\fP & filter) const\fC [inline]\fP"
+
+.PP
+Definition at line 372 of file wallet\&.h\&.
+.SS "\fBCAmount\fP CWallet::GetDenominatedBalance (bool onlyDenom = \fCtrue\fP, bool onlyUnconfirmed = \fCfalse\fP, bool includeAlreadyAnonymized = \fCtrue\fP) const"
+
+.PP
+Definition at line 1584 of file wallet\&.cpp\&.
+.SS "\fBCAmount\fP CWallet::GetImmatureBalance () const"
+
+.PP
+Definition at line 1638 of file wallet\&.cpp\&.
+.SS "\fBCAmount\fP CWallet::GetImmatureWatchOnlyBalance () const"
+
+.PP
+Definition at line 1696 of file wallet\&.cpp\&.
+.SS "int CWallet::GetInputSandstormRounds (\fBCTxIn\fP in) const"
+
+.PP
+Definition at line 1502 of file wallet\&.cpp\&.
+.SS "void CWallet::GetKeyBirthTimes (std::map< \fBCKeyID\fP, \fBint64_t\fP > & mapKeyBirth) const"
+
+.PP
+Definition at line 4773 of file wallet\&.cpp\&.
+.SS "bool CWallet::GetKeyFromPool (\fBCPubKey\fP & key)"
+
+.PP
+Definition at line 4429 of file wallet\&.cpp\&.
+.SS "unsigned int CWallet::GetKeyPoolSize ()\fC [inline]\fP"
+
+.PP
+Definition at line 435 of file wallet\&.h\&.
+.SS "\fBCAmount\fP CWallet::GetNewMint () const"
+
+.PP
+Definition at line 1889 of file wallet\&.cpp\&.
+.SS "\fBCAmount\fP CWallet::GetNormalizedAnonymizedBalance () const"
+
+.PP
+Definition at line 1548 of file wallet\&.cpp\&.
+.SS "\fBint64_t\fP CWallet::GetOldestKeyPoolTime ()"
+
+.PP
+Definition at line 4448 of file wallet\&.cpp\&.
+.SS "\fBCAmount\fP CWallet::GetStake () const"
+
+.PP
+Definition at line 1876 of file wallet\&.cpp\&.
+.SS "\fBuint64_t\fP CWallet::GetStakeWeight () const"
+
+.PP
+Definition at line 3699 of file wallet\&.cpp\&.
+.SS "\fBuint64_t\fP CWallet::GetStakeWeight2 () const"
+
+.SS "\fBCAmount\fP CWallet::GetTotalValue (std::vector< \fBCTxIn\fP > vCoins)"
+
+.PP
+Definition at line 4078 of file wallet\&.cpp\&.
+.SS "bool CWallet::GetTransaction (const \fBuint256\fP & hashTx, \fBCWalletTx\fP & wtx)"
+
+.PP
+Definition at line 4278 of file wallet\&.cpp\&.
+.SS "\fBCAmount\fP CWallet::GetUnconfirmedBalance () const"
+
+.PP
+Definition at line 1623 of file wallet\&.cpp\&.
+.SS "\fBCAmount\fP CWallet::GetUnconfirmedWatchOnlyBalance () const"
+
+.PP
+Definition at line 1681 of file wallet\&.cpp\&.
+.SS "int CWallet::GetVersion ()\fC [inline]\fP"
+
+.PP
+Definition at line 450 of file wallet\&.h\&.
+.SS "const \fBCWalletTx\fP * CWallet::GetWalletTx (const \fBuint256\fP & hash) const"
+
+.PP
+Definition at line 1404 of file wallet\&.cpp\&.
+.SS "\fBCAmount\fP CWallet::GetWatchOnlyBalance () const"
+
+.PP
+Definition at line 1652 of file wallet\&.cpp\&.
+.SS "\fBCAmount\fP CWallet::GetWatchOnlyStake () const"
+
+.PP
+Definition at line 1668 of file wallet\&.cpp\&.
+.SS "bool CWallet::HasCollateralInputs () const"
+
+.PP
+Definition at line 2592 of file wallet\&.cpp\&.
+.SS "\fBint64_t\fP CWallet::IncOrderPosNext (\fBCWalletDB\fP * pwalletdb = \fCNULL\fP)"
+Increment the next transaction order id 
+.PP
+\fBReturns:\fP
+.RS 4
+next transaction order id 
+.RE
+.PP
+
+.PP
+Definition at line 598 of file wallet\&.cpp\&.
+.SS "void CWallet::Inventory (const \fBuint256\fP & hash)\fC [inline]\fP, \fC [virtual]\fP"
+
+.PP
+Implements \fBCWalletInterface\fP\&.
+.PP
+Definition at line 425 of file wallet\&.h\&.
+.SS "bool CWallet::IsChange (const \fBCTxOut\fP & txout) const"
+
+.PP
+Definition at line 900 of file wallet\&.cpp\&.
+.SS "bool CWallet::IsCollateralAmount (\fBCAmount\fP nInputAmount) const"
+
+.PP
+Definition at line 2604 of file wallet\&.cpp\&.
+.SS "bool CWallet::IsDenominated (const \fBCTxIn\fP & txin) const"
+
+.PP
+Definition at line 861 of file wallet\&.cpp\&.
+.SS "bool CWallet::IsDenominated (const \fBCTransaction\fP & tx) const"
+
+.PP
+Definition at line 875 of file wallet\&.cpp\&.
+.SS "bool CWallet::IsDenominatedAmount (\fBCAmount\fP nInputAmount) const"
+
+.PP
+Definition at line 891 of file wallet\&.cpp\&.
+.SS "bool CWallet::IsFromMe (const \fBCTransaction\fP & tx) const\fC [inline]\fP"
+
+.PP
+should probably be renamed to IsRelevantToMe 
+.PP
+Definition at line 367 of file wallet\&.h\&.
+.SS "bool CWallet::IsLockedCoin (\fBuint256\fP hash, unsigned int n) const"
+
+.PP
+Definition at line 4755 of file wallet\&.cpp\&.
+.SS "\fBisminetype\fP CWallet::IsMine (const \fBCTxIn\fP & txin) const"
+
+.PP
+Definition at line 830 of file wallet\&.cpp\&.
+.SS "\fBisminetype\fP CWallet::IsMine (const \fBCTxOut\fP & txout) const\fC [inline]\fP"
+
+.PP
+Definition at line 346 of file wallet\&.h\&.
+.SS "bool CWallet::IsMine (const \fBCTransaction\fP & tx) const\fC [inline]\fP"
+
+.PP
+Definition at line 359 of file wallet\&.h\&.
+.SS "bool CWallet::IsSpent (const \fBuint256\fP & hash, unsigned int n) const"
+
+.PP
+Definition at line 441 of file wallet\&.cpp\&.
+.SS "void CWallet::KeepKey (\fBint64_t\fP nIndex)"
+
+.PP
+Definition at line 4408 of file wallet\&.cpp\&.
+.SS "void CWallet::ListLockedCoins (std::vector< \fBCOutPoint\fP > & vOutpts)"
+
+.PP
+Definition at line 4763 of file wallet\&.cpp\&.
+.SS "bool CWallet::LoadCryptedKey (const \fBCPubKey\fP & vchPubKey, const std::vector< unsigned char > & vchCryptedSecret)"
+
+.PP
+Definition at line 149 of file wallet\&.cpp\&.
+.SS "bool CWallet::LoadCScript (const \fBCScript\fP & redeemScript)"
+
+.PP
+Definition at line 168 of file wallet\&.cpp\&.
+.SS "bool CWallet::LoadKey (const \fBCKey\fP & key, const \fBCPubKey\fP & pubkey)\fC [inline]\fP"
+
+.PP
+Definition at line 227 of file wallet\&.h\&.
+.SS "bool CWallet::LoadKeyMetadata (const \fBCPubKey\fP & pubkey, const \fBCKeyMetadata\fP & metadata)"
+
+.PP
+Definition at line 139 of file wallet\&.cpp\&.
+.SS "bool CWallet::LoadMinVersion (int nVersion)\fC [inline]\fP"
+
+.PP
+Definition at line 231 of file wallet\&.h\&.
+.SS "\fBDBErrors\fP CWallet::LoadWallet (bool & fFirstRunRet)"
+
+.PP
+Definition at line 4222 of file wallet\&.cpp\&.
+.SS "bool CWallet::LoadWatchOnly (const \fBCScript\fP & dest)"
+
+.PP
+Definition at line 209 of file wallet\&.cpp\&.
+.SS "bool CWallet::Lock ()"
+
+.PP
+Definition at line 214 of file wallet\&.cpp\&.
+.SS "void CWallet::LockCoin (\fBCOutPoint\fP & output)"
+
+.PP
+Definition at line 4737 of file wallet\&.cpp\&.
+.SS "void CWallet::MarkDirty ()"
+
+.PP
+Definition at line 635 of file wallet\&.cpp\&.
+.SS "bool CWallet::NewKeyPool ()"
+
+.PP
+Definition at line 4307 of file wallet\&.cpp\&.
+.SS "bool CWallet::NewStealthAddress (std::string & sError, std::string & sLabel, \fBCStealthAddress\fP & sxAddr)"
+
+.PP
+Definition at line 2987 of file wallet\&.cpp\&.
+.SS "\fBCWallet::TxItems\fP CWallet::OrderedTxItems (std::list< \fBCAccountingEntry\fP > & acentries, std::string strAccount = \fC''\fP)"
+Get the wallet's activity log 
+.PP
+\fBReturns:\fP
+.RS 4
+multimap of ordered transactions and accounting entries 
+.RE
+.PP
+\fBWarning:\fP
+.RS 4
+Returned pointers are \fIonly\fP valid within the scope of passed acentries 
+.RE
+.PP
+
+.PP
+Definition at line 610 of file wallet\&.cpp\&.
+.SS "string CWallet::PrepareSandstormDenominate (int minRounds, int maxRounds)"
+
+.PP
+Definition at line 4096 of file wallet\&.cpp\&.
+.SS "void CWallet::ReacceptWalletTransactions ()"
+
+.PP
+Definition at line 1153 of file wallet\&.cpp\&.
+.SS "bool CWallet::RemoveWatchOnly (const \fBCScript\fP & dest)\fC [virtual]\fP"
+
+.PP
+Reimplemented from \fBCBasicKeyStore\fP\&.
+.PP
+Definition at line 195 of file wallet\&.cpp\&.
+.SS "void CWallet::ResendWalletTransactions (bool fForce = \fCfalse\fP)\fC [virtual]\fP"
+
+.PP
+Implements \fBCWalletInterface\fP\&.
+.PP
+Definition at line 1262 of file wallet\&.cpp\&.
+.SS "void CWallet::ReserveKeyFromKeyPool (\fBint64_t\fP & nIndex, \fBCKeyPool\fP & keypool)"
+
+.PP
+Definition at line 4366 of file wallet\&.cpp\&.
+.SS "void CWallet::ReturnKey (\fBint64_t\fP nIndex)"
+
+.PP
+Definition at line 4419 of file wallet\&.cpp\&.
+.SS "int CWallet::ScanForWalletTransactions (\fBCBlockIndex\fP * pindexStart, bool fUpdate = \fCfalse\fP)"
+
+.PP
+Definition at line 1124 of file wallet\&.cpp\&.
+.SS "bool CWallet::SelectCoinsByDenominations (int nDenom, \fBCAmount\fP nValueMin, \fBCAmount\fP nValueMax, std::vector< \fBCTxIn\fP > & vCoinsRet, std::vector< \fBCOutput\fP > & vCoinsRet2, \fBCAmount\fP & nValueRet, int nSandstormRoundsMin, int nSandstormRoundsMax)"
+
+.PP
+Definition at line 2402 of file wallet\&.cpp\&.
+.SS "bool CWallet::SelectCoinsCollateral (std::vector< \fBCTxIn\fP > & setCoinsRet, \fBCAmount\fP & nValueRet) const"
+
+.PP
+Definition at line 2532 of file wallet\&.cpp\&.
+.SS "bool CWallet::SelectCoinsDark (\fBCAmount\fP nValueMin, \fBCAmount\fP nValueMax, std::vector< \fBCTxIn\fP > & setCoinsRet, \fBCAmount\fP & nValueRet, int nSandstormRoundsMin, int nSandstormRoundsMax) const"
+
+.PP
+Definition at line 2488 of file wallet\&.cpp\&.
+.SS "bool CWallet::SelectCoinsDarkDenominated (\fBCAmount\fP nTargetValue, std::vector< \fBCTxIn\fP > & setCoinsRet, \fBCAmount\fP & nValueRet) const"
+
+.SS "bool CWallet::SelectCoinsMinConf (const \fBCAmount\fP & nTargetValue, unsigned int nSpendTime, int nConfMine, int nConfTheirs, vector< \fBCOutput\fP > vCoins, set< pair< const \fBCWalletTx\fP *, unsigned int > > & setCoinsRet, \fBCAmount\fP & nValueRet) const"
+
+.PP
+Definition at line 2158 of file wallet\&.cpp\&.
+.SS "bool CWallet::SelectCoinsMinConfByCoinAge (const \fBCAmount\fP & nTargetValue, unsigned int nSpendTime, int nConfMine, int nConfTheirs, vector< \fBCOutput\fP > vCoins, set< pair< const \fBCWalletTx\fP *, unsigned int > > & setCoinsRet, \fBCAmount\fP & nValueRet) const"
+
+.PP
+Definition at line 1902 of file wallet\&.cpp\&.
+.SS "bool CWallet::SelectCoinsStormnode (\fBCTxIn\fP & vin, \fBCAmount\fP & nValueRet, \fBCScript\fP & pubScript) const"
+
+.SS "bool CWallet::SelectCoinsWithoutDenomination (const \fBCAmount\fP & nTargetValue, std::set< std::pair< const \fBCWalletTx\fP *, unsigned int > > & setCoinsRet, \fBCAmount\fP & nValueRet) const"
+
+.PP
+Definition at line 2609 of file wallet\&.cpp\&.
+.SS "string CWallet::SendMoney (\fBCScript\fP scriptPubKey, \fBCAmount\fP nValue, std::string & sNarr, \fBCWalletTx\fP & wtxNew, bool fAskFee = \fCfalse\fP)"
+
+.PP
+Definition at line 4019 of file wallet\&.cpp\&.
+.SS "string CWallet::SendMoneyToDestination (const \fBCTxDestination\fP & address, \fBCAmount\fP nValue, std::string & sNarr, \fBCWalletTx\fP & wtxNew, bool fAskFee = \fCfalse\fP)"
+
+.PP
+Definition at line 4063 of file wallet\&.cpp\&.
+.SS "string CWallet::SendStealthMoney (\fBCScript\fP scriptPubKey, \fBCAmount\fP nValue, std::vector< \fBuint8_t\fP > & P, std::vector< \fBuint8_t\fP > & narr, std::string & sNarr, \fBCWalletTx\fP & wtxNew, bool fAskFee = \fCfalse\fP)"
+
+.PP
+Definition at line 3347 of file wallet\&.cpp\&.
+.SS "bool CWallet::SendStealthMoneyToDestination (\fBCStealthAddress\fP & sxAddress, \fBCAmount\fP nValue, std::string & sNarr, \fBCWalletTx\fP & wtxNew, std::string & sError, bool fAskFee = \fCfalse\fP)"
+
+.PP
+Definition at line 3385 of file wallet\&.cpp\&.
+.SS "bool CWallet::SetAddressBookName (const \fBCTxDestination\fP & address, const std::string & strName)"
+
+.PP
+Definition at line 4246 of file wallet\&.cpp\&.
+.SS "void CWallet::SetBestChain (const \fBCBlockLocator\fP & loc)\fC [virtual]\fP"
+
+.PP
+Implements \fBCWalletInterface\fP\&.
+.PP
+Definition at line 335 of file wallet\&.cpp\&.
+.SS "bool CWallet::SetDefaultKey (const \fBCPubKey\fP & vchPubKey)"
+
+.PP
+Definition at line 4292 of file wallet\&.cpp\&.
+.SS "bool CWallet::SetMaxVersion (int nVersion)"
+
+.PP
+Definition at line 368 of file wallet\&.cpp\&.
+.SS "bool CWallet::SetMinVersion (enum \fBWalletFeature\fP nVersion, \fBCWalletDB\fP * pwalletdbIn = \fCNULL\fP, bool fExplicit = \fCfalse\fP)"
+
+.PP
+Definition at line 341 of file wallet\&.cpp\&.
+.SS "void CWallet::SetNull ()\fC [inline]\fP"
+
+.PP
+Definition at line 179 of file wallet\&.h\&.
+.SS "void CWallet::SyncTransaction (const \fBCTransaction\fP & tx, const \fBCBlock\fP * pblock, bool fConnect = \fCtrue\fP)\fC [virtual]\fP"
+
+.PP
+Implements \fBCWalletInterface\fP\&.
+.PP
+Definition at line 791 of file wallet\&.cpp\&.
+.SS "bool CWallet::TopUpKeyPool (unsigned int nSize = \fC0\fP)"
+
+.PP
+Definition at line 4331 of file wallet\&.cpp\&.
+.SS "bool CWallet::Unlock (const \fBSecureString\fP & strWalletPassphrase, bool anonimizeOnly = \fCfalse\fP)"
+
+.PP
+Definition at line 250 of file wallet\&.cpp\&.
+.SS "void CWallet::UnlockAllCoins ()"
+
+.PP
+Definition at line 4749 of file wallet\&.cpp\&.
+.SS "void CWallet::UnlockCoin (\fBCOutPoint\fP & output)"
+
+.PP
+Definition at line 4743 of file wallet\&.cpp\&.
+.SS "bool CWallet::UnlockStealthAddresses (const \fBCKeyingMaterial\fP & vMasterKeyIn)"
+
+.PP
+Definition at line 3090 of file wallet\&.cpp\&.
+.SS "bool CWallet::UpdatedTransaction (const \fBuint256\fP & hashTx)\fC [virtual]\fP"
+
+.PP
+Implements \fBCWalletInterface\fP\&.
+.PP
+Definition at line 4723 of file wallet\&.cpp\&.
+.SS "bool CWallet::UpdateStealthAddress (std::string & addr, std::string & label, bool addIfNotExist)"
+
+.PP
+Definition at line 3242 of file wallet\&.cpp\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBCCriticalSection\fP CWallet::cs_wallet\fC [mutable]\fP"
+Main wallet lock\&. This lock protects all the fields added by \fBCWallet\fP except for: fFileBacked (immutable after instantiation) strWalletFile (immutable after instantiation) 
+.PP
+Definition at line 131 of file wallet\&.h\&.
+.SS "bool CWallet::fFileBacked"
+
+.PP
+Definition at line 147 of file wallet\&.h\&.
+.SS "bool CWallet::fWalletUnlockAnonymizeOnly"
+
+.PP
+Definition at line 148 of file wallet\&.h\&.
+.SS "std::map<\fBCTxDestination\fP, std::string> CWallet::mapAddressBook"
+
+.PP
+Definition at line 196 of file wallet\&.h\&.
+.SS "std::map<\fBCKeyID\fP, \fBCKeyMetadata\fP> CWallet::mapKeyMetadata"
+
+.PP
+Definition at line 152 of file wallet\&.h\&.
+.SS "\fBMasterKeyMap\fP CWallet::mapMasterKeys"
+
+.PP
+Definition at line 162 of file wallet\&.h\&.
+.SS "std::map<\fBuint256\fP, int> CWallet::mapRequestCount"
+
+.PP
+Definition at line 194 of file wallet\&.h\&.
+.SS "\fBStealthKeyMetaMap\fP CWallet::mapStealthKeyMeta"
+
+.PP
+Definition at line 155 of file wallet\&.h\&.
+.SS "std::map<\fBuint256\fP, \fBCWalletTx\fP> CWallet::mapWallet"
+
+.PP
+Definition at line 192 of file wallet\&.h\&.
+.SS "\fBuint32_t\fP CWallet::nFoundStealth"
+
+.PP
+Definition at line 159 of file wallet\&.h\&.
+.SS "int CWallet::nLastFilteredHeight"
+
+.PP
+Definition at line 157 of file wallet\&.h\&.
+.SS "unsigned int CWallet::nMasterKeyMaxID"
+
+.PP
+Definition at line 163 of file wallet\&.h\&.
+.SS "\fBint64_t\fP CWallet::nOrderPosNext"
+
+.PP
+Definition at line 193 of file wallet\&.h\&.
+.SS "boost::signals2::signal<void (\fBCWallet\fP *wallet, const \fBCTxDestination\fP &address, const std::string &label, bool isMine, \fBChangeType\fP status)> CWallet::NotifyAddressBookChanged"
+Address book entry changed\&. 
+.PP
+\fBNote:\fP
+.RS 4
+called with lock cs_wallet held\&. 
+.RE
+.PP
+
+.PP
+Definition at line 463 of file wallet\&.h\&.
+.SS "boost::signals2::signal<void (\fBCWallet\fP *wallet, const \fBuint256\fP &hashTx, \fBChangeType\fP status)> CWallet::NotifyTransactionChanged"
+Wallet transaction added, removed or updated\&. 
+.PP
+\fBNote:\fP
+.RS 4
+called with lock cs_wallet held\&. 
+.RE
+.PP
+
+.PP
+Definition at line 468 of file wallet\&.h\&.
+.SS "boost::signals2::signal<void (bool fHaveWatchOnly)> CWallet::NotifyWatchonlyChanged"
+Watch-only address added 
+.PP
+Definition at line 474 of file wallet\&.h\&.
+.SS "\fBuint32_t\fP CWallet::nStealth"
+
+.PP
+Definition at line 159 of file wallet\&.h\&.
+.SS "\fBint64_t\fP CWallet::nTimeFirstKey"
+
+.PP
+Definition at line 202 of file wallet\&.h\&.
+.SS "std::set<\fBint64_t\fP> CWallet::setKeyPool"
+
+.PP
+Definition at line 151 of file wallet\&.h\&.
+.SS "std::set<\fBCOutPoint\fP> CWallet::setLockedCoins"
+
+.PP
+Definition at line 200 of file wallet\&.h\&.
+.SS "boost::signals2::signal<void (const std::string &title, int nProgress)> CWallet::ShowProgress"
+Show progress e\&.g\&. for rescan 
+.PP
+Definition at line 471 of file wallet\&.h\&.
+.SS "std::set<\fBCStealthAddress\fP> CWallet::stealthAddresses"
+
+.PP
+Definition at line 154 of file wallet\&.h\&.
+.SS "std::string CWallet::strWalletFile"
+
+.PP
+Definition at line 149 of file wallet\&.h\&.
+.SS "\fBCPubKey\fP CWallet::vchDefaultKey"
+
+.PP
+Definition at line 198 of file wallet\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for darksilk from the source code\&.

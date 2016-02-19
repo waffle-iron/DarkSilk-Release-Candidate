@@ -1,0 +1,93 @@
+\hypertarget{i2psam_8cpp}{}\section{/home/dev/ds-\/160209/src/i2psam.cpp File Reference}
+\label{i2psam_8cpp}\index{/home/dev/ds-\/160209/src/i2psam.\+cpp@{/home/dev/ds-\/160209/src/i2psam.\+cpp}}
+{\ttfamily \#include \char`\"{}i2psam.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$sys/socket.\+h$>$}\\*
+{\ttfamily \#include $<$netinet/in.\+h$>$}\\*
+{\ttfamily \#include $<$arpa/inet.\+h$>$}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$time.\+h$>$}\\*
+{\ttfamily \#include $<$stdarg.\+h$>$}\\*
+{\ttfamily \#include $<$errno.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+Include dependency graph for i2psam.\+cpp\+:
+% FIG 0
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespace_s_a_m}{S\+A\+M}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{i2psam_8cpp_afdbb9d84bd17efd2ae7290e664992c48}{closesocket}~close
+\item 
+\#define \hyperlink{i2psam_8cpp_af210419ef90774c70688aca59df0defe}{S\+A\+M\+\_\+\+B\+U\+F\+S\+I\+Z\+E}~65536
+\item 
+\#define \hyperlink{i2psam_8cpp_ab52a24da8d22e420019d4e97a9ba42ca}{I2\+P\+\_\+\+D\+E\+S\+T\+I\+N\+A\+T\+I\+O\+N\+\_\+\+S\+I\+Z\+E}~516
+\item 
+\#define \hyperlink{i2psam_8cpp_a8a88c6398fb4156cf0bc569f32e50111}{S\+A\+M\+\_\+\+M\+A\+K\+E\+S\+T\+R\+I\+N\+G}(\hyperlink{net_8cpp_a826edd40636cbaa44266b97c8c6a4fa3}{X})~\hyperlink{i2psam_8cpp_ad80dba005ca0f39f8a5b6a23ce40f227}{S\+A\+M\+\_\+\+M\+A\+K\+E\+S\+T\+R\+I\+N\+G2}(\hyperlink{net_8cpp_a826edd40636cbaa44266b97c8c6a4fa3}{X})
+\item 
+\#define \hyperlink{i2psam_8cpp_ad80dba005ca0f39f8a5b6a23ce40f227}{S\+A\+M\+\_\+\+M\+A\+K\+E\+S\+T\+R\+I\+N\+G2}(\hyperlink{net_8cpp_a826edd40636cbaa44266b97c8c6a4fa3}{X})~\#\hyperlink{net_8cpp_a826edd40636cbaa44266b97c8c6a4fa3}{X}
+\item 
+\#define \hyperlink{i2psam_8cpp_aad5453c913ff884ac88465d31ce075c6}{S\+A\+M\+\_\+\+C\+H\+E\+C\+K\+\_\+\+R\+E\+S\+U\+L\+T}(\hyperlink{cache_8cc_a0f61d63b009d0880a89c843bd50d8d76}{value})~if (result == \hyperlink{i2psam_8cpp_a8a88c6398fb4156cf0bc569f32e50111}{S\+A\+M\+\_\+\+M\+A\+K\+E\+S\+T\+R\+I\+N\+G}(\hyperlink{cache_8cc_a0f61d63b009d0880a89c843bd50d8d76}{value})) return \hyperlink{cache_8cc_a0f61d63b009d0880a89c843bd50d8d76}{value}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{i2psam_8cpp_afdbb9d84bd17efd2ae7290e664992c48}{}\index{i2psam.\+cpp@{i2psam.\+cpp}!closesocket@{closesocket}}
+\index{closesocket@{closesocket}!i2psam.\+cpp@{i2psam.\+cpp}}
+\subsubsection[{closesocket}]{\setlength{\rightskip}{0pt plus 5cm}\#define closesocket~close}\label{i2psam_8cpp_afdbb9d84bd17efd2ae7290e664992c48}
+
+
+Definition at line 31 of file i2psam.\+cpp.
+
+\hypertarget{i2psam_8cpp_ab52a24da8d22e420019d4e97a9ba42ca}{}\index{i2psam.\+cpp@{i2psam.\+cpp}!I2\+P\+\_\+\+D\+E\+S\+T\+I\+N\+A\+T\+I\+O\+N\+\_\+\+S\+I\+Z\+E@{I2\+P\+\_\+\+D\+E\+S\+T\+I\+N\+A\+T\+I\+O\+N\+\_\+\+S\+I\+Z\+E}}
+\index{I2\+P\+\_\+\+D\+E\+S\+T\+I\+N\+A\+T\+I\+O\+N\+\_\+\+S\+I\+Z\+E@{I2\+P\+\_\+\+D\+E\+S\+T\+I\+N\+A\+T\+I\+O\+N\+\_\+\+S\+I\+Z\+E}!i2psam.\+cpp@{i2psam.\+cpp}}
+\subsubsection[{I2\+P\+\_\+\+D\+E\+S\+T\+I\+N\+A\+T\+I\+O\+N\+\_\+\+S\+I\+Z\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define I2\+P\+\_\+\+D\+E\+S\+T\+I\+N\+A\+T\+I\+O\+N\+\_\+\+S\+I\+Z\+E~516}\label{i2psam_8cpp_ab52a24da8d22e420019d4e97a9ba42ca}
+
+
+Definition at line 35 of file i2psam.\+cpp.
+
+\hypertarget{i2psam_8cpp_af210419ef90774c70688aca59df0defe}{}\index{i2psam.\+cpp@{i2psam.\+cpp}!S\+A\+M\+\_\+\+B\+U\+F\+S\+I\+Z\+E@{S\+A\+M\+\_\+\+B\+U\+F\+S\+I\+Z\+E}}
+\index{S\+A\+M\+\_\+\+B\+U\+F\+S\+I\+Z\+E@{S\+A\+M\+\_\+\+B\+U\+F\+S\+I\+Z\+E}!i2psam.\+cpp@{i2psam.\+cpp}}
+\subsubsection[{S\+A\+M\+\_\+\+B\+U\+F\+S\+I\+Z\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+A\+M\+\_\+\+B\+U\+F\+S\+I\+Z\+E~65536}\label{i2psam_8cpp_af210419ef90774c70688aca59df0defe}
+
+
+Definition at line 34 of file i2psam.\+cpp.
+
+\hypertarget{i2psam_8cpp_aad5453c913ff884ac88465d31ce075c6}{}\index{i2psam.\+cpp@{i2psam.\+cpp}!S\+A\+M\+\_\+\+C\+H\+E\+C\+K\+\_\+\+R\+E\+S\+U\+L\+T@{S\+A\+M\+\_\+\+C\+H\+E\+C\+K\+\_\+\+R\+E\+S\+U\+L\+T}}
+\index{S\+A\+M\+\_\+\+C\+H\+E\+C\+K\+\_\+\+R\+E\+S\+U\+L\+T@{S\+A\+M\+\_\+\+C\+H\+E\+C\+K\+\_\+\+R\+E\+S\+U\+L\+T}!i2psam.\+cpp@{i2psam.\+cpp}}
+\subsubsection[{S\+A\+M\+\_\+\+C\+H\+E\+C\+K\+\_\+\+R\+E\+S\+U\+L\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+A\+M\+\_\+\+C\+H\+E\+C\+K\+\_\+\+R\+E\+S\+U\+L\+T(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf value}}
+\end{DoxyParamCaption}
+)~if (result == {\bf S\+A\+M\+\_\+\+M\+A\+K\+E\+S\+T\+R\+I\+N\+G}({\bf value})) return {\bf value}}\label{i2psam_8cpp_aad5453c913ff884ac88465d31ce075c6}
+
+
+Definition at line 750 of file i2psam.\+cpp.
+
+\hypertarget{i2psam_8cpp_a8a88c6398fb4156cf0bc569f32e50111}{}\index{i2psam.\+cpp@{i2psam.\+cpp}!S\+A\+M\+\_\+\+M\+A\+K\+E\+S\+T\+R\+I\+N\+G@{S\+A\+M\+\_\+\+M\+A\+K\+E\+S\+T\+R\+I\+N\+G}}
+\index{S\+A\+M\+\_\+\+M\+A\+K\+E\+S\+T\+R\+I\+N\+G@{S\+A\+M\+\_\+\+M\+A\+K\+E\+S\+T\+R\+I\+N\+G}!i2psam.\+cpp@{i2psam.\+cpp}}
+\subsubsection[{S\+A\+M\+\_\+\+M\+A\+K\+E\+S\+T\+R\+I\+N\+G}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+A\+M\+\_\+\+M\+A\+K\+E\+S\+T\+R\+I\+N\+G(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf X}}
+\end{DoxyParamCaption}
+)~{\bf S\+A\+M\+\_\+\+M\+A\+K\+E\+S\+T\+R\+I\+N\+G2}({\bf X})}\label{i2psam_8cpp_a8a88c6398fb4156cf0bc569f32e50111}
+
+
+Definition at line 747 of file i2psam.\+cpp.
+
+\hypertarget{i2psam_8cpp_ad80dba005ca0f39f8a5b6a23ce40f227}{}\index{i2psam.\+cpp@{i2psam.\+cpp}!S\+A\+M\+\_\+\+M\+A\+K\+E\+S\+T\+R\+I\+N\+G2@{S\+A\+M\+\_\+\+M\+A\+K\+E\+S\+T\+R\+I\+N\+G2}}
+\index{S\+A\+M\+\_\+\+M\+A\+K\+E\+S\+T\+R\+I\+N\+G2@{S\+A\+M\+\_\+\+M\+A\+K\+E\+S\+T\+R\+I\+N\+G2}!i2psam.\+cpp@{i2psam.\+cpp}}
+\subsubsection[{S\+A\+M\+\_\+\+M\+A\+K\+E\+S\+T\+R\+I\+N\+G2}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+A\+M\+\_\+\+M\+A\+K\+E\+S\+T\+R\+I\+N\+G2(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf X}}
+\end{DoxyParamCaption}
+)~\#{\bf X}}\label{i2psam_8cpp_ad80dba005ca0f39f8a5b6a23ce40f227}
+
+
+Definition at line 748 of file i2psam.\+cpp.
+
