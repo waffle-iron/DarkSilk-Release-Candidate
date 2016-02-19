@@ -18,6 +18,8 @@ class SendCoinsDialog;
 class SignVerifyMessageDialog;
 class Notificator;
 class DEBUGConsole;
+class BlockBrowser;
+class StatisticsPage;
 class MessagePage;
 class StormnodeManager;
 
@@ -84,6 +86,8 @@ private:
     AddressBookPage *receiveCoinsPage;
     SendCoinsDialog *sendCoinsPage;
     SignVerifyMessageDialog *signVerifyMessageDialog;
+    BlockBrowser *blockBrowser;
+    StatisticsPage *statisticsPage;
     MessagePage *messagePage;
     StormnodeManager *stormnodeManagerPage;
 
@@ -122,6 +126,8 @@ private:
     QAction *openPeersAction;
     QAction *aboutQtAction;
     QAction *openDEBUGConsoleAction;
+    QAction *blockAction;
+    QAction *statisticsAction;
     QAction *messageAction;
     QAction *stormnodeManagerAction;
 
@@ -192,6 +198,10 @@ private slots:
     void gotoReceiveCoinsPage();
     /** Switch to send coins page */
     void gotoSendCoinsPage();
+    /** Switch to block explorer*/
+    void gotoBlockBrowser();
+    /** Switch to Statistics Page*/
+    void gotoStatisticsPage();
     /** Switch to Message Page*/
     void gotoMessagePage();
     /** Switch to Stormnode Manager Page*/

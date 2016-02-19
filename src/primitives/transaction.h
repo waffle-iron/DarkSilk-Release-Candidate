@@ -7,10 +7,10 @@
 #define DARKSILK_PRIMITIVES_TRANSACTION_H
 
 #include "amount.h"
-#include "script/script.h"
-#include "serialize.h"
 #include "uint256.h"
+#include "serialize.h"
 #include "util.h"
+#include "script.h"
 #include "timedata.h"
 
 #include <stdio.h>
@@ -71,8 +71,6 @@ public:
     }
 
 };
-
-class CTransaction;
 
 ///  An inpoint - a combination of a transaction and an index n into its vin
 class CInPoint
@@ -248,7 +246,6 @@ public:
     }
 };
 
-class CMutableTransaction;
 
 /// The basic transaction that is broadcasted on the network and contained in
 /// blocks.  A transaction can contain multiple inputs and outputs.
@@ -406,6 +403,29 @@ struct CMutableTransaction
         return !(a == b);
     }
 
+};
+
+class TransactionSignatureChecker : public BaseSignatureChecker
+{
+private:
+    const CTransaction* txTo;
+    unsigned int nIn;
+
+protected:
+    virtual bool VerifySignature(const std::vector<unsigned char>& vchSig, const CPubKey& vchPubKey, const uint256& sighash) const;
+
+public:
+    TransactionSignatureChecker(const CTransaction* txToIn, unsigned int nInIn) : txTo(txToIn), nIn(nInIn) {}
+    bool CheckSig(const std::vector<unsigned char>& scriptSig, const std::vector<unsigned char>& vchPubKey, const CScript& scriptCode) const;
+};
+
+class MutableTransactionSignatureChecker : public TransactionSignatureChecker
+{
+private:
+    const CTransaction txTo;
+
+public:
+    MutableTransactionSignatureChecker(const CMutableTransaction* txToIn, unsigned int nInIn) : TransactionSignatureChecker(&txTo, nInIn), txTo(*txToIn) {}
 };
 
 #endif // DARKSILK_PRIMITIVES_TRANSACTION_H

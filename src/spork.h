@@ -11,8 +11,7 @@
 #include "key.h"
 
 #include "util.h"
-#include "script/scriptutils.h"
-#include "script/sign.h"
+#include "script.h"
 #include "base58.h"
 #include "main.h"
 

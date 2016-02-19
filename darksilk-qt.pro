@@ -126,6 +126,7 @@ INCLUDEPATH += src/leveldb/include src/leveldb/helpers src/leveldb/helpers/memen
 LIBS += $$PWD/src/leveldb/libleveldb.a $$PWD/src/leveldb/libmemenv.a
 SOURCES += src/txdb-leveldb.cpp
 
+
 INCLUDEPATH +=  src/crypto/argon2 \
                 src/crypto/argon2/blake2
 
@@ -187,7 +188,27 @@ DEPENDPATH += . \
               src \
               src/compat \
               src/crypto \
-              src/json
+              src/json \
+              src/obj \
+              src/primitives \
+              src/consensus \
+              src/qt \
+              src/leveldb/db \
+              src/leveldb/issues \
+              src/leveldb/port \
+              src/leveldb/table \
+              src/leveldb/util \
+              src/qt/forms \
+              src/qt/locale \
+              src/qt/test \
+              src/secp256k1/include \
+              src/secp256k1/src \
+              src/test/data \
+              src/leveldb/doc/bench \
+              src/leveldb/helpers/memenv \
+              src/leveldb/include/leveldb \
+              src/leveldb/port/win \
+              src/secp256k1/src/java
 
 HEADERS +=  src/qt/darksilkgui.h \
             src/qt/transactiontablemodel.h \
@@ -234,10 +255,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/txdb.h \
             src/txmempool.h \
             src/wallet/walletdb.h \
-            src/script/compressor.h \
-            src/script/script.h \
-            src/script/sign.h \
-            src/script/scriptutils.h \
+            src/script.h \
             src/init.h \
             src/mruset.h \
             src/json/json_spirit_writer_template.h \
@@ -269,6 +287,8 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/rpcserver.h \
             src/timedata.h \
             src/qt/overviewpage.h \
+            src/qt/blockbrowser.h \
+            src/qt/statisticspage.h \
             src/qt/csvmodelwriter.h \
             src/crypter.h \
             src/qt/sendcoinsentry.h \
@@ -324,6 +344,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/chainparamsbase.h \
             src/chain.h \
             src/coins.h \
+            src/compressor.h \
             src/undo.h \
             src/leveldbwrapper.h \
             src/streams.h \
@@ -338,8 +359,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/crypto/argon2/blake2/blake2.h \
             src/crypto/argon2/blake2/blamka-round-opt.h \
             src/crypto/argon2/blake2/blamka-round-ref.h \
-            src/crypto/argon2/opt.h \
-    src/script/script.h
+            src/crypto/argon2/opt.h
 
 
 SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
@@ -354,6 +374,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/qt/aboutdialog.cpp \
             src/qt/editaddressdialog.cpp \
             src/qt/darksilkaddressvalidator.cpp \
+            src/qt/statisticspage.cpp \
             src/qt/peertablemodel.cpp \
             src/alert.cpp \
             src/chainparams.cpp \
@@ -369,10 +390,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/key.cpp \
             src/ecwrapper.cpp \
             src/pubkey.cpp \
-            src/script/compressor.cpp \
-            src/script/script.cpp \
-            src/script/sign.cpp \
-            src/script/scriptutils.cpp \
+            src/script.cpp \
             src/main.cpp \
             src/miner.cpp \
             src/init.cpp \
@@ -410,6 +428,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/rpcrawtransaction.cpp \
             src/timedata.cpp \
             src/qt/overviewpage.cpp \
+            src/qt/blockbrowser.cpp \
             src/qt/csvmodelwriter.cpp \
             src/crypter.cpp \
             src/qt/sendcoinsentry.cpp \
@@ -468,6 +487,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/chain.cpp \
             src/uint256.cpp \
             src/coins.cpp \
+            src/compressor.cpp \
             src/leveldbwrapper.cpp \
             src/txdb.cpp \
             src/amount.cpp \
@@ -493,6 +513,7 @@ FORMS += \
             src/qt/forms/editaddressdialog.ui \
             src/qt/forms/transactiondescdialog.ui \
             src/qt/forms/overviewpage.ui \
+            src/qt/forms/blockbrowser.ui \
             src/qt/forms/sendcoinsentry.ui \
             src/qt/forms/askpassphrasedialog.ui \
             src/qt/forms/debugconsole.ui \
@@ -500,6 +521,7 @@ FORMS += \
             src/qt/forms/sandstormconfig.ui \
             src/qt/forms/stormnodemanager.ui \
             src/qt/forms/addeditstormnode.ui \
+            src/qt/forms/statisticspage.ui \
             src/qt/forms/stormnodeconfigdialog.ui \
             src/qt/forms/messagepage.ui \
             src/qt/forms/sendmessagesentry.ui \

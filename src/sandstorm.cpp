@@ -7,7 +7,7 @@
 #include "util.h"
 #include "stormnode-payments.h"
 #include "stormnode-sync.h"
-#include "script/sign.h"
+#include "script.h"
 #include "instantx.h"
 #include "consensus/validation.h"
 #include "ui_interface.h"
@@ -1283,7 +1283,7 @@ bool CSandstormPool::SignFinalTransaction(CTransaction& finalTransactionNew, CNo
                 const CKeyStore& keystore = *pwalletMain;
 
                 LogPrint("sandstorm", "CSandstormPool::Sign - Signing my input %i\n", mine);
-                if(!sigfuncs::SignSignature(keystore, prevPubKey, finalTransaction, mine, int(sighashes::SIGHASH_ALL|sighashes::SIGHASH_ANYONECANPAY))) { // changes scriptSig
+                if(!SignSignature(keystore, prevPubKey, finalTransaction, mine, int(SIGHASH_ALL|SIGHASH_ANYONECANPAY))) { // changes scriptSig
                     LogPrint("sandstorm", "CSandstormPool::Sign - Unable to sign my own transaction! \n");
                     // not sure what to do here, it will timeout...?
                 }
@@ -1300,6 +1300,7 @@ bool CSandstormPool::SignFinalTransaction(CTransaction& finalTransactionNew, CNo
     // push all of our signatures to the Stormnode
     if(sigs.size() > 0 && node != NULL)
         node->PushMessage("sss", sigs);
+
 
     return true;
 }

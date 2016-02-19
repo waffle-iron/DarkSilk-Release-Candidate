@@ -559,8 +559,6 @@ bool AppInit2(boost::thread_group& threadGroup)
     bool fDisableWallet = GetBoolArg("-disablewallet", false);
 #endif
 
-    nMaxDatacarrierBytes = GetArg("-datacarriersize", nMaxDatacarrierBytes);
-
     if (mapArgs.count("-timeout"))
     {
         int nNewTimeout = GetArg("-timeout", 5000);

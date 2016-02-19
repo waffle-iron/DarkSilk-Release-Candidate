@@ -6,8 +6,7 @@
 #include "crypter.h"
 
 #include "net.h"
-#include "script/scriptutils.h"
-#include "script/sign.h"
+#include "script.h"
 #include "scrypt.h"
 
 #include <string>
