@@ -11,7 +11,8 @@
 #include "txdb.h"
 #include "chain.h"
 #include "consensus/consensus.h"
- 
+#include "script/scriptutils.h"
+
 #include <list>
 
 #include <boost/unordered_map.hpp>

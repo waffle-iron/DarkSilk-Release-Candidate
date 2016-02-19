@@ -126,7 +126,6 @@ INCLUDEPATH += src/leveldb/include src/leveldb/helpers src/leveldb/helpers/memen
 LIBS += $$PWD/src/leveldb/libleveldb.a $$PWD/src/leveldb/libmemenv.a
 SOURCES += src/txdb-leveldb.cpp
 
-
 INCLUDEPATH +=  src/crypto/argon2 \
                 src/crypto/argon2/blake2
 
@@ -188,27 +187,7 @@ DEPENDPATH += . \
               src \
               src/compat \
               src/crypto \
-              src/json \
-              src/obj \
-              src/primitives \
-              src/consensus \
-              src/qt \
-              src/leveldb/db \
-              src/leveldb/issues \
-              src/leveldb/port \
-              src/leveldb/table \
-              src/leveldb/util \
-              src/qt/forms \
-              src/qt/locale \
-              src/qt/test \
-              src/secp256k1/include \
-              src/secp256k1/src \
-              src/test/data \
-              src/leveldb/doc/bench \
-              src/leveldb/helpers/memenv \
-              src/leveldb/include/leveldb \
-              src/leveldb/port/win \
-              src/secp256k1/src/java
+              src/json
 
 HEADERS +=  src/qt/darksilkgui.h \
             src/qt/transactiontablemodel.h \
@@ -255,6 +234,9 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/txdb.h \
             src/txmempool.h \
             src/wallet/walletdb.h \
+            src/script/compressor.h \
+            src/script/script.h \
+            src/script/sign.h \
             src/script/scriptutils.h \
             src/init.h \
             src/mruset.h \
@@ -342,7 +324,6 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/chainparamsbase.h \
             src/chain.h \
             src/coins.h \
-            src/script/compressor.h \
             src/undo.h \
             src/leveldbwrapper.h \
             src/streams.h \
@@ -357,7 +338,8 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/crypto/argon2/blake2/blake2.h \
             src/crypto/argon2/blake2/blamka-round-opt.h \
             src/crypto/argon2/blake2/blamka-round-ref.h \
-            src/crypto/argon2/opt.h
+            src/crypto/argon2/opt.h \
+    src/script/script.h
 
 
 SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
@@ -387,6 +369,9 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/key.cpp \
             src/ecwrapper.cpp \
             src/pubkey.cpp \
+            src/script/compressor.cpp \
+            src/script/script.cpp \
+            src/script/sign.cpp \
             src/script/scriptutils.cpp \
             src/main.cpp \
             src/miner.cpp \
@@ -483,7 +468,6 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/chain.cpp \
             src/uint256.cpp \
             src/coins.cpp \
-            src/script/compressor.cpp \
             src/leveldbwrapper.cpp \
             src/txdb.cpp \
             src/amount.cpp \

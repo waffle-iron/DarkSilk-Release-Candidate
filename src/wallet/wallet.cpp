@@ -5,6 +5,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "wallet.h"
+#include "script/sign.h"
 #include "base58.h"
 #include "checkpoints.h"
 #include "coincontrol.h"
@@ -2664,7 +2665,7 @@ bool CWallet::CreateCollateralTransaction(CMutableTransaction& txCollateral, std
     /// TODO (AA): Fix this... need txTo in SignSignature
     //int vinNumber = 0;
     //BOOST_FOREACH(CTxIn v, txCollateral.vin) {
-        //if(!SignSignature(*this, v.prevPubKey, txCollateral, vinNumber, int(SIGHASH_ALL|SIGHASH_ANYONECANPAY))) {
+        //if(!sigfuncs::SignSignature(*this, v.prevPubKey, txCollateral, vinNumber, int(sighashes::SIGHASH_ALL|sighashes::SIGHASH_ANYONECANPAY))) {
         //    BOOST_FOREACH(CTxIn v, vCoinsCollateral)
         //        UnlockCoin(v.prevout);
 
@@ -2914,7 +2915,7 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, CAmount> >& vecSend, 
                 // Sign
                 int nIn = 0;
                 BOOST_FOREACH(const PAIRTYPE(const CWalletTx*,unsigned int)& coin, setCoins)
-                    if (!SignSignature(*this, *coin.first, wtxNew, nIn++))
+                    if (!sigfuncs::SignSignature(*this, *coin.first, wtxNew, nIn++))
                     {
                         strFailReason = _("Signing transaction failed");
                         return false;
@@ -3936,7 +3937,7 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
     int nIn = 0;
     BOOST_FOREACH(const CWalletTx* pcoin, vwtxPrev)
     {
-        if (!SignSignature(*this, *pcoin, txNew, nIn++))
+        if (!sigfuncs::SignSignature(*this, *pcoin, txNew, nIn++))
             return error("CreateCoinStake : failed to sign coinstake");
     }
 

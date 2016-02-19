@@ -5,6 +5,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "base58.h"
+#include "script/sign.h"
 #include "primitives/transaction.h"
 #include "consensus/validation.h"
 #include "rpcserver.h"
@@ -13,8 +14,6 @@
 #include "main.h"
 #include "net.h"
 #include "keystore.h"
-#include "script/scriptutils.h"
-#include "script/sign.h"
 #include "txdb-leveldb.h"
 
 #ifdef ENABLE_WALLET
@@ -499,7 +498,7 @@ Value signrawtransaction(const Array& params, bool fHelp)
 
     // mergedTx will end up with all the signatures; it
     // starts as a clone of the rawtx:
-    CMutableTransaction mergedTx(txVariants[0]);
+    CTransaction mergedTx(txVariants[0]);
     bool fComplete = true;
 
     // Fetch previous transactions (inputs):
@@ -616,17 +615,17 @@ Value signrawtransaction(const Array& params, bool fHelp)
     const CKeyStore& keystore = tempKeystore;
 #endif
 
-    int nHashType = SIGHASH_ALL;    
+    int nHashType = sighashes::SIGHASH_ALL;
     if (params.size() > 3 && params[3].type() != null_type)
     {
         static map<string, int> mapSigHashValues =
             boost::assign::map_list_of
-            (string("ALL"), int(SIGHASH_ALL))
-            (string("ALL|ANYONECANPAY"), int(SIGHASH_ALL|SIGHASH_ANYONECANPAY))
-            (string("NONE"), int(SIGHASH_NONE))
-            (string("NONE|ANYONECANPAY"), int(SIGHASH_NONE|SIGHASH_ANYONECANPAY))
-            (string("SINGLE"), int(SIGHASH_SINGLE))
-            (string("SINGLE|ANYONECANPAY"), int(SIGHASH_SINGLE|SIGHASH_ANYONECANPAY))
+            (string("ALL"), int(sighashes::SIGHASH_ALL))
+            (string("ALL|ANYONECANPAY"), int(sighashes::SIGHASH_ALL|sighashes::SIGHASH_ANYONECANPAY))
+            (string("NONE"), int(sighashes::SIGHASH_NONE))
+            (string("NONE|ANYONECANPAY"), int(sighashes::SIGHASH_NONE|sighashes::SIGHASH_ANYONECANPAY))
+            (string("SINGLE"), int(sighashes::SIGHASH_SINGLE))
+            (string("SINGLE|ANYONECANPAY"), int(sighashes::SIGHASH_SINGLE|sighashes::SIGHASH_ANYONECANPAY))
             ;
         string strHashType = params[3].get_str();
         if (mapSigHashValues.count(strHashType))
@@ -635,7 +634,7 @@ Value signrawtransaction(const Array& params, bool fHelp)
             throw JSONRPCError(RPC_INVALID_PARAMETER, "Invalid sighash param");
     }
 
-    bool fHashSingle = ((nHashType & ~SIGHASH_ANYONECANPAY) == SIGHASH_SINGLE);
+    bool fHashSingle = ((nHashType & ~sighashes::SIGHASH_ANYONECANPAY) == sighashes::SIGHASH_SINGLE);
 
     // Sign what we can:
     for (unsigned int i = 0; i < mergedTx.vin.size(); i++)
@@ -652,13 +651,14 @@ Value signrawtransaction(const Array& params, bool fHelp)
         // Only sign SIGHASH_SINGLE if there's a corresponding output:
         ///TODO (AA): put back but need txTo for SignSignature
         if (!fHashSingle || (i < mergedTx.vout.size()))
-            SignSignature(keystore, prevPubKey, mergedTx, i, nHashType);
+            sigfuncs::SignSignature(keystore, prevPubKey, mergedTx, i, nHashType);
 
+        //TODO (Amir): Put this back.
         // ... and merge in other signatures:
-        BOOST_FOREACH(const CMutableTransaction& txv, txVariants)
+        /*BOOST_FOREACH(const CTransaction& txv, txVariants)
         {
             txin.scriptSig = CombineSignatures(prevPubKey, mergedTx, i, txin.scriptSig, txv.vin[i].scriptSig);
-        }
+        }*/
         if (!VerifyScript(txin.scriptSig, prevPubKey, mergedTx, i, STANDARD_SCRIPT_VERIFY_FLAGS, 0))
             fComplete = false;
     }
