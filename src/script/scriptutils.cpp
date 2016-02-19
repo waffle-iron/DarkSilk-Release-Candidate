@@ -2091,7 +2091,7 @@ bool EvalScript(vector<vector<unsigned char> >& stack, const CScript& script, un
     return set_success(serror);
 }
 
-uint256 SignatureHash(CScript scriptCode, const CTransaction& txTo, unsigned int nIn, int nHashType)
+uint256 SignatureHash(CScript& scriptCode, const CMutableTransaction& txTo, unsigned int nIn, int nHashType)
 {
     if (nIn >= txTo.vin.size())
     {
@@ -2151,6 +2151,68 @@ uint256 SignatureHash(CScript scriptCode, const CTransaction& txTo, unsigned int
     ss << txTmp << nHashType;
     return ss.GetHash();
 }
+
+uint256 SignatureHash(CScript& scriptCode, const CTransaction& txTo, unsigned int nIn, int nHashType)
+{
+    if (nIn >= txTo.vin.size())
+    {
+        LogPrintf("ERROR: SignatureHash() : nIn=%d out of range\n", nIn);
+        return 1;
+    }
+    CTransaction txTmp(txTo);
+
+    // In case concatenating two scripts ends up with two codeseparators,
+    // or an extra one at the end, this prevents all those possible incompatibilities.
+    scriptCode.FindAndDelete(CScript(OP_CODESEPARATOR));
+
+    // Blank out other inputs' signatures
+    for (unsigned int i = 0; i < txTmp.vin.size(); i++)
+        txTmp.vin[i].scriptSig = CScript();
+    txTmp.vin[nIn].scriptSig = scriptCode;
+
+    // Blank out some of the outputs
+    if ((nHashType & 0x1f) == SIGHASH_NONE)
+    {
+        // Wildcard payee
+        txTmp.vout.clear();
+
+        // Let the others update at will
+        for (unsigned int i = 0; i < txTmp.vin.size(); i++)
+            if (i != nIn)
+                txTmp.vin[i].nSequence = 0;
+    }
+    else if ((nHashType & 0x1f) == SIGHASH_SINGLE)
+    {
+        // Only lock-in the txout payee at same index as txin
+        unsigned int nOut = nIn;
+        if (nOut >= txTmp.vout.size())
+        {
+            LogPrintf("ERROR: SignatureHash() : nOut=%d out of range\n", nOut);
+            return 1;
+        }
+        txTmp.vout.resize(nOut+1);
+        for (unsigned int i = 0; i < nOut; i++)
+            txTmp.vout[i].SetNull();
+
+        // Let the others update at will
+        for (unsigned int i = 0; i < txTmp.vin.size(); i++)
+            if (i != nIn)
+                txTmp.vin[i].nSequence = 0;
+    }
+
+    // Blank out other inputs completely, not recommended for open transactions
+    if (nHashType & SIGHASH_ANYONECANPAY)
+    {
+        txTmp.vin[0] = txTmp.vin[nIn];
+        txTmp.vin.resize(1);
+    }
+
+    // Serialize and hash
+    CHashWriter ss(SER_GETHASH, 0);
+    ss << txTmp << nHashType;
+    return ss.GetHash();
+}
+
 /*
 bool SignSignature(const CKeyStore &keystore, const CScript& fromPubKey, CMutableTransaction& txTo, unsigned int nIn, int nHashType)
 {
@@ -2329,14 +2391,6 @@ bool CheckSig(vector<unsigned char> vchSig, const vector<unsigned char> &vchPubK
 
     return true;
 }
-
-
-
-
-
-
-
-
 
 //
 // Return public keys or hashes from scriptPubKey, for 'standard' transaction types.

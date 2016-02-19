@@ -26,11 +26,14 @@ typedef std::vector<unsigned char> valtype;
 class CKeyStore;
 class CTransaction;
 class CMutableTransaction;
-
 class BaseSignatureChecker;
 
 static const unsigned int MAX_SCRIPT_ELEMENT_SIZE = 520; // bytes
 static const unsigned int MAX_OP_RETURN_RELAY = 40;      // bytes
+
+uint256 SignatureHash(const CScript& scriptCode, const CMutableTransaction& txTo, unsigned int nIn, int nHashType);
+uint256 SignatureHash(const CScript& scriptCode, const CTransaction& txTo, unsigned int nIn, int nHashType);
+
 
 template <typename T>
 std::vector<unsigned char> ToByteVector(const T& in)
@@ -935,8 +938,6 @@ CScript GetScriptForMultisig(int nRequired, const std::vector<CPubKey>& keys);
 
 bool Solver(const CKeyStore& keystore, const CScript& scriptPubKey, uint256 hash, int nHashType,
                   CScript& scriptSigRet, txnouttype& whichTypeRet);
-//uint256 SignatureHash(const CScript &scriptCode, const CTransaction& txTo, unsigned int nIn, int nHashType);
-
 
 class BaseSignatureChecker
 {

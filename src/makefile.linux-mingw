@@ -61,7 +61,7 @@ OBJS= \
     obj/alert.o \
     obj/cleanse.o \
     obj/core_read.o \
-    obj/darksilk-cli.o \
+    obj/darksilkd.o \
     obj/version.o \
     obj/checkpoints.o \
     obj/netbase.o \
@@ -86,7 +86,9 @@ OBJS= \
     obj/rpcrawtransaction.o \
     obj/rpcsmessage.o \
     obj/timedata.o \
-    obj/script.o \
+    obj/script/compressor.o \
+    obj/script/scriptutils.o \
+    obj/script/sign.o \
     obj/sync.o \
     obj/txmempool.o \
     obj/util.o \
@@ -95,7 +97,6 @@ OBJS= \
     obj/noui.o \
     obj/kernel.o \
     obj/pbkdf2.o \
-    obj/scrypt.o \
     obj/scrypt-arm.o \
     obj/scrypt-x86.o \
     obj/scrypt-x86_64.o \
@@ -209,6 +210,15 @@ clean:
 	-rm -f obj/primitives/*.o
 	-rm -f obj/primitives/*.P
 	-rm -f obj/primitives/*.d
+        -rm -f obj/consensus/*.o
+        -rm -f obj/consensus/*.P
+        -rm -f obj/consensus/*.d
+        -rm -f obj/scripts/*.o
+        -rm -f obj/scripts/*.P
+        -rm -f obj/scripts/*.d
+        -rm -f obj/wallet/*.o
+        -rm -f obj/wallet/*.P
+        -rm -f obj/wallet/*.d
 	-rm -f obj/crypto/argon2/*.o
 	-rm -f obj/crypto/argon2/*.P
 	-rm -f obj/crypto/argon2/*.d

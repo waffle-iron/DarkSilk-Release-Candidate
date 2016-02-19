@@ -124,7 +124,8 @@ QMAKE_CLEAN += $$PWD/src/secp256k1/src/libsecp256k1_la-secp256k1.o; cd $$PWD/src
 
 INCLUDEPATH += src/leveldb/include src/leveldb/helpers src/leveldb/helpers/memenv
 LIBS += $$PWD/src/leveldb/libleveldb.a $$PWD/src/leveldb/libmemenv.a
-SOURCES += src/txdb-leveldb.cpp
+SOURCES += src/txdb-leveldb.cpp \
+    src/script/sign.cpp
 
 
 INCLUDEPATH +=  src/crypto/argon2 \
@@ -255,6 +256,8 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/txdb.h \
             src/txmempool.h \
             src/wallet/walletdb.h \
+            src/script/compressor.h \
+            src/script/sign.h \
             src/script/scriptutils.h \
             src/init.h \
             src/mruset.h \
@@ -342,7 +345,6 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/chainparamsbase.h \
             src/chain.h \
             src/coins.h \
-            src/script/compressor.h \
             src/undo.h \
             src/leveldbwrapper.h \
             src/streams.h \
@@ -387,6 +389,8 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/key.cpp \
             src/ecwrapper.cpp \
             src/pubkey.cpp \
+            src/script/compressor.cpp \
+            src/script/sign.cpp \
             src/script/scriptutils.cpp \
             src/main.cpp \
             src/miner.cpp \
@@ -483,7 +487,6 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/chain.cpp \
             src/uint256.cpp \
             src/coins.cpp \
-            src/script/compressor.cpp \
             src/leveldbwrapper.cpp \
             src/txdb.cpp \
             src/amount.cpp \

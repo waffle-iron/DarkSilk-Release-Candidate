@@ -29,6 +29,7 @@
 #include "txdb-leveldb.h"
 #include "consensus/consensus.h"
 #include "consensus/validation.h"
+#include "script/sign.h"
 
 #include <assert.h>
 

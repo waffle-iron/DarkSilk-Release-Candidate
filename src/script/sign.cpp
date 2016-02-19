@@ -4,14 +4,15 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "script/sign.h"
-#include "script/scriptutil.h"
-
+#include "script/scriptutils.h"
+#include "primitives/transaction.h"
 #include "core.h"
 #include "key.h"
 #include "keystore.h"
 #include "uint256.h"
 
 #include <boost/foreach.hpp>
+#include <assert.h>
 
 using namespace std;
 
@@ -221,7 +222,7 @@ static CScript CombineMultisig(CScript scriptPubKey, const CTransaction& txTo, u
             if (sigs.count(pubkey))
                 continue; // Already got a sig for this pubkey
 
-            if (CheckSig(sig, pubkey, scriptPubKey, txTo, nIn, 0, 0))
+            if (TransactionSignatureChecker(&txTo, nIn).CheckSig(sig, pubkey, scriptPubKey))
             {
                 sigs[pubkey] = sig;
                 break;

@@ -428,5 +428,4 @@ private:
 public:
     MutableTransactionSignatureChecker(const CMutableTransaction* txToIn, unsigned int nInIn) : TransactionSignatureChecker(&txTo, nInIn), txTo(*txToIn) {}
 };
-
 #endif // DARKSILK_PRIMITIVES_TRANSACTION_H
