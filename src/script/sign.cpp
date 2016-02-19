@@ -215,7 +215,8 @@ bool Solver(const CKeyStore& keystore, const CScript& scriptPubKey, uint256 hash
     }
     return false;
 }
-
+namespace sigfuncs
+{
 bool SignSignature(const CKeyStore& keystore, const CScript& fromPubKey, CTransaction& txTo, unsigned int nIn, int nHashType)
 {
     assert(nIn < txTo.vin.size());
@@ -223,7 +224,7 @@ bool SignSignature(const CKeyStore& keystore, const CScript& fromPubKey, CTransa
 
     // Leave out the signature from the hash, since a signature can't sign itself.
     // The checksig op will also drop the signatures from its hash.
-    uint256 hash = SignatureHash(fromPubKey, txTo, nIn, nHashType);
+    uint256 hash = sigfuncs::SignatureHash(fromPubKey, txTo, nIn, nHashType);
 
     txnouttype whichType;
     if (!Solver(keystore, fromPubKey, hash, nHashType, txin.scriptSig, whichType))
@@ -237,7 +238,7 @@ bool SignSignature(const CKeyStore& keystore, const CScript& fromPubKey, CTransa
         CScript subscript = txin.scriptSig;
 
         // Recompute txn hash using subscript in place of scriptPubKey:
-        uint256 hash2 = SignatureHash(subscript, txTo, nIn, nHashType);
+        uint256 hash2 = sigfuncs::SignatureHash(subscript, txTo, nIn, nHashType);
 
         txnouttype subType;
         bool fSolved =
@@ -258,7 +259,7 @@ bool SignSignature(const CKeyStore& keystore, const CTransaction& txFrom, CTrans
     assert(txin.prevout.n < txFrom.vout.size());
     const CTxOut& txout = txFrom.vout[txin.prevout.n];
 
-    return SignSignature(keystore, txout.scriptPubKey, txTo, nIn, nHashType);
+    return sigfuncs::SignSignature(keystore, txout.scriptPubKey, txTo, nIn, nHashType);
 }
 
 bool SignSignature(const CKeyStore& keystore, const CMutableTransaction& txFrom, CTransaction& txTo, unsigned int nIn, int nHashType)
@@ -268,8 +269,9 @@ bool SignSignature(const CKeyStore& keystore, const CMutableTransaction& txFrom,
     assert(txin.prevout.n < txFrom.vout.size());
     const CTxOut& txout = txFrom.vout[txin.prevout.n];
 
-    return SignSignature(keystore, txout.scriptPubKey, txTo, nIn, nHashType);
+    return sigfuncs::SignSignature(keystore, txout.scriptPubKey, txTo, nIn, nHashType);
 }
+} //end sigfuncs namespace
 
 static CScript PushAll(const vector<valtype>& values)
 {

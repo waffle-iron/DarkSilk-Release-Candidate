@@ -133,127 +133,68 @@ namespace {
     };
 } // anon namespace
 
-uint256 SignatureHash(CScript& scriptCode, const CMutableTransaction& txTo, unsigned int nIn, int nHashType)
-{
-    if (nIn >= txTo.vin.size())
+namespace sigfuncs{
+    uint256 SignatureHash(CScript& scriptCode, const CTransaction& txTo, unsigned int nIn, int nHashType)
     {
-        LogPrintf("ERROR: SignatureHash() : nIn=%d out of range\n", nIn);
-        return 1;
-    }
-    CTransaction txTmp(txTo);
-
-    // In case concatenating two scripts ends up with two codeseparators,
-    // or an extra one at the end, this prevents all those possible incompatibilities.
-    scriptCode.FindAndDelete(CScript(OP_CODESEPARATOR));
-
-    // Blank out other inputs' signatures
-    for (unsigned int i = 0; i < txTmp.vin.size(); i++)
-        txTmp.vin[i].scriptSig = CScript();
-    txTmp.vin[nIn].scriptSig = scriptCode;
-
-    // Blank out some of the outputs
-    if ((nHashType & 0x1f) == sighashes::SIGHASH_NONE)
-    {
-        // Wildcard payee
-        txTmp.vout.clear();
-
-        // Let the others update at will
-        for (unsigned int i = 0; i < txTmp.vin.size(); i++)
-            if (i != nIn)
-                txTmp.vin[i].nSequence = 0;
-    }
-    else if ((nHashType & 0x1f) == sighashes::SIGHASH_SINGLE)
-    {
-        // Only lock-in the txout payee at same index as txin
-        unsigned int nOut = nIn;
-        if (nOut >= txTmp.vout.size())
+        if (nIn >= txTo.vin.size())
         {
-            LogPrintf("ERROR: SignatureHash() : nOut=%d out of range\n", nOut);
+            LogPrintf("ERROR: SignatureHash() : nIn=%d out of range\n", nIn);
             return 1;
         }
-        txTmp.vout.resize(nOut+1);
-        for (unsigned int i = 0; i < nOut; i++)
-            txTmp.vout[i].SetNull();
+        CTransaction txTmp(txTo);
 
-        // Let the others update at will
+        // In case concatenating two scripts ends up with two codeseparators,
+        // or an extra one at the end, this prevents all those possible incompatibilities.
+        scriptCode.FindAndDelete(CScript(OP_CODESEPARATOR));
+
+        // Blank out other inputs' signatures
         for (unsigned int i = 0; i < txTmp.vin.size(); i++)
-            if (i != nIn)
-                txTmp.vin[i].nSequence = 0;
-    }
+            txTmp.vin[i].scriptSig = CScript();
+        txTmp.vin[nIn].scriptSig = scriptCode;
 
-    // Blank out other inputs completely, not recommended for open transactions
-    if (nHashType & sighashes::SIGHASH_ANYONECANPAY)
-    {
-        txTmp.vin[0] = txTmp.vin[nIn];
-        txTmp.vin.resize(1);
-    }
-
-    // Serialize and hash
-    CHashWriter ss(SER_GETHASH, 0);
-    ss << txTmp << nHashType;
-    return ss.GetHash();
-}
-
-uint256 SignatureHash(CScript& scriptCode, const CTransaction& txTo, unsigned int nIn, int nHashType)
-{
-    if (nIn >= txTo.vin.size())
-    {
-        LogPrintf("ERROR: SignatureHash() : nIn=%d out of range\n", nIn);
-        return 1;
-    }
-    CTransaction txTmp(txTo);
-
-    // In case concatenating two scripts ends up with two codeseparators,
-    // or an extra one at the end, this prevents all those possible incompatibilities.
-    scriptCode.FindAndDelete(CScript(OP_CODESEPARATOR));
-
-    // Blank out other inputs' signatures
-    for (unsigned int i = 0; i < txTmp.vin.size(); i++)
-        txTmp.vin[i].scriptSig = CScript();
-    txTmp.vin[nIn].scriptSig = scriptCode;
-
-    // Blank out some of the outputs
-    if ((nHashType & 0x1f) == sighashes::SIGHASH_NONE)
-    {
-        // Wildcard payee
-        txTmp.vout.clear();
-
-        // Let the others update at will
-        for (unsigned int i = 0; i < txTmp.vin.size(); i++)
-            if (i != nIn)
-                txTmp.vin[i].nSequence = 0;
-    }
-    else if ((nHashType & 0x1f) == sighashes::SIGHASH_SINGLE)
-    {
-        // Only lock-in the txout payee at same index as txin
-        unsigned int nOut = nIn;
-        if (nOut >= txTmp.vout.size())
+        // Blank out some of the outputs
+        if ((nHashType & 0x1f) == sighashes::SIGHASH_NONE)
         {
-            LogPrintf("ERROR: SignatureHash() : nOut=%d out of range\n", nOut);
-            return 1;
+            // Wildcard payee
+            txTmp.vout.clear();
+
+            // Let the others update at will
+            for (unsigned int i = 0; i < txTmp.vin.size(); i++)
+                if (i != nIn)
+                    txTmp.vin[i].nSequence = 0;
         }
-        txTmp.vout.resize(nOut+1);
-        for (unsigned int i = 0; i < nOut; i++)
-            txTmp.vout[i].SetNull();
+        else if ((nHashType & 0x1f) == sighashes::SIGHASH_SINGLE)
+        {
+            // Only lock-in the txout payee at same index as txin
+            unsigned int nOut = nIn;
+            if (nOut >= txTmp.vout.size())
+            {
+                LogPrintf("ERROR: SignatureHash() : nOut=%d out of range\n", nOut);
+                return 1;
+            }
+            txTmp.vout.resize(nOut+1);
+            for (unsigned int i = 0; i < nOut; i++)
+                txTmp.vout[i].SetNull();
 
-        // Let the others update at will
-        for (unsigned int i = 0; i < txTmp.vin.size(); i++)
-            if (i != nIn)
-                txTmp.vin[i].nSequence = 0;
+            // Let the others update at will
+            for (unsigned int i = 0; i < txTmp.vin.size(); i++)
+                if (i != nIn)
+                    txTmp.vin[i].nSequence = 0;
+        }
+
+        // Blank out other inputs completely, not recommended for open transactions
+        if (nHashType & sighashes::SIGHASH_ANYONECANPAY)
+        {
+            txTmp.vin[0] = txTmp.vin[nIn];
+            txTmp.vin.resize(1);
+        }
+
+        // Serialize and hash
+        CHashWriter ss(SER_GETHASH, 0);
+        ss << txTmp << nHashType;
+        return ss.GetHash();
     }
-
-    // Blank out other inputs completely, not recommended for open transactions
-    if (nHashType & sighashes::SIGHASH_ANYONECANPAY)
-    {
-        txTmp.vin[0] = txTmp.vin[nIn];
-        txTmp.vin.resize(1);
-    }
-
-    // Serialize and hash
-    CHashWriter ss(SER_GETHASH, 0);
-    ss << txTmp << nHashType;
-    return ss.GetHash();
-}
+} //end sigfuncs namespace
 
 const char* ScriptErrorString(const ScriptError serror)
 {
@@ -2377,7 +2318,7 @@ bool CheckSig(vector<unsigned char> vchSig, const vector<unsigned char> &vchPubK
         return false;
     vchSig.pop_back();
 
-    uint256 sighash = SignatureHash(scriptCode, txTo, nIn, nHashType);
+    uint256 sighash = sigfuncs::SignatureHash(scriptCode, txTo, nIn, nHashType);
 
     if (signatureCache.Get(sighash, vchSig, pubkey))
         return true;
@@ -2568,7 +2509,7 @@ bool SignatureChecker::CheckSig(const vector<unsigned char>& vchSigIn, const vec
     int nHashType = vchSig.back();
     vchSig.pop_back();
 
-    uint256 sighash = SignatureHash(scriptCode, txTo, nIn, nHashType);
+    uint256 sighash = sigfuncs::SignatureHash(scriptCode, txTo, nIn, nHashType);
 
     if (!VerifySignature(vchSig, pubkey, sighash))
         return false;
@@ -2698,7 +2639,7 @@ bool TransactionSignatureChecker::CheckSig(const vector<unsigned char>& vchSigIn
     int nHashType = vchSig.back();
     vchSig.pop_back();
 
-    uint256 sighash = SignatureHash(scriptCode, *txTo, nIn, nHashType);
+    uint256 sighash = sigfuncs::SignatureHash(scriptCode, *txTo, nIn, nHashType);
 
     if (!VerifySignature(vchSig, pubkey, sighash))
         return false;

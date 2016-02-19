@@ -651,7 +651,7 @@ Value signrawtransaction(const Array& params, bool fHelp)
         // Only sign SIGHASH_SINGLE if there's a corresponding output:
         ///TODO (AA): put back but need txTo for SignSignature
         if (!fHashSingle || (i < mergedTx.vout.size()))
-            SignSignature(keystore, prevPubKey, mergedTx, i, nHashType);
+            sigfuncs::SignSignature(keystore, prevPubKey, mergedTx, i, nHashType);
 
         //TODO (Amir): Put this back.
         // ... and merge in other signatures:

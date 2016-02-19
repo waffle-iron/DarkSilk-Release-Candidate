@@ -7,7 +7,7 @@
 #include "protocol.h"
 #include "primitives/block.h"
 #include "chainparams.h"
-#include "script/sign.h"
+#include "script/scriptutils.h"
 #include <boost/foreach.hpp>
 
 bool CBlock::CheckBlockSignature() const
