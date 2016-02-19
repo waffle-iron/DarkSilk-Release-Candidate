@@ -255,7 +255,7 @@ private:
     mutable CCriticalSection cs_sandstorm;
 
     std::vector<CSandStormEntry> entries; // Stormnode/clients entries
-    CMutableTransaction finalTransaction; // the finalized transaction ready for signing
+    CTransaction finalTransaction; // the finalized transaction ready for signing
 
     int64_t lastTimeChanged; // last time the 'state' changed, in UTC milliseconds
     unsigned int state; // should be one of the POOL_STATUS_XXX values
