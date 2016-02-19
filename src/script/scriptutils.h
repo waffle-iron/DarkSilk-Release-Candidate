@@ -34,9 +34,6 @@ static const unsigned int MAX_OP_RETURN_RELAY = 40;      // bytes
 
 bool CheckSig(vector<unsigned char> vchSig, const vector<unsigned char> &vchPubKey, const CScript &scriptCode, const CTransaction& txTo, unsigned int nIn, int nHashType, int flags);
 
-uint256 SignatureHash(const CScript& scriptCode, const CMutableTransaction& txTo, unsigned int nIn, int nHashType);
-uint256 SignatureHash(const CScript& scriptCode, const CTransaction& txTo, unsigned int nIn, int nHashType);
-
 typedef enum ScriptError_t
 {
     SCRIPT_ERR_OK = 0,
@@ -140,6 +137,7 @@ enum isminetype
     ISMINE_SPENDABLE = 2,
     ISMINE_ALL = ISMINE_WATCH_ONLY | ISMINE_SPENDABLE
 };
+
 /// used for bitflags of isminetype
 typedef uint8_t isminefilter;
 
@@ -165,7 +163,6 @@ bool IsDERSignature(const valtype &vchSig, bool haveHashType = true);
 bool IsCompressedOrUncompressedPubKey(const valtype &vchPubKey);
 bool EvalScript(std::vector<std::vector<unsigned char> >& stack, const CScript& script, const CTransaction& txTo, unsigned int nIn, unsigned int flags, int nHashType);
 bool EvalScript(std::vector<std::vector<unsigned char> >& stack, const CScript& script, unsigned int flags, const BaseSignatureChecker& checker, ScriptError* error = NULL);
-
 
 isminetype IsMine(const CKeyStore& keystore, const CScript& scriptPubKey);
 isminetype IsMine(const CKeyStore& keystore, const CTxDestination& dest);
