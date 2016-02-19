@@ -5,9 +5,8 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "script/scriptutils.h"
-#include "script/sign.h"
+#include "primitives/transaction.h"
 #include "keystore.h"
-#include "main.h"
 #include "sync.h"
 #include "crypto/ripemd160.h"
 #include "crypto/sha1.h"
@@ -104,9 +103,6 @@ const char* ScriptErrorString(const ScriptError serror)
     }
     return "unknown error";
 }
-
-
-bool CheckSig(vector<unsigned char> vchSig, const vector<unsigned char> &vchPubKey, const CScript &scriptCode, const CTransaction& txTo, unsigned int nIn, int nHashType, int flags);
 
 static const valtype vchFalse(0);
 static const valtype vchZero(0);
@@ -2301,48 +2297,6 @@ bool CheckSig(vector<unsigned char> vchSig, const vector<unsigned char> &vchPubK
     return true;
 }
 
-int ScriptSigArgsExpected(txnouttype t, const std::vector<std::vector<unsigned char> >& vSolutions)
-{
-    switch (t)
-    {
-    case TX_NONSTANDARD:
-    case TX_NULL_DATA:
-        return -1;
-    case TX_PUBKEY:
-        return 1;
-    case TX_PUBKEYHASH:
-        return 2;
-    case TX_MULTISIG:
-        if (vSolutions.size() < 1 || vSolutions[0].size() < 1)
-            return -1;
-        return vSolutions[0][0] + 1;
-    case TX_SCRIPTHASH:
-        return 1; // doesn't include args needed by the script
-    }
-    return -1;
-}
-
-bool IsStandard(const CScript& scriptPubKey, txnouttype& whichType)
-{
-    vector<valtype> vSolutions;
-    if (!Solver(scriptPubKey, whichType, vSolutions))
-        return false;
-
-    if (whichType == TX_MULTISIG)
-    {
-        unsigned char m = vSolutions.front()[0];
-        unsigned char n = vSolutions.back()[0];
-        // Support up to x-of-3 multisig txns as standard
-        if (n < 1 || n > 3)
-            return false;
-        if (m < 1 || m > n)
-            return false;
-    }
-
-    return whichType != TX_NONSTANDARD;
-}
-
-
 unsigned int HaveKeys(const vector<valtype>& pubkeys, const CKeyStore& keystore)
 {
     unsigned int nResult = 0;
@@ -2502,63 +2456,6 @@ void ExtractAffectedKeys(const CKeyStore &keystore, const CScript& scriptPubKey,
     CAffectedKeysVisitor(keystore, vKeys).Process(scriptPubKey);
 }
 
-bool ExtractDestinations(const CScript& scriptPubKey, txnouttype& typeRet, vector<CTxDestination>& addressRet, int& nRequiredRet)
-{
-    addressRet.clear();
-    typeRet = TX_NONSTANDARD;
-    vector<valtype> vSolutions;
-    if (!Solver(scriptPubKey, typeRet, vSolutions))
-        return false;
-    if (typeRet == TX_NULL_DATA){
-        // This is data, not addresses
-        return false;
-    }
-
-    if (typeRet == TX_MULTISIG)
-    {
-        nRequiredRet = vSolutions.front()[0];
-        for (unsigned int i = 1; i < vSolutions.size()-1; i++)
-        {
-            CTxDestination address = CPubKey(vSolutions[i]).GetID();
-            addressRet.push_back(address);
-        }
-    }
-    else
-    {
-        nRequiredRet = 1;
-        CTxDestination address;
-        if (!ExtractDestination(scriptPubKey, address))
-           return false;
-        addressRet.push_back(address);
-    }
-
-    return true;
-}
-
-/*uint256 SignatureHash(const CScript& scriptCode, const CTransaction& txTo, unsigned int nIn, int nHashType)
-{
-    if (nIn >= txTo.vin.size()) {
-        //  nIn out of range
-        return 1;
-    }
-
-    // Check for invalid use of SIGHASH_SINGLE
-    if ((nHashType & 0x1f) == SIGHASH_SINGLE) {
-        if (nIn >= txTo.vout.size()) {
-            //  nOut out of range
-            return 1;
-        }
-    }
-
-    // Wrapper to serialize only the necessary parts of the transaction being signed
-    CTransactionSignatureSerializer txTmp(txTo, scriptCode, nIn, nHashType);
-
-    // Serialize and hash
-    CHashWriter ss(SER_GETHASH, 0);
-    ss << txTmp << nHashType;
-    return ss.GetHash();
-}*/
-
 bool SignatureChecker::VerifySignature(const std::vector<unsigned char>& vchSig, const CPubKey& pubkey, const uint256& sighash) const
 {
     return pubkey.Verify(sighash, vchSig);
@@ -2675,53 +2572,6 @@ bool VerifyScript(const CScript& scriptSig, const CScript& scriptPubKey, unsigne
     return set_success(serror);
 }
 
-
-/*bool SignSignature(const CKeyStore &keystore, const CScript& fromPubKey, CTransaction& txTo, unsigned int nIn, int nHashType)
-{
-    assert(nIn < txTo.vin.size());
-    CTxIn& txin = txTo.vin[nIn];
-
-    // Leave out the signature from the hash, since a signature can't sign itself.
-    // The checksig op will also drop the signatures from its hash.
-    uint256 hash = SignatureHash(fromPubKey, txTo, nIn, nHashType);
-
-    txnouttype whichType;
-    if (!Solver(keystore, fromPubKey, hash, nHashType, txin.scriptSig, whichType))
-        return false;
-
-    if (whichType == TX_SCRIPTHASH)
-    {
-        // Solver returns the subscript that need to be evaluated;
-        // the final scriptSig is the signatures from that
-        // and then the serialized subscript:
-        CScript subscript = txin.scriptSig;
-
-        // Recompute txn hash using subscript in place of scriptPubKey:
-        uint256 hash2 = SignatureHash(subscript, txTo, nIn, nHashType);
-
-        txnouttype subType;
-        bool fSolved =
-            Solver(keystore, subscript, hash2, nHashType, txin.scriptSig, subType) && subType != TX_SCRIPTHASH;
-        // Append serialized subscript whether or not it is completely signed:
-        txin.scriptSig << static_cast<valtype>(subscript);
-        if (!fSolved) return false;
-    }
-
-    // Test solution
-    return VerifyScript(txin.scriptSig, fromPubKey, txTo, nIn, STANDARD_SCRIPT_VERIFY_FLAGS, 0);
-}*/
-
-/*bool SignSignature(const CKeyStore &keystore, const CTransaction& txFrom, CTransaction& txTo, unsigned int nIn, int nHashType)
-{
-    assert(nIn < txTo.vin.size());
-    CTxIn& txin = txTo.vin[nIn];
-    assert(txin.prevout.n < txFrom.vout.size());
-    assert(txin.prevout.hash == txFrom.GetHash());
-    const CTxOut& txout = txFrom.vout[txin.prevout.n];
-
-    return SignSignature(keystore, txout.scriptPubKey, txTo, nIn, nHashType);
-}*/
-
 bool VerifySignature(const CTransaction& txFrom, const CTransaction& txTo, unsigned int nIn, unsigned int flags, int nHashType)
 {
     assert(nIn < txTo.vin.size());
@@ -2735,300 +2585,29 @@ bool VerifySignature(const CTransaction& txFrom, const CTransaction& txTo, unsig
 
     return VerifyScript(txin.scriptSig, txout.scriptPubKey, txTo, nIn, flags, nHashType);
 }
-/*
-static CScript PushAll(const vector<valtype>& values)
+
+bool TransactionSignatureChecker::VerifySignature(const std::vector<unsigned char>& vchSig, const CPubKey& pubkey, const uint256& sighash) const
 {
-    CScript result;
-    BOOST_FOREACH(const valtype& v, values)
-        result << v;
-    return result;
+    return pubkey.Verify(sighash, vchSig);
 }
 
-static CScript CombineMultisig(CScript scriptPubKey, const CTransaction& txTo, unsigned int nIn,
-                               const vector<valtype>& vSolutions,
-                               vector<valtype>& sigs1, vector<valtype>& sigs2)
+bool TransactionSignatureChecker::CheckSig(const vector<unsigned char>& vchSigIn, const vector<unsigned char>& vchPubKey, const CScript& scriptCode) const
 {
-    // Combine all the signatures we've got:
-    set<valtype> allsigs;
-    BOOST_FOREACH(const valtype& v, sigs1)
-    {
-        if (!v.empty())
-            allsigs.insert(v);
-    }
-    BOOST_FOREACH(const valtype& v, sigs2)
-    {
-        if (!v.empty())
-            allsigs.insert(v);
-    }
-
-    // Build a map of pubkey -> signature by matching sigs to pubkeys:
-    assert(vSolutions.size() > 1);
-    unsigned int nSigsRequired = vSolutions.front()[0];
-    unsigned int nPubKeys = vSolutions.size()-2;
-    map<valtype, valtype> sigs;
-    BOOST_FOREACH(const valtype& sig, allsigs)
-    {
-        for (unsigned int i = 0; i < nPubKeys; i++)
-        {
-            const valtype& pubkey = vSolutions[i+1];
-            if (sigs.count(pubkey))
-                continue; // Already got a sig for this pubkey
-
-            if (CheckSig(sig, pubkey, scriptPubKey, txTo, nIn, 0, 0))
-            {
-                sigs[pubkey] = sig;
-                break;
-            }
-        }
-    }
-    // Now build a merged CScript:
-    unsigned int nSigsHave = 0;
-    CScript result; result << OP_0; // pop-one-too-many workaround
-    for (unsigned int i = 0; i < nPubKeys && nSigsHave < nSigsRequired; i++)
-    {
-        if (sigs.count(vSolutions[i+1]))
-        {
-            result << sigs[vSolutions[i+1]];
-            ++nSigsHave;
-        }
-    }
-    // Fill any missing with OP_0:
-    for (unsigned int i = nSigsHave; i < nSigsRequired; i++)
-        result << OP_0;
-
-    return result;
-}
-
-static CScript CombineSignatures(CScript scriptPubKey, const CTransaction& txTo, unsigned int nIn,
-                                 const txnouttype txType, const vector<valtype>& vSolutions,
-                                 vector<valtype>& sigs1, vector<valtype>& sigs2)
-{
-    switch (txType)
-    {
-    case TX_NONSTANDARD:
-    case TX_NULL_DATA:
-        // Don't know anything about this, assume bigger one is correct:
-        if (sigs1.size() >= sigs2.size())
-            return PushAll(sigs1);
-        return PushAll(sigs2);
-    case TX_PUBKEY:
-    case TX_PUBKEYHASH:
-        // Signatures are bigger than placeholders or empty scripts:
-        if (sigs1.empty() || sigs1[0].empty())
-            return PushAll(sigs2);
-        return PushAll(sigs1);
-    case TX_SCRIPTHASH:
-        if (sigs1.empty() || sigs1.back().empty())
-            return PushAll(sigs2);
-        else if (sigs2.empty() || sigs2.back().empty())
-            return PushAll(sigs1);
-        else
-        {
-            // Recur to combine:
-            valtype spk = sigs1.back();
-            CScript pubKey2(spk.begin(), spk.end());
-
-            txnouttype txType2;
-            vector<vector<unsigned char> > vSolutions2;
-            Solver(pubKey2, txType2, vSolutions2);
-            sigs1.pop_back();
-            sigs2.pop_back();
-            CScript result = CombineSignatures(pubKey2, txTo, nIn, txType2, vSolutions2, sigs1, sigs2);
-            result << spk;
-            return result;
-        }
-    case TX_MULTISIG:
-        return CombineMultisig(scriptPubKey, txTo, nIn, vSolutions, sigs1, sigs2);
-    }
-
-    return CScript();
-}
-
-CScript CombineSignatures(CScript scriptPubKey, const CTransaction& txTo, unsigned int nIn,
-                          const CScript& scriptSig1, const CScript& scriptSig2)
-{
-    txnouttype txType;
-    vector<vector<unsigned char> > vSolutions;
-    Solver(scriptPubKey, txType, vSolutions);
-
-    vector<valtype> stack1;
-    EvalScript(stack1, scriptSig1, CTransaction(), 0, SCRIPT_VERIFY_NONE, 0);
-    vector<valtype> stack2;
-    EvalScript(stack2, scriptSig2, CTransaction(), 0, SCRIPT_VERIFY_NONE, 0);
-
-    return CombineSignatures(scriptPubKey, txTo, nIn, txType, vSolutions, stack1, stack2);
-}
-*/
-unsigned int CScript::GetSigOpCount(bool fAccurate) const
-{
-    unsigned int n = 0;
-    const_iterator pc = begin();
-    opcodetype lastOpcode = OP_INVALIDOPCODE;
-    while (pc < end())
-    {
-        opcodetype opcode;
-        if (!GetOp(pc, opcode))
-            break;
-        if (opcode == OP_CHECKSIG || opcode == OP_CHECKSIGVERIFY)
-            n++;
-        else if (opcode == OP_CHECKMULTISIG || opcode == OP_CHECKMULTISIGVERIFY)
-        {
-            if (fAccurate && lastOpcode >= OP_1 && lastOpcode <= OP_16)
-                n += DecodeOP_N(lastOpcode);
-            else
-                n += 20;
-        }
-        lastOpcode = opcode;
-    }
-    return n;
-}
-
-unsigned int CScript::GetSigOpCount(const CScript& scriptSig) const
-{
-    if (!IsPayToScriptHash())
-        return GetSigOpCount(true);
-
-    // This is a pay-to-script-hash scriptPubKey;
-    // get the last item that the scriptSig
-    // pushes onto the stack:
-    const_iterator pc = scriptSig.begin();
-    vector<unsigned char> data;
-    while (pc < scriptSig.end())
-    {
-        opcodetype opcode;
-        if (!scriptSig.GetOp(pc, opcode, data))
-            return 0;
-        if (opcode > OP_16)
-            return 0;
-    }
-
-    /// ... and return its opcount:
-    CScript subscript(data.begin(), data.end());
-    return subscript.GetSigOpCount(true);
-}
-
-bool CScript::IsPayToScriptHash() const
-{
-    // Extra-fast test for pay-to-script-hash CScripts:
-    return (this->size() == 23 &&
-            this->at(0) == OP_HASH160 &&
-            this->at(1) == 0x14 &&
-            this->at(22) == OP_EQUAL);
-}
-
-bool CScript::HasCanonicalPushes() const
-{
-    const_iterator pc = begin();
-    while (pc < end())
-    {
-        opcodetype opcode;
-        std::vector<unsigned char> data;
-        if (!GetOp(pc, opcode, data))
-            return false;
-        if (opcode > OP_16)
-            continue;
-        if (opcode < OP_PUSHDATA1 && opcode > OP_0 && (data.size() == 1 && data[0] <= 16))
-            // Could have used an OP_n code, rather than a 1-byte push.
-            return false;
-        if (opcode == OP_PUSHDATA1 && data.size() < OP_PUSHDATA1)
-            // Could have used a normal n-byte push, rather than OP_PUSHDATA1.
-            return false;
-        if (opcode == OP_PUSHDATA2 && data.size() <= 0xFF)
-            // Could have used an OP_PUSHDATA1.
-            return false;
-        if (opcode == OP_PUSHDATA4 && data.size() <= 0xFFFF)
-            // Could have used an OP_PUSHDATA2.
-            return false;
-    }
-    return true;
-}
-
-class CScriptVisitor : public boost::static_visitor<bool>
-{
-private:
-    CScript *script;
-public:
-    CScriptVisitor(CScript *scriptin) { script = scriptin; }
-
-    bool operator()(const CNoDestination &dest) const {
-        script->clear();
+    CPubKey pubkey(vchPubKey);
+    if (!pubkey.IsValid())
         return false;
-    }
 
-    bool operator()(const CKeyID &keyID) const {
-        script->clear();
-        *script << OP_DUP << OP_HASH160 << keyID << OP_EQUALVERIFY << OP_CHECKSIG;
-        return true;
-    }
-
-    bool operator()(const CScriptID &scriptID) const {
-        script->clear();
-        *script << OP_HASH160 << scriptID << OP_EQUAL;
-        return true;
-    }
-
-    bool operator()(const CStealthAddress &stxAddr) const {
-        script->clear();
-        //*script << OP_HASH160 << scriptID << OP_EQUAL;
-        printf("TODO\n");
+    // Hash type is one byte tacked on to the end of the signature
+    vector<unsigned char> vchSig(vchSigIn);
+    if (vchSig.empty())
         return false;
-    }
-};
+    int nHashType = vchSig.back();
+    vchSig.pop_back();
 
-void CScript::SetDestination(const CTxDestination& dest)
-{
-    boost::apply_visitor(CScriptVisitor(this), dest);
-}
+    uint256 sighash = SignatureHash(scriptCode, *txTo, nIn, nHashType);
 
-void CScript::SetMultisig(int nRequired, const std::vector<CPubKey>& keys)
-{
-    this->clear();
-
-    *this << EncodeOP_N(nRequired);
-    BOOST_FOREACH(const CPubKey& key, keys)
-        *this << key;
-    *this << EncodeOP_N(keys.size()) << OP_CHECKMULTISIG;
-}
-
-CScript GetScriptForDestination(const CTxDestination& dest)
-{
-    CScript script;
-
-    boost::apply_visitor(CScriptVisitor(&script), dest);
-    return script;
-}
-
-CScript GetScriptForMultisig(int nRequired, const std::vector<CPubKey>& keys)
-{
-    CScript script;
-
-    script << CScript::EncodeOP_N(nRequired);
-    BOOST_FOREACH(const CPubKey& key, keys)
-        script << ToByteVector(key);
-    script << CScript::EncodeOP_N(keys.size()) << OP_CHECKMULTISIG;
-    return script;
-}
-
-bool CScript::IsNormalPaymentScript() const
-{
-    if(this->size() != 25) return false;
-
-    std::string str;
-    opcodetype opcode;
-    const_iterator pc = begin();
-    int i = 0;
-    while (pc < end())
-    {
-        GetOp(pc, opcode);
-
-        if(     i == 0 && opcode != OP_DUP) return false;
-        else if(i == 1 && opcode != OP_HASH160) return false;
-        else if(i == 3 && opcode != OP_EQUALVERIFY) return false;
-        else if(i == 4 && opcode != OP_CHECKSIG) return false;
-        else if(i == 5) return false;
-
-        i++;
-    }
+    if (!VerifySignature(vchSig, pubkey, sighash))
+        return false;
 
     return true;
 }

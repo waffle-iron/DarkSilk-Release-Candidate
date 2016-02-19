@@ -126,7 +126,6 @@ INCLUDEPATH += src/leveldb/include src/leveldb/helpers src/leveldb/helpers/memen
 LIBS += $$PWD/src/leveldb/libleveldb.a $$PWD/src/leveldb/libmemenv.a
 SOURCES += src/txdb-leveldb.cpp
 
-
 INCLUDEPATH +=  src/crypto/argon2 \
                 src/crypto/argon2/blake2
 
@@ -236,6 +235,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/txmempool.h \
             src/wallet/walletdb.h \
             src/script/compressor.h \
+            src/script/script.h \
             src/script/sign.h \
             src/script/scriptutils.h \
             src/init.h \
@@ -338,7 +338,8 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/crypto/argon2/blake2/blake2.h \
             src/crypto/argon2/blake2/blamka-round-opt.h \
             src/crypto/argon2/blake2/blamka-round-ref.h \
-            src/crypto/argon2/opt.h
+            src/crypto/argon2/opt.h \
+    src/script/script.h
 
 
 SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
@@ -369,6 +370,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/ecwrapper.cpp \
             src/pubkey.cpp \
             src/script/compressor.cpp \
+            src/script/script.cpp \
             src/script/sign.cpp \
             src/script/scriptutils.cpp \
             src/main.cpp \

@@ -5,6 +5,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "wallet.h"
+#include "script/sign.h"
 #include "base58.h"
 #include "checkpoints.h"
 #include "coincontrol.h"
@@ -29,7 +30,6 @@
 #include "txdb-leveldb.h"
 #include "consensus/consensus.h"
 #include "consensus/validation.h"
-#include "script/sign.h"
 
 #include <assert.h>
 

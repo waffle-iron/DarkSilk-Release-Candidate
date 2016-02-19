@@ -5,6 +5,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "base58.h"
+#include "script/sign.h"
 #include "primitives/transaction.h"
 #include "consensus/validation.h"
 #include "rpcserver.h"
@@ -13,8 +14,6 @@
 #include "main.h"
 #include "net.h"
 #include "keystore.h"
-#include "script/scriptutils.h"
-#include "script/sign.h"
 #include "txdb-leveldb.h"
 
 #ifdef ENABLE_WALLET
@@ -499,7 +498,7 @@ Value signrawtransaction(const Array& params, bool fHelp)
 
     // mergedTx will end up with all the signatures; it
     // starts as a clone of the rawtx:
-    CMutableTransaction mergedTx(txVariants[0]);
+    CTransaction mergedTx(txVariants[0]);
     bool fComplete = true;
 
     // Fetch previous transactions (inputs):
@@ -655,7 +654,7 @@ Value signrawtransaction(const Array& params, bool fHelp)
             SignSignature(keystore, prevPubKey, mergedTx, i, nHashType);
 
         // ... and merge in other signatures:
-        BOOST_FOREACH(const CMutableTransaction& txv, txVariants)
+        BOOST_FOREACH(const CTransaction& txv, txVariants)
         {
             txin.scriptSig = CombineSignatures(prevPubKey, mergedTx, i, txin.scriptSig, txv.vin[i].scriptSig);
         }
