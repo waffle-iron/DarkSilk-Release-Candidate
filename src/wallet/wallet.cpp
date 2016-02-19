@@ -2665,7 +2665,7 @@ bool CWallet::CreateCollateralTransaction(CMutableTransaction& txCollateral, std
     /// TODO (AA): Fix this... need txTo in SignSignature
     //int vinNumber = 0;
     //BOOST_FOREACH(CTxIn v, txCollateral.vin) {
-        //if(!SignSignature(*this, v.prevPubKey, txCollateral, vinNumber, int(SIGHASH_ALL|SIGHASH_ANYONECANPAY))) {
+        //if(!SignSignature(*this, v.prevPubKey, txCollateral, vinNumber, int(sighashes::SIGHASH_ALL|sighashes::SIGHASH_ANYONECANPAY))) {
         //    BOOST_FOREACH(CTxIn v, vCoinsCollateral)
         //        UnlockCoin(v.prevout);
 

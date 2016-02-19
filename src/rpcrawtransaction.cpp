@@ -615,17 +615,17 @@ Value signrawtransaction(const Array& params, bool fHelp)
     const CKeyStore& keystore = tempKeystore;
 #endif
 
-    int nHashType = SIGHASH_ALL;    
+    int nHashType = sighashes::SIGHASH_ALL;
     if (params.size() > 3 && params[3].type() != null_type)
     {
         static map<string, int> mapSigHashValues =
             boost::assign::map_list_of
-            (string("ALL"), int(SIGHASH_ALL))
-            (string("ALL|ANYONECANPAY"), int(SIGHASH_ALL|SIGHASH_ANYONECANPAY))
-            (string("NONE"), int(SIGHASH_NONE))
-            (string("NONE|ANYONECANPAY"), int(SIGHASH_NONE|SIGHASH_ANYONECANPAY))
-            (string("SINGLE"), int(SIGHASH_SINGLE))
-            (string("SINGLE|ANYONECANPAY"), int(SIGHASH_SINGLE|SIGHASH_ANYONECANPAY))
+            (string("ALL"), int(sighashes::SIGHASH_ALL))
+            (string("ALL|ANYONECANPAY"), int(sighashes::SIGHASH_ALL|sighashes::SIGHASH_ANYONECANPAY))
+            (string("NONE"), int(sighashes::SIGHASH_NONE))
+            (string("NONE|ANYONECANPAY"), int(sighashes::SIGHASH_NONE|sighashes::SIGHASH_ANYONECANPAY))
+            (string("SINGLE"), int(sighashes::SIGHASH_SINGLE))
+            (string("SINGLE|ANYONECANPAY"), int(sighashes::SIGHASH_SINGLE|sighashes::SIGHASH_ANYONECANPAY))
             ;
         string strHashType = params[3].get_str();
         if (mapSigHashValues.count(strHashType))
@@ -634,7 +634,7 @@ Value signrawtransaction(const Array& params, bool fHelp)
             throw JSONRPCError(RPC_INVALID_PARAMETER, "Invalid sighash param");
     }
 
-    bool fHashSingle = ((nHashType & ~SIGHASH_ANYONECANPAY) == SIGHASH_SINGLE);
+    bool fHashSingle = ((nHashType & ~sighashes::SIGHASH_ANYONECANPAY) == sighashes::SIGHASH_SINGLE);
 
     // Sign what we can:
     for (unsigned int i = 0; i < mergedTx.vin.size(); i++)

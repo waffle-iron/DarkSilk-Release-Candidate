@@ -7,7 +7,6 @@
 #define H_DARKSILK_SCRIPT_SIGN
 
 #include "script/script.h"
-#include "script/scriptutils.h"
 #include "uint256.h"
 #include <vector>
 
@@ -19,6 +18,18 @@ struct CMutableTransaction;
 using namespace std;
 
 extern unsigned nMaxDatacarrierBytes;
+
+namespace sighashes
+{
+    ///! Signature hash types/flags
+    enum
+    {
+        SIGHASH_ALL = 1,
+        SIGHASH_NONE = 2,
+        SIGHASH_SINGLE = 3,
+        SIGHASH_ANYONECANPAY = 0x80,
+    };
+}
 
 enum txnouttype
 {
@@ -37,22 +48,9 @@ bool Solver(const CScript& scriptPubKey, txnouttype& typeRet, std::vector<std::v
 bool Solver(const CKeyStore& keystore, const CScript& scriptPubKey, uint256 hash, int nHashType,
                   CScript& scriptSigRet, txnouttype& whichTypeRet);
 
-///! Signature hash types/flags
-enum
-{
-    SIGHASH_ALL = 1,
-    SIGHASH_NONE = 2,
-    SIGHASH_SINGLE = 3,
-    SIGHASH_ANYONECANPAY = 0x80,
-};
-
-bool SignSignature(const CKeyStore& keystore, const CScript& fromPubKey, CTransaction& txTo, unsigned int nIn, int nHashType=SIGHASH_ALL);
-bool SignSignature(const CKeyStore& keystore, const CTransaction& txFrom, CTransaction& txTo, unsigned int nIn, int nHashType=SIGHASH_ALL);
-bool SignSignature(const CKeyStore& keystore, const CMutableTransaction& txFrom, CTransaction& txTo, unsigned int nIn, int nHashType=SIGHASH_ALL);
-
-
-uint256 SignatureHash(const CScript& scriptCode, const CMutableTransaction& txTo, unsigned int nIn, int nHashType=SIGHASH_ALL);
-uint256 SignatureHash(const CScript& scriptCode, const CTransaction& txTo, unsigned int nIn, int nHashType=SIGHASH_ALL);
+bool SignSignature(const CKeyStore& keystore, const CScript& fromPubKey, CTransaction& txTo, unsigned int nIn, int nHashType=sighashes::SIGHASH_ALL);
+bool SignSignature(const CKeyStore& keystore, const CTransaction& txFrom, CTransaction& txTo, unsigned int nIn, int nHashType=sighashes::SIGHASH_ALL);
+bool SignSignature(const CKeyStore& keystore, const CMutableTransaction& txFrom, CTransaction& txTo, unsigned int nIn, int nHashType=sighashes::SIGHASH_ALL);
 
 int ScriptSigArgsExpected(txnouttype t, const std::vector<std::vector<unsigned char> >& vSolutions);
 bool IsStandard(const CScript& scriptPubKey, txnouttype& whichType);
