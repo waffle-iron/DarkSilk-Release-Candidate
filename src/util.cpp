@@ -103,6 +103,7 @@ bool fServer = false;
 bool fCommandLine = false;
 string strMiscWarning;
 bool fNoListen = false;
+bool fLogIPs = false;
 bool fLogTimestamps = false;
 volatile bool fReopenDebugLog = false;
 string strBudgetMode = "";
@@ -142,6 +143,8 @@ public:
     }
     ~CInit()
     {
+        // Securely erase the memory used by the PRNG
+        RAND_cleanup();
         // Shutdown OpenSSL library multithreading support
         CRYPTO_set_locking_callback(NULL);
         for (int i = 0; i < CRYPTO_num_locks(); i++)

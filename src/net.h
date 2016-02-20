@@ -6,23 +6,28 @@
 #ifndef DARKSILK_NET_H
 #define DARKSILK_NET_H
 
-#include <deque>
-#include <boost/array.hpp>
-#include <boost/foreach.hpp>
-#include <boost/signals2/signal.hpp>
-#include <openssl/rand.h>
+#include "addrman.h"
+#include "compat.h"
+#include "hash.h"
+#include "mruset.h"
+#include "netbase.h"
+#include "protocol.h"
+#include "util.h"
+#include "streams.h"
+#include "sync.h"
+#include "uint256.h"
 
+#include <deque>
+#include <stdint.h>
 
 #ifndef WIN32
 #include <arpa/inet.h>
 #endif
 
-#include "mruset.h"
-#include "netbase.h"
-#include "protocol.h"
-#include "addrman.h"
-#include "hash.h"
-#include "streams.h"
+#include <boost/array.hpp>
+#include <boost/foreach.hpp>
+#include <boost/signals2/signal.hpp>
+#include <openssl/rand.h>
 
 class CNode;
 class CBlockIndex;
@@ -360,6 +365,11 @@ public:
             LOCK(cs_nLastNodeId);
             id = nLastNodeId++;
         }
+
+    if (fLogIPs)
+        LogPrint("net", "Added connection to %s peer=%d\n", addrName, id);
+    else
+        LogPrint("net", "Added connection peer=%d\n", id);
 
         // Be shy and don't send version until we hear
         if (hSocket != INVALID_SOCKET && !fInbound)

@@ -4,12 +4,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <boost/algorithm/string/replace.hpp>
-#include <boost/filesystem.hpp>
-#include <boost/filesystem/fstream.hpp>
-#include <boost/lexical_cast.hpp>
-
 #include "main.h"
+#include "addrman.h"
 #include "alert.h"
 #include "chainparams.h"
 #include "checkpoints.h"
@@ -29,6 +25,11 @@
 #include "coins.h"
 #include "txdb-leveldb.h"
 
+#include <boost/algorithm/string/replace.hpp>
+#include <boost/filesystem.hpp>
+#include <boost/filesystem/fstream.hpp>
+#include <boost/lexical_cast.hpp>
+#include <boost/thread.hpp>
 
 using namespace std;
 using namespace boost;
@@ -76,6 +77,7 @@ uint256 hashBestChain = 0;
 CBlockIndex* pindexBest = NULL;
 
 int64_t nTimeBestReceived = 0;
+CConditionVariable cvBlockChange;
 bool fImporting = false;
 bool fReindex = false;
 bool fAddrIndex = false;
@@ -2755,7 +2757,10 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
                 item.second.RelayTo(pfrom);
         }
 
-
+        string remoteAddr;
+        if (fLogIPs)
+            remoteAddr = ", peeraddr=" + pfrom->addr.ToString();
+ 
         pfrom->fSuccessfullyConnected = true;
 
         LogPrintf("receive version message: version %d, blocks=%d, us=%s, them=%s, peer=%s\n", pfrom->nVersion, pfrom->nStartingHeight, addrMe.ToString(), addrFrom.ToString(), pfrom->addr.ToString());

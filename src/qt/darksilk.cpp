@@ -31,8 +31,8 @@
 #include <QSplashScreen>
 #include <QLibraryInfo>
 
-#if defined(DARKSILK_NEED_QT_PLUGINS) && !defined(_DARKSILK_QT_PLUGINS_INCLUDED)
-#define _DARKSILK_QT_PLUGINS_INCLUDED
+ #if defined(DARKSILK_NEED_QT_PLUGINS) && defined(QT_STATICPLUGIN) && !defined(_DARKSILK_QT_PLUGINS_INCLUDED) 
+ #define _DARKSILK_QT_PLUGINS_INCLUDED
 #define __INSURE__
 #include <QtPlugin>
 Q_IMPORT_PLUGIN(qcncodecs)
@@ -41,6 +41,10 @@ Q_IMPORT_PLUGIN(qtwcodecs)
 Q_IMPORT_PLUGIN(qkrcodecs)
 Q_IMPORT_PLUGIN(qtaccessiblewidgets)
 #endif
+
+// Declare meta types used for QMetaObject::invokeMethod
+Q_DECLARE_METATYPE(bool*)
+Q_DECLARE_METATYPE(CAmount)
 
 // Need a global reference for the notifications to find the GUI
 static DarkSilkGUI *guiref;
@@ -169,6 +173,12 @@ int main(int argc, char *argv[])
     }
     ReadConfigFile(mapArgs, mapMultiArgs);
 
+    // Register meta types used for QMetaObject::invokeMethod
+    qRegisterMetaType< bool* >();
+    //   Need to pass name here as CAmount is a typedef (see http://qt-project.org/doc/qt-5/qmetatype.html#qRegisterMetaType)
+    //   IMPORTANT if it is no longer a typedef use the normal variant above
+    qRegisterMetaType< CAmount >("CAmount");
+ 
     // Application identification (must be set before OptionsModel is initialized,
     // as it is used to locate QSettings)
     app.setOrganizationName("DarkSilk");

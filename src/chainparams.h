@@ -4,8 +4,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DARKSILK_CHAIN_PARAMS_H
-#define DARKSILK_CHAIN_PARAMS_H
+#ifndef DARKSILK_CHAINPARAMS_H
+#define DARKSILK_CHAINPARAMS_H
 
 #include "bignum.h"
 #include "uint256.h"

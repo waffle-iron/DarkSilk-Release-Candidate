@@ -8,8 +8,8 @@
 # error This header can only be compiled as C++.
 #endif
 
-#ifndef __INCLUDED_PROTOCOL_H__
-#define __INCLUDED_PROTOCOL_H__
+#ifndef INCLUDED_PROTOCOL_H
+#define INCLUDED_PROTOCOL_H
 
 #include "chainparams.h"
 #include "serialize.h"
@@ -17,7 +17,6 @@
 
 #include <stdint.h>
 #include <string>
-
 
 /** Message header.
  * (4) message start.
@@ -81,20 +80,19 @@ class CAddress : public CService
 
         ADD_SERIALIZE_METHODS;
 
-        template <typename Stream, typename Operation>
-        inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
-            CAddress* pthis = const_cast<CAddress*>(this);
-            CService* pip = (CService*)pthis;
-            if (ser_action.ForRead())
-                pthis->Init();
-            if (nType & SER_DISK)
-                READWRITE(nVersion);
-            if ((nType & SER_DISK) ||
-                (nVersion >= CADDR_TIME_VERSION && !(nType & SER_GETHASH)))
-                READWRITE(nTime);
-            READWRITE(nServices);
-            READWRITE(*pip);
-        }
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
+    {
+        if (ser_action.ForRead())
+            Init();
+        if (nType & SER_DISK)
+            READWRITE(nVersion);
+        if ((nType & SER_DISK) ||
+            (nVersion >= CADDR_TIME_VERSION && !(nType & SER_GETHASH)))
+            READWRITE(nTime);
+        READWRITE(nServices);
+        READWRITE(*(CService*)this);
+    }
 
         void print() const;
 
@@ -148,6 +146,7 @@ enum {
     MSG_TXLOCK_VOTE,
     MSG_SPORK,
     MSG_STORMNODE_WINNER,
+    MSG_STORMNODE_SCANNING_ERROR,
     MSG_BUDGET_VOTE,
     MSG_BUDGET_PROPOSAL,
     MSG_BUDGET_FINALIZED,
@@ -159,4 +158,4 @@ enum {
 };
 
 
-#endif // __INCLUDED_PROTOCOL_H__
+#endif // INCLUDED_PROTOCOL_H

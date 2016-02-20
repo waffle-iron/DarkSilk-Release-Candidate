@@ -4,12 +4,11 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "primitives/transaction.h"
-#include "init.h"
-#include "chainparams.h"
-#include "db.h"
 #include "net.h"
-#include "main.h"
+#include "addrman.h"
+#include "chainparams.h"
+#include "clientversion.h"
+#include "primitives/transaction.h"
 #include "ui_interface.h"
 #include "sandstorm.h"
 #include "wallet.h"
@@ -20,6 +19,8 @@
 
 #ifdef WIN32
 #include <string.h>
+#else
+#include <fcntl.h>
 #endif
 
 #ifdef USE_UPNP
@@ -29,10 +30,17 @@
 #include <miniupnpc/upnperrors.h>
 #endif
 
+#include <boost/filesystem.hpp>
+#include <boost/thread.hpp>
+
 #define TOR_NET_STRING "tor"
 
 // Dump addresses to peers.dat every 15 minutes (900s)
 #define DUMP_ADDRESSES_INTERVAL 900
+
+#if !defined(HAVE_MSG_NOSIGNAL) && !defined(MSG_NOSIGNAL)
+#define MSG_NOSIGNAL 0
+#endif
 
 using namespace std;
 using namespace boost;
@@ -469,8 +477,11 @@ void CNode::PushVersion()
     CAddress addrYou = (addr.IsRoutable() && !IsProxy(addr) ? addr : CAddress(CService("0.0.0.0",0)));
     CAddress addrMe = GetLocalAddress(&addr);
     GetRandBytes((unsigned char*)&nLocalHostNonce, sizeof(nLocalHostNonce));
-    LogPrint("net", "send version message: version %d, blocks=%d, us=%s, them=%s, peer=%s\n", PROTOCOL_VERSION, nBestHeight, addrMe.ToString(), addrYou.ToString(), addr.ToString());
-    PushMessage("version", PROTOCOL_VERSION, nLocalServices, nTime, addrYou, addrMe,
+    if (fLogIPs)
+        LogPrint("net", "send version message: version %d, blocks=%d, us=%s, them=%s, peer=%d\n", PROTOCOL_VERSION, nBestHeight, addrMe.ToString(), addrYou.ToString(), id);
+    else
+        LogPrint("net", "send version message: version %d, blocks=%d, us=%s, them=%s, peer=%s\n", PROTOCOL_VERSION, nBestHeight, addrMe.ToString(), addrYou.ToString(), addr.ToString());
+     PushMessage("version", PROTOCOL_VERSION, nLocalServices, nTime, addrYou, addrMe,
                 nLocalHostNonce, FormatSubVersion(CLIENT_NAME, CLIENT_VERSION, std::vector<string>()), nBestHeight);
 }
 
@@ -1403,8 +1414,8 @@ void ThreadOpenConnections()
         while (true)
         {
             // use an nUnkBias between 10 (no outgoing connections) and 90 (8 outgoing connections)
-            CAddress addr = addrman.Select(10 + min(nOutbound,8)*10);
-
+            CAddress addr = addrman.Select();
+            
             // if we selected an invalid address, restart
             if (!addr.IsValid() || setConnected.count(addr.GetGroup()) || IsLocal(addr))
                 break;

@@ -5,8 +5,14 @@
 // file license.txt or http://www.opensource.org/licenses/mit-license.php.
 
 #include "txdb-leveldb.h"
-
-#include <map>
+#include "net.h"
+#include "protocol.h"
+#include "chainparams.h"
+#include "kernel.h"
+#include "checkpoints.h"
+#include "txdb.h"
+#include "util.h"
+#include "main.h"
 
 #include <boost/version.hpp>
 #include <boost/filesystem.hpp>
@@ -17,12 +23,7 @@
 #include <leveldb/filter_policy.h>
 #include <memenv/memenv.h>
 
-#include "kernel.h"
-#include "checkpoints.h"
-#include "txdb.h"
-#include "util.h"
-#include "main.h"
-#include "chainparams.h"
+#include <map>
 
 using namespace std;
 using namespace boost;

@@ -5,10 +5,12 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "chainparams.h"
-#include "main.h"
 #include "chainparamsseeds.h"
+#include "main.h"
+#include "net.h"
+#include "util.h"
 
-#include "assert.h"
+#include <assert.h>
 #include <boost/assign/list_of.hpp>
 
 using namespace boost::assign;
