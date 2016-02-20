@@ -6,7 +6,6 @@
 #include "messagemodel.h"
 #include "optionsmodel.h"
 #include "addresstablemodel.h"
-
 #include "smessage.h"
 
 #include <QApplication>

@@ -1,6 +1,5 @@
 #include "sandstormconfig.h"
 #include "ui_sandstormconfig.h"
-
 #include "darksilkunits.h"
 #include "guiconstants.h"
 #include "optionsmodel.h"

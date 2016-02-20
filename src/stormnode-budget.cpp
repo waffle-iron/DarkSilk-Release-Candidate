@@ -2,10 +2,9 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include "stormnode-budget.h"
 #include "main.h"
 #include "init.h"
-
-#include "stormnode-budget.h"
 #include "stormnode.h"
 #include "sandstorm.h"
 #include "stormnodeman.h"

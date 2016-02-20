@@ -5,7 +5,6 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "db.h"
-
 #include "addrman.h"
 #include "hash.h"
 #include "util.h"

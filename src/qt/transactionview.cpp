@@ -1,5 +1,4 @@
 #include "transactionview.h"
-
 #include "transactionfilterproxy.h"
 #include "transactionrecord.h"
 #include "walletmodel.h"

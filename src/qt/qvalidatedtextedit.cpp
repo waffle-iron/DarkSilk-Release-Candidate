@@ -1,5 +1,4 @@
 #include "qvalidatedtextedit.h"
-
 #include "guiconstants.h"
 
 #include <QMessageBox>

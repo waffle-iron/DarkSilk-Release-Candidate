@@ -3,7 +3,6 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "timedata.h"
-
 #include "netbase.h"
 #include "sync.h"
 #include "ui_interface.h"
