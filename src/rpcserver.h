@@ -22,6 +22,7 @@
  
 class CBlockIndex;
 class CNetAddr;
+
 /** Start RPC threads */
 void StartRPCThreads();
 /**
@@ -32,6 +33,8 @@ void StartRPCThreads();
 void StartDummyRPCThread();
 /** Stop RPC threads */
 void StopRPCThreads();
+/** Query whether RPC is running */
+bool IsRPCRunning();
 
 /** 
  * Set the RPC warmup status.  When this is done, all RPC calls will error out
