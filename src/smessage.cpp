@@ -31,6 +31,13 @@ Notes:
 */
 
 #include "smessage.h"
+#include "base58.h"
+#include "db.h"
+#include "init.h" // pwalletMain
+#include "txdb.h"
+#include "sync.h"
+#include "ecwrapper.h"
+#include "txdb-leveldb.h"
 
 #include <stdint.h>
 #include <time.h>
@@ -50,14 +57,6 @@ Notes:
 #include <boost/lexical_cast.hpp>
 #include <boost/algorithm/string/predicate.hpp>
 
-
-#include "base58.h"
-#include "db.h"
-#include "init.h" // pwalletMain
-#include "txdb.h"
-#include "sync.h"
-#include "ecwrapper.h"
-#include "txdb-leveldb.h"
 
 #include "lz4/lz4.c"
 

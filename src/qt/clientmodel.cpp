@@ -1,12 +1,9 @@
 #include "clientmodel.h"
-
 #include "guiconstants.h"
 #include "peertablemodel.h"
-
 #include "optionsmodel.h"
 #include "addresstablemodel.h"
 #include "transactiontablemodel.h"
-
 #include "chainparams.h"
 #include "alert.h"
 #include "main.h"

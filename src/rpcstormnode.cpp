@@ -2,6 +2,7 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include "rpcserver.h"
 #include "main.h"
 #include "db.h"
 #include "init.h"
@@ -11,7 +12,6 @@
 #include "stormnode-sync.h"
 #include "stormnodeconfig.h"
 #include "stormnodeman.h"
-#include "rpcserver.h"
 #include "sandstorm.h"
 
 #include <fstream>

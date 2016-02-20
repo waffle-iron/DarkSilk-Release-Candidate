@@ -3,7 +3,6 @@
 //
 
 #include "alert.h"
-
 #include "chainparams.h"
 #include "pubkey.h"
 #include "net.h"

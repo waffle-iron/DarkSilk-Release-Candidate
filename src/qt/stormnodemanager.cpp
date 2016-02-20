@@ -2,7 +2,6 @@
 #include "ui_stormnodemanager.h"
 #include "addeditstormnode.h"
 #include "stormnodeconfigdialog.h"
-
 #include "sync.h"
 #include "clientmodel.h"
 #include "walletmodel.h"

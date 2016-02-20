@@ -1,6 +1,5 @@
 #include "optionsdialog.h"
 #include "ui_optionsdialog.h"
-
 #include "darksilkunits.h"
 #include "monitoreddatamapper.h"
 #include "netbase.h"

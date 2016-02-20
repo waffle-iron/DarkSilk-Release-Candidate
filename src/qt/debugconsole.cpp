@@ -1,9 +1,7 @@
 #include "debugconsole.h"
 #include "ui_debugconsole.h"
-
 #include "clientmodel.h"
 #include "guiutil.h"
-
 #include "rpcserver.h"
 #include "rpcclient.h"
 

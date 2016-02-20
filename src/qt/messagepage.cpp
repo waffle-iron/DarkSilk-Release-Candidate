@@ -1,6 +1,5 @@
 #include "messagepage.h"
 #include "ui_messagepage.h"
-
 #include "sendmessagesdialog.h"
 #include "mrichtextedit.h"
 #include "messagemodel.h"

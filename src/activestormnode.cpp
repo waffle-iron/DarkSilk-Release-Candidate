@@ -2,9 +2,9 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include "activestormnode.h"
 #include "addrman.h"
 #include "protocol.h"
-#include "activestormnode.h"
 #include "stormnode-sync.h"
 #include "stormnodeconfig.h"
 #include "stormnodeman.h"

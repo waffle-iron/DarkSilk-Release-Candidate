@@ -2,13 +2,13 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <iostream>
-#include <fstream>
-
-#include "init.h" // for pwalletMain
 #include "rpcserver.h"
+#include "init.h" // for pwalletMain
 #include "ui_interface.h"
 #include "base58.h"
+
+#include <iostream>
+#include <fstream>
 
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <boost/variant/get.hpp>

@@ -1,5 +1,4 @@
 #include "transactiontablemodel.h"
-
 #include "guiutil.h"
 #include "transactionrecord.h"
 #include "guiconstants.h"
@@ -8,7 +7,6 @@
 #include "optionsmodel.h"
 #include "addresstablemodel.h"
 #include "darksilkunits.h"
-
 #include "wallet.h"
 #include "ui_interface.h"
 

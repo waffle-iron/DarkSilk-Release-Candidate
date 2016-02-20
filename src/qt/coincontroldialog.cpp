@@ -4,7 +4,6 @@
 
 #include "coincontroldialog.h"
 #include "ui_coincontroldialog.h"
-
 #include "addresstablemodel.h"
 #include "base58.h"
 #include "coincontrol.h"

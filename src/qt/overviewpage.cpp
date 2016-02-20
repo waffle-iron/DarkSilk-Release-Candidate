@@ -1,6 +1,5 @@
 #include "overviewpage.h"
 #include "ui_overviewpage.h"
-
 #include "clientmodel.h"
 #include "sandstorm.h"
 #include "sandstormconfig.h"

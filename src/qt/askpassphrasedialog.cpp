@@ -1,6 +1,5 @@
 #include "askpassphrasedialog.h"
 #include "ui_askpassphrasedialog.h"
-
 #include "guiconstants.h"
 #include "walletmodel.h"
 

@@ -3,7 +3,6 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "rpcserver.h"
-
 #include "alert.h"
 #include "main.h"
 #include "net.h"

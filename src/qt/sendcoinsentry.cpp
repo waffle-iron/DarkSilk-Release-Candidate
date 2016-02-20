@@ -1,6 +1,5 @@
 #include "sendcoinsentry.h"
 #include "ui_sendcoinsentry.h"
-
 #include "guiutil.h"
 #include "darksilkunits.h"
 #include "addressbookpage.h"

@@ -1,5 +1,4 @@
 #include "optionsmodel.h"
-
 #include "darksilkunits.h"
 #include "init.h"
 #include "wallet.h"

@@ -1,13 +1,11 @@
-// Copyright (c) 2011-2013 The Bitcoin Developers
+// Copyright (c) 2011-2016 The Bitcoin Developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "peertablemodel.h"
-
 #include "clientmodel.h"
 #include "guiconstants.h"
 #include "guiutil.h"
-
 #include "net.h"
 #include "sync.h"
 

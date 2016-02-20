@@ -1,6 +1,5 @@
 #include "qrcodedialog.h"
 #include "ui_qrcodedialog.h"
-
 #include "darksilkunits.h"
 #include "guiconstants.h"
 #include "guiutil.h"

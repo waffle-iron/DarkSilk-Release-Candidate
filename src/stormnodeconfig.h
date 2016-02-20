@@ -5,6 +5,9 @@
 #ifndef SRC_STORMNODECONFIG_H_
 #define SRC_STORMNODECONFIG_H_
 
+#include <string>
+#include <vector>
+
 class CStormnodeConfig;
 extern CStormnodeConfig stormnodeConfig;
 
