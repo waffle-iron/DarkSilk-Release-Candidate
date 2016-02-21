@@ -640,6 +640,7 @@ void StartRPCThreads()
         const char* threadName = "darksilk-rpc";
         stringstream ssthreadName;
         ssthreadName << threadName << (i + 1); 
+        RenameThread(ssthreadName.str().c_str());
         fRPCRunning = true;
     }
 }
