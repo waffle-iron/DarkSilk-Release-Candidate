@@ -398,8 +398,8 @@ bool IsDERSignature(const valtype &vchSig, bool haveHashType) {
     return true;
 }
 
-bool IsLowDERSignature(const valtype &vchSig, bool haveHashType) {
-    if (!IsDERSignature(vchSig, haveHashType)) {
+bool static IsLowDERSignature(const valtype &vchSig) {
+    if (!IsDERSignature(vchSig)) {
         return false;
     }
     std::vector<unsigned char> vchSigCopy(vchSig.begin(), vchSig.begin() + vchSig.size() - 1);

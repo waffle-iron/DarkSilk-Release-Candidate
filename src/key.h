@@ -161,6 +161,4 @@ void ECC_Stop(void);
 /** Check that required EC support is available at runtime. */
 bool ECC_InitSanityCheck(void);
 
-bool EnsureLowS(std::vector<unsigned char>& vchSig); 
-
 #endif // DARKSILK_KEY_H
