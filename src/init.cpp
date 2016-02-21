@@ -334,7 +334,7 @@ std::string HelpMessage()
     strUsage += "  -snconflock=<n>            " + _("Lock stormnodes from stormnode configuration file (default: 1)") + "\n";
     strUsage += "  -stormnodeprivkey=<n>     " + _("Set the stormnode private key") + "\n";
     strUsage += "  -stormnodeaddr=<n>        " + _("Set external address:port to get to this stormnode (example: address:port)") + "\n";
-    strUsage += "  -stormnodeminprotocol=<n> " + _("Ignore stormnodes less than version (example: 60135; default : 0)") + "\n";
+    strUsage += "  -stormnodeminprotocol=<n> " + _("Ignore stormnodes less than version (example: 60700; default : 0)") + "\n";
 
     strUsage += "  -enablesandstorm=<n>          " + strprintf(_("Enable use of automated sandstorm for funds stored in this wallet (0-1, default: 0)"), fEnableSandstorm) + "\n";
     strUsage += "  -sandstormmultisession=<n>    " + strprintf(_("Enable multiple sandstorm mixing sessions per block, experimental (0-1, default: %u)"), fSandstormMultiSession) + "\n";
