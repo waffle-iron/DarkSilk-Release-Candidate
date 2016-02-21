@@ -196,8 +196,13 @@ Value help(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() > 1)
         throw runtime_error(
-            "help [command]\n"
-            "List commands, or get help for a command.");
+            "help ( \"command\" )\n"
+            "\nList all commands, or get help for a specified command.\n"
+            "\nArguments:\n"
+            "1. \"command\"     (string, optional) The command to get help on\n"
+            "\nResult:\n"
+            "\"text\"     (string) The help text\n"
+        );
 
     string strCommand;
     if (params.size() > 0)
@@ -403,16 +408,6 @@ bool ClientAllowed(const boost::asio::ip::address& address)
             return true;
     return false;
 }
-
-class AcceptedConnection
-{
-public:
-    virtual ~AcceptedConnection() {}
-
-    virtual std::iostream& stream() = 0;
-    virtual std::string peer_address_to_string() const = 0;
-    virtual void close() = 0;
-};
 
 template <typename Protocol>
 class AcceptedConnectionImpl : public AcceptedConnection
@@ -869,14 +864,6 @@ void ServiceConnection(AcceptedConnection *conn)
             Value valRequest;
             if (!read_string(strRequest, valRequest))
                 throw JSONRPCError(RPC_PARSE_ERROR, "Parse error");
-
-            // Return immediately if in warmup
-            {
-                LOCK(cs_rpcWarmup);
-                fRPCInWarmup = false;
-                if (fRPCInWarmup)
-                    throw JSONRPCError(RPC_IN_WARMUP, rpcWarmupStatus);
-            }
 
             string strReply;
 
