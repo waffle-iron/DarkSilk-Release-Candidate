@@ -776,7 +776,7 @@ void CStormnodeMan::ProcessMessage(CNode* pfrom, std::string& strCommand, CDataS
         int nInvCount = 0;
 
         BOOST_FOREACH(CStormnode& sn, vStormnodes) {
-            if(sn.addr.IsRFC1918()) continue; //local network
+            if(sn.addr.IsRFC1918() || sn.addr.IsLocal()) continue; //local network
 
             if(sn.IsEnabled()) {
                 LogPrint("stormnode", "sseg - Sending Stormnode entry - %s \n", sn.addr.ToString());
