@@ -56,7 +56,7 @@ static const int MIN_STORMNODE_PAYMENT_PROTO_VERSION_1 = 60700;
 static const int MIN_STORMNODE_PAYMENT_PROTO_VERSION_2 = 60700;
 
 // disconnect from peers older than this proto version
-static const int MIN_PEER_PROTO_VERSION = 60145;
+static const int MIN_PEER_PROTO_VERSION = 60700;
 
 // disconnect from peers older than this proto version
 static const int MIN_POOL_PEER_PROTO_VERSION = 60700;
