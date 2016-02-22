@@ -997,7 +997,7 @@ Value sendmany(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() < 2 || params.size() > 6)
         throw runtime_error(
- +            "sendmany \"fromaccount\" {\"address\":amount,...} ( minconf \"comment\" use_ix use_ss)\n"
+            "sendmany \"fromaccount\" {\"address\":amount,...} ( minconf \"comment\" use_ix use_ss)\n"
             "\nSend multiple times. Amounts are double-precision floating point numbers."
             + HelpRequiringPassphrase() + "\n"
             "\nArguments:\n"
