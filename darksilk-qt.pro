@@ -108,11 +108,12 @@ contains(DARKSILK_NEED_QT_PLUGINS, 1) {
     QTPLUGIN += qcncodecs qjpcodecs qtwcodecs qkrcodecs qtaccessiblewidgets
 }
 
-# LIBSECP256K1 SUPPORT
-INCLUDEPATH += src/secp256k1/include src/secp256k1/src
+#Build Secp256k1
+INCLUDEPATH += src/secp256k1/include
 LIBS += $$PWD/src/secp256k1/src/libsecp256k1_la-secp256k1.o
 !win32 {
-    gensecp256k1.commands = cd $$PWD/src/secp256k1 && ./autogen.sh && ./configure --enable-module-recovery && make
+    # we use QMAKE_CXXFLAGS_RELEASE even without RELEASE=1 because we use RELEASE to indicate linking preferences not -O preferences
+    gensecp256k1.commands = cd $$PWD/src/secp256k1 && ./autogen.sh && ./configure --enable-module-recovery && CC=$$QMAKE_CC CXX=$$QMAKE_CXX $(MAKE) OPT=\"$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE\"
 } else {
     #Windows ???
 }
@@ -122,14 +123,10 @@ PRE_TARGETDEPS += $$PWD/src/secp256k1/src/libsecp256k1_la-secp256k1.o
 QMAKE_EXTRA_TARGETS += gensecp256k1
 QMAKE_CLEAN += $$PWD/src/secp256k1/src/libsecp256k1_la-secp256k1.o; cd $$PWD/src/secp256k1 ; $(MAKE) clean
 
+#Build LevelDB
 INCLUDEPATH += src/leveldb/include src/leveldb/helpers src/leveldb/helpers/memenv
 LIBS += $$PWD/src/leveldb/libleveldb.a $$PWD/src/leveldb/libmemenv.a
 SOURCES += src/txdb-leveldb.cpp
-
-
-INCLUDEPATH +=  src/crypto/argon2 \
-                src/crypto/argon2/blake2
-
 !win32 {
     # we use QMAKE_CXXFLAGS_RELEASE even without RELEASE=1 because we use RELEASE to indicate linking preferences not -O preferences
     genleveldb.commands = cd $$PWD/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX $(MAKE) OPT=\"$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE\" libleveldb.a libmemenv.a
@@ -182,6 +179,9 @@ contains(USE_O3, 1) {
 }
 
 QMAKE_CXXFLAGS_WARN_ON = -fdiagnostics-show-option -Wall -Wextra -Wno-ignored-qualifiers -Wformat -Wformat-security -Wno-unused-parameter -Wstack-protector
+
+INCLUDEPATH +=  src/crypto/argon2 \
+                src/crypto/argon2/blake2
 
 # Input
 DEPENDPATH += . \
