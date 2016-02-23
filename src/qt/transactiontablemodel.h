@@ -9,8 +9,7 @@ class TransactionTablePriv;
 class TransactionRecord;
 class WalletModel;
 
-/** UI model for the transaction table of a wallet.
- */
+///! UI model for the transaction table of a wallet.
 class TransactionTableModel : public QAbstractTableModel
 {
     Q_OBJECT
@@ -81,6 +80,9 @@ private:
     QVariant txStatusDecoration(const TransactionRecord *wtx) const;
     QVariant txWatchonlyDecoration(const TransactionRecord *wtx) const;
     QVariant txAddressDecoration(const TransactionRecord *wtx) const;
+
+    void subscribeToCoreSignals();
+    void unsubscribeFromCoreSignals();
 
 public slots:
     void updateTransaction(const QString &hash, int status);
