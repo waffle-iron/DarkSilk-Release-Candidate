@@ -639,6 +639,11 @@ contains(RELEASE, 1) {
     }
 }
 
+# Set GMP library
+!windows: {
+    LIBS += -lgmp
+}
+
 !windows:!macx {
     DEFINES += LINUX
     LIBS += -lrt -ldl
