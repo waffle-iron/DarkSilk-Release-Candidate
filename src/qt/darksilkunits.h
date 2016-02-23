@@ -78,6 +78,8 @@ public:
     static QString formatWithUnit(int unit, const CAmount& amount, bool plussign=false);
     //! Parse string to coin amount
     static bool parse(int unit, const QString &value, CAmount *val_out);
+    //! Gets title for amount column including current display unit if optionsModel reference available */
+    static QString getAmountColumnTitle(int unit);
 
     //! Format as string (with unit) but floor value up to "digits" settings
     static QString floorWithUnit(int unit, const CAmount& amount, bool plussign=false, SeparatorStyle separators=separatorStandard);
@@ -92,6 +94,7 @@ public:
         /** Unit identifier */
         UnitRole = Qt::UserRole
     };
+
     int rowCount(const QModelIndex &parent) const;
     QVariant data(const QModelIndex &index, int role) const;
     ///@}

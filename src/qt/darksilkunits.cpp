@@ -238,3 +238,14 @@ CAmount DarkSilkUnits::maxMoney()
 {
     return MAX_MONEY;
 }
+
+QString DarkSilkUnits::getAmountColumnTitle(int unit)
+{
+    QString amountTitle = QObject::tr("Amount");
+    if (DarkSilkUnits::valid(unit))
+    {
+        amountTitle += " ("+DarkSilkUnits::name(unit) + ")";
+    }
+    return amountTitle;
+}
+
