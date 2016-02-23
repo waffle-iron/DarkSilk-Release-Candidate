@@ -82,8 +82,9 @@ install dependencies:
 build darksilkd from git:
 
     $ git clone https://github.com/SilkNetwork/DarkSilk.git darksilk
-    $ cd darksilk/src/secp256k1 && ./autogen.sh && ./configure --enable-module-recovery && make
-    && cd .. && sudo make -f makefile.unix USE_UPNP=0
+    $ cd darksilk/src/secp256k1 && ./autogen.sh &&
+    ./configure --disable-shared --with-pic --with-bignum=no --enable-module-recovery &&
+    make && cd .. && sudo make -f makefile.unix USE_UPNP=0
    
 install and run darksilkd daemon:
 
@@ -92,11 +93,11 @@ install and run darksilkd daemon:
 
 here are a few commands, google for more.
 
-	$ ./darksilkd getinfo
-	$ ./darksilkd getpeerinfo
-        $ ./darksilkd getmininginfo
-	$ ./darksilkd getstakinginfo
-	$ ./darksilkd getnewaddresss
+    $ ./darksilkd getinfo
+    $ ./darksilkd getpeerinfo
+    $ ./darksilkd getmininginfo
+    $ ./darksilkd getstakinginfo
+    $ ./darksilkd getnewaddresss
 	
 
 Debian/Ubuntu Linux Qt5 Wallet Build Instructions
@@ -118,7 +119,7 @@ build darksilk-qt from git:
  
 running the darksilk Qt wallet:
 
-	$ sudo ./DarkSilk
+    $ sudo ./DarkSilk
     
 This will compile and build the Qt Wallet which takes a little while, please be patient.  When finished you will have a file called DarkSilk - Simply Double Click
 
