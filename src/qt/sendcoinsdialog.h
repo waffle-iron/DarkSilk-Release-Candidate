@@ -1,10 +1,10 @@
 #ifndef SENDCOINSDIALOG_H
 #define SENDCOINSDIALOG_H
 
-#include "amount.h"
-
 #include <QDialog>
 #include <QString>
+
+#include "amount.h"
 
 class ClientModel;
 class WalletModel;

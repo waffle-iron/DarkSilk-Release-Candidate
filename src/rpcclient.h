@@ -4,8 +4,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef _DARKSILKRPC_CLIENT_H_
-#define _DARKSILKRPC_CLIENT_H_ 1
+#ifndef DARKSILKRPC_CLIENT_H
+#define DARKSILKRPC_CLIENT_H
 
 #include "json/json_spirit_reader_template.h"
 #include "json/json_spirit_utils.h"
@@ -15,4 +15,4 @@ int CommandLineRPC(int argc, char *argv[]);
 
 json_spirit::Array RPCConvertValues(const std::string &strMethod, const std::vector<std::string> &strParams);
 
-#endif
+#endif // DARKSILKRPC_CLIENT_H

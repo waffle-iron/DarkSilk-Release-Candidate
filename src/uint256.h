@@ -10,9 +10,10 @@
 #include <assert.h>
 #include <cstring>
 #include <stdexcept>
-#include <stdint.h>
 #include <string>
 #include <vector>
+
+#include <stdint.h>
 
 extern const signed char p_util_hexdigit[256]; // defined in util.cpp
 

@@ -1,10 +1,10 @@
 #ifndef TRANSACTIONFILTERPROXY_H
 #define TRANSACTIONFILTERPROXY_H
 
-#include "amount.h"
-
 #include <QSortFilterProxyModel>
 #include <QDateTime>
+
+#include "amount.h"
 
 /** Filter the transaction list according to pre-specified rules. */
 class TransactionFilterProxy : public QSortFilterProxyModel

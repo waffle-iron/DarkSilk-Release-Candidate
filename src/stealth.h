@@ -5,14 +5,13 @@
 #ifndef DARKSILK_STEALTH_H
 #define DARKSILK_STEALTH_H
 
-#include "util.h"
-#include "serialize.h"
-
 #include <stdlib.h> 
 #include <stdio.h> 
 #include <vector>
 #include <inttypes.h>
 
+#include "util.h"
+#include "serialize.h"
 
 typedef std::vector<uint8_t> data_chunk;
 

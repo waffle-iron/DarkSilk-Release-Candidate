@@ -3,11 +3,11 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "darksilkunits.h"
-#include "primitives/transaction.h"
-
 #include <QStringList>
 #include <QSettings>
+
+#include "darksilkunits.h"
+#include "primitives/transaction.h"
 
 DarkSilkUnits::DarkSilkUnits(QObject *parent):
         QAbstractListModel(parent),

@@ -6,12 +6,6 @@
 #ifndef I2PSAM_H
 #define I2PSAM_H
 
-#include <string>
-#include <list>
-#include <stdint.h>
-#include <memory>
-#include <utility>
-
 #ifdef WIN32
 #ifndef DARKSILK_NETBASE_H
 ////#define _WIN32_WINNT 0x0501
@@ -24,6 +18,13 @@
 #include <netinet/in.h>     // for sockaddr_in
 #include <arpa/inet.h>      // for ntohs and htons
 #endif
+
+#include <string>
+#include <list>
+#include <memory>
+#include <utility>
+
+#include <stdint.h>
 
 //#ifndef WIN32
 

@@ -6,14 +6,15 @@
 #ifndef DARKSILK_COINS_H
 #define DARKSILK_COINS_H
 
-#include "undo.h"
-#include "txmempool.h"
-
-#include <assert.h>
-#include <stdint.h>
-
 #include <boost/foreach.hpp>
 #include <boost/unordered_map.hpp>
+
+#include <assert.h>
+
+#include <stdint.h>
+
+#include "undo.h"
+#include "txmempool.h"
 
 class CScriptCompressor;
 /// wrapper for CTxOut that provides a more compact serialization

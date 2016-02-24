@@ -2,6 +2,7 @@
 #define DEBUGCONSOLE_H
 
 #include <QDialog>
+
 #include "peertablemodel.h"
 
 namespace Ui {

@@ -2,6 +2,18 @@
  * W.J. van der Laan 2011-2016
  */
 
+#include <QApplication>
+#include <QMessageBox>
+#include <QFile>
+#include <QDir>
+#include <QTextStream>
+#include <QTextCodec>
+#include <QLocale>
+#include <QTimer>
+#include <QTranslator>
+#include <QSplashScreen>
+#include <QLibraryInfo>
+
 #include "darksilkgui.h"
 #include "clientmodel.h"
 #include "walletmodel.h"
@@ -15,24 +27,13 @@
 #include "ui_interface.h"
 #include "paymentserver.h"
 #include "winshutdownmonitor.h"
+
 #ifdef Q_OS_MAC
 #include "macdockiconhandler.h"
 #endif
 
-#include <QApplication>
-#include <QMessageBox>
-#include <QFile>
-#include <QDir>
-#include <QTextStream>
-#include <QTextCodec>
-#include <QLocale>
-#include <QTimer>
-#include <QTranslator>
-#include <QSplashScreen>
-#include <QLibraryInfo>
-
- #if defined(DARKSILK_NEED_QT_PLUGINS) && defined(QT_STATICPLUGIN) && !defined(_DARKSILK_QT_PLUGINS_INCLUDED) 
- #define _DARKSILK_QT_PLUGINS_INCLUDED
+#if defined(DARKSILK_NEED_QT_PLUGINS) && defined(QT_STATICPLUGIN) && !defined(_DARKSILK_QT_PLUGINS_INCLUDED) 
+#define _DARKSILK_QT_PLUGINS_INCLUDED
 #define __INSURE__
 #include <QtPlugin>
 Q_IMPORT_PLUGIN(qcncodecs)

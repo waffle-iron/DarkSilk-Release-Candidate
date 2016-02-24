@@ -4,14 +4,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "net.h"
-#include "addrman.h"
-#include "chainparams.h"
-#include "clientversion.h"
-#include "primitives/transaction.h"
-#include "ui_interface.h"
-#include "sandstorm.h"
-#include "wallet.h"
+#include <boost/filesystem.hpp>
+#include <boost/thread.hpp>
 
 #ifdef USE_NATIVE_I2P
 #include "i2p.h"
@@ -30,8 +24,14 @@
 #include <miniupnpc/upnperrors.h>
 #endif
 
-#include <boost/filesystem.hpp>
-#include <boost/thread.hpp>
+#include "net.h"
+#include "addrman.h"
+#include "chainparams.h"
+#include "clientversion.h"
+#include "primitives/transaction.h"
+#include "ui_interface.h"
+#include "sandstorm.h"
+#include "wallet.h"
 
 #define TOR_NET_STRING "tor"
 

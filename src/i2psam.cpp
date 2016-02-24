@@ -2,7 +2,6 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 //--------------------------------------------------------------------------------------------------
-#include "i2psam.h"
 
 #ifdef WIN32
 //#define _WIN32_WINNT 0x0501
@@ -15,6 +14,11 @@
 #include <arpa/inet.h>      // for ntohs and htons
 #endif
 
+#ifndef WIN32
+#include <errno.h>
+#include <unistd.h>
+#endif
+
 #include <iostream>
 #include <stdio.h>
 #include <string.h>         // for memset
@@ -22,10 +26,7 @@
 #include <time.h>
 #include <stdarg.h>
 
-#ifndef WIN32
-#include <errno.h>
-#include <unistd.h>
-#endif
+#include "i2psam.h"
 
 #ifndef WIN32
 #define closesocket         close

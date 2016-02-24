@@ -2,6 +2,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include <boost/lexical_cast.hpp>
+
 #include "instantx.h"
 #include "sync.h"
 #include "net.h"
@@ -15,7 +17,6 @@
 #include "sandstorm.h"
 #include "spork.h"
 #include "init.h"
-#include <boost/lexical_cast.hpp>
 
 using namespace std;
 using namespace boost;

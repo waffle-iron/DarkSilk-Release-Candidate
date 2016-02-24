@@ -2,6 +2,12 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include <boost/assign/list_of.hpp>
+
+#include <openssl/rand.h>
+
+#include <algorithm>
+
 #include "sandstorm.h"
 #include "init.h"
 #include "util.h"
@@ -14,10 +20,6 @@
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
 #include <boost/lexical_cast.hpp>
-
-#include <algorithm>
-#include <boost/assign/list_of.hpp>
-#include <openssl/rand.h>
 
 using namespace std;
 using namespace boost;

@@ -1,3 +1,9 @@
+#include <QList>
+#include <QColor>
+#include <QIcon>
+#include <QDateTime>
+#include <QDebug>
+
 #include "transactiontablemodel.h"
 #include "guiutil.h"
 #include "transactionrecord.h"
@@ -9,12 +15,6 @@
 #include "darksilkunits.h"
 #include "wallet.h"
 #include "ui_interface.h"
-
-#include <QList>
-#include <QColor>
-#include <QIcon>
-#include <QDateTime>
-#include <QDebug>
 
 // Amount column is right-aligned it contains numbers
 static int column_alignments[] = {

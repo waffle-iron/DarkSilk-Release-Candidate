@@ -7,19 +7,20 @@
 #ifndef DARKSILKRPC_SERVER_H
 #define DARKSILKRPC_SERVER_H
 
+#include "json/json_spirit_reader_template.h"
+#include "json/json_spirit_utils.h"
+#include "json/json_spirit_writer_template.h"
+
+#include <list>
+#include <map>
+#include <string>
+
+#include <stdint.h>
+
 #include "amount.h"
 #include "uint256.h"
 #include "rpcprotocol.h"
 
-#include <list>
-#include <map>
-#include <stdint.h>
-#include <string>
-
-#include "json/json_spirit_reader_template.h"
-#include "json/json_spirit_utils.h"
-#include "json/json_spirit_writer_template.h"
- 
 class CBlockIndex;
 class CNetAddr;
 

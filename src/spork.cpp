@@ -3,6 +3,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include <boost/lexical_cast.hpp>
+
 #include "spork.h"
 #include "bignum.h"
 #include "sync.h"
@@ -14,7 +16,6 @@
 #include "protocol.h"
 #include "main.h"
 #include "stormnode-budget.h"
-#include <boost/lexical_cast.hpp>
 
 using namespace std;
 using namespace boost;

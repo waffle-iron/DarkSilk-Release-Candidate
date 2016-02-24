@@ -1,3 +1,7 @@
+#include <QSet>
+#include <QTimer>
+#include <QDebug>
+
 #include "walletmodel.h"
 #include "guiconstants.h"
 #include "optionsmodel.h"
@@ -9,10 +13,6 @@
 #include "base58.h"
 #include "spork.h"
 #include "smessage.h"
-
-#include <QSet>
-#include <QTimer>
-#include <QDebug>
 
 WalletModel::WalletModel(CWallet *wallet, OptionsModel *optionsModel, QObject *parent) :
     QObject(parent), wallet(wallet), optionsModel(optionsModel), addressTableModel(0),

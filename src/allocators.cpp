@@ -2,8 +2,6 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "allocators.h"
-
 #ifdef WIN32
 #ifdef _WIN32_WINNT
 #undef _WIN32_WINNT
@@ -23,6 +21,8 @@
 #include <limits.h> // for PAGESIZE
 #include <unistd.h> // for sysconf
 #endif
+
+#include "allocators.h"
 
 LockedPageManager* LockedPageManager::_instance = NULL;
 boost::once_flag LockedPageManager::init_flag = BOOST_ONCE_INIT;

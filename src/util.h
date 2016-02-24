@@ -7,22 +7,6 @@
 #ifndef DARKSILK_UTIL_H
 #define DARKSILK_UTIL_H
 
-#ifndef WIN32
-#include <sys/types.h>
-#include <sys/time.h>
-#include <sys/resource.h>
-#endif
-
-#include "serialize.h"
-#include "tinyformat.h"
-#include "amount.h"
-
-#include <map>
-#include <list>
-#include <utility>
-#include <vector>
-#include <string>
-
 #include <boost/thread.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/path.hpp>
@@ -36,7 +20,23 @@
 #include <openssl/rand.h>
 #include <openssl/bn.h>
 
+#ifndef WIN32
+#include <sys/types.h>
+#include <sys/time.h>
+#include <sys/resource.h>
+#endif
+
+#include <map>
+#include <list>
+#include <utility>
+#include <vector>
+#include <string>
+
 #include <stdint.h>
+
+#include "serialize.h"
+#include "tinyformat.h"
+#include "amount.h"
 
 class uint256;
 

@@ -1,12 +1,7 @@
 #ifndef BLOCKBROWSER_H
 #define BLOCKBROWSER_H
 
-#include "clientmodel.h"
-#include "main.h"
-#include "wallet.h"
-#include "base58.h"
 #include <QWidget>
-
 #include <QDir>
 #include <QFile>
 #include <QProcess>
@@ -16,6 +11,11 @@
 #include <QMap>
 #include <QSettings>
 #include <QSlider>
+
+#include "clientmodel.h"
+#include "main.h"
+#include "wallet.h"
+#include "base58.h"
 
 double getBlockHardness(int);
 double getTxTotalValue(std::string);

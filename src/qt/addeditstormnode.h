@@ -1,9 +1,10 @@
 #ifndef ADDEDITSTORMNODE_H
 #define ADDEDITSTORMNODE_H
 
-#include <QDialog>
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
+
+#include <QDialog>
 
 namespace Ui {
 class AddEditStormNode;

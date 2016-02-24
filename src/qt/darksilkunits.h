@@ -6,10 +6,10 @@
 #ifndef DARKSILKUNITS_H
 #define DARKSILKUNITS_H
 
-#include "amount.h"
-
 #include <QString>
 #include <QAbstractListModel>
+
+#include "amount.h"
 
 // U+2009 THIN SPACE = UTF-8 E2 80 89
 #define REAL_THIN_SP_CP 0x2009

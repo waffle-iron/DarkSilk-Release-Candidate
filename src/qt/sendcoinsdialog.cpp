@@ -1,3 +1,9 @@
+#include <QMessageBox>
+#include <QTextDocument>
+#include <QScrollBar>
+#include <QSettings>
+#include <QClipboard>
+
 #include "sendcoinsdialog.h"
 #include "ui_sendcoinsdialog.h"
 #include "walletmodel.h"
@@ -12,12 +18,6 @@
 #include "base58.h"
 #include "coincontrol.h"
 #include "coincontroldialog.h"
-
-#include <QMessageBox>
-#include <QTextDocument>
-#include <QScrollBar>
-#include <QSettings>
-#include <QClipboard>
 
 SendCoinsDialog::SendCoinsDialog(QWidget *parent) :
     QDialog(parent),

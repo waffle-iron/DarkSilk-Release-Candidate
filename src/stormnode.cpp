@@ -2,6 +2,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include <boost/lexical_cast.hpp>
+
 #include "stormnode.h"
 #include "sandstorm.h"
 #include "stormnode-payments.h"
@@ -10,7 +12,6 @@
 #include "util.h"
 #include "sync.h"
 #include "addrman.h"
-#include <boost/lexical_cast.hpp>
 #include "init.h"
 
 // keep track of the scanning errors I've seen

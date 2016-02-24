@@ -6,15 +6,15 @@
 #ifndef DARKSILK_WALLETDB_H
 #define DARKSILK_WALLETDB_H
 
-#include "db.h"
-#include "keystore.h"
-#include "stealth.h"
-#include "amount.h"
-
 #include <list>
 #include <string>
 #include <utility>
 #include <vector>
+
+#include "db.h"
+#include "keystore.h"
+#include "stealth.h"
+#include "amount.h"
 
 class CAccount;
 class CAccountingEntry;

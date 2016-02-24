@@ -1,11 +1,11 @@
 #ifndef TRANSACTIONRECORD_H
 #define TRANSACTIONRECORD_H
 
-#include "amount.h"
-#include "uint256.h"
-
 #include <QList>
 #include <QString>
+
+#include "amount.h"
+#include "uint256.h"
 
 class CWallet;
 class CWalletTx;

@@ -1,12 +1,5 @@
-#include <QApplication>
-
-#include "guiutil.h"
-#include "primitives/transaction.h"
-#include "darksilkaddressvalidator.h"
-#include "walletmodel.h"
-#include "darksilkunits.h"
-#include "util.h"
-#include "init.h"
+#include <boost/filesystem.hpp>
+#include <boost/filesystem/fstream.hpp>
 
 #include <QDateTime>
 #include <QDoubleValidator>
@@ -19,9 +12,15 @@
 #include <QFileDialog>
 #include <QDesktopServices>
 #include <QThread>
+#include <QApplication>
 
-#include <boost/filesystem.hpp>
-#include <boost/filesystem/fstream.hpp>
+#include "guiutil.h"
+#include "primitives/transaction.h"
+#include "darksilkaddressvalidator.h"
+#include "walletmodel.h"
+#include "darksilkunits.h"
+#include "util.h"
+#include "init.h"
 
 #ifdef WIN32
 #ifdef _WIN32_WINNT

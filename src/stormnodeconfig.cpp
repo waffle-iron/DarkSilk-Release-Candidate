@@ -2,13 +2,13 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include <boost/filesystem.hpp>
+#include <boost/filesystem/fstream.hpp>
+
 #include "stormnodeconfig.h"
 #include "net.h"
 #include "util.h"
-#include <base58.h>
-
-#include <boost/filesystem.hpp>
-#include <boost/filesystem/fstream.hpp>
+#include "base58.h"
 
 CStormnodeConfig stormnodeConfig;
 

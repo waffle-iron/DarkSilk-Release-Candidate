@@ -1,14 +1,13 @@
-#include "darksilkamountfield.h"
-
-#include "qvaluecombobox.h"
-#include "darksilkunits.h"
-#include "guiconstants.h"
-
 #include <QHBoxLayout>
 #include <QKeyEvent>
 #include <QDoubleSpinBox>
 #include <QApplication>
 #include <qmath.h> // for qPow()
+
+#include "darksilkamountfield.h"
+#include "qvaluecombobox.h"
+#include "darksilkunits.h"
+#include "guiconstants.h"
 
 DarkSilkAmountField::DarkSilkAmountField(QWidget *parent):
         QWidget(parent), amount(0), currentUnit(-1)

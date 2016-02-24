@@ -4,6 +4,13 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include <boost/date_time/posix_time/posix_time.hpp>
+#include <boost/algorithm/string/case_conv.hpp> // for to_lower()
+#include <boost/algorithm/string/join.hpp>
+#include <boost/algorithm/string/predicate.hpp> // for startswith() and endswith()
+
+#include <algorithm>
+
 #include "util.h"
 #include "amount.h"
 #include "chainparams.h"
@@ -13,14 +20,6 @@
 #include "version.h"
 #include "netbase.h"
 #include "allocators.h"
-
-#include <algorithm>
-
-#include <boost/date_time/posix_time/posix_time.hpp>
-
-#include <boost/algorithm/string/case_conv.hpp> // for to_lower()
-#include <boost/algorithm/string/join.hpp>
-#include <boost/algorithm/string/predicate.hpp> // for startswith() and endswith()
 
 // Work around clang compilation problem in Boost 1.46:
 // /usr/include/boost/program_options/detail/config_file.hpp:163:17: error: call to function 'to_internal' that is neither visible in the template definition nor found by argument-dependent lookup

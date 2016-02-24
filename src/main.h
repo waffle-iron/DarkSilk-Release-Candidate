@@ -6,14 +6,14 @@
 #ifndef DARKSILK_MAIN_H
 #define DARKSILK_MAIN_H
 
+#include <boost/unordered_map.hpp>
+
+#include <list>
+
 #include "txmempool.h"
 #include "net.h"
 #include "txdb.h"
 #include "chain.h"
-
-#include <list>
-
-#include <boost/unordered_map.hpp>
 
 class CValidationState;
 class CWallet;

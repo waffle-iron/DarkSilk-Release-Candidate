@@ -6,14 +6,14 @@
 #ifndef DARKSILK_UI_INTERFACE_H
 #define DARKSILK_UI_INTERFACE_H
 
-#include "amount.h"
-
 #include <boost/signals2/last_value.hpp>
 #include <boost/signals2/signal.hpp>
 
 #include <string>
 
 #include <stdint.h>
+
+#include "amount.h"
 
 class CBasicKeyStore;
 class CWallet;

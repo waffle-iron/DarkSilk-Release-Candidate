@@ -1,3 +1,13 @@
+#include <QSortFilterProxyModel>
+#include <QClipboard>
+#include <QMessageBox>
+#include <QMenu>
+#include <QStyledItemDelegate>
+#include <QAbstractTextDocumentLayout>
+#include <QPainter>
+#include <QToolBar>
+#include <QMenu>
+
 #include "messagepage.h"
 #include "ui_messagepage.h"
 #include "sendmessagesdialog.h"
@@ -6,17 +16,6 @@
 #include "darksilkgui.h"
 #include "csvmodelwriter.h"
 #include "guiutil.h"
-
-#include <QSortFilterProxyModel>
-#include <QClipboard>
-#include <QMessageBox>
-#include <QMenu>
-#include <QStyledItemDelegate>
-#include <QAbstractTextDocumentLayout>
-#include <QPainter>
-
-#include <QToolBar>
-#include <QMenu>
 
 #define DECORATION_SIZE 64
 #define NUM_ITEMS 3

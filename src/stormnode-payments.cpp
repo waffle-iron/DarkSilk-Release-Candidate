@@ -2,6 +2,9 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include <boost/lexical_cast.hpp>
+#include <boost/filesystem.hpp>
+
 #include "stormnode-payments.h"
 #include "stormnode-budget.h"
 #include "stormnode-sync.h"
@@ -11,8 +14,6 @@
 #include "sync.h"
 #include "spork.h"
 #include "addrman.h"
-#include <boost/lexical_cast.hpp>
-#include <boost/filesystem.hpp>
 
 /** Object for who's going to get paid on which blocks */
 CStormnodePayments stormnodePayments;

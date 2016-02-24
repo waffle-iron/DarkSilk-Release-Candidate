@@ -1,11 +1,11 @@
+#include <QMessageBox>
+#include <QPushButton>
+#include <QKeyEvent>
+
 #include "askpassphrasedialog.h"
 #include "ui_askpassphrasedialog.h"
 #include "guiconstants.h"
 #include "walletmodel.h"
-
-#include <QMessageBox>
-#include <QPushButton>
-#include <QKeyEvent>
 
 extern bool fWalletUnlockStakingOnly;
 

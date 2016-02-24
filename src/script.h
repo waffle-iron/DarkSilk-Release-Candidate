@@ -7,13 +7,13 @@
 #ifndef H_DARKSILK_SCRIPT
 #define H_DARKSILK_SCRIPT
 
+#include <boost/foreach.hpp>
+#include <boost/variant.hpp>
+
 #include <string>
 #include <vector>
 
 #include <stdint.h>
-
-#include <boost/foreach.hpp>
-#include <boost/variant.hpp>
 
 #include "pubkey.h"
 #include "bignum.h"

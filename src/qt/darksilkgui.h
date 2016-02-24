@@ -5,6 +5,7 @@
 #include <QSystemTrayIcon>
 
 #include <stdint.h>
+
 #include "ui_interface.h"
 
 class TransactionTableModel;

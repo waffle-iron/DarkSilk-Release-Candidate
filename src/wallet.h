@@ -6,13 +6,11 @@
 #ifndef DARKSILK_WALLET_H
 #define DARKSILK_WALLET_H
 
-#include "walletdb.h"
-
 #include <string>
 #include <vector>
-
 #include <stdlib.h>
 
+#include "walletdb.h"
 #include "primitives/block.h"
 #include "primitives/transaction.h"
 #include "crypter.h"

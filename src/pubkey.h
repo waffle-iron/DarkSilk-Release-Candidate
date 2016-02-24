@@ -6,12 +6,12 @@
 #ifndef DARKSILK_PUBKEY_H
 #define DARKSILK_PUBKEY_H
 
+#include <stdexcept>
+#include <vector>
+
 #include "hash.h"
 #include "serialize.h"
 #include "uint256.h"
-
-#include <stdexcept>
-#include <vector>
 
 /**
  * secp256k1:

@@ -5,11 +5,11 @@
 #ifndef DARKSILK_NETBASE_H
 #define DARKSILK_NETBASE_H
 
-#include "compat.h"
-#include "serialize.h"
-
 #include <string>
 #include <vector>
+
+#include "compat.h"
+#include "serialize.h"
 
 extern int nConnectTimeout;
 extern bool fNameLookup;

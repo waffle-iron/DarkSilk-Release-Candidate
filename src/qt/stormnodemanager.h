@@ -1,11 +1,11 @@
 #ifndef STORMNODEMANAGER_H
 #define STORMNODEMANAGER_H
 
-#include "util.h"
-#include "sync.h"
-
 #include <QWidget>
 #include <QTimer>
+
+#include "util.h"
+#include "sync.h"
 
 namespace Ui {
     class StormnodeManager;

@@ -9,14 +9,8 @@
 #ifndef DARKSILK_UTILSTRENCODINGS_H
 #define DARKSILK_UTILSTRENCODINGS_H
 
-#include <stdint.h>
-#include <string>
-#include <vector>
-#include "serialize.h"
-#include "allocators.h"
-
-
 #include <boost/date_time/posix_time/posix_time.hpp>
+
 #include <openssl/bio.h>
 #include <openssl/evp.h>
 #include <openssl/buffer.h>
@@ -24,6 +18,13 @@
 #include <openssl/rand.h>
 #include <openssl/bn.h>
 
+#include <string>
+#include <vector>
+
+#include <stdint.h>
+
+#include "serialize.h"
+#include "allocators.h"
 
 #define BEGIN(a)            ((char*)&(a))
 #define END(a)              ((char*)&((&(a))[1]))

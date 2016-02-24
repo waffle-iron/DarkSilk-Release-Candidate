@@ -3,14 +3,14 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include <boost/algorithm/string/replace.hpp>
+
 #include "chain.h"
 #include "wallet.h"
 #include "checkpoints.h"
 #include "spork.h"
 #include "kernel.h"
 #include "txdb-leveldb.h"
-
-#include <boost/algorithm/string/replace.hpp>
 
 #ifdef ENABLE_WALLET
 

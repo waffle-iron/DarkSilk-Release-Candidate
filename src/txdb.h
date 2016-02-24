@@ -7,13 +7,13 @@
 #ifndef DARKSILK_TXDB_H
 #define DARKSILK_TXDB_H
 
-#include "leveldbwrapper.h"
-#include "main.h"
-
 #include <map>
 #include <string>
 #include <utility>
 #include <vector>
+
+#include "leveldbwrapper.h"
+#include "main.h"
 
 class CCoinsStats;
 class CCoins;
