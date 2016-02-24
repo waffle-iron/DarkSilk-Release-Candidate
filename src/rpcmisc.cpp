@@ -11,11 +11,6 @@
 
 #include <stdint.h>
 
-#ifdef ENABLE_WALLET
-#include "wallet.h"
-#include "walletdb.h"
-#endif
-
 #include "rpcserver.h"
 #include "base58.h"
 #include "clientversion.h"
@@ -28,6 +23,11 @@
 #include "stealth.h"
 #include "spork.h"
 #include "stormnode-sync.h"
+
+#ifdef ENABLE_WALLET
+#include "wallet.h"
+#include "walletdb.h"
+#endif
 
 using namespace std;
 using namespace boost;

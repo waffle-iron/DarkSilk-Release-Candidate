@@ -4,10 +4,6 @@
 #include <QMessageBox>
 #include <QMenu>
 
-#ifdef USE_QRCODE
-#include "qrcodedialog.h"
-#endif
-
 #include "addressbookpage.h"
 #include "ui_addressbookpage.h"
 #include "addresstablemodel.h"
@@ -16,6 +12,10 @@
 #include "editaddressdialog.h"
 #include "csvmodelwriter.h"
 #include "guiutil.h"
+
+#ifdef USE_QRCODE
+#include "qrcodedialog.h"
+#endif
 
 AddressBookPage::AddressBookPage(Mode mode, Tabs tab, QWidget *parent) :
     QDialog(parent),

@@ -2,11 +2,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include <cstddef>
+
 #if defined(HAVE_SYS_SELECT_H)
 #include <sys/select.h>
 #endif
-
-#include <cstddef>
 
 extern "C" void* memcpy(void* a, const void* b, size_t c);
 void* memcpy_int(void* a, const void* b, size_t c)

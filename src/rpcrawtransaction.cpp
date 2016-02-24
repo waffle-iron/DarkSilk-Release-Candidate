@@ -6,10 +6,6 @@
 
 #include <boost/assign/list_of.hpp>
 
-#ifdef ENABLE_WALLET
-#include "wallet.h"
-#endif
-
 #include "rpcserver.h"
 #include "base58.h"
 #include "primitives/transaction.h"
@@ -20,6 +16,10 @@
 #include "keystore.h"
 #include "script.h"
 #include "txdb-leveldb.h"
+
+#ifdef ENABLE_WALLET
+#include "wallet.h"
+#endif
 
 using namespace std;
 using namespace boost;

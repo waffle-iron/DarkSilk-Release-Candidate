@@ -41,6 +41,11 @@ Notes:
 #include <openssl/evp.h>
 #include <openssl/hmac.h>
 
+#include "lz4/lz4.c"
+
+#include "xxhash/xxhash.h"
+#include "xxhash/xxhash.c"
+
 #include <time.h>
 #include <map>
 #include <stdexcept>
@@ -57,11 +62,6 @@ Notes:
 #include "sync.h"
 #include "ecwrapper.h"
 #include "txdb-leveldb.h"
-
-#include "lz4/lz4.c"
-
-#include "xxhash/xxhash.h"
-#include "xxhash/xxhash.c"
 
 boost::thread_group threadGroupSmsg;
 

@@ -6,6 +6,12 @@
 #ifndef DARKSILK_ALLOCATORS_H
 #define DARKSILK_ALLOCATORS_H
 
+#include <boost/thread/mutex.hpp>
+
+#include <string.h>
+#include <string>
+#include <map>
+
 #ifdef WIN32
 #ifdef _WIN32_WINNT
 #undef _WIN32_WINNT
@@ -25,12 +31,6 @@
 #include <limits.h> // for PAGESIZE
 #include <unistd.h> // for sysconf
 #endif
-
-#include <boost/thread/mutex.hpp>
-
-#include <string.h>
-#include <string>
-#include <map>
 
 #include "cleanse.h"
 

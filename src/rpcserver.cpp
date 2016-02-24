@@ -22,10 +22,6 @@
 
 #include <list>
 
-#ifdef ENABLE_WALLET
-#include "wallet.h"
-#endif
-
 #include "rpcserver.h"
 #include "base58.h"
 #include "init.h"
@@ -34,6 +30,10 @@
 #include "sync.h"
 #include "base58.h"
 #include "db.h"
+
+#ifdef ENABLE_WALLET
+#include "wallet.h"
+#endif
 
 using namespace std;
 using namespace boost;

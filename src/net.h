@@ -10,6 +10,10 @@
 #include <boost/foreach.hpp>
 #include <boost/signals2/signal.hpp>
 
+#include <deque>
+
+#include <stdint.h>
+
 #include <openssl/rand.h>
 
 #ifndef WIN32
@@ -26,10 +30,6 @@
 #include "streams.h"
 #include "sync.h"
 #include "uint256.h"
-
-#include <deque>
-
-#include <stdint.h>
 
 class CNode;
 class CBlockIndex;

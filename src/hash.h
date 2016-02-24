@@ -7,9 +7,6 @@
 #ifndef DARKSILK_HASH_H
 #define DARKSILK_HASH_H
 
-#include "uint256.h"
-#include "serialize.h"
-
 #include <openssl/sha.h>
 #include <openssl/ripemd.h>
 
@@ -19,6 +16,9 @@
 #include "crypto/argon2/argon2.h"
 
 #include <vector>
+
+#include "uint256.h"
+#include "serialize.h"
 
 static const unsigned int OUTPUT_BYTES = 32;
 
