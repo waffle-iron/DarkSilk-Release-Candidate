@@ -10,7 +10,8 @@
 #include <vector>
 
 #include "bignum.h"
-#include "uint256.h"
+#include "checkpoints.h"
+#include "primitives/block.h"
 
 using namespace std;
 
@@ -18,7 +19,6 @@ using namespace std;
 typedef unsigned char MessageStartChars[MESSAGE_START_SIZE];
 
 class CAddress;
-class CBlock;
 
 struct CDNSSeedData {
     string name, host;
@@ -38,7 +38,6 @@ public:
     enum Network {
         MAIN,
         TESTNET,
-
         MAX_NETWORK_TYPES
     };
 
@@ -48,29 +47,36 @@ public:
         SECRET_KEY,
         EXT_PUBLIC_KEY,
         EXT_SECRET_KEY,
-
         MAX_BASE58_TYPES
     };
-
+    CBlock genesis;
     const uint256& HashGenesisBlock() const { return hashGenesisBlock; }
     const MessageStartChars& MessageStart() const { return pchMessageStart; }
     const vector<unsigned char>& AlertKey() const { return vAlertPubKey; }
     int GetDefaultPort() const { return nDefaultPort; }
     const CBigNum& ProofOfWorkLimit() const { return bnProofOfWorkLimit; }
     int SubsidyHalvingInterval() const { return nSubsidyHalvingInterval; }
-    virtual const CBlock& GenesisBlock() const = 0;
     virtual bool RequireRPCPassword() const { return true; }
     const string& DataDir() const { return strDataDir; }
-    virtual Network NetworkID() const = 0;
     const vector<CDNSSeedData>& DNSSeeds() const { return vSeeds; }
     const std::vector<unsigned char> &Base58Prefix(Base58Type type) const { return base58Prefixes[type]; }
-    virtual const vector<CAddress>& FixedSeeds() const = 0;
     int RPCPort() const { return nRPCPort; }
     int FirstPOSBlock() const { return nFirstPOSBlock; }
     std::string StormnodePaymentPubKey() const { return strStormnodePaymentsPubKey; }
     int64_t StartStormnodePayments() const { return nStartStormnodePayments; }
     int PoolMaxTransactions() const { return nPoolMaxTransactions; }
     std::string SandstormPoolDummyAddress() const { return strSandstormPoolDummyAddress; }
+
+    ///! Used to check majorities for block version upgrade
+    int EnforceBlockUpgradeMajority() const { return nEnforceBlockUpgradeMajority; }
+    int RejectBlockOutdatedMajority() const { return nRejectBlockOutdatedMajority; }
+    int ToCheckBlockUpgradeMajority() const { return nToCheckBlockUpgradeMajority; }
+    const Checkpoints::CCheckpointData& Checkpoints()  { return checkpointData; }
+    CChainParams::Network NetworkID() const { return networkID; }
+    const std::vector<CAddress>& FixedSeeds() const { return vFixedSeeds; }
+    ///! Return the BIP70 network string (main, test or regtest)
+    std::string NetworkIDString() const { return strNetworkID; }
+    const CBlock& GenesisBlock() const { return genesis; }
 
 protected:
     CChainParams() {};
@@ -91,6 +97,14 @@ protected:
     int nFirstPOSBlock;
     int nPoolMaxTransactions;
     std::string strSandstormPoolDummyAddress;
+    int nEnforceBlockUpgradeMajority;
+    int nRejectBlockOutdatedMajority;
+    int nToCheckBlockUpgradeMajority;
+
+    vector<CAddress> vFixedSeeds;
+    CChainParams::Network networkID;
+    std::string strNetworkID;
+    Checkpoints::CCheckpointData checkpointData;
 };
 
 /**

@@ -1,4 +1,3 @@
-
 #include <QFont>
 #include <QDebug>
 

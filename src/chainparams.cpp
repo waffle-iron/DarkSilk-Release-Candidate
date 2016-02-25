@@ -55,6 +55,8 @@ static void convertSeeds(std::vector<CAddress> &vSeedsOut, const unsigned int *d
 class CMainParams : public CChainParams {
 public:
     CMainParams() {
+        networkID = CChainParams::MAIN;
+        strNetworkID = "main";
         // The message start string is designed to be unlikely to occur in normal data.
         // The characters are rarely used upper ASCII, not valid as UTF-8, and produce
         // a large 4-byte int at any alignment.
@@ -62,6 +64,9 @@ public:
         pchMessageStart[1] = 0x22;
         pchMessageStart[2] = 0x05;
         pchMessageStart[3] = 0x31;
+        nEnforceBlockUpgradeMajority = 750;
+        nRejectBlockOutdatedMajority = 950;
+        nToCheckBlockUpgradeMajority = 1000;
         vAlertPubKey = ParseHex("0450e0acc669231cfe2d0a8f0d164c341547487adff89f09e1e78a5299d204bd1c9f05897cb916365c56a31377d872abddb551a12d8d8163149abfc851be7f88ba");
         nDefaultPort = 31000;
         nRPCPort = 31500;
@@ -125,9 +130,7 @@ public:
     virtual const vector<CAddress>& FixedSeeds() const {
         return vFixedSeeds;
     }
-protected:
-    CBlock genesis;
-    vector<CAddress> vFixedSeeds;
+
 };
 static CMainParams mainParams;
 
@@ -139,6 +142,8 @@ static CMainParams mainParams;
 class CTestNetParams : public CMainParams {
 public:
     CTestNetParams() {
+        networkID = CChainParams::TESTNET;
+        strNetworkID = "testnet";
         // The message start string is designed to be unlikely to occur in normal data.
         // The characters are rarely used upper ASCII, not valid as UTF-8, and produce
         // a large 4-byte int at any alignment.
@@ -146,7 +151,13 @@ public:
         pchMessageStart[1] = 0x22;
         pchMessageStart[2] = 0x05;
         pchMessageStart[3] = 0x30;
+
+        nEnforceBlockUpgradeMajority = 51;
+        nRejectBlockOutdatedMajority = 75;
+        nToCheckBlockUpgradeMajority = 100;
+
         bnProofOfWorkLimit = CBigNum(~uint256(0) >> 20); // PoW starting difficulty = 0.0002441
+
         vAlertPubKey = ParseHex("");
         nDefaultPort = 31750;
         nRPCPort = 31800;
@@ -180,7 +191,7 @@ public:
         nStartStormnodePayments = 1446335999; //Wed, 31 Oct 2015 23:59:59 GMT
     }
 
-    virtual Network NetworkID() const { return CChainParams::TESTNET; }
+
 };
 static CTestNetParams testNetParams;
 
