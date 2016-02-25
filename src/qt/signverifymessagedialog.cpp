@@ -14,6 +14,7 @@
 #include "walletmodel.h"
 #include "wallet.h"
 
+
 SignVerifyMessageDialog::SignVerifyMessageDialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::SignVerifyMessageDialog),

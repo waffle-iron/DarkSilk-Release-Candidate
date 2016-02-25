@@ -55,7 +55,11 @@ static const unsigned int MAX_ORPHAN_TRANSACTIONS = MAX_BLOCK_SIZE/100;
 static const unsigned int DEFAULT_MAX_ORPHAN_BLOCKS = 512;
 /// The maximum number of entries in an 'inv' protocol message
 static const unsigned int MAX_INV_SZ = 50000;
-// Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp.
+/// The pre-allocation chunk size for rev?????.dat files (since 0.8) */
+static const unsigned int UNDOFILE_CHUNK_SIZE = 0x100000; // 1 MiB
+/// Maximum length of reject messages.
+static const unsigned int MAX_REJECT_MESSAGE_LENGTH = 111;
+/// Threshold for nLockTime: below this value it is interpreted as block number, otherwise as UNIX timestamp.
 static const unsigned int LOCKTIME_THRESHOLD = 500000000; // Tue Nov 5th 00:53:20 1985 UTC
 // Target timing between Proof-of-Work blocks
 static const unsigned int POW_TARGET_SPACING = 1 * 60; // 60 seconds
@@ -63,8 +67,6 @@ static const unsigned int POW_TARGET_SPACING = 1 * 60; // 60 seconds
 static const unsigned int POS_TARGET_SPACING = 1 * 64; // 64 seconds
 // Time to wait (in seconds) between writing blockchain state to disk.
 static const unsigned int DATABASE_WRITE_INTERVAL = 3600;
-// Maximum length of "REJECT" messages
-static const unsigned int MAX_REJECT_MESSAGE_LENGTH = 111;
 // "REJECT" message codes
 static const unsigned char REJECT_MALFORMED = 0x01;
 static const unsigned char REJECT_INVALID = 0x10;
@@ -120,6 +122,8 @@ extern bool fLargeWorkInvalidChainFound;
 extern std::map<uint256, int64_t> mapRejectedBlocks;
 
 extern CFeeRate minRelayTxFee;
+
+extern CConditionVariable cvBlockChange;
 
 // Minimum disk space required - used in CheckDiskSpace()
 static const uint64_t nMinDiskSpace = 52428800;
@@ -216,9 +220,11 @@ FILE* OpenUndoFile(const CDiskBlockPos &pos, bool fReadOnly = false);
 
 
 /// Position on disk for a particular transaction.
-class CDiskTxPos
+/*class CDiskTxPos
 {
 public:
+    unsigned int nTxOffset; // after header
+
     unsigned int nFile;
     unsigned int nBlockPos;
     unsigned int nTxPos;
@@ -235,6 +241,9 @@ public:
         nTxPos = nTxPosIn;
     }
 
+    CDiskTxPos(const CDiskBlockPos &blockIn, unsigned int nTxOffsetIn) : CDiskBlockPos(blockIn.nFile, blockIn.nPos), nTxOffset(nTxOffsetIn) {
+    }
+
     ADD_SERIALIZE_METHODS;
 
     template <typename Stream, typename Operation>
@@ -242,7 +251,13 @@ public:
         READWRITE(FLATDATA(*this));
     }
 
-    void SetNull() { nFile = (unsigned int) -1; nBlockPos = 0; nTxPos = 0; }
+    void SetNull() {
+        nFile = (unsigned int) -1;
+        nBlockPos = 0;
+        nTxPos = 0;
+        nTxOffset = 0;
+    }
+
     bool IsNull() const { return (nFile == (unsigned int) -1); }
 
     friend bool operator==(const CDiskTxPos& a, const CDiskTxPos& b)
@@ -264,6 +279,52 @@ public:
             return "null";
         else
             return strprintf("(nFile=%u, nBlockPos=%u, nTxPos=%u)", nFile, nBlockPos, nTxPos);
+    }
+};*/
+struct CDiskTxPos : public CDiskBlockPos
+{
+    unsigned int nTxOffset; // after header
+
+    unsigned int nFile;
+    unsigned int nBlockPos;
+    unsigned int nTxPos;
+
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITE(*(CDiskBlockPos*)this);
+        READWRITE(VARINT(nTxOffset));
+    }
+
+    CDiskTxPos(unsigned int nFileIn, unsigned int nBlockPosIn, unsigned int nTxPosIn)
+    {
+        nFile = nFileIn;
+        nBlockPos = nBlockPosIn;
+        nTxPos = nTxPosIn;
+    }
+
+    CDiskTxPos(const CDiskBlockPos &blockIn, unsigned int nTxOffsetIn) : CDiskBlockPos(blockIn.nFile, blockIn.nPos), nTxOffset(nTxOffsetIn) {
+    }
+
+    CDiskTxPos() {
+        SetNull();
+    }
+
+    void SetNull() {
+        CDiskBlockPos::SetNull();
+        nFile = (unsigned int) -1;
+        nBlockPos = 0;
+        nTxPos = 0;
+        nTxOffset = 0;
+    }
+
+    std::string ToString() const
+    {
+        if (IsNull())
+            return "null";
+        else
+            return strprintf("(nFile=%u, nBlockPos=%u, nTxPos=%u, nTxOffset=%u \n)", nFile, nBlockPos, nTxPos, nTxOffset);
     }
 };
 
@@ -294,7 +355,7 @@ public:
         nVersion = this->nVersion;
     }
 
-    CAmount GetValueOut(CTransaction& tx) const;
+    CAmount GetValueOut(const CTransaction& tx) const;
 
     ///  Amount of darksilks coming in to this transaction
     ///  Note that lightweight clients may not know anything besides the hash of previous transactions,
@@ -361,6 +422,8 @@ unsigned int GetLegacySigOpCount(const CTransaction& tx);
     @return maximum number of sigops required to validate this transaction's inputs
     @see CTransaction::FetchInputs
  */
+class CCoinsViewCache;
+unsigned int GetP2SHSigOpCount(const CTransaction& tx, const CCoinsViewCache& mapInputs);
 unsigned int GetP2SHSigOpCount(const CTransaction& tx, const MapPrevTx& mapInputs);
 
 /** Check for standard transaction types
@@ -369,6 +432,45 @@ unsigned int GetP2SHSigOpCount(const CTransaction& tx, const MapPrevTx& mapInput
 bool IsStandardTx(const CTransaction& tx, std::string& reason);
 
 bool IsFinalTx(const CTransaction &tx, int nBlockHeight = 0, int64_t nBlockTime = 0);
+
+///! Functions for disk access for blocks
+bool WriteBlockToDisk(CBlock& block, CDiskBlockPos& pos);
+bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos);
+bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex);
+
+class CTxUndo;
+///! Undo information for a CBlock
+class CBlockUndo
+{
+public:
+    std::vector<CTxUndo> vtxundo; // for all but the coinbase
+
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITE(vtxundo);
+    }
+
+    bool WriteToDisk(CDiskBlockPos &pos, const uint256 &hashBlock);
+    bool ReadFromDisk(const CDiskBlockPos &pos, const uint256 &hashBlock);
+};
+
+
+
+
+/** Functions for validating blocks and updating the block tree */
+
+/** Undo the effects of this block (with given index) on the UTXO set represented by coins.
+ *  In case pfClean is provided, operation will try to be tolerant about errors, and *pfClean
+ *  will be true if no problems were found. Otherwise, the return value will be false in case
+ *  of problems. Note that in any case, coins may be modified. */
+class CCoinsViewCache;
+
+bool DisconnectBlock(CBlock& block, CValidationState& state, CBlockIndex* pindex, CCoinsViewCache& coins, bool* pfClean = NULL);
+/** Apply the effects of this block (with given index) on the UTXO set represented by coins */
+bool ConnectBlock(const CBlock& block, CValidationState& state, CBlockIndex* pindex, CCoinsViewCache& coins, bool fJustCheck = false);
+
 
 /** A transaction with a merkle branch linking it to the block chain. */
 class CMerkleTx : public CTransaction
@@ -557,6 +659,7 @@ protected:
     virtual bool UpdatedTransaction(const uint256 &hash) =0;
     virtual void Inventory(const uint256 &hash) =0;
     virtual void ResendWalletTransactions(bool fForce) =0;
+    virtual void BlockChecked(const CBlock&, const CValidationState&) {};
     friend void ::RegisterWallet(CWalletInterface*);
     friend void ::UnregisterWallet(CWalletInterface*);
     friend void ::UnregisterAllWallets();
@@ -624,6 +727,10 @@ public:
              nTimeLast = nTimeIn;
      }
 };
+
+///! The currently-connected chain of blocks.
+class CChain;
+extern CChain chainActive;
 
 class CCoinsView;
 /// RAII wrapper for VerifyDB: Verify consistency of the block and coin databases

@@ -6,6 +6,10 @@
 #ifndef DARKSILK_INIT_H
 #define DARKSILK_INIT_H
 
+#include "net.h"
+#include "protocol.h"
+#include "chainparams.h"
+
 #ifdef ENABLE_WALLET
 #include "wallet.h"
 #endif
