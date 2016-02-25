@@ -487,7 +487,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/crypto/argon2/encoding.c \
             src/crypto/argon2/thread.c \
             src/crypto/argon2/blake2/blake2b.c \
-            src/crypto/argon2/opt.c \
+            src/crypto/argon2/opt.c
 
 RESOURCES += \
             src/qt/darksilk.qrc
