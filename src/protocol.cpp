@@ -8,6 +8,7 @@
 # include <arpa/inet.h>
 #endif
 
+#include "net.h"
 #include "protocol.h"
 #include "util.h"
 

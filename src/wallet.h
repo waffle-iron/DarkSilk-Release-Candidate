@@ -10,6 +10,7 @@
 #include <vector>
 #include <stdlib.h>
 
+#include "net.h"
 #include "walletdb.h"
 #include "primitives/block.h"
 #include "primitives/transaction.h"

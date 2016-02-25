@@ -9,9 +9,10 @@
 
 #include <vector>
 
+#include "net.h"
+#include "chainparams.h"
 #include "primitives/block.h"
 #include "util.h"
-#include "chainparams.h"
 
 class CTxDB;
 

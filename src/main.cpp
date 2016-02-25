@@ -54,7 +54,6 @@ CFeeRate minRelayTxFee = CFeeRate(MIN_TX_FEE);
 
 CTxMemPool mempool(::minRelayTxFee);
 
-CConditionVariable cvBlockChange;
 int nScriptCheckThreads = 0;
 
 struct COrphanTx {

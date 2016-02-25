@@ -11,7 +11,7 @@
 
 #include <stdint.h>
 
-#include "netbase.h"
+#include "net.h"
 #include "protocol.h"
 #include "sync.h"
 #include "timedata.h"

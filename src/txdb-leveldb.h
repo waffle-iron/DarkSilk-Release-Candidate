@@ -13,6 +13,9 @@
 #include <string>
 #include <vector>
 
+#include "net.h"
+#include "protocol.h"
+#include "chainparams.h"
 #include "main.h"
 #include "streams.h"
 
@@ -21,7 +24,7 @@ CBlockIndex * InsertBlockIndex(uint256 hash);
 class CTxIndex;
 class CDiskTxPos;
 class CDiskBlockIndex;
-
+class CAddress;
 // Class that provides access to a LevelDB. Note that this class is frequently
 // instantiated on the stack and then destroyed again, so instantiation has to
 // be very cheap. Unfortunately that means, a CTxDB instance is actually just a

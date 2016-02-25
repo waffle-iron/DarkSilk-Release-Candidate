@@ -20,6 +20,7 @@
 #include <stdint.h>
 
 #include "rpcclient.h"
+#include "net.h"
 #include "rpcprotocol.h"
 #include "util.h"
 #include "ui_interface.h"

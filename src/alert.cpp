@@ -12,9 +12,9 @@
 #include <map>
 
 #include "alert.h"
+#include "net.h"
 #include "chainparams.h"
 #include "pubkey.h"
-#include "net.h"
 #include "timedata.h"
 #include "ui_interface.h"
 #include "util.h"

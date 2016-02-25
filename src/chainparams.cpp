@@ -8,10 +8,10 @@
 
 #include <assert.h>
 
+#include "net.h"
 #include "chainparams.h"
 #include "chainparamsseeds.h"
 #include "main.h"
-#include "net.h"
 #include "util.h"
 
 using namespace boost::assign;

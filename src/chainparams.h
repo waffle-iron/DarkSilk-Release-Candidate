@@ -9,9 +9,10 @@
 
 #include <vector>
 
+#include "primitives/block.h"
+#include "addrman.h"
 #include "bignum.h"
 #include "checkpoints.h"
-#include "primitives/block.h"
 
 using namespace std;
 

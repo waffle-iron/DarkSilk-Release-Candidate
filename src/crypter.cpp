@@ -21,6 +21,7 @@
 #include <vector>
 
 #include "crypter.h"
+#include "net.h"
 #include "script.h"
 #include "scrypt.h"
 
