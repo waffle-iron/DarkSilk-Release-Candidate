@@ -1,14 +1,14 @@
+#include <QDir>
+#include <QIntValidator>
+#include <QLocale>
+#include <QMessageBox>
+
 #include "optionsdialog.h"
 #include "ui_optionsdialog.h"
 #include "darksilkunits.h"
 #include "monitoreddatamapper.h"
 #include "netbase.h"
 #include "optionsmodel.h"
-
-#include <QDir>
-#include <QIntValidator>
-#include <QLocale>
-#include <QMessageBox>
 
 #ifdef USE_NATIVE_I2P
 #include "clientmodel.h"

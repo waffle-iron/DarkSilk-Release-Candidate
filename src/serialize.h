@@ -7,18 +7,19 @@
 #ifndef DARKSILK_SERIALIZE_H
 #define DARKSILK_SERIALIZE_H
 
+#include <boost/type_traits/is_fundamental.hpp>
+#include <boost/tuple/tuple.hpp>
+
 #include <string>
 #include <vector>
 #include <map>
 #include <set>
 #include <cassert>
 #include <limits>
-#include <stdint.h>
 #include <cstring>
 #include <cstdio>
 
-#include <boost/type_traits/is_fundamental.hpp>
-#include <boost/tuple/tuple.hpp>
+#include <stdint.h>
 
 #include "allocators.h"
 #include "version.h"

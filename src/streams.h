@@ -6,20 +6,21 @@
 #ifndef DARKSILK_STREAMS_H
 #define DARKSILK_STREAMS_H
 
-#include "allocators.h"
-#include "serialize.h"
-
 #include <algorithm>
 #include <assert.h>
 #include <ios>
 #include <limits>
 #include <map>
 #include <set>
-#include <stdint.h>
 #include <string>
 #include <string.h>
 #include <utility>
 #include <vector>
+
+#include <stdint.h>
+
+#include "allocators.h"
+#include "serialize.h"
 
 /// Double ended buffer combining vector and stream-like interfaces.
 /// >> and << read and write unformatted data using the above serialization templates.

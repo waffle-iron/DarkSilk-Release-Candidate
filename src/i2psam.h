@@ -8,9 +8,10 @@
 
 #include <string>
 #include <list>
-#include <stdint.h>
 #include <memory>
 #include <utility>
+
+#include <stdint.h>
 
 #ifdef WIN32
 #ifndef DARKSILK_NETBASE_H

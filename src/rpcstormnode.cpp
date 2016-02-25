@@ -2,6 +2,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include <fstream>
+
 #include "rpcserver.h"
 #include "main.h"
 #include "db.h"
@@ -14,7 +16,6 @@
 #include "stormnodeman.h"
 #include "sandstorm.h"
 
-#include <fstream>
 using namespace json_spirit;
 
 Value sandstorm(const Array& params, bool fHelp)

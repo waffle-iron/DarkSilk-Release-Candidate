@@ -5,6 +5,8 @@
 #ifndef STORMNODE_BUDGET_H
 #define STORMNODE_BUDGET_H
 
+#include <boost/lexical_cast.hpp>
+
 #include "main.h"
 #include "sync.h"
 #include "net.h"
@@ -12,7 +14,6 @@
 #include "util.h"
 #include "base58.h"
 #include "stormnode.h"
-#include <boost/lexical_cast.hpp>
 #include "init.h"
 
 using namespace std;

@@ -1,11 +1,11 @@
+#include <QSettings>
+
 #include "optionsmodel.h"
 #include "darksilkunits.h"
 #include "init.h"
 #include "wallet.h"
 #include "walletdb.h"
 #include "guiutil.h"
-
-#include <QSettings>
 
 #ifdef USE_NATIVE_I2P
 #include "i2p.h"

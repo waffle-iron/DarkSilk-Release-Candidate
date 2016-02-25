@@ -7,15 +7,15 @@
 #ifndef DARKSILK_BIGNUM_H
 #define DARKSILK_BIGNUM_H
 
-#include "serialize.h"
-#include "uint256.h"
-
 #include <openssl/bn.h>
 
 #include <stdexcept>
 #include <vector>
 
 #include <stdint.h>
+
+#include "serialize.h"
+#include "uint256.h"
 
 /** Errors thrown by the bignum class */
 class bignum_error : public std::runtime_error

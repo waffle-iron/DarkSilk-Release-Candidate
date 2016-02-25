@@ -1,3 +1,8 @@
+
+#include <QDateTime>
+#include <QTimer>
+#include <QDebug>
+
 #include "clientmodel.h"
 #include "guiconstants.h"
 #include "peertablemodel.h"
@@ -10,10 +15,6 @@
 #include "ui_interface.h"
 #include "stormnodeman.h"
 #include "stormnode-sync.h"
-
-#include <QDateTime>
-#include <QTimer>
-#include <QDebug>
 
 #ifdef USE_NATIVE_I2P
 #include "i2p.h"

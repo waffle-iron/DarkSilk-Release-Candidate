@@ -3,14 +3,13 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "utilstrencodings.h"
-
-#include "tinyformat.h"
-
 #include <errno.h>
 #include <limits>
 #include <cstdlib>
 #include <cstring>
+
+#include "utilstrencodings.h"
+#include "tinyformat.h"
 
 using namespace std;
 

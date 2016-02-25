@@ -4,15 +4,9 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef _DARKSILKRPC_PROTOCOL_H_
-#define _DARKSILKRPC_PROTOCOL_H_ 1
+#ifndef DARKSILKRPC_PROTOCOL_H
+#define DARKSILKRPC_PROTOCOL_H
 
-#include "compat.h"
-
-#include <list>
-#include <map>
-#include <stdint.h>
-#include <string>
 #include <boost/iostreams/concepts.hpp>
 #include <boost/iostreams/stream.hpp>
 #include <boost/asio.hpp>
@@ -21,6 +15,13 @@
 #include "json/json_spirit_reader_template.h"
 #include "json/json_spirit_utils.h"
 #include "json/json_spirit_writer_template.h"
+
+#include <list>
+#include <map>
+#include <stdint.h>
+#include <string>
+
+#include "compat.h"
 
 // HTTP status codes
 enum HTTPStatusCode
@@ -145,4 +146,4 @@ json_spirit::Object JSONRPCReplyObj(const json_spirit::Value& result, const json
 std::string JSONRPCReply(const json_spirit::Value& result, const json_spirit::Value& error, const json_spirit::Value& id);
 json_spirit::Object JSONRPCError(int code, const std::string& message);
 
-#endif
+#endif // DARKSILKRPC_PROTOCOL_H

@@ -1,10 +1,10 @@
 #ifndef OVERVIEWPAGE_H
 #define OVERVIEWPAGE_H
 
-#include "amount.h"
-
 #include <QWidget>
 #include <QTimer>
+
+#include "amount.h"
 
 class ClientModel;
 class WalletModel;

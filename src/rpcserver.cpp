@@ -4,19 +4,6 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "rpcserver.h"
-#include "base58.h"
-#include "init.h"
-#include "ui_interface.h"
-#include "util.h"
-#include "sync.h"
-#include "base58.h"
-#include "db.h"
-
-#ifdef ENABLE_WALLET
-#include "wallet.h"
-#endif
-
 #include <boost/algorithm/string.hpp>
 #include <boost/asio.hpp>
 #include <boost/asio/ip/v6_only.hpp>
@@ -30,8 +17,23 @@
 #include <boost/lexical_cast.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/thread.hpp>
+
 #include "json/json_spirit_writer_template.h"
+
 #include <list>
+
+#include "rpcserver.h"
+#include "base58.h"
+#include "init.h"
+#include "ui_interface.h"
+#include "util.h"
+#include "sync.h"
+#include "base58.h"
+#include "db.h"
+
+#ifdef ENABLE_WALLET
+#include "wallet.h"
+#endif
 
 using namespace std;
 using namespace boost;

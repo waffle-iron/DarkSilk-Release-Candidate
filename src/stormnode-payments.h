@@ -5,10 +5,11 @@
 #ifndef STORMNODE_PAYMENTS_H
 #define STORMNODE_PAYMENTS_H
 
+#include <boost/lexical_cast.hpp>
+
 #include "key.h"
 #include "main.h"
 #include "stormnode.h"
-#include <boost/lexical_cast.hpp>
 
 using namespace std;
 

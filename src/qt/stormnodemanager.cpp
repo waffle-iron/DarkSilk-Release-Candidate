@@ -1,3 +1,17 @@
+#include <boost/lexical_cast.hpp>
+#include <fstream>
+
+#include <QAbstractItemDelegate>
+#include <QPainter>
+#include <QTimer>
+#include <QDebug>
+#include <QScrollArea>
+#include <QScroller>
+#include <QDateTime>
+#include <QApplication>
+#include <QClipboard>
+#include <QMessageBox>
+
 #include "stormnodemanager.h"
 #include "ui_stormnodemanager.h"
 #include "addeditstormnode.h"
@@ -14,20 +28,6 @@
 #include "init.h"
 #include "rpcserver.h"
 #include "sandstorm.h"
-
-#include <boost/lexical_cast.hpp>
-#include <fstream>
-
-#include <QAbstractItemDelegate>
-#include <QPainter>
-#include <QTimer>
-#include <QDebug>
-#include <QScrollArea>
-#include <QScroller>
-#include <QDateTime>
-#include <QApplication>
-#include <QClipboard>
-#include <QMessageBox>
 
 using namespace json_spirit;
 using namespace std;

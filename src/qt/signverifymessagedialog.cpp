@@ -1,3 +1,8 @@
+#include <QClipboard>
+
+#include <string>
+#include <vector>
+
 #include "signverifymessagedialog.h"
 #include "ui_signverifymessagedialog.h"
 #include "addressbookpage.h"
@@ -8,11 +13,6 @@
 #include "optionsmodel.h"
 #include "walletmodel.h"
 #include "wallet.h"
-
-#include <QClipboard>
-
-#include <string>
-#include <vector>
 
 SignVerifyMessageDialog::SignVerifyMessageDialog(QWidget *parent) :
     QDialog(parent),

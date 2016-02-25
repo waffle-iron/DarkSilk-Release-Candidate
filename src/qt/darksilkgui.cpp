@@ -7,6 +7,33 @@
  */
 
 #include <QApplication>
+#include <QMenuBar>
+#include <QMenu>
+#include <QFile>
+#include <QIcon>
+#include <QVBoxLayout>
+#include <QToolBar>
+#include <QStatusBar>
+#include <QLabel>
+#include <QMessageBox>
+#include <QMimeData>
+#include <QProgressBar>
+#include <QProgressDialog>
+#include <QStackedWidget>
+#include <QDateTime>
+#include <QMovie>
+#include <QFileDialog>
+#include <QDesktopServices>
+#include <QTimer>
+#include <QDragEnterEvent>
+#include <QUrl>
+#include <QMimeData>
+#include <QStyle>
+#include <QToolButton>
+#include <QScrollArea>
+#include <QScroller>
+#include <QTextDocument>
+#include <iostream>
 
 #include "darksilkgui.h"
 #include "transactiontablemodel.h"
@@ -45,35 +72,6 @@
 #ifdef Q_OS_MAC
 #include "macdockiconhandler.h"
 #endif
-
-#include <QMenuBar>
-#include <QMenu>
-#include <QFile>
-#include <QIcon>
-#include <QVBoxLayout>
-#include <QToolBar>
-#include <QStatusBar>
-#include <QLabel>
-#include <QMessageBox>
-#include <QMimeData>
-#include <QProgressBar>
-#include <QProgressDialog>
-#include <QStackedWidget>
-#include <QDateTime>
-#include <QMovie>
-#include <QFileDialog>
-#include <QDesktopServices>
-#include <QTimer>
-#include <QDragEnterEvent>
-#include <QUrl>
-#include <QMimeData>
-#include <QStyle>
-#include <QToolButton>
-#include <QScrollArea>
-#include <QScroller>
-#include <QTextDocument>
-
-#include <iostream>
 
 extern bool fOnlyTor;
 extern CWallet* pwalletMain;

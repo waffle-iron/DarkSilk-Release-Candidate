@@ -1,3 +1,6 @@
+#include <sstream>
+#include <string>
+
 #include "statisticspage.h"
 #include "ui_statisticspage.h"
 #include "main.h"
@@ -6,8 +9,6 @@
 #include "base58.h"
 #include "clientmodel.h"
 #include "rpcblockchain.cpp"
-#include <sstream>
-#include <string>
 
 using namespace json_spirit;
 

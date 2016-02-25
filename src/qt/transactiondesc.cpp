@@ -1,3 +1,5 @@
+#include <string>
+
 #include "transactiondesc.h"
 #include "darksilkunits.h"
 #include "guiutil.h"
@@ -9,8 +11,6 @@
 #include "ui_interface.h"
 #include "wallet.h"
 #include "txdb-leveldb.h"
-
-#include <string>
 
 QString TransactionDesc::FormatTxStatus(const CWalletTx& wtx)
 {

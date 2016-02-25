@@ -6,12 +6,12 @@
 #ifndef DARKSILK_AMOUNT_H
 #define DARKSILK_AMOUNT_H
 
-#include "serialize.h"
-
 #include <stdlib.h>
 #include <string>
 #include <limits>
- 
+
+#include "serialize.h"
+
 typedef int64_t CAmount;
 
 static const CAmount COIN = 100000000;

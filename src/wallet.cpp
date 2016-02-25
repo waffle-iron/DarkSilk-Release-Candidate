@@ -4,6 +4,13 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include <boost/algorithm/string/replace.hpp>
+#include <boost/range/algorithm.hpp>
+#include <boost/numeric/ublas/matrix.hpp>
+#include <boost/thread.hpp>
+
+#include <assert.h>
+
 #include "wallet.h"
 #include "base58.h"
 #include "checkpoints.h"
@@ -26,13 +33,6 @@
 #include "chainparams.h"
 #include "smessage.h"
 #include "txdb-leveldb.h"
-
-#include <assert.h>
-
-#include <boost/algorithm/string/replace.hpp>
-#include <boost/range/algorithm.hpp>
-#include <boost/numeric/ublas/matrix.hpp>
-#include <boost/thread.hpp>
 
 using namespace std;
 

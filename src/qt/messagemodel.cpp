@@ -1,3 +1,12 @@
+#include <QSet>
+#include <QTimer>
+#include <QDateTime>
+#include <QSortFilterProxyModel>
+#include <QClipboard>
+#include <QMessageBox>
+#include <QMenu>
+#include <QFont>
+#include <QColor>
 
 #include "messagemodel.h"
 #include "guiutil.h"
@@ -9,16 +18,6 @@
 #include "ui_interface.h"
 #include "base58.h"
 #include "json_spirit.h"
-
-#include <QSet>
-#include <QTimer>
-#include <QDateTime>
-#include <QSortFilterProxyModel>
-#include <QClipboard>
-#include <QMessageBox>
-#include <QMenu>
-#include <QFont>
-#include <QColor>
 
 Q_DECLARE_METATYPE(std::vector<unsigned char>);
 

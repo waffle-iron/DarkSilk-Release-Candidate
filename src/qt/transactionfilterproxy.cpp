@@ -1,9 +1,9 @@
+#include <QDateTime>
+#include <cstdlib>
+
 #include "transactionfilterproxy.h"
 #include "transactiontablemodel.h"
 #include "transactionrecord.h"
-
-#include <QDateTime>
-#include <cstdlib>
 
 // Earliest date that can be represented (far in the past)
 const QDateTime TransactionFilterProxy::MIN_DATE = QDateTime::fromTime_t(0);

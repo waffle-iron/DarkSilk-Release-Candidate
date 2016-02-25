@@ -6,6 +6,7 @@
 #define  DARKSILK_CHECKPOINT_H
 
 #include <map>
+
 #include "uint256.h"
 
 class CBlockIndex;

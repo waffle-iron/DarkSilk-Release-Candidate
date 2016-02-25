@@ -7,10 +7,10 @@
 #ifndef DARKSILK_CHAINPARAMS_H
 #define DARKSILK_CHAINPARAMS_H
 
+#include <vector>
+
 #include "bignum.h"
 #include "uint256.h"
-
-#include <vector>
 
 using namespace std;
 

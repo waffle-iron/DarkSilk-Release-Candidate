@@ -2,6 +2,9 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include <boost/filesystem.hpp>
+#include <boost/lexical_cast.hpp>
+
 #include "stormnode-budget.h"
 #include "main.h"
 #include "init.h"
@@ -11,8 +14,6 @@
 #include "stormnode-sync.h"
 #include "util.h"
 #include "addrman.h"
-#include <boost/filesystem.hpp>
-#include <boost/lexical_cast.hpp>
 
 CBudgetManager budget;
 CCriticalSection cs_budget;

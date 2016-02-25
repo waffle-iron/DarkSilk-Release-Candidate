@@ -4,25 +4,22 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "db.h"
-#include "addrman.h"
-#include "hash.h"
-#include "util.h"
+#include <boost/filesystem.hpp>
+#include <boost/version.hpp>
 
 #ifndef WIN32
 #include <sys/stat.h>
 #endif
 
-#include <boost/filesystem.hpp>
-#include <boost/version.hpp>
+#include "db.h"
+#include "addrman.h"
+#include "hash.h"
+#include "util.h"
 
 using namespace std;
 using namespace boost;
 
-
 unsigned int nWalletDBUpdated;
-
-
 
 //
 // CDB

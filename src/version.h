@@ -4,8 +4,9 @@
 #ifndef DARKSILK_VERSION_H
 #define DARKSILK_VERSION_H
 
-#include "clientversion.h"
 #include <string>
+
+#include "clientversion.h"
 
 //
 // client versioning

@@ -3,11 +3,12 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 //--------------------------------------------------------------------------------------------------
 
+#include <boost/thread/shared_mutex.hpp>
+
 #include "i2p.h"
 #include "util.h"
 #include "hash.h"
 
-#include <boost/thread/shared_mutex.hpp>
 namespace SAM
 {
 

@@ -11,12 +11,13 @@
 #ifndef INCLUDED_PROTOCOL_H
 #define INCLUDED_PROTOCOL_H
 
+#include <string>
+
+#include <stdint.h>
+
 #include "chainparams.h"
 #include "serialize.h"
 #include "netbase.h"
-
-#include <stdint.h>
-#include <string>
 
 /** Message header.
  * (4) message start.

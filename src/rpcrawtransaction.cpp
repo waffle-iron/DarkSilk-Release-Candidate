@@ -4,6 +4,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include <boost/assign/list_of.hpp>
+
 #include "rpcserver.h"
 #include "base58.h"
 #include "primitives/transaction.h"
@@ -18,8 +20,6 @@
 #ifdef ENABLE_WALLET
 #include "wallet.h"
 #endif
-
-#include <boost/assign/list_of.hpp>
 
 using namespace std;
 using namespace boost;

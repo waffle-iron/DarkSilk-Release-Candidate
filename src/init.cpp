@@ -4,6 +4,15 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include <boost/algorithm/string/predicate.hpp>
+#include <boost/algorithm/string/replace.hpp>
+#include <boost/bind.hpp>
+#include <boost/filesystem.hpp>
+#include <boost/interprocess/sync/file_lock.hpp>
+#include <boost/thread.hpp>
+
+#include <openssl/crypto.h>
+
 #include "init.h"
 #include "main.h"
 #include "chainparams.h"
@@ -28,13 +37,6 @@
 #include "wallet.h"
 #include "walletdb.h"
 #endif
-#include <boost/algorithm/string/predicate.hpp>
-#include <boost/algorithm/string/replace.hpp>
-#include <boost/bind.hpp>
-#include <boost/filesystem.hpp>
-#include <boost/interprocess/sync/file_lock.hpp>
-#include <boost/thread.hpp>
-#include <openssl/crypto.h>
 
 #ifndef WIN32
 #include <signal.h>

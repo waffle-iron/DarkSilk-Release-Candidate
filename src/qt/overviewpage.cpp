@@ -1,3 +1,10 @@
+#include <QAbstractItemDelegate>
+#include <QPainter>
+#include <QTimer>
+#include <QDebug>
+#include <QScrollArea>
+#include <QScroller>
+
 #include "overviewpage.h"
 #include "ui_overviewpage.h"
 #include "clientmodel.h"
@@ -11,13 +18,6 @@
 #include "guiutil.h"
 #include "guiconstants.h"
 #include "init.h"
-
-#include <QAbstractItemDelegate>
-#include <QPainter>
-#include <QTimer>
-#include <QDebug>
-#include <QScrollArea>
-#include <QScroller>
 
 #define DECORATION_SIZE 64
 #define NUM_ITEMS 6

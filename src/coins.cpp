@@ -2,11 +2,11 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include <assert.h>
+
 #include "coins.h"
 #include "util.h"
 #include "txdb.h"
-
-#include <assert.h>
 
 /**
  * calculate number of bytes for the bitmask, and its number of non-zero bytes

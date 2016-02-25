@@ -6,12 +6,13 @@
 #ifndef DARKSILK_KEYSTORE_H
 #define DARKSILK_KEYSTORE_H
 
+#include <boost/signals2/signal.hpp>
+#include <boost/variant.hpp>
+
 #include "key.h"
 #include "pubkey.h"
 #include "sync.h"
 #include "script.h"
-#include <boost/signals2/signal.hpp>
-#include <boost/variant.hpp>
 
 /** A txout script template with a specific destination. It is either:
  *  * CNoDestination: no destination set

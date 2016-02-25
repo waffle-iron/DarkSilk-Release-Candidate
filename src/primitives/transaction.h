@@ -6,14 +6,14 @@
 #ifndef DARKSILK_PRIMITIVES_TRANSACTION_H
 #define DARKSILK_PRIMITIVES_TRANSACTION_H
 
+#include <stdio.h>
+
 #include "amount.h"
 #include "uint256.h"
 #include "serialize.h"
 #include "util.h"
 #include "script.h"
 #include "timedata.h"
-
-#include <stdio.h>
 
 class CValidationInterface;
 class CValidationState;
