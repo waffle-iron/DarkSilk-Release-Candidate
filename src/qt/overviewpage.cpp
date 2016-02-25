@@ -276,6 +276,8 @@ void OverviewPage::setWalletModel(WalletModel *model)
         connect(model, SIGNAL(balanceChanged(CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount)), this, SLOT(setBalance(CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount)));
 
         connect(model->getOptionsModel(), SIGNAL(displayUnitChanged(int)), this, SLOT(updateDisplayUnit()));
+        connect(model->getOptionsModel(), SIGNAL(sandstormRoundsChanged()), this, SLOT(updateSandstormProgress()));
+        connect(model->getOptionsModel(), SIGNAL(anonymizeDarkSilkAmountChanged()), this, SLOT(updateSandstormProgress()));
 
         connect(ui->sandstormAuto, SIGNAL(clicked()), this, SLOT(sandstormAuto()));
         connect(ui->sandstormReset, SIGNAL(clicked()), this, SLOT(sandstormReset()));
