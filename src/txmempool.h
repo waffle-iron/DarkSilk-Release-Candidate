@@ -25,7 +25,7 @@ inline bool AllowFree(double dPriority)
     return dPriority > AllowFreeThreshold();
 }
 
-/// CTxMemPool stores these:
+///! CTxMemPool stores these:
 class CTxMemPoolEntry
 {
 private:
@@ -51,9 +51,7 @@ public:
     unsigned int GetHeight() const { return nHeight; }
 };
 
-/**
- * Keep track of fee/priority for transactions confirmed within N blocks
- */
+///! Keep track of fee/priority for transactions confirmed within N blocks
 class CBlockAverage
 {
 private:
@@ -374,7 +372,7 @@ public:
         assert(history.size() > 0);
     }
 };
-
+class CCoinsViewCache;
 /*
  * CTxMemPool stores valid-according-to-the-current-best-chain
  * transactions that may be included in the next block.
@@ -394,30 +392,56 @@ private:
 
 public:
     mutable CCriticalSection cs;
-    std::map<uint256, CTransaction> mapTx;
+    //std::map<uint256, CTransaction> mapTx;
+    std::map<uint256, CTxMemPoolEntry> mapTx;
     std::map<COutPoint, CInPoint> mapNextTx;
     CMinerPolicyEstimator* minerPolicyEstimator;
+    uint64_t totalTxSize; //! sum of all mempool tx' byte sizes
+    std::map<uint256, std::pair<double, CAmount> > mapDeltas;
 
     //CTxMemPool();
     CTxMemPool(const CFeeRate& _minRelayFee);
     ~CTxMemPool();
 
+    ///! If sanity-checking is turned on, check makes sure the pool is
+    ///! consistent (does not contain two transactions that spend the same inputs,
+    ///! all inputs are in the mapNextTx array). If sanity-checking is turned off,
+    ///! check does nothing.
+    void check(const CCoinsViewCache *pcoins) const;
+
+    bool addUnchecked(const uint256& hash, const CTxMemPoolEntry &entry);
+
+
     void setSanityCheck(bool _fSanityCheck) { fSanityCheck = _fSanityCheck; }
 
     bool addUnchecked(const uint256& hash, CTransaction &tx);
+
     bool remove(const CTransaction &tx, bool fRecursive = false);
     bool removeConflicts(const CTransaction &tx);
+    void remove(const CTransaction &tx, std::list<CTransaction>& removed, bool fRecursive = false);
+    void removeConflicts(const CTransaction &tx, std::list<CTransaction>& removed);
+    void removeCoinbaseSpends(const CCoinsViewCache *pcoins, unsigned int nMemPoolHeight);
+    void removeForBlock(const std::vector<CTransaction>& vtx, unsigned int nBlockHeight,
+                        std::list<CTransaction>& conflicts);
+
     void clear();
     void queryHashes(std::vector<uint256>& vtxid);
     unsigned int GetTransactionsUpdated() const;
     void AddTransactionsUpdated(unsigned int n);
     bool ReadFeeEstimates(CAutoFile& filein);
     bool WriteFeeEstimates(CAutoFile& fileout) const;
+    void ClearPrioritisation(const uint256 hash);
 
     unsigned long size() const
     {
         LOCK(cs);
         return mapTx.size();
+    }
+
+    uint64_t GetTotalTxSize()
+    {
+        LOCK(cs);
+        return totalTxSize;
     }
 
     bool exists(uint256 hash) const

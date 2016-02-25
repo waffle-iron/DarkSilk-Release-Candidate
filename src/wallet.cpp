@@ -16,7 +16,6 @@
 #include "checkpoints.h"
 #include "coincontrol.h"
 #include "kernel.h"
-#include "net.h"
 #include "stormnode-budget.h"
 #include "timedata.h"
 #include "txdb.h"

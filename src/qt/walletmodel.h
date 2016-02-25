@@ -5,7 +5,10 @@
 #include <vector>
 #include <map>
 
-#include "allocators.h" /* for SecureString */
+#include "allocators.h" ///! for SecureString
+#include "net.h"
+#include "protocol.h"
+#include "chainparams.h"
 #include "instantx.h"
 #include "wallet.h"
 

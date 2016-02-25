@@ -12,7 +12,6 @@
 #define INCLUDED_PROTOCOL_H
 
 #include <string>
-
 #include <stdint.h>
 
 #include "chainparams.h"

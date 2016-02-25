@@ -17,11 +17,13 @@
 #include <string>
 #include <vector>
 
+#include "net.h"
 #include "chainparams.h"
 #include "pubkey.h"
 #include "key.h"
 #include "script.h"
 #include "allocators.h"
+
 
 /**
  * Encode a byte sequence as a base58-encoded string.

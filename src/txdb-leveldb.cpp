@@ -16,15 +16,12 @@
 
 #include <map>
 
+#include "addrman.h"
 #include "txdb-leveldb.h"
-#include "net.h"
-#include "protocol.h"
-#include "chainparams.h"
 #include "kernel.h"
 #include "checkpoints.h"
 #include "txdb.h"
 #include "util.h"
-#include "main.h"
 
 using namespace std;
 using namespace boost;
