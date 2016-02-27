@@ -11,7 +11,7 @@
 
 #include <assert.h>
 
-#include "wallet.h"
+#include "wallet/wallet.h"
 #include "base58.h"
 #include "checkpoints.h"
 #include "coincontrol.h"
@@ -19,9 +19,9 @@
 #include "net.h"
 #include "stormnode-budget.h"
 #include "timedata.h"
-#include "txdb.h"
+#include "txwallet/db.h"
 #include "ui_interface.h"
-#include "walletdb.h"
+#include "wallet/walletdb.h"
 #include "crypter.h"
 #include "key.h"
 #include "spork.h"
@@ -32,7 +32,7 @@
 #include "stormnode-payments.h"
 #include "chainparams.h"
 #include "smessage.h"
-#include "txdb-leveldb.h"
+#include "txdb-levelwallet/db.h"
 
 using namespace std;
 

@@ -5,14 +5,14 @@
 #ifndef SEC_MESSAGE_H
 #define SEC_MESSAGE_H
 
-#include <leveldb/db.h>
+#include <leveldb/wallet/db.h>
 #include <leveldb/write_batch.h>
 
 #include "net.h"
-#include "db.h"
-#include "wallet.h"
+#include "wallet/db.h"
+#include "wallet/wallet.h"
 #include "base58.h"
-#include "lz4/lz4.h"
+#include "crypto/lz4/lz4.h"
 
 
 const unsigned int SMSG_HDR_LEN         = 104;               // length of unencrypted header, 4 + 2 + 1 + 8 + 16 + 33 + 32 + 4 +4

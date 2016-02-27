@@ -16,13 +16,13 @@
 
 #include <map>
 
-#include "txdb-leveldb.h"
+#include "txdb-levelwallet/db.h"
 #include "net.h"
 #include "protocol.h"
 #include "chainparams.h"
 #include "kernel.h"
 #include "checkpoints.h"
-#include "txdb.h"
+#include "txwallet/db.h"
 #include "util.h"
 #include "main.h"
 

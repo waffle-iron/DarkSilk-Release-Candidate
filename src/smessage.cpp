@@ -43,7 +43,7 @@ Notes:
 
 #include "lz4/lz4.c"
 
-#include "xxhash/xxhash.h"
+#include "crypto/xxhash/xxhash.h"
 #include "xxhash/xxhash.c"
 
 #include <time.h>
@@ -56,12 +56,12 @@ Notes:
 
 #include "smessage.h"
 #include "base58.h"
-#include "db.h"
+#include "wallet/db.h"
 #include "init.h" // pwalletMain
-#include "txdb.h"
+#include "txwallet/db.h"
 #include "sync.h"
 #include "ecwrapper.h"
-#include "txdb-leveldb.h"
+#include "txdb-levelwallet/db.h"
 
 boost::thread_group threadGroupSmsg;
 

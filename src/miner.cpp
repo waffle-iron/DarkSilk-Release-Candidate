@@ -6,12 +6,12 @@
 
 #include "miner.h"
 #include "primitives/block.h"
-#include "txdb.h"
+#include "txwallet/db.h"
 #include "kernel.h"
 #include "stormnodeman.h"
 #include "stormnode-payments.h"
 #include "spork.h"
-#include "txdb-leveldb.h"
+#include "txdb-levelwallet/db.h"
 
 using namespace std;
 
@@ -123,7 +123,7 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, CAmount* pFe
 
     if (!fProofOfStake)
     {
-        pblock->nVersion = 1; // Proof of Work uses Scrypt
+        pblock->nVersion = 1; // Proof of Work uses Argon2d
         CPubKey pubkey;
         if (!reservekey.GetReservedKey(pubkey))
             return NULL;

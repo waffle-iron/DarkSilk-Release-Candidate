@@ -9,8 +9,8 @@
 #include "transactionrecord.h"
 #include "timedata.h"
 #include "ui_interface.h"
-#include "wallet.h"
-#include "txdb-leveldb.h"
+#include "wallet/wallet.h"
+#include "txdb-levelwallet/db.h"
 
 QString TransactionDesc::FormatTxStatus(const CWalletTx& wtx)
 {

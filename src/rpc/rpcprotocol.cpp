@@ -17,7 +17,7 @@
 
 #include <stdint.h>
 
-#include "rpcprotocol.h"
+#include "rpc/rpcprotocol.h"
 #include "util.h"
 
 using namespace std;

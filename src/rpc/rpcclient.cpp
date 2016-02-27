@@ -19,8 +19,8 @@
 
 #include <stdint.h>
 
-#include "rpcclient.h"
-#include "rpcprotocol.h"
+#include "rpc/rpcclient.h"
+#include "rpc/rpcprotocol.h"
 #include "util.h"
 #include "ui_interface.h"
 #include "chainparams.h" // for Params().RPCPort()

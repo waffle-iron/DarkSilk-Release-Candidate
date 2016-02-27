@@ -6,7 +6,7 @@
 
 #include "json/json_spirit_value.h"
 
-#include "rpcserver.h"
+#include "rpc/rpcserver.h"
 #include "alert.h"
 #include "main.h"
 #include "net.h"

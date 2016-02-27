@@ -26,7 +26,7 @@
 #include <time.h>
 #include <stdarg.h>
 
-#include "i2psam.h"
+#include "i2p/i2psam.h"
 
 #ifndef WIN32
 #define closesocket         close

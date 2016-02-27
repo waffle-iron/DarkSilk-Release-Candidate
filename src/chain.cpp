@@ -6,11 +6,11 @@
 #include <boost/algorithm/string/replace.hpp>
 
 #include "chain.h"
-#include "wallet.h"
+#include "wallet/wallet.h"
 #include "checkpoints.h"
 #include "spork.h"
 #include "kernel.h"
-#include "txdb-leveldb.h"
+#include "txdb-levelwallet/db.h"
 
 #ifdef ENABLE_WALLET
 

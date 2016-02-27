@@ -6,16 +6,16 @@
 
 #include <boost/assign/list_of.hpp>
 
-#include "rpcserver.h"
+#include "rpc/rpcserver.h"
 #include "base58.h"
 #include "chainparams.h"
 #include "main.h"
-#include "db.h"
-#include "txdb.h"
+#include "wallet/db.h"
+#include "txwallet/db.h"
 #include "init.h"
 #include "miner.h"
 #include "kernel.h"
-#include "txdb-leveldb.h"
+#include "txdb-levelwallet/db.h"
 #include "stormnode-sync.h"
 
 using namespace json_spirit;

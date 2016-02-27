@@ -10,14 +10,14 @@
 #include <vector>
 #include <stdlib.h>
 
-#include "walletdb.h"
+#include "wallet/walletdb.h"
 #include "primitives/block.h"
 #include "primitives/transaction.h"
 #include "crypter.h"
 #include "main.h"
 #include "key.h"
 #include "keystore.h"
-#include "script.h"
+#include "script/script.h"
 #include "ui_interface.h"
 #include "util.h"
 #include "stealth.h"

@@ -27,7 +27,7 @@
 #include "init.h"
 #include "optionsmodel.h"
 #include "sandstorm.h"
-#include "wallet.h"
+#include "wallet/wallet.h"
 #include "walletmodel.h"
 
 using namespace std;

@@ -9,7 +9,7 @@
 #include <iostream>
 #include <fstream>
 
-#include "rpcserver.h"
+#include "rpc/rpcserver.h"
 #include "init.h" // for pwalletMain
 #include "ui_interface.h"
 #include "base58.h"

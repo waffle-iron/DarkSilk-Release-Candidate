@@ -57,7 +57,7 @@
 #include "notificator.h"
 #include "guiutil.h"
 #include "debugconsole.h"
-#include "wallet.h"
+#include "wallet/wallet.h"
 #include "init.h"
 #include "stormnode-sync.h"
 #include "stormnodemanager.h"
@@ -66,7 +66,7 @@
 #include "messagepage.h"
 
 #ifdef USE_NATIVE_I2P
-#include "showi2paddresses.h"
+#include "i2p/showi2paddresses.h"
 #endif
 
 #ifdef Q_OS_MAC

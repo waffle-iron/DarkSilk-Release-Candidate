@@ -23,10 +23,10 @@
 #include "stormnodeconfig.h"
 #include "stormnode.h"
 #include "stormnodeman.h"
-#include "walletdb.h"
-#include "wallet.h"
+#include "wallet/walletdb.h"
+#include "wallet/wallet.h"
 #include "init.h"
-#include "rpcserver.h"
+#include "rpc/rpcserver.h"
 #include "sandstorm.h"
 
 using namespace json_spirit;

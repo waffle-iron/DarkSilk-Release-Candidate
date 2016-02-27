@@ -6,8 +6,8 @@
 #include <boost/assign/list_of.hpp>
 
 #include "kernel.h"
-#include "txdb.h"
-#include "txdb-leveldb.h"
+#include "txwallet/db.h"
+#include "txdb-levelwallet/db.h"
 
 using namespace std;
 

@@ -10,7 +10,7 @@
 #include "net.h"
 #include "key.h"
 #include "util.h"
-#include "script.h"
+#include "script/script.h"
 #include "base58.h"
 #include "main.h"
 

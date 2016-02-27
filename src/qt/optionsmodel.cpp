@@ -3,12 +3,12 @@
 #include "optionsmodel.h"
 #include "darksilkunits.h"
 #include "init.h"
-#include "wallet.h"
-#include "walletdb.h"
+#include "wallet/wallet.h"
+#include "wallet/walletdb.h"
 #include "guiutil.h"
 
 #ifdef USE_NATIVE_I2P
-#include "i2p.h"
+#include "i2p/i2p.h"
 #include <sstream>
 
 #define I2P_OPTIONS_SECTION_NAME    "I2P"

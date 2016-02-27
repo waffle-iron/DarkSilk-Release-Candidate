@@ -11,7 +11,7 @@
 #include <utility>
 #include <vector>
 
-#include "db.h"
+#include "wallet/db.h"
 #include "keystore.h"
 #include "stealth.h"
 #include "amount.h"

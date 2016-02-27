@@ -17,7 +17,7 @@
 #include "stormnode-sync.h"
 
 #ifdef USE_NATIVE_I2P
-#include "i2p.h"
+#include "i2p/i2p.h"
 #endif
 
 static const int64_t nClientStartupTime = GetTime();

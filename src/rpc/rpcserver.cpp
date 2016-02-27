@@ -22,17 +22,17 @@
 
 #include <list>
 
-#include "rpcserver.h"
+#include "rpc/rpcserver.h"
 #include "base58.h"
 #include "init.h"
 #include "ui_interface.h"
 #include "util.h"
 #include "sync.h"
 #include "base58.h"
-#include "db.h"
+#include "wallet/db.h"
 
 #ifdef ENABLE_WALLET
-#include "wallet.h"
+#include "wallet/wallet.h"
 #endif
 
 using namespace std;

@@ -11,7 +11,7 @@
 #include <sys/stat.h>
 #endif
 
-#include "db.h"
+#include "wallet/db.h"
 #include "addrman.h"
 #include "hash.h"
 #include "util.h"

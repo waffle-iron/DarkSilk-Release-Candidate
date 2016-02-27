@@ -4,9 +4,9 @@
 
 #include <fstream>
 
-#include "rpcserver.h"
+#include "rpc/rpcserver.h"
 #include "main.h"
-#include "db.h"
+#include "wallet/db.h"
 #include "init.h"
 #include "activestormnode.h"
 #include "stormnode-budget.h"

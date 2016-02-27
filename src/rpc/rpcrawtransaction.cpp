@@ -6,19 +6,19 @@
 
 #include <boost/assign/list_of.hpp>
 
-#include "rpcserver.h"
+#include "rpc/rpcserver.h"
 #include "base58.h"
 #include "primitives/transaction.h"
-#include "txdb.h"
+#include "txwallet/db.h"
 #include "init.h"
 #include "main.h"
 #include "net.h"
 #include "keystore.h"
-#include "script.h"
-#include "txdb-leveldb.h"
+#include "script/script.h"
+#include "txdb-levelwallet/db.h"
 
 #ifdef ENABLE_WALLET
-#include "wallet.h"
+#include "wallet/wallet.h"
 #endif
 
 using namespace std;

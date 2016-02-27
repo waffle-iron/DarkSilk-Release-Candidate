@@ -8,7 +8,7 @@
 #include <boost/tuple/tuple.hpp>
 #include <boost/tuple/tuple_comparison.hpp>
 
-#include "script.h"
+#include "script/script.h"
 #include "keystore.h"
 #include "main.h"
 #include "sync.h"

@@ -5,7 +5,7 @@
 
 #include <boost/lexical_cast.hpp>
 
-#include "rpcserver.h"
+#include "rpc/rpcserver.h"
 #include "main.h"
 #include "smessage.h"
 #include "init.h" // pwalletMain

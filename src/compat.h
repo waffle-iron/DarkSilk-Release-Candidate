@@ -36,7 +36,7 @@
 #include <arpa/inet.h>
 #include <ifaddrs.h>
 #include <limits.h>
-#include <netdb.h>
+#include <netwallet/db.h>
 #include <unistd.h>
 #endif
 

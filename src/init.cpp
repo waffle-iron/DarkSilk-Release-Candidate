@@ -16,8 +16,8 @@
 #include "init.h"
 #include "main.h"
 #include "chainparams.h"
-#include "txdb.h"
-#include "rpcserver.h"
+#include "txwallet/db.h"
+#include "rpc/rpcserver.h"
 #include "net.h"
 #include "util.h"
 #include "key.h"
@@ -31,11 +31,11 @@
 #include "spork.h"
 #include "stormnodeconfig.h"
 #include "smessage.h"
-#include "txdb-leveldb.h"
+#include "txdb-levelwallet/db.h"
 
 #ifdef ENABLE_WALLET
-#include "wallet.h"
-#include "walletdb.h"
+#include "wallet/wallet.h"
+#include "wallet/walletdb.h"
 #endif
 
 #ifndef WIN32
@@ -43,7 +43,7 @@
 #endif
 
 #ifdef USE_NATIVE_I2P
-#include "i2p.h"
+#include "i2p/i2p.h"
 #endif
 
 using namespace std;
