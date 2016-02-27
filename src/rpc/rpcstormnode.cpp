@@ -8,7 +8,7 @@
 #include "main.h"
 #include "wallet/db.h"
 #include "init.h"
-#include "anon/stormnode/activeanon/stormnode/stormnode.h"
+#include "anon/stormnode/activestormnode.h"
 #include "anon/stormnode/stormnode-budget.h"
 #include "anon/stormnode/stormnode-payments.h"
 #include "anon/stormnode/stormnode-sync.h"

@@ -6,7 +6,7 @@
 #include <boost/filesystem.hpp>
 
 #include "anon/stormnode/stormnodeman.h"
-#include "anon/stormnode/activeanon/stormnode/stormnode.h"
+#include "anon/stormnode/activestormnode.h"
 #include "anon/sandstorm/sandstorm.h"
 #include "anon/stormnode/stormnode.h"
 #include "anon/stormnode/stormnode-payments.h"

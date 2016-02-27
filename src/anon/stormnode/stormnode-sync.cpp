@@ -3,7 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "anon/stormnode/stormnode-sync.h"
-#include "anon/stormnode/activeanon/stormnode/stormnode.h"
+#include "anon/stormnode/activestormnode.h"
 #include "anon/stormnode/stormnode-budget.h"
 #include "anon/stormnode/stormnode-payments.h"
 #include "anon/stormnode/stormnode.h"

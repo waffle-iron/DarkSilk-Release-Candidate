@@ -1,8 +1,8 @@
 
 #include <QMessageBox>
 
-#include "addeditanon/stormnode/stormnode.h"
-#include "ui_addeditanon/stormnode/stormnode.h"
+#include "anon/stormnode/addeditstormnode.h"
+#include "ui_anon/stormnode/addeditstormnode.h"
 #include "anon/stormnode/stormnodeconfig.h"
 #include "stormnodemanager.h"
 #include "ui_stormnodemanager.h"

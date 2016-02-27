@@ -23,7 +23,7 @@
 #include "key.h"
 #include "pubkey.h"
 #include "ui_interface.h"
-#include "anon/stormnode/activeanon/stormnode/stormnode.h"
+#include "anon/stormnode/activestormnode.h"
 #include "sanity.h"
 #include "anon/stormnode/stormnode-budget.h"
 #include "anon/stormnode/stormnode-payments.h"

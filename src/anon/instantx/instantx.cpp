@@ -11,7 +11,7 @@
 #include "util.h"
 #include "base58.h"
 #include "protocol.h"
-#include "anon/stormnode/activeanon/stormnode/stormnode.h"
+#include "anon/stormnode/activestormnode.h"
 #include "anon/stormnode/stormnode-sync.h"
 #include "anon/stormnode/stormnodeman.h"
 #include "anon/sandstorm/sandstorm.h"

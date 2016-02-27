@@ -310,7 +310,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/anon/sandstorm/sandstorm.h \    
             src/anon/sandstorm/sandstorm-relay.h \
             src/anon/instantx/instantx.h \
-            src/anon/stormnode/activeanon/stormnode/stormnode.h \
+            src/anon/stormnode/stormnode.h \
             src/anon/stormnode/stormnodeman.h \
             src/anon/stormnode/spork.h \
             src/crypto/common.h \
@@ -321,7 +321,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/crypto/sha256.h \
             src/crypto/sha512.h \
             src/qt/stormnodemanager.h \
-            src/qt/addeditanon/stormnode/stormnode.h \
+            src/qt/anon/stormnode/addeditstormnode.h \
             src/qt/stormnodeconfigdialog.h \
             src/qt/winshutdownmonitor.h \
             src/smessage.h \
@@ -444,10 +444,10 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/anon/stormnode/stormnode-payments.cpp \
             src/anon/sandstorm/sandstorm.cpp \
             src/anon/sandstorm/sandstorm-relay.cpp \
-            src/rpc/rpcanon/stormnode/stormnode.cpp \
-            src/rpc/rpcanon/stormnode/stormnode-budget.cpp \
+            src/rpc/rpcstormnode.cpp \
+            src/rpc/rpcstormnode-budget.cpp \
             src/anon/instantx/instantx.cpp \
-            src/anon/stormnode/activeanon/stormnode/stormnode.cpp \
+            src/anon/stormnode/stormnode.cpp \
             src/anon/stormnode/spork.cpp \
             src/anon/stormnode/stormnodeconfig.cpp \
             src/anon/stormnode/stormnodeman.cpp \
@@ -458,7 +458,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/crypto/sha256.cpp \
             src/crypto/sha512.cpp \
             src/qt/stormnodemanager.cpp \
-            src/qt/addeditanon/stormnode/stormnode.cpp \
+            src/qt/anon/stormnode/addeditstormnode.cpp \
             src/qt/stormnodeconfigdialog.cpp \
             src/qt/winshutdownmonitor.cpp \
             src/smessage.cpp \
