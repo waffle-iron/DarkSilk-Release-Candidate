@@ -11,11 +11,11 @@
 #include "chainparams.h"
 #include "main.h"
 #include "wallet/db.h"
-#include "txwallet/db.h"
+#include "txdb.h"
 #include "init.h"
 #include "miner.h"
 #include "kernel.h"
-#include "txdb-levelwallet/db.h"
+#include "txdb-leveldb.h"
 #include "stormnode-sync.h"
 
 using namespace json_spirit;

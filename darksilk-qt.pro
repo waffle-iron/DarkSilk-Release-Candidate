@@ -126,7 +126,7 @@ QMAKE_CLEAN += $$PWD/src/secp256k1/src/libsecp256k1_la-secp256k1.o; cd $$PWD/src
 #Build LevelDB
 INCLUDEPATH += src/leveldb/include src/leveldb/helpers src/leveldb/helpers/memenv
 LIBS += $$PWD/src/leveldb/libleveldb.a $$PWD/src/leveldb/libmemenv.a
-SOURCES += src/txdb-levelwallet/db.cpp
+SOURCES += src/txdb-leveldb.cpp
 !win32 {
     # we use QMAKE_CXXFLAGS_RELEASE even without RELEASE=1 because we use RELEASE to indicate linking preferences not -O preferences
     genleveldb.commands = cd $$PWD/src/leveldb && CC=$$QMAKE_CC CXX=$$QMAKE_CXX $(MAKE) OPT=\"$$QMAKE_CXXFLAGS $$QMAKE_CXXFLAGS_RELEASE\" libleveldb.a libmemenv.a
@@ -246,7 +246,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/ecwrapper.h \
             src/pubkey.h \
             src/wallet/db.h \
-            src/txwallet/db.h \
+            src/txdb.h \
             src/txmempool.h \
             src/wallet/walletdb.h \
             src/script/script.h \
@@ -341,7 +341,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/undo.h \
             src/leveldbwrapper.h \
             src/streams.h \
-            src/txdb-levelwallet/db.h \
+            src/txdb-leveldb.h \
             src/amount.h \
             src/sanity.h \
             src/crypto/argon2/argon2.h \
@@ -389,7 +389,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/addrman.cpp \
             src/base58.cpp \
             src/wallet/db.cpp \
-            src/wallet/walletwallet/db.cpp \
+            src/wallet/walletdb.cpp \
             src/qt/clientmodel.cpp \
             src/qt/guiutil.cpp \
             src/qt/transactionrecord.cpp \
@@ -400,7 +400,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/qt/transactiondescdialog.cpp \
             src/qt/darksilkstrings.cpp \
             src/qt/darksilkamountfield.cpp \
-            src/wallet/wallet/wallet.cpp \
+            src/wallet/wallet.cpp \
             src/keystore.cpp \
             src/qt/transactionfilterproxy.cpp \
             src/qt/transactionview.cpp \
@@ -412,7 +412,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/rpc/rpcmisc.cpp \
             src/rpc/rpcnet.cpp \
             src/rpc/rpcmining.cpp \
-            src/rpcwallet/wallet/wallet.cpp \
+            src/rpcwallet/wallet.cpp \
             src/rpc/rpcblockchain.cpp \
             src/rpc/rpcrawtransaction.cpp \
             src/timedata.cpp \
@@ -475,9 +475,9 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/chain.cpp \
             src/uint256.cpp \
             src/coins.cpp \
-            src/script/script/compressor.cpp \
+            src/script/compressor.cpp \
             src/leveldbwrapper.cpp \
-            src/txwallet/db.cpp \
+            src/txdb.cpp \
             src/amount.cpp \
             src/undo.cpp \
             src/compat/glibc_sanity.cpp \

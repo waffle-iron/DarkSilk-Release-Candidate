@@ -10,7 +10,7 @@
 #include "timedata.h"
 #include "ui_interface.h"
 #include "wallet/wallet.h"
-#include "txdb-levelwallet/db.h"
+#include "txdb-leveldb.h"
 
 QString TransactionDesc::FormatTxStatus(const CWalletTx& wtx)
 {

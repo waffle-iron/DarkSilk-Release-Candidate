@@ -6,7 +6,7 @@
 
 #include "coins.h"
 #include "util.h"
-#include "txwallet/db.h"
+#include "txdb.h"
 
 /**
  * calculate number of bytes for the bitmask, and its number of non-zero bytes

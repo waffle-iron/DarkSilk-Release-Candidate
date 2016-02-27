@@ -7,7 +7,7 @@
 #include <boost/foreach.hpp>
 
 #include "checkpoints.h"
-#include "txwallet/db.h"
+#include "txdb.h"
 #include "main.h"
 #include "uint256.h"
 

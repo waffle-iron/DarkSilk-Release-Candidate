@@ -16,7 +16,7 @@
 #include "init.h"
 #include "main.h"
 #include "chainparams.h"
-#include "txwallet/db.h"
+#include "txdb.h"
 #include "rpc/rpcserver.h"
 #include "net.h"
 #include "util.h"
@@ -31,7 +31,7 @@
 #include "spork.h"
 #include "stormnodeconfig.h"
 #include "smessage.h"
-#include "txdb-levelwallet/db.h"
+#include "txdb-leveldb.h"
 
 #ifdef ENABLE_WALLET
 #include "wallet/wallet.h"

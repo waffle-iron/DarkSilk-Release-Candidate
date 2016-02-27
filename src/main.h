@@ -12,7 +12,7 @@
 
 #include "txmempool.h"
 #include "net.h"
-#include "txwallet/db.h"
+#include "txdb.h"
 #include "chain.h"
 
 class CValidationState;

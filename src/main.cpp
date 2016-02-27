@@ -18,7 +18,7 @@
 #include "wallet/db.h"
 #include "init.h"
 #include "kernel.h"
-#include "txwallet/db.h"
+#include "txdb.h"
 #include "ui_interface.h"
 #include "instantx.h"
 #include "sandstorm.h"
@@ -29,7 +29,7 @@
 #include "spork.h"
 #include "smessage.h"
 #include "coins.h"
-#include "txdb-levelwallet/db.h"
+#include "txdb-leveldb.h"
 
 using namespace std;
 using namespace boost;

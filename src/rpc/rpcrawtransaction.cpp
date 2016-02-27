@@ -9,13 +9,13 @@
 #include "rpc/rpcserver.h"
 #include "base58.h"
 #include "primitives/transaction.h"
-#include "txwallet/db.h"
+#include "txdb.h"
 #include "init.h"
 #include "main.h"
 #include "net.h"
 #include "keystore.h"
 #include "script/script.h"
-#include "txdb-levelwallet/db.h"
+#include "txdb-leveldb.h"
 
 #ifdef ENABLE_WALLET
 #include "wallet/wallet.h"

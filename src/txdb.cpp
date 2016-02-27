@@ -7,9 +7,9 @@
 
 #include <stdint.h>
 
-#include "txwallet/db.h"
+#include "txdb.h"
 #include "uint256.h"
-#include "txdb-levelwallet/db.h"
+#include "txdb-leveldb.h"
 
 using namespace std;
 

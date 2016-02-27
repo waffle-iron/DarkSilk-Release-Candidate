@@ -6,12 +6,12 @@
 
 #include "miner.h"
 #include "primitives/block.h"
-#include "txwallet/db.h"
+#include "txdb.h"
 #include "kernel.h"
 #include "stormnodeman.h"
 #include "stormnode-payments.h"
 #include "spork.h"
-#include "txdb-levelwallet/db.h"
+#include "txdb-leveldb.h"
 
 using namespace std;
 

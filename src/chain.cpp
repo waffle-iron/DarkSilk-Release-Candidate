@@ -10,7 +10,7 @@
 #include "checkpoints.h"
 #include "spork.h"
 #include "kernel.h"
-#include "txdb-levelwallet/db.h"
+#include "txdb-leveldb.h"
 
 #ifdef ENABLE_WALLET
 
