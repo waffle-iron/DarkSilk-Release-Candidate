@@ -13,7 +13,7 @@
 
 #include "wallet/db.h"
 #include "keystore.h"
-#include "stealth.h"
+#include "anon/stealth/stealth.h"
 #include "amount.h"
 
 class CAccount;

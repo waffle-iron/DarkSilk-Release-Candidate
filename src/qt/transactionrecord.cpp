@@ -4,8 +4,8 @@
 #include "base58.h"
 #include "timedata.h"
 #include "wallet/wallet.h"
-#include "sandstorm.h"
-#include "instantx.h"
+#include "anon/sandstorm/sandstorm.h"
+#include "anon/instantx/instantx.h"
 
 /* Return positive answer if transaction should be shown in list.
  */

@@ -30,7 +30,7 @@
 #include "clientversion.h"
 #include "primitives/transaction.h"
 #include "ui_interface.h"
-#include "sandstorm.h"
+#include "anon/sandstorm/sandstorm.h"
 #include "wallet/wallet.h"
 
 #define TOR_NET_STRING "tor"

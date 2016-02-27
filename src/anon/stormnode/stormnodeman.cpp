@@ -5,15 +5,15 @@
 #include <boost/lexical_cast.hpp>
 #include <boost/filesystem.hpp>
 
-#include "stormnodeman.h"
-#include "activestormnode.h"
-#include "sandstorm.h"
-#include "stormnode.h"
-#include "stormnode-payments.h"
-#include "stormnode-sync.h"
+#include "anon/stormnode/stormnodeman.h"
+#include "anon/stormnode/activeanon/stormnode/stormnode.h"
+#include "anon/sandstorm/sandstorm.h"
+#include "anon/stormnode/stormnode.h"
+#include "anon/stormnode/stormnode-payments.h"
+#include "anon/stormnode/stormnode-sync.h"
 #include "util.h"
 #include "addrman.h"
-#include "spork.h"
+#include "anon/stormnode/spork.h"
 
 /** Stormnode manager */
 CStormnodeMan snodeman;

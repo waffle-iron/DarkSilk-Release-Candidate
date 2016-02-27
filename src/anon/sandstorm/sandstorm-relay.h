@@ -5,7 +5,7 @@
 #ifndef SANDSTORM_RELAY_H
 #define SANDSTORM_RELAY_H
 
-#include "stormnodeman.h"
+#include "anon/stormnode/stormnodeman.h"
 
 class CSandStormRelay
 {

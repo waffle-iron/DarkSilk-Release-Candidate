@@ -11,7 +11,7 @@
 #include "util.h"
 #include "base58.h"
 #include "main.h"
-#include "stormnode.h"
+#include "anon/stormnode/stormnode.h"
 
 static const unsigned int STORMNODES_DUMP_SECONDS = (15*60);// 15 Minutes
 static const unsigned int STORMNODES_SSEG_SECONDS = (1*60*60);// 1 Hour

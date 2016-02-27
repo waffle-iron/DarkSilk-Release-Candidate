@@ -12,13 +12,13 @@
 
 #include <algorithm>
 
-#include "sandstorm.h"
+#include "anon/sandstorm/sandstorm.h"
 #include "init.h"
 #include "util.h"
-#include "stormnode-payments.h"
-#include "stormnode-sync.h"
+#include "anon/stormnode/stormnode-payments.h"
+#include "anon/stormnode/stormnode-sync.h"
 #include "script/script.h"
-#include "instantx.h"
+#include "anon/instantx/instantx.h"
 #include "ui_interface.h"
 
 using namespace std;

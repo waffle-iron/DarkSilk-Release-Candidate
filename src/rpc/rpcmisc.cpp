@@ -20,9 +20,9 @@
 #include "netbase.h"
 #include "timedata.h"
 #include "util.h"
-#include "stealth.h"
-#include "spork.h"
-#include "stormnode-sync.h"
+#include "anon/stealth/stealth.h"
+#include "anon/stormnode/spork.h"
+#include "anon/stormnode/stormnode-sync.h"
 
 #ifdef ENABLE_WALLET
 #include "wallet/wallet.h"

@@ -6,7 +6,7 @@
 #include <map>
 
 #include "allocators.h" /* for SecureString */
-#include "instantx.h"
+#include "anon/instantx/instantx.h"
 #include "wallet/wallet.h"
 
 class OptionsModel;

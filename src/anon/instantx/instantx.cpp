@@ -4,18 +4,18 @@
 
 #include <boost/lexical_cast.hpp>
 
-#include "instantx.h"
+#include "anon/instantx/instantx.h"
 #include "sync.h"
 #include "net.h"
 #include "key.h"
 #include "util.h"
 #include "base58.h"
 #include "protocol.h"
-#include "activestormnode.h"
-#include "stormnode-sync.h"
-#include "stormnodeman.h"
-#include "sandstorm.h"
-#include "spork.h"
+#include "anon/stormnode/activeanon/stormnode/stormnode.h"
+#include "anon/stormnode/stormnode-sync.h"
+#include "anon/stormnode/stormnodeman.h"
+#include "anon/sandstorm/sandstorm.h"
+#include "anon/stormnode/spork.h"
 #include "init.h"
 
 using namespace std;

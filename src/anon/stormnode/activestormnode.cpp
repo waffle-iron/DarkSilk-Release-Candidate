@@ -2,13 +2,13 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "activestormnode.h"
+#include "anon/stormnode/activeanon/stormnode/stormnode.h"
 #include "addrman.h"
 #include "protocol.h"
-#include "stormnode-sync.h"
-#include "stormnodeconfig.h"
-#include "stormnodeman.h"
-#include "spork.h"
+#include "anon/stormnode/stormnode-sync.h"
+#include "anon/stormnode/stormnodeconfig.h"
+#include "anon/stormnode/stormnodeman.h"
+#include "anon/stormnode/spork.h"
 #include "init.h"
 
 //

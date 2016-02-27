@@ -11,7 +11,7 @@
 #include "wallet/wallet.h"
 #include "wallet/walletdb.h" // for BackupWallet
 #include "base58.h"
-#include "spork.h"
+#include "anon/stormnode/spork.h"
 #include "smessage.h"
 
 WalletModel::WalletModel(CWallet *wallet, OptionsModel *optionsModel, QObject *parent) :

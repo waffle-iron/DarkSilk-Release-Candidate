@@ -2,8 +2,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "sandstorm-relay.h"
-#include "sandstorm.h"
+#include "anon/sandstorm/sandstorm-relay.h"
+#include "anon/sandstorm/sandstorm.h"
 
 CSandStormRelay::CSandStormRelay()
 {

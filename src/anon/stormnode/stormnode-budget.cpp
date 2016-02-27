@@ -5,13 +5,13 @@
 #include <boost/filesystem.hpp>
 #include <boost/lexical_cast.hpp>
 
-#include "stormnode-budget.h"
+#include "anon/stormnode/stormnode-budget.h"
 #include "main.h"
 #include "init.h"
-#include "stormnode.h"
-#include "sandstorm.h"
-#include "stormnodeman.h"
-#include "stormnode-sync.h"
+#include "anon/stormnode/stormnode.h"
+#include "anon/sandstorm/sandstorm.h"
+#include "anon/stormnode/stormnodeman.h"
+#include "anon/stormnode/stormnode-sync.h"
 #include "util.h"
 #include "addrman.h"
 

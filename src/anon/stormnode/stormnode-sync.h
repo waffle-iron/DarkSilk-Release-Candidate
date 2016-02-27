@@ -5,7 +5,7 @@
 #ifndef STORMNODE_SYNC_H
 #define STORMNODE_SYNC_H
 
-#include "stormnode-payments.h"
+#include "anon/stormnode/stormnode-payments.h"
 #include "main.h"
 
 static const int32_t STORMNODE_SYNC_INITIAL = 0;

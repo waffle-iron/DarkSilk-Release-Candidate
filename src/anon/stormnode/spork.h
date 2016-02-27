@@ -49,7 +49,7 @@ class CSporkManager;
 #include "key.h"
 #include "util.h"
 #include "protocol.h"
-#include "sandstorm.h"
+#include "anon/sandstorm/sandstorm.h"
 #include <boost/lexical_cast.hpp>
 
 using namespace std;

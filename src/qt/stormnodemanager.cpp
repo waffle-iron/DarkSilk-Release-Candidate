@@ -14,20 +14,20 @@
 
 #include "stormnodemanager.h"
 #include "ui_stormnodemanager.h"
-#include "addeditstormnode.h"
+#include "addeditanon/stormnode/stormnode.h"
 #include "stormnodeconfigdialog.h"
 #include "sync.h"
 #include "clientmodel.h"
 #include "walletmodel.h"
-#include "activestormnode.h"
-#include "stormnodeconfig.h"
-#include "stormnode.h"
-#include "stormnodeman.h"
+#include "anon/stormnode/activeanon/stormnode/stormnode.h"
+#include "anon/stormnode/stormnodeconfig.h"
+#include "anon/stormnode/stormnode.h"
+#include "anon/stormnode/stormnodeman.h"
 #include "wallet/walletdb.h"
 #include "wallet/wallet.h"
 #include "init.h"
 #include "rpc/rpcserver.h"
-#include "sandstorm.h"
+#include "anon/sandstorm/sandstorm.h"
 
 using namespace json_spirit;
 using namespace std;

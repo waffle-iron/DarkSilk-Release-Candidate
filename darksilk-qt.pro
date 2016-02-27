@@ -301,18 +301,18 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/clientversion.h \
             src/threadsafety.h \
             src/tinyformat.h \
-            src/stealth.h \
+            src/anon/stealth/stealth.h \
             src/qt/flowlayout.h \
             src/qt/sandstormconfig.h \
-            src/stormnode.h \ 
-            src/stormnode-budget.h \
-            src/stormnode-payments.h \
-            src/sandstorm.h \    
-            src/sandstorm-relay.h \
-            src/instantx.h \
-            src/activestormnode.h \
-            src/stormnodeman.h \
-            src/spork.h \
+            src/anon/stormnode/stormnode.h \ 
+            src/anon/stormnode/stormnode-budget.h \
+            src/anon/stormnode/stormnode-payments.h \
+            src/anon/sandstorm/sandstorm.h \    
+            src/anon/sandstorm/sandstorm-relay.h \
+            src/anon/instantx/instantx.h \
+            src/anon/stormnode/activeanon/stormnode/stormnode.h \
+            src/anon/stormnode/stormnodeman.h \
+            src/anon/stormnode/spork.h \
             src/crypto/common.h \
             src/crypto/hmac_sha256.h \
             src/crypto/hmac_sha512.h \
@@ -321,7 +321,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/crypto/sha256.h \
             src/crypto/sha512.h \
             src/qt/stormnodemanager.h \
-            src/qt/addeditstormnode.h \
+            src/qt/addeditanon/stormnode/stormnode.h \
             src/qt/stormnodeconfigdialog.h \
             src/qt/winshutdownmonitor.h \
             src/smessage.h \
@@ -334,7 +334,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/qt/peertablemodel.h \
             src/primitives/block.h \
             src/primitives/transaction.h \
-            src/stormnode-sync.h \
+            src/anon/stormnode/stormnode-sync.h \
             src/chain.h \
             src/coins.h \
             src/script/compressor.h \
@@ -436,21 +436,21 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/scrypt-x86_64.S \
             src/scrypt.cpp \
             src/pbkdf2.cpp \
-            src/stealth.cpp \
+            src/anon/stealth/stealth.cpp \
             src/qt/flowlayout.cpp \
             src/qt/sandstormconfig.cpp \
-            src/stormnode.cpp \
-            src/stormnode-budget.cpp \
-            src/stormnode-payments.cpp \
-            src/sandstorm.cpp \
-            src/sandstorm-relay.cpp \
-            src/rpc/rpcstormnode.cpp \
-            src/rpc/rpcstormnode-budget.cpp \
-            src/instantx.cpp \
-            src/activestormnode.cpp \
-            src/spork.cpp \
-            src/stormnodeconfig.cpp \
-            src/stormnodeman.cpp \
+            src/anon/stormnode/stormnode.cpp \
+            src/anon/stormnode/stormnode-budget.cpp \
+            src/anon/stormnode/stormnode-payments.cpp \
+            src/anon/sandstorm/sandstorm.cpp \
+            src/anon/sandstorm/sandstorm-relay.cpp \
+            src/rpc/rpcanon/stormnode/stormnode.cpp \
+            src/rpc/rpcanon/stormnode/stormnode-budget.cpp \
+            src/anon/instantx/instantx.cpp \
+            src/anon/stormnode/activeanon/stormnode/stormnode.cpp \
+            src/anon/stormnode/spork.cpp \
+            src/anon/stormnode/stormnodeconfig.cpp \
+            src/anon/stormnode/stormnodeman.cpp \
             src/crypto/hmac_sha256.cpp \
             src/crypto/hmac_sha512.cpp \
             src/crypto/ripemd160.cpp \
@@ -458,7 +458,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/crypto/sha256.cpp \
             src/crypto/sha512.cpp \
             src/qt/stormnodemanager.cpp \
-            src/qt/addeditstormnode.cpp \
+            src/qt/addeditanon/stormnode/stormnode.cpp \
             src/qt/stormnodeconfigdialog.cpp \
             src/qt/winshutdownmonitor.cpp \
             src/smessage.cpp \
@@ -471,7 +471,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/rpc/rpcsmessage.cpp \
             src/primitives/block.cpp \
             src/primitives/transaction.cpp \
-            src/stormnode-sync.cpp \
+            src/anon/stormnode/stormnode-sync.cpp \
             src/chain.cpp \
             src/uint256.cpp \
             src/coins.cpp \

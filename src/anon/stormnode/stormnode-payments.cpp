@@ -5,14 +5,14 @@
 #include <boost/lexical_cast.hpp>
 #include <boost/filesystem.hpp>
 
-#include "stormnode-payments.h"
-#include "stormnode-budget.h"
-#include "stormnode-sync.h"
-#include "stormnodeman.h"
-#include "sandstorm.h"
+#include "anon/stormnode/stormnode-payments.h"
+#include "anon/stormnode/stormnode-budget.h"
+#include "anon/stormnode/stormnode-sync.h"
+#include "anon/stormnode/stormnodeman.h"
+#include "anon/sandstorm/sandstorm.h"
 #include "util.h"
 #include "sync.h"
-#include "spork.h"
+#include "anon/stormnode/spork.h"
 #include "addrman.h"
 
 /** Object for who's going to get paid on which blocks */

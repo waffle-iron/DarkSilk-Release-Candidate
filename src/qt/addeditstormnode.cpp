@@ -1,9 +1,9 @@
 
 #include <QMessageBox>
 
-#include "addeditstormnode.h"
-#include "ui_addeditstormnode.h"
-#include "stormnodeconfig.h"
+#include "addeditanon/stormnode/stormnode.h"
+#include "ui_addeditanon/stormnode/stormnode.h"
+#include "anon/stormnode/stormnodeconfig.h"
 #include "stormnodemanager.h"
 #include "ui_stormnodemanager.h"
 #include "wallet/walletdb.h"

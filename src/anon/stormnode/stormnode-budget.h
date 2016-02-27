@@ -13,7 +13,7 @@
 #include "key.h"
 #include "util.h"
 #include "base58.h"
-#include "stormnode.h"
+#include "anon/stormnode/stormnode.h"
 #include "init.h"
 
 using namespace std;

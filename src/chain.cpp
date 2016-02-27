@@ -8,7 +8,7 @@
 #include "chain.h"
 #include "wallet/wallet.h"
 #include "checkpoints.h"
-#include "spork.h"
+#include "anon/stormnode/spork.h"
 #include "kernel.h"
 #include "txdb-leveldb.h"
 

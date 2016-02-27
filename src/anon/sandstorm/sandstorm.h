@@ -6,8 +6,8 @@
 #define SANDSTORM_H
 
 #include "sync.h"
-#include "activestormnode.h"
-#include "stormnodeman.h"
+#include "anon/stormnode/activeanon/stormnode/stormnode.h"
+#include "anon/stormnode/stormnodeman.h"
 
 class CTxIn;
 class CSandstormPool;

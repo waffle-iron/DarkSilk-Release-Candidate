@@ -13,8 +13,8 @@
 #include "alert.h"
 #include "main.h"
 #include "ui_interface.h"
-#include "stormnodeman.h"
-#include "stormnode-sync.h"
+#include "anon/stormnode/stormnodeman.h"
+#include "anon/stormnode/stormnode-sync.h"
 
 #ifdef USE_NATIVE_I2P
 #include "i2p/i2p.h"

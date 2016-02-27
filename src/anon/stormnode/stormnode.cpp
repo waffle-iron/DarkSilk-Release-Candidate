@@ -4,11 +4,11 @@
 
 #include <boost/lexical_cast.hpp>
 
-#include "stormnode.h"
-#include "sandstorm.h"
-#include "stormnode-payments.h"
-#include "stormnode-sync.h"
-#include "stormnodeman.h"
+#include "anon/stormnode/stormnode.h"
+#include "anon/sandstorm/sandstorm.h"
+#include "anon/stormnode/stormnode-payments.h"
+#include "anon/stormnode/stormnode-sync.h"
+#include "anon/stormnode/stormnodeman.h"
 #include "util.h"
 #include "sync.h"
 #include "addrman.h"

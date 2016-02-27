@@ -5,7 +5,7 @@
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/fstream.hpp>
 
-#include "stormnodeconfig.h"
+#include "anon/stormnode/stormnodeconfig.h"
 #include "net.h"
 #include "util.h"
 #include "base58.h"

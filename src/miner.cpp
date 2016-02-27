@@ -8,9 +8,9 @@
 #include "primitives/block.h"
 #include "txdb.h"
 #include "kernel.h"
-#include "stormnodeman.h"
-#include "stormnode-payments.h"
-#include "spork.h"
+#include "anon/stormnode/stormnodeman.h"
+#include "anon/stormnode/stormnode-payments.h"
+#include "anon/stormnode/spork.h"
 #include "txdb-leveldb.h"
 
 using namespace std;
