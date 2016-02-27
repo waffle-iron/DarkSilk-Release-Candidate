@@ -14,7 +14,7 @@
 
 #include "stormnodemanager.h"
 #include "ui_stormnodemanager.h"
-#include "anon/stormnode/addeditstormnode.h"
+#include "addeditstormnode.h"
 #include "stormnodeconfigdialog.h"
 #include "sync.h"
 #include "clientmodel.h"

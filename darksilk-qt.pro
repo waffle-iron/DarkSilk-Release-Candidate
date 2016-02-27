@@ -157,7 +157,7 @@ QMAKE_CLEAN += $$PWD/src/leveldb/libleveldb.a; cd $$PWD/src/leveldb ; $(MAKE) cl
 
 #contains(DEFINES, USE_NATIVE_I2P) {
 #    geni2pbuild.depends = FORCE
-#    geni2pbuild.commands = cd $$PWD; /bin/sh share/inc_build_number.sh src/i2p/i2pbuild.h darksilk-qt-build-number
+#    geni2pbuild.commands = cd $$PWD; /bin/sh share/inc_build_number.sh src/i2p/i2pbuild.h darksilk-core-build-number
 #    geni2pbuild.target = src/i2p/i2pbuild.h
 #    PRE_TARGETDEPS += src/i2p/i2pbuild.h
 #    QMAKE_EXTRA_TARGETS += geni2pbuild
@@ -310,7 +310,6 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/anon/sandstorm/sandstorm.h \    
             src/anon/sandstorm/sandstorm-relay.h \
             src/anon/instantx/instantx.h \
-            src/anon/stormnode/stormnode.h \
             src/anon/stormnode/stormnodeman.h \
             src/anon/stormnode/spork.h \
             src/crypto/common.h \
@@ -321,7 +320,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/crypto/sha256.h \
             src/crypto/sha512.h \
             src/qt/stormnodemanager.h \
-            src/qt/anon/stormnode/addeditstormnode.h \
+            src/qt/addeditstormnode.h \
             src/qt/stormnodeconfigdialog.h \
             src/qt/winshutdownmonitor.h \
             src/smessage.h \
@@ -412,7 +411,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/rpc/rpcmisc.cpp \
             src/rpc/rpcnet.cpp \
             src/rpc/rpcmining.cpp \
-            src/rpcwallet/wallet.cpp \
+            src/wallet/rpcwallet.cpp \
             src/rpc/rpcblockchain.cpp \
             src/rpc/rpcrawtransaction.cpp \
             src/timedata.cpp \
@@ -447,7 +446,6 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/rpc/rpcstormnode.cpp \
             src/rpc/rpcstormnode-budget.cpp \
             src/anon/instantx/instantx.cpp \
-            src/anon/stormnode/stormnode.cpp \
             src/anon/stormnode/spork.cpp \
             src/anon/stormnode/stormnodeconfig.cpp \
             src/anon/stormnode/stormnodeman.cpp \
@@ -458,7 +456,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/crypto/sha256.cpp \
             src/crypto/sha512.cpp \
             src/qt/stormnodemanager.cpp \
-            src/qt/anon/stormnode/addeditstormnode.cpp \
+            src/qt/addeditstormnode.cpp \
             src/qt/stormnodeconfigdialog.cpp \
             src/qt/winshutdownmonitor.cpp \
             src/smessage.cpp \
@@ -519,12 +517,12 @@ FORMS += \
 contains(DEFINES, USE_NATIVE_I2P) {
 HEADERS +=  src/i2p/i2p.h \
             src/i2p/i2psam.h \
-            src/qt/i2p/showi2paddresses.h \
+            src/qt/showi2paddresses.h \
             src/qt/i2poptionswidget.h
 
-SOURCES +=  src/i2p.cpp \
+SOURCES +=  src/i2p/i2p.cpp \
             src/i2p/i2psam.cpp \
-            src/qt/i2p/showi2paddresses.cpp \
+            src/qt/showi2paddresses.cpp \
             src/qt/i2poptionswidget.cpp
 
 FORMS +=    src/qt/forms/showi2paddresses.ui \
@@ -558,7 +556,7 @@ QMAKE_EXTRA_COMPILERS += TSQM
 
 # "Other files" to show in Qt Creator
 OTHER_FILES += \
-    doc/*.rst doc/*.txt doc/README README.md res/darksilk-qt.rc
+    doc/*.rst doc/*.txt doc/README README.md res/darksilk-core.rc
 
 # platform specific defaults, if not overridden on command line
 isEmpty(BOOST_LIB_SUFFIX) {
@@ -599,7 +597,7 @@ isEmpty(QRENCODE_INCLUDE_PATH) {
 }
 
 windows:DEFINES += WIN32
-windows:RC_FILE = src/qt/res/darksilk-qt.rc
+windows:RC_FILE = src/qt/res/darksilk-core.rc
 
 windows:!contains(MINGW_THREAD_BUGFIX, 0) {
     # At least qmake's win32-g++-cross profile is missing the -lmingwthrd

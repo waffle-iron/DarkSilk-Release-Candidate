@@ -910,7 +910,7 @@ bool AppInit2(boost::thread_group& threadGroup)
     }
 
     // as LoadBlockIndex can take several minutes, it's possible the user
-    // requested to kill darksilk-qt during the last operation. If so, exit.
+    // requested to kill darksilk-core during the last operation. If so, exit.
     // As the program has not fully started yet, Shutdown() is possibly overkill.
     if (fRequestShutdown)
     {

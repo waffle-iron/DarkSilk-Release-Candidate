@@ -5,7 +5,7 @@
 #ifndef SEC_MESSAGE_H
 #define SEC_MESSAGE_H
 
-#include <leveldb/wallet/db.h>
+#include <leveldb/db.h>
 #include <leveldb/write_batch.h>
 
 #include "net.h"

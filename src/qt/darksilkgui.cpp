@@ -66,7 +66,7 @@
 #include "messagepage.h"
 
 #ifdef USE_NATIVE_I2P
-#include "i2p/showi2paddresses.h"
+#include "showi2paddresses.h"
 #endif
 
 #ifdef Q_OS_MAC
@@ -944,7 +944,7 @@ void DarkSilkGUI::setNumBlocks(int count)
 void DarkSilkGUI::message(const QString &title, const QString &message, bool modal, unsigned int style, bool *ret) 
 {   
     
-    QString strTitle = tr("DarkSilk") + " - ";
+    QString strTitle = tr("DarkSilk Core") + " - ";
     // Default to information icon
     int nMBoxIcon = QMessageBox::Information;
     int nNotifyIcon = Notificator::Information;

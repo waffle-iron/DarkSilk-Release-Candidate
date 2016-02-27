@@ -2,7 +2,7 @@
 #include "ui_i2poptionswidget.h"
 #include "optionsmodel.h"
 #include "monitoreddatamapper.h"
-#include "i2p/showi2paddresses.h"
+#include "showi2paddresses.h"
 #include "util.h"
 #include "clientmodel.h"
 

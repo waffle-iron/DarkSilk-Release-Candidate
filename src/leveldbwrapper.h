@@ -7,7 +7,7 @@
 
 #include <boost/filesystem/path.hpp>
 
-#include <leveldb/wallet/db.h>
+#include <leveldb/db.h>
 #include <leveldb/write_batch.h>
 
 #include "serialize.h"

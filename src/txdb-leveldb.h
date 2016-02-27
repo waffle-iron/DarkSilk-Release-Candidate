@@ -6,7 +6,7 @@
 #ifndef DARKSILK_LEVELDB_H
 #define DARKSILK_LEVELDB_H
 
-#include <leveldb/wallet/db.h>
+#include <leveldb/db.h>
 #include <leveldb/write_batch.h>
 
 #include <map>
