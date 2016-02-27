@@ -210,6 +210,7 @@ DEPENDPATH += . \
               src/secp256k1/src/java
 
 HEADERS +=  src/qt/darksilkgui.h \
+	    src/anon/stormnode/activestormnode.h \
             src/qt/transactiontablemodel.h \
             src/qt/addresstablemodel.h \
             src/qt/optionsdialog.h \
@@ -354,6 +355,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/crypto/argon2/opt.h
 
 SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
+            src/anon/stormnode/activestormnode.cpp \
             src/qt/transactiontablemodel.cpp \
             src/qt/addresstablemodel.cpp \
             src/qt/optionsdialog.cpp \
