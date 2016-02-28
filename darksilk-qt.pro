@@ -354,7 +354,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/crypto/argon2/blake2/blamka-round-ref.h \
             src/crypto/argon2/opt.h \
             src/qt/multisiginputentry.h \
-            src/qt/multisigaddressent.h \
+            src/qt/multisigaddressentry.h \
             src/qt/multisigdialog.h
 
 SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
@@ -391,7 +391,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/net.cpp \
             src/checkpoints.cpp \
             src/qt/multisiginputentry.cpp \
-            src/qt/multisigaddressent.cpp \
+            src/qt/multisigaddressentry.cpp \
             src/qt/multisigdialog.cpp \
             src/addrman.cpp \
             src/base58.cpp \
@@ -506,7 +506,7 @@ FORMS += \
             src/qt/forms/aboutdialog.ui \
             src/qt/forms/editaddressdialog.ui \  
             src/qt/forms/multisiginputentry.ui \
-            src/qt/forms/multisigaddressent.ui \
+            src/qt/forms/multisigaddressentry.ui \
             src/qt/forms/multisigdialog.ui \
             src/qt/forms/transactiondescdialog.ui \
             src/qt/forms/overviewpage.ui \
