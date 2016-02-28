@@ -390,16 +390,19 @@ void MultisigDialog::on_signTransactionButton_clicked()
         CTransaction tempTx;
         MapPrevTx mapPrevTx;
         CTxDB txdb("r");
-        std::map<uint256, CTxIndex> unused;
+        map<uint256, CTxIndex> unused;
         bool fInvalid;
 
+        // FetchInputs aborts on failure, so we go one at a time.
+        CTransactionPoS txPoS;
         tempTx.vin.push_back(mergedTx.vin[i]);
-        tempTx.FetchInputs(txdb, unused, false, false, mapPrevTx, fInvalid);
+        txPoS.FetchInputs(tempTx, txdb, unused, false, false, mapPrevTx, fInvalid);
 
+        // Copy results into mapPrevOut:
         BOOST_FOREACH(const CTxIn& txin, tempTx.vin)
         {
             const uint256& prevHash = txin.prevout.hash;
-            if(mapPrevTx.count(prevHash) && mapPrevTx[prevHash].second.vout.size() > txin.prevout.n)
+            if (mapPrevTx.count(prevHash) && mapPrevTx[prevHash].second.vout.size()>txin.prevout.n)
                 mapPrevOut[txin.prevout] = mapPrevTx[prevHash].second.vout[txin.prevout.n].scriptPubKey;
         }
     }

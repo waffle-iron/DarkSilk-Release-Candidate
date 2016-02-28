@@ -36,7 +36,7 @@ Value decryptdata(const Array& params, bool fHelp)
             "Decrypt octet stream.\n");
 
     EnsureWalletIsUnlocked();
-    CBitcoinAddress addr(params[0].get_str());
+    CDarkSilkAddress addr(params[0].get_str());
 
     CKeyID keyID;
     addr.GetKeyID(keyID);

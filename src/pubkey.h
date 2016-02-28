@@ -171,6 +171,8 @@ public:
     // Derive BIP32 child pubkey.
     bool Derive(CPubKey& pubkeyChild, unsigned char ccChild[32], unsigned int nChild, const unsigned char cc[32]) const;
 
+	// Encrypt data
+    void EncryptData(const std::vector<unsigned char>& data, std::vector<unsigned char>& encrypted);
     // Raw for stealth address
     std::vector<unsigned char> Raw() const {
     std::vector<unsigned char> r;

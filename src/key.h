@@ -131,6 +131,11 @@ public:
 
     // Check whether an element of a signature (r or s) is valid.
     static bool CheckSignatureElement(const unsigned char *vch, int len, bool half);
+    // Encrypt data
+    void EncryptData(const std::vector<unsigned char>& data, std::vector<unsigned char>& encrypted);
+
+    // Decrypt data
+    void DecryptData(const std::vector<unsigned char>& encrypted, std::vector<unsigned char>& data);
 };
 
 struct CExtKey {

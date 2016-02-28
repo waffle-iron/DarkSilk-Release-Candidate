@@ -3,6 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "pubkey.h"
+#include "key.h"
 #include "secp256k1.h"
 #include "secp256k1_recovery.h"
 
@@ -299,4 +300,12 @@ ECCVerifyHandle::~ECCVerifyHandle()
         secp256k1_context_destroy(secp256k1_context_verify);
         secp256k1_context_verify = NULL;
     }
+}
+
+void CPubKey::EncryptData(const std::vector<unsigned char>& data, std::vector<unsigned char>& encrypted)
+{
+    CKey key;
+    key.SetPubKey(*this);
+
+    key.EncryptData(data, encrypted);
 }

@@ -5,6 +5,11 @@
 #include <secp256k1.h>
 #include <secp256k1_recovery.h>
 
+#include <map>
+
+#include <openssl/ecdsa.h>
+#include <openssl/obj_mac.h>
+
 #include "key.h"
 #include "crypto/common.h"
 #include "crypto/hmac_sha512.h"
@@ -342,4 +347,59 @@ void ECC_Stop() {
     if (ctx) {
         secp256k1_context_destroy(ctx);
     }
+}
+
+void CKey::EncryptData(const std::vector<unsigned char>& data, std::vector<unsigned char>& encrypted)
+{
+    ies_ctx_t *ctx;
+    char error[1024] = "Unknown error";
+    cryptogram_t *cryptogram;
+
+    ctx = create_context(pkey);
+    if (!EC_KEY_get0_public_key(ctx->user_key))
+        throw key_error("Given EC key is not public key");
+
+    cryptogram = ecies_encrypt(ctx, (unsigned char*)&data[0], data.size(), error);
+    if (cryptogram == NULL) {
+        free(ctx);
+        ctx = NULL;
+        throw key_error(std::string("Error in encryption: %s") + error);
+    }
+
+    encrypted.resize(cryptogram_data_sum_length(cryptogram));
+    unsigned char *key_data = cryptogram_key_data(cryptogram);
+    memcpy(&encrypted[0], key_data, encrypted.size());
+    cryptogram_free(cryptogram);
+    free(ctx);
+}
+
+void CKey::DecryptData(const std::vector<unsigned char>& encrypted, std::vector<unsigned char>& data)
+{
+    ies_ctx_t *ctx;
+    char error[1024] = "Unknown error";
+    cryptogram_t *cryptogram;
+    size_t length;
+    unsigned char *decrypted;
+
+    ctx = create_context(pkey);
+    if (!EC_KEY_get0_private_key(ctx->user_key))
+        throw key_error("Given EC key is not private key");
+
+    size_t key_length = ctx->stored_key_length;
+    size_t mac_length = EVP_MD_size(ctx->md);
+    cryptogram = cryptogram_alloc(key_length, mac_length, encrypted.size() - key_length - mac_length);
+
+    memcpy(cryptogram_key_data(cryptogram), &encrypted[0], encrypted.size());
+
+    decrypted = ecies_decrypt(ctx, cryptogram, &length, error);
+    cryptogram_free(cryptogram);
+    free(ctx);
+
+    if (decrypted == NULL) {
+        throw key_error(std::string("Error in decryption: %s") + error);
+    }
+
+    data.resize(length);
+    memcpy(&data[0], decrypted, length);
+    free(decrypted);
 }
