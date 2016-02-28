@@ -7,13 +7,6 @@
 #include "secp256k1.h"
 #include "secp256k1_recovery.h"
 
-#include <map>
-
-#include <openssl/ecdsa.h>
-#include <openssl/obj_mac.h>
-#include <openssl/ssl.h>
-#include <openssl/ecdh.h>
-
 namespace
 {
 /* Global secp256k1_context object used for verification. */
@@ -268,7 +261,7 @@ void CPubKey::EncryptData(const std::vector<unsigned char>& data, std::vector<un
     CKey key;
     CCryptKey ckey;
 
-    key.SetPubKey(*this);
+    ckey.SetPubKey(*this);
     ckey.EncryptData(data, encrypted);
 }
 
