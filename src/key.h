@@ -11,14 +11,6 @@
 #include "allocators.h"
 #include "pubkey.h"
 
-#include <openssl/ecdsa.h>
-#include <openssl/obj_mac.h>
-#include <openssl/ssl.h>
-#include <openssl/ecdh.h> 
-
-#include "cryptogram/ies.h"
-
-
 // secp256k1:
 // const unsigned int PRIVATE_KEY_SIZE = 279;
 // const unsigned int PUBLIC_KEY_SIZE  = 65;
@@ -33,17 +25,8 @@ typedef std::vector<unsigned char, secure_allocator<unsigned char> > CPrivKey;
 // CSecret is a serialization of just the secret parameter (32 bytes)
 typedef std::vector<unsigned char, secure_allocator<unsigned char> > CSecret;
 
-class key_error : public std::runtime_error
-{
-public:
-    explicit key_error(const std::string& str) : std::runtime_error(str) {}
-};
-
 /** An encapsulated private key. */
 class CKey {
-protected:
-    EC_KEY* pkey;
-
 private:
     // Whether this private key is valid. We check for correctness when modifying the key
     // data, so fValid should always correspond to the actual state.
@@ -148,11 +131,6 @@ public:
 
     // Check whether an element of a signature (r or s) is valid.
     static bool CheckSignatureElement(const unsigned char *vch, int len, bool half);
-    // Encrypt data
-    void EncryptData(const std::vector<unsigned char>& data, std::vector<unsigned char>& encrypted);
-
-    // Decrypt data
-    void DecryptData(const std::vector<unsigned char>& encrypted, std::vector<unsigned char>& data);
 };
 
 struct CExtKey {

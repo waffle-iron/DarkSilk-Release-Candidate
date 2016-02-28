@@ -6,6 +6,7 @@
 #include "init.h"
 #include "util.h"
 #include "base58.h"
+#include "cryptkey.h"
 #include "wallet/wallet.h"
 #include "wallet/walletdb.h"
 #include "rpc/rpcserver.h"
@@ -20,7 +21,7 @@ Value encryptdata(const Array& params, bool fHelp)
             "encryptdata <public key> <hex data>\n"
             "Encrypt octet stream with provided public key..\n");
 
-    CPubKey pubKey(ParseHex(params[0].get_str()));
+    CCryptPubKey pubKey(ParseHex(params[0].get_str()));
 
     vector<unsigned char> vchEncrypted;
     pubKey.EncryptData(ParseHex(params[1].get_str()), vchEncrypted);
@@ -41,7 +42,7 @@ Value decryptdata(const Array& params, bool fHelp)
     CKeyID keyID;
     addr.GetKeyID(keyID);
 
-    CKey key;
+    CCryptKey key;
     pwalletMain->GetKey(keyID, key);
 
     vector<unsigned char> vchDecrypted;
