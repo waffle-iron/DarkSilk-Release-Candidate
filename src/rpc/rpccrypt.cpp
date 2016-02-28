@@ -23,10 +23,8 @@ Value encryptdata(const Array& params, bool fHelp)
 
     CPubKey pubKey(ParseHex(params[0].get_str()));
 
-	CCryptPubKey cpubKey;
-	
-    vector<unsigned char> vchEncrypted;
-    cpubKey.EncryptData(ParseHex(params[1].get_str()), vchEncrypted);
+	vector<unsigned char> vchEncrypted;
+    pubKey.EncryptData(ParseHex(params[1].get_str()), vchEncrypted);
 
     return HexStr(vchEncrypted);
 }

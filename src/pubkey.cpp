@@ -255,6 +255,14 @@ void CExtPubKey::Encode(unsigned char code[74]) const {
     memcpy(code+41, pubkey.begin(), 33);
 }
 
+void CPubKey::EncryptData(const std::vector<unsigned char>& data, std::vector<unsigned char>& encrypted)
+{
+    CCryptKey key;
+    
+    key.SetPubKey(*this);
+    key.EncryptData(data, encrypted);
+}
+
 void CExtPubKey::Decode(const unsigned char code[74]) {
     nDepth = code[0];
     memcpy(vchFingerprint, code+1, 4);

@@ -9,7 +9,7 @@
 #include <openssl/ecdsa.h>
 #include <openssl/obj_mac.h>
 #include <openssl/ssl.h>
-#include <openssl/ecdh.h> 
+#include <openssl/ecdh.h>
 
 void CCryptKey::EncryptData(const std::vector<unsigned char>& data, std::vector<unsigned char>& encrypted)
 {
@@ -65,20 +65,22 @@ void CCryptKey::DecryptData(const std::vector<unsigned char>& encrypted, std::ve
     memcpy(&data[0], decrypted, length);
     free(decrypted);
 }
-/*
-bool CCryptKey::SetPubKey(const CPubKey& vchPubKey)
+
+void CCryptKey::SetCompressedPubKey()
 {
-    const unsigned char* pbegin = &vchPubKey.vchPubKey[0];
-    if (o2i_ECPublicKey(&pkey, &pbegin, vchPubKey.vchPubKey.size()))
-    {
-        fSet = true;
-        if (vchPubKey.vchPubKey.size() == 33)
-            SetCompressedPubKey();
-        return true;
-    }
-    pkey = NULL;
-    Reset();
-    return false;
+    EC_KEY_set_conv_form(pkey, POINT_CONVERSION_COMPRESSED);
+    fCompressedPubKey = true;
+}
+
+void CCryptKey::Reset()
+{
+    fCompressedPubKey = false;
+    if (pkey != NULL)
+        EC_KEY_free(pkey);
+    pkey = EC_KEY_new_by_curve_name(NID_secp256k1);
+    if (pkey == NULL)
+        throw key_error("CKey::CKey() : EC_KEY_new_by_curve_name failed");
+    fSet = false;
 }
 
 bool CCryptKey::SetPubKey(const CPubKey& vchPubKey)
@@ -94,12 +96,4 @@ bool CCryptKey::SetPubKey(const CPubKey& vchPubKey)
     pkey = NULL;
     Reset();
     return false;
-}
-*/
-void CCryptPubKey::EncryptData(const std::vector<unsigned char>& data, std::vector<unsigned char>& encrypted)
-{
-    CCryptKey key;
-    key.SetPubKey(*this);
-
-    key.EncryptData(data, encrypted);
 }

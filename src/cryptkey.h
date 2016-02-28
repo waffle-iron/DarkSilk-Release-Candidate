@@ -26,20 +26,26 @@
 typedef std::vector<unsigned char, secure_allocator<unsigned char> > CPrivKey;
 // CSecret is a serialization of just the secret parameter (32 bytes)
 typedef std::vector<unsigned char, secure_allocator<unsigned char> > CSecret;
-
+/*
 class CCryptPubKey
 {
 	public:
 		// Encrypt data
 		void EncryptData(const std::vector<unsigned char>& data, std::vector<unsigned char>& encrypted);
 };
-
-class CCryptKey
+*/
+class CCryptKey : public CPubKey
 {
 	protected:
 		EC_KEY* pkey;
+		void SetCompressedPubKey();
+		bool fCompressedPubKey;
+		bool fSet;
 		
 	public:
+		
+		void Reset();
+		
 		// Encrypt data
 		void EncryptData(const std::vector<unsigned char>& data, std::vector<unsigned char>& encrypted);
 
@@ -47,7 +53,7 @@ class CCryptKey
 		void DecryptData(const std::vector<unsigned char>& encrypted, std::vector<unsigned char>& data);
 		
 		// Set public key
-		bool SetPubKey(const CCryptPubKey& vchPubKey);
+		bool SetPubKey(const CPubKey& vchPubKey);
 };
 
 class key_error : public std::runtime_error
