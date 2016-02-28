@@ -33,6 +33,12 @@ typedef std::vector<unsigned char, secure_allocator<unsigned char> > CPrivKey;
 // CSecret is a serialization of just the secret parameter (32 bytes)
 typedef std::vector<unsigned char, secure_allocator<unsigned char> > CSecret;
 
+class key_error : public std::runtime_error
+{
+public:
+    explicit key_error(const std::string& str) : std::runtime_error(str) {}
+};
+
 /** An encapsulated private key. */
 class CKey {
 private:
