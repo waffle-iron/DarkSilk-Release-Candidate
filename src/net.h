@@ -39,6 +39,8 @@ extern int nBestHeight;
 static const int PING_INTERVAL = 2 * 60;
 /** Time after which to disconnect, after waiting for a ping response (or inactivity). */
 static const int TIMEOUT_INTERVAL = 20 * 60;
+/** -listen default */
+static const bool DEFAULT_LISTEN = true;
 
 inline unsigned int ReceiveFloodSize() { return 1000*GetArg("-maxreceivebuffer", 5*1000); }
 inline unsigned int SendBufferSize() { return 1000*GetArg("-maxsendbuffer", 1*1000); }
@@ -109,6 +111,7 @@ CAddress GetLocalAddress(const CNetAddr *paddrPeer = NULL);
 
 
 extern bool fDiscover;
+extern bool fListen;
 extern uint64_t nLocalServices;
 extern uint64_t nLocalHostNonce;
 extern CAddrMan addrman;

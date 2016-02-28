@@ -3,6 +3,8 @@
 #include "optionsmodel.h"
 #include "darksilkunits.h"
 #include "init.h"
+#include "main.h"
+#include "net.h"
 #include "wallet.h"
 #include "walletdb.h"
 #include "guiutil.h"
@@ -158,6 +160,10 @@ void OptionsModel::Init(bool resetSettings)
     // command-line options to override the GUI settings:
     if (settings.contains("fUseUPnP"))
         SoftSetBoolArg("-upnp", settings.value("fUseUPnP").toBool());
+    if (!settings.contains("fListen"))
+        settings.setValue("fListen", DEFAULT_LISTEN);
+    if (!SoftSetBoolArg("-listen", settings.value("fListen").toBool()))
+        addOverriddenOption("-listen");
     if (settings.contains("addrProxy") && settings.value("fUseProxy").toBool())
         SoftSetArg("-proxy", settings.value("addrProxy").toString().toStdString());
     if (!language.isEmpty())
@@ -250,7 +256,11 @@ QVariant OptionsModel::data(const QModelIndex & index, int role) const
         case MinimizeToTray:
             return QVariant(fMinimizeToTray);
         case MapPortUPnP:
-            return settings.value("fUseUPnP", GetBoolArg("-upnp", true));
+#ifdef USE_UPNP
+            return settings.value("fUseUPnP");
+#else
+            return false;
+#endif
         case MinimizeOnClose:
             return QVariant(fMinimizeOnClose);
         case ProxyUse:
@@ -277,7 +287,9 @@ QVariant OptionsModel::data(const QModelIndex & index, int role) const
             return settings.value("nSandstormRounds");
         case AnonymizeDarkSilkAmount:
             return settings.value("nAnonymizeDarkSilkAmount");
-        case DisplayUnit:
+        case Listen:
+            return settings.value("fListen");
+         case DisplayUnit:
             return QVariant(nDisplayUnit);
         case Language:
             return settings.value("language", "");
@@ -443,6 +455,12 @@ bool OptionsModel::setData(const QModelIndex & index, const QVariant & value, in
                 nAnonymizeDarkSilkAmount = value.toInt();
                 settings.setValue("nAnonymizeDarkSilkAmount", nAnonymizeDarkSilkAmount);
                 emit anonymizeDarkSilkAmountChanged();
+            }
+            break;
+        case Listen:
+            if (settings.value("fListen") != value) {
+                settings.setValue("fListen", value);
+                setRestartRequired(true);
             }
             break;
 #ifdef USE_NATIVE_I2P

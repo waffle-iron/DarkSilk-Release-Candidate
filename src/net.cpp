@@ -53,6 +53,7 @@ bool OpenNetworkConnection(const CAddress& addrConnect, CSemaphoreGrant *grantOu
 // Global state variables
 //
 bool fDiscover = true;
+bool fListen = true;
 #ifdef USE_NATIVE_I2P
 uint64_t nLocalServices = NODE_I2P | NODE_NETWORK;
 #else
@@ -112,7 +113,7 @@ unsigned short GetListenPort()
 // find 'best' local address for a particular peer
 bool GetLocal(CService& addr, const CNetAddr *paddrPeer)
 {
-    if (fNoListen)
+    if (!fListen)
         return false;
 
     int nBestScore = -1;
@@ -231,7 +232,7 @@ void static AdvertizeLocal()
     LOCK(cs_vNodes);
     BOOST_FOREACH(CNode* pnode, vNodes)
     {
-        if (pnode->fSuccessfullyConnected)
+        if (fListen && pnode->fSuccessfullyConnected)
         {
             CAddress addrLocal = GetLocalAddress(&pnode->addr);
             if (addrLocal.IsRoutable() && (CService)addrLocal != (CService)pnode->addrLocal)
