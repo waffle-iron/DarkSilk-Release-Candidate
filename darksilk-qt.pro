@@ -352,7 +352,10 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/crypto/argon2/blake2/blake2.h \
             src/crypto/argon2/blake2/blamka-round-opt.h \
             src/crypto/argon2/blake2/blamka-round-ref.h \
-            src/crypto/argon2/opt.h
+            src/crypto/argon2/opt.h \
+            src/qt/multisiginputentry.h \
+            src/qt/multisigaddressent.h \
+            src/qt/multisigdialog.h
 
 SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/anon/stormnode/activestormnode.cpp \
@@ -387,6 +390,9 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/init.cpp \
             src/net.cpp \
             src/checkpoints.cpp \
+            src/qt/multisiginputentry.cpp \
+            src/qt/multisigaddressent.cpp \
+            src/qt/multisigdialog.cpp \
             src/addrman.cpp \
             src/base58.cpp \
             src/wallet/db.cpp \
@@ -498,7 +504,10 @@ FORMS += \
             src/qt/forms/addressbookpage.ui \
             src/qt/forms/signverifymessagedialog.ui \
             src/qt/forms/aboutdialog.ui \
-            src/qt/forms/editaddressdialog.ui \
+            src/qt/forms/editaddressdialog.ui \  
+            src/qt/forms/multisiginputentry.ui \
+            src/qt/forms/multisigaddressent.ui \
+            src/qt/forms/multisigdialog.ui \
             src/qt/forms/transactiondescdialog.ui \
             src/qt/forms/overviewpage.ui \
             src/qt/forms/blockbrowser.ui \
