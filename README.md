@@ -76,13 +76,12 @@ Debian/Ubuntu Linux Daemon Build Instructions
 install dependencies:
 
     $ sudo apt-get update && sudo apt-get upgrade
-    $ sudo apt-get install git build-essential libssl-dev libdb5.3++-dev libminiupnpc-dev dh-autoreconf zip unzip libboost-all-dev make libgmp3-dev libsnappy-dev
+    $ sudo apt-get install git build-essential libssl-dev libdb5.3++-dev libminiupnpc-dev dh-autoreconf zip unzip libboost-all-dev make libgmp3-dev
 
 build darksilkd from git:
 
     $ git clone https://github.com/SilkNetwork/DarkSilk.git darksilk
-    $ cd darksilk/src/secp256k1 && ./autogen.sh && ./configure --disable-shared --with-pic --with-bignum=no --enable-module-recovery &&
-    make && cd .. && sudo make -f makefile.unix USE_UPNP=0
+    $ cd darksilk/src/secp256k1 && ./autogen.sh && ./configure --disable-shared --with-pic --with-bignum=no --enable-module-recovery && make && cd .. && sudo make -f makefile.unix USE_UPNP=0
    
 install and run darksilkd daemon:
 
