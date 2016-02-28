@@ -3,6 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "pubkey.h"
+#include "cryptkey.h"
 #include "secp256k1.h"
 #include "secp256k1_recovery.h"
 
@@ -264,10 +265,11 @@ void CExtPubKey::Encode(unsigned char code[74]) const {
 
 void CPubKey::EncryptData(const std::vector<unsigned char>& data, std::vector<unsigned char>& encrypted)
 {
-    CCryptKey key;
-    
+    CKey key;
+    CCryptKey ckey;
+
     key.SetPubKey(*this);
-    key.EncryptData(data, encrypted);
+    ckey.EncryptData(data, encrypted);
 }
 
 void CExtPubKey::Decode(const unsigned char code[74]) {
