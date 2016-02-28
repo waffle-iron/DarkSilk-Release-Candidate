@@ -4,17 +4,18 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef _DARKSILKALERT_H_
-#define _DARKSILKALERT_H_ 1
+#ifndef DARKSILKALERT_H
+#define DARKSILKALERT_H
+
+#include <map>
+#include <set>
+#include <string>
+
+#include <stdint.h>
 
 #include "serialize.h"
 #include "sync.h"
 #include "uint256.h"
-
-#include <map>
-#include <set>
-#include <stdint.h>
-#include <string>
 
 class CAlert;
 class CNode;
@@ -111,4 +112,4 @@ public:
     static CAlert getAlertByHash(const uint256 &hash);
 };
 
-#endif
+#endif // DARKSILKALERT_H

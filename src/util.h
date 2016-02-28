@@ -7,22 +7,6 @@
 #ifndef DARKSILK_UTIL_H
 #define DARKSILK_UTIL_H
 
-#ifndef WIN32
-#include <sys/types.h>
-#include <sys/time.h>
-#include <sys/resource.h>
-#endif
-
-#include "serialize.h"
-#include "tinyformat.h"
-#include "amount.h"
-
-#include <map>
-#include <list>
-#include <utility>
-#include <vector>
-#include <string>
-
 #include <boost/thread.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/filesystem/path.hpp>
@@ -36,7 +20,23 @@
 #include <openssl/rand.h>
 #include <openssl/bn.h>
 
+#ifndef WIN32
+#include <sys/types.h>
+#include <sys/time.h>
+#include <sys/resource.h>
+#endif
+
+#include <map>
+#include <list>
+#include <utility>
+#include <vector>
+#include <string>
+
 #include <stdint.h>
+
+#include "serialize.h"
+#include "tinyformat.h"
+#include "amount.h"
 
 class uint256;
 
@@ -144,6 +144,7 @@ extern bool fLogIPs;
 extern bool fLogTimestamps;
 extern volatile bool fReopenDebugLog;
 
+
 bool IsLogOpen();
 /* Return true if log accepts specified category */
 bool LogAcceptCategory(const char* category);
@@ -216,6 +217,20 @@ void ParseString(const std::string& str, char c, std::vector<std::string>& v);
 std::string FormatMoney(CAmount n, bool fPlus=false);
 bool ParseMoney(const std::string& str, CAmount& nRet);
 bool ParseMoney(const char* pszIn, CAmount& nRet);
+std::string SanitizeString(const std::string& str);
+std::vector<unsigned char> ParseHex(const char* psz);
+std::vector<unsigned char> ParseHex(const std::string& str);
+bool IsHex(const std::string& str);
+std::vector<unsigned char> DecodeBase64(const char* p, bool* pfInvalid = NULL);
+std::string DecodeBase64(const std::string& str);
+std::string EncodeBase64(const unsigned char* pch, size_t len);
+std::string EncodeBase64(const std::string& str);
+SecureString DecodeBase64Secure(const SecureString& input);
+SecureString EncodeBase64Secure(const SecureString& input);
+std::vector<unsigned char> DecodeBase32(const char* p, bool* pfInvalid = NULL);
+std::string DecodeBase32(const std::string& str);
+std::string EncodeBase32(const unsigned char* pch, size_t len);
+std::string EncodeBase32(const std::string& str);
 void ParseParameters(int argc, const char*const argv[]);
 bool WildcardMatch(const char* psz, const char* mask);
 bool WildcardMatch(const std::string& str, const std::string& mask);
@@ -252,6 +267,23 @@ bool TruncateFile(FILE *file, unsigned int length);
 #ifdef USE_NATIVE_I2P
 std::string FormatI2PNativeFullVersion();
 #endif
+
+
+/**
+ * Convert string to signed 32-bit integer with strict parse error feedback.
+ * @returns true if the entire string could be parsed as valid integer,
+ *   false if not the entire string could be parsed or when overflow or underflow occurred.
+ */
+bool ParseInt32(const std::string& str, int32_t *out);
+
+
+/** 
+ * Format a paragraph of text to a fixed width, adding spaces for
+ * indentation to any added line.
+ */
+std::string FormatParagraph(const std::string in, size_t width=79, size_t indent=0);
+
+
 
 inline std::string i64tostr(int64_t n)
 {
@@ -309,6 +341,31 @@ inline std::string leftTrim(std::string src, char chr)
         src.erase(0, pos);
 
     return src;
+}
+
+template<typename T>
+std::string HexStr(const T itbegin, const T itend, bool fSpaces=false)
+{
+    std::string rv;
+    static const char hexmap[16] = { '0', '1', '2', '3', '4', '5', '6', '7',
+                                     '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
+    rv.reserve((itend-itbegin)*3);
+    for(T it = itbegin; it < itend; ++it)
+    {
+        unsigned char val = (unsigned char)(*it);
+        if(fSpaces && it != itbegin)
+            rv.push_back(' ');
+        rv.push_back(hexmap[val>>4]);
+        rv.push_back(hexmap[val&15]);
+    }
+
+    return rv;
+}
+
+template<typename T>
+inline std::string HexStr(const T& vch, bool fSpaces=false)
+{
+    return HexStr(vch.begin(), vch.end(), fSpaces);
 }
 
 inline int64_t GetPerformanceCounter()

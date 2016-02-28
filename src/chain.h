@@ -5,14 +5,13 @@
 #ifndef DARKSILK_CHAIN_H
 #define DARKSILK_CHAIN_H
 
-#include "net.h"
-#include "protocol.h"
-#include "chainparams.h"
-#include "primitives/block.h"
-#include "util.h"
+#include <boost/foreach.hpp>
 
 #include <vector>
-#include <boost/foreach.hpp>
+
+#include "primitives/block.h"
+#include "util.h"
+#include "chainparams.h"
 
 class CTxDB;
 

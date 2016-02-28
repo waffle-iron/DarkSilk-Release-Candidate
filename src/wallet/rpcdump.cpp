@@ -2,17 +2,17 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include <iostream>
-#include <fstream>
-
-#include "init.h" // for pwalletMain
-#include "rpcserver.h"
-#include "ui_interface.h"
-#include "base58.h"
-
 #include <boost/date_time/posix_time/posix_time.hpp>
 #include <boost/variant/get.hpp>
 #include <boost/algorithm/string.hpp>
+
+#include <iostream>
+#include <fstream>
+
+#include "rpc/rpcserver.h"
+#include "init.h" // for pwalletMain
+#include "ui_interface.h"
+#include "base58.h"
 
 using namespace json_spirit;
 using namespace std;

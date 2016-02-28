@@ -14,17 +14,14 @@
 #ifndef DARKSILK_BASE58_H
 #define DARKSILK_BASE58_H
 
-#include "net.h"
-#include "chainparams.h"
-#include "key.h"
-#include "pubkey.h"
-#include "script/scriptutils.h"
-#include "script/sign.h"
-#include "script/sign.h"
-#include "allocators.h"
-
 #include <string>
 #include <vector>
+
+#include "chainparams.h"
+#include "pubkey.h"
+#include "key.h"
+#include "script/script.h"
+#include "allocators.h"
 
 /**
  * Encode a byte sequence as a base58-encoded string.

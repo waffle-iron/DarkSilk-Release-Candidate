@@ -2,21 +2,6 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "coincontroldialog.h"
-#include "ui_coincontroldialog.h"
-#include "net.h"
-#include "protocol.h"
-#include "addresstablemodel.h"
-#include "base58.h"
-#include "coincontrol.h"
-#include "darksilkunits.h"
-#include "guiutil.h"
-#include "init.h"
-#include "optionsmodel.h"
-#include "sandstorm.h"
-#include "wallet/wallet.h"
-#include "walletmodel.h"
-
 #include <QApplication>
 #include <QCheckBox>
 #include <QClipboard>
@@ -31,6 +16,19 @@
 #include <QString>
 #include <QTreeWidget>
 #include <QTreeWidgetItem>
+
+#include "coincontroldialog.h"
+#include "ui_coincontroldialog.h"
+#include "addresstablemodel.h"
+#include "base58.h"
+#include "coincontrol.h"
+#include "darksilkunits.h"
+#include "guiutil.h"
+#include "init.h"
+#include "optionsmodel.h"
+#include "anon/sandstorm/sandstorm.h"
+#include "wallet/wallet.h"
+#include "walletmodel.h"
 
 using namespace std;
 QList<CAmount> CoinControlDialog::payAmounts;

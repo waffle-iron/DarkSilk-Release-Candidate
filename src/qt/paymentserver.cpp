@@ -3,12 +3,6 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "paymentserver.h"
-
-#include "guiconstants.h"
-#include "ui_interface.h"
-#include "util.h"
-
 #include <QApplication>
 #include <QByteArray>
 #include <QDataStream>
@@ -19,6 +13,11 @@
 #include <QLocalSocket>
 #include <QStringList>
 #include <QUrl>
+
+#include "paymentserver.h"
+#include "guiconstants.h"
+#include "ui_interface.h"
+#include "util.h"
 
 using namespace boost;
 

@@ -75,13 +75,14 @@ Debian/Ubuntu Linux Daemon Build Instructions
 
 install dependencies:
 
-	$ sudo apt-get update && sudo apt-get upgrade
-    $ sudo apt-get install git build-essential libssl-dev libdb5.3++-dev libminiupnpc-dev dh-autoreconf zip unzip libboost-all-dev make
+    $ sudo apt-get update && sudo apt-get upgrade
+    $ sudo apt-get install git build-essential libssl-dev libdb5.3++-dev libminiupnpc-dev dh-autoreconf zip unzip libboost-all-dev make libgmp3-dev libsnappy-dev
 
 build darksilkd from git:
 
     $ git clone https://github.com/SilkNetwork/DarkSilk.git darksilk
-    $ cd darksilk/src/secp256k1 && ./autogen.sh && ./configure --enable-module-recovery && make && cd .. && sudo make -f makefile.unix USE_UPNP=0
+    $ cd darksilk/src/secp256k1 && ./autogen.sh && ./configure --disable-shared --with-pic --with-bignum=no --enable-module-recovery &&
+    make && cd .. && sudo make -f makefile.unix USE_UPNP=0
    
 install and run darksilkd daemon:
 
@@ -90,11 +91,11 @@ install and run darksilkd daemon:
 
 here are a few commands, google for more.
 
-	$ ./darksilkd getinfo
-	$ ./darksilkd getpeerinfo
+    $ ./darksilkd getinfo
+    $ ./darksilkd getpeerinfo
     $ ./darksilkd getmininginfo
-	$ ./darksilkd getstakinginfo
-	$ ./darksilkd getnewaddresss
+    $ ./darksilkd getstakinginfo
+    $ ./darksilkd getnewaddresss
 	
 
 Debian/Ubuntu Linux Qt5 Wallet Build Instructions
@@ -103,7 +104,7 @@ Debian/Ubuntu Linux Qt5 Wallet Build Instructions
 update and install dependencies:
 
     $ sudo apt-get update && sudo apt-get upgrade
-    $ sudo apt-get install make libqt5webkit5-dev libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools qtcreator zip unzip dh-autoreconf libboost-thread-dev libssl-dev libdb++-dev libstdc++6 libminiupnpc-dev libevent-dev libcurl4-openssl-dev git libpng-dev qrencode libqrencode-dev build-essential libboost-dev libboost-all-dev libboost-system-dev libboost-filesystem-dev libboost-program-options-dev 
+    $ sudo apt-get install make libqt5webkit5-dev libqt5gui5 libqt5core5a libqt5dbus5 qttools5-dev qttools5-dev-tools qtcreator zip unzip dh-autoreconf libboost-thread-dev libssl-dev libdb++-dev libstdc++6 libminiupnpc-dev libevent-dev libcurl4-openssl-dev git libpng-dev qrencode libqrencode-dev build-essential libboost-dev libboost-all-dev libboost-system-dev libboost-filesystem-dev libboost-program-options-dev libgmp3-dev libsnappy-dev
 
 build darksilk-qt from git:
 
@@ -112,7 +113,7 @@ build darksilk-qt from git:
  
 running the darksilk Qt wallet:
 
-	$ sudo ./DarkSilk
+    $ sudo ./DarkSilk
     
 This will compile and build the Qt Wallet which takes a little while, please be patient.  When finished you will have a file called DarkSilk - Simply Double Click
 
@@ -140,7 +141,7 @@ Example stormnode.conf Configuration
 
 > If you are running your stormnode as a hidden service, replace YOUR_IP with your onion hostname (typically found in /var/lib/tor/YOURHIDDENSERVICENAME/hostname).
 
-Port 31000 **must** be open.
+> Port 31000 must be open.
 
 > If you are using the hot/cold system where you are remotely activating your stormnode from your local wallet, you will also put these entries in your local (cold) wallet .conf:
 

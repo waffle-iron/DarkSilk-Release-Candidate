@@ -4,15 +4,15 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include "rpc/rpcserver.h"
 #include "base58.h"
-#include "rpcserver.h"
 #include "init.h"
 #include "net.h"
 #include "netbase.h"
 #include "timedata.h"
 #include "util.h"
-#include "wallet.h"
-#include "walletdb.h"
+#include "wallet/wallet.h"
+#include "wallet/walletdb.h"
 
 using namespace std;
 using namespace json_spirit;
@@ -136,12 +136,12 @@ CScript _createmultisig_redeemScript(const Array& params)
             throw runtime_error(" Invalid public key: "+ks);
         }
     }
+
     CScript result = GetScriptForMultisig(nRequired, pubkeys);
 
     if (result.size() > MAX_SCRIPT_ELEMENT_SIZE)
         throw runtime_error(
                 strprintf("redeemScript exceeds size limit: %d > %d", result.size(), MAX_SCRIPT_ELEMENT_SIZE));
-
     return result;
 }
 
@@ -997,7 +997,7 @@ Value sendmany(const Array& params, bool fHelp)
 {
     if (fHelp || params.size() < 2 || params.size() > 6)
         throw runtime_error(
- +            "sendmany \"fromaccount\" {\"address\":amount,...} ( minconf \"comment\" use_ix use_ss)\n"
+            "sendmany \"fromaccount\" {\"address\":amount,...} ( minconf \"comment\" use_ix use_ss)\n"
             "\nSend multiple times. Amounts are double-precision floating point numbers."
             + HelpRequiringPassphrase() + "\n"
             "\nArguments:\n"
@@ -1089,7 +1089,7 @@ Value sendmany(const Array& params, bool fHelp)
     return wtx.GetHash().GetHex();
 }
 
-// Defined in rpcmisc.cpp
+// Defined in rpc/rpcmisc.cpp
 extern CScript _createmultisig_redeemScript(const Array& params);
 
 Value addmultisigaddress(const Array& params, bool fHelp)

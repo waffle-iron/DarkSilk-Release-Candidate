@@ -1,19 +1,20 @@
+
+#include <QMessageBox>
+
 #include "addeditstormnode.h"
 #include "ui_addeditstormnode.h"
-#include "stormnodeconfig.h"
+#include "anon/stormnode/stormnodeconfig.h"
 #include "stormnodemanager.h"
 #include "ui_stormnodemanager.h"
-
 #include "wallet/walletdb.h"
 #include "wallet/wallet.h"
 #include "ui_interface.h"
 #include "util.h"
 #include "key.h"
-#include "script/scriptutils.h"
-#include "script/sign.h"
+#include "script/script.h"
 #include "init.h"
 #include "base58.h"
-#include <QMessageBox>
+
 
 AddEditStormNode::AddEditStormNode(QWidget *parent) :
     QDialog(parent),

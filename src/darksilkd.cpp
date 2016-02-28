@@ -4,10 +4,11 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "init.h"
-#include "rpcserver.h"
-#include "rpcclient.h"
 #include <boost/algorithm/string/predicate.hpp>
+
+#include "rpc/rpcserver.h"
+#include "rpc/rpcclient.h"
+#include "init.h"
 
 static bool fDaemon;
 
@@ -74,7 +75,7 @@ bool AppInit(int argc, char* argv[])
 
         if (fCommandLine)
         {
-            if (!SelectBaseParamsFromCommandLine()) {
+            if (!SelectParamsFromCommandLine()) {
                 fprintf(stderr, "Error: invalid use of -testnet.\n");
                 return false;
             }
@@ -141,7 +142,7 @@ bool AppInit(int argc, char* argv[])
 
 extern void noui_connect();
 int main(int argc, char* argv[])
-{    
+{
     bool fRet = false;
 
     // Connect darksilkd signal handlers

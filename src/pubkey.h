@@ -6,12 +6,12 @@
 #ifndef DARKSILK_PUBKEY_H
 #define DARKSILK_PUBKEY_H
 
+#include <stdexcept>
+#include <vector>
+
 #include "hash.h"
 #include "serialize.h"
 #include "uint256.h"
-
-#include <stdexcept>
-#include <vector>
 
 /**
  * secp256k1:
@@ -31,7 +31,7 @@ public:
     CKeyID(const uint160 &in) : uint160(in) { }
 };
 
-/** A reference to a CScript: the Hash160 of its serialization (see script.h) */
+/** A reference to a CScript: the Hash160 of its serialization (see script/script.h) */
 class CScriptID : public uint160
 {
 public:

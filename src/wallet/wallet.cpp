@@ -4,38 +4,35 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "wallet.h"
-#include "base58.h"
-#include "checkpoints.h"
-#include "coincontrol.h"
-#include "chainparams.h"
-#include "kernel.h"
-#include "net.h"
-#include "stormnode-budget.h"
-#include "timedata.h"
-#include "txdb.h"
-#include "ui_interface.h"
-#include "walletdb.h"
-#include "crypter.h"
-#include "key.h"
-#include "spork.h"
-#include "sandstorm.h"
-#include "instantx.h"
-#include "stormnode.h"
-#include "stormnode-budget.h"
-#include "stormnode-payments.h"
-#include "chainparams.h"
-#include "smessage.h"
-#include "txdb-leveldb.h"
-#include "consensus/consensus.h"
-#include "consensus/validation.h"
-
-#include <assert.h>
-
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/range/algorithm.hpp>
 #include <boost/numeric/ublas/matrix.hpp>
 #include <boost/thread.hpp>
+
+#include <assert.h>
+
+#include "wallet/wallet.h"
+#include "base58.h"
+#include "checkpoints.h"
+#include "coincontrol.h"
+#include "kernel.h"
+#include "net.h"
+#include "anon/stormnode/stormnode-budget.h"
+#include "timedata.h"
+#include "txdb.h"
+#include "ui_interface.h"
+#include "wallet/walletdb.h"
+#include "crypter.h"
+#include "key.h"
+#include "anon/stormnode/spork.h"
+#include "anon/sandstorm/sandstorm.h"
+#include "anon/instantx/instantx.h"
+#include "anon/stormnode/stormnode.h"
+#include "anon/stormnode/stormnode-budget.h"
+#include "anon/stormnode/stormnode-payments.h"
+#include "chainparams.h"
+#include "smessage.h"
+#include "txdb-leveldb.h"
 
 using namespace std;
 
@@ -3881,7 +3878,7 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
     // Calculate coin age reward
     CAmount nReward;
     {
-        nReward = Params().PoSReward() + nFees;
+        nReward = STATIC_POS_REWARD + nFees;
         if (nReward <= 0)
             return false;
 
@@ -3890,9 +3887,18 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
 
     // start stormnode payments
     bool bStormNodePayment = false;
-        if (pindexBest->nHeight+1 >= Params().StormNodePaymentBlock()) {
+    if ( Params().NetworkID() == CChainParams::TESTNET ){
+        if (pindexBest->nHeight+1 >= TESTNET_STORMNODE_PAYMENT_START) {
             bStormNodePayment = true;
         }
+    }
+    else
+    {   if ( Params().NetworkID() == CChainParams::MAIN ){
+            if (pindexBest->nHeight+1 >= STORMNODE_PAYMENT_START){
+                bStormNodePayment = true;
+            }
+        }
+    }
 
     CScript payee;
     CTxIn vin;
@@ -3928,7 +3934,7 @@ bool CWallet::CreateCoinStake(const CKeyStore& keystore, unsigned int nBits, int
     }
 
 
-    // GetBlockValue should return Params.PoSReward() + nFees. When you switched to GetBlockValue from nCredit.
+    // GetBlockValue should return STATIC_POS_REWARD + nFees. When you switched to GetBlockValue from nCredit.
     // Ncredit is no longer needed past this point.
 
 
@@ -4814,4 +4820,21 @@ void CWallet::GetKeyBirthTimes(std::map<CKeyID, int64_t> &mapKeyBirth) const {
     // Extract block timestamps for those keys
     for (std::map<CKeyID, CBlockIndex*>::const_iterator it = mapKeyFirstBlock.begin(); it != mapKeyFirstBlock.end(); it++)
         mapKeyBirth[it->first] = it->second->nTime - 7200; // block times can be 2h off
+}
+
+bool DecodeHexBlk(CBlock& block, const std::string& strHexBlk)
+{
+    if (!IsHex(strHexBlk))
+        return false;
+
+    std::vector<unsigned char> blockData(ParseHex(strHexBlk));
+    CDataStream ssBlock(blockData, SER_NETWORK, PROTOCOL_VERSION);
+    try {
+        ssBlock >> block;
+    }
+    catch (const std::exception &) {
+        return false;
+    }
+
+    return true;
 }

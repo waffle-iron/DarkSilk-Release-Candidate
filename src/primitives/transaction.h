@@ -6,18 +6,20 @@
 #ifndef DARKSILK_PRIMITIVES_TRANSACTION_H
 #define DARKSILK_PRIMITIVES_TRANSACTION_H
 
+#include <stdio.h>
+
 #include "amount.h"
 #include "uint256.h"
 #include "serialize.h"
 #include "util.h"
-#include "script/scriptutils.h"
-#include "script/sign.h"
+#include "script/script.h"
 #include "timedata.h"
-
-#include <stdio.h>
 
 class CValidationInterface;
 class CValidationState;
+
+/// The maximum allowed size for a serialized block, in bytes (network rule)
+static const unsigned int MAX_BLOCK_SIZE = 20000000; // 20MB Maximum Block Size (50x Bitcoin Core)
 
 using namespace std;
 

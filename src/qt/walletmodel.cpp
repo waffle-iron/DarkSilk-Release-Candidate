@@ -1,20 +1,18 @@
+#include <QSet>
+#include <QTimer>
+#include <QDebug>
+
 #include "walletmodel.h"
 #include "guiconstants.h"
 #include "optionsmodel.h"
 #include "addresstablemodel.h"
 #include "transactiontablemodel.h"
-
 #include "ui_interface.h"
-#include "net.h"
 #include "wallet/wallet.h"
 #include "wallet/walletdb.h" // for BackupWallet
 #include "base58.h"
-#include "spork.h"
+#include "anon/stormnode/spork.h"
 #include "smessage.h"
-
-#include <QSet>
-#include <QTimer>
-#include <QDebug>
 
 WalletModel::WalletModel(CWallet *wallet, OptionsModel *optionsModel, QObject *parent) :
     QObject(parent), wallet(wallet), optionsModel(optionsModel), addressTableModel(0),

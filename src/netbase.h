@@ -5,12 +5,11 @@
 #ifndef DARKSILK_NETBASE_H
 #define DARKSILK_NETBASE_H
 
-#include "compat.h"
-#include "serialize.h"
-
-#include <stdint.h>
 #include <string>
 #include <vector>
+
+#include "compat.h"
+#include "serialize.h"
 
 extern int nConnectTimeout;
 extern bool fNameLookup;
@@ -184,5 +183,4 @@ bool ConnectSocketByName(CService &addr, SOCKET& hSocketRet, const char *pszDest
 #ifdef USE_NATIVE_I2P
 bool SetSocketOptions(SOCKET& hSocket);
 #endif
-
 #endif // DARKSILK_NETBASE_H

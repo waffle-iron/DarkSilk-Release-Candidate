@@ -6,11 +6,12 @@
 #ifndef DARKSILK_TXMEMPOOL_H
 #define DARKSILK_TXMEMPOOL_H
 
+#include <boost/circular_buffer.hpp>
+
 #include "primitives/transaction.h"
 #include "sync.h"
 #include "coins.h"
 #include "amount.h"
-#include <boost/circular_buffer.hpp>
 
 inline double AllowFreeThreshold()
 {

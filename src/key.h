@@ -5,11 +5,11 @@
 #ifndef DARKSILK_KEY_H
 #define DARKSILK_KEY_H
 
-#include "allocators.h"
-#include "pubkey.h"
-
 #include <stdexcept>
 #include <vector>
+
+#include "allocators.h"
+#include "pubkey.h"
 
 // secp256k1:
 // const unsigned int PRIVATE_KEY_SIZE = 279;

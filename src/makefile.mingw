@@ -54,19 +54,18 @@ HEADERS = $(wildcard *.h)
 OBJS= \
     obj/alert.o \
     obj/cleanse.o \
-    obj/core_read.o \
-    obj/darksilk-cli.o \
+    obj/base58.o \
     obj/version.o \
     obj/checkpoints.o \
     obj/netbase.o \
     obj/addrman.o \
-    obj/base58.o \
     obj/crypter.o \
     obj/chain.o \
     obj/key.o \
-    obj/init.o \
     obj/pubkey.o \
     obj/ecwrapper.o \
+    obj/init.o \
+    obj/darksilkd.o \
     obj/keystore.o \
     obj/main.o \
     obj/net.o \
@@ -84,7 +83,6 @@ OBJS= \
     obj/sync.o \
     obj/txmempool.o \
     obj/util.o \
-    obj/utilstrencodings.o \
     obj/hash.o \
     obj/noui.o \
     obj/kernel.o \
@@ -94,7 +92,6 @@ OBJS= \
     obj/scrypt-x86.o \
     obj/scrypt-x86_64.o \
     obj/chainparams.o \
-    obj/chainparamsbase.o \
     obj/stealth.o \
     obj/activestormnode.o \
     obj/sandstorm.o \
@@ -111,7 +108,6 @@ OBJS= \
     obj/spork.o \
     obj/crypto/hmac_sha256.o \
     obj/crypto/hmac_sha512.o \
-    obj/crypto/rfc6979_hmac_sha256.o \
     obj/crypto/ripemd160.o \
     obj/crypto/sha1.o \
     obj/crypto/sha256.o \
@@ -120,11 +116,11 @@ OBJS= \
     obj/coins.o \
     obj/compressor.o \
     obj/primitives/transaction.o \
-    obj/primitives/block.o\
+    obj/primitives/block.o \
     obj/leveldbwrapper.o \
-    obj/amount.o\
-    obj/undo.o\
-    obj/uint256.o\
+    obj/amount.o \
+    obj/undo.o \
+    obj/uint256.o \
     obj/txdb.o \
     obj/glibc_sanity.o \
     obj/glibcxx_sanity.o \
@@ -143,13 +139,13 @@ endif
 ifeq (${USE_WALLET}, 1)
     DEFS += -DENABLE_WALLET
     OBJS += \
-    obj/wallet/db.o \
-    obj/miner.o \
-    obj/wallet/rpcdump.o \
-    obj/rpcmining.o \
-    obj/wallet/rpcwallet.o \
-    obj/wallet/wallet.o \
-    obj/wallet/walletdb.o
+obj/db.o \
+obj/miner.o \
+obj/rpcdump.o \
+obj/rpcmining.o \
+obj/rpcwallet.o \
+obj/wallet.o \
+obj/walletdb.o
 endif
 
 all: darksilkd.exe

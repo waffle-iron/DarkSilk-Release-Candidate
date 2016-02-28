@@ -8,19 +8,16 @@
 # error This header can only be compiled as C++.
 #endif
 
-#ifndef DARKSILK_PROTOCOL_H
-#define DARKSILK_PROTOCOL_H
+#ifndef INCLUDED_PROTOCOL_H
+#define INCLUDED_PROTOCOL_H
 
-
-#include "netbase.h"
-#include "serialize.h"
-#include "uint256.h"
-#include "version.h"
-
-#include <stdint.h>
 #include <string>
 
-#define MESSAGE_START_SIZE 4
+#include <stdint.h>
+
+#include "chainparams.h"
+#include "serialize.h"
+#include "netbase.h"
 
 /** Message header.
  * (4) message start.
@@ -51,8 +48,8 @@ class CMessageHeader
     public:
         enum {
             COMMAND_SIZE=12,
-            MESSAGE_SIZE_SIZE = sizeof(int),
-            CHECKSUM_SIZE = sizeof(int),
+            MESSAGE_SIZE_SIZE=sizeof(int),
+            CHECKSUM_SIZE=sizeof(int),
 
             MESSAGE_SIZE_OFFSET=MESSAGE_START_SIZE+COMMAND_SIZE,
             CHECKSUM_OFFSET=MESSAGE_SIZE_OFFSET+MESSAGE_SIZE_SIZE,
@@ -84,19 +81,20 @@ class CAddress : public CService
 
         ADD_SERIALIZE_METHODS;
 
-    template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion)
-    {
-        if (ser_action.ForRead())
-            Init();
-        if (nType & SER_DISK)
-            READWRITE(nVersion);
-        if ((nType & SER_DISK) ||
-            (nVersion >= CADDR_TIME_VERSION && !(nType & SER_GETHASH)))
-            READWRITE(nTime);
-        READWRITE(nServices);
-        READWRITE(*(CService*)this);
-    }
+        template <typename Stream, typename Operation>
+        inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+            CAddress* pthis = const_cast<CAddress*>(this);
+            CService* pip = (CService*)pthis;
+            if (ser_action.ForRead())
+                pthis->Init();
+            if (nType & SER_DISK)
+                READWRITE(nVersion);
+            if ((nType & SER_DISK) ||
+                (nVersion >= CADDR_TIME_VERSION && !(nType & SER_GETHASH)))
+                READWRITE(nTime);
+            READWRITE(nServices);
+            READWRITE(*pip);
+        }
 
         void print() const;
 
@@ -162,4 +160,4 @@ enum {
 };
 
 
-#endif // DARKSILK_PROTOCOL_H
+#endif // INCLUDED_PROTOCOL_H

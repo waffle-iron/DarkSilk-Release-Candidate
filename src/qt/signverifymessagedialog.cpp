@@ -1,21 +1,18 @@
-#include "signverifymessagedialog.h"
-#include "ui_signverifymessagedialog.h"
-
-#include "main.h"
-#include "optionsmodel.h"
-
-#include "addressbookpage.h"
-#include "guiutil.h"
-#include "walletmodel.h"
-
-#include "base58.h"
-#include "init.h"
-#include "wallet/wallet.h"
+#include <QClipboard>
 
 #include <string>
 #include <vector>
 
-#include <QClipboard>
+#include "signverifymessagedialog.h"
+#include "ui_signverifymessagedialog.h"
+#include "addressbookpage.h"
+#include "base58.h"
+#include "guiutil.h"
+#include "init.h"
+#include "main.h"
+#include "optionsmodel.h"
+#include "walletmodel.h"
+#include "wallet/wallet.h"
 
 SignVerifyMessageDialog::SignVerifyMessageDialog(QWidget *parent) :
     QDialog(parent),
@@ -112,6 +109,7 @@ void SignVerifyMessageDialog::on_signMessageButton_SM_clicked()
     CDarkSilkAddress addr(ui->addressIn_SM->text().toStdString());
     if (!addr.IsValid())
     {
+        ui->addressIn_SM->setValid(false);
         ui->statusLabel_SM->setStyleSheet("QLabel { color: red; }");
         ui->statusLabel_SM->setText(tr("The entered address is invalid.") + QString(" ") + tr("Please check the address and try again."));
         return;

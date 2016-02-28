@@ -4,6 +4,12 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include <boost/algorithm/string/replace.hpp>
+#include <boost/filesystem.hpp>
+#include <boost/filesystem/fstream.hpp>
+#include <boost/lexical_cast.hpp>
+#include <boost/thread.hpp>
+
 #include "main.h"
 #include "addrman.h"
 #include "alert.h"
@@ -14,26 +20,16 @@
 #include "kernel.h"
 #include "txdb.h"
 #include "ui_interface.h"
-#include "instantx.h"
-#include "sandstorm.h"
-#include "stormnodeman.h"
-#include "stormnode-budget.h"
-#include "stormnode-payments.h"
-#include "stormnode-sync.h"
-#include "spork.h"
+#include "anon/instantx/instantx.h"
+#include "anon/sandstorm/sandstorm.h"
+#include "anon/stormnode/stormnodeman.h"
+#include "anon/stormnode/stormnode-budget.h"
+#include "anon/stormnode/stormnode-payments.h"
+#include "anon/stormnode/stormnode-sync.h"
+#include "anon/stormnode/spork.h"
 #include "smessage.h"
 #include "coins.h"
 #include "txdb-leveldb.h"
-
-#include "consensus/consensus.h"
-#include "consensus/merkle.h"
-#include "consensus/validation.h"
-
-#include <boost/algorithm/string/replace.hpp>
-#include <boost/filesystem.hpp>
-#include <boost/filesystem/fstream.hpp>
-#include <boost/lexical_cast.hpp>
-#include <boost/thread.hpp>
 
 using namespace std;
 using namespace boost;
@@ -380,9 +376,11 @@ void FinalizeNode(NodeId nodeid) {
         AddressCurrentlyConnected(state->address);
     }
 
-    BOOST_FOREACH(const QueuedBlock& entry, state->vBlocksInFlight)
+    BOOST_FOREACH(const QueuedBlock& entry, state->vBlocksInFlight) {
+        nQueuedValidatedHeaders -= entry.fValidatedHeaders;
         mapBlocksInFlight.erase(entry.hash);
-
+    }
+    
     BOOST_FOREACH(const uint256& hash, state->vBlocksToDownload)
         mapBlocksToDownload.erase(hash);
 
@@ -1701,7 +1699,7 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
     if (pindexPrevPrev->pprev == NULL)
         return bnTargetLimit.GetCompact(); // second block
 
-    int64_t nTargetSpacing = fProofOfStake ? Params().GetPoSTargetSpacing() : Params().GetPoWTargetSpacing();
+    int64_t nTargetSpacing = fProofOfStake ? POS_TARGET_SPACING : POW_TARGET_SPACING;
     int64_t nActualSpacing = pindexPrev->GetBlockTime() - pindexPrevPrev->GetBlockTime();
 
     if (nActualSpacing < 0) {
@@ -1729,7 +1727,7 @@ unsigned int GetNextTargetRequired(const CBlockIndex* pindexLast, bool fProofOfS
 
 CAmount GetBlockValue(int nBits, int nHeight, const CAmount& nFees)
 {
-    CAmount nSubsidy = Params().PoSReward();
+    CAmount nSubsidy = STATIC_POS_REWARD;
 
     return nSubsidy + nFees;
 }
@@ -2764,7 +2762,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         string remoteAddr;
         if (fLogIPs)
             remoteAddr = ", peeraddr=" + pfrom->addr.ToString();
-
+ 
         pfrom->fSuccessfullyConnected = true;
 
         LogPrintf("receive version message: version %d, blocks=%d, us=%s, them=%s, peer=%s\n", pfrom->nVersion, pfrom->nStartingHeight, addrMe.ToString(), addrFrom.ToString(), pfrom->addr.ToString());
@@ -3433,8 +3431,7 @@ bool ProcessMessages(CNode* pfrom)
 
 bool SendMessages(CNode* pto, bool fSendTrickle)
 {
-    TRY_LOCK(cs_main, lockMain);
-    if (lockMain) {
+    {
         // Don't send anything until we get their version message
         if (pto->nVersion == 0)
             return true;
@@ -3501,7 +3498,8 @@ bool SendMessages(CNode* pto, bool fSendTrickle)
                     }
                 }
             }
-            nLastRebroadcast = GetTime();
+            if (!vNodes.empty())
+                nLastRebroadcast = GetTime();
         }
 
         //
@@ -4092,17 +4090,17 @@ bool static FlushStateToDisk(CValidationState &state, FlushStateMode mode) {
         bool fileschanged = false;
         for (set<int>::iterator it = setDirtyFileInfo.begin(); it != setDirtyFileInfo.end(); ) {
             if (!pblocktree->WriteBlockFileInfo(*it, vinfoBlockFile[*it])) {
-                return AbortNode("Failed to write to block index");
+                return state.Abort("Failed to write to block index");
             }
             fileschanged = true;
             setDirtyFileInfo.erase(it++);
         }
         if (fileschanged && !pblocktree->WriteLastBlockFile(nLastBlockFile)) {
-            return AbortNode("Failed to write to block index");
+            return state.Abort("Failed to write to block index");
         }
         for (set<CBlockIndex*>::iterator it = setDirtyBlockIndex.begin(); it != setDirtyBlockIndex.end(); ) {
              if (!pblocktree->WriteBlockIndex(CDiskBlockIndex(*it))) {
-                 return AbortNode("Failed to write to block index");
+                 return state.Abort("Failed to write to block index");
              }
              setDirtyBlockIndex.erase(it++);
         }
@@ -4111,7 +4109,7 @@ bool static FlushStateToDisk(CValidationState &state, FlushStateMode mode) {
 
         // Finally flush the chainstate (which may refer to block index entries).
         if (!pcoinsTip->Flush())
-            return AbortNode("Failed to write to coin database");
+            return state.Abort("Failed to write to coin database");
         // Update best block in wallet (so we can detect restored wallets).
         //TODO (Amir): put back when chainActive is implemented.
         //if (mode != FLUSH_STATE_IF_NEEDED) {
@@ -4120,7 +4118,7 @@ bool static FlushStateToDisk(CValidationState &state, FlushStateMode mode) {
         nLastWrite = GetTimeMicros();
     }
     } catch (const std::runtime_error& e) {
-        return AbortNode(std::string("System error while flushing: ") + e.what());
+        return state.Abort(std::string("System error while flushing: ") + e.what());
     }
     return true;
 }

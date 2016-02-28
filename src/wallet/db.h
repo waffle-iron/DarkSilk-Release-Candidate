@@ -7,17 +7,17 @@
 #ifndef DARKSILK_DB_H
 #define DARKSILK_DB_H
 
-#include "serialize.h"
-#include "sync.h"
+#include <boost/filesystem/path.hpp>
 
-#include "streams.h"
+#include <db_cxx.h>
 
 #include <map>
 #include <string>
 #include <vector>
 
-#include <boost/filesystem/path.hpp>
-#include <db_cxx.h>
+#include "serialize.h"
+#include "sync.h"
+#include "streams.h"
 
 class CAddrMan;
 class CBlockLocator;

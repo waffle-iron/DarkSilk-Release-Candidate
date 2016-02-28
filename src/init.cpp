@@ -4,46 +4,46 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "init.h"
-#include "main.h"
-#include "chainparams.h"
-#include "txdb.h"
-#include "rpcserver.h"
-#include "net.h"
-#include "util.h"
-#include "key.h"
-#include "pubkey.h"
-#include "ui_interface.h"
-#include "activestormnode.h"
-#include "sanity.h"
-#include "stormnode-budget.h"
-#include "stormnode-payments.h"
-#include "stormnodeman.h"
-#include "spork.h"
-#include "stormnodeconfig.h"
-#include "smessage.h"
-#include "txdb-leveldb.h"
-#include "consensus/consensus.h"
-#include "consensus/validation.h"
-
-#ifdef ENABLE_WALLET
-#include "wallet/wallet.h"
-#include "wallet/walletdb.h"
-#endif
 #include <boost/algorithm/string/predicate.hpp>
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/bind.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/interprocess/sync/file_lock.hpp>
 #include <boost/thread.hpp>
+
 #include <openssl/crypto.h>
+
+#include "init.h"
+#include "main.h"
+#include "chainparams.h"
+#include "txdb.h"
+#include "rpc/rpcserver.h"
+#include "net.h"
+#include "util.h"
+#include "key.h"
+#include "pubkey.h"
+#include "ui_interface.h"
+#include "anon/stormnode/activestormnode.h"
+#include "sanity.h"
+#include "anon/stormnode/stormnode-budget.h"
+#include "anon/stormnode/stormnode-payments.h"
+#include "anon/stormnode/stormnodeman.h"
+#include "anon/stormnode/spork.h"
+#include "anon/stormnode/stormnodeconfig.h"
+#include "smessage.h"
+#include "txdb-leveldb.h"
+
+#ifdef ENABLE_WALLET
+#include "wallet/wallet.h"
+#include "wallet/walletdb.h"
+#endif
 
 #ifndef WIN32
 #include <signal.h>
 #endif
 
 #ifdef USE_NATIVE_I2P
-#include "i2p.h"
+#include "i2p/i2p.h"
 #endif
 
 using namespace std;
@@ -336,7 +336,7 @@ std::string HelpMessage()
     strUsage += "  -snconflock=<n>            " + _("Lock stormnodes from stormnode configuration file (default: 1)") + "\n";
     strUsage += "  -stormnodeprivkey=<n>     " + _("Set the stormnode private key") + "\n";
     strUsage += "  -stormnodeaddr=<n>        " + _("Set external address:port to get to this stormnode (example: address:port)") + "\n";
-    strUsage += "  -stormnodeminprotocol=<n> " + _("Ignore stormnodes less than version (example: 60135; default : 0)") + "\n";
+    strUsage += "  -stormnodeminprotocol=<n> " + _("Ignore stormnodes less than version (example: 60700; default : 0)") + "\n";
 
     strUsage += "  -enablesandstorm=<n>          " + strprintf(_("Enable use of automated sandstorm for funds stored in this wallet (0-1, default: 0)"), fEnableSandstorm) + "\n";
     strUsage += "  -sandstormmultisession=<n>    " + strprintf(_("Enable multiple sandstorm mixing sessions per block, experimental (0-1, default: %u)"), fSandstormMultiSession) + "\n";
@@ -462,7 +462,7 @@ bool AppInit2(boost::thread_group& threadGroup)
 
     nDerivationMethodIndex = 0;
 
-    if (!SelectBaseParamsFromCommandLine()) {
+    if (!SelectParamsFromCommandLine()) {
         return InitError("Invalid use of -testnet");
     }
 
@@ -910,7 +910,7 @@ bool AppInit2(boost::thread_group& threadGroup)
     }
 
     // as LoadBlockIndex can take several minutes, it's possible the user
-    // requested to kill darksilk-qt during the last operation. If so, exit.
+    // requested to kill darksilk-core during the last operation. If so, exit.
     // As the program has not fully started yet, Shutdown() is possibly overkill.
     if (fRequestShutdown)
     {

@@ -1,10 +1,10 @@
 #ifndef OVERVIEWPAGE_H
 #define OVERVIEWPAGE_H
 
-#include "amount.h"
-
 #include <QWidget>
 #include <QTimer>
+
+#include "amount.h"
 
 class ClientModel;
 class WalletModel;
@@ -31,7 +31,6 @@ public:
     void setClientModel(ClientModel *clientModel);
     void setWalletModel(WalletModel *walletModel);
     void showOutOfSyncWarning(bool fShow);
-    void updateSandstormProgress();
 
 public slots:
     void sandStormStatus();
@@ -72,8 +71,10 @@ private slots:
     void sandstormAuto();
     void sandstormReset();
     void updateDisplayUnit();
+    void updateSandstormProgress();
     void handleTransactionClicked(const QModelIndex &index);
     void updateAlerts(const QString &warnings);
+    void updateWatchOnlyLabels(bool showWatchOnly);
 };
 
 #endif // OVERVIEWPAGE_H

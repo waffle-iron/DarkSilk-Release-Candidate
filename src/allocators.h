@@ -6,11 +6,10 @@
 #ifndef DARKSILK_ALLOCATORS_H
 #define DARKSILK_ALLOCATORS_H
 
-#include "cleanse.h"
+#include <boost/thread/mutex.hpp>
 
 #include <string.h>
 #include <string>
-#include <boost/thread/mutex.hpp>
 #include <map>
 
 #ifdef WIN32
@@ -32,6 +31,8 @@
 #include <limits.h> // for PAGESIZE
 #include <unistd.h> // for sysconf
 #endif
+
+#include "cleanse.h"
 
 /**
  * Thread-safe class to keep track of locked (ie, non-swappable) memory pages.

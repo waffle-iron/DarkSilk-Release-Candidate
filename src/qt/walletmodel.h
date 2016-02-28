@@ -1,13 +1,13 @@
 #ifndef WALLETMODEL_H
 #define WALLETMODEL_H
 
-#include "allocators.h" /* for SecureString */
-#include "instantx.h"
-#include "wallet/wallet.h"
-
 #include <QObject>
 #include <vector>
 #include <map>
+
+#include "allocators.h" /* for SecureString */
+#include "anon/instantx/instantx.h"
+#include "wallet/wallet.h"
 
 class OptionsModel;
 class AddressTableModel;
@@ -58,7 +58,7 @@ public:
         TransactionCommitFailed,
         NarrationTooLong,
         Aborted,
-	AnonymizeOnlyUnlocked
+	    AnonymizeOnlyUnlocked
     };
 
     enum EncryptionStatus

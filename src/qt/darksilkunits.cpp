@@ -3,11 +3,11 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "darksilkunits.h"
-#include "primitives/transaction.h"
-
 #include <QStringList>
 #include <QSettings>
+
+#include "darksilkunits.h"
+#include "primitives/transaction.h"
 
 DarkSilkUnits::DarkSilkUnits(QObject *parent):
         QAbstractListModel(parent),
@@ -238,3 +238,14 @@ CAmount DarkSilkUnits::maxMoney()
 {
     return MAX_MONEY;
 }
+
+QString DarkSilkUnits::getAmountColumnTitle(int unit)
+{
+    QString amountTitle = QObject::tr("Amount");
+    if (DarkSilkUnits::valid(unit))
+    {
+        amountTitle += " ("+DarkSilkUnits::name(unit) + ")";
+    }
+    return amountTitle;
+}
+

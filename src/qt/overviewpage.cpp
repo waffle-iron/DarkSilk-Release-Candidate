@@ -1,8 +1,14 @@
+#include <QAbstractItemDelegate>
+#include <QPainter>
+#include <QTimer>
+#include <QDebug>
+#include <QScrollArea>
+#include <QScroller>
+
 #include "overviewpage.h"
 #include "ui_overviewpage.h"
-
 #include "clientmodel.h"
-#include "sandstorm.h"
+#include "anon/sandstorm/sandstorm.h"
 #include "sandstormconfig.h"
 #include "walletmodel.h"
 #include "darksilkunits.h"
@@ -12,13 +18,6 @@
 #include "guiutil.h"
 #include "guiconstants.h"
 #include "init.h"
-
-#include <QAbstractItemDelegate>
-#include <QPainter>
-#include <QTimer>
-#include <QDebug>
-#include <QScrollArea>
-#include <QScroller>
 
 #define DECORATION_SIZE 64
 #define NUM_ITEMS 6
@@ -220,6 +219,29 @@ void OverviewPage::setBalance(const CAmount& balance, const CAmount& stake, cons
     }
 }
 
+// show/hide watch-only labels
+void OverviewPage::updateWatchOnlyLabels(bool showWatchOnly)
+{
+    ui->labelSpendable->setVisible(showWatchOnly);      // show spendable label (only when watch-only is active)
+    ui->labelWatchonly->setVisible(showWatchOnly);      // show watch-only label
+    ui->lineWatchBalance->setVisible(showWatchOnly);    // show watch-only balance separator line
+    ui->labelWatchStake->setVisible(showWatchOnly);    // show watch-only balance separator line
+    ui->labelWatchAvailable->setVisible(showWatchOnly); // show watch-only available balance
+    ui->labelWatchPending->setVisible(showWatchOnly);   // show watch-only pending balance
+    ui->labelWatchTotal->setVisible(showWatchOnly);     // show watch-only total balance
+
+    if (!showWatchOnly){
+        ui->labelWatchImmature->hide();
+    }
+    else{
+        ui->labelBalance->setIndent(20);
+        ui->labelStake->setIndent(20);
+        ui->labelUnconfirmed->setIndent(20);
+        ui->labelImmature->setIndent(20);
+        ui->labelTotal->setIndent(20);
+    }
+}
+
 void OverviewPage::setClientModel(ClientModel *model)
 {
     this->clientModel = model;
@@ -254,11 +276,13 @@ void OverviewPage::setWalletModel(WalletModel *model)
         connect(model, SIGNAL(balanceChanged(CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount)), this, SLOT(setBalance(CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount, CAmount)));
 
         connect(model->getOptionsModel(), SIGNAL(displayUnitChanged(int)), this, SLOT(updateDisplayUnit()));
+        connect(model->getOptionsModel(), SIGNAL(sandstormRoundsChanged()), this, SLOT(updateSandstormProgress()));
+        connect(model->getOptionsModel(), SIGNAL(anonymizeDarkSilkAmountChanged()), this, SLOT(updateSandstormProgress()));
 
         connect(ui->sandstormAuto, SIGNAL(clicked()), this, SLOT(sandstormAuto()));
         connect(ui->sandstormReset, SIGNAL(clicked()), this, SLOT(sandstormReset()));
         connect(ui->toggleSandstorm, SIGNAL(clicked()), this, SLOT(toggleSandstorm()));
-        //updateWatchOnlyLabels(model->haveWatchOnly());
+        updateWatchOnlyLabels(model->haveWatchOnly());
         connect(model, SIGNAL(notifyWatchonlyChanged(bool)), this, SLOT(updateWatchOnlyLabels(bool)));
     }
 
@@ -396,17 +420,19 @@ void OverviewPage::updateSandstormProgress()
 void OverviewPage::sandStormStatus()
 {
     if(IsInitialBlockDownload()) return;
+ 
+    if (!pindexBest) return;
     
+    //TODO
+    //if(!stormnodeSync.IsBlockchainSynced() || ShutdownRequested()) return;
+
+    static int64_t nLastSSProgressBlockTime = 0;
+
     int nBestHeight = pindexBest->nHeight;
 
-    if(nBestHeight != sandStormPool.cachedNumBlocks)
-    {
-        //we we're processing lots of blocks, we'll just leave
-        if(GetTime() - lastNewBlock < 10) return;
-        lastNewBlock = GetTime();
-
-        updateSandstormProgress();
-    }
+    // we we're processing more then 1 block per second, we'll just leave
+    if(((nBestHeight - sandStormPool.cachedNumBlocks) / (GetTimeMillis() - nLastSSProgressBlockTime + 1) > 1)) return;
+    nLastSSProgressBlockTime = GetTimeMillis();
 
     if(!fEnableSandstorm) {
         if(nBestHeight != sandStormPool.cachedNumBlocks)

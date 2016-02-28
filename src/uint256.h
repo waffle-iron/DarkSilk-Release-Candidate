@@ -4,15 +4,16 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef DARKSILK_UINT256_H
-#define DARKSILK_UINT256_H
+#ifndef BITCOIN_UINT256_H
+#define BITCOIN_UINT256_H
 
 #include <assert.h>
 #include <cstring>
 #include <stdexcept>
-#include <stdint.h>
 #include <string>
 #include <vector>
+
+#include <stdint.h>
 
 extern const signed char p_util_hexdigit[256]; // defined in util.cpp
 
@@ -364,4 +365,4 @@ public:
     }
 };
 
-#endif // DARKSILK_UINT256_H
+#endif // BITCOIN_UINT256_H

@@ -6,9 +6,6 @@
 #ifndef DRKSLK_MINER_H
 #define DRKSLK_MINER_H
 
-#include "net.h"
-#include "protocol.h"
-#include "chainparams.h"
 #include "wallet/wallet.h"
 
 /* Generate a new block, without valid proof-of-work */

@@ -5,16 +5,17 @@
 #ifndef BITCOIN_ADDRMAN_H
 #define BITCOIN_ADDRMAN_H
 
+#include <map>
+#include <set>
+#include <vector>
+
+#include <stdint.h>
+
 #include "netbase.h"
 #include "protocol.h"
 #include "sync.h"
 #include "timedata.h"
 #include "util.h"
-
-#include <map>
-#include <set>
-#include <stdint.h>
-#include <vector>
 
 /** 
  * Extended statistics about a CAddress 

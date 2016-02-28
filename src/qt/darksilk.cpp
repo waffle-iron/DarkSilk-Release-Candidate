@@ -2,24 +2,6 @@
  * W.J. van der Laan 2011-2016
  */
 
-#include "darksilkgui.h"
-#include "net.h"
-#include "clientmodel.h"
-#include "walletmodel.h"
-#include "messagemodel.h"
-#include "optionsmodel.h"
-#include "guiutil.h"
-#include "guiconstants.h"
-#include "init.h"
-#include "util.h"
-#include "wallet/wallet.h"
-#include "ui_interface.h"
-#include "paymentserver.h"
-#include "winshutdownmonitor.h"
-#ifdef Q_OS_MAC
-#include "macdockiconhandler.h"
-#endif
-
 #include <QApplication>
 #include <QMessageBox>
 #include <QFile>
@@ -32,7 +14,25 @@
 #include <QSplashScreen>
 #include <QLibraryInfo>
 
-#if defined(DARKSILK_NEED_QT_PLUGINS) && defined(QT_STATICPLUGIN) && !defined(_DARKSILK_QT_PLUGINS_INCLUDED)
+#include "darksilkgui.h"
+#include "clientmodel.h"
+#include "walletmodel.h"
+#include "messagemodel.h"
+#include "optionsmodel.h"
+#include "guiutil.h"
+#include "guiconstants.h"
+#include "init.h"
+#include "util.h"
+#include "wallet/wallet.h"
+#include "ui_interface.h"
+#include "paymentserver.h"
+#include "winshutdownmonitor.h"
+
+#ifdef Q_OS_MAC
+#include "macdockiconhandler.h"
+#endif
+
+#if defined(DARKSILK_NEED_QT_PLUGINS) && defined(QT_STATICPLUGIN) && !defined(_DARKSILK_QT_PLUGINS_INCLUDED) 
 #define _DARKSILK_QT_PLUGINS_INCLUDED
 #define __INSURE__
 #include <QtPlugin>
@@ -132,13 +132,10 @@ void DebugMessageHandler(QtMsgType type, const QMessageLogContext& context, cons
 #ifndef DARKSILK_QT_TEST
 int main(int argc, char *argv[])
 {
-    /// 1. Parse command-line options. These take precedence over anything else.
+
     // Command-line options take precedence:
     ParseParameters(argc, argv);
 
-    // Do not refer to data directory yet, this can be overridden by Intro::pickDataDirectory
-
-    /// 2. Basic Qt initialization (not dependent on parameters or configuration)
 #if QT_VERSION < 0x050000
     // Internal string conversion is all UTF-8
     QTextCodec::setCodecForTr(QTextCodec::codecForName("UTF-8"));
@@ -182,7 +179,7 @@ int main(int argc, char *argv[])
     //   Need to pass name here as CAmount is a typedef (see http://qt-project.org/doc/qt-5/qmetatype.html#qRegisterMetaType)
     //   IMPORTANT if it is no longer a typedef use the normal variant above
     qRegisterMetaType< CAmount >("CAmount");
-
+ 
     // Application identification (must be set before OptionsModel is initialized,
     // as it is used to locate QSettings)
     app.setOrganizationName("DarkSilk");
