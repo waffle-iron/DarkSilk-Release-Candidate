@@ -209,7 +209,6 @@ extern json_spirit::Value getnewpubkey(const json_spirit::Array& params, bool fH
 
 extern json_spirit::Value encryptdata(const json_spirit::Array& params, bool fHelp); // in rpccrypt.cpp
 extern json_spirit::Value decryptdata(const json_spirit::Array& params, bool fHelp);
-
 extern json_spirit::Value decryptsend(const json_spirit::Array& params, bool fHelp);
 
 extern json_spirit::Value getrawtransaction(const json_spirit::Array& params, bool fHelp); // in rcprawtransaction.cpp

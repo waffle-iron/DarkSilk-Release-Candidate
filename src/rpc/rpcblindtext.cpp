@@ -21,7 +21,7 @@ using namespace std;
 using namespace boost;
 using namespace boost::assign;
 using namespace json_spirit;
- 
+
 // Externally constructed transactions have a 10 minute window
 const int MaxTxnTimeDrift = 5 * 60;
 
@@ -40,8 +40,8 @@ string sendtoaddresswithtime(string sAddress, int64_t nAmount, unsigned int nTim
     if (pwalletMain->IsLocked())
         throw JSONRPCError(RPC_WALLET_UNLOCK_NEEDED,
                 "Error: Please enter the wallet passphrase with walletpassphrase first.");
-	
-	std::string sNarr;
+
+    std::string sNarr;
     string strError = pwalletMain->SendMoneyToDestination(address.Get(), nAmount, sNarr, wtx);
     if (strError != "")
         throw JSONRPCError(RPC_WALLET_ERROR, strError);
