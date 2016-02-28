@@ -3,8 +3,6 @@
 #include "optionsmodel.h"
 #include "darksilkunits.h"
 #include "init.h"
-#include "main.h"
-#include "net.h"
 #include "wallet/wallet.h"
 #include "wallet/walletdb.h"
 #include "guiutil.h"
@@ -156,19 +154,26 @@ void OptionsModel::Init(bool resetSettings)
         addOverriddenOption("-anonymizedarksilkamount");
     nAnonymizeDarkSilkAmount = settings.value("nAnonymizeDarkSilkAmount").toInt();
 
-    // These are shared with core DarkSilk; we want
-    // command-line options to override the GUI settings:
-    if (settings.contains("fUseUPnP"))
-        SoftSetBoolArg("-upnp", settings.value("fUseUPnP").toBool());
+    // Network
+    if (!settings.contains("fUseUPnP"))
+        settings.setValue("fUseUPnP", DEFAULT_UPNP);
+    if (!SoftSetBoolArg("-upnp", settings.value("fUseUPnP").toBool()))
+        addOverriddenOption("-upnp");
+
     if (!settings.contains("fListen"))
         settings.setValue("fListen", DEFAULT_LISTEN);
     if (!SoftSetBoolArg("-listen", settings.value("fListen").toBool()))
         addOverriddenOption("-listen");
-    if (settings.contains("addrProxy") && settings.value("fUseProxy").toBool())
-        SoftSetArg("-proxy", settings.value("addrProxy").toString().toStdString());
-    if (!language.isEmpty())
-        SoftSetArg("-lang", language.toStdString());
 
+    if (!settings.contains("fUseProxy"))
+        settings.setValue("fUseProxy", false);
+    if (!settings.contains("addrProxy"))
+        settings.setValue("addrProxy", "127.0.0.1:9050");
+    // Only try to set -proxy, if user has enabled fUseProxy
+    if (settings.value("fUseProxy").toBool() && !SoftSetArg("-proxy", settings.value("addrProxy").toString().toStdString()))
+        addOverriddenOption("-proxy");
+    else if(!settings.value("fUseProxy").toBool() && !GetArg("-proxy", "").empty())
+        addOverriddenOption("-proxy");
 
 #ifdef USE_NATIVE_I2P
     ScopeGroupHelper s(settings, I2P_OPTIONS_SECTION_NAME);
