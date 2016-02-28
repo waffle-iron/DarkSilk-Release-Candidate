@@ -359,8 +359,8 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, CAmount* pFe
         CAmount blockValue = GetBlockValue(pindexPrev->nBits, pindexPrev->nHeight, nFees);
         CAmount stormnodePayment = GetStormnodePayment(pindexPrev->nHeight+1, blockValue);
 
-        if ((fDebug && GetBoolArg("-printpriority", false)) || true)
-        LogPrintf("CreateNewBlock(): total size %u, height: %u, PoS: %d, block value: %u, stormnode payment: %u \n",
+        if ((fDebug && GetBoolArg("-printpriority", false)))
+            LogPrintf("CreateNewBlock(): total size %u, height: %u, PoS: %d, block value: %u, stormnode payment: %u \n",
                       nBlockSize, nHeight, fProofOfStake, blockValue, stormnodePayment);
 
         if (!fProofOfStake)
