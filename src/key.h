@@ -41,6 +41,9 @@ public:
 
 /** An encapsulated private key. */
 class CKey {
+protected:
+    EC_KEY* pkey;
+
 private:
     // Whether this private key is valid. We check for correctness when modifying the key
     // data, so fValid should always correspond to the actual state.
