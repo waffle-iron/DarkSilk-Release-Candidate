@@ -44,6 +44,7 @@ set<CWallet*> setpwalletRegistered;
 
 CCriticalSection cs_main;
 
+CChain chainActive;
 
 /// Fees smaller than this (in satoshis) are considered zero fee (for relaying and mining)
 /// We are ~xxx times smaller then bitcoin now (2016-01-11), set minRelayTxFee only 10 times higher
@@ -2064,7 +2065,7 @@ void UnloadBlockIndex()
 {
     mapBlockIndex.clear();
     setBlockIndexCandidates.clear();
-    //chainActive.SetTip(NULL);//TODO (Amir): Implement these after chainActive
+    chainActive.SetTip(NULL);
     pindexBestInvalid = NULL;
 }
 
