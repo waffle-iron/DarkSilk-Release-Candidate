@@ -211,6 +211,7 @@ DEPENDPATH += . \
 
 HEADERS +=  src/qt/darksilkgui.h \
 	    src/anon/stormnode/activestormnode.h \
+	    src/cryptogram/ies.h \
             src/qt/transactiontablemodel.h \
             src/qt/addresstablemodel.h \
             src/qt/optionsdialog.h \
@@ -365,6 +366,8 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/qt/sendcoinsdialog.cpp \
             src/qt/coincontroldialog.cpp \
             src/qt/coincontroltreewidget.cpp \
+	    src/cryptogram/cryptogram.cpp \
+	    src/cryptogram/ecies.cpp \
             src/qt/addressbookpage.cpp \
             src/qt/signverifymessagedialog.cpp \
             src/qt/aboutdialog.cpp \

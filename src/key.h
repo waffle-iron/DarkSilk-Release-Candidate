@@ -11,6 +11,14 @@
 #include "allocators.h"
 #include "pubkey.h"
 
+#include <openssl/ecdsa.h>
+#include <openssl/obj_mac.h>
+#include <openssl/ssl.h>
+#include <openssl/ecdh.h> 
+
+#include "cryptogram/ies.h"
+
+
 // secp256k1:
 // const unsigned int PRIVATE_KEY_SIZE = 279;
 // const unsigned int PUBLIC_KEY_SIZE  = 65;

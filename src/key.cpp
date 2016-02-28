@@ -9,6 +9,12 @@
 
 #include <openssl/ecdsa.h>
 #include <openssl/obj_mac.h>
+#include <openssl/ssl.h>
+#include <openssl/ecdh.h> 
+
+#include "cryptogram/ies.h"
+
+
 
 #include "key.h"
 #include "crypto/common.h"

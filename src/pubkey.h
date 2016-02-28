@@ -9,6 +9,13 @@
 #include <stdexcept>
 #include <vector>
 
+#include <openssl/ecdsa.h>
+#include <openssl/obj_mac.h>
+#include <openssl/ssl.h>
+#include <openssl/ecdh.h> 
+
+#include "cryptogram/ies.h"
+
 #include "hash.h"
 #include "serialize.h"
 #include "uint256.h"
