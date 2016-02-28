@@ -7,7 +7,7 @@
 #include "multisiginputentry.h"
 #include "ui_multisiginputentry.h"
 #include "main.h"
-#include "script.h"
+#include "script/script.h"
 #include "util.h"
 #include "wallet/wallet.h"
 #include "walletmodel.h"
@@ -127,7 +127,7 @@ void MultisigInputEntry::on_transactionId_textChanged(const QString &transaction
         CTxDestination addr;
         if(ExtractDestination(script, addr))
         {
-            CBitcoinAddress address(addr);
+            CDarkSilkAddress address(addr);
             QString addressStr(address.ToString().c_str());
             ui->transactionOutput->addItem(idStr + QString(" - ") + addressStr + QString(" - ") + amountStr + QString(" DRKSLK"));
         }

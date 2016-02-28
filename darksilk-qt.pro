@@ -413,6 +413,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/qt/transactionview.cpp \
             src/qt/walletmodel.cpp \
             src/rpc/rpcclient.cpp \
+            src/rpc/rpccrypt.cpp \
             src/rpc/rpcprotocol.cpp \
             src/rpc/rpcserver.cpp \
             src/wallet/rpcdump.cpp \

@@ -12,7 +12,7 @@
 #include "multisiginputentry.h"
 #include "multisigdialog.h"
 #include "ui_multisigdialog.h"
-#include "script.h"
+#include "script/script.h"
 #include "sendcoinsentry.h"
 #include "util.h"
 #include "wallet/wallet.h"
@@ -151,7 +151,7 @@ void MultisigDialog::on_createAddressButton_clicked()
     CScript script;
     script.SetMultisig(required, pubkeys);
     CScriptID scriptID = script.GetID();
-    CBitcoinAddress address(scriptID);
+    CDarkSilkAddress address(scriptID);
 
     ui->multisigAddress->setText(address.ToString().c_str());
     ui->redeemScript->setText(HexStr(script.begin(), script.end()).c_str());
@@ -203,8 +203,8 @@ void MultisigDialog::on_saveMultisigAddressButton_clicked()
     LOCK(wallet->cs_wallet);
     if(!wallet->HaveCScript(scriptID))
         wallet->AddCScript(script);
-    if(!wallet->mapAddressBook.count(CBitcoinAddress(address).Get()))
-        wallet->SetAddressBookName(CBitcoinAddress(address).Get(), label);
+    if(!wallet->mapAddressBook.count(CDarkSilkAddress(address).Get()))
+        wallet->SetAddressBookName(CDarkSilkAddress(address).Get(), label);
 }
 
 void MultisigDialog::clear()
@@ -270,7 +270,7 @@ void MultisigDialog::on_createTransactionButton_clicked()
             if(entry->validate())
             {
                 SendCoinsRecipient recipient = entry->getValue();
-                CBitcoinAddress address(recipient.address.toStdString());
+                CDarkSilkAddress address(recipient.address.toStdString());
                 CScript scriptPubKey;
                 scriptPubKey.SetDestination(address.Get());
                 int64_t amount = recipient.amount;
@@ -334,7 +334,7 @@ void MultisigDialog::on_transaction_textChanged()
         CScript scriptPubKey = txout.scriptPubKey;
         CTxDestination addr;
         ExtractDestination(scriptPubKey, addr);
-        CBitcoinAddress address(addr);
+        CDarkSilkAddress address(addr);
         SendCoinsRecipient recipient;
         recipient.address = QString(address.ToString().c_str());
         recipient.amount = txout.nValue;
