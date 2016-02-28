@@ -8,7 +8,7 @@
 #include <boost/thread.hpp>
 
 #ifdef USE_NATIVE_I2P
-#include "i2p.h"
+#include "i2p/i2p.h"
 #endif
 
 #ifdef WIN32
@@ -30,8 +30,8 @@
 #include "clientversion.h"
 #include "primitives/transaction.h"
 #include "ui_interface.h"
-#include "sandstorm.h"
-#include "wallet.h"
+#include "anon/sandstorm/sandstorm.h"
+#include "wallet/wallet.h"
 
 #define TOR_NET_STRING "tor"
 
