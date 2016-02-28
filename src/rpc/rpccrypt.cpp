@@ -21,10 +21,12 @@ Value encryptdata(const Array& params, bool fHelp)
             "encryptdata <public key> <hex data>\n"
             "Encrypt octet stream with provided public key..\n");
 
-    CCryptPubKey pubKey(ParseHex(params[0].get_str()));
+    CPubKey pubKey(ParseHex(params[0].get_str()));
 
+	CCryptPubKey cpubKey;
+	
     vector<unsigned char> vchEncrypted;
-    pubKey.EncryptData(ParseHex(params[1].get_str()), vchEncrypted);
+    cpubKey.EncryptData(ParseHex(params[1].get_str()), vchEncrypted);
 
     return HexStr(vchEncrypted);
 }
@@ -42,11 +44,13 @@ Value decryptdata(const Array& params, bool fHelp)
     CKeyID keyID;
     addr.GetKeyID(keyID);
 
-    CCryptKey key;
+    CKey key;
     pwalletMain->GetKey(keyID, key);
 
     vector<unsigned char> vchDecrypted;
-    key.DecryptData(ParseHex(params[1].get_str()), vchDecrypted);
+    
+    CCryptKey ckey;
+    ckey.DecryptData(ParseHex(params[1].get_str()), vchDecrypted);
 
     return HexStr(vchDecrypted);
 }

@@ -13,23 +13,32 @@
 #include <openssl/ecdh.h> 
 
 #include "key.h"
+#include "pubkey.h"
 #include "crypto/common.h"
 #include "crypto/hmac_sha512.h"
-#include "pubkey.h"
 #include "util.h"
 
 #include "cryptogram/ies.h"
 
-class key_error : public std::runtime_error
+#include <vector>
+
+// CPrivKey is a serialized private key, with all parameters included (279 bytes)
+typedef std::vector<unsigned char, secure_allocator<unsigned char> > CPrivKey;
+// CSecret is a serialization of just the secret parameter (32 bytes)
+typedef std::vector<unsigned char, secure_allocator<unsigned char> > CSecret;
+
+class CCryptPubKey
 {
-public:
-    explicit key_error(const std::string& str) : std::runtime_error(str) {}
+	public:
+		// Encrypt data
+		void EncryptData(const std::vector<unsigned char>& data, std::vector<unsigned char>& encrypted);
 };
 
 class CCryptKey
 {
 	protected:
 		EC_KEY* pkey;
+		
 	public:
 		// Encrypt data
 		void EncryptData(const std::vector<unsigned char>& data, std::vector<unsigned char>& encrypted);
@@ -38,14 +47,13 @@ class CCryptKey
 		void DecryptData(const std::vector<unsigned char>& encrypted, std::vector<unsigned char>& data);
 		
 		// Set public key
-		bool SetPubKey(const CPubKey& vchPubKey);
-}
+		bool SetPubKey(const CCryptPubKey& vchPubKey);
+};
 
-class CCryptPubKey
+class key_error : public std::runtime_error
 {
 	public:
-		// Encrypt data
-		void EncryptData(const std::vector<unsigned char>& data, std::vector<unsigned char>& encrypted);
-}
+		explicit key_error(const std::string& str) : std::runtime_error(str) {}
+};
 
 #endif // DARKSILK_KEY_H
