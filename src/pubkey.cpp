@@ -6,6 +6,13 @@
 #include "secp256k1.h"
 #include "secp256k1_recovery.h"
 
+#include <map>
+
+#include <openssl/ecdsa.h>
+#include <openssl/obj_mac.h>
+#include <openssl/ssl.h>
+#include <openssl/ecdh.h>
+
 namespace
 {
 /* Global secp256k1_context object used for verification. */
