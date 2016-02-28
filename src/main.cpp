@@ -2691,9 +2691,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
             vRecv >> addrFrom >> nNonce;
         if (!vRecv.empty()) {
             vRecv >> LIMITED_STRING(pfrom->strSubVer, 256);
-            string sSubVersion = SanitizeString(pfrom->strSubVer).replace(0,1,"");
-            sSubVersion.replace(sSubVersion.length()-1, 1, "");
-            pfrom->cleanSubVer = sSubVersion;
+            pfrom->cleanSubVer = SanitizeString(pfrom->strSubVer);
         }
         if (!vRecv.empty())
             vRecv >> pfrom->nStartingHeight;
@@ -2725,7 +2723,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
         if (!pfrom->fInbound)
         {
             // Advertise our address
-            if (!fNoListen && !IsInitialBlockDownload())
+            if (fListen && !IsInitialBlockDownload())
             {
                 CAddress addr = GetLocalAddress(&pfrom->addr);
                 if (addr.IsRoutable())
@@ -3490,7 +3488,7 @@ bool SendMessages(CNode* pto, bool fSendTrickle)
                         pnode->setAddrKnown.clear();
 
                     // Rebroadcast our address
-                    if (!fNoListen)
+                    if (fListen)
                     {
                         CAddress addr = GetLocalAddress(&pnode->addr);
                         if (addr.IsRoutable())
