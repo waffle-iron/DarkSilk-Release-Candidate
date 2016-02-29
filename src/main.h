@@ -213,8 +213,6 @@ FILE* OpenDiskFile(const CDiskBlockPos &pos, const char *prefix, bool fReadOnly 
 FILE* AppendBlockFile(unsigned int& nFileRet);
 FILE* OpenUndoFile(const CDiskBlockPos &pos, bool fReadOnly = false);
 
-
-
 /// Position on disk for a particular transaction.
 class CDiskTxPos
 {
@@ -561,6 +559,10 @@ protected:
     friend void ::UnregisterWallet(CWalletInterface*);
     friend void ::UnregisterAllWallets();
 };
+
+///! The currently-connected chain of blocks.
+class CChain;
+extern CChain chainActive;
 
 class CBlockTreeDB;
 class CCoinsViewCache;

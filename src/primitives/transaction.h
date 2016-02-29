@@ -311,6 +311,9 @@ public:
         return SerializeHash(*this); //TODO (Amir): Use a cached result (need member variables to const).
     }
 
+    // Compute modified tx size for priority calculation (optionally given tx size)
+    unsigned int CalculateModifiedSize(unsigned int nTxSize=0) const;
+
     bool IsCoinBase() const
     {
         return (vin.size() == 1 && vin[0].prevout.IsNull() && vout.size() >= 1);
