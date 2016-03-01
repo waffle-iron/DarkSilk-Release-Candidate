@@ -104,6 +104,7 @@ public:
 };
 
 // CreateNewBlock: create new block (without proof-of-work/proof-of-stake)
+// CreateNewBlock: create new block (without proof-of-work/proof-of-stake)
 CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, CAmount* pFees)
 {
     // Create new block
@@ -181,9 +182,9 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, CAmount* pFe
         // This vector will be sorted into a priority queue:
         vector<TxPriority> vecPriority;
         vecPriority.reserve(mempool.mapTx.size());
-        for (std::map<uint256, CTxMemPoolEntry>::const_iterator mi = mempool.mapTx.begin(); mi != mempool.mapTx.end(); mi++)
+        for (map<uint256, CTransaction>::iterator mi = mempool.mapTx.begin(); mi != mempool.mapTx.end(); ++mi)
         {
-            CTransaction tx = mi->second.GetTx();
+            CTransaction& tx = (*mi).second;
             if (tx.IsCoinBase() || tx.IsCoinStake() || !IsFinalTx(tx, nHeight))
                 continue;
 
@@ -221,7 +222,7 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, CAmount* pFe
                     }
                     mapDependers[txin.prevout.hash].push_back(porphan);
                     porphan->setDependsOn.insert(txin.prevout.hash);
-                    nTotalIn += mempool.mapTx[txin.prevout.hash].GetTx().vout[txin.prevout.n].nValue;
+                    nTotalIn += mempool.mapTx[txin.prevout.hash].vout[txin.prevout.n].nValue;
                     continue;
                 }
                 CAmount nValueIn = txPrev.vout[txin.prevout.n].nValue;
@@ -248,10 +249,7 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, CAmount* pFe
                 porphan->dFeePerKb = dFeePerKb;
             }
             else
-            {
-                CTransaction txPush = mi->second.GetTx();
-                vecPriority.push_back(TxPriority(dPriority, dFeePerKb, &(txPush)));
-            }
+                vecPriority.push_back(TxPriority(dPriority, dFeePerKb, &(*mi).second));
         }
 
         // Collect transactions into block
@@ -362,8 +360,8 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, CAmount* pFe
         CAmount blockValue = GetBlockValue(pindexPrev->nBits, pindexPrev->nHeight, nFees);
         CAmount stormnodePayment = GetStormnodePayment(pindexPrev->nHeight+1, blockValue);
 
-        if ((fDebug && GetBoolArg("-printpriority", false)))
-            LogPrintf("CreateNewBlock(): total size %u, height: %u, PoS: %d, block value: %u, stormnode payment: %u \n",
+        if ((fDebug && GetBoolArg("-printpriority", false)) || true)
+        LogPrintf("CreateNewBlock(): total size %u, height: %u, PoS: %d, block value: %u, stormnode payment: %u \n",
                       nBlockSize, nHeight, fProofOfStake, blockValue, stormnodePayment);
 
         if (!fProofOfStake)

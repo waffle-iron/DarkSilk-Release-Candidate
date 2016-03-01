@@ -392,8 +392,8 @@ private:
 
 public:
     mutable CCriticalSection cs;
-    //std::map<uint256, CTransaction> mapTx;
-    std::map<uint256, CTxMemPoolEntry> mapTx;
+    std::map<uint256, CTransaction> mapTx;
+    std::map<uint256, CTxMemPoolEntry> mapTxNew;
     std::map<COutPoint, CInPoint> mapNextTx;
     CMinerPolicyEstimator* minerPolicyEstimator;
     uint64_t totalTxSize; //! sum of all mempool tx' byte sizes
