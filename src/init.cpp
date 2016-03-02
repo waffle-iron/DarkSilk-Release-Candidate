@@ -338,14 +338,14 @@ std::string HelpMessage()
     strUsage += "  -stormnodeaddr=<n>        " + _("Set external address:port to get to this stormnode (example: address:port)") + "\n";
     strUsage += "  -stormnodeminprotocol=<n> " + _("Ignore stormnodes less than version (example: 60700; default : 0)") + "\n";
 
-    strUsage += "  -enablesandstorm=<n>          " + strprintf(_("Enable use of automated sandstorm for funds stored in this wallet (0-1, default: 0)"), fEnableSandstorm) + "\n";
+    strUsage += "  -enablesandstorm=<n>          " + strprintf(_("Enable use of automated sandstorm for funds stored in this wallet (0-1, default: %u)"), fEnableSandstorm) + "\n";
     strUsage += "  -sandstormmultisession=<n>    " + strprintf(_("Enable multiple sandstorm mixing sessions per block, experimental (0-1, default: %u)"), fSandstormMultiSession) + "\n";
-    strUsage += "  -sandstormrounds=<n>          " + strprintf(_("Use N separate stormnodes to anonymize funds  (2-50, default: 2)"), nSandstormRounds) + "\n";
-    strUsage += "  -anonymizedarksilkamount=<n> " + strprintf(_("Keep N DarkSilk anonymized (default: 0)"), nAnonymizeDarkSilkAmount) + "\n";
-    strUsage += "  -liquidityprovider=<n>       " + strprintf(_("Provide liquidity to Sandstorm by infrequently mixing coins on a continual basis (0-100, default: 0, 1=very frequent, high fees, 100=very infrequent, low fees)"), nLiquidityProvider) + "\n";
+    strUsage += "  -sandstormrounds=<n>          " + strprintf(_("Use N separate stormnodes to anonymize funds  (2-50, default: %u)"), nSandstormRounds) + "\n";
+    strUsage += "  -anonymizedarksilkamount=<n> " + strprintf(_("Keep N DarkSilk anonymized (default: %u)"), nAnonymizeDarkSilkAmount) + "\n";
+    strUsage += "  -liquidityprovider=<n>       " + strprintf(_("Provide liquidity to Sandstorm by infrequently mixing coins on a continual basis (0-100, default: %u, 1=very frequent, high fees, 100=very infrequent, low fees)"), nLiquidityProvider) + "\n";
  
     strUsage += "\n" + _("InstantX options:") + "\n";
-    strUsage += "  -enableinstantx=<n>    " + strprintf(_("Enable instantx, show confirmations for locked transactions (0-1, default: %u)"), "true") + "\n";
+    strUsage += "  -enableinstantx=<n>    " + strprintf(_("Enable instantx, show confirmations for locked transactions (0-1, default: %u)"), fEnableInstantX) + "\n";
     strUsage += "  -instantxdepth=<n>     " + strprintf(_("Show N confirmations for a successfully locked transaction (0-9999, default: %u)"), nInstantXDepth) + "\n"; 
     strUsage += _("Secure messaging options:") + "\n" +
         "  -nosmsg                                  " + _("Disable secure messaging.") + "\n" +

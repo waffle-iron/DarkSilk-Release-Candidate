@@ -389,6 +389,7 @@ private:
     bool fSanityCheck;
     unsigned int nTransactionsUpdated;
     CFeeRate minRelayFee; //! Passed to constructor to avoid dependency on main
+    uint64_t cachedInnerUsage; //! sum of dynamic memory usage of all the map elements (NOT the maps themselves)
 
 public:
     mutable CCriticalSection cs;
@@ -431,6 +432,8 @@ public:
     bool ReadFeeEstimates(CAutoFile& filein);
     bool WriteFeeEstimates(CAutoFile& fileout) const;
     void ClearPrioritisation(const uint256 hash);
+
+    size_t DynamicMemoryUsage() const;
 
     unsigned long size() const
     {
