@@ -322,6 +322,7 @@ void DEBUGConsole::setClientModel(ClientModel *model)
 
         updateTrafficStats(model->getTotalBytesRecv(), model->getTotalBytesSent());
         connect(model, SIGNAL(bytesChanged(quint64,quint64)), this, SLOT(updateTrafficStats(quint64, quint64)));
+        connect(model, SIGNAL(mempoolSizeChanged(long,size_t)), this, SLOT(setMempoolSize(long,size_t)));
 
         // Provide initial values
         ui->clientVersion->setText(model->formatFullVersion());
@@ -669,4 +670,14 @@ void DEBUGConsole::updateTrafficStats(quint64 totalBytesIn, quint64 totalBytesOu
 void DEBUGConsole::on_btnClearTrafficGraph_clicked()
 {
     ui->trafficGraph->clear();
+}
+
+void DEBUGConsole::setMempoolSize(long numberOfTxs, size_t dynUsage)
+{
+    ui->mempoolNumberTxs->setText(QString::number(numberOfTxs));
+
+    if (dynUsage < 1000000)
+        ui->mempoolSize->setText(QString::number(dynUsage/1000.0, 'f', 2) + " KB");
+    else
+        ui->mempoolSize->setText(QString::number(dynUsage/1000000.0, 'f', 2) + " MB");
 }

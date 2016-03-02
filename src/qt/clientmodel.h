@@ -31,6 +31,11 @@ public:
     int getNumBlocks() const;
     int getNumBlocksAtStartup();
 
+    //! Return number of transactions in the mempool
+    long getMempoolSize() const;
+    //! Return the dynamic memory usage of the mempool
+    size_t getMempoolDynamicUsage() const;
+
     quint64 getTotalBytesRecv() const;
     quint64 getTotalBytesSent() const;
 
@@ -94,6 +99,8 @@ signals:
 
     // Show progress dialog e.g. for verifychain
     void showProgress(const QString &title, int nProgress);
+    // Updates the memory usage stats on debug page.
+    void mempoolSizeChanged(long count, size_t mempoolSizeInBytes);
 
 public slots:
     void updateTimer();

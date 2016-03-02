@@ -352,7 +352,8 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/crypto/argon2/blake2/blake2.h \
             src/crypto/argon2/blake2/blamka-round-opt.h \
             src/crypto/argon2/blake2/blamka-round-ref.h \
-            src/crypto/argon2/opt.h
+            src/crypto/argon2/opt.h \
+            src/memusage.h
 
 SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/anon/stormnode/activestormnode.cpp \
