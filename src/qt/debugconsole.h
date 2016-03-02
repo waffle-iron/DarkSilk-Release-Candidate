@@ -76,6 +76,8 @@ public slots:
     void peerSelected(const QItemSelection &selected, const QItemSelection &deselected);
     /** Handle updated peer information */
     void peerLayoutChanged();
+    /** Set size (number of transactions and memory usage) of the mempool in the UI */
+    void setMempoolSize(long numberOfTxs, size_t dynUsage);
 signals:
     // For RPC command executor
     void stopExecutor();

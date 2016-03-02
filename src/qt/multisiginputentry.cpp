@@ -115,7 +115,7 @@ void MultisigInputEntry::on_transactionId_textChanged(const QString &transaction
     uint256 blockHash = 0;
     if(!GetTransaction(txHash, tx, blockHash))
         return;
-    for(int i = 0; i < tx.vout.size(); i++)
+    for(unsigned int i = 0; i < tx.vout.size(); i++)
     {
         QString idStr;
         idStr.setNum(i);

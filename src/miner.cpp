@@ -104,7 +104,6 @@ public:
 };
 
 // CreateNewBlock: create new block (without proof-of-work/proof-of-stake)
-// CreateNewBlock: create new block (without proof-of-work/proof-of-stake)
 CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, CAmount* pFees)
 {
     // Create new block
@@ -248,8 +247,9 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, CAmount* pFe
                 porphan->dPriority = dPriority;
                 porphan->dFeePerKb = dFeePerKb;
             }
-            else
+            else {
                 vecPriority.push_back(TxPriority(dPriority, dFeePerKb, &(*mi).second));
+            }
         }
 
         // Collect transactions into block
@@ -360,8 +360,8 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, CAmount* pFe
         CAmount blockValue = GetBlockValue(pindexPrev->nBits, pindexPrev->nHeight, nFees);
         CAmount stormnodePayment = GetStormnodePayment(pindexPrev->nHeight+1, blockValue);
 
-        if ((fDebug && GetBoolArg("-printpriority", false)) || true)
-        LogPrintf("CreateNewBlock(): total size %u, height: %u, PoS: %d, block value: %u, stormnode payment: %u \n",
+        if ((fDebug && GetBoolArg("-printpriority", false)))
+            LogPrintf("CreateNewBlock(): total size %u, height: %u, PoS: %d, block value: %u, stormnode payment: %u \n",
                       nBlockSize, nHeight, fProofOfStake, blockValue, stormnodePayment);
 
         if (!fProofOfStake)
