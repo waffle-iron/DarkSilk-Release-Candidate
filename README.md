@@ -28,6 +28,7 @@ What is DarkSilk?
 * Minimum Confirmations for Stake: 2830 Blocks (~1 day)
 * PoS Min: 1 Hour
 * PoS Max: Unlimited
+* PoW/PoS Blocks: ~2790 per day
 * Stormnode Collateral Amount: 10000 DRKSLK
 * Stormnode Min Confirmation: 10 Blocks
 * Stormnode Reward: 0.25 DRKSLK Static Reward
