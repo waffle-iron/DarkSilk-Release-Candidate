@@ -180,10 +180,10 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, CAmount* pFe
 
         // This vector will be sorted into a priority queue:
         vector<TxPriority> vecPriority;
-        vecPriority.reserve(mempool.mapTxNew.size());
-        for (std::map<uint256, CTxMemPoolEntry>::const_iterator mi = mempool.mapTxNew.begin(); mi != mempool.mapTxNew.end(); mi++)
+        vecPriority.reserve(mempool.mapTx.size());
+        for (map<uint256, CTransaction>::iterator mi = mempool.mapTx.begin(); mi != mempool.mapTx.end(); ++mi)
         {
-            CTransaction tx = mi->second.GetTx();
+            CTransaction& tx = (*mi).second;
             if (tx.IsCoinBase() || tx.IsCoinStake() || !IsFinalTx(tx, nHeight))
                 continue;
 
@@ -202,7 +202,7 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, CAmount* pFe
                     // This should never happen; all transactions in the memory
                     // pool should connect to either transactions in the chain
                     // or other transactions in the memory pool.
-                    if (!mempool.mapTxNew.count(txin.prevout.hash))
+                    if (!mempool.mapTx.count(txin.prevout.hash))
                     {
                         LogPrintf("ERROR: mempool transaction missing input\n");
                         if (fDebug) assert("mempool transaction missing input" == 0);
@@ -248,8 +248,7 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, CAmount* pFe
                 porphan->dFeePerKb = dFeePerKb;
             }
             else {
-                CTransaction txPush = mi->second.GetTx();
-                vecPriority.push_back(TxPriority(dPriority, dFeePerKb, &(txPush)));
+                vecPriority.push_back(TxPriority(dPriority, dFeePerKb, &(*mi).second));
             }
         }
 
