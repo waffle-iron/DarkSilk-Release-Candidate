@@ -3647,7 +3647,7 @@ CAmount CTransactionPoS::GetValueOut(CTransaction& tx) const
         nValueOut += txout.nValue;
         if (!MoneyRange(txout.nValue) || !MoneyRange(nValueOut))
         {
-            printf("CTransactionPoS::GetValueOut, value out of range tx.vout = %llu, nValueOut = %llu, MAX_MONEY = %llu \n", txout.nValue, nValueOut, MAX_MONEY);
+            printf("CTransactionPoS::GetValueOut, value out of range tx.vout = %ld, nValueOut = %ld, MAX_MONEY = %ld \n", txout.nValue, nValueOut, MAX_MONEY);
             throw std::runtime_error("CTransaction::GetValueOut() : value out of range");
         }
     }

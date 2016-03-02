@@ -358,7 +358,8 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/crypto/argon2/opt.h \
             src/qt/multisiginputentry.h \
             src/qt/multisigaddressentry.h \
-            src/qt/multisigdialog.h
+            src/qt/multisigdialog.h \
+	    src/memusage.h
 
 SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
 	    src/blindtext.cpp \
