@@ -33,6 +33,7 @@ LIBS += \
    -l boost_thread$(BOOST_LIB_SUFFIX) \
    -l db_cxx$(BDB_LIB_SUFFIX) \
    -l ssl \
+   -l cryptopp \
    -l crypto
 
 ifndef USE_UPNP
@@ -173,6 +174,12 @@ OBJS= \
     obj/undo.o \
     obj/uint256.o \
     obj/txdb.o \
+    obj/cryptkey.o \
+    obj/blindtext.o \
+    obj/rpc/rpcblindtext.o \
+    obj/rpc/rpccrypt.o \
+	obj/cryptogram/cryptogram.o \
+	obj/cryptogram/ecies.o \
     obj/compat/glibc_sanity.o \
     obj/compat/glibcxx_sanity.o \
     obj/crypto/argon2/argon2.o \

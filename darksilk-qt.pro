@@ -210,7 +210,9 @@ DEPENDPATH += . \
               src/secp256k1/src/java
 
 HEADERS +=  src/qt/darksilkgui.h \
+            src/cryptkey.h \
 	    src/anon/stormnode/activestormnode.h \
+	    src/cryptogram/ies.h \
             src/qt/transactiontablemodel.h \
             src/qt/addresstablemodel.h \
             src/qt/optionsdialog.h \
@@ -222,6 +224,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/qt/aboutdialog.h \
             src/qt/editaddressdialog.h \
             src/qt/darksilkaddressvalidator.h \
+	    src/blindtext.h \
             src/alert.h \
             src/addrman.h \
             src/base58.h \
@@ -353,9 +356,14 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/crypto/argon2/blake2/blamka-round-opt.h \
             src/crypto/argon2/blake2/blamka-round-ref.h \
             src/crypto/argon2/opt.h \
-            src/memusage.h
+            src/qt/multisiginputentry.h \
+            src/qt/multisigaddressentry.h \
+            src/qt/multisigdialog.h \
+	    src/memusage.h
 
 SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
+	    src/blindtext.cpp \
+	    src/cryptkey.cpp \
             src/anon/stormnode/activestormnode.cpp \
             src/qt/transactiontablemodel.cpp \
             src/qt/addresstablemodel.cpp \
@@ -363,6 +371,8 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/qt/sendcoinsdialog.cpp \
             src/qt/coincontroldialog.cpp \
             src/qt/coincontroltreewidget.cpp \
+	    src/cryptogram/cryptogram.cpp \
+	    src/cryptogram/ecies.cpp \
             src/qt/addressbookpage.cpp \
             src/qt/signverifymessagedialog.cpp \
             src/qt/aboutdialog.cpp \
@@ -388,6 +398,9 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/init.cpp \
             src/net.cpp \
             src/checkpoints.cpp \
+            src/qt/multisiginputentry.cpp \
+            src/qt/multisigaddressentry.cpp \
+            src/qt/multisigdialog.cpp \
             src/addrman.cpp \
             src/base58.cpp \
             src/wallet/db.cpp \
@@ -408,6 +421,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/qt/transactionview.cpp \
             src/qt/walletmodel.cpp \
             src/rpc/rpcclient.cpp \
+            src/rpc/rpccrypt.cpp \
             src/rpc/rpcprotocol.cpp \
             src/rpc/rpcserver.cpp \
             src/wallet/rpcdump.cpp \
@@ -481,6 +495,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/txdb.cpp \
             src/amount.cpp \
             src/undo.cpp \
+	    src/rpc/rpcblindtext.cpp \
             src/compat/glibc_sanity.cpp \
             src/compat/glibcxx_sanity.cpp \
             src/crypto/argon2/argon2.c \
@@ -499,7 +514,10 @@ FORMS += \
             src/qt/forms/addressbookpage.ui \
             src/qt/forms/signverifymessagedialog.ui \
             src/qt/forms/aboutdialog.ui \
-            src/qt/forms/editaddressdialog.ui \
+            src/qt/forms/editaddressdialog.ui \  
+            src/qt/forms/multisiginputentry.ui \
+            src/qt/forms/multisigaddressentry.ui \
+            src/qt/forms/multisigdialog.ui \
             src/qt/forms/transactiondescdialog.ui \
             src/qt/forms/overviewpage.ui \
             src/qt/forms/blockbrowser.ui \
@@ -627,7 +645,7 @@ macx:QMAKE_INFO_PLIST = share/qt/Info.plist
 # Set libraries and includes at end, to use platform-defined defaults if not overridden
 INCLUDEPATH += $$BOOST_INCLUDE_PATH $$BDB_INCLUDE_PATH $$OPENSSL_INCLUDE_PATH $$QRENCODE_INCLUDE_PATH
 LIBS += $$join(BOOST_LIB_PATH,,-L,) $$join(BDB_LIB_PATH,,-L,) $$join(OPENSSL_LIB_PATH,,-L,) $$join(QRENCODE_LIB_PATH,,-L,)
-LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX
+LIBS += -lssl -lcrypto -ldb_cxx$$BDB_LIB_SUFFIX -lcryptopp
 # -lgdi32 has to happen after -lcrypto (see  #681)
 windows:LIBS += -lws2_32 -lshlwapi -lmswsock -lole32 -loleaut32 -luuid -lgdi32
 LIBS += -lboost_system$$BOOST_LIB_SUFFIX -lboost_filesystem$$BOOST_LIB_SUFFIX -lboost_program_options$$BOOST_LIB_SUFFIX -lboost_thread$$BOOST_THREAD_LIB_SUFFIX

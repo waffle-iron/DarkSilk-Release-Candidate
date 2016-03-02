@@ -264,6 +264,9 @@ static const CRPCCommand vRPCCommands[] =
     { "validatepubkey",         &validatepubkey,         true,      false,     false },
     { "verifymessage",          &verifymessage,          false,     false,     false },
     { "searchrawtransactions",  &searchrawtransactions,  false,     false,     false },
+    { "encryptdata",  		&encryptdata,  	false,     false,     false },
+    { "decryptdata",  		&decryptdata,  	false,     false,     false },
+    { "decryptsend",            &decryptsend,   false,     false,     false },
 
 /* Dark features */
     { "snsync",                 &snsync,                 true,      true,      false },
