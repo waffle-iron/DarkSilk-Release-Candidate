@@ -1019,7 +1019,7 @@ void ThreadSocketHandler()
         //
 
         bool haveInvalids = false;
-        for (std::vector<I2PListenSocket>::iterator it = vhI2PListenSocket.begin(); it != vhI2PListenSocket.end(); ++it)
+        for (std::vector<SOCKET>::iterator it = vhI2PListenSocket.begin(); it != vhI2PListenSocket.end(); ++it)
         {
             SOCKET& hI2PListenSocket = *it;
             if (hI2PListenSocket == INVALID_SOCKET)
