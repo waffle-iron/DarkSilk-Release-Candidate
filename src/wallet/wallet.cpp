@@ -9,6 +9,7 @@
 #include <boost/numeric/ublas/matrix.hpp>
 #include <boost/thread.hpp>
 
+#include <inttypes.h>
 #include <assert.h>
 
 #include "wallet/wallet.h"
@@ -33,7 +34,7 @@
 #include "chainparams.h"
 #include "smessage.h"
 #include "txdb-leveldb.h"
-
+ 
 using namespace std;
 
 // Settings
@@ -2155,10 +2156,17 @@ bool less_then_denom (const COutput& out1, const COutput& out2)
     return (!found1 && found2);
 }
 
+// static bool CmpDepth(const CWalletTx* a, const CWalletTx* b) { return a->nTime > b->nTime; }
+
 bool CWallet::SelectCoinsMinConf(const CAmount& nTargetValue, unsigned int nSpendTime, int nConfMine, int nConfTheirs, vector<COutput> vCoins, set<pair<const CWalletTx*,unsigned int> >& setCoinsRet, CAmount& nValueRet) const
 {
     setCoinsRet.clear();
     nValueRet = 0;
+
+    // Maximap DP array size
+    static uint32_t nMaxDP = 0;
+    if(nMaxDP == 0)
+        nMaxDP = GetArg("-maxdp", 8 * 1024 * 1024);
 
     // List of values less than target
     pair<CAmount, pair<const CWalletTx*,unsigned int> > coinLowestLarger;
@@ -2166,9 +2174,8 @@ bool CWallet::SelectCoinsMinConf(const CAmount& nTargetValue, unsigned int nSpen
     coinLowestLarger.second.first = NULL;
     vector<pair<CAmount, pair<const CWalletTx*,unsigned int> > > vValue;
     CAmount nTotalLower = 0;
-
     random_shuffle(vCoins.begin(), vCoins.end(), GetRandInt);
-
+      
     // move denoms down on the list
     sort(vCoins.begin(), vCoins.end(), less_then_denom);
 
@@ -2245,6 +2252,80 @@ bool CWallet::SelectCoinsMinConf(const CAmount& nTargetValue, unsigned int nSpen
         break;
 
     }
+  
+		// If possible, solve subset sum by dynamic programming
+		// Addeed by maxihatop and Empinel
+
+		uint16_t *dp;	// dynamic programming array
+		uint32_t dp_tgt = nTargetValue / (0.5*COIN);
+  
+		if(dp_tgt < nMaxDP && (dp = (uint16_t*)calloc(dp_tgt + 1, sizeof(uint16_t))) != NULL) {
+			dp[0] = 1; // Zero CENTs can be reached anyway
+		
+			uint32_t rlimit = 0; // Current Right Borer limit
+			uint16_t max_utxo_qty((1 << 16) - 2);
+    
+			if(vValue.size() < max_utxo_qty)
+				max_utxo_qty = vValue.size();
+			
+			uint32_t min_over_utxo =  0;
+			uint32_t min_over_sum  = ~0;
+
+			for(uint16_t utxo_no = 0; utxo_no < max_utxo_qty && dp[dp_tgt] == 0; utxo_no++) {
+				uint32_t offset = vValue[utxo_no].first / (0.5*COIN);
+		
+			for(int32_t ndx = rlimit; ndx >= 0; ndx--)
+				if(dp[ndx]) {
+				uint32_t nxt = ndx + offset;
+			if(nxt <= dp_tgt) {
+				if(dp[nxt] == 0)
+					dp[nxt] = utxo_no + 1;
+				} else
+			if(nxt < min_over_sum) {
+				min_over_sum = nxt;
+				min_over_utxo = utxo_no + 1;
+			}
+			} // if(dp[ndx])
+			rlimit += offset;
+		
+		if(rlimit >= dp_tgt)
+			rlimit = dp_tgt - 1;
+    } // for - UTXOs
+
+    if(dp[dp_tgt] != 0)  // Found exactly sum without payback
+		min_over_utxo = dp[min_over_sum = dp_tgt];
+
+    while(min_over_sum) {
+		uint16_t utxo_no = min_over_utxo - 1;
+      
+		if (fDebug)
+			LogPrintf("SelectCoins() DP Added #%u: Val=%s\n", utxo_no, FormatMoney(vValue[utxo_no].first).c_str());
+			setCoinsRet.insert(vValue[utxo_no].second);
+			nValueRet += vValue[utxo_no].first;
+			min_over_sum -= vValue[utxo_no].first / (0.5*COIN);
+			min_over_utxo = dp[min_over_sum];
+    }
+
+    free(dp);
+
+		if(nValueRet >= nTargetValue) {
+		//// debug print
+			if (fDebug)
+				LogPrintf("SelectCoins() DP subset: Target=%s Found=%s Payback=%s Qty=%u\n",
+				
+				FormatMoney(nTargetValue).c_str(),
+				FormatMoney(nValueRet).c_str(),
+				FormatMoney(nValueRet - nTargetValue).c_str(),
+				(unsigned)setCoinsRet.size()
+	        );
+      
+		return true; // sum found by DP
+		
+		} else {
+			nValueRet = 0;
+			setCoinsRet.clear();
+		}
+	} // DP compute
 
     // Solve subset sum by stochastic approximation
     sort(vValue.rbegin(), vValue.rend(), CompareValueOnly());
@@ -2275,7 +2356,7 @@ bool CWallet::SelectCoinsMinConf(const CAmount& nTargetValue, unsigned int nSpen
             }
         }
 
-        LogPrint("selectcoins", "SelectCoins() best subset: ");
+        LogPrint("selectcoins", "SelectCoins() stochaistic best subset: ");
         for (unsigned int i = 0; i < vValue.size(); i++)
             if (vfBest[i])
                 LogPrint("selectcoins", "%s ", FormatMoney(vValue[i].first));
