@@ -965,11 +965,11 @@ void ThreadSocketHandler()
         //
         BOOST_FOREACH(const ListenSocket& hListenSocket, vhListenSocket)
         {
-        if (hListenSocket != INVALID_SOCKET && FD_ISSET(hListenSocket, &fdsetRecv))
+        if (hListenSocket.socket != INVALID_SOCKET && FD_ISSET(hListenSocket.socket, &fdsetRecv))
         {
             struct sockaddr_storage sockaddr;
             socklen_t len = sizeof(sockaddr);
-            SOCKET hSocket = accept(hListenSocket, (struct sockaddr*)&sockaddr, &len);
+            SOCKET hSocket = accept(hListenSocket.socket, (struct sockaddr*)&sockaddr, &len);
             CAddress addr;
             int nInbound = 0;
 
@@ -1019,7 +1019,7 @@ void ThreadSocketHandler()
         //
 
         bool haveInvalids = false;
-        for (std::vector<SOCKET>::iterator it = vhI2PListenSocket.begin(); it != vhI2PListenSocket.end(); ++it)
+        for (std::vector<I2PListenSocket>::iterator it = vhI2PListenSocket.begin(); it != vhI2PListenSocket.end(); ++it)
         {
             SOCKET& hI2PListenSocket = *it;
             if (hI2PListenSocket == INVALID_SOCKET)
