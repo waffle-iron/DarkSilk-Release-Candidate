@@ -4,14 +4,14 @@
 #include <QScrollBar>
 #include <vector>
 
+#include "multisigdialog.h"
+#include "ui_multisigdialog.h"
 #include "addresstablemodel.h"
 #include "base58.h"
 #include "key.h"
 #include "main.h"
 #include "multisigaddressentry.h"
 #include "multisiginputentry.h"
-#include "multisigdialog.h"
-#include "ui_multisigdialog.h"
 #include "script/script.h"
 #include "sendcoinsentry.h"
 #include "util.h"
@@ -226,7 +226,7 @@ MultisigAddressEntry * MultisigDialog::addPubKey()
     connect(entry, SIGNAL(removeEntry(MultisigAddressEntry *)), this, SLOT(removeEntry(MultisigAddressEntry *)));
     updateRemoveEnabled();
     entry->clear();
-   ui->scrollAreaWidgetContents->resize(ui->scrollAreaWidgetContents->sizeHint());
+    ui->scrollAreaWidgetContents->resize(ui->scrollAreaWidgetContents->sizeHint());
     QScrollBar *bar = ui->scrollArea->verticalScrollBar();
     if(bar)
         bar->setSliderPosition(bar->maximum());
@@ -273,7 +273,7 @@ void MultisigDialog::on_createTransactionButton_clicked()
                 CDarkSilkAddress address(recipient.address.toStdString());
                 CScript scriptPubKey;
                 scriptPubKey.SetDestination(address.Get());
-                int64_t amount = recipient.amount;
+                CAmount amount = recipient.amount;
                 CTxOut output(amount, scriptPubKey);
                transaction.vout.push_back(output);
             }
@@ -476,8 +476,8 @@ void MultisigDialog::on_sendTransactionButton_clicked()
         return;
 
     // Check the fee
-    int64_t fee = (int64_t ) (ui->fee->text().toDouble() * COIN);
-    int64_t minFee = MIN_TX_FEE * (1 + (int64_t) transactionSize / 1000);
+    CAmount fee = (CAmount) (ui->fee->text().toDouble() * COIN);
+    CAmount minFee = MIN_TX_FEE * (1 + (int64_t) transactionSize / 1000);
     if(fee < minFee)
     {
         QMessageBox::StandardButton ret = QMessageBox::question(this, tr("Confirm send transaction"), tr("The fee of the transaction (%1 DRKSLK) is smaller than the expected fee (%2 DRKSLK). Do you want to send the transaction anyway?").arg((double) fee / COIN).arg((double) minFee / COIN), QMessageBox::Yes | QMessageBox::Cancel, QMessageBox::Cancel);
@@ -575,7 +575,7 @@ void MultisigDialog::removeEntry(SendCoinsEntry *entry)
 void MultisigDialog::updateAmounts()
 {
     // Update inputs amount
-    int64_t inputsAmount = 0;
+    CAmount inputsAmount = 0;
     for(int i = 0; i < ui->inputs->count(); i++)
     {
         MultisigInputEntry *entry = qobject_cast<MultisigInputEntry *>(ui->inputs->itemAt(i)->widget());
@@ -587,7 +587,7 @@ void MultisigDialog::updateAmounts()
     ui->inputsAmount->setText(inputsAmountStr);
 
     // Update outputs amount
-    int64_t outputsAmount = 0;
+    CAmount outputsAmount = 0;
     for(int i = 0; i < ui->outputs->count(); i++)
     {
         SendCoinsEntry *entry = qobject_cast<SendCoinsEntry *>(ui->outputs->itemAt(i)->widget());
@@ -599,7 +599,7 @@ void MultisigDialog::updateAmounts()
     ui->outputsAmount->setText(outputsAmountStr);
 
     // Update Fee amount
-    int64_t fee = inputsAmount - outputsAmount;
+    CAmount fee = inputsAmount - outputsAmount;
     QString feeStr;
     feeStr.sprintf("%.6f", (double) fee / COIN);
     ui->fee->setText(feeStr);
