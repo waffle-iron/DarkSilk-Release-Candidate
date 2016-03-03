@@ -998,7 +998,7 @@ void ThreadSocketHandler()
             else if (CNode::IsBanned(addr) && !whitelisted)
             {
                 LogPrintf("connection from %s dropped (banned)\n", addr.ToString());
-                CloseSocket(hSocket);
+                closesocket(hSocket);
             }
             else
             {
