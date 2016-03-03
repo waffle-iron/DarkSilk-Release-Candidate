@@ -66,6 +66,8 @@ static void init_blockindex(leveldb::Options& options, bool fRemoveOld = false, 
         }
     }
 
+    options.create_if_missing = true;
+
     filesystem::create_directory(directory);
     LogPrintf("Opening LevelDB in %s\n", directory.string());
     leveldb::Status status = leveldb::DB::Open(options, directory.string(), &txdb);

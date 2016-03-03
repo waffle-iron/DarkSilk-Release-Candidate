@@ -28,6 +28,7 @@ What is DarkSilk?
 * Minimum Confirmations for Stake: 2830 Blocks (~1 day)
 * PoS Min: 1 Hour
 * PoS Max: Unlimited
+* PoW/PoS Blocks: ~2790 per day
 * Stormnode Collateral Amount: 10000 DRKSLK
 * Stormnode Min Confirmation: 10 Blocks
 * Stormnode Reward: 0.25 DRKSLK Static Reward
@@ -44,7 +45,7 @@ DarkSilk utilises Stormnodes, Sandstorm and InstantX to provide anonymous and ne
 
 DarkSilk implements Gavin Andresens signature cache optimisation from Bitcoin for significantly faster transaction validation.
 
-DarkSilk uses ShadowChat from Shadow for encrypted, anonymous and secure messaging via the DarkSilk wallet network.
+DarkSilk uses ShadowChat from Shadowcash based upon Bitmessage for encrypted, anonymous and secure messaging via the DarkSilk wallet network.
 
 Darksilk includes a completely decentralised marketplace, providing anonymity and escrow services for safe and fast trades.
 
@@ -76,7 +77,7 @@ Debian/Ubuntu Linux Daemon Build Instructions
 install dependencies:
 
     $ sudo apt-get update && sudo apt-get upgrade
-    $ sudo apt-get install git build-essential libssl-dev libdb5.3++-dev libminiupnpc-dev dh-autoreconf zip unzip libboost-all-dev make libgmp3-dev
+    $ sudo apt-get install git build-essential libssl-dev libdb5.3++-dev libminiupnpc-dev dh-autoreconf zip unzip libboost-all-dev make libgmp3-dev libcrypto++-dev
 
 build darksilkd from git:
 

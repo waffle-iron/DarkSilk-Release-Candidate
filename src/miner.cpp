@@ -181,9 +181,9 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, CAmount* pFe
         // This vector will be sorted into a priority queue:
         vector<TxPriority> vecPriority;
         vecPriority.reserve(mempool.mapTx.size());
-        for (std::map<uint256, CTxMemPoolEntry>::const_iterator mi = mempool.mapTx.begin(); mi != mempool.mapTx.end(); mi++)
+        for (map<uint256, CTransaction>::iterator mi = mempool.mapTx.begin(); mi != mempool.mapTx.end(); ++mi)
         {
-            CTransaction tx = mi->second.GetTx();
+            CTransaction& tx = (*mi).second;
             if (tx.IsCoinBase() || tx.IsCoinStake() || !IsFinalTx(tx, nHeight))
                 continue;
 
@@ -221,7 +221,7 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, CAmount* pFe
                     }
                     mapDependers[txin.prevout.hash].push_back(porphan);
                     porphan->setDependsOn.insert(txin.prevout.hash);
-                    nTotalIn += mempool.mapTx[txin.prevout.hash].GetTx().vout[txin.prevout.n].nValue;
+                    nTotalIn += mempool.mapTx[txin.prevout.hash].vout[txin.prevout.n].nValue;
                     continue;
                 }
                 CAmount nValueIn = txPrev.vout[txin.prevout.n].nValue;
@@ -247,10 +247,8 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, CAmount* pFe
                 porphan->dPriority = dPriority;
                 porphan->dFeePerKb = dFeePerKb;
             }
-            else
-            {
-                CTransaction txPush = mi->second.GetTx();
-                vecPriority.push_back(TxPriority(dPriority, dFeePerKb, &(txPush)));
+            else {
+                vecPriority.push_back(TxPriority(dPriority, dFeePerKb, &(*mi).second));
             }
         }
 
