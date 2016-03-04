@@ -503,10 +503,6 @@ void CNode::PushVersion()
                 nLocalHostNonce, FormatSubVersion(CLIENT_NAME, CLIENT_VERSION, std::vector<string>()), nBestHeight);
 }
 
-
-
-
-
 std::map<CNetAddr, int64_t> CNode::setBanned;
 CCriticalSection CNode::cs_setBanned;
 
@@ -749,14 +745,6 @@ int CNetMessage::readData(const char *pch, unsigned int nBytes)
 
     return nCopy;
 }
-
-
-
-
-
-
-
-
 
 // requires LOCK(cs_vSend)
 void SocketSendData(CNode *pnode)
@@ -1019,23 +1007,24 @@ void ThreadSocketHandler()
         //
 
         bool haveInvalids = false;
-        for (std::vector<SOCKET>::iterator it = vhI2PListenSocket.begin(); it != vhI2PListenSocket.end(); ++it)
+        for (std::vector<I2PListenSocket>::iterator it = vhI2PListenSocket.begin(); it != vhI2PListenSocket.end(); ++it)
         {
-            SOCKET& hI2PListenSocket = *it;
-            if (hI2PListenSocket == INVALID_SOCKET)
+            I2PListenSocket& hI2PListenSocket = *it;
+            SOCKET& I2PSocket = hI2PListenSocket.socket;
+            if (I2PSocket == INVALID_SOCKET)
             {
                 if (haveInvalids)
                     it = vhI2PListenSocket.erase(it) - 1;
                 else
-                    BindListenNativeI2P(hI2PListenSocket);
+                    BindListenNativeI2P(I2PSocket);
                 haveInvalids = true;
             }
-            else if (FD_ISSET(hI2PListenSocket, &fdsetRecv))
+            else if (FD_ISSET(I2PSocket, &fdsetRecv))
             {
                 const size_t bufSize = NATIVE_I2P_DESTINATION_SIZE + 1;
                 char pchBuf[bufSize];
                 memset(pchBuf, 0, bufSize);
-                int nBytes = recv(hI2PListenSocket, pchBuf, sizeof(pchBuf), MSG_DONTWAIT);
+                int nBytes = recv(I2PSocket, pchBuf, sizeof(pchBuf), MSG_DONTWAIT);
                 if (nBytes > 0)
                 {
                     if (nBytes == NATIVE_I2P_DESTINATION_SIZE + 1) // we're waiting for dest-hash + '\n' symbol
@@ -1044,25 +1033,25 @@ void ThreadSocketHandler()
                         CAddress addr;
                         if (addr.SetSpecial(incomingAddr) && addr.IsNativeI2P())
                         {
-                            AddIncomingConnection(hI2PListenSocket, addr);
+                            AddIncomingConnection(I2PSocket, addr);
                         }
                         else
                         {
                             printf("Invalid incoming destination hash received (%s)\n", incomingAddr.c_str());
-                            closesocket(hI2PListenSocket);
+                            closesocket(I2PSocket);
                         }
                     }
                     else
                     {
                         printf("Invalid incoming destination hash size received (%d)\n", nBytes);
-                        closesocket(hI2PListenSocket);
+                        closesocket(I2PSocket);
                     }
                 }
                 else if (nBytes == 0)
                 {
                     // socket closed gracefully
                     printf("I2P listen socket closed\n");
-                    closesocket(hI2PListenSocket);
+                    closesocket(I2PSocket);
                 }
                 else if (nBytes < 0)
                 {
@@ -1072,10 +1061,10 @@ void ThreadSocketHandler()
                         continue;
 
                     printf("I2P listen socket recv error %d\n", nErr);
-                    closesocket(hI2PListenSocket);
+                    closesocket(I2PSocket);
                 }
-                hI2PListenSocket = INVALID_SOCKET;  // we've saved this socket in a CNode or closed it, so we can safety reset it anyway
-                BindListenNativeI2P(hI2PListenSocket);
+                I2PSocket = INVALID_SOCKET;  // we've saved this socket in a CNode or closed it, so we can safety reset it anyway
+                BindListenNativeI2P(I2PSocket);
             }
         }
     }
@@ -1187,14 +1176,6 @@ void ThreadSocketHandler()
         }
     }
 }
-
-
-
-
-
-
-
-
 
 #ifdef USE_UPNP
 void ThreadMapPort()
@@ -1309,11 +1290,6 @@ void MapPort(bool)
 }
 #endif
 
-
-
-
-
-
 void ThreadDNSAddressSeed()
 {
     // goal: only query DNS seeds if address need is acute
@@ -1356,14 +1332,6 @@ void ThreadDNSAddressSeed()
 
     LogPrintf("%d addresses found from DNS seeds\n", found);
 }
-
-
-
-
-
-
-
-
 
 void DumpAddresses()
 {
@@ -1715,8 +1683,9 @@ void ThreadMessageHandler()
 #ifdef USE_NATIVE_I2P
 bool BindListenNativeI2P()
 {
-    SOCKET hNewI2PListenSocket = INVALID_SOCKET;
-    if (!BindListenNativeI2P(hNewI2PListenSocket))
+    bool fWhitelisted = false;
+    I2PListenSocket hNewI2PListenSocket(INVALID_SOCKET, fWhitelisted);
+    if (!BindListenNativeI2P(hNewI2PListenSocket.socket))
         return false;
     vhI2PListenSocket.push_back(hNewI2PListenSocket);
     return true;
