@@ -304,6 +304,9 @@ protected:
     static std::vector<CSubNet> vWhitelistedRange;
     static CCriticalSection cs_vWhitelistedRange;
 
+    // Basic fuzz-testing
+    void Fuzz(int nChance); // modifies ssSend
+    
 public:
     int nMisbehavior;
     uint256 hashContinue;
