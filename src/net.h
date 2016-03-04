@@ -296,7 +296,6 @@ protected:
     static std::map<CNetAddr, int64_t> setBanned;
     static CCriticalSection cs_setBanned;
 
-
     std::vector<std::string> vecRequestsFulfilled; //keep track of what client has asked for
 
     // Whitelisted ranges. Any node connecting from these is automatically
@@ -306,7 +305,7 @@ protected:
 
     // Basic fuzz-testing
     void Fuzz(int nChance); // modifies ssSend
-    
+
 public:
     int nMisbehavior;
     uint256 hashContinue;

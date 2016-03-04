@@ -813,30 +813,31 @@ void ThreadSocketHandler()
         //
         // Disconnect nodes
         //
-            LOCK(cs_vNodes);
-            // Disconnect unused nodes
-            vector<CNode*> vNodesCopy = vNodes;
-            BOOST_FOREACH(CNode* pnode, vNodesCopy)
+        {
+        LOCK(cs_vNodes);
+        // Disconnect unused nodes
+        vector<CNode*> vNodesCopy = vNodes;
+        BOOST_FOREACH(CNode* pnode, vNodesCopy)
+        {
+            if (pnode->fDisconnect ||
+                (pnode->GetRefCount() <= 0 && pnode->vRecvMsg.empty() && pnode->nSendSize == 0 && pnode->ssSend.empty()))
             {
-                if (pnode->fDisconnect ||
-                    (pnode->GetRefCount() <= 0 && pnode->vRecvMsg.empty() && pnode->nSendSize == 0 && pnode->ssSend.empty()))
-                {
-                    // remove from vNodes
-                    vNodes.erase(remove(vNodes.begin(), vNodes.end(), pnode), vNodes.end());
+                // remove from vNodes
+                vNodes.erase(remove(vNodes.begin(), vNodes.end(), pnode), vNodes.end());
 
-                    // release outbound grant (if any)
-                    pnode->grantOutbound.Release();
+                // release outbound grant (if any)
+                pnode->grantOutbound.Release();
 
-                    // close socket and cleanup
-                    pnode->CloseSocketDisconnect();
+                // close socket and cleanup
+                pnode->CloseSocketDisconnect();
 
-                    // hold in disconnected pool until all refs are released
-                    if (pnode->fNetworkNode || pnode->fInbound)
-                        pnode->Release();
-                    vNodesDisconnected.push_back(pnode);
+                // hold in disconnected pool until all refs are released
+                if (pnode->fNetworkNode || pnode->fInbound)
+                    pnode->Release();
+                vNodesDisconnected.push_back(pnode);
 #ifdef USE_NATIVE_I2P
-                    if (pnode->addr.IsNativeI2P())
-                        --nI2PNodeCount;
+                if (pnode->addr.IsNativeI2P())
+                    --nI2PNodeCount;
 #endif
                 }
             }
@@ -2044,7 +2045,7 @@ uint64_t CNode::GetTotalBytesSent()
     return nTotalBytesSent;
 }
 
-oid CNode::Fuzz(int nChance)
+void CNode::Fuzz(int nChance)
 {
     if (!fSuccessfullyConnected) return; // Don't fuzz initial handshake
     if (GetRand(nChance) != 0) return; // Fuzz 1 of every nChance messages

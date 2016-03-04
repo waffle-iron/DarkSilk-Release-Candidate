@@ -28,6 +28,15 @@ QT_TRANSLATE_NOOP("darksilk-core", ""
 QT_TRANSLATE_NOOP("darksilk-core", ""
 "Warning: Please check that your computer's date and time are correct! If "
 "your clock is wrong DarkSilk will not work properly."),
+QT_TRANSLATE_NOOP("darksilk-core", ""
+"Bind to given address and whitelist peers connecting to it. Use [host]:port "
+"notation for IPv6"),
+QT_TRANSLATE_NOOP("darksilk-core", ""
+"Whitelist peers connecting from the given netmask or IP address. Can be "
+"specified multiple times."),
+QT_TRANSLATE_NOOP("darksilk-core", ""
+"Whitelisted peers cannot be DoS banned and their transactions are always "
+"relayed, even if they are already in the mempool, useful e.g. for a gateway"),
 QT_TRANSLATE_NOOP("darksilk-core", "Options:"),
 QT_TRANSLATE_NOOP("darksilk-core", "This help message"),
 QT_TRANSLATE_NOOP("darksilk-core", "Specify configuration file (default: darksilk.conf)"),
@@ -41,6 +50,7 @@ QT_TRANSLATE_NOOP("darksilk-core", "Connect through socks proxy"),
 QT_TRANSLATE_NOOP("darksilk-core", "Select the version of socks proxy to use (4-5, default: 5)"),
 QT_TRANSLATE_NOOP("darksilk-core", "Use proxy to reach tor hidden services (default: same as -proxy)"),
 QT_TRANSLATE_NOOP("darksilk-core", "Allow DNS lookups for -addnode, -seednode and -connect"),
+QT_TRANSLATE_NOOP("darksilk-core", "Invalid netmask specified in -whitelist: '%s'"),
 QT_TRANSLATE_NOOP("darksilk-core", "Listen for connections on <port> (default: 31000 or testnet: 31750)"),
 QT_TRANSLATE_NOOP("darksilk-core", "Maintain at most <n> connections to peers (default: 125)"),
 QT_TRANSLATE_NOOP("darksilk-core", "Add a node to connect to and attempt to keep the connection open"),
@@ -78,6 +88,7 @@ QT_TRANSLATE_NOOP("darksilk-core", ""
 "Output debugging information (default: 0, supplying <category> is optional)"),
 QT_TRANSLATE_NOOP("darksilk-core", "If <category> is not supplied, output all debugging information."),
 QT_TRANSLATE_NOOP("darksilk-core", "<category> can be:"),
+QT_TRANSLATE_NOOP("darksilk-core", "Randomly fuzz 1 of every <n> network messages"),
 QT_TRANSLATE_NOOP("darksilk-core", "Prepend debug output with timestamp"),
 QT_TRANSLATE_NOOP("darksilk-core", "Shrink debug.log file on client startup (default: 1 when no -debug)"),
 QT_TRANSLATE_NOOP("darksilk-core", "Send trace/debug info to console instead of debug.log file"),
