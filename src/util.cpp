@@ -426,7 +426,7 @@ string SanitizeString(const string& str)
 string SanitizeSubVersionString(const string& str)
 {
     string strResult = SanitizeString(str);
-    if (strResult.length() > 3)
+    if ((strResult.length() > 3) && (strResult.substr(0,1) == "/") && (strResult.substr((strResult.length()-1),1) == "/"))
         strResult = strResult.substr(1, (strResult.length() - 2));
     return strResult;
 }
