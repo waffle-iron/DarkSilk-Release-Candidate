@@ -19,6 +19,8 @@ class CValidationState;
 class CWallet;
 class CTxMemPool;
 
+struct CNodeStateStats;
+
 // Minimum Transaction Fee of 0.00001 DRKSLK, Fees smaller than this are considered zero fee (for transaction creation)
 static const double MIN_FEE = 0.00001;
 // Collateral Amount Locked for Stormnodes
@@ -128,13 +130,6 @@ class CTxDB;
 class CTxIndex;
 class CWalletInterface;
 
-struct CNodeStateStats {
-    int nMisbehavior;
-    int nSyncHeight;
-    int nCommonHeight;
-    std::vector<int> vHeightInFlight;
-};
-
 /** Get statistics from node state */
 bool GetNodeStateStats(NodeId nodeid, CNodeStateStats &stats);
 
@@ -212,6 +207,13 @@ FILE* OpenBlockFile(const CDiskBlockPos &pos, bool fReadOnly = false); //TODO (A
 FILE* OpenDiskFile(const CDiskBlockPos &pos, const char *prefix, bool fReadOnly = false);
 FILE* AppendBlockFile(unsigned int& nFileRet);
 FILE* OpenUndoFile(const CDiskBlockPos &pos, bool fReadOnly = false);
+
+struct CNodeStateStats {
+    int nMisbehavior;
+    int nSyncHeight;
+    int nCommonHeight;
+    std::vector<int> vHeightInFlight;
+};
 
 /// Position on disk for a particular transaction.
 class CDiskTxPos
