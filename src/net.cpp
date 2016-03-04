@@ -56,10 +56,10 @@ namespace {
     };
 
     struct I2PListenSocket {
-        SOCKET socket;
+        SOCKET I2Psocket;
         bool whitelisted;
 
-        I2PListenSocket(SOCKET socket, bool whitelisted): socket(socket), whitelisted(whitelisted) {}
+        I2PListenSocket(SOCKET I2Psocket, bool whitelisted): I2Psocket(I2Psocket), whitelisted(whitelisted) {}
     };
 }
 
@@ -892,10 +892,10 @@ void ThreadSocketHandler()
 
 #ifdef USE_NATIVE_I2P
         BOOST_FOREACH(const I2PListenSocket& hI2PListenSocket, vhI2PListenSocket) {
-            if (hI2PListenSocket.socket != INVALID_SOCKET)
+            if (hI2PListenSocket.I2Psocket != INVALID_SOCKET)
             {
-                FD_SET(hI2PListenSocket.socket, &fdsetRecv);
-                hSocketMax = max(hSocketMax, hI2PListenSocket.socket);
+                FD_SET(hI2PListenSocket.I2Psocket, &fdsetRecv);
+                hSocketMax = max(hSocketMax, hI2PListenSocket.I2Psocket);
                 have_fds = true;
             }
         }
@@ -1010,7 +1010,7 @@ void ThreadSocketHandler()
         for (std::vector<I2PListenSocket>::iterator it = vhI2PListenSocket.begin(); it != vhI2PListenSocket.end(); ++it)
         {
             I2PListenSocket& hI2PListenSocket = *it;
-            SOCKET& I2PSocket = hI2PListenSocket.socket;
+            SOCKET& I2PSocket = hI2PListenSocket.I2Psocket;
             if (I2PSocket == INVALID_SOCKET)
             {
                 if (haveInvalids)
@@ -1685,7 +1685,7 @@ bool BindListenNativeI2P()
 {
     bool fWhitelisted = false;
     I2PListenSocket hNewI2PListenSocket(INVALID_SOCKET, fWhitelisted);
-    if (!BindListenNativeI2P(hNewI2PListenSocket.socket))
+    if (!BindListenNativeI2P(hNewI2PListenSocket.I2Psocket))
         return false;
     vhI2PListenSocket.push_back(hNewI2PListenSocket);
     return true;
@@ -1954,8 +1954,8 @@ public:
 
 #ifdef USE_NATIVE_I2P
         BOOST_FOREACH(I2PListenSocket& hI2PListenSocket, vhI2PListenSocket)
-            if (hI2PListenSocket.socket != INVALID_SOCKET)
-                if (closesocket(hI2PListenSocket.socket))
+            if (hI2PListenSocket.I2Psocket != INVALID_SOCKET)
+                if (closesocket(hI2PListenSocket.I2Psocket))
                     printf("closesocket(hI2PListenSocket) failed with error %d\n", WSAGetLastError());
 #endif
 
