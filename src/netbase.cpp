@@ -20,6 +20,11 @@
 #include "i2p/i2p.h"
 #endif
 
+
+#if !defined(HAVE_MSG_NOSIGNAL) && !defined(MSG_NOSIGNAL)
+#define MSG_NOSIGNAL 0
+#endif
+
 using namespace std;
 
 // Settings

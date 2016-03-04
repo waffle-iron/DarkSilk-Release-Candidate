@@ -42,6 +42,17 @@
 #define MSG_NOSIGNAL 0
 #endif
 
+// Fix for ancient MinGW versions, that don't have defined these in ws2tcpip.h.
+// Todo: Can be removed when our pull-tester is upgraded to a modern MinGW version.
+#ifdef WIN32
+#ifndef PROTECTION_LEVEL_UNRESTRICTED
+#define PROTECTION_LEVEL_UNRESTRICTED 10
+#endif
+#ifndef IPV6_PROTECTION_LEVEL
+#define IPV6_PROTECTION_LEVEL 23
+#endif
+#endif
+
 using namespace boost;
 using namespace std;
 
@@ -475,7 +486,6 @@ void CNode::CloseSocketDisconnect()
     {
         LogPrint("net", "disconnecting node %s\n", addrName);
         closesocket(hSocket);
-        hSocket = INVALID_SOCKET;
     }
 
     // in case this fails, we'll empty the recv buffer when the CNode is deleted
