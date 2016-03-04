@@ -420,6 +420,17 @@ string SanitizeString(const string& str)
     return strResult;
 }
 
+///! Formats the network peer subversion text (User Agent)
+///  by removing the begining and ending chars (/).
+///  example: /DRKSLK:1.0.0/ --> DRKSLK:1.0.0
+string SanitizeSubVersionString(const string& str)
+{
+    string strResult = SanitizeString(str);
+    if (strResult.length() > 3)
+        strResult = strResult.substr(1, (strResult.length() - 2));
+    return strResult;
+}
+
 const signed char p_util_hexdigit[256] =
 { -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
   -1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,

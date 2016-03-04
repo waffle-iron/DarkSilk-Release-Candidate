@@ -503,10 +503,6 @@ void CNode::PushVersion()
                 nLocalHostNonce, FormatSubVersion(CLIENT_NAME, CLIENT_VERSION, std::vector<string>()), nBestHeight);
 }
 
-
-
-
-
 std::map<CNetAddr, int64_t> CNode::setBanned;
 CCriticalSection CNode::cs_setBanned;
 
@@ -749,14 +745,6 @@ int CNetMessage::readData(const char *pch, unsigned int nBytes)
 
     return nCopy;
 }
-
-
-
-
-
-
-
-
 
 // requires LOCK(cs_vSend)
 void SocketSendData(CNode *pnode)
@@ -1189,14 +1177,6 @@ void ThreadSocketHandler()
     }
 }
 
-
-
-
-
-
-
-
-
 #ifdef USE_UPNP
 void ThreadMapPort()
 {
@@ -1310,11 +1290,6 @@ void MapPort(bool)
 }
 #endif
 
-
-
-
-
-
 void ThreadDNSAddressSeed()
 {
     // goal: only query DNS seeds if address need is acute
@@ -1357,14 +1332,6 @@ void ThreadDNSAddressSeed()
 
     LogPrintf("%d addresses found from DNS seeds\n", found);
 }
-
-
-
-
-
-
-
-
 
 void DumpAddresses()
 {
@@ -1716,7 +1683,8 @@ void ThreadMessageHandler()
 #ifdef USE_NATIVE_I2P
 bool BindListenNativeI2P()
 {
-    I2PListenSocket hNewI2PListenSocket(INVALID_SOCKET, false);
+    bool fWhitelisted = false;
+    I2PListenSocket hNewI2PListenSocket(INVALID_SOCKET, fWhitelisted);
     if (!BindListenNativeI2P(hNewI2PListenSocket.socket))
         return false;
     vhI2PListenSocket.push_back(hNewI2PListenSocket);
