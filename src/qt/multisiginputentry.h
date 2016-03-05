@@ -4,7 +4,7 @@
 #include <QFrame>
 
 #include "uint256.h"
-
+#include "amount.h"
 
 class CTxIn;
 class WalletModel;
@@ -24,7 +24,7 @@ class MultisigInputEntry : public QFrame
     void setModel(WalletModel *model);
     bool validate();
     CTxIn getInput();
-    int64_t getAmount();
+    CAmount getAmount();
     QString getRedeemScript();
     void setTransactionId(QString transactionId);
     void setTransactionOutputIndex(int index);

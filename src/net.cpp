@@ -7,10 +7,6 @@
 #include <boost/filesystem.hpp>
 #include <boost/thread.hpp>
 
-#ifdef USE_NATIVE_I2P
-#include "i2p/i2p.h"
-#endif
-
 #ifdef WIN32
 #include <string.h>
 #else
@@ -33,6 +29,10 @@
 #include "anon/sandstorm/sandstorm.h"
 #include "wallet/wallet.h"
 
+#ifdef USE_NATIVE_I2P
+#include "i2p/i2p.h"
+#endif
+
 #define TOR_NET_STRING "tor"
 
 // Dump addresses to peers.dat every 15 minutes (900s)
@@ -42,10 +42,37 @@
 #define MSG_NOSIGNAL 0
 #endif
 
-using namespace std;
-using namespace boost;
+// Fix for ancient MinGW versions, that don't have defined these in ws2tcpip.h.
+// Todo: Can be removed when our pull-tester is upgraded to a modern MinGW version.
+#ifdef WIN32
+#ifndef PROTECTION_LEVEL_UNRESTRICTED
+#define PROTECTION_LEVEL_UNRESTRICTED 10
+#endif
+#ifndef IPV6_PROTECTION_LEVEL
+#define IPV6_PROTECTION_LEVEL 23
+#endif
+#endif
 
-static const int MAX_OUTBOUND_CONNECTIONS = 32;
+using namespace boost;
+using namespace std;
+
+namespace {
+    const int MAX_OUTBOUND_CONNECTIONS = 32;
+
+    struct ListenSocket {
+        SOCKET socket;
+        bool whitelisted;
+
+        ListenSocket(SOCKET socket, bool whitelisted): socket(socket), whitelisted(whitelisted) {}
+    };
+
+    struct I2PListenSocket {
+        SOCKET I2Psocket;
+        bool whitelisted;
+
+        I2PListenSocket(SOCKET I2Psocket, bool whitelisted): I2Psocket(I2Psocket), whitelisted(whitelisted) {}
+    };
+}
 
 bool OpenNetworkConnection(const CAddress& addrConnect, CSemaphoreGrant *grantOutbound = NULL, const char *strDest = NULL, bool fOneShot = false);
 
@@ -66,11 +93,11 @@ static bool vfLimited[NET_MAX] = {};
 static CNode* pnodeLocalHost = NULL;
 static CNode* pnodeSync = NULL;
 uint64_t nLocalHostNonce = 0;
-static std::vector<SOCKET> vhListenSocket;
+static std::vector<ListenSocket> vhListenSocket;
 CAddrMan addrman;
 
 #ifdef USE_NATIVE_I2P
-static std::vector<SOCKET> vhI2PListenSocket;
+static std::vector<I2PListenSocket> vhI2PListenSocket;
 int nI2PNodeCount = 0;
 #endif
 
@@ -459,7 +486,6 @@ void CNode::CloseSocketDisconnect()
     {
         LogPrint("net", "disconnecting node %s\n", addrName);
         closesocket(hSocket);
-        hSocket = INVALID_SOCKET;
     }
 
     // in case this fails, we'll empty the recv buffer when the CNode is deleted
@@ -487,16 +513,15 @@ void CNode::PushVersion()
                 nLocalHostNonce, FormatSubVersion(CLIENT_NAME, CLIENT_VERSION, std::vector<string>()), nBestHeight);
 }
 
-
-
-
-
-std::map<CNetAddr, int64_t> CNode::setBanned;
+banmap_t CNode::setBanned;
 CCriticalSection CNode::cs_setBanned;
+bool CNode::setBannedIsDirty;
 
 void CNode::ClearBanned()
 {
+    LOCK(cs_setBanned);
     setBanned.clear();
+    setBannedIsDirty = true;
 }
 
 bool CNode::IsBanned(CNetAddr ip)
@@ -504,15 +529,116 @@ bool CNode::IsBanned(CNetAddr ip)
     bool fResult = false;
     {
         LOCK(cs_setBanned);
-        std::map<CNetAddr, int64_t>::iterator i = setBanned.find(ip);
-        if (i != setBanned.end())
+        for (banmap_t::iterator it = setBanned.begin(); it != setBanned.end(); it++)
         {
-            int64_t t = (*i).second;
-            if (GetTime() < t)
+            CSubNet subNet = (*it).first;
+            CBanEntry banEntry = (*it).second;
+
+            if(subNet.Match(ip) && GetTime() < banEntry.nBanUntil)
                 fResult = true;
         }
     }
     return fResult;
+}
+
+bool CNode::IsBanned(CSubNet subnet)
+{
+    bool fResult = false;
+    {
+        LOCK(cs_setBanned);
+        banmap_t::iterator i = setBanned.find(subnet);
+        if (i != setBanned.end())
+        {
+            CBanEntry banEntry = (*i).second;
+            if (GetTime() < banEntry.nBanUntil)
+                fResult = true;
+        }
+    }
+    return fResult;
+}
+
+void CNode::Ban(const CNetAddr& addr, const BanReason &banReason, int64_t bantimeoffset, bool sinceUnixEpoch) {
+    CSubNet subNet(addr);
+    Ban(subNet, banReason, bantimeoffset, sinceUnixEpoch);
+}
+
+void CNode::Ban(const CSubNet& subNet, const BanReason &banReason, int64_t bantimeoffset, bool sinceUnixEpoch) {
+    CBanEntry banEntry(GetTime());
+    banEntry.banReason = banReason;
+    if (bantimeoffset <= 0)
+    {
+        bantimeoffset = GetArg("-bantime", DEFAULT_MISBEHAVING_BANTIME);
+        sinceUnixEpoch = false;
+    }
+    banEntry.nBanUntil = (sinceUnixEpoch ? 0 : GetTime() )+bantimeoffset;
+
+    LOCK(cs_setBanned);
+
+    if (setBanned[subNet].nBanUntil < banEntry.nBanUntil)
+        setBanned[subNet] = banEntry;
+
+    setBannedIsDirty = true;
+}
+
+bool CNode::Unban(const CNetAddr &addr) {
+    CSubNet subNet(addr);
+    return Unban(subNet);
+}
+
+bool CNode::Unban(const CSubNet &subNet) {
+    LOCK(cs_setBanned);
+    if (setBanned.erase(subNet))
+    {
+        setBannedIsDirty = true;
+        return true;
+    }
+    return false;
+}
+
+void CNode::GetBanned(banmap_t &banMap)
+{
+    LOCK(cs_setBanned);
+    banMap = setBanned; //create a thread safe copy
+}
+
+void CNode::SetBanned(const banmap_t &banMap)
+{
+    LOCK(cs_setBanned);
+    setBanned = banMap;
+    setBannedIsDirty = true;
+}
+
+void CNode::SweepBanned()
+{
+    int64_t now = GetTime();
+
+    LOCK(cs_setBanned);
+    banmap_t::iterator it = setBanned.begin();
+    while(it != setBanned.end())
+    {
+        CSubNet subNet = (*it).first;
+        CBanEntry banEntry = (*it).second;
+        if(now > banEntry.nBanUntil)
+        {
+            setBanned.erase(it++);
+            setBannedIsDirty = true;
+            LogPrint("net", "%s: Removed banned node ip/subnet from banlist.dat: %s\n", __func__, subNet.ToString());
+        }
+        else
+            ++it;
+    }
+}
+
+bool CNode::BannedSetIsDirty()
+{
+    LOCK(cs_setBanned);
+    return setBannedIsDirty;
+}
+
+void CNode::SetBannedSetDirty(bool dirty)
+{
+    LOCK(cs_setBanned); //reuse setBanned lock for the isDirty flag
+    setBannedIsDirty = dirty;
 }
 
 bool CNode::Misbehaving(int howmuch)
@@ -526,18 +652,34 @@ bool CNode::Misbehaving(int howmuch)
     nMisbehavior += howmuch;
     if (nMisbehavior >= GetArg("-banscore", 100))
     {
-        int64_t banTime = GetTime()+GetArg("-bantime", 60*60*24);  // Default 24-hour ban
+        int64_t banTime = GetTime()+GetArg("-bantime", DEFAULT_MISBEHAVING_BANTIME);  // Default 24-hour ban
         LogPrintf("Misbehaving: %s (%d -> %d) DISCONNECTING\n", addr.ToString(), nMisbehavior-howmuch, nMisbehavior);
         {
-            LOCK(cs_setBanned);
-            if (setBanned[addr] < banTime)
-                setBanned[addr] = banTime;
+            CSubNet subNet(addr);
+            Ban(subNet, BanReasonNodeMisbehaving, banTime, true);
         }
-        CloseSocketDisconnect();
+        CloseSocketDisconnect(); //TODO (Amir): Do we need this since Ban is called above ????
         return true;
     } else
         LogPrintf("Misbehaving: %s (%d -> %d)\n", addr.ToString(), nMisbehavior-howmuch, nMisbehavior);
     return false;
+}
+
+std::vector<CSubNet> CNode::vWhitelistedRange;
+CCriticalSection CNode::cs_vWhitelistedRange;
+
+bool CNode::IsWhitelistedRange(const CNetAddr &addr) {
+    LOCK(cs_vWhitelistedRange);
+    BOOST_FOREACH(const CSubNet& subnet, vWhitelistedRange) {
+        if (subnet.Match(addr))
+            return true;
+    }
+    return false;
+}
+
+void CNode::AddWhitelistedRange(const CSubNet &subnet) {
+    LOCK(cs_vWhitelistedRange);
+    vWhitelistedRange.push_back(subnet);
 }
 
 #undef X
@@ -559,6 +701,7 @@ void CNode::copyStats(CNodeStats &stats)
     X(nMisbehavior);
     X(nSendBytes);
     X(nRecvBytes);
+    X(fWhitelisted);
     stats.fSyncNode = (this == pnodeSync);
 
     // It is common for nodes with good ping times to suddenly become lagged,
@@ -716,14 +859,6 @@ int CNetMessage::readData(const char *pch, unsigned int nBytes)
     return nCopy;
 }
 
-
-
-
-
-
-
-
-
 // requires LOCK(cs_vSend)
 void SocketSendData(CNode *pnode)
 {
@@ -772,40 +907,45 @@ static list<CNode*> vNodesDisconnected;
 
 void ThreadSocketHandler()
 {
-    unsigned int nPrevNodeCount = 0;
+
 #ifdef USE_NATIVE_I2P
     int nPrevI2PNodeCount = 0;
 #endif
+
+    int nPrevNodeCount = 0;
+
+    //
+    // Disconnect nodes
+    //
+
     while (true)
     {
-        //
-        // Disconnect nodes
-        //
+
         {
-            LOCK(cs_vNodes);
-            // Disconnect unused nodes
-            vector<CNode*> vNodesCopy = vNodes;
-            BOOST_FOREACH(CNode* pnode, vNodesCopy)
+        LOCK(cs_vNodes);
+        // Disconnect unused nodes
+        vector<CNode*> vNodesCopy = vNodes;
+        BOOST_FOREACH(CNode* pnode, vNodesCopy)
+        {
+            if (pnode->fDisconnect ||
+                (pnode->GetRefCount() <= 0 && pnode->vRecvMsg.empty() && pnode->nSendSize == 0 && pnode->ssSend.empty()))
             {
-                if (pnode->fDisconnect ||
-                    (pnode->GetRefCount() <= 0 && pnode->vRecvMsg.empty() && pnode->nSendSize == 0 && pnode->ssSend.empty()))
-                {
-                    // remove from vNodes
-                    vNodes.erase(remove(vNodes.begin(), vNodes.end(), pnode), vNodes.end());
+                // remove from vNodes
+                vNodes.erase(remove(vNodes.begin(), vNodes.end(), pnode), vNodes.end());
 
-                    // release outbound grant (if any)
-                    pnode->grantOutbound.Release();
+                // release outbound grant (if any)
+                pnode->grantOutbound.Release();
 
-                    // close socket and cleanup
-                    pnode->CloseSocketDisconnect();
+                // close socket and cleanup
+                pnode->CloseSocketDisconnect();
 
-                    // hold in disconnected pool until all refs are released
-                    if (pnode->fNetworkNode || pnode->fInbound)
-                        pnode->Release();
-                    vNodesDisconnected.push_back(pnode);
+                // hold in disconnected pool until all refs are released
+                if (pnode->fNetworkNode || pnode->fInbound)
+                    pnode->Release();
+                vNodesDisconnected.push_back(pnode);
 #ifdef USE_NATIVE_I2P
-                    if (pnode->addr.IsNativeI2P())
-                        --nI2PNodeCount;
+                if (pnode->addr.IsNativeI2P())
+                    --nI2PNodeCount;
 #endif
                 }
             }
@@ -840,7 +980,8 @@ void ThreadSocketHandler()
                 }
             }
         }
-        if(vNodes.size() != nPrevNodeCount) {
+        if(vNodes.size() != nPrevNodeCount) 
+        {
             nPrevNodeCount = vNodes.size();
             uiInterface.NotifyNumConnectionsChanged(nPrevNodeCount);
         }
@@ -869,21 +1010,22 @@ void ThreadSocketHandler()
         bool have_fds = false;
 
 #ifdef USE_NATIVE_I2P
-        BOOST_FOREACH(SOCKET hI2PListenSocket, vhI2PListenSocket) {
-            if (hI2PListenSocket != INVALID_SOCKET)
+        BOOST_FOREACH(const I2PListenSocket& hI2PListenSocket, vhI2PListenSocket) {
+            if (hI2PListenSocket.I2Psocket != INVALID_SOCKET)
             {
-                FD_SET(hI2PListenSocket, &fdsetRecv);
-                hSocketMax = max(hSocketMax, hI2PListenSocket);
+                FD_SET(hI2PListenSocket.I2Psocket, &fdsetRecv);
+                hSocketMax = max(hSocketMax, hI2PListenSocket.I2Psocket);
                 have_fds = true;
             }
         }
 #endif
 
-        BOOST_FOREACH(SOCKET hListenSocket, vhListenSocket) {
-            FD_SET(hListenSocket, &fdsetRecv);
-            hSocketMax = max(hSocketMax, hListenSocket);
+        BOOST_FOREACH(const ListenSocket& hListenSocket, vhListenSocket) {
+            FD_SET(hListenSocket.socket, &fdsetRecv);
+            hSocketMax = max(hSocketMax, hListenSocket.socket);
             have_fds = true;
         }
+
         {
             LOCK(cs_vNodes);
             BOOST_FOREACH(CNode* pnode, vNodes)
@@ -928,12 +1070,13 @@ void ThreadSocketHandler()
         //
         // Accept new connections
         //
-        BOOST_FOREACH(SOCKET hListenSocket, vhListenSocket)
-        if (hListenSocket != INVALID_SOCKET && FD_ISSET(hListenSocket, &fdsetRecv))
+        BOOST_FOREACH(const ListenSocket& hListenSocket, vhListenSocket)
+        {
+        if (hListenSocket.socket != INVALID_SOCKET && FD_ISSET(hListenSocket.socket, &fdsetRecv))
         {
             struct sockaddr_storage sockaddr;
             socklen_t len = sizeof(sockaddr);
-            SOCKET hSocket = accept(hListenSocket, (struct sockaddr*)&sockaddr, &len);
+            SOCKET hSocket = accept(hListenSocket.socket, (struct sockaddr*)&sockaddr, &len);
             CAddress addr;
             int nInbound = 0;
 
@@ -941,6 +1084,7 @@ void ThreadSocketHandler()
                 if (!addr.SetSockAddr((const struct sockaddr*)&sockaddr))
                     LogPrintf("Warning: Unknown socket family\n");
 
+            bool whitelisted = hListenSocket.whitelisted || CNode::IsWhitelistedRange(addr);
             {
                 LOCK(cs_vNodes);
                 BOOST_FOREACH(CNode* pnode, vNodes)
@@ -958,22 +1102,24 @@ void ThreadSocketHandler()
             {
                 closesocket(hSocket);
             }
-            else if (CNode::IsBanned(addr))
+            else if (CNode::IsBanned(addr) && !whitelisted)
             {
                 LogPrintf("connection from %s dropped (banned)\n", addr.ToString());
                 closesocket(hSocket);
             }
             else
             {
-                LogPrint("net", "accepted connection %s\n", addr.ToString());
                 CNode* pnode = new CNode(hSocket, addr, "", true);
                 pnode->AddRef();
+                pnode->fWhitelisted = whitelisted;
+
                 {
                     LOCK(cs_vNodes);
                     vNodes.push_back(pnode);
                 }
             }
         }
+    }
 
 #ifdef USE_NATIVE_I2P
         //
@@ -981,23 +1127,24 @@ void ThreadSocketHandler()
         //
 
         bool haveInvalids = false;
-        for (std::vector<SOCKET>::iterator it = vhI2PListenSocket.begin(); it != vhI2PListenSocket.end(); ++it)
+        for (std::vector<I2PListenSocket>::iterator it = vhI2PListenSocket.begin(); it != vhI2PListenSocket.end(); ++it)
         {
-            SOCKET& hI2PListenSocket = *it;
-            if (hI2PListenSocket == INVALID_SOCKET)
+            I2PListenSocket& hI2PListenSocket = *it;
+            SOCKET& I2PSocket = hI2PListenSocket.I2Psocket;
+            if (I2PSocket == INVALID_SOCKET)
             {
                 if (haveInvalids)
                     it = vhI2PListenSocket.erase(it) - 1;
                 else
-                    BindListenNativeI2P(hI2PListenSocket);
+                    BindListenNativeI2P(I2PSocket);
                 haveInvalids = true;
             }
-            else if (FD_ISSET(hI2PListenSocket, &fdsetRecv))
+            else if (FD_ISSET(I2PSocket, &fdsetRecv))
             {
                 const size_t bufSize = NATIVE_I2P_DESTINATION_SIZE + 1;
                 char pchBuf[bufSize];
                 memset(pchBuf, 0, bufSize);
-                int nBytes = recv(hI2PListenSocket, pchBuf, sizeof(pchBuf), MSG_DONTWAIT);
+                int nBytes = recv(I2PSocket, pchBuf, sizeof(pchBuf), MSG_DONTWAIT);
                 if (nBytes > 0)
                 {
                     if (nBytes == NATIVE_I2P_DESTINATION_SIZE + 1) // we're waiting for dest-hash + '\n' symbol
@@ -1006,25 +1153,25 @@ void ThreadSocketHandler()
                         CAddress addr;
                         if (addr.SetSpecial(incomingAddr) && addr.IsNativeI2P())
                         {
-                            AddIncomingConnection(hI2PListenSocket, addr);
+                            AddIncomingConnection(I2PSocket, addr);
                         }
                         else
                         {
                             printf("Invalid incoming destination hash received (%s)\n", incomingAddr.c_str());
-                            closesocket(hI2PListenSocket);
+                            closesocket(I2PSocket);
                         }
                     }
                     else
                     {
                         printf("Invalid incoming destination hash size received (%d)\n", nBytes);
-                        closesocket(hI2PListenSocket);
+                        closesocket(I2PSocket);
                     }
                 }
                 else if (nBytes == 0)
                 {
                     // socket closed gracefully
                     printf("I2P listen socket closed\n");
-                    closesocket(hI2PListenSocket);
+                    closesocket(I2PSocket);
                 }
                 else if (nBytes < 0)
                 {
@@ -1034,12 +1181,13 @@ void ThreadSocketHandler()
                         continue;
 
                     printf("I2P listen socket recv error %d\n", nErr);
-                    closesocket(hI2PListenSocket);
+                    closesocket(I2PSocket);
                 }
-                hI2PListenSocket = INVALID_SOCKET;  // we've saved this socket in a CNode or closed it, so we can safety reset it anyway
-                BindListenNativeI2P(hI2PListenSocket);
+                I2PSocket = INVALID_SOCKET;  // we've saved this socket in a CNode or closed it, so we can safety reset it anyway
+                BindListenNativeI2P(I2PSocket);
             }
         }
+    
 
 #endif
 
@@ -1148,13 +1296,6 @@ void ThreadSocketHandler()
         }
     }
 }
-
-
-
-
-
-
-
 
 
 #ifdef USE_UPNP
@@ -1270,11 +1411,6 @@ void MapPort(bool)
 }
 #endif
 
-
-
-
-
-
 void ThreadDNSAddressSeed()
 {
     // goal: only query DNS seeds if address need is acute
@@ -1317,14 +1453,6 @@ void ThreadDNSAddressSeed()
 
     LogPrintf("%d addresses found from DNS seeds\n", found);
 }
-
-
-
-
-
-
-
-
 
 void DumpAddresses()
 {
@@ -1657,7 +1785,7 @@ void ThreadMessageHandler()
             {
                 TRY_LOCK(pnode->cs_vSend, lockSend);
                 if (lockSend)
-                    n_signals.SendMessages(pnode, pnode == pnodeTrickle);
+                    n_signals.SendMessages(pnode, pnode == pnodeTrickle || pnode->fWhitelisted);
             }
             boost::this_thread::interruption_point();
         }
@@ -1676,8 +1804,9 @@ void ThreadMessageHandler()
 #ifdef USE_NATIVE_I2P
 bool BindListenNativeI2P()
 {
-    SOCKET hNewI2PListenSocket = INVALID_SOCKET;
-    if (!BindListenNativeI2P(hNewI2PListenSocket))
+    bool fWhitelisted = false;
+    I2PListenSocket hNewI2PListenSocket(INVALID_SOCKET, fWhitelisted);
+    if (!BindListenNativeI2P(hNewI2PListenSocket.I2Psocket))
         return false;
     vhI2PListenSocket.push_back(hNewI2PListenSocket);
     return true;
@@ -1716,9 +1845,7 @@ bool IsI2POnly()
 }
 #endif
 
-
-
-bool BindListenPort(const CService &addrBind, string& strError)
+bool BindListenPort(const CService &addrBind, string& strError, bool fWhitelisted)
 {
     strError = "";
     int nOne = 1;
@@ -1815,9 +1942,9 @@ bool BindListenPort(const CService &addrBind, string& strError)
         return false;
     }
 
-    vhListenSocket.push_back(hListenSocket);
+    vhListenSocket.push_back(ListenSocket(hListenSocket, fWhitelisted));
 
-    if (addrBind.IsRoutable() && fDiscover)
+    if (addrBind.IsRoutable() && fDiscover && !fWhitelisted)
         AddLocal(addrBind, LOCAL_BIND);
 
     return true;
@@ -1939,15 +2066,15 @@ public:
         BOOST_FOREACH(CNode* pnode, vNodes)
             if (pnode->hSocket != INVALID_SOCKET)
                 closesocket(pnode->hSocket);
-        BOOST_FOREACH(SOCKET hListenSocket, vhListenSocket)
-            if (hListenSocket != INVALID_SOCKET)
-                if (closesocket(hListenSocket) == SOCKET_ERROR)
+        BOOST_FOREACH(ListenSocket& hListenSocket, vhListenSocket)
+            if (hListenSocket.socket != INVALID_SOCKET)
+                if (closesocket(hListenSocket.socket))
                     LogPrintf("closesocket(hListenSocket) failed with error %d\n", WSAGetLastError());
 
 #ifdef USE_NATIVE_I2P
-        BOOST_FOREACH(SOCKET& hI2PListenSocket, vhI2PListenSocket)
-            if (hI2PListenSocket != INVALID_SOCKET)
-                if (closesocket(hI2PListenSocket) == SOCKET_ERROR)
+        BOOST_FOREACH(I2PListenSocket& hI2PListenSocket, vhI2PListenSocket)
+            if (hI2PListenSocket.I2Psocket != INVALID_SOCKET)
+                if (closesocket(hI2PListenSocket.I2Psocket))
                     printf("closesocket(hI2PListenSocket) failed with error %d\n", WSAGetLastError());
 #endif
 
@@ -2025,6 +2152,41 @@ uint64_t CNode::GetTotalBytesSent()
 {
     LOCK(cs_totalBytesSent);
     return nTotalBytesSent;
+}
+
+void CNode::Fuzz(int nChance)
+{
+    if (!fSuccessfullyConnected) return; // Don't fuzz initial handshake
+    if (GetRand(nChance) != 0) return; // Fuzz 1 of every nChance messages
+
+    switch (GetRand(3))
+    {
+    case 0:
+        // xor a random byte with a random value:
+        if (!ssSend.empty()) {
+            CDataStream::size_type pos = GetRand(ssSend.size());
+            ssSend[pos] ^= (unsigned char)(GetRand(256));
+        }
+        break;
+    case 1:
+        // delete a random byte:
+        if (!ssSend.empty()) {
+            CDataStream::size_type pos = GetRand(ssSend.size());
+            ssSend.erase(ssSend.begin()+pos);
+        }
+        break;
+    case 2:
+        // insert a random byte at a random position
+        {
+            CDataStream::size_type pos = GetRand(ssSend.size());
+            char ch = (char)GetRand(256);
+            ssSend.insert(ssSend.begin()+pos, ch);
+        }
+        break;
+    }
+    // Chance of more than one change half the time:
+    // (more changes exponentially less likely):
+    Fuzz(2);
 }
 
 //
@@ -2125,4 +2287,124 @@ bool CAddrDB::Read(CAddrMan& addr)
     }
 
     return true;
+}
+
+//
+// CBanDB
+//
+
+CBanDB::CBanDB()
+{
+    pathBanlist = GetDataDir() / "banlist.dat";
+}
+
+bool CBanDB::Write(const banmap_t& banSet)
+{
+    // Generate random temporary filename
+    unsigned short randv = 0;
+    GetRandBytes((unsigned char*)&randv, sizeof(randv));
+    std::string tmpfn = strprintf("banlist.dat.%04x", randv);
+
+    // serialize banlist, checksum data up to that point, then append csum
+    CDataStream ssBanlist(SER_DISK, CLIENT_VERSION);
+    ssBanlist << FLATDATA(Params().MessageStart());
+    ssBanlist << banSet;
+    uint256 hash = Hash(ssBanlist.begin(), ssBanlist.end());
+    ssBanlist << hash;
+
+    // open temp output file, and associate with CAutoFile
+    boost::filesystem::path pathTmp = GetDataDir() / tmpfn;
+    FILE *file = fopen(pathTmp.string().c_str(), "wb");
+    CAutoFile fileout(file, SER_DISK, CLIENT_VERSION);
+    if (fileout.IsNull())
+        return error("%s: Failed to open file %s", __func__, pathTmp.string());
+
+    // Write and commit header, data
+    try {
+        fileout << ssBanlist;
+    }
+    catch (const std::exception& e) {
+        return error("%s: Serialize or I/O error - %s", __func__, e.what());
+    }
+    FileCommit(fileout.Get());
+    fileout.fclose();
+
+    // replace existing banlist.dat, if any, with new banlist.dat.XXXX
+    if (!RenameOver(pathTmp, pathBanlist))
+        return error("%s: Rename-into-place failed", __func__);
+
+    return true;
+}
+
+bool CBanDB::Read(banmap_t& banSet)
+{
+    // open input file, and associate with CAutoFile
+    FILE *file = fopen(pathBanlist.string().c_str(), "rb");
+    CAutoFile filein(file, SER_DISK, CLIENT_VERSION);
+    if (filein.IsNull())
+        return error("%s: Failed to open file %s", __func__, pathBanlist.string());
+
+    // use file size to size memory buffer
+    uint64_t fileSize = boost::filesystem::file_size(pathBanlist);
+    uint64_t dataSize = 0;
+    // Don't try to resize to a negative number if file is small
+    if (fileSize >= sizeof(uint256))
+        dataSize = fileSize - sizeof(uint256);
+    vector<unsigned char> vchData;
+    vchData.resize(dataSize);
+    uint256 hashIn;
+
+    // read data and checksum from file
+    try {
+        filein.read((char *)&vchData[0], dataSize);
+        filein >> hashIn;
+    }
+    catch (const std::exception& e) {
+        return error("%s: Deserialize or I/O error - %s", __func__, e.what());
+    }
+    filein.fclose();
+
+    CDataStream ssBanlist(vchData, SER_DISK, CLIENT_VERSION);
+
+    // verify stored checksum matches input data
+    uint256 hashTmp = Hash(ssBanlist.begin(), ssBanlist.end());
+    if (hashIn != hashTmp)
+        return error("%s: Checksum mismatch, data corrupted", __func__);
+
+    unsigned char pchMsgTmp[4];
+    try {
+        // de-serialize file header (network specific magic number) and ..
+        ssBanlist >> FLATDATA(pchMsgTmp);
+
+        // ... verify the network matches ours
+        if (memcmp(pchMsgTmp, Params().MessageStart(), sizeof(pchMsgTmp)))
+            return error("%s: Invalid network magic number", __func__);
+
+        // de-serialize address data into one CAddrMan object
+        ssBanlist >> banSet;
+    }
+    catch (const std::exception& e) {
+        return error("%s: Deserialize or I/O error - %s", __func__, e.what());
+    }
+
+    return true;
+}
+
+void DumpBanlist()
+{
+    CNode::SweepBanned(); // clean unused entries (if bantime has expired)
+
+    if (!CNode::BannedSetIsDirty())
+        return;
+
+    int64_t nStart = GetTimeMillis();
+
+    CBanDB bandb;
+    banmap_t banmap;
+    CNode::GetBanned(banmap);
+    if (bandb.Write(banmap))
+        CNode::SetBannedSetDirty(false);
+
+    LogPrint("net", "Flushed %d banned node ips/subnets to banlist.dat  %dms\n",
+        banmap.size(), GetTimeMillis() - nStart);
 }
