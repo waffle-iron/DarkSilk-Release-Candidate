@@ -217,6 +217,8 @@ std::string FormatMoney(CAmount n, bool fPlus=false);
 bool ParseMoney(const std::string& str, CAmount& nRet);
 bool ParseMoney(const char* pszIn, CAmount& nRet);
 std::string SanitizeString(const std::string& str);
+std::string SanitizeSubVersionString(const std::string& str);
+
 std::vector<unsigned char> ParseHex(const char* psz);
 std::vector<unsigned char> ParseHex(const std::string& str);
 bool IsHex(const std::string& str);
