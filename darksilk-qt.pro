@@ -224,7 +224,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/qt/aboutdialog.h \
             src/qt/editaddressdialog.h \
             src/qt/darksilkaddressvalidator.h \
-	    src/blindtext.h \
+	    src/anon/blindtext/blindtext.h \
             src/alert.h \
             src/addrman.h \
             src/base58.h \
@@ -363,7 +363,8 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/memusage.h
 
 SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
-	    src/blindtext.cpp \
+	    src/rest.cpp \
+	    src/anon/blindtext/blindtext.cpp \
 	    src/cryptkey.cpp \
             src/anon/stormnode/activestormnode.cpp \
             src/qt/transactiontablemodel.cpp \
