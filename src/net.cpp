@@ -804,15 +804,20 @@ static list<CNode*> vNodesDisconnected;
 
 void ThreadSocketHandler()
 {
-    unsigned int nPrevNodeCount = 0;
+
 #ifdef USE_NATIVE_I2P
     int nPrevI2PNodeCount = 0;
 #endif
+
+    int nPrevNodeCount = 0;
+
+    //
+    // Disconnect nodes
+    //
+
     while (true)
     {
-        //
-        // Disconnect nodes
-        //
+
         {
         LOCK(cs_vNodes);
         // Disconnect unused nodes
@@ -872,7 +877,8 @@ void ThreadSocketHandler()
                 }
             }
         }
-        if(vNodes.size() != nPrevNodeCount) {
+        if(vNodes.size() != nPrevNodeCount) 
+        {
             nPrevNodeCount = vNodes.size();
             uiInterface.NotifyNumConnectionsChanged(nPrevNodeCount);
         }
@@ -1010,6 +1016,7 @@ void ThreadSocketHandler()
                 }
             }
         }
+    }
 
 #ifdef USE_NATIVE_I2P
         //
@@ -1077,7 +1084,7 @@ void ThreadSocketHandler()
                 BindListenNativeI2P(I2PSocket);
             }
         }
-    }
+    
 
 #endif
 
@@ -1186,6 +1193,7 @@ void ThreadSocketHandler()
         }
     }
 }
+
 
 #ifdef USE_UPNP
 void ThreadMapPort()
