@@ -5,6 +5,7 @@
 
 #include "clientmodel.h"
 #include "guiconstants.h"
+#include "bantablemodel.h"
 #include "peertablemodel.h"
 #include "optionsmodel.h"
 #include "addresstablemodel.h"
@@ -26,12 +27,14 @@ ClientModel::ClientModel(OptionsModel *optionsModel, QObject *parent) :
     QObject(parent),
     optionsModel(optionsModel),
     peerTableModel(0),
+    banTableModel(0),
     cachedNumBlocks(0),
     cachedStormnodeCountString(""),
     numBlocksAtStartup(-1),
     pollTimer(0)
 {
     peerTableModel = new PeerTableModel(this);
+    banTableModel = new BanTableModel(this);
     pollTimer = new QTimer(this);
     connect(pollTimer, SIGNAL(timeout()), this, SLOT(updateTimer()));
     pollTimer->start(MODEL_UPDATE_DELAY);
@@ -247,6 +250,11 @@ void ClientModel::generateI2PDestination(QString& pub, QString& priv) const
 QString ClientModel::formatFullVersion() const
 {
     return QString::fromStdString(FormatFullVersion());
+}
+
+BanTableModel *ClientModel::getBanTableModel()
+{
+    return banTableModel;
 }
 
 QString ClientModel::formatBuildDate() const
