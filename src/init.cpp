@@ -298,6 +298,13 @@ std::string HelpMessage()
 #if !defined(WIN32)
     strUsage += "  -daemon                " + _("Run in the background as a daemon and accept commands") + "\n";
 #endif
+
+    strUsage += "\n" + _("Debugging/Testing options:") + "\n";
+    if (GetBoolArg("-help-debug", false))
+    {
+    strUsage += "  -fuzzmessagestest=<n>  " + _("Randomly fuzz 1 of every <n> network messages") + "\n";
+    }
+
     strUsage += "  -testnet               " + _("Use the test network") + "\n";
     strUsage += "  -litemode=<n>          " + strprintf(_("Disable all Darksilk specific functionality (Stormnodes, Sandstorm, InstantX, Budgeting) (0-1, default: %u)"), 0) + "\n";
     strUsage += "  -debug=<category>      " + _("Output debugging information (default: 0, supplying <category> is optional)") + "\n";
