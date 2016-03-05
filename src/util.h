@@ -564,11 +564,6 @@ inline void SetThreadPriority(int nPriority)
 }
 #else
 
-#define THREAD_PRIORITY_LOWEST          PRIO_MAX
-#define THREAD_PRIORITY_BELOW_NORMAL    2
-#define THREAD_PRIORITY_NORMAL          0
-#define THREAD_PRIORITY_ABOVE_NORMAL    0
-
 inline void SetThreadPriority(int nPriority)
 {
     // It's unclear if it's even possible to change thread priorities on Linux,

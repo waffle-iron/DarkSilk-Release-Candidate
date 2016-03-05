@@ -42,6 +42,17 @@
 #define MSG_NOSIGNAL 0
 #endif
 
+// Fix for ancient MinGW versions, that don't have defined these in ws2tcpip.h.
+// Todo: Can be removed when our pull-tester is upgraded to a modern MinGW version.
+#ifdef WIN32
+#ifndef PROTECTION_LEVEL_UNRESTRICTED
+#define PROTECTION_LEVEL_UNRESTRICTED 10
+#endif
+#ifndef IPV6_PROTECTION_LEVEL
+#define IPV6_PROTECTION_LEVEL 23
+#endif
+#endif
+
 using namespace boost;
 using namespace std;
 
@@ -56,10 +67,10 @@ namespace {
     };
 
     struct I2PListenSocket {
-        SOCKET socket;
+        SOCKET I2Psocket;
         bool whitelisted;
 
-        I2PListenSocket(SOCKET socket, bool whitelisted): socket(socket), whitelisted(whitelisted) {}
+        I2PListenSocket(SOCKET I2Psocket, bool whitelisted): I2Psocket(I2Psocket), whitelisted(whitelisted) {}
     };
 }
 
@@ -475,7 +486,6 @@ void CNode::CloseSocketDisconnect()
     {
         LogPrint("net", "disconnecting node %s\n", addrName);
         closesocket(hSocket);
-        hSocket = INVALID_SOCKET;
     }
 
     // in case this fails, we'll empty the recv buffer when the CNode is deleted
@@ -804,30 +814,30 @@ void ThreadSocketHandler()
         // Disconnect nodes
         //
         {
-            LOCK(cs_vNodes);
-            // Disconnect unused nodes
-            vector<CNode*> vNodesCopy = vNodes;
-            BOOST_FOREACH(CNode* pnode, vNodesCopy)
+        LOCK(cs_vNodes);
+        // Disconnect unused nodes
+        vector<CNode*> vNodesCopy = vNodes;
+        BOOST_FOREACH(CNode* pnode, vNodesCopy)
+        {
+            if (pnode->fDisconnect ||
+                (pnode->GetRefCount() <= 0 && pnode->vRecvMsg.empty() && pnode->nSendSize == 0 && pnode->ssSend.empty()))
             {
-                if (pnode->fDisconnect ||
-                    (pnode->GetRefCount() <= 0 && pnode->vRecvMsg.empty() && pnode->nSendSize == 0 && pnode->ssSend.empty()))
-                {
-                    // remove from vNodes
-                    vNodes.erase(remove(vNodes.begin(), vNodes.end(), pnode), vNodes.end());
+                // remove from vNodes
+                vNodes.erase(remove(vNodes.begin(), vNodes.end(), pnode), vNodes.end());
 
-                    // release outbound grant (if any)
-                    pnode->grantOutbound.Release();
+                // release outbound grant (if any)
+                pnode->grantOutbound.Release();
 
-                    // close socket and cleanup
-                    pnode->CloseSocketDisconnect();
+                // close socket and cleanup
+                pnode->CloseSocketDisconnect();
 
-                    // hold in disconnected pool until all refs are released
-                    if (pnode->fNetworkNode || pnode->fInbound)
-                        pnode->Release();
-                    vNodesDisconnected.push_back(pnode);
+                // hold in disconnected pool until all refs are released
+                if (pnode->fNetworkNode || pnode->fInbound)
+                    pnode->Release();
+                vNodesDisconnected.push_back(pnode);
 #ifdef USE_NATIVE_I2P
-                    if (pnode->addr.IsNativeI2P())
-                        --nI2PNodeCount;
+                if (pnode->addr.IsNativeI2P())
+                    --nI2PNodeCount;
 #endif
                 }
             }
@@ -892,10 +902,10 @@ void ThreadSocketHandler()
 
 #ifdef USE_NATIVE_I2P
         BOOST_FOREACH(const I2PListenSocket& hI2PListenSocket, vhI2PListenSocket) {
-            if (hI2PListenSocket.socket != INVALID_SOCKET)
+            if (hI2PListenSocket.I2Psocket != INVALID_SOCKET)
             {
-                FD_SET(hI2PListenSocket.socket, &fdsetRecv);
-                hSocketMax = max(hSocketMax, hI2PListenSocket.socket);
+                FD_SET(hI2PListenSocket.I2Psocket, &fdsetRecv);
+                hSocketMax = max(hSocketMax, hI2PListenSocket.I2Psocket);
                 have_fds = true;
             }
         }
@@ -1010,7 +1020,7 @@ void ThreadSocketHandler()
         for (std::vector<I2PListenSocket>::iterator it = vhI2PListenSocket.begin(); it != vhI2PListenSocket.end(); ++it)
         {
             I2PListenSocket& hI2PListenSocket = *it;
-            SOCKET& I2PSocket = hI2PListenSocket.socket;
+            SOCKET& I2PSocket = hI2PListenSocket.I2Psocket;
             if (I2PSocket == INVALID_SOCKET)
             {
                 if (haveInvalids)
@@ -1685,7 +1695,7 @@ bool BindListenNativeI2P()
 {
     bool fWhitelisted = false;
     I2PListenSocket hNewI2PListenSocket(INVALID_SOCKET, fWhitelisted);
-    if (!BindListenNativeI2P(hNewI2PListenSocket.socket))
+    if (!BindListenNativeI2P(hNewI2PListenSocket.I2Psocket))
         return false;
     vhI2PListenSocket.push_back(hNewI2PListenSocket);
     return true;
@@ -1954,8 +1964,8 @@ public:
 
 #ifdef USE_NATIVE_I2P
         BOOST_FOREACH(I2PListenSocket& hI2PListenSocket, vhI2PListenSocket)
-            if (hI2PListenSocket.socket != INVALID_SOCKET)
-                if (closesocket(hI2PListenSocket.socket))
+            if (hI2PListenSocket.I2Psocket != INVALID_SOCKET)
+                if (closesocket(hI2PListenSocket.I2Psocket))
                     printf("closesocket(hI2PListenSocket) failed with error %d\n", WSAGetLastError());
 #endif
 
@@ -2033,6 +2043,41 @@ uint64_t CNode::GetTotalBytesSent()
 {
     LOCK(cs_totalBytesSent);
     return nTotalBytesSent;
+}
+
+void CNode::Fuzz(int nChance)
+{
+    if (!fSuccessfullyConnected) return; // Don't fuzz initial handshake
+    if (GetRand(nChance) != 0) return; // Fuzz 1 of every nChance messages
+
+    switch (GetRand(3))
+    {
+    case 0:
+        // xor a random byte with a random value:
+        if (!ssSend.empty()) {
+            CDataStream::size_type pos = GetRand(ssSend.size());
+            ssSend[pos] ^= (unsigned char)(GetRand(256));
+        }
+        break;
+    case 1:
+        // delete a random byte:
+        if (!ssSend.empty()) {
+            CDataStream::size_type pos = GetRand(ssSend.size());
+            ssSend.erase(ssSend.begin()+pos);
+        }
+        break;
+    case 2:
+        // insert a random byte at a random position
+        {
+            CDataStream::size_type pos = GetRand(ssSend.size());
+            char ch = (char)GetRand(256);
+            ssSend.insert(ssSend.begin()+pos, ch);
+        }
+        break;
+    }
+    // Chance of more than one change half the time:
+    // (more changes exponentially less likely):
+    Fuzz(2);
 }
 
 //
