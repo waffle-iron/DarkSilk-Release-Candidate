@@ -53,6 +53,8 @@ static const bool DEFAULT_UPNP = USE_UPNP;
 #else
 static const bool DEFAULT_UPNP = false;
 #endif
+// NOTE: When adjusting this, update rpcnet:setban's help ("24h")
+static const unsigned int DEFAULT_MISBEHAVING_BANTIME = 60 * 60 * 24;  // Default 24-hour ban
 
 inline unsigned int ReceiveFloodSize() { return 1000*GetArg("-maxreceivebuffer", 5*1000); }
 inline unsigned int SendBufferSize() { return 1000*GetArg("-maxsendbuffer", 1*1000); }
@@ -174,9 +176,6 @@ public:
     std::string addrLocal;
 };
 
-
-
-
 class CNetMessage {
 public:
     bool in_data;                   // parsing header (false) or data (true)
@@ -240,6 +239,67 @@ public:
     
 };
 
+typedef enum BanReason
+{
+    BanReasonUnknown          = 0,
+    BanReasonNodeMisbehaving  = 1,
+    BanReasonManuallyAdded    = 2
+} BanReason;
+
+class CBanEntry
+{
+public:
+    static const int CURRENT_VERSION=1;
+    int nVersion;
+    int64_t nCreateTime;
+    int64_t nBanUntil;
+    uint8_t banReason;
+
+    CBanEntry()
+    {
+        SetNull();
+    }
+
+    CBanEntry(int64_t nCreateTimeIn)
+    {
+        SetNull();
+        nCreateTime = nCreateTimeIn;
+    }
+
+    ADD_SERIALIZE_METHODS;
+
+    template <typename Stream, typename Operation>
+    inline void SerializationOp(Stream& s, Operation ser_action, int nType, int nVersion) {
+        READWRITE(this->nVersion);
+        nVersion = this->nVersion;
+        READWRITE(nCreateTime);
+        READWRITE(nBanUntil);
+        READWRITE(banReason);
+    }
+
+    void SetNull()
+    {
+        nVersion = CBanEntry::CURRENT_VERSION;
+        nCreateTime = 0;
+        nBanUntil = 0;
+        banReason = BanReasonUnknown;
+    }
+
+    std::string banReasonToString()
+    {
+        switch (banReason) {
+        case BanReasonNodeMisbehaving:
+            return "node misbehaving";
+        case BanReasonManuallyAdded:
+            return "manually added";
+        default:
+            return "unknown";
+        }
+    }
+};
+
+typedef std::map<CSubNet, CBanEntry> banmap_t;
+
 /// Information about a peer
 class CNode
 {
@@ -293,8 +353,9 @@ protected:
 
     // Denial-of-service detection/prevention
     // Key is IP address, value is banned-until-time
-    static std::map<CNetAddr, int64_t> setBanned;
+    static banmap_t setBanned;
     static CCriticalSection cs_setBanned;
+    static bool setBannedIsDirty;
 
     std::vector<std::string> vecRequestsFulfilled; //keep track of what client has asked for
 
@@ -338,8 +399,6 @@ public:
     int64_t nPingUsecTime;
     // Whether a ping is requested.
     bool fPingQueued;
-
-
 
     CNode(SOCKET hSocketIn, CAddress addrIn, std::string addrNameIn = "", bool fInboundIn=false) : ssSend(SER_NETWORK, INIT_PROTO_VERSION), setAddrKnown(5000)
 #ifdef USE_NATIVE_I2P
@@ -498,8 +557,6 @@ public:
         nRefCount--;
     }
 
-
-
     void AddAddressKnown(const CAddress& addr)
     {
         setAddrKnown.insert(addr);
@@ -554,8 +611,6 @@ public:
         nRequestTime = std::max(nRequestTime + 2 * 60 * 1000000, nNow);
         mapAskFor.insert(std::make_pair(nRequestTime, inv));
     }
-
-
 
     // TODO: Document the postcondition of this function.  Is cs_vSend locked?
     void BeginMessage(const char* pszCommand) EXCLUSIVE_LOCK_FUNCTION(cs_vSend)
@@ -774,7 +829,7 @@ public:
         }
     }
 
-template<typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7, typename T8, typename T9, typename T10>
+    template<typename T1, typename T2, typename T3, typename T4, typename T5, typename T6, typename T7, typename T8, typename T9, typename T10>
     void PushMessage(const char* pszCommand, const T1& a1, const T2& a2, const T3& a3, const T4& a4, const T5& a5, const T6& a6, const T7& a7, const T8& a8, const T9& a9, const T10& a10)
     {
         try
@@ -870,6 +925,20 @@ template<typename T1, typename T2, typename T3, typename T4, typename T5, typena
     // new code.
     static void ClearBanned(); // needed for unit testing
     static bool IsBanned(CNetAddr ip);
+    static bool IsBanned(CSubNet subnet);
+    static void Ban(const CNetAddr &ip, const BanReason &banReason, int64_t bantimeoffset = 0, bool sinceUnixEpoch = false);
+    static void Ban(const CSubNet &subNet, const BanReason &banReason, int64_t bantimeoffset = 0, bool sinceUnixEpoch = false);
+    static bool Unban(const CNetAddr &ip);
+    static bool Unban(const CSubNet &ip);
+    static void GetBanned(banmap_t &banmap);
+    static void SetBanned(const banmap_t &banmap);
+
+    //!check is the banlist has unwritten changes
+    static bool BannedSetIsDirty();
+    //!set the "dirty" flag for the banlist
+    static void SetBannedSetDirty(bool dirty=true);
+    //!clean unused entries (if bantime has expired)
+    static void SweepBanned();
     bool Misbehaving(int howmuch); // 1 == a little, 100 == a lot
     void copyStats(CNodeStats &stats);
 
@@ -909,5 +978,18 @@ public:
     bool Write(const CAddrMan& addr);
     bool Read(CAddrMan& addr);
 };
+
+/** Access to the banlist database (banlist.dat) */
+class CBanDB
+{
+private:
+    boost::filesystem::path pathBanlist;
+public:
+    CBanDB();
+    bool Write(const banmap_t& banSet);
+    bool Read(banmap_t& banSet);
+};
+
+void DumpBanlist();
 
 #endif
