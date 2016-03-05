@@ -335,6 +335,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/qt/plugins/mrichtexteditor/mrichtextedit.h \
             src/qt/qvalidatedtextedit.h \
             src/qt/peertablemodel.h \
+            src/qt/bantablemodel.h \
             src/primitives/block.h \
             src/primitives/transaction.h \
             src/anon/stormnode/stormnode-sync.h \
@@ -359,7 +360,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/qt/multisiginputentry.h \
             src/qt/multisigaddressentry.h \
             src/qt/multisigdialog.h \
-	    src/memusage.h
+            src/memusage.h
 
 SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
 	    src/blindtext.cpp \
@@ -380,6 +381,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/qt/darksilkaddressvalidator.cpp \
             src/qt/statisticspage.cpp \
             src/qt/peertablemodel.cpp \
+            src/qt/bantablemodel.cpp \
             src/alert.cpp \
             src/chainparams.cpp \
             src/cleanse.cpp \
