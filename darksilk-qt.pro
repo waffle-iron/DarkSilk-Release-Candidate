@@ -226,6 +226,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/qt/darksilkaddressvalidator.h \
 	    src/blindtext.h \
             src/alert.h \
+            src/allocators.h \
             src/addrman.h \
             src/base58.h \
             src/bignum.h \
@@ -297,7 +298,6 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/protocol.h \
             src/qt/notificator.h \
             src/qt/paymentserver.h \
-            src/allocators.h \
             src/ui_interface.h \
             src/qt/debugconsole.h \
             src/version.h \
@@ -383,6 +383,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/qt/peertablemodel.cpp \
             src/qt/bantablemodel.cpp \
             src/alert.cpp \
+            src/allocators.cpp \
             src/chainparams.cpp \
             src/cleanse.cpp \
             src/version.cpp \
