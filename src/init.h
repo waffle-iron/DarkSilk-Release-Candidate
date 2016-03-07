@@ -10,19 +10,23 @@
 #include "wallet/wallet.h"
 #endif
 
-namespace boost {
+namespace boost 
+{
     class thread_group;
 } // namespace boost
 
-#ifdef ENABLE_WALLET
 extern CWallet* pwalletMain;
-#endif
 
 void StartShutdown();
 bool ShutdownRequested();
 void Shutdown();
+void PrepareShutdown();
 bool AppInit2(boost::thread_group& threadGroup);
+
 std::string HelpMessage();
+/** Returns licensing information (for -version) */
+std::string LicenseInfo();
+
 extern bool fOnlyTor;
 
 #endif
