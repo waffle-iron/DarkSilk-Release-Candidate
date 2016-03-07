@@ -664,10 +664,11 @@ void CStormnodeMan::ProcessStormnodeConnections()
 {
     LOCK(cs_vNodes);
     BOOST_FOREACH(CNode* pnode, vNodes) {
-        if(pnode->fSandStorm){
+        if(pnode->fSandStormMaster){
             if(sandStormPool.pSubmittedToStormnode != NULL && pnode->addr == sandStormPool.pSubmittedToStormnode->addr) continue;
             LogPrintf("Closing Stormnode connection %s \n", pnode->addr.ToString());
-            pnode->fDisconnect = true;
+            pnode->fSandStormMaster = false;
+            pnode->Release();
         }
     }
 }
