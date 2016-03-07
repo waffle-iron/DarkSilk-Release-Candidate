@@ -13,12 +13,15 @@
 #include <assert.h>
 
 #include "wallet/wallet.h"
+#include "consensus/merkle.h"
+#include "consensus/validation.h"
 #include "base58.h"
 #include "checkpoints.h"
 //#include "walletinterface.h"
 #include "coincontrol.h"
 #include "kernel.h"
 #include "net.h"
+#include "main.h"
 #include "anon/stormnode/stormnode-budget.h"
 #include "timedata.h"
 #include "txdb.h"
@@ -783,7 +786,7 @@ bool CWallet::AddToWalletIfInvolvingMe(const CTransaction& tx, const CBlock* pbl
                 wtx.mapValue.insert(mapNarr.begin(), mapNarr.end());
             // Get merkle branch if transaction was found in a block
             if (pblock)
-                wtx.SetMerkleBranch(pblock);
+                BlockMerkleBranch(*pblock, NULL);
             return AddToWallet(wtx);
         }
     }
@@ -1059,8 +1062,9 @@ void CWalletTx::AddSupportingTransactions(CTxDB& txdb)
 {
     vtxPrev.clear();
 
+    CBlock block;
     const int COPY_DEPTH = 3;
-    if (SetMerkleBranch() < COPY_DEPTH)
+    if (BlockMerkleRoot(block, NULL) < COPY_DEPTH)
     {
         vector<uint256> vWorkQueue;
         BOOST_FOREACH(const CTxIn& txin, vin)
@@ -1100,7 +1104,7 @@ void CWalletTx::AddSupportingTransactions(CTxDB& txdb)
                     continue;
                 }
 
-                int nDepth = tx.SetMerkleBranch();
+                uint256 nDepth = BlockMerkleRoot(block, NULL);
                 vtxPrev.push_back(tx);
 
                 if (nDepth < COPY_DEPTH)

@@ -7,6 +7,8 @@
 #include <boost/assign/list_of.hpp>
 
 #include "rpc/rpcserver.h"
+#include "consensus/merkle.h"
+#include "consensus/validation.h"
 #include "base58.h"
 #include "chainparams.h"
 #include "main.h"
@@ -300,7 +302,7 @@ Value getworkex(const Array& params, bool fHelp)
         uint256 hashTarget = CBigNum().SetCompact(pblock->nBits).getuint256();
 
         CTransaction coinbaseTx = pblock->vtx[0];
-        std::vector<uint256> merkle = pblock->GetMerkleBranch(0);
+        std::vector<uint256> merkle = BlockMerkleBranch(*pblock, 0);
 
         Object result;
         result.push_back(Pair("data",     HexStr(BEGIN(pdata), END(pdata))));
@@ -312,7 +314,7 @@ Value getworkex(const Array& params, bool fHelp)
 
         Array merkle_arr;
 
-        BOOST_FOREACH(uint256 merkleh, merkle) {
+        BOOST_FOREACH(uint256 merkleh, BlockMerkleBranch(*pblock, 0)) {
             merkle_arr.push_back(HexStr(BEGIN(merkleh), END(merkleh)));
         }
 
@@ -352,7 +354,7 @@ Value getworkex(const Array& params, bool fHelp)
         else
             CDataStream(coinbase, SER_NETWORK, PROTOCOL_VERSION) >> pblock->vtx[0]; // FIXME - HACK!
 
-        pblock->hashMerkleRoot = pblock->BuildMerkleTree();
+        pblock->hashMerkleRoot = BlockMerkleRoot(*pblock);
 
         assert(pwalletMain != NULL);
         return CheckWork(pblock, *pwalletMain, *pMiningKey);
@@ -465,7 +467,7 @@ Value getwork(const Array& params, bool fHelp)
         pblock->nTime = pdata->nTime;
         pblock->nNonce = pdata->nNonce;
         pblock->vtx[0].vin[0].scriptSig = mapNewBlock[pdata->hashMerkleRoot].second;
-        pblock->hashMerkleRoot = pblock->BuildMerkleTree();
+        pblock->hashMerkleRoot = BlockMerkleRoot(*pblock);
 
         assert(pwalletMain != NULL);
         return CheckWork(pblock, *pwalletMain, *pMiningKey);

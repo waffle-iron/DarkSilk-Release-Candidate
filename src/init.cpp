@@ -17,6 +17,8 @@
 #include "main.h"
 #include "chainparams.h"
 #include "sanity.h"
+#include "consensus/merkle.h"
+#include "consensus/validation.h"
 #include "net.h"
 #include "key.h"
 #include "pubkey.h"
@@ -1172,7 +1174,7 @@ bool AppInit2(boost::thread_group& threadGroup)
                 CBlockIndex* pindex = (*mi).second;
                 CBlock block;
                 block.ReadFromDisk(pindex);
-                block.BuildMerkleTree();
+                BlockMerkleRoot(block);
                 LogPrintf("%s\n", block.ToString());
                 nFound++;
             }

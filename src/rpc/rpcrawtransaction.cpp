@@ -7,6 +7,7 @@
 #include <boost/assign/list_of.hpp>
 
 #include "rpc/rpcserver.h"
+#include "consensus/validation.h"
 #include "base58.h"
 #include "primitives/transaction.h"
 #include "txdb.h"
