@@ -1096,9 +1096,10 @@ bool AppInit2(boost::thread_group& threadGroup)
             if (strncmp(hash.ToString().c_str(), strMatch.c_str(), strMatch.size()) == 0)
             {
                 CBlockIndex* pindex = (*mi).second;
+                bool mutated;
                 CBlock block;
                 block.ReadFromDisk(pindex);
-                BlockMerkleRoot(block);
+                BlockMerkleRoot(block, &mutated);
                 LogPrintf("%s\n", block.ToString());
                 nFound++;
             }
