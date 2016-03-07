@@ -12,6 +12,7 @@
 #include <assert.h>
 
 #include "wallet/wallet.h"
+#include "consensus/validation.h"
 #include "base58.h"
 #include "checkpoints.h"
 #include "coincontrol.h"

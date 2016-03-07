@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 
+#include "consensus/validation.h"
 #include "amount.h"
 #include "uint256.h"
 #include "serialize.h"
@@ -15,7 +16,6 @@
 #include "script/script.h"
 #include "timedata.h"
 
-class CValidationInterface;
 class CValidationState;
 
 /// The maximum allowed size for a serialized block, in bytes (network rule)
