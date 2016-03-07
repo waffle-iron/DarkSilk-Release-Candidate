@@ -9,6 +9,7 @@
 
 #include <vector>
 
+#include "consensus/params.h"
 #include "bignum.h"
 #include "uint256.h"
 

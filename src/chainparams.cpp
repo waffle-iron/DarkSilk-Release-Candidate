@@ -10,6 +10,7 @@
 
 #include "chainparams.h"
 #include "chainparamsseeds.h"
+#include "consensus/merkle.h"
 #include "main.h"
 #include "net.h"
 #include "util.h"
@@ -81,7 +82,7 @@ public:
         CMutableTransaction txNew(1, 1444948732, vin, vout, 0);
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
-        genesis.hashMerkleRoot = genesis.BuildMerkleTree();
+        genesis.hashMerkleRoot = BlockMerkleRoot(genesis);
         genesis.nVersion = 1;
         genesis.nTime    = 1444948732; //Change to current UNIX Time of generated genesis
         genesis.nBits    = 0x1e0ffff0;
@@ -91,11 +92,11 @@ public:
 
         //// debug print
         /*
-        printf("Gensis Hash: %s\n", genesis.GetHash().ToString().c_str());
-        printf("Gensis Hash Merkle: %s\n", genesis.hashMerkleRoot.ToString().c_str());
-        printf("Gensis nTime: %u\n", genesis.nTime);
-        printf("Gensis nBits: %08x\n", genesis.nBits);
-        printf("Gensis Nonce: %u\n\n\n", genesis.nNonce);
+        printf("Genesis Hash: %s\n", genesis.GetHash().ToString().c_str());
+        printf("Genesis Hash Merkle: %s\n", genesis.hashMerkleRoot.ToString().c_str());
+        printf("Genesis nTime: %u\n", genesis.nTime);
+        printf("Genesis nBits: %08x\n", genesis.nBits);
+        printf("Genesis Nonce: %u\n\n\n", genesis.nNonce);
         */
 
         assert(hashGenesisBlock == uint256("0xdcc5e22e275eff273799a4c06493f8364316d032813c22845602f05ff13d7ec7"));

@@ -1667,7 +1667,7 @@ This label turns red, if the priority is smaller than &quot;medium&quot;.
         <location line="+5"/>
         <location line="+5"/>
         <source>Send Coins</source>
-        <translation>Spedisci Bitcoin</translation>
+        <translation>Spedisci DarkSilk</translation>
     </message>
     <message>
         <location line="+76"/>

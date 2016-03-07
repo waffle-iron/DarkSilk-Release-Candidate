@@ -363,7 +363,10 @@ HEADERS +=  src/qt/darksilkgui.h \
 	    src/walletinterface.h \
             src/memusage.h \
 	    src/random.h \
-            src/consensus/params.h
+            src/consensus/params.h \
+            src/consensus/merkle.h \
+            src/consensus/params.h \
+            src/consensus/validation.h
 
 SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
 	    src/rest.cpp \
@@ -406,6 +409,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/init.cpp \
             src/net.cpp \
             src/checkpoints.cpp \
+            src/consensus/merkle.cpp \
             src/qt/multisiginputentry.cpp \
             src/qt/multisigaddressentry.cpp \
             src/qt/multisigdialog.cpp \

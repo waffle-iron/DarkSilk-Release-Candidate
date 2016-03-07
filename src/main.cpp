@@ -16,6 +16,7 @@
 #include "chainparams.h"
 #include "checkpoints.h"
 #include "consensus/params.h"
+#include "consensus/merkle.h"
 #include "wallet/db.h"
 #include "init.h"
 #include "kernel.h"
@@ -739,51 +740,6 @@ unsigned int GetP2SHSigOpCount(const CTransaction& tx, const MapPrevTx& inputs)
     return nSigOps;
 }
 
-int CMerkleTx::SetMerkleBranch(const CBlock* pblock)
-{
-    AssertLockHeld(cs_main);
-
-    CBlock blockTmp;
-    if (pblock == NULL)
-    {
-        // Load the block this tx is in
-        CTxIndex txindex;
-        if (!CTxDB("r").ReadTxIndex(GetHash(), txindex))
-            return 0;
-        if (!blockTmp.ReadFromDisk(txindex.pos.nFile, txindex.pos.nBlockPos))
-            return 0;
-        pblock = &blockTmp;
-    }
-
-    // Update the tx's hashBlock
-    hashBlock = pblock->GetHash();
-
-    // Locate the transaction
-    for (nIndex = 0; nIndex < (int)pblock->vtx.size(); nIndex++)
-        if (pblock->vtx[nIndex] == *(CTransaction*)this)
-            break;
-    if (nIndex == (int)pblock->vtx.size())
-    {
-        vMerkleBranch.clear();
-        nIndex = -1;
-        LogPrintf("ERROR: SetMerkleBranch() : couldn't find tx in block\n");
-        return 0;
-    }
-
-    // Fill in merkle branch
-    vMerkleBranch = pblock->GetMerkleBranch(nIndex);
-
-    // Is the tx in a block that's in the main chain
-    map<uint256, CBlockIndex*>::iterator mi = mapBlockIndex.find(hashBlock);
-    if (mi == mapBlockIndex.end())
-        return 0;
-    CBlockIndex* pindex = (*mi).second;
-    if (!pindex || !pindex->IsInMainChain())
-        return 0;
-
-    return nBestHeight - pindex->nHeight + 1;
-}
-
 CAmount GetMinFee(const CTransaction& tx, unsigned int nBytes, bool fAllowFree, enum GetMinFee_mode mode)
 {
     // Base fee is either MIN_TX_FEE or MIN_RELAY_TX_FEE
@@ -1347,7 +1303,7 @@ int CMerkleTx::GetDepthInMainChainINTERNAL(CBlockIndex* &pindexRet) const
     // Make sure the merkle branch connects to this block
     if (!fMerkleVerified)
     {
-        if (CBlock::CheckMerkleBranch(GetHash(), vMerkleBranch, nIndex) != pindex->hashMerkleRoot)
+        if (ComputeMerkleRootFromBranch(GetHash(), vMerkleBranch, nIndex) != pindex->hashMerkleRoot)
             return 0;
         fMerkleVerified = true;
     }
@@ -1361,7 +1317,7 @@ int CMerkleTx::GetTransactionLockSignatures() const
     if(!IsSporkActive(SPORK_2_INSTANTX)) return -3;
     if(!fEnableInstantX) return -1;
 
-    //compile consessus vote
+    //compile consensus vote
     std::map<uint256, CTransactionLock>::iterator i = mapTxLocks.find(GetHash());
     if (i != mapTxLocks.end()){
         return (*i).second.CountSignatures();
@@ -1994,7 +1950,7 @@ bool ProcessBlock(CNode* pfrom, CBlock* pblock)
                 CDataStream ss(mi->second->vchBlock, SER_DISK, CLIENT_VERSION);
                 ss >> block;
             }
-            block.BuildMerkleTree();
+            BlockMerkleRoot(block, NULL);
             if (block.AcceptBlock())
                 vWorkQueue.push_back(mi->second->hashBlock);
             mapOrphanBlocks.erase(mi->second->hashBlock);
@@ -4162,17 +4118,17 @@ bool static FlushStateToDisk(CValidationState &state, FlushStateMode mode) {
         bool fileschanged = false;
         for (set<int>::iterator it = setDirtyFileInfo.begin(); it != setDirtyFileInfo.end(); ) {
             if (!pblocktree->WriteBlockFileInfo(*it, vinfoBlockFile[*it])) {
-                return state.Abort("Failed to write to block index");
+                return AbortNode(state, "Failed to write to block index");
             }
             fileschanged = true;
             setDirtyFileInfo.erase(it++);
         }
         if (fileschanged && !pblocktree->WriteLastBlockFile(nLastBlockFile)) {
-            return state.Abort("Failed to write to block index");
+            return AbortNode(state, "Failed to write to block index");
         }
         for (set<CBlockIndex*>::iterator it = setDirtyBlockIndex.begin(); it != setDirtyBlockIndex.end(); ) {
              if (!pblocktree->WriteBlockIndex(CDiskBlockIndex(*it))) {
-                 return state.Abort("Failed to write to block index");
+                 return AbortNode(state, "Failed to write to block index");
              }
              setDirtyBlockIndex.erase(it++);
         }
@@ -4181,7 +4137,7 @@ bool static FlushStateToDisk(CValidationState &state, FlushStateMode mode) {
 
         // Finally flush the chainstate (which may refer to block index entries).
         if (!pcoinsTip->Flush())
-            return state.Abort("Failed to write to coin database");
+            return AbortNode(state, "Failed to write to coin database");
         // Update best block in wallet (so we can detect restored wallets).
         //TODO (Amir): put back when chainActive is implemented.
         //if (mode != FLUSH_STATE_IF_NEEDED) {
@@ -4190,11 +4146,10 @@ bool static FlushStateToDisk(CValidationState &state, FlushStateMode mode) {
         nLastWrite = GetTimeMicros();
     }
     } catch (const std::runtime_error& e) {
-        return state.Abort(std::string("System error while flushing: ") + e.what());
+        return AbortNode(state, std::string("System error while flushing: ") + e.what());
     }
     return true;
 }
-
 void FlushStateToDisk() {
     CValidationState state;
     FlushStateToDisk(state, FLUSH_STATE_ALWAYS);
