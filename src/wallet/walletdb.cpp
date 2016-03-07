@@ -8,6 +8,7 @@
 #include <boost/foreach.hpp>
 
 #include "wallet/walletdb.h"
+#include "consensus/validation.h"
 #include "base58.h"
 #include "protocol.h"
 #include "serialize.h"

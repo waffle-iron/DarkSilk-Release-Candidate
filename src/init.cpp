@@ -17,6 +17,7 @@
 #include "main.h"
 #include "chainparams.h"
 #include "sanity.h"
+#include "consensus/validation.h"
 #include "net.h"
 #include "key.h"
 #include "pubkey.h"
