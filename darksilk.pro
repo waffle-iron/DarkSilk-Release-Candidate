@@ -241,8 +241,8 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/hash.h \
             src/uint256.h \
             src/kernel.h \
-            src/scrypt.h \
-            src/pbkdf2.h \
+            src/crypto/scrypt/scrypt.h \
+            src/crypto/scrypt/pbkdf2.h \
             src/serialize.h \
             src/main.h \
             src/miner.h \
@@ -454,11 +454,11 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/qt/debugconsole.cpp \
             src/noui.cpp \
             src/kernel.cpp \
-            src/scrypt-arm.S \
-            src/scrypt-x86.S \
-            src/scrypt-x86_64.S \
-            src/scrypt.cpp \
-            src/pbkdf2.cpp \
+            src/crypto/scrypt/scrypt-arm.S \
+            src/crypto/scrypt/scrypt-x86.S \
+            src/crypto/scrypt/scrypt-x86_64.S \
+            src/crypto/scrypt/scrypt.cpp \
+            src/crypto/scrypt/pbkdf2.cpp \
             src/anon/stealth/stealth.cpp \
             src/qt/flowlayout.cpp \
             src/qt/sandstormconfig.cpp \
