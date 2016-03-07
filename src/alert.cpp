@@ -19,6 +19,7 @@
 #include "timedata.h"
 #include "ui_interface.h"
 #include "util.h"
+#include "random.h"
 
 using namespace std;
 

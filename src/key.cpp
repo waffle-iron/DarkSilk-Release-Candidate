@@ -13,6 +13,7 @@
 #include "crypto/hmac_sha512.h"
 #include "pubkey.h"
 #include "util.h"
+#include "random.h"
 
 #include <openssl/ecdsa.h>
 #include <openssl/obj_mac.h>

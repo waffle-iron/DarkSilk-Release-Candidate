@@ -27,6 +27,7 @@
 #include "netbase.h"
 #include "protocol.h"
 #include "util.h"
+#include "random.h"
 #include "streams.h"
 #include "sync.h"
 #include "uint256.h"

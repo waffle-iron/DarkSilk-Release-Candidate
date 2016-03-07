@@ -15,7 +15,7 @@
 #include "main.h"
 #include "net.h"
 #include "wallet/wallet.h"
-#include "blindtext.h"
+#include "anon/blindtext/blindtext.h"
 
 using namespace std;
 using namespace boost;
