@@ -1,11 +1,13 @@
 // Copyright (c) 2009-2016 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Developers
+// Copyright (c) 2015-2016 Silk Network
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include <boost/algorithm/string/replace.hpp>
 
 #include "chain.h"
+#include "consensus/merkle.h"
 #include "wallet/wallet.h"
 #include "checkpoints.h"
 #include "anon/stormnode/spork.h"
@@ -53,6 +55,7 @@ bool CBlock::SignBlock(CWallet& wallet, CAmount nFees)
     static int64_t nLastCoinStakeSearchTime = GetAdjustedTime(); // startup timestamp
 
     CKey key;
+    CBlock block;
     CTransaction txCoinStake;
     txCoinStake.nTime &= ~STAKE_TIMESTAMP_MASK;
 
@@ -75,7 +78,7 @@ bool CBlock::SignBlock(CWallet& wallet, CAmount nFees)
                     if (it->nTime > nTime) { it = vtx.erase(it); } else { ++it; }
 
                 vtx.insert(vtx.begin() + 1, txCoinStake);
-                hashMerkleRoot = BuildMerkleTree();
+                hashMerkleRoot = BlockMerkleRoot(block, NULL);
 
                 // append a signature to our block
                 return key.Sign(GetHash(), vchBlockSig);
@@ -765,6 +768,7 @@ bool CBlock::CheckBlock(CValidationState& state, bool fCheckPOW, bool fCheckMerk
     // Check for duplicate txids. This is caught by ConnectInputs(),
     // but catching it earlier avoids a potential DoS attack:
     set<uint256> uniqueTx;
+    CBlock block;
     BOOST_FOREACH(const CTransaction& tx, vtx)
     {
         uniqueTx.insert(tx.GetHash());
@@ -781,7 +785,7 @@ bool CBlock::CheckBlock(CValidationState& state, bool fCheckPOW, bool fCheckMerk
         return DoS(100, error("CheckBlock() : out-of-bounds SigOpCount"));
 
     // Check merkle root
-    if (fCheckMerkleRoot && hashMerkleRoot != BuildMerkleTree())
+    if (fCheckMerkleRoot && hashMerkleRoot != BlockMerkleRoot(block, NULL))
         return DoS(100, error("CheckBlock() : hashMerkleRoot mismatch"));
 
 
