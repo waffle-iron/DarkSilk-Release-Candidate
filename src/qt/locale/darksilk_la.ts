@@ -2922,7 +2922,7 @@ alternate-background-color: rgb(86, 0, 120);)</source>
     <message>
         <location line="+41"/>
         <source>SSL options: (see the DarkSilk Wiki for SSL setup instructions)</source>
-        <translation>Optiones SSL: (vide vici de Bitcoin pro instructionibus SSL configurationis)</translation>
+        <translation>Optiones SSL: (vide vici de DarkSilk pro instructionibus SSL configurationis)</translation>
     </message>
     <message>
         <location line="-81"/>
