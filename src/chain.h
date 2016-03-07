@@ -13,6 +13,7 @@
 #include "util.h"
 #include "random.h"
 #include "chainparams.h"
+#include "walletinterface.h"
 
 class CTxDB;
 

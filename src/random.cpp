@@ -15,6 +15,8 @@
 #endif
 #include <cstring> // for memset()
 
+#include <boost/date_time/posix_time/posix_time.hpp>
+
 #include <algorithm>
 
 #include <openssl/crypto.h>

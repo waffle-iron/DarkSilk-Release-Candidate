@@ -8,6 +8,7 @@
 
 #include "uint256.h"
 
+#include <boost/date_time/posix_time/posix_time.hpp>
 #include <stdint.h>
 
 bool GetRandBytes(unsigned char* buf, int num);

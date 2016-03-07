@@ -20,6 +20,7 @@
 #include "init.h"
 #include "kernel.h"
 #include "txdb.h"
+#include "walletinterface.h"
 #include "ui_interface.h"
 #include "anon/instantx/instantx.h"
 #include "anon/sandstorm/sandstorm.h"
@@ -202,63 +203,6 @@ namespace {
 //
 // dispatching functions
 //
-
-// These functions dispatch to one or all registered wallets
-
-namespace {
-    struct CMainSignals {
-        // Notifies listeners of updated transaction data (passing hash, transaction, and optionally the block it is found in.
-        boost::signals2::signal<void (const CTransaction &, const CBlock *, bool)> SyncTransaction;
-        // Notifies listeners of an erased transaction (currently disabled, requires transaction replacement).
-        boost::signals2::signal<void (const uint256 &)> EraseTransaction;
-        // Notifies listeners of an updated transaction without new data (for now: a coinbase potentially becoming visible).
-        boost::signals2::signal<void (const uint256 &)> UpdatedTransaction;
-        // Notifies listeners of a new active block chain.
-        boost::signals2::signal<void (const CBlockLocator &)> SetBestChain;
-        // Notifies listeners about an inventory item being seen on the network.
-        boost::signals2::signal<void (const uint256 &)> Inventory;
-        // Tells listeners to broadcast their data.
-        boost::signals2::signal<void (bool)> Broadcast;
-    } g_signals;
-}
-
-void RegisterWallet(CWalletInterface* pwalletIn) {
-    g_signals.SyncTransaction.connect(boost::bind(&CWalletInterface::SyncTransaction, pwalletIn, _1, _2, _3));
-    g_signals.EraseTransaction.connect(boost::bind(&CWalletInterface::EraseFromWallet, pwalletIn, _1));
-    g_signals.UpdatedTransaction.connect(boost::bind(&CWalletInterface::UpdatedTransaction, pwalletIn, _1));
-    g_signals.SetBestChain.connect(boost::bind(&CWalletInterface::SetBestChain, pwalletIn, _1));
-    g_signals.Inventory.connect(boost::bind(&CWalletInterface::Inventory, pwalletIn, _1));
-    g_signals.Broadcast.connect(boost::bind(&CWalletInterface::ResendWalletTransactions, pwalletIn, _1));
-}
-
-void UnregisterWallet(CWalletInterface* pwalletIn) {
-    g_signals.Broadcast.disconnect(boost::bind(&CWalletInterface::ResendWalletTransactions, pwalletIn, _1));
-    g_signals.Inventory.disconnect(boost::bind(&CWalletInterface::Inventory, pwalletIn, _1));
-    g_signals.SetBestChain.disconnect(boost::bind(&CWalletInterface::SetBestChain, pwalletIn, _1));
-    g_signals.UpdatedTransaction.disconnect(boost::bind(&CWalletInterface::UpdatedTransaction, pwalletIn, _1));
-    g_signals.EraseTransaction.disconnect(boost::bind(&CWalletInterface::EraseFromWallet, pwalletIn, _1));
-    g_signals.SyncTransaction.disconnect(boost::bind(&CWalletInterface::SyncTransaction, pwalletIn, _1, _2, _3));
-}
-
-void UnregisterAllValidationInterfaces() {
-    g_signals.Broadcast.disconnect_all_slots();
-    g_signals.Inventory.disconnect_all_slots();
-    g_signals.SetBestChain.disconnect_all_slots();
-    g_signals.UpdatedTransaction.disconnect_all_slots();
-    g_signals.EraseTransaction.disconnect_all_slots();
-    g_signals.SyncTransaction.disconnect_all_slots();
-}
-
-void SyncWithWallets(const CTransaction &tx, const CBlock *pblock, bool fConnect) {
-    g_signals.SyncTransaction(tx, pblock, fConnect);
-}
-
-void ResendWalletTransactions(bool fForce) {
-    g_signals.Broadcast(fForce);
-}
-
-
-//////////////////////////////////////////////////////////////////////////////
 //
 // Registration of network node signals.
 //
@@ -2693,7 +2637,7 @@ void static ProcessGetData(CNode* pfrom)
             }
 
             // Track requests for our stuff.
-            g_signals.Inventory(inv.hash);
+            GetMainSignals().Inventory(inv.hash);
 
             if (inv.type == MSG_BLOCK || inv.type == MSG_FILTERED_BLOCK )
                 break;
@@ -2956,7 +2900,7 @@ bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv, 
             }
 
             // Track requests for our stuff
-            g_signals.Inventory(inv.hash);
+            GetMainSignals().Inventory(inv.hash);
         }
     }
 
@@ -3652,7 +3596,7 @@ bool SendMessages(CNode* pto, bool fSendTrickle)
         // transactions become unconfirmed and spams other nodes.
         if (!fReindex && !fImporting && !IsInitialBlockDownload())
         {
-            g_signals.Broadcast();
+            GetMainSignals().Broadcast();
         }
 */
         //
@@ -4241,7 +4185,7 @@ bool static FlushStateToDisk(CValidationState &state, FlushStateMode mode) {
         // Update best block in wallet (so we can detect restored wallets).
         //TODO (Amir): put back when chainActive is implemented.
         //if (mode != FLUSH_STATE_IF_NEEDED) {
-        //    g_signals.SetBestChain(chainActive.GetLocator());
+        //    GetMainSignals().SetBestChain(chainActive.GetLocator());
         //}
         nLastWrite = GetTimeMicros();
     }
@@ -4562,7 +4506,7 @@ bool static ConnectTip(CValidationState &state, CBlockIndex *pindexNew, CBlock *
         CCoinsViewCache view(pcoinsTip);
         CInv inv(MSG_BLOCK, pindexNew->GetBlockHash());
         bool rv = ConnectBlock(*pblock, state, pindexNew, view);
-        g_signals.BlockChecked(*pblock, state);
+        GetMainSignals().BlockChecked(*pblock, state);
         if (!rv) {
             if (state.IsInvalid())
                 InvalidBlockFound(pindexNew, state);
@@ -4673,7 +4617,7 @@ bool CBlock::SetBestChain(CTxDB& txdb, CBlockIndex* pindexNew)
     if ((pindexNew->nHeight % 20160) == 0 || (!fIsInitialDownload && (pindexNew->nHeight % 144) == 0))
     {
         const CBlockLocator locator(pindexNew);
-        g_signals.SetBestChain(locator);
+        GetMainSignals().SetBestChain(locator);
     }
 
     // New best block
@@ -4784,7 +4728,7 @@ bool CBlock::AddToBlockIndex(unsigned int nFile, unsigned int nBlockPos, const u
     {
         // Notify UI to display prev block's coinbase if it was ours
         static uint256 hashPrevBestCoinBase;
-        g_signals.UpdatedTransaction(hashPrevBestCoinBase);
+        GetMainSignals().UpdatedTransaction(hashPrevBestCoinBase);
         hashPrevBestCoinBase = vtx[0].GetHash();
     }
 

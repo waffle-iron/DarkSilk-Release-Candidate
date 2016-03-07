@@ -12,6 +12,7 @@
 #include "timedata.h"
 #include "util.h"
 #include "wallet/wallet.h"
+//#include "walletinterface.h"
 #include "wallet/walletdb.h"
 
 using namespace std;

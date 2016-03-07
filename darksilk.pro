@@ -360,6 +360,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/qt/multisiginputentry.h \
             src/qt/multisigaddressentry.h \
             src/qt/multisigdialog.h \
+	    src/walletinterface.h \
             src/memusage.h \
 	    src/random.h \
             src/consensus/params.h
@@ -501,6 +502,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/leveldbwrapper.cpp \
             src/txdb.cpp \
 	    src/random.cpp \
+	    src/walletinterface.cpp \
             src/amount.cpp \
             src/undo.cpp \
 	    src/rpc/rpcblindtext.cpp \

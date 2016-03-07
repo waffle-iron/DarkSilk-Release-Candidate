@@ -33,6 +33,7 @@
 #include "anon/stormnode/spork.h"
 #include "smessage.h"
 #include "txdb-leveldb.h"
+#include "walletinterface.h"
 
 #ifdef ENABLE_WALLET
 #include "db.h"
@@ -376,21 +377,20 @@ std::string HelpMessage(HelpMessageMode hmm)
     }
 
     if (hmm == HMM_BITCOIND){
-	#if ENABLE_ZMQ
-    		strUsage += HelpMessageGroup(_("ZeroMQ notification options:"));
-    		strUsage += HelpMessageOpt("-zmqpubhashblock=<address>", _("Enable publish hash block in <address>"));
-    		strUsage += HelpMessageOpt("-zmqpubhashtransaction=<address>", _("Enable publish hash transaction in <address>"));
-    		strUsage += HelpMessageOpt("-zmqpubrawblock=<address>", _("Enable publish raw block in <address>"));
-    		strUsage += HelpMessageOpt("-zmqpubrawtransaction=<address>", _("Enable publish raw transaction in <address>"));
-	#endif
-
-    	strUsage += HelpMessageGroup(_("Debugging/Testing options:"));
-    	if (showDebug)
-    	{
-#if !defined(WIN32)
-        	strUsage += "  -daemon                " + _("Run in the background as a daemon and accept commands") + "\n";
+#if ENABLE_ZMQ
+   		strUsage += "\n" + _("ZeroMQ notification options:") + "\n";
+   		strUsage += ("-zmqpubhashblock=<address>", _("Enable publish hash block in <address>"));
+   		strUsage += ("-zmqpubhashtransaction=<address>", _("Enable publish hash transaction in <address>"));
+   		strUsage += ("-zmqpubrawblock=<address>", _("Enable publish raw block in <address>"));
+   		strUsage += ("-zmqpubrawtransaction=<address>", _("Enable publish raw transaction in <address>"));
 #endif
-    	}
+
+   	if (fDebug)
+   	{
+#if !defined(WIN32)
+       	strUsage += "  -daemon                " + _("Run in the background as a daemon and accept commands") + "\n";
+#endif
+   	}
 	}
 
     if (hmm == HMM_BITCOIND || hmm == HMM_BITCOIN_CLI)

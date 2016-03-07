@@ -15,6 +15,7 @@
 #include "wallet/wallet.h"
 #include "base58.h"
 #include "checkpoints.h"
+//#include "walletinterface.h"
 #include "coincontrol.h"
 #include "kernel.h"
 #include "net.h"
