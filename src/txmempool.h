@@ -8,9 +8,9 @@
 
 #include <boost/circular_buffer.hpp>
 
+#include "coins.h"
 #include "primitives/transaction.h"
 #include "sync.h"
-#include "coins.h"
 #include "amount.h"
 
 inline double AllowFreeThreshold()

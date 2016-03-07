@@ -9,6 +9,7 @@
 #include "primitives/transaction.h"
 #include "crypto/argon2/argon2.h"
 #include "scrypt.h"
+#include "consensus/params.h"
 
 class CTxDB;
 class CWallet;
@@ -17,6 +18,9 @@ class CBlockIndex;
 static const int64_t POW_DRIFT = 10 * 60; // 600 seconds
 static const int64_t POS_DRIFT = 10 * 64; // 640 seconds
 
+//TODO (Amir): Move CheckProofOfWork to pow.cpp/h.
+///! Check whether a block hash satisfies the proof-of-work requirement specified by nBits
+bool CheckProofOfWork(uint256 hash, unsigned int nBits, const Consensus::Params&);
 bool CheckProofOfWork(uint256 hash, unsigned int nBits);
 
 inline int64_t FutureDrift(int64_t nTime, bool fProofOfStake=false) { return nTime + (fProofOfStake ? POS_DRIFT : POW_DRIFT); }

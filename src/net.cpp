@@ -412,18 +412,19 @@ CNode* FindNode(const CService& addr)
     return NULL;
 }
 
-CNode* ConnectNode(CAddress addrConnect, const char *pszDest, bool sandStormnode)
+CNode* ConnectNode(CAddress addrConnect, const char *pszDest, bool sandStormMaster)
 {
     if (pszDest == NULL) {
-        if (IsLocal(addrConnect))
+        // we clean stormnode connections in CStormnodeMan::ProcessStormnodeConnections()
+        // so should be safe to skip this and connect to local Hot SN on CActiveStormnode::ManageStatus()
+        if (IsLocal(addrConnect) && !sandStormMaster)
             return NULL;
 
         // Look for an existing connection
         CNode* pnode = FindNode((CService)addrConnect);
         if (pnode)
         {
-            if(sandStormnode)
-                pnode->fSandStorm = true;
+            pnode->fSandStormMaster = sandStormMaster;
 
             pnode->AddRef();
             return pnode;
@@ -469,6 +470,8 @@ CNode* ConnectNode(CAddress addrConnect, const char *pszDest, bool sandStormnode
         }
 
         pnode->nTimeConnected = GetTime();
+        if(sandStormMaster) pnode->fSandStormMaster = true;
+
         return pnode;
     } else if (!proxyConnectionFailed) {
         // If connecting to the node failed, and failure is not caused by a problem connecting to

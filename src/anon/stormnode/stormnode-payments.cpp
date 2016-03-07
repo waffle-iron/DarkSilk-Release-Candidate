@@ -184,20 +184,21 @@ void DumpStormnodePayments()
 }
 
 bool IsBlockValueValid(const CBlock& block, CAmount nExpectedValue){
-    CBlockIndex* pindexPrev = pindexBest;
-    if(pindexPrev == NULL) return true;
 
     int nHeight = 0;
-    if(pindexPrev->GetBlockHash() == block.hashPrevBlock)
+
     {
-        nHeight = pindexPrev->nHeight+1;
+        LOCK(cs_main);
+        if(!pindexBest) return true;
+        if(pindexBest->GetBlockHash() == block.hashPrevBlock)
+        {
+            nHeight = pindexBest->nHeight+1;
+        } else { //out of order
+            BlockMap::iterator mi = mapBlockIndex.find(block.hashPrevBlock);
+            if (mi != mapBlockIndex.end() && (*mi).second)
+                nHeight = (*mi).second->nHeight+1;
+        }
     }
-    //TODO (Amir): Put back... conversion from 'std::map<uint256, CBlockIndex*>::iterator error.
-    // else { //out of order
-     //   BlockMap::iterator mi = mapBlockIndex.find(block.hashPrevBlock);
-     //   if (mi != mapBlockIndex.end() && (*mi).second)
-     //       nHeight = (*mi).second->nHeight+1;
-    //}
 
     if(nHeight == 0){
         LogPrintf("IsBlockValueValid() : WARNING: Couldn't find previous block");
@@ -272,10 +273,9 @@ bool IsBlockPayeeValid(const CTransaction& txNew, int nBlockHeight)
 
 void FillBlockPayee(CTransaction& txNew, CAmount nFees) //TODO (Amir): Use CMutableTransaction here
 {
-    CBlockIndex* pindexPrev = pindexBest;
-    if(!pindexPrev) return;
+    if(!pindexBest) return;
 
-    if(IsSporkActive(SPORK_13_ENABLE_SUPERBLOCKS) && budget.IsBudgetPaymentBlock(pindexPrev->nHeight+1)){
+    if(IsSporkActive(SPORK_13_ENABLE_SUPERBLOCKS) && budget.IsBudgetPaymentBlock(pindexBest->nHeight+1)){
         budget.FillBlockPayee(txNew, nFees);
     } else {
         stormnodePayments.FillBlockPayee(txNew, nFees);
