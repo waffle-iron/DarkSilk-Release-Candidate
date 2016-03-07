@@ -5,6 +5,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "rpc/rpcserver.h"
+#include "consensus/validation.h"
 #include "main.h"
 #include "kernel.h"
 #include "checkpoints.h"
