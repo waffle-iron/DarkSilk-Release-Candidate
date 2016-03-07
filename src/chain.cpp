@@ -56,6 +56,7 @@ bool CBlock::SignBlock(CWallet& wallet, CAmount nFees)
 
     CKey key;
     CBlock block;
+    bool mutated;
     CTransaction txCoinStake;
     txCoinStake.nTime &= ~STAKE_TIMESTAMP_MASK;
 
@@ -78,7 +79,7 @@ bool CBlock::SignBlock(CWallet& wallet, CAmount nFees)
                     if (it->nTime > nTime) { it = vtx.erase(it); } else { ++it; }
 
                 vtx.insert(vtx.begin() + 1, txCoinStake);
-                hashMerkleRoot = BlockMerkleRoot(block, NULL);
+                hashMerkleRoot = BlockMerkleRoot(block, &mutated);
 
                 // append a signature to our block
                 return key.Sign(GetHash(), vchBlockSig);
@@ -784,11 +785,19 @@ bool CBlock::CheckBlock(CValidationState& state, bool fCheckPOW, bool fCheckMerk
     if (nSigOps > MAX_BLOCK_SIGOPS)
         return DoS(100, error("CheckBlock() : out-of-bounds SigOpCount"));
 
-    // Check merkle root
-    if (fCheckMerkleRoot && hashMerkleRoot != BlockMerkleRoot(block, NULL))
-        return DoS(100, error("CheckBlock() : hashMerkleRoot mismatch"));
+   // Check the merkle root.
+    if (fCheckMerkleRoot) {
+        bool mutated;
+        uint256 hashMerkleRoot2 = BlockMerkleRoot(block, &mutated);
+        if (block.hashMerkleRoot != hashMerkleRoot2)
+            return state.DoS(100, false, REJECT_INVALID, "bad-txnmrklroot", true, "hashMerkleRoot mismatch");
 
-
+        // Check for merkle tree malleability (CVE-2012-2459): repeating sequences
+        // of transactions in a block without affecting the merkle root of a block,
+        // while still invalidating it.
+        if (mutated)
+            return state.DoS(100, false, REJECT_INVALID, "bad-txns-duplicate", true, "duplicate transaction");
+    }
     return true;
 }
 
