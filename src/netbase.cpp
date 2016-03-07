@@ -13,6 +13,7 @@
 
 #include "netbase.h"
 #include "util.h"
+#include "random.h"
 #include "sync.h"
 #include "hash.h"
 

@@ -24,6 +24,7 @@
 #include "txdb.h"
 #include "ui_interface.h"
 #include "util.h"
+#include "random.h"
 #include "anon/stormnode/activestormnode.h"
 #include "anon/stormnode/stormnode-budget.h"
 #include "anon/stormnode/stormnode-payments.h"

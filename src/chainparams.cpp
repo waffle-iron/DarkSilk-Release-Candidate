@@ -13,6 +13,7 @@
 #include "main.h"
 #include "net.h"
 #include "util.h"
+#include "random.h"
 
 using namespace boost::assign;
 

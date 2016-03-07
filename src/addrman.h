@@ -16,6 +16,7 @@
 #include "sync.h"
 #include "timedata.h"
 #include "util.h"
+#include "random.h"
 
 /** 
  * Extended statistics about a CAddress 

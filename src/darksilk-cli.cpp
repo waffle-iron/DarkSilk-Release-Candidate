@@ -4,6 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "util.h"
+#include "random.h"
 #include "init.h"
 #include "rpc/rpcserver.h"
 #include "rpc/rpcclient.h"

@@ -6,6 +6,7 @@
 
 #include "coins.h"
 #include "util.h"
+#include "random.h"
 #include "txdb.h"
 
 /**
