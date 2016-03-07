@@ -364,6 +364,7 @@ HEADERS +=  src/qt/darksilkgui.h \
 
 SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
 	    src/rest.cpp \
+#            src/darksilk-cli.cpp \
 	    src/anon/blindtext/blindtext.cpp \
 	    src/cryptkey.cpp \
             src/anon/stormnode/activestormnode.cpp \

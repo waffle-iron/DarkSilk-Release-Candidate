@@ -144,6 +144,11 @@ void SyncWithWallets(const CTransaction& tx, const CBlock* pblock = NULL, bool f
 /** Ask wallets to resend their transactions */
 void ResendWalletTransactions(bool fForce = false);
 
+/** Functions for disk access for blocks */
+bool WriteBlockToDisk(CBlock& block, CDiskBlockPos& pos);
+bool ReadBlockFromDisk(CBlock& block, const CDiskBlockPos& pos);
+bool ReadBlockFromDisk(CBlock& block, const CBlockIndex* pindex);
+
 /** Register with a network node to receive its signals */
 void RegisterNodeSignals(CNodeSignals& nodeSignals);
 /** Unregister a network node */

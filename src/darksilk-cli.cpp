@@ -5,7 +5,8 @@
 
 #include "util.h"
 #include "init.h"
-#include "bitcoinrpc.h"
+#include "rpc/rpcserver.h"
+#include "rpc/rpcclient.h"
 #include "ui_interface.h" /* for _(...) */
 
 //////////////////////////////////////////////////////////////////////////////
