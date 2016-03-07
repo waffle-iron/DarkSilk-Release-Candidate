@@ -64,6 +64,7 @@ bool IsBudgetCollateralValid(uint256 nTxCollateralHash, uint256 nExpectedHash, s
         return false;
     }
 
+    LOCK(cs_main);
     int conf = GetIXConfirmations(nTxCollateralHash);
    
     if (nBlockHash != uint256(0)) {
