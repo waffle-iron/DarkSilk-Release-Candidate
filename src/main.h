@@ -139,7 +139,7 @@ void RegisterWallet(CWalletInterface* pwalletIn);
 /** Unregister a wallet from core */
 void UnregisterWallet(CWalletInterface* pwalletIn);
 /** Unregister all wallets from core */
-void UnregisterAllWallets();
+void UnregisterAllValidationInterfaces();
 /** Push an updated transaction to all registered wallets */
 void SyncWithWallets(const CTransaction& tx, const CBlock* pblock = NULL, bool fConnect = true);
 /** Ask wallets to resend their transactions */
@@ -570,7 +570,7 @@ protected:
     virtual void ResendWalletTransactions(bool fForce) =0;
     friend void ::RegisterWallet(CWalletInterface*);
     friend void ::UnregisterWallet(CWalletInterface*);
-    friend void ::UnregisterAllWallets();
+    friend void ::UnregisterAllValidationInterfaces();
 };
 
 ///! The currently-connected chain of blocks.

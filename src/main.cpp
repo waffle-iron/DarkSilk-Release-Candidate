@@ -240,7 +240,7 @@ void UnregisterWallet(CWalletInterface* pwalletIn) {
     g_signals.SyncTransaction.disconnect(boost::bind(&CWalletInterface::SyncTransaction, pwalletIn, _1, _2, _3));
 }
 
-void UnregisterAllWallets() {
+void UnregisterAllValidationInterfaces() {
     g_signals.Broadcast.disconnect_all_slots();
     g_signals.Inventory.disconnect_all_slots();
     g_signals.SetBestChain.disconnect_all_slots();
