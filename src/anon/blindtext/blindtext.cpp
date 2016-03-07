@@ -1,22 +1,22 @@
 #include "anon/blindtext/blindtext.h"
 
-#include "cryptopp/hex.h"
+#include "crypto/cryptopp/hex.h"
 using CryptoPP::HexEncoder;
 
-#include "cryptopp/base64.h"
+#include "crypto/cryptopp/base64.h"
 using CryptoPP::Base64Decoder;
 
-#include "cryptopp/filters.h"
+#include "crypto/cryptopp/filters.h"
 using CryptoPP::Redirector;
 using CryptoPP::StringSink;
 using CryptoPP::StringSource;
 using CryptoPP::AuthenticatedDecryptionFilter;
 
-#include "cryptopp/sha.h"
+#include "crypto/cryptopp/sha.h"
 using CryptoPP::SHA256;
 using CryptoPP::HashFilter;
 
-#include "cryptopp/gcm.h"
+#include "crypto/cryptopp/gcm.h"
 using CryptoPP::GCM;
 
 #include <boost/algorithm/string.hpp>
