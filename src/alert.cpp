@@ -5,6 +5,7 @@
 #include <boost/algorithm/string/classification.hpp>
 #include <boost/algorithm/string/replace.hpp>
 #include <boost/foreach.hpp>
+#include <boost/thread.hpp>
 
 #include <stdint.h>
 
@@ -77,11 +78,6 @@ std::string CUnsignedAlert::ToString() const
         nPriority,
         strComment,
         strStatusBar);
-}
-
-void CUnsignedAlert::print() const
-{
-    LogPrintf("%s", ToString());
 }
 
 void CAlert::SetNull()
