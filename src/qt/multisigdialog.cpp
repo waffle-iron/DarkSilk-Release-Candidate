@@ -17,6 +17,7 @@
 #include "util.h"
 #include "wallet/wallet.h"
 #include "walletmodel.h"
+#include "walletinterface.h"
 
 #include "txdb-leveldb.h"
 

@@ -13,6 +13,7 @@
 #include "serialize.h"
 #include "streams.h"
 #include "util.h"
+#include "random.h"
 
 class leveldb_error : public std::runtime_error
 {

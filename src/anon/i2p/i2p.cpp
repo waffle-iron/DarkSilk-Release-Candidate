@@ -5,7 +5,7 @@
 
 #include <boost/thread/shared_mutex.hpp>
 
-#include "i2p/i2p.h"
+#include "anon/i2p/i2p.h"
 #include "util.h"
 #include "hash.h"
 

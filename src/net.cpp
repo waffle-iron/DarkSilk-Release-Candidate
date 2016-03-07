@@ -30,7 +30,7 @@
 #include "wallet/wallet.h"
 
 #ifdef USE_NATIVE_I2P
-#include "i2p/i2p.h"
+#include "anon/i2p/i2p.h"
 #endif
 
 #define TOR_NET_STRING "tor"
