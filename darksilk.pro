@@ -544,13 +544,13 @@ FORMS += \
             src/qt/plugins/mrichtexteditor/mrichtextedit.ui
 
 contains(DEFINES, USE_NATIVE_I2P) {
-HEADERS +=  src/i2p/i2p.h \
-            src/i2p/i2psam.h \
+HEADERS +=  src/anon/i2p/i2p.h \
+            src/anon/i2p/i2psam.h \
             src/qt/showi2paddresses.h \
             src/qt/i2poptionswidget.h
 
-SOURCES +=  src/i2p/i2p.cpp \
-            src/i2p/i2psam.cpp \
+SOURCES +=  src/anon/i2p/i2p.cpp \
+            src/anon/i2p/i2psam.cpp \
             src/qt/showi2paddresses.cpp \
             src/qt/i2poptionswidget.cpp
 
