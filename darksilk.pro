@@ -303,6 +303,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/qt/debugconsole.h \
             src/version.h \
             src/netbase.h \
+            src/noui.h \
             src/clientversion.h \
             src/threadsafety.h \
             src/tinyformat.h \

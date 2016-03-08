@@ -1,0 +1,11 @@
+// Copyright (c) 2013-2016 The Bitcoin developers
+// Copyright (c) 2015-2016 Silk Network
+// Distributed under the MIT/X11 software license, see the accompanying
+// file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
+#ifndef DARKSILK_NOUI_H
+#define DARKSILK_NOUI_H
+
+extern void noui_connect();
+
+#endif // DARKSILK_NOUI_H
