@@ -13,6 +13,7 @@
 #include "crypto/hmac_sha512.h"
 #include "pubkey.h"
 #include "util.h"
+#include "random.h"
 
 #include <openssl/ecdsa.h>
 #include <openssl/obj_mac.h>
@@ -205,7 +206,7 @@ bool CKey::VerifyPubKey(const CPubKey& pubkey) const {
         return false;
     }
     unsigned char rnd[8];
-    std::string str = "Bitcoin key verification\n";
+    std::string str = "DarkSilk key verification\n";
     GetRandBytes(rnd, sizeof(rnd));
     uint256 hash;
     CHash256().Write((unsigned char*)str.data(), str.size()).Write(rnd, sizeof(rnd)).Finalize(hash.begin());

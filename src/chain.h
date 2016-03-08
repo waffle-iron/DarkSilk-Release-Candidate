@@ -11,7 +11,9 @@
 
 #include "primitives/block.h"
 #include "util.h"
+#include "random.h"
 #include "chainparams.h"
+#include "walletinterface.h"
 
 class CTxDB;
 

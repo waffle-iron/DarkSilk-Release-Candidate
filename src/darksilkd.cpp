@@ -1,3 +1,4 @@
+
 // Copyright (c) 2009-2016 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Developers
 // Copyright (c) 2015-2016 Silk Network
@@ -60,9 +61,9 @@ bool AppInit(int argc, char* argv[])
                   "  darksilkd [options]                     " + "\n" +
                   "  darksilkd [options] <command> [params]  " + _("Send command to -server or darksilkd") + "\n" +
                   "  darksilkd [options] help                " + _("List commands") + "\n" +
-                  "  darksilkd [options] help <command>      " + _("Get help for a command") + "\n";
+                  "  darksilkd [options] help <command> " + _("Get help for a command") + "\n";
 
-            strUsage += "\n" + HelpMessage();
+            strUsage += "\n" + HelpMessage(HMM_BITCOIND);
 
             fprintf(stdout, "%s", strUsage.c_str());
             return false;

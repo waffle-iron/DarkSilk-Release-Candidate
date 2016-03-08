@@ -17,6 +17,7 @@
 #include "crypto/common.h"
 #include "crypto/hmac_sha512.h"
 #include "util.h"
+#include "random.h"
 
 #include "cryptogram/ies.h"
 

@@ -1,5 +1,5 @@
-#ifndef FIBRE_QT_INTRO_H
-#define FIBRE_QT_INTRO_H
+#ifndef DARKSILK_QT_INTRO_H
+#define DARKSILK_QT_INTRO_H
 
 #include <QDialog>
 #include <QMutex>
@@ -66,4 +66,4 @@ private:
     friend class FreespaceChecker;
 };
 
-#endif // BITCOIN_QT_INTRO_H
+#endif // DARKSILK_QT_INTRO_H

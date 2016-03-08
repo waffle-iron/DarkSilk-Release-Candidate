@@ -13,11 +13,12 @@
 
 #include "netbase.h"
 #include "util.h"
+#include "random.h"
 #include "sync.h"
 #include "hash.h"
 
 #ifdef USE_NATIVE_I2P
-#include "i2p/i2p.h"
+#include "anon/i2p/i2p.h"
 #endif
 
 

@@ -836,10 +836,15 @@ void ServiceConnection(AcceptedConnection *conn)
         // Read HTTP message headers and body
         ReadHTTPMessage(conn->stream(), mapHeaders, strRequest, nProto, MAX_SIZE);
 
+	// Process via JSON-RPC API
         if (strURI != "/") {
             conn->stream() << HTTPReply(HTTP_NOT_FOUND, "", false) << std::flush;
             break;
-        }
+        // Process via HTTP REST API
+        } else if (strURI.substr(0, 6) == "/rest/") {
+            if (!HTTPReq_REST(conn, strURI, mapHeaders, fRun))
+                break;
+	}
 
         // Check authorization
         if (mapHeaders.count("authorization") == 0)

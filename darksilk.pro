@@ -224,7 +224,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/qt/aboutdialog.h \
             src/qt/editaddressdialog.h \
             src/qt/darksilkaddressvalidator.h \
-	    src/blindtext.h \
+	    src/anon/blindtext/blindtext.h \
             src/alert.h \
             src/allocators.h \
             src/addrman.h \
@@ -241,8 +241,8 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/hash.h \
             src/uint256.h \
             src/kernel.h \
-            src/scrypt.h \
-            src/pbkdf2.h \
+            src/crypto/scrypt/scrypt.h \
+            src/crypto/scrypt/pbkdf2.h \
             src/serialize.h \
             src/main.h \
             src/miner.h \
@@ -360,12 +360,18 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/qt/multisiginputentry.h \
             src/qt/multisigaddressentry.h \
             src/qt/multisigdialog.h \
+	    src/walletinterface.h \
             src/memusage.h \
+	    src/random.h \
+            src/consensus/params.h \
+            src/consensus/merkle.h \
             src/consensus/params.h \
             src/consensus/validation.h
 
 SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
-	    src/blindtext.cpp \
+	    src/rest.cpp \
+#            src/darksilk-cli.cpp \
+	    src/anon/blindtext/blindtext.cpp \
 	    src/cryptkey.cpp \
             src/anon/stormnode/activestormnode.cpp \
             src/qt/transactiontablemodel.cpp \
@@ -403,6 +409,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/init.cpp \
             src/net.cpp \
             src/checkpoints.cpp \
+            src/consensus/merkle.cpp \
             src/qt/multisiginputentry.cpp \
             src/qt/multisigaddressentry.cpp \
             src/qt/multisigdialog.cpp \
@@ -452,11 +459,11 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/qt/debugconsole.cpp \
             src/noui.cpp \
             src/kernel.cpp \
-            src/scrypt-arm.S \
-            src/scrypt-x86.S \
-            src/scrypt-x86_64.S \
-            src/scrypt.cpp \
-            src/pbkdf2.cpp \
+            src/crypto/scrypt/scrypt-arm.S \
+            src/crypto/scrypt/scrypt-x86.S \
+            src/crypto/scrypt/scrypt-x86_64.S \
+            src/crypto/scrypt/scrypt.cpp \
+            src/crypto/scrypt/pbkdf2.cpp \
             src/anon/stealth/stealth.cpp \
             src/qt/flowlayout.cpp \
             src/qt/sandstormconfig.cpp \
@@ -498,6 +505,8 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/script/compressor.cpp \
             src/leveldbwrapper.cpp \
             src/txdb.cpp \
+	    src/random.cpp \
+	    src/walletinterface.cpp \
             src/amount.cpp \
             src/undo.cpp \
 	    src/rpc/rpcblindtext.cpp \
@@ -541,13 +550,13 @@ FORMS += \
             src/qt/plugins/mrichtexteditor/mrichtextedit.ui
 
 contains(DEFINES, USE_NATIVE_I2P) {
-HEADERS +=  src/i2p/i2p.h \
-            src/i2p/i2psam.h \
+HEADERS +=  src/anon/i2p/i2p.h \
+            src/anon/i2p/i2psam.h \
             src/qt/showi2paddresses.h \
             src/qt/i2poptionswidget.h
 
-SOURCES +=  src/i2p/i2p.cpp \
-            src/i2p/i2psam.cpp \
+SOURCES +=  src/anon/i2p/i2p.cpp \
+            src/anon/i2p/i2psam.cpp \
             src/qt/showi2paddresses.cpp \
             src/qt/i2poptionswidget.cpp
 

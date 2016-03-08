@@ -31,8 +31,8 @@
 
 #include <stdint.h>
 
-#include "scrypt.h"
-#include "pbkdf2.h"
+#include "crypto/scrypt/scrypt.h"
+#include "crypto/scrypt/pbkdf2.h"
 
 #define SCRYPT_BUFFER_SIZE (131072 + 63)
 

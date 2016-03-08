@@ -6,6 +6,7 @@
 
 #include "sync.h"
 #include "util.h"
+#include "random.h"
 
 #ifdef DEBUG_LOCKCONTENTION
 void PrintLockContention(const char* pszName, const char* pszFile, int nLine)
