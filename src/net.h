@@ -8,6 +8,7 @@
 
 #include <boost/array.hpp>
 #include <boost/foreach.hpp>
+#include <boost/filesystem/path.hpp>
 #include <boost/signals2/signal.hpp>
 
 #include <deque>
