@@ -418,8 +418,6 @@ public:
 
     bool DelAddressBookName(const CTxDestination& address);
 
-    bool UpdatedTransaction(const uint256 &hash);
-
     void Inventory(const uint256 &hash)
     {
         {
