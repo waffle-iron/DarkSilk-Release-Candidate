@@ -6,10 +6,13 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include <boost/algorithm/string/predicate.hpp>
+#include <boost/filesystem.hpp>
+#include <boost/thread.hpp>
 
 #include "rpc/rpcserver.h"
 #include "rpc/rpcclient.h"
 #include "init.h"
+#include "noui.h"
 
 static bool fDaemon;
 
