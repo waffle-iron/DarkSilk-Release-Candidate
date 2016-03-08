@@ -1106,17 +1106,17 @@ void ThreadSocketHandler()
             else if (!IsSelectableSocket(hSocket))
             {
                 LogPrintf("connection from %s dropped: non-selectable socket\n", addr.ToString());
-                CloseSocket(hSocket);
+                closesocket(hSocket);
             }
             else if (nInbound >= nMaxConnections - MAX_OUTBOUND_CONNECTIONS)
             {
                 LogPrint("net", "connection from %s dropped (full)\n", addr.ToString());
-                CloseSocket(hSocket);
+                closesocket(hSocket);
             }
             else if (CNode::IsBanned(addr) && !whitelisted)
             {
                 LogPrintf("connection from %s dropped (banned)\n", addr.ToString());
-                CloseSocket(hSocket);
+                closesocket(hSocket);
             }
             else
             {
