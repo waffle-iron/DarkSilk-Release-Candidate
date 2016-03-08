@@ -17,7 +17,7 @@
 #include "consensus/validation.h"
 #include "base58.h"
 #include "checkpoints.h"
-//#include "walletinterface.h"
+#include "validationinterface.h"
 #include "coincontrol.h"
 #include "kernel.h"
 #include "net.h"

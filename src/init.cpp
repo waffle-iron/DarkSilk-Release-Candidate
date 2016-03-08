@@ -35,7 +35,7 @@
 #include "anon/stormnode/spork.h"
 #include "smessage.h"
 #include "txdb-leveldb.h"
-#include "walletinterface.h"
+#include "validationinterface.h"
 
 #ifdef ENABLE_WALLET
 #include "db.h"
