@@ -786,7 +786,7 @@ bool CWallet::AddToWalletIfInvolvingMe(const CTransaction& tx, const CBlock* pbl
                 wtx.mapValue.insert(mapNarr.begin(), mapNarr.end());
             // Get merkle branch if transaction was found in a block
             if (pblock)
-                BlockMerkleBranch(*pblock, NULL);
+                BlockMerkleRoot(*pblock, false);
             return AddToWallet(wtx);
         }
     }
