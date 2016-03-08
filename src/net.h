@@ -406,9 +406,8 @@ public:
     // Whether a ping is requested.
     bool fPingQueued;
 
-CNode(SOCKET hSocketIn, CAddress addrIn, std::string addrNameIn, bool fInboundIn);
+CNode(SOCKET hSocketIn, CAddress addrIn, std::string addrNameIn = "", bool fInboundIn = false);
 ~CNode();
-
 
 private:
     // Network usage totals

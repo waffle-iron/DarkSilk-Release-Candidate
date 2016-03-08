@@ -2421,11 +2421,13 @@ bool CBanDB::Read(banmap_t& banSet)
 unsigned int ReceiveFloodSize() { return 1000*GetArg("-maxreceivebuffer", 5*1000); }
 unsigned int SendBufferSize() { return 1000*GetArg("-maxsendbuffer", 1*1000); }
 
-CNode::CNode(SOCKET hSocketIn, CAddress addrIn, std::string addrNameIn, bool fInboundIn) : ssSend(SER_NETWORK, INIT_PROTO_VERSION), setAddrKnown(5000)
+CNode::CNode(SOCKET hSocketIn, CAddress addrIn, std::string addrNameIn, bool fInboundIn):
+    ssSend(SER_NETWORK, INIT_PROTO_VERSION)
+    , setAddrKnown(5000)
 #ifdef USE_NATIVE_I2P
     , nSendStreamType(SER_NETWORK | (((addrIn.nServices & NODE_I2P) || addrIn.IsNativeI2P()) ? 0 : SER_IPADDRONLY))
     , nRecvStreamType(SER_NETWORK | (((addrIn.nServices & NODE_I2P) || addrIn.IsNativeI2P()) ? 0 : SER_IPADDRONLY))
-#endif 
+#endif
 {
 #ifdef USE_NATIVE_I2P
     ssSend.SetType(nSendStreamType);
@@ -2473,10 +2475,10 @@ CNode::CNode(SOCKET hSocketIn, CAddress addrIn, std::string addrNameIn, bool fIn
         id = nLastNodeId++;
     }
 
-if (fLogIPs)
-    LogPrint("net", "Added connection to %s peer=%d\n", addrName, id);
-else
-    LogPrint("net", "Added connection peer=%d\n", id);
+    if (fLogIPs)
+        LogPrint("net", "Added connection to %s peer=%d\n", addrName, id);
+    else
+        LogPrint("net", "Added connection peer=%d\n", id);
 
     // Be shy and don't send version until we hear
     if (hSocket != INVALID_SOCKET && !fInbound)
