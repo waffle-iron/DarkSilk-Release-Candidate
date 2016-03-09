@@ -41,6 +41,8 @@ namespace boost {
     class thread_group;
 } // namespace boost
 
+/** The maximum number of entries in an 'inv' protocol message */
+static const unsigned int MAX_INV_SZ = 50000;
 /** Time between pings automatically sent out for latency probing and keepalive (in seconds). */
 static const int PING_INTERVAL = 2 * 60;
 
@@ -49,7 +51,8 @@ static const int TIMEOUT_INTERVAL = 20 * 60;
 
 /** Maximum length of incoming protocol messages (no message over 2 MiB is currently acceptable). */
 static const unsigned int MAX_PROTOCOL_MESSAGE_LENGTH = 2 * 1024 * 1024;
-
+/** The maximum number of entries in mapAskFor */
+static const size_t MAPASKFOR_MAX_SZ = MAX_INV_SZ;
 /** -listen default */
 static const bool DEFAULT_LISTEN = true;
 
