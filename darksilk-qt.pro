@@ -663,9 +663,9 @@ contains(RELEASE, 1) {
     }
 }
 
-# Set GMP and Snappy libraries
+# Set GMP
 !windows: {
-    LIBS += -lgmp -lsnappy
+    LIBS += -lgmp
 }
 
 !windows:!macx {
