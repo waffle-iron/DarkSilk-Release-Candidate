@@ -2116,6 +2116,19 @@ public:
                     printf("closesocket(hI2PListenSocket) failed with error %d\n", WSAGetLastError());
 #endif
 
+        // clean up some globals (to help leak detection)
+        BOOST_FOREACH(CNode *pnode, vNodes)
+            delete pnode;
+        BOOST_FOREACH(CNode *pnode, vNodesDisconnected)
+            delete pnode;
+        vNodes.clear();
+        vNodesDisconnected.clear();
+        vhListenSocket.clear();
+        delete semOutbound;
+        semOutbound = NULL;
+        delete pnodeLocalHost;
+        pnodeLocalHost = NULL;
+
 #ifdef WIN32
         // Shutdown Windows Sockets
         WSACleanup();
@@ -2124,17 +2137,25 @@ public:
 }
 instance_of_cnetcleanup;
 
-void RelayTransaction(const CTransaction& tx, const uint256& hash)
+void CExplicitNetCleanup::callCleanup()
+{
+    // Explicit call to destructor of CNetCleanup because it's not implicitly called
+    // when the wallet is restarted from within the wallet itself.
+    CNetCleanup *tmp = new CNetCleanup();
+    delete tmp; // Stroustrup's gonna kill me for that
+}
+
+void RelayTransaction(const CTransaction& tx)
 {
     CDataStream ss(SER_NETWORK, PROTOCOL_VERSION);
     ss.reserve(10000);
     ss << tx;
-    RelayTransaction(tx, hash, ss);
+    RelayTransaction(tx, ss);
 }
 
-void RelayTransaction(const CTransaction& tx, const uint256& hash, const CDataStream& ss)
+void RelayTransaction(const CTransaction& tx, const CDataStream& ss)
 {
-    CInv inv(MSG_TX, hash);
+    CInv inv(MSG_TX, tx.GetHash());
     {
         LOCK(cs_mapRelay);
         // Expire old relay messages
@@ -2148,11 +2169,22 @@ void RelayTransaction(const CTransaction& tx, const uint256& hash, const CDataSt
         mapRelay.insert(std::make_pair(inv, ss));
         vRelayExpiration.push_back(std::make_pair(GetTime() + 15 * 60, inv));
     }
-
-    RelayInventory(inv);
+    LOCK(cs_vNodes);
+    BOOST_FOREACH(CNode* pnode, vNodes)
+    {
+        if(!pnode->fRelayTxes)
+            continue;
+        LOCK(pnode->cs_filter);
+        if (pnode->pfilter)
+        {
+            if (pnode->pfilter->IsRelevantAndUpdate(tx))
+                pnode->PushInventory(inv);
+        } else
+            pnode->PushInventory(inv);
+    }
 }
 
-void RelayTransactionLockReq(const CTransaction& tx, const uint256& hash, bool relayToAll)
+void RelayTransactionLockReq(const CTransaction& tx, bool relayToAll)
 {
     CInv inv(MSG_TXLOCK_REQUEST, tx.GetHash());
 
@@ -2163,9 +2195,8 @@ void RelayTransactionLockReq(const CTransaction& tx, const uint256& hash, bool r
         if(!relayToAll && !pnode->fRelayTxes)
             continue;
 
-        pnode->PushMessage("txlreq", tx);
+        pnode->PushMessage("ix", tx);
     }
-
 }
 
 void CNode::RecordBytesRecv(uint64_t bytes)
@@ -2474,6 +2505,7 @@ CNode::CNode(SOCKET hSocketIn, CAddress addrIn, std::string addrNameIn, bool fIn
     nMisbehavior = 0;
     hashCheckpointKnown = 0;
     setInventoryKnown.max_size(SendBufferSize() / 1000);
+    pfilter = new CBloomFilter();
     nPingNonceSent = 0;
     nPingUsecStart = 0;
     nPingUsecTime = 0;
@@ -2499,11 +2531,11 @@ CNode::CNode(SOCKET hSocketIn, CAddress addrIn, std::string addrNameIn, bool fIn
 
 CNode::~CNode()
 {
-    if (hSocket != INVALID_SOCKET)
-    {
-        closesocket(hSocket);
-        hSocket = INVALID_SOCKET;
-    }
+    closesocket(hSocket);
+
+    if (pfilter)
+        delete pfilter;
+
     GetNodeSignals().FinalizeNode(GetId());
 }
 
@@ -2537,13 +2569,12 @@ void CNode::AskFor(const CInv& inv)
     mapAskFor.insert(std::make_pair(nRequestTime, inv));
 }
 
-// TODO: Document the postcondition of this function.  Is cs_vSend locked?
 void CNode::BeginMessage(const char* pszCommand) EXCLUSIVE_LOCK_FUNCTION(cs_vSend)
 {
     ENTER_CRITICAL_SECTION(cs_vSend);
     assert(ssSend.size() == 0);
     ssSend << CMessageHeader(pszCommand, 0);
-    LogPrint("net", "sending: %s ", pszCommand);
+    LogPrint("net", "sending: %s ", SanitizeString(pszCommand));
 }
 
 // TODO: Document the precondition of this function.  Is cs_vSend locked?
@@ -2559,12 +2590,18 @@ void CNode::AbortMessage() UNLOCK_FUNCTION(cs_vSend)
 // TODO: Document the precondition of this function.  Is cs_vSend locked?
 void CNode::EndMessage() UNLOCK_FUNCTION(cs_vSend)
 {
-    if (mapArgs.count("-dropmessagestest") && GetRand(atoi(mapArgs["-dropmessagestest"])) == 0)
+    // The -*messagestest options are intentionally not documented in the help message,
+    // since they are only used during development to debug the networking code and are
+    // not intended for end-users.
+    if (mapArgs.count("-dropmessagestest") && GetRand(GetArg("-dropmessagestest", 2)) == 0)
     {
         LogPrint("net", "dropmessages DROPPING SEND MESSAGE\n");
         AbortMessage();
         return;
     }
+
+    if (mapArgs.count("-fuzzmessagestest"))
+        Fuzz(GetArg("-fuzzmessagestest", 10));
 
     if (ssSend.size() == 0)
         return;

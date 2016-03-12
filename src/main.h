@@ -16,6 +16,7 @@
 #include "chain.h"
 #include "coins.h"
 
+class CBloomFilter;
 class CValidationState;
 class CWallet;
 class CTxMemPool;

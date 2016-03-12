@@ -1222,29 +1222,23 @@ void CWallet::ReacceptWalletTransactions()
     }
 }
 
-void CWalletTx::RelayWalletTransaction(CTxDB& txdb, std::string strCommand)
+void CWalletTx::RelayWalletTransaction(std::string strCommand)
 {
     if (!(IsCoinBase() || IsCoinStake()))
     {
         if (GetDepthInMainChain() == 0) {
             uint256 hash = GetHash();
-            if(strCommand == "txlreq"){
-                LogPrintf("Relaying txlreq %s\n", hash.ToString());
-                mapTxLockReq.insert(make_pair(hash, ((CTransaction)*this)));
+            LogPrintf("Relaying wtx %s\n", hash.ToString());
+
+            if(strCommand == "ix"){
+                mapTxLockReq.insert(make_pair(hash, (CTransaction)*this));
                 CreateNewLock(((CTransaction)*this));
                 RelayTransactionLockReq((CTransaction)*this, true);
             } else {
-                LogPrintf("Relaying wtx %s\n", hash.ToString());
-                RelayTransaction((CTransaction)*this, hash);
+                RelayTransaction((CTransaction)*this);
             }
         }
     }
-}
-
-void CWalletTx::RelayWalletTransaction(std::string strCommand)
-{
-   CTxDB txdb("r");
-   RelayWalletTransaction(txdb, strCommand);
 }
 
 set<uint256> CWalletTx::GetConflicts() const
@@ -1298,7 +1292,7 @@ void CWallet::ResendWalletTransactions(bool fForce)
         BOOST_FOREACH(PAIRTYPE(const unsigned int, CWalletTx*)& item, mapSorted)
         {
             CWalletTx& wtx = *item.second;
-            wtx.RelayWalletTransaction(txdb);
+            wtx.RelayWalletTransaction();
         }
     }
 }
