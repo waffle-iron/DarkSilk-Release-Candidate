@@ -909,12 +909,10 @@ static list<CNode*> vNodesDisconnected;
 
 void ThreadSocketHandler()
 {
-
+    unsigned int nPrevNodeCount = 0;
 #ifdef USE_NATIVE_I2P
     int nPrevI2PNodeCount = 0;
-#endif
-
-    int nPrevNodeCount = 0;
+#endif    
 
     //
     // Disconnect nodes
@@ -1025,7 +1023,6 @@ void ThreadSocketHandler()
             hSocketMax = max(hSocketMax, hListenSocket.socket);
             have_fds = true;
         }
-
         {
             LOCK(cs_vNodes);
             BOOST_FOREACH(CNode* pnode, vNodes)
@@ -1091,7 +1088,6 @@ void ThreadSocketHandler()
         // Accept new connections
         //
         BOOST_FOREACH(const ListenSocket& hListenSocket, vhListenSocket)
-        {
         if (hListenSocket.socket != INVALID_SOCKET && FD_ISSET(hListenSocket.socket, &fdsetRecv))
         {
             struct sockaddr_storage sockaddr;
@@ -1145,7 +1141,6 @@ void ThreadSocketHandler()
                 }
             }
         }
-    }
 
 #ifdef USE_NATIVE_I2P
         //
