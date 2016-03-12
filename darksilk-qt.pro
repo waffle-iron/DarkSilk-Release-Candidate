@@ -237,8 +237,10 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/cleanse.h \
             src/compat.h \
             src/coincontrol.h \
+            src/core_io.h \
             src/sync.h \
             src/util.h \
+            src/utilmoneystr.h \
             src/hash.h \
             src/uint256.h \
             src/kernel.h \
@@ -255,6 +257,8 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/wallet/db.h \
             src/txdb.h \
             src/txmempool.h \
+            src/univalue.h \
+            src/univalue_escapes.h \
             src/wallet/walletdb.h \
             src/script/script.h \
             src/init.h \
@@ -387,13 +391,20 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/qt/bantablemodel.cpp \
             src/alert.cpp \
             src/allocators.cpp \
-            src/bloom/cpp \
+            src/bloom.cpp \
+            src/core_read.cpp \
+            src/core_write.cpp \
             src/chainparams.cpp \
             src/cleanse.cpp \
             src/version.cpp \
             src/sync.cpp \
             src/txmempool.cpp \
+            src/gen.cpp \
+            src/univalue.cpp \
+            src/univalue_read.cpp \
+            src/univalue_write.cpp \
             src/util.cpp \
+            src/utilmoneystr.cpp \
             src/hash.cpp \
             src/netbase.cpp \
             src/key.cpp \

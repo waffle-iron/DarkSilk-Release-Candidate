@@ -213,9 +213,6 @@ void RandAddSeedPerfmon();
 void PrintException(std::exception* pex, const char* pszThread);
 void PrintExceptionContinue(std::exception* pex, const char* pszThread);
 void ParseString(const std::string& str, char c, std::vector<std::string>& v);
-std::string FormatMoney(CAmount n, bool fPlus=false);
-bool ParseMoney(const std::string& str, CAmount& nRet);
-bool ParseMoney(const char* pszIn, CAmount& nRet);
 std::string SanitizeString(const std::string& str);
 std::string SanitizeSubVersionString(const std::string& str);
 

@@ -521,7 +521,7 @@ void MultisigDialog::on_sendTransactionButton_clicked()
     return;
     SyncWithWallets(tx, NULL, true);
     //(CInv(MSG_TX, txHash), tx);
-    RelayTransaction(tx, txHash);
+    RelayTransaction(tx);
 }
 
 MultisigInputEntry * MultisigDialog::addInput()
