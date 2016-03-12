@@ -24,7 +24,7 @@
 #include "checkpoints.h"
 #include "txdb.h"
 #include "util.h"
-#include "main.h"
+#include "consensus/validation.h"
 
 using namespace std;
 using namespace boost;
