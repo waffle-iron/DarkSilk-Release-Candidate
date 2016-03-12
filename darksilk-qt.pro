@@ -230,6 +230,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/addrman.h \
             src/base58.h \
             src/bignum.h \
+            src/bloom.h \
             src/chainparams.h \
             src/chainparamsseeds.h \
             src/checkpoints.h \
@@ -386,6 +387,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/qt/bantablemodel.cpp \
             src/alert.cpp \
             src/allocators.cpp \
+            src/bloom/cpp \
             src/chainparams.cpp \
             src/cleanse.cpp \
             src/version.cpp \
