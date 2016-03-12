@@ -556,13 +556,10 @@ CStormnodePing::CStormnodePing()
 
 CStormnodePing::CStormnodePing(CTxIn& newVin)
 {
-    int nHeight;
     {
         LOCK(cs_main);
         CBlockIndex* pindexPrev = pindexBest;
         if(!pindexPrev) return;
-
-        nHeight = pindexPrev->nHeight;
     }
 
     vin = newVin;
