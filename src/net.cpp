@@ -26,6 +26,7 @@
 #include "clientversion.h"
 #include "primitives/transaction.h"
 #include "ui_interface.h"
+#include "utilstrencodings.h"
 #include "anon/sandstorm/sandstorm.h"
 #include "wallet/wallet.h"
 
