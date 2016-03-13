@@ -369,11 +369,12 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/qt/multisigaddressentry.h \
             src/qt/multisigdialog.h \
             src/memusage.h \
-            src/consensus/params.h
+            src/consensus/params.h \
+    src/utilstrencodings.h
 
 SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
-	        src/blindtext.cpp \
-	        src/cryptkey.cpp \
+            src/blindtext.cpp \
+            src/cryptkey.cpp \
             src/anon/stormnode/activestormnode.cpp \
             src/qt/transactiontablemodel.cpp \
             src/qt/addresstablemodel.cpp \
@@ -381,8 +382,8 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/qt/sendcoinsdialog.cpp \
             src/qt/coincontroldialog.cpp \
             src/qt/coincontroltreewidget.cpp \
-	        src/cryptogram/cryptogram.cpp \
-	        src/cryptogram/ecies.cpp \
+            src/cryptogram/cryptogram.cpp \
+            src/cryptogram/ecies.cpp \
             src/qt/addressbookpage.cpp \
             src/qt/signverifymessagedialog.cpp \
             src/qt/aboutdialog.cpp \
@@ -515,7 +516,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/txdb.cpp \
             src/amount.cpp \
             src/undo.cpp \
-	        src/rpc/rpcblindtext.cpp \
+            src/rpc/rpcblindtext.cpp \
             src/compat/glibc_sanity.cpp \
             src/compat/glibcxx_sanity.cpp \
             src/crypto/argon2/argon2.c \
@@ -523,7 +524,8 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/crypto/argon2/encoding.c \
             src/crypto/argon2/thread.c \
             src/crypto/argon2/blake2/blake2b.c \
-            src/crypto/argon2/opt.c
+            src/crypto/argon2/opt.c \
+            src/utilstrencodings.cpp
 
 RESOURCES += \
             src/qt/darksilk.qrc

@@ -24,13 +24,12 @@ static const string SAFE_CHARS[] =
     CHARS_ALPHA_NUM + " .,;-_?@" // SAFE_CHARS_UA_COMMENT
 };
 
-string SanitizeString(const string& str)
+string SanitizeString(const string& str, int rule)
 {
-
     string strResult;
     for (std::string::size_type i = 0; i < str.size(); i++)
     {
-        if (safeChars.find(str[i]) != std::string::npos)
+        if (SAFE_CHARS[rule].find(str[i]) != std::string::npos)
             strResult.push_back(str[i]);
     }
     return strResult;
