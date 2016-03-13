@@ -241,6 +241,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/core_io.h \
             src/sync.h \
             src/util.h \
+            src/utilstrencodings.h \
             src/utilmoneystr.h \
             src/hash.h \
             src/uint256.h \
@@ -406,6 +407,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/univalue_read.cpp \
             src/univalue_write.cpp \
             src/util.cpp \
+            src/utilstrencodings.cpp \
             src/utilmoneystr.cpp \
             src/hash.cpp \
             src/netbase.cpp \

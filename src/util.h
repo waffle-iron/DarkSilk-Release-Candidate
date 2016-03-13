@@ -26,6 +26,7 @@
 #include <sys/resource.h>
 #endif
 
+#include <exception>
 #include <map>
 #include <list>
 #include <utility>
@@ -212,7 +213,6 @@ void RandAddSeedPerfmon();
 
 void PrintException(std::exception* pex, const char* pszThread);
 void PrintExceptionContinue(std::exception* pex, const char* pszThread);
-void ParseString(const std::string& str, char c, std::vector<std::string>& v);
 
 void ParseParameters(int argc, const char*const argv[]);
 bool WildcardMatch(const char* psz, const char* mask);
@@ -251,42 +251,15 @@ bool TruncateFile(FILE *file, unsigned int length);
 std::string FormatI2PNativeFullVersion();
 #endif
 
-inline std::string i64tostr(int64_t n)
+//TODO(AA) - Remove this and chaintrust/blocktrust after chainactive
+inline std::string leftTrim(std::string src, char chr)
 {
-    return strprintf("%d", n);
-}
+    std::string::size_type pos = src.find_first_not_of(chr, 0);
 
-inline std::string itostr(int n)
-{
-    return strprintf("%d", n);
-}
+    if(pos > 0)
+        src.erase(0, pos);
 
-inline int64_t atoi64(const char* psz)
-{
-#ifdef _MSC_VER
-    return _atoi64(psz);
-#else
-    return strtoll(psz, NULL, 10);
-#endif
-}
-
-inline int64_t atoi64(const std::string& str)
-{
-#ifdef _MSC_VER
-    return _atoi64(str.c_str());
-#else
-    return strtoll(str.c_str(), NULL, 10);
-#endif
-}
-
-inline int atoi(const std::string& str)
-{
-    return atoi(str.c_str());
-}
-
-inline int roundint(double d)
-{
-    return (int)(d > 0 ? d + 0.5 : d - 0.5);
+    return src;
 }
 
 inline int64_t roundint64(double d)
@@ -299,14 +272,9 @@ inline int64_t abs64(int64_t n)
     return (n >= 0 ? n : -n);
 }
 
-inline std::string leftTrim(std::string src, char chr)
+inline int roundint(double d)
 {
-    std::string::size_type pos = src.find_first_not_of(chr, 0);
-
-    if(pos > 0)
-        src.erase(0, pos);
-
-    return src;
+    return (int)(d > 0 ? d + 0.5 : d - 0.5);
 }
 
 inline int64_t GetPerformanceCounter()

@@ -20,6 +20,11 @@
 #include "wallet/db.h"
 #include "init.h"
 #include "kernel.h"
+#include "txdb.h"
+#include "ui_interface.h"
+#include "util.h"
+#include "utilmoneystr.h"
+#include "utilstrencodings.h"
 #include "anon/instantx/instantx.h"
 #include "anon/sandstorm/sandstorm.h"
 #include "anon/stormnode/stormnodeman.h"
@@ -29,11 +34,6 @@
 #include "anon/stormnode/spork.h"
 #include "smessage.h"
 #include "txdb-leveldb.h"
-#include "txdb.h"
-#include "ui_interface.h"
-#include "util.h"
-#include "utilmoneystr.h"
-#include "utilstrencodings.h"
 
 using namespace std;
 using namespace boost;

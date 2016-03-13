@@ -8,10 +8,17 @@
 #include <boost/algorithm/string/case_conv.hpp> // for to_lower()
 #include <boost/algorithm/string/join.hpp>
 #include <boost/algorithm/string/predicate.hpp> // for startswith() and endswith()
+#include <boost/program_options/detail/config_file.hpp>
+#include <boost/program_options/parsers.hpp>
+#include <boost/filesystem.hpp>
+#include <boost/filesystem/fstream.hpp>
+#include <boost/foreach.hpp>
+#include <boost/thread.hpp>
 
 #include <algorithm>
 
 #include "util.h"
+#include "utilstrencodings.h"
 #include "amount.h"
 #include "chainparams.h"
 #include "sync.h"
@@ -33,13 +40,11 @@ namespace boost {
 
 } // namespace boost
 
-#include <boost/program_options/detail/config_file.hpp>
-#include <boost/program_options/parsers.hpp>
-#include <boost/filesystem.hpp>
-#include <boost/filesystem/fstream.hpp>
-#include <boost/foreach.hpp>
-#include <boost/thread.hpp>
-#include <openssl/crypto.h>
+
+#include <openssl/bio.h>
+#include <openssl/evp.h>
+#include <openssl/buffer.h>
+#include <openssl/crypto.h> // for OPENSSL_cleanse()
 #include <openssl/rand.h>
 #include <openssl/err.h>
 #include <stdarg.h>
@@ -265,6 +270,14 @@ bool LogAcceptCategory(const char* category)
             const vector<string>& categories = mapMultiArgs["-debug"];
             ptrCategory.reset(new set<string>(categories.begin(), categories.end()));
             // thread_specific_ptr automatically deletes the set when the thread ends.
+            // "dash" is a composite category enabling all Dash-related debug output
+            if(ptrCategory->count(string("darksilk"))) {
+                ptrCategory->insert(string("sandstorm"));
+                ptrCategory->insert(string("instantx"));
+                ptrCategory->insert(string("stormnode"));
+                ptrCategory->insert(string("snpayments"));
+                ptrCategory->insert(string("snbudget"));
+            }
         }
         const set<string>& setCategories = *ptrCategory.get();
 
@@ -314,25 +327,6 @@ int LogPrintStr(const std::string &str)
     }
 
     return ret;
-}
-
-void ParseString(const string& str, char c, vector<string>& v)
-{
-    if (str.empty())
-        return;
-    string::size_type i1 = 0;
-    string::size_type i2;
-    while (true)
-    {
-        i2 = str.find(c, i1);
-        if (i2 == str.npos)
-        {
-            v.push_back(str.substr(i1));
-            return;
-        }
-        v.push_back(str.substr(i1, i2-i1));
-        i1 = i2+1;
-    }
 }
 
 static void InterpretNegativeSetting(string name, map<string, string>& mapSettingsRet)
