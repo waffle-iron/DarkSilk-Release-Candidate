@@ -20,6 +20,7 @@
 #include "netbase.h"
 #include "timedata.h"
 #include "util.h"
+#include "utilstrencodings.h"
 #include "anon/stealth/stealth.h"
 #include "anon/stormnode/spork.h"
 #include "anon/stormnode/stormnode-sync.h"

@@ -12,7 +12,7 @@
 #include "chainparamsseeds.h"
 #include "main.h"
 #include "net.h"
-#include "util.h"
+#include "utilstrencodings.h"
 
 using namespace boost::assign;
 

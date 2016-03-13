@@ -15,6 +15,7 @@
 #include "sync.h"
 #include "timedata.h"
 #include "util.h"
+#include "utilstrencodings.h"
 #include "key.h"
 
 using namespace json_spirit;

@@ -11,6 +11,7 @@
 #include "netbase.h"
 #include "timedata.h"
 #include "util.h"
+#include "utilstrencodings.h"
 #include "wallet/wallet.h"
 #include "wallet/walletdb.h"
 
