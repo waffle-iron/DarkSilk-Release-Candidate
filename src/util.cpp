@@ -15,6 +15,14 @@
 #include <boost/foreach.hpp>
 #include <boost/thread.hpp>
 
+#include <openssl/bio.h>
+#include <openssl/evp.h>
+#include <openssl/buffer.h>
+#include <openssl/crypto.h> // for OPENSSL_cleanse()
+#include <openssl/rand.h>
+#include <openssl/err.h>
+#include <stdarg.h>
+
 #include <algorithm>
 
 #include "util.h"
@@ -27,27 +35,6 @@
 #include "version.h"
 #include "netbase.h"
 #include "allocators.h"
-
-// Work around clang compilation problem in Boost 1.46:
-// /usr/include/boost/program_options/detail/config_file.hpp:163:17: error: call to function 'to_internal' that is neither visible in the template definition nor found by argument-dependent lookup
-// See also: http://stackoverflow.com/questions/10020179/compilation-fail-in-boost-librairies-program-options
-//           http://clang.debian.net/status.php?version=3.0&key=CANNOT_FIND_FUNCTION
-namespace boost {
-
-    namespace program_options {
-        std::string to_internal(const std::string&);
-    }
-
-} // namespace boost
-
-
-#include <openssl/bio.h>
-#include <openssl/evp.h>
-#include <openssl/buffer.h>
-#include <openssl/crypto.h> // for OPENSSL_cleanse()
-#include <openssl/rand.h>
-#include <openssl/err.h>
-#include <stdarg.h>
 
 #ifdef WIN32
 #ifdef _MSC_VER
@@ -74,6 +61,18 @@ namespace boost {
 # include <sys/prctl.h>
 #endif
 
+// Work around clang compilation problem in Boost 1.46:
+// /usr/include/boost/program_options/detail/config_file.hpp:163:17: error: call to function 'to_internal' that is neither visible in the template definition nor found by argument-dependent lookup
+// See also: http://stackoverflow.com/questions/10020179/compilation-fail-in-boost-librairies-program-options
+//           http://clang.debian.net/status.php?version=3.0&key=CANNOT_FIND_FUNCTION
+namespace boost {
+
+    namespace program_options {
+        std::string to_internal(const std::string&);
+    }
+
+} // namespace boost
+
 using namespace std;
 
 //Dark  features
@@ -93,7 +92,6 @@ bool fSucessfullyLoaded = false;
 bool fEnableSandstorm = false;
 /** All denominations used by sandstorm */
 std::vector<CAmount> sandStormDenominations;
-bool fSandstormMultiSession = false;
 
 map<string, string> mapArgs;
 map<string, vector<string> > mapMultiArgs;
@@ -270,7 +268,7 @@ bool LogAcceptCategory(const char* category)
             const vector<string>& categories = mapMultiArgs["-debug"];
             ptrCategory.reset(new set<string>(categories.begin(), categories.end()));
             // thread_specific_ptr automatically deletes the set when the thread ends.
-            // "dash" is a composite category enabling all Dash-related debug output
+            // "darksilk" is a composite category enabling all DarkSilk-related debug output
             if(ptrCategory->count(string("darksilk"))) {
                 ptrCategory->insert(string("sandstorm"));
                 ptrCategory->insert(string("instantx"));
