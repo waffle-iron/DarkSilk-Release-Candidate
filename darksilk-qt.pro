@@ -123,6 +123,7 @@ PRE_TARGETDEPS += $$PWD/src/secp256k1/src/libsecp256k1_la-secp256k1.o
 QMAKE_EXTRA_TARGETS += gensecp256k1
 QMAKE_CLEAN += $$PWD/src/secp256k1/src/libsecp256k1_la-secp256k1.o; cd $$PWD/src/secp256k1 ; $(MAKE) clean
 
+
 #Build LevelDB
 INCLUDEPATH += src/leveldb/include src/leveldb/helpers src/leveldb/helpers/memenv
 LIBS += $$PWD/src/leveldb/libleveldb.a $$PWD/src/leveldb/libmemenv.a
@@ -211,8 +212,8 @@ DEPENDPATH += . \
 
 HEADERS +=  src/qt/darksilkgui.h \
             src/cryptkey.h \
-	    src/anon/stormnode/activestormnode.h \
-	    src/cryptogram/ies.h \
+	        src/anon/stormnode/activestormnode.h \
+	        src/cryptogram/ies.h \
             src/qt/transactiontablemodel.h \
             src/qt/addresstablemodel.h \
             src/qt/optionsdialog.h \
@@ -224,7 +225,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/qt/aboutdialog.h \
             src/qt/editaddressdialog.h \
             src/qt/darksilkaddressvalidator.h \
-	    src/blindtext.h \
+	        src/blindtext.h \
             src/alert.h \
             src/allocators.h \
             src/addrman.h \
@@ -263,6 +264,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/script/script.h \
             src/init.h \
             src/mruset.h \
+            src/consensus/validation.h \
             src/json/json_spirit_writer_template.h \
             src/json/json_spirit_writer.h \
             src/json/json_spirit_value.h \
@@ -370,8 +372,8 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/consensus/params.h
 
 SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
-	    src/blindtext.cpp \
-	    src/cryptkey.cpp \
+	        src/blindtext.cpp \
+	        src/cryptkey.cpp \
             src/anon/stormnode/activestormnode.cpp \
             src/qt/transactiontablemodel.cpp \
             src/qt/addresstablemodel.cpp \
@@ -379,8 +381,8 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/qt/sendcoinsdialog.cpp \
             src/qt/coincontroldialog.cpp \
             src/qt/coincontroltreewidget.cpp \
-	    src/cryptogram/cryptogram.cpp \
-	    src/cryptogram/ecies.cpp \
+	        src/cryptogram/cryptogram.cpp \
+	        src/cryptogram/ecies.cpp \
             src/qt/addressbookpage.cpp \
             src/qt/signverifymessagedialog.cpp \
             src/qt/aboutdialog.cpp \
@@ -513,7 +515,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/txdb.cpp \
             src/amount.cpp \
             src/undo.cpp \
-	    src/rpc/rpcblindtext.cpp \
+	        src/rpc/rpcblindtext.cpp \
             src/compat/glibc_sanity.cpp \
             src/compat/glibcxx_sanity.cpp \
             src/crypto/argon2/argon2.c \
