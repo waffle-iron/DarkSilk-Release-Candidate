@@ -1058,7 +1058,6 @@ public:
     bool AcceptWalletTransaction(CTxDB& txdb);
     bool AcceptWalletTransaction();
 
-    void RelayWalletTransaction(CTxDB& txdb, std::string strCommand="tx");
     void RelayWalletTransaction(std::string strCommand="tx");
 
     std::set<uint256> GetConflicts() const;

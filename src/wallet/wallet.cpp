@@ -1222,29 +1222,23 @@ void CWallet::ReacceptWalletTransactions()
     }
 }
 
-void CWalletTx::RelayWalletTransaction(CTxDB& txdb, std::string strCommand)
+void CWalletTx::RelayWalletTransaction(std::string strCommand)
 {
     if (!(IsCoinBase() || IsCoinStake()))
     {
         if (GetDepthInMainChain() == 0) {
             uint256 hash = GetHash();
-            if(strCommand == "txlreq"){
-                LogPrintf("Relaying txlreq %s\n", hash.ToString());
-                mapTxLockReq.insert(make_pair(hash, ((CTransaction)*this)));
+            LogPrintf("Relaying wtx %s\n", hash.ToString());
+
+            if(strCommand == "ix"){
+                mapTxLockReq.insert(make_pair(hash, (CTransaction)*this));
                 CreateNewLock(((CTransaction)*this));
                 RelayTransactionLockReq((CTransaction)*this, true);
             } else {
-                LogPrintf("Relaying wtx %s\n", hash.ToString());
-                RelayTransaction((CTransaction)*this, hash);
+                RelayTransaction((CTransaction)*this);
             }
         }
     }
-}
-
-void CWalletTx::RelayWalletTransaction(std::string strCommand)
-{
-   CTxDB txdb("r");
-   RelayWalletTransaction(txdb, strCommand);
 }
 
 set<uint256> CWalletTx::GetConflicts() const
@@ -1298,7 +1292,7 @@ void CWallet::ResendWalletTransactions(bool fForce)
         BOOST_FOREACH(PAIRTYPE(const unsigned int, CWalletTx*)& item, mapSorted)
         {
             CWalletTx& wtx = *item.second;
-            wtx.RelayWalletTransaction(txdb);
+            wtx.RelayWalletTransaction();
         }
     }
 }
@@ -4820,21 +4814,4 @@ void CWallet::GetKeyBirthTimes(std::map<CKeyID, int64_t> &mapKeyBirth) const {
     // Extract block timestamps for those keys
     for (std::map<CKeyID, CBlockIndex*>::const_iterator it = mapKeyFirstBlock.begin(); it != mapKeyFirstBlock.end(); it++)
         mapKeyBirth[it->first] = it->second->nTime - 7200; // block times can be 2h off
-}
-
-bool DecodeHexBlk(CBlock& block, const std::string& strHexBlk)
-{
-    if (!IsHex(strHexBlk))
-        return false;
-
-    std::vector<unsigned char> blockData(ParseHex(strHexBlk));
-    CDataStream ssBlock(blockData, SER_NETWORK, PROTOCOL_VERSION);
-    try {
-        ssBlock >> block;
-    }
-    catch (const std::exception &) {
-        return false;
-    }
-
-    return true;
 }

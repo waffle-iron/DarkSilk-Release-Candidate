@@ -22,6 +22,7 @@
 #endif
 
 #include "addrman.h"
+#include "bloom.h"
 #include "compat.h"
 #include "hash.h"
 #include "limitedmap.h"
@@ -358,6 +359,8 @@ public:
     bool fRelayTxes;
     bool fSandStormMaster;
     CSemaphoreGrant grantOutbound;
+    CCriticalSection cs_filter;
+    CBloomFilter* pfilter;
     int nRefCount;
     NodeId id;
 protected:
@@ -840,10 +843,16 @@ inline void RelayInventory(const CInv& inv)
     }
 }
 
+class CExplicitNetCleanup
+{
+public:
+    static void callCleanup();
+};
+
 class CTransaction;
-void RelayTransaction(const CTransaction& tx, const uint256& hash);
-void RelayTransaction(const CTransaction& tx, const uint256& hash, const CDataStream& ss);
-void RelayTransactionLockReq(const CTransaction& tx, const uint256& hash, bool relayToAll=false);
+void RelayTransaction(const CTransaction& tx);
+void RelayTransaction(const CTransaction& tx, const CDataStream& ss);
+void RelayTransactionLockReq(const CTransaction& tx, bool relayToAll=false);    
 
 /** Access to the (IP) address database (peers.dat) */
 class CAddrDB
@@ -869,4 +878,4 @@ public:
 
 void DumpBanlist();
 
-#endif
+#endif // DARKSILK_NET_H

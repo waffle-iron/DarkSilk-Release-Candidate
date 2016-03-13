@@ -16,8 +16,12 @@
 #include "txdb.h"
 #include "txmempool.h"
 
+<<<<<<< HEAD
 class CCoinsViewCache;
 class CTxMemPool;
+=======
+class CBloomFilter;
+>>>>>>> origin/Spencer
 class CValidationState;
 class CWallet;
 
