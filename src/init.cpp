@@ -398,7 +398,6 @@ std::string HelpMessage()
     strUsage += "  -stormnodeminprotocol=<n> " + _("Ignore stormnodes less than version (example: 60700; default : 0)") + "\n";
 
     strUsage += "  -enablesandstorm=<n>          " + strprintf(_("Enable use of automated sandstorm for funds stored in this wallet (0-1, default: %u)"), fEnableSandstorm) + "\n";
-    strUsage += "  -sandstormmultisession=<n>    " + strprintf(_("Enable multiple sandstorm mixing sessions per block, experimental (0-1, default: %u)"), fSandstormMultiSession) + "\n";
     strUsage += "  -sandstormrounds=<n>          " + strprintf(_("Use N separate stormnodes to anonymize funds  (2-50, default: %u)"), nSandstormRounds) + "\n";
     strUsage += "  -anonymizedarksilkamount=<n> " + strprintf(_("Keep N DarkSilk anonymized (default: %u)"), nAnonymizeDarkSilkAmount) + "\n";
     strUsage += "  -liquidityprovider=<n>       " + strprintf(_("Provide liquidity to Sandstorm by infrequently mixing coins on a continual basis (0-100, default: %u, 1=very frequent, high fees, 100=very infrequent, low fees)"), nLiquidityProvider) + "\n";
