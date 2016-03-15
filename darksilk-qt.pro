@@ -295,8 +295,6 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/rpc/rpcserver.h \
             src/timedata.h \
             src/qt/overviewpage.h \
-            src/qt/blockbrowser.h \
-            src/qt/statisticspage.h \
             src/qt/csvmodelwriter.h \
             src/crypter.h \
             src/qt/sendcoinsentry.h \
@@ -389,7 +387,6 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/qt/aboutdialog.cpp \
             src/qt/editaddressdialog.cpp \
             src/qt/darksilkaddressvalidator.cpp \
-            src/qt/statisticspage.cpp \
             src/qt/peertablemodel.cpp \
             src/qt/bantablemodel.cpp \
             src/alert.cpp \
@@ -455,7 +452,6 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/rpc/rpcrawtransaction.cpp \
             src/timedata.cpp \
             src/qt/overviewpage.cpp \
-            src/qt/blockbrowser.cpp \
             src/qt/csvmodelwriter.cpp \
             src/crypter.cpp \
             src/qt/sendcoinsentry.cpp \
@@ -542,7 +538,6 @@ FORMS += \
             src/qt/forms/multisigdialog.ui \
             src/qt/forms/transactiondescdialog.ui \
             src/qt/forms/overviewpage.ui \
-            src/qt/forms/blockbrowser.ui \
             src/qt/forms/sendcoinsentry.ui \
             src/qt/forms/askpassphrasedialog.ui \
             src/qt/forms/debugconsole.ui \
@@ -550,7 +545,6 @@ FORMS += \
             src/qt/forms/sandstormconfig.ui \
             src/qt/forms/stormnodemanager.ui \
             src/qt/forms/addeditstormnode.ui \
-            src/qt/forms/statisticspage.ui \
             src/qt/forms/stormnodeconfigdialog.ui \
             src/qt/forms/messagepage.ui \
             src/qt/forms/sendmessagesentry.ui \
