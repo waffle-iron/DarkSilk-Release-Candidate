@@ -14,11 +14,6 @@
 #include "pubkey.h"
 #include "util.h"
 
-#include <openssl/ecdsa.h>
-#include <openssl/obj_mac.h>
-#include <openssl/ssl.h>
-#include <openssl/ecdh.h>
-
 // anonymous namespace
 namespace {
 class CSecp256k1Init {
