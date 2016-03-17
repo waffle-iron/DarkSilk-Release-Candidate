@@ -213,6 +213,8 @@ namespace {
     struct CMainSignals {
         // Notifies listeners of updated transaction data (passing hash, transaction, and optionally the block it is found in.
         boost::signals2::signal<void (const CTransaction &, const CBlock *, bool)> SyncTransaction;
+        // Notifies listeners of updated transaction data (transaction, and optionally the block it is found in.
+        boost::signals2::signal<void (const CTransaction &, const CBlockIndex *pindex, const CBlock *)> SyncTransactionNew;
         // Notifies listeners of an erased transaction (currently disabled, requires transaction replacement).
         boost::signals2::signal<void (const uint256 &)> EraseTransaction;
         // Notifies listeners of an updated transaction without new data (for now: a coinbase potentially becoming visible).
@@ -253,8 +255,14 @@ void UnregisterAllValidationInterfaces() {
     g_signals.SyncTransaction.disconnect_all_slots();
 }
 
+//TODO (Amir): Remove after chainActive.
 void SyncWithWallets(const CTransaction &tx, const CBlock *pblock, bool fConnect) {
     g_signals.SyncTransaction(tx, pblock, fConnect);
+}
+
+//New SyncWithWallets function.
+void SyncWithWallets(const CTransaction &tx, const CBlockIndex *pindex, const CBlock *pblock) {
+    g_signals.SyncTransactionNew(tx, pindex, pblock);
 }
 
 void ResendWalletTransactions(bool fForce) {
@@ -1030,7 +1038,7 @@ bool AcceptToMemoryPool(CTxMemPool& pool, CValidationState &state, CTransaction 
     pool.addUnchecked(hash, tx);
     setValidatedTx.insert(hash);
 
-    SyncWithWallets(tx, NULL);
+    SyncWithWallets(tx);
 
     LogPrint("mempool", "AcceptToMemoryPool : accepted %s (poolsz %u)\n",
            hash.ToString(),
@@ -4525,8 +4533,8 @@ bool static DisconnectTip(CValidationState& state, const Consensus::Params& cons
     if (!FlushStateToDisk(state, FLUSH_STATE_IF_NEEDED))
         return false;
     // Resurrect mempool transactions from the disconnected block.
-    /*std::vector<uint256> vHashUpdate;
-    BOOST_FOREACH(const CTransaction &tx, block.vtx) {
+    std::vector<uint256> vHashUpdate;
+    BOOST_FOREACH(CTransaction &tx, block.vtx) {
         // ignore validation errors in resurrected transactions
         list<CTransaction> removed;
         CValidationState stateDummy;
@@ -4548,7 +4556,7 @@ bool static DisconnectTip(CValidationState& state, const Consensus::Params& cons
     // 0-confirmed or conflicted:
     BOOST_FOREACH(const CTransaction &tx, block.vtx) {
         SyncWithWallets(tx, pindexDelete->pprev, NULL);
-    }*/
+    }
     return true;
 }
 
