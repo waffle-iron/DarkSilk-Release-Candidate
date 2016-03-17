@@ -37,6 +37,12 @@ double CTxMemPoolEntry::GetPriority(unsigned int currentHeight) const
     return dResult;
 }
 
+void CTxMemPoolEntry::UpdateFeeDelta(CAmount newFeeDelta)
+{
+    nModFeesWithDescendants += newFeeDelta - feeDelta;
+    feeDelta = newFeeDelta;
+}
+
 CTxMemPool::CTxMemPool(const CFeeRate& _minRelayFee) :
     nTransactionsUpdated(0),
     minRelayFee(_minRelayFee)
@@ -400,4 +406,58 @@ size_t CTxMemPool::DynamicMemoryUsage() const {
     LOCK(cs);
     // Estimate the overhead of mapTx to be 12 pointers + an allocation, as no exact formula for boost::multi_index_contained is implemented.
     return memusage::MallocUsage(sizeof(CTxMemPoolEntry) + 12 * sizeof(void*)) * mapTx.size() + memusage::DynamicUsage(mapNextTx) + memusage::DynamicUsage(mapDeltas);
+}
+
+// vHashesToUpdate is the set of transaction hashes from a disconnected block
+// which has been re-added to the mempool.
+// for each entry, look for descendants that are outside hashesToUpdate, and
+// add fee/size information for such descendants to the parent.
+void CTxMemPool::UpdateTransactionsFromBlock(const std::vector<uint256> &vHashesToUpdate)
+{
+    LOCK(cs);
+    // For each entry in vHashesToUpdate, store the set of in-mempool, but not
+    // in-vHashesToUpdate transactions, so that we don't have to recalculate
+    // descendants when we come across a previously seen entry.
+    cacheMap mapMemPoolDescendantsToUpdate;
+
+    // Use a set for lookups into vHashesToUpdate (these entries are already
+    // accounted for in the state of their ancestors)
+    std::set<uint256> setAlreadyIncluded(vHashesToUpdate.begin(), vHashesToUpdate.end());
+
+    // Iterate in reverse, so that whenever we are looking at at a transaction
+    // we are sure that all in-mempool descendants have already been processed.
+    // This maximizes the benefit of the descendant cache and guarantees that
+    // setMemPoolChildren will be updated, an assumption made in
+    // UpdateForDescendants.
+
+    //TODO (Amir): Put back these lines.
+    /*
+    BOOST_REVERSE_FOREACH(const uint256 &hash, vHashesToUpdate) {
+        // we cache the in-mempool children to avoid duplicate updates
+        setEntries setChildren;
+        // calculate children from mapNextTx
+        txiter it = mapTx.find(hash);
+        if (it == mapTx.end()) {
+            continue;
+        }
+        std::map<COutPoint, CInPoint>::iterator iter = mapNextTx.lower_bound(COutPoint(hash, 0));
+        // First calculate the children, and update setMemPoolChildren to
+        // include them, and update their setMemPoolParents to include this tx.
+        for (; iter != mapNextTx.end() && iter->first.hash == hash; ++iter) {
+            const uint256 &childHash = iter->second.ptx->GetHash();
+            txiter childIter = mapTx.find(childHash);
+            assert(childIter != mapTx.end());
+            // We can skip updating entries we've encountered before or that
+            // are in the block (which are already accounted for).
+            if (setChildren.insert(childIter).second && !setAlreadyIncluded.count(childHash)) {
+                UpdateChild(it, childIter, true);
+                UpdateParent(childIter, it, true);
+            }
+        }
+        if (!UpdateForDescendants(it, 100, mapMemPoolDescendantsToUpdate, setAlreadyIncluded)) {
+            // Mark as dirty if we can't do the calculation.
+            mapTx.modify(it, set_dirty());
+        }
+    }
+    */
 }

@@ -130,8 +130,10 @@ void RegisterWallet(CWalletInterface* pwalletIn);
 void UnregisterWallet(CWalletInterface* pwalletIn);
 /** Unregister all wallets from core */
 void UnregisterAllValidationInterfaces();
-/** Push an updated transaction to all registered wallets */
+/** Push an updated transaction to all registered wallets old function*/
 void SyncWithWallets(const CTransaction& tx, const CBlock* pblock = NULL, bool fConnect = true);
+/** Push an updated transaction to all registered wallets new function*/
+void SyncWithWallets(const CTransaction& tx, const CBlockIndex *pindex, const CBlock* pblock = NULL);
 /** Ask wallets to resend their transactions */
 void ResendWalletTransactions(bool fForce = false);
 
