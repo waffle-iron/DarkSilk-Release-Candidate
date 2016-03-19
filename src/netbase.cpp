@@ -1452,11 +1452,17 @@ bool closesocket(SOCKET& hSocket)
 {
     if (hSocket == INVALID_SOCKET)
         return false;
+
+#ifdef USE_NATIVE_I2P
+    int ret = closesocket(hSocket);
+#endif
+
 #ifdef WIN32
     int ret = closesocket(hSocket);
 #else
     int ret = close(hSocket);
 #endif
+
     hSocket = INVALID_SOCKET;
     return ret != SOCKET_ERROR;
 }

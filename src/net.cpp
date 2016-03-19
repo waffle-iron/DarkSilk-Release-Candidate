@@ -68,10 +68,10 @@ namespace {
     };
 
     struct I2PListenSocket {
-        SOCKET I2Psocket;
+        SOCKET socket;
         bool whitelisted;
 
-        I2PListenSocket(SOCKET I2Psocket, bool whitelisted): I2Psocket(I2Psocket), whitelisted(whitelisted) {}
+        I2PListenSocket(SOCKET socket, bool whitelisted): socket(socket), whitelisted(whitelisted) {}
     };
 }
 
@@ -1010,10 +1010,10 @@ void ThreadSocketHandler()
 
 #ifdef USE_NATIVE_I2P
         BOOST_FOREACH(const I2PListenSocket& hI2PListenSocket, vhI2PListenSocket) {
-            if (hI2PListenSocket.I2Psocket != INVALID_SOCKET)
+            if (hI2PListenSocket.socket != INVALID_SOCKET)
             {
-                FD_SET(hI2PListenSocket.I2Psocket, &fdsetRecv);
-                hSocketMax = max(hSocketMax, hI2PListenSocket.I2Psocket);
+                FD_SET(hI2PListenSocket.socket, &fdsetRecv);
+                hSocketMax = max(hSocketMax, hI2PListenSocket.socket);
                 have_fds = true;
             }
         }
@@ -1828,7 +1828,7 @@ bool BindListenNativeI2P()
 {
     bool fWhitelisted = false;
     I2PListenSocket hNewI2PListenSocket(INVALID_SOCKET, fWhitelisted);
-    if (!BindListenNativeI2P(hNewI2PListenSocket.I2Psocket))
+    if (!BindListenNativeI2P(hNewI2PListenSocket.socket))
         return false;
     vhI2PListenSocket.push_back(hNewI2PListenSocket);
     return true;
@@ -2112,8 +2112,8 @@ public:
 
 #ifdef USE_NATIVE_I2P
         BOOST_FOREACH(I2PListenSocket& hI2PListenSocket, vhI2PListenSocket)
-            if (hI2PListenSocket.I2Psocket != INVALID_SOCKET)
-                if (closesocket(hI2PListenSocket.I2Psocket))
+            if (hI2PListenSocket.socket != INVALID_SOCKET)
+                if (closesocket(hI2PListenSocket.socket))
                     printf("closesocket(hI2PListenSocket) failed with error %d\n", WSAGetLastError());
 #endif
 
