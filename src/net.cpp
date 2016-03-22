@@ -1152,7 +1152,7 @@ void ThreadSocketHandler()
         for (std::vector<I2PListenSocket>::iterator it = vhI2PListenSocket.begin(); it != vhI2PListenSocket.end(); ++it)
         {
             I2PListenSocket& hI2PListenSocket = *it;
-            SOCKET& I2PSocket = hI2PListenSocket.I2Psocket;
+            SOCKET& I2PSocket = hI2PListenSocket.socket;
             if (I2PSocket == INVALID_SOCKET)
             {
                 if (haveInvalids)
