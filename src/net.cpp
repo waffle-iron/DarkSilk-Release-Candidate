@@ -488,7 +488,7 @@ void CNode::CloseSocketDisconnect()
     if (hSocket != INVALID_SOCKET)
     {
         LogPrint("net", "disconnecting node %s\n", addrName);
-        closesocket(hSocket);
+        CloseSocket(hSocket);
     }
 
     // in case this fails, we'll empty the recv buffer when the CNode is deleted
@@ -792,13 +792,13 @@ void AddIncomingConnection(SOCKET hSocket, const CAddress& addr)
         {
             LOCK(cs_setservAddNodeAddresses);
             if (!setservAddNodeAddresses.count(addr))
-                closesocket(hSocket);
+                CloseSocket(hSocket);
         }
     }
     else if (CNode::IsBanned(addr))
     {
         printf("connection from %s dropped (banned)\n", addr.ToString().c_str());
-        closesocket(hSocket);
+        CloseSocket(hSocket);
     }
     else
     {
@@ -1118,17 +1118,17 @@ void ThreadSocketHandler()
             else if (!IsSelectableSocket(hSocket))
             {
                 LogPrintf("connection from %s dropped: non-selectable socket\n", addr.ToString());
-                closesocket(hSocket);
+                CloseSocket(hSocket);
             }
             else if (nInbound >= nMaxConnections - MAX_OUTBOUND_CONNECTIONS)
             {
                 LogPrint("net", "connection from %s dropped (full)\n", addr.ToString());
-                closesocket(hSocket);
+                CloseSocket(hSocket);
             }
             else if (CNode::IsBanned(addr) && !whitelisted)
             {
                 LogPrintf("connection from %s dropped (banned)\n", addr.ToString());
-                closesocket(hSocket);
+                CloseSocket(hSocket);
             }
             else
             {
@@ -1180,20 +1180,20 @@ void ThreadSocketHandler()
                         else
                         {
                             printf("Invalid incoming destination hash received (%s)\n", incomingAddr.c_str());
-                            closesocket(I2PSocket);
+                            CloseSocket(I2PSocket);
                         }
                     }
                     else
                     {
                         printf("Invalid incoming destination hash size received (%d)\n", nBytes);
-                        closesocket(I2PSocket);
+                        CloseSocket(I2PSocket);
                     }
                 }
                 else if (nBytes == 0)
                 {
                     // socket closed gracefully
                     printf("I2P listen socket closed\n");
-                    closesocket(I2PSocket);
+                    CloseSocket(I2PSocket);
                 }
                 else if (nBytes < 0)
                 {
@@ -1203,7 +1203,7 @@ void ThreadSocketHandler()
                         continue;
 
                     printf("I2P listen socket recv error %d\n", nErr);
-                    closesocket(I2PSocket);
+                    CloseSocket(I2PSocket);
                 }
                 I2PSocket = INVALID_SOCKET;  // we've saved this socket in a CNode or closed it, so we can safety reset it anyway
                 BindListenNativeI2P(I2PSocket);
@@ -2104,17 +2104,17 @@ public:
         // Close sockets
         BOOST_FOREACH(CNode* pnode, vNodes)
             if (pnode->hSocket != INVALID_SOCKET)
-                closesocket(pnode->hSocket);
+                CloseSocket(pnode->hSocket);
         BOOST_FOREACH(ListenSocket& hListenSocket, vhListenSocket)
             if (hListenSocket.socket != INVALID_SOCKET)
-                if (closesocket(hListenSocket.socket))
-                    LogPrintf("closesocket(hListenSocket) failed with error %d\n", WSAGetLastError());
+                if (CloseSocket(hListenSocket.socket))
+                    LogPrintf("CloseSocket(hListenSocket) failed with error %d\n", WSAGetLastError());
 
 #ifdef USE_NATIVE_I2P
         BOOST_FOREACH(I2PListenSocket& hI2PListenSocket, vhI2PListenSocket)
             if (hI2PListenSocket.socket != INVALID_SOCKET)
-                if (closesocket(hI2PListenSocket.socket))
-                    printf("closesocket(hI2PListenSocket) failed with error %d\n", WSAGetLastError());
+                if (CloseSocket(hI2PListenSocket.socket))
+                    printf("CloseSocket(hI2PListenSocket) failed with error %d\n", WSAGetLastError());
 #endif
 
         // clean up some globals (to help leak detection)
@@ -2532,7 +2532,7 @@ CNode::CNode(SOCKET hSocketIn, CAddress addrIn, std::string addrNameIn, bool fIn
 
 CNode::~CNode()
 {
-    closesocket(hSocket);
+    CloseSocket(hSocket);
 
     if (pfilter)
         delete pfilter;

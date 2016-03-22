@@ -93,7 +93,7 @@ void Socket::CloseSocket()
 	{
 #ifdef USE_WINDOWS_STYLE_SOCKETS
 		CancelIo((HANDLE) m_s);
-		CheckAndHandleError_int("closesocket", closesocket(m_s));
+		CheckAndHandleError_int("CloseSocket", CloseSocket(m_s));
 #else
 		CheckAndHandleError_int("close", close(m_s));
 #endif
