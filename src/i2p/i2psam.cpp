@@ -29,7 +29,7 @@
 #include "i2p/i2psam.h"
 
 #ifndef WIN32
-#define closesocket         close
+#define CloseSocket         close
 #endif
 
 #define SAM_BUFSIZE         65536
@@ -205,7 +205,7 @@ std::string Socket::read()
 void Socket::close()
 {
     if (socket_ != SAM_INVALID_SOCKET)
-        ::closesocket(socket_);
+        ::CloseSocket(socket_);
     socket_ = SAM_INVALID_SOCKET;
 }
 

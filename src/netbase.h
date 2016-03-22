@@ -217,7 +217,7 @@ bool LookupNumeric(const char *pszName, CService& addr, int portDefault = 0);
 bool ConnectSocket(const CService &addr, SOCKET& hSocketRet, int nTimeout, bool *outProxyConnectionFailed = 0);
 bool ConnectSocketByName(CService &addr, SOCKET& hSocketRet, const char *pszDest, int portDefault, int nTimeout, bool *outProxyConnectionFailed = 0);
 /** Close socket and set hSocket to INVALID_SOCKET */
-bool closesocket(SOCKET& hSocket);
+bool CloseSocket(SOCKET& hSocket);
 #ifdef USE_NATIVE_I2P
 bool SetSocketOptions(SOCKET& hSocket);
 #endif
