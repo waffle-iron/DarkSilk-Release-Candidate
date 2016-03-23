@@ -15,8 +15,6 @@
 
 #include <stdint.h>
 
-#include <openssl/rand.h>
-
 #ifndef WIN32
 #include <arpa/inet.h>
 #endif
@@ -29,6 +27,7 @@
 #include "mruset.h"
 #include "netbase.h"
 #include "protocol.h"
+#include "random.h"
 #include "util.h"
 #include "streams.h"
 #include "sync.h"
