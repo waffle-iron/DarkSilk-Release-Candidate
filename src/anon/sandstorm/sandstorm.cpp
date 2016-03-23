@@ -564,10 +564,11 @@ void CSandstormPool::CheckFinalTransaction()
 
     CWalletTx txNew = CWalletTx(pwalletMain, finalTransaction);
 
-    LOCK2(cs_main, pwalletMain->cs_wallet);
-    {
-        LogPrint("sandstorm", "Transaction 2: %s\n", txNew.ToString());
 
+    LogPrint("sandstorm", "Transaction 2: %s\n", txNew.ToString());
+
+    {
+        LOCK(cs_main);
         // See if the transaction is valid
         if (!txNew.AcceptToMemoryPool(false, true, true))
         {
@@ -579,58 +580,56 @@ void CSandstormPool::CheckFinalTransaction()
             RelayCompletedTransaction(sessionID, true, ERR_INVALID_TX);
             return;
         }
-
-        LogPrintf("CSandstormPool::Check() -- IS STORM -- TRANSMITTING DARKSILK\n");
-
-        // sign a message
-
-        int64_t sigTime = GetAdjustedTime();
-        std::string strMessage = txNew.GetHash().ToString() + boost::lexical_cast<std::string>(sigTime);
-        std::string strError = "";
-        std::vector<unsigned char> vchSig;
-        CKey key2;
-        CPubKey pubkey2;
-
-        if(!sandStormSigner.SetKey(strStormNodePrivKey, strError, key2, pubkey2))
-        {
-            LogPrintf("CSandstormPool::Check() - ERROR: Invalid Stormnodeprivkey: '%s'\n", strError);
-            return;
-        }
-
-        if(!sandStormSigner.SignMessage(strMessage, strError, vchSig, key2)) {
-            LogPrintf("CSandstormPool::Check() - Sign message failed\n");
-            return;
-        }
-
-        if(!sandStormSigner.VerifyMessage(pubkey2, vchSig, strMessage, strError)) {
-            LogPrintf("CSandstormPool::Check() - Verify message failed\n");
-            return;
-        }
-
-        if(!mapSandstormBroadcastTxes.count(txNew.GetHash())){
-            CSandstormBroadcastTx sstx;
-            sstx.tx = txNew;
-            sstx.vin = activeStormnode.vin;
-            sstx.vchSig = vchSig;
-            sstx.sigTime = sigTime;
-
-            mapSandstormBroadcastTxes.insert(make_pair(txNew.GetHash(), sstx));
-        }
-
-        CInv inv(MSG_SSTX, txNew.GetHash());
-        RelayInv(inv);
-
-        // Tell the clients it was successful
-        RelayCompletedTransaction(sessionID, false, MSG_SUCCESS);
-
-        // Randomly charge clients
-        ChargeRandomFees();
-
-        // Reset
-        LogPrint("sandstorm", "CSandstormPool::Check() -- COMPLETED -- RESETTING\n");
-        SetNull();
-        RelayStatus(sessionID, GetState(), GetEntriesCount(), STORMNODE_RESET);
     }
+    LogPrintf("CDarksendPool::Check() -- IS MASTER -- TRANSMITTING DARKSEND\n");
+ 
+    // sign a message
+    int64_t sigTime = GetAdjustedTime();
+    std::string strMessage = txNew.GetHash().ToString() + boost::lexical_cast<std::string>(sigTime);
+    std::string strError = "";
+    std::vector<unsigned char> vchSig;
+    CKey key2;
+    CPubKey pubkey2;
+
+    if(!sandStormSigner.SetKey(strStormNodePrivKey, strError, key2, pubkey2))
+    {
+        LogPrintf("CSandstormPool::Check() - ERROR: Invalid Stormnodeprivkey: '%s'\n", strError);
+        return;
+    }
+
+    if(!sandStormSigner.SignMessage(strMessage, strError, vchSig, key2)) {
+        LogPrintf("CSandstormPool::Check() - Sign message failed\n");
+        return;
+    }
+
+    if(!sandStormSigner.VerifyMessage(pubkey2, vchSig, strMessage, strError)) {
+        LogPrintf("CSandstormPool::Check() - Verify message failed\n");
+        return;
+    }
+
+    if(!mapSandstormBroadcastTxes.count(txNew.GetHash())){
+        CSandstormBroadcastTx sstx;
+        sstx.tx = txNew;
+        sstx.vin = activeStormnode.vin;
+        sstx.vchSig = vchSig;
+        sstx.sigTime = sigTime;
+
+        mapSandstormBroadcastTxes.insert(make_pair(txNew.GetHash(), sstx));
+    }
+
+    CInv inv(MSG_SSTX, txNew.GetHash());
+    RelayInv(inv);
+
+    // Tell the clients it was successful
+    RelayCompletedTransaction(sessionID, false, MSG_SUCCESS);
+
+    // Randomly charge clients
+    ChargeRandomFees();
+
+    // Reset
+    LogPrint("sandstorm", "CSandstormPool::Check() -- COMPLETED -- RESETTING\n");
+    SetNull();
+    RelayStatus(sessionID, GetState(), GetEntriesCount(), STORMNODE_RESET);
 }
 
 //
@@ -1378,7 +1377,7 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun)
         return false;
     }
 
-    if(!fSandstormMultiSession && pindexBest->nHeight - cachedLastSuccess < minBlockSpacing) {
+    if(pindexBest->nHeight - cachedLastSuccess < minBlockSpacing) {
         LogPrintf("CSandstormPool::DoAutomaticDenominating - Last successful Sandstorm action was too recent\n");
         strAutoDenomResult = _("Last successful Sandstorm action was too recent.");
         return false;
@@ -1476,7 +1475,7 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun)
         int nUseQueue = rand()%100;
         UpdateState(POOL_STATUS_ACCEPTING_ENTRIES);
 
-        if(!fSandstormMultiSession && pwalletMain->GetDenominatedBalance(true) > 0) { //get denominated unconfirmed inputs
+        if(pwalletMain->GetDenominatedBalance(true) > 0) { //get denominated unconfirmed inputs
             LogPrintf("DoAutomaticDenominating -- Found unconfirmed denominated outputs, will wait till they confirm to continue.\n");
             strAutoDenomResult = _("Found unconfirmed denominated outputs, will wait till they confirm to continue.");
             return false;
@@ -1540,20 +1539,24 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun)
                 std::vector<COutput> vTempCoins2;
                 // Try to match their denominations if possible
                 if (!pwalletMain->SelectCoinsByDenominations(ssq.nDenom, nValueMin, nBalanceNeedsAnonymized, vTempCoins, vTempCoins2, nValueIn, 0, nSandstormRounds)){
-                    LogPrintf("DoAutomaticDenominating - Couldn't match denominations %d\n", ssq.nDenom);
+                    LogPrintf("DoAutomaticDenominating --- Couldn't match denominations %d\n", ssq.nDenom);
                     continue;
                 }
+
+                CStormnode* psn = snodeman.Find(ssq.vin);
+                if(psn == NULL)
+                {
+                    LogPrintf("DoAutomaticDenominating --- ssq vin %s is not in stormnode list!", ssq.vin.ToString());
+                    continue;
+                }
+
+                LogPrintf("DoAutomaticDenominating --- attempt to connect to stormnode from queue %s\n", psn->addr.ToString());
+                lastTimeChanged = GetTimeMillis();
 
                 // connect to Stormnode and submit the queue request
                 CNode* pnode = ConnectNode((CAddress)addr, NULL, true);
                 if(pnode != NULL)
                 {
-                    CStormnode* psn = snodeman.Find(ssq.vin);
-                    if(psn == NULL)
-                    {
-                        LogPrintf("DoAutomaticDenominating --- ssq vin %s is not in stormnode list!", ssq.vin.ToString());
-                        continue;
-                    }
                     pSubmittedToStormnode = psn;
                     vecStormnodesUsed.push_back(ssq.vin);
                     sessionDenom = ssq.nDenom;
@@ -1595,7 +1598,7 @@ bool CSandstormPool::DoAutomaticDenominating(bool fDryRun)
             }
 
             lastTimeChanged = GetTimeMillis();
-            LogPrintf("DoAutomaticDenominating -- attempt %d connection to Stormnode %s\n", i, psn->addr.ToString());
+            LogPrintf("DoAutomaticDenominating --- attempt %d connection to Stormnode %s\n", i, psn->addr.ToString());
             CNode* pnode = ConnectNode((CAddress)psn->addr, NULL, true);
             if(pnode != NULL){
                 pSubmittedToStormnode = psn;
@@ -2199,7 +2202,12 @@ void ThreadCheckSandStormPool()
 {
     if(fLiteMode) return; //disable all Sandstorm/Stormnode related functionality
 
-    // Make this thread recognisable as the wallet flushing thread
+    static bool fOneThread;
+    if (fOneThread)
+        return;
+    fOneThread = true;
+
+    // Make this thread recognisable as the Darksend/Masternode thread
     RenameThread("darksilk-sandstorm");
 
     unsigned int c = 0;

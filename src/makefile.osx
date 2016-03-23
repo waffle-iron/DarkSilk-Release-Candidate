@@ -66,7 +66,15 @@ CFLAGS += -Wall -Wextra -Wformat -Wno-ignored-qualifiers -Wformat-security -Wno-
 
 OBJS= \
     obj/alert.o \
+    obj/allocators.o \
+    obj/bloom.o \
     obj/cleanse.o \
+    obj/core_read.o \
+    obj/core_write.o \
+    obj/gen.o \
+    obj/univalue.o \
+    obj/univalue_read.o \
+    obj/univalue_write.o \
     obj/version.o \
     obj/checkpoints.o \
     obj/netbase.o \
@@ -96,6 +104,8 @@ OBJS= \
     obj/sync.o \
     obj/txmempool.o \
     obj/util.o \
+    obj/utilstrencodings.o \
+    obj/utilmoneystr.o \
     obj/hash.o \
     obj/noui.o \
     obj/kernel.o \
@@ -143,7 +153,8 @@ OBJS= \
     obj/crypto/argon2/encoding.o \
     obj/crypto/argon2/thread.o \
     obj/crypto/argon2/opt.o \
-    obj/crypto/argon2/blake2/blake2b.o
+    obj/crypto/argon2/blake2/blake2b.o\
+    obj/utilstrencodings.o
 
 ifdef USE_NATIVE_I2P
         OBJS += obj/i2p/i2p.o

@@ -10,7 +10,7 @@
 #include <vector>
 
 #include "primitives/block.h"
-#include "util.h"
+#include "utilmoneystr.h"
 #include "chainparams.h"
 
 class CTxDB;
@@ -58,6 +58,11 @@ struct CDiskBlockPos
 
     void SetNull() { nFile = -1; nPos = 0; }
     bool IsNull() const { return (nFile == -1); }
+
+    std::string ToString() const
+    {
+        return strprintf("CBlockDiskPos(nFile=%i, nPos=%i)", nFile, nPos);
+    }
 };
 
 enum BlockStatus {
@@ -336,6 +341,15 @@ public:
         if (nStatus & BLOCK_HAVE_DATA) {
             ret.nFile = nFile;
             ret.nPos  = nDataPos;
+        }
+        return ret;
+    }
+
+    CDiskBlockPos GetUndoPos() const {
+        CDiskBlockPos ret;
+        if (nStatus & BLOCK_HAVE_UNDO) {
+            ret.nFile = nFile;
+            ret.nPos  = nUndoPos;
         }
         return ret;
     }
