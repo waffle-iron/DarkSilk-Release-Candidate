@@ -453,7 +453,7 @@ void CBudgetManager::FillBlockPayee(CTransaction& txNew, CAmount nFees)
         ++it;
     }
 
-    CAmount blockValue = GetBlockValue(pindexPrev->nBits, pindexPrev->nHeight, nFees);
+    CAmount blockValue = GetBlockValue(pindexPrev->nBits, pindexPrev->nHeight, nFees, true);
 
     if(nHighestCount > 0){
 

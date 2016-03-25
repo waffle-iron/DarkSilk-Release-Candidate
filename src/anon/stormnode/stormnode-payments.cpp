@@ -311,7 +311,7 @@ void CStormnodePayments::FillBlockPayee(CTransaction& txNew, CAmount nFees)
         }
     }
 
-    CAmount blockValue = GetBlockValue(pindexPrev->nBits, pindexPrev->nHeight, nFees);
+    CAmount blockValue = GetBlockValue(pindexPrev->nBits, pindexPrev->nHeight, nFees, true);
     CAmount stormnodePayment = GetStormnodePayment(pindexPrev->nHeight+1, blockValue);
 
     txNew.vout[0].nValue = blockValue;
