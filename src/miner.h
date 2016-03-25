@@ -8,8 +8,11 @@
 
 #include "wallet/wallet.h"
 
-/* Generate a new block, without valid proof-of-work */
-CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake=false, CAmount* pFees = 0);
+//! Generate new proof-of-stake block
+CBlock* CreateNewBlockPoS(CReserveKey& reservekey, CAmount* pFees = 0);
+
+//! Generate a new proof-of-work block
+CBlock* CreateNewBlockPoW(CReserveKey& reservekey, CAmount* pFees = 0);
 
 /** Modify the extranonce in a block */
 void IncrementExtraNonce(CBlock* pblock, CBlockIndex* pindexPrev, unsigned int& nExtraNonce);
