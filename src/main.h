@@ -38,7 +38,7 @@ static const CAmount SANDSTORM_POOL_MAX = (9999.99*COIN);
 // Static Proof-of-Stake Reward of 0.01 DRKSLK
 static const CAmount STATIC_POS_REWARD = COIN * 0.01;
 // Static Proof-of-Work Reward of 1.0 DRKSLK
-static const CAmount STATIC_POW_REWARD = COIN * 1;
+static const CAmount STATIC_POW_REWARD = COIN * 1; //TODO (Amir): Change to 1.25 before release.
 // Number of blocks that can be requested at any given time from a single peer.
 static const int MAX_BLOCKS_IN_TRANSIT_PER_PEER = 128;
 // Timeout in seconds before considering a block download peer unresponsive.

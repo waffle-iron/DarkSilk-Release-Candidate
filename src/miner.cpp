@@ -357,6 +357,9 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, CAmount* pFe
             }
         }
 
+        nLastBlockTx = nBlockTx;
+        nLastBlockSize = nBlockSize;
+
         if (!fProofOfStake){
             // PoW block, Stormnode and general budget payments
             FillBlockPayee(txNew, nFees);
@@ -368,10 +371,6 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, CAmount* pFe
             if ((fDebug && GetBoolArg("-printpriority", false)))
                 LogPrintf("CreateNewBlock(): PoS, total size %u, height: %u \n", nBlockSize, nHeight);
         }
-
-        //TODO (Amir): Are these lines needed???
-        //nLastBlockTx = nBlockTx;
-        //nLastBlockSize = nBlockSize;
 
         if (pFees)
             *pFees = nFees;
