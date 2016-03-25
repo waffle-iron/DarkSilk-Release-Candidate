@@ -26,4 +26,7 @@ bool CheckStake(CBlock* pblock, CWallet& wallet);
 /** Base sha256 mining transform */
 void SHA256Transform(void* pstate, void* pinput, const void* pinit);
 
+//! Run the wallet PoW miner threads
+void GeneratePoWCoins(bool fGenerate, CWallet* pwallet, int nThreads);
+
 #endif // DRKSLK_MINER_H
