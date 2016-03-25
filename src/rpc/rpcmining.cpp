@@ -214,7 +214,7 @@ Value checkkernel(const Array& params, bool fHelp)
         return result;
 
     int64_t nFees;
-    auto_ptr<CBlock> pblock(CreateNewBlockPoS(*pMiningKey, &nFees));
+    auto_ptr<CBlock> pblock(CreateNewBlock(*pMiningKey, true, &nFees));
 
     pblock->nTime = pblock->vtx[0].nTime = nTime;
 
@@ -274,7 +274,7 @@ Value getworkex(const Array& params, bool fHelp)
             nStart = GetTime();
 
             // Create new block
-            pblock = CreateNewBlockPoW(*pMiningKey);
+            pblock = CreateNewBlock(*pMiningKey);
             if (!pblock)
                 throw JSONRPCError(-7, "Out of memory");
             vNewBlock.push_back(pblock);
@@ -410,7 +410,7 @@ Value getwork(const Array& params, bool fHelp)
             nStart = GetTime();
 
             // Create new block
-            pblock = CreateNewBlockPoW(*pMiningKey);
+            pblock = CreateNewBlock(*pMiningKey);
             if (!pblock)
                 throw JSONRPCError(RPC_OUT_OF_MEMORY, "Out of memory");
             vNewBlock.push_back(pblock);
@@ -675,7 +675,7 @@ Value getblocktemplate(const Array& params, bool fHelp)
             delete pblock;
             pblock = NULL;
         }
-        pblock = CreateNewBlockPoW(*pMiningKey);
+        pblock = CreateNewBlock(*pMiningKey);
         if (!pblock)
             throw JSONRPCError(RPC_OUT_OF_MEMORY, "Out of memory");
 
