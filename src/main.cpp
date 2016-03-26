@@ -1692,9 +1692,8 @@ CAmount GetProofOfWorkReward(CAmount nFees)
     }
     else
     {
-        CAmount nSubsidy = 1 * COIN;
-        LogPrint("creation", "GetProofOfWorkReward() : create=%s nSubsidy=%d\n", FormatMoney(nSubsidy), nSubsidy);
-        return nSubsidy + nFees;
+        LogPrint("creation", "GetProofOfWorkReward() : create=%s nSubsidy=%d\n", FormatMoney(STATIC_POW_REWARD), STATIC_POW_REWARD);
+        return STATIC_POW_REWARD + nFees;
     }
 }
 

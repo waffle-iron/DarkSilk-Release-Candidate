@@ -363,6 +363,7 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, CAmount* pFe
         if (!fProofOfStake){
             // PoW block, Stormnode and general budget payments
             FillBlockPayee(txNew, nFees);
+            pblock->vtx[0] = txNew;
             if ((fDebug && GetBoolArg("-printpriority", false)))
                 LogPrintf("CreateNewBlock(): PoW, total size %u, height: %u \n", nBlockSize, nHeight);
         }
@@ -607,7 +608,7 @@ int64_t nHPSTimerStart = 0;
 
 void static PoWMiner(CWallet *pwallet)
 {
-    LogPrintf("Darksilk Wallet miner started\n");
+    LogPrintf("Darksilk wallet miner started\n");
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
     RenameThread("pow-miner");
 
@@ -716,14 +717,17 @@ void GeneratePoWCoins(bool fGenerate, CWallet* pwallet, int nThreads)
 
     if (minerThreads != NULL)
     {
-    minerThreads->interrupt_all();
-    delete minerThreads;
-    minerThreads = NULL;
+        minerThreads->interrupt_all();
+        delete minerThreads;
+        minerThreads = NULL;
     }
+
     if (nThreads == 0 || !fGenerate)
-    return;
+        return;
+
     minerThreads = new boost::thread_group();
+
     for (int i = 0; i < nThreads; i++)
-    minerThreads->create_thread(boost::bind(&PoWMiner, pwallet));
+        minerThreads->create_thread(boost::bind(&PoWMiner, pwallet));
 }
 #endif

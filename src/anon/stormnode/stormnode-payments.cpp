@@ -306,12 +306,14 @@ void CStormnodePayments::FillBlockPayee(CTransaction& txNew, CAmount nFees)
         if(winningNode){
             payee = GetScriptForDestination(winningNode->pubkey.GetID());
         } else {
-            LogPrintf("CreateNewBlock: Failed to detect stormnode to pay\n");
+            if (fDebug)
+                LogPrintf("CreateNewBlock: Failed to detect stormnode to pay\n");
+
             hasPayment = false;
         }
     }
 
-    CAmount blockValue = GetBlockValue(pindexPrev->nBits, pindexPrev->nHeight, nFees, true);
+    CAmount blockValue = GetProofOfWorkReward(nFees);
     CAmount stormnodePayment = GetStormnodePayment(pindexPrev->nHeight+1, blockValue);
 
     txNew.vout[0].nValue = blockValue;
