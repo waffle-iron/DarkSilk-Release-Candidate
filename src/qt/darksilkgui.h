@@ -5,6 +5,7 @@
 #include <QSystemTrayIcon>
 
 #include <stdint.h>
+
 #include "ui_interface.h"
 
 class TransactionTableModel;
@@ -18,8 +19,7 @@ class SendCoinsDialog;
 class SignVerifyMessageDialog;
 class Notificator;
 class DEBUGConsole;
-class BlockBrowser;
-class StatisticsPage;
+class MultisigDialog;
 class MessagePage;
 class StormnodeManager;
 
@@ -27,6 +27,7 @@ QT_BEGIN_NAMESPACE
 class QLabel;
 class QModelIndex;
 class QProgressBar;
+class QProgressDialog;
 class QStackedWidget;
 class QScrollArea;
 QT_END_NAMESPACE
@@ -85,8 +86,7 @@ private:
     AddressBookPage *receiveCoinsPage;
     SendCoinsDialog *sendCoinsPage;
     SignVerifyMessageDialog *signVerifyMessageDialog;
-    BlockBrowser *blockBrowser;
-    StatisticsPage *statisticsPage;
+    MultisigDialog *multisigPage;
     MessagePage *messagePage;
     StormnodeManager *stormnodeManagerPage;
 
@@ -97,6 +97,7 @@ private:
     QLabel *labelBlocksIcon;
     QLabel *progressBarLabel;
     QProgressBar *progressBar;
+    QProgressDialog *progressDialog;
 #ifdef USE_NATIVE_I2P
     QLabel* labelI2PConnections;
     QLabel* labelI2POnly;
@@ -124,8 +125,7 @@ private:
     QAction *openPeersAction;
     QAction *aboutQtAction;
     QAction *openDEBUGConsoleAction;
-    QAction *blockAction;
-    QAction *statisticsAction;
+    QAction *multisigAction; 
     QAction *messageAction;
     QAction *stormnodeManagerAction;
 
@@ -179,7 +179,7 @@ public slots:
       @param[in] nFeeRequired       the required fee
       @param[out] payFee            true to pay the fee, false to not pay the fee
     */
-    void askFee(qint64 nFeeRequired, bool *payFee);
+    void askFee(CAmount nFeeRequired, bool *payFee);
     void handleURI(QString strURI);
 #ifdef USE_NATIVE_I2P
     void showGeneratedI2PAddr(const QString& caption, const QString& pub, const QString& priv, const QString& b32, const QString& configFileName);
@@ -196,10 +196,8 @@ private slots:
     void gotoReceiveCoinsPage();
     /** Switch to send coins page */
     void gotoSendCoinsPage();
-    /** Switch to block explorer*/
-    void gotoBlockBrowser();
-    /** Switch to Statistics Page*/
-    void gotoStatisticsPage();
+    /** Switch to multi sig page*/
+    void gotoMultiSigPage();
     /** Switch to Message Page*/
     void gotoMessagePage();
     /** Switch to Stormnode Manager Page*/
@@ -244,6 +242,9 @@ private slots:
 
     void updateWeight();
     void updateStakingIcon();
+
+    /** Show progress dialog e.g. for verifychain */
+    void showProgress(const QString &title, int nProgress);
 
     /** called by a timer to check if fRequestShutdown has been set **/
     void detectShutdown();

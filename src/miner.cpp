@@ -1,20 +1,16 @@
 // Copyright (c) 2009-2016 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Developers
-// Copyright (c) 2015-2016 The Silk Network Developers
+// Copyright (c) 2015-2016 Silk Network
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-
-#include "primitives/block.h"
-#include "primitives/transaction.h"
-#include "txdb.h"
-#include "main.h"
 #include "miner.h"
+#include "primitives/block.h"
+#include "txdb.h"
 #include "kernel.h"
-#include "wallet.h"
-#include "stormnodeman.h"
-#include "stormnode-payments.h"
-#include "spork.h"
+#include "anon/stormnode/stormnodeman.h"
+#include "anon/stormnode/stormnode-payments.h"
+#include "anon/stormnode/spork.h"
 #include "txdb-leveldb.h"
 
 using namespace std;
@@ -107,8 +103,8 @@ public:
     }
 };
 
-// CreateNewBlock: create new block (without proof-of-work/proof-of-stake)
-CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFees)
+// CreateNewBlock: creates new block using proof-of-work or proof-of-stake
+CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, CAmount* pFees)
 {
     // Create new block
     auto_ptr<CBlock> pblock(new CBlock());
@@ -120,14 +116,14 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
 
     // Create coinbase tx
     // TODO (AA): Use CMutableTransaction txNew;
-    CMutableTransaction txNew;
+    CTransaction txNew;
     txNew.vin.resize(1);
     txNew.vin[0].prevout.SetNull();
     txNew.vout.resize(1);
 
     if (!fProofOfStake)
     {
-        pblock->nVersion = 1; // Proof of Work uses Scrypt
+        pblock->nVersion = 1; // Proof of Work uses Argon2d
         CPubKey pubkey;
         if (!reservekey.GetReservedKey(pubkey))
             return NULL;
@@ -165,7 +161,7 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
     // a transaction spammer can cheaply fill blocks using
     // 1-satoshi-fee transactions. It should be set above the real
     // cost to you of processing a transaction.
-    int64_t nMinTxFee = MIN_TX_FEE;
+    CAmount nMinTxFee = MIN_TX_FEE;
     if (mapArgs.count("-mintxfee"))
         ParseMoney(mapArgs["-mintxfee"], nMinTxFee);
 
@@ -173,7 +169,7 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
 
 
     // Collect memory pool transactions into the block
-    int64_t nFees = 0;
+    CAmount nFees = 0;
     {
         LOCK2(cs_main, mempool.cs);
         CTxDB txdb("r");
@@ -193,7 +189,7 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
 
             COrphan* porphan = NULL;
             double dPriority = 0;
-            int64_t nTotalIn = 0;
+            CAmount nTotalIn = 0;
             bool fMissingInputs = false;
             BOOST_FOREACH(const CTxIn& txin, tx.vin)
             {
@@ -228,7 +224,7 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
                     nTotalIn += mempool.mapTx[txin.prevout.hash].vout[txin.prevout.n].nValue;
                     continue;
                 }
-                int64_t nValueIn = txPrev.vout[txin.prevout.n].nValue;
+                CAmount nValueIn = txPrev.vout[txin.prevout.n].nValue;
                 nTotalIn += nValueIn;
 
                 int nConf = txindex.GetDepthInMainChain();
@@ -251,8 +247,9 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
                 porphan->dPriority = dPriority;
                 porphan->dFeePerKb = dFeePerKb;
             }
-            else
+            else {
                 vecPriority.push_back(TxPriority(dPriority, dFeePerKb, &(*mi).second));
+            }
         }
 
         // Collect transactions into block
@@ -313,7 +310,7 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
             if (!txPoS.FetchInputs(tx, txdb, mapTestPoolTmp, false, true, mapInputs, fInvalid))
                 continue;
 
-            int64_t nTxFees = txPoS.GetValueIn(tx, mapInputs) - txPoS.GetValueOut(tx);
+            CAmount nTxFees = txPoS.GetValueIn(tx, mapInputs) - txPoS.GetValueOut(tx);
 
             nTxSigOps += GetP2SHSigOpCount(tx, mapInputs);
             if (nBlockSigOps + nTxSigOps >= MAX_BLOCK_SIGOPS)
@@ -360,15 +357,21 @@ CBlock* CreateNewBlock(CReserveKey& reservekey, bool fProofOfStake, int64_t* pFe
             }
         }
 
-        CAmount blockValue = GetBlockValue(pindexPrev->nBits, pindexPrev->nHeight, nFees);
-        CAmount stormnodePayment = GetStormnodePayment(pindexPrev->nHeight+1, blockValue);
+        nLastBlockTx = nBlockTx;
+        nLastBlockSize = nBlockSize;
 
-        if ((fDebug && GetBoolArg("-printpriority", false)) || true)
-        LogPrintf("CreateNewBlock(): total size %u, height: %u, PoS: %d, block value: %u, stormnode payment: %u \n",
-                      nBlockSize, nHeight, fProofOfStake, blockValue, stormnodePayment);
-
-        if (!fProofOfStake)
-            pblock->vtx[0].vout[0].nValue = GetProofOfWorkReward(nFees);
+        if (!fProofOfStake){
+            // PoW block, Stormnode and general budget payments
+            FillBlockPayee(txNew, nFees);
+            pblock->vtx[0] = txNew;
+            if ((fDebug && GetBoolArg("-printpriority", false)))
+                LogPrintf("CreateNewBlock(): PoW, total size %u, height: %u \n", nBlockSize, nHeight);
+        }
+        else {
+            //PoS block, just log, payment tx already set.
+            if ((fDebug && GetBoolArg("-printpriority", false)))
+                LogPrintf("CreateNewBlock(): PoS, total size %u, height: %u \n", nBlockSize, nHeight);
+        }
 
         if (pFees)
             *pFees = nFees;
@@ -521,6 +524,17 @@ bool CheckStake(CBlock* pblock, CWallet& wallet)
         // Process this block the same as if we had received it from another node
         if (!ProcessBlock(NULL, pblock))
             return error("CheckStake() : ProcessBlock, block not accepted");
+        else
+        {
+            //ProcessBlock successful for PoS. now FixSpentCoins.
+            int nMismatchSpent;
+            CAmount nBalanceInQuestion;
+            wallet.FixSpentCoins(nMismatchSpent, nBalanceInQuestion);
+            if (nMismatchSpent != 0)
+            {
+                LogPrintf("PoS mismatched spent coins = %d and balance affects = %d \n", nMismatchSpent, nBalanceInQuestion);
+            }
+        }
     }
 
     return true;
@@ -531,7 +545,7 @@ void ThreadStakeMiner(CWallet *pwallet)
     SetThreadPriority(THREAD_PRIORITY_LOWEST);
 
     // Make this thread recognisable as the mining thread
-    RenameThread("darksilk-miner");
+    RenameThread("pos-miner");
 
     CReserveKey reservekey(pwallet);
 
@@ -565,7 +579,7 @@ void ThreadStakeMiner(CWallet *pwallet)
         //
         // Create new block
         //
-        int64_t nFees;
+        CAmount nFees;
         auto_ptr<CBlock> pblock(CreateNewBlock(reservekey, true, &nFees));
         if (!pblock.get())
             return;
@@ -582,3 +596,138 @@ void ThreadStakeMiner(CWallet *pwallet)
             MilliSleep(nMinerSleep);
     }
 }
+
+
+#ifdef ENABLE_WALLET
+//////////////////////////////////////////////////////////////////////////////
+//
+// Internal PoW miner
+//
+double dHashesPerSec = 0.0;
+int64_t nHPSTimerStart = 0;
+
+void static PoWMiner(CWallet *pwallet)
+{
+    LogPrintf("Darksilk wallet miner started\n");
+    SetThreadPriority(THREAD_PRIORITY_LOWEST);
+    RenameThread("pow-miner");
+
+    // Each thread has its own key and counter
+    CReserveKey reservekey(pwallet);
+    unsigned int nExtraNonce = 0;
+
+    try { while (true) {
+        //
+        // Create new block
+        //
+        unsigned int nTransactionsUpdatedLast = mempool.GetTransactionsUpdated();
+        CBlockIndex* pindexPrev = pindexBest;
+
+        CAmount nFees;
+        auto_ptr<CBlock> pblocktemplate(CreateNewBlock(reservekey, false, &nFees));
+        if (!pblocktemplate.get())
+            return;
+
+        CBlock *pblock = pblocktemplate.get();
+
+        IncrementExtraNonce(pblock, pindexPrev, nExtraNonce);
+
+        LogPrintf("Running Darksilk wallet PoW miner with %llu transactions in block (%u bytes)\n", pblock->vtx.size(),
+               ::GetSerializeSize(*pblock, SER_NETWORK, PROTOCOL_VERSION));
+
+        uint256 hashTarget = CBigNum().SetCompact(pblock->nBits).getuint256();
+        int64_t nStart = GetTime();
+        uint256 hash;
+        unsigned int nHashesDone = 0;
+
+        while (true)
+        {
+            hash = pblock->GetPoWHash();
+            ++nHashesDone;
+
+            if (hash <= hashTarget)
+            {
+                // Found a solution
+                SetThreadPriority(THREAD_PRIORITY_NORMAL);
+                CheckWork(pblock, *pwallet, reservekey);
+                SetThreadPriority(THREAD_PRIORITY_LOWEST);
+                break;
+            }
+            ++pblock->nNonce;
+
+            // Meter hashes/sec
+            static int64_t nHashCounter;
+            if (nHPSTimerStart == 0)
+            {
+                nHPSTimerStart = GetTime();
+                nHashCounter = 0;
+            }
+            else
+                ++nHashCounter;// += nHashesDone;
+
+            if ((GetTime() - nHPSTimerStart) % 4 == 0)
+            {
+                static CCriticalSection cs;
+                {
+                    LOCK(cs);
+                    int64_t nDelta = GetTime() - nHPSTimerStart;
+                    if(nDelta > 0)
+                        dHashesPerSec = 32768 * nHashCounter / (GetTime() - nHPSTimerStart);
+                        //nHPSTimerStart = GetTimeMillis();
+                        //nHashCounter = 0;
+                        //nHashesDone = 0;
+                        LogPrintf("hashmeter %6.0f hash/s\n", dHashesPerSec);
+
+                        }
+            }
+
+            // Check for stop or if block needs to be rebuilt
+            boost::this_thread::interruption_point();
+            if (vNodes.empty())
+                break;
+            if (pblock->nNonce >= 0xffff0000)
+                break;
+            if (mempool.GetTransactionsUpdated() != nTransactionsUpdatedLast && GetTime() - nStart > 60)
+                break;
+            if (pindexPrev != pindexBest)
+                break;
+
+            // Update nTime every few seconds
+            pblock->UpdateTime(pindexPrev);
+
+            if (TestNet())
+            {
+                // Changing pblock->nTime can change work required on testnet:
+                hashTarget = CBigNum().SetCompact(pblock->nBits).getuint256();
+            }
+        }
+    } }
+    catch (boost::thread_interrupted)
+    {
+        LogPrintf("Darksilk wallet PoW miner terminated\n");
+        throw;
+    }
+}
+
+void GeneratePoWCoins(bool fGenerate, CWallet* pwallet, int nThreads)
+{
+    static boost::thread_group* minerThreads = NULL;
+    if(nThreads == -1)
+        nThreads = boost::thread::hardware_concurrency();
+
+    if (minerThreads != NULL)
+    {
+        minerThreads->interrupt_all();
+        delete minerThreads;
+        minerThreads = NULL;
+    }
+
+    if (nThreads == 0 || !fGenerate)
+        return;
+
+    minerThreads = new boost::thread_group();
+
+    for (int i = 0; i < nThreads; i++)
+        minerThreads->create_thread(boost::bind(&PoWMiner, pwallet));
+}
+#endif

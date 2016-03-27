@@ -10,6 +10,8 @@
 #include <QString>
 #include <QTreeWidgetItem>
 
+#include "amount.h"
+
 class WalletModel;
 class CCoinControl;
 
@@ -32,7 +34,7 @@ public:
     static void updateLabels(WalletModel*, QDialog*);
     static QString getPriorityLabel(double);
 
-    static QList<qint64> payAmounts;
+    static QList<CAmount> payAmounts;
     static CCoinControl *coinControl;
 
 private:

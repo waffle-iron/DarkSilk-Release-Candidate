@@ -1,12 +1,13 @@
 // Copyright (c) 2011-2016 The Bitcoin developers
-// Copyright (c) 2014-2016 The Silk Network developers
+// Copyright (c) 2014-2016 Silk Network
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
+#include <QStringList>
+#include <QSettings>
+
 #include "darksilkunits.h"
 #include "primitives/transaction.h"
-
-#include <QStringList>
 
 DarkSilkUnits::DarkSilkUnits(QObject *parent):
         QAbstractListModel(parent),
@@ -91,12 +92,13 @@ int DarkSilkUnits::decimals(int unit)
     }
 }
 
-QString DarkSilkUnits::format(int unit, qint64 n, bool fPlus)
+QString DarkSilkUnits::format(int unit, const CAmount& nIn, bool fPlus)
 {
     // Note: not using straight sprintf here because we do NOT want
     // localized number formatting.
     if(!valid(unit))
         return QString(); // Refuse to format invalid unit
+    qint64 n = (qint64)nIn;
     qint64 coin = factor(unit);
     int num_decimals = decimals(unit);
     qint64 n_abs = (n > 0 ? n : -n);
@@ -118,12 +120,58 @@ QString DarkSilkUnits::format(int unit, qint64 n, bool fPlus)
     return quotient_str + QString(".") + remainder_str;
 }
 
-QString DarkSilkUnits::formatWithUnit(int unit, qint64 amount, bool plussign)
+QString DarkSilkUnits::formatWithUnit(int unit, const CAmount& amount, bool plussign)
 {
     return format(unit, amount, plussign) + QString(" ") + name(unit);
 }
 
-bool DarkSilkUnits::parse(int unit, const QString &value, qint64 *val_out)
+QString DarkSilkUnits::floorWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
+{
+    QSettings settings;
+    int digits = settings.value("digits").toInt();
+
+    QString result = format(unit, amount, plussign, separators);
+    if(decimals(unit) > digits) result.chop(decimals(unit) - digits);
+
+    return result + QString(" ") + name(unit);
+}
+
+QString DarkSilkUnits::floorHtmlWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)
+{
+    QString str(floorWithUnit(unit, amount, plussign, separators));
+    str.replace(QChar(THIN_SP_CP), QString(THIN_SP_HTML));
+    return QString("<span style='white-space: nowrap;'>%1</span>").arg(str);
+}
+
+QString DarkSilkUnits::format(int unit, const CAmount& nIn, bool fPlus, SeparatorStyle separators)
+{
+    // Note: not using straight sprintf here because we do NOT want
+    // localized number formatting.
+    if(!valid(unit))
+        return QString(); // Refuse to format invalid unit
+    qint64 n = (qint64)nIn;
+    qint64 coin = factor(unit);
+    int num_decimals = decimals(unit);
+    qint64 n_abs = (n > 0 ? n : -n);
+    qint64 quotient = n_abs / coin;
+    qint64 remainder = n_abs % coin;
+    QString quotient_str = QString::number(quotient);
+    QString remainder_str = QString::number(remainder).rightJustified(num_decimals, '0');
+
+    // Right-trim excess zeros after the decimal point
+    int nTrim = 0;
+    for (int i = remainder_str.size()-1; i>=2 && (remainder_str.at(i) == '0'); --i)
+        ++nTrim;
+    remainder_str.chop(nTrim);
+
+    if (n < 0)
+        quotient_str.insert(0, '-');
+    else if (fPlus && n > 0)
+        quotient_str.insert(0, '+');
+    return quotient_str + QString(".") + remainder_str;
+}
+
+bool DarkSilkUnits::parse(int unit, const QString &value, CAmount *val_out)
 {
     if(!valid(unit) || value.isEmpty())
         return false; // Refuse to parse invalid unit or empty string
@@ -152,7 +200,7 @@ bool DarkSilkUnits::parse(int unit, const QString &value, qint64 *val_out)
     {
         return false; // Longer numbers will exceed 63 bits
     }
-    qint64 retvalue = str.toLongLong(&ok);
+    CAmount retvalue = str.toLongLong(&ok);
     if(val_out)
     {
         *val_out = retvalue;
@@ -190,3 +238,14 @@ CAmount DarkSilkUnits::maxMoney()
 {
     return MAX_MONEY;
 }
+
+QString DarkSilkUnits::getAmountColumnTitle(int unit)
+{
+    QString amountTitle = QObject::tr("Amount");
+    if (DarkSilkUnits::valid(unit))
+    {
+        amountTitle += " ("+DarkSilkUnits::name(unit) + ")";
+    }
+    return amountTitle;
+}
+

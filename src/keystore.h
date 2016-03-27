@@ -1,21 +1,18 @@
 // Copyright (c) 2009-2016 Satoshi Nakamoto
 // Copyright (c) 2009-2016 The Bitcoin Developers
-// Copyright (c) 2015-2016 The Silk Network Developers
+// Copyright (c) 2015-2016 Silk Network
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #ifndef DARKSILK_KEYSTORE_H
 #define DARKSILK_KEYSTORE_H
 
-#include "key.h"
-#include "pubkey.h"
-#include "sync.h"
-#include "script.h"
 #include <boost/signals2/signal.hpp>
 #include <boost/variant.hpp>
 
-
-
-class CScript;
+#include "key.h"
+#include "pubkey.h"
+#include "sync.h"
+#include "script/script.h"
 
 /** A txout script template with a specific destination. It is either:
  *  * CNoDestination: no destination set
@@ -50,13 +47,15 @@ public:
     virtual bool GetCScript(const CScriptID &hash, CScript& redeemScriptOut) const =0;
 
     // Support for Watch-only addresses
-    virtual bool AddWatchOnly(const CTxDestination &dest) =0;
-    virtual bool HaveWatchOnly(const CTxDestination &dest) const =0;
+    virtual bool AddWatchOnly(const CScript &dest) =0;
+    virtual bool RemoveWatchOnly(const CScript &dest) =0;
+    virtual bool HaveWatchOnly(const CScript &dest) const =0;
+    virtual bool HaveWatchOnly() const =0;
 };
 
 typedef std::map<CKeyID, CKey> KeyMap;
 typedef std::map<CScriptID, CScript > ScriptMap;
-typedef std::set<CTxDestination> WatchOnlySet;
+typedef std::set<CScript> WatchOnlySet;
 
 /** Basic key store, that keeps keys in an address->secret map */
 class CBasicKeyStore : public CKeyStore
@@ -107,8 +106,10 @@ public:
     virtual bool HaveCScript(const CScriptID &hash) const;
     virtual bool GetCScript(const CScriptID &hash, CScript& redeemScriptOut) const;
 
-    virtual bool AddWatchOnly(const CTxDestination &dest);
-    virtual bool HaveWatchOnly(const CTxDestination &dest) const;
+    virtual bool AddWatchOnly(const CScript &dest);
+    virtual bool RemoveWatchOnly(const CScript &dest);
+    virtual bool HaveWatchOnly(const CScript &dest) const;
+    virtual bool HaveWatchOnly() const;
 };
 
 typedef std::map<CKeyID, std::pair<CPubKey, std::vector<unsigned char> > > CryptedKeyMap;

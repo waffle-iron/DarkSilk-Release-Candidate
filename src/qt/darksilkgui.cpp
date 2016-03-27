@@ -7,6 +7,33 @@
  */
 
 #include <QApplication>
+#include <QMenuBar>
+#include <QMenu>
+#include <QFile>
+#include <QIcon>
+#include <QVBoxLayout>
+#include <QToolBar>
+#include <QStatusBar>
+#include <QLabel>
+#include <QMessageBox>
+#include <QMimeData>
+#include <QProgressBar>
+#include <QProgressDialog>
+#include <QStackedWidget>
+#include <QDateTime>
+#include <QMovie>
+#include <QFileDialog>
+#include <QDesktopServices>
+#include <QTimer>
+#include <QDragEnterEvent>
+#include <QUrl>
+#include <QMimeData>
+#include <QStyle>
+#include <QToolButton>
+#include <QScrollArea>
+#include <QScroller>
+#include <QTextDocument>
+#include <iostream>
 
 #include "darksilkgui.h"
 #include "transactiontablemodel.h"
@@ -30,11 +57,11 @@
 #include "notificator.h"
 #include "guiutil.h"
 #include "debugconsole.h"
-#include "wallet.h"
+#include "wallet/wallet.h"
 #include "init.h"
+#include "anon/stormnode/stormnode-sync.h"
 #include "stormnodemanager.h"
-#include "blockbrowser.h"
-#include "statisticspage.h"
+#include "multisigdialog.h"
 #include "messagepage.h"
 
 #ifdef USE_NATIVE_I2P
@@ -44,34 +71,6 @@
 #ifdef Q_OS_MAC
 #include "macdockiconhandler.h"
 #endif
-
-#include <QMenuBar>
-#include <QMenu>
-#include <QFile>
-#include <QIcon>
-#include <QVBoxLayout>
-#include <QToolBar>
-#include <QStatusBar>
-#include <QLabel>
-#include <QMessageBox>
-#include <QMimeData>
-#include <QProgressBar>
-#include <QStackedWidget>
-#include <QDateTime>
-#include <QMovie>
-#include <QFileDialog>
-#include <QDesktopServices>
-#include <QTimer>
-#include <QDragEnterEvent>
-#include <QUrl>
-#include <QMimeData>
-#include <QStyle>
-#include <QToolButton>
-#include <QScrollArea>
-#include <QScroller>
-#include <QTextDocument>
-
-#include <iostream>
 
 extern bool fOnlyTor;
 extern CWallet* pwalletMain;
@@ -139,11 +138,9 @@ DarkSilkGUI::DarkSilkGUI(QWidget *parent):
     addressBookPage = new AddressBookPage(AddressBookPage::ForEditing, AddressBookPage::SendingTab);    
 
     signVerifyMessageDialog = new SignVerifyMessageDialog(this);
-
-    blockBrowser = new BlockBrowser(this);
-
-    statisticsPage = new StatisticsPage(this);
-
+	
+	multisigPage = new MultisigDialog(this);
+ 
     messagePage = new MessagePage(this);
 
     stormnodeManagerPage = 0;
@@ -153,8 +150,7 @@ DarkSilkGUI::DarkSilkGUI(QWidget *parent):
     centralStackedWidget->setContentsMargins(0, 0, 0, 0);
     centralStackedWidget->addWidget(overviewPage);
     centralStackedWidget->addWidget(messagePage);
-    centralStackedWidget->addWidget(blockBrowser);
-    centralStackedWidget->addWidget(statisticsPage);
+    centralStackedWidget->addWidget(multisigPage);
     centralStackedWidget->addWidget(transactionsPage);
     centralStackedWidget->addWidget(addressBookPage);
     centralStackedWidget->addWidget(receiveCoinsPage);
@@ -339,25 +335,15 @@ void DarkSilkGUI::createActions()
 #endif
     tabGroup->addAction(addressBookAction);
 
-    statisticsAction = new QAction(QIcon(":/icons/statistics"), tr("&Statistics"), this);
-    statisticsAction->setToolTip(tr("DRKSLK PoW/PoS Statistics"));
-    statisticsAction->setCheckable(true);
+    multisigAction = new QAction(QIcon(":/icons/send"), tr("&MultiSig"), this);
+    multisigAction->setToolTip(tr("Send a MultiSig Transaction"));
+    multisigAction->setCheckable(true);
 #ifdef Q_OS_MAC
-    statisticsAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_6));
+    multisigAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_6));
 #else
-    statisticsAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
+    multisigAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
 #endif
-    tabGroup->addAction(statisticsAction);
-
-    blockAction = new QAction(QIcon(":/icons/block"), tr("&Block Explorer"), this);
-    blockAction->setToolTip(tr("Explore the BlockChain"));
-    blockAction->setCheckable(true);
-#ifdef Q_OS_MAC
-    blockAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_7));
-#else
-    blockAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_7));
-#endif
-    tabGroup->addAction(blockAction);
+    tabGroup->addAction(multisigAction);
 
     messageAction = new QAction(QIcon(":/icons/edit"), tr("Encrypted Messages"), this);
     messageAction->setToolTip(tr("View and Send Encrypted messages"));
@@ -389,10 +375,8 @@ void DarkSilkGUI::createActions()
     connect(historyAction, SIGNAL(triggered()), this, SLOT(gotoHistoryPage()));
     connect(addressBookAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(addressBookAction, SIGNAL(triggered()), this, SLOT(gotoAddressBookPage()));
-    connect(blockAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-    connect(blockAction, SIGNAL(triggered()), this, SLOT(gotoBlockBrowser()));
-    connect(statisticsAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
-    connect(statisticsAction, SIGNAL(triggered()), this, SLOT(gotoStatisticsPage()));
+    connect(multisigAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
+    connect(multisigAction, SIGNAL(triggered()), this, SLOT(gotoMultiSigPage()));
     connect(messageAction, SIGNAL(triggered()), this, SLOT(showNormalIfMinimized()));
     connect(messageAction, SIGNAL(triggered()), this, SLOT(gotoMessagePage()));
 
@@ -537,8 +521,7 @@ void DarkSilkGUI::createToolBars()
     toolbarMenu->addAction(sendCoinsAction);
     toolbarMenu->addAction(historyAction);
     toolbarMenu->addAction(addressBookAction);
-    toolbarMenu->addAction(statisticsAction);
-    toolbarMenu->addAction(blockAction);
+    toolbarMenu->addAction(multisigAction);
     toolbarMenu->addAction(messageAction);
     toolbarMenu->addAction(stormnodeManagerAction);
 
@@ -629,6 +612,9 @@ void DarkSilkGUI::setClientModel(ClientModel *clientModel)
         // Keep up to date with client
         setNumConnections(clientModel->getNumConnections());
         connect(clientModel, SIGNAL(numConnectionsChanged(int)), this, SLOT(setNumConnections(int)));
+
+        // Show progress dialog
+        connect(clientModel, SIGNAL(showProgress(QString,int)), this, SLOT(showProgress(QString,int)));
 
         setNumBlocks(clientModel->getNumBlocks());
         connect(clientModel, SIGNAL(numBlocksChanged(int)), this, SLOT(setNumBlocks(int)));
@@ -941,7 +927,7 @@ void DarkSilkGUI::setNumBlocks(int count)
 void DarkSilkGUI::message(const QString &title, const QString &message, bool modal, unsigned int style, bool *ret) 
 {   
     
-    QString strTitle = tr("DarkSilk") + " - ";
+    QString strTitle = tr("DarkSilk Core") + " - ";
     // Default to information icon
     int nMBoxIcon = QMessageBox::Information;
     int nNotifyIcon = Notificator::Information;
@@ -1038,7 +1024,7 @@ void DarkSilkGUI::closeEvent(QCloseEvent *event)
     QMainWindow::closeEvent(event);
 }
 
-void DarkSilkGUI::askFee(qint64 nFeeRequired, bool *payFee) 
+void DarkSilkGUI::askFee(CAmount nFeeRequired, bool *payFee) 
 {
     if (!clientModel || !clientModel->getOptionsModel()) 
     {
@@ -1193,21 +1179,10 @@ void DarkSilkGUI::gotoVerifyMessageTab(QString addr)
     }
 }
 
-void DarkSilkGUI::gotoBlockBrowser() 
+void DarkSilkGUI::gotoMultiSigPage() 
 {
-    blockAction->setChecked(true);
-    centralStackedWidget->setCurrentWidget(blockBrowser);
-
-    exportAction->setEnabled(false);
-    disconnect(exportAction, SIGNAL(triggered()), 0, 0);
-}
-
-void DarkSilkGUI::gotoStatisticsPage() 
-{
-    statisticsAction->setChecked(true);
-    centralStackedWidget->setCurrentWidget(statisticsPage);
-
-    statisticsPage->updateStatistics();
+    multisigAction->setChecked(true);
+    centralStackedWidget->setCurrentWidget(multisigPage);
 
     exportAction->setEnabled(false);
     disconnect(exportAction, SIGNAL(triggered()), 0, 0);
@@ -1504,6 +1479,29 @@ void DarkSilkGUI::updateStakingIcon()
     }
 }
 
+
+void DarkSilkGUI::showProgress(const QString &title, int nProgress)
+{
+    if (nProgress == 0)
+    {
+        progressDialog = new QProgressDialog(title, "", 0, 100);
+        progressDialog->setWindowModality(Qt::ApplicationModal);
+        progressDialog->setMinimumDuration(0);
+        progressDialog->setCancelButton(0);
+        progressDialog->setAutoClose(false);
+        progressDialog->setValue(0);
+    }
+    else if (nProgress == 100)
+    {
+        if (progressDialog)
+        {
+            progressDialog->close();
+            progressDialog->deleteLater();
+        }
+    }
+    else if (progressDialog)
+        progressDialog->setValue(nProgress);
+}
 
 void DarkSilkGUI::detectShutdown() 
 {

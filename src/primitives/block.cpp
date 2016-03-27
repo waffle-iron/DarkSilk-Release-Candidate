@@ -3,8 +3,10 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#include "primitives/block.h"
 #include <boost/foreach.hpp>
+#include "chainparams.h"
+
+#include "primitives/block.h"
 #include "chainparams.h"
 
 bool CBlock::CheckBlockSignature() const
@@ -54,6 +56,30 @@ void CBlock::UpdateTime(const CBlockIndex* pindexPrev)
     nTime = max(GetBlockTime(), GetAdjustedTime());
 }
 
+bool CheckProofOfWork(uint256 hash, unsigned int nBits, const Consensus::Params& params)
+{
+    bool fNegative;
+    bool fOverflow;
+    //TODO (Amir): do we need arith_uint256?
+    //arith_uint256 bnTarget;
+    uint256 bnTarget;
+
+    bnTarget.SetCompact(nBits, &fNegative, &fOverflow);
+
+    // Check range
+    //TODO (Amir): needs arith_uint256.. UintToArith256
+    //if (fNegative || bnTarget == 0 || fOverflow || bnTarget > UintToArith256(params.powLimit))
+    if (fNegative || bnTarget == 0 || fOverflow || bnTarget > uint256(params.powLimit))
+        return false;
+
+    // Check proof of work matches claimed amount
+    if (uint256(hash) > bnTarget)
+        return false;
+
+    return true;
+}
+
+//TODO (Amir): Remove this CheckProofOfWork
 bool CheckProofOfWork(uint256 hash, unsigned int nBits)
 {
     CBigNum bnTarget;
@@ -69,7 +95,6 @@ bool CheckProofOfWork(uint256 hash, unsigned int nBits)
 
     return true;
 }
-
 std::string CBlock::ToString() const
 {
     std::stringstream s;
