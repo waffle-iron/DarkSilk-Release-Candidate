@@ -2821,6 +2821,7 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, CAmount> >& vecSend, 
                 }
 
                 CAmount nChange = nValueIn - nValue - nFeeRet;
+                CTxOut newTxOut;
 
                 // The following if statement should be removed once enough miners
                 // have upgraded to the 0.9 GetMinFee() rules. Until then, this avoids
@@ -2874,7 +2875,7 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, CAmount> >& vecSend, 
                     }
 
                     // Insert change txn at random position:
-                    CTxOut newTxOut(nChange, scriptChange);
+                    newTxOut = CTxOut(nChange, scriptChange);
 
                     // Never create dust outputs; if we would, just
                     // add the dust to the fee.
@@ -2899,6 +2900,20 @@ bool CWallet::CreateTransaction(const vector<pair<CScript, CAmount> >& vecSend, 
                 // nLockTime set above actually works.
                 BOOST_FOREACH(const PAIRTYPE(const CWalletTx*,unsigned int)& coin, setCoins)
                     wtxNew.vin.push_back(CTxIn(coin.first->GetHash(),coin.second));
+
+                // If there was change output added before, we must update its position now
+                if (nChangePosRet != -1) {
+                    int i = 0;
+                    BOOST_FOREACH(const CTxOut& txOut, txNew.vout)
+                    {
+                        if (txOut == newTxOut)
+                        {
+                            nChangePosRet = i;
+                            break;
+                        }
+                        i++;
+                    }
+                }
 
                 // Sign
                 int nIn = 0;

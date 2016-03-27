@@ -210,7 +210,7 @@ CBudgetDB::CBudgetDB()
 
 bool CBudgetDB::Write(const CBudgetManager& objToSave)
 {
-    LOCK(objToSave.cs);
+    //LOCK(objToSave.cs);
 
     int64_t nStart = GetTimeMillis();
 
