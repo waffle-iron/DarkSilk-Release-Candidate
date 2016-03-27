@@ -49,26 +49,26 @@ public:
     }
 };
 
-/// A hasher class for DarkSilk's 160-bit hash (SHA-256 + RIPEMD-160).
+/** A hasher class for DarkSilk's 160-bit hash (SHA-256 + RIPEMD-160). */
 class CHash160 {
 private:
-    CBLAKE2B256 blake;
+    CSHA256 sha;
 public:
-    static const size_t OUTPUT_SIZE = CBLAKE2B256::OUTPUT_SIZE;
+    static const size_t OUTPUT_SIZE = CRIPEMD160::OUTPUT_SIZE;
 
     void Finalize(unsigned char hash[OUTPUT_SIZE]) {
-        unsigned char buf[blake.OUTPUT_SIZE];
-        blake.Finalize(buf);
-        CRIPEMD160().Write(buf, blake.OUTPUT_SIZE).Finalize(hash);
+        unsigned char buf[sha.OUTPUT_SIZE];
+        sha.Finalize(buf);
+        CRIPEMD160().Write(buf, sha.OUTPUT_SIZE).Finalize(hash);
     }
 
     CHash160& Write(const unsigned char *data, size_t len) {
-        blake.Write(data, len);
+        sha.Write(data, len);
         return *this;
     }
 
     CHash160& Reset() {
-        blake.Reset();
+        sha.Reset();
         return *this;
     }
 };
@@ -79,18 +79,15 @@ inline uint256 Hash(const T1 pbegin, const T1 pend)
     static unsigned char pblank[1];
     uint256 hash1;
     blake2b_state S[1];
-    blake2b_init( S, OUT_BYTES );
+    blake2b_init( S, OUTPUT_BYTES );
     blake2b_update( S, (pbegin == pend ? pblank : (unsigned char*)&pbegin[0]), (pend - pbegin) * sizeof(pbegin[0]) );
-    blake2b_final( S, (unsigned char*)&hash1, OUT_BYTES );
+    blake2b_final( S, (unsigned char*)&hash1, OUTPUT_BYTES );
     return hash1;
 }
 
 template<typename T1>
 inline uint256 HashBlake2b(const T1 pbegin, const T1 pend)
 {
-<<<<<<< HEAD
-    return Hash(pbegin, pend);
-=======
     static unsigned char pblank[1];
     uint256 hash1;
     blake2b_state S[1];
@@ -98,7 +95,6 @@ inline uint256 HashBlake2b(const T1 pbegin, const T1 pend)
     blake2b_update( S, (pbegin == pend ? pblank : (unsigned char*)&pbegin[0]), (pend - pbegin) * sizeof(pbegin[0]) );
     blake2b_final( S, (unsigned char*)&hash1, OUTPUT_BYTES );
     return hash1;
->>>>>>> origin/pow2argon
 }
 
 /// Argon2d Parameters
@@ -161,7 +157,7 @@ inline uint256 hashArgon2d(const void* input)
     size_t inputlen = 80;
     uint256 result = 0;
 
-    Argon2d_Hash((uint8_t*)&result, OUT_BYTES, (const uint8_t*)input, inputlen,
+    Argon2d_Hash((uint8_t*)&result, OUTPUT_BYTES, (const uint8_t*)input, inputlen,
                     (const uint8_t*)input, inputlen,  t_costs, m_costs);
 
     return result;
@@ -181,7 +177,7 @@ public:
         blake2b_init(S, size);
     }
 
-    CHashWriter(int nTypeIn, int nVersionIn) : size(OUT_BYTES), nType(nTypeIn), nVersion(nVersionIn) {
+    CHashWriter(int nTypeIn, int nVersionIn) : size(OUTPUT_BYTES), nType(nTypeIn), nVersion(nVersionIn) {
         Init();
     }
 
@@ -212,10 +208,10 @@ inline uint256 Hash(const T1 p1begin, const T1 p1end,
     static unsigned char pblank[1];
     uint256 hash1;
     blake2b_state S[1];
-    blake2b_init( S, OUT_BYTES );
+    blake2b_init( S, OUTPUT_BYTES );
     blake2b_update( S, (p1begin == p1end ? pblank : (unsigned char*)&p1begin[0]), (p1end - p1begin) * sizeof(p1begin[0]) );
     blake2b_update( S, (p2begin == p2end ? pblank : (unsigned char*)&p2begin[0]), (p2end - p2begin) * sizeof(p2begin[0]) );
-    blake2b_final( S, (unsigned char*)&hash1, OUT_BYTES );
+    blake2b_final( S, (unsigned char*)&hash1, OUTPUT_BYTES );
     return hash1;
 }
 
@@ -227,11 +223,11 @@ inline uint256 Hash(const T1 p1begin, const T1 p1end,
     static unsigned char pblank[1];
     uint256 hash1;
     blake2b_state S[1];
-    blake2b_init( S, OUT_BYTES );
+    blake2b_init( S, OUTPUT_BYTES );
     blake2b_update(S, (p1begin == p1end ? pblank : (unsigned char*)&p1begin[0]), (p1end - p1begin) * sizeof(p1begin[0]));
     blake2b_update(S, (p2begin == p2end ? pblank : (unsigned char*)&p2begin[0]), (p2end - p2begin) * sizeof(p2begin[0]));
     blake2b_update(S, (p3begin == p3end ? pblank : (unsigned char*)&p3begin[0]), (p3end - p3begin) * sizeof(p3begin[0]));
-    blake2b_final( S, (unsigned char*)&hash1, OUT_BYTES );
+    blake2b_final( S, (unsigned char*)&hash1, OUTPUT_BYTES );
     return hash1;
 }
 
@@ -249,9 +245,9 @@ inline uint160 Hash160(const T1 pbegin, const T1 pend)
     static unsigned char pblank[1];
     uint256 hash1;
     blake2b_state S[1];
-    blake2b_init( S, OUT_BYTES );
+    blake2b_init( S, OUTPUT_BYTES );
     blake2b_update( S, (pbegin == pend ? pblank : (unsigned char*)&pbegin[0]), (pend - pbegin) * sizeof(pbegin[0]) );
-    blake2b_final( S, (unsigned char*)&hash1, OUT_BYTES );
+    blake2b_final( S, (unsigned char*)&hash1, OUTPUT_BYTES );
     uint160 hash2;
     RIPEMD160((unsigned char*)&hash1, sizeof(hash1), (unsigned char*)&hash2);
     return hash2;
