@@ -898,7 +898,7 @@ bool AppInit2(boost::thread_group& threadGroup)
     }
 
     // see Step 2: parameter interactions for more information about these
-    fListen = !GetBoolArg("-listen", true);
+    fListen = GetBoolArg("-listen", true);
     fDiscover = GetBoolArg("-discover", true);
     fNameLookup = GetBoolArg("-dns", true);
 
