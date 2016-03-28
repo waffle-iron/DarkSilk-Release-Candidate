@@ -23,8 +23,6 @@ class CWallet;
 
 struct CNodeStateStats;
 
-// Minimum Transaction Fee of 0.00001 DRKSLK, Fees smaller than this are considered zero fee (for transaction creation)
-static const double MIN_FEE = 0.00001;
 // Collateral Amount Locked for Stormnodes
 static const CAmount STORMNODE_COLLATERAL = 10000;
 // Main Stormnode Payments Start Block
