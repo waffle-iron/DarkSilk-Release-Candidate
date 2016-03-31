@@ -277,8 +277,6 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/wallet/db.h \
             src/txdb.h \
             src/txmempool.h \
-            src/univalue.h \
-            src/univalue_escapes.h \
             src/wallet/walletdb.h \
             src/script/script.h \
             src/init.h \
@@ -418,9 +416,6 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/sync.cpp \
             src/txmempool.cpp \
             src/gen.cpp \
-            src/univalue.cpp \
-            src/univalue_read.cpp \
-            src/univalue_write.cpp \
             src/random.cpp \
             src/util.cpp \
             src/utilstrencodings.cpp \
