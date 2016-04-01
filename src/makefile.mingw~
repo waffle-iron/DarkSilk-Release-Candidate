@@ -175,7 +175,7 @@ leveldb/libleveldb.a:
 	@echo "Building LevelDB ..." && cd leveldb TARGET_OS=NATIVE_WINDOWS make libleveldb.a libmemenv.a cd ..
 obj/txdb-leveldb.o: leveldb/libleveldb.a
 
-# build univalue
+# univalue support
 LIBS += $(CURDIR)/univalue/lib/libunivalue_la-univalue.o $(CURDIR)/univalue/lib/libunivalue_la-univalue_read.o $(CURDIR)/univalue/lib/libunivalue_la-univalue_write.o
 DEFS += $(addprefix -I,$(CURDIR)/univalue/include)
 
