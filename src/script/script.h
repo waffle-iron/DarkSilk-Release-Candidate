@@ -20,6 +20,7 @@
 #include "util.h"
 #include "utilstrencodings.h"
 #include "anon/stealth/stealth.h"
+#include "script/script_error.h"
 
 typedef std::vector<unsigned char> valtype;
 
