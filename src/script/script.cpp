@@ -9,6 +9,7 @@
 #include <boost/tuple/tuple_comparison.hpp>
 
 #include "script/script.h"
+#include "script/script_error.h"
 #include "keystore.h"
 #include "main.h"
 #include "sync.h"
