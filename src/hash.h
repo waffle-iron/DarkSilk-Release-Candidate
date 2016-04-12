@@ -110,6 +110,8 @@ inline uint256 HashBlake2b(const T1 pbegin, const T1 pend)
 /// Associated data length: 0
 /// Memory cost: 1024
 /// Lanes: 64
+/// TODO (Amir): test hashing:
+/// 0x01 bytes --> 31EC4BC6A98D7CDE7CE9A3B542519225403F5E4573C4BD2F3D210BD2D3B08C9D
 inline int Argon2d_Hash(void *out, size_t outlen, const void *in, size_t inlen, const void *salt, size_t saltlen, unsigned int t_cost,
         unsigned int m_cost) {
 
@@ -140,7 +142,7 @@ inline int Argon2d_Hash(void *out, size_t outlen, const void *in, size_t inlen, 
     context.t_cost = t_cost;
     context.m_cost = m_cost;
     context.lanes = 64;
-    context.threads = 1;
+    context.threads = 2;
     context.allocate_cbk = NULL;
     context.free_cbk = NULL;
     context.flags = ARGON2_DEFAULT_FLAGS;
@@ -148,17 +150,17 @@ inline int Argon2d_Hash(void *out, size_t outlen, const void *in, size_t inlen, 
     return argon2_core(&context, Argon2_d);
 }
 
-template<typename T1>
-inline uint256 hashArgon2d(const T1 pbegin, const T1 pend)
+inline uint256 hashArgon2d(const void* input)
 {
-    unsigned int t_costs = 2;
+    unsigned int t_costs = 8;
     unsigned int m_costs = 1024;
+    size_t inputlen = 80;
+    uint256 result = 0;
 
-    uint256 hash = HashBlake2b(pbegin, pend);
-    Argon2d_Hash(static_cast<void*>(&hash), 32, static_cast<void*>(&hash), 80,
-                    static_cast<void*>(&hash), 80,  t_costs, m_costs);
+    Argon2d_Hash((uint8_t*)&result, OUTPUT_BYTES, (const uint8_t*)input, inputlen,
+                    (const uint8_t*)input, inputlen,  t_costs, m_costs);
 
-    return hash;
+    return result;
 }
 
 class CHashWriter
