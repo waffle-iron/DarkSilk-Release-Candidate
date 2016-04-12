@@ -90,15 +90,14 @@ public:
         hashGenesisBlock = genesis.GetHash(); 
 
         //// debug print
-        /*
+
         printf("Gensis Hash: %s\n", genesis.GetHash().ToString().c_str());
         printf("Gensis Hash Merkle: %s\n", genesis.hashMerkleRoot.ToString().c_str());
         printf("Gensis nTime: %u\n", genesis.nTime);
         printf("Gensis nBits: %08x\n", genesis.nBits);
         printf("Gensis Nonce: %u\n\n\n", genesis.nNonce);
-        */
 
-        assert(hashGenesisBlock == uint256("0xdcc5e22e275eff273799a4c06493f8364316d032813c22845602f05ff13d7ec7"));
+        assert(hashGenesisBlock == uint256("0xf511c01e3ea0f0e58d7ec5c62ade94bd8b856e4959f90570b18acf3924591272"));
         assert(genesis.hashMerkleRoot == uint256("0xfed7550a453e532c460fac58d438740235c380f9908cae2d602b705ca2c2f0a6"));
 
         vSeeds.push_back(CDNSSeedData("darksilk.org", "ds1.darksilk.org"));
@@ -159,8 +158,8 @@ public:
         genesis.nNonce = 0;
         hashGenesisBlock = genesis.GetHash(); 
 
-        //printf("Test Genesis Hash: %s\n", genesis.GetHash().ToString().c_str());
-        assert(hashGenesisBlock == uint256("0xf788ac4ae46429468897b4b9758651cb8a642a6e01f16968134a75078905e24d"));
+        printf("Test Genesis Hash: %s\n", genesis.GetHash().ToString().c_str());
+        assert(hashGenesisBlock == uint256("0x6b060fd094702e010325679f965d55a9f2310c4344bf0248049ad84d68a80084"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
