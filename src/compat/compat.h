@@ -3,8 +3,8 @@
 // Copyright (c) 2015-2016 Silk Network
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-#ifndef _DARKSILK_COMPAT_H
-#define _DARKSILK_COMPAT_H
+#ifndef DARKSILK_COMPAT_H
+#define DARKSILK_COMPAT_H
 
 #ifdef WIN32
 #ifdef _WIN32_WINNT
@@ -107,4 +107,4 @@ inline int myclosesocket(SOCKET& hSocket)
 }
 #define closesocket(s)      myclosesocket(s)
  
-#endif
+#endif //DARKSILK_COMPAT_H

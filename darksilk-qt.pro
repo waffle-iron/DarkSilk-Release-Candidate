@@ -212,8 +212,8 @@ DEPENDPATH += . \
 
 HEADERS +=  src/qt/darksilkgui.h \
             src/cryptkey.h \
-	        src/anon/stormnode/activestormnode.h \
-	        src/cryptogram/ies.h \
+            src/anon/stormnode/activestormnode.h \
+            src/cryptogram/ies.h \
             src/qt/transactiontablemodel.h \
             src/qt/addresstablemodel.h \
             src/qt/optionsdialog.h \
@@ -225,7 +225,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/qt/aboutdialog.h \
             src/qt/editaddressdialog.h \
             src/qt/darksilkaddressvalidator.h \
-	        src/blindtext.h \
+            src/blindtext.h \
             src/alert.h \
             src/allocators.h \
             src/addrman.h \
@@ -371,7 +371,10 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/qt/multisigdialog.h \
             src/memusage.h \
             src/consensus/params.h \
-            src/prevector.h
+            src/prevector.h \
+            src/compat/byteswap.h \
+            src/compat/endian.h \
+            src/compat/sanity.h
 
 SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/blindtext.cpp \
@@ -526,7 +529,8 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/crypto/argon2/encoding.c \
             src/crypto/argon2/thread.c \
             src/crypto/argon2/blake2/blake2b.c \
-            src/crypto/argon2/opt.c 
+            src/crypto/argon2/opt.c \
+            src/compat/strnlen.cpp
 
 RESOURCES += \
             src/qt/darksilk.qrc
