@@ -18,6 +18,7 @@
 #include "anon/stormnode/stormnode-payments.h"
 #include "anon/stormnode/stormnode-sync.h"
 #include "script/script.h"
+#include "script/sign.h"
 #include "anon/instantx/instantx.h"
 #include "ui_interface.h"
 

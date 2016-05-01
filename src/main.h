@@ -13,6 +13,8 @@
 #include "chain.h"
 #include "coins.h"
 #include "net.h"
+#include "script/standard.h"
+#include "script/sigcache.h"
 #include "script/script_error.h"
 #include "txdb.h"
 #include "txmempool.h"
@@ -21,7 +23,6 @@ class CCoinsViewCache;
 class CTxMemPool;
 class CValidationState;
 class CWallet;
-
 struct CNodeStateStats;
 
 // Collateral Amount Locked for Stormnodes

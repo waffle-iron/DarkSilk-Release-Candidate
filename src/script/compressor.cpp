@@ -4,6 +4,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "script/compressor.h"
+#include "script/standard.h"
 #include "hash.h"
 #include "pubkey.h"
 

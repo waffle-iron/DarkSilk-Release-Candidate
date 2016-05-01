@@ -257,6 +257,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/key.h \
             src/ecwrapper.h \
             src/pubkey.h \
+            src/eccryptoverify.h \
             src/wallet/db.h \
             src/txdb.h \
             src/txmempool.h \
@@ -265,6 +266,10 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/wallet/walletdb.h \
             src/script/script.h \
             src/script/script_error.h \
+            src/script/interpreter.h \
+            src/script/sigcache.h \
+            src/script/sign.h \
+            src/script/standard.h \
             src/init.h \
             src/mruset.h \
             src/consensus/validation.h \
@@ -288,6 +293,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/qt/transactiondescdialog.h \
             src/qt/darksilkamountfield.h \
             src/wallet/wallet.h \
+            src/wallet/wallet_ismine.h \
             src/keystore.h \
             src/qt/transactionfilterproxy.h \
             src/qt/transactionview.h \
@@ -415,8 +421,13 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/key.cpp \
             src/ecwrapper.cpp \
             src/pubkey.cpp \
+            src/eccryptoverify.cpp \
             src/script/script.cpp \
             src/script/script_error.cpp \
+            src/script/interpreter.cpp \
+            src/script/sigcache.cpp \
+            src/script/sign.cpp \
+            src/script/standard.cpp \
             src/main.cpp \
             src/miner.cpp \
             src/init.cpp \
@@ -440,6 +451,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/qt/darksilkstrings.cpp \
             src/qt/darksilkamountfield.cpp \
             src/wallet/wallet.cpp \
+            src/wallet/wallet_ismine.cpp \
             src/keystore.cpp \
             src/qt/transactionfilterproxy.cpp \
             src/qt/transactionview.cpp \

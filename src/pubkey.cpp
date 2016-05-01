@@ -3,6 +3,7 @@
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #include "pubkey.h"
+#include "eccryptoverify.h"
 #include "cryptkey.h"
 #include "secp256k1.h"
 #include "secp256k1_recovery.h"
