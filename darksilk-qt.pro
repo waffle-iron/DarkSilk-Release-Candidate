@@ -264,6 +264,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/univalue_escapes.h \
             src/wallet/walletdb.h \
             src/script/script.h \
+            src/script/script_error.h \
             src/init.h \
             src/mruset.h \
             src/consensus/validation.h \
@@ -369,7 +370,8 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/qt/multisigaddressentry.h \
             src/qt/multisigdialog.h \
             src/memusage.h \
-            src/consensus/params.h
+            src/consensus/params.h \
+            src/prevector.h
 
 SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/blindtext.cpp \
@@ -414,6 +416,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/ecwrapper.cpp \
             src/pubkey.cpp \
             src/script/script.cpp \
+            src/script/script_error.cpp \
             src/main.cpp \
             src/miner.cpp \
             src/init.cpp \
