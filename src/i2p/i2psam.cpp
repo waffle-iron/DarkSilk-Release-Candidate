@@ -189,7 +189,7 @@ std::string Socket::read()
 void Socket::close()
 {
     if (socket_ != SAM_INVALID_SOCKET)
-        ::CloseSocket(socket_);
+        ::closesocket(socket_);
     socket_ = SAM_INVALID_SOCKET;
 }
 
