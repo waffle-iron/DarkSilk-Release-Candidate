@@ -13,7 +13,7 @@
 #include "i2p/i2psam.h"
 
 #ifndef WIN32
-#define CloseSocket close
+#define closesocket close
 #endif
 
 #define SAM_BUFSIZE         65536
