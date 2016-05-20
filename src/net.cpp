@@ -57,8 +57,9 @@
 using namespace boost;
 using namespace std;
 
+static const int MAX_OUTBOUND_CONNECTIONS = 32;
+
 namespace {
-    const int MAX_OUTBOUND_CONNECTIONS = 32;
 
     struct ListenSocket {
         SOCKET socket;
@@ -94,13 +95,13 @@ static bool vfLimited[NET_MAX] = {};
 static CNode* pnodeLocalHost = NULL;
 static CNode* pnodeSync = NULL;
 uint64_t nLocalHostNonce = 0;
-static std::vector<ListenSocket> vhListenSocket;
+static std::vector<SOCKET> vhListenSocket;
 CAddrMan addrman;
 int nMaxConnections = 200;
 bool fAddressesInitialized = false;
 
 #ifdef USE_NATIVE_I2P
-static std::vector<I2PListenSocket> vhI2PListenSocket;
+static std::vector<SOCKET> vhI2PListenSocket;
 int nI2PNodeCount = 0;
 #endif
 
@@ -1009,19 +1010,19 @@ void ThreadSocketHandler()
         bool have_fds = false;
 
 #ifdef USE_NATIVE_I2P
-        BOOST_FOREACH(const I2PListenSocket& hI2PListenSocket, vhI2PListenSocket) {
-            if (hI2PListenSocket.socket != INVALID_SOCKET)
+        BOOST_FOREACH(SOCKET hI2PListenSocket, vhI2PListenSocket) {
+            if (hI2PListenSocket != INVALID_SOCKET)
             {
-                FD_SET(hI2PListenSocket.socket, &fdsetRecv);
-                hSocketMax = max(hSocketMax, hI2PListenSocket.socket);
+                FD_SET(hI2PListenSocket, &fdsetRecv);
+                hSocketMax = max(hSocketMax, hI2PListenSocket);
                 have_fds = true;
             }
         }
 #endif
 
-        BOOST_FOREACH(const ListenSocket& hListenSocket, vhListenSocket) {
-            FD_SET(hListenSocket.socket, &fdsetRecv);
-            hSocketMax = max(hSocketMax, hListenSocket.socket);
+        BOOST_FOREACH(SOCKET hListenSocket, vhListenSocket) {
+            FD_SET(hListenSocket, &fdsetRecv);
+            hSocketMax = max(hSocketMax, hListenSocket);
             have_fds = true;
         }
         {
@@ -1088,12 +1089,12 @@ void ThreadSocketHandler()
         //
         // Accept new connections
         //
-        BOOST_FOREACH(const ListenSocket& hListenSocket, vhListenSocket)
-        if (hListenSocket.socket != INVALID_SOCKET && FD_ISSET(hListenSocket.socket, &fdsetRecv))
+        BOOST_FOREACH(SOCKET hListenSocket, vhListenSocket)
+        if (hListenSocket != INVALID_SOCKET && FD_ISSET(hListenSocket, &fdsetRecv))
         {
             struct sockaddr_storage sockaddr;
             socklen_t len = sizeof(sockaddr);
-            SOCKET hSocket = accept(hListenSocket.socket, (struct sockaddr*)&sockaddr, &len);
+            SOCKET hSocket = accept(hListenSocket, (struct sockaddr*)&sockaddr, &len);
             CAddress addr;
             int nInbound = 0;
 
@@ -1101,7 +1102,7 @@ void ThreadSocketHandler()
                 if (!addr.SetSockAddr((const struct sockaddr*)&sockaddr))
                     LogPrintf("Warning: Unknown socket family\n");
 
-            bool whitelisted = hListenSocket.whitelisted || CNode::IsWhitelistedRange(addr);
+            bool whitelisted = hListenSocket || CNode::IsWhitelistedRange(addr);
             {
                 LOCK(cs_vNodes);
                 BOOST_FOREACH(CNode* pnode, vNodes)
@@ -1149,24 +1150,23 @@ void ThreadSocketHandler()
         //
 
         bool haveInvalids = false;
-        for (std::vector<I2PListenSocket>::iterator it = vhI2PListenSocket.begin(); it != vhI2PListenSocket.end(); ++it)
+        for (std::vector<SOCKET>::iterator it = vhI2PListenSocket.begin(); it != vhI2PListenSocket.end(); ++it)
         {
-            I2PListenSocket& hI2PListenSocket = *it;
-            SOCKET& I2PSocket = hI2PListenSocket.socket;
-            if (I2PSocket == INVALID_SOCKET)
+            SOCKET& hI2PListenSocket = *it;
+            if (hI2PListenSocket == INVALID_SOCKET)
             {
                 if (haveInvalids)
                     it = vhI2PListenSocket.erase(it) - 1;
                 else
-                    BindListenNativeI2P(I2PSocket);
+                    BindListenNativeI2P(hI2PListenSocket);
                 haveInvalids = true;
             }
-            else if (FD_ISSET(I2PSocket, &fdsetRecv))
+            else if (FD_ISSET(hI2PListenSocket, &fdsetRecv))
             {
                 const size_t bufSize = NATIVE_I2P_DESTINATION_SIZE + 1;
                 char pchBuf[bufSize];
                 memset(pchBuf, 0, bufSize);
-                int nBytes = recv(I2PSocket, pchBuf, sizeof(pchBuf), MSG_DONTWAIT);
+                int nBytes = recv(hI2PListenSocket, pchBuf, sizeof(pchBuf), MSG_DONTWAIT);
                 if (nBytes > 0)
                 {
                     if (nBytes == NATIVE_I2P_DESTINATION_SIZE + 1) // we're waiting for dest-hash + '\n' symbol
@@ -1175,25 +1175,25 @@ void ThreadSocketHandler()
                         CAddress addr;
                         if (addr.SetSpecial(incomingAddr) && addr.IsNativeI2P())
                         {
-                            AddIncomingConnection(I2PSocket, addr);
+                            AddIncomingConnection(hI2PListenSocket, addr);
                         }
                         else
                         {
                             printf("Invalid incoming destination hash received (%s)\n", incomingAddr.c_str());
-                            CloseSocket(I2PSocket);
+                            closesocket(hI2PListenSocket);
                         }
                     }
                     else
                     {
                         printf("Invalid incoming destination hash size received (%d)\n", nBytes);
-                        CloseSocket(I2PSocket);
+                        closesocket(hI2PListenSocket);
                     }
                 }
                 else if (nBytes == 0)
                 {
                     // socket closed gracefully
                     printf("I2P listen socket closed\n");
-                    CloseSocket(I2PSocket);
+                    closesocket(hI2PListenSocket);
                 }
                 else if (nBytes < 0)
                 {
@@ -1203,10 +1203,10 @@ void ThreadSocketHandler()
                         continue;
 
                     printf("I2P listen socket recv error %d\n", nErr);
-                    CloseSocket(I2PSocket);
+                    closesocket(hI2PListenSocket);
                 }
-                I2PSocket = INVALID_SOCKET;  // we've saved this socket in a CNode or closed it, so we can safety reset it anyway
-                BindListenNativeI2P(I2PSocket);
+                hI2PListenSocket = INVALID_SOCKET;  // we've saved this socket in a CNode or closed it, so we can safety reset it anyway
+                BindListenNativeI2P(hI2PListenSocket);
             }
         }
     
@@ -1827,8 +1827,8 @@ void ThreadMessageHandler()
 bool BindListenNativeI2P()
 {
     bool fWhitelisted = false;
-    I2PListenSocket hNewI2PListenSocket(INVALID_SOCKET, fWhitelisted);
-    if (!BindListenNativeI2P(hNewI2PListenSocket.socket))
+    SOCKET hNewI2PListenSocket = INVALID_SOCKET && fWhitelisted;
+    if (!BindListenNativeI2P(hNewI2PListenSocket))
         return false;
     vhI2PListenSocket.push_back(hNewI2PListenSocket);
     return true;
@@ -1964,7 +1964,7 @@ bool BindListenPort(const CService &addrBind, string& strError, bool fWhiteliste
         return false;
     }
 
-    vhListenSocket.push_back(ListenSocket(hListenSocket, fWhitelisted));
+    vhListenSocket.push_back(hListenSocket);
 
     if (addrBind.IsRoutable() && fDiscover && !fWhitelisted)
         AddLocal(addrBind, LOCAL_BIND);
@@ -2104,17 +2104,17 @@ public:
         // Close sockets
         BOOST_FOREACH(CNode* pnode, vNodes)
             if (pnode->hSocket != INVALID_SOCKET)
-                CloseSocket(pnode->hSocket);
-        BOOST_FOREACH(ListenSocket& hListenSocket, vhListenSocket)
-            if (hListenSocket.socket != INVALID_SOCKET)
-                if (CloseSocket(hListenSocket.socket))
-                    LogPrintf("CloseSocket(hListenSocket) failed with error %d\n", WSAGetLastError());
+                closesocket(pnode->hSocket);
+        BOOST_FOREACH(SOCKET hListenSocket, vhListenSocket)
+            if (hListenSocket != INVALID_SOCKET)
+                if (closesocket(hListenSocket) == SOCKET_ERROR)
+                    LogPrintf("closesocket(hListenSocket) failed with error %d\n", WSAGetLastError());
 
 #ifdef USE_NATIVE_I2P
-        BOOST_FOREACH(I2PListenSocket& hI2PListenSocket, vhI2PListenSocket)
-            if (hI2PListenSocket.socket != INVALID_SOCKET)
-                if (CloseSocket(hI2PListenSocket.socket))
-                    printf("CloseSocket(hI2PListenSocket) failed with error %d\n", WSAGetLastError());
+        BOOST_FOREACH(SOCKET& hI2PListenSocket, vhI2PListenSocket)
+            if (hI2PListenSocket != INVALID_SOCKET)
+                if (closesocket(hI2PListenSocket) == SOCKET_ERROR)
+                    printf("closesocket(hI2PListenSocket) failed with error %d\n", WSAGetLastError());
 #endif
 
         // clean up some globals (to help leak detection)
