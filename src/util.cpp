@@ -26,6 +26,7 @@
 
 #include "util.h"
 #include "utilstrencodings.h"
+#include "utiltime.h"
 #include "amount.h"
 #include "chainparams.h"
 #include "sync.h"
@@ -718,20 +719,6 @@ void ShrinkDebugFile()
             fclose(file);
         }
     }
-}
-
-static int64_t nMockTime = 0;  // For unit testing
-
-int64_t GetTime()
-{
-    if (nMockTime) return nMockTime;
-
-    return time(NULL);
-}
-
-void SetMockTime(int64_t nMockTimeIn)
-{
-    nMockTime = nMockTimeIn;
 }
 
 string FormatVersion(int nVersion)
