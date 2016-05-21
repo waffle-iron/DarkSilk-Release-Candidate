@@ -42,7 +42,7 @@ public:
 };
 
 extern void TxToJSON(const CTransaction& tx, const uint256 hashBlock, Object& entry);
-extern Object blockToJSON(const CBlock& block, const CBlockIndex* blockindex);
+extern Object blockToJSON(const CBlock& block, const CBlockIndex* blockindex, bool fPrintTransactionDetail);
 
 static RestErr RESTERR(enum HTTPStatusCode status, string message)
 {
@@ -131,7 +131,7 @@ static bool rest_block(AcceptedConnection* conn,
     }
 
     case RF_JSON: {
-        Object objBlock = blockToJSON(block, pblockindex);
+        Object objBlock = blockToJSON(block, pblockindex, false);
         string strJSON = write_string(Value(objBlock), false) + "\n";
         conn->stream() << HTTPReply(HTTP_OK, strJSON, fRun) << std::flush;
         return true;
