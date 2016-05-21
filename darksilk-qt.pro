@@ -242,6 +242,7 @@ HEADERS +=  src/qt/darksilkgui.h \
             src/sync.h \
             src/random.h \
             src/util.h \
+            src/utiltime.h \
             src/utilstrencodings.h \
             src/utilmoneystr.h \
             src/hash.h \
@@ -409,6 +410,7 @@ SOURCES +=  src/qt/darksilk.cpp src/qt/darksilkgui.cpp \
             src/univalue_write.cpp \
             src/random.cpp \
             src/util.cpp \
+            src/utiltime.cpp \
             src/utilstrencodings.cpp \
             src/utilmoneystr.cpp \
             src/hash.cpp \
