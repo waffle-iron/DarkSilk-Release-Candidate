@@ -261,13 +261,7 @@ inline int roundint(double d)
     return (int)(d > 0 ? d + 0.5 : d - 0.5);
 }
 
-
 static const std::string strTimestampFormat = "%Y-%m-%d %H:%M:%S UTC";
-inline std::string DateTimeStrFormat(int64_t nTime)
-{
-    return DateTimeStrFormat(strTimestampFormat.c_str(), nTime);
-}
-
 
 template<typename T>
 void skipspaces(T& it)
