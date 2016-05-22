@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/SCDeveloper/DarkSilk-Release-Candidate.png?label=ready&title=Ready)](https://waffle.io/SCDeveloper/DarkSilk-Release-Candidate)
 # **DarkSilk (DRKSLK) Release Candidate**
 
 (Alpha Level)
